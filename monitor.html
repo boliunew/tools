@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F1EC">
+<title>网页监控</title>
+<style>
+:root{
+  --bg:#F3F1EC; --paper:#FFFFFF; --ink:#1B1E23; --soft:#626A73; --faint:#98A0A8; --line:#E0DDD5; --chip:#F0EEE8;
+  --accent:#1F6F66; --accent-ink:#FFFFFF; --accent-soft:#DCEEEA; --down:#1E8E4E; --up:#C0392B; --warn:#B8660B; --warn-soft:#FBEBD3;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15181C; --paper:#1D2126; --ink:#E9ECEF; --soft:#A3ABB4; --faint:#6F7881; --line:#2E343B; --chip:#262B31;
+    --accent:#5CC2B3; --accent-ink:#0E1A18; --accent-soft:#1E3632; --down:#4CC97E; --up:#FF8A73; --warn:#F2B35E; --warn-soft:#3A2E1A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.5}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;min-height:56px}
+.brand{font-weight:700;font-size:19px;margin-right:auto;display:flex;align-items:center;color:var(--ink);text-decoration:none}
+.brand i{display:inline-block;width:22px;height:22px;border-radius:6px;background:var(--accent);margin-right:8px;position:relative}
+.brand i:after{content:"";position:absolute;left:5px;top:5px;width:8px;height:8px;border:2px solid var(--accent-ink);border-radius:50%}
+.brand i:before{content:"";position:absolute;left:14px;top:14px;width:5px;height:2px;background:var(--accent-ink);transform:rotate(45deg)}
+.btn{border:1px solid var(--line);background:var(--paper);padding:7px 13px;border-radius:10px;font-size:14px;display:inline-flex;align-items:center;min-height:36px;text-decoration:none;color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--soft)}
+.btn.sm{padding:4px 10px;min-height:30px;font-size:12.5px}
+main{padding:14px 0 80px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.meta{font-size:13px;color:var(--soft);margin:0 0 12px}
+/* add form */
+.add{padding:16px;margin-bottom:16px;display:none}
+.add.on{display:block}
+.add h2{margin:0 0 4px;font-size:17px}
+.add p{margin:0 0 12px;color:var(--soft);font-size:13.5px}
+.f{margin-bottom:10px}
+.f label{display:block;font-size:12.5px;color:var(--soft);margin-bottom:4px;font-weight:600}
+.f input,.f select{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:9px 12px}
+.f input:focus,.f select:focus{outline:2px solid var(--accent);border-color:transparent}
+.f small{display:block;color:var(--faint);font-size:12px;margin-top:3px}
+.two{display:flex;margin:0 -5px}
+.two .f{flex:1;margin-left:5px;margin-right:5px}
+.modes{display:flex;flex-wrap:wrap}
+.modes button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:7px 12px;margin:0 6px 6px 0;font-size:13.5px}
+.modes button.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+details.adv summary{font-size:13px;color:var(--soft);cursor:pointer;margin:4px 0 8px}
+.steps{font-size:12.5px;color:var(--soft);background:var(--bg);border-radius:10px;padding:10px 12px;margin-top:12px;line-height:1.7}
+/* watches */
+.w{padding:14px 16px;margin-bottom:10px}
+.w-top{display:flex;align-items:flex-start}
+.w-id{flex:1;min-width:0}
+.w-n{font-size:17px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.w-d{font-size:12.5px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.w-d a{color:var(--faint)}
+.w-v{text-align:right;margin-left:12px}
+.w-v b{font-size:22px;font-variant-numeric:tabular-nums;display:block;line-height:1.2}
+.w-v span{font-size:12.5px;font-weight:600}
+.badge{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent);margin-right:6px}
+.badge.err{background:var(--warn-soft);color:var(--warn)}
+.down{color:var(--down)} .up{color:var(--up)}
+svg.sp{width:100%;height:54px;display:block;margin:8px 0 4px}
+.w-st{display:flex;flex-wrap:wrap;font-size:12.5px;color:var(--faint);margin-top:6px}
+.w-st > span{margin-right:14px}
+.w-err{font-size:12.5px;color:var(--warn);margin-top:6px}
+.w-a{margin-top:10px;display:flex;flex-wrap:wrap}
+.w-a > *{margin:0 8px 0 0}
+.empty{padding:36px 16px;text-align:center;color:var(--soft);line-height:1.8}
+footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;line-height:1.7}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="bar">
+  <a class="brand" href="./"><i></i>网页监控</a>
+  <button class="btn primary" id="addBtn">＋ 添加监控</button>
+</div></div></header>
+<main class="wrap">
+  <div class="card add" id="addForm">
+    <h2>添加监控</h2>
+    <p>填好后点「去 GitHub 提交」，会打开一个已经帮你填好的页面，在那里点 <b>Create</b> 就完成了。</p>
+    <div class="f"><label>网址</label><input id="fUrl" type="url" placeholder="https://..." autocomplete="off"></div>
+    <div class="f"><label>名称（选填）</label><input id="fName" placeholder="例如：Sony 耳机、签证预约页"></div>
+    <div class="f"><label>监控什么</label><div class="modes" id="fModes">
+      <button data-m="价格" class="on">💲 价格</button><button data-m="关键词出现">🔎 关键词出现</button><button data-m="关键词消失">🚫 关键词消失</button><button data-m="内容变化">📝 内容变化</button>
+    </div><small id="modeHint"></small></div>
+    <div class="f" id="rowTarget"><label>目标价（选填）</label><input id="fTarget" inputmode="decimal" placeholder="低于或等于这个价格时通知；不填则每次降价都通知"></div>
+    <div class="f" id="rowKw" style="display:none"><label>关键词</label><input id="fKw" placeholder="例如 In stock、Add to cart、Sold out"></div>
+    <details class="adv"><summary>高级：只看页面的某一部分</summary>
+      <div class="f"><label>CSS 选择器</label><input id="fSel" placeholder="例如 .price 或 #availability"><small>自动找不到价格，或者整页内容变化太频繁时使用。</small></div>
+    </details>
+    <button class="btn primary" id="goBtn">去 GitHub 提交 →</button> <button class="btn ghost" id="cancelBtn">取消</button>
+    <div class="steps">每 4 小时检查一次。有变化时，系统会在这个监控对应的 GitHub issue 下留言，GitHub 会通过 App 推送或邮件通知你。<br>删除监控：打开它的 issue，点 <b>Close issue</b>。</div>
+  </div>
+  <div id="list"><div class="empty">加载中…</div></div>
+  <footer>很多大型购物网站（如 Amazon、Walmart）会拦截自动访问，可能读不到价格；小商店、官网、公告页一般没问题。<br>建议安装 GitHub App 并打开通知，这样能第一时间收到提醒。</footer>
+</main>
+<script>
+(function () {
+  'use strict';
+  var REPO = 'boliunew/tools', mode = '价格';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ago(iso) { if (!iso) return '—'; var m = (Date.now() - new Date(iso).getTime()) / 60000; if (m < 60) return Math.max(1, Math.round(m)) + ' 分钟前'; if (m < 1440) return Math.round(m / 60) + ' 小时前'; return Math.round(m / 1440) + ' 天前'; }
+  function money(p, cur) { var s = { USD: '$', CNY: '¥', EUR: '€', GBP: '£', JPY: '¥', CAD: 'C$' }[(cur || 'USD').toUpperCase()]; var t = p.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); return s ? s + t : t + ' ' + cur; }
+  function host(u) { var m = /^https?:\/\/([^\/?#]+)/.exec(u || ''); return m ? m[1].replace(/^www\./, '') : u; }
+  var HINT = { '价格': '自动从网页里读取商品价格，降价或到达目标价时通知。', '关键词出现': '页面上出现某个词时通知，适合等补货（In stock）、等开放报名。', '关键词消失': '页面上某个词消失时通知，例如 Sold out 消失 = 补货了。', '内容变化': '页面文字有任何变化就通知，适合公告页、政策页。整页监控容易被广告、时间等干扰，建议配合选择器使用。' };
+
+  function setMode(m) {
+    mode = m;
+    var bs = $('fModes').querySelectorAll('button');
+    for (var i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-m') === m ? 'on' : '';
+    $('rowTarget').style.display = m === '价格' ? '' : 'none';
+    $('rowKw').style.display = m.indexOf('关键词') === 0 ? '' : 'none';
+    $('modeHint').textContent = HINT[m];
+  }
+  $('fModes').onclick = function (e) { var b = e.target; while (b && b.tagName !== 'BUTTON') b = b.parentNode; if (b) setMode(b.getAttribute('data-m')); };
+  setMode('价格');
+  $('addBtn').onclick = function () { $('addForm').classList.add('on'); window.scrollTo(0, 0); $('fUrl').focus(); };
+  $('cancelBtn').onclick = function () { $('addForm').classList.remove('on'); };
+  $('goBtn').onclick = function () {
+    var url = $('fUrl').value.replace(/^\s+|\s+$/g, '');
+    if (!/^https?:\/\/\S+\.\S+/.test(url)) { alert('请填写完整的网址（以 http:// 或 https:// 开头）'); return; }
+    if (mode.indexOf('关键词') === 0 && !$('fKw').value.replace(/\s/g, '')) { alert('请填写关键词'); return; }
+    var name = $('fName').value.replace(/^\s+|\s+$/g, '') || host(url);
+    var q = 'template=watch.yml&labels=watch&title=' + encodeURIComponent('监控: ' + name) + '&url=' + encodeURIComponent(url) + '&mode=' + encodeURIComponent(mode);
+    if (mode === '价格' && $('fTarget').value) q += '&target=' + encodeURIComponent($('fTarget').value);
+    if (mode.indexOf('关键词') === 0) q += '&keyword=' + encodeURIComponent($('fKw').value);
+    if ($('fSel').value) q += '&selector=' + encodeURIComponent($('fSel').value);
+    window.open('https://github.com/' + REPO + '/issues/new?' + q, '_blank');
+  };
+
+  function spark(h) {
+    if (!h || h.length < 2) return '';
+    var v = h.map(function (x) { return x[1]; }), lo = Math.min.apply(null, v), hi = Math.max.apply(null, v), W = 300, H = 54, p = 5, pts = [];
+    for (var i = 0; i < v.length; i++) pts.push((i / (v.length - 1) * W).toFixed(1) + ',' + (H - p - (v[i] - lo) / (hi - lo || 1) * (H - 2 * p)).toFixed(1));
+    var down = v[v.length - 1] <= v[0];
+    return '<svg class="sp" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none"><polyline points="' + pts.join(' ') + '" fill="none" stroke="' + (down ? 'var(--down)' : 'var(--up)') + '" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>';
+  }
+  function card(w) {
+    var h = '<div class="card w"><div class="w-top"><div class="w-id"><div class="w-n">' + esc(w.name || host(w.url)) + '</div><div class="w-d"><span class="badge' + (w.error ? ' err' : '') + '">' + ({ price: '价格', content: '内容', appear: '关键词出现', disappear: '关键词消失' }[w.mode] || w.mode) + '</span><a href="' + esc(w.url) + '" target="_blank" rel="noopener">' + esc(host(w.url)) + '</a></div></div>';
+    if (w.mode === 'price' && w.price != null) {
+      var first = w.history && w.history.length ? w.history[0][1] : w.price, ch = w.price / first - 1;
+      h += '<div class="w-v"><b>' + money(w.price, w.currency) + '</b>' + (Math.abs(ch) > 0.0001 ? '<span class="' + (ch < 0 ? 'down' : 'up') + '">' + (ch > 0 ? '+' : '') + (ch * 100).toFixed(1) + '% 较开始</span>' : '<span style="color:var(--faint)">暂无变化</span>') + '</div>';
+    } else if (w.mode === 'appear' || w.mode === 'disappear') {
+      h += '<div class="w-v"><b style="font-size:16px">' + (w.found == null ? '—' : w.found ? '有' : '没有') + '</b><span style="color:var(--faint)">「' + esc(w.keyword) + '」</span></div>';
+    } else if (w.mode === 'content') {
+      h += '<div class="w-v"><b style="font-size:16px">' + (w.changes || 0) + ' 次</b><span style="color:var(--faint)">检测到变化</span></div>';
+    }
+    h += '</div>';
+    if (w.mode === 'price') h += spark(w.history);
+    h += '<div class="w-st"><span>上次检查 ' + ago(w.checked) + '</span>';
+    if (w.mode === 'price' && w.target) h += '<span>目标 ' + money(w.target, w.currency) + '</span>';
+    if (w.mode === 'price' && w.low != null) h += '<span>最低 ' + money(w.low, w.currency) + '</span><span>最高 ' + money(w.high, w.currency) + '</span>';
+    h += '</div>';
+    if (w.error) h += '<div class="w-err">⚠️ ' + esc(w.error) + '</div>';
+    h += '<div class="w-a"><a class="btn sm" href="' + esc(w.issue_url) + '" target="_blank" rel="noopener">通知记录 / 修改 / 删除</a><a class="btn sm ghost" href="' + esc(w.url) + '" target="_blank" rel="noopener">打开网页</a></div></div>';
+    return h;
+  }
+  function load() {
+    var x = new XMLHttpRequest();
+    x.open('GET', 'monitor/data/state.json?t=' + Date.now());
+    x.onload = function () {
+      var ws = [];
+      if (x.status === 200) { try { var d = JSON.parse(x.responseText), k; for (k in d.watches) if (d.watches.hasOwnProperty(k) && d.watches[k].url) ws.push(d.watches[k]); } catch (e) { } }
+      ws.sort(function (a, b) { return (b.issue || 0) - (a.issue || 0); });
+      if (!ws.length) { $('list').innerHTML = '<div class="card empty"><b style="font-size:17px;color:var(--ink)">还没有监控</b><br>点右上角「＋ 添加监控」，粘贴想盯的网页就行。<br>提交后大约 1 分钟，这里就会出现。</div>'; return; }
+      var h = '<div class="meta">' + ws.length + ' 个监控 · 每 4 小时检查一次</div>';
+      for (var i = 0; i < ws.length; i++) h += card(ws[i]);
+      $('list').innerHTML = h;
+    };
+    x.onerror = function () { $('list').innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
+    x.send();
+  }
+  load();
+})();
+</script>
+</body>
+</html>

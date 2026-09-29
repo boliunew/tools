@@ -1,0 +1,35 @@
+name: 添加监控
+description: 监控网页价格、内容变化或关键词（每 4 小时检查一次）
+title: "监控: "
+labels: ["watch"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: 网址
+      placeholder: https://www.example.com/product/123
+    validations:
+      required: true
+  - type: input
+    id: mode
+    attributes:
+      label: 监控类型
+      description: 填 价格 / 内容变化 / 关键词出现 / 关键词消失 其中一个
+      value: 价格
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: 目标价（选填）
+      description: 价格低于或等于这个数时通知；不填则每次降价都通知
+  - type: input
+    id: keyword
+    attributes:
+      label: 关键词（选填）
+      description: 用于关键词监控，例如 In stock、Sold out、Add to cart
+  - type: input
+    id: selector
+    attributes:
+      label: CSS 选择器（选填，高级）
+      description: 只看页面的某一部分，例如 .price 或 #availability

@@ -1713,6 +1713,8 @@ var NLP = (function () {
   setTab(tab);
   var saved = store.get('article', null);
   if (saved && saved.text) { $('artText').value = saved.text; analyzeArticle(saved.text, saved.title); }
+  var qm = /[?&]url=([^&]+)/.exec(window.location.search);
+  if (qm) { setTab('art'); $('url').value = decodeURIComponent(qm[1]); fetchArticle(); }
 })();
 
 </script>
