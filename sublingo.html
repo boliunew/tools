@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F1EC">
+<title>SubLingo</title>
+<style>
+:root{
+  --bg:#F3F1EC; --paper:#FFFFFF; --ink:#1B1E23; --soft:#626A73; --faint:#98A0A8; --line:#E0DDD5; --chip:#F0EEE8;
+  --accent:#1F6F66; --accent-ink:#FFFFFF; --accent-soft:#DCEEEA; --mark:#FFE58A; --hard:#C0572B;
+  --c-v:#C23B22; --c-aux:#B8660B; --c-n:#1E5AA8; --c-pr:#20808F; --c-adj:#2E7D32; --c-adv:#7A3FB0; --c-prep:#7C6A52; --c-cj:#B03A74; --c-det:#6B7580; --c-num:#8A6D00;
+  --fs:18px; --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181C; --paper:#1D2126; --ink:#E9ECEF; --soft:#A3ABB4; --faint:#6F7881; --line:#2E343B; --chip:#262B31;
+    --accent:#5CC2B3; --accent-ink:#0E1A18; --accent-soft:#1E3632; --mark:#6B5A12; --hard:#F08A5D;
+    --c-v:#FF8A73; --c-aux:#F2B35E; --c-n:#7FB2FF; --c-pr:#6FD0DC; --c-adj:#86D48A; --c-adv:#C9A2F2; --c-prep:#C8B79E; --c-cj:#F28DC0; --c-det:#9AA4AE; --c-num:#E3C75A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181C; --paper:#1D2126; --ink:#E9ECEF; --soft:#A3ABB4; --faint:#6F7881; --line:#2E343B; --chip:#262B31;
+  --accent:#5CC2B3; --accent-ink:#0E1A18; --accent-soft:#1E3632; --mark:#6B5A12; --hard:#F08A5D;
+  --c-v:#FF8A73; --c-aux:#F2B35E; --c-n:#7FB2FF; --c-pr:#6FD0DC; --c-adj:#86D48A; --c-adv:#C9A2F2; --c-prep:#C8B79E; --c-cj:#F28DC0; --c-det:#9AA4AE; --c-num:#E3C75A;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.55}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;min-height:56px}
+.brand{font-weight:700;font-size:19px;letter-spacing:-.01em;margin-right:auto;display:flex;align-items:center}
+.brand i{display:inline-block;width:22px;height:22px;border-radius:6px;background:var(--accent);margin-right:8px;position:relative}
+.brand i:after{content:"";position:absolute;left:5px;right:5px;bottom:6px;height:2px;background:var(--accent-ink);border-radius:2px;box-shadow:0 -5px 0 var(--accent-ink)}
+.brand small{font-weight:400;color:var(--soft);font-size:12px;margin-left:8px}
+.seg{display:flex;background:var(--chip);border-radius:10px;padding:3px}
+.seg button{border:0;background:transparent;padding:6px 14px;border-radius:8px;color:var(--soft);font-size:14px}
+.seg button.on{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);font-weight:600}
+.iconbtn{border:0;background:transparent;width:40px;height:40px;border-radius:10px;margin-left:6px;color:var(--soft);display:flex;align-items:center;justify-content:center}
+.iconbtn:hover{background:var(--chip)}
+.iconbtn svg{width:20px;height:20px}
+.settings{display:none;padding:10px 0 14px;border-top:1px solid var(--line)}
+.settings.open{display:block}
+.settings .row{display:flex;flex-wrap:wrap;align-items:center}
+.settings .row > *{margin:4px 12px 4px 0}
+.legend{display:flex;flex-wrap:wrap;margin-top:6px}
+.legend span{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--chip);margin:3px 6px 3px 0;font-weight:600}
+.switch{display:inline-flex;align-items:center;font-size:14px;color:var(--soft);user-select:none;cursor:pointer}
+.switch input{margin:0 6px 0 0;width:16px;height:16px;accent-color:var(--accent)}
+.btn{border:1px solid var(--line);background:var(--paper);padding:8px 14px;border-radius:10px;font-size:14px;display:inline-flex;align-items:center;min-height:38px}
+.btn:hover{border-color:var(--faint)}
+a.btn{text-decoration:none;color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--soft)}
+.btn.sm{padding:4px 10px;min-height:30px;font-size:13px}
+.btn .k{font-size:12px;color:var(--faint);margin-left:6px}
+.btn.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+main{padding:16px 0 120px}
+.view{display:none}
+.view.on{display:block}
+.intro{padding:22px 20px}
+.intro h2{margin:0 0 6px;font-size:20px}
+.intro p{margin:0 0 14px;color:var(--soft)}
+.actions{display:flex;flex-wrap:wrap}
+.actions > *{margin:0 8px 8px 0}
+.hint{font-size:13px;color:var(--faint)}
+.drop{border:1.5px dashed var(--line);border-radius:12px;padding:14px;text-align:center;color:var(--faint);font-size:13px;margin-top:6px}
+body.dragging .drop{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+
+/* player */
+.player{position:-webkit-sticky;position:sticky;top:57px;z-index:10;background:var(--bg);padding:10px 0 8px;display:none}
+.player.on{display:block}
+.player video{width:100%;max-height:34vh;background:#000;border-radius:12px;display:block}
+.player.audio video{height:44px;max-height:44px;background:transparent}
+.ctrl{display:flex;flex-wrap:wrap;align-items:center;margin-top:8px}
+.ctrl > *{margin:0 6px 6px 0}
+.ctrl .off{font-size:13px;color:var(--soft);display:inline-flex;align-items:center}
+.ctrl .off b{min-width:48px;text-align:center;font-variant-numeric:tabular-nums;color:var(--ink)}
+.filebar{display:flex;flex-wrap:wrap;align-items:center;margin:4px 0 12px;font-size:13px;color:var(--soft)}
+.filebar > *{margin:0 10px 6px 0}
+.filebar .name{font-weight:600;color:var(--ink);max-width:60vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--chip);font-size:12px;font-weight:600;color:var(--soft)}
+.pill.lv{background:var(--accent-soft);color:var(--accent)}
+
+/* cues */
+.cues{padding:4px 0}
+.cue{display:flex;align-items:flex-start;padding:10px 14px;border-bottom:1px solid var(--line);position:relative;flex-wrap:wrap}
+.cue:last-child{border-bottom:0}
+.cue.now{background:var(--accent-soft)}
+.cue.now:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--accent)}
+.cue .ts{border:0;background:transparent;color:var(--faint);font-size:12px;font-variant-numeric:tabular-nums;padding:5px 8px 0 0;min-width:52px;text-align:left}
+.cue .ts:hover{color:var(--accent)}
+.cue .ct{flex:1;min-width:0;cursor:pointer}
+.cue .zh{color:var(--soft);font-size:14px;margin-top:2px}
+.cue .panel-slot{flex-basis:100%}
+.en,.sent{font-size:var(--fs);line-height:1.6}
+.art .en,.art p{font-family:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif}
+
+/* tokens */
+.w{border-radius:3px;transition:background .15s}
+.open .w{cursor:pointer}
+.open .w:hover{background:var(--chip)}
+.color .p-v{color:var(--c-v);font-weight:600}
+.color .p-aux{color:var(--c-aux);font-weight:600}
+.color .p-n{color:var(--c-n)}
+.color .p-pr{color:var(--c-pr)}
+.color .p-adj{color:var(--c-adj)}
+.color .p-adv{color:var(--c-adv)}
+.color .p-prep{color:var(--c-prep)}
+.color .p-cj{color:var(--c-cj);font-weight:600}
+.color .p-det{color:var(--c-det)}
+.color .p-num{color:var(--c-num)}
+.color .p-part{color:var(--c-v)}
+.pv{text-decoration:underline;text-decoration-style:dotted;-webkit-text-decoration-style:dotted;text-decoration-color:var(--c-v);text-underline-offset:3px}
+.w.hl{background:var(--mark)!important;color:var(--ink)!important}
+.w.sel{outline:2px solid var(--accent);outline-offset:1px}
+
+/* panel */
+.panel{margin:10px 0 4px;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:12px;font-size:14px}
+.panel .ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.panel .ph b{font-size:12px;letter-spacing:.06em;color:var(--faint);font-weight:600}
+.panel h4{margin:12px 0 6px;font-size:12px;color:var(--faint);font-weight:600;letter-spacing:.04em}
+.panel h4:first-of-type{margin-top:4px}
+.it{padding:8px 10px;border-radius:10px;background:var(--paper);border:1px solid var(--line);margin-bottom:6px;cursor:default}
+.it:hover,.it.act{border-color:var(--accent)}
+.it .nm{font-weight:600}
+.it code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;background:var(--chip);padding:1px 6px;border-radius:6px;margin-left:6px;white-space:nowrap}
+.it .ds{color:var(--soft);margin-top:3px;font-size:13.5px}
+.it .zhm{color:var(--accent);margin-left:6px}
+.subsent{margin:10px 0 2px;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--soft)}
+.empty{color:var(--faint);font-size:13px}
+
+/* article */
+.inputs{padding:16px}
+.urlrow{display:flex}
+.urlrow input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 12px;margin-right:8px}
+textarea{width:100%;min-height:140px;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;margin:10px 0;resize:vertical;line-height:1.5}
+input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:transparent}
+.status{font-size:13px;color:var(--soft);min-height:20px}
+.status.err{color:var(--hard)}
+.stats{margin-top:14px;padding:16px}
+.stats .top{display:flex;align-items:center;flex-wrap:wrap}
+.lvbig{font-size:34px;font-weight:700;color:var(--accent);line-height:1;margin-right:12px}
+.lvtxt{font-size:14px;color:var(--soft)}
+.lvtxt b{color:var(--ink);font-size:16px;display:block}
+.meter{height:8px;border-radius:8px;background:var(--chip);margin:14px 0 4px;overflow:hidden;position:relative}
+.meter i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:8px}
+.scale{display:flex;justify-content:space-between;font-size:11px;color:var(--faint)}
+.grid{display:flex;flex-wrap:wrap;margin-top:12px;border-top:1px solid var(--line);padding-top:6px}
+.grid div{width:33.33%;padding:8px 0}
+.grid b{display:block;font-size:18px;font-variant-numeric:tabular-nums}
+.grid span{font-size:12px;color:var(--faint)}
+.rare{margin-top:10px}
+.rare .chip{display:inline-block;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:3px 10px;margin:0 6px 6px 0;font-size:13px;cursor:pointer}
+.rare .chip:hover{border-color:var(--accent);color:var(--accent)}
+.art{margin-top:14px;padding:20px 22px}
+.art h2{margin:0 0 12px;font-size:22px;line-height:1.3;font-family:Georgia,"Iowan Old Style",serif}
+.art .tools{display:flex;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.art .tools > *{margin:0 10px 8px 0}
+.art p{margin:0 0 14px}
+.sent{cursor:pointer;border-radius:4px;transition:background .15s}
+.sent:hover{background:var(--chip)}
+.sent.open{background:var(--accent-soft)}
+.onlyhard .sent.hard{box-shadow:inset 0 -2px 0 var(--hard)}
+.onlyhard .sent:not(.hard){opacity:.45}
+
+/* word sheet */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;pointer-events:none;padding:0 12px 12px;visibility:hidden;transition:visibility 0s .2s}
+.sheet.on{visibility:visible;transition:none}
+.sheet .box{pointer-events:auto;width:100%;max-width:440px;background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.25);padding:14px 16px 12px;transform:translateY(120%);transition:transform .2s ease}
+.sheet.on .box{transform:translateY(0)}
+.sheet .wd{font-size:24px;font-weight:700;font-family:Georgia,serif;margin-right:8px}
+.sheet .lm{color:var(--soft);font-size:14px}
+.sheet .pos{margin:6px 0;font-weight:600}
+.sheet .note{font-size:13.5px;color:var(--soft);margin:4px 0}
+.sheet .acts{display:flex;flex-wrap:wrap;margin-top:10px}
+.sheet .acts > *{margin:0 8px 0 0}
+.sheet .x{float:right;border:0;background:var(--chip);width:30px;height:30px;border-radius:50%;color:var(--soft)}
+footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 40px}
+@media (max-width:560px){
+  .brand small{display:none}
+  .seg button{padding:6px 10px}
+  .cue{padding:10px 10px}
+  .cue .ts{min-width:44px}
+  .art{padding:16px}
+  .grid div{width:50%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="bar">
+      <div class="brand"><i></i>SubLingo<small>字幕 · 文章语法解析</small></div>
+      <div class="seg" id="tabs"><button data-tab="sub" class="on">字幕</button><button data-tab="art">文章</button></div>
+      <button class="iconbtn" id="setBtn" aria-label="设置"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
+    </div>
+    <div class="settings" id="settings">
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="optColor">词性着色</label>
+        <span class="switch">字号
+          <button class="btn sm ghost" id="fsDown">A−</button><b id="fsVal" style="min-width:26px;text-align:center">18</b><button class="btn sm ghost" id="fsUp">A+</button>
+        </span>
+        <span class="switch">主题
+          <select id="optTheme" style="margin-left:6px;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:3px 6px"><option value="">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select>
+        </span>
+      </div>
+      <div class="legend">
+        <span style="color:var(--c-v)">动词</span><span style="color:var(--c-aux)">助动词/情态</span><span style="color:var(--c-n)">名词</span><span style="color:var(--c-pr)">代词</span><span style="color:var(--c-adj)">形容词</span><span style="color:var(--c-adv)">副词</span><span style="color:var(--c-prep)">介词</span><span style="color:var(--c-cj)">连词</span><span style="color:var(--c-det)">限定词</span><span style="color:var(--c-v);text-decoration:underline dotted">短语动词</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- SUBTITLE VIEW -->
+  <section class="view on" id="view-sub">
+    <div class="card intro" id="subIntro">
+      <h2>导入字幕，逐句看懂语法</h2>
+      <p>支持 SRT / VTT / ASS 字幕，可同时导入本地视频或音频同步播放。双语字幕会自动分出中文翻译。</p>
+      <div class="actions">
+        <button class="btn primary" id="pickSub">导入字幕</button>
+        <button class="btn" id="pickMedia">导入视频 / 音频</button>
+        <button class="btn ghost" id="demoSub">试试示例</button>
+      </div>
+      <div class="drop">也可以把字幕或视频文件直接拖到页面上</div>
+    </div>
+    <div class="player" id="player">
+      <video id="video" controls playsinline preload="metadata"></video>
+      <div class="ctrl">
+        <button class="btn sm" id="bPrev">上一句 <span class="k">←</span></button>
+        <button class="btn sm" id="bLoop">单句循环 <span class="k">R</span></button>
+        <button class="btn sm" id="bNext">下一句 <span class="k">→</span></button>
+        <button class="btn sm on" id="bFollow">跟随滚动</button>
+        <span class="off">字幕偏移<button class="btn sm ghost" id="offDown">−</button><b id="offVal">0.0s</b><button class="btn sm ghost" id="offUp">+</button></span>
+      </div>
+    </div>
+    <div id="subBody" style="display:none">
+      <div class="filebar" id="fileBar"></div>
+      <div class="card cues color" id="cues"></div>
+    </div>
+    <input type="file" id="fSub" accept=".srt,.vtt,.ass,.ssa,.txt" style="display:none">
+    <input type="file" id="fMedia" accept="video/*,audio/*,.mkv" style="display:none">
+  </section>
+
+  <!-- ARTICLE VIEW -->
+  <section class="view" id="view-art">
+    <div class="card inputs">
+      <div class="urlrow"><input type="url" id="url" placeholder="粘贴英文文章链接，例如新闻网址" autocomplete="off"><button class="btn primary" id="fetchBtn">抓取</button></div>
+      <div class="status" id="status"></div>
+      <textarea id="artText" placeholder="或者直接把英文文章粘贴到这里…"></textarea>
+      <div class="actions" style="margin-bottom:-8px">
+        <button class="btn primary" id="anaBtn">分析文章</button>
+        <button class="btn ghost" id="demoArt">试试示例</button>
+        <button class="btn ghost" id="clearArt">清空</button>
+      </div>
+    </div>
+    <div id="artOut"></div>
+  </section>
+  <footer>SubLingo · 本地规则引擎，离线可用，解析结果仅供参考<br>先点句子展开解析，再点单词查看词性</footer>
+</main>
+
+<div class="sheet" id="sheet"><div class="box" id="sheetBox"></div></div>
+
+<script>
+/* SubLingo local grammar engine — ES5 only (old Android WebView safe) */
+var NLP = (function () {
+  'use strict';
+  function set(s) { var o = {}, a = s.split(/\s+/), i; for (i = 0; i < a.length; i++) { if (a[i]) o[a[i]] = 1; } return o; }
+  function has(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+
+  /* ---------------- lexicon ---------------- */
+  var MODALS = set('can could may might must shall should will would ought');
+  var BE = { be: 'VB', am: 'PRES', is: 'PRES', are: 'PRES', was: 'PAST', were: 'PAST', been: 'VBN', being: 'VBG', "'m": 'PRES', "'re": 'PRES', ai: 'PRES' };
+  var HAVE = { have: 'PRES', has: 'PRES', had: 'PAST', having: 'VBG', "'ve": 'PRES' };
+  var DO = { 'do': 'PRES', does: 'PRES', did: 'PAST' };
+  var SUBJ = set('i you he she it we they');
+  var OBJP = set('me him her us them you it');
+  var POSSDET = set('my your his its our their');
+  var PRON = set('i me mine myself you yours yourself yourselves he him himself she hers herself it itself we us ours ourselves they them theirs themselves who whom whose someone somebody something anyone anybody anything everyone everybody everything nobody nothing none ones');
+  var DET = set('the a an some any no every each either neither all both many much few several another other such enough');
+  var DEMO = set('this that these those');
+  var PREP = set('in on at by for with about against between into through during before after above below to from up down out off over under of since until till upon within without along across behind beyond near among amongst around toward towards throughout despite except like unlike via onto per inside outside beside besides beneath underneath past round versus than');
+  var CONJ = set('and or but nor yet');
+  var SCONJ = set('because although though whereas if unless whether while whilst');
+  var WH = set('what which who whom whose when where why how');
+  var ADV = set('back not never always often sometimes usually rarely seldom ever very too also just only even still already really quite rather almost nearly here now then today tonight tomorrow yesterday soon later again ago away maybe perhaps probably possibly actually especially however therefore instead anyway else twice together recently finally suddenly certainly definitely simply exactly clearly generally mostly hardly barely somewhere anywhere everywhere nowhere abroad forward forever meanwhile otherwise indeed thus hence moreover furthermore nevertheless apparently eventually immediately fairly pretty extremely totally completely absolutely nearly currently usually');
+  var INTJ = set('no well oh ah hey hi hello yes yeah yep nope okay ok wow oops uh um hmm huh please thanks bye goodbye alright ouch');
+  var NUMW = set('zero two three four five six seven eight nine ten eleven twelve thirteen fifteen twenty thirty forty fifty sixty hundred thousand million billion first second third half dozen');
+  var PARTICLES = set('up down out off on in over away back around about through along across apart aside forward together by after into for with of at to from');
+  var ADJ = set('good bad new old big small great little long short high low young right wrong same different important large public able late hard easy early free full sure clear real best better worse worst true whole strong weak possible impossible happy sad ready simple nice sorry fine bright dark hot cold warm cool open close dead alive busy cheap expensive rich poor safe dangerous quick slow fast quiet loud clean dirty empty heavy light deep wide narrow thin thick fat beautiful pretty ugly strange normal special serious common final main huge tiny whole certain recent available likely unlikely similar local national international social political economic human natural personal private professional physical mental medical legal difficult necessary popular current major minor single wonderful terrible awful perfect lucky angry afraid glad proud aware alone familiar favorite favourite hungry thirsty sick ill healthy nervous calm crazy smart stupid funny kind rude brave lazy honest fair unfair modern ancient foreign native usual unusual whole entire various several extra own previous next last general specific basic key obvious total fresh sweet sour bitter soft loud wild gentle careful careless useful useless helpful harmless successful powerful interesting boring amazing exciting surprising confusing annoying charming missing shocking disappointing embarrassing frightening worrying relaxing entertaining encouraging promising outstanding upcoming ongoing willing living tired interested excited bored surprised worried scared married pleased satisfied confused embarrassed disappointed determined frightened annoyed amazed shocked exhausted relaxed stressed concerned involved supposed prepared qualified experienced advanced limited complicated sophisticated crowded talented skilled armed united detailed');
+  var ADJ_PART = set('tired interested excited bored surprised worried scared married pleased satisfied confused embarrassed disappointed determined frightened annoyed amazed shocked exhausted relaxed stressed concerned involved supposed prepared qualified experienced advanced limited complicated sophisticated crowded talented skilled detailed interesting boring amazing exciting surprising confusing annoying charming missing shocking disappointing embarrassing frightening worrying relaxing entertaining encouraging promising outstanding upcoming ongoing willing');
+
+  var IRR_RAW = 'arise arose arisen,awake awoke awoken,be was/were been,bear bore born/borne,beat beat beaten,become became become,begin began begun,bend bent bent,bet bet bet,bind bound bound,bite bit bitten,bleed bled bled,blow blew blown,break broke broken,breed bred bred,bring brought brought,broadcast broadcast broadcast,build built built,burn burnt/burned burnt/burned,buy bought bought,catch caught caught,choose chose chosen,come came come,cost cost cost,creep crept crept,cut cut cut,deal dealt dealt,dig dug dug,do did done,draw drew drawn,dream dreamt/dreamed dreamt/dreamed,drink drank drunk,drive drove driven,eat ate eaten,fall fell fallen,feed fed fed,feel felt felt,fight fought fought,find found found,flee fled fled,fly flew flown,forbid forbade forbidden,forecast forecast forecast,forget forgot forgotten,forgive forgave forgiven,freeze froze frozen,get got gotten/got,give gave given,go went gone,grind ground ground,grow grew grown,hang hung hung,have had had,hear heard heard,hide hid hidden,hit hit hit,hold held held,hurt hurt hurt,keep kept kept,kneel knelt knelt,know knew known,lay laid laid,lead led led,lean leant/leaned leant/leaned,leap leapt leapt,learn learnt/learned learnt/learned,leave left left,lend lent lent,let let let,lie lay lain,light lit lit,lose lost lost,make made made,mean meant meant,meet met met,mistake mistook mistaken,overcome overcame overcome,overtake overtook overtaken,pay paid paid,prove proved proven/proved,put put put,quit quit quit,read read read,rebuild rebuilt rebuilt,ride rode ridden,ring rang rung,rise rose risen,run ran run,say said said,see saw seen,seek sought sought,sell sold sold,send sent sent,set set set,sew sewed sewn,shake shook shaken,shed shed shed,shine shone shone,shoot shot shot,show showed shown,shrink shrank shrunk,shut shut shut,sing sang sung,sink sank sunk,sit sat sat,sleep slept slept,slide slid slid,smell smelt/smelled smelt/smelled,speak spoke spoken,spell spelt/spelled spelt/spelled,spend spent spent,spill spilt/spilled spilt/spilled,spin spun spun,spit spat spat,split split split,spread spread spread,spring sprang sprung,stand stood stood,steal stole stolen,stick stuck stuck,sting stung stung,stink stank stunk,strike struck struck,strive strove striven,swear swore sworn,sweep swept swept,swell swelled swollen,swim swam swum,swing swung swung,take took taken,teach taught taught,tear tore torn,tell told told,think thought thought,throw threw thrown,tread trod trodden,undergo underwent undergone,understand understood understood,upset upset upset,wake woke woken,wear wore worn,weep wept wept,win won won,wind wound wound,withdraw withdrew withdrawn,write wrote written,misunderstand misunderstood misunderstood,forgo forwent forgone,oversee oversaw overseen,undertake undertook undertaken';
+  var IRR_BASE = {}, IRR_PAST = {}, IRR_PP = {};
+  (function () {
+    var rows = IRR_RAW.split(','), i, p, j, a;
+    for (i = 0; i < rows.length; i++) {
+      p = rows[i].split(' ');
+      IRR_BASE[p[0]] = 1;
+      a = p[1].split('/'); for (j = 0; j < a.length; j++) IRR_PAST[a[j]] = p[0];
+      a = p[2].split('/'); for (j = 0; j < a.length; j++) IRR_PP[a[j]] = p[0];
+    }
+  })();
+
+  var VERBS = set('accept achieve act add admit affect afford agree allow announce answer appear apply appreciate argue arrange arrive ask assume attack attempt attend avoid bake ban base beg behave believe belong blame block boil book borrow bother breathe brush call calm cancel care carry cause celebrate change charge chase chat check cheer chew claim clean clear climb close collect combine comment compare compete complain complete concern confirm connect consider consist contain continue contribute control convince cook copy correct cough count cover crash create cross cry cure damage dance date decide declare decrease define delay deliver demand deny depend describe deserve design destroy develop die disagree disappear discover discuss dislike divide doubt drag dress drop earn edit employ enable encourage end enjoy ensure enter escape establish estimate examine exist expand expect experience explain explore express extend face fail fill finish fit fix focus fold follow force form gain gather guess handle happen hate head heal help hire hope hug hunt hurry identify ignore imagine improve include increase indicate influence inform insist install intend introduce invent invest invite involve join judge jump kick kill kiss knock land laugh launch like limit link listen live look love manage mark marry match matter measure mention miss mix move name need note notice obtain occur offer open order owe own pack paint pass perform pick place plan plant play point pour practice practise prefer prepare present press pretend prevent print produce promise protect provide publish pull punish push qualify question raise reach realize realise receive recognize recognise recommend record reduce refer reflect refuse regard relate relax release rely remain remember remind remove rent repair repeat replace reply report represent request require rescue respect respond rest retire return reveal rush save scare search seem select serve settle share shop shout sign smile solve sort sound start stay step stop store study succeed suffer suggest supply support suppose surprise survive suspect switch talk taste tend test thank touch train travel treat trust try turn type use visit vote wait walk want warn wash waste watch wave wipe wish wonder work worry yell cancel lecture belong hook remind figure mess grab fetch text email post lift mind pray rain snow fear kick park wrap chop slice stir fry roast grill heat cool dry plant water lower flood print scroll tap click download upload reach cheat bet shrug nod frown stare glance shiver sigh scream whisper murmur rely borrow');
+  for (var _k in IRR_BASE) if (has(IRR_BASE, _k)) VERBS[_k] = 1;
+  var VERB_ONLY = set('be have do go come make take give get know think see say tell become bring begin keep let seem leave feel put mean find want believe remember forget understand happen appear allow decide explain include continue consider suggest develop create provide expect accept achieve agree arrive avoid choose describe destroy discover enjoy ensure improve inform involve prefer prepare prevent receive recognize reduce refuse remain remind remove require seek sell send speak spend teach tend throw wonder wear write eat drink drive forgive grow hear hide lose meet pay read rise sit sleep steal swim win belong sing lie lay hang');
+
+  var REPORT_V = set('think know say believe hope wonder tell see feel guess mean realize realise understand remember forget ask find notice suppose expect doubt agree decide explain show prove learn hear admit promise claim report suggest imagine worry discover');
+  var CAUSE_V = set('let make help see watch hear have');
+  var GERUND_V = set('enjoy finish mind avoid keep stop suggest consider practice practise miss imagine risk deny admit quit postpone delay');
+  var INF_V = set('want decide plan hope need agree refuse promise expect try learn manage offer seem appear afford choose fail tend wish ask');
+  var SURE_ADJ = set('sure glad afraid aware certain happy sorry surprised worried pleased disappointed proud confident');
+
+  /* phrasal verbs */
+  var PV = {
+    'ask out': '约某人出去', 'back up': '支持；备份；倒车', 'blow up': '爆炸；发脾气', 'break down': '出故障；崩溃', 'break in': '闯入', 'break up': '分手；解散', 'break out': '爆发', 'bring up': '提出（话题）；抚养', 'bring back': '带回；使回忆起', 'call back': '回电话', 'call off': '取消', 'calm down': '冷静下来', 'carry on': '继续', 'carry out': '执行；实施', 'catch up': '赶上', 'check in': '登记入住', 'check out': '结账离开；查看', 'cheer up': '振作起来', 'clean up': '打扫干净', 'come across': '偶然遇到', 'come back': '回来', 'come in': '进来', 'come on': '快点；加油', 'come out': '出来；发布', 'come up': '出现；被提及', 'come over': '过来（拜访）', 'count on': '依靠', 'cut down': '削减；砍倒', 'cut off': '切断', 'deal with': '处理', 'drop by': '顺便拜访', 'drop off': '放下（人/物）', 'drop out': '退出；辍学', 'end up': '最终（成为/处于）', 'fall apart': '崩溃；散架', 'fall down': '摔倒', 'figure out': '想出；弄明白', 'fill in': '填写', 'fill out': '填写（表格）', 'find out': '查明；发现', 'get along': '相处融洽', 'get away': '逃脱', 'get back': '回来；取回', 'get by': '勉强应付', 'get in': '进入；上车', 'get off': '下车', 'get on': '上车；进展', 'get out': '出去；离开', 'get over': '克服；从…中恢复', 'get up': '起床', 'give away': '赠送；泄露', 'give back': '归还', 'give in': '屈服', 'give up': '放弃', 'go ahead': '开始吧；继续', 'go away': '走开', 'go back': '回去', 'go on': '继续；发生', 'go out': '出去；熄灭', 'go over': '复习；仔细检查', 'go through': '经历；仔细查看', 'grow up': '长大', 'hand in': '上交', 'hang on': '稍等；抓紧', 'hang out': '闲逛；一起玩', 'hang up': '挂断电话', 'hold on': '稍等；坚持住', 'hold up': '耽搁；举起', 'keep on': '继续', 'keep up': '跟上；保持', 'kick off': '开始', 'knock out': '击倒', 'lay off': '解雇', 'leave out': '遗漏；省略', 'let down': '使失望', 'let in': '让…进来', 'log in': '登录', 'look after': '照顾', 'look around': '四处看看', 'look at': '看', 'look for': '寻找', 'look into': '调查', 'look out': '小心', 'look over': '检查', 'look up': '查（资料）；抬头看', 'make up': '编造；和好；化妆；弥补', 'mess up': '搞砸', 'move on': '继续前进；放下过去', 'move out': '搬出去', 'pass away': '去世', 'pass out': '昏倒', 'pay back': '偿还', 'pay off': '还清；有回报', 'pick up': '捡起；接（人）；学会', 'point out': '指出', 'pull over': '靠边停车', 'put away': '收起来', 'put back': '放回原处', 'put down': '放下', 'put off': '推迟', 'put on': '穿上；上演', 'put out': '扑灭', 'put up': '搭建；张贴；安装', 'run away': '逃跑', 'run into': '偶遇；撞上', 'run out': '用完', 'set off': '出发；引发', 'set up': '建立；安排', 'settle down': '安定下来', 'show off': '炫耀', 'show up': '出现；露面', 'shut down': '关闭', 'shut up': '闭嘴', 'sign up': '报名；注册', 'sit down': '坐下', 'slow down': '放慢', 'sort out': '解决；整理', 'speak up': '大声说；直言', 'stand out': '突出；显眼', 'stand up': '站起来', 'stay up': '熬夜', 'take after': '长得像（长辈）', 'take off': '起飞；脱下', 'take on': '承担；雇用', 'take over': '接管', 'take up': '开始从事；占据', 'talk over': '商量', 'tear down': '拆除', 'think over': '仔细考虑', 'throw away': '扔掉', 'throw up': '呕吐', 'try on': '试穿', 'try out': '试用', 'turn around': '转身；好转', 'turn down': '拒绝；调低', 'turn off': '关掉', 'turn on': '打开', 'turn out': '结果是；证明是', 'turn up': '出现；调大', 'wake up': '醒来', 'warm up': '热身；加热', 'watch out': '小心', 'wipe out': '消灭；擦掉', 'work out': '锻炼；解决；算出', 'write down': '写下', 'depend on': '依赖；取决于', 'rely on': '依赖', 'belong to': '属于', 'listen to': '听', 'wait for': '等待', 'care about': '在乎', 'care for': '照顾；喜欢', 'think about': '考虑', 'talk about': '谈论', 'worry about': '担心', 'agree with': '同意（某人）', 'apply for': '申请', 'believe in': '信任；相信…存在', 'consist of': '由…组成', 'focus on': '专注于', 'insist on': '坚持', 'lead to': '导致', 'result in': '导致', 'suffer from': '遭受', 'account for': '解释；占（比例）', 'come from': '来自', 'hear from': '收到…的消息', 'look like': '看起来像',
+    'look forward to': '期待', 'get along with': '与…相处', 'come up with': '想出（主意）', 'put up with': '忍受', 'run out of': '用完', 'catch up with': '赶上', 'keep up with': '跟上', 'look up to': '尊敬', 'look down on': '看不起', 'get rid of': '摆脱', 'make up for': '弥补', 'cut down on': '减少', 'get away with': '逃脱惩罚', 'go along with': '赞同；配合', 'break up with': '和…分手', 'come down with': '患上（小病）', 'get back to': '回复；重新回到', 'look out for': '留意', 'stand up for': '支持；维护'
+  };
+  var PREP_PART = set('after with for into of at to from like');
+
+  /* fixed expressions */
+  var FIXED = {
+    'in order to': '为了（表目的）', 'so that': '以便；为了', 'as well as': '以及；和', 'because of': '因为（后接名词）', 'instead of': '代替；而不是', 'according to': '根据', 'as soon as': '一…就…', 'even though': '尽管', 'even if': '即使', 'rather than': '而不是', 'a lot of': '许多', 'lots of': '许多', 'in spite of': '尽管', 'as long as': '只要', 'no longer': '不再', 'at least': '至少', 'at last': '终于', 'at first': '起初', 'used to': '过去常常', 'had better': '最好（建议）', 'would rather': '宁愿', 'in front of': '在…前面', 'next to': '紧挨着', 'as if': '好像', 'as though': '好像', 'each other': '互相', 'one another': '互相', 'so far': '到目前为止', 'in fact': '事实上', 'of course': '当然', 'at all': '（否定）根本', 'all the time': '一直', 'the whole time': '一直；整个过程中', 'for example': '例如', 'such as': '例如', 'due to': '由于', 'thanks to': '多亏；由于', 'in addition': '此外', 'on the other hand': '另一方面', 'as a result': '结果', 'in the end': '最后', 'by the way': '顺便说一下', 'not only': '不仅', 'but also': '而且', 'more and more': '越来越多', 'kind of': '有点；某种', 'sort of': '有点', 'up to': '多达；取决于', 'be able to': '能够', 'be about to': '即将', 'be supposed to': '应该；被期望', 'have to': '不得不', 'has to': '不得不', 'had to': '（过去）不得不', 'need to': '需要', 'ought to': '应该', 'for months': '好几个月', 'for years': '好几年', 'last week': '上周', 'right now': '现在；马上', 'at the same time': '同时', 'no matter': '无论', 'in terms of': '就…而言', 'as a matter of fact': '事实上', 'take care of': '照顾', 'take part in': '参加', 'make sure': '确保', 'pay attention to': '注意', 'be used to': '习惯于'
+  };
+  var FIXED_KEYS = (function () { var a = [], k; for (k in FIXED) if (has(FIXED, k)) a.push(k.split(' ')); a.sort(function (x, y) { return y.length - x.length; }); return a; })();
+
+  /* common-word list for rarity scoring */
+  var COMMON = set('time year people way day man woman child children world life hand part place case week company system program question government number night point home water room mother father area money story fact month lot right study book eye job word business issue side kind head house service friend power hour game line end member law car city community name president team minute idea kid body information back parent face others level office door health person art war history party result change morning reason research girl boy guy moment air teacher force education food country school family student group problem thing things state days news phone table kitchen keys key jacket hook week weekend street town road tree trees heat summer winter spring fall weather rain sun sky light music movie film picture photo computer internet website email letter paper page class lesson test exam answer example word words language english chinese meeting plan work worker workers market price cost value data report stories future past present bed dinner lunch breakfast coffee tea bus train plane trip travel hotel shop store baby dog cat animal animals bird fish horse garden park beach sea river lake mountain island village hospital doctor police church hair heart blood skin foot feet leg arm finger mouth voice sound noise color colour size shape form type group team club sport sports ball player players boss staff manager customer customers client service services product products cities city center centre neighborhood neighbourhood temperature degrees percent study studies scientist scientists expert experts shade surface roof roofs building buildings streets residents neighbors neighbours energy cost costs benefit benefits project projects program programs budget more most less least event events restaurant topic clinic metal medal cent percent accident president element apartment assistant tenant giant elephant planet capital festival signal animal animals hospital student parent moment music traffic cable table tables vegetable vegetables magazine machine engine island');
+  var LEX_SETS = [MODALS, SUBJ, OBJP, POSSDET, PRON, DET, DEMO, PREP, CONJ, SCONJ, WH, ADV, INTJ, NUMW, ADJ, VERBS];
+
+  /* ---------------- morphology ---------------- */
+  function undouble(s) { var n = s.length; return (n > 2 && s.charAt(n - 1) === s.charAt(n - 2) && !/[aeiousl]/.test(s.charAt(n - 1))) ? s.slice(0, -1) : null; }
+  function isVerbBase(w) { return has(VERBS, w); }
+  function verbInfo(w) {
+    // returns {lemma, form} or null. form: VB VBZ VBDN VBD VBN VBG
+    var r = null, stem, c, i;
+    if (has(IRR_PAST, w) || has(IRR_PP, w)) {
+      var lp = IRR_PAST[w], ln = IRR_PP[w];
+      if (has(IRR_BASE, w) && (lp === w || ln === w)) return { lemma: w, form: lp === w && ln === w ? 'VB' : 'VB' }; // cut, put, read, come, run
+      if (lp && ln) return { lemma: lp, form: 'VBDN' };
+      if (lp) return { lemma: lp, form: 'VBD' };
+      return { lemma: ln, form: 'VBN' };
+    }
+    if (has(VERBS, w)) return { lemma: w, form: 'VB' };
+    if (/ing$/.test(w) && w.length > 4) {
+      stem = w.slice(0, -3);
+      c = [stem, stem + 'e', undouble(stem), /y$/.test(stem) && stem.length > 1 ? stem.slice(0, -1) + 'ie' : null];
+      for (i = 0; i < c.length; i++) if (c[i] && has(VERBS, c[i])) return { lemma: c[i], form: 'VBG' };
+      return { lemma: undouble(stem) || stem, form: 'VBG', guess: true };
+    }
+    if (/ed$/.test(w) && w.length > 3) {
+      stem = w.slice(0, -2);
+      c = [/ied$/.test(w) ? w.slice(0, -3) + 'y' : null, stem, w.slice(0, -1), undouble(stem)];
+      for (i = 0; i < c.length; i++) if (c[i] && has(VERBS, c[i])) return { lemma: c[i], form: 'VBDN' };
+      return { lemma: undouble(stem) || stem, form: 'VBDN', guess: true };
+    }
+    if (/s$/.test(w) && w.length > 2) {
+      c = [/ies$/.test(w) ? w.slice(0, -3) + 'y' : null, /(ses|xes|ches|shes|oes|zes)$/.test(w) ? w.slice(0, -2) : null, w.slice(0, -1)];
+      for (i = 0; i < c.length; i++) if (c[i] && has(VERBS, c[i])) return { lemma: c[i], form: 'VBZ' };
+      if (w === 'does') return { lemma: 'do', form: 'VBZ' };
+      if (w === 'goes') return { lemma: 'go', form: 'VBZ' };
+      if (w === 'has') return { lemma: 'have', form: 'VBZ' };
+    }
+    return r;
+  }
+  function nounLemma(w) {
+    if (/ies$/.test(w) && w.length > 4) return w.slice(0, -3) + 'y';
+    if (/(ses|xes|ches|shes)$/.test(w)) return w.slice(0, -2);
+    if (/[^s]s$/.test(w) && w.length > 3) return w.slice(0, -1);
+    return w;
+  }
+  function adjInfo(w) {
+    if (has(ADJ, w)) return { lemma: w, deg: '' };
+    var m, b, c, i;
+    if ((m = /^(.+)(er|est)$/.exec(w))) {
+      b = m[1];
+      c = [b, b + 'e', undouble(b), /i$/.test(b) ? b.slice(0, -1) + 'y' : null];
+      for (i = 0; i < c.length; i++) if (c[i] && has(ADJ, c[i]) && c[i].length > 2) return { lemma: c[i], deg: m[2] === 'er' ? 'cmp' : 'sup' };
+    }
+    if (w === 'better') return { lemma: 'good', deg: 'cmp' };
+    if (w === 'best') return { lemma: 'good', deg: 'sup' };
+    if (w === 'worse') return { lemma: 'bad', deg: 'cmp' };
+    if (w === 'worst') return { lemma: 'bad', deg: 'sup' };
+    return null;
+  }
+  function suffixGuess(w) {
+    if (/ly$/.test(w) && w.length > 4 && !/(ply|ally|only|family|supply|reply|early|holy|belly|jelly|rely|fly|july|italy)$/.test(w)) return 'ADV';
+    if (/(tion|sion|ment|ness|ity|ance|ence|ship|hood|ism|ist|dom|ure|ency|ancy|logy|graphy|ics)s?$/.test(w)) return 'N';
+    if (/(ous|ful|less|ive|able|ible|ical|ic|ish|ary|ent|ant|al)$/.test(w) && w.length > 4) return 'ADJ';
+    if (/(ize|ise|ify)$/.test(w)) return 'V';
+    return 'N';
+  }
+
+  /* ---------------- tokenizer ---------------- */
+  var TOK_RE = /[A-Za-zÀ-ɏ]+(?:'[A-Za-z]+)*(?:-[A-Za-zÀ-ɏ]+)*|\d+(?:[.,:]\d+)*(?:st|nd|rd|th|s|%)?|\S/g;
+  function isCJK(ch) { return /[　-鿿＀-￯]/.test(ch); }
+  function tokenize(text) {
+    var norm = text.replace(/[‘’ʼ`´]/g, "'");
+    var out = [], m, s, w, lw, idx, suf, base;
+    TOK_RE.lastIndex = 0;
+    while ((m = TOK_RE.exec(norm))) {
+      s = m.index; w = m[0]; lw = w.toLowerCase();
+      if (/^[a-z]/i.test(w) && w.indexOf("'") > 0) {
+        if (/n't$/.test(lw) && lw.length > 3) {
+          base = lw.slice(0, -3);
+          out.push(mk(text, s, s + w.length - 3, base));
+          out.push(mk(text, s + w.length - 3, s + w.length, "n't"));
+          continue;
+        }
+        idx = lw.lastIndexOf("'"); suf = lw.slice(idx);
+        if (/^'(s|re|ve|ll|d|m)$/.test(suf)) {
+          out.push(mk(text, s, s + idx, lw.slice(0, idx)));
+          out.push(mk(text, s + idx, s + w.length, suf));
+          continue;
+        }
+      }
+      out.push(mk(text, s, s + w.length, lw));
+    }
+    return out;
+  }
+  function mk(text, s, e, lw) { return { text: text.slice(s, e), s: s, e: e, lw: lw, tag: '', form: '', lemma: lw }; }
+
+  /* ---------------- tagging ---------------- */
+  function isPunct(t) { return !/[a-z0-9À-ɏ]/i.test(t.lw) && t.lw !== "n't"; }
+  function lexTag(t, i, toks, start) {
+    var w = t.lw, vi, ai, cap = /^[A-Z]/.test(t.text);
+    t.cand = {};
+    if (isPunct(t)) { t.tag = isCJK(t.text) ? 'X' : 'PUNCT'; return; }
+    if (/^\d/.test(w)) { t.tag = 'NUM'; return; }
+    if (w === "n't" || w === 'not') { t.tag = 'PART'; t.lemma = 'not'; t.neg = 1; return; }
+    if (w === "'ll") { t.tag = 'MD'; t.lemma = 'will'; return; }
+    if (w === "'m" || w === "'re") { t.tag = 'AUXC'; t.lemma = 'be'; t.bf = 'PRES'; return; }
+    if (w === "'ve") { t.tag = 'AUXC'; t.lemma = 'have'; t.bf = 'PRES'; return; }
+    if (w === "'s" || w === "'d") { t.tag = 'CLITIC'; return; }
+    if (w === 'ca' && toks[i + 1] && toks[i + 1].lw === "n't") { t.tag = 'MD'; t.lemma = 'can'; return; }
+    if (w === 'wo' && toks[i + 1] && toks[i + 1].lw === "n't") { t.tag = 'MD'; t.lemma = 'will'; return; }
+    if (w === 'sha' && toks[i + 1] && toks[i + 1].lw === "n't") { t.tag = 'MD'; t.lemma = 'shall'; return; }
+    if (has(MODALS, w)) { t.tag = 'MD'; return; }
+    if (has(BE, w)) { t.tag = 'AUXC'; t.lemma = 'be'; t.bf = BE[w]; return; }
+    if (has(HAVE, w)) { t.tag = 'AUXC'; t.lemma = 'have'; t.bf = HAVE[w]; return; }
+    if (has(DO, w)) { t.tag = 'AUXC'; t.lemma = 'do'; t.bf = DO[w]; return; }
+    if (w === 'i') { t.tag = 'PRON'; return; }
+    if (cap && i > start && !has(SUBJ, w)) {
+      var pv = toks[i - 1];
+      if (!(pv && (pv.lw === '"' || pv.lw === '“' || pv.lw === ':' ))) { t.tag = 'PROPN'; return; }
+    }
+    if (w === 'that' || w === 'this' || w === 'these' || w === 'those') { t.tag = 'DEMO'; return; }
+    if (w === 'her') { t.tag = 'HER'; return; }
+    if (has(POSSDET, w)) { t.tag = 'PRON'; t.sub = 'poss'; return; }
+    if (has(WH, w)) { t.tag = 'WH'; return; }
+    if (has(SUBJ, w) || has(PRON, w) || has(OBJP, w)) { t.tag = 'PRON'; return; }
+    if (w === 'to') { t.tag = 'TO'; return; }
+    if (w === 'there') { t.tag = 'THERE'; return; }
+    if (has(INTJ, w) && (toks[i + 1] && /^[,!.?]$/.test(toks[i + 1].lw) || i === start && !/^(no|well|please)$/.test(w))) { t.tag = 'INTJ'; return; }
+    if (has(DET, w)) { t.tag = 'DET'; return; }
+    if (has(CONJ, w)) { t.tag = 'CONJ'; return; }
+    if (has(SCONJ, w)) { t.tag = 'SCONJ'; return; }
+    if (w === 'like') { t.tag = 'LIKE'; return; }
+    if (w === 'so') { t.tag = 'SO'; return; }
+    if (w === 'as') { t.tag = 'AS'; return; }
+    if (w === 'more' || w === 'most' || w === 'less' || w === 'least') { t.tag = 'ADV'; t.sub = w === 'more' || w === 'less' ? 'cmp' : 'sup'; return; }
+    if (has(PREP, w)) { t.tag = 'PREP'; return; }
+    if (has(INTJ, w) && (i === start || isPunct(toks[i + 1] || { lw: '.' }))) { t.tag = 'INTJ'; return; }
+    if (has(ADV, w)) { t.tag = 'ADV'; return; }
+    if (has(NUMW, w) || w === 'one') { t.tag = w === 'one' ? 'ONE' : 'NUM'; return; }
+    if (has(ADJ_PART, w)) { t.tag = 'ADJ'; t.part = verbInfo(w); return; }
+    ai = adjInfo(w);
+    if (ai && ai.lemma.length > 1 && !has(VERBS, w)) { t.tag = 'ADJ'; t.lemma = ai.lemma; t.deg = ai.deg; return; }
+    vi = verbInfo(w);
+    if (vi && (!vi.guess || /ing$|ed$/.test(w))) {
+      t.lemma = vi.lemma; t.vf = vi.form;
+      if (vi.form === 'VBG') { t.tag = 'VG'; return; }
+      if (vi.form === 'VBDN' || vi.form === 'VBD' || vi.form === 'VBN') {
+        if (vi.guess && has(ADJ, w)) { t.tag = 'ADJ'; return; }
+        t.tag = 'VD'; return;
+      }
+      t.tag = has(VERB_ONLY, vi.lemma) ? 'VV' : 'VN'; // VV verb-only candidate, VN noun/verb
+      return;
+    }
+    if (ai) { t.tag = 'ADJ'; t.lemma = ai.lemma; t.deg = ai.deg; return; }
+    if (has(COMMON, w) || has(COMMON, nounLemma(w))) { t.tag = 'N'; t.lemma = nounLemma(w); return; }
+    var g = suffixGuess(w);
+    if (g === 'V') { t.tag = 'VN'; t.vf = /s$/.test(w) ? 'VBZ' : 'VB'; t.lemma = w.replace(/s$/, ''); return; }
+    t.tag = g;
+    if (g === 'N') t.lemma = nounLemma(w);
+  }
+
+  var NPTAGS = set('PRON DET ADJ N PROPN NUM VN DEMO HER ONE');
+  function nounish(t) { return t && (t.tag === 'N' || t.tag === 'PROPN' || t.tag === 'VN' || t.tag === 'ADJ' || t.tag === 'NUM' || t.tag === 'ONE' || (t.tag === 'VG')); }
+  function verbCapableBase(t) { return t && ((t.tag === 'VN' || t.tag === 'VV') && t.vf === 'VB' || (t.tag === 'AUXC' && (t.lw === 'be' || t.lw === 'have' || t.lw === 'do'))); }
+  function isFiniteTok(t) { return t && ((t.tag === 'V' && /^(VBD|VBZ|VBP)$/.test(t.form)) || t.tag === 'MD' || (t.tag === 'AUX' && /^(PRES|PAST)$/.test(t.bf)) ); }
+  function isSubjectTok(t) { return t && ((t.tag === 'PRON' && (has(SUBJ, t.lw) || t.lw === 'you' || /one$|body$|thing$/.test(t.lw) || t.lw === 'who' || t.sub === 'rel' || t.sub === 'demo')) || t.tag === 'N' || t.tag === 'PROPN' || (t.tag === 'THERE')); }
+  function isClauseBreak(t) { return !t || t.tag === 'PUNCT' && /[,;:.!?\-—–"“”()]/.test(t.lw) || t.tag === 'CONJ' || t.tag === 'SCONJ' || (t.tag === 'PRON' && t.sub === 'rel'); }
+
+  function prevSig(toks, i, start) {
+    for (var j = i - 1; j >= start; j--) {
+      var t = toks[j];
+      if (t.tag === 'ADV' || t.tag === 'PART' && t.neg) continue;
+      return j;
+    }
+    return -1;
+  }
+
+  function nextVerbal(toks, i, end, allowNP) {
+    var j = i + 1, npSkipped = 0;
+    for (; j < end; j++) {
+      var t = toks[j];
+      if (t.tag === 'ADV' || (t.tag === 'PART' && t.neg)) continue;
+      if (allowNP && npSkipped < 4 && (t.tag === 'PRON' || t.tag === 'DET' || t.tag === 'ADJ' || t.tag === 'N' || t.tag === 'PROPN' || t.tag === 'DEMO' || t.tag === 'HER' || t.tag === 'NUM' || (t.tag === 'VN' && npSkipped > 0) || (t.tag === 'THERE'))) { npSkipped++; continue; }
+      return j;
+    }
+    return -1;
+  }
+
+  function finiteForm(t) {
+    // decide VBZ/VBP/VBD for a verb-candidate following a subject
+    if (t.vf === 'VBZ') return 'VBZ';
+    if (t.vf === 'VBDN' || t.vf === 'VBD') return 'VBD';
+    if (t.vf === 'VBN') return 'VBN';
+    return 'VBP';
+  }
+  function setV(t, form) { t.tag = 'V'; t.form = form; }
+
+  function resolve(toks, start, end, isQ) {
+    var i, t, p, pi, n, nj, finiteInClause = false, clauseStart = start, relState = 0; // relState: 1 = inside rel clause, 2 = rel clause got its verb
+    for (i = start; i < end; i++) {
+      t = toks[i];
+      if (isClauseBreak(toks[i - 1]) && i > start) { finiteInClause = false; clauseStart = i; }
+      if (toks[i - 1] && toks[i - 1].tag === 'PRON' && toks[i - 1].sub === 'rel' && i > start) relState = 1;
+      if (relState === 1 && finiteInClause && i > start && (toks[i - 1].tag === 'V' || toks[i - 1].tag === 'AUX' || toks[i - 1].tag === 'MD')) relState = 2;
+      pi = prevSig(toks, i, start); p = pi >= 0 ? toks[pi] : null;
+      n = toks[i + 1] && i + 1 < end ? toks[i + 1] : null;
+      switch (t.tag) {
+        case 'CLITIC':
+          var base = toks[i - 1];
+          if (t.lw === "'d") {
+            nj = nextVerbal(toks, i, end, false); var nv = nj >= 0 ? toks[nj] : null;
+            if (nv && (nv.lw === 'better' || nv.tag === 'VD' || nv.lw === 'been')) { t.tag = 'AUXC'; t.lemma = 'have'; t.bf = 'PAST'; }
+            else { t.tag = 'MD'; t.lemma = 'would'; }
+          } else { // 's
+            if (base && base.lw === 'let') { t.tag = 'PRON'; t.lemma = 'us'; break; }
+            var pronBase = base && (base.tag === 'PRON' || base.tag === 'DEMO' || base.tag === 'WH' || base.tag === 'THERE' || /^(here|now)$/.test(base.lw));
+            nj = nextVerbal(toks, i, end, false); var nv2 = nj >= 0 ? toks[nj] : null;
+            if (!pronBase) {
+              if (n && (n.tag === 'ADJ' && !(toks[i + 2] && isPunct(toks[i + 2])) || n.tag === 'N' || n.tag === 'VN' || n.tag === 'PROPN' || n.tag === 'NUM' || n.tag === 'VG' && toks[i + 2] && nounish(toks[i + 2]))) { t.tag = 'POS'; t.lemma = "'s"; base.possd = 1; break; }
+            }
+            if (nv2 && nv2.lw === 'been') { t.tag = 'AUXC'; t.lemma = 'have'; t.bf = 'PRES'; }
+            else if (nv2 && (nv2.tag === 'VD') && nv2.vf !== 'VBD') {
+              var after = toks[nj + 1];
+              if (after && (after.tag === 'DET' || after.tag === 'PRON' || after.tag === 'HER' || after.tag === 'N' || (after.tag === 'PRON' && after.sub === 'poss'))) { t.tag = 'AUXC'; t.lemma = 'have'; t.bf = 'PRES'; }
+              else { t.tag = 'AUXC'; t.lemma = 'be'; t.bf = 'PRES'; }
+            } else if (nv2 && nv2.lw === 'got' ) { t.tag = 'AUXC'; t.lemma = 'have'; t.bf = 'PRES'; }
+            else { t.tag = 'AUXC'; t.lemma = 'be'; t.bf = 'PRES'; }
+          }
+          i--; continue; // reprocess as AUXC/MD
+        case 'AUXC':
+          var allowNP = (i === start || (p && (p.tag === 'WH' || p.sub === 'wh' || p.tag === 'CONJ' || p.tag === 'PUNCT' || p.tag === 'INTJ'))) && isQ;
+          if (t.lemma === 'be' && t.bf === 'VBN' || t.lemma === 'be' && t.bf === 'VBG') { t.tag = 'AUX'; t.form = t.bf; break; }
+          nj = nextVerbal(toks, i, end, allowNP);
+          var v = nj >= 0 ? toks[nj] : null, aux = false;
+          if (v) {
+            if (t.lemma === 'be') aux = ((v.tag === 'VV' || v.tag === 'VN') && IRR_PP[v.lw] && v.lw !== 'be' && v.lw !== 'come' && v.lw !== 'run') || v.tag === 'VG' || (v.tag === 'VD' && v.vf !== 'VBD') || (v.tag === 'VD' && v.vf === 'VBD' && false) || v.lw === 'being' || v.lw === 'been' || (v.tag === 'VG');
+            else if (t.lemma === 'have') aux = (v.tag === 'VD' && v.vf !== 'VBD') || v.lw === 'been' || (v.tag === 'AUXC' && v.lw === 'been') || v.lw === 'got' || v.lw === 'had' && toks[nj - 1] === t && false || (v.tag === 'VV' && IRR_PP[v.lw]) || (v.tag === 'VN' && IRR_PP[v.lw]) || (v.lw === 'done');
+            else if (t.lemma === 'do') aux = v.tag === 'VN' || v.tag === 'VV' || (v.tag === 'AUXC' && /^(be|have|do)$/.test(v.lw)) || v.tag === 'LIKE';
+            if (t.lemma === 'be' && v.tag === 'VG' && v.lw === 'going' && toks[nj + 1] && toks[nj + 1].lw === 'to') aux = true;
+          }
+          if (t.lemma === 'have' && t.lw !== "'ve" && n && n.tag === 'TO') aux = false;
+          t.tag = aux ? 'AUX' : 'V';
+          t.form = t.bf === 'PRES' ? (t.lw === 'is' || t.lw === 'has' || t.lw === 'does' || t.lw === "'s" ? 'VBZ' : (t.lw === 'be' || t.lw === 'have' || t.lw === 'do') && p && (p.tag === 'MD' || p.tag === 'TO' || p.tag === 'PART' && p.lw === 'to' || (p.tag === 'AUX' && p.lemma === 'do')) ? 'VB' : 'VBP') : (t.bf === 'PAST' ? 'VBD' : t.bf);
+          if ((t.lw === 'be' || t.lw === 'have' || t.lw === 'do') && (!p || p.tag === 'PUNCT') && !isQ) t.form = 'VB';
+          if ((t.lw === 'had' || t.lw === "'d") && n && n.lw === 'better') { t.tag = 'AUX'; t.form = 'VBD'; n.tag = 'ADV'; n.sub = 'hb'; }
+          if (/^(VBZ|VBP|VBD)$/.test(t.form)) finiteInClause = true;
+          if (t.lemma === 'be' && t.tag === 'V') t.sub = 'copula';
+          break;
+        case 'MD':
+          finiteInClause = true; break;
+        case 'DEMO':
+          if (t.lw === 'that') {
+            nj = i + 1;
+            if (p && (p.lw === 'so' || p.lw === 'such' || p.lw === 'now')) { t.tag = 'SCONJ'; break; }
+            if (p && (p.tag === 'N' || p.tag === 'PROPN' || (p.tag === 'PRON' && /one$|body$|thing$/.test(p.lw)) || p.tag === 'VN' && p.tag !== 'V') && n && (n.tag === 'MD' || n.tag === 'AUXC' || n.tag === 'VN' || n.tag === 'VV' || n.tag === 'VD' || n.tag === 'ADV' || n.tag === 'CLITIC')) { t.tag = 'PRON'; t.sub = 'rel'; break; }
+            if (p && ((p.tag === 'V' && has(REPORT_V, p.lemma)) || (p.tag === 'ADJ' && has(SURE_ADJ, p.lw)) || (p.tag === 'N' && /^(fact|idea|news|hope|belief|feeling|sign|chance|possibility|reason)s?$/.test(p.lw)))) { t.tag = 'SCONJ'; t.sub = 'that'; break; }
+            if (p && (p.tag === 'N' || p.tag === 'PROPN') && n && (n.tag === 'PRON' && has(SUBJ, n.lw) || n.tag === 'DET')) { t.tag = 'PRON'; t.sub = 'rel'; break; }
+            if (p && p.tag === 'V' && n && (n.tag === 'PRON' && has(SUBJ, n.lw) || n.tag === 'DET' || n.tag === 'THERE')) { t.tag = 'SCONJ'; t.sub = 'that'; break; }
+          }
+          if (n && (n.tag === 'N' || n.tag === 'VN' || n.tag === 'ADJ' || n.tag === 'NUM' || n.tag === 'ONE' || n.tag === 'VG' && toks[i + 2] && nounish(toks[i + 2]))) { t.tag = 'DET'; break; }
+          t.tag = 'PRON'; t.sub = 'demo'; break;
+        case 'HER':
+          t.tag = 'PRON';
+          if (n && (n.tag === 'N' || n.tag === 'VN' || n.tag === 'ADJ' || n.tag === 'PROPN' || n.tag === 'VG' && toks[i + 2] && nounish(toks[i + 2]))) t.sub = 'poss';
+          break;
+        case 'ONE':
+          if (n && (n.tag === 'N' || n.tag === 'VN' || n.tag === 'ADJ')) t.tag = 'NUM'; else t.tag = 'PRON';
+          break;
+        case 'THERE':
+          nj = nextVerbal(toks, i, end, false);
+          if (nj >= 0 && (toks[nj].lemma === 'be' || toks[nj].tag === 'MD' || toks[nj].lw === "'s") && nj === i + 1) { t.tag = 'PRON'; t.sub = 'exist'; }
+          else if (p && p.tag === 'AUXC' || (p && p.lemma === 'be' && isQ && i - 1 === start)) { t.tag = 'PRON'; t.sub = 'exist'; }
+          else t.tag = 'ADV';
+          break;
+        case 'TO':
+          if (n && (n.tag === 'VN' || n.tag === 'VV' || (n.tag === 'AUXC' && /^(be|have|do)$/.test(n.lw)) || n.tag === 'ADV' && toks[i + 2] && (toks[i + 2].tag === 'VN' || toks[i + 2].tag === 'VV')) && !(p && p.tag === 'V' && /^(look|get|come|go|belong|listen|lead|talk|reply|refer|return|travel|walk|drive)$/.test(p.lemma) && n.tag === 'VN')) { t.tag = 'PART'; t.sub = 'inf'; }
+          else if (n && n.tag === 'VN' && p && (p.tag === 'ADJ' || p.tag === 'N' || p.lw === 'going' || p.lw === 'used' || p.lw === 'have' || p.lw === 'has' || p.lw === 'had' || p.tag === 'V' && has(INF_V, p.lemma))) { t.tag = 'PART'; t.sub = 'inf'; }
+          else t.tag = 'PREP';
+          if (n && n.tag === 'VN' && p && (p.lw === 'going' || p.lw === 'used' || p.lw === 'able' || p.lw === 'want' || p.lemma === 'want' || p.lemma === 'need' || p.lemma === 'try' || p.lemma === 'have')) { t.tag = 'PART'; t.sub = 'inf'; }
+          break;
+        case 'LIKE':
+          if (p && (p.tag === 'MD' || (p.tag === 'AUX' && p.lemma === 'do') || (p.tag === 'PART' && p.sub === 'inf') || (p.tag === 'PRON' && has(SUBJ, p.lw) && !(toks[pi - 1] && toks[pi - 1].tag === 'V')) || p.tag === 'PROPN' && pi === start)) { setV(t, p.tag === 'MD' || p.tag === 'AUX' || p.tag === 'PART' ? 'VB' : 'VBP'); t.lemma = 'like'; finiteInClause = t.form !== 'VB' || finiteInClause; }
+          else if (t.lw === 'likes' || t.lw === 'liked') { setV(t, t.lw === 'likes' ? 'VBZ' : 'VBD'); t.lemma = 'like'; }
+          else t.tag = 'PREP';
+          break;
+        case 'SO':
+          if (n && (n.tag === 'ADJ' || n.tag === 'ADV' || n.lw === 'much' || n.lw === 'many')) t.tag = 'ADV';
+          else if (n && n.tag === 'DEMO' && n.lw === 'that') t.tag = 'SCONJ';
+          else if (i === start || (p && p.tag === 'PUNCT')) t.tag = 'CONJ';
+          else t.tag = 'ADV';
+          break;
+        case 'AS':
+          if (n && (n.tag === 'ADJ' || n.tag === 'ADV' || n.lw === 'much' || n.lw === 'many')) { t.tag = 'ADV'; t.sub = 'asas'; }
+          else if (n && (n.tag === 'PRON' && has(SUBJ, n.lw) || n.tag === 'THERE')) t.tag = 'SCONJ';
+          else if (n && (n.tag === 'N' || n.tag === 'DET' || n.tag === 'PROPN') && hasFiniteAhead(toks, i + 1, Math.min(end, i + 6))) t.tag = 'SCONJ';
+          else t.tag = 'PREP';
+          break;
+        case 'PREP':
+          if (/^(before|after|since|until|till|once)$/.test(t.lw) && n && (n.tag === 'PRON' && has(SUBJ, n.lw) || n.tag === 'THERE' || (n.tag === 'DET' || n.tag === 'PROPN') && hasFiniteAhead(toks, i + 1, Math.min(end, i + 6)))) t.tag = 'SCONJ';
+          if (t.lw === 'than' && n && n.tag === 'PRON' && has(SUBJ, n.lw)) t.sub = 'than';
+          break;
+        case 'WH':
+          if (p && (p.tag === 'N' || p.tag === 'PROPN' || p.tag === 'PRON' && /one$|body$|thing$/.test(p.lw)) && (/^(who|whom|whose|which)$/.test(t.lw) || t.lw === 'where' && /^(place|house|city|town|room|country|area|street|school|office|restaurant|hotel|village|spot|building|world|home)s?$/.test(p.lw) || t.lw === 'when' && /^(time|day|year|moment|week|month|night|morning|period|age|era|season)s?$/.test(p.lw)) && !(isQ && i === start)) { t.tag = 'PRON'; t.sub = 'rel'; t.relword = t.lw; }
+          else if (p && p.tag === 'PUNCT' && p.lw === ',' && toks[pi - 1] && (toks[pi - 1].tag === 'N' || toks[pi - 1].tag === 'PROPN') && /^(who|which|whose|where|when)$/.test(t.lw)) { t.tag = 'PRON'; t.sub = 'rel'; t.relword = t.lw; t.nonres = 1; }
+          else if (/^(when|where)$/.test(t.lw) && i !== start && !(p && p.tag === 'V' && (has(REPORT_V, p.lemma) || p.lemma === 'wonder')) && !(p && p.tag === 'PUNCT' && i - 1 === start)) { t.tag = 'SCONJ'; }
+          else { t.tag = /^(when|where|why|how)$/.test(t.lw) ? 'ADV' : 'PRON'; t.sub = 'wh'; }
+          break;
+        case 'VN': case 'VV':
+          if (relState === 2 && p && (p.tag === 'N' || p.tag === 'PROPN' || p.tag === 'ADV' || p.tag === 'PUNCT' && p.lw === ',') && (t.vf === 'VBZ' || t.vf === 'VBD' || t.vf === 'VBDN' || t.tag === 'VV')) { setV(t, finiteForm(t)); relState = 0; finiteInClause = true; break; }
+          resolveVN(toks, i, start, end, p, pi, n, isQ, finiteInClause);
+          if (t.tag === 'V' && /^(VBZ|VBP|VBD)$/.test(t.form)) finiteInClause = true;
+          break;
+        case 'VG':
+          if (p && p.tag === 'AUX' && p.lemma === 'be') setV(t, 'VBG');
+          else if (p && (p.tag === 'DET' || (p.tag === 'PRON' && p.sub === 'poss') || p.tag === 'POS' || p.tag === 'ADJ')) {
+            if (n && (n.tag === 'N' || n.tag === 'VN')) { t.tag = 'ADJ'; t.part = 1; } else { t.tag = 'N'; t.sub = 'gerund'; }
+          } else setV(t, 'VBG');
+          break;
+        case 'VD':
+          var pv3 = p;
+          if (relState === 2 && pv3 && (pv3.tag === 'N' || pv3.tag === 'PROPN' || pv3.tag === 'PUNCT' && pv3.lw === ',') && t.vf !== 'VBN') { setV(t, 'VBD'); relState = 0; finiteInClause = true; break; }
+          if (pv3 && pv3.tag === 'AUX' && pv3.lemma === 'have') setV(t, 'VBN');
+          else if (pv3 && ((pv3.tag === 'AUX' && pv3.lemma === 'be') || (pv3.tag === 'V' && pv3.lemma === 'be') || (pv3.lemma === 'get' && pv3.tag === 'V'))) { setV(t, 'VBN'); if (pv3.tag === 'V' && pv3.lemma === 'be') { pv3.tag = 'AUX'; pv3.sub = ''; } }
+          else if (pv3 && (pv3.tag === 'DET' || (pv3.tag === 'PRON' && pv3.sub === 'poss') || pv3.tag === 'ADJ' || pv3.tag === 'POS') && n && (n.tag === 'N' || n.tag === 'VN' || n.tag === 'PROPN')) { t.tag = 'ADJ'; t.part = 1; }
+          else if (pv3 && pv3.tag === 'PRON' && /^(i|he|she|we|they|who)$/.test(pv3.lw) && t.vf !== 'VBN') { setV(t, 'VBD'); finiteInClause = true; }
+          else if (pv3 && pv3.tag === 'PRON' && /^(you|it)$/.test(pv3.lw) && t.vf !== 'VBN' && (!finiteInClause || (toks[pi - 1] && toks[pi - 1].tag === 'V' && has(REPORT_V, toks[pi - 1].lemma)))) { setV(t, 'VBD'); finiteInClause = true; }
+          else if (pv3 && isSubjectTok(pv3) && !finiteInClause && t.vf !== 'VBN') { setV(t, 'VBD'); finiteInClause = true; }
+          else if (i === start || (pv3 && pv3.tag === 'PUNCT' && pv3.lw !== ',')) { if (t.vf !== 'VBN') { setV(t, 'VBD'); finiteInClause = true; } else setV(t, 'VBN'); }
+          else if (pv3 && pv3.tag === 'CONJ' && prevVerbForm(toks, pi, start) === 'VBD') { setV(t, 'VBD'); }
+          else if (t.vf === 'VBD') { setV(t, 'VBD'); finiteInClause = true; }
+          else if (!finiteInClause && pv3 && (pv3.tag === 'N' || pv3.tag === 'PROPN')) { setV(t, 'VBD'); finiteInClause = true; }
+          else setV(t, 'VBN');
+          break;
+        case 'PRON':
+          if (t.lw === 'who' || t.lw === 'which') { t.tag = 'PRON'; t.sub = 'wh'; }
+          break;
+      }
+    }
+    // finalize leftovers
+    for (i = start; i < end; i++) {
+      t = toks[i];
+      if (t.tag === 'AUXC') { t.tag = 'V'; t.form = t.bf === 'PAST' ? 'VBD' : 'VBP'; }
+      if (t.tag === 'CLITIC') { t.tag = 'AUX'; }
+      if (t.tag === 'VN' || t.tag === 'VV') { setV(t, t.vf === 'VBZ' ? 'VBZ' : 'VB'); }
+      if (t.tag === 'VG') setV(t, 'VBG');
+      if (t.tag === 'VD') setV(t, t.vf === 'VBN' ? 'VBN' : 'VBD');
+      if (t.tag === 'TO') t.tag = 'PREP';
+      if (t.tag === 'DEMO') t.tag = 'DET';
+      if (t.tag === 'LIKE') t.tag = 'PREP';
+      if (t.tag === 'SO' || t.tag === 'AS') t.tag = 'ADV';
+      if (t.tag === 'THERE') t.tag = 'ADV';
+      if (t.tag === 'WH') t.tag = 'PRON';
+      if (t.tag === 'HER') t.tag = 'PRON';
+      if (t.tag === 'ONE') t.tag = 'NUM';
+      if (t.tag === 'N' && t.lemma === t.lw) t.lemma = nounLemma(t.lw);
+    }
+  }
+  function prevVerbForm(toks, i, start) { for (var j = i - 1; j >= start; j--) { if (toks[j].tag === 'V') return toks[j].form; if (toks[j].tag === 'PUNCT' && toks[j].lw !== ',') break; } return ''; }
+  function hasFiniteAhead(toks, a, b) { for (var j = a; j < b; j++) { var t = toks[j]; if (t.tag === 'MD' || t.tag === 'AUXC' || t.tag === 'VD' || (t.tag === 'VN' || t.tag === 'VV') && j > a) return true; if (t.tag === 'PUNCT') return false; } return false; }
+
+  function resolveVN(toks, i, start, end, p, pi, n, isQ, finiteInClause) {
+    var t = toks[i], pp = pi > start ? toks[pi - 1] : null;
+    var ends_s = t.vf === 'VBZ';
+    if (!p || p.tag === 'PUNCT' && /[.!?"“:;]/.test(p.lw) || (p.tag === 'INTJ')) {
+      // clause/sentence start: imperative or noun subject
+      if (t.lw === 'let' && n && n.tag === 'CLITIC') { setV(t, 'VB'); t.imper = 1; return; }
+      if (n && (n.tag === 'AUXC' || n.tag === 'MD' || n.tag === 'CLITIC' || n.tag === 'VD' && n.vf === 'VBD' || (n.tag === 'VN' && n.vf === 'VBZ'))) { t.tag = 'N'; return; }
+      if (!ends_s) { setV(t, 'VB'); t.imper = 1; return; }
+      t.tag = 'N'; return;
+    }
+    if (p.tag === 'AUX' && (p.lemma === 'have' || p.lemma === 'be' && t.lw !== 'be') && IRR_PP[t.lw]) { setV(t, 'VBN'); return; }
+    if (p.tag === 'MD' || (p.tag === 'AUX' && p.lemma === 'do') || (p.tag === 'PART' && p.sub === 'inf') || (p.tag === 'V' && p.lemma === 'do' && !ends_s)) { setV(t, 'VB'); if (p.tag === 'V' && p.lemma === 'do') { p.tag = 'AUX'; } return; }
+    if (p.tag === 'PRON' && p.lw === 'us' && pp && pp.lw === 'let') { setV(t, 'VB'); return; }
+    if (p.tag === 'PRON' && p.sub === 'poss' || p.tag === 'DET' || p.tag === 'ADJ' || p.tag === 'NUM' || p.tag === 'POS' || (p.tag === 'PREP') || p.tag === 'DEMO') { t.tag = 'N'; return; }
+    if (p.tag === 'PRON' && (has(SUBJ, p.lw) || p.sub === 'rel' || p.sub === 'demo' || /one$|body$|thing$/.test(p.lw) || p.lw === 'who' || p.lw === 'that') && !(has(OBJP, p.lw) && !has(SUBJ, p.lw))) {
+      if (p.lw === 'you' || p.lw === 'it') {
+        // could be object: "I love you work"?  object when preceded by a verb
+        if (pp && pp.tag === 'V' && !(p.lw === 'you' && pp.lemma === 'do')) {
+          if (has(CAUSE_V, pp.lemma)) { setV(t, 'VB'); return; }
+          if (has(REPORT_V, pp.lemma)) { setV(t, finiteForm(t)); return; }
+          t.tag = 'N'; return;
+        }
+      }
+      if (ends_s && p.lw !== 'he' && p.lw !== 'she' && p.lw !== 'it' && p.sub !== 'rel' && p.sub !== 'demo' && !/one$|body$|thing$/.test(p.lw) && p.lw !== 'who' && p.lw !== 'that') { t.tag = 'N'; return; }
+      setV(t, finiteForm(t)); return;
+    }
+    if (p.tag === 'PRON' && has(OBJP, p.lw)) {
+      if (pp && pp.tag === 'V' && has(CAUSE_V, pp.lemma)) { setV(t, 'VB'); return; }
+      t.tag = 'N'; return;
+    }
+    if (p.tag === 'N' || p.tag === 'PROPN') {
+      if (finiteInClause) { t.tag = t.tag === 'VV' ? 'V' : 'N'; if (t.tag === 'V') t.form = 'VB'; return; }
+      var pPlural = /s$/.test(p.lw) && p.tag === 'N';
+      if (ends_s && !pPlural) { setV(t, 'VBZ'); return; }
+      if (!ends_s && pPlural) { setV(t, 'VBP'); return; }
+      if (t.tag === 'VV' || t.vf === 'VBD') { setV(t, finiteForm(t)); return; }
+      if (p.tag === 'PROPN') { setV(t, finiteForm(t)); return; }
+      t.tag = 'N'; return;
+    }
+    if (p.tag === 'CONJ') {
+      var before = pi > start ? toks[pi - 1] : null;
+      if (before && before.tag === 'V' && before.form !== 'VBN' && before.form !== 'VBG') { setV(t, before.form === 'VBD' ? 'VBD' : before.form); return; }
+      if (before && before.tag === 'N') { t.tag = 'N'; return; }
+      t.tag = t.tag === 'VV' ? 'V' : 'N'; if (t.tag === 'V') t.form = 'VB'; return;
+    }
+    if (p.tag === 'V' || p.tag === 'AUX') {
+      if (p.tag === 'V' && has(CAUSE_V, p.lemma) && t.tag === 'VV') { setV(t, 'VB'); return; }
+      if (p.lemma === 'help' || p.lemma === 'let' || p.lemma === 'make') { setV(t, 'VB'); return; }
+      if (t.tag === 'VV') { setV(t, 'VB'); return; }
+      t.tag = 'N'; return;
+    }
+    if (p.tag === 'SCONJ' || p.tag === 'WH' || (p.tag === 'PRON' && p.sub === 'wh')) { t.tag = t.tag === 'VV' ? 'V' : 'N'; if (t.tag === 'V') t.form = finiteForm(t); return; }
+    if (p.tag === 'ADV' || p.tag === 'THERE') { setV(t, finiteForm(t)); return; }
+    t.tag = t.tag === 'VV' ? 'V' : 'N';
+    if (t.tag === 'V') t.form = 'VB';
+  }
+
+  /* ---------------- sentence splitting ---------------- */
+  var ABBR = set('mr mrs ms dr prof sr jr st vs etc e.g i.e u.s u.k no inc ltd co jan feb mar apr jun jul aug sep sept oct nov dec a.m p.m');
+  function splitSentences(text) {
+    var out = [], re = /[^.!?。！？]+(?:[.!?。！？]+["'”’)\]]*|$)/g, m, buf = '';
+    while ((m = re.exec(text))) {
+      if (!m[0]) { re.lastIndex++; continue; }
+      buf += m[0];
+      var tail = /([A-Za-z.]+)\.\s*$/.exec(m[0]);
+      if (tail && (has(ABBR, tail[1].toLowerCase()) || /^[A-Z]$/.test(tail[1]))) continue;
+      if (/\.\s*$/.test(m[0]) && /\d\.$/.test(m[0].replace(/\s+$/, '')) && /^\d/.test(text.slice(re.lastIndex))) continue;
+      if (buf.replace(/\s/g, '')) out.push(buf.replace(/^\s+|\s+$/g, ''));
+      buf = '';
+    }
+    if (buf.replace(/\s/g, '')) out.push(buf.replace(/^\s+|\s+$/g, ''));
+    return out;
+  }
+
+  /* ---------------- verb chains (tense) ---------------- */
+  var ASPECT_NAME = { simple: '一般', prog: '进行', perf: '完成', perfprog: '完成进行' };
+  var TIME_NAME = { pres: '现在', past: '过去', fut: '将来', pastfut: '过去将来' };
+  var TENSE_DESC = {
+    'pres-simple': '表示经常性、习惯性的动作，现在的状态或客观事实。结构：动词原形；主语为第三人称单数时加 -s/-es。',
+    'past-simple': '表示过去某个时间发生的动作或存在的状态，与现在无关。结构：动词过去式。',
+    'fut-simple': '表示将来会发生的动作或临时决定。结构：will/shall + 动词原形。',
+    'pres-prog': '表示此刻或现阶段正在进行的动作；也可表示已经安排好的近期将来。结构：am/is/are + 现在分词。',
+    'past-prog': '表示过去某一时刻正在进行的动作，常用作故事背景。结构：was/were + 现在分词。',
+    'fut-prog': '表示将来某一时刻正在进行的动作。结构：will be + 现在分词。',
+    'pres-perf': '表示过去发生、对现在仍有影响的动作，或从过去持续到现在的状态。常与 already、yet、ever、since、for 连用。结构：have/has + 过去分词。',
+    'past-perf': '"过去的过去"：在过去某个时间或动作之前已经完成的动作。结构：had + 过去分词。',
+    'fut-perf': '表示到将来某时之前将会完成的动作。结构：will have + 过去分词。',
+    'pres-perfprog': '表示从过去开始一直持续到现在、可能还会继续的动作，强调"持续"。结构：have/has been + 现在分词。',
+    'past-perfprog': '表示在过去某时之前一直在持续的动作。结构：had been + 现在分词。',
+    'fut-perfprog': '表示持续到将来某时的动作。结构：will have been + 现在分词。',
+    'pastfut-simple': '站在过去看将来；也常用于虚拟语气或委婉表达。结构：would + 动词原形。',
+    'pastfut-perf': '虚拟语气：与过去事实相反的假设结果（"本来会…"）。结构：would have + 过去分词。',
+    'pastfut-prog': '站在过去看将来正在进行的动作，或虚拟语气。结构：would be + 现在分词。'
+  };
+  var MODAL_DESC = {
+    can: '表示能力、许可或可能性（能；可以）', could: 'can 的过去式；也表示委婉请求或较小的可能性', may: '表示许可或可能性（可以；也许）', might: '表示可能性较小的推测（可能）', must: '表示必须，或有把握的肯定推测（一定）', should: '表示建议、义务（应该）', shall: '用于第一人称表将来，或征求意见', ought: '表示应该（ought to）', would: '委婉语气、虚拟或过去的习惯', will: '将来或意愿'
+  };
+
+  function beKind(t) {
+    if (t.lemma !== 'be') return null;
+    if (t.lw === 'been') return 'BEEN'; if (t.lw === 'being') return 'BEING'; if (t.lw === 'be') return 'BE';
+    if (t.form === 'VBD' || t.bf === 'PAST') return 'BEPAST';
+    return 'BEPRES';
+  }
+
+  function buildChains(toks, start, end) {
+    var chains = [], used = {}, i, j, t, chain, isQ = false;
+    for (i = start; i < end; i++) {
+      t = toks[i];
+      if (used[i]) continue;
+      if (!(t.tag === 'MD' || t.tag === 'AUX' || (t.tag === 'V' && /^(VBD|VBZ|VBP)$/.test(t.form)) || (t.tag === 'V' && t.imper))) continue;
+      chain = [i]; used[i] = 1;
+      var last = t, skipNP = 0;
+      for (j = i + 1; j < end; j++) {
+        var u = toks[j];
+        if (u.tag === 'ADV' || (u.tag === 'PART' && u.neg)) continue;
+        if ((last.tag === 'AUX' || last.tag === 'MD') && chain.length === 1 && skipNP < 4 && (u.tag === 'PRON' && u.sub !== 'rel' || u.tag === 'DET' || u.tag === 'N' || u.tag === 'PROPN' || u.tag === 'ADJ' || u.tag === 'NUM') && (last.tag === 'MD' || last.tag === 'AUX')) { skipNP++; continue; }
+        if (last.tag === 'V') {
+          // semi-modals: going to / have to / used to + VB
+          if (u.tag === 'PART' && u.sub === 'inf' && toks[j + 1] && toks[j + 1].tag === 'V' && toks[j + 1].form === 'VB' && (last.lw === 'going' || last.lemma === 'have' || last.lw === 'used' || last.lw === 'got')) {
+            chain.push(j); used[j] = 1; chain.push(j + 1); used[j + 1] = 1; j++; last = toks[j];
+            // allow passive/perf after 'to be/have'
+            if (last.lemma === 'be' || last.lemma === 'have') { last.tag = 'AUX'; continue; }
+            break;
+          }
+          break;
+        }
+        if (u.tag === 'AUX' || u.tag === 'V' && /^(VB|VBN|VBG)$/.test(u.form) || (u.tag === 'V' && u.lemma === 'be') || (u.tag === 'V' && (last.tag === 'MD' || last.tag === 'AUX') && /^(VBP|VBD)$/.test(u.form))) {
+          if (u.tag === 'V' && /^(VBP|VBD)$/.test(u.form)) { u.form = last.lemma === 'have' || last.lemma === 'be' && u.form === 'VBD' ? 'VBN' : 'VB'; if (last.lemma === 'be' && u.form === 'VB') break; }
+          chain.push(j); used[j] = 1; last = u;
+          if (u.tag === 'V' && u.lemma !== 'be' && !(u.lw === 'going' || u.lemma === 'have' && u.tag === 'V' || u.lw === 'used')) break;
+          if (u.tag === 'V' && u.lemma === 'be' && !(toks[j + 1] && (toks[j + 1].tag === 'V' && /VBN|VBG/.test(toks[j + 1].form)))) break;
+          continue;
+        }
+        break;
+      }
+      // fix: chain of only a lone AUX (e.g. "Yes, I have.") → treat as main verb
+      chains.push(classifyChain(toks, chain));
+    }
+    return chains;
+  }
+
+  function classifyChain(toks, idx) {
+    var els = [], i, t, time = null, modal = null, perf = false, prog = false, passive = false, semi = '', doSupport = false, copula = false, neg = false, key, name;
+    for (i = 0; i < idx.length; i++) els.push(toks[idx[i]]);
+    var f = els[0], lastEl = els[els.length - 1];
+    // negation within span
+    for (i = idx[0]; i <= idx[idx.length - 1] + 0; i++) if (toks[i] && toks[i].neg) neg = true;
+    if (toks[idx[idx.length - 1] + 1] && toks[idx[idx.length - 1] + 1].neg && idx.length === 1) neg = true;
+    if (f.tag === 'MD') {
+      if (f.lemma === 'will' || f.lemma === 'shall' && els.length > 1) time = 'fut';
+      else if (f.lemma === 'would') time = 'pastfut';
+      else modal = f.lemma;
+    } else {
+      var fk = beKind(f);
+      if (f.lemma === 'have' && f.tag === 'AUX') time = (f.form === 'VBD' || f.bf === 'PAST') ? 'past' : 'pres';
+      else if (f.lemma === 'do' && f.tag === 'AUX') { time = f.bf === 'PAST' ? 'past' : 'pres'; doSupport = true; }
+      else if (fk) time = fk === 'BEPAST' ? 'past' : 'pres';
+      else time = f.form === 'VBD' ? 'past' : 'pres';
+    }
+    // scan pairs
+    for (i = 0; i < els.length; i++) {
+      t = els[i]; var nx = els[i + 1];
+      if (!nx) break;
+      if (t.lemma === 'have' && t.tag === 'AUX' && (nx.form === 'VBN' || nx.lw === 'been' || nx.lw === 'got')) perf = true;
+      if (t.lemma === 'be' && nx.tag === 'V' && nx.form === 'VBG' && nx.lw !== 'going') prog = true;
+      if (t.lemma === 'be' && nx.lw === 'being') prog = true;
+      if (t.lemma === 'be' && nx.tag === 'V' && nx.form === 'VBN') passive = true;
+      if (t.lemma === 'be' && nx.lw === 'going' && els[i + 2] && els[i + 2].sub === 'inf') semi = 'going';
+      if (t.lemma === 'have' && t.tag === 'V' && nx.sub === 'inf') semi = 'haveto';
+      if (t.lw === 'used' && nx.sub === 'inf') semi = 'used';
+    }
+    if (lastEl.lemma === 'get' && false) passive = true;
+    if (els.length === 1 && f.lemma === 'be') copula = true;
+    if (els.length === 1 && f.tag === 'AUX') { /* elliptical */ }
+    var aspect = perf && prog ? 'perfprog' : perf ? 'perf' : prog ? 'prog' : 'simple';
+    var formula = els.map(function (e) { return e.text; }).join(' ');
+    var words = [];
+    for (i = idx[0]; i <= idx[idx.length - 1]; i++) words.push(i);
+    var res = { idx: idx, span: words, formula: formula, neg: neg, passive: passive, main: lastEl };
+    if (f.lemma === 'have' && toks[idx[0] + 1] && toks[idx[0] + 1].sub === 'hb') { res.key = 'modal'; res.name = 'had better + 动词原形（最好…）'; res.desc = '表示建议或警告："最好做某事"，语气较强；否定形式 had better not do。口语常缩写为 \'d better。'; return res; }
+    if (f.lemma === 'would' && lastEl.lemma === 'like' && els.length === 2) { res.key = 'wouldlike'; res.name = 'would like（委婉地表示"想要"）'; res.desc = 'would like + 名词 / to do：比 want 更礼貌客气，口语常缩写为 \'d like。'; return res; }
+    if (f.lemma === 'do' && f.tag === 'AUX' && f.form === 'VB' && neg) { res.key = 'imper'; res.name = '否定祈使句（Don\'t + 动词原形）'; res.desc = 'Don\'t + 动词原形：表示禁止或劝阻"别…"。'; return res; }
+    if (f.imper) { res.name = '祈使句（动词原形开头）'; res.desc = '用动词原形开头，表示命令、请求或建议，主语 you 通常省略。'; res.key = 'imper'; return res; }
+    if (modal) {
+      res.key = 'modal';
+      name = '情态动词 ' + modal;
+      if (perf) { name += ' + have + 过去分词'; res.desc = '对过去情况的推测，或对过去没做/做了的事表示遗憾、责备（' + (MODAL_DESC[modal] || '') + '）。'; }
+      else if (prog) { name += ' + be + 现在分词'; res.desc = '推测此刻可能正在发生的事。' + (MODAL_DESC[modal] || ''); }
+      else { name += ' + 动词原形'; res.desc = MODAL_DESC[modal] || '情态动词后接动词原形。'; }
+      if (passive) { name += '（被动）'; res.desc += ' 被动：情态动词 + be + 过去分词，主语是动作的承受者。'; }
+      res.name = name; return res;
+    }
+    if (semi === 'going') {
+      res.key = 'going'; res.name = (time === 'past' ? '过去将来时' : '一般将来时') + '（be going to）';
+      res.desc = time === 'past' ? '站在过去看将来：was/were going to + 原形，常暗示"原本打算，但没实现"。' : 'be going to + 动词原形：表示计划、打算，或根据迹象判断即将发生。';
+      if (passive) res.name += '·被动';
+      return res;
+    }
+    if (semi === 'haveto') { res.key = 'haveto'; res.name = (time === 'past' ? '一般过去时' : '一般现在时') + '（have to 不得不）'; res.desc = 'have to + 动词原形：由客观情况决定"不得不"做，比 must 更强调外部要求。'; return res; }
+    if (semi === 'used') { res.key = 'used'; res.name = 'used to（过去常常）'; res.desc = 'used to + 动词原形：表示过去经常做、现在已经不做的事或状态。'; return res; }
+    key = time + '-' + aspect;
+    res.key = key;
+    if (time === 'pastfut') {
+      res.name = aspect === 'perf' ? '虚拟语气（would have + 过去分词）' : aspect === 'simple' ? '过去将来时 / 虚拟语气（would + 原形）' : '过去将来' + ASPECT_NAME[aspect] + '时';
+    } else res.name = aspect === 'simple' ? '一般' + TIME_NAME[time] + '时' : TIME_NAME[time] + ASPECT_NAME[aspect] + '时';
+    res.desc = TENSE_DESC[key] || '';
+    if (passive) { res.name += '·被动语态'; res.desc += ' 被动语态：be + 过去分词，主语是动作的承受者，常用 by 引出动作执行者。'; }
+    if (copula) { res.name += '（系动词 be）'; }
+    if (doSupport) res.desc += ' 这里用助动词 ' + f.text + ' 来构成' + (neg ? '否定' : '疑问/强调') + '，后面的实义动词用原形。';
+    return res;
+  }
+
+  /* ---------------- phrasal verbs & fixed expressions ---------------- */
+  function findPhrasals(toks, start, end) {
+    var out = [], i, j, t, u, k2, k3, gap;
+    for (i = start; i < end; i++) {
+      t = toks[i];
+      if (t.tag !== 'V' && !(t.tag === 'AUX' && t.lemma === 'get')) continue;
+      var L = t.lemma;
+      for (j = i + 1, gap = 0; j < end && j <= i + 4; j++) {
+        u = toks[j];
+        if (u.tag === 'PUNCT' || u.tag === 'V' || u.tag === 'AUX' || u.tag === 'MD' || u.tag === 'CONJ' || u.tag === 'SCONJ') break;
+        if (has(PARTICLES, u.lw)) {
+          var n2 = toks[j + 1];
+          if (gap === 0 && n2 && has(PARTICLES, n2.lw)) { k3 = L + ' ' + u.lw + ' ' + n2.lw; if (has(PV, k3)) { out.push({ idx: [i, j, j + 1], key: k3, zh: PV[k3], sep: false }); mark(toks, [j, j + 1]); break; } }
+          if (gap === 0 && n2 && n2.lw === 'rid' && toks[j + 2] && toks[j + 2].lw === 'of' && L === 'get') { out.push({ idx: [i, j + 1, j + 2], key: 'get rid of', zh: PV['get rid of'], sep: false }); break; }
+          k2 = L + ' ' + u.lw;
+          if (has(PV, k2) && (gap === 0 || !has(PREP_PART, u.lw))) { out.push({ idx: [i, j], key: k2, zh: PV[k2], sep: gap > 0 }); if (!has(PREP_PART, u.lw)) mark(toks, [j]); break; }
+          if (gap === 0) { /* particle not matched: keep searching only through object */ }
+          break;
+        }
+        if (u.lw === 'rid' && L === 'get' && toks[j + 1] && toks[j + 1].lw === 'of') { out.push({ idx: [i, j, j + 1], key: 'get rid of', zh: PV['get rid of'], sep: false }); u.tag = 'ADJ'; break; }
+        if (u.tag === 'PRON' || u.tag === 'DET' || u.tag === 'N' || u.tag === 'PROPN' || u.tag === 'NUM' || u.tag === 'ADJ') { gap++; continue; }
+        break;
+      }
+    }
+    return out;
+  }
+  function mark(toks, ids) { for (var i = 0; i < ids.length; i++) { toks[ids[i]].tag = 'PART'; toks[ids[i]].sub = 'pv'; } }
+
+  function findFixed(toks, start, end) {
+    var out = [], i, k, seq, ok, j, used = {};
+    for (i = start; i < end; i++) {
+      if (used[i]) continue;
+      for (k = 0; k < FIXED_KEYS.length; k++) {
+        seq = FIXED_KEYS[k]; ok = true;
+        if (i + seq.length > end) continue;
+        for (j = 0; j < seq.length; j++) {
+          var w = toks[i + j].lw;
+          if (seq[j] === 'be' && toks[i + j].lemma === 'be') continue;
+          if (w !== seq[j]) { ok = false; break; }
+        }
+        if (ok) {
+          var ids = []; for (j = 0; j < seq.length; j++) { ids.push(i + j); used[i + j] = 1; }
+          out.push({ idx: ids, key: seq.join(' '), zh: FIXED[seq.join(' ')] });
+          break;
+        }
+      }
+    }
+    return out;
+  }
+
+  /* ---------------- sentence structures ---------------- */
+  function structures(toks, start, end, chains) {
+    var out = [], i, t, p, n, seen = {};
+    function add(key, name, desc, ids) { if (seen[key]) return; seen[key] = 1; out.push({ name: name, desc: desc, idx: ids || [] }); }
+    var words = [], lastTok = null, firstTok = null;
+    for (i = start; i < end; i++) { if (toks[i].tag !== 'PUNCT') { words.push(i); if (!firstTok && toks[i].tag !== 'INTJ') firstTok = toks[i]; } }
+    for (i = end - 1; i >= start; i--) if (toks[i].tag === 'PUNCT' && /[?!.]/.test(toks[i].lw)) { lastTok = toks[i]; break; }
+    if (!firstTok) return out;
+    var fi = firstTok ? toks.indexOf(firstTok) : words[0];
+    var isQ = lastTok && lastTok.lw === '?';
+    // questions
+    if (isQ) {
+      var tagQ = false;
+      for (i = end - 2; i > start + 2; i--) {
+        if (toks[i].lw === ',' && toks[i + 1] && (toks[i + 1].tag === 'AUX' || toks[i + 1].tag === 'MD' || toks[i + 1].tag === 'V' && toks[i + 1].lemma === 'be' || toks[i + 1].tag === 'V' && toks[i + 1].lemma === 'do')) { tagQ = true; break; }
+        if (toks[i].lw === ',' && toks[i + 1] && /^(right|ok|okay|eh)$/.test(toks[i + 1].lw)) { tagQ = 'r'; break; }
+      }
+      if (tagQ) add('q', '反义疑问句', tagQ === 'r' ? '陈述句 + ", right?"，口语中用来确认对方是否同意。' : '陈述部分 + 简短疑问（助动词 + 代词），前肯后否、前否后肯，用来确认信息。');
+      else if (firstTok.sub === 'wh' || has(WH, firstTok.lw)) add('q', '特殊疑问句', '以疑问词 ' + firstTok.text + ' 开头，询问具体信息，其后通常是"助动词 + 主语 + 动词"的倒装语序。', [fi]);
+      else if (firstTok.tag === 'AUX' || firstTok.tag === 'MD' || firstTok.tag === 'V' && (firstTok.lemma === 'be' || firstTok.lemma === 'have' || firstTok.lemma === 'do')) add('q', '一般疑问句', '把助动词 / 情态动词 / be（' + firstTok.text + '）放到主语前面，用 yes / no 回答。', [fi]);
+      else add('q', '疑问句（陈述语序）', '口语中常用陈述句语序加升调表示疑问。');
+    }
+    // exclamation
+    if (lastTok && lastTok.lw === '!' && (firstTok.lw === 'what' || firstTok.lw === 'how')) add('excl', '感叹句', 'What + (a/an) + 形容词 + 名词！或 How + 形容词/副词！表示强烈感情。');
+    // imperative
+    for (i = 0; i < chains.length; i++) if (chains[i].key === 'imper') add('imper', '祈使句', '以动词原形开头，省略主语 you，表示命令、请求、建议或提醒。', chains[i].idx);
+    // negation
+    for (i = start; i < end; i++) if (toks[i].neg || toks[i].lw === 'never' || toks[i].lw === 'nobody' || toks[i].lw === 'nothing' || toks[i].lw === 'no' && toks[i].tag === 'DET') { add('neg', '否定句', '含否定词 ' + toks[i].text + '。' + (toks[i].neg ? '否定结构：助动词/情态动词/be + not。' : ''), [i]); break; }
+    // passive
+    for (i = 0; i < chains.length; i++) if (chains[i].passive) add('pass', '被动语态', '"' + chains[i].formula + '"：be + 过去分词，主语是动作的承受者。' + (hasWord(toks, start, end, 'by') ? '句中 by 引出动作执行者。' : '动作执行者未说明或不重要。'), chains[i].span);
+    // there be
+    for (i = start; i < end; i++) if (toks[i].sub === 'exist') { add('there', 'There be 句型', '表示"某处存在/有某物"。be 的单复数和后面的第一个名词保持一致。', [i, i + 1]); break; }
+    // it-structures
+    for (i = start; i < end - 3; i++) {
+      if (toks[i].lw === 'it' && toks[i + 1] && toks[i + 1].lemma === 'be') {
+        var a = toks[i + 2], j2;
+        if (a && a.tag === 'PART' && a.neg) a = toks[i + 3];
+        if (a && a.tag === 'ADJ') {
+          for (j2 = i + 3; j2 < Math.min(end, i + 7); j2++) if (toks[j2].sub === 'inf' || toks[j2].lw === 'that' || toks[j2].sub === 'that') { add('itform', '形式主语 it', 'It is + 形容词 + to do / that…：it 是形式主语，真正的主语是后面的不定式或从句。', [i]); break; }
+        } else if (a && (a.tag === 'PROPN' || a.tag === 'PRON' || a.tag === 'DET' || a.tag === 'N')) {
+          for (j2 = i + 3; j2 < Math.min(end, i + 8); j2++) if (toks[j2].lw === 'that' || toks[j2].lw === 'who') { if (toks[j2 + 1] && (toks[j2 + 1].tag === 'V' || toks[j2 + 1].tag === 'PRON' || toks[j2 + 1].tag === 'AUX' || toks[j2 + 1].tag === 'MD')) add('cleft', '强调句', 'It is/was + 被强调部分 + that/who + 其余部分：去掉 It is…that 后句子仍然完整。', [i, j2]); break; }
+        }
+      }
+    }
+    // clauses
+    var condIdx = -1;
+    for (i = start; i < end; i++) {
+      t = toks[i]; p = toks[i - 1]; n = toks[i + 1];
+      if (t.tag === 'SCONJ' || t.tag === 'PREP' && t.lw === 'since' && n && n.tag === 'PRON') {
+        var w = t.lw;
+        if (w === 'if' || w === 'unless') {
+          if (p && p.tag === 'V' && has(REPORT_V, p.lemma) || (p && p.lemma === 'know')) add('objif', '宾语从句（if/whether）', t.text + ' 引导宾语从句，意为"是否"。', [i]);
+          else { condIdx = i; add('cond', '条件状语从句', t.text + (w === 'if' ? '（如果）' : '（除非）') + '引导条件状语从句；主句用将来时，从句常用一般现在时表将来（"主将从现"）。', [i]); }
+        }
+        else if (w === 'whether') add('objif', '宾语从句（whether）', 'whether 引导宾语从句，意为"是否"。', [i]);
+        else if (w === 'because') add('cause', '原因状语从句', 'because 引导原因状语从句，回答 why。', [i]);
+        else if (w === 'although' || w === 'though' || w === 'whereas') add('conc', '让步状语从句', t.text + ' 引导让步状语从句（"虽然…"），注意英文中 although 不与 but 同时使用。', [i]);
+        else if (w === 'while' || w === 'whilst') add('time', '时间/对比状语从句', 'while 可表示"当…时"（常与进行时连用），也可表示对比"而…"。', [i]);
+        else if (w === 'when' || w === 'before' || w === 'after' || w === 'until' || w === 'till' || w === 'once') add('time', '时间状语从句', t.text + ' 引导时间状语从句；从句中用一般现在时表示将来。', [i]);
+        else if (w === 'since') add('since', 'since 从句', 'since 可表示"自从…"（主句多用现在完成时），也可表示"既然/因为"。', [i]);
+        else if (w === 'where') add('where', '地点状语从句', 'where 引导地点状语从句："在…的地方"。', [i]);
+        else if (w === 'as') add('as', 'as 引导的从句', 'as 可表示"当…时 / 因为 / 正如"，根据上下文判断。', [i]);
+        else if (w === 'that' && t.sub === 'that') add('objthat', '宾语从句（that）', p && p.tag === 'ADJ' ? '形容词（' + p.text + '）后接 that 从句，说明内容。' : 'that 引导宾语从句，放在 ' + (p ? p.text : '动词') + ' 后面，that 在口语中常省略。', [i]);
+        else if (w === 'so' || (w === 'that' && p && p.lw === 'so')) add('purp', '目的/结果状语从句', 'so that 表示"以便"（目的）；so + 形容词 + that 表示"如此…以至于"（结果）。', [i]);
+      }
+      if (t.lw === 'as' && t.sub === 'asas') { for (var j3 = i + 2; j3 < Math.min(end, i + 5); j3++) if (toks[j3].lw === 'as') { add('asas', '同级比较', 'as + 形容词/副词原级 + as：表示"和…一样"；否定 not as/so…as。', [i, j3]); break; } }
+      if (t.tag === 'N' && n && n.tag === 'PRON' && /^(i|he|she|we|they|you)$/.test(n.lw) && toks[i + 2] && (toks[i + 2].tag === 'AUX' || toks[i + 2].tag === 'MD' || toks[i + 2].tag === 'V' && /VBD|VBZ|VBP/.test(toks[i + 2].form)) && !(p && p.tag === 'V' && has(REPORT_V, p.lemma))) {
+        var prevV = false; for (var q = i - 1; q >= start; q--) { if (toks[q].tag === 'V' || toks[q].tag === 'AUX' || toks[q].tag === 'MD' || toks[q].tag === 'PREP') { prevV = true; break; } }
+        if (prevV) add('relzero' + i, '定语从句（省略关系词）', n.text + ' ' + toks[i + 2].text + '… 修饰前面的 "' + t.text + '"，省略了作宾语的关系词 that/which/who(m)。', [i + 1]);
+      }
+      if (t.tag === 'PRON' && t.sub === 'rel') {
+        var ant = findAntecedent(toks, i, start);
+        add('rel' + i, t.nonres ? '非限制性定语从句' : '定语从句', '关系词 ' + t.text + ' 引导定语从句，修饰前面的 ' + (ant ? '"' + ant.text + '"' : '名词') + (t.nonres ? '，逗号隔开，只做补充说明' : '') + '。' + (t.lw === 'that' ? ' that 可指人或物；作宾语时可省略。' : t.lw === 'where' ? ' where = 介词 + which，修饰地点。' : t.lw === 'when' ? ' when 修饰时间名词。' : t.lw === 'whose' ? ' whose 表示所属关系。' : ''), [i]);
+      }
+      if (t.tag === 'V' && has(REPORT_V, t.lemma) && n && (n.tag === 'PRON' && has(SUBJ, n.lw) || n.tag === 'PROPN') && toks[i + 2] && (toks[i + 2].tag === 'V' && /VBD|VBZ|VBP/.test(toks[i + 2].form) || toks[i + 2].tag === 'AUX' || toks[i + 2].tag === 'MD')) add('objzero', '宾语从句（省略 that）', t.text + ' 后面直接跟完整的句子（主语 + 谓语），省略了引导词 that。', [i]);
+      if (t.tag === 'V' && (has(REPORT_V, t.lemma) || t.lemma === 'wonder' || t.lemma === 'ask') && n && (n.sub === 'wh' || n.tag === 'ADV' && has(WH, n.lw)) && i !== start) add('objwh', '宾语从句（疑问词引导）', n.text + ' 引导宾语从句，从句要用陈述语序（主语在前、谓语在后）。', [i + 1]);
+      if (t.tag === 'ADJ' && t.deg === 'cmp' || t.lw === 'more' && n && (n.tag === 'ADJ' || n.tag === 'ADV')) { add('cmp', '比较级', (t.lw === 'more' ? 'more + 形容词/副词' : t.text) + ' 表示比较' + (hasWord(toks, i, end, 'than') ? '，than 引出比较对象。' : '。'), [i]); }
+      if ((t.tag === 'ADJ' && t.deg === 'sup') || (t.lw === 'most' && n && (n.tag === 'ADJ' || n.tag === 'ADV'))) add('sup', '最高级', (t.lw === 'most' ? 'the most + 形容词' : t.text) + ' 表示"最…"，通常前面加 the，后面可接 in/of 表示范围。', [i]);
+      if (t.tag === 'PART' && t.sub === 'inf') {
+        var role = '', pv = prevNonAdv(toks, i, start);
+        if (pv && pv.lw === 'order' && toks[i - 2] && toks[i - 2].lw === 'in') role = '表示目的（in order to）';
+        else if (pv && pv.tag === 'ADJ') role = '放在形容词 ' + pv.text + ' 后，说明原因或补充内容';
+        else if (pv && (pv.tag === 'N' || pv.tag === 'PRON' && /thing$|one$|body$/.test(pv.lw))) role = '放在名词 ' + pv.text + ' 后面作定语（"要做的…"）';
+        else if (pv && pv.tag === 'V' && (pv.lw === 'going' || pv.lw === 'used' || pv.lemma === 'have')) role = '';
+        else if (pv && pv.tag === 'V') role = '作动词 ' + pv.text + ' 的宾语';
+        else if (pv && (pv.tag === 'PRON' || pv.tag === 'N' || pv.tag === 'PROPN')) role = '作宾语补足语';
+        else role = '可表示目的："为了…"';
+        if (role) add('inf', '动词不定式 (to do)', 'to + 动词原形：' + role + '。', [i, i + 1]);
+      }
+      if (t.tag === 'V' && t.form === 'VBG' && !(p && (p.lemma === 'be' && (p.tag === 'AUX' || p.tag === 'V')))) {
+        var pv2 = prevNonAdv(toks, i, start);
+        if (pv2 && pv2.tag === 'PREP') add('ger', '动名词', '介词 ' + pv2.text + ' 后面接动词要用 -ing 形式（动名词）：' + t.text + '。', [i]);
+        else if (pv2 && (pv2.tag === 'V' && has(GERUND_V, pv2.lemma) || pv2.sub === 'pv')) add('ger', '动名词作宾语', pv2.text + ' 后面接动名词（-ing），不接不定式：' + t.text + '。', [i]);
+        else if (i === fi && hasComma(toks, i, end)) add('ptcl', '现在分词短语作状语', '句首的 ' + t.text + '… 是分词短语，逻辑主语就是主句的主语，表示时间、原因或伴随。', [i]);
+        else if (i === fi) add('ger', '动名词作主语', t.text + ' 在句首作主语，谓语动词用单数。', [i]);
+        else if (pv2 && (pv2.tag === 'N' || pv2.tag === 'PRON') && !isQ) add('ptatt', '现在分词作定语/补语', t.text + ' 修饰或补充说明前面的 ' + pv2.text + '（"正在…的"）。', [i]);
+      }
+      if (t.tag === 'V' && t.form === 'VBN' && i === fi && hasComma(toks, i, end)) add('ppcl', '过去分词短语作状语', '句首的 ' + t.text + '… 表示被动或完成，逻辑主语是主句的主语。', [i]);
+      if (t.tag === 'CONJ' && n && (n.tag === 'PRON' && has(SUBJ, n.lw) || n.tag === 'THERE' || n.tag === 'PROPN') && hasFiniteAheadR(toks, i + 2, Math.min(end, i + 5))) add('coord', '并列句', t.text + ' 连接两个完整的句子（各有主语和谓语）。', [i]);
+      if (t.lw === 'wish' && t.tag === 'V' && n && (n.tag === 'PRON' || n.tag === 'PROPN')) add('subj', '虚拟语气（wish）', 'wish 后的从句用虚拟语气：与现在相反用过去式（were），与过去相反用 had + 过去分词。', [i]);
+    }
+    // conditional type
+    if (condIdx >= 0) {
+      var hasWouldHave = false, hasWould = false, ifPastPerf = false, ifPast = false;
+      for (i = 0; i < chains.length; i++) {
+        var c = chains[i];
+        if (c.key === 'pastfut-perf') hasWouldHave = true;
+        if (c.key && c.key.indexOf('pastfut') === 0 || (c.key === 'modal' && /could|might/.test(c.formula))) hasWould = true;
+        if (c.idx[0] > condIdx && c.idx[0] < condIdx + 6) { if (c.key === 'past-perf') ifPastPerf = true; if (c.key && c.key.indexOf('past-') === 0) ifPast = true; }
+      }
+      if (hasWouldHave || ifPastPerf) add('subj2', '虚拟条件句（与过去事实相反）', 'If + had + 过去分词，主句 would/could/might + have + 过去分词：表示"当时如果…就会…"，实际上并没有发生。');
+      else if (hasWould && ifPast) add('subj1', '虚拟条件句（与现在事实相反）', 'If + 过去式（be 一律用 were），主句 would/could/might + 动词原形：表示与现在事实相反或不太可能的假设。');
+    }
+    return out;
+  }
+  function hasWord(toks, a, b, w) { for (var i = a; i < b; i++) if (toks[i].lw === w) return true; return false; }
+  function hasComma(toks, a, b) { for (var i = a; i < b; i++) if (toks[i].lw === ',') return true; return false; }
+  function hasFiniteAheadR(toks, a, b) { for (var j = a; j < b; j++) { var t = toks[j]; if (isFiniteTok(t)) return true; } return false; }
+  function prevNonAdv(toks, i, start) { for (var j = i - 1; j >= start; j--) if (toks[j].tag !== 'ADV') return toks[j]; return null; }
+  function findAntecedent(toks, i, start) { for (var j = i - 1; j >= start && j > i - 5; j--) if (toks[j].tag === 'N' || toks[j].tag === 'PROPN' || toks[j].tag === 'PRON' && toks[j].sub !== 'poss') return toks[j]; return null; }
+
+  /* ---------------- main analyze ---------------- */
+  function analyze(text) {
+    var toks = tokenize(text), sents = [], i, st = 0, sEnd;
+    // split by sentence-final punctuation within token stream
+    for (i = 0; i <= toks.length; i++) {
+      var t = toks[i];
+      var abbrStop = t && t.lw === '.' && toks[i - 1] && (has(ABBR, toks[i - 1].lw) || /^[a-z]$/.test(toks[i - 1].lw)) && toks[i + 1] && /^[a-z0-9]/.test(toks[i + 1].text);
+      var endHere = i === toks.length || !abbrStop && (t.tag !== 'x' && /^[.!?。！？]$/.test(t.lw) && !(toks[i + 1] && /^[.!?"”')\]]$/.test(toks[i + 1].lw)));
+      if (t && /^["”')\]]$/.test(t.lw) && toks[i - 1] && /^[.!?]$/.test(toks[i - 1].lw)) endHere = true;
+      if (endHere) {
+        sEnd = i === toks.length ? i : i + 1;
+        if (sEnd > st) sents.push({ from: st, to: sEnd });
+        st = sEnd;
+      }
+    }
+    for (i = 0; i < sents.length; i++) {
+      var s = sents[i], j, first = s.from, isQ = false;
+      for (j = s.to - 1; j >= s.from; j--) { if (/[?？]/.test(toks[j].lw)) { isQ = true; break; } if (/[a-z]/i.test(toks[j].lw)) break; }
+      while (first < s.to && isPunct(toks[first])) first++;
+      for (j = s.from; j < s.to; j++) lexTag(toks[j], j, toks, first);
+      resolve(toks, s.from, s.to, isQ);
+      s.chains = buildChains(toks, s.from, s.to);
+      s.phrasals = findPhrasals(toks, s.from, s.to);
+      s.fixed = findFixed(toks, s.from, s.to);
+      s.structs = structures(toks, s.from, s.to, s.chains);
+      s.isQ = isQ;
+      s.words = 0; for (j = s.from; j < s.to; j++) if (/[a-z]/i.test(toks[j].lw) && toks[j].lw.charAt(0) !== "'" && toks[j].lw !== "n't") s.words++;
+      var clauses = 0; for (j = 0; j < s.chains.length; j++) clauses++;
+      s.clauses = clauses;
+      s.hard = s.words >= 25 || (s.clauses >= 3 && s.words >= 14);
+    }
+    return { text: text, toks: toks, sents: sents };
+  }
+
+  /* ---------------- difficulty ---------------- */
+  function syllables(w) {
+    w = w.toLowerCase().replace(/[^a-z]/g, '');
+    if (w.length <= 3) return 1;
+    w = w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/, '');
+    var m = w.match(/[aeiouy]{1,2}/g);
+    return m ? m.length : 1;
+  }
+  function isCommon(w) {
+    if (w.length <= 3) return true;
+    if (has(COMMON, w)) return true;
+    for (var i = 0; i < LEX_SETS.length; i++) if (has(LEX_SETS[i], w)) return true;
+    var vi = verbInfo(w); if (vi && !vi.guess) return true;
+    var nl = nounLemma(w); if (has(COMMON, nl) || has(VERBS, nl) || has(ADJ, nl)) return true;
+    var ai = adjInfo(w); if (ai) return true;
+    if (/ly$/.test(w) && has(ADJ, w.slice(0, -2))) return true;
+    return false;
+  }
+  function difficulty(text) {
+    var sents = splitSentences(text), words = [], i, m, re = /[A-Za-z]+(?:'[A-Za-z]+)?/g, syl = 0, poly = 0, rare = {}, rareCount = 0, content = 0, caps = 0;
+    var hard = 0, longSent = 0;
+    for (i = 0; i < sents.length; i++) {
+      var s = sents[i], cnt = 0, first = true;
+      re.lastIndex = 0;
+      while ((m = re.exec(s))) {
+        var w = m[0], lw = w.toLowerCase().replace(/'.*$/, '');
+        words.push(lw); cnt++;
+        var sy = syllables(lw); syl += sy; if (sy >= 3) poly++;
+        if (/^[A-Z]/.test(w) && !first) { caps++; first = false; continue; }
+        first = false;
+        if (lw.length > 3) { content++; if (!isCommon(lw)) { rareCount++; rare[lw] = (rare[lw] || 0) + 1; } }
+      }
+      if (cnt >= 25) longSent++;
+    }
+    var W = words.length || 1, S = sents.length || 1;
+    var asl = W / S, asw = syl / W;
+    var fre = 206.835 - 1.015 * asl - 84.6 * asw;
+    var fk = 0.39 * asl + 11.8 * asw - 15.59;
+    var rareRatio = content ? rareCount / content : 0;
+    var adj = fk + rareRatio * 12;
+    var level, zh;
+    if (adj < 4) { level = 'A2'; zh = '入门'; } else if (adj < 6.5) { level = 'B1'; zh = '初中级'; } else if (adj < 9.5) { level = 'B2'; zh = '中级'; } else if (adj < 13) { level = 'C1'; zh = '中高级'; } else { level = 'C2'; zh = '高级'; }
+    var score = Math.max(0, Math.min(100, Math.round(adj * 6.5)));
+    var rareList = []; for (var k in rare) if (has(rare, k)) rareList.push([k, rare[k]]);
+    rareList.sort(function (a, b) { return b[1] - a[1] || b[0].length - a[0].length; });
+    return { words: words.length, sentences: sents.length, asl: asl, fk: fk, fre: fre, rareRatio: rareRatio, level: level, levelZh: zh, score: score, longSent: longSent, rare: rareList.slice(0, 30).map(function (x) { return x[0]; }), minutes: Math.max(1, Math.round(words.length / 130)) };
+  }
+
+  var TAG_ZH = { N: '名词', PROPN: '专有名词', PRON: '代词', V: '动词', AUX: '助动词', MD: '情态动词', ADJ: '形容词', ADV: '副词', PREP: '介词', CONJ: '并列连词', SCONJ: '从属连词', DET: '限定词', NUM: '数词', PART: '小品词', INTJ: '感叹词', POS: '所有格', PUNCT: '标点', X: '' };
+  var FORM_ZH = { VB: '原形', VBP: '一般现在时', VBZ: '第三人称单数', VBD: '过去式', VBN: '过去分词', VBG: '现在分词 / 动名词' };
+  function describeTok(t) {
+    var s = TAG_ZH[t.tag] || t.tag, extra = [];
+    if ((t.tag === 'V' || t.tag === 'AUX') && FORM_ZH[t.form]) extra.push(FORM_ZH[t.form]);
+    if (t.tag === 'V' && t.sub === 'copula') extra.push('系动词');
+    if (t.tag === 'V' && t.imper) extra.push('祈使');
+    if (t.tag === 'PRON') { if (t.sub === 'poss') extra.push('物主代词'); else if (t.sub === 'rel') extra.push('关系词'); else if (t.sub === 'exist') extra.push('there be 结构'); else if (t.sub === 'wh') extra.push('疑问词'); else if (t.sub === 'demo') extra.push('指示代词'); else if (has(OBJP, t.lw) && !has(SUBJ, t.lw)) extra.push('宾格'); else if (has(SUBJ, t.lw)) extra.push('主格'); }
+    if (t.tag === 'PART') { if (t.neg) extra.push('否定'); else if (t.sub === 'inf') extra.push('不定式符号 to'); else if (t.sub === 'pv') extra.push('短语动词的副词小品词'); }
+    if (t.tag === 'ADJ') { if (t.deg === 'cmp') extra.push('比较级'); if (t.deg === 'sup') extra.push('最高级'); if (t.part) extra.push('分词形容词'); }
+    if (t.tag === 'N' && t.sub === 'gerund') extra.push('动名词');
+    if (t.tag === 'ADV' && t.sub === 'cmp') extra.push('比较级');
+    if (t.tag === 'ADV' && t.sub === 'sup') extra.push('最高级');
+    return s + (extra.length ? ' · ' + extra.join(' · ') : '');
+  }
+  function lemmaOf(t) {
+    if (t.lw === "n't") return 'not';
+    if (t.tag === 'V' || t.tag === 'AUX') return t.lemma;
+    if (t.tag === 'N') return nounLemma(t.lw);
+    return t.lemma || t.lw;
+  }
+
+  return { analyze: analyze, tokenize: tokenize, splitSentences: splitSentences, difficulty: difficulty, describeTok: describeTok, lemmaOf: lemmaOf, TAG_ZH: TAG_ZH, isCJK: isCJK };
+})();
+
+</script>
+<script>
+/* SubLingo UI — ES5 only */
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function closest(el, sel) { while (el && el.nodeType === 1) { if (matches(el, sel)) return el; el = el.parentNode; } return null; }
+  function matches(el, sel) { var f = el.matches || el.webkitMatchesSelector || el.msMatchesSelector; return f ? f.call(el, sel) : false; }
+  function each(list, fn) { for (var i = 0; i < list.length; i++) fn(list[i], i); }
+  var store = {
+    get: function (k, d) { try { var v = window.localStorage.getItem('sublingo:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set: function (k, v) { try { window.localStorage.setItem('sublingo:' + k, JSON.stringify(v)); } catch (e) { } }
+  };
+
+  /* ---------- settings ---------- */
+  var S = { color: store.get('color', true), fs: store.get('fs', 18), theme: store.get('theme', '') };
+  function applySettings() {
+    document.documentElement.style.setProperty('--fs', S.fs + 'px');
+    $('fsVal').textContent = S.fs;
+    $('optColor').checked = !!S.color;
+    each(document.querySelectorAll('.cues,.art'), function (el) { el.classList[S.color ? 'add' : 'remove']('color'); });
+    if (S.theme) document.documentElement.setAttribute('data-theme', S.theme); else document.documentElement.removeAttribute('data-theme');
+    $('optTheme').value = S.theme;
+  }
+  $('setBtn').onclick = function () { $('settings').classList.toggle('open'); };
+  $('optColor').onchange = function () { S.color = this.checked; store.set('color', S.color); applySettings(); };
+  $('fsDown').onclick = function () { S.fs = Math.max(14, S.fs - 1); store.set('fs', S.fs); applySettings(); };
+  $('fsUp').onclick = function () { S.fs = Math.min(28, S.fs + 1); store.set('fs', S.fs); applySettings(); };
+  $('optTheme').onchange = function () { S.theme = this.value; store.set('theme', S.theme); applySettings(); };
+
+  /* ---------- tabs ---------- */
+  var tab = store.get('tab', 'sub');
+  function setTab(t) {
+    tab = t; store.set('tab', t);
+    each(document.querySelectorAll('#tabs button'), function (b) { b.classList[b.getAttribute('data-tab') === t ? 'add' : 'remove']('on'); });
+    $('view-sub').classList[t === 'sub' ? 'add' : 'remove']('on');
+    $('view-art').classList[t === 'art' ? 'add' : 'remove']('on');
+    hideSheet();
+  }
+  $('tabs').onclick = function (e) { var b = closest(e.target, 'button'); if (b) setTab(b.getAttribute('data-tab')); };
+
+  /* ---------- analysis registry & rendering ---------- */
+  var REG = {}, CACHE = {};
+  function analyzeText(text) { if (!CACHE[text]) CACHE[text] = NLP.analyze(text); return CACHE[text]; }
+  var PCLS = { N: 'n', PROPN: 'n', PRON: 'pr', V: 'v', AUX: 'aux', MD: 'aux', ADJ: 'adj', ADV: 'adv', PREP: 'prep', CONJ: 'cj', SCONJ: 'cj', DET: 'det', NUM: 'num', PART: 'part', INTJ: 'adv', POS: 'det' };
+  function tokensHTML(a) {
+    var html = '', pos = 0, i, t, pvIdx = {};
+    each(a.sents, function (s) { each(s.phrasals, function (p) { each(p.idx, function (k) { pvIdx[k] = 1; }); }); });
+    for (i = 0; i < a.toks.length; i++) {
+      t = a.toks[i];
+      if (t.s > pos) html += esc(a.text.slice(pos, t.s));
+      if (t.tag === 'PUNCT' || t.tag === 'X') html += esc(t.text);
+      else html += '<span class="w p-' + (PCLS[t.tag] || 'x') + (pvIdx[i] ? ' pv' : '') + '" data-i="' + i + '">' + esc(t.text) + '</span>';
+      pos = t.e;
+    }
+    if (pos < a.text.length) html += esc(a.text.slice(pos));
+    return html;
+  }
+  function register(key, text) { var a = analyzeText(text); REG[key] = a; return a; }
+
+  function itemHTML(name, code, desc, ids, zh) {
+    return '<div class="it" data-hl="' + (ids || []).join(',') + '"><span class="nm">' + esc(name) + '</span>' + (code ? '<code>' + esc(code) + '</code>' : '') + (zh ? '<span class="zhm">' + esc(zh) + '</span>' : '') + (desc ? '<div class="ds">' + esc(desc) + '</div>' : '') + '</div>';
+  }
+  function panelHTML(key) {
+    var a = REG[key], html = '<div class="panel" data-for="' + key + '"><div class="ph"><b>语法解析</b><span><button class="btn sm ghost" data-act="speak">🔊 朗读</button><button class="btn sm ghost" data-act="close">收起</button></span></div>';
+    var multi = a.sents.length > 1, any = false;
+    each(a.sents, function (s, si) {
+      if (!/[a-z]/i.test(a.text.slice(a.toks[s.from] ? a.toks[s.from].s : 0, a.toks[s.to - 1] ? a.toks[s.to - 1].e : 0))) return;
+      if (multi) html += '<div class="subsent">第 ' + (si + 1) + ' 句：' + esc(a.text.slice(a.toks[s.from].s, a.toks[s.to - 1].e)) + '</div>';
+      var chains = s.chains.filter(function (c) { return c.name; });
+      if (chains.length) {
+        html += '<h4>时态 · 语态</h4>';
+        each(chains, function (c) { html += itemHTML(c.name, c.formula, c.desc, c.span); });
+        any = true;
+      }
+      if (s.structs.length) {
+        html += '<h4>句子结构</h4>';
+        each(s.structs, function (x) { html += itemHTML(x.name, '', x.desc, x.idx); });
+        any = true;
+      }
+      if (s.phrasals.length || s.fixed.length) {
+        html += '<h4>短语动词 · 固定搭配</h4>';
+        each(s.phrasals, function (p) { html += itemHTML(p.key, '', p.sep ? '可分短语动词：宾语放在动词和小品词中间（代词宾语必须放中间）。' : '', p.idx, p.zh); });
+        each(s.fixed, function (p) { html += itemHTML(p.key, '', '', p.idx, p.zh); });
+        any = true;
+      }
+      html += '<div class="hint" style="margin-top:6px">' + s.words + ' 词' + (s.hard ? ' · <span style="color:var(--hard)">长难句</span>' : '') + '</div>';
+    });
+    if (!any) html += '<div class="empty">这是一个简短的句子或短语，没有识别到特别的语法结构。点单词可以查看词性。</div>';
+    return html + '</div>';
+  }
+  function highlight(root, ids, on) {
+    each(root.querySelectorAll('.w.hl'), function (w) { w.classList.remove('hl'); });
+    if (!on || !ids) return;
+    each(ids.split(','), function (i) { if (i === '') return; var w = root.querySelector('.w[data-i="' + i + '"]'); if (w) w.classList.add('hl'); });
+  }
+  function bindPanel(panel, textEl) {
+    panel.onmouseover = function (e) { var it = closest(e.target, '.it'); if (it) highlight(textEl, it.getAttribute('data-hl'), true); };
+    panel.onmouseout = function (e) { var it = closest(e.target, '.it'); if (it && !closest(e.relatedTarget, '.it')) highlight(textEl, '', false); };
+    panel.addEventListener('click', function (e) {
+      var it = closest(e.target, '.it');
+      if (it) {
+        var act = it.classList.contains('act');
+        each(panel.querySelectorAll('.it.act'), function (x) { x.classList.remove('act'); });
+        if (!act) { it.classList.add('act'); highlight(textEl, it.getAttribute('data-hl'), true); } else highlight(textEl, '', false);
+      }
+    });
+  }
+
+  /* ---------- speech ---------- */
+  var voice = null;
+  function pickVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices(), i;
+    for (i = 0; i < vs.length; i++) if (/^en[-_]US/i.test(vs[i].lang)) { voice = vs[i]; if (/natural|google|samantha|aria|jenny/i.test(vs[i].name)) break; }
+    if (!voice) for (i = 0; i < vs.length; i++) if (/^en/i.test(vs[i].lang)) { voice = vs[i]; break; }
+  }
+  if (window.speechSynthesis) { pickVoice(); window.speechSynthesis.onvoiceschanged = pickVoice; }
+  function speak(text, rate) {
+    if (!window.speechSynthesis) { toast('当前浏览器不支持朗读'); return; }
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text); u.lang = 'en-US'; u.rate = rate || 0.92; if (voice) u.voice = voice;
+    window.speechSynthesis.speak(u);
+  }
+  function toast(msg) { var st = $('status'); if (tab === 'art' && st) { st.className = 'status'; st.textContent = msg; } }
+
+  /* ---------- word sheet ---------- */
+  var sheetOpen = false;
+  function showWord(key, i, el) {
+    var a = REG[key], t = a.toks[i], sent = null;
+    each(a.sents, function (s) { if (i >= s.from && i < s.to) sent = s; });
+    var word = t.text, lemma = NLP.lemmaOf(t), notes = [];
+    if (t.lw === "n't") word = "n't";
+    if (sent) {
+      each(sent.chains, function (c) { if (c.span.indexOf(i) >= 0 && c.idx.indexOf(i) >= 0) notes.push('属于 <b>' + esc(c.name) + '</b>：' + esc(c.formula)); });
+      each(sent.phrasals, function (p) { if (p.idx.indexOf(i) >= 0) notes.push('短语动词 <b>' + esc(p.key) + '</b>：' + esc(p.zh)); });
+      each(sent.fixed, function (p) { if (p.idx.indexOf(i) >= 0) notes.push('固定搭配 <b>' + esc(p.key) + '</b>：' + esc(p.zh)); });
+    }
+    var dictWord = /^'/.test(t.lw) || t.lw === "n't" ? lemma : (lemma && lemma !== t.lw && (t.tag === 'V' || t.tag === 'AUX' || t.tag === 'N') ? lemma : t.lw);
+    var html = '<button class="x" data-act="x" aria-label="关闭">✕</button>' +
+      '<div><span class="wd">' + esc(word) + '</span>' + (lemma && lemma !== t.lw ? '<span class="lm">原形 ' + esc(lemma) + '</span>' : '') + '</div>' +
+      '<div class="pos" style="color:var(--c-' + (PCLS[t.tag] === 'part' ? 'v' : (PCLS[t.tag] || 'det')) + ')">' + esc(NLP.describeTok(t)) + '</div>';
+    each(notes, function (n) { html += '<div class="note">' + n + '</div>'; });
+    html += '<div class="acts"><button class="btn sm" data-act="say" data-w="' + esc(dictWord) + '">🔊 发音</button>' +
+      '<a class="btn sm" target="_blank" rel="noopener" href="https://dict.youdao.com/result?word=' + encodeURIComponent(dictWord) + '&lang=en">有道词典</a>' +
+      '<a class="btn sm" target="_blank" rel="noopener" href="https://dictionary.cambridge.org/dictionary/english-chinese-simplified/' + encodeURIComponent(dictWord) + '">剑桥词典</a></div>';
+    openSheet(html);
+    each(document.querySelectorAll('.w.sel'), function (w) { w.classList.remove('sel'); });
+    if (el) el.classList.add('sel');
+  }
+  function showPlainWord(w) {
+    var html = '<button class="x" data-act="x" aria-label="关闭">✕</button><div><span class="wd">' + esc(w) + '</span></div><div class="note">文中的较难词汇（不在常用词表中）</div>' +
+      '<div class="acts"><button class="btn sm" data-act="say" data-w="' + esc(w) + '">🔊 发音</button><a class="btn sm" target="_blank" rel="noopener" href="https://dict.youdao.com/result?word=' + encodeURIComponent(w) + '&lang=en">有道词典</a><a class="btn sm" target="_blank" rel="noopener" href="https://dictionary.cambridge.org/dictionary/english-chinese-simplified/' + encodeURIComponent(w) + '">剑桥词典</a></div>';
+    openSheet(html);
+  }
+  function openSheet(html) { $('sheetBox').innerHTML = html; $('sheet').classList.add('on'); sheetOpen = true; }
+  function hideSheet() { $('sheet').classList.remove('on'); sheetOpen = false; each(document.querySelectorAll('.w.sel'), function (w) { w.classList.remove('sel'); }); }
+  $('sheetBox').onclick = function (e) {
+    var b = closest(e.target, '[data-act]'); if (!b) return;
+    var act = b.getAttribute('data-act');
+    if (act === 'x') hideSheet();
+    if (act === 'say') speak(b.getAttribute('data-w'), 0.85);
+  };
+  document.addEventListener('click', function (e) {
+    if (sheetOpen && !closest(e.target, '#sheetBox') && !closest(e.target, '.w')) hideSheet();
+  });
+
+  /* ================= SUBTITLES ================= */
+  var cues = [], cur = -1, loop = false, follow = true, offset = 0, video = $('video'), mediaURL = null, subName = '';
+  function parseTime(s) {
+    s = s.replace(',', '.').replace(/^\s+|\s+$/g, '');
+    var p = s.split(':'), sec = 0;
+    for (var i = 0; i < p.length; i++) sec = sec * 60 + parseFloat(p[i]);
+    return isNaN(sec) ? 0 : sec;
+  }
+  function cleanText(s) {
+    return s.replace(/\{[^}]*\}/g, '').replace(/\\N/gi, '\n').replace(/\\h/g, ' ').replace(/<[^>]+>/g, '')
+      .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"')
+      .replace(/^\s*-\s*/gm, '- ').replace(/[ \t]+/g, ' ');
+  }
+  function parseSRTVTT(txt) {
+    var out = [], blocks = txt.replace(/\r/g, '').split(/\n\s*\n/), i, lines, j, m;
+    for (i = 0; i < blocks.length; i++) {
+      lines = blocks[i].split('\n');
+      for (j = 0; j < lines.length; j++) {
+        m = /(\d*:?\d+:\d+[.,]\d+)\s*-->\s*(\d*:?\d+:\d+[.,]\d+)/.exec(lines[j]);
+        if (m) { out.push({ start: parseTime(m[1]), end: parseTime(m[2]), raw: cleanText(lines.slice(j + 1).join('\n')) }); break; }
+      }
+    }
+    return out;
+  }
+  function parseASS(txt) {
+    var out = [], lines = txt.replace(/\r/g, '').split('\n'), fmt = null, i, l, parts, ti, si, ei, k;
+    for (i = 0; i < lines.length; i++) {
+      l = lines[i];
+      if (/^Format:/i.test(l) && fmt === null && i > 0) {
+        var prevSec = ''; for (k = i; k >= 0; k--) if (/^\[.*\]/.test(lines[k])) { prevSec = lines[k]; break; }
+        if (/Events/i.test(prevSec)) fmt = l.slice(7).split(',').map(function (x) { return x.replace(/\s/g, '').toLowerCase(); });
+      }
+      if (/^Dialogue:/i.test(l)) {
+        var f = fmt || ['layer', 'start', 'end', 'style', 'name', 'marginl', 'marginr', 'marginv', 'effect', 'text'];
+        ti = f.indexOf('text'); si = f.indexOf('start'); ei = f.indexOf('end');
+        parts = l.slice(9).split(',');
+        var text = parts.slice(ti).join(',');
+        out.push({ start: parseTime(parts[si]), end: parseTime(parts[ei]), raw: cleanText(text) });
+      }
+    }
+    return out;
+  }
+  function splitLangs(c) {
+    var lines = c.raw.split('\n'), en = [], zh = [];
+    each(lines, function (l) {
+      l = l.replace(/^\s+|\s+$/g, ''); if (!l) return;
+      var cjk = (l.match(/[㐀-鿿぀-ヿ가-힯]/g) || []).length, lat = (l.match(/[A-Za-z]/g) || []).length;
+      if (cjk > 0 && cjk * 2 >= lat) zh.push(l); else en.push(l);
+    });
+    c.en = en.join(' ').replace(/\s+/g, ' '); c.zh = zh.join(' ');
+    return c;
+  }
+  function loadSubtitles(text, name) {
+    var list = /\[Script Info\]|^Dialogue:/m.test(text) ? parseASS(text) : parseSRTVTT(text);
+    if (!list.length) { alert('没有识别到字幕内容，请确认是 SRT / VTT / ASS 格式。'); return; }
+    list = list.filter(function (c) { return c.raw.replace(/\s/g, ''); }).map(splitLangs);
+    list.sort(function (a, b) { return a.start - b.start; });
+    cues = list; subName = name || '字幕'; cur = -1;
+    renderCues();
+    setTab('sub');
+  }
+  function fmtTime(s) { s = Math.max(0, s); var m = Math.floor(s / 60), x = Math.floor(s % 60); var h = Math.floor(m / 60); m = m % 60; return (h ? h + ':' + (m < 10 ? '0' : '') : '') + m + ':' + (x < 10 ? '0' : '') + x; }
+  function renderCues() {
+    var html = '', i, c, all = [];
+    REG = filterReg('a');
+    for (i = 0; i < cues.length; i++) {
+      c = cues[i];
+      html += '<div class="cue" id="cue' + i + '" data-c="' + i + '"><button class="ts" data-act="seek">' + fmtTime(c.start) + '</button><div class="ct">';
+      if (c.en) { register('c' + i, c.en); html += '<div class="en" data-k="c' + i + '">' + tokensHTML(REG['c' + i]) + '</div>'; all.push(c.en); }
+      if (c.zh) html += '<div class="zh">' + esc(c.zh) + '</div>';
+      html += '</div><div class="panel-slot"></div></div>';
+    }
+    $('cues').innerHTML = html;
+    var d = NLP.difficulty(all.join(' '));
+    var hard = 0; for (i = 0; i < cues.length; i++) if (REG['c' + i] && REG['c' + i].sents.some(function (s) { return s.hard; })) hard++;
+    $('fileBar').innerHTML = '<span class="name">' + esc(subName) + '</span><span>' + cues.length + ' 条字幕</span><span>' + d.words + ' 词</span><span class="pill lv">难度 ' + d.level + ' · ' + d.levelZh + '</span>' +
+      (mediaURL ? '' : '<button class="btn sm" id="addMedia">＋ 导入视频同步播放</button>') + '<button class="btn sm ghost" id="swapSub">换字幕</button>';
+    $('subBody').style.display = 'block';
+    $('subIntro').style.display = 'none';
+    if ($('addMedia')) $('addMedia').onclick = function () { $('fMedia').click(); };
+    $('swapSub').onclick = function () { $('fSub').click(); };
+    applySettings();
+  }
+  function filterReg(prefix) { var o = {}, k; for (k in REG) if (REG.hasOwnProperty(k) && k.charAt(0) === prefix) o[k] = REG[k]; return o; }
+
+  $('cues').onclick = function (e) {
+    var row = closest(e.target, '.cue'); if (!row) return;
+    var ci = +row.getAttribute('data-c');
+    var actEl = closest(e.target, '[data-act]');
+    if (actEl && closest(actEl, '.panel')) {
+      var act = actEl.getAttribute('data-act');
+      if (act === 'close') togglePanel(row, ci, false);
+      if (act === 'speak') speak(cues[ci].en);
+      return;
+    }
+    if (actEl && actEl.getAttribute('data-act') === 'seek') { seekCue(ci, true); return; }
+    if (closest(e.target, '.panel')) return;
+    var w = closest(e.target, '.w');
+    if (w && row.classList.contains('open')) { e.stopPropagation(); showWord('c' + ci, +w.getAttribute('data-i'), w); return; }
+    if (closest(e.target, '.ct')) {
+      if (!row.classList.contains('open')) { togglePanel(row, ci, true); if (mediaURL) seekCue(ci, false); }
+      else if (!w) togglePanel(row, ci, false);
+    }
+  };
+  function togglePanel(row, ci, on) {
+    var slot = row.querySelector('.panel-slot');
+    if (on && cues[ci].en) {
+      slot.innerHTML = panelHTML('c' + ci); row.classList.add('open');
+      bindPanel(slot.firstChild, row.querySelector('.en'));
+    } else { slot.innerHTML = ''; row.classList.remove('open'); highlight(row, '', false); hideSheet(); }
+  }
+  function seekCue(i, play) {
+    if (i < 0 || i >= cues.length) return;
+    if (!mediaURL) { setCur(i, true); return; }
+    video.currentTime = Math.max(0, cues[i].start + offset + 0.01);
+    setCur(i, true);
+    if (play && video.paused) { var pr = video.play(); if (pr && pr['catch']) pr['catch'](function () { }); }
+  }
+  function setCur(i, scroll) {
+    if (i === cur) return;
+    var old = $('cue' + cur); if (old) old.classList.remove('now');
+    cur = i;
+    var el = $('cue' + i); if (!el) return;
+    el.classList.add('now');
+    if (scroll && follow) {
+      var top = el.getBoundingClientRect().top, ph = $('player').classList.contains('on') ? $('player').getBoundingClientRect().bottom : 60;
+      var target = window.pageYOffset + top - ph - 12 - Math.max(0, (window.innerHeight - ph) * 0.2);
+      if (top < ph + 10 || top > window.innerHeight - 80 || scroll === 'force') { try { window.scrollTo({ top: target, behavior: 'smooth' }); } catch (x) { window.scrollTo(0, target); } }
+    }
+  }
+  function findCue(t) {
+    var lo = 0, hi = cues.length - 1, ans = -1, mid;
+    while (lo <= hi) { mid = (lo + hi) >> 1; if (cues[mid].start <= t) { ans = mid; lo = mid + 1; } else hi = mid - 1; }
+    if (ans >= 0 && t <= cues[ans].end + 0.05) return ans;
+    return -1;
+  }
+  function tick() {
+    if (!cues.length || !mediaURL) return;
+    var t = video.currentTime - offset;
+    if (loop && cur >= 0 && t >= cues[cur].end - 0.02) { video.currentTime = cues[cur].start + offset; return; }
+    var i = findCue(t);
+    if (i >= 0 && i !== cur) setCur(i, true);
+  }
+  var raf = window.requestAnimationFrame || function (f) { return setTimeout(f, 100); };
+  function loopTick() { if (!video.paused) { tick(); raf(loopTick); } }
+  video.addEventListener('play', function () { raf(loopTick); });
+  video.addEventListener('timeupdate', tick);
+  video.addEventListener('seeked', tick);
+
+  function loadMedia(file) {
+    if (mediaURL) { try { URL.revokeObjectURL(mediaURL); } catch (e) { } }
+    mediaURL = URL.createObjectURL(file);
+    video.src = mediaURL;
+    $('player').classList.add('on');
+    $('player').classList[/^audio\//.test(file.type) ? 'add' : 'remove']('audio');
+    if (cues.length) renderCues();
+    else { $('subIntro').querySelector('p').innerHTML = '已载入 <b>' + esc(file.name) + '</b>，再导入对应的字幕文件即可同步。'; }
+  }
+  $('bPrev').onclick = function () { seekCue(Math.max(0, (cur < 0 ? 0 : cur) - 1), true); };
+  $('bNext').onclick = function () { seekCue(Math.min(cues.length - 1, cur + 1), true); };
+  $('bLoop').onclick = function () { loop = !loop; this.classList[loop ? 'add' : 'remove']('on'); if (loop && cur >= 0) seekCue(cur, true); };
+  $('bFollow').onclick = function () { follow = !follow; this.classList[follow ? 'add' : 'remove']('on'); };
+  function setOffset(d) { offset = Math.round((offset + d) * 10) / 10; $('offVal').textContent = (offset > 0 ? '+' : '') + offset.toFixed(1) + 's'; tick(); }
+  $('offDown').onclick = function () { setOffset(-0.5); };
+  $('offUp').onclick = function () { setOffset(0.5); };
+  document.addEventListener('keydown', function (e) {
+    if (tab !== 'sub' || !cues.length) return;
+    var tg = e.target && e.target.tagName; if (tg === 'INPUT' || tg === 'TEXTAREA' || tg === 'SELECT') return;
+    if (e.keyCode === 37) { e.preventDefault(); $('bPrev').click(); }
+    else if (e.keyCode === 39) { e.preventDefault(); $('bNext').click(); }
+    else if (e.keyCode === 82) { $('bLoop').click(); }
+    else if (e.keyCode === 32 && mediaURL && e.target === document.body) { e.preventDefault(); if (video.paused) video.play(); else video.pause(); }
+    else if (e.keyCode === 27) hideSheet();
+  });
+
+  /* file reading with encoding detection */
+  function readText(file, cb) {
+    var fr = new FileReader();
+    if (window.TextDecoder) {
+      fr.onload = function () {
+        var buf = new Uint8Array(fr.result), text, enc = 'utf-8';
+        if (buf[0] === 0xFF && buf[1] === 0xFE) enc = 'utf-16le'; else if (buf[0] === 0xFE && buf[1] === 0xFF) enc = 'utf-16be';
+        try { text = new TextDecoder(enc).decode(buf); } catch (e) { text = ''; }
+        var bad = (text.match(/�/g) || []).length;
+        if (bad > 2) { try { var t2 = new TextDecoder('gbk').decode(buf); if ((t2.match(/�/g) || []).length < bad) text = t2; } catch (e2) { } }
+        cb(text.replace(/^﻿/, ''));
+      };
+      fr.readAsArrayBuffer(file);
+    } else { fr.onload = function () { cb(String(fr.result).replace(/^﻿/, '')); }; fr.readAsText(file); }
+  }
+  function routeFile(file) {
+    var n = file.name.toLowerCase();
+    if (/\.(srt|vtt|ass|ssa)$/.test(n)) readText(file, function (t) { loadSubtitles(t, file.name); });
+    else if (/^(video|audio)\//.test(file.type) || /\.(mp4|mkv|webm|mov|m4v|mp3|m4a|wav|ogg|aac|flac)$/.test(n)) { setTab('sub'); loadMedia(file); }
+    else if (/\.(txt|md)$/.test(n)) readText(file, function (t) { if (/-->/.test(t)) loadSubtitles(t, file.name); else { setTab('art'); $('artText').value = t; analyzeArticle(t, file.name.replace(/\.\w+$/, '')); } });
+    else alert('不支持的文件类型：' + file.name);
+  }
+  $('pickSub').onclick = function () { $('fSub').click(); };
+  $('pickMedia').onclick = function () { $('fMedia').click(); };
+  $('fSub').onchange = function () { if (this.files[0]) routeFile(this.files[0]); this.value = ''; };
+  $('fMedia').onchange = function () { if (this.files[0]) routeFile(this.files[0]); this.value = ''; };
+  var dragDepth = 0;
+  document.addEventListener('dragenter', function (e) { e.preventDefault(); dragDepth++; document.body.classList.add('dragging'); });
+  document.addEventListener('dragleave', function () { dragDepth--; if (dragDepth <= 0) { dragDepth = 0; document.body.classList.remove('dragging'); } });
+  document.addEventListener('dragover', function (e) { e.preventDefault(); });
+  document.addEventListener('drop', function (e) {
+    e.preventDefault(); dragDepth = 0; document.body.classList.remove('dragging');
+    var fs = e.dataTransfer && e.dataTransfer.files; if (!fs) return;
+    for (var i = 0; i < fs.length; i++) routeFile(fs[i]);
+  });
+
+  var DEMO_SRT = '1\n00:00:01,000 --> 00:00:03,400\nHey, have you seen my keys anywhere?\n你看到我的钥匙了吗？\n\n2\n00:00:03,800 --> 00:00:06,200\nI think you left them on the kitchen table.\n我觉得你把它们落在厨房桌子上了。\n\n3\n00:00:06,500 --> 00:00:09,800\nNo, I\'ve already looked there. I\'m going to be late again.\n没有，我已经找过了。我又要迟到了。\n\n4\n00:00:10,000 --> 00:00:13,400\nIf you had put them back where they belong, this wouldn\'t have happened.\n要是你把它们放回原处，就不会这样了。\n\n5\n00:00:13,700 --> 00:00:16,600\nOkay, okay. Can you help me look for them instead of lecturing me?\n好啦好啦。你能帮我找找，而不是教训我吗？\n\n6\n00:00:16,900 --> 00:00:20,200\nThe car was being repaired last week, right? Maybe they\'re still in your jacket.\n上周车在修，对吧？也许钥匙还在你夹克里。\n\n7\n00:00:20,500 --> 00:00:23,300\nFound them! They were hanging behind the door the whole time.\n找到了！它们一直挂在门后面。\n\n8\n00:00:23,600 --> 00:00:27,000\nYou should really put up a hook for them. I\'ve been telling you for months.\n你真该给它们装个挂钩。我已经跟你说了好几个月了。\n';
+  $('demoSub').onclick = function () { loadSubtitles(DEMO_SRT, '示例：找钥匙.srt'); };
+
+  /* ================= ARTICLE ================= */
+  var DEMO_ART = { title: 'Why Cities Are Planting Trees to Fight the Heat', text: 'As summers grow hotter, cities around the world are turning to an old solution: trees. In Melbourne, officials have planted thousands of trees a year since 2012, hoping to double the city\'s canopy by 2040. Researchers who studied the program found that shaded streets can be significantly cooler than exposed ones, and residents report spending more time outdoors.\n\nBut planting trees is not as simple as it sounds. Young trees need regular watering, and many die before they reach maturity. Critics argue that the money would be better spent on reflective roofs or cooling centers, which could protect vulnerable people more quickly.\n\nSupporters counter that trees provide benefits that are difficult to measure, such as cleaner air, lower energy bills and a stronger sense of community. If cities had started planting decades ago, they say, many neighborhoods would already be enjoying those benefits today.' };
+  var artState = null;
+  function status(msg, err) { var s = $('status'); s.className = 'status' + (err ? ' err' : ''); s.innerHTML = msg || ''; }
+  function analyzeArticle(text, title) {
+    text = String(text || '').replace(/\r/g, '');
+    if (!/[a-z]/i.test(text)) { status('请先粘贴英文文章或输入网址。', true); return; }
+    REG = filterReg('c');
+    var paras = text.split(/\n\s*\n|\n(?=\s*[A-Z“"])/).map(function (p) { return p.replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, ''); }).filter(function (p) { return p; });
+    var d = NLP.difficulty(paras.join('\n\n'));
+    var body = '', pi, si, hardN = 0;
+    for (pi = 0; pi < paras.length; pi++) {
+      var sents = NLP.splitSentences(paras[pi]);
+      body += '<p data-p="' + pi + '">';
+      for (si = 0; si < sents.length; si++) {
+        var key = 'a' + pi + '_' + si, a = register(key, sents[si]);
+        var hard = a.sents.some(function (s) { return s.hard; }); if (hard) hardN++;
+        body += '<span class="sent' + (hard ? ' hard' : '') + '" data-k="' + key + '">' + tokensHTML(a) + '</span> ';
+      }
+      body += '</p><div class="pslot" data-p="' + pi + '"></div>';
+    }
+    var pct = Math.max(4, d.score);
+    var html = '<div class="card stats"><div class="top"><div class="lvbig">' + d.level + '</div><div class="lvtxt"><b>' + d.levelZh + '难度</b>综合句长、音节和生词比例估算</div></div>' +
+      '<div class="meter"><i style="width:' + pct + '%"></i></div><div class="scale"><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>' +
+      '<div class="grid"><div><b>' + d.words + '</b><span>词数</span></div><div><b>' + d.sentences + '</b><span>句子</span></div><div><b>' + d.asl.toFixed(1) + '</b><span>平均句长（词）</span></div>' +
+      '<div><b>' + hardN + '</b><span>长难句</span></div><div><b>' + Math.round(d.rareRatio * 100) + '%</b><span>生词比例</span></div><div><b>' + d.minutes + ' 分钟</b><span>预计阅读</span></div></div>' +
+      (d.rare.length ? '<div class="rare"><div class="hint" style="margin-bottom:6px">生词预览（点击查词）</div>' + d.rare.map(function (w) { return '<span class="chip" data-w="' + esc(w) + '">' + esc(w) + '</span>'; }).join('') + '</div>' : '') + '</div>' +
+      '<div class="card art color" id="artBody">' + (title ? '<h2>' + esc(title) + '</h2>' : '') +
+      '<div class="tools"><label class="switch"><input type="checkbox" id="onlyHard">突出长难句</label><button class="btn sm ghost" id="readAll">🔊 朗读全文</button><span class="hint">点句子看解析，再点单词看词性</span></div>' + body + '</div>';
+    $('artOut').innerHTML = html;
+    artState = { text: text, title: title || '' };
+    store.set('article', artState);
+    applySettings();
+    $('onlyHard').onchange = function () { $('artBody').classList[this.checked ? 'add' : 'remove']('onlyhard'); };
+    $('readAll').onclick = function () { speak(paras.join(' ')); };
+    each($('artOut').querySelectorAll('.rare .chip'), function (c) { c.onclick = function (e) { e.stopPropagation(); showPlainWord(c.getAttribute('data-w')); }; });
+  }
+  $('artOut').onclick = function (e) {
+    var panel = closest(e.target, '.panel');
+    if (panel) {
+      var b = closest(e.target, '[data-act]');
+      if (b) {
+        var k = panel.getAttribute('data-for'), act = b.getAttribute('data-act');
+        if (act === 'close') closeArtPanel();
+        if (act === 'speak') speak(REG[k].text);
+      }
+      return;
+    }
+    var sent = closest(e.target, '.sent'); if (!sent) return;
+    var w = closest(e.target, '.w');
+    if (sent.classList.contains('open')) { if (w) { e.stopPropagation(); showWord(sent.getAttribute('data-k'), +w.getAttribute('data-i'), w); } else closeArtPanel(); return; }
+    closeArtPanel();
+    sent.classList.add('open');
+    var p = closest(sent, 'p'), slot = $('artOut').querySelector('.pslot[data-p="' + p.getAttribute('data-p') + '"]');
+    slot.innerHTML = panelHTML(sent.getAttribute('data-k'));
+    bindPanel(slot.firstChild, sent);
+    var r = slot.getBoundingClientRect();
+    if (r.bottom > window.innerHeight) { try { window.scrollBy({ top: Math.min(r.bottom - window.innerHeight + 20, r.top - 120), behavior: 'smooth' }); } catch (x) { window.scrollBy(0, r.bottom - window.innerHeight + 20); } }
+  };
+  function closeArtPanel() {
+    each($('artOut').querySelectorAll('.sent.open'), function (s) { s.classList.remove('open'); highlight(s, '', false); });
+    each($('artOut').querySelectorAll('.pslot'), function (s) { s.innerHTML = ''; });
+    hideSheet();
+  }
+  $('anaBtn').onclick = function () { status(''); analyzeArticle($('artText').value, ''); scrollToOut(); };
+  $('demoArt').onclick = function () { $('artText').value = DEMO_ART.text; status(''); analyzeArticle(DEMO_ART.text, DEMO_ART.title); scrollToOut(); };
+  $('clearArt').onclick = function () { $('artText').value = ''; $('url').value = ''; $('artOut').innerHTML = ''; status(''); store.set('article', null); };
+  function scrollToOut() { var o = $('artOut'); if (o.firstChild) { var y = o.getBoundingClientRect().top + window.pageYOffset - 70; try { window.scrollTo({ top: y, behavior: 'smooth' }); } catch (x) { window.scrollTo(0, y); } } }
+
+  /* URL fetching with CORS proxy fallback */
+  var PROXIES = [
+    { name: '直连', make: function (u) { return u; } },
+    { name: 'AllOrigins 代理', make: function (u) { return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); } },
+    { name: 'corsproxy.io 代理', make: function (u) { return 'https://corsproxy.io/?url=' + encodeURIComponent(u); } },
+    { name: 'Jina Reader', make: function (u) { return 'https://r.jina.ai/' + u; } }
+  ];
+  function fetchText(url, ms) {
+    return new Promise(function (resolve, reject) {
+      var done = false, ctrl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (!done) { done = true; if (ctrl) ctrl.abort(); reject(new Error('超时')); } }, ms);
+      fetch(url, ctrl ? { signal: ctrl.signal } : {}).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(function (t) { if (!done) { done = true; clearTimeout(timer); resolve(t); } }, function (e) { if (!done) { done = true; clearTimeout(timer); reject(e); } });
+    });
+  }
+  function norm(s) { return s.replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, ''); }
+  function extractHTML(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var title = '', m = doc.querySelector('meta[property="og:title"]');
+    title = m ? m.getAttribute('content') : (doc.querySelector('h1') ? doc.querySelector('h1').textContent : (doc.title || ''));
+    each(doc.querySelectorAll('script,style,noscript,nav,header,footer,aside,form,figure,button,iframe,svg,[role="navigation"],[aria-hidden="true"]'), function (el) { if (el.parentNode) el.parentNode.removeChild(el); });
+    function collect(root) {
+      var out = [];
+      each(root.querySelectorAll('p'), function (p) { var t = norm(p.textContent || ''); if (t.length >= 40 && /[a-z]/i.test(t) && !/^(advertisement|sign up|subscribe|read more)/i.test(t)) out.push(t); });
+      return out;
+    }
+    var root = doc.querySelector('article') || doc.querySelector('main') || doc.querySelector('[itemprop="articleBody"]') || doc.body;
+    var ps = root ? collect(root) : [];
+    if (ps.length < 3 && doc.body) { var all = collect(doc.body); if (all.length > ps.length) ps = all; }
+    return { title: norm(title || ''), text: ps.join('\n\n') };
+  }
+  function extractMarkdown(md) {
+    var title = '', lines = md.replace(/\r/g, '').split('\n'), out = [];
+    each(lines, function (l) {
+      var mt = /^Title:\s*(.+)$/.exec(l); if (mt) { title = mt[1]; return; }
+      if (/^(URL Source|Published Time|Markdown Content|Warning):/.test(l)) return;
+      l = l.replace(/!\[[^\]]*\]\([^)]*\)/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`>#]+/g, '').replace(/^\s*[-+]\s+/, '');
+      l = norm(l);
+      if (l.length >= 40 && /[.!?"”]$/.test(l)) out.push(l);
+    });
+    return { title: title, text: out.join('\n\n') };
+  }
+  function fetchArticle() {
+    var u = norm($('url').value);
+    if (!u) { status('请输入网址。', true); return; }
+    if (!window.fetch || !window.Promise) { status('当前浏览器版本太旧，不支持网址抓取。请直接复制文章粘贴到下面。', true); return; }
+    if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+    var i = 0, best = null;
+    $('fetchBtn').disabled = true;
+    function next() {
+      if (i >= PROXIES.length) {
+        $('fetchBtn').disabled = false;
+        if (best && best.text.length > 80) return finish(best);
+        status('抓取失败：这个网站可能禁止了外部读取。请在浏览器中打开文章，全选复制正文，粘贴到下面的输入框。', true);
+        return;
+      }
+      var px = PROXIES[i++];
+      status('正在通过 ' + px.name + ' 抓取…（' + i + '/' + PROXIES.length + '）');
+      fetchText(px.make(u), i === 1 ? 8000 : 15000).then(function (raw) {
+        var r = /<html|<body|<p[\s>]/i.test(raw) ? extractHTML(raw) : extractMarkdown(raw);
+        if (!best || r.text.length > best.text.length) best = r;
+        if (r.text.length >= 300) { $('fetchBtn').disabled = false; finish(r); } else next();
+      }, function () { next(); });
+    }
+    function finish(r) {
+      $('artText').value = r.text;
+      status('已抓取 ' + r.text.split(/\s+/).length + ' 词。如有多余内容，可在下面编辑后重新点"分析文章"。');
+      analyzeArticle(r.text, r.title); scrollToOut();
+    }
+    next();
+  }
+  $('fetchBtn').onclick = fetchArticle;
+  $('url').onkeydown = function (e) { if (e.keyCode === 13) fetchArticle(); };
+
+  /* ---------- init ---------- */
+  applySettings();
+  setTab(tab);
+  var saved = store.get('article', null);
+  if (saved && saved.text) { $('artText').value = saved.text; analyzeArticle(saved.text, saved.title); }
+})();
+
+</script>
+</body>
+</html>
