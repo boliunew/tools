@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F1EC">
+<title>今日股票池</title>
+<style>
+:root{
+  --bg:#F3F1EC; --paper:#FFFFFF; --ink:#1B1E23; --soft:#626A73; --faint:#98A0A8; --line:#E0DDD5; --chip:#F0EEE8;
+  --accent:#1F6F66; --accent-ink:#FFFFFF; --accent-soft:#DCEEEA;
+  --up:#D23F31; --down:#1E8E4E; --warn:#B8660B; --warn-soft:#FBEBD3;
+  --on:#1E8E4E; --on-soft:#DDF1E4; --mid:#B8660B; --mid-soft:#FBEBD3; --off:#C0392B; --off-soft:#F8DEDA;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15181C; --paper:#1D2126; --ink:#E9ECEF; --soft:#A3ABB4; --faint:#6F7881; --line:#2E343B; --chip:#262B31;
+    --accent:#5CC2B3; --accent-ink:#0E1A18; --accent-soft:#1E3632;
+    --up:#FF6B5E; --down:#4CC97E; --warn:#F2B35E; --warn-soft:#3A2E1A;
+    --on:#4CC97E; --on-soft:#1C3325; --mid:#F2B35E; --mid-soft:#3A2E1A; --off:#FF6B5E; --off-soft:#3B2220;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+body.greenup{--up-tmp:0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.5}
+button,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;min-height:56px}
+.brand{font-weight:700;font-size:19px;margin-right:auto;display:flex;align-items:center;color:var(--ink);text-decoration:none}
+.brand i{display:inline-block;width:22px;height:22px;border-radius:6px;background:var(--accent);margin-right:8px;position:relative;overflow:hidden}
+.brand i:after{content:"";position:absolute;left:4px;bottom:5px;width:14px;height:9px;border-left:2px solid var(--accent-ink);border-bottom:2px solid var(--accent-ink)}
+.brand i:before{content:"";position:absolute;left:6px;top:11px;width:13px;height:2px;background:var(--accent-ink);transform:rotate(-35deg);transform-origin:left}
+.btn{border:1px solid var(--line);background:var(--paper);padding:6px 12px;border-radius:10px;font-size:13px;display:inline-flex;align-items:center;min-height:34px;text-decoration:none;color:var(--ink)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--soft)}
+main{padding:14px 0 80px}
+.meta{font-size:13px;color:var(--soft);margin:2px 0 12px;display:flex;flex-wrap:wrap;align-items:center}
+.meta > *{margin:0 12px 4px 0}
+.banner{padding:10px 14px;border-radius:12px;background:var(--warn-soft);color:var(--warn);font-size:13.5px;margin-bottom:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+h3{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:26px 0 10px;font-weight:600}
+/* regime */
+.regime{padding:16px;display:flex;flex-wrap:wrap;align-items:flex-start}
+.rg-l{margin-right:18px;min-width:92px}
+.rg-badge{display:inline-block;font-size:26px;font-weight:700;padding:4px 14px;border-radius:12px}
+.rg-on{color:var(--on);background:var(--on-soft)} .rg-mid{color:var(--mid);background:var(--mid-soft)} .rg-off{color:var(--off);background:var(--off-soft)}
+.rg-l small{display:block;font-size:12px;color:var(--faint);margin-top:6px}
+.rg-r{flex:1;min-width:240px}
+.rg-desc{color:var(--soft);font-size:14px;margin:2px 0 10px}
+.idx{display:flex;flex-wrap:wrap}
+.idx > div{margin:0 18px 8px 0;font-size:13px}
+.idx b{font-size:16px;font-variant-numeric:tabular-nums;margin-right:4px}
+.flag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:6px;margin-left:4px;font-weight:600}
+.f-y{background:var(--on-soft);color:var(--on)} .f-n{background:var(--off-soft);color:var(--off)}
+.breadth{display:flex;flex-wrap:wrap;margin-top:4px}
+.breadth > div{flex:1;min-width:150px;margin-right:14px;font-size:12px;color:var(--soft)}
+.bb{height:6px;background:var(--chip);border-radius:6px;overflow:hidden;margin-top:4px}
+.bb i{display:block;height:100%;background:var(--accent);border-radius:6px}
+/* filters */
+.filters{display:flex;flex-wrap:wrap;align-items:center;margin:4px 0 10px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13px;margin:0 6px 6px 0}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.chip .n{opacity:.7;margin-left:4px}
+.sortsel{margin-left:auto;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:5px 8px;font-size:13px;margin-bottom:6px}
+/* candidates */
+.list{display:flex;flex-wrap:wrap;margin:0 -6px}
+.cand{width:calc(50% - 12px);margin:0 6px 12px;padding:14px 14px 12px;display:flex;flex-direction:column}
+.c-top{display:flex;align-items:flex-start}
+.c-id{flex:1;min-width:0}
+.c-t{font-size:19px;font-weight:700;letter-spacing:.01em}
+.c-t a{color:inherit;text-decoration:none}
+.c-n{font-size:12px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-px{text-align:right}
+.c-px b{font-size:18px;font-variant-numeric:tabular-nums;display:block}
+.c-px span{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.up{color:var(--up)} .down{color:var(--down)}
+.tags{margin:8px 0 2px}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;margin:0 5px 5px 0;background:var(--accent-soft);color:var(--accent)}
+.tag.sec{background:var(--chip);color:var(--soft);font-weight:500}
+.tag.earn{background:var(--warn-soft);color:var(--warn)}
+.score{margin-left:auto;font-size:12px;color:var(--faint)}
+.score b{color:var(--ink);font-size:14px}
+svg.spark{width:100%;height:64px;display:block;margin:4px 0 6px}
+.mx{display:flex;border-top:1px solid var(--line);padding-top:8px;margin-top:2px}
+.mx > div{flex:1;font-size:11.5px;color:var(--faint)}
+.mx b{display:block;font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
+.plan{display:flex;margin-top:8px;background:var(--bg);border-radius:10px;padding:8px 10px}
+.plan > div{flex:1;font-size:11.5px;color:var(--faint)}
+.plan b{display:block;font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
+.plan em{font-style:normal;font-size:11px}
+.exit{font-size:12px;color:var(--soft);margin-top:8px}
+.empty{padding:30px 16px;text-align:center;color:var(--soft)}
+/* tables */
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+th{font-size:12px;color:var(--faint);font-weight:600}
+th:first-child,td:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+.vd{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:6px}
+.vd-y{background:var(--on-soft);color:var(--on)} .vd-n{background:var(--chip);color:var(--soft)} .vd-bad{background:var(--off-soft);color:var(--off)}
+.note{font-size:12.5px;color:var(--soft);padding:10px 14px;border-top:1px solid var(--line)}
+.sum{display:flex;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--line)}
+.sum > div{margin-right:24px;font-size:12px;color:var(--faint)}
+.sum b{display:block;font-size:18px;color:var(--ink)}
+.st{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:6px;background:var(--chip);color:var(--soft)}
+details.def{padding:0}
+details.def summary{padding:12px 14px;cursor:pointer;font-weight:600;list-style:none}
+details.def summary::-webkit-details-marker{display:none}
+details.def summary:after{content:"＋";float:right;color:var(--faint)}
+details.def[open] summary:after{content:"－"}
+.defs{padding:0 14px 10px}
+.defs div{padding:8px 0;border-top:1px solid var(--line);font-size:13.5px}
+.defs b{display:block}
+.defs span{color:var(--soft)}
+footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;line-height:1.7}
+.loading{padding:60px 0;text-align:center;color:var(--faint)}
+@media (max-width:640px){
+  .cand{width:calc(100% - 12px)}
+  .sortsel{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="bar">
+  <a class="brand" href="./"><i></i>今日股票池</a>
+  <button class="btn ghost" id="colorBtn" title="切换涨跌颜色">红涨绿跌</button>
+  <button class="btn ghost" id="reloadBtn">刷新</button>
+</div></div></header>
+<main class="wrap" id="app"><div class="loading">加载中…</div></main>
+
+<script>
+(function () {
+  'use strict';
+  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score';
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function pct(x, d) { if (x == null || isNaN(x)) return '—'; return (x > 0 ? '+' : '') + (x * 100).toFixed(d == null ? 2 : d) + '%'; }
+  function cls(x) { return x > 0 ? 'up' : x < 0 ? 'down' : ''; }
+  function store(k, v) { try { if (v === undefined) return window.localStorage.getItem('pool:' + k); window.localStorage.setItem('pool:' + k, v); } catch (e) { return null; } }
+
+  /* red-up (Chinese) vs green-up (US) colors */
+  var greenUp = store('greenup') === '1';
+  function applyColors() {
+    var r = document.documentElement.style;
+    if (greenUp) { r.setProperty('--up', 'var(--gu-up, #1E8E4E)'); r.setProperty('--down', 'var(--gu-down, #D23F31)'); }
+    else { r.removeProperty('--up'); r.removeProperty('--down'); }
+    document.getElementById('colorBtn').textContent = greenUp ? '绿涨红跌' : '红涨绿跌';
+  }
+  document.getElementById('colorBtn').onclick = function () { greenUp = !greenUp; store('greenup', greenUp ? '1' : '0'); applyColors(); };
+  document.getElementById('reloadBtn').onclick = function () { load(); };
+  applyColors();
+
+  function load() {
+    app.innerHTML = '<div class="loading">加载中…</div>';
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'stocks/data/latest.json?t=' + Date.now());
+    xhr.onload = function () {
+      if (xhr.status !== 200) { app.innerHTML = '<div class="empty card" style="margin-top:20px">还没有数据。扫描每个交易日收盘后自动运行一次，也可以在 GitHub 仓库的 Actions 页面手动运行。</div>'; return; }
+      try { DATA = JSON.parse(xhr.responseText); } catch (e) { app.innerHTML = '<div class="empty">数据格式错误</div>'; return; }
+      render();
+    };
+    xhr.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
+    xhr.send();
+  }
+
+  function spark(c) {
+    var s = c.spark || [], e = c.ema || [];
+    if (s.length < 2) return '';
+    var all = s.concat(e, [c.stop, c.target]), lo = Math.min.apply(null, all), hi = Math.max.apply(null, all), W = 300, H = 64, pad = 4;
+    function y(v) { return (H - pad - (v - lo) / (hi - lo || 1) * (H - 2 * pad)).toFixed(1); }
+    function x(i) { return (i / (s.length - 1) * W).toFixed(1); }
+    function line(arr) { var p = []; for (var i = 0; i < arr.length; i++) p.push(x(i) + ',' + y(arr[i])); return p.join(' '); }
+    var up = s[s.length - 1] >= s[0];
+    return '<svg class="spark" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" aria-label="近60日走势">' +
+      '<line x1="0" x2="' + W + '" y1="' + y(c.target) + '" y2="' + y(c.target) + '" stroke="var(--up)" stroke-dasharray="3 4" stroke-width="1" opacity=".55"/>' +
+      '<line x1="0" x2="' + W + '" y1="' + y(c.stop) + '" y2="' + y(c.stop) + '" stroke="var(--down)" stroke-dasharray="3 4" stroke-width="1" opacity=".55"/>' +
+      '<polyline points="' + line(e) + '" fill="none" stroke="var(--faint)" stroke-width="1.2" vector-effect="non-scaling-stroke"/>' +
+      '<polyline points="' + line(s) + '" fill="none" stroke="' + (up ? 'var(--up)' : 'var(--down)') + '" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>' +
+      '<circle cx="' + x(s.length - 1) + '" cy="' + y(s[s.length - 1]) + '" r="2.5" fill="' + (up ? 'var(--up)' : 'var(--down)') + '"/></svg>';
+  }
+
+  function candHTML(c) {
+    var S = DATA.signals, tags = '';
+    for (var i = 0; i < c.tags.length; i++) tags += '<span class="tag">' + esc(S[c.tags[i]].name) + '</span>';
+    if (c.sector) tags += '<span class="tag sec">' + esc(c.sector) + '</span>';
+    if (c.earn) tags += '<span class="tag earn">财报 ' + esc(c.earn.slice(5)) + '</span>';
+    var stopPct = c.stop / c.close - 1, tgtPct = c.target / c.close - 1;
+    return '<div class="card cand"><div class="c-top"><div class="c-id"><div class="c-t"><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(c.t) + '/chart" target="_blank" rel="noopener">' + esc(c.t) + '</a></div><div class="c-n">' + esc(c.name) + '</div></div>' +
+      '<div class="c-px"><b>' + c.close.toFixed(2) + '</b><span class="' + cls(c.chg) + '">' + pct(c.chg) + '</span></div></div>' +
+      '<div class="tags">' + tags + '</div>' + spark(c) +
+      '<div class="mx"><div><b>' + c.rs + '</b>相对强度</div><div><b>' + c.vr.toFixed(1) + '×</b>量比</div><div><b>' + c.rsi + '</b>RSI14</div><div><b>' + (c.atr_pct * 100).toFixed(1) + '%</b>ATR</div><div><b>' + Math.round(c.score) + '</b>评分</div></div>' +
+      '<div class="plan"><div><b>' + c.close.toFixed(2) + '</b>参考入场</div><div><b class="down">' + c.stop.toFixed(2) + '</b>止损 <em>' + pct(stopPct, 1) + '</em></div><div><b class="up">' + c.target.toFixed(2) + '</b>目标 <em>' + pct(tgtPct, 1) + '</em></div><div><b>' + c.r.toFixed(1) + 'R</b>盈亏比</div></div>' +
+      '<div class="exit">' + esc(S[c.primary].exit) + '（' + esc(S[c.primary].hold) + '）</div></div>';
+  }
+
+  function render() {
+    var D = DATA, R = D.regime || {}, S = D.signals, keys = ['squeeze', 'pit', 'momentum', 'rsi2', 'blood'], h = '';
+    var gen = new Date(D.generated), genTxt = isNaN(gen) ? '' : (gen.getMonth() + 1) + '月' + gen.getDate() + '日 ' + ('0' + gen.getHours()).slice(-2) + ':' + ('0' + gen.getMinutes()).slice(-2);
+    var age = (Date.now() - new Date(D.date + 'T20:00:00Z').getTime()) / 864e5;
+    if (D.demo) h += '<div class="banner">⚠️ 当前是<b>示例数据</b>（随机生成，股票代码是假的），用来展示页面效果。第一次真实扫描完成后会自动替换。</div>';
+    else if (age > 4) h += '<div class="banner">数据已经 ' + Math.floor(age) + ' 天没有更新。可能是假期休市，或者扫描任务出错，可以去 GitHub 仓库的 Actions 页面查看。</div>';
+    h += '<div class="meta"><span>数据日期 <b style="color:var(--ink)">' + esc(D.date) + '</b>（美股收盘）</span><span>扫描 ' + D.scanned + ' 只</span>' + (genTxt ? '<span>更新于 ' + genTxt + '</span>' : '') + '</div>';
+
+    var lab = R.label || '—', rc = lab === '进攻' ? 'rg-on' : lab === '防守' ? 'rg-off' : 'rg-mid';
+    function idx(name, o) { if (!o) return ''; return '<div>' + name + ' <b>' + o.close.toFixed(2) + '</b><span class="' + cls(o.chg) + '">' + pct(o.chg) + '</span><span class="flag ' + (o.above50 ? 'f-y' : 'f-n') + '">50日线' + (o.above50 ? '上' : '下') + '</span><span class="flag ' + (o.above200 ? 'f-y' : 'f-n') + '">200日线' + (o.above200 ? '上' : '下') + '</span></div>'; }
+    h += '<div class="card regime"><div class="rg-l"><span class="rg-badge ' + rc + '">' + esc(lab) + '</span><small>市场环境</small></div><div class="rg-r"><div class="rg-desc">' + esc(R.desc || '') + '</div><div class="idx">' + idx('SPY', R.spy) + idx('QQQ', R.qqq) + (R.vix != null ? '<div>VIX <b>' + R.vix.toFixed(1) + '</b></div>' : '') + '</div>' +
+      '<div class="breadth"><div>站上 50 日线 ' + Math.round(R.breadth50 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth50 * 100) + '%"></i></div></div><div>站上 200 日线 ' + Math.round(R.breadth200 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth200 * 100) + '%"></i></div></div></div></div></div>';
+
+    // filters
+    var counts = { all: D.candidates.length };
+    for (var i = 0; i < D.candidates.length; i++) for (var j = 0; j < D.candidates[i].tags.length; j++) { var k = D.candidates[i].tags[j]; counts[k] = (counts[k] || 0) + 1; }
+    h += '<h3>今日候选</h3><div class="filters"><button class="chip' + (filter === 'all' ? ' on' : '') + '" data-f="all">全部<span class="n">' + counts.all + '</span></button>';
+    for (i = 0; i < keys.length; i++) h += '<button class="chip' + (filter === keys[i] ? ' on' : '') + '" data-f="' + keys[i] + '">' + esc(S[keys[i]].name) + '<span class="n">' + (counts[keys[i]] || 0) + '</span></button>';
+    h += '<select class="sortsel" id="sortSel"><option value="score">按综合评分</option><option value="rs">按相对强度</option><option value="vr">按量比</option><option value="chg">按今日涨幅</option><option value="r">按盈亏比</option></select></div>';
+    var list = D.candidates.filter(function (c) { return filter === 'all' || c.tags.indexOf(filter) >= 0; });
+    list.sort(function (a, b) { return b[sortKey] - a[sortKey]; });
+    if (!list.length) h += '<div class="card empty">' + (filter === 'all' ? '今天没有股票满足条件。没有信号也是一种信号——耐心等待。' : '今天没有「' + esc(S[filter].name) + '」信号。') + '</div>';
+    else { h += '<div class="list">'; for (i = 0; i < list.length; i++) h += candHTML(list[i]); h += '</div>'; }
+
+    // stats
+    h += '<h3>信号历史表现（近 2 年 · 同一股票池 · 无未来函数）</h3><div class="card"><div class="tbl"><table><tr><th>信号</th><th>样本</th><th>持有</th><th>平均收益</th><th>胜率</th><th>基准</th><th>超额</th><th>95% 区间</th><th>结论</th></tr>';
+    for (i = 0; i < keys.length; i++) {
+      var s = S[keys[i]].stats || {}, vd = s.verdict || '—', vc = vd === '有统计优势' ? 'vd-y' : vd === '跑输基准' ? 'vd-bad' : 'vd-n';
+      h += '<tr><td><b>' + esc(S[keys[i]].name) + '</b></td><td>' + (s.n || 0) + '</td><td>' + s.horizon + ' 天</td><td class="' + cls(s.mean) + '">' + pct(s.mean) + '</td><td>' + (s.win != null ? Math.round(s.win * 100) + '%' : '—') + '</td><td>' + pct(s.base_mean) + '</td><td class="' + cls(s.edge) + '">' + pct(s.edge) + '</td><td>' + (s.ci_lo != null ? pct(s.ci_lo, 1) + ' ~ ' + pct(s.ci_hi, 1) : '—') + '</td><td><span class="vd ' + vc + '">' + esc(vd) + '</span></td></tr>';
+    }
+    h += '</table></div><div class="note">「平均收益」是信号出现后持有 N 天的收盘收益，「基准」是同期随便买池子里任意一只股票的平均收益。只有「超额」的 95% 区间整体大于 0，才算有统计优势。样本之间有重叠，真实的不确定性比区间显示的更大。</div></div>';
+
+    // tracking
+    var T = D.tracking || { rows: [], summary: {} }, sm = T.summary || {};
+    h += '<h3>近期信号跟踪（按止损 / 目标 / 规则模拟）</h3><div class="card">';
+    if (!T.rows.length) h += '<div class="empty">还没有历史信号。每天的候选会自动记录，之后在这里显示实际表现。</div>';
+    else {
+      h += '<div class="sum"><div><b>' + sm.total + '</b>跟踪信号</div><div><b>' + sm.closed + '</b>已结束</div><div><b>' + (sm.win != null ? Math.round(sm.win * 100) + '%' : '—') + '</b>胜率</div><div><b class="' + cls(sm.mean) + '">' + pct(sm.mean) + '</b>平均收益</div></div>';
+      h += '<div class="tbl"><table><tr><th>日期</th><th>股票</th><th>信号</th><th>入场</th><th>收益</th><th>状态</th><th>天数</th></tr>';
+      for (i = 0; i < T.rows.length; i++) { var r = T.rows[i]; h += '<tr><td>' + esc(r.date.slice(5)) + '</td><td><b>' + esc(r.t) + '</b></td><td>' + esc((S[r.sig] || {}).name || r.sig) + '</td><td>' + (+r.entry).toFixed(2) + '</td><td class="' + cls(r.ret) + '">' + pct(r.ret, 1) + '</td><td><span class="st">' + esc(r.status) + '</span></td><td>' + r.days + '</td></tr>'; }
+      h += '</table></div>';
+    }
+    h += '</div>';
+
+    // definitions
+    h += '<h3>信号规则</h3><div class="card"><details class="def"><summary>五种信号是怎么筛出来的</summary><div class="defs">';
+    for (i = 0; i < keys.length; i++) h += '<div><b>' + esc(S[keys[i]].name) + ' · ' + esc(S[keys[i]].hold) + '</b><span>' + esc(S[keys[i]].desc) + ' 离场：' + esc(S[keys[i]].exit) + '</span></div>';
+    h += '<div><b>通用过滤</b><span>股价 ≥ $10，20 日平均成交额 ≥ 2000 万美元。相对强度 = 近 63 个交易日涨幅在全池中的百分位排名。</span></div></div></details></div>';
+    h += '<footer>数据来自 Yahoo Finance，每个交易日收盘后自动更新。<br>本页是量化筛选结果，不构成投资建议；历史统计不代表未来收益。</footer>';
+    app.innerHTML = h;
+
+    var sel = document.getElementById('sortSel'); sel.value = sortKey;
+    sel.onchange = function () { sortKey = this.value; render(); };
+    var chips = app.querySelectorAll('.chip');
+    for (i = 0; i < chips.length; i++) chips[i].onclick = function () { filter = this.getAttribute('data-f'); render(); };
+  }
+  load();
+})();
+</script>
+</body>
+</html>

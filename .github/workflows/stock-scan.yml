@@ -1,0 +1,38 @@
+name: 每日股票池扫描
+
+on:
+  schedule:
+    # 周一到周五 21:47 UTC（美股收盘后约 1.5 小时，夏令时；冬令时为收盘后 45 分钟）
+    - cron: "47 21 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stock-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: stocks/requirements.txt
+      - run: pip install -r stocks/requirements.txt
+      - name: Scan
+        run: python stocks/scan.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stocks/data stocks/universe.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "股票池更新 $(date -u +%F)"
+          git pull --rebase origin main
+          git push
