@@ -160,7 +160,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'stocks/data/latest.json?t=' + Date.now());
     xhr.onload = function () {
-      if (xhr.status !== 200) { app.innerHTML = '<div class="empty card" style="margin-top:20px">还没有数据。扫描每个交易日收盘后自动运行一次，也可以在 GitHub 仓库的 Actions 页面手动运行。</div>'; return; }
+      if (xhr.status !== 200) { app.innerHTML = '<div class="empty card" style="margin-top:20px;line-height:1.8"><b style="font-size:17px;color:var(--ink)">等待第一次扫描</b><br>每个交易日美股收盘后（太平洋时间下午 2:47 左右）自动扫描，完成后这里会显示真实的股票候选。<br><a href="https://github.com/boliunew/tools/actions/workflows/stock-scan.yml" target="_blank" rel="noopener">想马上看？去 GitHub 手动运行一次 →</a></div>'; return; }
       try { DATA = JSON.parse(xhr.responseText); } catch (e) { app.innerHTML = '<div class="empty">数据格式错误</div>'; return; }
       render();
     };
