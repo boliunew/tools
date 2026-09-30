@@ -19,6 +19,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.request
 from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,6 +31,8 @@ VOICES = {"zh": "zh-CN-XiaoxiaoNeural", "en": "en-US-JennyNeural", "es": "es-MX-
 RATES = {"zh": "+0%", "en": "-12%", "es": "-12%"}
 GTTS_LANG = {"zh": "zh-CN", "en": "en", "es": "es"}
 WEEK = "一二三四五六日"
+LOC = {"name": "Upland", "lat": 34.0975, "lon": -117.6484}
+CLOCK_TAG = "radio-clock"
 
 
 def load(rel):
@@ -69,6 +72,80 @@ def seg_intro(today, n):
         "parts": [("zh", f"早上好！今天是{md(today)}，星期{WEEK[today.weekday()]}。这里是你的通勤电台，今天一共{n}段。"
                          "想跳过，就按方向盘上的下一首。")],
     }
+
+
+WMO = {0: "晴", 1: "大致晴朗", 2: "多云", 3: "阴天", 45: "有雾", 48: "有雾", 51: "毛毛雨", 53: "毛毛雨", 55: "毛毛雨",
+       56: "冻毛毛雨", 57: "冻毛毛雨", 61: "小雨", 63: "中雨", 65: "大雨", 66: "冻雨", 67: "冻雨", 71: "小雪", 73: "中雪",
+       75: "大雪", 77: "雪粒", 80: "小阵雨", 81: "阵雨", 82: "强阵雨", 85: "阵雪", 86: "阵雪", 95: "雷阵雨", 96: "雷阵雨伴冰雹", 99: "雷阵雨伴冰雹"}
+
+
+def fetch_json(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "boliunew-tools-radio/1.0"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return json.loads(r.read().decode())
+
+
+def f2c(f):
+    return round((f - 32) * 5 / 9)
+
+
+def hm(iso):
+    t = dt.datetime.fromisoformat(iso)
+    h = t.hour % 12 or 12
+    return f"{h}点{t.minute:02d}分" if t.minute else f"{h}点"
+
+
+def seg_weather():
+    try:
+        w = fetch_json("https://api.open-meteo.com/v1/forecast?latitude=%s&longitude=%s"
+                       "&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m"
+                       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,sunset,wind_speed_10m_max"
+                       "&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%%2FLos_Angeles&forecast_days=1" % (LOC["lat"], LOC["lon"]))
+    except Exception as e:  # noqa: BLE001
+        print("weather failed:", e)
+        return None
+    try:
+        aq = fetch_json("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=%s&longitude=%s&current=us_aqi&timezone=America%%2FLos_Angeles" % (LOC["lat"], LOC["lon"]))
+        aqi = (aq.get("current") or {}).get("us_aqi")
+    except Exception as e:  # noqa: BLE001
+        print("air quality failed:", e)
+        aqi = None
+    c, d = w.get("current") or {}, w.get("daily") or {}
+    g = lambda k: (d.get(k) or [None])[0]  # noqa: E731
+    code, tmax, tmin, rain, uv, wind = g("weather_code"), g("temperature_2m_max"), g("temperature_2m_min"), g("precipitation_probability_max"), g("uv_index_max"), g("wind_speed_10m_max")
+    sky = WMO.get(code, "")
+    txt = f"{LOC['name']}今天{sky}。"
+    if c.get("temperature_2m") is not None:
+        txt += f"现在气温华氏{round(c['temperature_2m'])}度，大约{f2c(c['temperature_2m'])}摄氏度"
+        if c.get("apparent_temperature") is not None and abs(c["apparent_temperature"] - c["temperature_2m"]) >= 4:
+            txt += f"，体感{round(c['apparent_temperature'])}度"
+        txt += "。"
+    if tmax is not None and tmin is not None:
+        txt += f"白天最高{round(tmax)}度，约{f2c(tmax)}摄氏度；最低{round(tmin)}度。"
+    if rain is not None:
+        txt += f"降雨概率{int(rain)}%。" if rain >= 20 else "基本不会下雨。"
+    tips = []
+    if rain is not None and rain >= 50:
+        tips.append("记得带伞，路面湿滑，车速放慢")
+    if tmax is not None and tmax >= 95:
+        tips.append("天气很热，注意防暑，别把东西留在车里")
+    elif tmin is not None and tmin <= 45:
+        tips.append("早晚比较冷，多穿一件")
+    if wind is not None and wind >= 25:
+        tips.append(f"风很大，阵风可能超过每小时{round(wind)}英里，开车握稳方向盘")
+    if uv is not None and uv >= 8:
+        tips.append("紫外线很强，注意防晒")
+    if aqi is not None:
+        lv = "良好" if aqi <= 50 else "中等" if aqi <= 100 else "对敏感人群不健康" if aqi <= 150 else "不健康" if aqi <= 200 else "非常不健康"
+        txt += f"空气质量{lv}，指数{int(aqi)}。"
+        if aqi > 150:
+            tips.append("空气不好，车内空调切换到内循环")
+    if g("sunset"):
+        txt += f"今天日落时间是傍晚{hm(g('sunset'))}。"
+    if tips:
+        txt += "提醒一下：" + "；".join(tips) + "。"
+    sub = f"{LOC['name']} {sky} " + (f"{round(tmax)}°/{round(tmin)}°F" if tmax is not None and tmin is not None else "")
+    return {"id": "weather", "title": "🌤️ 天气", "sub": sub.strip(), "parts": [("zh", txt)]}
 
 
 def seg_market(stocks):
@@ -260,11 +337,48 @@ def upload(paths, keep_names):
             subprocess.run([gh, "release", "delete-asset", TAG, n, "-y"], capture_output=True)
 
 
+def clock_texts():
+    out = {}
+    for h in range(24):
+        per = "凌晨" if h < 5 else "早上" if h < 9 else "上午" if h < 12 else "中午" if h == 12 else "下午" if h < 18 else "晚上"
+        hh = h % 12 or 12
+        out[f"h{h:02d}.mp3"] = f"现在是{per}{hh}点"
+    for m in range(60):
+        out[f"m{m:02d}.mp3"] = "整。" if m == 0 else (f"零{m}分。" if m < 10 else f"{m}分。")
+    return out
+
+
+def ensure_clock(tmp):
+    """Hour/minute clips (made once) so the player can announce the real current time."""
+    base = f"https://github.com/{REPO}/releases/download/{CLOCK_TAG}/"
+    if os.environ.get("RADIO_NO_UPLOAD"):
+        return None
+    gh = shutil.which("gh")
+    have = subprocess.run([gh, "release", "view", CLOCK_TAG, "--json", "assets", "-q", ".assets[].name"], capture_output=True, text=True)
+    texts = clock_texts()
+    if have.returncode == 0 and len(set(have.stdout.split()) & set(texts)) == len(texts):
+        return base
+    if have.returncode != 0:
+        run([gh, "release", "create", CLOCK_TAG, "--title", "通勤电台报时音频", "--notes", "报时用的小时/分钟语音片段（一次性生成）。", "--latest=false"])
+    d = os.path.join(tmp, "clock")
+    os.makedirs(d, exist_ok=True)
+    paths = []
+    for name, text in texts.items():
+        p = os.path.join(d, name)
+        raw = p + ".raw.mp3"
+        tts(text, "zh", raw)
+        run(["ffmpeg", "-y", "-i", raw, "-ar", "24000", "-ac", "1", "-b:a", "48k", p])
+        paths.append(p)
+    for i in range(0, len(paths), 20):
+        run([gh, "release", "upload", CLOCK_TAG, "--clobber", *paths[i:i + 20]])
+    return base
+
+
 def main():
     now = dt.datetime.now(TZ)
     today = now.date()
     stocks, earn, news = load("stocks/data/latest.json"), load("earnings/data/latest.json"), load("news/data/latest.json")
-    body = [s for s in (seg_market(stocks), seg_pool(stocks), seg_calendar(earn, today), seg_news(news, today), seg_words(today)) if s]
+    body = [s for s in (seg_weather(), seg_market(stocks), seg_pool(stocks), seg_calendar(earn, today), seg_news(news, today), seg_words(today)) if s]
     segs = [seg_intro(today, len(body) + 2)] + body + [seg_outro()]
 
     tmp = tempfile.mkdtemp(prefix="radio_")
@@ -300,7 +414,13 @@ def main():
         for s, p in zip(out_segs, seg_files):
             s["url"] = "_local/" + os.path.basename(p)
 
+    clock = None
+    try:
+        clock = ensure_clock(tmp)
+    except Exception as e:  # noqa: BLE001
+        print("clock clips failed:", e)
     doc = {
+        "clock": clock,
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "date": today.isoformat(), "engine": ",".join(sorted(engines)),
         "total": round(sum(s["dur"] for s in out_segs), 1),

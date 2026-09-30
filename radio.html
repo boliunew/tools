@@ -56,6 +56,8 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 .tap button{background:var(--accent);color:var(--accent-ink);border:0;border-radius:24px;font-size:22px;font-weight:700;padding:22px 34px}
 .foot{font-size:12.5px;color:var(--faint);text-align:center;margin-top:16px;line-height:1.8}
 .foot a{color:var(--soft)}
+.live{font-size:14px;color:var(--soft);margin:-6px 0 12px}
+.live b{color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:18px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.on{opacity:.92}
 </style>
@@ -63,6 +65,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 <body>
 <main>
   <div class="top"><h1>🚗 通勤电台</h1><button id="refresh">🔄 刷新</button><a href="./">主页</a></div>
+  <div class="live" id="live"></div>
   <div id="app"><div class="card msg">加载中…</div></div>
   <div class="foot">方向盘「下一首 / 上一首」切换段落，车机屏幕显示当前段落<br>每天早上自动生成 · <a href="https://github.com/boliunew/tools/actions/workflows/radio.yml" target="_blank" rel="noopener">立即重新生成 ↗</a></div>
 </main>
@@ -80,7 +83,8 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
   var toastT;
   function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 2200); }
 
-  var au = $('au'), D = null, cur = -1, done = {}, rate = get('rate', 1), ms = navigator.mediaSession;
+  var au = $('au'), D = null, cur = -1, done = {}, rate = get('rate', 1), ms = navigator.mediaSession, clockQ = null;
+  function pad2(n) { return ('0' + n).slice(-2); }
   var qs = window.location.search, AUTO = /[?&]autoplay=1/.test(qs);
 
   function todayPT() {
@@ -127,7 +131,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     $('bPlay').onclick = function () { if (cur < 0) start(0); else if (au.paused) au.play(); else au.pause(); };
     $('bPrev').onclick = prev; $('bNext').onclick = next;
     var ss = document.querySelectorAll('.seg');
-    for (i = 0; i < ss.length; i++) ss[i].onclick = function () { start(+this.getAttribute('data-i')); };
+    for (i = 0; i < ss.length; i++) ss[i].onclick = function () { start(+this.getAttribute('data-i'), true); };
     var sp = document.querySelectorAll('.speeds button');
     for (i = 0; i < sp.length; i++) sp[i].onclick = function () { rate = +this.getAttribute('data-r'); put('rate', rate); au.playbackRate = rate; for (var k = 0; k < sp.length; k++) sp[k].className = sp[k] === this ? 'on' : ''; };
     var open = false;
@@ -137,8 +141,20 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     bar.onclick = seek; bar.addEventListener('touchstart', seek, false);
   }
 
-  function start(i) {
+  function playClock() {
+    var d = new Date(), h = d.getHours(), m = d.getMinutes();
+    clockQ = [D.clock + 'h' + pad2(h) + '.mp3', D.clock + 'm' + pad2(m) + '.mp3'];
+    cur = 0;
+    au.src = clockQ.shift(); au.playbackRate = rate;
+    var p = au.play();
+    if (p && p.catch) p.catch(function () { $('tap').className = 'tap on'; });
+    $('now').textContent = '🕖 报时'; $('nowsub').textContent = '现在 ' + ((h % 12) || 12) + ':' + pad2(m) + (h < 12 ? ' AM' : ' PM');
+    if (ms) { try { ms.metadata = new window.MediaMetadata({ title: '现在 ' + ((h % 12) || 12) + ':' + pad2(m) + (h < 12 ? ' AM' : ' PM'), artist: '通勤电台', album: '报时', artwork: [{ src: new URL('radio/cover.png', location.href).href, sizes: '512x512', type: 'image/png' }] }); } catch (e) { } }
+  }
+  function start(i, noClock) {
     if (!D || i < 0 || i >= D.segments.length) return;
+    if (i === 0 && D.clock && !noClock) { playClock(); return; }
+    clockQ = null;
     cur = i;
     var s = D.segments[i];
     au.src = s.url; au.playbackRate = rate;
@@ -146,14 +162,14 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     if (p && p.catch) p.catch(function () { $('tap').className = 'tap on'; });
     paint(); meta();
   }
-  function next() { if (!D) return; if (cur < D.segments.length - 1) start(cur + 1); else { au.pause(); toast('已经是最后一段'); } }
-  function prev() { if (!D) return; if (cur > 0 && au.currentTime < 3) start(cur - 1); else start(Math.max(cur, 0)); }
+  function next() { if (!D) return; if (clockQ) { start(0, true); return; } if (cur < D.segments.length - 1) start(cur + 1); else { au.pause(); toast('已经是最后一段'); } }
+  function prev() { if (!D) return; if (clockQ) { start(0, true); return; } if (cur > 0 && au.currentTime < 3) start(cur - 1); else start(Math.max(cur, 0), true); }
   $('tapBtn').onclick = function () { $('tap').className = 'tap'; if (cur < 0) start(0); else au.play(); };
 
   function paint() {
     if (!D) return;
     var s = D.segments[cur];
-    if (s) { $('now').textContent = s.title; $('nowsub').textContent = s.sub || ''; }
+    if (s && !clockQ) { $('now').textContent = s.title; $('nowsub').textContent = s.sub || ''; }
     var ss = document.querySelectorAll('.seg');
     for (var i = 0; i < ss.length; i++) ss[i].className = 'seg' + (i === cur ? ' on' : done[i] ? ' done' : '');
     $('bPlay').textContent = au.paused ? '▶' : '❚❚';
@@ -177,14 +193,34 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
   }
   au.addEventListener('play', function () { paint(); if (ms) ms.playbackState = 'playing'; });
   au.addEventListener('pause', function () { paint(); if (ms) ms.playbackState = 'paused'; });
-  au.addEventListener('ended', function () { done[cur] = 1; if (cur < D.segments.length - 1) start(cur + 1); else { paint(); toast('今天的电台播完了，开车注意安全 🚗'); } });
+  au.addEventListener('ended', function () { if (clockQ) { if (clockQ.length) { au.src = clockQ.shift(); au.playbackRate = rate; au.play(); } else start(0, true); return; } done[cur] = 1; if (cur < D.segments.length - 1) start(cur + 1); else { paint(); toast('今天的电台播完了，开车注意安全 🚗'); } });
   au.addEventListener('timeupdate', function () {
     if (!au.duration) return;
     $('fill').style.width = (au.currentTime / au.duration * 100) + '%';
     $('tc').textContent = mmss(au.currentTime); $('td').textContent = mmss(au.duration);
     if (ms && ms.setPositionState) { try { ms.setPositionState({ duration: au.duration, playbackRate: au.playbackRate, position: Math.min(au.currentTime, au.duration) }); } catch (e) { } }
   });
-  au.addEventListener('error', function () { if (cur >= 0) toast('这一段加载失败，跳到下一段'); setTimeout(next, 800); });
+  au.addEventListener('error', function () { if (clockQ) { start(0, true); return; } if (cur >= 0) toast('这一段加载失败，跳到下一段'); setTimeout(next, 800); });
+  var W = null;
+  function liveLine() {
+    var d = new Date(), h = d.getHours(), t = ((h % 12) || 12) + ':' + pad2(d.getMinutes()) + (h < 12 ? ' AM' : ' PM');
+    $('live').innerHTML = '🕖 <b>' + t + '</b>' + (W ? '　·　' + W : '');
+  }
+  function weather() {
+    var x = new XMLHttpRequest();
+    x.open('GET', 'https://api.open-meteo.com/v1/forecast?latitude=34.0975&longitude=-117.6484&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FLos_Angeles&forecast_days=1');
+    x.onload = function () {
+      try {
+        var r = JSON.parse(x.responseText), c = r.current, dd = r.daily, code = c.weather_code;
+        var ic = code === 0 ? '☀️' : code <= 2 ? '🌤️' : code === 3 ? '☁️' : code <= 48 ? '🌫️' : code <= 67 || (code >= 80 && code <= 82) ? '🌧️' : code <= 86 ? '❄️' : '⛈️';
+        W = ic + ' Upland <b>' + Math.round(c.temperature_2m) + '°F</b> <span style="color:var(--faint)">(' + Math.round((c.temperature_2m - 32) * 5 / 9) + '°C)</span> · 今天 ' + Math.round(dd.temperature_2m_max[0]) + '° / ' + Math.round(dd.temperature_2m_min[0]) + '°';
+      } catch (e) { }
+      liveLine();
+    };
+    x.send();
+  }
+  liveLine(); weather();
+  setInterval(liveLine, 15000); setInterval(weather, 15 * 60000);
   load(false);
 })();
 </script>
