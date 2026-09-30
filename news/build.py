@@ -64,6 +64,15 @@ SENT_RE = re.compile(r"(?<=[.!?])[\"'”’)]*\s+(?=[A-Z\"“‘(])")
 WORD_RE = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?")
 
 
+def level_of(fk, rr):
+    # calibrated on real BBC / NPR / Guardian / Al Jazeera articles: news sits mostly in B2–C1
+    adj = fk + rr * 8
+    for cut, lv, zh in ((7, "A2", "入门"), (9.5, "B1", "初中级"), (12, "B2", "中级"), (14.5, "C1", "中高级"), (99, "C2", "高级")):
+        if adj < cut:
+            break
+    return lv, zh, round(max(0, min(100, adj * 5.5)))
+
+
 def grade(text):
     from wordfreq import zipf_frequency
     sents = [s for s in SENT_RE.split(text) if WORD_RE.search(s)]
@@ -92,13 +101,10 @@ def grade(text):
     asl, asw = words / S, syl / words
     fk = 0.39 * asl + 11.8 * asw - 15.59
     rr = rare / content if content else 0
-    adj = fk + rr * 12
-    for cut, lv, zh in ((4, "A2", "入门"), (6.5, "B1", "初中级"), (9.5, "B2", "中级"), (13, "C1", "中高级"), (99, "C2", "高级")):
-        if adj < cut:
-            break
+    lv, zh, score = level_of(fk, rr)
     return {
         "words": words, "minutes": max(1, round(words / 130)), "asl": round(asl, 1), "fk": round(fk, 1),
-        "rare": round(rr, 3), "level": lv, "levelZh": zh, "score": round(max(0, min(100, adj * 6.5))),
+        "rare": round(rr, 3), "level": lv, "levelZh": zh, "score": score,
         "long": long_sent,
         "vocab": [w for w, _ in sorted(vocab.items(), key=lambda kv: kv[1])[:8]],
     }
@@ -240,6 +246,9 @@ def main():
     carry = [a for a in old.values() if a["id"] not in kept_ids and
              (now - dt.datetime.strptime(a["time"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)).total_seconds() < KEEP_HOURS * 3600]
     arts = sorted(reuse + fresh + carry, key=lambda a: a["time"], reverse=True)
+    for a in arts:  # re-grade cached items with the current calibration
+        if "fk" in a and "rare" in a:
+            a["level"], a["levelZh"], a["score"] = level_of(a["fk"], a["rare"])
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
