@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2F6F5E">
+<title>通勤电台</title>
+<link rel="icon" href="radio/cover.png">
+<link rel="apple-touch-icon" href="radio/cover.png">
+<style>
+:root{--bg:#F4F6F7;--card:#fff;--ink:#16212B;--soft:#5C6B77;--faint:#94A2AC;--line:#D7DEE2;--accent:#2F6F5E;--accent-ink:#fff;--accent-soft:#DDEFE9;--warn:#B7791F}
+@media (prefers-color-scheme: dark){:root{--bg:#12181D;--card:#1B242B;--ink:#E8EEF1;--soft:#93A2AD;--faint:#62717C;--line:#2A363F;--accent:#6FBFA6;--accent-ink:#0E1A16;--accent-soft:#1F3530;--warn:#E0B25A}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,sans-serif;line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
+.top{display:flex;align-items:center;margin-bottom:14px}
+.top h1{font-size:21px;margin:0;flex:1}
+.top a,.top button{color:var(--soft);text-decoration:none;font-size:14px;background:none;border:0;padding:6px 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px}
+.player{padding:20px 18px;text-align:center}
+.date{font-size:13px;color:var(--soft)}
+.date.stale{color:var(--warn);font-weight:600}
+.now{font-size:24px;font-weight:700;margin:8px 0 2px;min-height:36px}
+.nowsub{font-size:14px;color:var(--soft);min-height:21px}
+.bar{height:6px;background:var(--line);border-radius:6px;margin:16px 0 6px;position:relative;cursor:pointer;touch-action:none}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:6px;width:0}
+.times{display:flex;justify-content:space-between;font-size:12px;color:var(--faint)}
+.ctrl{display:flex;justify-content:center;align-items:center;margin:10px 0 4px}
+.ctrl button{background:none;border:0;width:64px;height:64px;border-radius:50%;font-size:26px}
+.ctrl .big{width:92px;height:92px;background:var(--accent);color:var(--accent-ink);font-size:38px;margin:0 18px;box-shadow:0 6px 20px rgba(47,111,94,.3)}
+.speeds{display:flex;justify-content:center;margin-top:8px}
+.speeds button{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:4px 12px;margin:0 3px;font-size:13px;color:var(--soft)}
+.speeds button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.segs{margin-top:14px}
+.seg{display:flex;align-items:center;padding:14px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+.seg:last-child{border-bottom:0}
+.seg .n{width:26px;color:var(--faint);font-size:13px}
+.seg .t{flex:1;min-width:0}
+.seg .t b{display:block;font-size:16px}
+.seg .t span{font-size:13px;color:var(--soft);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg .d{font-size:12.5px;color:var(--faint);margin-left:8px}
+.seg.on{background:var(--accent-soft)}
+.seg.on .t b{color:var(--accent)}
+.seg.done .t b{opacity:.55}
+.tx{display:none;padding:0 14px 14px 40px;font-size:14px;color:var(--soft);border-bottom:1px solid var(--line)}
+.tx.open{display:block}
+.tx p{margin:4px 0}
+.tx p.en,.tx p.es{color:var(--ink);font-style:italic}
+.tog{background:none;border:0;color:var(--faint);font-size:12.5px;padding:4px 0 0}
+.msg{padding:28px 18px;text-align:center;color:var(--soft)}
+.tap{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:9}
+.tap.on{display:flex}
+.tap button{background:var(--accent);color:var(--accent-ink);border:0;border-radius:24px;font-size:22px;font-weight:700;padding:22px 34px}
+.foot{font-size:12.5px;color:var(--faint);text-align:center;margin-top:16px;line-height:1.8}
+.foot a{color:var(--soft)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:18px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:.92}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><h1>🚗 通勤电台</h1><button id="refresh">🔄 刷新</button><a href="./">主页</a></div>
+  <div id="app"><div class="card msg">加载中…</div></div>
+  <div class="foot">方向盘「下一首 / 上一首」切换段落，车机屏幕显示当前段落<br>每天早上自动生成 · <a href="https://github.com/boliunew/tools/actions/workflows/radio.yml" target="_blank" rel="noopener">立即重新生成 ↗</a></div>
+</main>
+<div class="tap" id="tap"><button id="tapBtn">▶ 点一下开始播放</button></div>
+<div class="toast" id="toast"></div>
+<audio id="au" preload="auto"></audio>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function get(k, d) { try { var v = window.localStorage.getItem('radio:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { window.localStorage.setItem('radio:' + k, JSON.stringify(v)); } catch (e) { } }
+  function mmss(s) { s = Math.max(0, Math.round(s || 0)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+  var toastT;
+  function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 2200); }
+
+  var au = $('au'), D = null, cur = -1, done = {}, rate = get('rate', 1), ms = navigator.mediaSession;
+  var qs = window.location.search, AUTO = /[?&]autoplay=1/.test(qs);
+
+  function todayPT() {
+    try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
+    catch (e) { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  }
+  function load(manual) {
+    var x = new XMLHttpRequest();
+    x.open('GET', 'radio/data/today.json?t=' + Date.now());
+    x.onload = function () {
+      if (x.status !== 200) { $('app').innerHTML = '<div class="card msg">电台还没生成过。<br>第一次需要等 GitHub 跑一次（几分钟），或点下面的「立即重新生成」。</div>'; return; }
+      var nd; try { nd = JSON.parse(x.responseText); } catch (e) { return; }
+      var same = D && D.generated === nd.generated;
+      if (manual) toast(same ? '已经是最新的了' : '已刷新 ✓');
+      if (same) return;
+      D = nd; cur = -1; done = {}; render();
+      if (AUTO) { AUTO = false; start(0); }
+    };
+    x.onerror = function () { $('app').innerHTML = '<div class="card msg">网络好像断了，稍后再试。</div>'; };
+    x.send();
+  }
+  $('refresh').onclick = function () { load(true); };
+
+  function render() {
+    var stale = D.date !== todayPT(), h = '<div class="card player">';
+    var dd = D.date.split('-');
+    h += '<div class="date' + (stale ? ' stale' : '') + '">' + (+dd[1]) + '月' + (+dd[2]) + '日的电台 · ' + D.segments.length + ' 段 · 共 ' + mmss(D.total) + (stale ? ' · 不是今天的' : '') + '</div>';
+    h += '<div class="now" id="now">准备好了</div><div class="nowsub" id="nowsub">点 ▶ 从头播放</div>';
+    h += '<div class="bar" id="bar"><i id="fill"></i></div><div class="times"><span id="tc">0:00</span><span id="td">' + mmss(D.segments[0].dur) + '</span></div>';
+    h += '<div class="ctrl"><button id="bPrev" aria-label="上一段">⏮</button><button class="big" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一段">⏭</button></div>';
+    h += '<div class="speeds">';
+    var rs = [0.9, 1, 1.15, 1.3];
+    for (var i = 0; i < rs.length; i++) h += '<button data-r="' + rs[i] + '" class="' + (rs[i] === rate ? 'on' : '') + '">' + rs[i] + '×</button>';
+    h += '</div></div><div class="card segs">';
+    for (i = 0; i < D.segments.length; i++) {
+      var s = D.segments[i];
+      h += '<div class="seg" data-i="' + i + '"><div class="n">' + (i + 1) + '</div><div class="t"><b>' + esc(s.title) + '</b><span>' + esc(s.sub) + '</span></div><div class="d">' + mmss(s.dur) + '</div></div>';
+      h += '<div class="tx" id="tx' + i + '">';
+      for (var k = 0; k < s.text.length; k++) h += '<p class="' + s.text[k].lang + '">' + esc(s.text[k].t) + '</p>';
+      h += '</div>';
+    }
+    h += '</div><div style="text-align:center"><button class="tog" id="togTx">📝 显示文字稿</button></div>';
+    $('app').innerHTML = h;
+    $('bPlay').onclick = function () { if (cur < 0) start(0); else if (au.paused) au.play(); else au.pause(); };
+    $('bPrev').onclick = prev; $('bNext').onclick = next;
+    var ss = document.querySelectorAll('.seg');
+    for (i = 0; i < ss.length; i++) ss[i].onclick = function () { start(+this.getAttribute('data-i')); };
+    var sp = document.querySelectorAll('.speeds button');
+    for (i = 0; i < sp.length; i++) sp[i].onclick = function () { rate = +this.getAttribute('data-r'); put('rate', rate); au.playbackRate = rate; for (var k = 0; k < sp.length; k++) sp[k].className = sp[k] === this ? 'on' : ''; };
+    var open = false;
+    $('togTx').onclick = function () { open = !open; var t = document.querySelectorAll('.tx'); for (var k = 0; k < t.length; k++) t[k].className = 'tx' + (open ? ' open' : ''); this.textContent = open ? '📝 收起文字稿' : '📝 显示文字稿'; };
+    var bar = $('bar');
+    function seek(e) { if (cur < 0 || !au.duration) return; var r = bar.getBoundingClientRect(), x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left; au.currentTime = Math.max(0, Math.min(1, x / r.width)) * au.duration; }
+    bar.onclick = seek; bar.addEventListener('touchstart', seek, false);
+  }
+
+  function start(i) {
+    if (!D || i < 0 || i >= D.segments.length) return;
+    cur = i;
+    var s = D.segments[i];
+    au.src = s.url; au.playbackRate = rate;
+    var p = au.play();
+    if (p && p.catch) p.catch(function () { $('tap').className = 'tap on'; });
+    paint(); meta();
+  }
+  function next() { if (!D) return; if (cur < D.segments.length - 1) start(cur + 1); else { au.pause(); toast('已经是最后一段'); } }
+  function prev() { if (!D) return; if (cur > 0 && au.currentTime < 3) start(cur - 1); else start(Math.max(cur, 0)); }
+  $('tapBtn').onclick = function () { $('tap').className = 'tap'; if (cur < 0) start(0); else au.play(); };
+
+  function paint() {
+    if (!D) return;
+    var s = D.segments[cur];
+    if (s) { $('now').textContent = s.title; $('nowsub').textContent = s.sub || ''; }
+    var ss = document.querySelectorAll('.seg');
+    for (var i = 0; i < ss.length; i++) ss[i].className = 'seg' + (i === cur ? ' on' : done[i] ? ' done' : '');
+    $('bPlay').textContent = au.paused ? '▶' : '❚❚';
+  }
+  function meta() {
+    if (!ms || !D || cur < 0) return;
+    try {
+      var s = D.segments[cur], dd = D.date.split('-');
+      ms.metadata = new window.MediaMetadata({ title: s.title.replace(/^\S+\s/, '') + (s.sub ? '：' + s.sub : ''), artist: '通勤电台 · ' + (+dd[1]) + '月' + (+dd[2]) + '日', album: '第 ' + (cur + 1) + ' / ' + D.segments.length + ' 段', artwork: [{ src: new URL('radio/cover.png', location.href).href, sizes: '512x512', type: 'image/png' }] });
+    } catch (e) { }
+  }
+  if (ms) {
+    var H = {
+      play: function () { if (cur < 0) start(0); else au.play(); },
+      pause: function () { au.pause(); },
+      nexttrack: next, previoustrack: prev,
+      seekforward: function () { au.currentTime = Math.min(au.duration || 0, au.currentTime + 10); },
+      seekbackward: function () { au.currentTime = Math.max(0, au.currentTime - 10); }
+    };
+    for (var a in H) if (H.hasOwnProperty(a)) { try { ms.setActionHandler(a, H[a]); } catch (e) { } }
+  }
+  au.addEventListener('play', function () { paint(); if (ms) ms.playbackState = 'playing'; });
+  au.addEventListener('pause', function () { paint(); if (ms) ms.playbackState = 'paused'; });
+  au.addEventListener('ended', function () { done[cur] = 1; if (cur < D.segments.length - 1) start(cur + 1); else { paint(); toast('今天的电台播完了，开车注意安全 🚗'); } });
+  au.addEventListener('timeupdate', function () {
+    if (!au.duration) return;
+    $('fill').style.width = (au.currentTime / au.duration * 100) + '%';
+    $('tc').textContent = mmss(au.currentTime); $('td').textContent = mmss(au.duration);
+    if (ms && ms.setPositionState) { try { ms.setPositionState({ duration: au.duration, playbackRate: au.playbackRate, position: Math.min(au.currentTime, au.duration) }); } catch (e) { } }
+  });
+  au.addEventListener('error', function () { if (cur >= 0) toast('这一段加载失败，跳到下一段'); setTimeout(next, 800); });
+  load(false);
+})();
+</script>
+</body>
+</html>
