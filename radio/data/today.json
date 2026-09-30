@@ -1,20 +1,34 @@
 {
- "generated": "2026-09-30T04:55:33Z",
+ "clock": "https://github.com/boliunew/tools/releases/download/radio-clock/",
+ "generated": "2026-09-30T06:17:02Z",
  "date": "2026-09-29",
  "engine": "edge",
- "total": 227.0,
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609292155",
+ "total": 247.1,
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609292315",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
    "sub": "9月29日 星期二",
    "dur": 12.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609292155",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609292315",
    "text": [
     {
      "lang": "zh",
-     "t": "早上好！今天是9月29日，星期二。这里是你的通勤电台，今天一共7段。想跳过，就按方向盘上的下一首。"
+     "t": "早上好！今天是9月29日，星期二。这里是你的通勤电台，今天一共8段。想跳过，就按方向盘上的下一首。"
+    }
+   ]
+  },
+  {
+   "id": "weather",
+   "title": "🌤️ 天气",
+   "sub": "Upland 晴 87°/60°F",
+   "dur": 20.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609292315",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "Upland今天晴。现在气温华氏67度，大约19摄氏度。白天最高87度，约30摄氏度；最低60度。基本不会下雨。空气质量中等，指数54。今天日落时间是傍晚6点37分。"
     }
    ]
   },
@@ -23,7 +37,7 @@
    "title": "📊 大盘",
    "sub": "防守",
    "dur": 34.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609292155",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609292315",
    "text": [
     {
      "lang": "zh",
@@ -36,7 +50,7 @@
    "title": "📈 股票池",
    "sub": "37 个候选",
    "dur": 57.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609292155",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609292315",
    "text": [
     {
      "lang": "zh",
@@ -65,7 +79,7 @@
    "title": "🗓️ 财报与数据",
    "sub": "1 件大事",
    "dur": 16.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609292155",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609292315",
    "text": [
     {
      "lang": "zh",
@@ -82,7 +96,7 @@
    "title": "📰 英文新闻",
    "sub": "Al Jazeera · BBC · NPR",
    "dur": 66.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609292155",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609292315",
    "text": [
     {
      "lang": "zh",
@@ -131,7 +145,7 @@
    "title": "🔤 今日单词",
    "sub": "entrance · la hija",
    "dur": 32.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609292155",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609292315",
    "text": [
     {
      "lang": "zh",
@@ -180,7 +194,7 @@
    "title": "👋 结束",
    "sub": "开车注意安全",
    "dur": 7.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609292155",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202609292315",
    "text": [
     {
      "lang": "zh",
