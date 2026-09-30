@@ -95,6 +95,28 @@ h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px
 .lvt{flex:1;border:0;background:transparent;border-radius:10px;padding:7px 2px;font-size:15px;font-weight:600;color:var(--soft);line-height:1.2}
 .lvt small{display:block;font-size:10.5px;font-weight:400;opacity:.8}
 .lvt.on{background:var(--paper);color:var(--accent);box-shadow:var(--shadow)}
+.levhome{padding:14px 16px;margin-bottom:16px;cursor:pointer;display:block;width:100%;text-align:left;background:linear-gradient(135deg,var(--accent-soft),var(--paper))}
+.levhome b{font-size:17px}.levhome div{font-size:13px;color:var(--soft);margin-top:3px;font-weight:400}
+.lvtop{padding:14px 10px;margin-bottom:12px}
+.lvstats{display:flex;text-align:center}.lvstats div{flex:1}.lvstats b{display:block;font-size:26px;color:var(--accent);font-weight:800}.lvstats span{font-size:12px;color:var(--soft)}
+.lvsub{font-size:13px;color:var(--soft)}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;margin:0 0 12px}
+.tabs button{border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:6px 13px;margin:0 3px 6px;font-size:14px;color:var(--soft)}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.fam{padding:12px 14px;margin-bottom:10px;cursor:pointer}.fam.done{border-color:var(--good)}
+.fam .fb0{display:flex;align-items:center}.fam .mid{flex:1;margin-left:12px;min-width:0}
+.fam .cnt{font-size:12.5px;color:var(--good);font-weight:600}
+.rule{font-size:22px;white-space:nowrap;min-width:64px}.rule b{color:var(--accent)}
+.rule.big{font-size:36px;text-align:center}
+.tipb{background:var(--chip);border-radius:12px;padding:10px 12px;font-size:14px;margin:10px 0;text-align:left;line-height:1.7}
+.blk{text-align:left;font-size:14px;padding:7px 0;border-bottom:1px dashed var(--line)}.blk span{display:inline-block;min-width:64px;font-weight:700;color:var(--accent)}
+.numout{font-size:26px;font-weight:700;margin:12px 0 4px;word-break:break-word}
+.pchip{display:inline-block;background:var(--chip);border-radius:8px;padding:1px 8px;margin:2px}
+.row{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px}.row .btn{margin:0 4px 8px}
+.pairs{text-align:left}.pair2{display:flex;align-items:baseline;flex-wrap:wrap;padding:8px 4px;border-bottom:1px solid var(--line);cursor:pointer;font-size:17px}
+.pair2 .en{color:var(--soft)}.pair2 i{font-style:normal;color:var(--faint);margin:0 8px}.pair2 small{margin-left:auto;color:var(--faint);font-size:12.5px;padding-left:8px}
+.pair2.got b{color:var(--good)}
+.opt.small{font-size:17px}
 .hint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:14px;line-height:1.7}
 @media (max-width:420px){ .lesson{width:calc(100% - 10px)} .tools .btn{min-width:0;flex:1 1 40%} }
 </style>
@@ -107,6 +129,7 @@ h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px
   <section class="view on" id="vHome"></section>
   <section class="view" id="vStudy"></section>
   <section class="view" id="vQuiz"></section>
+  <section class="view" id="vLev"></section>
 </main>
 <script>
 /* Manuscript letter strokes on 四线三格.  Lines at y=0,40,80,120 (baseline = 80).
@@ -169,22 +192,22 @@ var LETTERS = {
 var EN = {
   letters: 'A:eɪ:apple:ˈæpl:苹果 B:biː:bag:bæɡ:书包 C:siː:cat:kæt:猫 D:diː:dog:dɒɡ:狗 E:iː:egg:eɡ:鸡蛋 F:ef:fish:fɪʃ:鱼 G:dʒiː:girl:ɡɜːl:女孩 H:eɪtʃ:hat:hæt:帽子 I:aɪ:ice:aɪs:冰 J:dʒeɪ:juice:dʒuːs:果汁 K:keɪ:kite:kaɪt:风筝 L:el:lamp:læmp:台灯 M:em:milk:mɪlk:牛奶 N:en:nose:nəʊz:鼻子 O:əʊ:orange:ˈɒrɪndʒ:橙子 P:piː:pig:pɪɡ:猪 Q:kjuː:queen:kwiːn:女王 R:ɑː:rabbit:ˈræbɪt:兔子 S:es:sun:sʌn:太阳 T:tiː:tree:triː:树 U:juː:umbrella:ʌmˈbrelə:雨伞 V:viː:van:væn:面包车 W:ˈdʌbljuː:water:ˈwɔːtə:水 X:eks:fox:fɒks:狐狸 Y:waɪ:yellow:ˈjeləʊ:黄色 Z:zed:zoo:zuː:动物园',
   themes: [
-    ['颜色', 'red:red:红色 blue:bluː:蓝色 yellow:ˈjeləʊ:黄色 green:ɡriːn:绿色 black:blæk:黑色 white:waɪt:白色 orange:ˈɒrɪndʒ:橙色 pink:pɪŋk:粉色 brown:braʊn:棕色 purple:ˈpɜːpl:紫色'],
-    ['数字', 'one:wʌn:一 two:tuː:二 three:θriː:三 four:fɔː:四 five:faɪv:五 six:sɪks:六 seven:ˈsevn:七 eight:eɪt:八 nine:naɪn:九 ten:ten:十'],
-    ['动物', 'cat:kæt:猫 dog:dɒɡ:狗 bird:bɜːd:鸟 fish:fɪʃ:鱼 duck:dʌk:鸭子 pig:pɪɡ:猪 cow:kaʊ:奶牛 horse:hɔːs:马 rabbit:ˈræbɪt:兔子 monkey:ˈmʌŋki:猴子'],
-    ['家人朋友', 'mother:ˈmʌðə:妈妈 father:ˈfɑːðə:爸爸 sister:ˈsɪstə:姐姐；妹妹 brother:ˈbrʌðə:哥哥；弟弟 grandma:ˈɡrænmɑː:奶奶；外婆 grandpa:ˈɡrænpɑː:爷爷；外公 baby:ˈbeɪbi:婴儿 family:ˈfæməli:家庭 friend:frend:朋友 teacher:ˈtiːtʃə:老师'],
-    ['身体', 'head:hed:头 face:feɪs:脸 eye:aɪ:眼睛 ear:ɪə:耳朵 nose:nəʊz:鼻子 mouth:maʊθ:嘴 hand:hænd:手 arm:ɑːm:胳膊 leg:leɡ:腿 foot:fʊt:脚'],
-    ['食物', 'apple:ˈæpl:苹果 banana:bəˈnɑːnə:香蕉 egg:eɡ:鸡蛋 milk:mɪlk:牛奶 bread:bred:面包 rice:raɪs:米饭 water:ˈwɔːtə:水 juice:dʒuːs:果汁 cake:keɪk:蛋糕 tea:tiː:茶'],
-    ['学校', 'book:bʊk:书 pen:pen:钢笔 pencil:ˈpensl:铅笔 ruler:ˈruːlə:尺子 bag:bæɡ:书包 desk:desk:书桌 chair:tʃeə:椅子 school:skuːl:学校 class:klɑːs:班级 eraser:ɪˈreɪzə:橡皮'],
-    ['衣服', 'coat:kəʊt:外套 shirt:ʃɜːt:衬衫 dress:dres:连衣裙 skirt:skɜːt:短裙 hat:hæt:帽子 cap:kæp:便帽 shoes:ʃuːz:鞋 socks:sɒks:袜子 pants:pænts:裤子 jacket:ˈdʒækɪt:夹克衫'],
-    ['家里', 'home:həʊm:家 room:ruːm:房间 bed:bed:床 door:dɔː:门 window:ˈwɪndəʊ:窗户 table:ˈteɪbl:桌子 box:bɒks:盒子 clock:klɒk:时钟 lamp:læmp:台灯 kitchen:ˈkɪtʃɪn:厨房'],
-    ['自然天气', 'sun:sʌn:太阳 moon:muːn:月亮 star:stɑː:星星 sky:skaɪ:天空 tree:triː:树 flower:ˈflaʊə:花 rain:reɪn:雨 snow:snəʊ:雪 wind:wɪnd:风 cloud:klaʊd:云'],
-    ['动作', 'run:rʌn:跑 jump:dʒʌmp:跳 walk:wɔːk:走 swim:swɪm:游泳 sing:sɪŋ:唱歌 dance:dɑːns:跳舞 read:riːd:读 write:raɪt:写 draw:drɔː:画画 play:pleɪ:玩'],
-    ['描述', 'big:bɪɡ:大的 small:smɔːl:小的 long:lɒŋ:长的 short:ʃɔːt:短的 hot:hɒt:热的 cold:kəʊld:冷的 happy:ˈhæpi:高兴的 sad:sæd:难过的 good:ɡʊd:好的 new:njuː:新的'],
-    ['交通地点', 'car:kɑː:小汽车 bus:bʌs:公交车 bike:baɪk:自行车 train:treɪn:火车 plane:pleɪn:飞机 ship:ʃɪp:轮船 boat:bəʊt:小船 taxi:ˈtæksi:出租车 road:rəʊd:路 park:pɑːk:公园'],
-    ['时间季节', 'day:deɪ:白天；一天 night:naɪt:夜晚 morning:ˈmɔːnɪŋ:早上 week:wiːk:星期 year:jɪə:年 today:təˈdeɪ:今天 time:taɪm:时间 spring:sprɪŋ:春天 summer:ˈsʌmə:夏天 winter:ˈwɪntə:冬天'],
-    ['常用小词', 'I:aɪ:我 you:juː:你 he:hiː:他 she:ʃiː:她 we:wiː:我们 they:ðeɪ:他们 this:ðɪs:这个 that:ðæt:那个 yes:jes:是 no:nəʊ:不'],
-    ['问候礼貌', 'hello:həˈləʊ:你好 hi:haɪ:嗨 bye:baɪ:再见 thanks:θæŋks:谢谢 sorry:ˈsɒri:对不起 please:pliːz:请 name:neɪm:名字 love:lʌv:爱 like:laɪk:喜欢 want:wɒnt:想要']
+    ['颜色', 'red:red:红色 blue:bluː:蓝色 yellow:ˈjeləʊ:黄色 green:ɡriːn:绿色 black:blæk:黑色 white:waɪt:白色 orange:ˈɒrɪndʒ:橙色 pink:pɪŋk:粉色 brown:braʊn:棕色 purple:ˈpɜːpl:紫色 grey:ɡreɪ:灰色 gold:ɡəʊld:金色；金子 silver:ˈsɪlvə:银色；银 colour:ˈkʌlə:颜色 dark:dɑːk:深色的；黑暗的 light:laɪt:浅色的；光 bright:braɪt:明亮的；鲜艳的 rainbow:ˈreɪnbəʊ:彩虹 paint:peɪnt:颜料；涂色 crayon:ˈkreɪɒn:蜡笔 colourful:ˈkʌləfl:五颜六色的 picture:ˈpɪktʃə:图画；照片 spot:spɒt:斑点 stripe:straɪp:条纹 dot:dɒt:圆点 line:laɪn:线 circle:ˈsɜːkl:圆形 square:skweə:正方形 shape:ʃeɪp:形状 triangle:ˈtraɪæŋɡl:三角形'],
+    ['数字', 'one:wʌn:一 two:tuː:二 three:θriː:三 four:fɔː:四 five:faɪv:五 six:sɪks:六 seven:ˈsevn:七 eight:eɪt:八 nine:naɪn:九 ten:ten:十 eleven:ɪˈlevn:十一 twelve:twelv:十二 thirteen:ˌθɜːˈtiːn:十三 fourteen:ˌfɔːˈtiːn:十四 fifteen:ˌfɪfˈtiːn:十五 sixteen:ˌsɪksˈtiːn:十六 seventeen:ˌsevnˈtiːn:十七 eighteen:ˌeɪˈtiːn:十八 nineteen:ˌnaɪnˈtiːn:十九 twenty:ˈtwenti:二十 thirty:ˈθɜːti:三十 forty:ˈfɔːti:四十 fifty:ˈfɪfti:五十 hundred:ˈhʌndrəd:百 zero:ˈzɪərəʊ:零 first:fɜːst:第一 second:ˈsekənd:第二；秒 third:θɜːd:第三 number:ˈnʌmbə:数字；号码 half:hɑːf:一半'],
+    ['动物', 'cat:kæt:猫 dog:dɒɡ:狗 bird:bɜːd:鸟 fish:fɪʃ:鱼 duck:dʌk:鸭子 pig:pɪɡ:猪 cow:kaʊ:奶牛 horse:hɔːs:马 rabbit:ˈræbɪt:兔子 monkey:ˈmʌŋki:猴子 tiger:ˈtaɪɡə:老虎 lion:ˈlaɪən:狮子 elephant:ˈelɪfənt:大象 panda:ˈpændə:熊猫 bear:beə:熊 sheep:ʃiːp:绵羊 goat:ɡəʊt:山羊 chicken:ˈtʃɪkɪn:鸡；鸡肉 mouse:maʊs:老鼠 snake:sneɪk:蛇 frog:frɒɡ:青蛙 giraffe:dʒəˈrɑːf:长颈鹿 zebra:ˈzebrə:斑马 kangaroo:ˌkæŋɡəˈruː:袋鼠 wolf:wʊlf:狼 deer:dɪə:鹿 bee:biː:蜜蜂 ant:ænt:蚂蚁 butterfly:ˈbʌtəflaɪ:蝴蝶 animal:ˈænɪml:动物'],
+    ['家人朋友', 'mother:ˈmʌðə:妈妈 father:ˈfɑːðə:爸爸 sister:ˈsɪstə:姐姐；妹妹 brother:ˈbrʌðə:哥哥；弟弟 grandma:ˈɡrænmɑː:奶奶；外婆 grandpa:ˈɡrænpɑː:爷爷；外公 baby:ˈbeɪbi:婴儿 family:ˈfæməli:家庭 friend:frend:朋友 teacher:ˈtiːtʃə:老师 mum:mʌm:妈妈 dad:dæd:爸爸 parent:ˈpeərənt:父亲；母亲 son:sʌn:儿子 daughter:ˈdɔːtə:女儿 uncle:ˈʌŋkl:叔叔；舅舅 aunt:ɑːnt:阿姨；姑姑 cousin:ˈkʌzn:堂兄弟姐妹；表兄弟姐妹 boy:bɔɪ:男孩 man:mæn:男人 woman:ˈwʊmən:女人 child:tʃaɪld:孩子 kid:kɪd:小孩 people:ˈpiːpl:人们 husband:ˈhʌzbənd:丈夫 wife:waɪf:妻子 doctor:ˈdɒktə:医生 nurse:nɜːs:护士 student:ˈstjuːdnt:学生 farmer:ˈfɑːmə:农民'],
+    ['身体', 'head:hed:头 face:feɪs:脸 eye:aɪ:眼睛 ear:ɪə:耳朵 nose:nəʊz:鼻子 mouth:maʊθ:嘴 hand:hænd:手 arm:ɑːm:胳膊 leg:leɡ:腿 foot:fʊt:脚 hair:heə:头发 neck:nek:脖子 shoulder:ˈʃəʊldə:肩膀 finger:ˈfɪŋɡə:手指 toe:təʊ:脚趾 knee:niː:膝盖 tooth:tuːθ:牙齿 body:ˈbɒdi:身体 back:bæk:后背 tummy:ˈtʌmi:肚子 lip:lɪp:嘴唇 tongue:tʌŋ:舌头 chin:tʃɪn:下巴 thumb:θʌm:大拇指 cheek:tʃiːk:脸颊 elbow:ˈelbəʊ:胳膊肘 skin:skɪn:皮肤 bone:bəʊn:骨头 brain:breɪn:大脑 blood:blʌd:血'],
+    ['食物', 'apple:ˈæpl:苹果 banana:bəˈnɑːnə:香蕉 egg:eɡ:鸡蛋 milk:mɪlk:牛奶 bread:bred:面包 rice:raɪs:米饭 water:ˈwɔːtə:水 juice:dʒuːs:果汁 cake:keɪk:蛋糕 tea:tiː:茶 pear:peə:梨 grape:ɡreɪp:葡萄 peach:piːtʃ:桃子 watermelon:ˈwɔːtəmelən:西瓜 strawberry:ˈstrɔːbəri:草莓 meat:miːt:肉 beef:biːf:牛肉 pork:pɔːk:猪肉 noodles:ˈnuːdlz:面条 soup:suːp:汤 candy:ˈkændi:糖果 hamburger:ˈhæmbɜːɡə:汉堡包 sandwich:ˈsænwɪtʃ:三明治 pizza:ˈpiːtsə:比萨饼 chocolate:ˈtʃɒklət:巧克力 coffee:ˈkɒfi:咖啡 potato:pəˈteɪtəʊ:土豆 tomato:təˈmɑːtəʊ:西红柿 carrot:ˈkærət:胡萝卜 food:fuːd:食物'],
+    ['学校', 'book:bʊk:书 pen:pen:钢笔 pencil:ˈpensl:铅笔 ruler:ˈruːlə:尺子 bag:bæɡ:书包 desk:desk:书桌 chair:tʃeə:椅子 school:skuːl:学校 class:klɑːs:班级 eraser:ɪˈreɪzə:橡皮 classroom:ˈklɑːsruːm:教室 pupil:ˈpjuːpl:小学生 blackboard:ˈblækbɔːd:黑板 English:ˈɪŋɡlɪʃ:英语 Chinese:ˌtʃaɪˈniːz:语文；中文 maths:mæθs:数学 science:ˈsaɪəns:科学 art:ɑːt:美术 word:wɜːd:单词 letter:ˈletə:字母；信 story:ˈstɔːri:故事 question:ˈkwestʃən:问题 answer:ˈɑːnsə:回答；答案 test:test:测验 paper:ˈpeɪpə:纸 map:mæp:地图 computer:kəmˈpjuːtə:电脑 learn:lɜːn:学习 study:ˈstʌdi:学习；研究 card:kɑːd:卡片'],
+    ['衣服', 'coat:kəʊt:外套 shirt:ʃɜːt:衬衫 dress:dres:连衣裙 skirt:skɜːt:短裙 hat:hæt:帽子 cap:kæp:便帽 shoes:ʃuːz:鞋 socks:sɒks:袜子 pants:pænts:裤子 jacket:ˈdʒækɪt:夹克衫 sweater:ˈswetə:毛衣 jeans:dʒiːnz:牛仔裤 shorts:ʃɔːts:短裤 trousers:ˈtraʊzəz:裤子 boots:buːts:靴子 gloves:ɡlʌvz:手套 scarf:skɑːf:围巾 clothes:kləʊðz:衣服 belt:belt:腰带 tie:taɪ:领带 pocket:ˈpɒkɪt:口袋 button:ˈbʌtn:纽扣 glasses:ˈɡlɑːsɪz:眼镜 trainers:ˈtreɪnəz:运动鞋 wear:weə:穿；戴 sandals:ˈsændlz:凉鞋 raincoat:ˈreɪnkəʊt:雨衣 pyjamas:pəˈdʒɑːməz:睡衣 blouse:blaʊz:女式衬衫 vest:vest:背心'],
+    ['家里', 'home:həʊm:家 room:ruːm:房间 bed:bed:床 door:dɔː:门 window:ˈwɪndəʊ:窗户 table:ˈteɪbl:桌子 box:bɒks:盒子 clock:klɒk:时钟 lamp:læmp:台灯 kitchen:ˈkɪtʃɪn:厨房 house:haʊs:房子 bedroom:ˈbedruːm:卧室 bathroom:ˈbɑːθruːm:浴室；卫生间 sofa:ˈsəʊfə:沙发 floor:flɔː:地板；楼层 wall:wɔːl:墙 phone:fəʊn:电话 cup:kʌp:杯子 bowl:bəʊl:碗 plate:pleɪt:盘子 spoon:spuːn:勺子 knife:naɪf:刀 fork:fɔːk:叉子 chopsticks:ˈtʃɒpstɪks:筷子 fridge:frɪdʒ:冰箱 key:kiː:钥匙 garden:ˈɡɑːdn:花园 mirror:ˈmɪrə:镜子 towel:ˈtaʊəl:毛巾 toy:tɔɪ:玩具'],
+    ['自然天气', 'sun:sʌn:太阳 moon:muːn:月亮 star:stɑː:星星 sky:skaɪ:天空 tree:triː:树 flower:ˈflaʊə:花 rain:reɪn:雨 snow:snəʊ:雪 wind:wɪnd:风 cloud:klaʊd:云 sunny:ˈsʌni:晴朗的 rainy:ˈreɪni:下雨的 snowy:ˈsnəʊi:下雪的 foggy:ˈfɒɡi:有雾的 warm:wɔːm:温暖的 cool:kuːl:凉爽的 storm:stɔːm:暴风雨 grass:ɡrɑːs:草 leaf:liːf:叶子 plant:plɑːnt:植物；种植 sea:siː:大海 lake:leɪk:湖 hill:hɪl:小山 beach:biːtʃ:海滩 stone:stəʊn:石头 air:eə:空气 fire:ˈfaɪə:火 earth:ɜːθ:地球；泥土 world:wɜːld:世界 farm:fɑːm:农场'],
+    ['动作', 'run:rʌn:跑 jump:dʒʌmp:跳 walk:wɔːk:走 swim:swɪm:游泳 sing:sɪŋ:唱歌 dance:dɑːns:跳舞 read:riːd:读 write:raɪt:写 draw:drɔː:画画 play:pleɪ:玩 sit:sɪt:坐 stand:stænd:站 eat:iːt:吃 drink:drɪŋk:喝 sleep:sliːp:睡觉 look:lʊk:看 see:siː:看见 listen:ˈlɪsn:听 speak:spiːk:说；讲 say:seɪ:说 talk:tɔːk:谈话 open:ˈəʊpən:打开 close:kləʊz:关上 come:kʌm:来 go:ɡəʊ:去 fly:flaɪ:飞 climb:klaɪm:爬 make:meɪk:做；制作 help:help:帮助 wash:wɒʃ:洗'],
+    ['描述', 'big:bɪɡ:大的 small:smɔːl:小的 long:lɒŋ:长的 short:ʃɔːt:短的 hot:hɒt:热的 cold:kəʊld:冷的 happy:ˈhæpi:高兴的 sad:sæd:难过的 good:ɡʊd:好的 new:njuː:新的 old:əʊld:旧的；老的 young:jʌŋ:年轻的 tall:tɔːl:高的 fat:fæt:胖的 thin:θɪn:瘦的；薄的 bad:bæd:坏的 nice:naɪs:好的；友好的 beautiful:ˈbjuːtɪfl:美丽的 cute:kjuːt:可爱的 fast:fɑːst:快的 slow:sləʊ:慢的 strong:strɒŋ:强壮的 hungry:ˈhʌŋɡri:饥饿的 thirsty:ˈθɜːsti:口渴的 dirty:ˈdɜːti:脏的 easy:ˈiːzi:容易的 heavy:ˈhevi:重的 full:fʊl:满的；饱的 great:ɡreɪt:好极了的；伟大的 funny:ˈfʌni:好笑的；有趣的'],
+    ['交通地点', 'car:kɑː:小汽车 bus:bʌs:公交车 bike:baɪk:自行车 train:treɪn:火车 plane:pleɪn:飞机 ship:ʃɪp:轮船 boat:bəʊt:小船 taxi:ˈtæksi:出租车 road:rəʊd:路 park:pɑːk:公园 street:striːt:街道 city:ˈsɪti:城市 town:taʊn:城镇 village:ˈvɪlɪdʒ:村庄 country:ˈkʌntri:国家；乡村 place:pleɪs:地方 shop:ʃɒp:商店 market:ˈmɑːkɪt:市场 supermarket:ˈsuːpəmɑːkɪt:超市 bank:bæŋk:银行 cinema:ˈsɪnəmə:电影院 restaurant:ˈrestrɒnt:餐馆 hotel:həʊˈtel:酒店 office:ˈɒfɪs:办公室 airport:ˈeəpɔːt:机场 playground:ˈpleɪɡraʊnd:操场 subway:ˈsʌbweɪ:地铁 motorbike:ˈməʊtəbaɪk:摩托车 truck:trʌk:卡车 stop:stɒp:车站；停止'],
+    ['时间季节', 'day:deɪ:白天；一天 night:naɪt:夜晚 morning:ˈmɔːnɪŋ:早上 week:wiːk:星期 year:jɪə:年 today:təˈdeɪ:今天 time:taɪm:时间 spring:sprɪŋ:春天 summer:ˈsʌmə:夏天 winter:ˈwɪntə:冬天 autumn:ˈɔːtəm:秋天 afternoon:ˌɑːftəˈnuːn:下午 evening:ˈiːvnɪŋ:晚上 noon:nuːn:中午 tomorrow:təˈmɒrəʊ:明天 yesterday:ˈjestədeɪ:昨天 month:mʌnθ:月 hour:ˈaʊə:小时 minute:ˈmɪnɪt:分钟 now:naʊ:现在 Monday:ˈmʌndeɪ:星期一 Tuesday:ˈtjuːzdeɪ:星期二 Wednesday:ˈwenzdeɪ:星期三 Thursday:ˈθɜːzdeɪ:星期四 Friday:ˈfraɪdeɪ:星期五 Saturday:ˈsætədeɪ:星期六 Sunday:ˈsʌndeɪ:星期日 lunch:lʌntʃ:午餐 dinner:ˈdɪnə:晚餐 birthday:ˈbɜːθdeɪ:生日'],
+    ['常用小词', 'I:aɪ:我 you:juː:你 he:hiː:他 she:ʃiː:她 we:wiː:我们 they:ðeɪ:他们 this:ðɪs:这个 that:ðæt:那个 yes:jes:是 no:nəʊ:不 it:ɪt:它 me:miː:我（宾格） my:maɪ:我的 your:jɔː:你的；你们的 his:hɪz:他的 her:hɜː:她；她的 our:ˈaʊə:我们的 their:ðeə:他们的 these:ðiːz:这些 those:ðəʊz:那些 what:wɒt:什么 who:huː:谁 where:weə:哪里 how:haʊ:怎样 here:hɪə:这里 and:ænd:和 but:bʌt:但是 in:ɪn:在……里 on:ɒn:在……上 not:nɒt:不'],
+    ['问候礼貌', 'hello:həˈləʊ:你好 hi:haɪ:嗨 bye:baɪ:再见 thanks:θæŋks:谢谢 sorry:ˈsɒri:对不起 please:pliːz:请 name:neɪm:名字 love:lʌv:爱 like:laɪk:喜欢 want:wɒnt:想要 goodbye:ˌɡʊdˈbaɪ:再见 welcome:ˈwelkəm:欢迎 thank:θæŋk:感谢 excuse:ɪkˈskjuːz:原谅 okay:əʊˈkeɪ:好的 fine:faɪn:好的；健康的 sure:ʃʊə:当然 Mr:ˈmɪstə:先生 Mrs:ˈmɪsɪz:夫人 Miss:mɪs:小姐 meet:miːt:遇见 know:nəʊ:知道 can:kæn:能 let:let:让 ask:ɑːsk:问 age:eɪdʒ:年龄 wish:wɪʃ:祝愿 gift:ɡɪft:礼物 party:ˈpɑːti:聚会 dear:dɪə:亲爱的']
   ]
 };
 
@@ -269,14 +292,14 @@ EN.sentences = [
 EN.levels = {
   mid: {
     themes: [
-      ['学校生活', 'subject:ˈsʌbdʒɪkt:科目 exam:ɪɡˈzæm:考试 homework:ˈhəʊmwɜːk:家庭作业 library:ˈlaɪbrəri:图书馆 classmate:ˈklɑːsmeɪt:同学 notebook:ˈnəʊtbʊk:笔记本 lesson:ˈlesn:课 grade:ɡreɪd:年级；成绩 uniform:ˈjuːnɪfɔːm:校服 dictionary:ˈdɪkʃənri:词典'],
-      ['日常活动', 'breakfast:ˈbrekfəst:早餐 exercise:ˈeksəsaɪz:锻炼 shower:ˈʃaʊə:淋浴 clean:kliːn:打扫 cook:kʊk:做饭 visit:ˈvɪzɪt:拜访 practice:ˈpræktɪs:练习 weekend:ˌwiːkˈend:周末 usually:ˈjuːʒuəli:通常 sometimes:ˈsʌmtaɪmz:有时'],
-      ['健康与感受', 'healthy:ˈhelθi:健康的 headache:ˈhedeɪk:头痛 fever:ˈfiːvə:发烧 tired:ˈtaɪəd:疲倦的 worried:ˈwʌrid:担心的 excited:ɪkˈsaɪtɪd:兴奋的 nervous:ˈnɜːvəs:紧张的 medicine:ˈmedsn:药 rest:rest:休息 advice:ədˈvaɪs:建议'],
-      ['城市与方向', 'museum:mjuˈziːəm:博物馆 hospital:ˈhɒspɪtl:医院 station:ˈsteɪʃn:车站 bridge:brɪdʒ:桥 corner:ˈkɔːnə:拐角 straight:streɪt:笔直地 left:left:左边 right:raɪt:右边 between:bɪˈtwiːn:在…之间 opposite:ˈɒpəzɪt:在…对面'],
-      ['天气与自然', 'weather:ˈweðə:天气 cloudy:ˈklaʊdi:多云的 windy:ˈwɪndi:有风的 temperature:ˈtemprətʃə:温度 season:ˈsiːzn:季节 forest:ˈfɒrɪst:森林 river:ˈrɪvə:河 mountain:ˈmaʊntən:山 island:ˈaɪlənd:岛 environment:ɪnˈvaɪrənmənt:环境'],
-      ['爱好', 'hobby:ˈhɒbi:爱好 music:ˈmjuːzɪk:音乐 painting:ˈpeɪntɪŋ:绘画 basketball:ˈbɑːskɪtbɔːl:篮球 collect:kəˈlekt:收集 camera:ˈkæmərə:相机 concert:ˈkɒnsət:音乐会 volunteer:ˌvɒlənˈtɪə:志愿者 interest:ˈɪntrəst:兴趣 favourite:ˈfeɪvərɪt:最喜欢的'],
-      ['购物与饮食', 'price:praɪs:价格 cheap:tʃiːp:便宜的 expensive:ɪkˈspensɪv:昂贵的 menu:ˈmenjuː:菜单 vegetable:ˈvedʒtəbl:蔬菜 delicious:dɪˈlɪʃəs:美味的 customer:ˈkʌstəmə:顾客 order:ˈɔːdə:点餐；订购 pay:peɪ:付钱 size:saɪz:尺码'],
-      ['常用动词', 'borrow:ˈbɒrəʊ:借入 lend:lend:借出 forget:fəˈɡet:忘记 remember:rɪˈmembə:记得 decide:dɪˈsaɪd:决定 arrive:əˈraɪv:到达 explain:ɪkˈspleɪn:解释 invite:ɪnˈvaɪt:邀请 improve:ɪmˈpruːv:提高 prepare:prɪˈpeə:准备']
+      ['学校生活', 'subject:ˈsʌbdʒɪkt:科目 exam:ɪɡˈzæm:考试 homework:ˈhəʊmwɜːk:家庭作业 library:ˈlaɪbrəri:图书馆 classmate:ˈklɑːsmeɪt:同学 notebook:ˈnəʊtbʊk:笔记本 lesson:ˈlesn:课 grade:ɡreɪd:年级；成绩 uniform:ˈjuːnɪfɔːm:校服 dictionary:ˈdɪkʃənri:词典 term:tɜːm:学期；术语 timetable:ˈtaɪmteɪbl:课程表 physics:ˈfɪzɪks:物理 chemistry:ˈkemɪstri:化学 biology:baɪˈɒlədʒi:生物 geography:dʒiˈɒɡrəfi:地理 history:ˈhɪstri:历史 headmaster:ˌhedˈmɑːstə:校长 monitor:ˈmɒnɪtə:班长；显示器 course:kɔːs:课程 mark:mɑːk:分数；记号 pass:pɑːs:通过；及格 fail:feɪl:失败；不及格 report:rɪˈpɔːt:报告；报道 project:ˈprɒdʒekt:项目；课题 laboratory:ləˈbɒrətri:实验室 diary:ˈdaɪəri:日记 composition:ˌkɒmpəˈzɪʃn:作文 textbook:ˈtekstbʊk:教科书 rule:ruːl:规则'],
+      ['日常活动', 'breakfast:ˈbrekfəst:早餐 exercise:ˈeksəsaɪz:锻炼 shower:ˈʃaʊə:淋浴 clean:kliːn:打扫 cook:kʊk:做饭 visit:ˈvɪzɪt:拜访 practice:ˈpræktɪs:练习 weekend:ˌwiːkˈend:周末 usually:ˈjuːʒuəli:通常 sometimes:ˈsʌmtaɪmz:有时 brush:brʌʃ:刷；刷子 housework:ˈhaʊswɜːk:家务 chore:tʃɔː:杂务 laundry:ˈlɔːndri:要洗的衣物；洗衣 tidy:ˈtaɪdi:整洁的；整理 wake:weɪk:醒来 hurry:ˈhʌri:匆忙 relax:rɪˈlæks:放松 nap:næp:小睡 chat:tʃæt:聊天 daily:ˈdeɪli:每天的；日常的 routine:ruːˈtiːn:日常惯例 seldom:ˈseldəm:很少 hardly:ˈhɑːdli:几乎不 rarely:ˈreəli:很少 schedule:ˈʃedjuːl:日程表 feed:fiːd:喂养 sweep:swiːp:扫 alarm:əˈlɑːm:闹钟；警报 jog:dʒɒɡ:慢跑'],
+      ['健康与感受', 'healthy:ˈhelθi:健康的 headache:ˈhedeɪk:头痛 fever:ˈfiːvə:发烧 tired:ˈtaɪəd:疲倦的 worried:ˈwʌrid:担心的 excited:ɪkˈsaɪtɪd:兴奋的 nervous:ˈnɜːvəs:紧张的 medicine:ˈmedsn:药 rest:rest:休息 advice:ədˈvaɪs:建议 cough:kɒf:咳嗽 sore:sɔː:疼痛的 toothache:ˈtuːθeɪk:牙疼 ill:ɪl:生病的 pain:peɪn:疼痛 hurt:hɜːt:伤害；疼 dentist:ˈdentɪst:牙医 illness:ˈɪlnəs:疾病 bored:bɔːd:厌倦的 lonely:ˈləʊnli:孤独的 afraid:əˈfreɪd:害怕的 surprised:səˈpraɪzd:惊讶的 disappointed:ˌdɪsəˈpɔɪntɪd:失望的 upset:ʌpˈset:心烦的 proud:praʊd:自豪的 calm:kɑːm:平静的 fit:fɪt:健康的；合身 diet:ˈdaɪət:饮食 weight:weɪt:体重；重量 relaxed:rɪˈlækst:放松的'],
+      ['城市与方向', 'museum:mjuˈziːəm:博物馆 hospital:ˈhɒspɪtl:医院 station:ˈsteɪʃn:车站 bridge:brɪdʒ:桥 corner:ˈkɔːnə:拐角 straight:streɪt:笔直地 left:left:左边 right:raɪt:右边 between:bɪˈtwiːn:在…之间 opposite:ˈɒpəzɪt:在…对面 entrance:ˈentrəns:入口 block:blɒk:街区；阻塞 highway:ˈhaɪweɪ:公路 crossing:ˈkrɒsɪŋ:十字路口；人行横道 traffic:ˈtræfɪk:交通 turn:tɜːn:转弯；轮流 cross:krɒs:穿过 along:əˈlɒŋ:沿着 across:əˈkrɒs:穿过；在对面 through:θruː:穿过；通过 direction:dəˈrekʃn:方向 distance:ˈdɪstəns:距离 sign:saɪn:标志；签名 path:pɑːθ:小路 tower:ˈtaʊə:塔 avenue:ˈævənjuː:大街 lane:leɪn:小巷；车道 downtown:ˌdaʊnˈtaʊn:市中心 underground:ˈʌndəɡraʊnd:地铁；地下的 building:ˈbɪldɪŋ:建筑物'],
+      ['天气与自然', 'weather:ˈweðə:天气 cloudy:ˈklaʊdi:多云的 windy:ˈwɪndi:有风的 temperature:ˈtemprətʃə:温度 season:ˈsiːzn:季节 forest:ˈfɒrɪst:森林 river:ˈrɪvə:河 mountain:ˈmaʊntən:山 island:ˈaɪlənd:岛 environment:ɪnˈvaɪrənmənt:环境 breeze:briːz:微风 mist:mɪst:薄雾 thunder:ˈθʌndə:雷 lightning:ˈlaɪtnɪŋ:闪电 degree:dɪˈɡriː:度；学位 freezing:ˈfriːzɪŋ:极冷的 wet:wet:湿的 dry:draɪ:干燥的 ocean:ˈəʊʃn:海洋 desert:ˈdezət:沙漠 valley:ˈvæli:山谷 field:fiːld:田野；领域 stream:striːm:小溪；流 nature:ˈneɪtʃə:自然 coast:kəʊst:海岸 wave:weɪv:波浪；挥手 rock:rɒk:岩石 heat:hiːt:热；高温 forecast:ˈfɔːkɑːst:预报 wild:waɪld:野生的'],
+      ['爱好', 'hobby:ˈhɒbi:爱好 music:ˈmjuːzɪk:音乐 painting:ˈpeɪntɪŋ:绘画 basketball:ˈbɑːskɪtbɔːl:篮球 collect:kəˈlekt:收集 camera:ˈkæmərə:相机 concert:ˈkɒnsət:音乐会 volunteer:ˌvɒlənˈtɪə:志愿者 interest:ˈɪntrəst:兴趣 favourite:ˈfeɪvərɪt:最喜欢的 violin:ˌvaɪəˈlɪn:小提琴 chess:tʃes:国际象棋 drama:ˈdrɑːmə:戏剧 photograph:ˈfəʊtəɡrɑːf:照片 stamp:stæmp:邮票 climbing:ˈklaɪmɪŋ:攀登 hiking:ˈhaɪkɪŋ:徒步旅行 skate:skeɪt:滑冰 tennis:ˈtenɪs:网球 volleyball:ˈvɒlibɔːl:排球 club:klʌb:俱乐部；社团 magazine:ˌmæɡəˈziːn:杂志 novel:ˈnɒvl:小说 cartoon:kɑːˈtuːn:卡通片 instrument:ˈɪnstrəmənt:乐器；仪器 band:bænd:乐队 member:ˈmembə:成员 enjoy:ɪnˈdʒɔɪ:享受；喜爱 spare:speə:空闲的；备用的 activity:ækˈtɪvəti:活动'],
+      ['购物与饮食', 'price:praɪs:价格 cheap:tʃiːp:便宜的 expensive:ɪkˈspensɪv:昂贵的 menu:ˈmenjuː:菜单 vegetable:ˈvedʒtəbl:蔬菜 delicious:dɪˈlɪʃəs:美味的 customer:ˈkʌstəmə:顾客 order:ˈɔːdə:点餐；订购 pay:peɪ:付钱 size:saɪz:尺码 cost:kɒst:花费；成本 spend:spend:花费 sale:seɪl:出售；促销 discount:ˈdɪskaʊnt:折扣 change:tʃeɪndʒ:零钱；改变 receipt:rɪˈsiːt:收据 cash:kæʃ:现金 bargain:ˈbɑːɡən:便宜货；讨价还价 mall:mɔːl:购物中心 meal:miːl:一餐 dessert:dɪˈzɜːt:甜点 snack:snæk:小吃 sugar:ˈʃʊɡə:糖 salt:sɔːlt:盐 tasty:ˈteɪsti:美味的 spicy:ˈspaɪsi:辛辣的 sour:ˈsaʊə:酸的 bill:bɪl:账单 afford:əˈfɔːd:买得起 fresh:freʃ:新鲜的'],
+      ['常用动词', 'borrow:ˈbɒrəʊ:借入 lend:lend:借出 forget:fəˈɡet:忘记 remember:rɪˈmembə:记得 decide:dɪˈsaɪd:决定 arrive:əˈraɪv:到达 explain:ɪkˈspleɪn:解释 invite:ɪnˈvaɪt:邀请 improve:ɪmˈpruːv:提高 prepare:prɪˈpeə:准备 agree:əˈɡriː:同意 allow:əˈlaʊ:允许 avoid:əˈvɔɪd:避免 belong:bɪˈlɒŋ:属于 carry:ˈkæri:携带；搬运 complete:kəmˈpliːt:完成；完整的 describe:dɪˈskraɪb:描述 discover:dɪˈskʌvə:发现 expect:ɪkˈspekt:期待；预料 follow:ˈfɒləʊ:跟随；遵循 hope:həʊp:希望 include:ɪnˈkluːd:包括 join:dʒɔɪn:加入 mean:miːn:意思是；意味着 offer:ˈɒfə:提供 receive:rɪˈsiːv:收到 refuse:rɪˈfjuːz:拒绝 share:ʃeə:分享 succeed:səkˈsiːd:成功 throw:θrəʊ:扔']
     ],
     sentences: [
       ['一般过去时', [
@@ -355,14 +378,14 @@ EN.levels = {
   },
   high: {
     themes: [
-      ['教育', 'curriculum:kəˈrɪkjələm:课程 scholarship:ˈskɒləʃɪp:奖学金 graduate:ˈɡrædʒueɪt:毕业 academic:ˌækəˈdemɪk:学术的 knowledge:ˈnɒlɪdʒ:知识 assignment:əˈsaɪnmənt:作业；任务 lecture:ˈlektʃə:讲座 semester:sɪˈmestə:学期 review:rɪˈvjuː:复习 attitude:ˈætɪtjuːd:态度'],
-      ['科技', 'technology:tekˈnɒlədʒi:技术 device:dɪˈvaɪs:设备 digital:ˈdɪdʒɪtl:数字的 invention:ɪnˈvenʃn:发明 download:ˌdaʊnˈləʊd:下载 network:ˈnetwɜːk:网络 artificial:ˌɑːtɪˈfɪʃl:人工的 robot:ˈrəʊbɒt:机器人 data:ˈdeɪtə:数据 convenient:kənˈviːniənt:方便的'],
-      ['环境', 'pollution:pəˈluːʃn:污染 climate:ˈklaɪmət:气候 recycle:ˌriːˈsaɪkl:回收利用 resource:rɪˈzɔːs:资源 protect:prəˈtekt:保护 waste:weɪst:浪费；废物 energy:ˈenədʒi:能源 species:ˈspiːʃiːz:物种 disaster:dɪˈzɑːstə:灾难 sustainable:səˈsteɪnəbl:可持续的'],
-      ['健康', 'nutrition:njuˈtrɪʃn:营养 balanced:ˈbælənst:均衡的 stress:stres:压力 symptom:ˈsɪmptəm:症状 recover:rɪˈkʌvə:恢复 injury:ˈɪndʒəri:损伤 habit:ˈhæbɪt:习惯 mental:ˈmentl:精神的；心理的 physical:ˈfɪzɪkl:身体的 prevent:prɪˈvent:预防'],
-      ['社会与文化', 'tradition:trəˈdɪʃn:传统 culture:ˈkʌltʃə:文化 festival:ˈfestɪvl:节日 custom:ˈkʌstəm:习俗 community:kəˈmjuːnəti:社区 population:ˌpɒpjuˈleɪʃn:人口 generation:ˌdʒenəˈreɪʃn:一代人 respect:rɪˈspekt:尊重 celebrate:ˈselɪbreɪt:庆祝 influence:ˈɪnfluəns:影响'],
-      ['性格品质', 'confident:ˈkɒnfɪdənt:自信的 patient:ˈpeɪʃnt:耐心的 honest:ˈɒnɪst:诚实的 responsible:rɪˈspɒnsəbl:负责的 generous:ˈdʒenərəs:慷慨的 independent:ˌɪndɪˈpendənt:独立的 curious:ˈkjʊəriəs:好奇的 determined:dɪˈtɜːmɪnd:坚定的 modest:ˈmɒdɪst:谦虚的 ambitious:æmˈbɪʃəs:有抱负的'],
-      ['工作与经济', 'career:kəˈrɪə:职业 salary:ˈsæləri:薪水 interview:ˈɪntəvjuː:面试 experience:ɪkˈspɪəriəns:经验；经历 skill:skɪl:技能 company:ˈkʌmpəni:公司 income:ˈɪnkʌm:收入 budget:ˈbʌdʒɪt:预算 apply:əˈplaɪ:申请 achieve:əˈtʃiːv:实现；达到'],
-      ['高频动词', 'encourage:ɪnˈkʌrɪdʒ:鼓励 suggest:səˈdʒest:建议 require:rɪˈkwaɪə:需要；要求 consider:kənˈsɪdə:考虑 manage:ˈmænɪdʒ:设法做到；管理 involve:ɪnˈvɒlv:涉及 reduce:rɪˈdjuːs:减少 affect:əˈfekt:影响 contribute:kənˈtrɪbjuːt:贡献 appreciate:əˈpriːʃieɪt:感激；欣赏']
+      ['教育', 'curriculum:kəˈrɪkjələm:课程 scholarship:ˈskɒləʃɪp:奖学金 graduate:ˈɡrædʒueɪt:毕业 academic:ˌækəˈdemɪk:学术的 knowledge:ˈnɒlɪdʒ:知识 assignment:əˈsaɪnmənt:作业；任务 lecture:ˈlektʃə:讲座 semester:sɪˈmestə:学期 review:rɪˈvjuː:复习 attitude:ˈætɪtjuːd:态度 qualification:ˌkwɒlɪfɪˈkeɪʃn:资格；学历 certificate:səˈtɪfɪkət:证书 major:ˈmeɪdʒə:专业；主要的 tutor:ˈtjuːtə:导师；家庭教师 professor:prəˈfesə:教授 campus:ˈkæmpəs:校园 dormitory:ˈdɔːmətri:宿舍 admission:ədˈmɪʃn:入学许可；承认 literature:ˈlɪtrətʃə:文学 essay:ˈeseɪ:文章；论文 concentrate:ˈkɒnsntreɪt:集中注意力 revise:rɪˈvaɪz:复习；修改 theory:ˈθɪəri:理论 tuition:tjuˈɪʃn:学费；教学 department:dɪˈpɑːtmənt:系；部门 submit:səbˈmɪt:提交 evaluate:ɪˈvæljueɪt:评估 motivation:ˌməʊtɪˈveɪʃn:动机 diploma:dɪˈpləʊmə:毕业证书 principal:ˈprɪnsəpl:校长；主要的'],
+      ['科技', 'technology:tekˈnɒlədʒi:技术 device:dɪˈvaɪs:设备 digital:ˈdɪdʒɪtl:数字的 invention:ɪnˈvenʃn:发明 download:ˌdaʊnˈləʊd:下载 network:ˈnetwɜːk:网络 artificial:ˌɑːtɪˈfɪʃl:人工的 robot:ˈrəʊbɒt:机器人 data:ˈdeɪtə:数据 convenient:kənˈviːniənt:方便的 internet:ˈɪntənet:互联网 software:ˈsɒftweə:软件 program:ˈprəʊɡræm:程序；节目 laptop:ˈlæptɒp:笔记本电脑 screen:skriːn:屏幕 keyboard:ˈkiːbɔːd:键盘 online:ˌɒnˈlaɪn:在线的 website:ˈwebsaɪt:网站 password:ˈpɑːswɜːd:密码 virtual:ˈvɜːtʃuəl:虚拟的 electronic:ɪˌlekˈtrɒnɪk:电子的 engineer:ˌendʒɪˈnɪə:工程师 scientist:ˈsaɪəntɪst:科学家 experiment:ɪkˈsperɪmənt:实验 develop:dɪˈveləp:发展；开发 function:ˈfʌŋkʃn:功能 equipment:ɪˈkwɪpmənt:设备 satellite:ˈsætəlaɪt:卫星 access:ˈækses:访问；使用权 update:ˌʌpˈdeɪt:更新'],
+      ['环境', 'pollution:pəˈluːʃn:污染 climate:ˈklaɪmət:气候 recycle:ˌriːˈsaɪkl:回收利用 resource:rɪˈzɔːs:资源 protect:prəˈtekt:保护 waste:weɪst:浪费；废物 energy:ˈenədʒi:能源 species:ˈspiːʃiːz:物种 disaster:dɪˈzɑːstə:灾难 sustainable:səˈsteɪnəbl:可持续的 global:ˈɡləʊbl:全球的 warming:ˈwɔːmɪŋ:变暖 carbon:ˈkɑːbən:碳 emission:iˈmɪʃn:排放 rubbish:ˈrʌbɪʃ:垃圾 plastic:ˈplæstɪk:塑料 wildlife:ˈwaɪldlaɪf:野生动物 endangered:ɪnˈdeɪndʒəd:濒危的 extinct:ɪkˈstɪŋkt:灭绝的 habitat:ˈhæbɪtæt:栖息地 flood:flʌd:洪水 drought:draʊt:干旱 earthquake:ˈɜːθkweɪk:地震 atmosphere:ˈætməsfɪə:大气；气氛 oxygen:ˈɒksɪdʒən:氧气 soil:sɔɪl:土壤 harmful:ˈhɑːmfl:有害的 conservation:ˌkɒnsəˈveɪʃn:保护；保存 renewable:rɪˈnjuːəbl:可再生的 fuel:ˈfjuːəl:燃料'],
+      ['健康', 'nutrition:njuˈtrɪʃn:营养 balanced:ˈbælənst:均衡的 stress:stres:压力 symptom:ˈsɪmptəm:症状 recover:rɪˈkʌvə:恢复 injury:ˈɪndʒəri:损伤 habit:ˈhæbɪt:习惯 mental:ˈmentl:精神的；心理的 physical:ˈfɪzɪkl:身体的 prevent:prɪˈvent:预防 disease:dɪˈziːz:疾病 treatment:ˈtriːtmənt:治疗 surgery:ˈsɜːdʒəri:外科手术 clinic:ˈklɪnɪk:诊所 infection:ɪnˈfekʃn:感染 virus:ˈvaɪrəs:病毒 allergy:ˈælədʒi:过敏 immune:ɪˈmjuːn:免疫的 vitamin:ˈvɪtəmɪn:维生素 protein:ˈprəʊtiːn:蛋白质 calorie:ˈkæləri:卡路里 obesity:əʊˈbiːsəti:肥胖 anxiety:æŋˈzaɪəti:焦虑 depressed:dɪˈprest:沮丧的 emergency:ɪˈmɜːdʒənsi:紧急情况 ambulance:ˈæmbjələns:救护车 operation:ˌɒpəˈreɪʃn:手术；操作 prescription:prɪˈskrɪpʃn:处方 wound:wuːnd:伤口 fitness:ˈfɪtnəs:健康；健身'],
+      ['社会与文化', 'tradition:trəˈdɪʃn:传统 culture:ˈkʌltʃə:文化 festival:ˈfestɪvl:节日 custom:ˈkʌstəm:习俗 community:kəˈmjuːnəti:社区 population:ˌpɒpjuˈleɪʃn:人口 generation:ˌdʒenəˈreɪʃn:一代人 respect:rɪˈspekt:尊重 celebrate:ˈselɪbreɪt:庆祝 influence:ˈɪnfluəns:影响 heritage:ˈherɪtɪdʒ:遗产 ancient:ˈeɪnʃənt:古代的 civilization:ˌsɪvəlaɪˈzeɪʃn:文明 religion:rɪˈlɪdʒən:宗教 ceremony:ˈserəməni:典礼 identity:aɪˈdentəti:身份 society:səˈsaɪəti:社会 social:ˈsəʊʃl:社会的；社交的 citizen:ˈsɪtɪzn:公民 charity:ˈtʃærəti:慈善；慈善机构 equality:iˈkwɒləti:平等 diversity:daɪˈvɜːsəti:多样性 immigrant:ˈɪmɪɡrənt:移民 minority:maɪˈnɒrəti:少数；少数民族 native:ˈneɪtɪv:本地的；本国的 folk:fəʊk:民间的；人们 background:ˈbækɡraʊnd:背景 behave:bɪˈheɪv:表现；举止 belief:bɪˈliːf:信念；信仰 exhibition:ˌeksɪˈbɪʃn:展览'],
+      ['性格品质', 'confident:ˈkɒnfɪdənt:自信的 patient:ˈpeɪʃnt:耐心的 honest:ˈɒnɪst:诚实的 responsible:rɪˈspɒnsəbl:负责的 generous:ˈdʒenərəs:慷慨的 independent:ˌɪndɪˈpendənt:独立的 curious:ˈkjʊəriəs:好奇的 determined:dɪˈtɜːmɪnd:坚定的 modest:ˈmɒdɪst:谦虚的 ambitious:æmˈbɪʃəs:有抱负的 cautious:ˈkɔːʃəs:谨慎的 optimistic:ˌɒptɪˈmɪstɪk:乐观的 pessimistic:ˌpesɪˈmɪstɪk:悲观的 selfish:ˈselfɪʃ:自私的 stubborn:ˈstʌbən:固执的 sensitive:ˈsensətɪv:敏感的 reliable:rɪˈlaɪəbl:可靠的 humorous:ˈhjuːmərəs:幽默的 considerate:kənˈsɪdərət:体贴的 energetic:ˌenəˈdʒetɪk:精力充沛的 enthusiastic:ɪnˌθjuːziˈæstɪk:热情的 creative:kriˈeɪtɪv:有创造力的 sincere:sɪnˈsɪə:真诚的 loyal:ˈlɔɪəl:忠诚的 mature:məˈtʃʊə:成熟的 aggressive:əˈɡresɪv:好斗的；有进取心的 positive:ˈpɒzətɪv:积极的 negative:ˈneɡətɪv:消极的 tolerant:ˈtɒlərənt:宽容的 courage:ˈkʌrɪdʒ:勇气'],
+      ['工作与经济', 'career:kəˈrɪə:职业 salary:ˈsæləri:薪水 interview:ˈɪntəvjuː:面试 experience:ɪkˈspɪəriəns:经验；经历 skill:skɪl:技能 company:ˈkʌmpəni:公司 income:ˈɪnkʌm:收入 budget:ˈbʌdʒɪt:预算 apply:əˈplaɪ:申请 achieve:əˈtʃiːv:实现；达到 employ:ɪmˈplɔɪ:雇用 employee:ɪmˈplɔɪiː:雇员 profession:prəˈfeʃn:职业 manager:ˈmænɪdʒə:经理 colleague:ˈkɒliːɡ:同事 business:ˈbɪznəs:生意；商业 economy:ɪˈkɒnəmi:经济 trade:treɪd:贸易 industry:ˈɪndəstri:工业；行业 product:ˈprɒdʌkt:产品 profit:ˈprɒfɪt:利润 loan:ləʊn:贷款 tax:tæks:税 wage:weɪdʒ:工资 resign:rɪˈzaɪn:辞职 hire:ˈhaɪə:雇用；租用 retire:rɪˈtaɪə:退休 unemployment:ˌʌnɪmˈplɔɪmənt:失业 consumer:kənˈsjuːmə:消费者 advertisement:ədˈvɜːtɪsmənt:广告'],
+      ['高频动词', 'encourage:ɪnˈkʌrɪdʒ:鼓励 suggest:səˈdʒest:建议 require:rɪˈkwaɪə:需要；要求 consider:kənˈsɪdə:考虑 manage:ˈmænɪdʒ:设法做到；管理 involve:ɪnˈvɒlv:涉及 reduce:rɪˈdjuːs:减少 affect:əˈfekt:影响 contribute:kənˈtrɪbjuːt:贡献 appreciate:əˈpriːʃieɪt:感激；欣赏 adapt:əˈdæpt:适应 admire:ədˈmaɪə:钦佩 approach:əˈprəʊtʃ:接近；方法 attract:əˈtrækt:吸引 benefit:ˈbenɪfɪt:受益；好处 challenge:ˈtʃælɪndʒ:挑战 concern:kənˈsɜːn:担心；涉及 convince:kənˈvɪns:使信服 survive:səˈvaɪv:幸存；生存 establish:ɪˈstæblɪʃ:建立 focus:ˈfəʊkəs:集中；焦点 guarantee:ˌɡærənˈtiː:保证 identify:aɪˈdentɪfaɪ:识别；确定 indicate:ˈɪndɪkeɪt:表明；指出 maintain:meɪnˈteɪn:维持；保养 obtain:əbˈteɪn:获得 participate:pɑːˈtɪsɪpeɪt:参加 persuade:pəˈsweɪd:说服 promote:prəˈməʊt:促进；提升 recognize:ˈrekəɡnaɪz:认出；承认']
     ],
     sentences: [
       ['被动语态', [
@@ -441,14 +464,14 @@ EN.levels = {
   },
   col: {
     themes: [
-      ['学术写作', 'hypothesis:haɪˈpɒθəsɪs:假设 evidence:ˈevɪdəns:证据 analyze:ˈænəlaɪz:分析 methodology:ˌmeθəˈdɒlədʒi:方法论 significant:sɪɡˈnɪfɪkənt:显著的；重要的 empirical:ɪmˈpɪrɪkl:实证的 framework:ˈfreɪmwɜːk:框架 interpret:ɪnˈtɜːprɪt:解释；诠释 implication:ˌɪmplɪˈkeɪʃn:含义；影响 comprehensive:ˌkɒmprɪˈhensɪv:全面的'],
-      ['逻辑论证', 'assume:əˈsjuːm:假定 justify:ˈdʒʌstɪfaɪ:证明…合理 contradict:ˌkɒntrəˈdɪkt:与…矛盾 consistent:kənˈsɪstənt:一致的 valid:ˈvælɪd:有效的 bias:ˈbaɪəs:偏见 perspective:pəˈspektɪv:视角 premise:ˈpremɪs:前提 inference:ˈɪnfərəns:推论 nuance:ˈnjuːɑːns:细微差别'],
-      ['经济商业', 'inflation:ɪnˈfleɪʃn:通货膨胀 revenue:ˈrevənjuː:收入；营收 investment:ɪnˈvestmənt:投资 recession:rɪˈseʃn:经济衰退 asset:ˈæset:资产 negotiate:nɪˈɡəʊʃieɪt:谈判 entrepreneur:ˌɒntrəprəˈnɜː:企业家 incentive:ɪnˈsentɪv:激励 volatile:ˈvɒlətaɪl:易变的；波动的 leverage:ˈliːvərɪdʒ:杠杆；利用'],
-      ['社会科学', 'ideology:ˌaɪdiˈɒlədʒi:意识形态 inequality:ˌɪnɪˈkwɒləti:不平等 demographic:ˌdeməˈɡræfɪk:人口统计的 institution:ˌɪnstɪˈtjuːʃn:机构；制度 legislation:ˌledʒɪsˈleɪʃn:立法 welfare:ˈwelfeə:福利 autonomy:ɔːˈtɒnəmi:自主权 consensus:kənˈsensəs:共识 marginalize:ˈmɑːdʒɪnəlaɪz:使边缘化 discourse:ˈdɪskɔːs:话语；论述'],
-      ['科学技术', 'phenomenon:fəˈnɒmɪnən:现象 mechanism:ˈmekənɪzəm:机制 variable:ˈveəriəbl:变量 algorithm:ˈælɡərɪðəm:算法 innovation:ˌɪnəˈveɪʃn:创新 synthesis:ˈsɪnθəsɪs:合成；综合 catalyst:ˈkætəlɪst:催化剂 genome:ˈdʒiːnəʊm:基因组 simulate:ˈsɪmjuleɪt:模拟 paradigm:ˈpærədaɪm:范式'],
-      ['描述与评价', 'ambiguous:æmˈbɪɡjuəs:模棱两可的 profound:prəˈfaʊnd:深刻的 inevitable:ɪnˈevɪtəbl:不可避免的 plausible:ˈplɔːzəbl:貌似合理的 substantial:səbˈstænʃl:大量的；实质的 controversial:ˌkɒntrəˈvɜːʃl:有争议的 ubiquitous:juːˈbɪkwɪtəs:无处不在的 pragmatic:præɡˈmætɪk:务实的 meticulous:məˈtɪkjələs:一丝不苟的 arbitrary:ˈɑːbɪtrəri:任意的；武断的'],
-      ['高级动词', 'facilitate:fəˈsɪlɪteɪt:促进；使便利 undermine:ˌʌndəˈmaɪn:削弱 mitigate:ˈmɪtɪɡeɪt:减轻 enhance:ɪnˈhɑːns:增强 allocate:ˈæləkeɪt:分配 advocate:ˈædvəkeɪt:提倡 comply:kəmˈplaɪ:遵守 exploit:ɪkˈsplɔɪt:利用；剥削 attribute:əˈtrɪbjuːt:把…归因于 scrutinize:ˈskruːtənaɪz:仔细审查'],
-      ['连接过渡词', 'nevertheless:ˌnevəðəˈles:然而 furthermore:ˌfɜːðəˈmɔː:此外 consequently:ˈkɒnsɪkwəntli:因此 whereas:weərˈæz:而（表对比） albeit:ɔːlˈbiːɪt:尽管 thereby:ˌðeəˈbaɪ:从而 notwithstanding:ˌnɒtwɪθˈstændɪŋ:尽管 hence:hens:因此 moreover:mɔːrˈəʊvə:而且 conversely:ˈkɒnvɜːsli:相反地']
+      ['学术写作', 'hypothesis:haɪˈpɒθəsɪs:假设 evidence:ˈevɪdəns:证据 analyze:ˈænəlaɪz:分析 methodology:ˌmeθəˈdɒlədʒi:方法论 significant:sɪɡˈnɪfɪkənt:显著的；重要的 empirical:ɪmˈpɪrɪkl:实证的 framework:ˈfreɪmwɜːk:框架 interpret:ɪnˈtɜːprɪt:解释；诠释 implication:ˌɪmplɪˈkeɪʃn:含义；影响 comprehensive:ˌkɒmprɪˈhensɪv:全面的 citation:saɪˈteɪʃn:引用；引文 bibliography:ˌbɪbliˈɒɡrəfi:参考书目 plagiarism:ˈpleɪdʒərɪzəm:剽窃；抄袭 paraphrase:ˈpærəfreɪz:释义；改述 thesis:ˈθiːsɪs:论文；论点 dissertation:ˌdɪsəˈteɪʃn:学位论文 footnote:ˈfʊtnəʊt:脚注 appendix:əˈpendɪks:附录 preliminary:prɪˈlɪmɪnəri:初步的；预备的 qualitative:ˈkwɒlɪtətɪv:定性的 quantitative:ˈkwɒntɪtətɪv:定量的 correlation:ˌkɒrəˈleɪʃn:相关性；关联 criterion:kraɪˈtɪəriən:标准；准则 validate:ˈvælɪdeɪt:验证；证实 elaborate:ɪˈlæbərət:详尽的；精心制作的 coherent:kəʊˈhɪərənt:连贯的；条理清楚的 rigorous:ˈrɪɡərəs:严谨的；严格的 annotate:ˈænəteɪt:注释；给…作注 synopsis:sɪˈnɒpsɪs:概要；梗概 manuscript:ˈmænjuskrɪpt:手稿；稿件'],
+      ['逻辑论证', 'assume:əˈsjuːm:假定 justify:ˈdʒʌstɪfaɪ:证明…合理 contradict:ˌkɒntrəˈdɪkt:与…矛盾 consistent:kənˈsɪstənt:一致的 valid:ˈvælɪd:有效的 bias:ˈbaɪəs:偏见 perspective:pəˈspektɪv:视角 premise:ˈpremɪs:前提 inference:ˈɪnfərəns:推论 nuance:ˈnjuːɑːns:细微差别 fallacy:ˈfæləsi:谬误；谬论 deduce:dɪˈdjuːs:推断；演绎 induction:ɪnˈdʌkʃn:归纳法；就职 refute:rɪˈfjuːt:驳斥；反驳 rebut:rɪˈbʌt:反驳；驳回 assertion:əˈsɜːʃn:断言；主张 counterargument:ˈkaʊntərɑːɡjumənt:反驳论点 postulate:ˈpɒstjuleɪt:假定；假设 rationale:ˌræʃəˈnɑːl:基本原理；理由 contention:kənˈtenʃn:论点；争论 presuppose:ˌpriːsəˈpəʊz:预先假定；以…为前提 corollary:kəˈrɒləri:推论；必然结果 axiom:ˈæksiəm:公理 discrepancy:dɪˈskrepənsi:差异；不一致 dichotomy:daɪˈkɒtəmi:二分法；对立 causation:kɔːˈzeɪʃn:因果关系 substantiate:səbˈstænʃieɪt:证实；证明 concede:kənˈsiːd:承认；让步 rational:ˈræʃnəl:理性的；合理的 paradox:ˈpærədɒks:悖论；自相矛盾'],
+      ['经济商业', 'inflation:ɪnˈfleɪʃn:通货膨胀 revenue:ˈrevənjuː:收入；营收 investment:ɪnˈvestmənt:投资 recession:rɪˈseʃn:经济衰退 asset:ˈæset:资产 negotiate:nɪˈɡəʊʃieɪt:谈判 entrepreneur:ˌɒntrəprəˈnɜː:企业家 incentive:ɪnˈsentɪv:激励 volatile:ˈvɒlətaɪl:易变的；波动的 leverage:ˈliːvərɪdʒ:杠杆；利用 monetary:ˈmʌnɪtəri:货币的；金融的 fiscal:ˈfɪskl:财政的 commodity:kəˈmɒdəti:商品；大宗商品 equity:ˈekwəti:股本；公平 dividend:ˈdɪvɪdend:股息；红利 liability:ˌlaɪəˈbɪləti:负债；责任 merger:ˈmɜːdʒə:合并；兼并 acquisition:ˌækwɪˈzɪʃn:收购；获得 subsidy:ˈsʌbsədi:补贴；津贴 tariff:ˈtærɪf:关税；价目表 deficit:ˈdefɪsɪt:赤字；逆差 surplus:ˈsɜːpləs:盈余；过剩 stakeholder:ˈsteɪkhəʊldə:利益相关者 monopoly:məˈnɒpəli:垄断；专营 procurement:prəˈkjʊəmənt:采购；获得 liquidity:lɪˈkwɪdəti:流动性；变现能力 depreciation:dɪˌpriːʃiˈeɪʃn:贬值；折旧 consumption:kənˈsʌmpʃn:消费；消耗 expenditure:ɪkˈspendɪtʃə:支出；开销 fluctuate:ˈflʌktʃueɪt:波动；起伏'],
+      ['社会科学', 'ideology:ˌaɪdiˈɒlədʒi:意识形态 inequality:ˌɪnɪˈkwɒləti:不平等 demographic:ˌdeməˈɡræfɪk:人口统计的 institution:ˌɪnstɪˈtjuːʃn:机构；制度 legislation:ˌledʒɪsˈleɪʃn:立法 welfare:ˈwelfeə:福利 autonomy:ɔːˈtɒnəmi:自主权 consensus:kənˈsensəs:共识 marginalize:ˈmɑːdʒɪnəlaɪz:使边缘化 discourse:ˈdɪskɔːs:话语；论述 hierarchy:ˈhaɪərɑːki:等级制度；层级 stratification:ˌstrætɪfɪˈkeɪʃn:分层；阶层化 urbanization:ˌɜːbənaɪˈzeɪʃn:城市化 globalization:ˌɡləʊbəlaɪˈzeɪʃn:全球化 ethnicity:eθˈnɪsəti:民族；种族特点 norm:nɔːm:规范；准则 sovereignty:ˈsɒvrənti:主权 bureaucracy:bjʊəˈrɒkrəsi:官僚体制；官僚作风 migration:maɪˈɡreɪʃn:迁移；移民 discrimination:dɪˌskrɪmɪˈneɪʃn:歧视；区别 prejudice:ˈpredʒudɪs:偏见；成见 stereotype:ˈsteriətaɪp:刻板印象；成见 socialization:ˌsəʊʃəlaɪˈzeɪʃn:社会化 kinship:ˈkɪnʃɪp:亲属关系 secular:ˈsekjələ:世俗的；非宗教的 census:ˈsensəs:人口普查 empower:ɪmˈpaʊə:赋权；使能够 mobility:məʊˈbɪləti:流动；迁移能力 civic:ˈsɪvɪk:公民的；市政的 anthropology:ˌænθrəˈpɒlədʒi:人类学'],
+      ['科学技术', 'phenomenon:fəˈnɒmɪnən:现象 mechanism:ˈmekənɪzəm:机制 variable:ˈveəriəbl:变量 algorithm:ˈælɡərɪðəm:算法 innovation:ˌɪnəˈveɪʃn:创新 synthesis:ˈsɪnθəsɪs:合成；综合 catalyst:ˈkætəlɪst:催化剂 genome:ˈdʒiːnəʊm:基因组 simulate:ˈsɪmjuleɪt:模拟 paradigm:ˈpærədaɪm:范式 entropy:ˈentrəpi:熵 wavelength:ˈweɪvleŋθ:波长 spectrum:ˈspektrəm:光谱；范围 velocity:vəˈlɒsəti:速度；速率 kinetic:kɪˈnetɪk:动力学的；运动的 enzyme:ˈenzaɪm:酶 mutation:mjuːˈteɪʃn:突变；变异 organism:ˈɔːɡənɪzəm:生物体；有机体 circuit:ˈsɜːkɪt:电路；环行 semiconductor:ˌsemikənˈdʌktə:半导体 encryption:ɪnˈkrɪpʃn:加密 prototype:ˈprəʊtətaɪp:原型；样机 calibrate:ˈkælɪbreɪt:校准；标定 parameter:pəˈræmɪtə:参数；限定因素 quantum:ˈkwɒntəm:量子；定量 isotope:ˈaɪsətəʊp:同位素 biodiversity:ˌbaɪəʊdaɪˈvɜːsəti:生物多样性 nanotechnology:ˌnænəʊtekˈnɒlədʒi:纳米技术 infrastructure:ˈɪnfrəstrʌktʃə:基础设施 automation:ˌɔːtəˈmeɪʃn:自动化'],
+      ['描述与评价', 'ambiguous:æmˈbɪɡjuəs:模棱两可的 profound:prəˈfaʊnd:深刻的 inevitable:ɪnˈevɪtəbl:不可避免的 plausible:ˈplɔːzəbl:貌似合理的 substantial:səbˈstænʃl:大量的；实质的 controversial:ˌkɒntrəˈvɜːʃl:有争议的 ubiquitous:juːˈbɪkwɪtəs:无处不在的 pragmatic:præɡˈmætɪk:务实的 meticulous:məˈtɪkjələs:一丝不苟的 arbitrary:ˈɑːbɪtrəri:任意的；武断的 compelling:kəmˈpelɪŋ:令人信服的；引人入胜的 superficial:ˌsuːpəˈfɪʃl:肤浅的；表面的 tangible:ˈtændʒəbl:有形的；切实的 intricate:ˈɪntrɪkət:错综复杂的 obsolete:ˈɒbsəliːt:过时的；废弃的 redundant:rɪˈdʌndənt:多余的；冗余的 feasible:ˈfiːzəbl:可行的 viable:ˈvaɪəbl:可行的；能存活的 unprecedented:ʌnˈpresɪdentɪd:史无前例的 prevalent:ˈprevələnt:普遍的；盛行的 vulnerable:ˈvʌlnərəbl:脆弱的；易受伤害的 conspicuous:kənˈspɪkjuəs:显眼的；引人注目的 negligible:ˈneɡlɪdʒəbl:微不足道的；可忽略的 sophisticated:səˈfɪstɪkeɪtɪd:复杂精密的；老练的 robust:rəʊˈbʌst:强健的；稳健的 inherent:ɪnˈhɪərənt:固有的；内在的 paramount:ˈpærəmaʊnt:至关重要的；最高的 exemplary:ɪɡˈzempləri:模范的；典范的 tedious:ˈtiːdiəs:冗长乏味的 indispensable:ˌɪndɪˈspensəbl:不可或缺的'],
+      ['高级动词', 'facilitate:fəˈsɪlɪteɪt:促进；使便利 undermine:ˌʌndəˈmaɪn:削弱 mitigate:ˈmɪtɪɡeɪt:减轻 enhance:ɪnˈhɑːns:增强 allocate:ˈæləkeɪt:分配 advocate:ˈædvəkeɪt:提倡 comply:kəmˈplaɪ:遵守 exploit:ɪkˈsplɔɪt:利用；剥削 attribute:əˈtrɪbjuːt:把…归因于 scrutinize:ˈskruːtənaɪz:仔细审查 undertake:ˌʌndəˈteɪk:承担；着手 consolidate:kənˈsɒlɪdeɪt:巩固；合并 alleviate:əˈliːvieɪt:缓解；减轻 exacerbate:ɪɡˈzæsəbeɪt:加剧；使恶化 implement:ˈɪmplɪment:实施；执行 formulate:ˈfɔːmjuleɪt:制定；阐述 foster:ˈfɒstə:培养；促进 hinder:ˈhɪndə:阻碍；妨碍 accommodate:əˈkɒmədeɪt:容纳；适应 compile:kəmˈpaɪl:汇编；编译 convene:kənˈviːn:召集；召开 disseminate:dɪˈsemɪneɪt:传播；散布 emulate:ˈemjuleɪt:效仿；仿真 reconcile:ˈrekənsaɪl:调和；使和解 perpetuate:pəˈpetʃueɪt:使延续；使永久化 circumvent:ˌsɜːkəmˈvent:规避；绕过 articulate:ɑːˈtɪkjuleɪt:清楚表达；阐明 augment:ɔːɡˈment:增加；扩大 delineate:dɪˈlɪnieɪt:描绘；阐明 streamline:ˈstriːmlaɪn:精简；使高效'],
+      ['连接过渡词', 'nevertheless:ˌnevəðəˈles:然而 furthermore:ˌfɜːðəˈmɔː:此外 consequently:ˈkɒnsɪkwəntli:因此 whereas:weərˈæz:而（表对比） albeit:ɔːlˈbiːɪt:尽管 thereby:ˌðeəˈbaɪ:从而 notwithstanding:ˌnɒtwɪθˈstændɪŋ:尽管 hence:hens:因此 moreover:mɔːrˈəʊvə:而且 conversely:ˈkɒnvɜːsli:相反地 however:haʊˈevə:然而；无论如何 meanwhile:ˈmiːnwaɪl:与此同时 thus:ðʌs:因此；如此 accordingly:əˈkɔːdɪŋli:因此；相应地 likewise:ˈlaɪkwaɪz:同样地 similarly:ˈsɪmələli:类似地 nonetheless:ˌnʌnðəˈles:尽管如此 additionally:əˈdɪʃənəli:此外；另外 subsequently:ˈsʌbsɪkwəntli:随后；后来 alternatively:ɔːlˈtɜːnətɪvli:或者；作为选择 namely:ˈneɪmli:即；也就是 whereby:weəˈbaɪ:借以；凭此 indeed:ɪnˈdiːd:确实；实际上 ultimately:ˈʌltɪmətli:最终；根本上 admittedly:ədˈmɪtɪdli:诚然；不可否认 specifically:spəˈsɪfɪkli:具体来说；特别地 thereafter:ˌðeərˈɑːftə:此后 henceforth:ˌhensˈfɔːθ:从今以后 hitherto:ˌhɪðəˈtuː:迄今；到目前为止 whilst:waɪlst:当…时；而']
     ],
     sentences: [
       ['学术表达', [
@@ -526,6 +549,8 @@ EN.levels = {
     ]
   }
 };
+
+EN.lev = {"rimes": [{"rime": "at", "ipa": "æt", "words": [["cat", "猫"], ["hat", "帽子"], ["bat", "蝙蝠；球拍"], ["mat", "垫子"], ["rat", "老鼠"], ["sat", "坐（sit的过去式）"], ["fat", "胖的"], ["pat", "轻拍"]]}, {"rime": "an", "ipa": "æn", "words": [["can", "能；罐头"], ["man", "男人"], ["fan", "风扇；粉丝"], ["pan", "平底锅"], ["ran", "跑（run的过去式）"], ["van", "面包车"], ["tan", "晒黑"], ["plan", "计划"]]}, {"rime": "ap", "ipa": "æp", "words": [["cap", "帽子"], ["map", "地图"], ["nap", "小睡"], ["tap", "轻敲；水龙头"], ["clap", "拍手"], ["lap", "大腿上部；一圈"], ["snap", "折断；啪地一声"], ["trap", "陷阱"]]}, {"rime": "ag", "ipa": "æɡ", "words": [["bag", "包"], ["rag", "抹布"], ["tag", "标签"], ["wag", "摇摆（尾巴）"], ["flag", "旗子"], ["drag", "拖"], ["snag", "钩住；小障碍"]]}, {"rime": "en", "ipa": "ɛn", "words": [["ten", "十"], ["pen", "钢笔"], ["hen", "母鸡"], ["men", "男人们"], ["den", "兽穴"], ["then", "然后"], ["when", "什么时候"]]}, {"rime": "et", "ipa": "ɛt", "words": [["net", "网"], ["pet", "宠物"], ["wet", "湿的"], ["jet", "喷气式飞机"], ["get", "得到"], ["let", "让"], ["set", "放置；一套"], ["vet", "兽医"]]}, {"rime": "ed", "ipa": "ɛd", "words": [["bed", "床"], ["red", "红色的"], ["fed", "喂（feed的过去式）"], ["led", "带领（lead的过去式）"], ["sled", "雪橇"], ["shed", "小棚屋"]]}, {"rime": "ig", "ipa": "ɪɡ", "words": [["big", "大的"], ["pig", "猪"], ["dig", "挖"], ["wig", "假发"], ["fig", "无花果"], ["twig", "细树枝"]]}, {"rime": "in", "ipa": "ɪn", "words": [["pin", "别针"], ["win", "赢"], ["bin", "垃圾箱"], ["fin", "鱼鳍"], ["tin", "锡；罐头"], ["chin", "下巴"], ["thin", "瘦的；薄的"], ["spin", "旋转"]]}, {"rime": "it", "ipa": "ɪt", "words": [["sit", "坐"], ["hit", "打"], ["bit", "一点儿"], ["fit", "合适的"], ["kit", "成套工具"], ["pit", "坑"], ["knit", "编织"], ["quit", "放弃"]]}, {"rime": "ip", "ipa": "ɪp", "words": [["lip", "嘴唇"], ["hip", "臀部"], ["dip", "蘸"], ["tip", "小费；尖端"], ["ship", "船"], ["trip", "旅行"], ["zip", "拉链"], ["drip", "滴"]]}, {"rime": "op", "ipa": "ɒp", "words": [["top", "顶部"], ["hop", "单脚跳"], ["mop", "拖把"], ["pop", "砰的一声；流行音乐"], ["stop", "停止"], ["shop", "商店"], ["drop", "掉落"], ["chop", "砍；剁"]]}, {"rime": "ot", "ipa": "ɒt", "words": [["hot", "热的"], ["pot", "锅"], ["dot", "点"], ["not", "不"], ["got", "得到（get的过去式）"], ["lot", "许多"], ["spot", "斑点；地点"], ["knot", "结"]]}, {"rime": "og", "ipa": "ɒɡ", "words": [["dog", "狗"], ["log", "原木"], ["fog", "雾"], ["hog", "猪"], ["frog", "青蛙"], ["jog", "慢跑"]]}, {"rime": "ug", "ipa": "ʌɡ", "words": [["bug", "虫子"], ["hug", "拥抱"], ["mug", "马克杯"], ["rug", "小地毯"], ["jug", "水壶"], ["dug", "挖（dig的过去式）"], ["plug", "插头"]]}, {"rime": "un", "ipa": "ʌn", "words": [["sun", "太阳"], ["fun", "乐趣"], ["run", "跑"], ["bun", "小圆面包"], ["spun", "旋转（spin的过去式）"], ["stun", "使震惊"]]}, {"rime": "ake", "ipa": "eɪk", "words": [["cake", "蛋糕"], ["lake", "湖"], ["make", "制作"], ["take", "拿"], ["bake", "烘烤"], ["wake", "醒来"], ["snake", "蛇"], ["shake", "摇动"]]}, {"rime": "ain", "ipa": "eɪn", "words": [["rain", "雨"], ["pain", "疼痛"], ["main", "主要的"], ["train", "火车"], ["brain", "大脑"], ["chain", "链子"], ["gain", "获得"]]}, {"rime": "ay", "ipa": "eɪ", "words": [["day", "天"], ["play", "玩"], ["say", "说"], ["way", "路；方法"], ["may", "可以"], ["pay", "付钱"], ["stay", "停留"], ["gray", "灰色的"]]}, {"rime": "ell", "ipa": "ɛl", "words": [["bell", "铃"], ["tell", "告诉"], ["well", "好地；井"], ["sell", "卖"], ["shell", "贝壳"], ["smell", "闻"], ["spell", "拼写"], ["yell", "大喊"]]}, {"rime": "ill", "ipa": "ɪl", "words": [["hill", "小山"], ["fill", "装满"], ["will", "将会"], ["pill", "药片"], ["mill", "磨坊"], ["still", "仍然"], ["spill", "洒出"]]}, {"rime": "ing", "ipa": "ɪŋ", "words": [["king", "国王"], ["ring", "戒指；铃响"], ["sing", "唱歌"], ["wing", "翅膀"], ["thing", "东西"], ["spring", "春天"], ["bring", "带来"], ["swing", "秋千"]]}, {"rime": "ight", "ipa": "aɪt", "words": [["night", "夜晚"], ["light", "光；轻的"], ["right", "对的；右边"], ["fight", "打架"], ["tight", "紧的"], ["sight", "视力；景象"], ["bright", "明亮的"], ["might", "可能"]]}, {"rime": "ink", "ipa": "ɪŋk", "words": [["pink", "粉色的"], ["sink", "水槽；下沉"], ["think", "想"], ["drink", "喝"], ["wink", "眨眼"], ["link", "链接"], ["blink", "眨眼睛"]]}], "affixes": [{"affix": "un-", "kind": "prefix", "mean": "不；相反", "rule": "加在形容词前表示否定，加在动词前表示相反动作", "pairs": [["happy", "unhappy", "不高兴的"], ["kind", "unkind", "不友善的"], ["lucky", "unlucky", "不幸运的"], ["able", "unable", "不能的"], ["fair", "unfair", "不公平的"], ["friendly", "unfriendly", "不友好的"], ["safe", "unsafe", "不安全的"], ["known", "unknown", "未知的"], ["tidy", "untidy", "不整洁的"], ["lock", "unlock", "开锁"]]}, {"affix": "re-", "kind": "prefix", "mean": "再；重新", "rule": "加在动词前表示再做一次", "pairs": [["do", "redo", "重做"], ["write", "rewrite", "重写"], ["read", "reread", "重读"], ["play", "replay", "重放"], ["build", "rebuild", "重建"], ["fill", "refill", "重新装满"], ["use", "reuse", "再利用"], ["tell", "retell", "复述"], ["visit", "revisit", "重游"], ["new", "renew", "更新；续期"]]}, {"affix": "dis-", "kind": "prefix", "mean": "不；相反；消除", "rule": "加在动词或形容词前表示否定或相反", "pairs": [["like", "dislike", "不喜欢"], ["agree", "disagree", "不同意"], ["appear", "disappear", "消失"], ["honest", "dishonest", "不诚实的"], ["obey", "disobey", "不服从"], ["connect", "disconnect", "断开"], ["order", "disorder", "混乱"], ["trust", "distrust", "不信任"], ["advantage", "disadvantage", "缺点；劣势"]]}, {"affix": "im-/in-", "kind": "prefix", "mean": "不；无", "rule": "加在形容词前表示否定；在p、m、b前多用im-", "pairs": [["possible", "impossible", "不可能的"], ["polite", "impolite", "不礼貌的"], ["patient", "impatient", "不耐烦的"], ["perfect", "imperfect", "不完美的"], ["correct", "incorrect", "不正确的"], ["complete", "incomplete", "不完整的"], ["visible", "invisible", "看不见的"], ["formal", "informal", "非正式的"], ["direct", "indirect", "间接的"], ["dependent", "independent", "独立的"]]}, {"affix": "pre-", "kind": "prefix", "mean": "在……之前；预先", "rule": "加在词前表示时间或顺序在前", "pairs": [["view", "preview", "预习；预览"], ["school", "preschool", "幼儿园；学前的"], ["pay", "prepay", "预付"], ["heat", "preheat", "预热"], ["historic", "prehistoric", "史前的"], ["war", "prewar", "战前的"], ["test", "pretest", "预测试"], ["cook", "precook", "预先烹调"]]}, {"affix": "-er", "kind": "suffix", "mean": "做……的人或物", "rule": "加在动词后表示人或工具；以e结尾只加r，重读闭音节双写末字母", "pairs": [["teach", "teacher", "老师"], ["play", "player", "运动员；玩家"], ["farm", "farmer", "农民"], ["sing", "singer", "歌手"], ["run", "runner", "跑步者"], ["write", "writer", "作家"], ["drive", "driver", "司机"], ["swim", "swimmer", "游泳者"], ["dance", "dancer", "舞者"], ["paint", "painter", "画家"]]}, {"affix": "-or", "kind": "suffix", "mean": "做……的人", "rule": "加在动词后表示人，多用于以t结尾的动词", "pairs": [["act", "actor", "演员"], ["visit", "visitor", "参观者"], ["direct", "director", "导演；主管"], ["invent", "inventor", "发明家"], ["sail", "sailor", "水手"], ["edit", "editor", "编辑"], ["collect", "collector", "收藏家"], ["translate", "translator", "翻译者"], ["instruct", "instructor", "教练"]]}, {"affix": "-ful", "kind": "suffix", "mean": "充满……的", "rule": "加在名词后变形容词；y结尾变i再加ful", "pairs": [["help", "helpful", "有帮助的"], ["care", "careful", "小心的"], ["hope", "hopeful", "有希望的"], ["use", "useful", "有用的"], ["color", "colorful", "多彩的"], ["beauty", "beautiful", "美丽的"], ["wonder", "wonderful", "极好的"], ["pain", "painful", "疼痛的"], ["thank", "thankful", "感激的"], ["peace", "peaceful", "和平的；宁静的"]]}, {"affix": "-less", "kind": "suffix", "mean": "没有……的", "rule": "加在名词后变形容词，意思与-ful相反", "pairs": [["care", "careless", "粗心的"], ["help", "helpless", "无助的"], ["home", "homeless", "无家可归的"], ["hope", "hopeless", "没希望的"], ["use", "useless", "没用的"], ["end", "endless", "无尽的"], ["fear", "fearless", "无畏的"], ["pain", "painless", "无痛的"], ["sleep", "sleepless", "失眠的"], ["harm", "harmless", "无害的"]]}, {"affix": "-ly", "kind": "suffix", "mean": "……地", "rule": "加在形容词后变副词；辅音加y变i，le结尾去e加y", "pairs": [["quick", "quickly", "快速地"], ["slow", "slowly", "慢慢地"], ["happy", "happily", "快乐地"], ["easy", "easily", "容易地"], ["careful", "carefully", "小心地"], ["loud", "loudly", "大声地"], ["quiet", "quietly", "安静地"], ["sad", "sadly", "悲伤地"], ["gentle", "gently", "温柔地"], ["real", "really", "真正地"]]}, {"affix": "-ness", "kind": "suffix", "mean": "……的性质或状态", "rule": "加在形容词后变名词；辅音加y变i", "pairs": [["kind", "kindness", "善良"], ["happy", "happiness", "幸福"], ["dark", "darkness", "黑暗"], ["sad", "sadness", "悲伤"], ["good", "goodness", "善良；美德"], ["ill", "illness", "疾病"], ["lazy", "laziness", "懒惰"], ["weak", "weakness", "弱点"], ["fit", "fitness", "健康；健身"], ["sick", "sickness", "疾病"]]}, {"affix": "-able", "kind": "suffix", "mean": "可以……的；值得……的", "rule": "加在动词或名词后变形容词；不发音的e常去掉，y变i", "pairs": [["read", "readable", "易读的"], ["wash", "washable", "可洗的"], ["enjoy", "enjoyable", "令人愉快的"], ["comfort", "comfortable", "舒适的"], ["drink", "drinkable", "可饮用的"], ["accept", "acceptable", "可接受的"], ["rely", "reliable", "可靠的"], ["value", "valuable", "有价值的"], ["believe", "believable", "可信的"], ["love", "lovable", "可爱的"]]}, {"affix": "-tion", "kind": "suffix", "mean": "……的行为或结果", "rule": "加在动词后变名词；以e结尾去e", "pairs": [["create", "creation", "创造；作品"], ["act", "action", "行动"], ["invent", "invention", "发明"], ["educate", "education", "教育"], ["direct", "direction", "方向"], ["protect", "protection", "保护"], ["inform", "information", "信息"], ["collect", "collection", "收藏"], ["celebrate", "celebration", "庆祝"], ["pollute", "pollution", "污染"]]}, {"affix": "-ment", "kind": "suffix", "mean": "……的行为或结果", "rule": "加在动词后变名词，拼写通常不变", "pairs": [["move", "movement", "运动；动作"], ["agree", "agreement", "协议；同意"], ["pay", "payment", "付款"], ["enjoy", "enjoyment", "乐趣"], ["develop", "development", "发展"], ["govern", "government", "政府"], ["excite", "excitement", "兴奋"], ["treat", "treatment", "治疗；对待"], ["equip", "equipment", "设备"], ["manage", "management", "管理"]]}, {"affix": "-y", "kind": "suffix", "mean": "有……的；多……的", "rule": "加在名词后变形容词；重读闭音节双写末字母，e结尾去e", "pairs": [["rain", "rainy", "下雨的"], ["sun", "sunny", "晴朗的"], ["wind", "windy", "刮风的"], ["cloud", "cloudy", "多云的"], ["snow", "snowy", "下雪的"], ["salt", "salty", "咸的"], ["noise", "noisy", "吵闹的"], ["health", "healthy", "健康的"], ["luck", "lucky", "幸运的"], ["dirt", "dirty", "脏的"], ["fog", "foggy", "有雾的"]]}, {"affix": "-ist", "kind": "suffix", "mean": "从事……的人；……家", "rule": "加在名词后表示专业人士或爱好者", "pairs": [["art", "artist", "艺术家"], ["science", "scientist", "科学家"], ["piano", "pianist", "钢琴家"], ["tour", "tourist", "游客"], ["violin", "violinist", "小提琴手"], ["guitar", "guitarist", "吉他手"], ["novel", "novelist", "小说家"], ["journal", "journalist", "记者"]]}], "families": [{"root": "help", "zh": "帮助", "words": [["helper", "帮手"], ["helpful", "有帮助的"], ["helpless", "无助的"], ["unhelpful", "没帮助的"], ["helpfully", "有帮助地"], ["helpfulness", "乐于助人"]]}, {"root": "care", "zh": "关心；小心", "words": [["careful", "小心的"], ["carefully", "小心地"], ["careless", "粗心的"], ["carelessly", "粗心地"], ["caring", "有爱心的"], ["carefree", "无忧无虑的"]]}, {"root": "use", "zh": "使用", "words": [["useful", "有用的"], ["useless", "没用的"], ["user", "用户"], ["usage", "用法"], ["reuse", "再利用"], ["misuse", "误用"], ["usefulness", "用处"]]}, {"root": "play", "zh": "玩；演奏", "words": [["player", "运动员；玩家"], ["playful", "爱玩的"], ["playground", "操场"], ["replay", "重放"], ["playmate", "玩伴"], ["playfully", "顽皮地"]]}, {"root": "teach", "zh": "教", "words": [["teacher", "老师"], ["teaching", "教学"], ["teachable", "可教的"], ["schoolteacher", "中小学教师"]]}, {"root": "act", "zh": "行动；表演", "words": [["actor", "男演员"], ["actress", "女演员"], ["action", "行动"], ["active", "积极的"], ["activity", "活动"], ["actively", "积极地"], ["react", "反应"], ["activate", "激活"]]}, {"root": "friend", "zh": "朋友", "words": [["friendly", "友好的"], ["unfriendly", "不友好的"], ["friendship", "友谊"], ["friendless", "没有朋友的"], ["friendliness", "友善"], ["befriend", "和……交朋友"]]}, {"root": "hope", "zh": "希望", "words": [["hopeful", "有希望的"], ["hopeless", "没希望的"], ["hopefully", "但愿；有希望地"], ["hopelessly", "绝望地"], ["hopefulness", "充满希望"]]}, {"root": "kind", "zh": "友善的", "words": [["kindness", "善良"], ["unkind", "不友善的"], ["kindly", "亲切地"], ["unkindness", "不友善"], ["kindhearted", "好心的"]]}, {"root": "success", "zh": "成功", "words": [["succeed", "成功（动词）"], ["successful", "成功的"], ["successfully", "成功地"], ["unsuccessful", "不成功的"]]}, {"root": "create", "zh": "创造", "words": [["creation", "创造；作品"], ["creative", "有创造力的"], ["creator", "创造者"], ["creativity", "创造力"], ["creatively", "有创意地"], ["recreate", "再现"]]}, {"root": "power", "zh": "力量", "words": [["powerful", "强大的"], ["powerless", "无力的"], ["powerfully", "强有力地"], ["empower", "授权；使能够"], ["powerhouse", "发电站；强者"]]}, {"root": "comfort", "zh": "舒适；安慰", "words": [["comfortable", "舒适的"], ["uncomfortable", "不舒服的"], ["comfortably", "舒适地"], ["comforting", "令人安慰的"], ["discomfort", "不适"]]}, {"root": "agree", "zh": "同意", "words": [["agreement", "协议；同意"], ["disagree", "不同意"], ["disagreement", "分歧"], ["agreeable", "令人愉快的；同意的"], ["agreed", "同意的"]]}, {"root": "depend", "zh": "依靠", "words": [["dependent", "依赖的"], ["independent", "独立的"], ["dependence", "依赖"], ["independence", "独立"], ["dependable", "可靠的"], ["independently", "独立地"]]}, {"root": "nation", "zh": "国家；民族", "words": [["national", "国家的"], ["nationality", "国籍"], ["international", "国际的"], ["nationally", "全国性地"], ["nationwide", "全国范围的"]]}], "compounds": [["sun", "flower", "sunflower", "向日葵"], ["foot", "ball", "football", "足球"], ["class", "room", "classroom", "教室"], ["rain", "bow", "rainbow", "彩虹"], ["birth", "day", "birthday", "生日"], ["home", "work", "homework", "家庭作业"], ["bed", "room", "bedroom", "卧室"], ["tooth", "brush", "toothbrush", "牙刷"], ["snow", "man", "snowman", "雪人"], ["butter", "fly", "butterfly", "蝴蝶"], ["air", "port", "airport", "机场"], ["week", "end", "weekend", "周末"], ["some", "times", "sometimes", "有时"], ["every", "one", "everyone", "每个人"], ["play", "ground", "playground", "操场"], ["book", "shop", "bookshop", "书店"], ["sun", "light", "sunlight", "阳光"], ["rain", "coat", "raincoat", "雨衣"], ["hand", "bag", "handbag", "手提包"], ["fire", "man", "fireman", "消防员"], ["sun", "shine", "sunshine", "阳光"], ["basket", "ball", "basketball", "篮球"], ["bath", "room", "bathroom", "浴室；卫生间"], ["note", "book", "notebook", "笔记本"], ["door", "bell", "doorbell", "门铃"], ["tea", "pot", "teapot", "茶壶"], ["sea", "food", "seafood", "海鲜"], ["grand", "mother", "grandmother", "祖母；外婆"], ["moon", "light", "moonlight", "月光"], ["gold", "fish", "goldfish", "金鱼"], ["pop", "corn", "popcorn", "爆米花"], ["post", "man", "postman", "邮递员"], ["super", "market", "supermarket", "超市"], ["key", "board", "keyboard", "键盘"], ["cup", "cake", "cupcake", "纸杯蛋糕"], ["pan", "cake", "pancake", "煎饼"], ["fire", "work", "firework", "烟花"], ["earth", "quake", "earthquake", "地震"], ["school", "bag", "schoolbag", "书包"], ["news", "paper", "newspaper", "报纸"], ["light", "house", "lighthouse", "灯塔"], ["black", "board", "blackboard", "黑板"], ["after", "noon", "afternoon", "下午"], ["back", "pack", "backpack", "双肩背包"], ["snow", "ball", "snowball", "雪球"], ["star", "fish", "starfish", "海星"], ["water", "melon", "watermelon", "西瓜"], ["any", "one", "anyone", "任何人"]]};
 
 </script>
 <script>
@@ -738,7 +763,7 @@ EN.levels = {
   }
 
   /* ================= views ================= */
-  function show(v) { var vs = ['vHome', 'vStudy', 'vQuiz']; for (var i = 0; i < vs.length; i++) $(vs[i]).className = 'view' + (vs[i] === v ? ' on' : ''); window.scrollTo(0, 0); }
+  function show(v) { var vs = ['vHome', 'vStudy', 'vQuiz', 'vLev']; for (var i = 0; i < vs.length; i++) $(vs[i]).className = 'view' + (vs[i] === v ? ' on' : ''); window.scrollTo(0, 0); }
   function key(it) { return it.w; }
   function flash(msg, cls) { var e = $('fb'); if (e) { e.textContent = msg; e.className = 'fb ' + (cls || ''); } }
   $('homeBtn').onclick = function () { showHome(); };
@@ -753,7 +778,7 @@ EN.levels = {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     var h = '<div class="lvtabs">';
     for (var t = 0; t < LEVELS.length; t++) h += '<button class="lvt' + (LEVELS[t][0] === LEVEL ? ' on' : '') + '" data-lv="' + LEVELS[t][0] + '">' + LEVELS[t][1] + '<small>' + { elem: 'Elementary', mid: 'Middle School', high: 'High School', col: 'College' }[LEVELS[t][0]] + '</small></button>';
-    h += '</div><div class="card free"><h3>自己输入要练写的单词或句子</h3><div class="frow"><input id="freeIn" placeholder="例如：I love my family" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
+    h += '</div><button class="card levhome" id="levGo"><b>🪄 以少胜多</b><div>30 个词说出 0–999,999 · 一个结尾读一串词 · 一个后缀变几百个词 · 两个小词拼新词</div></button><div class="card free"><h3>自己输入要练写的单词或句子</h3><div class="frow"><input id="freeIn" placeholder="例如：I love my family" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
     var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0;
     var sHtml = '';
     for (var i = 0; i < LESSONS.length; i++) {
@@ -770,6 +795,7 @@ EN.levels = {
     var bs = $('vHome').querySelectorAll('.lesson');
     for (i = 0; i < bs.length; i++) bs[i].onclick = function () { var k = +this.getAttribute('data-i'); if (LESSONS[k].kind === 'sent') openSet(LESSONS[k], k); else openLesson(LESSONS[k], k); };
     $('freeGo').onclick = startFree;
+    $('levGo').onclick = function () { showLev(); };
     $('freeIn').onkeydown = function (e) { if (e.keyCode === 13) startFree(); };
     var lt = $('vHome').querySelectorAll('.lvt');
     for (i = 0; i < lt.length; i++) lt[i].onclick = function () { LEVEL = this.getAttribute('data-lv'); put('level', LEVEL); buildLessons(LEVEL); showHome(); };
@@ -783,6 +809,7 @@ EN.levels = {
   }
 
   function openLesson(l, li) { lesson = l; lesson.li = li; idx = 0; renderStudy(); show('vStudy'); }
+  function goBack() { if (lesson && lesson.back) lesson.back(); else showHome(); }
   function renderStudy() {
     if (board) { board.destroy(); board = null; }
     var it = lesson.items[idx], i;
@@ -801,7 +828,7 @@ EN.levels = {
     var avail = document.querySelector('main').clientWidth - 60;
     board = Board($('board'), it.w, it.letter ? 230 : 170, Math.min(avail, 640));
     $('info').textContent = it.letter ? '共 ' + board.strokes.length + ' 笔' : '共 ' + board.letters + ' 个字母 · ' + board.strokes.length + ' 笔';
-    $('backBtn').onclick = showHome;
+    $('backBtn').onclick = goBack;
     $('quizBtn').onclick = function () { startQuiz(lesson); };
     $('bSay').onclick = function () { sayItem(it); };
     if ($('exBtn')) $('exBtn').onclick = function () { say(it.ex.w); };
@@ -926,14 +953,14 @@ EN.levels = {
       for (i = 0; i < it.toks.length; i++) h += '<button class="btn pword" style="margin:0 4px 8px;font-size:19px" data-k="' + i + '">' + esc(it.toks[i]) + (i === it.toks.length - 1 ? it.end : '') + '</button>';
       h += '</div><button class="btn primary" id="pOk" style="min-width:140px">确认</button>';
     }
-    h += '<div class="fb" id="fb" style="margin-top:12px"></div><div id="tip" class="hint" style="margin-top:6px"></div></div>';
+    h += '<div class="fb" id="qfb" style="margin-top:12px"></div><div id="tip" class="hint" style="margin-top:6px"></div></div>';
     $('vQuiz').innerHTML = h;
     $('qBack').onclick = function () { openSet(quiz.l, quiz.l.li); };
     if ($('qSay')) $('qSay').onclick = function () { say(it.en, 0.85); };
     function done(ok, tip) {
       if (ok) quiz.score++;
-      $('fb').innerHTML = (ok ? '✓ ' : '✗ ') + esc(it.en);
-      $('fb').className = 'fb ' + (ok ? 'ok' : 'bad');
+      $('qfb').innerHTML = (ok ? '✓ ' : '✗ ') + esc(it.en);
+      $('qfb').className = 'fb ' + (ok ? 'ok' : 'bad');
       $('tip').textContent = tip || '';
       say(it.en, 0.85);
       var nx = document.createElement('button'); nx.className = 'btn primary'; nx.style.marginTop = '12px'; nx.textContent = quiz.i + 1 < quiz.qs.length ? '下一题 ›' : '看成绩';
@@ -1010,7 +1037,7 @@ EN.levels = {
     var pool = shuffle(l.items.slice()), qs = [], i, all = [];
     for (i = 0; i < LESSONS.length; i++) if (LESSONS[i].kind === l.kind) all = all.concat(LESSONS[i].items);
     if (l.id === 'free') all = l.items.slice();
-    for (i = 0; i < Math.min(10, pool.length); i++) {
+    for (i = 0; i < Math.min(30, pool.length); i++) {
       var ans = pool[i], type;
       if (l.kind === 'letters') type = Math.random() < 0.5 ? 'listen' : 'case';
       else { var r = Math.random(); type = ans.free ? (r < 0.5 ? 'listen' : 'spell') : r < 0.34 ? 'listen' : r < 0.67 ? 'meaning' : 'spell'; }
@@ -1026,15 +1053,16 @@ EN.levels = {
       }
       qs.push(q);
     }
-    quiz = { l: l, qs: qs, i: 0, score: 0, lock: false };
-    show('vQuiz'); renderQ();
+    runQuiz({ l: l, qs: qs });
   }
+  function runQuiz(o) { quiz = o; quiz.i = 0; quiz.score = 0; quiz.lock = false; show('vQuiz'); renderQ(); }
   function optLabel(q, o) { return q.type === 'case' ? (o.w === o.w.toUpperCase() ? o.w.toLowerCase() : o.w.toUpperCase()) : o.w; }
   function renderQ() {
     var q = quiz.qs[quiz.i], h = '<div class="sbar"><button class="btn ghost" id="qBack">‹ 返回</button><div class="ti">第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题</div><span style="width:70px"></span></div><div class="card qcard">';
-    var prompt = { listen: '听一听，选出正确的' + (quiz.l.kind === 'letters' ? '字母' : '单词'), 'case': '找出对应的' + (q.ans.w === q.ans.w.toUpperCase() ? '小写' : '大写') + '字母', meaning: '选出对应的英文单词', spell: '听一听，拼出这个单词' }[q.type];
+    var prompt = q.custom ? q.label : { listen: '听一听，选出正确的' + (quiz.l && quiz.l.kind === 'letters' ? '字母' : '单词'), 'case': '找出对应的' + (q.ans.w === q.ans.w.toUpperCase() ? '小写' : '大写') + '字母', meaning: '选出对应的英文单词', spell: '听一听，拼出这个单词' }[q.type];
     h += '<div class="qp">' + prompt + '</div>';
-    if (q.type === 'listen') h += '<div class="qq"><button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button></div>';
+    if (q.custom) h += '<div class="qq">' + q.prompt + '</div>';
+    else if (q.type === 'listen') h += '<div class="qq"><button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button></div>';
     else if (q.type === 'case') h += '<div class="qq" style="font-size:52px">' + esc(q.ans.w) + '</div>';
     else if (q.type === 'meaning') h += '<div class="qq">' + esc(q.ans.zh) + '</div>';
     else h += '<div class="qq" style="font-size:22px">' + (q.ans.zh ? esc(q.ans.zh) + ' ' : '') + '<button class="btn primary" id="qSay">🔊</button></div>';
@@ -1043,18 +1071,19 @@ EN.levels = {
       for (s = 0; s < q.tiles.length; s++) h += '<button class="btn tile" data-t="' + s + '">' + q.tiles[s] + '</button>';
       h += '</div><div style="margin-top:6px"><button class="btn ghost" id="qBackspace">⌫ 删除</button></div>';
     } else {
-      h += '<div class="opts">'; for (var i = 0; i < q.opts.length; i++) h += '<button class="btn opt" data-i="' + i + '">' + esc(optLabel(q, q.opts[i])) + '</button>'; h += '</div>';
+      h += '<div class="opts">'; for (var i = 0; i < q.opts.length; i++) h += '<button class="btn opt' + (q.small ? ' small' : '') + '" data-i="' + i + '">' + esc(optLabel(q, q.opts[i])) + '</button>'; h += '</div>';
     }
-    h += '<div class="fb" id="fb"></div></div>';
+    h += '<div class="fb" id="qfb"></div></div>';
     $('vQuiz').innerHTML = h;
-    $('qBack').onclick = function () { openLesson(quiz.l, quiz.l.li); };
-    if ($('qSay')) { $('qSay').onclick = function () { sayItem(q.ans); }; if (q.type === 'listen' || q.type === 'spell') setTimeout(function () { sayItem(q.ans); }, 200); }
+    $('qBack').onclick = function () { if (quiz.back) quiz.back(); else openLesson(quiz.l, quiz.l.li); };
+    if (q.custom) { if ($('qSay')) $('qSay').onclick = function () { say(q.say); }; if (q.sayFirst) setTimeout(function () { say(q.say); }, 200); }
+    else if ($('qSay')) { $('qSay').onclick = function () { sayItem(q.ans); }; if (q.type === 'listen' || q.type === 'spell') setTimeout(function () { sayItem(q.ans); }, 200); }
     function finish(ok) {
-      if (ok) quiz.score++;
-      $('fb').innerHTML = esc(q.ans.w) + (q.ans.ipa ? ' /' + esc(q.ans.ipa) + '/' : '') + (q.ans.zh ? ' ' + esc(q.ans.zh) : '');
-      $('fb').className = 'fb ' + (ok ? 'ok' : 'bad');
-      sayItem(q.ans);
-      setTimeout(function () { quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else renderDone(); }, ok ? 1200 : 2300);
+      if (ok) { quiz.score++; if (q.onRight) q.onRight(); }
+      $('qfb').innerHTML = q.custom ? q.fb : esc(q.ans.w) + (q.ans.ipa ? ' /' + esc(q.ans.ipa) + '/' : '') + (q.ans.zh ? ' ' + esc(q.ans.zh) : '');
+      $('qfb').className = 'fb ' + (ok ? 'ok' : 'bad');
+      if (q.custom) say(q.say); else sayItem(q.ans);
+      var myQ = quiz; setTimeout(function () { if (quiz !== myQ || $('vQuiz').className.indexOf('on') < 0) return; quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else renderDone(); }, ok ? 1200 : 2300);
     }
     if (q.type === 'spell') {
       var tiles = $('vQuiz').querySelectorAll('.tile'), slots = $('vQuiz').querySelectorAll('.slot');
@@ -1085,8 +1114,210 @@ EN.levels = {
   function renderDone() {
     var pct = Math.round(quiz.score / quiz.qs.length * 100);
     $('vQuiz').innerHTML = '<div class="card qcard"><div class="qp">测验完成</div><div class="score">' + quiz.score + ' / ' + quiz.qs.length + '</div><div style="font-size:30px;margin:6px 0 16px">' + (pct === 100 ? '🏆' : pct >= 70 ? '🎉' : '💪') + '</div><button class="btn primary" id="qAgain">再测一次</button> <button class="btn" id="qHome">回到课程</button></div>';
-    $('qAgain').onclick = function () { startQuiz(quiz.l); };
-    $('qHome').onclick = showHome;
+    if (quiz.onDone) quiz.onDone(pct);
+    $('qAgain').onclick = function () { if (quiz.again) quiz.again(); else startQuiz(quiz.l); };
+    $('qHome').onclick = function () { if (quiz.back) quiz.back(); else showHome(); };
+    if (quiz.back) $('qHome').textContent = '返回';
+  }
+
+
+  /* ================= 以少胜多 ================= */
+  var LEV = get('lev', {}), levTab = get('levTab', 'num'), levSel = null;
+  function setLev(k, v) { if (v) LEV[k] = 1; else delete LEV[k]; put('lev', LEV); }
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function levWords() {
+    var got = {}, all = {}, n = 0, t = 0, i, j, x;
+    function add(w, yes) { w = w.toLowerCase(); if (!all[w]) { all[w] = 1; t++; } if (yes && !got[w]) { got[w] = 1; n++; } }
+    for (i = 0; i < EN.lev.rimes.length; i++) { x = EN.lev.rimes[i]; for (j = 0; j < x.words.length; j++) add(x.words[j][0], LEV['r:' + x.rime]); }
+    for (i = 0; i < EN.lev.affixes.length; i++) { x = EN.lev.affixes[i]; for (j = 0; j < x.pairs.length; j++) add(x.pairs[j][1], LEV['a:' + x.affix]); }
+    for (i = 0; i < EN.lev.families.length; i++) { x = EN.lev.families[i]; for (j = 0; j < x.words.length; j++) add(x.words[j][0], LEV['f:' + x.root]); }
+    for (i = 0; i < EN.lev.compounds.length; i++) { x = EN.lev.compounds[i]; add(x[2], LEV['c:' + x[2]]); }
+    return { n: n, t: t };
+  }
+  function showLev() {
+    if (board) { board.destroy(); board = null; }
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    var st = levWords(), h = '', i;
+    h += '<div class="sbar"><button class="btn ghost" id="lvBack">‹ 返回</button><div class="ti">🪄 以少胜多</div><span style="width:70px"></span></div>';
+    h += '<div class="card lvtop"><div class="lvstats"><div><b>' + (LEV.num ? '999,999' : '0') + '</b><span>个数字会说</span></div><div><b>' + st.n + '</b><span>个单词已解锁（共 ' + st.t + '）</span></div></div></div>';
+    var tabs = [['num', '数字魔法'], ['rime', '拼读家族'], ['affix', '前缀后缀'], ['fam', '词族'], ['comp', '合成词']];
+    h += '<div class="tabs">';
+    for (i = 0; i < tabs.length; i++) h += '<button data-t="' + tabs[i][0] + '" class="' + (levTab === tabs[i][0] ? 'on' : '') + '">' + tabs[i][1] + '</button>';
+    h += '</div><div id="lvBody"></div>';
+    $('vLev').innerHTML = h;
+    show('vLev');
+    $('lvBack').onclick = function () { if (levSel != null) { levSel = null; showLev(); } else showHome(); };
+    var tb = $('vLev').querySelectorAll('.tabs button');
+    for (i = 0; i < tb.length; i++) tb[i].onclick = function () { levTab = this.getAttribute('data-t'); put('levTab', levTab); levSel = null; showLev(); };
+    if (levTab === 'num') renderNum();
+    else if (levTab === 'comp') renderComp();
+    else if (levSel != null) renderOne(levTab, levSel);
+    else renderList(levTab);
+  }
+
+  /* ----- numbers ----- */
+  var ONES = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+  var TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+  function en99(n) { if (n < 20) return ONES[n]; var t = Math.floor(n / 10), u = n % 10; return TENS[t] + (u ? '-' + ONES[u] : ''); }
+  function en999(n) { var h = Math.floor(n / 100), r = n % 100, s = ''; if (h) s = ONES[h] + ' hundred'; if (r) s += (h ? ' and ' : '') + en99(r); return s; }
+  function numParts(n) {
+    if (n === 0) return ['zero'];
+    var th = Math.floor(n / 1000), r = n % 1000, p = [];
+    if (th) p.push(en999(th) + ' thousand');
+    if (r) p.push((th && r < 100 ? 'and ' : '') + en999(r));
+    return p;
+  }
+  function numEn(n) { return numParts(n).join(' '); }
+  var BLOCKS = [['0–12', 'zero one two three four five six seven eight nine ten eleven twelve'], ['-teen', '13–19：thirteen fourteen fifteen … nineteen（注意 thir-、fif-）'], ['-ty', '整十：twenty thirty forty fifty sixty seventy eighty ninety（forty 没有 u）'], ['百', 'hundred　(345 = three hundred and forty-five)'], ['千', 'thousand　(2,024 = two thousand and twenty-four)']];
+  function randNum() {
+    var r = Math.random();
+    if (r < 0.3) return 13 + Math.floor(Math.random() * 87);
+    if (r < 0.65) return 100 + Math.floor(Math.random() * 900);
+    if (r < 0.9) return 1000 + Math.floor(Math.random() * 9000);
+    return 10000 + Math.floor(Math.random() * 990000);
+  }
+  function renderNum() {
+    var h = '<div class="card stage"><div class="tipb">学会这 <b>5 组、大约 30 个词</b>，就能说出 0 到 999,999 的<b>每一个</b>数！<br>① 21–99 用连字符：forty<b>-</b>two　② 百后面加 and（英式；美式常省略）　③ 数到千就是「几 thousand + 剩下的」</div>';
+    for (var i = 0; i < BLOCKS.length; i++) h += '<div class="blk"><span>' + BLOCKS[i][0] + '</span>' + esc(BLOCKS[i][1]) + '</div>';
+    h += '<div class="frow" style="max-width:360px;margin:12px auto 0"><input id="numIn" type="number" inputmode="numeric" min="0" max="999999" placeholder="输入 0–999999"><button class="btn" id="numRand">🎲 随机</button></div>';
+    h += '<div class="numout" id="numOut"></div><div class="lvsub" id="numParts"></div>';
+    h += '<div class="row"><button class="btn" id="numSay">🔊 读音</button><button class="btn primary" id="numQuiz">🎯 数字测验</button><button class="btn ' + (LEV.num ? 'good' : '') + '" id="numGot">' + (LEV.num ? '✓ 已学会' : '✓ 我学会了') + '</button></div></div>';
+    $('lvBody').innerHTML = h;
+    var cur = '';
+    function upd(n) {
+      if (isNaN(n) || n < 0 || n > 999999) { cur = ''; $('numOut').textContent = ''; $('numParts').innerHTML = ''; return; }
+      n = Math.floor(n); cur = numEn(n);
+      $('numOut').textContent = cur;
+      $('numParts').innerHTML = n >= 1000 ? '拆开看：' + numParts(n).map(function (x) { return '<span class="pchip">' + esc(x) + '</span>'; }).join(' + ') : '';
+    }
+    $('numIn').oninput = function () { upd(parseInt(this.value, 10)); };
+    $('numRand').onclick = function () { var n = randNum(); $('numIn').value = n; upd(n); say(cur); };
+    $('numSay').onclick = function () { if (cur) say(cur); };
+    $('numQuiz').onclick = numQuiz;
+    $('numGot').onclick = function () { setLev('num', !LEV.num); showLev(); };
+    var n0 = randNum(); $('numIn').value = n0; upd(n0);
+  }
+  function tweak(n) {
+    var s = String(n).split(''), k = Math.floor(Math.random() * s.length), r = Math.random();
+    if (r < 0.45) s[k] = String((+s[k] + 1 + Math.floor(Math.random() * 8)) % 10);
+    else if (s.length > 1) { var j = (k + 1) % s.length, t = s[k]; s[k] = s[j]; s[j] = t; }
+    else s[k] = String((+s[k] + 3) % 10);
+    if (s[0] === '0') s[0] = '1';
+    return parseInt(s.join(''), 10);
+  }
+  function numQuiz() {
+    var qs = [], i;
+    for (i = 0; i < 10; i++) {
+      var n = randNum(), opts = [n], g = 0, listen = i % 2 === 1;
+      while (opts.length < 4 && g++ < 100) { var m = tweak(n); if (opts.indexOf(m) < 0 && m > 0) opts.push(m); }
+      while (opts.length < 4) opts.push(n + opts.length * 11);
+      var oo = [];
+      for (var k = 0; k < opts.length; k++) oo.push({ w: listen ? fmt(opts[k]) : numEn(opts[k]) });
+      qs.push({ custom: true, ans: oo[0], opts: shuffle(oo), label: listen ? '听一听，是哪个数？' : '这个数用英语怎么说？', prompt: listen ? '<button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button>' : '<span style="font-size:40px">' + fmt(n) + '</span>', say: numEn(n), sayFirst: listen, small: !listen, fb: '<b>' + fmt(n) + '</b> = ' + esc(numEn(n)) });
+    }
+    runQuiz({ l: null, qs: qs, back: showLev, again: numQuiz, onDone: function (p) { if (p >= 80) setLev('num', 1); } });
+  }
+
+  /* ----- rimes / affixes / families ----- */
+  function listOf(t) { return t === 'rime' ? EN.lev.rimes : t === 'affix' ? EN.lev.affixes : EN.lev.families; }
+  function keyOf(t, x) { return t === 'rime' ? 'r:' + x.rime : t === 'affix' ? 'a:' + x.affix : 'f:' + x.root; }
+  function wordsOf(t, x) { var a = [], i; if (t === 'affix') for (i = 0; i < x.pairs.length; i++) a.push([x.pairs[i][1], x.pairs[i][2], x.pairs[i][0]]); else a = x.words; return a; }
+  function headOf(t, x) { return t === 'rime' ? '-' + x.rime : t === 'affix' ? x.affix : x.root; }
+  var INTRO = {
+    rime: '英语很多单词只差第一个字母。学会一个<b>结尾发音</b>（比如 -at），换个开头字母就能读出一串词：cat hat bat mat…',
+    affix: '学会一个<b>前缀或后缀</b>，就能把认识的词「变形」：happy → unhappy → happiness。一个后缀能管几百个词！',
+    fam: '一个<b>词根</b>可以长出一整个家族：help → helper, helpful, helpless…认识一个，家族全认识。'
+  };
+  function renderList(t) {
+    var xs = listOf(t), h = '<div class="tipb">' + INTRO[t] + '</div>', i;
+    for (i = 0; i < xs.length; i++) {
+      var x = xs[i], on = LEV[keyOf(t, x)], ws = wordsOf(t, x);
+      h += '<div class="card fam' + (on ? ' done' : '') + '" data-i="' + i + '"><div class="fb0"><div class="rule"><b>' + esc(headOf(t, x)) + '</b></div><div class="mid"><div class="cnt">' + (on ? '✓ 已学会 · ' : '') + '解锁 ' + ws.length + ' 个词' + (t === 'affix' ? ' · ' + esc(x.mean) : t === 'fam' ? ' · ' + esc(x.zh) : ' · /' + esc(x.ipa) + '/') + '</div><div class="lvsub">' + esc(ws.slice(0, 6).map(function (w) { return w[0]; }).join(' ')) + '</div></div></div></div>';
+    }
+    $('lvBody').innerHTML = h;
+    var cs = $('lvBody').querySelectorAll('.fam');
+    for (i = 0; i < cs.length; i++) cs[i].onclick = function () { levSel = +this.getAttribute('data-i'); showLev(); };
+  }
+  function renderOne(t, i) {
+    var x = listOf(t)[i], k0 = keyOf(t, x), on = LEV[k0], ws = wordsOf(t, x), h = '<div class="card stage"><div class="rule big"><b>' + esc(headOf(t, x)) + '</b></div>', k;
+    if (t === 'rime') h += '<div class="lvsub">/' + esc(x.ipa) + '/　换开头字母，就是新单词</div>';
+    else if (t === 'affix') h += '<div class="lvsub">' + esc(x.mean) + '</div><div class="tipb">' + esc(x.rule) + '</div>';
+    else h += '<div class="lvsub">' + esc(x.zh) + '</div>';
+    h += '<div class="pairs">';
+    for (k = 0; k < ws.length; k++) {
+      var w = ws[k], head = w[0];
+      if (t === 'rime') head = '<span class="en">' + esc(w[0].slice(0, w[0].length - x.rime.length)) + '</span><b style="color:var(--accent)">' + esc(x.rime) + '</b>';
+      else head = (t === 'affix' ? '<span class="en">' + esc(w[2]) + '</span><i>→</i>' : '') + '<b>' + esc(w[0]) + '</b>';
+      h += '<div class="pair2" data-say="' + esc(w[0]) + '">' + head + '<small>' + esc(w[1]) + '</small></div>';
+    }
+    h += '</div><div class="row"><button class="btn primary" id="lQuiz">🎯 考考我</button><button class="btn" id="lWrite">✍️ 练写</button><button class="btn ' + (on ? 'good' : '') + '" id="lGot">' + (on ? '✓ 已学会' : '✓ 我学会了') + '</button></div></div>';
+    $('lvBody').innerHTML = h;
+    var ps = $('lvBody').querySelectorAll('.pair2');
+    for (k = 0; k < ps.length; k++) ps[k].onclick = function () { say(this.getAttribute('data-say')); };
+    $('lQuiz').onclick = function () { oneQuiz(t, i); };
+    $('lWrite').onclick = function () {
+      var items = ws.map(function (w) { return { w: w[0], ipa: '', zh: w[1] }; });
+      openLesson({ id: 'lev', kind: 'words', title: headOf(t, x), items: items, back: showLev }, -1);
+    };
+    $('lGot').onclick = function () { setLev(k0, !LEV[k0]); showLev(); };
+  }
+  function affixWrong(x, base, right) {
+    var out = [], i, a, same = EN.lev.affixes;
+    for (i = 0; i < same.length; i++) {
+      if (same[i].kind !== x.kind || same[i].affix === x.affix) continue;
+      a = same[i].affix.split('/')[0].replace(/-/g, '');
+      out.push(x.kind === 'prefix' ? a + base : base + a);
+    }
+    var mine = x.affix.split('/')[0].replace(/-/g, ''), naive = x.kind === 'prefix' ? mine + base : base + mine;
+    if (naive !== right) out.unshift(naive);
+    if (x.affix === 'im-/in-') out.unshift((right.indexOf('im') === 0 ? 'in' : 'im') + base);
+    return out;
+  }
+  function oneQuiz(t, i) {
+    var x = listOf(t)[i], ws = wordsOf(t, x), pool = shuffle(ws.slice()).slice(0, 10), qs = [], k;
+    for (k = 0; k < pool.length; k++) {
+      var w = pool[k], opts = [{ w: w[0] }], seen = {}, j, cand = [], q;
+      seen[w[0]] = 1;
+      if (t === 'affix') {
+        cand = affixWrong(x, w[2], w[0]);
+        var shown = x.kind === 'prefix' ? x.affix.split('/')[0] + ' + ' + w[2] : w[2] + ' + ' + x.affix.split('/')[0];
+        if (x.affix === 'im-/in-') shown = 'im- / in- + ' + w[2];
+        q = { label: '加上词缀，正确拼写是？', prompt: '<span style="font-size:28px">' + esc(shown) + '</span><div style="font-size:16px;font-weight:400;color:var(--soft)">' + esc(w[1]) + '</div>' };
+      } else if (t === 'rime') {
+        var oth = shuffle(ws.slice()); for (j = 0; j < oth.length; j++) cand.push(oth[j][0]);
+        q = { label: '听一听，是哪个词？', prompt: '<button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button>', sayFirst: true };
+      } else {
+        var oth2 = shuffle(ws.slice()); for (j = 0; j < oth2.length; j++) cand.push(oth2[j][0]);
+        q = { label: '哪个词是这个意思？', prompt: '<span style="font-size:26px">' + esc(w[1]) + '</span>' };
+      }
+      if (t === 'affix') cand = cand.slice(0, 1).concat(shuffle(cand.slice(1)));
+      for (j = 0; j < cand.length && opts.length < 4; j++) if (!seen[cand[j]]) { seen[cand[j]] = 1; opts.push({ w: cand[j] }); }
+      q.custom = true; q.ans = opts[0]; q.opts = shuffle(opts); q.say = w[0]; q.small = true; q.fb = '<b>' + esc(w[0]) + '</b> · ' + esc(w[1]);
+      qs.push(q);
+    }
+    runQuiz({ l: null, qs: qs, back: showLev, again: function () { oneQuiz(t, i); }, onDone: function (p) { if (p >= 80) setLev(keyOf(t, x), 1); } });
+  }
+
+  /* ----- compounds ----- */
+  function renderComp() {
+    var cs = EN.lev.compounds, h = '<div class="card stage"><div class="tipb">两个认识的小词拼在一起，就是一个新词：sun + flower = sunflower（向日葵）。<b>不用背，猜得出来！</b>答对一个解锁一个。</div><div class="row"><button class="btn primary" id="cPlay">▶ 猜一猜</button></div><div class="pairs">', i;
+    for (i = 0; i < cs.length; i++) h += '<div class="pair2' + (LEV['c:' + cs[i][2]] ? ' got' : '') + '" data-say="' + esc(cs[i][2]) + '"><span class="en">' + esc(cs[i][0]) + ' + ' + esc(cs[i][1]) + '</span><i>=</i><b>' + esc(cs[i][2]) + '</b><small>' + esc(cs[i][3]) + '</small></div>';
+    h += '</div></div>';
+    $('lvBody').innerHTML = h;
+    $('cPlay').onclick = compQuiz;
+    var ps = $('lvBody').querySelectorAll('.pair2');
+    for (i = 0; i < ps.length; i++) ps[i].onclick = function () { say(this.getAttribute('data-say')); };
+  }
+  function compQuiz() {
+    var all = EN.lev.compounds, pool = shuffle(all.slice()).slice(0, 10), qs = [], i;
+    for (i = 0; i < pool.length; i++) {
+      (function (c) {
+        var opts = [{ w: c[3] }], oth = shuffle(all.slice()), k;
+        for (k = 0; k < oth.length && opts.length < 4; k++) if (oth[k][2] !== c[2]) opts.push({ w: oth[k][3] });
+        qs.push({ custom: true, ans: opts[0], opts: shuffle(opts), small: true, label: '猜猜这个合成词是什么意思？', prompt: '<span style="font-size:26px">' + esc(c[0]) + ' + ' + esc(c[1]) + ' = <b>' + esc(c[2]) + '</b></span>', say: c[2], sayFirst: true, fb: '<b>' + esc(c[2]) + '</b> · ' + esc(c[3]), onRight: function () { setLev('c:' + c[2], 1); } });
+      })(pool[i]);
+    }
+    runQuiz({ l: null, qs: qs, back: showLev, again: compQuiz });
   }
 
   showHome();

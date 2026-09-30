@@ -100,6 +100,30 @@ h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px
 .syl b{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
 .gtag{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:6px;background:var(--chip);margin-left:6px;vertical-align:middle}
 .note{font-size:13px;color:var(--soft);background:var(--bg);border-radius:10px;padding:6px 10px;margin:8px auto 0;max-width:420px}
+.levhome{padding:14px 16px;margin-bottom:16px;cursor:pointer;display:block;width:100%;text-align:left;background:linear-gradient(135deg,var(--accent-soft),var(--paper))}
+.levhome b{font-size:17px}.levhome div{font-size:13px;color:var(--soft);margin-top:3px}
+.lvtop{padding:14px 10px;margin-bottom:12px}
+.lvstats{display:flex;text-align:center}.lvstats div{flex:1}.lvstats b{display:block;font-size:24px;color:var(--accent);font-weight:800}.lvstats span{font-size:12px;color:var(--soft)}
+.lvsub{font-size:13px;color:var(--soft)}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;margin:0 0 12px}
+.tabs button{border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:6px 14px;margin:0 4px 6px;font-size:14px;color:var(--soft)}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.fam{padding:12px 14px;margin-bottom:10px;cursor:pointer}.fam.done{border-color:var(--good)}
+.fam .fb0{display:flex;align-items:center}.fam .mid{flex:1;margin-left:12px;min-width:0}
+.fam .cnt{font-size:12.5px;color:var(--good);font-weight:600}
+.rule{font-size:19px;white-space:nowrap}.rule span{color:var(--soft)}.rule i{font-style:normal;color:var(--faint);margin:0 6px}.rule b{color:var(--accent)}
+.rule.big{font-size:32px;text-align:center}
+.tipb{background:var(--chip);border-radius:12px;padding:10px 12px;font-size:14px;margin:10px 0;text-align:left;line-height:1.7}
+.blk{text-align:left;font-size:14px;padding:7px 0;border-bottom:1px dashed var(--line)}.blk span{display:inline-block;min-width:78px;font-weight:700;color:var(--accent)}
+.numout{font-size:30px;font-weight:700;margin:12px 0 4px;word-break:break-word}
+.pchip{display:inline-block;background:var(--chip);border-radius:8px;padding:1px 8px;margin:2px}
+.row{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px}.row .btn{margin:0 4px 8px}
+.pairs{text-align:left}.pair2{display:flex;align-items:baseline;flex-wrap:wrap;padding:8px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.pair2 .en{color:var(--soft);min-width:110px}.pair2 i{font-style:normal;color:var(--faint);margin:0 8px}.pair2 b{font-size:17px}.pair2 small{margin-left:auto;color:var(--faint);font-size:12.5px;padding-left:8px}
+.ends{display:flex;flex-wrap:wrap;justify-content:center;margin:6px 0}.ends div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:6px 10px;margin:0 4px 8px;text-align:center;min-width:88px}.ends small{display:block;font-size:11.5px;color:var(--soft)}.ends b{font-size:20px;color:var(--accent)}
+.vsel{display:flex;flex-wrap:wrap;justify-content:center;margin:8px 0}.vb{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:4px 10px;margin:0 3px 6px;font-size:14px}.vb.on{border-color:var(--accent);color:var(--accent);font-weight:700}
+.ctab{max-width:380px;margin:0 auto}.crow{display:flex;justify-content:space-between;padding:8px 6px;border-bottom:1px solid var(--line);cursor:pointer;font-size:17px}.crow span{color:var(--soft)}.crow em{font-style:normal;color:var(--accent);font-weight:800}
+.opt.small{font-size:16px!important}
 .tip{font-size:14px;color:var(--soft);margin-top:8px;max-width:440px;margin-left:auto;margin-right:auto}
 </style>
 </head>
@@ -111,6 +135,7 @@ h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px
   <section class="view on" id="vHome"></section>
   <section class="view" id="vStudy"></section>
   <section class="view" id="vQuiz"></section>
+  <section class="view" id="vLev"></section>
 </main>
 <script>
 /* Manuscript letter strokes on 四线三格.  Lines at y=0,40,80,120 (baseline = 80).
@@ -279,25 +304,25 @@ var ES = {
     ['z', 'zeta', '发 s，和 s 完全一样（墨西哥/拉美读法；西班牙读咬舌音 θ）', 'zapato', '鞋']
   ],
   themes: [
-    ['问候', 'hola:你好|adiós:再见|gracias:谢谢|por favor:请|buenos días:早上好|buenas noches:晚上好；晚安|sí:是|no:不；不是|perdón:对不起|de nada:不客气'],
-    ['数字', 'uno:一|dos:二|tres:三|cuatro:四|cinco:五|seis:六|siete:七|ocho:八|nueve:九|diez:十'],
-    ['颜色', 'rojo:红色的|azul:蓝色的|amarillo:黄色的|verde:绿色的|negro:黑色的|blanco:白色的|rosa:粉色的|naranja:橙色的|marrón:棕色的|gris:灰色的'],
-    ['家人', 'la madre:妈妈|el padre:爸爸|el hermano:哥哥；弟弟|la hermana:姐姐；妹妹|el abuelo:爷爷；外公|la abuela:奶奶；外婆|el hijo:儿子|la hija:女儿|la familia:家庭|el amigo:朋友（男）'],
-    ['动物', 'el perro:狗|el gato:猫|el pájaro:鸟|el pez:鱼（活的）|el caballo:马|la vaca:奶牛|el cerdo:猪|el conejo:兔子|el pato:鸭子|el mono:猴子'],
-    ['身体', 'la cabeza:头|la cara:脸|el ojo:眼睛|la oreja:耳朵|la nariz:鼻子|la boca:嘴|la mano:手:以 -o 结尾却是阴性，要特别记|el brazo:胳膊|la pierna:腿|el pie:脚'],
-    ['食物', 'la manzana:苹果|el plátano:香蕉|el huevo:鸡蛋|la leche:牛奶|el pan:面包|el arroz:米饭|el agua:水:阴性名词，但为了好读用 el：el agua fría|el jugo:果汁:西班牙常说 el zumo|la carne:肉|el café:咖啡'],
-    ['学校', 'el libro:书|el lápiz:铅笔|la mesa:桌子|la silla:椅子|la escuela:学校|el profesor:老师（男）|la clase:课；班级|el cuaderno:本子|la mochila:书包|la puerta:门'],
-    ['家里', 'la casa:房子；家|la habitación:房间|la cama:床|la ventana:窗户|la cocina:厨房|el baño:浴室；厕所|la lámpara:台灯|el reloj:钟；表|la televisión:电视|el sofá:沙发'],
-    ['衣服', 'la camisa:衬衫|los pantalones:裤子|el vestido:连衣裙|la falda:裙子|los zapatos:鞋子|el sombrero:帽子|la chaqueta:夹克|los calcetines:袜子|el abrigo:大衣|la camiseta:T恤'],
-    ['自然天气', 'el sol:太阳|la luna:月亮|la estrella:星星|el cielo:天空|el árbol:树|la flor:花|la lluvia:雨|la nieve:雪|el viento:风|el mar:大海'],
-    ['时间', 'el día:天；白天:以 -a 结尾却是阳性，要特别记|la noche:夜晚|la mañana:早上|la semana:星期|el año:年|hoy:今天|mañana:明天|ayer:昨天|la hora:小时|el mes:月'],
-    ['交通地点', 'el carro:汽车:西班牙常说 el coche|el autobús:公交车|el tren:火车|el avión:飞机|la bicicleta:自行车|el barco:船|la calle:街道|la ciudad:城市|el parque:公园|la tienda:商店'],
-    ['常用动词', 'comer:吃|beber:喝|hablar:说话|ir:去|ser:是（身份、本质）|estar:在；是（状态、位置）|tener:有|querer:想要；爱|vivir:住；生活|jugar:玩'],
-    ['形容词', 'grande:大的|pequeño:小的|bueno:好的|malo:坏的|feliz:幸福的；高兴的|triste:难过的|bonito:漂亮的|nuevo:新的|caliente:热的|frío:冷的'],
-    ['代词小词', 'yo:我|tú:你|él:他|ella:她|nosotros:我们|ellos:他们|esto:这个|eso:那个|y:和|con:和…一起']
+    ['问候', 'hola:你好|adiós:再见|gracias:谢谢|por favor:请|buenos días:早上好|buenas noches:晚上好；晚安|sí:是|no:不；不是|perdón:对不起|de nada:不客气|buenas tardes:下午好|cómo estás:你好吗（对熟人）|qué tal:怎么样；你好吗|bien:好；很好|mal:不好；坏|hasta luego:回头见|hasta mañana:明天见|nos vemos:再见；回头见|mucho gusto:很高兴认识你|encantado:幸会:男性说 encantado，女性说 encantada|bienvenido:欢迎:对女性说 bienvenida|lo siento:对不起；很遗憾|con permiso:借过；失陪|disculpe:打扰一下；劳驾:对「您」说；对熟人说 disculpa|cómo te llamas:你叫什么名字|me llamo:我叫……|el señor:先生|la señora:女士；夫人|la señorita:小姐|salud:干杯；（打喷嚏后）保重'],
+    ['数字', 'uno:一|dos:二|tres:三|cuatro:四|cinco:五|seis:六|siete:七|ocho:八|nueve:九|diez:十|once:十一|doce:十二|trece:十三|catorce:十四|quince:十五|dieciséis:十六:注意 é 上的重音符号|diecisiete:十七|dieciocho:十八|diecinueve:十九|veinte:二十|treinta:三十|cuarenta:四十|cincuenta:五十|sesenta:六十|setenta:七十|ochenta:八十|noventa:九十|cien:一百:101 起说 ciento uno|mil:一千|cero:零'],
+    ['颜色', 'rojo:红色的|azul:蓝色的|amarillo:黄色的|verde:绿色的|negro:黑色的|blanco:白色的|rosa:粉色的|naranja:橙色的|marrón:棕色的|gris:灰色的|morado:紫色的:墨西哥最常用|violeta:紫罗兰色的|lila:淡紫色的|celeste:天蓝色的|turquesa:青绿色的|dorado:金色的|plateado:银色的|beige:米色的|fucsia:玫红色的|claro:浅色的；明亮的|oscuro:深色的；黑暗的|azul claro:浅蓝色的|azul marino:藏青色的|verde oscuro:深绿色的|rubio:金发的|moreno:黑发的；肤色较深的|castaño:栗色的（头发）|pelirrojo:红头发的|brillante:鲜艳的；闪亮的|el color:颜色'],
+    ['家人', 'la madre:妈妈|el padre:爸爸|el hermano:哥哥；弟弟|la hermana:姐姐；妹妹|el abuelo:爷爷；外公|la abuela:奶奶；外婆|el hijo:儿子|la hija:女儿|la familia:家庭|el amigo:朋友（男）|la mamá:妈妈（口语）:墨西哥日常最常用|el papá:爸爸（口语）|los padres:父母:padres 在这里指「父母」，不是「爸爸们」|el esposo:丈夫:也说 el marido|la esposa:妻子|el tío:叔叔；舅舅；伯伯|la tía:阿姨；姑姑；舅妈|el primo:堂兄弟；表兄弟|la prima:堂姐妹；表姐妹|el nieto:孙子；外孙|la nieta:孙女；外孙女|el bebé:婴儿|el niño:男孩；孩子|la niña:女孩|la amiga:朋友（女）|el novio:男朋友|la novia:女朋友|los hermanos:兄弟姐妹:阳性复数可包含男女|el hombre:男人|la mujer:女人；妻子'],
+    ['动物', 'el perro:狗|el gato:猫|el pájaro:鸟|el pez:鱼（活的）|el caballo:马|la vaca:奶牛|el cerdo:猪|el conejo:兔子|el pato:鸭子|el mono:猴子|la gallina:母鸡|el gallo:公鸡|el ratón:老鼠|el oso:熊|el león:狮子|el tigre:老虎|el elefante:大象|la jirafa:长颈鹿|la serpiente:蛇|la tortuga:乌龟|la rana:青蛙|la oveja:绵羊|el burro:驴|el lobo:狼|la mariposa:蝴蝶|la abeja:蜜蜂|la araña:蜘蛛|la hormiga:蚂蚁|el animal:动物|la mascota:宠物'],
+    ['身体', 'la cabeza:头|la cara:脸|el ojo:眼睛|la oreja:耳朵|la nariz:鼻子|la boca:嘴|la mano:手:以 -o 结尾却是阴性，要特别记|el brazo:胳膊|la pierna:腿|el pie:脚|el pelo:头发:墨西哥也常说 el cabello|el cuello:脖子|el hombro:肩膀|el dedo:手指；脚趾|la rodilla:膝盖|el estómago:胃；肚子|la panza:肚子（口语）:墨西哥常用|la espalda:背|el pecho:胸|el corazón:心脏；心|el diente:牙齿|la lengua:舌头；语言|el labio:嘴唇|la uña:指甲|el cuerpo:身体|la piel:皮肤|la sangre:血|el hueso:骨头|la frente:额头|la ceja:眉毛'],
+    ['食物', 'la manzana:苹果|el plátano:香蕉|el huevo:鸡蛋|la leche:牛奶|el pan:面包|el arroz:米饭|el agua:水:阴性名词，但为了好读用 el：el agua fría|el jugo:果汁:西班牙常说 el zumo|la carne:肉|el café:咖啡|la papa:土豆:西班牙说 la patata|los frijoles:菜豆；豆子:西班牙说 las judías 或 las alubias|la tortilla:玉米饼:在西班牙 tortilla 指土豆鸡蛋饼|el pollo:鸡肉；鸡|el pescado:鱼（食物）:活鱼叫 el pez|el queso:奶酪|el jitomate:西红柿:墨西哥说法；其他地区说 el tomate|la fresa:草莓|la uva:葡萄|el azúcar:糖|la sal:盐|la sopa:汤|la ensalada:沙拉|el té:茶|el refresco:汽水；饮料|el pastel:蛋糕:西班牙多说 la tarta|la galleta:饼干|el maíz:玉米|el aguacate:牛油果|la comida:食物；饭'],
+    ['学校', 'el libro:书|el lápiz:铅笔|la mesa:桌子|la silla:椅子|la escuela:学校|el profesor:老师（男）|la clase:课；班级|el cuaderno:本子|la mochila:书包|la puerta:门|el maestro:老师（男）:墨西哥中小学老师常称 maestro|la maestra:老师（女）|el alumno:学生（男）|el estudiante:学生:男女同形，女生用 la estudiante|la pluma:笔；钢笔:墨西哥说法；西班牙说 el bolígrafo|el borrador:橡皮；黑板擦:也说 la goma|la regla:尺子|el papel:纸|la hoja:一张纸；树叶|el pizarrón:黑板:西班牙说 la pizarra|la computadora:电脑:西班牙说 el ordenador|la tarea:作业:西班牙多说 los deberes|el examen:考试|la pregunta:问题|la respuesta:答案|la palabra:单词|el salón:教室:也说 el salón de clases|el mapa:地图:以 -a 结尾却是阳性，要特别记|la biblioteca:图书馆|las tijeras:剪刀:总用复数'],
+    ['家里', 'la casa:房子；家|la habitación:房间|la cama:床|la ventana:窗户|la cocina:厨房|el baño:浴室；厕所|la lámpara:台灯|el reloj:钟；表|la televisión:电视|el sofá:沙发|la recámara:卧室:墨西哥说法；也说 el cuarto；西班牙说 el dormitorio|la sala:客厅|el comedor:餐厅（家里吃饭的地方）|el refrigerador:冰箱:西班牙说 la nevera|la estufa:炉灶:墨西哥说法；西班牙说 la cocina|el jardín:花园；院子|la llave:钥匙；水龙头|el piso:地板；楼层:在西班牙 el piso 也指公寓|la pared:墙|el techo:屋顶；天花板|la escalera:楼梯；梯子|el espejo:镜子|la regadera:淋浴喷头:墨西哥说法；西班牙说 la ducha|el departamento:公寓:西班牙说 el piso|el plato:盘子|el vaso:玻璃杯|la taza:带柄杯子|la cuchara:勺子|el tenedor:叉子|el cuchillo:刀'],
+    ['衣服', 'la camisa:衬衫|los pantalones:裤子|el vestido:连衣裙|la falda:裙子|los zapatos:鞋子|el sombrero:帽子|la chaqueta:夹克|los calcetines:袜子|el abrigo:大衣|la camiseta:T恤|la ropa:衣服（总称）|los jeans:牛仔裤:西班牙说 los vaqueros|la gorra:棒球帽|los lentes:眼镜:墨西哥说法；西班牙说 las gafas|el suéter:毛衣:西班牙说 el jersey|la bufanda:围巾|los guantes:手套|las botas:靴子|los tenis:运动鞋:墨西哥说法；西班牙说 las zapatillas|el cinturón:腰带|la corbata:领带|el traje:西装|el pijama:睡衣:以 -a 结尾却是阳性；墨西哥也写作 la piyama|el bolsillo:口袋|la bolsa:包；袋子:西班牙女包多说 el bolso|la chamarra:夹克；外套:墨西哥最常用的说法|el traje de baño:泳衣|las sandalias:凉鞋|el botón:纽扣|la blusa:女式衬衫'],
+    ['自然天气', 'el sol:太阳|la luna:月亮|la estrella:星星|el cielo:天空|el árbol:树|la flor:花|la lluvia:雨|la nieve:雪|el viento:风|el mar:大海|la nube:云|el clima:天气；气候:以 -a 结尾却是阳性|la montaña:山|el río:河|el lago:湖|la playa:海滩|el bosque:森林|la tierra:土地；地球|el fuego:火|la piedra:石头|el calor:热（天气）|la planta:植物|la isla:岛|el desierto:沙漠|la tormenta:暴风雨|el arcoíris:彩虹|la primavera:春天|el verano:夏天|el otoño:秋天|el invierno:冬天'],
+    ['时间', 'el día:天；白天:以 -a 结尾却是阳性，要特别记|la noche:夜晚|la mañana:早上|la semana:星期|el año:年|hoy:今天|mañana:明天|ayer:昨天|la hora:小时|el mes:月|el tiempo:时间；天气|el minuto:分钟|el segundo:秒；第二|la tarde:下午；傍晚|ahora:现在|ahorita:马上；现在:墨西哥口语，非常常用|temprano:早；早早地|siempre:总是|nunca:从不|después:之后|antes:之前|el lunes:星期一:星期名称小写；el lunes 也表示「在星期一」|el martes:星期二|el miércoles:星期三|el jueves:星期四|el viernes:星期五|el sábado:星期六|el domingo:星期日|el fin de semana:周末|el cumpleaños:生日'],
+    ['交通地点', 'el carro:汽车:西班牙常说 el coche|el autobús:公交车|el tren:火车|el avión:飞机|la bicicleta:自行车|el barco:船|la calle:街道|la ciudad:城市|el parque:公园|la tienda:商店|el metro:地铁|el camión:公交车；卡车:墨西哥口语常指公交车|el taxi:出租车|la moto:摩托车:la motocicleta 的简称，以 -o 结尾却是阴性|la estación:车站|el aeropuerto:机场|el hospital:医院|el banco:银行；长凳|el mercado:市场|el restaurante:餐馆|el hotel:酒店|la iglesia:教堂|el museo:博物馆|la farmacia:药店|el supermercado:超市|la oficina:办公室|el cine:电影院|la plaza:广场|el pueblo:村镇|el país:国家'],
+    ['常用动词', 'comer:吃|beber:喝|hablar:说话|ir:去|ser:是（身份、本质）|estar:在；是（状态、位置）|tener:有|querer:想要；爱|vivir:住；生活|jugar:玩|hacer:做|poder:能；可以|decir:说；告诉|ver:看；看见|saber:知道；会|conocer:认识；了解|venir:来|salir:出去；离开|llegar:到达|trabajar:工作|estudiar:学习|leer:读|escribir:写|dormir:睡觉|caminar:走路；散步|manejar:开车:西班牙说 conducir|comprar:买|necesitar:需要|tomar:拿；喝；乘坐:墨西哥常用 tomar 表示「喝」|gustar:喜欢:用法特殊，说 me gusta（我喜欢）'],
+    ['形容词', 'grande:大的|pequeño:小的|bueno:好的|malo:坏的|feliz:幸福的；高兴的|triste:难过的|bonito:漂亮的|nuevo:新的|caliente:热的|frío:冷的|alto:高的|bajo:矮的；低的|largo:长的|corto:短的|joven:年轻的:阴阳同形|viejo:老的；旧的|fácil:容易的|difícil:难的|rápido:快的|lento:慢的|caro:贵的|barato:便宜的|limpio:干净的|sucio:脏的|gordo:胖的|delgado:瘦的:墨西哥口语也常说 flaco|guapo:帅的；好看的|feo:丑的|cansado:累的|contento:高兴的；满意的'],
+    ['代词小词', 'yo:我|tú:你|él:他|ella:她|nosotros:我们|ellos:他们|esto:这个|eso:那个|y:和|con:和…一起|usted:您|ustedes:你们:拉美「你们」一律用 ustedes；西班牙多说 vosotros|nosotras:我们（全是女性）|ellas:她们|mi:我的|tu:你的:不带重音，区别于 tú（你）|su:他的；她的；您的；他们的|de:的；从|en:在……里；在……上|pero:但是|porque:因为:问「为什么」写作 por qué|muy:很|también:也|aquí:这里|allí:那里:墨西哥也常说 allá|qué:什么|quién:谁|dónde:哪里|cuándo:什么时候|cómo:怎么；如何']
   ]
 };
-
+ES.lev = {"cognates": [{"en": "-tion", "es": "-ción", "est": "约 1500+", "gender": "阴性 la", "tip": "英语 -tion 结尾的词，几乎都能变成 -ción，而且都是阴性", "pairs": [["nation", "la nación", "国家"], ["information", "la información", "信息"], ["education", "la educación", "教育"], ["station", "la estación", "车站；季节"], ["situation", "la situación", "情况"], ["communication", "la comunicación", "交流"], ["conversation", "la conversación", "对话"], ["action", "la acción", "行动"], ["relation", "la relación", "关系"], ["solution", "la solución", "解决办法"], ["attention", "la atención", "注意"], ["organization", "la organización", "组织"], ["population", "la población", "人口"], ["invitation", "la invitación", "邀请"]]}, {"en": "-sion", "es": "-sión", "est": "几百个", "gender": "阴性 la", "tip": "-sion 变 -sión，同样全是阴性；注意 ss 要简化成一个 s", "pairs": [["television", "la televisión", "电视"], ["decision", "la decisión", "决定"], ["discussion", "la discusión", "讨论"], ["expression", "la expresión", "表达"], ["profession", "la profesión", "职业"], ["mission", "la misión", "任务"], ["vision", "la visión", "视力；愿景"], ["version", "la versión", "版本"], ["conclusion", "la conclusión", "结论"], ["passion", "la pasión", "激情"], ["impression", "la impresión", "印象"], ["tension", "la tensión", "紧张；张力"], ["excursion", "la excursión", "远足"], ["confusion", "la confusión", "混乱"]]}, {"en": "-ty", "es": "-dad", "est": "约 1000+", "gender": "阴性 la", "tip": "英语 -ty 名词常变成 -dad（少数是 -tad），一律阴性", "pairs": [["city", "la ciudad", "城市"], ["university", "la universidad", "大学"], ["society", "la sociedad", "社会"], ["quality", "la calidad", "质量"], ["reality", "la realidad", "现实"], ["opportunity", "la oportunidad", "机会"], ["activity", "la actividad", "活动"], ["identity", "la identidad", "身份"], ["electricity", "la electricidad", "电"], ["possibility", "la posibilidad", "可能性"], ["curiosity", "la curiosidad", "好奇心"], ["velocity", "la velocidad", "速度"], ["variety", "la variedad", "多样性"], ["community", "la comunidad", "社区"]]}, {"en": "-ous", "es": "-oso", "est": "几百个", "gender": "", "tip": "-ous 形容词变 -oso；形容女性或阴性名词时改成 -osa", "pairs": [["famous", "famoso", "有名的"], ["delicious", "delicioso", "好吃的"], ["curious", "curioso", "好奇的"], ["generous", "generoso", "慷慨的"], ["nervous", "nervioso", "紧张的"], ["religious", "religioso", "宗教的"], ["precious", "precioso", "珍贵的；漂亮的"], ["glorious", "glorioso", "光荣的"], ["mysterious", "misterioso", "神秘的"], ["furious", "furioso", "狂怒的"], ["ambitious", "ambicioso", "有野心的"], ["numerous", "numeroso", "众多的"], ["fabulous", "fabuloso", "极好的"], ["marvelous", "maravilloso", "奇妙的"]]}, {"en": "-ic", "es": "-ico", "est": "约 1000+", "gender": "", "tip": "-ic 形容词加 -o 变成 -ico，多数要在倒数第三个音节加重音符号", "pairs": [["public", "público", "公共的"], ["electric", "eléctrico", "电的"], ["fantastic", "fantástico", "极好的"], ["classic", "clásico", "经典的"], ["economic", "económico", "经济的；便宜的"], ["historic", "histórico", "历史性的"], ["romantic", "romántico", "浪漫的"], ["specific", "específico", "具体的"], ["automatic", "automático", "自动的"], ["magic", "mágico", "神奇的"], ["scientific", "científico", "科学的"], ["basic", "básico", "基本的"], ["organic", "orgánico", "有机的"], ["plastic", "plástico", "塑料的"]]}, {"en": "-al", "es": "-al", "est": "约 1000+", "gender": "", "tip": "-al 形容词原样照搬，阴阳同形；只是发音变成西语的", "pairs": [["normal", "normal", "正常的"], ["natural", "natural", "自然的"], ["general", "general", "总的；一般的"], ["final", "final", "最后的"], ["local", "local", "当地的"], ["central", "central", "中心的"], ["personal", "personal", "个人的"], ["social", "social", "社会的"], ["national", "nacional", "国家的"], ["special", "especial", "特别的"], ["original", "original", "原创的"], ["total", "total", "全部的"], ["legal", "legal", "合法的"], ["ideal", "ideal", "理想的"]]}, {"en": "-ble", "es": "-ble", "est": "几百个", "gender": "", "tip": "-ble 形容词基本照搬，阴阳同形；小心 sensible 在西语是敏感的意思", "pairs": [["possible", "posible", "可能的"], ["terrible", "terrible", "可怕的"], ["flexible", "flexible", "灵活的"], ["visible", "visible", "看得见的"], ["probable", "probable", "很可能的"], ["responsible", "responsable", "负责的"], ["acceptable", "aceptable", "可接受的"], ["horrible", "horrible", "恐怖的"], ["incredible", "increíble", "难以置信的"], ["notable", "notable", "显著的"], ["variable", "variable", "可变的"], ["favorable", "favorable", "有利的"], ["invisible", "invisible", "隐形的"], ["admirable", "admirable", "令人钦佩的"]]}, {"en": "-ist", "es": "-ista", "est": "几百个", "gender": "阴阳同形 el / la", "tip": "-ist 变 -ista，男女都用同一个词，只换冠词 el / la", "pairs": [["artist", "el / la artista", "艺术家"], ["dentist", "el / la dentista", "牙医"], ["tourist", "el / la turista", "游客"], ["pianist", "el / la pianista", "钢琴家"], ["optimist", "el / la optimista", "乐观的人"], ["pessimist", "el / la pesimista", "悲观的人"], ["specialist", "el / la especialista", "专家"], ["realist", "el / la realista", "现实主义者"], ["guitarist", "el / la guitarrista", "吉他手"], ["florist", "el / la florista", "花店老板"], ["economist", "el / la economista", "经济学家"], ["novelist", "el / la novelista", "小说家"], ["cyclist", "el / la ciclista", "骑行者"], ["finalist", "el / la finalista", "决赛选手"]]}, {"en": "-ism", "es": "-ismo", "est": "几百个", "gender": "阳性 el", "tip": "-ism 加 -o 变 -ismo，全是阳性", "pairs": [["tourism", "el turismo", "旅游业"], ["capitalism", "el capitalismo", "资本主义"], ["optimism", "el optimismo", "乐观"], ["realism", "el realismo", "现实主义"], ["organism", "el organismo", "有机体；机构"], ["mechanism", "el mecanismo", "机制"], ["feminism", "el feminismo", "女权主义"], ["patriotism", "el patriotismo", "爱国主义"], ["pessimism", "el pesimismo", "悲观"], ["nationalism", "el nacionalismo", "民族主义"], ["buddhism", "el budismo", "佛教"], ["romanticism", "el romanticismo", "浪漫主义"], ["idealism", "el idealismo", "理想主义"], ["socialism", "el socialismo", "社会主义"]]}, {"en": "-ent", "es": "-ente", "est": "几百个", "gender": "", "tip": "-ent 形容词加 -e 变 -ente，阴阳同形", "pairs": [["different", "diferente", "不同的"], ["intelligent", "inteligente", "聪明的"], ["excellent", "excelente", "优秀的"], ["evident", "evidente", "明显的"], ["frequent", "frecuente", "频繁的"], ["patient", "paciente", "有耐心的；病人"], ["recent", "reciente", "最近的"], ["present", "presente", "在场的；现在的"], ["independent", "independiente", "独立的"], ["efficient", "eficiente", "高效的"], ["sufficient", "suficiente", "足够的"], ["permanent", "permanente", "永久的"], ["urgent", "urgente", "紧急的"], ["innocent", "inocente", "无辜的"]]}, {"en": "-ant", "es": "-ante", "est": "几百个", "gender": "", "tip": "-ant 形容词加 -e 变 -ante，阴阳同形", "pairs": [["important", "importante", "重要的"], ["elegant", "elegante", "优雅的"], ["abundant", "abundante", "丰富的"], ["constant", "constante", "持续的"], ["brilliant", "brillante", "闪亮的；杰出的"], ["distant", "distante", "遥远的；冷淡的"], ["relevant", "relevante", "相关的"], ["arrogant", "arrogante", "傲慢的"], ["tolerant", "tolerante", "宽容的"], ["ignorant", "ignorante", "无知的"], ["vacant", "vacante", "空缺的"], ["dominant", "dominante", "占主导的"], ["vibrant", "vibrante", "有活力的"], ["extravagant", "extravagante", "奢侈的；古怪的"]]}, {"en": "-ence", "es": "-encia", "est": "几百个", "gender": "阴性 la", "tip": "-ence 变 -encia，全是阴性", "pairs": [["difference", "la diferencia", "差别"], ["experience", "la experiencia", "经验；经历"], ["science", "la ciencia", "科学"], ["intelligence", "la inteligencia", "智力"], ["patience", "la paciencia", "耐心"], ["violence", "la violencia", "暴力"], ["conference", "la conferencia", "会议；讲座"], ["influence", "la influencia", "影响"], ["evidence", "la evidencia", "证据"], ["presence", "la presencia", "在场"], ["independence", "la independencia", "独立"], ["residence", "la residencia", "住所"], ["existence", "la existencia", "存在"], ["preference", "la preferencia", "偏好"]]}, {"en": "-ance", "es": "-ancia", "est": "约 100+", "gender": "阴性 la", "tip": "-ance 常变 -ancia，全是阴性；也有例外，如 balance 仍是 el balance", "pairs": [["distance", "la distancia", "距离"], ["importance", "la importancia", "重要性"], ["elegance", "la elegancia", "优雅"], ["tolerance", "la tolerancia", "宽容"], ["ignorance", "la ignorancia", "无知"], ["abundance", "la abundancia", "丰富"], ["arrogance", "la arrogancia", "傲慢"], ["relevance", "la relevancia", "相关性"], ["substance", "la sustancia", "物质"], ["instance", "la instancia", "实例；阶段"], ["circumstance", "la circunstancia", "情况"], ["vigilance", "la vigilancia", "警戒；监视"], ["fragrance", "la fragancia", "香味"], ["extravagance", "la extravagancia", "奢侈；古怪"]]}, {"en": "-ary", "es": "-ario", "est": "几百个", "gender": "名词为阳性 el", "tip": "-ary 变 -ario，既有名词（阳性）也有形容词", "pairs": [["dictionary", "el diccionario", "词典"], ["salary", "el salario", "工资"], ["vocabulary", "el vocabulario", "词汇"], ["anniversary", "el aniversario", "周年纪念"], ["itinerary", "el itinerario", "行程"], ["commentary", "el comentario", "评论"], ["glossary", "el glosario", "词汇表"], ["necessary", "necesario", "必要的"], ["ordinary", "ordinario", "普通的"], ["extraordinary", "extraordinario", "非凡的"], ["contrary", "contrario", "相反的"], ["primary", "primario", "初级的；主要的"], ["voluntary", "voluntario", "自愿的；志愿者"], ["imaginary", "imaginario", "想象的"]]}, {"en": "-ive", "es": "-ivo", "est": "几百个", "gender": "", "tip": "-ive 形容词变 -ivo；阴性改成 -iva", "pairs": [["active", "activo", "积极的；活跃的"], ["positive", "positivo", "正面的"], ["negative", "negativo", "负面的"], ["creative", "creativo", "有创意的"], ["attractive", "atractivo", "有吸引力的"], ["effective", "efectivo", "有效的；现金"], ["exclusive", "exclusivo", "独家的"], ["massive", "masivo", "大规模的"], ["objective", "objetivo", "客观的；目标"], ["productive", "productivo", "高效的"], ["relative", "relativo", "相对的"], ["native", "nativo", "本地的；母语的"], ["excessive", "excesivo", "过度的"], ["competitive", "competitivo", "有竞争力的"]]}, {"en": "-ly", "es": "-mente", "est": "上千个", "gender": "", "tip": "副词 -ly 变 -mente：把形容词的阴性形式加上 -mente，原有重音符号保留", "pairs": [["rapidly", "rápidamente", "快速地"], ["finally", "finalmente", "最后"], ["normally", "normalmente", "通常"], ["generally", "generalmente", "一般来说"], ["totally", "totalmente", "完全地"], ["exactly", "exactamente", "正是；确切地"], ["naturally", "naturalmente", "自然地"], ["probably", "probablemente", "大概"], ["especially", "especialmente", "特别地"], ["completely", "completamente", "完全地"], ["perfectly", "perfectamente", "完美地"], ["recently", "recientemente", "最近"], ["directly", "directamente", "直接地"], ["frequently", "frecuentemente", "经常"]]}, {"en": "-ize", "es": "-izar", "est": "约 200+", "gender": "", "tip": "-ize 动词变 -izar，都是规则 -ar 动词；小心 realize 在西语 realizar 是实现、进行的意思", "pairs": [["organize", "organizar", "组织"], ["memorize", "memorizar", "记住"], ["modernize", "modernizar", "现代化"], ["symbolize", "simbolizar", "象征"], ["utilize", "utilizar", "使用"], ["finalize", "finalizar", "完成"], ["authorize", "autorizar", "授权"], ["visualize", "visualizar", "想象；显示"], ["legalize", "legalizar", "使合法"], ["normalize", "normalizar", "使正常化"], ["stabilize", "estabilizar", "使稳定"], ["characterize", "caracterizar", "以…为特征"], ["minimize", "minimizar", "最小化"], ["maximize", "maximizar", "最大化"]]}, {"en": "-ate", "es": "-ar", "est": "几百个", "gender": "", "tip": "-ate 动词（不是形容词）去掉 -ate 换成 -ar，就是规则 -ar 动词", "pairs": [["create", "crear", "创造"], ["participate", "participar", "参加"], ["communicate", "comunicar", "交流"], ["celebrate", "celebrar", "庆祝"], ["educate", "educar", "教育"], ["separate", "separar", "分开"], ["calculate", "calcular", "计算"], ["operate", "operar", "操作；做手术"], ["generate", "generar", "产生"], ["eliminate", "eliminar", "消除"], ["concentrate", "concentrar", "集中"], ["decorate", "decorar", "装饰"], ["indicate", "indicar", "指出"], ["negotiate", "negociar", "谈判"]]}], "verbs": {"ar": {"endings": ["o", "as", "a", "amos", "an"], "verbs": [["hablar", "说话"], ["trabajar", "工作"], ["estudiar", "学习"], ["caminar", "走路"], ["cocinar", "做饭"], ["comprar", "买"], ["llamar", "打电话；叫"], ["escuchar", "听"], ["mirar", "看"], ["tomar", "拿；喝；乘坐"], ["necesitar", "需要"], ["ayudar", "帮助"], ["esperar", "等；希望"], ["viajar", "旅行"], ["bailar", "跳舞"], ["cantar", "唱歌"], ["llegar", "到达"], ["pagar", "付钱"], ["usar", "使用"], ["visitar", "拜访"], ["preparar", "准备"], ["limpiar", "打扫"], ["descansar", "休息"], ["nadar", "游泳"]]}, "er": {"endings": ["o", "es", "e", "emos", "en"], "verbs": [["comer", "吃"], ["beber", "喝"], ["aprender", "学会"], ["leer", "读"], ["correr", "跑"], ["vender", "卖"], ["comprender", "理解"], ["responder", "回答"], ["deber", "应该；欠"], ["creer", "相信；认为"], ["romper", "打破"], ["meter", "放进"], ["prometer", "承诺"], ["depender", "取决于"]]}, "ir": {"endings": ["o", "es", "e", "imos", "en"], "verbs": [["vivir", "住；生活"], ["escribir", "写"], ["abrir", "打开"], ["recibir", "收到"], ["subir", "上去；上传"], ["decidir", "决定"], ["compartir", "分享"], ["asistir", "参加；出席"], ["partir", "出发；切开"], ["cubrir", "覆盖"], ["discutir", "讨论；争吵"], ["permitir", "允许"], ["describir", "描述"], ["existir", "存在"], ["sufrir", "受苦"]]}}, "pronouns": ["yo", "tú", "él / ella / usted", "nosotros", "ellos / ellas / ustedes"]};
 </script>
 <script>
 (function () {
@@ -504,13 +529,14 @@ var ES = {
 
 
   /* ================= views ================= */
-  function show(v) { var vs = ['vHome', 'vStudy', 'vQuiz']; for (var i = 0; i < vs.length; i++) $(vs[i]).className = 'view' + (vs[i] === v ? ' on' : ''); window.scrollTo(0, 0); }
+  function show(v) { var vs = ['vHome', 'vStudy', 'vQuiz', 'vLev']; for (var i = 0; i < vs.length; i++) $(vs[i]).className = 'view' + (vs[i] === v ? ' on' : ''); window.scrollTo(0, 0); }
   function key(it) { return it.w; }
   $('homeBtn').onclick = function () { showHome(); };
   function showHome() {
     if (board) { board.destroy(); board = null; }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     var h = '<div class="card free"><h3>自己输入要练写的西语单词</h3><div class="frow"><input id="freeIn" placeholder="例如：me gusta el café" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
+    h += '<button class="card levhome" id="levGo"><b>🪄 以少胜多</b><div>40 个词读出 0–999,999 的所有数 · 一条规则把几百个英语词变成西语 · 一套结尾变几百个动词</div></button>';
     var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0, i;
     for (i = 0; i < LESSONS.length; i++) {
       var l = LESSONS[i], n = 0, prev = '';
@@ -526,6 +552,7 @@ var ES = {
     var bs = $('vHome').querySelectorAll('.lesson');
     for (i = 0; i < bs.length; i++) bs[i].onclick = function () { var k = +this.getAttribute('data-i'); openLesson(LESSONS[k], k); };
     $('freeGo').onclick = startFree;
+    $('levGo').onclick = function () { showLev(); };
     $('freeIn').onkeydown = function (e) { if (e.keyCode === 13) startFree(); };
   }
   function startFree() {
@@ -588,7 +615,7 @@ var ES = {
     var pool = shuffle(l.items.slice()), qs = [], i, all = [];
     for (i = 0; i < LESSONS.length; i++) if (LESSONS[i].kind === l.kind) all = all.concat(LESSONS[i].items);
     if (l.id === 'free') all = l.items.slice();
-    for (i = 0; i < Math.min(10, pool.length); i++) {
+    for (i = 0; i < Math.min(30, pool.length); i++) {
       var ans = pool[i], types = ['listen'];
       if (l.kind === 'words') {
         if (ans.zh) types.push('meaning');
@@ -611,14 +638,15 @@ var ES = {
       }
       qs.push(q);
     }
-    quiz = { l: l, qs: qs, i: 0, score: 0, lock: false };
-    show('vQuiz'); renderQ();
+    runQuiz({ l: l, qs: qs });
   }
+  function runQuiz(o) { quiz = o; quiz.i = 0; quiz.score = 0; quiz.lock = false; show('vQuiz'); renderQ(); }
   function renderQ() {
     var q = quiz.qs[quiz.i], a = q.ans, h = '<div class="sbar"><button class="btn ghost" id="qBack">‹ 返回</button><div class="ti">第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题</div><span style="width:70px"></span></div><div class="card qcard">';
-    var P = { listen: '听一听，选出正确的' + (quiz.l.kind === 'letters' ? '字母' : '单词'), meaning: '选出对应的西语单词', spell: '听一听，拼出这个单词', gender: '选出正确的冠词（阳性 / 阴性）' };
-    h += '<div class="qp">' + P[q.type] + '</div>';
-    if (q.type === 'listen') h += '<div class="qq"><button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button></div>';
+    var P = { listen: '听一听，选出正确的' + (quiz.l && quiz.l.kind === 'letters' ? '字母' : '单词'), meaning: '选出对应的西语单词', spell: '听一听，拼出这个单词', gender: '选出正确的冠词（阳性 / 阴性）' };
+    h += '<div class="qp">' + (q.custom ? q.label : P[q.type]) + '</div>';
+    if (q.custom) h += '<div class="qq">' + q.prompt + '</div>';
+    else if (q.type === 'listen') h += '<div class="qq"><button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button></div>';
     else if (q.type === 'meaning') h += '<div class="qq">' + esc(a.zh) + '</div>';
     else if (q.type === 'gender') h += '<div class="qq">___ ' + esc(a.noun) + '<div style="font-size:15px;font-weight:400;color:var(--soft)">' + esc(a.zh) + '</div></div>';
     else h += '<div class="qq" style="font-size:22px">' + esc(a.zh) + ' <button class="btn primary" id="qSay">🔊</button></div>';
@@ -628,20 +656,21 @@ var ES = {
       h += '</div><div style="margin-top:6px"><button class="btn ghost" id="qBackspace">⌫ 删除</button></div>';
     } else {
       h += '<div class="opts">';
-      for (var i = 0; i < q.opts.length; i++) { var lab = q.type === 'gender' ? q.opts[i] : (quiz.l.kind === 'letters' ? q.opts[i].w : q.opts[i].w); h += '<button class="btn opt" style="font-size:' + (q.type === 'gender' ? 26 : 19) + 'px" data-i="' + i + '">' + esc(lab) + '</button>'; }
+      for (var i = 0; i < q.opts.length; i++) { var lab = q.type === 'gender' ? q.opts[i] : q.opts[i].w; h += '<button class="btn opt' + (q.small ? ' small' : '') + '" style="font-size:' + (q.type === 'gender' ? 26 : 19) + 'px" data-i="' + i + '">' + esc(lab) + '</button>'; }
       h += '</div>';
     }
-    h += '<div class="fb" id="fb"></div><div class="hint" id="tip"></div></div>';
+    h += '<div class="fb" id="qfb"></div><div class="hint" id="tip"></div></div>';
     $('vQuiz').innerHTML = h;
-    $('qBack').onclick = function () { openLesson(quiz.l, quiz.l.li); };
-    if ($('qSay')) { $('qSay').onclick = function () { sayItem(a); }; setTimeout(function () { sayItem(a); }, 200); }
+    $('qBack').onclick = function () { if (quiz.back) quiz.back(); else openLesson(quiz.l, quiz.l.li); };
+    if (q.custom) { if ($('qSay')) $('qSay').onclick = function () { say(q.say); }; if (q.sayFirst) setTimeout(function () { say(q.say); }, 200); }
+    else if ($('qSay')) { $('qSay').onclick = function () { sayItem(a); }; setTimeout(function () { sayItem(a); }, 200); }
     function finish(ok) {
       if (ok) quiz.score++;
-      $('fb').innerHTML = esc(a.letter ? a.w + '（' + a.name + '）' : a.w) + (a.zh ? ' · ' + esc(a.zh) : '');
-      $('fb').className = 'fb ' + (ok ? 'ok' : 'bad');
+      $('qfb').innerHTML = q.custom ? q.fb : esc(a.letter ? a.w + '（' + a.name + '）' : a.w) + (a.zh ? ' · ' + esc(a.zh) : '');
+      $('qfb').className = 'fb ' + (ok ? 'ok' : 'bad');
       if (q.type === 'gender') $('tip').textContent = a.note || (a.g === 'm' ? '阳性名词用 el / los，常以 -o 结尾' : '阴性名词用 la / las，常以 -a、-ción、-dad 结尾');
-      sayItem(a);
-      setTimeout(function () { quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else renderDone(); }, ok ? 1300 : 2500);
+      if (q.custom) say(q.say); else sayItem(a);
+      var myQ = quiz; setTimeout(function () { if (quiz !== myQ || $('vQuiz').className.indexOf('on') < 0) return; quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else renderDone(); }, ok ? 1300 : 2500);
     }
     if (q.type === 'spell') {
       var tiles = $('vQuiz').querySelectorAll('.tile'), slots = $('vQuiz').querySelectorAll('.slot');
@@ -671,9 +700,196 @@ var ES = {
   function renderDone() {
     var pct = Math.round(quiz.score / quiz.qs.length * 100);
     $('vQuiz').innerHTML = '<div class="card qcard"><div class="qp">测验完成</div><div class="score">' + quiz.score + ' / ' + quiz.qs.length + '</div><div style="font-size:30px;margin:6px 0 16px">' + (pct === 100 ? '🏆' : pct >= 70 ? '🎉' : '💪') + '</div><button class="btn primary" id="qAgain">再测一次</button> <button class="btn" id="qHome">回到课程</button></div>';
-    $('qAgain').onclick = function () { startQuiz(quiz.l); };
-    $('qHome').onclick = showHome;
+    if (quiz.onDone) quiz.onDone(pct);
+    $('qAgain').onclick = function () { if (quiz.again) quiz.again(); else startQuiz(quiz.l); };
+    $('qHome').onclick = function () { if (quiz.back) quiz.back(); else showHome(); };
+    if (quiz.back) $('qHome').textContent = '返回';
   }
+
+  /* ================= 以少胜多 ================= */
+  var LEV = get('lev', {}), levTab = get('levTab', 'num'), levSel = null;
+  function setLev(k, v) { if (v) LEV[k] = 1; else delete LEV[k]; put('lev', LEV); }
+  function estNum(s) { var m = /(\d+)/.exec(s); if (m) return +m[1]; if (/上千/.test(s)) return 1000; if (/几百/.test(s)) return 300; return 100; }
+  function levStats() {
+    var w = 0, v = 0, i, g;
+    for (i = 0; i < ES.lev.cognates.length; i++) if (LEV['r:' + ES.lev.cognates[i].en]) w += estNum(ES.lev.cognates[i].est);
+    for (g in ES.lev.verbs) if (ES.lev.verbs.hasOwnProperty(g) && LEV['v:' + g]) v += ES.lev.verbs[g].verbs.length * 5;
+    return { w: w, v: v, n: LEV.num ? 1000000 : 0 };
+  }
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function showLev() {
+    if (board) { board.destroy(); board = null; }
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    var st = levStats(), h = '', i;
+    h += '<div class="sbar"><button class="btn ghost" id="lvBack">‹ 返回</button><div class="ti">🪄 以少胜多</div><span style="width:70px"></span></div>';
+    h += '<div class="card lvtop"><div class="lvstats"><div><b>' + fmt(st.n) + '</b><span>个数字会读</span></div><div><b>≈' + fmt(st.w) + '</b><span>个单词秒懂</span></div><div><b>' + fmt(st.v) + '</b><span>个动词形式</span></div></div></div>';
+    var tabs = [['num', '数字魔法'], ['cog', '英语变西语'], ['verb', '动词变位']];
+    h += '<div class="tabs">';
+    for (i = 0; i < tabs.length; i++) h += '<button data-t="' + tabs[i][0] + '" class="' + (levTab === tabs[i][0] ? 'on' : '') + '">' + tabs[i][1] + '</button>';
+    h += '</div><div id="lvBody"></div>';
+    $('vLev').innerHTML = h;
+    show('vLev');
+    $('lvBack').onclick = function () { if (levTab === 'cog' && levSel != null) { levSel = null; showLev(); } else showHome(); };
+    var tb = $('vLev').querySelectorAll('.tabs button');
+    for (i = 0; i < tb.length; i++) tb[i].onclick = function () { levTab = this.getAttribute('data-t'); put('levTab', levTab); levSel = null; showLev(); };
+    if (levTab === 'num') renderNum();
+    else if (levTab === 'cog') { if (levSel != null) renderRule(levSel); else renderRules(); }
+    else renderVerb(levSel || 'ar');
+  }
+
+  /* ----- numbers ----- */
+  var U = ['cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez', 'once', 'doce', 'trece', 'catorce', 'quince', 'dieciséis', 'diecisiete', 'dieciocho', 'diecinueve', 'veinte', 'veintiuno', 'veintidós', 'veintitrés', 'veinticuatro', 'veinticinco', 'veintiséis', 'veintisiete', 'veintiocho', 'veintinueve'];
+  var TENS = { 3: 'treinta', 4: 'cuarenta', 5: 'cincuenta', 6: 'sesenta', 7: 'setenta', 8: 'ochenta', 9: 'noventa' };
+  var HUN = { 1: 'ciento', 2: 'doscientos', 3: 'trescientos', 4: 'cuatrocientos', 5: 'quinientos', 6: 'seiscientos', 7: 'setecientos', 8: 'ochocientos', 9: 'novecientos' };
+  function es99(n) { if (n < 30) return [U[n]]; var t = Math.floor(n / 10), u = n % 10; return u ? [TENS[t], 'y', U[u]] : [TENS[t]]; }
+  function es999(n) {
+    if (n === 100) return ['cien'];
+    var h = Math.floor(n / 100), r = n % 100, out = [];
+    if (h) out.push(HUN[h]);
+    if (r) out = out.concat(es99(r));
+    return out;
+  }
+  function numParts(n) {
+    if (n === 0) return [['cero']];
+    var th = Math.floor(n / 1000), r = n % 1000, parts = [];
+    if (th) {
+      var a = th === 1 ? [] : es999(th);
+      if (a.length) { var last = a[a.length - 1]; if (last === 'uno') a[a.length - 1] = 'un'; else if (last === 'veintiuno') a[a.length - 1] = 'veintiún'; }
+      parts.push(a.concat(['mil']));
+    }
+    if (r) parts.push(es999(r));
+    return parts;
+  }
+  function numEs(n) { var p = numParts(n), a = [], i; for (i = 0; i < p.length; i++) a = a.concat(p[i]); return a.join(' '); }
+  var BLOCKS = [['0–15', 'cero uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince'], ['16–29 连写', 'dieci- + 6~9 → dieciséis…　veinti- + 1~9 → veintiuno…'], ['整十', 'treinta cuarenta cincuenta sesenta setenta ochenta noventa'], ['整百', 'cien / ciento, doscientos, trescientos, cuatrocientos, quinientos, seiscientos, setecientos, ochocientos, novecientos'], ['千', 'mil　(2000 = dos mil)']];
+  function randNum() {
+    var r = Math.random();
+    if (r < 0.3) return 16 + Math.floor(Math.random() * 84);
+    if (r < 0.65) return 100 + Math.floor(Math.random() * 900);
+    if (r < 0.9) return 1000 + Math.floor(Math.random() * 9000);
+    return 10000 + Math.floor(Math.random() * 990000);
+  }
+  function renderNum() {
+    var h = '<div class="card stage"><div class="tipb">学会下面这 <b>5 组、大约 40 个词</b>，再记住 3 条规则，就能读出 0 到 999,999 的<b>每一个</b>数：<br>① 31–99 用 <b>y</b> 连接：treinta <b>y</b> uno　② 100 整是 cien，101 起是 ciento…　③ 1000 是 mil，不说 un mil</div>';
+    for (var i = 0; i < BLOCKS.length; i++) h += '<div class="blk"><span>' + BLOCKS[i][0] + '</span>' + esc(BLOCKS[i][1]) + '</div>';
+    h += '<div class="frow" style="max-width:360px;margin:12px auto 0"><input id="numIn" type="number" inputmode="numeric" min="0" max="999999" placeholder="输入 0–999999"><button class="btn" id="numRand">🎲 随机</button></div>';
+    h += '<div class="numout" id="numOut"></div><div class="lvsub" id="numParts"></div>';
+    h += '<div class="row"><button class="btn" id="numSay">🔊 读音</button><button class="btn primary" id="numQuiz">🎯 数字测验</button><button class="btn ' + (LEV.num ? 'good' : '') + '" id="numGot">' + (LEV.num ? '✓ 已学会' : '✓ 我学会了') + '</button></div></div>';
+    $('lvBody').innerHTML = h;
+    var cur = '';
+    function upd(n) {
+      if (isNaN(n) || n < 0 || n > 999999) { cur = ''; $('numOut').textContent = ''; $('numParts').innerHTML = ''; return; }
+      n = Math.floor(n); cur = numEs(n);
+      $('numOut').textContent = cur;
+      var p = numParts(n);
+      $('numParts').innerHTML = '拆开看：' + p.map(function (x) { return '<span class="pchip">' + esc(x.join(' ')) + '</span>'; }).join(' + ');
+    }
+    $('numIn').oninput = function () { upd(parseInt(this.value, 10)); };
+    $('numRand').onclick = function () { var n = randNum(); $('numIn').value = n; upd(n); say(cur); };
+    $('numSay').onclick = function () { if (cur) say(cur); };
+    $('numQuiz').onclick = numQuiz;
+    $('numGot').onclick = function () { setLev('num', !LEV.num); showLev(); };
+    var n0 = randNum(); $('numIn').value = n0; upd(n0);
+  }
+  function tweak(n) {
+    var s = String(n).split(''), k = Math.floor(Math.random() * s.length), r = Math.random();
+    if (r < 0.45) s[k] = String((+s[k] + 1 + Math.floor(Math.random() * 8)) % 10);
+    else if (s.length > 1) { var j = (k + 1) % s.length, t = s[k]; s[k] = s[j]; s[j] = t; }
+    else s[k] = String((+s[k] + 3) % 10);
+    if (s[0] === '0') s[0] = '1';
+    return parseInt(s.join(''), 10);
+  }
+  function numQuiz() {
+    var qs = [], i;
+    for (i = 0; i < 10; i++) {
+      var n = randNum(), opts = [n], g = 0, listen = i % 2 === 1;
+      while (opts.length < 4 && g++ < 100) { var m = tweak(n); if (opts.indexOf(m) < 0 && m > 0) opts.push(m); }
+      while (opts.length < 4) opts.push(n + opts.length * 11);
+      var oo = [];
+      for (var k = 0; k < opts.length; k++) oo.push({ w: listen ? fmt(opts[k]) : numEs(opts[k]) });
+      qs.push({ custom: true, ans: oo[0], opts: shuffle(oo), label: listen ? '听一听，是哪个数？' : '这个数用西语怎么说？', prompt: listen ? '<button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button>' : '<span style="font-size:40px">' + fmt(n) + '</span>', say: numEs(n), sayFirst: listen, small: !listen, fb: '<b>' + fmt(n) + '</b> = ' + esc(numEs(n)) });
+    }
+    runQuiz({ l: null, qs: qs, back: showLev, again: numQuiz, onDone: function (p) { if (p >= 80) setLev('num', 1); } });
+  }
+
+  /* ----- cognate rules ----- */
+  var ARTRE = /^(el \/ la|el|la|los|las) /;
+  function bare(s) { return s.replace(ARTRE, ''); }
+  function renderRules() {
+    var rs = ES.lev.cognates, h = '<div class="tipb">英语和西语有成千上万个「长得像」的词。掌握一条<b>结尾变身规则</b>，一大批英语单词直接变成西语！点开一条规则看看。</div>', i;
+    for (i = 0; i < rs.length; i++) {
+      var r = rs[i], on = LEV['r:' + r.en];
+      h += '<div class="card fam' + (on ? ' done' : '') + '" data-i="' + i + '"><div class="fb0"><div class="rule"><span>' + esc(r.en) + '</span><i>→</i><b>' + esc(r.es) + '</b></div><div class="mid"><div class="cnt">' + (on ? '✓ 已学会 · ' : '') + esc(r.est) + '</div><div class="lvsub">' + esc(r.pairs[0][0]) + ' → ' + esc(r.pairs[0][1]) + ' · ' + esc(r.pairs[1][0]) + ' → ' + esc(r.pairs[1][1]) + '</div></div></div></div>';
+    }
+    $('lvBody').innerHTML = h;
+    var cs = $('lvBody').querySelectorAll('.fam');
+    for (i = 0; i < cs.length; i++) cs[i].onclick = function () { levSel = +this.getAttribute('data-i'); showLev(); };
+  }
+  function renderRule(i) {
+    var r = ES.lev.cognates[i], on = LEV['r:' + r.en], h = '<div class="card stage"><div class="rule big"><span>' + esc(r.en) + '</span><i>→</i><b>' + esc(r.es) + '</b></div>';
+    h += '<div class="lvsub">' + esc(r.est) + (r.gender ? ' · ' + esc(r.gender) : '') + '</div><div class="tipb">' + esc(r.tip) + '</div><div class="pairs">';
+    for (var k = 0; k < r.pairs.length; k++) h += '<div class="pair2" data-say="' + esc(r.pairs[k][1]) + '"><span class="en">' + esc(r.pairs[k][0]) + '</span><i>→</i><b>' + esc(r.pairs[k][1]) + '</b><small>' + esc(r.pairs[k][2]) + '</small></div>';
+    h += '</div><div class="row"><button class="btn primary" id="rQuiz">🎯 考考我</button><button class="btn ' + (on ? 'good' : '') + '" id="rGot">' + (on ? '✓ 已学会' : '✓ 我学会了') + '</button></div></div>';
+    $('lvBody').innerHTML = h;
+    var ps = $('lvBody').querySelectorAll('.pair2');
+    for (k = 0; k < ps.length; k++) ps[k].onclick = function () { say(this.getAttribute('data-say')); };
+    $('rQuiz').onclick = function () { ruleQuiz(i); };
+    $('rGot').onclick = function () { setLev('r:' + r.en, !LEV['r:' + r.en]); showLev(); };
+  }
+  var UNACC = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u' };
+  function unacc(s) { return s.replace(/[áéíóú]/g, function (c) { return UNACC[c]; }); }
+  function ruleQuiz(ri) {
+    var r = ES.lev.cognates[ri], pool = shuffle(r.pairs.slice()).slice(0, 10), qs = [], i;
+    var esS = r.es.replace(/^-/, ''), enS = r.en.replace(/^-/, '');
+    for (i = 0; i < pool.length; i++) {
+      var p = pool[i], full = p[1], m = ARTRE.exec(full), art = m ? m[0] : '', w = bare(full), stem = w.slice(0, w.length - esS.length), cands = [], k;
+      cands.push(unacc(w));
+      cands.push(stem + enS);
+      var others = shuffle(ES.lev.cognates.slice());
+      for (k = 0; k < others.length; k++) { var o = others[k].es.replace(/^-/, ''); if (o !== esS) cands.push(stem + o); }
+      var opts = [{ w: full }], seen = {}; seen[full] = 1;
+      for (k = 0; k < cands.length && opts.length < 4; k++) { var c = art + cands[k]; if (!seen[c] && cands[k] !== w) { seen[c] = 1; opts.push({ w: c }); } }
+      qs.push({ custom: true, ans: opts[0], opts: shuffle(opts), label: '这个英语单词，西语怎么写？', prompt: '<span style="font-size:32px">' + esc(p[0]) + '</span><div style="font-size:16px;font-weight:400;color:var(--soft)">' + esc(p[2]) + '</div>', say: full, small: true, fb: esc(p[0]) + ' → <b>' + esc(full) + '</b>' });
+    }
+    runQuiz({ l: null, qs: qs, back: showLev, again: function () { ruleQuiz(ri); }, onDone: function (pc) { if (pc >= 80) setLev('r:' + r.en, 1); } });
+  }
+
+  /* ----- verbs ----- */
+  var PRON = ES.lev.pronouns;
+  function conj(v, g, k) { return v.slice(0, -2) + ES.lev.verbs[g].endings[k]; }
+  function renderVerb(g) {
+    var G = ES.lev.verbs[g], on = LEV['v:' + g], sel = get('verb:' + g, 0), v = G.verbs[sel] || G.verbs[0], i;
+    var h = '<div class="tabs sm">';
+    for (var gg in ES.lev.verbs) if (ES.lev.verbs.hasOwnProperty(gg)) h += '<button data-g="' + gg + '" class="' + (gg === g ? 'on' : '') + '">-' + gg + ' 动词' + (LEV['v:' + gg] ? ' ✓' : '') + '</button>';
+    h += '</div><div class="card stage"><div class="tipb">西语动词按人称变结尾。<b>记住一套 -' + g + ' 结尾（5 个）</b>，下面这 ' + G.verbs.length + ' 个规则动词（还有几百个）全都会变！<br>拉美说「你们」用 ustedes，和「他们」同一个形式。</div>';
+    h += '<div class="ends">'; for (i = 0; i < 5; i++) h += '<div><small>' + esc(PRON[i]) + '</small><b>-' + esc(G.endings[i]) + '</b></div>'; h += '</div>';
+    h += '<div class="vsel">'; for (i = 0; i < G.verbs.length; i++) h += '<button class="vb' + (G.verbs[i] === v ? ' on' : '') + '" data-v="' + i + '">' + esc(G.verbs[i][0]) + '</button>'; h += '</div>';
+    h += '<div class="numout" style="font-size:28px">' + esc(v[0]) + ' <span style="font-size:17px;color:var(--soft);font-weight:400">' + esc(v[1]) + '</span></div><div class="ctab">';
+    var stem = v[0].slice(0, -2);
+    for (i = 0; i < 5; i++) { var f = conj(v[0], g, i); h += '<div class="crow" data-say="' + esc(PRON[i].split(' / ')[0] + ' ' + f) + '"><span>' + esc(PRON[i]) + '</span><b>' + esc(stem) + '<em>' + esc(G.endings[i]) + '</em></b></div>'; }
+    h += '</div><div class="row"><button class="btn primary" id="vbQuiz">🎯 考考我</button><button class="btn ' + (on ? 'good' : '') + '" id="vGot">' + (on ? '✓ 已学会' : '✓ 我学会了') + '</button></div></div>';
+    $('lvBody').innerHTML = h;
+    var b = $('lvBody').querySelectorAll('.tabs button');
+    for (i = 0; i < b.length; i++) b[i].onclick = function () { levSel = this.getAttribute('data-g'); showLev(); };
+    b = $('lvBody').querySelectorAll('.vb');
+    for (i = 0; i < b.length; i++) b[i].onclick = function () { put('verb:' + g, +this.getAttribute('data-v')); renderVerb(g); say(G.verbs[+this.getAttribute('data-v')][0]); };
+    b = $('lvBody').querySelectorAll('.crow');
+    for (i = 0; i < b.length; i++) b[i].onclick = function () { say(this.getAttribute('data-say')); };
+    $('vbQuiz').onclick = function () { verbQuiz(g); };
+    $('vGot').onclick = function () { setLev('v:' + g, !LEV['v:' + g]); levSel = g; showLev(); };
+  }
+  function verbQuiz(g) {
+    var G = ES.lev.verbs[g], qs = [], i, vs = shuffle(G.verbs.slice());
+    for (i = 0; i < 10; i++) {
+      var v = vs[i % vs.length], k = Math.floor(Math.random() * 5), opts = [], j;
+      for (j = 0; j < 5; j++) opts.push({ w: conj(v[0], g, j) });
+      var ans = opts[k]; opts.splice(k, 1); opts = shuffle(opts).slice(0, 3); opts.push(ans);
+      var pr = PRON[k].split(' / ')[0];
+      qs.push({ custom: true, ans: ans, opts: shuffle(opts), label: '选出正确的变位', prompt: '<span style="font-size:28px">' + esc(pr) + ' + ' + esc(v[0]) + '</span><div style="font-size:15px;font-weight:400;color:var(--soft)">' + esc(v[1]) + '</div>', say: pr + ' ' + ans.w, fb: esc(pr) + ' <b>' + esc(ans.w) + '</b>' });
+    }
+    runQuiz({ l: null, qs: qs, back: function () { levSel = g; showLev(); }, again: function () { verbQuiz(g); }, onDone: function (pc) { if (pc >= 80) setLev('v:' + g, 1); } });
+  }
+
   showHome();
 })();
 </script>
