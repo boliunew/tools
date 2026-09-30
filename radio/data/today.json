@@ -1,34 +1,34 @@
 {
- "clock": "https://github.com/boliunew/tools/releases/download/radio-clock/",
- "generated": "2026-09-30T06:17:02Z",
- "date": "2026-09-29",
+ "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
+ "generated": "2026-09-30T07:06:49Z",
+ "date": "2026-09-30",
  "engine": "edge",
- "total": 247.1,
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609292315",
+ "total": 260.6,
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609300005",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "9月29日 星期二",
-   "dur": 12.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609292315",
+   "sub": "9月30日 星期三",
+   "dur": 10.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609300005",
    "text": [
     {
      "lang": "zh",
-     "t": "早上好！今天是9月29日，星期二。这里是你的通勤电台，今天一共8段。想跳过，就按方向盘上的下一首。"
+     "t": "一周过半了。9月30日，星期三，通勤电台准时上线。今天一共8段，不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 87°/60°F",
-   "dur": 20.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609292315",
+   "sub": "Upland 晴 88°/61°F",
+   "dur": 20.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609300005",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。现在气温华氏67度，大约19摄氏度。白天最高87度，约30摄氏度；最低60度。基本不会下雨。空气质量中等，指数54。今天日落时间是傍晚6点37分。"
+     "t": "Upland今天晴。现在气温华氏66度，大约19摄氏度。白天最高88度，约31摄氏度；最低61度。基本不会下雨。空气质量中等，指数54。今天日落时间是傍晚6点35分。"
     }
    ]
   },
@@ -37,7 +37,7 @@
    "title": "📊 大盘",
    "sub": "防守",
    "dur": 34.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609292315",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609300005",
    "text": [
     {
      "lang": "zh",
@@ -50,7 +50,7 @@
    "title": "📈 股票池",
    "sub": "37 个候选",
    "dur": 57.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609292315",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609300005",
    "text": [
     {
      "lang": "zh",
@@ -77,26 +77,34 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "1 件大事",
-   "dur": 16.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609292315",
+   "sub": "3 件大事",
+   "dur": 36.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609300005",
    "text": [
     {
      "lang": "zh",
-     "t": "明天，有1家大公司发财报。"
+     "t": "今天，有1家大公司发财报。"
     },
     {
      "lang": "zh",
      "t": "Micron Technology，代码 M U，盘后发财报。期权定价波动正负7.6%。标签：大波动、利好出尽型、已提前炒作。"
+    },
+    {
+     "lang": "zh",
+     "t": "明天，重要数据有：美东08:30公布PCE 物价指数。另外，有1家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "Accenture，代码 A C N，盘前发财报。期权定价波动正负7.4%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "Al Jazeera · BBC · NPR",
-   "dur": 66.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609292315",
+   "sub": "BBC · NPR · Al Jazeera",
+   "dur": 59.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609300005",
    "text": [
     {
      "lang": "zh",
@@ -104,48 +112,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。"
+     "t": "第1条，来自BBC，科学，难度B2。"
     },
     {
      "lang": "en",
-     "t": "Venezuelan man shot by ICE officer in Texas is charged with assault"
+     "t": "Orionid meteor shower to streak across night sky this week"
     },
     {
      "lang": "en",
-     "t": "Wilber Rafael Garces Perez has disputed the government's account of what led to his shooting during a DoorDash delivery."
+     "t": "The Orionid meteor shower peaks in October as Earth passes through debris left behind by Halley’s Comet."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，商业，难度B2。"
+     "t": "第2条，来自NPR，综合，难度B2。"
     },
     {
      "lang": "en",
-     "t": "'I like proving people wrong': The women taking up DIY and plumbing"
+     "t": "Hurricane Polo's remnants bringing more rain to flood-struck U.S. Southwest"
     },
     {
      "lang": "en",
-     "t": "Female DIY experts and tradeswomen talk about their experiences of a traditionally male-dominated domain."
+     "t": "The storm's remnants battered the U.S."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，科技，难度B1。"
+     "t": "第3条，来自Al Jazeera，国际，难度B2。"
     },
     {
      "lang": "en",
-     "t": "Trump hosts tech executives as administration doubles down on AI"
+     "t": "Public workers in France strike over pay as student protests turn violent"
     },
     {
      "lang": "en",
-     "t": "President Trump met with AI CEOs at the White House on Tuesday and promoted a new government AI tool even as concerns about the technology's risks grow."
+     "t": "Tens of thousands of workers march nationwide, as police arrest 440 students in clashes at schools."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "entrance · la hija",
-   "dur": 32.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609292315",
+   "sub": "concentrate · sesenta",
+   "dur": 35.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609300005",
    "text": [
     {
      "lang": "zh",
@@ -153,15 +161,15 @@
     },
     {
      "lang": "en",
-     "t": "entrance"
+     "t": "concentrate"
     },
     {
      "lang": "zh",
-     "t": "意思是：入口。拼写是："
+     "t": "意思是：集中注意力。拼写是："
     },
     {
      "lang": "en",
-     "t": "e, n, t, r, a, n, c, e"
+     "t": "c, o, n, c, e, n, t, r, a, t, e"
     },
     {
      "lang": "zh",
@@ -169,7 +177,7 @@
     },
     {
      "lang": "en",
-     "t": "entrance"
+     "t": "concentrate"
     },
     {
      "lang": "zh",
@@ -177,15 +185,15 @@
     },
     {
      "lang": "es",
-     "t": "la hija"
+     "t": "sesenta"
     },
     {
      "lang": "zh",
-     "t": "意思是：女儿。跟着读一遍。"
+     "t": "意思是：六十。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la hija"
+     "t": "sesenta"
     }
    ]
   },
@@ -193,12 +201,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 7.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202609292315",
+   "dur": 6.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202609300005",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，祝你今天顺顺利利！"
+     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
     }
    ]
   }
