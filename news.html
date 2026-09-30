@@ -68,7 +68,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 <body>
 <header class="top"><div class="wrap"><div class="bar">
   <a class="brand" href="./"><i></i>英文新闻精选</a>
-  <a class="btn ghost" href="sublingo.html">SubLingo</a>
+  <button class="btn ghost" id="refreshBtn">🔄 刷新</button><a class="btn ghost" href="sublingo.html">SubLingo</a>
 </div></div></header>
 <main class="wrap" id="app"><div class="empty">加载中…</div></main>
 <script>
@@ -97,17 +97,31 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     return (d.getMonth() + 1) + '月' + d.getDate() + '日';
   }
 
-  function load() {
+  var prevGen = null;
+  function load(manual) {
+    var rb = document.getElementById('refreshBtn');
+    if (manual) { rb.disabled = true; rb.textContent = '⏳ 刷新中'; }
     var x = new XMLHttpRequest();
     x.open('GET', 'news/data/latest.json?t=' + Date.now());
     x.onload = function () {
       if (x.status !== 200) { app.innerHTML = '<div class="card empty" style="margin-top:16px"><b style="font-size:17px;color:var(--ink)">等待第一次更新</b><br>每天早上 6 点和晚上 6 点（太平洋时间）自动抓取最新新闻。<br><a href="https://github.com/boliunew/tools/actions/workflows/news.yml" target="_blank" rel="noopener">想马上看？去 GitHub 手动运行一次 →</a></div>'; return; }
       try { D = JSON.parse(x.responseText); } catch (e) { app.innerHTML = '<div class="empty">数据格式错误</div>'; return; }
       render();
+      if (manual) { flashMsg(prevGen && prevGen === D.generated ? '已经是最新的了（' + ago(D.generated) + '抓取）' : '已刷新 ✓'); }
+      prevGen = D.generated;
     };
+    x.onloadend = function () { rb.disabled = false; rb.textContent = '🔄 刷新'; };
     x.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
     x.send();
   }
+
+  function flashMsg(t) {
+    var el = document.getElementById('flash');
+    if (!el) { el = document.createElement('div'); el.id = 'flash'; el.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:14px;z-index:50;transition:opacity .3s'; document.body.appendChild(el); }
+    el.textContent = t; el.style.opacity = '1';
+    clearTimeout(el._t); el._t = setTimeout(function () { el.style.opacity = '0'; }, 2200);
+  }
+  document.getElementById('refreshBtn').onclick = function () { load(true); };
 
   function chip(key, val, label, n) { return '<button class="chip' + (F[key] === val ? ' on' : '') + '" data-k="' + key + '" data-v="' + esc(val) + '">' + esc(label) + (n != null ? '<span class="n">' + n + '</span>' : '') + '</button>'; }
 
@@ -116,7 +130,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var lvN = {}, tpN = {}, srcs = {};
     for (i = 0; i < arts.length; i++) { a = arts[i]; lvN[a.level] = (lvN[a.level] || 0) + 1; tpN[a.topic] = (tpN[a.topic] || 0) + 1; srcs[a.source] = 1; }
     var okFeeds = 0; for (i = 0; i < (D.feeds || []).length; i++) if (D.feeds[i].ok) okFeeds++;
-    h += '<div class="meta">更新于 ' + ago(D.generated) + ' · 共 ' + arts.length + ' 篇 · ' + okFeeds + '/' + (D.feeds || []).length + ' 个新闻源正常</div>';
+    var ageH = (Date.now() - new Date(D.generated).getTime()) / 36e5;
+    h += '<div class="meta">更新于 ' + ago(D.generated) + ' · 共 ' + arts.length + ' 篇 · ' + okFeeds + '/' + (D.feeds || []).length + ' 个新闻源正常 · <a href="https://github.com/boliunew/tools/actions/workflows/news.yml" target="_blank" rel="noopener"' + (ageH > 3 ? ' style="font-weight:600"' : '') + '>立即抓取最新新闻 ↗</a></div>';
     h += '<div class="filters"><div class="row"><span class="lab">难度</span>' + chip('lv', 'all', '全部');
     for (i = 0; i < LEVELS.length; i++) h += chip('lv', LEVELS[i], LEVELS[i] + ' ' + LVZH[LEVELS[i]], lvN[LEVELS[i]] || 0);
     h += '</div><div class="row"><span class="lab">话题</span>' + chip('topic', 'all', '全部');
@@ -158,7 +173,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var card = el; while (card && !(card.classList && card.classList.contains('art'))) card = card.parentNode;
     if (card) { READ[card.getAttribute('data-id')] = Date.now(); set('read', READ); card.classList.add('read'); }
   });
-  load();
+  load(false);
 })();
 </script>
 </body>

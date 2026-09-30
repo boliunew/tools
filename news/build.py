@@ -7,7 +7,7 @@ difficulty (sentence length, syllables, word rarity via `wordfreq`), and writes
 news/data/latest.json.  Only headline, the feed's own summary, link and our
 computed stats are stored — the article text itself is NOT republished.
 
-Offline test:  python news/build.py --fixtures news/test_fixtures
+Offline test:  python news/build.py --fixtures <dir with feed_0.xml + article html>
 """
 import argparse
 import datetime as dt

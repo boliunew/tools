@@ -5,6 +5,9 @@ on:
     - cron: "7 13 * * *"   # 每天 6:07 太平洋夏令时
     - cron: "7 1 * * *"    # 每天 18:07 太平洋夏令时
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["news/build.py", "news/feeds.json"]
 
 permissions:
   contents: write
