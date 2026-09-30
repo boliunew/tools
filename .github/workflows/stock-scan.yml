@@ -4,6 +4,8 @@ on:
   schedule:
     # 周一到周五 21:47 UTC（美股收盘后约 1.5 小时，夏令时；冬令时为收盘后 45 分钟）
     - cron: "47 21 * * 1-5"
+    # 次日早上再跑一次（太平洋时间 6:47），补上前一晚 Yahoo 延迟发布的数据
+    - cron: "47 13 * * 2-6"
   workflow_dispatch: {}
   push:
     branches: [main]
