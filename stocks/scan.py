@@ -159,7 +159,44 @@ def download(tickers, period="3y"):
             except Exception:  # noqa: BLE001
                 pass
         print(f"downloaded {min(i + chunk, len(tickers))}/{len(tickers)} -> {len(out)} ok")
+    # Yahoo's batch endpoint sometimes returns the newest bar for only part of the
+    # tickers; re-fetch recent bars for the laggards and merge them in.
+    DIAG["before"] = _date_counts(out)
+    if out:
+        newest = max(d.index[-1] for d in out.values())
+        lag = [t for t, d in out.items() if d.index[-1] < newest]
+        DIAG["refetch"] = len(lag)
+        for i in range(0, len(lag), 50):
+            part = lag[i:i + 50]
+            try:
+                df = yf.download(part, period="10d", interval="1d", auto_adjust=True, group_by="ticker",
+                                 threads=True, progress=False)
+            except Exception as e:  # noqa: BLE001
+                print("refetch failed", e)
+                continue
+            for t in part:
+                try:
+                    d = df[t] if isinstance(df.columns, pd.MultiIndex) else df
+                    d = d[["Open", "High", "Low", "Close", "Volume"]].dropna(subset=["Close"])
+                    new = d[d.index > out[t].index[-1]]
+                    if len(new):
+                        out[t] = pd.concat([out[t], new])
+                except Exception:  # noqa: BLE001
+                    pass
+        DIAG["after"] = _date_counts(out)
+        print("date counts before/after refetch:", DIAG["before"], DIAG["after"])
     return out
+
+
+DIAG = {}
+
+
+def _date_counts(frames):
+    c = {}
+    for d in frames.values():
+        k = str(d.index[-1].date())
+        c[k] = c.get(k, 0) + 1
+    return dict(sorted(c.items())[-4:])
 
 
 def demo_data(n=90, days=780, seed=None):
@@ -480,7 +517,7 @@ def main():
         "date": today, "demo": bool(args.demo), "universe": len(meta), "scanned": len(frames),
         "regime": regime,
         "signals": {k: dict(SIGNALS[k], stats=stats[k]) for k in PRIORITY},
-        "candidates": kept, "tracking": tracking,
+        "candidates": kept, "tracking": tracking, "diag": DIAG,
     }
     with open(os.path.join(DATA, "latest.json"), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, separators=(",", ":"))
