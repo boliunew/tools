@@ -1,17 +1,17 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-09-30T07:06:49Z",
+ "generated": "2026-09-30T13:52:35Z",
  "date": "2026-09-30",
  "engine": "edge",
  "total": 260.6,
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609300005",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609300652",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
    "sub": "9月30日 星期三",
    "dur": 10.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609300005",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609300652",
    "text": [
     {
      "lang": "zh",
@@ -22,13 +22,13 @@
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 88°/61°F",
+   "sub": "Upland 晴 89°/63°F",
    "dur": 20.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609300005",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609300652",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。现在气温华氏66度，大约19摄氏度。白天最高88度，约31摄氏度；最低61度。基本不会下雨。空气质量中等，指数54。今天日落时间是傍晚6点35分。"
+     "t": "Upland今天晴。现在气温华氏63度，大约17摄氏度。白天最高89度，约32摄氏度；最低63度。基本不会下雨。空气质量中等，指数59。今天日落时间是傍晚6点35分。"
     }
    ]
   },
@@ -37,7 +37,7 @@
    "title": "📊 大盘",
    "sub": "防守",
    "dur": 34.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609300005",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609300652",
    "text": [
     {
      "lang": "zh",
@@ -50,7 +50,7 @@
    "title": "📈 股票池",
    "sub": "37 个候选",
    "dur": 57.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609300005",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609300652",
    "text": [
     {
      "lang": "zh",
@@ -79,7 +79,7 @@
    "title": "🗓️ 财报与数据",
    "sub": "3 件大事",
    "dur": 36.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609300005",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609300652",
    "text": [
     {
      "lang": "zh",
@@ -104,7 +104,7 @@
    "title": "📰 英文新闻",
    "sub": "BBC · NPR · Al Jazeera",
    "dur": 59.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609300005",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609300652",
    "text": [
     {
      "lang": "zh",
@@ -153,7 +153,7 @@
    "title": "🔤 今日单词",
    "sub": "concentrate · sesenta",
    "dur": 35.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609300005",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609300652",
    "text": [
     {
      "lang": "zh",
@@ -202,7 +202,7 @@
    "title": "👋 结束",
    "sub": "开车注意安全",
    "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202609300005",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202609300652",
    "text": [
     {
      "lang": "zh",
