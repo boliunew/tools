@@ -150,7 +150,10 @@ def download(tickers, period="3y"):
         for t in part:
             try:
                 d = df[t] if isinstance(df.columns, pd.MultiIndex) else df
-                d = d[["Open", "High", "Low", "Close", "Volume"]].dropna()
+                d = d[["Open", "High", "Low", "Close", "Volume"]].dropna(subset=["Close"])
+                for c in ("Open", "High", "Low"):
+                    d[c] = d[c].fillna(d["Close"])
+                d["Volume"] = d["Volume"].fillna(0)
                 if len(d) > 260:
                     out[t] = d
             except Exception:  # noqa: BLE001
@@ -402,7 +405,18 @@ def main():
         x["low3"] = x["low"].rolling(3).min()
     sigs = {t: signal_frame(x) for t, x in frames.items()}
 
-    last_date = max(x.index[-1] for x in frames.values())
+    # "today" = the latest date that most tickers actually have (a few may lag or run ahead)
+    from collections import Counter
+    counts = Counter(x.index[-1] for x in frames.values())
+    last_date = max(d for d, n in counts.items() if n >= 0.5 * len(frames)) if counts else None
+    if last_date is None or counts[last_date] < 0.5 * len(frames):
+        last_date = counts.most_common(1)[0][0]
+    for t in list(frames):
+        x = frames[t]
+        if x.index[-1] > last_date:          # trim bars newer than the common date
+            frames[t] = x[x.index <= last_date]
+            sigs[t] = sigs[t][sigs[t].index <= last_date]
+    print("dates:", {str(k.date()): v for k, v in counts.most_common(4)}, "-> using", last_date.date())
     today = last_date.date().isoformat()
     cutoff = last_date - pd.DateOffset(years=STATS_YEARS)
     stats = signal_stats(frames, sigs, cutoff)

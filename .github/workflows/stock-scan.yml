@@ -5,6 +5,9 @@ on:
     # 周一到周五 21:47 UTC（美股收盘后约 1.5 小时，夏令时；冬令时为收盘后 45 分钟）
     - cron: "47 21 * * 1-5"
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["stocks/scan.py"]
 
 permissions:
   contents: write
