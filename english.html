@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#EEF3F7">
+<title>英语练习 · ABC</title>
+<style>
+:root{
+  --bg:#EEF3F7; --paper:#FFFFFF; --ink:#1B1E23; --soft:#5F6B76; --faint:#98A2AC; --line:#DCE3EA; --chip:#E6ECF1;
+  --accent:#2466B8; --accent-ink:#FFFFFF; --accent-soft:#DCE8F7; --good:#2E7D32; --good-soft:#DDF1E1; --bad:#C8412B; --bad-soft:#F8E1DB;
+  --l1:#A9C2DA; --l3:#E39A8C; --outline:#E3E8EE; --stroke:#1B1E23; --draw:#2466B8; --hint:#F2A33A;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15181C; --paper:#1F2328; --ink:#ECEEF0; --soft:#A7B0B9; --faint:#6F7881; --line:#30363D; --chip:#282D33;
+    --accent:#7FB2FF; --accent-ink:#0B1422; --accent-soft:#1D2B3E; --good:#6FD07A; --good-soft:#1D3321; --bad:#FF7F66; --bad-soft:#3A2420;
+    --l1:#3C4F63; --l3:#7A3E34; --outline:#343A42; --stroke:#ECEEF0; --draw:#7FB2FF; --hint:#F2B35E;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.5}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;min-height:56px}
+.brand{font-weight:700;font-size:19px;margin-right:auto;display:flex;align-items:center;cursor:pointer}
+.brand i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:30px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-ink);margin-right:8px;font-size:13px;font-weight:800;letter-spacing:-.02em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.btn{border:1px solid var(--line);background:var(--paper);padding:8px 14px;border-radius:12px;font-size:14.5px;display:inline-flex;align-items:center;justify-content:center;min-height:42px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.good{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--soft)}
+.btn:disabled{opacity:.4}
+main{padding:14px 0 60px}
+.view{display:none}.view.on{display:block}
+.free{padding:14px 16px;margin-bottom:6px}
+.free h3{margin:0 0 8px;font-size:15px}
+.frow{display:flex}
+.frow input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:9px 12px;margin-right:8px;font-size:17px}
+.frow input:focus{outline:2px solid var(--accent);border-color:transparent}
+h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px;font-weight:600;display:flex;justify-content:space-between}
+.lessons{display:flex;flex-wrap:wrap;margin:0 -5px}
+.lesson{width:calc(50% - 10px);margin:0 5px 10px;padding:12px 14px;cursor:pointer;text-align:left}
+.lesson:hover{border-color:var(--accent)}
+.l-n{font-size:12px;color:var(--faint)}
+.l-t{font-weight:700;font-size:16px}
+.l-c{font-size:15px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:2px 0 6px}
+.pbar{height:5px;background:var(--chip);border-radius:5px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--good);border-radius:5px}
+.sbar{display:flex;align-items:center;margin-bottom:10px}
+.sbar .ti{flex:1;text-align:center;font-weight:600}
+.sbar .ti small{display:block;font-weight:400;color:var(--faint);font-size:12px}
+.stage{padding:18px 12px 16px;text-align:center}
+.board{display:inline-block;touch-action:none;-webkit-user-select:none;user-select:none;max-width:100%;cursor:crosshair}
+.board svg{display:block}
+.ipa{font-size:20px;color:var(--accent);margin-top:6px;font-family:"Lucida Sans Unicode","Arial Unicode MS","Segoe UI",sans-serif}
+.zh{font-size:18px;margin-top:2px}
+.pair{font-size:15px;color:var(--soft);margin-top:4px}
+.ex{display:inline-block;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:6px 14px;margin-top:10px;cursor:pointer}
+.ex b{font-size:18px}
+.ex span{color:var(--soft);font-size:13.5px;margin-left:6px}
+.info{font-size:13px;color:var(--faint);margin-top:6px;min-height:20px}
+.fb{font-size:15px;font-weight:600;min-height:24px;margin-top:4px}
+.fb.ok{color:var(--good)} .fb.bad{color:var(--bad)}
+.tools{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.tools .btn{margin:0 4px 8px;min-width:92px}
+.nav{display:flex;align-items:center;margin-top:12px}
+.nav .btn{flex:1}
+.nav .btn.mid{flex:1.4;margin:0 8px}
+.dots{display:flex;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);margin:0 3px 4px}
+.dots i.l{background:var(--good)} .dots i.c{background:var(--accent);transform:scale(1.3)}
+.qcard{padding:22px 16px;text-align:center}
+.qp{font-size:14px;color:var(--soft)}
+.qq{font-size:30px;font-weight:700;margin:10px 0 16px;min-height:44px}
+.opts{display:flex;flex-wrap:wrap;margin:0 -5px}
+.opt{width:calc(50% - 10px);margin:0 5px 10px;min-height:70px;font-size:24px;font-weight:600;border-radius:14px}
+.opt.right{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.slots{display:flex;justify-content:center;flex-wrap:wrap;margin:6px 0 14px;min-height:52px}
+.slot{width:40px;height:48px;border-bottom:3px solid var(--line);margin:0 3px;font-size:28px;font-weight:700;line-height:46px;cursor:pointer}
+.slot.f{border-color:var(--accent)}
+.slots.ok .slot{color:var(--good);border-color:var(--good)}
+.slots.no .slot{color:var(--bad);border-color:var(--bad)}
+.tiles{display:flex;justify-content:center;flex-wrap:wrap}
+.tile{width:48px;height:52px;margin:0 4px 8px;font-size:24px;font-weight:700;border-radius:12px;padding:0}
+.tile.used{visibility:hidden}
+.score{font-size:48px;font-weight:700;color:var(--accent)}
+.hint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:14px;line-height:1.7}
+@media (max-width:420px){ .lesson{width:calc(100% - 10px)} .tools .btn{min-width:0;flex:1 1 40%} }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="bar">
+  <div class="brand" id="homeBtn"><i>ABC</i>英语练习</div>
+</div></div></header>
+<main class="wrap">
+  <section class="view on" id="vHome"></section>
+  <section class="view" id="vStudy"></section>
+  <section class="view" id="vQuiz"></section>
+</main>
+<script>
+/* Manuscript letter strokes on 四线三格.  Lines at y=0,40,80,120 (baseline = 80).
+   Each letter: [width, [stroke path, ...]] — strokes in standard order and direction. */
+var LETTERS = {
+  A: [60, ['M30 0 L5 80', 'M30 0 L55 80', 'M15 52 L45 52']],
+  B: [58, ['M8 0 L8 80', 'M8 0 L30 0 C49 0 49 38 30 38 C56 38 56 80 32 80 L8 80']],
+  C: [56, ['M52 14 C45 3 37 0 30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C38 80 46 76 52 66']],
+  D: [60, ['M8 0 L8 80', 'M8 0 L24 0 C46 0 54 20 54 40 C54 60 46 80 24 80 L8 80']],
+  E: [56, ['M8 0 L8 80', 'M8 0 L50 0', 'M8 40 L44 40', 'M8 80 L50 80']],
+  F: [54, ['M8 0 L8 80', 'M8 0 L50 0', 'M8 40 L44 40']],
+  G: [60, ['M54 14 C47 3 39 0 31 0 C12 0 4 20 4 40 C4 62 14 80 31 80 C45 80 54 72 54 58 L54 44', 'M34 44 L54 44']],
+  H: [60, ['M8 0 L8 80', 'M52 0 L52 80', 'M8 40 L52 40']],
+  I: [40, ['M20 0 L20 80']],
+  J: [48, ['M40 0 L40 58 C40 72 32 80 22 80 C12 80 6 74 4 64']],
+  K: [58, ['M8 0 L8 80', 'M50 0 L8 50', 'M22 36 L52 80']],
+  L: [52, ['M8 0 L8 80 L48 80']],
+  M: [60, ['M6 80 L6 0', 'M6 0 L30 62', 'M30 62 L54 0', 'M54 0 L54 80']],
+  N: [58, ['M8 80 L8 0', 'M8 0 L50 80', 'M50 80 L50 0']],
+  O: [60, ['M30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C48 80 56 60 56 40 C56 20 48 0 30 0']],
+  P: [54, ['M8 0 L8 80', 'M8 0 L30 0 C50 0 50 42 30 42 L8 42']],
+  Q: [60, ['M30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C48 80 56 60 56 40 C56 20 48 0 30 0', 'M34 60 L54 82']],
+  R: [58, ['M8 0 L8 80', 'M8 0 L30 0 C50 0 50 42 30 42 L8 42', 'M26 42 L52 80']],
+  S: [58, ['M52 12 C46 3 38 0 30 0 C16 0 7 8 7 19 C7 32 18 36 30 40 C44 44 54 50 54 61 C54 73 43 80 29 80 C18 80 9 76 4 67']],
+  T: [60, ['M4 0 L56 0', 'M30 0 L30 80']],
+  U: [60, ['M8 0 L8 52 C8 70 18 80 30 80 C42 80 52 70 52 52 L52 0']],
+  V: [60, ['M4 0 L30 80 L56 0']],
+  W: [60, ['M2 0 L16 80 L30 18 L44 80 L58 0']],
+  X: [60, ['M6 0 L54 80', 'M54 0 L6 80']],
+  Y: [60, ['M6 0 L30 40', 'M54 0 L30 40 L30 80']],
+  Z: [60, ['M6 0 L54 0 L6 80 L54 80']],
+  a: [58, ['M50 50 C46 43 40 40 32 40 C18 40 10 50 10 60 C10 72 18 80 30 80 C40 80 47 73 50 64', 'M50 40 L50 80']],
+  b: [60, ['M10 0 L10 80 L10 62 C14 48 22 40 32 40 C46 40 52 50 52 60 C52 72 44 80 32 80 C22 80 14 74 10 66']],
+  c: [56, ['M48 48 C44 42 38 40 32 40 C18 40 10 50 10 60 C10 72 18 80 32 80 C38 80 44 78 48 72']],
+  d: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 0 L48 80']],
+  e: [58, ['M12 60 L50 60 C50 48 42 40 31 40 C18 40 10 50 10 60 C10 72 18 80 31 80 C39 80 45 77 49 71']],
+  f: [46, ['M42 4 C38 1 35 0 31 0 C24 0 20 6 20 14 L20 80', 'M8 40 L38 40']],
+  g: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 40 L48 108 C48 116 42 120 32 120 C24 120 18 117 14 112']],
+  h: [56, ['M10 0 L10 80 L10 56 C14 46 20 40 30 40 C42 40 48 48 48 58 L48 80']],
+  i: [40, ['M20 40 L20 80', 'M20 22 L20 24']],
+  j: [40, ['M28 40 L28 106 C28 116 22 120 14 120 C9 120 6 118 4 115', 'M28 22 L28 24']],
+  k: [54, ['M10 0 L10 80', 'M44 40 L10 62 L46 80']],
+  l: [32, ['M16 0 L16 80']],
+  m: [68, ['M8 40 L8 80 L8 52 C11 44 16 40 22 40 C30 40 34 46 34 54 L34 80 L34 54 C37 46 42 40 48 40 C56 40 60 46 60 54 L60 80']],
+  n: [56, ['M10 40 L10 80 L10 54 C14 45 20 40 29 40 C40 40 46 47 46 56 L46 80']],
+  o: [60, ['M30 40 C18 40 10 49 10 60 C10 71 18 80 30 80 C42 80 50 71 50 60 C50 49 42 40 30 40']],
+  p: [60, ['M10 40 L10 120 L10 56 C14 46 22 40 32 40 C44 40 52 49 52 60 C52 71 44 80 32 80 C22 80 14 74 10 66']],
+  q: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 40 L48 120']],
+  r: [48, ['M12 40 L12 80 L12 58 C16 46 24 40 34 40 C38 40 42 41 44 43']],
+  s: [56, ['M44 46 C40 42 35 40 29 40 C19 40 13 45 13 51 C13 58 20 60 29 62 C39 64 46 67 46 73 C46 78 39 80 30 80 C22 80 15 78 11 73']],
+  t: [46, ['M20 10 L20 70 C20 77 24 80 30 80 C34 80 37 79 40 77', 'M8 40 L38 40']],
+  u: [56, ['M10 40 L10 64 C10 74 17 80 27 80 C37 80 44 74 46 64 L46 40 L46 80']],
+  v: [56, ['M8 40 L28 80 L48 40']],
+  w: [60, ['M4 40 L16 80 L30 48 L44 80 L56 40']],
+  x: [58, ['M10 40 L48 80', 'M48 40 L10 80']],
+  y: [56, ['M8 40 L28 80', 'M48 40 L20 120']],
+  z: [58, ['M10 40 L48 40 L10 80 L48 80']]
+};
+
+var EN = {
+  letters: 'A:eɪ:apple:ˈæpl:苹果 B:biː:bag:bæɡ:书包 C:siː:cat:kæt:猫 D:diː:dog:dɒɡ:狗 E:iː:egg:eɡ:鸡蛋 F:ef:fish:fɪʃ:鱼 G:dʒiː:girl:ɡɜːl:女孩 H:eɪtʃ:hat:hæt:帽子 I:aɪ:ice:aɪs:冰 J:dʒeɪ:juice:dʒuːs:果汁 K:keɪ:kite:kaɪt:风筝 L:el:lamp:læmp:台灯 M:em:milk:mɪlk:牛奶 N:en:nose:nəʊz:鼻子 O:əʊ:orange:ˈɒrɪndʒ:橙子 P:piː:pig:pɪɡ:猪 Q:kjuː:queen:kwiːn:女王 R:ɑː:rabbit:ˈræbɪt:兔子 S:es:sun:sʌn:太阳 T:tiː:tree:triː:树 U:juː:umbrella:ʌmˈbrelə:雨伞 V:viː:van:væn:面包车 W:ˈdʌbljuː:water:ˈwɔːtə:水 X:eks:fox:fɒks:狐狸 Y:waɪ:yellow:ˈjeləʊ:黄色 Z:zed:zoo:zuː:动物园',
+  themes: [
+    ['颜色', 'red:red:红色 blue:bluː:蓝色 yellow:ˈjeləʊ:黄色 green:ɡriːn:绿色 black:blæk:黑色 white:waɪt:白色 orange:ˈɒrɪndʒ:橙色 pink:pɪŋk:粉色 brown:braʊn:棕色 purple:ˈpɜːpl:紫色'],
+    ['数字', 'one:wʌn:一 two:tuː:二 three:θriː:三 four:fɔː:四 five:faɪv:五 six:sɪks:六 seven:ˈsevn:七 eight:eɪt:八 nine:naɪn:九 ten:ten:十'],
+    ['动物', 'cat:kæt:猫 dog:dɒɡ:狗 bird:bɜːd:鸟 fish:fɪʃ:鱼 duck:dʌk:鸭子 pig:pɪɡ:猪 cow:kaʊ:奶牛 horse:hɔːs:马 rabbit:ˈræbɪt:兔子 monkey:ˈmʌŋki:猴子'],
+    ['家人朋友', 'mother:ˈmʌðə:妈妈 father:ˈfɑːðə:爸爸 sister:ˈsɪstə:姐姐；妹妹 brother:ˈbrʌðə:哥哥；弟弟 grandma:ˈɡrænmɑː:奶奶；外婆 grandpa:ˈɡrænpɑː:爷爷；外公 baby:ˈbeɪbi:婴儿 family:ˈfæməli:家庭 friend:frend:朋友 teacher:ˈtiːtʃə:老师'],
+    ['身体', 'head:hed:头 face:feɪs:脸 eye:aɪ:眼睛 ear:ɪə:耳朵 nose:nəʊz:鼻子 mouth:maʊθ:嘴 hand:hænd:手 arm:ɑːm:胳膊 leg:leɡ:腿 foot:fʊt:脚'],
+    ['食物', 'apple:ˈæpl:苹果 banana:bəˈnɑːnə:香蕉 egg:eɡ:鸡蛋 milk:mɪlk:牛奶 bread:bred:面包 rice:raɪs:米饭 water:ˈwɔːtə:水 juice:dʒuːs:果汁 cake:keɪk:蛋糕 tea:tiː:茶'],
+    ['学校', 'book:bʊk:书 pen:pen:钢笔 pencil:ˈpensl:铅笔 ruler:ˈruːlə:尺子 bag:bæɡ:书包 desk:desk:书桌 chair:tʃeə:椅子 school:skuːl:学校 class:klɑːs:班级 eraser:ɪˈreɪzə:橡皮'],
+    ['衣服', 'coat:kəʊt:外套 shirt:ʃɜːt:衬衫 dress:dres:连衣裙 skirt:skɜːt:短裙 hat:hæt:帽子 cap:kæp:便帽 shoes:ʃuːz:鞋 socks:sɒks:袜子 pants:pænts:裤子 jacket:ˈdʒækɪt:夹克衫'],
+    ['家里', 'home:həʊm:家 room:ruːm:房间 bed:bed:床 door:dɔː:门 window:ˈwɪndəʊ:窗户 table:ˈteɪbl:桌子 box:bɒks:盒子 clock:klɒk:时钟 lamp:læmp:台灯 kitchen:ˈkɪtʃɪn:厨房'],
+    ['自然天气', 'sun:sʌn:太阳 moon:muːn:月亮 star:stɑː:星星 sky:skaɪ:天空 tree:triː:树 flower:ˈflaʊə:花 rain:reɪn:雨 snow:snəʊ:雪 wind:wɪnd:风 cloud:klaʊd:云'],
+    ['动作', 'run:rʌn:跑 jump:dʒʌmp:跳 walk:wɔːk:走 swim:swɪm:游泳 sing:sɪŋ:唱歌 dance:dɑːns:跳舞 read:riːd:读 write:raɪt:写 draw:drɔː:画画 play:pleɪ:玩'],
+    ['描述', 'big:bɪɡ:大的 small:smɔːl:小的 long:lɒŋ:长的 short:ʃɔːt:短的 hot:hɒt:热的 cold:kəʊld:冷的 happy:ˈhæpi:高兴的 sad:sæd:难过的 good:ɡʊd:好的 new:njuː:新的'],
+    ['交通地点', 'car:kɑː:小汽车 bus:bʌs:公交车 bike:baɪk:自行车 train:treɪn:火车 plane:pleɪn:飞机 ship:ʃɪp:轮船 boat:bəʊt:小船 taxi:ˈtæksi:出租车 road:rəʊd:路 park:pɑːk:公园'],
+    ['时间季节', 'day:deɪ:白天；一天 night:naɪt:夜晚 morning:ˈmɔːnɪŋ:早上 week:wiːk:星期 year:jɪə:年 today:təˈdeɪ:今天 time:taɪm:时间 spring:sprɪŋ:春天 summer:ˈsʌmə:夏天 winter:ˈwɪntə:冬天'],
+    ['常用小词', 'I:aɪ:我 you:juː:你 he:hiː:他 she:ʃiː:她 we:wiː:我们 they:ðeɪ:他们 this:ðɪs:这个 that:ðæt:那个 yes:jes:是 no:nəʊ:不'],
+    ['问候礼貌', 'hello:həˈləʊ:你好 hi:haɪ:嗨 bye:baɪ:再见 thanks:θæŋks:谢谢 sorry:ˈsɒri:对不起 please:pliːz:请 name:neɪm:名字 love:lʌv:爱 like:laɪk:喜欢 want:wɒnt:想要']
+  ]
+};
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function get(k, d) { try { var v = window.localStorage.getItem('en:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { window.localStorage.setItem('en:' + k, JSON.stringify(v)); } catch (e) { } }
+  function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).replace(/\s/g, '') || '#000'; }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) if (attrs.hasOwnProperty(k)) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  var raf = window.requestAnimationFrame || function (f) { return setTimeout(function () { f(Date.now()); }, 16); };
+  function now() { return window.performance && performance.now ? performance.now() : Date.now(); }
+
+  /* ================= data ================= */
+  var LETTER_INFO = {}, LESSONS = [];
+  (function () {
+    var up = [], low = [], parts = EN.letters.split(' '), i;
+    for (i = 0; i < parts.length; i++) {
+      var p = parts[i].split(':'), ex = { w: p[2], ipa: p[3], zh: p[4] };
+      LETTER_INFO[p[0]] = { name: p[1], ex: ex };
+      up.push({ w: p[0], ipa: p[1], ex: ex, letter: true });
+      low.push({ w: p[0].toLowerCase(), ipa: p[1], ex: ex, letter: true });
+    }
+    LESSONS.push({ id: 'U1', kind: 'letters', title: '大写字母 A–M', items: up.slice(0, 13) });
+    LESSONS.push({ id: 'U2', kind: 'letters', title: '大写字母 N–Z', items: up.slice(13) });
+    LESSONS.push({ id: 'L1', kind: 'letters', title: '小写字母 a–m', items: low.slice(0, 13) });
+    LESSONS.push({ id: 'L2', kind: 'letters', title: '小写字母 n–z', items: low.slice(13) });
+    for (i = 0; i < EN.themes.length; i++) {
+      var ws = EN.themes[i][1].split(' ').map(function (s) { var q = s.split(':'); return { w: q[0], ipa: q[1], zh: q[2] }; });
+      LESSONS.push({ id: 'W' + (i + 1), kind: 'words', title: EN.themes[i][0], items: ws });
+    }
+  })();
+  var LEARNED = get('learned', {});
+  var lesson = null, idx = 0, board = null, quiz = null;
+
+  /* ================= speech ================= */
+  var voice = null, checked = false;
+  function pickVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices(), i;
+    for (i = 0; i < vs.length; i++) if (/^en[-_]GB/i.test(vs[i].lang)) { voice = vs[i]; break; }
+    if (!voice) for (i = 0; i < vs.length; i++) if (/^en[-_]US/i.test(vs[i].lang)) { voice = vs[i]; break; }
+    if (!voice) for (i = 0; i < vs.length; i++) if (/^en/i.test(vs[i].lang)) { voice = vs[i]; break; }
+    if (vs.length) checked = true;
+  }
+  if (window.speechSynthesis) { pickVoice(); window.speechSynthesis.onvoiceschanged = pickVoice; }
+  function say(text, rate) {
+    if (!window.speechSynthesis) { flash('这台设备不支持朗读', 'bad'); return; }
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text); u.lang = voice ? voice.lang : 'en-GB'; u.rate = rate || 0.8; if (voice) u.voice = voice;
+    window.speechSynthesis.speak(u);
+  }
+  function sayItem(it) { say(it.letter ? it.w.toUpperCase() : it.w, it.letter ? 0.7 : 0.8); }
+
+  /* ================= writing board (四线三格) ================= */
+  function Board(host, text, maxH, maxW) {
+    var H = 144, top = -12, x = 0, layout = [], i, ch;
+    for (i = 0; i < text.length; i++) {
+      ch = text.charAt(i);
+      if (ch === ' ') { x += 26; continue; }
+      if (!LETTERS[ch]) continue;
+      layout.push({ ch: ch, x: x, w: LETTERS[ch][0] });
+      x += LETTERS[ch][0] + 4;
+    }
+    var W = Math.max(x - 4, 40) + 16, left = -8;
+    var h = maxH, w = h * W / H;
+    if (w > maxW) { w = maxW; h = w * H / W; }
+    var svg = el('svg', { viewBox: left + ' ' + top + ' ' + W + ' ' + H, width: Math.round(w), height: Math.round(h) });
+    host.innerHTML = ''; host.appendChild(svg);
+    var colors = { l1: css('--l1'), l3: css('--l3'), outline: css('--outline'), stroke: css('--stroke'), draw: css('--draw'), hint: css('--hint'), bad: css('--bad') };
+    var ys = [0, 40, 80, 120];
+    for (i = 0; i < 4; i++) el('line', { x1: left, x2: left + W, y1: ys[i], y2: ys[i], stroke: i === 2 ? colors.l3 : colors.l1, 'stroke-width': i === 2 ? 1.2 : 0.9 }, svg);
+    var gOut = el('g', {}, svg), gInk = el('g', {}, svg), gLive = el('g', {}, svg);
+    var strokes = [];
+    for (i = 0; i < layout.length; i++) {
+      var L = layout[i], sp = LETTERS[L.ch][1];
+      var go = el('g', { transform: 'translate(' + L.x + ',0)' }, gOut), gi = el('g', { transform: 'translate(' + L.x + ',0)' }, gInk);
+      for (var k = 0; k < sp.length; k++) {
+        var o = el('path', { d: sp[k], fill: 'none', stroke: colors.outline, 'stroke-width': 10, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, go);
+        var p = el('path', { d: sp[k], fill: 'none', stroke: colors.stroke, 'stroke-width': 6.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, gi);
+        strokes.push({ out: o, ink: p, dx: L.x, len: p.getTotalLength(), letter: i });
+      }
+    }
+    var api = { strokes: strokes, letters: layout.length, svg: svg }, busy = 0, tracing = null;
+    function setInk(s, vis) { s.ink.style.visibility = vis ? 'visible' : 'hidden'; s.ink.style.strokeDasharray = ''; s.ink.style.strokeDashoffset = ''; s.ink.setAttribute('stroke', colors.stroke); }
+    api.showAll = function () { for (var i = 0; i < strokes.length; i++) setInk(strokes[i], true); };
+    api.hideAll = function () { for (var i = 0; i < strokes.length; i++) setInk(strokes[i], false); };
+    api.outline = function (on) { gOut.style.visibility = on ? 'visible' : 'hidden'; };
+    function drawStroke(s, color, cb) {
+      var len = s.len, dur = Math.max(260, len * 5.5), t0 = now(), my = busy;
+      s.ink.setAttribute('stroke', color);
+      s.ink.style.visibility = 'visible';
+      s.ink.style.strokeDasharray = len + ' ' + len;
+      s.ink.style.strokeDashoffset = len;
+      (function step() {
+        if (my !== busy) return;
+        var t = Math.min(1, (now() - t0) / dur);
+        s.ink.style.strokeDashoffset = len * (1 - t);
+        if (t < 1) raf(step); else { s.ink.style.strokeDasharray = ''; if (cb) cb(); }
+      })();
+    }
+    api.animate = function (done) {
+      api.cancel(); api.hideAll(); api.outline(true);
+      var i = 0, my = busy;
+      (function next() {
+        if (my !== busy) return;
+        if (i >= strokes.length) { if (done) done(); return; }
+        var s = strokes[i++];
+        drawStroke(s, colors.stroke, function () { setTimeout(next, s.len < 8 ? 120 : 200); });
+      })();
+    };
+    api.cancel = function () { busy++; tracing = null; gLive.innerHTML = ''; };
+
+    /* ---- tracing ---- */
+    function toSvg(e) {
+      var t = e.touches && e.touches.length ? e.touches[0] : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0] : e);
+      var pt = svg.createSVGPoint(); pt.x = t.clientX; pt.y = t.clientY;
+      var m = svg.getScreenCTM(); if (!m) return null;
+      pt = pt.matrixTransform(m.inverse());
+      return [pt.x, pt.y];
+    }
+    function sample(s, n) { var out = [], i; for (i = 0; i < n; i++) { var p = s.ink.getPointAtLength(s.len * i / (n - 1)); out.push([p.x + s.dx, p.y]); } return out; }
+    function resample(pts, n) {
+      var d = [0], i, total;
+      for (i = 1; i < pts.length; i++) d.push(d[i - 1] + dist(pts[i], pts[i - 1]));
+      total = d[d.length - 1];
+      if (total === 0) { var o = []; for (i = 0; i < n; i++) o.push(pts[0]); return { pts: o, len: 0 }; }
+      var out = [], j = 0;
+      for (i = 0; i < n; i++) {
+        var target = total * i / (n - 1);
+        while (j < d.length - 2 && d[j + 1] < target) j++;
+        var seg = d[j + 1] - d[j] || 1, f = (target - d[j]) / seg;
+        out.push([pts[j][0] + (pts[j + 1][0] - pts[j][0]) * f, pts[j][1] + (pts[j + 1][1] - pts[j][1]) * f]);
+      }
+      return { pts: out, len: total };
+    }
+    function dist(a, b) { var dx = a[0] - b[0], dy = a[1] - b[1]; return Math.sqrt(dx * dx + dy * dy); }
+    function match(user, s) {
+      if (s.len < 8) {
+        var cx = 0, cy = 0; for (var i = 0; i < user.length; i++) { cx += user[i][0]; cy += user[i][1]; }
+        var c = [cx / user.length, cy / user.length], e0 = sample(s, 2)[0];
+        return dist(c, e0) < 16;
+      }
+      if (user.length < 2) return false;
+      var N = 32, u = resample(user, N), ex = sample(s, N), sum = 0;
+      if (u.len < s.len * 0.4) return false;
+      for (var k = 0; k < N; k++) sum += dist(u.pts[k], ex[k]);
+      return dist(u.pts[0], ex[0]) < 22 && dist(u.pts[N - 1], ex[N - 1]) < 24 && sum / N < 14;
+    }
+    var cur = null, live = null;
+    function down(e) {
+      if (!tracing) return;
+      e.preventDefault();
+      var p = toSvg(e); if (!p) return;
+      cur = [p];
+      live = el('polyline', { points: p.join(','), fill: 'none', stroke: colors.draw, 'stroke-width': 6.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', opacity: 0.85 }, gLive);
+    }
+    function move(e) {
+      if (!tracing || !cur) return;
+      e.preventDefault();
+      var p = toSvg(e); if (!p) return;
+      cur.push(p);
+      live.setAttribute('points', cur.map(function (q) { return q[0].toFixed(1) + ',' + q[1].toFixed(1); }).join(' '));
+    }
+    function up(e) {
+      if (!tracing || !cur) return;
+      e.preventDefault();
+      var T = tracing, s = strokes[T.k], pts = cur, ln = live;
+      cur = null; live = null;
+      if (match(pts, s)) {
+        gLive.removeChild(ln);
+        setInk(s, true);
+        T.k++; T.miss = 0;
+        if (T.cb.correct) T.cb.correct(T.k, strokes.length);
+        if (T.k >= strokes.length) { tracing = null; if (T.cb.complete) T.cb.complete(T.mistakes); }
+      } else {
+        T.mistakes++; T.miss++;
+        ln.setAttribute('stroke', colors.bad);
+        setTimeout(function () { if (ln.parentNode) ln.parentNode.removeChild(ln); }, 350);
+        if (T.cb.mistake) T.cb.mistake();
+        if (T.miss >= 2) {
+          var my = busy;
+          drawStroke(s, colors.hint, function () { setTimeout(function () { if (my === busy && tracing === T) setInk(s, false); }, 500); });
+        }
+      }
+    }
+    svg.addEventListener('touchstart', down, false); svg.addEventListener('touchmove', move, false); svg.addEventListener('touchend', up, false);
+    svg.addEventListener('mousedown', down, false); window.addEventListener('mousemove', move, false); window.addEventListener('mouseup', up, false);
+    api.destroy = function () { window.removeEventListener('mousemove', move, false); window.removeEventListener('mouseup', up, false); api.cancel(); };
+    api.trace = function (outline, cb) { api.cancel(); api.hideAll(); api.outline(outline); tracing = { k: 0, miss: 0, mistakes: 0, cb: cb || {} }; };
+    api.showAll();
+    return api;
+  }
+
+  /* ================= views ================= */
+  function show(v) { var vs = ['vHome', 'vStudy', 'vQuiz']; for (var i = 0; i < vs.length; i++) $(vs[i]).className = 'view' + (vs[i] === v ? ' on' : ''); window.scrollTo(0, 0); }
+  function key(it) { return it.w; }
+  function flash(msg, cls) { var e = $('fb'); if (e) { e.textContent = msg; e.className = 'fb ' + (cls || ''); } }
+  $('homeBtn').onclick = function () { showHome(); };
+
+  function lessonCard(l, i) {
+    var n = 0, prev = '';
+    for (var j = 0; j < l.items.length; j++) { if (LEARNED[key(l.items[j])]) n++; prev += l.items[j].w + (l.kind === 'words' ? ' ' : ''); }
+    return { n: n, html: '<button class="card lesson" data-i="' + i + '"><div class="l-n">' + (l.kind === 'words' ? '第 ' + (i - 3) + ' 组' : '字母') + ' · ' + n + '/' + l.items.length + '</div><div class="l-t">' + esc(l.title) + '</div><div class="l-c">' + esc(prev) + '</div><div class="pbar"><i style="width:' + Math.round(n / l.items.length * 100) + '%"></i></div></button>' };
+  }
+  function showHome() {
+    if (board) { board.destroy(); board = null; }
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    var h = '<div class="card free"><h3>自己输入要练写的单词或句子</h3><div class="frow"><input id="freeIn" placeholder="例如：I love my family" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
+    var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0;
+    for (var i = 0; i < LESSONS.length; i++) {
+      var c = lessonCard(LESSONS[i], i);
+      if (LESSONS[i].kind === 'letters') { a += c.html; na += c.n; ta += LESSONS[i].items.length; } else { b += c.html; nb += c.n; tb += LESSONS[i].items.length; }
+    }
+    h += '<h2 class="sec"><span>字母书写</span><span>' + na + ' / ' + ta + '</span></h2><div class="lessons">' + a + '</div>';
+    h += '<h2 class="sec"><span>主题单词</span><span>' + nb + ' / ' + tb + '</span></h2><div class="lessons">' + b + '</div>';
+    h += '<div class="hint">四线三格：大写字母占上两格，小写字母主体在中间一格，b d f h k l 顶到第一线，g j p q y 拖到第四线</div>';
+    $('vHome').innerHTML = h;
+    show('vHome');
+    var bs = $('vHome').querySelectorAll('.lesson');
+    for (i = 0; i < bs.length; i++) bs[i].onclick = function () { var k = +this.getAttribute('data-i'); openLesson(LESSONS[k], k); };
+    $('freeGo').onclick = startFree;
+    $('freeIn').onkeydown = function (e) { if (e.keyCode === 13) startFree(); };
+  }
+  function startFree() {
+    var t = ($('freeIn').value || '').replace(/[^A-Za-z ]/g, '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
+    if (!t) { $('freeIn').focus(); return; }
+    var words = t.length <= 14 ? [t] : t.split(' '), items = [], seen = {};
+    for (var i = 0; i < words.length; i++) if (words[i] && !seen[words[i]]) { seen[words[i]] = 1; items.push({ w: words[i], ipa: '', zh: '', free: true }); }
+    openLesson({ id: 'free', kind: 'words', title: t.length > 16 ? t.slice(0, 16) + '…' : t, items: items }, -1);
+  }
+
+  function openLesson(l, li) { lesson = l; lesson.li = li; idx = 0; renderStudy(); show('vStudy'); }
+  function renderStudy() {
+    if (board) { board.destroy(); board = null; }
+    var it = lesson.items[idx], i;
+    var h = '<div class="sbar"><button class="btn ghost" id="backBtn">‹ 返回</button><div class="ti">' + esc(lesson.title) + '<small>' + (idx + 1) + ' / ' + lesson.items.length + '</small></div><button class="btn ghost" id="quizBtn"' + (lesson.items.length < 4 ? ' disabled' : '') + '>🎯 测验</button></div>';
+    h += '<div class="card stage"><div class="board" id="board"></div>';
+    if (it.ipa) h += '<div class="ipa">/' + esc(it.ipa) + '/</div>';
+    if (it.letter) h += '<div class="pair">' + it.w.toUpperCase() + ' ' + it.w.toLowerCase() + '</div><div class="ex" id="exBtn"><b>' + esc(it.ex.w) + '</b><span>/' + esc(it.ex.ipa) + '/ ' + esc(it.ex.zh) + '</span></div>';
+    if (it.zh) h += '<div class="zh">' + esc(it.zh) + '</div>';
+    h += '<div class="info" id="info"></div><div class="fb" id="fb"></div>';
+    h += '<div class="tools"><button class="btn" id="bSay">🔊 读音</button><button class="btn" id="bAnim">▶ 笔顺</button><button class="btn" id="bTrace">✍️ 描红</button><button class="btn" id="bRecall">📝 默写</button></div>';
+    var k = LEARNED[key(it)];
+    h += '<div class="nav"><button class="btn" id="bPrev"' + (idx === 0 ? ' disabled' : '') + '>‹ 上一个</button><button class="btn mid ' + (k ? 'good' : '') + '" id="bKnow">' + (k ? '✓ 已学会' : '✓ 学会了') + '</button><button class="btn primary" id="bNext"' + (idx === lesson.items.length - 1 ? ' disabled' : '') + '>下一个 ›</button></div>';
+    h += '<div class="dots">'; for (i = 0; i < lesson.items.length; i++) h += '<i class="' + (i === idx ? 'c' : LEARNED[key(lesson.items[i])] ? 'l' : '') + '"></i>'; h += '</div>';
+    h += '<div class="hint">点「描红」照着浅色笔画写，点「默写」凭记忆写；写错一笔会变红，连错两次会提示正确写法</div></div>';
+    $('vStudy').innerHTML = h;
+    var avail = document.querySelector('main').clientWidth - 60;
+    board = Board($('board'), it.w, it.letter ? 230 : 170, Math.min(avail, 640));
+    $('info').textContent = it.letter ? '共 ' + board.strokes.length + ' 笔' : '共 ' + board.letters + ' 个字母 · ' + board.strokes.length + ' 笔';
+    $('backBtn').onclick = showHome;
+    $('quizBtn').onclick = function () { startQuiz(lesson); };
+    $('bSay').onclick = function () { sayItem(it); };
+    if ($('exBtn')) $('exBtn').onclick = function () { say(it.ex.w); };
+    $('bAnim').onclick = function () { flash('', ''); board.animate(); };
+    $('bTrace').onclick = function () { practice(true); };
+    $('bRecall').onclick = function () { practice(false); };
+    $('bPrev').onclick = function () { if (idx > 0) { idx--; renderStudy(); } };
+    $('bNext').onclick = function () { if (idx < lesson.items.length - 1) { idx++; renderStudy(); } };
+    $('bKnow').onclick = function () { var kk = key(it); if (LEARNED[kk]) delete LEARNED[kk]; else LEARNED[kk] = 1; put('learned', LEARNED); if (LEARNED[kk] && idx < lesson.items.length - 1) idx++; renderStudy(); };
+    setTimeout(function () { sayItem(it); }, 250);
+  }
+  function practice(outline) {
+    flash(outline ? '照着浅色笔画写第 1 笔' : '凭记忆写，从第 1 笔开始', '');
+    board.trace(outline, {
+      mistake: function () { flash('这一笔不对，注意起笔位置和方向', 'bad'); },
+      correct: function (k, n) { if (k < n) flash('✓ 第 ' + k + ' 笔，继续写第 ' + (k + 1) + ' 笔', 'ok'); },
+      complete: function (m) {
+        flash(m === 0 ? '全部写对了！真棒 👍' : '写完了！错了 ' + m + ' 次，再练练', m === 0 ? 'ok' : 'bad');
+        board.outline(true);
+      }
+    });
+  }
+
+  /* ================= quiz ================= */
+  function startQuiz(l) {
+    if (board) board.cancel();
+    var pool = shuffle(l.items.slice()), qs = [], i, all = [];
+    for (i = 0; i < LESSONS.length; i++) if (LESSONS[i].kind === l.kind) all = all.concat(LESSONS[i].items);
+    if (l.id === 'free') all = l.items.slice();
+    for (i = 0; i < Math.min(10, pool.length); i++) {
+      var ans = pool[i], type;
+      if (l.kind === 'letters') type = Math.random() < 0.5 ? 'listen' : 'case';
+      else { var r = Math.random(); type = ans.free ? (r < 0.5 ? 'listen' : 'spell') : r < 0.34 ? 'listen' : r < 0.67 ? 'meaning' : 'spell'; }
+      var q = { ans: ans, type: type };
+      if (type !== 'spell') {
+        var opts = [ans], guard = 0, src = l.items.length >= 4 ? l.items : all;
+        while (opts.length < 4 && guard++ < 200) { var c = src[Math.floor(Math.random() * src.length)]; if (opts.indexOf(c) < 0 && c.w.toLowerCase() !== ans.w.toLowerCase()) opts.push(c); }
+        q.opts = shuffle(opts);
+      } else {
+        var letters = ans.w.toLowerCase().replace(/[^a-z]/g, '').split(''), extra = 'abcdefghijklmnopqrstuvwxyz';
+        for (var e = 0; e < 2; e++) letters.push(extra.charAt(Math.floor(Math.random() * 26)));
+        q.tiles = shuffle(letters); q.target = ans.w.toLowerCase().replace(/[^a-z]/g, ''); q.typed = [];
+      }
+      qs.push(q);
+    }
+    quiz = { l: l, qs: qs, i: 0, score: 0, lock: false };
+    show('vQuiz'); renderQ();
+  }
+  function optLabel(q, o) { return q.type === 'case' ? (o.w === o.w.toUpperCase() ? o.w.toLowerCase() : o.w.toUpperCase()) : o.w; }
+  function renderQ() {
+    var q = quiz.qs[quiz.i], h = '<div class="sbar"><button class="btn ghost" id="qBack">‹ 返回</button><div class="ti">第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题</div><span style="width:70px"></span></div><div class="card qcard">';
+    var prompt = { listen: '听一听，选出正确的' + (quiz.l.kind === 'letters' ? '字母' : '单词'), 'case': '找出对应的' + (q.ans.w === q.ans.w.toUpperCase() ? '小写' : '大写') + '字母', meaning: '选出对应的英文单词', spell: '听一听，拼出这个单词' }[q.type];
+    h += '<div class="qp">' + prompt + '</div>';
+    if (q.type === 'listen') h += '<div class="qq"><button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button></div>';
+    else if (q.type === 'case') h += '<div class="qq" style="font-size:52px">' + esc(q.ans.w) + '</div>';
+    else if (q.type === 'meaning') h += '<div class="qq">' + esc(q.ans.zh) + '</div>';
+    else h += '<div class="qq" style="font-size:22px">' + (q.ans.zh ? esc(q.ans.zh) + ' ' : '') + '<button class="btn primary" id="qSay">🔊</button></div>';
+    if (q.type === 'spell') {
+      h += '<div class="slots" id="slots">'; for (var s = 0; s < q.target.length; s++) h += '<div class="slot" data-s="' + s + '"></div>'; h += '</div><div class="tiles">';
+      for (s = 0; s < q.tiles.length; s++) h += '<button class="btn tile" data-t="' + s + '">' + q.tiles[s] + '</button>';
+      h += '</div><div style="margin-top:6px"><button class="btn ghost" id="qBackspace">⌫ 删除</button></div>';
+    } else {
+      h += '<div class="opts">'; for (var i = 0; i < q.opts.length; i++) h += '<button class="btn opt" data-i="' + i + '">' + esc(optLabel(q, q.opts[i])) + '</button>'; h += '</div>';
+    }
+    h += '<div class="fb" id="fb"></div></div>';
+    $('vQuiz').innerHTML = h;
+    $('qBack').onclick = function () { openLesson(quiz.l, quiz.l.li); };
+    if ($('qSay')) { $('qSay').onclick = function () { sayItem(q.ans); }; if (q.type === 'listen' || q.type === 'spell') setTimeout(function () { sayItem(q.ans); }, 200); }
+    function finish(ok) {
+      if (ok) quiz.score++;
+      $('fb').innerHTML = esc(q.ans.w) + (q.ans.ipa ? ' /' + esc(q.ans.ipa) + '/' : '') + (q.ans.zh ? ' ' + esc(q.ans.zh) : '');
+      $('fb').className = 'fb ' + (ok ? 'ok' : 'bad');
+      sayItem(q.ans);
+      setTimeout(function () { quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else renderDone(); }, ok ? 1200 : 2300);
+    }
+    if (q.type === 'spell') {
+      var tiles = $('vQuiz').querySelectorAll('.tile'), slots = $('vQuiz').querySelectorAll('.slot');
+      var paint = function () { for (var k = 0; k < slots.length; k++) { slots[k].textContent = q.typed[k] != null ? q.tiles[q.typed[k]] : ''; slots[k].className = 'slot' + (q.typed[k] != null ? ' f' : ''); } for (k = 0; k < tiles.length; k++) tiles[k].className = 'btn tile' + (q.typed.indexOf(k) >= 0 ? ' used' : ''); };
+      for (var t = 0; t < tiles.length; t++) tiles[t].onclick = function () {
+        if (quiz.lock) return;
+        var ti = +this.getAttribute('data-t'); if (q.typed.indexOf(ti) >= 0) return;
+        q.typed.push(ti); paint();
+        if (q.typed.length === q.target.length) {
+          quiz.lock = true;
+          var word = q.typed.map(function (x) { return q.tiles[x]; }).join(''), ok = word === q.target;
+          $('slots').className = 'slots ' + (ok ? 'ok' : 'no');
+          finish(ok);
+        }
+      };
+      $('qBackspace').onclick = function () { if (!quiz.lock && q.typed.length) { q.typed.pop(); paint(); } };
+      for (t = 0; t < slots.length; t++) slots[t].onclick = function () { if (!quiz.lock && q.typed.length) { q.typed.pop(); paint(); } };
+    } else {
+      var bs = $('vQuiz').querySelectorAll('.opt');
+      for (var b = 0; b < bs.length; b++) bs[b].onclick = function () {
+        if (quiz.lock) return; quiz.lock = true;
+        var pick = q.opts[+this.getAttribute('data-i')], ok = pick === q.ans;
+        for (var k = 0; k < bs.length; k++) { var o = q.opts[+bs[k].getAttribute('data-i')]; if (o === q.ans) bs[k].className += ' right'; else if (bs[k] === this) bs[k].className += ' wrong'; }
+        finish(ok);
+      };
+    }
+  }
+  function renderDone() {
+    var pct = Math.round(quiz.score / quiz.qs.length * 100);
+    $('vQuiz').innerHTML = '<div class="card qcard"><div class="qp">测验完成</div><div class="score">' + quiz.score + ' / ' + quiz.qs.length + '</div><div style="font-size:30px;margin:6px 0 16px">' + (pct === 100 ? '🏆' : pct >= 70 ? '🎉' : '💪') + '</div><button class="btn primary" id="qAgain">再测一次</button> <button class="btn" id="qHome">回到课程</button></div>';
+    $('qAgain').onclick = function () { startQuiz(quiz.l); };
+    $('qHome').onclick = showHome;
+  }
+
+  showHome();
+})();
+</script>
+</body>
+</html>
