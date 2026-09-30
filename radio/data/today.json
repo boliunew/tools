@@ -1,16 +1,16 @@
 {
- "generated": "2026-09-30T04:52:35Z",
+ "generated": "2026-09-30T04:55:33Z",
  "date": "2026-09-29",
  "engine": "edge",
  "total": 227.0,
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609292152",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609292155",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
    "sub": "9月29日 星期二",
    "dur": 12.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609292152",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609292155",
    "text": [
     {
      "lang": "zh",
@@ -23,7 +23,7 @@
    "title": "📊 大盘",
    "sub": "防守",
    "dur": 34.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609292152",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609292155",
    "text": [
     {
      "lang": "zh",
@@ -36,7 +36,7 @@
    "title": "📈 股票池",
    "sub": "37 个候选",
    "dur": 57.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609292152",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609292155",
    "text": [
     {
      "lang": "zh",
@@ -65,7 +65,7 @@
    "title": "🗓️ 财报与数据",
    "sub": "1 件大事",
    "dur": 16.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609292152",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609292155",
    "text": [
     {
      "lang": "zh",
@@ -82,7 +82,7 @@
    "title": "📰 英文新闻",
    "sub": "Al Jazeera · BBC · NPR",
    "dur": 66.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609292152",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609292155",
    "text": [
     {
      "lang": "zh",
@@ -131,7 +131,7 @@
    "title": "🔤 今日单词",
    "sub": "entrance · la hija",
    "dur": 32.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609292152",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609292155",
    "text": [
     {
      "lang": "zh",
@@ -180,7 +180,7 @@
    "title": "👋 结束",
    "sub": "开车注意安全",
    "dur": 7.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609292152",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609292155",
    "text": [
     {
      "lang": "zh",
