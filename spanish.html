@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#F7F1EA">
+<title>西班牙语练习 · Español</title>
+<style>
+:root{
+  --bg:#F7F1EA; --paper:#FFFFFF; --ink:#1B1E23; --soft:#5F6B76; --faint:#98A2AC; --line:#DCE3EA; --chip:#E6ECF1;
+  --accent:#C0392B; --accent-ink:#FFFFFF; --accent-soft:#F8E1DB; --good:#2E7D32; --good-soft:#DDF1E1; --bad:#C8412B; --bad-soft:#F8E1DB;
+  --l1:#A9C2DA; --l3:#E39A8C; --outline:#E3E8EE; --stroke:#1B1E23; --draw:#C0392B; --hint:#F2A33A;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15181C; --paper:#1F2328; --ink:#ECEEF0; --soft:#A7B0B9; --faint:#6F7881; --line:#30363D; --chip:#282D33;
+    --accent:#FF8A73; --accent-ink:#1A0E0B; --accent-soft:#3A2420; --good:#6FD07A; --good-soft:#1D3321; --bad:#FF7F66; --bad-soft:#3A2420;
+    --l1:#3C4F63; --l3:#7A3E34; --outline:#343A42; --stroke:#ECEEF0; --draw:#FF8A73; --hint:#F2B35E;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.5}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;min-height:56px}
+.brand{font-weight:700;font-size:19px;margin-right:auto;display:flex;align-items:center;cursor:pointer}
+.brand i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:30px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-ink);margin-right:8px;font-size:13px;font-weight:800;letter-spacing:-.02em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.btn{border:1px solid var(--line);background:var(--paper);padding:8px 14px;border-radius:12px;font-size:14.5px;display:inline-flex;align-items:center;justify-content:center;min-height:42px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.good{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--soft)}
+.btn:disabled{opacity:.4}
+main{padding:14px 0 60px}
+.view{display:none}.view.on{display:block}
+.free{padding:14px 16px;margin-bottom:6px}
+.free h3{margin:0 0 8px;font-size:15px}
+.frow{display:flex}
+.frow input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:9px 12px;margin-right:8px;font-size:17px}
+.frow input:focus{outline:2px solid var(--accent);border-color:transparent}
+h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px;font-weight:600;display:flex;justify-content:space-between}
+.lessons{display:flex;flex-wrap:wrap;margin:0 -5px}
+.lesson{width:calc(50% - 10px);margin:0 5px 10px;padding:12px 14px;cursor:pointer;text-align:left}
+.lesson:hover{border-color:var(--accent)}
+.l-n{font-size:12px;color:var(--faint)}
+.l-t{font-weight:700;font-size:16px}
+.l-c{font-size:15px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:2px 0 6px}
+.pbar{height:5px;background:var(--chip);border-radius:5px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--good);border-radius:5px}
+.sbar{display:flex;align-items:center;margin-bottom:10px}
+.sbar .ti{flex:1;text-align:center;font-weight:600}
+.sbar .ti small{display:block;font-weight:400;color:var(--faint);font-size:12px}
+.stage{padding:18px 12px 16px;text-align:center}
+.board{display:inline-block;touch-action:none;-webkit-user-select:none;user-select:none;max-width:100%;cursor:crosshair}
+.board svg{display:block}
+.ipa{font-size:20px;color:var(--accent);margin-top:6px;font-family:"Lucida Sans Unicode","Arial Unicode MS","Segoe UI",sans-serif}
+.zh{font-size:18px;margin-top:2px}
+.pair{font-size:15px;color:var(--soft);margin-top:4px}
+.ex{display:inline-block;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:6px 14px;margin-top:10px;cursor:pointer}
+.ex b{font-size:18px}
+.ex span{color:var(--soft);font-size:13.5px;margin-left:6px}
+.info{font-size:13px;color:var(--faint);margin-top:6px;min-height:20px}
+.fb{font-size:15px;font-weight:600;min-height:24px;margin-top:4px}
+.fb.ok{color:var(--good)} .fb.bad{color:var(--bad)}
+.tools{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.tools .btn{margin:0 4px 8px;min-width:92px}
+.nav{display:flex;align-items:center;margin-top:12px}
+.nav .btn{flex:1}
+.nav .btn.mid{flex:1.4;margin:0 8px}
+.dots{display:flex;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);margin:0 3px 4px}
+.dots i.l{background:var(--good)} .dots i.c{background:var(--accent);transform:scale(1.3)}
+.qcard{padding:22px 16px;text-align:center}
+.qp{font-size:14px;color:var(--soft)}
+.qq{font-size:30px;font-weight:700;margin:10px 0 16px;min-height:44px}
+.opts{display:flex;flex-wrap:wrap;margin:0 -5px}
+.opt{width:calc(50% - 10px);margin:0 5px 10px;min-height:70px;font-size:24px;font-weight:600;border-radius:14px}
+.opt.right{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.slots{display:flex;justify-content:center;flex-wrap:wrap;margin:6px 0 14px;min-height:52px}
+.slot{width:40px;height:48px;border-bottom:3px solid var(--line);margin:0 3px;font-size:28px;font-weight:700;line-height:46px;cursor:pointer}
+.slot.f{border-color:var(--accent)}
+.slots.ok .slot{color:var(--good);border-color:var(--good)}
+.slots.no .slot{color:var(--bad);border-color:var(--bad)}
+.tiles{display:flex;justify-content:center;flex-wrap:wrap}
+.tile{width:48px;height:52px;margin:0 4px 8px;font-size:24px;font-weight:700;border-radius:12px;padding:0}
+.tile.used{visibility:hidden}
+.score{font-size:48px;font-weight:700;color:var(--accent)}
+.hint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:14px;line-height:1.7}
+@media (max-width:420px){ .lesson{width:calc(100% - 10px)} .tools .btn{min-width:0;flex:1 1 40%} }
+.g-m{color:#2466B8}.g-f{color:#C2185B}
+@media (prefers-color-scheme: dark){.g-m{color:#7FB2FF}.g-f{color:#F48FB1}}
+.art{font-size:22px;font-weight:700;margin-right:6px}
+.syl{font-size:21px;margin-top:8px;letter-spacing:.02em}
+.syl b{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+.gtag{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:6px;background:var(--chip);margin-left:6px;vertical-align:middle}
+.note{font-size:13px;color:var(--soft);background:var(--bg);border-radius:10px;padding:6px 10px;margin:8px auto 0;max-width:420px}
+.tip{font-size:14px;color:var(--soft);margin-top:8px;max-width:440px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="bar">
+  <div class="brand" id="homeBtn"><i style="background:linear-gradient(180deg,#C0392B 0 25%,#F2B233 25% 75%,#C0392B 75%);color:#6B1A10">ES</i>西班牙语练习</div>
+</div></div></header>
+<main class="wrap">
+  <section class="view on" id="vHome"></section>
+  <section class="view" id="vStudy"></section>
+  <section class="view" id="vQuiz"></section>
+</main>
+<script>
+/* Manuscript letter strokes on 四线三格.  Lines at y=0,40,80,120 (baseline = 80).
+   Each letter: [width, [stroke path, ...]] — strokes in standard order and direction. */
+var LETTERS = {
+  A: [60, ['M30 0 L5 80', 'M30 0 L55 80', 'M15 52 L45 52']],
+  B: [58, ['M8 0 L8 80', 'M8 0 L30 0 C49 0 49 38 30 38 C56 38 56 80 32 80 L8 80']],
+  C: [56, ['M52 14 C45 3 37 0 30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C38 80 46 76 52 66']],
+  D: [60, ['M8 0 L8 80', 'M8 0 L24 0 C46 0 54 20 54 40 C54 60 46 80 24 80 L8 80']],
+  E: [56, ['M8 0 L8 80', 'M8 0 L50 0', 'M8 40 L44 40', 'M8 80 L50 80']],
+  F: [54, ['M8 0 L8 80', 'M8 0 L50 0', 'M8 40 L44 40']],
+  G: [60, ['M54 14 C47 3 39 0 31 0 C12 0 4 20 4 40 C4 62 14 80 31 80 C45 80 54 72 54 58 L54 44', 'M34 44 L54 44']],
+  H: [60, ['M8 0 L8 80', 'M52 0 L52 80', 'M8 40 L52 40']],
+  I: [40, ['M20 0 L20 80']],
+  J: [48, ['M40 0 L40 58 C40 72 32 80 22 80 C12 80 6 74 4 64']],
+  K: [58, ['M8 0 L8 80', 'M50 0 L8 50', 'M22 36 L52 80']],
+  L: [52, ['M8 0 L8 80 L48 80']],
+  M: [60, ['M6 80 L6 0', 'M6 0 L30 62', 'M30 62 L54 0', 'M54 0 L54 80']],
+  N: [58, ['M8 80 L8 0', 'M8 0 L50 80', 'M50 80 L50 0']],
+  O: [60, ['M30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C48 80 56 60 56 40 C56 20 48 0 30 0']],
+  P: [54, ['M8 0 L8 80', 'M8 0 L30 0 C50 0 50 42 30 42 L8 42']],
+  Q: [60, ['M30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C48 80 56 60 56 40 C56 20 48 0 30 0', 'M34 60 L54 82']],
+  R: [58, ['M8 0 L8 80', 'M8 0 L30 0 C50 0 50 42 30 42 L8 42', 'M26 42 L52 80']],
+  S: [58, ['M52 12 C46 3 38 0 30 0 C16 0 7 8 7 19 C7 32 18 36 30 40 C44 44 54 50 54 61 C54 73 43 80 29 80 C18 80 9 76 4 67']],
+  T: [60, ['M4 0 L56 0', 'M30 0 L30 80']],
+  U: [60, ['M8 0 L8 52 C8 70 18 80 30 80 C42 80 52 70 52 52 L52 0']],
+  V: [60, ['M4 0 L30 80 L56 0']],
+  W: [60, ['M2 0 L16 80 L30 18 L44 80 L58 0']],
+  X: [60, ['M6 0 L54 80', 'M54 0 L6 80']],
+  Y: [60, ['M6 0 L30 40', 'M54 0 L30 40 L30 80']],
+  Z: [60, ['M6 0 L54 0 L6 80 L54 80']],
+  a: [58, ['M50 50 C46 43 40 40 32 40 C18 40 10 50 10 60 C10 72 18 80 30 80 C40 80 47 73 50 64', 'M50 40 L50 80']],
+  b: [60, ['M10 0 L10 80 L10 62 C14 48 22 40 32 40 C46 40 52 50 52 60 C52 72 44 80 32 80 C22 80 14 74 10 66']],
+  c: [56, ['M48 48 C44 42 38 40 32 40 C18 40 10 50 10 60 C10 72 18 80 32 80 C38 80 44 78 48 72']],
+  d: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 0 L48 80']],
+  e: [58, ['M12 60 L50 60 C50 48 42 40 31 40 C18 40 10 50 10 60 C10 72 18 80 31 80 C39 80 45 77 49 71']],
+  f: [46, ['M42 4 C38 1 35 0 31 0 C24 0 20 6 20 14 L20 80', 'M8 40 L38 40']],
+  g: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 40 L48 108 C48 116 42 120 32 120 C24 120 18 117 14 112']],
+  h: [56, ['M10 0 L10 80 L10 56 C14 46 20 40 30 40 C42 40 48 48 48 58 L48 80']],
+  i: [40, ['M20 40 L20 80', 'M20 22 L20 24']],
+  j: [40, ['M28 40 L28 106 C28 116 22 120 14 120 C9 120 6 118 4 115', 'M28 22 L28 24']],
+  k: [54, ['M10 0 L10 80', 'M44 40 L10 62 L46 80']],
+  l: [32, ['M16 0 L16 80']],
+  m: [68, ['M8 40 L8 80 L8 52 C11 44 16 40 22 40 C30 40 34 46 34 54 L34 80 L34 54 C37 46 42 40 48 40 C56 40 60 46 60 54 L60 80']],
+  n: [56, ['M10 40 L10 80 L10 54 C14 45 20 40 29 40 C40 40 46 47 46 56 L46 80']],
+  o: [60, ['M30 40 C18 40 10 49 10 60 C10 71 18 80 30 80 C42 80 50 71 50 60 C50 49 42 40 30 40']],
+  p: [60, ['M10 40 L10 120 L10 56 C14 46 22 40 32 40 C44 40 52 49 52 60 C52 71 44 80 32 80 C22 80 14 74 10 66']],
+  q: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 40 L48 120']],
+  r: [48, ['M12 40 L12 80 L12 58 C16 46 24 40 34 40 C38 40 42 41 44 43']],
+  s: [56, ['M44 46 C40 42 35 40 29 40 C19 40 13 45 13 51 C13 58 20 60 29 62 C39 64 46 67 46 73 C46 78 39 80 30 80 C22 80 15 78 11 73']],
+  t: [46, ['M20 10 L20 70 C20 77 24 80 30 80 C34 80 37 79 40 77', 'M8 40 L38 40']],
+  u: [56, ['M10 40 L10 64 C10 74 17 80 27 80 C37 80 44 74 46 64 L46 40 L46 80']],
+  v: [56, ['M8 40 L28 80 L48 40']],
+  w: [60, ['M4 40 L16 80 L30 48 L44 80 L56 40']],
+  x: [58, ['M10 40 L48 80', 'M48 40 L10 80']],
+  y: [56, ['M8 40 L28 80', 'M48 40 L20 120']],
+  z: [58, ['M10 40 L48 40 L10 80 L48 80']]
+};
+
+/* Spanish extras: accents and tilde are free-direction strokes (*) */
+(function () {
+  function add(ch, base, extra) { LETTERS[ch] = [LETTERS[base][0], LETTERS[base][1].concat(extra)]; }
+  add('á', 'a', ['*M36 20 L28 32']);
+  add('é', 'e', ['*M36 20 L28 32']);
+  add('ó', 'o', ['*M36 20 L28 32']);
+  add('ú', 'u', ['*M34 20 L26 32']);
+  LETTERS['í'] = [40, ['M20 40 L20 80', '*M25 20 L17 32']];
+  add('ñ', 'n', ['*M14 28 C19 21 24 21 28 26 C32 31 37 31 42 24']);
+  add('ü', 'u', ['M20 26 L20 28', 'M36 26 L36 28']);
+})();
+
+/* Spanish syllabification + stress (ES5) */
+var SYL = (function () {
+  var STRONG = 'aeoáéó', ACC = 'áéíóú', VOW = 'aeiouáéíóúü';
+  var INSEP = { bl: 1, br: 1, cl: 1, cr: 1, dr: 1, fl: 1, fr: 1, gl: 1, gr: 1, kl: 1, kr: 1, pl: 1, pr: 1, tr: 1, tl: 0 };
+  function isV(c) { return VOW.indexOf(c) >= 0; }
+  function units(w) {
+    var u = [], i = 0, c, n;
+    while (i < w.length) {
+      c = w.charAt(i); n = w.charAt(i + 1);
+      if ((c === 'c' && n === 'h') || (c === 'l' && n === 'l') || (c === 'r' && n === 'r')) { u.push({ t: c + n, v: false }); i += 2; continue; }
+      if ((c === 'q' || c === 'g') && n === 'u' && 'eéií'.indexOf(w.charAt(i + 2)) >= 0) { u.push({ t: c + n, v: false }); i += 2; continue; }
+      if (c === 'y') { u.push({ t: c, v: !isV(n) }); i++; continue; }
+      u.push({ t: c, v: isV(c) }); i++;
+    }
+    return u;
+  }
+  function hiatus(a, b) {
+    var sa = STRONG.indexOf(a) >= 0, sb = STRONG.indexOf(b) >= 0;
+    if (sa && sb) return true;
+    if ((a === 'í' || a === 'ú') && sb) return true;
+    if ((b === 'í' || b === 'ú') && sa) return true;
+    return false;
+  }
+  function split(word) {
+    var w = word.toLowerCase(), u = units(w), groups = [], i, cur = null;
+    // nuclei
+    var nuc = [];
+    for (i = 0; i < u.length; i++) {
+      if (u[i].v) {
+        var ch = u[i].t === 'y' ? 'i' : u[i].t;
+        if (cur && cur.end === i - 1 && !hiatus(cur.last, ch)) { cur.end = i; cur.last = ch; }
+        else { cur = { start: i, end: i, last: ch }; nuc.push(cur); }
+      }
+    }
+    if (!nuc.length) return [word];
+    var bounds = [0];
+    for (i = 0; i < nuc.length - 1; i++) {
+      var a = nuc[i].end + 1, b = nuc[i + 1].start, k = b - a, cut;
+      if (k <= 1) cut = a;
+      else if (k === 2) cut = INSEP[u[a].t + u[a + 1].t] ? a : a + 1;
+      else if (k === 3) cut = INSEP[u[a + 1].t + u[a + 2].t] ? a + 1 : a + 2;
+      else cut = a + 2;
+      bounds.push(cut);
+    }
+    var out = [], pos = 0;
+    for (i = 0; i < bounds.length; i++) {
+      var st = bounds[i], en = i + 1 < bounds.length ? bounds[i + 1] : u.length, s = '';
+      for (var j = st; j < en; j++) s += u[j].t;
+      out.push(s);
+    }
+    // restore original casing
+    var res = [], p = 0;
+    for (i = 0; i < out.length; i++) { res.push(word.substr(p, out[i].length)); p += out[i].length; }
+    return res;
+  }
+  function stress(sy) {
+    var i, j;
+    for (i = 0; i < sy.length; i++) for (j = 0; j < sy[i].length; j++) if (ACC.indexOf(sy[i].charAt(j).toLowerCase()) >= 0) return i;
+    if (sy.length === 1) return 0;
+    var last = sy[sy.length - 1].toLowerCase(), end = last.charAt(last.length - 1);
+    return (isV(end) || end === 'n' || end === 's') ? sy.length - 2 : sy.length - 1;
+  }
+  return { split: split, stress: stress };
+})();
+
+/* Spanish (A1): each entry "word:中文" or "word:中文:note".  Nouns carry their article (el/la/los/las). */
+var ES = {
+  letters: [
+    ['a', 'a', '发"啊"，嘴张大', 'agua', '水'],
+    ['b', 'be', '和 v 读音一样，比英语 b 轻', 'barco', '船'],
+    ['c', 'ce', '在 a/o/u 前发 k；在 e/i 前，西班牙读咬舌音 θ，拉美读 s', 'casa', '房子'],
+    ['d', 'de', '在词中间时舌尖轻碰上齿，接近英语 this 的 th', 'dedo', '手指'],
+    ['e', 'e', '发"诶"，短而清楚', 'elefante', '大象'],
+    ['f', 'efe', '和英语 f 一样', 'foto', '照片'],
+    ['g', 'ge', '在 a/o/u 前发 g；在 e/i 前发喉音，像汉语"喝"的 h', 'gato', '猫'],
+    ['h', 'hache', '不发音！hola 读"欧拉"', 'hola', '你好'],
+    ['i', 'i', '发"衣"', 'isla', '岛'],
+    ['j', 'jota', '喉音，像汉语"喝"的 h，但更用力', 'jugo', '果汁'],
+    ['k', 'ka', '发 k，只用在外来词里', 'kilo', '公斤'],
+    ['l', 'ele', '和英语 l 一样，更清脆', 'luna', '月亮'],
+    ['m', 'eme', '和 m 一样', 'mamá', '妈妈'],
+    ['n', 'ene', '和 n 一样', 'nube', '云'],
+    ['ñ', 'eñe', '像"尼"连着后面的元音：ña = "尼阿"连读', 'niño', '男孩'],
+    ['o', 'o', '发"哦"，嘴唇圆', 'ojo', '眼睛'],
+    ['p', 'pe', '发 p，不送气，比英语轻', 'perro', '狗'],
+    ['q', 'cu', '只出现在 que / qui 里，发 k，u 不发音', 'queso', '奶酪'],
+    ['r', 'erre', '词中间舌尖轻弹一下；词首和 rr 要连续颤舌（大舌音）', 'rosa', '玫瑰'],
+    ['s', 'ese', '发 s', 'sol', '太阳'],
+    ['t', 'te', '发 t，不送气', 'tren', '火车'],
+    ['u', 'u', '发"乌"', 'uva', '葡萄'],
+    ['v', 'uve', '读音和 b 完全一样！', 'vaca', '奶牛'],
+    ['w', 'uve doble', '只用在外来词里', 'kiwi', '猕猴桃'],
+    ['x', 'equis', '一般发 ks', 'taxi', '出租车'],
+    ['y', 'ye', '在元音前像"呀"的 y；单独作"和"时读 i', 'yo', '我'],
+    ['z', 'zeta', '西班牙读咬舌音 θ，拉美读 s', 'zapato', '鞋']
+  ],
+  themes: [
+    ['问候', 'hola:你好|adiós:再见|gracias:谢谢|por favor:请|buenos días:早上好|buenas noches:晚上好；晚安|sí:是|no:不；不是|perdón:对不起|de nada:不客气'],
+    ['数字', 'uno:一|dos:二|tres:三|cuatro:四|cinco:五|seis:六|siete:七|ocho:八|nueve:九|diez:十'],
+    ['颜色', 'rojo:红色的|azul:蓝色的|amarillo:黄色的|verde:绿色的|negro:黑色的|blanco:白色的|rosa:粉色的|naranja:橙色的|marrón:棕色的|gris:灰色的'],
+    ['家人', 'la madre:妈妈|el padre:爸爸|el hermano:哥哥；弟弟|la hermana:姐姐；妹妹|el abuelo:爷爷；外公|la abuela:奶奶；外婆|el hijo:儿子|la hija:女儿|la familia:家庭|el amigo:朋友（男）'],
+    ['动物', 'el perro:狗|el gato:猫|el pájaro:鸟|el pez:鱼（活的）|el caballo:马|la vaca:奶牛|el cerdo:猪|el conejo:兔子|el pato:鸭子|el mono:猴子'],
+    ['身体', 'la cabeza:头|la cara:脸|el ojo:眼睛|la oreja:耳朵|la nariz:鼻子|la boca:嘴|la mano:手:以 -o 结尾却是阴性，要特别记|el brazo:胳膊|la pierna:腿|el pie:脚'],
+    ['食物', 'la manzana:苹果|el plátano:香蕉|el huevo:鸡蛋|la leche:牛奶|el pan:面包|el arroz:米饭|el agua:水:阴性名词，但为了好读用 el：el agua fría|el jugo:果汁:西班牙常说 el zumo|la carne:肉|el café:咖啡'],
+    ['学校', 'el libro:书|el lápiz:铅笔|la mesa:桌子|la silla:椅子|la escuela:学校|el profesor:老师（男）|la clase:课；班级|el cuaderno:本子|la mochila:书包|la puerta:门'],
+    ['家里', 'la casa:房子；家|la habitación:房间|la cama:床|la ventana:窗户|la cocina:厨房|el baño:浴室；厕所|la lámpara:台灯|el reloj:钟；表|la televisión:电视|el sofá:沙发'],
+    ['衣服', 'la camisa:衬衫|los pantalones:裤子|el vestido:连衣裙|la falda:裙子|los zapatos:鞋子|el sombrero:帽子|la chaqueta:夹克|los calcetines:袜子|el abrigo:大衣|la camiseta:T恤'],
+    ['自然天气', 'el sol:太阳|la luna:月亮|la estrella:星星|el cielo:天空|el árbol:树|la flor:花|la lluvia:雨|la nieve:雪|el viento:风|el mar:大海'],
+    ['时间', 'el día:天；白天:以 -a 结尾却是阳性，要特别记|la noche:夜晚|la mañana:早上|la semana:星期|el año:年|hoy:今天|mañana:明天|ayer:昨天|la hora:小时|el mes:月'],
+    ['交通地点', 'el coche:汽车:拉美常说 el carro|el autobús:公交车|el tren:火车|el avión:飞机|la bicicleta:自行车|el barco:船|la calle:街道|la ciudad:城市|el parque:公园|la tienda:商店'],
+    ['常用动词', 'comer:吃|beber:喝|hablar:说话|ir:去|ser:是（身份、本质）|estar:在；是（状态、位置）|tener:有|querer:想要；爱|vivir:住；生活|jugar:玩'],
+    ['形容词', 'grande:大的|pequeño:小的|bueno:好的|malo:坏的|feliz:幸福的；高兴的|triste:难过的|bonito:漂亮的|nuevo:新的|caliente:热的|frío:冷的'],
+    ['代词小词', 'yo:我|tú:你|él:他|ella:她|nosotros:我们|ellos:他们|esto:这个|eso:那个|y:和|con:和…一起']
+  ]
+};
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function get(k, d) { try { var v = window.localStorage.getItem('es:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { window.localStorage.setItem('es:' + k, JSON.stringify(v)); } catch (e) { } }
+  function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).replace(/\s/g, '') || '#000'; }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) if (attrs.hasOwnProperty(k)) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  var raf = window.requestAnimationFrame || function (f) { return setTimeout(function () { f(Date.now()); }, 16); };
+  function now() { return window.performance && performance.now ? performance.now() : Date.now(); }
+  function flash(msg, cls) { var e = $('fb'); if (e) { e.textContent = msg; e.className = 'fb ' + (cls || ''); } }
+
+  /* ================= data ================= */
+  var LESSONS = [];
+  (function () {
+    var ls = ES.letters.map(function (r) { return { w: r[0], name: r[1], tip: r[2], ex: { w: r[3], zh: r[4] }, letter: true }; });
+    LESSONS.push({ id: 'A1', kind: 'letters', title: '字母 a – n', items: ls.slice(0, 14) });
+    LESSONS.push({ id: 'A2', kind: 'letters', title: '字母 ñ – z', items: ls.slice(14) });
+    for (var i = 0; i < ES.themes.length; i++) {
+      var items = ES.themes[i][1].split('|').map(function (s) {
+        var p = s.split(':'), full = p[0], m = /^(el|la|los|las) (.+)$/.exec(full), it = { w: full, zh: p[1], note: p[2] || '' };
+        if (m) { it.art = m[1]; it.noun = m[2]; it.g = (m[1] === 'el' || m[1] === 'los') ? 'm' : 'f'; if (it.noun === 'agua') it.g = 'f'; }
+        else it.noun = full;
+        return it;
+      });
+      LESSONS.push({ id: 'W' + (i + 1), kind: 'words', title: ES.themes[i][0], items: items });
+    }
+  })();
+  var LEARNED = get('learned', {});
+  var lesson = null, idx = 0, board = null, quiz = null;
+
+  /* ================= speech ================= */
+  var voice = null;
+  function pickVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices(), i;
+    for (i = 0; i < vs.length; i++) if (/^es[-_]ES/i.test(vs[i].lang)) { voice = vs[i]; break; }
+    if (!voice) for (i = 0; i < vs.length; i++) if (/^es/i.test(vs[i].lang)) { voice = vs[i]; break; }
+  }
+  if (window.speechSynthesis) { pickVoice(); window.speechSynthesis.onvoiceschanged = pickVoice; }
+  function say(text, rate) {
+    if (!window.speechSynthesis) { flash('这台设备不支持朗读', 'bad'); return; }
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text); u.lang = voice ? voice.lang : 'es-ES'; u.rate = rate || 0.8; if (voice) u.voice = voice;
+    window.speechSynthesis.speak(u);
+  }
+  function sayItem(it) { say(it.letter ? it.name : it.w, it.letter ? 0.75 : 0.8); }
+
+  /* ================= syllables ================= */
+  function sylHTML(phrase) {
+    return phrase.split(' ').map(function (w) {
+      var s = SYL.split(w), k = SYL.stress(s);
+      return s.map(function (x, i) { return i === k && s.length > 1 ? '<b>' + esc(x) + '</b>' : esc(x); }).join('·');
+    }).join('&nbsp;&nbsp;');
+  }
+
+  /* ================= writing board (四线三格) ================= */
+  function Board(host, text, maxH, maxW) {
+    var H = 144, top = -12, x = 0, layout = [], i, ch;
+    for (i = 0; i < text.length; i++) {
+      ch = text.charAt(i);
+      if (ch === ' ') { x += 26; continue; }
+      if (!LETTERS[ch]) continue;
+      layout.push({ ch: ch, x: x, w: LETTERS[ch][0] });
+      x += LETTERS[ch][0] + 4;
+    }
+    var W = Math.max(x - 4, 40) + 16, left = -8;
+    var h = maxH, w = h * W / H;
+    if (w > maxW) { w = maxW; h = w * H / W; }
+    var svg = el('svg', { viewBox: left + ' ' + top + ' ' + W + ' ' + H, width: Math.round(w), height: Math.round(h) });
+    host.innerHTML = ''; host.appendChild(svg);
+    var colors = { l1: css('--l1'), l3: css('--l3'), outline: css('--outline'), stroke: css('--stroke'), draw: css('--draw'), hint: css('--hint'), bad: css('--bad') };
+    var ys = [0, 40, 80, 120];
+    for (i = 0; i < 4; i++) el('line', { x1: left, x2: left + W, y1: ys[i], y2: ys[i], stroke: i === 2 ? colors.l3 : colors.l1, 'stroke-width': i === 2 ? 1.2 : 0.9 }, svg);
+    var gOut = el('g', {}, svg), gInk = el('g', {}, svg), gLive = el('g', {}, svg);
+    var strokes = [];
+    for (i = 0; i < layout.length; i++) {
+      var L = layout[i], sp = LETTERS[L.ch][1];
+      var go = el('g', { transform: 'translate(' + L.x + ',0)' }, gOut), gi = el('g', { transform: 'translate(' + L.x + ',0)' }, gInk);
+      for (var k = 0; k < sp.length; k++) {
+        var free = sp[k].charAt(0) === '*', dd = free ? sp[k].slice(1) : sp[k];
+        var o = el('path', { d: dd, fill: 'none', stroke: colors.outline, 'stroke-width': 10, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, go);
+        var p = el('path', { d: dd, fill: 'none', stroke: colors.stroke, 'stroke-width': 6.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, gi);
+        strokes.push({ out: o, ink: p, dx: L.x, len: p.getTotalLength(), letter: i, free: free });
+      }
+    }
+    var api = { strokes: strokes, letters: layout.length, svg: svg }, busy = 0, tracing = null;
+    function setInk(s, vis) { s.ink.style.visibility = vis ? 'visible' : 'hidden'; s.ink.style.strokeDasharray = ''; s.ink.style.strokeDashoffset = ''; s.ink.setAttribute('stroke', colors.stroke); }
+    api.showAll = function () { for (var i = 0; i < strokes.length; i++) setInk(strokes[i], true); };
+    api.hideAll = function () { for (var i = 0; i < strokes.length; i++) setInk(strokes[i], false); };
+    api.outline = function (on) { gOut.style.visibility = on ? 'visible' : 'hidden'; };
+    function drawStroke(s, color, cb) {
+      var len = s.len, dur = Math.max(260, len * 5.5), t0 = now(), my = busy;
+      s.ink.setAttribute('stroke', color);
+      s.ink.style.visibility = 'visible';
+      s.ink.style.strokeDasharray = len + ' ' + len;
+      s.ink.style.strokeDashoffset = len;
+      (function step() {
+        if (my !== busy) return;
+        var t = Math.min(1, (now() - t0) / dur);
+        s.ink.style.strokeDashoffset = len * (1 - t);
+        if (t < 1) raf(step); else { s.ink.style.strokeDasharray = ''; if (cb) cb(); }
+      })();
+    }
+    api.animate = function (done) {
+      api.cancel(); api.hideAll(); api.outline(true);
+      var i = 0, my = busy;
+      (function next() {
+        if (my !== busy) return;
+        if (i >= strokes.length) { if (done) done(); return; }
+        var s = strokes[i++];
+        drawStroke(s, colors.stroke, function () { setTimeout(next, s.len < 8 ? 120 : 200); });
+      })();
+    };
+    api.cancel = function () { busy++; tracing = null; gLive.innerHTML = ''; };
+
+    /* ---- tracing ---- */
+    function toSvg(e) {
+      var t = e.touches && e.touches.length ? e.touches[0] : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0] : e);
+      var pt = svg.createSVGPoint(); pt.x = t.clientX; pt.y = t.clientY;
+      var m = svg.getScreenCTM(); if (!m) return null;
+      pt = pt.matrixTransform(m.inverse());
+      return [pt.x, pt.y];
+    }
+    function sample(s, n) { var out = [], i; for (i = 0; i < n; i++) { var p = s.ink.getPointAtLength(s.len * i / (n - 1)); out.push([p.x + s.dx, p.y]); } return out; }
+    function resample(pts, n) {
+      var d = [0], i, total;
+      for (i = 1; i < pts.length; i++) d.push(d[i - 1] + dist(pts[i], pts[i - 1]));
+      total = d[d.length - 1];
+      if (total === 0) { var o = []; for (i = 0; i < n; i++) o.push(pts[0]); return { pts: o, len: 0 }; }
+      var out = [], j = 0;
+      for (i = 0; i < n; i++) {
+        var target = total * i / (n - 1);
+        while (j < d.length - 2 && d[j + 1] < target) j++;
+        var seg = d[j + 1] - d[j] || 1, f = (target - d[j]) / seg;
+        out.push([pts[j][0] + (pts[j + 1][0] - pts[j][0]) * f, pts[j][1] + (pts[j + 1][1] - pts[j][1]) * f]);
+      }
+      return { pts: out, len: total };
+    }
+    function dist(a, b) { var dx = a[0] - b[0], dy = a[1] - b[1]; return Math.sqrt(dx * dx + dy * dy); }
+    function match(user, s) {
+      if (s.len < 8 || s.free) {
+        var cx = 0, cy = 0; for (var i = 0; i < user.length; i++) { cx += user[i][0]; cy += user[i][1]; }
+        var c = [cx / user.length, cy / user.length], e0 = sample(s, 2)[0];
+        if (s.free) { var mid = s.ink.getPointAtLength(s.len / 2); e0 = [mid.x + s.dx, mid.y]; }
+        return dist(c, e0) < (s.free ? 14 : 16);
+      }
+      if (user.length < 2) return false;
+      var N = 32, u = resample(user, N), ex = sample(s, N), sum = 0;
+      if (u.len < s.len * 0.4) return false;
+      for (var k = 0; k < N; k++) sum += dist(u.pts[k], ex[k]);
+      return dist(u.pts[0], ex[0]) < 22 && dist(u.pts[N - 1], ex[N - 1]) < 24 && sum / N < 14;
+    }
+    var cur = null, live = null;
+    function down(e) {
+      if (!tracing) return;
+      e.preventDefault();
+      var p = toSvg(e); if (!p) return;
+      cur = [p];
+      live = el('polyline', { points: p.join(','), fill: 'none', stroke: colors.draw, 'stroke-width': 6.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', opacity: 0.85 }, gLive);
+    }
+    function move(e) {
+      if (!tracing || !cur) return;
+      e.preventDefault();
+      var p = toSvg(e); if (!p) return;
+      cur.push(p);
+      live.setAttribute('points', cur.map(function (q) { return q[0].toFixed(1) + ',' + q[1].toFixed(1); }).join(' '));
+    }
+    function up(e) {
+      if (!tracing || !cur) return;
+      e.preventDefault();
+      var T = tracing, s = strokes[T.k], pts = cur, ln = live;
+      cur = null; live = null;
+      if (match(pts, s)) {
+        gLive.removeChild(ln);
+        setInk(s, true);
+        T.k++; T.miss = 0;
+        if (T.cb.correct) T.cb.correct(T.k, strokes.length);
+        if (T.k >= strokes.length) { tracing = null; if (T.cb.complete) T.cb.complete(T.mistakes); }
+      } else {
+        T.mistakes++; T.miss++;
+        ln.setAttribute('stroke', colors.bad);
+        setTimeout(function () { if (ln.parentNode) ln.parentNode.removeChild(ln); }, 350);
+        if (T.cb.mistake) T.cb.mistake();
+        if (T.miss >= 2) {
+          var my = busy;
+          drawStroke(s, colors.hint, function () { setTimeout(function () { if (my === busy && tracing === T) setInk(s, false); }, 500); });
+        }
+      }
+    }
+    svg.addEventListener('touchstart', down, false); svg.addEventListener('touchmove', move, false); svg.addEventListener('touchend', up, false);
+    svg.addEventListener('mousedown', down, false); window.addEventListener('mousemove', move, false); window.addEventListener('mouseup', up, false);
+    api.destroy = function () { window.removeEventListener('mousemove', move, false); window.removeEventListener('mouseup', up, false); api.cancel(); };
+    api.trace = function (outline, cb) { api.cancel(); api.hideAll(); api.outline(outline); tracing = { k: 0, miss: 0, mistakes: 0, cb: cb || {} }; };
+    api.showAll();
+    return api;
+  }
+
+
+  /* ================= views ================= */
+  function show(v) { var vs = ['vHome', 'vStudy', 'vQuiz']; for (var i = 0; i < vs.length; i++) $(vs[i]).className = 'view' + (vs[i] === v ? ' on' : ''); window.scrollTo(0, 0); }
+  function key(it) { return it.w; }
+  $('homeBtn').onclick = function () { showHome(); };
+  function showHome() {
+    if (board) { board.destroy(); board = null; }
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    var h = '<div class="card free"><h3>自己输入要练写的西语单词</h3><div class="frow"><input id="freeIn" placeholder="例如：me gusta el café" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
+    var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0, i;
+    for (i = 0; i < LESSONS.length; i++) {
+      var l = LESSONS[i], n = 0, prev = '';
+      for (var j = 0; j < l.items.length; j++) { if (LEARNED[key(l.items[j])]) n++; prev += (l.kind === 'letters' ? l.items[j].w : l.items[j].noun + ' '); }
+      var c = '<button class="card lesson" data-i="' + i + '"><div class="l-n">' + (l.kind === 'letters' ? '字母与发音' : '第 ' + (i - 1) + ' 组') + ' · ' + n + '/' + l.items.length + '</div><div class="l-t">' + esc(l.title) + '</div><div class="l-c">' + esc(prev) + '</div><div class="pbar"><i style="width:' + Math.round(n / l.items.length * 100) + '%"></i></div></button>';
+      if (l.kind === 'letters') { a += c; na += n; ta += l.items.length; } else { b += c; nb += n; tb += l.items.length; }
+    }
+    h += '<h2 class="sec"><span>字母与发音</span><span>' + na + ' / ' + ta + '</span></h2><div class="lessons">' + a + '</div>';
+    h += '<h2 class="sec"><span>主题单词</span><span>' + nb + ' / ' + tb + '</span></h2><div class="lessons">' + b + '</div>';
+    h += '<div class="hint">西语是"怎么写就怎么读"的语言：学会字母发音就能读出单词。<br>重音：有重音符号（á é í ó ú）读那个音节；以元音、n、s 结尾读倒数第二个音节；其他读最后一个音节。<br><span class="g-m">el / los = 阳性</span>　<span class="g-f">la / las = 阴性</span></div>';
+    $('vHome').innerHTML = h;
+    show('vHome');
+    var bs = $('vHome').querySelectorAll('.lesson');
+    for (i = 0; i < bs.length; i++) bs[i].onclick = function () { var k = +this.getAttribute('data-i'); openLesson(LESSONS[k], k); };
+    $('freeGo').onclick = startFree;
+    $('freeIn').onkeydown = function (e) { if (e.keyCode === 13) startFree(); };
+  }
+  function startFree() {
+    var t = ($('freeIn').value || '').toLowerCase().replace(/[^a-zñáéíóúü ]/g, '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
+    if (!t) { $('freeIn').focus(); return; }
+    var words = t.length <= 14 ? [t] : t.split(' '), items = [], seen = {};
+    for (var i = 0; i < words.length; i++) if (words[i] && !seen[words[i]]) { seen[words[i]] = 1; items.push({ w: words[i], noun: words[i], zh: '', free: true }); }
+    openLesson({ id: 'free', kind: 'words', title: t.length > 16 ? t.slice(0, 16) + '…' : t, items: items }, -1);
+  }
+  function openLesson(l, li) { lesson = l; lesson.li = li; idx = 0; renderStudy(); show('vStudy'); }
+  function renderStudy() {
+    if (board) { board.destroy(); board = null; }
+    var it = lesson.items[idx], i;
+    var h = '<div class="sbar"><button class="btn ghost" id="backBtn">‹ 返回</button><div class="ti">' + esc(lesson.title) + '<small>' + (idx + 1) + ' / ' + lesson.items.length + '</small></div><button class="btn ghost" id="quizBtn"' + (lesson.items.length < 4 ? ' disabled' : '') + '>🎯 测验</button></div>';
+    h += '<div class="card stage">';
+    if (it.letter) {
+      h += '<div class="board" id="board"></div><div class="pair" style="font-size:18px">' + it.w.toUpperCase() + ' ' + it.w + ' · 读作 <b style="color:var(--accent)">' + esc(it.name) + '</b></div><div class="tip">' + esc(it.tip) + '</div>';
+      h += '<div class="ex" id="exBtn"><b>' + esc(it.ex.w) + '</b><span>' + sylHTML(it.ex.w) + ' · ' + esc(it.ex.zh) + '</span></div>';
+    } else {
+      if (it.art) h += '<div style="margin-bottom:4px"><span class="art g-' + it.g + '">' + esc(it.art) + '</span><span class="gtag g-' + it.g + '">' + (it.g === 'm' ? '阳性' : '阴性') + (/s$/.test(it.art) ? ' · 复数' : '') + '</span></div>';
+      h += '<div class="board" id="board"></div><div class="syl">' + sylHTML(it.noun) + '</div>';
+      if (it.zh) h += '<div class="zh">' + esc(it.zh) + '</div>';
+      if (it.note) h += '<div class="note">💡 ' + esc(it.note) + '</div>';
+    }
+    h += '<div class="info" id="info"></div><div class="fb" id="fb"></div>';
+    h += '<div class="tools"><button class="btn" id="bSay">🔊 读音</button><button class="btn" id="bAnim">▶ 笔顺</button><button class="btn" id="bTrace">✍️ 描红</button><button class="btn" id="bRecall">📝 默写</button></div>';
+    var k = LEARNED[key(it)];
+    h += '<div class="nav"><button class="btn" id="bPrev"' + (idx === 0 ? ' disabled' : '') + '>‹ 上一个</button><button class="btn mid ' + (k ? 'good' : '') + '" id="bKnow">' + (k ? '✓ 已学会' : '✓ 学会了') + '</button><button class="btn primary" id="bNext"' + (idx === lesson.items.length - 1 ? ' disabled' : '') + '>下一个 ›</button></div>';
+    h += '<div class="dots">'; for (i = 0; i < lesson.items.length; i++) h += '<i class="' + (i === idx ? 'c' : LEARNED[key(lesson.items[i])] ? 'l' : '') + '"></i>'; h += '</div>';
+    h += '<div class="hint">加粗带下划线的是重读音节；重音符号和 ñ 上的波浪线最后写</div></div>';
+    $('vStudy').innerHTML = h;
+    var avail = document.querySelector('main').clientWidth - 60;
+    board = Board($('board'), it.letter ? it.w : it.noun, it.letter ? 210 : 160, Math.min(avail, 640));
+    $('info').textContent = it.letter ? '共 ' + board.strokes.length + ' 笔' : '共 ' + board.letters + ' 个字母 · ' + board.strokes.length + ' 笔';
+    $('backBtn').onclick = showHome;
+    $('quizBtn').onclick = function () { startQuiz(lesson); };
+    $('bSay').onclick = function () { sayItem(it); };
+    if ($('exBtn')) $('exBtn').onclick = function () { say(it.ex.w); };
+    $('bAnim').onclick = function () { flash('', ''); board.animate(); };
+    $('bTrace').onclick = function () { practice(true); };
+    $('bRecall').onclick = function () { practice(false); };
+    $('bPrev').onclick = function () { if (idx > 0) { idx--; renderStudy(); } };
+    $('bNext').onclick = function () { if (idx < lesson.items.length - 1) { idx++; renderStudy(); } };
+    $('bKnow').onclick = function () { var kk = key(it); if (LEARNED[kk]) delete LEARNED[kk]; else LEARNED[kk] = 1; put('learned', LEARNED); if (LEARNED[kk] && idx < lesson.items.length - 1) idx++; renderStudy(); };
+    setTimeout(function () { sayItem(it); }, 250);
+  }
+  function practice(outline) {
+    flash(outline ? '照着浅色笔画写第 1 笔' : '凭记忆写，从第 1 笔开始', '');
+    board.trace(outline, {
+      mistake: function () { flash('这一笔不对，注意起笔位置和方向', 'bad'); },
+      correct: function (k, n) { if (k < n) flash('✓ 第 ' + k + ' 笔，继续写第 ' + (k + 1) + ' 笔', 'ok'); },
+      complete: function (m) { flash(m === 0 ? '¡Muy bien! 全部写对了 👍' : '写完了！错了 ' + m + ' 次，再练练', m === 0 ? 'ok' : 'bad'); board.outline(true); }
+    });
+  }
+
+  /* ================= quiz ================= */
+  var STRIP = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'ñ': 'n', 'ü': 'u' };
+  function startQuiz(l) {
+    if (board) board.cancel();
+    var pool = shuffle(l.items.slice()), qs = [], i, all = [];
+    for (i = 0; i < LESSONS.length; i++) if (LESSONS[i].kind === l.kind) all = all.concat(LESSONS[i].items);
+    if (l.id === 'free') all = l.items.slice();
+    for (i = 0; i < Math.min(10, pool.length); i++) {
+      var ans = pool[i], types = ['listen'];
+      if (l.kind === 'words') {
+        if (ans.zh) types.push('meaning');
+        if (ans.noun.indexOf(' ') < 0 && ans.noun.length > 1) types.push('spell');
+        if (ans.art) types.push('gender', 'gender');
+      }
+      var type = types[Math.floor(Math.random() * types.length)], q = { ans: ans, type: type };
+      if (type === 'listen' || type === 'meaning') {
+        var opts = [ans], guard = 0, src = l.items.length >= 4 ? l.items : all;
+        while (opts.length < 4 && guard++ < 200) { var c = src[Math.floor(Math.random() * src.length)]; if (opts.indexOf(c) < 0 && c.noun !== ans.noun) opts.push(c); }
+        q.opts = shuffle(opts);
+      } else if (type === 'gender') {
+        q.opts = /s$/.test(ans.art) ? ['los', 'las'] : ['el', 'la'];
+      } else {
+        var letters = ans.noun.split(''), extra = 'abcdefghijlmnopqrstuvz', acc = '';
+        for (var z = 0; z < letters.length; z++) if (STRIP[letters[z]]) acc = STRIP[letters[z]];
+        letters.push(acc || extra.charAt(Math.floor(Math.random() * extra.length)));
+        letters.push(extra.charAt(Math.floor(Math.random() * extra.length)));
+        q.tiles = shuffle(letters); q.target = ans.noun; q.typed = [];
+      }
+      qs.push(q);
+    }
+    quiz = { l: l, qs: qs, i: 0, score: 0, lock: false };
+    show('vQuiz'); renderQ();
+  }
+  function renderQ() {
+    var q = quiz.qs[quiz.i], a = q.ans, h = '<div class="sbar"><button class="btn ghost" id="qBack">‹ 返回</button><div class="ti">第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题</div><span style="width:70px"></span></div><div class="card qcard">';
+    var P = { listen: '听一听，选出正确的' + (quiz.l.kind === 'letters' ? '字母' : '单词'), meaning: '选出对应的西语单词', spell: '听一听，拼出这个单词', gender: '选出正确的冠词（阳性 / 阴性）' };
+    h += '<div class="qp">' + P[q.type] + '</div>';
+    if (q.type === 'listen') h += '<div class="qq"><button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button></div>';
+    else if (q.type === 'meaning') h += '<div class="qq">' + esc(a.zh) + '</div>';
+    else if (q.type === 'gender') h += '<div class="qq">___ ' + esc(a.noun) + '<div style="font-size:15px;font-weight:400;color:var(--soft)">' + esc(a.zh) + '</div></div>';
+    else h += '<div class="qq" style="font-size:22px">' + esc(a.zh) + ' <button class="btn primary" id="qSay">🔊</button></div>';
+    if (q.type === 'spell') {
+      h += '<div class="slots" id="slots">'; for (var s = 0; s < q.target.length; s++) h += '<div class="slot"></div>'; h += '</div><div class="tiles">';
+      for (s = 0; s < q.tiles.length; s++) h += '<button class="btn tile" data-t="' + s + '">' + q.tiles[s] + '</button>';
+      h += '</div><div style="margin-top:6px"><button class="btn ghost" id="qBackspace">⌫ 删除</button></div>';
+    } else {
+      h += '<div class="opts">';
+      for (var i = 0; i < q.opts.length; i++) { var lab = q.type === 'gender' ? q.opts[i] : (quiz.l.kind === 'letters' ? q.opts[i].w : q.opts[i].w); h += '<button class="btn opt" style="font-size:' + (q.type === 'gender' ? 26 : 19) + 'px" data-i="' + i + '">' + esc(lab) + '</button>'; }
+      h += '</div>';
+    }
+    h += '<div class="fb" id="fb"></div><div class="hint" id="tip"></div></div>';
+    $('vQuiz').innerHTML = h;
+    $('qBack').onclick = function () { openLesson(quiz.l, quiz.l.li); };
+    if ($('qSay')) { $('qSay').onclick = function () { sayItem(a); }; setTimeout(function () { sayItem(a); }, 200); }
+    function finish(ok) {
+      if (ok) quiz.score++;
+      $('fb').innerHTML = esc(a.letter ? a.w + '（' + a.name + '）' : a.w) + (a.zh ? ' · ' + esc(a.zh) : '');
+      $('fb').className = 'fb ' + (ok ? 'ok' : 'bad');
+      if (q.type === 'gender') $('tip').textContent = a.note || (a.g === 'm' ? '阳性名词用 el / los，常以 -o 结尾' : '阴性名词用 la / las，常以 -a、-ción、-dad 结尾');
+      sayItem(a);
+      setTimeout(function () { quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else renderDone(); }, ok ? 1300 : 2500);
+    }
+    if (q.type === 'spell') {
+      var tiles = $('vQuiz').querySelectorAll('.tile'), slots = $('vQuiz').querySelectorAll('.slot');
+      var paint = function () { for (var k = 0; k < slots.length; k++) { slots[k].textContent = q.typed[k] != null ? q.tiles[q.typed[k]] : ''; slots[k].className = 'slot' + (q.typed[k] != null ? ' f' : ''); } for (k = 0; k < tiles.length; k++) tiles[k].className = 'btn tile' + (q.typed.indexOf(k) >= 0 ? ' used' : ''); };
+      for (var t = 0; t < tiles.length; t++) tiles[t].onclick = function () {
+        if (quiz.lock) return;
+        var ti = +this.getAttribute('data-t'); if (q.typed.indexOf(ti) >= 0) return;
+        q.typed.push(ti); paint();
+        if (q.typed.length === q.target.length) {
+          quiz.lock = true;
+          var word = q.typed.map(function (x) { return q.tiles[x]; }).join(''), ok = word === q.target;
+          $('slots').className = 'slots ' + (ok ? 'ok' : 'no');
+          finish(ok);
+        }
+      };
+      $('qBackspace').onclick = function () { if (!quiz.lock && q.typed.length) { q.typed.pop(); paint(); } };
+    } else {
+      var bs = $('vQuiz').querySelectorAll('.opt');
+      for (var b = 0; b < bs.length; b++) bs[b].onclick = function () {
+        if (quiz.lock) return; quiz.lock = true;
+        var pick = q.opts[+this.getAttribute('data-i')], right = q.type === 'gender' ? a.art : a, ok = pick === right;
+        for (var k = 0; k < bs.length; k++) { var o = q.opts[+bs[k].getAttribute('data-i')]; if (o === right) bs[k].className += ' right'; else if (bs[k] === this) bs[k].className += ' wrong'; }
+        finish(ok);
+      };
+    }
+  }
+  function renderDone() {
+    var pct = Math.round(quiz.score / quiz.qs.length * 100);
+    $('vQuiz').innerHTML = '<div class="card qcard"><div class="qp">测验完成</div><div class="score">' + quiz.score + ' / ' + quiz.qs.length + '</div><div style="font-size:30px;margin:6px 0 16px">' + (pct === 100 ? '🏆' : pct >= 70 ? '🎉' : '💪') + '</div><button class="btn primary" id="qAgain">再测一次</button> <button class="btn" id="qHome">回到课程</button></div>';
+    $('qAgain').onclick = function () { startQuiz(quiz.l); };
+    $('qHome').onclick = showHome;
+  }
+  showHome();
+})();
+</script>
+</body>
+</html>
