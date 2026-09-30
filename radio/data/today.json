@@ -1,17 +1,17 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-09-30T13:52:35Z",
+ "generated": "2026-09-30T18:40:45Z",
  "date": "2026-09-30",
  "engine": "edge",
- "total": 260.6,
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609300652",
+ "total": 260.4,
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609301140",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
    "sub": "9月30日 星期三",
    "dur": 10.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609300652",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609301140",
    "text": [
     {
      "lang": "zh",
@@ -22,13 +22,13 @@
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 89°/63°F",
+   "sub": "Upland 晴 89°/62°F",
    "dur": 20.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609300652",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609301140",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。现在气温华氏63度，大约17摄氏度。白天最高89度，约32摄氏度；最低63度。基本不会下雨。空气质量中等，指数59。今天日落时间是傍晚6点35分。"
+     "t": "Upland今天晴。现在气温华氏81度，大约27摄氏度。白天最高89度，约32摄氏度；最低62度。基本不会下雨。空气质量中等，指数62。今天日落时间是傍晚6点35分。"
     }
    ]
   },
@@ -36,37 +36,37 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "防守",
-   "dur": 34.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609300652",
+   "dur": 34.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609301140",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股9月28日收盘。标普500 ETF 下跌0.7%，纳指100 ETF 下跌1.1%。恐慌指数VIX 16.0，正常水平。标普成分股里，站上50日均线的只占25%。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
+     "t": "先看大盘，数据截至美股9月30日收盘。标普500 ETF 上涨0.3%，纳指100 ETF 上涨0.6%。恐慌指数VIX 15.8，正常水平。标普成分股里，站上50日均线的只占23%。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "37 个候选",
-   "dur": 57.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609300652",
+   "sub": "23 个候选",
+   "dur": 53.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609301140",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池一共扫描了500只股票，找到37个短线候选。其中RSI2 超跌反弹12个，回踩金坑12个，血筹码12个，强势新高1个。评分最高的三个是："
+     "t": "股票池一共扫描了500只股票，找到23个短线候选。其中RSI2 超跌反弹12个，血筹码8个，回踩金坑3个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Phillips 66，代码 P S X，RSI2 超跌反弹信号，收盘价253.55美元，止损参考232.21。"
+     "t": "第1，Freeport-McMoRan，代码 F C X，RSI2 超跌反弹信号，收盘价70.77美元，止损参考63.95。"
     },
     {
      "lang": "zh",
-     "t": "第2，Regeneron Pharmaceuticals，代码 R E G N，RSI2 超跌反弹信号，收盘价752.25美元，止损参考700.46。"
+     "t": "第2，Gartner，代码 I T，回踩金坑信号，收盘价186.82美元，止损参考178.78。"
     },
     {
      "lang": "zh",
-     "t": "第3，Waters，代码 W A T，强势新高信号，收盘价442.94美元，止损参考418.64。"
+     "t": "第3，Corpay，代码 C P A Y，RSI2 超跌反弹信号，收盘价386.73美元，止损参考366.65。"
     },
     {
      "lang": "zh",
@@ -78,8 +78,8 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "3 件大事",
-   "dur": 36.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609300652",
+   "dur": 36.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609301140",
    "text": [
     {
      "lang": "zh",
@@ -87,7 +87,7 @@
     },
     {
      "lang": "zh",
-     "t": "Micron Technology，代码 M U，盘后发财报。期权定价波动正负7.6%。标签：大波动、利好出尽型、已提前炒作。"
+     "t": "Micron Technology，代码 M U，盘后发财报。期权定价波动正负7.2%。标签：大波动、利好出尽型、已提前炒作。"
     },
     {
      "lang": "zh",
@@ -95,16 +95,16 @@
     },
     {
      "lang": "zh",
-     "t": "Accenture，代码 A C N，盘前发财报。期权定价波动正负7.4%。标签：利好出尽型。"
+     "t": "Accenture，代码 A C N，盘前发财报。期权定价波动正负7.1%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · NPR · Al Jazeera",
-   "dur": 59.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609300652",
+   "sub": "NPR · Al Jazeera · BBC",
+   "dur": 62.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609301140",
    "text": [
     {
      "lang": "zh",
@@ -112,39 +112,39 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，科学，难度B2。"
+     "t": "第1条，来自NPR，综合，难度B1。"
     },
     {
      "lang": "en",
-     "t": "Orionid meteor shower to streak across night sky this week"
+     "t": "Greetings from Syria, where time seems to melt as a glassmaker braves scorching temps"
     },
     {
      "lang": "en",
-     "t": "The Orionid meteor shower peaks in October as Earth passes through debris left behind by Halley’s Comet."
+     "t": "As a Syrian glassmaker created his wares in Damascus, watching his craft reminded this reporter to slow down and enjoy the moment."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自NPR，综合，难度B2。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。"
     },
     {
      "lang": "en",
-     "t": "Hurricane Polo's remnants bringing more rain to flood-struck U.S. Southwest"
+     "t": "The Burnham bounce: Is Labour gaining ground against Farage’s Reform?"
     },
     {
      "lang": "en",
-     "t": "The storm's remnants battered the U.S."
+     "t": "British opinion polls suggest the Labour Party steadily gaining favour as Reform UK dips."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。"
+     "t": "第3条，来自BBC，国际，难度B2。"
     },
     {
      "lang": "en",
-     "t": "Public workers in France strike over pay as student protests turn violent"
+     "t": "Six smugglers jailed for manslaughter over worst Channel small boats disaster"
     },
     {
      "lang": "en",
-     "t": "Tens of thousands of workers march nationwide, as police arrest 440 students in clashes at schools."
+     "t": "Thirty-one migrants died when their boat went down in November 2021."
     }
    ]
   },
@@ -153,7 +153,7 @@
    "title": "🔤 今日单词",
    "sub": "concentrate · sesenta",
    "dur": 35.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609300652",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609301140",
    "text": [
     {
      "lang": "zh",
@@ -202,7 +202,7 @@
    "title": "👋 结束",
    "sub": "开车注意安全",
    "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202609300652",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202609301140",
    "text": [
     {
      "lang": "zh",
