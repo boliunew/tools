@@ -32,7 +32,7 @@ RATES = {"zh": "+0%", "en": "-12%", "es": "-12%"}
 GTTS_LANG = {"zh": "zh-CN", "en": "en", "es": "es"}
 WEEK = "一二三四五六日"
 LOC = {"name": "Upland", "lat": 34.0975, "lon": -117.6484}
-CLOCK_TAG = "radio-clock"
+CLOCK_TAG = "radio-clock2"  # bump when the clip texts change
 
 
 def load(rel):
@@ -66,12 +66,28 @@ def md(d):
 
 
 # ---------------------------------------------------------------- segments
+INTROS = [
+    "今天是{date}，{wk}。欢迎收听你的通勤电台，今天准备了{n}段内容，想跳过就按方向盘上的下一首。",
+    "{date}，{wk}，通勤电台准时上线。今天一共{n}段，不想听的直接按下一首。",
+    "这里是你的通勤电台。今天是{date}，{wk}，一共{n}段，方向盘上的下一首可以随时跳过。",
+    "{wk}，{date}。通勤电台陪你上路，今天有{n}段，按下一首可以跳段。",
+]
+DAYNOTE = {0: "新的一周开始了，加油！", 2: "一周过半了。", 4: "周五了，坚持一下就周末了！", 5: "周末还出门，辛苦了。", 6: "周末还出门，辛苦了。"}
+OUTROS = [
+    "今天的通勤电台就到这里。开车注意安全，我们下次见！",
+    "好了，今天就播到这里。路上慢点开，注意安全！",
+    "电台播完了。祝你一路顺风，今天顺顺利利！",
+    "今天的内容就这些。专心开车，安全第一，下次见！",
+]
+
+
 def seg_intro(today, n):
-    return {
-        "id": "intro", "title": "☀️ 开场", "sub": f"{md(today)} 星期{WEEK[today.weekday()]}",
-        "parts": [("zh", f"早上好！今天是{md(today)}，星期{WEEK[today.weekday()]}。这里是你的通勤电台，今天一共{n}段。"
-                         "想跳过，就按方向盘上的下一首。")],
-    }
+    rnd = random.Random(today.toordinal() * 7 + 1)
+    wk = f"星期{WEEK[today.weekday()]}"
+    txt = rnd.choice(INTROS).format(date=md(today), wk=wk, n=n)
+    if today.weekday() in DAYNOTE:
+        txt = DAYNOTE[today.weekday()] + txt
+    return {"id": "intro", "title": "☀️ 开场", "sub": f"{md(today)} {wk}", "parts": [("zh", txt)]}
 
 
 WMO = {0: "晴", 1: "大致晴朗", 2: "多云", 3: "阴天", 45: "有雾", 48: "有雾", 51: "毛毛雨", 53: "毛毛雨", 55: "毛毛雨",
@@ -277,9 +293,9 @@ def seg_words(today):
     return {"id": "words", "title": "🔤 今日单词", "sub": " · ".join(subs), "parts": parts}
 
 
-def seg_outro():
-    return {"id": "outro", "title": "👋 结束", "sub": "开车注意安全",
-            "parts": [("zh", "今天的通勤电台就到这里。开车注意安全，祝你今天顺顺利利！")]}
+def seg_outro(today):
+    rnd = random.Random(today.toordinal() * 13 + 5)
+    return {"id": "outro", "title": "👋 结束", "sub": "开车注意安全", "parts": [("zh", rnd.choice(OUTROS))]}
 
 
 # ---------------------------------------------------------------- audio
@@ -341,8 +357,9 @@ def clock_texts():
     out = {}
     for h in range(24):
         per = "凌晨" if h < 5 else "早上" if h < 9 else "上午" if h < 12 else "中午" if h == 12 else "下午" if h < 18 else "晚上"
+        hi = "夜深了，" if h < 5 else "早上好！" if h < 11 else "中午好！" if h < 13 else "下午好！" if h < 18 else "晚上好！"
         hh = h % 12 or 12
-        out[f"h{h:02d}.mp3"] = f"现在是{per}{hh}点"
+        out[f"h{h:02d}.mp3"] = f"{hi}现在是{per}{hh}点"
     for m in range(60):
         out[f"m{m:02d}.mp3"] = "整。" if m == 0 else (f"零{m}分。" if m < 10 else f"{m}分。")
     return out
@@ -358,6 +375,8 @@ def ensure_clock(tmp):
     texts = clock_texts()
     if have.returncode == 0 and len(set(have.stdout.split()) & set(texts)) == len(texts):
         return base
+    for old in ("radio-clock",):
+        subprocess.run([gh, "release", "delete", old, "--yes", "--cleanup-tag"], capture_output=True)
     if have.returncode != 0:
         run([gh, "release", "create", CLOCK_TAG, "--title", "通勤电台报时音频", "--notes", "报时用的小时/分钟语音片段（一次性生成）。", "--latest=false"])
     d = os.path.join(tmp, "clock")
@@ -379,7 +398,7 @@ def main():
     today = now.date()
     stocks, earn, news = load("stocks/data/latest.json"), load("earnings/data/latest.json"), load("news/data/latest.json")
     body = [s for s in (seg_weather(), seg_market(stocks), seg_pool(stocks), seg_calendar(earn, today), seg_news(news, today), seg_words(today)) if s]
-    segs = [seg_intro(today, len(body) + 2)] + body + [seg_outro()]
+    segs = [seg_intro(today, len(body) + 2)] + body + [seg_outro(today)]
 
     tmp = tempfile.mkdtemp(prefix="radio_")
     run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", "0.5", "-b:a", "48k", os.path.join(tmp, "gap.mp3")])
