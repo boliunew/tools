@@ -310,6 +310,11 @@ def main():
     os.makedirs(os.path.dirname(OUT_JSON), exist_ok=True)
     with open(OUT_JSON, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, indent=1)
+    # playlist for VLC & other players: steering-wheel next/prev skips segments, titles show on the car display
+    with open(os.path.join(os.path.dirname(OUT_JSON), "today.m3u"), "w", encoding="utf-8") as f:
+        f.write("#EXTM3U\n#PLAYLIST:通勤电台 " + today.isoformat() + "\n")
+        for s in out_segs:
+            f.write(f"#EXTINF:{int(round(s['dur']))},通勤电台 - {s['title']} {s.get('sub', '')}".rstrip() + "\n" + s["url"] + "\n")
     print("done:", len(out_segs), "segments,", doc["total"], "s, engine", doc["engine"])
 
 
