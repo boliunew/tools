@@ -293,6 +293,61 @@ def seg_words(today):
     return {"id": "words", "title": "🔤 今日单词", "sub": " · ".join(subs), "parts": parts}
 
 
+def vocab_data():
+    s = open(os.path.join(ROOT, "vocab.html"), encoding="utf-8").read()
+    tag = '<script type="application/json" id="data">'
+    a = s.index(tag) + len(tag)
+    return json.loads(s[a:s.index("</script>", a)])
+
+
+def short_def(zh):
+    d = re.sub(r"^[a-z]+\.\s*", "", (zh or "").split("；")[0].split("\n")[0])
+    return "，".join(re.split(r"[,，]\s*", d)[:3])
+
+
+def seg_review(now):
+    gid = os.environ.get("VOCAB_GIST_ID", "").strip()
+    if not gid:
+        return None
+    try:
+        g = fetch_json(f"https://api.github.com/gists/{gid}")
+        f = (g.get("files") or {}).get("ctxvocab.json") or {}
+        db = json.loads(f["content"]) if not f.get("truncated") else fetch_json(f["raw_url"])
+    except Exception as e:  # noqa: BLE001
+        print("vocab gist failed:", e)
+        return None
+    day = int((now.timestamp() + now.utcoffset().total_seconds()) // 86400)
+    cards = db.get("cards") or {}
+    due = [w for w, c in cards.items() if not c.get("k") and (c.get("due") or 0) <= day]
+    if not due:
+        return None
+    retr = lambda c: (1 + 19 / 81 * max(0, day - (c.get("last") or 0)) / max(0.1, c.get("s") or 0.1)) ** -0.5  # noqa: E731
+    due.sort(key=lambda w: retr(cards[w]))
+    V = vocab_data()
+    by = {e[0]: i for i, e in enumerate(V["w"])}
+    parts, picked = [("zh", f"下面复习你今天到期的单词。今天一共有{len(due)}个要复习，先听最容易忘的几个。")], []
+    for w in due[:6]:
+        ctx = (db.get("ctx") or {}).get(w) or []
+        if w in by:
+            e = V["w"][by[w]]
+            zh = short_def(e[2])
+            ex = ctx[0]["en"] if ctx else next((V["s"][j][0] for j in e[3] if len(V["s"][j][0]) <= 160), "")
+        elif w in (db.get("custom") or {}):
+            zh = short_def(db["custom"][w].get("zh", ""))
+            ex = ctx[0]["en"] if ctx else ""
+        else:
+            continue
+        picked.append(w)
+        parts += [("en", w), ("zh", f"意思是：{zh}。" if zh else "")]
+        if ex:
+            parts += [("zh", "例句：" if not ctx else "你收藏的那句："), ("en", ex)]
+    parts = [p for p in parts if p[1]]
+    if not picked:
+        return None
+    parts.append(("zh", "到了公司或者回到家，打开语境词库把今天的复习做完吧。"))
+    return {"id": "review", "title": "🔁 今日复习", "sub": " · ".join(picked), "parts": parts}
+
+
 def seg_outro(today):
     rnd = random.Random(today.toordinal() * 13 + 5)
     return {"id": "outro", "title": "👋 结束", "sub": "开车注意安全", "parts": [("zh", rnd.choice(OUTROS))]}
@@ -397,7 +452,7 @@ def main():
     now = dt.datetime.now(TZ)
     today = now.date()
     stocks, earn, news = load("stocks/data/latest.json"), load("earnings/data/latest.json"), load("news/data/latest.json")
-    body = [s for s in (seg_weather(), seg_market(stocks), seg_pool(stocks), seg_calendar(earn, today), seg_news(news, today), seg_words(today)) if s]
+    body = [s for s in (seg_weather(), seg_market(stocks), seg_pool(stocks), seg_calendar(earn, today), seg_news(news, today), seg_review(now), seg_words(today)) if s]
     segs = [seg_intro(today, len(body) + 2)] + body + [seg_outro(today)]
 
     tmp = tempfile.mkdtemp(prefix="radio_")

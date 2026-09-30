@@ -7,7 +7,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["news/build.py", "news/feeds.json"]
+    paths: ["news/build.py", "news/feeds.json", "news/contexts.py"]
 
 permissions:
   contents: write
@@ -29,6 +29,7 @@ jobs:
           cache-dependency-path: news/requirements.txt
       - run: pip install -r news/requirements.txt
       - run: python news/build.py
+      - run: python news/contexts.py
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"

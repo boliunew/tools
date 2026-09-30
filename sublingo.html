@@ -1326,7 +1326,37 @@ var NLP = (function () {
   function toast(msg) { var st = $('status'); if (tab === 'art' && st) { st.className = 'status'; st.textContent = msg; } }
 
   /* ---------- dictionary (ECDICT, MIT) ---------- */
-  var DICT = {}, DICTQ = {};
+  var DICT = {}, DICTQ = {}, LASTD = null, SHEETCTX = null, artTitle = '';
+  function sentOf(key, i) {
+    var a = REG[key], s0 = null;
+    if (!a) return '';
+    each(a.sents, function (s) { if (i >= s.from && i < s.to) s0 = s; });
+    var txt = s0 ? a.text.slice(a.toks[s0.from].s, a.toks[s0.to - 1].e) : a.text;
+    if (key.charAt(0) === 'c' && txt.length < 25) txt = a.text;
+    return txt.replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '').slice(0, 300);
+  }
+  function srcOf(key) { return key.charAt(0) === 'c' ? '字幕' + (subName ? ' · ' + subName.replace(/\.(srt|vtt|ass)$/i, '') : '') : '文章' + (artTitle ? ' · ' + artTitle : ''); }
+  function findSent(w) {
+    var k, i, lw = String(w).toLowerCase();
+    for (k in REG) if (REG.hasOwnProperty(k)) for (i = 0; i < REG[k].toks.length; i++) if (REG[k].toks[i].lw === lw) return { en: sentOf(k, i), src: srcOf(k) };
+    return { en: '', src: '' };
+  }
+  function vocabState(w) {
+    try { var d = JSON.parse(localStorage.getItem('ctxvocab-v1') || '{}'); var c = d.cards && d.cards[w]; return !c ? '' : c.k ? 'known' : 'learning'; } catch (e) { return ''; }
+  }
+  function addToVocab(btn) {
+    var c = SHEETCTX; if (!c) return;
+    var r = LASTD, w = (r && r.w) || String(c.w).toLowerCase(), forms = [];
+    if (r && r.e[6]) each(r.e[6].split('/'), function (kv) { var p = kv.split(':'); if (p[1] && /^[pdi3sr]$/.test(p[0])) forms.push(p[1]); });
+    var item = { w: w, en: c.en, src: c.src, ph: r ? r.e[0] : '', zh: r ? r.e[1].split('\n').slice(0, 3).join('\n') : '', forms: forms, t: Date.now() };
+    try {
+      var box = JSON.parse(localStorage.getItem('ctxvocab-inbox') || '[]');
+      box.push(item); localStorage.setItem('ctxvocab-inbox', JSON.stringify(box));
+      var st = vocabState(w);
+      btn.textContent = st === 'learning' ? '✓ 已在词库，这句加为新语境' : '✓ 已收进语境词库';
+      btn.disabled = true;
+    } catch (e) { btn.textContent = '保存失败'; }
+  }
   function dictShard(w) { return (w.slice(0, 2) + '__').slice(0, 2).replace(/[^a-z]/g, '_'); }
   function dictLoad(p, cb) {
     if (DICT[p]) { cb(DICT[p]); return; }
@@ -1379,7 +1409,8 @@ var NLP = (function () {
   function dictInto(cands, orig) {
     var box = $('dictBox'); if (!box) return;
     var token = String(Math.random()); box.setAttribute('data-k', token);
-    dictGet(cands, function (r) { var b = $('dictBox'); if (b && b.getAttribute('data-k') === token) b.innerHTML = dictHTML(r, orig); });
+    LASTD = null;
+    dictGet(cands, function (r) { var b = $('dictBox'); if (b && b.getAttribute('data-k') === token) { LASTD = r; b.innerHTML = dictHTML(r, orig); } });
   }
   function dictLinks(w) {
     return '<a class="btn sm" target="_blank" rel="noopener" href="https://www.oxfordlearnersdictionaries.com/search/english/?q=' + encodeURIComponent(w) + '">牛津词典 ↗</a>' +
@@ -1405,7 +1436,8 @@ var NLP = (function () {
       '<div class="pos" style="color:var(--c-' + (PCLS[t.tag] === 'part' ? 'v' : (PCLS[t.tag] || 'det')) + ')">' + esc(NLP.describeTok(t)) + '</div>';
     each(notes, function (n) { html += '<div class="note">' + n + '</div>'; });
     html += '<div class="dict" id="dictBox"><div class="note">查词中…</div></div>';
-    html += '<div class="acts"><button class="btn sm" data-act="say" data-w="' + esc(dictWord) + '">🔊 发音</button>' + dictLinks(dictWord) + '</div>';
+    html += '<div class="acts"><button class="btn sm primary" data-act="addvocab">⭐ 加入语境词库</button><button class="btn sm" data-act="say" data-w="' + esc(dictWord) + '">🔊 发音</button>' + dictLinks(dictWord) + '</div>';
+    SHEETCTX = { w: dictWord, en: sentOf(key, i), src: srcOf(key) };
     openSheet(html);
     var cands = [dictWord, t.lw]; if (lemma) cands.push(lemma);
     if (/'s$/.test(t.lw)) cands.unshift(t.lw.replace(/'s$/, ''));
@@ -1417,7 +1449,8 @@ var NLP = (function () {
   function showPlainWord(w) {
     var html = '<button class="x" data-act="x" aria-label="关闭">✕</button><div><span class="wd">' + esc(w) + '</span></div><div class="note">文中的较难词汇（不在常用词表中）</div>' +
       '<div class="dict" id="dictBox"><div class="note">查词中…</div></div>' +
-      '<div class="acts"><button class="btn sm" data-act="say" data-w="' + esc(w) + '">🔊 发音</button>' + dictLinks(w) + '</div>';
+      '<div class="acts"><button class="btn sm primary" data-act="addvocab">⭐ 加入语境词库</button><button class="btn sm" data-act="say" data-w="' + esc(w) + '">🔊 发音</button>' + dictLinks(w) + '</div>';
+    var fs = findSent(w); SHEETCTX = { w: w, en: fs.en, src: fs.src };
     openSheet(html);
     dictInto([w], w);
   }
@@ -1428,6 +1461,7 @@ var NLP = (function () {
     var act = b.getAttribute('data-act');
     if (act === 'x') hideSheet();
     if (act === 'say') speak(b.getAttribute('data-w'), 0.85);
+    if (act === 'addvocab') addToVocab(b);
   };
   document.addEventListener('click', function (e) {
     if (sheetOpen && !closest(e.target, '#sheetBox') && !closest(e.target, '.w')) hideSheet();
@@ -1652,6 +1686,7 @@ var NLP = (function () {
   var artState = null;
   function status(msg, err) { var s = $('status'); s.className = 'status' + (err ? ' err' : ''); s.innerHTML = msg || ''; }
   function analyzeArticle(text, title) {
+    artTitle = title || '';
     text = String(text || '').replace(/\r/g, '');
     if (!/[a-z]/i.test(text)) { status('请先粘贴英文文章或输入网址。', true); return; }
     REG = filterReg('c');
