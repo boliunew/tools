@@ -252,7 +252,7 @@ var ES = {
   letters: [
     ['a', 'a', '发"啊"，嘴张大', 'agua', '水'],
     ['b', 'be', '和 v 读音一样，比英语 b 轻', 'barco', '船'],
-    ['c', 'ce', '在 a/o/u 前发 k；在 e/i 前，西班牙读咬舌音 θ，拉美读 s', 'casa', '房子'],
+    ['c', 'ce', '在 a/o/u 前发 k；在 e/i 前发 s（墨西哥/拉美读法；西班牙读咬舌音 θ）', 'casa', '房子'],
     ['d', 'de', '在词中间时舌尖轻碰上齿，接近英语 this 的 th', 'dedo', '手指'],
     ['e', 'e', '发"诶"，短而清楚', 'elefante', '大象'],
     ['f', 'efe', '和英语 f 一样', 'foto', '照片'],
@@ -276,7 +276,7 @@ var ES = {
     ['w', 'uve doble', '只用在外来词里', 'kiwi', '猕猴桃'],
     ['x', 'equis', '一般发 ks', 'taxi', '出租车'],
     ['y', 'ye', '在元音前像"呀"的 y；单独作"和"时读 i', 'yo', '我'],
-    ['z', 'zeta', '西班牙读咬舌音 θ，拉美读 s', 'zapato', '鞋']
+    ['z', 'zeta', '发 s，和 s 完全一样（墨西哥/拉美读法；西班牙读咬舌音 θ）', 'zapato', '鞋']
   ],
   themes: [
     ['问候', 'hola:你好|adiós:再见|gracias:谢谢|por favor:请|buenos días:早上好|buenas noches:晚上好；晚安|sí:是|no:不；不是|perdón:对不起|de nada:不客气'],
@@ -291,7 +291,7 @@ var ES = {
     ['衣服', 'la camisa:衬衫|los pantalones:裤子|el vestido:连衣裙|la falda:裙子|los zapatos:鞋子|el sombrero:帽子|la chaqueta:夹克|los calcetines:袜子|el abrigo:大衣|la camiseta:T恤'],
     ['自然天气', 'el sol:太阳|la luna:月亮|la estrella:星星|el cielo:天空|el árbol:树|la flor:花|la lluvia:雨|la nieve:雪|el viento:风|el mar:大海'],
     ['时间', 'el día:天；白天:以 -a 结尾却是阳性，要特别记|la noche:夜晚|la mañana:早上|la semana:星期|el año:年|hoy:今天|mañana:明天|ayer:昨天|la hora:小时|el mes:月'],
-    ['交通地点', 'el coche:汽车:拉美常说 el carro|el autobús:公交车|el tren:火车|el avión:飞机|la bicicleta:自行车|el barco:船|la calle:街道|la ciudad:城市|el parque:公园|la tienda:商店'],
+    ['交通地点', 'el carro:汽车:西班牙常说 el coche|el autobús:公交车|el tren:火车|el avión:飞机|la bicicleta:自行车|el barco:船|la calle:街道|la ciudad:城市|el parque:公园|la tienda:商店'],
     ['常用动词', 'comer:吃|beber:喝|hablar:说话|ir:去|ser:是（身份、本质）|estar:在；是（状态、位置）|tener:有|querer:想要；爱|vivir:住；生活|jugar:玩'],
     ['形容词', 'grande:大的|pequeño:小的|bueno:好的|malo:坏的|feliz:幸福的；高兴的|triste:难过的|bonito:漂亮的|nuevo:新的|caliente:热的|frío:冷的'],
     ['代词小词', 'yo:我|tú:你|él:他|ella:她|nosotros:我们|ellos:他们|esto:这个|eso:那个|y:和|con:和…一起']
@@ -338,14 +338,16 @@ var ES = {
   function pickVoice() {
     if (!window.speechSynthesis) return;
     var vs = window.speechSynthesis.getVoices(), i;
-    for (i = 0; i < vs.length; i++) if (/^es[-_]ES/i.test(vs[i].lang)) { voice = vs[i]; break; }
-    if (!voice) for (i = 0; i < vs.length; i++) if (/^es/i.test(vs[i].lang)) { voice = vs[i]; break; }
+    var pref = [/^es[-_]MX/i, /^es[-_](US|419)/i, /^es[-_](CO|AR|CL|PE|VE|EC|GT|CR|PA|DO|PR|UY|BO|PY|SV|HN|NI|CU)/i, /^es/i], k;
+    voice = null;
+    for (k = 0; k < pref.length && !voice; k++)
+      for (i = 0; i < vs.length; i++) if (pref[k].test(vs[i].lang)) { voice = vs[i]; break; }
   }
   if (window.speechSynthesis) { pickVoice(); window.speechSynthesis.onvoiceschanged = pickVoice; }
   function say(text, rate) {
     if (!window.speechSynthesis) { flash('这台设备不支持朗读', 'bad'); return; }
     window.speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(text); u.lang = voice ? voice.lang : 'es-ES'; u.rate = rate || 0.8; if (voice) u.voice = voice;
+    var u = new SpeechSynthesisUtterance(text); u.lang = voice ? voice.lang : 'es-MX'; u.rate = rate || 0.8; if (voice) u.voice = voice;
     window.speechSynthesis.speak(u);
   }
   function sayItem(it) { say(it.letter ? it.name : it.w, it.letter ? 0.75 : 0.8); }
