@@ -91,6 +91,10 @@ h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px
 .tile{width:48px;height:52px;margin:0 4px 8px;font-size:24px;font-weight:700;border-radius:12px;padding:0}
 .tile.used{visibility:hidden}
 .score{font-size:48px;font-weight:700;color:var(--accent)}
+.lvtabs{display:flex;background:var(--chip);border-radius:14px;padding:4px;margin-bottom:12px}
+.lvt{flex:1;border:0;background:transparent;border-radius:10px;padding:7px 2px;font-size:15px;font-weight:600;color:var(--soft);line-height:1.2}
+.lvt small{display:block;font-size:10.5px;font-weight:400;opacity:.8}
+.lvt.on{background:var(--paper);color:var(--accent);box-shadow:var(--shadow)}
 .hint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:14px;line-height:1.7}
 @media (max-width:420px){ .lesson{width:calc(100% - 10px)} .tools .btn{min-width:0;flex:1 1 40%} }
 </style>
@@ -260,6 +264,269 @@ EN.sentences = [
   ]]
 ];
 
+/* Middle school / High school / College content.
+   Words: "word:IPA:中文"   Sentences: "en|中文|blank|opt,opt,opt|pred indices|alt orders(;)|tip" */
+EN.levels = {
+  mid: {
+    themes: [
+      ['学校生活', 'subject:ˈsʌbdʒɪkt:科目 exam:ɪɡˈzæm:考试 homework:ˈhəʊmwɜːk:家庭作业 library:ˈlaɪbrəri:图书馆 classmate:ˈklɑːsmeɪt:同学 notebook:ˈnəʊtbʊk:笔记本 lesson:ˈlesn:课 grade:ɡreɪd:年级；成绩 uniform:ˈjuːnɪfɔːm:校服 dictionary:ˈdɪkʃənri:词典'],
+      ['日常活动', 'breakfast:ˈbrekfəst:早餐 exercise:ˈeksəsaɪz:锻炼 shower:ˈʃaʊə:淋浴 clean:kliːn:打扫 cook:kʊk:做饭 visit:ˈvɪzɪt:拜访 practice:ˈpræktɪs:练习 weekend:ˌwiːkˈend:周末 usually:ˈjuːʒuəli:通常 sometimes:ˈsʌmtaɪmz:有时'],
+      ['健康与感受', 'healthy:ˈhelθi:健康的 headache:ˈhedeɪk:头痛 fever:ˈfiːvə:发烧 tired:ˈtaɪəd:疲倦的 worried:ˈwʌrid:担心的 excited:ɪkˈsaɪtɪd:兴奋的 nervous:ˈnɜːvəs:紧张的 medicine:ˈmedsn:药 rest:rest:休息 advice:ədˈvaɪs:建议'],
+      ['城市与方向', 'museum:mjuˈziːəm:博物馆 hospital:ˈhɒspɪtl:医院 station:ˈsteɪʃn:车站 bridge:brɪdʒ:桥 corner:ˈkɔːnə:拐角 straight:streɪt:笔直地 left:left:左边 right:raɪt:右边 between:bɪˈtwiːn:在…之间 opposite:ˈɒpəzɪt:在…对面'],
+      ['天气与自然', 'weather:ˈweðə:天气 cloudy:ˈklaʊdi:多云的 windy:ˈwɪndi:有风的 temperature:ˈtemprətʃə:温度 season:ˈsiːzn:季节 forest:ˈfɒrɪst:森林 river:ˈrɪvə:河 mountain:ˈmaʊntən:山 island:ˈaɪlənd:岛 environment:ɪnˈvaɪrənmənt:环境'],
+      ['爱好', 'hobby:ˈhɒbi:爱好 music:ˈmjuːzɪk:音乐 painting:ˈpeɪntɪŋ:绘画 basketball:ˈbɑːskɪtbɔːl:篮球 collect:kəˈlekt:收集 camera:ˈkæmərə:相机 concert:ˈkɒnsət:音乐会 volunteer:ˌvɒlənˈtɪə:志愿者 interest:ˈɪntrəst:兴趣 favourite:ˈfeɪvərɪt:最喜欢的'],
+      ['购物与饮食', 'price:praɪs:价格 cheap:tʃiːp:便宜的 expensive:ɪkˈspensɪv:昂贵的 menu:ˈmenjuː:菜单 vegetable:ˈvedʒtəbl:蔬菜 delicious:dɪˈlɪʃəs:美味的 customer:ˈkʌstəmə:顾客 order:ˈɔːdə:点餐；订购 pay:peɪ:付钱 size:saɪz:尺码'],
+      ['常用动词', 'borrow:ˈbɒrəʊ:借入 lend:lend:借出 forget:fəˈɡet:忘记 remember:rɪˈmembə:记得 decide:dɪˈsaɪd:决定 arrive:əˈraɪv:到达 explain:ɪkˈspleɪn:解释 invite:ɪnˈvaɪt:邀请 improve:ɪmˈpruːv:提高 prepare:prɪˈpeə:准备']
+    ],
+    sentences: [
+      ['一般过去时', [
+        'I visited my grandparents last weekend.|上周末我去看望了祖父母。|visited|visit,visited,visiting|1|Last weekend I visited my grandparents|过去的时间 last weekend → 用一般过去时 visited。',
+        "She didn't finish her homework yesterday.|她昨天没有完成作业。|finish|finish,finished,finishes|1,2|Yesterday she didn't finish her homework|didn't 后面用动词原形。",
+        'We went to the museum by bus.|我们坐公交车去了博物馆。|went|go,went,gone|1||go 的过去式是不规则变化 went；gone 是过去分词。',
+        'Did you watch the game last night?|你昨晚看比赛了吗？|Did|Do,Did,Were|0,2||last night 是过去时间，疑问句用 Did + 动词原形。',
+        'It was very cold this morning.|今天早上很冷。|was|is,was,were|1|This morning it was very cold|主语 it 是单数，过去时用 was。',
+        "They were at the library at three o'clock.|三点钟他们在图书馆。|were|was,were,are|1|At three o'clock they were at the library|主语 they 是复数，过去时用 were。",
+        'My brother bought a new camera.|我哥哥买了一台新相机。|bought|buy,bought,buys|2||buy 的过去式是不规则变化 bought。',
+        'Tom lost his key on the way home.|汤姆在回家路上丢了钥匙。|lost|lose,lost,loses|1|On the way home Tom lost his key|lose 的过去式是 lost。',
+        'We had a great time at the party.|我们在聚会上玩得很开心。|had|have,had,has|1||have a great time 玩得开心；过去时用 had。',
+        'The teacher explained the problem again.|老师又讲解了一遍这个问题。|explained|explain,explained,explaining|2||一般过去时，规则动词加 -ed。'
+      ]],
+      ['将来与计划', [
+        'I will call you tomorrow.|我明天给你打电话。|will|will,was,am|1,2|Tomorrow I will call you|tomorrow 表示将来，用 will + 动词原形。',
+        'We are going to visit the museum this Sunday.|这个星期天我们打算去参观博物馆。|going|go,going,went|1,2,3,4|This Sunday we are going to visit the museum|be going to + 动词原形 表示计划、打算。',
+        'It will be sunny tomorrow.|明天会是晴天。|be|be,is,being|1,2|Tomorrow it will be sunny|will 后面接动词原形 be。',
+        'She is going to be a doctor.|她打算成为一名医生。|to|to,for,at|1,2,3,4||be going to 结构里的 to 不能漏掉。',
+        'Will you come to my party?|你会来参加我的聚会吗？|come|come,comes,came|0,2||will 后面用动词原形。',
+        "They won't be late for school.|他们上学不会迟到。|won't|won't,don't,aren't|1,2||won't = will not，后接动词原形。",
+        'I am going to learn to swim this summer.|今年夏天我打算学游泳。|learn|learn,learning,learned|1,2,3,4|This summer I am going to learn to swim|be going to 后接动词原形 learn。',
+        'My parents will buy me a bike.|爸妈会给我买一辆自行车。|buy|buy,buys,bought|2,3||will + 动词原形。',
+        'The train is going to arrive soon.|火车马上就要到了。|arrive|arrive,arrives,arriving|2,3,4,5||be going to 也可以表示根据迹象判断"即将发生"。',
+        'What will you do next weekend?|下个周末你要做什么？|will|will,are,did|1,3||特殊疑问句：疑问词 + will + 主语 + 动词原形。'
+      ]],
+      ['比较级与最高级', [
+        'My bag is bigger than yours.|我的包比你的大。|bigger|big,bigger,biggest|2||两者比较用比较级：big → bigger（双写 g 再加 -er）。',
+        'This is the most interesting book in the library.|这是图书馆里最有趣的书。|most|more,most,much|1||三者以上比较用最高级 the most + 形容词。',
+        'Tom runs faster than me.|汤姆跑得比我快。|faster|fast,faster,fastest|1||副词也有比较级：faster + than。',
+        'Summer is the hottest season of the year.|夏天是一年中最热的季节。|hottest|hot,hotter,hottest|1||最高级：hot → hottest，前面加 the。',
+        'Math is more difficult than English for me.|对我来说数学比英语难。|more|more,most,much|1|For me math is more difficult than English|多音节形容词的比较级用 more + 原级。',
+        'She is as tall as her mother.|她和她妈妈一样高。|as|as,so,than|1||as + 原级 + as 表示"和…一样"。',
+        'This shirt is cheaper than that one.|这件衬衫比那件便宜。|cheaper|cheap,cheaper,cheapest|2||两者比较用比较级 cheaper。',
+        'Who is the best player on your team?|谁是你们队最好的球员？|best|good,better,best|1||good 的最高级是 best（不规则变化）。',
+        'It is getting warmer and warmer.|天气变得越来越暖和。|warmer|warm,warmer,warmest|1,2||"比较级 and 比较级"表示"越来越…"。',
+        'Beijing is much larger than my hometown.|北京比我的家乡大得多。|much|much,very,more|1||比较级前用 much 加强语气，不能用 very。'
+      ]],
+      ['现在完成时', [
+        'I have finished my homework.|我已经完成作业了。|finished|finish,finished,finishing|1,2||have + 过去分词 构成现在完成时。',
+        'She has lived here for five years.|她在这里住了五年了。|for|for,since,in|1,2||for + 一段时间；since + 过去的时间点。',
+        'Have you ever been to Shanghai?|你去过上海吗？|been|gone,been,went|0,3||have been to 表示"去过（已经回来）"；have gone to 表示"去了（还没回来）"。',
+        'We have known each other since 2020.|我们从 2020 年就认识了。|since|for,since,from|1,2||since + 过去的时间点。',
+        "He hasn't found his phone yet.|他还没找到他的手机。|yet|yet,already,ever|1,2||否定句和疑问句用 yet，肯定句用 already。",
+        'They have already left.|他们已经离开了。|already|already,yet,ever|1,3||already 常用于肯定句，放在 have 和过去分词之间。',
+        'My father has just bought a new car.|我爸爸刚买了一辆新车。|has|have,has,had|2,4||主语是第三人称单数，用 has + 过去分词。',
+        'I have never seen snow before.|我以前从没见过雪。|seen|see,saw,seen|1,3||现在完成时用过去分词 seen。',
+        'How long have you studied English?|你学英语多久了？|studied|study,studied,studying|2,4||how long 询问持续时间，常用现在完成时。',
+        'The movie has already started.|电影已经开始了。|started|start,started,starts|2,4||has already + 过去分词。'
+      ]],
+      ['情态动词', [
+        'You should drink more water.|你应该多喝水。|should|should,are,do|1,2||should + 动词原形，表示建议"应该"。',
+        'Students must wear uniforms at school.|学生在学校必须穿校服。|must|must,may,might|1,2|At school students must wear uniforms|must 表示"必须"，语气很强。',
+        "You mustn't play with fire.|你绝不能玩火。|mustn't|mustn't,needn't,couldn't|1,2||mustn't 表示禁止「绝不能」；needn't 表示「不必」。",
+        'Could you help me with my homework?|你能帮我做作业吗？|Could|Could,Must,Need|0,2||Could you…? 表示礼貌的请求。',
+        "You don't have to come early tomorrow.|你明天不必早来。|have|have,has,had|1,2,3,4|Tomorrow you don't have to come early|don't have to 表示「不必」。",
+        'It might rain this afternoon.|今天下午可能会下雨。|might|might,must,should|1,2|This afternoon it might rain|might 表示可能性较小的推测。',
+        'May I borrow your dictionary?|我可以借你的词典吗？|borrow|borrow,lend,borrows|0,2||borrow 借入（向别人借）；lend 借出（借给别人）。',
+        'We should protect the environment.|我们应该保护环境。|protect|protect,protects,protecting|1,2||情态动词后接动词原形。',
+        "You can't park your car here.|你不能在这里停车。|park|park,parks,parking|1,2||can't + 动词原形 表示「不能、不允许」。",
+        'Can you tell me the way to the station?|你能告诉我去车站的路吗？|way|way,road,street|0,2||the way to… 去…的路（固定说法）。'
+      ]],
+      ['并列句与从句', [
+        'I was tired, so I went to bed early.|我累了，所以早早就睡了。|so|so,because,but|1,5||so 表结果"所以"；这是并列句，两个分句各有一个谓语。',
+        "He didn't come to school because he was ill.|他没来上学，因为他生病了。|because|because,so,but|1,2,7||because 引导原因状语从句；主句和从句各有谓语。",
+        'I think that English is very useful.|我认为英语很有用。|that|that,what,which|1,4||that 引导宾语从句，在从句中不作成分，口语中常省略。',
+        'When I got home, my mother was cooking.|我到家时，妈妈正在做饭。|was|was,is,were|2,6,7|My mother was cooking when I got home|过去进行时 was cooking 表示过去某时正在做。',
+        'If it rains tomorrow, we will stay at home.|如果明天下雨，我们就待在家里。|rains|rain,rains,will rain|2,5,6|We will stay at home if it rains tomorrow|if 条件句"主将从现"：从句用一般现在时。',
+        'The girl who is singing is my sister.|正在唱歌的那个女孩是我妹妹。|who|who,which,what|3,4,5||who 引导定语从句修饰人；从句谓语 is singing，主句谓语 is。',
+        "I don't know where he lives.|我不知道他住在哪里。|lives|live,lives,living|1,2,5||宾语从句用陈述语序；he 是第三人称单数 → lives。",
+        'Both Tom and Jim like football.|汤姆和吉姆都喜欢足球。|like|like,likes,liking|4||both … and … 连接两个主语，谓语用复数形式。',
+        'Hurry up, or you will miss the bus.|快点，否则你会错过公交车。|or|or,and,but|0,1,4,5||祈使句 + or + 将来时，表示"否则"。',
+        'She was reading while I was writing.|她在读书，而我在写东西。|while|while,because,so|1,2,5,6||while 连接两个同时进行的动作，常与进行时连用。'
+      ]]
+    ]
+  },
+  high: {
+    themes: [
+      ['教育', 'curriculum:kəˈrɪkjələm:课程 scholarship:ˈskɒləʃɪp:奖学金 graduate:ˈɡrædʒueɪt:毕业 academic:ˌækəˈdemɪk:学术的 knowledge:ˈnɒlɪdʒ:知识 assignment:əˈsaɪnmənt:作业；任务 lecture:ˈlektʃə:讲座 semester:sɪˈmestə:学期 review:rɪˈvjuː:复习 attitude:ˈætɪtjuːd:态度'],
+      ['科技', 'technology:tekˈnɒlədʒi:技术 device:dɪˈvaɪs:设备 digital:ˈdɪdʒɪtl:数字的 invention:ɪnˈvenʃn:发明 download:ˌdaʊnˈləʊd:下载 network:ˈnetwɜːk:网络 artificial:ˌɑːtɪˈfɪʃl:人工的 robot:ˈrəʊbɒt:机器人 data:ˈdeɪtə:数据 convenient:kənˈviːniənt:方便的'],
+      ['环境', 'pollution:pəˈluːʃn:污染 climate:ˈklaɪmət:气候 recycle:ˌriːˈsaɪkl:回收利用 resource:rɪˈzɔːs:资源 protect:prəˈtekt:保护 waste:weɪst:浪费；废物 energy:ˈenədʒi:能源 species:ˈspiːʃiːz:物种 disaster:dɪˈzɑːstə:灾难 sustainable:səˈsteɪnəbl:可持续的'],
+      ['健康', 'nutrition:njuˈtrɪʃn:营养 balanced:ˈbælənst:均衡的 stress:stres:压力 symptom:ˈsɪmptəm:症状 recover:rɪˈkʌvə:恢复 injury:ˈɪndʒəri:损伤 habit:ˈhæbɪt:习惯 mental:ˈmentl:精神的；心理的 physical:ˈfɪzɪkl:身体的 prevent:prɪˈvent:预防'],
+      ['社会与文化', 'tradition:trəˈdɪʃn:传统 culture:ˈkʌltʃə:文化 festival:ˈfestɪvl:节日 custom:ˈkʌstəm:习俗 community:kəˈmjuːnəti:社区 population:ˌpɒpjuˈleɪʃn:人口 generation:ˌdʒenəˈreɪʃn:一代人 respect:rɪˈspekt:尊重 celebrate:ˈselɪbreɪt:庆祝 influence:ˈɪnfluəns:影响'],
+      ['性格品质', 'confident:ˈkɒnfɪdənt:自信的 patient:ˈpeɪʃnt:耐心的 honest:ˈɒnɪst:诚实的 responsible:rɪˈspɒnsəbl:负责的 generous:ˈdʒenərəs:慷慨的 independent:ˌɪndɪˈpendənt:独立的 curious:ˈkjʊəriəs:好奇的 determined:dɪˈtɜːmɪnd:坚定的 modest:ˈmɒdɪst:谦虚的 ambitious:æmˈbɪʃəs:有抱负的'],
+      ['工作与经济', 'career:kəˈrɪə:职业 salary:ˈsæləri:薪水 interview:ˈɪntəvjuː:面试 experience:ɪkˈspɪəriəns:经验；经历 skill:skɪl:技能 company:ˈkʌmpəni:公司 income:ˈɪnkʌm:收入 budget:ˈbʌdʒɪt:预算 apply:əˈplaɪ:申请 achieve:əˈtʃiːv:实现；达到'],
+      ['高频动词', 'encourage:ɪnˈkʌrɪdʒ:鼓励 suggest:səˈdʒest:建议 require:rɪˈkwaɪə:需要；要求 consider:kənˈsɪdə:考虑 manage:ˈmænɪdʒ:设法做到；管理 involve:ɪnˈvɒlv:涉及 reduce:rɪˈdjuːs:减少 affect:əˈfekt:影响 contribute:kənˈtrɪbjuːt:贡献 appreciate:əˈpriːʃieɪt:感激；欣赏']
+    ],
+    sentences: [
+      ['被动语态', [
+        'The bridge was built in 1990.|这座桥建于 1990 年。|built|build,built,building|2,3|In 1990 the bridge was built|被动语态 be + 过去分词；1990 年是过去 → was built。',
+        'English is spoken all over the world.|全世界都说英语。|spoken|speak,spoke,spoken|1,2||一般现在时的被动：is + 过去分词 spoken。',
+        'The homework must be finished today.|作业今天必须完成。|be|be,is,been|2,3,4||情态动词的被动：must be + 过去分词。',
+        'A new library is being built in our town.|我们镇上正在建一座新图书馆。|being|been,being,be|3,4,5||现在进行时的被动：is being + 过去分词。',
+        'The letter has been sent to the manager.|信已经寄给经理了。|been|be,been,being|2,3,4||现在完成时的被动：has been + 过去分词。',
+        'Many trees were cut down last year.|去年很多树被砍倒了。|were|was,were,are|2,3,4|Last year many trees were cut down|主语 trees 是复数，时间是过去 → were cut down。',
+        'The meeting will be held next Monday.|会议将在下周一举行。|held|hold,held,holding|2,3,4|Next Monday the meeting will be held|将来时的被动：will be + 过去分词。',
+        'He was made to wait for two hours.|他被迫等了两个小时。|to|to,for,by|1,2||make sb do 变成被动时要加 to：be made to do。',
+        'The problem should be solved as soon as possible.|这个问题应该尽快解决。|solved|solve,solved,solving|2,3,4||should be + 过去分词。',
+        'Our classroom is cleaned every day.|我们的教室每天都被打扫。|cleaned|clean,cleans,cleaned|2,3|Every day our classroom is cleaned|一般现在时的被动：is + 过去分词。'
+      ]],
+      ['定语从句', [
+        'The man who lives next door is a doctor.|住在隔壁的那个人是医生。|who|who,which,whose|3,6||先行词是人，关系词在从句中作主语 → who。',
+        'This is the book that I bought yesterday.|这是我昨天买的书。|that|that,who,where|1,6||先行词是物，用 that / which；在从句中作宾语时可以省略。',
+        'I remember the day when we first met.|我记得我们初次见面的那一天。|when|when,where,which|1,7||先行词是时间，关系词在从句中作状语 → when。',
+        'The girl whose father is a teacher is my classmate.|父亲是老师的那个女孩是我同学。|whose|whose,who,which|4,7||whose 表示所属关系（她的父亲）。',
+        'This is the village where my grandfather was born.|这是我祖父出生的村子。|where|where,which,when|1,7,8||先行词是地点，关系词在从句中作状语 → where。',
+        'He is the only student who passed the exam.|他是唯一通过考试的学生。|who|who,which,whom|1,6||先行词是人，关系词在从句中作主语 → who。',
+        'The phone which I lost last week has been found.|我上周丢的手机找到了。|which|which,who,where|4,7,8,9||先行词是物 → which；主句谓语是现在完成时的被动 has been found。',
+        'Do you know the reason why she was late?|你知道她迟到的原因吗？|why|why,which,what|0,2,7||先行词是 reason，用 why 引导定语从句。',
+        'Anyone who breaks the rules will be punished.|任何违反规则的人都会受到惩罚。|who|who,which,whose|2,5,6,7||anyone 指人 → who；主句谓语 will be punished（将来时被动）。',
+        'The film we saw last night was exciting.|我们昨晚看的电影很精彩。|was|was,were,is|3,6||省略了作宾语的关系词 that / which；主句谓语是 was。'
+      ]],
+      ['非谓语动词', [
+        'I enjoy reading novels in my free time.|我空闲时喜欢读小说。|reading|read,to read,reading|1||enjoy 后面接动名词 doing；reading 不是谓语。',
+        'She decided to study abroad.|她决定出国留学。|to|to,for,of|1||decide to do 决定做某事；to study 是非谓语。',
+        'Walking in the park, I met an old friend.|在公园散步时，我遇到了一位老朋友。|Walking|Walking,Walked,Walk|5||现在分词短语作状语，和主语 I 是主动关系；谓语只有 met。',
+        'The boy sitting by the window is my brother.|坐在窗边的男孩是我弟弟。|sitting|sitting,sat,sits|6||现在分词短语 sitting by the window 作定语，不是谓语。',
+        'I heard someone singing next door.|我听到隔壁有人在唱歌。|singing|singing,sings,sang|1||hear sb doing 听到某人正在做；singing 是宾语补足语。',
+        'He stopped to have a rest.|他停下来休息了一下。|to|to,for,and|1||stop to do 停下来去做另一件事；stop doing 停止正在做的事。',
+        'Written in simple English, the book is easy to read.|这本书用简单的英语写成，很容易读。|Written|Written,Writing,Wrote|6||过去分词短语作状语，书是"被写成"，表被动。',
+        'It is important to keep a balanced diet.|保持均衡饮食很重要。|to|to,for,of|1||It is + 形容词 + to do，it 是形式主语，真正的主语是 to keep…。',
+        'Would you mind opening the window?|你介意打开窗户吗？|opening|to open,opening,open|0,2||mind 后接动名词 doing。',
+        'I found the book very interesting.|我发现这本书很有趣。|interesting|interested,interesting,interest|1||修饰物用 -ing（令人…的），修饰人用 -ed（感到…的）。'
+      ]],
+      ['时态综合', [
+        'By the time we arrived, the film had already started.|我们到的时候，电影已经开始了。|had|has,had,was|4,7,9||"过去的过去"用过去完成时 had + 过去分词。',
+        'I have been waiting for you for an hour.|我已经等你一个小时了。|been|be,been,being|1,2,3||现在完成进行时 have been doing，强调动作一直在持续。',
+        'This time tomorrow I will be flying to Paris.|明天这个时候我将在飞往巴黎的飞机上。|flying|fly,flying,flown|4,5,6|I will be flying to Paris this time tomorrow|将来进行时 will be doing，表示将来某时正在进行。',
+        'She said that she would come back soon.|她说她很快会回来。|would|will,would,shall|1,4,5||主句是过去时，宾语从句用过去将来时 would + 动词原形。',
+        'The phone rang while I was taking a shower.|我正在洗澡时电话响了。|was|was,were,am|2,5,6||过去进行时 was taking 做背景，rang 是突然发生的动作。',
+        'He has worked here since he graduated.|他从毕业起就在这里工作。|since|since,for,from|1,2,6||since + 从句（过去时），主句用现在完成时。',
+        'By next year, I will have finished high school.|到明年，我就高中毕业了。|finished|finish,finished,finishing|4,5,6|I will have finished high school by next year|将来完成时 will have done，常与"by + 将来时间"连用。',
+        'When I was a child, I used to live in the countryside.|我小时候住在乡下。|used|use,used,using|2,6,7,8|I used to live in the countryside when I was a child|used to do 表示过去常常、现在已不再。',
+        'The earth goes around the sun.|地球绕着太阳转。|goes|goes,went,is going|2||客观事实和真理用一般现在时。',
+        'I had never seen such a beautiful sunset before that trip.|在那次旅行之前，我从未见过如此美丽的日落。|seen|saw,seen,see|1,3|Before that trip I had never seen such a beautiful sunset|过去完成时 had + 过去分词 seen。'
+      ]],
+      ['虚拟与条件', [
+        'If I were you, I would accept the offer.|如果我是你，我会接受这个提议。|were|was,were,am|2,5,6|I would accept the offer if I were you|与现在事实相反的虚拟：if 从句中 be 一律用 were。',
+        'If it had not rained, we would have gone hiking.|要是没下雨，我们就去徒步了。|had|has,had,have|2,4,6,7,8|We would have gone hiking if it had not rained|与过去事实相反：从句用 had done，主句用 would have done。',
+        'I wish I could speak French.|我希望我会说法语。|could|can,could,will|1,3,4||wish 后的宾语从句用虚拟语气：can → could。',
+        'If you heat ice, it melts.|如果你给冰加热，它就会融化。|melts|melts,melted,melting|2,5|Ice melts if you heat it|表示客观规律的条件句，主从句都用一般现在时。',
+        'If I had enough money, I would travel around the world.|如果我有足够的钱，我会环游世界。|would|will,would,shall|2,6,7|I would travel around the world if I had enough money|与现在事实相反：从句用过去式，主句用 would + 动词原形。',
+        'Unless you hurry, you will miss the train.|除非你快点，否则会错过火车。|Unless|Unless,If,Because|2,4,5|You will miss the train unless you hurry|unless = if not。',
+        'It is time we went home.|我们该回家了。|went|go,went,gone|1,4||It is time (that) sb did…，从句用过去式表示虚拟"该做而未做"。',
+        'He talks as if he knew everything.|他说起话来好像什么都知道。|knew|knows,knew,known|1,5||as if 引导的从句常用虚拟语气（用过去式）。',
+        'Should you need any help, please call me.|万一你需要帮助，请给我打电话。|Should|Should,Would,Could|0,2,6||省略 if 的倒装：Should you need… = If you should need…',
+        'I would rather you stayed at home tonight.|我宁愿你今晚待在家里。|stayed|stay,stayed,staying|1,2,4||would rather 后接从句时，从句用过去式表示虚拟。'
+      ]],
+      ['名词性从句与倒装', [
+        'What he said surprised everyone.|他说的话让所有人都很吃惊。|What|What,That,Which|2,3||What 引导主语从句，并在从句中作宾语。',
+        "The problem is that we don't have enough time.|问题是我们没有足够的时间。|that|that,what,which|2,5,6||that 引导表语从句，只起连接作用，不作成分。",
+        'I wonder whether he will come.|我想知道他是否会来。|whether|whether,that,what|1,4,5||whether 引导宾语从句，意为"是否"。',
+        'It is said that the old house is haunted.|据说那座老房子闹鬼。|said|say,said,saying|1,2,7,8||It is said that… 意为"据说…"，是被动结构。',
+        'It was in 2008 that the Olympics were held in Beijing.|正是在 2008 年，奥运会在北京举办。|that|that,when,which|1,7,8||强调句 It was … that …；去掉后句子仍然完整：The Olympics were held in Beijing in 2008。',
+        'Whoever breaks the window must pay for it.|谁打破窗户谁就得赔。|Whoever|Whoever,Whatever,Whichever|1,4,5||Whoever 引导主语从句，指"任何…的人"。',
+        'The news that he won the prize excited us.|他获奖的消息让我们很激动。|that|that,which,what|4,7||that 引导同位语从句，说明 news 的具体内容。',
+        'Not until midnight did he finish the report.|直到半夜他才完成报告。|did|did,does,was|3,5||Not until 放句首，主句部分倒装：did + 主语 + 动词原形。',
+        'Only by working hard can you succeed.|只有努力工作你才能成功。|can|can,are,does|4,6||"only + 状语"放句首，句子部分倒装。',
+        'How we can solve the problem is still unknown.|我们如何解决这个问题仍然未知。|How|How,What,That|2,3,6||How 引导主语从句；从句用陈述语序 we can solve。'
+      ]]
+    ]
+  },
+  col: {
+    themes: [
+      ['学术写作', 'hypothesis:haɪˈpɒθəsɪs:假设 evidence:ˈevɪdəns:证据 analyze:ˈænəlaɪz:分析 methodology:ˌmeθəˈdɒlədʒi:方法论 significant:sɪɡˈnɪfɪkənt:显著的；重要的 empirical:ɪmˈpɪrɪkl:实证的 framework:ˈfreɪmwɜːk:框架 interpret:ɪnˈtɜːprɪt:解释；诠释 implication:ˌɪmplɪˈkeɪʃn:含义；影响 comprehensive:ˌkɒmprɪˈhensɪv:全面的'],
+      ['逻辑论证', 'assume:əˈsjuːm:假定 justify:ˈdʒʌstɪfaɪ:证明…合理 contradict:ˌkɒntrəˈdɪkt:与…矛盾 consistent:kənˈsɪstənt:一致的 valid:ˈvælɪd:有效的 bias:ˈbaɪəs:偏见 perspective:pəˈspektɪv:视角 premise:ˈpremɪs:前提 inference:ˈɪnfərəns:推论 nuance:ˈnjuːɑːns:细微差别'],
+      ['经济商业', 'inflation:ɪnˈfleɪʃn:通货膨胀 revenue:ˈrevənjuː:收入；营收 investment:ɪnˈvestmənt:投资 recession:rɪˈseʃn:经济衰退 asset:ˈæset:资产 negotiate:nɪˈɡəʊʃieɪt:谈判 entrepreneur:ˌɒntrəprəˈnɜː:企业家 incentive:ɪnˈsentɪv:激励 volatile:ˈvɒlətaɪl:易变的；波动的 leverage:ˈliːvərɪdʒ:杠杆；利用'],
+      ['社会科学', 'ideology:ˌaɪdiˈɒlədʒi:意识形态 inequality:ˌɪnɪˈkwɒləti:不平等 demographic:ˌdeməˈɡræfɪk:人口统计的 institution:ˌɪnstɪˈtjuːʃn:机构；制度 legislation:ˌledʒɪsˈleɪʃn:立法 welfare:ˈwelfeə:福利 autonomy:ɔːˈtɒnəmi:自主权 consensus:kənˈsensəs:共识 marginalize:ˈmɑːdʒɪnəlaɪz:使边缘化 discourse:ˈdɪskɔːs:话语；论述'],
+      ['科学技术', 'phenomenon:fəˈnɒmɪnən:现象 mechanism:ˈmekənɪzəm:机制 variable:ˈveəriəbl:变量 algorithm:ˈælɡərɪðəm:算法 innovation:ˌɪnəˈveɪʃn:创新 synthesis:ˈsɪnθəsɪs:合成；综合 catalyst:ˈkætəlɪst:催化剂 genome:ˈdʒiːnəʊm:基因组 simulate:ˈsɪmjuleɪt:模拟 paradigm:ˈpærədaɪm:范式'],
+      ['描述与评价', 'ambiguous:æmˈbɪɡjuəs:模棱两可的 profound:prəˈfaʊnd:深刻的 inevitable:ɪnˈevɪtəbl:不可避免的 plausible:ˈplɔːzəbl:貌似合理的 substantial:səbˈstænʃl:大量的；实质的 controversial:ˌkɒntrəˈvɜːʃl:有争议的 ubiquitous:juːˈbɪkwɪtəs:无处不在的 pragmatic:præɡˈmætɪk:务实的 meticulous:məˈtɪkjələs:一丝不苟的 arbitrary:ˈɑːbɪtrəri:任意的；武断的'],
+      ['高级动词', 'facilitate:fəˈsɪlɪteɪt:促进；使便利 undermine:ˌʌndəˈmaɪn:削弱 mitigate:ˈmɪtɪɡeɪt:减轻 enhance:ɪnˈhɑːns:增强 allocate:ˈæləkeɪt:分配 advocate:ˈædvəkeɪt:提倡 comply:kəmˈplaɪ:遵守 exploit:ɪkˈsplɔɪt:利用；剥削 attribute:əˈtrɪbjuːt:把…归因于 scrutinize:ˈskruːtənaɪz:仔细审查'],
+      ['连接过渡词', 'nevertheless:ˌnevəðəˈles:然而 furthermore:ˌfɜːðəˈmɔː:此外 consequently:ˈkɒnsɪkwəntli:因此 whereas:weərˈæz:而（表对比） albeit:ɔːlˈbiːɪt:尽管 thereby:ˌðeəˈbaɪ:从而 notwithstanding:ˌnɒtwɪθˈstændɪŋ:尽管 hence:hens:因此 moreover:mɔːrˈəʊvə:而且 conversely:ˈkɒnvɜːsli:相反地']
+    ],
+    sentences: [
+      ['学术表达', [
+        'The results suggest that further research is needed.|结果表明需要进一步研究。|suggest|suggest,suggests,suggesting|2,6,7||主语 results 为复数 → suggest；that 从句中 is needed 为被动。',
+        'It has been argued that social media undermines democracy.|有人认为社交媒体损害了民主。|argued|argue,argued,arguing|1,2,3,7||It has been argued that… 是学术写作常用的无人称被动结构，避免说"我认为"。',
+        'Neither the students nor the teacher was aware of the change.|学生和老师都没有意识到这个变化。|was|was,were,be|6||neither…nor… 连接主语时，谓语与最近的主语（the teacher）一致 → was。',
+        'The number of international students has increased significantly.|留学生的数量显著增加。|has|has,have,are|5,6||the number of + 复数名词 作主语，谓语用单数；a number of 则用复数。',
+        'Having completed the experiment, the team analyzed the data.|完成实验后，团队分析了数据。|Having|Having,Had,Have|6||完成式分词 having done 表示动作发生在主句动作之前。',
+        'Data were collected from over two thousand participants.|数据收集自两千多名参与者。|collected|collect,collected,collecting|1,2||被动语态 were + 过去分词；严格的学术写作中 data 作复数。',
+        'Such a claim is difficult to justify without empirical evidence.|没有实证证据，这种说法很难站得住脚。|justify|justify,justifying,justified|3||"形容词 + to do"：difficult to justify，用主动形式表达被动含义。',
+        'The theory, which was proposed in 1905, transformed physics.|这一 1905 年提出的理论改变了物理学。|which|which,that,what|3,4,7||非限制性定语从句（逗号隔开）只能用 which，不能用 that。',
+        'Little is known about the long-term effects of the drug.|人们对这种药物的长期影响知之甚少。|Little|Little,Few,A little|1,2||little 表否定"几乎没有"；a little 表肯定"有一点"；few 修饰可数名词。',
+        'These findings are consistent with previous studies.|这些发现与以往研究一致。|with|with,to,for|2||be consistent with… 与…一致（固定搭配）。'
+      ]],
+      ['复杂从句', [
+        'Whether the policy will succeed remains to be seen.|这项政策能否成功还有待观察。|Whether|Whether,If,That|3,4,5||主语从句放在句首时只能用 whether，不能用 if。',
+        'What matters most is not how much you know but how you think.|最重要的不是你知道多少，而是你如何思考。|matters|matter,matters,mattered|1,3,8,12||What 引导主语从句，what 本身作从句主语，谓语用单数 matters。',
+        'The reason why he failed is that he underestimated the risks.|他失败的原因是低估了风险。|that|that,because,why|4,5,8||The reason … is that…；正式写作中不说 is because。',
+        'No sooner had we arrived than it began to rain.|我们刚到就开始下雨了。|than|than,when,then|2,4,7||No sooner had … than … 意为"一…就…"，前半句倒装并用过去完成时。',
+        'Much as I admire his work, I cannot agree with his conclusion.|尽管我很欣赏他的工作，但我不能同意他的结论。|Much|Much,Many,Very|3,7,8||Much as… = Although I admire… much，让步状语从句的倒装形式。',
+        'It was not until the 1990s that the internet became widely available.|直到 20 世纪 90 年代互联网才普及。|until|until,since,before|1,9||It was not until … that … 强调结构，意为"直到…才…"。',
+        'Had it not been for your help, we would have failed.|要不是你的帮助，我们就失败了。|Had|Had,Were,Should|0,3,8,9,10|We would have failed had it not been for your help|省略 if 的虚拟倒装：Had it not been for… = If it had not been for…',
+        'The more you practice, the more fluent you will become.|你练得越多，就会越流利。|more|more,most,much|3,8,9||"the + 比较级…, the + 比较级…"意为"越…就越…"。',
+        'Given that resources are limited, we must set priorities.|鉴于资源有限，我们必须确定优先事项。|Given|Given,Giving,Give|3,6,7||Given that… 意为"鉴于…"，相当于 considering that。',
+        'So complex was the problem that no one could solve it.|这个问题如此复杂，没有人能解决。|was|was,is,were|2,8,9||"So + 形容词"放句首时主句倒装：So complex was the problem that…'
+      ]],
+      ['学术搭配', [
+        'The government should allocate more funds to public health.|政府应该拨更多资金给公共卫生。|to|to,for,on|2,3||allocate sth to sth 把…分配给…',
+        'Many scholars attribute the decline to economic factors.|许多学者把这种衰退归因于经济因素。|to|to,for,with|2||attribute A to B 把 A 归因于 B。',
+        'The new measures are designed to mitigate the impact of climate change.|新措施旨在减轻气候变化的影响。|mitigate|mitigate,mitigating,mitigated|3,4||be designed to do 旨在…；to 后接动词原形。',
+        'All employees must comply with the safety regulations.|所有员工必须遵守安全规定。|with|with,to,by|2,3||comply with 遵守（固定搭配）。',
+        'The study sheds light on how memory works.|这项研究揭示了记忆是如何运作的。|on|on,to,at|2,7||shed light on… 阐明、揭示（学术常用搭配）。',
+        'His argument is based on a false premise.|他的论点建立在一个错误的前提上。|on|on,in,at|2,3||be based on… 基于…',
+        'The two theories differ in several key respects.|这两种理论在几个关键方面不同。|in|in,on,from|3||differ in 在…方面不同；differ from 与…不同。',
+        'This approach enables researchers to process data more efficiently.|这种方法使研究人员能更高效地处理数据。|to|to,for,of|2||enable sb to do 使某人能够做某事。',
+        'The committee failed to reach a consensus.|委员会未能达成共识。|reach|reach,reaching,reached|2||fail to do 未能做成；reach a consensus 达成共识。',
+        'Critics argue that the policy disproportionately affects low-income families.|批评者认为这项政策对低收入家庭的影响过大。|affects|affect,affects,effect|1,6||affect 是动词（影响），effect 通常是名词（效果）；主语 policy 是单数 → affects。'
+      ]],
+      ['主谓一致', [
+        'Each of the students has a laptop.|每个学生都有一台笔记本电脑。|has|has,have,are|4||each of + 复数名词 作主语，谓语用单数。',
+        'Mathematics is my favourite subject.|数学是我最喜欢的科目。|is|is,are,were|1||以 -ics 结尾的学科名词作单数。',
+        'The police are investigating the case.|警方正在调查此案。|are|is,are,was|2,3||police 是集合名词，永远作复数。',
+        'Ten years is a long time.|十年是很长一段时间。|is|is,are,were|2||表示时间、金钱、距离的复数名词作为一个整体时，谓语用单数。',
+        'Either you or he is responsible for the mistake.|不是你就是他要为这个错误负责。|is|is,are,am|4||either…or… 遵循就近原则，谓语与 he 一致。',
+        'A number of problems have arisen.|出现了许多问题。|have|has,have,is|4,5||a number of（许多）+ 复数名词，谓语用复数。',
+        'The teacher, together with his students, is visiting the museum.|老师和他的学生们正在参观博物馆。|is|is,are,were|6,7||together with / as well as 连接时，谓语与前面的主语 the teacher 一致。',
+        'The news was better than expected.|消息比预期的好。|was|was,were,are|2||news 是不可数名词，谓语用单数。',
+        'Nobody except the twins knows the answer.|除了那对双胞胎，没人知道答案。|knows|know,knows,knowing|4||主语是 nobody，except 短语不影响谓语，用单数。',
+        'Most of the work has been done.|大部分工作已经完成了。|has|has,have,is|4,5,6||most of + 不可数名词，谓语用单数；most of + 复数名词则用复数。'
+      ]],
+      ['长难句', [
+        'Although the experiment failed, it provided valuable insights.|尽管实验失败了，但它提供了宝贵的见解。|Although|Although,Despite,However|3,5|It provided valuable insights although the experiment failed|although 后接从句；despite 后接名词；两者都不能再与 but 连用。',
+        'Despite the heavy rain, the match went ahead.|尽管下大雨，比赛照常进行。|Despite|Despite,Although,Even|6,7|The match went ahead despite the heavy rain|despite 是介词，后接名词或动名词。',
+        'Not only does the plan save money, but it also protects the environment.|这个计划不仅省钱，还保护环境。|does|does,is,do|2,5,10||Not only 放句首，前半句部分倒装：does + 主语 + 动词原形。',
+        'The committee recommended that the proposal be rejected.|委员会建议否决该提案。|be|be,is,was|2,6,7||recommend / suggest / insist 表示"建议、要求"时，that 从句用 (should) + 动词原形。',
+        'Hardly had the lecture begun when the fire alarm went off.|讲座刚开始，火警就响了。|when|when,than,then|1,4,9,10||Hardly had … when … 意为"一…就…"，与 No sooner … than … 对应。',
+        'Only when we lose our health do we realize its value.|只有失去健康时，我们才意识到它的价值。|do|do,did,does|3,6,8||"Only + 从句"放句首，主句部分倒装。',
+        'The data, while incomplete, point to a clear trend.|这些数据虽然不完整，但指向一个明确的趋势。|while|while,unless,because|4||while 在这里表示让步"虽然"；while incomplete 是省略的让步状语。',
+        'Whatever decision you make, I will support you.|无论你做什么决定，我都会支持你。|Whatever|Whatever,However,Whenever|3,5,6|I will support you whatever decision you make|whatever + 名词 意为"无论什么…"。',
+        'It is essential that every student have access to education.|每个学生都能接受教育是至关重要的。|have|have,has,had|1,6||It is essential / important / necessary that… 从句用 (should) + 动词原形。',
+        'The longer the negotiations continue, the less likely an agreement becomes.|谈判持续得越久，达成协议的可能性就越小。|less|less,least,fewer|4,10||"the + 比较级…, the + 比较级…"；less likely 表示"越不可能"。'
+      ]],
+      ['连接过渡', [
+        'The project was expensive; nevertheless, it was completed on time.|这个项目很昂贵，不过还是按时完成了。|nevertheless|nevertheless,therefore,moreover|2,6,7||nevertheless 表示转折"然而、尽管如此"。',
+        'Prices rose sharply; consequently, demand fell.|价格急剧上涨，因此需求下降了。|consequently|consequently,however,although|1,5||consequently 表示因果"因此"。',
+        'Some prefer cities, whereas others prefer the countryside.|有些人喜欢城市，而另一些人喜欢乡村。|whereas|whereas,because,unless|1,5||whereas 表示对比"而"。',
+        'The method is simple; furthermore, it is cheap.|这个方法很简单，而且很便宜。|furthermore|furthermore,instead,otherwise|2,6||furthermore 表示递进"此外"。',
+        'He accepted the job, albeit reluctantly.|他接受了这份工作，尽管很不情愿。|albeit|albeit,despite,unless|1||albeit = although it was，后面常接形容词或副词（正式用语）。',
+        'She trained every day, thereby improving her performance.|她每天训练，从而提高了成绩。|thereby|thereby,whereby,nevertheless|1||thereby + doing 表示结果"从而"；improving 是非谓语。',
+        'Rather than complaining, we should look for solutions.|与其抱怨，不如我们寻找解决办法。|Rather|Rather,Instead,Other|4,5|We should look for solutions rather than complaining|rather than doing 意为"而不是做…"。',
+        'In spite of his efforts, he failed the exam.|尽管他努力了，但考试还是没通过。|of|of,to,for|6|He failed the exam in spite of his efforts|in spite of = despite，后接名词。',
+        'The results were inconclusive; hence, further tests are required.|结果不确定，因此还需要进一步测试。|hence|hence,whereas,although|2,7,8||hence 表示"因此"（正式用语）。',
+        'Provided that the weather is good, the event will take place outdoors.|只要天气好，活动就在户外举行。|Provided|Provided,Unless,Although|4,8,9,10|The event will take place outdoors provided that the weather is good|provided that = if / as long as，引导条件状语从句。'
+      ]]
+    ]
+  }
+};
+
 </script>
 <script>
 (function () {
@@ -276,31 +543,38 @@ EN.sentences = [
   function now() { return window.performance && performance.now ? performance.now() : Date.now(); }
 
   /* ================= data ================= */
-  var LETTER_INFO = {}, LESSONS = [];
-  (function () {
-    var up = [], low = [], parts = EN.letters.split(' '), i;
-    for (i = 0; i < parts.length; i++) {
-      var p = parts[i].split(':'), ex = { w: p[2], ipa: p[3], zh: p[4] };
-      LETTER_INFO[p[0]] = { name: p[1], ex: ex };
-      up.push({ w: p[0], ipa: p[1], ex: ex, letter: true });
-      low.push({ w: p[0].toLowerCase(), ipa: p[1], ex: ex, letter: true });
-    }
-    LESSONS.push({ id: 'U1', kind: 'letters', title: '大写字母 A–M', items: up.slice(0, 13) });
-    LESSONS.push({ id: 'U2', kind: 'letters', title: '大写字母 N–Z', items: up.slice(13) });
-    LESSONS.push({ id: 'L1', kind: 'letters', title: '小写字母 a–m', items: low.slice(0, 13) });
-    LESSONS.push({ id: 'L2', kind: 'letters', title: '小写字母 n–z', items: low.slice(13) });
-    for (i = 0; i < EN.themes.length; i++) {
-      var ws = EN.themes[i][1].split(' ').map(function (s) { var q = s.split(':'); return { w: q[0], ipa: q[1], zh: q[2] }; });
-      LESSONS.push({ id: 'W' + (i + 1), kind: 'words', title: EN.themes[i][0], items: ws });
-    }
-    for (i = 0; i < EN.sentences.length; i++) {
-      var ss = EN.sentences[i][1].map(function (r) {
-        var p = r.split('|'), en = p[0], end = /[.?!]$/.test(en) ? en.slice(-1) : '.', toks = en.replace(/[.?!]$/, '').split(' ');
-        return { en: en, zh: p[1], toks: toks, end: end, blank: toks.indexOf(p[2]), opts: p[3].split(','), pred: p[4].split(',').map(Number), alts: p[5] ? p[5].split(';') : [] };
-      });
-      LESSONS.push({ id: 'S' + (i + 1), kind: 'sent', title: EN.sentences[i][0], items: ss });
-    }
-  })();
+  var LEVELS = [['elem', '小学'], ['mid', '初中'], ['high', '高中'], ['col', '大学']];
+  var LEVEL = get('level', 'elem'), LETTER_INFO = {}, LESSONS = [];
+  function parseSent(r) {
+    var p = r.split('|'), en = p[0], end = /[.?!]$/.test(en) ? en.slice(-1) : '.', toks = en.replace(/[.?!]$/, '').split(' '), bi = -1;
+    for (var k = 0; k < toks.length; k++) if (strip(toks[k]) === p[2]) { bi = k; break; }
+    return { en: en, zh: p[1], toks: toks, end: end, blank: bi, opts: p[3].split(','), pred: p[4].split(',').map(Number), alts: p[5] ? p[5].split(';') : [], tip: p[6] || '' };
+  }
+  function parseWords(str) { return str.split(' ').map(function (x) { var q = x.split(':'); return { w: q[0], ipa: q[1], zh: q[2] }; }); }
+  function buildLessons(lv) {
+    LESSONS = [];
+    var i, themes, sents;
+    if (lv === 'elem') {
+      var up = [], low = [], parts = EN.letters.split(' ');
+      for (i = 0; i < parts.length; i++) {
+        var p = parts[i].split(':'), ex = { w: p[2], ipa: p[3], zh: p[4] };
+        LETTER_INFO[p[0]] = { name: p[1], ex: ex };
+        up.push({ w: p[0], ipa: p[1], ex: ex, letter: true });
+        low.push({ w: p[0].toLowerCase(), ipa: p[1], ex: ex, letter: true });
+      }
+      LESSONS.push({ id: 'U1', kind: 'letters', title: '大写字母 A–M', items: up.slice(0, 13) });
+      LESSONS.push({ id: 'U2', kind: 'letters', title: '大写字母 N–Z', items: up.slice(13) });
+      LESSONS.push({ id: 'L1', kind: 'letters', title: '小写字母 a–m', items: low.slice(0, 13) });
+      LESSONS.push({ id: 'L2', kind: 'letters', title: '小写字母 n–z', items: low.slice(13) });
+      themes = EN.themes; sents = EN.sentences;
+    } else { themes = EN.levels[lv].themes; sents = EN.levels[lv].sentences; }
+    var pre = lv === 'elem' ? '' : lv + '-';
+    for (i = 0; i < themes.length; i++) LESSONS.push({ id: pre + 'W' + (i + 1), n: i + 1, kind: 'words', title: themes[i][0], items: parseWords(themes[i][1]) });
+    for (i = 0; i < sents.length; i++) LESSONS.push({ id: pre + 'S' + (i + 1), n: i + 1, kind: 'sent', title: sents[i][0], items: sents[i][1].map(parseSent) });
+  }
+  function strip(w) { return w.replace(/[,;:]+$/, ''); }
+  function norm(sArr) { return sArr.map(function (w) { return strip(w).toLowerCase(); }).join(' '); }
+  buildLessons(LEVEL);
   var LEARNED = get('learned', {});
   var lesson = null, idx = 0, board = null, quiz = null;
 
@@ -472,12 +746,14 @@ EN.sentences = [
   function lessonCard(l, i) {
     var n = 0, prev = '';
     for (var j = 0; j < l.items.length; j++) { if (LEARNED[key(l.items[j])]) n++; prev += l.items[j].w + (l.kind === 'words' ? ' ' : ''); }
-    return { n: n, html: '<button class="card lesson" data-i="' + i + '"><div class="l-n">' + (l.kind === 'words' ? '第 ' + (i - 3) + ' 组' : '字母') + ' · ' + n + '/' + l.items.length + '</div><div class="l-t">' + esc(l.title) + '</div><div class="l-c">' + esc(prev) + '</div><div class="pbar"><i style="width:' + Math.round(n / l.items.length * 100) + '%"></i></div></button>' };
+    return { n: n, html: '<button class="card lesson" data-i="' + i + '"><div class="l-n">' + (l.kind === 'words' ? '第 ' + l.n + ' 组' : '字母') + ' · ' + n + '/' + l.items.length + '</div><div class="l-t">' + esc(l.title) + '</div><div class="l-c">' + esc(prev) + '</div><div class="pbar"><i style="width:' + Math.round(n / l.items.length * 100) + '%"></i></div></button>' };
   }
   function showHome() {
     if (board) { board.destroy(); board = null; }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
-    var h = '<div class="card free"><h3>自己输入要练写的单词或句子</h3><div class="frow"><input id="freeIn" placeholder="例如：I love my family" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
+    var h = '<div class="lvtabs">';
+    for (var t = 0; t < LEVELS.length; t++) h += '<button class="lvt' + (LEVELS[t][0] === LEVEL ? ' on' : '') + '" data-lv="' + LEVELS[t][0] + '">' + LEVELS[t][1] + '<small>' + { elem: 'Elementary', mid: 'Middle School', high: 'High School', col: 'College' }[LEVELS[t][0]] + '</small></button>';
+    h += '</div><div class="card free"><h3>自己输入要练写的单词或句子</h3><div class="frow"><input id="freeIn" placeholder="例如：I love my family" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
     var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0;
     var sHtml = '';
     for (var i = 0; i < LESSONS.length; i++) {
@@ -485,16 +761,18 @@ EN.sentences = [
       var c = lessonCard(LESSONS[i], i);
       if (LESSONS[i].kind === 'letters') { a += c.html; na += c.n; ta += LESSONS[i].items.length; } else { b += c.html; nb += c.n; tb += LESSONS[i].items.length; }
     }
-    h += '<h2 class="sec"><span>字母书写</span><span>' + na + ' / ' + ta + '</span></h2><div class="lessons">' + a + '</div>';
+    if (LEVEL === 'elem') h += '<h2 class="sec"><span>字母书写</span><span>' + na + ' / ' + ta + '</span></h2><div class="lessons">' + a + '</div>';
     h += '<h2 class="sec"><span>主题单词</span><span>' + nb + ' / ' + tb + '</span></h2><div class="lessons">' + b + '</div>';
     h += '<h2 class="sec"><span>句子练习</span><span>连词成句 · 选词填空 · 找谓语</span></h2><div class="lessons">' + sHtml + '</div>';
-    h += '<div class="hint">四线三格：大写字母占上两格，小写字母主体在中间一格，b d f h k l 顶到第一线，g j p q y 拖到第四线</div>';
+    if (LEVEL === 'elem') h += '<div class="hint">四线三格：大写字母占上两格，小写字母主体在中间一格，b d f h k l 顶到第一线，g j p q y 拖到第四线</div>';
     $('vHome').innerHTML = h;
     show('vHome');
     var bs = $('vHome').querySelectorAll('.lesson');
     for (i = 0; i < bs.length; i++) bs[i].onclick = function () { var k = +this.getAttribute('data-i'); if (LESSONS[k].kind === 'sent') openSet(LESSONS[k], k); else openLesson(LESSONS[k], k); };
     $('freeGo').onclick = startFree;
     $('freeIn').onkeydown = function (e) { if (e.keyCode === 13) startFree(); };
+    var lt = $('vHome').querySelectorAll('.lvt');
+    for (i = 0; i < lt.length; i++) lt[i].onclick = function () { LEVEL = this.getAttribute('data-lv'); put('level', LEVEL); buildLessons(LEVEL); showHome(); };
   }
   function startFree() {
     var t = ($('freeIn').value || '').replace(/[^A-Za-z ]/g, '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
@@ -553,7 +831,7 @@ EN.sentences = [
   function sentCard(l, i) {
     var b = '', k;
     for (k in EX) if (EX.hasOwnProperty(k)) b += EX[k].icon + ' ' + (BEST[l.id + ':' + k] != null ? BEST[l.id + ':' + k] + '/10' : '—') + '　';
-    return '<button class="card lesson" data-i="' + i + '"><div class="l-n">第 ' + l.id.slice(1) + ' 组 · 10 句</div><div class="l-t">' + esc(l.title) + '</div><div class="l-c" style="font-size:13px">' + b + '</div></button>';
+    return '<button class="card lesson" data-i="' + i + '"><div class="l-n">第 ' + l.n + ' 组 · 10 句</div><div class="l-t">' + esc(l.title) + '</div><div class="l-c" style="font-size:13px">' + b + '</div></button>';
   }
   function openSet(l, li) {
     if (board) { board.destroy(); board = null; }
@@ -571,8 +849,8 @@ EN.sentences = [
     for (i = 0; i < rs.length; i++) rs[i].onclick = function () { say(l.items[+this.getAttribute('data-i')].en, 0.85); };
   }
   function cap(w, first) { return first ? w.charAt(0).toUpperCase() + w.slice(1) : w; }
-  var PROPER = { I: 1, Miss: 1, Li: 1, Tom: 1, TV: 1, English: 1 };
-  function tileWord(w) { return PROPER[w] || /^I'/.test(w) ? w : w.toLowerCase(); }
+  var PROPER = { I: 1, Miss: 1, Li: 1, Tom: 1, Jim: 1, TV: 1, English: 1, French: 1, Paris: 1, Shanghai: 1, Beijing: 1, Olympics: 1, Monday: 1, Sunday: 1 };
+  function tileWord(w) { return PROPER[strip(w)] || /^I'/.test(w) ? w : w.toLowerCase(); }
   function fillTip(it) {
     var o = it.opts.join(',').toLowerCase();
     if (/^(am,is,are|is,are)$/.test(o)) return 'be 动词：I 用 am，单数（he/she/it/一个人或物）用 is，复数和 you 用 are。';
@@ -593,6 +871,23 @@ EN.sentences = [
     return '';
   }
   function predTip(it) {
+    if (it.tip) {
+      var groups = [], cur = [];
+      var AUXW = /^(am|is|are|was|were|be|been|being|have|has|had|do|does|did|don't|doesn't|didn't|will|would|can|could|may|might|must|should|shall|won't|can't|cannot|mustn't|hasn't|haven't|going|to|used|rather)$/i, PART = /^(up|down|off|ahead|place|out)$/i;
+      for (var g = 0; g < it.pred.length; g++) {
+        var w = strip(it.toks[it.pred[g]]);
+        var prevW = cur.length ? cur[cur.length - 1] : '', adj = cur.length && it.pred[g] === it.pred[g - 1] + 1;
+        var joins = adj && (AUXW.test(prevW) || PART.test(w)), gapJoin = false;
+        if (cur.length && !adj && AUXW.test(prevW)) {
+          gapJoin = true;
+          for (var q = it.pred[g - 1] + 1; q < it.pred[g]; q++) if (/[,;:]$/.test(it.toks[q]) || !/^(not|never|already|just|ever|also|still|yet|often|always|really|i|you|he|she|it|we|they)$/i.test(strip(it.toks[q]))) gapJoin = false;
+        }
+        if (cur.length && !joins && !gapJoin) { groups.push(cur); cur = []; }
+        cur.push(gapJoin ? '… ' + w : w);
+      }
+      if (cur.length) groups.push(cur);
+      return '谓语：' + groups.map(function (x) { return '「' + x.join(' ') + '」'; }).join('、') + '。' + it.tip;
+    }
     var w = it.pred.map(function (i) { return it.toks[i]; }), lw = w.map(function (x) { return x.toLowerCase(); });
     var contig = it.pred.every(function (v, k) { return k === 0 || v === it.pred[k - 1] + 1; });
     var txt = '谓语动词：' + w.join(contig ? ' ' : ' … ') + '。';
@@ -620,14 +915,14 @@ EN.sentences = [
       for (i = 0; i < it._tiles.length; i++) h += '<button class="btn tile" style="width:auto;padding:0 14px" data-t="' + i + '">' + esc(tileWord(it.toks[it._tiles[i]])) + '</button>';
       h += '</div><div style="margin-top:6px"><button class="btn ghost" id="qBackspace">⌫ 撤销</button></div>';
     } else if (type === 'fill') {
-      var shown = it.toks.map(function (w, k) { return k === it.blank ? '<span style="display:inline-block;min-width:60px;border-bottom:2px solid var(--accent);color:var(--accent)" id="blank">&nbsp;</span>' : esc(w); }).join(' ') + it.end;
+      var shown = it.toks.map(function (w, k) { return k === it.blank ? '<span style="display:inline-block;min-width:60px;border-bottom:2px solid var(--accent);color:var(--accent)" id="blank">&nbsp;</span>' + esc(w.slice(strip(w).length)) : esc(w); }).join(' ') + it.end;
       h += '<div class="qp">' + esc(it.zh) + '</div><div class="qq" style="font-size:24px;font-weight:600;line-height:1.7">' + shown + '</div><div class="opts">';
       var opts = shuffle(it.opts.slice());
       for (i = 0; i < opts.length; i++) h += '<button class="btn opt" style="font-size:20px" data-w="' + esc(opts[i]) + '">' + esc(opts[i]) + '</button>';
       h += '</div>';
     } else {
       it._sel = {};
-      h += '<div class="qp">点出谓语动词（可以点多个词），再按「确认」<br><span style="font-size:12.5px">' + esc(it.zh) + '</span></div><div style="margin:16px 0 12px;display:flex;flex-wrap:wrap;justify-content:center" id="pw">';
+      h += '<div class="qp">点出句子里所有的谓语动词（有几个分句就有几个谓语），再按「确认」<br><span style="font-size:12.5px">' + esc(it.zh) + '</span></div><div style="margin:16px 0 12px;display:flex;flex-wrap:wrap;justify-content:center" id="pw">';
       for (i = 0; i < it.toks.length; i++) h += '<button class="btn pword" style="margin:0 4px 8px;font-size:19px" data-k="' + i + '">' + esc(it.toks[i]) + (i === it.toks.length - 1 ? it.end : '') + '</button>';
       h += '</div><button class="btn primary" id="pOk" style="min-width:140px">确认</button>';
     }
@@ -657,11 +952,11 @@ EN.sentences = [
         it._typed.push(t); paint();
         if (it._typed.length === it.toks.length) {
           quiz.lock = true;
-          var ans = it._typed.map(function (x) { return it.toks[it._tiles[x]].toLowerCase(); }).join(' ');
-          var goods = [it.toks.join(' ').toLowerCase()].concat(it.alts.map(function (a) { return a.toLowerCase(); }));
+          var ans = norm(it._typed.map(function (x) { return it.toks[it._tiles[x]]; }));
+          var goods = [norm(it.toks)].concat(it.alts.map(function (a) { return norm(a.split(' ')); }));
           var ok = goods.indexOf(ans) >= 0;
           $('built').style.color = ok ? 'var(--good)' : 'var(--bad)';
-          done(ok, ok ? (it.alts.length ? '也可以说：' + it.alts.join(' / ') + it.end : '') : '正确顺序：' + it.en);
+          done(ok, (ok ? (it.alts.length ? '也可以说：' + it.alts.join(' / ') + it.end : '') : '正确顺序：' + it.en) + (it.tip ? '　' + it.tip : ''));
         }
       };
       $('qBackspace').onclick = function () { if (!quiz.lock && it._typed.length) { it._typed.pop(); paint(); } };
@@ -669,10 +964,10 @@ EN.sentences = [
       var bs = $('vQuiz').querySelectorAll('.opt');
       for (i = 0; i < bs.length; i++) bs[i].onclick = function () {
         if (quiz.lock) return; quiz.lock = true;
-        var w = this.getAttribute('data-w'), right = it.toks[it.blank], ok = w === right;
+        var w = this.getAttribute('data-w'), right = strip(it.toks[it.blank]), ok = w === right;
         for (var k = 0; k < bs.length; k++) { if (bs[k].getAttribute('data-w') === right) bs[k].className += ' right'; else if (bs[k] === this) bs[k].className += ' wrong'; }
         $('blank').textContent = right; $('blank').style.color = ok ? 'var(--good)' : 'var(--bad)';
-        done(ok, fillTip(it));
+        done(ok, it.tip || fillTip(it));
       };
     } else {
       var ws = $('pw').querySelectorAll('.pword');
