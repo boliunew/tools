@@ -1,0 +1,39 @@
+name: 财报与经济日历
+
+on:
+  schedule:
+    - cron: "37 12 * * 1-5"   # 工作日早上（太平洋时间约 5:37）
+    - cron: "37 18 * * 0"     # 周日提前准备下周
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["earnings/build.py"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: earnings
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: earnings/requirements.txt
+      - run: pip install -r earnings/requirements.txt
+      - run: python earnings/build.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add earnings/data
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "财报日历更新 $(date -u +%F)"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done

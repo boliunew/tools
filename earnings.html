@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F1EC">
+<title>财报与经济日历</title>
+<style>
+:root{
+  --bg:#F3F1EC; --paper:#FFFFFF; --ink:#1B1E23; --soft:#626A73; --faint:#98A0A8; --line:#E0DDD5; --chip:#F0EEE8;
+  --accent:#1F6F66; --accent-ink:#FFFFFF; --accent-soft:#DCEEEA;
+  --up:#D23F31; --down:#1E8E4E; --hi:#C0392B; --hi-soft:#F8DEDA; --mid:#B8660B; --mid-soft:#FBEBD3; --lo:#6B7580; --lo-soft:#ECEEF0;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15181C; --paper:#1D2126; --ink:#E9ECEF; --soft:#A3ABB4; --faint:#6F7881; --line:#2E343B; --chip:#262B31;
+    --accent:#5CC2B3; --accent-ink:#0E1A18; --accent-soft:#1E3632;
+    --up:#FF6B5E; --down:#4CC97E; --hi:#FF7A6B; --hi-soft:#3B2220; --mid:#F2B35E; --mid-soft:#3A2E1A; --lo:#9AA4AE; --lo-soft:#262B31;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.55}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;min-height:56px}
+.brand{font-weight:700;font-size:19px;margin-right:auto;display:flex;align-items:center;color:var(--ink);text-decoration:none}
+.brand i{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-ink);margin-right:8px;font-style:normal;font-size:12px;font-weight:800}
+.btn{border:1px solid var(--line);background:var(--paper);padding:6px 12px;border-radius:10px;font-size:13px;min-height:34px;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--soft)}
+main{padding:12px 0 70px}
+.meta{font-size:13px;color:var(--soft);margin:2px 0 10px}
+.banner{padding:10px 14px;border-radius:12px;background:var(--mid-soft);color:var(--mid);font-size:13.5px;margin-bottom:12px}
+.filters{display:flex;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13px;margin:0 6px 6px 0}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.daynav{display:flex;overflow-x:auto;margin:0 -16px 10px;padding:2px 16px 6px;-webkit-overflow-scrolling:touch}
+.dn{flex:none;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:6px 10px;margin-right:6px;text-align:center;min-width:62px}
+.dn b{display:block;font-size:15px}
+.dn small{display:block;font-size:11px;color:var(--faint)}
+.dn .dots{display:flex;justify-content:center;margin-top:3px;min-height:6px}
+.dn .dots i{width:6px;height:6px;border-radius:50%;margin:0 1.5px}
+.dn.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.dn.today b{color:var(--accent)}
+h2.day{font-size:16px;margin:22px 0 10px;display:flex;align-items:baseline}
+h2.day small{font-size:12.5px;color:var(--faint);font-weight:400;margin-left:8px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.macro{padding:12px 14px;margin-bottom:10px;border-left:4px solid var(--lo)}
+.macro.i-高{border-left-color:var(--hi)} .macro.i-中{border-left-color:var(--mid)}
+.m-top{display:flex;align-items:center;flex-wrap:wrap}
+.imp{font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:6px;margin-right:8px}
+.imp.高{background:var(--hi-soft);color:var(--hi)} .imp.中{background:var(--mid-soft);color:var(--mid)} .imp.低{background:var(--lo-soft);color:var(--lo)}
+.m-t{font-weight:700;font-size:16px;margin-right:8px}
+.m-time{font-size:12.5px;color:var(--faint)}
+.m-lines{font-size:12.5px;color:var(--soft);margin:6px 0 4px}
+.m-lines div{display:flex;flex-wrap:wrap}
+.m-lines span{margin-right:12px}
+.m-lines b{color:var(--ink);font-weight:600}
+.note{font-size:13.5px;color:var(--soft);margin-top:4px}
+.syms{margin-top:6px}
+.sym{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--chip);color:var(--soft);margin:0 5px 5px 0;text-decoration:none}
+.er{padding:12px 14px;margin-bottom:10px}
+.e-top{display:flex;align-items:flex-start}
+.e-id{flex:1;min-width:0}
+.e-t{font-size:18px;font-weight:700}
+.e-t a{color:inherit;text-decoration:none}
+.e-n{font-size:12.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.when{font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:6px;background:var(--chip);color:var(--soft);margin-left:6px;vertical-align:middle}
+.e-r{text-align:right;font-size:12px;color:var(--faint);margin-left:10px}
+.e-r b{display:block;font-size:14px;color:var(--ink)}
+.tags{margin:6px 0 2px}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:6px;margin:0 5px 5px 0;background:var(--accent-soft);color:var(--accent)}
+.tag.warn{background:var(--hi-soft);color:var(--hi)} .tag.mid{background:var(--mid-soft);color:var(--mid)}
+.stats{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0;padding:6px 0}
+.stats div{width:25%;padding:4px 0;font-size:11.5px;color:var(--faint)}
+.stats b{display:block;font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+.cm{font-size:13.5px;color:var(--ink);margin:0;padding-left:18px}
+.cm li{margin-bottom:3px}
+.symh{font-size:12px;color:var(--faint);margin-top:8px}
+.hist{margin-top:6px;display:flex;flex-wrap:wrap}
+.hist span{font-size:11.5px;font-variant-numeric:tabular-nums;border-radius:5px;padding:1px 6px;margin:0 4px 4px 0;background:var(--chip)}
+.up{color:var(--up)} .down{color:var(--down)}
+.more{font-size:12.5px;color:var(--accent);background:none;border:0;padding:4px 0}
+.empty{padding:14px;color:var(--faint);font-size:13.5px;text-align:center}
+.expl{padding:14px 16px;font-size:13.5px;color:var(--soft);line-height:1.8}
+.expl b{color:var(--ink)}
+footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;line-height:1.7}
+@media (max-width:560px){ .stats div{width:50%} }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="bar"><a class="brand" href="./"><i>EPS</i>财报与经济日历</a><a class="btn ghost" href="stocks.html">股票池</a></div></div></header>
+<main class="wrap" id="app"><div class="empty">加载中…</div></main>
+<script>
+(function () {
+  'use strict';
+  var app = document.getElementById('app'), D = null, F = { scope: 'all', sel: null }, POOL = {};
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function pct(x, d) { if (x == null || isNaN(x)) return '—'; return (x > 0 ? '+' : '') + (x * 100).toFixed(d == null ? 1 : d) + '%'; }
+  function cls(x) { return x > 0 ? 'up' : x < 0 ? 'down' : ''; }
+  function capTxt(v) { if (!v) return '—'; if (v >= 1e12) return '$' + (v / 1e12).toFixed(2) + 'T'; return '$' + Math.round(v / 1e9) + 'B'; }
+  var WD = ['日', '一', '二', '三', '四', '五', '六'];
+  function dparts(ds) { var p = ds.split('-'); var d = new Date(+p[0], +p[1] - 1, +p[2]); return { m: +p[1], d: +p[2], w: WD[d.getDay()] }; }
+  function isToday(ds) { var n = new Date(); return ds === n.getFullYear() + '-' + ('0' + (n.getMonth() + 1)).slice(-2) + '-' + ('0' + n.getDate()).slice(-2); }
+  function get(url, cb) { var x = new XMLHttpRequest(); x.open('GET', url + '?t=' + Date.now()); x.onload = function () { if (x.status === 200) { try { cb(JSON.parse(x.responseText)); return; } catch (e) { } } cb(null); }; x.onerror = function () { cb(null); }; x.send(); }
+
+  get('earnings/data/latest.json', function (d) {
+    if (!d) { app.innerHTML = '<div class="card empty" style="margin-top:16px;line-height:1.8"><b style="font-size:17px;color:var(--ink)">等待第一次更新</b><br>每天早上自动更新未来两周的财报和经济数据。<br><a href="https://github.com/boliunew/tools/actions/workflows/earnings.yml" target="_blank" rel="noopener">想马上看？去 GitHub 手动运行一次 →</a></div>'; return; }
+    D = d;
+    get('stocks/data/latest.json', function (s) { if (s && s.candidates) for (var i = 0; i < s.candidates.length; i++) POOL[s.candidates[i].t] = 1; render(); });
+  });
+
+  function erMatch(e) { return F.scope === 'all' || (F.scope === 'big' && (e.cap || 0) >= 1e11) || (F.scope === 'mine' && (e.watch || POOL[e.t])) || (F.scope === 'hot' && (e.tags || []).length && e.tags.join(',').match(/利好出尽|已提前炒作|大波动/)); }
+  function render() {
+    var h = '', i, j, days = D.days;
+    if (D.demo) h += '<div class="banner">⚠️ 当前是<b>示例数据</b>（随机生成），第一次真实更新后会自动替换。</div>';
+    var gen = new Date(D.generated);
+    var nE = 0, nM = 0; for (i = 0; i < days.length; i++) { nE += days[i].earnings.length; nM += days[i].macro.length; }
+    h += '<div class="meta">未来两周 · ' + nM + ' 项经济数据 · ' + nE + ' 家公司发财报 · 更新于 ' + (gen.getMonth() + 1) + '月' + gen.getDate() + '日 ' + ('0' + gen.getHours()).slice(-2) + ':' + ('0' + gen.getMinutes()).slice(-2) + '</div>';
+    h += '<div class="daynav">';
+    for (i = 0; i < days.length; i++) {
+      var p = dparts(days[i].date), dots = '', hi = false;
+      for (j = 0; j < days[i].macro.length; j++) if (days[i].macro[j].imp === '高') hi = true;
+      if (hi) dots += '<i style="background:var(--hi)"></i>'; else if (days[i].macro.length) dots += '<i style="background:var(--mid)"></i>';
+      if (days[i].earnings.length) dots += '<i style="background:var(--accent)"></i>';
+      h += '<button class="dn' + (F.sel === i ? ' on' : '') + (isToday(days[i].date) ? ' today' : '') + '" data-d="' + i + '"><small>周' + p.w + '</small><b>' + p.m + '/' + p.d + '</b><small>' + (days[i].earnings.length ? days[i].earnings.length + ' 家' : '—') + '</small><span class="dots">' + dots + '</span></button>';
+    }
+    h += '</div><div class="filters">';
+    var sc = [['all', '全部'], ['big', '千亿美元以上'], ['hot', '利好出尽 / 已炒作'], ['mine', '股票池 & 自选']];
+    for (i = 0; i < sc.length; i++) h += '<button class="chip' + (F.scope === sc[i][0] ? ' on' : '') + '" data-s="' + sc[i][0] + '">' + sc[i][1] + '</button>';
+    h += '</div>';
+    var body = '';
+    for (i = 0; i < days.length; i++) {
+      if (F.sel != null && F.sel !== i) continue;
+      var dd = days[i], ers = dd.earnings.filter(erMatch);
+      if (!dd.macro.length && !ers.length && F.sel == null) continue;
+      var pp = dparts(dd.date);
+      body += '<h2 class="day">' + pp.m + '月' + pp.d + '日 周' + pp.w + (isToday(dd.date) ? ' · 今天' : '') + '<small>' + (dd.macro.length ? dd.macro.length + ' 项数据' : '') + (ers.length ? '　' + ers.length + ' 家财报' : '') + '</small></h2>';
+      for (j = 0; j < dd.macro.length; j++) body += macroHTML(dd.macro[j]);
+      for (j = 0; j < ers.length; j++) body += erHTML(ers[j]);
+      if (!dd.macro.length && !ers.length) body += '<div class="card empty">这一天没有重要数据或符合筛选的财报</div>';
+    }
+    h += body || '<div class="card empty">没有符合条件的内容</div>';
+    h += '<h2 class="day">怎么看这些数据</h2><div class="card expl">' +
+      '<b>相对大盘</b>：所有涨跌都减去了同期 SPY 的涨跌，只看个股自己的反应。<br>' +
+      '<b>利好兑现下跌率</b>：业绩超预期（EPS 高于分析师预期）的那几次里，股价当天反而跑输大盘的比例。比例高，说明好消息往往早被提前炒进股价，也就是「利好出尽」。<br>' +
+      '<b>财报前 10 日涨幅</b>：财报前有没有被提前炒作。评语会对比历史：以前财报前先涨了，财报当天是继续涨还是回吐。<br>' +
+      '<b>期权隐含波动</b>：用最近一期平值跨式期权价格估算的市场预期波动。和历史实际波动对比，可以看出市场这次押得大还是小。<br>' +
+      '<b>联动股票</b>：统计过去历次财报日，哪些股票的涨跌和这家公司高度同步（相关系数 ≥ 0.55，同向比例 ≥ 70%）。<br>' +
+      '样本通常只有 10～16 次财报，统计结论波动较大，只能作为参考。</div>';
+    h += '<footer>数据来自 Nasdaq 日历和 Yahoo Finance，每个工作日早上自动更新。<br>历史统计不代表未来表现，不构成投资建议。</footer>';
+    app.innerHTML = h;
+    var b = app.querySelectorAll('.dn'); for (i = 0; i < b.length; i++) b[i].onclick = function () { var k = +this.getAttribute('data-d'); F.sel = F.sel === k ? null : k; render(); };
+    b = app.querySelectorAll('.chip'); for (i = 0; i < b.length; i++) b[i].onclick = function () { F.scope = this.getAttribute('data-s'); render(); };
+    b = app.querySelectorAll('.more'); for (i = 0; i < b.length; i++) b[i].onclick = function () { var el = this.nextSibling; el.style.display = el.style.display === 'none' ? 'flex' : 'none'; this.textContent = el.style.display === 'none' ? '展开历次财报 ▾' : '收起 ▴'; };
+  }
+  function macroHTML(m) {
+    var h = '<div class="card macro i-' + m.imp + '"><div class="m-top"><span class="imp ' + m.imp + '">' + m.imp + '影响</span><span class="m-t">' + esc(m.title) + '</span><span class="m-time">' + esc(m.time ? m.time + ' 美东' : '') + '</span></div><div class="m-lines">';
+    for (var i = 0; i < m.lines.length && i < 4; i++) {
+      var l = m.lines[i];
+      h += '<div><span>' + esc(l.name) + '</span>' + (l.consensus ? '<span>预期 <b>' + esc(l.consensus) + '</b></span>' : '') + (l.previous ? '<span>前值 ' + esc(l.previous) + '</span>' : '') + (l.actual ? '<span>实际 <b>' + esc(l.actual) + '</b></span>' : '') + '</div>';
+    }
+    h += '</div><div class="note">' + esc(m.note) + '</div><div class="syms">';
+    for (i = 0; i < m.syms.length; i++) h += '<a class="sym" href="https://finance.yahoo.com/quote/' + encodeURIComponent(m.syms[i]) + '" target="_blank" rel="noopener">' + esc(m.syms[i]) + '</a>';
+    return h + '</div></div>';
+  }
+  function erHTML(e) {
+    var s = e.stats, h = '<div class="card er"><div class="e-top"><div class="e-id"><div class="e-t"><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(e.t) + '" target="_blank" rel="noopener">' + esc(e.t) + '</a><span class="when">' + (e.when === 'pre' ? '盘前' : e.when === 'post' ? '盘后' : '时间未定') + '</span></div><div class="e-n">' + esc(e.name) + (e.sector ? ' · ' + esc(e.sector) : '') + '</div></div>' +
+      '<div class="e-r"><b>' + capTxt(e.cap) + '</b>市值' + (e.eps_est != null ? '<br>预期 EPS <b style="display:inline">' + e.eps_est + '</b>' : '') + '</div></div>';
+    var tags = e.tags || [];
+    h += '<div class="tags">' + (POOL[e.t] ? '<span class="tag mid">股票池候选</span>' : '') + (e.watch ? '<span class="tag mid">自选</span>' : '');
+    for (var i = 0; i < tags.length; i++) h += '<span class="tag' + (/利好出尽|已提前炒作|常跌/.test(tags[i]) ? ' warn' : /大波动/.test(tags[i]) ? ' mid' : '') + '">' + esc(tags[i]) + '</span>';
+    h += '</div>';
+    if (s) {
+      h += '<div class="stats"><div><b>±' + (s.avg_abs * 100).toFixed(1) + '%</b>历史平均波动</div><div><b>' + (e.implied ? '±' + (e.implied.move * 100).toFixed(1) + '%' : '—') + '</b>期权隐含波动</div>' +
+        '<div><b>' + (s.beats ? s.beat_fell + '/' + s.beats : '—') + '</b>利好兑现下跌</div><div><b class="' + cls(e.pre_now) + '">' + pct(e.pre_now) + '</b>财报前 10 日</div></div>';
+    }
+    h += '<ul class="cm">'; for (i = 0; i < (e.comment || []).length; i++) h += '<li>' + esc(e.comment[i]) + '</li>'; h += '</ul>';
+    if (e.sym && e.sym.length) {
+      h += '<div class="symh">联动股票（历次财报日同步涨跌）</div><div class="syms">';
+      for (i = 0; i < e.sym.length; i++) h += '<a class="sym" href="https://finance.yahoo.com/quote/' + encodeURIComponent(e.sym[i].t) + '" target="_blank" rel="noopener" title="' + esc(e.sym[i].name) + '">' + esc(e.sym[i].t) + ' · 相关 ' + e.sym[i].corr.toFixed(2) + '</a>';
+      h += '</div>';
+    }
+    if (s && s.recent && s.recent.length) {
+      h += '<button class="more">展开历次财报 ▾</button><div class="hist" style="display:none">';
+      for (i = 0; i < s.recent.length; i++) { var r = s.recent[i]; h += '<span>' + r.date.slice(2) + ' <b class="' + cls(r.move) + '">' + pct(r.move) + '</b>' + (r.surprise != null ? ' 超预期' + (r.surprise > 0 ? '+' : '') + r.surprise + '%' : '') + '</span>'; }
+      h += '</div>';
+    }
+    return h + '</div>';
+  }
+})();
+</script>
+</body>
+</html>
