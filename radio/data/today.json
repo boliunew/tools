@@ -1,0 +1,192 @@
+{
+ "generated": "2026-09-30T04:52:35Z",
+ "date": "2026-09-29",
+ "engine": "edge",
+ "total": 227.0,
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609292152",
+ "segments": [
+  {
+   "id": "intro",
+   "title": "☀️ 开场",
+   "sub": "9月29日 星期二",
+   "dur": 12.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609292152",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "早上好！今天是9月29日，星期二。这里是你的通勤电台，今天一共7段。想跳过，就按方向盘上的下一首。"
+    }
+   ]
+  },
+  {
+   "id": "market",
+   "title": "📊 大盘",
+   "sub": "防守",
+   "dur": 34.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609292152",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "先看大盘，数据截至美股9月28日收盘。标普500 ETF 下跌0.7%，纳指100 ETF 下跌1.1%。恐慌指数VIX 16.0，正常水平。标普成分股里，站上50日均线的只占25%。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
+    }
+   ]
+  },
+  {
+   "id": "pool",
+   "title": "📈 股票池",
+   "sub": "37 个候选",
+   "dur": 57.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609292152",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "股票池一共扫描了500只股票，找到37个短线候选。其中RSI2 超跌反弹12个，回踩金坑12个，血筹码12个，强势新高1个。评分最高的三个是："
+    },
+    {
+     "lang": "zh",
+     "t": "第1，Phillips 66，代码 P S X，RSI2 超跌反弹信号，收盘价253.55美元，止损参考232.21。"
+    },
+    {
+     "lang": "zh",
+     "t": "第2，Regeneron Pharmaceuticals，代码 R E G N，RSI2 超跌反弹信号，收盘价752.25美元，止损参考700.46。"
+    },
+    {
+     "lang": "zh",
+     "t": "第3，Waters，代码 W A T，强势新高信号，收盘价442.94美元，止损参考418.64。"
+    },
+    {
+     "lang": "zh",
+     "t": "以上只是规则筛选的结果，不是投资建议。"
+    }
+   ]
+  },
+  {
+   "id": "calendar",
+   "title": "🗓️ 财报与数据",
+   "sub": "1 件大事",
+   "dur": 16.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609292152",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "明天，有1家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "Micron Technology，代码 M U，盘后发财报。期权定价波动正负7.6%。标签：大波动、利好出尽型、已提前炒作。"
+    }
+   ]
+  },
+  {
+   "id": "news",
+   "title": "📰 英文新闻",
+   "sub": "Al Jazeera · BBC · NPR",
+   "dur": 66.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609292152",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "接下来是三条英文新闻，用慢速朗读，练练听力。"
+    },
+    {
+     "lang": "zh",
+     "t": "第1条，来自Al Jazeera，国际，难度B2。"
+    },
+    {
+     "lang": "en",
+     "t": "Venezuelan man shot by ICE officer in Texas is charged with assault"
+    },
+    {
+     "lang": "en",
+     "t": "Wilber Rafael Garces Perez has disputed the government's account of what led to his shooting during a DoorDash delivery."
+    },
+    {
+     "lang": "zh",
+     "t": "第2条，来自BBC，商业，难度B2。"
+    },
+    {
+     "lang": "en",
+     "t": "'I like proving people wrong': The women taking up DIY and plumbing"
+    },
+    {
+     "lang": "en",
+     "t": "Female DIY experts and tradeswomen talk about their experiences of a traditionally male-dominated domain."
+    },
+    {
+     "lang": "zh",
+     "t": "第3条，来自NPR，科技，难度B1。"
+    },
+    {
+     "lang": "en",
+     "t": "Trump hosts tech executives as administration doubles down on AI"
+    },
+    {
+     "lang": "en",
+     "t": "President Trump met with AI CEOs at the White House on Tuesday and promoted a new government AI tool even as concerns about the technology's risks grow."
+    }
+   ]
+  },
+  {
+   "id": "words",
+   "title": "🔤 今日单词",
+   "sub": "entrance · la hija",
+   "dur": 32.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609292152",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "今日英语单词。"
+    },
+    {
+     "lang": "en",
+     "t": "entrance"
+    },
+    {
+     "lang": "zh",
+     "t": "意思是：入口。拼写是："
+    },
+    {
+     "lang": "en",
+     "t": "e, n, t, r, a, n, c, e"
+    },
+    {
+     "lang": "zh",
+     "t": "再听一遍。"
+    },
+    {
+     "lang": "en",
+     "t": "entrance"
+    },
+    {
+     "lang": "zh",
+     "t": "今日西语单词。"
+    },
+    {
+     "lang": "es",
+     "t": "la hija"
+    },
+    {
+     "lang": "zh",
+     "t": "意思是：女儿。跟着读一遍。"
+    },
+    {
+     "lang": "es",
+     "t": "la hija"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "title": "👋 结束",
+   "sub": "开车注意安全",
+   "dur": 7.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609292152",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "今天的通勤电台就到这里。开车注意安全，祝你今天顺顺利利！"
+    }
+   ]
+  }
+ ]
+}
