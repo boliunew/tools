@@ -184,6 +184,82 @@ var EN = {
   ]
 };
 
+/* English sentences: en | zh | blank word | options | predicate token indices | alternative word orders (;) */
+EN.sentences = [
+  ['我和家人', [
+    'I am a student.|我是一名学生。|am|am,is,are|1|',
+    'She is my sister.|她是我的姐姐。|is|am,is,are|1|',
+    'My father is a doctor.|我爸爸是一名医生。|a|a,an|2|',
+    'We are good friends.|我们是好朋友。|are|am,is,are|1|',
+    'I have a brother.|我有一个哥哥。|have|have,has|1|',
+    'He has two cats.|他有两只猫。|has|have,has|1|',
+    'My mother is a teacher.|我妈妈是一名老师。|My|My,I,Me|2|',
+    'They are in the kitchen.|他们在厨房里。|in|in,on,at|1|',
+    'This is my family.|这是我的家人。|This|This,These|1|',
+    'Grandma has a red hat.|奶奶有一顶红帽子。|has|have,has,is|1|'
+  ]],
+  ['可爱的动物', [
+    'The cat is on the bed.|猫在床上。|on|on,in,under|2|',
+    'A bird can fly.|鸟会飞。|fly|fly,flies,flying|2,3|',
+    'Fish can swim.|鱼会游泳。|can|can,is,are|1,2|',
+    'The dog likes bones.|这只狗喜欢骨头。|likes|like,likes,liking|2|',
+    'I have a little rabbit.|我有一只小兔子。|have|have,has|1|',
+    'The monkey is very funny.|这只猴子很有趣。|very|very,much,many|2|',
+    "Ducks can't climb trees.|鸭子不会爬树。|climb|climb,climbs,climbing|1,2|",
+    'My dog runs fast.|我的狗跑得很快。|runs|run,runs,running|2|',
+    'The horse is big and strong.|这匹马又大又壮。|and|and,but,or|2|',
+    'Pigs like to eat.|猪喜欢吃东西。|like|like,likes|1|'
+  ]],
+  ['在学校', [
+    'This is my pencil.|这是我的铅笔。|my|my,I,me|1|',
+    'The book is in my bag.|书在我的书包里。|in|in,on,under|2|',
+    'We go to school every day.|我们每天去上学。|go|go,goes,going|1|Every day we go to school',
+    'She reads books in the morning.|她早上看书。|reads|read,reads,reading|1|In the morning she reads books',
+    'Miss Li is our English teacher.|李老师是我们的英语老师。|our|our,we,us|2|',
+    'I can write my name.|我会写我的名字。|write|write,writes,writing|1,2|',
+    "Don't talk in class.|上课时不要讲话。|talk|talk,talks,talking|0,1|",
+    'There is a desk in the room.|房间里有一张书桌。|is|is,are|1|',
+    'Tom has a new ruler.|汤姆有一把新尺子。|has|have,has|1|',
+    'They are playing football.|他们正在踢足球。|playing|play,plays,playing|1,2|'
+  ]],
+  ['日常生活', [
+    'I get up at seven.|我七点起床。|at|at,in,on|1,2|At seven I get up',
+    'She eats an egg for breakfast.|她早餐吃一个鸡蛋。|an|a,an|1|For breakfast she eats an egg',
+    'My father drives to work.|我爸爸开车去上班。|drives|drive,drives,driving|2|',
+    'We have lunch at school.|我们在学校吃午饭。|have|have,has|1|At school we have lunch',
+    'He is watching TV now.|他现在正在看电视。|watching|watch,watches,watching|1,2|Now he is watching TV',
+    'I often help my mother.|我经常帮助妈妈。|help|help,helps,helping|2|',
+    'Do you like milk?|你喜欢牛奶吗？|Do|Do,Does,Are|0,2|',
+    'The children are singing a song.|孩子们正在唱歌。|are|am,is,are|2,3|',
+    'I go to bed at nine.|我九点睡觉。|go|go,goes|1|At nine I go to bed',
+    'Mom washes the dishes.|妈妈洗碗。|washes|wash,washes,washing|1|'
+  ]],
+  ['天气和季节', [
+    'It is sunny today.|今天天气晴朗。|is|is,are|1|Today it is sunny',
+    'It is raining outside.|外面正在下雨。|raining|rain,rains,raining|1,2|',
+    'I like summer very much.|我非常喜欢夏天。|much|much,many,more|1|',
+    'We can fly kites in spring.|春天我们可以放风筝。|in|in,on,at|1,2|In spring we can fly kites',
+    'The sky is blue.|天空是蓝色的。|is|is,are|2|',
+    'Snow is white and cold.|雪又白又冷。|and|and,but,or|1|',
+    'It is hot in summer.|夏天很热。|hot|hot,cold|1|In summer it is hot',
+    'The wind is very strong today.|今天风很大。|very|very,much,many|2|Today the wind is very strong',
+    'We make a snowman in winter.|冬天我们堆雪人。|make|make,makes,making|1|In winter we make a snowman',
+    'The sun rises in the morning.|太阳在早上升起。|rises|rise,rises,rising|2|In the morning the sun rises'
+  ]],
+  ['喜欢和会做', [
+    'I like apples.|我喜欢苹果。|like|like,likes|1|',
+    "She doesn't like fish.|她不喜欢鱼。|doesn't|don't,doesn't,isn't|1,2|",
+    'Can you swim?|你会游泳吗？|Can|Can,Is,Are|0,2|',
+    'My brother can play the piano.|我哥哥会弹钢琴。|the|the,a,an|2,3|',
+    'What do you want?|你想要什么？|do|do,does,are|1,3|',
+    'He wants a new bike.|他想要一辆新自行车。|wants|want,wants,wanting|1|',
+    'We love our school.|我们爱我们的学校。|our|our,we,us|1|',
+    'They are very happy.|他们非常高兴。|are|am,is,are|1|',
+    "I can't dance well.|我跳舞跳得不好。|dance|dance,dances,dancing|1,2|",
+    'Does he like music?|他喜欢音乐吗？|Does|Do,Does,Is|0,2|'
+  ]]
+];
+
 </script>
 <script>
 (function () {
@@ -216,6 +292,13 @@ var EN = {
     for (i = 0; i < EN.themes.length; i++) {
       var ws = EN.themes[i][1].split(' ').map(function (s) { var q = s.split(':'); return { w: q[0], ipa: q[1], zh: q[2] }; });
       LESSONS.push({ id: 'W' + (i + 1), kind: 'words', title: EN.themes[i][0], items: ws });
+    }
+    for (i = 0; i < EN.sentences.length; i++) {
+      var ss = EN.sentences[i][1].map(function (r) {
+        var p = r.split('|'), en = p[0], end = /[.?!]$/.test(en) ? en.slice(-1) : '.', toks = en.replace(/[.?!]$/, '').split(' ');
+        return { en: en, zh: p[1], toks: toks, end: end, blank: toks.indexOf(p[2]), opts: p[3].split(','), pred: p[4].split(',').map(Number), alts: p[5] ? p[5].split(';') : [] };
+      });
+      LESSONS.push({ id: 'S' + (i + 1), kind: 'sent', title: EN.sentences[i][0], items: ss });
     }
   })();
   var LEARNED = get('learned', {});
@@ -396,17 +479,20 @@ var EN = {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     var h = '<div class="card free"><h3>自己输入要练写的单词或句子</h3><div class="frow"><input id="freeIn" placeholder="例如：I love my family" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
     var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0;
+    var sHtml = '';
     for (var i = 0; i < LESSONS.length; i++) {
+      if (LESSONS[i].kind === 'sent') { sHtml += sentCard(LESSONS[i], i); continue; }
       var c = lessonCard(LESSONS[i], i);
       if (LESSONS[i].kind === 'letters') { a += c.html; na += c.n; ta += LESSONS[i].items.length; } else { b += c.html; nb += c.n; tb += LESSONS[i].items.length; }
     }
     h += '<h2 class="sec"><span>字母书写</span><span>' + na + ' / ' + ta + '</span></h2><div class="lessons">' + a + '</div>';
     h += '<h2 class="sec"><span>主题单词</span><span>' + nb + ' / ' + tb + '</span></h2><div class="lessons">' + b + '</div>';
+    h += '<h2 class="sec"><span>句子练习</span><span>连词成句 · 选词填空 · 找谓语</span></h2><div class="lessons">' + sHtml + '</div>';
     h += '<div class="hint">四线三格：大写字母占上两格，小写字母主体在中间一格，b d f h k l 顶到第一线，g j p q y 拖到第四线</div>';
     $('vHome').innerHTML = h;
     show('vHome');
     var bs = $('vHome').querySelectorAll('.lesson');
-    for (i = 0; i < bs.length; i++) bs[i].onclick = function () { var k = +this.getAttribute('data-i'); openLesson(LESSONS[k], k); };
+    for (i = 0; i < bs.length; i++) bs[i].onclick = function () { var k = +this.getAttribute('data-i'); if (LESSONS[k].kind === 'sent') openSet(LESSONS[k], k); else openLesson(LESSONS[k], k); };
     $('freeGo').onclick = startFree;
     $('freeIn').onkeydown = function (e) { if (e.keyCode === 13) startFree(); };
   }
@@ -459,6 +545,168 @@ var EN = {
         board.outline(true);
       }
     });
+  }
+
+  /* ================= sentences ================= */
+  var EX = { build: { icon: '🧩', name: '连词成句', desc: '把打乱的单词排成正确的句子' }, fill: { icon: '✏️', name: '选词填空', desc: '选出空格里最合适的词' }, pred: { icon: '🔍', name: '找谓语', desc: '点出句子里的谓语动词' } };
+  var BEST = get('best', {});
+  function sentCard(l, i) {
+    var b = '', k;
+    for (k in EX) if (EX.hasOwnProperty(k)) b += EX[k].icon + ' ' + (BEST[l.id + ':' + k] != null ? BEST[l.id + ':' + k] + '/10' : '—') + '　';
+    return '<button class="card lesson" data-i="' + i + '"><div class="l-n">第 ' + l.id.slice(1) + ' 组 · 10 句</div><div class="l-t">' + esc(l.title) + '</div><div class="l-c" style="font-size:13px">' + b + '</div></button>';
+  }
+  function openSet(l, li) {
+    if (board) { board.destroy(); board = null; }
+    lesson = l; lesson.li = li;
+    var h = '<div class="sbar"><button class="btn ghost" id="backBtn">‹ 返回</button><div class="ti">' + esc(l.title) + '<small>10 个句子</small></div><span style="width:70px"></span></div>';
+    for (var k in EX) if (EX.hasOwnProperty(k)) h += '<button class="card lesson exbtn" data-x="' + k + '" style="width:100%;margin:0 0 10px;display:flex;align-items:center"><span style="font-size:30px;margin-right:12px">' + EX[k].icon + '</span><span style="flex:1"><span class="l-t" style="display:block">' + EX[k].name + '</span><span class="l-n">' + EX[k].desc + '</span></span><span class="l-n">' + (BEST[l.id + ':' + k] != null ? '最好 ' + BEST[l.id + ':' + k] + '/10' : '未练习') + '</span></button>';
+    h += '<h2 class="sec"><span>本组句子</span><span>点句子听读音</span></h2><div class="card" style="padding:4px 14px">';
+    for (var i = 0; i < l.items.length; i++) h += '<div class="srow" data-i="' + i + '" style="padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer"><div style="font-size:16.5px">' + esc(l.items[i].en) + '</div><div style="font-size:13px;color:var(--soft)">' + esc(l.items[i].zh) + '</div></div>';
+    h += '</div>';
+    $('vStudy').innerHTML = h; show('vStudy');
+    $('backBtn').onclick = showHome;
+    var bs = $('vStudy').querySelectorAll('.exbtn');
+    for (i = 0; i < bs.length; i++) bs[i].onclick = function () { startEx(l, this.getAttribute('data-x')); };
+    var rs = $('vStudy').querySelectorAll('.srow');
+    for (i = 0; i < rs.length; i++) rs[i].onclick = function () { say(l.items[+this.getAttribute('data-i')].en, 0.85); };
+  }
+  function cap(w, first) { return first ? w.charAt(0).toUpperCase() + w.slice(1) : w; }
+  var PROPER = { I: 1, Miss: 1, Li: 1, Tom: 1, TV: 1, English: 1 };
+  function tileWord(w) { return PROPER[w] || /^I'/.test(w) ? w : w.toLowerCase(); }
+  function fillTip(it) {
+    var o = it.opts.join(',').toLowerCase();
+    if (/^(am,is,are|is,are)$/.test(o)) return 'be 动词：I 用 am，单数（he/she/it/一个人或物）用 is，复数和 you 用 are。';
+    if (o === 'have,has' || o === 'have,has,is') return '主语是第三人称单数（he/she/it/一个人）用 has，其余用 have。';
+    if (o === 'a,an' ) return '以元音音素开头的词前用 an（an egg），其余用 a（a doctor）。';
+    if (o === 'the,a,an') return '乐器前要用 the：play the piano。';
+    if (/^(in,on,at|on,in,under|in,on,under)$/.test(o)) return 'in 在…里面 / 在季节、月份；on 在…上面；at 在具体时间点（at seven）；under 在…下面。';
+    if (/^(my,i,me|our,we,us)$/.test(o)) return '名词前用形容词性物主代词：my / our（我的 / 我们的）。';
+    if (o === 'this,these') return 'this 这个（单数），these 这些（复数）。';
+    if (/^(do,does,are|do,does,is)$/.test(o)) return '一般现在时的疑问句：主语是第三人称单数用 does，其余用 do；后面的动词用原形。';
+    if (o === "don't,doesn't,isn't") return '第三人称单数的否定用 doesn\'t + 动词原形。';
+    if (o === 'can,is,are' || o === 'can,is,are') return 'can 表示"会、能"，后面接动词原形。';
+    if (/^(very,much,many|much,many,more)$/.test(o)) return 'very 修饰形容词（very funny）；very much 修饰动词（like … very much）；many 修饰可数名词。';
+    if (o === 'and,but,or') return 'and 表示"和、又"，连接意思一致的两部分。';
+    if (o === 'hot,cold') return '看中文意思：夏天很热 → hot。';
+    if (o.split(',').length === 3 && /ing$/.test(it.opts[2])) return '看前面：can / can\'t / don\'t / 情态动词后用原形；be 动词后用 -ing（进行时）；一般现在时主语是第三人称单数时，动词加 -s / -es。';
+    if (o === 'like,likes') return '主语是 I / you / we / they 或复数时，动词用原形 like；第三人称单数才用 likes。';
+    return '';
+  }
+  function predTip(it) {
+    var w = it.pred.map(function (i) { return it.toks[i]; }), lw = w.map(function (x) { return x.toLowerCase(); });
+    var contig = it.pred.every(function (v, k) { return k === 0 || v === it.pred[k - 1] + 1; });
+    var txt = '谓语动词：' + w.join(contig ? ' ' : ' … ') + '。';
+    if (/^(can|can't)$/.test(lw[0])) return txt + '情态动词 ' + w[0] + ' + 动词原形，一起作谓语。';
+    if (/^(do|does|doesn't|don't)$/.test(lw[0]) && lw.length > 1) return txt + '助动词 ' + w[0] + ' 帮助构成' + (/n't/.test(lw[0]) ? '否定' : '疑问') + '，和后面的动词原形一起作谓语。';
+    if (/^(am|is|are)$/.test(lw[0]) && lw.length > 1 && /ing$/.test(lw[1])) return txt + '现在进行时：be + 动词-ing，表示正在做的事。';
+    if (/^(am|is|are)$/.test(lw[0])) return txt + 'be 动词（系动词）作谓语，后面的部分说明主语"是什么 / 怎么样 / 在哪里"。';
+    if (lw.length === 2) return txt + '短语动词 ' + w.join(' ') + ' 一起作谓语。';
+    if (/s$/.test(lw[0]) && lw[0] !== 'has') return txt + '主语是第三人称单数，动词加 -s / -es。';
+    if (lw[0] === 'has') return txt + '主语是第三人称单数，have 变成 has。';
+    return txt + '实义动词作谓语，说明主语做什么。';
+  }
+  function startEx(l, type) {
+    quiz = { l: l, type: type, qs: shuffle(l.items.slice()), i: 0, score: 0, lock: false };
+    show('vQuiz'); renderEx();
+  }
+  function renderEx() {
+    var it = quiz.qs[quiz.i], type = quiz.type, i;
+    var h = '<div class="sbar"><button class="btn ghost" id="qBack">‹ 返回</button><div class="ti">' + EX[type].icon + ' ' + EX[type].name + '<small>第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题 · 答对 ' + quiz.score + '</small></div><span style="width:70px"></span></div><div class="card qcard">';
+    if (type === 'build') {
+      it._tiles = shuffle(it.toks.map(function (w, k) { return k; }));
+      it._typed = [];
+      h += '<div class="qp">' + esc(it.zh) + ' <button class="btn ghost" id="qSay" style="min-height:30px;padding:2px 8px">🔊</button></div>';
+      h += '<div id="built" style="min-height:64px;margin:14px 0 10px;font-size:20px;line-height:1.6;border-bottom:2px dashed var(--line);padding:6px 4px"></div><div class="tiles" id="wtiles">';
+      for (i = 0; i < it._tiles.length; i++) h += '<button class="btn tile" style="width:auto;padding:0 14px" data-t="' + i + '">' + esc(tileWord(it.toks[it._tiles[i]])) + '</button>';
+      h += '</div><div style="margin-top:6px"><button class="btn ghost" id="qBackspace">⌫ 撤销</button></div>';
+    } else if (type === 'fill') {
+      var shown = it.toks.map(function (w, k) { return k === it.blank ? '<span style="display:inline-block;min-width:60px;border-bottom:2px solid var(--accent);color:var(--accent)" id="blank">&nbsp;</span>' : esc(w); }).join(' ') + it.end;
+      h += '<div class="qp">' + esc(it.zh) + '</div><div class="qq" style="font-size:24px;font-weight:600;line-height:1.7">' + shown + '</div><div class="opts">';
+      var opts = shuffle(it.opts.slice());
+      for (i = 0; i < opts.length; i++) h += '<button class="btn opt" style="font-size:20px" data-w="' + esc(opts[i]) + '">' + esc(opts[i]) + '</button>';
+      h += '</div>';
+    } else {
+      it._sel = {};
+      h += '<div class="qp">点出谓语动词（可以点多个词），再按「确认」<br><span style="font-size:12.5px">' + esc(it.zh) + '</span></div><div style="margin:16px 0 12px;display:flex;flex-wrap:wrap;justify-content:center" id="pw">';
+      for (i = 0; i < it.toks.length; i++) h += '<button class="btn pword" style="margin:0 4px 8px;font-size:19px" data-k="' + i + '">' + esc(it.toks[i]) + (i === it.toks.length - 1 ? it.end : '') + '</button>';
+      h += '</div><button class="btn primary" id="pOk" style="min-width:140px">确认</button>';
+    }
+    h += '<div class="fb" id="fb" style="margin-top:12px"></div><div id="tip" class="hint" style="margin-top:6px"></div></div>';
+    $('vQuiz').innerHTML = h;
+    $('qBack').onclick = function () { openSet(quiz.l, quiz.l.li); };
+    if ($('qSay')) $('qSay').onclick = function () { say(it.en, 0.85); };
+    function done(ok, tip) {
+      if (ok) quiz.score++;
+      $('fb').innerHTML = (ok ? '✓ ' : '✗ ') + esc(it.en);
+      $('fb').className = 'fb ' + (ok ? 'ok' : 'bad');
+      $('tip').textContent = tip || '';
+      say(it.en, 0.85);
+      var nx = document.createElement('button'); nx.className = 'btn primary'; nx.style.marginTop = '12px'; nx.textContent = quiz.i + 1 < quiz.qs.length ? '下一题 ›' : '看成绩';
+      nx.onclick = function () { quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderEx(); else exDone(); };
+      $('tip').parentNode.appendChild(nx);
+    }
+    if (type === 'build') {
+      var tiles = $('wtiles').querySelectorAll('.tile');
+      var paint = function () {
+        $('built').innerHTML = it._typed.map(function (t, k) { return esc(cap(tileWord(it.toks[it._tiles[t]]), k === 0)); }).join(' ') + (it._typed.length === it.toks.length ? it.end : '');
+        for (var k = 0; k < tiles.length; k++) tiles[k].className = 'btn tile' + (it._typed.indexOf(k) >= 0 ? ' used' : '');
+      };
+      for (i = 0; i < tiles.length; i++) tiles[i].onclick = function () {
+        if (quiz.lock) return;
+        var t = +this.getAttribute('data-t'); if (it._typed.indexOf(t) >= 0) return;
+        it._typed.push(t); paint();
+        if (it._typed.length === it.toks.length) {
+          quiz.lock = true;
+          var ans = it._typed.map(function (x) { return it.toks[it._tiles[x]].toLowerCase(); }).join(' ');
+          var goods = [it.toks.join(' ').toLowerCase()].concat(it.alts.map(function (a) { return a.toLowerCase(); }));
+          var ok = goods.indexOf(ans) >= 0;
+          $('built').style.color = ok ? 'var(--good)' : 'var(--bad)';
+          done(ok, ok ? (it.alts.length ? '也可以说：' + it.alts.join(' / ') + it.end : '') : '正确顺序：' + it.en);
+        }
+      };
+      $('qBackspace').onclick = function () { if (!quiz.lock && it._typed.length) { it._typed.pop(); paint(); } };
+    } else if (type === 'fill') {
+      var bs = $('vQuiz').querySelectorAll('.opt');
+      for (i = 0; i < bs.length; i++) bs[i].onclick = function () {
+        if (quiz.lock) return; quiz.lock = true;
+        var w = this.getAttribute('data-w'), right = it.toks[it.blank], ok = w === right;
+        for (var k = 0; k < bs.length; k++) { if (bs[k].getAttribute('data-w') === right) bs[k].className += ' right'; else if (bs[k] === this) bs[k].className += ' wrong'; }
+        $('blank').textContent = right; $('blank').style.color = ok ? 'var(--good)' : 'var(--bad)';
+        done(ok, fillTip(it));
+      };
+    } else {
+      var ws = $('pw').querySelectorAll('.pword');
+      for (i = 0; i < ws.length; i++) ws[i].onclick = function () {
+        if (quiz.lock) return;
+        var k = this.getAttribute('data-k');
+        if (it._sel[k]) { delete it._sel[k]; this.className = 'btn pword'; } else { it._sel[k] = 1; this.className = 'btn pword opt right'; this.style.width = 'auto'; this.style.minHeight = '42px'; this.style.fontSize = '19px'; this.style.margin = '0 4px 8px'; }
+      };
+      $('pOk').onclick = function () {
+        if (quiz.lock) return;
+        var picked = Object.keys(it._sel).map(Number).sort(function (a, b) { return a - b; });
+        if (!picked.length) return;
+        quiz.lock = true;
+        var ok = picked.join(',') === it.pred.slice().sort(function (a, b) { return a - b; }).join(',');
+        for (var k = 0; k < ws.length; k++) {
+          var inPred = it.pred.indexOf(k) >= 0, sel = !!it._sel[k];
+          ws[k].style.background = inPred ? 'var(--good-soft)' : sel ? 'var(--bad-soft)' : '';
+          ws[k].style.borderColor = inPred ? 'var(--good)' : sel ? 'var(--bad)' : '';
+          ws[k].style.color = inPred ? 'var(--good)' : sel ? 'var(--bad)' : '';
+          ws[k].className = 'btn pword';
+        }
+        this.style.display = 'none';
+        done(ok, predTip(it));
+      };
+    }
+  }
+  function exDone() {
+    var key2 = quiz.l.id + ':' + quiz.type;
+    if (BEST[key2] == null || quiz.score > BEST[key2]) { BEST[key2] = quiz.score; put('best', BEST); }
+    var pct = Math.round(quiz.score / quiz.qs.length * 100);
+    $('vQuiz').innerHTML = '<div class="card qcard"><div class="qp">' + EX[quiz.type].icon + ' ' + EX[quiz.type].name + ' 完成</div><div class="score">' + quiz.score + ' / ' + quiz.qs.length + '</div><div style="font-size:30px;margin:6px 0 16px">' + (pct === 100 ? '🏆' : pct >= 70 ? '🎉' : '💪') + '</div><button class="btn primary" id="qAgain">再练一次</button> <button class="btn" id="qHome">返回本组</button></div>';
+    var t = quiz.type, l = quiz.l;
+    $('qAgain').onclick = function () { startEx(l, t); };
+    $('qHome').onclick = function () { openSet(l, l.li); };
   }
 
   /* ================= quiz ================= */
