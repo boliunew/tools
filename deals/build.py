@@ -71,26 +71,28 @@ CATS = [  # key, zh, emoji
     ("bakery", "面包烘焙", "🍞"), ("frozen", "冷冻食品", "🧊"), ("pantry", "粮油调料", "🥫"), ("snacks", "零食糖果", "🍪"),
     ("drinks", "饮料酒水", "🥤"), ("household", "日用清洁", "🧻"), ("beauty", "个护健康", "🧴"), ("baby", "母婴", "👶"),
     ("pet", "宠物", "🐶"), ("electronics", "电子数码", "📱"), ("home", "家居厨房", "🛋️"), ("clothing", "服饰鞋包", "👕"),
-    ("toys", "玩具游戏", "🧸"), ("outdoor", "工具户外汽车", "🛠️"), ("other", "其他", "📦"),
+    ("toys", "玩具游戏", "🧸"), ("media", "图书影音", "📚"), ("outdoor", "工具户外汽车", "🛠️"), ("other", "其他", "📦"),
 ]
 RULES = [  # order matters: the first match wins
-    ("pet", r"\b(dog|dogs|puppy|cat food|cat litter|kitten|kitty|litter|pet|pets|purina|pedigree|friskies|meow mix|iams|blue buffalo|milk-bone|greenies|fancy feast|temptations)\b"),
+    ("media", r"\b(e-?book|kindle edition|hardcover|paperback|audiobook|blu-?ray|4k uhd|dvd|vinyl|lp|cd|album|soundtrack|novel|workbook|storybook|bible|comic|manga|movie collection|season one|season \d|french edition|edition\)|recordings|magazine)\b"),
+    ("pet", r"\b(dog|dogs|puppy|cats?|cat food|cat litter|cat treats|kitten|kitty|litter|pet|pets|purina|pedigree|friskies|meow mix|iams|blue buffalo|milk-bone|greenies|fancy feast|temptations)\b"),
     ("baby", r"\b(diaper|diapers|pampers|huggies|luvs|baby|babies|infant|toddler|enfamil|similac|gerber|pacifier|stroller|car seat)\b"),
-    ("electronics", r"\b(apple (?:airpods|watch|ipad|iphone|macbook|tv|pencil)|tv|tvs|television|oled|qled|laptop|laptops|chromebook|macbook|tablet|ipad|iphone|android phone|smartphone|phone|headphones|earbuds|airpods|speaker|speakers|soundbar|monitor|camera|smart ?watch|apple watch|charger|charging|usb|cable|ssd|hard drive|microsd|router|wi-?fi|gaming|playstation|ps5|xbox|nintendo|switch 2|printer|kindle|echo|alexa|fire tv|roku|streaming|bluetooth|projector|gpu|graphics card|keyboard|mouse|power bank|batteries|drone|dash cam|electronics)\b"),
+    ("electronics", r"\b(power station|docking station|pc case|ssd|apple (?:airpods|watch|ipad|iphone|macbook|tv|pencil)|tv|tvs|television|oled|qled|laptop|laptops|chromebook|macbook|tablet|ipad|iphone|android phone|smartphone|phone|headphones|earbuds|airpods|speaker|speakers|soundbar|monitor|camera|smart ?watch|apple watch|charger|charging|usb|cable|ssd|hard drive|microsd|router|wi-?fi|gaming|playstation|ps5|xbox|nintendo|switch 2|printer|kindle|echo|alexa|fire tv|roku|streaming|bluetooth|projector|gpu|graphics card|keyboard|mouse|power bank|batteries|drone|dash cam|electronics)\b"),
     ("drinks", r"\b(soda|sodas|coca-cola|coke|pepsi|sprite|dr\.? pepper|squirt|7up|7-up|fanta|jarritos|water|waters|juice|juices|tea|teas|coffee|k-cup|k-cups|gatorade|powerade|energy drink|monster energy|red bull|beer|beers|wine|wines|vodka|tequila|whiskey|whisky|rum|seltzer|lemonade|kombucha|drink|drinks|beverage|beverages|horchata|agua fresca|bodyarmor|celsius|smoothie)\b"),
-    ("snacks", r"\b(chips|doritos|cheetos|lay'?s|ruffles|pringles|takis|tostitos|fritos|cookies|cookie|oreo|crackers|cheez-it|goldfish|candy|candies|chocolate|chocolates|gum|snack|snacks|popcorn|pretzels|nuts|almonds|peanuts|pistachios|trail mix|granola bars?|fruit snacks|jerky|gummies|gummy|m&m'?s|snickers|reese'?s|kit ?kat|skittles|halloween candy)\b"),
+    ("snacks", r"\b(nutter butter|chips|doritos|cheetos|lay'?s|ruffles|pringles|takis|tostitos|fritos|cookies|cookie|oreo|crackers|cheez-it|goldfish|candy|candies|chocolate|chocolates|gum|snack|snacks|popcorn|pretzels|nuts|almonds|peanuts|pistachios|trail mix|granola bars?|fruit snacks|jerky|gummies|gummy|m&m'?s|snickers|reese'?s|kit ?kat|skittles|halloween candy)\b"),
     ("frozen", r"\b(frozen|ice cream|popsicles?|ice pops?|hot pockets|burritos|chimichangas|taquitos|nuggets|waffles|tv dinners?|el monterey|totino'?s|digiorno|red baron|stouffer'?s|banquet|lean cuisine|marie callender'?s|eggo|pizza rolls|frozen pizza|pot pies?)\b"),
     ("bakery", r"\b(bread|breads|bagels?|buns|rolls|tortillas?|muffins?|donuts?|doughnuts?|cakes?|pies?|croissants?|pan dulce|conchas|bolillos?|bakery|hawaiian rolls|english muffins)\b"),
-    ("dairy", r"\b(milk|cheese|cheeses|yogurt|yoghurt|butter|eggs|egg|sour cream|cream cheese|creamer|creamers|cottage cheese|half & half|half and half|crema|queso|whipped cream|margarine)\b"),
+    ("dairy", r"\b(milk|cheese|cheeses|yogurt|yoghurt|(?<!peanut )butter|eggs|egg|sour cream|cream cheese|creamer|creamers|cottage cheese|half & half|half and half|crema|queso|whipped cream|margarine)\b"),
     ("seafood", r"\b(shrimp|salmon|tilapia|cod|crab|crabs|lobster|swai|catfish|mussels|clams|scallops|oysters|seafood|fish fillets?|fresh fish|mojarra|pollock)\b"),
     ("meat", r"\b(chicken|beef|pork|steak|steaks|ground|turkey|ham|bacon|sausage|sausages|hot dogs?|franks|ribs|roast|chops|carne|carne asada|chorizo|lamb|wings|thighs|drumsticks|breasts?|tri-tip|tri tip|brisket|deli meat|lunch ?meat|salami|bologna|meat|meats|ribeye|sirloin|fajita|al pastor|tenderloin|loin|carnitas|patties)\b"),
     ("produce", r"\b(apples?|bananas?|oranges?|grapes|berries|strawberries|blueberries|raspberries|blackberries|avocados?|tomatoes|tomato|potatoes|potato|onions?|lettuce|cabbage|carrots?|sweet corn|corn on the cob|peppers|bell peppers?|cucumbers?|squash|zucchini|melons?|watermelons?|cantaloupes?|honeydew|pineapples?|mangos?|mangoes|peaches|pears?|plums?|lemons?|limes?|cilantro|celery|broccoli|cauliflower|spinach|kale|garlic|ginger|jicama|tomatillos?|papayas?|grapefruit|mandarins?|tangerines?|clementines?|kiwis?|cherries|salad|salads|mushrooms?|asparagus|green beans|yams?|sweet potatoes|jalape[nñ]os?|chiles?|produce|fruit|fruits|vegetables?|nectarines|pomegranates?|persimmons?|pumpkins?)\b"),
-    ("household", r"\b(paper towels?|bath tissue|toilet paper|facial tissue|tissues?|napkins|detergent|tide|gain|bleach|clorox|cleaner|cleaners|cleaning|trash bags?|garbage bags?|aluminum foil|foil|plastic wrap|ziploc|storage bags|dish soap|dawn|cascade|finish|fabric softener|downy|dryer sheets|sponges?|lysol|air fresheners?|febreze|pine-sol|swiffer|charmin|bounty|scott|cottonelle|kleenex|plates|cups|utensils)\b"),
+    ("pantry", r"\b(rice|beans|pasta|spaghetti|noodles|ramen|ramyun|cereal|oatmeal|oats|flour|sugar|cooking oil|olive oil|sauce|salsa|soups?|broth|spices|seasoning|ketchup|mayo|mayonnaise|mustard|peanut butter|jelly|jam|honey|syrup|tuna|vinegar|masa|maseca|pancake|waffle mix|baking mix|cake mix|grocery|groceries|canned)\b"),
+    ("household", r"\b(disposable|steam pans?|party cups|paper bowls|paper plates|paper towels?|bath tissue|toilet paper|facial tissue|tissues?|napkins|detergent|tide|gain|bleach|clorox|cleaner|cleaners|cleaning|trash bags?|garbage bags?|aluminum foil|foil|plastic wrap|ziploc|storage bags|dish soap|dawn|cascade|finish|fabric softener|downy|dryer sheets|sponges?|lysol|air fresheners?|febreze|pine-sol|swiffer|charmin|bounty|scott|cottonelle|kleenex|plates|cups|utensils)\b"),
     ("beauty", r"\b(shampoo|conditioner|soap|body wash|deodorant|antiperspirant|toothpaste|toothbrush|mouthwash|floss|razors?|shave|lotion|makeup|cosmetics?|mascara|lipstick|vitamins?|supplements?|medicine|pain relief|tylenol|advil|motrin|aleve|allergy|cold & flu|cough|first aid|bandages|hair|skin ?care|sunscreen|feminine|tampons|pads|perfume|cologne|fragrance|nail|serum|moisturizer|cleanser|colgate|crest|dove|olay|neutrogena|cerave|gillette|pharmacy|health)\b"),
-    ("toys", r"\b(toy|toys|lego|barbie|hot wheels|dolls?|puzzles?|board games?|nerf|play-doh|plush|action figures?|kids'? games?|pok[eé]mon cards)\b"),
-    ("clothing", r"\b(shirts?|t-shirts?|tees?|pants|jeans|dress|dresses|shoes|sneakers|boots|sandals|slippers|jackets?|coats?|socks|underwear|bras?|hoodies?|sweaters?|sweatshirts?|leggings|shorts|backpacks?|handbags?|purses?|wallets?|apparel|clothing|fashion|pajamas|uniforms?|scrubs|hats?|caps|sunglasses|jewelry|necklace|earrings)\b"),
-    ("home", r"\b(mattress|mattresses|sofa|couch|recliner|chairs?|tables?|desks?|bed frames?|beds|bedding|sheets|comforters?|pillows?|towels?|rugs?|curtains|lamps?|vacuums?|robot vacuum|air fryers?|blenders?|cookware|frying pans?|skillets?|pots|knives|knife|kitchen|furniture|storage|shelves|shelf|decor|candles?|microwaves?|coffee makers?|keurig|instant pot|toaster|mixer|dinnerware|space heater|fans?|air purifier|humidifier|dehumidifier|home)\b"),
-    ("outdoor", r"\b(tools?|drill|drills|saw|wrench|ladder|grills?|garden|gardening|lawn|mower|trimmer|leaf blower|camping|tent|bikes?|bicycles?|e-bike|scooter|fitness|treadmill|dumbbells?|kettlebell|yoga|golf|car|cars|auto|automotive|tires?|motor oil|wipers?|hose|patio|cooler|fishing|hunting|generator|pressure washer|dewalt|milwaukee|ryobi|craftsman)\b"),
+    ("toys", r"\b(the game|card game|catan|toy|toys|lego|barbie|hot wheels|dolls?|puzzles?|board games?|nerf|play-doh|plush|action figures?|kids'? games?|pok[eé]mon cards)\b"),
+    ("clothing", r"\b(shirts?|t-shirts?|tees?|pants|jeans|dress|dresses|shoes|sneakers|boots|sandals|slippers|jackets?|coats?|socks|underwear|bras?|hoodies?|sweaters?|sweatshirts?|leggings|shorts|backpacks?|handbags?|purses?|wallets?|apparel|clothing|fashion|pajamas|uniforms?|scrubs|hats?|caps|sunglasses|jewelry|necklace|earrings|watch|watches|luggage|suitcase|crossbody|sweatpants|joggers|base layer|thermal)\b"),
+    ("home", r"\b(mattress|mattresses|sofa|couch|recliner|chairs?|tables?|desks?|bed frames?|beds|bedding|sheets|comforters?|pillows?|towels?|rugs?|curtains|lamps?|vacuums?|robot vacuum|air fryers?|blenders?|cookware|frying pans?|skillets?|pots|knives|knife|kitchen|furniture|storage|shelves|shelf|decor|candles?|microwaves?|coffee makers?|keurig|instant pot|toaster|mixer|dinnerware|space heater|fans?|air purifier|humidifier|dehumidifier|home|griddle|multi-cooker|slow cooker|pressure cooker|night light|led lights?|smart lock|doorbell|halloween|christmas|decorations?|shopping cart|jug|tumbler|water bottle|stanley|inflatable)\b"),
+    ("outdoor", r"\b(tools?|drill|drills|saw|wrench|ladder|grills?|garden|gardening|lawn|mower|trimmer|leaf blower|camping|tent|bikes?|bicycles?|e-bike|scooter|fitness|treadmill|dumbbells?|kettlebell|yoga|golf|car|cars|auto|automotive|tires?|motor oil|wipers?|hose|patio|cooler|fishing|hunting|generator|pressure washer|dewalt|milwaukee|ryobi|craftsman|irrigation|u-bolts?|bolts|screws|curl bar|barbell|weights|bench press)\b"),
 ]
 RULES = [(k, re.compile(p, re.I)) for k, p in RULES]
 L1MAP = {
@@ -238,15 +240,28 @@ def flyer_items(store_id, merchant, name_filter, link_tpl, flyers):
             if price is None:
                 price = money(it.get("price"))
             pre, post = (r.get("pre_price_text") or "").strip(), (r.get("post_price_text") or "").strip()
+            flags, unit = [], ""
+            if re.search(r"digital coupon", post, re.I):
+                flags.append("需领电子券")
+            if re.search(r"with card", post, re.I):
+                flags.append("会员卡价")
+            mb = re.search(r"when you buy (\d+)", post, re.I)
+            if mb:
+                flags.append("买%s件才是此价" % mb.group(1))
+            mu = re.search(r"(?:^|\s|/)(ea|lb|oz|ct|pk)\b", post, re.I)
+            if mu:
+                unit = {"ea": "/个", "lb": "/磅", "oz": "/盎司", "ct": "/个", "pk": "/包"}[mu.group(1).lower()]
             pt = ""
             if price is not None:
-                pt = (pre if pre else "") + "$" + fmt(price) + ((" " + post) if post else "")
+                pt = (pre if pre else "") + "$" + fmt(price) + unit
             story = (r.get("sale_story") or "").strip()
+            if re.fullmatch(r"final cost", story, re.I):
+                story = ""
             was = money(r.get("original_price"))
             off = it.get("discount") or (round((1 - price / was) * 100) if (price and was and was > price) else None)
             items.append({
                 "s": store_id, "src": "flyer", "n": name, "b": (it.get("brand") or "").split("|")[0].strip(),
-                "p": price, "pt": pt, "was": was, "off": off, "st": story, "stz": story_zh(story),
+                "p": price, "pt": pt, "was": was, "off": off, "st": story, "stz": "，".join([z for z in [story_zh(story)] + flags if z]),
                 "c": classify(name, r.get("_L1"), r.get("_L2"), grocery=(store_id == "f4l")), "zh": "",
                 "img": https(r.get("clean_image_url") or it.get("cutout_image_url")),
                 "u": link_tpl.format(q=urllib.parse.quote_plus(name)), "to": f["valid_to"][:10], "id": "fl%s" % it["id"],
@@ -300,6 +315,34 @@ def sid_of(link, pat, pre, title):
     return pre + (m.group(1) if m else hashlib.md5(title.encode("utf-8")).hexdigest()[:10])
 
 
+FLAGS = [
+    (r"\bS&?S\b|\bSnS\b|subscribe (?:&|and) save|sub\. ?& ?save", "订阅省"), (r"\bAC\b|apply coupon|clip coupon|w/ coupon|\bcoupon\b", "点券"),
+    (r"\bprime members?\b|\[prime\]|w/ prime|prime day", "Prime 会员"), (r"select accounts", "部分账号"), (r"walmart\+", "Walmart+"),
+    (r"free (?:shipping|s&h)", "包邮"), (r"new woot!? customers", "Woot 新客"), (r"\bYMMV\b", "因人而异"),
+]
+FLAGS = [(re.compile(p, re.I), z) for p, z in FLAGS]
+
+
+def tidy(title):
+    """'[SnS, AC] $9.35 | 10-Pack Nutter Butter at Amazon' → ('10-Pack Nutter Butter', ['订阅省', '点券'])"""
+    flags = []
+    for rx, z in FLAGS:
+        if rx.search(title) and z not in flags:
+            flags.append(z)
+    t = title
+    t = re.sub(r"^(?:\[[^\]]*\]\s*)+", "", t)
+    t = re.sub(r"^(?:Amazon|Walmart)\s*[~:-]\s*", "", t, flags=re.I)
+    t = re.sub(r"^(?:Prime Members|Select Accounts|New Woot!? Customers|Walmart\+ Members)\s*:\s*", "", t, flags=re.I)
+    t = re.sub(r"^~?\$[\d,.]+\*?\s*[|:]\s*", "", t)
+    t = re.sub(r"\s*(?:@|at)\s+(?:Amazon|Walmart|Woot!?)(?:\.com)?\b.*$", "", t, flags=re.I)
+    t = re.sub(r"\s*Walmart\.com\s*$", "", t, flags=re.I)
+    t = re.sub(r"\s*\+\s*Free (?:Shipping|S&H).*$", "", t, flags=re.I)
+    t = re.sub(r"\s+for\s+\$[\d,.]+.*$", "", t)  # DealNews: 'X for $89 + free shipping'
+    t = re.sub(r"\s*~?\$[\d,.]+\*?(?:\s*(?:w/|after|with)\b.*)?$", "", t)  # trailing price
+    t = re.sub(r"\s+", " ", t).strip(" -|~:")
+    return (t or title), flags
+
+
 def slickdeals(url, label):
     out = []
     for it in rss_items(get(url)):
@@ -316,8 +359,9 @@ def slickdeals(url, label):
         img = re.search(r'<img[^>]+src="([^"]+)"', body)
         score = re.search(r"Thumb Score:\s*([+-]?\d+)", body)
         p = first_price(title)
-        out.append({"s": s, "src": "sd", "n": title, "p": p, "pt": ("$" + fmt(p)) if p is not None else "", "off": pct(title),
-                    "c": classify(title), "zh": "", "img": https(img.group(1)) if img else "", "u": tag(it, "link").split("?utm_")[0],
+        name, fl = tidy(title)
+        out.append({"s": s, "src": "sd", "n": name, "full": title, "fl": fl, "p": p, "pt": ("$" + fmt(p)) if p is not None else "", "off": pct(title),
+                    "c": classify(title), "img": https(img.group(1)) if img else "", "u": tag(it, "link").split("?utm_")[0],
                     "t": pub_iso(tag(it, "pubDate")), "score": int(score.group(1)) if score else 0, "via": "Slickdeals", "tag": label,
                     "id": sid_of(tag(it, "link"), r"/f/(\d+)", "sd", title)})
     return out
@@ -351,8 +395,9 @@ def dealnews():
             continue
         img = re.search(r"<img[^>]+src='([^']+)'", body) or re.search(r'<img[^>]+src="([^"]+)"', body)
         p = first_price(title)
-        out.append({"s": s, "src": "dn", "n": title, "p": p, "pt": ("$" + fmt(p)) if p is not None else "", "off": pct(title) or pct(txt),
-                    "c": classify(title), "zh": "", "img": https(img.group(1)) if img else "", "u": tag(it, "link").split("?iref")[0],
+        name, fl = tidy(title)
+        out.append({"s": s, "src": "dn", "n": name, "full": title, "fl": fl, "p": p, "pt": ("$" + fmt(p)) if p is not None else "", "off": pct(title) or pct(txt),
+                    "c": classify(title), "img": https(img.group(1)) if img else "", "u": tag(it, "link").split("?iref")[0],
                     "t": pub_iso(tag(it, "pubDate")), "via": "DealNews", "tag": "精选", "sum": txt[:220],
                     "id": sid_of(tag(it, "link"), r"/(\d+)\.html", "dn", title)})
     return out
