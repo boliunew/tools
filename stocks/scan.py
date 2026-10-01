@@ -451,10 +451,14 @@ def snap_row(x, last_date, name, sector, rs=None, tags=None):
         return round(float(c.iloc[-1] / c.iloc[-1 - n] - 1), 4) if len(c) > n else None
     prev_year = c[c.index.year < last_date.year]
     hi52 = float(c.iloc[-252:].max())
+    prev = x.iloc[-2]
+    above, was = last["close"] > last["sma200"], prev["close"] > prev["sma200"]
     return {"n": name, "s": sector, "c": round(float(last["close"]), 2), "d": round(float(last["chg"]), 4),
             "m1": back(21), "m3": back(63), "y": round(float(c.iloc[-1] / prev_year.iloc[-1] - 1), 4) if len(prev_year) else None,
             "h": round(float(last["close"]) / hi52 - 1, 4), "rsi": round(float(last["rsi14"]), 1),
-            "a50": int(last["close"] > last["sma50"]), "a200": int(last["close"] > last["sma200"]),
+            "a50": int(last["close"] > last["sma50"]), "a200": int(above),
+            "m2": round(float(last["close"] / last["sma200"] - 1), 4) if last["sma200"] == last["sma200"] else None,
+            "x2": (1 if above and not was else -1 if was and not above else 0),   # crossed the 200-day line today
             "rs": rs, "sig": tags or [], "sp": [round(float(v), 2) for v in c.iloc[-60::3]]}
 
 
@@ -479,6 +483,82 @@ def write_snapshot(frames, sigs, meta, extra, last_date, today):
     print("snapshot:", len(rows), "tickers")
 
 
+# ----------------------------------------------------------------------------- long-term view (VOO 长线体检)
+DD_BUCKETS = [(0.0, 0.02, "高点 2% 内"), (0.02, 0.05, "回撤 2–5%"), (0.05, 0.10, "回撤 5–10%"),
+              (0.10, 0.20, "回撤 10–20%"), (0.20, 1.01, "回撤 >20%")]
+
+
+def download_max(t):
+    import yfinance as yf
+    for attempt in range(3):
+        try:
+            df = yf.download(t, period="max", interval="1d", auto_adjust=True, progress=False, group_by="ticker")
+            if isinstance(df.columns, pd.MultiIndex):
+                df = df[t] if t in df.columns.get_level_values(0) else df.droplevel(1, axis=1)
+            c = df["Close"].dropna()
+            if len(c) > 2000:
+                return c
+        except Exception as e:  # noqa: BLE001
+            print("max download retry", attempt, e)
+        time.sleep(5)
+    return None
+
+
+def longterm(c):
+    """SPY since 1993 (adjusted close = dividends reinvested): how far below the all-time high are we,
+    and what happened over the next 1 / 3 years from similar spots in the past."""
+    c = c[c > 0]
+    if len(c) < 300:
+        return None
+    ath = c.cummax()
+    dd = 1 - c / ath
+    f1 = c.shift(-252) / c - 1
+    f3 = (c.shift(-756) / c) ** (1 / 3) - 1
+
+    def q(s, p):
+        return round(float(s.quantile(p)), 4) if len(s) else None
+
+    def win(s):
+        return round(float((s > 0).mean()), 3) if len(s) else None
+
+    def row(m, lab):
+        a, b = f1[m].dropna(), f3[m].dropna()
+        return {"lab": lab, "days": round(float(m.mean()), 3), "n1": int(len(a)), "med1": q(a, .5), "win1": win(a),
+                "p10": q(a, .1), "p90": q(a, .9), "n3": int(len(b)), "med3": q(b, .5), "win3": win(b)}
+    rows = [row((dd >= lo) & (dd < hi), lab) for lo, hi, lab in DD_BUCKETS]
+    allrow = row(dd >= 0, "所有日子")
+    now = float(dd.iloc[-1])
+    k = next(i for i, (lo, hi, _) in enumerate(DD_BUCKETS) if lo <= now < hi)
+    ath_date = c.index[c >= ath.iloc[-1]][-1]
+    # calendar years: full-year return and the deepest drop inside that year (from the previous year-end)
+    years, prev = [], None
+    for y, g in c.groupby(c.index.year):
+        if prev is not None:
+            s = pd.concat([pd.Series([prev]), g.reset_index(drop=True)])
+            years.append([int(y), round(float(g.iloc[-1] / prev - 1), 4), round(float((s / s.cummax()).min() - 1), 4)])
+        prev = float(g.iloc[-1])
+    full = [r for r in years if r[0] < c.index[-1].year]
+    return {"since": int(c.index[0].year), "date": c.index[-1].date().isoformat(), "close": round(float(c.iloc[-1]), 2),
+            "ath": round(float(ath.iloc[-1]), 2), "ath_date": ath_date.date().isoformat(),
+            "since_ath": int((c.index > ath_date).sum()), "dd": round(now, 4), "rare": round(float((dd >= now).mean()), 3),
+            "bucket": k, "rows": rows, "all": allrow, "years": years,
+            "yr_med_dd": round(float(np.median([r[2] for r in full])), 4) if full else None,
+            "yr_up": sum(1 for r in full if r[1] > 0), "yr_n": len(full)}
+
+
+def breadth_history(frames, spy, last_date, n=126):
+    """share of the pool above its 50- and 200-day average, day by day (with SPY for comparison)"""
+    cl = pd.DataFrame({t: x["close"] for t, x in frames.items()})
+    cl = cl[cl.index <= last_date].iloc[-n:]
+    out = {"d0": cl.index[0].date().isoformat(), "n": len(cl)}
+    for k, col in (("b50", "sma50"), ("b200", "sma200")):
+        s = pd.DataFrame({t: x[col] for t, x in frames.items()}).reindex(cl.index)
+        out[k] = [round(float(v), 3) for v in (cl > s).astype(float).where(s.notna()).mean(axis=1).fillna(0)]
+    if spy is not None:
+        out["spy"] = [round(float(v), 2) for v in spy["close"].reindex(cl.index).ffill().bfill()]
+    return out
+
+
 # ----------------------------------------------------------------------------- main
 def mkt_line(x):
     last = x.iloc[-1]
@@ -496,6 +576,7 @@ def main():
 
     if args.demo:
         raw, meta = demo_data()
+        spy_max = raw["SPY"]["Close"].copy()
     else:
         meta = fetch_universe()
         tickers = sorted(meta.keys())
@@ -504,11 +585,14 @@ def main():
         if len(raw) < 50:
             print("ERROR: too little data downloaded; keeping previous results.")
             return 0
+        spy_max = download_max("SPY")
         # never use a session that has not closed yet (a run during market hours sees a half-finished bar)
         now = now_et()
         if is_session(now.date()) and now.time() < CLOSE_DONE:
             for k in list(raw):
                 raw[k] = raw[k][raw[k].index.date < now.date()]
+            if spy_max is not None:
+                spy_max = spy_max[spy_max.index.date < now.date()]
             DIAG["dropped_unfinished"] = now.date().isoformat()
 
     idx_frames = {k: indicators(raw.pop(k)) for k in ["SPY", "QQQ", "^VIX"] if k in raw}
@@ -591,6 +675,19 @@ def main():
     else:
         regime["label"], regime["desc"] = "谨慎", "大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
 
+    try:
+        regime["hist"] = breadth_history(frames, idx_frames.get("SPY"), last_date)
+    except Exception as e:  # noqa: BLE001
+        print("WARN: breadth history failed:", e)
+    lt = None
+    try:
+        if spy_max is not None:
+            lt = longterm(spy_max[spy_max.index <= last_date])
+            if lt:
+                print("long-term: SPY since %s, %.1f%% below the high of %s" % (lt["since"], lt["dd"] * 100, lt["ath_date"]))
+    except Exception as e:  # noqa: BLE001
+        print("WARN: long-term stats failed:", e)
+
     tracking = track(frames, today)
     stale = None
     if not args.demo:
@@ -604,7 +701,7 @@ def main():
         "date": today, "stale": stale, "demo": bool(args.demo), "universe": len(meta), "scanned": len(frames),
         "regime": regime,
         "signals": {k: dict(SIGNALS[k], stats=stats[k]) for k in PRIORITY},
-        "candidates": kept, "tracking": tracking, "diag": DIAG,
+        "candidates": kept, "tracking": tracking, "lt": lt, "diag": DIAG,
     }
     with open(os.path.join(DATA, "latest.json"), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, separators=(",", ":"))

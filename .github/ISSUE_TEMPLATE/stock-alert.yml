@@ -1,0 +1,30 @@
+name: 股价提醒
+description: 到价、回撤、RSI、200 日线、单日涨跌、买点信号——每个交易日收盘后检查，触发时推送到手机
+title: "股价提醒: "
+labels: ["stock-alert"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        其实只写标题就够了，例如 **股价提醒: VOO 跌到 650**、**股价提醒: VOO 回撤 10**、**股价提醒: QQQ RSI 30**、**股价提醒: SPY 200日线**。
+        提交后机器人会回复一条「已登记」，之后每个交易日收盘后检查，触发时在这里留言（GitHub App 推送 / 邮件）。不需要了就关闭 issue。
+  - type: input
+    id: ticker
+    attributes:
+      label: 股票代码
+      placeholder: VOO
+    validations:
+      required: true
+  - type: input
+    id: cond
+    attributes:
+      label: 提醒条件
+      description: 填其中一个：跌到 / 涨到 / 回撤 / RSI / 200日线 / 单日涨跌 / 信号
+      value: 跌到
+    validations:
+      required: true
+  - type: input
+    id: value
+    attributes:
+      label: 数值
+      description: 跌到、涨到填价格；回撤、单日涨跌填百分比（如 10）；RSI 填数值（如 30）；200日线、信号不用填

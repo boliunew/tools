@@ -158,6 +158,76 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 .crow .r2 b{color:var(--ink)}
 .lowr .plan,.crow.lowr .r2{opacity:.5}
 .lownote{font-size:11.5px;color:var(--faint);margin-top:4px}
+/* 股价提醒 */
+.wr{grid-template-columns:minmax(0,1fr) 84px 76px 26px 22px}
+.wb{border:0;background:none;padding:0;font-size:16px;cursor:pointer;position:relative;opacity:.4;filter:grayscale(1);line-height:1}
+.wb.on{opacity:1;filter:none}
+.wb sup{position:absolute;right:-6px;top:-7px;font-size:10px;background:var(--up);color:#fff;border-radius:8px;padding:0 4px;line-height:14px;font-weight:700}
+.ach{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:6px;margin:0 4px 3px 0;background:var(--chip);color:var(--soft);text-decoration:none;white-space:nowrap}
+.ach.near{background:var(--warn-soft);color:var(--warn)}
+.ach.met{background:var(--off-soft);color:var(--off);font-weight:600}
+.aoth{font-size:12px;color:var(--soft);padding:8px 0 6px;border-top:1px solid var(--line);line-height:1.9}
+.am{position:fixed;left:0;top:0;right:0;bottom:0;z-index:40}
+.amb{position:absolute;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,.42)}
+.amc{position:absolute;left:0;right:0;bottom:0;max-width:620px;margin:0 auto;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--paper);border-radius:16px 16px 0 0;padding:12px 16px 18px;padding-bottom:calc(18px + env(safe-area-inset-bottom));box-shadow:0 -6px 24px rgba(0,0,0,.22)}
+.amh{display:flex;align-items:center;font-size:17px}
+.amh b{flex:1}
+.amx{border:0;background:none;font-size:26px;color:var(--faint);padding:0 4px;line-height:1}
+.amnow{font-size:12.5px;color:var(--soft);margin:2px 0 6px;line-height:1.6}
+.ao{display:flex;flex-wrap:wrap;align-items:center;padding:8px 2px;border-top:1px solid var(--line);font-size:14.5px;cursor:pointer}
+.ao input[type=radio]{margin:0 8px 0 0;width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto}
+.ao .av{width:86px;border:1px solid var(--line);border-radius:8px;padding:4px 8px;margin:0 6px;font-size:15px;background:var(--bg);color:var(--ink);font-variant-numeric:tabular-nums}
+.ao small{color:var(--faint);font-size:12px;margin-left:4px}
+.aq{flex-basis:100%;padding:6px 0 0 26px}
+.aq button{border:1px solid var(--line);background:var(--bg);border-radius:999px;font-size:12px;padding:2px 10px;margin-right:6px}
+.ap{font-size:13px;color:var(--soft);margin:10px 0 8px;word-break:break-all}
+.ap b{color:var(--ink)}
+.abtns{display:flex;gap:8px}
+.amgo{flex:1;justify-content:center;min-height:42px;font-size:15px;font-weight:600;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.amgo.dis{opacity:.4;pointer-events:none}
+.abtns .btn{min-height:42px}
+.anote{font-size:12px;color:var(--faint);margin-top:10px;line-height:1.65}
+.ahave{font-size:12.5px;color:var(--soft);margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);line-height:1.9}
+/* 展开卡片：VOO 长线体检 / 板块强弱 */
+details.xd{margin-top:12px}
+details.xd > summary{list-style:none;padding:12px 14px;cursor:pointer;display:flex;align-items:center}
+details.xd > summary::-webkit-details-marker{display:none}
+.xt{flex:1;min-width:0}
+.xt b{font-size:15px;display:block}
+.xs{display:block;font-size:13px;color:var(--soft);margin-top:3px;line-height:1.6}
+.xs b{display:inline;font-size:13px;color:var(--ink)}
+.xa{font-style:normal;color:var(--faint);margin-left:10px;transition:transform .2s}
+details[open] > summary .xa{transform:rotate(180deg)}
+.lt{padding:0 14px 12px}
+.ltk{display:flex;flex-wrap:wrap;font-size:12px;color:var(--faint);margin-bottom:6px}
+.ltk > div{margin:0 18px 6px 0}
+.ltk b{display:block;font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums}
+table.ltt{min-width:0;font-size:12px}
+.ltt th,.ltt td{padding:7px 3px}
+.ltt th{font-size:11px}
+.ltt tr.cur td{background:var(--accent-soft);font-weight:600}
+.ltt tr.cur td:first-child{border-radius:6px 0 0 6px}.ltt tr.cur td:last-child{border-radius:0 6px 6px 0}
+.ltt tr.all td{color:var(--soft)}
+.ltx{font-size:13.5px;line-height:1.75;margin:10px 0 4px}
+svg.yrs{width:100%;height:150px;display:block;margin:8px 0 0}
+.ltc{font-size:11.5px;color:var(--faint);line-height:1.6}
+.ltn{font-size:11.5px;color:var(--faint);line-height:1.6;margin-top:10px}
+.secs{padding:0 14px 10px}
+.sr{display:grid;grid-template-columns:72px minmax(0,1fr) 48px 52px 38px;gap:6px;align-items:center;padding:7px 0;border-top:1px solid var(--line);font-size:13px;font-variant-numeric:tabular-nums;cursor:pointer}
+.sr.sh{font-size:11px;color:var(--faint);cursor:default}
+.sr > span:nth-child(n+3){text-align:right}
+.sn{line-height:1.25}.sn small{display:block;font-size:10.5px;color:var(--faint)}
+.sbar{position:relative;height:16px}
+.sbar:before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;border-left:1px solid var(--line)}
+.sbar i{position:absolute;top:3px;height:10px;border-radius:3px}
+.stop{font-size:12.5px;color:var(--soft);padding:0 0 8px;line-height:1.8}
+.stop a{color:var(--ink);font-weight:600;text-decoration:none}
+svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
+.bcap{font-size:11px;color:var(--faint);margin-top:2px}
+.bcap span{margin-right:12px;white-space:nowrap}
+.bcap i{display:inline-block;width:14px;height:0;border-top:2px solid var(--accent);margin-right:4px;vertical-align:middle}
+.bcap .k2{border-color:var(--soft)}.bcap .k3{border-top:2px dashed var(--faint)}
+.bdiv{font-size:12.5px;color:var(--warn);background:var(--warn-soft);border-radius:8px;padding:6px 10px;margin-top:8px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -190,6 +260,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   applyColors();
   var WATCH = (function () { try { var w = JSON.parse(store('watch') || 'null'); return w && w.length != null ? w : ['VOO']; } catch (e) { return ['VOO']; } })();
   var VIEW = store('view') || 'card';
+  var OPENS = (function () { try { return JSON.parse(store('open') || '{}') || {}; } catch (e) { return {}; } })();
+  var REPO = 'boliunew/tools', OWNER = 'boliunew', ALERTS = null, AST = null, alertsAt = 0;
   function saveWatch() { store('watch', JSON.stringify(WATCH)); }
   function getJSON(url, cb) { var x = new XMLHttpRequest(); x.open('GET', url + '?t=' + Math.floor(Date.now() / 300000)); x.onload = function () { try { cb(x.status === 200 ? JSON.parse(x.responseText) : null); } catch (e) { cb(null); } }; x.onerror = function () { cb(null); }; x.send(); }
 
@@ -203,6 +275,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
       render();
       getJSON('stocks/data/snap.json', function (d) { SNAP = d && d.rows ? d : { rows: {}, missing: 1 }; render(); });
       getJSON('earnings/data/latest.json', function (d) { ER = d; render(); });
+      getJSON('stocks/data/alerts.json', function (d) { AST = d && d.items ? d : null; render(); });
+      loadAlerts();
     };
     xhr.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
     xhr.send();
@@ -282,6 +356,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     if (ev.length) h += '<div class="sl">📅 <b>这几天要留意</b>：' + ev.join('；') + '</div>';
     var al = watchAlerts();
     if (al.length) h += '<div class="sl">📌 <b>我的自选</b>：' + al.join('；') + '</div>';
+    var ar = alertLines();
+    if (ar.length) h += '<div class="sl">🔔 <b>提醒</b>：' + ar.join('；') + '</div>';
     return h + '</div>';
   }
   function miniSpark(a) {
@@ -297,19 +373,276 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     if (!WATCH.length) h += '<div class="wd2">还没有自选。加几只你持有或关注的股票，这里每天显示它们的状态，财报日历也会标出来。</div>';
     for (var i = 0; i < WATCH.length; i++) {
       var t = WATCH[i], r = SNAP.rows[t];
-      if (!r) { h += '<div class="wmiss"><b>' + esc(t) + '</b> 不在每日扫描范围（S&P 500 + 纳指 100 + 常用 ETF）<a href="https://github.com/boliunew/tools/edit/main/stocks/watchlist.txt" target="_blank" rel="noopener">加进扫描清单</a><button class="wx" data-x="' + esc(t) + '" aria-label="移除">×</button></div>'; continue; }
+      var mine = alertsOf(t), chips = '';
+      for (var q = 0; q < mine.length; q++) chips += achip(mine[q]);
+      if (!r) { h += '<div class="wmiss"><b>' + esc(t) + '</b> 不在每日扫描范围（S&P 500 + 纳指 100 + 常用 ETF）<a href="https://github.com/boliunew/tools/edit/main/stocks/watchlist.txt" target="_blank" rel="noopener">加进扫描清单</a><button class="wx" data-x="' + esc(t) + '" aria-label="移除">×</button></div>' + (chips ? '<div class="wd2">' + chips + '</div>' : ''); continue; }
       var e = earnOf(t), tags = '';
       for (var k = 0; k < (r.sig || []).length; k++) tags += '<span class="tag">' + esc((DATA.signals[r.sig[k]] || {}).name || r.sig[k]) + '</span>';
       if (e) tags += '<span class="tag earn">财报 ' + esc(e.date.slice(5)) + (whenZh(e.when) ? ' ' + whenZh(e.when) : '') + '</span>';
-      h += '<div class="wr"><div class="w1"><b><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(t) + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + esc(t) + '</a></b><small>' + esc(r.n) + '</small></div><div>' + miniSpark(r.sp) + '</div><div class="w3"><b>' + r.c.toFixed(2) + '</b><span class="' + cls(r.d) + '">' + pct(r.d) + '</span></div><button class="wx" data-x="' + esc(t) + '" aria-label="移除">×</button></div>';
-      h += '<div class="wd2">' + tags + '<i>1月 <span class="' + cls(r.m1) + '">' + pct(r.m1, 1) + '</span></i><i>3月 <span class="' + cls(r.m3) + '">' + pct(r.m3, 1) + '</span></i><i>今年 <span class="' + cls(r.y) + '">' + pct(r.y, 1) + '</span></i><i>距一年高点 ' + pct(r.h, 1) + '</i><i>' + (r.a200 ? '200日线上' : '<b style="color:var(--off)">200日线下</b>') + '</i><i>RSI ' + r.rsi + '</i>' + (r.rs != null ? '<i>相对强度 ' + r.rs + '</i>' : '') + '</div>';
+      h += '<div class="wr"><div class="w1"><b><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(t) + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + esc(t) + '</a></b><small>' + esc(r.n) + '</small></div><div>' + miniSpark(r.sp) + '</div><div class="w3"><b>' + r.c.toFixed(2) + '</b><span class="' + cls(r.d) + '">' + pct(r.d) + '</span></div>' +
+        '<button class="wb' + (mine.length ? ' on' : '') + '" data-b="' + esc(t) + '" aria-label="给 ' + esc(t) + ' 设提醒" title="设提醒">🔔' + (mine.length ? '<sup>' + mine.length + '</sup>' : '') + '</button><button class="wx" data-x="' + esc(t) + '" aria-label="移除">×</button></div>';
+      h += '<div class="wd2">' + tags + chips + '<i>1月 <span class="' + cls(r.m1) + '">' + pct(r.m1, 1) + '</span></i><i>3月 <span class="' + cls(r.m3) + '">' + pct(r.m3, 1) + '</span></i><i>今年 <span class="' + cls(r.y) + '">' + pct(r.y, 1) + '</span></i><i>距一年高点 ' + pct(r.h, 1) + '</i><i>' + (r.a200 ? '200日线上' : '<b style="color:var(--off)">200日线下</b>') + (r.m2 != null ? ' ' + pct(r.m2, 1) : '') + '</i><i>RSI ' + r.rsi + '</i>' + (r.rs != null ? '<i>相对强度 ' + r.rs + '</i>' : '') + '</div>';
     }
+    var others = [], L = alertList();
+    for (i = 0; i < L.length; i++) if (WATCH.indexOf(L[i].t) < 0) others.push(achip(L[i], true));
+    if (others.length) h += '<div class="aoth">其他提醒：' + others.join('') + '</div>';
+    if (WATCH.length && !L.length) h += '<div class="wd2" style="border-top:1px solid var(--line);padding-top:8px">点 🔔 设到价 / 回撤 / RSI / 200 日线提醒，每天收盘后检查，触发时推送到手机。</div>';
     return h + '</div>';
   }
   function rowHTML(c) {
     var S = DATA.signals, stopPct = c.stop / c.close - 1, tgtPct = c.target / c.close - 1;
     return '<div class="crow' + (c.r < 1 ? ' lowr' : '') + '" id="c-' + esc(c.t) + '"><div class="r1"><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(c.t) + '/chart" target="_blank" rel="noopener">' + esc(c.t) + '</a><span class="tag">' + esc(S[c.primary].name) + '</span>' + (c.earn ? '<span class="tag earn">财报 ' + esc(c.earn.slice(5)) + '</span>' : '') + '<span class="px">' + c.close.toFixed(2) + ' <span class="' + cls(c.chg) + '">' + pct(c.chg) + '</span></span></div>' +
       '<div class="r2"><span>止损 <b class="down">' + pct(stopPct, 1) + '</b></span><span>目标 <b class="up">' + pct(tgtPct, 1) + '</b></span><span><b>' + c.r.toFixed(1) + 'R</b></span><span>强度 ' + c.rs + '</span><span>评分 ' + Math.round(c.score) + '</span><span>' + esc(c.name) + '</span></div></div>';
+  }
+
+  /* ---------- 股价提醒: open GitHub issues titled「股价提醒…」; checked after every daily scan (stocks/alerts.py) ---------- */
+  var AK = [['ma200', /200\s*[日天]?\s*(?:均线|线)|S?MA\s*200/i], ['sig', /信号|买点|signal/i], ['rsi', /RSI/i], ['dd', /回撤|回调|drawdown|距.{0,4}高点/i],
+    ['move', /单日|大涨大跌|涨跌幅|涨跌|异动|move/i], ['above', /涨到|涨破|涨过|高于|突破|above|>=?|≥/i], ['below', /跌到|跌破|跌至|低于|below|<=?|≤/i]];
+  var ADEF = { dd: 10, rsi: 30, move: 3 }, ATK = /\^?[A-Za-z][A-Za-z0-9]{0,5}(?:[.\-][A-Za-z]{1,2})?/;
+  var ACOND = { below: '跌到', above: '涨到', dd: '回撤', rsi: 'RSI', ma200: '200日线', move: '单日涨跌', sig: '信号' };
+  function formField(body, label) {
+    var m = new RegExp('###\\s*' + label + '[^\\n]*\\n([\\s\\S]*?)(?=\\n###|$)').exec(body || ''), v = m ? m[1].replace(/^\s+|\s+$/g, '') : '';
+    return v === '_No response_' || v === 'None' ? '' : v;
+  }
+  function parseAlert(title, body) {
+    var tt = formField(body, '股票代码'), ct = formField(body, '提醒条件'), vt = formField(body, '数值'), m, i, kind = null;
+    var rest = String(title || '').replace(/^\s*股价提醒\s*[:：]?\s*/, '');
+    if (!tt) { m = ATK.exec(rest); if (!m) return null; tt = m[0]; ct = rest.slice(m.index + m[0].length); vt = ''; }
+    m = ATK.exec(tt); if (!m) return null;
+    for (i = 0; i < AK.length; i++) if (AK[i][1].test(ct)) { kind = AK[i][0]; break; }
+    if (!kind) return null;
+    var src = vt || ct.replace(/RSI\s*\(?\s*14\s*\)?|200\s*[日天]?\s*(?:均线|线)|S?MA\s*200/ig, ' ');
+    var n = /\d+(?:\.\d+)?/.exec(src.replace(/,/g, '')), v = n ? parseFloat(n[0]) : (ADEF[kind] || null);
+    if ((kind === 'below' || kind === 'above') && !v) return null;
+    if (kind === 'ma200' || kind === 'sig') v = null;
+    return { t: m[0].toUpperCase().replace('.', '-'), kind: kind, v: v };
+  }
+  function fmtN(v) { return String(Math.round(v * 100) / 100); }
+  function aShort(a) { return { below: '跌到 ' + fmtN(a.v), above: '涨到 ' + fmtN(a.v), dd: '回撤 ≥' + fmtN(a.v) + '%', rsi: 'RSI ≤' + fmtN(a.v), ma200: '穿越 200 日线', move: '单日 ±' + fmtN(a.v) + '%', sig: '买点信号' }[a.kind] || ''; }
+  function aState(a, r) {
+    if (!r) return { txt: '等下次扫描' };
+    var k = a.kind, v = a.v, c = r.c, dd;
+    if (k === 'below') return c <= v ? { met: 1, txt: '已到价' } : { near: c / v - 1 < 0.02, txt: '还差 ' + ((1 - v / c) * 100).toFixed(1) + '%' };
+    if (k === 'above') return c >= v ? { met: 1, txt: '已到价' } : { near: v / c - 1 < 0.02, txt: '还差 ' + ((v / c - 1) * 100).toFixed(1) + '%' };
+    if (k === 'dd') { dd = -(r.h || 0) * 100; return dd >= v ? { met: 1, txt: '已满足' } : { near: v - dd < 1.5, txt: '现 −' + dd.toFixed(1) + '%' }; }
+    if (k === 'rsi') return r.rsi <= v ? { met: 1, txt: '已满足' } : { near: r.rsi - v < 5, txt: '现 ' + r.rsi };
+    if (k === 'ma200') return { met: !!r.x2, txt: r.a200 ? '现在线上' : '现在线下' };
+    if (k === 'move') return { met: Math.abs(r.d) * 100 >= v, txt: '' };
+    return { met: !!(r.sig && r.sig.length), txt: r.s === 'ETF' ? 'ETF 没有信号' : '' };
+  }
+  function alertList() {
+    var out = [], i, k, it, s, items = AST && AST.items;
+    if (ALERTS) for (i = 0; i < ALERTS.length; i++) {
+      it = ALERTS[i]; s = items && items[String(it.n)];
+      out.push({ n: it.n, url: it.url, t: it.t, kind: it.kind, v: it.v, last: s && s.t === it.t && s.kind === it.kind && s.v == it.v ? s.last : null }); // eslint-disable-line eqeqeq
+    } else if (items) for (k in items) if (items.hasOwnProperty(k)) { it = items[k]; out.push({ n: +k, url: it.url, t: it.t, kind: it.kind, v: it.v, last: it.last }); }
+    return out;
+  }
+  function alertsOf(t) { var L = alertList(), out = [], i; for (i = 0; i < L.length; i++) if (L[i].t === t) out.push(L[i]); return out; }
+  function achip(a, withT) {
+    var s = aState(a, SNAP && SNAP.rows[a.t]), fired = a.last && SNAP && a.last === SNAP.date;
+    return '<a class="ach' + (s.met || fired ? ' met' : s.near ? ' near' : '') + '" href="' + esc(a.url) + '" target="_blank" rel="noopener">🔔 ' + (withT ? esc(a.t) + ' ' : '') + esc(aShort(a)) + (fired ? ' · 今天触发' : s.txt ? ' · ' + esc(s.txt) : '') + '</a>';
+  }
+  function loadAlerts() {
+    alertsAt = Date.now();
+    var x = new XMLHttpRequest();
+    x.open('GET', 'https://api.github.com/repos/' + REPO + '/issues?state=open&per_page=100');
+    x.setRequestHeader('Accept', 'application/vnd.github+json');
+    x.onload = function () {
+      if (x.status !== 200) return;
+      try {
+        var a = JSON.parse(x.responseText), out = [], i, is, p;
+        for (i = 0; i < a.length; i++) {
+          is = a[i];
+          if (is.pull_request || !is.user || is.user.login !== OWNER || String(is.title || '').replace(/^\s+/, '').indexOf('股价提醒') !== 0) continue;
+          p = parseAlert(is.title, is.body); if (p) { p.n = is.number; p.url = is.html_url; out.push(p); }
+        }
+        ALERTS = out; if (DATA) render();
+      } catch (e) { }
+    };
+    x.send();
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && DATA && Date.now() - alertsAt > 20000) loadAlerts(); });
+  function alertLines() {
+    var L = alertList(), out = [], i, a, r, s;
+    if (!SNAP || !SNAP.rows) return out;
+    for (i = 0; i < L.length; i++) {
+      a = L[i]; r = SNAP.rows[a.t]; if (!r) continue; s = aState(a, r);
+      if (a.last && a.last === SNAP.date) out.push('<b>' + esc(a.t) + '</b>「' + esc(aShort(a)) + '」今天触发');
+      else if (s.near && !s.met) out.push('<b>' + esc(a.t) + '</b> 离「' + esc(aShort(a)) + '」' + esc(s.txt));
+    }
+    return out;
+  }
+
+  /* the bottom sheet that writes the GitHub issue for a new alert */
+  var am = null, amPushed = false;
+  function closeSheet(fromPop) {
+    if (!am) return;
+    if (am.parentNode) am.parentNode.removeChild(am);
+    am = null;
+    if (amPushed && !fromPop) { amPushed = false; try { window.history.back(); } catch (e) { } }
+    amPushed = false;
+  }
+  window.addEventListener('popstate', function () { if (am) { amPushed = false; closeSheet(true); } });
+  function openSheet(t) {
+    closeSheet();
+    var r = SNAP && SNAP.rows ? SNAP.rows[t] : null, c = r ? r.c : null, dd = r ? -(r.h || 0) * 100 : 0, i, j;
+    var opts = [
+      ['below', '收盘跌到', c ? (c * 0.95).toFixed(2) : '', '以下', c ? [['−5%', 0.95], ['−10%', 0.9], ['−20%', 0.8]] : null],
+      ['above', '收盘涨到', c ? (c * 1.05).toFixed(2) : '', '以上', c ? [['+5%', 1.05], ['+10%', 1.1]] : null],
+      ['dd', '距一年高点回撤 ≥', String(Math.max(10, Math.ceil((dd + 3) / 5) * 5)), '%', [['5%', 5], ['10%', 10], ['15%', 15], ['20%', 20]]],
+      ['rsi', 'RSI(14) ≤', '30', '超卖', null],
+      ['ma200', '穿越 200 日线', null, '跌破或站回都提醒', null],
+      ['move', '单日涨跌 ≥', '3', '%', null]
+    ];
+    if (!r || r.s !== 'ETF') opts.push(['sig', '出现买点信号', null, '回踩金坑、挤压突破等', null]);
+    var h = '<div class="amb"></div><div class="amc" role="dialog" aria-label="设提醒"><div class="amh"><b>🔔 给 ' + esc(t) + ' 设提醒</b><button class="amx" type="button" aria-label="关闭">×</button></div>';
+    if (r) h += '<div class="amnow">最新收盘 <b>' + r.c.toFixed(2) + '</b> · 距一年高点 ' + pct(r.h, 1) + ' · RSI ' + r.rsi + ' · 200 日线' + (r.a200 ? '上方' : '下方') + '</div>';
+    for (i = 0; i < opts.length; i++) {
+      var o = opts[i];
+      h += '<label class="ao"><input type="radio" name="ak" value="' + o[0] + '"' + (i === 0 ? ' checked' : '') + '>' + esc(o[1]) +
+        (o[2] != null ? '<input class="av" data-k="' + o[0] + '" value="' + esc(o[2]) + '" inputmode="decimal" autocomplete="off">' : '') + '<small>' + esc(o[3]) + '</small>';
+      if (o[4]) { h += '<span class="aq">'; for (j = 0; j < o[4].length; j++) h += '<button type="button" data-k="' + o[0] + '" data-q="' + o[4][j][1] + '">' + o[4][j][0] + '</button>'; h += '</span>'; }
+      h += '</label>';
+    }
+    h += '<div class="ap">标题：<b id="apT"></b></div><div class="abtns"><a class="btn amgo" id="amGo" target="_blank" rel="noopener">去 GitHub 提交 →</a><button class="btn" type="button" id="amCp">复制标题</button></div>' +
+      '<div class="anote">打开后内容已经填好，点 <b>Submit new issue</b> 就生效，机器人会马上回一条「已登记」。之后每个交易日收盘后按收盘价检查，触发时在那条 issue 下留言——GitHub App 会推送到手机，也会发邮件。如果打开的是空白页，把复制的标题粘贴进去提交也行。不想要了，关闭那条 issue 即可。</div>';
+    var have = alertsOf(t);
+    if (have.length) { h += '<div class="ahave">已有的提醒：'; for (i = 0; i < have.length; i++) h += achip(have[i]); h += '</div>'; }
+    am = document.createElement('div'); am.className = 'am'; am.innerHTML = h + '</div>';
+    document.body.appendChild(am);
+    try { window.history.pushState({ am: 1 }, ''); amPushed = true; } catch (e) { amPushed = false; }
+
+    function cur() {
+      var rs = am.querySelectorAll('input[name=ak]'), k = 'below', v = null, n;
+      for (n = 0; n < rs.length; n++) if (rs[n].checked) k = rs[n].value;
+      var inp = am.querySelector('.av[data-k=' + k + ']');
+      if (inp) { v = parseFloat(String(inp.value).replace(/[^\d.]/g, '')); if (isNaN(v) || v <= 0) v = null; }
+      return { k: k, v: v, ok: !inp || v != null };
+    }
+    function upd() {
+      var s = cur(), title = '股价提醒: ' + t + ' ' + ACOND[s.k] + (s.v != null && s.k !== 'ma200' && s.k !== 'sig' ? ' ' + fmtN(s.v) : '');
+      document.getElementById('apT').textContent = s.ok ? title : '（请填一个数）';
+      var go = document.getElementById('amGo');
+      go.className = 'btn amgo' + (s.ok ? '' : ' dis');
+      go.href = 'https://github.com/' + REPO + '/issues/new?template=stock-alert.yml&labels=stock-alert&title=' + encodeURIComponent(title) +
+        '&ticker=' + encodeURIComponent(t) + '&cond=' + encodeURIComponent(ACOND[s.k]) + '&value=' + encodeURIComponent(s.v != null ? fmtN(s.v) : '');
+      am.__title = title;
+    }
+    function pickKind(k) { var rr = am.querySelector('input[name=ak][value=' + k + ']'); if (rr) rr.checked = true; }
+    var radios = am.querySelectorAll('input[name=ak]'), avs = am.querySelectorAll('.av'), qs = am.querySelectorAll('.aq button');
+    for (i = 0; i < radios.length; i++) radios[i].onchange = upd;
+    for (i = 0; i < avs.length; i++) { avs[i].oninput = upd; avs[i].onfocus = function () { pickKind(this.getAttribute('data-k')); upd(); }; }
+    for (i = 0; i < qs.length; i++) qs[i].onclick = function (e) {
+      e.preventDefault();
+      var k = this.getAttribute('data-k'), q = parseFloat(this.getAttribute('data-q')), inp = am.querySelector('.av[data-k=' + k + ']');
+      if (inp) inp.value = (k === 'below' || k === 'above') && c ? (c * q).toFixed(2) : String(q);
+      pickKind(k); upd();
+    };
+    am.querySelector('.amb').onclick = function () { closeSheet(); };
+    am.querySelector('.amx').onclick = function () { closeSheet(); };
+    document.getElementById('amCp').onclick = function () {
+      var b = this, txt = am.__title || '';
+      var done = function () { b.textContent = '已复制 ✓'; setTimeout(function () { b.textContent = '复制标题'; }, 1600); };
+      try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(txt).then(done, function () { }); return; } } catch (e) { }
+      var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e2) { }
+      document.body.removeChild(ta);
+    };
+    upd();
+  }
+
+  /* ---------- 市场宽度走势 ---------- */
+  function breadthHTML(H) {
+    if (!H || !H.b50 || H.b50.length < 10) return '';
+    var W = 320, Hh = 60, n = H.b50.length, i, sp = H.spy || [], lo = Math.min.apply(null, sp.length ? sp : [0]), hi = Math.max.apply(null, sp.length ? sp : [1]);
+    function line(a, l, u) { var p = []; for (var k = 0; k < a.length; k++) p.push((k / (n - 1) * W).toFixed(1) + ',' + (Hh - 3 - (a[k] - l) / (u - l || 1) * (Hh - 6)).toFixed(1)); return p.join(' '); }
+    var s = '<svg class="bsv" viewBox="0 0 ' + W + ' ' + Hh + '" preserveAspectRatio="none" aria-label="近半年市场宽度"><line x1="0" x2="' + W + '" y1="' + (Hh / 2) + '" y2="' + (Hh / 2) + '" stroke="var(--line)" stroke-width="1" vector-effect="non-scaling-stroke"/>';
+    if (sp.length === n) s += '<polyline points="' + line(sp, lo, hi) + '" fill="none" stroke="var(--faint)" stroke-dasharray="3 3" stroke-width="1.2" vector-effect="non-scaling-stroke"/>';
+    s += '<polyline points="' + line(H.b200, 0, 1) + '" fill="none" stroke="var(--soft)" stroke-width="1.3" vector-effect="non-scaling-stroke"/>' +
+      '<polyline points="' + line(H.b50, 0, 1) + '" fill="none" stroke="var(--accent)" stroke-width="1.9" vector-effect="non-scaling-stroke"/></svg>' +
+      '<div class="bcap"><span><i></i>站上 50 日线</span><span><i class="k2"></i>站上 200 日线</span><span><i class="k3"></i>SPY</span><span>近半年 · 中线 = 50%</span></div>';
+    var b = H.b50, bmax = Math.max.apply(null, b), last = b[n - 1];
+    if (sp.length === n && sp[n - 1] >= hi * 0.98 && bmax - last >= 0.15)
+      s += '<div class="bdiv">⚠️ <b>宽度背离</b>：SPY 离半年高点不到 2%，但站上 50 日线的股票从 ' + Math.round(bmax * 100) + '% 降到 ' + Math.round(last * 100) + '%——上涨集中在少数大票。这种背离常出现在行情后段，值得多一分谨慎。</div>';
+    else if (last - Math.min.apply(null, b.slice(-20)) >= 0.25)
+      s += '<div class="bdiv" style="color:var(--on);background:var(--on-soft)">📈 <b>宽度快速修复</b>：近 20 个交易日站上 50 日线的股票比例大幅回升，常见于调整结束后的新一段上涨初期。</div>';
+    return s;
+  }
+
+  /* ---------- 🛡️ VOO 长线体检 ---------- */
+  function yearsSVG(Y) {
+    if (!Y || Y.length < 5) return '';
+    var W = 340, H = 150, top = 6, bot = 16, lo = 0, hi = 0, i, s = '', bw = W / Y.length;
+    for (i = 0; i < Y.length; i++) { lo = Math.min(lo, Y[i][1], Y[i][2]); hi = Math.max(hi, Y[i][1]); }
+    function y(v) { return top + (hi - v) / (hi - lo || 1) * (H - top - bot); }
+    var y0 = y(0);
+    for (i = 0; i < Y.length; i++) {
+      var r = Y[i][1], yy = y(r), cx = (i + 0.5) * bw, isNow = i === Y.length - 1;
+      s += '<rect x="' + (i * bw + 1).toFixed(1) + '" width="' + Math.max(1, bw - 2).toFixed(1) + '" y="' + Math.min(yy, y0).toFixed(1) + '" height="' + Math.max(0.8, Math.abs(yy - y0)).toFixed(1) + '" fill="' + (r >= 0 ? 'var(--up)' : 'var(--down)') + '" opacity="' + (isNow ? 0.45 : 0.85) + '" rx="1"/>';
+      s += '<circle cx="' + cx.toFixed(1) + '" cy="' + y(Y[i][2]).toFixed(1) + '" r="1.9" fill="var(--soft)"/>';
+      if ((Y[i][0] % 5 === 0 && i < Y.length - 3) || isNow) s += '<text x="' + (isNow ? W : cx).toFixed(1) + '" y="' + (H - 3) + '" font-size="9" fill="var(--faint)" text-anchor="' + (isNow ? 'end' : 'middle') + '">' + (isNow ? '今年' : "'" + String(Y[i][0]).slice(2)) + '</text>';
+    }
+    return '<svg class="yrs" viewBox="0 0 ' + W + ' ' + H + '" aria-label="每年涨跌与年内最大跌幅"><line x1="0" x2="' + W + '" y1="' + y0.toFixed(1) + '" y2="' + y0.toFixed(1) + '" stroke="var(--line)"/>' + s + '</svg>';
+  }
+  function ltHTML() {
+    var L = DATA.lt; if (!L || !L.rows || !L.rows[L.bucket]) return '';
+    var cur = L.rows[L.bucket], A = L.all, i, atHigh = L.dd < 0.001;
+    var sum = (atHigh ? '今天收在<b>历史最高点</b>' : '距历史最高 <b>' + pct(-L.dd, 1) + '</b>') + (cur.win1 != null ? ' · 历史上从这个位置买入，1 年后上涨概率 <b>' + Math.round(cur.win1 * 100) + '%</b>（中位数 ' + pct(cur.med1, 1) + '）' : '');
+    var h = '<details class="card xd" data-o="lt"' + (OPENS.lt ? ' open' : '') + '><summary><div class="xt"><b>🛡️ VOO 长线体检</b><span class="xs">' + sum + '</span></div><i class="xa">▾</i></summary><div class="lt">';
+    var ad = L.ath_date.split('-');
+    h += '<div class="ltk"><div><b>' + pct(-L.dd, 1) + '</b>距历史最高</div><div><b>' + (L.since_ath ? L.since_ath : '今天') + '</b>' + (L.since_ath ? '个交易日前创新高（' + (+ad[1]) + '/' + (+ad[2]) + '）' : '创新高') + '</div><div><b>' + Math.round(L.rare * 100) + '%</b>的历史日子离高点更远</div></div>';
+    h += '<div class="tbl"><table class="ltt"><tr><th>当时位置</th><th>1年后<br>中位数</th><th>上涨<br>概率</th><th>最差<br>10%</th><th>3年<br>年化</th></tr>';
+    var rows = L.rows.concat([A]);
+    for (i = 0; i < rows.length; i++) {
+      var r = rows[i], isCur = i === L.bucket, isAll = i === rows.length - 1;
+      h += '<tr class="' + (isCur ? 'cur' : isAll ? 'all' : '') + '"><td>' + esc(r.lab) + (isCur ? ' ◀' : '') + '</td><td class="' + cls(r.med1) + '">' + pct(r.med1, 1) + '</td><td>' + (r.win1 != null ? Math.round(r.win1 * 100) + '%' : '—') + '</td><td class="' + cls(r.p10) + '">' + pct(r.p10, 1) + '</td><td>' + (r.med3 != null ? pct(r.med3, 1) : '—') + '</td></tr>';
+    }
+    h += '</table></div>';
+    var txt;
+    if (cur.med1 == null) txt = '';
+    else if (L.bucket <= 1) txt = '离高点近，不代表接下来更差：历史上从这个位置买入，1 年后中位数 ' + pct(cur.med1, 1) + '、上涨概率 ' + Math.round(cur.win1 * 100) + '%，和所有日子（' + pct(A.med1, 1) + '、' + Math.round(A.win1 * 100) + '%）差不多。';
+    else txt = '回撤 ' + esc(cur.lab.replace('回撤 ', '')) + ' 时买入，历史上 1 年后中位数 ' + pct(cur.med1, 1) + '（所有日子是 ' + pct(A.med1, 1) + '），但最差的 10% 情况一年后仍是 ' + pct(cur.p10, 1) + '——回撤还可能继续，分批比一次性抄底更从容。';
+    if (txt) h += '<div class="ltx">' + txt + '</div>';
+    var Y = L.years || [], last = Y[Y.length - 1];
+    h += yearsSVG(Y) + '<div class="ltc">柱 = 全年涨跌（含分红）　点 = 当年最大跌幅' + (L.yr_n ? '。过去 ' + L.yr_n + ' 年，年内最大跌幅的中位数是 ' + pct(L.yr_med_dd, 1) + '，但其中 ' + L.yr_up + ' 年全年收涨' : '') + (last ? '；今年至今 ' + pct(last[1], 1) + '，年内最大跌幅 ' + pct(last[2], 1) + '。' : '。') + '</div>';
+    h += '<div class="ltn">用 SPY ' + L.since + ' 年以来的复权收盘价（含分红再投资）计算；VOO 2010 年才成立，和 SPY 走势几乎一样。样本区间互相重叠，20% 以上的深度回撤其实只有 2000、2008、2020、2022 等寥寥几次，统计只说明过去，不构成投资建议。</div></div></details>';
+    return h;
+  }
+
+  /* ---------- 🧭 板块强弱 ---------- */
+  var SECZH = { 'Information Technology': '科技', 'Health Care': '医疗保健', 'Financials': '金融', 'Industrials': '工业', 'Consumer Discretionary': '可选消费', 'Consumer Staples': '必需消费', 'Utilities': '公用事业', 'Real Estate': '房地产', 'Materials': '原材料', 'Communication Services': '通信服务', 'Energy': '能源' };
+  function med(a) { if (!a.length) return null; a = a.slice().sort(function (x, y) { return x - y; }); var m = a.length >> 1; return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; }
+  function sectors() {
+    var g = {}, t, r, k, out = [], i;
+    for (t in SNAP.rows) if (SNAP.rows.hasOwnProperty(t)) { r = SNAP.rows[t]; if (!SECZH[r.s]) continue; (g[r.s] = g[r.s] || []).push([t, r]); }
+    for (k in g) if (g.hasOwnProperty(k)) {
+      var L = g[k], d = [], m1 = [], m3 = [], a2 = 0, sg = 0;
+      for (i = 0; i < L.length; i++) { r = L[i][1]; d.push(r.d); if (r.m1 != null) m1.push(r.m1); if (r.m3 != null) m3.push(r.m3); a2 += r.a200; if (r.sig && r.sig.length) sg++; }
+      L.sort(function (a, b) { return (b[1].m1 || 0) - (a[1].m1 || 0); });
+      out.push({ k: k, zh: SECZH[k], n: L.length, d: med(d), m1: med(m1), m3: med(m3), a2: a2 / L.length, sg: sg, top: L.slice(0, 4), bot: L.slice(-2).reverse() });
+    }
+    out.sort(function (a, b) { return (b.m1 || 0) - (a.m1 || 0); });
+    return out;
+  }
+  function sectorHTML() {
+    if (!SNAP || SNAP.missing) return '';
+    var S = sectors(), i, mx = 0.0001, h;
+    if (S.length < 3) return '';
+    for (i = 0; i < S.length; i++) mx = Math.max(mx, Math.abs(S[i].m1 || 0));
+    var best = S[0], worst = S[S.length - 1];
+    h = '<details class="card xd" data-o="sec"' + (OPENS.sec ? ' open' : '') + '><summary><div class="xt"><b>🧭 板块强弱</b><span class="xs">近一月最强 <b>' + best.zh + '</b> <span class="' + cls(best.m1) + '">' + pct(best.m1, 1) + '</span> · 最弱 <b>' + worst.zh + '</b> <span class="' + cls(worst.m1) + '">' + pct(worst.m1, 1) + '</span></span></div><i class="xa">▾</i></summary><div class="secs">';
+    h += '<div class="sr sh"><span>板块</span><span>近 1 月</span><span>1 月</span><span>今日</span><span>200线</span></div>';
+    for (i = 0; i < S.length; i++) {
+      var s = S[i], w = Math.abs(s.m1 || 0) / mx * 50, pos = (s.m1 || 0) >= 0, k, tops = [], bots = [];
+      for (k = 0; k < s.top.length; k++) tops.push('<a href="https://finance.yahoo.com/quote/' + encodeURIComponent(s.top[k][0]) + '" target="_blank" rel="noopener">' + esc(s.top[k][0]) + '</a> <span class="' + cls(s.top[k][1].m1) + '">' + pct(s.top[k][1].m1, 1) + '</span>' + (s.top[k][1].sig && s.top[k][1].sig.length ? '🎯' : ''));
+      for (k = 0; k < s.bot.length; k++) bots.push(esc(s.bot[k][0]) + ' <span class="' + cls(s.bot[k][1].m1) + '">' + pct(s.bot[k][1].m1, 1) + '</span>');
+      h += '<div class="sr" data-i="' + i + '"><span class="sn">' + esc(s.zh) + '<small>' + s.n + ' 只' + (s.sg ? ' · ' + s.sg + ' 信号' : '') + '</small></span><span class="sbar"><i style="' + (pos ? 'left:50%' : 'right:50%') + ';width:' + w.toFixed(1) + '%;background:' + (pos ? 'var(--up)' : 'var(--down)') + '"></i></span>' +
+        '<span class="' + cls(s.m1) + '">' + pct(s.m1, 1) + '</span><span class="' + cls(s.d) + '">' + pct(s.d, 1) + '</span><span>' + Math.round(s.a2 * 100) + '%</span></div>' +
+        '<div class="stop" id="st' + i + '" style="display:none">领涨：' + tops.join('、') + '<br>落后：' + bots.join('、') + ' · 3 个月中位数 <span class="' + cls(s.m3) + '">' + pct(s.m3, 1) + '</span></div>';
+    }
+    h += '<div class="note" style="border:0;padding:8px 0 0">每个板块取成分股涨跌的中位数（等权），比市值加权的板块 ETF 更能看出「大多数股票」在干什么。「200线」= 站上 200 日线的比例。点一行看领涨和落后的股票，🎯 = 今天有买点信号。</div></div></details>';
+    return h;
   }
 
   function render() {
@@ -325,9 +658,10 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     h += summaryHTML(rc);
     function idx(name, o) { if (!o) return ''; return '<div>' + name + ' <b>' + o.close.toFixed(2) + '</b><span class="' + cls(o.chg) + '">' + pct(o.chg) + '</span><span class="flag ' + (o.above50 ? 'f-y' : 'f-n') + '">50日线' + (o.above50 ? '上' : '下') + '</span><span class="flag ' + (o.above200 ? 'f-y' : 'f-n') + '">200日线' + (o.above200 ? '上' : '下') + '</span></div>'; }
     h += '<div class="card regime"><div class="rg-l"><span class="rg-badge ' + rc + '">' + esc(lab) + '</span><small>市场环境</small></div><div class="rg-r"><div class="rg-desc">' + esc(R.desc || '') + '</div><div class="idx">' + idx('SPY', R.spy) + idx('QQQ', R.qqq) + (R.vix != null ? '<div>VIX <b>' + R.vix.toFixed(1) + '</b></div>' : '') + '</div>' +
-      '<div class="breadth"><div>站上 50 日线 ' + Math.round(R.breadth50 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth50 * 100) + '%"></i></div></div><div>站上 200 日线 ' + Math.round(R.breadth200 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth200 * 100) + '%"></i></div></div></div></div></div>';
+      '<div class="breadth"><div>站上 50 日线 ' + Math.round(R.breadth50 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth50 * 100) + '%"></i></div></div><div>站上 200 日线 ' + Math.round(R.breadth200 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth200 * 100) + '%"></i></div></div></div>' + breadthHTML(R.hist) + '</div></div>';
 
     h += watchHTML();
+    h += ltHTML() + sectorHTML();
 
     // filters
     var counts = { all: D.candidates.length };
@@ -379,6 +713,12 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     };
     if (wGo) wGo.onclick = addW;
     if (wIn) wIn.onkeydown = function (e) { if (e.keyCode === 13) addW(); };
+    var bs = app.querySelectorAll('.wb');
+    for (i = 0; i < bs.length; i++) bs[i].onclick = function () { openSheet(this.getAttribute('data-b')); };
+    var ds = app.querySelectorAll('details.xd');
+    for (i = 0; i < ds.length; i++) ds[i].addEventListener('toggle', function () { OPENS[this.getAttribute('data-o')] = this.open ? 1 : 0; store('open', JSON.stringify(OPENS)); });
+    var srs = app.querySelectorAll('.sr[data-i]');
+    for (i = 0; i < srs.length; i++) srs[i].onclick = function () { var el = document.getElementById('st' + this.getAttribute('data-i')); if (el) el.style.display = el.style.display === 'none' ? '' : 'none'; };
     var xs = app.querySelectorAll('.wx');
     for (i = 0; i < xs.length; i++) xs[i].onclick = function () { var t = this.getAttribute('data-x'), k = WATCH.indexOf(t); if (k >= 0) { WATCH.splice(k, 1); saveWatch(); render(); } };
     var sel = document.getElementById('sortSel'); sel.value = sortKey;

@@ -1,0 +1,38 @@
+name: 股价提醒登记
+
+# 新开 / 修改「股价提醒」issue 时立刻回复一条「已登记」，并把扫描范围外的代码加进 stocks/watchlist.txt。
+# 真正的检查在每日扫描之后（stock-scan.yml 里的 alerts.py check）。
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: stock-alert
+  cancel-in-progress: false
+
+jobs:
+  ack:
+    # 只处理仓库主人自己开的「股价提醒」issue
+    if: startsWith(github.event.issue.title, '股价提醒') && github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acknowledge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: python3 stocks/alerts.py ack
+      - name: Commit watchlist
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stocks/watchlist.txt
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "提醒：加入扫描清单"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; git rebase --abort 2>/dev/null; sleep 5; done
