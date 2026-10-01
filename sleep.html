@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E1424">
+<title>助眠白噪音</title>
+<style>
+:root{--bg:#0B1020;--card:#141B30;--card2:#1B2440;--ink:#E6EAF5;--soft:#9AA4C0;--faint:#5E6886;--line:#252F4D;--accent:#8EA8FF;--glow:rgba(142,168,255,.35);--good:#7FD8B0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:radial-gradient(1200px 600px at 50% -200px,#1A2550,var(--bg));background-color:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,sans-serif;line-height:1.5;min-height:100vh;padding-bottom:40px}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+main{max-width:620px;margin:0 auto;padding:16px}
+.top{display:flex;align-items:center;margin-bottom:6px}
+.top h1{font-size:21px;margin:0;flex:1;font-weight:600}
+.top a{color:var(--soft);text-decoration:none;font-size:14px}
+.big{text-align:center;padding:18px 0 10px}
+.play{width:112px;height:112px;border-radius:50%;border:0;background:var(--accent);color:#0B1020;font-size:40px;box-shadow:0 0 0 0 var(--glow);transition:transform .15s}
+.play.on{animation:breathe 8s ease-in-out infinite}
+@keyframes breathe{0%,100%{box-shadow:0 0 0 0 var(--glow);transform:scale(1)}50%{box-shadow:0 0 0 26px rgba(142,168,255,0);transform:scale(1.04)}}
+.status{color:var(--soft);font-size:14px;margin-top:12px;min-height:21px}
+.status b{color:var(--ink)}
+h2{font-size:14px;color:var(--soft);font-weight:600;margin:18px 2px 8px;letter-spacing:.04em}
+.presets{display:flex;overflow-x:auto;gap:8px;scrollbar-width:none}
+.presets::-webkit-scrollbar{display:none}
+.presets button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:9px 14px;font-size:14px}
+.presets button.on{border-color:var(--accent);color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.snd{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 8px 10px;text-align:center;cursor:pointer;transition:background .2s,border-color .2s}
+.snd .ic{font-size:28px;line-height:1.2}
+.snd .nm{font-size:13.5px;margin-top:2px}
+.snd input{width:100%;margin-top:8px;accent-color:var(--accent);visibility:hidden}
+.snd.on{background:var(--card2);border-color:var(--accent)}
+.snd.on input{visibility:visible}
+.row{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.row span{font-size:14px;color:var(--soft);white-space:nowrap}
+.row input{flex:1;accent-color:var(--accent)}
+.timers{display:flex;flex-wrap:wrap;gap:8px}
+.timers button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 13px;font-size:14px}
+.timers button.on{background:var(--accent);border-color:var(--accent);color:#0B1020;font-weight:700}
+.dim{position:fixed;inset:0;background:#000;z-index:30;display:none;align-items:center;justify-content:center;flex-direction:column;color:#3A4466;font-size:15px;text-align:center}
+.dim.on{display:flex}
+.dim .clk{font-size:64px;font-weight:200;color:#4A5682;letter-spacing:.04em}
+.hint{font-size:12.5px;color:var(--faint);text-align:center;margin:18px 4px 0;line-height:1.7}
+.tools{display:flex;gap:8px;margin-top:10px}
+.tools button{flex:1;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px;font-size:14px;color:var(--soft)}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><h1>🌙 助眠白噪音</h1><a href="./">主页</a></div>
+  <div class="big"><button class="play" id="play" aria-label="播放">▶</button><div class="status" id="status">选几种声音，点 ▶ 开始</div></div>
+  <h2>一键场景</h2>
+  <div class="presets" id="presets"></div>
+  <h2>自己混合（可以同时开多种）</h2>
+  <div class="grid" id="grid"></div>
+  <h2>总音量</h2>
+  <div class="row"><span>🔈</span><input type="range" id="master" min="0" max="100" value="70"><span>🔊</span></div>
+  <h2>定时关闭（最后 60 秒慢慢变小）</h2>
+  <div class="timers" id="timers"></div>
+  <div class="tools"><button id="dimBtn">🌑 黑屏模式</button><button id="stopBtn">■ 停止</button></div>
+  <div class="hint">所有声音都是在手机上实时合成的，不用联网下载，不耗流量，也不会循环重复。<br>建议音量调到「刚好盖住环境噪音」就行，别太大声；锁屏后会继续播放。</div>
+</main>
+<div class="dim" id="dim"><div class="clk" id="clk"></div><div id="dimTxt"></div><div style="margin-top:30px">轻点屏幕退出黑屏</div></div>
+<audio id="out" playsinline></audio>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function get(k, d) { try { var v = localStorage.getItem('sleep:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { localStorage.setItem('sleep:' + k, JSON.stringify(v)); } catch (e) { } }
+
+  var SOUNDS = [
+    { k: 'rain', ic: '🌧️', n: '雨声' }, { k: 'ocean', ic: '🌊', n: '海浪' }, { k: 'fire', ic: '🔥', n: '壁炉' },
+    { k: 'wind', ic: '🌬️', n: '风声' }, { k: 'stream', ic: '💧', n: '溪流' }, { k: 'night', ic: '🦗', n: '夏夜虫鸣' },
+    { k: 'fan', ic: '🌀', n: '风扇' }, { k: 'pink', ic: '🌸', n: '粉红噪音' }, { k: 'brown', ic: '🟤', n: '棕噪音' },
+    { k: 'white', ic: '⚪', n: '白噪音' }, { k: 'thunder', ic: '⛈️', n: '远处雷声' }, { k: 'heart', ic: '💗', n: '心跳' }
+  ];
+  var PRESETS = [
+    { n: '🌧️ 雨夜', mix: { rain: 70, wind: 25, thunder: 30 } },
+    { n: '🏖️ 海边', mix: { ocean: 75, wind: 20 } },
+    { n: '🏕️ 林间篝火', mix: { fire: 65, night: 30, stream: 25 } },
+    { n: '😴 深度睡眠', mix: { brown: 70 } },
+    { n: '🌀 风扇房间', mix: { fan: 70, brown: 25 } },
+    { n: '📖 专注学习', mix: { pink: 55, rain: 25 } },
+    { n: '👶 安抚宝宝', mix: { heart: 60, white: 25 } }
+  ];
+  var TIMES = [0, 15, 30, 45, 60, 90, 120];
+  var MIX = get('mix', { rain: 70, wind: 25 }), master = get('master', 70), timerMin = get('timer', 45);
+  var ctx = null, out = null, mGain = null, layers = {}, playing = false, endAt = 0, tick = null, BUF = {};
+
+  /* ---------- buffers (generated once, seamless loops) ---------- */
+  function loopify(gen, len, n) { // crossfade the tail into the head so the loop has no click
+    var b = new Float32Array(len);
+    for (var i = 0; i < len; i++) b[i] = gen[i];
+    for (i = 0; i < n; i++) { var w = i / n; b[i] = gen[i] * w + gen[len + i] * (1 - w); }
+    return b;
+  }
+  function mk(secs, fill) {
+    var sr = ctx.sampleRate, len = Math.floor(sr * secs), n = Math.floor(sr * 0.5), g = new Float32Array(len + n);
+    fill(g, sr);
+    var abuf = ctx.createBuffer(1, len, sr);
+    abuf.getChannelData(0).set(loopify(g, len, n));
+    return abuf;
+  }
+  function white(g) { for (var i = 0; i < g.length; i++) g[i] = Math.random() * 2 - 1; }
+  function pink(g) { var b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0; for (var i = 0; i < g.length; i++) { var w = Math.random() * 2 - 1; b0 = 0.99886 * b0 + w * 0.0555179; b1 = 0.99332 * b1 + w * 0.0750759; b2 = 0.96900 * b2 + w * 0.1538520; b3 = 0.86650 * b3 + w * 0.3104856; b4 = 0.55000 * b4 + w * 0.5329522; b5 = -0.7616 * b5 - w * 0.0168980; g[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11; b6 = w * 0.115926; } }
+  function brown(g) { var l = 0; for (var i = 0; i < g.length; i++) { var w = Math.random() * 2 - 1; l = (l + 0.02 * w) / 1.02; g[i] = l * 3.5; } }
+  function smoothRand(len, sr, hz) { // smooth random envelope 0..1
+    var out = new Float32Array(len), step = Math.max(1, Math.floor(sr / hz)), a = Math.random(), b = Math.random();
+    for (var i = 0; i < len; i++) { var k = i % step; if (k === 0) { a = b; b = Math.random(); } var t = k / step; t = t * t * (3 - 2 * t); out[i] = a + (b - a) * t; }
+    return out;
+  }
+  function buf(k) {
+    if (BUF[k]) return BUF[k];
+    var B;
+    if (k === 'white') B = mk(6, white);
+    else if (k === 'pink') B = mk(6, pink);
+    else if (k === 'brown' || k === 'fan') B = mk(8, brown);
+    else if (k === 'rain') B = mk(10, function (g, sr) {
+      pink(g);
+      for (var i = 0; i < g.length; i++) g[i] *= 0.55;
+      var drops = Math.floor(g.length / sr * 45);
+      for (var d = 0; d < drops; d++) {
+        var at = Math.floor(Math.random() * (g.length - sr * 0.02)), amp = 0.15 + Math.random() * 0.45, f = 1800 + Math.random() * 3500, dur = Math.floor(sr * (0.004 + Math.random() * 0.012));
+        for (var j = 0; j < dur; j++) g[at + j] += amp * Math.sin(2 * Math.PI * f * j / sr) * Math.exp(-j / (dur / 4));
+      }
+    });
+    else if (k === 'ocean') B = mk(24, function (g, sr) {
+      brown(g);
+      for (var i = 0; i < g.length; i++) { var t = i / sr, e = 0.18 + 0.55 * Math.pow(Math.sin(Math.PI * t / 8), 2) + 0.35 * Math.pow(Math.sin(Math.PI * t / 12 + 1), 4); g[i] *= e; }
+    });
+    else if (k === 'fire') B = mk(12, function (g, sr) {
+      brown(g);
+      for (var i = 0; i < g.length; i++) g[i] *= 0.45;
+      var n = Math.floor(g.length / sr * 9);
+      for (var c = 0; c < n; c++) {
+        var at = Math.floor(Math.random() * (g.length - sr * 0.05)), pop = Math.random() < 0.15, amp = pop ? 0.7 + Math.random() * 0.3 : 0.1 + Math.random() * 0.35, dur = Math.floor(sr * (pop ? 0.02 + Math.random() * 0.03 : 0.002 + Math.random() * 0.008));
+        for (var j = 0; j < dur; j++) g[at + j] += amp * (Math.random() * 2 - 1) * Math.exp(-j / (dur / 3));
+      }
+    });
+    else if (k === 'stream') B = mk(10, function (g, sr) {
+      white(g); var env = smoothRand(g.length, sr, 14);
+      for (var i = 0; i < g.length; i++) g[i] *= 0.35 + 0.65 * env[i];
+    });
+    else if (k === 'wind') B = mk(20, function (g, sr) {
+      pink(g); var env = smoothRand(g.length, sr, 0.25);
+      for (var i = 0; i < g.length; i++) g[i] *= 0.25 + 0.95 * env[i];
+    });
+    else if (k === 'night') B = mk(8, function (g, sr) {
+      for (var i = 0; i < g.length; i++) g[i] = 0;
+      var bugs = [[4300, 0.62, 0.0], [4700, 0.71, 0.27], [3900, 0.55, 0.41]];
+      bugs.forEach(function (bg) {
+        var f = bg[0], per = bg[1], off = bg[2];
+        for (var t0 = off; t0 < g.length / sr; t0 += per) for (var p = 0; p < 3; p++) {
+          var st = Math.floor((t0 + p * 0.045) * sr), dur = Math.floor(0.028 * sr);
+          for (var j = 0; j < dur && st + j < g.length; j++) g[st + j] += 0.22 * Math.sin(2 * Math.PI * f * j / sr) * Math.sin(Math.PI * j / dur);
+        }
+      });
+      var bed = new Float32Array(g.length); pink(bed); for (i = 0; i < g.length; i++) g[i] += bed[i] * 0.08;
+    });
+    else if (k === 'thunder') B = mk(40, function (g, sr) {
+      var bed = new Float32Array(g.length); brown(bed);
+      for (var i = 0; i < g.length; i++) g[i] = 0;
+      [6, 23].forEach(function (at0) {
+        var st = Math.floor((at0 + Math.random() * 6) * sr), len = Math.floor((5 + Math.random() * 3) * sr);
+        for (var j = 0; j < len && st + j < g.length; j++) { var t = j / len, e = (t < 0.05 ? t / 0.05 : Math.exp(-(t - 0.05) * 4)) * (0.6 + 0.4 * Math.sin(j / sr * 7)); g[st + j] = bed[st + j] * e * 1.4; }
+      });
+    });
+    else if (k === 'heart') B = mk(6, function (g, sr) {
+      for (var i = 0; i < g.length; i++) g[i] = 0;
+      var bpm = 60, per = 60 / bpm;
+      for (var t0 = 0; t0 < g.length / sr; t0 += per) [[0, 1], [0.28, 0.7]].forEach(function (b) {
+        var st = Math.floor((t0 + b[0]) * sr), dur = Math.floor(0.12 * sr);
+        for (var j = 0; j < dur && st + j < g.length; j++) g[st + j] += b[1] * 0.9 * Math.sin(2 * Math.PI * 50 * j / sr) * Math.exp(-j / (dur / 5));
+      });
+    });
+    BUF[k] = B;
+    return B;
+  }
+
+  /* ---------- graph ---------- */
+  function ensureCtx() {
+    if (ctx) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    ctx = new AC();
+    mGain = ctx.createGain(); mGain.gain.value = 0;
+    if (ctx.createMediaStreamDestination) { // route through an <audio> element so it keeps playing with the screen locked
+      out = ctx.createMediaStreamDestination(); mGain.connect(out);
+      $('out').srcObject = out.stream;
+    } else mGain.connect(ctx.destination);
+  }
+  function chain(k, src) { // per-sound colouring
+    var nodes = [src], f;
+    if (k === 'rain') { f = ctx.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 300; nodes.push(f); f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 7000; nodes.push(f); }
+    if (k === 'ocean') { f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 900; nodes.push(f); }
+    if (k === 'fan') { f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 650; nodes.push(f); }
+    if (k === 'wind') { f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 500; f.Q.value = 0.9; nodes.push(f); var lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 0.06; lg.gain.value = 250; lfo.connect(lg); lg.connect(f.frequency); lfo.start(); nodes.lfo = lfo; }
+    if (k === 'stream') { f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 2200; f.Q.value = 0.7; nodes.push(f); }
+    if (k === 'thunder') { f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 220; nodes.push(f); }
+    if (k === 'heart') { f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 160; nodes.push(f); }
+    for (var i = 0; i < nodes.length - 1; i++) nodes[i].connect(nodes[i + 1]);
+    return nodes;
+  }
+  var GAINFIX = { white: 0.25, pink: 0.6, brown: 0.7, fan: 1.1, rain: 0.7, ocean: 0.9, fire: 0.8, stream: 0.4, wind: 0.9, night: 0.6, thunder: 1.3, heart: 1.0 };
+  function startLayer(k) {
+    if (layers[k]) return;
+    var src = ctx.createBufferSource(); src.buffer = buf(k); src.loop = true;
+    src.loopStart = 0; src.loopEnd = src.buffer.duration;
+    var nodes = chain(k, src), g = ctx.createGain();
+    g.gain.value = 0;
+    nodes[nodes.length - 1].connect(g); g.connect(mGain);
+    src.start(0, Math.random() * src.buffer.duration * 0.9);
+    g.gain.setTargetAtTime(vol(k), ctx.currentTime, 0.6);
+    layers[k] = { src: src, g: g, nodes: nodes };
+  }
+  function stopLayer(k) {
+    var L = layers[k]; if (!L) return;
+    L.g.gain.setTargetAtTime(0, ctx.currentTime, 0.4);
+    setTimeout(function () { try { L.src.stop(); if (L.nodes.lfo) L.nodes.lfo.stop(); L.g.disconnect(); } catch (e) { } }, 2000);
+    delete layers[k];
+  }
+  function vol(k) { var v = (MIX[k] || 0) / 100; return v * v * GAINFIX[k]; }
+  function masterVal() { var v = master / 100; return v * v * 2.5; }
+
+  /* ---------- UI ---------- */
+  function renderGrid() {
+    $('grid').innerHTML = SOUNDS.map(function (s) {
+      var on = MIX[s.k] > 0;
+      return '<div class="snd' + (on ? ' on' : '') + '" data-k="' + s.k + '"><div class="ic">' + s.ic + '</div><div class="nm">' + s.n + '</div><input type="range" min="5" max="100" value="' + (MIX[s.k] || 50) + '" data-v="' + s.k + '" aria-label="' + s.n + '音量"></div>';
+    }).join('');
+  }
+  function renderPresets() {
+    var cur = JSON.stringify(MIX);
+    $('presets').innerHTML = PRESETS.map(function (p, i) { return '<button data-p="' + i + '" class="' + (JSON.stringify(p.mix) === cur ? 'on' : '') + '">' + p.n + '</button>'; }).join('');
+  }
+  function renderTimers() {
+    $('timers').innerHTML = TIMES.map(function (t) { return '<button data-t="' + t + '" class="' + (t === timerMin ? 'on' : '') + '">' + (t ? (t >= 60 ? (t / 60) + ' 小时' : t + ' 分钟') : '不关闭') + '</button>'; }).join('');
+  }
+  function names() { var a = []; SOUNDS.forEach(function (s) { if (MIX[s.k] > 0) a.push(s.n); }); return a; }
+  function status() {
+    if (!playing) { $('status').innerHTML = names().length ? '已选：' + names().join(' + ') + '，点 ▶ 开始' : '选几种声音，点 ▶ 开始'; return; }
+    var left = endAt ? Math.max(0, Math.round((endAt - Date.now()) / 60000)) : 0;
+    $('status').innerHTML = '<b>' + (names().join(' + ') || '（没有选声音）') + '</b>' + (endAt ? ' · ' + (left ? left + ' 分钟后关闭' : '正在淡出…') : ' · 不自动关闭');
+    $('dimTxt').textContent = names().join(' · ') + (endAt ? ' · ' + left + ' 分钟后关闭' : '');
+  }
+  function save() { put('mix', MIX); }
+  $('grid').addEventListener('click', function (e) {
+    if (e.target.tagName === 'INPUT') return;
+    var c = e.target.closest ? e.target.closest('.snd') : null; if (!c) return;
+    var k = c.getAttribute('data-k');
+    if (MIX[k] > 0) { delete MIX[k]; if (playing) stopLayer(k); }
+    else { MIX[k] = +c.querySelector('input').value || 50; if (playing) startLayer(k); }
+    save(); renderGrid(); renderPresets(); status(); meta();
+  });
+  $('grid').addEventListener('input', function (e) {
+    var k = e.target.getAttribute('data-v'); if (!k) return;
+    MIX[k] = +e.target.value; save();
+    if (layers[k]) layers[k].g.gain.setTargetAtTime(vol(k), ctx.currentTime, 0.15);
+    renderPresets();
+  });
+  $('presets').onclick = function (e) {
+    var b = e.target.closest ? e.target.closest('[data-p]') : null; if (!b) return;
+    var p = PRESETS[+b.getAttribute('data-p')], k;
+    if (playing) for (k in layers) if (layers.hasOwnProperty(k) && !p.mix[k]) stopLayer(k);
+    MIX = JSON.parse(JSON.stringify(p.mix)); save();
+    if (playing) { for (k in MIX) if (MIX.hasOwnProperty(k)) { if (layers[k]) layers[k].g.gain.setTargetAtTime(vol(k), ctx.currentTime, 0.3); else startLayer(k); } }
+    else start();
+    renderGrid(); renderPresets(); status(); meta();
+  };
+  $('master').value = master;
+  $('master').oninput = function () { master = +this.value; put('master', master); if (ctx && playing && !fading) mGain.gain.setTargetAtTime(masterVal(), ctx.currentTime, 0.1); };
+  $('timers').onclick = function (e) {
+    var b = e.target.closest ? e.target.closest('[data-t]') : null; if (!b) return;
+    timerMin = +b.getAttribute('data-t'); put('timer', timerMin); renderTimers();
+    if (playing) { endAt = timerMin ? Date.now() + timerMin * 60000 : 0; fading = false; mGain.gain.cancelScheduledValues(ctx.currentTime); mGain.gain.setTargetAtTime(masterVal(), ctx.currentTime, 0.2); }
+    status();
+  };
+
+  var fading = false;
+  function start() {
+    if (!names().length) { MIX = { rain: 70, wind: 25 }; save(); renderGrid(); renderPresets(); }
+    ensureCtx();
+    if (ctx.state === 'suspended' && ctx.resume) ctx.resume();
+    if (out) { var p = $('out').play(); if (p && p.catch) p.catch(function () { }); }
+    var k;
+    for (k in MIX) if (MIX.hasOwnProperty(k) && MIX[k] > 0) startLayer(k);
+    fading = false;
+    mGain.gain.cancelScheduledValues(ctx.currentTime);
+    mGain.gain.setValueAtTime(mGain.gain.value, ctx.currentTime);
+    mGain.gain.linearRampToValueAtTime(masterVal(), ctx.currentTime + 3);
+    playing = true; endAt = timerMin ? Date.now() + timerMin * 60000 : 0;
+    $('play').textContent = '❚❚'; $('play').className = 'play on';
+    clearInterval(tick); tick = setInterval(loop, 5000);
+    status(); meta();
+    if (navigator.mediaSession) navigator.mediaSession.playbackState = 'playing';
+  }
+  function stop(fadeSecs) {
+    if (!ctx || !playing) return;
+    playing = false; fading = false; clearInterval(tick);
+    var t = ctx.currentTime, f = fadeSecs || 1.5;
+    mGain.gain.cancelScheduledValues(t); mGain.gain.setValueAtTime(mGain.gain.value, t); mGain.gain.linearRampToValueAtTime(0, t + f);
+    setTimeout(function () { if (playing) return; var k; for (k in layers) if (layers.hasOwnProperty(k)) stopLayer(k); if (out) $('out').pause(); }, f * 1000 + 100);
+    $('play').textContent = '▶'; $('play').className = 'play';
+    endAt = 0; status();
+    if (navigator.mediaSession) navigator.mediaSession.playbackState = 'paused';
+  }
+  function loop() {
+    if (!playing) return;
+    if (endAt) {
+      var left = (endAt - Date.now()) / 1000;
+      if (left <= 60 && !fading) { fading = true; var t = ctx.currentTime; mGain.gain.cancelScheduledValues(t); mGain.gain.setValueAtTime(mGain.gain.value, t); mGain.gain.linearRampToValueAtTime(0, t + Math.max(1, left)); }
+      if (left <= 0) { stop(0.5); return; }
+    }
+    if (ctx.state === 'suspended' && ctx.resume) ctx.resume();
+    status();
+  }
+  $('play').onclick = function () { if (playing) stop(2); else start(); };
+  $('stopBtn').onclick = function () { stop(2); };
+  function meta() {
+    if (!navigator.mediaSession || !window.MediaMetadata) return;
+    try { navigator.mediaSession.metadata = new window.MediaMetadata({ title: names().join(' + ') || '白噪音', artist: '助眠白噪音', album: timerMin ? timerMin + ' 分钟后关闭' : '' }); } catch (e) { }
+  }
+  if (navigator.mediaSession) {
+    try { navigator.mediaSession.setActionHandler('play', function () { start(); }); navigator.mediaSession.setActionHandler('pause', function () { stop(2); }); } catch (e) { }
+  }
+  /* black screen mode */
+  function clock() { var d = new Date(); $('clk').textContent = d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2); }
+  var clkT = null, wake = null;
+  $('dimBtn').onclick = function () {
+    $('dim').className = 'dim on'; clock(); clkT = setInterval(clock, 20000); status();
+    if (navigator.wakeLock && navigator.wakeLock.request) navigator.wakeLock.request('screen').then(function (w) { wake = w; }, function () { });
+  };
+  $('dim').onclick = function () { $('dim').className = 'dim'; clearInterval(clkT); if (wake) { try { wake.release(); } catch (e) { } wake = null; } };
+
+  renderGrid(); renderPresets(); renderTimers(); status();
+})();
+</script>
+</body>
+</html>
