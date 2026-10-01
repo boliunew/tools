@@ -1,0 +1,36 @@
+name: 打折促销
+
+on:
+  schedule:
+    - cron: "17 13 * * *"   # 每天 6:17 太平洋夏令时
+    - cron: "17 0 * * *"    # 每天 17:17 太平洋夏令时
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["deals/*.py", ".github/workflows/deals.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deals
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: if [ -f deals/build.py ]; then python deals/build.py; else python deals/probe.py; fi
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add deals/data
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "打折更新 $(date -u +%F-%H%M)"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
