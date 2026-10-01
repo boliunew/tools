@@ -1,0 +1,935 @@
+{
+ "flipp_flyers": {
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "len": 71722,
+  "head": "{\"refreshed_at\":\"2026-10-01 06:01:56 -0400\",\"category_sort_csv\":\"All Flyers,Black Friday,Boxing Day,Halloween,Thanksgiving,Cyber Monday,Holiday Gifting,Christmas,New Year's Eve,New Years,Valentine's Day,President's Day,Easter,Spring,Mother's Day,Father's Day,Memorial Day,Victoria Day,Back to School,Labor Day,Garden & Patio,Groceries,Restaurants,Home & Garden,Pharmacy,General Merchandise,Electronics,Baby & Kids,Fashion,Automotive,Sporting Goods,Pets,Office,Specialty,Buy Online,New Stores,Popular Near You\",\"flyers\":[{\"id\":8164154,\"flyer_run_id\":1231541,\"flyer_type_id\":7729,\"valid_from\":\"2026-09-28T00:00:00-04:00\",\"valid_to\":\"2026-10-25T23:59:59-04:00\",\"available_from\":\"2026-09-28T01:00:00-04:00\",\"available_to\":\"2026-10-26T00:59:59-04:00\",\"premium\":true,\"width\":49742.0,\"height\":2560.0,\"priority\":24,\"analytics_payload\":\"budget_id:135367\",\"name\":\"Our Biggest Jewelry Sale of the Season\",\"merchant\":\"JCPenney\",\"merchant_id\":2207,\"path\":\"flyers/552a954d-5527-4ae4-b2c6-76c8f6914027/\",\"categories\":[\"All Flyers\",\"Fashion\"],\"resolutions\":[7.999678353168221,5.3296903460837886,3.6999404939006246,2.329945196496323,1.5499813037517138,1.0],\"postal_code\":\"91786\",\"locale\":\"en_US\",\"language\":1,\"relationship\":true,\"resolutions_csv\":\"7.999678353168221,5.3296903460837886,3.6999404939006246,2.329945196496323,1.5499813037517138,1.0\",\"categories_csv\":\"All Flyers,Fashion\",\"thumbnail_url\":\"http://f.wishabi.net/flyers/8164154/web_premium/1790360534.jpg\",\"thumbnail_hashed_key\":\"08977ce2-b90e-11f1-b4c0-86dd3b0f0b0b\",\"updated_at\":\"2026-09-29T08:33:10-04:00\",\"web_indexed\":false,\"seed\":0.030092945045322117,\"featured_items\":[],\"is_store_select\":true,\"merchant_logo\":\"http://images.wishabi.net/merchants/M5R1jh6RNb0MYg==/mini_magick20210604-1-akh2qc.png\",\"timezone\":-240},{\"id\":8148105,\"flyer_run_id\":1149671,",
+  "url": "https://backflipp.wishabi.com/flipp/flyers?locale=en-us&postal_code=91786"
+ },
+ "flipp_ng_data": {
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "len": 590359,
+  "head": "{\"flyers\":[{\"id\":8164154,\"flyer_run_id\":1231541,\"flyer_type_id\":7729,\"valid_from\":\"2026-09-28T00:00:00-04:00\",\"valid_to\":\"2026-10-25T23:59:59-04:00\",\"available_from\":\"2026-09-28T01:00:00-04:00\",\"available_to\":\"2026-10-26T00:59:59-04:00\",\"premium\":true,\"width\":49742.0,\"height\":2560.0,\"priority\":24,\"analytics_payload\":\"budget_id:135367|cmt:1|auction_uuid:3a6bec9d9e474619814a86ac5a44e744\",\"name\":\"Our Biggest Jewelry Sale of the Season\",\"merchant\":\"JCPenney\",\"merchant_id\":2207,\"path\":\"flyers/552a954d-5527-4ae4-b2c6-76c8f6914027/\",\"categories\":[\"All Flyers\",\"Fashion\"],\"resolutions\":[7.999678353168221,5.3296903460837886,3.6999404939006246,2.329945196496323,1.5499813037517138,1.0],\"budget_id\":135367,\"merchant_logo\":\"https://images.wishabi.net/merchants/M5R1jh6RNb0MYg==/mini_magick20210604-1-akh2qc.png\",\"premium_thumbnail_url\":\"https://f.wishabi.net/flyers/8164154/web_premium/1790360534.jpg\",\"mobile_thumbnail_url\":\"https://f.wishabi.net/flyers/8164154/xl_thumbnail/1790360534.jpg\",\"thumbnail_url\":\"https://f.wishabi.net/flyers/8164154/web_premium/1790360534.jpg\"},{\"id\":8148105,\"flyer_run_id\":1149671,\"flyer_type_id\":2550,\"valid_from\":\"2026-09-27T00:00:00-04:00\",\"valid_to\":\"2026-10-03T23:59:59-04:00\",\"available_from\":\"2026-09-23T00:00:00-04:00\",\"available_to\":\"2026-10-03T23:59:59-04:00\",\"premium\":false,\"width\":54270.0,\"height\":2560.0,\"priority\":63,\"analytics_payload\":\"auction_uuid:3a6bec9d9e474619814a86ac5a44e744\",\"name\":\"Weekly Ad\",\"merchant\":\"Walgreens\",\"merchant_id\":2460,\"path\":\"flyers/47549159-f574-4f60-8a42-bf2fcba3c438/\",\"categories\":[\"All Flyers\",\"Pharmacy\"],\"resolutions\":[7.999705188679245,5.329994107248085,3.699890919007363,2.329984544049459,1.54999571587696,1.0],\"budget_id\":null,\"merchant_logo\":\"https://images.wishabi.net/merchants/2460/1400704284/large\",\"premium_thumbnai",
+  "url": "https://flyers-ng.flippback.com/api/flipp/data?locale=en-us&postal_code=91786&sid=8243957120"
+ },
+ "flipp_search_f4l": {
+  "status": 200,
+  "type": "application/json",
+  "len": 94866,
+  "head": "{\"ads\":[],\"coupons\":[],\"coupons_v2\":[],\"ecom_items\":[],\"facets\":{\"filters\":[{\"data\":{\"values\":[{\"id\":\"all\",\"display\":\"Any Store\",\"logo_url\":\"\",\"count\":115},{\"id\":2449,\"display\":\"Food 4 Less\",\"logo_url\":\"https://images.wishabi.net/merchants/2449/1507309264/2449.jpg\",\"count\":115}]},\"key\":\"merchant\",\"title\":\"Filter by Store\",\"type\":\"checkbox_group\"},{\"data\":{\"values\":[{\"id\":\"all\",\"display\":\"All Types\",\"count\":115},{\"id\":\"flyer_items\",\"display\":\"Weekly Ad Deals\",\"count\":115},{\"id\":\"online_items\",\"display\":\"Online Deals\",\"count\":0},{\"id\":\"coupons\",\"display\":\"Coupons\",\"count\":0}]},\"key\":\"type\",\"title\":\"Filter by Type\",\"type\":\"checkbox_group\"}]},\"flyers\":[{\"id\":8157097,\"premium\":true}],\"items\":[{\"_L1\":\"Food, Beverages & Tobacco\",\"_L2\":\"Beverages\",\"bottom\":-2409.03,\"clean_image_url\":\"https://f.wishabi.net/page_items/435062277/1790119334/extra_large.jpg\",\"clipping_image_url\":\"https://f.wishabi.net/page_items/435062277/1790119334/extra_large.jpg\",\"current_price\":null,\"flyer_id\":8157097,\"flyer_item_id\":1042779998,\"id\":1042779998,\"indexed\":false,\"item_type\":\"flyer\",\"item_weight\":8.1,\"left\":62.9615,\"merchant_id\":2449,\"merchant_logo\":\"http://images.wishabi.net/merchants/2449/1507309264/2449.jpg\",\"merchant_name\":\"Food 4 Less\",\"name\":\"Coca-Cola, Pepsi or Squirt\",\"original_price\":null,\"post_price_text\":null,\"pre_price_text\":null,\"premium\":true,\"right\":841.906,\"sale_story\":\"BUY 2, GET 2 of equal or lesser value FREE\",\"score\":48895.254,\"top\":-1809.12,\"valid_from\":\"2026-09-30T04:00:00+00:00\",\"valid_to\":\"2026-10-07T03:59:59+00:00\"},{\"_L1\":\"Food, Beverages & Tobacco\",\"_L2\":\"Food Items\",\"bottom\":-606.451,\"clean_image_url\":\"https://f.wishabi.net/page_items/435062370/1790119338/extra_large.jpg\",\"clipping_image_url\":\"https://f.wishabi.net/page_items/435062370/1790119338/extra_large.jpg\",\"current",
+  "url": "https://backflipp.wishabi.com/flipp/items/search?locale=en-us&postal_code=91786&q=food%204%20less"
+ },
+ "flipp_search_chicken": {
+  "status": 200,
+  "type": "application/json",
+  "len": 144223,
+  "head": "{\"ads\":[],\"coupons\":[],\"coupons_v2\":[],\"ecom_items\":[{\"average_rating\":4.702899932861328,\"current_price\":2.69,\"description\":\"PROGRESSO RICH N HEARTY WHITE MEAT CHICKEN HOMESTLYE\",\"display\":\"show\",\"global_id\":\"a8d45ccb-a3be-5176-88cd-b06b5505b3dc\",\"global_id_int\":811243546766234,\"id\":0,\"image_url\":\"https://flipp-image-retrieval.flipp.com/api/aHR0cHM6Ly9mLndpc2hhYmkubmV0L2l0ZW0tYXNzZXRzLzIyNjQvZDg1NTA1OTI0NTI5MzFhMzJjM2Y2ODk5NzgxMDZiMGEvb3JpZ2luYWwucG5n?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9mbGlwcC1pbWFnZS1yZXRyaWV2YWwuZmxpcHAuY29tL2FwaS9hSFIwY0hNNkx5OW1MbmRwYzJoaFlta3VibVYwTDJsMFpXMHRZWE56WlhSekx6SXlOalF2WkRnMU5UQTFPVEkwTlRJNU16RmhNekpqTTJZMk9EazVOemd4TURaaU1HRXZiM0pwWjJsdVlXd3VjRzVuPyoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTE0NTMwOTd9fX1dfQ__&Signature=OSQY8WLJEfhZ1cYOyQIXMnYxdoj00ITb7mDYLdYf~74nTcHg44Sry-kKrppc9y7TZKy-Xz4qtQMcoV7vR-0hz2abibsBE1Z-fx34TNFY0TbyXY4yBzlHK2LhWaV3kAxbf5GC4WxxXE7snwfaBci~29aZyQ69t7FfhRUt90bfFPpO-LfBWnzPqKZ~rRubjK0OzAKtruNh6NShRuSvqbuJ5cX4V9YYxPoJ4kOuusawIYO1mgkf4Qdf8GrameahkpRHH7hF3qp7v9re0GncH5MpzrdVgibFaNHxqt-hEu92rP~O21-4mjJ~U-q0XYL~8vqrTuugIwfrgqMYXtxLF9qIgw__&Key-Pair-Id=KDIF3067XOLU0&transforms=resizep:162:140\",\"item_id\":\"403081\",\"item_type\":\"ecom\",\"merchant\":\"CVS Pharmacy\",\"merchant_id\":2264,\"merchant_logo\":\"https://images.wishabi.net/merchants/2264/1507308958/2264.jpg\",\"name\":\"PROGRESSO RICH N HEARTY WHITE MEAT CHICKEN HOMESTLYE\",\"original_price\":4.69,\"return_info\":{\"details_url\":\"\",\"tag_line\":\"\"},\"score\":159.97285,\"shipping_info\":{\"details_url\":\"\",\"tag_line\":\"\"},\"shipping_tag_line\":\"\",\"sku\":\"403081\",\"total_reviews\":0},{\"average_rating\":null,\"brand_ids\":[\"8736\"],\"current_price\":30.99,\"description\":\"This 13.25\\\"H Easter Resin Table Decor features three yellow ducks stacked together, with the to",
+  "url": "https://backflipp.wishabi.com/flipp/items/search?locale=en-us&postal_code=91786&q=chicken"
+ },
+ "sd_frontpage": {
+  "status": 200,
+  "type": "text/xml; charset=UTF-8",
+  "len": 74667,
+  "head": "<?xml version=\"1.0\"?>\n<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:content=\"http://purl.org/rss/1.0/modules/content/\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n  <channel>\n    <title>Slickdeals Frontpage RSS Feed</title>\n    <link>https://slickdeals.net/</link>\n    <description>\n              Save  money with Slickdeals: find the lowest and cheapest price, best deals  and bargains, and hot coupons. Community driven bargain hunting with thousands of free discounts, promo codes, freebies and price  comparisons.\n          </description>\n    <language>en</language>\n    <lastBuildDate>Thu, 01 Oct 2026 10:02:03 +0000</lastBuildDate>\n    <ttl>5</ttl>\n    <atom:link href=\"https://slickdeals.net/newsearch.php?mode=frontpage&amp;searcharea=deals&amp;searchin=first&amp;rss=1\" rel=\"self\" type=\"application/rss+xml\" />\n    <image>\n      <url>https://static.slickdealscdn.com/images/misc/rss.jpg</url>\n      <title>Slickdeals Frontpage RSS Feed</title>\n      <link>https://slickdeals.net/</link>\n    </image>\n    <copyright>Copyright 1999 - 2026</copyright>\n          <item>\n                                            <title><![CDATA[World of Hyatt Hotels & Resorts Offer: Earn 3K Bonus Points Every 3 Night Stay Free to Register (Up to 36K Points thru 12/15)]]></title>\n                                                <link>https://slickdeals.net/f/20078985-world-of-hyatt-hotels-resorts-offer-earn-3k-bonus-points-every-3-night-stay-free-to-register-up-to-36k-points-thru-12-15?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2</link>\n                                                <description>Members of World of Hyatt (free to join) may register today to earn 3K Bonus Points for _every 3 eligible nights_ at all hotels participating in World of Hyatt, then use points",
+  "url": "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"
+ },
+ "sd_pop": {
+  "status": 200,
+  "type": "text/xml; charset=UTF-8",
+  "len": 96391,
+  "head": "<?xml version=\"1.0\"?>\n<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:content=\"http://purl.org/rss/1.0/modules/content/\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n  <channel>\n    <title>Slickdeals Popular Deals RSS Feed</title>\n    <link>https://slickdeals.net/deals/</link>\n    <description>\n              Save  money with Slickdeals: find the lowest and cheapest price, best deals  and bargains, and hot coupons. Community driven bargain hunting with thousands of free discounts, promo codes, freebies and price  comparisons.\n          </description>\n    <language>en</language>\n    <lastBuildDate>Thu, 01 Oct 2026 10:02:04 +0000</lastBuildDate>\n    <ttl>5</ttl>\n    <atom:link href=\"https://slickdeals.net/newsearch.php?mode=popdeals&amp;searcharea=deals&amp;searchin=first&amp;rss=1\" rel=\"self\" type=\"application/rss+xml\" />\n    <image>\n      <url>https://static.slickdealscdn.com/images/misc/rss.jpg</url>\n      <title>Slickdeals Popular Deals RSS Feed</title>\n      <link>https://slickdeals.net/deals/</link>\n    </image>\n    <copyright>Copyright 1999 - 2026</copyright>\n          <item>\n                                            <title>New Woot! Customers: $1 Graphic T-Shirts (Various) + Free Shipping w/ Prime</title>\n                                                <link>https://slickdeals.net/f/20081640-new-woot-customers-1-graphic-t-shirts-various-free-shipping-w-prime?utm_source=rss&amp;utm_content=ht&amp;utm_medium=RSS2</link>\n                                                <description><![CDATA[Woot! [woot.com] has for *New Woot! Customers:$1 Graphic T-Shirts (Various)* w/ code DOLLARSHIRTat checkout. Login with your Prime account to receive free shipping, otherwise it is a $6 flat fee.]]></description>\n                                                <c",
+  "url": "https://slickdeals.net/newsearch.php?mode=popdeals&searcharea=deals&searchin=first&rss=1"
+ },
+ "sd_walmart": {
+  "status": 200,
+  "type": "text/xml; charset=UTF-8",
+  "len": 76581,
+  "head": "<?xml version=\"1.0\"?>\n<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:content=\"http://purl.org/rss/1.0/modules/content/\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n  <channel>\n    <title>Slickdeals - &#039;walmart&#039; search</title>\n    <link>https://slickdeals.net/newsearch.php?q=walmart&amp;searcharea=deals&amp;searchin=first</link>\n    <description>\n              Save  money with Slickdeals: find the lowest and cheapest price, best deals  and bargains, and hot coupons. Community driven bargain hunting with thousands of free discounts, promo codes, freebies and price  comparisons.\n          </description>\n    <language>en</language>\n    <lastBuildDate>Thu, 01 Oct 2026 10:02:06 GMT</lastBuildDate>\n    <ttl>5</ttl>\n    <atom:link href=\"https://slickdeals.net/newsearch.php?q=walmart&amp;searcharea=deals&amp;searchin=first&amp;rss=1\" rel=\"self\" type=\"application/rss+xml\" />\n    <image>\n      <url>https://static.slickdealscdn.com/images/misc/rss.jpg</url>\n      <title>Slickdeals - &#039;walmart&#039; search</title>\n      <link>https://slickdeals.net/newsearch.php?q=walmart&amp;searcharea=deals&amp;searchin=first</link>\n    </image>\n    <copyright>Copyright 1999 - 2026</copyright>\n          <item>\n                                            <title><![CDATA[Peanuts Snoopy Women's and Women's Plus Gothic One Piece Sleep Romper 2X $6.41, 3X $6.74]]></title>\n                                                <link>https://slickdeals.net/f/20082549-peanuts-snoopy-women-s-and-women-s-plus-gothic-one-piece-sleep-romper-2x-6-41-3x-6-74?utm_source=rss&amp;utm_content=def&amp;utm_medium=RSS2</link>\n                                                <description>3X \nhttps://www.walmart.com/ip/Peanut...027304388? \n \n2X \nhttps://www.walmart.com/ip/Peanut...883657414? \n \n",
+  "url": "https://slickdeals.net/newsearch.php?q=walmart&searcharea=deals&searchin=first&rss=1"
+ },
+ "sd_amazon": {
+  "status": 200,
+  "type": "text/xml; charset=UTF-8",
+  "len": 102575,
+  "head": "<?xml version=\"1.0\"?>\n<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:content=\"http://purl.org/rss/1.0/modules/content/\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n  <channel>\n    <title>Slickdeals - &#039;amazon&#039; search</title>\n    <link>https://slickdeals.net/newsearch.php?q=amazon&amp;searcharea=deals&amp;searchin=first</link>\n    <description>\n              Save  money with Slickdeals: find the lowest and cheapest price, best deals  and bargains, and hot coupons. Community driven bargain hunting with thousands of free discounts, promo codes, freebies and price  comparisons.\n          </description>\n    <language>en</language>\n    <lastBuildDate>Thu, 01 Oct 2026 10:02:08 GMT</lastBuildDate>\n    <ttl>5</ttl>\n    <atom:link href=\"https://slickdeals.net/newsearch.php?q=amazon&amp;searcharea=deals&amp;searchin=first&amp;rss=1\" rel=\"self\" type=\"application/rss+xml\" />\n    <image>\n      <url>https://static.slickdealscdn.com/images/misc/rss.jpg</url>\n      <title>Slickdeals - &#039;amazon&#039; search</title>\n      <link>https://slickdeals.net/newsearch.php?q=amazon&amp;searcharea=deals&amp;searchin=first</link>\n    </image>\n    <copyright>Copyright 1999 - 2026</copyright>\n          <item>\n                                            <title>360mm MSI MAG Coreliquid A12 360 AIO ARGB CPU Liquid Cooler (Black) $79.99 + Free Shipping</title>\n                                                <link>https://slickdeals.net/f/20082576-360mm-msi-mag-coreliquid-a12-360-aio-argb-cpu-liquid-cooler-black-79-99-free-shipping?utm_source=rss&amp;utm_content=def&amp;utm_medium=RSS2</link>\n                                                <description><![CDATA[Amazon [amazon.com] has *MSI MAG CoreLiquid A12 360mm AIO ARGB CPU Liquid Cooler* on sale for *$79.99*. *Shipping ",
+  "url": "https://slickdeals.net/newsearch.php?q=amazon&searcharea=deals&searchin=first&rss=1"
+ },
+ "camel_drops": {
+  "status": 200,
+  "type": "application/xml; charset=utf-8",
+  "len": 12804,
+  "head": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\">\n  <channel>\n    <title>Top Amazon Price Drops</title>\n    <link>https://camelcamelcamel.com/top_drops?</link>\n    <description>Amazon top price drops list by camelcamelcamel.com</description>\n    <language>en-us</language>\n    <pubDate>Thu, 01 Oct 2026 10:02:10 UTC</pubDate>\n    <lastBuildDate>Thu, 01 Oct 2026 10:02:10 UTC</lastBuildDate>\n    <generator>camelcamelcamel.com</generator>\n    <managingEditor>support@camelcamelcamel.com (camelcamelcamel)</managingEditor>\n    <webMaster>support@camelcamelcamel.com (camelcamelcamel)</webMaster>\n    <item>\n      <title>Best Of: Classic Philadelphia Recordings - down 11.76% ($3.81) to $28.58 from $32.39</title>\n      <link>https://camelcamelcamel.com/product/B0000247WE</link>\n      <description>&lt;p&gt;Useful URLs: &lt;a href=\"https://camelcamelcamel.com/product/1BD050B0E0N2Z4E7JWREJ/go\"&gt;Amazon.com&lt;/a&gt;, &lt;a href=\"https://camelcamelcamel.com/product/B0000247WE?active=price_amazon\"&gt;camelcamelcamel.com&lt;/a&gt;&lt;/p&gt;</description>\n      <pubDate>Thu, 01 Oct 2026 02:49:14 PDT</pubDate>\n      <guid isPermaLink=\"false\">0155617b57cc99a048253c33801000790c8829bf</guid>\n    </item>\n    <item>\n      <title>SRAM X01 Eagle AXS Rear Derail...d, Long Cage, 52t Max, Battery - down 7.83% ($55.14) to $649.43 from $704.57</title>\n      <link>https://camelcamelcamel.com/product/B08CKSBTT9</link>\n      <description>&lt;p&gt;Useful URLs: &lt;a href=\"https://camelcamelcamel.com/product/1BE0D8HC0K1S0BET2TX92/go\"&gt;Amazon.com&lt;/a&gt;, &lt;a href=\"https://camelcamelcamel.com/product/B08CKSBTT9?active=price_amazon\"&gt;camelcamelcamel.com&lt;/a&gt;&lt;/p&gt;</description>\n      <pubDate>Thu, 01 Oct 2026 02:47:03 PDT</pubDate>\n      <guid isPermaLink=\"false\">3ed6a58187484f036e",
+  "url": "https://camelcamelcamel.com/top_drops/feed"
+ },
+ "dealnews": {
+  "status": 200,
+  "type": "text/xml; charset=utf-8",
+  "len": 139108,
+  "head": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\" xmlns:dealnews=\"https://www.dealnews.com/ns/rss/1.0.htm\" xmlns:media=\"http://search.yahoo.com/mrss/\">\n <channel>\n  <title>DealNews - DealNews: Best Daily Deals, Discounts &amp; Sales</title>\n  <link>https://www.dealnews.com/</link>\n  <description>Today's best deals, sales and discounts across the web, vetted by our team of experts to ensure we provide the lowest prices.</description>\n  <language>en-us</language>\n  <copyright>Copyright 1997-2026 DealNews. All rights reserved.</copyright>\n  <pubDate>Thu, 01 Oct 2026 06:00:24 -0400</pubDate>\n  <image>\n   <url>https://d.dlnws.com/64599/1685709125-logo-dealnews.png</url>\n   <title>DealNews - DealNews: Best Daily Deals, Discounts &amp; Sales</title>\n   <link>https://www.dealnews.com/</link>\n   <height>128</height>\n   <width>492</width>\n   <description>Today's best deals, sales and discounts across the web, vetted by our team of experts to ensure we provide the lowest prices.</description>\n  </image>\n  <item>\n   <title>Snore Circle YA4600 Smart Electronic Muscle Stimulator Anti-Snoring Device for $89 + free shipping</title>\n   <link>https://www.dealnews.com/products/Snore-Circle/Snore-Circle-YA4600-Smart-Electronic-Muscle-Stimulator-Anti-Snoring-Device/538832.html?iref=rss</link>\n   <description><![CDATA[<img src='https://d.dlnws.com/64599/1790839569-draftworks_img_c13v6rd4bnvg1aonapp.jpeg?h=250&w=250' style='float: left;vertical-align: top;margin: 0 8px 8px 0'><div class=\"snippet summary\" title=\"Snoring&#x20;that&#x20;disrupts&#x20;your&#x20;sleep&#x20;&#x28;or&#x20;your&#x20;partner&#x27;s&#x29;&#x20;is&#x20;the&#x20;main&#x20;problem&#x20;this&#x20;tackles,&#x20;using&#x20;muscle&#x20;stimulation&#x20;on&#x20;the&#x20;device&#x20;rather&#x20;than&#x20;a&#x20;mouthgua",
+  "url": "https://www.dealnews.com/?rss=1"
+ },
+ "flyer_source": "flipp_ng_data",
+ "merchants": [
+  {
+   "id": 8164154,
+   "merchant": "JCPenney",
+   "merchant_name": null,
+   "name": "Our Biggest Jewelry Sale of the Season",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-25T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Fashion"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2207
+  },
+  {
+   "id": 8148105,
+   "merchant": "Walgreens",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-27T00:00:00-04:00",
+   "valid_to": "2026-10-03T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Pharmacy"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2460
+  },
+  {
+   "id": 8168626,
+   "merchant": "Best Buy",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-29T00:00:00-04:00",
+   "valid_to": "2026-10-05T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Electronics"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2178
+  },
+  {
+   "id": 8122353,
+   "merchant": "Ace Hardware",
+   "merchant_name": null,
+   "name": "October Month Long Red Hot Buys",
+   "valid_from": "2026-10-01T03:00:00-04:00",
+   "valid_to": "2026-10-31T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Home & Garden"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2613
+  },
+  {
+   "id": 8170282,
+   "merchant": "Home Depot",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-24T06:00:00-04:00",
+   "valid_to": "2026-10-01T05:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Home & Garden"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2135
+  },
+  {
+   "id": 8161647,
+   "merchant": "JCPenney",
+   "merchant_name": null,
+   "name": "Store Ads",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Fashion"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2207
+  },
+  {
+   "id": 8168650,
+   "merchant": "Walmart",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2175
+  },
+  {
+   "id": 8166528,
+   "merchant": "Bath & Body Works ",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Specialty"
+   ],
+   "categories_csv": null,
+   "merchant_id": 5143
+  },
+  {
+   "id": 8166656,
+   "merchant": "Old Navy",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Fashion"
+   ],
+   "categories_csv": null,
+   "merchant_id": 1249
+  },
+  {
+   "id": 8171857,
+   "merchant": "La Reyna Meat Market",
+   "merchant_name": null,
+   "name": "Indexed Weekly",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 7228
+  },
+  {
+   "id": 8166491,
+   "merchant": "GameStop",
+   "merchant_name": null,
+   "name": "Weekly Flyer",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Electronics"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2505
+  },
+  {
+   "id": 8158256,
+   "merchant": "Smart & Final",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T03:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2438
+  },
+  {
+   "id": 8157867,
+   "merchant": "Sprouts Farmers Market",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T03:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2419
+  },
+  {
+   "id": 8136183,
+   "merchant": "ALDI",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2353
+  },
+  {
+   "id": 8139073,
+   "merchant": "Health Mart Pharmacy",
+   "merchant_name": null,
+   "name": "Monthly",
+   "valid_from": "2026-10-01T00:00:00-04:00",
+   "valid_to": "2026-10-31T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Pharmacy"
+   ],
+   "categories_csv": null,
+   "merchant_id": 5601
+  },
+  {
+   "id": 8140277,
+   "merchant": "Albertsons",
+   "merchant_name": null,
+   "name": "Big Book of Savings",
+   "valid_from": "2026-09-23T00:00:00-04:00",
+   "valid_to": "2026-10-20T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 5661
+  },
+  {
+   "id": 8157024,
+   "merchant": "Albertsons",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 5661
+  },
+  {
+   "id": 8160063,
+   "merchant": "Family Dollar",
+   "merchant_name": null,
+   "name": "Current Ad",
+   "valid_from": "2026-09-27T00:00:00-04:00",
+   "valid_to": "2026-10-03T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2150
+  },
+  {
+   "id": 8170529,
+   "merchant": "Tractor Supply Company ",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-29T00:00:00-04:00",
+   "valid_to": "2026-10-05T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Home & Garden"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2499
+  },
+  {
+   "id": 8161583,
+   "merchant": "Super King Markets",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2633
+  },
+  {
+   "id": 8157097,
+   "merchant": "Food 4 Less",
+   "merchant_name": null,
+   "name": "California Weekly Ad",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2449
+  },
+  {
+   "id": 8166498,
+   "merchant": "Office Depot OfficeMax",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Electronics"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2360
+  },
+  {
+   "id": 8163506,
+   "merchant": "Cabela's",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-25T00:00:00-04:00",
+   "valid_to": "2026-10-01T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Sporting Goods"
+   ],
+   "categories_csv": null,
+   "merchant_id": 701
+  },
+  {
+   "id": 8144992,
+   "merchant": "Michaels USA",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-27T00:00:00-04:00",
+   "valid_to": "2026-10-03T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Home & Garden"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2362
+  },
+  {
+   "id": 8134941,
+   "merchant": "Target",
+   "merchant_name": null,
+   "name": "Weekly Circular",
+   "valid_from": "2026-09-27T00:00:00-04:00",
+   "valid_to": "2026-10-03T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2040
+  },
+  {
+   "id": 8121667,
+   "merchant": "Family Dollar",
+   "merchant_name": null,
+   "name": "Halloween Book",
+   "valid_from": "2026-09-08T00:00:00-04:00",
+   "valid_to": "2026-10-31T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2150
+  },
+  {
+   "id": 8170528,
+   "merchant": "Kohl's",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2470
+  },
+  {
+   "id": 8168655,
+   "merchant": "Five Below",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-29T00:00:00-04:00",
+   "valid_to": "2026-10-05T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2530
+  },
+  {
+   "id": 8160001,
+   "merchant": "Dollar General",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-27T03:00:00-04:00",
+   "valid_to": "2026-10-03T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2063
+  },
+  {
+   "id": 8159845,
+   "merchant": "Superior Grocers",
+   "merchant_name": null,
+   "name": "Weekly Specials",
+   "valid_from": "2026-09-30T01:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2555
+  },
+  {
+   "id": 8140245,
+   "merchant": "Vons",
+   "merchant_name": null,
+   "name": "Big Book of Savings",
+   "valid_from": "2026-09-23T00:00:00-04:00",
+   "valid_to": "2026-10-20T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2375
+  },
+  {
+   "id": 8147977,
+   "merchant": "CVS Pharmacy",
+   "merchant_name": null,
+   "name": "y más",
+   "valid_from": "2026-09-27T00:00:00-04:00",
+   "valid_to": "2026-10-10T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Pharmacy"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2264
+  },
+  {
+   "id": 8136077,
+   "merchant": "ALDI",
+   "merchant_name": null,
+   "name": "In Store Ad",
+   "valid_from": "2026-10-07T00:00:00-04:00",
+   "valid_to": "2026-10-13T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2353
+  },
+  {
+   "id": 8163557,
+   "merchant": "Stater Bros. Markets",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2525
+  },
+  {
+   "id": 8156623,
+   "merchant": "Ralphs",
+   "merchant_name": null,
+   "name": "Adult Beverage",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2550
+  },
+  {
+   "id": 8137165,
+   "merchant": "Lowe's",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-24T00:00:00-04:00",
+   "valid_to": "2026-10-07T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Home & Garden"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2358
+  },
+  {
+   "id": 8166740,
+   "merchant": "Costco ",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "General Merchandise",
+    "Pharmacy",
+    "Automotive"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2519
+  },
+  {
+   "id": 8157605,
+   "merchant": "Vons",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2375
+  },
+  {
+   "id": 8168589,
+   "merchant": "Marshalls",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-29T00:00:00-04:00",
+   "valid_to": "2026-10-05T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 6502
+  },
+  {
+   "id": 8141041,
+   "merchant": "Smart & Final",
+   "merchant_name": null,
+   "name": "Business - Foodservice ",
+   "valid_from": "2026-09-23T03:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2438
+  },
+  {
+   "id": 8168654,
+   "merchant": "Harbor Freight Tools",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-29T00:00:00-04:00",
+   "valid_to": "2026-10-12T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Home & Garden"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2542
+  },
+  {
+   "id": 8134911,
+   "merchant": "Vallarta Supermarkets",
+   "merchant_name": null,
+   "name": "Super Save Mas",
+   "valid_from": "2026-09-14T00:00:00-04:00",
+   "valid_to": "2026-10-11T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 3049
+  },
+  {
+   "id": 8162144,
+   "merchant": "Vallarta Supermarkets",
+   "merchant_name": null,
+   "name": "Grocery Savings",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 3049
+  },
+  {
+   "id": 8167868,
+   "merchant": "Grocery Outlet",
+   "merchant_name": null,
+   "name": "Weekly",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2906
+  },
+  {
+   "id": 8148282,
+   "merchant": "Ralphs",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2550
+  },
+  {
+   "id": 8163951,
+   "merchant": "El Super",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 3037
+  },
+  {
+   "id": 8166874,
+   "merchant": "Belk",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "General Merchandise"
+   ],
+   "categories_csv": null,
+   "merchant_id": 5329
+  },
+  {
+   "id": 8170504,
+   "merchant": "Dick's Sporting Goods",
+   "merchant_name": null,
+   "name": "Flyer",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Specialty"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2374
+  },
+  {
+   "id": 8164134,
+   "merchant": "JCPenney",
+   "merchant_name": null,
+   "name": "Semi-Annual Home Sale",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-25T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Fashion"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2207
+  },
+  {
+   "id": 8166536,
+   "merchant": "Costco ",
+   "merchant_name": null,
+   "name": "CP Grocery",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2519
+  },
+  {
+   "id": 8170356,
+   "merchant": "Home Depot",
+   "merchant_name": null,
+   "name": "Shop Pro Ad",
+   "valid_from": "2026-09-28T07:00:00-04:00",
+   "valid_to": "2026-10-05T06:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Home & Garden"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2135
+  },
+  {
+   "id": 8159849,
+   "merchant": "Walgreens",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-10-04T00:00:00-04:00",
+   "valid_to": "2026-10-10T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Pharmacy"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2460
+  },
+  {
+   "id": 8156610,
+   "merchant": "CVS Pharmacy",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-27T03:00:00-04:00",
+   "valid_to": "2026-10-04T02:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Pharmacy"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2264
+  },
+  {
+   "id": 8169845,
+   "merchant": "Mercado Las Glorias",
+   "merchant_name": null,
+   "name": "Indexed Weekly",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 6855
+  },
+  {
+   "id": 8166915,
+   "merchant": "ULTA",
+   "merchant_name": null,
+   "name": "Weekly Flyer",
+   "valid_from": "2026-09-28T00:00:00-04:00",
+   "valid_to": "2026-10-04T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Specialty"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2501
+  },
+  {
+   "id": 8157635,
+   "merchant": "CVS Pharmacy",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-10-04T03:00:00-04:00",
+   "valid_to": "2026-10-11T02:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Pharmacy"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2264
+  },
+  {
+   "id": 8161870,
+   "merchant": "Cardenas Markets",
+   "merchant_name": null,
+   "name": "Weekly Ad",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-06T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Groceries"
+   ],
+   "categories_csv": null,
+   "merchant_id": 3035
+  },
+  {
+   "id": 8075865,
+   "merchant": "Hobby Lobby",
+   "merchant_name": null,
+   "name": "Dark Week Insert",
+   "valid_from": "2026-08-10T00:00:00-04:00",
+   "valid_to": "2026-12-31T23:59:59-05:00",
+   "categories": [
+    "All Flyers",
+    "Specialty"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2510
+  },
+  {
+   "id": 8170523,
+   "merchant": "PetSmart",
+   "merchant_name": null,
+   "name": "CP Planner",
+   "valid_from": "2026-09-30T00:00:00-04:00",
+   "valid_to": "2026-10-13T23:59:59-04:00",
+   "categories": [
+    "All Flyers",
+    "Pets"
+   ],
+   "categories_csv": null,
+   "merchant_id": 2110
+  }
+ ],
+ "items_ng_8168650": {
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "len": 167032,
+  "head": "[{\"id\":1044522719,\"flyer_id\":8168650,\"name\":\"6803364-001-Flipp-Paid-Social-Services-Banners-CashBack-1\",\"display_type\":5,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435932344/1790699292/extra_large.jpg\",\"brand\":null,\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":20.55909919738769,\"bottom\":-2933.6201171875,\"right\":1288.900024414062,\"top\":-2788.1298828125,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"\"},{\"id\":1044522720,\"flyer_id\":8168650,\"name\":\"1912EN-TVFoGNMZCksbi\",\"display_type\":5,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435932345/1790699293/extra_large.jpg\",\"brand\":null,\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":0.0,\"bottom\":-3.162930011749267,\"right\":3.162930011749267,\"top\":0.0,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"\"},{\"id\":1044523025,\"flyer_id\":8168650,\"name\":\"Serta Air Lumbar Bonded Leather Manager Office Chair, Black\",\"display_type\":5,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435932507/1790699300/extra_large.jpg\",\"brand\":\"Serta\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":11837.400390625,\"bottom\":-2965.25,\"right\":12191.7001953125,\"top\":-2898.830078125,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"129.0\"},{\"id\":1044523020,\"flyer_id\":8168650,\"name\":\"Marketside Bite-Sized Freshly Baked Moist Ultimate Chocolate Brownies\",\"display_type\":5,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435932439/1790699300/extra_large.jpg\",\"brand\":\"Marketside\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":7457.759765625,\"bottom\":-2731.18994140625,\"right\":7812.009765625,\"top\":-2664.77001953125,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"5.97\"},{\"id\":1044522726,\"flyer_id\":8168650,\"name\":\"Sweetnight Twilighty 14\\\" Cooling Gel Memory Foam Medium Firm Supportive Hybrid Mattress, Motion Isolation & CertiPUR-US Certified\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435932348/1790699295/extra_large.jpg\",\"brand\":\"Sweetnight\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":450.7179870605469,\"bottom\":-1529.280029296875,\"right\":858.7369995117188,\"top\":-748.0339965820312,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"248.0\"},{\"id\":1044522840,\"flyer_id\":8168650,\"name\":\"Mielle Kalahari Melon and Aloe Vera Deep Hydration Multi-Tasking Leave-In Conditioner\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435932584/1790699295/extra_large.jpg\",\"brand\":\"Mielle\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":18360.599609375,\"bottom\":-1469.180053710937,\"right\":18983.69921875,\"top\":-412.7630004882812,\"page_destination\"",
+  "url": "https://flyers-ng.flippback.com/api/flipp/flyers/8168650/flyer_items?locale=en-us&sid=8243957120"
+ },
+ "items_back_8168650": {
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "len": 209724,
+  "head": "{\"items\":[{\"id\":1044522719,\"flyer_id\":8168650,\"name\":\"6803364-001-Flipp-Paid-Social-Services-Banners-CashBack-1\",\"display_type\":5,\"brand\":null,\"left\":20.56,\"bottom\":-2933.62,\"right\":1288.9,\"top\":-2788.13,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435932344/1790699292/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"\",\"print_id\":null,\"short_name\":null,\"text_areas\":[],\"ttm_url\":\"https://www.walmartmoneycard.com/cash-back?adid=1500000020090000091548\\u0026veh=dsn\\u0026wmlspartner=pubw_flp\\u0026cn=fy27-pr-pr-rbme-brtr-3p_con_msp_dsn_dis_flp_n_n_n\"},{\"id\":1044522720,\"flyer_id\":8168650,\"name\":\"1912EN-TVFoGNMZCksbi\",\"display_type\":5,\"brand\":null,\"left\":0.0,\"bottom\":-3.16,\"right\":3.16,\"top\":0.0,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435932345/1790699293/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"\",\"print_id\":null,\"short_name\":null,\"text_areas\":[],\"ttm_url\":null},{\"id\":1044523025,\"flyer_id\":8168650,\"name\":\"Serta Air Lumbar Bonded Leather Manager Office Chair, Black\",\"display_type\":5,\"brand\":\"Serta\",\"left\":11837.4,\"bottom\":-2965.25,\"right\":12191.7,\"top\":-2898.83,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435932507/1790699300/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"129.0\",\"print_id\":null,\"short_name\":null,\"text_areas\":[],\"ttm_url\":\"http://www.walmart.com/ip/198933848?adid=1500000020090000091548\\u0026veh=dsn\\u0026wmlspartner=pubw_flp\\u0026cn=fy27-pr-pr-rbme-brtr-3p_con_msp_dsn_dis_flp_n_n_n\"},{\"id\":1044523020,\"flyer_id\":8168650,\"name\":\"Marketside Bite-Sized Freshly Baked Moist Ultimate Chocolate Brownies\",\"display_type\":5,\"brand\":\"Marketside\",\"left\":7457.76,\"bottom\":-2731.19,\"right\":7812.01,\"top\":-2664.77,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435932439/1790699300/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"5.97\",\"print_id\":null,\"short_name\":null,\"text_areas\":[],\"ttm_url\":\"http://www.walmart.com/ip/1625039634?adid=1500000020090000091548\\u0026veh=dsn\\u0026wmlspartner=pubw_flp\\u0026cn=fy27-pr-pr-rbme-brtr-3p_con_msp_dsn_dis_flp_n_n_n\"},{\"id\":1044522726,\"flyer_id\":8168650,\"name\":\"Sweetnight Twilighty 14\\\" Cooling Gel Memory Foam Medium Firm Supportive Hybrid Mattress, Motion Isolation & CertiPUR-US Certified\",\"display_type\":1,\"brand\":\"Sweetnight\",\"left\":450.72,\"bottom\":-1529.28,\"right\":858.74,\"top\":-748.03,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435932348/1790699295/extra",
+  "url": "https://backflipp.wishabi.com/flipp/flyers/8168650?locale=en-us"
+ },
+ "items_ng_8157097": {
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "len": 57299,
+  "head": "[{\"id\":1042780077,\"flyer_id\":8157097,\"name\":\"Cap'N Crunch or Life Cereal\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435062328/1790119333/extra_large.jpg\",\"brand\":\"Cap'N Crunchn | Life\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":12354.7001953125,\"bottom\":-2507.1201171875,\"right\":13048.7001953125,\"top\":-1971.719970703125,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"6.0\"},{\"id\":1042780097,\"flyer_id\":8157097,\"name\":\"Fiora Bath Tissue\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435062337/1790119341/extra_large.jpg\",\"brand\":\"Fiora\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":13043.7001953125,\"bottom\":-1972.670043945312,\"right\":13766.7001953125,\"top\":-1442.380004882812,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"4.99\"},{\"id\":1042780039,\"flyer_id\":8157097,\"name\":\"El Monterey Burritos or Chimichangas\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435062330/1790119335/extra_large.jpg\",\"brand\":\"El monterey\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":11660.0,\"bottom\":-1971.530029296875,\"right\":12354.0,\"top\":-1442.130004882812,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"5.49\"},{\"id\":1042780169,\"flyer_id\":8157097,\"name\":\"French's Yellow Mustard\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435062390/1790119339/extra_large.jpg\",\"brand\":\"French's | Kroger\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":23685.599609375,\"bottom\":-1993.910034179687,\"right\":24581.80078125,\"top\":-1520.97998046875,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"5.0\"},{\"id\":1042780176,\"flyer_id\":8157097,\"name\":\"Kroger Cheese\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435062393/1790119342/extra_large.jpg\",\"brand\":\"Kroger\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":23681.19921875,\"bottom\":-2471.949951171875,\"right\":24580.400390625,\"top\":-2000.359985351562,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"2.5\"},{\"id\":1042780196,\"flyer_id\":8157097,\"name\":\"Holiday Home Inflatable\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435062406/1790119343/extra_large.jpg\",\"brand\":null,\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"left\":30333.900390625,\"bottom\":-2450.699951171875,\"right\":30998.400390625,\"top\":-1674.359985351562,\"page_destination\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"19.99\"},{\"id\":1042780026,\"flyer_id\":8157097,\"name\":\"Avocados\",\"display_type\":1,\"cutout_image_url\":\"https://f.wishabi.net/page_items/435062286/1790119342/ext",
+  "url": "https://flyers-ng.flippback.com/api/flipp/flyers/8157097/flyer_items?locale=en-us&sid=8243957120"
+ },
+ "items_back_8157097": {
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "len": 62927,
+  "head": "{\"items\":[{\"id\":1042780077,\"flyer_id\":8157097,\"name\":\"Cap'N Crunch or Life Cereal\",\"display_type\":1,\"brand\":\"Cap'N Crunchn | Life\",\"left\":12354.7,\"bottom\":-2507.12,\"right\":13048.7,\"top\":-1971.72,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435062328/1790119333/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"6.0\",\"print_id\":null,\"short_name\":null,\"text_areas\":[]},{\"id\":1042780097,\"flyer_id\":8157097,\"name\":\"Fiora Bath Tissue\",\"display_type\":1,\"brand\":\"Fiora\",\"left\":13043.7,\"bottom\":-1972.67,\"right\":13766.7,\"top\":-1442.38,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435062337/1790119341/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"4.99\",\"print_id\":null,\"short_name\":null,\"text_areas\":[]},{\"id\":1042780039,\"flyer_id\":8157097,\"name\":\"El Monterey Burritos or Chimichangas\",\"display_type\":1,\"brand\":\"El monterey\",\"left\":11660.0,\"bottom\":-1971.53,\"right\":12354.0,\"top\":-1442.13,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435062330/1790119335/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"5.49\",\"print_id\":null,\"short_name\":null,\"text_areas\":[]},{\"id\":1042780169,\"flyer_id\":8157097,\"name\":\"French's Yellow Mustard\",\"display_type\":1,\"brand\":\"French's | Kroger\",\"left\":23685.6,\"bottom\":-1993.91,\"right\":24581.8,\"top\":-1520.98,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435062390/1790119339/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"5.0\",\"print_id\":null,\"short_name\":null,\"text_areas\":[]},{\"id\":1042780176,\"flyer_id\":8157097,\"name\":\"Kroger Cheese\",\"display_type\":1,\"brand\":\"Kroger\",\"left\":23681.2,\"bottom\":-2471.95,\"right\":24580.4,\"top\":-2000.36,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435062393/1790119342/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"2.5\",\"print_id\":null,\"short_name\":null,\"text_areas\":[]},{\"id\":1042780196,\"flyer_id\":8157097,\"name\":\"Holiday Home Inflatable\",\"display_type\":1,\"brand\":null,\"left\":30333.9,\"bottom\":-2450.7,\"right\":30998.4,\"top\":-1674.36,\"cutout_image_url\":\"http://f.wishabi.net/page_items/435062406/1790119343/extra_large.jpg\",\"valid_from\":\"2026-09-30T00:00:00-04:00\",\"valid_to\":\"2026-10-06T23:59:59-04:00\",\"page_destination\":null,\"discount\":null,\"available_to\":\"2026-10-06T23:59:59-04:00\",\"video_url\":null,\"price\":\"19.99\",",
+  "url": "https://backflipp.wishabi.com/flipp/flyers/8157097?locale=en-us"
+ }
+}
