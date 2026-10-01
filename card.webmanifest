@@ -1,0 +1,17 @@
+{
+  "name": "每日一句 · 单词抽卡",
+  "short_name": "每日一卡",
+  "description": "每天一句英文名言或地道表达，加上从你的语境词库里抽的单词卡",
+  "start_url": "card.html?src=home",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1E2A44",
+  "theme_color": "#1E2A44",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "card/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "card/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "card/icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

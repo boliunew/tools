@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F0E8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141821" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="card.webmanifest">
+<link rel="icon" href="card/icon-192.png">
+<link rel="apple-touch-icon" href="card/apple-touch.png">
+<meta name="mobile-web-app-capable" content="yes">
+<title>每日一句 · 单词抽卡</title>
+<style>
+:root{
+  --bg:#F4F0E8; --paper:#FFFDF8; --ink:#1D2230; --soft:#5F6675; --faint:#9A9FAB; --line:#E4DED2; --chip:#EFEAE0;
+  --accent:#1F6F66; --accent-ink:#fff; --accent-soft:#DCEEEA; --gold:#C98A16; --red:#C2402F; --green:#1E8E4E;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Noto Serif SC","Songti SC",serif;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 22px rgba(30,35,50,.08);
+  --r-n:#7C8594; --r-r:#2F7BDB; --r-sr:#8B4FD6; --r-ssr:#D99A1B; --r-ur:#E2557A;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#141821; --paper:#1C212D; --ink:#E9ECF2; --soft:#A6ADBB; --faint:#6E7586; --line:#2C3240; --chip:#262C3A;
+    --accent:#5CC2B3; --accent-ink:#0E1A18; --accent-soft:#1E3632; --gold:#F2B94B; --red:#FF7B6B; --green:#5BD38E;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 22px rgba(0,0,0,.35); }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.55;padding-bottom:env(safe-area-inset-bottom)}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:620px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area-inset-top)}
+.brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto;letter-spacing:.01em}
+.hd-r{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--soft)}
+.hd-r a{text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 11px;color:var(--ink)}
+.streak b{color:var(--gold)}
+h2{font-size:13px;letter-spacing:.08em;color:var(--faint);font-weight:700;margin:24px 2px 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+/* 每日一句 */
+.ds{padding:16px 18px 14px;position:relative;overflow:hidden}
+.ds:before{content:"\201C";position:absolute;right:10px;top:-34px;font-family:var(--serif);font-size:150px;color:var(--chip);line-height:1;pointer-events:none}
+.ds-top{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--faint);position:relative}
+.kind{font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.kind.k-名言{background:#F6E8C8;color:#8A5A00}.kind.k-易错{background:#F8DEDA;color:#A2332A}.kind.k-口头禅{background:#E3E7FB;color:#3B4FB8}
+@media (prefers-color-scheme: dark){.kind.k-名言{background:#3A2E14;color:#F2C46B}.kind.k-易错{background:#3B2220;color:#FF9A90}.kind.k-口头禅{background:#232A4A;color:#A8B6FF}}
+.nav{margin-left:auto;display:flex;gap:4px}
+.nav button{border:1px solid var(--line);background:var(--paper);border-radius:9px;width:32px;height:30px;font-size:15px;line-height:1}
+.nav button:disabled{opacity:.35}
+.ds-en{font-family:var(--serif);font-size:23px;line-height:1.38;margin:12px 0 6px;position:relative;letter-spacing:.005em}
+.ds-en.long{font-size:19.5px}
+.ds-by{font-size:13px;color:var(--soft);font-style:italic}
+.ds-bad{font-size:16px;color:var(--red);text-decoration:line-through;margin-top:10px}
+.ds-good{font-family:var(--serif);font-size:22px;color:var(--green);margin:4px 0 2px}
+.ds-good:before{content:"✓ ";font-family:sans-serif}
+.ds-lit{font-size:13px;color:var(--faint);margin-top:2px}
+.zh{margin-top:10px;font-size:16px;line-height:1.65;padding:9px 12px;border-radius:12px;background:var(--chip);position:relative;cursor:pointer;min-height:44px}
+.zh.hid > *{filter:blur(7px);opacity:.6;user-select:none;-webkit-user-select:none}
+.zh.hid:after{content:"先想想意思 · 点一下看中文";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-size:13px;color:var(--soft);font-weight:600}
+.zh small{display:block;font-size:12.5px;color:var(--soft);margin-top:4px}
+.ex{margin-top:10px;font-size:14px;line-height:1.6;color:var(--soft)}
+.ex b{color:var(--ink);background:linear-gradient(transparent 60%,rgba(201,138,22,.28) 0)}
+.ex .exzh{display:block;font-size:13px;color:var(--faint)}
+.gl{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.gl button{border:1px dashed var(--line);background:none;border-radius:999px;padding:3px 10px;font-size:13px}
+.gl button i{font-style:normal;color:var(--faint);margin-left:4px;font-size:12px}
+.gl button.have{border-style:solid;border-color:var(--accent);color:var(--accent)}
+.ds-act{display:flex;gap:8px;margin-top:14px}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:11px;padding:7px 13px;font-size:14px;min-height:38px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+/* 抽卡 */
+.gacha{padding:16px 16px 14px;text-align:center}
+.pool{font-size:13.5px;color:var(--soft);line-height:1.7}
+.pool b{color:var(--ink);font-size:16px}
+.deck{position:relative;height:150px;margin:14px auto 8px;width:220px}
+.deck i{position:absolute;left:50%;top:6px;width:96px;height:134px;margin-left:-48px;border-radius:12px;border:2px solid rgba(255,255,255,.55);box-shadow:0 6px 18px rgba(0,0,0,.18);transition:transform .25s}
+.deck i:nth-child(1){transform:rotate(-14deg) translateX(-40px);background:linear-gradient(140deg,#5A6577,#2D3442)}
+.deck i:nth-child(2){transform:rotate(-5deg) translateX(-14px);background:linear-gradient(140deg,#3E8BEA,#1C4E9A)}
+.deck i:nth-child(3){transform:rotate(5deg) translateX(14px);background:linear-gradient(140deg,#A06BEA,#5A2BA0)}
+.deck i:nth-child(4){transform:rotate(14deg) translateX(40px);background:linear-gradient(140deg,#F2C14E,#B07510)}
+.deck:hover i:nth-child(1){transform:rotate(-18deg) translateX(-52px)}.deck:hover i:nth-child(4){transform:rotate(18deg) translateX(52px)}
+.deck i:after{content:"";position:absolute;inset:8px;left:8px;top:8px;right:8px;bottom:8px;border-radius:7px;border:1px solid rgba(255,255,255,.35);background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.22) 0 14px,transparent 15px),repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 6px,transparent 6px 12px)}
+.draw{display:block;width:100%;max-width:340px;margin:6px auto 0;min-height:50px;font-size:17px;border-radius:14px}
+.sub{font-size:12.5px;color:var(--faint);margin-top:8px}
+/* 图鉴 */
+.dex{padding:12px 14px}
+.dx{display:grid;grid-template-columns:52px minmax(0,1fr) 92px;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
+.dx:first-of-type{border-top:0}
+.rb{display:inline-block;font-weight:900;font-size:13px;letter-spacing:.02em;text-align:center;border-radius:7px;padding:2px 0;color:#fff;width:46px}
+.rb.N{background:var(--r-n)}.rb.R{background:var(--r-r)}.rb.SR{background:var(--r-sr)}.rb.SSR{background:linear-gradient(135deg,#F7D774,#C9850E)}.rb.UR{background:linear-gradient(135deg,#FF7A9C,#B05CFF,#4FB3FF)}
+.dbar{height:8px;background:var(--chip);border-radius:8px;overflow:hidden;position:relative}
+.dbar i{position:absolute;left:0;top:0;bottom:0;border-radius:8px;opacity:.45}
+.dbar em{position:absolute;left:0;top:0;bottom:0;border-radius:8px}
+.dx .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--soft)}
+.dx .n b{color:var(--ink)}
+.dexsum{font-size:13px;color:var(--soft);margin-bottom:6px}
+/* 桌面 */
+details.how{padding:0}
+details.how summary{list-style:none;padding:13px 16px;cursor:pointer;font-weight:700}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary:after{content:"▾";float:right;color:var(--faint)}
+details.how[open] summary:after{content:"▴"}
+.howb{padding:0 16px 14px;font-size:13.5px;line-height:1.75;color:var(--soft)}
+.howb b{color:var(--ink)}
+.howb code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:var(--chip);border-radius:6px;padding:1px 5px;word-break:break-all;color:var(--ink)}
+.howb ol{padding-left:20px;margin:6px 0}
+footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;line-height:1.7}
+/* draw overlay */
+.dw{position:fixed;left:0;top:0;right:0;bottom:0;z-index:40;background:radial-gradient(ellipse at 50% 30%,#2B3550,#0D1019 70%);color:#fff;display:flex;flex-direction:column;align-items:center;overflow:hidden;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+.dw-top{width:100%;max-width:520px;display:flex;align-items:center;padding:10px 16px;font-size:14px;color:rgba(255,255,255,.75)}
+.dw-top .dots{display:flex;gap:6px;margin-right:auto}
+.dw-top .dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22)}
+.dw-top .dots i.on{background:#fff}.dw-top .dots i.ok{background:#5BD38E}.dw-top .dots i.bad{background:#FF7B6B}
+.dw-x{border:0;background:none;color:rgba(255,255,255,.8);font-size:28px;line-height:1;padding:0 4px}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;width:100%;perspective:1400px;min-height:0;padding:4px 0}
+.cx{position:relative;width:min(84vw,350px);height:min(64vh,124vw,500px);transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.8,.2,1);cursor:pointer}
+.cx.in{animation:dealIn .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes dealIn{from{transform:translateY(60vh) rotate(-8deg) scale(.8);opacity:0}to{transform:none;opacity:1}}
+.cx.up{transform:rotateY(180deg)}
+.face{position:absolute;left:0;top:0;right:0;bottom:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:22px;overflow:hidden}
+.back{display:flex;align-items:center;justify-content:center;border:3px solid rgba(255,255,255,.5);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.back:before{content:"";position:absolute;left:12px;top:12px;right:12px;bottom:12px;border-radius:14px;border:1.5px solid rgba(255,255,255,.4);background:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 8px,transparent 8px 16px)}
+.back b{position:relative;font-family:var(--serif);font-size:84px;color:rgba(255,255,255,.9);text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.back small{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:13px;color:rgba(255,255,255,.8);letter-spacing:.1em}
+.b-N .back{background:linear-gradient(140deg,#6B7689,#2D3442)}
+.b-R .back{background:linear-gradient(140deg,#4C9BF5,#1B4C99)}
+.b-SR .back{background:linear-gradient(140deg,#B07CF5,#4E2394)}
+.b-SSR .back{background:linear-gradient(140deg,#FFE08A,#D18C0B 55%,#8A5300)}
+.b-UR .back{background:conic-gradient(from 0deg,#FF6B9A,#FFB86B,#FFF06B,#6BFFB0,#6BC8FF,#B06BFF,#FF6B9A)}
+.b-SSR .back,.b-UR .back{box-shadow:0 0 50px rgba(255,210,110,.55),0 18px 50px rgba(0,0,0,.5)}
+.front{transform:rotateY(180deg);background:var(--paper);color:var(--ink);display:flex;flex-direction:column;border:4px solid var(--r-n);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.b-R .front{border-color:var(--r-r)}.b-SR .front{border-color:var(--r-sr)}
+.b-SSR .front{border-color:#E2A72A;box-shadow:0 0 0 2px #FFE08A,0 0 40px rgba(255,200,80,.6),0 18px 50px rgba(0,0,0,.5)}
+.b-UR .front{border-color:#C46BFF;box-shadow:0 0 0 2px #FF8FB1,0 0 46px rgba(200,120,255,.65),0 18px 50px rgba(0,0,0,.5)}
+.fr-top{display:flex;align-items:center;gap:6px;padding:12px 14px 0}
+.fr-top .tg{font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 8px;background:var(--chip);color:var(--soft)}
+.fr-top .tg.rv{background:#E3E7FB;color:#3B4FB8}.fr-top .tg.nw{background:#DDF1E4;color:#17663A}
+@media (prefers-color-scheme: dark){.fr-top .tg.rv{background:#232A4A;color:#A8B6FF}.fr-top .tg.nw{background:#1C3325;color:#7FD9A1}}
+.fr-top .sp{margin-left:auto;border:0;background:var(--chip);border-radius:50%;width:36px;height:36px;font-size:17px}
+.fr-w{padding:18px 18px 4px;text-align:center}
+.fr-w b{display:block;font-family:var(--serif);font-size:40px;line-height:1.15;word-break:break-word;letter-spacing:.01em}
+.fr-w b.long{font-size:31px}
+.fr-w span{display:block;font-size:15px;color:var(--soft);margin-top:4px;font-family:"Lucida Sans Unicode","DejaVu Sans",sans-serif}
+.fr-a{flex:1;overflow-y:auto;padding:6px 18px 14px;-webkit-overflow-scrolling:touch}
+.fr-a .tr{font-size:17px;font-weight:600;line-height:1.5;text-align:center;margin:6px 0 10px}
+.fr-a .ex{text-align:left;font-family:var(--serif);font-size:15.5px;color:var(--ink)}
+.fr-a .ex .exzh{font-family:inherit}
+.fr-a .my{margin-top:10px;font-size:13px;color:var(--soft);border-top:1px dashed var(--line);padding-top:8px}
+.fr-hint{flex:1;display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:14px;text-align:center;padding:0 24px}
+.rare{position:absolute;right:12px;bottom:10px;font-weight:900;font-size:13px;letter-spacing:.06em;color:var(--faint)}
+.shine:after{content:"";position:absolute;left:-60%;top:0;bottom:0;width:50%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-18deg);animation:sweep 1.1s .35s ease-out 1 both;pointer-events:none}
+@keyframes sweep{to{left:130%}}
+.burst{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) scale(.4);font-weight:900;font-size:64px;letter-spacing:.04em;color:#FFE08A;text-shadow:0 0 24px rgba(255,190,60,.9),0 4px 0 #A86A00;pointer-events:none;opacity:0;animation:pop 1.1s ease-out 1 both;z-index:5}
+.burst.UR{color:#fff;text-shadow:0 0 18px #FF6BB0,0 0 36px #8F6BFF,0 4px 0 #8A2BFF}
+@keyframes pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}70%{opacity:1}100%{opacity:0;transform:translate(-50%,-80%) scale(1)}}
+.grades{width:100%;max-width:520px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px 14px 16px;min-height:86px}
+.grades button{border:0;border-radius:14px;padding:9px 4px 7px;font-size:15px;font-weight:700;color:#fff;line-height:1.25}
+.grades button small{display:block;font-size:11.5px;font-weight:500;opacity:.85}
+.g0{background:#C2402F}.g1{background:#C98A16}.g2{background:#1E8E4E}.g3{background:#2F7BDB}
+.grades .tip{grid-column:1/-1;text-align:center;color:rgba(255,255,255,.7);font-size:14px;align-self:center}
+.sum{width:min(88vw,380px);background:var(--paper);color:var(--ink);border-radius:22px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.5);max-height:72vh;overflow-y:auto}
+.sum h3{margin:0 0 4px;font-size:19px}
+.sum .ss{font-size:13.5px;color:var(--soft);margin-bottom:10px}
+.sum .row{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:14px}
+.sum .row b{font-family:var(--serif);font-size:16px}
+.sum .row span{color:var(--soft);font-size:12.5px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sum .row em{font-style:normal;font-size:12px;font-weight:700;border-radius:6px;padding:1px 7px;color:#fff}
+.sum .acts{display:flex;gap:8px;margin-top:14px}
+.sum .acts .btn{flex:1;min-height:46px;font-size:15px}
+/* sheets */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paper);color:var(--ink);border-radius:18px 18px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.25);padding:16px 18px calc(18px + env(safe-area-inset-bottom));max-width:620px;margin:0 auto;transform:translateY(105%);transition:transform .22s}
+.sheet.on{transform:none}
+.mask{position:fixed;left:0;top:0;right:0;bottom:0;z-index:49;background:rgba(0,0,0,.35);display:none}
+.mask.on{display:block}
+.sheet .w{font-family:var(--serif);font-size:28px;font-weight:700}
+.sheet .ph{color:var(--soft);margin-left:8px}
+.sheet .tr{font-size:16px;margin:6px 0}
+.sheet .st{font-size:13px;color:var(--soft);margin-bottom:12px}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);background:rgba(28,28,30,.92);color:#fff;padding:8px 16px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:all .2s;z-index:60;max-width:86vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.loading{color:var(--faint);text-align:center;padding:30px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><a class="brand" href="./">🎴 每日一卡</a><div class="hd-r"><span class="streak" id="streak"></span><a href="vocab.html">词库 →</a></div></header>
+
+  <h2>每日一句</h2>
+  <div class="card ds" id="ds"><div class="loading">加载中…</div></div>
+
+  <h2>单词抽卡</h2>
+  <div class="card gacha">
+    <div class="pool" id="pool">读取你的词库…</div>
+    <div class="deck" id="deck" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <button class="btn pri draw" id="drawBtn" disabled>🎴 抽一包 · 5 张</button>
+    <div class="sub" id="drawSub">卡片来自「语境词库」：先抽到期要复习的，再抽你当前词段的新词。评分会同步进词库的复习计划。</div>
+  </div>
+
+  <h2>图鉴</h2>
+  <div class="card dex" id="dex"><div class="loading">…</div></div>
+
+  <h2>放到手机桌面</h2>
+  <div class="card"><details class="how" id="how"><summary>📱 一点就开 / 桌面小组件</summary><div class="howb">
+    <p><b>方法一：桌面图标（最简单）</b></p>
+    <ol><li>用 Chrome 打开这一页</li><li>右上角 ⋮ → <b>添加到主屏幕</b>（或「安装应用」）</li><li>桌面会出现「每日一卡」图标，点开就是这一页，全屏、没有地址栏</li></ol>
+    <p><b>方法二：真正的桌面小组件（不用点开就能看）</b></p>
+    <p>每天早上 6 点多，这里会生成一份当天内容：<br><code id="tjUrl">https://boliunew.github.io/tools/card/today.json</code></p>
+    <p>装一个能读网页 JSON 的小组件 App，比如 <b>KWGT</b>，新建小组件，放几个文字框，内容分别填：</p>
+    <p><code>$wg("https://boliunew.github.io/tools/card/today.json", json, ".line")$</code> → 今天这句英文<br>
+    <code>$wg("https://boliunew.github.io/tools/card/today.json", json, ".zh")$</code> → 中文<br>
+    <code>$wg("https://boliunew.github.io/tools/card/today.json", json, ".word.w")$</code> 和 <code>.word.zh</code> → 今日单词</p>
+    <p>小组件的点击动作设成打开 <code>https://boliunew.github.io/tools/card.html</code>，就能一键进来抽卡。小组件里的内容每个人都一样；抽卡是按你自己的词库来的，要在这一页里玩。</p>
+  </div></details></div>
+
+  <footer>每日一句：名言（作者都是 1929 年前去世的公版作品）、地道习语、口头禅、常见错误轮流出现。<br>单词和例句来自语境词库 20000 词。数据只存在这台设备的浏览器里。</footer>
+</div>
+
+<div class="mask" id="mask"></div>
+<div class="sheet" id="sheet"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var toastT = null;
+  function toast(s) { var t = $('toast'); t.textContent = s; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 1700); }
+  function get(url, type, cb) {
+    var x = new XMLHttpRequest();
+    x.open('GET', url);
+    x.onload = function () { if (x.status !== 200) { cb(null); return; } if (type === 'text') { cb(x.responseText); return; } try { cb(JSON.parse(x.responseText)); } catch (e) { cb(null); } };
+    x.onerror = function () { cb(null); };
+    x.send();
+  }
+
+  /* ---------- the 语境词库 database (same storage and scheduler as vocab.html) ---------- */
+  var KEY = 'ctxvocab-v1';
+  function jget(k) { try { var t = localStorage.getItem(k); if (t) return JSON.parse(t); } catch (e) { } return null; }
+  function jset(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  var DB;
+  function fixDB() {
+    if (!DB.cards) DB.cards = {};
+    if (!DB.set) DB.set = { band: 0, daily: 20 };
+    if (!DB.today) DB.today = { day: -1, n: 0 };
+    if (!DB.custom) DB.custom = {};
+    if (!DB.ctx) DB.ctx = {};
+    if (!DB.log) DB.log = {};
+  }
+  function reload() { DB = jget(KEY) || {}; fixDB(); }      // vocab.html may have changed it in another tab
+  reload();
+  function save() { DB.mt = Date.now(); if (!jset(KEY, DB)) toast('无法保存：浏览器存储不可用'); }
+  function today() { var d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000); }
+  function newToday() { if (DB.today.day !== today()) DB.today = { day: today(), n: 0 }; return DB.today.n; }
+  var FW = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
+  var DECAY = -0.5, FACTOR = 19 / 81;
+  function clampD(d) { return Math.min(10, Math.max(1, d)); }
+  function initD(g) { return clampD(FW[4] - (g - 3) * FW[5]); }
+  function retr(t, s) { return Math.pow(1 + FACTOR * t / s, DECAY); }
+  function nextState(c, q) {
+    var g = q + 1, t = today();
+    if (!c || c.s == null || !c.r) return { s: FW[q], df: initD(g) };
+    var el = Math.max(0, t - c.last), R = retr(el, c.s), s, D = c.df;
+    if (q === 0) {
+      s = FW[11] * Math.pow(D, -FW[12]) * (Math.pow(c.s + 1, FW[13]) - 1) * Math.exp(FW[14] * (1 - R));
+      s = Math.min(s, c.s);
+    } else {
+      s = c.s * (1 + Math.exp(FW[8]) * (11 - D) * Math.pow(c.s, -FW[9]) * (Math.exp(FW[10] * (1 - R)) - 1) * (g === 2 ? FW[15] : 1) * (g === 4 ? FW[16] : 1));
+    }
+    var nd = D - FW[6] * (g - 3);
+    nd = clampD(FW[7] * initD(4) + (1 - FW[7]) * nd);
+    return { s: Math.max(0.1, s), df: nd };
+  }
+  function intervals(c) {
+    var out = [0, 0, 0, 0];
+    for (var q = 1; q < 4; q++) out[q] = Math.min(36500, Math.max(1, Math.round(nextState(c, q).s)));
+    if (out[2] <= out[1]) out[2] = out[1] + 1;
+    if (out[3] <= out[2]) out[3] = out[2] + 1;
+    return out;
+  }
+  function logReview(q, isNew) {
+    var t = today(), L = DB.log[t] || (DB.log[t] = { n: 0, nw: 0, ok: 0, bad: 0 });
+    L.n++; if (isNew) L.nw++; if (q === 0) L.bad++; else L.ok++;
+  }
+  function grade(w, q, isNew) {
+    var t = today(), c = DB.cards[w];
+    logReview(q, isNew);
+    var sameDay = c && c.r && c.last === t;
+    if (sameDay) { if (q === 0) { save(); return true; } c.due = t + 1; save(); return false; }
+    var iv = intervals(c)[q], ns = nextState(c, q);
+    if (!c) { c = { r: 0, l: 0 }; if (isNew) { newToday(); DB.today.n++; } }
+    if (q === 0 && c.r) c.l = (c.l || 0) + 1;
+    c.s = ns.s; c.df = ns.df; c.last = t; c.r = (c.r || 0) + 1; c.k = 0;
+    c.due = q === 0 ? t : t + iv;
+    DB.cards[w] = c; save();
+    return q === 0;
+  }
+  function fmtIv(d) { return d === 0 ? '稍后' : d < 30 ? d + '天' : d < 365 ? Math.round(d / 30) + '个月' : (d / 365).toFixed(1) + '年'; }
+
+  /* ---------- words: rank index + 500-word chunks ---------- */
+  var BANDS = [{ a: 0, b: 3000, name: '基础', r: 'N' }, { a: 3000, b: 6000, name: '核心', r: 'R' }, { a: 6000, b: 10000, name: '进阶', r: 'SR' }, { a: 10000, b: 15000, name: '高级', r: 'SSR' }, { a: 15000, b: 20000, name: '专家', r: 'UR' }];
+  var RCOL = { N: 'var(--r-n)', R: 'var(--r-r)', SR: 'var(--r-sr)', SSR: '#D99A1B', UR: '#C46BFF' };
+  var IDX = null, RANK = {}, CH = {}, NAME = /男子名|女子名|人名|姓氏|地名|（姓）/;
+  function bandOf(r) { for (var b = 0; b < BANDS.length; b++) if (r >= BANDS[b].a && r < BANDS[b].b) return b; return -1; }
+  function loadIdx(cb) {
+    if (IDX) { cb(); return; }
+    get('card/idx.txt', 'text', function (t) {
+      if (!t) { cb(false); return; }
+      IDX = t.split('\n');
+      for (var i = 0; i < IDX.length; i++) if (RANK[IDX[i]] == null) RANK[IDX[i]] = i;
+      cb(true);
+    });
+  }
+  function loadChunks(ranks, cb) {
+    var need = {}, list = [], i, left;
+    for (i = 0; i < ranks.length; i++) { var c = Math.floor(ranks[i] / 500); if (!CH[c] && !need[c]) { need[c] = 1; list.push(c); } }
+    left = list.length; if (!left) { cb(); return; }
+    list.forEach(function (c) { get('card/c' + (c < 10 ? '0' : '') + c + '.json', 'json', function (d) { CH[c] = d || []; if (--left === 0) cb(); }); });
+  }
+  function info(w) {
+    var r = RANK[w], row, cu;
+    if (r != null) { row = (CH[Math.floor(r / 500)] || [])[r % 500] || ['', '', '', '']; return { w: w, rank: r, band: bandOf(r), ph: row[0], tr: row[1], ex: row[2], exzh: row[3] }; }
+    cu = DB.custom[w] || {};
+    return { w: w, rank: -1, band: -1, ph: cu.ph || '', tr: cu.zh || '', ex: '', exzh: '' };
+  }
+  function rarity(i) { return i.band < 0 ? 'R' : BANDS[i.band].r; }
+
+  /* ---------- speech ---------- */
+  var VOICE = null;
+  function pickVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = speechSynthesis.getVoices() || [], pref = ['en-US', 'en_US', 'en-GB', 'en_GB'], i, j;
+    for (j = 0; j < pref.length && !VOICE; j++) for (i = 0; i < vs.length; i++) if (vs[i].lang === pref[j]) { VOICE = vs[i]; break; }
+    if (!VOICE) for (i = 0; i < vs.length; i++) if (/^en/i.test(vs[i].lang)) { VOICE = vs[i]; break; }
+  }
+  if (window.speechSynthesis) { pickVoice(); try { speechSynthesis.onvoiceschanged = pickVoice; } catch (e) { } }
+  function speak(t, rate) {
+    if (!window.speechSynthesis || !t) return;
+    try { speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; if (VOICE) u.voice = VOICE; u.rate = rate || 0.92; speechSynthesis.speak(u); } catch (e) { }
+  }
+
+  /* ---------- 每日一句 ---------- */
+  var POOL = null, dayOff = 0;
+  function hlEx(s) { return esc(s).replace(/\[([^\]]+)\]/g, '<b>$1</b>'); }
+  function dayLabel(n) { var d = new Date(n * 864e5); return (d.getUTCMonth() + 1) + '月' + d.getUTCDate() + '日 ' + ['周日', '周一', '周二', '周三', '周四', '周五', '周六'][d.getUTCDay()]; }
+  function plain(it) { return it.k === '易错' ? it.en : it.en.replace(/[\[\]]/g, ''); }
+  function renderDaily() {
+    var box = $('ds');
+    if (!POOL) { box.innerHTML = '<div class="loading">每日一句加载失败，请检查网络后刷新。</div>'; return; }
+    var n = today() + dayOff, it = POOL[((n % POOL.length) + POOL.length) % POOL.length], h = '';
+    h += '<div class="ds-top"><span class="kind k-' + esc(it.k) + '">' + esc(it.k) + (it.lv ? ' · ' + esc(it.lv) : '') + '</span><span>' + (dayOff === 0 ? '今天 · ' : '') + dayLabel(n) + '</span><span class="nav"><button id="dPrev" aria-label="前一天">‹</button><button id="dNext" aria-label="后一天"' + (dayOff >= 0 ? ' disabled' : '') + '>›</button></span></div>';
+    if (it.k === '易错') {
+      h += '<div class="ds-bad">✗ ' + esc(it.bad) + '</div><div class="ds-good">' + esc(it.en) + '</div>';
+      h += '<div class="zh hid" id="dZh"><div>' + esc(it.zh) + '<small>' + esc(it.note) + '</small></div></div>';
+    } else {
+      h += '<div class="ds-en' + (it.en.length > 90 ? ' long' : '') + '">' + esc(it.en) + '</div>';
+      if (it.by) h += '<div class="ds-by">— ' + esc(it.by) + '</div>';
+      if (it.lit) h += '<div class="ds-lit">字面：' + esc(it.lit) + '</div>';
+      h += '<div class="zh hid" id="dZh"><div>' + esc(it.zh) + (it.note && it.k !== '名言' ? '<small>' + (it.k === '口头禅' ? '什么时候说：' : '') + esc(it.note) + '</small>' : '') + '</div></div>';
+      if (it.ex) h += '<div class="ex">' + hlEx(it.ex) + (it.exzh ? '<span class="exzh">' + esc(it.exzh) + '</span>' : '') + '</div>';
+    }
+    if (it.g && it.g.length) {
+      h += '<div class="gl"><span style="font-size:12.5px;color:var(--faint);align-self:center">生词</span>';
+      for (var i = 0; i < it.g.length; i++) h += '<button data-g="' + i + '" class="' + (DB.cards[it.g[i][0]] ? 'have' : '') + '">' + esc(it.g[i][0]) + '<i>' + esc(String(it.g[i][2]).replace(/^[a-z]+\.\s*/, '').split(/[，；]/)[0]) + '</i></button>';
+      h += '</div>';
+    }
+    h += '<div class="ds-act"><button class="btn" id="dSay">🔊 朗读</button><button class="btn" id="dCopy">📋 复制</button></div>';
+    box.innerHTML = h;
+    $('dZh').onclick = function () { this.className = 'zh'; };
+    $('dPrev').onclick = function () { dayOff--; renderDaily(); };
+    $('dNext').onclick = function () { if (dayOff < 0) { dayOff++; renderDaily(); } };
+    $('dSay').onclick = function () { speak(plain(it) + (it.ex ? '. ' + it.ex.replace(/[\[\]]/g, '') : ''), 0.88); };
+    $('dCopy').onclick = function () {
+      var t = (it.k === '易错' ? '✗ ' + it.bad + '\n✓ ' : '') + plain(it) + (it.by ? '\n— ' + it.by : '') + '\n' + it.zh + (it.ex ? '\n\n' + it.ex.replace(/[\[\]]/g, '') + (it.exzh ? '\n' + it.exzh : '') : '');
+      copy(t);
+    };
+    var gs = box.querySelectorAll('[data-g]');
+    for (i = 0; i < gs.length; i++) gs[i].onclick = function () { var g = it.g[+this.getAttribute('data-g')]; wordSheet(g[0], g[1], g[2], it.k === '名言' ? it.en : (it.ex || '').replace(/[\[\]]/g, ''), it.k === '名言' ? it.zh : it.exzh || ''); };
+  }
+  function copy(t) {
+    try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(function () { toast('已复制'); }, function () { legacy(); }); return; } } catch (e) { }
+    legacy();
+    function legacy() { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); toast('已复制'); } catch (e2) { toast('复制失败'); } document.body.removeChild(ta); }
+  }
+
+  /* ---------- bottom sheet for a 生词 ---------- */
+  var sheetPushed = false;
+  function closeSheet(fromPop) {
+    $('sheet').className = 'sheet'; $('mask').className = 'mask';
+    if (sheetPushed && !fromPop) { sheetPushed = false; try { history.back(); } catch (e) { } }
+    sheetPushed = false;
+  }
+  function wordSheet(w, ph, tr, sent, sentZh) {
+    reload();
+    var c = DB.cards[w], st = c ? (c.k ? '已掌握' : c.due <= today() ? '在词库里 · 今天该复习了' : '在词库里 · ' + fmtIv(c.due - today()) + '后复习') : '还不在你的词库里';
+    $('sheet').innerHTML = '<div><span class="w">' + esc(w) + '</span><span class="ph">' + (ph ? '/' + esc(ph) + '/' : '') + '</span></div><div class="tr">' + esc(tr) + '</div><div class="st">' + st + '</div>' +
+      '<div style="display:flex;gap:8px"><button class="btn" id="shSay">🔊 读</button>' + (c ? '' : '<button class="btn pri" id="shAdd" style="flex:1">＋ 加入复习（带上这句话）</button>') + '<button class="btn" id="shX">关闭</button></div>';
+    $('sheet').className = 'sheet on'; $('mask').className = 'mask on';
+    try { history.pushState({ sh: 1 }, ''); sheetPushed = true; } catch (e) { }
+    $('shSay').onclick = function () { speak(w); };
+    $('shX').onclick = function () { closeSheet(); };
+    if ($('shAdd')) $('shAdd').onclick = function () {
+      reload();
+      if (!DB.cards[w]) {
+        grade(w, 0, true);
+        if (sent) { var L = DB.ctx[w] || (DB.ctx[w] = []); if (!L.some(function (x) { return x.en === sent; })) { L.unshift({ en: sent, zh: sentZh || '', src: '🎴 每日一句', t: Date.now() }); if (L.length > 8) L.length = 8; } save(); }
+      }
+      toast(w + ' 已加入词库，今天就会出现在复习里'); closeSheet(); renderDaily(); renderPool(); renderDex();
+    };
+  }
+  $('mask').onclick = function () { closeSheet(); };
+
+  /* ---------- pool status, collection, streak ---------- */
+  function dueList() {
+    var t = today(), out = [], w, c;
+    for (w in DB.cards) if (DB.cards.hasOwnProperty(w)) { c = DB.cards[w]; if (!c.k && c.due <= t) out.push(w); }
+    out.sort(function (a, b) { var A = DB.cards[a], B = DB.cards[b]; return retr(t - A.last, A.s) - retr(t - B.last, B.s); });
+    return out;
+  }
+  function renderPool() {
+    reload();
+    var due = dueList().length, left = Math.max(0, (DB.set.daily || 20) - newToday()), band = BANDS[DB.set.band || 0];
+    $('pool').innerHTML = '待复习 <b>' + due + '</b> 张 · 今日新词还能抽 <b>' + left + '</b> 张<br><span style="font-size:12.5px">新词来自「' + band.name + '」词段（第 ' + (band.a + 1) + '–' + band.b + ' 个常用词），在<a href="vocab.html">词库</a>里可以换</span>';
+    $('drawBtn').disabled = !IDX;
+    $('drawBtn').textContent = due || left ? '🎴 抽一包 · 5 张' : '🎴 再加练一包 · 5 张';
+  }
+  function streak() {
+    var t = today(), n = 0, d = DB.log[t] && DB.log[t].n ? t : t - 1;
+    while (DB.log[d] && DB.log[d].n) { n++; d--; }
+    return n;
+  }
+  function renderDex() {
+    reload();
+    var cnt = [0, 0, 0, 0, 0], gold = [0, 0, 0, 0, 0], other = 0, total = 0, w, c, r, b, h = '';
+    for (w in DB.cards) if (DB.cards.hasOwnProperty(w)) {
+      c = DB.cards[w]; if (!c.r && !c.k) continue; total++;
+      r = RANK[w]; b = r == null ? -1 : bandOf(r);
+      if (b < 0) { other++; continue; }
+      cnt[b]++; if (c.k || c.s >= 21) gold[b]++;
+    }
+    var s = streak();
+    $('streak').innerHTML = s ? '🔥 连续 <b>' + s + '</b> 天' : '';
+    h += '<div class="dexsum">已收集 <b style="color:var(--ink)">' + total + '</b> 张' + (other ? '（含自定义词 ' + other + ' 张）' : '') + ' · 实色 = 已掌握（记得超过 3 周）</div>';
+    for (b = 0; b < BANDS.length; b++) {
+      var B = BANDS[b], N = B.b - B.a, p = cnt[b] / N * 100, g = gold[b] / N * 100;
+      h += '<div class="dx"><span class="rb ' + B.r + '">' + B.r + '</span><div><div style="font-size:12px;color:var(--soft);margin-bottom:3px">' + B.name + ' · 第 ' + (B.a + 1) + '–' + B.b + ' 词</div><div class="dbar"><i style="width:' + Math.max(cnt[b] ? 1 : 0, p).toFixed(1) + '%;background:' + RCOL[B.r] + '"></i><em style="width:' + Math.max(gold[b] ? 1 : 0, g).toFixed(1) + '%;background:' + RCOL[B.r] + '"></em></div></div><div class="n"><b>' + cnt[b] + '</b> / ' + N + (gold[b] ? '<br><small>掌握 ' + gold[b] + '</small>' : '') + '</div></div>';
+    }
+    $('dex').innerHTML = IDX ? h : '<div class="loading">词表加载失败，请刷新</div>';
+  }
+
+  /* ---------- drawing a pack ---------- */
+  var PACK = null, PI = 0, PRES = [], overlay = null, ovPushed = false, busy = false;
+  function buildPack(cb) {
+    reload();
+    var due = dueList(), left = Math.max(0, (DB.set.daily || 20) - newToday()), picks = [], extra = false, i;
+    var nRev = Math.min(due.length, left > 0 ? 3 : 5);
+    for (i = 0; i < nRev; i++) picks.push({ w: due[i], isNew: false });
+    var need = 5 - picks.length;
+    if (need > 0 && !left) extra = true;
+    var band = DB.set.band || 0, cands = [], lucky = need > 0 && band < 4 && Math.random() < 0.22;
+    function collect(b, n) {
+      var B = BANDS[b], out = [], r;
+      for (r = B.a; r < B.b && out.length < n; r++) if (!DB.cards[IDX[r]]) out.push(r);
+      return out;
+    }
+    cands = collect(band, need * 2 + 4);
+    if (cands.length < need) for (i = 0; i < BANDS.length && cands.length < need * 2 + 4; i++) if (i !== band) cands = cands.concat(collect(i, need * 2 + 4 - cands.length));
+    var luckyR = lucky ? collect(band + 1, 40) : [];
+    var luckyPick = luckyR.length ? luckyR[Math.floor(Math.random() * luckyR.length)] : null;
+    var allR = cands.slice(); if (luckyPick != null) allR.push(luckyPick);
+    for (i = 0; i < picks.length; i++) if (RANK[picks[i].w] != null) allR.push(RANK[picks[i].w]);
+    loadChunks(allR, function () {
+      var news = [], k;
+      for (k = 0; k < cands.length && news.length < need; k++) { var inf = info(IDX[cands[k]]); if (!NAME.test(inf.tr) && inf.tr) news.push(IDX[cands[k]]); }
+      if (luckyPick != null && news.length) { var li = info(IDX[luckyPick]); if (!NAME.test(li.tr) && li.tr) news[news.length - 1] = IDX[luckyPick]; }
+      for (k = 0; k < news.length; k++) picks.push({ w: news[k], isNew: true });
+      // reviews and new cards mixed, but the pack opens with a review if there is one
+      var revs = picks.filter(function (p) { return !p.isNew; }), nws = picks.filter(function (p) { return p.isNew; }), out = [];
+      while (revs.length || nws.length) { if (revs.length) out.push(revs.shift()); if (nws.length) out.push(nws.shift()); if (nws.length && out.length % 3 === 2) out.push(nws.shift()); }
+      cb(out, extra);
+    });
+  }
+  function openOverlay() {
+    overlay = document.createElement('div'); overlay.className = 'dw'; document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+    try { history.pushState({ dw: 1 }, ''); ovPushed = true; } catch (e) { ovPushed = false; }
+    document.addEventListener('keydown', keys);
+  }
+  function closeOverlay(fromPop) {
+    if (!overlay) return;
+    overlay.parentNode.removeChild(overlay); overlay = null; PACK = null;
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', keys);
+    if (ovPushed && !fromPop) { ovPushed = false; try { history.back(); } catch (e) { } }
+    ovPushed = false;
+    try { speechSynthesis.cancel(); } catch (e2) { }
+    renderPool(); renderDex(); renderDaily();
+  }
+  window.addEventListener('popstate', function () {
+    if ($('sheet').className.indexOf('on') >= 0) { sheetPushed = false; closeSheet(true); return; }
+    if (overlay) { ovPushed = false; closeOverlay(true); }
+  });
+  function keys(e) {
+    if (!PACK) return;
+    var k = e.key;
+    if (k === ' ' || k === 'Enter') { e.preventDefault(); tapCard(); }
+    else if (/^[1-4]$/.test(k) && STATE === 2) doGrade(+k - 1);
+    else if (k === 'Escape') closeOverlay();
+  }
+  var STATE = 0;   // 0 face down, 1 word shown, 2 answer shown
+  function startPack() {
+    if (busy || !IDX) return;
+    busy = true; $('drawBtn').textContent = '洗牌中…';
+    buildPack(function (pack, extra) {
+      busy = false; renderPool();
+      if (!pack.length) { toast('没有可以抽的卡了'); return; }
+      PACK = pack; PI = 0; PRES = [];
+      if (!overlay) openOverlay();
+      if (extra) toast('今天的新词额度用完了，这包算加练');
+      showCard(true);
+    });
+  }
+  function dotsHTML() {
+    var h = '<span class="dots">', i;
+    for (i = 0; i < PACK.length; i++) { var r = PRES[i]; h += '<i class="' + (i === PI ? 'on' : r == null ? '' : r === 0 ? 'bad' : 'ok') + '"></i>'; }
+    return h + '</span>';
+  }
+  function showCard(first) {
+    var p = PACK[PI], inf = info(p.w), R = rarity(inf), long = p.w.length > 11;
+    STATE = 0;
+    var my = (DB.ctx[p.w] || [])[0];
+    overlay.innerHTML = '<div class="dw-top">' + dotsHTML() + '<span style="margin-right:12px">' + (PI + 1) + ' / ' + PACK.length + '</span><button class="dw-x" aria-label="关闭">×</button></div>' +
+      '<div class="stage"><div class="cx b-' + R + ' in' + '" id="cx">' +
+      '<div class="face back"><b>?</b><small>点一下翻开</small></div>' +
+      '<div class="face front" id="fr"><div class="fr-top"><span class="rb ' + R + '" style="width:auto;padding:2px 8px">' + R + '</span><span class="tg">' + (inf.band < 0 ? '自定义' : BANDS[inf.band].name + ' #' + (inf.rank + 1)) + '</span><span class="tg ' + (p.isNew ? 'nw">新词' : 'rv">复习') + '</span><button class="sp" id="sp" aria-label="朗读">🔊</button></div>' +
+      '<div class="fr-w"><b class="' + (long ? 'long' : '') + '">' + esc(p.w) + '</b><span>' + (inf.ph ? '/' + esc(inf.ph) + '/' : '&nbsp;') + '</span></div>' +
+      '<div class="fr-hint" id="frHint">想想它是什么意思<br>再点一下看答案</div>' +
+      '<div class="fr-a" id="frA" style="display:none"><div class="tr">' + esc(inf.tr || '（暂无释义）') + '</div>' +
+      (inf.ex ? '<div class="ex">' + hlWord(inf.ex, p.w) + (inf.exzh ? '<span class="exzh">' + esc(inf.exzh) + '</span>' : '') + '</div>' : '') +
+      (my ? '<div class="my">📌 你收藏过的语境：' + hlWord(my.en, p.w) + (my.src ? ' <span style="color:var(--faint)">' + esc(my.src) + '</span>' : '') + '</div>' : '') + '</div>' +
+      '<span class="rare">' + R + '</span></div></div></div>' +
+      '<div class="grades" id="gr"><div class="tip">点卡片翻开</div></div>';
+    overlay.querySelector('.dw-x').onclick = function () { closeOverlay(); };
+    $('cx').onclick = tapCard;
+    $('sp').onclick = function (e) { e.stopPropagation(); speak(p.w); };
+  }
+  function hlWord(s, w) {
+    var e = esc(s), re = new RegExp('\\b(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '[a-z]*)\\b', 'i');
+    return e.replace(re, '<b>$1</b>');
+  }
+  function tapCard() {
+    if (!PACK) return;
+    var p = PACK[PI], inf = info(p.w), R = rarity(inf), cx = $('cx');
+    if (STATE === 0) {
+      STATE = 1; cx.className = 'cx b-' + R + ' up';
+      setTimeout(function () { speak(p.w); }, 380);
+      if (R === 'SSR' || R === 'UR') {
+        $('fr').className = 'face front shine';
+        var bu = document.createElement('div'); bu.className = 'burst ' + R; bu.textContent = R + '!'; overlay.querySelector('.stage').appendChild(bu);
+        setTimeout(function () { if (bu.parentNode) bu.parentNode.removeChild(bu); }, 1300);
+      }
+      $('gr').innerHTML = '<div class="tip">想好了就再点一下卡片</div>';
+    } else if (STATE === 1) {
+      STATE = 2; $('frHint').style.display = 'none'; $('frA').style.display = '';
+      reload();
+      var iv = intervals(DB.cards[p.w]), names = ['忘了', '模糊', '记得', '简单'], h = '', q;
+      for (q = 0; q < 4; q++) h += '<button class="g' + q + '" data-q="' + q + '">' + names[q] + '<small>' + fmtIv(iv[q]) + '</small></button>';
+      $('gr').innerHTML = h;
+      var bs = $('gr').querySelectorAll('button');
+      for (q = 0; q < bs.length; q++) bs[q].onclick = function () { doGrade(+this.getAttribute('data-q')); };
+    }
+  }
+  function doGrade(q) {
+    if (!PACK || STATE !== 2) return;
+    var p = PACK[PI];
+    reload();
+    var again = grade(p.w, q, p.isNew && !DB.cards[p.w]);
+    if (PRES[PI] == null) PRES[PI] = q;
+    if (again && !p.requeued) PACK.push({ w: p.w, isNew: false, requeued: 1 });   // one more look before the pack ends
+    PI++;
+    if (PI < PACK.length) showCard(false); else showSummary();
+  }
+  function showSummary() {
+    STATE = 3;
+    var seen = {}, rows = '', ok = 0, bad = 0, nw = 0, hi = 0, i;
+    for (i = 0; i < PACK.length; i++) {
+      var p = PACK[i]; if (seen[p.w]) continue; seen[p.w] = 1;
+      var inf = info(p.w), R = rarity(inf), q = PRES[i];
+      if (q === 0) bad++; else ok++;
+      if (p.isNew) nw++;
+      if (p.isNew && inf.band >= 2) hi++;
+      rows += '<div class="row"><em style="background:' + RCOL[R] + '">' + R + '</em><b>' + esc(p.w) + '</b><span>' + esc(inf.tr) + '</span><small style="color:' + (q === 0 ? 'var(--red)' : 'var(--green)') + '">' + ['忘了', '模糊', '记得', '简单'][q] + '</small></div>';
+    }
+    reload();
+    var due = dueList().length, left = Math.max(0, (DB.set.daily || 20) - newToday());
+    overlay.innerHTML = '<div class="dw-top">' + dotsHTML() + '<button class="dw-x" aria-label="关闭">×</button></div><div class="stage"><div class="sum"><h3>🎉 这包开完了</h3><div class="ss">' +
+      (nw ? '新收集 <b>' + nw + '</b> 张' + (hi ? '（含 ' + hi + ' 张 SR 以上）' : '') + ' · ' : '') + '记得 ' + ok + ' · 忘了 ' + bad + '<br>还剩待复习 ' + due + ' 张 · 今日新词 ' + left + ' 张</div>' + rows +
+      '<div class="acts"><button class="btn" id="sDone">完成</button><button class="btn pri" id="sMore">再抽一包</button></div></div></div><div class="grades"></div>';
+    overlay.querySelector('.dw-x').onclick = function () { closeOverlay(); };
+    $('sDone').onclick = function () { closeOverlay(); };
+    $('sMore').onclick = function () { startPack(); };
+  }
+  $('drawBtn').onclick = startPack;
+  $('deck').onclick = startPack;
+
+  /* ---------- start ---------- */
+  window.addEventListener('storage', function (e) { if (e.key === KEY && !overlay) { renderPool(); renderDex(); } });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && !overlay) { renderPool(); renderDex(); if (POOL && dayOff === 0) renderDaily(); } });
+  get('card/daily.json', 'json', function (d) { POOL = d && d.items ? d.items : null; renderDaily(); });
+  loadIdx(function (ok) { renderPool(); renderDex(); if (!ok) $('pool').textContent = '词表加载失败，请检查网络后刷新。'; });
+  renderPool();
+  if (/[?&]src=home/.test(location.search)) try { history.replaceState(null, '', 'card.html'); } catch (e) { }
+})();
+</script>
+<script src="nav.js?v=3" defer></script>
+</body>
+</html>

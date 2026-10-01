@@ -31,11 +31,12 @@ jobs:
       - run: python news/build.py
       - run: python news/contexts.py
       - run: python news/articles.py
+      - run: python card/today.py   # 每日一句 for home-screen widgets
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news/data
+          git add news/data card/today.json
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git commit -m "新闻更新 $(date -u +%F-%H%M)"
           for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
