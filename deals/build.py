@@ -1,7 +1,8 @@
-"""Build deals/data/latest.json for deals.html (打折雷达).
+"""Build deals/data/flyers.json + deals/data/meta.json for deals.html (打折雷达).
 
 Sources (all public, fetched twice a day by GitHub Actions):
-  * Flipp weekly-ad data for ZIP 91786 — Food 4 Less weekly ad and Walmart's own weekly flyer
+  * Flipp weekly-ad data for ZIP 91786 — every store flyer near Upland (Food 4 Less, Walmart, Stater Bros, ALDI, Target, Costco …),
+    including next week's ads that are already published. Each flyer is cached by id, so an unchanged week costs one request.
   * Slickdeals RSS (front page, popular, store searches) — Amazon / Walmart online deals
   * camelcamelcamel "top price drops" RSS — Amazon price drops
   * DealNews RSS — deals that say "at Amazon" / "at Walmart"
@@ -18,21 +19,63 @@ import urllib.parse
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "deals", "data", "latest.json")
+DATA = os.path.join(ROOT, "deals", "data")
 ZIP = "91786"  # Upland, CA
 UA = "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Mobile Safari/537.36"
-KEEP_ONLINE_H = 72  # keep online deals this long across runs
+KEEP_ONLINE_H = 72   # keep online deals this long across runs
+UPCOMING_DAYS = 8    # include flyers that start within this many days ("下周预告")
+V = 4                # bump to re-parse cached flyers after changing the rules below
 
-# weekly-ad stores: id, Flipp merchant name, flyer-name filter (None = any), link template for "look it up"
-FLYER_STORES = [
-    ("f4l", "Food 4 Less", None, "https://www.food4less.com/search?query={q}"),
-    ("walmart", "Walmart", None, "https://www.walmart.com/search?q={q}"),
+GROUPS = [  # key, zh, emoji — store groups for the page
+    ("grocery", "超市", "🥬"), ("general", "综合百货", "🏬"), ("pharmacy", "药房美妆", "💊"), ("electronics", "电子办公", "🔌"),
+    ("home", "家居五金", "🔨"), ("fashion", "服饰", "👗"), ("sports", "运动户外", "⚽"), ("pets", "宠物", "🐶"), ("craft", "手工", "🎨"),
+    ("online", "网上", "📦"),
 ]
-STORE_META = {
-    "f4l": {"name": "Food 4 Less", "icon": "🛒", "color": "#C8102E"},
-    "walmart": {"name": "Walmart", "icon": "🟦", "color": "#0071DC"},
-    "amazon": {"name": "Amazon", "icon": "📦", "color": "#FF9900"},
+FLIPP_GROUP = {"Groceries": "grocery", "General Merchandise": "general", "Pharmacy": "pharmacy", "Electronics": "electronics",
+               "Home & Garden": "home", "Fashion": "fashion", "Sporting Goods": "sports", "Pets": "pets", "Office": "electronics",
+               "Automotive": "home", "Baby & Kids": "general", "Specialty": "general"}
+# store overrides: id, groups, brand colour, product-search url ({q}), weekly-ad page
+STORES = {
+    "Food 4 Less": ("f4l", ["grocery"], "#C8102E", "https://www.food4less.com/search?query={q}", "https://www.food4less.com/weeklyad"),
+    "Walmart": ("walmart", ["grocery", "general"], "#0071DC", "https://www.walmart.com/search?q={q}", "https://www.walmart.com/shop/deals"),
+    "Target": ("target", ["grocery", "general"], "#CC0000", "https://www.target.com/s?searchTerm={q}", "https://www.target.com/weekly-ad"),
+    "Costco": ("costco", ["grocery", "general"], "#E31837", "https://www.costco.com/CatalogSearch?keyword={q}", "https://www.costco.com/online-offers.html"),
+    "Ralphs": ("ralphs", ["grocery"], "#0F4C9E", "https://www.ralphs.com/search?query={q}", "https://www.ralphs.com/weeklyad"),
+    "Vons": ("vons", ["grocery"], "#E21A2C", "https://www.vons.com/shop/search-results.html?q={q}", "https://www.vons.com/weeklyad"),
+    "Albertsons": ("albertsons", ["grocery"], "#0072CE", "https://www.albertsons.com/shop/search-results.html?q={q}", "https://www.albertsons.com/weeklyad"),
+    "Stater Bros. Markets": ("stater", ["grocery"], "#D52B1E", None, None),
+    "ALDI": ("aldi", ["grocery"], "#00005F", None, None),
+    "Smart & Final": ("smartfinal", ["grocery"], "#E2231A", None, None),
+    "Sprouts Farmers Market": ("sprouts", ["grocery"], "#5B8E3E", None, None),
+    "Cardenas Markets": ("cardenas", ["grocery"], "#D7262F", None, None),
+    "Vallarta Supermarkets": ("vallarta", ["grocery"], "#E30613", None, None),
+    "Superior Grocers": ("superior", ["grocery"], "#E2001A", None, None),
+    "El Super": ("elsuper", ["grocery"], "#E30613", None, None),
+    "Grocery Outlet": ("groceryoutlet", ["grocery"], "#2E7D32", None, None),
+    "Super King Markets": ("superking", ["grocery"], "#C62828", None, None),
+    "Family Dollar": ("familydollar", ["general"], "#F26722", None, None),
+    "Dollar General": ("dollargeneral", ["general"], "#FFC220", None, None),
+    "Five Below": ("fivebelow", ["general"], "#00A0DF", None, None),
+    "Kohl's": ("kohls", ["fashion", "general"], "#7B2B8E", "https://www.kohls.com/search.jsp?search={q}", None),
+    "CVS Pharmacy": ("cvs", ["pharmacy"], "#CC0000", "https://www.cvs.com/search?searchTerm={q}", "https://www.cvs.com/weeklyad"),
+    "Walgreens": ("walgreens", ["pharmacy"], "#E31837", "https://www.walgreens.com/search/results.jsp?Ntt={q}", None),
+    "ULTA": ("ulta", ["pharmacy"], "#F26B3A", "https://www.ulta.com/search?search={q}", None),
+    "Bath & Body Works": ("bbw", ["pharmacy"], "#1B2A4A", None, None),
+    "Best Buy": ("bestbuy", ["electronics"], "#0046BE", "https://www.bestbuy.com/site/searchpage.jsp?st={q}", None),
+    "GameStop": ("gamestop", ["electronics"], "#E4002B", None, None),
+    "Office Depot OfficeMax": ("officedepot", ["electronics"], "#CC0000", None, None),
+    "Home Depot": ("homedepot", ["home"], "#F96302", "https://www.homedepot.com/s/{q}", None),
+    "Lowe's": ("lowes", ["home"], "#004990", "https://www.lowes.com/search?searchTerm={q}", None),
+    "Ace Hardware": ("ace", ["home"], "#D40029", None, None),
+    "Harbor Freight Tools": ("harborfreight", ["home"], "#C8102E", None, None),
+    "Tractor Supply Company": ("tractor", ["home", "pets"], "#BD1E2D", None, None),
+    "Michaels USA": ("michaels", ["craft"], "#D52B1E", None, None),
+    "Hobby Lobby": ("hobbylobby", ["craft"], "#F58025", None, None),
+    "PetSmart": ("petsmart", ["pets"], "#E2231A", None, None),
+    "Dick's Sporting Goods": ("dicks", ["sports"], "#006B54", None, None),
+    "Cabela's": ("cabelas", ["sports"], "#4A5D23", None, None),
 }
+ONLINE_META = {"amazon": {"name": "Amazon", "grp": ["online"], "color": "#FF9900", "wk": "https://www.amazon.com/deals"}}
 notes = []
 
 
@@ -193,83 +236,143 @@ def story_zh(s):
 
 
 # ---------------------------------------------------------------- weekly ads (Flipp)
-def flipp_flyers():
-    d = json.loads(get(f"https://flyers-ng.flippback.com/api/flipp/data?locale=en-us&postal_code={ZIP}&sid=8243957120"))
-    return d.get("flyers", [])
+def slug(name):
+    return re.sub(r"[^a-z0-9]+", "", name.lower())[:16] or "store"
 
 
-def flyer_items(store_id, merchant, name_filter, link_tpl, flyers):
+def store_of(merchant, flyer_cats):
+    merchant = merchant.strip()
+    if merchant in STORES:
+        sid, grp, color, q, wk = STORES[merchant]
+    else:
+        grp = []
+        for c in flyer_cats:
+            g = FLIPP_GROUP.get(c)
+            if g and g not in grp:
+                grp.append(g)
+        sid, color, q, wk = slug(merchant), None, None, None
+        grp = grp or ["general"]
+    return {"id": sid, "name": merchant, "grp": grp, "color": color, "q": q, "wk": wk}
+
+
+def parse_flyer(store, flyer, raw_items, rich):
+    grocery = "grocery" in store["grp"]
+    items, seen, got_rich = [], set(), 0
+    for it in raw_items:
+        if it.get("display_type") != 1 or not it.get("name"):
+            continue
+        name = re.sub(r"\s+", " ", html.unescape(it["name"])).strip()
+        if re.match(r"^\d{5,}-", name) or len(name) < 3:  # internal banner ids
+            continue
+        r = rich.get(it.get("id")) or {}
+        if r:
+            got_rich += 1
+        price = money(r.get("current_price")) if r else None
+        if price is None:
+            price = money(it.get("price"))
+        pre, post = (r.get("pre_price_text") or "").strip(), (r.get("post_price_text") or "").strip()
+        flags, unit = [], ""
+        if re.search(r"digital coupon", post, re.I):
+            flags.append("需领电子券")
+        if re.search(r"with card|member", post, re.I):
+            flags.append("会员价")
+        mb = re.search(r"when you buy (\d+)", post, re.I)
+        if mb:
+            flags.append("买%s件才是此价" % mb.group(1))
+        mu = re.search(r"(?:^|\s|/)(ea|lb|lbs|oz|ct|pk)\b", post, re.I)
+        if mu:
+            unit = {"ea": "/个", "lb": "/磅", "lbs": "/磅", "oz": "/盎司", "ct": "/个", "pk": "/包"}[mu.group(1).lower()]
+        pt = ""
+        if price is not None and price > 0:
+            pt = (pre if re.fullmatch(r"\d+/", pre or "") else "") + "$" + fmt(price) + unit
+        elif price == 0:
+            price = None
+        story = (r.get("sale_story") or "").strip()
+        if re.fullmatch(r"final (?:cost|price)", story, re.I):
+            story = ""
+        if not pt and not story:
+            continue
+        was = money(r.get("original_price"))
+        off = it.get("discount") or (round((1 - price / was) * 100) if (price and was and was > price) else None)
+        key = (name.lower(), pt)
+        if key in seen:
+            continue
+        seen.add(key)
+        c = classify(name, r.get("_L1"), r.get("_L2"), grocery=grocery)
+        img = https(r.get("clean_image_url") or it.get("cutout_image_url"))
+        m = re.match(r"https://f\.wishabi\.net/page_items/(\d+/\d+)/extra_large\.jpg$", img)
+        x = {"n": name, "b": (it.get("brand") or "").split("|")[0].strip(), "p": price, "pt": pt, "was": was, "off": off,
+             "st": story, "stz": "，".join([z for z in [story_zh(story)] + flags if z]), "c": c, "zh": gloss(name, c),
+             "im": m.group(1) if m else img, "id": "fl%s" % it["id"]}
+        if not r and pre == "" and price is not None:
+            x["pq"] = 1  # price from the flyer only — may be "2 for" etc.; the page says "约"
+        items.append({k: v for k, v in x.items() if v not in (None, "", 0) or k == "p"})
+    return items, got_rich
+
+
+def weekly_ads():
     now = dt.datetime.now(dt.timezone.utc)
-    mine = [f for f in flyers if (f.get("merchant") or "").strip().lower() == merchant.lower()
-            and (not name_filter or re.search(name_filter, f.get("name") or "", re.I))]
-    live = []
-    for f in mine:
+    cache_path = os.path.join(DATA, "flyers.json")
+    try:
+        cache = json.load(open(cache_path, encoding="utf-8"))
+        if cache.get("v") != V:
+            cache = {"flyers": {}}
+    except Exception:  # noqa: BLE001
+        cache = {"flyers": {}}
+    d = json.loads(get(f"https://flyers-ng.flippback.com/api/flipp/data?locale=en-us&postal_code={ZIP}&sid=8243957120"))
+    want, by_merchant = {}, {}
+    for f in d.get("flyers", []):
         try:
             vf = dt.datetime.fromisoformat(f["valid_from"]); vt = dt.datetime.fromisoformat(f["valid_to"])
         except Exception:  # noqa: BLE001
             continue
-        if vf <= now + dt.timedelta(days=1) and vt >= now:
-            live.append(f)
-    if not live:
-        notes.append(f"{merchant}: no current flyer")
-        return [], []
-    # rich fields (sale text, categories) come from item search; discount % from the flyer itself
-    rich = {}
-    try:
-        s = json.loads(get(f"https://backflipp.wishabi.com/flipp/items/search?locale=en-us&postal_code={ZIP}&q={urllib.parse.quote(merchant)}"))
-        for it in s.get("items", []):
-            rich[it.get("flyer_item_id") or it.get("id")] = it
-    except Exception as e:  # noqa: BLE001
-        notes.append(f"{merchant} search: {e}")
-    items, metas = [], []
-    for f in live:
-        try:
-            d = json.loads(get(f"https://backflipp.wishabi.com/flipp/flyers/{f['id']}?locale=en-us"))
-        except Exception as e:  # noqa: BLE001
-            notes.append(f"{merchant} flyer {f['id']}: {e}")
+        if vt < now or vf > now + dt.timedelta(days=UPCOMING_DAYS):
             continue
-        metas.append({"id": f["id"], "name": f.get("name"), "from": f["valid_from"][:10], "to": f["valid_to"][:10]})
-        for it in d.get("items", []):
-            if it.get("display_type") != 1 or not it.get("name"):
+        merchant = (f.get("merchant") or "").strip()
+        if not merchant:
+            continue
+        cats = [c for c in (f.get("categories") or []) if c != "All Flyers"]
+        st = store_of(merchant, cats)
+        meta = {"s": st["id"], "name": (f.get("name") or "").strip(), "from": f["valid_from"][:10], "to": f["valid_to"][:10],
+                "up": 1 if vf > now + dt.timedelta(hours=12) else 0}
+        want[str(f["id"])] = meta
+        by_merchant.setdefault(merchant, {"store": st, "logo": https(f.get("merchant_logo") or ""), "fids": []})["fids"].append(str(f["id"]))
+    out, stats = {}, {}
+    for merchant, m in by_merchant.items():
+        todo = [fid for fid in m["fids"] if fid not in cache["flyers"]]
+        rich = {}
+        if todo:
+            try:
+                sres = json.loads(get(f"https://backflipp.wishabi.com/flipp/items/search?locale=en-us&postal_code={ZIP}&q={urllib.parse.quote(merchant)}"))
+                for it in sres.get("items", []):
+                    if (it.get("merchant_name") or "").strip().lower() == merchant.lower():
+                        rich[it.get("flyer_item_id") or it.get("id")] = it
+            except Exception as e:  # noqa: BLE001
+                notes.append(f"{merchant} search: {str(e)[:80]}")
+            time.sleep(1)
+        for fid in m["fids"]:
+            if fid in cache["flyers"]:
+                out[fid] = dict(cache["flyers"][fid], **want[fid])
                 continue
-            r = rich.get(it.get("id"), {})
-            name = re.sub(r"\s+", " ", html.unescape(it["name"])).strip()
-            if re.match(r"^\d{5,}-", name):  # internal banner ids
+            try:
+                raw = json.loads(get(f"https://backflipp.wishabi.com/flipp/flyers/{fid}?locale=en-us")).get("items", [])
+            except Exception as e:  # noqa: BLE001
+                notes.append(f"{merchant} flyer {fid}: {str(e)[:80]}")
                 continue
-            price = money(r.get("current_price")) if r else None
-            if price is None:
-                price = money(it.get("price"))
-            pre, post = (r.get("pre_price_text") or "").strip(), (r.get("post_price_text") or "").strip()
-            flags, unit = [], ""
-            if re.search(r"digital coupon", post, re.I):
-                flags.append("需领电子券")
-            if re.search(r"with card", post, re.I):
-                flags.append("会员卡价")
-            mb = re.search(r"when you buy (\d+)", post, re.I)
-            if mb:
-                flags.append("买%s件才是此价" % mb.group(1))
-            mu = re.search(r"(?:^|\s|/)(ea|lb|oz|ct|pk)\b", post, re.I)
-            if mu:
-                unit = {"ea": "/个", "lb": "/磅", "oz": "/盎司", "ct": "/个", "pk": "/包"}[mu.group(1).lower()]
-            pt = ""
-            if price is not None:
-                pt = (pre if pre else "") + "$" + fmt(price) + unit
-            story = (r.get("sale_story") or "").strip()
-            if re.fullmatch(r"final cost", story, re.I):
-                story = ""
-            was = money(r.get("original_price"))
-            off = it.get("discount") or (round((1 - price / was) * 100) if (price and was and was > price) else None)
-            items.append({
-                "s": store_id, "src": "flyer", "n": name, "b": (it.get("brand") or "").split("|")[0].strip(),
-                "p": price, "pt": pt, "was": was, "off": off, "st": story, "stz": "，".join([z for z in [story_zh(story)] + flags if z]),
-                "c": classify(name, r.get("_L1"), r.get("_L2"), grocery=(store_id == "f4l")), "zh": "",
-                "img": https(r.get("clean_image_url") or it.get("cutout_image_url")),
-                "u": link_tpl.format(q=urllib.parse.quote_plus(name)), "to": f["valid_to"][:10], "id": "fl%s" % it["id"],
-            })
-        time.sleep(1)
-    for x in items:
-        x["zh"] = gloss(x["n"], x["c"])
-    return items, metas
+            items, got = parse_flyer(m["store"], want[fid], raw, rich)
+            stats[merchant + " · " + want[fid]["name"]] = "%d items, %d with full details" % (len(items), got)
+            out[fid] = dict(want[fid], items=items)
+            time.sleep(1)
+    stores = {}
+    for merchant, m in by_merchant.items():
+        st = dict(m["store"])
+        if m["logo"]:
+            st["logo"] = m["logo"]
+        st["n"] = sum(len(out[f]["items"]) for f in m["fids"] if f in out)
+        if st["n"]:
+            stores[st["id"]] = {k: v for k, v in st.items() if v not in (None, "", [])}
+    out = {f: v for f, v in out.items() if v.get("items")}
+    return out, stores, stats
 
 
 # ---------------------------------------------------------------- RSS helpers
@@ -404,20 +507,27 @@ def dealnews():
 
 
 # ---------------------------------------------------------------- main
+def dump(path, doc):
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(doc, f, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    os.replace(tmp, path)
+
+
 def main():
     now = dt.datetime.now(dt.timezone.utc)
-    items, flyers_meta = [], {}
+    os.makedirs(DATA, exist_ok=True)
+    flyers, stores, stats = {}, {}, {}
     try:
-        fl = flipp_flyers()
-        for sid, merchant, nf, link in FLYER_STORES:
-            try:
-                its, metas = flyer_items(sid, merchant, nf, link, fl)
-                items += its
-                flyers_meta[sid] = metas
-            except Exception as e:  # noqa: BLE001
-                notes.append(f"{merchant}: {e}")
+        flyers, stores, stats = weekly_ads()
     except Exception as e:  # noqa: BLE001
-        notes.append(f"flipp: {e}")
+        notes.append(f"flipp: {str(e)[:120]}")
+        try:  # keep last week's data rather than publishing nothing
+            old = json.load(open(os.path.join(DATA, "flyers.json"), encoding="utf-8"))
+            flyers = {k: v for k, v in old.get("flyers", {}).items() if v.get("to", "") >= now.strftime("%Y-%m-%d")}
+            stores = json.load(open(os.path.join(DATA, "meta.json"), encoding="utf-8")).get("stores", {})
+        except Exception:  # noqa: BLE001
+            pass
 
     online = []
     for label, url in [
@@ -429,49 +539,55 @@ def main():
         try:
             online += slickdeals(url, label)
         except Exception as e:  # noqa: BLE001
-            notes.append(f"slickdeals {url[-60:]}: {e}")
+            notes.append(f"slickdeals: {str(e)[:80]}")
         time.sleep(1)
     for fn in (camel, dealnews):
         try:
             online += fn()
         except Exception as e:  # noqa: BLE001
-            notes.append(f"{fn.__name__}: {e}")
-
-    # keep recent online deals from the previous run
-    try:
-        old = json.load(open(OUT, encoding="utf-8"))
+            notes.append(f"{fn.__name__}: {str(e)[:80]}")
+    try:  # keep recent online deals from the previous run
+        old = json.load(open(os.path.join(DATA, "meta.json"), encoding="utf-8"))
         cutoff = (now - dt.timedelta(hours=KEEP_ONLINE_H)).strftime("%Y-%m-%dT%H:%M:%SZ")
-        online += [x for x in old.get("items", []) if x.get("src") in ("sd", "camel", "dn") and x.get("t", "") >= cutoff]
+        online += [x for x in old.get("online", []) if x.get("t", "") >= cutoff]
     except Exception:  # noqa: BLE001
         pass
     seen, merged = set(), []
     for x in online:
-        k = x["id"] if x.get("id") else re.sub(r"\W+", "", x["n"].lower())[:60]
         k2 = re.sub(r"\W+", "", x["n"].lower())[:60]
-        if k in seen or k2 in seen:
+        if x.get("id") in seen or k2 in seen:
             continue
-        seen.add(k); seen.add(k2)
-        merged.append(x)
-    items += merged
+        seen.add(x.get("id")); seen.add(k2)
+        merged.append({k: v for k, v in x.items() if v not in (None, "", 0, []) or k == "p"})
+    merged.sort(key=lambda x: x.get("t", ""), reverse=True)
 
-    for x in items:
-        for k in [k for k, v in x.items() if v in (None, "", 0) and k not in ("p",)]:
-            del x[k]
-    counts = {}
-    for x in items:
-        counts.setdefault(x["s"], {}).setdefault(x["c"], 0)
-        counts[x["s"]][x["c"]] += 1
-    doc = {
-        "updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "zip": ZIP, "stores": STORE_META, "flyers": flyers_meta,
-        "cats": [{"k": k, "zh": z, "e": e} for k, z, e in CATS], "items": items, "counts": counts, "notes": notes,
-    }
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w", encoding="utf-8") as f:
-        json.dump(doc, f, ensure_ascii=False, separators=(",", ":"))
-    by = {}
-    for x in items:
-        by[x["s"] + "/" + x.get("src", "")] = by.get(x["s"] + "/" + x.get("src", ""), 0) + 1
-    print("deals:", by, "notes:", notes, os.path.getsize(OUT) // 1024, "KB")
+    for sid, meta in ONLINE_META.items():
+        n = sum(1 for x in merged if x["s"] == sid)
+        if n:
+            stores[sid] = dict(meta, id=sid, n=n)
+    if "walmart" in stores:
+        stores["walmart"]["n"] += sum(1 for x in merged if x["s"] == "walmart")
+    elif any(x["s"] == "walmart" for x in merged):
+        sid, grp, color, q, wk = STORES["Walmart"]
+        stores["walmart"] = {"id": "walmart", "name": "Walmart", "grp": grp, "color": color, "q": q, "wk": wk,
+                             "n": sum(1 for x in merged if x["s"] == "walmart")}
+
+    dump(os.path.join(DATA, "flyers.json"), {"v": V, "zip": ZIP, "flyers": flyers})
+    dump(os.path.join(DATA, "meta.json"), {
+        "updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "zip": ZIP, "stores": stores, "online": merged,
+        "groups": [{"k": k, "zh": z, "e": e} for k, z, e in GROUPS], "cats": [{"k": k, "zh": z, "e": e} for k, z, e in CATS],
+        "notes": notes, "stats": stats,
+    })
+    old_latest = os.path.join(DATA, "latest.json")
+    if os.path.exists(old_latest):
+        os.remove(old_latest)
+    nfl = sum(len(v["items"]) for v in flyers.values())
+    print("flyers:", len(flyers), "stores:", len(stores), "flyer items:", nfl, "online:", len(merged))
+    print("notes:", notes)
+    for k, v in sorted(stats.items()):
+        print("  ", k, "→", v)
+    for fn in ("flyers.json", "meta.json"):
+        print(fn, os.path.getsize(os.path.join(DATA, fn)) // 1024, "KB")
 
 
 if __name__ == "__main__":
