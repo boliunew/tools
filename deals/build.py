@@ -24,7 +24,7 @@ ZIP = "91786"  # Upland, CA
 UA = "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Mobile Safari/537.36"
 KEEP_ONLINE_H = 72   # keep online deals this long across runs
 UPCOMING_DAYS = 8    # include flyers that start within this many days ("下周预告")
-V = 5                # bump to re-parse cached flyers after changing the rules below
+V = 6                # bump to re-parse cached flyers after changing the rules below
 
 GROUPS = [  # key, zh, emoji — store groups for the page
     ("grocery", "超市", "🥬"), ("general", "综合百货", "🏬"), ("pharmacy", "药房美妆", "💊"), ("electronics", "电子办公", "🔌"),
@@ -200,19 +200,25 @@ def gloss(name, cat):
 
 
 # ---------------------------------------------------------------- sale text → Chinese
+def zhe(pct):
+    v = 10 - int(pct) / 10.0
+    return ("%.1f" % v).rstrip("0").rstrip(".")
+
+
 def story_zh(s):
     if not s:
         return ""
     t = re.sub(r"\s+", " ", s).strip()
     rules = [
         (r"buy (\d+),? get (\d+)(?: of equal or lesser value)? free", lambda m: "买%s送%s" % (m.group(1), m.group(2))),
-        (r"buy (\d+),? get (\d+) (\d+)% off", lambda m: ("第二件%s折" % fmt(10 - int(m.group(3)) / 10.0)) if m.group(1) == m.group(2) == "1" else "买%s件，再买%s件打%s折" % (m.group(1), m.group(2), fmt(10 - int(m.group(3)) / 10.0))),
+        (r"buy (\d+),? get (\d+) (\d+)% off", lambda m: ("第二件%s折" % zhe(m.group(3))) if m.group(1) == m.group(2) == "1" else "买%s件，再买%s件打%s折" % (m.group(1), m.group(2), zhe(m.group(3)))),
         (r"buy one,? get one free|bogo free|b1g1 free", lambda m: "买一送一"),
-        (r"buy one,? get one (\d+)% off|bogo (\d+)% off", lambda m: "第二件%s折" % fmt(10 - int(m.group(1) or m.group(2)) / 10.0)),
+        (r"buy one,? get one (\d+)% off|bogo (\d+)% off", lambda m: "第二件%s折" % zhe(m.group(1) or m.group(2))),
         (r"save \$(\d+(?:\.\d+)?)", lambda m: "省 $%s" % m.group(1)),
         (r"save up to (\d+)%", lambda m: "最多省 %s%%" % m.group(1)),
         (r"save (\d+)%", lambda m: "省 %s%%" % m.group(1)),
-        (r"(\d+)% off", lambda m: "%s折" % fmt(10 - int(m.group(1)) / 10.0)),
+        (r"(\d+)% off", lambda m: "%s折" % zhe(m.group(1))),
+        (r"when you buy (\d+)", lambda m: "买%s件才是此价" % m.group(1)),
         (r"digital coupon", lambda m: "需领电子券"),
         (r"with card", lambda m: "需会员卡"),
         (r"must buy (\d+)", lambda m: "需买%s件" % m.group(1)),

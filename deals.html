@@ -384,6 +384,12 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
   }
 
   /* ---------- cards ---------- */
+  var STZ = { 'instant savings': '即时折扣', 'featured savings': '精选优惠', 'hot deal': '爆款', 'hot buy': '爆款', 'red hot buy': '爆款', 'doorbuster': '限时抢购', 'clearance': '清仓', 'rollback': 'Rollback 降价', 'new low price': '新低价', 'low price': '低价', 'great value': '超值', 'manager special': '店长特价', 'member price': '会员价', 'club price': '会员价' };
+  function stZh(t) {
+    var k = String(t).toLowerCase().replace(/[^a-z ]/g, '').replace(/\s+/g, ' ').replace(/^\s|\s$/g, '');
+    if (STZ[k]) return STZ[k];
+    return /\d|free|off\b|bogo|save|%|\$/i.test(t) && t.length <= 40 ? t : '';
+  }
   function priceHTML(x) {
     if (x.p == null && !x.pt) return x.stz || x.st ? '' : '<b style="font-size:15px">见详情</b>';
     var m = /^(\d+)\/\$/.exec(x.pt || ''), h = '<b>' + (x.pq ? '约' : '') + esc(x.pt || ('$' + x.p)) + '</b>';
@@ -395,7 +401,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     var st = storeOf(x.s), on = LIST[x.id], c = CAT[x.c] || { e: '📦', zh: '' }, tags = '', i;
     if (x.up) tags += '<span class="tg up">下周 ' + md(x.from) + ' 起</span>';
     if (x.stz) { var zs = x.stz.split('，'); for (i = 0; i < zs.length; i++) tags += '<span class="tg' + (i === 0 && /送|折|省/.test(zs[i]) ? ' hot' : '') + '">' + esc(zs[i]) + '</span>'; }
-    else if (x.st) tags += '<span class="tg hot">' + esc(x.st) + '</span>';
+    else if (x.st) { var sz = stZh(x.st); if (sz) tags += '<span class="tg hot">' + esc(sz) + '</span>'; }
     if (x.fl) for (i = 0; i < x.fl.length; i++) tags += '<span class="tg">' + esc(x.fl[i]) + '</span>';
     var h = '<a class="it" href="' + esc(x.u || '#') + '" target="_blank" rel="noopener" title="' + esc(x.full || x.n) + '">';
     h += '<div class="ph">' + (x.img ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + esc(x.img) + '" alt="" onerror="this.outerHTML=\'<span class=emo>' + c.e + '</span>\'">' : '<span class="emo">' + c.e + '</span>');
