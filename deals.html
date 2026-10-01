@@ -19,6 +19,12 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
 .top{display:flex;align-items:center;margin-bottom:4px}
 .top h1{font-size:21px;margin:0;flex:1}
 .top a{color:var(--soft);font-size:14px;padding:6px 4px}
+.litebtn{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:5px 11px;font-size:13px;margin-right:8px;color:var(--soft)}
+.litebtn.on{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.grid.lite .ph{aspect-ratio:auto;height:58px;background:var(--chip)}
+.grid.lite .ph .emo{font-size:28px}
+.grid.lite .off{top:4px;left:4px}
+.grid.lite .star{width:30px;height:30px;line-height:30px;font-size:16px;top:2px;right:2px}
 .upd{font-size:12.5px;color:var(--faint);margin-bottom:10px}
 .upd a{color:var(--accent)}
 .stores{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 8px;padding:0 16px 2px}
@@ -134,7 +140,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
 </head>
 <body>
 <main>
-  <div class="top"><h1>🏷️ 打折雷达</h1><a href="./">主页</a></div>
+  <div class="top"><h1>🏷️ 打折雷达</h1><button class="litebtn" id="lite" type="button"></button><a href="./">主页</a></div>
   <div class="upd" id="upd">加载中…</div>
   <div class="srch"><input id="q" type="search" placeholder="比价搜索：eggs、鸡蛋、chicken、汽水…" autocomplete="off"><button class="x" id="qx" aria-label="清除">×</button></div>
   <div class="groups" id="groups"></div>
@@ -162,6 +168,10 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
   var META = null, FLY = null, ITEMS = [], ST = {}, CAT = {}, GRP = [];
   var grp = get('grp', 'mine'), SEL = get('sel', {}), sub = get('sub', {}), cat = 'all', sort = get('sort', 'rec'), q = '', mineOnly = false, shown = 60;
   var MINE = get('mine', ['f4l', 'walmart', 'amazon']), LIST = get('list', {});
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var LITE = get('lite', null);
+  if (LITE === null) LITE = !!(conn && (conn.saveData || /(^|-)2g|3g/.test(conn.effectiveType || '')));
+  function liteBtn() { var b = $('lite'); b.className = 'litebtn' + (LITE ? ' on' : ''); b.textContent = LITE ? '📵 省流量 · 开' : '🖼️ 省流量 · 关'; }
   var SORTS = [['rec', '推荐'], ['off', '折扣大'], ['price', '价格低'], ['new', '最新']];
   var PALETTE = ['#B5452B', '#2B6CB0', '#2F855A', '#B7791F', '#6B46C1', '#C05621', '#2C7A7B', '#9B2C2C', '#4A5568', '#D53F8C'];
   var STAPLES = [
@@ -302,7 +312,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     for (i = 0; i < SORTS.length; i++) so += '<button data-o="' + SORTS[i][0] + '" class="' + (eff === SORTS[i][0] ? 'on' : '') + '">' + SORTS[i][1] + '</button>';
     $('sorts').innerHTML = so + '<span class="n">' + fmtN(list.length) + ' 件</span>';
     if (!list.length) { $('body').innerHTML = '<div class="msg">' + (q ? '没找到「' + esc(q) + '」，换个词试试（中英文都行）' : '这里暂时没有特价') + '</div>'; return; }
-    var h = '<div class="grid">';
+    var h = '<div class="grid' + (LITE ? ' lite' : '') + '">';
     for (i = 0; i < Math.min(shown, list.length); i++) h += card(list[i]);
     h += '</div>';
     if (list.length > shown) h += '<button class="more" id="more">再看 ' + Math.min(60, list.length - shown) + ' 件（还有 ' + fmtN(list.length - shown) + '）</button>';
@@ -404,7 +414,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     else if (x.st) { var sz = stZh(x.st); if (sz) tags += '<span class="tg hot">' + esc(sz) + '</span>'; }
     if (x.fl) for (i = 0; i < x.fl.length; i++) tags += '<span class="tg">' + esc(x.fl[i]) + '</span>';
     var h = '<a class="it" href="' + esc(x.u || '#') + '" target="_blank" rel="noopener" title="' + esc(x.full || x.n) + '">';
-    h += '<div class="ph">' + (x.img ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + esc(x.img) + '" alt="" onerror="this.outerHTML=\'<span class=emo>' + c.e + '</span>\'">' : '<span class="emo">' + c.e + '</span>');
+    h += '<div class="ph">' + (x.img && !LITE ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + esc(x.img) + '" alt="" onerror="this.outerHTML=\'<span class=emo>' + c.e + '</span>\'">' : '<span class="emo">' + c.e + '</span>');
     if (x.off && x.off >= 5) h += '<span class="off">-' + x.off + '%</span>';
     h += '<button class="star' + (on ? ' on' : '') + '" data-id="' + esc(x.id) + '" aria-label="加入清单">' + (on ? '★' : '☆') + '</button></div>';
     h += '<div class="bd"><div class="pr">' + priceHTML(x) + '</div>' + (tags ? '<div class="tags">' + tags + '</div>' : '') + '<div class="nm">' + esc(x.n) + '</div>';
@@ -464,7 +474,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
       h += '<div class="list"><h3><span style="color:' + st.color + '">' + esc(st.name) + '</span><span>' + L.length + ' 件 · 约 $' + sum.toFixed(2) + '</span></h3>';
       for (j = 0; j < L.length; j++) {
         var x = L[j], old = x.to && x.to < t;
-        h += '<div class="row' + (old ? ' old' : '') + '">' + (x.img ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + esc(x.img) + '" alt="">' : '') + '<a class="t" href="' + esc(x.u || '#') + '" target="_blank" rel="noopener"><div>' + esc(x.n) + '</div><small>' + esc([x.zh, x.stz, old ? '已过期' : (x.to ? '到 ' + md(x.to) : '')].filter(function (z) { return z; }).join(' · ')) + '</small></a><span class="p">' + esc(x.pt) + '</span><button class="rm" data-id="' + esc(x.id) + '" aria-label="移除">×</button></div>';
+        h += '<div class="row' + (old ? ' old' : '') + '">' + (x.img && !LITE ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + esc(x.img) + '" alt="">' : '') + '<a class="t" href="' + esc(x.u || '#') + '" target="_blank" rel="noopener"><div>' + esc(x.n) + '</div><small>' + esc([x.zh, x.stz, old ? '已过期' : (x.to ? '到 ' + md(x.to) : '')].filter(function (z) { return z; }).join(' · ')) + '</small></a><span class="p">' + esc(x.pt) + '</span><button class="rm" data-id="' + esc(x.id) + '" aria-label="移除">×</button></div>';
       }
       h += '</div>';
     }
@@ -523,9 +533,12 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
   };
   $('qx').onclick = function () { $('q').value = ''; $('qx').style.display = 'none'; q = ''; mineOnly = false; reset(); render(); };
   if (grp === 'pick') grp = 'mine';
+  liteBtn();
+  $('lite').onclick = function () { LITE = !LITE; put('lite', LITE); liteBtn(); toast(LITE ? '省流量：不加载商品图片，打开一次约 260 KB' : '已显示商品图片'); if (META) render(); };
 
   load();
 })();
 </script>
+<script src="nav.js?v=1" defer></script>
 </body>
 </html>
