@@ -126,6 +126,76 @@ h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px
 .ctab{max-width:380px;margin:0 auto}.crow{display:flex;justify-content:space-between;padding:8px 6px;border-bottom:1px solid var(--line);cursor:pointer;font-size:17px}.crow span{color:var(--soft)}.crow em{font-style:normal;color:var(--accent);font-weight:800}
 .opt.small{font-size:16px!important}
 .tip{font-size:14px;color:var(--soft);margin-top:8px;max-width:440px;margin-left:auto;margin-right:auto}
+/* pw-css */
+.pwm{color:#2563C9;font-weight:700}.pwf{color:#C93A6E;font-weight:700}
+@media (prefers-color-scheme: dark){.pwm{color:#86B6FF}.pwf{color:#FF8DB7}}
+.pwhome{background:linear-gradient(135deg,rgba(242,163,58,.24),var(--paper))!important}
+.pwv{position:fixed;left:0;top:0;right:0;bottom:0;z-index:60;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;display:none;color:var(--ink)}
+.pwv.on{display:block}
+.pwv button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pwv .pwtop{position:-webkit-sticky;position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;min-height:54px;padding:0 6px}
+.pwv .pwti{flex:1;text-align:center;font-weight:700;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pwv .pwb{border:0;background:transparent;color:var(--soft);font-size:15px;padding:10px 6px;min-width:78px}
+.pwv .pwwrap{max-width:720px;margin:0 auto;padding:12px 16px 70px}
+.pwv .pwintro{background:var(--chip);border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.7;margin-bottom:10px}
+.pwv .pwrow{display:flex;flex-wrap:wrap;justify-content:center;margin:4px 0 8px}
+.pwv .pwbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:8px 13px;min-height:42px;font-size:14.5px;margin:0 4px 8px}
+.pwv .pwbtn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.pwv .pwbtn.good{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.pwv .pwbtn:disabled{opacity:.4}
+.pwv .pwbtn.pwbig{font-size:30px;padding:10px 34px;margin-top:10px}
+.pwv .pwstat{font-size:13px;color:var(--faint);text-align:center;margin:0 0 10px}.pwv .pwstat b{color:var(--good)}
+.pwv .pwcats{display:flex;flex-wrap:wrap;margin:0 -5px}
+.pwv .pwcat{position:relative;overflow:hidden;width:calc(50% - 10px);margin:0 5px 10px;background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 8px 14px;text-align:center;color:var(--ink)}
+.pwv .pwcat .ic{display:block;font-size:40px;line-height:1.25}
+.pwv .pwcat b{display:block;font-size:16px;margin-top:2px}
+.pwv .pwcat small{color:var(--soft);font-size:12.5px}
+.pwv .pwcat i{position:absolute;left:0;bottom:0;height:4px;background:var(--good)}
+.pwv .pwgrid{display:flex;flex-wrap:wrap;margin:0 -4px}
+.pwv .pwt{width:calc(33.333% - 8px);margin:0 4px 8px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 2px;text-align:center;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:120px}
+.pwv .pwt .em{font-size:46px;line-height:1.2}
+.pwv .pwt .w{font-size:15px;font-weight:700;margin-top:2px;line-height:1.25;word-break:break-word}
+.pwv .pwt .s{font-size:12px;color:var(--soft);margin-top:1px}
+.pwv .pwt.got{border-color:var(--good)}
+.pwv .pwt.rd{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pwv .pwgrid.hid .pwt .w,.pwv .pwgrid.hid .pwt .s{visibility:hidden}
+.pwv .pwgrid.hid .pwt.peek .w,.pwv .pwgrid.hid .pwt.peek .s{visibility:visible}
+.pwv .pwpy{display:block;font-size:12.5px;color:var(--soft);font-weight:500;line-height:1.3}
+.pwv .pwzh{display:block;font-size:24px;font-family:"Kaiti SC","STKaiti","KaiTi",serif;line-height:1.25}
+.pwv .pwhint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:8px}
+.pwv .pwdet{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);text-align:center;padding:18px 14px 16px;margin-bottom:12px}
+.pwv .pwdet .em{font-size:118px;line-height:1.15;cursor:pointer;display:inline-block}
+.pwv .pwdet .w{font-size:34px;font-weight:800;margin-top:4px;line-height:1.3}
+.pwv .pwdet .w .pwpy{font-size:22px;color:var(--accent)}.pwv .pwdet .w .pwzh{font-size:66px;font-weight:700}
+.pwv .pwdet .s{font-size:17px;color:var(--soft)}
+.pwv .pwnote{background:var(--chip);border-radius:10px;padding:8px 12px;margin-top:10px;font-size:14px;line-height:1.7;font-weight:400;color:var(--ink)}
+.pwv .pwnav{display:flex}.pwv .pwnav .pwbtn{flex:1}
+.pwv .pwpop{animation:pwpop .45s}
+@keyframes pwpop{0%{transform:scale(1)}40%{transform:scale(1.18) rotate(-5deg)}100%{transform:scale(1)}}
+.pwv .pwq{text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px 12px;margin-bottom:12px}
+.pwv .pwq .lab{font-size:14px;color:var(--soft)}
+.pwv .pwq .bigem{font-size:104px;line-height:1.2}
+.pwv .pwq .bigw{font-size:34px;font-weight:800;margin:8px 0 4px}
+.pwv .pwq .bigw .pwzh{font-size:60px}
+.pwv .pwblank{display:inline-block;min-width:60px;height:.9em;border-bottom:3px solid var(--accent);vertical-align:baseline}
+.pwv .pwopts{display:flex;flex-wrap:wrap;margin:0 -5px}
+.pwv .pwo{width:calc(50% - 10px);margin:0 5px 10px;background:var(--paper);border:1px solid var(--line);border-radius:16px;color:var(--ink);min-height:66px;font-size:21px;font-weight:700;padding:8px}
+.pwv .pwopts.em .pwo{min-height:112px;font-size:62px;line-height:1.1}
+.pwv .pwopts.tx .pwo .pwzh{font-size:32px}
+.pwv .pwo.gm{color:#2563C9}.pwv .pwo.gf{color:#C93A6E}
+.pwv .pwo.right{background:var(--good-soft);border-color:var(--good)}
+.pwv .pwo.wrong{background:var(--bad-soft,#F8E1DB);border-color:var(--bad,#C8412B)}
+.pwv .pwfb{text-align:center;font-size:19px;font-weight:700;min-height:30px;line-height:1.5}
+.pwv .pwfb .pwzh,.pwv .pwfb .pwpy{display:inline;font-size:inherit}
+.pwv .pwfb .pwpy{margin-right:4px;color:var(--soft)}
+.pwv .pwfb small{font-size:14px;color:var(--soft);font-weight:400}
+.pwv .pwfb.ok{color:var(--good)}.pwv .pwfb.bad{color:var(--bad,#C8412B)}
+.pwv .pwdone{text-align:center;padding:30px 10px}
+.pwv .pwdone .stars{font-size:46px;letter-spacing:6px}.pwv .pwdone .stars .dim{opacity:.2}
+.pwv .pwdone .sc{font-size:44px;font-weight:800;color:var(--accent);margin-top:6px}
+.pwv .pwdone .msg{color:var(--soft);margin:4px 0 16px}
+@media (prefers-color-scheme: dark){.pwv .pwo.gm{color:#86B6FF}.pwv .pwo.gf{color:#FF8DB7}}
+/* /pw-css */
 </style>
 </head>
 <body>
@@ -324,6 +394,275 @@ var ES = {
   ]
 };
 ES.lev = {"cognates": [{"en": "-tion", "es": "-ción", "est": "约 1500+", "gender": "阴性 la", "tip": "英语 -tion 结尾的词，几乎都能变成 -ción，而且都是阴性", "pairs": [["nation", "la nación", "国家"], ["information", "la información", "信息"], ["education", "la educación", "教育"], ["station", "la estación", "车站；季节"], ["situation", "la situación", "情况"], ["communication", "la comunicación", "交流"], ["conversation", "la conversación", "对话"], ["action", "la acción", "行动"], ["relation", "la relación", "关系"], ["solution", "la solución", "解决办法"], ["attention", "la atención", "注意"], ["organization", "la organización", "组织"], ["population", "la población", "人口"], ["invitation", "la invitación", "邀请"]]}, {"en": "-sion", "es": "-sión", "est": "几百个", "gender": "阴性 la", "tip": "-sion 变 -sión，同样全是阴性；注意 ss 要简化成一个 s", "pairs": [["television", "la televisión", "电视"], ["decision", "la decisión", "决定"], ["discussion", "la discusión", "讨论"], ["expression", "la expresión", "表达"], ["profession", "la profesión", "职业"], ["mission", "la misión", "任务"], ["vision", "la visión", "视力；愿景"], ["version", "la versión", "版本"], ["conclusion", "la conclusión", "结论"], ["passion", "la pasión", "激情"], ["impression", "la impresión", "印象"], ["tension", "la tensión", "紧张；张力"], ["excursion", "la excursión", "远足"], ["confusion", "la confusión", "混乱"]]}, {"en": "-ty", "es": "-dad", "est": "约 1000+", "gender": "阴性 la", "tip": "英语 -ty 名词常变成 -dad（少数是 -tad），一律阴性", "pairs": [["city", "la ciudad", "城市"], ["university", "la universidad", "大学"], ["society", "la sociedad", "社会"], ["quality", "la calidad", "质量"], ["reality", "la realidad", "现实"], ["opportunity", "la oportunidad", "机会"], ["activity", "la actividad", "活动"], ["identity", "la identidad", "身份"], ["electricity", "la electricidad", "电"], ["possibility", "la posibilidad", "可能性"], ["curiosity", "la curiosidad", "好奇心"], ["velocity", "la velocidad", "速度"], ["variety", "la variedad", "多样性"], ["community", "la comunidad", "社区"]]}, {"en": "-ous", "es": "-oso", "est": "几百个", "gender": "", "tip": "-ous 形容词变 -oso；形容女性或阴性名词时改成 -osa", "pairs": [["famous", "famoso", "有名的"], ["delicious", "delicioso", "好吃的"], ["curious", "curioso", "好奇的"], ["generous", "generoso", "慷慨的"], ["nervous", "nervioso", "紧张的"], ["religious", "religioso", "宗教的"], ["precious", "precioso", "珍贵的；漂亮的"], ["glorious", "glorioso", "光荣的"], ["mysterious", "misterioso", "神秘的"], ["furious", "furioso", "狂怒的"], ["ambitious", "ambicioso", "有野心的"], ["numerous", "numeroso", "众多的"], ["fabulous", "fabuloso", "极好的"], ["marvelous", "maravilloso", "奇妙的"]]}, {"en": "-ic", "es": "-ico", "est": "约 1000+", "gender": "", "tip": "-ic 形容词加 -o 变成 -ico，多数要在倒数第三个音节加重音符号", "pairs": [["public", "público", "公共的"], ["electric", "eléctrico", "电的"], ["fantastic", "fantástico", "极好的"], ["classic", "clásico", "经典的"], ["economic", "económico", "经济的；便宜的"], ["historic", "histórico", "历史性的"], ["romantic", "romántico", "浪漫的"], ["specific", "específico", "具体的"], ["automatic", "automático", "自动的"], ["magic", "mágico", "神奇的"], ["scientific", "científico", "科学的"], ["basic", "básico", "基本的"], ["organic", "orgánico", "有机的"], ["plastic", "plástico", "塑料的"]]}, {"en": "-al", "es": "-al", "est": "约 1000+", "gender": "", "tip": "-al 形容词原样照搬，阴阳同形；只是发音变成西语的", "pairs": [["normal", "normal", "正常的"], ["natural", "natural", "自然的"], ["general", "general", "总的；一般的"], ["final", "final", "最后的"], ["local", "local", "当地的"], ["central", "central", "中心的"], ["personal", "personal", "个人的"], ["social", "social", "社会的"], ["national", "nacional", "国家的"], ["special", "especial", "特别的"], ["original", "original", "原创的"], ["total", "total", "全部的"], ["legal", "legal", "合法的"], ["ideal", "ideal", "理想的"]]}, {"en": "-ble", "es": "-ble", "est": "几百个", "gender": "", "tip": "-ble 形容词基本照搬，阴阳同形；小心 sensible 在西语是敏感的意思", "pairs": [["possible", "posible", "可能的"], ["terrible", "terrible", "可怕的"], ["flexible", "flexible", "灵活的"], ["visible", "visible", "看得见的"], ["probable", "probable", "很可能的"], ["responsible", "responsable", "负责的"], ["acceptable", "aceptable", "可接受的"], ["horrible", "horrible", "恐怖的"], ["incredible", "increíble", "难以置信的"], ["notable", "notable", "显著的"], ["variable", "variable", "可变的"], ["favorable", "favorable", "有利的"], ["invisible", "invisible", "隐形的"], ["admirable", "admirable", "令人钦佩的"]]}, {"en": "-ist", "es": "-ista", "est": "几百个", "gender": "阴阳同形 el / la", "tip": "-ist 变 -ista，男女都用同一个词，只换冠词 el / la", "pairs": [["artist", "el / la artista", "艺术家"], ["dentist", "el / la dentista", "牙医"], ["tourist", "el / la turista", "游客"], ["pianist", "el / la pianista", "钢琴家"], ["optimist", "el / la optimista", "乐观的人"], ["pessimist", "el / la pesimista", "悲观的人"], ["specialist", "el / la especialista", "专家"], ["realist", "el / la realista", "现实主义者"], ["guitarist", "el / la guitarrista", "吉他手"], ["florist", "el / la florista", "花店老板"], ["economist", "el / la economista", "经济学家"], ["novelist", "el / la novelista", "小说家"], ["cyclist", "el / la ciclista", "骑行者"], ["finalist", "el / la finalista", "决赛选手"]]}, {"en": "-ism", "es": "-ismo", "est": "几百个", "gender": "阳性 el", "tip": "-ism 加 -o 变 -ismo，全是阳性", "pairs": [["tourism", "el turismo", "旅游业"], ["capitalism", "el capitalismo", "资本主义"], ["optimism", "el optimismo", "乐观"], ["realism", "el realismo", "现实主义"], ["organism", "el organismo", "有机体；机构"], ["mechanism", "el mecanismo", "机制"], ["feminism", "el feminismo", "女权主义"], ["patriotism", "el patriotismo", "爱国主义"], ["pessimism", "el pesimismo", "悲观"], ["nationalism", "el nacionalismo", "民族主义"], ["buddhism", "el budismo", "佛教"], ["romanticism", "el romanticismo", "浪漫主义"], ["idealism", "el idealismo", "理想主义"], ["socialism", "el socialismo", "社会主义"]]}, {"en": "-ent", "es": "-ente", "est": "几百个", "gender": "", "tip": "-ent 形容词加 -e 变 -ente，阴阳同形", "pairs": [["different", "diferente", "不同的"], ["intelligent", "inteligente", "聪明的"], ["excellent", "excelente", "优秀的"], ["evident", "evidente", "明显的"], ["frequent", "frecuente", "频繁的"], ["patient", "paciente", "有耐心的；病人"], ["recent", "reciente", "最近的"], ["present", "presente", "在场的；现在的"], ["independent", "independiente", "独立的"], ["efficient", "eficiente", "高效的"], ["sufficient", "suficiente", "足够的"], ["permanent", "permanente", "永久的"], ["urgent", "urgente", "紧急的"], ["innocent", "inocente", "无辜的"]]}, {"en": "-ant", "es": "-ante", "est": "几百个", "gender": "", "tip": "-ant 形容词加 -e 变 -ante，阴阳同形", "pairs": [["important", "importante", "重要的"], ["elegant", "elegante", "优雅的"], ["abundant", "abundante", "丰富的"], ["constant", "constante", "持续的"], ["brilliant", "brillante", "闪亮的；杰出的"], ["distant", "distante", "遥远的；冷淡的"], ["relevant", "relevante", "相关的"], ["arrogant", "arrogante", "傲慢的"], ["tolerant", "tolerante", "宽容的"], ["ignorant", "ignorante", "无知的"], ["vacant", "vacante", "空缺的"], ["dominant", "dominante", "占主导的"], ["vibrant", "vibrante", "有活力的"], ["extravagant", "extravagante", "奢侈的；古怪的"]]}, {"en": "-ence", "es": "-encia", "est": "几百个", "gender": "阴性 la", "tip": "-ence 变 -encia，全是阴性", "pairs": [["difference", "la diferencia", "差别"], ["experience", "la experiencia", "经验；经历"], ["science", "la ciencia", "科学"], ["intelligence", "la inteligencia", "智力"], ["patience", "la paciencia", "耐心"], ["violence", "la violencia", "暴力"], ["conference", "la conferencia", "会议；讲座"], ["influence", "la influencia", "影响"], ["evidence", "la evidencia", "证据"], ["presence", "la presencia", "在场"], ["independence", "la independencia", "独立"], ["residence", "la residencia", "住所"], ["existence", "la existencia", "存在"], ["preference", "la preferencia", "偏好"]]}, {"en": "-ance", "es": "-ancia", "est": "约 100+", "gender": "阴性 la", "tip": "-ance 常变 -ancia，全是阴性；也有例外，如 balance 仍是 el balance", "pairs": [["distance", "la distancia", "距离"], ["importance", "la importancia", "重要性"], ["elegance", "la elegancia", "优雅"], ["tolerance", "la tolerancia", "宽容"], ["ignorance", "la ignorancia", "无知"], ["abundance", "la abundancia", "丰富"], ["arrogance", "la arrogancia", "傲慢"], ["relevance", "la relevancia", "相关性"], ["substance", "la sustancia", "物质"], ["instance", "la instancia", "实例；阶段"], ["circumstance", "la circunstancia", "情况"], ["vigilance", "la vigilancia", "警戒；监视"], ["fragrance", "la fragancia", "香味"], ["extravagance", "la extravagancia", "奢侈；古怪"]]}, {"en": "-ary", "es": "-ario", "est": "几百个", "gender": "名词为阳性 el", "tip": "-ary 变 -ario，既有名词（阳性）也有形容词", "pairs": [["dictionary", "el diccionario", "词典"], ["salary", "el salario", "工资"], ["vocabulary", "el vocabulario", "词汇"], ["anniversary", "el aniversario", "周年纪念"], ["itinerary", "el itinerario", "行程"], ["commentary", "el comentario", "评论"], ["glossary", "el glosario", "词汇表"], ["necessary", "necesario", "必要的"], ["ordinary", "ordinario", "普通的"], ["extraordinary", "extraordinario", "非凡的"], ["contrary", "contrario", "相反的"], ["primary", "primario", "初级的；主要的"], ["voluntary", "voluntario", "自愿的；志愿者"], ["imaginary", "imaginario", "想象的"]]}, {"en": "-ive", "es": "-ivo", "est": "几百个", "gender": "", "tip": "-ive 形容词变 -ivo；阴性改成 -iva", "pairs": [["active", "activo", "积极的；活跃的"], ["positive", "positivo", "正面的"], ["negative", "negativo", "负面的"], ["creative", "creativo", "有创意的"], ["attractive", "atractivo", "有吸引力的"], ["effective", "efectivo", "有效的；现金"], ["exclusive", "exclusivo", "独家的"], ["massive", "masivo", "大规模的"], ["objective", "objetivo", "客观的；目标"], ["productive", "productivo", "高效的"], ["relative", "relativo", "相对的"], ["native", "nativo", "本地的；母语的"], ["excessive", "excesivo", "过度的"], ["competitive", "competitivo", "有竞争力的"]]}, {"en": "-ly", "es": "-mente", "est": "上千个", "gender": "", "tip": "副词 -ly 变 -mente：把形容词的阴性形式加上 -mente，原有重音符号保留", "pairs": [["rapidly", "rápidamente", "快速地"], ["finally", "finalmente", "最后"], ["normally", "normalmente", "通常"], ["generally", "generalmente", "一般来说"], ["totally", "totalmente", "完全地"], ["exactly", "exactamente", "正是；确切地"], ["naturally", "naturalmente", "自然地"], ["probably", "probablemente", "大概"], ["especially", "especialmente", "特别地"], ["completely", "completamente", "完全地"], ["perfectly", "perfectamente", "完美地"], ["recently", "recientemente", "最近"], ["directly", "directamente", "直接地"], ["frequently", "frecuentemente", "经常"]]}, {"en": "-ize", "es": "-izar", "est": "约 200+", "gender": "", "tip": "-ize 动词变 -izar，都是规则 -ar 动词；小心 realize 在西语 realizar 是实现、进行的意思", "pairs": [["organize", "organizar", "组织"], ["memorize", "memorizar", "记住"], ["modernize", "modernizar", "现代化"], ["symbolize", "simbolizar", "象征"], ["utilize", "utilizar", "使用"], ["finalize", "finalizar", "完成"], ["authorize", "autorizar", "授权"], ["visualize", "visualizar", "想象；显示"], ["legalize", "legalizar", "使合法"], ["normalize", "normalizar", "使正常化"], ["stabilize", "estabilizar", "使稳定"], ["characterize", "caracterizar", "以…为特征"], ["minimize", "minimizar", "最小化"], ["maximize", "maximizar", "最大化"]]}, {"en": "-ate", "es": "-ar", "est": "几百个", "gender": "", "tip": "-ate 动词（不是形容词）去掉 -ate 换成 -ar，就是规则 -ar 动词", "pairs": [["create", "crear", "创造"], ["participate", "participar", "参加"], ["communicate", "comunicar", "交流"], ["celebrate", "celebrar", "庆祝"], ["educate", "educar", "教育"], ["separate", "separar", "分开"], ["calculate", "calcular", "计算"], ["operate", "operar", "操作；做手术"], ["generate", "generar", "产生"], ["eliminate", "eliminar", "消除"], ["concentrate", "concentrar", "集中"], ["decorate", "decorar", "装饰"], ["indicate", "indicar", "指出"], ["negotiate", "negociar", "谈判"]]}], "verbs": {"ar": {"endings": ["o", "as", "a", "amos", "an"], "verbs": [["hablar", "说话"], ["trabajar", "工作"], ["estudiar", "学习"], ["caminar", "走路"], ["cocinar", "做饭"], ["comprar", "买"], ["llamar", "打电话；叫"], ["escuchar", "听"], ["mirar", "看"], ["tomar", "拿；喝；乘坐"], ["necesitar", "需要"], ["ayudar", "帮助"], ["esperar", "等；希望"], ["viajar", "旅行"], ["bailar", "跳舞"], ["cantar", "唱歌"], ["llegar", "到达"], ["pagar", "付钱"], ["usar", "使用"], ["visitar", "拜访"], ["preparar", "准备"], ["limpiar", "打扫"], ["descansar", "休息"], ["nadar", "游泳"]]}, "er": {"endings": ["o", "es", "e", "emos", "en"], "verbs": [["comer", "吃"], ["beber", "喝"], ["aprender", "学会"], ["leer", "读"], ["correr", "跑"], ["vender", "卖"], ["comprender", "理解"], ["responder", "回答"], ["deber", "应该；欠"], ["creer", "相信；认为"], ["romper", "打破"], ["meter", "放进"], ["prometer", "承诺"], ["depender", "取决于"]]}, "ir": {"endings": ["o", "es", "e", "imos", "en"], "verbs": [["vivir", "住；生活"], ["escribir", "写"], ["abrir", "打开"], ["recibir", "收到"], ["subir", "上去；上传"], ["decidir", "决定"], ["compartir", "分享"], ["asistir", "参加；出席"], ["partir", "出发；切开"], ["cubrir", "覆盖"], ["discutir", "讨论；争吵"], ["permitir", "允许"], ["describir", "描述"], ["existir", "存在"], ["sufrir", "受苦"]]}}, "pronouns": ["yo", "tú", "él / ella / usted", "nosotros", "ellos / ellas / ustedes"]};
+</script>
+<script id="pwData">window.PW_DATA = [{"id":"animals","name":"动物","icon":"🐾","items":[["🐱","cat","猫","māo","el gato",""],["🐶","dog","狗","gǒu","el perro",""],["🐟","fish","鱼","yú","el pez","活的鱼叫 pez，做成菜的鱼叫 pescado"],["🐦","bird","鸟","niǎo","el pájaro",""],["🐴","horse","马","mǎ","el caballo",""],["🐮","cow","牛","niú","la vaca",""],["🐑","sheep","羊","yáng","la oveja",""],["🐷","pig","猪","zhū","el cerdo",""],["🐔","chicken","鸡","jī","la gallina",""],["🦆","duck","鸭子","yāzi","el pato",""],["🐰","rabbit","兔子","tùzi","el conejo",""],["🐭","mouse","老鼠","lǎoshǔ","el ratón",""],["🐯","tiger","老虎","lǎohǔ","el tigre",""],["🦁","lion","狮子","shīzi","el león",""],["🐘","elephant","大象","dàxiàng","el elefante",""],["🐒","monkey","猴子","hóuzi","el mono",""],["🐻","bear","熊","xióng","el oso",""],["🐍","snake","蛇","shé","la serpiente","墨西哥口语也常说 la víbora"],["🐢","turtle","乌龟","wūguī","la tortuga",""],["🦋","butterfly","蝴蝶","húdié","la mariposa",""],["🐝","bee","蜜蜂","mìfēng","la abeja",""],["🐸","frog","青蛙","qīngwā","la rana",""]]},{"id":"food","name":"吃的喝的","icon":"🍎","items":[["🍎","apple","苹果","píngguǒ","la manzana",""],["🍌","banana","香蕉","xiāngjiāo","el plátano",""],["🍇","grapes","葡萄","pútao","las uvas",""],["🍉","watermelon","西瓜","xīguā","la sandía",""],["🍊","orange","橙子","chéngzi","la naranja",""],["🍓","strawberry","草莓","cǎoméi","la fresa",""],["🍑","peach","桃子","táozi","el durazno","西班牙叫 el melocotón"],["🍐","pear","梨","lí","la pera",""],["🍋","lemon","柠檬","níngméng","el limón",""],["🍞","bread","面包","miànbāo","el pan",""],["🍚","rice","米饭","mǐfàn","el arroz",""],["🥚","egg","鸡蛋","jīdàn","el huevo",""],["🥛","milk","牛奶","niúnǎi","la leche",""],["💧","water","水","shuǐ","el agua","⚠️ agua 其实是阴性词，只是 el agua 读起来更顺（复数是 las aguas）"],["🍰","cake","蛋糕","dàngāo","el pastel",""],["🍦","ice cream","冰淇淋","bīngqílín","el helado",""],["🍕","pizza","比萨","bǐsà","la pizza",""],["🥕","carrot","胡萝卜","húluóbo","la zanahoria",""],["🌽","corn","玉米","yùmǐ","el elote","墨西哥把玉米棒叫 elote；玉米本身叫 el maíz"],["🍅","tomato","西红柿","xīhóngshì","el jitomate","墨西哥说 jitomate，其他国家说 tomate"]]},{"id":"body","name":"身体","icon":"👀","items":[["👁️","eye","眼睛","yǎnjing","el ojo",""],["👂","ear","耳朵","ěrduo","la oreja",""],["👃","nose","鼻子","bízi","la nariz",""],["👄","mouth","嘴巴","zuǐba","la boca",""],["✋","hand","手","shǒu","la mano","⚠️ 以 -o 结尾却是阴性，著名特例"],["🦶","foot","脚","jiǎo","el pie",""],["🦷","tooth","牙齿","yáchǐ","el diente",""],["👅","tongue","舌头","shétou","la lengua",""],["💪","arm","胳膊","gēbo","el brazo",""],["🦵","leg","腿","tuǐ","la pierna",""],["❤️","heart","心","xīn","el corazón",""],["😀","face","脸","liǎn","la cara",""]]},{"id":"people","name":"家人和职业","icon":"👪","items":[["👨","dad","爸爸","bàba","el papá",""],["👩","mom","妈妈","māma","la mamá",""],["👦","boy","男孩","nánhái","el niño",""],["👧","girl","女孩","nǚhái","la niña",""],["👶","baby","宝宝","bǎobao","el bebé",""],["👴","grandpa","爷爷","yéye","el abuelo",""],["👵","grandma","奶奶","nǎinai","la abuela",""],["🧑‍🏫","teacher","老师","lǎoshī","el maestro","女老师是 la maestra"],["🧑‍⚕️","doctor","医生","yīshēng","el doctor","女医生是 la doctora"],["👮","police officer","警察","jǐngchá","el policía",""],["🧑‍🍳","cook","厨师","chúshī","el cocinero","女厨师是 la cocinera"],["🧑‍🚒","firefighter","消防员","xiāofángyuán","el bombero","女消防员是 la bombera"]]},{"id":"nature","name":"大自然","icon":"🌳","items":[["☀️","sun","太阳","tàiyáng","el sol",""],["🌙","moon","月亮","yuèliang","la luna",""],["⭐","star","星星","xīngxing","la estrella",""],["☁️","cloud","云","yún","la nube",""],["🌧️","rain","雨","yǔ","la lluvia",""],["❄️","snow","雪","xuě","la nieve",""],["🌈","rainbow","彩虹","cǎihóng","el arcoíris",""],["⛰️","mountain","山","shān","la montaña",""],["🌊","sea","海","hǎi","el mar",""],["🔥","fire","火","huǒ","el fuego",""],["🌳","tree","树","shù","el árbol",""],["🌸","flower","花","huā","la flor",""],["🍃","leaf","叶子","yèzi","la hoja",""],["🪨","rock","石头","shítou","la piedra",""],["🌍","Earth","地球","dìqiú","la Tierra",""],["⚡","lightning","闪电","shǎndiàn","el rayo",""]]},{"id":"home","name":"家里和学校","icon":"🏠","items":[["🏠","house","房子","fángzi","la casa",""],["🚪","door","门","mén","la puerta",""],["🪟","window","窗户","chuānghu","la ventana",""],["🛏️","bed","床","chuáng","la cama",""],["🪑","chair","椅子","yǐzi","la silla",""],["🛋️","sofa","沙发","shāfā","el sofá",""],["📺","TV","电视","diànshì","la tele","televisión 的简称"],["📱","phone","手机","shǒujī","el celular","西班牙说 el móvil"],["💡","light bulb","灯泡","dēngpào","el foco","西班牙说 la bombilla"],["🕐","clock","钟","zhōng","el reloj",""],["📖","book","书","shū","el libro",""],["✏️","pencil","铅笔","qiānbǐ","el lápiz",""],["🎒","backpack","书包","shūbāo","la mochila",""],["🔑","key","钥匙","yàoshi","la llave",""],["🥄","spoon","勺子","sháozi","la cuchara",""],["🍴","fork","叉子","chāzi","el tenedor",""],["🥢","chopsticks","筷子","kuàizi","los palillos",""],["☂️","umbrella","伞","sǎn","el paraguas","以 -s 结尾，但它是单数阳性"]]},{"id":"clothes","name":"衣服","icon":"👕","items":[["👕","T-shirt","T恤","T xù","la camiseta","墨西哥常说 la playera"],["👖","pants","裤子","kùzi","los pantalones",""],["👗","dress","裙子","qúnzi","el vestido",""],["🧥","coat","外套","wàitào","el abrigo","墨西哥夹克常说 la chamarra"],["👞","shoe","鞋子","xiézi","el zapato","运动鞋在墨西哥叫 los tenis"],["🧦","socks","袜子","wàzi","los calcetines",""],["🧢","cap","帽子","màozi","la gorra",""],["👓","glasses","眼镜","yǎnjìng","los lentes","西班牙说 las gafas"],["🧤","gloves","手套","shǒutào","los guantes",""],["🧣","scarf","围巾","wéijīn","la bufanda",""],["👜","bag","包","bāo","la bolsa",""]]},{"id":"transport","name":"交通","icon":"🚗","items":[["🚗","car","汽车","qìchē","el carro","西班牙说 el coche"],["🚌","bus","公交车","gōngjiāochē","el autobús","墨西哥日常也叫 el camión"],["🚲","bike","自行车","zìxíngchē","la bicicleta",""],["✈️","airplane","飞机","fēijī","el avión",""],["🚂","train","火车","huǒchē","el tren",""],["🚢","ship","轮船","lúnchuán","el barco",""],["🚕","taxi","出租车","chūzūchē","el taxi",""],["🚚","truck","卡车","kǎchē","el camión",""],["🚒","fire truck","消防车","xiāofángchē","el camión de bomberos",""],["🚑","ambulance","救护车","jiùhùchē","la ambulancia",""],["🚀","rocket","火箭","huǒjiàn","el cohete",""],["🚁","helicopter","直升机","zhíshēngjī","el helicóptero",""],["🏍️","motorcycle","摩托车","mótuōchē","la moto","motocicleta 的简称，所以是阴性"],["🚦","traffic light","红绿灯","hónglǜdēng","el semáforo",""]]},{"id":"colors","name":"颜色","icon":"🎨","items":[["🔴","red","红色","hóngsè","rojo",""],["🟠","orange","橙色","chéngsè","anaranjado","也可以说 naranja"],["🟡","yellow","黄色","huángsè","amarillo",""],["🟢","green","绿色","lǜsè","verde",""],["🔵","blue","蓝色","lánsè","azul",""],["🟣","purple","紫色","zǐsè","morado",""],["⚫","black","黑色","hēisè","negro",""],["⚪","white","白色","báisè","blanco",""],["🟤","brown","棕色","zōngsè","café","墨西哥说 café，其他国家多说 marrón"]]},{"id":"picto","name":"象形字","icon":"🀄","only":"zh","items":[["☀️","sun","日","rì","-","像一个圆圆的太阳，中间一点是光"],["🌙","moon","月","yuè","-","像一弯月牙"],["⛰️","mountain","山","shān","-","像连在一起的三座山峰"],["💧","water","水","shuǐ","-","像弯弯曲曲流动的水"],["🔥","fire","火","huǒ","-","像往上窜的火苗"],["🌳","tree","木","mù","-","上面是树枝，下面是树根"],["🧍","person","人","rén","-","像一个侧着身子站着的人"],["👄","mouth","口","kǒu","-","像一张张开的嘴"],["👁️","eye","目","mù","-","像一只竖起来的眼睛"],["👂","ear","耳","ěr","-","像一只耳朵"],["✋","hand","手","shǒu","-","像张开的手和手指"],["🦶","foot","足","zú","-","上面是腿，下面是脚"],["🌧️","rain","雨","yǔ","-","上面一横是天，下面是落下的雨点"],["☁️","cloud","云","yún","-","像天上卷起来的云朵"],["🚪","door","门","mén","-","像两扇对开的门"],["🐟","fish","鱼","yú","-","上面是鱼头，中间是鱼身，下面是鱼尾"],["🐦","bird","鸟","niǎo","-","像一只站着的鸟，有嘴有尾巴"],["🐴","horse","马","mǎ","-","像一匹马，有长脸、鬃毛和腿"],["🐮","ox","牛","niú","-","像牛头和两只弯弯的角"],["🐑","sheep","羊","yáng","-","上面两点像弯弯的羊角"],["🌾","grain","禾","hé","-","像垂着沉甸甸稻穗的禾苗"],["🎋","bamboo","竹","zhú","-","像两根挂着竹叶的竹枝"],["🍚","rice","米","mǐ","-","像散落的米粒"],["🔪","knife","刀","dāo","-","像一把刀"],["🏹","bow","弓","gōng","-","像一张弯弯的弓"],["🐚","shell","贝","bèi","-","像一个张开的贝壳（古时候贝壳当钱用）"],["🐢","turtle","龟","guī","-","古字像一只乌龟，有头、壳和脚"],["🐘","elephant","象","xiàng","-","古字像一头长鼻子的大象"],["👶","child","子","zǐ","-","像襁褓里伸出两只小手的婴儿"],["👩","woman","女","nǚ","-","古字像一个跪坐着、双手交叉的女子"],["🐉","dragon","龙","lóng","-","古字像一条有角、身子弯曲的龙"]]}];
+window.PW_CFG = { lang: 'es' };</script>
+<script id="pwMod">
+/* 看图识字 — shared picture-word module (ES5). Needs window.PW_DATA and window.PW_CFG = { lang: 'zh' | 'en' | 'es' }.
+   Host page adds PW.card() to its home and may define window.PW_WRITE(text) to open its writing practice. */
+(function () {
+  var CFG = window.PW_CFG || { lang: 'en' }, LANG = CFG.lang, DATA = window.PW_DATA || [], CATS = [], i;
+  for (i = 0; i < DATA.length; i++) if (!DATA[i].only || DATA[i].only === LANG) CATS.push(DATA[i]);
+  var KEY = 'pw:' + LANG + ':';
+  function get(k, d) { try { var v = window.localStorage.getItem(KEY + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { window.localStorage.setItem(KEY + k, JSON.stringify(v)); } catch (e) { } }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function $(id) { return document.getElementById(id); }
+
+  var GOT = get('got', {}), hideTxt = get('hide', false), root = null, scr = { t: 'home' }, quiz = null, readTok = 0, pushed = false, isOpen = false;
+
+  /* ---------- items: [emoji, en, zh, pinyin, es, note] ---------- */
+  function word(it) { return LANG === 'zh' ? it[2] : LANG === 'es' ? it[4] : it[1]; }
+  function ikey(c, it) { return c.id + ':' + it[0] + ':' + it[2]; }
+  function art(it) { var m = /^(el|la|los|las) (.+)$/.exec(it[4] || ''); return m ? { a: m[1], n: m[2], g: (m[1] === 'el' || m[1] === 'los') ? 'm' : 'f' } : null; }
+  function wordHTML(it, noPy) {
+    if (LANG === 'zh') return (noPy ? '' : '<span class="pwpy">' + esc(it[3]) + '</span>') + '<span class="pwzh">' + esc(it[2]) + '</span>';
+    if (LANG === 'es') { var a = art(it); return a ? '<span class="pw' + a.g + '">' + a.a + '</span> ' + esc(a.n) : esc(it[4]); }
+    return esc(it[1]);
+  }
+  function writeText(it) { if (LANG === 'es') { var a = art(it); return a ? a.n : it[4]; } return word(it); }
+  function nGot(c) { var n = 0, j; for (j = 0; j < c.items.length; j++) if (GOT[ikey(c, c.items[j])]) n++; return n; }
+  function total() { var n = 0, j; for (j = 0; j < CATS.length; j++) n += CATS[j].items.length; return n; }
+
+  /* ---------- speech ---------- */
+  var voice = null;
+  var PREF = {
+    zh: [/^zh[-_](CN|Hans)/i, /^cmn/i, /^zh/i],
+    en: [/^en[-_]GB/i, /^en[-_]US/i, /^en/i],
+    es: [/^es[-_]MX/i, /^es[-_](US|419)/i, /^es[-_](CO|AR|CL|PE|VE|EC|GT|CR|PA|DO|PR|UY|BO|PY|SV|HN|NI|CU)/i, /^es/i]
+  };
+  var LTAG = { zh: 'zh-CN', en: 'en-GB', es: 'es-MX' };
+  function pickVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices() || [], p = PREF[LANG], k, j;
+    voice = null;
+    for (k = 0; k < p.length && !voice; k++) for (j = 0; j < vs.length; j++) if (p[k].test(vs[j].lang) && !/HK|TW|yue/i.test(vs[j].lang)) { voice = vs[j]; break; }
+  }
+  if (window.speechSynthesis) { pickVoice(); if (window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener('voiceschanged', pickVoice); }
+  function say(t, onend) {
+    if (!window.speechSynthesis) { if (onend) setTimeout(onend, 900); return; }
+    if (!voice) pickVoice();
+    try { window.speechSynthesis.cancel(); } catch (e) { }
+    var u = new window.SpeechSynthesisUtterance(t);
+    u.lang = voice ? voice.lang : LTAG[LANG]; u.rate = LANG === 'zh' ? 0.75 : 0.8; if (voice) u.voice = voice;
+    if (onend) { var fired = false, f = function () { if (!fired) { fired = true; onend(); } }; u.onend = f; u.onerror = f; setTimeout(f, 4500); }
+    window.speechSynthesis.speak(u);
+  }
+
+  /* ---------- shell ---------- */
+  function ensure() {
+    if (root) return;
+    root = document.createElement('div');
+    root.className = 'pwv';
+    root.innerHTML = '<div class="pwtop"><button class="pwb" id="pwBack">‹ 返回</button><div class="pwti" id="pwTi"></div><button class="pwb" id="pwRead">🔊 连读</button></div><div class="pwwrap" id="pwBody"></div>';
+    document.body.appendChild(root);
+    $('pwBack').onclick = back;
+    $('pwRead').onclick = function () { if (readTok % 2) stopRead(); else readAll(); };
+    window.addEventListener('popstate', function () { if (isOpen) { pushed = false; close(); } });
+  }
+  function open() {
+    ensure(); isOpen = true; root.className = 'pwv on';
+    document.documentElement.style.overflow = 'hidden';
+    try { window.history.pushState({ pw: 1 }, ''); pushed = true; } catch (e) { pushed = false; }
+    home();
+  }
+  function close() {
+    stopRead(); quiz = null; isOpen = false;
+    if (root) root.className = 'pwv';
+    document.documentElement.style.overflow = '';
+    if (window.speechSynthesis) try { window.speechSynthesis.cancel(); } catch (e) { }
+    if (CFG.onClose) CFG.onClose();
+  }
+  function exit() { if (pushed) { pushed = false; try { window.history.back(); return; } catch (e) { } } close(); }
+  function back() {
+    stopRead();
+    if (scr.t === 'home') exit();
+    else if (scr.t === 'cat') home();
+    else if (scr.t === 'det') cat(scr.c);
+    else if (scr.t === 'quiz' || scr.t === 'done') { var ci = quiz ? quiz.ci : -1; quiz = null; if (ci >= 0) cat(ci); else home(); }
+  }
+  function setTop(t, read) { $('pwTi').innerHTML = t; $('pwRead').style.visibility = read ? 'visible' : 'hidden'; $('pwRead').textContent = '🔊 连读'; }
+  function body(h) { $('pwBody').innerHTML = h; root.scrollTop = 0; }
+
+  /* ---------- home ---------- */
+  var INTRO = {
+    zh: '先点图片<b>看大图、听读音</b>，再用小测考考自己。最后一组<b>「象形字」</b>最好玩：很多汉字本来就是照着东西画出来的！',
+    en: '点图片<b>看大图、听发音</b>，再用小测考考自己：听音找图、看图选词、读词找图。',
+    es: '名词连同冠词一起记最省事：<span class="pwm">el / los 蓝色 = 阳性</span>，<span class="pwf">la / las 粉色 = 阴性</span>。每一组都有「el 还是 la」专项小测。'
+  };
+  function home() {
+    stopRead(); quiz = null; scr = { t: 'home' };
+    setTop('🖼️ 看图识字', false);
+    var h = '<div class="pwintro">' + INTRO[LANG] + '</div>', got = 0, j;
+    for (j = 0; j < CATS.length; j++) got += nGot(CATS[j]);
+    h += '<div class="pwrow"><button class="pwbtn pri" id="pwMix">🎯 全部混合小测</button>' + (LANG === 'es' ? '<button class="pwbtn" id="pwMixG">el 还是 la？</button>' : '') + '</div>';
+    h += '<div class="pwstat">已认识 <b>' + got + '</b> / ' + total() + '</div><div class="pwcats">';
+    for (j = 0; j < CATS.length; j++) {
+      var c = CATS[j], n = nGot(c);
+      h += '<button class="pwcat" data-c="' + j + '"><span class="ic">' + c.icon + '</span><b>' + esc(c.name) + '</b><small>' + (n === c.items.length ? '✓ 全部认识 ' : '') + n + ' / ' + c.items.length + '</small><i style="width:' + Math.round(n / c.items.length * 100) + '%"></i></button>';
+    }
+    body(h + '</div>');
+    var cs = $('pwBody').querySelectorAll('.pwcat');
+    for (j = 0; j < cs.length; j++) cs[j].onclick = function () { cat(+this.getAttribute('data-c')); };
+    $('pwMix').onclick = function () { startQuiz(-1, 'mix'); };
+    if ($('pwMixG')) $('pwMixG').onclick = function () { startQuiz(-1, 'gender'); };
+  }
+
+  /* ---------- category grid ---------- */
+  function hasArt(c) { if (LANG !== 'es') return false; for (var j = 0; j < c.items.length; j++) if (art(c.items[j])) return true; return false; }
+  function cat(ci) {
+    stopRead(); quiz = null;
+    var c = CATS[ci], j; scr = { t: 'cat', c: ci };
+    setTop(c.icon + ' ' + esc(c.name), true);
+    var h = '<div class="pwrow"><button class="pwbtn pri" id="pwQ">🎯 小测</button>' + (hasArt(c) ? '<button class="pwbtn" id="pwG">el 还是 la？</button>' : '') + '<button class="pwbtn" id="pwHide">' + (hideTxt ? '👀 显示文字' : '🙈 遮住文字') + '</button></div>';
+    h += '<div class="pwgrid' + (hideTxt ? ' hid' : '') + '" id="pwGrid">';
+    for (j = 0; j < c.items.length; j++) {
+      var it = c.items[j];
+      h += '<button class="pwt' + (GOT[ikey(c, it)] ? ' got' : '') + '" data-i="' + j + '"><span class="em">' + it[0] + '</span><span class="w">' + wordHTML(it) + '</span>' + (LANG !== 'zh' ? '<span class="s">' + esc(it[2]) + '</span>' : '') + '</button>';
+    }
+    h += '</div><div class="pwhint">' + (hideTxt ? '文字遮住了：先自己说出来，再点图片核对' : '点图片看大图、听发音 · 右上角「连读」会一张张读给你听') + '</div>';
+    body(h);
+    var ts = $('pwGrid').querySelectorAll('.pwt');
+    for (j = 0; j < ts.length; j++) ts[j].onclick = function () {
+      var k = +this.getAttribute('data-i');
+      if (hideTxt && this.className.indexOf('peek') < 0) { this.className += ' peek'; say(word(c.items[k])); return; }
+      det(ci, k);
+    };
+    $('pwQ').onclick = function () { startQuiz(ci, 'mix'); };
+    if ($('pwG')) $('pwG').onclick = function () { startQuiz(ci, 'gender'); };
+    $('pwHide').onclick = function () { hideTxt = !hideTxt; put('hide', hideTxt); cat(ci); };
+  }
+  function readAll() {
+    if (scr.t !== 'cat') return;
+    if (readTok % 2) readTok++;
+    var c = CATS[scr.c], ts = $('pwGrid').querySelectorAll('.pwt'), tok = ++readTok, k = 0;
+    $('pwRead').textContent = '⏹ 停止';
+    var step = function () {
+      if (tok !== readTok) return;
+      for (var j = 0; j < ts.length; j++) ts[j].className = ts[j].className.replace(/\s*\brd\b/g, '');
+      if (k >= c.items.length) { stopRead(); return; }
+      var t = ts[k]; t.className += ' rd' + (hideTxt ? ' peek' : '');
+      if (t.scrollIntoView) try { t.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) { t.scrollIntoView(); }
+      var it = c.items[k]; k++;
+      say(word(it), function () { setTimeout(step, 650); });
+    };
+    step();
+  }
+  function stopRead() {
+    if (readTok % 2) readTok++;
+    if (!root) return;
+    var rs = root.querySelectorAll('.pwt.rd'), j;
+    for (j = 0; j < rs.length; j++) rs[j].className = rs[j].className.replace(/\s*\brd\b/g, '');
+    if ($('pwRead')) $('pwRead').textContent = '🔊 连读';
+  }
+
+  /* ---------- detail card ---------- */
+  function det(ci, i) {
+    stopRead();
+    var c = CATS[ci], it = c.items[i], k = ikey(c, it), on = GOT[k]; scr = { t: 'det', c: ci, i: i };
+    setTop(c.icon + ' ' + esc(c.name) + ' · ' + (i + 1) + '/' + c.items.length, false);
+    var h = '<div class="pwdet"><div class="em" id="pwEm">' + it[0] + '</div><div class="w">' + wordHTML(it) + '</div>';
+    if (LANG !== 'zh') h += '<div class="s">' + esc(it[2]) + '</div>';
+    if (c.id === 'picto') h += '<div class="pwnote">🖌️ ' + esc(it[5]) + '</div>';
+    else if (LANG === 'es') { var a = art(it); if (a) h += '<div class="pwnote">' + (a.g === 'm' ? '<span class="pwm">' + a.a + '</span> → 阳性' : '<span class="pwf">' + a.a + '</span> → 阴性') + (a.a === 'los' || a.a === 'las' ? '（复数）' : '') + (it[5] ? '<br>💡 ' + esc(it[5]) : '') + '</div>'; else if (it[5]) h += '<div class="pwnote">💡 ' + esc(it[5]) + '</div>'; }
+    h += '</div><div class="pwrow"><button class="pwbtn" id="pwSay">🔊 再听一遍</button>' + (window.PW_WRITE ? '<button class="pwbtn" id="pwWrite">✍️ 写一写</button>' : '') + '<button class="pwbtn' + (on ? ' good' : '') + '" id="pwGot">' + (on ? '✓ 认识了' : '我认识了') + '</button></div>';
+    h += '<div class="pwnav"><button class="pwbtn" id="pwPrev"' + (i ? '' : ' disabled') + '>‹ 上一个</button><button class="pwbtn" id="pwNext"' + (i < c.items.length - 1 ? '' : ' disabled') + '>下一个 ›</button></div>';
+    body(h);
+    var pop = function () { var e = $('pwEm'); if (!e || !isOpen || scr.t !== 'det' || scr.c !== ci || scr.i !== i) return; e.className = 'em'; void e.offsetWidth; e.className = 'em pwpop'; say(word(it)); };
+    $('pwEm').onclick = pop; $('pwSay').onclick = pop;
+    $('pwGot').onclick = function () { if (GOT[k]) delete GOT[k]; else GOT[k] = 1; put('got', GOT); var o = !!GOT[k]; this.className = 'pwbtn' + (o ? ' good' : ''); this.textContent = o ? '✓ 认识了' : '我认识了'; };
+    $('pwPrev').onclick = function () { if (i > 0) det(ci, i - 1); };
+    $('pwNext').onclick = function () { if (i < c.items.length - 1) det(ci, i + 1); };
+    if ($('pwWrite')) $('pwWrite').onclick = function () { var t = writeText(it); exit(); setTimeout(function () { window.PW_WRITE(t); }, 60); };
+    setTimeout(pop, 120);
+  }
+
+  /* ---------- quiz ---------- */
+  function startQuiz(ci, kind) {
+    stopRead();
+    var P = [], j, k;
+    for (j = 0; j < CATS.length; j++) if (ci < 0 || j === ci) for (k = 0; k < CATS[j].items.length; k++) P.push({ c: CATS[j], it: CATS[j].items[k] });
+    if (kind === 'gender') P = P.filter(function (x) { return art(x.it); });
+    var mix = shuffle(P.slice()), un = [], kn = [], qs = [], r0 = Math.floor(Math.random() * 3), n = Math.min(10, P.length);
+    for (j = 0; j < mix.length; j++) (GOT[ikey(mix[j].c, mix[j].it)] ? kn : un).push(mix[j]);
+    var sel = un.concat(kn);
+    for (j = 0; j < n; j++) {
+      var x = sel[j], q = { x: x };
+      if (kind === 'gender') {
+        var a = art(x.it);
+        q.type = 'gender'; q.ans = a.a; q.opts = a.a === 'el' || a.a === 'la' ? ['el', 'la'] : ['los', 'las'];
+      } else {
+        q.type = ['listen', 'pic', 'read'][(j + r0) % 3];
+        var cand = shuffle(x.c.items.slice()), seenE = {}, seenW = {}, opts = [x], m, y;
+        seenE[x.it[0]] = 1; seenW[word(x.it)] = 1;
+        for (m = 0; m < cand.length && opts.length < 4; m++) { y = cand[m]; if (!seenE[y[0]] && !seenW[word(y)]) { seenE[y[0]] = 1; seenW[word(y)] = 1; opts.push({ c: x.c, it: y }); } }
+        var more = shuffle(P.slice());
+        for (m = 0; m < more.length && opts.length < 4; m++) { y = more[m].it; if (!seenE[y[0]] && !seenW[word(y)]) { seenE[y[0]] = 1; seenW[word(y)] = 1; opts.push(more[m]); } }
+        q.opts = shuffle(opts);
+      }
+      qs.push(q);
+    }
+    quiz = { ci: ci, kind: kind, qs: qs, i: 0, score: 0, lock: false };
+    renderQ();
+  }
+  function renderQ() {
+    var q = quiz.qs[quiz.i], it = q.x.it, h = '', j, a;
+    scr = { t: 'quiz' };
+    setTop('第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题', false);
+    if (q.type === 'listen') {
+      h += '<div class="pwq"><div class="lab">听一听，是哪张图？</div><button class="pwbtn pri pwbig" id="pwQs">🔊</button></div><div class="pwopts em">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + q.opts[j].it[0] + '</button>';
+    } else if (q.type === 'pic') {
+      h += '<div class="pwq"><div class="lab">这是什么？</div><div class="bigem">' + it[0] + '</div></div><div class="pwopts tx">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + wordHTML(q.opts[j].it, true) + '</button>';
+    } else if (q.type === 'read') {
+      h += '<div class="pwq"><div class="lab">' + (LANG === 'zh' ? '认一认，是哪张图？' : '读一读，是哪张图？') + '</div><div class="bigw">' + wordHTML(it, true) + '</div></div><div class="pwopts em">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + q.opts[j].it[0] + '</button>';
+    } else {
+      a = art(it);
+      h += '<div class="pwq"><div class="lab">' + q.opts[0] + ' 还是 ' + q.opts[1] + '？</div><div class="bigem">' + it[0] + '</div><div class="bigw"><span class="pwblank"></span> ' + esc(a.n) + '</div><div class="lab">' + esc(it[2]) + '</div></div><div class="pwopts tx">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo g' + (q.opts[j] === 'el' || q.opts[j] === 'los' ? 'm' : 'f') + '" data-i="' + j + '">' + q.opts[j] + '</button>';
+    }
+    body(h + '</div><div class="pwfb" id="pwFb"></div>');
+    if (q.type === 'listen') { $('pwQs').onclick = function () { say(word(it)); }; setTimeout(function () { say(word(it)); }, 250); }
+    var bs = $('pwBody').querySelectorAll('.pwo');
+    for (j = 0; j < bs.length; j++) bs[j].onclick = function () {
+      if (quiz.lock) return; quiz.lock = true;
+      var pick = q.opts[+this.getAttribute('data-i')], ok = q.type === 'gender' ? pick === q.ans : pick === q.x, m;
+      for (m = 0; m < bs.length; m++) { var o = q.opts[+bs[m].getAttribute('data-i')]; if (q.type === 'gender' ? o === q.ans : o === q.x) bs[m].className += ' right'; else if (bs[m] === this) bs[m].className += ' wrong'; }
+      if (ok) { quiz.score++; GOT[ikey(q.x.c, it)] = 1; put('got', GOT); }
+      var fb = (ok ? '✓ ' : '✗ ') + it[0] + ' ' + wordHTML(it) + (LANG !== 'zh' ? ' <small>' + esc(it[2]) + '</small>' : '');
+      if (q.type === 'gender' && it[5]) fb += '<div class="pwnote">💡 ' + esc(it[5]) + '</div>';
+      $('pwFb').innerHTML = fb; $('pwFb').className = 'pwfb ' + (ok ? 'ok' : 'bad');
+      say(word(it));
+      var my = quiz;
+      setTimeout(function () { if (quiz !== my || !isOpen) return; quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else done(); }, ok ? 1300 : 2500);
+    };
+  }
+  function done() {
+    var n = quiz.qs.length, s = quiz.score, st = s === n ? 3 : s >= n * 0.7 ? 2 : s >= n * 0.4 ? 1 : 0, stars = '', j;
+    for (j = 0; j < 3; j++) stars += j < st ? '⭐' : '<span class="dim">⭐</span>';
+    scr = { t: 'done' };
+    setTop('小测完成', false);
+    body('<div class="pwdone"><div class="stars">' + stars + '</div><div class="sc">' + s + ' / ' + n + '</div><div class="msg">' + (st === 3 ? '太棒了，全对！' : st === 2 ? '很不错！再来一次争取全对' : '多看几遍图片，再来挑战！') + '</div><div class="pwrow"><button class="pwbtn pri" id="pwAgain">再来一次</button><button class="pwbtn" id="pwDone">返回</button></div></div>');
+    var ci = quiz.ci, kind = quiz.kind;
+    $('pwAgain').onclick = function () { startQuiz(ci, kind); };
+    $('pwDone').onclick = back;
+  }
+
+  /* ---------- entry card for the host page ---------- */
+  function card() {
+    var n = 0, j, d;
+    for (j = 0; j < CATS.length; j++) if (CATS[j].id !== 'picto') n += CATS[j].items.length;
+    if (LANG === 'zh') d = '☀️→日　⛰️→山　🐟→鱼 · ' + n + ' 张图 + 31 个象形字，看图认字、听音找图';
+    else if (LANG === 'es') d = '🐱 <span class="pwm">el</span> gato · 🍎 <span class="pwf">la</span> manzana · ' + n + ' 张图，看图学词，顺便记住阴阳性';
+    else d = '🐱 cat · 🍎 apple · 🚗 car · ' + n + ' 张图，看图、听音、认单词';
+    return '<button class="card levhome pwhome" onclick="PW.open()"><b>🖼️ 看图识字</b><div>' + d + '</div></button>';
+  }
+
+  window.PW = { open: open, close: close, card: card };
+})();
 </script>
 <script>
 (function () {
@@ -537,6 +876,7 @@ ES.lev = {"cognates": [{"en": "-tion", "es": "-ción", "est": "约 1500+", "gend
     if (board) { board.destroy(); board = null; }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     var h = '<div class="card free"><h3>自己输入要练写的西语单词</h3><div class="frow"><input id="freeIn" placeholder="例如：me gusta el café" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
+    h += PW.card();
     h += '<button class="card levhome" id="levGo"><b>🪄 以少胜多</b><div>40 个词读出 0–999,999 的所有数 · 一条规则把几百个英语词变成西语 · 一套结尾变几百个动词</div></button>';
     var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0, i;
     for (i = 0; i < LESSONS.length; i++) {
@@ -556,6 +896,7 @@ ES.lev = {"cognates": [{"en": "-tion", "es": "-ción", "est": "约 1500+", "gend
     $('levGo').onclick = function () { showLev(); };
     $('freeIn').onkeydown = function (e) { if (e.keyCode === 13) startFree(); };
   }
+  window.PW_WRITE = function (t) { showHome(); $('freeIn').value = t; startFree(); };
   function startFree() {
     var t = ($('freeIn').value || '').toLowerCase().replace(/[^a-zñáéíóúü ]/g, '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
     if (!t) { $('freeIn').focus(); return; }

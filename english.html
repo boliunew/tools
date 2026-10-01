@@ -151,6 +151,76 @@ h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px
 .idrow .btn{padding:8px 11px;margin:0 3px 8px}
 .tabs.idtabs button{padding:6px 11px}
 /* /idi-css */
+/* pw-css */
+.pwm{color:#2563C9;font-weight:700}.pwf{color:#C93A6E;font-weight:700}
+@media (prefers-color-scheme: dark){.pwm{color:#86B6FF}.pwf{color:#FF8DB7}}
+.pwhome{background:linear-gradient(135deg,rgba(242,163,58,.24),var(--paper))!important}
+.pwv{position:fixed;left:0;top:0;right:0;bottom:0;z-index:60;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;display:none;color:var(--ink)}
+.pwv.on{display:block}
+.pwv button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pwv .pwtop{position:-webkit-sticky;position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;min-height:54px;padding:0 6px}
+.pwv .pwti{flex:1;text-align:center;font-weight:700;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pwv .pwb{border:0;background:transparent;color:var(--soft);font-size:15px;padding:10px 6px;min-width:78px}
+.pwv .pwwrap{max-width:720px;margin:0 auto;padding:12px 16px 70px}
+.pwv .pwintro{background:var(--chip);border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.7;margin-bottom:10px}
+.pwv .pwrow{display:flex;flex-wrap:wrap;justify-content:center;margin:4px 0 8px}
+.pwv .pwbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:8px 13px;min-height:42px;font-size:14.5px;margin:0 4px 8px}
+.pwv .pwbtn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.pwv .pwbtn.good{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.pwv .pwbtn:disabled{opacity:.4}
+.pwv .pwbtn.pwbig{font-size:30px;padding:10px 34px;margin-top:10px}
+.pwv .pwstat{font-size:13px;color:var(--faint);text-align:center;margin:0 0 10px}.pwv .pwstat b{color:var(--good)}
+.pwv .pwcats{display:flex;flex-wrap:wrap;margin:0 -5px}
+.pwv .pwcat{position:relative;overflow:hidden;width:calc(50% - 10px);margin:0 5px 10px;background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 8px 14px;text-align:center;color:var(--ink)}
+.pwv .pwcat .ic{display:block;font-size:40px;line-height:1.25}
+.pwv .pwcat b{display:block;font-size:16px;margin-top:2px}
+.pwv .pwcat small{color:var(--soft);font-size:12.5px}
+.pwv .pwcat i{position:absolute;left:0;bottom:0;height:4px;background:var(--good)}
+.pwv .pwgrid{display:flex;flex-wrap:wrap;margin:0 -4px}
+.pwv .pwt{width:calc(33.333% - 8px);margin:0 4px 8px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 2px;text-align:center;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:120px}
+.pwv .pwt .em{font-size:46px;line-height:1.2}
+.pwv .pwt .w{font-size:15px;font-weight:700;margin-top:2px;line-height:1.25;word-break:break-word}
+.pwv .pwt .s{font-size:12px;color:var(--soft);margin-top:1px}
+.pwv .pwt.got{border-color:var(--good)}
+.pwv .pwt.rd{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pwv .pwgrid.hid .pwt .w,.pwv .pwgrid.hid .pwt .s{visibility:hidden}
+.pwv .pwgrid.hid .pwt.peek .w,.pwv .pwgrid.hid .pwt.peek .s{visibility:visible}
+.pwv .pwpy{display:block;font-size:12.5px;color:var(--soft);font-weight:500;line-height:1.3}
+.pwv .pwzh{display:block;font-size:24px;font-family:"Kaiti SC","STKaiti","KaiTi",serif;line-height:1.25}
+.pwv .pwhint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:8px}
+.pwv .pwdet{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);text-align:center;padding:18px 14px 16px;margin-bottom:12px}
+.pwv .pwdet .em{font-size:118px;line-height:1.15;cursor:pointer;display:inline-block}
+.pwv .pwdet .w{font-size:34px;font-weight:800;margin-top:4px;line-height:1.3}
+.pwv .pwdet .w .pwpy{font-size:22px;color:var(--accent)}.pwv .pwdet .w .pwzh{font-size:66px;font-weight:700}
+.pwv .pwdet .s{font-size:17px;color:var(--soft)}
+.pwv .pwnote{background:var(--chip);border-radius:10px;padding:8px 12px;margin-top:10px;font-size:14px;line-height:1.7;font-weight:400;color:var(--ink)}
+.pwv .pwnav{display:flex}.pwv .pwnav .pwbtn{flex:1}
+.pwv .pwpop{animation:pwpop .45s}
+@keyframes pwpop{0%{transform:scale(1)}40%{transform:scale(1.18) rotate(-5deg)}100%{transform:scale(1)}}
+.pwv .pwq{text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px 12px;margin-bottom:12px}
+.pwv .pwq .lab{font-size:14px;color:var(--soft)}
+.pwv .pwq .bigem{font-size:104px;line-height:1.2}
+.pwv .pwq .bigw{font-size:34px;font-weight:800;margin:8px 0 4px}
+.pwv .pwq .bigw .pwzh{font-size:60px}
+.pwv .pwblank{display:inline-block;min-width:60px;height:.9em;border-bottom:3px solid var(--accent);vertical-align:baseline}
+.pwv .pwopts{display:flex;flex-wrap:wrap;margin:0 -5px}
+.pwv .pwo{width:calc(50% - 10px);margin:0 5px 10px;background:var(--paper);border:1px solid var(--line);border-radius:16px;color:var(--ink);min-height:66px;font-size:21px;font-weight:700;padding:8px}
+.pwv .pwopts.em .pwo{min-height:112px;font-size:62px;line-height:1.1}
+.pwv .pwopts.tx .pwo .pwzh{font-size:32px}
+.pwv .pwo.gm{color:#2563C9}.pwv .pwo.gf{color:#C93A6E}
+.pwv .pwo.right{background:var(--good-soft);border-color:var(--good)}
+.pwv .pwo.wrong{background:var(--bad-soft,#F8E1DB);border-color:var(--bad,#C8412B)}
+.pwv .pwfb{text-align:center;font-size:19px;font-weight:700;min-height:30px;line-height:1.5}
+.pwv .pwfb .pwzh,.pwv .pwfb .pwpy{display:inline;font-size:inherit}
+.pwv .pwfb .pwpy{margin-right:4px;color:var(--soft)}
+.pwv .pwfb small{font-size:14px;color:var(--soft);font-weight:400}
+.pwv .pwfb.ok{color:var(--good)}.pwv .pwfb.bad{color:var(--bad,#C8412B)}
+.pwv .pwdone{text-align:center;padding:30px 10px}
+.pwv .pwdone .stars{font-size:46px;letter-spacing:6px}.pwv .pwdone .stars .dim{opacity:.2}
+.pwv .pwdone .sc{font-size:44px;font-weight:800;color:var(--accent);margin-top:6px}
+.pwv .pwdone .msg{color:var(--soft);margin:4px 0 16px}
+@media (prefers-color-scheme: dark){.pwv .pwo.gm{color:#86B6FF}.pwv .pwo.gf{color:#FF8DB7}}
+/* /pw-css */
 </style>
 </head>
 <body>
@@ -587,6 +657,275 @@ EN.lev = {"elem": {"rimes": [{"rime": "at", "ipa": "æt", "words": [["cat", "猫
 
 </script>
 <script id="idiData">var IDI = {"elem":{"idiom":[["a piece of cake","一块蛋糕","非常容易","小菜一碟","This test is [a piece of cake]!","这次考试小菜一碟！"],["It's raining cats and dogs","天上下猫又下狗","雨下得非常大","倾盆大雨","Take an umbrella. [It's raining cats and dogs]!","带把伞，外面下着倾盆大雨！"],["Practice makes perfect","练习造就完美","多练就会做得好","熟能生巧","Keep writing every day. [Practice makes perfect].","每天坚持写，熟能生巧。"],["Time is money","时间就是金钱","时间很宝贵","一寸光阴一寸金","Hurry up! [Time is money].","快点！一寸光阴一寸金。"],["Better late than never","晚到总比不到好","晚做总比不做好","亡羊补牢，为时未晚","You finished your homework? [Better late than never]!","作业终于写完了？晚做总比不做好！"],["Seeing is believing","看见了才相信","亲眼看到才算数","眼见为实","You can swim now? Show me. [Seeing is believing]!","你会游泳了？游给我看看，眼见为实！"],["Easy come, easy go","来得容易，去得也容易","容易得到的东西也容易失去","来得快，去得也快","I found five dollars and lost it the same day. [Easy come, easy go]!","捡了五块钱，当天就丢了。来得快去得也快！"],["Two heads are better than one","两个脑袋比一个强","人多主意多","三个臭皮匠，顶个诸葛亮","Let's do the puzzle together. [Two heads are better than one].","一起拼图吧，三个臭皮匠顶个诸葛亮。"],["Like father, like son","父亲什么样，儿子就什么样","儿子很像爸爸","有其父必有其子","Tom and his dad both love soccer. [Like father, like son]!","汤姆和他爸都爱踢球，有其父必有其子！"],["Don't cry over spilled milk","别为洒了的牛奶哭","已经发生的事，难过也没用","覆水难收","We lost the game, but [don't cry over spilled milk].","比赛输了，但覆水难收，别难过了。"],["all ears","全身都是耳朵","认真听着呢","洗耳恭听","Tell me your story. I'm [all ears]!","讲讲你的故事吧，我洗耳恭听！"],["hit the books","打书本","用功读书","埋头苦读","I have a test tomorrow, so I need to [hit the books].","明天有考试，我得埋头苦读了。"],["cool as a cucumber","像黄瓜一样凉","非常冷静，一点不慌","镇定自若","She was [cool as a cucumber] on the stage.","她在台上镇定自若。"],["busy as a bee","像蜜蜂一样忙","忙个不停","忙得团团转","Mom is [busy as a bee] today.","妈妈今天忙得团团转。"],["in hot water","在热水里","惹上麻烦了","惹祸上身","I broke the window. Now I'm [in hot water]!","我打破了窗户，这下麻烦大了！"],["over the moon","开心到月亮上面去了","高兴极了","欣喜若狂","She got a puppy and she's [over the moon]!","她得到一只小狗，高兴坏了！"],["let the cat out of the bag","把猫从袋子里放出来","不小心说出秘密","说漏了嘴","Don't [let the cat out of the bag] about the party!","派对的事可别说漏了嘴！"],["when pigs fly","等猪会飞的时候","不可能发生的事","太阳从西边出来","Me eating broccoli? [When pigs fly]!","我吃西兰花？除非太阳从西边出来！"],["The early bird catches the worm","早起的鸟儿抓到虫子","先行动的人先得到好处","捷足先登","Come early for the best seats. [The early bird catches the worm]!","早点来才有好座位，早起的鸟儿有虫吃！"],["Actions speak louder than words","行动比话语声音更大","做比说更重要","事实胜于雄辩","Don't just say sorry. Help me clean up. [Actions speak louder than words].","别光说对不起，帮我收拾吧，做比说重要。"],["No pain, no gain","没有痛苦就没有收获","不吃苦就没有进步","不劳无获","Running is hard, but [no pain, no gain]!","跑步很累，但不吃苦哪来进步！"],["Don't judge a book by its cover","别看封面就评价一本书","不能只看外表","人不可貌相","The old bike looks bad but it's fast. [Don't judge a book by its cover]!","这辆旧自行车看着破，骑起来可快了。人不可貌相！"],["Birds of a feather flock together","羽毛一样的鸟聚在一起","相似的人喜欢在一起","物以类聚，人以群分","They all love drawing. [Birds of a feather flock together].","他们都爱画画，真是物以类聚。"],["Where there's a will, there's a way","有意愿就有办法","只要真想做，就能做到","有志者事竟成","I can't jump rope yet, but [where there's a will, there's a way]!","我还不会跳绳，但有志者事竟成！"],["A friend in need is a friend indeed","你需要时出现的朋友才是真朋友","困难时帮你的才是真朋友","患难见真情","You helped me when I was sick. [A friend in need is a friend indeed].","我生病时你帮了我，患难见真情。"],["Hold your horses","拉住你的马","别急，等一下","稍安勿躁","[Hold your horses]! Wait for the green light.","别急！等绿灯。"],["zip your lip","拉上嘴巴的拉链","别说出去，保守秘密","守口如瓶","It's a surprise, so [zip your lip]!","这是个惊喜，你可要守口如瓶！"],["sleep like a log","睡得像一根木头","睡得很沉","酣然入梦","I was so tired that I [slept like a log].","我太累了，一觉睡得死死的。"],["teacher's pet","老师的宠物","老师最喜欢的学生","老师的小红人","Amy always helps the teacher. She's the [teacher's pet].","艾米总帮老师干活，是老师的小红人。"],["Home sweet home","甜蜜的家","还是家里最好","金窝银窝，不如自己的狗窝","After a long trip, [home sweet home]!","长途旅行回来，还是家里最舒服！"]],"talk":[["No problem","没问题","别人请你帮忙或向你道谢时","A: Can you pass the salt? / B: [No problem]!","A：能把盐递给我吗？ B：没问题！"],["Me too","我也是","和对方一样的时候","A: I love pizza! / B: [Me too]!","A：我爱吃披萨！ B：我也是！"],["Of course","当然","很肯定地回答","A: Can I sit here? / B: [Of course]!","A：我能坐这儿吗？ B：当然！"],["Good job","干得好","夸别人做得好","You got 100! [Good job]!","你考了 100 分！干得好！"],["Let's go","走吧","准备出发的时候","Shoes on? [Let's go]!","鞋穿好了？走吧！"],["Hurry up","快点","催别人","[Hurry up]! The bus is coming!","快点！公交车来了！"],["Watch out","小心","提醒别人有危险","[Watch out]! A car!","小心！有车！"],["Never mind","没关系，算了","让对方别在意","A: Sorry, I forgot your pen. / B: [Never mind].","A：对不起，忘带你的笔了。 B：没关系。"],["Excuse me","打扰一下，借过","问路、借过、引起注意","[Excuse me], where is the bathroom?","打扰一下，洗手间在哪儿？"],["See you later","回头见","和人道别","Bye, Mom! [See you later]!","妈妈再见！回头见！"],["Take care","保重","道别时关心对方","Bye, Grandma! [Take care]!","奶奶再见，保重身体！"],["You're welcome","不客气","别人向你道谢","A: Thank you! / B: [You're welcome]!","A：谢谢你！ B：不客气！"],["Oops","哎呀","自己犯了个小错","[Oops]! I dropped my ice cream.","哎呀！我的冰淇淋掉了。"],["Wow","哇","看到厉害的东西","[Wow]! What a big cake!","哇！好大的蛋糕！"],["Yummy","真好吃","东西很好吃","This soup is [yummy]!","这汤真好喝！"],["Cool","酷！太棒了","觉得某样东西很棒","A: I got a new bike. / B: [Cool]!","A：我有新自行车了。 B：酷！"],["Come on","加油；快点；拜托","鼓励或催促别人","[Come on], you can do it!","加油，你能行的！"],["Good luck","祝你好运","别人要考试、比赛之前","You have a test today? [Good luck]!","你今天考试？祝你好运！"],["Here you are","给你","把东西递给别人","A: Can I have the ball? / B: [Here you are].","A：能把球给我吗？ B：给你。"],["What's wrong?","怎么了？","看到别人不开心","You look sad. [What's wrong?]","你看起来不开心，怎么了？"],["Just a minute","等一下","请对方稍等","[Just a minute]! I'm coming.","等一下！我马上来。"],["That's great","太好了","听到好消息","A: I can ride a bike now! / B: [That's great]!","A：我会骑自行车了！ B：太好了！"],["Not bad","还不错","别人问你觉得怎么样","A: How's the cake? / B: [Not bad]!","A：蛋糕怎么样？ B：还不错！"],["Bless you","上帝保佑你","别人打喷嚏时（老外的习惯）","A: Achoo! / B: [Bless you]!","A：阿嚏！ B：保佑你！"],["Sweet dreams","做个好梦","睡觉前说晚安","Good night. [Sweet dreams]!","晚安，做个好梦！"],["No way","不会吧！才不要！","很惊讶，或者拒绝","A: I saw a dinosaur! / B: [No way]!","A：我看见恐龙了！ B：不会吧！"],["Yay","耶！","开心地欢呼","[Yay]! It's Friday!","耶！星期五啦！"],["Are you OK?","你没事吧？","关心别人","You fell down! [Are you OK?]","你摔倒了！没事吧？"],["Thank goodness","谢天谢地","松了一口气","[Thank goodness], I found my keys!","谢天谢地，我找到钥匙了！"],["I don't know","我不知道","不知道答案","A: Where's my cat? / B: [I don't know].","A：我的猫呢？ B：我不知道。"]],"fix":[["open the light","turn on the light","开灯","电灯、电视这类电器用 turn on / turn off；open 是打开门、盒子"],["close the TV","turn off the TV","关电视","关电器用 turn off"],["eat medicine","take medicine","吃药","吃药用 take；eat 只用于吃饭吃东西"],["I very like it","I really like it","我非常喜欢它","very 不能直接修饰动词，用 really，或 I like it very much"],["I am agree","I agree","我同意","agree 本身就是动词，不用加 am"],["Wait me!","Wait for me!","等等我！","wait 后面要加 for"],["I'm boring","I'm bored","我好无聊","bored 是「我觉得无聊」；I'm boring 是「我这个人很无趣」😂"],["Give you.","Here you are.","给你","递东西给别人说 Here you are 或 Here you go"],["How to say it in English?","How do you say it in English?","这个用英语怎么说？","完整的问句要有 do you"],["play computer","play computer games","玩电脑","要说清楚玩的是游戏"],["Teacher Wang","Mr. Wang / Ms. Wang","王老师","英语里不说 Teacher + 姓，用 Mr. 或 Ms. + 姓"],["Where are you go?","Where are you going?","你要去哪儿？","正在进行要用 are + going"],["Good good study, day day up","Study hard and make progress every day","好好学习，天天向上","著名的中式英语，逐字翻译老外听不懂"],["People mountain people sea","It's packed with people","人山人海","逐字翻译不成立；可以说 huge crowds 或 packed with people"]]},"mid":{"idiom":[["break the ice","打破冰","打破冷场，让气氛活跃起来","打破僵局","He told a joke to [break the ice].","他讲了个笑话来打破冷场。"],["under the weather","在天气下面","身体有点不舒服","身体欠佳","I'm feeling a bit [under the weather] today.","我今天有点不舒服。"],["kill two birds with one stone","一块石头打死两只鸟","一件事达到两个目的","一箭双雕","I walk to school. It [kills two birds with one stone]: I get exercise and save money.","我走路上学，一箭双雕：既锻炼身体又省钱。"],["add fuel to the fire","往火里加燃料","让事情变得更糟","火上浇油","Shouting at him will only [add fuel to the fire].","冲他大喊只会火上浇油。"],["once in a blue moon","蓝月亮出现一次","非常少见，难得一次","难得一回","My brother cleans his room [once in a blue moon].","我哥难得打扫一回房间。"],["spill the beans","把豆子洒出来","泄露秘密","走漏风声","Who [spilled the beans] about the surprise?","是谁把惊喜的事走漏了风声？"],["cost an arm and a leg","要花掉一条胳膊一条腿","贵得要命","价格不菲","That phone [costs an arm and a leg].","那部手机贵得要命。"],["hit the nail on the head","一锤正好敲在钉子头上","说到点子上了","一针见血","You [hit the nail on the head]. That's exactly the problem.","你一针见血，问题就在这儿。"],["When in Rome, do as the Romans do","在罗马就照罗马人那样做","到什么地方就守那里的规矩","入乡随俗","In Japan we took off our shoes. [When in Rome, do as the Romans do].","在日本我们脱了鞋，入乡随俗嘛。"],["Rome wasn't built in a day","罗马不是一天建成的","大事需要时间慢慢来","非一日之功","Keep practicing the piano. [Rome wasn't built in a day].","继续练琴吧，这不是一日之功。"],["the apple of my eye","我眼里的苹果","最珍爱的人","掌上明珠","My little sister is [the apple of my eye].","我妹妹是我的掌上明珠。"],["pull someone's leg","拉某人的腿","开玩笑，逗人玩","逗你玩","Relax, I'm just [pulling your leg]!","放轻松，我逗你玩呢！"],["on cloud nine","在第九朵云上","开心得飘起来了","心花怒放","She was [on cloud nine] after winning the prize.","她得奖后心花怒放。"],["bite off more than you can chew","咬下一口嚼不动的","揽了做不完的事","贪多嚼不烂","Don't join five clubs. Don't [bite off more than you can chew].","别参加五个社团，贪多嚼不烂。"],["the last straw","最后一根稻草","让人终于受不了的最后一件事","忍无可忍","Losing my keys was [the last straw].","钥匙又丢了，这下我真忍无可忍了。"],["go the extra mile","多走一英里","比要求的多付出一些","不遗余力","Our coach always [goes the extra mile] for us.","我们教练总是为我们不遗余力。"],["feel blue","感觉蓝色","心情低落","闷闷不乐","I [feel blue] on rainy days.","下雨天我总是闷闷不乐。"],["a fish out of water","离开水的鱼","浑身不自在，很不适应","格格不入","At the new school, I felt like [a fish out of water].","在新学校我觉得格格不入。"],["like a duck to water","像鸭子下水一样","一学就会，特别适应","如鱼得水","She took to swimming [like a duck to water].","她学游泳如鱼得水。"],["burn the midnight oil","半夜还在烧灯油","熬夜学习或工作","挑灯夜战","Before the exam, I [burned the midnight oil].","考试前我挑灯夜战。"],["Great minds think alike","聪明的脑袋想法一样","想到一块儿去了（开玩笑地夸两个人）","英雄所见略同","You want pizza too? [Great minds think alike]!","你也想吃披萨？英雄所见略同！"],["not my cup of tea","不是我的那杯茶","不是我喜欢的类型","不是我的菜","Horror movies are [not my cup of tea].","恐怖片不是我的菜。"],["Better safe than sorry","安全总比后悔好","小心一点总没错","有备无患","Take a jacket. [Better safe than sorry].","带件外套吧，有备无患。"],["The grass is always greener on the other side","篱笆那边的草总是更绿","总觉得别人的更好","这山望着那山高","You want her phone and she wants yours. [The grass is always greener on the other side].","你想要她的手机，她想要你的，这山望着那山高。"],["Speak of the devil","说到魔鬼","刚说到某人，他就出现了","说曹操，曹操到","[Speak of the devil]! Here comes Jack.","说曹操曹操到！杰克来了。"],["Don't put all your eggs in one basket","别把鸡蛋都放在一个篮子里","别把希望押在一件事上，要分散风险","别孤注一掷","Apply to more than one school. [Don't put all your eggs in one basket].","多申请几所学校，别孤注一掷。"],["A bird in the hand is worth two in the bush","手里一只鸟，胜过树丛里两只","已经到手的比空想的好","十鸟在林，不如一鸟在手","Take the job offer now. [A bird in the hand is worth two in the bush].","先接下这份工作吧，十鸟在林不如一鸟在手。"],["Walls have ears","墙有耳朵","说话小心，可能有人偷听","隔墙有耳","Speak quietly. [Walls have ears].","小声点，隔墙有耳。"],["in the same boat","在同一条船上","处境一样（都不太好）","同病相怜","Don't worry, we're all [in the same boat].","别担心，大家都同病相怜。"],["cry wolf","喊「狼来了」","谎报危险，喊多了没人信","狼来了","If you [cry wolf] too often, no one will believe you.","老喊「狼来了」，就没人信你了。"]],"talk":[["you know","你知道的；就是……","说话时停顿一下（口头禅）","It's, [you know], kind of hard to explain.","这个嘛，你知道的，有点难解释。"],["I mean","我是说","补充或修正自己刚说的话","It's good. [I mean], it's not perfect, but it's good.","挺好的。我是说，不完美，但挺好。"],["like","就……（口头禅）","年轻人说话时的填充词，别用太多","It was, [like], the best day ever!","那天，就，超级棒！"],["kind of","有点儿","让语气更委婉","I'm [kind of] tired.","我有点累了。"],["My bad","我的错","随口承认一个小错误","A: You took my seat. / B: Oh, [my bad]!","A：你坐我位子了。 B：哦，我的错！"],["No worries","没事，别担心","回应别人的道谢或道歉","A: Sorry I'm late. / B: [No worries]!","A：抱歉我迟到了。 B：没事！"],["For real?","真的假的？","表示惊讶","A: We have no homework today. / B: [For real?]","A：今天没作业。 B：真的假的？"],["Sounds good","听起来不错；好的","同意别人的提议","A: Let's meet at six. / B: [Sounds good]!","A：六点见吧。 B：好啊！"],["What's up?","最近咋样？怎么了？","和熟人打招呼","Hey, Mike! [What's up?]","嘿，迈克！最近咋样？"],["Not much","没啥事","回答 What's up?","A: What's up? / B: [Not much]. You?","A：最近咋样？ B：没啥，你呢？"],["How's it going?","最近怎么样？","日常打招呼","Hi, Lisa! [How's it going?]","嗨，丽莎！最近怎么样？"],["I'm good","我挺好的；不用了","回答问候，也可以礼貌地说「不用了」","A: Want some more? / B: [I'm good], thanks.","A：再来点吗？ B：不用了，谢谢。"],["Same here","我也是","有同样的感觉","A: I'm so hungry. / B: [Same here].","A：我好饿。 B：我也是。"],["Just kidding","开玩笑的","说完玩笑话之后","I ate all your candy. [Just kidding]!","我把你的糖全吃了。开玩笑的！"],["Whatever","随便；管它呢","不在乎（对长辈说不太礼貌）","A: Pizza or noodles? / B: [Whatever].","A：披萨还是面条？ B：随便。"],["Seriously?","认真的吗？","不敢相信","You lost your phone again? [Seriously?]","你又把手机丢了？认真的？"],["Hang in there","坚持住","鼓励别人撑下去","Exams are almost over. [Hang in there]!","考试快结束了，坚持住！"],["You got this","你可以的","在别人紧张时给他打气","Don't be nervous. [You got this]!","别紧张，你可以的！"],["I'm on it","我马上去办","接下一个任务","A: Can you set the table? / B: [I'm on it]!","A：能摆一下餐具吗？ B：马上！"],["Fingers crossed","祈祷好运","希望事情顺利（会把手指交叉）","My test results come out today. [Fingers crossed]!","今天出成绩，祈祷一下！"],["No big deal","没什么大不了","安慰别人，或谦虚地回应感谢","A: Thanks for helping! / B: [No big deal].","A：谢谢帮忙！ B：小事一桩。"],["Tell me about it","可不是嘛","强烈同意（不是让你讲给他听！）","A: This homework is so hard. / B: [Tell me about it].","A：这作业太难了。 B：可不是嘛。"],["Guess what?","你猜怎么着？","要分享一件新鲜事","[Guess what?] I made the team!","你猜怎么着？我进校队了！"],["Gotcha","明白了","表示听懂了（got you 的连读）","A: Turn left at the corner. / B: [Gotcha].","A：在拐角左转。 B：明白。"],["It's up to you","你决定吧","让对方来选","A: Movie or park? / B: [It's up to you].","A：看电影还是去公园？ B：你来定吧。"],["My treat","我请客","请别人吃东西","Put your money away. [My treat]!","把钱收起来，我请！"],["Oh my gosh","天哪","非常惊讶（比 Oh my God 更委婉）","[Oh my gosh], look at that rainbow!","天哪，快看那道彩虹！"],["Calm down","冷静点","让别人别激动（对正在生气的人说可能更火大）","[Calm down]. It's just a game.","冷静点，只是个游戏而已。"],["Shut up!","闭嘴；不会吧！","朋友之间表示「不敢相信」（语气很重要！）","A: I won the contest! / B: [Shut up]! No way!","A：我比赛赢了！ B：不会吧！真的假的！"],["Cheers","干杯；谢啦","碰杯时说；英国人也用来说谢谢","[Cheers] for the help, mate!","谢啦，哥们！"]],"fix":[["discuss about it","discuss it","讨论这件事","discuss 后面直接跟要讨论的东西，不加 about"],["Let me see see","Let me take a look","让我看看","「看看」不能说成 see see"],["I'm so exciting!","I'm so excited!","我好激动！","-ed 表示人的感受；-ing 表示东西让人怎样"],["Although it rained, but we went out","Although it rained, we went out","虽然下雨了，但我们还是出去了","although 和 but 只能用一个"],["Because I was tired, so I slept","I was tired, so I slept","因为累了，所以睡了","because 和 so 只能用一个"],["How do you think?","What do you think?","你怎么看？","问对方的想法用 what"],["I think it's not good","I don't think it's good","我觉得不好","英语习惯把否定放在 think 前面"],["Can you speak English?","Do you speak English?","你会说英语吗？","Can you 听起来像怀疑对方的能力，Do you 更礼貌"],["return back","go back / return","回去","return 本身就是「回去」，再加 back 就重复了"],["I'm fine, thank you. And you?","Good, thanks! You?","我很好，谢谢，你呢？","课本句太正式了，日常这样说更自然"],["He is more taller than me","He is taller than me","他比我高","比较级不能同时用 more 和 -er"],["I want to go to toilet","I need to use the bathroom","我想上厕所","美国人说 bathroom 或 restroom，更委婉"],["What's your job?","What do you do?","你做什么工作？","What do you do? 更自然、更礼貌"],["a lot of homeworks","a lot of homework","很多作业","homework 不可数，没有复数"],["Add oil!","You can do it!","加油！","add oil 虽然进了牛津词典，但大多数美国人还是听不懂"]]},"high":{"idiom":[["a blessing in disguise","伪装起来的祝福","看起来是坏事，其实是好事","塞翁失马，焉知非福","Failing the first test was [a blessing in disguise]. It made me study harder.","第一次考砸反倒是好事，让我更用功了。"],["Every cloud has a silver lining","每朵乌云都镶着银边","坏事里也有希望","柳暗花明","It rained all week, but [every cloud has a silver lining]: I finished my novel.","下了一周雨，也有好处：我把小说读完了。"],["beat around the bush","围着灌木丛拍打","说话绕圈子，不说重点","拐弯抹角","Stop [beating around the bush] and tell me the truth.","别拐弯抹角了，跟我说实话。"],["make a mountain out of a molehill","把鼹鼠丘说成一座山","把小事说成大事","小题大做","It's just one B. Don't [make a mountain out of a molehill].","只是一个 B 而已，别小题大做。"],["the tip of the iceberg","冰山的尖","只是表面的一小部分","冰山一角","These complaints are just [the tip of the iceberg].","这些投诉只是冰山一角。"],["a drop in the ocean","大海里的一滴水","跟需要的比太少了","杯水车薪","Our donation is [a drop in the ocean], but it still helps.","我们的捐款只是杯水车薪，但多少有帮助。"],["pie in the sky","天上的馅饼","不切实际的空想","空中楼阁","His plan to get rich in a month is [pie in the sky].","他一个月致富的计划不过是空中楼阁。"],["add insult to injury","伤口上再加侮辱","让本来就糟的情况更糟","雪上加霜","I missed the bus, and [to add insult to injury], it started to rain.","我错过了公交，雪上加霜的是还下起了雨。"],["fish in troubled waters","在浑水里捕鱼","趁乱捞好处","浑水摸鱼","Some people [fish in troubled waters] during a crisis.","危机时总有人浑水摸鱼。"],["kill the goose that lays the golden eggs","杀掉下金蛋的鹅","为眼前利益毁掉长久的财路","杀鸡取卵","Raising prices too much would [kill the goose that lays the golden eggs].","涨价太狠无异于杀鸡取卵。"],["burn your bridges","烧掉你走过的桥","把关系搞僵，断了自己的后路","自断后路","Don't [burn your bridges] with your old boss.","别跟老上司闹翻，自断后路。"],["on thin ice","站在薄冰上","处境危险，再错就完了","如履薄冰","After being late three times, he's [on thin ice] with the teacher.","迟到三次后，他在老师那儿已经如履薄冰了。"],["a wolf in sheep's clothing","披着羊皮的狼","看似友善，其实心怀不轨的人","口蜜腹剑","Be careful. He might be [a wolf in sheep's clothing].","小心，他可能口蜜腹剑。"],["bite the bullet","咬住子弹","硬着头皮去做不想做的事","硬着头皮","I hate the dentist, but I'll [bite the bullet] and go.","我讨厌看牙，但还是硬着头皮去吧。"],["throw in the towel","扔出毛巾（拳击认输）","放弃，认输","缴械投降","Don't [throw in the towel] yet. There's still time.","先别认输，还有时间。"],["two-faced","两张脸","当面一套背后一套","两面三刀","I don't trust him. He's [two-faced].","我不信他，他两面三刀。"],["Keep your chin up","把下巴抬起来","别灰心，振作起来","打起精神","[Keep your chin up]. You'll do better next time.","打起精神，下次会更好。"],["Once bitten, twice shy","被咬过一次，第二次就怕了","吃过亏以后特别小心","一朝被蛇咬，十年怕井绳","I won't fly that airline again. [Once bitten, twice shy].","我再也不坐那家航空了，一朝被蛇咬，十年怕井绳。"],["put the cart before the horse","把车放在马前面","做事顺序颠倒了","本末倒置","Buying a dress before you're invited is [putting the cart before the horse].","还没被邀请就先买礼服，真是本末倒置。"],["fight fire with fire","用火来对付火","用对方的手段对付对方","以毒攻毒","Sometimes you have to [fight fire with fire].","有时候你得以毒攻毒。"],["Look before you leap","跳之前先看一看","行动前先想清楚","三思而后行","It's a big decision. [Look before you leap].","这是个大决定，三思而后行。"],["Out of sight, out of mind","看不见，就想不起","不常见面，感情就淡了","人走茶凉","They moved away and stopped calling. [Out of sight, out of mind].","他们搬走后就不联系了，真是人走茶凉。"],["Many hands make light work","手多活就轻","大家一起干，事情就轻松","众人拾柴火焰高","Let's all help clean up. [Many hands make light work].","大家一起打扫吧，众人拾柴火焰高。"],["Too many cooks spoil the broth","厨师太多煮坏了汤","人多反而把事搞砸","三个和尚没水喝","Five people editing one essay? [Too many cooks spoil the broth].","五个人改一篇作文？三个和尚没水喝。"],["The squeaky wheel gets the grease","吱吱响的轮子才有人上油","敢开口提要求的人才得到关注","会哭的孩子有奶吃","Complain to the manager. [The squeaky wheel gets the grease].","去找经理反映吧，会哭的孩子有奶吃。"],["A leopard can't change its spots","豹子改不了身上的斑点","本性很难改变","江山易改，本性难移","He promised to stop lying, but [a leopard can't change its spots].","他保证不再撒谎，可江山易改本性难移。"],["Strike while the iron is hot","趁铁还热的时候打","抓住好时机马上行动","趁热打铁","They liked your idea. [Strike while the iron is hot]!","他们喜欢你的点子，趁热打铁！"],["Haste makes waste","匆忙造成浪费","太着急反而做不好","欲速则不达","Check your answers carefully. [Haste makes waste].","仔细检查答案，欲速则不达。"],["It takes two to tango","跳探戈要两个人","出了问题双方都有责任","一个巴掌拍不响","Don't blame only him. [It takes two to tango].","别只怪他，一个巴掌拍不响。"],["A picture is worth a thousand words","一张图抵得上一千个字","看图比听说明更清楚","百闻不如一见","Just show them the photo. [A picture is worth a thousand words].","给他们看照片就行，百闻不如一见。"]],"talk":[["To be honest","说实话","要说出真实想法","[To be honest], I didn't like the movie.","说实话，我不喜欢那部电影。"],["Actually","其实","纠正或补充别人的话（口头禅）","[Actually], I'm from Canada, not the US.","其实我是加拿大人，不是美国人。"],["Basically","说白了，基本上","总结一下（口头禅）","[Basically], we need more time.","说白了，我们需要更多时间。"],["literally","简直；真的是","夸张地强调（年轻人常用）","I'm [literally] dying of hunger.","我简直要饿死了。"],["Fair enough","有道理；行吧","接受对方的理由","A: I can't come, I have to work. / B: [Fair enough].","A：我来不了，得上班。 B：行吧，有道理。"],["It is what it is","事已至此；就这样吧","接受无法改变的事","We lost, but [it is what it is].","输了，但事已至此。"],["I'm down","算我一个","同意参加活动","A: Bowling tonight? / B: [I'm down]!","A：今晚打保龄球？ B：算我一个！"],["I'll pass","我就不了","礼貌地拒绝","A: Want to try the spicy one? / B: I think [I'll pass].","A：要尝尝辣的吗？ B：我还是算了吧。"],["That makes sense","有道理；明白了","理解了对方的解释","Oh, [that makes sense] now.","哦，现在明白了。"],["You bet","当然！","很肯定地回答","A: Will you be there? / B: [You bet]!","A：你会来吗？ B：当然！"],["No kidding","那还用说","表示「这很明显」，或者表示惊讶","A: It's hot today. / B: [No kidding]! It's 40 degrees!","A：今天好热。 B：那还用说！40 度呢！"],["Good call","明智的决定","肯定别人的判断","Bringing umbrellas was a [good call].","带伞真是明智之举。"],["I feel you","我懂你","表示感同身受","A: Mondays are the worst. / B: [I feel you].","A：周一最难熬了。 B：我懂。"],["Let's call it a day","今天就到这儿吧","结束一天的工作或学习","It's late. [Let's call it a day].","很晚了，今天就到这儿吧。"],["Speaking of which","说到这个","顺着话题往下说","[Speaking of which], have you finished the report?","说到这个，你报告写完了吗？"],["By the way","顺便说一下","补充一件事，或者换话题","[By the way], your mom called.","顺便说一句，你妈打过电话。"],["Anyway","总之；不管怎样","把话题拉回来","[Anyway], where was I?","总之，我刚说到哪儿了？"],["Long story short","长话短说","快速讲完一件事","[Long story short], we missed the flight.","长话短说，我们误机了。"],["I couldn't agree more","完全同意","非常赞同","A: We need a break. / B: [I couldn't agree more].","A：我们需要休息一下。 B：完全同意。"],["Don't get me wrong","别误会","要说一句可能让人误会的话之前","[Don't get me wrong], I like him, but he talks too much.","别误会，我挺喜欢他，只是他话太多。"],["Whatever works","怎么方便怎么来","配合对方的安排","A: Monday or Tuesday? / B: [Whatever works] for you.","A：周一还是周二？ B：你方便就行。"],["Hang on","等一下","请对方稍等","[Hang on], let me check.","稍等，我查一下。"],["Go for it","去做吧！","鼓励别人去尝试","You want to try out? [Go for it]!","你想去试试？去吧！"],["That's the spirit","这才对嘛","赞赏积极的态度","A: I'll try again tomorrow. / B: [That's the spirit]!","A：我明天再试一次。 B：这才对嘛！"],["Suit yourself","随你便","对方不听你的建议（略带不满）","A: I'm not wearing a coat. / B: [Suit yourself].","A：我不穿外套。 B：随你。"],["I'll keep that in mind","我会记住的","接受别人的建议","Thanks for the tip. [I'll keep that in mind].","谢谢提醒，我会记住的。"],["Lucky you","你真走运","羡慕别人","A: I got the day off. / B: [Lucky you]!","A：我今天放假。 B：真好啊你！"],["What a shame","太可惜了","表示遗憾","You missed the concert? [What a shame]!","你错过演唱会了？太可惜了！"],["Bummer","真扫兴","失望（很口语）","The game was canceled? [Bummer]!","比赛取消了？真扫兴！"],["You can say that again","说得太对了","非常同意","A: That was a long test. / B: [You can say that again]!","A：那场考试真长。 B：说得太对了！"]],"fix":[["I very agree","I totally agree","我非常同意","very 不修饰动词；也可以说 I couldn't agree more"],["In my opinion, I think...","In my opinion, ...","我认为……","in my opinion 和 I think 是一个意思，二选一"],["arrive Beijing","arrive in Beijing","到达北京","arrive 后面接 in（城市、国家）或 at（具体地点）"],["marry with him","marry him","和他结婚","marry 直接跟人；也可以说 get married to him"],["enter into the room","enter the room","进入房间","enter 本身就是「进入」，不加 into"],["learn knowledge","gain knowledge","学知识","英语不说 learn knowledge；说 gain knowledge 或 learn a lot"],["some informations","some information","一些信息","information、advice 都不可数，不加 s"],["I'm interesting in music","I'm interested in music","我对音乐感兴趣","人感兴趣用 interested"],["make a photo","take a photo","拍照","拍照用 take"],["Can you borrow me your pen?","Can you lend me your pen?","能借我你的笔吗？","借出去用 lend，借进来用 borrow"],["I have a good news","I have some good news","我有个好消息","news 不可数，不能加 a"],["on the newspaper","in the newspaper","在报纸上","报纸上的内容用 in"],["according to me","in my opinion","依我看","according to 用来引用别人或资料，不用于自己"],["The price is very expensive","The price is very high","价格很贵","price 说高低；东西本身才说 expensive"],["My hobby is play basketball","My hobby is playing basketball","我的爱好是打篮球","is 后面要用 -ing 形式"]]},"col":{"idiom":[["the elephant in the room","房间里的大象","明摆着却没人敢提的问题","避而不谈的大问题","Nobody mentioned the budget cuts, [the elephant in the room].","没人提预算削减，那个大家都在回避的问题。"],["gild the lily","给百合花镀金","给本来就好的东西多余地加工","画蛇添足","The design is already perfect. Adding more colors would be [gilding the lily].","设计已经很完美，再加颜色就是画蛇添足。"],["a double-edged sword","双刃剑","有好处也有坏处","利弊参半","Social media is [a double-edged sword].","社交媒体是一把双刃剑。"],["a Catch-22","第 22 条军规（小说名）","怎么做都不行的死循环","进退两难","You need experience to get a job, but a job to get experience. It's [a Catch-22].","没经验找不到工作，没工作又没经验，真是进退两难。"],["low-hanging fruit","挂得低的果子","最容易拿下的目标","唾手可得","Let's start with the [low-hanging fruit].","我们先从最容易的下手。"],["back to square one","回到第一格","一切从头再来","前功尽弃","The data was lost, so we're [back to square one].","数据丢了，我们前功尽弃，从头再来。"],["play devil's advocate","扮演魔鬼的辩护人","故意唱反调，好让讨论更全面","唱反调","Let me [play devil's advocate] for a second.","我来唱个反调。"],["The ball is in your court","球在你的场地了","轮到你做决定了","该你出招了","I've made my offer. [The ball is in your court].","我已经开价了，接下来看你的了。"],["think outside the box","在盒子外面思考","跳出常规去想","别出心裁","We need to [think outside the box] to solve this.","要解决这个，我们得别出心裁。"],["cut corners","抄近路，切掉拐角","偷工减料，图省事","偷工减料","Never [cut corners] on safety.","安全上绝不能偷工减料。"],["a wake-up call","叫醒电话","让人猛然醒悟的警告","当头棒喝","The failed project was [a wake-up call] for the team.","项目失败给团队来了个当头棒喝。"],["get the ball rolling","让球滚起来","开个头，把事情启动","抛砖引玉","Let me [get the ball rolling] with a few ideas.","我先抛砖引玉，说几个想法。"],["the bottom line","最底下那一行（账本的总数）","最关键的一点，最终结果","归根结底","[The bottom line] is that we need more customers.","归根结底，我们需要更多客户。"],["move the goalposts","挪动球门","中途改变规则或标准","朝令夕改","Every time we finish, the client [moves the goalposts].","每次我们做完，客户就改标准，朝令夕改。"],["hit the ground running","一落地就开跑","一上手就全力投入","迅速进入状态","The new hire [hit the ground running].","新同事一来就迅速进入了状态。"],["learn the ropes","学会拉绳子（帆船术语）","熟悉一份工作的门道","摸清门道","It took me a month to [learn the ropes].","我花了一个月才摸清门道。"],["jump on the bandwagon","跳上乐队花车","跟风，赶时髦","随波逐流","Everyone is [jumping on the bandwagon] with AI.","大家都在跟风搞 AI。"],["by the skin of your teeth","靠牙齿上的那层皮","差一点就失败，勉强成功","惊险过关","I passed the exam [by the skin of my teeth].","我惊险过关，刚好及格。"],["throw someone under the bus","把人推到公交车底下","为了自保把别人推出去背锅","甩锅","He [threw his coworker under the bus] to save himself.","他为了自保把同事推出去背锅。"],["burn the candle at both ends","蜡烛两头一起烧","没日没夜地透支自己","蜡烛两头烧","Working days and studying nights, she's [burning the candle at both ends].","白天上班晚上读书，她在透支自己。"],["The devil is in the details","魔鬼藏在细节里","细节才是最容易出问题的地方","细节决定成败","The plan sounds simple, but [the devil is in the details].","计划听着简单，但细节决定成败。"],["sit on the fence","坐在篱笆上","不表态，两边都不得罪","骑墙观望","You can't [sit on the fence] forever.","你不能一直骑墙观望。"],["a red herring","一条红鲱鱼","故意转移注意力的东西","障眼法","That clue was [a red herring].","那条线索是个障眼法。"],["bury the hatchet","把斧头埋起来","和解，不再争吵","化干戈为玉帛","After years of fighting, they finally [buried the hatchet].","斗了这么多年，他们终于化干戈为玉帛。"],["a dark horse","一匹黑马","出人意料的胜出者","黑马（中文也这么说）","The [dark horse] won the election.","那匹黑马赢得了选举。"],["pay lip service","只付嘴唇的服务","嘴上支持，实际不做","口惠而实不至","They [pay lip service] to the environment but change nothing.","他们嘴上说环保，实际什么都没改。"],["the writing on the wall","墙上出现的字","失败的预兆","大势已去","Sales kept dropping. Everyone could see [the writing on the wall].","销量一路下滑，谁都看得出大势已去。"],["cross that bridge when we come to it","走到桥边再过桥","到时候再说，现在不用担心","车到山前必有路","What if it rains? We'll [cross that bridge when we come to it].","下雨怎么办？车到山前必有路。"],["make an example of someone","拿某人当例子","惩罚一个人来警告其他人","杀鸡儆猴","The boss fired him to [make an example of him].","老板开除他是杀鸡儆猴。"],["skin in the game","在游戏里押上自己的皮","自己也投了钱、担着风险","利益攸关","I trust advisors who have [skin in the game].","我更信那些自己也下了注的顾问。"],["a cash cow","现金奶牛","稳定赚钱的产品或业务","摇钱树","This product is the company's [cash cow].","这款产品是公司的摇钱树。"]],"talk":[["Let me get back to you","我晚点回复你","暂时答不上来，先缓一缓","Good question. [Let me get back to you] on that.","好问题，这个我晚点回复你。"],["circle back","回头再讨论","会议上把话题往后放","Let's [circle back] to this next week.","这个我们下周再议。"],["touch base","碰个头，联系一下","简短地沟通进度","Let's [touch base] on Friday.","周五碰一下吧。"],["on the same page","想法一致","确认大家理解相同","Just to make sure we're [on the same page]: the deadline is Monday.","确认一下我们理解一致：截止日期是周一。"],["For what it's worth","仅供参考","谦虚地提出意见","[For what it's worth], I think you made the right choice.","仅供参考，我觉得你选对了。"],["my two cents","我的一点浅见","发表个人看法","Just [my two cents]: we should wait.","我的一点浅见：我们应该再等等。"],["At the end of the day","归根结底","总结最关键的一点","[At the end of the day], it's your decision.","归根结底，还是你来决定。"],["Fair point","说得有道理","承认对方说得对","[Fair point]. I hadn't thought of that.","说得对，我没想到这一点。"],["I hear you","我理解你的意思","表示理解（但不一定同意）","[I hear you], but we can't change the deadline.","我理解，但截止日期改不了。"],["Off the top of my head","凭印象随口说","没查资料，直接估计","[Off the top of my head], about 200 people.","凭印象说，大概 200 人。"],["Bear with me","请稍等，请耐心一点","请别人给你一点时间","[Bear with me] while I find the file.","稍等，我找一下文件。"],["Happy to help","乐意帮忙","回应感谢（职场常用）","A: Thanks for your help! / B: [Happy to help].","A：谢谢你帮忙！ B：乐意效劳。"],["That being said","话虽如此","表示转折","The plan is risky. [That being said], it could work.","这计划有风险。话虽如此，也许行得通。"],["It's not rocket science","又不是造火箭","这事没那么难","Come on, [it's not rocket science].","拜托，这又不是什么高深学问。"],["Keep me posted","随时告诉我进展","让对方及时更新消息","[Keep me posted] on the project.","项目有进展随时告诉我。"],["Sounds like a plan","就这么定了","同意某个安排","A: Lunch at noon? / B: [Sounds like a plan].","A：中午一起吃饭？ B：就这么定了。"],["Let's play it by ear","见机行事吧","不提前计划，到时候再看","We don't know the weather, so [let's play it by ear].","天气说不准，到时候见机行事吧。"],["I'm swamped","我忙疯了","手头事情太多","Sorry, [I'm swamped] this week.","抱歉，我这周忙疯了。"],["It slipped my mind","我给忘了","礼貌地承认忘了某事","Sorry, [it slipped my mind].","抱歉，我给忘了。"],["rain check","改天吧","婉拒邀请，但想改期","Can I take a [rain check] on dinner?","晚饭能改天吗？"],["Don't sweat it","别放在心上","安慰对方没关系","A: I broke your mug. / B: [Don't sweat it].","A：我把你杯子打碎了。 B：别放在心上。"],["I'll take it from here","接下来交给我","接手别人的工作","Thanks, [I'll take it from here].","谢谢，接下来交给我吧。"],["Just to clarify","我确认一下","澄清细节","[Just to clarify], the meeting is at three?","确认一下，会议是三点？"],["With all due respect","恕我直言","礼貌地表示反对（后面通常是批评）","[With all due respect], I disagree.","恕我直言，我不同意。"],["Let's take this offline","我们私下再聊","会议上把细节挪到会后","Good point. [Let's take this offline].","好问题，我们会后再聊。"],["Moving forward","今后","职场上表示「从现在开始」","[Moving forward], please copy me on all emails.","今后所有邮件请抄送我。"],["Easier said than done","说起来容易做起来难","表示这事有难度","Save more money? [Easier said than done].","多存点钱？说起来容易做起来难。"],["couldn't care less","一点也不在乎","表示完全不关心","Honestly, I [couldn't care less] about celebrity news.","说实话，明星八卦我一点都不关心。"],["Not gonna lie","说真的，不骗你","坦白地说（网络常写作 NGL）","[Not gonna lie], that was impressive.","说真的，那太厉害了。"],["It's a no-brainer","想都不用想","显而易见的选择","A free upgrade? [It's a no-brainer].","免费升级？想都不用想。"],["Point taken","明白你的意思了","接受批评或建议","[Point taken]. I'll be more careful.","明白了，我会更小心的。"]],"fix":[["Waiting for your reply.","I look forward to hearing from you.","等您回复","邮件结尾这样写更礼貌自然"],["Please revert.","Please get back to me.","请回复","revert 的意思是「恢复原状」，不是回复"],["look forward to see you","look forward to seeing you","期待见到你","这里的 to 是介词，后面接 -ing"],["suggest you to do it","suggest that you do it","建议你去做","suggest 不能接 sb to do"],["Sorry to trouble you","Sorry to bother you","打扰一下","bother 更常用、更自然"],["open a meeting","have a meeting","开会","开会用 have 或 hold"],["staffs","staff","员工们","staff 是集合名词，不加 s"],["Very appreciate!","I really appreciate it!","非常感谢","appreciate 是动词，后面要有宾语 it"],["with my pleasure","my pleasure","不客气，我的荣幸","my pleasure 和 with pleasure 是两种说法，别混在一起"],["pay attention on","pay attention to","注意","固定搭配是 attention to"],["Do you understand?","Does that make sense?","你明白了吗？","Do you understand? 听着像质问；职场说 Does that make sense?"],["I want to ask for leave","I'd like to take a day off","我想请假","口语更常说 take a day off 或 take some time off"],["according to my experience","in my experience","根据我的经验","固定说法是 in my experience"],["developing fastly","developing rapidly","快速发展","fast 本身就是副词，没有 fastly"],["Please check it.","Could you take a look at it?","请检查一下","委婉的请求更礼貌，Please check it 听着像命令"],["Have a good rest","Get some rest","好好休息","英语更常说 get some rest"]]},"cn":[["long time no see","好久不见","一般认为来自中式英语，现在老外天天都说"],["lose face","丢脸","19 世纪从中文借来的说法"],["save face","保住面子","跟 lose face 是一对"],["add oil","加油","2018 年被收进《牛津英语词典》（来自香港英语）"],["no can do","办不到","来自洋泾浜英语，现在美国人也常说"],["look-see","看看","洋泾浜英语：have a look-see 就是「瞧一瞧」"],["paper tiger","纸老虎","直接从中文翻译过去的"],["kowtow","叩头","现在指卑躬屈膝、一味讨好"],["brainwashing","洗脑","1950 年代从中文直译过去"],["gung-ho","工合","来自「工业合作社」的口号，被美军借用，现在指干劲十足"],["running dog","走狗","直接从中文翻译过去的"],["chop chop","快快","洋泾浜英语，意思是「快点快点」"],["typhoon","大风 / 台风","一说部分来自粤语「大风」"],["ketchup","鲑汁（闽南话）","番茄酱的祖先其实是东南亚的鱼酱！"],["tea","茶（闽南话 tê）","走海路传出去的叫 tea，走陆路传出去的叫 chai"],["kung fu","功夫","李小龙让全世界都学会了这个词"],["feng shui","风水","老外也会说 good feng shui"],["dim sum","点心（粤语）","早茶在英语里也叫 dim sum"],["tycoon","大君","经日语传进英语，现在指商界大亨"],["shanghai","上海","当动词用：to shanghai someone 是把人骗去船上当水手"],["yin and yang","阴阳","常用来比喻相反又互补的两样东西"],["ginseng","人参","来自闽南话的发音"],["lychee","荔枝","也拼作 litchi"],["wok","镬（粤语）","中式炒锅"]]};</script>
+<script id="pwData">window.PW_DATA = [{"id":"animals","name":"动物","icon":"🐾","items":[["🐱","cat","猫","māo","el gato",""],["🐶","dog","狗","gǒu","el perro",""],["🐟","fish","鱼","yú","el pez","活的鱼叫 pez，做成菜的鱼叫 pescado"],["🐦","bird","鸟","niǎo","el pájaro",""],["🐴","horse","马","mǎ","el caballo",""],["🐮","cow","牛","niú","la vaca",""],["🐑","sheep","羊","yáng","la oveja",""],["🐷","pig","猪","zhū","el cerdo",""],["🐔","chicken","鸡","jī","la gallina",""],["🦆","duck","鸭子","yāzi","el pato",""],["🐰","rabbit","兔子","tùzi","el conejo",""],["🐭","mouse","老鼠","lǎoshǔ","el ratón",""],["🐯","tiger","老虎","lǎohǔ","el tigre",""],["🦁","lion","狮子","shīzi","el león",""],["🐘","elephant","大象","dàxiàng","el elefante",""],["🐒","monkey","猴子","hóuzi","el mono",""],["🐻","bear","熊","xióng","el oso",""],["🐍","snake","蛇","shé","la serpiente","墨西哥口语也常说 la víbora"],["🐢","turtle","乌龟","wūguī","la tortuga",""],["🦋","butterfly","蝴蝶","húdié","la mariposa",""],["🐝","bee","蜜蜂","mìfēng","la abeja",""],["🐸","frog","青蛙","qīngwā","la rana",""]]},{"id":"food","name":"吃的喝的","icon":"🍎","items":[["🍎","apple","苹果","píngguǒ","la manzana",""],["🍌","banana","香蕉","xiāngjiāo","el plátano",""],["🍇","grapes","葡萄","pútao","las uvas",""],["🍉","watermelon","西瓜","xīguā","la sandía",""],["🍊","orange","橙子","chéngzi","la naranja",""],["🍓","strawberry","草莓","cǎoméi","la fresa",""],["🍑","peach","桃子","táozi","el durazno","西班牙叫 el melocotón"],["🍐","pear","梨","lí","la pera",""],["🍋","lemon","柠檬","níngméng","el limón",""],["🍞","bread","面包","miànbāo","el pan",""],["🍚","rice","米饭","mǐfàn","el arroz",""],["🥚","egg","鸡蛋","jīdàn","el huevo",""],["🥛","milk","牛奶","niúnǎi","la leche",""],["💧","water","水","shuǐ","el agua","⚠️ agua 其实是阴性词，只是 el agua 读起来更顺（复数是 las aguas）"],["🍰","cake","蛋糕","dàngāo","el pastel",""],["🍦","ice cream","冰淇淋","bīngqílín","el helado",""],["🍕","pizza","比萨","bǐsà","la pizza",""],["🥕","carrot","胡萝卜","húluóbo","la zanahoria",""],["🌽","corn","玉米","yùmǐ","el elote","墨西哥把玉米棒叫 elote；玉米本身叫 el maíz"],["🍅","tomato","西红柿","xīhóngshì","el jitomate","墨西哥说 jitomate，其他国家说 tomate"]]},{"id":"body","name":"身体","icon":"👀","items":[["👁️","eye","眼睛","yǎnjing","el ojo",""],["👂","ear","耳朵","ěrduo","la oreja",""],["👃","nose","鼻子","bízi","la nariz",""],["👄","mouth","嘴巴","zuǐba","la boca",""],["✋","hand","手","shǒu","la mano","⚠️ 以 -o 结尾却是阴性，著名特例"],["🦶","foot","脚","jiǎo","el pie",""],["🦷","tooth","牙齿","yáchǐ","el diente",""],["👅","tongue","舌头","shétou","la lengua",""],["💪","arm","胳膊","gēbo","el brazo",""],["🦵","leg","腿","tuǐ","la pierna",""],["❤️","heart","心","xīn","el corazón",""],["😀","face","脸","liǎn","la cara",""]]},{"id":"people","name":"家人和职业","icon":"👪","items":[["👨","dad","爸爸","bàba","el papá",""],["👩","mom","妈妈","māma","la mamá",""],["👦","boy","男孩","nánhái","el niño",""],["👧","girl","女孩","nǚhái","la niña",""],["👶","baby","宝宝","bǎobao","el bebé",""],["👴","grandpa","爷爷","yéye","el abuelo",""],["👵","grandma","奶奶","nǎinai","la abuela",""],["🧑‍🏫","teacher","老师","lǎoshī","el maestro","女老师是 la maestra"],["🧑‍⚕️","doctor","医生","yīshēng","el doctor","女医生是 la doctora"],["👮","police officer","警察","jǐngchá","el policía",""],["🧑‍🍳","cook","厨师","chúshī","el cocinero","女厨师是 la cocinera"],["🧑‍🚒","firefighter","消防员","xiāofángyuán","el bombero","女消防员是 la bombera"]]},{"id":"nature","name":"大自然","icon":"🌳","items":[["☀️","sun","太阳","tàiyáng","el sol",""],["🌙","moon","月亮","yuèliang","la luna",""],["⭐","star","星星","xīngxing","la estrella",""],["☁️","cloud","云","yún","la nube",""],["🌧️","rain","雨","yǔ","la lluvia",""],["❄️","snow","雪","xuě","la nieve",""],["🌈","rainbow","彩虹","cǎihóng","el arcoíris",""],["⛰️","mountain","山","shān","la montaña",""],["🌊","sea","海","hǎi","el mar",""],["🔥","fire","火","huǒ","el fuego",""],["🌳","tree","树","shù","el árbol",""],["🌸","flower","花","huā","la flor",""],["🍃","leaf","叶子","yèzi","la hoja",""],["🪨","rock","石头","shítou","la piedra",""],["🌍","Earth","地球","dìqiú","la Tierra",""],["⚡","lightning","闪电","shǎndiàn","el rayo",""]]},{"id":"home","name":"家里和学校","icon":"🏠","items":[["🏠","house","房子","fángzi","la casa",""],["🚪","door","门","mén","la puerta",""],["🪟","window","窗户","chuānghu","la ventana",""],["🛏️","bed","床","chuáng","la cama",""],["🪑","chair","椅子","yǐzi","la silla",""],["🛋️","sofa","沙发","shāfā","el sofá",""],["📺","TV","电视","diànshì","la tele","televisión 的简称"],["📱","phone","手机","shǒujī","el celular","西班牙说 el móvil"],["💡","light bulb","灯泡","dēngpào","el foco","西班牙说 la bombilla"],["🕐","clock","钟","zhōng","el reloj",""],["📖","book","书","shū","el libro",""],["✏️","pencil","铅笔","qiānbǐ","el lápiz",""],["🎒","backpack","书包","shūbāo","la mochila",""],["🔑","key","钥匙","yàoshi","la llave",""],["🥄","spoon","勺子","sháozi","la cuchara",""],["🍴","fork","叉子","chāzi","el tenedor",""],["🥢","chopsticks","筷子","kuàizi","los palillos",""],["☂️","umbrella","伞","sǎn","el paraguas","以 -s 结尾，但它是单数阳性"]]},{"id":"clothes","name":"衣服","icon":"👕","items":[["👕","T-shirt","T恤","T xù","la camiseta","墨西哥常说 la playera"],["👖","pants","裤子","kùzi","los pantalones",""],["👗","dress","裙子","qúnzi","el vestido",""],["🧥","coat","外套","wàitào","el abrigo","墨西哥夹克常说 la chamarra"],["👞","shoe","鞋子","xiézi","el zapato","运动鞋在墨西哥叫 los tenis"],["🧦","socks","袜子","wàzi","los calcetines",""],["🧢","cap","帽子","màozi","la gorra",""],["👓","glasses","眼镜","yǎnjìng","los lentes","西班牙说 las gafas"],["🧤","gloves","手套","shǒutào","los guantes",""],["🧣","scarf","围巾","wéijīn","la bufanda",""],["👜","bag","包","bāo","la bolsa",""]]},{"id":"transport","name":"交通","icon":"🚗","items":[["🚗","car","汽车","qìchē","el carro","西班牙说 el coche"],["🚌","bus","公交车","gōngjiāochē","el autobús","墨西哥日常也叫 el camión"],["🚲","bike","自行车","zìxíngchē","la bicicleta",""],["✈️","airplane","飞机","fēijī","el avión",""],["🚂","train","火车","huǒchē","el tren",""],["🚢","ship","轮船","lúnchuán","el barco",""],["🚕","taxi","出租车","chūzūchē","el taxi",""],["🚚","truck","卡车","kǎchē","el camión",""],["🚒","fire truck","消防车","xiāofángchē","el camión de bomberos",""],["🚑","ambulance","救护车","jiùhùchē","la ambulancia",""],["🚀","rocket","火箭","huǒjiàn","el cohete",""],["🚁","helicopter","直升机","zhíshēngjī","el helicóptero",""],["🏍️","motorcycle","摩托车","mótuōchē","la moto","motocicleta 的简称，所以是阴性"],["🚦","traffic light","红绿灯","hónglǜdēng","el semáforo",""]]},{"id":"colors","name":"颜色","icon":"🎨","items":[["🔴","red","红色","hóngsè","rojo",""],["🟠","orange","橙色","chéngsè","anaranjado","也可以说 naranja"],["🟡","yellow","黄色","huángsè","amarillo",""],["🟢","green","绿色","lǜsè","verde",""],["🔵","blue","蓝色","lánsè","azul",""],["🟣","purple","紫色","zǐsè","morado",""],["⚫","black","黑色","hēisè","negro",""],["⚪","white","白色","báisè","blanco",""],["🟤","brown","棕色","zōngsè","café","墨西哥说 café，其他国家多说 marrón"]]},{"id":"picto","name":"象形字","icon":"🀄","only":"zh","items":[["☀️","sun","日","rì","-","像一个圆圆的太阳，中间一点是光"],["🌙","moon","月","yuè","-","像一弯月牙"],["⛰️","mountain","山","shān","-","像连在一起的三座山峰"],["💧","water","水","shuǐ","-","像弯弯曲曲流动的水"],["🔥","fire","火","huǒ","-","像往上窜的火苗"],["🌳","tree","木","mù","-","上面是树枝，下面是树根"],["🧍","person","人","rén","-","像一个侧着身子站着的人"],["👄","mouth","口","kǒu","-","像一张张开的嘴"],["👁️","eye","目","mù","-","像一只竖起来的眼睛"],["👂","ear","耳","ěr","-","像一只耳朵"],["✋","hand","手","shǒu","-","像张开的手和手指"],["🦶","foot","足","zú","-","上面是腿，下面是脚"],["🌧️","rain","雨","yǔ","-","上面一横是天，下面是落下的雨点"],["☁️","cloud","云","yún","-","像天上卷起来的云朵"],["🚪","door","门","mén","-","像两扇对开的门"],["🐟","fish","鱼","yú","-","上面是鱼头，中间是鱼身，下面是鱼尾"],["🐦","bird","鸟","niǎo","-","像一只站着的鸟，有嘴有尾巴"],["🐴","horse","马","mǎ","-","像一匹马，有长脸、鬃毛和腿"],["🐮","ox","牛","niú","-","像牛头和两只弯弯的角"],["🐑","sheep","羊","yáng","-","上面两点像弯弯的羊角"],["🌾","grain","禾","hé","-","像垂着沉甸甸稻穗的禾苗"],["🎋","bamboo","竹","zhú","-","像两根挂着竹叶的竹枝"],["🍚","rice","米","mǐ","-","像散落的米粒"],["🔪","knife","刀","dāo","-","像一把刀"],["🏹","bow","弓","gōng","-","像一张弯弯的弓"],["🐚","shell","贝","bèi","-","像一个张开的贝壳（古时候贝壳当钱用）"],["🐢","turtle","龟","guī","-","古字像一只乌龟，有头、壳和脚"],["🐘","elephant","象","xiàng","-","古字像一头长鼻子的大象"],["👶","child","子","zǐ","-","像襁褓里伸出两只小手的婴儿"],["👩","woman","女","nǚ","-","古字像一个跪坐着、双手交叉的女子"],["🐉","dragon","龙","lóng","-","古字像一条有角、身子弯曲的龙"]]}];
+window.PW_CFG = { lang: 'en' };</script>
+<script id="pwMod">
+/* 看图识字 — shared picture-word module (ES5). Needs window.PW_DATA and window.PW_CFG = { lang: 'zh' | 'en' | 'es' }.
+   Host page adds PW.card() to its home and may define window.PW_WRITE(text) to open its writing practice. */
+(function () {
+  var CFG = window.PW_CFG || { lang: 'en' }, LANG = CFG.lang, DATA = window.PW_DATA || [], CATS = [], i;
+  for (i = 0; i < DATA.length; i++) if (!DATA[i].only || DATA[i].only === LANG) CATS.push(DATA[i]);
+  var KEY = 'pw:' + LANG + ':';
+  function get(k, d) { try { var v = window.localStorage.getItem(KEY + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { window.localStorage.setItem(KEY + k, JSON.stringify(v)); } catch (e) { } }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function $(id) { return document.getElementById(id); }
+
+  var GOT = get('got', {}), hideTxt = get('hide', false), root = null, scr = { t: 'home' }, quiz = null, readTok = 0, pushed = false, isOpen = false;
+
+  /* ---------- items: [emoji, en, zh, pinyin, es, note] ---------- */
+  function word(it) { return LANG === 'zh' ? it[2] : LANG === 'es' ? it[4] : it[1]; }
+  function ikey(c, it) { return c.id + ':' + it[0] + ':' + it[2]; }
+  function art(it) { var m = /^(el|la|los|las) (.+)$/.exec(it[4] || ''); return m ? { a: m[1], n: m[2], g: (m[1] === 'el' || m[1] === 'los') ? 'm' : 'f' } : null; }
+  function wordHTML(it, noPy) {
+    if (LANG === 'zh') return (noPy ? '' : '<span class="pwpy">' + esc(it[3]) + '</span>') + '<span class="pwzh">' + esc(it[2]) + '</span>';
+    if (LANG === 'es') { var a = art(it); return a ? '<span class="pw' + a.g + '">' + a.a + '</span> ' + esc(a.n) : esc(it[4]); }
+    return esc(it[1]);
+  }
+  function writeText(it) { if (LANG === 'es') { var a = art(it); return a ? a.n : it[4]; } return word(it); }
+  function nGot(c) { var n = 0, j; for (j = 0; j < c.items.length; j++) if (GOT[ikey(c, c.items[j])]) n++; return n; }
+  function total() { var n = 0, j; for (j = 0; j < CATS.length; j++) n += CATS[j].items.length; return n; }
+
+  /* ---------- speech ---------- */
+  var voice = null;
+  var PREF = {
+    zh: [/^zh[-_](CN|Hans)/i, /^cmn/i, /^zh/i],
+    en: [/^en[-_]GB/i, /^en[-_]US/i, /^en/i],
+    es: [/^es[-_]MX/i, /^es[-_](US|419)/i, /^es[-_](CO|AR|CL|PE|VE|EC|GT|CR|PA|DO|PR|UY|BO|PY|SV|HN|NI|CU)/i, /^es/i]
+  };
+  var LTAG = { zh: 'zh-CN', en: 'en-GB', es: 'es-MX' };
+  function pickVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices() || [], p = PREF[LANG], k, j;
+    voice = null;
+    for (k = 0; k < p.length && !voice; k++) for (j = 0; j < vs.length; j++) if (p[k].test(vs[j].lang) && !/HK|TW|yue/i.test(vs[j].lang)) { voice = vs[j]; break; }
+  }
+  if (window.speechSynthesis) { pickVoice(); if (window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener('voiceschanged', pickVoice); }
+  function say(t, onend) {
+    if (!window.speechSynthesis) { if (onend) setTimeout(onend, 900); return; }
+    if (!voice) pickVoice();
+    try { window.speechSynthesis.cancel(); } catch (e) { }
+    var u = new window.SpeechSynthesisUtterance(t);
+    u.lang = voice ? voice.lang : LTAG[LANG]; u.rate = LANG === 'zh' ? 0.75 : 0.8; if (voice) u.voice = voice;
+    if (onend) { var fired = false, f = function () { if (!fired) { fired = true; onend(); } }; u.onend = f; u.onerror = f; setTimeout(f, 4500); }
+    window.speechSynthesis.speak(u);
+  }
+
+  /* ---------- shell ---------- */
+  function ensure() {
+    if (root) return;
+    root = document.createElement('div');
+    root.className = 'pwv';
+    root.innerHTML = '<div class="pwtop"><button class="pwb" id="pwBack">‹ 返回</button><div class="pwti" id="pwTi"></div><button class="pwb" id="pwRead">🔊 连读</button></div><div class="pwwrap" id="pwBody"></div>';
+    document.body.appendChild(root);
+    $('pwBack').onclick = back;
+    $('pwRead').onclick = function () { if (readTok % 2) stopRead(); else readAll(); };
+    window.addEventListener('popstate', function () { if (isOpen) { pushed = false; close(); } });
+  }
+  function open() {
+    ensure(); isOpen = true; root.className = 'pwv on';
+    document.documentElement.style.overflow = 'hidden';
+    try { window.history.pushState({ pw: 1 }, ''); pushed = true; } catch (e) { pushed = false; }
+    home();
+  }
+  function close() {
+    stopRead(); quiz = null; isOpen = false;
+    if (root) root.className = 'pwv';
+    document.documentElement.style.overflow = '';
+    if (window.speechSynthesis) try { window.speechSynthesis.cancel(); } catch (e) { }
+    if (CFG.onClose) CFG.onClose();
+  }
+  function exit() { if (pushed) { pushed = false; try { window.history.back(); return; } catch (e) { } } close(); }
+  function back() {
+    stopRead();
+    if (scr.t === 'home') exit();
+    else if (scr.t === 'cat') home();
+    else if (scr.t === 'det') cat(scr.c);
+    else if (scr.t === 'quiz' || scr.t === 'done') { var ci = quiz ? quiz.ci : -1; quiz = null; if (ci >= 0) cat(ci); else home(); }
+  }
+  function setTop(t, read) { $('pwTi').innerHTML = t; $('pwRead').style.visibility = read ? 'visible' : 'hidden'; $('pwRead').textContent = '🔊 连读'; }
+  function body(h) { $('pwBody').innerHTML = h; root.scrollTop = 0; }
+
+  /* ---------- home ---------- */
+  var INTRO = {
+    zh: '先点图片<b>看大图、听读音</b>，再用小测考考自己。最后一组<b>「象形字」</b>最好玩：很多汉字本来就是照着东西画出来的！',
+    en: '点图片<b>看大图、听发音</b>，再用小测考考自己：听音找图、看图选词、读词找图。',
+    es: '名词连同冠词一起记最省事：<span class="pwm">el / los 蓝色 = 阳性</span>，<span class="pwf">la / las 粉色 = 阴性</span>。每一组都有「el 还是 la」专项小测。'
+  };
+  function home() {
+    stopRead(); quiz = null; scr = { t: 'home' };
+    setTop('🖼️ 看图识字', false);
+    var h = '<div class="pwintro">' + INTRO[LANG] + '</div>', got = 0, j;
+    for (j = 0; j < CATS.length; j++) got += nGot(CATS[j]);
+    h += '<div class="pwrow"><button class="pwbtn pri" id="pwMix">🎯 全部混合小测</button>' + (LANG === 'es' ? '<button class="pwbtn" id="pwMixG">el 还是 la？</button>' : '') + '</div>';
+    h += '<div class="pwstat">已认识 <b>' + got + '</b> / ' + total() + '</div><div class="pwcats">';
+    for (j = 0; j < CATS.length; j++) {
+      var c = CATS[j], n = nGot(c);
+      h += '<button class="pwcat" data-c="' + j + '"><span class="ic">' + c.icon + '</span><b>' + esc(c.name) + '</b><small>' + (n === c.items.length ? '✓ 全部认识 ' : '') + n + ' / ' + c.items.length + '</small><i style="width:' + Math.round(n / c.items.length * 100) + '%"></i></button>';
+    }
+    body(h + '</div>');
+    var cs = $('pwBody').querySelectorAll('.pwcat');
+    for (j = 0; j < cs.length; j++) cs[j].onclick = function () { cat(+this.getAttribute('data-c')); };
+    $('pwMix').onclick = function () { startQuiz(-1, 'mix'); };
+    if ($('pwMixG')) $('pwMixG').onclick = function () { startQuiz(-1, 'gender'); };
+  }
+
+  /* ---------- category grid ---------- */
+  function hasArt(c) { if (LANG !== 'es') return false; for (var j = 0; j < c.items.length; j++) if (art(c.items[j])) return true; return false; }
+  function cat(ci) {
+    stopRead(); quiz = null;
+    var c = CATS[ci], j; scr = { t: 'cat', c: ci };
+    setTop(c.icon + ' ' + esc(c.name), true);
+    var h = '<div class="pwrow"><button class="pwbtn pri" id="pwQ">🎯 小测</button>' + (hasArt(c) ? '<button class="pwbtn" id="pwG">el 还是 la？</button>' : '') + '<button class="pwbtn" id="pwHide">' + (hideTxt ? '👀 显示文字' : '🙈 遮住文字') + '</button></div>';
+    h += '<div class="pwgrid' + (hideTxt ? ' hid' : '') + '" id="pwGrid">';
+    for (j = 0; j < c.items.length; j++) {
+      var it = c.items[j];
+      h += '<button class="pwt' + (GOT[ikey(c, it)] ? ' got' : '') + '" data-i="' + j + '"><span class="em">' + it[0] + '</span><span class="w">' + wordHTML(it) + '</span>' + (LANG !== 'zh' ? '<span class="s">' + esc(it[2]) + '</span>' : '') + '</button>';
+    }
+    h += '</div><div class="pwhint">' + (hideTxt ? '文字遮住了：先自己说出来，再点图片核对' : '点图片看大图、听发音 · 右上角「连读」会一张张读给你听') + '</div>';
+    body(h);
+    var ts = $('pwGrid').querySelectorAll('.pwt');
+    for (j = 0; j < ts.length; j++) ts[j].onclick = function () {
+      var k = +this.getAttribute('data-i');
+      if (hideTxt && this.className.indexOf('peek') < 0) { this.className += ' peek'; say(word(c.items[k])); return; }
+      det(ci, k);
+    };
+    $('pwQ').onclick = function () { startQuiz(ci, 'mix'); };
+    if ($('pwG')) $('pwG').onclick = function () { startQuiz(ci, 'gender'); };
+    $('pwHide').onclick = function () { hideTxt = !hideTxt; put('hide', hideTxt); cat(ci); };
+  }
+  function readAll() {
+    if (scr.t !== 'cat') return;
+    if (readTok % 2) readTok++;
+    var c = CATS[scr.c], ts = $('pwGrid').querySelectorAll('.pwt'), tok = ++readTok, k = 0;
+    $('pwRead').textContent = '⏹ 停止';
+    var step = function () {
+      if (tok !== readTok) return;
+      for (var j = 0; j < ts.length; j++) ts[j].className = ts[j].className.replace(/\s*\brd\b/g, '');
+      if (k >= c.items.length) { stopRead(); return; }
+      var t = ts[k]; t.className += ' rd' + (hideTxt ? ' peek' : '');
+      if (t.scrollIntoView) try { t.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) { t.scrollIntoView(); }
+      var it = c.items[k]; k++;
+      say(word(it), function () { setTimeout(step, 650); });
+    };
+    step();
+  }
+  function stopRead() {
+    if (readTok % 2) readTok++;
+    if (!root) return;
+    var rs = root.querySelectorAll('.pwt.rd'), j;
+    for (j = 0; j < rs.length; j++) rs[j].className = rs[j].className.replace(/\s*\brd\b/g, '');
+    if ($('pwRead')) $('pwRead').textContent = '🔊 连读';
+  }
+
+  /* ---------- detail card ---------- */
+  function det(ci, i) {
+    stopRead();
+    var c = CATS[ci], it = c.items[i], k = ikey(c, it), on = GOT[k]; scr = { t: 'det', c: ci, i: i };
+    setTop(c.icon + ' ' + esc(c.name) + ' · ' + (i + 1) + '/' + c.items.length, false);
+    var h = '<div class="pwdet"><div class="em" id="pwEm">' + it[0] + '</div><div class="w">' + wordHTML(it) + '</div>';
+    if (LANG !== 'zh') h += '<div class="s">' + esc(it[2]) + '</div>';
+    if (c.id === 'picto') h += '<div class="pwnote">🖌️ ' + esc(it[5]) + '</div>';
+    else if (LANG === 'es') { var a = art(it); if (a) h += '<div class="pwnote">' + (a.g === 'm' ? '<span class="pwm">' + a.a + '</span> → 阳性' : '<span class="pwf">' + a.a + '</span> → 阴性') + (a.a === 'los' || a.a === 'las' ? '（复数）' : '') + (it[5] ? '<br>💡 ' + esc(it[5]) : '') + '</div>'; else if (it[5]) h += '<div class="pwnote">💡 ' + esc(it[5]) + '</div>'; }
+    h += '</div><div class="pwrow"><button class="pwbtn" id="pwSay">🔊 再听一遍</button>' + (window.PW_WRITE ? '<button class="pwbtn" id="pwWrite">✍️ 写一写</button>' : '') + '<button class="pwbtn' + (on ? ' good' : '') + '" id="pwGot">' + (on ? '✓ 认识了' : '我认识了') + '</button></div>';
+    h += '<div class="pwnav"><button class="pwbtn" id="pwPrev"' + (i ? '' : ' disabled') + '>‹ 上一个</button><button class="pwbtn" id="pwNext"' + (i < c.items.length - 1 ? '' : ' disabled') + '>下一个 ›</button></div>';
+    body(h);
+    var pop = function () { var e = $('pwEm'); if (!e || !isOpen || scr.t !== 'det' || scr.c !== ci || scr.i !== i) return; e.className = 'em'; void e.offsetWidth; e.className = 'em pwpop'; say(word(it)); };
+    $('pwEm').onclick = pop; $('pwSay').onclick = pop;
+    $('pwGot').onclick = function () { if (GOT[k]) delete GOT[k]; else GOT[k] = 1; put('got', GOT); var o = !!GOT[k]; this.className = 'pwbtn' + (o ? ' good' : ''); this.textContent = o ? '✓ 认识了' : '我认识了'; };
+    $('pwPrev').onclick = function () { if (i > 0) det(ci, i - 1); };
+    $('pwNext').onclick = function () { if (i < c.items.length - 1) det(ci, i + 1); };
+    if ($('pwWrite')) $('pwWrite').onclick = function () { var t = writeText(it); exit(); setTimeout(function () { window.PW_WRITE(t); }, 60); };
+    setTimeout(pop, 120);
+  }
+
+  /* ---------- quiz ---------- */
+  function startQuiz(ci, kind) {
+    stopRead();
+    var P = [], j, k;
+    for (j = 0; j < CATS.length; j++) if (ci < 0 || j === ci) for (k = 0; k < CATS[j].items.length; k++) P.push({ c: CATS[j], it: CATS[j].items[k] });
+    if (kind === 'gender') P = P.filter(function (x) { return art(x.it); });
+    var mix = shuffle(P.slice()), un = [], kn = [], qs = [], r0 = Math.floor(Math.random() * 3), n = Math.min(10, P.length);
+    for (j = 0; j < mix.length; j++) (GOT[ikey(mix[j].c, mix[j].it)] ? kn : un).push(mix[j]);
+    var sel = un.concat(kn);
+    for (j = 0; j < n; j++) {
+      var x = sel[j], q = { x: x };
+      if (kind === 'gender') {
+        var a = art(x.it);
+        q.type = 'gender'; q.ans = a.a; q.opts = a.a === 'el' || a.a === 'la' ? ['el', 'la'] : ['los', 'las'];
+      } else {
+        q.type = ['listen', 'pic', 'read'][(j + r0) % 3];
+        var cand = shuffle(x.c.items.slice()), seenE = {}, seenW = {}, opts = [x], m, y;
+        seenE[x.it[0]] = 1; seenW[word(x.it)] = 1;
+        for (m = 0; m < cand.length && opts.length < 4; m++) { y = cand[m]; if (!seenE[y[0]] && !seenW[word(y)]) { seenE[y[0]] = 1; seenW[word(y)] = 1; opts.push({ c: x.c, it: y }); } }
+        var more = shuffle(P.slice());
+        for (m = 0; m < more.length && opts.length < 4; m++) { y = more[m].it; if (!seenE[y[0]] && !seenW[word(y)]) { seenE[y[0]] = 1; seenW[word(y)] = 1; opts.push(more[m]); } }
+        q.opts = shuffle(opts);
+      }
+      qs.push(q);
+    }
+    quiz = { ci: ci, kind: kind, qs: qs, i: 0, score: 0, lock: false };
+    renderQ();
+  }
+  function renderQ() {
+    var q = quiz.qs[quiz.i], it = q.x.it, h = '', j, a;
+    scr = { t: 'quiz' };
+    setTop('第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题', false);
+    if (q.type === 'listen') {
+      h += '<div class="pwq"><div class="lab">听一听，是哪张图？</div><button class="pwbtn pri pwbig" id="pwQs">🔊</button></div><div class="pwopts em">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + q.opts[j].it[0] + '</button>';
+    } else if (q.type === 'pic') {
+      h += '<div class="pwq"><div class="lab">这是什么？</div><div class="bigem">' + it[0] + '</div></div><div class="pwopts tx">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + wordHTML(q.opts[j].it, true) + '</button>';
+    } else if (q.type === 'read') {
+      h += '<div class="pwq"><div class="lab">' + (LANG === 'zh' ? '认一认，是哪张图？' : '读一读，是哪张图？') + '</div><div class="bigw">' + wordHTML(it, true) + '</div></div><div class="pwopts em">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + q.opts[j].it[0] + '</button>';
+    } else {
+      a = art(it);
+      h += '<div class="pwq"><div class="lab">' + q.opts[0] + ' 还是 ' + q.opts[1] + '？</div><div class="bigem">' + it[0] + '</div><div class="bigw"><span class="pwblank"></span> ' + esc(a.n) + '</div><div class="lab">' + esc(it[2]) + '</div></div><div class="pwopts tx">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo g' + (q.opts[j] === 'el' || q.opts[j] === 'los' ? 'm' : 'f') + '" data-i="' + j + '">' + q.opts[j] + '</button>';
+    }
+    body(h + '</div><div class="pwfb" id="pwFb"></div>');
+    if (q.type === 'listen') { $('pwQs').onclick = function () { say(word(it)); }; setTimeout(function () { say(word(it)); }, 250); }
+    var bs = $('pwBody').querySelectorAll('.pwo');
+    for (j = 0; j < bs.length; j++) bs[j].onclick = function () {
+      if (quiz.lock) return; quiz.lock = true;
+      var pick = q.opts[+this.getAttribute('data-i')], ok = q.type === 'gender' ? pick === q.ans : pick === q.x, m;
+      for (m = 0; m < bs.length; m++) { var o = q.opts[+bs[m].getAttribute('data-i')]; if (q.type === 'gender' ? o === q.ans : o === q.x) bs[m].className += ' right'; else if (bs[m] === this) bs[m].className += ' wrong'; }
+      if (ok) { quiz.score++; GOT[ikey(q.x.c, it)] = 1; put('got', GOT); }
+      var fb = (ok ? '✓ ' : '✗ ') + it[0] + ' ' + wordHTML(it) + (LANG !== 'zh' ? ' <small>' + esc(it[2]) + '</small>' : '');
+      if (q.type === 'gender' && it[5]) fb += '<div class="pwnote">💡 ' + esc(it[5]) + '</div>';
+      $('pwFb').innerHTML = fb; $('pwFb').className = 'pwfb ' + (ok ? 'ok' : 'bad');
+      say(word(it));
+      var my = quiz;
+      setTimeout(function () { if (quiz !== my || !isOpen) return; quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else done(); }, ok ? 1300 : 2500);
+    };
+  }
+  function done() {
+    var n = quiz.qs.length, s = quiz.score, st = s === n ? 3 : s >= n * 0.7 ? 2 : s >= n * 0.4 ? 1 : 0, stars = '', j;
+    for (j = 0; j < 3; j++) stars += j < st ? '⭐' : '<span class="dim">⭐</span>';
+    scr = { t: 'done' };
+    setTop('小测完成', false);
+    body('<div class="pwdone"><div class="stars">' + stars + '</div><div class="sc">' + s + ' / ' + n + '</div><div class="msg">' + (st === 3 ? '太棒了，全对！' : st === 2 ? '很不错！再来一次争取全对' : '多看几遍图片，再来挑战！') + '</div><div class="pwrow"><button class="pwbtn pri" id="pwAgain">再来一次</button><button class="pwbtn" id="pwDone">返回</button></div></div>');
+    var ci = quiz.ci, kind = quiz.kind;
+    $('pwAgain').onclick = function () { startQuiz(ci, kind); };
+    $('pwDone').onclick = back;
+  }
+
+  /* ---------- entry card for the host page ---------- */
+  function card() {
+    var n = 0, j, d;
+    for (j = 0; j < CATS.length; j++) if (CATS[j].id !== 'picto') n += CATS[j].items.length;
+    if (LANG === 'zh') d = '☀️→日　⛰️→山　🐟→鱼 · ' + n + ' 张图 + 31 个象形字，看图认字、听音找图';
+    else if (LANG === 'es') d = '🐱 <span class="pwm">el</span> gato · 🍎 <span class="pwf">la</span> manzana · ' + n + ' 张图，看图学词，顺便记住阴阳性';
+    else d = '🐱 cat · 🍎 apple · 🚗 car · ' + n + ' 张图，看图、听音、认单词';
+    return '<button class="card levhome pwhome" onclick="PW.open()"><b>🖼️ 看图识字</b><div>' + d + '</div></button>';
+  }
+
+  window.PW = { open: open, close: close, card: card };
+})();
+</script>
 <script>
 (function () {
   'use strict';
@@ -812,7 +1151,7 @@ EN.lev = {"elem": {"rimes": [{"rime": "at", "ipa": "æt", "words": [["cat", "猫
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     var h = '<div class="lvtabs">';
     for (var t = 0; t < LEVELS.length; t++) h += '<button class="lvt' + (LEVELS[t][0] === LEVEL ? ' on' : '') + '" data-lv="' + LEVELS[t][0] + '">' + LEVELS[t][1] + '<small>' + { elem: 'Elementary', mid: 'Middle School', high: 'High School', col: 'College' }[LEVELS[t][0]] + '</small></button>';
-    h += '</div><button class="card levhome" id="levGo"><b>🪄 以少胜多</b><div>' + LVDESC[LEVEL] + '</div></button>' + (function () { var td = IDI[LEVEL].idiom[idToday()]; return '<button class="card levhome idhome" id="idiGo"><b>💬 地道表达 · 习语和口头禅</b><div>' + IDDESC[LEVEL] + '</div><div class="today">📅 今日一句：<b>' + esc(td[0]) + '</b> = ' + esc(td[3]) + '</div></button>'; })() + '<div class="card free"><h3>自己输入要练写的单词或句子</h3><div class="frow"><input id="freeIn" placeholder="例如：I love my family" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
+    h += '</div>' + (LEVEL === 'elem' ? PW.card() : '') + '<button class="card levhome" id="levGo"><b>🪄 以少胜多</b><div>' + LVDESC[LEVEL] + '</div></button>' + (function () { var td = IDI[LEVEL].idiom[idToday()]; return '<button class="card levhome idhome" id="idiGo"><b>💬 地道表达 · 习语和口头禅</b><div>' + IDDESC[LEVEL] + '</div><div class="today">📅 今日一句：<b>' + esc(td[0]) + '</b> = ' + esc(td[3]) + '</div></button>'; })() + '<div class="card free"><h3>自己输入要练写的单词或句子</h3><div class="frow"><input id="freeIn" placeholder="例如：I love my family" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
     var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0;
     var sHtml = '';
     for (var i = 0; i < LESSONS.length; i++) {
@@ -835,6 +1174,7 @@ EN.lev = {"elem": {"rimes": [{"rime": "at", "ipa": "æt", "words": [["cat", "猫
     var lt = $('vHome').querySelectorAll('.lvt');
     for (i = 0; i < lt.length; i++) lt[i].onclick = function () { LEVEL = this.getAttribute('data-lv'); put('level', LEVEL); buildLessons(LEVEL); showHome(); };
   }
+  window.PW_WRITE = function (t) { showHome(); $('freeIn').value = t; startFree(); };
   function startFree() {
     var t = ($('freeIn').value || '').replace(/[^A-Za-z ]/g, '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
     if (!t) { $('freeIn').focus(); return; }
