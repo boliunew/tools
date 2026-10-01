@@ -223,7 +223,7 @@ def story_zh(s):
     ]
     out, deal = [], False
     for n, (p, f) in enumerate(rules):
-        if n == 5 and deal:  # plain "% off" only when no buy-x-get-y rule matched
+        if p in (r"(\d+)% off", r"save (\d+)%") and deal:  # plain "% off" only when no buy-x-get-y rule matched
             continue
         m = re.search(p, t, re.I)
         if m:
