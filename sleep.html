@@ -41,6 +41,8 @@ h2{font-size:14px;color:var(--soft);font-weight:600;margin:18px 2px 8px;letter-s
 .timers{display:flex;flex-wrap:wrap;gap:8px}
 .timers button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 13px;font-size:14px}
 .timers button.on{background:var(--accent);border-color:var(--accent);color:#0B1020;font-weight:700}
+.flash{position:fixed;inset:0;background:#DDE6FF;opacity:0;pointer-events:none;z-index:40;transition:opacity .25s}
+.flash.on{opacity:.28;transition:none}.flash.on2{opacity:.16;transition:none}
 .dim{position:fixed;inset:0;background:#000;z-index:30;display:none;align-items:center;justify-content:center;flex-direction:column;color:#3A4466;font-size:15px;text-align:center}
 .dim.on{display:flex}
 .dim .clk{font-size:64px;font-weight:200;color:#4A5682;letter-spacing:.04em}
@@ -62,8 +64,9 @@ h2{font-size:14px;color:var(--soft);font-weight:600;margin:18px 2px 8px;letter-s
   <h2>定时关闭（最后 60 秒慢慢变小）</h2>
   <div class="timers" id="timers"></div>
   <div class="tools"><button id="dimBtn">🌑 黑屏模式</button><button id="stopBtn">■ 停止</button></div>
-  <div class="hint">所有声音都是在手机上实时合成的，不用联网下载，不耗流量，也不会循环重复。<br>建议音量调到「刚好盖住环境噪音」就行，别太大声；锁屏后会继续播放。</div>
+  <div class="hint">所有声音都是在手机上实时合成的立体声，不用联网下载、不耗流量；雷声每次都随机生成，间隔和方向都不一样，不会听出重复。戴耳机效果更好。<br>建议音量调到「刚好盖住环境噪音」就行，别太大声；锁屏后会继续播放。</div>
 </main>
+<div class="flash" id="flash"></div>
 <div class="dim" id="dim"><div class="clk" id="clk"></div><div id="dimTxt"></div><div style="margin-top:30px">轻点屏幕退出黑屏</div></div>
 <audio id="out" playsinline></audio>
 <script>
@@ -77,10 +80,15 @@ h2{font-size:14px;color:var(--soft);font-weight:600;margin:18px 2px 8px;letter-s
     { k: 'rain', ic: '🌧️', n: '雨声' }, { k: 'ocean', ic: '🌊', n: '海浪' }, { k: 'fire', ic: '🔥', n: '壁炉' },
     { k: 'wind', ic: '🌬️', n: '风声' }, { k: 'stream', ic: '💧', n: '溪流' }, { k: 'night', ic: '🦗', n: '夏夜虫鸣' },
     { k: 'fan', ic: '🌀', n: '风扇' }, { k: 'pink', ic: '🌸', n: '粉红噪音' }, { k: 'brown', ic: '🟤', n: '棕噪音' },
-    { k: 'white', ic: '⚪', n: '白噪音' }, { k: 'thunder', ic: '⛈️', n: '远处雷声' }, { k: 'heart', ic: '💗', n: '心跳' }
+    { k: 'white', ic: '⚪', n: '白噪音' }, { k: 'thunder', ic: '⛈️', n: '远处雷声' }, { k: 'storm', ic: '⚡', n: '近处雷暴' },
+    { k: 'heart', ic: '💗', n: '心跳' }, { k: 'purr', ic: '🐱', n: '猫咪呼噜' }, { k: 'train', ic: '🚂', n: '夜行火车' }
   ];
+  var EVENT = { thunder: 1, storm: 1 }; // played as random one-shot strikes, never loops
   var PRESETS = [
     { n: '🌧️ 雨夜', mix: { rain: 70, wind: 25, thunder: 30 } },
+    { n: '⛈️ 雷暴夜', mix: { rain: 85, wind: 40, storm: 55, thunder: 35 } },
+    { n: '🚂 夜车卧铺', mix: { train: 70, rain: 25 } },
+    { n: '🐱 猫咪陪睡', mix: { purr: 65, fire: 30 } },
     { n: '🏖️ 海边', mix: { ocean: 75, wind: 20 } },
     { n: '🏕️ 林间篝火', mix: { fire: 65, night: 30, stream: 25 } },
     { n: '😴 深度睡眠', mix: { brown: 70 } },
@@ -99,12 +107,57 @@ h2{font-size:14px;color:var(--soft);font-weight:600;margin:18px 2px 8px;letter-s
     for (i = 0; i < n; i++) { var w = i / n; b[i] = gen[i] * w + gen[len + i] * (1 - w); }
     return b;
   }
-  function mk(secs, fill) {
-    var sr = ctx.sampleRate, len = Math.floor(sr * secs), n = Math.floor(sr * 0.5), g = new Float32Array(len + n);
-    fill(g, sr);
-    var abuf = ctx.createBuffer(1, len, sr);
-    abuf.getChannelData(0).set(loopify(g, len, n));
+  function mk(secs, fill) { // stereo: each ear gets its own random noise, so it sounds wide and natural
+    var sr = ctx.sampleRate, len = Math.floor(sr * secs), n = Math.floor(sr * 0.5);
+    var abuf = ctx.createBuffer(2, len, sr);
+    for (var ch = 0; ch < 2; ch++) { var g = new Float32Array(len + n); fill(g, sr, ch); abuf.getChannelData(ch).set(loopify(g, len, n)); }
     return abuf;
+  }
+  function onepole(g, sr, hz, high) { var a = Math.exp(-2 * Math.PI * hz / sr), y = 0; for (var i = 0; i < g.length; i++) { y = (1 - a) * g[i] + a * y; g[i] = high ? g[i] - y : y; } }
+  /* thunder one-shots: several random variants, re-generated as they get used */
+  function strike(near) {
+    var sr = 22050, dur = near ? 9 + Math.random() * 6 : 6 + Math.random() * 6, len = Math.floor(sr * dur), b = ctx.createBuffer(2, len, sr);
+    var rolls = [], t = near ? 0.05 : 0.3 + Math.random() * 0.6, k, i;
+    while (t < dur * 0.75) { rolls.push([t, near ? 0.5 + Math.random() * 0.5 : 0.35 + Math.random() * 0.5, 0.4 + Math.random() * 1.6]); t += 0.3 + Math.random() * (near ? 1.4 : 2.2); }
+    var env = new Float32Array(len);
+    for (k = 0; k < rolls.length; k++) {
+      var st = Math.floor(rolls[k][0] * sr), amp = rolls[k][1], tau = rolls[k][2], att = Math.floor(0.08 * sr), end = Math.min(len, st + Math.floor((tau * 7 + 0.08) * sr));
+      for (i = st; i < end; i++) { var d = (i - st) / sr; env[i] += amp * (i - st < att ? (i - st) / att : Math.exp(-(d - 0.08) / tau)); }
+    }
+    for (i = 0; i < len; i++) { var tt = i / sr; env[i] *= (tt > dur - 1.5 ? (dur - tt) / 1.5 : 1) * (near ? 2.2 : 1.6); }
+    for (var ch = 0; ch < 2; ch++) {
+      var g = new Float32Array(len); brown(g); onepole(g, sr, near ? 260 : 150);
+      for (i = 0; i < len; i++) g[i] *= env[i];
+      if (near) { // the crack: bright, sharp, with a few crackles
+        var c = new Float32Array(Math.floor(sr * 0.9)); white(c); onepole(c, sr, 1800, true);
+        var cracks = [0, 0.03 + Math.random() * 0.05, 0.1 + Math.random() * 0.15, 0.25 + Math.random() * 0.3];
+        for (i = 0; i < c.length; i++) { var ce = 0; for (k = 0; k < cracks.length; k++) { var dd = i / sr - cracks[k]; if (dd >= 0) ce += (k ? 0.45 : 1) * Math.exp(-dd / (k ? 0.03 : 0.07)); } g[i] += c[i] * ce * 0.9 * (ch ? 0.9 : 1); }
+      }
+      b.getChannelData(ch).set(g);
+    }
+    return b;
+  }
+  var STRIKES = { thunder: [], storm: [] };
+  function strikeBuf(k) { var pool = STRIKES[k]; if (pool.length < 3 || Math.random() < 0.3) { var nb = strike(k === 'storm'); pool.push(nb); if (pool.length > 5) pool.shift(); return nb; } return pool[Math.floor(Math.random() * pool.length)]; }
+  function scheduleStrikes(k, L) { // keep strikes queued ~2 minutes ahead on the audio clock (timers get throttled when the screen is off)
+    var now = ctx.currentTime, gap = k === 'storm' ? [9, 32] : [16, 55];
+    if (L.next == null) L.next = now + (k === 'storm' ? 3 + Math.random() * 6 : 6 + Math.random() * 12);
+    while (L.next < now + 90) {
+      var src = ctx.createBufferSource(); src.buffer = strikeBuf(k);
+      var pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null, sg = ctx.createGain();
+      sg.gain.value = 0.55 + Math.random() * 0.45;
+      if (pan) { pan.pan.value = Math.random() * 1.4 - 0.7; src.connect(pan); pan.connect(sg); } else src.connect(sg);
+      sg.connect(L.g); src.start(L.next);
+      if (k === 'storm') flashAt(L.next);
+      L.srcs.push(src);
+      L.next += gap[0] + Math.random() * (gap[1] - gap[0]);
+    }
+    if (L.srcs.length > 12) L.srcs = L.srcs.slice(-12);
+  }
+  function flashAt(when) {
+    var ms = (when - ctx.currentTime) * 1000 - 300 - Math.random() * 900; // lightning comes before the sound
+    if (ms < 0) return;
+    setTimeout(function () { if (!playing || document.hidden) return; var f = $('flash'); f.className = 'flash on'; setTimeout(function () { f.className = 'flash'; }, 120); setTimeout(function () { f.className = 'flash on2'; setTimeout(function () { f.className = 'flash'; }, 80); }, 220); }, ms);
   }
   function white(g) { for (var i = 0; i < g.length; i++) g[i] = Math.random() * 2 - 1; }
   function pink(g) { var b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0; for (var i = 0; i < g.length; i++) { var w = Math.random() * 2 - 1; b0 = 0.99886 * b0 + w * 0.0555179; b1 = 0.99332 * b1 + w * 0.0750759; b2 = 0.96900 * b2 + w * 0.1538520; b3 = 0.86650 * b3 + w * 0.3104856; b4 = 0.55000 * b4 + w * 0.5329522; b5 = -0.7616 * b5 - w * 0.0168980; g[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11; b6 = w * 0.115926; } }
@@ -150,24 +203,33 @@ h2{font-size:14px;color:var(--soft);font-weight:600;margin:18px 2px 8px;letter-s
       pink(g); var env = smoothRand(g.length, sr, 0.25);
       for (var i = 0; i < g.length; i++) g[i] *= 0.25 + 0.95 * env[i];
     });
-    else if (k === 'night') B = mk(8, function (g, sr) {
+    else if (k === 'night') B = mk(8, function (g, sr, ch) {
       for (var i = 0; i < g.length; i++) g[i] = 0;
-      var bugs = [[4300, 0.62, 0.0], [4700, 0.71, 0.27], [3900, 0.55, 0.41]];
+      var bugs = [[4300, 0.62, 0.0, 0.9, 0.3], [4700, 0.71, 0.27, 0.3, 0.9], [3900, 0.55, 0.41, 0.6, 0.6]];
       bugs.forEach(function (bg) {
-        var f = bg[0], per = bg[1], off = bg[2];
+        var f = bg[0], per = bg[1], off = bg[2], side = ch ? bg[4] : bg[3];
         for (var t0 = off; t0 < g.length / sr; t0 += per) for (var p = 0; p < 3; p++) {
           var st = Math.floor((t0 + p * 0.045) * sr), dur = Math.floor(0.028 * sr);
-          for (var j = 0; j < dur && st + j < g.length; j++) g[st + j] += 0.22 * Math.sin(2 * Math.PI * f * j / sr) * Math.sin(Math.PI * j / dur);
+          for (var j = 0; j < dur && st + j < g.length; j++) g[st + j] += 0.22 * side * Math.sin(2 * Math.PI * f * j / sr) * Math.sin(Math.PI * j / dur);
         }
       });
       var bed = new Float32Array(g.length); pink(bed); for (i = 0; i < g.length; i++) g[i] += bed[i] * 0.08;
     });
-    else if (k === 'thunder') B = mk(40, function (g, sr) {
-      var bed = new Float32Array(g.length); brown(bed);
-      for (var i = 0; i < g.length; i++) g[i] = 0;
-      [6, 23].forEach(function (at0) {
-        var st = Math.floor((at0 + Math.random() * 6) * sr), len = Math.floor((5 + Math.random() * 3) * sr);
-        for (var j = 0; j < len && st + j < g.length; j++) { var t = j / len, e = (t < 0.05 ? t / 0.05 : Math.exp(-(t - 0.05) * 4)) * (0.6 + 0.4 * Math.sin(j / sr * 7)); g[st + j] = bed[st + j] * e * 1.4; }
+    else if (k === 'purr') B = mk(8.4, function (g, sr) { // 3 breaths: purr ~25 Hz, louder on the exhale
+      brown(g); onepole(g, sr, 380);
+      for (var i = 0; i < g.length; i++) {
+        var t = i / sr, ph = (t % 2.8) / 2.8, breath = ph < 0.42 ? 0.55 + 0.25 * Math.sin(Math.PI * ph / 0.42) : 0.75 + 0.35 * Math.sin(Math.PI * (ph - 0.42) / 0.58);
+        var hz = ph < 0.42 ? 23 : 26, am = 0.5 + 0.5 * Math.sin(2 * Math.PI * hz * t);
+        g[i] *= breath * (0.25 + 0.75 * am * am) * 1.6;
+      }
+    });
+    else if (k === 'train') B = mk(8.8, function (g, sr, ch) { // rumble + "da-dum da-dum" over rail joints
+      brown(g); onepole(g, sr, 420);
+      for (var i = 0; i < g.length; i++) g[i] *= 0.7 + 0.15 * Math.sin(2 * Math.PI * i / sr / 4.4);
+      var n = new Float32Array(Math.floor(sr * 0.12)); white(n); onepole(n, sr, 900);
+      for (var t0 = 0; t0 < 8.8; t0 += 1.1) [[0, 1], [0.16, 0.8], [0.55, 0.85], [0.71, 0.7]].forEach(function (c) {
+        var st = Math.floor((t0 + c[0] + (ch ? 0.012 : 0)) * sr);
+        for (var j = 0; j < n.length && st + j < g.length; j++) g[st + j] += n[j] * c[1] * 1.8 * Math.exp(-j / (sr * 0.025));
       });
     });
     else if (k === 'heart') B = mk(6, function (g, sr) {
@@ -200,14 +262,21 @@ h2{font-size:14px;color:var(--soft);font-weight:600;margin:18px 2px 8px;letter-s
     if (k === 'fan') { f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 650; nodes.push(f); }
     if (k === 'wind') { f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 500; f.Q.value = 0.9; nodes.push(f); var lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 0.06; lg.gain.value = 250; lfo.connect(lg); lg.connect(f.frequency); lfo.start(); nodes.lfo = lfo; }
     if (k === 'stream') { f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 2200; f.Q.value = 0.7; nodes.push(f); }
-    if (k === 'thunder') { f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 220; nodes.push(f); }
     if (k === 'heart') { f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 160; nodes.push(f); }
     for (var i = 0; i < nodes.length - 1; i++) nodes[i].connect(nodes[i + 1]);
     return nodes;
   }
-  var GAINFIX = { white: 0.25, pink: 0.6, brown: 0.7, fan: 1.1, rain: 0.7, ocean: 0.9, fire: 0.8, stream: 0.4, wind: 0.9, night: 0.6, thunder: 1.3, heart: 1.0 };
+  var GAINFIX = { white: 0.25, pink: 0.6, brown: 0.7, fan: 1.1, rain: 0.7, ocean: 0.9, fire: 0.8, stream: 0.4, wind: 0.9, night: 0.6, thunder: 1.2, storm: 1.0, heart: 1.0, purr: 0.9, train: 0.8 };
   function startLayer(k) {
     if (layers[k]) return;
+    if (EVENT[k]) {
+      var eg = ctx.createGain(); eg.gain.value = 0; eg.connect(mGain);
+      eg.gain.setTargetAtTime(vol(k), ctx.currentTime, 0.6);
+      var L = { g: eg, srcs: [], nodes: [], ev: true };
+      layers[k] = L; setTimeout(function () { if (layers[k] === L) scheduleStrikes(k, L); }, k === 'storm' ? 400 : 1200);
+      L.timer = setInterval(function () { if (layers[k] === L) scheduleStrikes(k, L); }, 20000);
+      return;
+    }
     var src = ctx.createBufferSource(); src.buffer = buf(k); src.loop = true;
     src.loopStart = 0; src.loopEnd = src.buffer.duration;
     var nodes = chain(k, src), g = ctx.createGain();
@@ -220,7 +289,8 @@ h2{font-size:14px;color:var(--soft);font-weight:600;margin:18px 2px 8px;letter-s
   function stopLayer(k) {
     var L = layers[k]; if (!L) return;
     L.g.gain.setTargetAtTime(0, ctx.currentTime, 0.4);
-    setTimeout(function () { try { L.src.stop(); if (L.nodes.lfo) L.nodes.lfo.stop(); L.g.disconnect(); } catch (e) { } }, 2000);
+    if (L.timer) clearInterval(L.timer);
+    setTimeout(function () { try { if (L.srcs) L.srcs.forEach(function (x) { try { x.stop(); } catch (e) { } }); if (L.src) L.src.stop(); if (L.nodes.lfo) L.nodes.lfo.stop(); L.g.disconnect(); } catch (e) { } }, 2000);
     delete layers[k];
   }
   function vol(k) { var v = (MIX[k] || 0) / 100; return v * v * GAINFIX[k]; }
