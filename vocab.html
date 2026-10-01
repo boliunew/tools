@@ -156,6 +156,53 @@ h2{font-size:1rem;margin:22px 4px 10px}
 .sheet ol{padding-left:20px;line-height:1.7;font-size:.9rem;color:var(--soft)}
 .sheet code{background:var(--bg);padding:1px 6px;border-radius:5px;font-size:.85rem;word-break:break-all}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:.9rem;z-index:10}
+
+/* reader */
+.readgo{display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--mark);border-radius:12px;padding:14px 16px;margin:4px 0 6px}
+.readgo b{font-family:var(--serif);font-size:1.15rem}
+.readgo span{display:block;color:var(--soft);font-size:.86rem;margin-top:3px}
+.rtabs{display:flex;gap:6px;overflow-x:auto;margin:10px 0 12px;scrollbar-width:none}
+.rtabs::-webkit-scrollbar{display:none}
+.rtabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:.88rem}
+.rtabs button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.rcard{display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.rcard .rt{font-family:var(--serif);font-weight:600;font-size:1.08rem;line-height:1.3}
+.rcard .rz,.rhd .rz{color:var(--soft);font-size:.92rem}
+.rcard .rm,.rhd .rm{color:var(--soft);font-size:.8rem;margin-top:4px}
+.rb{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.rb span{font-size:.78rem;border-radius:6px;padding:2px 7px;background:var(--bg)}
+.rb .cov.ok{color:var(--good);font-weight:600}.rb .cov.hard{color:var(--bad)}.rb .cov.easy{color:var(--soft)}
+.rb .due{background:rgba(240,160,40,.28)}.rb .lrn{background:rgba(240,160,40,.12)}.rb .new{background:rgba(70,120,200,.16)}
+.rhd h2{font-family:var(--serif);font-size:1.6rem;line-height:1.2;margin:2px 0 4px}
+.rbar{position:-webkit-sticky;position:sticky;top:0;z-index:3;display:flex;gap:6px;align-items:center;background:var(--bg);padding:8px 0;margin:8px 0 6px;flex-wrap:wrap}
+.rbar button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:.88rem}
+.rbar .lg{font-size:.76rem;color:var(--soft);margin-left:auto}
+.rbar .lg i{font-style:normal}
+.lgd.due{background:rgba(240,160,40,.36);border-radius:3px;padding:0 2px}.lgd.new{border-bottom:2px dotted var(--easy)}
+.rtext{font-family:var(--serif);font-size:1.13rem;line-height:1.85}
+.rtext h3{font-family:var(--sans);font-size:.92rem;color:var(--soft);margin:18px 0 4px;letter-spacing:.02em}
+.rtext p{margin:0 0 14px}
+.sn.on{background:rgba(247,220,59,.38);border-radius:4px}
+.wd{cursor:pointer;border-radius:3px}
+.wd.due{background:rgba(240,160,40,.36)}
+.wd.learn{border-bottom:2px solid rgba(240,160,40,.75)}
+.wd.new{border-bottom:2px dotted var(--easy)}
+.wd.tg{font-weight:700}
+.rtext .rzh{display:none;font-family:var(--sans);font-size:.93rem;line-height:1.7;color:var(--soft);margin-top:6px}
+.rtext.zh .rzh{display:block}
+.rtext .tr{font-family:var(--sans);font-size:.72rem;color:var(--soft);margin-left:4px;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:0 5px;vertical-align:2px}
+.rattr{font-size:.78rem;color:var(--soft);margin-top:16px;line-height:1.6}
+.rattr a{color:inherit}
+.wsz{margin:6px 0 10px;line-height:1.6}
+.wsen{font-family:var(--serif);font-size:1.05rem;line-height:1.6;border-top:1px solid var(--line);padding-top:10px}
+.rqc{min-height:0}
+.rqs{font-family:var(--serif);font-size:1.15rem;line-height:1.7;margin:8px 0}
+.rblank{display:inline-block;color:var(--easy);font-weight:700}
+.ropts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.ropt{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:12px 8px;font-family:var(--serif);font-size:1.05rem}
+.ropt.right{border-color:var(--good);color:var(--good);font-weight:700}
+.ropt.wrong{border-color:var(--bad);color:var(--bad)}
+#rqfb .ok{color:var(--good);font-weight:600}#rqfb .bad{color:var(--bad);font-weight:600}
 </style>
 </head>
 <body>
@@ -171,6 +218,7 @@ h2{font-size:1rem;margin:22px 4px 10px}
     <div class="stat"><b id="sLearn">0</b><span>学过的词</span></div>
     <div class="stat"><b id="sMaster">0</b><span>已掌握</span></div>
   </div>
+  <button class="readgo" id="goRead"><b>📖 读文章记单词</b><span>完整的小故事、百科和新闻：按你认识的词挑文章，生词高亮，读完小测记进复习</span></button>
   <div id="newsBox"></div>
   <h2>选择词汇段</h2>
   <div class="bands" id="bands"></div>
@@ -214,6 +262,14 @@ h2{font-size:1rem;margin:22px 4px 10px}
   <div id="statsBody"></div>
 </section>
 
+<section id="read" class="hidden">
+  <div class="top">
+    <button class="back" id="readBack" aria-label="返回">‹</button>
+    <span class="cnt" id="readTitle">📖 读文章记单词</span>
+  </div>
+  <div id="readBody"></div>
+</section>
+
 <section id="lookup" class="hidden">
   <div class="top">
     <button class="back" id="lookBack" aria-label="返回">‹</button>
@@ -224,6 +280,8 @@ h2{font-size:1rem;margin:22px 4px 10px}
 </section>
 
 </div>
+
+<div class="modal hidden" id="wsM"><div class="sheet" id="wsBody"></div></div>
 
 <div class="modal hidden" id="syncM">
   <div class="sheet">
@@ -303,7 +361,7 @@ function save(){ DB.mt = Date.now(); if (!jset(KEY, DB)) toast('无法保存：�
 function today(){ var d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset()*60000) / 86400000); }
 function $(id){ return document.getElementById(id); }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-function show(id){ ['home','study','finish','lookup','stats'].forEach(function(x){ $(x).classList.toggle('hidden', x !== id); }); window.scrollTo(0,0); }
+function show(id){ ['home','study','finish','lookup','stats','read'].forEach(function(x){ $(x).classList.toggle('hidden', x !== id); }); window.scrollTo(0,0); }
 function toast(msg){ var t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.appendChild(t); setTimeout(function(){ t.remove(); }, 1800); }
 function newToday(){ if (DB.today.day !== today()) DB.today = {day: today(), n: 0}; return DB.today.n; }
 function isLearning(c){ return c && !c.k; }
@@ -967,6 +1025,7 @@ function mergeDB(A, B){
     if (!a) out.log[d] = b;
     else for (k in b) if (b.hasOwnProperty(k)) a[k] = Math.max(a[k] || 0, b[k] || 0);
   }
+  if (B.read){ if (!out.read) out.read = {}; for (k in B.read) if (B.read.hasOwnProperty(k)) out.read[k] = Math.max(out.read[k] || 0, B.read[k]); }
   if ((B.mt || 0) > (A.mt || 0) && B.set) out.set = B.set;
   if (B.today && out.today && B.today.day === out.today.day) out.today.n = Math.max(out.today.n, B.today.n);
   else if (B.today && (!out.today || B.today.day > out.today.day)) out.today = B.today;
@@ -1032,6 +1091,306 @@ $('sySave').addEventListener('click', function(){
   setTimeout(openSync, 2500);
 });
 $('syOff').addEventListener('click', function(){ SY = {}; jset(SYNCKEY, SY); openSync(); syncLine(''); toast('已断开，本机进度保留'); });
+
+/* ---------- 📖 读文章记单词：完整文章 + 生词高亮 + 读后小测 ---------- */
+var ART = null, ARTWAIT = [], RTAB = 'rec', RCUR = null, RSESS = null, ANV = 1, RVIEW = 'list';
+var RSPEAK = {on: false, i: 0, rate: 1, tok: 0}, RSENTS = [];
+var TOKRE = /[A-Za-z][A-Za-z'’\-]*/g, LEMC = {};
+var COMMON = {number: 1, numbers: 1, numbered: 1};   // common words the 20000 list files under another headword
+function rDB(){ if (!DB.read) DB.read = {}; return DB.read; }
+function lemma(tok){
+  var w = tok.toLowerCase().replace(/’/g, "'").replace(/^-+|-+$/g, '');
+  if (LEMC.hasOwnProperty(w)) return LEMC[w];
+  if (COMMON[w]) return (LEMC[w] = -3);
+  var r = -1, fm = formMap(), tries = [w];
+  if (/'s$/.test(w)) tries.push(w.slice(0, -2));
+  if (/ies$/.test(w)) tries.push(w.slice(0, -3) + 'y');
+  if (/ied$/.test(w)) tries.push(w.slice(0, -3) + 'y');
+  if (/s$/.test(w)) tries.push(w.slice(0, -1));
+  if (/es$/.test(w)) tries.push(w.slice(0, -2));
+  if (/ed$/.test(w)){ tries.push(w.slice(0, -1)); tries.push(w.slice(0, -2)); if (/([b-df-hj-np-tv-z])\1ed$/.test(w)) tries.push(w.slice(0, -3)); }
+  if (/ing$/.test(w)){ tries.push(w.slice(0, -3) + 'e'); tries.push(w.slice(0, -3)); if (/([b-df-hj-np-tv-z])\1ing$/.test(w)) tries.push(w.slice(0, -4)); }
+  if (/(er|est)$/.test(w)){ tries.push(w.replace(/(er|est)$/, '')); tries.push(w.replace(/i(er|est)$/, 'y')); }
+  for (var i = 0; i < tries.length && r < 0; i++){ var t = tries[i]; if (BY[t] != null) r = BY[t]; else if (fm[t] != null) r = fm[t]; }
+  LEMC[w] = r;
+  return r;
+}
+function wstat(ix){
+  if (ix < 0) return 'unk';
+  var c = DB.cards[W[ix][0]];
+  if (c){ if (c.k || c.s >= 21) return 'known'; return c.due <= today() ? 'due' : 'learn'; }
+  if (ix < 300 || ix < BANDS[DB.set.band].a) return 'known';
+  return 'new';
+}
+function eachTok(s, fn){
+  var m, k = 0; TOKRE.lastIndex = 0;
+  while ((m = TOKRE.exec(s))){ var tok = m[0]; fn(tok, (k > 0 && /^[A-Z]/.test(tok)) ? -2 : lemma(tok), m.index); k++; }
+}
+function analyze(a){
+  if (a._an && a._an.v === ANV) return a._an;
+  var tot = 0, kn = 0, due = {}, learn = {}, nw = {}, tg = {}, i, j;
+  if (a.targets) for (i = 0; i < a.targets.length; i++) if (BY[a.targets[i]] != null) tg[BY[a.targets[i]]] = 1;
+  for (i = 0; i < a.b.length; i++) if (a.b[i].s) for (j = 0; j < a.b[i].s.length; j++) eachTok(a.b[i].s[j], function(tok, ix){
+    if (ix === -2) return;                      // a name in the middle of a sentence
+    tot++;
+    if (ix === -3){ kn++; return; }
+    var st = wstat(ix);
+    if (st === 'known') kn++;
+    else if (st === 'new' && ix < BANDS[DB.set.band].b) kn += 0.5;   // inside the band you are working on: about half known
+    else if (st === 'due') due[ix] = 1;
+    else if (st === 'learn') learn[ix] = 1;
+    else if (st === 'new') nw[ix] = 1;
+  });
+  var keys = function(o){ return Object.keys(o).map(Number); };
+  a._an = {v: ANV, tot: tot, cov: tot ? kn / tot : 0, due: keys(due), learn: keys(learn), nw: keys(nw), tg: tg};
+  return a._an;
+}
+function fitOf(a, an){ var lo = a.src === 'story' ? 0.86 : 0.9; return an.cov > 0.985 ? 'easy' : an.cov >= lo ? 'ok' : 'hard'; }
+function rScore(a, an){
+  var f = fitOf(a, an), fit = f === 'ok' ? 6 : f === 'easy' ? 2 : an.cov >= 0.85 ? 0 : -6;
+  var s = an.due.length * 4 + an.learn.length * 1.5 + Math.min(an.nw.length, 15) * 0.6 + fit;
+  if (a.src === 'story') s += a.band === DB.set.band ? 6 : -1;
+  return s;
+}
+function loadArticles(cb){
+  if (ART){ cb(); return; }
+  ARTWAIT.push(cb); if (ARTWAIT.length > 1) return;
+  var got = {}, left = 2, day = today();
+  var fin = function(){
+    if (--left) return;
+    ART = ((got.st && got.st.items) || []).concat((got.ar && got.ar.items) || []);
+    var w = ARTWAIT; ARTWAIT = []; w.forEach(function(f){ f(); });
+  };
+  [['st', 'news/data/stories.json'], ['ar', 'news/data/articles.json']].forEach(function(p){
+    var x = new XMLHttpRequest();
+    x.open('GET', p[1] + '?d=' + day);
+    x.onload = function(){ try { if (x.status === 200) got[p[0]] = JSON.parse(x.responseText); } catch (e) {} fin(); };
+    x.onerror = fin; x.send();
+  });
+}
+function srcName(a){ return a.src === 'story' ? '✍️ 故事 · ' + BANDS[a.band].name + '词段' : a.src === 'wikinews' ? '📰 Wikinews' + (a.date ? ' · ' + a.date.replace(/^\w+, /, '') : '') : a.src === 'globalvoices' ? '🌍 Global Voices' + (a.date ? ' · ' + a.date : '') : '📘 Simple Wikipedia'; }
+function covBadge(an, a){
+  var p = Math.round(an.cov * 100), cls = fitOf(a || {}, an);
+  return '<span class="cov ' + cls + '">认识 ' + p + '%' + (cls === 'hard' ? ' · 偏难' : cls === 'easy' ? ' · 偏易' : ' · 正合适') + '</span>';
+}
+function renderReadList(){
+  stopSpeak(); RCUR = null; RVIEW = 'list';
+  $('readTitle').textContent = '📖 读文章记单词';
+  if (!ART){ $('readBody').innerHTML = '<p class="hint">正在加载文章…</p>'; loadArticles(function(){ if (!RCUR && !$('read').classList.contains('hidden')) renderReadList(); }); return; }
+  if (!ART.length){ $('readBody').innerHTML = '<p class="hint">文章暂时加载不到，稍后再试。</p>'; return; }
+  ANV++;
+  var R = rDB(), tabs = [['rec', '推荐给你'], ['story', '✍️ 故事'], ['simplewiki', '📘 百科'], ['news', '📰 新闻'], ['read', '✓ 已读']];
+  var h = '<p class="hint" style="margin-top:0">读完整的文章，在上下文里记单词。你认识约 95% 的文章最适合学新词；读完做个小测，生词和复习词都会记进你的复习计划。</p>';
+  h += '<div class="rtabs">' + tabs.map(function(t){ return '<button data-t="' + t[0] + '" class="' + (RTAB === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div>';
+  var list = ART.filter(function(a){
+    if (RTAB === 'read') return R[a.id] != null;
+    if (R[a.id] != null && RTAB === 'rec') return false;
+    return RTAB === 'rec' || a.src === RTAB || (RTAB === 'news' && (a.src === 'wikinews' || a.src === 'globalvoices'));
+  }).map(function(a){ return {a: a, an: analyze(a)}; });
+  if (RTAB === 'read') list.sort(function(x, y){ return R[y.a.id] - R[x.a.id]; });
+  else list.sort(function(x, y){ return ((R[x.a.id] != null) - (R[y.a.id] != null)) || rScore(y.a, y.an) - rScore(x.a, x.an); });
+  if (RTAB === 'rec') list = list.slice(0, 15);
+  if (!list.length) h += '<p class="hint">' + (RTAB === 'read' ? '还没有读完的文章。' : '这一类都读完了，去别的分类看看。') + '</p>';
+  list.forEach(function(o){
+    var a = o.a, an = o.an;
+    h += '<button class="rcard" data-id="' + a.id + '"><div class="rt">' + esc(a.title) + '</div>' + (a.tzh ? '<div class="rz">' + esc(a.tzh) + '</div>' : '') +
+      '<div class="rm">' + srcName(a) + ' · 约 ' + Math.max(1, Math.round(a.n / 140)) + ' 分钟' + (R[a.id] != null ? ' · ✓ 已读' : '') + '</div><div class="rb">' + covBadge(an, a) +
+      (an.due.length ? '<span class="due">今天复习词 ' + an.due.length + '</span>' : '') + (an.learn.length ? '<span class="lrn">在学的词 ' + an.learn.length + '</span>' : '') +
+      (an.nw.length ? '<span class="new">生词 ' + an.nw.length + '</span>' : '') + '</div></button>';
+  });
+  $('readBody').innerHTML = h;
+  window.scrollTo(0, 0);
+}
+function wrapSent(s, tg){
+  var out = '', last = 0;
+  eachTok(s, function(tok, ix, at){
+    out += esc(s.slice(last, at));
+    if (ix < 0) out += esc(tok);
+    else out += '<span class="wd ' + wstat(ix) + (tg[ix] ? ' tg' : '') + '" data-ix="' + ix + '">' + esc(tok) + '</span>';
+    last = at + tok.length;
+  });
+  return out + esc(s.slice(last));
+}
+function openArticle(id){
+  var a = null, i, j;
+  for (i = 0; i < ART.length; i++) if (ART[i].id === id) a = ART[i];
+  if (!a) return;
+  stopSpeak(); ANV++;
+  RCUR = a; RSESS = {added: {}, looked: {}}; RVIEW = 'article';
+  var an = analyze(a), k = 0;
+  RSENTS = [];
+  $('readTitle').textContent = a.src === 'story' ? '✍️ 故事' : a.src === 'simplewiki' ? '📘 百科' : '📰 新闻';
+  var h = '<div class="rhd"><h2>' + esc(a.title) + '</h2>' + (a.tzh ? '<div class="rz">' + esc(a.tzh) + '</div>' : '') + '<div class="rm">' + srcName(a) + ' · ' + a.n + ' 词 · ' + covBadge(an, a).replace(/<[^>]+>/g, '') + '</div></div>';
+  h += '<div class="rbar"><button id="rPlay">🔊 朗读全文</button><button id="rRate">' + RSPEAK.rate.toFixed(1) + '×</button>' + (a.src === 'story' ? '<button id="rZh">中文</button>' : '') +
+    '<span class="lg"><i class="lgd due">复习</i> <i class="lgd new">生词</i> 点词可查</span></div><div class="rtext' + (a.src === 'story' && DB.set.rzh ? ' zh' : '') + '" id="rText">';
+  for (i = 0; i < a.b.length; i++){
+    var b = a.b[i];
+    if (b.h){ h += '<h3>' + esc(b.h) + '</h3>'; continue; }
+    h += '<p>';
+    for (j = 0; j < b.s.length; j++){ RSENTS.push(b.s[j]); h += '<span class="sn" data-k="' + k + '">' + wrapSent(b.s[j], an.tg) + '</span> '; k++; }
+    if (b.zh) h += '<span class="rzh">' + esc(b.zh) + '</span>';
+    else h += '<a class="tr" target="_blank" rel="noopener" href="https://translate.google.com/?sl=en&tl=zh-CN&op=translate&text=' + encodeURIComponent(b.s.join(' ')) + '">译</a>';
+    h += '</p>';
+  }
+  h += '</div><div class="rend"><button class="primary" id="rQuiz" style="margin-top:8px">📝 读完了，做个小测</button><button class="ghost" id="rDone" style="width:100%;margin-top:8px">只标记为已读</button></div>';
+  h += '<p class="rattr">' + (a.src === 'story' ? '✍️ 为语境词库原创的小故事：本篇重点词（加粗）在文中各出现 2–3 次。' :
+    '文章：<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.title) + '</a> · ' + ({wikinews: 'Wikinews', globalvoices: 'Global Voices', simplewiki: 'Simple English Wikipedia'}[a.src] || a.src) + ' · <a href="' + esc(a.licu) + '" target="_blank" rel="noopener">' + esc(a.lic) + '</a>' + (a.n >= 600 ? ' · 篇幅较长，只截取了前面部分' : '')) + '</p>';
+  $('readBody').innerHTML = h;
+  window.scrollTo(0, 0);
+}
+function refreshMarks(){
+  if (!RCUR) return;
+  var an = analyze(RCUR), els = $('readBody').querySelectorAll('.wd[data-ix]'), i;
+  for (i = 0; i < els.length; i++){ var ix = +els[i].getAttribute('data-ix'); els[i].className = 'wd ' + wstat(ix) + (an.tg[ix] ? ' tg' : ''); }
+}
+function sentOfEl(el){ var s = el && el.closest ? el.closest('.sn') : null; return s ? RSENTS[+s.getAttribute('data-k')] : ''; }
+function addCtx(w, en){
+  if (!en || !RCUR) return;
+  var L = DB.ctx[w] || (DB.ctx[w] = []);
+  if (L.some(function(x){ return x.en === en; })) return;
+  L.unshift({en: en, zh: '', src: '📖 ' + RCUR.title, t: Date.now()});
+  if (L.length > 8) L.length = 8;
+  save(); rebuildUser();
+}
+function wordSheet(ix, sent){
+  var w = W[ix][0], st = wstat(ix), c = DB.cards[w];
+  RSESS.looked[ix] = sent;
+  var hl = esc(sent).replace(reFor(ix), '<b>$1</b>');
+  var line = st === 'due' ? '🟧 今天该复习这个词——读完做小测就算复习了' : st === 'learn' ? '在学习中 · ' + (c.due - today()) + ' 天后复习' : st === 'known' ? (c ? '✓ 你已经掌握这个词' : '✓ 这个词在你选的词汇段之前，默认你认识') : '🟦 生词 · 第 ' + (ix + 1) + ' 常用';
+  var h = '<div class="word"><b>' + esc(w) + '</b>' + (W[ix][1] ? '<span class="ph">/' + esc(W[ix][1]) + '/</span>' : '') + '<button class="chip" id="wsSay">🔊</button></div>' +
+    '<div class="wsz">' + esc(W[ix][2]).slice(0, 160) + '</div><div class="wsen">' + hl + '</div><p class="hint">' + line + '</p><div class="row">';
+  if (st === 'new' || (st === 'known' && !c)) h += '<button class="ghost" id="wsAdd">➕ 加入学习（这句存为例句）</button>' + (st === 'new' ? '<button class="ghost" id="wsKnow">✓ 我认识</button>' : '');
+  else h += '<button class="ghost" id="wsCtx">📌 这句存为例句</button>';
+  h += '</div><button class="ghost" id="wsClose" style="width:100%;margin-top:8px">关闭</button>';
+  $('wsBody').innerHTML = h;
+  $('wsM').classList.remove('hidden');
+  $('wsSay').onclick = function(){ speak(w); };
+  $('wsClose').onclick = closeSheet;
+  if ($('wsAdd')) $('wsAdd').onclick = function(){ grade(w, 0, !DB.cards[w]); RSESS.added[ix] = sent; addCtx(w, sent); ANV++; refreshMarks(); closeSheet(); toast('已加入学习：' + w + '，今天的复习里会出现'); };
+  if ($('wsKnow')) $('wsKnow').onclick = function(){ grade(w, 3, true); ANV++; refreshMarks(); closeSheet(); toast('好的，' + w + ' 记为认识'); };
+  if ($('wsCtx')) $('wsCtx').onclick = function(){ addCtx(w, sent); closeSheet(); toast('已存为 ' + w + ' 的例句，复习时会看到'); };
+  speak(w);
+}
+function closeSheet(){ $('wsM').classList.add('hidden'); }
+$('wsM').addEventListener('click', function(e){ if (e.target === this) closeSheet(); });
+
+/* read aloud, sentence by sentence */
+function stopSpeak(){
+  RSPEAK.on = false; RSPEAK.tok++;
+  try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) {}
+  var on = document.querySelectorAll('#readBody .sn.on'); for (var i = 0; i < on.length; i++) on[i].classList.remove('on');
+  if ($('rPlay')) $('rPlay').textContent = '🔊 朗读全文';
+}
+function speakFrom(k){
+  if (!window.speechSynthesis){ toast('这个浏览器不支持朗读'); return; }
+  stopSpeak();
+  RSPEAK.on = true; RSPEAK.i = k; var my = RSPEAK.tok;
+  if ($('rPlay')) $('rPlay').textContent = '⏸ 停止';
+  var step = function(){
+    if (!RSPEAK.on || my !== RSPEAK.tok || !RCUR) return;
+    var els = document.querySelectorAll('#readBody .sn'), i;
+    for (i = 0; i < els.length; i++) els[i].classList.toggle('on', i === RSPEAK.i);
+    if (RSPEAK.i >= RSENTS.length){ stopSpeak(); return; }
+    var el = els[RSPEAK.i], r = el.getBoundingClientRect();
+    if (r.top < 60 || r.bottom > window.innerHeight - 40) el.scrollIntoView({block: 'center', behavior: 'smooth'});
+    var u = new SpeechSynthesisUtterance(RSENTS[RSPEAK.i]); u.lang = 'en-US'; u.rate = 0.9 * RSPEAK.rate;
+    if (!voices) voices = speechSynthesis.getVoices().filter(function(v){ return /^en(-|_)US/i.test(v.lang); });
+    if (voices && voices.length) u.voice = voices[0];
+    var done = false, next = function(){ if (done) return; done = true; if (my !== RSPEAK.tok) return; RSPEAK.i++; setTimeout(step, 220); };
+    u.onend = next; u.onerror = next;
+    speechSynthesis.speak(u);
+  };
+  step();
+}
+
+/* the quiz after reading: blanks taken from this article's own sentences */
+var RQ = null;
+function findUse(a, ix){
+  for (var i = 0; i < a.b.length; i++) if (a.b[i].s) for (var j = 0; j < a.b[i].s.length; j++){
+    var s = a.b[i].s[j], hit = null;
+    eachTok(s, function(tok, t, at){ if (!hit && t === ix) hit = {tok: tok, at: at}; });
+    if (hit) return {s: s, tok: hit.tok, at: hit.at};
+  }
+  return null;
+}
+function startRQuiz(){
+  stopSpeak();
+  var a = RCUR, an = analyze(a), pick = [], seen = {};
+  var add = function(ix){ ix = +ix; if (ix >= 0 && !seen[ix] && pick.length < 8){ seen[ix] = 1; pick.push(ix); } };
+  an.due.forEach(add);
+  Object.keys(RSESS.added).forEach(add);
+  Object.keys(RSESS.looked).forEach(function(ix){ if (wstat(+ix) !== 'known') add(ix); });
+  if (a.targets) a.targets.forEach(function(t){ var ix = BY[t]; if (ix != null && wstat(ix) !== 'known') add(ix); });
+  an.learn.forEach(add);
+  if (pick.length < 4) an.nw.slice().sort(function(x, y){ return x - y; }).slice(0, 5 - pick.length).forEach(add);
+  var qs = [];
+  pick.forEach(function(ix){ var u = findUse(a, ix); if (u) qs.push({ix: ix, s: u.s, tok: u.tok, at: u.at}); });
+  if (!qs.length){ markRead(); toast('这篇没有需要测的词，已标记为读完'); renderReadList(); return; }
+  var pool = [];
+  qs.forEach(function(q){ pool.push(q.tok); });
+  an.nw.concat(an.learn).forEach(function(ix){ var u = findUse(a, ix); if (u) pool.push(u.tok); });
+  RQ = {qs: qs, i: 0, ok: 0, pool: pool, newc: 0, revc: 0}; RVIEW = 'quiz';
+  renderRQ();
+}
+function renderRQ(){
+  var q = RQ.qs[RQ.i], opts = [q.tok], seen = {}, i;
+  seen[q.tok.toLowerCase()] = 1;
+  var cand = RQ.pool.slice().sort(function(){ return Math.random() - 0.5; });
+  for (i = 0; i < cand.length && opts.length < 4; i++) if (!seen[cand[i].toLowerCase()] && lemma(cand[i]) !== q.ix){ seen[cand[i].toLowerCase()] = 1; opts.push(cand[i]); }
+  for (i = 0; opts.length < 4 && i < 50; i++){ var r = W[BANDS[DB.set.band].a + Math.floor(Math.random() * 3000)][0]; if (!seen[r]){ seen[r] = 1; opts.push(r); } }
+  opts.sort(function(){ return Math.random() - 0.5; });
+  q.opts = opts;
+  var blank = esc(q.s.slice(0, q.at)) + '<span class="rblank">＿＿＿＿</span>' + esc(q.s.slice(q.at + q.tok.length));
+  $('readTitle').textContent = '📝 读后小测 ' + (RQ.i + 1) + ' / ' + RQ.qs.length;
+  $('readBody').innerHTML = '<div class="card rqc"><p class="hint" style="margin-top:0">文章里这句话缺了哪个词？</p><div class="rqs">' + blank + '</div><div class="hint">提示：' + esc(shortDef(q.ix)) + '</div><div class="ropts">' +
+    opts.map(function(o, n){ return '<button class="ropt" data-n="' + n + '">' + esc(o) + '</button>'; }).join('') + '</div><div id="rqfb"></div></div>';
+  window.scrollTo(0, 0);
+}
+function answerRQ(n){
+  var q = RQ.qs[RQ.i]; if (q.done) return; q.done = 1;
+  var ok = RQ.qs[RQ.i].opts[n] === q.tok, w = W[q.ix][0], isNew = !DB.cards[w];
+  if (isNew) RQ.newc++; else RQ.revc++;
+  grade(w, ok ? 2 : 0, isNew);
+  addCtx(w, q.s);
+  if (ok) RQ.ok++;
+  var bs = $('readBody').querySelectorAll('.ropt');
+  for (var i = 0; i < bs.length; i++){ var o = q.opts[+bs[i].getAttribute('data-n')]; if (o === q.tok) bs[i].classList.add('right'); else if (+bs[i].getAttribute('data-n') === n) bs[i].classList.add('wrong'); }
+  $('rqfb').innerHTML = '<p class="' + (ok ? 'ok' : 'bad') + '">' + (ok ? '✓ 对了' : '✗ 是 ' + esc(q.tok)) + ' · <b>' + esc(w) + '</b> ' + esc(shortDef(q.ix)) + '</p><div class="rqs" style="font-size:1rem">' + esc(q.s).replace(reFor(q.ix), '<b>$1</b>') + '</div><button class="primary" id="rqNext">' + (RQ.i < RQ.qs.length - 1 ? '下一题' : '看结果') + '</button>';
+  speak(q.s);
+  $('rqNext').onclick = function(){ RQ.i++; if (RQ.i < RQ.qs.length) renderRQ(); else finishRQ(); };
+}
+function markRead(){ rDB()[RCUR.id] = today(); save(); }
+function finishRQ(){
+  markRead(); stopSpeak(); ANV++; RVIEW = 'done';
+  var nxt = null, best = -1e9, R = rDB();
+  ART.forEach(function(a){ if (R[a.id] == null && a !== RCUR){ var s = rScore(a, analyze(a)); if (s > best){ best = s; nxt = a; } } });
+  $('readTitle').textContent = '📖 读完了';
+  $('readBody').innerHTML = '<div class="done" style="padding-top:30px"><h2>' + RQ.ok + ' / ' + RQ.qs.length + '</h2><p class="hint">' +
+    (RQ.newc ? RQ.newc + ' 个新词加入了学习，' : '') + (RQ.revc ? RQ.revc + ' 个词已按答题情况安排复习，' : '') + '这篇文章里的句子已存为它们的例句——以后复习时你会再看到这个故事。</p>' +
+    (nxt ? '<button class="primary" id="rNext">接着读：' + esc(nxt.title) + '</button>' : '') + '<button class="ghost" id="rList" style="width:100%;margin-top:10px">回到文章列表</button></div>';
+  if ($('rNext')) $('rNext').onclick = function(){ openArticle(nxt.id); };
+  $('rList').onclick = renderReadList;
+}
+$('readBody').addEventListener('click', function(e){
+  var t = e.target, b;
+  if ((b = t.closest('.rtabs button'))){ RTAB = b.getAttribute('data-t'); renderReadList(); return; }
+  if ((b = t.closest('.rcard'))){ openArticle(b.getAttribute('data-id')); return; }
+  if ((b = t.closest('.ropt'))){ answerRQ(+b.getAttribute('data-n')); return; }
+  if (t.id === 'rPlay'){ if (RSPEAK.on) stopSpeak(); else speakFrom(RSPEAK.i < RSENTS.length ? RSPEAK.i : 0); return; }
+  if (t.id === 'rRate'){ RSPEAK.rate = RSPEAK.rate >= 1.2 ? 0.8 : Math.round((RSPEAK.rate + 0.2) * 10) / 10; t.textContent = RSPEAK.rate.toFixed(1) + '×'; if (RSPEAK.on) speakFrom(RSPEAK.i); return; }
+  if (t.id === 'rZh'){ DB.set.rzh = !DB.set.rzh; save(); $('rText').classList.toggle('zh', !!DB.set.rzh); return; }
+  if (t.id === 'rQuiz'){ startRQuiz(); return; }
+  if (t.id === 'rDone'){ markRead(); toast('已标记为读完'); renderReadList(); return; }
+  if ((b = t.closest('.wd[data-ix]'))){ wordSheet(+b.getAttribute('data-ix'), sentOfEl(b)); return; }
+  if (RSPEAK.on && (b = t.closest('.sn'))){ speakFrom(+b.getAttribute('data-k')); }
+});
+$('goRead').addEventListener('click', function(){ show('read'); renderReadList(); });
+$('readBack').addEventListener('click', function(){
+  stopSpeak();
+  if (RVIEW === 'quiz' && RCUR){ RQ = null; openArticle(RCUR.id); return; }
+  if (RVIEW === 'article' || RVIEW === 'done'){ renderReadList(); return; }
+  RCUR = null; renderHome(); show('home');
+});
 
 /* ---------- boot ---------- */
 mergeInbox();

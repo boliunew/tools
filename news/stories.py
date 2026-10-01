@@ -1,0 +1,158 @@
+# -*- coding: utf-8 -*-
+"""Woven stories for the 语境词库 reader: short, coherent stories written around target words from one frequency band.
+Each target appears 2-3 times in different sentences (spaced encounters in context), and every paragraph has a Chinese translation.
+Run this file to check ranks/occurrences and write news/data/stories.json.
+"""
+import json
+import os
+import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from articles import split_sents  # noqa: E402
+
+STORIES = [
+{
+ "id": "st01", "band": 1, "title": "The Container That Hummed", "zh": "会嗡嗡响的集装箱",
+ "targets": ["inspect", "cargo", "seal", "suspicious", "glimpse", "fragile", "verify", "scramble", "weary", "linger", "drift"],
+ "p": [
+  ("Marco had worked the night shift at the container yard for six years, and he had learned that nothing interesting ever happened after 2 a.m. He walked the long rows with his flashlight and his tablet, ready to inspect each container, check its seal, and photograph its number. By three o'clock he was always weary, and the cold air off the harbor made him even wearier.",
+   "马可在集装箱堆场上夜班已经六年了，他早就明白：凌晨两点以后，什么有意思的事都不会发生。他拿着手电和平板，沿着长长的一排排箱子走，检查每一个集装箱、核对封条、拍下箱号。到了三点，他总是很疲惫，港口吹来的冷风让他更加疲倦。"),
+  ("That night, fog drifted in from the water and swallowed the cranes. Marco was about to finish row twelve when he heard something strange: a low hum coming from a blue container. He stopped. The seal looked fine, but the sound was suspicious. Containers carry cargo — shoes, rice, car parts — and cargo does not hum.",
+   "那天夜里，雾从海面上飘过来，把起重机都吞没了。马可快要查完第十二排时，听到一个奇怪的声音：一只蓝色集装箱里传出低沉的嗡嗡声。他停下脚步。封条看起来完好，但这声音很可疑。集装箱装的是货——鞋子、大米、汽车零件——而货物是不会嗡嗡响的。"),
+  ("He caught a glimpse of a thin red light through a gap near the door. His first thought was to call his supervisor, but he needed to verify the paperwork first. According to the manifest, the box held fragile glassware for a hotel. Glassware is fragile, Marco thought, but it is also silent.",
+   "他从门边的一道缝里瞥见一丝细细的红光。他的第一反应是打电话给主管，但他得先核实单据。根据舱单，箱子里装的是给一家酒店的易碎玻璃器皿。玻璃器皿是易碎，马可想，可它也是安静的。"),
+  ("Within twenty minutes, three supervisors scrambled out of the office, and a customs officer who had been lingering near the gate scrambled after them. They cut the seal, opened the doors, and lifted their flashlights. Inside, between the boxes of glasses, sat a small refrigerator, plugged into a battery the size of a suitcase. Someone had packed it to keep a single cake cold — a wedding cake, according to the note taped to the door.",
+   "不到二十分钟，三个主管慌忙冲出办公室，一位一直在大门口逗留的海关人员也急匆匆跟了过去。他们剪断封条，打开箱门，举起手电。里面，在一箱箱玻璃杯中间，放着一台小冰箱，接在一块行李箱那么大的电池上。有人把它装进来，只为了让一个蛋糕保持冰凉——根据贴在门上的纸条，那是一个婚礼蛋糕。"),
+  ("The officer laughed, verified the note with a phone call, and wrote a short report. Marco went back to his rows, but the moment lingered in his mind for the rest of the night. Six years of quiet shifts, and the most suspicious cargo he had ever found was a cake. As the sun rose and the fog began to drift away, he caught one last glimpse of the blue container and smiled. Maybe interesting things did happen after 2 a.m. Maybe he just needed to inspect a little more carefully.",
+   "海关人员笑了，打电话核实了纸条上的内容，写了一份简短的报告。马可回到他的那几排箱子，但那一幕在他脑子里萦绕了整夜。六年安安静静的夜班，他发现过最可疑的货物，竟然是一个蛋糕。太阳升起，雾开始飘散，他最后瞥了一眼那只蓝色集装箱，笑了。也许凌晨两点以后，真的会有有意思的事发生。也许他只是需要检查得再仔细一点。"),
+ ]},
+{
+ "id": "st02", "band": 1, "title": "The Morning the Market Fell", "zh": "股市大跌的那个早上",
+ "targets": ["plunge", "panic", "cautious", "vanish", "eager", "patience", "hesitate", "reluctant", "rally", "relieve", "regret"],
+ "p": [
+  ("At 6:31 a.m., Lin's phone lit up with a red number. The market had opened, and his favorite stock had plunged eleven percent in a single minute. He sat up in bed, suddenly wide awake, and watched the price plunge again. Somewhere, a thousand other people were feeling the same panic.",
+   "早上 6 点 31 分，林的手机亮起一个红色数字。股市开盘了，他最喜欢的那只股票一分钟内暴跌了百分之十一。他从床上坐起来，一下子完全清醒了，眼看着股价再次暴跌。此刻，还有成千上万的人和他一样惊慌。"),
+  ("Lin was usually a cautious investor. He had rules: never buy with borrowed money, never put more than ten percent into one company, and never make a decision before coffee. But this morning his rules seemed to vanish. His thumb hovered over the red SELL button. He was eager to make the pain stop.",
+   "林平时是个谨慎的投资者。他有几条规矩：绝不借钱买股票，一家公司最多只放百分之十的钱，喝咖啡之前绝不做决定。可今天早上，这些规矩好像都消失了。他的拇指悬在红色的「卖出」按钮上方。他急切地想让这种痛苦停下来。"),
+  ("Then he remembered something his old boss had told him: \"Panic is expensive. Patience is free.\" Lin hesitated. He was reluctant to sell a good company at a terrible price, but he was just as reluctant to watch his money vanish. He put the phone down, made coffee, and read the news. A rumor about a lawsuit had started the selling. Nobody had confirmed it.",
+   "这时他想起老上司说过的一句话：「恐慌很贵，耐心免费。」林犹豫了。他不愿意在糟糕的价位卖掉一家好公司，但他也同样不愿意眼看着自己的钱消失。他放下手机，煮了咖啡，看了新闻。原来是一条关于诉讼的传闻引发了抛售，而且没有人证实过。"),
+  ("By ten o'clock the company denied the rumor, and the stock began to rally. By noon it had recovered most of its losses, and by the closing bell it was up two percent for the day. Lin felt relieved — and a little embarrassed. The investors who had sold at 6:31 were the ones who would regret it.",
+   "到十点，公司否认了传闻，股价开始反弹。到中午，它收复了大部分跌幅，到收盘时，当天还涨了百分之二。林松了一口气——也有点不好意思。那些在 6 点 31 分卖掉的人，才是会后悔的人。"),
+  ("Relieved but wiser, he wrote a new rule on a sticky note and put it on his monitor: \"When you feel eager to sell, hesitate. When the market plunges, be cautious, not quick.\" He knew he would forget it someday, and probably regret it. But patience, like any muscle, gets stronger every time you use it — and the next rally always comes to those who wait.",
+   "松了口气、也长了见识的他，在便利贴上写下一条新规矩，贴在显示器上：「越想卖的时候，越要犹豫一下。市场暴跌时，要谨慎，不要快。」他知道自己总有一天会忘记，也许还会为此后悔。但耐心就像肌肉，每用一次都会变强——而下一次反弹，总是留给那些愿意等的人。"),
+ ]},
+{
+ "id": "st03", "band": 1, "title": "The Ceiling That Wept", "zh": "会哭的天花板",
+ "targets": ["drip", "leak", "stumble", "bucket", "soak", "shiver", "landlord", "awkward", "flood", "ritual"],
+ "p": [
+  ("The first drop landed on Ana's forehead at three in the morning. She sat up, confused, and heard it again: drip... drip... drip. Rain had been falling for two days, and somewhere above her bed the roof had sprung a leak.",
+   "凌晨三点，第一滴水落在安娜的额头上。她坐起来，一脸迷糊，又听见了：滴……滴……滴。雨已经下了两天，她床上方的屋顶不知哪里漏了。"),
+  ("She stumbled out of bed in the dark, stumbled again over her shoes, and came back with a bucket from the kitchen. The bucket made the dripping louder, a tiny metal drum that played all night. By morning her blanket was soaked, her pillow was soaked, and she was shivering in a wet T-shirt.",
+   "她在黑暗里跌跌撞撞地下了床，又被鞋子绊了一下，从厨房拿来一只桶。桶让滴水声更响了，像一面小铁鼓，敲了一整夜。到早上，她的毯子湿透了，枕头湿透了，她穿着湿 T 恤直打哆嗦。"),
+  ("Calling her landlord was always awkward. Mr. Patel was a kind old man, but he talked for a long time and never remembered her name. \"A leak? Oh no, oh no,\" he said. \"Is it a flood? Please tell me it is not a flood.\" Ana looked at the bucket, which was almost full, and said, \"Not yet.\"",
+   "给房东打电话总是很尴尬。帕特尔先生是个和善的老人，可他一说就停不下来，而且从来记不住她的名字。「漏水？哎呀，哎呀，」他说，「是发大水了吗？千万别告诉我是发大水了。」安娜看了看快要满的桶，说：「还没有。」"),
+  ("He arrived an hour later with a ladder, a roll of plastic, and his grandson. The three of them stood in her small bedroom in awkward silence, listening to the drip. Then the grandson climbed onto the roof, found a broken tile, and fixed it in ten minutes. The landlord insisted on paying for a new blanket.",
+   "一个小时后，他带着梯子、一卷塑料布和他的孙子来了。三个人站在她的小卧室里，尴尬地沉默着，听着滴水声。然后孙子爬上屋顶，找到一块碎瓦，十分钟就修好了。房东坚持要赔她一条新毯子。"),
+  ("The rain continued for another week, but the ceiling stayed dry. Still, every night before sleep, Ana looked up at the stain above her bed and listened. It became a small ritual: check the ceiling, check the bucket, then close her eyes. She kept the bucket next to the bed for months, just in case — the way you keep an umbrella after you have once been soaked. A ritual like that is not about the present; it is about the night you shivered.",
+   "雨又下了一个星期，天花板一直是干的。可每晚睡前，安娜还是会抬头看看床上方那块水渍，听一听。这成了一个小小的仪式：看看天花板，看看桶，然后闭上眼睛。那只桶她在床边放了好几个月，以防万一——就像被淋透过一次的人，从此总带着伞。这样的仪式不是为了现在，而是为了那个你冻得发抖的夜晚。"),
+ ]},
+{
+ "id": "st04", "band": 1, "title": "The Dog on the Foggy Curve", "zh": "雾中弯道上的狗",
+ "targets": ["fog", "stall", "mechanic", "ditch", "weary", "glimpse", "bark", "loyal"],
+ "p": [
+  ("The fog came down so fast that Daniel could not see the white line on the road. He slowed to twenty miles an hour, then fifteen. Then, on a dark curve near the hills, his old truck coughed twice and stalled.",
+   "雾来得太快，丹尼尔连路上的白线都看不见了。他把车速降到每小时二十英里，又降到十五。然后，在山边一个黑漆漆的弯道上，他那辆旧卡车咳了两声，熄火了。"),
+  ("He turned the key. Nothing. He turned it again, and the engine made a weak, sad sound, like a cat sneezing. His phone had one bar of signal and four percent battery. He called the only mechanic he knew in the area, a woman named Rosa who lived a few miles away. \"Stay in the truck,\" she said. \"And don't drive into the ditch.\"",
+   "他拧钥匙，没反应。再拧一次，发动机发出一声虚弱又可怜的声音，像猫打喷嚏。手机只有一格信号，电量百分之四。他打给这一带他唯一认识的修车师傅——住在几英里外的罗莎。「待在车里别动，」她说，「也别把车开进沟里。」"),
+  ("Daniel was weary after a twelve-hour shift, and the fog made everything feel unreal. Every few minutes he caught a glimpse of headlights, but the cars passed without stopping. Then he heard a bark — close, sharp, and friendly. A big brown dog appeared out of the fog, walked around the truck twice, and sat down next to the driver's door as if it were on duty.",
+   "上完十二小时的班，丹尼尔已经很疲惫，雾让一切都显得不真实。每隔几分钟，他就瞥见一束车灯，可车都没停就开过去了。接着他听到一声狗叫——很近，很响亮，却很友好。一只棕色的大狗从雾里走出来，绕着卡车转了两圈，在驾驶座门边坐下，像是在站岗。"),
+  ("Forty minutes later, Daniel caught a glimpse of yellow lights cutting through the fog: Rosa's tow truck had arrived. The dog barked once, and Rosa laughed. \"That's Bruno. He's mine. He always finds the trucks that stall on this curve. Last winter he found one that had slid into the ditch.\" She opened the hood, and the mechanic in her took over: two minutes of tapping and muttering, and the engine woke up.",
+   "四十分钟后，丹尼尔瞥见几道黄色的灯光划破浓雾：罗莎的拖车到了。狗叫了一声，罗莎笑了：「那是布鲁诺，我的狗。在这个弯道上熄火的车，总是它先找到。去年冬天它还找到一辆滑进沟里的。」她打开引擎盖，修车师傅的本事上来了：敲敲打打、嘟嘟囔囔两分钟，发动机就醒了。"),
+  ("Daniel offered to pay, but Rosa only asked for one thing: a hamburger for Bruno the next time he drove by. He kept his promise the next week. Bruno ate the burger in three bites and leaned against his leg, warm and heavy and loyal. A weary driver, a mechanic who answered at midnight, and a dog who guarded strangers in the fog — Daniel decided it was the most loyal neighborhood he had ever broken down in.",
+   "丹尼尔要付钱，罗莎只提了一个要求：下次路过时给布鲁诺带个汉堡。第二个星期他兑现了承诺。布鲁诺三口吃完汉堡，靠在他腿上，又暖又沉，忠心耿耿。一个疲惫的司机，一个半夜接电话的修车师傅，一只在雾里守护陌生人的狗——丹尼尔觉得，这是他抛锚过的最讲情义的地方。"),
+ ]},
+{
+ "id": "st05", "band": 2, "title": "Eighteen Pleats", "zh": "十八个褶",
+ "targets": ["apron", "dough", "sturdy", "simmer", "aroma", "stubborn", "grumble", "savor", "nostalgia"],
+ "p": [
+  ("Every Lunar New Year, my grandmother took over the kitchen like a general taking over a city. She tied on her faded apron, rolled up her sleeves, and pushed everyone else out — everyone except me, because I was small enough to be useful and quiet enough not to be annoying.",
+   "每年春节，奶奶接管厨房，就像将军攻占一座城。她系上褪了色的围裙，卷起袖子，把所有人都推出去——除了我，因为我小到刚好能帮忙，又安静到不会碍事。"),
+  ("She made the dough with her bare hands, kneading it on a sturdy wooden board that was older than my father. While the dough rested, a pot of bones simmered on the stove for hours, filling the apartment with an aroma so rich that the neighbors sometimes knocked to ask what we were cooking.",
+   "她徒手和面，在一块比我爸年纪还大的结实木板上揉面团。面团醒着的时候，一锅骨头在炉子上小火慢炖好几个钟头，香气浓得满屋都是，邻居有时会来敲门，问我们在做什么。"),
+  ("My grandmother was stubborn about everything. The dumplings had to have exactly eighteen pleats. The soup had to simmer, never boil. \"Boiling makes it angry,\" she would grumble, turning down the flame. When my aunt suggested buying frozen dumplings one year, Grandma did not speak to her until the Lantern Festival.",
+   "奶奶在什么事上都很固执。饺子必须正好捏十八个褶。汤必须小火慢炖，绝不能大滚。「一滚汤就生气了，」她一边嘟囔一边把火关小。有一年姑姑提议买速冻饺子，奶奶一直到元宵节都没跟她说话。"),
+  ("We ate slowly that night, because Grandma insisted that good food must be savored. \"Taste the sweetness of the cabbage,\" she said. \"Taste the time.\" I did not understand what she meant. I was eight; I wanted to eat fast and run outside to watch the fireworks.",
+   "那晚我们吃得很慢，因为奶奶坚持好东西必须细细品味。「尝尝白菜的甜，」她说，「尝尝时间。」我不懂她的意思。我才八岁，只想快点吃完，跑出去看烟花。"),
+  ("She has been gone for eleven years now. Last winter I finally tried her recipe in my own small kitchen in California. I tied on an old apron, made the dough on a cheap plastic board instead of her sturdy wooden one, I let the bones simmer all afternoon, and I counted the pleats — eighteen, as if a stubborn old woman were watching. I could almost hear her grumble about my flame. When the aroma filled the room and I took the first bite, the nostalgia hit me so hard that I had to sit down. I savored every mouthful, slowly, the way she had taught me. Nostalgia, I learned, is the one ingredient you cannot buy.",
+   "她已经走了十一年。去年冬天，我终于在加州自己的小厨房里照她的方子做了一次。我系上一条旧围裙，在一块便宜的塑料板上和面，而不是她那块结实的木板；我让骨头炖了一整个下午；我数着褶——十八个，好像那个固执的老太太正在旁边看着。我几乎能听见她嘟囔我的火开得太大。当香气飘满屋子，我咬下第一口，怀念一下子涌上来，我不得不坐下。我一口一口慢慢品味，就像她教我的那样。我这才明白，怀念是唯一买不到的配料。"),
+ ]},
+{
+ "id": "st06", "band": 2, "title": "One Careful Step at a Time", "zh": "一步一步来",
+ "targets": ["stray", "porch", "gloomy", "timid", "scrap", "crouch", "drizzle", "wag"],
+ "p": [
+  ("The stray appeared on our porch on a gloomy afternoon in November — a thin black dog with one white ear and ribs you could count. When I opened the door, she jumped back as if I had thrown something at her. She was the most timid creature I had ever seen.",
+   "十一月一个阴沉的下午，这只流浪狗出现在我们家门廊上——一只瘦瘦的黑狗，一只耳朵是白的，肋骨根根可数。我一开门，她就往后一跳，好像我朝她扔了什么东西。她是我见过最胆小的生灵。"),
+  ("For a week, she came every evening and left every morning. I put out a bowl of rice and chicken scraps, then went inside and watched through the window. She would crouch low, look around three times, eat as fast as she could, and vanish into the drizzle.",
+   "整整一个星期，她每天傍晚来，第二天早上走。我放出一碗米饭和鸡肉碎，然后进屋隔着窗户看。她会压低身子蹲伏着，左右张望三次，用最快的速度吃完，然后消失在毛毛雨里。"),
+  ("My neighbor said strays like her had usually been hurt by someone. \"You can't rush a timid dog,\" he said. \"You have to let her decide.\" So I started sitting on the porch steps while she ate, a little closer each night, never looking directly at her, talking about nothing in a low voice.",
+   "邻居说，像她这样的流浪狗通常是被人伤害过的。「胆小的狗是急不得的，」他说，「得让她自己决定。」于是她吃饭的时候，我开始坐在门廊台阶上，每晚靠近一点，从不直视她，低声说些无关紧要的话。"),
+  ("On the twelfth night, she finished eating, walked over, and pressed her nose against my hand for one second. Then she ran. On the fifteenth night, she let me touch her ear, and the tip of her tail gave one small wag. On the twentieth, a gloomy evening of cold drizzle, she followed me through the open door, crouched by the heater, and fell asleep.",
+   "第十二个晚上，她吃完饭走过来，用鼻子碰了碰我的手，只有一秒钟。然后就跑了。第十五个晚上，她让我摸了她的耳朵，尾巴尖轻轻摇了一下。第二十个晚上，一个下着冷冷细雨的阴沉夜晚，她跟着我走进敞开的门，蜷伏在暖气旁，睡着了。"),
+  ("Her name is Pepper now. She still hates loud noises, and she still crouches when strangers come to the door. But every gloomy morning she wakes me by pushing her cold nose under my blanket, and her tail wags so hard her whole body shakes. Sometimes I forget she was ever a stray. Then I watch her look around three times before she eats a scrap of chicken, and I remember that trust, like a timid dog, comes one careful step at a time.",
+   "她现在叫胡椒。她还是讨厌大的声响，有陌生人来敲门时还是会蹲伏下来。但每个阴沉的早上，她都会把冰凉的鼻子钻进我的毯子里叫醒我，尾巴摇得整个身子都在晃。有时候我会忘了她曾经是只流浪狗。直到看见她吃一小块鸡肉前还要左右张望三次，我才想起：信任，就像一只胆小的狗，是一步一步、小心翼翼走过来的。"),
+ ]},
+{
+ "id": "st07", "band": 2, "title": "The Shortcut", "zh": "那条近路",
+ "targets": ["gamble", "reckless", "rugged", "canyon", "breathtaking", "cliff", "dusty", "grin"],
+ "p": [
+  ("My brother has always loved a gamble. So when the GPS on our road trip through Utah offered \"a faster route\" — a dirt road through the desert that would save us forty minutes — he turned the wheel before I could say a word.",
+   "我哥一向爱冒险。所以那次我们开车游犹他州，导航提示有「一条更快的路线」——一条穿过沙漠、能省四十分钟的土路——我还没来得及开口，他就打了方向盘。"),
+  ("\"This is reckless,\" I said, watching the pavement disappear behind us. \"We have half a tank of gas and no signal.\" He just grinned. \"Life is a gamble,\" he said, which is what he always says right before something goes wrong.",
+   "「这太鲁莽了，」我看着柏油路消失在身后，说，「油只剩半箱，还没有信号。」他只是咧嘴一笑。「人生就是一场赌博，」他说——每次要出事之前，他都这么说。"),
+  ("The road grew more rugged with every mile: loose rocks, deep ruts, a dry riverbed we had to cross at walking speed. The car bounced so hard that my coffee jumped out of the cup. Then the road climbed a small hill, and my brother stopped the car.",
+   "路一英里比一英里崎岖：松动的石头、深深的车辙，还有一条干河床，我们只能像走路那样慢慢开过去。车颠得厉害，咖啡都从杯子里跳了出来。然后路爬上一个小坡，我哥把车停了下来。"),
+  ("Below us lay a canyon I had never seen in any photograph — red walls glowing in the late sun, a thin green river twisting at the bottom, and the shadows of clouds sliding across the cliffs. It was breathtaking. Neither of us said anything for a long time. Even my brother, who never stops talking, stopped grinning and just looked.",
+   "我们脚下是一道我在任何照片里都没见过的峡谷——红色的岩壁在夕阳里发着光，一条细细的绿色河流在谷底蜿蜒，云的影子在悬崖上缓缓滑过。美得令人屏息。我们俩很久都没说话。就连从来停不下嘴的我哥，也不笑了，只是看着。"),
+  ("We reached the highway two hours later than planned, dusty, hungry, and nearly out of gas. It was a reckless shortcut, and I told him so for the next three hundred miles. But I keep a photo of that canyon on my phone, and whenever life feels too careful, I look at the red cliffs and the dusty road. Sometimes the rugged road is the only way to see something breathtaking. Just bring more gas than my brother thinks you need — he will never stop taking the gamble.",
+   "我们比计划晚了两个小时才开上公路，满身尘土、饿着肚子，油也快没了。那是一条鲁莽的近路，接下来三百英里我一直在数落他。可我手机里一直存着那道峡谷的照片，每当生活显得太过小心翼翼，我就看看那红色的悬崖和尘土飞扬的路。有时候，只有走崎岖的路，才能看到令人屏息的风景。只是记得多带点油，比我哥觉得需要的多一些——他永远不会停止冒险。"),
+ ]},
+]
+
+
+def main():
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    s = open(os.path.join(root, "vocab.html"), encoding="utf-8").read()
+    a = s.index('<script type="application/json" id="data">') + len('<script type="application/json" id="data">')
+    W = json.loads(s[a:s.index("</script>", a)])["w"]
+    BY = {w[0]: i for i, w in enumerate(W)}
+    bands = [(0, 3000), (3000, 6000), (6000, 10000), (10000, 15000), (15000, 20000)]
+    out = []
+    ok = True
+    for st in STORIES:
+        text = " ".join(e for e, z in st["p"])
+        words = len(re.findall(r"[A-Za-z']+", text))
+        rep = []
+        for t in st["targets"]:
+            i = BY.get(t)
+            forms = set([t] + (W[i][4] if i is not None else []))
+            forms |= {t + "s", t + "es", t + "ed", t + "d", t + "ing", t[:-1] + "ing" if t.endswith("e") else t, t[:-1] + "ies" if t.endswith("y") else t}
+            n = sum(len(re.findall(r"\b%s\b" % re.escape(f), text, re.I)) for f in forms)
+            rk = i if i is not None else -1
+            band = next((k for k, (lo, hi) in enumerate(bands) if lo <= rk < hi), None)
+            flag = "" if (n >= 2 and rk >= 0) else "  <-- CHECK"
+            if flag:
+                ok = False
+            rep.append("%s(%s,b%s,x%d)%s" % (t, rk, band, n, flag))
+        print(st["id"], st["title"], "|", words, "words")
+        print("    " + " ".join(rep))
+        out.append({"id": st["id"], "src": "story", "band": st["band"], "title": st["title"], "tzh": st["zh"], "targets": st["targets"],
+                    "n": words, "b": [{"s": split_sents(e), "zh": z} for e, z in st["p"]]})
+    path = os.path.join(root, "news", "data", "stories.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"items": out}, f, ensure_ascii=False, separators=(",", ":"))
+    print("written", path, os.path.getsize(path) // 1024, "KB", "OK" if ok else "(see CHECK lines)")
+
+
+if __name__ == "__main__":
+    main()

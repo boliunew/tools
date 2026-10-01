@@ -1,13 +1,15 @@
 """Build news/data/articles.json: whole, coherent, freely licensed English articles for the 语境词库 reader.
 
-Sources (both allow storing and showing the full text with attribution):
+Sources (all allow storing and showing the full text with attribution):
   * Simple English Wikipedia — "Very good" / "Good" articles (CC BY-SA 4.0): plain English, any topic
-  * English Wikinews — recently published news stories (CC BY 2.5)
+  * Global Voices — citizen news from around the world (CC BY 3.0); full text comes in its RSS feed
+  * English Wikinews (CC BY 2.5) — closed by Wikimedia in May 2026; already-fetched stories stay in the pool
 A rolling pool is kept: a few new articles per run, oldest dropped, so each run makes only a handful of requests.
 The page itself works out which of the reader's words each article contains.
 """
 import datetime as dt
 import hashlib
+import html
 import json
 import os
 import random
@@ -19,8 +21,8 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "news", "data", "articles.json")
 UA = "boliunew-tools/1.0 (https://github.com/boliunew/tools; personal vocabulary reader)"
-POOL_WIKI, POOL_NEWS = 90, 30      # articles kept per source
-NEW_WIKI, NEW_NEWS = 8, 10         # fetched per run at most
+POOL_WIKI, POOL_NEWS, POOL_GV = 90, 30, 30   # articles kept per source
+NEW_WIKI, NEW_NEWS, NEW_GV = 8, 10, 8       # fetched per run at most
 MIN_WORDS, MAX_WORDS = 180, 650    # trim long articles at a paragraph boundary
 DROP = re.compile(r"^(references?|notes?|sources?|other websites|related pages|related news|external links|further reading|see also|gallery|bibliography|footnotes|sister links|citations|works cited|filmography|discography)$", re.I)
 notes = []
@@ -132,6 +134,41 @@ def news_titles():
     return [m["title"] for m in d.get("query", {}).get("categorymembers", [])]
 
 
+def global_voices():
+    req = urllib.request.Request("https://globalvoices.org/feed/", headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        x = r.read().decode("utf-8", "replace")
+    out = []
+    for it in re.findall(r"<item\b.*?</item>", x, re.S):
+        def tag(n):
+            m = re.search(r"<%s\b[^>]*>(.*?)</%s>" % (n, n), it, re.S)
+            v = m.group(1).strip() if m else ""
+            m2 = re.match(r"<!\[CDATA\[(.*)\]\]>$", v, re.S)
+            return m2.group(1) if m2 else html.unescape(v)
+        title = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", tag("title")))).strip()
+        body = tag("content:encoded") or tag("description")
+        paras = []
+        for p in re.findall(r"<p\b[^>]*>(.*?)</p>", body, re.S):
+            t = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", p))).strip()
+            t = re.sub(r"\s+([,.;:!?])", r"\1", t)
+            if len(t) < 60 or re.match(r"^(screenshot|photo|image|this (story|article|post) (was|is)|read more|originally published)", t, re.I):
+                continue
+            paras.append(t)
+        text = "\n".join(paras)
+        blocks, n = shape(text, title)
+        if n < MIN_WORDS * 0.8:
+            continue
+        d = ""
+        try:
+            d = dt.datetime.strptime(tag("pubDate")[:16], "%a, %d %b %Y").strftime("%b %-d, %Y")
+        except Exception:  # noqa: BLE001
+            pass
+        out.append({"id": "gv" + hashlib.md5(title.encode("utf-8")).hexdigest()[:8], "src": "globalvoices", "title": title,
+                    "url": tag("link"), "lic": "CC BY 3.0", "licu": "https://creativecommons.org/licenses/by/3.0/", "date": d,
+                    "n": n, "b": blocks, "added": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")})
+    return out
+
+
 def main():
     try:
         old = json.load(open(OUT, encoding="utf-8")).get("items", [])
@@ -140,6 +177,7 @@ def main():
     have = {a["title"]: a for a in old}
     wiki = [a for a in old if a["src"] == "simplewiki"]
     news = [a for a in old if a["src"] == "wikinews"]
+    gv = [a for a in old if a["src"] == "globalvoices"]
 
     # Simple Wikipedia: a few new good articles per run, chosen at random so topics vary
     try:
@@ -179,14 +217,24 @@ def main():
     except Exception as e:  # noqa: BLE001
         notes.append("wikinews: %s" % str(e)[:100])
 
-    items = news[:POOL_NEWS] + wiki[:POOL_WIKI]
+    # Global Voices: newest stories from the feed (full text is in the feed itself)
+    try:
+        got = 0
+        for a in global_voices():
+            if got >= NEW_GV or a["title"] in have:
+                continue
+            gv.insert(0, a); got += 1
+    except Exception as e:  # noqa: BLE001
+        notes.append("globalvoices: %s" % str(e)[:100])
+
+    items = gv[:POOL_GV] + news[:POOL_NEWS] + wiki[:POOL_WIKI]
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     doc = {"updated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "items": items, "notes": notes}
     tmp = OUT + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, separators=(",", ":"))
     os.replace(tmp, OUT)
-    print("articles: %d wikinews + %d simplewiki, %d KB, notes %s" % (len(news[:POOL_NEWS]), len(wiki[:POOL_WIKI]), os.path.getsize(OUT) // 1024, notes))
+    print("articles: %d globalvoices + %d wikinews + %d simplewiki, %d KB, notes %s" % (len(gv[:POOL_GV]), len(news[:POOL_NEWS]), len(wiki[:POOL_WIKI]), os.path.getsize(OUT) // 1024, notes))
     for a in items[:6]:
         print("  ", a["src"], a["n"], "words ·", a["title"])
 
