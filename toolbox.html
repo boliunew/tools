@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F1EC">
+<title>工具箱 · 文本 JSON Base64</title>
+<style>
+:root{
+  --bg:#F3F1EC; --paper:#FFFFFF; --ink:#1B1E23; --soft:#626A73; --faint:#98A0A8; --line:#E0DDD5; --chip:#F0EEE8;
+  --accent:#1F6F66; --accent-ink:#FFFFFF; --accent-soft:#DCEEEA;
+  --add:#DDF1E4; --add-ink:#17663A; --del:#F8DEDA; --del-ink:#A2332A; --warn:#B8660B; --warn-soft:#FBEBD3;
+  --mk1:#FFE58A; --mk2:#BFE3FF;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Roboto Mono","Noto Sans Mono",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15181C; --paper:#1D2126; --ink:#E9ECEF; --soft:#A3ABB4; --faint:#6F7881; --line:#2E343B; --chip:#262B31;
+    --accent:#5CC2B3; --accent-ink:#0E1A18; --accent-soft:#1E3632;
+    --add:#1C3325; --add-ink:#7FD9A1; --del:#3B2220; --del-ink:#FF9A90; --warn:#F2B35E; --warn-soft:#3A2E1A;
+    --mk1:#6B5A12; --mk2:#1E4A6B;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.5}
+button,select,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;min-height:52px}
+.brand{font-weight:700;font-size:19px;margin-right:auto;color:var(--ink);text-decoration:none}
+.priv{font-size:12px;color:var(--faint)}
+.tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -16px;padding:0 12px 8px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 13px;font-size:14px;margin:0 4px}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+main{padding:12px 0 90px}
+.pane{display:none}
+.pane.on{display:block}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:12px;margin-bottom:12px}
+.lab{display:flex;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--soft);margin:2px 0 6px;gap:6px}
+.lab b{color:var(--ink);font-size:13.5px;margin-right:auto}
+.lab .cnt{font-variant-numeric:tabular-nums}
+.mini{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:2px 9px;font-size:12.5px;min-height:28px}
+textarea{width:100%;min-height:150px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);padding:9px 10px;font-family:var(--mono);font-size:13.5px;line-height:1.45;tab-size:2;-moz-tab-size:2}
+textarea.out{min-height:170px}
+textarea.sm{min-height:90px}
+input.tx,select.tx{border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:5px 8px;font-size:14px;min-width:0}
+input.tx.mono{font-family:var(--mono)}
+.grp{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0;border-top:1px solid var(--line)}
+.grp:first-child{border-top:0}
+.grp > em{font-style:normal;font-size:12px;color:var(--faint);width:100%}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:5px 11px;font-size:13.5px;min-height:34px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn:active{transform:translateY(1px)}
+label.ck{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--soft)}
+label.ck input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
+.msg{font-size:12.5px;color:var(--accent);min-height:18px}
+.msg.err{color:var(--del-ink)}
+.stats{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:12.5px;color:var(--soft);margin-top:6px;font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink)}
+.errbox{font-family:var(--mono);font-size:12.5px;background:var(--del);color:var(--del-ink);border-radius:10px;padding:8px 10px;margin-top:8px;white-space:pre;overflow-x:auto;line-height:1.5}
+.note{font-size:12px;color:var(--faint);line-height:1.65;margin-top:8px}
+.two{display:flex;gap:10px}
+.two > div{flex:1;min-width:0}
+@media (max-width:640px){.two{display:block}.two > div + div{margin-top:10px}}
+/* diff */
+.diff{font-family:var(--mono);font-size:12.5px;line-height:1.5;border:1px solid var(--line);border-radius:10px;overflow:auto;max-height:70vh;background:var(--bg)}
+.dl{display:flex;white-space:pre-wrap;word-break:break-all}
+.dl i{font-style:normal;flex:0 0 auto;width:34px;text-align:right;padding-right:6px;color:var(--faint);user-select:none;-webkit-user-select:none}
+.dl span{flex:1;min-width:0;padding:0 6px}
+.dl.a{background:var(--add)}.dl.a span{color:var(--add-ink)}
+.dl.d{background:var(--del)}.dl.d span{color:var(--del-ink)}
+.dl mark{background:rgba(0,0,0,.14);color:inherit;border-radius:3px}
+@media (prefers-color-scheme: dark){.dl mark{background:rgba(255,255,255,.2)}}
+.dl.gap span{color:var(--faint);text-align:center}
+.inl{font-family:var(--mono);font-size:13.5px;line-height:1.7;white-space:pre-wrap;word-break:break-all;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg)}
+.inl del{background:var(--del);color:var(--del-ink);text-decoration:line-through}
+.inl ins{background:var(--add);color:var(--add-ink);text-decoration:none}
+/* json tree */
+.tree{font-family:var(--mono);font-size:12.5px;line-height:1.6;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg);overflow:auto;max-height:70vh}
+.tree details > summary{cursor:pointer;list-style:none}
+.tree details > summary::-webkit-details-marker{display:none}
+.tree details > summary:before{content:"▸";display:inline-block;width:12px;color:var(--faint)}
+.tree details[open] > summary:before{content:"▾"}
+.tree .jc{padding-left:14px;border-left:1px dashed var(--line);margin-left:4px}
+.tree .jl{padding-left:12px;white-space:nowrap}
+.jk{color:var(--accent);cursor:pointer}
+.jk:hover{text-decoration:underline}
+.jt{color:var(--faint)}
+.j-string{color:#B35C1E}.j-number{color:#2F6FDB}.j-boolean{color:#9B3FBF}.j-null{color:var(--faint)}
+@media (prefers-color-scheme: dark){.j-string{color:#F2A766}.j-number{color:#7FB2FF}.j-boolean{color:#D49BEA}}
+/* base64 */
+.bin{font-size:13px;color:var(--soft);margin-top:8px}
+.bin img{display:block;max-width:100%;max-height:300px;margin-top:8px;border-radius:8px;border:1px solid var(--line);background:repeating-conic-gradient(var(--chip) 0 25%,transparent 0 50%) 0 0/16px 16px}
+.hex{font-family:var(--mono);font-size:12px;white-space:pre;overflow-x:auto;color:var(--soft);margin-top:8px}
+/* hashes / kv */
+.kv{font-size:13px;border-top:1px solid var(--line)}
+.kv > div{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid var(--line)}
+.kv > div > b{flex:0 0 auto;width:78px;font-weight:600;color:var(--soft);font-size:12.5px}
+.kv > div > code{flex:1;min-width:0;font-family:var(--mono);font-size:12.5px;word-break:break-all}
+.kv > div > button{flex:0 0 auto}
+.now{display:flex;flex-wrap:wrap;gap:6px 22px}
+.now div{font-size:12px;color:var(--faint)}
+.now b{display:block;font-size:20px;color:var(--ink);font-family:var(--mono);font-weight:600;letter-spacing:-.01em}
+/* regex */
+.hl{font-family:var(--mono);font-size:13px;line-height:1.65;white-space:pre-wrap;word-break:break-all;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);max-height:50vh;overflow:auto}
+.hl mark{background:var(--mk1);color:inherit;border-radius:3px}
+.hl mark.m2{background:var(--mk2)}
+.mt{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+.mt td,.mt th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;vertical-align:top;font-family:var(--mono);word-break:break-all}
+.mt th{font-family:inherit;color:var(--faint);font-weight:600;font-size:11.5px}
+.flags{display:flex;gap:4px}
+.flags label{border:1px solid var(--line);border-radius:7px;padding:2px 8px;font-family:var(--mono);font-size:13px;cursor:pointer;user-select:none;-webkit-user-select:none}
+.flags input{display:none}
+.flags label.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.row .grow{flex:1;min-width:120px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(28,28,30,.92);color:#fff;padding:8px 16px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:all .2s;z-index:50;max-width:86vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="bar"><a class="brand" href="./">🧰 工具箱</a><span class="priv">🔒 全在本机处理，不上传</span></div>
+  <nav class="tabs" id="tabs">
+    <button data-t="text">文本</button><button data-t="diff">对比</button><button data-t="json">JSON</button><button data-t="b64">Base64</button><button data-t="enc">编码 · 哈希</button><button data-t="time">时间戳</button><button data-t="re">正则</button>
+  </nav>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============================== 文本 ============================== -->
+<section class="pane" id="p-text">
+  <div class="card">
+    <div class="lab"><b>输入</b><button class="mini" data-paste="tIn">粘贴</button><button class="mini" data-clear="tIn">清空</button></div>
+    <textarea id="tIn" data-keep spellcheck="false" placeholder="粘贴要处理的文本，每行一条…"></textarea>
+    <div class="stats" id="tStats"></div>
+  </div>
+  <div class="card" id="tOps">
+    <div class="grp"><em>行</em>
+      <button class="btn" data-op="uniq">去重</button><button class="btn" data-op="sortAZ">排序 A→Z</button><button class="btn" data-op="sortZA">排序 Z→A</button><button class="btn" data-op="sortNum">按数字排</button><button class="btn" data-op="sortLen">按长度排</button>
+      <button class="btn" data-op="rev">倒序</button><button class="btn" data-op="shuffle">打乱</button><button class="btn" data-op="noblank">去空行</button><button class="btn" data-op="trim">去首尾空格</button><button class="btn" data-op="addnum">加行号</button><button class="btn" data-op="delnum">去行号</button>
+    </div>
+    <div class="grp"><em>大小写 · 命名</em>
+      <button class="btn" data-op="upper">大写</button><button class="btn" data-op="lower">小写</button><button class="btn" data-op="title">首字母大写</button><button class="btn" data-op="camel">camelCase</button><button class="btn" data-op="snake">snake_case</button><button class="btn" data-op="kebab">kebab-case</button><button class="btn" data-op="constc">CONST_CASE</button>
+    </div>
+    <div class="grp"><em>格式</em>
+      <button class="btn" data-op="f2h">全角→半角</button><button class="btn" data-op="h2f">半角→全角</button><button class="btn" data-op="pangu">中英文间加空格</button><button class="btn" data-op="oneline">合成一行</button><button class="btn" data-op="spaces">多空格变一个</button><button class="btn" data-op="quote">每行加引号逗号</button>
+    </div>
+    <div class="grp"><em>拆分 · 合并（分隔符：\t = Tab，\n = 换行，空 = 空格）</em>
+      <input class="tx mono" id="tSep" value="," style="width:70px" aria-label="分隔符"><button class="btn" data-op="split">按分隔符拆成多行</button><button class="btn" data-op="join">多行合并</button>
+    </div>
+    <div class="grp"><em>提取</em>
+      <button class="btn" data-op="xEmail">邮箱</button><button class="btn" data-op="xUrl">网址</button><button class="btn" data-op="xNum">数字</button><button class="btn" data-op="xPhone">电话</button><button class="btn" data-op="xCn">中文</button><button class="btn" data-op="xBox">柜号（带校验）</button>
+    </div>
+    <div class="grp"><em>查找替换</em>
+      <div class="row" style="width:100%"><input class="tx mono grow" id="tFind" placeholder="查找"><input class="tx mono grow" id="tRep" placeholder="替换为（正则可用 $1）"></div>
+      <label class="ck"><input type="checkbox" id="tRe">正则</label><label class="ck"><input type="checkbox" id="tCase">区分大小写</label><button class="btn pri" data-op="replace">全部替换</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>结果</b><span class="msg" id="tMsg"></span><button class="mini" data-copy="tOut">复制</button><button class="mini" data-use="tOut>tIn">用作输入</button></div>
+    <textarea id="tOut" class="out" spellcheck="false" readonly></textarea>
+  </div>
+</section>
+
+<!-- ============================== 对比 ============================== -->
+<section class="pane" id="p-diff">
+  <div class="card">
+    <div class="two">
+      <div><div class="lab"><b>原文 A</b><button class="mini" data-paste="dA">粘贴</button><button class="mini" data-clear="dA">清空</button></div><textarea id="dA" data-keep spellcheck="false" class="sm" placeholder="旧版本"></textarea></div>
+      <div><div class="lab"><b>新文 B</b><button class="mini" data-paste="dB">粘贴</button><button class="mini" data-clear="dB">清空</button></div><textarea id="dB" data-keep spellcheck="false" class="sm" placeholder="新版本"></textarea></div>
+    </div>
+    <div class="grp">
+      <select class="tx" id="dMode"><option value="line">按行</option><option value="word">按词</option><option value="char">按字符</option></select>
+      <label class="ck"><input type="checkbox" id="dTrim">忽略首尾空格</label><label class="ck"><input type="checkbox" id="dCase">忽略大小写</label><label class="ck"><input type="checkbox" id="dOnly" checked>只看改动附近</label>
+      <button class="btn" id="dSwap">⇄ 交换</button><button class="btn pri" id="dGo">对比</button>
+    </div>
+    <div class="msg" id="dMsg"></div>
+    <div id="dOut"></div>
+  </div>
+</section>
+
+<!-- ============================== JSON ============================== -->
+<section class="pane" id="p-json">
+  <div class="card">
+    <div class="lab"><b>JSON / CSV</b><button class="mini" data-paste="jIn">粘贴</button><button class="mini" data-clear="jIn">清空</button></div>
+    <textarea id="jIn" data-keep spellcheck="false" placeholder='{"name": "VOO", "price": 700.86, "tags": ["ETF", "S&amp;P 500"]}'></textarea>
+    <div class="grp">
+      <button class="btn pri" data-j="fmt">格式化</button><select class="tx" id="jInd" aria-label="缩进"><option value="2">2 空格</option><option value="4">4 空格</option><option value="t">Tab</option></select>
+      <button class="btn" data-j="min">压缩</button><button class="btn" data-j="sort">键排序</button><button class="btn" data-j="check">校验</button><button class="btn" data-j="tree">🌳 树形</button>
+    </div>
+    <div class="grp"><em>修复 · 转换</em>
+      <button class="btn" data-j="relax">宽松修复</button><button class="btn" data-j="esc">转成字符串</button><button class="btn" data-j="unesc">字符串还原</button>
+      <button class="btn" data-j="csv">JSON → CSV</button><button class="btn" data-j="fromcsv">CSV → JSON</button><select class="tx" id="jDelim" aria-label="CSV 分隔符"><option value=",">逗号</option><option value="t">Tab（贴进表格）</option></select>
+    </div>
+    <div class="grp"><em>取值（点树形里的键名会自动填进来）</em>
+      <div class="row" style="width:100%"><input class="tx mono grow" id="jPath" placeholder="items[0].name 或 items[*].price"><button class="btn" data-j="query">取值</button></div>
+    </div>
+    <div class="note">「宽松修复」能处理 Python 的 dict 打印（单引号、True / False / None）、JS 对象（不带引号的键、注释、末尾多余逗号）。</div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>结果</b><span class="msg" id="jMsg"></span><button class="mini" data-copy="jOut">复制</button><button class="mini" data-use="jOut>jIn">用作输入</button><button class="mini" id="jDl">下载</button></div>
+    <div id="jErr"></div>
+    <div id="jTree" class="tree" style="display:none"></div>
+    <textarea id="jOut" class="out" spellcheck="false" readonly></textarea>
+  </div>
+</section>
+
+<!-- ============================== Base64 ============================== -->
+<section class="pane" id="p-b64">
+  <div class="card">
+    <div class="lab"><b>输入</b><button class="mini" data-paste="bIn">粘贴</button><button class="mini" data-clear="bIn">清空</button></div>
+    <textarea id="bIn" data-keep spellcheck="false" placeholder="文本，或 Base64 / data:image/... 字符串"></textarea>
+    <div class="grp">
+      <button class="btn pri" id="bEnc">编码 →</button><button class="btn pri" id="bDec">← 解码</button>
+      <label class="ck"><input type="checkbox" id="bUrl">URL 安全（- _ 无 =）</label><label class="ck"><input type="checkbox" id="bWrap">每 76 字符换行</label>
+    </div>
+    <div class="grp"><em>文件 ↔ Base64</em>
+      <label class="btn" style="display:inline-flex;align-items:center">📎 选文件转 Base64<input type="file" id="bFile" style="display:none"></label>
+      <label class="ck"><input type="checkbox" id="bData" checked>带 data: 前缀</label>
+    </div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>结果</b><span class="msg" id="bMsg"></span><button class="mini" data-copy="bOut">复制</button><button class="mini" data-use="bOut>bIn">用作输入</button></div>
+    <textarea id="bOut" class="out" spellcheck="false" readonly></textarea>
+    <div id="bBin"></div>
+  </div>
+</section>
+
+<!-- ============================== 编码 · 哈希 ============================== -->
+<section class="pane" id="p-enc">
+  <div class="card">
+    <div class="lab"><b>输入</b><button class="mini" data-paste="eIn">粘贴</button><button class="mini" data-clear="eIn">清空</button></div>
+    <textarea id="eIn" data-keep spellcheck="false" class="sm" placeholder="https://example.com/?q=你好&amp;n=1"></textarea>
+    <div class="grp"><em>编码 / 解码</em>
+      <button class="btn" data-e="urlE">URL 编码</button><button class="btn" data-e="urlD">URL 解码</button><button class="btn" data-e="urlP">拆解网址参数</button>
+      <button class="btn" data-e="htmlE">HTML 实体编码</button><button class="btn" data-e="htmlD">HTML 实体解码</button>
+      <button class="btn" data-e="uniE">中文 → \u 转义</button><button class="btn" data-e="uniD">\u 转义 → 中文</button>
+      <button class="btn" data-e="hexE">文本 → Hex</button><button class="btn" data-e="hexD">Hex → 文本</button><button class="btn" data-e="cp">查看码点</button>
+    </div>
+    <div class="lab" style="margin-top:6px"><b>结果</b><span class="msg" id="eMsg"></span><button class="mini" data-copy="eOut">复制</button><button class="mini" data-use="eOut>eIn">用作输入</button></div>
+    <textarea id="eOut" class="out sm" spellcheck="false" readonly></textarea>
+  </div>
+  <div class="card">
+    <div class="lab"><b>哈希</b><span class="msg" id="hMsg"></span></div>
+    <div class="row"><button class="btn pri" id="hText">算上面输入的哈希</button><label class="btn" style="display:inline-flex;align-items:center">📎 选文件算哈希<input type="file" id="hFile" style="display:none"></label></div>
+    <div class="kv" id="hOut" style="margin-top:8px"></div>
+    <div class="note">文本按 UTF-8 计算。下载的软件可以对照官网给的 SHA-256 看文件有没有被改过。</div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>JWT 解码</b></div>
+    <textarea id="wIn" data-keep spellcheck="false" class="sm" placeholder="eyJhbGciOi..."></textarea>
+    <div class="grp"><button class="btn pri" id="wGo">解码</button><span class="note" style="margin:0">只解码查看，不验证签名</span></div>
+    <div id="wOut"></div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>生成</b></div>
+    <div class="grp"><button class="btn" id="gUuid">UUID × 5</button>
+      <span class="row">密码长度 <input class="tx" id="gLen" type="number" min="6" max="128" value="16" style="width:64px"></span>
+      <label class="ck"><input type="checkbox" id="gSym" checked>符号</label><label class="ck"><input type="checkbox" id="gAmb" checked>去掉易混的 0O1lI</label>
+      <button class="btn pri" id="gPw">生成密码 × 5</button>
+    </div>
+    <div class="kv" id="gOut"></div>
+    <div class="note">用浏览器的加密随机数（crypto.getRandomValues）生成，不会离开这台设备。</div>
+  </div>
+</section>
+
+<!-- ============================== 时间戳 ============================== -->
+<section class="pane" id="p-time">
+  <div class="card">
+    <div class="lab"><b>现在</b><button class="mini" id="nCopy">复制秒</button><button class="mini" id="nCopyMs">复制毫秒</button></div>
+    <div class="now" id="nNow"></div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>时间戳 → 时间</b></div>
+    <div class="row"><input class="tx mono grow" id="tsIn" data-keep inputmode="numeric" placeholder="1759320000 或 1759320000000"><button class="btn pri" id="tsGo">转换</button><button class="btn" id="tsNow">填入现在</button></div>
+    <div class="kv" id="tsOut" style="margin-top:8px"></div>
+    <div class="note">自动判断秒 / 毫秒 / 微秒。也可以直接输入日期文字（如 2026-10-01 08:30 或 ISO 格式），看它在各时区的时间。</div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>时间 → 时间戳</b></div>
+    <div class="row"><input class="tx mono grow" id="dtIn" placeholder="2026-10-01 08:30:00"><select class="tx" id="dtZone"><option value="America/Los_Angeles">洛杉矶</option><option value="America/New_York">纽约（美东）</option><option value="UTC">UTC</option><option value="Asia/Shanghai">北京</option></select><button class="btn pri" id="dtGo">转换</button></div>
+    <div class="kv" id="dtOut" style="margin-top:8px"></div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>日期计算</b></div>
+    <div class="row"><input class="tx" type="date" id="ddA"><span>到</span><input class="tx" type="date" id="ddB"><button class="btn" id="ddGo">相差几天</button></div>
+    <div class="row" style="margin-top:8px"><input class="tx" type="date" id="daA"><span>加</span><input class="tx" type="number" id="daN" value="90" style="width:76px"><span>天</span><button class="btn" id="daGo">是哪天</button></div>
+    <div class="msg" id="ddMsg" style="margin-top:8px"></div>
+  </div>
+</section>
+
+<!-- ============================== 正则 ============================== -->
+<section class="pane" id="p-re">
+  <div class="card">
+    <div class="lab"><b>正则表达式</b><select class="tx" id="rPre" aria-label="常用"><option value="">常用…</option></select></div>
+    <div class="row"><span style="font-family:var(--mono);color:var(--faint)">/</span><input class="tx mono grow" id="rPat" data-keep placeholder="(\d{3})-(\d{4})" autocapitalize="off" autocomplete="off" spellcheck="false"><span style="font-family:var(--mono);color:var(--faint)">/</span>
+      <span class="flags" id="rFlags"><label class="on"><input type="checkbox" value="g" checked>g</label><label><input type="checkbox" value="i">i</label><label><input type="checkbox" value="m">m</label><label><input type="checkbox" value="s">s</label><label><input type="checkbox" value="u">u</label></span></div>
+    <div class="note" style="margin-top:4px">g 全部匹配 · i 忽略大小写 · m 多行（^$ 对每行生效）· s 让 . 匹配换行 · u Unicode</div>
+    <div class="lab" style="margin-top:10px"><b>测试文本</b><button class="mini" data-paste="rIn">粘贴</button><button class="mini" data-clear="rIn">清空</button></div>
+    <textarea id="rIn" data-keep spellcheck="false" class="sm"></textarea>
+    <div class="msg" id="rMsg"></div>
+    <div class="hl" id="rHl"></div>
+    <div id="rList"></div>
+  </div>
+  <div class="card">
+    <div class="lab"><b>替换</b></div>
+    <div class="row"><input class="tx mono grow" id="rRep" data-keep placeholder="$1 / $2 / $&lt;name&gt; 引用分组"><button class="btn pri" id="rGo">替换</button></div>
+    <div class="lab" style="margin-top:8px"><b>替换结果</b><button class="mini" data-copy="rOut">复制</button></div>
+    <textarea id="rOut" class="out sm" spellcheck="false" readonly></textarea>
+  </div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function store(k, v) { try { if (v === undefined) return window.localStorage.getItem('tb:' + k); window.localStorage.setItem('tb:' + k, v); } catch (e) { return null; } return null; }
+  var toastT = null;
+  function toast(s) { var t = $('toast'); t.textContent = s; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 1600); }
+  function copyText(s, okMsg) {
+    var done = function () { toast(okMsg || '已复制'); };
+    try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(s).then(done, function () { legacy(); }); return; } } catch (e) { }
+    legacy();
+    function legacy() { var ta = document.createElement('textarea'); ta.value = s; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e2) { toast('复制失败，请长按手动复制'); } document.body.removeChild(ta); }
+  }
+  function size(n) { return n < 1024 ? n + ' B' : n < 1048576 ? (n / 1024).toFixed(1) + ' KB' : (n / 1048576).toFixed(2) + ' MB'; }
+  function msg(id, s, err) { var m = $(id); if (!m) return; m.textContent = s || ''; m.className = 'msg' + (err ? ' err' : ''); }
+  function setOut(id, s) { var o = $(id); o.value = s; }
+  function download(name, data, type) {
+    var b = data instanceof Blob ? data : new Blob([data], { type: type || 'text/plain;charset=utf-8' }), u = URL.createObjectURL(b), a = document.createElement('a');
+    a.href = u; a.download = name; document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
+  }
+
+  /* ---------- UTF-8 / bytes ---------- */
+  function enc8(s) {
+    if (window.TextEncoder) return new TextEncoder().encode(s);
+    var b = unescape(encodeURIComponent(s)), u = new Uint8Array(b.length), i;
+    for (i = 0; i < b.length; i++) u[i] = b.charCodeAt(i);
+    return u;
+  }
+  function dec8(u, fatal) {
+    if (window.TextDecoder) return new TextDecoder('utf-8', { fatal: !!fatal }).decode(u);
+    var s = '', i; for (i = 0; i < u.length; i++) s += String.fromCharCode(u[i]);
+    return decodeURIComponent(escape(s));
+  }
+  function bin(u) { var s = '', i, CH = 0x8000; for (i = 0; i < u.length; i += CH) s += String.fromCharCode.apply(null, u.subarray(i, i + CH)); return s; }
+  function b64enc(u, urlsafe, wrap) {
+    var r = btoa(bin(u));
+    if (urlsafe) r = r.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    if (wrap) r = r.replace(/(.{76})/g, '$1\n').replace(/\n$/, '');
+    return r;
+  }
+  function b64dec(t) {
+    t = String(t).replace(/^\s*data:[^,]*,/, '').replace(/\s+/g, '').replace(/-/g, '+').replace(/_/g, '/');
+    if (/[^A-Za-z0-9+\/=]/.test(t)) throw new Error('含有 Base64 以外的字符');
+    t = t.replace(/=+$/, '');
+    if (t.length % 4 === 1) throw new Error('长度不对，可能被截断了');
+    while (t.length % 4) t += '=';
+    var s = atob(t), u = new Uint8Array(s.length), i;
+    for (i = 0; i < s.length; i++) u[i] = s.charCodeAt(i);
+    return u;
+  }
+  function hexOf(u, sep) { var h = [], i; for (i = 0; i < u.length; i++) h.push((u[i] < 16 ? '0' : '') + u[i].toString(16)); return h.join(sep || ''); }
+  function sniff(u) {
+    function at(o, arr) { for (var i = 0; i < arr.length; i++) if (u[o + i] !== arr[i]) return false; return true; }
+    function asc(o, s) { for (var i = 0; i < s.length; i++) if (u[o + i] !== s.charCodeAt(i)) return false; return true; }
+    if (at(0, [0x89, 0x50, 0x4E, 0x47])) return ['image/png', 'png', 'PNG 图片'];
+    if (at(0, [0xFF, 0xD8, 0xFF])) return ['image/jpeg', 'jpg', 'JPEG 图片'];
+    if (asc(0, 'GIF8')) return ['image/gif', 'gif', 'GIF 图片'];
+    if (asc(0, 'RIFF') && asc(8, 'WEBP')) return ['image/webp', 'webp', 'WebP 图片'];
+    if (asc(0, 'BM')) return ['image/bmp', 'bmp', 'BMP 图片'];
+    if (at(0, [0, 0, 1, 0])) return ['image/x-icon', 'ico', 'ICO 图标'];
+    if (asc(0, '%PDF')) return ['application/pdf', 'pdf', 'PDF 文档'];
+    if (at(0, [0x50, 0x4B, 3, 4])) return ['application/zip', 'zip', 'ZIP 压缩包（也可能是 docx / xlsx）'];
+    if (at(0, [0x1F, 0x8B])) return ['application/gzip', 'gz', 'GZIP 压缩数据'];
+    if (asc(4, 'ftyp')) return ['video/mp4', 'mp4', 'MP4 视频'];
+    if (asc(0, 'ID3') || at(0, [0xFF, 0xFB])) return ['audio/mpeg', 'mp3', 'MP3 音频'];
+    if (asc(0, 'OggS')) return ['audio/ogg', 'ogg', 'OGG 音频'];
+    return null;
+  }
+
+  /* ---------- tabs, persistence, common buttons ---------- */
+  var TABS = ['text', 'diff', 'json', 'b64', 'enc', 'time', 're'], cur = null;
+  function showTab(t) {
+    if (TABS.indexOf(t) < 0) t = 'text';
+    cur = t;
+    var bs = $('tabs').querySelectorAll('button'), i;
+    for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-t') === t ? 'on' : '';
+    for (i = 0; i < TABS.length; i++) $('p-' + TABS[i]).className = 'pane' + (TABS[i] === t ? ' on' : '');
+    store('tab', t);
+    try { window.history.replaceState(null, '', '#' + t); } catch (e) { }
+    if (t === 'time') tick();
+  }
+  $('tabs').onclick = function (e) { var t = e.target.getAttribute && e.target.getAttribute('data-t'); if (t) { showTab(t); window.scrollTo(0, 0); } };
+
+  var keeps = document.querySelectorAll('[data-keep]'), saveT = {};
+  for (var ki = 0; ki < keeps.length; ki++) (function (el) {
+    var v = store('v:' + el.id); if (v != null) el.value = v;
+    el.addEventListener('input', function () { clearTimeout(saveT[el.id]); saveT[el.id] = setTimeout(function () { if (el.value.length < 200000) store('v:' + el.id, el.value); }, 400); });
+  })(keeps[ki]);
+
+  document.addEventListener('click', function (e) {
+    var b = e.target, a;
+    if (!b || !b.getAttribute) return;
+    if ((a = b.getAttribute('data-copy'))) { var v = $(a).value; if (v) copyText(v); else toast('没有内容'); }
+    else if ((a = b.getAttribute('data-clear'))) { $(a).value = ''; $(a).dispatchEvent(new Event('input')); $(a).focus(); }
+    else if ((a = b.getAttribute('data-use'))) { var p = a.split('>'); if ($(p[0]).value) { $(p[1]).value = $(p[0]).value; $(p[1]).dispatchEvent(new Event('input')); toast('已放进输入框'); $(p[1]).scrollIntoView({ block: 'center' }); } }
+    else if ((a = b.getAttribute('data-paste'))) {
+      var tgt = $(a);
+      try {
+        navigator.clipboard.readText().then(function (t) { tgt.value = t; tgt.dispatchEvent(new Event('input')); }, function () { tgt.focus(); toast('请长按输入框粘贴'); });
+      } catch (err) { tgt.focus(); toast('请长按输入框粘贴'); }
+    }
+  });
+
+  /* ============================== 文本 ============================== */
+  function lines(s) { return s.split(/\r?\n/); }
+  function words(l) { return l.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2').replace(/[_\-.\s]+/g, ' ').replace(/^\s+|\s+$/g, '').split(' '); }
+  function cap(w) { return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }
+  function perLine(s, f) { return lines(s).map(function (l) { return /\S/.test(l) ? f(l) : l; }).join('\n'); }
+  function firstNum(l) { var m = /-?\d+(?:\.\d+)?/.exec(l.replace(/,(?=\d{3})/g, '')); return m ? parseFloat(m[0]) : Infinity; }
+  function sepVal() { var s = $('tSep').value; if (s === '') return ' '; return s.replace(/\\t/g, '\t').replace(/\\n/g, '\n'); }
+  var cmp = (function () { try { var c = new Intl.Collator('zh-CN', { numeric: true, sensitivity: 'base' }); return function (a, b) { return c.compare(a, b); }; } catch (e) { return function (a, b) { return a < b ? -1 : a > b ? 1 : 0; }; } })();
+  function uniqList(a) { var seen = {}, out = [], i; for (i = 0; i < a.length; i++) if (!seen['~' + a[i]]) { seen['~' + a[i]] = 1; out.push(a[i]); } return out; }
+  function extract(s, re, name) { var m = s.match(re) || [], u = uniqList(m); TMSG = '找到 ' + m.length + ' 个' + name + (u.length < m.length ? '（去重后 ' + u.length + ' 个）' : ''); return u.join('\n'); }
+  // ISO 6346 container number check digit
+  var ISO = (function () { var v = {}, n = 10, i, c; for (i = 0; i < 26; i++) { if (n % 11 === 0) n++; c = String.fromCharCode(65 + i); v[c] = n; n++; } return v; })();
+  function boxCheck(id) {
+    var s = 0, i, ch, val;
+    for (i = 0; i < 10; i++) { ch = id.charAt(i); val = i < 4 ? ISO[ch] : +ch; s += val * Math.pow(2, i); }
+    return s % 11 % 10;
+  }
+  var TMSG = '';
+  var TOPS = {
+    uniq: function (s) { var L = lines(s), u = uniqList(L); TMSG = '去掉 ' + (L.length - u.length) + ' 行重复，剩 ' + u.length + ' 行'; return u.join('\n'); },
+    sortAZ: function (s) { return lines(s).sort(cmp).join('\n'); },
+    sortZA: function (s) { return lines(s).sort(cmp).reverse().join('\n'); },
+    sortNum: function (s) { return lines(s).sort(function (a, b) { var x = firstNum(a), y = firstNum(b); return x === y ? cmp(a, b) : (x < y ? -1 : 1); }).join('\n'); },
+    sortLen: function (s) { return lines(s).sort(function (a, b) { return a.length - b.length || cmp(a, b); }).join('\n'); },
+    rev: function (s) { return lines(s).reverse().join('\n'); },
+    shuffle: function (s) { var a = lines(s), i, j, t; for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; } return a.join('\n'); },
+    noblank: function (s) { var L = lines(s), o = L.filter(function (l) { return /\S/.test(l); }); TMSG = '去掉 ' + (L.length - o.length) + ' 个空行'; return o.join('\n'); },
+    trim: function (s) { return lines(s).map(function (l) { return l.replace(/^[\s　]+|[\s　]+$/g, ''); }).join('\n'); },
+    addnum: function (s) { var n = 0; return lines(s).map(function (l) { return (++n) + '. ' + l; }).join('\n'); },
+    delnum: function (s) { return lines(s).map(function (l) { return l.replace(/^\s*\d+\s*[.)、:：\t]\s*/, ''); }).join('\n'); },
+    upper: function (s) { return s.toUpperCase(); },
+    lower: function (s) { return s.toLowerCase(); },
+    title: function (s) { return s.toLowerCase().replace(/(^|[^A-Za-z'’])([a-z])/g, function (m, p, c) { return p + c.toUpperCase(); }); },
+    camel: function (s) { return perLine(s, function (l) { var w = words(l); return w[0].toLowerCase() + w.slice(1).map(cap).join(''); }); },
+    snake: function (s) { return perLine(s, function (l) { return words(l).join('_').toLowerCase(); }); },
+    kebab: function (s) { return perLine(s, function (l) { return words(l).join('-').toLowerCase(); }); },
+    constc: function (s) { return perLine(s, function (l) { return words(l).join('_').toUpperCase(); }); },
+    f2h: function (s) { return s.replace(/[！-～]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }).replace(/　/g, ' ').replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/。/g, '.').replace(/、/g, ','); },
+    h2f: function (s) { return s.replace(/[!-~]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) + 0xFEE0); }).replace(/ /g, '　'); },
+    pangu: function (s) {
+      var CJK = '⺀-⻿⼀-⿟぀-ゟ゠-ヿ㄀-ㄯ㈀-㋿㐀-䶿一-鿿豈-﫿';
+      return s.replace(new RegExp('([' + CJK + '])([A-Za-z0-9@#$%^&*+=<>/\\[({`~-])', 'g'), '$1 $2').replace(new RegExp('([A-Za-z0-9!%&*+=<>/\\])}`~-])([' + CJK + '])', 'g'), '$1 $2');
+    },
+    oneline: function (s) { return s.replace(/\s*\r?\n\s*/g, ' ').replace(/^\s+|\s+$/g, ''); },
+    spaces: function (s) { return s.replace(/[ \t　]+/g, ' '); },
+    quote: function (s) { var L = lines(s).filter(function (l) { return /\S/.test(l); }); TMSG = L.length + ' 项，可直接用在 SQL 的 IN (...) 或 Python 列表里'; return L.map(function (l) { return "'" + l.replace(/^\s+|\s+$/g, '').replace(/'/g, "\\'") + "'"; }).join(', '); },
+    split: function (s) { var p = s.split(sepVal()); TMSG = '拆成 ' + p.length + ' 行'; return p.map(function (x) { return x.replace(/^\s+|\s+$/g, ''); }).join('\n'); },
+    join: function (s) { var L = lines(s).filter(function (l) { return /\S/.test(l); }); TMSG = '合并了 ' + L.length + ' 行'; return L.join(sepVal()); },
+    xEmail: function (s) { return extract(s, /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g, '邮箱'); },
+    xUrl: function (s) { return extract(s, /https?:\/\/[^\s"'<>，。、）)\]]+/g, '网址'); },
+    xNum: function (s) { var m = s.match(/-?\d+(?:,\d{3})*(?:\.\d+)?%?/g) || []; TMSG = '找到 ' + m.length + ' 个数字'; return m.join('\n'); },
+    xPhone: function (s) { return extract(s, /(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}|(?:\+?86[-\s]?)?1[3-9]\d{9}/g, '电话'); },
+    xCn: function (s) { return extract(s, /[㐀-鿿]+/g, '段中文'); },
+    xBox: function (s) {
+      var re = /\b([A-Z]{3}[UJZR])\s?-?(\d{6})\s?-?(\d)\b/gi, m, out = [], ok = 0, bad = 0, seen = {};
+      while ((m = re.exec(s))) {
+        var id = (m[1] + m[2]).toUpperCase(), d = +m[3], c = boxCheck(id), full = id + d;
+        if (seen[full]) continue; seen[full] = 1;
+        if (c === d) { out.push(full + '\t✓'); ok++; } else { out.push(full + '\t✗ 校验位应为 ' + c + '（' + id + c + '）'); bad++; }
+      }
+      TMSG = '柜号 ' + (ok + bad) + ' 个：' + ok + ' 个校验通过' + (bad ? '，' + bad + ' 个有误' : '');
+      return out.join('\n');
+    },
+    replace: function (s) {
+      var f = $('tFind').value, r = $('tRep').value, n = 0, re;
+      if (!f) { TMSG = '先填要查找的内容'; return null; }
+      try { re = $('tRe').checked ? new RegExp(f, 'g' + ($('tCase').checked ? '' : 'i')) : new RegExp(f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g' + ($('tCase').checked ? '' : 'i')); }
+      catch (e) { TMSG = '正则写错了：' + e.message; return null; }
+      n = (s.match(re) || []).length;
+      var res = $('tRe').checked ? s.replace(re, r) : s.replace(re, function () { return r; });
+      TMSG = '替换了 ' + n + ' 处';
+      return res;
+    }
+  };
+  $('tOps').onclick = function (e) {
+    var op = e.target.getAttribute && e.target.getAttribute('data-op');
+    if (!op || !TOPS[op]) return;
+    var s = $('tIn').value;
+    if (!s) { msg('tMsg', '先在上面输入文本', true); $('tIn').focus(); return; }
+    TMSG = '';
+    var r;
+    try { r = TOPS[op](s); } catch (err) { msg('tMsg', '出错：' + err.message, true); return; }
+    if (r == null) { msg('tMsg', TMSG, true); return; }
+    setOut('tOut', r); msg('tMsg', TMSG || '完成');
+    if (window.innerWidth < 700) $('tOut').scrollIntoView({ block: 'center', behavior: 'smooth' });
+  };
+  function tStats() {
+    var s = $('tIn').value, cp = s.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '_');
+    var cn = (s.match(/[㐀-鿿]/g) || []).length, en = (s.match(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g) || []).length;
+    $('tStats').innerHTML = '<span>字符 <b>' + cp.length + '</b></span><span>不含空白 <b>' + cp.replace(/\s/g, '').length + '</b></span><span>汉字 <b>' + cn + '</b></span><span>英文词 <b>' + en + '</b></span><span>行 <b>' + (s ? lines(s).length : 0) + '</b></span><span>UTF-8 <b>' + size(enc8(s).length) + '</b></span>';
+  }
+  var stT = null;
+  $('tIn').addEventListener('input', function () { clearTimeout(stT); stT = setTimeout(tStats, 150); });
+  tStats();
+
+  /* ============================== 对比 ============================== */
+  // LCS diff on arrays of keys → ops: ['=', i, j] | ['-', i] | ['+', j]
+  function diffKeys(a, b) {
+    var n = a.length, m = b.length, p = 0, sx = 0, ops = [], i, j;
+    while (p < n && p < m && a[p] === b[p]) p++;
+    while (sx < n - p && sx < m - p && a[n - 1 - sx] === b[m - 1 - sx]) sx++;
+    for (i = 0; i < p; i++) ops.push(['=', i, i]);
+    var N = n - p - sx, M = m - p - sx, big = false;
+    if (N * M > 6e6) {
+      big = true;
+      for (i = 0; i < N; i++) ops.push(['-', p + i]);
+      for (j = 0; j < M; j++) ops.push(['+', p + j]);
+    } else if (N || M) {
+      var W = M + 1, L = new Int32Array((N + 1) * W);
+      for (i = N - 1; i >= 0; i--) for (j = M - 1; j >= 0; j--)
+        L[i * W + j] = a[p + i] === b[p + j] ? L[(i + 1) * W + j + 1] + 1 : Math.max(L[(i + 1) * W + j], L[i * W + j + 1]);
+      i = 0; j = 0;
+      while (i < N && j < M) {
+        if (a[p + i] === b[p + j]) { ops.push(['=', p + i, p + j]); i++; j++; }
+        else if (L[(i + 1) * W + j] >= L[i * W + j + 1]) { ops.push(['-', p + i]); i++; }
+        else { ops.push(['+', p + j]); j++; }
+      }
+      while (i < N) ops.push(['-', p + i++]);
+      while (j < M) ops.push(['+', p + j++]);
+    }
+    for (i = 0; i < sx; i++) ops.push(['=', n - sx + i, m - sx + i]);
+    ops.big = big;
+    return ops;
+  }
+  function charMark(x, y) {
+    var p = 0, s = 0;
+    while (p < x.length && p < y.length && x.charAt(p) === y.charAt(p)) p++;
+    while (s < x.length - p && s < y.length - p && x.charAt(x.length - 1 - s) === y.charAt(y.length - 1 - s)) s++;
+    function mk(t) { var mid = t.slice(p, t.length - s); return esc(t.slice(0, p)) + (mid ? '<mark>' + esc(mid) + '</mark>' : '') + esc(t.slice(t.length - s)); }
+    return [mk(x), mk(y)];
+  }
+  function runDiff() {
+    var A = $('dA').value, B = $('dB').value, mode = $('dMode').value, trim = $('dTrim').checked, ic = $('dCase').checked;
+    if (!A && !B) { msg('dMsg', '先在两边分别粘贴内容', true); return; }
+    function key(s) { if (trim) s = s.replace(/^\s+|\s+$/g, '').replace(/\s+/g, ' '); if (ic) s = s.toLowerCase(); return s; }
+    var out = $('dOut'), i, h = '', add = 0, del = 0;
+    if (mode !== 'line') {
+      var ta = mode === 'char' ? A.split('') : A.match(/\s+|[㐀-鿿]|[^\s㐀-鿿]+/g) || [];
+      var tb = mode === 'char' ? B.split('') : B.match(/\s+|[㐀-鿿]|[^\s㐀-鿿]+/g) || [];
+      if (ta.length * tb.length > 2.5e7) { msg('dMsg', '内容太长，请改用「按行」对比', true); return; }
+      var ops = diffKeys(ta.map(key), tb.map(key));
+      for (i = 0; i < ops.length; i++) {
+        var o = ops[i];
+        if (o[0] === '=') h += esc(tb[o[2]]);
+        else if (o[0] === '-') { h += '<del>' + esc(ta[o[1]]) + '</del>'; del++; }
+        else { h += '<ins>' + esc(tb[o[1]]) + '</ins>'; add++; }
+      }
+      h = h.replace(/<\/del><del>/g, '').replace(/<\/ins><ins>/g, '');
+      out.innerHTML = '<div class="inl">' + (h || '（空）') + '</div>';
+      msg('dMsg', add || del ? '删除 ' + del + ' 处、新增 ' + add + ' 处（' + (mode === 'char' ? '按字符' : '按词') + '）' : '两段内容完全相同');
+      return;
+    }
+    var la = lines(A), lb = lines(B), ops2 = diffKeys(la.map(key), lb.map(key)), only = $('dOnly').checked, rows = [];
+    // pair up delete/insert runs so changed lines get character highlights
+    for (i = 0; i < ops2.length;) {
+      if (ops2[i][0] === '=') { rows.push(['=', ops2[i][1], ops2[i][2]]); i++; continue; }
+      var ds = [], as = [];
+      while (i < ops2.length && ops2[i][0] !== '=') { if (ops2[i][0] === '-') ds.push(ops2[i][1]); else as.push(ops2[i][1]); i++; }
+      var k, pairs = Math.min(ds.length, as.length), marks = [];
+      for (k = 0; k < pairs; k++) marks.push(charMark(la[ds[k]], lb[as[k]]));
+      for (k = 0; k < ds.length; k++) { rows.push(['-', ds[k], k < pairs ? marks[k][0] : esc(la[ds[k]])]); del++; }
+      for (k = 0; k < as.length; k++) { rows.push(['+', as[k], k < pairs ? marks[k][1] : esc(lb[as[k]])]); add++; }
+    }
+    var show = [];
+    if (only) {
+      var near = [], CTX = 3;
+      for (i = 0; i < rows.length; i++) if (rows[i][0] !== '=') for (k = Math.max(0, i - CTX); k <= Math.min(rows.length - 1, i + CTX); k++) near[k] = 1;
+      for (i = 0; i < rows.length; i++) {
+        if (near[i] || !add && !del) { show.push(rows[i]); continue; }
+        var st = i; while (i < rows.length && !near[i]) i++;
+        show.push(['gap', i - st]); i--;
+      }
+    } else show = rows;
+    for (i = 0; i < show.length; i++) {
+      var r = show[i];
+      if (r[0] === 'gap') h += '<div class="dl gap"><i></i><span>⋯ ' + r[1] + ' 行相同 ⋯</span></div>';
+      else if (r[0] === '=') h += '<div class="dl"><i>' + (r[2] + 1) + '</i><span>' + (esc(lb[r[2]]) || ' ') + '</span></div>';
+      else if (r[0] === '-') h += '<div class="dl d"><i>−' + (r[1] + 1) + '</i><span>' + (r[2] || ' ') + '</span></div>';
+      else h += '<div class="dl a"><i>+' + (r[1] + 1) + '</i><span>' + (r[2] || ' ') + '</span></div>';
+    }
+    out.innerHTML = '<div class="diff">' + h + '</div>';
+    msg('dMsg', add || del ? '删除 ' + del + ' 行、新增 ' + add + ' 行（A ' + la.length + ' 行 → B ' + lb.length + ' 行）' + (ops2.big ? ' · 内容太多，改动段用了简化对比' : '') : '两边内容完全相同（' + la.length + ' 行）');
+  }
+  $('dGo').onclick = runDiff;
+  $('dSwap').onclick = function () { var t = $('dA').value; $('dA').value = $('dB').value; $('dB').value = t; $('dA').dispatchEvent(new Event('input')); $('dB').dispatchEvent(new Event('input')); runDiff(); };
+  $('dMode').onchange = $('dTrim').onchange = $('dCase').onchange = $('dOnly').onchange = function () { if ($('dA').value || $('dB').value) runDiff(); };
+
+  /* ============================== JSON ============================== */
+  function indent() { var v = $('jInd').value; return v === 't' ? '\t' : +v; }
+  function lineCol(s, pos) { var pre = s.slice(0, pos), ln = pre.split('\n').length, col = pos - pre.lastIndexOf('\n'); return [ln, col]; }
+  function locate(s) {
+    var i = 0, n = s.length;
+    function err(m) { throw { pos: i, msg: m }; }
+    function ws() { while (i < n && ' \t\n\r'.indexOf(s.charAt(i)) >= 0) i++; }
+    function str() {
+      i++;
+      while (i < n) {
+        var c = s.charAt(i);
+        if (c === '"') { i++; return; }
+        if (c === '\\') { var e = s.charAt(i + 1); if ('"\\/bfnrtu'.indexOf(e) < 0 || e === '') err('非法的转义 \\' + e); if (e === 'u' && !/^[0-9a-fA-F]{4}$/.test(s.substr(i + 2, 4))) err('\\u 后面要跟 4 位十六进制'); i += e === 'u' ? 6 : 2; continue; }
+        if (c === '\n') err('字符串里不能直接换行（要写成 \\n），或者前面少了一个 "');
+        if (c < ' ') err('字符串里有控制字符（如 Tab），要转义');
+        i++;
+      }
+      err('字符串没有结束，缺少 "');
+    }
+    function val() {
+      ws();
+      var c = s.charAt(i), m;
+      if (c === '{') {
+        i++; ws(); if (s.charAt(i) === '}') { i++; return; }
+        for (;;) {
+          ws(); c = s.charAt(i);
+          if (c !== '"') err(c === "'" ? '键名要用双引号，不能用单引号' : c === '}' ? '最后多了一个逗号' : i >= n ? '内容不完整，缺少 }' : '这里应该是带双引号的键名');
+          str(); ws();
+          if (s.charAt(i) !== ':') err('键名后面缺少冒号 :');
+          i++; val(); ws(); c = s.charAt(i);
+          if (c === ',') { i++; continue; }
+          if (c === '}') { i++; return; }
+          err(i >= n ? '对象没有结束，缺少 }' : '缺少逗号 , 或 }');
+        }
+      }
+      if (c === '[') {
+        i++; ws(); if (s.charAt(i) === ']') { i++; return; }
+        for (;;) {
+          ws(); if (s.charAt(i) === ']') err('最后多了一个逗号');
+          val(); ws(); c = s.charAt(i);
+          if (c === ',') { i++; continue; }
+          if (c === ']') { i++; return; }
+          err(i >= n ? '数组没有结束，缺少 ]' : '缺少逗号 , 或 ]');
+        }
+      }
+      if (c === '"') return str();
+      if (c === "'") err('字符串要用双引号，不能用单引号');
+      if (/[-0-9.]/.test(c)) { m = /^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/.exec(s.slice(i, i + 400)); if (!m || /^[0-9.]/.test(s.charAt(i + m[0].length))) err('数字格式不对（不能以 0 或 . 开头、不能有多余的点）'); i += m[0].length; return; }
+      m = /^[A-Za-z_$][\w$]*/.exec(s.slice(i, i + 40));
+      if (m) {
+        if (m[0] === 'true' || m[0] === 'false' || m[0] === 'null') { i += m[0].length; return; }
+        err(/^(True|False|None)$/.test(m[0]) ? 'Python 写法 ' + m[0] + '，JSON 里是 true / false / null —— 点「宽松修复」' : /^(NaN|Infinity|undefined)$/.test(m[0]) ? 'JSON 不支持 ' + m[0] + '，要写成 null 或数字' : '无法识别的 ' + m[0] + '（文字要加双引号）');
+      }
+      if (c === '/') err('JSON 不支持注释 —— 点「宽松修复」');
+      if (i >= n) err('内容不完整，提前结束了');
+      err('这里不应该出现「' + c + '」');
+    }
+    try { ws(); if (i >= n) return { pos: 0, msg: '内容是空的' }; val(); ws(); if (i < n) err('JSON 已经结束，后面还有多余的内容'); return null; }
+    catch (e) { if (e && e.pos != null) return e; throw e; }
+  }
+  function parseJ(quiet) {
+    var s = $('jIn').value;
+    $('jErr').innerHTML = '';
+    if (!/\S/.test(s)) { msg('jMsg', '先在上面粘贴 JSON', true); return undefined; }
+    try { return JSON.parse(s); }
+    catch (e) {
+      var L = locate(s) || { pos: +((/position (\d+)/.exec(e.message) || [])[1] || 0), msg: e.message };
+      var lc = lineCol(s, L.pos), ln = s.split('\n')[lc[0] - 1] || '', from = Math.max(0, lc[1] - 40), shown = ln.slice(from, from + 80);
+      if (!quiet) {
+        msg('jMsg', '不是合法的 JSON', true);
+        $('jErr').innerHTML = '<div class="errbox">第 ' + lc[0] + ' 行第 ' + lc[1] + ' 列：' + esc(L.msg) + '\n' + esc(shown) + '\n' + new Array(lc[1] - from).join(' ') + '^</div>';
+        var ta = $('jIn'); try { ta.focus(); ta.setSelectionRange(L.pos, Math.min(s.length, L.pos + 1)); } catch (e2) { }
+      }
+      return undefined;
+    }
+  }
+  function sortKeys(v) {
+    if (Array.isArray(v)) return v.map(sortKeys);
+    if (v && typeof v === 'object') { var o = {}, k = Object.keys(v).sort(cmp), i; for (i = 0; i < k.length; i++) o[k[i]] = sortKeys(v[k[i]]); return o; }
+    return v;
+  }
+  // Python / JS literal → JSON text
+  function relax(src) {
+    var out = '', i = 0, n = src.length, c, fixes = {};
+    function nextNonSpace(j) { for (;;) { while (j < n && /\s/.test(src.charAt(j))) j++; if (src.substr(j, 2) === '//' || src.charAt(j) === '#') { while (j < n && src.charAt(j) !== '\n') j++; continue; } if (src.substr(j, 2) === '/*') { var e = src.indexOf('*/', j + 2); j = e < 0 ? n : e + 2; continue; } return j; } }
+    while (i < n) {
+      c = src.charAt(i);
+      if (c === '"' || c === "'" || c === '`') {
+        var q = c, s = ''; if (q !== '"') fixes['单引号'] = 1; i++;
+        while (i < n && src.charAt(i) !== q) {
+          var ch = src.charAt(i);
+          if (ch === '\\') {
+            var nx = src.charAt(i + 1);
+            if (nx === "'" || nx === '`') { s += nx; i += 2; continue; }
+            if (nx === 'x') { s += '\\u00' + src.substr(i + 2, 2); i += 4; continue; }
+            if ('"\\/bfnrtu'.indexOf(nx) < 0) { s += '\\\\'; i++; continue; }
+            s += ch + nx; i += 2; continue;
+          }
+          if (ch === '"') { s += '\\"'; i++; continue; }
+          if (ch === '\n') { s += '\\n'; i++; continue; }
+          if (ch === '\r') { i++; continue; }
+          if (ch === '\t') { s += '\\t'; i++; continue; }
+          s += ch; i++;
+        }
+        i++; out += '"' + s + '"'; continue;
+      }
+      if (c === '/' && src.charAt(i + 1) === '/' || c === '#') { fixes['注释'] = 1; while (i < n && src.charAt(i) !== '\n') i++; continue; }
+      if (c === '/' && src.charAt(i + 1) === '*') { fixes['注释'] = 1; var e = src.indexOf('*/', i + 2); i = e < 0 ? n : e + 2; continue; }
+      if (c === ',') { var j = nextNonSpace(i + 1); if (j >= n || src.charAt(j) === ']' || src.charAt(j) === '}' || src.charAt(j) === ')') { fixes['多余逗号'] = 1; i++; continue; } out += c; i++; continue; }
+      if (c === '(') { fixes['元组'] = 1; out += '['; i++; continue; }
+      if (c === ')') { out += ']'; i++; continue; }
+      if (/[A-Za-z_$]/.test(c)) {
+        var m = /^[A-Za-z_$][\w$]*/.exec(src.slice(i, i + 200))[0], k = nextNonSpace(i + m.length);
+        if (/^[uUbBrRfF]{1,2}$/.test(m) && /["']/.test(src.charAt(i + m.length))) { i += m.length; continue; }
+        var map = { True: 'true', False: 'false', None: 'null', undefined: 'null', NaN: 'null', Infinity: 'null' };
+        if (src.charAt(k) === ':') { out += '"' + m + '"'; fixes['键名加引号'] = 1; }
+        else if (map.hasOwnProperty(m)) { out += map[m]; fixes[m === 'True' || m === 'False' || m === 'None' ? 'True/False/None' : m] = 1; }
+        else out += m;
+        i += m.length; continue;
+      }
+      out += c; i++;
+    }
+    return { text: out, fixes: Object.keys(fixes) };
+  }
+  function flatten(o, pre, out) {
+    var k;
+    if (o && typeof o === 'object' && !Array.isArray(o)) { for (k in o) if (o.hasOwnProperty(k)) flatten(o[k], pre ? pre + '.' + k : k, out); }
+    else out[pre || 'value'] = Array.isArray(o) ? JSON.stringify(o) : o;
+    return out;
+  }
+  function csvCell(v, d) { if (v == null) return ''; v = String(v); return v.indexOf(d) >= 0 || /["\r\n]/.test(v) || /^\s|\s$/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+  function parseCSV(s, d) {
+    var rows = [], row = [], f = '', q = false, i, c;
+    for (i = 0; i < s.length; i++) {
+      c = s.charAt(i);
+      if (q) { if (c === '"') { if (s.charAt(i + 1) === '"') { f += '"'; i++; } else q = false; } else f += c; }
+      else if (c === '"' && f === '') q = true;
+      else if (c === d) { row.push(f); f = ''; }
+      else if (c === '\n' || c === '\r') { if (c === '\r' && s.charAt(i + 1) === '\n') i++; row.push(f); rows.push(row); row = []; f = ''; }
+      else f += c;
+    }
+    if (f !== '' || row.length) { row.push(f); rows.push(row); }
+    return rows.filter(function (r) { return r.length > 1 || r[0] !== ''; });
+  }
+  function jquery(root, path) {
+    path = path.replace(/^\s*\$?\.?/, '');
+    var re = /\[\s*(\*|-?\d+|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')\s*\]|\.?([^.\[\]\s]+)/g, m, toks = [], vals = [root], i, j, k, nx, t;
+    while ((m = re.exec(path))) toks.push(m[1] != null ? m[1] : m[2]);
+    for (i = 0; i < toks.length; i++) {
+      t = toks[i]; nx = [];
+      for (j = 0; j < vals.length; j++) {
+        var v = vals[j];
+        if (v == null || typeof v !== 'object') continue;
+        if (t === '*') { if (Array.isArray(v)) nx = nx.concat(v); else for (k in v) if (v.hasOwnProperty(k)) nx.push(v[k]); }
+        else if (/^-?\d+$/.test(t) && Array.isArray(v)) { k = +t; if (k < 0) k += v.length; if (k >= 0 && k < v.length) nx.push(v[k]); }
+        else { k = /^"/.test(t) ? JSON.parse(t) : /^'/.test(t) ? t.slice(1, -1).replace(/\\'/g, "'") : t; if (Object.prototype.hasOwnProperty.call(v, k)) nx.push(v[k]); }
+      }
+      vals = nx;
+    }
+    return { vals: vals, multi: toks.indexOf('*') >= 0 };
+  }
+  var nodes = 0;
+  function pathJoin(p, k, arr) { return arr ? p + '[' + k + ']' : /^[A-Za-z_$][\w$]*$/.test(k) ? (p ? p + '.' + k : k) : p + '["' + String(k).replace(/"/g, '\\"') + '"]'; }
+  function treeHTML(v, key, path, depth, isIdx) {
+    if (++nodes > 4000) return nodes === 4001 ? '<div class="jt">… 节点太多，只显示前 4000 个</div>' : '';
+    var t = v === null ? 'null' : Array.isArray(v) ? 'array' : typeof v;
+    var k = key == null ? '<span class="jt">根</span> ' : '<span class="jk" data-p="' + esc(path) + '">' + esc(key) + '</span><span class="jt">:</span> ';
+    if (t === 'object' || t === 'array') {
+      var ks = t === 'array' ? null : Object.keys(v), len = t === 'array' ? v.length : ks.length, inner = '', i;
+      for (i = 0; i < len && nodes <= 4000; i++) { var kk = t === 'array' ? i : ks[i]; inner += treeHTML(v[kk], String(kk), pathJoin(path, kk, t === 'array'), depth + 1, t === 'array'); }
+      return '<details' + (depth < 1 || depth < 3 && nodes < 400 ? ' open' : '') + '><summary>' + k + '<span class="jt">' + (t === 'array' ? '[ ' + len + ' 项 ]' : '{ ' + len + ' 个键 }') + '</span></summary><div class="jc">' + inner + '</div></details>';
+    }
+    var shown = JSON.stringify(v); if (shown && shown.length > 300) shown = shown.slice(0, 300) + '…';
+    return '<div class="jl">' + k + '<span class="j-' + t + '">' + esc(shown) + '</span></div>';
+  }
+  var jOutName = 'data.json';
+  function jShowText(s, m, name) { $('jTree').style.display = 'none'; $('jOut').style.display = ''; setOut('jOut', s); msg('jMsg', m); jOutName = name || 'data.json'; }
+  var JOPS = {
+    fmt: function () { var v = parseJ(); if (v === undefined) return; var s = JSON.stringify(v, null, indent()); jShowText(s, '格式化完成 · ' + s.split('\n').length + ' 行'); },
+    min: function () { var v = parseJ(); if (v === undefined) return; var s = JSON.stringify(v); jShowText(s, '压缩后 ' + size(enc8(s).length) + '（原来 ' + size(enc8($('jIn').value).length) + '）'); },
+    sort: function () { var v = parseJ(); if (v === undefined) return; jShowText(JSON.stringify(sortKeys(v), null, indent()), '已按键名排序（所有层级）'); },
+    check: function () {
+      var v = parseJ(); if (v === undefined) return;
+      var cnt = { o: 0, a: 0, k: 0, d: 0 };
+      (function walk(x, d) { cnt.d = Math.max(cnt.d, d); if (Array.isArray(x)) { cnt.a++; x.forEach(function (y) { walk(y, d + 1); }); } else if (x && typeof x === 'object') { cnt.o++; Object.keys(x).forEach(function (k) { cnt.k++; walk(x[k], d + 1); }); } })(v, 0);
+      jShowText($('jOut').value, '✓ 合法 JSON · ' + cnt.o + ' 个对象、' + cnt.a + ' 个数组、' + cnt.k + ' 个键、最深 ' + cnt.d + ' 层');
+    },
+    tree: function () {
+      var v = parseJ(); if (v === undefined) return;
+      nodes = 0; $('jTree').innerHTML = treeHTML(v, null, '', 0); $('jTree').style.display = ''; $('jOut').style.display = 'none';
+      msg('jMsg', '点键名 → 复制它的路径并填进「取值」');
+    },
+    relax: function () {
+      var r = relax($('jIn').value), v;
+      try { v = JSON.parse(r.text); } catch (e) { $('jIn').value = r.text; parseJ(); msg('jMsg', '修了一部分（' + (r.fixes.join('、') || '无') + '），还有错误', true); return; }
+      $('jErr').innerHTML = '';
+      var s = JSON.stringify(v, null, indent());
+      jShowText(s, r.fixes.length ? '已修复：' + r.fixes.join('、') : '本来就是合法 JSON');
+    },
+    esc: function () { var s = $('jIn').value; jShowText(JSON.stringify(s), '已转成 JSON 字符串（可以直接嵌进代码或另一个 JSON）'); },
+    unesc: function () {
+      var s = $('jIn').value.replace(/^\s+|\s+$/g, ''), v;
+      if (!/^"/.test(s)) s = '"' + s.replace(/(^|[^\\])"/g, '$1\\"') + '"';
+      try { v = JSON.parse(s); } catch (e) { msg('jMsg', '无法还原：' + e.message, true); return; }
+      var inner; try { inner = JSON.stringify(JSON.parse(v), null, indent()); } catch (e2) { inner = null; }
+      jShowText(inner || v, inner ? '已还原，并且里面是 JSON，顺便格式化了' : '已还原');
+    },
+    csv: function () {
+      var v = parseJ(); if (v === undefined) return;
+      var d = $('jDelim').value === 't' ? '\t' : ',', arr = Array.isArray(v) ? v : [v], cols = [], seen = {}, rows = [], i, k, from = '';
+      if (!Array.isArray(v) && v && typeof v === 'object') {   // {"data": [...]} → use the biggest array of objects inside
+        for (k in v) if (v.hasOwnProperty(k) && Array.isArray(v[k]) && v[k].length && typeof v[k][0] === 'object' && (!from || v[k].length > v[from].length)) from = k;
+        if (from) arr = v[from];
+      }
+      for (i = 0; i < arr.length; i++) { var f = flatten(arr[i], '', {}); rows.push(f); for (k in f) if (f.hasOwnProperty(k) && !seen[k]) { seen[k] = 1; cols.push(k); } }
+      var out = [cols.map(function (c) { return csvCell(c, d); }).join(d)];
+      for (i = 0; i < rows.length; i++) out.push(cols.map(function (c) { return csvCell(rows[i][c], d); }).join(d));
+      jShowText(out.join('\n'), (from ? '取 ' + from + ' 数组：' : '') + rows.length + ' 行 × ' + cols.length + ' 列' + (d === '\t' ? ' · 复制后可直接粘贴进 Excel / Google 表格' : ''), 'data.csv');
+    },
+    fromcsv: function () {
+      var s = $('jIn').value; if (!/\S/.test(s)) { msg('jMsg', '先粘贴 CSV', true); return; }
+      var first = s.split('\n')[0], d = first.indexOf('\t') >= 0 ? '\t' : first.split(';').length > first.split(',').length ? ';' : ',';
+      var rows = parseCSV(s, d); if (rows.length < 2) { msg('jMsg', '至少要有表头和一行数据', true); return; }
+      var head = rows[0], out = [], i, j;
+      for (i = 1; i < rows.length; i++) {
+        var o = {};
+        for (j = 0; j < head.length; j++) { var c = rows[i][j]; if (c === undefined) c = ''; o[head[j] || 'col' + (j + 1)] = /^-?(0|[1-9]\d*)(\.\d+)?$/.test(c) && c.length < 16 ? +c : c === 'true' ? true : c === 'false' ? false : c; }
+        out.push(o);
+      }
+      $('jErr').innerHTML = '';
+      jShowText(JSON.stringify(out, null, indent()), (rows.length - 1) + ' 行 × ' + head.length + ' 列（分隔符：' + (d === '\t' ? 'Tab' : d) + '）· 数字自动转换');
+    },
+    query: function () {
+      var v = parseJ(); if (v === undefined) return;
+      var p = $('jPath').value; if (!p) { msg('jMsg', '填路径，如 items[0].name', true); return; }
+      var r = jquery(v, p);
+      if (!r.vals.length) { jShowText('', '没有找到 ' + p); return; }
+      var res = r.multi || r.vals.length > 1 ? r.vals : r.vals[0];
+      jShowText(typeof res === 'string' ? res : JSON.stringify(res, null, indent()), r.multi ? '找到 ' + r.vals.length + ' 个值' : '取值成功');
+    }
+  };
+  document.getElementById('p-json').addEventListener('click', function (e) {
+    var a = e.target.getAttribute && e.target.getAttribute('data-j');
+    if (a && JOPS[a]) { JOPS[a](); if (window.innerWidth < 700 && a !== 'check') $('jMsg').scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+  });
+  $('jTree').onclick = function (e) {
+    var p = e.target.getAttribute && e.target.getAttribute('data-p');
+    if (p == null) return;
+    e.preventDefault();
+    $('jPath').value = p; copyText(p, '路径已复制：' + p);
+  };
+  $('jDl').onclick = function () { var v = $('jOut').value; if (!v) { toast('没有内容'); return; } download(jOutName, v, /csv$/.test(jOutName) ? 'text/csv;charset=utf-8' : 'application/json'); };
+
+  /* ============================== Base64 ============================== */
+  var bUrl = null;
+  function showBin(u, fromText) {
+    var box = $('bBin'), t, h = '';
+    if (bUrl) { URL.revokeObjectURL(bUrl); bUrl = null; }
+    if (!u) { box.innerHTML = ''; return; }
+    t = sniff(u);
+    bUrl = URL.createObjectURL(new Blob([u], { type: t ? t[0] : 'application/octet-stream' }));
+    h = '<div class="bin">' + (t ? t[2] : '二进制数据') + ' · ' + size(u.length) + ' · <a href="' + bUrl + '" download="decoded.' + (t ? t[1] : 'bin') + '">下载文件</a></div>';
+    if (t && /^image\//.test(t[0])) h += '<div class="bin"><img src="' + bUrl + '" alt="预览"></div>';
+    if (!fromText) { var head = u.subarray(0, 256), rows = [], i; for (i = 0; i < head.length; i += 16) rows.push(('0000' + i.toString(16)).slice(-4) + '  ' + hexOf(head.subarray(i, i + 16), ' ')); h += '<div class="hex">' + rows.join('\n') + (u.length > 256 ? '\n…' : '') + '</div>'; }
+    box.innerHTML = h;
+  }
+  $('bEnc').onclick = function () {
+    var s = $('bIn').value; if (!s) { msg('bMsg', '先输入文本', true); return; }
+    var u = enc8(s), r = b64enc(u, $('bUrl').checked, $('bWrap').checked);
+    setOut('bOut', r); showBin(null); msg('bMsg', '编码完成 · ' + size(u.length) + ' → ' + r.length + ' 个字符');
+  };
+  $('bDec').onclick = function () {
+    var s = $('bIn').value, u, txt;
+    if (!/\S/.test(s)) { msg('bMsg', '先粘贴 Base64', true); return; }
+    try { u = b64dec(s); } catch (e) { msg('bMsg', '不是有效的 Base64：' + e.message, true); return; }
+    var t = sniff(u);
+    if (!t) { try { txt = dec8(u, true); } catch (e2) { txt = null; } }
+    if (txt != null) { setOut('bOut', txt); showBin(null); msg('bMsg', '解码完成 · ' + size(u.length) + ' 的 UTF-8 文本'); return; }
+    setOut('bOut', ''); showBin(u); msg('bMsg', '解码出来是二进制文件，见下方');
+  };
+  $('bFile').onchange = function () {
+    var f = this.files && this.files[0]; if (!f) return;
+    if (f.size > 20 * 1048576) { msg('bMsg', '文件太大（' + size(f.size) + '），建议 20 MB 以内', true); return; }
+    var rd = new FileReader();
+    rd.onload = function () {
+      var u = new Uint8Array(rd.result), r = b64enc(u, $('bUrl').checked, $('bWrap').checked);
+      if ($('bData').checked && !$('bUrl').checked) r = 'data:' + (f.type || (sniff(u) || ['application/octet-stream'])[0]) + ';base64,' + r;
+      setOut('bOut', r); showBin(u, true); msg('bMsg', f.name + ' · ' + size(f.size) + ' → ' + size(r.length) + ' 的 Base64');
+    };
+    rd.readAsArrayBuffer(f); this.value = '';
+  };
+
+  /* ============================== 编码 · 哈希 ============================== */
+  function htmlDecode(s) { var t = document.createElement('textarea'); t.innerHTML = s; return t.value; }
+  var EOPS = {
+    urlE: function (s) { return encodeURIComponent(s); },
+    urlD: function (s) { return decodeURIComponent(s.replace(/\+/g, ' ')); },
+    urlP: function (s) {
+      var u = s.replace(/^\s+|\s+$/g, ''), q = u.indexOf('?'), hsh = u.indexOf('#'), base = q >= 0 ? u.slice(0, q) : hsh >= 0 ? u.slice(0, hsh) : u;
+      var qs = q >= 0 ? u.slice(q + 1, hsh > q ? hsh : undefined) : '', out = ['地址：' + decodeURIComponent(base)], ps = qs ? qs.split('&') : [], i;
+      for (i = 0; i < ps.length; i++) { if (!ps[i]) continue; var kv = ps[i].split('='), k = kv.shift(); out.push(dec(k) + ' = ' + dec(kv.join('='))); }
+      if (hsh >= 0) out.push('锚点 # ' + dec(u.slice(hsh + 1)));
+      function dec(x) { try { return decodeURIComponent(x.replace(/\+/g, ' ')); } catch (e) { return x; } }
+      EMSG = ps.length + ' 个参数'; return out.join('\n');
+    },
+    htmlE: function (s) { return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); },
+    htmlD: function (s) { return htmlDecode(s); },
+    uniE: function (s) { return s.replace(/[^\x00-\x7f]/g, function (c) { return '\\u' + ('000' + c.charCodeAt(0).toString(16)).slice(-4); }); },
+    uniD: function (s) { return s.replace(/\\u\{([0-9a-fA-F]+)\}/g, function (m, h) { return String.fromCodePoint ? String.fromCodePoint(parseInt(h, 16)) : m; }).replace(/\\u([0-9a-fA-F]{4})/g, function (m, h) { return String.fromCharCode(parseInt(h, 16)); }).replace(/\\x([0-9a-fA-F]{2})/g, function (m, h) { return String.fromCharCode(parseInt(h, 16)); }).replace(/&#x([0-9a-fA-F]+);/g, function (m, h) { return String.fromCharCode(parseInt(h, 16)); }).replace(/&#(\d+);/g, function (m, d) { return String.fromCharCode(+d); }); },
+    hexE: function (s) { return hexOf(enc8(s), ' '); },
+    hexD: function (s) { var h = s.replace(/0x/gi, '').replace(/[^0-9a-fA-F]/g, ''); if (h.length % 2) throw new Error('十六进制位数是奇数'); var u = new Uint8Array(h.length / 2), i; for (i = 0; i < u.length; i++) u[i] = parseInt(h.substr(i * 2, 2), 16); try { return dec8(u, true); } catch (e) { throw new Error('解出来不是 UTF-8 文本'); } },
+    cp: function (s) {
+      var out = [], i, c, n = 0;
+      for (i = 0; i < s.length && n < 500; i++) {
+        c = s.charCodeAt(i);
+        if (c >= 0xD800 && c < 0xDC00 && i + 1 < s.length) { c = (c - 0xD800) * 0x400 + s.charCodeAt(i + 1) - 0xDC00 + 0x10000; i++; }
+        var ch = String.fromCharCode.apply(null, c > 0xFFFF ? [0xD800 + ((c - 0x10000) >> 10), 0xDC00 + ((c - 0x10000) & 0x3FF)] : [c]);
+        out.push((ch === '\n' ? '\\n' : ch === '\t' ? '\\t' : ch === ' ' ? '␠' : ch) + '\tU+' + ('0000' + c.toString(16).toUpperCase()).slice(-4) + '\t' + hexOf(enc8(ch), ' '));
+        n++;
+      }
+      EMSG = '字符\t码点\tUTF-8 字节'; return out.join('\n');
+    }
+  };
+  var EMSG = '';
+  document.getElementById('p-enc').addEventListener('click', function (e) {
+    var a = e.target.getAttribute && e.target.getAttribute('data-e'); if (!a || !EOPS[a]) return;
+    var s = $('eIn').value; if (!s) { msg('eMsg', '先在上面输入', true); return; }
+    EMSG = '';
+    try { setOut('eOut', EOPS[a](s)); msg('eMsg', EMSG || '完成'); } catch (err) { msg('eMsg', '出错：' + (err.message || err), true); }
+  });
+
+  // MD5 (RFC 1321) — the browser's crypto.subtle has no MD5
+  function md5(bytes) {
+    var K = [], S = [7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15, 21], i, j;
+    for (i = 0; i < 64; i++) K[i] = Math.floor(Math.abs(Math.sin(i + 1)) * 4294967296) | 0;
+    var n = bytes.length, nb = ((n + 8) >>> 6) + 1, w = new Int32Array(nb * 16);
+    for (i = 0; i < n; i++) w[i >> 2] |= bytes[i] << ((i % 4) * 8);
+    w[n >> 2] |= 0x80 << ((n % 4) * 8);
+    w[nb * 16 - 2] = (n * 8) | 0; w[nb * 16 - 1] = Math.floor(n / 536870912);
+    var a0 = 0x67452301, b0 = 0xefcdab89 | 0, c0 = 0x98badcfe | 0, d0 = 0x10325476;
+    for (j = 0; j < w.length; j += 16) {
+      var A = a0, B = b0, C = c0, D = d0, F, g, r;
+      for (i = 0; i < 64; i++) {
+        if (i < 16) { F = (B & C) | (~B & D); g = i; }
+        else if (i < 32) { F = (D & B) | (~D & C); g = (5 * i + 1) % 16; }
+        else if (i < 48) { F = B ^ C ^ D; g = (3 * i + 5) % 16; }
+        else { F = C ^ (B | ~D); g = (7 * i) % 16; }
+        r = S[(i >> 4) * 4 + (i % 4)];
+        F = (F + A + K[i] + w[j + g]) | 0;
+        A = D; D = C; C = B;
+        B = (B + ((F << r) | (F >>> (32 - r)))) | 0;
+      }
+      a0 = (a0 + A) | 0; b0 = (b0 + B) | 0; c0 = (c0 + C) | 0; d0 = (d0 + D) | 0;
+    }
+    function le(x) { var s = '', k; for (k = 0; k < 4; k++) s += ('0' + ((x >>> (k * 8)) & 255).toString(16)).slice(-2); return s; }
+    return le(a0) + le(b0) + le(c0) + le(d0);
+  }
+  window.__md5 = md5;
+  function hashAll(u, label) {
+    var box = $('hOut'), rows = [['MD5', md5(u)]], algos = [['SHA-1', 'SHA-1'], ['SHA-256', 'SHA-256'], ['SHA-512', 'SHA-512']], left = algos.length;
+    function draw() { box.innerHTML = rows.map(function (r) { return '<div><b>' + r[0] + '</b><code>' + esc(r[1]) + '</code><button class="mini" data-h="' + esc(r[1]) + '">复制</button></div>'; }).join(''); }
+    draw(); msg('hMsg', label);
+    if (!(window.crypto && crypto.subtle)) { rows.push(['SHA', '需要 https 页面才能计算']); draw(); return; }
+    algos.forEach(function (a) {
+      crypto.subtle.digest(a[1], u).then(function (buf) { rows.push([a[0], hexOf(new Uint8Array(buf))]); rows.sort(function (x, y) { return ['MD5', 'SHA-1', 'SHA-256', 'SHA-512'].indexOf(x[0]) - ['MD5', 'SHA-1', 'SHA-256', 'SHA-512'].indexOf(y[0]); }); draw(); });
+    });
+  }
+  $('hOut').onclick = function (e) { var h = e.target.getAttribute && e.target.getAttribute('data-h'); if (h) copyText(h); };
+  $('hText').onclick = function () { var s = $('eIn').value; hashAll(enc8(s), s ? '输入文本 · ' + size(enc8(s).length) : '空文本的哈希'); };
+  $('hFile').onchange = function () {
+    var f = this.files && this.files[0]; if (!f) return;
+    if (f.size > 300 * 1048576) { msg('hMsg', '文件太大（' + size(f.size) + '），手机上建议 300 MB 以内', true); return; }
+    msg('hMsg', '读取中…');
+    var rd = new FileReader();
+    rd.onload = function () { hashAll(new Uint8Array(rd.result), f.name + ' · ' + size(f.size)); };
+    rd.readAsArrayBuffer(f); this.value = '';
+  };
+
+  function fmtTime(ms, zone) {
+    try { return new Intl.DateTimeFormat('zh-CN', { timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(new Date(ms)); }
+    catch (e) { return new Date(ms).toString(); }
+  }
+  function rel(ms) {
+    var d = (ms - Date.now()) / 1000, a = Math.abs(d), s;
+    s = a < 60 ? Math.round(a) + ' 秒' : a < 3600 ? Math.round(a / 60) + ' 分钟' : a < 86400 ? (a / 3600).toFixed(1) + ' 小时' : a < 86400 * 365 ? (a / 86400).toFixed(1) + ' 天' : (a / 86400 / 365.25).toFixed(1) + ' 年';
+    return a < 1 ? '就是现在' : s + (d < 0 ? '前' : '后');
+  }
+  $('wGo').onclick = function () {
+    var t = $('wIn').value.replace(/^\s*(Bearer\s+)?/i, '').replace(/\s+$/, ''), p = t.split('.'), out = $('wOut');
+    if (p.length < 2) { out.innerHTML = '<div class="errbox">不像 JWT：应该是用 . 分开的三段</div>'; return; }
+    try {
+      var head = JSON.parse(dec8(b64dec(p[0]))), body = JSON.parse(dec8(b64dec(p[1]))), h = '<div class="kv">', k;
+      h += '<div><b>Header</b><code style="white-space:pre-wrap">' + esc(JSON.stringify(head, null, 2)) + '</code></div>';
+      h += '<div><b>Payload</b><code style="white-space:pre-wrap">' + esc(JSON.stringify(body, null, 2)) + '</code></div>';
+      var names = { exp: '过期时间', iat: '签发时间', nbf: '生效时间', auth_time: '登录时间' };
+      for (k in names) if (typeof body[k] === 'number') h += '<div><b>' + names[k] + '</b><code>' + fmtTime(body[k] * 1000) + '（' + rel(body[k] * 1000) + '）' + (k === 'exp' ? (body[k] * 1000 < Date.now() ? ' ⚠️ 已过期' : ' ✓ 未过期') : '') + '</code></div>';
+      out.innerHTML = h + '<div><b>签名</b><code>' + esc(p[2] || '（无）') + '</code></div></div>';
+    } catch (e) { out.innerHTML = '<div class="errbox">解码失败：' + esc(e.message) + '</div>'; }
+  };
+
+  function rnd(n) { var a = new Uint32Array(n); crypto.getRandomValues(a); return a; }
+  $('gUuid').onclick = function () {
+    var out = [], i;
+    for (i = 0; i < 5; i++) {
+      if (crypto.randomUUID) { out.push(crypto.randomUUID()); continue; }
+      var b = new Uint8Array(16); crypto.getRandomValues(b); b[6] = (b[6] & 15) | 64; b[8] = (b[8] & 63) | 128;
+      var h = hexOf(b); out.push(h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' + h.slice(16, 20) + '-' + h.slice(20));
+    }
+    showGen(out);
+  };
+  $('gPw').onclick = function () {
+    var len = Math.max(6, Math.min(128, +$('gLen').value || 16)), amb = $('gAmb').checked;
+    var sets = ['ABCDEFGHJKLMNPQRSTUVWXYZ' + (amb ? '' : 'IO'), 'abcdefghijkmnopqrstuvwxyz' + (amb ? '' : 'l'), '23456789' + (amb ? '' : '01')];
+    if ($('gSym').checked) sets.push('!@#$%^&*-_=+?');
+    var all = sets.join(''), out = [], i, j;
+    for (i = 0; i < 5; i++) {
+      var r = rnd(len + sets.length), pw = [];
+      for (j = 0; j < sets.length; j++) pw.push(sets[j].charAt(r[j] % sets[j].length));   // at least one of each kind
+      for (j = sets.length; j < len; j++) pw.push(all.charAt(r[j] % all.length));
+      var sh = rnd(pw.length);
+      for (j = pw.length - 1; j > 0; j--) { var k = sh[j] % (j + 1), t = pw[j]; pw[j] = pw[k]; pw[k] = t; }
+      out.push(pw.join(''));
+    }
+    showGen(out);
+  };
+  function showGen(list) { $('gOut').innerHTML = list.map(function (x, i) { return '<div><b>' + (i + 1) + '</b><code>' + esc(x) + '</code><button class="mini" data-h="' + esc(x) + '">复制</button></div>'; }).join(''); }
+  $('gOut').onclick = $('hOut').onclick;
+
+  /* ============================== 时间戳 ============================== */
+  var ZONES = [['洛杉矶', 'America/Los_Angeles'], ['纽约', 'America/New_York'], ['UTC', 'UTC'], ['北京', 'Asia/Shanghai']];
+  var tickT = null;
+  function tick() {
+    clearTimeout(tickT);
+    if (cur !== 'time' || document.hidden) return;
+    var ms = Date.now();
+    $('nNow').innerHTML = '<div><b>' + Math.floor(ms / 1000) + '</b>Unix 秒</div><div><b>' + ms + '</b>毫秒</div>' +
+      ZONES.map(function (z) { return '<div><b style="font-size:15px">' + esc(fmtTime(ms, z[1]).replace(/^\d{4}\//, '')) + '</b>' + z[0] + '</div>'; }).join('');
+    tickT = setTimeout(tick, 1000 - ms % 1000 + 5);
+  }
+  document.addEventListener('visibilitychange', tick);
+  $('nCopy').onclick = function () { copyText(String(Math.floor(Date.now() / 1000))); };
+  $('nCopyMs').onclick = function () { copyText(String(Date.now())); };
+  function kvRows(rows) { return rows.map(function (r) { return '<div><b>' + r[0] + '</b><code>' + esc(r[1]) + '</code><button class="mini" data-h="' + esc(r[1]) + '">复制</button></div>'; }).join(''); }
+  $('tsGo').onclick = function () {
+    var v = $('tsIn').value.replace(/^\s+|\s+$/g, ''), ms, unit;
+    if (!v) { $('tsOut').innerHTML = ''; return; }
+    if (/^-?\d+(\.\d+)?$/.test(v)) {
+      var digits = v.replace(/^-|\..*$/g, '').length, x = parseFloat(v);
+      if (digits >= 16) { ms = x / 1000; unit = '微秒'; } else if (digits >= 12) { ms = x; unit = '毫秒'; } else { ms = x * 1000; unit = '秒'; }
+    } else { ms = Date.parse(v.replace(/^(\d{4}-\d{2}-\d{2}) (\d)/, '$1T$2')); unit = '日期文字（按本机时区理解）'; if (isNaN(ms)) ms = Date.parse(v); }
+    if (isNaN(ms)) { $('tsOut').innerHTML = '<div><b>出错</b><code>看不懂这个时间</code></div>'; return; }
+    var rows = [['识别为', unit]];
+    ZONES.forEach(function (z) { rows.push([z[0], fmtTime(ms, z[1])]); });
+    rows.push(['ISO 8601', new Date(ms).toISOString()], ['Unix 秒', String(Math.floor(ms / 1000))], ['毫秒', String(Math.round(ms))], ['距现在', rel(ms)]);
+    $('tsOut').innerHTML = kvRows(rows);
+  };
+  $('tsIn').onkeydown = function (e) { if (e.keyCode === 13) $('tsGo').onclick(); };
+  $('tsNow').onclick = function () { $('tsIn').value = String(Math.floor(Date.now() / 1000)); $('tsGo').onclick(); };
+  function zoneOffset(zone, ms) {   // minutes the zone is ahead of UTC at instant ms
+    var f = new Intl.DateTimeFormat('en-US', { timeZone: zone, hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date(ms));
+    var m = /(\d+)\/(\d+)\/(\d+),?\s+(\d+):(\d+):(\d+)/.exec(f);
+    var asUTC = Date.UTC(+m[3], +m[1] - 1, +m[2], +m[4] % 24, +m[5], +m[6]);
+    return Math.round((asUTC - Math.floor(ms / 1000) * 1000) / 60000);
+  }
+  $('dtGo').onclick = function () {
+    var v = $('dtIn').value.replace(/^\s+|\s+$/g, ''), m = /^(\d{4})[-\/.年](\d{1,2})[-\/.月](\d{1,2})日?(?:[ T]+(\d{1,2})(?::(\d{1,2}))?(?::(\d{1,2}))?)?$/.exec(v), zone = $('dtZone').value;
+    if (!m) { $('dtOut').innerHTML = '<div><b>格式</b><code>写成 2026-10-01 08:30:00（时间可省略）</code></div>'; return; }
+    var guess = Date.UTC(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0), +(m[6] || 0)), off, ms;
+    try { off = zoneOffset(zone, guess); ms = guess - off * 60000; off = zoneOffset(zone, ms); ms = guess - off * 60000; } catch (e) { ms = guess; off = 0; }
+    var oh = (off >= 0 ? '+' : '−') + ('0' + Math.floor(Math.abs(off) / 60)).slice(-2) + ':' + ('0' + Math.abs(off) % 60).slice(-2);
+    $('dtOut').innerHTML = kvRows([['Unix 秒', String(Math.floor(ms / 1000))], ['毫秒', String(ms)], ['ISO 8601', new Date(ms).toISOString()], ['时区偏移', 'UTC' + oh + '（' + $('dtZone').options[$('dtZone').selectedIndex].text + '）'], ['北京时间', fmtTime(ms, 'Asia/Shanghai')]]);
+  };
+  $('dtIn').onkeydown = function (e) { if (e.keyCode === 13) $('dtGo').onclick(); };
+  $('tsOut').onclick = $('dtOut').onclick = $('hOut').onclick;
+  (function () {
+    var d = new Date(), iso = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    if (!$('dtIn').value) $('dtIn').value = iso + ' ' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':00';
+    $('ddA').value = iso; $('daA').value = iso;
+  })();
+  function dayNum(s) { var p = s.split('-'); return Date.UTC(+p[0], +p[1] - 1, +p[2]) / 864e5; }
+  $('ddGo').onclick = function () {
+    if (!$('ddA').value || !$('ddB').value) { msg('ddMsg', '两个日期都要选', true); return; }
+    var n = dayNum($('ddB').value) - dayNum($('ddA').value), a = Math.abs(n), wk = Math.floor(a / 7);
+    msg('ddMsg', '相差 ' + a + ' 天' + (wk ? '（' + wk + ' 周' + (a % 7 ? ' ' + (a % 7) + ' 天' : '') + '）' : '') + (n < 0 ? '，B 在 A 之前' : ''));
+  };
+  $('daGo').onclick = function () {
+    if (!$('daA').value) { msg('ddMsg', '先选日期', true); return; }
+    var d = new Date((dayNum($('daA').value) + (+$('daN').value || 0)) * 864e5);
+    msg('ddMsg', $('daA').value + ' 加 ' + (+$('daN').value || 0) + ' 天 = ' + d.toISOString().slice(0, 10) + ' ' + ['周日', '周一', '周二', '周三', '周四', '周五', '周六'][d.getUTCDay()]);
+  };
+
+  /* ============================== 正则 ============================== */
+  var PRE = [['邮箱', '[\\w.+-]+@[\\w-]+(?:\\.[\\w-]+)+', 'g'], ['网址', 'https?://[^\\s"\'<>]+', 'g'], ['美国电话', '\\(?(\\d{3})\\)?[-.\\s]?(\\d{3})[-.\\s]?(\\d{4})', 'g'],
+    ['中国手机号', '1[3-9]\\d{9}', 'g'], ['IPv4', '\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b', 'g'], ['日期 2026-10-01', '(\\d{4})-(\\d{2})-(\\d{2})', 'g'], ['金额 $1,234.56', '\\$\\s?\\d{1,3}(?:,\\d{3})*(?:\\.\\d{2})?', 'g'],
+    ['集装箱号', '\\b([A-Z]{3}[UJZ])\\s?(\\d{6})\\s?(\\d)\\b', 'gi'], ['汉字', '[\\u4e00-\\u9fa5]+', 'g'], ['空行', '^\\s*$', 'gm'], ['行首尾空格', '^[ \\t]+|[ \\t]+$', 'gm'], ['HTML 标签', '<[^>]+>', 'g'], ['重复的词', '\\b(\\w+)\\s+\\1\\b', 'gi']];
+  (function () { var s = $('rPre'), i; for (i = 0; i < PRE.length; i++) { var o = document.createElement('option'); o.value = i; o.textContent = PRE[i][0]; s.appendChild(o); } })();
+  function flagsVal() { var a = $('rFlags').querySelectorAll('input'), f = '', i; for (i = 0; i < a.length; i++) if (a[i].checked) f += a[i].value; return f; }
+  function syncFlags() { var a = $('rFlags').querySelectorAll('label'), i; for (i = 0; i < a.length; i++) a[i].className = a[i].querySelector('input').checked ? 'on' : ''; store('rflags', flagsVal()); }
+  (function () { var f = store('rflags'); if (f != null) { var a = $('rFlags').querySelectorAll('input'), i; for (i = 0; i < a.length; i++) a[i].checked = f.indexOf(a[i].value) >= 0; } syncFlags(); })();
+  $('rFlags').onchange = function () { syncFlags(); runRe(); };
+  $('rPre').onchange = function () {
+    var p = PRE[this.value]; if (!p) return;
+    $('rPat').value = p[1]; $('rPat').dispatchEvent(new Event('input'));
+    var a = $('rFlags').querySelectorAll('input'), i; for (i = 0; i < a.length; i++) a[i].checked = p[2].indexOf(a[i].value) >= 0;
+    syncFlags(); this.value = ''; runRe();
+  };
+  function makeRe() {
+    var p = $('rPat').value; if (!p) return null;
+    try { return new RegExp(p, flagsVal()); } catch (e) { msg('rMsg', '正则有误：' + e.message, true); return false; }
+  }
+  function runRe() {
+    var re = makeRe(), s = $('rIn').value, hl = $('rHl'), list = $('rList');
+    if (re === null) { msg('rMsg', ''); hl.textContent = s; list.innerHTML = ''; return; }
+    if (re === false) { hl.textContent = s; list.innerHTML = ''; return; }
+    if (s.length > 300000) { msg('rMsg', '文本太长（超过 30 万字），请分段测试', true); return; }
+    var ms = [], m, guard = 0, t0 = Date.now();
+    if (re.global || re.sticky) {
+      re.lastIndex = 0;
+      while ((m = re.exec(s)) && guard++ < 5000) { ms.push(m); if (m[0] === '') re.lastIndex++; if (Date.now() - t0 > 1500) break; }
+    } else if ((m = re.exec(s))) ms.push(m);
+    var h = '', last = 0, i, j;
+    for (i = 0; i < ms.length && i < 2000; i++) {
+      var mm = ms[i];
+      h += esc(s.slice(last, mm.index)) + '<mark' + (i % 2 ? ' class="m2"' : '') + '>' + (mm[0] ? esc(mm[0]) : '​') + '</mark>';
+      last = mm.index + mm[0].length;
+    }
+    hl.innerHTML = h + esc(s.slice(last)) || '<span style="color:var(--faint)">（在上面输入测试文本）</span>';
+    msg('rMsg', ms.length ? '匹配 ' + ms.length + ' 处' + (guard >= 5000 ? '（只显示前 5000）' : '') : (s ? '没有匹配' : ''), !ms.length && !!s);
+    if (!ms.length) { list.innerHTML = ''; return; }
+    var ng = ms[0].length - 1, names = ms[0].groups ? Object.keys(ms[0].groups) : [];
+    var th = '<tr><th>#</th><th>位置</th><th>匹配</th>';
+    for (j = 1; j <= ng; j++) th += '<th>$' + j + '</th>';
+    var rows = '';
+    for (i = 0; i < ms.length && i < 200; i++) {
+      rows += '<tr><td>' + (i + 1) + '</td><td>' + ms[i].index + '</td><td>' + esc(ms[i][0]) + '</td>';
+      for (j = 1; j <= ng; j++) rows += '<td>' + (ms[i][j] == null ? '<span style="color:var(--faint)">—</span>' : esc(ms[i][j])) + '</td>';
+      rows += '</tr>';
+    }
+    list.innerHTML = '<div style="overflow-x:auto"><table class="mt">' + th + '</tr>' + rows + '</table></div>' + (names.length ? '<div class="note">命名分组：' + names.map(esc).join('、') + '（替换时用 $&lt;名字&gt;）</div>' : '') + (ms.length > 200 ? '<div class="note">表格只列前 200 个</div>' : '');
+  }
+  var reT = null;
+  $('rPat').addEventListener('input', function () { clearTimeout(reT); reT = setTimeout(runRe, 200); });
+  $('rIn').addEventListener('input', function () { clearTimeout(reT); reT = setTimeout(runRe, 200); });
+  $('rGo').onclick = function () {
+    var re = makeRe(); if (!re) { if (re === null) msg('rMsg', '先写正则', true); return; }
+    var s = $('rIn').value, n = re.global ? (s.match(re) || []).length : (re.test(s) ? 1 : 0);
+    re.lastIndex = 0;
+    setOut('rOut', s.replace(re, $('rRep').value)); msg('rMsg', '替换了 ' + n + ' 处');
+  };
+  if (!$('rIn').value) $('rIn').value = 'Call (909) 555-0123 or 626.555.0199 by 2026-10-15.\n柜号 MSCU1234565、TGHU 765432 1，邮箱 ops@example.com';
+  if (!$('rPat').value) $('rPat').value = '\\(?(\\d{3})\\)?[-.\\s]?(\\d{3})[-.\\s]?(\\d{4})';
+  runRe();
+
+  window.addEventListener('hashchange', function () { var t = (window.location.hash || '').replace('#', ''); if (t && t !== cur) showTab(t); });
+  showTab((window.location.hash || '').replace('#', '') || store('tab') || 'text');
+})();
+</script>
+<script src="nav.js?v=2" defer></script>
+</body>
+</html>
