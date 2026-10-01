@@ -36,28 +36,40 @@ for k, u in URLS.items():
     time.sleep(1)
 
 # follow-up: find flyer ids (Food 4 Less, Walmart, …) and try the item endpoints
+import traceback
 flyers = []
-for k in ("flipp_ng_data", "flipp_flyers"):
-    try:
-        d = json.loads(bodies[k])
-        fl = d.get("flyers") if isinstance(d, dict) else d
-        if fl:
-            flyers = fl
-            out["flyer_source"] = k
-            break
-    except Exception:  # noqa: BLE001
-        pass
-out["merchants"] = [{kk: f.get(kk) for kk in ("id", "merchant", "merchant_name", "name", "valid_from", "valid_to", "categories", "categories_csv", "merchant_id")} for f in flyers][:80]
-want = [f for f in flyers if re.search(r"food ?4 ?less|walmart", json.dumps(f), re.I)][:3]
-for f in want:
-    fid = f.get("id")
-    for k, u in {
-        f"items_ng_{fid}": f"https://flyers-ng.flippback.com/api/flipp/flyers/{fid}/flyer_items?locale=en-us&sid=8243957120",
-        f"items_back_{fid}": f"https://backflipp.wishabi.com/flipp/flyers/{fid}?locale=en-us",
-    }.items():
-        out[k], _ = get(u, 3000)
-        out[k]["url"] = u
-        time.sleep(1)
+try:
+  _follow = True
+  for k in ("flipp_ng_data", "flipp_flyers"):
+      try:
+          d = json.loads(bodies[k])
+          fl = d.get("flyers") if isinstance(d, dict) else d
+          if fl:
+              flyers = fl
+              out["flyer_source"] = k
+              break
+      except Exception:  # noqa: BLE001
+          pass
+  out["merchants"] = [{kk: f.get(kk) for kk in ("id", "merchant", "merchant_name", "name", "valid_from", "valid_to", "categories", "categories_csv", "merchant_id")} for f in flyers][:80]
+  want = [f for f in flyers if re.search(r"food ?4 ?less|walmart", json.dumps(f), re.I)][:3]
+  for f in want:
+      fid = f.get("id")
+      for k, u in {
+          f"items_ng_{fid}": f"https://flyers-ng.flippback.com/api/flipp/flyers/{fid}/flyer_items?locale=en-us&sid=8243957120",
+          f"items_back_{fid}": f"https://backflipp.wishabi.com/flipp/flyers/{fid}?locale=en-us",
+      }.items():
+          out[k], _ = get(u, 3000)
+          out[k]["url"] = u
+          time.sleep(1)
 
+except Exception:  # noqa: BLE001
+  out["follow_error"] = traceback.format_exc()[-1500:]
+  try:
+    out["flyers_type"] = str(type(flyers)) + " " + json.dumps(flyers)[:1500]
+  except Exception:  # noqa: BLE001
+    pass
+
+import os
+os.makedirs("deals/data", exist_ok=True)
 json.dump(out, open("deals/data/probe.json", "w"), ensure_ascii=False, indent=1)
-print(json.dumps({k: (v.get("status"), v.get("len")) for k, v in out.items() if isinstance(v, dict)}, indent=1))
+print("done")
