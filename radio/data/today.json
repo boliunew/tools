@@ -1,34 +1,34 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-09-30T18:40:45Z",
- "date": "2026-09-30",
+ "generated": "2026-10-01T19:07:13Z",
+ "date": "2026-10-01",
  "engine": "edge",
- "total": 260.4,
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202609301140",
+ "total": 252.3,
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610011206",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "9月30日 星期三",
-   "dur": 10.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202609301140",
+   "sub": "10月1日 星期四",
+   "dur": 9.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610011206",
    "text": [
     {
      "lang": "zh",
-     "t": "一周过半了。9月30日，星期三，通勤电台准时上线。今天一共8段，不想听的直接按下一首。"
+     "t": "这里是你的通勤电台。今天是10月1日，星期四，一共8段，方向盘上的下一首可以随时跳过。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 89°/62°F",
-   "dur": 20.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202609301140",
+   "sub": "Upland 晴 94°/62°F",
+   "dur": 20.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610011206",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。现在气温华氏81度，大约27摄氏度。白天最高89度，约32摄氏度；最低62度。基本不会下雨。空气质量中等，指数62。今天日落时间是傍晚6点35分。"
+     "t": "Upland今天晴。现在气温华氏89度，大约31摄氏度。白天最高94度，约35摄氏度；最低62度。基本不会下雨。空气质量中等，指数71。今天日落时间是傍晚6点34分。"
     }
    ]
   },
@@ -37,36 +37,36 @@
    "title": "📊 大盘",
    "sub": "防守",
    "dur": 34.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202609301140",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610011206",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股9月30日收盘。标普500 ETF 上涨0.3%，纳指100 ETF 上涨0.6%。恐慌指数VIX 15.8，正常水平。标普成分股里，站上50日均线的只占23%。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
+     "t": "先看大盘，数据截至美股9月30日收盘。标普500 ETF 下跌0.2%，纳指100 ETF 上涨0.2%。恐慌指数VIX 16.3，正常水平。标普成分股里，站上50日均线的只占21%。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "23 个候选",
-   "dur": 53.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202609301140",
+   "sub": "24 个候选",
+   "dur": 56.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610011206",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池一共扫描了500只股票，找到23个短线候选。其中RSI2 超跌反弹12个，血筹码8个，回踩金坑3个。评分最高的三个是："
+     "t": "股票池一共扫描了500只股票，找到24个短线候选。其中RSI2 超跌反弹12个，血筹码8个，回踩金坑3个，强势新高1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Freeport-McMoRan，代码 F C X，RSI2 超跌反弹信号，收盘价70.77美元，止损参考63.95。"
+     "t": "第1，Revvity，代码 R V T Y，强势新高信号，收盘价152.89美元，止损参考143.40。"
     },
     {
      "lang": "zh",
-     "t": "第2，Gartner，代码 I T，回踩金坑信号，收盘价186.82美元，止损参考178.78。"
+     "t": "第2，Corpay，代码 C P A Y，RSI2 超跌反弹信号，收盘价388.60美元，止损参考368.39。"
     },
     {
      "lang": "zh",
-     "t": "第3，Corpay，代码 C P A Y，RSI2 超跌反弹信号，收盘价386.73美元，止损参考366.65。"
+     "t": "第3，Freeport-McMoRan，代码 F C X，RSI2 超跌反弹信号，收盘价70.00美元，止损参考62.99。"
     },
     {
      "lang": "zh",
@@ -77,34 +77,26 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "3 件大事",
-   "dur": 36.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202609301140",
+   "sub": "2 件大事",
+   "dur": 19.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610011206",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有1家大公司发财报。"
+     "t": "今天，重要数据有：美东08:30公布PCE 物价指数。另外，有1家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Micron Technology，代码 M U，盘后发财报。期权定价波动正负7.2%。标签：大波动、利好出尽型、已提前炒作。"
-    },
-    {
-     "lang": "zh",
-     "t": "明天，重要数据有：美东08:30公布PCE 物价指数。另外，有1家大公司发财报。"
-    },
-    {
-     "lang": "zh",
-     "t": "Accenture，代码 A C N，盘前发财报。期权定价波动正负7.1%。标签：利好出尽型。"
+     "t": "Accenture，代码 A C N，盘前发财报。期权定价波动正负2.9%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "NPR · Al Jazeera · BBC",
-   "dur": 62.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202609301140",
+   "sub": "NPR · BBC · The Guardian",
+   "dur": 73.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610011206",
    "text": [
     {
      "lang": "zh",
@@ -112,48 +104,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自NPR，综合，难度B1。"
+     "t": "第1条，来自NPR，综合，难度B2。"
     },
     {
      "lang": "en",
-     "t": "Greetings from Syria, where time seems to melt as a glassmaker braves scorching temps"
+     "t": "Google launches Project Suncatcher, a step towards AI data centers in space"
     },
     {
      "lang": "en",
-     "t": "As a Syrian glassmaker created his wares in Damascus, watching his craft reminded this reporter to slow down and enjoy the moment."
+     "t": "The fridge-size satellite with AI chips on board is part of Project Suncatcher, the company's moonshot effort to put AI data centers in space and harness solar energy."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。"
+     "t": "第2条，来自BBC，商业，难度B2。"
     },
     {
      "lang": "en",
-     "t": "The Burnham bounce: Is Labour gaining ground against Farage’s Reform?"
+     "t": "Thames Water apologises after £145,000 customer billing mistake"
     },
     {
      "lang": "en",
-     "t": "British opinion polls suggest the Labour Party steadily gaining favour as Reform UK dips."
+     "t": "The firm has apologised to the family."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自BBC，国际，难度B2。"
+     "t": "第3条，来自The Guardian，科学，难度B2。"
     },
     {
      "lang": "en",
-     "t": "Six smugglers jailed for manslaughter over worst Channel small boats disaster"
+     "t": "SpaceX launches crew to ISS successfully: ‘Thanks for an amazing ride’"
     },
     {
      "lang": "en",
-     "t": "Thirty-one migrants died when their boat went down in November 2021."
+     "t": "Jessica Watkins, the first Black woman to lead a crew to orbit, is making her second trip to the space station Four astronauts rocketed into orbit on Thursday on a space station mission that will stretch until spring, among them a Canadian "
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "concentrate · sesenta",
-   "dur": 35.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202609301140",
+   "sub": "religion · verde",
+   "dur": 32.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610011206",
    "text": [
     {
      "lang": "zh",
@@ -161,15 +153,15 @@
     },
     {
      "lang": "en",
-     "t": "concentrate"
+     "t": "religion"
     },
     {
      "lang": "zh",
-     "t": "意思是：集中注意力。拼写是："
+     "t": "意思是：宗教。拼写是："
     },
     {
      "lang": "en",
-     "t": "c, o, n, c, e, n, t, r, a, t, e"
+     "t": "r, e, l, i, g, i, o, n"
     },
     {
      "lang": "zh",
@@ -177,7 +169,7 @@
     },
     {
      "lang": "en",
-     "t": "concentrate"
+     "t": "religion"
     },
     {
      "lang": "zh",
@@ -185,15 +177,15 @@
     },
     {
      "lang": "es",
-     "t": "sesenta"
+     "t": "verde"
     },
     {
      "lang": "zh",
-     "t": "意思是：六十。跟着读一遍。"
+     "t": "意思是：绿色的。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "sesenta"
+     "t": "verde"
     }
    ]
   },
@@ -201,12 +193,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202609301140",
+   "dur": 6.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610011206",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
     }
    ]
   }
