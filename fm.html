@@ -18,6 +18,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 .top{display:flex;align-items:center;margin-bottom:12px}
 .top h1{font-size:21px;margin:0;flex:1}
 .top a{color:var(--soft);text-decoration:none;font-size:14px}
+.top button{color:var(--soft);background:none;border:0;font-size:14px;padding:6px 10px}
 .tabs{display:flex;overflow-x:auto;gap:8px;padding-bottom:4px;margin-bottom:10px;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:8px 14px;font-size:15px;white-space:nowrap}
@@ -71,7 +72,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 </head>
 <body>
 <main>
-  <div class="top"><h1>📻 环球网络电台</h1><a href="./">主页</a></div>
+  <div class="top"><h1>📻 环球网络电台</h1><button id="fmRefresh">🔄 更新</button><a href="./">主页</a></div>
   <div class="tabs" id="tabs"></div>
   <div class="srch"><input id="q" placeholder="搜台名、风格，例如 news、jazz、BBC" autocomplete="off"><button id="qBtn">搜索</button></div>
   <div class="chips" id="chips"></div>
@@ -134,6 +135,36 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       cache[cc] = clean(d); cb(cache[cc]);
     });
   }
+
+  /* ---------- 保持链接最新：收藏 / 上次听的台换了地址时自动更新 ---------- */
+  var RR = {};
+  function fresh(s, n) { s.url = n.url; s.hls = n.hls; s.codec = n.codec; s.br = n.br; if (n.fav) s.fav = n.fav; }
+  function refreshFavs(force, cb) {
+    var ids = Object.keys(FAV), lastS = get('last', null);
+    if (lastS && lastS.id && ids.indexOf(lastS.id) < 0) ids.push(lastS.id);
+    if (!ids.length || (!force && Date.now() - get('favChecked', 0) < 12 * 3600000)) { if (cb) cb(0, 0); return; }
+    api('/json/stations/byuuid?uuids=' + ids.join(','), function (d) {
+      if (!d) { if (cb) cb(-1, 0); return; }
+      var changed = 0, seen = {}, gone = 0, i, n;
+      for (i = 0; i < d.length; i++) {
+        n = clean([d[i]])[0]; if (!n) continue; seen[n.id] = 1;
+        if (FAV[n.id]) { if (FAV[n.id].url !== n.url) changed++; fresh(FAV[n.id], n); delete FAV[n.id].gone; }
+        if (lastS && lastS.id === n.id && lastS.url !== n.url) { fresh(lastS, n); put('last', lastS); if (!FAV[n.id]) changed++; }
+      }
+      for (i in FAV) if (FAV.hasOwnProperty(i) && !seen[i]) { FAV[i].gone = 1; gone++; }
+      put('fav', FAV); put('favChecked', Date.now());
+      if (cb) cb(changed, gone);
+    });
+  }
+  $('fmRefresh').onclick = function () {
+    var b = this; b.disabled = true; b.textContent = '🔄 更新中…';
+    cache = {};
+    refreshFavs(true, function (changed, gone) {
+      b.disabled = false; b.textContent = '🔄 更新';
+      toast(changed < 0 ? '电台目录暂时连不上，稍后再试' : '台单已更新' + (changed ? '，' + changed + ' 个收藏换了新地址' : '') + (gone ? '，' + gone + ' 个收藏已停播' : ''));
+      open();
+    });
+  };
 
   /* ---------- UI ---------- */
   function renderTabs() {
@@ -257,6 +288,19 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   function fail(why) {
     clearTimeout(watchdog);
     if (!cur) return;
+    if (cur.id && !RR[cur.id]) {
+      var s0 = cur; RR[s0.id] = 1; stat('连不上，正在查这个台的新地址…');
+      api('/json/stations/byuuid?uuids=' + s0.id, function (d) {
+        var n = d && d[0] ? clean([d[0]])[0] : null;
+        if (cur !== s0) return;
+        if (n && n.url !== s0.url) {
+          fresh(s0, n); if (FAV[s0.id]) { fresh(FAV[s0.id], n); put('fav', FAV); }
+          var L0 = get('last', null); if (L0 && L0.id === s0.id) { fresh(L0, n); put('last', L0); }
+          toast('这个台换了新地址，已自动更新'); start(s0); npStart(s0);
+        } else { RR[s0.id] = 2; fail(why); }
+      });
+      return;
+    }
     cur.bad = true;
     stat(why + '（可能只限本国收听或已停播），按 ⏭ 换下一个', 'err');
     $('bPlay').textContent = '▶';
@@ -425,6 +469,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   renderSongs();
 
   renderTabs(); open();
+  refreshFavs(false, function (changed) { if (changed > 0 && country === 'FAV') open(); });
   var last = get('last', null);
   if (last) { cur = last; curIdx = -1; $('bar').style.display = 'block'; $('bName').textContent = last.name; $('bIco').innerHTML = icon(last); stat('上次听的 · 点 ▶ 继续'); shown = shown.length ? shown : [last]; }
 })();

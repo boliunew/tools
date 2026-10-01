@@ -20,6 +20,8 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 .top h1{font-size:21px;margin:0;flex:1}
 .top a,.top button{color:var(--soft);text-decoration:none;font-size:14px;background:none;border:0;padding:6px 8px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px}
+.newbar{display:flex;align-items:center;justify-content:space-between;background:var(--accent-soft);border:1px solid var(--accent);color:var(--ink);border-radius:14px;padding:10px 12px;margin-bottom:12px;font-size:14.5px}
+.newbar button{border:0;background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:8px 12px;font-weight:600;margin-left:8px;white-space:nowrap}
 .player{padding:20px 18px;text-align:center}
 .date{font-size:13px;color:var(--soft)}
 .date.stale{color:var(--warn);font-weight:600}
@@ -66,6 +68,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 <main>
   <div class="top"><h1>🚗 通勤电台</h1><button id="refresh">🔄 刷新</button><a href="./">主页</a></div>
   <div class="live" id="live"></div>
+  <div id="nb"></div>
   <div id="app"><div class="card msg">加载中…</div></div>
   <div class="foot">方向盘「下一首 / 上一首」切换段落，车机屏幕显示当前段落<br>每天早上自动生成 · <a href="https://github.com/boliunew/tools/actions/workflows/radio.yml" target="_blank" rel="noopener">立即重新生成 ↗</a></div>
 </main>
@@ -91,27 +94,50 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
     catch (e) { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   }
-  function load(manual) {
+  /* 自动换成今天的节目：打开 / 切回页面、开始播放前都会检查；正在听的时候只提示不打断 */
+  var lastCheck = 0, PEND = null;
+  function md(d) { var p = d.split('-'); return (+p[1]) + '月' + (+p[2]) + '日'; }
+  function stale() { return !D || D.date !== todayPT(); }
+  function apply(nd) { D = nd; PEND = null; cur = -1; done = {}; clockQ = null; $('nb').innerHTML = ''; render(); }
+  function load(manual, then) {
+    lastCheck = Date.now();
+    var fin = function () { if (then) { var f = then; then = null; f(); } };
     var x = new XMLHttpRequest();
     x.open('GET', 'radio/data/today.json?t=' + Date.now());
+    x.timeout = 8000;
     x.onload = function () {
-      if (x.status !== 200) { $('app').innerHTML = '<div class="card msg">电台还没生成过。<br>第一次需要等 GitHub 跑一次（几分钟），或点下面的「立即重新生成」。</div>'; return; }
-      var nd; try { nd = JSON.parse(x.responseText); } catch (e) { return; }
+      if (x.status !== 200) { if (!D) $('app').innerHTML = '<div class="card msg">电台还没生成过。<br>第一次需要等 GitHub 跑一次（几分钟），或点下面的「立即重新生成」。</div>'; fin(); return; }
+      var nd; try { nd = JSON.parse(x.responseText); } catch (e) { fin(); return; }
       var same = D && D.generated === nd.generated;
-      if (manual) toast(same ? '已经是最新的了' : '已刷新 ✓');
-      if (same) return;
-      D = nd; cur = -1; done = {}; render();
+      if (manual) toast(same ? (nd.date === todayPT() ? '已经是最新的了' : '今天的还没生成，早上 7 点左右会有') : '已更新到' + md(nd.date) + '的电台 ✓');
+      if (same) { fin(); return; }
+      if (D && cur >= 0 && !manual) {
+        PEND = nd;
+        $('nb').innerHTML = '<div class="newbar">🆕 ' + md(nd.date) + '的电台已经生成<button id="nbGo">换成新的 ▶</button></div>';
+        $('nbGo').onclick = function () { if (PEND) { apply(PEND); start(0); } };
+        fin(); return;
+      }
+      var had = !!D, wasPlaying = cur >= 0 && !au.paused; apply(nd);
+      if (had && !manual) toast('已自动换成' + md(nd.date) + '的电台');
+      if (manual && wasPlaying) start(0);
       if (AUTO) { AUTO = false; start(0); }
+      fin();
     };
-    x.onerror = function () { $('app').innerHTML = '<div class="card msg">网络好像断了，稍后再试。</div>'; };
+    x.onerror = x.ontimeout = function () { if (!D) $('app').innerHTML = '<div class="card msg">网络好像断了，稍后再试。</div>'; else if (manual) toast('网络好像断了，稍后再试'); fin(); };
     x.send();
   }
+  function begin() { if (stale() && Date.now() - lastCheck > 15000) load(false, function () { start(0); }); else start(0); }
+  function maybeCheck() { var gap = Date.now() - lastCheck; if ((stale() && gap > 60000) || gap > 30 * 60000) load(false); }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) maybeCheck(); });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) maybeCheck(); });
+  window.addEventListener('focus', maybeCheck);
+  setInterval(function () { if (stale() && !document.hidden) load(false); }, 5 * 60000);
   $('refresh').onclick = function () { load(true); };
 
   function render() {
     var stale = D.date !== todayPT(), h = '<div class="card player">';
     var dd = D.date.split('-');
-    h += '<div class="date' + (stale ? ' stale' : '') + '">' + (+dd[1]) + '月' + (+dd[2]) + '日的电台 · ' + D.segments.length + ' 段 · 共 ' + mmss(D.total) + (stale ? ' · 不是今天的' : '') + '</div>';
+    h += '<div class="date' + (stale ? ' stale' : '') + '">' + (+dd[1]) + '月' + (+dd[2]) + '日的电台 · ' + D.segments.length + ' 段 · 共 ' + mmss(D.total) + (stale ? ' · 不是今天的（今天的早上 7 点左右生成，打开页面会自动换上）' : '') + '</div>';
     h += '<div class="now" id="now">准备好了</div><div class="nowsub" id="nowsub">点 ▶ 从头播放</div>';
     h += '<div class="bar" id="bar"><i id="fill"></i></div><div class="times"><span id="tc">0:00</span><span id="td">' + mmss(D.segments[0].dur) + '</span></div>';
     h += '<div class="ctrl"><button id="bPrev" aria-label="上一段">⏮</button><button class="big" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一段">⏭</button></div>';
@@ -128,7 +154,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     }
     h += '</div><div style="text-align:center"><button class="tog" id="togTx">📝 显示文字稿</button></div>';
     $('app').innerHTML = h;
-    $('bPlay').onclick = function () { if (cur < 0) start(0); else if (au.paused) au.play(); else au.pause(); };
+    $('bPlay').onclick = function () { if (cur < 0) begin(); else if (au.paused) au.play(); else au.pause(); };
     $('bPrev').onclick = prev; $('bNext').onclick = next;
     var ss = document.querySelectorAll('.seg');
     for (i = 0; i < ss.length; i++) ss[i].onclick = function () { start(+this.getAttribute('data-i'), true); };
@@ -164,7 +190,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
   }
   function next() { if (!D) return; if (clockQ) { start(0, true); return; } if (cur < D.segments.length - 1) start(cur + 1); else { au.pause(); toast('已经是最后一段'); } }
   function prev() { if (!D) return; if (clockQ) { start(0, true); return; } if (cur > 0 && au.currentTime < 3) start(cur - 1); else start(Math.max(cur, 0), true); }
-  $('tapBtn').onclick = function () { $('tap').className = 'tap'; if (cur < 0) start(0); else au.play(); };
+  $('tapBtn').onclick = function () { $('tap').className = 'tap'; if (cur < 0) begin(); else au.play(); };
 
   function paint() {
     if (!D) return;
@@ -183,7 +209,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
   }
   if (ms) {
     var H = {
-      play: function () { if (cur < 0) start(0); else au.play(); },
+      play: function () { if (cur < 0) begin(); else au.play(); },
       pause: function () { au.pause(); },
       nexttrack: next, previoustrack: prev,
       seekforward: function () { au.currentTime = Math.min(au.duration || 0, au.currentTime + 10); },
