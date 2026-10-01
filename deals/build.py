@@ -77,7 +77,7 @@ RULES = [  # order matters: the first match wins
     ("media", r"\b(e-?book|kindle edition|hardcover|paperback|audiobook|blu-?ray|4k uhd|dvd|vinyl|lp|cd|album|soundtrack|novel|workbook|storybook|bible|comic|manga|movie collection|season one|season \d|french edition|edition\)|recordings|magazine)\b"),
     ("pet", r"\b(dog|dogs|puppy|cats?|cat food|cat litter|cat treats|kitten|kitty|litter|pet|pets|purina|pedigree|friskies|meow mix|iams|blue buffalo|milk-bone|greenies|fancy feast|temptations)\b"),
     ("baby", r"\b(diaper|diapers|pampers|huggies|luvs|baby|babies|infant|toddler|enfamil|similac|gerber|pacifier|stroller|car seat)\b"),
-    ("electronics", r"\b(power station|docking station|pc case|ssd|apple (?:airpods|watch|ipad|iphone|macbook|tv|pencil)|tv|tvs|television|oled|qled|laptop|laptops|chromebook|macbook|tablet|ipad|iphone|android phone|smartphone|phone|headphones|earbuds|airpods|speaker|speakers|soundbar|monitor|camera|smart ?watch|apple watch|charger|charging|usb|cable|ssd|hard drive|microsd|router|wi-?fi|gaming|playstation|ps5|xbox|nintendo|switch 2|printer|kindle|echo|alexa|fire tv|roku|streaming|bluetooth|projector|gpu|graphics card|keyboard|mouse|power bank|batteries|drone|dash cam|electronics)\b"),
+    ("electronics", r"\b(carplay|android auto|dash ?cam|power station|docking station|pc case|ssd|apple (?:airpods|watch|ipad|iphone|macbook|tv|pencil)|tv|tvs|television|oled|qled|laptop|laptops|chromebook|macbook|tablet|ipad|iphone|android phone|smartphone|phone|headphones|earbuds|airpods|speaker|speakers|soundbar|monitor|camera|smart ?watch|apple watch|charger|charging|usb|cable|ssd|hard drive|microsd|router|wi-?fi|gaming|playstation|ps5|xbox|nintendo|switch 2|printer|kindle|echo|alexa|fire tv|roku|streaming|bluetooth|projector|gpu|graphics card|keyboard|mouse|power bank|batteries|drone|dash cam|electronics)\b"),
     ("drinks", r"\b(soda|sodas|coca-cola|coke|pepsi|sprite|dr\.? pepper|squirt|7up|7-up|fanta|jarritos|water|waters|juice|juices|tea|teas|coffee|k-cup|k-cups|gatorade|powerade|energy drink|monster energy|red bull|beer|beers|wine|wines|vodka|tequila|whiskey|whisky|rum|seltzer|lemonade|kombucha|drink|drinks|beverage|beverages|horchata|agua fresca|bodyarmor|celsius|smoothie)\b"),
     ("snacks", r"\b(nutter butter|chips|doritos|cheetos|lay'?s|ruffles|pringles|takis|tostitos|fritos|cookies|cookie|oreo|crackers|cheez-it|goldfish|candy|candies|chocolate|chocolates|gum|snack|snacks|popcorn|pretzels|nuts|almonds|peanuts|pistachios|trail mix|granola bars?|fruit snacks|jerky|gummies|gummy|m&m'?s|snickers|reese'?s|kit ?kat|skittles|halloween candy)\b"),
     ("frozen", r"\b(frozen|ice cream|popsicles?|ice pops?|hot pockets|burritos|chimichangas|taquitos|nuggets|waffles|tv dinners?|el monterey|totino'?s|digiorno|red baron|stouffer'?s|banquet|lean cuisine|marie callender'?s|eggo|pizza rolls|frozen pizza|pot pies?)\b"),
@@ -338,7 +338,7 @@ def tidy(title):
     t = re.sub(r"\s*Walmart\.com\s*$", "", t, flags=re.I)
     t = re.sub(r"\s*\+\s*Free (?:Shipping|S&H).*$", "", t, flags=re.I)
     t = re.sub(r"\s+for\s+\$[\d,.]+.*$", "", t)  # DealNews: 'X for $89 + free shipping'
-    t = re.sub(r"\s*~?\$[\d,.]+\*?(?:\s*(?:w/|after|with)\b.*)?$", "", t)  # trailing price
+    t = re.sub(r"\s*~?\$[\d,.]+\*?(?:\s*(?:w/|after\b|with\b).*)?$", "", t)  # trailing price
     t = re.sub(r"\s+", " ", t).strip(" -|~:")
     return (t or title), flags
 
