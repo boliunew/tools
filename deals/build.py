@@ -24,7 +24,7 @@ ZIP = "91786"  # Upland, CA
 UA = "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Mobile Safari/537.36"
 KEEP_ONLINE_H = 72   # keep online deals this long across runs
 UPCOMING_DAYS = 8    # include flyers that start within this many days ("下周预告")
-V = 4                # bump to re-parse cached flyers after changing the rules below
+V = 5                # bump to re-parse cached flyers after changing the rules below
 
 GROUPS = [  # key, zh, emoji — store groups for the page
     ("grocery", "超市", "🥬"), ("general", "综合百货", "🏬"), ("pharmacy", "药房美妆", "💊"), ("electronics", "电子办公", "🔌"),
@@ -210,6 +210,8 @@ def story_zh(s):
         (r"buy one,? get one free|bogo free|b1g1 free", lambda m: "买一送一"),
         (r"buy one,? get one (\d+)% off|bogo (\d+)% off", lambda m: "第二件%s折" % fmt(10 - int(m.group(1) or m.group(2)) / 10.0)),
         (r"save \$(\d+(?:\.\d+)?)", lambda m: "省 $%s" % m.group(1)),
+        (r"save up to (\d+)%", lambda m: "最多省 %s%%" % m.group(1)),
+        (r"save (\d+)%", lambda m: "省 %s%%" % m.group(1)),
         (r"(\d+)% off", lambda m: "%s折" % fmt(10 - int(m.group(1)) / 10.0)),
         (r"digital coupon", lambda m: "需领电子券"),
         (r"with card", lambda m: "需会员卡"),

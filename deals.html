@@ -86,6 +86,48 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
 .acts button.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
 .foot{font-size:12px;color:var(--faint);text-align:center;margin-top:24px;line-height:1.8}
 .foot a{color:var(--soft);text-decoration:underline}
+.groups{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 8px;padding:0 16px 2px}
+.groups::-webkit-scrollbar{display:none}
+.groups button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:7px 12px;font-size:14.5px;white-space:nowrap}
+.groups button small{font-size:11.5px;color:var(--faint);margin-left:3px}
+.groups button.on{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.groups button.on small{color:inherit;opacity:.7}
+.schips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 8px;padding:0 16px 2px}
+.schips::-webkit-scrollbar{display:none}
+.schips button{flex:0 0 auto;border:1px solid var(--line);background:transparent;border-radius:10px;padding:5px 10px;font-size:13.5px;white-space:nowrap;color:var(--soft)}
+.schips button i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
+.schips button small{color:var(--faint);margin-left:3px;font-size:11.5px}
+.schips button.on{background:var(--card);border-color:var(--ink);color:var(--ink);font-weight:600}
+.schips button.mg{border-style:dashed}
+.shead{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px}
+.shead .nm2{font-weight:700;font-size:16px}
+.shead .dt{font-size:12.5px;color:var(--soft);margin-top:2px;line-height:1.6}
+.shead .bt{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.shead .bt a,.shead .bt button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 11px;font-size:13.5px}
+.shead .bt button.on{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.cmp{background:var(--accent-soft);border-radius:12px;padding:8px 12px;margin-bottom:8px;font-size:13.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cmp b{color:var(--accent)}
+.cmp button{margin-left:auto;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:10px;padding:4px 10px;font-size:13px}
+.cmp button.on{background:var(--accent);color:var(--accent-ink)}
+.stp{margin:2px 0 10px}
+.stp h4{margin:0 0 6px;font-size:13.5px;color:var(--soft);font-weight:600;display:flex;justify-content:space-between}
+.stp h4 small{font-weight:400;color:var(--faint)}
+.stp .row2{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 2px}
+.stp .row2::-webkit-scrollbar{display:none}
+.stp .sc{flex:0 0 auto;width:118px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 9px;text-align:left}
+.stp .sc .e{font-size:13px;font-weight:600}
+.stp .sc b{display:block;color:var(--price);font-size:17px;margin-top:2px}
+.stp .sc small{display:block;font-size:11.5px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pick{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.pick h3{margin:0;padding:9px 12px;font-size:14.5px;background:var(--chip)}
+.pick .pr2{display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line)}
+.pick .pr2 i{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+.pick .pr2 .t{flex:1;min-width:0}
+.pick .pr2 .t small{display:block;color:var(--faint);font-size:12px}
+.pick .pr2 button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:5px 10px;font-size:13px;white-space:nowrap}
+.pick .pr2 button.on{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.tg.up{background:#E7EEFF;color:#3355AA}
+@media (prefers-color-scheme: dark){.tg.up{background:#1E2A44;color:#9DB4FF}}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:12px;font-size:14px;opacity:0;transition:all .25s;pointer-events:none;z-index:9}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
@@ -94,13 +136,16 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
 <main>
   <div class="top"><h1>🏷️ 打折雷达</h1><a href="./">主页</a></div>
   <div class="upd" id="upd">加载中…</div>
-  <div class="stores" id="stores"></div>
+  <div class="srch"><input id="q" type="search" placeholder="比价搜索：eggs、鸡蛋、chicken、汽水…" autocomplete="off"><button class="x" id="qx" aria-label="清除">×</button></div>
+  <div class="groups" id="groups"></div>
+  <div class="schips" id="schips"></div>
+  <div id="shead"></div>
   <div class="subs" id="subs"></div>
-  <div class="srch"><input id="q" type="search" placeholder="搜一搜：eggs、鸡蛋、chicken、汽水…" autocomplete="off"><button class="x" id="qx" aria-label="清除">×</button></div>
+  <div id="stp"></div>
   <div class="chips" id="chips"></div>
   <div class="sorts" id="sorts"></div>
   <div id="body"><div class="msg">加载中…</div></div>
-  <div class="foot">Food 4 Less、Walmart 是本周广告（邮编 91786）；Amazon、Walmart 网上特价来自 Slickdeals、DealNews、camelcamelcamel 的公开信息<br>每天早晚自动更新两次 · 价格以店内和网页为准</div>
+  <div class="foot">超市和商店的本周广告来自 Flipp（邮编 91786 附近）；Amazon、Walmart 网上特价来自 Slickdeals、DealNews、camelcamelcamel 的公开信息<br>每天早晚自动更新两次 · 价格以店内和网页为准</div>
 </main>
 <div class="toast" id="toast"></div>
 <script>
@@ -112,15 +157,28 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
   function put(k, v) { try { window.localStorage.setItem('deals:' + k, JSON.stringify(v)); } catch (e) { } }
   var toastT = null;
   function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 2200); }
+  function fmtN(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
-  var D = null, ITEMS = [], CAT = {}, store = get('store', 'all'), sub = get('sub', {}), cat = 'all', sort = get('sort', 'rec'), q = '', shown = 60;
-  var LIST = get('list', {});
-  var SUBS = {
-    walmart: [['all', '全部'], ['flyer', '每周广告'], ['online', '网上特价']],
-    amazon: [['all', '全部'], ['hot', '热门精选'], ['camel', '降价榜']]
-  };
+  var META = null, FLY = null, ITEMS = [], ST = {}, CAT = {}, GRP = [];
+  var grp = get('grp', 'mine'), SEL = get('sel', {}), sub = get('sub', {}), cat = 'all', sort = get('sort', 'rec'), q = '', mineOnly = false, shown = 60;
+  var MINE = get('mine', ['f4l', 'walmart', 'amazon']), LIST = get('list', {});
   var SORTS = [['rec', '推荐'], ['off', '折扣大'], ['price', '价格低'], ['new', '最新']];
-  var LINKS = { f4l: ['📰 看原版周报', 'https://www.food4less.com/weeklyad'], walmart: ['🔗 Walmart 特价页', 'https://www.walmart.com/shop/deals'], amazon: ['🔗 Amazon 今日特价', 'https://www.amazon.com/deals'] };
+  var PALETTE = ['#B5452B', '#2B6CB0', '#2F855A', '#B7791F', '#6B46C1', '#C05621', '#2C7A7B', '#9B2C2C', '#4A5568', '#D53F8C'];
+  var STAPLES = [
+    ['🥚', '鸡蛋', /\beggs?\b/i, '', 'dairy', 'eggs'], ['🥛', '牛奶', /\bmilk\b/i, '', 'dairy', 'milk'],
+    ['🍗', '鸡腿鸡翅', /(chicken.*\b(thighs?|legs?|drumsticks?|wings?|quarters?)\b)|(\b(thighs?|legs?|drumsticks?|wings?|quarters?)\b.*chicken)/i, 'lb', 'meat', 'chicken'],
+    ['🐔', '鸡胸肉', /chicken breasts?/i, 'lb', 'meat', 'chicken breast'], ['🍔', '牛肉馅', /ground (beef|chuck|round)/i, 'lb', 'meat', 'ground beef'],
+    ['🥩', '牛排', /steak|ribeye|rib eye|sirloin|tri-?tip|carne asada|new york strip/i, 'lb', 'meat', 'steak'],
+    ['🐷', '猪肉', /\bpork\b|carnitas|spare ribs/i, 'lb', 'meat', 'pork'], ['🦐', '虾', /shrimp/i, '', 'seafood', 'shrimp'],
+    ['🐟', '三文鱼', /salmon/i, '', 'seafood', 'salmon'], ['🥑', '牛油果', /avocado/i, '', 'produce', 'avocado'],
+    ['🍌', '香蕉', /banana/i, '', 'produce', 'banana'], ['🍅', '西红柿', /tomato/i, '', 'produce', 'tomato'],
+    ['🧅', '洋葱土豆', /\b(onions?|potato(es)?)\b/i, '', 'produce', 'onion potato'], ['🍓', '草莓', /strawberr/i, '', 'produce', 'strawberries'],
+    ['🍇', '葡萄', /\bgrapes\b/i, '', 'produce', 'grapes'], ['🍚', '大米', /\brice\b/i, '', 'pantry', 'rice'],
+    ['🍞', '面包', /\bbread\b/i, '', 'bakery', 'bread'], ['🌮', '玉米饼', /tortillas?\b(?! chips)/i, '', 'bakery', 'tortillas'],
+    ['🥤', '汽水', /soda|coca-cola|\bcoke\b|pepsi|sprite|dr\.? pepper|7up|squirt/i, '', 'drinks', 'soda'], ['💧', '瓶装水', /\bwater\b/i, '', 'drinks', 'water'],
+    ['🧻', '卫生纸', /bath tissue|toilet paper/i, '', 'household', 'bath tissue'], ['🧻', '厨房纸', /paper towels?/i, '', 'household', 'paper towels'],
+    ['🧺', '洗衣液', /detergent/i, '', 'household', 'detergent']
+  ];
 
   function todayPT() {
     try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
@@ -128,63 +186,98 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
   }
   function md(iso) { var p = String(iso).slice(0, 10).split('-'); return (+p[1]) + '/' + (+p[2]); }
   function each(x) { var m = /^(\d+)\//.exec(x.pt || ''); return x.p != null ? (m ? x.p / +m[1] : x.p) : null; }
-  function storeOf(x) { return D.stores[x.s] || { name: x.s, icon: '', color: '#888' }; }
+  function storeOf(id) { return ST[id] || { id: id, name: id, grp: [], color: '#888' }; }
+  function sname(id) { return storeOf(id).name; }
+  function inMine(id) { return MINE.indexOf(id) >= 0; }
+
+  /* ---------- load ---------- */
+  function fetchJSON(url, cb) {
+    var x = new XMLHttpRequest();
+    x.open('GET', url + '?t=' + Math.floor(Date.now() / 600000));
+    x.onload = function () { if (x.status !== 200) { cb(null); return; } try { cb(JSON.parse(x.responseText)); } catch (e) { cb(null); } };
+    x.onerror = function () { cb(null); };
+    x.send();
+  }
+  function load() {
+    var left = 2;
+    var done = function () { if (--left) return; if (!META) { $('body').innerHTML = '<div class="msg">数据暂时读不到，稍后再试。</div>'; return; } build(); };
+    fetchJSON('deals/data/meta.json', function (d) { META = d; done(); });
+    fetchJSON('deals/data/flyers.json', function (d) { FLY = d || { flyers: {} }; done(); });
+  }
+  function build() {
+    var i, k, f, it, x, ci = 0;
+    ST = META.stores || {}; GRP = META.groups || []; CAT = {};
+    for (i = 0; i < META.cats.length; i++) CAT[META.cats[i].k] = META.cats[i];
+    for (k in ST) if (ST.hasOwnProperty(k)) { ST[k].flyers = []; if (!ST[k].color) ST[k].color = PALETTE[ci++ % PALETTE.length]; }
+    ITEMS = [];
+    var fids = Object.keys(FLY.flyers || {});
+    for (i = 0; i < fids.length; i++) {
+      f = FLY.flyers[fids[i]];
+      if (ST[f.s]) ST[f.s].flyers.push(f);
+      for (var j = 0; j < f.items.length; j++) {
+        it = f.items[j];
+        it.s = f.s; it.src = 'flyer'; it.to = f.to; it.from = f.from; if (f.up) it.up = 1;
+        if (it.im) it.img = /^https?:/.test(it.im) ? it.im : 'https://f.wishabi.net/page_items/' + it.im + '/extra_large.jpg';
+        ITEMS.push(it);
+      }
+    }
+    for (i = 0; i < (META.online || []).length; i++) ITEMS.push(META.online[i]);
+    for (i = 0; i < ITEMS.length; i++) {
+      x = ITEMS[i]; x._i = i; x._e = each(x);
+      var st = storeOf(x.s);
+      x._g = x.src === 'flyer' ? st.grp : ['online'];
+      if (!x.u) x.u = st.q ? st.q.replace('{q}', encodeURIComponent(x.n)) : 'https://www.google.com/search?q=' + encodeURIComponent(st.name + ' ' + x.n);
+      x._q = (x.n + ' ' + (x.b || '') + ' ' + (x.zh || '') + ' ' + (x.stz || '') + ' ' + (CAT[x.c] ? CAT[x.c].zh : '') + ' ' + (x.fl || []).join(' ') + ' ' + st.name).toLowerCase();
+    }
+    for (k in ST) if (ST.hasOwnProperty(k)) ST[k].flyers.sort(function (a, b) { return a.from < b.from ? -1 : 1; });
+    pruneList();
+    header(); render();
+  }
+  function header() {
+    var up = new Date(META.updated), t = '', ns = 0, k;
+    try { t = new Intl.DateTimeFormat('zh-CN', { timeZone: 'America/Los_Angeles', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: false }).format(up); } catch (e) { t = up.toLocaleString(); }
+    for (k in ST) if (ST.hasOwnProperty(k)) ns++;
+    $('upd').innerHTML = '更新于 ' + t + ' · ' + ns + ' 家店 · ' + fmtN(ITEMS.length) + ' 件特价';
+  }
+
+  /* ---------- which items are in view ---------- */
+  function selOf(g) { return SEL[g] || 'all'; }
+  function inGroup(x, g) {
+    if (g === 'mine') return inMine(x.s);
+    if (g === 'online') return x.src !== 'flyer';
+    return x._g.indexOf(g) >= 0;
+  }
   function subOf(x) {
     if (x.s === 'walmart') return x.src === 'flyer' ? 'flyer' : 'online';
     if (x.s === 'amazon') return x.src === 'camel' ? 'camel' : 'hot';
     return 'all';
   }
-
-  /* ---------- load ---------- */
-  function load() {
-    var x = new XMLHttpRequest();
-    x.open('GET', 'deals/data/latest.json?t=' + Math.floor(Date.now() / 600000));
-    x.onload = function () {
-      if (x.status !== 200) { $('body').innerHTML = '<div class="msg">数据还没生成，稍后再来看看。</div>'; return; }
-      try { D = JSON.parse(x.responseText); } catch (e) { $('body').innerHTML = '<div class="msg">数据读取失败，稍后再试。</div>'; return; }
-      ITEMS = D.items; CAT = {};
-      for (var i = 0; i < D.cats.length; i++) CAT[D.cats[i].k] = D.cats[i];
-      for (i = 0; i < ITEMS.length; i++) { var it = ITEMS[i]; it._i = i; it._e = each(it); it._q = (it.n + ' ' + (it.b || '') + ' ' + (it.zh || '') + ' ' + (it.stz || '') + ' ' + (CAT[it.c] ? CAT[it.c].zh : '') + ' ' + (it.fl || []).join(' ')).toLowerCase(); }
-      pruneList();
-      header(); render();
-    };
-    x.onerror = function () { $('body').innerHTML = '<div class="msg">网络好像断了，稍后再试。</div>'; };
-    x.send();
-  }
-  function header() {
-    var up = new Date(D.updated), t = '';
-    try { t = new Intl.DateTimeFormat('zh-CN', { timeZone: 'America/Los_Angeles', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: false }).format(up); } catch (e) { t = up.toLocaleString(); }
-    var h = '更新于 ' + t;
-    for (var k in D.flyers) if (D.flyers.hasOwnProperty(k) && D.flyers[k].length) h += ' · ' + esc(D.stores[k].name) + ' 周报 ' + md(D.flyers[k][0].from) + '–' + md(D.flyers[k][0].to);
-    $('upd').innerHTML = h;
-  }
-
-  /* ---------- filtering ---------- */
+  function match(x) { var ws = q.split(/\s+/), i; for (i = 0; i < ws.length; i++) if (ws[i] && x._q.indexOf(ws[i]) < 0) return false; return true; }
   function base() {
-    var out = [], i, x, s = sub[store] || 'all';
+    var out = [], i, x, s = selOf(grp), sb = sub[s] || 'all';
     for (i = 0; i < ITEMS.length; i++) {
       x = ITEMS[i];
-      if (store !== 'all' && store !== 'list' && x.s !== store) continue;
-      if (SUBS[store] && s !== 'all' && subOf(x) !== s) continue;
-      if (q && !match(x)) continue;
+      if (q) { if (mineOnly && !inMine(x.s)) continue; if (!match(x)) continue; out.push(x); continue; }
+      if (!inGroup(x, grp)) continue;
+      if (s !== 'all' && x.s !== s) continue;
+      if (s !== 'all' && sb !== 'all' && subOf(x) !== sb) continue;
       out.push(x);
     }
     return out;
   }
-  function match(x) { var ws = q.split(/\s+/), i; for (i = 0; i < ws.length; i++) if (ws[i] && x._q.indexOf(ws[i]) < 0) return false; return true; }
-  function sorted(arr) {
-    var a = arr.slice();
-    if (sort === 'off') a.sort(function (x, y) { return (y.off || 0) - (x.off || 0) || x._i - y._i; });
-    else if (sort === 'price') a.sort(function (x, y) { return (x._e == null ? 1e9 : x._e) - (y._e == null ? 1e9 : y._e); });
-    else if (sort === 'new') a.sort(function (x, y) { return String(y.t || y.to || '').localeCompare(String(x.t || x.to || '')) || x._i - y._i; });
+  function sorted(a) {
+    var o = q && sort === 'rec' ? 'price' : sort;
+    a = a.slice();
+    if (o === 'off') a.sort(function (x, y) { return (y.off || 0) - (x.off || 0) || x._i - y._i; });
+    else if (o === 'price') a.sort(function (x, y) { return (x.up || 0) - (y.up || 0) || (x._e == null ? 1e9 : x._e) - (y._e == null ? 1e9 : y._e); });
+    else if (o === 'new') a.sort(function (x, y) { return String(y.t || y.from || '').localeCompare(String(x.t || x.from || '')) || x._i - y._i; });
     else {
-      // 推荐: weekly-ad order as printed, online deals by votes; in 「全部」 interleave the three stores
-      var by = {}, order = ['f4l', 'walmart', 'amazon'], i, out = [];
-      for (i = 0; i < a.length; i++) (by[a[i].s] = by[a[i].s] || []).push(a[i]);
-      for (var k in by) if (by.hasOwnProperty(k)) by[k].sort(function (x, y) { var fx = x.src === 'flyer' ? 0 : 1, fy = y.src === 'flyer' ? 0 : 1; return fx - fy || (y.score || 0) - (x.score || 0) || x._i - y._i; });
-      for (k in by) if (by.hasOwnProperty(k) && order.indexOf(k) < 0) order.push(k);
-      var left = true, j = 0;
-      while (left) { left = false; for (i = 0; i < order.length; i++) { var L = by[order[i]]; if (L && j < L.length) { out.push(L[j]); left = true; } } j++; }
+      var by = {}, order = [], i, out = [];
+      for (i = 0; i < a.length; i++) { if (!by[a[i].s]) { by[a[i].s] = []; order.push(a[i].s); } by[a[i].s].push(a[i]); }
+      order.sort(function (x, y) { return (inMine(y) ? 1 : 0) - (inMine(x) ? 1 : 0) || (storeOf(y).n || 0) - (storeOf(x).n || 0); });
+      for (var k in by) if (by.hasOwnProperty(k)) by[k].sort(function (x, y) { return (x.up || 0) - (y.up || 0) || (x.src === 'flyer' ? 0 : 1) - (y.src === 'flyer' ? 0 : 1) || (y.score || 0) - (x.score || 0) || x._i - y._i; });
+      var more = true, j = 0;
+      while (more) { more = false; for (i = 0; i < order.length; i++) { var L = by[order[i]]; if (j < L.length) { out.push(L[j]); more = true; } } j++; }
       return out;
     }
     return a;
@@ -192,42 +285,115 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
 
   /* ---------- render ---------- */
   function render() {
-    renderStores();
-    if (store === 'list') { renderList(); return; }
+    renderGroups();
+    if (grp === 'list') { clearFilters(); renderList(); return; }
+    if (grp === 'pick') { clearFilters(); renderPick(); return; }
+    renderStoreChips(); renderHead();
     var arr = base(), counts = {}, i;
     for (i = 0; i < arr.length; i++) counts[arr[i].c] = (counts[arr[i].c] || 0) + 1;
     if (cat !== 'all' && !counts[cat]) cat = 'all';
-    // sub tabs
-    var sh = '';
-    if (SUBS[store]) { var ss = SUBS[store], cur = sub[store] || 'all'; for (i = 0; i < ss.length; i++) sh += '<button data-s="' + ss[i][0] + '" class="' + (cur === ss[i][0] ? 'on' : '') + '">' + ss[i][1] + '</button>'; }
-    if (LINKS[store]) sh += '<a class="note" href="' + LINKS[store][1] + '" target="_blank" rel="noopener">' + LINKS[store][0] + '</a>';
-    $('subs').innerHTML = sh; $('subs').style.display = sh ? '' : 'none';
-    // category chips
+    renderStaples();
     var ch = '<button data-c="all" class="' + (cat === 'all' ? 'on' : '') + '">全部<small>' + arr.length + '</small></button>';
-    for (i = 0; i < D.cats.length; i++) { var c = D.cats[i]; if (counts[c.k]) ch += '<button data-c="' + c.k + '" class="' + (cat === c.k ? 'on' : '') + '">' + c.e + ' ' + c.zh + '<small>' + counts[c.k] + '</small></button>'; }
+    for (i = 0; i < META.cats.length; i++) { var c = META.cats[i]; if (counts[c.k]) ch += '<button data-c="' + c.k + '" class="' + (cat === c.k ? 'on' : '') + '">' + c.e + ' ' + c.zh + '<small>' + counts[c.k] + '</small></button>'; }
     $('chips').innerHTML = ch;
     var list = cat === 'all' ? arr : arr.filter(function (x) { return x.c === cat; });
     list = sorted(list);
-    var so = '';
-    for (i = 0; i < SORTS.length; i++) so += '<button data-o="' + SORTS[i][0] + '" class="' + (sort === SORTS[i][0] ? 'on' : '') + '">' + SORTS[i][1] + '</button>';
-    $('sorts').innerHTML = so + '<span class="n">' + list.length + ' 件</span>';
+    var so = '', eff = q && sort === 'rec' ? 'price' : sort;
+    for (i = 0; i < SORTS.length; i++) so += '<button data-o="' + SORTS[i][0] + '" class="' + (eff === SORTS[i][0] ? 'on' : '') + '">' + SORTS[i][1] + '</button>';
+    $('sorts').innerHTML = so + '<span class="n">' + fmtN(list.length) + ' 件</span>';
     if (!list.length) { $('body').innerHTML = '<div class="msg">' + (q ? '没找到「' + esc(q) + '」，换个词试试（中英文都行）' : '这里暂时没有特价') + '</div>'; return; }
     var h = '<div class="grid">';
     for (i = 0; i < Math.min(shown, list.length); i++) h += card(list[i]);
     h += '</div>';
-    if (list.length > shown) h += '<button class="more" id="more">再看 ' + Math.min(60, list.length - shown) + ' 件（还有 ' + (list.length - shown) + '）</button>';
+    if (list.length > shown) h += '<button class="more" id="more">再看 ' + Math.min(60, list.length - shown) + ' 件（还有 ' + fmtN(list.length - shown) + '）</button>';
     $('body').innerHTML = h;
     if ($('more')) $('more').onclick = function () { shown += 60; render(); };
   }
+  function clearFilters() { $('schips').innerHTML = ''; $('shead').innerHTML = ''; $('subs').style.display = 'none'; $('stp').innerHTML = ''; $('chips').innerHTML = ''; $('sorts').innerHTML = ''; }
+  function groupCount(g) { var n = 0, i; for (i = 0; i < ITEMS.length; i++) if (inGroup(ITEMS[i], g)) n++; return n; }
+  function renderGroups() {
+    var h = '', i, n;
+    if (q) { $('groups').innerHTML = ''; $('groups').style.display = 'none'; return; }
+    $('groups').style.display = '';
+    h += '<button data-g="mine" class="' + (grp === 'mine' ? 'on' : '') + '">⭐ 我的店<small>' + fmtN(groupCount('mine')) + '</small></button>';
+    for (i = 0; i < GRP.length; i++) { n = groupCount(GRP[i].k); if (n) h += '<button data-g="' + GRP[i].k + '" class="' + (grp === GRP[i].k ? 'on' : '') + '">' + GRP[i].e + ' ' + GRP[i].zh + '<small>' + fmtN(n) + '</small></button>'; }
+    var ln = 0; for (var k in LIST) if (LIST.hasOwnProperty(k)) ln++;
+    h += '<button data-g="list" class="' + (grp === 'list' ? 'on' : '') + '">🛒 清单<small>' + ln + '</small></button>';
+    $('groups').innerHTML = h;
+  }
+  function renderStoreChips() {
+    if (q) {
+      $('schips').innerHTML = '';
+      return;
+    }
+    var cnt = {}, ids = [], i, x, s = selOf(grp), h = '';
+    for (i = 0; i < ITEMS.length; i++) { x = ITEMS[i]; if (!inGroup(x, grp)) continue; if (!cnt[x.s]) { cnt[x.s] = 0; ids.push(x.s); } cnt[x.s]++; }
+    if (grp === 'mine') ids.sort(function (a, b) { return MINE.indexOf(a) - MINE.indexOf(b); });
+    else ids.sort(function (a, b) { return cnt[b] - cnt[a]; });
+    if (s !== 'all' && !cnt[s]) { s = 'all'; SEL[grp] = 'all'; }
+    h += '<button data-s="all" class="' + (s === 'all' ? 'on' : '') + '">全部 ' + ids.length + ' 家</button>';
+    for (i = 0; i < ids.length; i++) h += '<button data-s="' + ids[i] + '" class="' + (s === ids[i] ? 'on' : '') + '"><i style="background:' + storeOf(ids[i]).color + '"></i>' + esc(sname(ids[i])) + '<small>' + cnt[ids[i]] + '</small></button>';
+    h += '<button data-s="__pick" class="mg">⚙️ ' + (grp === 'mine' ? '管理我的店' : '全部店铺') + '</button>';
+    $('schips').innerHTML = h;
+  }
+  function renderHead() {
+    var s = selOf(grp), h = '', i;
+    $('subs').style.display = 'none';
+    if (q) {
+      h = '<div class="cmp"><span>🔍 比价：在' + (mineOnly ? '我的店' : '所有店') + '里搜「<b>' + esc(q) + '</b>」' + (sort === 'rec' ? '，按单件价从低到高' : '') + '</span><button id="mineOnly" class="' + (mineOnly ? 'on' : '') + '">只看我的店</button></div>';
+      $('shead').innerHTML = h; return;
+    }
+    if (s === 'all') { $('shead').innerHTML = ''; return; }
+    var st = storeOf(s), dts = [];
+    for (i = 0; i < (st.flyers || []).length; i++) { var f = st.flyers[i]; dts.push((f.up ? '<b style="color:#3355AA">下周预告</b> ' : '') + esc(f.name || '周报') + ' ' + md(f.from) + '–' + md(f.to)); }
+    if (s === 'amazon') dts.push('网上特价：Slickdeals 热门 + DealNews 精选 + camelcamelcamel 降价榜');
+    var wk = st.wk || 'https://www.google.com/search?q=' + encodeURIComponent(st.name + ' weekly ad');
+    var gz = []; for (i = 0; i < (st.grp || []).length; i++) for (var j = 0; j < GRP.length; j++) if (GRP[j].k === st.grp[i]) gz.push(GRP[j].zh);
+    h = '<div class="shead"><div class="nm2" style="color:' + st.color + '">' + esc(st.name) + '</div><div class="dt">' + gz.join(' · ') + (dts.length ? '<br>' + dts.join('<br>') : '') + '</div>';
+    h += '<div class="bt"><a href="' + esc(wk) + '" target="_blank" rel="noopener">' + (s === 'amazon' ? '🔗 Amazon 今日特价' : '📰 看原版周报') + '</a><button id="pinBtn" class="' + (inMine(s) ? 'on' : '') + '">' + (inMine(s) ? '✓ 在我的店里' : '📌 加入我的店') + '</button></div></div>';
+    $('shead').innerHTML = h;
+    var subs = s === 'walmart' ? [['all', '全部'], ['flyer', '每周广告'], ['online', '网上特价']] : s === 'amazon' ? [['all', '全部'], ['hot', '热门精选'], ['camel', '降价榜']] : null;
+    if (subs) {
+      var cur = sub[s] || 'all', sh = '';
+      for (i = 0; i < subs.length; i++) sh += '<button data-sub="' + subs[i][0] + '" class="' + (cur === subs[i][0] ? 'on' : '') + '">' + subs[i][1] + '</button>';
+      $('subs').innerHTML = sh; $('subs').style.display = '';
+    }
+  }
+
+  /* ---------- 本周好价 ---------- */
+  function renderStaples() {
+    if (q || cat !== 'all' || selOf(grp) !== 'all' || (grp !== 'mine' && grp !== 'grocery')) { $('stp').innerHTML = ''; return; }
+    var h = '', i, j, x, n = 0;
+    for (i = 0; i < STAPLES.length; i++) {
+      var S = STAPLES[i], cands = [], lb = [];
+      for (j = 0; j < ITEMS.length; j++) {
+        x = ITEMS[j];
+        if (x.src !== 'flyer' || x.up || x._e == null || x.c !== S[4] || x._g.indexOf('grocery') < 0 || !S[2].test(x.n)) continue;
+        cands.push(x); if (/\/磅/.test(x.pt || '')) lb.push(x);
+      }
+      var pool = S[3] === 'lb' && lb.length ? lb : cands;
+      if (!pool.length) continue;
+      pool.sort(function (a, b) { return a._e - b._e; });
+      var best = pool[0], stores = {};
+      for (j = 0; j < cands.length; j++) stores[cands[j].s] = 1;
+      var ns = Object.keys(stores).length;
+      h += '<button class="sc" data-q="' + esc(S[5]) + '"><div class="e">' + S[0] + ' ' + S[1] + '</div><b>' + esc(best.pt || '$' + best.p) + '</b><small>' + esc(sname(best.s)) + '</small><small>' + (ns > 1 ? ns + ' 家店在打折' : '仅此一家') + '</small></button>';
+      n++;
+    }
+    $('stp').innerHTML = n ? '<div class="stp"><h4>🏆 本周超市好价<small>所有超市里最低的一家 · 点进去比价</small></h4><div class="row2">' + h + '</div></div>' : '';
+  }
+
+  /* ---------- cards ---------- */
   function priceHTML(x) {
-    if (x.p == null && !x.pt) return x.stz ? '' : '<b style="font-size:15px">见详情</b>';
-    var m = /^(\d+)\/\$/.exec(x.pt || ''), h = '<b>' + esc(x.pt || ('$' + x.p)) + '</b>';
+    if (x.p == null && !x.pt) return x.stz || x.st ? '' : '<b style="font-size:15px">见详情</b>';
+    var m = /^(\d+)\/\$/.exec(x.pt || ''), h = '<b>' + (x.pq ? '约' : '') + esc(x.pt || ('$' + x.p)) + '</b>';
     if (x.was && x.p != null && x.was > x.p) h += '<s>$' + esc(x.was) + '</s>';
     if (m) h += '<span class="each">每件 $' + (Math.round(x._e * 100) / 100).toFixed(2).replace(/\.00$/, '') + '</span>';
     return h;
   }
   function card(x) {
-    var st = storeOf(x), on = LIST[x.id], c = CAT[x.c] || { e: '📦', zh: '' }, tags = '', i;
+    var st = storeOf(x.s), on = LIST[x.id], c = CAT[x.c] || { e: '📦', zh: '' }, tags = '', i;
+    if (x.up) tags += '<span class="tg up">下周 ' + md(x.from) + ' 起</span>';
     if (x.stz) { var zs = x.stz.split('，'); for (i = 0; i < zs.length; i++) tags += '<span class="tg' + (i === 0 && /送|折|省/.test(zs[i]) ? ' hot' : '') + '">' + esc(zs[i]) + '</span>'; }
     else if (x.st) tags += '<span class="tg hot">' + esc(x.st) + '</span>';
     if (x.fl) for (i = 0; i < x.fl.length; i++) tags += '<span class="tg">' + esc(x.fl[i]) + '</span>';
@@ -244,33 +410,52 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     return h;
   }
 
+  /* ---------- store manager ---------- */
+  function renderPick() {
+    var h = '<div class="cmp" style="background:var(--chip)">点「📌」把常去的店加进<b>我的店</b>，首页就只显示它们的特价。拖不动？顺序就是加入的先后。</div>', g, i, k;
+    for (g = 0; g < GRP.length; g++) {
+      var ids = [];
+      for (k in ST) if (ST.hasOwnProperty(k) && (ST[k].grp || []).indexOf(GRP[g].k) >= 0 && (ST[k].grp[0] === GRP[g].k)) ids.push(k);
+      if (!ids.length) continue;
+      ids.sort(function (a, b) { return (ST[b].n || 0) - (ST[a].n || 0); });
+      h += '<div class="pick"><h3>' + GRP[g].e + ' ' + GRP[g].zh + '</h3>';
+      for (i = 0; i < ids.length; i++) {
+        var st = ST[ids[i]], f = st.flyers || [], d = f.length ? md(f[0].from) + '–' + md(f[f.length - 1].to) : '';
+        h += '<div class="pr2"><i style="background:' + st.color + '"></i><div class="t">' + esc(st.name) + '<small>' + (st.n || 0) + ' 件' + (d ? ' · ' + d : '') + (f.length > 1 ? ' · ' + f.length + ' 份广告' : '') + '</small></div><button data-go="' + ids[i] + '">看看</button><button data-pin="' + ids[i] + '" class="' + (inMine(ids[i]) ? 'on' : '') + '">' + (inMine(ids[i]) ? '✓ 我的店' : '📌 加入') + '</button></div>';
+      }
+      h += '</div>';
+    }
+    $('body').innerHTML = h;
+  }
+  function togglePin(id) {
+    var i = MINE.indexOf(id);
+    if (i >= 0) { MINE.splice(i, 1); toast('已从我的店移除'); } else { MINE.push(id); toast('已加入我的店 ⭐'); }
+    put('mine', MINE);
+  }
+
   /* ---------- shopping list ---------- */
   function pruneList() {
     var t = todayPT(), k, n = 0;
     for (k in LIST) if (LIST.hasOwnProperty(k) && LIST[k].to && LIST[k].to < t && LIST[k].saved && (Date.now() - LIST[k].saved) > 14 * 864e5) { delete LIST[k]; n++; }
     if (n) put('list', LIST);
   }
-  function listCount() { var n = 0; for (var k in LIST) if (LIST.hasOwnProperty(k)) n++; return n; }
   function toggleList(id) {
     var x = null, i;
     for (i = 0; i < ITEMS.length; i++) if (ITEMS[i].id === id) { x = ITEMS[i]; break; }
     if (LIST[id]) { delete LIST[id]; toast('已从清单移除'); }
-    else if (x) { LIST[id] = { id: id, s: x.s, n: x.n, pt: x.pt || (x.p != null ? '$' + x.p : ''), e: x._e, img: x.img, u: x.u, to: x.to || '', stz: x.stz || '', zh: x.zh || '', saved: Date.now() }; toast('已加入购物清单 ⭐'); }
+    else if (x) { LIST[id] = { id: id, s: x.s, n: x.n, pt: (x.pq ? '约' : '') + (x.pt || (x.p != null ? '$' + x.p : '')), e: x._e, img: x.img, u: x.u, to: x.to || '', stz: x.stz || '', zh: x.zh || '', saved: Date.now() }; toast('已加入购物清单 🛒'); }
     put('list', LIST);
   }
   function renderList() {
-    $('subs').style.display = 'none'; $('chips').innerHTML = ''; $('sorts').innerHTML = '';
-    var by = {}, k, t = todayPT(), h = '', n = 0, tot = 0;
-    for (k in LIST) if (LIST.hasOwnProperty(k)) { (by[LIST[k].s] = by[LIST[k].s] || []).push(LIST[k]); n++; if (LIST[k].e != null && !(LIST[k].to && LIST[k].to < t)) tot += LIST[k].e; }
+    var by = {}, order = [], k, t = todayPT(), h = '', n = 0, tot = 0;
+    for (k in LIST) if (LIST.hasOwnProperty(k)) { var e = LIST[k]; if (!by[e.s]) { by[e.s] = []; order.push(e.s); } by[e.s].push(e); n++; if (e.e != null && !(e.to && e.to < t)) tot += e.e; }
     if (!n) { $('body').innerHTML = '<div class="msg">清单是空的。<br>在商品图片右上角点 ☆，就能加进购物清单，去哪家店买一目了然。</div>'; return; }
+    order.sort(function (a, b) { return (inMine(b) ? 1 : 0) - (inMine(a) ? 1 : 0); });
     h += '<div class="acts"><button class="pri" id="copyL">📋 复制清单</button><button id="clearOld">🧹 清掉过期的</button><button id="clearAll">清空</button></div>';
-    var order = ['f4l', 'walmart', 'amazon'];
-    for (k in by) if (by.hasOwnProperty(k) && order.indexOf(k) < 0) order.push(k);
     for (var o = 0; o < order.length; o++) {
-      var L = by[order[o]]; if (!L) continue;
-      var st = D.stores[order[o]] || { name: order[o], icon: '', color: '#888' }, sum = 0;
-      for (var j = 0; j < L.length; j++) if (L[j].e != null) sum += L[j].e;
-      h += '<div class="list"><h3><span style="color:' + st.color + '">' + st.icon + ' ' + esc(st.name) + '</span><span>' + L.length + ' 件 · 约 $' + sum.toFixed(2) + '</span></h3>';
+      var L = by[order[o]], st = storeOf(order[o]), sum = 0, j;
+      for (j = 0; j < L.length; j++) if (L[j].e != null) sum += L[j].e;
+      h += '<div class="list"><h3><span style="color:' + st.color + '">' + esc(st.name) + '</span><span>' + L.length + ' 件 · 约 $' + sum.toFixed(2) + '</span></h3>';
       for (j = 0; j < L.length; j++) {
         var x = L[j], old = x.to && x.to < t;
         h += '<div class="row' + (old ? ' old' : '') + '">' + (x.img ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + esc(x.img) + '" alt="">' : '') + '<a class="t" href="' + esc(x.u || '#') + '" target="_blank" rel="noopener"><div>' + esc(x.n) + '</div><small>' + esc([x.zh, x.stz, old ? '已过期' : (x.to ? '到 ' + md(x.to) : '')].filter(function (z) { return z; }).join(' · ')) + '</small></a><span class="p">' + esc(x.pt) + '</span><button class="rm" data-id="' + esc(x.id) + '" aria-label="移除">×</button></div>';
@@ -281,62 +466,57 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     $('body').innerHTML = h;
     $('copyL').onclick = function () {
       var lines = ['🛒 购物清单 ' + md(t)], o2, j2;
-      for (o2 = 0; o2 < order.length; o2++) { var L2 = by[order[o2]]; if (!L2) continue; lines.push(''); lines.push('【' + (D.stores[order[o2]] ? D.stores[order[o2]].name : order[o2]) + '】'); for (j2 = 0; j2 < L2.length; j2++) lines.push('□ ' + L2[j2].n + (L2[j2].zh ? '（' + L2[j2].zh + '）' : '') + '  ' + L2[j2].pt + (L2[j2].stz ? '  ' + L2[j2].stz : '')); }
+      for (o2 = 0; o2 < order.length; o2++) { var L2 = by[order[o2]]; lines.push(''); lines.push('【' + sname(order[o2]) + '】'); for (j2 = 0; j2 < L2.length; j2++) lines.push('□ ' + L2[j2].n + (L2[j2].zh ? '（' + L2[j2].zh + '）' : '') + '  ' + L2[j2].pt + (L2[j2].stz ? '  ' + L2[j2].stz : '')); }
       copy(lines.join('\n'));
     };
     $('clearOld').onclick = function () { var c = 0; for (var k2 in LIST) if (LIST.hasOwnProperty(k2) && LIST[k2].to && LIST[k2].to < t) { delete LIST[k2]; c++; } put('list', LIST); toast(c ? '清掉 ' + c + ' 件过期的' : '没有过期的'); render(); };
     $('clearAll').onclick = function () { if (this.getAttribute('data-sure')) { LIST = {}; put('list', LIST); render(); } else { this.setAttribute('data-sure', '1'); this.textContent = '再点一次确认清空'; } };
   }
   function copy(text) {
-    var done = function () { toast('已复制，可以粘贴到微信了'); };
-    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () { fallback(text); }); }
-    else fallback(text);
-    function fallbackOK() { done(); }
-    function fallback(t2) { var ta = document.createElement('textarea'); ta.value = t2; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); fallbackOK(); } catch (e) { toast('复制失败，请长按选择'); } document.body.removeChild(ta); }
-  }
-
-  /* ---------- store tabs ---------- */
-  function renderStores() {
-    var n = { all: ITEMS.length }, i, h = '';
-    for (i = 0; i < ITEMS.length; i++) n[ITEMS[i].s] = (n[ITEMS[i].s] || 0) + 1;
-    var tabs = [['all', '全部']], k;
-    for (k in D.stores) if (D.stores.hasOwnProperty(k) && n[k]) tabs.push([k, D.stores[k].icon + ' ' + D.stores[k].name]);
-    tabs.push(['list', '⭐ 清单']);
-    n.list = listCount();
-    for (i = 0; i < tabs.length; i++) h += '<button data-t="' + tabs[i][0] + '" class="' + (store === tabs[i][0] ? 'on' : '') + '">' + tabs[i][1] + '<small>' + (n[tabs[i][0]] || 0) + '</small></button>';
-    $('stores').innerHTML = h;
+    var ok = function () { toast('已复制，可以粘贴到微信了'); };
+    var fallback = function () { var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); ok(); } catch (e) { toast('复制失败，请长按选择'); } document.body.removeChild(ta); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fallback); else fallback();
   }
 
   /* ---------- events ---------- */
-  $('stores').onclick = function (e) {
-    var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
-    store = b.getAttribute('data-t'); put('store', store); cat = 'all'; shown = 60; render(); window.scrollTo(0, 0);
+  function closest(e, sel) { return e.target.closest ? e.target.closest(sel) : null; }
+  function reset() { cat = 'all'; shown = 60; }
+  $('groups').onclick = function (e) { var b = closest(e, 'button'); if (!b) return; grp = b.getAttribute('data-g'); put('grp', grp); reset(); render(); window.scrollTo(0, 0); };
+  $('schips').onclick = function (e) {
+    var b = closest(e, 'button'); if (!b) return;
+    var s = b.getAttribute('data-s');
+    if (s === '__pick') { grp = 'pick'; reset(); render(); window.scrollTo(0, 0); return; }
+    SEL[grp] = s; put('sel', SEL); reset(); render();
   };
-  $('subs').onclick = function (e) {
-    var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
-    sub[store] = b.getAttribute('data-s'); put('sub', sub); cat = 'all'; shown = 60; render();
+  $('shead').onclick = function (e) {
+    var b = closest(e, 'button'); if (!b) return;
+    if (b.id === 'pinBtn') { togglePin(selOf(grp)); render(); }
+    if (b.id === 'mineOnly') { mineOnly = !mineOnly; shown = 60; render(); }
   };
-  $('chips').onclick = function (e) {
-    var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
-    cat = b.getAttribute('data-c'); shown = 60; render();
-  };
-  $('sorts').onclick = function (e) {
-    var b = e.target.closest ? e.target.closest('button') : null; if (!b || !b.getAttribute('data-o')) return;
-    sort = b.getAttribute('data-o'); put('sort', sort); shown = 60; render();
-  };
+  $('subs').onclick = function (e) { var b = closest(e, 'button'); if (!b) return; sub[selOf(grp)] = b.getAttribute('data-sub'); put('sub', sub); reset(); render(); };
+  $('stp').onclick = function (e) { var b = closest(e, '.sc'); if (!b) return; $('q').value = b.getAttribute('data-q'); $('qx').style.display = 'block'; q = $('q').value.toLowerCase(); reset(); render(); window.scrollTo(0, 0); };
+  $('chips').onclick = function (e) { var b = closest(e, 'button'); if (!b) return; cat = b.getAttribute('data-c'); shown = 60; render(); };
+  $('sorts').onclick = function (e) { var b = closest(e, 'button'); if (!b || !b.getAttribute('data-o')) return; sort = b.getAttribute('data-o'); put('sort', sort); shown = 60; render(); };
   $('body').onclick = function (e) {
-    var b = e.target.closest ? e.target.closest('.star,.rm') : null; if (!b) return;
+    var p = closest(e, '[data-pin],[data-go]');
+    if (p) {
+      if (p.getAttribute('data-pin')) { togglePin(p.getAttribute('data-pin')); render(); }
+      else { var id = p.getAttribute('data-go'), g = (storeOf(id).grp || ['general'])[0]; grp = g; SEL[g] = id; put('grp', grp); put('sel', SEL); reset(); render(); window.scrollTo(0, 0); }
+      return;
+    }
+    var b = closest(e, '.star,.rm'); if (!b) return;
     e.preventDefault(); e.stopPropagation();
     toggleList(b.getAttribute('data-id'));
-    if (store === 'list') render();
-    else { var on = !!LIST[b.getAttribute('data-id')]; b.className = 'star' + (on ? ' on' : ''); b.textContent = on ? '★' : '☆'; renderStores(); }
+    if (grp === 'list') render();
+    else { var on = !!LIST[b.getAttribute('data-id')]; b.className = 'star' + (on ? ' on' : ''); b.textContent = on ? '★' : '☆'; renderGroups(); }
   };
   var qt = null;
   $('q').oninput = function () {
     var v = this.value; $('qx').style.display = v ? 'block' : 'none';
-    clearTimeout(qt); qt = setTimeout(function () { q = v.toLowerCase().replace(/^\s+|\s+$/g, ''); if (store === 'list' && q) store = 'all'; cat = 'all'; shown = 60; render(); }, 200);
+    clearTimeout(qt); qt = setTimeout(function () { q = v.toLowerCase().replace(/^\s+|\s+$/g, ''); if (q && (grp === 'list' || grp === 'pick')) grp = 'mine'; reset(); render(); }, 220);
   };
-  $('qx').onclick = function () { $('q').value = ''; $('qx').style.display = 'none'; q = ''; shown = 60; render(); };
+  $('qx').onclick = function () { $('q').value = ''; $('qx').style.display = 'none'; q = ''; mineOnly = false; reset(); render(); };
+  if (grp === 'pick') grp = 'mine';
 
   load();
 })();
