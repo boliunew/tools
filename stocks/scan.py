@@ -65,6 +65,40 @@ SIGNALS = {
 }
 PRIORITY = ["squeeze", "pit", "momentum", "rsi2", "blood"]
 
+# ETFs shown in 我的自选 (not part of the signal universe)
+ETFS = {
+    "VOO": "Vanguard S&P 500 ETF", "VTI": "Vanguard Total Stock Market ETF", "SPY": "SPDR S&P 500 ETF", "QQQ": "Invesco QQQ (Nasdaq-100)",
+    "IWM": "iShares Russell 2000 (small caps)", "DIA": "SPDR Dow Jones ETF", "SCHD": "Schwab US Dividend Equity ETF",
+    "TLT": "iShares 20+ Year Treasury Bond", "GLD": "SPDR Gold Shares", "SMH": "VanEck Semiconductor ETF",
+    "XLK": "Technology Select Sector", "XLF": "Financial Select Sector", "XLE": "Energy Select Sector", "XLV": "Health Care Select Sector",
+}
+# NYSE full-day holidays (used to know which session the data should have reached)
+NYSE_HOLIDAYS = {
+    "2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25", "2026-06-19", "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25",
+    "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24",
+}
+CLOSE_DONE = dt.time(16, 20)   # a daily bar is final a little after the 4:00 pm ET close
+
+
+def now_et():
+    from zoneinfo import ZoneInfo
+    return dt.datetime.now(ZoneInfo("America/New_York"))
+
+
+def is_session(d):
+    return d.weekday() < 5 and d.isoformat() not in NYSE_HOLIDAYS
+
+
+def expected_session(now):
+    """the latest session whose daily bar should already be final"""
+    d = now.date()
+    if not (is_session(d) and now.time() >= CLOSE_DONE):
+        d -= dt.timedelta(days=1)
+        while not is_session(d):
+            d -= dt.timedelta(days=1)
+    return d
+
+
 FALLBACK_TICKERS = (
     "AAPL MSFT NVDA AMZN GOOGL META TSLA AVGO BRK-B JPM LLY V UNH XOM MA JNJ PG HD COST ABBV "
     "MRK ORCL CVX BAC KO PEP ADBE CRM NFLX AMD WMT TMO ACN MCD CSCO ABT LIN DHR INTU TXN "
@@ -406,6 +440,45 @@ def earnings_soon(ticker, asof):
     return None
 
 
+# ----------------------------------------------------------------------------- watchlist snapshot
+def snap_row(x, last_date, name, sector, rs=None, tags=None):
+    x = x[x.index <= last_date]
+    if len(x) < 70:
+        return None
+    c, last = x["close"], x.iloc[-1]
+
+    def back(n):
+        return round(float(c.iloc[-1] / c.iloc[-1 - n] - 1), 4) if len(c) > n else None
+    prev_year = c[c.index.year < last_date.year]
+    hi52 = float(c.iloc[-252:].max())
+    return {"n": name, "s": sector, "c": round(float(last["close"]), 2), "d": round(float(last["chg"]), 4),
+            "m1": back(21), "m3": back(63), "y": round(float(c.iloc[-1] / prev_year.iloc[-1] - 1), 4) if len(prev_year) else None,
+            "h": round(float(last["close"]) / hi52 - 1, 4), "rsi": round(float(last["rsi14"]), 1),
+            "a50": int(last["close"] > last["sma50"]), "a200": int(last["close"] > last["sma200"]),
+            "rs": rs, "sig": tags or [], "sp": [round(float(v), 2) for v in c.iloc[-60::3]]}
+
+
+def write_snapshot(frames, sigs, meta, extra, last_date, today):
+    rows = {}
+    for t, x in frames.items():
+        tags = []
+        if t in sigs and len(sigs[t]) and sigs[t].index[-1] == last_date:
+            tags = [k for k in PRIORITY if bool(sigs[t].iloc[-1][k])]
+        rs = x["rs"].iloc[-1] if "rs" in x and x.index[-1] == last_date else None
+        r = snap_row(x, last_date, meta.get(t, {}).get("name", ""), meta.get(t, {}).get("sector", ""),
+                     None if rs is None or rs != rs else int(round(float(rs))), tags)
+        if r:
+            rows[t] = r
+    for t, x in extra.items():
+        if x is not None:
+            r = snap_row(x, last_date, ETFS.get(t, t), "ETF")
+            if r:
+                rows[t] = r
+    with open(os.path.join(DATA, "snap.json"), "w", encoding="utf-8") as f:
+        json.dump({"date": today, "rows": rows}, f, ensure_ascii=False, separators=(",", ":"))
+    print("snapshot:", len(rows), "tickers")
+
+
 # ----------------------------------------------------------------------------- main
 def mkt_line(x):
     last = x.iloc[-1]
@@ -427,12 +500,19 @@ def main():
         meta = fetch_universe()
         tickers = sorted(meta.keys())
         print("universe:", len(tickers))
-        raw = download(tickers + ["SPY", "QQQ", "^VIX"])
+        raw = download(tickers + ["SPY", "QQQ", "^VIX"] + [e for e in ETFS if e not in ("SPY", "QQQ")])
         if len(raw) < 50:
             print("ERROR: too little data downloaded; keeping previous results.")
             return 0
+        # never use a session that has not closed yet (a run during market hours sees a half-finished bar)
+        now = now_et()
+        if is_session(now.date()) and now.time() < CLOSE_DONE:
+            for k in list(raw):
+                raw[k] = raw[k][raw[k].index.date < now.date()]
+            DIAG["dropped_unfinished"] = now.date().isoformat()
 
     idx_frames = {k: indicators(raw.pop(k)) for k in ["SPY", "QQQ", "^VIX"] if k in raw}
+    etf_frames = {k: indicators(raw.pop(k)) for k in list(ETFS) if k in raw}
     frames = {t: indicators(d) for t, d in raw.items()}
     # cross-sectional relative strength percentile (0-100) per date
     ret = pd.DataFrame({t: x["ret63"] for t, x in frames.items()})
@@ -512,9 +592,16 @@ def main():
         regime["label"], regime["desc"] = "谨慎", "大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
 
     tracking = track(frames, today)
+    stale = None
+    if not args.demo:
+        exp = expected_session(now_et())
+        if last_date.date() < exp:
+            stale = {"expected": exp.isoformat(), "have": today}
+            print("WARNING: data only reaches", today, "but", exp, "has closed — Yahoo is lagging; a later run will retry.")
+    write_snapshot(frames, sigs, meta, dict(etf_frames, SPY=idx_frames.get("SPY"), QQQ=idx_frames.get("QQQ")), last_date, today)
     result = {
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "date": today, "demo": bool(args.demo), "universe": len(meta), "scanned": len(frames),
+        "date": today, "stale": stale, "demo": bool(args.demo), "universe": len(meta), "scanned": len(frames),
         "regime": regime,
         "signals": {k: dict(SIGNALS[k], stats=stats[k]) for k in PRIORITY},
         "candidates": kept, "tracking": tracking, "diag": DIAG,

@@ -100,6 +100,9 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 (function () {
   'use strict';
   var app = document.getElementById('app'), D = null, F = { scope: 'all', sel: null }, POOL = {};
+  var MYW = {};   // 我的自选 from the stock page (same browser)
+  try { (JSON.parse(window.localStorage.getItem('pool:watch') || '[]') || []).forEach(function (t) { MYW[t] = 1; }); } catch (e) { }
+  function blank(v) { return v == null || /^(\s|&nbsp;|\u00a0)*$/.test(String(v)); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function pct(x, d) { if (x == null || isNaN(x)) return '—'; return (x > 0 ? '+' : '') + (x * 100).toFixed(d == null ? 1 : d) + '%'; }
   function cls(x) { return x > 0 ? 'up' : x < 0 ? 'down' : ''; }
@@ -115,7 +118,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     get('stocks/data/latest.json', function (s) { if (s && s.candidates) for (var i = 0; i < s.candidates.length; i++) POOL[s.candidates[i].t] = 1; render(); });
   });
 
-  function erMatch(e) { return F.scope === 'all' || (F.scope === 'big' && (e.cap || 0) >= 1e11) || (F.scope === 'mine' && (e.watch || POOL[e.t])) || (F.scope === 'hot' && (e.tags || []).length && e.tags.join(',').match(/利好出尽|已提前炒作|大波动/)); }
+  function erMatch(e) { return F.scope === 'all' || (F.scope === 'big' && (e.cap || 0) >= 1e11) || (F.scope === 'mine' && (e.watch || POOL[e.t] || MYW[e.t])) || (F.scope === 'hot' && (e.tags || []).length && e.tags.join(',').match(/利好出尽|已提前炒作|大波动/)); }
   function render() {
     var h = '', i, j, days = D.days;
     if (D.demo) h += '<div class="banner">⚠️ 当前是<b>示例数据</b>（随机生成），第一次真实更新后会自动替换。</div>';
@@ -163,7 +166,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var h = '<div class="card macro i-' + m.imp + '"><div class="m-top"><span class="imp ' + m.imp + '">' + m.imp + '影响</span><span class="m-t">' + esc(m.title) + '</span><span class="m-time">' + esc(m.time ? m.time + ' 美东' : '') + '</span></div><div class="m-lines">';
     for (var i = 0; i < m.lines.length && i < 4; i++) {
       var l = m.lines[i];
-      h += '<div><span>' + esc(l.name) + '</span>' + (l.consensus ? '<span>预期 <b>' + esc(l.consensus) + '</b></span>' : '') + (l.previous ? '<span>前值 ' + esc(l.previous) + '</span>' : '') + (l.actual ? '<span>实际 <b>' + esc(l.actual) + '</b></span>' : '') + '</div>';
+      h += '<div><span>' + esc(l.name) + '</span>' + (!blank(l.consensus) ? '<span>预期 <b>' + esc(l.consensus) + '</b></span>' : '') + (!blank(l.previous) ? '<span>前值 ' + esc(l.previous) + '</span>' : '') + (!blank(l.actual) ? '<span>实际 <b>' + esc(l.actual) + '</b></span>' : '') + '</div>';
     }
     h += '</div><div class="note">' + esc(m.note) + '</div><div class="syms">';
     for (i = 0; i < m.syms.length; i++) h += '<a class="sym" href="https://finance.yahoo.com/quote/' + encodeURIComponent(m.syms[i]) + '" target="_blank" rel="noopener">' + esc(m.syms[i]) + '</a>';
@@ -173,7 +176,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var s = e.stats, h = '<div class="card er"><div class="e-top"><div class="e-id"><div class="e-t"><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(e.t) + '" target="_blank" rel="noopener">' + esc(e.t) + '</a><span class="when">' + (e.when === 'pre' ? '盘前' : e.when === 'post' ? '盘后' : '时间未定') + '</span></div><div class="e-n">' + esc(e.name) + (e.sector ? ' · ' + esc(e.sector) : '') + '</div></div>' +
       '<div class="e-r"><b>' + capTxt(e.cap) + '</b>市值' + (e.eps_est != null ? '<br>预期 EPS <b style="display:inline">' + e.eps_est + '</b>' : '') + '</div></div>';
     var tags = e.tags || [];
-    h += '<div class="tags">' + (POOL[e.t] ? '<span class="tag mid">股票池候选</span>' : '') + (e.watch ? '<span class="tag mid">自选</span>' : '');
+    h += '<div class="tags">' + (POOL[e.t] ? '<span class="tag mid">股票池候选</span>' : '') + (e.watch || MYW[e.t] ? '<span class="tag mid">自选</span>' : '');
     for (var i = 0; i < tags.length; i++) h += '<span class="tag' + (/利好出尽|已提前炒作|常跌/.test(tags[i]) ? ' warn' : /大波动/.test(tags[i]) ? ' mid' : '') + '">' + esc(tags[i]) + '</span>';
     h += '</div>';
     if (s) {

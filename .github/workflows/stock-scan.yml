@@ -5,6 +5,7 @@ on:
     # 周一到周五 21:47 UTC（美股收盘后约 1.5 小时，夏令时；冬令时为收盘后 45 分钟）
     - cron: "47 21 * * 1-5"
     # 次日早上再跑一次（太平洋时间 6:47），补上前一晚 Yahoo 延迟发布的数据
+    - cron: "17 1 * * 2-6"     # 晚上 9:17 美东再跑一次：Yahoo 偶尔收盘后很久才更新
     - cron: "47 13 * * 2-6"
   workflow_dispatch: {}
   push:
@@ -39,5 +40,4 @@ jobs:
           git add stocks/data stocks/universe.json 2>/dev/null || true
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git commit -m "股票池更新 $(date -u +%F)"
-          git pull --rebase origin main
-          git push
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; git rebase --abort 2>/dev/null; sleep 5; done

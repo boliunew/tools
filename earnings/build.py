@@ -16,6 +16,7 @@ Offline test:  python earnings/build.py --demo
 """
 import argparse
 import datetime as dt
+import html
 import json
 import math
 import os
@@ -167,6 +168,11 @@ def yf_earnings_fallback(tickers, days):
     return rows
 
 
+def cleanv(v):
+    """Nasdaq fills empty cells with '&nbsp;' — turn that into an empty string"""
+    return html.unescape(str(v or "")).replace("\xa0", " ").strip()
+
+
 def nasdaq_macro(days):
     out = []
     for d in days:
@@ -175,8 +181,8 @@ def nasdaq_macro(days):
             for r in ((j.get("data") or {}).get("rows") or []):
                 if "united states" not in (r.get("country") or "").lower():
                     continue
-                out.append({"date": d.isoformat(), "time": r.get("gmt") or "", "name": r.get("eventName") or "",
-                            "actual": r.get("actual") or "", "consensus": r.get("consensus") or "", "previous": r.get("previous") or ""})
+                out.append({"date": d.isoformat(), "time": r.get("gmt") or "", "name": cleanv(r.get("eventName")),
+                            "actual": cleanv(r.get("actual")), "consensus": cleanv(r.get("consensus")), "previous": cleanv(r.get("previous"))})
             time.sleep(0.4)
         except Exception as e:  # noqa: BLE001
             print("nasdaq macro", d, e)
