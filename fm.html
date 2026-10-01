@@ -52,6 +52,12 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 .bar .t small{font-size:12.5px;color:var(--soft)}
 .bar .t small.live{color:var(--live);font-weight:600}
 .bar .t small.err{color:var(--live)}
+.bar .t .song{display:block;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.bar .t .song a,.songs a{color:var(--accent);font-weight:400;margin-left:6px;text-decoration:none;font-size:12px}
+.songs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin-top:14px}
+.songs summary{cursor:pointer;font-weight:600}
+.songs div{padding:7px 0;border-top:1px solid var(--line);font-size:14px}
+.songs small{display:block;color:var(--soft);font-size:12px}
 .ctl{display:flex;align-items:center}
 .ctl button{border:0;background:none;width:44px;height:44px;border-radius:50%;font-size:20px}
 .ctl .pp{width:54px;height:54px;background:var(--accent);color:var(--accent-ink);font-size:22px;margin:0 4px}
@@ -70,11 +76,12 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   <div class="srch"><input id="q" placeholder="搜台名、风格，例如 news、jazz、BBC" autocomplete="off"><button id="qBtn">搜索</button></div>
   <div class="chips" id="chips"></div>
   <div class="list" id="list"><div class="msg">加载中…</div></div>
+  <details class="songs" id="songs" style="display:none"></details>
   <div class="hint">电台目录来自开源的 Radio Browser 社区数据库，节目由各电台官方直播流提供。<br>部分电台只在本国播放、或临时停播，连不上会自动提示。连车载蓝牙时方向盘「上一首 / 下一首」可以换台。</div>
 </main>
 <div class="bar" id="bar" style="display:none"><div class="in">
   <div class="ico" id="bIco">📻</div>
-  <div class="t"><b id="bName"></b><small id="bStat"></small></div>
+  <div class="t"><b id="bName"></b><span class="song" id="bSong" style="display:none"></span><small id="bStat"></small></div>
   <div class="ctl"><button id="bPrev" aria-label="上一个台">⏮</button><button class="pp" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一个台">⏭</button><button class="tm" id="bTimer" aria-label="睡眠定时">⏲</button></div>
 </div></div>
 <div class="toast" id="toast"></div>
@@ -227,7 +234,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     $('bName').textContent = cur.name; $('bIco').innerHTML = icon(cur);
     stat('连接中…');
     put('last', cur);
-    render(); start(cur);
+    render(); start(cur); npStart(cur);
     try { var x = new XMLHttpRequest(); x.open('GET', SERVERS[0] + '/json/url/' + cur.id); x.send(); } catch (e) { }
     meta();
   }
@@ -241,6 +248,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
         hls = new window.Hls(); hls.loadSource(url); hls.attachMedia(au);
         hls.on(window.Hls.Events.MANIFEST_PARSED, function () { tryPlay(); });
         hls.on(window.Hls.Events.ERROR, function (ev, d) { if (d && d.fatal) fail('这个台连不上'); });
+        hls.on(window.Hls.Events.FRAG_PARSING_METADATA, function (ev, d) { (d && d.samples || []).forEach(function (sm) { var t = id3Title(sm.data); if (t) npShow(t, s); }); });
       });
     } else { au.src = url; tryPlay(); }
     watchdog = setTimeout(function () { if (au.paused || au.readyState < 3) fail('连接超时'); }, 15000);
@@ -260,7 +268,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   au.addEventListener('error', function () { if (!hls) fail('这个台连不上'); });
   function toggle() {
     if (!cur) { if (shown.length) play(0); return; }
-    if (au.paused) { if (au.readyState === 0 || cur.bad) start(cur); else tryPlay(); } else au.pause();
+    if (au.paused) { if (au.readyState === 0 || cur.bad) { start(cur); npStart(cur); } else tryPlay(); } else au.pause();
   }
   function step(d) {
     if (!shown.length) return;
@@ -275,7 +283,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     if (!ms || !cur) return;
     try {
       var art = cur.fav && /^https:/i.test(cur.fav) ? [{ src: cur.fav, sizes: '256x256' }] : [];
-      ms.metadata = new window.MediaMetadata({ title: cur.name, artist: flagOf(cur.cc) + ' ' + nameOf(cur.cc) + ' · 网络电台', album: cur.tags.slice(0, 3).map(function (t) { return TAGZH[t] || t; }).join(' · '), artwork: art });
+      ms.metadata = new window.MediaMetadata({ title: NP.song || cur.name, artist: NP.song ? cur.name : flagOf(cur.cc) + ' ' + nameOf(cur.cc) + ' · 网络电台', album: cur.tags.slice(0, 3).map(function (t) { return TAGZH[t] || t; }).join(' · '), artwork: art });
     } catch (e) { }
   }
   if (ms) {
@@ -301,6 +309,120 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       toast(next + ' 分钟后自动停止');
     } else { $('bTimer').textContent = '⏲'; toast('已取消睡眠定时'); }
   };
+
+  /* ---------- now playing: Icecast status / Shoutcast stats / ICY in-stream / HLS ID3 (best effort) ---------- */
+  var NP = { tok: 0, timer: null, song: '', hist: get('songs', []) };
+  function xget(url, cb) {
+    var x = new XMLHttpRequest(); x.open('GET', url); x.timeout = 8000;
+    x.onload = function () { cb(x.status === 200 ? x.responseText : null); };
+    x.onerror = x.ontimeout = function () { cb(null); };
+    try { x.send(); } catch (e) { cb(null); }
+  }
+  function icecast(u, s, cb) {
+    xget(u.origin + '/status-json.xsl', function (t) {
+      if (!t) { cb(null); return; }
+      try {
+        var src = JSON.parse(t).icestats.source, arr = [].concat(src || []), pick = null, i;
+        for (i = 0; i < arr.length; i++) { var lu = String(arr[i].listenurl || ''); if (lu && u.pathname.length > 1 && lu.slice(-u.pathname.length) === u.pathname) pick = arr[i]; }
+        if (!pick && arr.length === 1) pick = arr[0];
+        if (!pick) { cb(null); return; }
+        cb((pick.artist && pick.title ? pick.artist + ' - ' + pick.title : pick.title || pick.artist || '') + '');
+      } catch (e) { cb(null); }
+    });
+  }
+  function shoutcast(u, s, cb) {
+    xget(u.origin + '/stats?sid=1&json=1', function (t) {
+      if (t) { try { var d = JSON.parse(t); if (d && d.songtitle != null) { cb(String(d.songtitle)); return; } } catch (e) { } }
+      xget(u.origin + '/currentsong?sid=1', function (t2) { cb(t2 && t2.length < 300 && !/</.test(t2) ? t2 : null); });
+    });
+  }
+  function decodeText(bytes) {
+    var t = '';
+    try { t = new TextDecoder('utf-8', { fatal: true }).decode(bytes); }
+    catch (e) { for (var i = 0; i < bytes.length; i++) t += String.fromCharCode(bytes[i]); }
+    return t;
+  }
+  function icy(u, s, cb) {
+    if (!window.fetch || !window.AbortController || !window.TextDecoder) { cb(null); return; }
+    var ac = new AbortController(), done = false;
+    function fin(v) { if (done) return; done = true; try { ac.abort(); } catch (e) { } cb(v); }
+    setTimeout(function () { fin(null); }, 12000);
+    fetch(u.href, { headers: { 'Icy-MetaData': '1' }, signal: ac.signal, cache: 'no-store' }).then(function (r) {
+      var mi = parseInt(r.headers.get('icy-metaint'), 10);
+      if (!mi || !r.body || !r.body.getReader) { fin(null); return; }
+      var rd = r.body.getReader(), buf = new Uint8Array(mi + 4081), got = 0;
+      (function pump() {
+        rd.read().then(function (x) {
+          if (x.done) { fin(null); return; }
+          var c = x.value, n = Math.min(c.length, buf.length - got);
+          buf.set(c.subarray(0, n), got); got += n;
+          if (got > mi) {
+            var L = buf[mi] * 16;
+            if (got >= mi + 1 + L) { var m = /StreamTitle='(.*?)';/.exec(decodeText(buf.subarray(mi + 1, mi + 1 + L))); fin(m ? m[1] : ''); return; }
+          }
+          pump();
+        }, function () { fin(null); });
+      })();
+    }, function () { fin(null); });
+  }
+  function id3Title(b) {
+    try {
+      if (!b || b[0] !== 73 || b[1] !== 68 || b[2] !== 51) return '';
+      var ver = b[3], end = 10 + ((b[6] & 127) << 21 | (b[7] & 127) << 14 | (b[8] & 127) << 7 | (b[9] & 127)), p = 10, f = {};
+      while (p + 10 <= end && p + 10 <= b.length) {
+        var id = String.fromCharCode(b[p], b[p + 1], b[p + 2], b[p + 3]);
+        var sz = ver >= 4 ? ((b[p + 4] & 127) << 21 | (b[p + 5] & 127) << 14 | (b[p + 6] & 127) << 7 | (b[p + 7] & 127)) : (b[p + 4] << 24 | b[p + 5] << 16 | b[p + 6] << 8 | b[p + 7]);
+        if (!/^[A-Z0-9]{4}$/.test(id) || sz <= 0) break;
+        var body = b.subarray(p + 10, p + 10 + sz), enc = body[0], txt = '', i;
+        if (id.charAt(0) === 'T') {
+          if (enc === 1 || enc === 2) { for (i = 1 + (enc === 1 ? 2 : 0); i + 1 < body.length; i += 2) { var cc = (enc === 1 && body[1] === 0xFE) || enc === 2 ? body[i] << 8 | body[i + 1] : body[i + 1] << 8 | body[i]; if (cc) txt += String.fromCharCode(cc); } }
+          else txt = decodeText(body.subarray(1)).replace(/\u0000/g, '');
+          f[id] = txt;
+        }
+        p += 10 + sz;
+      }
+      if (f.TXXX && /StreamTitle/i.test(f.TXXX)) { var m = /StreamTitle\W*(.+)/i.exec(f.TXXX); if (m) return m[1]; }
+      return f.TIT2 ? (f.TPE1 ? f.TPE1 + ' - ' : '') + f.TIT2 : '';
+    } catch (e) { return ''; }
+  }
+  function npShow(song, s) {
+    if (s !== cur || song == null) return;
+    song = String(song).replace(/\s+/g, ' ').replace(/^\s|\s$/g, '');
+    if (!song || /^(-|unknown|n\/a|none)$/i.test(song) || song.toLowerCase() === (s.name || '').toLowerCase() || song === NP.song) return;
+    NP.song = song;
+    $('bSong').innerHTML = '🎵 ' + esc(song) + '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(song) + '" target="_blank" rel="noopener">搜歌 ↗</a>';
+    $('bSong').style.display = 'block';
+    NP.hist = NP.hist.filter(function (h) { return h.song !== song; });
+    NP.hist.unshift({ song: song, st: s.name, t: Date.now() });
+    if (NP.hist.length > 40) NP.hist.length = 40;
+    put('songs', NP.hist); renderSongs(); meta();
+  }
+  function renderSongs() {
+    var el = $('songs');
+    if (!NP.hist.length) { el.style.display = 'none'; return; }
+    el.style.display = 'block';
+    var open = el.open;
+    el.innerHTML = '<summary>🎵 最近听到的歌（' + NP.hist.length + '）</summary>' + NP.hist.map(function (h) {
+      var d = new Date(h.t);
+      return '<div>' + esc(h.song) + '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(h.song) + '" target="_blank" rel="noopener">搜歌 ↗</a><small>' + esc(h.st) + ' · ' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + '</small></div>';
+    }).join('');
+    el.open = open;
+  }
+  function npStop() { NP.tok++; clearTimeout(NP.timer); NP.song = ''; $('bSong').style.display = 'none'; $('bSong').innerHTML = ''; }
+  function npStart(s) {
+    npStop();
+    if (s.hls) return; // HLS streams report titles through ID3 tags (handled in start())
+    var tok = NP.tok, u;
+    try { u = new URL(s.url.replace(/^http:\/\//i, 'https://')); } catch (e) { return; }
+    var tries = [icecast, shoutcast, icy], k = 0;
+    function loop(f) { NP.timer = setTimeout(function () { if (tok !== NP.tok) return; f(u, s, function (v) { if (tok !== NP.tok) return; if (v) npShow(v, s); loop(f); }); }, 20000); }
+    (function nextTry() {
+      if (tok !== NP.tok || k >= tries.length) return;
+      var f = tries[k++];
+      f(u, s, function (v) { if (tok !== NP.tok) return; if (v == null) { nextTry(); return; } npShow(v, s); loop(f); });
+    })();
+  }
+  renderSongs();
 
   renderTabs(); open();
   var last = get('last', null);
