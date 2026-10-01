@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3B2A1E">
+<title>听书 · 广播剧</title>
+<style>
+:root{--bg:#F5F0E8;--card:#FFFDF9;--ink:#2A211A;--soft:#6F6255;--faint:#A3978A;--line:#E3D9CB;--accent:#A4502A;--accent-ink:#fff;--accent-soft:#F6E2D6;--good:#2F6F5E}
+@media (prefers-color-scheme: dark){:root{--bg:#15120F;--card:#1F1A16;--ink:#EFE7DD;--soft:#B3A797;--faint:#76695C;--line:#332B24;--accent:#E28A5E;--accent-ink:#1A0F09;--accent-soft:#3A2519;--good:#5FB39A}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,sans-serif;line-height:1.5;padding-bottom:150px}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+main{max-width:720px;margin:0 auto;padding:16px 16px 0}
+.top{display:flex;align-items:center;margin-bottom:12px}
+.top h1{font-size:21px;margin:0;flex:1;font-family:Georgia,"Songti SC",serif}
+.top a{color:var(--soft);text-decoration:none;font-size:14px}
+.tabs{display:flex;background:var(--line);border-radius:14px;padding:4px;margin-bottom:12px}
+.tabs button{flex:1;border:0;background:none;border-radius:10px;padding:9px 4px;font-size:15px;color:var(--soft)}
+.tabs button.on{background:var(--card);color:var(--ink);font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.chips{display:flex;overflow-x:auto;gap:6px;margin-bottom:10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 13px;font-size:13.5px;color:var(--soft)}
+.chips button.on{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.srch{display:flex;gap:8px;margin-bottom:12px}
+.srch input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px;font-size:16px}
+.srch button{border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:0 16px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.bk{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column}
+.bk .cv{aspect-ratio:1/1;background:var(--line) center/cover no-repeat;position:relative}
+.bk .cv span{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;border-radius:6px;padding:1px 6px}
+.bk .tt{padding:8px 10px 10px}
+.bk .tt b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;line-height:1.35}
+.bk .tt small{display:block;color:var(--soft);font-size:12px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bk .pg{height:4px;background:var(--line)}.bk .pg i{display:block;height:100%;background:var(--good)}
+.msg{padding:30px 16px;text-align:center;color:var(--soft)}
+.more{display:block;width:100%;border:0;background:none;padding:14px;color:var(--accent);font-weight:600}
+.det{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.dh{display:flex;gap:14px}
+.dh .cv{width:110px;height:110px;flex:0 0 110px;border-radius:12px;background:var(--line) center/cover no-repeat}
+.dh h2{font-size:18px;margin:0 0 4px;font-family:Georgia,"Songti SC",serif;line-height:1.3}
+.dh .au{color:var(--soft);font-size:14px}
+.desc{font-size:13.5px;color:var(--soft);margin:12px 0 0;max-height:5.6em;overflow:hidden;position:relative}
+.desc.open{max-height:none}
+.dbtn{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.dbtn button{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 14px}
+.dbtn .pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.ch{margin-top:14px;border-top:1px solid var(--line)}
+.ch div{display:flex;align-items:center;padding:11px 4px;border-bottom:1px solid var(--line);cursor:pointer;font-size:14.5px}
+.ch div span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch div small{color:var(--faint);margin-left:8px;font-size:12px}
+.ch div.on{color:var(--accent);font-weight:700}
+.ch div.done span{color:var(--faint)}
+.back{border:0;background:none;color:var(--soft);padding:4px 0 10px;font-size:14px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(0,0,0,.08);padding:8px 14px calc(10px + env(safe-area-inset-bottom));z-index:10}
+.bar .in{max-width:720px;margin:0 auto}
+.bar .r1{display:flex;align-items:center;gap:10px}
+.bar .cv{width:44px;height:44px;border-radius:8px;background:var(--line) center/cover no-repeat;flex:0 0 44px;cursor:pointer}
+.bar .t{flex:1;min-width:0;cursor:pointer}
+.bar .t b{display:block;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .t small{display:block;font-size:12px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--faint);margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.prog .pb{flex:1;height:5px;background:var(--line);border-radius:5px;position:relative;cursor:pointer;touch-action:none}
+.prog .pb i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:5px}
+.ctl{display:flex;justify-content:center;align-items:center;gap:6px}
+.ctl button{border:0;background:none;min-width:42px;height:42px;border-radius:21px;font-size:17px;color:var(--ink)}
+.ctl .pp{width:52px;height:52px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:21px}
+.ctl .sm{font-size:13px;color:var(--soft);padding:0 8px}
+.hint{font-size:12.5px;color:var(--faint);text-align:center;margin:16px 0;line-height:1.7}
+.toast{position:fixed;left:50%;bottom:150px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:18px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:20;max-width:90%;text-align:center}
+.toast.on{opacity:.93}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><h1>🎧 听书 · 广播剧</h1><a href="./">主页</a></div>
+  <div class="tabs" id="tabs"><button data-t="book">📚 有声书</button><button data-t="otr">🎭 广播剧</button><button data-t="shelf">📖 我的书架</button></div>
+  <div id="view"></div>
+  <div class="hint" id="foot"></div>
+</main>
+<div class="bar" id="bar" style="display:none"><div class="in">
+  <div class="r1"><div class="cv" id="bCv"></div><div class="t" id="bT"><b id="bTitle"></b><small id="bSub"></small></div></div>
+  <div class="prog"><span id="tCur">0:00</span><div class="pb" id="pb"><i id="pFill"></i></div><span id="tDur">0:00</span></div>
+  <div class="ctl"><button class="sm" id="bRate">1.0×</button><button id="bPrev" aria-label="上一章">⏮</button><button id="bBack" aria-label="后退15秒">↺15</button><button class="pp" id="bPlay" aria-label="播放">▶</button><button id="bFwd" aria-label="前进30秒">30↻</button><button id="bNext" aria-label="下一章">⏭</button><button class="sm" id="bSleep">⏲</button></div>
+</div></div>
+<div class="toast" id="toast"></div>
+<audio id="au" preload="metadata"></audio>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function get(k, d) { try { var v = localStorage.getItem('bk:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { localStorage.setItem('bk:' + k, JSON.stringify(v)); } catch (e) { } }
+  function mmss(s) { s = Math.max(0, Math.floor(s || 0)); var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ':' + ('0' + m).slice(-2) : m) + ':' + ('0' + x).slice(-2); }
+  var toastT;
+  function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 2400); }
+  function txt(v) { return (Array.isArray(v) ? v[0] : v) || ''; }
+  function strip(h) { var d = document.createElement('div'); d.innerHTML = String(h || '').replace(/<(script|style)[\s\S]*?<\/\1>/gi, ''); return (d.textContent || '').replace(/\s+/g, ' ').replace(/^\s|\s$/g, ''); }
+  function cover(id) { return 'https://archive.org/services/img/' + encodeURIComponent(id); }
+
+  var LANGS = [
+    { k: 'zh', n: '中文', q: '(chi OR zho OR Chinese OR "Chinese (Simplified)")' },
+    { k: 'en', n: 'English', q: '(eng OR English)' },
+    { k: 'es', n: 'Español', q: '(spa OR Spanish)' },
+    { k: 'de', n: 'Deutsch', q: '(ger OR deu OR German)' },
+    { k: 'ru', n: 'Русский', q: '(rus OR Russian)' },
+    { k: 'fr', n: 'Français', q: '(fre OR fra OR French)' }
+  ];
+  var SERIES = ['Suspense', 'X Minus One', 'Sherlock Holmes', 'The Shadow', 'Dimension X', 'Escape', 'Gunsmoke', 'Dragnet', 'The Whistler', 'Inner Sanctum', 'Johnny Dollar', 'Lux Radio Theatre', 'Lone Ranger', 'Superman', 'Philip Marlowe', 'Mercury Theatre'];
+  var tab = get('tab', 'book'), lang = get('lang', 'en'), series = '', query = '', page = 1, items = [], numFound = 0;
+  var SHELF = get('shelf', {}), book = null, track = -1, au = $('au'), ms = navigator.mediaSession, rate = get('rate', 1), sleepEnd = 0, sleepChapter = false, sleepT = null, saveT = 0;
+
+  function api(url, cb) {
+    var x = new XMLHttpRequest(); x.open('GET', url); x.timeout = 20000;
+    x.onload = function () { if (x.status === 200) { try { cb(JSON.parse(x.responseText)); return; } catch (e) { } } cb(null); };
+    x.onerror = x.ontimeout = function () { cb(null); };
+    x.send();
+  }
+  function searchURL() {
+    var q;
+    if (tab === 'book') q = 'collection:librivoxaudio AND language:' + LANGS.filter(function (l) { return l.k === lang; })[0].q;
+    else q = 'collection:oldtimeradio' + (series ? ' AND title:(' + series + ')' : '');
+    if (query) q += ' AND (title:(' + query + ') OR creator:(' + query + '))';
+    return 'https://archive.org/advancedsearch.php?q=' + encodeURIComponent(q) + '&fl[]=identifier&fl[]=title&fl[]=creator&fl[]=downloads&sort[]=downloads+desc&rows=36&page=' + page + '&output=json';
+  }
+
+  /* ---------- views ---------- */
+  function setTab(t) {
+    tab = t; put('tab', t); page = 1; query = ''; series = '';
+    var bs = $('tabs').querySelectorAll('button');
+    for (var i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-t') === t ? 'on' : '';
+    if (t === 'shelf') renderShelf(); else renderBrowse(true);
+    $('foot').innerHTML = t === 'book' ? '有声书来自 LibriVox：志愿者朗读的公版书（版权已过期的经典），存放在互联网档案馆 archive.org，完全免费合法。<br>英文书最多，中文、西语等也有一些。' : t === 'otr' ? '广播剧来自互联网档案馆的「老时代广播剧」合集：1930–60 年代美国电台的悬疑、科幻、侦探剧，大多已进入公有领域。<br>纯声音演出，配乐和音效很足，很适合开车听，也是练英语听力的好材料。' : '听过的书和剧会自动记住进度，下次点开从断点继续。';
+  }
+  $('tabs').onclick = function (e) { var b = e.target.closest ? e.target.closest('button') : null; if (b) setTab(b.getAttribute('data-t')); };
+  function renderBrowse(fresh) {
+    var h = '';
+    if (tab === 'book') { h += '<div class="chips" id="chips">'; LANGS.forEach(function (l) { h += '<button data-l="' + l.k + '" class="' + (l.k === lang ? 'on' : '') + '">' + l.n + '</button>'; }); h += '</div>'; }
+    else { h += '<div class="chips" id="chips"><button data-s="" class="' + (!series ? 'on' : '') + '">热门</button>'; SERIES.forEach(function (s) { h += '<button data-s="' + esc(s) + '" class="' + (s === series ? 'on' : '') + '">' + esc(s) + '</button>'; }); h += '</div>'; }
+    h += '<div class="srch"><input id="q" value="' + esc(query) + '" placeholder="' + (tab === 'book' ? '搜书名或作者，例如 Sherlock、Austen、Twain' : '搜剧名，例如 War of the Worlds') + '" autocomplete="off"><button id="qBtn">搜索</button></div><div id="res"><div class="msg">加载中…</div></div>';
+    $('view').innerHTML = h;
+    $('chips').onclick = function (e) {
+      var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
+      if (b.hasAttribute('data-l')) { lang = b.getAttribute('data-l'); put('lang', lang); } else series = b.getAttribute('data-s');
+      page = 1; renderBrowse(true);
+    };
+    $('qBtn').onclick = function () { query = $('q').value.replace(/["()]/g, ' ').replace(/^\s+|\s+$/g, ''); page = 1; renderBrowse(true); };
+    $('q').onkeydown = function (e) { if (e.keyCode === 13) $('qBtn').onclick(); };
+    if (fresh) items = [];
+    load();
+  }
+  function load() {
+    var want = searchURL();
+    api(want, function (d) {
+      if (want !== searchURL() || !$('res')) return;
+      if (!d || !d.response) { $('res').innerHTML = '<div class="msg">互联网档案馆暂时连不上，稍后再试。</div>'; return; }
+      numFound = d.response.numFound; items = items.concat(d.response.docs || []);
+      renderGrid();
+    });
+  }
+  function card(id, title, by, extra, pct) {
+    return '<div class="bk" data-id="' + esc(id) + '"><div class="cv" style="background-image:url(\'' + cover(id) + '\')">' + (extra ? '<span>' + esc(extra) + '</span>' : '') + '</div>' + (pct != null ? '<div class="pg"><i style="width:' + pct + '%"></i></div>' : '') + '<div class="tt"><b>' + esc(title) + '</b><small>' + esc(by || '') + '</small></div></div>';
+  }
+  function renderGrid() {
+    if (!items.length) { $('res').innerHTML = '<div class="msg">没找到' + (query ? '「' + esc(query) + '」' : '') + '，换个关键词试试。</div>'; return; }
+    var h = '<div class="grid">';
+    items.forEach(function (d) { h += card(d.identifier, txt(d.title), txt(d.creator), d.downloads ? fmtN(d.downloads) + ' 次收听' : '', SHELF[d.identifier] ? SHELF[d.identifier].pct || 0 : null); });
+    h += '</div>';
+    if (items.length < numFound) h += '<button class="more" id="more">加载更多（共 ' + fmtN(numFound) + '）</button>';
+    $('res').innerHTML = h;
+    if ($('more')) $('more').onclick = function () { page++; this.textContent = '加载中…'; load(); };
+  }
+  function fmtN(n) { return n >= 10000 ? (n / 10000).toFixed(1) + '万' : String(n); }
+  function renderShelf() {
+    var arr = [], k;
+    for (k in SHELF) if (SHELF.hasOwnProperty(k)) arr.push(SHELF[k]);
+    arr.sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
+    if (!arr.length) { $('view').innerHTML = '<div class="msg">书架还是空的。去「有声书」或「广播剧」挑一个开始听吧。</div>'; return; }
+    var h = '<div class="grid">';
+    arr.forEach(function (s) { h += card(s.id, s.title, s.by, s.kind === 'otr' ? '广播剧' : '第 ' + (s.track + 1) + ' / ' + s.n + ' 章', s.pct || 0); });
+    $('view').innerHTML = h + '</div>';
+  }
+  $('view').onclick = function (e) {
+    var c = e.target.closest ? e.target.closest('.bk') : null;
+    if (c) openItem(c.getAttribute('data-id'));
+  };
+
+  /* ---------- item ---------- */
+  var detail = null;
+  function pickFiles(files) {
+    var mp3 = (files || []).filter(function (f) { return /\.mp3$/i.test(f.name) && /mp3/i.test(f.format || 'mp3'); });
+    var pref = ['64Kbps MP3', 'VBR MP3', '128Kbps MP3'];
+    for (var i = 0; i < pref.length; i++) { var sub = mp3.filter(function (f) { return f.format === pref[i]; }); if (sub.length) { mp3 = sub; break; } }
+    mp3.sort(function (a, b) { var ta = parseInt(a.track, 10), tb = parseInt(b.track, 10); if (!isNaN(ta) && !isNaN(tb) && ta !== tb) return ta - tb; return a.name < b.name ? -1 : a.name > b.name ? 1 : 0; });
+    return mp3.map(function (f) { return { name: f.name, title: f.title || f.name.replace(/\.mp3$/i, '').replace(/_/g, ' '), len: parseFloat(f.length) || (/:/.test(f.length || '') ? f.length.split(':').reduce(function (a, x) { return a * 60 + (+x); }, 0) : 0) }; });
+  }
+  function openItem(id) {
+    $('view').innerHTML = '<button class="back" id="dBack">‹ 返回</button><div class="det"><div class="msg">加载中…</div></div>';
+    $('dBack').onclick = function () { setTab(tab); };
+    api('https://archive.org/metadata/' + encodeURIComponent(id), function (d) {
+      if (!d || !d.metadata) { $('view').querySelector('.det').innerHTML = '<div class="msg">加载失败，稍后再试。</div>'; return; }
+      var tracks = pickFiles(d.files);
+      var m = d.metadata, it = { id: id, title: txt(m.title), by: txt(m.creator), desc: strip(txt(m.description)), kind: /oldtimeradio/i.test([].concat(m.collection || []).join(' ')) ? 'otr' : 'book', tracks: tracks };
+      detail = it; renderDetail();
+    });
+  }
+  function renderDetail() {
+    var it = detail, s = SHELF[it.id], h = '<button class="back" id="dBack">‹ 返回</button><div class="det"><div class="dh"><div class="cv" style="background-image:url(\'' + cover(it.id) + '\')"></div><div><h2>' + esc(it.title) + '</h2><div class="au">' + esc(it.by) + '</div><div class="au">' + it.tracks.length + (it.kind === 'otr' ? ' 集' : ' 章') + '</div></div></div>';
+    if (it.desc) h += '<div class="desc" id="desc">' + esc(it.desc) + '</div>';
+    h += '<div class="dbtn">' + (s ? '<button class="pri" id="dResume">▶ 继续：第 ' + (s.track + 1) + (it.kind === 'otr' ? ' 集 ' : ' 章 ') + mmss(s.time) + '</button><button id="dStart">从头开始</button>' : '<button class="pri" id="dStart">▶ 从头开始</button>') + '</div>';
+    if (!it.tracks.length) h += '<div class="msg">这个条目没有可播放的 MP3。</div>';
+    h += '<div class="ch" id="chs">';
+    it.tracks.forEach(function (t, i) { var on = book && book.id === it.id && track === i; h += '<div data-i="' + i + '" class="' + (on ? 'on' : s && i < s.track ? 'done' : '') + '"><span>' + (i + 1) + '. ' + esc(t.title) + '</span><small>' + (t.len ? mmss(t.len) : '') + '</small></div>'; });
+    h += '</div></div>';
+    $('view').innerHTML = h;
+    $('dBack').onclick = function () { setTab(tab); };
+    if ($('desc')) $('desc').onclick = function () { this.className = 'desc open'; };
+    if ($('dResume')) $('dResume').onclick = function () { startBook(it, s.track, s.time); };
+    if ($('dStart')) $('dStart').onclick = function () { startBook(it, 0, 0); };
+    $('chs').onclick = function (e) { var r = e.target.closest ? e.target.closest('[data-i]') : null; if (r) startBook(it, +r.getAttribute('data-i'), 0); };
+  }
+
+  /* ---------- player ---------- */
+  function startBook(it, i, t) {
+    if (!it.tracks.length) return;
+    book = it; put('now', { id: it.id, title: it.title, by: it.by, kind: it.kind, tracks: it.tracks });
+    playTrack(i, t);
+  }
+  function playTrack(i, t) {
+    if (!book || i < 0 || i >= book.tracks.length) return;
+    track = i;
+    var tr = book.tracks[i];
+    au.src = 'https://archive.org/download/' + encodeURIComponent(book.id) + '/' + tr.name.split('/').map(encodeURIComponent).join('/');
+    au.playbackRate = rate;
+    var seek = t || 0;
+    au.onloadedmetadata = function () { if (seek && seek < au.duration - 5) au.currentTime = seek; au.onloadedmetadata = null; };
+    var p = au.play(); if (p && p.catch) p.catch(function () { });
+    $('bar').style.display = 'block';
+    $('bCv').style.backgroundImage = 'url(\'' + cover(book.id) + '\')';
+    $('bTitle').textContent = tr.title; $('bSub').textContent = book.title + ' · ' + (i + 1) + ' / ' + book.tracks.length;
+    meta(); saveProgress(true);
+    if (detail && detail.id === book.id && $('chs')) renderDetail();
+  }
+  function saveProgress(force) {
+    if (!book) return;
+    var now = Date.now(); if (!force && now - saveT < 5000) return; saveT = now;
+    var n = book.tracks.length, frac = au.duration ? au.currentTime / au.duration : 0;
+    SHELF[book.id] = { id: book.id, title: book.title, by: book.by, kind: book.kind, track: track, time: au.currentTime || 0, n: n, pct: Math.round((track + frac) / n * 100), ts: now };
+    put('shelf', SHELF);
+  }
+  function meta() {
+    if (!ms || !book) return;
+    try { ms.metadata = new window.MediaMetadata({ title: book.tracks[track].title, artist: book.title, album: (book.by || '') + ' · ' + (track + 1) + '/' + book.tracks.length, artwork: [{ src: cover(book.id), sizes: '180x180' }] }); } catch (e) { }
+  }
+  function next() { if (book && track < book.tracks.length - 1) playTrack(track + 1, 0); else toast('已经是最后一' + (book && book.kind === 'otr' ? '集' : '章')); }
+  function prev() { if (!book) return; if (au.currentTime > 5 || track === 0) au.currentTime = 0; else playTrack(track - 1, 0); }
+  function skip(s) { if (au.duration) au.currentTime = Math.max(0, Math.min(au.duration - 1, au.currentTime + s)); }
+  $('bPlay').onclick = function () { if (!book) return; if (au.paused) au.play(); else au.pause(); };
+  $('bNext').onclick = next; $('bPrev').onclick = prev;
+  $('bBack').onclick = function () { skip(-15); }; $('bFwd').onclick = function () { skip(30); };
+  $('bT').onclick = $('bCv').onclick = function () { if (book) openItem(book.id); };
+  var RATES = [0.8, 1, 1.25, 1.5, 1.75, 2];
+  function showRate() { $('bRate').textContent = (rate === 1 ? '1.0' : rate) + '×'; }
+  $('bRate').onclick = function () { rate = RATES[(RATES.indexOf(rate) + 1) % RATES.length]; put('rate', rate); au.playbackRate = rate; showRate(); };
+  showRate();
+  var SLEEPS = [0, 15, 30, 60, -1];
+  $('bSleep').onclick = function () {
+    var curK = sleepChapter ? 4 : 0, i;
+    if (!sleepChapter && sleepEnd) { var left = (sleepEnd - Date.now()) / 60000; for (i = 1; i < 4; i++) if (SLEEPS[i] >= left - 0.5) { curK = i; break; } }
+    var nx = SLEEPS[(curK + 1) % SLEEPS.length];
+    clearInterval(sleepT); sleepEnd = 0; sleepChapter = false;
+    if (nx === -1) { sleepChapter = true; $('bSleep').textContent = '本章完'; toast('播完这一' + (book && book.kind === 'otr' ? '集' : '章') + '就停'); }
+    else if (nx) {
+      sleepEnd = Date.now() + nx * 60000; $('bSleep').textContent = nx + "'"; toast(nx + ' 分钟后自动停止');
+      sleepT = setInterval(function () { var l = sleepEnd - Date.now(); if (l <= 0) { clearInterval(sleepT); sleepEnd = 0; au.pause(); $('bSleep').textContent = '⏲'; toast('睡眠定时到了'); } else $('bSleep').textContent = Math.ceil(l / 60000) + "'"; }, 15000);
+    } else { $('bSleep').textContent = '⏲'; toast('已取消睡眠定时'); }
+  };
+  au.addEventListener('play', function () { $('bPlay').textContent = '❚❚'; if (ms) ms.playbackState = 'playing'; });
+  au.addEventListener('pause', function () { $('bPlay').textContent = '▶'; if (ms) ms.playbackState = 'paused'; saveProgress(true); });
+  au.addEventListener('ended', function () {
+    if (sleepChapter) { sleepChapter = false; $('bSleep').textContent = '⏲'; saveProgress(true); toast('这一章播完了，晚安'); if (track < book.tracks.length - 1) { track++; saveProgress(true); SHELF[book.id].time = 0; put('shelf', SHELF); } return; }
+    next();
+  });
+  au.addEventListener('timeupdate', function () {
+    if (!au.duration) return;
+    $('pFill').style.width = (au.currentTime / au.duration * 100) + '%';
+    $('tCur').textContent = mmss(au.currentTime); $('tDur').textContent = mmss(au.duration);
+    saveProgress(false);
+    if (ms && ms.setPositionState) { try { ms.setPositionState({ duration: au.duration, playbackRate: au.playbackRate, position: Math.min(au.currentTime, au.duration) }); } catch (e) { } }
+  });
+  au.addEventListener('error', function () { if (book) toast('这一章加载失败，稍后再试或换一章'); });
+  var pb = $('pb');
+  function seekTo(e) { if (!au.duration) return; var r = pb.getBoundingClientRect(), x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left; au.currentTime = Math.max(0, Math.min(1, x / r.width)) * au.duration; }
+  pb.onclick = seekTo; pb.addEventListener('touchstart', seekTo, false);
+  if (ms) {
+    var H = { play: function () { au.play(); }, pause: function () { au.pause(); }, nexttrack: next, previoustrack: prev, seekforward: function () { skip(30); }, seekbackward: function () { skip(-15); }, seekto: function (d) { if (d && d.seekTime != null) au.currentTime = d.seekTime; } };
+    for (var a in H) if (H.hasOwnProperty(a)) { try { ms.setActionHandler(a, H[a]); } catch (e) { } }
+  }
+  window.addEventListener('pagehide', function () { saveProgress(true); });
+
+  setTab(tab);
+  var now = get('now', null);
+  if (now && SHELF[now.id] && now.tracks && now.tracks.length) {
+    book = now; track = SHELF[now.id].track;
+    var tr = book.tracks[track] || book.tracks[0];
+    $('bar').style.display = 'block'; $('bCv').style.backgroundImage = 'url(\'' + cover(book.id) + '\')';
+    $('bTitle').textContent = tr.title; $('bSub').textContent = book.title + ' · 上次听到 ' + mmss(SHELF[now.id].time) + '，点 ▶ 继续';
+    $('bPlay').onclick = function () { $('bPlay').onclick = function () { if (au.paused) au.play(); else au.pause(); }; playTrack(track, SHELF[now.id].time); };
+  }
+})();
+</script>
+</body>
+</html>
