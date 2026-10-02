@@ -5,3 +5,4 @@ __pycache__/
 .local-data/
 selfhost/config.env
 radio/_local/
+kb/.obsidian/

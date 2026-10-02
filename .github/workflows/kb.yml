@@ -1,0 +1,36 @@
+name: 知识库目录
+
+# kb/ 里的文章有改动时，重新生成 kb/index.json（网页用）和 kb/README.md（目录 + 更新日志）
+on:
+  push:
+    branches: [main]
+    paths: ["kb/**.md", "kb/build.py", "!kb/README.md"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kb
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 要用完整 git 历史算每篇的创建 / 更新日期
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python kb/build.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add kb/index.json kb/README.md
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "知识库目录更新"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
