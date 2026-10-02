@@ -120,6 +120,47 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
 .calc .no{color:var(--bad);font-weight:700}
 .calc .hint{font-size:12.5px;color:var(--soft)}
 .calc .sug{display:inline-block;font-family:var(--mono);background:var(--chip);border-radius:6px;padding:0 6px;margin:2px 4px 2px 0}
+/* 天文小工具（```astro-tonight / ```astro-calendar） */
+.astro{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px;margin:1em 0;box-shadow:var(--shadow);font-size:14px;line-height:1.6}
+.astro .loc{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;color:var(--soft);margin-bottom:8px}
+.astro .loc b{color:var(--ink);font-weight:600}
+.astro .lb{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:2px 10px;font-size:12.5px;color:var(--soft)}
+.astro .nav{display:flex;align-items:center;gap:6px;margin-bottom:10px}
+.astro .nav b{flex:1;text-align:center;font-size:15px}
+.astro .nav button{border:1px solid var(--line);background:var(--bg);border-radius:10px;min-width:40px;padding:4px 10px;font-size:15px}
+.astro .verdict{border-radius:12px;padding:10px 12px;background:var(--accent-soft);margin-bottom:10px}
+.astro .verdict .big{font-size:16px;font-weight:700}
+.astro .verdict .sub{font-size:13px;color:var(--soft)}
+.astro .verdict.good{background:var(--ok-soft)}
+.astro .verdict.bad{background:var(--chip)}
+.astro .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
+.astro .grid div{background:var(--bg);border-radius:10px;padding:6px 8px;text-align:center}
+.astro .grid small{display:block;font-size:11.5px;color:var(--faint)}
+.astro .grid span{font-family:var(--mono);font-size:14.5px;font-weight:600}
+.astro .pl{display:flex;align-items:baseline;gap:8px;padding:7px 2px;border-top:1px dashed var(--line)}
+.astro .pl .n{flex:0 0 3.6em;font-weight:700}
+.astro .pl .w{flex:1;min-width:0}
+.astro .pl .m{flex:0 0 auto;font-size:12px;color:var(--faint);font-family:var(--mono)}
+.astro .pl.off{color:var(--faint)}
+.astro .pl.off .n{font-weight:400}
+.astro .mon{font-weight:700;font-size:13.5px;margin:14px 0 4px;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.astro .mon:first-of-type{margin-top:4px}
+.astro .mon small{font-weight:400;font-size:12px;color:var(--soft)}
+.astro .ev{display:flex;gap:10px;padding:7px 0;border-top:1px dashed var(--line)}
+.astro .ev .d{flex:0 0 3.4em;font-family:var(--mono);font-size:12.5px;color:var(--soft);padding-top:1px;line-height:1.35}
+.astro .ev .d i{display:block;font-style:normal;font-size:11px;color:var(--faint)}
+.astro .ev .t{flex:1;min-width:0}
+.astro .ev .t b{font-weight:700}
+.astro .ev .t div{font-size:12.5px;color:var(--soft)}
+.astro .ev.dim{opacity:.55}
+.astro .tag2{display:inline-block;font-size:11px;font-weight:700;border-radius:5px;padding:0 5px;margin-left:4px;vertical-align:1px}
+.astro .tag2.g{background:var(--ok-soft);color:var(--ok)}
+.astro .tag2.y{background:#FBEFD6;color:#9A6608}
+.astro .tag2.r{background:var(--chip);color:var(--faint)}
+@media (prefers-color-scheme: dark){.astro .tag2.y{background:#3A2E14;color:var(--gold)}}
+.astro .far{margin-top:12px;background:var(--bg);border-radius:10px;padding:8px 10px;font-size:13px}
+.astro .far b{display:block;font-size:12.5px;color:var(--soft);margin-bottom:2px}
+.astro .note{font-size:12px;color:var(--faint);margin-top:8px}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(28,28,30,.92);color:#fff;padding:8px 16px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:all .2s;z-index:60}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
@@ -241,6 +282,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     return '<h' + lv + ' id="' + id + '">' + h + '</h' + lv + '>';
   }
   function codeBlock(lang, code) {
+    if (lang === 'astro-tonight' || lang === 'astro-calendar') return '<div class="astro" data-astro="' + lang.slice(6) + '"><div class="note">正在计算…</div></div>';
     if (lang === 'calc-iso6346') return '<div class="calc" data-calc="iso6346"><input placeholder="输入柜号，如 CSQU305438" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false"><div class="res"></div></div>';
     CTX.codes.push(code);
     return '<div class="code"><pre><code' + (lang ? ' class="lang-' + esc(lang) + '"' : '') + '>' + esc(code) + '</code></pre><button class="cp" data-code="' + (CTX.codes.length - 1) + '">复制</button></div>';
@@ -370,6 +412,210 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     inp.addEventListener('input', run); run();
   }
 
+  /* ====================== 天文小工具（用 Astronomy Engine 现算） ====================== */
+  var ASTRO_SRC = 'vendor/astronomy-engine-2.1.19.min.js', astroQ = null;
+  var HOME = { lat: 34.0975, lon: -117.6484, h: 370, name: 'Upland, CA' };
+  var LOC = jget('loc', null) || HOME, DAYOFF = 0;
+  var WK = ['日', '一', '二', '三', '四', '五', '六'], DIRS = ['北', '东北', '东', '东南', '南', '西南', '西', '西北'];
+  var PLANETS = [['Mercury', '水星'], ['Venus', '金星'], ['Mars', '火星'], ['Jupiter', '木星'], ['Saturn', '土星']];
+  // [名字, 月, 日（看的那天凌晨）, 凌晨几点看, 每小时(理想), 备注]
+  var SHOWERS = [['象限仪座流星雨', 1, 4, 3, '80–120', '极大很短，看运气'], ['天琴座流星雨', 4, 22, 3, '18', ''], ['宝瓶座η流星雨', 5, 6, 4, '50', '北半球偏少，黎明前看'],
+    ['英仙座流星雨', 8, 13, 2, '100', '最适合入门'], ['猎户座流星雨', 10, 22, 3, '20', '哈雷彗星的碎屑'], ['狮子座流星雨', 11, 18, 3, '15', ''], ['双子座流星雨', 12, 14, 1, '120–150', '一年里最稳最多的一场']];
+
+  function astroInit() {
+    var boxes = $('body').querySelectorAll('[data-astro]'), i;
+    function go() { for (i = 0; i < boxes.length; i++) astroDraw(boxes[i]); }
+    if (window.Astronomy) return go();
+    if (!astroQ) {
+      astroQ = [];
+      var sc = document.createElement('script'); sc.src = ASTRO_SRC;
+      sc.onload = function () { var q = astroQ; astroQ = null; q.forEach(function (f) { f(); }); };
+      sc.onerror = function () { for (i = 0; i < boxes.length; i++) boxes[i].innerHTML = '<div class="note">天文计算库没加载成功，检查网络后刷新</div>'; astroQ = null; };
+      document.head.appendChild(sc);
+    }
+    astroQ.push(go);
+  }
+  function astroAll() { var b = document.querySelectorAll('[data-astro]'), i; for (i = 0; i < b.length; i++) astroDraw(b[i]); }
+  function hm(d) { return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+  function md(d) { return (d.getMonth() + 1) + '/' + d.getDate(); }
+  function dirOf(az) { return DIRS[Math.round(az / 45) % 8]; }
+  function moonInfo(ang) {
+    var t = [[10, '🌑', '新月'], [80, '🌒', '蛾眉月'], [100, '🌓', '上弦月'], [170, '🌔', '盈凸月'], [190, '🌕', '满月'], [260, '🌖', '亏凸月'], [280, '🌗', '下弦月'], [350, '🌘', '残月'], [361, '🌑', '新月']], i;
+    for (i = 0; i < t.length; i++) if (ang < t[i][0]) return t[i];
+    return t[0];
+  }
+  function altAz(A, body, date, obs) { var eq = A.Equator(body, date, obs, true, true), h = A.Horizon(date, obs, eq.ra, eq.dec, 'normal'); return h; }
+  function locBar() {
+    var home = LOC.lat === HOME.lat && LOC.lon === HOME.lon;
+    return '<div class="loc">📍 <b>' + esc(LOC.name) + '</b>' + (home ? '<button class="lb" data-a="geo">用我的位置</button>' : '<button class="lb" data-a="home">改回 Upland</button>') + '</div>';
+  }
+
+  function astroDraw(box) {
+    var A = window.Astronomy; if (!A) return;
+    var obs = new A.Observer(LOC.lat, LOC.lon, LOC.h || 0), kind = box.getAttribute('data-astro');
+    try { box.innerHTML = locBar() + (kind === 'tonight' ? tonight(A, obs) : calendar(A, obs)); }
+    catch (e) { box.innerHTML = locBar() + '<div class="note">计算出错：' + esc(e.message) + '</div>'; }
+    box.onclick = function (e) {
+      var b = e.target.closest('[data-a]'); if (!b) return;
+      var a = b.getAttribute('data-a');
+      if (a === 'prev' || a === 'next' || a === 'today') { DAYOFF = a === 'today' ? 0 : DAYOFF + (a === 'next' ? 1 : -1); astroDraw(box); }
+      else if (a === 'home') { LOC = HOME; jset('loc', null); astroAll(); }
+      else if (a === 'geo') {
+        if (!navigator.geolocation) { toast('这个浏览器不支持定位'); return; }
+        b.textContent = '定位中…';
+        navigator.geolocation.getCurrentPosition(function (p) {
+          var la = Math.round(p.coords.latitude * 100) / 100, lo = Math.round(p.coords.longitude * 100) / 100;
+          LOC = { lat: la, lon: lo, h: 0, name: '我的位置（' + la + ', ' + lo + '）' }; jset('loc', LOC); astroAll(); toast('已改用你的位置，只存在这台手机上');
+        }, function () { b.textContent = '用我的位置'; toast('没拿到位置：要在浏览器里允许定位'); }, { timeout: 15000, maximumAge: 6e5 });
+      }
+    };
+  }
+
+  /* ---- 今晚 ---- */
+  function tonight(A, obs) {
+    var base = new Date(); base.setHours(12, 0, 0, 0); base = new Date(base.getTime() + DAYOFF * 864e5);
+    var sunset = A.SearchRiseSet(A.Body.Sun, obs, -1, base, 1), sunrise = sunset && A.SearchRiseSet(A.Body.Sun, obs, +1, sunset, 1);
+    if (!sunset || !sunrise) return '<div class="note">这个位置今天没有正常的日落日出（极昼或极夜）。</div>';
+    var dusk = A.SearchAltitude(A.Body.Sun, obs, -1, base, 1, -18), dawn = dusk && A.SearchAltitude(A.Body.Sun, obs, +1, dusk, 1, -18);
+    var t0 = dusk ? dusk.date : sunset.date, t1 = dawn && dawn.date < sunrise.date ? dawn.date : sunrise.date;
+    var mid = new Date((sunset.date.getTime() + sunrise.date.getTime()) / 2);
+    var ang = A.MoonPhase(mid), ill = A.Illumination(A.Body.Moon, mid).phase_fraction, mi = moonInfo(ang);
+    var mr = A.SearchRiseSet(A.Body.Moon, obs, +1, base, 1), ms = A.SearchRiseSet(A.Body.Moon, obs, -1, base, 1);
+    function nextDay(d) { return d.getDate() !== base.getDate() ? '次日 ' : ''; }
+
+    // 最黑的时段：天文黑夜里、月亮在地平线下（或者月亮很细）
+    var segs = [], cur = null, step = 10 * 6e4, t, dark, total = 0, night = t1 - t0;
+    for (t = t0.getTime(); t <= t1.getTime(); t += step) {
+      dark = ill < 0.08 || altAz(A, A.Body.Moon, new Date(t), obs).altitude < -0.5;
+      if (dark && !cur) cur = [t, t]; else if (dark) cur[1] = t; else if (cur) { segs.push(cur); cur = null; }
+    }
+    if (cur) segs.push(cur);
+    segs.forEach(function (s) { total += s[1] - s[0]; });
+    var v, cls;
+    if (!dusk) { v = '天不会全黑'; cls = 'bad'; }
+    else if (total >= night * 0.9) { v = '🌌 整晚都很黑，月亮不碍事'; cls = 'good'; }
+    else if (!segs.length || total < 45 * 6e4) { v = mi[1] + ' 月亮整晚都在，适合看月亮和行星'; cls = 'bad'; }
+    else {
+      var long = segs.filter(function (s) { return s[1] - s[0] >= 30 * 6e4; });
+      if (!long.length) long = [segs.slice().sort(function (a, b) { return (b[1] - b[0]) - (a[1] - a[0]); })[0]];
+      v = '🌌 最黑的时段：' + long.map(function (s) { var a = new Date(s[0]), b = new Date(s[1]); return hm(a) + '–' + nextDay(b) + hm(b); }).join('、'); cls = 'good';
+    }
+    var title = DAYOFF === 0 ? '今晚' : DAYOFF === 1 ? '明晚' : DAYOFF === -1 ? '昨晚' : '';
+    var h = '<div class="nav"><button data-a="prev">‹</button><b>' + (base.getMonth() + 1) + '月' + base.getDate() + '日 周' + WK[base.getDay()] + (title ? ' · ' + title : '') + '</b>' + (DAYOFF ? '<button data-a="today">今晚</button>' : '') + '<button data-a="next">›</button></div>';
+    h += '<div class="verdict ' + cls + '"><div class="big">' + v + '</div><div class="sub">' + mi[1] + ' ' + mi[2] + '，亮面 ' + Math.round(ill * 100) + '%' +
+      (dusk ? ' · 天全黑 ' + hm(dusk.date) + ' 到 ' + (dawn ? hm(dawn.date) : '—') : '') + '</div></div>';
+    h += '<div class="grid">' +
+      '<div><small>日落</small><span>' + hm(sunset.date) + '</span></div>' +
+      '<div><small>月出</small><span>' + (mr ? nextDay(mr.date) + hm(mr.date) : '—') + '</span></div>' +
+      '<div><small>月落</small><span>' + (ms ? nextDay(ms.date) + hm(ms.date) : '—') + '</span></div>' +
+      '<div><small>天全黑</small><span>' + (dusk ? hm(dusk.date) : '—') + '</span></div>' +
+      '<div><small>天开始亮</small><span>' + (dawn ? hm(dawn.date) : '—') + '</span></div>' +
+      '<div><small>日出</small><span>' + nextDay(sunrise.date) + hm(sunrise.date) + '</span></div></div>';
+
+    // 行星：黄昏 / 半夜 / 黎明前，各看一次高度
+    PLANETS.forEach(function (p) {
+      // 水星金星只在日落后、日出前不久出现，所以离日落日出近一点看，门槛也低一点
+      var inner = p[0] === 'Mercury' || p[0] === 'Venus', off = (inner ? 15 : 45) * 6e4, min = inner ? 4 : 7;
+      var slots = [['黄昏', new Date(sunset.date.getTime() + off)], ['半夜', mid], ['黎明前', new Date(sunrise.date.getTime() - off)]];
+      var body = A.Body[p[0]], seen = [], best = null, mag = A.Illumination(body, mid).mag;
+      slots.forEach(function (s) { var ha = altAz(A, body, s[1], obs); if (ha.altitude >= min) { seen.push(s[0]); if (!best || ha.altitude > best.altitude) best = { altitude: ha.altitude, azimuth: ha.azimuth, when: s[0] }; } });
+      if (best) {
+        h += '<div class="pl"><span class="n">' + p[1] + '</span><span class="w">' + seen.join('、') + '可见 · ' + best.when + '在' + dirOf(best.azimuth) + '方，高 ' + Math.round(best.altitude) + '°' +
+          (best.altitude < 12 ? '，很低，' + (best.when === '黄昏' ? '日落后半小时内' : best.when === '黎明前' ? '日出前半小时内' : '') + '找视野开阔的地方' : '') + '</span><span class="m">' + (mag >= 0 ? '+' : '') + mag.toFixed(1) + ' 等</span></div>';
+      } else {
+        var el = A.Elongation(body, mid).elongation;
+        h += '<div class="pl off"><span class="n">' + p[1] + '</span><span class="w">今晚看不到' + (el < 18 ? '（离太阳太近）' : '（太低或白天才在天上）') + '</span></div>';
+      }
+    });
+    h += '<div class="note">时间按这台手机的时区显示。高度 10° 大约是手臂伸直一拳；「等」越小越亮。</div>';
+    return h;
+  }
+
+  /* ---- 未来 12 个月 ---- */
+  function calendar(A, obs) {
+    var now = new Date(), end = new Date(now.getTime() + 365 * 864e5), ev = [], moons = {}, k, n, i;
+    function add(d, icon, title, sub, dim) { ev.push({ d: d, icon: icon, t: title, s: sub || '', dim: dim }); }
+    function mkey(d) { return d.getFullYear() * 100 + d.getMonth(); }
+    // 新月、满月（放在月份标题里）
+    var q = A.SearchMoonQuarter(now);
+    for (n = 0; q && q.time.date < end && n < 60; n++) {
+      if (q.quarter === 0 || q.quarter === 2) { k = mkey(q.time.date); (moons[k] = moons[k] || []).push((q.quarter ? '🌕 ' : '🌑 ') + md(q.time.date)); }
+      q = A.NextMoonQuarter(q);
+    }
+    // 二分二至
+    [now.getFullYear(), now.getFullYear() + 1].forEach(function (y) {
+      var s = A.Seasons(y);
+      [[s.mar_equinox, '🌸', '春分'], [s.jun_solstice, '☀️', '夏至（白天最长）'], [s.sep_equinox, '🍂', '秋分'], [s.dec_solstice, '❄️', '冬至（白天最短）']].forEach(function (x) {
+        if (x[0].date > now && x[0].date < end) add(x[0].date, x[1], x[2]);
+      });
+    });
+    // 月食
+    var KL = { penumbral: '半影月食', partial: '月偏食', total: '月全食' }, le = A.SearchLunarEclipse(now), farLunar = null;
+    for (n = 0; n < 40; n++) {
+      var pk = le.peak.date, alt = altAz(A, A.Body.Moon, pk, obs).altitude, sd = le.sd_partial || le.sd_penum;
+      var a1 = altAz(A, A.Body.Moon, new Date(pk.getTime() - sd * 6e4), obs).altitude, a2 = altAz(A, A.Body.Moon, new Date(pk.getTime() + sd * 6e4), obs).altitude;
+      var vis = alt > 0 ? 'full' : (a1 > 0 || a2 > 0) ? 'part' : 'no';
+      if (pk < end) {
+        var sub = vis === 'no' ? '这里看不到：当时月亮在地平线下' :
+          (le.kind === 'total' ? '全食 ' + hm(new Date(pk.getTime() - le.sd_total * 6e4)) + '–' + hm(new Date(pk.getTime() + le.sd_total * 6e4)) + '（约 ' + Math.round(le.sd_total * 2) + ' 分钟），' : '') +
+          '食甚 ' + hm(pk) + (vis === 'part' ? '，这里只能看到一部分过程' : '，月亮高 ' + Math.round(alt) + '°' + (alt < 10 ? '，贴着地平线' : '')) + (le.kind === 'penumbral' ? '。半影月食只是稍微变暗，肉眼几乎看不出' : '');
+        add(pk, '🌘', KL[le.kind], sub, vis === 'no');
+      } else if (le.kind === 'total' && alt > 10) { farLunar = [pk, alt]; break; }
+      le = A.NextLunarEclipse(le.peak);
+    }
+    // 日食（只列这里能看到的）
+    var KS = { partial: '日偏食', annular: '日环食', total: '日全食' }, se = A.SearchLocalSolarEclipse(now, obs), farSolar = [];
+    for (n = 0; n < 20 && farSolar.length < 2; n++) {
+      if (se.peak.altitude > 0) {
+        var pct = Math.round(se.obscuration * 100), txt = '最大时遮住太阳 ' + pct + '%，' + hm(se.peak.time.date) + '，太阳高 ' + Math.round(se.peak.altitude) + '°。一定要戴日食眼镜';
+        if (se.peak.time.date < end) add(se.peak.time.date, '🌒', KS[se.kind], txt);
+        else if (pct >= 10) farSolar.push([se.peak.time.date, KS[se.kind], pct]);
+      }
+      se = A.NextLocalSolarEclipse(se.peak.time, obs);
+    }
+    // 行星冲日
+    [['Mars', '火星'], ['Jupiter', '木星'], ['Saturn', '土星']].forEach(function (p) {
+      var t = A.SearchRelativeLongitude(A.Body[p[0]], 0, now);
+      for (i = 0; i < 2 && t && t.date < end; i++) {
+        add(t.date, '🪐', p[1] + '冲日', '整夜可见、一年里最亮（' + A.Illumination(A.Body[p[0]], t).mag.toFixed(1) + ' 等）。前后一两个月都好看');
+        t = A.SearchRelativeLongitude(A.Body[p[0]], 0, t.AddDays(30));
+      }
+    });
+    // 水星、金星大距
+    [['Mercury', '水星'], ['Venus', '金星']].forEach(function (p) {
+      var e = A.SearchMaxElongation(A.Body[p[0]], now);
+      for (i = 0; i < 12 && e && e.time.date < end; i++) {
+        var eve = e.visibility === 'evening';
+        add(e.time.date, eve ? '🌇' : '🌅', p[1] + (eve ? '东大距' : '西大距'), (eve ? '傍晚日落后在西边' : '黎明前在东边') + '，离太阳 ' + Math.round(e.elongation) + '°' + (p[0] === 'Mercury' ? '，贴着地平线，要找视野开阔的地方' : ''));
+        e = A.SearchMaxElongation(A.Body[p[0]], e.time.AddDays(5));
+      }
+    });
+    // 流星雨：极大那天凌晨的月光
+    [now.getFullYear(), now.getFullYear() + 1].forEach(function (y) {
+      SHOWERS.forEach(function (s) {
+        var d = new Date(y, s[1] - 1, s[2], s[3], 0, 0);
+        if (d < new Date(now.getTime() - 864e5) || d > end) return;
+        var il = A.Illumination(A.Body.Moon, d).phase_fraction, up = altAz(A, A.Body.Moon, d, obs).altitude > 0, tag;
+        if (!up || il < 0.3) tag = '<span class="tag2 g">月光不碍事</span>'; else if (il < 0.7) tag = '<span class="tag2 y">有些月光</span>'; else tag = '<span class="tag2 r">月光干扰大</span>';
+        add(new Date(y, s[1] - 1, s[2] - 1, 21, 0, 0), '🌠', s[0] + tag, (s[2] - 1 > 0 ? md(new Date(y, s[1] - 1, s[2] - 1)) : '') + ' 夜里到 ' + md(d) + ' 凌晨 · 理想每小时 ' + s[4] + ' 颗 · 月亮 ' + Math.round(il * 100) + '%' + (up ? '' : '（已落下）') + (s[5] ? ' · ' + s[5] : ''));
+      });
+    });
+
+    ev.sort(function (a, b) { return a.d - b.d; });
+    var h = '', last = null;
+    ev.forEach(function (e) {
+      var key = mkey(e.d);
+      if (key !== last) { last = key; h += '<div class="mon">' + e.d.getFullYear() + ' 年 ' + (e.d.getMonth() + 1) + ' 月 <small>' + (moons[key] || []).join(' · ') + '</small></div>'; }
+      h += '<div class="ev' + (e.dim ? ' dim' : '') + '"><div class="d">' + md(e.d) + '<i>周' + WK[e.d.getDay()] + '</i></div><div class="t">' + e.icon + ' <b>' + e.t + '</b>' + (e.s ? '<div>' + e.s + '</div>' : '') + '</div></div>';
+    });
+    if (farLunar || farSolar.length) {
+      h += '<div class="far"><b>再远一点</b>' + (farLunar ? '🌕 下一次这里能看到的月全食：' + farLunar[0].getFullYear() + '/' + md(farLunar[0]) + '，食甚时月亮高 ' + Math.round(farLunar[1]) + '°<br>' : '') +
+        farSolar.map(function (x) { return '🌒 这里能看到的日食：' + x[0].getFullYear() + '/' + md(x[0]) + ' ' + x[1] + '，遮住 ' + x[2] + '%'; }).join('<br>') + '</div>';
+    }
+    h += '<div class="note">🌑 新月前后最适合看星星。日期按这台手机的时区；流星雨的日子每年前后可能差一天。</div>';
+    return h;
+  }
+
   /* ====================== 列表 ====================== */
   var IDX = null, TAG = jget('tag', ''), READ = jget('read', {}), FS = jget('fs', 1), listY = 0, fromList = false, CUR = null, booted = false;
   var SIZES = ['15px', '16px', '17.5px', '19.5px'];
@@ -433,6 +679,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       $('body').innerHTML = html; setFs();
       var codes = CTX.codes, toc = CTX.toc, boxes = $('body').querySelectorAll('[data-calc]'), k;
       for (k = 0; k < boxes.length; k++) calc(boxes[k]);
+      if ($('body').querySelector('[data-astro]')) astroInit();
       $('body').onclick = function (e) { var b = e.target.closest('.cp'); if (b) copyText(codes[+b.getAttribute('data-code')]); };
       $('tocBtn').style.display = toc.length >= 2 ? '' : 'none';
       $('toc').innerHTML = toc.map(function (t) { return '<button class="l' + t.lv + '" data-id="' + t.id + '">' + esc(t.t) + '</button>'; }).join('');
