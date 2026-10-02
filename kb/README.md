@@ -10,13 +10,15 @@
 
 **天文**（6）：[天文入门：光年、星等，和怎么在天上找东西](astronomy-basics.md) · [月亮：月相、潮汐、日食和月食](moon-phases-tides-eclipses.md) · [用 S23 Ultra 拍月亮和星空](phone-astrophotography.md) · [天象日历：流星雨、日月食、行星冲日](sky-calendar.md) · [南加州看星星：今晚看什么、去哪看、怎么准备](socal-stargazing.md) · [太阳系有多大：把太阳缩成一个篮球](solar-system-scale.md)
 
-**南加州**（3）：[集装箱物流入门：从码头到仓库](container-logistics-101.md) · [天象日历：流星雨、日月食、行星冲日](sky-calendar.md) · [南加州看星星：今晚看什么、去哪看、怎么准备](socal-stargazing.md)
+**物流**（5）：[集装箱物流入门：从码头到仓库](container-logistics-101.md) · [FBA 入门：编号、费用、库容和 2026 年的变化](fba-basics.md) · [FBA 头程：从中国工厂到南加州的亚马逊仓](fba-first-mile.md) · [FBA 箱子、标签和托盘：亚马逊收货的规矩](fba-packaging-labels.md) · [集装箱号和校验位（ISO 6346）](iso-6346-check-digit.md)
 
-**工作**（2）：[集装箱物流入门：从码头到仓库](container-logistics-101.md) · [集装箱号和校验位（ISO 6346）](iso-6346-check-digit.md)
+**南加州**（4）：[集装箱物流入门：从码头到仓库](container-logistics-101.md) · [FBA 头程：从中国工厂到南加州的亚马逊仓](fba-first-mile.md) · [天象日历：流星雨、日月食、行星冲日](sky-calendar.md) · [南加州看星星：今晚看什么、去哪看、怎么准备](socal-stargazing.md)
+
+**工作**（4）：[集装箱物流入门：从码头到仓库](container-logistics-101.md) · [FBA 头程：从中国工厂到南加州的亚马逊仓](fba-first-mile.md) · [FBA 箱子、标签和托盘：亚马逊收货的规矩](fba-packaging-labels.md) · [集装箱号和校验位（ISO 6346）](iso-6346-check-digit.md)
+
+**FBA**（3）：[FBA 入门：编号、费用、库容和 2026 年的变化](fba-basics.md) · [FBA 头程：从中国工厂到南加州的亚马逊仓](fba-first-mile.md) · [FBA 箱子、标签和托盘：亚马逊收货的规矩](fba-packaging-labels.md)
 
 **手机**（2）：[用 S23 Ultra 拍月亮和星空](phone-astrophotography.md) · [USB-C 充电头和线怎么选（PD、PPS、e-marker）](usb-pd-and-cables.md)
-
-**物流**（2）：[集装箱物流入门：从码头到仓库](container-logistics-101.md) · [集装箱号和校验位（ISO 6346）](iso-6346-check-digit.md)
 
 **拍照**（1）：[用 S23 Ultra 拍月亮和星空](phone-astrophotography.md)
 
@@ -30,6 +32,9 @@
 
 - 2026-10-02 新增 [天文入门：光年、星等，和怎么在天上找东西](astronomy-basics.md)
 - 2026-10-02 新增 [集装箱物流入门：从码头到仓库](container-logistics-101.md)
+- 2026-10-02 新增 [FBA 入门：编号、费用、库容和 2026 年的变化](fba-basics.md)
+- 2026-10-02 新增 [FBA 头程：从中国工厂到南加州的亚马逊仓](fba-first-mile.md)
+- 2026-10-02 新增 [FBA 箱子、标签和托盘：亚马逊收货的规矩](fba-packaging-labels.md)
 - 2026-10-02 新增 [集装箱号和校验位（ISO 6346）](iso-6346-check-digit.md)
 - 2026-10-02 新增 [月亮：月相、潮汐、日食和月食](moon-phases-tides-eclipses.md)
 - 2026-10-02 新增 [用 S23 Ultra 拍月亮和星空](phone-astrophotography.md)
