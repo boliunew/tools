@@ -31,9 +31,10 @@ header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area
 /* 每日一招 */
 .daily{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--accent),#1F4E66);color:#fff;border-radius:18px;padding:16px 16px 14px;box-shadow:var(--shadow);margin-bottom:14px}
 @media (prefers-color-scheme: dark){.daily{background:linear-gradient(135deg,#24546C,#16303F)}}
-.daily:after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.08)}
+.daily:after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
+.daily>*{position:relative;z-index:1}
 .daily .k{font-size:12.5px;opacity:.85;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
-.daily .k button{margin-left:auto;border:1px solid rgba(255,255,255,.35);background:none;color:#fff;border-radius:999px;padding:1px 10px;font-size:12.5px}
+.daily .k button{margin-left:auto;border:1px solid rgba(255,255,255,.35);background:none;color:#fff;border-radius:999px;padding:4px 12px;font-size:12.5px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .daily h2{font-size:19px;margin:6px 0 2px;line-height:1.35}
 .daily p{margin:0;font-size:14px;opacity:.9}
 .daily ol{margin:10px 0 0;padding-left:20px;font-size:14px}
@@ -101,11 +102,20 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
   var toastT = null;
   function toast(s) { var t = $('toast'); t.textContent = s; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 1600); }
   // commands and key combos look like code: anything after a colon that looks like a command, or Win/Ctrl combos
-  function fmt(s, q) {
+  var CMD = /(^|[\s：:，（「])((?:(?:sudo|ssh-keygen|ssh-copy-id|ssh|scp|rsync|mosh|tmux|screen|tailscale|journalctl|systemctl|winget|python3?|pip3?|py|ipconfig|netsh|DISM|sfc|powercfg|Get-[A-Za-z]+|Set-[A-Za-z]+|Test-NetConnection|Measure-Command|Compress-Archive|Expand-Archive|tnc|df|du|free|htop|uptime|sensors|find|grep|rg|pkg|apt|ls|cd|chmod|chown|tar|zip|unzip|curl|wget|ping|dig|nslookup|ip|ufw|docker|tree|ncdu|lsblk|swapon|mkswap|kill|pkill|pgrep|ps|nice|renice|watch|man|tldr|history|which|ethtool|crontab|nano|less|head|tail|wc|ln|mkdir|cp|mv|echo|cat|source|export|deactivate|code|wsl|ss|lsof|smartctl|powertop|hostnamectl|timedatectl|uname|lscpu|fail2ban-client|sha256sum|certutil|netstat|taskkill|tasklist|shutdown|reboot|last|who|alias|sed|awk)(?![\w\-])|\.venv|\$PROFILE|~\/)(?:[ \/\-.\w]|[^\s\u3000-\u9fff\uff00-\uffef，。；：、（）「」<>])*)/g;
+  var SOLO = /^(htop|ncdu|uptime|sensors|history|deactivate|ipconfig|lsblk|powertop|tnc|who|last|lscpu|uname|tree|df|free|\$PROFILE|\.venv)$/;
+  function fmt(s, q, title) {
     var h = esc(s);
     h = h.replace(/((?:Win|Ctrl|Shift|Alt|Del|F\d)(?:\s*\+\s*(?:Win|Ctrl|Shift|Alt|Esc|Tab|[A-Z0-9.←→]|←|→))+)/g, '<code>$1</code>');
-    h = h.replace(/((?:sudo |ssh-|ssh |tmux |tailscale |journalctl |systemctl |winget |python |py -|ipconfig |netsh |DISM |sfc |powercfg |Get-ChildItem |df -h|du -sh|free -h|htop|uptime|sensors|find ~|grep -rn|rg |pkg |\.venv)[^，。；（）]*)/g, '<code>$1</code>');
-    if (q) h = h.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>');
+    if (!title) h = h.replace(CMD, function (m, pre, c) {
+      var t = c.replace(/\s+$/, ''), tail = c.slice(t.length);
+      if (!/[\s\-\/.|=~$]/.test(t) && !SOLO.test(t)) return m;     // 单独一个词（cd、free、head…）多半是普通文字
+      return pre + '<code>' + t + '</code>' + tail;
+    });
+    if (q) {
+      var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+      h = h.replace(/(<[^>]+>)|([^<]+)/g, function (m, tag, txt) { return tag || txt.replace(re, '<mark>$1</mark>'); });
+    }
     return h;
   }
   var D = null, CAT = jget('cat', 'all'), FAV = jget('fav', {}), OK = jget('ok', {}), HIDE = jget('hide', {}), OPEN = {}, SHOWHID = false, dayOff = 0;
@@ -139,7 +149,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     if (!list.length) { $('list').innerHTML = '<div class="empty">' + (q ? '没搜到，换个词试试' : CAT === 'fav' ? '还没有收藏' : '这里空了') + '</div>'; }
     else $('list').innerHTML = list.map(function (x) {
       var o = OPEN[x.id] || (q && list.length <= 3);
-      return '<div class="tip' + (o ? ' open' : '') + '" data-id="' + x.id + '"><div class="hd"><div class="ic">' + CI[x.c].i + '</div><div class="tt"><b>' + fmt(x.t, q) + '</b><span>' + fmt(x.p, q) + '</span></div><div class="mk">' +
+      return '<div class="tip' + (o ? ' open' : '') + '" data-id="' + x.id + '"><div class="hd"><div class="ic">' + CI[x.c].i + '</div><div class="tt"><b>' + fmt(x.t, q, 1) + '</b><span>' + fmt(x.p, q) + '</span></div><div class="mk">' +
         (FAV[x.id] ? '<span class="f">★</span> ' : '') + (OK[x.id] ? '<span class="o">✓</span>' : '') + '</div></div>' +
         '<div class="bd"><ol>' + x.s.map(function (s) { return '<li>' + fmt(s, q) + '</li>'; }).join('') + '</ol>' + (x.n ? '<div class="nt">💬 ' + fmt(x.n, q) + '</div>' : '') +
         '<div class="acts"><button data-a="fav" class="' + (FAV[x.id] ? 'on' : '') + '">' + (FAV[x.id] ? '★ 已收藏' : '☆ 收藏') + '</button><button data-a="ok" class="ok' + (OK[x.id] ? ' on' : '') + '">✓ 有用</button><button data-a="copy">📋 复制</button><button data-a="hide">' + (HIDE[x.id] ? '取消隐藏' : '不感兴趣') + '</button></div></div></div>';
@@ -168,7 +178,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     OPEN[id] = true; renderTabs(); renderList();
   };
   var x = new XMLHttpRequest();
-  x.open('GET', 'tips/tips.json');
+  x.open('GET', 'tips/tips.json?v=' + Math.floor(Date.now() / 6e5));
   x.onload = function () {
     try { D = JSON.parse(x.responseText); } catch (e) { $('daily').innerHTML = '<h2>加载失败，刷新试试</h2>'; return; }
     D.cats.forEach(function (c) { CI[c.k] = c; });

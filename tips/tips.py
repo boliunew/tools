@@ -119,7 +119,27 @@ T = {
 }
 
 
+def merge_more():
+    """tips/more_<cat>.py 里的 MORE 列表追加到对应分类（标题重复的跳过）。"""
+    import importlib
+    import sys
+    here = os.path.dirname(os.path.abspath(__file__))
+    if here not in sys.path:
+        sys.path.insert(0, here)
+    for key in T:
+        try:
+            extra = importlib.import_module("more_" + key).MORE
+        except ImportError:
+            continue
+        have = set(x[0] for x in T[key])
+        for x in extra:
+            if x[0] not in have:
+                T[key].append(x)
+                have.add(x[0])
+
+
 def main():
+    merge_more()
     items = []
     for key, _, _, _ in CATS:
         for i, (t, p, s, n) in enumerate(T[key]):
