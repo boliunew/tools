@@ -1,16 +1,16 @@
 {
- "date": "2026-10-01",
- "kind": "易错",
- "en": "Let me take a look",
- "zh": "让我看看",
- "by": "「看看」不能说成 see see",
- "line": "✗ Let me see see → ✓ Let me take a look",
+ "date": "2026-10-02",
+ "kind": "口头禅",
+ "en": "Not bad",
+ "zh": "还不错",
+ "by": "别人问你觉得怎么样",
+ "line": "Not bad",
  "word": {
-  "w": "exhaust",
-  "ph": "ig'zɒ:st",
-  "zh": "n. 排气，排气装置，废气；vt. 抽完，用尽，耗尽，使精疲力尽",
-  "ex": "Although he was exhausted, he had to keep working.",
-  "exzh": "尽管他累极了，他还得继续工作。"
+  "w": "pregnancy",
+  "ph": "'preɡnәnsi",
+  "zh": "n. 怀孕；丰富，多产",
+  "ex": "The pregnancy was a stroke of bad luck.",
+  "exzh": ""
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
