@@ -1,0 +1,11 @@
+beautifulsoup4>=4.12
+edge-tts>=7.0
+feedparser>=6.0
+gTTS>=2.5
+lxml>=5.0
+numpy>=1.26
+pandas>=2.2
+playwright>=1.45
+requests>=2.31
+wordfreq>=3.0
+yfinance>=0.2.54

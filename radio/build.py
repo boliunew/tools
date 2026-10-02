@@ -306,16 +306,25 @@ def short_def(zh):
 
 
 def seg_review(now):
+    db = None
+    kv = os.environ.get("LOCAL_KV", "").strip()     # home server: the 语境词库 progress synced from the phone
+    if kv:
+        try:
+            with open(os.path.join(kv, "ctxvocab-v1.json"), encoding="utf-8") as f:
+                db = json.loads(json.load(f)["v"])
+        except Exception as e:  # noqa: BLE001
+            print("local vocab not available:", e)
     gid = os.environ.get("VOCAB_GIST_ID", "").strip()
-    if not gid:
+    if db is None and not gid:
         return None
-    try:
-        g = fetch_json(f"https://api.github.com/gists/{gid}")
-        f = (g.get("files") or {}).get("ctxvocab.json") or {}
-        db = json.loads(f["content"]) if not f.get("truncated") else fetch_json(f["raw_url"])
-    except Exception as e:  # noqa: BLE001
-        print("vocab gist failed:", e)
-        return None
+    if db is None:
+        try:
+            g = fetch_json(f"https://api.github.com/gists/{gid}")
+            f = (g.get("files") or {}).get("ctxvocab.json") or {}
+            db = json.loads(f["content"]) if not f.get("truncated") else fetch_json(f["raw_url"])
+        except Exception as e:  # noqa: BLE001
+            print("vocab gist failed:", e)
+            return None
     day = int((now.timestamp() + now.utcoffset().total_seconds()) // 86400)
     cards = db.get("cards") or {}
     due = [w for w, c in cards.items() if not c.get("k") and (c.get("due") or 0) <= day]
@@ -423,8 +432,19 @@ def clock_texts():
 def ensure_clock(tmp):
     """Hour/minute clips (made once) so the player can announce the real current time."""
     base = f"https://github.com/{REPO}/releases/download/{CLOCK_TAG}/"
-    if os.environ.get("RADIO_NO_UPLOAD"):
-        return None
+    if os.environ.get("RADIO_NO_UPLOAD"):          # home server: keep the clips next to the page instead
+        d = os.path.join(ROOT, "radio", "_local", "clock")
+        texts = clock_texts()
+        if not all(os.path.exists(os.path.join(d, n)) for n in texts):
+            os.makedirs(d, exist_ok=True)
+            for name, text in texts.items():
+                p = os.path.join(d, name)
+                if os.path.exists(p):
+                    continue
+                raw = os.path.join(tmp, name + ".raw.mp3")
+                tts(text, "zh", raw)
+                run(["ffmpeg", "-y", "-i", raw, "-ar", "24000", "-ac", "1", "-b:a", "48k", p])
+        return "radio/_local/clock/"
     gh = shutil.which("gh")
     have = subprocess.run([gh, "release", "view", CLOCK_TAG, "--json", "assets", "-q", ".assets[].name"], capture_output=True, text=True)
     texts = clock_texts()
@@ -486,7 +506,7 @@ def main():
         for p in seg_files + [full]:
             shutil.copy(p, keep)
         for s, p in zip(out_segs, seg_files):
-            s["url"] = "_local/" + os.path.basename(p)
+            s["url"] = "radio/_local/" + os.path.basename(p) + "?v=" + stamp
 
     clock = None
     try:
@@ -498,7 +518,7 @@ def main():
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "date": today.isoformat(), "engine": ",".join(sorted(engines)),
         "total": round(sum(s["dur"] for s in out_segs), 1),
-        "full": f"https://github.com/{REPO}/releases/download/{TAG}/full.mp3?v={stamp}" if not os.environ.get("RADIO_NO_UPLOAD") else "_local/full.mp3",
+        "full": f"https://github.com/{REPO}/releases/download/{TAG}/full.mp3?v={stamp}" if not os.environ.get("RADIO_NO_UPLOAD") else "radio/_local/full.mp3?v=" + stamp,
         "segments": out_segs,
     }
     os.makedirs(os.path.dirname(OUT_JSON), exist_ok=True)

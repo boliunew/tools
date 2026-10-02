@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>通知中心</title>
+<script src="sync.js?v=1"></script>
+<style>
+:root{--bg:#F3F1EC;--paper:#fff;--ink:#1B1E23;--soft:#626A73;--faint:#98A0A8;--line:#E0DDD5;--chip:#F0EEE8;--accent:#1F6F66;--accent-ink:#fff;--accent-soft:#DCEEEA;--red:#C0392B;--red-soft:#F8DEDA;--shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06)}
+@media (prefers-color-scheme: dark){:root{--bg:#15181C;--paper:#1D2126;--ink:#E9ECEF;--soft:#A3ABB4;--faint:#6F7881;--line:#2E343B;--chip:#262B31;--accent:#5CC2B3;--accent-ink:#0E1A18;--accent-soft:#1E3632;--red:#FF6B5E;--red-soft:#3B2220;--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3)}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.55}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 60px}
+header{display:flex;align-items:center;min-height:56px}
+header a.b{font-weight:700;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:12px}
+.sub{padding:12px 14px;font-size:13.5px;color:var(--soft);line-height:1.7}
+.sub b{color:var(--ink)}
+.sub code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:var(--chip);padding:1px 6px;border-radius:6px;word-break:break-all;color:var(--ink)}
+.tabs{display:flex;gap:6px;margin:14px 0 10px}
+.tabs button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 13px;font-size:14px}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.it{padding:12px 14px}
+.it .t{display:flex;align-items:center;gap:8px;cursor:pointer}
+.it .t b{flex:1;min-width:0;font-size:15.5px}
+.kd{font-size:11.5px;font-weight:700;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);flex:0 0 auto}
+.kd.m{background:var(--chip);color:var(--soft)}
+.it .last{font-size:13px;color:var(--soft);margin-top:6px;white-space:pre-wrap;word-break:break-word;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.it .meta{font-size:12px;color:var(--faint);margin-top:4px}
+.cm{border-top:1px solid var(--line);margin-top:10px;padding-top:6px;display:none}
+.it.open .cm{display:block}
+.it.open .last{display:none}
+.c{font-size:13.5px;padding:8px 0;border-bottom:1px dashed var(--line);white-space:pre-wrap;word-break:break-word}
+.c small{display:block;color:var(--faint);font-size:11.5px;margin-bottom:2px}
+.acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:5px 12px;font-size:13.5px;min-height:34px}
+.btn.red{color:var(--red);border-color:var(--red-soft)}
+.empty{padding:28px 16px;text-align:center;color:var(--soft)}
+.it.flash{box-shadow:0 0 0 2px var(--accent),var(--shadow)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><a class="b" href="./">🔔 通知中心</a><a href="stocks.html">股票池</a>&nbsp;·&nbsp;<a href="monitor.html">网页监控</a></header>
+  <div class="card sub" id="sub">加载中…</div>
+  <div class="tabs"><button data-s="open" class="on">进行中</button><button data-s="closed">已关闭</button></div>
+  <div id="list"></div>
+</div>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function md(s) {
+    return esc(String(s || '').replace(/<!--[\s\S]*?-->/g, '').replace(/\s+$/, ''))
+      .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, t, u) { return /^(https?:|[\w.\-]+\.html)/.test(u) ? '<a href="' + u + '">' + t + '</a>' : t; });
+  }
+  function when(iso) { if (!iso) return ''; var d = new Date(iso); return (d.getMonth() + 1) + '/' + d.getDate() + ' ' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+  function api(method, url, body, cb) { var x = new XMLHttpRequest(); x.open(method, url); x.setRequestHeader('Content-Type', 'application/json'); x.onload = function () { var d = null; try { d = JSON.parse(x.responseText); } catch (e) { } cb && cb(x.status, d); }; x.onerror = function () { cb && cb(0, null); }; x.send(body ? JSON.stringify(body) : null); }
+  if (!window.TOOLS_LOCAL) {
+    $('sub').innerHTML = '通知中心只在<b>家里的主机</b>上使用。现在这个网站在 GitHub 上，提醒和监控记录在 GitHub 的 issue 里：<a href="https://github.com/boliunew/tools/issues">打开 issue 列表 →</a>';
+    document.querySelector('.tabs').style.display = 'none';
+    return;
+  }
+  api('GET', 'api/ping', null, function (st, d) {
+    var u = d && d.ntfy;
+    $('sub').innerHTML = u ?
+      '📲 <b>手机推送</b>：装 <b>ntfy</b> App（Google Play），点 ＋ 订阅，勾选「Use another server」，填：<br><code>' + esc(u) + '</code><br>股价提醒触发、网页有变化、定时任务出错，都会推送到手机。下面是所有提醒的记录。' :
+      '📲 还没有配置手机推送（ntfy）。重新运行 <code>selfhost/install.sh</code> 可以装上；配置前，提醒只记录在这一页。';
+  });
+  var STATE = 'open', OPEN = {};
+  function load() {
+    api('GET', 'api/issues?state=' + STATE, null, function (st, list) {
+      if (st !== 200 || !list) { $('list').innerHTML = '<div class="card empty">读取失败</div>'; return; }
+      if (!list.length) { $('list').innerHTML = '<div class="card empty">' + (STATE === 'open' ? '还没有提醒。<br>在<a href="stocks.html">股票池</a>的自选里点 🔔 设股价提醒，或者在<a href="monitor.html">网页监控</a>里加一个网页。' : '没有已关闭的') + '</div>'; return; }
+      var h = '';
+      list.forEach(function (i) {
+        var kind = /^股价提醒/.test(i.title) ? ['股价提醒', ''] : /^监控/.test(i.title) ? ['网页监控', ' m'] : ['其他', ' m'];
+        h += '<div class="card it' + (OPEN[i.number] ? ' open' : '') + '" id="i' + i.number + '" data-n="' + i.number + '"><div class="t"><span class="kd' + kind[1] + '">' + kind[0] + '</span><b>' + esc(i.title.replace(/^(股价提醒|监控)\s*[:：]\s*/, '')) + '</b><span style="color:var(--faint)">' + (i.comments ? i.comments + ' 条' : '') + ' ▾</span></div>' +
+          '<div class="last" id="l' + i.number + '"></div><div class="meta">创建 ' + when(i.created_at) + (i.updated_at !== i.created_at ? ' · 更新 ' + when(i.updated_at) : '') + '</div>' +
+          '<div class="cm" id="c' + i.number + '"></div></div>';
+      });
+      $('list').innerHTML = h;
+      list.forEach(function (i) { detail(i.number); });
+      var want = +(location.hash || '').replace('#', '');
+      if (want && $('i' + want)) { OPEN[want] = 1; $('i' + want).className += ' open flash'; $('i' + want).scrollIntoView({ block: 'center' }); }
+    });
+  }
+  function detail(n) {
+    api('GET', 'api/issues/' + n, null, function (st, d) {
+      if (st !== 200 || !d) return;
+      var cs = d.comment_list || [], last = cs[cs.length - 1];
+      $('l' + n).innerHTML = last ? md(last.body) : '<span style="color:var(--faint)">还没有消息</span>';
+      var h = cs.slice().reverse().map(function (c) { return '<div class="c"><small>' + when(c.created_at) + '</small>' + md(c.body) + '</div>'; }).join('') || '<div class="c" style="color:var(--faint)">还没有消息</div>';
+      h += '<div class="acts">' + (d.state === 'open' ? '<button class="btn" data-a="close">关闭提醒</button>' : '<button class="btn" data-a="reopen">重新开启</button>') +
+        (/^股价提醒/.test(d.title) ? '<button class="btn" data-a="edit">改条件</button>' : '') + '<button class="btn red" data-a="del">删除</button></div>';
+      $('c' + n).innerHTML = h;
+    });
+  }
+  $('list').onclick = function (e) {
+    var it = e.target.closest('.it'); if (!it) return;
+    var n = +it.getAttribute('data-n'), a = e.target.getAttribute('data-a');
+    if (!a) { if (e.target.closest('.t')) { OPEN[n] = !OPEN[n]; it.classList.toggle('open'); } return; }
+    if (a === 'close' || a === 'reopen') api('PATCH', 'api/issues/' + n, { state: a === 'close' ? 'closed' : 'open' }, load);
+    else if (a === 'del') { if (confirm('删除这条提醒和它的所有记录？')) api('DELETE', 'api/issues/' + n, null, load); }
+    else if (a === 'edit') {
+      var cur = it.querySelector('.t b').textContent, v = prompt('新的条件，例如：VOO 跌到 650 / VOO 回撤 10 / QQQ RSI 30 / SPY 200日线', cur);
+      if (v && v !== cur) api('PATCH', 'api/issues/' + n, { title: '股价提醒: ' + v.replace(/^股价提醒\s*[:：]\s*/, '') }, function () { setTimeout(load, 1500); });
+    }
+  };
+  document.querySelector('.tabs').onclick = function (e) {
+    var s = e.target.getAttribute('data-s'); if (!s) return;
+    STATE = s; var bs = this.querySelectorAll('button'); for (var i = 0; i < bs.length; i++) bs[i].className = bs[i] === e.target ? 'on' : '';
+    load();
+  };
+  load();
+})();
+</script>
+<script src="nav.js?v=4" defer></script>
+</body>
+</html>

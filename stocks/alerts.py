@@ -32,7 +32,10 @@ SNAP = os.path.join(HERE, "data", "snap.json")
 LATEST = os.path.join(HERE, "data", "latest.json")
 STATE = os.path.join(HERE, "data", "alerts.json")
 WATCHLIST = os.path.join(HERE, "watchlist.txt")
-PAGE = "https://boliunew.github.io/tools/stocks.html"
+LOCAL = bool(os.environ.get("LOCAL_ISSUES"))          # running on the home server (selfhost/), not GitHub
+PAGE = (os.environ.get("PUBLIC_URL", "").rstrip("/") + "/stocks.html") if LOCAL and os.environ.get("PUBLIC_URL") else "https://boliunew.github.io/tools/stocks.html"
+PUSH_TXT = "手机上的 ntfy 会推送" if LOCAL else "GitHub App 会推送到手机，也会发邮件"
+CLOSE_TXT = "在「通知中心」关掉它" if LOCAL else "关闭这个 issue"
 PREFIX = "股价提醒"
 SIGNAMES = {"squeeze": "挤压突破", "pit": "回踩金坑", "momentum": "强势新高", "rsi2": "RSI2 超跌反弹", "blood": "血筹码"}
 LEVEL = ("below", "above", "dd", "rsi")          # fire once, re-arm after the condition clears by a margin
@@ -238,7 +241,7 @@ def fire_text(a, r, date, plan):
         after = "出现新信号时会再提醒。"
         if plan:
             why += "\n\n股票池的参考计划：入场 %s · 止损 %s · 目标 %s · 盈亏比 %.1fR" % (fmt(plan["close"]), fmt(plan["stop"]), fmt(plan["target"]), plan["r"])
-    return "%s%s\n\n%s\n\n%s不需要了就关闭这个 issue。 · [打开今日股票池](%s)" % (head, why, status_line(r, date), after, PAGE)
+    return "%s%s\n\n%s\n\n%s不需要了就%s。 · [打开今日股票池](%s)" % (head, why, status_line(r, date), after, CLOSE_TXT, PAGE)
 
 
 def age_hours(iso):
@@ -374,8 +377,8 @@ def ack(gh, number):
     snap = load(SNAP, {}) or {}
     r = (snap.get("rows") or {}).get(a["t"])
     head = "✅ 提醒已登记：**%s** %s\n\n" % (a["t"], describe(a))
-    tail = ("\n\n每个交易日收盘后检查一次（太平洋时间下午 3 点左右），触发时会在这里留言——GitHub App 会推送到手机，也会发邮件。"
-            "不需要了就关闭这个 issue；想改条件，直接改标题。\n%s" % marker)
+    tail = ("\n\n每个交易日收盘后检查一次（太平洋时间下午 3 点左右），触发时会在这里留言——%s。"
+            "不需要了就%s；想改条件，直接改标题。\n%s" % (PUSH_TXT, CLOSE_TXT, marker))
     if r is None:
         added = add_to_watchlist(a["t"])
         mid = ("**%s** 还不在每日扫描范围，%s下一次收盘扫描后开始检查。如果代码写错了，到时会在这里告诉你。"
@@ -387,7 +390,12 @@ def ack(gh, number):
 
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "check"
-    gh = GH()
+    if LOCAL:
+        sys.path.insert(0, os.path.join(os.path.dirname(HERE), "selfhost"))
+        from localgh import LocalGH
+        gh = LocalGH()
+    else:
+        gh = GH()
     if not gh.token:
         print("GITHUB_TOKEN missing; skipping alerts")
         return 0

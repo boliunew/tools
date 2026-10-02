@@ -30,6 +30,7 @@ html.locked #gate{display:block}
 #gmsg{min-height:22px;margin-top:10px;color:#C8412B;font-size:14px}
 .lockbtn{display:block;margin:24px auto 0;background:none;border:0;color:var(--soft);font-size:13px;cursor:pointer}
 </style>
+<script src="sync.js?v=1"></script>
 <script>(function () {
   var SALT = 'edad1bb6942f6037f944b455', N = 20000, CHECK = '3b63b84bdaae342e74dfcb4a2deb9b8329ae3a369e20aaf65f3d4220cc7eeb62', KEY = 'home:unlock';
   function sha256(bytes) {
@@ -68,7 +69,7 @@ html.locked #gate{display:block}
   function unlock() { root.className = root.className.replace(/\blocked\b/g, ''); }
   var saved = null;
   try { saved = window.localStorage.getItem(KEY); } catch (e) { }
-  if (saved && ok(saved)) { unlock(); } else { root.className += ' locked'; }
+  if (window.TOOLS_LOCAL || (saved && ok(saved))) { unlock(); }   // at home (Tailscale) only your own devices can reach the site else { root.className += ' locked'; }
   window.__gate = function () {
     var inp = document.getElementById('gpw'), msg = document.getElementById('gmsg'), rem = document.getElementById('grem');
     msg.textContent = '…';

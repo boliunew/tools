@@ -36,7 +36,7 @@
   function unlock() { root.className = root.className.replace(/\blocked\b/g, ''); }
   var saved = null;
   try { saved = window.localStorage.getItem(KEY); } catch (e) { }
-  if (saved && ok(saved)) { unlock(); } else { root.className += ' locked'; }
+  if (window.TOOLS_LOCAL || (saved && ok(saved))) { unlock(); }   // at home (Tailscale) only your own devices can reach the site else { root.className += ' locked'; }
   window.__gate = function () {
     var inp = document.getElementById('gpw'), msg = document.getElementById('gmsg'), rem = document.getElementById('grem');
     msg.textContent = '…';

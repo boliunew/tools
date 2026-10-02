@@ -323,7 +323,12 @@ def evaluate(n, w, st, r, first):
 
 # ----------------------------------------------------------------------------- main
 def main():
-    gh = GH()
+    if os.environ.get("LOCAL_ISSUES"):          # home server: issues live in selfhost/localgh.py
+        sys.path.insert(0, os.path.join(os.path.dirname(HERE), "selfhost"))
+        from localgh import LocalGH
+        gh = LocalGH()
+    else:
+        gh = GH()
     owner = os.environ.get("OWNER", "").lower()
     event, num, action = os.environ.get("EVENT_NAME", ""), os.environ.get("ISSUE_NUMBER", ""), os.environ.get("ISSUE_ACTION", "")
     state = {"watches": {}}

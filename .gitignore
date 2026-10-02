@@ -1,2 +1,7 @@
 __pycache__/
 *.pyc
+# home server (selfhost/)
+.venv/
+.local-data/
+selfhost/config.env
+radio/_local/

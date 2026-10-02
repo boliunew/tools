@@ -229,6 +229,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 .bcap .k2{border-color:var(--soft)}.bcap .k3{border-top:2px dashed var(--faint)}
 .bdiv{font-size:12.5px;color:var(--warn);background:var(--warn-soft);border-radius:8px;padding:6px 10px;margin-top:8px;line-height:1.6}
 </style>
+<script src="sync.js?v=1"></script>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="bar">
@@ -261,7 +262,14 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
   var WATCH = (function () { try { var w = JSON.parse(store('watch') || 'null'); return w && w.length != null ? w : ['VOO']; } catch (e) { return ['VOO']; } })();
   var VIEW = store('view') || 'card';
   var OPENS = (function () { try { return JSON.parse(store('open') || '{}') || {}; } catch (e) { return {}; } })();
-  var REPO = 'boliunew/tools', OWNER = 'boliunew', ALERTS = null, AST = null, alertsAt = 0;
+  var REPO = 'boliunew/tools', OWNER = 'boliunew', ALERTS = null, AST = null, alertsAt = 0, LOCAL = !!window.TOOLS_LOCAL;
+  function wlLink(t, txt) { return LOCAL ? '<a href="#" data-wl="' + esc(t) + '">' + txt + '</a>' : '<a href="https://github.com/boliunew/tools/edit/main/stocks/watchlist.txt" target="_blank" rel="noopener">' + txt + '</a>'; }
+  function api(method, url, body, cb) { var x = new XMLHttpRequest(); x.open(method, url); x.setRequestHeader('Content-Type', 'application/json'); x.onload = function () { var d = null; try { d = JSON.parse(x.responseText); } catch (e) { } cb && cb(x.status, d); }; x.onerror = function () { cb && cb(0, null); }; x.send(body ? JSON.stringify(body) : null); }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('[data-wl]') : null; if (!a) return;
+    e.preventDefault(); var t = a.getAttribute('data-wl');
+    api('POST', 'api/watchlist', { t: t }, function (st) { a.outerHTML = st === 200 ? '<span>✓ 已加入，下次扫描后出现</span>' : '<span>加入失败</span>'; });
+  });
   function saveWatch() { store('watch', JSON.stringify(WATCH)); }
   function getJSON(url, cb) { var x = new XMLHttpRequest(); x.open('GET', url + '?t=' + Math.floor(Date.now() / 300000)); x.onload = function () { try { cb(x.status === 200 ? JSON.parse(x.responseText) : null); } catch (e) { cb(null); } }; x.onerror = function () { cb(null); }; x.send(); }
 
@@ -375,7 +383,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       var t = WATCH[i], r = SNAP.rows[t];
       var mine = alertsOf(t), chips = '';
       for (var q = 0; q < mine.length; q++) chips += achip(mine[q]);
-      if (!r) { h += '<div class="wmiss"><b>' + esc(t) + '</b> 不在每日扫描范围（S&P 500 + 纳指 100 + 常用 ETF）<a href="https://github.com/boliunew/tools/edit/main/stocks/watchlist.txt" target="_blank" rel="noopener">加进扫描清单</a><button class="wx" data-x="' + esc(t) + '" aria-label="移除">×</button></div>' + (chips ? '<div class="wd2">' + chips + '</div>' : ''); continue; }
+      if (!r) { h += '<div class="wmiss"><b>' + esc(t) + '</b> 不在每日扫描范围（S&P 500 + 纳指 100 + 常用 ETF）' + wlLink(t, '加进扫描清单') + '<button class="wx" data-x="' + esc(t) + '" aria-label="移除">×</button></div>' + (chips ? '<div class="wd2">' + chips + '</div>' : ''); continue; }
       var e = earnOf(t), tags = '';
       for (var k = 0; k < (r.sig || []).length; k++) tags += '<span class="tag">' + esc((DATA.signals[r.sig[k]] || {}).name || r.sig[k]) + '</span>';
       if (e) tags += '<span class="tag earn">财报 ' + esc(e.date.slice(5)) + (whenZh(e.when) ? ' ' + whenZh(e.when) : '') + '</span>';
@@ -446,8 +454,8 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
   function loadAlerts() {
     alertsAt = Date.now();
     var x = new XMLHttpRequest();
-    x.open('GET', 'https://api.github.com/repos/' + REPO + '/issues?state=open&per_page=100');
-    x.setRequestHeader('Accept', 'application/vnd.github+json');
+    x.open('GET', LOCAL ? 'api/issues?state=open' : 'https://api.github.com/repos/' + REPO + '/issues?state=open&per_page=100');
+    if (!LOCAL) x.setRequestHeader('Accept', 'application/vnd.github+json');
     x.onload = function () {
       if (x.status !== 200) return;
       try {
@@ -476,6 +484,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 
   /* the bottom sheet that writes the GitHub issue for a new alert */
   var am = null, amPushed = false;
+  function toastS(msg) { var t = document.createElement('div'); t.textContent = msg; t.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:rgba(28,28,30,.92);color:#fff;padding:8px 16px;border-radius:999px;font-size:13.5px;z-index:60;max-width:86vw;text-align:center'; document.body.appendChild(t); setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 2200); }
   function closeSheet(fromPop) {
     if (!am) return;
     if (am.parentNode) am.parentNode.removeChild(am);
@@ -505,8 +514,9 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       if (o[4]) { h += '<span class="aq">'; for (j = 0; j < o[4].length; j++) h += '<button type="button" data-k="' + o[0] + '" data-q="' + o[4][j][1] + '">' + o[4][j][0] + '</button>'; h += '</span>'; }
       h += '</label>';
     }
-    h += '<div class="ap">标题：<b id="apT"></b></div><div class="abtns"><a class="btn amgo" id="amGo" target="_blank" rel="noopener">去 GitHub 提交 →</a><button class="btn" type="button" id="amCp">复制标题</button></div>' +
-      '<div class="anote">打开后内容已经填好，点 <b>Submit new issue</b> 就生效，机器人会马上回一条「已登记」。之后每个交易日收盘后按收盘价检查，触发时在那条 issue 下留言——GitHub App 会推送到手机，也会发邮件。如果打开的是空白页，把复制的标题粘贴进去提交也行。不想要了，关闭那条 issue 即可。</div>';
+    h += '<div class="ap">标题：<b id="apT"></b></div><div class="abtns"><a class="btn amgo" id="amGo" target="_blank" rel="noopener">' + (LOCAL ? '✅ 设好提醒' : '去 GitHub 提交 →') + '</a><button class="btn" type="button" id="amCp">复制标题</button></div>' +
+      (LOCAL ? '<div class="anote">保存在你家的主机上。之后每个交易日收盘后按收盘价检查，触发时手机上的 ntfy 会推送；所有提醒在<a href="issues.html">🔔 通知中心</a>里查看和关闭。</div>' : '') +
+      '<div class="anote"' + (LOCAL ? ' style="display:none"' : '') + '>打开后内容已经填好，点 <b>Submit new issue</b> 就生效，机器人会马上回一条「已登记」。之后每个交易日收盘后按收盘价检查，触发时在那条 issue 下留言——GitHub App 会推送到手机，也会发邮件。如果打开的是空白页，把复制的标题粘贴进去提交也行。不想要了，关闭那条 issue 即可。</div>';
     var have = alertsOf(t);
     if (have.length) { h += '<div class="ahave">已有的提醒：'; for (i = 0; i < have.length; i++) h += achip(have[i]); h += '</div>'; }
     am = document.createElement('div'); am.className = 'am'; am.innerHTML = h + '</div>';
@@ -528,6 +538,14 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       go.href = 'https://github.com/' + REPO + '/issues/new?template=stock-alert.yml&labels=stock-alert&title=' + encodeURIComponent(title) +
         '&ticker=' + encodeURIComponent(t) + '&cond=' + encodeURIComponent(ACOND[s.k]) + '&value=' + encodeURIComponent(s.v != null ? fmtN(s.v) : '');
       am.__title = title;
+      if (LOCAL) { go.removeAttribute('href'); go.removeAttribute('target'); go.onclick = function () {
+        if (!s.ok || go.__busy) return; go.__busy = 1; go.textContent = '保存中…';
+        api('POST', 'api/issues', { title: title, body: '' }, function (st) {
+          go.__busy = 0;
+          if (st === 201) { closeSheet(); toastS('已设好：' + title.replace('股价提醒: ', '')); setTimeout(loadAlerts, 1500); setTimeout(loadAlerts, 6000); }
+          else { go.textContent = '保存失败，再试一次'; }
+        });
+      }; }
     }
     function pickKind(k) { var rr = am.querySelector('input[name=ak][value=' + k + ']'); if (rr) rr.checked = true; }
     var radios = am.querySelectorAll('input[name=ak]'), avs = am.querySelectorAll('.av'), qs = am.querySelectorAll('.aq button');
@@ -709,7 +727,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       if (!t) { wIn.focus(); return; }
       if (WATCH.indexOf(t) >= 0) { document.getElementById('wMsg').textContent = t + ' 已经在自选里了'; return; }
       WATCH.push(t); saveWatch(); render();
-      if (SNAP && !SNAP.rows[t]) { var m = document.getElementById('wMsg'); if (m) m.innerHTML = t + ' 暂时不在每日扫描范围，已先记下；<a href="https://github.com/boliunew/tools/edit/main/stocks/watchlist.txt" target="_blank" rel="noopener">把它加进扫描清单</a>，下一次扫描后就有数据。'; }
+      if (SNAP && !SNAP.rows[t]) { var m = document.getElementById('wMsg'); if (m) m.innerHTML = t + ' 暂时不在每日扫描范围，已先记下；' + wlLink(t, '把它加进扫描清单') + '，下一次扫描后就有数据。'; }
     };
     if (wGo) wGo.onclick = addW;
     if (wIn) wIn.onkeydown = function (e) { if (e.keyCode === 13) addW(); };
@@ -729,6 +747,6 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
   load();
 })();
 </script>
-<script src="nav.js?v=3" defer></script>
+<script src="nav.js?v=4" defer></script>
 </body>
 </html>

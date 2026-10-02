@@ -77,6 +77,7 @@ svg.sp{width:100%;height:54px;display:block;margin:8px 0 4px}
 .empty{padding:36px 16px;text-align:center;color:var(--soft);line-height:1.8}
 footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;line-height:1.7}
 </style>
+<script src="sync.js?v=1"></script>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="bar">
@@ -135,8 +136,21 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     if (mode === '价格' && $('fTarget').value) q += '&target=' + encodeURIComponent($('fTarget').value);
     if (mode.indexOf('关键词') === 0) q += '&keyword=' + encodeURIComponent($('fKw').value);
     if ($('fSel').value) q += '&selector=' + encodeURIComponent($('fSel').value);
+    if (window.TOOLS_LOCAL) {   // home server: save the watch locally, it is checked right away
+      var nr = function (v) { return v ? v : '_No response_'; };
+      var body = '### 网址\n\n' + url + '\n\n### 监控类型\n\n' + mode + '\n\n### 目标价（选填）\n\n' + nr(mode === '价格' ? $('fTarget').value : '') +
+        '\n\n### 关键词（选填）\n\n' + nr(mode.indexOf('关键词') === 0 ? $('fKw').value : '') + '\n\n### CSS 选择器（选填，高级）\n\n' + nr($('fSel').value);
+      var x = new XMLHttpRequest(); x.open('POST', 'api/issues'); x.setRequestHeader('Content-Type', 'application/json');
+      x.onload = function () { if (x.status === 201) { $('addForm').classList.remove('on'); $('list').insertAdjacentHTML('afterbegin', '<div class="card empty">✅ 已添加「' + esc(name) + '」，正在第一次检查，十几秒后刷新就能看到。</div>'); setTimeout(load, 15000); setTimeout(load, 45000); } else alert('保存失败'); };
+      x.send(JSON.stringify({ title: '监控: ' + name, body: body }));
+      return;
+    }
     window.open('https://github.com/' + REPO + '/issues/new?' + q, '_blank');
   };
+  if (window.TOOLS_LOCAL) {
+    $('goBtn').textContent = '✅ 开始监控';
+    var stp = document.querySelector('.steps'); if (stp) stp.innerHTML = '每 4 小时检查一次。有变化时手机上的 ntfy 会推送。<br>删除监控：在 <a href="issues.html">🔔 通知中心</a> 里关掉它。';
+  }
 
   function spark(h) {
     if (!h || h.length < 2) return '';
@@ -183,6 +197,6 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   load();
 })();
 </script>
-<script src="nav.js?v=3" defer></script>
+<script src="nav.js?v=4" defer></script>
 </body>
 </html>
