@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F1EA">
+<title>技巧与科普</title>
+<script src="sync.js?v=1"></script>
+<style>
+:root{
+  --bg:#F4F1EA; --paper:#FFFDF8; --ink:#1D2028; --soft:#5E6573; --faint:#99A0AA; --line:#E3DED3; --chip:#EEE9DF;
+  --accent:#2C6E8F; --accent-ink:#fff; --accent-soft:#DDEBF2; --gold:#C98A16; --ok:#1E8E4E; --ok-soft:#DDF1E4;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 5px 18px rgba(30,35,50,.07);
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#13161C; --paper:#1B1F27; --ink:#E9ECF1; --soft:#A7AEBA; --faint:#6E7583; --line:#2B303B; --chip:#252A35;
+  --accent:#6CB6DA; --accent-ink:#0B1A22; --accent-soft:#1B3240; --gold:#F2B94B; --ok:#5BD38E; --ok-soft:#173124;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 5px 18px rgba(0,0,0,.35);
+}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:680px;margin:0 auto;padding:0 14px}
+header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area-inset-top)}
+.brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto}
+.hd-n{font-size:12.5px;color:var(--faint)}
+/* 每日一招 */
+.daily{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--accent),#1F4E66);color:#fff;border-radius:18px;padding:16px 16px 14px;box-shadow:var(--shadow);margin-bottom:14px}
+@media (prefers-color-scheme: dark){.daily{background:linear-gradient(135deg,#24546C,#16303F)}}
+.daily:after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.08)}
+.daily .k{font-size:12.5px;opacity:.85;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
+.daily .k button{margin-left:auto;border:1px solid rgba(255,255,255,.35);background:none;color:#fff;border-radius:999px;padding:1px 10px;font-size:12.5px}
+.daily h2{font-size:19px;margin:6px 0 2px;line-height:1.35}
+.daily p{margin:0;font-size:14px;opacity:.9}
+.daily ol{margin:10px 0 0;padding-left:20px;font-size:14px}
+.daily ol li{margin:3px 0}
+.daily .nt{font-size:12.5px;opacity:.85;margin-top:8px}
+/* tabs + search */
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -14px;padding:0 14px 6px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 13px;font-size:14px}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:700}
+.tabs button small{opacity:.6;margin-left:3px}
+.srch{display:flex;gap:8px;margin:8px 0}
+.srch input{flex:1;min-width:0;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 12px;font-size:16px;outline:none}
+.srch input:focus{border-color:var(--accent)}
+.cdesc{font-size:12.5px;color:var(--soft);margin:2px 2px 10px}
+/* cards */
+.tip{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;box-shadow:var(--shadow);overflow:hidden}
+.tip .hd{display:flex;align-items:flex-start;gap:10px;padding:12px 12px 11px;cursor:pointer}
+.tip .ic{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:18px}
+.tip .tt{flex:1;min-width:0}
+.tip .tt b{display:block;font-size:15.5px;line-height:1.4}
+.tip .tt span{display:block;font-size:13px;color:var(--soft);margin-top:1px}
+.tip .mk{flex:0 0 auto;font-size:13px;color:var(--faint);padding-top:2px}
+.tip .mk .f{color:var(--gold)}.tip .mk .o{color:var(--ok)}
+.tip .bd{display:none;padding:0 14px 12px 56px}
+.tip.open .bd{display:block}
+.tip.open .tt span{color:var(--ink)}
+.tip ol{margin:0;padding-left:18px}
+.tip ol li{margin:5px 0;font-size:14.5px}
+.tip code,.daily code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:var(--chip);color:var(--ink);border-radius:5px;padding:1px 5px;word-break:break-all}
+.daily code{background:rgba(255,255,255,.18);color:#fff}
+.tip .nt{margin-top:8px;font-size:13px;color:var(--soft);background:var(--chip);border-radius:9px;padding:7px 10px}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.acts button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 11px;font-size:13px}
+.acts button.on{border-color:var(--gold);color:var(--gold);font-weight:700}
+.acts button.ok.on{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.empty{text-align:center;color:var(--soft);padding:30px 10px}
+.hidden-note{text-align:center;font-size:13px;color:var(--faint);margin:10px 0}
+.hidden-note button{border:0;background:none;color:var(--accent);font-size:13px}
+mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(28,28,30,.92);color:#fff;padding:8px 16px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:all .2s;z-index:60}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.foot{font-size:12px;color:var(--faint);text-align:center;margin-top:20px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><a class="brand" href="./">💡 技巧与科普</a><span class="hd-n" id="hdN"></span></header>
+  <div class="daily" id="daily"><div class="k">每日一招</div><h2>加载中…</h2></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="srch"><input id="q" placeholder="🔍 搜：截图、电池、骗、中暑、微波炉…" autocomplete="off"></div>
+  <div class="cdesc" id="cdesc"></div>
+  <div id="list"></div>
+  <div class="hidden-note" id="hid"></div>
+  <div class="foot">内容是给这个网站写的，按你的三星手机、Windows 电脑和家里的 Linux 主机来挑。<br>想加什么话题，告诉 Claude 就能补进来。</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function jget(k, d) { try { var v = localStorage.getItem('tips:' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+  function jset(k, v) { try { localStorage.setItem('tips:' + k, JSON.stringify(v)); } catch (e) { } }
+  var toastT = null;
+  function toast(s) { var t = $('toast'); t.textContent = s; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 1600); }
+  // commands and key combos look like code: anything after a colon that looks like a command, or Win/Ctrl combos
+  function fmt(s, q) {
+    var h = esc(s);
+    h = h.replace(/((?:Win|Ctrl|Shift|Alt|Del|F\d)(?:\s*\+\s*(?:Win|Ctrl|Shift|Alt|Esc|Tab|[A-Z0-9.←→]|←|→))+)/g, '<code>$1</code>');
+    h = h.replace(/((?:sudo |ssh-|ssh |tmux |tailscale |journalctl |systemctl |winget |python |py -|ipconfig |netsh |DISM |sfc |powercfg |Get-ChildItem |df -h|du -sh|free -h|htop|uptime|sensors|find ~|grep -rn|rg |pkg |\.venv)[^，。；（）]*)/g, '<code>$1</code>');
+    if (q) h = h.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>');
+    return h;
+  }
+  var D = null, CAT = jget('cat', 'all'), FAV = jget('fav', {}), OK = jget('ok', {}), HIDE = jget('hide', {}), OPEN = {}, SHOWHID = false, dayOff = 0;
+  var CI = {};
+  function today() { var d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 864e5); }
+
+  function renderDaily() {
+    var items = D.items.filter(function (x) { return !HIDE[x.id]; });
+    if (!items.length) items = D.items;
+    var n = today() + dayOff, it = items[((n * 37) % items.length + items.length) % items.length], c = CI[it.c];
+    $('daily').innerHTML = '<div class="k">' + (dayOff ? '换一招' : '每日一招') + ' · ' + c.i + ' ' + esc(c.n) + '<button id="dMore">换一个</button></div><h2>' + esc(it.t) + '</h2><p>' + esc(it.p) + '</p><ol>' +
+      it.s.map(function (s) { return '<li>' + fmt(s) + '</li>'; }).join('') + '</ol>' + (it.n ? '<div class="nt">💬 ' + fmt(it.n) + '</div>' : '');
+    $('dMore').onclick = function () { dayOff++; renderDaily(); };
+  }
+  function renderTabs() {
+    var cnt = { all: 0, fav: 0 };
+    D.items.forEach(function (x) { if (HIDE[x.id]) return; cnt.all++; cnt[x.c] = (cnt[x.c] || 0) + 1; if (FAV[x.id]) cnt.fav++; });
+    var tabs = [['all', '全部']].concat(D.cats.map(function (c) { return [c.k, c.i + ' ' + c.n]; })).concat([['fav', '⭐ 收藏']]);
+    $('tabs').innerHTML = tabs.map(function (t) { return '<button data-c="' + t[0] + '" class="' + (t[0] === CAT ? 'on' : '') + '">' + t[1] + '<small>' + (cnt[t[0]] || 0) + '</small></button>'; }).join('');
+    $('hdN').textContent = D.items.length + ' 条 · 试过 ' + Object.keys(OK).length;
+  }
+  function renderList() {
+    var q = $('q').value.replace(/^\s+|\s+$/g, '').toLowerCase(), hidN = 0;
+    var list = D.items.filter(function (x) {
+      if (q) return (x.t + x.p + x.s.join('') + x.n).toLowerCase().indexOf(q) >= 0;
+      if (CAT === 'fav') return !!FAV[x.id];
+      return CAT === 'all' || x.c === CAT;
+    }).filter(function (x) { if (HIDE[x.id] && !SHOWHID) { hidN++; return false; } return true; });
+    var c = CI[CAT];
+    $('cdesc').textContent = q ? '搜到 ' + list.length + ' 条' : c ? c.d : CAT === 'fav' ? '点开一条，按 ☆ 收藏，以后在这里找。' : '点一条展开看步骤。试过有用的点「✓ 有用」，用不上的点「不感兴趣」藏起来。';
+    if (!list.length) { $('list').innerHTML = '<div class="empty">' + (q ? '没搜到，换个词试试' : CAT === 'fav' ? '还没有收藏' : '这里空了') + '</div>'; }
+    else $('list').innerHTML = list.map(function (x) {
+      var o = OPEN[x.id] || (q && list.length <= 3);
+      return '<div class="tip' + (o ? ' open' : '') + '" data-id="' + x.id + '"><div class="hd"><div class="ic">' + CI[x.c].i + '</div><div class="tt"><b>' + fmt(x.t, q) + '</b><span>' + fmt(x.p, q) + '</span></div><div class="mk">' +
+        (FAV[x.id] ? '<span class="f">★</span> ' : '') + (OK[x.id] ? '<span class="o">✓</span>' : '') + '</div></div>' +
+        '<div class="bd"><ol>' + x.s.map(function (s) { return '<li>' + fmt(s, q) + '</li>'; }).join('') + '</ol>' + (x.n ? '<div class="nt">💬 ' + fmt(x.n, q) + '</div>' : '') +
+        '<div class="acts"><button data-a="fav" class="' + (FAV[x.id] ? 'on' : '') + '">' + (FAV[x.id] ? '★ 已收藏' : '☆ 收藏') + '</button><button data-a="ok" class="ok' + (OK[x.id] ? ' on' : '') + '">✓ 有用</button><button data-a="copy">📋 复制</button><button data-a="hide">' + (HIDE[x.id] ? '取消隐藏' : '不感兴趣') + '</button></div></div></div>';
+    }).join('');
+    $('hid').innerHTML = hidN ? '已隐藏 ' + hidN + ' 条 <button id="showHid">显示</button>' : SHOWHID && Object.keys(HIDE).length ? '<button id="showHid">收起已隐藏的</button>' : '';
+    if ($('showHid')) $('showHid').onclick = function () { SHOWHID = !SHOWHID; renderList(); };
+  }
+  $('tabs').onclick = function (e) {
+    var b = e.target.closest('[data-c]'); if (!b) return;
+    CAT = b.getAttribute('data-c'); jset('cat', CAT); $('q').value = ''; renderTabs(); renderList(); window.scrollTo(0, $('tabs').offsetTop - 60);
+  };
+  $('q').addEventListener('input', renderList);
+  $('list').onclick = function (e) {
+    var card = e.target.closest('.tip'); if (!card) return;
+    var id = card.getAttribute('data-id'), a = e.target.getAttribute('data-a'), x = null, i;
+    for (i = 0; i < D.items.length; i++) if (D.items[i].id === id) x = D.items[i];
+    if (!a) { if (e.target.closest('.hd')) { OPEN[id] = !card.classList.contains('open'); card.classList.toggle('open'); } return; }
+    if (a === 'fav') { if (FAV[id]) delete FAV[id]; else { FAV[id] = 1; toast('已收藏'); } jset('fav', FAV); }
+    else if (a === 'ok') { if (OK[id]) delete OK[id]; else { OK[id] = Date.now(); toast('👍 记下了'); } jset('ok', OK); }
+    else if (a === 'hide') { if (HIDE[id]) delete HIDE[id]; else { HIDE[id] = 1; toast('已隐藏，每日一招也不会再出现'); } jset('hide', HIDE); }
+    else if (a === 'copy') {
+      var t = x.t + '\n' + x.s.map(function (s, k) { return (k + 1) + '. ' + s; }).join('\n') + (x.n ? '\n' + x.n : '');
+      try { navigator.clipboard.writeText(t).then(function () { toast('已复制，可以发给家人'); }); } catch (err) { toast('复制失败'); }
+      return;
+    }
+    OPEN[id] = true; renderTabs(); renderList();
+  };
+  var x = new XMLHttpRequest();
+  x.open('GET', 'tips/tips.json');
+  x.onload = function () {
+    try { D = JSON.parse(x.responseText); } catch (e) { $('daily').innerHTML = '<h2>加载失败，刷新试试</h2>'; return; }
+    D.cats.forEach(function (c) { CI[c.k] = c; });
+    if (CAT !== 'all' && CAT !== 'fav' && !CI[CAT]) CAT = 'all';
+    renderDaily(); renderTabs(); renderList();
+    var h = (location.hash || '').replace('#', ''); if (h) { for (var i = 0; i < D.items.length; i++) if (D.items[i].id === h) { CAT = D.items[i].c; OPEN[h] = true; renderTabs(); renderList(); var el = document.querySelector('[data-id="' + h + '"]'); if (el) el.scrollIntoView({ block: 'center' }); } }
+  };
+  x.onerror = function () { $('daily').innerHTML = '<h2>加载失败，检查网络后刷新</h2>'; };
+  x.send();
+})();
+</script>
+<script src="nav.js?v=7" defer></script>
+</body>
+</html>
