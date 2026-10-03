@@ -13,7 +13,7 @@ for mod in ("part1", "part2", "part3"):
             continue
         idx[k] = len(items)
         items.append({"k": k, "a": [x for x in e["a"] if x != k], "c": e["c"], "t": e["t"], "x": e["x"], "v": e["v"]})
-EXTRA = {"去世的亲人": ["去世", "过世", "已故", "死去的"], "被追": ["追我", "追着", "蛇追", "狗追", "被追"]}
+EXTRA = {"去世的亲人": ["去世", "过世", "已故", "死去的"], "被追": ["追我", "追着", "被追"]}
 for e in items:
     for w in EXTRA.get(e["k"], []):
         if w not in e["a"] and w != e["k"]:

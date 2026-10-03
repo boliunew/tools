@@ -95,7 +95,7 @@ mark{background:rgba(240,182,90,.35);color:inherit;border-radius:3px}
   }
   // 从一句话里找出所有提到的梦境（关键词或别名是这句话的一部分）
   function analyse(text) {
-    var t = text.replace(/[\s，。,.!！?？、]/g, '').replace(/^(我|昨晚|昨天|晚上|梦见|梦到|做梦)+/, ''), hits = [];
+    var t = text.replace(/[\s，。,.!！?？、]/g, '').replace(/^(我|昨晚|昨天|晚上|梦见|梦到|做梦)+/, '').replace(/被(.{1,4}?)(追|咬|打|骂)/g, '被$2 $1'), hits = [];
     D.items.forEach(function (e) {
       var words = [e.k].concat(e.a).map(function (w) { return w.replace(/^梦见|^梦到/, ''); }).filter(function (w) { return w.length >= 1; });
       var best = '';
