@@ -21,7 +21,7 @@ steps() {
     stocks)   printf '%s\n' "stocks/scan.py" "stocks/alerts.py check" ;;
     earnings) printf '%s\n' "earnings/build.py" ;;
     news)     printf '%s\n' "news/build.py" "news/contexts.py" "news/articles.py" "news/today.py" "card/today.py" ;;
-    deals)    printf '%s\n' "deals/build.py" ;;
+    deals)    printf '%s\n' "deals/build.py" "deals/watch.py" ;;
     radio)    printf '%s\n' "radio/build.py" ;;
     monitor)  printf '%s\n' "monitor/check.py" ;;
     *) return 1 ;;

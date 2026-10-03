@@ -111,6 +111,19 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
 .shead .bt{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
 .shead .bt a,.shead .bt button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 11px;font-size:13.5px}
 .shead .bt button.on{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.groups button.wg{border-color:#E0A84A}
+.wform{display:flex;gap:6px;margin:4px 0 6px}
+.wform input{min-width:0;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 11px;font-size:15px;outline:none}
+.wform #wq{flex:1}.wform #wcap{width:6.5em}
+.wform button{border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font-weight:700;padding:0 13px;white-space:nowrap}
+.whint{font-size:12px;color:var(--faint);margin:0 2px 10px}
+.wlist{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.wi{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px 6px}
+.wi.on{border-color:#E0A84A;box-shadow:0 0 0 2px rgba(224,168,74,.25)}
+.wi .wn{flex:1;min-width:0;text-align:left;border:0;background:none;padding:6px;font-size:14.5px;color:var(--ink)}
+.wi .wn b{color:#B5741A;margin-left:4px}
+.wi .wpush{border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:4px 9px;font-size:12.5px;color:var(--soft);text-decoration:none;white-space:nowrap}
+.wi .wx{border:0;background:none;color:var(--faint);font-size:15px;padding:4px 8px}
 .cmp{background:var(--accent-soft);border-radius:12px;padding:8px 12px;margin-bottom:8px;font-size:13.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .cmp b{color:var(--accent)}
 .cmp button{margin-left:auto;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:10px;padding:4px 10px;font-size:13px}
@@ -168,7 +181,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
 
   var META = null, FLY = null, ITEMS = [], ST = {}, CAT = {}, GRP = [];
   var grp = get('grp', 'mine'), SEL = get('sel', {}), sub = get('sub', {}), cat = 'all', sort = get('sort', 'rec'), q = '', mineOnly = false, shown = 60;
-  var MINE = get('mine', ['f4l', 'walmart', 'amazon']), LIST = get('list', {});
+  var MINE = get('mine', ['f4l', 'walmart', 'amazon']), LIST = get('list', {}), WATCH = get('watch', []), TERMS = {}, WSEL = -1;
   var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   var LITE = get('lite', null);
   if (LITE === null) LITE = !!(conn && (conn.saveData || /(^|-)2g|3g/.test(conn.effectiveType || '')));
@@ -210,10 +223,11 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     x.send();
   }
   function load() {
-    var left = 2;
+    var left = 3;
     var done = function () { if (--left) return; if (!META) { $('body').innerHTML = '<div class="msg">数据暂时读不到，稍后再试。</div>'; return; } build(); };
     fetchJSON('deals/data/meta.json', function (d) { META = d; done(); });
     fetchJSON('deals/data/flyers.json', function (d) { FLY = d || { flyers: {} }; done(); });
+    fetchJSON('deals/terms.json', function (d) { TERMS = d || {}; done(); });
   }
   function build() {
     var i, k, f, it, x, ci = 0;
@@ -241,7 +255,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
       x._q = (x.n + ' ' + (x.b || '') + ' ' + (x.zh || '') + ' ' + (x.stz || '') + ' ' + (CAT[x.c] ? CAT[x.c].zh : '') + ' ' + (x.fl || []).join(' ') + ' ' + st.name).toLowerCase();
     }
     for (k in ST) if (ST.hasOwnProperty(k)) ST[k].flyers.sort(function (a, b) { return a.from < b.from ? -1 : 1; });
-    pruneList();
+    pruneList(); markWatch();
     header(); render();
   }
   function header() {
@@ -294,11 +308,74 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     return a;
   }
 
+  /* ---------- 🔔 关注：关键词 + 可选最高价（中文词按 deals/terms.json 扩展成英文） ---------- */
+  function reEsc(t) { return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function wopt(o) {
+    o = String(o).toLowerCase();
+    if (/[\u4e00-\u9fff]/.test(o)) return [new RegExp(reEsc(o))];
+    return o.split(/\s+/).filter(function (p) { return p; }).map(function (p) { return new RegExp('\\b' + reEsc(p) + '(?:s|es)?\\b'); });
+  }
+  function wcompile(w) {
+    if (w._m) return w._m;
+    var groups = w.q.toLowerCase().split(/[\s,，、\/]+/).filter(function (t) { return t; }).map(function (t) { return [t].concat(TERMS[t] || []).map(wopt); });
+    w._m = function (x) {
+      if (w.max != null && (x._e == null || x._e > w.max)) return false;
+      for (var g = 0; g < groups.length; g++) {
+        var ok = false;
+        for (var o = 0; o < groups[g].length && !ok; o++) { var all = true; for (var r = 0; r < groups[g][o].length; r++) if (!groups[g][o][r].test(x._q)) { all = false; break; } ok = all; }
+        if (!ok) return false;
+      }
+      return groups.length > 0;
+    };
+    return w._m;
+  }
+  function markWatch() {
+    var i, j; for (i = 0; i < ITEMS.length; i++) { ITEMS[i]._w = null; for (j = 0; j < WATCH.length; j++) if (wcompile(WATCH[j])(ITEMS[i])) (ITEMS[i]._w = ITEMS[i]._w || []).push(j); }
+  }
+  function wcount(j) { var n = 0, i; for (i = 0; i < ITEMS.length; i++) if (ITEMS[i]._w && ITEMS[i]._w.indexOf(j) >= 0) n++; return n; }
+  function wlabel(w) { return w.q + (w.max != null ? ' ≤ $' + w.max : ''); }
+  function saveWatch() { put('watch', WATCH.map(function (w) { return { q: w.q, max: w.max }; })); markWatch(); }
+  function renderWatch() {
+    var h = '<div class="wform"><input id="wq" placeholder="想买什么？如 键盘、airpods、鸡蛋" autocomplete="off"><input id="wcap" inputmode="decimal" placeholder="最高 $（可空）"><button id="wadd">＋ 关注</button></div>';
+    h += '<div class="whint">中文会自动换成英文去找（键盘 → keyboard），几个词用空格隔开表示都要有。每次打开页面都会按最新特价重新匹配。</div>';
+    if (!WATCH.length) { $('body').innerHTML = h + '<div class="msg">还没有关注的东西。<br>比如输入「键盘」，最高价填 60，以后有符合的特价，这里会第一时间列出来，商品卡片上也会标 🔔。</div>'; bindW(); return; }
+    if (WSEL >= WATCH.length) WSEL = -1;
+    h += '<div class="wlist">';
+    for (var j = 0; j < WATCH.length; j++) {
+      var w = WATCH[j], n = wcount(j), title = '打折关注: ' + wlabel(w);
+      var push = window.TOOLS_LOCAL ? '<button class="wpush" data-wpush="' + j + '">📲 推送</button>' : '<a class="wpush" target="_blank" rel="noopener" href="https://github.com/boliunew/tools/issues/new?title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent('有符合的新特价时，GitHub 会在这里留言通知你（App 推送 / 邮件）。不想再收到就关掉这个 issue。') + '">📲 推送</a>';
+      h += '<div class="wi' + (WSEL === j ? ' on' : '') + '"><button class="wn" data-wsel="' + j + '">🔔 ' + esc(wlabel(w)) + ' <b>' + n + '</b></button>' + push + '<button class="wx" data-wdel="' + j + '" aria-label="取消关注">✕</button></div>';
+    }
+    h += '</div>';
+    var list = ITEMS.filter(function (x) { return x._w && (WSEL < 0 || x._w.indexOf(WSEL) >= 0); });
+    list.sort(function (a, b) { return (a.up || 0) - (b.up || 0) || (a._e == null ? 1e9 : a._e) - (b._e == null ? 1e9 : b._e); });
+    if (!list.length) h += '<div class="msg">现在还没有符合的特价。<br>页面每天更新两次；想有新特价时手机收到通知，点上面的「📲 推送」。</div>';
+    else {
+      h += '<div class="sorts" style="margin:6px 0"><span class="n">' + list.length + ' 件 · 按单价从低到高</span></div><div class="grid' + (LITE ? ' lite' : '') + '">';
+      for (var i = 0; i < Math.min(shown, list.length); i++) h += card(list[i]);
+      h += '</div>';
+      if (list.length > shown) h += '<button class="more" id="more">再看 ' + Math.min(60, list.length - shown) + ' 件</button>';
+    }
+    $('body').innerHTML = h; bindW();
+    if ($('more')) $('more').onclick = function () { shown += 60; render(); };
+  }
+  function bindW() {
+    var add = function () {
+      var qv = $('wq').value.replace(/^\s+|\s+$/g, ''), cv = parseFloat(String($('wcap').value).replace(/[^\d.]/g, ''));
+      if (!qv) { $('wq').focus(); return; }
+      WATCH.push({ q: qv, max: isNaN(cv) ? null : cv }); saveWatch(); WSEL = WATCH.length - 1; shown = 60;
+      toast('已关注「' + wlabel(WATCH[WATCH.length - 1]) + '」，现在有 ' + wcount(WATCH.length - 1) + ' 件'); render();
+    };
+    $('wadd').onclick = add;
+    $('wq').onkeydown = $('wcap').onkeydown = function (e) { if (e.key === 'Enter') add(); };
+  }
+
   /* ---------- render ---------- */
   function render() {
     renderGroups();
     if (grp === 'list') { clearFilters(); renderList(); return; }
     if (grp === 'pick') { clearFilters(); renderPick(); return; }
+    if (grp === 'watch') { clearFilters(); renderWatch(); return; }
     renderStoreChips(); renderHead();
     var arr = base(), counts = {}, i;
     for (i = 0; i < arr.length; i++) counts[arr[i].c] = (counts[arr[i].c] || 0) + 1;
@@ -327,6 +404,8 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     if (q) { $('groups').innerHTML = ''; $('groups').style.display = 'none'; return; }
     $('groups').style.display = '';
     h += '<button data-g="mine" class="' + (grp === 'mine' ? 'on' : '') + '">⭐ 我的店<small>' + fmtN(groupCount('mine')) + '</small></button>';
+    var wn = 0; for (i = 0; i < ITEMS.length; i++) if (ITEMS[i]._w) wn++;
+    h += '<button data-g="watch" class="wg' + (grp === 'watch' ? ' on' : '') + '">🔔 关注<small>' + (WATCH.length ? fmtN(wn) : '＋') + '</small></button>';
     for (i = 0; i < GRP.length; i++) { n = groupCount(GRP[i].k); if (n) h += '<button data-g="' + GRP[i].k + '" class="' + (grp === GRP[i].k ? 'on' : '') + '">' + GRP[i].e + ' ' + GRP[i].zh + '<small>' + fmtN(n) + '</small></button>'; }
     var ln = 0; for (var k in LIST) if (LIST.hasOwnProperty(k)) ln++;
     h += '<button data-g="list" class="' + (grp === 'list' ? 'on' : '') + '">🛒 清单<small>' + ln + '</small></button>';
@@ -410,6 +489,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
   }
   function card(x) {
     var st = storeOf(x.s), on = LIST[x.id], c = CAT[x.c] || { e: '📦', zh: '' }, tags = '', i;
+    if (x._w && grp !== 'watch') tags += '<span class="tg hot">🔔 ' + esc(WATCH[x._w[0]] ? WATCH[x._w[0]].q : '关注') + '</span>';
     if (x.up) tags += '<span class="tg up">下周 ' + md(x.from) + ' 起</span>';
     if (x.stz) { var zs = x.stz.split('，'); for (i = 0; i < zs.length; i++) tags += '<span class="tg' + (i === 0 && /送|折|省/.test(zs[i]) ? ' hot' : '') + '">' + esc(zs[i]) + '</span>'; }
     else if (x.st) { var sz = stZh(x.st); if (sz) tags += '<span class="tg hot">' + esc(sz) + '</span>'; }
@@ -515,6 +595,18 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
   $('chips').onclick = function (e) { var b = closest(e, 'button'); if (!b) return; cat = b.getAttribute('data-c'); shown = 60; render(); };
   $('sorts').onclick = function (e) { var b = closest(e, 'button'); if (!b || !b.getAttribute('data-o')) return; sort = b.getAttribute('data-o'); put('sort', sort); shown = 60; render(); };
   $('body').onclick = function (e) {
+    var wb = closest(e, '[data-wsel],[data-wdel],[data-wpush]');
+    if (wb) {
+      if (wb.getAttribute('data-wsel') != null) { var k = +wb.getAttribute('data-wsel'); WSEL = WSEL === k ? -1 : k; shown = 60; render(); }
+      else if (wb.getAttribute('data-wdel') != null) { var d = +wb.getAttribute('data-wdel'); toast('已取消关注「' + wlabel(WATCH[d]) + '」'); WATCH.splice(d, 1); WSEL = -1; saveWatch(); render(); }
+      else {
+        var w2 = WATCH[+wb.getAttribute('data-wpush')], x2 = new XMLHttpRequest();
+        x2.open('POST', 'api/issues'); x2.setRequestHeader('Content-Type', 'application/json');
+        x2.onload = function () { toast(x2.status === 201 ? '好了：有新特价会推送到手机（ntfy）' : '没设成功，稍后再试'); };
+        x2.send(JSON.stringify({ title: '打折关注: ' + wlabel(w2), body: '' }));
+      }
+      return;
+    }
     var p = closest(e, '[data-pin],[data-go]');
     if (p) {
       if (p.getAttribute('data-pin')) { togglePin(p.getAttribute('data-pin')); render(); }
