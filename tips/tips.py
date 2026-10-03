@@ -10,6 +10,7 @@ CATS = [
     ("safe", "🛡️", "安全防骗", "美国这边常见的骗局和防护办法。"),
     ("sci", "🌿", "生活科普", "日常用得上的常识，特别是南加州的天气和安全。"),
     ("hack", "💡", "小妙招", "厨房、清洁、出门的小办法。"),
+    ("travel", "🗺️", "旅游景点", "各地经典景点：看什么、什么季节去、待几天。门票、预约、签证常变，以官网为准。"),
     ("world", "🌍", "风土习俗", "世界各地的节日、礼仪和禁忌。说的是常见做法，各地各人都有差别，别当成刻板印象。"),
 ]
 
@@ -118,6 +119,7 @@ T = {
  ("鞋子去异味", "运动鞋、工作靴", ["晚上撒一点小苏打进鞋里，第二天倒掉", "或者放两个干的茶包", "两双鞋换着穿，让鞋有一天晾干"], ""),
 ],
     "world": [],
+    "travel": [],
 }
 
 
@@ -151,7 +153,7 @@ def world_regions():
     import re as _re
     here = os.path.dirname(os.path.abspath(__file__))
     region, taboo = {}, set()
-    for fname in ("more_world.py", "more_world_taboo.py"):
+    for fname in ("more_world.py", "more_world_taboo.py", "more_travel.py", "more_travel2.py"):
         path = os.path.join(here, fname)
         if not os.path.exists(path):
             continue
@@ -169,6 +171,9 @@ def world_regions():
     if os.path.exists(os.path.join(here, "more_world_taboo.py")):
         have = set(x[0] for x in T["world"])
         T["world"] += [x for x in importlib.import_module("more_world_taboo").MORE if x[0] not in have and x[0] not in TABOO_SKIP]
+    if os.path.exists(os.path.join(here, "more_travel2.py")):
+        have = set(x[0] for x in T["travel"])
+        T["travel"] += [x for x in importlib.import_module("more_travel2").MORE if x[0] not in have]
     return region, taboo
 
 
@@ -179,6 +184,8 @@ def main():
     for key, _, _, _ in CATS:
         for i, (t, p, s, n) in enumerate(T[key]):
             it = {"id": "%s%02d" % (key, i + 1), "c": key, "t": t, "p": p, "s": s, "n": n}
+            if key == "travel":
+                it["r"] = region.get(t, "")
             if key == "world":
                 it["r"] = region.get(t, "")
                 if t in taboo or t in TABOO_EXTRA or "禁忌" in t or "禁区" in t:
