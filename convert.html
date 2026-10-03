@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F1EA">
+<title>汇率与单位换算</title>
+<script src="sync.js?v=1"></script>
+<style>
+:root{
+  --bg:#F4F1EA; --paper:#FFFDF8; --ink:#1D2028; --soft:#5E6573; --faint:#99A0AA; --line:#E3DED3; --chip:#EEE9DF;
+  --accent:#2C6E8F; --accent-ink:#fff; --accent-soft:#DDEBF2; --ok:#1E8E4E; --bad:#C0392B;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 5px 18px rgba(30,35,50,.07);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Roboto Mono",monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#13161C; --paper:#1B1F27; --ink:#E9ECF1; --soft:#A7AEBA; --faint:#6E7583; --line:#2B303B; --chip:#252A35;
+  --accent:#6CB6DA; --accent-ink:#0B1A22; --accent-soft:#1B3240; --ok:#5BD38E; --bad:#FF7A6B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 5px 18px rgba(0,0,0,.35);
+}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.55;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area-inset-top)}
+.brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 12px;padding:0 16px 4px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 13px;font-size:14px}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:700}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;margin-bottom:12px}
+.inrow{display:flex;gap:8px;align-items:stretch}
+.inrow input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:10px 12px;font-size:24px;font-family:var(--mono);outline:none}
+.inrow input:focus{border-color:var(--accent)}
+.inrow select{flex:0 0 auto;max-width:46%;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:0 10px;font-size:15px}
+.hint{font-size:12.5px;color:var(--faint);margin-top:8px}
+.list{margin-top:4px}
+.it{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+.it:last-child{border-bottom:0}
+.it .u{flex:1;min-width:0}
+.it .u b{display:block;font-size:14.5px}
+.it .u small{color:var(--faint);font-size:12px}
+.it .v{font-family:var(--mono);font-size:17px;font-weight:600;text-align:right;word-break:break-all}
+.it.base{opacity:.45}
+.it:active{background:var(--chip)}
+.flag{font-size:22px;width:30px;text-align:center}
+.rateinfo{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--soft);margin-top:8px}
+.btn{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:3px 11px;font-size:12.5px;color:var(--soft)}
+.edit{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.edit label{display:flex;align-items:center;gap:4px;font-size:13px;background:var(--chip);border-radius:999px;padding:3px 10px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(28,28,30,.92);color:#fff;padding:8px 16px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:all .2s;z-index:60}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.foot{font-size:12px;color:var(--faint);text-align:center;margin-top:16px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><a class="brand" href="./">💱 汇率与单位换算</a></header>
+  <div class="tabs" id="tabs"></div>
+  <div id="view"></div>
+  <div class="foot">点任意一行复制结果，点它右边的单位可设为输入单位。<br>汇率来自 open.er-api.com（失败时用 Frankfurter / 欧洲央行），每天更新，仅供参考，实际换汇以银行为准。</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function jget(k, d) { try { var v = localStorage.getItem('conv:' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+  function jset(k, v) { try { localStorage.setItem('conv:' + k, JSON.stringify(v)); } catch (e) { } }
+  var tt = null;
+  function toast(s) { var t = $('toast'); t.textContent = s; t.className = 'toast on'; clearTimeout(tt); tt = setTimeout(function () { t.className = 'toast'; }, 1500); }
+  function copy(s) { try { navigator.clipboard.writeText(s).then(function () { toast('已复制 ' + s); }); } catch (e) { toast(s); } }
+  function fmt(x) {
+    if (!isFinite(x)) return '—';
+    var a = Math.abs(x);
+    if (a === 0) return '0';
+    if (a >= 1e12 || a < 1e-6) return x.toExponential(4).replace('e+', '×10^').replace('e-', '×10^-');
+    var d = a >= 1000 ? 2 : a >= 1 ? 4 : 6;
+    var s = x.toFixed(d).replace(/\.?0+$/, '');
+    var p = s.split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return p.join('.');
+  }
+  function num(s) { s = String(s).replace(/,/g, '').trim(); if (!s) return NaN; if (/^[\d.+\-*/() e]+$/.test(s)) { try { return Function('return (' + s + ')')(); } catch (e) { return NaN; } } return NaN; }
+
+  // ---------------- 单位：[键, 名称, 说明, 换到基准单位的系数]（温度、油耗特殊处理）
+  var CATS = [
+    { k: 'len', n: '长度', base: 'm', u: [['mm', '毫米', '', 0.001], ['cm', '厘米', '', 0.01], ['m', '米', '', 1], ['km', '公里', '', 1000], ['in', '英寸', 'inch', 0.0254], ['ft', '英尺', 'foot', 0.3048], ['yd', '码', 'yard', 0.9144], ['mi', '英里', 'mile', 1609.344], ['nmi', '海里', 'nautical mile', 1852], ['cun', '寸', '市寸', 0.1 / 3], ['chi', '尺', '市尺', 1 / 3], ['li', '里', '市里', 500]] },
+    { k: 'wt', n: '重量', base: 'kg', u: [['g', '克', '', 0.001], ['kg', '公斤', '千克', 1], ['t', '吨', '公吨', 1000], ['oz', '盎司', 'ounce', 0.028349523125], ['lb', '磅', 'pound', 0.45359237], ['st', '美吨', 'short ton, 2000 lb', 907.18474], ['jin', '斤', '市斤', 0.5], ['liang', '两', '市两', 0.05], ['ct', '克拉', 'carat', 0.0002]] },
+    { k: 'vol', n: '体积', base: 'l', u: [['ml', '毫升', '', 0.001], ['l', '升', '', 1], ['m3', '立方米', 'CBM', 1000], ['floz', '液量盎司', 'US fl oz', 0.0295735295625], ['cup', '杯', 'US cup', 0.2365882365], ['pt', '品脱', 'US pint', 0.473176473], ['qt', '夸脱', 'US quart', 0.946352946], ['gal', '加仑', 'US gallon', 3.785411784], ['ft3', '立方英尺', 'cu ft', 28.316846592], ['in3', '立方英寸', 'cu in', 0.016387064], ['bbl', '桶（石油）', 'oil barrel', 158.987294928]] },
+    { k: 'area', n: '面积', base: 'm2', u: [['cm2', '平方厘米', '', 1e-4], ['m2', '平方米', '', 1], ['km2', '平方公里', '', 1e6], ['ha', '公顷', '', 1e4], ['mu', '亩', '市亩', 10000 / 15], ['in2', '平方英寸', '', 0.00064516], ['ft2', '平方英尺', 'sq ft，房子面积常用', 0.09290304], ['yd2', '平方码', '', 0.83612736], ['ac', '英亩', 'acre', 4046.8564224], ['mi2', '平方英里', '', 2589988.110336]] },
+    { k: 'temp', n: '温度', base: 'C', u: [['C', '摄氏度', '°C', 0], ['F', '华氏度', '°F', 0], ['K', '开尔文', 'K', 0]] },
+    { k: 'spd', n: '速度', base: 'ms', u: [['kmh', '公里/小时', 'km/h', 1 / 3.6], ['mph', '英里/小时', 'mph，美国限速', 0.44704], ['ms', '米/秒', 'm/s', 1], ['kn', '节', 'knot，船和飞机', 1852 / 3600], ['fts', '英尺/秒', 'ft/s', 0.3048]] },
+    { k: 'fuel', n: '油耗', base: 'kml', u: [['mpg', '英里/加仑', 'MPG，美国车', 0], ['l100', '升/百公里', 'L/100km，中国车', 0], ['kml', '公里/升', 'km/L', 0], ['mpgi', '英里/英制加仑', 'UK MPG', 0]] },
+    { k: 'pres', n: '压力', base: 'kpa', u: [['psi', 'psi', '磅/平方英寸，胎压', 6.894757293168], ['bar', 'bar', '巴', 100], ['kpa', '千帕', 'kPa', 1], ['atm', '标准大气压', 'atm', 101.325], ['kgf', '公斤力/平方厘米', 'kgf/cm²', 98.0665], ['mmhg', '毫米汞柱', 'mmHg，血压', 0.133322387415]] },
+    { k: 'data', n: '数据', base: 'B', u: [['bit', '比特', 'bit', 0.125], ['B', '字节', 'Byte', 1], ['KB', 'KB', '1024 B', 1024], ['MB', 'MB', '1024² B', 1048576], ['GB', 'GB', '1024³ B', 1073741824], ['TB', 'TB', '1024⁴ B', 1099511627776], ['GBd', 'GB（硬盘厂商）', '10⁹ B', 1e9], ['TBd', 'TB（硬盘厂商）', '10¹² B', 1e12], ['Mbps1s', 'Mbit', '网速 1 秒的量', 125000]] },
+    { k: 'cook', n: '厨房', base: 'ml', u: [['tsp', '茶匙', 'tsp', 4.92892159375], ['tbsp', '汤匙', 'tbsp', 14.78676478125], ['floz', '液量盎司', 'fl oz', 29.5735295625], ['cup', '杯', 'US cup', 236.5882365], ['ml', '毫升', '', 1], ['l', '升', '', 1000], ['stick', '黄油条', '1 stick ≈ 113 g', 118.29411825]] },
+    { k: 'pwr', n: '能量功率', base: 'w', u: [['w', '瓦', 'W', 1], ['kw', '千瓦', 'kW', 1000], ['hp', '马力', 'hp（美制）', 745.69987158], ['ps', '公制马力', 'PS', 735.49875], ['btuh', 'BTU/小时', '空调常用', 0.29307107]] }
+  ];
+  function toBase(c, u, x) {
+    if (c.k === 'temp') return u === 'C' ? x : u === 'F' ? (x - 32) * 5 / 9 : x - 273.15;
+    if (c.k === 'fuel') return u === 'kml' ? x : u === 'mpg' ? x * 1.609344 / 3.785411784 : u === 'mpgi' ? x * 1.609344 / 4.54609 : 100 / x;
+    return x * unit(c, u)[3];
+  }
+  function fromBase(c, u, b) {
+    if (c.k === 'temp') return u === 'C' ? b : u === 'F' ? b * 9 / 5 + 32 : b + 273.15;
+    if (c.k === 'fuel') return u === 'kml' ? b : u === 'mpg' ? b * 3.785411784 / 1.609344 : u === 'mpgi' ? b * 4.54609 / 1.609344 : 100 / b;
+    return b / unit(c, u)[3];
+  }
+  function unit(c, k) { for (var i = 0; i < c.u.length; i++) if (c.u[i][0] === k) return c.u[i]; return c.u[0]; }
+
+  // ---------------- 汇率
+  var CUR = { USD: ['🇺🇸', '美元'], CNY: ['🇨🇳', '人民币'], MXN: ['🇲🇽', '墨西哥比索'], EUR: ['🇪🇺', '欧元'], JPY: ['🇯🇵', '日元'], HKD: ['🇭🇰', '港币'], TWD: ['🇹🇼', '新台币'], CAD: ['🇨🇦', '加元'], GBP: ['🇬🇧', '英镑'], KRW: ['🇰🇷', '韩元'], AUD: ['🇦🇺', '澳元'], SGD: ['🇸🇬', '新加坡元'], THB: ['🇹🇭', '泰铢'], VND: ['🇻🇳', '越南盾'], PHP: ['🇵🇭', '菲律宾比索'], MYR: ['🇲🇾', '马来西亚林吉特'], INR: ['🇮🇳', '印度卢比'], CHF: ['🇨🇭', '瑞士法郎'], NZD: ['🇳🇿', '新西兰元'], BRL: ['🇧🇷', '巴西雷亚尔'], RUB: ['🇷🇺', '卢布'], AED: ['🇦🇪', '迪拉姆'] };
+  var FAV = jget('fav', ['USD', 'CNY', 'MXN', 'EUR', 'JPY', 'HKD', 'TWD', 'CAD']);
+  var R = jget('rates', null), loading = false, editing = false;
+  function loadRates(force) {
+    if (loading) return;
+    if (!force && R && Date.now() - R.fetched < 3 * 3600e3) return;
+    loading = true;
+    getJSON('https://open.er-api.com/v6/latest/USD', function (d) {
+      if (d && d.result === 'success' && d.rates) { R = { rates: d.rates, src: 'open.er-api.com', asof: d.time_last_update_unix * 1000, fetched: Date.now() }; done(); }
+      else getJSON('https://api.frankfurter.app/latest?from=USD', function (f) {
+        if (f && f.rates) { f.rates.USD = 1; R = { rates: f.rates, src: 'Frankfurter（欧洲央行）', asof: Date.parse(f.date + 'T16:00:00Z'), fetched: Date.now() }; done(); }
+        else { loading = false; if (TAB === 'fx') render(); toast(R ? '联网失败，显示上次的汇率' : '汇率加载失败，检查网络'); }
+      });
+    });
+    function done() { loading = false; jset('rates', R); if (TAB === 'fx') render(); }
+  }
+  function getJSON(u, cb) { var x = new XMLHttpRequest(); x.open('GET', u); x.timeout = 10000; x.onload = function () { var d = null; try { d = JSON.parse(x.responseText); } catch (e) { } cb(x.status === 200 ? d : null); }; x.onerror = x.ontimeout = function () { cb(null); }; x.send(); }
+  function ago(t) { var m = (Date.now() - t) / 6e4; return m < 60 ? Math.max(1, Math.round(m)) + ' 分钟前' : m < 2880 ? Math.round(m / 60) + ' 小时前' : Math.round(m / 1440) + ' 天前'; }
+
+  // ---------------- 页面
+  var TAB = jget('tab', 'fx'), ST = jget('st', {});
+  function tabs() {
+    var t = [['fx', '💱 汇率']].concat(CATS.map(function (c) { return [c.k, c.n]; }));
+    $('tabs').innerHTML = t.map(function (x) { return '<button data-t="' + x[0] + '" class="' + (x[0] === TAB ? 'on' : '') + '">' + x[1] + '</button>'; }).join('');
+  }
+  $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (!b) return; TAB = b.getAttribute('data-t'); jset('tab', TAB); editing = false; tabs(); render(true); };
+  function st() { return ST[TAB] || (ST[TAB] = TAB === 'fx' ? { v: '100', u: 'USD' } : { v: '1', u: TAB === 'fuel' ? 'mpg' : TAB === 'temp' ? 'F' : catOf(TAB).u[0][0] }); }
+  function catOf(k) { for (var i = 0; i < CATS.length; i++) if (CATS[i].k === k) return CATS[i]; return null; }
+
+  function render(focus) {
+    var s = st(), h = '', opts = '';
+    if (TAB === 'fx') {
+      var codes = FAV.slice(); if (codes.indexOf(s.u) < 0) codes.unshift(s.u);
+      opts = Object.keys(CUR).map(function (k) { return '<option value="' + k + '"' + (k === s.u ? ' selected' : '') + '>' + CUR[k][0] + ' ' + k + ' ' + CUR[k][1] + '</option>'; }).join('');
+      h += '<div class="card"><div class="inrow"><input id="in" inputmode="decimal" value="' + esc(s.v) + '"><select id="un">' + opts + '</select></div>';
+      if (!R) h += '<div class="hint">' + (loading ? '正在获取最新汇率…' : '还没有汇率数据') + '</div>';
+      else h += '<div class="rateinfo">汇率更新于 ' + ago(R.asof) + ' · ' + esc(R.src) + ' <button class="btn" id="rf">🔄 刷新</button><button class="btn" id="ed">' + (editing ? '完成' : '✏️ 选币种') + '</button></div>';
+      if (editing) h += '<div class="edit">' + Object.keys(CUR).map(function (k) { return '<label><input type="checkbox" data-c="' + k + '"' + (FAV.indexOf(k) >= 0 ? ' checked' : '') + '>' + CUR[k][0] + ' ' + CUR[k][1] + '</label>'; }).join('') + '</div>';
+      h += '<div class="list" id="list"></div></div>';
+      if (R) h += '<div class="card" id="cross" style="font-size:13.5px;color:var(--soft)"></div>';
+    } else {
+      var c = catOf(TAB);
+      opts = c.u.map(function (u) { return '<option value="' + u[0] + '"' + (u[0] === s.u ? ' selected' : '') + '>' + u[1] + (u[2] && u[2].length < 12 ? ' ' + u[2] : '') + '</option>'; }).join('');
+      h += '<div class="card"><div class="inrow"><input id="in" inputmode="decimal" value="' + esc(s.v) + '"><select id="un">' + opts + '</select></div>' +
+        '<div class="hint">可以输入算式，比如 40*12 或 (20+5)/2</div><div class="list" id="list"></div></div>';
+    }
+    $('view').innerHTML = h;
+    $('in').oninput = function () { s.v = this.value; jset('st', ST); list(); };
+    $('un').onchange = function () { s.u = this.value; jset('st', ST); list(); };
+    if ($('rf')) $('rf').onclick = function () { loadRates(true); toast('正在刷新…'); };
+    if ($('ed')) $('ed').onclick = function () { editing = !editing; render(); };
+    var cbs = document.querySelectorAll('[data-c]'), i;
+    for (i = 0; i < cbs.length; i++) cbs[i].onchange = function () {
+      var k = this.getAttribute('data-c'); if (this.checked) { if (FAV.indexOf(k) < 0) FAV.push(k); } else FAV = FAV.filter(function (x) { return x !== k; });
+      jset('fav', FAV); list();
+    };
+    list();
+    if (focus && window.innerWidth > 700) $('in').focus();
+  }
+  function list() {
+    var s = st(), x = num(s.v), h = '';
+    if (TAB === 'fx') {
+      if (!R) { $('list').innerHTML = ''; return; }
+      var codes = FAV.slice(); if (codes.indexOf(s.u) < 0) codes.unshift(s.u);
+      var usd = x / R.rates[s.u];
+      codes.forEach(function (k) {
+        if (!R.rates[k]) return;
+        var v = usd * R.rates[k];
+        h += '<div class="it' + (k === s.u ? ' base' : '') + '" data-copy="' + esc(fmt(v)) + '" data-set="' + k + '"><span class="flag">' + (CUR[k] ? CUR[k][0] : '') + '</span><span class="u"><b>' + k + '</b><small>' + (CUR[k] ? CUR[k][1] : '') + ' · 1 ' + s.u + ' = ' + fmt(R.rates[k] / R.rates[s.u]) + '</small></span><span class="v">' + fmt(v) + '</span></div>';
+      });
+      $('list').innerHTML = h;
+      if ($('cross')) {
+        var r = R.rates;
+        $('cross').innerHTML = '常用：1 美元 = <b>' + fmt(r.CNY) + '</b> 人民币 · 1 人民币 = ' + fmt(1 / r.CNY) + ' 美元<br>1 美元 = ' + fmt(r.MXN) + ' 墨西哥比索 · 100 日元 = ' + fmt(100 / r.JPY) + ' 美元';
+      }
+      return;
+    }
+    var c = catOf(TAB), b = toBase(c, s.u, x);
+    c.u.forEach(function (u) {
+      var v = fromBase(c, u[0], b);
+      h += '<div class="it' + (u[0] === s.u ? ' base' : '') + '" data-copy="' + esc(fmt(v)) + '" data-set="' + u[0] + '"><span class="u"><b>' + u[1] + '</b><small>' + esc(u[2] || u[0]) + '</small></span><span class="v">' + fmt(v) + '</span></div>';
+    });
+    if (TAB === 'vol' && isFinite(b)) h += '<div class="hint">参考：20 尺柜约 33 CBM，40 尺高柜约 76 CBM。现在这个体积约等于 ' + fmt(b / 1000 / 33) + ' 个 20 尺柜。</div>';
+    if (TAB === 'temp' && isFinite(b)) h += '<div class="hint">' + (b >= 38 ? '🥵 酷热' : b >= 30 ? '☀️ 很热' : b >= 20 ? '🙂 舒适' : b >= 10 ? '🧥 有点凉' : b >= 0 ? '🥶 冷' : '❄️ 结冰') + '　心算：°F ≈ °C × 2 + 30</div>';
+    $('list').innerHTML = h;
+  }
+  $('view').onclick = function (e) {
+    var it = e.target.closest('.it'); if (!it) return;
+    if (e.target.closest('.u') || e.target.closest('.flag')) {   // 点单位名：设为输入单位，并把结果带过去
+      var s = st(); s.v = it.getAttribute('data-copy').replace(/,/g, ''); s.u = it.getAttribute('data-set'); jset('st', ST); render(); return;
+    }
+    copy(it.getAttribute('data-copy'));
+  };
+
+  tabs(); render(true); loadRates(false);
+})();
+</script>
+<script src="nav.js?v=8" defer></script>
+</body>
+</html>
