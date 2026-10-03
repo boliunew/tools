@@ -1,16 +1,16 @@
 {
- "date": "2026-10-02",
- "kind": "口头禅",
- "en": "Not bad",
- "zh": "还不错",
- "by": "别人问你觉得怎么样",
- "line": "Not bad",
+ "date": "2026-10-03",
+ "kind": "名言",
+ "en": "Good thoughts are no better than good dreams, unless they be executed.",
+ "zh": "好的想法若不付诸实行，和美梦没什么两样。",
+ "by": "Ralph Waldo Emerson",
+ "line": "Good thoughts are no better than good dreams, unless they be executed. — Ralph Waldo Emerson",
  "word": {
-  "w": "pregnancy",
-  "ph": "'preɡnәnsi",
-  "zh": "n. 怀孕；丰富，多产",
-  "ex": "The pregnancy was a stroke of bad luck.",
-  "exzh": ""
+  "w": "unacceptable",
+  "ph": ".ʌnәk'septәbl",
+  "zh": "a. 无法接受的，不受欢迎的",
+  "ex": "Not that it's unacceptable.",
+  "exzh": "并不是不可以。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
