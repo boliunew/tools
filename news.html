@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F1EC">
-<title>英文新闻精选</title>
+<title>新闻 · 今日大事与英文精选</title>
 <style>
 :root{
   --bg:#F3F1EC; --paper:#FFFFFF; --ink:#1B1E23; --soft:#626A73; --faint:#98A0A8; --line:#E0DDD5; --chip:#F0EEE8;
@@ -63,15 +63,44 @@ h3{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 8px;font
 .acts > *{margin:0 8px 0 0}
 .empty{padding:40px 16px;text-align:center;color:var(--soft);line-height:1.8}
 .bars{display:flex;align-items:flex-end;height:36px;margin:4px 0 2px}
+/* 今日 */
+.tabs{display:flex;gap:6px;padding:0 0 10px}
+.tabs button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 14px;font-size:14px}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:700}
+.sec{display:flex;align-items:baseline;gap:8px;margin:18px 0 8px}
+.sec b{font-size:16px}
+.sec small{font-size:12px;color:var(--faint)}
+.big{padding:12px 14px;margin-bottom:9px;display:flex;gap:10px}
+.big .no{flex:0 0 22px;height:22px;border-radius:7px;background:var(--chip);color:var(--soft);font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.big.hot .no{background:var(--accent);color:var(--accent-ink)}
+.big .bd{flex:1;min-width:0}
+.big a.t{font-size:16px;font-weight:700;line-height:1.4;color:var(--ink);text-decoration:none;display:block}
+.big .s{font-size:13.5px;color:var(--soft);margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.big .m{font-size:12px;color:var(--faint);margin-top:5px}
+.big .m b{color:var(--accent);font-weight:600}
+.big .also{font-size:12px;margin-top:3px}
+.big .also a{color:var(--soft);margin-right:8px}
+.odd{padding:12px 14px;margin-bottom:9px}
+.odd a.t{font-size:15.5px;font-weight:700;line-height:1.4;color:var(--ink);text-decoration:none;display:block}
+.odd .en{font-size:13px;color:var(--soft);margin-top:2px;font-family:Georgia,"Iowan Old Style",serif}
+.odd .m{font-size:12px;color:var(--faint);margin-top:5px}
+.odd .m a,.more{color:var(--accent)}
+.otd{padding:6px 14px}
+.otd .ev{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14.5px;line-height:1.55}
+.otd .ev:last-of-type{border-bottom:0}
+.otd .y{flex:0 0 3.6em;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;text-align:right}
+.hol{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
+.hol span{font-size:12.5px;background:var(--chip);color:var(--soft);border-radius:999px;padding:2px 10px}
+.more{display:block;text-align:center;font-size:13px;padding:10px 0 4px}
 footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;line-height:1.7}
 </style>
 <script src="sync.js?v=1"></script>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="bar">
-  <a class="brand" href="./"><i></i>英文新闻精选</a>
+  <a class="brand" href="./"><i></i>新闻</a>
   <button class="btn ghost" id="refreshBtn">🔄 刷新</button><a class="btn ghost" href="sublingo.html">SubLingo</a>
-</div></div></header>
+</div><div class="tabs" id="tabs"><button data-tab="today">📌 今日</button><button data-tab="en">📰 英文精选</button></div></div></header>
 <main class="wrap" id="app"><div class="empty">加载中…</div></main>
 <script>
 (function () {
@@ -99,6 +128,72 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     return (d.getMonth() + 1) + '月' + d.getDate() + '日';
   }
 
+  var TAB = get('tab', 'today'), T = null, prevT = null;
+  function setTab(t) {
+    TAB = t; set('tab', t);
+    var bs = document.querySelectorAll('#tabs button'), i;
+    for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-tab') === t ? 'on' : '';
+    window.scrollTo(0, 0);
+    if (t === 'today') { if (T) renderToday(); else loadToday(false); } else { if (D) render(); else load(false); }
+  }
+  document.getElementById('tabs').onclick = function (e) { var b = e.target.closest('[data-tab]'); if (b) setTab(b.getAttribute('data-tab')); };
+
+  function loadToday(manual) {
+    var rb = document.getElementById('refreshBtn');
+    if (manual) { rb.disabled = true; rb.textContent = '⏳ 刷新中'; }
+    if (!T) app.innerHTML = '<div class="empty">加载中…</div>';
+    var x = new XMLHttpRequest();
+    x.open('GET', 'news/data/today.json?t=' + Date.now());
+    x.onload = function () {
+      if (x.status !== 200) { app.innerHTML = '<div class="card empty" style="margin-top:16px"><b style="font-size:17px;color:var(--ink)">等待第一次更新</b><br>每天早上 6 点和晚上 6 点（太平洋时间）自动更新。</div>'; return; }
+      try { T = JSON.parse(x.responseText); } catch (e) { app.innerHTML = '<div class="empty">数据格式错误</div>'; return; }
+      if (TAB === 'today') renderToday();
+      if (manual) flashMsg(prevT && prevT === T.generated ? '已经是最新的了（' + ago(T.generated) + '更新）' : '已刷新 ✓');
+      prevT = T.generated;
+    };
+    x.onloadend = function () { rb.disabled = false; rb.textContent = '🔄 刷新'; };
+    x.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
+    x.send();
+  }
+  function renderToday() {
+    var now = new Date(), WK = '日一二三四五六', h = '', i, j, c;
+    var key = ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2), otd = (T.onthisday || {})[key];
+    h += '<div class="meta">' + (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay()) + ' · 更新于 ' + ago(T.generated) + (T.stale_big ? ' · 新闻源这次没抓到，显示的是上一次的' : '') + '</div>';
+    var big = T.big || [];
+    if (big.length) {
+      h += '<div class="sec"><b>📰 今日大事</b><small>几家中文媒体都在报的排前面</small></div>';
+      for (i = 0; i < big.length && i < 10; i++) {
+        c = big[i];
+        var also = (c.others || []).filter(function (o) { return o.source !== c.source; }).slice(0, 3);
+        h += '<div class="card big' + (c.n >= 2 ? ' hot' : '') + '"><div class="no">' + (i + 1) + '</div><div class="bd"><a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' +
+          (c.summary ? '<div class="s">' + esc(c.summary) + '</div>' : '') +
+          '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + '</div>' +
+          (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';
+      }
+    }
+    var odd = T.odd || [];
+    if (odd.length) {
+      h += '<div class="sec"><b>🤪 趣闻</b><small>世界各地的奇闻怪事，中文是机器翻译</small></div>';
+      for (i = 0; i < odd.length; i++) {
+        c = odd[i];
+        h += '<div class="card odd"><a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + (c.video ? '🎬 ' : '') + esc(c.zh || c.title) + '</a>' + (c.zh ? '<div class="en">' + esc(c.title) + '</div>' : '') +
+          '<div class="m">' + esc(c.source) + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="sublingo.html?url=' + encodeURIComponent(c.link) + '">SubLingo 精读</a></div></div>';
+      }
+    }
+    if (otd && otd.events && otd.events.length) {
+      h += '<div class="sec"><b>📅 历史上的今天</b><small>' + esc(otd.page) + '</small></div><div class="card otd">';
+      for (j = 0; j < otd.events.length; j++) {
+        var e = otd.events[j], y = e.year < 0 ? '前' + (-e.year) : e.year;
+        h += '<div class="ev"><span class="y">' + y + '</span><span>' + esc(e.text) + '</span></div>';
+      }
+      if (otd.holidays && otd.holidays.length) h += '<div class="hol">' + otd.holidays.map(function (x) { return '<span>🎉 ' + esc(x) + '</span>'; }).join('') + '</div>';
+      h += '<a class="more" href="' + esc(otd.url) + '" target="_blank" rel="noopener">维基百科上还有 ' + Math.max(0, (otd.total || 0) - otd.events.length) + ' 条 →</a></div>';
+    }
+    if (!big.length && !odd.length && !otd) h += '<div class="card empty">今天的内容还没抓到，稍后刷新。</div>';
+    h += '<footer>今日大事来自 BBC 中文、德国之声、法广、纽约时报中文网、中新网等公开 RSS，只展示标题和摘要，版权归原媒体。<br>趣闻来自 UPI 等英文媒体，标题由 MyMemory 机器翻译。历史上的今天来自中文维基百科（CC BY-SA 4.0）。</footer>';
+    app.innerHTML = h;
+  }
+
   var prevGen = null;
   function load(manual) {
     var rb = document.getElementById('refreshBtn');
@@ -108,7 +203,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     x.onload = function () {
       if (x.status !== 200) { app.innerHTML = '<div class="card empty" style="margin-top:16px"><b style="font-size:17px;color:var(--ink)">等待第一次更新</b><br>每天早上 6 点和晚上 6 点（太平洋时间）自动抓取最新新闻。<br><a href="https://github.com/boliunew/tools/actions/workflows/news.yml" target="_blank" rel="noopener">想马上看？去 GitHub 手动运行一次 →</a></div>'; return; }
       try { D = JSON.parse(x.responseText); } catch (e) { app.innerHTML = '<div class="empty">数据格式错误</div>'; return; }
-      render();
+      if (TAB === 'en') render();
       if (manual) { flashMsg(prevGen && prevGen === D.generated ? '已经是最新的了（' + ago(D.generated) + '抓取）' : '已刷新 ✓'); }
       prevGen = D.generated;
     };
@@ -123,7 +218,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     el.textContent = t; el.style.opacity = '1';
     clearTimeout(el._t); el._t = setTimeout(function () { el.style.opacity = '0'; }, 2200);
   }
-  document.getElementById('refreshBtn').onclick = function () { load(true); };
+  document.getElementById('refreshBtn').onclick = function () { if (TAB === 'today') loadToday(true); else load(true); };
 
   function chip(key, val, label, n) { return '<button class="chip' + (F[key] === val ? ' on' : '') + '" data-k="' + key + '" data-v="' + esc(val) + '">' + esc(label) + (n != null ? '<span class="n">' + n + '</span>' : '') + '</button>'; }
 
@@ -175,7 +270,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var card = el; while (card && !(card.classList && card.classList.contains('art'))) card = card.parentNode;
     if (card) { READ[card.getAttribute('data-id')] = Date.now(); set('read', READ); card.classList.add('read'); }
   });
-  load(false);
+  setTab(TAB === 'en' ? 'en' : 'today');
 })();
 </script>
 <script src="nav.js?v=8" defer></script>
