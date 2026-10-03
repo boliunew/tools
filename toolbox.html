@@ -38,6 +38,7 @@ header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:v
 .tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -16px;padding:0 12px 8px}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 13px;font-size:14px;margin:0 4px}
+.tabs a.tablink{flex:0 0 auto;border:1px solid var(--accent);color:var(--accent);background:var(--paper);border-radius:999px;padding:5px 13px;font-size:14px;margin:0 4px;text-decoration:none;white-space:nowrap}
 .tabs button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
 main{padding:12px 0 90px}
 .pane{display:none}
@@ -130,7 +131,7 @@ label.ck input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
 <header class="top"><div class="wrap">
   <div class="bar"><a class="brand" href="./">🧰 工具箱</a><span class="priv">🔒 全在本机处理，不上传</span></div>
   <nav class="tabs" id="tabs">
-    <button data-t="text">文本</button><button data-t="diff">对比</button><button data-t="json">JSON</button><button data-t="b64">Base64</button><button data-t="enc">编码 · 哈希</button><button data-t="time">时间戳</button><button data-t="re">正则</button>
+    <button data-t="text">文本</button><button data-t="diff">对比</button><button data-t="json">JSON</button><button data-t="b64">Base64</button><button data-t="enc">编码 · 哈希</button><button data-t="time">时间戳</button><button data-t="re">正则</button><a class="tablink" href="convert.html">💱 汇率 · 单位换算 →</a>
   </nav>
 </div></header>
 
