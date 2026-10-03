@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1E2140">
-<title>周公解梦</title>
+<title>心灵小站 · 解梦 读心 心理 逻辑</title>
 <script src="sync.js?v=1"></script>
 <style>
 :root{
@@ -62,21 +62,59 @@ button{cursor:pointer}
 .empty{text-align:center;color:var(--soft);padding:26px 10px}
 .more{display:block;width:100%;border:1px dashed var(--line);background:none;border-radius:12px;padding:10px;color:var(--soft);margin:4px 0 10px}
 mark{background:rgba(240,182,90,.35);color:inherit;border-radius:3px}
+.mtabs{display:flex;gap:6px;margin-top:14px;overflow-x:auto;scrollbar-width:none}
+.mtabs::-webkit-scrollbar{display:none}
+.mtabs button{flex:0 0 auto;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);color:#EDEAFB;border-radius:999px;padding:5px 13px;font-size:14px}
+.mtabs button.on{background:#EDEAFB;color:#1E2140;font-weight:700;border-color:#EDEAFB}
+[hidden]{display:none!important}
+.sec{font-size:15px;font-weight:700;margin:18px 2px 8px}
+.sec small{font-weight:400;color:var(--faint);font-size:12px;margin-left:6px}
+.trick .steps{margin:8px 0 0;padding-left:20px;font-size:14.5px}
+.trick .steps li{margin:4px 0}
+.pbtn{border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font-weight:700;padding:9px 16px;margin:10px 8px 0 0}
+.gbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 14px;margin:10px 8px 0 0;color:var(--soft)}
+.grid9{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:10px;font-size:13px}
+.grid9 span{background:var(--chip);border-radius:7px;padding:3px 0;text-align:center;font-variant-numeric:tabular-nums}
+.grid9 span i{font-style:normal;font-size:16px;margin-left:3px}
+.ball{font-size:56px;text-align:center;margin:12px 0 4px}
+.reveal{background:var(--accent-soft);border-radius:12px;padding:10px 12px;margin-top:10px;font-size:14px}
+details.how{margin-top:10px;font-size:13.5px;color:var(--soft)}
+details.how summary{cursor:pointer;color:var(--accent);font-weight:600}
+.bcard{background:var(--chip);border-radius:12px;padding:10px;margin-top:10px}
+.bcard .nums{display:flex;flex-wrap:wrap;gap:4px;font-size:13px;font-variant-numeric:tabular-nums}
+.bcard .nums span{width:2.2em;text-align:center;background:var(--paper);border-radius:5px}
+.bcard .yn{margin-top:8px;display:flex;gap:8px}
+.bcard .yn button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:7px}
+.myth{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.myth:last-child{border-bottom:0}
+.myth .vd{flex:0 0 auto;font-size:12px;font-weight:700;border-radius:6px;padding:1px 7px;height:fit-content;margin-top:2px}
+.vd.ok{background:var(--good-soft);color:var(--good)}.vd.half{background:var(--chip);color:var(--soft)}.vd.no{background:var(--bad-soft);color:var(--bad)}
+.inv{margin-top:8px;font-size:13.5px;background:var(--good-soft);border-radius:10px;padding:7px 10px}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 12px;margin-top:7px;font-size:14.5px}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.score{font-size:13px;color:var(--soft);margin:2px 2px 8px}
+.doors{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.doors button{width:84px;height:110px;border-radius:10px 10px 4px 4px;border:2px solid var(--line);background:linear-gradient(#8C6A4A,#6E5236);color:#fff;font-size:30px;font-weight:700}
+.doors button.open{background:var(--chip);color:var(--ink)}
+.doors button.pick{border-color:#F0B65A;box-shadow:0 0 0 3px rgba(240,182,90,.35)}
 .foot{font-size:12px;color:var(--faint);text-align:center;margin-top:18px;line-height:1.8}
 </style>
 </head>
 <body>
 <div class="hero"><div class="wrap">
   <a class="home" href="./">‹ 主页</a>
-  <h1>周公解梦</h1>
-  <p>老辈人的说法 + 心理学的角度，图个乐，也顺便了解自己</p>
-  <form class="ask" id="ask"><input id="q" placeholder="说说你梦见了什么…" autocomplete="off" enterkeyhint="search"><button>解梦</button></form>
-  <div class="eg" id="eg"></div>
+  <h1 id="h1">周公解梦</h1>
+  <p id="sub">老辈人的说法 + 心理学的角度，图个乐，也顺便了解自己</p>
+  <nav class="mtabs" id="mtabs"><button data-m="dream">🌙 解梦</button><button data-m="read">🔮 读心</button><button data-m="psy">🧠 心理</button><button data-m="logic">🧩 逻辑</button></nav>
+  <div id="dreamTop"><form class="ask" id="ask"><input id="q" placeholder="说说你梦见了什么…" autocomplete="off" enterkeyhint="search"><button>解梦</button></form>
+  <div class="eg" id="eg"></div></div>
 </div></div>
 <div class="wrap">
-  <div class="cats" id="cats"></div>
+  <div id="vDream"><div class="cats" id="cats"></div>
   <div id="out"><div class="empty">加载中…</div></div>
-  <div class="foot">解梦属于民俗文化，图个乐，别太当真。<br>梦是大脑在整理白天的经历和情绪；反复做让你不安的梦、影响睡眠的话，可以和信任的人或医生聊聊。</div>
+  <div class="foot">解梦属于民俗文化，图个乐，别太当真。<br>梦是大脑在整理白天的经历和情绪；反复做让你不安的梦、影响睡眠的话，可以和信任的人或医生聊聊。</div></div>
+  <div id="vOther" hidden></div>
 </div>
 <script>
 (function () {
@@ -158,6 +196,7 @@ mark{background:rgba(240,182,90,.35);color:inherit;border-radius:3px}
   x.send();
 })();
 </script>
+<script src="mind/mind.js?v=1"></script>
 <script src="nav.js?v=8" defer></script>
 </body>
 </html>
