@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: if [ -f deals/build.py ]; then python deals/build.py; else python deals/probe.py; fi
-      - name: 打折关注（issue 标题「打折关注: 键盘 ≤ 80」）
+      - name: "打折关注（issue 标题 打折关注 + 关键词）"
         run: python deals/watch.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
