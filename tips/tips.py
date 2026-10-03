@@ -140,12 +140,50 @@ def merge_more():
                 have.add(x[0])
 
 
+TABOO_SKIP = {"日本：别给小费", "日本：泡温泉先洗干净", "英国：千万别插队"}   # 和风土习俗里已有的重复
+TABOO_EXTRA = {"泰国：头和脚", "中东：左手与鞋底", "送礼禁忌", "颜色的不同含义", "招手叫人的方式", "泰国王室", "泰国寺庙与佛像", "OK 手势不是到处都 OK", "竖大拇指与 V 字", "春节常见讲究"}
+REGION_SHORT = {"墨西哥 / 拉美": "拉美", "中国各地": "中国", "东南亚 / 南亚": "东南亚·南亚", "非洲 / 大洋洲": "非洲·大洋洲", "手势与跨文化": "跨文化"}
+
+
+def world_regions():
+    """风土习俗：按 more_world*.py 里的「# ---------- 地区 ----------」注释给每条标地区；more_world_taboo.py 的都算忌讳。"""
+    import importlib
+    import re as _re
+    here = os.path.dirname(os.path.abspath(__file__))
+    region, taboo = {}, set()
+    for fname in ("more_world.py", "more_world_taboo.py"):
+        path = os.path.join(here, fname)
+        if not os.path.exists(path):
+            continue
+        cur = ""
+        for line in open(path, encoding="utf-8"):
+            m = _re.match(r"\s*#\s*-{3,}\s*(.+?)\s*-{3,}", line)
+            if m:
+                cur = REGION_SHORT.get(m.group(1), m.group(1))
+                continue
+            m = _re.match(r'\s*\("([^"]+)"', line)
+            if m:
+                region[m.group(1)] = cur
+                if fname.endswith("taboo.py"):
+                    taboo.add(m.group(1))
+    if os.path.exists(os.path.join(here, "more_world_taboo.py")):
+        have = set(x[0] for x in T["world"])
+        T["world"] += [x for x in importlib.import_module("more_world_taboo").MORE if x[0] not in have and x[0] not in TABOO_SKIP]
+    return region, taboo
+
+
 def main():
     merge_more()
+    region, taboo = world_regions()
     items = []
     for key, _, _, _ in CATS:
         for i, (t, p, s, n) in enumerate(T[key]):
-            items.append({"id": "%s%02d" % (key, i + 1), "c": key, "t": t, "p": p, "s": s, "n": n})
+            it = {"id": "%s%02d" % (key, i + 1), "c": key, "t": t, "p": p, "s": s, "n": n}
+            if key == "world":
+                it["r"] = region.get(t, "")
+                if t in taboo or t in TABOO_EXTRA or "禁忌" in t or "禁区" in t:
+                    it["w"] = 1
+            items.append(it)
     out = {"cats": [{"k": k, "i": i, "n": n, "d": d} for k, i, n, d in CATS], "items": items}
     p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tips.json")
     with open(p, "w", encoding="utf-8") as f:
