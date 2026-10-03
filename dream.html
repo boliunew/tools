@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1E2140">
+<title>周公解梦</title>
+<script src="sync.js?v=1"></script>
+<style>
+:root{
+  --bg:#F3F0F7; --paper:#FFFDFB; --ink:#1F1D2B; --soft:#5F5B70; --faint:#9A96A8; --line:#E2DDEA; --chip:#ECE7F3;
+  --accent:#5B4B9A; --accent-ink:#fff; --accent-soft:#E6E0F5; --good:#B5741A; --good-soft:#FBEFD9; --bad:#8A4A5A; --bad-soft:#F3E3E7;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(40,30,80,.08);
+  --serif:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#14131C; --paper:#1D1C28; --ink:#ECEAF3; --soft:#ADA8BE; --faint:#716C84; --line:#2E2C3D; --chip:#28263A;
+  --accent:#A99BEA; --accent-ink:#17142A; --accent-soft:#2A2547; --good:#F0B65A; --good-soft:#3A2C14; --bad:#E59AAE; --bad-soft:#3A2129;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(160deg,#2A2456,#1E2140 60%,#14162E);color:#EDEAFB;padding:calc(18px + env(safe-area-inset-top)) 0 22px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff9,transparent),radial-gradient(1px 1px at 70% 20%,#fff8,transparent),radial-gradient(1.5px 1.5px at 85% 60%,#fff7,transparent),radial-gradient(1px 1px at 40% 70%,#fff6,transparent),radial-gradient(1px 1px at 10% 80%,#fff6,transparent),radial-gradient(1.2px 1.2px at 55% 45%,#fff7,transparent);pointer-events:none}
+.hero .wrap{position:relative}
+.hero a.home{color:#EDEAFB;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{font-family:var(--serif);font-size:30px;margin:6px 0 2px;letter-spacing:.08em}
+.hero p{margin:0;font-size:13.5px;opacity:.8}
+.ask{display:flex;gap:8px;margin-top:14px}
+.ask input{flex:1;min-width:0;border:0;border-radius:14px;padding:12px 14px;font-size:16px;background:rgba(255,255,255,.95);color:#1F1D2B;outline:none}
+.ask button{border:0;border-radius:14px;padding:0 16px;background:#F0B65A;color:#2A1E05;font-weight:700;white-space:nowrap}
+.eg{margin-top:8px;font-size:12.5px;opacity:.85}
+.eg button{border:1px solid rgba(255,255,255,.3);background:none;color:#EDEAFB;border-radius:999px;padding:1px 9px;margin:3px 4px 0 0;font-size:12.5px}
+.cats{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:14px -16px 10px;padding:0 16px 2px}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13.5px}
+.cats button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:700}
+.cats small{opacity:.55;margin-left:3px}
+.note{font-size:13px;color:var(--soft);margin:4px 2px 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;margin-bottom:10px}
+.card .top{display:flex;align-items:center;gap:8px}
+.card h3{margin:0;font-family:var(--serif);font-size:19px;flex:1}
+.v{font-size:12px;font-weight:700;border-radius:6px;padding:1px 8px}
+.v.吉{background:var(--good-soft);color:var(--good)}
+.v.凶{background:var(--bad-soft);color:var(--bad)}
+.v.平{background:var(--chip);color:var(--soft)}
+.cat{font-size:12px;color:var(--faint)}
+.row{display:flex;gap:8px;margin-top:9px;font-size:14.5px}
+.row .lb{flex:0 0 auto;font-size:12px;font-weight:700;border-radius:6px;padding:1px 7px;height:fit-content;margin-top:2px}
+.row .lb.t{background:var(--accent-soft);color:var(--accent)}
+.row .lb.x{background:var(--chip);color:var(--soft)}
+.aka{margin-top:8px;font-size:12px;color:var(--faint)}
+.aka span{margin-right:8px}
+.res h2{font-size:15px;margin:16px 2px 8px;color:var(--soft);font-weight:600}
+.sum{background:var(--accent-soft);border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:14px}
+.sum b{color:var(--accent)}
+.empty{text-align:center;color:var(--soft);padding:26px 10px}
+.more{display:block;width:100%;border:1px dashed var(--line);background:none;border-radius:12px;padding:10px;color:var(--soft);margin:4px 0 10px}
+mark{background:rgba(240,182,90,.35);color:inherit;border-radius:3px}
+.foot{font-size:12px;color:var(--faint);text-align:center;margin-top:18px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a class="home" href="./">‹ 主页</a>
+  <h1>周公解梦</h1>
+  <p>老辈人的说法 + 心理学的角度，图个乐，也顺便了解自己</p>
+  <form class="ask" id="ask"><input id="q" placeholder="说说你梦见了什么…" autocomplete="off" enterkeyhint="search"><button>解梦</button></form>
+  <div class="eg" id="eg"></div>
+</div></div>
+<div class="wrap">
+  <div class="cats" id="cats"></div>
+  <div id="out"><div class="empty">加载中…</div></div>
+  <div class="foot">解梦属于民俗文化，图个乐，别太当真。<br>梦是大脑在整理白天的经历和情绪；反复做让你不安的梦、影响睡眠的话，可以和信任的人或医生聊聊。</div>
+</div>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var D = null, CAT = '', SHOWN = 30;
+  var EG = ['梦见被蛇追', '梦见掉牙齿', '梦见去世的奶奶', '梦见下大雨', '梦见考试迟到', '梦见捡到钱', '梦见自己会飞', '梦见前任'];
+  function hl(s, terms) { s = esc(s); terms.forEach(function (t) { if (t) s = s.split(esc(t)).join('<mark>' + esc(t) + '</mark>'); }); return s; }
+  function card(e, terms) {
+    terms = terms || [];
+    return '<div class="card"><div class="top"><h3>' + hl(e.k, terms) + '</h3><span class="cat">' + esc(e.c) + '</span><span class="v ' + e.v + '">' + e.v + '</span></div>' +
+      '<div class="row"><span class="lb t">老说法</span><span>' + hl(e.t, terms) + '</span></div>' +
+      '<div class="row"><span class="lb x">心理学</span><span>' + hl(e.x, terms) + '</span></div>' +
+      (e.a.length ? '<div class="aka">' + e.a.map(function (a) { return '<span>#' + esc(a) + '</span>'; }).join('') + '</div>' : '') + '</div>';
+  }
+  // 从一句话里找出所有提到的梦境（关键词或别名是这句话的一部分）
+  function analyse(text) {
+    var t = text.replace(/[\s，。,.!！?？、]/g, '').replace(/^(我|昨晚|昨天|晚上|梦见|梦到|做梦)+/, ''), hits = [];
+    D.items.forEach(function (e) {
+      var words = [e.k].concat(e.a).map(function (w) { return w.replace(/^梦见|^梦到/, ''); }).filter(function (w) { return w.length >= 1; });
+      var best = '';
+      words.forEach(function (w) { if (t.indexOf(w) >= 0 && w.length > best.length) best = w; });
+      if (best && (best.length >= 2 || best === e.k)) hits.push({ e: e, w: best });
+    });
+    hits.sort(function (a, b) { return b.w.length - a.w.length; });
+    var out = [];   // 长词优先：命中了「水果」就不再算「水」
+    hits.forEach(function (h) {
+      if (out.some(function (o) { return o.e === h.e || o.w.indexOf(h.w) >= 0; })) return;
+      out.push(h);
+    });
+    return out.slice(0, 6);
+  }
+  function showAsk(text) {
+    var hits = analyse(text), h = '';
+    if (!hits.length) {
+      // 退一步：全文搜
+      var q = text.replace(/^(梦见|梦到)/, '');
+      var list = D.items.filter(function (e) { return (e.k + e.a.join('') + e.t + e.x).indexOf(q) >= 0; }).slice(0, 8);
+      h = list.length ? '<div class="res"><h2>没找到完全对得上的，下面这些里提到了「' + esc(q) + '」</h2>' + list.map(function (e) { return card(e, [q]); }).join('') + '</div>' :
+        '<div class="empty">词库里还没有「' + esc(text) + '」。换个说法试试，比如只写最主要的东西：蛇、水、考试……</div>';
+    } else {
+      var n = { 吉: 0, 凶: 0, 平: 0 };
+      hits.forEach(function (x) { n[x.e.v]++; });
+      var mood = n['吉'] > n['凶'] ? '整体偏<b>吉</b>，是个好兆头' : n['凶'] > n['吉'] ? '老说法里偏<b>凶</b>，当个提醒就好，别往心里去' : '整体<b>平</b>，没什么好坏';
+      h = '<div class="res"><div class="sum">你的梦里有：' + hits.map(function (x) { return '<b>' + esc(x.e.k) + '</b>'; }).join('、') + '。按老说法' + mood + '。</div>' +
+        hits.map(function (x) { return card(x.e, [x.w]); }).join('') + '</div>';
+    }
+    $('out').innerHTML = h;
+    var bs = $('cats').querySelectorAll('button'); for (var i = 0; i < bs.length; i++) bs[i].className = '';
+  }
+  function showList() {
+    var list = D.items.filter(function (e) { return !CAT || e.c === CAT; });
+    var h = '<div class="note">' + (CAT ? CAT + '类，' : '') + '共 ' + list.length + ' 条' + (CAT ? '' : '。在上面直接输入你的梦，会自动找出里面的东西') + '</div>';
+    h += list.slice(0, SHOWN).map(function (e) { return card(e); }).join('');
+    if (list.length > SHOWN) h += '<button class="more" id="more">再看 ' + Math.min(30, list.length - SHOWN) + ' 条（还剩 ' + (list.length - SHOWN) + '）</button>';
+    $('out').innerHTML = h;
+    if ($('more')) $('more').onclick = function () { SHOWN += 30; showList(); };
+  }
+  function renderCats() {
+    var cnt = {}; D.items.forEach(function (e) { cnt[e.c] = (cnt[e.c] || 0) + 1; });
+    $('cats').innerHTML = '<button data-c="" class="' + (CAT ? '' : 'on') + '">全部<small>' + D.items.length + '</small></button>' + '<button data-r="1">🎲 随便看看</button>' +
+      D.cats.map(function (c) { return '<button data-c="' + c + '" class="' + (c === CAT ? 'on' : '') + '">' + c + '<small>' + (cnt[c] || 0) + '</small></button>'; }).join('');
+  }
+  $('cats').onclick = function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.getAttribute('data-r')) { var x = D.items[Math.floor(Math.random() * D.items.length)]; $('out').innerHTML = '<div class="note">🎲 随机一条</div>' + card(x); return; }
+    CAT = b.getAttribute('data-c'); SHOWN = 30; $('q').value = ''; renderCats(); showList();
+  };
+  $('ask').onsubmit = function (e) { e.preventDefault(); var v = $('q').value.trim(); if (v) showAsk(v); else { renderCats(); showList(); } if (document.activeElement) document.activeElement.blur(); };
+  $('q').oninput = function () { if (!this.value.trim()) { renderCats(); showList(); } };
+  $('eg').innerHTML = '试试：' + EG.map(function (t) { return '<button type="button">' + t + '</button>'; }).join('');
+  $('eg').onclick = function (e) { var b = e.target.closest('button'); if (!b) return; $('q').value = b.textContent; showAsk(b.textContent); };
+
+  var x = new XMLHttpRequest();
+  x.open('GET', 'dream/dreams.json?v=1');
+  x.onload = function () { try { D = JSON.parse(x.responseText); } catch (e) { $('out').innerHTML = '<div class="empty">加载失败，刷新试试</div>'; return; } renderCats(); showList(); };
+  x.onerror = function () { $('out').innerHTML = '<div class="empty">加载失败，检查网络后刷新</div>'; };
+  x.send();
+})();
+</script>
+<script src="nav.js?v=8" defer></script>
+</body>
+</html>
