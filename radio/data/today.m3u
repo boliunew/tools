@@ -1,18 +1,18 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-10-04
-#EXTINF:13,通勤电台 - ☀️ 开场 10月4日 星期日
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610041054
-#EXTINF:26,通勤电台 - 🌤️ 天气 Upland 晴 100°/75°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610041054
+#PLAYLIST:通勤电台 2026-10-05
+#EXTINF:14,通勤电台 - ☀️ 开场 10月5日 星期一
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610051421
+#EXTINF:26,通勤电台 - 🌤️ 天气 Upland 大致晴朗 100°/74°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610051421
 #EXTINF:34,通勤电台 - 📊 大盘 防守
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610041054
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610051421
 #EXTINF:54,通勤电台 - 📈 股票池 31 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610041054
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610051421
 #EXTINF:7,通勤电台 - 🗓️ 财报与数据 今明两天清静
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610041054
-#EXTINF:69,通勤电台 - 📰 英文新闻 Al Jazeera · BBC · NPR
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610041054
-#EXTINF:34,通勤电台 - 🔤 今日单词 artificial · el invierno
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610041054
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610051421
+#EXTINF:58,通勤电台 - 📰 英文新闻 BBC · NPR · Al Jazeera
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610051421
+#EXTINF:31,通勤电台 - 🔤 今日单词 hardly · el lápiz
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610051421
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610041054
+https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610051421
