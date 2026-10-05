@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="tools.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F1EA">
+<title>现场工具</title>
+<script src="sync.js?v=1"></script>
+<style>
+:root{
+  --bg:#F4F1EA; --paper:#FFFDF8; --ink:#1D2028; --soft:#5E6573; --faint:#99A0AA; --line:#E3DED3; --chip:#EEE9DF;
+  --accent:#C2611F; --accent-ink:#fff; --accent-soft:#F6E2D2; --ok:#1E8E4E; --bad:#C0392B;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 5px 18px rgba(30,35,50,.07);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Roboto Mono",monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#13161C; --paper:#1B1F27; --ink:#E9ECF1; --soft:#A7AEBA; --faint:#6E7583; --line:#2B303B; --chip:#252A35;
+  --accent:#F09A5B; --accent-ink:#22130A; --accent-soft:#3A2617; --ok:#5BD38E; --bad:#FF7A6B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 5px 18px rgba(0,0,0,.35);
+}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.55;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area-inset-top)}
+.brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px;position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
+.tabs button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 2px;font-size:14px;line-height:1.25}
+.tabs button span{display:block;font-size:20px}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:700}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;margin-bottom:12px}
+.card h3{margin:0 0 8px;font-size:15px}
+.big-in{width:100%;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:12px 14px;font-size:26px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;outline:none}
+.big-in:focus{border-color:var(--accent)}
+.res{margin-top:10px}
+.bigno{font-family:var(--mono);font-size:26px;font-weight:700;letter-spacing:.06em}
+.bigno i{font-style:normal;color:var(--accent);border:2px solid var(--accent);border-radius:6px;padding:0 5px;margin-left:4px}
+.ok{color:var(--ok);font-weight:700;font-size:18px}
+.no{color:var(--bad);font-weight:700;font-size:16px}
+.hint{font-size:13px;color:var(--faint)}
+.sug{display:inline-block;font-family:var(--mono);font-weight:700;background:var(--accent-soft);border-radius:6px;padding:1px 7px;margin:4px 6px 0 0;cursor:pointer}
+.btn{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 13px;font-size:13.5px;color:var(--soft)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.hist .h{display:flex;align-items:center;gap:8px;padding:7px 2px;border-bottom:1px dashed var(--line);font-family:var(--mono);font-size:15px}
+.hist .h:last-child{border-bottom:0}
+.hist .h span{flex:1}
+.hist .h small{font-family:inherit;color:var(--faint);font-size:12px}
+.seg{display:flex;gap:6px;margin-bottom:8px}
+.seg button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 12px;font-size:13px}
+.seg button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fg label{font-size:12.5px;color:var(--soft)}
+.fg input{display:block;width:100%;margin-top:2px;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 9px;font-size:17px;font-family:var(--mono);outline:none}
+.fg input:focus{border-color:var(--accent)}
+.kpi{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
+.kpi div{background:var(--bg);border-radius:10px;padding:7px 9px;font-size:12px;color:var(--soft)}
+.kpi b{display:block;font-size:17px;color:var(--ink);font-family:var(--mono)}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13.5px}
+th,td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line)}
+th{font-size:12px;color:var(--soft);font-weight:600}
+.cv{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:end;padding:8px 0;border-bottom:1px dashed var(--line)}
+.cv:last-child{border-bottom:0}
+.cv label{font-size:12px;color:var(--soft)}
+.cv input{display:block;width:100%;margin-top:2px;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 9px;font-size:18px;font-family:var(--mono);outline:none}
+.cv input:focus{border-color:var(--accent)}
+.cv .eq{padding-bottom:10px;color:var(--faint)}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line)}
+.ck:last-child{border-bottom:0}
+.ck .st{flex:0 0 auto;display:flex;flex-direction:column;gap:4px}
+.ck .st button{width:40px;height:32px;border:1px solid var(--line);background:var(--bg);border-radius:9px;font-size:15px}
+.ck .st button.y{background:var(--ok);border-color:var(--ok);color:#fff}
+.ck .st button.n{background:var(--bad);border-color:var(--bad);color:#fff}
+.ck .bd{flex:1;min-width:0}
+.ck .bd b{font-size:15px}
+.ck .bd p{margin:2px 0 0;font-size:12.5px;color:var(--soft)}
+.ck .ph{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.ck .ph img{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.ck .pw{position:relative}
+.ck .pw button{position:absolute;right:-6px;top:-6px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:14px;line-height:22px;padding:0}
+.ck .ph label{width:64px;height:64px;border:1px dashed var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--faint);cursor:pointer}
+.ck .ph input{display:none}
+.ck textarea{width:100%;margin-top:6px;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:6px 8px;font-size:13.5px;resize:vertical;min-height:34px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.f2 label{font-size:12.5px;color:var(--soft)}
+.f2 input{display:block;width:100%;margin-top:2px;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 9px;font-size:16px;font-family:var(--mono);text-transform:uppercase;outline:none}
+#prev{max-width:100%;border-radius:10px;margin-top:10px;border:1px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(28,28,30,.92);color:#fff;padding:8px 16px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:.2s;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="index.html">🦺 现场工具</a></header>
+<nav class="tabs" id="tabs">
+  <button data-t="no"><span>🔢</span>柜号</button><button data-t="load"><span>📦</span>装柜</button><button data-t="cv"><span>⚖️</span>换算</button><button data-t="chk"><span>📸</span>验柜</button>
+</nav>
+
+<section id="v-no">
+  <div class="card">
+    <input class="big-in" id="no" placeholder="柜号 如 CSQU3054383" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">
+    <div class="res" id="noRes"></div>
+    <div class="row"><button class="btn pri" id="noSave">记下来</button><button class="btn" id="noCopy">复制</button><button class="btn" id="noClr">清空</button></div>
+  </div>
+  <div class="card"><h3>今天记过的柜号</h3><div class="hist" id="hist"></div></div>
+  <div class="hint">校验位按 ISO 6346 算，自动把放错位置的 O/0、I/1 之类纠正过来。原理见 <a href="kb.html#iso-6346-check-digit">知识库</a>。记录只存在这台手机上。</div>
+</section>
+
+<section id="v-load" hidden>
+  <div class="card" id="load">
+    <div class="seg" id="lu"><button data-u="in" class="on">英寸 / 磅</button><button data-u="cm">厘米 / 公斤</button></div>
+    <div class="fg"><label>箱长<input data-k="l" inputmode="decimal" value="24"></label><label>箱宽<input data-k="w" inputmode="decimal" value="16"></label><label>箱高<input data-k="h" inputmode="decimal" value="12"></label><label>每箱重<input data-k="kg" inputmode="decimal" value="30"></label><label>箱数<input data-k="n" inputmode="numeric" value="500"></label></div>
+    <div class="res" id="loadRes"></div>
+  </div>
+  <div class="hint">更多说明见 <a href="kb.html#load-planning-cbm">装柜与 CBM</a>。</div>
+</section>
+
+<section id="v-cv" hidden>
+  <div class="card" id="cvs"></div>
+  <div class="hint">两边都能输入，另一边自动算。汇率和更多单位在 <a href="convert.html">汇率与单位换算</a>。</div>
+</section>
+
+<section id="v-chk" hidden>
+  <div class="card">
+    <div class="f2"><label>柜号<input id="cNo" autocapitalize="characters" autocomplete="off" spellcheck="false"></label><label>封条号<input id="cSeal" autocapitalize="characters" autocomplete="off" spellcheck="false"></label></div>
+    <div class="hint" id="cNoRes" style="margin-top:4px"></div>
+  </div>
+  <div class="card"><h3>七点 + 封条检查 <small class="hint">点 ✓ / ✗，拍照，写备注</small></h3><div id="cks"></div></div>
+  <div class="card">
+    <div class="row" style="margin-top:0"><button class="btn pri" id="mk">生成汇总图</button><button class="btn" id="txt">复制文字记录</button><button class="btn" id="share" hidden>分享</button><button class="btn" id="reset">重新开始</button></div>
+    <div class="hint" style="margin-top:6px">汇总图把柜号、封条号、每项结果和照片拼成一张，长按保存或分享给调度。照片只在这台手机里，刷新页面就没了。</div>
+    <img id="prev" hidden alt="">
+  </div>
+</section>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function jget(k, d) { try { var v = localStorage.getItem('work:' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+  function jset(k, v) { try { localStorage.setItem('work:' + k, JSON.stringify(v)); } catch (e) { } }
+  var tt;
+  function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(tt); tt = setTimeout(function () { t.className = 'toast'; }, 1600); }
+  function copy(s) {
+    function fb() { var ta = document.createElement('textarea'); ta.value = s; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); toast('已复制'); } catch (e) { toast('复制失败'); } document.body.removeChild(ta); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(s).then(function () { toast('已复制'); }, fb); else fb();
+  }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function stamp(d) { return (d.getMonth() + 1) + '/' + d.getDate() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+
+  /* ---------- 标签页 ---------- */
+  var TAB = 'no';
+  function setTab(t) {
+    if (!$('v-' + t)) t = 'no';
+    TAB = t; jset('tab', t);
+    var bs = $('tabs').querySelectorAll('button'), i;
+    for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-t') === t ? 'on' : '';
+    ['no', 'load', 'cv', 'chk'].forEach(function (k) { $('v-' + k).hidden = k !== t; });
+    try { history.replaceState(null, '', '#' + t); } catch (e) { }
+  }
+  $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (b) setTab(b.getAttribute('data-t')); };
+
+  /* ---------- ISO 6346 ---------- */
+  var LV = {};
+  (function () { var v = 10, c; for (c = 65; c < 91; c++) { if (v % 11 === 0) v++; LV[String.fromCharCode(c)] = v; v++; } })();
+  function isoSum(s) { var t = 0, i, ch; for (i = 0; i < 10; i++) { ch = s.charAt(i); t += (/\d/.test(ch) ? +ch : LV[ch]) * Math.pow(2, i); } return t; }
+  function isoOk(s) { return /^[A-Z]{4}\d{7}$/.test(s) && isoSum(s) % 11 % 10 === +s.charAt(10); }
+  var D2L = { '0': 'O', '1': 'I', '2': 'Z', '5': 'S', '6': 'G', '8': 'B' }, L2D = { O: '0', D: '0', Q: '0', U: '0', I: '1', L: '1', T: '1', Z: '2', S: '5', G: '6', B: '8' };
+  var LOOK = { '0': '869', '1': '74', '2': '7', '3': '85', '4': '91', '5': '638', '6': '058', '7': '12', '8': '03569', '9': '084',
+    O: 'DQCG', D: 'O', Q: 'O', C: 'GO', G: 'CO', I: 'LTJ', L: 'I', T: 'I', J: 'I', M: 'NW', N: 'MH', H: 'N', W: 'M', U: 'VO', V: 'U', E: 'F', F: 'E', P: 'R', R: 'PB', B: 'R', K: 'X', X: 'K' };
+  function grp(s) { return s.slice(0, 4) + ' ' + s.slice(4, 10) + (s.length > 10 ? ' ' + s.slice(10) : ''); }
+  // 返回 {s: 纠正后, state: 'short'|'bad'|'calc'|'ok'|'wrong', cd, fixed, sug}
+  function check(rawIn) {
+    var raw = String(rawIn || '').toUpperCase().replace(/[^A-Z0-9]/g, ''), s = '', fixed = [], i, ch;
+    for (i = 0; i < raw.length && i < 11; i++) {
+      ch = raw.charAt(i);
+      if (i < 4 && D2L[ch]) { fixed.push('第' + (i + 1) + '位 ' + ch + '→' + D2L[ch]); ch = D2L[ch]; }
+      else if (i >= 4 && L2D[ch]) { fixed.push('第' + (i + 1) + '位 ' + ch + '→' + L2D[ch]); ch = L2D[ch]; }
+      s += ch;
+    }
+    var r = { raw: raw, s: s, fixed: fixed, extra: Math.max(0, raw.length - 11), sug: [] };
+    if (!raw) { r.state = 'empty'; return r; }
+    if (s.length < 10) { r.state = 'short'; return r; }
+    if (!/^[A-Z]{4}\d+$/.test(s)) { r.state = 'bad'; return r; }
+    r.sum = isoSum(s); r.cd = r.sum % 11 % 10;
+    if (s.length === 10) { r.state = 'calc'; return r; }
+    if (+s.charAt(10) === r.cd) { r.state = 'ok'; return r; }
+    r.state = 'wrong';
+    var seen = {}, k, alt, c2, t;
+    for (i = 0; i < 11; i++) {
+      alt = LOOK[s.charAt(i)] || '';
+      for (k = 0; k < alt.length; k++) {
+        c2 = alt.charAt(k);
+        if ((i < 4) !== /[A-Z]/.test(c2)) continue;
+        t = s.slice(0, i) + c2 + s.slice(i + 1);
+        if (isoOk(t) && !seen[t]) { seen[t] = 1; r.sug.push([t, '第' + (i + 1) + '位 ' + s.charAt(i) + '→' + c2]); }
+      }
+    }
+    for (i = 4; i < 10; i++) { t = s.slice(0, i) + s.charAt(i + 1) + s.charAt(i) + s.slice(i + 2); if (t !== s && isoOk(t) && !seen[t]) { seen[t] = 1; r.sug.push([t, '第' + (i + 1) + '、' + (i + 2) + '位对调']); } }
+    r.sug.sort(function (x, y) { return (/第[1-4]位/.test(x[1]) ? 1 : 0) - (/第[1-4]位/.test(y[1]) ? 1 : 0); });
+    return r;
+  }
+  function full(r) { return r.state === 'calc' ? r.s + r.cd : r.s; }
+
+  var HIST = jget('hist', []);
+  function renderNo() {
+    var r = check($('no').value), h = '';
+    if (r.extra) h += '<div class="no">多了 ' + r.extra + ' 位，柜号一共 11 位</div>';
+    if (r.state === 'empty') h = '<span class="hint">输 10 位算校验位，输 11 位检查对不对。大小写、空格都没关系。</span>';
+    else if (r.state === 'short') h += '<span class="hint">还差 ' + (10 - r.s.length) + ' 位（4 个字母 + 6 位数字 + 1 位校验）</span>';
+    else if (r.state === 'bad') h += '<span class="hint">格式不对：前 4 位是字母，后面全是数字</span>';
+    else {
+      if (r.fixed.length) h += '<div class="hint">已自动纠正：' + r.fixed.join('，') + '</div>';
+      if ('UJZ'.indexOf(r.s.charAt(3)) < 0) h += '<div class="hint">⚠️ 第 4 位通常是 U，这里是 ' + r.s.charAt(3) + '</div>';
+      if (r.state === 'calc') h += '<div class="bigno">' + grp(r.s) + '<i>' + r.cd + '</i></div><div class="hint">校验位是 ' + r.cd + '</div>';
+      else if (r.state === 'ok') h += '<div class="bigno">' + grp(r.s) + '</div><div class="ok">✓ 柜号正确</div>';
+      else {
+        h += '<div class="bigno">' + grp(r.s) + '</div><div class="no">✗ 对不上：应该是 ' + r.cd + '，这里是 ' + r.s.charAt(10) + '</div>';
+        h += r.sug.length ? '<div class="hint" style="margin-top:4px">可能看错了，点一下换成：</div>' + r.sug.slice(0, 5).map(function (x) { return '<span class="sug" data-s="' + x[0] + '">' + grp(x[0]) + '</span><span class="hint">' + x[1] + '</span>'; }).join('<br>') :
+          '<div class="hint">改一个字也对不上，可能错了不止一位，再看一下实物。</div>';
+      }
+    }
+    $('noRes').innerHTML = h;
+  }
+  function renderHist() {
+    var today = new Date().toDateString(), list = HIST.filter(function (x) { return new Date(x.t).toDateString() === today; });
+    $('hist').innerHTML = list.length ? list.map(function (x, i) { return '<div class="h"><span>' + (x.ok ? '✅ ' : '⚠️ ') + grp(x.s) + '</span><small>' + stamp(new Date(x.t)).split(' ')[1] + '</small><button class="btn" data-cp="' + x.s + '">复制</button></div>'; }).join('') +
+      '<div class="row"><button class="btn" id="hAll">复制全部（' + list.length + '）</button><button class="btn" id="hClr">清空今天</button></div>' : '<span class="hint">点「记下来」，一天的柜号都在这，下班一次复制发出去。</span>';
+  }
+  $('no').addEventListener('input', renderNo);
+  $('noRes').onclick = function (e) { var b = e.target.closest('[data-s]'); if (b) { $('no').value = b.getAttribute('data-s'); renderNo(); } };
+  $('noSave').onclick = function () {
+    var r = check($('no').value);
+    if (r.state !== 'ok' && r.state !== 'calc' && r.state !== 'wrong') { toast('柜号不完整'); return; }
+    var s = full(r);
+    HIST = HIST.filter(function (x) { return x.s !== s && Date.now() - x.t < 7 * 864e5; });
+    HIST.unshift({ s: s, ok: isoOk(s), t: Date.now() }); jset('hist', HIST.slice(0, 200)); renderHist();
+    toast(isoOk(s) ? '已记下' : '已记下（校验位不对，标了 ⚠️）'); $('no').value = ''; renderNo(); $('no').focus();
+  };
+  $('noCopy').onclick = function () { var r = check($('no').value); if (r.s.length >= 10) copy(full(r)); };
+  $('noClr').onclick = function () { $('no').value = ''; renderNo(); $('no').focus(); };
+  $('hist').onclick = function (e) {
+    var t = e.target, today = new Date().toDateString();
+    if (t.getAttribute('data-cp')) copy(t.getAttribute('data-cp'));
+    else if (t.id === 'hAll') copy(HIST.filter(function (x) { return new Date(x.t).toDateString() === today; }).map(function (x) { return x.s + (x.ok ? '' : ' (?)'); }).reverse().join('\n'));
+    else if (t.id === 'hClr') { HIST = HIST.filter(function (x) { return new Date(x.t).toDateString() !== today; }); jset('hist', HIST); renderHist(); }
+  };
+
+  /* ---------- 装柜 ---------- */
+  var U = 'in', box = $('load');
+  var CT = [['20 尺普柜', 28, 17000], ['40 尺普柜', 58, 19500], ['40 尺高柜', 68, 19500]];
+  function v(k) { var x = parseFloat(String(box.querySelector('[data-k=' + k + ']').value).replace(/[^\d.]/g, '')); return isNaN(x) ? 0 : x; }
+  function fit(L, W, l, w) { return Math.max(Math.floor(L / l) * Math.floor(W / w), Math.floor(L / w) * Math.floor(W / l)); }
+  function num(x) { return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function runLoad() {
+    var cm = U === 'cm' ? 1 : 2.54, kgf = U === 'cm' ? 1 : 0.45359237, res = $('loadRes');
+    var l = v('l') * cm, w = v('w') * cm, h = v('h') * cm, kg = v('kg') * kgf, n = Math.max(0, Math.round(v('n')));
+    if (!l || !w || !h) { res.innerHTML = '<span class="hint">填上箱子的长宽高</span>'; return; }
+    var cbm = l * w * h / 1e6, tot = cbm * n, tw = kg * n, out = '';
+    out += '<div class="kpi"><div>每箱体积<b>' + cbm.toFixed(3) + ' CBM</b></div><div>总体积<b>' + tot.toFixed(1) + ' CBM</b></div><div>总重量<b>' + num(tw) + ' kg</b></div><div>约<b>' + num(tw / 0.45359237) + ' lb</b></div></div>';
+    out += '<table><tr><th>柜型</th><th>装满约几箱</th><th>要几个柜</th><th>体积 / 重量</th></tr>' + CT.map(function (c) {
+      var byV = Math.floor(c[1] / cbm), byW = kg ? Math.floor(c[2] / kg) : 1e9, per = Math.min(byV, byW), need = per ? Math.ceil(n / per) : 0;
+      return '<tr><td>' + c[0] + '</td><td>' + num(per) + (byW < byV ? ' ⚖️' : '') + '</td><td>' + (need || '—') + '</td><td>' + (need ? Math.round(Math.min(100, tot / need / c[1] * 100)) + '% / ' + Math.round(Math.min(999, tw / need / c[2] * 100)) + '%' : '—') + '</td></tr>';
+    }).join('') + '</table>';
+    var Lp = 48 * 2.54, Wp = 40 * 2.54, Hmax = (72 - 6) * 2.54, best = { per: 0 }, dims = [[l, w, h], [l, h, w], [w, h, l]];
+    dims.forEach(function (d) { var lay = fit(Lp, Wp, d[0], d[1]), layers = Math.floor(Hmax / d[2]), per = lay * layers; if (kg) per = Math.min(per, Math.floor(680 / kg)); if (per > best.per) best = { per: per, lay: lay, layers: layers, up: d === dims[0] }; });
+    if (best.per) out += '<div class="hint" style="margin-top:8px">📦 48×40 托盘：每层 <b>' + best.lay + '</b> 箱 × <b>' + best.layers + '</b> 层，一托最多约 <b>' + best.per + '</b> 箱' + (best.up ? '' : '（要侧放，注意朝上标志）') + '，' + n + ' 箱约 <b>' + Math.ceil(n / best.per) + '</b> 托。</div>';
+    var warn = [];
+    if (kg > 50 * 0.45359237 + 0.01) warn.push('每箱超过 50 磅：送 FBA 要贴 Team Lift 或拆箱');
+    if (Math.max(l, w, h) > 25 * 2.54 + 0.1) warn.push('有一边超过 25 英寸：FBA 多件标准品箱子不允许');
+    if (warn.length) out += '<div class="hint" style="color:var(--bad)">⚠️ ' + warn.join('；') + '</div>';
+    out += '<div class="hint">⚖️ = 被重量卡住。可装 CBM 是留了空隙的经验值；重量按美国公路整车不超 80,000 磅粗估。</div>';
+    res.innerHTML = out;
+  }
+  box.addEventListener('input', runLoad);
+  $('lu').onclick = function (e) {
+    var b = e.target.closest('[data-u]'); if (!b || b.getAttribute('data-u') === U) return;
+    var nu = b.getAttribute('data-u'), f = nu === 'cm' ? 2.54 : 1 / 2.54, fk = nu === 'cm' ? 0.45359237 : 1 / 0.45359237;
+    ['l', 'w', 'h'].forEach(function (k) { box.querySelector('[data-k=' + k + ']').value = Math.round(v(k) * f * 10) / 10; });
+    box.querySelector('[data-k=kg]').value = Math.round(v('kg') * fk * 10) / 10;
+    U = nu; var bs = this.querySelectorAll('button'), i; for (i = 0; i < bs.length; i++) bs[i].className = bs[i] === b ? 'on' : '';
+    runLoad();
+  };
+
+  /* ---------- 快速换算 ---------- */
+  // [左名, 右名, 左→右, 右→左]
+  var CV = [
+    ['磅 lb', '公斤 kg', function (x) { return x * 0.45359237; }, function (x) { return x / 0.45359237; }],
+    ['英尺 ft', '米 m', function (x) { return x * 0.3048; }, function (x) { return x / 0.3048; }],
+    ['英寸 in', '厘米 cm', function (x) { return x * 2.54; }, function (x) { return x / 2.54; }],
+    ['华氏 °F', '摄氏 °C', function (x) { return (x - 32) * 5 / 9; }, function (x) { return x * 9 / 5 + 32; }],
+    ['立方英尺 ft³', '立方米 CBM', function (x) { return x * 0.028316846592; }, function (x) { return x / 0.028316846592; }],
+    ['英里 mi', '公里 km', function (x) { return x * 1.609344; }, function (x) { return x / 1.609344; }],
+    ['加仑 gal', '升 L', function (x) { return x * 3.785411784; }, function (x) { return x / 3.785411784; }],
+    ['短吨 ton', '公吨 t', function (x) { return x * 0.90718474; }, function (x) { return x / 0.90718474; }]
+  ];
+  var CVV = jget('cv', {});
+  function fmt(x) { if (!isFinite(x)) return ''; var a = Math.abs(x); return String(Math.round(x * (a >= 1000 ? 10 : a >= 1 ? 1000 : 1e5)) / (a >= 1000 ? 10 : a >= 1 ? 1000 : 1e5)); }
+  $('cvs').innerHTML = CV.map(function (c, i) {
+    return '<div class="cv"><label>' + c[0] + '<input inputmode="decimal" data-i="' + i + '" data-side="0" value="' + esc(CVV[i] == null ? '' : CVV[i]) + '"></label><div class="eq">⇄</div><label>' + c[1] + '<input inputmode="decimal" data-i="' + i + '" data-side="1"></label></div>';
+  }).join('');
+  function cvRun(inp) {
+    var i = +inp.getAttribute('data-i'), side = inp.getAttribute('data-side'), x = parseFloat(inp.value), other = $('cvs').querySelector('[data-i="' + i + '"][data-side="' + (side === '0' ? 1 : 0) + '"]');
+    other.value = isNaN(x) ? '' : fmt(CV[i][side === '0' ? 2 : 3](x));
+    CVV[i] = side === '0' ? inp.value : other.value; jset('cv', CVV);
+  }
+  $('cvs').addEventListener('input', function (e) { if (e.target.getAttribute('data-i') != null) cvRun(e.target); });
+  (function () { var ins = $('cvs').querySelectorAll('[data-side="0"]'), i; for (i = 0; i < ins.length; i++) if (ins[i].value) cvRun(ins[i]); })();
+
+  /* ---------- 验柜 ---------- */
+  // 七点检查（美国海关 CTPAT 常用的顺序）+ 封条 VVTT
+  var CK = [
+    ['门外 / 底盘', '底梁、横梁有没有新焊点、多出来的夹层；轮胎、灯'],
+    ['柜门 内外', '门铰链、锁杆铆钉是不是原装；门板厚度一致，敲一敲听声'],
+    ['右侧板', '外面看有没有补丁、新漆；里外对照，凹凸位置要对得上'],
+    ['左侧板', '同右侧'],
+    ['前壁', '量一下深度对不对（40 尺约 39.5 英尺），波纹板是不是原装'],
+    ['顶板', '有没有破洞、漏光（关门站里面看一眼）、补丁'],
+    ['地板', '有没有水渍、油、钉子、破损、异味；地板高度一致'],
+    ['封条 VVTT', '看（View）、核对号码（Verify）、拉（Tug）、拧（Twist & Turn）；号码和单据一致']
+  ];
+  var ST = {}, NOTE = {}, PH = {};
+  function renderCk() {
+    $('cks').innerHTML = CK.map(function (c, i) {
+      return '<div class="ck"><div class="st"><button data-y="' + i + '" class="' + (ST[i] === 1 ? 'y' : '') + '">✓</button><button data-n="' + i + '" class="' + (ST[i] === 0 ? 'n' : '') + '">✗</button></div>' +
+        '<div class="bd"><b>' + (i + 1) + '. ' + c[0] + '</b><p>' + c[1] + '</p><div class="ph">' + (PH[i] || []).map(function (p, j) { return '<span class="pw"><img src="' + p.url + '" alt=""><button data-del="' + i + ',' + j + '" aria-label="删除">×</button></span>'; }).join('') +
+        '<label>📷<input type="file" accept="image/*" capture="environment" data-ph="' + i + '"></label></div>' +
+        ((ST[i] === 0 || NOTE[i]) ? '<textarea data-note="' + i + '" placeholder="哪里有问题？">' + esc(NOTE[i] || '') + '</textarea>' : '') + '</div></div>';
+    }).join('');
+  }
+  $('cks').onclick = function (e) {
+    var t = e.target, a;
+    if ((a = t.getAttribute('data-y')) != null) { ST[a] = ST[a] === 1 ? null : 1; renderCk(); }
+    else if ((a = t.getAttribute('data-n')) != null) { ST[a] = ST[a] === 0 ? null : 0; renderCk(); var ta = $('cks').querySelector('[data-note="' + a + '"]'); if (ta && ST[a] === 0) ta.focus(); }
+    else if ((a = t.getAttribute('data-del')) != null) { var p = a.split(','); PH[p[0]].splice(+p[1], 1); renderCk(); toast('照片已删'); }
+  };
+  $('cks').addEventListener('input', function (e) { var a = e.target.getAttribute('data-note'); if (a != null) NOTE[a] = e.target.value; });
+  $('cks').addEventListener('change', function (e) {
+    var a = e.target.getAttribute('data-ph'); if (a == null || !e.target.files || !e.target.files[0]) return;
+    var f = e.target.files[0], url = URL.createObjectURL(f);
+    (PH[a] = PH[a] || []).push({ url: url, file: f });
+    if (ST[a] == null) ST[a] = 1;
+    renderCk();
+  });
+  function cNoCheck() {
+    var r = check($('cNo').value), el = $('cNoRes');
+    el.innerHTML = r.state === 'ok' ? '<span style="color:var(--ok)">✓ 柜号校验正确</span>' : r.state === 'wrong' ? '<span style="color:var(--bad)">✗ 柜号校验位不对，再看一眼</span>' : r.state === 'calc' ? '校验位应为 ' + r.cd : '';
+  }
+  $('cNo').addEventListener('input', cNoCheck);
+  function summary() {
+    var r = check($('cNo').value), lines = ['验柜记录 ' + stamp(new Date()), '柜号：' + (r.s ? full(r) : '—') + (r.state === 'wrong' ? '（校验位不对）' : ''), '封条：' + ($('cSeal').value.toUpperCase() || '—')];
+    CK.forEach(function (c, i) { lines.push((ST[i] === 1 ? '✅ ' : ST[i] === 0 ? '❌ ' : '⬜ ') + c[0] + (NOTE[i] ? '：' + NOTE[i] : '')); });
+    return lines;
+  }
+  $('txt').onclick = function () { copy(summary().join('\n')); };
+  $('reset').onclick = function () {
+    Object.keys(PH).forEach(function (k) { PH[k].forEach(function (p) { try { URL.revokeObjectURL(p.url); } catch (e) { } }); });
+    ST = {}; NOTE = {}; PH = {}; $('cNo').value = ''; $('cSeal').value = ''; cNoCheck(); renderCk(); $('prev').hidden = true; $('share').hidden = true; toast('已清空');
+  };
+  function loadImg(url, cb) { var im = new Image(); im.onload = function () { cb(im); }; im.onerror = function () { cb(null); }; im.src = url; }
+  var LASTBLOB = null;
+  $('mk').onclick = function () {
+    var lines = summary(), items = [];
+    CK.forEach(function (c, i) { (PH[i] || []).forEach(function (p) { items.push({ url: p.url, cap: (i + 1) + '. ' + c[0] }); }); });
+    var W = 1080, pad2 = 36, lh = 40, cols = 3, cw = (W - pad2 * 2 - (cols - 1) * 12) / cols, ch = cw;
+    var head = pad2 + lines.length * lh + 20, rows = Math.ceil(items.length / cols), H = head + rows * (ch + 46) + pad2;
+    var cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    var g = cv.getContext('2d');
+    g.fillStyle = '#ffffff'; g.fillRect(0, 0, W, H);
+    g.textBaseline = 'top';
+    lines.forEach(function (s, i) { g.fillStyle = i === 0 ? '#C2611F' : /❌/.test(s) ? '#C0392B' : '#1D2028'; g.font = (i < 3 ? 'bold ' : '') + (i === 0 ? 34 : 30) + 'px -apple-system,"PingFang SC","Microsoft YaHei",sans-serif'; g.fillText(s, pad2, pad2 + i * lh); });
+    var k = 0;
+    function next() {
+      if (k >= items.length) { finish(); return; }
+      var it = items[k], x = pad2 + (k % cols) * (cw + 12), y = head + Math.floor(k / cols) * (ch + 46);
+      loadImg(it.url, function (im) {
+        if (im) { var s = Math.max(cw / im.width, ch / im.height), sw = cw / s, sh = ch / s; g.drawImage(im, (im.width - sw) / 2, (im.height - sh) / 2, sw, sh, x, y, cw, ch); }
+        g.fillStyle = '#5E6573'; g.font = '24px -apple-system,"PingFang SC","Microsoft YaHei",sans-serif'; g.fillText(it.cap, x, y + ch + 8);
+        k++; next();
+      });
+    }
+    function finish() {
+      var url = cv.toDataURL('image/jpeg', 0.85); $('prev').src = url; $('prev').hidden = false;
+      toast(items.length ? '汇总图好了，长按保存' : '没拍照片，只有文字');
+      if (cv.toBlob) cv.toBlob(function (b) {
+        LASTBLOB = b;
+        var f = null; try { f = new File([b], 'inspect-' + Date.now() + '.jpg', { type: 'image/jpeg' }); } catch (e) { }
+        $('share').hidden = !(f && navigator.canShare && navigator.canShare({ files: [f] }));
+      }, 'image/jpeg', 0.85);
+    }
+    next();
+  };
+  $('share').onclick = function () {
+    if (!LASTBLOB) return;
+    var f = new File([LASTBLOB], 'inspect.jpg', { type: 'image/jpeg' });
+    navigator.share({ files: [f], text: summary().join('\n') }).then(null, function () { });
+  };
+
+  setTab((location.hash || '').replace('#', '') || jget('tab', 'no'));
+  renderNo(); renderHist(); runLoad(); renderCk();
+})();
+</script>
+<script src="nav.js?v=9" defer></script>
+</body>
+</html>

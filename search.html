@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F1EA">
+<title>全站搜索</title>
+<script src="sync.js?v=1"></script>
+<style>
+:root{
+  --bg:#F4F1EA; --paper:#FFFDF8; --ink:#1D2028; --soft:#5E6573; --faint:#99A0AA; --line:#E3DED3; --chip:#EEE9DF;
+  --accent:#2C6E8F; --accent-ink:#fff; --accent-soft:#DDEBF2; --mark:#FFE8A3;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 5px 18px rgba(30,35,50,.07);
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#13161C; --paper:#1B1F27; --ink:#E9ECF1; --soft:#A7AEBA; --faint:#6E7583; --line:#2B303B; --chip:#252A35;
+  --accent:#6CB6DA; --accent-ink:#0B1A22; --accent-soft:#1B3240; --mark:#5A4A12;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 5px 18px rgba(0,0,0,.35);
+}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.55;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area-inset-top)}
+.brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto}
+.box{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0 8px}
+.box input{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:12px 14px;font-size:17px;outline:none;box-shadow:var(--shadow)}
+.box input:focus{border-color:var(--accent)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:8px -16px 0;padding:0 16px 2px}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 11px;font-size:13px;color:var(--soft)}
+.chips button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:700}
+.chips button i{font-style:normal;opacity:.6;margin-left:3px;font-size:11.5px}
+.meta{font-size:12.5px;color:var(--faint);margin:8px 2px}
+.r{display:block;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:8px}
+.r:active{background:var(--chip)}
+.r .k{display:inline-block;font-size:11.5px;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:0 6px;margin-right:6px;vertical-align:1px}
+.r b{font-size:15.5px}
+.r p{margin:4px 0 0;font-size:13.5px;color:var(--soft)}
+.r .sn{font-size:12.5px;color:var(--faint);margin-top:3px}
+mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
+.more{display:block;width:100%;border:1px dashed var(--line);background:none;border-radius:12px;padding:10px;color:var(--soft)}
+.sugg{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.sugg button{border:0;background:var(--chip);border-radius:999px;padding:4px 11px;font-size:13.5px}
+.empty{text-align:center;color:var(--faint);padding:30px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="index.html">🔍 全站搜索</a></header>
+<div class="box">
+  <input id="q" type="search" placeholder="搜技巧、菜谱、知识库、诗词、梦……" autocomplete="off" enterkeyhint="search">
+  <div class="chips" id="chips"></div>
+</div>
+<div id="out"><div class="empty">加载索引中…</div></div>
+</div>
+<script>
+(function () {
+  var ITEMS = [], KIND = '', SHOWN = 30, LAST = [];
+  var $q = document.getElementById('q'), $out = document.getElementById('out'), $chips = document.getElementById('chips');
+  var GROUPS = [['', '全部'], ['技巧', '技巧'], ['知识库', '知识库'], ['菜谱', '菜谱'], ['养生', '养生·节气'], ['解梦', '解梦'], ['心理学', '心理·逻辑'], ['苏轼', '苏轼'], ['George Michael', 'GM']];
+  var HOT = ['柜号', '红烧肉', '失眠', '赤壁', '蛇', '确认偏误', '日本 忌讳', 'FBA', '复利', '月相'];
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function group(k) {
+    if (k === '养生' || k === '节气') return '养生';
+    if (k === '心理学' || k === '逻辑') return '心理学';
+    for (var i = 1; i < GROUPS.length; i++) if (k.indexOf(GROUPS[i][0]) === 0) return GROUPS[i][0];
+    return k;
+  }
+  function terms(q) {
+    var out = [], p = q.toLowerCase().split(/\s+/);
+    for (var i = 0; i < p.length; i++) if (p[i]) out.push(p[i]);
+    return out;
+  }
+  function hl(s, ts) {
+    var h = esc(s);
+    for (var i = 0; i < ts.length; i++) {
+      var t = esc(ts[i]).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      if (t) h = h.replace(new RegExp('(' + t + ')(?![^<]*>)', 'gi'), '<mark>$1</mark>');
+    }
+    return h;
+  }
+  function snippet(x, ts) {
+    var i = x.indexOf(ts[0]);
+    if (i < 0) return '';
+    var a = Math.max(0, i - 18), b = Math.min(x.length, i + ts[0].length + 40);
+    return (a ? '…' : '') + x.slice(a, b) + (b < x.length ? '…' : '');
+  }
+  function search(q) {
+    var ts = terms(q), res = [];
+    if (!ts.length) return res;
+    for (var i = 0; i < ITEMS.length; i++) {
+      var it = ITEMS[i], t = it.t.toLowerCase(), score = 0, ok = true;
+      for (var j = 0; j < ts.length; j++) {
+        var w = ts[j];
+        if (t === w) score += 100;
+        else if (t.indexOf(w) === 0) score += 60;
+        else if (t.indexOf(w) >= 0) score += 40;
+        else if (it.s.toLowerCase().indexOf(w) >= 0) score += 15;
+        else if (it.x.indexOf(w) >= 0) score += 5;
+        else { ok = false; break; }
+      }
+      if (ok) res.push([score - t.length * 0.1, it]);
+    }
+    res.sort(function (a, b) { return b[0] - a[0]; });
+    var out = [];
+    for (i = 0; i < res.length; i++) out.push(res[i][1]);
+    return out;
+  }
+  function chips(res) {
+    var cnt = {}, h = '';
+    for (var i = 0; i < res.length; i++) { var g = group(res[i].k); cnt[g] = (cnt[g] || 0) + 1; }
+    for (i = 0; i < GROUPS.length; i++) {
+      var g = GROUPS[i], n = g[0] ? (cnt[g[0]] || 0) : res.length;
+      if (g[0] && !n && KIND !== g[0]) continue;
+      h += '<button data-k="' + esc(g[0]) + '"' + (KIND === g[0] ? ' class="on"' : '') + '>' + esc(g[1]) + (res.length ? '<i>' + n + '</i>' : '') + '</button>';
+    }
+    $chips.innerHTML = h;
+  }
+  function render() {
+    var q = $q.value.replace(/^\s+|\s+$/g, ''), ts = terms(q);
+    if (!q) {
+      $chips.innerHTML = '';
+      $out.innerHTML = '<div class="meta">共 ' + ITEMS.length + ' 条内容可搜。试试：</div><div class="sugg">' +
+        HOT.map(function (w) { return '<button data-q="' + esc(w) + '">' + esc(w) + '</button>'; }).join('') +
+        '</div><div class="meta" style="margin-top:14px">多个词用空格分开 = 同时包含。新闻、股票、打折这类每天变的内容不在这里，去各自页面看。</div>';
+      return;
+    }
+    var all = search(q);
+    chips(all);
+    var res = [];
+    for (var i = 0; i < all.length; i++) if (!KIND || group(all[i].k) === KIND) res.push(all[i]);
+    LAST = res;
+    if (!res.length) { $out.innerHTML = '<div class="empty">没找到「' + esc(q) + '」<br><small>换个说法，或少输几个字</small></div>'; return; }
+    var h = '<div class="meta">' + res.length + ' 条结果</div>';
+    for (i = 0; i < res.length && i < SHOWN; i++) {
+      var it = res[i], inT = it.t.toLowerCase().indexOf(ts[0]) >= 0 || it.s.toLowerCase().indexOf(ts[0]) >= 0;
+      h += '<a class="r" href="' + esc(it.u) + '"><span class="k">' + esc(it.k) + '</span><b>' + hl(it.t, ts) + '</b>' +
+        (it.s ? '<p>' + hl(it.s, ts) + '</p>' : '') +
+        (!inT ? '<div class="sn">' + hl(snippet(it.x, ts), ts) + '</div>' : '') + '</a>';
+    }
+    if (res.length > SHOWN) h += '<button class="more" id="more">再显示 ' + Math.min(30, res.length - SHOWN) + ' 条</button>';
+    $out.innerHTML = h;
+  }
+  var timer;
+  function sync() {
+    try { history.replaceState(null, '', $q.value ? '#q=' + encodeURIComponent($q.value) : location.pathname); } catch (e) {}
+  }
+  $q.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(function () { SHOWN = 30; render(); sync(); }, 120); });
+  $chips.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('button') : null;
+    if (!b) return;
+    KIND = b.getAttribute('data-k'); SHOWN = 30; render();
+  });
+  $out.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('button') : null;
+    if (!b) return;
+    if (b.id === 'more') { SHOWN += 30; render(); }
+    else if (b.getAttribute('data-q')) { $q.value = b.getAttribute('data-q'); KIND = ''; render(); sync(); }
+  });
+
+  var m = location.hash.match(/^#q=(.*)$/);
+  if (m) { try { $q.value = decodeURIComponent(m[1]); } catch (e) {} }
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'search/index.json');
+  xhr.onload = function () {
+    try { ITEMS = JSON.parse(xhr.responseText).items; } catch (e) { $out.innerHTML = '<div class="empty">索引读取失败</div>'; return; }
+    render();
+  };
+  xhr.onerror = function () { $out.innerHTML = '<div class="empty">索引加载失败，检查网络</div>'; };
+  xhr.send();
+  if (!m && window.innerWidth > 700) $q.focus();
+})();
+</script>
+<script src="nav.js?v=9" defer></script>
+</body>
+</html>

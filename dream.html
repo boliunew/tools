@@ -191,12 +191,16 @@ details.how summary{cursor:pointer;color:var(--accent);font-weight:600}
 
   var x = new XMLHttpRequest();
   x.open('GET', 'dream/dreams.json?v=1');
-  x.onload = function () { try { D = JSON.parse(x.responseText); } catch (e) { $('out').innerHTML = '<div class="empty">加载失败，刷新试试</div>'; return; } renderCats(); showList(); };
+  x.onload = function () { try { D = JSON.parse(x.responseText); } catch (e) { $('out').innerHTML = '<div class="empty">加载失败，刷新试试</div>'; return; } renderCats();
+    var hq = (location.hash || '').match(/^#q=(.+)$/), qv = '';
+    if (hq) { try { qv = decodeURIComponent(hq[1]); } catch (er) { } }
+    if (qv) { $('q').value = qv; showAsk(qv); } else showList();
+  };
   x.onerror = function () { $('out').innerHTML = '<div class="empty">加载失败，检查网络后刷新</div>'; };
   x.send();
 })();
 </script>
 <script src="mind/mind.js?v=1"></script>
-<script src="nav.js?v=8" defer></script>
+<script src="nav.js?v=9" defer></script>
 </body>
 </html>

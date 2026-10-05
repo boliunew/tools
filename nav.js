@@ -5,11 +5,15 @@
   if (window.__tnav) return;
   window.__tnav = 1;
 
+  var LOCAL = !!window.TOOLS_LOCAL;   // 家里主机上才显示的页面
   var GROUPS = [
-    ['🎧 听', [['radio.html', '🚗', '通勤电台', '开车听：天气、大盘、新闻、单词'], ['fm.html', '📻', '环球网络电台', '俄德英美中，显示正在播的歌'], ['books.html', '🎧', '听书 · 广播剧', 'LibriVox 有声书和老广播剧'], ['sleep.html', '🌙', '夜之声 · 助眠', '白噪音、声景旅程、温柔唤醒'], ['player.html', '🎬', '探测播放器', '']]],
-    ['📚 学', [['hanzi.html', '字', '汉字练习', '儿童识字 · HSK'], ['english.html', '🔤', '英语练习', '单词、句子、习语口头禅'], ['spanish.html', '🇲🇽', '西班牙语练习', '墨西哥发音，el / la 看图记'], ['card.html', '🎴', '每日一句 · 单词抽卡', '名言 / 习语 + 从词库抽卡复习'], ['vocab.html', '📖', '语境词库', '20000 词，语境里记单词'], ['sublingo.html', '🎞️', 'SubLingo', '字幕和文章逐句分析'], ['news.html', '📰', '新闻', '今日大事 · 趣闻 · 历史上的今天 · 英文精选']]],
-    ['💰 钱', [['deals.html', '🏷️', '打折雷达', '45 家店本周广告 + 比价'], ['stocks.html', '📈', '今日股票池', '短线信号 · 自选提醒 · VOO 体检'], ['earnings.html', '📅', '财报与经济日历', '']]],
-    ['🛠️ 工具', [['tips.html', '💡', '技巧与科普', '手机 · 电脑 · 主机 · 防骗 · 生活常识 · 小妙招 · 风土习俗 · 旅游景点'], ['people.html', '⭐', '人物专栏', '苏轼 · George Michael'], ['kitchen.html', '🍳', '厨房与养生', '中西菜谱 · 做菜计时 · 节气养生 · 营养学'], ['dream.html', '🌙', '心灵小站', '周公解梦 · 读心魔术 · 心理效应 · 逻辑推理'], ['kb.html', '🗂️', '知识库', '天文 · FBA · 物流 · 硬件，今晚星空和天象日历'], ['convert.html', '💱', '汇率与单位换算', '实时汇率 · 长度重量体积 · 温度油耗胎压 · 市斤亩'], ['toolbox.html', '🧰', '工具箱', '文本 · 对比 · JSON · Base64 · 哈希 · 时间戳 · 正则'], ['monitor.html', '🔔', '网页监控', ''], ['issues.html', '📬', '通知中心', '股价提醒和监控的记录（家里主机）'], ['migrate.html', '🧳', '搬家', '导出 / 导入全部进度']]]
+    ['🔍 常用', [['search.html', '🔍', '全站搜索', '技巧、菜谱、知识库、诗词、梦……一起搜'], ['work.html', '🦺', '现场工具', '柜号校验 · 装柜计算 · 单位换算 · 验柜拍照']]],
+    ['🎧 听', [['radio.html', '🚗', '通勤电台', '开车听：天气、大盘、新闻、单词'], ['fm.html', '📻', '环球网络电台', '俄德英美中，显示正在播的歌'], ['books.html', '🎧', '听书 · 广播剧', 'LibriVox 有声书和老广播剧'], ['sleep.html', '😴', '夜之声 · 助眠', '白噪音、声景旅程、温柔唤醒'], ['player.html', '🎬', '探测播放器', '']]],
+    ['📚 学', [['hanzi.html', '字', '汉字练习', '儿童识字 · HSK'], ['english.html', '🔤', '英语练习', '单词、句子、习语口头禅'], ['spanish.html', '🇲🇽', '西班牙语练习', '墨西哥发音，el / la 看图记'], ['card.html', '🎴', '每日一句 · 单词抽卡', '名言 / 习语 + 从词库抽卡复习'], ['vocab.html', '📖', '语境词库', '20000 词，语境里记单词'], ['sublingo.html', '🎞️', 'SubLingo', '字幕和文章逐句分析']]],
+    ['📰 读', [['news.html', '📰', '新闻', '今日大事 · 趣闻 · 历史上的今天 · 英文精选'], ['kb.html', '🗂️', '知识库', '天文 · 投资 · 物流 · FBA · 主机 · 人文'], ['tips.html', '💡', '技巧与科普', '手机 · 电脑 · 防骗 · 生活 · 风土习俗 · 旅游景点'], ['people.html', '⭐', '人物专栏', '苏轼 · George Michael']]],
+    ['💰 钱', [['stocks.html', '📈', '今日股票池', '短线信号 · 自选提醒 · VOO 体检'], ['earnings.html', '📅', '财报与经济日历', ''], ['deals.html', '🏷️', '打折雷达', '本周广告 + 比价 + 🔔 关注'], ['convert.html', '💱', '汇率与单位换算', '实时汇率 · 长度重量体积 · 温度油耗胎压']]],
+    ['🏠 生活', [['kitchen.html', '🍳', '厨房与养生', '200 道中西菜 · 做菜计时 · 节气养生'], ['dream.html', '🌙', '心灵小站', '周公解梦 · 读心魔术 · 心理效应 · 逻辑推理']]],
+    ['🛠️ 工具', [['toolbox.html', '🧰', '工具箱', '文本 · 对比 · JSON · Base64 · 哈希 · 时间戳 · 正则'], ['monitor.html', '🔔', '网页监控', '']].concat(LOCAL ? [['issues.html', '📬', '通知中心', '股价提醒和监控的记录'], ['migrate.html', '🧳', '搬家', '导出 / 导入全部进度']] : [])]
   ];
   var ALL = {}, g, i;
   for (g = 0; g < GROUPS.length; g++) for (i = 0; i < GROUPS[g][1].length; i++) ALL[GROUPS[g][1][i][0]] = GROUPS[g][1][i];
@@ -127,4 +131,17 @@
     window.addEventListener('resize', function () { place(y); });
   }
   if (document.body) build(); else document.addEventListener('DOMContentLoaded', build);
+
+  // 装到手机桌面 + 离线：每页都挂上 manifest，注册 sw.js（先上网，没网用缓存）
+  try {
+    if (!document.querySelector('link[rel=manifest]')) {
+      var mf = document.createElement('link'); mf.rel = 'manifest'; mf.href = 'tools.webmanifest'; document.head.appendChild(mf);
+    }
+    if (!document.querySelector('link[rel=apple-touch-icon]')) {
+      var ai = document.createElement('link'); ai.rel = 'apple-touch-icon'; ai.href = 'icons/apple.png'; document.head.appendChild(ai);
+    }
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+      window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').then(null, function () { }); });
+    }
+  } catch (e) { }
 })();

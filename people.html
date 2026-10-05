@@ -149,7 +149,8 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
   function jget(k, d) { try { var v = localStorage.getItem('ppl:' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
   function jset(k, v) { try { localStorage.setItem('ppl:' + k, JSON.stringify(v)); } catch (e) { } }
   function getJSON(u, cb) { var x = new XMLHttpRequest(); x.open('GET', u + '?v=1'); x.onload = function () { var d = null; try { d = JSON.parse(x.responseText); } catch (e) { } cb(d); }; x.onerror = function () { cb(null); }; x.send(); }
-  var WHO = (location.hash || '').replace('#', '') || jget('who', 'sushi'), SS = null, GM = null;
+  var HP = (location.hash || '').replace('#', '').split('/'), WHO = HP[0] || jget('who', 'sushi'), PEND = '', SS = null, GM = null;
+  try { PEND = HP[1] ? decodeURIComponent(HP[1]) : ''; } catch (e) { }
 
   /* ====================== 苏轼 ====================== */
   var ROAD = [[1037, '眉山', '出生，四川', 0], [1057, '汴京', '与弟弟同榜进士', 0], [1061, '凤翔', '第一次做官', 0], [1071, '杭州', '通判，爱上西湖', 0], [1074, '密州', '「明月几时有」', 0], [1077, '徐州', '抗洪', 0], [1079, '湖州', '乌台诗案被捕', 1],
@@ -271,16 +272,23 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
   }
 
   /* ====================== 切换 ====================== */
+  function goPend() {   // 从全站搜索跳过来：#sushi/<id> 或 #gm/<id>
+    if (!PEND) return;
+    var id = PEND; PEND = '';
+    if (WHO === 'gm') { openSong(id); return; }
+    SK = ''; OPEN = {}; OPEN[id] = 1; renderSushi();
+    var el = $('w-' + id); if (el) el.scrollIntoView({ block: 'start' });
+  }
   function show(p) {
     if (p !== 'gm') p = 'sushi';
     WHO = p; jset('who', p); history.replaceState(null, '', '#' + p);
     var bs = $('who').querySelectorAll('button'), i; for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-p') === p ? 'on' : '';
     document.title = (p === 'gm' ? 'George Michael' : '苏轼') + ' · 人物专栏';
     if (p === 'sushi') {
-      if (SS) renderSushi();
-      else { var left = 2, parts = {}; ['sushi_a', 'sushi_b'].forEach(function (f) { getJSON('people/' + f + '.json', function (d) { parts[f] = d ? d.items : []; if (--left) return; SS = parts.sushi_a.concat(parts.sushi_b); SS.sort(function (a, b) { return (a.year || 9999) - (b.year || 9999); }); if (WHO === 'sushi') renderSushi(); }); }); }
+      if (SS) { renderSushi(); goPend(); }
+      else { var left = 2, parts = {}; ['sushi_a', 'sushi_b'].forEach(function (f) { getJSON('people/' + f + '.json', function (d) { parts[f] = d ? d.items : []; if (--left) return; SS = parts.sushi_a.concat(parts.sushi_b); SS.sort(function (a, b) { return (a.year || 9999) - (b.year || 9999); }); if (WHO === 'sushi') { renderSushi(); goPend(); } }); }); }
     } else {
-      if (GM) renderGM(); else getJSON('people/gm.json', function (d) { GM = d; if (WHO === 'gm') { if (GM) renderGM(); else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
+      if (GM) { renderGM(); goPend(); } else getJSON('people/gm.json', function (d) { GM = d; if (WHO === 'gm') { if (GM) { renderGM(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
     }
   }
   $('who').onclick = function (e) { var b = e.target.closest('[data-p]'); if (b) { window.scrollTo(0, 0); show(b.getAttribute('data-p')); } };
@@ -288,6 +296,6 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
   show(WHO);
 })();
 </script>
-<script src="nav.js?v=8" defer></script>
+<script src="nav.js?v=9" defer></script>
 </body>
 </html>

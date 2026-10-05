@@ -2,6 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+<link rel="manifest" href="tools.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>我的工具</title>
 <style>
@@ -15,6 +18,22 @@ a.card{display:block;background:var(--card);border:1px solid var(--line);border-
 a.card:hover{border-color:var(--accent)}
 .t{font-size:18px;font-weight:600}
 .d{font-size:14px;color:var(--soft);margin-top:4px}
+.srch{display:flex;gap:8px;margin:0 0 14px}
+.srch input{flex:1;min-width:0;font-size:16px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);outline:none}
+.srch input:focus{border-color:var(--accent)}
+.srch button{border:0;border-radius:12px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;padding:0 16px;cursor:pointer}
+.today{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:22px}
+.today .hd{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:13.5px;color:var(--soft)}
+.today .hd b{font-size:18px;color:var(--ink)}
+.today .row{display:block;text-decoration:none;color:inherit;border-top:1px dashed var(--line);padding:9px 0 8px}
+.today .row:first-of-type{margin-top:8px}
+.today .lb{font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.04em}
+.today .tx{font-size:15px;margin-top:1px;line-height:1.45}
+.today .sm{font-size:13px;color:var(--soft);margin-top:2px;line-height:1.45}
+.today ol{margin:3px 0 0;padding-left:20px;font-size:14.5px;line-height:1.5}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.quick a{font-size:13.5px;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.sect{font-size:13px;color:var(--soft);margin:0 0 8px 2px}
 </style>
 
 
@@ -90,6 +109,10 @@ html.locked #gate{display:block}
 <!--GATEUI--><div id="gate"><h2>🔒 我的工具</h2><p>请输入密码</p><form onsubmit="return __gate()"><input type="password" id="gpw" autocomplete="current-password" placeholder="密码"><button type="submit">进入</button><label><input type="checkbox" id="grem" checked> 在这台设备上记住我</label></form><div id="gmsg"></div></div><!--/GATEUI-->
 <main>
 <h1>我的工具</h1>
+<form class="srch" action="search.html" onsubmit="location.href='search.html#q='+encodeURIComponent(this.q.value);return false"><input name="q" type="search" placeholder="搜全站：菜谱、技巧、诗词、梦……" enterkeyhint="search"><button>搜</button></form>
+<div class="today" id="today"><div class="hd"><b id="tdDate"></b><span id="tdSub"></span></div><div id="tdBody"></div>
+<div class="quick"><a href="work.html">🦺 现场工具</a><a href="news.html">📰 新闻</a><a href="stocks.html">📈 股票池</a><a href="deals.html">🏷️ 打折</a><a href="kitchen.html">🍳 今天吃啥</a><a href="convert.html">💱 汇率</a></div></div>
+<div class="sect">全部工具</div>
 <a class="card" href="radio.html"><div class="t">🚗 通勤电台</div><div class="d">每天早上自动生成语音：大盘、股票池、财报日历、英文新闻、今日单词；连车载蓝牙用方向盘切段</div></a>
 <a class="card" href="deals.html"><div class="t">🏷️ 打折雷达</div><div class="d">Upland 附近 45 家店本周广告（Food 4 Less、Walmart、Stater Bros、ALDI、Target、Costco…）+ Amazon 网上特价；比价搜索、本周超市好价、我的店、⭐ 购物清单一键复制</div></a>
 <a class="card" href="sleep.html"><div class="t">🌙 夜之声 · 助眠</div><div class="d">21 种立体声音景自由混合（雷雨、车内听雨、海浪、篝火、夜车、水下、深空、氛围音乐…）；声景旅程、动态夜景、空间漫游、越来越轻、温柔唤醒、呼吸引导</div></a>
@@ -115,5 +138,55 @@ html.locked #gate{display:block}
 <a class="card" href="sublingo.html"><div class="t">SubLingo</div><div class="d">字幕 / 文章语法解析：词性、时态、句子结构、短语动词；点词即查英汉词典（牛津 3000 核心词、考试标签）</div></a>
 <button class="lockbtn" onclick="__lock()">🔒 退出（这台设备需要重新输密码）</button>
 </main>
+<script>
+(function () {
+  // 首页「今天」：日期、节气、月相、每日一句、今日一招、今日大事、打折关注；每块各自加载，失败就不显示
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function getJSON(u, cb) { var x = new XMLHttpRequest(); x.open('GET', u); x.onload = function () { var d = null; if (x.status < 400) { try { d = JSON.parse(x.responseText); } catch (e) { } } if (d) cb(d); }; x.send(); }
+  function ls(k, d) { try { var v = window.localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  var now = new Date(), md = ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2);
+  var WK = '日一二三四五六';
+  $('tdDate').textContent = (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay());
+  // 月相：以 2000-01-06 18:14 UTC 的新月为起点，朔望月 29.530589 天，误差一天以内
+  var age = ((now.getTime() - Date.UTC(2000, 0, 6, 18, 14)) / 864e5) % 29.530589; if (age < 0) age += 29.530589;
+  var PH = [[1.85, '🌑', '新月'], [5.54, '🌒', '娥眉月'], [9.23, '🌓', '上弦月'], [12.92, '🌔', '盈凸月'], [16.61, '🌕', '满月'], [20.3, '🌖', '亏凸月'], [23.99, '🌗', '下弦月'], [27.68, '🌘', '残月'], [99, '🌑', '新月']];
+  var ph; for (var i = 0; i < PH.length; i++) if (age < PH[i][0]) { ph = PH[i]; break; }
+  var SUB = [ph[1] + ' ' + ph[2]];
+  function sub() { $('tdSub').textContent = SUB.join(' · '); }
+  sub();
+  var slots = {}, ORDER = ['card', 'tip', 'news', 'watch'];
+  function put(k, html) { slots[k] = html; var h = ''; for (var i = 0; i < ORDER.length; i++) if (slots[ORDER[i]]) h += slots[ORDER[i]]; $('tdBody').innerHTML = h; }
+
+  getJSON('kitchen/wellness.json', function (w) {
+    var list = w.jieqi.slice().sort(function (a, b) { return a.md < b.md ? -1 : 1; }), cur = list[list.length - 1], nx = list[0];
+    for (var i = 0; i < list.length; i++) { if (list[i].md <= md) { cur = list[i]; nx = list[(i + 1) % list.length]; } }
+    SUB.push('节气 ' + cur.name + '（下一个 ' + nx.name + ' ' + nx.md.replace('-', '/') + '）'); sub();
+  });
+  getJSON('card/today.json', function (c) {
+    put('card', '<a class="row" href="card.html"><div class="lb">每日一句 · ' + esc(c.kind) + '</div><div class="tx">' + esc(c.en) + '</div><div class="sm">' + esc(c.zh) + (c.by ? ' — ' + esc(c.by) : '') + '</div></a>');
+  });
+  getJSON('tips/tips.json', function (D) {
+    var hide = ls('tips:hide', {}), items = D.items.filter(function (x) { return !hide[x.id]; });
+    if (!items.length) items = D.items;
+    var n = Math.floor((now.getTime() - now.getTimezoneOffset() * 60000) / 864e5), it = items[((n * 37) % items.length + items.length) % items.length];
+    put('tip', '<a class="row" href="tips.html#' + esc(it.id) + '"><div class="lb">今日一招</div><div class="tx">' + esc(it.t) + '</div><div class="sm">' + esc(it.p) + '</div></a>');
+  });
+  getJSON('news/data/today.json', function (d) {
+    if (!d.big || !d.big.length || now.getTime() - new Date(d.generated).getTime() > 2 * 864e5) return;
+    var h = '<a class="row" href="news.html"><div class="lb">今日大事</div><ol>';
+    for (var i = 0; i < d.big.length && i < 3; i++) h += '<li>' + esc(d.big[i].title) + '</li>';
+    var otd = d.onthisday && d.onthisday[md], ev = otd && otd.events && otd.events.length ? otd.events[now.getFullYear() % otd.events.length] : null;
+    h += '</ol>' + (ev ? '<div class="sm">📜 ' + ev.year + ' 年的今天：' + esc(ev.text) + '</div>' : '') + '</a>';
+    put('news', h);
+  });
+  var watch = ls('deals:watch', []);
+  if (watch && watch.length) {
+    var names = []; for (var j = 0; j < watch.length && j < 4; j++) names.push(watch[j].q || watch[j].k || watch[j]);
+    put('watch', '<a class="row" href="deals.html"><div class="lb">打折关注</div><div class="sm">正在盯 ' + watch.length + ' 个：' + esc(names.join('、')) + '，有货会推到手机</div></a>');
+  }
+})();
+</script>
+<script src="nav.js?v=9" defer></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
-name: 知识库目录
+name: 知识库目录与全站搜索
 
 # kb/ 里的文章有改动时，重新生成 kb/index.json（网页用）和 kb/README.md（目录 + 更新日志）
+# 任何内容（技巧、菜谱、解梦、人物……）有改动时，重新生成 search/index.json
 on:
   push:
     branches: [main]
-    paths: ["kb/**.md", "kb/build.py", "!kb/README.md"]
+    paths: ["kb/**.md", "kb/build.py", "!kb/README.md", "tips/tips.json", "kitchen/*.json", "dream/dreams.json", "mind/*.json", "people/*.json", "scripts/build_search.py"]
   workflow_dispatch: {}
 
 permissions:
@@ -26,11 +27,12 @@ jobs:
         with:
           python-version: "3.12"
       - run: python kb/build.py
+      - run: python scripts/build_search.py
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add kb/index.json kb/README.md
+          git add kb/index.json kb/README.md search/index.json
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
-          git commit -m "知识库目录更新"
+          git commit -m "知识库目录 / 搜索索引更新"
           for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
