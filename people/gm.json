@@ -1,0 +1,784 @@
+{
+ "bio": [
+  "乔治·迈克尔 1963 年 6 月 25 日生于伦敦北部，原名 Georgios Kyriacos Panayiotou。父亲是从塞浦路斯移居英国的希腊裔餐馆老板，母亲是英格兰人，年轻时当过舞者。他在伦敦北郊长大，少年时随家人搬到赫特福德郡。父亲希望他走稳妥的路，他却从小痴迷唱片和电台，在学校里结识了一生的好友 Andrew Ridgeley，两人一起做起了明星梦。",
+  "1981 年，两人组成 Wham!，次年签约发片。早期作品带着街头说唱和放克的劲头，唱的是年轻人不想被工作和体制束缚的态度；到 1984 年的 Make It Big，他们已经成为席卷英美的流行偶像。表面上是两个阳光男孩，实际上绝大多数词曲、编曲和制作都出自年纪轻轻的乔治之手。1985 年 Wham! 成为第一支在中国演出的西方流行乐队；1986 年 6 月在伦敦温布利球场用一场告别演唱会体面地解散。",
+  "单飞后的第一张专辑 Faith（1987）把他推上了顶峰：融合流行、灵魂乐、放克与福音，造型也从偶像变成皮夹克、墨镜和胡茬的成熟形象。专辑在美国拿下多首冠军单曲，并在 1989 年获得格莱美年度专辑，还登上美国黑人音乐专辑榜榜首，在当时的白人歌手中极为罕见。但巨大的名气和繁重的宣传也让他身心俱疲。",
+  "1990 年的 Listen Without Prejudice Vol. 1 风格转向内省和社会关怀，他拒绝在大部分 MV 中露面，也减少宣传。他认为唱片公司索尼没有好好推广这张专辑，并对合约条款深感不满，于是在 1992 年起诉索尼，主张长期合约限制了艺术家的自由。1994 年他在英国高等法院败诉，但官司引发了业内对艺人合约的大讨论；1995 年 Virgin 与 DreamWorks 出资买断合约，他才得以重新发片。",
+  "1991 年他在巴西里约的音乐节上结识了时装设计师 Anselmo Feleppa，两人相恋。不久 Anselmo 被确诊感染 HIV，1993 年因相关疾病去世。这段失去成为 1996 年专辑 Older 的情感核心：整张专辑低沉、爵士化、成熟，充满哀悼与重新站起来的挣扎。1997 年，他的母亲也因病离世，这几年被他自己视为人生最黑暗的时期。",
+  "1998 年，在洛杉矶一场被媒体大肆炒作的风波之后，他接受 CNN 采访，公开自己是同性恋者，此后以坦然甚至幽默的态度面对舆论。同年出版的精选集 Ladies & Gentlemen 在英国大卖。此后他与伴侣 Kenny Goss 相伴多年。2000 年后他发片节奏放慢：翻唱专辑 Songs from the Last Century（1999）、回归索尼的 Patience（2004）、出道 25 周年精选与巡演（2006–2008），以及交响乐巡演与现场专辑 Symphonica（2014）。期间他也几次因健康问题和个人困扰登上新闻，2011 年在维也纳因重症肺炎住院、一度病危。",
+  "2016 年 12 月 25 日，乔治·迈克尔在英国牛津郡的家中去世，年仅 53 岁，验尸结论为心脏疾病导致的自然死亡。他去世后，许多受过帮助的人陆续站出来讲述他生前的匿名善举：长期向儿童求助热线 Childline 捐出大量版税、悄悄去流浪者收容所做义工、为素不相识的人支付生育治疗费用、给为学费打工的护士学生留下巨额小费、为照顾过母亲的护士们举办免费演唱会等。他生前从不张扬这些事，人们这才看到他舞台之外的另一面。"
+ ],
+ "timeline": [
+  {
+   "y": 1963,
+   "t": "6 月 25 日生于伦敦，原名 Georgios Kyriacos Panayiotou，父亲是希腊塞浦路斯人"
+  },
+  {
+   "y": 1975,
+   "t": "在学校结识 Andrew Ridgeley，两人成为好友和音乐搭档"
+  },
+  {
+   "y": 1981,
+   "t": "与 Ridgeley 组成 Wham!"
+  },
+  {
+   "y": 1982,
+   "t": "Wham! 发行首支单曲 Wham! Rap (Enjoy What You Do)，年底凭 Young Guns (Go for It!) 走红"
+  },
+  {
+   "y": 1983,
+   "t": "首张专辑 Fantastic 发行，登上英国专辑榜冠军"
+  },
+  {
+   "y": 1984,
+   "t": "Wake Me Up Before You Go-Go、Careless Whisper 先后登顶英国单曲榜；12 月发行 Last Christmas，并参与 Band Aid 慈善单曲录制"
+  },
+  {
+   "y": 1985,
+   "t": "4 月 Wham! 赴中国演出，成为首支在中国登台的西方流行乐队；7 月在 Live Aid 与 Elton John 合唱"
+  },
+  {
+   "y": 1986,
+   "t": "6 月 28 日 Wham! 在温布利球场举行告别演唱会 The Final"
+  },
+  {
+   "y": 1987,
+   "t": "与 Aretha Franklin 合唱的 I Knew You Were Waiting (For Me) 英美双冠；首张个人专辑 Faith 发行"
+  },
+  {
+   "y": 1989,
+   "t": "Faith 获格莱美年度专辑"
+  },
+  {
+   "y": 1990,
+   "t": "发行 Listen Without Prejudice Vol. 1，几乎不出镜宣传"
+  },
+  {
+   "y": 1991,
+   "t": "在巴西 Rock in Rio 音乐节期间结识 Anselmo Feleppa；与 Elton John 的现场版 Don't Let the Sun Go Down on Me 发行"
+  },
+  {
+   "y": 1992,
+   "t": "4 月在 Freddie Mercury 纪念演唱会上演唱 Somebody to Love；同年起诉索尼唱片"
+  },
+  {
+   "y": 1993,
+   "t": "Anselmo Feleppa 去世"
+  },
+  {
+   "y": 1994,
+   "t": "对索尼的诉讼在英国高等法院败诉"
+  },
+  {
+   "y": 1996,
+   "t": "专辑 Older 发行，献给 Anselmo，由 Virgin 与 DreamWorks 发行"
+  },
+  {
+   "y": 1997,
+   "t": "母亲 Lesley 去世"
+  },
+  {
+   "y": 1998,
+   "t": "在 CNN 采访中公开出柜；精选集 Ladies & Gentlemen 发行"
+  },
+  {
+   "y": 2004,
+   "t": "专辑 Patience 发行，重回索尼旗下"
+  },
+  {
+   "y": 2006,
+   "t": "出道 25 周年，发行精选集 Twenty Five 并开启 25 Live 巡演，这是他多年来首次大型巡演"
+  },
+  {
+   "y": 2011,
+   "t": "Symphonica 交响巡演期间在维也纳因重症肺炎住院，一度病危"
+  },
+  {
+   "y": 2012,
+   "t": "在伦敦奥运会闭幕式上演唱 Freedom! '90"
+  },
+  {
+   "y": 2014,
+   "t": "现场专辑 Symphonica 发行，是他生前最后一张专辑"
+  },
+  {
+   "y": 2016,
+   "t": "12 月 25 日在牛津郡家中去世，享年 53 岁"
+  },
+  {
+   "y": 2017,
+   "t": "他生前参与执导的纪录片 Freedom 播出"
+  },
+  {
+   "y": 2021,
+   "t": "Last Christmas 在 1 月 1 日公布的英国单曲榜上首次登顶，距发行已过去 36 年"
+  },
+  {
+   "y": 2023,
+   "t": "入选摇滚名人堂；Last Christmas 首次成为英国「圣诞节冠军单曲」"
+  }
+ ],
+ "albums": [
+  {
+   "id": "fantastic",
+   "title": "Fantastic",
+   "year": 1983,
+   "by": "Wham!",
+   "why": "Wham! 的出道专辑，能听到乔治最早的创作锋芒：放克节奏、说唱段落和青春的叛逆气质。比后来的大热作品更粗糙，却很有活力。",
+   "listen": [
+    "Wham! Rap (Enjoy What You Do)",
+    "Young Guns (Go for It!)",
+    "Club Tropicana"
+   ],
+   "note": "发行时乔治才 20 岁，专辑登上英国专辑榜冠军。"
+  },
+  {
+   "id": "make-it-big",
+   "title": "Make It Big",
+   "year": 1984,
+   "by": "Wham!",
+   "why": "Wham! 的巅峰之作，复古摩城味的流行乐写得又甜又精致。几乎每首都是金曲，也是理解八十年代英伦流行的必听专辑。",
+   "listen": [
+    "Wake Me Up Before You Go-Go",
+    "Careless Whisper",
+    "Everything She Wants",
+    "Freedom"
+   ],
+   "note": "专辑同时登上英美两地专辑榜冠军。"
+  },
+  {
+   "id": "the-final",
+   "title": "The Final",
+   "year": 1986,
+   "by": "Wham!",
+   "why": "为告别而出的精选合辑，把 Wham! 几年里的主要单曲和最后的新歌收在一起，是入门 Wham! 最省事的一张。",
+   "listen": [
+    "The Edge of Heaven",
+    "Last Christmas",
+    "I'm Your Man"
+   ],
+   "note": "美国和日本发行的是内容不同的 Music from the Edge of Heaven。"
+  },
+  {
+   "id": "faith",
+   "title": "Faith",
+   "year": 1987,
+   "by": "George Michael",
+   "why": "单飞后的里程碑，流行、灵魂、放克、福音和爵士被他揉成一体，全程由他本人创作和制作。既有热门舞曲，也有极见唱功的慢歌。",
+   "listen": [
+    "Faith",
+    "Father Figure",
+    "One More Try",
+    "Kissing a Fool"
+   ],
+   "note": "获 1989 年格莱美年度专辑，并有四首单曲拿下美国 Billboard 冠军。"
+  },
+  {
+   "id": "lwp1",
+   "title": "Listen Without Prejudice Vol. 1",
+   "year": 1990,
+   "by": "George Michael",
+   "why": "他想被当作创作者而不是偶像来对待的一张专辑：更安静、更多原声乐器，关注社会、信仰与名声的代价。很多乐迷认为这才是他最好的作品。",
+   "listen": [
+    "Praying for Time",
+    "Freedom! '90",
+    "Waiting for That Day",
+    "Mother's Pride"
+   ],
+   "note": "封面是摄影师 Weegee 拍摄的科尼岛海滩人群老照片，他本人没有出现在封面上。"
+  },
+  {
+   "id": "five-live",
+   "title": "Five Live (EP)",
+   "year": 1993,
+   "by": "George Michael",
+   "why": "收录他在 Freddie Mercury 纪念演唱会上与皇后乐队合作的现场，可以听到他在大场面下的真实唱功。",
+   "listen": [
+    "Somebody to Love",
+    "These Are the Days of Our Lives"
+   ],
+   "note": "由他与皇后乐队、Lisa Stansfield 联名发行，收益捐给 Freddie Mercury 设立的艾滋病慈善基金。"
+  },
+  {
+   "id": "older",
+   "title": "Older",
+   "year": 1996,
+   "by": "George Michael",
+   "why": "写于失去爱人之后，整体是低调、爵士化的成人流行，情绪克制却极深。适合夜里一个人完整听一遍。",
+   "listen": [
+    "Jesus to a Child",
+    "Fastlove",
+    "Older",
+    "You Have Been Loved"
+   ],
+   "note": "这张专辑在英国接连推出多首前三名单曲，创下当时的纪录。"
+  },
+  {
+   "id": "ladies-gentlemen",
+   "title": "Ladies & Gentlemen: The Best of George Michael",
+   "year": 1998,
+   "by": "George Michael",
+   "why": "最全面的个人精选，分成偏抒情的「For the Heart」和偏舞曲的「For the Feet」两张碟，还收了新歌和合唱。",
+   "listen": [
+    "Outside",
+    "Don't Let the Sun Go Down on Me",
+    "A Different Corner"
+   ],
+   "note": "是英国销量最高的精选集之一。"
+  },
+  {
+   "id": "last-century",
+   "title": "Songs from the Last Century",
+   "year": 1999,
+   "by": "George Michael",
+   "why": "与传奇制作人 Phil Ramone 合作的翻唱专辑，用大乐队和爵士编曲重新诠释 20 世纪的经典，展示他作为爵士歌手的一面。",
+   "listen": [
+    "Roxanne",
+    "Brother, Can You Spare a Dime?",
+    "Wild Is the Wind"
+   ],
+   "note": "Phil Ramone 后来也参与了 Symphonica 的制作。"
+  },
+  {
+   "id": "patience",
+   "title": "Patience",
+   "year": 2004,
+   "by": "George Michael",
+   "why": "他的最后一张原创录音室专辑，夹杂着电子舞曲、政治讽刺和私人情歌，能听到中年的他在自省中找到平静。",
+   "listen": [
+    "Amazing",
+    "John and Elvis Are Dead",
+    "Patience"
+   ],
+   "note": "这张专辑让他重新回到索尼唱片旗下。"
+  },
+  {
+   "id": "twenty-five",
+   "title": "Twenty Five",
+   "year": 2006,
+   "by": "George Michael",
+   "why": "纪念出道 25 年的精选，横跨 Wham! 和个人时期，并加入新歌和合唱版本，适合想一次听完整个生涯的人。",
+   "listen": [
+    "Heal the Pain (with Paul McCartney)",
+    "An Easier Affair",
+    "This Is Not Real Love"
+   ],
+   "note": "同名巡演是他十多年来第一次大型巡演。"
+  },
+  {
+   "id": "symphonica",
+   "title": "Symphonica",
+   "year": 2014,
+   "by": "George Michael",
+   "why": "交响乐团伴奏的现场录音，他晚年的嗓音更醇厚，老歌和爵士标准曲都被重新演绎得温暖而庄重。",
+   "listen": [
+    "Praying for Time",
+    "Feeling Good",
+    "You Have Been Loved"
+   ],
+   "note": "这是他生前发行的最后一张专辑，在英国登上专辑榜冠军。"
+  }
+ ],
+ "songs": [
+  {
+   "id": "wham-rap",
+   "title": "Wham! Rap (Enjoy What You Do)",
+   "year": 1982,
+   "album": "Fantastic",
+   "story": "Wham! 的第一支单曲，在英国流行乐里少见地用了说唱。乔治和 Andrew 当时还是十几岁的少年，歌里的态度很大程度来自他们身边的失业青年。",
+   "about": "一个年轻人拒绝被「好好找份工作」的社会期待绑架，宣称自己宁可快乐地做自己，带着玩世不恭的骄傲。",
+   "listen": "留意贝斯线和说唱段的节奏感，能听出他们受美国放克和早期嘻哈影响有多深。",
+   "mood": [
+    "叛逆",
+    "放克",
+    "青春"
+   ]
+  },
+  {
+   "id": "club-tropicana",
+   "title": "Club Tropicana",
+   "year": 1983,
+   "album": "Fantastic",
+   "story": "MV 在西班牙伊维萨岛的度假酒店拍摄，阳光、泳池、鸡尾酒，成为 Wham! 最具代表性的画面之一。",
+   "about": "表面是在描绘纸醉金迷的海岛度假俱乐部，实际是对这种包装出来的奢华生活半开玩笑的调侃。",
+   "listen": "开头的人声和环境音效营造了派对现场感，铜管和打击乐带出浓浓的热带味道。",
+   "mood": [
+    "夏日",
+    "轻快",
+    "讽刺"
+   ]
+  },
+  {
+   "id": "wake-me-up",
+   "title": "Wake Me Up Before You Go-Go",
+   "year": 1984,
+   "album": "Make It Big",
+   "story": "歌名来自 Andrew 留给父母的一张便条，他不小心把一个词写重复了，乔治觉得好玩就拿来做了歌名。这首歌是 Wham! 第一首英国冠军单曲，也在美国登顶。",
+   "about": "一首无忧无虑的舞曲式情歌：主角满心欢喜，只想和心上人一起出去玩、去跳舞，整首歌就是年轻和快乐本身。",
+   "listen": "复古的摩城节拍、拍手声和明亮的和声，是向六十年代流行乐致敬的写法。",
+   "mood": [
+    "欢快",
+    "复古",
+    "舞曲"
+   ]
+  },
+  {
+   "id": "careless-whisper",
+   "title": "Careless Whisper",
+   "year": 1984,
+   "album": "Make It Big",
+   "story": "乔治十几岁时和 Andrew 一起写下这首歌，据说旋律是他在坐公交车时想到的。最初在美国传奇录音室录过一版，他不满意，后来自己重新制作。在英国以他个人名义发行，成为他第一首个人冠军单曲。",
+   "about": "一个背叛了恋人的人在舞池中满怀愧疚，知道一切再也回不到从前，只能在音乐里面对自己的罪责。",
+   "listen": "开头那段萨克斯风独奏由 Steve Gregory 演奏，是流行史上最好认的乐句之一；留意乔治如何在副歌里把情绪一点点推高。",
+   "mood": [
+    "深情",
+    "萨克斯",
+    "愧疚"
+   ]
+  },
+  {
+   "id": "last-christmas",
+   "title": "Last Christmas",
+   "year": 1984,
+   "album": "单曲（后收录于 The Final / Music from the Edge of Heaven）",
+   "story": "乔治一个人包办了词曲、编曲、制作和所有乐器演奏。发行当年被他自己也参与演唱的 Band Aid 慈善单曲挡在第二名，他把这首歌的收益捐给了埃塞俄比亚饥荒救济。MV 在瑞士雪山小镇拍摄。",
+   "about": "一个人在圣诞节回想去年被辜负的一段感情，决定今年把心交给更值得的人。是一首伤感与希望并存的节日情歌。",
+   "listen": "注意那些叮当作响的合成器音色和简单的鼓机节拍，全是他自己在录音室里一层层叠出来的。",
+   "mood": [
+    "圣诞",
+    "伤感",
+    "合成器"
+   ]
+  },
+  {
+   "id": "everything-she-wants",
+   "title": "Everything She Wants",
+   "year": 1984,
+   "album": "Make It Big",
+   "story": "据说乔治写这首歌只花了很短时间，与 Last Christmas 以双 A 面形式发行，后来在美国登上冠军。",
+   "about": "一个男人在一段失衡的关系里被要求不断付出、不断赚钱，却怎么也满足不了对方，还要面对即将到来的孩子带来的压力。",
+   "listen": "整首歌几乎由合成器和鼓机撑起，冷峻的贝斯音色让它比 Wham! 的其他作品更阴郁、更成人。",
+   "mood": [
+    "电子",
+    "压抑",
+    "放克"
+   ]
+  },
+  {
+   "id": "freedom-wham",
+   "title": "Freedom",
+   "year": 1984,
+   "album": "Make It Big",
+   "story": "Wham! 又一首英国冠军单曲，延续了 Make It Big 向摩城唱片致敬的风格。注意别和 1990 年的 Freedom! '90 搞混。",
+   "about": "一个被恋人反复伤害的人，嘴上说要离开，心里却舍不得放手——他其实并不想要所谓的自由。",
+   "listen": "铜管、拍手和轻快的钢琴，像一首六十年代的灵魂乐小品。",
+   "mood": [
+    "复古",
+    "轻快",
+    "摩城"
+   ]
+  },
+  {
+   "id": "im-your-man",
+   "title": "I'm Your Man",
+   "year": 1985,
+   "album": "单曲（收录于 The Final）",
+   "story": "Wham! 最后阶段的冠军单曲之一，MV 模拟在小型 Live House 演出，展现出两人最松弛的现场状态。",
+   "about": "一首自信又俏皮的求爱歌，主人公大胆宣告自己就是对方要找的那个人。",
+   "listen": "放克味很重的贝斯和铜管，以及乔治越唱越嗨的即兴发挥。",
+   "mood": [
+    "自信",
+    "放克",
+    "派对"
+   ]
+  },
+  {
+   "id": "edge-of-heaven",
+   "title": "The Edge of Heaven",
+   "year": 1986,
+   "album": "The Final",
+   "story": "Wham! 的告别单曲，登上英国榜首。Elton John 为这首歌弹了钢琴。",
+   "about": "一段令人沉迷又让人不安的感情，表面欢快，内里带着恋人之间的拉扯与纠缠。",
+   "listen": "快速的节奏和饱满的合唱非常适合大球场，听得出它就是为告别演唱会准备的。",
+   "mood": [
+    "告别",
+    "热烈",
+    "流行"
+   ]
+  },
+  {
+   "id": "a-different-corner",
+   "title": "A Different Corner",
+   "year": 1986,
+   "album": "单曲（收录于 Ladies & Gentlemen）",
+   "story": "Wham! 还未解散时乔治以个人名义发行的单曲，他独自完成了创作、制作和全部乐器演奏，在英国登顶。",
+   "about": "一个人第一次真正爱上某人，同时害怕这份感情会让自己受伤，于是想象如果命运拐向另一个角落会怎样。",
+   "listen": "极简的合成器铺底和近乎耳语的唱法，空间感很大，是他最私人的早期作品。",
+   "mood": [
+    "脆弱",
+    "极简",
+    "夜晚"
+   ]
+  },
+  {
+   "id": "faith",
+   "title": "Faith",
+   "year": 1987,
+   "album": "Faith",
+   "story": "开头用管风琴奏出一段改编自 Wham! 旧歌 Freedom 的旋律，随后切入简单的木吉他和 Bo Diddley 式节奏。MV 里皮夹克、墨镜和点唱机的形象成为八十年代经典画面。这首歌是 Billboard 1988 年的年度冠军单曲。",
+   "about": "主人公刚从一段感情里走出来，面对新的诱惑选择保持耐心，相信更好的东西值得等待。",
+   "listen": "整首歌乐器很少，节奏全靠吉他扫弦和手拍感，留意他在短短三分钟里把摇滚乐、乡村和灵魂乐融在一起。",
+   "mood": [
+    "经典",
+    "摇滚",
+    "自信"
+   ]
+  },
+  {
+   "id": "father-figure",
+   "title": "Father Figure",
+   "year": 1987,
+   "album": "Faith",
+   "story": "Faith 专辑中最具野心的作品之一，混合了福音、灵魂和中东色彩的音阶，在美国登顶。",
+   "about": "主人公想在一段关系里同时扮演爱人、保护者和引导者，给对方全部的安全感，带着既温柔又占有的复杂情感。",
+   "listen": "缓慢的节拍、教堂般的合唱和他由低到高的层层推进，到结尾几乎是福音的狂喜。",
+   "mood": [
+    "深情",
+    "福音",
+    "性感"
+   ]
+  },
+  {
+   "id": "one-more-try",
+   "title": "One More Try",
+   "year": 1987,
+   "album": "Faith",
+   "story": "一首接近六分钟的慢板灵魂乐，几乎只用管风琴和简单的节拍伴奏，却登上美国流行榜和 R&B 榜冠军。",
+   "about": "一个曾被爱伤透的人，在新的恋人面前犹豫要不要再冒一次险，把自己的恐惧和戒备说得极其坦白。",
+   "listen": "伴奏极少，全靠他的声音撑起整首歌，留意他在高潮处的爆发和克制的转换。",
+   "mood": [
+    "灵魂乐",
+    "心碎",
+    "唱功"
+   ]
+  },
+  {
+   "id": "kissing-a-fool",
+   "title": "Kissing a Fool",
+   "year": 1987,
+   "album": "Faith",
+   "story": "Faith 专辑最后一首单曲，是一首爵士民谣，显示出他对大乐队时代歌手的喜爱。",
+   "about": "主人公提醒对方：爱上自己可能是个错误，因为自己会让对方失望，带着自嘲和温柔的劝退。",
+   "listen": "刷子轻扫的鼓、贝斯与钢琴的爵士三重奏质感，适合深夜酒吧气氛。",
+   "mood": [
+    "爵士",
+    "温柔",
+    "夜晚"
+   ]
+  },
+  {
+   "id": "i-want-your-sex",
+   "title": "I Want Your Sex",
+   "year": 1987,
+   "album": "Faith",
+   "story": "因为主题大胆，当年在不少电台遭到限制播放。乔治坚持认为这首歌讲的是成年人之间健康、专一的亲密关系，他在 MV 中刻意加入了鼓励专一关系的信息。",
+   "about": "以直白方式谈论两个相爱之人之间的渴望，主张亲密与爱是自然而美好的事情，而非羞耻。",
+   "listen": "极具律动感的电子放克，全部乐器由他自己演奏，鼓机和合成器的质感很有 Prince 的影子。",
+   "mood": [
+    "大胆",
+    "放克",
+    "电子"
+   ]
+  },
+  {
+   "id": "monkey",
+   "title": "Monkey",
+   "year": 1987,
+   "album": "Faith",
+   "story": "单曲版由 Jimmy Jam 和 Terry Lewis 重新混音，成为 Faith 专辑在美国的第四首冠军单曲。",
+   "about": "主人公对恋人放不下的某种瘾头感到无奈，质问对方究竟要选他，还是选那个摆脱不掉的坏习惯（歌名的「猴子」就是这个比喻）。",
+   "listen": "硬朗的新杰克摇摆式节拍和切分的合成器，舞曲感比专辑其他歌都强。",
+   "mood": [
+    "舞曲",
+    "律动",
+    "无奈"
+   ]
+  },
+  {
+   "id": "praying-for-time",
+   "title": "Praying for Time",
+   "year": 1990,
+   "album": "Listen Without Prejudice Vol. 1",
+   "story": "专辑首支单曲，他拒绝出现在 MV 里，MV 只是在黑底上滚动出现歌词文字。这首歌在美国登顶。",
+   "about": "对社会冷漠、贫富悬殊和伪善的沉重反思：人们一边自称善良一边转身离开，世界好像只能祈求时间来疗伤。",
+   "listen": "原声吉他、弦乐和低沉的人声营造出近乎圣歌的气氛，副歌一出来就让人屏息。",
+   "mood": [
+    "沉重",
+    "社会",
+    "抒情"
+   ]
+  },
+  {
+   "id": "freedom-90",
+   "title": "Freedom! '90",
+   "year": 1990,
+   "album": "Listen Without Prejudice Vol. 1",
+   "story": "由 David Fincher 执导的 MV 中，他本人不出镜，而是请来 Naomi Campbell、Linda Evangelista、Christy Turlington、Cindy Crawford、Tatjana Patitz 五位超模对口型演唱。画面里 Faith 时期的皮夹克、点唱机和吉他被一一烧毁或炸掉，象征告别旧形象。",
+   "about": "对过去被包装成偶像的自己的一次清算：他承认曾经享受过那些光环，但现在只想做真实的自己，不再按别人设计的样子活。",
+   "listen": "钢琴和福音式和声铺出的长前奏，接着是不断上扬的放克节奏，越到后面越像一场集体宣言。",
+   "mood": [
+    "宣言",
+    "自由",
+    "放克"
+   ]
+  },
+  {
+   "id": "waiting-for-that-day",
+   "title": "Waiting for That Day",
+   "year": 1990,
+   "album": "Listen Without Prejudice Vol. 1",
+   "story": "这首原声作品借用了经典的 Funky Drummer 鼓点采样，结尾部分化用了滚石乐队的一首名曲，因此滚石成员也被列入作者名单。",
+   "about": "失恋者明知对方不会回来，仍在心里等着某一天，带着倔强和自我安慰。",
+   "listen": "木吉他与采样鼓点的结合在当年很新鲜，结尾致敬滚石的部分很有味道。",
+   "mood": [
+    "原声",
+    "怀念",
+    "温柔"
+   ]
+  },
+  {
+   "id": "mothers-pride",
+   "title": "Mother's Pride",
+   "year": 1990,
+   "album": "Listen Without Prejudice Vol. 1",
+   "story": "没有正式作为英国单曲发行，却在 1991 年海湾战争期间在美国电台被频繁播放，成为很多家庭的情感寄托。",
+   "about": "讲一位母亲把孩子养大后送上战场，从一个家庭的角度看战争的代价，没有口号，只有悲伤。",
+   "listen": "几乎只有钢琴和人声，加上远处的童声合唱，安静得让人心疼。",
+   "mood": [
+    "反战",
+    "哀伤",
+    "钢琴"
+   ]
+  },
+  {
+   "id": "cowboys-and-angels",
+   "title": "Cowboys and Angels",
+   "year": 1990,
+   "album": "Listen Without Prejudice Vol. 1",
+   "story": "他最长的单曲之一，采用三拍子的爵士华尔兹，商业上反响平平，却是许多老乐迷心中的隐藏珍宝。",
+   "about": "一段一方投入、一方游离的感情，主人公看着对方像牛仔一样来去自由，自己却在原地等着。",
+   "listen": "萨克斯、钢琴和刷子鼓，像一首老电影配乐，结尾的萨克斯独奏很值得细听。",
+   "mood": [
+    "爵士",
+    "华尔兹",
+    "冷门佳作"
+   ]
+  },
+  {
+   "id": "heal-the-pain",
+   "title": "Heal the Pain",
+   "year": 1990,
+   "album": "Listen Without Prejudice Vol. 1",
+   "story": "他说这首歌是有意模仿 Paul McCartney 风格写的，后来在 2006 年的 Twenty Five 精选中真的与麦卡特尼合唱了新版。",
+   "about": "主人公对一个曾受伤的人轻声承诺，愿意慢慢陪伴、帮对方抚平旧伤。",
+   "listen": "简单温暖的木吉他和旋律，有披头士式的质朴感。",
+   "mood": [
+    "温暖",
+    "原声",
+    "治愈"
+   ]
+  },
+  {
+   "id": "too-funky",
+   "title": "Too Funky",
+   "year": 1992,
+   "album": "Red Hot + Dance（慈善合辑）",
+   "story": "原本为计划中的 Vol. 2 专辑准备，后来收入支持艾滋病防治的慈善合辑。MV 以时装秀为背景，Linda Evangelista 等名模参与演出，他本人只短暂露面。",
+   "about": "一首俏皮的调情舞曲，主人公被对方的魅力撩得心神不宁。",
+   "listen": "厚实的放克贝斯、电影对白采样和有趣的人声切片，是他少见的玩味十足的作品。",
+   "mood": [
+    "放克",
+    "时尚",
+    "慈善"
+   ]
+  },
+  {
+   "id": "dont-let-the-sun",
+   "title": "Don't Let the Sun Go Down on Me",
+   "year": 1991,
+   "album": "单曲（收录于 Ladies & Gentlemen）",
+   "story": "Elton John 的老歌，两人早在 1985 年 Live Aid 上合唱过。1991 年乔治在温布利演出时请 Elton 作为惊喜嘉宾登台，这段现场录音发行后在英美都拿下冠军，收益捐给慈善机构。",
+   "about": "一个人在感情的最后时刻恳求对方别彻底离开，别让自己在黑暗中迷失。",
+   "listen": "两人一前一后接力演唱，听听乔治的高音如何和 Elton 的嗓音形成对照，以及现场观众的反应。",
+   "mood": [
+    "现场",
+    "合唱",
+    "感动"
+   ]
+  },
+  {
+   "id": "somebody-to-love",
+   "title": "Somebody to Love",
+   "year": 1992,
+   "album": "Five Live (EP)",
+   "story": "1992 年 4 月在温布利球场举行的 Freddie Mercury 纪念演唱会上，他与皇后乐队合作演唱，被许多人认为是当晚最出色的表演之一。现场录音后来收入 1993 年的 Five Live EP。",
+   "about": "皇后乐队原曲讲的是一个孤独的人向天发问：为什么找不到一个能爱自己的人。",
+   "listen": "这首歌对音域和气息要求极高，留意他如何在保持原曲精神的同时加入自己的灵魂乐唱法，以及合唱团的福音气势。",
+   "mood": [
+    "现场",
+    "致敬",
+    "唱功"
+   ]
+  },
+  {
+   "id": "jesus-to-a-child",
+   "title": "Jesus to a Child",
+   "year": 1996,
+   "album": "Older",
+   "story": "写给已故爱人 Anselmo Feleppa 的悼歌。1994 年他首次在颁奖礼上演唱，1996 年作为 Older 首支单曲发行，在英国首周登顶。他把这首歌的版税捐给了儿童求助热线 Childline。",
+   "about": "回忆一个曾在自己最黑暗的时候带来光亮的人，如今对方已经离开，留下的是感激、思念与无法言说的悲伤。",
+   "listen": "带有巴西波萨诺瓦味道的尼龙弦吉他，像是在对来自巴西的爱人轻声说话；整首歌近七分钟，节奏缓慢，值得完整听完。",
+   "mood": [
+    "悼念",
+    "波萨诺瓦",
+    "深情"
+   ]
+  },
+  {
+   "id": "fastlove",
+   "title": "Fastlove",
+   "year": 1996,
+   "album": "Older",
+   "story": "Older 中最轻快的单曲，在英国登顶。歌中化用了 Patrice Rushen 一首经典 R&B 歌曲的旋律片段。",
+   "about": "在失去之后，一个人不想谈长久的承诺，只想在夜里找一点短暂的安慰，背后是掩饰不住的孤独。",
+   "listen": "平滑的 R&B 律动和慵懒的唱腔，留意结尾致敬 Patrice Rushen 的那段旋律。",
+   "mood": [
+    "R&B",
+    "慵懒",
+    "夜晚"
+   ]
+  },
+  {
+   "id": "older",
+   "title": "Older",
+   "year": 1996,
+   "album": "Older",
+   "story": "专辑同名曲，被许多人视为他走向成熟的标志，编曲带有明显的爵士色彩。",
+   "about": "一个人回望一段已经结束的关系，承认自己变了、变老了，也终于明白有些事无法挽回。",
+   "listen": "萨克斯、柔和的电钢琴和极其克制的人声，像深夜独白。",
+   "mood": [
+    "成熟",
+    "爵士",
+    "回望"
+   ]
+  },
+  {
+   "id": "you-have-been-loved",
+   "title": "You Have Been Loved",
+   "year": 1996,
+   "album": "Older",
+   "story": "专辑中最令人心碎的作品之一，从 Anselmo 母亲的角度出发，写一位母亲失去儿子。后来在 Symphonica 中也有动人的交响版本。",
+   "about": "一位母亲在儿子离世后，在悲痛与信仰之间挣扎，最终告诉自己：至少他曾被深深爱过。",
+   "listen": "钢琴与弦乐为主，节奏极慢，他的声音近乎祈祷。",
+   "mood": [
+    "哀伤",
+    "钢琴",
+    "母爱"
+   ]
+  },
+  {
+   "id": "spinning-the-wheel",
+   "title": "Spinning the Wheel",
+   "year": 1996,
+   "album": "Older",
+   "story": "Older 中的爵士放克单曲，在英国进入前三，MV 带有浓厚的爵士俱乐部气氛。",
+   "about": "在艾滋病阴影下的年代，主人公担心伴侣的不忠会让两人都冒上生命危险，把爱情比作一场转盘赌局。",
+   "listen": "大乐队式的铜管与紧绷的节奏，摇摆感十足，结尾的乐器段落值得细听。",
+   "mood": [
+    "爵士",
+    "摇摆",
+    "紧张"
+   ]
+  },
+  {
+   "id": "outside",
+   "title": "Outside",
+   "year": 1998,
+   "album": "Ladies & Gentlemen",
+   "story": "在 1998 年那场被小报大肆渲染的风波之后，他用这首迪斯科风格的歌和夸张幽默的 MV 公开回应，把尴尬变成了自嘲，展现出惊人的勇气和幽默感。",
+   "about": "一首轻松的舞曲，以戏谑的方式谈论在户外寻找自由与乐趣，把外界的指责变成自己的派对。",
+   "listen": "复古迪斯科节奏和闪亮的弦乐，配合 MV 里夸张的警察造型，处处是自嘲。",
+   "mood": [
+    "迪斯科",
+    "幽默",
+    "勇气"
+   ]
+  },
+  {
+   "id": "amazing",
+   "title": "Amazing",
+   "year": 2004,
+   "album": "Patience",
+   "story": "Patience 专辑的主打单曲之一，充满电子舞曲气息，被广泛认为是写给他当时的伴侣 Kenny Goss 的。",
+   "about": "一个经历了低谷的人，感谢某个人出现并拯救了自己，让他重新相信爱。",
+   "listen": "轻快的电子节拍和明亮的合成器，与 Older 时期的沉郁形成鲜明对比。",
+   "mood": [
+    "欢快",
+    "电子",
+    "感恩"
+   ]
+  },
+  {
+   "id": "december-song",
+   "title": "December Song (I Dreamed of Christmas)",
+   "year": 2008,
+   "album": "单曲",
+   "story": "2008 年圣诞节他在官网免费发布这首歌作为送给乐迷的礼物，2009 年才正式发行实体单曲。由他与长期合作者 David Austin 共同创作。",
+   "about": "一个成年人回想童年时对圣诞节的憧憬与魔法般的感受，在温暖中带着淡淡的怀旧。",
+   "listen": "弦乐和钢琴营造出经典圣诞颂歌的气氛，和 Last Christmas 的电子流行风格形成有趣对照。",
+   "mood": [
+    "圣诞",
+    "温暖",
+    "怀旧"
+   ]
+  },
+  {
+   "id": "roxanne",
+   "title": "Roxanne",
+   "year": 1999,
+   "album": "Songs from the Last Century",
+   "story": "翻唱警察乐队的名曲，把原曲的雷鬼摇滚改成了低沉的爵士。",
+   "about": "原曲是一个男人恳求自己爱上的女子离开她不得不在夜里从事的那种生活，充满焦虑和怜惜。",
+   "listen": "贝斯和刷子鼓的极简爵士编曲，与原版的紧张节奏对比明显，可以把两个版本连起来听。",
+   "mood": [
+    "爵士",
+    "翻唱",
+    "暗夜"
+   ]
+  }
+ ],
+ "start": [
+  "Careless Whisper",
+  "Last Christmas",
+  "Faith",
+  "Father Figure",
+  "One More Try",
+  "Freedom! '90",
+  "Praying for Time",
+  "Jesus to a Child",
+  "Fastlove",
+  "Somebody to Love"
+ ],
+ "facts": [
+  "Faith 获得 1989 年格莱美年度专辑，还登上了美国黑人音乐专辑榜冠军。",
+  "Freedom! '90 的 MV 由 David Fincher 执导，他本人完全不出镜，由五位超模对口型演唱。",
+  "Last Christmas 1984 年发行时被 Band Aid 挡在英国亚军，直到 2021 年 1 月 1 日公布的单曲榜才首次登顶，2023 年又首次成为英国圣诞节冠军单曲。",
+  "Last Christmas 的所有乐器都是乔治一个人在录音室里演奏和编排的。",
+  "Wham! 时期绝大多数歌曲都由乔治本人作词作曲并参与制作，当时他才二十岁出头。",
+  "1985 年 Wham! 在北京和广州演出，是第一支在中国登台的西方流行乐队。",
+  "Careless Whisper 是他十几岁时写的，开头那段萨克斯风独奏由 Steve Gregory 演奏。",
+  "Wake Me Up Before You Go-Go 的歌名来自 Andrew Ridgeley 留给父母的一张写错字的便条。",
+  "他把 Jesus to a Child 的版税捐给儿童热线 Childline，去世后人们才知道他多年来匿名捐出了大量善款。",
+  "2007 年他成为新温布利球场落成后第一位在那里开演唱会的歌手。"
+ ]
+}
