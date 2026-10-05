@@ -29,7 +29,8 @@ def main():
         r = 3000 + (n * 7919 + k * 104729) % 3000
         rows = json.load(open(os.path.join(HERE, "c%02d.json" % (r // 500)), encoding="utf-8"))
         ph, tr, ex, exzh = rows[r % 500]
-        if ex and not re.search(r"男子名|女子名|人名|姓氏|地名", tr):
+        # 要有中文翻译、长度适中的例句（源数据里不合适的例句已经清掉）
+        if ex and exzh and 4 <= len(ex.split()) <= 22 and not re.search(r"男子名|女子名|人名|姓氏|地名", tr):
             out["word"] = {"w": words[r], "ph": ph, "zh": tr, "ex": ex, "exzh": exzh}
             break
     with open(os.path.join(HERE, "today.json"), "w", encoding="utf-8") as f:

@@ -62,7 +62,7 @@ mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
 (function () {
   var ITEMS = [], KIND = '', SHOWN = 30, LAST = [];
   var $q = document.getElementById('q'), $out = document.getElementById('out'), $chips = document.getElementById('chips');
-  var GROUPS = [['', '全部'], ['技巧', '技巧'], ['知识库', '知识库'], ['菜谱', '菜谱'], ['养生', '养生·节气'], ['解梦', '解梦'], ['心理学', '心理·逻辑'], ['苏轼', '苏轼'], ['George Michael', 'GM']];
+  var GROUPS = [['', '全部'], ['技巧', '技巧'], ['知识库', '知识库'], ['菜谱', '菜谱'], ['养生', '养生·节气'], ['解梦', '解梦'], ['心理学', '心理·逻辑'], ['开口说', '开口说'], ['苏轼', '苏轼'], ['陶渊明', '陶渊明'], ['George Michael', 'GM']];
   var HOT = ['柜号', '红烧肉', '失眠', '赤壁', '蛇', '确认偏误', '日本 忌讳', 'FBA', '复利', '月相'];
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }

@@ -32,6 +32,19 @@ button,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--easy);outline-offset:2px}
 .wrap{max-width:560px;margin:0 auto;padding:16px 16px 40px}
+.lsNow{text-align:center;padding:26px 8px 10px;min-height:190px}
+.lsNow .w{font-family:var(--serif);font-size:2.4rem;font-weight:600;line-height:1.2}
+.lsNow .ph{color:var(--soft);margin-top:4px}
+.lsNow .zh{font-size:1.15rem;margin-top:10px}
+.lsNow .ex{color:var(--soft);margin-top:12px;font-family:var(--serif);font-size:1rem;line-height:1.5}
+.lsNow .ex small{display:block;color:var(--soft);opacity:.8;font-family:inherit;font-size:.85rem}
+.lsNow .empty{color:var(--soft);padding-top:30px}
+.lsCtl{display:flex;justify-content:center;align-items:center;gap:22px;margin:6px 0 18px}
+.lsCtl button{border:1px solid var(--line);background:var(--paper);border-radius:50%;width:54px;height:54px;font-size:1.3rem}
+.lsCtl .lsMain{width:76px;height:76px;font-size:1.8rem;background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lsOpt{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;margin-bottom:14px;font-size:.92rem}
+.lsOpt input{margin-right:4px}
+#lsScope{margin-top:4px}#lsRate{margin-bottom:10px}
 .hidden{display:none!important}
 
 /* home */
@@ -220,6 +233,7 @@ h2{font-size:1rem;margin:22px 4px 10px}
     <div class="stat"><b id="sMaster">0</b><span>已掌握</span></div>
   </div>
   <button class="readgo" id="goRead"><b>📖 读文章记单词</b><span>完整的小故事、百科和新闻：按你认识的词挑文章，生词高亮，读完小测记进复习</span></button>
+  <button class="readgo" id="goListen"><b>🎧 听词模式</b><span>开车、走路时听：单词 → 中文意思 → 例句，自动一个接一个；只听不打分，可接车载蓝牙</span></button>
   <div id="newsBox"></div>
   <h2>选择词汇段</h2>
   <div class="bands" id="bands"></div>
@@ -261,6 +275,25 @@ h2{font-size:1rem;margin:22px 4px 10px}
     <span class="cnt">学习统计</span>
   </div>
   <div id="statsBody"></div>
+</section>
+
+<section id="listen" class="hidden">
+  <div class="top">
+    <button class="back" id="lsBack" aria-label="返回">‹</button>
+    <div class="prog"><i id="lsBar" style="width:0"></i></div>
+    <span class="cnt" id="lsCnt"></span>
+  </div>
+  <div class="seg" id="lsScope"><button data-s="due">今天到期</button><button data-s="recent">最近 7 天学的</button><button data-s="all">学习中全部</button></div>
+  <div class="lsNow" id="lsNow"></div>
+  <div class="lsCtl"><button id="lsPrev" aria-label="上一个">⏮</button><button id="lsPlay" class="lsMain">▶</button><button id="lsNext" aria-label="下一个">⏭</button></div>
+  <div class="lsOpt">
+    <label><input type="checkbox" id="lsZh"> 念中文</label>
+    <label><input type="checkbox" id="lsEx"> 念例句</label>
+    <label><input type="checkbox" id="lsRep"> 每个词念两遍</label>
+    <label><input type="checkbox" id="lsLoop"> 循环</label>
+  </div>
+  <div class="seg" id="lsRate"><button data-r="0.8">慢</button><button data-r="1">正常</button><button data-r="1.2">快</button></div>
+  <p class="hint">屏幕要保持亮着（开始播放后会尽量不让屏幕自动熄灭）。听只是加深印象，不会改复习进度，真正的复习还是要回去做卡片。</p>
 </section>
 
 <section id="read" class="hidden">
@@ -362,7 +395,7 @@ function save(){ DB.mt = Date.now(); if (!jset(KEY, DB)) toast('无法保存：�
 function today(){ var d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset()*60000) / 86400000); }
 function $(id){ return document.getElementById(id); }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-function show(id){ ['home','study','finish','lookup','stats','read'].forEach(function(x){ $(x).classList.toggle('hidden', x !== id); }); window.scrollTo(0,0); }
+function show(id){ ['home','study','finish','lookup','stats','read','listen'].forEach(function(x){ $(x).classList.toggle('hidden', x !== id); }); window.scrollTo(0,0); }
 function toast(msg){ var t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.appendChild(t); setTimeout(function(){ t.remove(); }, 1800); }
 function newToday(){ if (DB.today.day !== today()) DB.today = {day: today(), n: 0}; return DB.today.n; }
 function isLearning(c){ return c && !c.k; }
@@ -1400,6 +1433,114 @@ loadNews();
 if (SY.token){ syncLine('☁️ 已开启云同步'); setTimeout(function(){ sync(false); }, 800); }
 
 renderHome();
+
+/* ---------- 听词模式：单词 → 中文 → 例句，自动连播 ---------- */
+var LS = {list: [], i: 0, on: false, tok: 0, set: null, lock: null};
+function lsSet(){ if (!LS.set) LS.set = DB.listen || (DB.listen = {scope: 'due', zh: 1, ex: 1, rep: 0, loop: 0, rate: 1}); return LS.set; }
+function lsZhVoice(){
+  if (!window.speechSynthesis) return null;
+  var vs = speechSynthesis.getVoices() || [], i;
+  for (i = 0; i < vs.length; i++) if (/^zh(-|_)(CN|Hans)/i.test(vs[i].lang)) return vs[i];
+  for (i = 0; i < vs.length; i++) if (/^(zh|cmn)/i.test(vs[i].lang)) return vs[i];
+  return null;
+}
+function lsBuild(){
+  var st = lsSet(), t = today(), out = [], w, c;
+  for (w in DB.cards){
+    if (!DB.cards.hasOwnProperty(w)) continue;
+    c = DB.cards[w];
+    if (!isLearning(c) || BY[w] == null) continue;
+    if (st.scope === 'due' && !(c.due <= t)) continue;
+    if (st.scope === 'recent' && !(c.last >= t - 7)) continue;
+    out.push(w);
+  }
+  if (st.scope === 'due') out.sort(function(a, b){ var A = DB.cards[a], B = DB.cards[b]; return retr(t - A.last, A.s) - retr(t - B.last, B.s); });
+  else out.sort(function(a, b){ return (DB.cards[b].last || 0) - (DB.cards[a].last || 0); });
+  LS.list = out.slice(0, 120); LS.i = 0;
+}
+function lsItem(w){
+  var ix = BY[w], e = W[ix], j = e[3] && e[3].length ? e[3][0] : -1;
+  return {w: w, ph: e[1], zh: shortDef(ix) || String(e[2]).split('\n')[0], ex: j >= 0 ? S[j][0] : '', exzh: j >= 0 ? S[j][1] : ''};
+}
+function lsRender(){
+  var n = LS.list.length;
+  $('lsCnt').textContent = n ? (Math.min(LS.i + 1, n) + ' / ' + n) : '';
+  $('lsBar').style.width = n ? (Math.min(LS.i + 1, n) / n * 100) + '%' : '0';
+  $('lsPlay').textContent = LS.on ? '⏸' : '▶';
+  if (!n){ $('lsNow').innerHTML = '<div class="empty">' + (lsSet().scope === 'due' ? '今天没有到期要复习的词 🎉<br>换成「最近 7 天学的」听听看' : '这里还没有词，先去学几个新词吧') + '</div>'; return; }
+  var it = lsItem(LS.list[Math.min(LS.i, n - 1)]);
+  var re = reFor(BY[it.w]);
+  $('lsNow').innerHTML = '<div class="w">' + esc(it.w) + '</div>' + (it.ph ? '<div class="ph">/' + esc(it.ph) + '/</div>' : '') +
+    '<div class="zh">' + esc(it.zh) + '</div>' +
+    (it.ex ? '<div class="ex">' + esc(it.ex).replace(re, '<b>$1</b>') + (it.exzh ? '<small>' + esc(it.exzh) + '</small>' : '') + '</div>' : '');
+}
+function lsSay(text, lang, rate, cb){
+  var my = LS.tok, done = false;
+  function fin(){ if (done) return; done = true; if (my === LS.tok) cb(); }
+  try {
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = lang; u.rate = rate;
+    if (lang === 'en-US'){ if (!voices) voices = speechSynthesis.getVoices().filter(function(v){ return /^en(-|_)US/i.test(v.lang); }); if (voices && voices.length) u.voice = voices[0]; }
+    else { var zv = lsZhVoice(); if (zv) u.voice = zv; }
+    u.onend = fin; u.onerror = fin;
+    speechSynthesis.speak(u);
+    setTimeout(fin, 4000 + text.length * 260);   // 有的手机不触发 onend，兜底
+  } catch (e) { setTimeout(fin, 300); }
+}
+function lsStep(){
+  if (!LS.on) return;
+  var st = lsSet(), my = LS.tok;
+  if (LS.i >= LS.list.length){
+    if (st.loop && LS.list.length){ LS.i = 0; } else { lsStop(); LS.i = Math.max(0, LS.list.length - 1); lsRender(); toast('这一轮听完了'); return; }
+  }
+  lsRender();
+  var it = lsItem(LS.list[LS.i]), r = st.rate, steps = [];
+  steps.push([it.w, 'en-US', 0.8 * r]);
+  if (st.zh && it.zh) steps.push([it.zh.replace(/\[[^\]]*\]\s*/g, '').replace(/[a-z]+\.\s*/g, ''), 'zh-CN', 1.05 * r]);
+  if (st.ex && it.ex) steps.push([it.ex, 'en-US', 0.9 * r]);
+  if (st.rep) steps.push([it.w, 'en-US', 0.8 * r]);
+  var k = 0;
+  (function next(){
+    if (my !== LS.tok || !LS.on) return;
+    if (k >= steps.length){ setTimeout(function(){ if (my !== LS.tok || !LS.on) return; LS.i++; lsStep(); }, 1300); return; }
+    var sp = steps[k++];
+    lsSay(sp[0], sp[1], sp[2], function(){ setTimeout(next, 450); });
+  })();
+}
+function lsLock(on){
+  try {
+    if (on && navigator.wakeLock && !LS.lock) navigator.wakeLock.request('screen').then(function(l){ LS.lock = l; }, function(){});
+    if (!on && LS.lock){ LS.lock.release().then(null, function(){}); LS.lock = null; }
+  } catch (e) {}
+}
+function lsStop(){ LS.on = false; LS.tok++; try { speechSynthesis.cancel(); } catch (e) {} lsLock(false); lsRender(); }
+function lsPlay(){
+  if (!window.speechSynthesis){ toast('这个浏览器不支持朗读'); return; }
+  if (!LS.list.length) return;
+  LS.on = true; LS.tok++; try { speechSynthesis.cancel(); } catch (e) {} lsLock(true); lsStep();
+}
+function lsOpts(){
+  var st = lsSet();
+  $('lsZh').checked = !!st.zh; $('lsEx').checked = !!st.ex; $('lsRep').checked = !!st.rep; $('lsLoop').checked = !!st.loop;
+  var b = $('lsScope').querySelectorAll('button'), i;
+  for (i = 0; i < b.length; i++) b[i].className = b[i].getAttribute('data-s') === st.scope ? 'on' : '';
+  b = $('lsRate').querySelectorAll('button');
+  for (i = 0; i < b.length; i++) b[i].className = +b[i].getAttribute('data-r') === st.rate ? 'on' : '';
+}
+function openListen(){ lsSet(); lsBuild(); lsOpts(); show('listen'); lsRender(); }
+$('goListen').addEventListener('click', openListen);
+$('lsBack').addEventListener('click', function(){ lsStop(); show('home'); renderHome(); });
+$('lsPlay').addEventListener('click', function(){ if (LS.on) lsStop(); else lsPlay(); });
+$('lsNext').addEventListener('click', function(){ if (LS.i < LS.list.length - 1) LS.i++; if (LS.on){ LS.tok++; try { speechSynthesis.cancel(); } catch (e) {} lsStep(); } else lsRender(); });
+$('lsPrev').addEventListener('click', function(){ if (LS.i > 0) LS.i--; if (LS.on){ LS.tok++; try { speechSynthesis.cancel(); } catch (e) {} lsStep(); } else lsRender(); });
+['lsZh', 'lsEx', 'lsRep', 'lsLoop'].forEach(function(id){
+  $(id).addEventListener('change', function(){ var k = {lsZh: 'zh', lsEx: 'ex', lsRep: 'rep', lsLoop: 'loop'}[id]; lsSet()[k] = this.checked ? 1 : 0; save(); });
+});
+$('lsScope').addEventListener('click', function(e){ var b = e.target.closest('[data-s]'); if (!b) return; lsStop(); lsSet().scope = b.getAttribute('data-s'); save(); lsBuild(); lsOpts(); lsRender(); });
+$('lsRate').addEventListener('click', function(e){ var b = e.target.closest('[data-r]'); if (!b) return; lsSet().rate = +b.getAttribute('data-r'); save(); lsOpts(); });
+document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible' && LS.on) lsLock(true); });
+if (location.hash === '#listen') setTimeout(openListen, 0);
+window.addEventListener('hashchange', function(){ if (location.hash === '#listen') openListen(); });
 })();
 </script>
 

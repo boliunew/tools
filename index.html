@@ -134,6 +134,7 @@ html.locked #gate{display:block}
 <a class="card" href="spanish.html"><div class="t">西班牙语练习 · Español</div><div class="d">字母发音 + 480 个墨西哥常用词：音节重音、阴阳性、四线三格书写、测验；🪄 以少胜多：英→西变身规则、动词变位、数字魔法</div></a>
 <a class="card" href="player.html"><div class="t">探测播放器</div><div class="d">粘贴视频直链或网页，自动找出视频地址播放；倍速、续播、画中画</div></a>
 <a class="card" href="card.html"><div class="t">🎴 每日一句 · 单词抽卡</div><div class="d">每天一句名言 / 地道习语 / 口头禅 / 易错（带中文和生词）；从语境词库抽卡复习，N–UR 稀有度、图鉴、连续打卡；可装到手机桌面</div></a>
+<a class="card" href="speak.html"><div class="t">🗣️ 开口说 · 跟读练习</div><div class="d">工作英语（调度、对讲机、报柜号、闸口、报损）、生活英语（看病、DMV、银行、客服电话）、美式口语和短语动词、现场西语；每句能听、能跟读打分，对话能角色扮演</div></a>
 <a class="card" href="vocab.html"><div class="t">语境词库 · 20000</div><div class="d">在语境中学单词，间隔重复；SubLingo 一键收词带原句、每天新闻真实例句、手机电脑云同步、打卡日历与错词本</div></a>
 <a class="card" href="sublingo.html"><div class="t">SubLingo</div><div class="d">字幕 / 文章语法解析：词性、时态、句子结构、短语动词；点词即查英汉词典（牛津 3000 核心词、考试标签）</div></a>
 <button class="lockbtn" onclick="__lock()">🔒 退出（这台设备需要重新输密码）</button>
@@ -155,7 +156,7 @@ html.locked #gate{display:block}
   var SUB = [ph[1] + ' ' + ph[2]];
   function sub() { $('tdSub').textContent = SUB.join(' · '); }
   sub();
-  var slots = {}, ORDER = ['card', 'tip', 'news', 'watch'];
+  var slots = {}, ORDER = ['card', 'vocab', 'sushi', 'tip', 'news', 'watch'];
   function put(k, html) { slots[k] = html; var h = ''; for (var i = 0; i < ORDER.length; i++) if (slots[ORDER[i]]) h += slots[ORDER[i]]; $('tdBody').innerHTML = h; }
 
   getJSON('kitchen/wellness.json', function (w) {
@@ -180,6 +181,14 @@ html.locked #gate{display:block}
     h += '</ol>' + (ev ? '<div class="sm">📜 ' + ev.year + ' 年的今天：' + esc(ev.text) + '</div>' : '') + '</a>';
     put('news', h);
   });
+  (function () {   // 语境词库：今天要复习几个
+    var db = ls('ctxvocab-v1', null), t = Math.floor((now.getTime() - now.getTimezoneOffset() * 60000) / 864e5), due = 0, learn = 0, w, c;
+    if (!db || !db.cards) return;
+    for (w in db.cards) if (db.cards.hasOwnProperty(w)) { c = db.cards[w]; if (!c.k) { learn++; if (c.due <= t) due++; } }
+    if (!learn) return;
+    put('vocab', '<div class="row"><div class="lb">单词复习</div><div class="tx">' + (due ? '今天要复习 <b>' + due + '</b> 个词' : '今天的复习做完了 ✓') + '</div>' +
+      '<div class="sm"><a href="vocab.html">去做卡片</a> · <a href="vocab.html#listen">🎧 开车听一遍</a> · 学习中 ' + learn + ' 个</div></div>');
+  })();
   var watch = ls('deals:watch', []);
   if (watch && watch.length) {
     var names = []; for (var j = 0; j < watch.length && j < 4; j++) names.push(watch[j].q || watch[j].k || watch[j]);

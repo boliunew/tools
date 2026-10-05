@@ -1,0 +1,1378 @@
+{
+ "packs": [
+  {
+   "id": "call-dispatch",
+   "name": "给调度打电话",
+   "icon": "📞",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "打给调度问货在哪、报延误、问预计到达时间。先报名字和柜号/单号，再说问题。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "Hi, this is Steve at the Upland yard.",
+     "zh": "你好，我是 Upland 堆场的 Steve。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Hey Steve, what do you need?",
+     "zh": "嗨 Steve，什么事？"
+    },
+    {
+     "who": "You",
+     "t": "I'm checking on a load for container TGHU eight six one.",
+     "zh": "我想查一下 TGHU 861 开头那个柜子的货。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Let me look. That driver is running late.",
+     "zh": "我查一下。那个司机晚了。"
+    },
+    {
+     "who": "You",
+     "t": "Do you have an ETA?",
+     "zh": "有预计到达时间吗？"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "He should be there around two thirty.",
+     "zh": "他应该两点半左右到。"
+    },
+    {
+     "who": "You",
+     "t": "Okay. Can you give me his truck number?",
+     "zh": "好的。能给我他的车号吗？"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Truck four twelve. Driver's name is Mike.",
+     "zh": "412 号车，司机叫 Mike。"
+    },
+    {
+     "who": "You",
+     "t": "Got it. Please call me if anything changes.",
+     "zh": "收到。有变化请给我打电话。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Will do. Thanks.",
+     "zh": "好的，谢谢。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Where's my load right now?",
+     "zh": "我的货现在在哪？"
+    },
+    {
+     "t": "What's the ETA on that driver?",
+     "zh": "那个司机预计几点到？",
+     "note": "ETA 读作 E-T-A"
+    },
+    {
+     "t": "The driver hasn't shown up yet.",
+     "zh": "司机还没到。"
+    },
+    {
+     "t": "We have a delay on our end.",
+     "zh": "我们这边有延误。"
+    },
+    {
+     "t": "The container isn't ready for pickup yet.",
+     "zh": "柜子还不能提。"
+    },
+    {
+     "t": "Can you send another driver?",
+     "zh": "能派另一个司机来吗？"
+    },
+    {
+     "t": "Is this load still on for today?",
+     "zh": "这票货今天还走吗？"
+    },
+    {
+     "t": "I need the pickup number for this load.",
+     "zh": "我需要这票货的提货号。"
+    },
+    {
+     "t": "The appointment was moved to tomorrow morning.",
+     "zh": "预约改到明天早上了。"
+    },
+    {
+     "t": "Can you text me the details?",
+     "zh": "能把详情发短信给我吗？"
+    },
+    {
+     "t": "Who's the driver on this one?",
+     "zh": "这一票是哪个司机？"
+    },
+    {
+     "t": "Let me call you right back.",
+     "zh": "我马上回你电话。"
+    },
+    {
+     "t": "Sorry, I'm on another call. One second.",
+     "zh": "抱歉，我在接另一个电话，稍等。"
+    },
+    {
+     "t": "Thanks for the update.",
+     "zh": "谢谢你告诉我最新情况。"
+    }
+   ]
+  },
+  {
+   "id": "radio-talk",
+   "name": "对讲机用语",
+   "icon": "📻",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "对讲机要短：先叫对方再报自己，说完等回复。copy/10-4 表示收到，stand by 表示稍等。",
+   "dialog": [
+    {
+     "who": "Supervisor",
+     "t": "Steve, this is Mark. Do you copy?",
+     "zh": "Steve，我是 Mark，收到吗？"
+    },
+    {
+     "who": "You",
+     "t": "Go ahead, Mark.",
+     "zh": "请讲，Mark。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "I need you at row C. A driver is waiting.",
+     "zh": "你去 C 排，有司机在等。"
+    },
+    {
+     "who": "You",
+     "t": "Copy that. Heading there now.",
+     "zh": "收到，马上过去。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Check the seal before he leaves.",
+     "zh": "他走之前检查一下封条。"
+    },
+    {
+     "who": "You",
+     "t": "Say again? You broke up.",
+     "zh": "再说一遍？你声音断了。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Check the seal before he leaves.",
+     "zh": "他走之前检查一下封条。"
+    },
+    {
+     "who": "You",
+     "t": "10-4. Will check the seal.",
+     "zh": "收到，会检查封条。"
+    },
+    {
+     "who": "You",
+     "t": "Stand by, I'm almost there.",
+     "zh": "稍等，我快到了。"
+    },
+    {
+     "who": "You",
+     "t": "Seal is good. Driver is clear to go. Over.",
+     "zh": "封条没问题，司机可以走了。完毕。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Copy that.",
+     "zh": "收到。"
+    },
+    {
+     "t": "10-4.",
+     "zh": "收到/明白。",
+     "note": "读作 ten-four"
+    },
+    {
+     "t": "Go ahead.",
+     "zh": "请讲。",
+     "note": "别人叫你时回答这个"
+    },
+    {
+     "t": "Stand by.",
+     "zh": "稍等。"
+    },
+    {
+     "t": "Say again?",
+     "zh": "再说一遍？",
+     "note": "对讲机里比 What? 更标准"
+    },
+    {
+     "t": "You're breaking up.",
+     "zh": "你声音断断续续的。"
+    },
+    {
+     "t": "Loud and clear.",
+     "zh": "听得很清楚。"
+    },
+    {
+     "t": "Mark, this is Steve. Do you copy?",
+     "zh": "Mark，我是 Steve，收到吗？",
+     "note": "先叫对方，再报自己"
+    },
+    {
+     "t": "On my way.",
+     "zh": "在路上了。"
+    },
+    {
+     "t": "I'm at the gate now.",
+     "zh": "我现在在闸口。"
+    },
+    {
+     "t": "Need a hand at row five.",
+     "zh": "五排需要帮忙。"
+    },
+    {
+     "t": "Negative, that container's not here.",
+     "zh": "不对，那个柜子不在这。",
+     "note": "negative = 否"
+    },
+    {
+     "t": "Affirmative.",
+     "zh": "是的/肯定。"
+    },
+    {
+     "t": "All clear.",
+     "zh": "一切正常/可以了。"
+    },
+    {
+     "t": "Over.",
+     "zh": "完毕（说完了，等你回话）。"
+    }
+   ]
+  },
+  {
+   "id": "spell-container",
+   "name": "报柜号/拼字母",
+   "icon": "🔤",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "柜号 = 4 个字母 + 6 位数字 + 1 位校验码。字母用北约字母读（C as in Charlie），数字一位一位读，0 读 zero。",
+   "dialog": [
+    {
+     "who": "Dispatcher",
+     "t": "What's the container number?",
+     "zh": "柜号是多少？"
+    },
+    {
+     "who": "You",
+     "t": "C-S-Q-U, three zero five four three eight, three.",
+     "zh": "CSQU 305438，校验位 3。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Was that B or D?",
+     "zh": "是 B 还是 D？"
+    },
+    {
+     "who": "You",
+     "t": "Neither. C as in Charlie, S as in Sierra.",
+     "zh": "都不是。C 是 Charlie 的 C，S 是 Sierra 的 S。"
+    },
+    {
+     "who": "You",
+     "t": "Q as in Quebec, U as in Uniform.",
+     "zh": "Q 是 Quebec 的 Q，U 是 Uniform 的 U。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Okay. Read me the numbers again.",
+     "zh": "好，数字再读一遍。"
+    },
+    {
+     "who": "You",
+     "t": "Three, zero, five, four, three, eight. Check digit three.",
+     "zh": "3、0、5、4、3、8，校验位 3。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Got it. CSQU three zero five four three eight, three.",
+     "zh": "收到，CSQU 305438-3。"
+    },
+    {
+     "who": "You",
+     "t": "That's correct.",
+     "zh": "对。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "C-S-Q-U, three zero five four three eight, three.",
+     "zh": "CSQU 305438-3",
+     "note": "最后一位是校验码，前面停一下"
+    },
+    {
+     "t": "M-S-C-U, four seven two one nine zero, six.",
+     "zh": "MSCU 472190-6"
+    },
+    {
+     "t": "T-G-H-U, eight six one five two seven, two.",
+     "zh": "TGHU 861527-2"
+    },
+    {
+     "t": "H-L-X-U, six one two zero zero four, seven.",
+     "zh": "HLXU 612004-7",
+     "note": "0 读 zero，不要读 O"
+    },
+    {
+     "t": "M as in Mike, S as in Sierra, C as in Charlie, U as in Uniform.",
+     "zh": "M-S-C-U 用北约字母读"
+    },
+    {
+     "t": "T as in Tango, G as in Golf, H as in Hotel.",
+     "zh": "T、G、H"
+    },
+    {
+     "t": "B as in Bravo, not D as in Delta.",
+     "zh": "是 Bravo 的 B，不是 Delta 的 D。",
+     "note": "B/D/P/T 最容易听错"
+    },
+    {
+     "t": "M as in Mike, N as in November.",
+     "zh": "M 和 N",
+     "note": "M/N 也容易混"
+    },
+    {
+     "t": "F as in Foxtrot, S as in Sierra.",
+     "zh": "F 和 S"
+    },
+    {
+     "t": "A as in Alpha, E as in Echo, I as in India.",
+     "zh": "A、E、I"
+    },
+    {
+     "t": "K as in Kilo, X as in X-ray, Y as in Yankee.",
+     "zh": "K、X、Y"
+    },
+    {
+     "t": "O as in Oscar, P as in Papa, R as in Romeo.",
+     "zh": "O、P、R"
+    },
+    {
+     "t": "J as in Juliett, L as in Lima, V as in Victor.",
+     "zh": "J、L、V"
+    },
+    {
+     "t": "W as in Whiskey, Z as in Zulu.",
+     "zh": "W、Z",
+     "note": "Z 美国读 zee"
+    },
+    {
+     "t": "The check digit is three.",
+     "zh": "校验码是 3。"
+    },
+    {
+     "t": "Let me read that back to you.",
+     "zh": "我给你复述一遍。"
+    }
+   ]
+  },
+  {
+   "id": "gate-in-out",
+   "name": "进出闸口",
+   "icon": "🚧",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "在闸口和闸口员（gate clerk）核对订舱号、封条号、车架，拿 EIR（设备交接单）。",
+   "dialog": [
+    {
+     "who": "Clerk",
+     "t": "Morning. Pick up or drop off?",
+     "zh": "早。提柜还是还柜？"
+    },
+    {
+     "who": "You",
+     "t": "Drop off. Empty return.",
+     "zh": "还柜，还空柜。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Container number?",
+     "zh": "柜号？"
+    },
+    {
+     "who": "You",
+     "t": "M-S-C-U, four seven two one nine zero, six.",
+     "zh": "MSCU 472190-6。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Is it on your own chassis?",
+     "zh": "是在你们自己的车架上吗？"
+    },
+    {
+     "who": "You",
+     "t": "No, it's a pool chassis.",
+     "zh": "不是，是共用车架。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Any damage I should know about?",
+     "zh": "有没有需要我知道的损坏？"
+    },
+    {
+     "who": "You",
+     "t": "There's a small dent on the left side.",
+     "zh": "左边有个小凹痕。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Okay, I'll note it on the EIR.",
+     "zh": "好，我在 EIR 上记一下。"
+    },
+    {
+     "who": "You",
+     "t": "Can I get a copy of the EIR?",
+     "zh": "能给我一份 EIR 吗？"
+    },
+    {
+     "who": "Clerk",
+     "t": "Sure. Go to row twelve.",
+     "zh": "可以。去 12 排。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "I'm here to pick up a load.",
+     "zh": "我来提货。"
+    },
+    {
+     "t": "Here's the booking number.",
+     "zh": "这是订舱号。"
+    },
+    {
+     "t": "The seal number is four eight two two one nine.",
+     "zh": "封条号是 482219。"
+    },
+    {
+     "t": "Can you check the seal number again?",
+     "zh": "能再核对一下封条号吗？"
+    },
+    {
+     "t": "Is the container released?",
+     "zh": "柜子放行了吗？"
+    },
+    {
+     "t": "The system shows a hold on this one.",
+     "zh": "系统显示这个柜子被扣了。"
+    },
+    {
+     "t": "Which row should I go to?",
+     "zh": "我该去哪一排？"
+    },
+    {
+     "t": "I need a chassis for this container.",
+     "zh": "这个柜子我需要一个车架。"
+    },
+    {
+     "t": "Can I get a copy of the EIR?",
+     "zh": "能给我一份 EIR 吗？",
+     "note": "EIR = equipment interchange receipt 设备交接单"
+    },
+    {
+     "t": "Please note the damage on the EIR.",
+     "zh": "请把损坏记在 EIR 上。"
+    },
+    {
+     "t": "Is it loaded or empty?",
+     "zh": "重柜还是空柜？"
+    },
+    {
+     "t": "The gate closes at five today.",
+     "zh": "今天闸口五点关。"
+    },
+    {
+     "t": "Pull up to the next lane, please.",
+     "zh": "请开到下一条道。"
+    },
+    {
+     "t": "You're all set.",
+     "zh": "好了，可以走了。"
+    }
+   ]
+  },
+  {
+   "id": "report-damage",
+   "name": "报告柜子损坏",
+   "icon": "📸",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "发现柜子/车架有损坏：说清位置（哪一面）、类型（凹痕、破洞、锈、门变形、封条断）、已拍照。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "Hey Mark, I found some damage on a container.",
+     "zh": "Mark，我发现一个柜子有损坏。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Which one?",
+     "zh": "哪个？"
+    },
+    {
+     "who": "You",
+     "t": "T-G-H-U, eight six one five two seven, two.",
+     "zh": "TGHU 861527-2。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "What kind of damage?",
+     "zh": "什么样的损坏？"
+    },
+    {
+     "who": "You",
+     "t": "There's a hole in the roof, near the back.",
+     "zh": "顶上靠后有个洞。"
+    },
+    {
+     "who": "You",
+     "t": "And the right door is bent. It won't close all the way.",
+     "zh": "右边门变形了，关不严。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Did you take pictures?",
+     "zh": "拍照了吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, I took six photos from all sides.",
+     "zh": "拍了，四面一共六张。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Good. Send them to me and put it on hold.",
+     "zh": "好。发给我，先把它扣住。"
+    },
+    {
+     "who": "You",
+     "t": "Will do. I'll tag it right now.",
+     "zh": "好的，我马上贴标签。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "There's a dent on the left side panel.",
+     "zh": "左侧板有个凹痕。"
+    },
+    {
+     "t": "There's a hole in the roof.",
+     "zh": "顶板有个洞。"
+    },
+    {
+     "t": "The floor is damaged inside.",
+     "zh": "里面地板坏了。"
+    },
+    {
+     "t": "There's heavy rust near the bottom.",
+     "zh": "底部附近锈得很厉害。"
+    },
+    {
+     "t": "The door is bent and won't close.",
+     "zh": "门变形了，关不上。"
+    },
+    {
+     "t": "The seal is broken.",
+     "zh": "封条断了。"
+    },
+    {
+     "t": "The seal number doesn't match the paperwork.",
+     "zh": "封条号和单据对不上。"
+    },
+    {
+     "t": "The door handle is missing.",
+     "zh": "门把手没了。"
+    },
+    {
+     "t": "One of the tires is flat.",
+     "zh": "有一个轮胎没气了。",
+     "note": "说车架/拖车"
+    },
+    {
+     "t": "The light on the trailer isn't working.",
+     "zh": "拖车灯不亮。"
+    },
+    {
+     "t": "I took photos from all four sides.",
+     "zh": "四面都拍了照。"
+    },
+    {
+     "t": "I'll send you the pictures now.",
+     "zh": "我现在把照片发给你。"
+    },
+    {
+     "t": "Was this damage already there?",
+     "zh": "这个损坏之前就有吗？"
+    },
+    {
+     "t": "Should I put it on hold?",
+     "zh": "要把它扣下吗？"
+    },
+    {
+     "t": "It looks like it happened in transit.",
+     "zh": "看起来是运输途中弄的。"
+    }
+   ]
+  },
+  {
+   "id": "backing-safety",
+   "name": "指挥倒车与安全",
+   "icon": "🦺",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "指挥司机倒车靠位，口令要短、要大声；同时提醒安全：反光背心、轮挡、注意脚下。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "Okay, back it up slow.",
+     "zh": "好，慢慢倒。"
+    },
+    {
+     "who": "Driver",
+     "t": "How much room do I have?",
+     "zh": "我还有多少空间？"
+    },
+    {
+     "who": "You",
+     "t": "About ten feet. Keep coming.",
+     "zh": "大概十英尺，继续。"
+    },
+    {
+     "who": "You",
+     "t": "Cut it a little to the left.",
+     "zh": "往左打一点。"
+    },
+    {
+     "who": "You",
+     "t": "Straighten out. You're good.",
+     "zh": "回正，可以。"
+    },
+    {
+     "who": "You",
+     "t": "Easy, easy. Stop!",
+     "zh": "慢点慢点，停！"
+    },
+    {
+     "who": "Driver",
+     "t": "Am I in?",
+     "zh": "到位了吗？"
+    },
+    {
+     "who": "You",
+     "t": "You're in. Set your brakes, please.",
+     "zh": "到位了，请拉手刹。"
+    },
+    {
+     "who": "You",
+     "t": "I'm going to chock the wheels.",
+     "zh": "我去放轮挡。"
+    },
+    {
+     "who": "You",
+     "t": "Please put on your vest if you step out.",
+     "zh": "下车请穿上反光背心。"
+    },
+    {
+     "who": "Driver",
+     "t": "Got it. Thanks, man.",
+     "zh": "知道了，谢了。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Back it up slow.",
+     "zh": "慢慢倒。"
+    },
+    {
+     "t": "Keep coming.",
+     "zh": "继续，继续。"
+    },
+    {
+     "t": "Stop right there!",
+     "zh": "就停那儿！"
+    },
+    {
+     "t": "Turn your wheel to the right.",
+     "zh": "方向盘往右打。"
+    },
+    {
+     "t": "Pull forward and try again.",
+     "zh": "往前开一点再来一次。"
+    },
+    {
+     "t": "You've got about five feet.",
+     "zh": "你还有大概五英尺。"
+    },
+    {
+     "t": "Watch the pole on your right.",
+     "zh": "注意右边的柱子。"
+    },
+    {
+     "t": "Set your brakes, please.",
+     "zh": "请拉手刹。"
+    },
+    {
+     "t": "Chock the wheels before you unhook.",
+     "zh": "摘挂前先放轮挡。"
+    },
+    {
+     "t": "Please wear your safety vest.",
+     "zh": "请穿安全背心。"
+    },
+    {
+     "t": "Watch your step.",
+     "zh": "注意脚下。"
+    },
+    {
+     "t": "Stay in your truck, please.",
+     "zh": "请留在车里。"
+    },
+    {
+     "t": "I can't see you in your mirror.",
+     "zh": "我在你后视镜里看不到你。",
+     "note": "提醒自己站在司机看得到的地方"
+    },
+    {
+     "t": "Hold on, someone's walking behind you.",
+     "zh": "等一下，有人在你后面走。"
+    },
+    {
+     "t": "Slow down in the yard, please.",
+     "zh": "场内请慢行。"
+    }
+   ]
+  },
+  {
+   "id": "deal-with-drivers",
+   "name": "和司机打交道",
+   "icon": "🚛",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "司机常问：放哪、去哪个门、单据、要等多久。回答要清楚，必要时指方向、帮他打电话问。",
+   "dialog": [
+    {
+     "who": "Driver",
+     "t": "Hey, where do I drop this trailer?",
+     "zh": "嘿，这个拖车放哪？"
+    },
+    {
+     "who": "You",
+     "t": "Can I see your paperwork?",
+     "zh": "能看下你的单据吗？"
+    },
+    {
+     "who": "Driver",
+     "t": "Here you go.",
+     "zh": "给你。"
+    },
+    {
+     "who": "You",
+     "t": "This goes to door eighteen, not twelve.",
+     "zh": "这个去 18 号门，不是 12 号。"
+    },
+    {
+     "who": "Driver",
+     "t": "They told me twelve.",
+     "zh": "他们跟我说 12 号。"
+    },
+    {
+     "who": "You",
+     "t": "It was changed this morning. Sorry about that.",
+     "zh": "今早改了，不好意思。"
+    },
+    {
+     "who": "Driver",
+     "t": "How long is the wait?",
+     "zh": "要等多久？"
+    },
+    {
+     "who": "You",
+     "t": "About thirty minutes. They're unloading another truck.",
+     "zh": "大概三十分钟，他们在卸另一辆车。"
+    },
+    {
+     "who": "Driver",
+     "t": "Can I drop it and go?",
+     "zh": "我能甩挂就走吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes. Drop it in spot forty and leave your empty there.",
+     "zh": "可以。放 40 号位，把你的空车留那。"
+    },
+    {
+     "who": "Driver",
+     "t": "Sounds good.",
+     "zh": "好的。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Where are you headed?",
+     "zh": "你要去哪？"
+    },
+    {
+     "t": "Can I see your paperwork?",
+     "zh": "能看下你的单据吗？"
+    },
+    {
+     "t": "You're at the wrong door.",
+     "zh": "你走错门了。"
+    },
+    {
+     "t": "Go to door eighteen, on your left.",
+     "zh": "去 18 号门，在你左边。"
+    },
+    {
+     "t": "Drop it in spot forty.",
+     "zh": "放在 40 号位。"
+    },
+    {
+     "t": "Is this a live unload or a drop?",
+     "zh": "是现场卸货还是甩挂？",
+     "note": "live unload = 司机等着卸完；drop = 放下就走"
+    },
+    {
+     "t": "You'll have to wait about thirty minutes.",
+     "zh": "你得等大概三十分钟。"
+    },
+    {
+     "t": "They're still loading your trailer.",
+     "zh": "他们还在装你的拖车。"
+    },
+    {
+     "t": "I'll call the office and check.",
+     "zh": "我打电话问一下办公室。"
+    },
+    {
+     "t": "Your load isn't ready yet.",
+     "zh": "你的货还没准备好。"
+    },
+    {
+     "t": "You need to check in at the office first.",
+     "zh": "你得先去办公室登记。"
+    },
+    {
+     "t": "Please take your paperwork to the window.",
+     "zh": "请把单据拿到窗口。"
+    },
+    {
+     "t": "Sorry for the wait.",
+     "zh": "抱歉让你久等了。"
+    },
+    {
+     "t": "You're good to go.",
+     "zh": "可以走了。"
+    },
+    {
+     "t": "Drive safe.",
+     "zh": "路上小心。"
+    }
+   ]
+  },
+  {
+   "id": "warehouse-dock",
+   "name": "仓库收发货",
+   "icon": "📦",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "收发货要核对预约、BOL（提单）、件数；有短少/多出/破损（OS&D）要写在单上再签字，签收后给 POD。",
+   "dialog": [
+    {
+     "who": "Driver",
+     "t": "I have a delivery for door six.",
+     "zh": "我有一票送到 6 号门。"
+    },
+    {
+     "who": "You",
+     "t": "Do you have an appointment?",
+     "zh": "你有预约吗？"
+    },
+    {
+     "who": "Driver",
+     "t": "Yeah, ten o'clock. Here's the BOL.",
+     "zh": "有，十点。这是 BOL。"
+    },
+    {
+     "who": "You",
+     "t": "It says twenty pallets.",
+     "zh": "上面写 20 托。"
+    },
+    {
+     "who": "You",
+     "t": "I only count eighteen.",
+     "zh": "我只数到 18 托。"
+    },
+    {
+     "who": "Driver",
+     "t": "Are you sure? They loaded twenty.",
+     "zh": "你确定？他们装了 20 托。"
+    },
+    {
+     "who": "You",
+     "t": "Let's count them again together.",
+     "zh": "我们一起再数一遍。"
+    },
+    {
+     "who": "You",
+     "t": "Still eighteen. I'll write two short on the BOL.",
+     "zh": "还是 18。我在 BOL 上写短少两托。"
+    },
+    {
+     "who": "You",
+     "t": "Also, one pallet has a crushed box.",
+     "zh": "还有一托有个箱子压坏了。"
+    },
+    {
+     "who": "Driver",
+     "t": "Okay. Where do I sign?",
+     "zh": "好。我签哪？"
+    },
+    {
+     "who": "You",
+     "t": "Sign here, and here's your copy.",
+     "zh": "签这里，这是你的副本。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "What time is your appointment?",
+     "zh": "你预约几点？"
+    },
+    {
+     "t": "Can I see the bill of lading?",
+     "zh": "能看下提单吗？",
+     "note": "也常说 BOL，读 B-O-L"
+    },
+    {
+     "t": "Back into door six, please.",
+     "zh": "请倒进 6 号门。"
+    },
+    {
+     "t": "How many pallets do you have?",
+     "zh": "你有几托？"
+    },
+    {
+     "t": "The count doesn't match.",
+     "zh": "数量对不上。"
+    },
+    {
+     "t": "We're two pallets short.",
+     "zh": "我们少了两托。"
+    },
+    {
+     "t": "We have one extra pallet.",
+     "zh": "我们多了一托。"
+    },
+    {
+     "t": "This box is damaged.",
+     "zh": "这个箱子坏了。"
+    },
+    {
+     "t": "I'll note it on the BOL.",
+     "zh": "我在 BOL 上注明。"
+    },
+    {
+     "t": "Please sign here.",
+     "zh": "请在这里签字。"
+    },
+    {
+     "t": "Here's your POD.",
+     "zh": "这是你的签收单。",
+     "note": "POD = proof of delivery 签收证明"
+    },
+    {
+     "t": "You missed your appointment.",
+     "zh": "你错过预约时间了。"
+    },
+    {
+     "t": "We can fit you in after lunch.",
+     "zh": "午饭后可以给你插进来。"
+    },
+    {
+     "t": "The seal was intact when it arrived.",
+     "zh": "到的时候封条完好。"
+    },
+    {
+     "t": "We're done. You can pull out.",
+     "zh": "好了，你可以开走了。"
+    }
+   ]
+  },
+  {
+   "id": "talk-to-supervisor",
+   "name": "和主管沟通",
+   "icon": "🧑‍💼",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "和主管谈排班、加班、请假、报问题。先说事，再给原因；没听懂就礼貌地请他再解释。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "Hey Mark, do you have a minute?",
+     "zh": "Mark，有空吗？"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Sure, what's up?",
+     "zh": "有，什么事？"
+    },
+    {
+     "who": "You",
+     "t": "I'd like to take next Friday off.",
+     "zh": "我想下周五请一天假。"
+    },
+    {
+     "who": "You",
+     "t": "I have a doctor's appointment.",
+     "zh": "我约了看医生。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Should be fine. Put it in the system.",
+     "zh": "应该没问题，在系统里提交。"
+    },
+    {
+     "who": "You",
+     "t": "Thanks. Also, is there overtime this weekend?",
+     "zh": "谢谢。还有，这周末有加班吗？"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Yes, Saturday from six to two.",
+     "zh": "有，周六六点到两点。"
+    },
+    {
+     "who": "You",
+     "t": "I can do Saturday.",
+     "zh": "周六我可以。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Great. And remember the new photo rules.",
+     "zh": "好。记住新的拍照规定。"
+    },
+    {
+     "who": "You",
+     "t": "Sorry, what do you mean by the new rules?",
+     "zh": "不好意思，新规定是指什么？"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Four sides plus the seal, every time.",
+     "zh": "每次都要四面加封条。"
+    },
+    {
+     "who": "You",
+     "t": "Got it. Thanks for explaining.",
+     "zh": "明白了，谢谢解释。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Do you have a minute?",
+     "zh": "你有空吗？"
+    },
+    {
+     "t": "Can I take next Friday off?",
+     "zh": "下周五我能请假吗？"
+    },
+    {
+     "t": "I need to leave an hour early today.",
+     "zh": "我今天需要早走一小时。"
+    },
+    {
+     "t": "Is there any overtime this week?",
+     "zh": "这周有加班吗？"
+    },
+    {
+     "t": "I can stay late if you need me.",
+     "zh": "需要的话我可以晚走。"
+    },
+    {
+     "t": "Can I switch shifts with Carlos?",
+     "zh": "我能和 Carlos 换班吗？"
+    },
+    {
+     "t": "What's my schedule next week?",
+     "zh": "我下周怎么排班？"
+    },
+    {
+     "t": "I want to report a problem.",
+     "zh": "我想报告一个问题。"
+    },
+    {
+     "t": "The camera on my phone isn't working well.",
+     "zh": "我手机的相机不太好用。"
+    },
+    {
+     "t": "Sorry, could you explain that again?",
+     "zh": "不好意思，能再解释一下吗？"
+    },
+    {
+     "t": "Just to be clear, you want me to do this first?",
+     "zh": "确认一下，你是要我先做这个？"
+    },
+    {
+     "t": "Which one is more important?",
+     "zh": "哪个更重要？"
+    },
+    {
+     "t": "I'm running a little late. Be there in fifteen.",
+     "zh": "我会晚一点，十五分钟到。"
+    },
+    {
+     "t": "I finished row C. What's next?",
+     "zh": "C 排做完了，接下来做什么？"
+    },
+    {
+     "t": "Thanks, I appreciate it.",
+     "zh": "谢谢，感激。"
+    }
+   ]
+  },
+  {
+   "id": "work-messages",
+   "name": "工作邮件和短信",
+   "icon": "✉️",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "工作短信/邮件：一句一件事，写清柜号、时间、地点，附照片就说 see attached。也练习把它们读出来。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "Hi Mark, quick update on container CSQU three zero five.",
+     "zh": "Mark 你好，关于 CSQU305 开头的柜子简单更新一下。"
+    },
+    {
+     "who": "You",
+     "t": "It was delivered at ten fifteen this morning.",
+     "zh": "今早十点十五分已送达。"
+    },
+    {
+     "who": "You",
+     "t": "Please see the attached photos.",
+     "zh": "请看附件照片。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Thanks. Any damage?",
+     "zh": "谢谢。有损坏吗？"
+    },
+    {
+     "who": "You",
+     "t": "Small dent on the right side. Photo three.",
+     "zh": "右侧有小凹痕，看第三张照片。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Okay. Did the driver sign?",
+     "zh": "好。司机签了吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes. The signed POD is attached too.",
+     "zh": "签了，签好的 POD 也附上了。"
+    },
+    {
+     "who": "Supervisor",
+     "t": "Perfect. Thanks, Steve.",
+     "zh": "很好，谢谢 Steve。"
+    },
+    {
+     "who": "You",
+     "t": "No problem. Let me know if you need anything else.",
+     "zh": "不客气，还需要什么告诉我。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Please see the attached photos.",
+     "zh": "请看附件照片。"
+    },
+    {
+     "t": "Container MSCU four seven two was delivered at nine.",
+     "zh": "MSCU472 开头的柜子九点送达。"
+    },
+    {
+     "t": "The driver checked in at two thirty.",
+     "zh": "司机两点半登记进场。"
+    },
+    {
+     "t": "The trailer is parked in spot forty.",
+     "zh": "拖车停在 40 号位。"
+    },
+    {
+     "t": "The seal number matches the paperwork.",
+     "zh": "封条号和单据一致。"
+    },
+    {
+     "t": "I found damage on the left door.",
+     "zh": "我发现左门有损坏。"
+    },
+    {
+     "t": "This container is still on hold.",
+     "zh": "这个柜子仍被扣着。"
+    },
+    {
+     "t": "Just a quick reminder about tomorrow's pickup.",
+     "zh": "提醒一下明天提柜的事。"
+    },
+    {
+     "t": "Can you confirm the pickup time?",
+     "zh": "能确认一下提柜时间吗？"
+    },
+    {
+     "t": "Sorry for the late reply.",
+     "zh": "抱歉回复晚了。"
+    },
+    {
+     "t": "I'll follow up this afternoon.",
+     "zh": "我今天下午跟进。"
+    },
+    {
+     "t": "Let me know if you have any questions.",
+     "zh": "有问题请告诉我。"
+    },
+    {
+     "t": "Thanks for your help.",
+     "zh": "谢谢帮忙。"
+    },
+    {
+     "t": "Running ten minutes late. Sorry.",
+     "zh": "晚十分钟，抱歉。",
+     "note": "短信可以省略主语"
+    }
+   ]
+  },
+  {
+   "id": "break-room",
+   "name": "休息室闲聊",
+   "icon": "☕",
+   "group": "工作",
+   "lang": "en-US",
+   "intro": "和同事随便聊：周末、球赛、天气、吃的。不用说很多，会问一句、接一句就很自然。",
+   "dialog": [
+    {
+     "who": "Coworker",
+     "t": "Hey Steve, how was your weekend?",
+     "zh": "嘿 Steve，周末过得怎么样？"
+    },
+    {
+     "who": "You",
+     "t": "Pretty good. I went hiking up near Mount Baldy.",
+     "zh": "挺好的，去 Mount Baldy 那边爬山了。"
+    },
+    {
+     "who": "Coworker",
+     "t": "Nice. Was it cold up there?",
+     "zh": "不错。上面冷吗？"
+    },
+    {
+     "who": "You",
+     "t": "A little, but the view was great. How about you?",
+     "zh": "有点冷，但风景很好。你呢？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Just watched the game. The Dodgers won!",
+     "zh": "就看了比赛，道奇赢了！"
+    },
+    {
+     "who": "You",
+     "t": "Yeah, I saw the score. Good game.",
+     "zh": "嗯，我看到比分了，打得好。"
+    },
+    {
+     "who": "Coworker",
+     "t": "It's going to be hot again today.",
+     "zh": "今天又要很热。"
+    },
+    {
+     "who": "You",
+     "t": "I know. Make sure you drink water.",
+     "zh": "是啊，记得多喝水。"
+    },
+    {
+     "who": "Coworker",
+     "t": "What did you bring for lunch?",
+     "zh": "你午饭带了什么？"
+    },
+    {
+     "who": "You",
+     "t": "Just some fried rice. Want to try some?",
+     "zh": "就是炒饭，要尝尝吗？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Sure, smells good!",
+     "zh": "好啊，闻着真香！"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "How was your weekend?",
+     "zh": "周末过得怎么样？"
+    },
+    {
+     "t": "Did you do anything fun?",
+     "zh": "做了什么好玩的吗？"
+    },
+    {
+     "t": "Not much, just relaxed at home.",
+     "zh": "没干啥，就在家休息。"
+    },
+    {
+     "t": "Did you catch the game last night?",
+     "zh": "昨晚的比赛你看了吗？"
+    },
+    {
+     "t": "Who do you think is going to win?",
+     "zh": "你觉得谁会赢？"
+    },
+    {
+     "t": "It's so hot today.",
+     "zh": "今天好热。"
+    },
+    {
+     "t": "I heard it might rain this weekend.",
+     "zh": "听说这周末可能下雨。"
+    },
+    {
+     "t": "The traffic on the 10 was terrible.",
+     "zh": "10 号公路堵死了。",
+     "note": "南加州说高速前面加 the"
+    },
+    {
+     "t": "What are you having for lunch?",
+     "zh": "你午饭吃什么？"
+    },
+    {
+     "t": "Have you tried that taco place on Foothill?",
+     "zh": "你去过 Foothill 上那家塔可店吗？"
+    },
+    {
+     "t": "That sounds great.",
+     "zh": "听起来不错。"
+    },
+    {
+     "t": "Any plans for the holiday?",
+     "zh": "假期有什么计划吗？"
+    },
+    {
+     "t": "Long day, huh?",
+     "zh": "今天好漫长啊。"
+    },
+    {
+     "t": "See you tomorrow.",
+     "zh": "明天见。"
+    }
+   ]
+  }
+ ]
+}

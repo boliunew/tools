@@ -1,0 +1,1152 @@
+{
+ "packs": [
+  {
+   "id": "es-saludos",
+   "name": "打招呼和客气话",
+   "icon": "👋",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "每天在场子里见面先打个招呼，关系就好处。墨西哥同事最常用 ¿Qué onda? 和 ¿Qué tal?，记住 con permiso 和 gracias 走遍天下。",
+   "dialog": [
+    {
+     "who": "Driver",
+     "t": "¡Buenos días! ¿Qué onda?",
+     "zh": "早上好！咋样？"
+    },
+    {
+     "who": "You",
+     "t": "Buenos días. Todo bien, ¿y tú?",
+     "zh": "早上好。都挺好，你呢？"
+    },
+    {
+     "who": "Driver",
+     "t": "Aquí nomás, trabajando.",
+     "zh": "就这样，干活呗。"
+    },
+    {
+     "who": "You",
+     "t": "¿Cómo te llamas?",
+     "zh": "你叫什么名字？"
+    },
+    {
+     "who": "Driver",
+     "t": "Me llamo Luis. ¿Y tú?",
+     "zh": "我叫 Luis。你呢？"
+    },
+    {
+     "who": "You",
+     "t": "Me llamo Steve. Mucho gusto.",
+     "zh": "我叫 Steve。很高兴认识你。"
+    },
+    {
+     "who": "Driver",
+     "t": "Igualmente. Gracias por la ayuda.",
+     "zh": "我也是。谢谢你帮忙。"
+    },
+    {
+     "who": "You",
+     "t": "De nada. Que te vaya bien.",
+     "zh": "不客气。一路顺风。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "¿Qué onda?",
+     "zh": "怎么样？/嘿，咋样？",
+     "note": "墨西哥口语，熟人之间最常见的打招呼；回答可以说 Todo bien 或 Aquí nomás。"
+    },
+    {
+     "t": "¿Cómo estás?",
+     "zh": "你好吗？",
+     "note": "标准问候，对谁都可以用。"
+    },
+    {
+     "t": "Buenos días.",
+     "zh": "早上好。",
+     "note": "中午12点前用；下午说 Buenas tardes，晚上说 Buenas noches。"
+    },
+    {
+     "t": "Buenas tardes, ¿cómo le va?",
+     "zh": "下午好，您最近怎么样？",
+     "note": "用 le 是尊称（usted），对年长司机或主管更客气。"
+    },
+    {
+     "t": "Todo bien, gracias. ¿Y tú?",
+     "zh": "都挺好，谢谢。你呢？"
+    },
+    {
+     "t": "Aquí nomás, trabajando.",
+     "zh": "就这样呗，干活呢。",
+     "note": "墨西哥口语，nomás = 只是、就；非常地道的回答。"
+    },
+    {
+     "t": "Muchas gracias.",
+     "zh": "非常感谢。"
+    },
+    {
+     "t": "De nada.",
+     "zh": "不客气。",
+     "note": "也常听到 Por nada 或 No hay de qué。"
+    },
+    {
+     "t": "Con permiso.",
+     "zh": "借过/打扰一下。",
+     "note": "从别人身边走过或打断别人时说；对方会回 Pásale 或 Propio。"
+    },
+    {
+     "t": "Pásale.",
+     "zh": "请进/请过。",
+     "note": "墨西哥口语，请人进来或先走。"
+    },
+    {
+     "t": "Perdón, no te entendí.",
+     "zh": "抱歉，我没听懂。"
+    },
+    {
+     "t": "¿Me lo repites, por favor?",
+     "zh": "请你再说一遍好吗？"
+    },
+    {
+     "t": "Más despacio, por favor.",
+     "zh": "请说慢一点。",
+     "note": "跟语速快的司机沟通非常有用。"
+    },
+    {
+     "t": "Buen trabajo, compa.",
+     "zh": "干得好，哥们。",
+     "note": "compa = compañero/compadre，墨西哥男同事之间的亲切称呼。"
+    },
+    {
+     "t": "¿Cómo te llamas?",
+     "zh": "你叫什么名字？"
+    },
+    {
+     "t": "Mucho gusto. Me llamo Steve.",
+     "zh": "很高兴认识你。我叫 Steve。",
+     "note": "可以把名字换成你自己的。"
+    },
+    {
+     "t": "Que te vaya bien.",
+     "zh": "祝你顺利/一路顺风。",
+     "note": "跟司机道别时很自然。"
+    }
+   ]
+  },
+  {
+   "id": "es-reversa",
+   "name": "指挥倒车和停车",
+   "icon": "🚛",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "帮司机倒车进门或停到车位时，声音要大、词要短。墨西哥司机常说 la troca（卡车，Spanglish），倒车用 reversa 或 para atrás。",
+   "dialog": [
+    {
+     "who": "Driver",
+     "t": "¿En qué puerta lo meto?",
+     "zh": "我倒进哪个门？"
+    },
+    {
+     "who": "You",
+     "t": "En la puerta cinco. Dale reversa.",
+     "zh": "五号门。倒吧。"
+    },
+    {
+     "who": "You",
+     "t": "Atrás, atrás, sigue.",
+     "zh": "往后，往后，继续。"
+    },
+    {
+     "who": "You",
+     "t": "Gira a la derecha, un poquito.",
+     "zh": "往右打一点点。"
+    },
+    {
+     "who": "Driver",
+     "t": "¿Así está bien?",
+     "zh": "这样行吗？"
+    },
+    {
+     "who": "You",
+     "t": "Despacio, te falta un poco.",
+     "zh": "慢点，还差一点。"
+    },
+    {
+     "who": "You",
+     "t": "¡Para! Ya quedó.",
+     "zh": "停！好了。"
+    },
+    {
+     "who": "Driver",
+     "t": "Gracias, compa.",
+     "zh": "谢了，哥们。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Atrás, atrás, sigue.",
+     "zh": "往后，往后，继续。",
+     "note": "sigue = 继续，不停地喊让司机知道还能倒。"
+    },
+    {
+     "t": "¡Para! ¡Para ahí!",
+     "zh": "停！停在那儿！",
+     "note": "也可以说 ¡Alto! 或 ¡Ya, ya!。"
+    },
+    {
+     "t": "Ya quedó.",
+     "zh": "好了/到位了。",
+     "note": "墨西哥口语，表示停好了、搞定了。"
+    },
+    {
+     "t": "Un poquito más.",
+     "zh": "再一点点。"
+    },
+    {
+     "t": "Despacio, despacio.",
+     "zh": "慢点，慢点。"
+    },
+    {
+     "t": "Gira a la derecha.",
+     "zh": "往右打。",
+     "note": "也可以只说 A la derecha。"
+    },
+    {
+     "t": "Gira a la izquierda.",
+     "zh": "往左打。"
+    },
+    {
+     "t": "Endereza las llantas.",
+     "zh": "把轮子回正。",
+     "note": "llantas = 轮胎；enderezar = 弄直。"
+    },
+    {
+     "t": "Dale reversa, despacito.",
+     "zh": "慢慢倒车。",
+     "note": "dale = 来吧/给它；despacito 比 despacio 更柔和。"
+    },
+    {
+     "t": "Estás muy cerca del otro tráiler.",
+     "zh": "你离另一个拖车太近了。"
+    },
+    {
+     "t": "Te falta un poco, dale.",
+     "zh": "还差一点，继续。"
+    },
+    {
+     "t": "Mete el tráiler en la puerta cinco.",
+     "zh": "把拖车倒进五号门。"
+    },
+    {
+     "t": "Parquéate en el espacio veinte.",
+     "zh": "停到二十号车位。",
+     "note": "Spanglish：parquear/parquearse = 停车，标准说法是 estacionar。"
+    },
+    {
+     "t": "Pon el freno de mano.",
+     "zh": "拉手刹。"
+    },
+    {
+     "t": "Baja las patas del tráiler.",
+     "zh": "把拖车支腿放下来。",
+     "note": "patas = 支腿（landing gear），口语说法。"
+    },
+    {
+     "t": "Ya puedes desenganchar.",
+     "zh": "现在可以摘挂了。",
+     "note": "desenganchar = 摘挂（脱开拖车）。"
+    },
+    {
+     "t": "Avánzale un poquito.",
+     "zh": "往前挪一点。",
+     "note": "avánzale 是墨西哥口语带 -le 的命令式，很常见。"
+    },
+    {
+     "t": "Fíjate en el espejo.",
+     "zh": "注意看后视镜。"
+    }
+   ]
+  },
+  {
+   "id": "es-seguridad",
+   "name": "安全用语",
+   "icon": "🦺",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "场子里叉车和卡车多，安全喊话要第一时间听懂。墨西哥人喊 ¡Aguas! 就是“小心！”，听到要马上看四周。",
+   "dialog": [
+    {
+     "who": "Coworker",
+     "t": "¡Aguas! ¡Viene el montacargas!",
+     "zh": "小心！叉车过来了！"
+    },
+    {
+     "who": "You",
+     "t": "Gracias. No lo vi.",
+     "zh": "谢谢，我没看到。"
+    },
+    {
+     "who": "Coworker",
+     "t": "No pases por ahí, es peligroso.",
+     "zh": "别从那儿过，危险。"
+    },
+    {
+     "who": "You",
+     "t": "Está bien. ¿Por dónde paso?",
+     "zh": "好的。我从哪儿过？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Quédate en la línea peatonal.",
+     "zh": "走人行线里面。"
+    },
+    {
+     "who": "Coworker",
+     "t": "Y ponte el chaleco, compa.",
+     "zh": "还有，把背心穿上，哥们。"
+    },
+    {
+     "who": "You",
+     "t": "Sí, ahorita me lo pongo.",
+     "zh": "好，我马上穿。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "¡Cuidado!",
+     "zh": "小心！"
+    },
+    {
+     "t": "¡Aguas!",
+     "zh": "小心！注意！",
+     "note": "墨西哥俚语，意思等于 ¡Cuidado!，喊危险时最常用；字面是“水”，在西班牙没人这么说。"
+    },
+    {
+     "t": "¡Aguas con el montacargas!",
+     "zh": "小心叉车！",
+     "note": "montacargas = 叉车；也有人用 Spanglish 说 el forklift。"
+    },
+    {
+     "t": "Ponte el chaleco.",
+     "zh": "穿上反光背心。"
+    },
+    {
+     "t": "Ponte el casco, por favor.",
+     "zh": "请戴上安全帽。"
+    },
+    {
+     "t": "No pases por ahí.",
+     "zh": "别从那儿过。"
+    },
+    {
+     "t": "Está pasando un camión.",
+     "zh": "有卡车正在过。"
+    },
+    {
+     "t": "Quédate en la línea peatonal.",
+     "zh": "走人行线里面。",
+     "note": "línea peatonal = 行人通道线。"
+    },
+    {
+     "t": "No te pares detrás del tráiler.",
+     "zh": "别站在拖车后面。"
+    },
+    {
+     "t": "Hazte para un lado.",
+     "zh": "往旁边让一让。",
+     "note": "墨西哥口语，也说 Hazte a un lado。"
+    },
+    {
+     "t": "El piso está mojado.",
+     "zh": "地面是湿的。"
+    },
+    {
+     "t": "Ponte los guantes.",
+     "zh": "戴上手套。"
+    },
+    {
+     "t": "Usa los lentes de seguridad.",
+     "zh": "戴上护目镜。",
+     "note": "墨西哥说 lentes，西班牙说 gafas。"
+    },
+    {
+     "t": "Apaga el motor, por favor.",
+     "zh": "请熄火。"
+    },
+    {
+     "t": "Pon las calzas en las llantas.",
+     "zh": "在轮子下面垫上轮挡。",
+     "note": "calzas = 轮挡（wheel chocks）。"
+    },
+    {
+     "t": "Mira para los dos lados.",
+     "zh": "两边都看一下。"
+    },
+    {
+     "t": "¿Estás bien? ¿Te lastimaste?",
+     "zh": "你没事吧？受伤了吗？"
+    },
+    {
+     "t": "Hay que reportar el accidente.",
+     "zh": "得上报这个事故。"
+    }
+   ]
+  },
+  {
+   "id": "es-numeros",
+   "name": "柜号、数字和字母",
+   "icon": "🔢",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "报柜号就是字母加数字一个一个念。先练 0–20 和整十，再练西语字母名（M 念 eme，S 念 ese），最后连起来念完整柜号。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "¿Cuál es el número del contenedor?",
+     "zh": "柜号是多少？"
+    },
+    {
+     "who": "Driver",
+     "t": "Eme, ese, ce, u.",
+     "zh": "M、S、C、U。"
+    },
+    {
+     "who": "You",
+     "t": "¿Y los números?",
+     "zh": "数字呢？"
+    },
+    {
+     "who": "Driver",
+     "t": "Cuatro, cinco, ocho, dos, uno, cero.",
+     "zh": "四、五、八、二、一、零。"
+    },
+    {
+     "who": "Driver",
+     "t": "Y el último es tres.",
+     "zh": "最后一位是三。"
+    },
+    {
+     "who": "You",
+     "t": "¿Me lo repites número por número?",
+     "zh": "能一个一个再说一遍吗？"
+    },
+    {
+     "who": "Driver",
+     "t": "Claro. Cuatro, cinco, ocho, dos, uno, cero, tres.",
+     "zh": "当然。四五八二一零，三。"
+    },
+    {
+     "who": "You",
+     "t": "Perfecto, gracias.",
+     "zh": "好的，谢谢。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Cero, uno, dos, tres, cuatro, cinco.",
+     "zh": "零、一、二、三、四、五。"
+    },
+    {
+     "t": "Seis, siete, ocho, nueve, diez.",
+     "zh": "六、七、八、九、十。"
+    },
+    {
+     "t": "Once, doce, trece, catorce, quince.",
+     "zh": "十一、十二、十三、十四、十五。"
+    },
+    {
+     "t": "Dieciséis, diecisiete, dieciocho, diecinueve, veinte.",
+     "zh": "十六、十七、十八、十九、二十。"
+    },
+    {
+     "t": "Treinta, cuarenta, cincuenta, sesenta.",
+     "zh": "三十、四十、五十、六十。"
+    },
+    {
+     "t": "Setenta, ochenta, noventa, cien.",
+     "zh": "七十、八十、九十、一百。"
+    },
+    {
+     "t": "A, be, ce, de, e, efe, ge.",
+     "zh": "字母 A B C D E F G。",
+     "note": "B 墨西哥人常说 be grande，V 说 ve chica，用来区分。"
+    },
+    {
+     "t": "Hache, i, jota, ka, ele, eme, ene.",
+     "zh": "字母 H I J K L M N。",
+     "note": "H 念 hache，J 念 jota。"
+    },
+    {
+     "t": "O, pe, cu, erre, ese, te, u.",
+     "zh": "字母 O P Q R S T U。",
+     "note": "Q 念 cu，R 念 erre。"
+    },
+    {
+     "t": "Ve, doble u, equis, ye, zeta.",
+     "zh": "字母 V W X Y Z。",
+     "note": "W 在墨西哥念 doble u；Y 现在标准叫 ye，老一辈说 i griega。"
+    },
+    {
+     "t": "¿Con be grande o con ve chica?",
+     "zh": "是大 B 还是小 V？",
+     "note": "西语 B 和 V 发音一样，确认字母时常这么问。"
+    },
+    {
+     "t": "El número del contenedor es eme, ese, ce, u.",
+     "zh": "柜号是 M、S、C、U。",
+     "note": "四个字母是箱主代码，最后一个通常是 U。"
+    },
+    {
+     "t": "Uno, dos, tres, cuatro, cinco, seis, y el siete.",
+     "zh": "一二三四五六，最后是七。",
+     "note": "最后一位是校验码，单独念，前面加 y。"
+    },
+    {
+     "t": "¿Me lo puedes deletrear?",
+     "zh": "你能拼一下吗？",
+     "note": "deletrear = 一个一个字母拼。"
+    },
+    {
+     "t": "¿Me lo repites número por número?",
+     "zh": "能一个数字一个数字再说一遍吗？"
+    },
+    {
+     "t": "Es la te de Tomás.",
+     "zh": "是 Tomás 的 T。",
+     "note": "用人名或地名区分字母，类似英文 T as in Tom。"
+    },
+    {
+     "t": "El sello es el cuatro, cinco, ocho, dos.",
+     "zh": "封条号是 4582。"
+    },
+    {
+     "t": "La placa del camión termina en treinta y siete.",
+     "zh": "卡车车牌尾号是三十七。"
+    },
+    {
+     "t": "¿Cuál es el número del chasis?",
+     "zh": "车架号是多少？",
+     "note": "chasis = 底盘车架（集装箱拖架）。"
+    }
+   ]
+  },
+  {
+   "id": "es-ubicacion",
+   "name": "问路和找柜子/门",
+   "icon": "🧭",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "司机经常问门号、排号、车道在哪。puerta 是门，fila 是排，carril 是车道。墨西哥同事也常直接说 el yard（Spanglish）。",
+   "dialog": [
+    {
+     "who": "Driver",
+     "t": "Oye, ¿dónde está la puerta doce?",
+     "zh": "喂，十二号门在哪？"
+    },
+    {
+     "who": "You",
+     "t": "Sigue derecho y da vuelta a la derecha.",
+     "zh": "直走然后右转。"
+    },
+    {
+     "who": "Driver",
+     "t": "¿Y el contenedor vacío?",
+     "zh": "那个空柜呢？"
+    },
+    {
+     "who": "You",
+     "t": "Déjame checar en el sistema.",
+     "zh": "我在系统里查一下。"
+    },
+    {
+     "who": "You",
+     "t": "Está en la fila ocho, carril tres.",
+     "zh": "在第八排，三号车道。"
+    },
+    {
+     "who": "Driver",
+     "t": "¿Pasando la báscula?",
+     "zh": "过了地磅吗？"
+    },
+    {
+     "who": "You",
+     "t": "Sí, a mano derecha. Sígueme.",
+     "zh": "对，右手边。跟我来。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "¿Dónde está la puerta doce?",
+     "zh": "十二号门在哪？"
+    },
+    {
+     "t": "Está al fondo, a la izquierda.",
+     "zh": "在最里面，靠左。"
+    },
+    {
+     "t": "Sigue derecho y da vuelta a la derecha.",
+     "zh": "直走然后右转。",
+     "note": "墨西哥说 dar vuelta，西班牙常说 girar。"
+    },
+    {
+     "t": "El contenedor está en la fila ocho.",
+     "zh": "那个柜子在第八排。"
+    },
+    {
+     "t": "Métete por el carril tres.",
+     "zh": "走三号车道进去。"
+    },
+    {
+     "t": "Está del otro lado del yard.",
+     "zh": "在场子的另一边。",
+     "note": "Spanglish：el yard，标准西语是 el patio。"
+    },
+    {
+     "t": "Pasando la báscula, a mano derecha.",
+     "zh": "过了地磅，右手边。",
+     "note": "báscula = 地磅。"
+    },
+    {
+     "t": "¿Lo buscas por número de contenedor?",
+     "zh": "你是按柜号找的吗？"
+    },
+    {
+     "t": "Déjame checar en el sistema.",
+     "zh": "我在系统里查一下。",
+     "note": "checar 是墨西哥说法（来自英文 check），西班牙说 comprobar。"
+    },
+    {
+     "t": "Ese contenedor ya salió.",
+     "zh": "那个柜子已经出去了。"
+    },
+    {
+     "t": "Todavía no ha llegado.",
+     "zh": "还没到。"
+    },
+    {
+     "t": "Está abajo de otro contenedor.",
+     "zh": "它被压在另一个柜子下面。"
+    },
+    {
+     "t": "Espérate en la entrada.",
+     "zh": "在入口等着。"
+    },
+    {
+     "t": "¿Dónde está la oficina?",
+     "zh": "办公室在哪？"
+    },
+    {
+     "t": "Los vacíos van en la fila de atrás.",
+     "zh": "空柜放后面那排。",
+     "note": "vacíos = 空柜，llenos = 重柜。"
+    },
+    {
+     "t": "Sígueme, te enseño dónde es.",
+     "zh": "跟我来，我带你去。",
+     "note": "enseñar 在墨西哥口语里也表示“指给你看”。"
+    }
+   ]
+  },
+  {
+   "id": "es-prestar",
+   "name": "借东西和请帮忙",
+   "icon": "🔦",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "借工具、请人搭把手都用 ¿Me prestas…? 和 ¿Me ayudas…?。墨西哥人加个 tantito 或 un ratito 听起来更客气。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "Oye, ¿me prestas tu linterna?",
+     "zh": "嘿，能借我你的手电吗？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Sí, claro. Aquí tienes.",
+     "zh": "当然，给你。"
+    },
+    {
+     "who": "You",
+     "t": "Gracias. ¿Tienes un sello nuevo?",
+     "zh": "谢谢。你有新封条吗？"
+    },
+    {
+     "who": "Coworker",
+     "t": "No, pregunta en la oficina.",
+     "zh": "没有，去办公室问问。"
+    },
+    {
+     "who": "You",
+     "t": "¿Me echas la mano con la puerta?",
+     "zh": "帮我开一下柜门好吗？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Va, ahorita voy.",
+     "zh": "行，马上来。"
+    },
+    {
+     "who": "You",
+     "t": "Ahorita te regreso la linterna.",
+     "zh": "我马上把手电还你。"
+    },
+    {
+     "who": "Coworker",
+     "t": "No hay problema.",
+     "zh": "没问题。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "¿Me prestas tu linterna?",
+     "zh": "能借我你的手电吗？",
+     "note": "墨西哥常说 linterna，也有人说 lámpara。"
+    },
+    {
+     "t": "¿Me prestas una pluma?",
+     "zh": "能借我支笔吗？",
+     "note": "墨西哥说 pluma，西班牙说 bolígrafo。"
+    },
+    {
+     "t": "¿Tienes un candado extra?",
+     "zh": "你有多的锁吗？"
+    },
+    {
+     "t": "Necesito un sello nuevo.",
+     "zh": "我需要一个新的封条。"
+    },
+    {
+     "t": "¿Me ayudas tantito?",
+     "zh": "能帮我一下吗？",
+     "note": "tantito = 一点点，墨西哥口语，很客气。"
+    },
+    {
+     "t": "Ayúdame a abrir la puerta del contenedor.",
+     "zh": "帮我开一下柜门。"
+    },
+    {
+     "t": "¿Me echas la mano con esto?",
+     "zh": "这个能帮我搭把手吗？",
+     "note": "echar la mano = 帮忙，墨西哥口语。"
+    },
+    {
+     "t": "¿Me pasas el radio?",
+     "zh": "把对讲机递给我好吗？",
+     "note": "墨西哥说 el radio（对讲机）。"
+    },
+    {
+     "t": "¿Tienes cortador para el sello?",
+     "zh": "你有剪封条的钳子吗？"
+    },
+    {
+     "t": "Se me olvidó mi chaleco.",
+     "zh": "我忘带背心了。"
+    },
+    {
+     "t": "¿Dónde guardan las llaves?",
+     "zh": "钥匙放在哪？"
+    },
+    {
+     "t": "Ahorita te lo regreso.",
+     "zh": "我马上还你。",
+     "note": "ahorita 墨西哥意思是“马上/待会儿”，时间可长可短。"
+    },
+    {
+     "t": "Gracias, te debo una.",
+     "zh": "谢谢，欠你一个人情。"
+    },
+    {
+     "t": "¿Me puedes cubrir un ratito?",
+     "zh": "能帮我顶一会儿吗？"
+    },
+    {
+     "t": "¿Me das un aventón a la oficina?",
+     "zh": "能捎我到办公室吗？",
+     "note": "aventón = 搭车，墨西哥说法；西班牙说 llevarme。"
+    },
+    {
+     "t": "Sí, claro. Aquí tienes.",
+     "zh": "当然，给你。"
+    }
+   ]
+  },
+  {
+   "id": "es-descanso",
+   "name": "休息和下班",
+   "icon": "☕",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "午饭、休息、下班的聊天最容易拉近关系。墨西哥同事常直接用英文 el lunch、el break。",
+   "dialog": [
+    {
+     "who": "Coworker",
+     "t": "¿Ya te vas al lunch?",
+     "zh": "你去吃午饭了吗？"
+    },
+    {
+     "who": "You",
+     "t": "Sí. ¿Qué trajiste de comer?",
+     "zh": "对。你带了什么吃的？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Nada. Vamos por unos tacos.",
+     "zh": "啥也没带。咱们去吃塔可吧。"
+    },
+    {
+     "who": "You",
+     "t": "Va. ¿Cuánto dura el break?",
+     "zh": "行。休息多久？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Media hora nomás.",
+     "zh": "就半小时。"
+    },
+    {
+     "who": "You",
+     "t": "¿Y a qué hora sales hoy?",
+     "zh": "你今天几点下班？"
+    },
+    {
+     "who": "Coworker",
+     "t": "A las tres y media.",
+     "zh": "三点半。"
+    },
+    {
+     "who": "You",
+     "t": "Órale, nos vemos al rato.",
+     "zh": "好嘞，待会儿见。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "¿Ya te vas al lunch?",
+     "zh": "你要去吃午饭了吗？",
+     "note": "Spanglish：el lunch，标准西语是 la comida/el almuerzo。"
+    },
+    {
+     "t": "Me voy a tomar mi break.",
+     "zh": "我去休息一下。",
+     "note": "Spanglish：el break，标准说法 el descanso。"
+    },
+    {
+     "t": "¿A qué hora sales hoy?",
+     "zh": "你今天几点下班？"
+    },
+    {
+     "t": "Salgo a las tres y media.",
+     "zh": "我三点半下班。"
+    },
+    {
+     "t": "¿Cuánto dura el break?",
+     "zh": "休息多长时间？"
+    },
+    {
+     "t": "Tenemos media hora para comer.",
+     "zh": "我们有半小时吃饭。"
+    },
+    {
+     "t": "¿Qué trajiste de comer?",
+     "zh": "你带了什么吃的？"
+    },
+    {
+     "t": "Vamos por unos tacos.",
+     "zh": "我们去吃点塔可吧。"
+    },
+    {
+     "t": "Ya casi es hora de salir.",
+     "zh": "快到下班时间了。"
+    },
+    {
+     "t": "¿Vas a trabajar el sábado?",
+     "zh": "你周六上班吗？"
+    },
+    {
+     "t": "Hoy me toca hacer horas extra.",
+     "zh": "今天我要加班。",
+     "note": "me toca = 轮到我/该我。"
+    },
+    {
+     "t": "Ya ponché la salida.",
+     "zh": "我已经打卡下班了。",
+     "note": "Spanglish：ponchar = 打卡（punch）。"
+    },
+    {
+     "t": "Nos vemos mañana.",
+     "zh": "明天见。"
+    },
+    {
+     "t": "Que descanses.",
+     "zh": "好好休息。",
+     "note": "下班道别时很暖心的一句。"
+    },
+    {
+     "t": "Cuídate, nos vemos el lunes.",
+     "zh": "保重，周一见。"
+    },
+    {
+     "t": "Buen fin de semana.",
+     "zh": "周末愉快。"
+    }
+   ]
+  },
+  {
+   "id": "es-problemas",
+   "name": "出问题了",
+   "icon": "⚠️",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "柜子坏了、封条不对、车出问题时，要能说清楚哪里坏了，并且叫主管。关键词：dañado（损坏）、roto（破）、falta（缺）。",
+   "dialog": [
+    {
+     "who": "Driver",
+     "t": "Oye, falta el sello en este contenedor.",
+     "zh": "喂，这个柜子封条没了。"
+    },
+    {
+     "who": "You",
+     "t": "A ver. Sí, es cierto.",
+     "zh": "我看看。对，确实。"
+    },
+    {
+     "who": "You",
+     "t": "No lo muevas todavía.",
+     "zh": "先别动它。"
+    },
+    {
+     "who": "Driver",
+     "t": "¿Y qué hago?",
+     "zh": "那我怎么办？"
+    },
+    {
+     "who": "You",
+     "t": "Hay que tomarle fotos y llamar al supervisor.",
+     "zh": "得拍照，然后叫主管。"
+    },
+    {
+     "who": "Driver",
+     "t": "Tengo prisa, compa.",
+     "zh": "我赶时间，哥们。"
+    },
+    {
+     "who": "You",
+     "t": "Ya le avisé a la oficina. Espera un rato.",
+     "zh": "我已经通知办公室了。等一会儿。"
+    },
+    {
+     "who": "Driver",
+     "t": "Está bien, gracias.",
+     "zh": "好吧，谢谢。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "El contenedor está dañado.",
+     "zh": "柜子损坏了。"
+    },
+    {
+     "t": "Tiene un hoyo en el techo.",
+     "zh": "顶上有个洞。",
+     "note": "hoyo = 洞，墨西哥常用；也说 agujero。"
+    },
+    {
+     "t": "La puerta no cierra bien.",
+     "zh": "门关不严。"
+    },
+    {
+     "t": "Se rompió el candado.",
+     "zh": "锁坏了。"
+    },
+    {
+     "t": "Falta el sello.",
+     "zh": "封条没了。"
+    },
+    {
+     "t": "El número del sello no coincide.",
+     "zh": "封条号对不上。"
+    },
+    {
+     "t": "La llanta está ponchada.",
+     "zh": "轮胎扎了。",
+     "note": "ponchada = 漏气/爆胎，墨西哥说法（来自 punch）。"
+    },
+    {
+     "t": "El chasis tiene una luz fundida.",
+     "zh": "车架有个灯坏了。",
+     "note": "fundida = 灯泡烧了。"
+    },
+    {
+     "t": "Está goteando algo abajo.",
+     "zh": "下面在滴东西。"
+    },
+    {
+     "t": "Hay que tomarle fotos.",
+     "zh": "得拍照。"
+    },
+    {
+     "t": "Llama al supervisor, por favor.",
+     "zh": "请叫主管。"
+    },
+    {
+     "t": "No lo muevas todavía.",
+     "zh": "先别动它。"
+    },
+    {
+     "t": "El sistema no me deja.",
+     "zh": "系统不让我操作。"
+    },
+    {
+     "t": "Este contenedor no está en la lista.",
+     "zh": "这个柜子不在单子上。"
+    },
+    {
+     "t": "Tus papeles no están completos.",
+     "zh": "你的单据不全。"
+    },
+    {
+     "t": "Tienes que esperar un rato.",
+     "zh": "你得等一会儿。"
+    },
+    {
+     "t": "Ya le avisé a la oficina.",
+     "zh": "我已经通知办公室了。"
+    },
+    {
+     "t": "No te preocupes, lo vamos a arreglar.",
+     "zh": "别担心，我们会处理好的。"
+    }
+   ]
+  },
+  {
+   "id": "es-platica",
+   "name": "闲聊",
+   "icon": "⚽",
+   "group": "西语",
+   "lang": "es-MX",
+   "intro": "等车、休息时聊足球、吃的、家人和天气。Upland 夏天很热，聊 el calor 永远不会冷场。",
+   "dialog": [
+    {
+     "who": "Coworker",
+     "t": "¿Viste el partido ayer?",
+     "zh": "你看昨天的比赛了吗？"
+    },
+    {
+     "who": "You",
+     "t": "No, ¿quién ganó?",
+     "zh": "没看，谁赢了？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Ganó el América, dos a uno.",
+     "zh": "美洲队赢了，二比一。"
+    },
+    {
+     "who": "You",
+     "t": "¡Órale! ¿Le vas al América?",
+     "zh": "哇！你支持美洲队？"
+    },
+    {
+     "who": "Coworker",
+     "t": "Siempre. ¿Y tú, de dónde eres?",
+     "zh": "一直支持。你是哪里人？"
+    },
+    {
+     "who": "You",
+     "t": "Soy de China. Estoy aprendiendo español.",
+     "zh": "我是中国人。我在学西语。"
+    },
+    {
+     "who": "Coworker",
+     "t": "¡Qué padre! Hablas bien.",
+     "zh": "太棒了！你说得挺好。"
+    },
+    {
+     "who": "You",
+     "t": "Gracias. ¡Qué calor hace hoy!",
+     "zh": "谢谢。今天真热啊！"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "¿Viste el partido ayer?",
+     "zh": "你看昨天的比赛了吗？"
+    },
+    {
+     "t": "¿Le vas al América o a las Chivas?",
+     "zh": "你支持美洲队还是瓜达拉哈拉队？",
+     "note": "irle a un equipo = 支持某队，墨西哥说法；这两队是墨西哥最大的宿敌。"
+    },
+    {
+     "t": "Yo le voy al Galaxy.",
+     "zh": "我支持银河队。"
+    },
+    {
+     "t": "¡Qué calor hace hoy!",
+     "zh": "今天真热啊！"
+    },
+    {
+     "t": "Toma mucha agua, está pesado el sol.",
+     "zh": "多喝水，太阳很毒。",
+     "note": "pesado = 厉害、受不了，口语。"
+    },
+    {
+     "t": "¿Qué hiciste el fin de semana?",
+     "zh": "你周末干嘛了？"
+    },
+    {
+     "t": "Fui a una carne asada con la familia.",
+     "zh": "我跟家人去烤肉了。",
+     "note": "carne asada 在墨西哥裔家庭也指周末烤肉聚会。"
+    },
+    {
+     "t": "¿Tienes hijos?",
+     "zh": "你有孩子吗？"
+    },
+    {
+     "t": "Sí, tengo dos, un niño y una niña.",
+     "zh": "有，两个，一男一女。"
+    },
+    {
+     "t": "¿De qué parte de México eres?",
+     "zh": "你是墨西哥哪里人？"
+    },
+    {
+     "t": "Yo soy de China.",
+     "zh": "我是中国人，广东的。",
+     "note": "地名可以换成你的家乡。"
+    },
+    {
+     "t": "Estoy aprendiendo español.",
+     "zh": "我在学西班牙语。"
+    },
+    {
+     "t": "¿Cómo se dice esto en español?",
+     "zh": "这个用西语怎么说？"
+    },
+    {
+     "t": "¿Dónde venden buenos tacos por aquí?",
+     "zh": "这附近哪儿的塔可好吃？"
+    },
+    {
+     "t": "Te invito un café.",
+     "zh": "我请你喝咖啡。"
+    },
+    {
+     "t": "¡No manches, qué bueno!",
+     "zh": "不是吧，太好了！",
+     "note": "No manches = 不会吧/真的假的，墨西哥口语，比较随意但干净。"
+    },
+    {
+     "t": "Está chido.",
+     "zh": "挺酷的/挺好的。",
+     "note": "chido = 酷、好，墨西哥俚语。"
+    },
+    {
+     "t": "¡Órale, qué padre!",
+     "zh": "哇，太棒了！",
+     "note": "padre 在墨西哥口语中表示“很棒”。"
+    }
+   ]
+  }
+ ]
+}

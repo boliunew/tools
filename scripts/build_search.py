@@ -88,6 +88,13 @@ def main():
             out.append({"k": "George Michael", "t": s["title"], "s": short("%s · %s" % (s["year"], s["album"])), "u": "people.html#gm/" + s["id"],
                         "x": flat(s["title"], s["album"], s["story"], s["about"], s.get("mood", []))})
 
+    for f in ("en_work", "en_life", "en_spoken", "es_yard"):
+        d = load("speak/%s.json" % f)
+        for pk in (d or {}).get("packs", []):
+            ls = pk.get("dialog", []) + pk.get("phrases", [])
+            out.append({"k": "开口说·" + pk["group"], "t": pk["icon"] + " " + pk["name"], "s": short(pk["intro"]), "u": "speak.html#" + pk["id"],
+                        "x": flat(pk["name"], pk["intro"], [l["t"] + " " + l["zh"] + " " + l.get("note", "") for l in ls], limit=4000)})
+
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"items": out}, f, ensure_ascii=False, separators=(",", ":"))

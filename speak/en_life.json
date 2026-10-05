@@ -1,0 +1,1458 @@
+{
+ "packs": [
+  {
+   "id": "see-doctor",
+   "name": "看医生",
+   "icon": "🩺",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "前台登记、和医生描述症状：哪里不舒服、多久了、多严重。听不懂就请医生说慢一点。",
+   "dialog": [
+    {
+     "who": "Receptionist",
+     "t": "Hi, do you have an appointment?",
+     "zh": "你好，有预约吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, at nine thirty. My name is Steve Liu.",
+     "zh": "有，九点半。我叫 Steve Liu。"
+    },
+    {
+     "who": "Receptionist",
+     "t": "Can I see your insurance card and ID?",
+     "zh": "能看下你的保险卡和身份证件吗？"
+    },
+    {
+     "who": "You",
+     "t": "Sure, here you go.",
+     "zh": "好的，给你。"
+    },
+    {
+     "who": "Doctor",
+     "t": "So, what brings you in today?",
+     "zh": "今天哪里不舒服？"
+    },
+    {
+     "who": "You",
+     "t": "My lower back hurts when I bend down.",
+     "zh": "我弯腰的时候下背疼。"
+    },
+    {
+     "who": "Doctor",
+     "t": "How long has this been going on?",
+     "zh": "这样多久了？"
+    },
+    {
+     "who": "You",
+     "t": "About two weeks. It's worse in the morning.",
+     "zh": "大概两个星期，早上更厉害。"
+    },
+    {
+     "who": "Doctor",
+     "t": "On a scale of one to ten, how bad is it?",
+     "zh": "一到十分，有多疼？"
+    },
+    {
+     "who": "You",
+     "t": "Maybe a six.",
+     "zh": "大概六分。"
+    },
+    {
+     "who": "Doctor",
+     "t": "I'd like to get an X-ray to be safe.",
+     "zh": "保险起见我想拍个 X 光。"
+    },
+    {
+     "who": "You",
+     "t": "Okay. Could you speak a little slower, please?",
+     "zh": "好的。能说慢一点吗？"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "I'd like to make an appointment.",
+     "zh": "我想预约。"
+    },
+    {
+     "t": "I'm a new patient.",
+     "zh": "我是新病人。"
+    },
+    {
+     "t": "I have a fever and a sore throat.",
+     "zh": "我发烧，喉咙疼。"
+    },
+    {
+     "t": "It started three days ago.",
+     "zh": "三天前开始的。"
+    },
+    {
+     "t": "It hurts right here.",
+     "zh": "就这里疼。"
+    },
+    {
+     "t": "The pain comes and goes.",
+     "zh": "疼痛时有时无。"
+    },
+    {
+     "t": "I'm allergic to penicillin.",
+     "zh": "我对青霉素过敏。",
+     "note": "把药名换成你自己的"
+    },
+    {
+     "t": "I'm not taking any medication right now.",
+     "zh": "我现在没吃什么药。"
+    },
+    {
+     "t": "Is it serious?",
+     "zh": "严重吗？"
+    },
+    {
+     "t": "Do I need to come back?",
+     "zh": "我需要复诊吗？"
+    },
+    {
+     "t": "Can I still go to work?",
+     "zh": "我还能上班吗？"
+    },
+    {
+     "t": "Could you write that down for me?",
+     "zh": "能帮我写下来吗？"
+    },
+    {
+     "t": "I need a doctor's note for work.",
+     "zh": "我需要一张给公司的病假条。"
+    },
+    {
+     "t": "Could you speak a little slower, please?",
+     "zh": "能说慢一点吗？"
+    }
+   ]
+  },
+  {
+   "id": "pharmacy",
+   "name": "药房取药",
+   "icon": "💊",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "去药房取处方药：报名字和生日，问价格、怎么吃、有没有副作用。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "Hi, I'm here to pick up a prescription.",
+     "zh": "你好，我来取处方药。"
+    },
+    {
+     "who": "Pharmacist",
+     "t": "Last name and date of birth?",
+     "zh": "姓和出生日期？"
+    },
+    {
+     "who": "You",
+     "t": "Liu, L-I-U. March fifth, nineteen eighty-two.",
+     "zh": "Liu，L-I-U。1982 年 3 月 5 日。"
+    },
+    {
+     "who": "Pharmacist",
+     "t": "Okay, it's ready. Your copay is ten dollars.",
+     "zh": "好了，自付十美元。"
+    },
+    {
+     "who": "You",
+     "t": "How often should I take it?",
+     "zh": "多久吃一次？"
+    },
+    {
+     "who": "Pharmacist",
+     "t": "Twice a day, with food.",
+     "zh": "一天两次，随餐服用。"
+    },
+    {
+     "who": "You",
+     "t": "Are there any side effects?",
+     "zh": "有副作用吗？"
+    },
+    {
+     "who": "Pharmacist",
+     "t": "It might make you a little sleepy.",
+     "zh": "可能会让你有点困。"
+    },
+    {
+     "who": "You",
+     "t": "Can I drive after taking it?",
+     "zh": "吃了以后能开车吗？"
+    },
+    {
+     "who": "Pharmacist",
+     "t": "Better not until you know how it affects you.",
+     "zh": "最好先别，等你知道它对你影响多大。"
+    },
+    {
+     "who": "You",
+     "t": "Got it. Thank you.",
+     "zh": "明白了，谢谢。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "I'm here to pick up a prescription.",
+     "zh": "我来取处方药。"
+    },
+    {
+     "t": "I'd like to drop off a prescription.",
+     "zh": "我想交处方。"
+    },
+    {
+     "t": "When will it be ready?",
+     "zh": "什么时候能好？"
+    },
+    {
+     "t": "How much is it with my insurance?",
+     "zh": "用我的保险要多少钱？"
+    },
+    {
+     "t": "Is there a cheaper generic version?",
+     "zh": "有便宜一点的非专利药吗？",
+     "note": "generic = 仿制药"
+    },
+    {
+     "t": "How many times a day should I take this?",
+     "zh": "这个一天吃几次？"
+    },
+    {
+     "t": "Should I take it with food?",
+     "zh": "要随餐吃吗？"
+    },
+    {
+     "t": "Can I take this with my other medicine?",
+     "zh": "这个能和我的其他药一起吃吗？"
+    },
+    {
+     "t": "Are there any side effects?",
+     "zh": "有副作用吗？"
+    },
+    {
+     "t": "Can I get a refill?",
+     "zh": "能续药吗？"
+    },
+    {
+     "t": "Where can I find cold medicine?",
+     "zh": "感冒药在哪？"
+    },
+    {
+     "t": "Do you need my insurance card?",
+     "zh": "要我的保险卡吗？"
+    },
+    {
+     "t": "Can I get the flu shot here?",
+     "zh": "这里能打流感疫苗吗？"
+    }
+   ]
+  },
+  {
+   "id": "dmv",
+   "name": "DMV 办事",
+   "icon": "🪪",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "去 DMV 换驾照、车辆过户、注册续期。先说办什么、有没有预约，准备好证件。",
+   "dialog": [
+    {
+     "who": "Clerk",
+     "t": "Next. What can I help you with?",
+     "zh": "下一位。办什么？"
+    },
+    {
+     "who": "You",
+     "t": "I need to renew my driver's license.",
+     "zh": "我要续驾照。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Do you have an appointment?",
+     "zh": "有预约吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, at ten forty. Here's my confirmation.",
+     "zh": "有，十点四十。这是确认单。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Okay. Did you fill out the application online?",
+     "zh": "好。网上申请表填了吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, I did.",
+     "zh": "填了。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Great. Look into the camera for your photo.",
+     "zh": "好。看着镜头拍照。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Now read the third line on the eye chart.",
+     "zh": "现在读视力表第三行。"
+    },
+    {
+     "who": "You",
+     "t": "E, F, P, T, O, Z.",
+     "zh": "E、F、P、T、O、Z。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Good. Your new license will come in the mail.",
+     "zh": "好。新驾照会寄给你。"
+    },
+    {
+     "who": "You",
+     "t": "How long will that take?",
+     "zh": "要多久？"
+    },
+    {
+     "who": "Clerk",
+     "t": "Usually two to three weeks.",
+     "zh": "通常两到三周。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "I need to renew my driver's license.",
+     "zh": "我要续驾照。"
+    },
+    {
+     "t": "I'd like to make an appointment.",
+     "zh": "我想预约。"
+    },
+    {
+     "t": "I'm here to transfer a car title.",
+     "zh": "我来办车辆过户。"
+    },
+    {
+     "t": "I need to renew my registration.",
+     "zh": "我要续车辆注册。"
+    },
+    {
+     "t": "I changed my address.",
+     "zh": "我换地址了。"
+    },
+    {
+     "t": "Which line should I wait in?",
+     "zh": "我该排哪一队？"
+    },
+    {
+     "t": "What documents do I need?",
+     "zh": "需要什么文件？"
+    },
+    {
+     "t": "Do I need to take a written test?",
+     "zh": "需要考笔试吗？"
+    },
+    {
+     "t": "Can I pay with a debit card?",
+     "zh": "能用借记卡付吗？"
+    },
+    {
+     "t": "Is there a late fee?",
+     "zh": "有滞纳金吗？"
+    },
+    {
+     "t": "Can I get a temporary license?",
+     "zh": "能给我临时驾照吗？"
+    },
+    {
+     "t": "When will I get it in the mail?",
+     "zh": "什么时候能寄到？"
+    },
+    {
+     "t": "Sorry, which window did you call?",
+     "zh": "不好意思，你叫的是几号窗口？"
+    }
+   ]
+  },
+  {
+   "id": "bank",
+   "name": "银行",
+   "icon": "🏦",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "在银行开户、存支票、转账、问可疑扣款。说清要办什么，涉及卡号只报后四位。",
+   "dialog": [
+    {
+     "who": "Teller",
+     "t": "Hi, how can I help you today?",
+     "zh": "你好，今天办什么？"
+    },
+    {
+     "who": "You",
+     "t": "I'd like to deposit this check.",
+     "zh": "我想存这张支票。"
+    },
+    {
+     "who": "Teller",
+     "t": "Sure. Into checking or savings?",
+     "zh": "好的。存到支票账户还是储蓄账户？"
+    },
+    {
+     "who": "You",
+     "t": "Checking, please.",
+     "zh": "支票账户。"
+    },
+    {
+     "who": "Teller",
+     "t": "Can I see your ID?",
+     "zh": "能看下你的证件吗？"
+    },
+    {
+     "who": "You",
+     "t": "Here you go. Also, I have a question about a charge.",
+     "zh": "给你。另外我想问一笔扣款。"
+    },
+    {
+     "who": "Teller",
+     "t": "What's the charge?",
+     "zh": "什么扣款？"
+    },
+    {
+     "who": "You",
+     "t": "There's a forty-dollar charge I don't recognize.",
+     "zh": "有一笔四十美元的扣款我不认识。"
+    },
+    {
+     "who": "Teller",
+     "t": "Let me take a look. It's from an online store.",
+     "zh": "我看一下，是一个网店的。"
+    },
+    {
+     "who": "You",
+     "t": "I didn't buy anything there. Can you block my card?",
+     "zh": "我没在那买过东西。能把我的卡冻结吗？"
+    },
+    {
+     "who": "Teller",
+     "t": "Yes, I'll cancel it and order a new one.",
+     "zh": "可以，我把它注销，给你补一张新的。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "I'd like to open a checking account.",
+     "zh": "我想开一个支票账户。"
+    },
+    {
+     "t": "I'd like to deposit this check.",
+     "zh": "我想存这张支票。"
+    },
+    {
+     "t": "I need to withdraw two hundred dollars.",
+     "zh": "我要取两百美元。"
+    },
+    {
+     "t": "What's my balance?",
+     "zh": "我的余额是多少？"
+    },
+    {
+     "t": "I'd like to transfer money to savings.",
+     "zh": "我想转钱到储蓄账户。"
+    },
+    {
+     "t": "I don't recognize this charge.",
+     "zh": "这笔扣款我不认识。"
+    },
+    {
+     "t": "I think my card was stolen.",
+     "zh": "我觉得我的卡被偷了。"
+    },
+    {
+     "t": "Can you freeze my card?",
+     "zh": "能冻结我的卡吗？"
+    },
+    {
+     "t": "The card ends in four two seven one.",
+     "zh": "卡号尾数 4271。",
+     "note": "只报后四位"
+    },
+    {
+     "t": "When will the money be available?",
+     "zh": "钱什么时候能到账？"
+    },
+    {
+     "t": "Are there any monthly fees?",
+     "zh": "有月费吗？"
+    },
+    {
+     "t": "How do I set up direct deposit?",
+     "zh": "怎么设置工资直存？"
+    },
+    {
+     "t": "Can I get a cashier's check?",
+     "zh": "能开一张本票吗？"
+    }
+   ]
+  },
+  {
+   "id": "customer-service-call",
+   "name": "打客服电话",
+   "icon": "☎️",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "打客服：听语音菜单按键，说 representative 转人工，等待时要记下参考号（reference number）。",
+   "dialog": [
+    {
+     "who": "Recording",
+     "t": "Please say or enter your account number.",
+     "zh": "请说出或输入你的账号。"
+    },
+    {
+     "who": "You",
+     "t": "Representative.",
+     "zh": "转人工。"
+    },
+    {
+     "who": "Recording",
+     "t": "Please hold for the next available agent.",
+     "zh": "请稍候，下一位客服为您服务。"
+    },
+    {
+     "who": "Agent",
+     "t": "Thanks for holding. How can I help you?",
+     "zh": "感谢等候，有什么可以帮您？"
+    },
+    {
+     "who": "You",
+     "t": "Hi, my internet has been down since last night.",
+     "zh": "你好，我家网从昨晚就断了。"
+    },
+    {
+     "who": "Agent",
+     "t": "Sorry about that. Can I have your name?",
+     "zh": "抱歉。请问您的姓名？"
+    },
+    {
+     "who": "You",
+     "t": "Steve Liu. The account is under my name.",
+     "zh": "Steve Liu，账户是我的名字。"
+    },
+    {
+     "who": "Agent",
+     "t": "I see an outage in your area.",
+     "zh": "我看到您那个区域有故障。"
+    },
+    {
+     "who": "You",
+     "t": "When will it be fixed?",
+     "zh": "什么时候能修好？"
+    },
+    {
+     "who": "Agent",
+     "t": "By six tonight. I'll credit your account.",
+     "zh": "今晚六点前。我会给您账户补偿。"
+    },
+    {
+     "who": "You",
+     "t": "Thanks. Can I get a reference number?",
+     "zh": "谢谢。能给我一个参考号吗？"
+    },
+    {
+     "who": "Agent",
+     "t": "Sure. It's R-four-five-eight-two.",
+     "zh": "好的，是 R4582。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Representative.",
+     "zh": "转人工。",
+     "note": "语音菜单听不懂就说这个"
+    },
+    {
+     "t": "I'd like to speak to a person, please.",
+     "zh": "我想跟真人说话。"
+    },
+    {
+     "t": "I'm calling about my bill.",
+     "zh": "我打来是问账单的事。"
+    },
+    {
+     "t": "I was charged twice this month.",
+     "zh": "这个月扣了我两次钱。"
+    },
+    {
+     "t": "I'd like to cancel my service.",
+     "zh": "我想取消服务。"
+    },
+    {
+     "t": "Can you explain this charge?",
+     "zh": "能解释一下这笔费用吗？"
+    },
+    {
+     "t": "Sorry, I didn't catch that.",
+     "zh": "抱歉，我没听清。"
+    },
+    {
+     "t": "Could you repeat that slowly?",
+     "zh": "能慢慢再说一遍吗？"
+    },
+    {
+     "t": "Can I get a reference number?",
+     "zh": "能给我一个参考号吗？"
+    },
+    {
+     "t": "Can I speak to a supervisor?",
+     "zh": "我能跟主管说话吗？"
+    },
+    {
+     "t": "I've been on hold for forty minutes.",
+     "zh": "我已经等了四十分钟了。"
+    },
+    {
+     "t": "If we get cut off, can you call me back?",
+     "zh": "如果断线了，你能打回给我吗？"
+    },
+    {
+     "t": "Can you send me an email confirmation?",
+     "zh": "能给我发一封确认邮件吗？"
+    },
+    {
+     "t": "Thanks, you've been very helpful.",
+     "zh": "谢谢，你帮了大忙。"
+    }
+   ]
+  },
+  {
+   "id": "car-repair",
+   "name": "修车",
+   "icon": "🔧",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "去修车店描述问题（异响、警示灯、刹车），问报价和取车时间，没同意前别让他们先修。",
+   "dialog": [
+    {
+     "who": "Mechanic",
+     "t": "Hi, what's going on with the car?",
+     "zh": "你好，车怎么了？"
+    },
+    {
+     "who": "You",
+     "t": "The check engine light came on yesterday.",
+     "zh": "昨天发动机故障灯亮了。"
+    },
+    {
+     "who": "You",
+     "t": "And there's a squeaking noise when I brake.",
+     "zh": "刹车的时候还有吱吱声。"
+    },
+    {
+     "who": "Mechanic",
+     "t": "We'll run a diagnostic and check the brakes.",
+     "zh": "我们做个检测，再查一下刹车。"
+    },
+    {
+     "who": "You",
+     "t": "How much is the diagnostic?",
+     "zh": "检测多少钱？"
+    },
+    {
+     "who": "Mechanic",
+     "t": "It's ninety-nine dollars.",
+     "zh": "99 美元。"
+    },
+    {
+     "who": "You",
+     "t": "Okay. Please call me before doing any repairs.",
+     "zh": "好。修之前请先给我打电话。"
+    },
+    {
+     "who": "Mechanic",
+     "t": "Sure. We'll give you an estimate first.",
+     "zh": "当然，我们会先给你报价。"
+    },
+    {
+     "who": "You",
+     "t": "When do you think it'll be ready?",
+     "zh": "你觉得什么时候能好？"
+    },
+    {
+     "who": "Mechanic",
+     "t": "Probably by the end of the day.",
+     "zh": "大概今天下班前。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "The check engine light is on.",
+     "zh": "发动机故障灯亮了。"
+    },
+    {
+     "t": "It's making a weird noise.",
+     "zh": "有奇怪的声音。"
+    },
+    {
+     "t": "The brakes are squeaking.",
+     "zh": "刹车吱吱响。"
+    },
+    {
+     "t": "The car pulls to the right.",
+     "zh": "车往右跑偏。"
+    },
+    {
+     "t": "The AC isn't blowing cold air.",
+     "zh": "空调不出冷风。"
+    },
+    {
+     "t": "I need an oil change.",
+     "zh": "我要换机油。"
+    },
+    {
+     "t": "Can you give me an estimate?",
+     "zh": "能给我报个价吗？"
+    },
+    {
+     "t": "Please call me before you do any work.",
+     "zh": "修之前请先给我打电话。"
+    },
+    {
+     "t": "Is it safe to drive?",
+     "zh": "开起来安全吗？"
+    },
+    {
+     "t": "Is this covered by the warranty?",
+     "zh": "这在保修范围内吗？"
+    },
+    {
+     "t": "When can I pick it up?",
+     "zh": "我什么时候能取车？"
+    },
+    {
+     "t": "Can I see the old parts?",
+     "zh": "能看看换下来的旧零件吗？"
+    },
+    {
+     "t": "Can you check the tire pressure too?",
+     "zh": "能顺便查下胎压吗？"
+    }
+   ]
+  },
+  {
+   "id": "landlord-repair",
+   "name": "找房东/报修",
+   "icon": "🏠",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "给房东或物业报修：说清什么坏了、从什么时候、严重程度，约维修时间，最好也发短信留记录。",
+   "dialog": [
+    {
+     "who": "You",
+     "t": "Hi, this is Steve from unit B.",
+     "zh": "你好，我是 B 单元的 Steve。"
+    },
+    {
+     "who": "Landlord",
+     "t": "Hi Steve. What's up?",
+     "zh": "嗨 Steve，什么事？"
+    },
+    {
+     "who": "You",
+     "t": "The kitchen sink is leaking under the cabinet.",
+     "zh": "厨房水槽下面的柜子里漏水。"
+    },
+    {
+     "who": "Landlord",
+     "t": "How bad is it?",
+     "zh": "严重吗？"
+    },
+    {
+     "who": "You",
+     "t": "It's dripping all the time. I put a bucket under it.",
+     "zh": "一直在滴，我放了个桶接着。"
+    },
+    {
+     "who": "Landlord",
+     "t": "Okay. I'll send a plumber tomorrow.",
+     "zh": "好，我明天叫水管工过去。"
+    },
+    {
+     "who": "You",
+     "t": "What time will he come?",
+     "zh": "他几点来？"
+    },
+    {
+     "who": "Landlord",
+     "t": "Between nine and noon.",
+     "zh": "九点到中午之间。"
+    },
+    {
+     "who": "You",
+     "t": "I'll be at work. Can he use the lockbox?",
+     "zh": "我在上班。他能用钥匙盒吗？"
+    },
+    {
+     "who": "Landlord",
+     "t": "Sure. I'll text you when he's done.",
+     "zh": "可以，他修好了我给你发短信。"
+    },
+    {
+     "who": "You",
+     "t": "Thanks. I'll send you a photo of the leak.",
+     "zh": "谢谢，我把漏水的照片发给你。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Something's wrong with the water heater.",
+     "zh": "热水器有问题。"
+    },
+    {
+     "t": "There's no hot water.",
+     "zh": "没有热水。"
+    },
+    {
+     "t": "The toilet keeps running.",
+     "zh": "马桶一直在流水。"
+    },
+    {
+     "t": "The AC stopped working.",
+     "zh": "空调不工作了。"
+    },
+    {
+     "t": "There's a leak under the sink.",
+     "zh": "水槽下面漏水。"
+    },
+    {
+     "t": "The smoke alarm keeps beeping.",
+     "zh": "烟雾报警器一直在响。",
+     "note": "通常是电池没电了"
+    },
+    {
+     "t": "I think we have ants in the kitchen.",
+     "zh": "厨房好像有蚂蚁。"
+    },
+    {
+     "t": "When can someone come take a look?",
+     "zh": "什么时候能有人来看看？"
+    },
+    {
+     "t": "Can you let me know before you come in?",
+     "zh": "进门前能提前告诉我吗？"
+    },
+    {
+     "t": "I'll send you a photo.",
+     "zh": "我发张照片给你。"
+    },
+    {
+     "t": "When is the rent due this month?",
+     "zh": "这个月房租什么时候交？"
+    },
+    {
+     "t": "Can I pay the rent online?",
+     "zh": "房租能在网上交吗？"
+    },
+    {
+     "t": "I'd like to renew my lease.",
+     "zh": "我想续租。"
+    }
+   ]
+  },
+  {
+   "id": "restaurant-drive-thru",
+   "name": "餐厅和得来速",
+   "icon": "🍔",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "得来速对着话筒点餐要清楚、慢一点；餐厅里点菜、问推荐、要打包、买单。",
+   "dialog": [
+    {
+     "who": "Speaker",
+     "t": "Welcome! What can I get for you?",
+     "zh": "欢迎！要点什么？"
+    },
+    {
+     "who": "You",
+     "t": "Can I get a number three, please?",
+     "zh": "我要一个三号套餐。"
+    },
+    {
+     "who": "Speaker",
+     "t": "What size?",
+     "zh": "什么尺寸？"
+    },
+    {
+     "who": "You",
+     "t": "Medium, with a Coke.",
+     "zh": "中份，配可乐。"
+    },
+    {
+     "who": "Speaker",
+     "t": "Anything else?",
+     "zh": "还要别的吗？"
+    },
+    {
+     "who": "You",
+     "t": "Can I also get a small fries, no salt?",
+     "zh": "再要一个小薯条，不要盐。"
+    },
+    {
+     "who": "Speaker",
+     "t": "Sure. Will that be all?",
+     "zh": "好的。就这些吗？"
+    },
+    {
+     "who": "You",
+     "t": "That's it, thanks.",
+     "zh": "就这些，谢谢。"
+    },
+    {
+     "who": "Speaker",
+     "t": "Your total is twelve forty. Please pull up.",
+     "zh": "一共 12.40，请往前开。"
+    },
+    {
+     "who": "You",
+     "t": "Can I get some extra ketchup?",
+     "zh": "能多给点番茄酱吗？"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Can I get a number two, please?",
+     "zh": "我要一个二号套餐。"
+    },
+    {
+     "t": "Can I get that with no onions?",
+     "zh": "能不要洋葱吗？"
+    },
+    {
+     "t": "Make it a large.",
+     "zh": "换成大份。"
+    },
+    {
+     "t": "That's all, thanks.",
+     "zh": "就这些，谢谢。"
+    },
+    {
+     "t": "Sorry, can you repeat that?",
+     "zh": "抱歉，能再说一遍吗？"
+    },
+    {
+     "t": "Table for two, please.",
+     "zh": "两位。"
+    },
+    {
+     "t": "What do you recommend?",
+     "zh": "你推荐什么？"
+    },
+    {
+     "t": "Is this spicy?",
+     "zh": "这个辣吗？"
+    },
+    {
+     "t": "Can I get a box for this?",
+     "zh": "能给我个盒子打包吗？"
+    },
+    {
+     "t": "Can we get the check, please?",
+     "zh": "请买单。"
+    },
+    {
+     "t": "Can we split the check?",
+     "zh": "能分开付吗？"
+    },
+    {
+     "t": "I think there's a mistake on the bill.",
+     "zh": "我觉得账单有错。"
+    },
+    {
+     "t": "I ordered this without cheese.",
+     "zh": "我点的是不要奶酪的。"
+    },
+    {
+     "t": "Can I get a refill?",
+     "zh": "能续杯吗？"
+    }
+   ]
+  },
+  {
+   "id": "costco-return",
+   "name": "Costco 退换货",
+   "icon": "🛒",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "到 Costco 退换货柜台：说明东西有什么问题，带会员卡和小票，问退款方式。",
+   "dialog": [
+    {
+     "who": "Clerk",
+     "t": "Hi, what are you returning today?",
+     "zh": "你好，今天退什么？"
+    },
+    {
+     "who": "You",
+     "t": "This vacuum. It stopped working after a week.",
+     "zh": "这个吸尘器，用了一周就坏了。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Do you have your membership card?",
+     "zh": "有会员卡吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, here it is. I have the receipt too.",
+     "zh": "有，给你。小票也有。"
+    },
+    {
+     "who": "Clerk",
+     "t": "Would you like a refund or an exchange?",
+     "zh": "要退款还是换货？"
+    },
+    {
+     "who": "You",
+     "t": "Can I exchange it for the same one?",
+     "zh": "能换一个一样的吗？"
+    },
+    {
+     "who": "Clerk",
+     "t": "We're out of stock right now, sorry.",
+     "zh": "抱歉，现在没货了。"
+    },
+    {
+     "who": "You",
+     "t": "Then a refund, please.",
+     "zh": "那就退款吧。"
+    },
+    {
+     "who": "Clerk",
+     "t": "It'll go back on your card in a few days.",
+     "zh": "几天内会退回你的卡上。"
+    },
+    {
+     "who": "You",
+     "t": "Okay, thank you.",
+     "zh": "好的，谢谢。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "I'd like to return this.",
+     "zh": "我想退这个。"
+    },
+    {
+     "t": "It stopped working after a week.",
+     "zh": "用了一周就坏了。"
+    },
+    {
+     "t": "It's missing some parts.",
+     "zh": "缺了一些零件。"
+    },
+    {
+     "t": "I don't have the receipt.",
+     "zh": "我没有小票。"
+    },
+    {
+     "t": "Can you look it up with my membership card?",
+     "zh": "能用我的会员卡查一下吗？"
+    },
+    {
+     "t": "Can I exchange it for a different size?",
+     "zh": "能换一个别的尺寸吗？"
+    },
+    {
+     "t": "I'd like a refund, please.",
+     "zh": "我想退款。"
+    },
+    {
+     "t": "I opened the box, but I never used it.",
+     "zh": "盒子打开了，但我没用过。"
+    },
+    {
+     "t": "Where's the returns counter?",
+     "zh": "退货柜台在哪？"
+    },
+    {
+     "t": "Will the refund go back on my card?",
+     "zh": "退款会回到我卡上吗？"
+    },
+    {
+     "t": "How long does the refund take?",
+     "zh": "退款要多久？"
+    },
+    {
+     "t": "Is this item still on sale?",
+     "zh": "这个还在打折吗？"
+    },
+    {
+     "t": "Do you have this in stock?",
+     "zh": "这个有货吗？"
+    }
+   ]
+  },
+  {
+   "id": "call-911",
+   "name": "打 911",
+   "icon": "🚨",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "只在紧急情况打 911。保持冷静，先报地址（位置最重要），再说发生了什么、有没有人受伤，别先挂电话。",
+   "dialog": [
+    {
+     "who": "Dispatcher",
+     "t": "911, what's the address of your emergency?",
+     "zh": "911，紧急情况的地址在哪？"
+    },
+    {
+     "who": "You",
+     "t": "Twelve fifty West Foothill Boulevard, Upland.",
+     "zh": "Upland 西 Foothill 大道 1250 号。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "What's going on?",
+     "zh": "发生了什么？"
+    },
+    {
+     "who": "You",
+     "t": "There's been a car accident. Two cars.",
+     "zh": "出车祸了，两辆车。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Is anyone hurt?",
+     "zh": "有人受伤吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, one driver is bleeding from the head.",
+     "zh": "有，一个司机头在流血。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Is he awake and breathing?",
+     "zh": "他清醒吗？有呼吸吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, he's awake and talking.",
+     "zh": "有，他醒着，能说话。"
+    },
+    {
+     "who": "Dispatcher",
+     "t": "Help is on the way. Stay on the line.",
+     "zh": "救援在路上了，别挂电话。"
+    },
+    {
+     "who": "You",
+     "t": "Okay. I'm staying with him.",
+     "zh": "好的，我陪着他。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "I need an ambulance.",
+     "zh": "我需要救护车。"
+    },
+    {
+     "t": "I need the police.",
+     "zh": "我需要警察。"
+    },
+    {
+     "t": "There's a fire.",
+     "zh": "着火了。"
+    },
+    {
+     "t": "My address is twelve fifty West Foothill Boulevard.",
+     "zh": "我的地址是西 Foothill 大道 1250 号。",
+     "note": "地址先说，一个数字一个数字说清楚"
+    },
+    {
+     "t": "I'm at the corner of Euclid and Foothill.",
+     "zh": "我在 Euclid 和 Foothill 交叉口。"
+    },
+    {
+     "t": "I'm on the 10 freeway, heading east.",
+     "zh": "我在 10 号高速上，往东开。"
+    },
+    {
+     "t": "Someone is hurt.",
+     "zh": "有人受伤了。"
+    },
+    {
+     "t": "He's not breathing.",
+     "zh": "他没有呼吸。"
+    },
+    {
+     "t": "She's unconscious.",
+     "zh": "她昏迷了。"
+    },
+    {
+     "t": "There's been a car accident.",
+     "zh": "出车祸了。"
+    },
+    {
+     "t": "I smell gas in the house.",
+     "zh": "房子里有煤气味。"
+    },
+    {
+     "t": "My phone number is nine zero nine, five five five, zero one two three.",
+     "zh": "我电话 909-555-0123。",
+     "note": "示例号码，换成你的"
+    },
+    {
+     "t": "I'll stay on the line.",
+     "zh": "我不挂电话。"
+    },
+    {
+     "t": "I need a Mandarin interpreter.",
+     "zh": "我需要普通话翻译。",
+     "note": "911 可以要求免费翻译"
+    }
+   ]
+  },
+  {
+   "id": "neighbors",
+   "name": "邻居寒暄",
+   "icon": "👋",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "和邻居打招呼、自我介绍、聊几句，也练习客气地提要求（停车、噪音、帮忙收快递）。",
+   "dialog": [
+    {
+     "who": "Neighbor",
+     "t": "Hi there! Did you just move in?",
+     "zh": "你好！你刚搬来吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, last week. I'm Steve.",
+     "zh": "是的，上周。我叫 Steve。"
+    },
+    {
+     "who": "Neighbor",
+     "t": "Nice to meet you. I'm Linda, from next door.",
+     "zh": "很高兴认识你，我是隔壁的 Linda。"
+    },
+    {
+     "who": "You",
+     "t": "Nice to meet you too. How long have you lived here?",
+     "zh": "我也很高兴认识你。你在这住多久了？"
+    },
+    {
+     "who": "Neighbor",
+     "t": "About ten years. It's a quiet street.",
+     "zh": "大概十年了，这条街很安静。"
+    },
+    {
+     "who": "You",
+     "t": "That's good to hear. Which day is trash pickup?",
+     "zh": "那太好了。哪天收垃圾？"
+    },
+    {
+     "who": "Neighbor",
+     "t": "Tuesday morning. Put the bins out Monday night.",
+     "zh": "周二早上，周一晚上把桶放出去。"
+    },
+    {
+     "who": "You",
+     "t": "Thanks for the tip.",
+     "zh": "谢谢提醒。"
+    },
+    {
+     "who": "Neighbor",
+     "t": "Let me know if you need anything.",
+     "zh": "需要什么就跟我说。"
+    },
+    {
+     "who": "You",
+     "t": "Thanks, same here. Have a good evening.",
+     "zh": "谢谢，我也一样。晚上愉快。"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "Hi, I'm Steve. I just moved in next door.",
+     "zh": "你好，我是 Steve，刚搬到隔壁。"
+    },
+    {
+     "t": "Nice to meet you.",
+     "zh": "很高兴认识你。"
+    },
+    {
+     "t": "How's it going?",
+     "zh": "最近怎么样？"
+    },
+    {
+     "t": "Beautiful day, isn't it?",
+     "zh": "天气真好，是吧？"
+    },
+    {
+     "t": "Your garden looks great.",
+     "zh": "你的花园真漂亮。"
+    },
+    {
+     "t": "Which day is trash pickup?",
+     "zh": "哪天收垃圾？"
+    },
+    {
+     "t": "Could you keep an eye on my place this weekend?",
+     "zh": "这周末能帮我照看一下房子吗？"
+    },
+    {
+     "t": "Could you grab my packages while I'm away?",
+     "zh": "我不在时能帮我收一下快递吗？"
+    },
+    {
+     "t": "Would you mind not parking in front of my driveway?",
+     "zh": "能不能别停在我车道前面？",
+     "note": "客气地提要求"
+    },
+    {
+     "t": "Sorry, was I too loud last night?",
+     "zh": "抱歉，我昨晚太吵了吗？"
+    },
+    {
+     "t": "Let me know if you need anything.",
+     "zh": "需要什么就告诉我。"
+    },
+    {
+     "t": "Have a good one!",
+     "zh": "祝你愉快！",
+     "note": "随口道别"
+    },
+    {
+     "t": "See you around.",
+     "zh": "回头见。"
+    }
+   ]
+  },
+  {
+   "id": "insurance-call",
+   "name": "保险公司打电话",
+   "icon": "🛡️",
+   "group": "生活",
+   "lang": "en-US",
+   "intro": "给保险公司打电话：报保单号、报理赔（claim）、问保费和免赔额。记下理赔号和处理人名字。",
+   "dialog": [
+    {
+     "who": "Agent",
+     "t": "Thank you for calling. How can I help you?",
+     "zh": "感谢来电，有什么可以帮您？"
+    },
+    {
+     "who": "You",
+     "t": "I need to file a claim. Someone hit my car.",
+     "zh": "我要报理赔，有人撞了我的车。"
+    },
+    {
+     "who": "Agent",
+     "t": "I'm sorry to hear that. Is everyone okay?",
+     "zh": "很遗憾。大家都没事吧？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, nobody was hurt.",
+     "zh": "没事，没人受伤。"
+    },
+    {
+     "who": "Agent",
+     "t": "Can I have your policy number?",
+     "zh": "能给我您的保单号吗？"
+    },
+    {
+     "who": "You",
+     "t": "Sure. It's A-B, seven seven three, four one nine.",
+     "zh": "好的，AB773419。"
+    },
+    {
+     "who": "Agent",
+     "t": "When and where did it happen?",
+     "zh": "什么时候在哪里发生的？"
+    },
+    {
+     "who": "You",
+     "t": "Yesterday around five, in a parking lot in Upland.",
+     "zh": "昨天五点左右，在 Upland 一个停车场。"
+    },
+    {
+     "who": "Agent",
+     "t": "Did you get the other driver's information?",
+     "zh": "你拿到对方司机的信息了吗？"
+    },
+    {
+     "who": "You",
+     "t": "Yes, I have his name, insurance, and license plate.",
+     "zh": "拿到了，有他的名字、保险和车牌。"
+    },
+    {
+     "who": "Agent",
+     "t": "Great. Your claim number is C-two-two-eight-one.",
+     "zh": "好的，您的理赔号是 C2281。"
+    },
+    {
+     "who": "You",
+     "t": "Thanks. Who will be handling my claim?",
+     "zh": "谢谢。谁负责我的理赔？"
+    }
+   ],
+   "phrases": [
+    {
+     "t": "I'd like to file a claim.",
+     "zh": "我想报理赔。"
+    },
+    {
+     "t": "My policy number is A-B, seven seven three, four one nine.",
+     "zh": "我的保单号是 AB773419。"
+    },
+    {
+     "t": "I was in a car accident.",
+     "zh": "我出了车祸。"
+    },
+    {
+     "t": "It wasn't my fault.",
+     "zh": "不是我的责任。"
+    },
+    {
+     "t": "I have photos of the damage.",
+     "zh": "我有损坏的照片。"
+    },
+    {
+     "t": "What's my deductible?",
+     "zh": "我的免赔额是多少？"
+    },
+    {
+     "t": "Does my policy cover a rental car?",
+     "zh": "我的保单包括租车吗？"
+    },
+    {
+     "t": "Why did my premium go up?",
+     "zh": "我的保费为什么涨了？"
+    },
+    {
+     "t": "I'd like to add a driver to my policy.",
+     "zh": "我想在保单上加一个司机。"
+    },
+    {
+     "t": "Can I get a quote for home insurance?",
+     "zh": "能给我报个房屋保险的价吗？"
+    },
+    {
+     "t": "What's my claim number?",
+     "zh": "我的理赔号是多少？"
+    },
+    {
+     "t": "Who is my adjuster?",
+     "zh": "谁是我的理赔员？",
+     "note": "adjuster = 理赔调查员"
+    },
+    {
+     "t": "How long will this take?",
+     "zh": "这要多久？"
+    },
+    {
+     "t": "Can you email me a copy of my policy?",
+     "zh": "能把保单副本发邮件给我吗？"
+    }
+   ]
+  }
+ ]
+}

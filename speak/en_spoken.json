@@ -1,0 +1,603 @@
+{
+ "packs": [
+  {
+   "id": "en-pv-work",
+   "name": "工作常用短语动词",
+   "icon": "🧰",
+   "group": "口语",
+   "lang": "en-US",
+   "intro": "美国同事说话大量用短语动词，而不是书面词。每句都是工作场景里的完整句子，note 里是动词和意思。",
+   "phrases": [
+    {
+     "t": "The driver will pick up the container at two.",
+     "zh": "司机两点来提柜。",
+     "note": "pick up = 提取、接走"
+    },
+    {
+     "t": "Can you drop off the empty at gate three?",
+     "zh": "你能把空柜放到三号门吗？",
+     "note": "drop off = 放下、送到"
+    },
+    {
+     "t": "Please check in at the guard shack first.",
+     "zh": "请先到门卫室登记。",
+     "note": "check in = 登记报到"
+    },
+    {
+     "t": "You need to fill out this form.",
+     "zh": "你需要填一下这张表。",
+     "note": "fill out = 填写（表格）"
+    },
+    {
+     "t": "We're running out of seals.",
+     "zh": "我们封条快用完了。",
+     "note": "run out of = 用完、耗尽"
+    },
+    {
+     "t": "He didn't show up for his shift today.",
+     "zh": "他今天没来上班。",
+     "note": "show up = 出现、到场"
+    },
+    {
+     "t": "Back it up a little more.",
+     "zh": "再往后倒一点。",
+     "note": "back up = 倒车；也有“备份、支持”的意思"
+    },
+    {
+     "t": "Line up the trucks along the fence.",
+     "zh": "让卡车沿着围栏排好。",
+     "note": "line up = 排队、排成一行"
+    },
+    {
+     "t": "Hold on, let me check the system.",
+     "zh": "等一下，我查查系统。",
+     "note": "hold on = 稍等"
+    },
+    {
+     "t": "I'll swing by the office after lunch.",
+     "zh": "午饭后我顺路去趟办公室。",
+     "note": "swing by = 顺路过去一下"
+    },
+    {
+     "t": "I'll follow up with the dispatcher.",
+     "zh": "我会跟调度再跟进一下。",
+     "note": "follow up (with) = 跟进"
+    },
+    {
+     "t": "We need to figure out where it went.",
+     "zh": "我们得搞清楚它去哪了。",
+     "note": "figure out = 弄明白、想出"
+    },
+    {
+     "t": "Let's sort out the paperwork first.",
+     "zh": "我们先把单据理清楚。",
+     "note": "sort out = 整理、解决"
+    },
+    {
+     "t": "Hand over the keys when you're done.",
+     "zh": "做完把钥匙交过来。",
+     "note": "hand over = 移交、交出"
+    },
+    {
+     "t": "Can you set up the new scanner?",
+     "zh": "你能把新扫描器装好吗？",
+     "note": "set up = 安装、设置"
+    },
+    {
+     "t": "Don't forget to clock out.",
+     "zh": "别忘了打卡下班。",
+     "note": "clock out = 下班打卡；clock in = 上班打卡"
+    },
+    {
+     "t": "Can you fill in for Mike tomorrow?",
+     "zh": "你明天能替一下 Mike 吗？",
+     "note": "fill in for = 代班、顶替"
+    },
+    {
+     "t": "The truck broke down on the freeway.",
+     "zh": "卡车在高速上抛锚了。",
+     "note": "break down = 抛锚、坏掉"
+    },
+    {
+     "t": "Write down the container number for me.",
+     "zh": "帮我把柜号写下来。",
+     "note": "write down = 写下来、记下"
+    },
+    {
+     "t": "We're backed up at the gate again.",
+     "zh": "门口又堵了。",
+     "note": "backed up = 堵住、积压"
+    }
+   ]
+  },
+  {
+   "id": "en-pv-life",
+   "name": "生活常用短语动词",
+   "icon": "🏠",
+   "group": "口语",
+   "lang": "en-US",
+   "intro": "生活里最常用的短语动词，美剧和邻居聊天都离不开。每句都是完整例句，note 里是动词和意思。",
+   "phrases": [
+    {
+     "t": "I'll look into it this weekend.",
+     "zh": "我这周末研究一下。",
+     "note": "look into = 调查、研究"
+    },
+    {
+     "t": "Stop putting off the dentist.",
+     "zh": "别再拖着不去看牙了。",
+     "note": "put off = 拖延、推迟"
+    },
+    {
+     "t": "She came up with a great idea.",
+     "zh": "她想出了一个好主意。",
+     "note": "come up with = 想出（主意、办法）"
+    },
+    {
+     "t": "It took me a week to get over the cold.",
+     "zh": "我花了一周才从感冒中恢复。",
+     "note": "get over = 从…中恢复、克服"
+    },
+    {
+     "t": "He turned down the job offer.",
+     "zh": "他拒绝了那份工作。",
+     "note": "turn down = 拒绝；也指调小音量"
+    },
+    {
+     "t": "Our flight takes off at nine.",
+     "zh": "我们的航班九点起飞。",
+     "note": "take off = 起飞；也指脱下、请假"
+    },
+    {
+     "t": "I ran into an old friend at Costco.",
+     "zh": "我在 Costco 碰到一个老朋友。",
+     "note": "run into = 偶遇"
+    },
+    {
+     "t": "We ended up eating at home.",
+     "zh": "我们最后在家吃了。",
+     "note": "end up = 最后（落得）…"
+    },
+    {
+     "t": "Can you pick me up from the station?",
+     "zh": "你能到车站接我吗？",
+     "note": "pick (someone) up = 开车去接某人"
+    },
+    {
+     "t": "I need to figure out my taxes.",
+     "zh": "我得把我的税弄明白。",
+     "note": "figure out = 弄清楚"
+    },
+    {
+     "t": "We just moved in last month.",
+     "zh": "我们上个月刚搬进来。",
+     "note": "move in = 搬入；move out = 搬出"
+    },
+    {
+     "t": "I'm trying to cut down on sugar.",
+     "zh": "我在努力少吃糖。",
+     "note": "cut down on = 减少"
+    },
+    {
+     "t": "Let's eat out tonight.",
+     "zh": "今晚出去吃吧。",
+     "note": "eat out = 在外面吃饭"
+    },
+    {
+     "t": "Don't give up, you're almost there.",
+     "zh": "别放弃，就快成功了。",
+     "note": "give up = 放弃"
+    },
+    {
+     "t": "I'll look after your dog this weekend.",
+     "zh": "这周末我帮你照看狗。",
+     "note": "look after = 照顾"
+    },
+    {
+     "t": "Please turn off the lights.",
+     "zh": "请把灯关了。",
+     "note": "turn off = 关掉；turn on = 打开"
+    },
+    {
+     "t": "We get along really well.",
+     "zh": "我们相处得很好。",
+     "note": "get along (with) = 相处融洽"
+    },
+    {
+     "t": "I'm looking forward to the trip.",
+     "zh": "我很期待这次旅行。",
+     "note": "look forward to = 期待（后接名词或 -ing）"
+    },
+    {
+     "t": "Let me think it over.",
+     "zh": "让我再想想。",
+     "note": "think over = 仔细考虑"
+    }
+   ]
+  },
+  {
+   "id": "en-office",
+   "name": "职场客套话",
+   "icon": "💼",
+   "group": "口语",
+   "lang": "en-US",
+   "intro": "跟主管、办公室、调度沟通时的礼貌开场和收尾。语气友好又专业，是美国职场的润滑剂。",
+   "phrases": [
+    {
+     "t": "Sorry to bother you.",
+     "zh": "抱歉打扰你一下。",
+     "note": "开口找人时最常用"
+    },
+    {
+     "t": "Quick question for you.",
+     "zh": "问你个小问题。",
+     "note": "非常口语，暗示不会占用太久"
+    },
+    {
+     "t": "Do you have a minute?",
+     "zh": "你有空吗？/方便说两句吗？"
+    },
+    {
+     "t": "Just to confirm, it's gate five, right?",
+     "zh": "确认一下，是五号门对吧？",
+     "note": "Just to confirm 用来核对信息，很专业"
+    },
+    {
+     "t": "I'll get back to you on that.",
+     "zh": "这事我稍后回复你。"
+    },
+    {
+     "t": "No worries.",
+     "zh": "没事/别担心。",
+     "note": "回应道歉或感谢都可以"
+    },
+    {
+     "t": "My bad, I'll fix it.",
+     "zh": "我的错，我来改。",
+     "note": "My bad = 我的错，口语、随意"
+    },
+    {
+     "t": "Heads up, the truck is running late.",
+     "zh": "提醒一下，卡车要晚到。",
+     "note": "Heads up = 提前提醒"
+    },
+    {
+     "t": "Thanks for the heads up.",
+     "zh": "谢谢提醒。"
+    },
+    {
+     "t": "Let me know if you need anything.",
+     "zh": "需要什么跟我说。"
+    },
+    {
+     "t": "I'm on it.",
+     "zh": "我这就去办。",
+     "note": "表示马上处理，很干脆"
+    },
+    {
+     "t": "Sounds good.",
+     "zh": "好的/听起来不错。",
+     "note": "职场最万能的同意回复"
+    },
+    {
+     "t": "I'll keep you posted.",
+     "zh": "有进展我随时告诉你。"
+    },
+    {
+     "t": "Could you walk me through it?",
+     "zh": "你能一步步给我讲讲吗？",
+     "note": "walk someone through = 一步一步讲解"
+    },
+    {
+     "t": "I appreciate your help.",
+     "zh": "感谢你的帮助。",
+     "note": "比 thanks 更正式一点"
+    },
+    {
+     "t": "Sorry, could you say that again?",
+     "zh": "抱歉，你能再说一遍吗？"
+    },
+    {
+     "t": "Got it, thanks.",
+     "zh": "明白了，谢谢。"
+    },
+    {
+     "t": "I'll double-check and let you know.",
+     "zh": "我再核实一下然后告诉你。"
+    }
+   ]
+  },
+  {
+   "id": "en-socal",
+   "name": "南加州日常口语和俚语",
+   "icon": "🌴",
+   "group": "口语",
+   "lang": "en-US",
+   "intro": "南加州人说话的特色：高速前加 the，五六月阴天有专名，年轻人有自己的俚语。note 标了俚语程度和使用人群。",
+   "phrases": [
+    {
+     "t": "Take the 10 to the 15, then get on the 210.",
+     "zh": "走 10 号转 15 号，再上 210。",
+     "note": "南加州说高速要加 the（the 10, the 210）；北加州一般不加 the。"
+    },
+    {
+     "t": "The 60 is a parking lot right now.",
+     "zh": "60 号高速现在堵成停车场了。",
+     "note": "a parking lot = 严重堵车，日常口语，各年龄都用。"
+    },
+    {
+     "t": "It's just June gloom, it'll clear up by noon.",
+     "zh": "只是六月阴天，中午就晴了。",
+     "note": "June gloom = 初夏沿海早上阴天，本地人都懂的说法。"
+    },
+    {
+     "t": "May gray is lasting forever this year.",
+     "zh": "今年五月阴天怎么没完没了。",
+     "note": "May gray = 五月阴天，与 June gloom 同类说法。"
+    },
+    {
+     "t": "I'm so stoked for the weekend.",
+     "zh": "我太期待周末了。",
+     "note": "stoked = 超兴奋，冲浪文化来的，各年龄都用，轻度俚语。"
+    },
+    {
+     "t": "That wave was gnarly.",
+     "zh": "那个浪太猛了。",
+     "note": "gnarly = 厉害/很猛（也可指很糟），冲浪俚语，偏80-90年代风格。"
+    },
+    {
+     "t": "This taco spot is legit.",
+     "zh": "这家塔可店真的很正。",
+     "note": "legit = 正宗、靠谱，年轻人和中年人都常用。"
+    },
+    {
+     "t": "That place is hella busy.",
+     "zh": "那地方超级忙。",
+     "note": "hella = very/非常，起源于北加州湾区，南加州也能听到，年轻人用，较随意。"
+    },
+    {
+     "t": "This burrito is fire, no cap.",
+     "zh": "这个墨西哥卷绝了，不骗你。",
+     "note": "fire = 超棒；no cap = 不吹牛/真的，Z世代俚语，年长人很少用。"
+    },
+    {
+     "t": "Dude, that's sick!",
+     "zh": "哥们，太酷了！",
+     "note": "sick = 很酷，年轻人俚语；dude 各年龄男女都常用。"
+    },
+    {
+     "t": "We're going to the beach, wanna come?",
+     "zh": "我们去海滩，要一起来吗？",
+     "note": "wanna = want to，口语缩读。"
+    },
+    {
+     "t": "It's like ninety degrees out here.",
+     "zh": "外面得有九十度。",
+     "note": "like 作填充词很加州；温度是华氏度。"
+    },
+    {
+     "t": "Santa Anas are blowing, so it's super dry.",
+     "zh": "圣安娜风在刮，特别干。",
+     "note": "Santa Ana winds = 秋季从内陆吹来的干热风，本地常识。"
+    },
+    {
+     "t": "Let's grab In-N-Out on the way home.",
+     "zh": "回家路上去吃 In-N-Out 吧。",
+     "note": "grab = 随便买点吃的，日常口语。"
+    },
+    {
+     "t": "I'm down, let's do it.",
+     "zh": "我加入，走起。",
+     "note": "I'm down = 我愿意参加，年轻人常用，轻度俚语。"
+    },
+    {
+     "t": "It's not that far, like twenty minutes without traffic.",
+     "zh": "不算远，不堵车大概二十分钟。",
+     "note": "南加州人用时间而不是英里说距离。"
+    },
+    {
+     "t": "That's a vibe.",
+     "zh": "那氛围很棒。",
+     "note": "a vibe = 很有感觉，年轻人俚语。"
+    },
+    {
+     "t": "He's super chill.",
+     "zh": "他人很随和。",
+     "note": "chill = 随和、放松，各年龄都用。"
+    }
+   ]
+  },
+  {
+   "id": "en-idioms-news",
+   "name": "新闻里常见的习语",
+   "icon": "📰",
+   "group": "口语",
+   "lang": "en-US",
+   "intro": "新闻、播客和财经报道里反复出现的习语。会说这些，听新闻会轻松很多。",
+   "phrases": [
+    {
+     "t": "Critics say it's a slippery slope.",
+     "zh": "批评者说这会一发不可收拾。",
+     "note": "a slippery slope = 滑坡效应、一步错步步错"
+    },
+    {
+     "t": "The storm was a wake-up call for the city.",
+     "zh": "这场风暴给城市敲响了警钟。",
+     "note": "a wake-up call = 警钟"
+    },
+    {
+     "t": "Can you give me a ballpark figure?",
+     "zh": "你能给我个大概数吗？",
+     "note": "a ballpark figure = 粗略估计"
+    },
+    {
+     "t": "All options are still on the table.",
+     "zh": "所有选项都还在考虑中。",
+     "note": "on the table = 在讨论/考虑中"
+    },
+    {
+     "t": "These cases are just the tip of the iceberg.",
+     "zh": "这些案例只是冰山一角。",
+     "note": "the tip of the iceberg = 冰山一角"
+    },
+    {
+     "t": "The two sides are back to square one.",
+     "zh": "双方又回到了原点。",
+     "note": "back to square one = 回到原点"
+    },
+    {
+     "t": "The company is in hot water again.",
+     "zh": "这家公司又惹上麻烦了。",
+     "note": "in hot water = 陷入麻烦"
+    },
+    {
+     "t": "Investors are taking a wait-and-see approach.",
+     "zh": "投资者在观望。",
+     "note": "wait-and-see = 观望的"
+    },
+    {
+     "t": "The deal fell through at the last minute.",
+     "zh": "交易在最后一刻告吹了。",
+     "note": "fall through = 落空、告吹"
+    },
+    {
+     "t": "Prices went through the roof.",
+     "zh": "价格飞涨。",
+     "note": "go through the roof = 暴涨"
+    },
+    {
+     "t": "The plan is still up in the air.",
+     "zh": "计划还悬而未决。",
+     "note": "up in the air = 未定"
+    },
+    {
+     "t": "Lawmakers kicked the can down the road.",
+     "zh": "议员们又把问题往后拖了。",
+     "note": "kick the can down the road = 拖延问题"
+    },
+    {
+     "t": "The market took a hit this week.",
+     "zh": "本周市场受到冲击。",
+     "note": "take a hit = 受到打击"
+    },
+    {
+     "t": "It's a double-edged sword.",
+     "zh": "这是一把双刃剑。",
+     "note": "a double-edged sword = 双刃剑"
+    },
+    {
+     "t": "Officials are under fire for the delay.",
+     "zh": "官员们因延误受到抨击。",
+     "note": "under fire = 遭受批评"
+    },
+    {
+     "t": "The two parties hammered out a deal.",
+     "zh": "两党敲定了协议。",
+     "note": "hammer out = 经过艰苦谈判达成"
+    },
+    {
+     "t": "Ports are feeling the pinch.",
+     "zh": "港口感到了压力。",
+     "note": "feel the pinch = 感受到（经济）压力"
+    },
+    {
+     "t": "It's a game changer for the industry.",
+     "zh": "这对行业来说是颠覆性的。",
+     "note": "a game changer = 改变格局的事物"
+    }
+   ]
+  },
+  {
+   "id": "en-smalltalk",
+   "name": "闲聊万能句和接话",
+   "icon": "💬",
+   "group": "口语",
+   "lang": "en-US",
+   "intro": "听别人说话时及时接一句，对话就不会冷场。这些短句几乎在任何闲聊里都能用。",
+   "phrases": [
+    {
+     "t": "That makes sense.",
+     "zh": "有道理。"
+    },
+    {
+     "t": "No way!",
+     "zh": "不会吧！",
+     "note": "表示惊讶，语调上扬"
+    },
+    {
+     "t": "Tell me about it.",
+     "zh": "可不是嘛。",
+     "note": "表示深有同感，不是真的要你讲"
+    },
+    {
+     "t": "I hear you.",
+     "zh": "我懂你的意思。",
+     "note": "表示理解对方感受"
+    },
+    {
+     "t": "You got it.",
+     "zh": "没问题/好嘞。",
+     "note": "答应别人请求时用"
+    },
+    {
+     "t": "Fair enough.",
+     "zh": "说得也是。",
+     "note": "接受对方的理由"
+    },
+    {
+     "t": "Oh, really? How come?",
+     "zh": "哦，真的吗？为什么？",
+     "note": "How come = why，更口语"
+    },
+    {
+     "t": "That's awesome, good for you.",
+     "zh": "太棒了，替你高兴。"
+    },
+    {
+     "t": "I know, right?",
+     "zh": "是吧，我也这么觉得！",
+     "note": "强烈附和，年轻人常用"
+    },
+    {
+     "t": "Same here.",
+     "zh": "我也是。"
+    },
+    {
+     "t": "What have you been up to?",
+     "zh": "最近在忙什么？"
+    },
+    {
+     "t": "Not much, just working.",
+     "zh": "没什么，就是上班。"
+    },
+    {
+     "t": "That's too bad, sorry to hear that.",
+     "zh": "太遗憾了，听到这个很难过。"
+    },
+    {
+     "t": "You're telling me.",
+     "zh": "还用你说。",
+     "note": "表示“我太清楚了”，同 Tell me about it"
+    },
+    {
+     "t": "Good point.",
+     "zh": "说得好。"
+    },
+    {
+     "t": "I'm not sure, to be honest.",
+     "zh": "说实话，我不太确定。"
+    },
+    {
+     "t": "Anyway, I gotta get going.",
+     "zh": "好了，我得走了。",
+     "note": "gotta = got to；用来自然结束对话"
+    },
+    {
+     "t": "Catch you later.",
+     "zh": "回头见。",
+     "note": "随意的道别"
+    }
+   ]
+  }
+ ]
+}
