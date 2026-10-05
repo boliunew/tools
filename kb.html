@@ -116,6 +116,21 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
 .calc .res{font-size:14px;line-height:1.7;margin-top:8px;min-height:24px}
 .calc .big{font-family:var(--mono);font-size:22px;font-weight:700;letter-spacing:.06em}
 .calc .big i{font-style:normal;color:var(--accent);border:2px solid var(--accent);border-radius:5px;padding:0 4px;margin-left:4px}
+.calc2 .fg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.calc2 label{font-size:12.5px;color:var(--soft);display:flex;flex-direction:column;gap:3px}
+.calc2 label input{font-size:17px;letter-spacing:0;text-transform:none;padding:7px 9px}
+.calc2 .seg2{display:flex;gap:6px;margin-bottom:8px}
+.calc2 .seg2 button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:3px 12px;font-size:13px}
+.calc2 .seg2 button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.calc2 .kpi{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
+.calc2 .kpi div{background:var(--bg);border-radius:10px;padding:7px 9px;font-size:12px;color:var(--soft)}
+.calc2 .kpi b{display:block;font-size:17px;color:var(--ink);font-family:var(--mono)}
+.calc2 table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+.calc2 td,.calc2 th{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right;font-family:var(--mono)}
+.calc2 th{font-family:inherit;color:var(--soft);font-weight:600}
+.calc2 td:first-child,.calc2 th:first-child{text-align:left}
+.calc2 .bar{height:8px;border-radius:4px;background:var(--chip);overflow:hidden;margin-top:3px}
+.calc2 .bar i{display:block;height:100%;background:var(--accent)}
 .calc .ok{color:var(--ok);font-weight:700}
 .calc .no{color:var(--bad);font-weight:700}
 .calc .hint{font-size:12.5px;color:var(--soft)}
@@ -283,6 +298,8 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
   }
   function codeBlock(lang, code) {
     if (lang === 'astro-tonight' || lang === 'astro-calendar') return '<div class="astro" data-astro="' + lang.slice(6) + '"><div class="note">正在计算…</div></div>';
+    if (lang === 'calc-compound') return '<div class="calc calc2" data-calc="compound"><div class="fg"><label>一开始投入 $<input data-k="p0" inputmode="decimal" value="10000"></label><label>每月定投 $<input data-k="pm" inputmode="decimal" value="500"></label><label>年化回报 %<input data-k="r" inputmode="decimal" value="8"></label><label>投资年数<input data-k="y" inputmode="numeric" value="25"></label><label>基金年费率 %<input data-k="fee" inputmode="decimal" value="0.03"></label></div><div class="res"></div></div>';
+    if (lang === 'calc-load') return '<div class="calc calc2" data-calc="load"><div class="seg2"><button data-u="in" class="on">英寸 / 磅</button><button data-u="cm">厘米 / 公斤</button></div><div class="fg"><label>箱长<input data-k="l" inputmode="decimal" value="24"></label><label>箱宽<input data-k="w" inputmode="decimal" value="16"></label><label>箱高<input data-k="h" inputmode="decimal" value="12"></label><label>每箱重<input data-k="kg" inputmode="decimal" value="30"></label><label>箱数<input data-k="n" inputmode="numeric" value="500"></label></div><div class="res"></div></div>';
     if (lang === 'calc-iso6346') return '<div class="calc" data-calc="iso6346"><input placeholder="输入柜号，如 CSQU305438" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false"><div class="res"></div></div>';
     CTX.codes.push(code);
     return '<div class="code"><pre><code' + (lang ? ' class="lang-' + esc(lang) + '"' : '') + '>' + esc(code) + '</code></pre><button class="cp" data-code="' + (CTX.codes.length - 1) + '">复制</button></div>';
@@ -410,6 +427,68 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       res.innerHTML = h;
     }
     inp.addEventListener('input', run); run();
+  }
+
+  /* ====================== 定投复利计算器 ====================== */
+  function money(x) { return '$' + Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function calcCompound(box) {
+    var res = box.querySelector('.res');
+    function v(k) { var x = parseFloat(String(box.querySelector('[data-k=' + k + ']').value).replace(/[^\d.\-]/g, '')); return isNaN(x) ? 0 : x; }
+    function sim(p0, pm, r, y, fee) {
+      var m = Math.pow(1 + (r - fee) / 100, 1 / 12) - 1, bal = p0, rows = [], i;
+      for (i = 1; i <= Math.round(y * 12); i++) { bal = bal * (1 + m) + pm; if (i % 60 === 0 || i === Math.round(y * 12)) rows.push([i / 12, bal, p0 + pm * i]); }
+      return { bal: bal, rows: rows };
+    }
+    function run() {
+      var p0 = v('p0'), pm = v('pm'), r = v('r'), y = Math.min(60, Math.max(1, v('y'))), fee = v('fee');
+      var a = sim(p0, pm, r, y, fee), b = sim(p0, pm, r, y, 1), put = p0 + pm * 12 * y, h = '';
+      h += '<div class="kpi"><div>' + y + ' 年后大约<b>' + money(a.bal) + '</b></div><div>自己一共投入<b>' + money(put) + '</b></div>' +
+        '<div>赚到的部分<b>' + money(a.bal - put) + '</b></div><div>相当于本金的<b>' + (put ? (a.bal / put).toFixed(1) : '—') + ' 倍</b></div></div>';
+      h += '<table><tr><th>第几年</th><th>投入</th><th>账户</th><th>其中收益</th></tr>' + a.rows.map(function (x) { return '<tr><td>' + Math.round(x[0]) + '</td><td>' + money(x[2]) + '</td><td>' + money(x[1]) + '</td><td>' + Math.round((x[1] - x[2]) / Math.max(1, x[1]) * 100) + '%</td></tr>'; }).join('') + '</table>';
+      if (fee < 1) h += '<div class="hint" style="margin-top:6px">💸 如果年费率是 1%（很多主动基金的水平），同样条件最后只有 <b>' + money(b.bal) + '</b>，少了 <b>' + money(a.bal - b.bal) + '</b>。</div>';
+      h += '<div class="hint">按每月复利、费率从回报里扣除估算；真实回报每年起伏很大，不代表未来。</div>';
+      res.innerHTML = h;
+    }
+    box.addEventListener('input', run); run();
+  }
+  /* ====================== 装柜 / 装托计算器 ====================== */
+  function calcLoad(box) {
+    var res = box.querySelector('.res'), U = 'in';
+    var CT = [['20 尺普柜', 28, 17000], ['40 尺普柜', 58, 19500], ['40 尺高柜', 68, 19500]];   // 实际可装 CBM（约）；美国公路上大概能装的货重（公斤，约）
+    function v(k) { var x = parseFloat(String(box.querySelector('[data-k=' + k + ']').value).replace(/[^\d.]/g, '')); return isNaN(x) ? 0 : x; }
+    function fit(L, W, l, w) { return Math.max(Math.floor(L / l) * Math.floor(W / w), Math.floor(L / w) * Math.floor(W / l)); }
+    function run() {
+      var cm = U === 'cm' ? 1 : 2.54, kgf = U === 'cm' ? 1 : 0.45359237;
+      var l = v('l') * cm, w = v('w') * cm, h = v('h') * cm, kg = v('kg') * kgf, n = Math.max(0, Math.round(v('n')));
+      if (!l || !w || !h) { res.innerHTML = '<span class="hint">填上箱子的长宽高</span>'; return; }
+      var cbm = l * w * h / 1e6, tot = cbm * n, tw = kg * n, out = '';
+      out += '<div class="kpi"><div>每箱体积<b>' + cbm.toFixed(3) + ' CBM</b></div><div>总体积<b>' + tot.toFixed(1) + ' CBM</b></div>' +
+        '<div>总重量<b>' + Math.round(tw).toLocaleString() + ' kg</b></div><div>约<b>' + Math.round(tw / 0.45359237).toLocaleString() + ' lb</b></div></div>';
+      out += '<table><tr><th>柜型</th><th>装满约几箱</th><th>要几个柜</th><th>体积 / 重量</th></tr>' + CT.map(function (c) {
+        var byV = Math.floor(c[1] / cbm), byW = kg ? Math.floor(c[2] / kg) : 1e9, per = Math.min(byV, byW), need = per ? Math.ceil(n / per) : '—';
+        return '<tr><td>' + c[0] + '</td><td>' + per.toLocaleString() + (byW < byV ? ' ⚖️' : '') + '</td><td>' + need + '</td><td>' + Math.round(Math.min(100, tot / need / c[1] * 100)) + '% / ' + Math.round(Math.min(999, tw / need / c[2] * 100)) + '%</td></tr>';
+      }).join('') + '</table>';
+      // 48×40 托盘：高不超过 72 英寸（含托盘约 6 英寸），重不超过 1500 磅（FBA 要求）
+      var Lp = 48 * 2.54, Wp = 40 * 2.54, Hmax = (72 - 6) * 2.54, best = { per: 0 }, dims = [[l, w, h], [l, h, w], [w, h, l]];
+      dims.forEach(function (d) { var lay = fit(Lp, Wp, d[0], d[1]), layers = Math.floor(Hmax / d[2]), per = lay * layers; if (kg) per = Math.min(per, Math.floor(680 / kg)); if (per > best.per) best = { per: per, lay: lay, layers: layers, up: d === dims[0] }; });
+      if (best.per) out += '<div class="hint" style="margin-top:8px">📦 48×40 托盘：每层 <b>' + best.lay + '</b> 箱 × <b>' + best.layers + '</b> 层，一托最多约 <b>' + best.per + '</b> 箱' + (best.up ? '' : '（箱子要侧放，注意箱子朝上标志）') + '，' + n + ' 箱约要 <b>' + Math.ceil(n / best.per) + '</b> 托。</div>';
+      var warn = [];
+      if (kg > 50 * 0.45359237 + 0.01) warn.push('每箱超过 50 磅：送 FBA 要贴 Team Lift（单件超重）或者拆箱');
+      if (Math.max(l, w, h) > 25 * 2.54 + 0.1) warn.push('有一边超过 25 英寸：FBA 装多件标准品的箱子不允许');
+      if (warn.length) out += '<div class="hint" style="color:var(--bad)">⚠️ ' + warn.join('；') + '</div>';
+      out += '<div class="hint">⚖️ 表示被重量限制，不是被体积限制。可装 CBM 是留了空隙后的经验值；重量按美国公路上整车不超 80,000 磅粗估，实际要看底盘和车头。</div>';
+      res.innerHTML = out;
+    }
+    box.addEventListener('input', run);
+    box.querySelector('.seg2').onclick = function (e) {
+      var b = e.target.closest('[data-u]'); if (!b || b.getAttribute('data-u') === U) return;
+      var nu = b.getAttribute('data-u'), f = nu === 'cm' ? 2.54 : 1 / 2.54, fk = nu === 'cm' ? 0.45359237 : 1 / 0.45359237;
+      ['l', 'w', 'h'].forEach(function (k) { var el = box.querySelector('[data-k=' + k + ']'); el.value = Math.round(v(k) * f * 10) / 10; });
+      var ek = box.querySelector('[data-k=kg]'); ek.value = Math.round(v('kg') * fk * 10) / 10;
+      U = nu; var bs = this.querySelectorAll('button'), i; for (i = 0; i < bs.length; i++) bs[i].className = bs[i] === b ? 'on' : '';
+      box.querySelectorAll('label')[3].firstChild.nodeValue = '每箱重'; run();
+    };
+    run();
   }
 
   /* ====================== 天文小工具（用 Astronomy Engine 现算） ====================== */
@@ -678,7 +757,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       html = /^<h1[ >]/.test(html) ? html.replace(/<\/h1>/, '</h1>' + meta) : '<h1>' + esc(a.title) + '</h1>' + meta + html;
       $('body').innerHTML = html; setFs();
       var codes = CTX.codes, toc = CTX.toc, boxes = $('body').querySelectorAll('[data-calc]'), k;
-      for (k = 0; k < boxes.length; k++) calc(boxes[k]);
+      for (k = 0; k < boxes.length; k++) { var ct = boxes[k].getAttribute('data-calc'); if (ct === 'compound') calcCompound(boxes[k]); else if (ct === 'load') calcLoad(boxes[k]); else calc(boxes[k]); }
       if ($('body').querySelector('[data-astro]')) astroInit();
       $('body').onclick = function (e) { var b = e.target.closest('.cp'); if (b) copyText(codes[+b.getAttribute('data-code')]); };
       $('tocBtn').style.display = toc.length >= 2 ? '' : 'none';
