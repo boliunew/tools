@@ -1,16 +1,16 @@
 {
- "date": "2026-10-04",
- "kind": "名言",
- "en": "The years teach much which the days never know.",
- "zh": "岁月教给我们的，是一天一天里体会不到的东西。",
- "by": "Ralph Waldo Emerson",
- "line": "The years teach much which the days never know. — Ralph Waldo Emerson",
+ "date": "2026-10-05",
+ "kind": "习语",
+ "en": "put the cart before the horse",
+ "zh": "本末倒置",
+ "by": "做事顺序颠倒了",
+ "line": "put the cart before the horse",
  "word": {
-  "w": "frankly",
-  "ph": "'fræŋkli",
-  "zh": "adv. 坦白地",
-  "ex": "He frankly expressed his own view.",
-  "exzh": "他坦率地提出了自己的看法"
+  "w": "bilateral",
+  "ph": "bai'lætәrәl",
+  "zh": "a. 有两边的，双边的，双方的",
+  "ex": "Bilateral castration results in sterilization.",
+  "exzh": ""
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
