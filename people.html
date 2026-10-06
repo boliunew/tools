@@ -198,6 +198,32 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 .pair p{margin:0;font-size:14px;line-height:1.75;color:var(--soft)}
 .up-src{font-size:12.5px;line-height:1.9;color:var(--faint)}
 .up-src a{color:var(--soft)}
+
+.edu{display:flex;gap:8px;align-items:flex-start;background:var(--gold-soft);border-radius:10px;padding:8px 11px;font-size:13.5px;line-height:1.65;margin-bottom:8px}
+.edu i{font-style:normal}
+.edu b{display:block;font-size:12px;color:var(--soft)}
+.ktag{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 10px}
+.ktag span{font-size:12px;border-radius:999px;padding:0 9px;background:var(--chip);color:var(--soft)}
+.lesson{margin-top:10px;border-left:3px solid var(--gold);padding:4px 0 4px 11px;font-size:14.5px;line-height:1.8}
+.lesson b{display:block;font-size:12px;color:var(--gold)}
+.les{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 16px;margin-bottom:10px}
+.les h3{margin:0;font-size:16.5px;display:flex;gap:8px;align-items:baseline}
+.les h3 i{font-style:normal;font-family:Georgia,serif;color:var(--gold);font-size:18px}
+.les .ob{margin:8px 0 0;font-size:14.5px;line-height:1.85}
+.les .ob b,.les .my b{font-size:12px;color:var(--soft);margin-right:4px}
+.les .my{margin:8px 0 0;font-size:14.5px;line-height:1.85;background:var(--gold-soft);border-radius:10px;padding:8px 11px}
+.les .who2{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.les .who2 button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:2px 10px;font-size:13px}
+.etab{width:100%;border-collapse:collapse;font-size:13px;background:var(--paper);border-radius:12px;overflow:hidden}
+.etab th{text-align:left;font-size:12px;color:var(--soft);font-weight:600;padding:7px 8px;background:var(--chip);position:sticky;top:0}
+.etab td{padding:8px;border-top:1px solid var(--line);vertical-align:top;line-height:1.55}
+.etab td:first-child{white-space:nowrap;font-weight:600}
+.etab td small{display:block;font-weight:400;color:var(--faint);font-size:11.5px}
+.etab tr{cursor:pointer}
+.etab .k{display:inline-block;font-size:11px;background:var(--chip);border-radius:6px;padding:0 5px;margin:1px 2px 1px 0;color:var(--soft)}
+.twrap{overflow-x:auto;margin:0 -16px;padding:0 16px}
+.twrap .etab{min-width:560px}
+.cav{font-size:13px;color:var(--soft);background:var(--chip);border-radius:12px;padding:9px 12px;line-height:1.7;margin-top:6px}
 /* ---------- 阿西莫夫 ---------- */
 .as-hero{background:radial-gradient(1.5px 1.5px at 18% 30%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 72% 18%,rgba(255,255,255,.7),transparent),radial-gradient(1.5px 1.5px at 86% 62%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 40% 78%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 58% 44%,rgba(255,255,255,.6),transparent),radial-gradient(130% 120% at 100% 0%,#3B5A7A 0%,#152232 50%,#080D14 100%);color:#E6EEF6;border-radius:18px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .as-hero:after{content:"";position:absolute;right:-60px;bottom:-90px;width:220px;height:220px;border-radius:50%;border:1px solid rgba(160,200,240,.18);box-shadow:0 0 0 26px rgba(160,200,240,.04),0 0 0 54px rgba(160,200,240,.03);pointer-events:none}
@@ -498,8 +524,8 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     var v = $('view'), h = '';
     h += '<div class="up-hero"><h1>人生七年</h1><div class="sub">每七年拍一次，拍了一辈子 · 英国 1964–2026 · 苏联 1990–2026</div>' +
       '<p>同一批孩子，从七岁开始，每隔七年被镜头找回来一次，问同样的问题：你过得怎么样？你想要什么？英国版拍了 62 年、10 部；苏联版从苏联解体前一年拍到今天。这里是两边 34 个人的全部故事。</p></div>';
-    h += '<div class="up-seg" id="upSeg"><button data-s="uk" class="' + (UPS === 'uk' ? 'on' : '') + '">🇬🇧 英国 14 人</button><button data-s="su" class="' + (UPS === 'su' ? 'on' : '') + '">☭ 苏联 20 人</button><button data-s="cmp" class="' + (UPS === 'cmp' ? 'on' : '') + '">🔍 对照与看点</button></div>';
-    if (UPS === 'cmp') h += upCompare(); else h += upSide(UP[UPS], UPS);
+    h += '<div class="up-seg" id="upSeg"><button data-s="uk" class="' + (UPS === 'uk' ? 'on' : '') + '">🇬🇧 英国</button><button data-s="su" class="' + (UPS === 'su' ? 'on' : '') + '">☭ 苏联</button><button data-s="edu" class="' + (UPS === 'edu' ? 'on' : '') + '">🎓 教育</button><button data-s="cmp" class="' + (UPS === 'cmp' ? 'on' : '') + '">🔍 对照</button></div>';
+    if (UPS === 'cmp') h += upCompare(); else if (UPS === 'edu') h += upEdu(); else h += upSide(UP[UPS], UPS);
     h += '<div class="foot">内容依据维基百科、ITV 与谢菲尔德纪录片节介绍、《生意人报》《共青团真理报》等报道整理；<br>只写片中和报道里有的事实，没有可靠资料的年份只标是否出镜。</div>';
     v.innerHTML = h;
   }
@@ -523,15 +549,39 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     h += '<div class="pc' + (on ? ' on' : '') + '" id="up-' + key + '-' + p.id + '"><div class="hd" data-pc="' + key + '-' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.name) + '</small></h3><div class="fm">' + esc(p.from) + '</div><div class="dots">';
     S.ages.forEach(function (a) { h += '<i class="' + (p.films.indexOf(a) >= 0 ? 'y' : '') + (a > lim ? ' hid' : '') + '" title="' + a + ' 岁' + (p.films.indexOf(a) >= 0 ? '出镜' : '缺席') + '">' + (a > lim ? '?' : a) + '</i>'; });
     h += '</div><div class="sv"><b>7 岁</b>' + esc(p.seven) + '</div></div></div><div class="bd">';
-    if (!seen) h += '<div class="then"><b>后来</b>' + esc(p.then) + '</div>';
+    if (!seen) h += '<div class="then"><b>后来</b>' + esc(p.then) + '</div>' + '<div class="edu"><i>🎓</i><div><b>教育路径 → 职业</b>' + esc(p.edu) + ' → ' + esc(p.work) + '</div></div><div class="ktag">' + p.keys.map(function (k) { return '<span>' + esc(k) + '</span>'; }).join('') + '</div>';
     h += '<div class="ages">';
     var shown = {}, hidden = 0;
     p.tl.forEach(function (t) { if (t[0] > lim) { hidden++; return; } shown[t[0]] = 1; h += '<div class="a" data-age="' + t[0] + '">' + esc(t[1]) + '</div>'; });
     S.ages.forEach(function (a) { if (a <= lim && !shown[a] && p.films.indexOf(a) < 0 && a > 7) h += '<div class="a no" data-age="' + a + '">这一集没有出镜。</div>'; });
     if (hidden) h += '<div class="lock">🙈 后面还有 ' + hidden + ' 段，看完对应的集再来（上面改「我看到了」）</div>';
     h += '</div>';
-    if (!seen) h += '<div class="look"><b>看点</b>' + esc(p.look) + '</div>';
+    if (!seen) h += '<div class="look"><b>看点</b>' + esc(p.look) + '</div><div class="lesson"><b>🎓 放到教育上想（我的理解）</b>' + esc(p.lesson) + '</div>';
     return h + '</div></div>';
+  }
+
+  var UPK = '';   // 教育对照表按关键因素筛选
+  function upEdu() {
+    var E = UP.compare.edu, h = '';
+    h += '<div class="up-intro"><p>' + esc(E.intro) + '</p></div>';
+    h += '<div class="sec">十二条观察 <small>前半是片中事实，后半是我的理解</small></div>';
+    E.items.forEach(function (it, i) {
+      h += '<div class="les"><h3><i>' + (i + 1) + '</i>' + esc(it[0]) + '</h3><div class="ob"><b>片子里</b>' + esc(it[1]) + '</div><div class="my"><b>想一想</b>' + esc(it[2]) + '</div><div class="who2">';
+      it[3].forEach(function (w) { var pp = upFind(w[0], w[1]); h += '<button data-go="' + w[0] + '-' + w[1] + '">' + pp.icon + ' ' + esc(pp.zh) + (w[0] === 'uk' ? ' 🇬🇧' : ' ☭') + '</button>'; });
+      h += '</div></div>';
+    });
+    // 34 人对照表
+    var all = [], cnt = {};
+    ['uk', 'su'].forEach(function (side) { UP[side].people.forEach(function (p) { all.push([side, p]); p.keys.forEach(function (k) { cnt[k] = (cnt[k] || 0) + 1; }); }); });
+    h += '<div class="sec">34 人对照表 <small>点因素筛选，点一行看这个人</small></div><div class="chips" id="upKeys"><button data-k="" class="' + (UPK ? '' : 'on') + '">全部<small>34</small></button>';
+    Object.keys(cnt).sort(function (a, b) { return cnt[b] - cnt[a]; }).forEach(function (k) { h += '<button data-k="' + esc(k) + '" class="' + (UPK === k ? 'on' : '') + '">' + esc(k) + '<small>' + cnt[k] + '</small></button>'; });
+    h += '</div><div class="twrap"><table class="etab"><tr><th>人物</th><th>出身</th><th>教育路径</th><th>职业</th><th>关键因素</th></tr>';
+    all.forEach(function (x) {
+      var p = x[1]; if (UPK && p.keys.indexOf(UPK) < 0) return;
+      h += '<tr data-go="' + x[0] + '-' + p.id + '"><td>' + p.icon + ' ' + esc(p.zh) + '<small>' + (x[0] === 'uk' ? '🇬🇧 英国' : '☭ 苏联') + '</small></td><td>' + esc(p.from) + '</td><td>' + esc(p.edu) + '</td><td>' + esc(p.work) + '</td><td>' + p.keys.map(function (k) { return '<span class="k">' + esc(k) + '</span>'; }).join('') + '</td></tr>';
+    });
+    h += '</table></div><div class="cav">' + esc(E.caveat) + '</div>';
+    return h;
   }
   function upFind(side, id) { var L = UP[side].people; for (var i = 0; i < L.length; i++) if (L[i].id === id) return L[i]; return null; }
   function upCompare() {
@@ -558,6 +608,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     if ((el = t.closest('[data-s]'))) { UPS = el.getAttribute('data-s'); jset('upSide', UPS); UPG = ''; renderUp(); return; }
     if ((el = t.closest('[data-upi]'))) { UPI = +el.getAttribute('data-upi'); renderUp(); return; }
     if ((el = t.closest('#upChips [data-g]'))) { UPG = el.getAttribute('data-g'); var y = window.scrollY; renderUp(); window.scrollTo(0, y); return; }
+    if ((el = t.closest('#upKeys [data-k]'))) { UPK = el.getAttribute('data-k'); var y3 = window.scrollY; renderUp(); window.scrollTo(0, y3); return; }
     if ((el = t.closest('[data-go]'))) { upOpen(el.getAttribute('data-go')); return; }
     if ((el = t.closest('.fr[data-seen]'))) { jset('upSeen-' + UPS, +el.getAttribute('data-seen')); var y2 = window.scrollY; renderUp(); window.scrollTo(0, y2); return; }
     if ((el = t.closest('[data-pc]'))) { var k = el.getAttribute('data-pc'); UPO[k] = !UPO[k]; var c = $('up-' + k); if (c) c.className = 'pc' + (UPO[k] ? ' on' : ''); }
