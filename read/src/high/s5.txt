@@ -1,0 +1,68 @@
+kind: story
+title: Uncle Ray's Brilliant Business Ideas
+zh: 雷叔叔的"绝妙"生意点子
+summary: 雷叔叔一辈子都在找发财的门路：羊驼瑜伽、给狗开的咖啡馆、会唱歌的门铃……每个点子都以灾难收场，直到最后一个点子意外成功了。
+grammar: wish + 过去式 | 对现在不真实情况的愿望 | I wish my uncle had a normal job.
+grammar: would rather | 宁愿：would rather + 动词原形 / would rather sb did | He would rather lose all his money than work in an office.
+grammar: 非限制性定语从句 which 指代整句 | which 指前面整句话的内容 | The llamas ate all the yoga mats, which was not part of the plan.
+grammar: 一般过去时被动与 get 被动 | get + 过去分词，口语中表示被动，常带意外色彩 | Uncle Ray got arrested for walking a llama on the highway.
+grammar: no matter how / what | 无论怎样 / 无论什么 | No matter how many times he failed, he never gave up.
+vocab: business 生意; idea 点子; invest 投资; investor 投资人; profit 利润; loss 亏损; customer 顾客; product 产品; market 市场; risk 风险; savings 积蓄; bankrupt 破产的; failure 失败; success 成功; llama 羊驼; yoga 瑜伽; café 咖啡馆; patent 专利; optimistic 乐观的; entrepreneur 企业家
+---
+Every family has one. The relative who shows up at Thanksgiving with a new plan to become a millionaire. The one who says, "This time it's different," and it never is. In my family, that person is Uncle Ray.
+
+Uncle Ray is my mother's younger brother. He is fifty-two years old, he has a huge laugh, a red beard, and a closet full of T-shirts from businesses that no longer exist. My mother loves him, but she also hides her checkbook when he comes to visit. I wish my uncle had a normal job, she says at least once a month. But Uncle Ray has never had a normal job, and he never will. He would rather lose all his money than work in an office.
+
+"An office is a cage," he likes to say. "I am an entrepreneur. I am free!" Then he usually asks to borrow some money.
+
+I have been watching Uncle Ray's business adventures for my entire life. Here are some of the highlights.
+
+The first business I remember was the Singing Doorbell. I was about six years old. Uncle Ray had invented a doorbell that sang a different song every time someone pressed it. He spent all his savings on a patent and on making one thousand doorbells in a factory overseas. There was only one problem. The doorbells could only sing one song, and the song was the national anthem of Bulgaria, because of an error at the factory. Nobody wanted it. For years, every member of our family had a Bulgarian doorbell. When you visited Grandma's house, the doorbell played the Bulgarian national anthem, loudly, for almost two minutes. Grandma still has it. She says it reminds her to be patient.
+
+Then there was Café Woof, a coffee shop for dogs. "People love their dogs more than their children," Uncle Ray explained. "They will pay anything." He rented a small shop, painted it bright yellow, and served special coffee, which was actually just warm water with a little beef flavor, and dog biscuits shaped like cupcakes. On the opening day, forty dogs came. Unfortunately, forty dogs in one small room do not sit quietly and enjoy their beef water. They fight, they bark, and they eat each other's cupcakes. One very large dog ate the cash register. Café Woof closed after nine days. The health inspector who visited on the last day reportedly still has nightmares.
+
+But the most famous of Uncle Ray's businesses, the one people still talk about, was Llama Yoga.
+
+Uncle Ray had read an article about goat yoga, where people do yoga exercises while small goats walk around and climb on them. It was very popular. "Goats are small," he said. "Small thinking. What if we used llamas? Llamas are bigger, calmer, and more majestic. People will feel closer to nature."
+
+He bought four llamas from a farmer in the mountains. Their names were Steve, Dolores, Mr. Fluffy, and Kevin. He rented a field outside town and put an advertisement online: "Llama Yoga! Find your inner peace with our gentle, majestic llamas!" Twenty people signed up for the first class, paying forty dollars each. Uncle Ray was very excited. He called my mother. "This is it," he said. "This time it's different."
+
+It was not different.
+
+The first problem was that llamas are not gentle. They are, in fact, very moody. When the class began, the participants lay down on their yoga mats and closed their eyes. Steve the llama walked over to a woman in the front row, looked at her for a long time, and then spat directly into her face. Llamas spit when they are annoyed. Steve, it turned out, was annoyed by almost everything.
+
+The second problem was that llamas are hungry. Mr. Fluffy and Dolores discovered that yoga mats are made of a material that, apparently, tastes delicious to llamas. The llamas ate all the yoga mats, which was not part of the plan. Several people were still lying on them at the time.
+
+The third problem was Kevin. Kevin escaped.
+
+While Uncle Ray was trying to stop Dolores from eating a man's shoe, Kevin calmly walked through an open gate, across the field, and onto the road. The road led to the highway. Uncle Ray ran after him. A llama, it turns out, can run at about thirty-five miles per hour. Uncle Ray can run at about four.
+
+The story was on the local news that night. A helicopter camera showed a llama walking calmly down the middle of the highway, with dozens of cars stopped behind it, and a red-bearded man running behind it in yoga pants, shouting, "Kevin! Kevin! Come back! Find your inner peace!"
+
+Uncle Ray got arrested for walking a llama on the highway. Technically, he was not walking the llama. The llama was walking him. But the police officer did not find that distinction important. He was released the next morning with a large fine. Kevin was returned to the farmer, who had to come and pick him up. The farmer did not give Uncle Ray his money back.
+
+After Llama Yoga, my mother sat Uncle Ray down for a serious conversation. I was sixteen, and I listened from the hallway.
+
+"Ray," she said. "You're fifty years old. You've lost so much money. Don't you ever want to stop? To just have a normal, safe life?"
+
+Uncle Ray was quiet for a long time. Then he said something I have never forgotten. "Linda, every time I fail, I learn something. From the doorbell, I learned about factories. From Café Woof, I learned that dogs should not drink coffee. From the llamas, I learned that animals have opinions. If I stop now, all those lessons are wasted."
+
+"And what are you going to do with all those lessons?" asked my mother.
+
+He smiled. "I have an idea."
+
+My mother put her head in her hands.
+
+Here is the thing about Uncle Ray. No matter how many times he failed, he never gave up. And he never stopped being cheerful. I think that is why everyone loves him, even when he is borrowing their money.
+
+His new idea was very simple. During all his disasters, he had noticed something: people loved the stories. Everyone in town knew about the Bulgarian doorbell, Café Woof, and Kevin the llama. They laughed about them, but they also remembered them. So Uncle Ray started a podcast. It was called "Failing Forward," and in each episode, he told the story of one of his business disasters, explaining what went wrong and what he had learned.
+
+The first episode was about the llamas. It was funny, honest, and surprisingly wise. Someone shared it online. Then thousands of people shared it. Within six months, "Failing Forward" had two hundred thousand listeners every week. People wrote to Uncle Ray from all over the world, telling him about their own failed businesses. Companies started paying to advertise on his show. A publisher asked him to write a book. Universities invited him to give talks to business students about the value of failure.
+
+Last year, for the first time in his life, Uncle Ray made a real profit. A big one. He paid back every dollar he had ever borrowed from my mother, with interest. He gave her the check at Thanksgiving dinner. My mother looked at it, burst into tears, and hugged him.
+
+"I told you," said Uncle Ray. "This time it's different."
+
+He still has crazy ideas. Last month, he told me about his plan for a restaurant where robots serve the food and the customers have to cook. But now, when he talks about his ideas, people listen. Because they know that even if the idea fails, it will make a great story.
+
+Oh, and he bought Kevin. The llama lives on a small farm that Uncle Ray now owns. Kevin has his own podcast segment. He doesn't say much, but he has a lot of fans. And every time Uncle Ray walks past him, Kevin spits at him. Uncle Ray says that is how he knows Kevin loves him.

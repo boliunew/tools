@@ -1,0 +1,74 @@
+kind: story
+title: The Best Man's Speech
+zh: 伴郎致辞
+summary: 内向的程序员马克要在哥哥婚礼上当伴郎致辞。他准备了完美的演讲稿，却在台上拿错了手机——念出来的是他的购物清单和给牙医的投诉信。
+grammar: 转述陈述句 | said (that) + 时态后退：is→was，will→would，have done→had done | My brother told me that he had chosen me because I was the most organized person he knew.
+grammar: 转述疑问句 | asked + if/whether 或疑问词 + 陈述语序 | She asked me whether I was ready.
+grammar: 转述命令 / 请求 | told / asked + sb + (not) to do | My mother told me not to make any jokes about his ex-girlfriends.
+grammar: It is / was … that … 强调句 | 强调句中的某个成分 | It was at that moment that I realized I was holding the wrong phone.
+grammar: 现在分词完成式 having done | 表示先于主句动作完成 | Having practiced the speech forty times, I knew it by heart.
+vocab: wedding 婚礼; bride 新娘; groom 新郎; best_man 伴郎; speech 演讲; guest 宾客; toast 祝酒; microphone 话筒; audience 观众; nervous 紧张的; script 稿子; rehearse 排练; complaint 投诉; dentist 牙医; shopping_list 购物清单; applause 掌声; improvise 即兴发挥; sincere 真诚的; tear 眼泪; anniversary 纪念日
+---
+I am not a public speaker. I am a software engineer. I spend most of my day talking to computers, which is how I like it, because computers never laugh at you. So when my older brother Chris asked me to be the best man at his wedding, my first reaction was pure panic.
+
+"Why me?" I asked. "What about your friend Tony? He's funny. He's loud. He loves talking to people."
+
+"Tony is funny," said Chris. "But Tony also lost my car at a music festival in 2015. I still don't know where it is." He put his hand on my shoulder. My brother told me that he had chosen me because I was the most organized person he knew. "I trust you, Mark," he said. "You'll be great."
+
+Being the best man is a big job. You organize the bachelor party, you hold the rings, you help the groom get dressed, and, most terrifying of all, you give a speech at the wedding reception in front of everyone.
+
+I approached the speech like a software project. I made a plan. I researched famous wedding speeches online. I wrote seven drafts. I timed it carefully: exactly five minutes, which experts say is perfect. I included a funny story from our childhood, a few kind words about Chris, a warm welcome to his bride, Sarah, and a touching ending. I asked my mother for advice. My mother told me not to make any jokes about his ex-girlfriends. My father told me not to drink too much before the speech. My grandmother told me to speak slowly and stand up straight. Everybody had advice.
+
+I saved the final speech on my phone. Having practiced the speech forty times, I knew it by heart, but I wanted it on my phone just in case.
+
+The wedding was beautiful. It took place in a garden by a lake. Sarah looked stunning in her white dress. Chris cried when he saw her walking down the aisle, and then I cried, and then our father cried, and then everyone was crying. I did not lose the rings. I was very proud of that.
+
+The reception was in a large white tent decorated with flowers and little lights. There were one hundred and fifty guests. After dinner, the music stopped, and the wedding planner tapped me on the shoulder. She asked me whether I was ready. I nodded, even though my legs felt like spaghetti.
+
+I walked to the front of the room. Someone gave me a microphone. One hundred and fifty faces turned toward me. I took my phone out of my pocket and unlocked it.
+
+Here, I need to explain something. That morning, while I was helping Chris get ready, his phone and my phone had been lying next to each other on a table. They were the same model, in the same black case. In the chaos of the morning, we had accidentally switched them. I had not noticed, because Chris and I use the same lock code. It's our childhood dog's birthday. I know, I know. We're not very creative.
+
+So I unlocked the phone, opened the notes app, and saw a document at the top of the list. I assumed it was my speech. I took a deep breath, smiled at the audience, and started to read the first line out loud.
+
+"Eggs, milk, bread, toilet paper, the extra soft kind, and something for the rash."
+
+The room went silent. A few people laughed nervously, thinking it was the beginning of a joke. I stared at the screen. It was at that moment that I realized I was holding the wrong phone.
+
+I looked up. Chris was staring at me with his mouth open. Sarah was looking at Chris. Our grandmother had put her hand over her heart.
+
+"That," I said into the microphone, "was not my speech."
+
+More people laughed. I quickly scrolled through the notes, looking for anything useful. The next note was titled "Complaint." Thinking it might be something funny that Chris had written about the wedding planning, I read it out loud too. I don't know why. Panic does strange things to the brain.
+
+"Dear Dr. Feldman," I read. "I am writing to complain about my last appointment. You told me that I would feel no pain. I want you to know that I felt a great deal of pain. I also want you to know that I heard you humming throughout the entire procedure, and it was not relaxing. It was the theme song from a horror movie."
+
+The tent exploded with laughter. People were crying. A man at the back table actually fell off his chair. Someone shouted, "Read more!"
+
+Chris had his face in his hands, but his shoulders were shaking. He was laughing too.
+
+I put the phone down. I had two options. I could run out of the tent, jump in the lake, and start a new life in another country. Or I could do something I had never done in my life: improvise.
+
+I took a deep breath. I put the phone in my pocket. I looked out at the audience.
+
+"Okay," I said. "So, it turns out that I've been holding my brother's phone all evening. Which means that somewhere in this tent, Chris has my phone, with a speech that I've rehearsed forty times. It was a very good speech. It had a beginning, a middle, and an end. It was exactly five minutes long. I'm a little sad that you'll never hear it."
+
+People laughed again, but more gently now.
+
+"But maybe this is better," I continued. "Because now you know some very important things about my brother. He buys extra-soft toilet paper. He has a mysterious rash. And he writes angry letters to his dentist that he never sends." Pause. Laughter. "And that's actually the most Chris thing in the world. He's always been like this. He feels things very strongly, but he's too kind to hurt anyone's feelings. He would rather write an angry letter and never send it than be rude to someone."
+
+The tent got quiet. I didn't plan what came next. It just came.
+
+"When we were kids, I was the weird one. I liked computers more than people. Other kids made fun of me. And every single time, Chris stood up for me. He was older, and he was popular, and he didn't have to. But he did. He never once made me feel like I was strange. He made me feel like I was interesting." My voice was shaking a little now. "So Sarah, I want you to know what you're getting. You're getting the most loyal, kind, and slightly ridiculous person I know. And I'm getting a sister. And I couldn't be happier about that."
+
+I raised my glass. "To Chris and Sarah. And to Dr. Feldman, who, I'm sure, is very sorry."
+
+For a moment, there was total silence. Then the applause started. It was loud and long. People stood up. Sarah was crying. Chris walked over and hugged me so hard that I couldn't breathe.
+
+"That," he whispered in my ear, "was better than any speech you could have written."
+
+Later that night, he gave me back my phone. "I read your speech," he said. "It's very good. Very organized. Very you." He grinned. "But I like the dentist version better."
+
+The video of my speech has now been watched more than two million times online. Someone posted it with the title "Best man reads groom's shopping list, then makes everyone cry." People I have never met recognize me in the supermarket. Dr. Feldman, the dentist, saw it too. He sent Chris a letter apologizing for the humming and offering him a free cleaning.
+
+I still don't like public speaking. But I learned something that day. Sometimes the plan fails, and what you say from the heart is better than anything you could have prepared. Also, never, ever use your childhood dog's birthday as your phone password.

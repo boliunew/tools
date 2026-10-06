@@ -1,0 +1,92 @@
+kind: article
+title: Our Changing Climate: Causes, Effects, and Solutions
+zh: 正在变化的气候：原因、影响与对策
+summary: 温室效应是怎么回事、证据从哪里来、对天气、海洋、农业和健康有什么影响，以及国家、企业和个人分别能做什么。高中阶段的科学与社会类高频词。
+grammar: It is estimated / believed that … | 被动的客观表述，用于科学写作 | It is estimated that global temperatures have risen by about 1.2 degrees Celsius since the late 1800s.
+grammar: 因果连接词 | because of / due to / as a result / therefore / which leads to | As a result, more heat is trapped in the atmosphere.
+grammar: 第一条件句与第二条件句对比 | 可能发生 vs 假设情况 | If emissions continue to rise, sea levels will rise even faster.
+grammar: 现在完成进行时 | have been + 动词-ing，强调动作从过去持续到现在 | Scientists have been measuring carbon dioxide in the air since 1958.
+grammar: 情态动词表义务和建议 must / need to / ought to | 必须 / 需要 / 应当 | Governments need to act quickly.
+vocab: climate 气候; atmosphere 大气层; greenhouse_gas 温室气体; carbon_dioxide 二氧化碳; emission 排放; fossil_fuel 化石燃料; coal 煤; oil 石油; renewable 可再生的; solar 太阳能的; wind_power 风能; temperature 温度; global_warming 全球变暖; drought 干旱; flood 洪水; wildfire 野火; heat_wave 热浪; sea_level 海平面; glacier 冰川; species 物种; ecosystem 生态系统; pollution 污染; reduce 减少; consume 消耗; energy 能源; electric_vehicle 电动汽车; policy 政策; evidence 证据; impact 影响; sustainable 可持续的
+---
+Climate change is one of the most discussed issues of our time. It appears in news headlines, political debates, school lessons, and conversations at the dinner table. Yet many people still feel confused about it. What exactly is happening? How do scientists know? How serious is it? And can anything be done? This article aims to answer these questions clearly, using the evidence that scientists have collected over many decades.
+
+Weather and climate
+
+First, it is important to understand the difference between weather and climate. Weather describes the conditions in a particular place over a short period of time: today's temperature, tomorrow's rain, this week's storm. Climate describes the average weather patterns in a region over a long period, usually thirty years or more. A single cold winter does not disprove climate change, just as a single hot summer does not prove it. Scientists look at long-term trends across the whole planet.
+
+The greenhouse effect
+
+Life on Earth depends on something called the greenhouse effect. Sunlight passes through the atmosphere and warms the surface of the Earth. The Earth then releases some of this energy back toward space as heat. Certain gases in the atmosphere, called greenhouse gases, absorb part of this heat and send it back toward the surface, a little like the glass walls of a greenhouse that keep plants warm. The most important greenhouse gases are water vapor, carbon dioxide, methane, and nitrous oxide.
+
+Without the greenhouse effect, the average temperature on Earth would be about minus eighteen degrees Celsius, far too cold for most life. So the greenhouse effect itself is natural and necessary. The problem is that human activities have been increasing the amount of greenhouse gases in the atmosphere, especially carbon dioxide. As a result, more heat is trapped in the atmosphere, and the planet is getting warmer.
+
+Where do the extra gases come from?
+
+The main source of extra carbon dioxide is the burning of fossil fuels: coal, oil, and natural gas. These fuels were formed over millions of years from the remains of ancient plants and animals, and they contain large amounts of carbon. When we burn them to generate electricity, power factories, heat buildings, and run cars, trucks, ships, and planes, that carbon is released into the air as carbon dioxide.
+
+Other human activities also contribute. Cutting down forests, known as deforestation, removes trees that would otherwise absorb carbon dioxide. Agriculture produces large amounts of methane, especially from cattle and rice fields. Methane is released from landfills, where garbage breaks down, and from leaks in oil and gas systems. Although there is much less methane than carbon dioxide in the atmosphere, it is a far more powerful greenhouse gas in the short term.
+
+The evidence
+
+How do scientists know that the climate is changing, and that humans are responsible? The evidence comes from many independent sources.
+
+Direct measurements. Scientists have been measuring carbon dioxide in the air since 1958, at an observatory on a mountain in Hawaii. In 1958, the level was about 315 parts per million. Today, it is over 420 parts per million, the highest level in at least eight hundred thousand years.
+
+Temperature records. Thousands of weather stations, ships, buoys, and satellites measure temperatures around the world. It is estimated that global temperatures have risen by about 1.2 degrees Celsius since the late 1800s. That may not sound like much, but it is an average over the entire planet, including the oceans. Most of the warmest years ever recorded have occurred in the last decade.
+
+Ice cores. In Antarctica and Greenland, scientists drill deep into the ice and remove long cylinders called ice cores. The ice contains tiny bubbles of ancient air, which reveal the composition of the atmosphere hundreds of thousands of years ago. These records show a close connection between carbon dioxide levels and temperature throughout Earth's history.
+
+Physical changes. Glaciers around the world are shrinking. Arctic sea ice has declined significantly since satellite measurements began in the late 1970s. Sea levels are rising, partly because melting ice adds water to the oceans, and partly because water expands as it warms. Spring is arriving earlier in many regions, and many plant and animal species are moving toward the poles or to higher altitudes.
+
+Scientific organizations around the world, including national academies of science and the Intergovernmental Panel on Climate Change, have concluded that human activities are the main cause of the warming observed since the mid-twentieth century.
+
+The effects
+
+A warmer planet affects almost every part of the natural world and human society.
+
+Extreme weather. Warmer air can hold more water vapor, which can lead to heavier rainfall and more serious floods in some areas. At the same time, higher temperatures increase evaporation, making droughts more severe in other areas. Heat waves are becoming more frequent and more intense. Many regions, including the western United States, Australia, and southern Europe, have experienced longer and more destructive wildfire seasons.
+
+Rising seas. Sea levels have risen by more than twenty centimeters since 1900, and the rate is increasing. If emissions continue to rise, sea levels will rise even faster. This threatens coastal cities, islands, and farmland. Low-lying countries and large coastal cities such as Miami, Jakarta, and Shanghai face serious risks from flooding and storm surges.
+
+Oceans. The oceans have absorbed a large share of the extra heat and about a quarter of the extra carbon dioxide. This has protected us from even greater warming, but it has a cost. When carbon dioxide dissolves in seawater, it makes the water more acidic, which harms coral reefs and shellfish. Warmer water also causes coral bleaching, in which corals lose the colorful algae they depend on.
+
+Food and water. Changes in temperature and rainfall affect where and how crops can grow. Some northern regions may benefit from longer growing seasons, but many important farming regions face more heat stress, drought, and unpredictable weather. Mountain glaciers provide water for hundreds of millions of people, and as they shrink, water supplies become less reliable.
+
+Health. Heat waves are dangerous, especially for older people, young children, and outdoor workers. Changing climates also allow diseases carried by mosquitoes, such as malaria and dengue fever, to spread to new areas. Air pollution from burning fossil fuels and from wildfires causes millions of early deaths every year.
+
+Unequal impacts. The people who are most affected by climate change are often those who have contributed least to it. Poorer countries and communities usually have fewer resources to protect themselves from floods, droughts, and heat. This raises important questions of fairness and responsibility.
+
+What can be done?
+
+The good news is that many solutions already exist, and many of them are becoming cheaper every year. Experts usually divide the solutions into two categories: mitigation, which means reducing emissions to slow climate change, and adaptation, which means preparing for the changes that are already happening.
+
+Clean energy. The most important step is to replace fossil fuels with low-carbon sources of energy. The cost of solar panels has fallen by around ninety percent in the last decade, and wind power has also become much cheaper. In many parts of the world, building new solar or wind farms is now cheaper than building new coal power plants. Other low-carbon sources include hydroelectric power, geothermal energy, and nuclear power, although each of these has its own advantages and disadvantages.
+
+Electric transportation. Transportation is a major source of emissions. Electric vehicles produce no exhaust emissions, and when they are charged with clean electricity, their overall emissions are much lower than those of gasoline cars. Sales of electric cars have grown rapidly. Public transportation, cycling, and walking also play important roles, especially in cities.
+
+Efficiency. Using less energy to do the same job is often the cheapest way to reduce emissions. Better insulation in buildings, efficient heating and cooling systems such as heat pumps, LED lighting, and more efficient industrial processes all help.
+
+Protecting nature. Forests, wetlands, and grasslands store huge amounts of carbon. Protecting existing forests and restoring damaged ecosystems can both reduce emissions and protect biodiversity.
+
+Adaptation. Even if emissions fell sharply tomorrow, some further warming is unavoidable. Communities need to adapt by building stronger flood defenses, developing crops that can survive drought, improving early warning systems for extreme weather, and designing cities that stay cooler in summer, for example by planting trees and using light-colored roofs.
+
+The role of governments, businesses, and individuals
+
+Governments need to act quickly. They can set targets for reducing emissions, invest in clean energy and public transportation, put a price on carbon so that polluters pay for the damage they cause, and create rules for cleaner cars and buildings. In 2015, almost every country in the world signed the Paris Agreement, in which they agreed to try to limit warming to well below two degrees Celsius, and ideally to 1.5 degrees. However, many countries' current plans are not yet strong enough to meet these goals.
+
+Businesses also have a major role. Companies can switch to renewable energy, make their products more efficient, reduce waste, and build cleaner supply chains. Many large companies have announced goals to reach "net zero" emissions, although critics point out that some of these promises are vague or depend too much on uncertain technologies.
+
+What about individuals? Some people argue that individual actions are too small to matter compared to the actions of governments and large companies. Others argue that individual choices add up, and that they send important signals to businesses and politicians. Most experts believe that both are important. Here are some of the actions that have the biggest impact for individuals in wealthy countries: using public transportation, cycling, or electric vehicles instead of gasoline cars; flying less, especially long-distance flights; improving the energy efficiency of your home; eating less red meat; reducing food waste; and supporting policies and leaders that take climate change seriously.
+
+Talking about climate change in your community, at school, or at work also matters. Studies show that many people care about climate change but rarely discuss it, so they assume others do not care. Simply talking about it can help change that.
+
+A closer look: life in a hotter city
+
+To understand what these changes mean in daily life, consider a city like Phoenix, Arizona, or the inland areas of Southern California. Summers there have always been hot, but the number of days above one hundred degrees Fahrenheit has increased, and nights are not cooling down as much as they used to. This matters because the human body needs cooler nights to recover from daytime heat. Outdoor workers, such as construction crews, farm workers, delivery drivers, and people who work in warehouse yards, are especially at risk. Many employers now schedule heavy work for early morning, provide shade and water, and train workers to recognize the signs of heat exhaustion, such as dizziness, headache, and confusion. Cities are planting more trees, painting roofs white, and opening cooling centers where people without air conditioning can rest. These are examples of adaptation in action. They do not stop climate change, but they help people stay safe while the world works on reducing emissions.
+
+Reasons for hope
+
+It is easy to feel overwhelmed or hopeless about climate change. The problem is enormous, and the news can be frightening. But there are real reasons for hope. Clean energy technologies have improved faster than almost anyone predicted. In many countries, emissions have already started to fall while the economy continues to grow. Young people around the world have become powerful voices for action. And history shows that humans can solve large global problems when they work together. In the 1980s, countries agreed to ban chemicals that were destroying the ozone layer, and today the ozone layer is slowly recovering.
+
+Every fraction of a degree of warming that we prevent matters. A world that is 1.5 degrees warmer is significantly safer than a world that is two degrees warmer, which in turn is far safer than a world that is three degrees warmer. The future is not yet written. The choices made in the next few decades, by governments, businesses, and each of us, will shape the planet for centuries to come.

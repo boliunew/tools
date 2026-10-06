@@ -1,0 +1,90 @@
+kind: article
+title: The Journey of a Sneaker: How Global Trade Works
+zh: 一双球鞋的旅程：全球贸易是怎么运作的
+summary: 跟着一双运动鞋从越南工厂出发，经过集装箱、远洋货轮、港口、铁路、仓库和卡车，最后送到加州顾客门口。讲供应链里每一环的常用词，以及集装箱号、提单这些物流行业术语。
+grammar: 各种时态的被动语态 | is made / was loaded / has been delivered / will be shipped / is being unloaded | The containers are being unloaded by giant cranes.
+grammar: 现在分词短语作状语 | 表示伴随或接连发生的动作 | Leaving the factory, the boxes are loaded onto a truck.
+grammar: 过去分词作后置定语 | 被动意义，修饰名词 | a kind of receipt issued by the shipping company
+grammar: 非限制性定语从句 | 补充说明，用逗号隔开 | The ship stops at Long Beach, which is one of the busiest ports in the United States.
+grammar: 名词性从句 what / how | 作主语或宾语 | What most customers do not realize is how many people have touched their package.
+vocab: trade 贸易; global 全球的; supply_chain 供应链; factory 工厂; manufacture 制造; raw_material 原材料; export 出口; import 进口; container 集装箱; vessel 船舶; port 港口; crane 起重机; terminal 码头; cargo 货物; customs 海关; tariff 关税; freight 货运; logistics 物流; warehouse 仓库; distribution_center 配送中心; inventory 库存; pallet 托盘; trailer 拖车; chassis 底盘车; rail 铁路; truck 卡车; delivery 送货; tracking 追踪; delay 延误; efficient 高效的
+---
+Look at the shoes you are wearing right now. Where were they made? If you check the label, there is a good chance it says Vietnam, China, Indonesia, or another country thousands of miles away from where you live. Yet you probably bought them in a store down the street, or they arrived at your door two days after you clicked "buy." How did they get there?
+
+The answer is one of the most impressive systems ever created by humans: the global supply chain. Every day, millions of products are manufactured, packed, shipped, stored, and delivered around the world with remarkable speed. In this article, we will follow one pair of sneakers on its journey from a factory in Vietnam to a customer in California, and along the way, we will learn how global trade works.
+
+Stage 1: The factory
+
+Our sneakers begin their life in a large factory near Ho Chi Minh City in southern Vietnam. The factory is owned by a manufacturer that produces shoes for several international brands. The design was created months earlier in the brand's headquarters in the United States, and the factory received detailed instructions about materials, colors, and sizes.
+
+The raw materials come from many places. The rubber for the soles may come from Thailand or Malaysia. The synthetic fabric may be produced in China or Taiwan. The laces, the glue, and even the small plastic tips on the laces are often made by different suppliers. Before a single shoe can be made, all of these materials must arrive at the factory on time. If one supplier is late, the entire production line can stop. This is the first lesson of supply chains: everything is connected.
+
+Inside the factory, hundreds of workers and machines cut, stitch, glue, and press the materials together. Each pair is inspected for quality. Then the shoes are put in boxes, and the boxes are packed into larger cardboard cartons. Each carton is labeled with a barcode that contains information about its contents and its destination. The cartons are stacked on wooden platforms called pallets and wrapped in plastic film.
+
+Stage 2: To the port
+
+Leaving the factory, the boxes are loaded onto a truck. But they are not simply thrown into the back. Most international goods travel inside shipping containers, and the invention of the container is one of the main reasons global trade became so cheap and efficient.
+
+A standard shipping container is a steel box, usually twenty or forty feet long, about eight feet wide, and about eight and a half feet tall. Before containers were introduced in the 1950s and 1960s, goods were loaded onto ships piece by piece by teams of dockworkers. It could take a week to load a single ship, and theft and damage were common. Containers changed everything. Because every container has the same standard size, it can be moved easily from a truck to a ship to a train without being opened. Today, loading and unloading a large ship takes a matter of days, not weeks.
+
+Every container has a unique identification number painted on its doors and sides. The number has four letters, which identify the owner, followed by six digits and one final "check digit." The check digit is calculated from the other characters using a mathematical formula. If someone writes down the number incorrectly, the check digit usually reveals the mistake. This small detail is extremely important, because a container with a wrong number recorded in the system can be lost for days or even weeks. Workers at ports, rail yards, and warehouses check and photograph these numbers constantly.
+
+Our sneakers are loaded into a forty-foot container along with thousands of other pairs. The doors are closed and secured with a numbered seal. If the seal is broken before the container reaches its destination, everyone will know that someone has opened it.
+
+Stage 3: Across the ocean
+
+The container is driven to the port of Cai Mep, one of the largest container ports in Vietnam. There, it waits in a huge area called a terminal, stacked with thousands of other containers, until its ship arrives.
+
+Modern container ships are enormous. The largest ones are about four hundred meters long, longer than four soccer fields, and can carry more than twenty thousand twenty-foot containers. Giant cranes lift the containers one by one and place them on the ship according to a careful plan. Heavy containers go at the bottom, and containers for the first port of call must be easy to reach.
+
+Before the ship can leave, a lot of paperwork must be completed. One of the most important documents is the bill of lading, which is a kind of receipt issued by the shipping company. It describes the goods, states who sent them and who will receive them, and acts as proof of ownership. Without the correct documents, a container cannot be released at its destination.
+
+The voyage across the Pacific Ocean to California takes about two to three weeks. During this time, the ship travels at a steady speed to save fuel. Many shipping companies have deliberately slowed their ships in recent years, a practice called "slow steaming," because burning less fuel saves money and reduces pollution.
+
+Stage 4: Arrival and customs
+
+The ship stops at Long Beach, which is one of the busiest ports in the United States. Together with the neighboring Port of Los Angeles, it handles a huge percentage of all the goods that arrive in the U.S. from Asia. On a busy day, you can see dozens of ships waiting offshore for their turn to enter.
+
+When the ship docks, the containers are being unloaded by giant cranes, some of which are operated remotely or partly automatically. Each container is placed in the terminal yard, where it waits to be picked up.
+
+Before the sneakers can enter the country, they must go through customs. Customs is the government agency that controls goods entering and leaving a country. Customs officers check the documents to make sure the goods are described correctly and that they are legal to import. Some containers are selected for physical inspection or X-ray scanning.
+
+The importer must also pay duties or tariffs. A tariff is a tax on imported goods. Tariffs are used by governments to raise money and sometimes to protect local industries from foreign competition. The amount depends on the type of product and the country where it was made. Changes in tariffs can have a big effect on prices and on where companies decide to manufacture their products. In recent years, trade disputes between countries have caused tariffs to rise and fall, and many companies have moved part of their production from one country to another as a result.
+
+Stage 5: Rail and trucks
+
+Once the container is released, it continues its journey over land. It may be placed on a special trailer frame called a chassis and pulled by a truck, or it may be loaded onto a train. Long-distance trains can carry hundreds of containers, often stacked two high, which is called "double-stacking." For long distances, rail is usually cheaper and produces less pollution than trucks.
+
+The trucks that move containers short distances, for example from the port to a nearby warehouse or rail yard, are called drayage trucks. Truck drivers in this business often wait in long lines at the port gates, and every hour of waiting costs money. Ports and logistics companies are constantly looking for ways to reduce these delays, such as appointment systems and longer opening hours.
+
+Stage 6: The warehouse
+
+Our container is driven to a large distribution center in the Inland Empire, an area east of Los Angeles that is full of enormous warehouses. Some of these buildings are so large that you could fit several football fields inside them. This region has become one of the most important logistics centers in the country, because it is close to the ports and has good access to highways and railways.
+
+When the truck arrives, it first enters the warehouse yard. Yard workers record the container number, check the seal, and direct the driver to the correct spot. The container is then moved to a loading dock, where workers open it and unload the cartons. Each carton is scanned, and its information is entered into the warehouse management system, a computer program that tracks every item in the building. This information about what products are available and where they are stored is called inventory.
+
+The cartons are stored on tall shelves, sometimes reaching more than ten meters high. Forklifts and, increasingly, robots move goods around the warehouse. When an order arrives from a store or an online customer, workers or robots pick the right items, pack them, and send them to the shipping area.
+
+Stage 7: The last mile
+
+Our customer, a high school student named Ava, ordered the sneakers online on a Monday evening. Within minutes, her order was received by the warehouse system. The shoes were picked from the shelf, packed into a smaller box, labeled with her address, and placed on a truck with hundreds of other packages heading to her area.
+
+The final part of the journey, from the local delivery station to the customer's door, is called the "last mile." Surprisingly, it is often the most expensive and complicated part of the entire supply chain. A container ship can carry twenty thousand containers across an ocean, but a delivery driver has to stop at each house individually, find a parking space, and sometimes deal with locked gates and dogs. Companies are experimenting with many solutions, including delivery lockers, electric vans, and even drones.
+
+On Wednesday afternoon, the package was delivered to Ava's front door. Her phone sent her a notification with a photo of the box. She had been tracking it the whole time, watching a little truck icon move across a map.
+
+What most customers do not realize is how many people have touched their package. Factory workers, truck drivers, port workers, crane operators, ship crews, customs officers, rail workers, yard workers, warehouse employees, and delivery drivers all played a part. Ava's sneakers traveled more than eight thousand miles, passed through dozens of hands and machines, and were tracked at every step. And the shipping cost for each pair, across the entire Pacific Ocean, was probably less than one dollar.
+
+When the chain breaks
+
+Supply chains are efficient, but they can also be fragile. Because everything is connected, a problem in one place can cause delays everywhere. During the COVID-19 pandemic, factories closed, demand for goods suddenly increased, and ports became extremely congested. At one point, more than one hundred ships were waiting outside the ports of Los Angeles and Long Beach. Shipping costs increased several times over, and stores had empty shelves.
+
+Other events can have similar effects. In 2021, a giant container ship called the Ever Given got stuck in the Suez Canal for six days, blocking one of the world's most important trade routes. Hundreds of ships were delayed, and billions of dollars of trade was disrupted. Natural disasters, wars, strikes, and even computer hacks can also break supply chains.
+
+After these experiences, many companies have started to rethink their strategies. Some keep more inventory as a safety buffer. Some use suppliers in several different countries instead of just one. Some have moved part of their production closer to home.
+
+Why it matters
+
+Global trade has made many products much cheaper and more widely available than ever before. It has created millions of jobs and helped lift many countries out of poverty. But it also has costs. Shipping produces pollution and greenhouse gases. Workers in some factories face low wages and difficult conditions. And when production moves to other countries, some workers in wealthier countries lose their jobs.
+
+Understanding how supply chains work helps us think more clearly about these issues. The next time you open a package, take a moment to think about its journey. That small box is the end of a remarkable story, one that connects factories, oceans, ports, railways, and warehouses, and thousands of people you will never meet.

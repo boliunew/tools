@@ -1,0 +1,97 @@
+kind: article
+title: How We Really Learn a Language
+zh: 我们到底是怎么学会一门语言的
+summary: 从语言习得研究出发，解释"可理解输入"、间隔重复、在语境中记单词、开口练习和错误的作用。高中阶段的学术类高频词，也是给自学英语的人的实用方法。
+grammar: 动名词短语作主语 / 宾语 | Learning … is …；avoid / enjoy / keep + doing | Learning a language is more like learning to play a sport than studying history.
+grammar: Not only … but also … | 不但……而且……；放在句首时要倒装 | Not only does reading improve your vocabulary, but it also teaches you grammar naturally.
+grammar: 形式主语 it + 被动 | It is believed / It has been shown that … | It has been shown that people remember words better when they learn them in context.
+grammar: 让步状语从句 although / even if | 虽然 / 即使 | Even if you only have ten minutes a day, you can make real progress.
+grammar: 定语从句 in which / by which | 介词 + which 引导定语从句 | Spaced repetition is a method in which you review information at increasing intervals.
+vocab: language 语言; fluent 流利的; vocabulary 词汇; grammar 语法; pronunciation 发音; accent 口音; native_speaker 母语者; input 输入; output 输出; context 语境; comprehension 理解; memory 记忆; review 复习; interval 间隔; repetition 重复; strategy 策略; method 方法; habit 习惯; motivation 动力; confidence 自信; mistake 错误; practice 练习; immersion 沉浸; exposure 接触; acquire 习得; improve 提高; progress 进步; research 研究; brain 大脑; consistent 持续的
+---
+Millions of people around the world are trying to learn a new language right now. They download apps, buy textbooks, take classes, and watch videos with subtitles. Yet many of them feel stuck. They have studied for years but still cannot understand native speakers or hold a natural conversation. Why does this happen? And what does research tell us about how people actually learn languages?
+
+This article looks at what scientists and language teachers have discovered about language learning, and it offers practical strategies that you can use, whether you are learning English, Spanish, Chinese, or any other language.
+
+Language is a skill, not just knowledge
+
+The first and perhaps most important idea is this: learning a language is more like learning to play a sport than studying history. When you study history, you can memorize facts and dates, and if you know them, you are finished. But knowing the rules of basketball does not make you a good basketball player. You need to practice the movements again and again until they become automatic.
+
+Language works in a similar way. You can memorize a grammar rule, such as "use the past perfect for an action that happened before another past action." But in a real conversation, you do not have time to think about rules. You need to understand and respond in less than a second. This is only possible if the language has become automatic, and that requires a large amount of practice and exposure.
+
+This explains why many students who are excellent at grammar tests still struggle in real conversations. They have a lot of knowledge about the language, but they have not acquired the skill of using it.
+
+The power of input
+
+One of the most influential ideas in language research comes from the linguist Stephen Krashen, who argued that we acquire language mainly by understanding messages. He called this "comprehensible input": language that we can understand, even if it contains some words and structures that we do not know yet. According to this idea, the best input is just a little above our current level. If the input is too easy, we do not learn anything new. If it is too difficult, we cannot understand it, so we cannot learn from it either.
+
+Not every researcher agrees with all of Krashen's ideas, and most now believe that speaking and conscious study also play important roles. But nearly everyone agrees that large amounts of meaningful input are essential. Think about how children learn their first language. Before they say their first words, they have heard thousands of hours of language around them. They do not study grammar rules. They listen, they understand from context, and gradually they begin to speak.
+
+Adults, of course, are not children. We have busy lives, and we cannot spend ten thousand hours listening before we start speaking. But we can learn from this principle. The more we read and listen to language we understand, the faster we improve.
+
+Reading: the hidden superpower
+
+Not only does reading improve your vocabulary, but it also teaches you grammar naturally. When you read, you see words used in real sentences, again and again, in different situations. You notice how words combine with other words. For example, you learn that people "make a decision" but "do homework," and that we say "heavy rain," not "strong rain." These combinations, called collocations, are very difficult to learn from rules, but they are absorbed naturally through reading.
+
+Research has consistently found that people who read a lot in a foreign language have larger vocabularies, better grammar, and better writing skills. The key is to read material that is interesting and not too difficult. Experts often suggest that you should already know at least ninety to ninety-five percent of the words on a page. If you are stopping to look up every third word, the text is too hard, and reading becomes a frustrating puzzle instead of an enjoyable activity.
+
+That is why graded readers, which are books written for learners at specific levels, can be so useful. They allow you to read whole stories without constantly reaching for a dictionary. As your level improves, you can move to more difficult texts, and eventually to books and articles written for native speakers.
+
+Learning words in context
+
+Many learners try to build their vocabulary by memorizing lists of words with their translations. This method is not useless, but it has serious limitations. When you learn a word in isolation, you often do not know how to use it. You may not know which words go with it, whether it is formal or informal, or what feeling it carries.
+
+It has been shown that people remember words better when they learn them in context. When you meet a word in a story or a conversation, your brain connects it with a situation, an emotion, and other words. These connections make the memory stronger and easier to find later. That is why a word you learned from a funny scene in a movie is often easier to remember than a word you studied on a list.
+
+A practical approach is to collect words from things you read and listen to, together with the sentence in which you found them. Then review the whole sentence, not just the single word.
+
+Spaced repetition: beating the forgetting curve
+
+Even with good input, we forget things. In the 1880s, the German psychologist Hermann Ebbinghaus studied his own memory and discovered what he called the "forgetting curve." He found that we forget new information very quickly at first: much of what we learn is lost within a day or two if we do not review it. But each time we review the information, we forget it more slowly.
+
+This discovery led to a powerful technique called spaced repetition. Spaced repetition is a method in which you review information at increasing intervals. For example, you might review a new word after one day, then after three days, then after a week, then after two weeks, then after a month. Each review strengthens the memory and pushes the next review further into the future. Many flashcard apps use computer programs to calculate the best time to review each word, showing you difficult words more often and easy words less often.
+
+The beauty of spaced repetition is its efficiency. Instead of reviewing everything every day, you spend your time on the words that you are about to forget. Even if you only have ten minutes a day, you can make real progress.
+
+Output: why speaking and writing matter
+
+Although input is essential, most researchers now agree that output, which means speaking and writing, is also important. When you try to express your ideas, you notice gaps in your knowledge. You realize, "I don't know how to say this." That moment of noticing makes you pay more attention the next time you hear or read the structure you need.
+
+Speaking also builds fluency, the ability to produce language smoothly and quickly. Fluency depends on practice. The first time you tell a story in a foreign language, you will be slow and hesitant. The tenth time, you will be much faster. This is why repeating the same task, such as telling the same story to different people, can be surprisingly effective.
+
+Many learners are afraid to speak because they worry about making mistakes. But mistakes are a natural and necessary part of learning. Every fluent speaker of a second language has made thousands of mistakes. In fact, research suggests that receiving feedback on mistakes, whether from a teacher, a conversation partner, or simply noticing that you were misunderstood, is one of the ways we improve.
+
+Pronunciation and listening
+
+Many learners find listening to native speakers extremely difficult, even when they can read the same words easily. One reason is that in natural speech, words are connected and shortened. In English, "What are you going to do?" often sounds like "Whaddaya gonna do?" Textbooks rarely teach these changes, but they are everywhere in real speech.
+
+A helpful technique is called shadowing. In shadowing, you listen to a short recording and repeat it immediately, trying to copy the speed, rhythm, and intonation of the speaker as closely as possible. This trains both your listening and your pronunciation, and it helps you get used to the natural flow of the language.
+
+It is also worth remembering that the goal of pronunciation is to be understood, not to sound exactly like a native speaker. Almost everyone who learns a language as an adult keeps some accent, and that is perfectly fine. Clear and comfortable communication is far more important than perfection.
+
+Motivation and habits
+
+Perhaps the biggest factor in language learning success is not intelligence or talent but consistency. Learning a language takes a long time. Estimates vary, but reaching an advanced level in a language very different from your own can take thousands of hours. Motivation is high at the beginning, but it usually goes down after a few weeks. People who succeed are usually not the ones with the most motivation. They are the ones who build habits.
+
+Here are some ways to build a language habit. Connect your study to something you already do every day, such as listening to a podcast during your commute or reviewing flashcards while you drink your morning coffee. Choose materials you genuinely enjoy, such as TV shows, games, music, or books about your hobbies. Set small, specific goals, like "read for fifteen minutes" instead of "become fluent." Track your progress, so you can see how far you have come. And find a community, such as a class, a language exchange partner, or an online group, because learning with others keeps you accountable.
+
+Immersion without moving abroad
+
+Many people believe that the only way to become fluent is to live in a country where the language is spoken. Living abroad can certainly help, but it is not magic. Many immigrants live in a new country for years without becoming fluent, because they work, shop, and socialize mostly in their first language. On the other hand, some people reach a high level without ever leaving home.
+
+Today, it is possible to create a kind of immersion anywhere. You can change the language of your phone. You can listen to podcasts, radio, and audiobooks during your daily routine. You can watch series and movies with subtitles in the target language, not your own. You can read news, follow social media accounts, and join online communities. You can speak with native speakers through video calls. The tools are all available. The challenge is to use them regularly.
+
+A realistic plan
+
+So what does an effective language learning routine look like? Here is one possible plan for a busy adult with about forty-five minutes a day.
+
+Fifteen minutes of reading or listening to something interesting at the right level.
+Ten minutes of reviewing vocabulary with a spaced repetition system, using words you collected from your reading and listening.
+Ten minutes of speaking or writing practice, such as shadowing a recording, talking to a partner, or writing a short journal entry.
+Ten minutes of focused study on one specific problem, such as a grammar point or a pronunciation sound that you find difficult.
+
+This is only an example. The best plan is the one you will actually follow. Even twenty minutes every day is far better than three hours once a week.
+
+Final thoughts
+
+There is no secret method that will make you fluent in a month, despite what some advertisements claim. Language learning is a long journey. But it is also one of the most rewarding journeys a person can take. Every new word is a small key that opens a door, to new people, new ideas, new jobs, and new ways of seeing the world. Read a lot, listen a lot, review smartly, speak without fear, and keep going. Progress may feel slow from day to day, but one day you will understand a joke, a song, or a conversation that was completely impossible a year earlier, and you will realize how far you have come.

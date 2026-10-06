@@ -1,0 +1,106 @@
+kind: article
+title: How Money Works: Budgeting, Credit, and Investing
+zh: 钱是怎么运作的：预算、信用和投资
+summary: 从做预算、存应急金、信用卡和信用分，到复利、指数基金和常见的理财陷阱，用高中阶段常用的经济类词汇讲清楚个人理财的基本道理。（只讲常识，不是投资建议）
+grammar: the + 比较级, the + 比较级 | 越……就越…… | The earlier you start, the more time your money has to grow.
+grammar: 第二条件句 | 假设现在或将来不太可能的情况 | If you invested one hundred dollars a month, you would have a lot of money in forty years.
+grammar: 情态动词的推测 may / might / could | 表示可能性 | The market may fall, and it could stay down for years.
+grammar: It is + 形容词 + to do | 形式主语 it 代替后面的不定式 | It is important to understand the difference between needs and wants.
+grammar: 一般现在时被动与 be + 过去分词 + to do | is calculated / is used to | Your credit score is calculated from your payment history.
+vocab: budget 预算; income 收入; expense 开支; salary 薪水; tax 税; saving 储蓄; emergency_fund 应急基金; debt 债务; loan 贷款; interest 利息; interest_rate 利率; credit_card 信用卡; credit_score 信用分; borrow 借入; lend 借出; afford 负担得起; invest 投资; investment 投资; stock 股票; bond 债券; fund 基金; risk 风险; return 回报; compound_interest 复利; inflation 通货膨胀; diversify 分散投资; retirement 退休; scam 骗局; account 账户; goal 目标
+---
+Money is one of the most important tools in modern life, yet most schools spend very little time teaching students how it works. Many young people leave home knowing how to solve equations and analyze poems, but not knowing how to make a budget, what a credit score is, or why their savings account loses value every year. As a result, many people make expensive mistakes that take years to fix.
+
+This article will explain the basic ideas of personal finance: how to plan your spending, how to save, how borrowing works, and how investing can help your money grow. These are general ideas, not personal financial advice. Every person's situation is different, and important decisions should be made carefully, ideally after talking to someone you trust.
+
+Step one: know where your money goes
+
+The foundation of personal finance is a budget. A budget is simply a plan for your money. It compares your income, which is the money that comes in, with your expenses, which is the money that goes out. Many people avoid making a budget because they think it will be boring or depressing. But a budget does not limit your freedom. It gives you control.
+
+To make a budget, start by writing down your income for one month. If you have a job, remember to use the amount you actually receive after taxes, not the full salary. Then track your expenses for a month. Write down everything, even small things like a coffee or a snack. Many people are shocked when they see the results. A five-dollar coffee every working day adds up to more than one hundred dollars a month, or over twelve hundred dollars a year.
+
+Next, divide your expenses into two groups: needs and wants. It is important to understand the difference between needs and wants. Needs are things you must pay for to live and work: rent, basic food, utilities like electricity and water, transportation to work, and insurance. Wants are things that make life more enjoyable but are not essential: eating out, new clothes you do not need, streaming services, concerts, and the latest phone.
+
+A popular and simple guideline is the 50/30/20 rule. According to this rule, about fifty percent of your income should go to needs, thirty percent to wants, and twenty percent to savings and paying off debt. This is not a perfect rule for everyone, especially for people who live in expensive cities, but it is a helpful starting point.
+
+Step two: build an emergency fund
+
+Life is unpredictable. Cars break down, people lose their jobs, and medical problems happen without warning. If you do not have any savings, an unexpected expense can force you to borrow money at a high interest rate, which can start a cycle of debt that is very hard to escape.
+
+That is why financial experts recommend building an emergency fund before doing anything else. An emergency fund is money that you keep in a safe, easy-to-access savings account and use only for real emergencies. Most experts suggest saving enough to cover three to six months of essential expenses. That might sound like a lot, and it is. But you do not need to save it all at once. Start with a small goal, like five hundred or one thousand dollars, and build from there.
+
+One of the most effective ways to save is to make it automatic. Set up a transfer from your checking account to your savings account on the day you get paid. This way, you save first and spend what is left, instead of spending first and saving what is left, which usually means saving nothing. Many people call this "paying yourself first."
+
+Step three: understand borrowing and interest
+
+When you borrow money, you have to pay it back, plus an extra amount called interest. Interest is the price of borrowing money. It is usually expressed as a percentage per year, called the interest rate. For example, if you borrow one thousand dollars at an interest rate of ten percent per year, you will owe about one hundred dollars in interest after one year.
+
+Not all debt is bad. Many people borrow money to buy a home, pay for education, or start a business. These loans can be useful if the interest rate is reasonable and the person can afford the monthly payments. But some kinds of debt are very dangerous.
+
+The most common dangerous debt is credit card debt. A credit card allows you to buy things now and pay later. If you pay the full amount every month, a credit card can be convenient and even helpful, because it builds your credit history. But if you only pay the minimum amount, the remaining balance is charged interest, and credit card interest rates are often above twenty percent per year. That means a two-thousand-dollar balance can take many years to pay off, and you may end up paying hundreds or even thousands of dollars in interest.
+
+Even more dangerous are "payday loans," which are short-term loans with extremely high fees. They are often advertised to people who are in a difficult situation. Their effective interest rates can be over three hundred percent per year. Most financial experts strongly advise avoiding them.
+
+Your credit score
+
+In the United States and many other countries, lenders use a number called a credit score to decide whether to lend you money and at what interest rate. Your credit score is calculated from your payment history, the amount of debt you have, how long you have had credit, and a few other factors. Scores in the U.S. usually range from 300 to 850. The higher your score, the more lenders trust you, and the lower your interest rates will be.
+
+A good credit score can save you a huge amount of money. For example, on a home loan, the difference between a good score and a poor score can mean tens of thousands of dollars in extra interest over the life of the loan. Your credit score can even affect whether a landlord will rent you an apartment.
+
+The most important things you can do to build a good score are simple: always pay your bills on time, keep your credit card balances low compared to your limits, and do not open many new accounts in a short time.
+
+Step four: why saving is not enough
+
+Once you have an emergency fund and you are not carrying expensive debt, you might think the best thing to do is to keep saving money in the bank. Unfortunately, there is a hidden problem: inflation.
+
+Inflation is the general increase in prices over time. When there is inflation, each dollar buys a little less than it did before. For example, if inflation is three percent per year, something that costs one hundred dollars today will cost about one hundred and three dollars next year. If your savings account pays only one percent interest, your money is actually losing value, because prices are rising faster than your savings.
+
+This is why many people invest money that they do not need for the next several years. Investing means using money to buy something that you expect to increase in value or to produce income over time.
+
+The magic of compound interest
+
+The most powerful idea in investing is compound interest. Compound interest means that you earn returns not only on your original money, but also on the returns you have already earned. Over time, this creates a snowball effect.
+
+Here is a simple example. Imagine you invest one thousand dollars, and it grows by seven percent per year. After one year, you have one thousand and seventy dollars. In the second year, you earn seven percent on one thousand and seventy dollars, not just on the original thousand. After ten years, you would have almost two thousand dollars. After thirty years, you would have about seven thousand six hundred dollars, without adding any more money.
+
+Now imagine that you add money regularly. If you invested one hundred dollars a month, you would have a lot of money in forty years. At an average return of seven percent per year, you would have more than two hundred and forty thousand dollars, even though you only put in forty-eight thousand dollars yourself. The rest would come from compound growth. The key ingredient is time. The earlier you start, the more time your money has to grow. Someone who starts investing at twenty-five can end up with roughly twice as much as someone who starts at thirty-five, even if they invest the same amount each month.
+
+Of course, these numbers are only examples. Real investments do not grow at the same rate every year, and past returns do not guarantee future results.
+
+Common types of investments
+
+There are many types of investments, but most people start with three basic ones.
+
+Stocks. When you buy a stock, you buy a small piece of ownership in a company. If the company grows and becomes more profitable, the value of your stock usually rises. Some companies also pay part of their profits to shareholders, which is called a dividend. Stocks have historically provided higher returns than most other investments over long periods, but they are also risky. Stock prices can go up and down a lot in the short term. The market may fall, and it could stay down for years.
+
+Bonds. When you buy a bond, you are lending money to a government or a company. In return, they promise to pay you interest and to return your money on a certain date. Bonds are usually less risky than stocks, but they also tend to provide lower returns.
+
+Funds. A fund collects money from many investors and uses it to buy a large collection of stocks, bonds, or both. One popular type is an index fund, which simply buys all the companies in a market index, such as the five hundred large companies in the S&P 500. Index funds are popular because they are cheap, simple, and automatically diversified.
+
+Risk, return, and diversification
+
+In investing, risk and return are connected. Generally, investments that offer higher potential returns also carry higher risk. There is no investment that is both completely safe and highly profitable. If someone offers you one, be very suspicious.
+
+One way to reduce risk is diversification, which means spreading your money across many different investments. The idea is simple: do not put all your eggs in one basket. If you own shares in only one company and that company fails, you could lose everything. If you own shares in five hundred companies through an index fund, the failure of one company has only a small effect.
+
+Your time horizon also matters. Money that you will need in the next one or two years, for example for a house deposit, should usually not be invested in stocks, because there might not be enough time to recover from a fall. Money for retirement, which might be thirty or forty years away, can usually handle more short-term ups and downs.
+
+Mistakes to avoid
+
+Many investors, especially beginners, make the same mistakes again and again.
+
+Trying to get rich quickly. Stories about people who became millionaires overnight are exciting, but they are rare, and you usually do not hear about the many people who lost money trying the same thing.
+
+Panicking during a crash. When the market falls sharply, many people sell everything out of fear, and then they miss the recovery. Historically, the stock market has recovered from every major crash, although sometimes it has taken years.
+
+Paying high fees. A fee of two percent per year might sound small, but over thirty years, it can reduce your final amount by a large percentage. Always check the fees of any fund or service.
+
+Following the crowd. When everyone is talking about a "hot" investment, prices have often already risen a lot. Buying because of excitement is very different from buying because of careful research.
+
+Falling for scams. Be very careful of anyone who promises guaranteed high returns, pressures you to decide quickly, or asks you to keep the investment secret. These are classic signs of fraud. Real investments always carry some risk, and honest advisors will tell you so.
+
+Putting it all together
+
+Personal finance can seem complicated, but the basic principles are surprisingly simple. Spend less than you earn. Know where your money goes. Build an emergency fund. Avoid high-interest debt. Pay your bills on time. Start investing early, keep costs low, diversify, and be patient.
+
+None of these steps will make you rich overnight. But together, over many years, they can give you something more valuable than a quick fortune: security, freedom, and the ability to make choices about your life without being controlled by money worries. As the old saying goes, the best time to plant a tree was twenty years ago. The second-best time is today.

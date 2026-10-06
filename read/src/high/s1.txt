@@ -1,0 +1,92 @@
+kind: story
+title: The Job Interview I Had Already Ruined
+zh: 我早就搞砸了的那场面试
+summary: 丹尼尔去面试梦想工作，路上和一个抢车位的人大吵一架。等他走进面试间，才发现面试官就是那个人。
+grammar: 过去完成时 | had + 过去分词：表示"过去的过去"，在过去某一时刻之前已经发生 | By the time I arrived, I had already made three terrible mistakes.
+grammar: 过去完成时与一般过去时搭配 | 先发生的用过去完成时，后发生的用一般过去时 | When I walked into the room, I realized that I had seen him before.
+grammar: 现在分词作状语 | 动词-ing 开头的短语说明伴随动作或原因 | Feeling very proud of myself, I parked the car.
+grammar: 过去完成进行时 | had been + 动词-ing：一直持续到过去某一时刻的动作 | I had been preparing for this interview for two weeks.
+grammar: should have done | 本应该做（但没做），表示后悔 | I should have stayed in bed.
+vocab: interview 面试; candidate 候选人; position 职位; résumé 简历; nervous 紧张的; prepare 准备; parking_space 车位; argue 争吵; rude 粗鲁的; impression 印象; reception 前台; elevator 电梯; awkward 尴尬的; apologize 道歉; hire 雇用; qualified 合格的; honest 诚实的; recognize 认出; colleague 同事; embarrassing 令人尴尬的
+---
+I had been preparing for this interview for two weeks. I had researched the company, practiced my answers in front of the mirror, and bought a new suit that cost more than my monthly rent. The position was Junior Marketing Manager at Bright Ideas, the most creative advertising agency in the city. It was my dream job. I had applied to them three times before, and this was the first time they had invited me for an interview.
+
+The interview was at ten o'clock. I woke up at six. I ironed my shirt, polished my shoes, and drank exactly one cup of coffee, because I had read that too much coffee makes you nervous. I left my apartment at eight-thirty, giving myself ninety minutes for a thirty-minute drive. Nothing could go wrong.
+
+By the time I arrived, I had already made three terrible mistakes.
+
+The first mistake happened at a red light. I was so busy practicing my answers out loud that I didn't notice the light had turned green. The driver behind me honked his horn. Not a short, polite honk. A long, angry one. I waved at him in the mirror to say sorry. Unfortunately, my hand was holding a coffee cup at the time, and the wave looked more like a rude gesture. The man shouted something I couldn't hear.
+
+The second mistake happened at a gas station, where I stopped to buy chewing gum. When I got back to the car, I realized I had spilled coffee on my brand-new white shirt. There was a brown stain on it the size and shape of Australia. I spent ten minutes in the gas station bathroom trying to wash it out, which only made it bigger. In the end, I buttoned my jacket all the way up and hoped nobody would notice.
+
+The third mistake was the worst.
+
+The Bright Ideas building is in the center of the city, and parking there is almost impossible. I drove around the block four times. It was nine-forty. Then, finally, I saw it: an empty parking space right in front of the building. It was a miracle.
+
+Unfortunately, someone else had seen it too. A silver car was waiting with its turn signal on, ready to reverse into the space. But the driver was taking his time, adjusting his mirrors, and I was desperate. Before he could move, I drove forward and slid my car into the space.
+
+Feeling very proud of myself, I parked the car.
+
+The man in the silver car rolled down his window. He was about fifty, with gray hair, glasses, and a very red face. "Excuse me!" he said. "I was clearly waiting for that space!"
+
+Now, any reasonable person would have apologized and moved. But I was stressed, I had coffee on my shirt, and I had an interview in twenty minutes. So I said something I will regret for the rest of my life.
+
+"Sorry, I didn't see your name on it," I said. "You should drive faster, old man."
+
+His face went from red to purple. He stared at me for a long moment. Then he said, very quietly, "Have a good day," and drove away.
+
+I felt a little bad. But only a little. I had a dream to catch.
+
+I walked into the building. The reception area was beautiful, with white walls, modern art, and a huge window. The receptionist smiled and asked me to wait. "Mr. Harrison will be with you shortly," she said. "He's just parking his car."
+
+I didn't think anything of it at the time.
+
+At ten o'clock exactly, a door opened. "Daniel?" said a voice. "Come on in."
+
+I stood up, buttoned my jacket over the coffee stain, put on my most confident smile, and walked into the office.
+
+When I walked into the room, I realized that I had seen him before. Gray hair. Glasses. A face that was slowly turning from pink to red to purple.
+
+It was the man from the silver car.
+
+For a few seconds, neither of us said anything. I stood there with my hand out, ready to shake his. He stood there looking at my hand like it was a dead fish. I could hear the clock on the wall ticking. I could hear my own heart beating. I could hear, very far away, my dream job packing its bags and leaving.
+
+"Please," he said finally. "Sit down."
+
+I sat down. He sat down. He opened my résumé and read it slowly. Very slowly. I had never seen anyone read so slowly in my life.
+
+"So, Daniel," he said, without looking up. "It says here that you are a 'calm and respectful team player who works well under pressure.'"
+
+"Yes," I said. My voice came out as a squeak. I cleared my throat. "Yes, that's right."
+
+"Interesting," he said. "And it says you have 'excellent people skills.'"
+
+"I... usually, yes."
+
+He looked up at me over his glasses. "Tell me, Daniel. How do you usually handle conflict with other people?"
+
+At that moment, I had two choices. I could pretend that nothing had happened, give him my perfect practiced answer about communication and teamwork, and hope he had a very bad memory. Or I could tell the truth.
+
+I should have stayed in bed, I thought. But I hadn't. So I took a deep breath.
+
+"Mr. Harrison," I said, "before I answer that question, I need to apologize. What I said to you in the parking lot was rude and completely unacceptable. You had been waiting for that space, and I took it because I was stressed and in a hurry. That's not an excuse. I was wrong, and I'm very sorry. And if it helps, I'm also wearing a shirt with a coffee stain the size of Australia, so I think the universe has already punished me a little."
+
+I unbuttoned my jacket and showed him the stain.
+
+Mr. Harrison looked at the stain. He looked at me. And then, to my complete amazement, he started to laugh. It began as a small sound in his chest, and it became a huge, loud laugh that filled the whole office. He laughed so hard that he had to take off his glasses and wipe his eyes.
+
+"Australia," he said. "It really does look like Australia. Look, there's Tasmania."
+
+When he finally stopped laughing, he leaned back in his chair. "Daniel, do you know how many people have sat in that chair and told me they have excellent people skills? Hundreds. Do you know how many of them have admitted a mistake? Almost none. In this business, we make mistakes every day. Ideas fail. Clients get angry. What matters is what you do next."
+
+The rest of the interview was surprisingly good. We talked about advertising, about my ideas for their clients, and about a campaign I had worked on in my previous job. He asked difficult questions, and I gave honest answers. At one point, he even told me a story about a terrible mistake he had made in his first job, which involved a cake, a client, and a fire alarm.
+
+At the end, he stood up and shook my hand. "We'll be in touch," he said. "Oh, and Daniel? Next time, take the bus."
+
+I didn't get the job.
+
+Just kidding. I did get the job. Mr. Harrison called me two days later. He said that the company had interviewed eight qualified candidates, but I was the only one they would definitely remember. Now he is my boss, and he tells the parking space story at every company party. He always ends it the same way: "And that is why I hired the rudest man I have ever met."
+
+I have worked at Bright Ideas for three years now. I have learned a lot about marketing. But the most important lesson I learned was on my first day, before I had even started. Be kind to strangers. You never know which one of them is going to interview you.
+
+And I always, always take the bus.

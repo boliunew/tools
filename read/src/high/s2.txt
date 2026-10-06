@@ -1,0 +1,106 @@
+kind: story
+title: If I Hadn't Said I Spoke French
+zh: 要是我没说自己会法语就好了
+summary: 为了在晚宴上给女朋友的父母留下好印象，杰克谎称自己法语流利。没想到主厨是法国人，餐厅出了状况，他被推上去当翻译。一个谎言接一个谎言，越陷越深。
+grammar: 第三条件句 | If + had done, would have done：与过去事实相反的假设 | If I hadn't said I spoke French, none of this would have happened.
+grammar: 第二条件句 | If + 一般过去时，would + 动词原形：与现在事实相反或不太可能的假设 | If I spoke French, I would be a hero right now.
+grammar: wish + 过去完成时 | 对过去的遗憾 | I wish I had told the truth from the beginning.
+grammar: 转述句 | 引述别人的话时时态往后退一步：says → said, will → would | She said that her father loved France.
+grammar: 情态动词完成式 must have done | 对过去的肯定推测 | He must have noticed that something was wrong.
+vocab: impress 给……留下好印象; lie 撒谎; fluent 流利的; translate 翻译; chef 厨师; waiter 服务员; restaurant 餐厅; menu 菜单; pretend 假装; confess 坦白; nod 点头; dessert 甜点; accent 口音; disaster 灾难; panic 恐慌; reservation 预订; anniversary 纪念日; sophisticated 老练的; confused 困惑的; truth 真相
+---
+If I hadn't said I spoke French, none of this would have happened. I want to make that clear from the start. Everything that went wrong that evening, and a lot went wrong, can be traced back to one small, stupid lie.
+
+It was the first time I was meeting Emily's parents. Emily and I had been dating for six months, and I was crazy about her. Her parents were celebrating their thirtieth wedding anniversary, and Emily had invited me to join them for dinner at Chez Laurent, the most expensive French restaurant in town. I was terrified.
+
+"Tell me about them," I said in the car on the way there.
+
+"Well," said Emily, "Dad is a retired professor. He's very serious and very smart. He loves history, classical music, and wine. And he loves France. He spent a year in Paris when he was young. He says it was the best year of his life."
+
+She said that her father loved France. She said that he often talked about Paris. And I, wanting desperately to impress this serious, smart man, made a decision that I would regret for the rest of my life.
+
+At dinner, about ten minutes after we sat down, her father turned to me. He was a tall man with a gray beard and very sharp eyes. "So, Jack," he said. "Emily tells me you work in software. Have you traveled much?"
+
+"Oh, yes," I said. "I love traveling. Especially France."
+
+His eyes lit up. "Really? Do you speak French?"
+
+And I said it. I said, "Oui, oui. Fluently."
+
+I do not speak French. I took one year of French in high school, eleven years ago, and I got a C. I know how to say "hello," "thank you," "I am a pineapple," and a few numbers. I have never been to France. I have been to a French bakery in a shopping mall.
+
+Emily looked at me with very wide eyes. She knew I did not speak French. She kicked me under the table. But it was too late.
+
+"Wonderful!" said her father. "Finally, someone to practice with! Nobody in this family speaks a word." Then he said something long and fast in French.
+
+I smiled and nodded. I had no idea what he had said. "Oui," I said confidently. "Absolutely."
+
+He frowned slightly. "You think the Revolution was absolutely a good idea? Interesting. Most historians are more cautious."
+
+"Well," I said, "I'm a very passionate person."
+
+For the next fifteen minutes, I survived by smiling, nodding, and saying "oui" and "c'est vrai," which means "it's true." He must have noticed that something was wrong, because my answers were getting stranger and stranger. At one point, he asked me where I had stayed in Paris, and I panicked and said "the Eiffel Tower." He gave me a long look and took a big drink of his wine.
+
+Then things got much worse.
+
+Our waiter came to the table looking very worried. He spoke to Emily's mother in a quiet voice. Apparently, the head chef, Laurent himself, had just arrived from France that week. His English was very limited, and the restaurant's usual translator, his nephew, had gone home sick. There was a problem with our order. The kitchen did not understand something about Emily's mother's food allergy, and the chef refused to cook the dish until he understood exactly what she could not eat.
+
+"Is there anyone at this table," the waiter asked, "who speaks French?"
+
+Everyone looked at me.
+
+I wish I had told the truth from the beginning. If I had confessed right then, I would have looked silly for one minute, and then everyone would have laughed, and we would have ordered something else. But I didn't. Instead, I stood up, straightened my jacket, and said, "I'll handle it."
+
+Emily put her face in her hands.
+
+The kitchen was hot, loud, and full of people shouting. In the middle of it stood Chef Laurent. He was a short, round man with a huge mustache and the angriest eyebrows I had ever seen. He was holding a large knife, not in a threatening way, but not in a friendly way either.
+
+"Bonjour," I said. That part went well.
+
+The chef immediately started speaking very fast. He waved his arms. He pointed at a plate. He said many words, and I understood exactly two of them: "non" and "problème."
+
+I needed to explain that Emily's mother was allergic to nuts. I searched my memory for the French word for "nut." Nothing. I remembered the word for "pineapple," which is "ananas," but that was not helpful.
+
+So I tried a different approach. I pointed at myself, pretended to eat something, then grabbed my throat and made a choking sound. Then I fell dramatically against the counter.
+
+The kitchen went silent. All the cooks stopped working and stared at me. Chef Laurent looked at me with deep concern. Then he said something in French, very kindly, and handed me a glass of water.
+
+He thought I was choking.
+
+"No, no," I said. "Not me." I pointed toward the dining room. "Madame. Allergique." I was quite proud of "allergique." It just sounded French.
+
+"Ah!" said the chef. "Allergique! À quoi?"
+
+To what? I had no idea how to say "nuts." I looked around the kitchen desperately. Then I saw a bowl of walnuts on a shelf. I grabbed one, held it up, shook my head violently, and said, "Non! Non! Ananas non!"
+
+I don't know why I said pineapple. It just came out.
+
+Chef Laurent looked at the walnut. He looked at me. He looked at the walnut again. "Pas d'ananas?" he said, confused. "No pineapple?"
+
+"Oui!" I said. "I mean, non! I mean..." I gave up. I put the walnut on the counter, drew a big X over it in the air with my finger, and pointed at the dining room again.
+
+Slowly, the chef's face changed. "Ah," he said in English. "No nuts. The lady cannot eat the nuts."
+
+"You speak English?" I said.
+
+He shrugged. "A little. Enough. I did not understand the waiter because he speaks very fast. You," he added, "speak very bad French."
+
+I walked back to the table feeling like a soldier returning from a war that he had lost. Everyone was staring at me. Emily's father had his arms crossed.
+
+"Well?" he said.
+
+"The chef understands," I said. "No nuts. Everything is fine." Then I sat down and said, "Also, I need to tell you something. I don't speak French. At all. I said it because I wanted you to like me. I'm sorry. It was a stupid lie, and I just told a French chef that I was allergic to pineapples."
+
+There was a long silence. Then Emily's mother started laughing. Emily started laughing. And finally, her father, the serious professor, the man with the sharp eyes, started laughing so hard that the people at the next table turned to look.
+
+"I knew," he said when he could finally speak. "I knew from the second sentence. You told me you agreed with the Revolution absolutely, and then you said you stayed at the Eiffel Tower. Nobody stays at the Eiffel Tower, Jack."
+
+"Then why didn't you say anything?"
+
+He smiled. "Because I wanted to see how far you would go. And I must say, you went very far. If I had known you would go into the kitchen, I would have stopped you. Probably."
+
+Chef Laurent came out at the end of the evening with a special dessert, a beautiful chocolate cake with no nuts. On top, written in white chocolate, were the words "Pour l'homme qui ne parle pas français." For the man who doesn't speak French.
+
+Emily and I got married two years later. At the wedding, her father gave a speech. He told this story, and two hundred people laughed at me. Then he raised his glass and said, "To Jack, who taught me that a man who lies to impress you is foolish. But a man who confesses in front of everyone is a man you can trust."
+
+If I spoke French, I would be a hero right now. But I don't. I'm taking lessons, though. Last week, I learned the word for "nut." It's "noix." I will never forget it.
