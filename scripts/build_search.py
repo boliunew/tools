@@ -96,6 +96,13 @@ def main():
         for c in asi["concepts"]:
             out.append({"k": "阿西莫夫", "t": c["k"], "s": short(c["d"]), "u": "people.html#asimov", "x": flat(c["k"], c["en"], c["d"])})
 
+    up = load("people/up.json")
+    if up:
+        for side, tag in (("uk", "人生七年 · 英国"), ("su", "人生七年 · 苏联")):
+            for pp in up[side]["people"]:
+                out.append({"k": tag, "t": pp["zh"] + " " + pp["name"], "s": short(pp["then"]), "u": "people.html#up/" + side + "-" + pp["id"],
+                            "x": flat(pp["zh"], pp["name"], pp["from"], pp["seven"], pp["then"], [t[1] for t in pp["tl"]], pp["look"])})
+
     for f in ("en_work", "en_life", "en_spoken", "es_yard"):
         d = load("speak/%s.json" % f)
         for pk in (d or {}).get("packs", []):

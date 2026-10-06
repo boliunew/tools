@@ -134,6 +134,70 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 .facts div{padding:9px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
 .facts div:last-child{border-bottom:0}
 
+
+/* ---------- 人生七年 ---------- */
+.up-hero{background:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 10px,transparent 10px 22px) top/100% 12px no-repeat,repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 10px,transparent 10px 22px) bottom/100% 12px no-repeat,linear-gradient(160deg,#2B2B2B,#121212);color:#EDE7DA;border-radius:18px;padding:24px 18px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.up-hero:after{content:"7·14·21·28·35";position:absolute;right:-8px;bottom:6px;font-family:Georgia,serif;font-size:44px;font-weight:700;color:rgba(255,255,255,.05);pointer-events:none;white-space:nowrap}
+.up-hero h1{margin:0;font-size:28px;font-weight:800;letter-spacing:.06em}
+.up-hero .sub{font-size:13px;opacity:.75;margin-top:2px}
+.up-hero p{font-size:14px;opacity:.92;margin:10px 0 0;line-height:1.75}
+.up-seg{display:flex;gap:6px;margin:12px 0 4px}
+.up-seg button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 4px;font-size:14.5px;font-weight:600}
+.up-seg button.on{background:#2B2B2B;border-color:#2B2B2B;color:#F3EEE4}
+@media (prefers-color-scheme: dark){.up-seg button.on{background:#EDE7DA;border-color:#EDE7DA;color:#16130F}}
+.up-intro{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:4px 16px;margin-top:10px}
+.up-intro p{margin:10px 0;font-size:14.5px;line-height:1.85}
+.up-intro .more{border:0;background:none;color:var(--accent);font-size:13.5px;padding:0 0 10px;font-weight:600}
+.up-facts{margin:10px 0 0;padding:0;list-style:none}
+.up-facts li{font-size:13.5px;color:var(--soft);padding:3px 0 3px 16px;position:relative}
+.up-facts li:before{content:"▪";position:absolute;left:2px;color:var(--gold)}
+.reel{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px 8px;scroll-snap-type:x proximity}
+.reel::-webkit-scrollbar{display:none}
+.fr{flex:0 0 150px;scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px;box-shadow:var(--shadow);cursor:pointer}
+.fr.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold-soft)}
+.fr .ag{font-family:Georgia,serif;font-size:30px;font-weight:700;line-height:1;color:var(--gold)}
+.fr .ag small{font-size:12px;color:var(--faint);margin-left:3px;font-family:inherit;font-weight:400}
+.fr b{display:block;font-size:13px;margin-top:4px;line-height:1.35}
+.fr .yr{font-size:11.5px;color:var(--faint)}
+.fr p{font-size:12px;color:var(--soft);margin:5px 0 0;line-height:1.5}
+.spo{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--gold-soft);border-radius:12px;padding:8px 12px;font-size:13px;margin:4px 0 10px}
+.spo select{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:3px 6px;font-size:13.5px}
+.pc{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+.pc .hd{display:flex;gap:11px;padding:12px 14px;cursor:pointer;align-items:flex-start}
+.pc .av{flex:0 0 42px;height:42px;border-radius:50%;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:21px}
+.pc .nm{flex:1;min-width:0}
+.pc h3{margin:0;font-size:16.5px;line-height:1.3}
+.pc h3 small{font-weight:400;font-size:12.5px;color:var(--faint);margin-left:6px;font-family:Georgia,serif}
+.pc .fm{font-size:12.5px;color:var(--soft)}
+.pc .dots{display:flex;gap:3px;margin-top:5px;flex-wrap:wrap}
+.pc .dots i{font-style:normal;font-size:10px;line-height:16px;min-width:22px;text-align:center;border-radius:5px;background:var(--chip);color:var(--faint)}
+.pc .dots i.y{background:#2B2B2B;color:#F3EEE4}
+.pc .dots i.hid{opacity:.35}
+@media (prefers-color-scheme: dark){.pc .dots i.y{background:#D9CFBC;color:#16130F}}
+.pc .sv{font-size:13.5px;margin-top:6px;line-height:1.6}
+.pc .sv b{color:var(--gold);font-size:12px;margin-right:4px}
+.pc .bd{display:none;border-top:1px dashed var(--line);padding:12px 16px 14px}
+.pc.on .bd{display:block}
+.pc .then{background:var(--chip);border-radius:10px;padding:8px 11px;font-size:14px;line-height:1.7;margin-bottom:10px}
+.pc .then b{display:block;font-size:12px;color:var(--soft)}
+.ages{border-left:2px solid var(--line);margin-left:18px;padding-left:28px}
+.ages .a{position:relative;padding:6px 0 8px;font-size:14.5px;line-height:1.75}
+.ages .a:before{content:attr(data-age);position:absolute;left:-47px;top:6px;width:34px;height:24px;border-radius:12px;background:var(--paper);border:2px solid var(--gold);font-family:Georgia,serif;font-weight:700;font-size:12.5px;color:var(--gold);display:flex;align-items:center;justify-content:center}
+.ages .a.no{color:var(--faint);font-size:13px}
+.ages .lock{font-size:13px;color:var(--faint);padding:6px 0}
+.look{margin-top:10px;border-left:3px solid var(--accent);padding:4px 0 4px 11px;font-size:14.5px;line-height:1.8;color:var(--ink)}
+.look b{display:block;font-size:12px;color:var(--accent)}
+.up-th{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 16px;margin-bottom:10px}
+.up-th h3{margin:0 0 4px;font-size:16.5px}
+.up-th p{margin:8px 0;font-size:14.5px;line-height:1.85}
+.pair{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.pair .two{display:flex;gap:8px;margin:8px 0}
+.pair .two button{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:8px;text-align:left;font-size:13px;line-height:1.4}
+.pair .two button b{display:block;font-size:14.5px}
+.pair .two .vs{flex:0 0 auto;align-self:center;font-family:Georgia,serif;color:var(--faint);font-size:13px}
+.pair p{margin:0;font-size:14px;line-height:1.75;color:var(--soft)}
+.up-src{font-size:12.5px;line-height:1.9;color:var(--faint)}
+.up-src a{color:var(--soft)}
 /* ---------- 阿西莫夫 ---------- */
 .as-hero{background:radial-gradient(1.5px 1.5px at 18% 30%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 72% 18%,rgba(255,255,255,.7),transparent),radial-gradient(1.5px 1.5px at 86% 62%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 40% 78%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 58% 44%,rgba(255,255,255,.6),transparent),radial-gradient(130% 120% at 100% 0%,#3B5A7A 0%,#152232 50%,#080D14 100%);color:#E6EEF6;border-radius:18px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .as-hero:after{content:"";position:absolute;right:-60px;bottom:-90px;width:220px;height:220px;border-radius:50%;border:1px solid rgba(160,200,240,.18);box-shadow:0 0 0 26px rgba(160,200,240,.04),0 0 0 54px rgba(160,200,240,.03);pointer-events:none}
@@ -201,7 +265,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 <body>
 <div class="wrap">
   <header><a class="brand" href="./">⭐ 人物专栏</a></header>
-  <div class="who" id="who"><button data-p="sushi">🖋️ 苏轼</button><button data-p="gm">🎤 G. Michael</button><button data-p="asimov">🚀 阿西莫夫</button></div>
+  <div class="who" id="who"><button data-p="sushi">🖋️ 苏轼</button><button data-p="gm">🎤 G. Michael</button><button data-p="asimov">🚀 阿西莫夫</button><button data-p="up">📽️ 人生七年</button></div>
   <div id="view"><div class="empty">加载中…</div></div>
 </div>
 <script>
@@ -426,23 +490,100 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     if ((el = t.closest('.bk .hd[data-b]'))) { var id = el.getAttribute('data-b'); BO[id] = !BO[id]; redrawBook(id); }
   }
 
+
+  /* ====================== 人生七年（Up 系列） ====================== */
+  var UP = null, UPS = jget('upSide', 'uk'), UPG = '', UPO = {}, UPI = 0;
+  function upSeen(side) { return jget('upSeen-' + side, 0); }   // 0 = 全部都看过了（不防剧透）
+  function renderUp() {
+    var v = $('view'), h = '';
+    h += '<div class="up-hero"><h1>人生七年</h1><div class="sub">每七年拍一次，拍了一辈子 · 英国 1964–2026 · 苏联 1990–2026</div>' +
+      '<p>同一批孩子，从七岁开始，每隔七年被镜头找回来一次，问同样的问题：你过得怎么样？你想要什么？英国版拍了 62 年、10 部；苏联版从苏联解体前一年拍到今天。这里是两边 34 个人的全部故事。</p></div>';
+    h += '<div class="up-seg" id="upSeg"><button data-s="uk" class="' + (UPS === 'uk' ? 'on' : '') + '">🇬🇧 英国 14 人</button><button data-s="su" class="' + (UPS === 'su' ? 'on' : '') + '">☭ 苏联 20 人</button><button data-s="cmp" class="' + (UPS === 'cmp' ? 'on' : '') + '">🔍 对照与看点</button></div>';
+    if (UPS === 'cmp') h += upCompare(); else h += upSide(UP[UPS], UPS);
+    h += '<div class="foot">内容依据维基百科、ITV 与谢菲尔德纪录片节介绍、《生意人报》《共青团真理报》等报道整理；<br>只写片中和报道里有的事实，没有可靠资料的年份只标是否出镜。</div>';
+    v.innerHTML = h;
+  }
+  function upSide(S, key) {
+    var h = '', seen = upSeen(key), i;
+    h += '<div class="up-intro"><p>' + esc(S.intro[0]) + '</p>' + (UPI ? S.intro.slice(1).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '<ul class="up-facts">' + S.facts.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul><button class="more" data-upi="0">收起</button>' : '<button class="more" data-upi="1">读完整介绍 ›</button>') + '</div>';
+    h += '<div class="sec">每一集 <small>' + esc(S.en) + '</small></div><div class="reel">';
+    S.films.forEach(function (f) { h += '<div class="fr' + (seen === f.age ? ' on' : '') + '" data-seen="' + f.age + '"><div class="ag">' + f.age + '<small>岁</small></div><b>' + esc(f.t) + '</b><div class="yr">' + esc(f.y) + (f.len ? ' · ' + esc(f.len) : '') + '</div><p>' + esc(f.n) + '</p></div>'; });
+    h += '</div>';
+    h += '<div class="spo">🙈 防剧透：我看到了 <select id="upSpo"><option value="0"' + (seen ? '' : ' selected') + '>全部都看过 / 不怕剧透</option>' +
+      S.ages.map(function (a) { return '<option value="' + a + '"' + (seen === a ? ' selected' : '') + '>' + a + ' 岁那一集</option>'; }).join('') + '</select>' + (seen ? '<span>之后的内容先藏起来</span>' : '') + '</div>';
+    var cnt = {}; S.people.forEach(function (p) { cnt[p.g] = (cnt[p.g] || 0) + 1; });
+    h += '<div class="chips" id="upChips"><button data-g="" class="' + (UPG ? '' : 'on') + '">全部<small>' + S.people.length + '</small></button>';
+    S.groups.forEach(function (g) { if (cnt[g[0]]) h += '<button data-g="' + g[0] + '" class="' + (UPG === g[0] ? 'on' : '') + '" title="' + esc(g[2]) + '">' + esc(g[1]) + '<small>' + cnt[g[0]] + '</small></button>'; });
+    h += '</div>';
+    S.people.forEach(function (p) { if (!UPG || p.g === UPG) h += upCard(S, key, p, seen); });
+    return h;
+  }
+  function upCard(S, key, p, seen) {
+    var on = UPO[key + '-' + p.id], last = S.ages[S.ages.length - 1], lim = seen || last, h = '';
+    h += '<div class="pc' + (on ? ' on' : '') + '" id="up-' + key + '-' + p.id + '"><div class="hd" data-pc="' + key + '-' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.name) + '</small></h3><div class="fm">' + esc(p.from) + '</div><div class="dots">';
+    S.ages.forEach(function (a) { h += '<i class="' + (p.films.indexOf(a) >= 0 ? 'y' : '') + (a > lim ? ' hid' : '') + '" title="' + a + ' 岁' + (p.films.indexOf(a) >= 0 ? '出镜' : '缺席') + '">' + (a > lim ? '?' : a) + '</i>'; });
+    h += '</div><div class="sv"><b>7 岁</b>' + esc(p.seven) + '</div></div></div><div class="bd">';
+    if (!seen) h += '<div class="then"><b>后来</b>' + esc(p.then) + '</div>';
+    h += '<div class="ages">';
+    var shown = {}, hidden = 0;
+    p.tl.forEach(function (t) { if (t[0] > lim) { hidden++; return; } shown[t[0]] = 1; h += '<div class="a" data-age="' + t[0] + '">' + esc(t[1]) + '</div>'; });
+    S.ages.forEach(function (a) { if (a <= lim && !shown[a] && p.films.indexOf(a) < 0 && a > 7) h += '<div class="a no" data-age="' + a + '">这一集没有出镜。</div>'; });
+    if (hidden) h += '<div class="lock">🙈 后面还有 ' + hidden + ' 段，看完对应的集再来（上面改「我看到了」）</div>';
+    h += '</div>';
+    if (!seen) h += '<div class="look"><b>看点</b>' + esc(p.look) + '</div>';
+    return h + '</div></div>';
+  }
+  function upFind(side, id) { var L = UP[side].people; for (var i = 0; i < L.length; i++) if (L[i].id === id) return L[i]; return null; }
+  function upCompare() {
+    var C = UP.compare, h = '';
+    h += '<div class="sec">四个问题</div>';
+    C.themes.forEach(function (t) { h += '<div class="up-th"><h3>' + esc(t.t) + '</h3>' + t.p.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('') + '</div>'; });
+    h += '<div class="sec">两边对照着看 <small>点名字跳到人物</small></div>';
+    C.pairs.forEach(function (pr) {
+      var a = upFind(pr.a[0], pr.a[1]), b = upFind(pr.b[0], pr.b[1]);
+      h += '<div class="pair"><b>' + esc(pr.t) + '</b><div class="two"><button data-go="' + pr.a[0] + '-' + pr.a[1] + '"><b>' + a.icon + ' ' + esc(a.zh) + '</b>' + (pr.a[0] === 'uk' ? '🇬🇧 ' : '☭ ') + esc(a.from) + '</button><span class="vs">vs</span><button data-go="' + pr.b[0] + '-' + pr.b[1] + '"><b>' + b.icon + ' ' + esc(b.zh) + '</b>' + (pr.b[0] === 'uk' ? '🇬🇧 ' : '☭ ') + esc(b.from) + '</button></div><p>' + esc(pr.d) + '</p></div>';
+    });
+    h += '<div class="sec">怎么看</div><div class="up-th">' + C.watch.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('') +
+      '<p><a href="https://www.justwatch.com/us/search?q=' + encodeURIComponent('63 Up') + '" target="_blank" rel="noopener">JustWatch 查英国版</a> · <a href="https://smotrim.ru/" target="_blank" rel="noopener">Smotrim（站内搜「Рожденные в СССР」）</a> · <a href="https://www.youtube.com/results?search_query=' + encodeURIComponent('Seven Up 1964 Granada trailer') + '" target="_blank" rel="noopener">YouTube 片段</a></p></div>';
+    h += '<div class="sec">资料来源</div><div class="up-th up-src">' + C.sources.map(function (s) { return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>'; }).join('<br>') + '</div>';
+    return h;
+  }
+  function upOpen(key) {   // key = 'uk-neil'
+    var side = key.split('-')[0];
+    UPS = side; jset('upSide', side); UPG = ''; UPO[key] = 1; renderUp();
+    var el = $('up-' + key); if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+  function onUp(e) {
+    var t = e.target, el;
+    if ((el = t.closest('[data-s]'))) { UPS = el.getAttribute('data-s'); jset('upSide', UPS); UPG = ''; renderUp(); return; }
+    if ((el = t.closest('[data-upi]'))) { UPI = +el.getAttribute('data-upi'); renderUp(); return; }
+    if ((el = t.closest('#upChips [data-g]'))) { UPG = el.getAttribute('data-g'); var y = window.scrollY; renderUp(); window.scrollTo(0, y); return; }
+    if ((el = t.closest('[data-go]'))) { upOpen(el.getAttribute('data-go')); return; }
+    if ((el = t.closest('.fr[data-seen]'))) { jset('upSeen-' + UPS, +el.getAttribute('data-seen')); var y2 = window.scrollY; renderUp(); window.scrollTo(0, y2); return; }
+    if ((el = t.closest('[data-pc]'))) { var k = el.getAttribute('data-pc'); UPO[k] = !UPO[k]; var c = $('up-' + k); if (c) c.className = 'pc' + (UPO[k] ? ' on' : ''); }
+  }
+  document.addEventListener('change', function (e) { if (e.target && e.target.id === 'upSpo') { jset('upSeen-' + UPS, +e.target.value); var y = window.scrollY; renderUp(); window.scrollTo(0, y); } });
+
   /* ====================== 切换 ====================== */
   function goPend() {   // 从全站搜索跳过来：#sushi/<id> 或 #gm/<id>
     if (!PEND) return;
     var id = PEND; PEND = '';
     if (WHO === 'gm') { openSong(id); return; }
     if (WHO === 'asimov') { openBook(id); return; }
+    if (WHO === 'up') { upOpen(id); return; }
     SK = ''; OPEN = {}; OPEN[id] = 1; renderSushi();
     var el = $('w-' + id); if (el) el.scrollIntoView({ block: 'start' });
   }
   function show(p) {
-    if (p !== 'gm' && p !== 'asimov') p = 'sushi';
+    if (p !== 'gm' && p !== 'asimov' && p !== 'up') p = 'sushi';
     WHO = p; jset('who', p); history.replaceState(null, '', '#' + p);
     var bs = $('who').querySelectorAll('button'), i; for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-p') === p ? 'on' : '';
-    document.title = (p === 'gm' ? 'George Michael' : p === 'asimov' ? '阿西莫夫' : '苏轼') + ' · 人物专栏';
+    document.title = (p === 'gm' ? 'George Michael' : p === 'asimov' ? '阿西莫夫' : p === 'up' ? '人生七年' : '苏轼') + ' · 人物专栏';
     if (p === 'sushi') {
       if (SS) { renderSushi(); goPend(); }
       else { var left = 2, parts = {}; ['sushi_a', 'sushi_b'].forEach(function (f) { getJSON('people/' + f + '.json', function (d) { parts[f] = d ? d.items : []; if (--left) return; SS = parts.sushi_a.concat(parts.sushi_b); SS.sort(function (a, b) { return (a.year || 9999) - (b.year || 9999); }); if (WHO === 'sushi') { renderSushi(); goPend(); } }); }); }
+    } else if (p === 'up') {
+      if (UP) { renderUp(); goPend(); } else getJSON('people/up.json', function (d) { UP = d; if (WHO === 'up') { if (UP) { renderUp(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
     } else if (p === 'asimov') {
       if (AS) { renderAsimov(); goPend(); } else getJSON('people/asimov.json', function (d) { AS = d; if (WHO === 'asimov') { if (AS) { renderAsimov(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
     } else {
@@ -450,7 +591,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     }
   }
   $('who').onclick = function (e) { var b = e.target.closest('[data-p]'); if (b) { window.scrollTo(0, 0); show(b.getAttribute('data-p')); } };
-  $('view').onclick = function (e) { if (WHO === 'gm') onGM(e); else if (WHO === 'asimov') onAsimov(e); else onSushi(e); };
+  $('view').onclick = function (e) { if (WHO === 'gm') onGM(e); else if (WHO === 'asimov') onAsimov(e); else if (WHO === 'up') onUp(e); else onSushi(e); };
   // 从语境词库回来时刷新「在学 / 会了」标记
   document.addEventListener('visibilitychange', function () { if (!document.hidden && WHO === 'asimov' && AS) { var y = window.scrollY; renderAsimov(); window.scrollTo(0, y); } });
   show(WHO);
