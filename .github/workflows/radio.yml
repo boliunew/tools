@@ -1,7 +1,11 @@
 name: 通勤电台
 on:
   schedule:
-    - cron: "55 13 * * *"   # 6:55 am Pacific (daylight time)
+    # GitHub 的定时任务经常晚好几个小时（以前 6:55 的任务实际 10 点到下午 2 点才跑），
+    # 所以凌晨就开始排，三次里先跑成的那次生成，后面的看到今天已经有了就跳过。
+    - cron: "17 10 * * *"   # 3:17 am Pacific (daylight time) / 2:17 am (standard)
+    - cron: "43 11 * * *"   # 4:43 am backup
+    - cron: "29 12 * * *"   # 5:29 am backup
   workflow_dispatch:
   push:
     branches: [main]
@@ -17,20 +21,31 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+      - name: Already built today?
+        id: chk
+        run: |
+          have=$(python3 -c "import json;print(json.load(open('radio/data/today.json')).get('date',''))" 2>/dev/null || true)
+          today=$(TZ=America/Los_Angeles date +%F)
+          echo "have=$have today=$today event=${{ github.event_name }}"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$have" = "$today" ]; then echo "skip=1" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/setup-python@v5
+        if: steps.chk.outputs.skip != '1'
         with:
           python-version: "3.12"
       - name: Install
+        if: steps.chk.outputs.skip != '1'
         run: |
           pip install -r radio/requirements.txt
           sudo apt-get install -y ffmpeg >/dev/null 2>&1 || true
           ffmpeg -version | head -1
       - name: Build radio
+        if: steps.chk.outputs.skip != '1'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VOCAB_GIST_ID: ${{ secrets.VOCAB_GIST_ID }}
         run: python radio/build.py
       - name: Commit
+        if: steps.chk.outputs.skip != '1'
         run: |
           git config user.name "radio-bot"
           git config user.email "radio-bot@users.noreply.github.com"

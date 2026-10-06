@@ -112,7 +112,7 @@ timer stocks   "股票池扫描 + 股价提醒（收盘后、晚上补一次、�
 timer earnings "财报与经济日历" "Mon..Fri 05:37" "Sun 11:37"
 timer news     "英文新闻 + 每日一句" "*-*-* 06:07" "*-*-* 18:07"
 timer deals    "打折雷达" "*-*-* 06:17" "*-*-* 17:17"
-timer radio    "通勤电台" "*-*-* 06:55"
+timer radio    "通勤电台" "*-*-* 06:20"   # 早上的新闻 6:07 跑完再生成，7 点出门前肯定好了
 timer monitor  "网页监控（每 4 小时）" "*-*-* 00/4:17"
 sudo systemctl daemon-reload
 sudo systemctl restart tools-stocks.timer tools-earnings.timer tools-news.timer tools-deals.timer tools-radio.timer tools-monitor.timer

@@ -36,6 +36,11 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 .speeds{display:flex;justify-content:center;margin-top:8px}
 .speeds button{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:4px 12px;margin:0 3px;font-size:13px;color:var(--soft)}
 .speeds button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.modes{display:flex;justify-content:center;margin-top:10px}
+.modes button{border:1px solid var(--line);background:var(--card);padding:5px 14px;font-size:13.5px;color:var(--soft)}
+.modes button:first-child{border-radius:16px 0 0 16px}.modes button:last-child{border-radius:0 16px 16px 0;border-left:0}
+.modes button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.rnote{font-size:12.5px;color:var(--faint);text-align:center;margin-top:8px}
 .segs{margin-top:14px}
 .seg{display:flex;align-items:center;padding:14px 14px;border-bottom:1px solid var(--line);cursor:pointer}
 .seg:last-child{border-bottom:0}
@@ -87,6 +92,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
   var toastT;
   function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 2200); }
 
+  var RAW = null, MODE = get('mode', 'long');
   var au = $('au'), D = null, cur = -1, done = {}, rate = get('rate', 1), ms = navigator.mediaSession, clockQ = null;
   function pad2(n) { return ('0' + n).slice(-2); }
   var qs = window.location.search, AUTO = /[?&]autoplay=1/.test(qs);
@@ -99,7 +105,12 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
   var lastCheck = 0, PEND = null;
   function md(d) { var p = d.split('-'); return (+p[1]) + '月' + (+p[2]) + '日'; }
   function stale() { return !D || D.date !== todayPT(); }
-  function apply(nd) { D = nd; PEND = null; cur = -1; done = {}; clockQ = null; $('nb').innerHTML = ''; render(); }
+  function view(nd) {
+    var v = {}, k; for (k in nd) if (nd.hasOwnProperty(k)) v[k] = nd[k];
+    if (MODE === 'short') { v.segments = nd.segments.filter(function (s) { return !s.opt; }); v.total = nd.short || v.segments.reduce(function (a, s) { return a + s.dur; }, 0); }
+    return v;
+  }
+  function apply(nd) { RAW = nd; nd = view(nd); D = nd; PEND = null; cur = -1; done = {}; clockQ = null; $('nb').innerHTML = ''; render(); }
   function load(manual, then) {
     lastCheck = Date.now();
     var fin = function () { if (then) { var f = then; then = null; f(); } };
@@ -110,7 +121,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
       if (x.status !== 200) { if (!D) $('app').innerHTML = '<div class="card msg">电台还没生成过。<br>第一次需要等 GitHub 跑一次（几分钟），或点下面的「立即重新生成」。</div>'; fin(); return; }
       var nd; try { nd = JSON.parse(x.responseText); } catch (e) { fin(); return; }
       var same = D && D.generated === nd.generated;
-      if (manual) toast(same ? (nd.date === todayPT() ? '已经是最新的了' : '今天的还没生成，早上 7 点左右会有') : '已更新到' + md(nd.date) + '的电台 ✓');
+      if (manual) toast(same ? (nd.date === todayPT() ? '已经是最新的了' : '今天的还没生成，凌晨会自动生成') : '已更新到' + md(nd.date) + '的电台 ✓');
       if (same) { fin(); return; }
       if (D && cur >= 0 && !manual) {
         PEND = nd;
@@ -138,14 +149,18 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
   function render() {
     var stale = D.date !== todayPT(), h = '<div class="card player">';
     var dd = D.date.split('-');
-    h += '<div class="date' + (stale ? ' stale' : '') + '">' + (+dd[1]) + '月' + (+dd[2]) + '日的电台 · ' + D.segments.length + ' 段 · 共 ' + mmss(D.total) + (stale ? ' · 不是今天的（今天的早上 7 点左右生成，打开页面会自动换上）' : '') + '</div>';
+    h += '<div class="date' + (stale ? ' stale' : '') + '">' + (+dd[1]) + '月' + (+dd[2]) + '日的电台 · ' + D.segments.length + ' 段 · 共 ' + mmss(D.total) + (stale ? ' · 不是今天的（今天的凌晨生成，打开页面会自动换上）' : '') + '</div>';
     h += '<div class="now" id="now">准备好了</div><div class="nowsub" id="nowsub">点 ▶ 从头播放</div>';
     h += '<div class="bar" id="bar"><i id="fill"></i></div><div class="times"><span id="tc">0:00</span><span id="td">' + mmss(D.segments[0].dur) + '</span></div>';
     h += '<div class="ctrl"><button id="bPrev" aria-label="上一段">⏮</button><button class="big" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一段">⏭</button></div>';
     h += '<div class="speeds">';
     var rs = [0.9, 1, 1.15, 1.3];
     for (var i = 0; i < rs.length; i++) h += '<button data-r="' + rs[i] + '" class="' + (rs[i] === rate ? 'on' : '') + '">' + rs[i] + '×</button>';
-    h += '</div></div><div class="card segs">';
+    h += '</div>';
+    var hasOpt = RAW && RAW.segments.some(function (s) { return s.opt; });
+    if (hasOpt) h += '<div class="modes"><button data-m="short" class="' + (MODE === 'short' ? 'on' : '') + '">短版 ' + mmss(RAW.short) + '</button><button data-m="long" class="' + (MODE !== 'short' ? 'on' : '') + '">长版 ' + mmss(RAW.total) + '</button></div>';
+    if (RAW && RAW.review_note) h += '<div class="rnote">🔁 今天没有单词复习段：' + esc(RAW.review_note) + '</div>';
+    h += '</div><div class="card segs">';
     for (i = 0; i < D.segments.length; i++) {
       var s = D.segments[i];
       h += '<div class="seg" data-i="' + i + '"><div class="n">' + (i + 1) + '</div><div class="t"><b>' + esc(s.title) + '</b><span>' + esc(s.sub) + '</span></div><div class="d">' + mmss(s.dur) + '</div></div>';
@@ -159,6 +174,24 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     $('bPrev').onclick = prev; $('bNext').onclick = next;
     var ss = document.querySelectorAll('.seg');
     for (i = 0; i < ss.length; i++) ss[i].onclick = function () { start(+this.getAttribute('data-i'), true); };
+    var mb = document.querySelectorAll('.modes button');
+    for (i = 0; i < mb.length; i++) mb[i].onclick = function () {
+      var m = this.getAttribute('data-m'); if (m === MODE) return;
+      MODE = m; put('mode', m);
+      var id = cur >= 0 && !clockQ && D.segments[cur] ? D.segments[cur].id : null;
+      var inClock = !!clockQ, q = clockQ;
+      apply(RAW);
+      if (inClock) clockQ = q;   // still announcing the time: carry on into segment 1
+      if (id) {   // keep the current segment playing; if 短版 dropped it, continue with the next one that is still listed
+        var rawPos = function (sid) { for (var r = 0; r < RAW.segments.length; r++) if (RAW.segments[r].id === sid) return r; return -1; };
+        var here = rawPos(id), k;
+        for (k = 0; k < D.segments.length; k++) if (rawPos(D.segments[k].id) >= here) break;
+        cur = k < D.segments.length && D.segments[k].id === id ? k : k - 1;
+        if (cur >= 0 && D.segments[cur].id !== id) { done[cur] = 1; toast('这一段短版里没有，播完接着下一段'); } else toast(m === 'short' ? '短版：天气、行情、新闻、单词' : '长版：再加每日一句、跟读、一招、历史、苏轼');
+        paint(); meta();
+        if (!D.segments[cur] || D.segments[cur].id !== id) { $('now').textContent = RAW.segments[here].title; $('nowsub').textContent = RAW.segments[here].sub || ''; }
+      } else toast(m === 'short' ? '短版：天气、行情、新闻、单词' : '长版：再加每日一句、跟读、一招、历史、苏轼');
+    };
     var sp = document.querySelectorAll('.speeds button');
     for (i = 0; i < sp.length; i++) sp[i].onclick = function () { rate = +this.getAttribute('data-r'); put('rate', rate); au.playbackRate = rate; for (var k = 0; k < sp.length; k++) sp[k].className = sp[k] === this ? 'on' : ''; };
     var open = false;

@@ -19,6 +19,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
 
@@ -67,10 +68,10 @@ def md(d):
 
 # ---------------------------------------------------------------- segments
 INTROS = [
-    "今天是{date}，{wk}。欢迎收听你的通勤电台，今天准备了{n}段内容，想跳过就按方向盘上的下一首。",
-    "{date}，{wk}，通勤电台准时上线。今天一共{n}段，不想听的直接按下一首。",
-    "这里是你的通勤电台。今天是{date}，{wk}，一共{n}段，方向盘上的下一首可以随时跳过。",
-    "{wk}，{date}。通勤电台陪你上路，今天有{n}段，按下一首可以跳段。",
+    "今天是{date}，{wk}。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。",
+    "{date}，{wk}，通勤电台准时上线。不想听的直接按下一首。",
+    "这里是你的通勤电台。今天是{date}，{wk}，方向盘上的下一首可以随时跳段。",
+    "{wk}，{date}。通勤电台陪你上路，按下一首可以跳段。",
 ]
 DAYNOTE = {0: "新的一周开始了，加油！", 2: "一周过半了。", 4: "周五了，坚持一下就周末了！", 5: "周末还出门，辛苦了。", 6: "周末还出门，辛苦了。"}
 OUTROS = [
@@ -81,10 +82,10 @@ OUTROS = [
 ]
 
 
-def seg_intro(today, n):
+def seg_intro(today):
     rnd = random.Random(today.toordinal() * 7 + 1)
     wk = f"星期{WEEK[today.weekday()]}"
-    txt = rnd.choice(INTROS).format(date=md(today), wk=wk, n=n)
+    txt = rnd.choice(INTROS).format(date=md(today), wk=wk)
     if today.weekday() in DAYNOTE:
         txt = DAYNOTE[today.weekday()] + txt
     return {"id": "intro", "title": "☀️ 开场", "sub": f"{md(today)} {wk}", "parts": [("zh", txt)]}
@@ -96,7 +97,11 @@ WMO = {0: "晴", 1: "大致晴朗", 2: "多云", 3: "阴天", 45: "有雾", 48: 
 
 
 def fetch_json(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "boliunew-tools-radio/1.0"})
+    hd = {"User-Agent": "boliunew-tools-radio/1.0"}
+    tok = os.environ.get("GH_TOKEN", "").strip()
+    if tok and url.startswith("https://api.github.com/"):
+        hd["Authorization"] = "Bearer " + tok
+    req = urllib.request.Request(url, headers=hd)
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.loads(r.read().decode())
 
@@ -114,27 +119,41 @@ def hm(iso):
 def seg_weather():
     try:
         w = fetch_json("https://api.open-meteo.com/v1/forecast?latitude=%s&longitude=%s"
-                       "&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m"
+                       "&hourly=temperature_2m,apparent_temperature,precipitation_probability"
                        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,sunset,wind_speed_10m_max"
                        "&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%%2FLos_Angeles&forecast_days=1" % (LOC["lat"], LOC["lon"]))
     except Exception as e:  # noqa: BLE001
         print("weather failed:", e)
         return None
     try:
-        aq = fetch_json("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=%s&longitude=%s&current=us_aqi&timezone=America%%2FLos_Angeles" % (LOC["lat"], LOC["lon"]))
-        aqi = (aq.get("current") or {}).get("us_aqi")
+        aq = fetch_json("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=%s&longitude=%s&hourly=us_aqi&forecast_days=1&timezone=America%%2FLos_Angeles" % (LOC["lat"], LOC["lon"]))
+        vals = [v for v in ((aq.get("hourly") or {}).get("us_aqi") or [])[7:19] if v is not None]
+        aqi = max(vals) if vals else None   # worst daytime hour
     except Exception as e:  # noqa: BLE001
         print("air quality failed:", e)
         aqi = None
-    c, d = w.get("current") or {}, w.get("daily") or {}
+    d = w.get("daily") or {}
     g = lambda k: (d.get(k) or [None])[0]  # noqa: E731
     code, tmax, tmin, rain, uv, wind = g("weather_code"), g("temperature_2m_max"), g("temperature_2m_min"), g("precipitation_probability_max"), g("uv_index_max"), g("wind_speed_10m_max")
     sky = WMO.get(code, "")
     txt = f"{LOC['name']}今天{sky}。"
-    if c.get("temperature_2m") is not None:
-        txt += f"现在气温华氏{round(c['temperature_2m'])}度，大约{f2c(c['temperature_2m'])}摄氏度"
-        if c.get("apparent_temperature") is not None and abs(c["apparent_temperature"] - c["temperature_2m"]) >= 4:
-            txt += f"，体感{round(c['apparent_temperature'])}度"
+    hr = w.get("hourly") or {}
+
+    def at(h):  # forecast for hour h today (local)
+        try:
+            i = (hr.get("time") or []).index(f"{d['time'][0]}T{h:02d}:00")
+            return hr["temperature_2m"][i], hr["apparent_temperature"][i], hr["precipitation_probability"][i]
+        except (ValueError, KeyError, IndexError, TypeError):
+            return None, None, None
+    for h, label in ((7, "早上7点出门"), (17, "傍晚5点下班")):
+        t, feel, rp = at(h)
+        if t is None:
+            continue
+        txt += f"{label}大约华氏{round(t)}度，{f2c(t)}摄氏度"
+        if feel is not None and abs(feel - t) >= 4:
+            txt += f"，体感{round(feel)}度"
+        if rp is not None and rp >= 30:
+            txt += f"，那时下雨概率{int(rp)}%"
         txt += "。"
     if tmax is not None and tmin is not None:
         txt += f"白天最高{round(tmax)}度，约{f2c(tmax)}摄氏度；最低{round(tmin)}度。"
@@ -153,7 +172,7 @@ def seg_weather():
         tips.append("紫外线很强，注意防晒")
     if aqi is not None:
         lv = "良好" if aqi <= 50 else "中等" if aqi <= 100 else "对敏感人群不健康" if aqi <= 150 else "不健康" if aqi <= 200 else "非常不健康"
-        txt += f"空气质量{lv}，指数{int(aqi)}。"
+        txt += f"白天空气质量{lv}，指数最高{int(aqi)}。"
         if aqi > 150:
             tips.append("空气不好，车内空调切换到内循环")
     if g("sunset"):
@@ -196,7 +215,9 @@ def seg_pool(stocks):
     cnt = {}
     for c in cands:
         cnt[c.get("primary")] = cnt.get(c.get("primary"), 0) + 1
-    parts = [("zh", f"股票池一共扫描了{stocks.get('scanned', 0)}只股票，找到{len(cands)}个短线候选。"
+    top = cands[0]
+    parts = [("zh", f"股票池今天{len(cands)}个候选，评分最高的是{short_name(top.get('name'))}，代码 {spell(top['t'])}。不想听细节可以按下一首。"),
+             ("zh", f"细节：一共扫描了{stocks.get('scanned', 0)}只股票，"
                     + "其中" + "，".join(f"{sig.get(k, {}).get('name', k)}{v}个" for k, v in sorted(cnt.items(), key=lambda kv: -kv[1])) + "。"
                     + "评分最高的三个是：")]
     for i, c in enumerate(cands[:3]):
@@ -267,12 +288,24 @@ def seg_news(news, today):
         return None
     parts = [("zh", "接下来是三条英文新闻，用慢速朗读，练练听力。")]
     for i, a in enumerate(chosen):
-        parts.append(("zh", f"第{i + 1}条，来自{a.get('source', '')}，{a.get('topic', '')}，难度{a.get('level', '')}。"))
+        zh = translate(a["title"].strip())
+        parts.append(("zh", f"第{i + 1}条，来自{a.get('source', '')}，{a.get('topic', '')}，难度{a.get('level', '')}。" + (f"大意是：{zh}。" if zh else "")))
         parts.append(("en", a["title"].strip()))
         summ = re.split(r"(?<=[.!?])\s", (a.get("summary") or "").strip())[0][:240]
         if summ and len(summ) > 30:
             parts.append(("en", summ))
     return {"id": "news", "title": "📰 英文新闻", "sub": " · ".join(a.get("source", "") for a in chosen), "parts": parts}
+
+
+def translate(text):
+    """English headline → Chinese gist (MyMemory, same service the news page uses). Empty on failure."""
+    try:
+        q = urllib.parse.urlencode({"q": text[:400], "langpair": "en|zh-CN"})
+        zh = ((fetch_json("https://api.mymemory.translated.net/get?" + q).get("responseData") or {}).get("translatedText") or "").strip()
+        return "" if not zh or zh.upper() == text.upper() or "MYMEMORY" in zh.upper() else zh.rstrip("。.")
+    except Exception as e:  # noqa: BLE001
+        print("translate failed:", e)
+        return ""
 
 
 def seg_words(today):
@@ -305,6 +338,9 @@ def short_def(zh):
     return "，".join(re.split(r"[,，]\s*", d)[:3])
 
 
+REVIEW_NOTE = {"v": ""}   # why the review segment is missing, shown on radio.html
+
+
 def seg_review(now):
     db = None
     kv = os.environ.get("LOCAL_KV", "").strip()     # home server: the 语境词库 progress synced from the phone
@@ -316,6 +352,7 @@ def seg_review(now):
             print("local vocab not available:", e)
     gid = os.environ.get("VOCAB_GIST_ID", "").strip()
     if db is None and not gid:
+        REVIEW_NOTE["v"] = "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度"
         return None
     if db is None:
         try:
@@ -324,11 +361,13 @@ def seg_review(now):
             db = json.loads(f["content"]) if not f.get("truncated") else fetch_json(f["raw_url"])
         except Exception as e:  # noqa: BLE001
             print("vocab gist failed:", e)
+            REVIEW_NOTE["v"] = f"读取词库 Gist 失败：{e}"
             return None
     day = int((now.timestamp() + now.utcoffset().total_seconds()) // 86400)
     cards = db.get("cards") or {}
     due = [w for w, c in cards.items() if not c.get("k") and (c.get("due") or 0) <= day]
     if not due:
+        REVIEW_NOTE["v"] = f"今天没有到期要复习的词（词库里学习中 {sum(1 for c in cards.values() if not c.get('k'))} 个）"
         return None
     retr = lambda c: (1 + 19 / 81 * max(0, day - (c.get("last") or 0)) / max(0.1, c.get("s") or 0.1)) ** -0.5  # noqa: E731
     due.sort(key=lambda w: retr(cards[w]))
@@ -355,6 +394,102 @@ def seg_review(now):
         return None
     parts.append(("zh", "到了公司或者回到家，打开语境词库把今天的复习做完吧。"))
     return {"id": "review", "title": "🔁 今日复习", "sub": " · ".join(picked), "parts": parts}
+
+
+# ------------------------------------------------ long-version extras (opt=True: radio.html hides them in 短版)
+def daynum(today):
+    return (today - dt.date(1970, 1, 1)).days       # same day number card.html / index.html use
+
+
+def seg_sky(today):
+    S = load("kb/sky.json") or {}
+    lead = {"eclipse": 14, "shower": 3, "planet": 3, "season": 1, "moon": 1, "minor": 1}
+    lines = []
+    for e in S.get("events") or []:
+        dd = (dt.date.fromisoformat(e["day"]) - today).days
+        if dd < 0 or dd > lead.get(e.get("k"), 1) or len(lines) >= 2:
+            continue
+        when = ("今晚" if e.get("k") == "shower" else "今天") if dd == 0 else ("明晚" if e.get("k") == "shower" else "明天") if dd == 1 else f"{dd}天后"
+        lines.append(f"{when}，{e['t']}。" + (e.get("s") or "").replace("（", "，").replace("）", "") + "。")
+    if not lines:
+        return None
+    return {"id": "sky", "title": "🔭 天象", "sub": "Upland", "parts": [("zh", "天象提醒。" + "".join(lines))]}
+
+
+def seg_quote(today):
+    items = (load("card/daily.json") or {}).get("items") or []
+    if not items:
+        return None
+    it = items[daynum(today) % len(items)]
+    k = it.get("k", "")
+    if k == "名言":
+        parts = [("zh", "每日一句，今天是一句名言。"), ("en", it["en"]), ("zh", f"意思是：{it.get('zh', '')}" + (f"这句话出自 {it['by']}。" if it.get("by") else "")), ("zh", "再听一遍。"), ("en", it["en"])]
+    elif k == "习语":
+        parts = [("zh", "每日一句，今天是一个地道习语。"), ("en", it["en"]), ("zh", f"意思是：{it.get('zh', '')}。{it.get('note', '')}。")]
+        if it.get("ex"):
+            ex = it["ex"].replace("[", "").replace("]", "")
+            parts += [("zh", "例句："), ("en", ex), ("zh", it.get("exzh", ""))]
+    elif k == "易错" and it.get("bad"):
+        parts = [("zh", "每日一句，今天说一个常见错误。不要说："), ("en", it["bad"]), ("zh", "应该说："), ("en", it["en"]), ("zh", f"{it.get('zh', '')}。{it.get('note', '')}")]
+    else:
+        parts = [("zh", f"每日一句，今天是一句{k}。"), ("en", it["en"]), ("zh", f"意思是：{it.get('zh', '')}"), ("en", it["en"])]
+    return {"id": "quote", "title": "🎴 每日一句", "sub": k, "opt": True, "parts": [p for p in parts if p[1].strip("。 ")]}
+
+
+def seg_shadow(today):
+    packs = [p for p in (load("speak/en_work.json") or {}).get("packs") or [] if p.get("phrases")]
+    if not packs:
+        return None
+    n = daynum(today)
+    pk = packs[n % len(packs)]
+    ph = pk["phrases"]
+    start = (n // len(packs) * 4) % len(ph)
+    pick = (ph[start:] + ph[:start])[:4]
+    parts = [("zh", f"跟读练习，今天的场景是：{pk['name']}。先听中文，再听英文，然后留几秒，你跟着大声说一遍。")]
+    for l in pick:
+        parts += [("zh", l["zh"]), ("en", l["t"]), ("pause", str(round(1.5 + len(l["t"]) * 0.06, 1))), ("en", l["t"])]
+    parts.append(("zh", "想练更多、给发音打分，打开网站里的开口说。"))
+    return {"id": "shadow", "title": "🗣️ 跟读", "sub": pk["name"], "opt": True, "parts": parts}
+
+
+def seg_tip(today):
+    D = load("tips/tips.json") or {}
+    items = [x for x in D.get("items") or [] if x.get("c") not in ("win", "linux")]   # menus & commands don't work by ear
+    if not items:
+        return None
+    it = items[(daynum(today) * 37) % len(items)]
+    txt = f"今日一招：{it['t']}。{it.get('p', '')}。"
+    steps = [re.sub(r"[`*]", "", x) for x in (it.get("s") or [])[:3]]
+    if steps:
+        txt += "做法：" + "；".join(steps) + "。"
+    return {"id": "tip", "title": "💡 今日一招", "sub": it["t"], "opt": True, "parts": [("zh", txt.replace("。。", "。"))]}
+
+
+def seg_onthisday(today):
+    otd = ((load("news/data/today.json") or {}).get("onthisday") or {}).get(today.strftime("%m-%d")) or {}
+    grim = re.compile(r"死亡|死伤|遇难|丧生|枪击|屠杀|爆炸|空难|坠毁|恐怖|自杀|杀害|刺杀|处决|遇害")   # keep the morning drive light
+    evs = [e for e in otd.get("events") or [] if (e.get("year") or 0) >= 1800 and len(e.get("text", "")) <= 90 and not grim.search(e.get("text", ""))]
+    if len(evs) < 2:
+        return None
+    rnd = random.Random(today.toordinal() * 3)
+    pick = sorted(rnd.sample(evs, min(3, len(evs))), key=lambda e: e["year"])
+    txt = "历史上的今天。" + "".join(f"{e['year']}年，{e['text'].rstrip('。')}。" for e in pick)
+    return {"id": "otd", "title": "📜 历史上的今天", "sub": " · ".join(str(e["year"]) for e in pick), "opt": True, "parts": [("zh", txt)]}
+
+
+def seg_poem(today):
+    items = []
+    for f in ("people/sushi_a.json", "people/sushi_b.json"):
+        items += (load(f) or {}).get("items") or []
+    items = [x for x in items if x.get("text") and len("".join(x["text"])) <= 260 and len(x.get("trans", "")) <= 420]
+    if not items:
+        return None
+    it = items[daynum(today) % len(items)]
+    head = f"读一首苏轼：{it['title']}。"
+    if it.get("year") and it.get("place"):
+        head += f"写于{it['year']}年，他{it.get('age', '')}岁，在{it['place']}。" if it.get("age") else f"写于{it['year']}年，在{it['place']}。"
+    parts = [("zh", head), ("zh", "".join(it["text"])), ("zh", "白话意思是：" + it.get("trans", ""))]
+    return {"id": "poem", "title": "🖋️ 读苏轼", "sub": it["title"], "opt": True, "parts": [p for p in parts if p[1]]}
 
 
 def seg_outro(today):
@@ -472,8 +607,9 @@ def main():
     now = dt.datetime.now(TZ)
     today = now.date()
     stocks, earn, news = load("stocks/data/latest.json"), load("earnings/data/latest.json"), load("news/data/latest.json")
-    body = [s for s in (seg_weather(), seg_market(stocks), seg_pool(stocks), seg_calendar(earn, today), seg_news(news, today), seg_review(now), seg_words(today)) if s]
-    segs = [seg_intro(today, len(body) + 2)] + body + [seg_outro(today)]
+    core = (seg_weather(), seg_sky(today), seg_market(stocks), seg_pool(stocks), seg_calendar(earn, today), seg_news(news, today), seg_review(now), seg_words(today))
+    extra = (seg_quote(today), seg_shadow(today), seg_tip(today), seg_onthisday(today), seg_poem(today))
+    segs = [seg_intro(today)] + [s for s in core + extra if s] + [seg_outro(today)]
 
     tmp = tempfile.mkdtemp(prefix="radio_")
     run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", "0.5", "-b:a", "48k", os.path.join(tmp, "gap.mp3")])
@@ -483,6 +619,10 @@ def main():
         files = []
         for j, (lang, text) in enumerate(s["parts"]):
             p = os.path.join(tmp, f"s{i}_{j}.mp3")
+            if lang == "pause":    # silence to repeat after the speaker
+                run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", text, "-b:a", "48k", p])
+                files += [p]
+                continue
             engines.add(tts(text, lang, p))
             files += [p, os.path.join(tmp, "gap.mp3")]
         name = f"seg{i:02d}.mp3"
@@ -492,8 +632,10 @@ def main():
         out_segs.append({
             "id": s["id"], "title": s["title"], "sub": s.get("sub", ""), "dur": probe_dur(out),
             "url": f"https://github.com/{REPO}/releases/download/{TAG}/{name}?v={stamp}",
-            "text": [{"lang": l, "t": t} for l, t in s["parts"]],
+            "text": [{"lang": l, "t": t} for l, t in s["parts"] if l != "pause"],
         })
+        if s.get("opt"):
+            out_segs[-1]["opt"] = True
         print(f"seg {i}: {s['title']} {out_segs[-1]['dur']}s")
     full = os.path.join(tmp, "full.mp3")
     concat(seg_files, full, tmp)
@@ -518,6 +660,8 @@ def main():
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "date": today.isoformat(), "engine": ",".join(sorted(engines)),
         "total": round(sum(s["dur"] for s in out_segs), 1),
+        "short": round(sum(s["dur"] for s in out_segs if not s.get("opt")), 1),
+        "review_note": REVIEW_NOTE["v"],
         "full": f"https://github.com/{REPO}/releases/download/{TAG}/full.mp3?v={stamp}" if not os.environ.get("RADIO_NO_UPLOAD") else "radio/_local/full.mp3?v=" + stamp,
         "segments": out_segs,
     }
@@ -525,10 +669,13 @@ def main():
     with open(OUT_JSON, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, indent=1)
     # playlist for VLC & other players: steering-wheel next/prev skips segments, titles show on the car display
-    with open(os.path.join(os.path.dirname(OUT_JSON), "today.m3u"), "w", encoding="utf-8") as f:
-        f.write("#EXTM3U\n#PLAYLIST:通勤电台 " + today.isoformat() + "\n")
-        for s in out_segs:
-            f.write(f"#EXTINF:{int(round(s['dur']))},通勤电台 - {s['title']} {s.get('sub', '')}".rstrip() + "\n" + s["url"] + "\n")
+    for fn, only_core in (("today.m3u", False), ("today-short.m3u", True)):
+        with open(os.path.join(os.path.dirname(OUT_JSON), fn), "w", encoding="utf-8") as f:
+            f.write("#EXTM3U\n#PLAYLIST:通勤电台 " + today.isoformat() + ("（短版）" if only_core else "") + "\n")
+            for s in out_segs:
+                if only_core and s.get("opt"):
+                    continue
+                f.write(f"#EXTINF:{int(round(s['dur']))},通勤电台 - {s['title']} {s.get('sub', '')}".rstrip() + "\n" + s["url"] + "\n")
     print("done:", len(out_segs), "segments,", doc["total"], "s, engine", doc["engine"])
 
 
