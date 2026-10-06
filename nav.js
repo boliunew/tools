@@ -35,9 +35,9 @@
     '.tnav-tab{position:fixed;left:0;z-index:29;width:24px;height:44px;border:0;padding:0 1px 0 0;border-radius:0 22px 22px 0;background:rgba(28,28,30,.45);color:#fff;font-size:15px;line-height:44px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:.65;touch-action:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .2s,width .15s}' +
     '.tnav-tab:hover,.tnav-tab.drag{opacity:1;width:34px}' +
     '@media (prefers-color-scheme: dark){.tnav-tab{background:rgba(255,255,255,.2)}}' +
-    '.tnav-bg{position:fixed;inset:0;left:0;top:0;right:0;bottom:0;z-index:2147483000;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s}' +
+    '.tnav-bg{position:fixed;inset:0;left:0;top:0;right:0;bottom:0;z-index:2147483000;background:linear-gradient(90deg,rgba(0,0,0,.52) 0%,rgba(0,0,0,.34) 45%,rgba(0,0,0,.14) 100%);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .26s ease;touch-action:none}' +
     '.tnav-bg.on{opacity:1;pointer-events:auto}' +
-    '.tnav-dr{position:fixed;left:0;top:0;bottom:0;z-index:2147483001;width:300px;max-width:84vw;background:#FBFAF7;color:#1C1B19;box-shadow:4px 0 24px rgba(0,0,0,.2);transform:translateX(-105%);transition:transform .22s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.4;padding-bottom:24px}' +
+    '.tnav-dr{position:fixed;left:0;top:0;bottom:0;z-index:2147483001;width:300px;max-width:84vw;background:#FBFAF7;color:#1C1B19;box-shadow:1px 0 4px rgba(0,0,0,.08),10px 0 40px rgba(0,0,0,.22);transform:translateX(calc(-100% - 48px));transition:transform .26s cubic-bezier(.2,.8,.2,1);touch-action:pan-y;overflow-y:auto;-webkit-overflow-scrolling:touch;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.4;padding-bottom:24px}' +
     '.tnav-dr.on{transform:translateX(0)}' +
     '.tnav-hd{display:flex;align-items:center;padding:14px 12px 8px 16px;position:sticky;top:0;background:inherit}' +
     '.tnav-hd b{flex:1;font-size:17px}' +
@@ -55,6 +55,11 @@
     '.tnav-tip{font-size:11.5px;color:#9C958A;text-align:center;margin-top:10px}' +
     '.tnav-off{position:fixed;left:50%;top:max(8px,env(safe-area-inset-top));transform:translate(-50%,-160%);z-index:2147482999;max-width:92vw;padding:7px 14px;border-radius:999px;background:#3A3A3C;color:#fff;font:13px/1.3 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:transform .25s;pointer-events:none;white-space:nowrap}' +
     '.tnav-off.on{transform:translate(-50%,0)}' +
+    // 点开时列表依次淡入；只用 backwards，结束后不覆盖「当前」那一项的半透明
+    '.tnav-dr.anim .tnav-back,.tnav-dr.anim .tnav-g,.tnav-dr.anim .tnav-a,.tnav-dr.anim .tnav-home{animation:tnavIn .24s ease backwards;animation-delay:calc(var(--i,0) * 14ms + 40ms)}' +
+    '@keyframes tnavIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}' +
+    '@media (prefers-reduced-motion: reduce){.tnav-dr,.tnav-bg{transition-duration:.01s}.tnav-dr.anim *{animation:none!important}}' +
+    '@media (prefers-color-scheme: dark){.tnav-bg{background:linear-gradient(90deg,rgba(0,0,0,.66) 0%,rgba(0,0,0,.46) 45%,rgba(0,0,0,.24) 100%)}}' +
     '@media (prefers-color-scheme: dark){.tnav-dr{background:#1F1D19;color:#EEEAE2}.tnav-a i{background:#2E2B25}.tnav-back{background:#3A2416;color:#FDBA8C}.tnav-home{border-color:#3A362F}.tnav-a:active{background:rgba(255,255,255,.06)}}';
 
   function build() {
@@ -80,15 +85,38 @@
         h += '<a class="tnav-a' + (p[0] === cur ? ' cur' : '') + '" href="' + esc(p[0]) + '"><i>' + p[1] + '</i><span>' + esc(p[2]) + (p[3] ? '<small>' + esc(p[3]) + '</small>' : '') + '</span></a>';
       }
     }
-    h += '<a class="tnav-home" href="./">🏠 回主页</a><div class="tnav-tip">左边的 🌀 可以上下拖动，挡住东西时挪开它</div>';
+    h += '<a class="tnav-home" href="./">🏠 回主页</a><div class="tnav-tip">🌀 上下拖能挪位置，往右拉能拉出这里；往左滑关上</div>';
     dr.innerHTML = h;
+    var seq = dr.querySelectorAll('.tnav-back,.tnav-g,.tnav-a,.tnav-home');
+    for (i = 0; i < seq.length; i++) seq[i].style.setProperty('--i', Math.min(i, 14));
     document.body.appendChild(tab); document.body.appendChild(bg); document.body.appendChild(dr);
 
-    var isOpen = false, pushed = false;
-    var open = function () {
-      isOpen = true; bg.className = 'tnav-bg on'; dr.className = 'tnav-dr on';
+    var isOpen = false, pushed = false, animT = 0;
+    var open = function (anim) {
+      isOpen = true; bg.className = 'tnav-bg on'; dr.className = 'tnav-dr on' + (anim ? ' anim' : '');
+      clearTimeout(animT); if (anim) animT = setTimeout(function () { dr.className = 'tnav-dr on'; }, 700);
       try { window.history.pushState({ tnav: 1 }, ''); pushed = true; } catch (e) { pushed = false; }
     };
+    // 跟手：f = 0 收起，1 完全打开；拖动时关掉过渡，抽屉和遮罩深浅都跟着手指
+    var W = function () { return dr.offsetWidth || 300; };
+    var follow = function (f) {
+      f = Math.max(0, Math.min(1, f));
+      dr.style.transition = bg.style.transition = 'none';
+      dr.style.transform = 'translateX(' + Math.round((f - 1) * (W() + 48)) + 'px)';
+      bg.style.opacity = f; bg.style.pointerEvents = 'none';
+      return f;
+    };
+    // 松手：恢复过渡，从当前位置滑到开或关
+    var settle = function (toOpen) {
+      dr.style.transition = bg.style.transition = '';
+      void dr.offsetWidth;
+      dr.style.transform = ''; bg.style.opacity = ''; bg.style.pointerEvents = '';
+      if (toOpen) { if (!isOpen) open(false); }
+      else if (isOpen) close(); else { bg.className = 'tnav-bg'; dr.className = 'tnav-dr'; }
+    };
+    // 速度：最近一小段的 px/ms
+    var vel = { x: 0, t: 0, v: 0 };
+    var track = function (x) { var t = Date.now(), dt = t - vel.t; if (dt > 0) vel.v = 0.6 * ((x - vel.x) / dt) + 0.4 * vel.v; vel.x = x; vel.t = t; };
     var close = function (fromPop) {
       if (!isOpen) return;
       isOpen = false; bg.className = 'tnav-bg'; dr.className = 'tnav-dr';
@@ -96,7 +124,8 @@
       pushed = false;
     };
     window.addEventListener('popstate', function () { if (isOpen) { pushed = false; close(true); } });
-    bg.onclick = function () { close(); };
+    var swiped = false;
+    bg.onclick = function () { if (swiped) { swiped = false; return; } close(); };
     dr.querySelector('.tnav-x').onclick = function () { close(); };
     document.addEventListener('keydown', function (e) { if (isOpen && (e.key === 'Escape' || e.keyCode === 27)) close(); });
     // links: leave without the extra history entry
@@ -109,27 +138,57 @@
     };
 
     // tap opens, vertical drag moves the tab
-    var startY = 0, startF = 0, moved = false, down = false;
+    // 按钮：点一下打开；上下拖挪位置；往右拉就把抽屉跟着手指拉出来
+    var startY = 0, startX = 0, startF = 0, moved = false, down = false, mode = '', pullF = 0;
     var pt = function (e) { return e.touches && e.touches.length ? e.touches[0].clientY : e.clientY; };
-    var onDown = function (e) { down = true; moved = false; startY = pt(e); startF = y; };
+    var px = function (e) { return e.touches && e.touches.length ? e.touches[0].clientX : e.clientX; };
+    var onDown = function (e) { down = true; moved = false; mode = ''; startY = pt(e); startX = px(e); startF = y; vel = { x: startX, t: Date.now(), v: 0 }; };
     var onMove = function (e) {
       if (!down) return;
-      var dy = pt(e) - startY;
-      if (!moved && Math.abs(dy) > 6) { moved = true; tab.className = 'tnav-tab drag'; }
-      if (moved) { y = place(startF + dy / (window.innerHeight || 600)); if (e.cancelable) e.preventDefault(); }
+      var dy = pt(e) - startY, dx = px(e) - startX;
+      if (!mode && (Math.abs(dy) > 6 || Math.abs(dx) > 6)) {
+        mode = dx > 0 && Math.abs(dx) > Math.abs(dy) ? 'pull' : 'move'; moved = true;
+        if (mode === 'move') tab.className = 'tnav-tab drag';
+      }
+      if (mode === 'move') { y = place(startF + dy / (window.innerHeight || 600)); if (e.cancelable) e.preventDefault(); }
+      else if (mode === 'pull') { track(px(e)); pullF = follow(dx / W()); if (e.cancelable) e.preventDefault(); }
     };
     var onUp = function () {
       if (!down) return;
       down = false; tab.className = 'tnav-tab';
-      if (moved) put('y', y);
+      if (mode === 'move') put('y', y);
+      else if (mode === 'pull') settle(pullF > 0.3 || vel.v > 0.4);
+      mode = '';
     };
+
+    // 抽屉打开时：在抽屉或遮罩上往左滑就跟着手指关上；滑不到七成、也不够快就弹回去
+    var ds = null;
+    var dStart = function (e) { if (!isOpen || !e.touches || e.touches.length !== 1) return; ds = { x: e.touches[0].clientX, y: e.touches[0].clientY, m: '', f: 1 }; vel = { x: ds.x, t: Date.now(), v: 0 }; };
+    var dMove = function (e) {
+      if (!ds) return;
+      var dx = e.touches[0].clientX - ds.x, dy = e.touches[0].clientY - ds.y;
+      if (!ds.m && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) ds.m = dx < 0 && Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      if (ds.m !== 'h') return;
+      if (e.cancelable) e.preventDefault();
+      track(e.touches[0].clientX); ds.f = follow(1 + Math.min(0, dx) / W());
+    };
+    var dEnd = function () {
+      if (!ds) return;
+      if (ds.m === 'h') { swiped = true; setTimeout(function () { swiped = false; }, 400); settle(!(ds.f < 0.7 || vel.v < -0.4)); }
+      ds = null;
+    };
+    [dr, bg].forEach(function (el) {
+      el.addEventListener('touchstart', dStart, { passive: true });
+      el.addEventListener('touchmove', dMove, { passive: false });
+      el.addEventListener('touchend', dEnd); el.addEventListener('touchcancel', dEnd);
+    });
     tab.addEventListener('touchstart', onDown, { passive: true });
     tab.addEventListener('touchmove', onMove, { passive: false });
     tab.addEventListener('touchend', onUp);
     tab.addEventListener('mousedown', onDown);
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseup', onUp);
-    tab.addEventListener('click', function () { if (moved) { moved = false; return; } open(); });
+    tab.addEventListener('click', function () { if (moved) { moved = false; return; } open(true); });
     window.addEventListener('resize', function () { place(y); });
 
     // 没网时顶部一条提示：现在看到的是上次存下的内容
