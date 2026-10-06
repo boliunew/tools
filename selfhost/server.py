@@ -5,11 +5,15 @@
   • /api/kv       private sync of the browsers' saved progress (词库, 自选股, 购物清单 …) between phone and computer
   • /api/issues   the local stand-in for GitHub issues (股价提醒 / 网页监控); a new or edited one is checked right away
   • /api/ping     lets pages know they are running at home
+  • /api/stream   relays an http-only internet radio stream, so the https page may play it (网络电台)
 
 Listens on 127.0.0.1 only — reach it through `tailscale serve`, so only your own devices can open it.
 Env: PORT (8080), TOOLS_DATA, OWNER, NTFY_URL, NTFY_SUB (public subscribe URL shown in the page), PUBLIC_URL, PYTHON
 """
 import http.server
+import ipaddress
+import socket
+import urllib.request
 import json
 import os
 import re
@@ -141,6 +145,8 @@ class H(http.server.SimpleHTTPRequestHandler):
             return super().do_GET()
         q = urllib.parse.parse_qs(u.query)
         try:
+            if u.path == "/api/stream":
+                return self.stream(urllib.parse.parse_qs(u.query).get("u", [""])[0])
             if u.path == "/api/ping":
                 return self.send_json({"ok": 1, "local": 1, "ntfy": os.environ.get("NTFY_SUB", ""), "time": int(time.time())})
             if u.path == "/api/kv":
@@ -170,6 +176,39 @@ class H(http.server.SimpleHTTPRequestHandler):
         except Exception as e:  # noqa: BLE001
             return self.send_json({"error": str(e)}, 500)
         self.send_json({"error": "not found"}, 404)
+
+    def stream(self, url):
+        """Pipe an http:// radio stream through (browsers block http audio on an https page)."""
+        sp = urllib.parse.urlsplit(url)
+        if sp.scheme != "http" or not sp.hostname:
+            return self.send_json({"error": "only http:// stream urls"}, 400)
+        try:   # never let it reach this machine or the home network
+            for info in socket.getaddrinfo(sp.hostname, sp.port or 80):
+                ip = ipaddress.ip_address(info[4][0])
+                if not ip.is_global:
+                    return self.send_json({"error": "address not allowed"}, 403)
+        except (OSError, ValueError):
+            return self.send_json({"error": "cannot resolve host"}, 502)
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (tools radio relay)", "Icy-MetaData": "0"})
+        try:
+            up = urllib.request.urlopen(req, timeout=15)
+        except Exception as e:  # noqa: BLE001
+            return self.send_json({"error": str(e)[:200]}, 502)
+        with up:
+            self.send_response(200)
+            self.send_header("Content-Type", up.headers.get("Content-Type") or "audio/mpeg")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            try:
+                while True:
+                    chunk = up.read(16384)
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    self.wfile.flush()
+            except (BrokenPipeError, ConnectionResetError, socket.timeout, OSError):
+                pass   # the phone stopped listening or the station dropped
+        return None
 
     def do_POST(self):
         u = urllib.parse.urlsplit(self.path)

@@ -43,6 +43,9 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 .st .fav{border:0;background:none;font-size:20px;padding:6px 4px 6px 10px;color:var(--faint)}
 .st .fav.on{color:#F2B01E}
 .st.bad{opacity:.45}
+.st.ins .t small{color:var(--faint)}
+.ctl .wf{font-size:13px;width:auto;padding:0 6px;color:var(--soft)}
+.ctl .wf.on{color:var(--accent);font-weight:700}
 .msg{padding:28px 16px;text-align:center;color:var(--soft)}
 .more{display:block;width:100%;border:0;background:none;padding:14px;color:var(--accent);font-weight:600}
 .bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(0,0,0,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:10}
@@ -93,7 +96,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 <div class="bar" id="bar" style="display:none"><div class="in">
   <div class="ico" id="bIco">📻</div>
   <div class="t"><b id="bName"></b><span class="song" id="bSong" style="display:none"></span><small id="bStat"></small></div>
-  <div class="ctl"><button id="bPrev" aria-label="上一个台">⏮</button><button class="pp" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一个台">⏭</button><button class="tm" id="bTimer" aria-label="睡眠定时">⏲</button></div>
+  <div class="ctl"><button id="bPrev" aria-label="上一个台">⏮</button><button class="pp" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一个台">⏭</button><button class="wf" id="bWheel" aria-label="只在收藏里切台" title="⏮ ⏭ 和方向盘只在收藏里切台">☆切</button><button class="tm" id="bTimer" aria-label="睡眠定时">⏲</button></div>
 </div></div>
 <div class="toast" id="toast"></div>
 <audio id="au" preload="none"></audio>
@@ -113,6 +116,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     { k: 'US', f: '🇺🇸', n: '美国' }, { k: 'CN', f: '🇨🇳', n: '中国' }, { k: 'FAV', f: '⭐', n: '收藏' }, { k: 'MY', f: '➕', n: '我添加的' }
   ];
   var TAGZH = { news: '新闻', talk: '谈话', music: '音乐', pop: '流行', rock: '摇滚', classical: '古典', jazz: '爵士', dance: '舞曲', electronic: '电子', 'hip-hop': '嘻哈', hiphop: '嘻哈', rap: '说唱', country: '乡村', oldies: '怀旧', '80s': '80年代', '90s': '90年代', chillout: '放松', ambient: '氛围', sports: '体育', culture: '文化', public: '公共台', christian: '宗教', religion: '宗教', kids: '儿童', top40: '热门40', hits: '热歌', blues: '布鲁斯', metal: '金属', folk: '民谣', 'easy listening': '轻音乐', lounge: '休闲', soul: '灵魂', rnb: 'R&B', schlager: '德国流行', chanson: '香颂', information: '资讯', 'news talk': '新闻谈话', entertainment: '娱乐', variety: '综合', traffic: '交通', local: '本地' };
+  var LOCAL = !!window.TOOLS_LOCAL, HOK = get('hok', {}), WHEEL_FAV = get('wheelFav', 0);
   var SERVERS = ['https://de1.api.radio-browser.info', 'https://fi1.api.radio-browser.info', 'https://de2.api.radio-browser.info'];
   var country = get('country', 'RU'), FAV = get('fav', {}), MY = get('custom', []), cache = {}, list = [], shown = [], tag = '', query = '', cur = null, curIdx = -1, hls = null, timer = null, timerEnd = 0, watchdog = null;
   var au = $('au'), ms = navigator.mediaSession;
@@ -135,15 +139,18 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       key = (s.name || '').toLowerCase().replace(/\s+/g, ' ').replace(/^\s|\s$/g, '');
       if (!key || seen[key]) continue;
       seen[key] = 1;
-      out.push({ id: s.stationuuid, name: (s.name || '').replace(/^\s+|\s+$/g, ''), url: s.url_resolved || s.url, fav: s.favicon || '', tags: (s.tags || '').toLowerCase().split(',').filter(function (t) { return t; }), codec: s.codec || '', br: s.bitrate || 0, hls: s.hls === 1 || /\.m3u8(\?|$)/i.test(s.url_resolved || s.url), cc: s.countrycode || '', votes: s.votes || 0, home: s.homepage || '' });
+      out.push({ id: s.stationuuid, name: (s.name || '').replace(/^\s+|\s+$/g, ''), url: s.url_resolved || s.url, fav: s.favicon || '', tags: (s.tags || '').toLowerCase().split(',').filter(function (t) { return t; }), codec: s.codec || '', br: s.bitrate || 0, hls: s.hls === 1 || /\.m3u8(\?|$)/i.test(s.url_resolved || s.url), ins: /^http:/i.test(s.url_resolved || s.url), cc: s.countrycode || '', votes: s.votes || 0, home: s.homepage || '' });
     }
     return out;
   }
+  // 网站是 https，浏览器不让播 http 的流；只有 http 的台排到后面（播成功过一次的不算）。家里主机会帮忙转，就不用排了
+  function playable(s) { return LOCAL || !s.ins || HOK[s.id]; }
+  function httpsFirst(a) { if (LOCAL) return a; var g = [], b = []; for (var i = 0; i < a.length; i++) (playable(a[i]) ? g : b).push(a[i]); return g.concat(b); }
   function loadCountry(cc, cb) {
     if (cache[cc]) { cb(cache[cc]); return; }
     api('/json/stations/search?countrycode=' + cc + '&hidebroken=true&order=clickcount&reverse=true&limit=300', function (d) {
       if (!d) { cb(null); return; }
-      cache[cc] = clean(d); cb(cache[cc]);
+      cache[cc] = httpsFirst(clean(d)); cb(cache[cc]);
     });
   }
 
@@ -225,8 +232,9 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       if (country === 'FAV' || query) meta.push(flagOf(s.cc));
       if (s.tags.length) meta.push(s.tags.slice(0, 3).map(function (t) { return TAGZH[t] || t; }).join(' · '));
       if (s.br) meta.push(s.br + 'k'); else if (s.codec) meta.push(s.codec);
+      if (!playable(s)) meta.push('⚠️ 只有 http，可能放不了');
       if (s.my && !meta.length) meta.push('自己添加 · ' + s.url.replace(/^https?:\/\//, '').split('/')[0]);
-      h += '<div class="st' + (cur && cur.id === s.id ? ' on' : '') + (s.bad ? ' bad' : '') + '" data-i="' + i + '"><div class="ico">' + icon(s) + '</div><div class="t"><b>' + esc(s.name) + '</b><small>' + esc(meta.join(' · ')) + '</small></div>' + (country === 'MY' ? '<button class="fav" data-edit="' + i + '" aria-label="修改">⋯</button>' : '<button class="fav' + (FAV[s.id] ? ' on' : '') + '" data-fav="' + i + '" aria-label="收藏">' + (FAV[s.id] ? '★' : '☆') + '</button>') + '</div>';
+      h += '<div class="st' + (cur && cur.id === s.id ? ' on' : '') + (s.bad ? ' bad' : '') + (playable(s) ? '' : ' ins') + '" data-i="' + i + '"><div class="ico">' + icon(s) + '</div><div class="t"><b>' + esc(s.name) + '</b><small>' + esc(meta.join(' · ')) + '</small></div>' + (country === 'MY' ? '<button class="fav" data-edit="' + i + '" aria-label="修改">⋯</button>' : '<button class="fav' + (FAV[s.id] ? ' on' : '') + '" data-fav="' + i + '" aria-label="收藏">' + (FAV[s.id] ? '★' : '☆') + '</button>') + '</div>';
     }
     if (shown.length > limit) h += '<button class="more" id="more">再显示 ' + Math.min(PAGE, shown.length - limit) + ' 个（共 ' + shown.length + '）</button>';
     $('list').innerHTML = addCard + h;
@@ -258,7 +266,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
         var extra = clean((d1 || []).concat(d2 || [])), have = {}, i;
         for (i = 0; i < list.length; i++) have[list[i].id] = 1;
         for (i = 0; i < extra.length; i++) if (!have[extra[i].id]) list.push(extra[i]);
-        render();
+        list = httpsFirst(list); render();
       });
     });
   }
@@ -322,7 +330,10 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   }
   function play(i) {
     if (i < 0 || i >= shown.length) return;
-    curIdx = i; cur = shown[i];
+    playStation(shown[i], i);
+  }
+  function playStation(st, i) {
+    curIdx = i; cur = st; rcReset(); RC.live = false;
     $('bar').style.display = 'block';
     $('bName').textContent = cur.name; $('bIco').innerHTML = icon(cur);
     stat('连接中…');
@@ -331,9 +342,23 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     if (!cur.my) try { var x = new XMLHttpRequest(); x.open('GET', SERVERS[0] + '/json/url/' + cur.id); x.send(); } catch (e) { }
     meta();
   }
+  /* ---------- 断线自动重连：播得好好的台断了（隧道、信号差），隔一会儿自己连回去，最多试两分多钟 ---------- */
+  var RC = { n: 0, t: null, live: false, stall: null }, WAIT = [2, 4, 8, 15, 30, 30, 30];
+  function rcReset() { clearTimeout(RC.t); clearTimeout(RC.stall); RC.t = null; RC.n = 0; }
+  function lost() {
+    if (!cur || !RC.live || RC.n >= WAIT.length) return false;
+    clearTimeout(RC.t); clearTimeout(RC.stall); clearTimeout(watchdog);
+    var d = WAIT[RC.n++], s0 = cur;
+    stat('📶 信号断了，' + d + ' 秒后自动重连（第 ' + RC.n + ' 次）…', 'err');
+    RC.t = setTimeout(function () { RC.t = null; if (cur === s0) { stat('重连中…'); start(s0); } }, d * 1000);
+    return true;
+  }
+  window.addEventListener('online', function () {   // 网络一回来就马上连，不用等
+    if (RC.t && cur) { clearTimeout(RC.t); RC.t = null; stat('网络回来了，重连中…'); start(cur); }
+  });
   function start(s) {
     stopHls(); clearTimeout(watchdog);
-    var url = s.url.replace(/^http:\/\//i, 'https://');
+    var url = LOCAL && /^http:/i.test(s.url) && !s.hls ? 'api/stream?u=' + encodeURIComponent(s.url) : s.url.replace(/^http:\/\//i, 'https://');
     var native = au.canPlayType('application/vnd.apple.mpegurl');
     if (s.hls && !native) {
       withHls(function () {
@@ -350,6 +375,8 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   function fail(why) {
     clearTimeout(watchdog);
     if (!cur) return;
+    if (lost()) return;
+    RC.live = false;
     if (cur.id && !cur.my && !RR[cur.id]) {
       var s0 = cur; RR[s0.id] = 1; stat('连不上，正在查这个台的新地址…');
       api('/json/stations/byuuid?uuids=' + s0.id, function (d) {
@@ -368,21 +395,46 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     $('bPlay').textContent = '▶';
     render();
   }
-  au.addEventListener('playing', function () { clearTimeout(watchdog); if (cur) cur.bad = false; stat('<span class="dot"></span>直播中' + (cur && cur.br ? ' · ' + cur.br + 'kbps' : ''), 'live'); $('bPlay').textContent = '❚❚'; if (ms) ms.playbackState = 'playing'; });
-  au.addEventListener('pause', function () { $('bPlay').textContent = '▶'; if (cur && !cur.bad) stat('已暂停'); if (ms) ms.playbackState = 'paused'; });
-  au.addEventListener('waiting', function () { if (cur) stat('缓冲中…'); });
+  au.addEventListener('playing', function () {
+    clearTimeout(watchdog); rcReset(); RC.live = true;
+    if (cur && cur.ins && !LOCAL && !HOK[cur.id]) { HOK[cur.id] = 1; put('hok', HOK); }   // 这个台其实支持 https，以后不再标
+    if (cur) cur.bad = false; stat('<span class="dot"></span>直播中' + (cur && cur.br ? ' · ' + cur.br + 'kbps' : ''), 'live'); $('bPlay').textContent = '❚❚'; if (ms) ms.playbackState = 'playing'; });
+  au.addEventListener('pause', function () { clearTimeout(RC.stall); $('bPlay').textContent = '▶'; if (cur && !cur.bad) stat('已暂停'); if (ms) ms.playbackState = 'paused'; });
+  au.addEventListener('waiting', function () {
+    if (!cur) return;
+    stat('缓冲中…');
+    clearTimeout(RC.stall);   // 卡住 20 秒还没恢复，就当断线处理
+    if (RC.live) RC.stall = setTimeout(function () { if (cur && au.readyState < 3 && !au.paused) fail('信号断了'); }, 20000);
+  });
+  au.addEventListener('stalled', function () { if (RC.live && !RC.stall && !au.paused) RC.stall = setTimeout(function () { if (cur && au.readyState < 3) fail('信号断了'); }, 20000); });
+  au.addEventListener('ended', function () { if (cur && RC.live) fail('直播流断了'); });   // 直播不该"播完"，播完就是断了
   au.addEventListener('error', function () { if (!hls) fail('这个台连不上'); });
   function toggle() {
     if (!cur) { if (shown.length) play(0); return; }
-    if (au.paused) { if (au.readyState === 0 || cur.bad) { start(cur); npStart(cur); } else tryPlay(); } else au.pause();
+    if (RC.t) { rcReset(); RC.live = false; stat('已停止重连'); $('bPlay').textContent = '▶'; return; }
+    if (au.paused) { if (au.readyState === 0 || cur.bad) { cur.bad = false; start(cur); npStart(cur); } else tryPlay(); } else au.pause();
   }
   function step(d) {
+    if (WHEEL_FAV) {
+      var F = favList().filter(function (x) { return !x.bad; });
+      if (F.length) {
+        var j = -1, k; for (k = 0; k < F.length; k++) if (cur && F[k].id === cur.id) j = k;
+        var nx = F[((j < 0 ? (d > 0 ? -1 : 0) : j) + d + F.length) % F.length], si = -1;
+        for (k = 0; k < shown.length; k++) if (shown[k].id === nx.id) si = k;
+        playStation(si >= 0 ? shown[si] : nx, si);
+        return;
+      }
+      toast('还没有收藏，先在列表里点 ☆ 收藏几个台');
+    }
     if (!shown.length) return;
     var i = curIdx, n = 0;
     do { i = (i + d + shown.length) % shown.length; n++; } while (shown[i].bad && n < shown.length);
     play(i);
   }
   $('bPlay').onclick = toggle;
+  function wheelBtn() { var b = $('bWheel'); b.className = 'wf' + (WHEEL_FAV ? ' on' : ''); b.textContent = WHEEL_FAV ? '★切' : '☆切'; }
+  $('bWheel').onclick = function () { WHEEL_FAV = WHEEL_FAV ? 0 : 1; put('wheelFav', WHEEL_FAV); wheelBtn(); toast(WHEEL_FAV ? '⏮ ⏭ 和方向盘只在收藏里切台' : '⏮ ⏭ 和方向盘在当前列表里切台'); };
+  wheelBtn();
   $('bNext').onclick = function () { step(1); };
   $('bPrev').onclick = function () { step(-1); };
   function meta() {
