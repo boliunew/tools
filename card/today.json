@@ -1,16 +1,16 @@
 {
- "date": "2026-10-05",
- "kind": "习语",
- "en": "put the cart before the horse",
- "zh": "本末倒置",
- "by": "做事顺序颠倒了",
- "line": "put the cart before the horse",
+ "date": "2026-10-06",
+ "kind": "名言",
+ "en": "Make the most of yourself, for that is all there is of you.",
+ "zh": "尽力活出最好的自己，因为你只有这一个自己。",
+ "by": "Ralph Waldo Emerson",
+ "line": "Make the most of yourself, for that is all there is of you. — Ralph Waldo Emerson",
  "word": {
-  "w": "simulation",
-  "ph": ".simju'leiʃәn",
-  "zh": "n. 模拟，假冒物，模仿",
-  "ex": "Build your own championship team in a new football management simulation game, launching in early November.",
-  "exzh": "全新足球经理模拟游戏将于 11 月初推出，邀你打造属于自己的冠军球队。"
+  "w": "deliberate",
+  "ph": "di'libәrәt",
+  "zh": "a. 深思熟虑的，故意的，从容的；v. 仔细考虑",
+  "ex": "Every step in the experiment was deliberate.",
+  "exzh": "该实验的每一步都是经过深思熟虑的。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
