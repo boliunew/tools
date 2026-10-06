@@ -1,5 +1,5 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-10-06
+#PLAYLIST:通勤电台 2026-10-06（短版）
 #EXTINF:8,通勤电台 - ☀️ 开场 10月6日 星期二
 https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610060704
 #EXTINF:35,通勤电台 - 🌤️ 天气 Upland 晴 102°/76°F
@@ -14,15 +14,5 @@ https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=2026100607
 https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610060704
 #EXTINF:30,通勤电台 - 🔤 今日单词 river · el arcoíris
 https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610060704
-#EXTINF:25,通勤电台 - 🎴 每日一句 名言
-https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610060704
-#EXTINF:70,通勤电台 - 🗣️ 跟读 和主管沟通
-https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610060704
-#EXTINF:23,通勤电台 - 💡 今日一招 微信「客服」发来的链接别点
-https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610060704
-#EXTINF:22,通勤电台 - 📜 历史上的今天 1914 · 1961 · 2010
-https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610060704
-#EXTINF:52,通勤电台 - 🖋️ 读苏轼 西江月·世事一场大梦
-https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610060704
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
 https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610060704
