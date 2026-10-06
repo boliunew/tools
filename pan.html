@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F1F3F8">
+<title>夸克网盘搜索</title>
+<style>
+:root{
+  --bg:#F1F3F8; --paper:#FFFFFF; --ink:#1A1D24; --soft:#5E6673; --faint:#98A0AC; --line:#DFE3EB; --chip:#EEF1F6;
+  --accent:#3A5BD9; --accent-ink:#FFFFFF; --accent-soft:#E2E8FB; --good:#2E7D4F; --warn:#B8660B; --warn-soft:#FBEBD3; --bad:#C8412B;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Roboto Mono",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171D; --paper:#1D2129; --ink:#E8EBF0; --soft:#A2AAB6; --faint:#6E7682; --line:#2D333D; --chip:#262B34;
+    --accent:#8AA4FF; --accent-ink:#0D1530; --accent-soft:#222C48; --good:#6FD093; --warn:#F2B35E; --warn-soft:#3A2E1A; --bad:#FF8A73;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.5}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 40px}
+.top{display:flex;align-items:center;gap:10px;padding:16px 0 6px}
+.top h1{flex:1;margin:0;font-size:21px}
+.top a{color:var(--soft);text-decoration:none;font-size:14px}
+.sub{color:var(--soft);font-size:13.5px;margin:0 0 14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;margin-bottom:14px}
+.card h2{font-size:16px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.card h2 small{font-weight:400;color:var(--faint);font-size:12.5px}
+.srow{display:flex;gap:8px}
+.srow input{flex:1;min-width:0;font-size:17px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);outline:none}
+.srow input:focus{border-color:var(--accent)}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 13px;font-size:14px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.sm{padding:4px 10px;font-size:13px;border-radius:8px}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.seg button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--soft)}
+.seg button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.eng{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.eng a{display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg)}
+.eng a b{font-size:14.5px}.eng a small{display:block;font-size:11.5px;color:var(--faint)}
+.eng a .x{margin-left:auto;border:0;background:none;color:var(--faint);font-size:16px;padding:0 2px}
+.eng a.off{opacity:.45;pointer-events:none}
+.hist{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center;font-size:12.5px;color:var(--faint)}
+.hist button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:2px 10px;font-size:13px;color:var(--ink)}
+.hint{font-size:12.5px;color:var(--faint);margin-top:8px;line-height:1.6}
+textarea{width:100%;min-height:92px;border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:10px 12px;font-size:14px;resize:vertical;outline:none}
+textarea:focus{border-color:var(--accent)}
+.lk{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px;background:var(--bg)}
+.lk .u{font-family:var(--mono);font-size:13px;word-break:break-all}
+.lk .c{margin-top:4px;font-size:14px}.lk .c b{font-family:var(--mono);background:var(--warn-soft);color:var(--warn);padding:1px 6px;border-radius:6px}
+.lk .t{font-size:13.5px;color:var(--soft);margin-bottom:4px}
+.lk .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.lk input.nm{width:100%;border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:var(--paper);font-size:14px;margin-top:6px}
+.fav{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--line)}
+.fav:first-child{border-top:0}
+.fav .m{flex:1;min-width:0}
+.fav .m > b{display:block;font-size:15px}
+.fav .m .u{font-family:var(--mono);font-size:12px;color:var(--soft);word-break:break-all}
+.fav .m .d{font-size:12px;color:var(--faint)}
+.fav .m .c b{font-family:var(--mono);font-size:12.5px;background:var(--warn-soft);color:var(--warn);padding:0 5px;border-radius:5px}
+.fav .bs{display:flex;flex-direction:column;gap:5px}
+.empty{color:var(--faint);font-size:14px;text-align:center;padding:12px}
+.addf{display:none;margin-top:10px;gap:8px;flex-direction:column}
+.addf.on{display:flex}
+.addf input{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg);font-size:14px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,120px);background:#2B2F36;color:#fff;padding:9px 16px;border-radius:999px;font-size:14px;transition:transform .2s;z-index:50;pointer-events:none;max-width:90vw}
+.toast.on{transform:translate(-50%,0)}
+.note{background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6}
+</style>
+<script src="sync.js?v=1"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><h1>☁️ 夸克网盘搜索</h1><a href="./">主页</a></div>
+  <p class="sub">搜别人公开分享的夸克网盘链接 · 粘贴分享文字自动拆出链接和提取码 · 收藏常用资源</p>
+
+  <div class="card">
+    <h2>🔍 搜索</h2>
+    <div class="srow"><input id="q" type="search" placeholder="例如：Python 入门、考研英语、纪录片" enterkeyhint="search" autocomplete="off"><button class="btn pri" id="go">搜</button></div>
+    <div class="seg" id="mode">
+      <button data-m="share" class="on">只搜分享页</button>
+      <button data-m="mention">搜提到夸克链接的网页</button>
+    </div>
+    <div class="eng" id="eng"></div>
+    <div class="hist" id="hist"></div>
+    <div class="hint">「只搜分享页」直接找 pan.quark.cn/s/ 开头的分享链接，最准，但只能找到被搜索引擎收录的；「搜提到夸克链接的网页」能找到论坛、博客里贴出来的链接，范围更大。点哪个搜索引擎，就在新标签页打开结果。</div>
+    <button class="btn sm" id="addBtn" style="margin-top:10px">＋ 添加我常用的搜索站</button>
+    <div class="addf" id="addF">
+      <input id="aName" placeholder="名字，例如：某某盘搜">
+      <input id="aUrl" placeholder="搜索结果页地址，把关键词换成 {q}，例如 https://example.com/search?q={q}" autocomplete="off" autocapitalize="off">
+      <div style="display:flex;gap:8px"><button class="btn pri sm" id="aOk">保存</button><button class="btn sm" id="aNo">取消</button></div>
+      <div class="hint">不知道地址怎么写：在那个网站随便搜一个词，比如 abc，然后把地址栏里的 abc 换成 {q} 粘贴过来。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📋 粘贴分享文字 <small>自动拆出链接和提取码</small></h2>
+    <textarea id="paste" placeholder="把别人发的分享文字整段粘贴进来，例如：&#10;我用夸克网盘分享了「某某资料」，点击链接即可保存。&#10;链接：https://pan.quark.cn/s/abc123def456 提取码：Ab12"></textarea>
+    <div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" id="pasteBtn">📥 从剪贴板粘贴</button><button class="btn sm" id="clearBtn">清空</button></div>
+    <div id="found"></div>
+  </div>
+
+  <div class="card">
+    <h2>⭐ 我的收藏 <small id="favN"></small></h2>
+    <div class="srow" style="margin-bottom:6px"><input id="ff" type="search" placeholder="在收藏里找" style="font-size:14px;padding:8px 12px"></div>
+    <div id="favs"></div>
+    <div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" id="expBtn">复制全部（文本）</button></div>
+  </div>
+
+  <div class="note">打开分享链接会跳到夸克 App 或网页版，登录后可以「保存到我的网盘」。来路不明的软件安装包、带「破解」字样的程序最好别下，容易带病毒；影视书籍请注意版权。分享链接经常失效，搜到的结果最好按时间从新到旧看。</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function get(k, d) { try { var v = window.localStorage.getItem('pan:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { window.localStorage.setItem('pan:' + k, JSON.stringify(v)); } catch (e) { } }
+  var tt; function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(tt); tt = setTimeout(function () { t.className = 'toast'; }, 1800); }
+  function copy(t, msg) {
+    function ok() { toast(msg || '已复制'); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fallback); else fallback();
+    function fallback() { var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); ok(); } catch (e) { toast('复制失败，请长按手动复制'); } document.body.removeChild(a); }
+  }
+
+  /* ---------- 搜索 ---------- */
+  // 通用搜索引擎 + site: 限定到夸克分享页。{q} 换成搜索词
+  var BUILTIN = [
+    { id: 'bing', n: 'Bing', d: '必应，收录夸克链接比较多', share: 'https://www.bing.com/search?q=site%3Apan.quark.cn%2Fs+{q}', mention: 'https://www.bing.com/search?q=%22pan.quark.cn%2Fs%22+{q}' },
+    { id: 'baidu', n: '百度', d: '中文资源帖子多', share: 'https://www.baidu.com/s?wd=site%3Apan.quark.cn+{q}', mention: 'https://www.baidu.com/s?wd=%22pan.quark.cn%2Fs%22+{q}' },
+    { id: 'google', n: 'Google', d: '需要能打开 Google', share: 'https://www.google.com/search?q=site%3Apan.quark.cn%2Fs+{q}', mention: 'https://www.google.com/search?q=%22pan.quark.cn%2Fs%22+{q}' },
+    { id: 'ddg', n: 'DuckDuckGo', d: '不记录搜索历史', share: 'https://duckduckgo.com/?q=site%3Apan.quark.cn+{q}', mention: 'https://duckduckgo.com/?q=%22pan.quark.cn%2Fs%22+{q}' },
+    { id: 'sogou', n: '搜狗', d: '能搜到公众号文章', share: 'https://www.sogou.com/web?query=site%3Apan.quark.cn+{q}', mention: 'https://weixin.sogou.com/weixin?type=2&query=%E5%A4%B8%E5%85%8B%E7%BD%91%E7%9B%98+{q}' }
+  ];
+  var MY = get('sites', []), MODE = get('mode', 'share'), HIST = get('hist', []);
+  function q() { return $('q').value.replace(/^\s+|\s+$/g, ''); }
+  function url(tpl, s) { return tpl.replace(/\{q\}/g, encodeURIComponent(s)); }
+  function renderEng() {
+    var s = q(), h = '', i;
+    for (i = 0; i < BUILTIN.length; i++) {
+      var e = BUILTIN[i];
+      h += '<a target="_blank" rel="noopener noreferrer" data-e="' + e.id + '" class="' + (s ? '' : 'off') + '" href="' + esc(s ? url(e[MODE], s) : '#') + '"><span><b>' + esc(e.n) + '</b><small>' + esc(e.d) + '</small></span></a>';
+    }
+    for (i = 0; i < MY.length; i++) {
+      h += '<a target="_blank" rel="noopener noreferrer" data-my="' + i + '" class="' + (s ? '' : 'off') + '" href="' + esc(s ? url(MY[i].u, s) : '#') + '"><span><b>' + esc(MY[i].n) + '</b><small>我添加的</small></span><button class="x" data-del="' + i + '" aria-label="删除">×</button></a>';
+    }
+    $('eng').innerHTML = h;
+  }
+  function renderHist() {
+    if (!HIST.length) { $('hist').innerHTML = ''; return; }
+    var h = '最近搜过 '; for (var i = 0; i < HIST.length && i < 12; i++) h += '<button data-h="' + esc(HIST[i]) + '">' + esc(HIST[i]) + '</button>';
+    $('hist').innerHTML = h + ' <button data-clr="1" style="color:var(--faint)">清除</button>';
+  }
+  function remember() {
+    var s = q(); if (!s) return;
+    HIST = [s].concat(HIST.filter(function (x) { return x !== s; })).slice(0, 30); put('hist', HIST); renderHist();
+  }
+  $('q').oninput = renderEng;
+  $('q').onkeydown = function (e) { if (e.keyCode === 13) { e.preventDefault(); $('go').click(); } };
+  $('go').onclick = function () {   // 「搜」= 用第一个搜索引擎打开
+    var s = q(); if (!s) { $('q').focus(); return; }
+    remember(); renderEng();
+    window.open(url(BUILTIN[0][MODE], s), '_blank', 'noopener');
+  };
+  $('eng').onclick = function (e) {
+    var d = e.target.closest ? e.target.closest('[data-del]') : null;
+    if (d) { e.preventDefault(); e.stopPropagation(); var i = +d.getAttribute('data-del'); if (window.confirm ? confirm('删除「' + MY[i].n + '」？') : true) { MY.splice(i, 1); put('sites', MY); renderEng(); } return; }
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (a && !q()) { e.preventDefault(); $('q').focus(); toast('先输入要搜的内容'); return; }
+    if (a) remember();
+  };
+  $('mode').onclick = function (e) {
+    var b = e.target.closest ? e.target.closest('[data-m]') : null; if (!b) return;
+    MODE = b.getAttribute('data-m'); put('mode', MODE);
+    var bs = $('mode').querySelectorAll('button'); for (var i = 0; i < bs.length; i++) bs[i].className = bs[i] === b ? 'on' : '';
+    renderEng();
+  };
+  $('hist').onclick = function (e) {
+    var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
+    if (b.getAttribute('data-clr')) { HIST = []; put('hist', HIST); renderHist(); return; }
+    $('q').value = b.getAttribute('data-h'); renderEng(); $('q').focus();
+  };
+  $('addBtn').onclick = function () { $('addF').className = 'addf on'; $('aName').focus(); };
+  $('aNo').onclick = function () { $('addF').className = 'addf'; };
+  $('aOk').onclick = function () {
+    var n = $('aName').value.replace(/^\s+|\s+$/g, ''), u = $('aUrl').value.replace(/^\s+|\s+$/g, '');
+    if (!/^https?:\/\//i.test(u)) { toast('地址要以 http:// 或 https:// 开头'); return; }
+    if (u.indexOf('{q}') < 0) { toast('地址里要有 {q}，代表搜索词的位置'); return; }
+    MY.push({ n: n || u.replace(/^https?:\/\//, '').split('/')[0], u: u }); put('sites', MY);
+    $('aName').value = ''; $('aUrl').value = ''; $('addF').className = 'addf'; renderEng(); toast('已添加');
+  };
+  (function () { var bs = $('mode').querySelectorAll('button'); for (var i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-m') === MODE ? 'on' : ''; })();
+  // 别的页面可以用 pan.html#q=关键词 直接带词进来
+  (function () { var m = /[#&]q=([^&]+)/.exec(location.hash); if (m) try { $('q').value = decodeURIComponent(m[1]); } catch (e) { } })();
+  renderEng(); renderHist();
+
+  /* ---------- 粘贴分享文字 → 链接 + 提取码 ---------- */
+  var LINK = /https?:\/\/pan\.quark\.cn\/s\/[A-Za-z0-9_-]+(?:[?#][^\s，。；、）)」】]*)?/g;
+  var CODE = /(?:提取码|提取碼|访问码|密码|密碼|code|pwd)\s*[:：=]?\s*([A-Za-z0-9]{4,8})/i;
+  function parse(text) {
+    var out = [], m, seen = {}, prevEnd = 0;
+    LINK.lastIndex = 0;
+    while ((m = LINK.exec(text))) {
+      var u = m[0], key = u.split(/[?#]/)[0];
+      if (seen[key]) continue; seen[key] = 1;
+      var after = text.slice(m.index + u.length, m.index + u.length + 40), before = text.slice(Math.max(prevEnd, m.index - 120), m.index);
+      prevEnd = m.index + u.length;
+      var c = CODE.exec(after) || (/[?&]pwd=([A-Za-z0-9]{4,8})/.exec(u)), title = '';
+      var t = /「([^」]{1,60})」|《([^》]{1,60})》|【([^】]{1,60})】/.exec(before);
+      if (t) title = t[1] || t[2] || t[3];
+      else { var lines = before.split(/\n/); title = (lines[lines.length - 1] || lines[lines.length - 2] || '').replace(/(链接|鏈接|地址)\s*[:：]?\s*$/, '').replace(/^\s+|\s+$/g, '').slice(0, 40); }
+      out.push({ u: key, code: c ? c[1] : '', t: title });
+    }
+    if (!out.length) { var bare = /(?:^|[^A-Za-z0-9])pan\.quark\.cn\/s\/([A-Za-z0-9_-]+)/.exec(text); if (bare) out.push({ u: 'https://pan.quark.cn/s/' + bare[1], code: (CODE.exec(text) || [])[1] || '', t: '' }); }
+    return out;
+  }
+  var FOUND = [];
+  function renderFound() {
+    var text = $('paste').value;
+    FOUND = text.replace(/\s/g, '') ? parse(text) : [];
+    if (!text.replace(/\s/g, '')) { $('found').innerHTML = ''; return; }
+    if (!FOUND.length) { $('found').innerHTML = '<div class="empty">没找到夸克分享链接（pan.quark.cn/s/…）</div>'; return; }
+    var h = '';
+    FOUND.forEach(function (f, i) {
+      h += '<div class="lk">' + (f.t ? '<div class="t">' + esc(f.t) + '</div>' : '') + '<div class="u">' + esc(f.u) + '</div>' +
+        (f.code ? '<div class="c">提取码 <b>' + esc(f.code) + '</b></div>' : '<div class="c" style="color:var(--faint);font-size:13px">没有提取码（或者不需要）</div>') +
+        '<input class="nm" data-nm="' + i + '" placeholder="起个名字，方便以后找" value="' + esc(f.t) + '">' +
+        '<div class="acts"><a class="btn pri sm" href="' + esc(f.u) + '" target="_blank" rel="noopener noreferrer" data-open="' + i + '" style="text-decoration:none">打开</a>' +
+        (f.code ? '<button class="btn sm" data-cc="' + i + '">复制提取码</button>' : '') + '<button class="btn sm" data-cl="' + i + '">复制链接</button><button class="btn sm" data-sv="' + i + '">⭐ 收藏</button></div></div>';
+    });
+    $('found').innerHTML = h;
+  }
+  $('paste').oninput = renderFound;
+  $('clearBtn').onclick = function () { $('paste').value = ''; renderFound(); };
+  $('pasteBtn').onclick = function () {
+    if (!navigator.clipboard || !navigator.clipboard.readText) { toast('这个浏览器不让读剪贴板，请长按输入框粘贴'); $('paste').focus(); return; }
+    navigator.clipboard.readText().then(function (t) { $('paste').value = t; renderFound(); if (!FOUND.length) toast('剪贴板里没找到夸克链接'); }, function () { toast('没有剪贴板权限，请长按输入框粘贴'); $('paste').focus(); });
+  };
+  $('found').onclick = function (e) {
+    var b = e.target.closest ? e.target.closest('[data-cc],[data-cl],[data-sv],[data-open]') : null; if (!b) return;
+    var i, f;
+    if (b.hasAttribute('data-open')) { f = FOUND[+b.getAttribute('data-open')]; if (f.code) copy(f.code, '提取码 ' + f.code + ' 已复制，打开后粘贴'); return; }
+    if (b.hasAttribute('data-cc')) { f = FOUND[+b.getAttribute('data-cc')]; copy(f.code, '提取码已复制'); return; }
+    if (b.hasAttribute('data-cl')) { f = FOUND[+b.getAttribute('data-cl')]; copy(f.u + (f.code ? ' 提取码：' + f.code : ''), '链接已复制'); return; }
+    i = +b.getAttribute('data-sv'); f = FOUND[i];
+    var nm = ($('found').querySelector('[data-nm="' + i + '"]') || {}).value || f.t || '未命名';
+    for (var k = 0; k < FAV.length; k++) if (FAV[k].u === f.u) { toast('已经收藏过了'); return; }
+    FAV.unshift({ n: nm.replace(/^\s+|\s+$/g, '') || '未命名', u: f.u, c: f.code, t: Date.now() }); put('fav', FAV); renderFav(); toast('已收藏 ⭐');
+  };
+
+  /* ---------- 收藏 ---------- */
+  var FAV = get('fav', []);
+  function ymd(t) { var d = new Date(t); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function renderFav() {
+    var f = $('ff').value.replace(/^\s+|\s+$/g, '').toLowerCase(), list = FAV.filter(function (x) { return !f || (x.n + ' ' + x.u).toLowerCase().indexOf(f) >= 0; });
+    $('favN').textContent = FAV.length ? FAV.length + ' 个' : '';
+    if (!list.length) { $('favs').innerHTML = '<div class="empty">' + (FAV.length ? '没有匹配的收藏' : '还没有收藏。粘贴分享文字后点「⭐ 收藏」') + '</div>'; return; }
+    var h = '';
+    list.forEach(function (x) {
+      var i = FAV.indexOf(x);
+      h += '<div class="fav"><div class="m"><b>' + esc(x.n) + '</b><div class="u">' + esc(x.u) + '</div>' + (x.c ? '<div class="c">提取码 <b>' + esc(x.c) + '</b></div>' : '') + '<div class="d">收藏于 ' + ymd(x.t) + '</div></div>' +
+        '<div class="bs"><a class="btn pri sm" style="text-decoration:none;text-align:center" href="' + esc(x.u) + '" target="_blank" rel="noopener noreferrer" data-fo="' + i + '">打开</a><button class="btn sm" data-fc="' + i + '">复制</button><button class="btn sm" data-fr="' + i + '">改名</button><button class="btn sm" data-fd="' + i + '" style="color:var(--bad)">删除</button></div></div>';
+    });
+    $('favs').innerHTML = h;
+  }
+  $('ff').oninput = renderFav;
+  $('favs').onclick = function (e) {
+    var b = e.target.closest ? e.target.closest('[data-fo],[data-fc],[data-fr],[data-fd]') : null; if (!b) return;
+    var x;
+    if (b.hasAttribute('data-fo')) { x = FAV[+b.getAttribute('data-fo')]; if (x.c) copy(x.c, '提取码 ' + x.c + ' 已复制，打开后粘贴'); return; }
+    if (b.hasAttribute('data-fc')) { x = FAV[+b.getAttribute('data-fc')]; copy(x.n + '\n' + x.u + (x.c ? '\n提取码：' + x.c : ''), '已复制'); return; }
+    if (b.hasAttribute('data-fr')) { x = FAV[+b.getAttribute('data-fr')]; var n = window.prompt ? prompt('新名字', x.n) : null; if (n) { x.n = n; put('fav', FAV); renderFav(); } return; }
+    var i = +b.getAttribute('data-fd');
+    if (window.confirm && !confirm('删除「' + FAV[i].n + '」？')) return;
+    FAV.splice(i, 1); put('fav', FAV); renderFav();
+  };
+  $('expBtn').onclick = function () {
+    if (!FAV.length) { toast('还没有收藏'); return; }
+    copy(FAV.map(function (x) { return x.n + '\n' + x.u + (x.c ? '\n提取码：' + x.c : ''); }).join('\n\n'), '已复制 ' + FAV.length + ' 个收藏');
+  };
+  renderFav();
+})();
+</script>
+<script src="nav.js?v=12" defer></script>
+</body>
+</html>
