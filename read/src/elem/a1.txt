@@ -1,0 +1,100 @@
+kind: article
+title: My Day from Morning to Night
+zh: 我的一天：从早到晚
+summary: 用一天的生活把最常用的动词、时间词和频率副词串起来：起床、刷牙、上学、吃饭、做作业、睡觉。每段都在重复使用高频词。
+grammar: 一般现在时（日常习惯） | 每天都做的事用一般现在时，he/she/it 后动词加 -s 或 -es | My mom gets up at six o'clock.
+grammar: 频率副词 | always 总是，usually 通常，often 经常，sometimes 有时，never 从不；放在 be 动词之后、实义动词之前 | I usually walk to school with my brother.
+grammar: 时间介词 at / in / on | at + 钟点，in + 早上/下午/月份，on + 星期几/日期 | On Saturday, I do not go to school.
+grammar: What time …? | 问时间：What time do you …? 回答 At + 时间 | What time do you go to bed?
+grammar: 一般现在时否定 | don't / doesn't + 动词原形 | My dad doesn't eat breakfast at home.
+vocab: get_up 起床; wake_up 醒来; wash 洗; brush 刷; teeth 牙齿; breakfast 早餐; lunch 午饭; dinner 晚饭; always 总是; usually 通常; often 经常; sometimes 有时; never 从不; morning 早上; afternoon 下午; evening 傍晚; night 夜晚; o'clock ……点钟; half 一半; minute 分钟; hour 小时; walk 走路; bus 公交车; class 课; homework 作业; early 早的; late 晚的; tired 累的; bed 床; dream 梦
+---
+Hello! My name is Sara. I am eleven years old. I live in a small house with my mom, my dad, my brother Ben, and our cat, Lucky. Today I want to tell you about my day. My day is very busy. It starts early in the morning, and it ends late at night. Let me show you what I do every day.
+
+In the morning
+
+My mom gets up at six o'clock. She is always the first person in our house to get up. She makes coffee, and she opens all the windows. She likes fresh air in the morning.
+
+I wake up at half past six. My clock makes a loud noise. "Ring, ring, ring!" I never like that sound. I usually stay in bed for five more minutes. I close my eyes and think, "Five more minutes, just five more minutes." Then my mom calls me. "Sara! Get up! It is time for school!" So I get up.
+
+First, I go to the bathroom. I wash my face with cold water. Cold water helps me wake up. Then I brush my teeth. I brush them for two minutes. My dentist says two minutes is the right time. I use a pink toothbrush. Ben uses a blue one. Sometimes he uses my toothbrush by mistake, and I get very angry.
+
+After that, I go back to my room and get dressed. On Monday, Wednesday, and Friday, I wear my school sweater. On Tuesday and Thursday, I wear my sports clothes, because I have a PE class. I comb my hair and put it in a ponytail. I always check my bag. I put in my books, my pencil case, my water bottle, and my homework.
+
+At seven o'clock, I have breakfast. I usually eat a bowl of cereal with milk and a banana. Sometimes I eat toast with butter and jam. On cold days, my mom makes hot oatmeal. Ben often eats two bowls of cereal. He is always hungry. My dad doesn't eat breakfast at home. He drinks a cup of coffee very fast and runs out of the door. He eats a sandwich on the train.
+
+Lucky eats breakfast too. She eats cat food from a small red bowl. She always meows at me in the morning. I think she says, "Good morning, Sara! Where is my food?"
+
+Going to school
+
+At half past seven, I leave home. I usually walk to school with my brother. The school is not far. It is about fifteen minutes on foot. On rainy days, my dad drives us, or we take the bus. The bus stop is at the end of our street. The bus is often late, so we wait under an umbrella.
+
+On the way to school, we see many things. We see the bakery. It smells like fresh bread. We see the park with big green trees. We see Mr. Green, our neighbor. He walks his dog every morning. His dog is big and white, and it is very friendly. We always say, "Good morning, Mr. Green!" and he always says, "Good morning, kids! Have a good day!"
+
+At school
+
+School starts at eight o'clock. I am never late, because my teacher does not like it. My teacher's name is Ms. Hill. She is tall and kind, and she has a big smile.
+
+In the morning, we have three classes. On Monday, we have English, math, and science. English is my favorite subject. I like reading stories and writing new words. Math is sometimes difficult for me. I am good at adding numbers, but I am not good at dividing. Science is fun. We often do small experiments. Last week, we made a volcano with baking soda and vinegar.
+
+At ten o'clock, we have a short break. It is twenty minutes long. We go out to the playground. My friends and I play games or talk. Sometimes we eat a small snack, like an apple or some crackers.
+
+At twelve o'clock, we have lunch. I usually eat lunch at school. I bring my lunch from home in a lunch box. My favorite lunch is a cheese sandwich, some carrots, and a cookie. My friend Amy always brings rice and chicken. Sometimes we share our food. After lunch, we go out and play again. We play soccer, or we jump rope.
+
+In the afternoon, we have two more classes. On Monday afternoon, we have music and art. In music class, we sing songs and play the drums. In art class, we draw and paint. I love art class. Last month, I painted a picture of Lucky. Now it is on the wall in our kitchen.
+
+School finishes at three o'clock. The bell rings, and everybody runs to the door. Everybody is happy at three o'clock.
+
+After school
+
+I get home at half past three. I am usually hungry, so I have a snack. I often eat some fruit or a yogurt. Then I rest for a few minutes. I sit on the sofa with Lucky. She likes to sit on my legs.
+
+At four o'clock, I do my homework. I do not like homework very much, but I always do it. My mom says, "Homework first, games later." I sit at the kitchen table. I usually have math homework and English homework. Sometimes I have a science project. If I have a question, I ask my mom. If my mom does not know, I ask Ben. He is thirteen, and he is very smart. But sometimes he says, "Do it yourself!"
+
+After my homework, I have free time. On Tuesday and Thursday, I have piano lessons. My piano teacher comes to our house at five o'clock. The lesson is one hour long. I practice for twenty minutes every day. On other days, I play outside with my friends. We ride our bikes or play in the park. Sometimes I read a book in my room. I love books about animals and adventures.
+
+In the evening
+
+My dad comes home at six o'clock. He is often tired after work, but he always smiles when he sees us. He asks, "How was school today?" And I tell him everything.
+
+At half past six, we cook dinner together. On Monday, my dad cooks. On Tuesday, my mom cooks. On Wednesday, Ben and I help. We make pasta or tacos. I wash the vegetables, and Ben cuts them. I am not allowed to use the big knife yet.
+
+At seven o'clock, we have dinner. We always eat dinner together at the table. We do not watch TV during dinner. We talk about our day. My mom tells us about her job. She is a nurse. My dad tells us funny stories about his office. Ben talks about soccer. And I talk about my friends and my teacher. Dinner is my favorite time of the day, because everybody is together.
+
+After dinner, we clean the kitchen. I put the dishes on the counter. Ben washes them. My dad dries them. My mom puts the food in the fridge. Lucky watches us. She waits for a little piece of chicken.
+
+At eight o'clock, I have some more free time. Sometimes I watch TV for thirty minutes. Sometimes I play a board game with my family. On Friday night, we often watch a movie together and eat popcorn.
+
+At night
+
+At half past eight, I take a shower. Then I put on my pajamas. My pajamas are yellow with little stars on them. I brush my teeth again. I always brush my teeth in the morning and at night.
+
+At nine o'clock, I go to bed. My mom comes to my room and reads me a story. I am eleven, and I can read by myself, but I still like it when she reads to me. Then she turns off the light and says, "Good night, Sara. Sleep well." I say, "Good night, Mom."
+
+Lucky often comes into my room at night. She jumps on my bed and sleeps next to my feet. She is warm and soft. Sometimes I dream about her. In my dream, she can talk.
+
+Weekends are different
+
+On Saturday, I do not go to school. I get up late, at eight o'clock or even nine o'clock. We have a big breakfast with pancakes. In the afternoon, we often go to the park or visit my grandma. My grandma lives in a small town near the sea. She always makes cookies for us.
+
+On Sunday, we clean the house in the morning. I clean my room and make my bed. In the afternoon, I see my friends, or we go swimming. On Sunday night, I go to bed early, because on Monday everything starts again.
+
+My family's days
+
+My family's days are different from my day. Let me tell you about them.
+
+My mom is a nurse. She works at a big hospital in the city. Some weeks, she works in the day. Other weeks, she works at night. When she works at night, she leaves home at seven o'clock in the evening, and she comes back at seven o'clock in the morning. Then she sleeps all day. We must be very quiet in the house. Ben and I walk on our toes, and we never play loud music. My mom says her job is hard, but she loves it. She helps sick people every day.
+
+My dad works in an office. He starts work at nine o'clock and finishes at five o'clock. He takes the train to the city. The train ride is forty minutes long. He reads the news on his phone, or he sleeps a little. At lunch time, he usually eats with his friends from work. On Friday, he sometimes works from home. Then he sits at the kitchen table with his computer, and Lucky sits on his keyboard. He says Lucky is his new boss.
+
+My brother Ben goes to a different school. It is a middle school, and it is bigger than my school. He takes the bus every morning at seven o'clock, so he gets up before me. He has a lot of homework every day. After school, he plays soccer with his team. They practice on Monday, Wednesday, and Friday. On Saturday morning, they have a game. We often go and watch him. He is a fast runner, and he sometimes scores a goal. When he scores, my dad jumps and shouts very loudly. Ben says it is embarrassing, but I think he likes it.
+
+And Lucky? Lucky has the easiest day of all. She sleeps in the morning. She eats at noon. She sleeps in the afternoon. She looks out of the window at the birds. She sleeps again in the evening. At night, she runs around the house very fast for no reason. Then she sleeps on my bed. I think Lucky sleeps for sixteen hours every day. Sometimes I want to be a cat.
+
+A question for you
+
+So, that is my day. It is busy, but I like it. Now I have some questions for you. What time do you get up? What do you eat for breakfast? How do you go to school or to work? What time do you go to bed? Do you always brush your teeth two times a day? Write your answers in English. Use words like always, usually, often, sometimes, and never. They are very useful words.
+
+Here are my answers one more time. I always get up at half past six. I usually walk to school. I often eat cereal. I sometimes take the bus. I never go to bed after ten o'clock. And you?
+
+Here is a small tip from Ms. Hill, my teacher. She says, "Talk about your day in English every night. It takes only two minutes." So every night, before I sleep, I say three sentences to Lucky. For example: "Today I got up early. I had pizza for lunch. I was very tired after soccer." Lucky never answers, but she always listens. Try it tonight!

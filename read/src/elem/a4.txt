@@ -1,0 +1,105 @@
+kind: article
+title: Weather, Seasons, and What to Wear
+zh: 天气、季节和穿衣
+summary: 从春夏秋冬四个季节讲天气、温度和衣服，再加上天气预报的常用说法。适合学天气和服装类高频词。
+grammar: It is + 天气形容词 | 说天气用 It：It is sunny / rainy / windy / cold | It is sunny and warm today.
+grammar: 现在进行时描述此刻天气 | It is raining. It is snowing. 正在下雨/下雪 | Look outside! It is snowing!
+grammar: will 天气预报 | 预报将来的天气：It will be …, It will rain … | Tomorrow it will be cloudy, and it will rain in the afternoon.
+grammar: should 给建议 | 应该：should + 动词原形，否定 shouldn't | You should wear a hat and sunscreen when you are outside in summer.
+grammar: When 引导的时间状语从句 | When it is cold, I wear a coat. 从句用一般现在时 | When it is hot, I wear shorts and a T-shirt.
+vocab: weather 天气; season 季节; spring 春天; summer 夏天; fall 秋天; winter 冬天; sunny 晴朗的; cloudy 多云的; rainy 下雨的; windy 有风的; snowy 下雪的; foggy 有雾的; storm 暴风雨; hot 热的; warm 温暖的; cool 凉爽的; cold 冷的; temperature 温度; degree 度; umbrella 雨伞; coat 外套; jacket 夹克; sweater 毛衣; scarf 围巾; gloves 手套; boots 靴子; shorts 短裤; T-shirt T恤; sunscreen 防晒霜; forecast 预报
+---
+Hello, everybody! My name is Mia, and I love the weather. Some people think weather is boring. They only say, "Nice day today," and that is all. But I think weather is very interesting. Every day is different. One day is sunny, the next day is rainy, and sometimes there is a big storm with thunder and lightning. Weather changes what we wear, what we eat, and what we do. In this article, I will tell you about the weather and the four seasons, and about the clothes we wear in each season.
+
+What is the weather like today?
+
+When people talk about the weather in English, they usually start with "It is." For example: It is sunny. It is cloudy. It is rainy. It is windy. It is snowy. It is foggy. It is hot. It is cold.
+
+We also use "It is" with a verb ending in -ing. Look outside! It is snowing! It is raining. It is getting dark. This means the weather is happening right now.
+
+Let me look out of my window. What is the weather like today? It is sunny and warm today. The sky is blue, and there are only two small white clouds. There is a little wind, so the leaves on the tree are moving. It is a perfect day to go to the park.
+
+How hot? How cold?
+
+We use temperature to say how hot or cold it is. In the United States, people use Fahrenheit. In most other countries, people use Celsius. When I talk to my cousin in Canada, we always get confused. I say, "It is seventy degrees today!" and she says, "Seventy? You must be on fire!" Because seventy degrees Fahrenheit is about twenty-one degrees Celsius. That is warm, but not hot.
+
+Here are some temperatures in both. Thirty-two degrees Fahrenheit is zero degrees Celsius. Water turns to ice. Fifty degrees Fahrenheit is ten degrees Celsius. That is cool. You need a jacket. Seventy degrees Fahrenheit is about twenty-one degrees Celsius. That is warm and nice. Ninety degrees Fahrenheit is about thirty-two degrees Celsius. That is hot. One hundred degrees Fahrenheit is about thirty-eight degrees Celsius. That is very, very hot. Stay inside!
+
+We have special words for different temperatures. From cold to hot, they are: freezing, cold, cool, warm, hot, and boiling. "Freezing" means very, very cold. "Boiling" means very, very hot. My dad always says "boiling" in the summer, and he always says "freezing" in the winter. My mom says he is never happy with the weather.
+
+Spring
+
+There are four seasons in a year: spring, summer, fall, and winter. In many countries, fall is also called autumn.
+
+Spring is in March, April, and May. In spring, the weather starts to get warmer. The days get longer. The snow melts, and the grass turns green again. Flowers come out. Birds come back from the south and sing in the trees every morning. Baby animals are born. Spring is a time of new life.
+
+But spring weather can be crazy. In the morning, it is sunny. At lunch time, it is cloudy. In the afternoon, it is raining. Then the sun comes out again. In spring, you often need an umbrella in your bag. My grandma says, "April showers bring May flowers." A shower is a short rain. So she means the rain in April helps the flowers grow in May.
+
+What do I wear in spring? I wear jeans, a long-sleeve shirt, and a light jacket. When it rains, I wear my yellow raincoat and my red rain boots. I love my rain boots, because I can jump in puddles. A puddle is a little pool of water on the ground after the rain. Jumping in puddles is one of the best things about spring.
+
+Summer
+
+Summer is in June, July, and August. Summer is the hottest season of the year. The sun is strong, and the days are very long. In June, it is still light outside at nine o'clock at night. There is no school in summer, so children are very happy.
+
+In summer, the weather is usually sunny and hot. Sometimes it is very humid. Humid means the air is wet and heavy. When it is humid, you feel sticky all day. Sometimes there are big summer storms. The sky gets dark very fast. There is thunder, a loud BOOM in the sky. There is lightning, a bright light in the sky. Then there is heavy rain for twenty minutes. After the storm, the air is cool and fresh, and sometimes you can see a rainbow.
+
+When it is hot, I wear shorts and a T-shirt. I wear sandals on my feet. I always wear a hat and sunglasses outside. And my mom always says, "Don't forget your sunscreen!" Sunscreen is a cream you put on your skin. It stops the sun from burning you. You should wear a hat and sunscreen when you are outside in summer. I forgot my sunscreen one time at the beach. My face was as red as a tomato for three days.
+
+What do we do in summer? We go to the beach. We swim in the pool. We eat ice cream and watermelon. We have barbecues in the garden. At night, we sit outside and look at the stars. Summer is my brother's favorite season.
+
+Fall
+
+Fall is in September, October, and November. In fall, the weather starts to get cooler. The days get shorter. The leaves on the trees change color. They turn yellow, orange, red, and brown. Then they fall down from the trees. That is why this season is called "fall." The ground is covered with leaves. My dad uses a rake to put the leaves in a big pile, and my little sister and I jump into the pile. Then my dad has to do it again.
+
+Fall weather is often windy. Sometimes it is foggy in the morning. Fog is like a cloud on the ground. When it is foggy, you can't see very far. Cars must drive slowly. In late fall, it can be cold and rainy.
+
+In fall, I wear long pants and a sweater. In the morning, it is cool, so I wear a jacket. In the afternoon, it is warmer, so I take my jacket off. Then I forget my jacket at school. My mom says I have forgotten twelve jackets at school. That is not true. It is only ten.
+
+What do we do in fall? We go back to school. We pick apples at a farm. We make pumpkin pie. At the end of October, there is Halloween. Children wear costumes and go from house to house. They say, "Trick or treat!" and people give them candy. Fall is my favorite season, because I love the colors and I love candy.
+
+Winter
+
+Winter is in December, January, and February. Winter is the coldest season of the year. The days are very short. It gets dark at five o'clock in the afternoon. In many places, it snows in winter. Snow is white and soft. It falls from the sky like little white stars. When it snows a lot, everything is white. The trees, the houses, the cars, and the streets.
+
+When it snows a lot, sometimes there is no school. That is called a snow day. On a snow day, we stay home and play in the snow. We build a snowman with a carrot nose. We have snowball fights. We go sledding on the hill. Then we come inside and drink hot chocolate. Snow days are the best days of the year.
+
+But winter can be difficult too. The roads are icy, and it is dangerous to drive. Some days it is freezing, and the wind is very cold. My fingers and my nose get red. In some places, there are big snowstorms called blizzards. In a blizzard, there is a lot of snow and a very strong wind.
+
+When it is cold, I wear a lot of clothes. I wear a warm coat, a sweater, a scarf, a hat, gloves, and boots. My mom says, "Wear layers." Layers means many clothes, one on top of another. A T-shirt, then a long-sleeve shirt, then a sweater, then a coat. When you are hot, you can take one layer off. In winter, I look like a big round ball with a small face.
+
+What do we do in winter? We go ice skating. We read books next to the fire. We make cookies. In December, there are many holidays. My family celebrates Christmas, and my friend Sam celebrates Hanukkah. On December 31st, we stay up late and say, "Happy New Year!" at midnight.
+
+The weather forecast
+
+Every morning, my dad checks the weather forecast. A weather forecast tells us about the weather tomorrow or next week. The person on TV who tells the forecast is called a weather reporter. Our weather reporter is a man named Bob. He always wears a colorful tie, and he always smiles, even when the weather is terrible.
+
+Here is a typical forecast from Bob: "Good morning! Today it will be sunny with a high of seventy-five degrees. Tonight it will be clear and cool, with a low of fifty-five. Tomorrow it will be cloudy, and it will rain in the afternoon. On the weekend, it will be windy and cold. Don't forget your umbrella!"
+
+A "high" is the hottest temperature in the day. A "low" is the coldest temperature, usually at night. When the forecast says "a chance of rain," it means maybe it will rain, and maybe it will not. My dad says Bob is right about half the time. My mom says that is better than Dad.
+
+Weather in different places
+
+The weather is different all around the world. In some places, it is hot all year. In other places, it is cold all year. In the desert, it is very hot and dry in the day, but cold at night. In the rainforest, it is hot and it rains almost every day. At the North Pole, it is freezing all year, and the sun does not come up for months in winter.
+
+In southern California, where my uncle lives, the weather is sunny almost every day. It does not snow there, except on the tall mountains. In summer, it can be very hot, more than one hundred degrees. My uncle says, "We have two seasons in California: summer and a little less summer."
+
+In London, where my aunt lives, it rains a lot. She says she always carries an umbrella, even on sunny days. Because in London, a sunny morning can quickly become a rainy afternoon.
+
+Why weather is important
+
+Weather is not only about clothes. Weather is important for many people. Farmers need rain for their plants. Pilots need good weather to fly. Fishermen need calm weather to go out on the sea. Truck drivers need to know about snow and ice on the roads. And children need to know if there is a snow day tomorrow!
+
+Weather words to remember
+
+Let us review. Here are some sentences to practice. Read them out loud.
+
+What is the weather like today? It is sunny and hot.
+What is the weather like in winter? It is cold and snowy.
+What is the temperature? It is sixty-five degrees.
+Is it raining? Yes, it is. Take your umbrella.
+What should I wear? It is cold, so you should wear a coat and gloves.
+What is your favorite season? My favorite season is fall, because I love the colors.
+
+Now look out of your window. What is the weather like where you are? What are you wearing today? Write five sentences about the weather today. Then check the forecast and write three sentences about the weather tomorrow. You can be a weather reporter, just like Bob. Just don't forget the colorful tie!
+
+One last tip from me: talk about the weather with people around you. In English-speaking countries, the weather is the most popular small talk. Say "Beautiful day, isn't it?" or "Cold today, huh?" to a neighbor or a cashier. It is an easy way to practice, and people always answer.

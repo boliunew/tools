@@ -1,0 +1,110 @@
+kind: story
+title: Benny the Goat Eats My Homework
+zh: 山羊本尼吃了我的作业
+summary: 汤姆家的山羊本尼什么都吃——作业、袜子、爸爸的帽子。老师不相信"山羊吃了作业"，直到本尼自己来了学校。
+grammar: 一般过去时（规则动词） | 已经发生的事，规则动词加 -ed：walk→walked，look→looked | I looked at my desk.
+grammar: 一般过去时（不规则动词） | 常见不规则变化：eat→ate，go→went，see→saw，run→ran | Benny ate my homework.
+grammar: 过去时的否定和疑问 | 否定用 didn't + 动词原形，疑问用 Did … + 动词原形 | Did you eat my homework?
+grammar: 一般现在时 | 习惯和常常发生的事，主语是第三人称单数时动词加 -s | Benny eats everything.
+grammar: There was / There were | 过去"有"，单数用 was，复数用 were | There was a big hole in my bag.
+vocab: goat 山羊; homework 作业; farm 农场; hungry 饿的; paper 纸; teacher 老师; believe 相信; sock 袜子; hat 帽子; hole 洞; laugh 笑; window 窗户; carrot 胡萝卜; yard 院子; principal 校长; quiet 安静的; empty 空的; chew 嚼; surprise 惊讶; true 真的
+---
+My name is Tom. I am ten years old. I live on a small farm with my mom, my dad, my little sister Amy, and a goat. The goat's name is Benny.
+
+Benny is white and brown. He has a short tail and two small horns. He has a long beard, like an old man. Benny is a nice goat, but he has one big problem. Benny eats everything.
+
+He eats grass. He eats carrots. He eats apples. That is normal for a goat. But Benny also eats socks. He eats paper. He eats flowers from Mom's garden. Last summer, he ate Dad's favorite hat. Dad was very sad. He looked for the hat for two days. Then he saw a little piece of it in Benny's mouth.
+
+"Benny!" Dad said. "That was my lucky hat!"
+
+Benny looked at Dad. He chewed and chewed. He did not say sorry. Goats never say sorry.
+
+Every morning, I walk to the yard and give Benny his breakfast. I give him hay and one carrot. He eats the hay. He eats the carrot. Then he looks at me with his big yellow eyes. He wants more. He always wants more.
+
+One Monday morning, I had a big problem. I had my math homework in my bag. It was a lot of homework. I worked on it for three hours on Sunday night. I did twenty math problems. I checked every answer two times. I was very proud of it.
+
+I put my bag next to the door of the barn. Then I gave Benny his breakfast. I talked to him for a minute. I said, "Benny, today I have a math test. Wish me luck."
+
+Benny did not wish me luck. Benny was busy.
+
+I turned around and looked at my bag. There was a big hole in my bag. There were little pieces of paper on the ground. And there was a goat with paper in his mouth.
+
+"Benny!" I shouted. "No! Did you eat my homework?"
+
+Benny chewed. He looked very happy. I looked into my bag. My pencils were there. My lunch was there. My math book was there. But my homework was not there. Benny ate my homework. He ate all twenty problems.
+
+I ran into the house. "Mom! Dad! Benny ate my homework!"
+
+Mom laughed. Dad laughed. Amy laughed so hard that she fell off her chair.
+
+"It is not funny," I said. "My teacher will not believe me. Nobody believes that story. It is the oldest story in the world."
+
+Dad stopped laughing. "You are right," he said. "Teachers hear that story every year. But usually it is a dog, not a goat."
+
+I walked to school that day. I was very worried. My teacher is Mrs. Park. She is kind, but she is very strict about homework. She always says, "Homework is important. No homework, no recess."
+
+I sat at my desk. I looked at my desk. I looked at the window. I did not want to talk to Mrs. Park. But she walked to me.
+
+"Tom," she said. "Where is your homework?"
+
+"My goat ate it," I said.
+
+The class was very quiet. Then everybody laughed. A boy named Jake laughed the loudest. "A goat!" he said. "Tom has a homework-eating goat!"
+
+Mrs. Park did not laugh. She looked at me over her glasses. "Tom," she said, "that is a very old story. I did not believe it last year, and I do not believe it this year."
+
+"But it is true!" I said. "His name is Benny. He eats everything. He ate my dad's hat!"
+
+"Hmm," said Mrs. Park. "No homework, no recess. You can do the homework again during recess."
+
+I was very sad. I liked recess. Recess is the best part of the day. I sat in the classroom and did my math problems again. I did not finish all of them. I was hungry and tired.
+
+Then something strange happened.
+
+At eleven o'clock, we heard a noise in the hallway. It was a funny noise. It sounded like "Meh-eh-eh-eh!"
+
+Mrs. Park stopped. "What was that?" she asked.
+
+"Meh-eh-eh-eh!" said the noise again. It was closer now.
+
+The door of our classroom opened. And there, in the door, was Benny.
+
+He had a piece of rope around his neck. The rope was chewed in the middle. He walked to school by himself! He followed my smell all the way from the farm. That is two miles!
+
+Everybody screamed. Then everybody laughed. Benny walked into the classroom like a king. He looked at the children. He looked at the desks. Then he looked at Mrs. Park's desk.
+
+On Mrs. Park's desk, there was a big pile of paper. It was our spelling homework. There were twenty-five pages.
+
+"Oh no," I said. "Benny, no!"
+
+Benny walked to the desk. He took one page in his mouth. He chewed it. He took another page. He chewed that one too. He looked very happy.
+
+"Stop him!" said Mrs. Park. "That is the spelling homework!"
+
+Jake ran to Benny. Benny jumped on a chair. Jake ran around the chair. Benny jumped on a table. Two girls ran to the table. Benny jumped down and ran under Mrs. Park's desk. He had three more pages in his mouth.
+
+The principal, Mr. Lopez, heard the noise. He came into the classroom. "What is going on here?" he asked. Then he saw Benny. Benny saw Mr. Lopez. Mr. Lopez had a sandwich in his hand.
+
+Benny walked out from under the desk. He walked to Mr. Lopez. He looked at the sandwich. Mr. Lopez looked at Benny.
+
+"Do not give him the sandwich," I said. "He will follow you forever."
+
+It was too late. Benny ate the sandwich. Then he ate the paper bag. Then he started to eat Mr. Lopez's tie.
+
+Finally, I took the rope. "Come on, Benny," I said. "Time to go home." Benny followed me. He was full and happy. He did not want to eat anything more. For a goat, that is a big surprise.
+
+Mrs. Park looked at her empty desk. There was no more spelling homework. There were only a few small pieces of paper. She looked at me. Then she started to laugh. She laughed and laughed. She laughed so much that she needed to sit down.
+
+"Tom," she said, "I am sorry. Your story was true. Your goat really eats homework."
+
+"I told you," I said.
+
+"You did," she said. "And you can have recess tomorrow. Also, class, there is good news. Your spelling homework is gone. You do not need to give it to me this week."
+
+Everybody cheered. Jake cheered the loudest. "Benny is the best goat in the world!" he shouted.
+
+That afternoon, my dad came to school with the truck. We put Benny in the back. Benny looked out of the truck like a happy dog. All the children waved goodbye. Benny said "Meh-eh-eh!" to everybody.
+
+Now Benny is famous at my school. The children draw pictures of him. Mrs. Park has a new rule. The rule is on the classroom wall. It says, "No goats in the classroom." Under the rule, there is a small picture of Benny.
+
+And me? I have a new rule too. Every morning, I give Benny his breakfast. But I never put my bag next to the barn. I put my bag in the house, on a high shelf, far away from my best friend, the hungry goat.

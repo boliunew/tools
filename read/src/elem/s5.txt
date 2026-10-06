@@ -1,0 +1,90 @@
+kind: story
+title: The Raccoon at Our Picnic
+zh: 野餐上的浣熊
+summary: 一家人去公园野餐，一只聪明的浣熊一次又一次偷走他们的食物。全家想尽办法，最后发现浣熊还带来了全家人。
+grammar: 方位介词 | in 在里面，on 在上面，under 在下面，behind 在后面，next to 在旁边，between 在两者之间 | There was a wooden table next to the tree and a small river behind it.
+grammar: There is / There are（现在） | 某处有某物，单数 is，复数 are | There are six raccoons in the tree, I thought.
+grammar: 一般过去时讲故事 | 故事里用过去时：took, ran, hid, came | It picked up the peach.
+grammar: 名词复数 | 一般加 -s；以 s/x/ch/sh 结尾加 -es；不规则：child→children，mouse→mice | there were sandwiches, peaches, and two boxes of cookies.
+grammar: some / any | 肯定句用 some，否定句和疑问句常用 any | Is there any food left?
+vocab: raccoon 浣熊; picnic 野餐; blanket 毯子; basket 篮子; tree 树; bush 灌木丛; mask 面具; paw 爪子; steal 偷; clever 聪明的; cooler 冷藏箱; lid 盖子; sandwich 三明治; peach 桃子; cookie 饼干; plan 计划; hid 藏（hide 的过去式）; branch 树枝
+---
+Last Sunday was a beautiful day. The sun was warm, and the sky was blue. My mom said, "Let's have a picnic!" So we went to Green Lake Park. My mom, my dad, my brother Sam, my grandma, and me. My name is Rosa.
+
+We had a big picnic basket and a red cooler. In the basket, there were sandwiches, peaches, and two boxes of cookies. In the cooler, there were cold drinks and a big bowl of potato salad. Grandma made the potato salad. It is her famous recipe. Nobody can make it like Grandma.
+
+We found a nice place under a big tree. There was a wooden table next to the tree and a small river behind it. Dad put the blanket on the grass. Mom put the basket on the table. Grandma sat on a chair in the shade. Sam and I ran to the river to look for fish.
+
+When we came back, Dad looked confused. "Where are the sandwiches?" he asked.
+
+"They are in the basket," said Mom.
+
+Dad looked in the basket. "No, they are not."
+
+We looked everywhere. We looked on the table. We looked under the table. We looked in the cooler. We looked behind Grandma's chair. The sandwiches were not there.
+
+"Maybe we forgot them at home," said Mom.
+
+"No," said Sam. "I saw them in the car." Sam is seven. He remembers every food he sees.
+
+Then I saw something. There were small footprints on the table. They looked like little hands. And there was a piece of bread on the grass. Then another piece. The pieces of bread made a line. The line went to the big tree.
+
+I looked up. On a branch, there was a raccoon. It was fat and gray. It had a black mask around its eyes, like a little robber. It had a striped tail. And in its paws, there was a sandwich. Our sandwich!
+
+"Look!" I shouted. "A raccoon! It took our sandwiches!"
+
+The raccoon looked at me. It did not run away. It ate the sandwich slowly. It looked very happy. Then it washed its paws in the air. Raccoons do that. They look very polite, but they are thieves.
+
+"Well," said Dad, "we still have the peaches and the cookies. Let's keep them safe." He put the peaches and cookies in the cooler and closed the lid. "There," he said. "Now the raccoon can't get them."
+
+We played a game with a ball. We laughed and ran. After twenty minutes, we were hungry again. Dad opened the cooler. He looked inside. He looked at us. His face was funny.
+
+"The cookies are gone," he said.
+
+"What? But you closed the lid!" said Mom.
+
+"I know," said Dad. "That raccoon is clever. It opened the cooler."
+
+Sam was very sad. "Not the cookies," he said. "Is there any food left?"
+
+"We still have some peaches," said Grandma. "And my potato salad. The raccoon did not take the potato salad."
+
+We looked at the tree again. Now there were two raccoons on the branch. The first raccoon had a cookie. The second raccoon had a cookie too. They looked down at us. I think they were laughing.
+
+"Okay," said Dad. "This is war. We need a plan."
+
+Dad's plan was this. He put the cooler on the table. He put Grandma's chair next to the cooler. Then he put a heavy rock on top of the lid. "Now nobody can open it," he said. "Not even a clever raccoon."
+
+Mom had a plan too. She put the peaches in a plastic bag and hung the bag high on a pole. "Raccoons can't fly," she said.
+
+Sam had a plan. He sat on the blanket with a big stick and watched the tree. "I am the guard," he said. Two minutes later, he was asleep.
+
+I had a plan too. I did not tell anyone. I took one peach and put it on the grass far away from our table. Then I hid behind a bush and waited. I wanted to see the raccoons.
+
+I waited and waited. Then the bushes moved. A raccoon came out. It was the fat one. It picked up the peach. It smelled it. But it did not eat it. It made a little sound. "Chrrr, chrrr."
+
+And then the bushes moved again. Out came another raccoon. And another. And another. And then, very slowly, three baby raccoons. They were small and fluffy. They walked behind their mother in a line, like little soldiers.
+
+I counted them. There are six raccoons in the tree, I thought. No, wait. More! There were raccoons in the tree, raccoons under the table, and raccoons in the bushes. It was a raccoon family party, and our picnic was the food.
+
+I ran back to my family. "Mom! Dad! There are not two raccoons. There are ten!"
+
+But it was too late. While Dad was looking at the cooler and Mom was looking at the peaches, a big raccoon was on the table. It was holding Grandma's bowl of potato salad. Grandma's famous potato salad!
+
+Grandma stood up from her chair. She is eighty years old, but she is fast. "Oh no, you don't!" she said. She took her big straw hat and waved it at the raccoon. "That is my potato salad! I made that!"
+
+The raccoon looked at Grandma. Grandma looked at the raccoon. Nobody moved. It was like a cowboy movie.
+
+Then the raccoon did something surprising. It put the bowl down. It pushed the bowl back to Grandma with its little paws. Then it walked away.
+
+We were all very quiet. Then Dad said, "Grandma, I think the raccoons are afraid of you."
+
+"Good," said Grandma. She sat down and held her bowl. "Nobody steals my potato salad."
+
+In the end, we did not have sandwiches. We did not have cookies. We had only a few peaches and a big bowl of potato salad. We ate it all together on the blanket. It was the best potato salad in the world. Even Sam said so, and he does not like potatoes.
+
+When we walked to the car, I looked back at the tree. The raccoon family was sitting on the branches. The baby raccoons were eating the last cookies. The fat raccoon was looking at us.
+
+I waved. "Goodbye, raccoons!"
+
+Now, when we go on picnics, we have new rules. We do not sit under trees. We keep the food in the car. And we always bring Grandma. She is the best raccoon guard in the world.

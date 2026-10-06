@@ -120,8 +120,10 @@
     get(cands(orig.toLowerCase()), function (r) { if (sheet && sheet.s === s) render(r, orig, sent, src); });
   }
   // 把一段英文切成可点的词
-  function wrap(text) {
-    return esc(text).replace(/[A-Za-z][A-Za-z'’-]*/g, function (w) { return '<span data-w="' + w + '">' + w + '</span>'; });
+  function wrap(text) {   // split first, then escape — escaping first would turn &quot; into a clickable "quot"
+    var parts = String(text == null ? '' : text).split(/([A-Za-z][A-Za-z'’-]*)/), out = '', i;
+    for (i = 0; i < parts.length; i++) out += i % 2 ? '<span data-w="' + esc(parts[i]) + '">' + esc(parts[i]) + '</span>' : esc(parts[i]);
+    return out;
   }
   function sentenceAround(text, word) {
     var parts = String(text).match(/[^.!?]+[.!?]*["”’)]*\s*/g) || [text];

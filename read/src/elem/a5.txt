@@ -1,0 +1,117 @@
+kind: article
+title: Getting Around Town
+zh: 在城里走走：地点、交通和问路
+summary: 跟着第一次来小镇的露西学认路：银行、邮局、医院、药店；坐公交、地铁；问路和指路的标准说法。
+grammar: 问路 | Excuse me, where is …? / How do I get to …? / Is there a … near here? | Excuse me, how do I get to the post office?
+grammar: 指路的祈使句 | Go straight. Turn left / right. Cross the street. Take the first right. | Go straight for two blocks, then turn left on Park Avenue.
+grammar: 交通方式 by / on foot | by bus, by car, by train, by bike；步行是 on foot | I go to work by bus, but on Sunday I go on foot.
+grammar: 方位短语 | across from 在对面，next to 在旁边，between … and … 在两者之间，on the corner 在拐角 | The pharmacy is between the bank and the bakery.
+grammar: How far / How long | How far is it? 问距离；How long does it take? 问要多久 | How long does it take by bus?
+vocab: town 城镇; street 街道; block 街区; corner 拐角; traffic_light 红绿灯; crosswalk 人行横道; bank 银行; post_office 邮局; hospital 医院; pharmacy 药店; library 图书馆; police_station 警察局; restaurant 餐馆; hotel 旅馆; station 车站; bus_stop 公交站; ticket 票; map 地图; left 左边; right 右边; straight 一直地; turn 转弯; cross 穿过; near 近的; far 远的; across_from 在……对面; between 在……之间; next_to 紧挨着; drive 开车; ride 骑；乘坐
+---
+Hi! I am Lucy. Last month, my family moved to a new town called Oak Hill. I did not know anything about Oak Hill. I did not know where the stores were. I did not know where the library was. I did not even know where my new school was. Everything was new. So I learned how to get around town, and I learned a lot of English words too. Now I want to share them with you.
+
+My first day in Oak Hill
+
+On my first day, my mom gave me a map. "Let's go for a walk," she said. "We need to learn our new town." We walked out of our new house on Elm Street. Elm Street is a quiet street with many trees and small houses. At the end of our street, there is a big road called Main Street. Main Street is the center of the town. Almost everything is on Main Street.
+
+"Look at the map," Mom said. "We are here." She pointed to a red dot. "And Main Street is here. Let's walk to the corner and turn right."
+
+A corner is the place where two streets meet. At the corner of Elm Street and Main Street, there is a traffic light. A traffic light has three colors. Red means stop. Yellow means slow down, the light will change soon. Green means go. There is also a small light for people who walk. It shows a little white person when you can walk, and a red hand when you must stop. We waited for the little white person. Then we used the crosswalk. A crosswalk is a part of the road with white lines. It is the safe place to cross the street.
+
+Main Street
+
+We walked along Main Street. Mom read the map, and I read the signs. On the first block, we saw a bank, a pharmacy, and a bakery. A block is the part of a street between two corners. In American towns, people often give directions in blocks. "Walk two blocks" means walk past two corners.
+
+The bank is a big gray building with tall windows. People go to the bank to get money or to save money. Next to the bank, there is a pharmacy. A pharmacy is a store where you buy medicine. When you are sick, the doctor gives you a paper, and you take it to the pharmacy. The pharmacy also sells toothpaste, shampoo, snacks, and birthday cards. The pharmacy is between the bank and the bakery. The bakery is small and smells wonderful. It sells bread, cakes, and donuts. My mom bought two donuts, one for her and one for me. A great start!
+
+Across from the bank, on the other side of the street, there is a post office. The post office has a blue sign and an American flag. You go to the post office to send letters and packages. My grandma lives in another state, and she loves letters, so I will go to the post office a lot.
+
+On the second block, there is a big supermarket, a clothing store, a shoe store, and a coffee shop. The coffee shop is on the corner. There are tables outside, and many people sit there in the morning with coffee and newspapers. Next to the coffee shop, there is a pizza restaurant. It has a big red sign with a smiling pizza on it. I asked, "Can we eat there tonight?" Mom said, "Maybe on Friday."
+
+On the third block, there is the town library. It is an old brick building with big stairs and two stone lions at the door. I love libraries. Inside, it is quiet and cool, and there are thousands of books. You can get a library card for free. With a library card, you can take books home for three weeks. I got my library card that day. It was the first card in my new wallet.
+
+Asking for directions
+
+After the library, we wanted to find my new school. But the map was not clear. Mom turned it around and around. "Hmm," she said. "I think we are lost."
+
+"Let's ask someone," I said.
+
+There was an old man in front of the library. He was feeding the birds. My mom said, "Excuse me. We are new in town. How do I get to Oak Hill Elementary School?"
+
+The man smiled. "Welcome to Oak Hill! The school is not far. Go straight for two blocks, then turn left on Park Avenue. Walk past the park. The school is on your right, across from the fire station. You can't miss it."
+
+"How far is it?" Mom asked.
+
+"About ten minutes on foot," said the man.
+
+"Thank you very much!" we said.
+
+"You're welcome. Have a nice day!"
+
+That was my first lesson in asking for directions. Here are the most useful questions:
+
+Excuse me, where is the bank?
+Excuse me, how do I get to the post office?
+Is there a pharmacy near here?
+How far is it?
+How long does it take to get there?
+Can you show me on the map?
+
+And here are the most useful answers:
+
+Go straight.
+Turn left. Turn right.
+Take the first street on the left.
+Cross the street.
+Walk two blocks.
+It is on your left. It is on your right.
+It is next to the bank.
+It is across from the park.
+It is on the corner.
+It is between the hotel and the restaurant.
+It is far. You should take the bus.
+
+Remember this: when people give you directions, they often use their hands. Watch their hands, and listen for the words "left" and "right." If you do not understand, you can say, "Sorry, can you say that again, please?" or "Can you speak more slowly, please?" People are usually happy to help.
+
+Park Avenue
+
+We went straight for two blocks, and we turned left on Park Avenue. On Park Avenue, there is a big park with a lake, a playground, and a lot of tall trees. There were children on the swings and dogs running on the grass. There was also an ice cream truck. It played a happy song.
+
+We walked past the park. On the right, we saw a big red-brick building with a flag. "Oak Hill Elementary School," said the sign. Across from the school, there was the fire station. It had big red doors, and a fire truck was outside. A firefighter was washing it. He waved at me. I waved back. I think I will like this town.
+
+Next to the fire station, there is the police station. And at the end of Park Avenue, there is the hospital. The hospital is very big and white. There is a big red sign with the word "Emergency." If someone is very sick or hurt, they go there. In the United States, you call nine-one-one for an emergency. My mom made me remember that number.
+
+Getting around: buses and trains
+
+Oak Hill is a small town, so we can walk to many places. But for longer trips, we need transportation. Transportation means ways to travel, like cars, buses, trains, and bikes.
+
+My dad works in the big city. The city is thirty miles from Oak Hill. He does not drive to work, because there is too much traffic. Traffic means a lot of cars on the road. Instead, he takes the train. The train station is at the end of Main Street. It takes forty-five minutes by train.
+
+My mom works at the hospital. She can go to work by car, by bus, or by bike. Usually she goes by bike, because it is good exercise. When it rains, she takes the bus. I go to work by bus, but on Sunday I go on foot. That is what my mom says, but she does not work on Sunday. She is making a joke.
+
+Taking the bus is easy. First, find the bus stop. A bus stop has a sign with a picture of a bus and a number. The number tells you which bus stops there. Then wait for your bus. When the bus comes, get on at the front door. Pay the driver or touch your bus card on the machine. A ticket costs two dollars. Then find a seat. If an old person or a woman with a baby gets on, you should give them your seat. When you are close to your stop, push the button or pull the cord. A little bell rings, and the driver stops at the next bus stop. Get off at the back door. Say "Thank you!" to the driver if you get off at the front.
+
+"How long does it take by bus?" I asked my mom one day.
+
+"To the hospital? About fifteen minutes," she said. "By bike, it is twenty minutes. On foot, it is forty minutes."
+
+In big cities, there is also a subway. A subway is a train under the ground. In New York, it is called the subway. In London, it is called the Underground, or "the Tube." In many other places, people call it the metro. My uncle lives in New York, and he never drives. He says the subway is faster than a car.
+
+Some people get around by taxi. A taxi is a car with a driver. You pay the driver to take you somewhere. Taxis are fast but expensive. Today, many people use apps on their phones to call a car.
+
+And many people ride bikes. In Oak Hill, there are special bike lanes on the roads. A bike lane is a part of the road only for bikes. You should always wear a helmet when you ride a bike. I ride my bike to the park every weekend. It takes five minutes.
+
+My favorite places in Oak Hill
+
+Now I have lived in Oak Hill for one month. I know my town very well. I can walk to school by myself. I can go to the library, the park, and the bakery. I even help new people with directions! Last week, a woman in a car stopped next to me. She said, "Excuse me, is there a gas station near here?" I said, "Yes! Go straight on Main Street for three blocks. It is on the left, next to the car wash." She said, "Thank you so much!" I felt very proud.
+
+Here are my favorite places in Oak Hill. Number one is the library, because it is quiet and has many books. Number two is the park, because I can play with my new friends there. Number three is the bakery, because the donuts are amazing. Number four is the pizza restaurant. We finally went there on Friday, and the pizza was even better than the sign.
+
+A bad day with directions
+
+Not every day was easy. One Saturday, I wanted to go to my new friend Kate's house. She said, "Take the number 5 bus and get off at the third stop. My house is next to the stop." But I took the number 15 bus by mistake. After twenty minutes, I was in a place I did not know. There were big buildings and no trees. I was scared. I got off the bus and went into a store. I said to the woman at the counter, "Excuse me, I am lost. How do I get to Birch Road?" She was very kind. She showed me on her phone. "You need the number 5 bus," she said. "The bus stop is across the street." I crossed the street at the crosswalk, and I waited. Finally, I got to Kate's house one hour late. Kate laughed and said, "Welcome to Oak Hill!" Now I always check the bus number two times.
+
+Your turn
+
+Now think about your town or city. Where is your home? Where is the nearest supermarket? How do you get to school or work? Do you go by car, by bus, by train, by bike, or on foot? How long does it take? Draw a simple map of your street. Then write directions from your home to your favorite place. Use words like straight, left, right, next to, across from, and between. Then give your directions to a friend and see if they can find it!

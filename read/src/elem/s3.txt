@@ -1,0 +1,88 @@
+kind: story
+title: The Biggest Pancake in Town
+zh: 全镇最大的煎饼
+summary: 小镇举办煎饼比赛，莉莉和爸爸想做"全镇最大的煎饼"。煎饼越做越大，最后大到要用梯子翻面。
+grammar: 形容词比较级 | 两者比较：短词加 -er（big→bigger），长词用 more（more beautiful），后面接 than | It was bigger than our table.
+grammar: 形容词最高级 | 三者以上比较：the + -est（the biggest），或 the most + 形容词 | This is definitely the biggest pancake.
+grammar: 不规则比较级 | good→better→best，bad→worse→worst | Mrs. Brown's pancake is better.
+grammar: as … as | 两者一样：as + 形容词原级 + as | It was about as big as a dinner plate.
+grammar: too + 形容词 | 太……（以至于不能） | The pan is too small.
+vocab: pancake 煎饼; contest 比赛; flour 面粉; egg 鸡蛋; milk 牛奶; pan 平底锅; flip 翻面; ladder 梯子; prize 奖品; judge 评委; syrup 糖浆; butter 黄油; crowd 人群; heavy 重的; soft 软的; flat 平的; giant 巨大的; mix 混合; burn 烧焦; delicious 美味的
+---
+Every spring, my town has a pancake contest. It is in the park, next to the lake. People come from everywhere. They bring their best pans, their best flour, and their best ideas. There are three prizes. There is a prize for the most delicious pancake. There is a prize for the most beautiful pancake. And there is a prize for the biggest pancake.
+
+My name is Lily. I am nine years old. This year, my dad and I wanted to win the prize for the biggest pancake.
+
+"Last year, the biggest pancake was as big as a car wheel," said Dad. "This year, we are going to make a pancake bigger than a car wheel. Bigger than a table. Bigger than a door!"
+
+"Bigger than our house?" I asked.
+
+Dad thought about it. "Maybe not that big," he said.
+
+We started on Friday night. We went to the store. We bought ten bags of flour, sixty eggs, and twenty big bottles of milk. The woman at the store looked at our cart. "Are you feeding an army?" she asked.
+
+"No," I said. "We are making the biggest pancake in town."
+
+She laughed. "Good luck. Mrs. Brown is in the contest again. Her pancakes are always the best."
+
+Mrs. Brown lives on our street. She is seventy years old, and she is a great cook. Her pancakes are softer than clouds. Her pancakes are sweeter than candy. Last year she won two prizes. Dad says she is the best cook in the whole state.
+
+On Saturday morning, we went to the park. There were many tables, many pans, and many people. It smelled wonderful. There was butter and syrup everywhere. A big sign said, "Pancake Contest! Judges at 12 o'clock!"
+
+Mrs. Brown was at the table next to us. She had a small pan and a small bowl. She smiled at us. "Hello, Lily," she said. "What are you making today?"
+
+"The biggest pancake in town," I said proudly.
+
+She looked at our bags of flour and our sixty eggs. "My goodness," she said. "Your pan needs to be very big."
+
+Dad stopped. He looked at our pan. It was our normal kitchen pan. It was round and black. It was about as big as a dinner plate.
+
+"Oh no," said Dad. "The pan is too small."
+
+We had flour. We had eggs. We had milk. But we did not have a big pan. Dad looked around the park. He looked at the trees. He looked at the lake. Then he looked at a big metal sign. It said, "Please Do Not Feed the Ducks."
+
+"Lily," said Dad, "I have an idea."
+
+Ten minutes later, we had the sign. A park worker gave it to us. He thought it was very funny. The sign was flat, metal, and very big. It was bigger than our table. It was as long as a bed. Dad put it on top of four camping stoves. "Our new pan!" he said.
+
+Then we mixed the batter. We used a big plastic bucket. We put in the flour. We put in the eggs. We put in the milk. We mixed and mixed. My arms got tired. Dad's arms got tired. A crowd started to watch us. Some children helped us mix.
+
+"Pour it!" said Dad. We poured the batter on the hot sign. It was a big white lake on the metal. It went from one end to the other end. It covered the words "Do Not Feed the Ducks." The crowd cheered.
+
+The pancake started to cook. It made a happy sound. Tssssss. It smelled very good. Little bubbles came up on top. "When there are bubbles, it is time to flip it," said Dad.
+
+Then we had a new problem. How do you flip a pancake as big as a bed?
+
+Dad tried with our kitchen spatula. It was too small. It looked like a spoon next to an elephant. I tried with two spatulas. That did not work either. The pancake was too heavy.
+
+"It is going to burn!" said a boy in the crowd.
+
+Mrs. Brown walked over from her table. She looked at the pancake. She looked at us. Then she smiled. "You need more hands," she said. She turned to the crowd. "Everybody, come here! We are going to flip a giant pancake!"
+
+Twenty people came. They stood around the sign. Each person took two spatulas or two big spoons. A man from the fire station brought a ladder. Dad climbed up the ladder. He was higher than everyone. He was the captain.
+
+"On three!" Dad shouted. "One... two... THREE!"
+
+Everybody lifted at the same time. The giant pancake went up into the air. It flew higher than the people. For one second, it was like a big golden blanket in the sky. Everybody was quiet.
+
+Then it came down. FLOP!
+
+It landed on the sign, brown side up. It was perfect. Well, almost perfect. One small corner landed on Dad's head. He looked like he was wearing a pancake hat.
+
+The crowd went crazy. They cheered and clapped. Some people took pictures. The ducks from the lake came to look too. They were very interested. Remember, the sign said, "Do Not Feed the Ducks." Now the sign was under a pancake, and nobody could read it.
+
+At twelve o'clock, the judges came. There were three judges. They had clipboards and serious faces. They looked at Mrs. Brown's pancakes first. They were small, round, and golden. They tasted them. "Mmm," said the first judge. "These are the most delicious pancakes I have ever eaten."
+
+Then they came to our table. They looked at our pancake. They looked at the ladder. They looked at Dad. He still had a little pancake on his head.
+
+"Well," said the second judge. "This is definitely the biggest pancake. It is bigger than my car."
+
+"Is it good?" asked the third judge. She took a small piece and tasted it. She thought for a long time. "It is... not bad," she said. "Mrs. Brown's pancake is better. But yours is the funniest."
+
+We won the prize for the biggest pancake! It was a gold medal with a little picture of a pancake on it. Mrs. Brown won the prize for the most delicious pancake. And the prize for the most beautiful pancake? It went to a little boy who made a pancake shaped like a duck.
+
+After the contest, we did not know what to do with our giant pancake. It was too big to take home. So we shared it. Everybody in the park had a piece. We put butter and syrup on it. People ate pancake for one hour. Mrs. Brown said, "Your pancake is not as soft as mine. But it is the friendliest pancake in town."
+
+That night, I asked Dad, "Next year, can we make a bigger pancake?"
+
+Dad looked at his sore arms. He looked at the pancake batter in his hair. "Next year," he said, "let's make the smallest pancake in town."

@@ -1,0 +1,102 @@
+kind: story
+title: Grandpa's Robot Is Cleaning Everything
+zh: 爷爷的机器人在打扫一切
+summary: 爷爷买了一个会说话的扫地机器人"大扫"。它太爱干净了：扫走了猫粮、拖走了爷爷的拖鞋，最后连猫都想"清理掉"。
+grammar: 现在进行时 | 正在发生的事：am / is / are + 动词-ing | Mr. Sweep is cleaning the cat's food.
+grammar: can / can't 表示能力 | can + 动词原形，否定 can't | It can talk, but it can't listen.
+grammar: 一般现在时与现在进行时对比 | 平常习惯用一般现在时，此刻正在做用进行时 | Usually the cat sleeps on the sofa. Right now, she is sitting on the fridge.
+grammar: 祈使句 | 用动词原形开头，表示命令或请求；否定用 Don't | Don't clean the cat!
+grammar: want to / like + -ing | want to + 动词原形；like + 动词-ing 表示喜欢做 | He likes watching TV.
+vocab: robot 机器人; vacuum 吸尘器; clean 打扫; dust 灰尘; slipper 拖鞋; button 按钮; battery 电池; sofa 沙发; fridge 冰箱; kitchen 厨房; floor 地板; noise 噪音; beep 哔哔声; dirty 脏的; corner 角落; spin 旋转; crumb 碎屑; garden 花园; brave 勇敢的
+---
+My grandpa is seventy-five years old. He has white hair, big glasses, and a very loud laugh. He likes watching TV. He likes eating cookies. He does not like cleaning. Grandpa says, "Cleaning is boring. I want a robot to do it."
+
+Last week, Grandpa got his wish. A big box came to his house. Inside the box, there was a round robot. It was black and silver. It had one blue light on top, like an eye. It had two small brushes under it.
+
+"This is a robot vacuum," Grandpa said. "It can clean the floor by itself. It can talk too. Listen!" He pushed a button.
+
+The robot made a happy sound. "Beep boop! Hello! My name is Mr. Sweep. I love clean floors. Clean floors make me happy. Where is the dirt?"
+
+I laughed. "Grandpa, it talks like a game show!"
+
+"Yes," said Grandpa. "And it never gets tired. Now I can watch TV all day."
+
+Grandpa sat on the sofa. He turned on the TV. Mr. Sweep started to work.
+
+Mr. Sweep is very fast. He goes under the table. He goes under the chairs. He goes into every corner. He makes a little noise, like a bee. "Bzzzzz. Bzzzzz. Dirt found! Dirt removed!"
+
+At first, everything was wonderful. The kitchen floor was clean. The hallway floor was clean. There were no crumbs under the table. Grandpa was very happy. "Look!" he said. "I am not cleaning, but the house is cleaning itself!"
+
+But Mr. Sweep had a problem. He loved cleaning too much.
+
+Now it is Saturday morning. I am visiting Grandpa again. I am standing in the kitchen, and I am watching Mr. Sweep. Mr. Sweep is not cleaning the floor. Mr. Sweep is cleaning the cat's food.
+
+"Stop!" I say. "That is not dirt! That is breakfast!"
+
+"Beep boop!" says Mr. Sweep. "Small brown things found. Small brown things removed!"
+
+The cat's bowl is empty now. The cat, Pepper, is looking at the robot. She is not happy. Pepper is a big gray cat. Usually the cat sleeps on the sofa. Right now, she is sitting on the fridge. She is watching Mr. Sweep with angry green eyes.
+
+"Grandpa!" I call. "Your robot is eating Pepper's food!"
+
+Grandpa is in the living room. He is wearing his favorite blue slippers. He is eating a cookie and watching a cooking show. "Don't worry," he says. "Mr. Sweep is smart. He knows the difference."
+
+Mr. Sweep does not know the difference.
+
+Mr. Sweep rolls into the living room. "Beep boop! Crumbs detected!" He goes straight to Grandpa's feet. Grandpa has cookie crumbs on his slippers. Mr. Sweep pushes his brushes against the slippers. Bzzzzz!
+
+"Hey!" says Grandpa. "Those are my feet!"
+
+"Large dirty object found," says Mr. Sweep. Then he does something terrible. He grabs one blue slipper with his brushes, and he pulls it. He is pulling the slipper off Grandpa's foot!
+
+"Let go!" shouts Grandpa. He pulls his foot back. Mr. Sweep pulls the slipper. Grandpa pulls his foot. It is like a game of tug of war. A seventy-five-year-old man and a little round robot.
+
+Mr. Sweep wins. The slipper comes off. Mr. Sweep spins around three times and rolls away very fast with the slipper. "Beep boop! Slipper removed! House is cleaner!"
+
+Grandpa looks at his one bare foot. Then he looks at me. "Get my slipper back," he says.
+
+I run after the robot. Mr. Sweep goes under the sofa. I get down on the floor. I am looking under the sofa. It is dark. I can see the blue light. I can see the slipper. I can also see two old socks, a TV remote, and a cookie. Mr. Sweep is collecting things!
+
+"Mr. Sweep, come out!" I say.
+
+"Beep boop. I am resting," says Mr. Sweep. "Cleaning is hard work."
+
+Grandpa laughs his big, loud laugh. "Ha! Now he says cleaning is hard work!"
+
+I pull out the slipper, the socks, the remote, and the cookie. Grandpa is very happy to see the remote. "I was looking for that for two days!" he says.
+
+Then something happens. Pepper the cat jumps down from the fridge. She is very brave. She walks to the sofa. She wants her breakfast back. She sits in front of the sofa and looks at the blue light.
+
+Mr. Sweep rolls out. He sees Pepper. He stops. His blue light goes on and off, on and off.
+
+"Beep boop," he says slowly. "Very large dust ball found."
+
+"Oh no," I say. "Pepper is not a dust ball!"
+
+"Large gray fuzzy dust ball," says Mr. Sweep. "Cleaning now!"
+
+Mr. Sweep rolls toward Pepper. Pepper's tail gets big, like a bottle brush. Her back goes up. She makes a very angry sound. "HISSSSS!"
+
+Mr. Sweep does not stop. Robots are not afraid of cats.
+
+"Don't clean the cat!" Grandpa shouts. He jumps up from the sofa. He has one slipper on and one slipper in his hand. He is running across the living room. "Don't clean the cat!"
+
+Pepper jumps. She does not run away. She jumps on top of Mr. Sweep! Now the cat is sitting on the robot, and the robot is driving around the living room. Around the sofa. Around the table. Into the kitchen and back again. Pepper is holding on with all her claws. She looks surprised. Then she looks happy. She is riding the robot like a little gray cowboy.
+
+"Beep boop! Heavy dust! Heavy dust!" says Mr. Sweep. He spins in a circle. Pepper spins too.
+
+My little brother, Leo, comes in from the garden. He sees the cat riding the robot. His mouth opens very wide. "That is the coolest thing in the world!" he says. He takes out Mom's phone and makes a video.
+
+Finally, Mr. Sweep's battery is low. He says, "Beep. Battery low. Going home." He rolls slowly back to his charging station in the corner. Pepper is still on top of him. She does not want to get off. Mr. Sweep stops. The blue light goes off. Pepper lies down on top of the warm robot, and she goes to sleep.
+
+Grandpa sits down on the sofa. He is tired. I am tired. Even the robot is tired. Only Pepper is happy. She is sleeping on her new, warm bed.
+
+"Well," says Grandpa. "That robot can clean the floor. But it can't tell a cat from a dust ball. It can talk, but it can't listen."
+
+"Are you going to send it back?" I ask.
+
+Grandpa looks at Pepper. She is purring on top of Mr. Sweep. Then he looks at Leo's video. In the video, a cat is riding a robot around the kitchen, and an old man is running behind them with one slipper.
+
+Grandpa starts to laugh. "No," he says. "I am keeping it. This is the best TV show in the house."
+
+Now every Saturday, Grandpa does something new. He puts his slippers on a high shelf. He puts the cat food on the counter. Then he pushes the button. Mr. Sweep says, "Beep boop! Hello! Where is the dirt?" And Pepper jumps on top, ready for her ride.

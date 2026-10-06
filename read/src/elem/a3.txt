@@ -1,0 +1,104 @@
+kind: article
+title: My Family and My Home
+zh: 我的家人和我的家
+summary: 诺亚带你认识他的大家庭和房子：家庭成员称呼、外貌和性格、每个房间里有什么。家庭和住房类高频词一次学全。
+grammar: have got / has got | 表示"有"，英式常用；he/she/it 用 has got | My grandpa has got a long white beard.
+grammar: 名词所有格 's | 表示"……的"：my mom's car，复数以 s 结尾只加 '：my parents' room | This is my parents' bedroom.
+grammar: 物主代词 | my, your, his, her, its, our, their 放在名词前 | Their house is small, but their garden is big.
+grammar: 描述外貌：be + 形容词 / have + 名词 | She is tall. She has short black hair. | My mom is tall, and she has short black hair.
+grammar: There is / There are 描述房间 | 介绍房间里有什么 | In the living room, there is a big gray sofa.
+vocab: family 家庭; parent 父母之一; grandparent 祖父母; uncle 叔叔/舅舅; aunt 阿姨/姑姑; cousin 堂表兄弟姐妹; baby 婴儿; twin 双胞胎; tall 高的; short 矮的；短的; hair 头发; glasses 眼镜; kind 和善的; funny 有趣的; quiet 安静的; living_room 客厅; kitchen 厨房; bedroom 卧室; bathroom 浴室; garden 花园; garage 车库; stairs 楼梯; window 窗户; door 门; table 桌子; chair 椅子; shelf 架子; lamp 台灯; neighbor 邻居; share 分享；合用
+---
+Hi! I am Noah. I am twelve years old. Today I want to tell you about two important things in my life: my family and my home. My family is big and loud, and my home is old and busy. I love them both. Come with me, and I will show you everything.
+
+My family
+
+There are seven people in my family. There is my dad, my mom, my big sister Emma, my little brothers Jack and Leo, my grandma, and me. We also have a dog called Pepper and two fish called Salt and Sugar. So, really, we have ten family members. My mom says ten is too many. My dad says ten is perfect.
+
+My dad
+
+My dad's name is David. He is forty-two years old. He is very tall. He is the tallest person in our family. He has brown hair and a short beard. He wears glasses, but only for reading. He works at a bank in the city. He gets up very early, and he comes home at six o'clock.
+
+My dad is funny. He tells jokes at dinner every night. Most of his jokes are bad. For example: "Why did the cookie go to the doctor? Because it felt crummy!" We all say, "Oh, Dad!" But then we laugh, because his face is so happy. My dad likes cooking on the weekend. He makes very good pancakes on Sunday morning. He also likes fixing things in the house, but he is not very good at it. Last month, he fixed the kitchen light. Now the light turns on when we open the fridge. We do not know why.
+
+My mom
+
+My mom's name is Anna. She is thirty-nine years old. My mom is tall, and she has short black hair. She has brown eyes and a big smile. She is a teacher at a high school. She teaches math. She is very smart, and she is very organized. She has a big calendar on the kitchen wall. Everybody's plans are on the calendar. Doctor visits, soccer games, birthdays, and dentist visits. If it is not on the calendar, it does not happen.
+
+My mom is kind, but she is also strict. She has many rules. No phones at the table. No shoes in the house. Homework before games. Bed at nine o'clock. My brothers and I sometimes complain about the rules, but secretly we think she is the best mom in the world.
+
+My sister
+
+My big sister Emma is sixteen. She has long brown hair and green eyes, like our grandma. She is quiet and very creative. She loves drawing and music. She plays the guitar in her room every evening. Sometimes she plays the same song fifty times. I can hear it through the wall. Emma is in high school. She wants to be an artist or a designer.
+
+Emma is usually nice to me. She helps me with my English homework. But she does not like it when I go into her room. On her door, there is a sign. It says, "Knock first. No little brothers." I am her only little brother who can read, so I know that sign is for me.
+
+My little brothers
+
+Jack and Leo are twins. They are six years old. Twins are two babies born on the same day from the same mom. Jack and Leo look almost the same. They both have curly blond hair and blue eyes. They are both short and full of energy. Many people cannot tell them apart. But I can. Jack has a small scar on his chin. He fell off his bike last year. And Leo has a missing front tooth.
+
+The twins are very loud. They run everywhere. They never walk. They jump on the sofa, they jump on the beds, and once they jumped into the pool with their clothes on. My mom says they have the energy of ten small dogs. They are also very funny. They tell their own jokes. Their jokes are even worse than Dad's jokes.
+
+My grandma
+
+My grandma lives with us. She is my mom's mother. She is seventy-four years old. She has short white hair and kind green eyes. She wears big round glasses and colorful sweaters. Grandma is very good at many things. She can knit, she can bake bread, she can grow tomatoes, and she can win any card game. She always wins. I think she cheats, but I cannot prove it.
+
+Grandma tells us stories about the old days. When she was young, there were no phones and no computers. She walked two miles to school every day. "In the snow," she says. "Uphill. Both ways." I am not sure that is possible, but it is a good story.
+
+My other family
+
+I also have a big family outside our house. My dad has two brothers. They are my uncles, Uncle Mike and Uncle Tom. My mom has one sister. She is my aunt, Aunt Lisa. Uncle Mike and his wife have three children. They are my cousins. My cousins are about the same age as me, and we play video games together on holidays. My grandpa, my dad's father, lives in another state. My grandpa has got a long white beard. He looks like Santa Claus. Every December, little children at the mall ask him for presents.
+
+My mom's parents are my grandparents too. My grandma lives with us, but my grandpa on my mom's side died before I was born. Grandma keeps his photo on a small table next to the lamp in her room. She says I have his smile. Aunt Lisa has a new baby. The baby's name is Rose, and she is only three months old. She sleeps, she eats, and she cries. Everybody wants to hold her.
+
+At Thanksgiving, my whole family comes to our house. There are about twenty-five people. We need three tables, and the kitchen is very hot. Everybody talks at the same time. It is very noisy, but it is my favorite day of the year.
+
+My home
+
+Now let me show you my home. We live in a big old house on Maple Street. The house is white with a green door. It is about one hundred years old. It has two floors, a basement, and a small garden. The floors make noises when you walk. Grandma says the house is talking. The twins say there is a ghost.
+
+The living room
+
+When you open the green door, you are in the hallway. On the left, there is the living room. In the living room, there is a big gray sofa. It is very soft and very old. There are two armchairs, a coffee table, and a big TV on the wall. Next to the TV, there is a tall shelf with books, games, and family photos. There is a photo of my parents on their wedding day. My dad has lots of hair in that photo.
+
+There is also a fireplace in the living room. In winter, we make a fire, and everybody sits on the sofa. Pepper the dog lies on the carpet in front of the fire. That is her favorite place in the whole house.
+
+The kitchen
+
+On the right side of the hallway, there is the kitchen. The kitchen is the busiest room in our house. It is big and yellow. There is a long wooden table in the middle with eight chairs. There is a fridge, an oven, a microwave, and a dishwasher. On the fridge, there are many magnets and many pictures. Most of the pictures are by the twins. They are pictures of dinosaurs, rockets, and Pepper.
+
+Grandma spends a lot of time in the kitchen. She bakes bread on Monday and cookies on Friday. The kitchen always smells good. The fish tank is in the kitchen too, on a small table next to the window. Salt and Sugar swim around and around. They are orange and white. They do not do much, but they are very relaxing to watch.
+
+Upstairs
+
+From the hallway, the stairs go up to the second floor. There are fourteen stairs. I know, because the twins count them every day. Upstairs, there are four bedrooms and two bathrooms.
+
+The first bedroom is the biggest. This is my parents' bedroom. It has a big bed, two closets, and a big window. We are not allowed to jump on their bed. The twins jump on it anyway when Mom is not home.
+
+The second bedroom is Emma's room. Her walls are dark blue, and she has posters of bands and paintings everywhere. She has a desk, a bed, a guitar, and many plants. Her room is always clean. Mine is not.
+
+The third bedroom is Grandma's room. It is small and warm. She has a rocking chair next to the window. She sits there and knits in the afternoon. There are photos of all her grandchildren on the wall. She has eleven grandchildren.
+
+The fourth bedroom is mine. But I do not have it alone. I share it with the twins. There are three beds in our room. My bed is next to the window. The twins have bunk beds. Jack sleeps on the top bed, and Leo sleeps on the bottom bed. Every night they fight about it, and every night Leo loses.
+
+Sharing a room with twins is not easy. They wake up very early, at six o'clock, even on Saturday. They talk all the time. They take my things. Last week, Leo used my soccer socks as puppets. But sometimes it is nice. At night, when the lights are off, we tell each other stories. Sometimes the stories are scary, and the twins climb into my bed. Then all three of us sleep in one small bed. It is not comfortable, but it is warm.
+
+The bathrooms
+
+There are two bathrooms upstairs. One is for my parents and Grandma. The other one is for us four kids. Four kids and one bathroom is a big problem in the morning. Emma takes thirty minutes in the shower. The twins splash water everywhere. I always have to wait. My dad says, "In a big family, you learn to be patient." I say, "In a big family, you learn to get up first."
+
+The basement and the garage
+
+Under the house, there is a basement. It is dark and a little scary. There is a washing machine, a dryer, and lots of old boxes. My dad's tools are down there too. Next to the house, there is a garage. Our car is in the garage, and our bikes are there too. There is also a ping-pong table. On rainy days, we play ping-pong for hours.
+
+The garden
+
+Behind the house, there is a small garden. Grandma grows tomatoes, carrots, and flowers there. There is a big tree in the corner with a swing. The twins love the swing. There is also a small wooden house for Pepper, but she never sleeps in it. She sleeps inside, on the sofa, when nobody is looking.
+
+Our neighbors are the Garcias. Their house is small, but their garden is big. They have chickens! Every week, Mrs. Garcia gives us a box of fresh eggs, and Grandma gives her a loaf of bread. That is a good trade.
+
+Why I love my home
+
+My home is not new. Some windows do not close well. The stairs make noise. The kitchen light is still a little strange. But my home is full of people I love. There is always someone to talk to, someone to play with, and someone to eat with. When I come home from school, I hear the guitar from Emma's room, I smell Grandma's bread, and I hear the twins laughing. Then Pepper runs to the door and jumps on me. That is when I know I am home.
+
+Now it is your turn. Who is in your family? What do they look like? What is your home like? How many rooms are there? Do you share your bedroom? Try to write ten sentences in English about your family and your home.
