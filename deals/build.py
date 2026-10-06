@@ -586,6 +586,8 @@ def main():
         "groups": [{"k": k, "zh": z, "e": e} for k, z, e in GROUPS], "cats": [{"k": k, "zh": z, "e": e} for k, z, e in CATS],
         "notes": notes, "stats": stats,
     })
+    # 首页「数据状态」只读这个小文件，不用为一个时间戳下载整个 meta.json
+    dump(os.path.join(DATA, "stamp.json"), {"updated": now.strftime("%Y-%m-%dT%H:%M:%SZ")})
     old_latest = os.path.join(DATA, "latest.json")
     if os.path.exists(old_latest):
         os.remove(old_latest)

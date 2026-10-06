@@ -34,6 +34,18 @@ a.card:hover{border-color:var(--accent)}
 .quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .quick a{font-size:13.5px;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
 .sect{font-size:13px;color:var(--soft);margin:0 0 8px 2px}
+.sect .hint{font-size:12px;opacity:.75;margin-left:6px}
+.recent{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px;font-size:12.5px;color:var(--soft)}
+.recent a{font-size:13.5px;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 10px}
+details.grp{margin-bottom:6px}
+details.grp summary{list-style:none;cursor:pointer;font-size:15px;font-weight:600;padding:10px 4px 8px;display:flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent}
+details.grp summary::-webkit-details-marker{display:none}
+details.grp summary small{font-weight:400;font-size:12px;color:var(--soft);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:0 7px}
+details.grp summary:after{content:"▾";margin-left:auto;color:var(--soft);transition:transform .15s}
+details.grp:not([open]) summary:after{transform:rotate(-90deg)}
+.today .warn .lb{color:#C8412B}
+.today .ok{font-size:12px;color:var(--soft);margin-top:8px}
+.today .tk{display:inline-block;font-weight:600;font-size:13px;border:1px solid var(--line);border-radius:6px;padding:0 5px;margin:2px 3px 0 0}
 </style>
 
 
@@ -111,32 +123,48 @@ html.locked #gate{display:block}
 <h1>我的工具</h1>
 <form class="srch" action="search.html" onsubmit="location.href='search.html#q='+encodeURIComponent(this.q.value);return false"><input name="q" type="search" placeholder="搜全站：菜谱、技巧、诗词、梦……" enterkeyhint="search"><button>搜</button></form>
 <div class="today" id="today"><div class="hd"><b id="tdDate"></b><span id="tdSub"></span></div><div id="tdBody"></div>
-<div class="quick"><a href="work.html">🦺 现场工具</a><a href="news.html">📰 新闻</a><a href="stocks.html">📈 股票池</a><a href="deals.html">🏷️ 打折</a><a href="kitchen.html">🍳 今天吃啥</a><a href="convert.html">💱 汇率</a></div></div>
-<div class="sect">全部工具</div>
-<a class="card" href="radio.html"><div class="t">🚗 通勤电台</div><div class="d">每天早上自动生成语音：大盘、股票池、财报日历、英文新闻、今日单词；连车载蓝牙用方向盘切段</div></a>
-<a class="card" href="deals.html"><div class="t">🏷️ 打折雷达</div><div class="d">Upland 附近 45 家店本周广告（Food 4 Less、Walmart、Stater Bros、ALDI、Target、Costco…）+ Amazon 网上特价；比价搜索、本周超市好价、我的店、⭐ 购物清单一键复制</div></a>
-<a class="card" href="sleep.html"><div class="t">🌙 夜之声 · 助眠</div><div class="d">21 种立体声音景自由混合（雷雨、车内听雨、海浪、篝火、夜车、水下、深空、氛围音乐…）；声景旅程、动态夜景、空间漫游、越来越轻、温柔唤醒、呼吸引导</div></a>
-<a class="card" href="books.html"><div class="t">🎧 听书 · 广播剧</div><div class="d">LibriVox 公版有声书（中/英/西/德/俄/法）+ 老时代英文广播剧；断点续听、倍速、睡眠定时、方向盘切章</div></a>
-<a class="card" href="fm.html"><div class="t">📻 环球网络电台</div><div class="d">俄罗斯 / 德国 / 英国 / 美国 / 中国 上千个电台直播；按风格筛选、搜索、收藏、睡眠定时，方向盘可换台</div></a>
+<div class="quick"><a href="work.html">🦺 现场工具</a><a href="news.html">📰 新闻</a><a href="stocks.html">📈 股票池</a><a href="deals.html">🏷️ 打折</a><a href="kitchen.html">🍳 今天吃啥</a><a href="convert.html">💱 汇率</a></div>
+<div class="recent" id="recent" hidden></div></div>
+<div class="sect">全部工具 <span class="hint">点分组名可以收起</span></div>
+<details class="grp" data-g="work" open><summary>🦺 工作现场 <small>1</small></summary>
+<a class="card" href="work.html"><div class="t">🦺 现场工具</div><div class="d">柜号校验、装柜计算、单位换算、验柜拍照；没信号也能用</div></a>
+</details>
+<details class="grp" data-g="money" open><summary>💰 钱 <small>4</small></summary>
 <a class="card" href="stocks.html"><div class="t">今日股票池</div><div class="d">收盘后扫描短线机会 · 自选股到价提醒推送到手机 · VOO 长线体检</div></a>
 <a class="card" href="earnings.html"><div class="t">财报与经济日历</div><div class="d">未来两周财报 + CPI / 非农 / 议息；历史财报反应、利好兑现率、联动股票</div></a>
+<a class="card" href="deals.html"><div class="t">🏷️ 打折雷达</div><div class="d">Upland 附近 45 家店本周广告（Food 4 Less、Walmart、Stater Bros、ALDI、Target、Costco…）+ Amazon 网上特价；比价搜索、本周超市好价、我的店、⭐ 购物清单一键复制</div></a>
+<a class="card" href="convert.html"><div class="t">💱 汇率与单位换算</div><div class="d">实时汇率（美元、人民币、比索等，自选币种）；长度、重量、体积（CBM / 立方英尺）、面积、温度、速度、油耗 MPG↔L/100km、胎压、数据、厨房量杯，支持市斤、亩；可输入算式</div></a>
+</details>
+<details class="grp" data-g="read" open><summary>📰 读 <small>4</small></summary>
 <a class="card" href="news.html"><div class="t">📰 新闻</div><div class="d">今日大事（几家中文媒体都在报的排前面）、世界趣闻、历史上的今天；英文精选按 A2–C2 难度分级。每天自动更新两次</div></a>
+<a class="card" href="kb.html"><div class="t">🗂️ 知识库</div><div class="d">27 篇长文：投资量化（指标代码、回测陷阱、账户与税、定投计算器）、物流（拖车类型、危险品标志、装柜计算器、报关关税）；今晚星空和天象日历（按 Upland 现算）、月亮与日月食、手机拍星空；FBA 头程、箱标托盘规范、南加州亚马逊仓代码；集装箱号校验、码头到仓库；USB-C 充电。按标签找、全文搜索，Markdown 写、自动出目录</div></a>
 <a class="card" href="tips.html"><div class="t">💡 技巧与科普</div><div class="d">三星手机、Windows、Linux 主机的实用技巧，防骗与隐私，南加州生活常识，厨房清洁小妙招，世界各地风土习俗与忌讳、经典旅游景点；每日一招、搜索、收藏</div></a>
 <a class="card" href="people.html"><div class="t">⭐ 人物专栏</div><div class="d">苏轼：33 篇诗词文，点开读原文，难字点一下看注解，配白话和写作背景，一生贬谪路线图；George Michael：生平、专辑导览、34 首歌背后的故事、入门听歌路线，一键去 YouTube / Spotify 听</div></a>
-<a class="card" href="kitchen.html"><div class="t">🍳 厨房与养生</div><div class="d">200 道中西家常菜（中西各 100）：份量自动换算、按冰箱食材找菜、做菜模式（屏幕常亮、多个计时器）、一键复制购物清单；养生：今天的节气吃什么，中医说法和营养学对照，标明证据强弱</div></a>
-<a class="card" href="dream.html"><div class="t">🌙 心灵小站</div><div class="d">周公解梦（240 多个梦境，输入梦境自动解）、读心魔术（玩完揭秘）、33 个心理效应（附投资里的表现）、逻辑谬误和推理题、三门问题模拟</div></a>
-<a class="card" href="kb.html"><div class="t">🗂️ 知识库</div><div class="d">27 篇长文：投资量化（指标代码、回测陷阱、账户与税、定投计算器）、物流（拖车类型、危险品标志、装柜计算器、报关关税）；今晚星空和天象日历（按 Upland 现算）、月亮与日月食、手机拍星空；FBA 头程、箱标托盘规范、南加州亚马逊仓代码；集装箱号校验、码头到仓库；USB-C 充电。按标签找、全文搜索，Markdown 写、自动出目录</div></a>
-<a class="card" href="convert.html"><div class="t">💱 汇率与单位换算</div><div class="d">实时汇率（美元、人民币、比索等，自选币种）；长度、重量、体积（CBM / 立方英尺）、面积、温度、速度、油耗 MPG↔L/100km、胎压、数据、厨房量杯，支持市斤、亩；可输入算式</div></a>
-<a class="card" href="toolbox.html"><div class="t">🧰 工具箱</div><div class="d">文本去重排序提取、文本对比、JSON 格式化 / 校验 / 树形 / 转 CSV、Base64 与文件互转、URL / Unicode 编码、MD5 / SHA 哈希、JWT、时间戳、正则测试；全在本机处理</div></a>
-<a class="card" href="monitor.html"><div class="t">网页监控</div><div class="d">盯价格、补货、公告变化，有变化推送通知</div></a>
-<a class="card" href="hanzi.html"><div class="t">汉字练习 · Hanzi</div><div class="d">拼音 + 笔顺动画 + 田字格描红默写；儿童识字 480 字 / HSK 英文两种模式；🪄 以少胜多：声旁家族、偏旁、拼字、数字魔法</div></a>
-<a class="card" href="english.html"><div class="t">英语练习 · ABC</div><div class="d">小学 / 初中 / 高中 / 大学四个难度：字母书写、音标单词、连词成句、选词填空、找谓语；🪄 以少胜多：拼读家族、前后缀、词族、合成词</div></a>
-<a class="card" href="spanish.html"><div class="t">西班牙语练习 · Español</div><div class="d">字母发音 + 480 个墨西哥常用词：音节重音、阴阳性、四线三格书写、测验；🪄 以少胜多：英→西变身规则、动词变位、数字魔法</div></a>
-<a class="card" href="player.html"><div class="t">探测播放器</div><div class="d">粘贴视频直链或网页，自动找出视频地址播放；倍速、续播、画中画</div></a>
+</details>
+<details class="grp" data-g="learn" open><summary>📚 学 <small>7</small></summary>
+<a class="card" href="vocab.html"><div class="t">语境词库 · 20000</div><div class="d">在语境中学单词，间隔重复；SubLingo 一键收词带原句、每天新闻真实例句、手机电脑云同步、打卡日历与错词本</div></a>
 <a class="card" href="card.html"><div class="t">🎴 每日一句 · 单词抽卡</div><div class="d">每天一句名言 / 地道习语 / 口头禅 / 易错（带中文和生词）；从语境词库抽卡复习，N–UR 稀有度、图鉴、连续打卡；可装到手机桌面</div></a>
 <a class="card" href="speak.html"><div class="t">🗣️ 开口说 · 跟读练习</div><div class="d">工作英语（调度、对讲机、报柜号、闸口、报损）、生活英语（看病、DMV、银行、客服电话）、美式口语和短语动词、现场西语；每句能听、能跟读打分，对话能角色扮演</div></a>
-<a class="card" href="vocab.html"><div class="t">语境词库 · 20000</div><div class="d">在语境中学单词，间隔重复；SubLingo 一键收词带原句、每天新闻真实例句、手机电脑云同步、打卡日历与错词本</div></a>
 <a class="card" href="sublingo.html"><div class="t">SubLingo</div><div class="d">字幕 / 文章语法解析：词性、时态、句子结构、短语动词；点词即查英汉词典（牛津 3000 核心词、考试标签）</div></a>
+<a class="card" href="english.html"><div class="t">英语练习 · ABC</div><div class="d">小学 / 初中 / 高中 / 大学四个难度：字母书写、音标单词、连词成句、选词填空、找谓语；🪄 以少胜多：拼读家族、前后缀、词族、合成词</div></a>
+<a class="card" href="spanish.html"><div class="t">西班牙语练习 · Español</div><div class="d">字母发音 + 480 个墨西哥常用词：音节重音、阴阳性、四线三格书写、测验；🪄 以少胜多：英→西变身规则、动词变位、数字魔法</div></a>
+<a class="card" href="hanzi.html"><div class="t">汉字练习 · Hanzi</div><div class="d">拼音 + 笔顺动画 + 田字格描红默写；儿童识字 480 字 / HSK 英文两种模式；🪄 以少胜多：声旁家族、偏旁、拼字、数字魔法</div></a>
+</details>
+<details class="grp" data-g="listen" open><summary>🎧 听 <small>5</small></summary>
+<a class="card" href="radio.html"><div class="t">🚗 通勤电台</div><div class="d">每天早上自动生成语音：大盘、股票池、财报日历、英文新闻、今日单词；连车载蓝牙用方向盘切段</div></a>
+<a class="card" href="fm.html"><div class="t">📻 环球网络电台</div><div class="d">俄罗斯 / 德国 / 英国 / 美国 / 中国 上千个电台直播；按风格筛选、搜索、收藏、睡眠定时，方向盘可换台</div></a>
+<a class="card" href="books.html"><div class="t">🎧 听书 · 广播剧</div><div class="d">LibriVox 公版有声书（中/英/西/德/俄/法）+ 老时代英文广播剧；断点续听、倍速、睡眠定时、方向盘切章</div></a>
+<a class="card" href="sleep.html"><div class="t">🌙 夜之声 · 助眠</div><div class="d">21 种立体声音景自由混合（雷雨、车内听雨、海浪、篝火、夜车、水下、深空、氛围音乐…）；声景旅程、动态夜景、空间漫游、越来越轻、温柔唤醒、呼吸引导</div></a>
+<a class="card" href="player.html"><div class="t">探测播放器</div><div class="d">粘贴视频直链或网页，自动找出视频地址播放；倍速、续播、画中画</div></a>
+</details>
+<details class="grp" data-g="life" open><summary>🏠 生活 <small>2</small></summary>
+<a class="card" href="kitchen.html"><div class="t">🍳 厨房与养生</div><div class="d">200 道中西家常菜（中西各 100）：份量自动换算、按冰箱食材找菜、做菜模式（屏幕常亮、多个计时器）、一键复制购物清单；养生：今天的节气吃什么，中医说法和营养学对照，标明证据强弱</div></a>
+<a class="card" href="dream.html"><div class="t">🌙 心灵小站</div><div class="d">周公解梦（240 多个梦境，输入梦境自动解）、读心魔术（玩完揭秘）、33 个心理效应（附投资里的表现）、逻辑谬误和推理题、三门问题模拟</div></a>
+</details>
+<details class="grp" data-g="tools" open><summary>🛠️ 工具 <small>2</small></summary>
+<a class="card" href="toolbox.html"><div class="t">🧰 工具箱</div><div class="d">文本去重排序提取、文本对比、JSON 格式化 / 校验 / 树形 / 转 CSV、Base64 与文件互转、URL / Unicode 编码、MD5 / SHA 哈希、JWT、时间戳、正则测试；全在本机处理</div></a>
+<a class="card" href="monitor.html"><div class="t">网页监控</div><div class="d">盯价格、补货、公告变化，有变化推送通知</div></a>
+</details>
 <button class="lockbtn" onclick="__lock()">🔒 退出（这台设备需要重新输密码）</button>
 </main>
 <script>
@@ -156,7 +184,7 @@ html.locked #gate{display:block}
   var SUB = [ph[1] + ' ' + ph[2]];
   function sub() { $('tdSub').textContent = SUB.join(' · '); }
   sub();
-  var slots = {}, ORDER = ['card', 'vocab', 'sushi', 'tip', 'news', 'watch'];
+  var slots = {}, ORDER = ['health', 'market', 'earn', 'card', 'vocab', 'sushi', 'tip', 'news', 'watch', 'ok'];
   function put(k, html) { slots[k] = html; var h = ''; for (var i = 0; i < ORDER.length; i++) if (slots[ORDER[i]]) h += slots[ORDER[i]]; $('tdBody').innerHTML = h; }
 
   getJSON('kitchen/wellness.json', function (w) {
@@ -194,8 +222,107 @@ html.locked #gate{display:block}
     var names = []; for (var j = 0; j < watch.length && j < 4; j++) names.push(watch[j].q || watch[j].k || watch[j]);
     put('watch', '<a class="row" href="deals.html"><div class="lb">打折关注</div><div class="sm">正在盯 ' + watch.length + ' 个：' + esc(names.join('、')) + '，有货会推到手机</div></a>');
   }
+
+  function bust(u) { return u + '?t=' + Math.floor(Date.now() / 300000); }
+  function ymd(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function ago(t) {
+    var m = Math.round((Date.now() - new Date(t).getTime()) / 60000);
+    if (isNaN(m)) return '?';
+    if (m < 60) return Math.max(m, 1) + ' 分钟前';
+    if (m < 48 * 60) return Math.round(m / 60) + ' 小时前';
+    return Math.round(m / 1440) + ' 天前';
+  }
+
+  // 最近用过：🌀 穿越按钮记下的页面，名字从下面的卡片里取
+  (function () {
+    var hist = ls('tnav:hist', []), h = '', n = 0;
+    for (var i = 0; i < hist.length && n < 5; i++) {
+      var c = document.querySelector('a.card[href="' + hist[i] + '"] .t');
+      if (c) { h += '<a href="' + esc(hist[i]) + '">' + esc(c.textContent) + '</a>'; n++; }
+    }
+    if (n) { $('recent').innerHTML = '最近用过 ' + h; $('recent').hidden = false; }
+  })();
+
+  // 分组收起 / 展开，记在这台设备上
+  (function () {
+    var fold = ls('home:fold', {}), ds = document.querySelectorAll('details.grp');
+    for (var i = 0; i < ds.length; i++) {
+      if (fold[ds[i].getAttribute('data-g')]) ds[i].open = false;
+      ds[i].addEventListener('toggle', function () {
+        var f = ls('home:fold', {}), g = this.getAttribute('data-g');
+        if (this.open) delete f[g]; else f[g] = 1;
+        try { window.localStorage.setItem('home:fold', JSON.stringify(f)); } catch (e) { }
+      });
+    }
+  })();
+
+  // 大盘和股票池：收盘后扫描的结果
+  var POOL = {}, ER = null;
+  function grab(u, cb) {   // 和 getJSON 一样，但失败也回调（给数据状态计数用）
+    var x = new XMLHttpRequest(); x.open('GET', bust(u));
+    x.onload = function () { var d = null; if (x.status < 400) { try { d = JSON.parse(x.responseText); } catch (e) { } } cb(d); };
+    x.onerror = function () { cb(null); }; x.send();
+  }
+  grab('stocks/data/latest.json', function (D) {
+    feedSeen('股票池', D && D.generated);
+    if (!D || D.demo || !D.regime) return;
+    var c = (D.candidates || []).slice().sort(function (a, b) { return (b.score || 0) - (a.score || 0); }), top = [];
+    for (var i = 0; i < c.length; i++) { POOL[c[i].t] = 1; if (top.length < 4) top.push('<span class="tk">' + esc(c[i].t) + '</span>'); }
+    var r = D.regime, chg = r.spy && typeof r.spy.chg === 'number' ? (r.spy.chg >= 0 ? '+' : '') + (r.spy.chg * 100).toFixed(2) + '%' : '';
+    put('market', '<a class="row" href="stocks.html"><div class="lb">大盘 · ' + esc(D.date ? D.date.slice(5).replace('-', '/') : '') + ' 收盘</div>' +
+      '<div class="tx">' + esc(r.label || '') + (chg ? ' · SPY ' + chg : '') + (r.vix ? ' · VIX ' + Number(r.vix).toFixed(1) : '') + '</div>' +
+      '<div class="sm">股票池 ' + c.length + ' 只候选' + (top.length ? '：' + top.join('') : '') + (D.stale ? ' · ⏳ 最新收盘数据还没出' : '') + '</div></a>');
+    if (ER) earn(ER);
+  });
+
+  // 财报与经济数据：今天、明天（或接下来两个有事的日子，三天以内）
+  function earn(D) {
+    ER = D;
+    var t0 = ymd(now), t1 = ymd(new Date(now.getTime() + 864e5)), lim = ymd(new Date(now.getTime() + 3 * 864e5)), rows = [], WK2 = '日一二三四五六';
+    for (var i = 0; i < (D.days || []).length && rows.length < 2; i++) {
+      var d = D.days[i];
+      if (d.date < t0 || d.date > lim) continue;
+      var mac = (d.macro || []).filter(function (m) { return m.imp !== '低'; }), es = (d.earnings || []).slice();
+      if (!mac.length && !es.length) continue;
+      es.sort(function (a, b) { var pa = (POOL[a.t] || a.watch) ? 1 : 0, pb = (POOL[b.t] || b.watch) ? 1 : 0; return pb - pa || (b.cap || 0) - (a.cap || 0); });
+      var dt = new Date(d.date + 'T12:00:00'), lab = d.date === t0 ? '今天' : d.date === t1 ? '明天' : (dt.getMonth() + 1) + '/' + dt.getDate() + ' 周' + WK2.charAt(dt.getDay());
+      var h = '<div class="sm"><b>' + lab + '</b> ';
+      for (var j = 0; j < mac.length && j < 2; j++) h += esc(mac[j].title) + (mac[j].time ? ' ' + esc(mac[j].time) : '') + '；';
+      for (j = 0; j < es.length && j < 6; j++) h += '<span class="tk">' + ((POOL[es[j].t] || es[j].watch) ? '★' : '') + esc(es[j].t) + '</span>';
+      if (es.length > 6) h += ' 等 ' + es.length + ' 家';
+      rows.push(h + '</div>');
+    }
+    if (rows.length) put('earn', '<a class="row" href="earnings.html"><div class="lb">财报与经济数据 <span style="font-weight:400;color:var(--soft)">★ 股票池或自选</span></div>' + rows.join('') + '</a>');
+  }
+  grab('earnings/data/latest.json', function (D) { feedSeen('财报', D && D.generated); if (D && !D.demo) earn(D); });
+
+  // 数据状态：每个自动更新的数据多久没动了，超过正常间隔就提醒（多半是 GitHub Actions 那次没跑成功）
+  var FEEDS = [
+    // 小时数 = 正常间隔 + GitHub 定时任务常见的几小时延迟
+    ['新闻', 'news/data/today.json', 'generated', 20],
+    ['股票池', 'stocks/data/latest.json', 'generated', 80, 1],
+    ['财报', 'earnings/data/latest.json', 'generated', 66, 1],
+    ['打折', 'deals/data/stamp.json', 'updated', 20],
+    ['电台', 'radio/data/today.json', 'generated', 36],
+    ['监控', 'monitor/data/state.json', 'generated', 12]
+  ], AGE = {}, left = FEEDS.length;
+  function feedSeen(name, t) { if (t) AGE[name] = t; if (--left) return; feedReport(); }
+  function feedReport() {
+    var bad = [], okk = [];
+    for (var i = 0; i < FEEDS.length; i++) {
+      var f = FEEDS[i], t = AGE[f[0]];
+      if (!t) continue;
+      if ((Date.now() - new Date(t).getTime()) / 36e5 > f[3]) bad.push(f[0] + '（上次 ' + ago(t) + '）'); else okk.push(f[0] + ' ' + ago(t));
+    }
+    if (bad.length) put('health', '<a class="row warn" href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener"><div class="lb">⚠️ 数据可能没更新</div><div class="tx">' + esc(bad.join('、')) + '</div><div class="sm">超过平时的更新间隔了，可能是那次自动任务失败。点这里去 GitHub Actions 看看</div></a>');
+    if (okk.length) put('ok', '<div class="ok">数据更新：' + esc(okk.join(' · ')) + '</div>');
+  }
+  FEEDS.forEach(function (f) {
+    if (f[4]) return;   // 上面已经下载过的，在那边记时间
+    grab(f[1], function (d) { feedSeen(f[0], d && d[f[2]]); });
+  });
 })();
 </script>
-<script src="nav.js?v=9" defer></script>
+<script src="nav.js?v=10" defer></script>
 </body>
 </html>

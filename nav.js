@@ -53,6 +53,8 @@
     '.tnav-a.cur span:after{content:" · 当前";font-size:12px;color:#8A847A}' +
     '.tnav-home{margin:14px 16px 0;display:block;text-align:center;padding:10px;border-radius:12px;border:1px solid #E3DED4;color:inherit;text-decoration:none}' +
     '.tnav-tip{font-size:11.5px;color:#9C958A;text-align:center;margin-top:10px}' +
+    '.tnav-off{position:fixed;left:50%;top:max(8px,env(safe-area-inset-top));transform:translate(-50%,-160%);z-index:2147482999;max-width:92vw;padding:7px 14px;border-radius:999px;background:#3A3A3C;color:#fff;font:13px/1.3 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:transform .25s;pointer-events:none;white-space:nowrap}' +
+    '.tnav-off.on{transform:translate(-50%,0)}' +
     '@media (prefers-color-scheme: dark){.tnav-dr{background:#1F1D19;color:#EEEAE2}.tnav-a i{background:#2E2B25}.tnav-back{background:#3A2416;color:#FDBA8C}.tnav-home{border-color:#3A362F}.tnav-a:active{background:rgba(255,255,255,.06)}}';
 
   function build() {
@@ -129,6 +131,13 @@
     window.addEventListener('mouseup', onUp);
     tab.addEventListener('click', function () { if (moved) { moved = false; return; } open(); });
     window.addEventListener('resize', function () { place(y); });
+
+    // 没网时顶部一条提示：现在看到的是上次存下的内容
+    var off = document.createElement('div'); off.className = 'tnav-off'; off.setAttribute('role', 'status');
+    off.textContent = '📵 没网，显示的是上次存下的内容';
+    document.body.appendChild(off);
+    var net = function () { off.className = 'tnav-off' + (navigator.onLine === false ? ' on' : ''); };
+    window.addEventListener('online', net); window.addEventListener('offline', net); net();
   }
   if (document.body) build(); else document.addEventListener('DOMContentLoaded', build);
 
