@@ -224,6 +224,18 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 .twrap{overflow-x:auto;margin:0 -16px;padding:0 16px}
 .twrap .etab{min-width:560px}
 .cav{font-size:13px;color:var(--soft);background:var(--chip);border-radius:12px;padding:9px 12px;line-height:1.7;margin-top:6px}
+
+.qt{margin:6px 0 4px;background:var(--bg);border-radius:10px;padding:8px 11px 7px;border:1px solid var(--line)}
+.qt .o{font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.6;font-style:italic}
+.qt .o:before{content:"“";color:var(--gold);font-size:20px;line-height:0;vertical-align:-4px;margin-right:2px}
+.qt .o:after{content:"”";color:var(--gold);font-size:20px;line-height:0;vertical-align:-4px;margin-left:2px}
+.qt .z{font-size:14px;line-height:1.65;margin-top:3px}
+.qt .c{font-size:12px;color:var(--faint);margin-top:3px}
+.qt .c a{color:var(--faint)}
+.qt.e{border-color:var(--gold)}
+.qn{font-size:12px;color:var(--gold);margin-left:6px;font-weight:600}
+.saybox .qt{background:var(--paper)}
+.saybox .who3{font-size:12.5px;font-weight:700;margin-top:10px;cursor:pointer;color:var(--accent)}
 /* ---------- 阿西莫夫 ---------- */
 .as-hero{background:radial-gradient(1.5px 1.5px at 18% 30%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 72% 18%,rgba(255,255,255,.7),transparent),radial-gradient(1.5px 1.5px at 86% 62%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 40% 78%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 58% 44%,rgba(255,255,255,.6),transparent),radial-gradient(130% 120% at 100% 0%,#3B5A7A 0%,#152232 50%,#080D14 100%);color:#E6EEF6;border-radius:18px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .as-hero:after{content:"";position:absolute;right:-60px;bottom:-90px;width:220px;height:220px;border-radius:50%;border:1px solid rgba(160,200,240,.18);box-shadow:0 0 0 26px rgba(160,200,240,.04),0 0 0 54px rgba(160,200,240,.03);pointer-events:none}
@@ -546,14 +558,23 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
   }
   function upCard(S, key, p, seen) {
     var on = UPO[key + '-' + p.id], last = S.ages[S.ages.length - 1], lim = seen || last, h = '';
-    h += '<div class="pc' + (on ? ' on' : '') + '" id="up-' + key + '-' + p.id + '"><div class="hd" data-pc="' + key + '-' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.name) + '</small></h3><div class="fm">' + esc(p.from) + '</div><div class="dots">';
+    h += '<div class="pc' + (on ? ' on' : '') + '" id="up-' + key + '-' + p.id + '"><div class="hd" data-pc="' + key + '-' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.name) + '</small>' + (p.q && p.q.length ? '<span class="qn">💬 ' + p.q.length + '</span>' : '') + '</h3><div class="fm">' + esc(p.from) + '</div><div class="dots">';
     S.ages.forEach(function (a) { h += '<i class="' + (p.films.indexOf(a) >= 0 ? 'y' : '') + (a > lim ? ' hid' : '') + '" title="' + a + ' 岁' + (p.films.indexOf(a) >= 0 ? '出镜' : '缺席') + '">' + (a > lim ? '?' : a) + '</i>'; });
     h += '</div><div class="sv"><b>7 岁</b>' + esc(p.seven) + '</div></div></div><div class="bd">';
     if (!seen) h += '<div class="then"><b>后来</b>' + esc(p.then) + '</div>' + '<div class="edu"><i>🎓</i><div><b>教育路径 → 职业</b>' + esc(p.edu) + ' → ' + esc(p.work) + '</div></div><div class="ktag">' + p.keys.map(function (k) { return '<span>' + esc(k) + '</span>'; }).join('') + '</div>';
     h += '<div class="ages">';
-    var shown = {}, hidden = 0;
-    p.tl.forEach(function (t) { if (t[0] > lim) { hidden++; return; } shown[t[0]] = 1; h += '<div class="a" data-age="' + t[0] + '">' + esc(t[1]) + '</div>'; });
-    S.ages.forEach(function (a) { if (a <= lim && !shown[a] && p.films.indexOf(a) < 0 && a > 7) h += '<div class="a no" data-age="' + a + '">这一集没有出镜。</div>'; });
+    var shown = {}, hidden = 0, byAge = {}, ages = [];
+    p.tl.forEach(function (t) { (byAge[t[0]] = byAge[t[0]] || { t: [], q: [] }).t.push(t[1]); });
+    (p.q || []).forEach(function (q) { (byAge[q[0]] = byAge[q[0]] || { t: [], q: [] }).q.push(q); });
+    S.ages.forEach(function (a) { if (!byAge[a] && p.films.indexOf(a) < 0 && a > 7) byAge[a] = { t: [], q: [], no: 1 }; });
+    for (var ak in byAge) if (byAge.hasOwnProperty(ak)) ages.push(+ak);
+    ages.sort(function (x, y) { return x - y; });
+    ages.forEach(function (a) {
+      var b = byAge[a];
+      if (a > lim) { hidden += b.t.length + b.q.length; return; }
+      if (b.no) { h += '<div class="a no" data-age="' + a + '">这一集没有出镜。</div>'; return; }
+      h += '<div class="a" data-age="' + a + '">' + b.t.map(esc).join('<br>') + b.q.map(function (q) { return upQ(q); }).join('') + '</div>';
+    });
     if (hidden) h += '<div class="lock">🙈 后面还有 ' + hidden + ' 段，看完对应的集再来（上面改「我看到了」）</div>';
     h += '</div>';
     if (!seen) h += '<div class="look"><b>看点</b>' + esc(p.look) + '</div><div class="lesson"><b>🎓 放到教育上想（我的理解）</b>' + esc(p.lesson) + '</div>';
@@ -570,6 +591,12 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
       it[3].forEach(function (w) { var pp = upFind(w[0], w[1]); h += '<button data-go="' + w[0] + '-' + w[1] + '">' + pp.icon + ' ' + esc(pp.zh) + (w[0] === 'uk' ? ' 🇬🇧' : ' ☭') + '</button>'; });
       h += '</div></div>';
     });
+    h += '<div class="sec">关于教育，他们自己怎么说 <small>原话 + 中文，点名字看这个人</small></div><div class="saybox">';
+    ['uk', 'su'].forEach(function (side) { UP[side].people.forEach(function (pp) {
+      var qs = (pp.q || []).filter(function (q) { return q[5]; }); if (!qs.length) return;
+      h += '<div class="who3" data-go="' + side + '-' + pp.id + '">' + pp.icon + ' ' + esc(pp.zh) + (side === 'uk' ? ' 🇬🇧' : ' ☭') + ' ›</div>' + qs.map(function (q) { return upQ(q); }).join('');
+    }); });
+    h += '</div>';
     // 34 人对照表
     var all = [], cnt = {};
     ['uk', 'su'].forEach(function (side) { UP[side].people.forEach(function (p) { all.push([side, p]); p.keys.forEach(function (k) { cnt[k] = (cnt[k] || 0) + 1; }); }); });
@@ -582,6 +609,11 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     });
     h += '</table></div><div class="cav">' + esc(E.caveat) + '</div>';
     return h;
+  }
+
+  function upQ(q, withWho) {
+    var src = UP.compare.qsrc[q[4]] || ['', ''];
+    return '<div class="qt' + (q[5] ? ' e' : '') + '"><div class="o">' + esc(q[1]) + '</div><div class="z">' + esc(q[2]) + '</div><div class="c">' + (withWho ? esc(withWho) + ' · ' : '') + q[0] + ' 岁' + (q[3] ? ' · ' + esc(q[3]) : '') + ' · 出处：<a href="' + esc(src[1]) + '" target="_blank" rel="noopener">' + esc(src[0]) + '</a>' + (q[5] ? ' · 🎓' : '') + '</div></div>';
   }
   function upFind(side, id) { var L = UP[side].people; for (var i = 0; i < L.length; i++) if (L[i].id === id) return L[i]; return null; }
   function upCompare() {
