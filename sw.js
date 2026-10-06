@@ -1,7 +1,7 @@
 /* 离线缓存：先上网拿最新的，网络不通（或 5 秒没回应）就用上次存下的。
    只缓存本站文件；音频视频、跨站请求、断点续传都直接放行，不进缓存。
    装好时先把常用页面和数据存一份，没打开过的页面在没信号时也能看。 */
-var CACHE = 'tools-v5';
+var CACHE = 'tools-v6';
 var NAMES = {
   'index.html': '🏠 首页', 'work.html': '🦺 现场工具', 'search.html': '🔍 全站搜索', 'kb.html': '🗂️ 知识库', 'tips.html': '💡 技巧与科普',
   'kitchen.html': '🍳 厨房与养生', 'convert.html': '💱 汇率与单位换算', 'news.html': '📰 新闻', 'stocks.html': '📈 今日股票池',
@@ -13,7 +13,7 @@ var NAMES = {
 };
 // vocab.html（3.7 MB）和 hanzi.html（1.8 MB）太大，不预先存；打开过一次以后照样能离线用
 var PAGES = Object.keys(NAMES).filter(function (p) { return p !== 'vocab.html' && p !== 'hanzi.html'; });
-var CORE = ['./', 'nav.js?v=12', 'sync.js?v=1', 'lookup.js', 'tools.webmanifest', 'icons/icon-192.png', 'mind/mind.js'].concat(PAGES);
+var CORE = ['./', 'nav.js?v=12', 'sync.js?v=1', 'lookup.js', 'weather.js?v=1', 'tools.webmanifest', 'icons/icon-192.png', 'mind/mind.js'].concat(PAGES);
 var DATA = [
   'news/data/today.json', 'card/today.json', 'card/daily.json', 'stocks/data/latest.json', 'earnings/data/latest.json',
   'kitchen/wellness.json', 'kitchen/recipes_cn.json', 'kitchen/recipes_cn2.json', 'kitchen/recipes_cn3.json',

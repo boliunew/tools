@@ -65,6 +65,11 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 .foot a{color:var(--soft)}
 .live{font-size:14px;color:var(--soft);margin:-6px 0 12px}
 .live b{color:var(--ink)}
+.wxt{list-style:none;margin:-6px 0 12px;padding:0;font-size:13px;line-height:1.5}
+.wxt li{display:flex;gap:6px;padding:1px 0;color:var(--soft)}
+.wxt li.warn{color:#B4471F}
+@media (prefers-color-scheme: dark){.wxt li.warn{color:#FF9B7A}}
+.wxt li i{font-style:normal}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:18px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.on{opacity:.92}
 </style>
@@ -74,6 +79,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 <main>
   <div class="top"><h1>🚗 通勤电台</h1><button id="refresh">🔄 刷新</button><a href="./">主页</a></div>
   <div class="live" id="live"></div>
+  <ul class="wxt" id="wxt"></ul>
   <div id="nb"></div>
   <div id="app"><div class="card msg">加载中…</div></div>
   <div class="foot">方向盘「下一首 / 上一首」切换段落，车机屏幕显示当前段落<br>每天早上自动生成 · <a href="https://github.com/boliunew/tools/actions/workflows/radio.yml" target="_blank" rel="noopener">立即重新生成 ↗</a></div>
@@ -81,6 +87,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 <div class="tap" id="tap"><button id="tapBtn">▶ 点一下开始播放</button></div>
 <div class="toast" id="toast"></div>
 <audio id="au" preload="auto"></audio>
+<script src="weather.js?v=1"></script>
 <script>
 (function () {
   'use strict';
@@ -266,18 +273,16 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     var d = new Date(), h = d.getHours(), t = ((h % 12) || 12) + ':' + pad2(d.getMinutes()) + (h < 12 ? ' AM' : ' PM');
     $('live').innerHTML = '🕖 <b>' + t + '</b>' + (W ? '　·　' + W : '');
   }
-  function weather() {
-    var x = new XMLHttpRequest();
-    x.open('GET', 'https://api.open-meteo.com/v1/forecast?latitude=34.0975&longitude=-117.6484&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FLos_Angeles&forecast_days=1');
-    x.onload = function () {
-      try {
-        var r = JSON.parse(x.responseText), c = r.current, dd = r.daily, code = c.weather_code;
-        var ic = code === 0 ? '☀️' : code <= 2 ? '🌤️' : code === 3 ? '☁️' : code <= 48 ? '🌫️' : code <= 67 || (code >= 80 && code <= 82) ? '🌧️' : code <= 86 ? '❄️' : '⛈️';
-        W = ic + ' Upland <b>' + Math.round(c.temperature_2m) + '°F</b> <span style="color:var(--faint)">(' + Math.round((c.temperature_2m - 32) * 5 / 9) + '°C)</span> · 今天 ' + Math.round(dd.temperature_2m_max[0]) + '° / ' + Math.round(dd.temperature_2m_min[0]) + '°';
-      } catch (e) { }
+  function weather() {   // 天气和注意事项来自 weather.js（和首页同一套）
+    if (!window.WX) return;
+    WX.load(function (w) {
+      if (!w) return;
+      W = esc(w.line) + ' <span style="color:var(--faint)">' + esc(w.sub) + '</span>';
+      var h = '', n = 0;
+      for (var i = 0; i < w.tips.length && n < 3; i++) if (w.tips[i].lv !== 'ok' || !n) { h += '<li class="' + w.tips[i].lv + '"><i>' + w.tips[i].i + '</i><span>' + esc(w.tips[i].t) + '</span></li>'; n++; }
+      $('wxt').innerHTML = h;
       liveLine();
-    };
-    x.send();
+    });
   }
   liveLine(); weather();
   setInterval(liveLine, 15000); setInterval(weather, 15 * 60000);

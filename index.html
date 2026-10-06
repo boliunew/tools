@@ -45,6 +45,14 @@ details.grp summary:after{content:"▾";margin-left:auto;color:var(--soft);trans
 details.grp:not([open]) summary:after{transform:rotate(-90deg)}
 .today .warn .lb{color:#C8412B}
 .today .ok{font-size:12px;color:var(--soft);margin-top:8px}
+.today .wx .tx{font-size:16px}
+.tips{list-style:none;margin:6px 0 0;padding:0}
+.tips li{display:flex;gap:7px;font-size:13.5px;line-height:1.5;padding:3px 0;color:var(--ink)}
+.tips li i{font-style:normal;flex:0 0 auto}
+.tips li.warn{color:#B4471F}
+.tips li.ok{color:var(--soft)}
+@media (prefers-color-scheme: dark){.tips li.warn{color:#FF9B7A}}
+.tips .more{border:0;background:none;color:var(--accent);font-size:13px;padding:2px 0;cursor:pointer}
 .today .tk{display:inline-block;font-weight:600;font-size:13px;border:1px solid var(--line);border-radius:6px;padding:0 5px;margin:2px 3px 0 0}
 </style>
 
@@ -168,6 +176,7 @@ html.locked #gate{display:block}
 </details>
 <button class="lockbtn" onclick="__lock()">🔒 退出（这台设备需要重新输密码）</button>
 </main>
+<script src="weather.js?v=1"></script>
 <script>
 (function () {
   // 首页「今天」：日期、节气、月相、每日一句、今日一招、今日大事、打折关注；每块各自加载，失败就不显示
@@ -185,8 +194,19 @@ html.locked #gate{display:block}
   var SUB = [ph[1] + ' ' + ph[2]];
   function sub() { $('tdSub').textContent = SUB.join(' · '); }
   sub();
-  var slots = {}, ORDER = ['health', 'sky', 'market', 'earn', 'card', 'vocab', 'sushi', 'tip', 'news', 'watch', 'ok'];
+  var slots = {}, ORDER = ['wx', 'health', 'sky', 'market', 'earn', 'card', 'vocab', 'sushi', 'tip', 'news', 'watch', 'ok'];
   function put(k, html) { slots[k] = html; var h = ''; for (var i = 0; i < ORDER.length; i++) if (slots[ORDER[i]]) h += slots[ORDER[i]]; $('tdBody').innerHTML = h; }
+
+  // 天气 + 今天要注意的事（weather.js）
+  function wxRender(w, all) {
+    if (!w) return;
+    var h = '<div class="row wx"><div class="lb">天气 · 今天注意</div><div class="tx">' + esc(w.line) + '</div><div class="sm">' + esc(w.sub) + '</div><ul class="tips">', n = all ? w.tips.length : Math.min(4, w.tips.length);
+    for (var i = 0; i < n; i++) h += '<li class="' + w.tips[i].lv + '"><i>' + w.tips[i].i + '</i><span>' + esc(w.tips[i].t) + '</span></li>';
+    if (!all && w.tips.length > n) h += '<li><button class="more" id="wxMore">还有 ' + (w.tips.length - n) + ' 条 ›</button></li>';
+    put('wx', h + '</ul></div>');
+    var m = $('wxMore'); if (m) m.onclick = function () { wxRender(w, true); };
+  }
+  if (window.WX) WX.load(function (w) { wxRender(w, false); });
 
   getJSON('kitchen/wellness.json', function (w) {
     var list = w.jieqi.slice().sort(function (a, b) { return a.md < b.md ? -1 : 1; }), cur = list[list.length - 1], nx = list[0];
