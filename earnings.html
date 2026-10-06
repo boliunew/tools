@@ -124,6 +124,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var h = '', i, j, days = D.days;
     if (D.demo) h += '<div class="banner">⚠️ 当前是<b>示例数据</b>（随机生成），第一次真实更新后会自动替换。</div>';
     var gen = new Date(D.generated);
+    if (!D.demo && (Date.now() - gen.getTime()) / 36e5 > 66) h += '<div class="banner">⚠️ 日历已经 ' + Math.floor((Date.now() - gen.getTime()) / 864e5) + ' 天没更新了，可能是自动任务失败，<a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">去 GitHub Actions 看看</a>。</div>';
     var nE = 0, nM = 0; for (i = 0; i < days.length; i++) { nE += days[i].earnings.length; nM += days[i].macro.length; }
     h += '<div class="meta">未来两周 · ' + nM + ' 项经济数据 · ' + nE + ' 家公司发财报 · 更新于 ' + (gen.getMonth() + 1) + '月' + gen.getDate() + '日 ' + ('0' + gen.getHours()).slice(-2) + ':' + ('0' + gen.getMinutes()).slice(-2) + ' · <a href="kb.html#economic-indicators">📘 这些经济数据怎么看</a> · <a href="kb.html#market-crash-history">历次大跌</a></div>';
     h += '<div class="daynav">';

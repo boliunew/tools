@@ -262,7 +262,7 @@ main{max-width:860px;margin:0 auto;padding:14px 16px 80px}
     var up = new Date(META.updated), t = '', ns = 0, k;
     try { t = new Intl.DateTimeFormat('zh-CN', { timeZone: 'America/Los_Angeles', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: false }).format(up); } catch (e) { t = up.toLocaleString(); }
     for (k in ST) if (ST.hasOwnProperty(k)) ns++;
-    $('upd').innerHTML = '更新于 ' + t + ' · ' + ns + ' 家店 · ' + fmtN(ITEMS.length) + ' 件特价';
+    $('upd').innerHTML = '更新于 ' + t + ((Date.now() - up.getTime()) / 36e5 > 20 ? ' <b style="color:#C8412B">⚠️ 超过 20 小时没更新</b>' : '') + ' · ' + ns + ' 家店 · ' + fmtN(ITEMS.length) + ' 件特价';
   }
 
   /* ---------- which items are in view ---------- */

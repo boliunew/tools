@@ -161,7 +161,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   function renderToday() {
     var now = new Date(), WK = '日一二三四五六', h = '', i, j, c;
     var key = ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2), otd = (T.onthisday || {})[key];
-    h += '<div class="meta">' + (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay()) + ' · 更新于 ' + ago(T.generated) + (T.stale_big ? ' · 新闻源这次没抓到，显示的是上一次的' : '') + '</div>';
+    h += '<div class="meta">' + (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay()) + ' · 更新于 ' + ago(T.generated) + ((Date.now() - new Date(T.generated).getTime()) / 36e5 > 20 ? ' · <b style="color:#C8412B">⚠️ 超过 20 小时没更新，可能是自动任务失败（<a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">去看看</a>）</b>' : '') + (T.stale_big ? ' · 新闻源这次没抓到，显示的是上一次的' : '') + '</div>';
     var big = T.big || [];
     if (big.length) {
       h += '<div class="sec"><b>📰 今日大事</b><small>几家中文媒体都在报的排前面</small></div>';

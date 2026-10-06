@@ -85,6 +85,7 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
 <div id="pack" hidden></div>
 </div>
 <div class="toast" id="toast"></div>
+<script src="lookup.js?v=1"></script>
 <script>
 (function () {
   'use strict';
@@ -207,11 +208,13 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
     if (MREC) { try { MREC.r.stop(); } catch (e) { } MREC = null; }
     var b = document.querySelectorAll('.mic.rec'), i; for (i = 0; i < b.length; i++) b[i].className = b[i].className.replace(' rec', '');
   }
+  // 英文句子里的词可以点：查词、一键收进语境词库（lookup.js）
+  function tx(t) { return window.WordSheet && /^en/.test(P.lang) ? WordSheet.wrap(t) : esc(t); }
   function lineHTML(key, l, isDialog) {
     var me = isDialog && l.who === 'You', best = BEST[P.id + ':' + key];
     return '<div class="ln" id="L-' + key + '" data-k="' + key + '">' +
       (isDialog ? '<div class="who' + (me ? ' me' : '') + '">' + (me ? '你' : esc(l.who)) + '</div>' : '') +
-      '<div class="t">' + esc(l.t) + '</div><div class="zh">' + esc(l.zh) + '</div>' + (l.note ? '<div class="nt">💡 ' + esc(l.note) + '</div>' : '') +
+      '<div class="t">' + tx(l.t) + '</div><div class="zh">' + esc(l.zh) + '</div>' + (l.note ? '<div class="nt">💡 ' + esc(l.note) + '</div>' : '') +
       '<div class="acts"><button data-a="say">🔊 听</button><button data-a="slow">🐢 慢</button>' +
       (SR ? '<button class="mic" data-a="mic">🎙 跟读</button>' : CAN_REC ? '<button class="mic" data-a="rec">🎙 录音</button>' : '') +
       '<span class="score ' + (best != null ? cls(best) : '') + '">' + (best != null ? '最好 ' + best : '') + '</span></div><div class="heard"></div></div>';
@@ -322,6 +325,10 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
     if (P) { $('title').textContent = P.icon + ' ' + P.name; document.title = P.name + ' · 开口说'; GRP = P.group; renderPack(); window.scrollTo(0, 0); }
     else { $('title').textContent = '🗣️ 开口说'; document.title = '开口说 · 跟读练习'; renderHome(); }
   }
+  if (window.WordSheet) WordSheet.bind($('pack'), function (el) {
+    var ln = el.closest ? el.closest('.ln') : null, l = ln ? lineOf(ln.getAttribute('data-k')) : null;
+    return l ? { text: l.t, src: '开口说 · ' + P.name } : null;
+  });
   $('back').onclick = function () { if (history.length > 1) history.back(); else location.hash = ''; };
   window.addEventListener('hashchange', route);
   load(route);
