@@ -1,0 +1,60 @@
+kind: story
+title: A Minor Disagreement About a Garden Gnome
+zh: 关于一个花园地精的小小分歧
+summary: 业主委员会因为一户人家院子里的地精雕像吵了整整一年：律师函、紧急会议、地方报纸、电视台……而地精本人一直微笑着。讽刺社区"小事闹大"的故事，满是委婉、外交式的英语表达。
+grammar: 委婉表达（hedging） | It would appear that / It might be argued that / to some extent：学术和正式场合常用的不把话说死的表达 | It would appear that there has been a minor misunderstanding.
+grammar: 让步倒装 Adjective + as + 主语 + be | 虽然……（正式书面语） | Small as the gnome was, it divided an entire neighborhood.
+grammar: 虚拟语气：It's (high) time + 过去式 / as if + 过去完成时 | 早该……了；仿佛…… | It is high time someone put an end to this.
+grammar: 动词 + 宾语 + 介词短语 / 宾语补足语的正式表达 | deem / consider / render sth + 形容词 | the chair deemed inappropriate
+grammar: 分裂句 It was not until … that … | 直到……才…… | It was not until the television cameras arrived that anyone asked the gnome's owner what she thought.
+vocab: association 协会; homeowner 业主; regulation 规章; violation 违规; ordinance 条例; petition 请愿书; resolution 决议; amendment 修正案; minutes 会议记录; quorum 法定人数; escalate 升级; dispute 纠纷; compromise 妥协; neighborhood 社区; aesthetic 审美的; precedent 先例; grievance 不满; diplomatic 外交辞令的; reconcile 和解; ornament 装饰物
+---
+Sunnybrook Estates is a quiet community of one hundred and twelve houses on the edge of a medium-sized American city. The lawns are green, the streets are clean, and the houses are painted in one of seven approved colors, ranging from "Desert Sand" to "Whispering Oat." The community is governed by the Sunnybrook Estates Homeowners' Association, a volunteer board of five residents whose responsibilities include maintaining the swimming pool, organizing the annual summer barbecue, and enforcing a ninety-four-page document known as the Community Regulations.
+
+For eleven years, the community had experienced no serious conflict. That changed on the fourteenth of April, when Mrs. Dorothy Fenwick, a seventy-eight-year-old retired schoolteacher, placed a garden gnome on her front lawn.
+
+The gnome was approximately forty centimeters tall. It had a red pointed hat, a white beard, rosy cheeks, and a cheerful expression. It was holding a small fishing rod. Mrs. Fenwick had received it as a gift from her granddaughter, who had painted it herself. She placed it next to her rose bushes, where it could be seen from the street, and thought no more about it.
+
+Three days later, she received a letter.
+
+The letter was from Mr. Richard Pemberton, the president of the Homeowners' Association. Mr. Pemberton was a retired insurance executive who took his responsibilities very seriously and who was known to walk around the neighborhood each evening with a small notebook. The letter was polite but firm. It informed Mrs. Fenwick that, according to Section 7, Paragraph 14 of the Community Regulations, "decorative lawn ornaments of a whimsical or novelty nature" were not permitted in front yards, as they were "inconsistent with the aesthetic standards of the community." It requested that the gnome be removed within fourteen days.
+
+Mrs. Fenwick read the letter twice. Then she wrote a reply. Her reply was also polite, and also firm. She thanked Mr. Pemberton for his letter, noted that she had lived in Sunnybrook Estates for longer than he had, and observed that the regulation in question did not define the word "whimsical." The gnome, she argued, was not whimsical. It was fishing. Fishing was a serious activity. She declined to remove it.
+
+It would appear that there has been a minor misunderstanding, began Mr. Pemberton's second letter, which arrived the following week. He went on to explain, at considerable length, that the intention of the regulation was clear, that exceptions could not be made for individual residents, and that, if the gnome were permitted, it would set a dangerous precedent. "If one resident is allowed a gnome," he wrote, "what is to prevent another resident from installing a flamingo? Or a windmill? Or, as has occurred in other communities, a life-size plastic horse?"
+
+Mrs. Fenwick did not reply to this letter. Instead, she bought a second gnome.
+
+The second gnome was holding a book. She placed it next to the first one. The two gnomes appeared to be enjoying each other's company.
+
+At this point, the dispute began to attract attention. Neighbors noticed the gnomes on their evening walks. Some of them were amused. Others were concerned. A small but vocal group of residents, led by a man named Gary who had once complained to the board about the color of his neighbor's mailbox, argued that the regulations existed for a reason and that standards were standards. A larger and growing group argued that the gnomes were harmless, that Mrs. Fenwick was a beloved member of the community who had taught half their children to read, and that the board should, as one resident put it, "find something better to do."
+
+The board called an emergency meeting. Under the association's rules, an emergency meeting required a quorum of at least twenty-five percent of residents. Normally, it was difficult to persuade more than ten people to attend any meeting. On this occasion, sixty-three people arrived. The community center ran out of chairs.
+
+The meeting lasted three hours. The minutes, which were later published in full, record that Mr. Pemberton opened by reading Section 7, Paragraph 14 aloud, twice. Gary then gave a prepared statement on "the importance of upholding community standards in an era of declining civic values." A woman from Maple Court asked whether the regulation also applied to the inflatable snowman that Mr. Pemberton himself displayed every December. Mr. Pemberton replied that seasonal decorations were covered by a different section. Several people laughed, which, according to the minutes, "the chair deemed inappropriate."
+
+A resolution was proposed requiring Mrs. Fenwick to remove both gnomes. An amendment was proposed allowing one gnome but not two. A second amendment was proposed allowing gnomes in back yards only. A third amendment, proposed by a teenager who had come mainly for the free cookies, suggested that every house in the community be required to have a gnome. This amendment received surprising support. In the end, after much discussion, the board voted three to two to "defer the matter for further review." Nobody was entirely sure what this meant.
+
+Small as the gnome was, it divided an entire neighborhood.
+
+Over the summer, the situation escalated. Someone, whose identity has never been established, placed a third gnome on Mrs. Fenwick's lawn in the middle of the night. It was wearing sunglasses. Then gnomes began to appear on other lawns. First on two houses on Maple Court. Then on six houses on Birch Lane. By August, there were forty-one gnomes visible from the street in Sunnybrook Estates, including one, on the front lawn of a family that had previously been neutral, that was holding a small handmade sign that read "FREE DOROTHY."
+
+Mr. Pemberton responded by sending violation letters to every household with a gnome. Several residents responded by framing their letters and displaying them in their front windows. Gary started a petition in support of the regulations. It received nineteen signatures. A counter-petition, started by the teenager with the cookies, received one hundred and four, including, it was later discovered, two from residents of a different town and one from a dog.
+
+It was at this stage that the local newspaper became involved. A reporter wrote a short, light-hearted article titled "Gnome Wars in Sunnybrook." The article was shared online. A national news website picked it up. And three days later, a television crew arrived.
+
+It was not until the television cameras arrived that anyone asked the gnome's owner what she thought.
+
+Mrs. Fenwick was interviewed on her front porch, sitting in a rocking chair, with her three gnomes visible behind her. The interviewer asked her why she had refused to remove them. She thought about the question for a moment before she answered.
+
+"My husband and I moved here thirty-one years ago," she said. "He died four years ago. Since then, the house has been very quiet. My granddaughter made the first gnome for me because she thought I was lonely. She said it would keep me company." She smiled at the camera. "And I'll tell you something. It has. Since this whole thing started, more people have stopped to talk to me than in the last four years put together. Children wave at the gnomes on their way to school. Neighbors I'd never met have knocked on my door to tell me they're on my side. I've had more cups of tea this summer than in a decade." She paused. "So, no. I won't be taking them down. But I do hope Richard isn't too upset. He's a lonely man too, you know. I think he just needs a hobby."
+
+The interview was broadcast that evening. It was watched by several million people. By the next morning, Mr. Pemberton's notebook had become a national joke.
+
+To his credit, Mr. Pemberton did not respond as many expected. Two days after the broadcast, he walked to Mrs. Fenwick's house, without his notebook, and knocked on her door. Nobody knows exactly what was said, but they spoke for over an hour, and she made him a cup of tea. When he left, a neighbor reported, he was carrying a small paper bag.
+
+At the next board meeting, Mr. Pemberton made a short statement. It was, by his standards, remarkably brief. He said that, on reflection, the regulation regarding lawn ornaments had been written with good intentions but had perhaps been applied "with insufficient regard for its human consequences." He proposed that the board amend Section 7, Paragraph 14 to permit "modest decorative ornaments of personal significance." It is high time someone put an end to this, he said, and he would like that person to be him. The amendment passed unanimously. Even Gary voted for it, although he added, for the record, that he still had concerns about flamingos.
+
+The gnomes of Sunnybrook Estates remain on their lawns to this day. Their number has stabilized at around sixty. There is now an annual Gnome Walk each September, during which residents tour the neighborhood and vote for their favorite. The proceeds from the event go to the local library.
+
+And on Mr. Pemberton's own front lawn, partly hidden behind a perfectly trimmed hedge, there is a single small gnome. It is holding a notebook. Mrs. Fenwick's granddaughter painted it for him. He looks at it every morning, people say, as if it had always been there.

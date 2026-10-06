@@ -1,0 +1,90 @@
+kind: article
+title: Inflation, Interest Rates, and the Power of Central Banks
+zh: 通货膨胀、利率与中央银行的力量
+summary: 通胀从哪里来、央行怎么用利率"踩刹车"和"踩油门"、加息为什么会影响房贷、股市和就业，以及历史上的经验教训。读懂财经新闻的核心词汇。
+grammar: 因果关系的名词化表达 | a rise in / a fall in / an increase in + 名词，学术和财经写作的典型结构 | A rise in interest rates tends to reduce borrowing.
+grammar: 条件状语从句 provided that / as long as / unless | 只要 / 除非 | Moderate inflation is generally considered healthy, provided that it remains stable and predictable.
+grammar: 现在分词作结果状语 | 句末 -ing 短语表示由此导致的结果 | Prices rose sharply, eroding the purchasing power of savings.
+grammar: 被动语态 + 情态动词完成式 | could have been prevented / should have been done | the crisis could have been prevented
+grammar: 比较结构 the + 比较级 …, the + 比较级 … | 越……越……，常用于描述经济关系 | The higher the interest rate, the more expensive it becomes to borrow.
+vocab: inflation 通货膨胀; deflation 通货紧缩; price_level 价格水平; purchasing_power 购买力; interest_rate 利率; central_bank 中央银行; monetary_policy 货币政策; fiscal_policy 财政政策; recession 经济衰退; unemployment 失业; demand 需求; supply 供给; wage 工资; mortgage 抵押贷款; bond 债券; yield 收益率; currency 货币; exchange_rate 汇率; stimulus 刺激; tighten 收紧; credibility 可信度; expectation 预期; consumer_price_index 消费者物价指数; asset 资产; valuation 估值; liquidity 流动性; volatility 波动性; target 目标; economy 经济; mandate 职责
+---
+Few economic forces affect ordinary people as directly as inflation. When prices rise faster than incomes, families notice it immediately: at the supermarket, at the gas station, and when the rent increases. Yet the institutions that are most responsible for managing inflation, central banks, operate largely out of public view, and the tools they use can seem mysterious. This article explains what inflation is, why it happens, how central banks attempt to control it, and why their decisions matter to everyone, from homeowners and workers to investors.
+
+What is inflation?
+
+Inflation is a sustained increase in the general level of prices across an economy. The key word is "general." If the price of coffee rises because of a poor harvest in Brazil, that is a change in a relative price, not necessarily inflation. Inflation occurs when the prices of most goods and services rise together over time, meaning that each unit of currency buys less than it did before. In other words, inflation reduces the purchasing power of money.
+
+Governments measure inflation using price indexes. In the United States, the most widely cited measure is the Consumer Price Index, or CPI, which tracks the cost of a representative "basket" of goods and services purchased by typical households, including food, housing, transportation, clothing, medical care, and entertainment. Each month, statisticians collect tens of thousands of prices and calculate how much the cost of the basket has changed. Economists also pay close attention to "core inflation," which excludes food and energy prices, because those prices are particularly volatile and can obscure the underlying trend.
+
+The opposite of inflation is deflation, a general decline in prices. Although falling prices might sound attractive, sustained deflation can be economically dangerous. If consumers expect prices to keep falling, they may postpone purchases, which reduces demand, which in turn causes businesses to cut production and employment. Japan experienced prolonged periods of mild deflation and weak growth from the 1990s onward, an experience that has made many policymakers wary of allowing inflation to fall too low.
+
+Why does inflation happen?
+
+Economists generally identify several causes of inflation, which often operate simultaneously.
+
+Demand-pull inflation occurs when total demand in an economy exceeds what the economy can produce. When consumers, businesses, and governments all want to spend more, but the supply of goods and workers cannot keep up, sellers raise prices. This can happen during strong economic booms, or when governments inject large amounts of money into the economy.
+
+Cost-push inflation occurs when the costs of production rise, forcing businesses to raise prices. A sharp increase in the price of oil, for example, raises transportation and manufacturing costs across the entire economy. Supply chain disruptions, such as those experienced during the COVID-19 pandemic, can have a similar effect.
+
+Expectations also play a crucial role. If workers expect prices to rise by five percent next year, they will demand wage increases of at least five percent. If businesses expect their costs to rise, they will raise their prices in advance. In this way, expectations of inflation can become self-fulfilling, producing what economists call a "wage-price spiral." This is one reason why central banks care so much about their credibility.
+
+Finally, over long periods, inflation is closely connected to the growth of the money supply. As the economist Milton Friedman famously argued, inflation is, in the long run, "always and everywhere a monetary phenomenon." When the quantity of money grows much faster than the quantity of goods and services, the value of each unit of money tends to fall.
+
+Is some inflation good?
+
+Most central banks in advanced economies do not aim for zero inflation. Instead, many target an annual inflation rate of around two percent. Moderate inflation is generally considered healthy, provided that it remains stable and predictable. There are several reasons for this. A small positive rate of inflation provides a buffer against the dangers of deflation. It makes it easier for wages and prices to adjust, since it is psychologically easier for employers to give smaller raises than to cut wages. And it gives central banks more room to lower interest rates during a recession.
+
+High and unpredictable inflation, by contrast, causes serious harm. It erodes the value of savings, especially for people who keep their money in cash or low-interest accounts. It hurts people on fixed incomes, such as many retirees. It makes long-term planning difficult for businesses. And in extreme cases, known as hyperinflation, it can destroy an economy. In Germany in 1923, prices doubled every few days; workers were paid twice a day and rushed to spend their wages before they lost their value. More recently, Zimbabwe and Venezuela have experienced hyperinflation, with devastating consequences for their populations.
+
+What do central banks do?
+
+A central bank is an institution responsible for managing a country's currency, money supply, and interest rates. Examples include the Federal Reserve in the United States, the European Central Bank, the Bank of England, the Bank of Japan, and the People's Bank of China. Most central banks in democratic countries operate with a significant degree of independence from elected governments. The rationale is that politicians, facing elections, might be tempted to stimulate the economy in the short term at the cost of higher inflation later.
+
+The Federal Reserve operates under what is known as a "dual mandate": to promote maximum employment and stable prices. Other central banks, such as the European Central Bank, have price stability as their primary objective.
+
+The main tool: interest rates
+
+The most important tool of most central banks is the short-term interest rate. In the United States, the Federal Reserve sets a target for the federal funds rate, the rate at which banks lend to one another overnight. Changes in this rate ripple outward through the entire financial system, influencing the interest rates on mortgages, car loans, credit cards, business loans, and savings accounts.
+
+The logic is straightforward. The higher the interest rate, the more expensive it becomes to borrow. A rise in interest rates tends to reduce borrowing. Households postpone buying homes and cars; businesses delay investment projects; consumers spend less on credit. At the same time, saving becomes more attractive, because savings accounts and bonds pay higher returns. The overall effect is to reduce demand in the economy, which eases the upward pressure on prices. This is often described as "tightening" monetary policy, or "putting on the brakes."
+
+Conversely, when the economy is weak and inflation is low, central banks lower interest rates to encourage borrowing, spending, and investment. This is described as "loosening" or "easing" monetary policy, or "pressing the accelerator."
+
+The difficulty is that monetary policy works with long and variable lags. A change in interest rates today may not have its full effect on the economy for a year or more. Central bankers must therefore make decisions based on forecasts of where the economy is heading, not merely on where it is now. Former Federal Reserve chair William McChesney Martin famously described the central bank's job as "to take away the punch bowl just as the party gets going," meaning that it must sometimes slow the economy before inflation has fully appeared.
+
+Other tools
+
+When interest rates are already close to zero, central banks cannot easily lower them further. During the global financial crisis of 2008 and again during the pandemic in 2020, many central banks turned to unconventional tools. The most significant was quantitative easing, in which the central bank creates new money to purchase large quantities of government bonds and other financial assets. This pushes down longer-term interest rates and increases liquidity in the financial system. Central banks also use "forward guidance," publicly communicating their likely future policy in order to shape expectations. Because expectations matter so much, a central bank's words can sometimes be almost as powerful as its actions.
+
+How interest rates affect markets and households
+
+Changes in interest rates affect asset prices throughout the economy.
+
+Bonds. When interest rates rise, newly issued bonds pay higher yields, so existing bonds with lower yields become less attractive, and their prices fall. Bond prices and yields move in opposite directions.
+
+Stocks. Higher interest rates tend to put pressure on stock prices for several reasons. They increase borrowing costs for companies, which can reduce profits. They make safer investments such as bonds relatively more attractive. And in valuation models, future profits are "discounted" back to the present using an interest rate; the higher the rate, the lower the present value of those future profits. This effect is particularly strong for fast-growing companies whose profits are expected far in the future, which helps explain why technology stocks are often especially sensitive to changes in interest rates.
+
+Housing. Mortgage rates are closely linked to broader interest rates. When rates rise, monthly payments on new mortgages increase substantially, which reduces the number of people who can afford to buy a home and tends to cool the housing market.
+
+Currencies. Higher interest rates can attract foreign investment, increasing demand for a country's currency and strengthening its exchange rate. A stronger currency makes imports cheaper, which can help reduce inflation, but it also makes exports more expensive for foreign buyers.
+
+The risks of getting it wrong
+
+Central banking is often described as more art than science, and mistakes can be costly.
+
+If a central bank keeps interest rates too low for too long, it may allow inflation to become entrenched. In the 1970s, a combination of oil price shocks and overly loose monetary policy produced a decade of high inflation in the United States and many other countries. Inflation was finally brought under control only when Federal Reserve chair Paul Volcker raised interest rates to nearly twenty percent in the early 1980s. The policy worked, but at a severe cost: the United States experienced a deep recession, with unemployment rising above ten percent.
+
+If, on the other hand, a central bank raises rates too aggressively, it may push the economy into an unnecessary recession, causing job losses and business failures. Some economists argue that the Great Depression of the 1930s was made far worse by tight monetary policy, and that the crisis could have been prevented, or at least greatly reduced, had central banks acted differently.
+
+The ideal outcome, which central bankers call a "soft landing," is to reduce inflation without causing a recession. Historically, soft landings have proved difficult to achieve, although not impossible.
+
+The inflation surge of the early 2020s
+
+The early 2020s provided a dramatic real-world test. As economies reopened after pandemic lockdowns, demand surged, supported by large government spending programs and very low interest rates. At the same time, supply chains were severely disrupted, and energy prices spiked, particularly after the outbreak of war in Ukraine. Prices rose sharply, eroding the purchasing power of savings. In 2022, inflation in the United States reached its highest level in about forty years, and many other countries experienced similar increases.
+
+Central banks initially described the inflation as "transitory," expecting it to fade as supply problems were resolved. When it persisted, they responded with some of the fastest interest rate increases in decades. Mortgage rates roughly doubled within a year. Stock and bond markets fell significantly in 2022. The episode prompted vigorous debate among economists about whether central banks had reacted too slowly, and about the relative importance of demand and supply factors. Inflation subsequently declined considerably, and the debate over the lessons of this period continues.
+
+Why it matters to you
+
+Even if you never read a central bank statement, monetary policy shapes your financial life. It influences whether you can afford a home, how much interest you earn on savings, how much you pay on loans, how your investments perform, and, ultimately, how secure your job is. Understanding the basic relationships between inflation, interest rates, and asset prices allows you to read financial news with greater understanding, to recognize why markets react so strongly to a single sentence from a central bank chair, and to make more informed decisions about borrowing, saving, and investing. In an economy where the value of money itself is constantly shifting, that understanding is a form of protection.

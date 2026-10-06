@@ -1,0 +1,80 @@
+kind: story
+title: The Committee for the Renaming of the Break Room
+zh: 茶水间更名委员会
+summary: 一家公司想给茶水间改个名字，结果成立了委员会、做了问卷、请了顾问、开了十一次会，花了半年和四万美元，最后……还叫茶水间。一篇讽刺办公室官僚主义的故事。
+grammar: 虚拟语气（建议 / 要求类） | It is essential / recommend / insist + that + 主语 + 动词原形 | The memo recommended that a committee be formed immediately.
+grammar: 名词化 | 把动作和性质变成名词，是正式文体的特点：decide → decision，implement → implementation | presented his recommendations via a sixty-slide presentation
+grammar: 部分倒装：Not until … / Only after … | 否定或限制性词语放句首，主句倒装 | Not until the fourth meeting did anyone ask why the room needed a new name.
+grammar: 强调句 What … is … | What 引导的分裂句，突出后半部分 | What the company needed was not a new name but a new coffee machine.
+grammar: 独立主格结构 | 名词 + 分词 / 介词短语，独立于主句表示伴随情况 | The meeting over, everyone returned to their desks in silence.
+vocab: committee 委员会; memo 备忘录; initiative 倡议; stakeholder 利益相关方; consultant 顾问; survey 调查; agenda 议程; minutes 会议纪要; proposal 提案; consensus 共识; bureaucracy 官僚主义; morale 士气; deliverable 交付成果; implementation 实施; feedback 反馈; budget 预算; vote 投票; inclusive 包容的; synergy 协同; deadline 截止日期
+---
+It began, as most disasters at Halbrook Insurance began, with an email.
+
+The email arrived on a Monday morning in March. It came from the Office of Employee Experience, a department that had been created two years earlier and whose purpose remained, to most employees, something of a mystery. The subject line read: "Exciting News: Break Room Renaming Initiative!"
+
+According to the memo attached to the email, recent employee surveys had revealed that the break room on the fourth floor was "underutilized" and that its name was "not sufficiently aligned with our core values of innovation, wellness, and collaboration." The memo recommended that a committee be formed immediately to "explore alternative naming conventions" and "ensure that all stakeholders are engaged throughout the process."
+
+I deleted the email, as did most of my colleagues. This proved to be a mistake. Three days later, I received a second email informing me that I had been "selected" to serve on the Break Room Renaming Committee. When I asked my manager how I had been selected, she looked at me with the sympathy usually reserved for people receiving bad medical news. "You weren't at the meeting," she said. "People who aren't at the meeting are always selected."
+
+The committee consisted of seven members. There was Gerald from Accounting, who had worked at Halbrook for thirty-one years and regarded every change as a personal insult. There was Priya from Marketing, who was relentlessly enthusiastic and owned a label maker. There was a young man from IT named Tyler, who attended every meeting with his camera turned off and was never heard to speak. There were two representatives from the Office of Employee Experience, Brenda and Brendan, whom nobody could reliably tell apart. There was a woman from Legal named Margaret, whose role was never explained. And there was me, a claims analyst whose only qualification was absence.
+
+The first meeting was devoted entirely to establishing the committee's mission statement. This took ninety minutes. After lengthy discussion, we agreed that our mission was "to identify, evaluate, and recommend a name for the fourth-floor break room that reflects the values, aspirations, and lived experiences of the Halbrook community." Priya printed it on a label and stuck it to the whiteboard.
+
+The second meeting was devoted to the agenda for future meetings. The third was devoted to the question of who would take the minutes. Gerald argued that the minutes should be taken by hand, "as they always have been." Brenda, or possibly Brendan, argued that they should be recorded digitally "for accessibility." After forty minutes, a compromise was reached: the minutes would be taken by hand and then typed. Nobody volunteered to do either. In the end, the task was assigned to Tyler, who could not object because his microphone was muted.
+
+Not until the fourth meeting did anyone ask why the room needed a new name. The question came from me, and I regretted it immediately. Brendan, or possibly Brenda, looked deeply wounded. "The current name," he explained slowly, as though speaking to a child, "is 'Break Room.' The word 'break' has negative connotations. It suggests that something is broken. It implies that work is something from which one needs to escape." He paused meaningfully. "Is that the message we want to send?"
+
+"It's a room where people take a break," I said.
+
+"Exactly," said Brenda, or Brendan. "And that is the problem."
+
+It was agreed that the committee would conduct a company-wide survey to gather employee feedback. Designing the survey took three meetings. The final version contained forty-two questions, including "On a scale of one to ten, how does the current name of the break room make you feel?" and "If the break room were an animal, what animal would it be?" Margaret from Legal insisted that the survey include a two-page privacy statement, which very few people read and which made the survey take approximately twenty-five minutes to complete.
+
+Four hundred employees received the survey. Thirty-one completed it. Of those, eleven suggested keeping the current name, six suggested names that cannot be printed here, four said the room would be a sloth, and one simply wrote, "Please fix the coffee machine."
+
+This last response caused considerable discussion. The coffee machine in question had been broken since the previous October. It produced a liquid that was technically hot and technically brown but bore little other resemblance to coffee. Several employees had stopped using the break room altogether because of it, which, it later occurred to me, might explain why the room was "underutilized."
+
+I raised this point at the seventh meeting. "Perhaps," I suggested carefully, "the reason people don't use the break room has less to do with its name and more to do with the coffee."
+
+There was a long silence. Gerald nodded slowly, which was the first time I had seen him agree with anything. Priya wrote "COFFEE?" on a sticky note. Then Brendan, or Brenda, said, "That's a really valuable insight. However, coffee equipment falls outside the scope of this committee. I'd recommend that you raise it through the appropriate channels."
+
+The appropriate channels, I later learned, consisted of a facilities request form that required approval from three departments and an estimated waiting time of nine to fourteen weeks.
+
+By the eighth meeting, the committee had accumulated a shortlist of names. These had been generated by an external branding consultant, whom the Office of Employee Experience had hired, at a cost that was never officially disclosed but was rumored to be in the region of twenty thousand dollars. The consultant, a man in expensive glasses named Julian, presented his recommendations via a sixty-slide presentation entitled "Reimagining Pause: A Journey."
+
+The shortlisted names were as follows: The Recharge Zone, The Hub, The Wellness Commons, The Idea Kitchen, The Pause Pod, and Synergy Space. Julian explained the thinking behind each one in considerable detail. The Idea Kitchen, he said, "reframes nourishment as both physical and intellectual." The Pause Pod "evokes a sense of intentional stillness." Synergy Space "speaks for itself."
+
+Gerald asked whether any of the names would affect the quality of the coffee. Julian did not appear to understand the question.
+
+A vote was scheduled for the ninth meeting. However, Margaret from Legal raised a concern that "The Hub" might infringe on a trademark, and that "Wellness Commons" might imply a health benefit that could expose the company to liability. "If someone were to experience a medical event in the Wellness Commons," she said, "the name alone could be cited as evidence of negligence." Both names were removed. "The Pause Pod" was rejected after Priya pointed out that, when spoken quickly, it sounded unfortunate. "Synergy Space" was rejected by Gerald, who said that if the room were renamed Synergy Space, he would retire immediately, and nobody was entirely sure whether this was an argument for or against it.
+
+This left two options: The Recharge Zone and The Idea Kitchen. The vote was tied at three to three, with Tyler not voting because, as far as anyone could tell, he had not been present for several weeks.
+
+What followed was the most contentious period in the committee's history. Meetings ten and eleven were dominated by an increasingly heated debate between the Recharge faction, led by Priya, and the Kitchen faction, led, to everyone's surprise, by Gerald, who had decided that "kitchen" was "at least a real word." Alliances shifted. Emails were sent at unusual hours. At one point, Brenda and Brendan voted differently, which at least resolved the question of whether they were the same person.
+
+Meanwhile, the deadline for the "final deliverable" was approaching, and the Office of Employee Experience was growing anxious. Senior management, it was reported, had begun asking questions about the project's budget, which by now included the consultant's fee, the cost of printing three hundred posters for the launch event, and a custom-made sign for the break room door, which had already been ordered, in both versions, to "maintain flexibility."
+
+It was at this point that the company's chief executive happened to visit the fourth floor. She had come to speak with a client and, finding herself with a few minutes to spare, walked into the break room for a coffee. She pressed the button on the machine, received a cup of the hot brown liquid, tasted it, and spat it into the sink.
+
+"Who is responsible for this?" she asked the nearest employee, who happened to be me.
+
+I explained, as briefly as I could, the history of the coffee machine, the facilities request form, and the Break Room Renaming Committee. She listened without interrupting. When I had finished, she was quiet for a moment.
+
+"How much has the committee spent?" she asked.
+
+I told her the rumored figure. All things considered, including the consultant, the posters, and the two signs, it came to roughly forty thousand dollars.
+
+"And a new coffee machine costs?"
+
+"About eight hundred," I said.
+
+She nodded slowly. Then she took out her phone and made a call. The next morning, a new coffee machine was installed on the fourth floor. It was sleek, silver, and capable of producing eleven different kinds of coffee. Within a week, the break room was so popular that people had to wait in line to use it.
+
+The committee was dissolved by email that afternoon. The email thanked us for our "invaluable contributions" and announced that, following a "comprehensive review," the room would retain its existing name. The meeting over, everyone returned to their desks in silence.
+
+The two custom signs, The Recharge Zone and The Idea Kitchen, were never used. They are still in a storage closet on the third floor, next to three hundred posters and a label maker that nobody has claimed.
+
+In retrospect, the lesson seems obvious. What the company needed was not a new name but a new coffee machine. And had anyone simply asked the people who used the room, we might have saved six months, forty thousand dollars, and a significant portion of Gerald's remaining patience. But then, if organizations always did the obvious thing, there would be no need for committees, and what would the Office of Employee Experience do all day?
+
+I still drink coffee in the break room every morning. It is, I must admit, excellent coffee. Last week, I received an email inviting me to join a new task force. Its purpose is to rename the Office of Employee Experience. I have already accepted. I would not want to miss the first meeting.

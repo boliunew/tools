@@ -1,0 +1,96 @@
+kind: article
+title: The Attention Economy
+zh: 注意力经济
+summary: 为什么免费的应用能赚大钱？因为商品是你的注意力。文章分析推送、无限滚动、可变奖励等设计手法背后的心理学，讨论对个人和社会的影响，以及夺回注意力的办法。大学学术高频词。
+grammar: 名词化 | 用名词表达动作和概念，使文体正式、信息密集 | The commodification of attention has reshaped the media landscape.
+grammar: 委婉语与学术谨慎 | appear to / tend to / it could be argued that / arguably | It could be argued that the user is not the customer but the product.
+grammar: 倒装 Not only … but … | 否定副词放句首引起倒装 | Not only do these features capture attention, but they also make it harder to stop.
+grammar: 强调句 It is … that … | 强调主语，学术写作中用来突出论点 | It is precisely this unpredictability that makes the experience so compelling.
+grammar: 让步从句 while / whereas / although | 对比与让步，学术论证常用 | While critics emphasize the harms, defenders point to the enormous benefits of free services.
+vocab: attention 注意力; economy 经济; scarce 稀缺的; resource 资源; commodity 商品; advertiser 广告商; revenue 收入; engagement 参与度; metric 指标; algorithm 算法; notification 通知; infinite_scroll 无限滚动; reward 奖励; dopamine 多巴胺; compulsive 强迫性的; persuasive 有说服力的; manipulate 操纵; cognitive 认知的; consequence 后果; regulation 监管; autonomy 自主; deliberate 刻意的; incentive 激励; profit 利润; polarization 两极分化; distraction 分心; mechanism 机制; phenomenon 现象; empirical 实证的; hypothesis 假说
+---
+In 1971, the economist and psychologist Herbert Simon made an observation that has become more relevant with every passing decade. "In an information-rich world," he wrote, "the wealth of information means a dearth of something else: a scarcity of whatever it is that information consumes. What information consumes is rather obvious: it consumes the attention of its recipients." A wealth of information, he concluded, creates a poverty of attention.
+
+Simon was writing long before smartphones, social media, or streaming services existed. Yet his insight describes our present situation with remarkable precision. Today, the amount of information competing for our attention is effectively infinite, while the amount of attention we have to give remains strictly limited. Each of us has roughly sixteen waking hours a day, and no technological innovation has increased that number. In economic terms, attention has become one of the scarcest and therefore most valuable resources in the world. The industries built around capturing and selling it are collectively known as the attention economy.
+
+How "free" services make money
+
+Many of the most widely used digital services cost nothing to use. Search engines, social media platforms, video sites, and countless mobile games are free to download and free to enjoy. How, then, do the companies that operate them become some of the most profitable in history?
+
+The answer, in most cases, is advertising. These platforms do not primarily sell products to their users. Instead, they sell their users' attention to advertisers. Every minute you spend scrolling through a feed is a minute during which you can be shown advertisements, and every action you take generates data that can be used to make those advertisements more precisely targeted. It could be argued that the user is not the customer but the product. A popular saying in the technology industry expresses the same idea more bluntly: "If you are not paying for it, you are the product."
+
+This business model creates a powerful incentive. The more time users spend on a platform, the more advertisements they see, and the more revenue the platform generates. Consequently, the key metrics by which many technology companies measure their success are not user satisfaction or wellbeing, but "engagement": time spent, daily active users, sessions per day, and the number of interactions. The commodification of attention has reshaped the media landscape. Newspapers, television networks, and even political campaigns now compete within the same system and are judged by the same metrics.
+
+Designing for engagement
+
+To maximize engagement, technology companies employ some of the most talented designers, engineers, and behavioral scientists in the world. Their work draws on decades of psychological research into what motivates human behavior. Several design features have become nearly universal.
+
+Infinite scroll. Older websites divided content into pages. When you reached the bottom of a page, you had to make a decision to click "next." This small moment of friction offered a natural stopping point. Infinite scroll removes it entirely. New content loads automatically as you move down the screen, so there is never a natural moment to stop. The designer who is often credited with inventing infinite scroll has since publicly expressed regret about its effects.
+
+Notifications. Notifications are designed to pull users back into an app. The red badge on an icon, the buzz of a phone, and the banner at the top of the screen all exploit our instinctive sensitivity to signals that might be socially important. Research suggests that even when we do not check a notification, its mere arrival can disrupt concentration.
+
+Variable rewards. Perhaps the most powerful mechanism of all is the variable reward. In the 1950s, the psychologist B. F. Skinner discovered that animals pressed a lever most persistently not when they received a reward every time, but when the reward came unpredictably. The same principle drives slot machines in casinos. When you refresh a social media feed or check your messages, you do not know what you will find: perhaps something exciting, perhaps nothing at all. It is precisely this unpredictability that makes the experience so compelling. The brain's reward system, which involves the neurotransmitter dopamine, appears to respond more strongly to the anticipation of an uncertain reward than to the reward itself.
+
+Social validation. Likes, comments, shares, and follower counts transform social approval into a measurable and highly visible quantity. Humans are deeply social animals, and our need for acceptance is powerful. Not only do these features capture attention, but they also make it harder to stop, because each post becomes a small gamble on the approval of others.
+
+Autoplay and recommendations. Video platforms automatically begin the next episode or the next recommended video before the viewer has decided whether to continue. Recommendation algorithms, trained on the behavior of billions of users, become extraordinarily skilled at predicting what will keep a particular person watching.
+
+None of these features is inherently sinister. Notifications can be genuinely useful, recommendations can introduce us to things we love, and social feedback can strengthen relationships. The concern is not that the features exist, but that they are systematically optimized for engagement, which is not necessarily the same as value.
+
+The consequences for individuals
+
+What are the effects of living in an environment designed to capture our attention? The empirical evidence is complex, and researchers frequently disagree about the size and direction of the effects. Nevertheless, several concerns have received considerable attention.
+
+Fragmented attention. Many people report that they find it increasingly difficult to concentrate on a single task, such as reading a book, for an extended period. Studies of office workers have found that they switch between tasks or applications very frequently, sometimes every few minutes. Each switch carries a cognitive cost. After an interruption, it can take a considerable amount of time to return fully to the original task, a phenomenon researchers sometimes call "attention residue."
+
+Compulsive use. Many people check their phones dozens or even hundreds of times a day, often without any specific purpose. A substantial proportion of users report that they spend more time on their devices than they would like. Whether such behavior should be described as "addiction" remains controversial among researchers; some argue that the term is medically inappropriate, while others maintain that the patterns of compulsive use resemble those seen in behavioral addictions such as gambling.
+
+Wellbeing and mental health. The relationship between social media use and mental health, particularly among adolescents, has been the subject of intense research and public debate. Some studies have found associations between heavy social media use and higher rates of anxiety, depression, and poor sleep, especially among teenage girls. Other researchers argue that these associations are small, that the direction of causation is unclear, and that the effects depend heavily on how the technology is used. Passive scrolling and social comparison appear to be more harmful than active communication with friends.
+
+The consequences for society
+
+The effects of the attention economy extend beyond individual wellbeing.
+
+Polarization. Content that provokes strong emotions, particularly outrage, tends to generate more engagement than calm, nuanced content. If algorithms reward engagement, they may systematically amplify the most extreme and divisive voices. Some scholars argue that this has contributed to political polarization, although the evidence on this question is mixed, and polarization in some countries began rising before the widespread use of social media.
+
+Information quality. In an environment where attention is the primary currency, the incentive is to produce content that is attention-grabbing rather than accurate. Sensational headlines, misleading thumbnails, and emotionally charged misinformation can outperform careful reporting. Traditional news organizations, which have lost much of their advertising revenue to digital platforms, have struggled to fund the kind of slow, expensive journalism on which democratic societies depend.
+
+Democratic deliberation. Democracy requires citizens who are capable of sustained attention to complex public issues. Some critics worry that an information environment optimized for distraction is fundamentally at odds with the kind of patient, reasoned discussion that self-government requires.
+
+The defense of the attention economy
+
+It would be one-sided to present only the criticisms. While critics emphasize the harms, defenders point to the enormous benefits of free services. Billions of people, including many in poorer countries, have access to communication tools, educational resources, entertainment, and information that would have been unimaginable a generation ago, and they pay nothing for them. Advertising-funded services have arguably democratized access to knowledge on an unprecedented scale.
+
+Defenders also note that people have always worried about new media. In ancient Greece, Socrates warned that writing would weaken memory. In the nineteenth century, critics feared that novels would corrupt young readers. In the twentieth century, radio, comic books, and television each provoked similar anxieties. Perhaps, they suggest, our concerns about smartphones will one day appear equally exaggerated.
+
+Finally, defenders emphasize individual responsibility and autonomy. Users can choose how they spend their time, delete apps, turn off notifications, and set limits. Companies have introduced features such as screen-time dashboards and reminders to take breaks.
+
+Critics respond that there is a fundamental imbalance of power. On one side is an individual with limited willpower; on the other is a company with vast resources, enormous amounts of data, and teams of experts dedicated to maximizing that individual's engagement. Asking users to simply "use more willpower," they argue, is like asking someone to resist a casino that has been personally designed for them.
+
+Regulation and reform
+
+Governments in several regions have begun to respond. The European Union has introduced laws requiring large platforms to assess and reduce systemic risks, to give users more control over recommendation systems, and to be more transparent about how their algorithms work. Some jurisdictions have proposed or introduced restrictions on certain design features for children, such as autoplay and late-night notifications. Others have debated age limits for social media.
+
+Other proposals focus on changing the underlying business model. Subscription-based services, for example, do not depend on maximizing engagement in the same way, because their revenue comes directly from users who are satisfied enough to keep paying. Some designers advocate "humane technology," a movement that seeks to align product design with users' long-term interests rather than their short-term impulses.
+
+Reclaiming attention
+
+Whatever the outcome of these broader debates, individuals can take deliberate steps to protect their attention. Research and practical experience suggest several strategies.
+
+Reduce friction for the things you value and increase friction for the things you do not. Keep a book on your bedside table and your phone in another room. Remove distracting apps from your home screen, or log out after each use so that returning requires effort.
+
+Turn off non-essential notifications. Very few notifications genuinely require an immediate response. Deciding when to check messages, rather than allowing them to interrupt you, restores a measure of control.
+
+Practice single-tasking. Set aside periods of time for focused work, ideally with all communication tools closed. Many people find that even brief periods of uninterrupted concentration produce better results than long periods of fragmented effort.
+
+Notice your triggers. Much compulsive use is driven by boredom, anxiety, or the desire to avoid an unpleasant task. Simply noticing the impulse to reach for your phone, and asking yourself what you are hoping to find, can weaken its power.
+
+Cultivate deep activities. Reading long books, learning a musical instrument, cooking, walking, and conversation without devices all strengthen the capacity for sustained attention.
+
+An experiment worth trying
+
+One simple way to understand the attention economy is to observe it in your own life. For one ordinary day, keep a brief record each time you pick up your phone: the time, what prompted you to do so, and how long you stayed. Most people who try this are surprised by the results. They discover that a large proportion of their phone use was not a deliberate decision at all, but a reflex triggered by boredom, a notification, or a moment of mild discomfort. The point of the exercise is not to produce guilt, but awareness. A habit that is noticed is a habit that can be changed.
+
+Conclusion
+
+Attention is not merely an economic resource. It is, in a very real sense, the substance of our lives. What we pay attention to shapes what we know, what we care about, and who we become. The philosopher William James wrote more than a century ago that "my experience is what I agree to attend to." In an economy designed to decide that for us, choosing deliberately where to direct our attention may be one of the most important acts of personal freedom available to us.

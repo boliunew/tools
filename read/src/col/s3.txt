@@ -1,0 +1,66 @@
+kind: story
+title: The Professor Who Reviewed His Own Book
+zh: 给自己写书评的教授
+summary: 一位自负的哲学教授匿名在网上给自己的新书写五星好评，又给对手的书写差评。一个学生识破了他的写作习惯，事情在学术会议上当众败露。
+grammar: 混合条件句 | 过去的条件 → 现在的结果：If + had done, would + 动词原形 | If he had not written that review, he would still be respected today.
+grammar: Had / Were / Should 开头的倒装条件句 | 省略 if，把助动词提前 | Had she been a little less principled, she might simply have kept quiet.
+grammar: 情态动词完成式 could have / needn't have / ought to have | 对过去的推测、不必要、应当 | He needn't have worried about the sales of his book.
+grammar: 让步状语从句 however / whatever / no matter how | 无论多么……都 | However brilliant his arguments were, nobody remembered them.
+grammar: 被动的完成式不定式 to have been done | 表示先于谓语动作的被动 | The review appeared to have been written by an admiring former student.
+vocab: professor 教授; philosophy 哲学; publish 出版; review 评论; anonymous 匿名的; pseudonym 化名; rival 对手; reputation 名声; vanity 虚荣; scholar 学者; conference 学术会议; manuscript 手稿; citation 引用; plagiarism 抄袭; integrity 诚信; humiliation 羞辱; apology 道歉; tenure 终身教职; colleague 同事; scandal 丑闻
+---
+Professor Edmund Whitlock had devoted thirty years to the philosophy of happiness, and in that time, it was widely agreed, he had never once appeared to experience it.
+
+He was a tall, thin man with an impressive gray beard and an even more impressive opinion of himself. He had written nine books, each longer and more difficult than the last. His lectures were famous for their brilliance and for their length, frequently running twenty minutes over the scheduled time while students quietly packed their bags. He corrected people's grammar at dinner parties. He referred to his own theories, without irony, as "the Whitlock Framework." And he had a rival.
+
+The rival's name was Dr. Helen Osei. She was twenty years younger than Whitlock, taught at a university across the river, and had written a book on the same subject. Her book was called The Ordinary Joy. It was clear, warm, and readable, and it had been, to Whitlock's horror, a surprise bestseller. She had been interviewed on national radio. She had given a talk that had been watched online by four million people. Students quoted her. Even Whitlock's own students quoted her, sometimes in his seminars, which he regarded as a form of treason.
+
+When Whitlock's tenth book, The Architecture of Contentment: A Systematic Reconsideration, was published in the spring, he had high hopes for it. It was eight hundred pages long. It contained four hundred footnotes and a forty-page appendix on the use of the word "contentment" in medieval Latin. He believed it to be his masterpiece.
+
+It sold one hundred and twelve copies in its first month. Most of them, the publisher noted carefully, had been bought by university libraries.
+
+What happened next is a matter of public record, though Whitlock himself has never discussed it.
+
+About six weeks after publication, a review appeared on a major online bookstore. It was signed by someone called "Reader in Oxford," and it gave The Architecture of Contentment five stars. The review appeared to have been written by an admiring former student. It described the book as "a towering achievement of modern thought," "a work of breathtaking intellectual courage," and "the most important contribution to the philosophy of happiness in a generation." It praised the author's "magisterial command of the sources" and his "characteristically elegant prose." It ended with the sentence: "Those who prefer their philosophy diluted for mass consumption will no doubt continue to read more fashionable authors; serious minds will turn to Whitlock."
+
+On the same day, a second review appeared, under a different name, "Concerned Academic," on the page for Dr. Osei's book. This one gave The Ordinary Joy one star. It described the book as "philosophy for people who find greeting cards too challenging," and suggested that its success said "more about the decline of the reading public than about the merits of the work." It noted, with evident satisfaction, that the book contained "not a single footnote."
+
+Over the following weeks, several more reviews appeared. Reader in Oxford was joined by "Grateful Scholar," "Philosophy Lover from Edinburgh," and "A. Thinker," all of whom found The Architecture of Contentment to be a masterpiece. Concerned Academic was joined by "Disappointed Reader" and "Former Fan of Philosophy," who found The Ordinary Joy to be shallow and overrated. The reviews had certain features in common. They used a great many semicolons. They frequently used the word "characteristically." And all of them, without exception, included at least one sentence in Latin.
+
+It was a second-year graduate student named Priya Raman who first noticed the pattern.
+
+Priya was writing a dissertation on the use of language in philosophical arguments, and she had spent two years reading Whitlock's work. She knew his style intimately: the long sentences, the semicolons, the habit of beginning paragraphs with "It is, I think, not unreasonable to suggest." When a friend sent her a link to the one-star review of Osei's book as a joke, she read it, frowned, and read it again.
+
+Then she did what any good researcher would do. She collected all eleven reviews and compared them, line by line, with passages from Whitlock's published books. The results were remarkable. Three of the reviews used the phrase "it is, I think, not unreasonable to suggest." Five used the word "characteristically." Two contained a rare Latin expression that, as far as Priya could determine, had appeared in print only in the works of Edmund Whitlock. And one of the five-star reviews, signed by "Grateful Scholar," contained a complete sentence that also appeared, word for word, on page 314 of The Architecture of Contentment.
+
+"He reviewed his own book," Priya told her flatmate, "and he quoted himself."
+
+Priya was not sure what to do. Whitlock was a powerful figure, and she was a graduate student. Had she been a little less principled, she might simply have kept quiet. But she believed, as she later put it, that "if you study ethics for a living, you should probably practice some." She wrote a short, careful analysis of the evidence and sent it, privately, to the department's ethics committee.
+
+The committee, being a committee, did nothing for several months.
+
+The matter might have ended there, had it not been for the International Conference on the Philosophy of Wellbeing, which was held that autumn in Vienna. Whitlock was scheduled to give the opening lecture. Dr. Osei was scheduled to give the closing one. And in the audience, quite by coincidence, was a journalist from a major newspaper who was writing a feature on "the strange world of academic rivalries."
+
+Whitlock's lecture was, characteristically, very long. It lasted ninety minutes and included forty-two slides, several of which were entirely in Latin. Toward the end, he turned to the subject of what he called "the popularization of philosophy." He did not mention Dr. Osei by name, but nobody in the room was in any doubt about whom he meant. "There are, regrettably, those in our profession," he said, "who are willing to sacrifice rigor for applause; who confuse sentiment with insight; and who, it is, I think, not unreasonable to suggest, have written books for people who find greeting cards too challenging."
+
+There was a murmur in the audience. The journalist, who had been reading online reviews of both books on the train to Vienna, sat up straight in her chair.
+
+In the question period afterward, she raised her hand. "Professor Whitlock," she said politely, "that's a very memorable phrase about greeting cards. I read the exact same phrase recently in an anonymous review of Dr. Osei's book. Would you happen to know who wrote it?"
+
+The silence in the room was total. Whitlock's face went through several colors in rapid succession. However brilliant his arguments were, nobody remembered them after that moment. What everyone remembered was the long pause, the sound of him clearing his throat, and his eventual answer: "I have no idea what you are referring to."
+
+The article appeared two weeks later. It was titled "The Philosopher, the Rival, and the Sock Puppets." It included the full text of the reviews, Priya's analysis, and a photograph of Whitlock at the conference, mid-lecture, pointing at a slide that read, in large letters, "On Intellectual Honesty."
+
+The scandal spread rapidly. The online reviews were deleted within hours, but not before thousands of screenshots had been taken. Philosophers around the world discussed the case on social media, mostly with delight. Someone created a website that generated fake Whitlock reviews of famous books. Its review of the Bible described it as "characteristically uneven, though not without merit."
+
+Whitlock issued a short statement through the university. He acknowledged that he had written "certain online commentaries" and that this had been "an error of judgment." He apologized to Dr. Osei "for any distress." He took a year of leave.
+
+If he had not written that review, he would still be respected today. That, at least, is what most of his colleagues believe. He needn't have worried about the sales of his book; nobody expected an eight-hundred-page work on medieval Latin to be a bestseller, and its reputation among specialists would have been secure. It was not the book that destroyed him. It was his inability to accept that someone else's book might be loved more.
+
+There is, however, a curious ending to this story.
+
+During his year of leave, Whitlock received a letter. It was from Dr. Osei. In it, she wrote that she had read The Architecture of Contentment in its entirety, all eight hundred pages, and that, despite everything, she had found it "difficult, frustrating, and genuinely brilliant in places." She invited him to write a book with her, a short one, for general readers, combining her clarity with his depth.
+
+He accepted. The book they wrote together was published three years later. It was two hundred pages long and contained no Latin. It was called Happiness, Argued. It became a bestseller.
+
+In the acknowledgments, there is a single line that most readers do not understand. It reads: "With thanks to Priya Raman, who reminded us that integrity is not merely a subject to be studied." And the dedication, on the first page, says simply: "For every reader who has ever been honest in a review."

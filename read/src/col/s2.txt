@@ -1,0 +1,66 @@
+kind: story
+title: A Highly Productive Day
+zh: 极其高效的一天
+summary: 一个研究生决定今天一定要写完论文的一章。结果他整理了书桌、重排了书架、研究了咖啡化学、学了冰岛语的"拖延"怎么说……一篇关于拖延症的自嘲故事。
+grammar: 否定词开头的全部 / 部分倒装 | Never / Rarely / Seldom / Hardly … when … 放句首时用疑问语序 | Never had I felt so determined.
+grammar: Hardly had … when … / No sooner had … than … | 一……就……（过去完成时 + 倒装） | No sooner had I opened the document than I noticed that my desk was untidy.
+grammar: It is / was … that … 强调句 | 强调状语、主语或宾语 | It was at precisely this moment that I remembered the plants.
+grammar: be supposed to | 本应该 / 按计划应当 | I was supposed to be writing Chapter Three.
+grammar: 虚拟语气 would have done | 与过去事实相反的结果 | Had I started at nine, I would have finished by lunch.
+vocab: procrastination 拖延; deadline 截止日期; thesis 论文; chapter 章节; productive 高效的; distraction 分心的事; determined 下定决心的; draft 草稿; supervisor 导师; reorganize 重新整理; rationalize 合理化; inevitable 不可避免的; meticulous 一丝不苟的; caffeine 咖啡因; guilt 内疚; momentum 势头; ritual 惯例; justify 证明……正当; postpone 推迟; existential 存在主义的
+---
+Never had I felt so determined. When my alarm went off at seven o'clock on Tuesday morning, I sat up in bed with the clarity of a man who has finally understood his destiny. Today, I told myself, was the day I would write Chapter Three.
+
+Some background may be helpful. I am a doctoral student in history, and I have been writing my thesis, on the economic consequences of the potato trade in nineteenth-century Ireland, for four years. The thesis is supposed to have six chapters. I have completed two. Chapter Three, which concerns shipping routes, has existed for eighteen months as a single document containing a title, the words "Introduction goes here," and a note to myself that says "be more ambitious."
+
+My supervisor, Professor Hargreaves, is a patient woman. However, her patience is not infinite, and in our last meeting, she had said, in a tone I had not heard before, "I expect a full draft of Chapter Three on my desk by Friday." It was now Tuesday. The arithmetic was not in my favor.
+
+But I was ready. I had a plan. I would get up, shower, have a light breakfast, and be at my desk by eight. I would write without interruption until noon, take a thirty-minute lunch break, and then write until five. By evening, I would have at least four thousand words. The chapter would practically write itself.
+
+I was at my desk by eight-fifteen, which I considered a minor and forgivable delay. I opened my laptop. I opened the document. No sooner had I opened the document than I noticed that my desk was untidy.
+
+It is a well-established fact, I reminded myself, that a cluttered environment produces a cluttered mind. Great writers, I was fairly sure, worked at clean desks. Surely it would be irresponsible to begin such an important task surrounded by old coffee cups, receipts, and a half-eaten granola bar of uncertain age. Ten minutes of tidying would make the next eight hours far more efficient. It was, in a sense, an investment.
+
+The tidying took fifty minutes. In the process, I discovered that my pens were not organized by color, that two of my highlighters had dried out, and that a significant number of books on the shelf above my desk were arranged in an order that made no logical sense. Some were sorted by author, others by subject, and several, inexplicably, by size. A historian, I reasoned, should have a properly organized library. How could I write about the past if I could not find my sources?
+
+I reorganized the bookshelf. I began alphabetically, then decided that a chronological arrangement would be more intellectually coherent, then reconsidered and adopted a hybrid system that I am not able to explain even now. By the time I had finished, it was ten-thirty, and I had acquired a strong craving for coffee.
+
+Making coffee is not, strictly speaking, a distraction. Caffeine is a well-documented aid to concentration. However, while waiting for the water to boil, I began to wonder why my coffee always tasted slightly bitter, and whether this had anything to do with the temperature of the water. A brief search online led me to an article on the chemistry of coffee extraction, which led me to a forty-minute video by a former barista champion explaining the importance of water temperature, grind size, and something called "bloom." I learned that boiling water is, in fact, too hot, and that the ideal temperature is between ninety and ninety-six degrees Celsius. I did not own a thermometer. I spent twenty minutes comparing thermometers online and eventually ordered one.
+
+The coffee, when I finally made it, was excellent. I felt that I had earned it.
+
+It was now eleven forty-five. I returned to my desk, sat down, and looked at the document. "Introduction goes here," it said. "Be more ambitious," it said. I typed a sentence. "The nineteenth century witnessed significant transformations in Atlantic shipping." I deleted it. I typed it again, with "remarkable" instead of "significant." I deleted that too.
+
+It was at precisely this moment that I remembered the plants.
+
+I own four houseplants, all of which were given to me by my mother, who believes that "a home without plants is a home without life." I am not a natural gardener. Looking at the plants now, I noticed that one of them, a fern, appeared to be in serious decline. Its leaves were yellow and drooping. I felt a sudden, powerful wave of guilt. Here I was, worrying about shipping routes from two hundred years ago, while a living thing was dying in my own apartment.
+
+I spent the next hour researching ferns. I learned about humidity, indirect light, and the dangers of overwatering. I moved the fern to the bathroom, where the air was more humid, and then moved it back, because the bathroom had no window. I misted it with water. I spoke to it encouragingly. I am not proud of this, but I want to be honest.
+
+Lunch was a necessity, not a distraction. A brain cannot function without fuel. I made a sandwich and, in order to make the most efficient use of my time, watched a short documentary while I ate. The documentary was about the history of the Irish potato famine, so I classified it as research. It was ninety-two minutes long. By the end, it was two-thirty, and I felt deeply moved, intellectually stimulated, and slightly sleepy.
+
+A short nap, I reasoned, would restore my energy for the long afternoon session. Studies have shown that a twenty-minute nap improves concentration and memory. I set an alarm for twenty minutes. I woke up at four-fifteen. I had apparently turned the alarm off in my sleep, an act of self-sabotage so efficient that I could only admire it.
+
+At this point, I must admit, the day was not going according to plan. I was supposed to be writing Chapter Three. Instead, I had a clean desk, a reorganized bookshelf, excellent coffee, a recovering fern, a deeper understanding of the famine, and a stiff neck. Had I started at nine, I would have finished by lunch. Or so I told myself, though in truth I had never once in four years finished anything by lunch.
+
+The guilt arrived at about four-thirty. It came in waves, each one stronger than the last. What was wrong with me? Why could I not simply sit down and write? Other students wrote chapters. Professors wrote entire books. People in the nineteenth century had written long novels by candlelight, without the benefit of laptops, electricity, or coffee extracted at the correct temperature.
+
+Seeking to understand my condition, I began to read about procrastination. I discovered that procrastination is not, as commonly believed, a problem of laziness or poor time management. According to several psychologists, it is primarily an emotional problem. We avoid tasks not because we are lazy, but because the tasks make us feel anxious, bored, or inadequate, and avoiding them provides temporary relief. The more important the task, the stronger the anxiety, and the stronger the temptation to avoid it. This explained a great deal. Chapter Three was extremely important. Therefore, I had cleaned my entire apartment.
+
+I found this information so fascinating that I read three articles, two academic papers, and the first half of a book on the subject. I also learned that the word "procrastination" comes from the Latin "pro," meaning forward, and "crastinus," meaning "of tomorrow," and that the Icelandic language has a wonderful expression for the same idea. I wrote it down, though I have since lost the piece of paper.
+
+At seven o'clock, my roommate came home. "How's the chapter going?" she asked.
+
+I considered several possible answers. I settled on the truth. "I've reorganized my bookshelf, saved a fern, and become an expert on procrastination."
+
+She looked at me for a long moment. Then she said something that I have thought about many times since. "You know you don't have to write the whole chapter today, right? You just have to write something bad. You can fix it later."
+
+This was, of course, obvious. I had heard it before, from friends, from my supervisor, and from at least two of the articles I had read that afternoon. But sometimes an obvious truth has to arrive at exactly the right moment for it to mean anything.
+
+I went back to my desk. I deleted "Introduction goes here." I deleted "Be more ambitious." And I started typing, quickly, without stopping, without correcting. I wrote badly. I wrote sentences that were too long and paragraphs that went nowhere. I wrote "CHECK THIS LATER" eleven times. I wrote until midnight.
+
+When I finally stopped, I had two thousand three hundred words. Most of them were terrible. But they existed, and words that exist can be improved, whereas words that do not exist cannot.
+
+I submitted the draft on Friday morning, four minutes before the deadline. Professor Hargreaves returned it the following week covered in red comments. At the bottom of the last page, she had written: "This needs a great deal of work. But it is a real start. Well done."
+
+I have since written Chapter Four. It took me only three weeks, and my apartment has never been less tidy. The fern, I am happy to report, has fully recovered. I like to think that it, too, learned something about the value of simply starting.

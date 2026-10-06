@@ -1,0 +1,70 @@
+kind: story
+title: Chief Vibes Officer
+zh: 首席氛围官
+summary: 一家硅谷初创公司把创始人的猫任命为"首席氛围官"开玩笑，结果投资人当真了，猫的估值一路走高，最后猫比公司本身更值钱。讽刺科技泡沫的故事。
+grammar: 独立主格结构 | 名词/代词 + 分词：表示原因、时间或伴随 | The pitch finished, the investors turned to look at the cat.
+grammar: 分词完成式的被动 having been done | 表示先于主句发生的被动动作 | Having been rejected by thirty-seven investors, the founders were desperate.
+grammar: 形式主语 it + 被动语态表示客观看法 | It was widely reported / It has been suggested that … | It was later reported that the cat had never signed any documents.
+grammar: 倒装：So + 形容词 + 助动词 + 主语 + that | 如此……以至于（强调倒装） | So absurd was the situation that nobody dared to point it out.
+grammar: were to 虚拟条件 | If + 主语 + were to do：对将来极不可能情况的假设 | If the cat were to leave the company
+vocab: startup 初创公司; founder 创始人; investor 投资人; venture_capital 风险投资; valuation 估值; pitch 推介; funding 融资; revenue 营收; equity 股权; board 董事会; disruptive 颠覆性的; unicorn 独角兽公司; hype 炒作; brand 品牌; influencer 网红; algorithm 算法; prototype 原型; bubble 泡沫; due_diligence 尽职调查; absurd 荒谬的
+---
+Most technology startups fail. This is not a secret. Nine out of ten, according to the most frequently cited estimate, will run out of money before they find enough customers to survive. The founders of Plantr, a company that had developed an app to remind people to water their houseplants, were well aware of this statistic. They had, in fact, been living it for eighteen months.
+
+There were three founders. Jason, the chief executive, was a former consultant who believed that any problem could be solved with a sufficiently confident presentation. Mei, the chief technology officer, had built the entire app herself and was the only person in the company who understood how it worked. And Dev, the chief marketing officer, had once had a tweet go viral and had been trying, without success, to repeat the experience ever since.
+
+The app itself was perfectly functional. It sent you a notification when your plants needed water. Unfortunately, so did dozens of other apps, many of them free, and most people, it turned out, could remember to water their plants without technological assistance. Plantr had four thousand users, of whom approximately three hundred opened the app in any given week. It had no revenue.
+
+Having been rejected by thirty-seven investors, the founders were desperate. Their money would run out in six weeks. They had one last meeting scheduled, with a venture capital firm called Horizon Partners, a firm famous for making large, risky, and occasionally baffling investments.
+
+The meeting was held on a video call. Jason, Mei, and Dev sat side by side in their tiny office, which was also Mei's apartment. Behind them, on a shelf, sat Mei's cat, a large and extremely fluffy orange animal named Biscuit. Biscuit had no professional role in the company. He spent most of his day asleep on the warm router.
+
+Jason began the pitch. He spoke about the "massive, underserved market" for plant care. He presented a graph showing Plantr's user growth, carefully designed so that a very small increase looked like a dramatic one. He used the word "disruptive" six times. The investors, two men in identical gray sweaters, listened without expression.
+
+Then, about ten minutes in, Biscuit woke up. He stretched, yawned enormously, walked slowly across the shelf, and sat down directly in front of the camera, so that his large orange face filled most of the screen.
+
+Jason, flustered, made a joke. "Sorry," he said. "That's Biscuit. He's our, uh, Chief Vibes Officer."
+
+The two investors laughed. It was the first reaction they had shown all meeting. One of them leaned forward. "Tell me more about the Chief Vibes Officer," he said.
+
+What happened next would later be studied in business schools as an example of either genius or collective madness, depending on the professor.
+
+Dev, sensing an opportunity, began to improvise. Biscuit, he explained, was central to Plantr's culture. He was the company's "emotional anchor." He "set the tone" for the team. He attended every meeting. He had "veto power" over office decisions. And he had, Dev added, a growing online presence.
+
+This last point was technically true. Two days earlier, Dev had created a social media account for Biscuit, mainly out of boredom. It had eleven followers, most of them Dev's relatives.
+
+The pitch finished, the investors turned to look at the cat. Biscuit looked back at them with the calm indifference that only a cat can achieve. There was a long pause.
+
+"I'll be honest," said the first investor. "The plant app doesn't excite me. But this," he gestured at the screen, "this has energy. Authenticity. People don't want another app. They want a brand they can feel something about. What if Plantr was the company with the cat?"
+
+Three days later, Horizon Partners invested two million dollars in Plantr. The term sheet, which Mei read several times with growing disbelief, contained a clause stating that the company's Chief Vibes Officer must "remain actively engaged with the business" for the duration of the investment.
+
+So absurd was the situation that nobody dared to point it out. The founders simply accepted the money and got to work.
+
+Dev's marketing strategy was now very simple: Biscuit. He photographed Biscuit sitting next to houseplants. He made videos of Biscuit attending "board meetings," which involved placing the cat at the end of the kitchen table and letting him knock pens onto the floor. He wrote posts in Biscuit's voice, which was, he decided, that of a wise but deeply unimpressed executive. "Watered my plants today," read one popular post. "Also watered the floor. Leadership is about taking risks."
+
+The Biscuit account grew at a remarkable speed. Within a month, it had one hundred thousand followers. Within three months, it had two million. Biscuit appeared on morning television. A famous singer posted a photo with him. Brands began to approach the company, not because they were interested in the plant app, but because they wanted Biscuit to promote their products. A pet food company paid fifty thousand dollars for a single post. Plantr, for the first time in its existence, had revenue. It was all from the cat.
+
+Meanwhile, the app itself remained largely unchanged. Mei, who was the only person still working on it, noted in a team meeting that the number of active users had actually decreased slightly. Nobody seemed to care. It was widely reported in the technology press that Plantr was "redefining the relationship between brand and product." One prominent magazine named Biscuit one of its "Forty Under Forty," an achievement made slightly less impressive by the fact that he was four.
+
+The second round of funding came six months later. This time, there were more than twenty investors competing to participate. The company was valued at one hundred and fifty million dollars. When a financial journalist asked Jason, in an interview, how a plant-watering app with declining usage could possibly be worth that much, Jason replied, without hesitation, "We're not really a plant company anymore. We're a vibes company."
+
+It was around this time that Mei began to feel uneasy. She was a scientist by training, and she liked things that made sense. One evening, she sat down with a spreadsheet and tried to calculate what, exactly, the investors were paying for. The answer was clear and slightly alarming. Almost all of the company's value depended on a single orange cat who slept sixteen hours a day and had recently been diagnosed by the vet as "a little overweight."
+
+"If the cat were to leave the company," she said at the next board meeting, "the valuation would collapse."
+
+The board members looked at each other. One of them, a serious woman from a large investment fund, asked, "Is there a risk of that?"
+
+"He's a cat," said Mei. "He could walk out of the window tomorrow. He could get bored of the camera. He could, and I want to be clear about this, die. He is not a sustainable business strategy."
+
+The board took this concern very seriously. After lengthy discussion, they decided that the company should purchase key person insurance on Biscuit, worth twenty million dollars. They also proposed that the company should begin "developing succession planning for the Chief Vibes Officer role." Dev was asked to identify suitable kittens.
+
+So, in the end, it was not the cat that brought the company down, but due diligence. A new investor, preparing for a third round of funding, hired a team of analysts to examine Plantr's business in detail. Their report was brief and devastating. The app had eleven hundred active users. The company's revenue came almost entirely from sponsored posts featuring a pet who, legally, belonged to Mei personally, not to the company. Biscuit had no contract. He had never signed anything, which, as the analysts noted dryly, "is consistent with his being a cat." It was later reported that the cat had never signed any documents, and that the company therefore had no legal right to his image at all.
+
+The story broke on a Tuesday. By Friday, the company's valuation had fallen by ninety percent. The financial press, which had celebrated Plantr only months earlier, now described it as "a cautionary tale of the technology bubble." Several commentators compared it to the tulip mania of seventeenth-century Holland.
+
+Mei, however, did rather well. As Biscuit's legal owner, she was the only person who could authorize the use of his image. She negotiated directly with the brands, set up a small company of her own, and hired Dev to manage the social media accounts. Biscuit continued to post. His followers did not seem to notice or care that the plant company behind him had collapsed.
+
+Jason went on to found another startup. It is an app that reminds people to feed their pets. Its Chief Vibes Officer is a goldfish.
+
+As for Biscuit, he remains entirely unaware of his role in one of the strangest episodes in the history of venture capital. He still sleeps on the router. He still knocks pens off the table. And occasionally, when a camera is pointed at him, he looks directly into it with an expression that his two million followers interpret as profound wisdom, and that Mei suspects is simply hunger.

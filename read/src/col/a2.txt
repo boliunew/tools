@@ -1,0 +1,96 @@
+kind: article
+title: Behavioral Economics: Why Smart People Make Bad Decisions
+zh: 行为经济学：聪明人为什么会做错决定
+summary: 损失厌恶、锚定效应、心理账户、过度自信、羊群效应、现时偏差——用投资、购物和日常生活的例子解释人类决策中的系统性偏差，以及"助推"如何利用这些偏差帮人做更好的选择。
+grammar: 被动语态 + 不定式 be assumed / be expected to | 学术写作中表示普遍看法 | People were assumed to act rationally in their own self-interest.
+grammar: 倒装 Rarely / Seldom / Only when | 否定或限制性副词放句首，主谓倒装 | Rarely do investors sell a losing stock as quickly as they sell a winning one.
+grammar: 比较结构 roughly twice as … as | 倍数比较 | Losses feel roughly twice as painful as equivalent gains feel pleasant.
+grammar: 定语从句 whereby / in which | 正式文体中表示"借此、凭此" | a process whereby people rely too heavily on the first number they see
+grammar: 虚拟语气 were it not for | 要不是……（倒装虚拟，正式文体） | Were it not for these biases, many marketing strategies would simply not work.
+vocab: rational 理性的; irrational 非理性的; bias 偏差; heuristic 启发法; decision 决策; preference 偏好; incentive 激励; loss_aversion 损失厌恶; anchoring 锚定; framing 框架效应; overconfidence 过度自信; herd 羊群; probability 概率; risk 风险; uncertainty 不确定性; utility 效用; investor 投资者; portfolio 投资组合; default 默认选项; nudge 助推; impulse 冲动; self-control 自制力; discount 折扣; consumer 消费者; intuition 直觉; systematic 系统性的; predictable 可预测的; framework 框架; hypothesis 假设; evidence 证据
+---
+For most of the twentieth century, economics was built on a convenient assumption. People were assumed to act rationally in their own self-interest. They were expected to weigh costs and benefits carefully, to process information correctly, to know what they wanted, and to choose whatever would maximize their wellbeing. Economists called this idealized decision-maker "Homo economicus," or economic man.
+
+Homo economicus is an extremely useful character for building mathematical models. Unfortunately, as anyone who has ever bought something they did not need, postponed an important task, or held onto a falling stock for too long can confirm, he bears little resemblance to actual human beings.
+
+Beginning in the 1970s, a small group of psychologists and economists began to study systematically how people really make decisions. The most influential of them were two Israeli psychologists, Daniel Kahneman and Amos Tversky, whose research would eventually earn Kahneman the Nobel Prize in Economics in 2002. Their central finding was not simply that people make mistakes. Everyone already knew that. It was that people make mistakes in systematic and predictable ways. Our errors are not random; they follow patterns. The field that grew from this insight is called behavioral economics.
+
+Two systems of thinking
+
+Kahneman later popularized a useful framework for understanding these patterns. He described the mind as operating with two modes of thinking, which he called System 1 and System 2.
+
+System 1 is fast, automatic, intuitive, and effortless. It is the system that allows you to recognize a friend's face, understand a simple sentence, or sense that someone is angry from their tone of voice. It operates constantly and requires no conscious effort.
+
+System 2 is slow, deliberate, analytical, and effortful. It is the system you use to solve a complex math problem, compare two insurance policies, or fill out a tax form. It requires concentration, and it is, in a sense, lazy: it prefers not to be activated unless absolutely necessary.
+
+Most of the time, this division of labor works well. System 1 relies on mental shortcuts, called heuristics, that produce good-enough answers quickly. But in certain situations, these shortcuts lead us predictably astray. The resulting errors are known as cognitive biases. Below are some of the most important and well-documented ones.
+
+Loss aversion
+
+Imagine you are offered a bet on a coin toss. If the coin lands on heads, you win one hundred and ten dollars. If it lands on tails, you lose one hundred dollars. Would you accept?
+
+Mathematically, the bet is favorable. On average, you would expect to gain five dollars per toss. Yet most people refuse it. Experiments suggest that people typically require a potential gain of around two hundred dollars before they will accept the risk of losing one hundred. This reflects a phenomenon called loss aversion: losses feel roughly twice as painful as equivalent gains feel pleasant.
+
+Loss aversion has wide-ranging consequences. It helps explain why people are reluctant to sell houses for less than they paid, even when the market has clearly fallen; why employees resist changes at work that involve giving up existing benefits; and why marketers often frame offers in terms of what customers will lose rather than what they will gain. "Don't miss out" tends to be more persuasive than "Get this."
+
+In investing, loss aversion contributes to a pattern known as the disposition effect. Rarely do investors sell a losing stock as quickly as they sell a winning one. Selling a stock at a loss forces us to accept that the loss is real, which is psychologically painful. So we hold onto losers, hoping they will recover, while selling winners too early in order to "lock in" the pleasant feeling of a gain. Numerous studies of actual trading records have found this pattern, and it tends to reduce investors' returns.
+
+Anchoring
+
+Anchoring describes a process whereby people rely too heavily on the first number they see when making a judgment, even when that number is clearly irrelevant.
+
+In one famous experiment, Tversky and Kahneman spun a wheel of fortune that was secretly designed to stop at either ten or sixty-five. They then asked participants whether the percentage of African countries in the United Nations was higher or lower than the number on the wheel, and then asked them to estimate the actual percentage. Participants who had seen the number ten gave an average estimate of twenty-five percent. Those who had seen sixty-five gave an average estimate of forty-five percent. A random number, which participants knew to be random, had substantially influenced their answers.
+
+Anchoring is everywhere in commercial life. A product whose price has been "reduced" from four hundred dollars to two hundred seems like a bargain, even if two hundred dollars is its normal market price. Restaurants sometimes place a very expensive dish at the top of the menu, not because they expect to sell many, but because it makes everything else seem reasonable by comparison. In salary negotiations, the first figure mentioned often shapes the final outcome. In financial markets, investors may anchor on the price at which they bought a stock, or on its highest recent price, although neither number has any bearing on what the stock is actually worth today.
+
+Framing effects
+
+Rational decision-makers should not be influenced by how a choice is described, as long as the underlying facts are the same. Real people are strongly influenced by it.
+
+In a classic study, participants were asked to choose between two medical programs to address a disease outbreak. When the options were described in terms of lives saved, most people chose the safe option. When exactly the same options were described in terms of lives lost, most people chose the risky option. Nothing about the actual outcomes had changed; only the framing had.
+
+Similarly, people evaluate ground beef described as "ninety percent lean" more favorably than identical beef described as "ten percent fat." A surgery with a "ninety percent survival rate" sounds far more attractive than one with a "ten percent mortality rate."
+
+Mental accounting
+
+Economists assume that money is fungible, meaning that one dollar is equivalent to any other dollar. People, however, tend to divide their money into separate mental categories, a habit the economist Richard Thaler called mental accounting.
+
+A person might keep money in a savings account earning one percent interest while simultaneously carrying a credit card balance at twenty percent, because the savings are mentally labeled "emergency fund" and must not be touched. Someone who wins two hundred dollars in a lottery might spend it on a luxury they would never have purchased with their salary, because it feels like "free money." Tax refunds, bonuses, and gifts are frequently spent more freely than regular income, even though money is money regardless of its source.
+
+Overconfidence
+
+Most people believe that they are better than average at driving, more ethical than average, and more likely than average to succeed. Statistically, this cannot be true for everyone. This general tendency to overestimate our own abilities, knowledge, and the accuracy of our predictions is called overconfidence.
+
+Overconfidence is particularly costly in investing. Studies of individual brokerage accounts have found that investors who trade most frequently tend to earn the lowest returns, largely because of transaction costs and poorly timed decisions. They trade often precisely because they believe they can identify winning opportunities. Overconfidence also contributes to the "planning fallacy," the widespread tendency to underestimate how long projects will take and how much they will cost. Major infrastructure projects around the world, from bridges to Olympic stadiums, routinely exceed their budgets and deadlines.
+
+Herd behavior
+
+Humans are social animals, and we often look to others for guidance about what to believe and how to act. When we are uncertain, following the crowd can be a sensible strategy. If a restaurant is full and the one next door is empty, it is reasonable to infer that the first is better.
+
+In financial markets, however, herd behavior can produce dramatic and damaging results. When prices rise rapidly, more people buy, pushing prices higher still, which attracts more buyers. Rising prices are interpreted as evidence of value rather than as a warning sign. This dynamic has contributed to speculative bubbles throughout history, from the Dutch tulip mania of the 1630s to the dot-com bubble of the late 1990s and the housing bubble that preceded the 2008 financial crisis. When sentiment eventually reverses, the herd rushes for the exit, and prices can fall even faster than they rose. The investor Warren Buffett famously advised being "fearful when others are greedy, and greedy when others are fearful," advice that is simple to state and extraordinarily difficult to follow, precisely because it requires acting against powerful social instincts.
+
+Present bias
+
+Present bias is the tendency to give disproportionate weight to immediate rewards and costs compared to future ones. Given a choice between one hundred dollars today and one hundred and ten dollars next week, many people choose the immediate reward. Yet given a choice between one hundred dollars in fifty-two weeks and one hundred and ten dollars in fifty-three weeks, most people choose to wait, even though the trade-off is identical.
+
+Present bias helps explain why people find it so difficult to save for retirement, exercise regularly, eat healthily, or stop smoking. The benefits of these behaviors lie in the distant future, while the costs, whether giving up spending, effort, or pleasure, are experienced immediately. In each case, our future self would prefer that we make the patient choice, but our present self is the one who actually decides.
+
+Nudges: using biases for good
+
+If human biases are systematic and predictable, then they can be anticipated, and potentially used to help people make better decisions. This idea lies at the heart of "nudge theory," popularized by Richard Thaler and the legal scholar Cass Sunstein in their 2008 book Nudge.
+
+A nudge is any aspect of the way choices are presented that alters people's behavior in a predictable way without forbidding any options or significantly changing economic incentives. Placing fruit at eye level in a school cafeteria, rather than banning desserts, is a nudge.
+
+The most powerful nudge is often the default option. People tend to stick with whatever happens automatically if they do nothing, partly because of inertia and partly because the default is perceived as a recommendation. When companies automatically enroll employees in retirement savings plans, while allowing them to opt out, participation rates rise dramatically, in some studies from below fifty percent to over ninety percent. Countries in which citizens are organ donors by default have far higher rates of organ donation than countries in which people must actively register.
+
+Nudges have been adopted by governments around the world. However, they have also attracted criticism. Some critics argue that nudging is manipulative, because it influences people without their full awareness. Others worry about who decides which direction people should be nudged. Supporters respond that choices must always be presented in some way, and that there is no neutral option; the only question is whether choice architecture is designed thoughtfully or carelessly.
+
+Defending against your own mind
+
+Can individuals protect themselves against their own biases? Kahneman himself was somewhat pessimistic. Even after decades of studying these errors, he admitted that he remained vulnerable to many of them. Knowing about a bias does not make it disappear, because System 1 operates automatically.
+
+Nevertheless, several strategies can help, particularly for important decisions. Slow down, and deliberately engage System 2 when the stakes are high. Consider the opposite: actively search for evidence that would prove your current view wrong. Use checklists and rules decided in advance, such as an investment plan that specifies when you will buy and sell, so that decisions are not made in moments of fear or excitement. Seek out people who disagree with you. Reframe choices in multiple ways and see whether your preference changes. And, wherever possible, design your environment so that the default option is the one your future self would choose: automatic savings, healthy food within reach, and tempting distractions out of sight.
+
+Conclusion
+
+Behavioral economics has transformed our understanding of human decision-making. Were it not for these biases, many marketing strategies would simply not work, financial bubbles would be far less common, and most of us would have considerably more money in our retirement accounts. The field's message is ultimately a humble one. We are not the perfectly rational calculators of traditional economic theory. We are human beings, with limited attention, powerful emotions, and minds that evolved for a world very different from the one we now inhabit. Recognizing our predictable irrationality is not a reason for despair. It is the first step toward making better decisions.

@@ -1,0 +1,90 @@
+kind: article
+title: Why Cities Look the Way They Do
+zh: 城市为什么长成现在这个样子
+summary: 从古代城市到汽车时代的郊区扩张，从分区规划、高速公路到住房危机和"十五分钟城市"，解释城市形态背后的经济、交通和政策原因。大学阶段城市与社会类学术词汇。
+grammar: 过去分词短语作定语 / 状语 | 被动意义，使句子紧凑 | Built around the automobile, many American suburbs are almost impossible to navigate on foot.
+grammar: 倒装 Nowhere / Seldom / Little | 否定词放句首引起倒装 | Nowhere is this more visible than in the sprawling metropolitan areas of the American West.
+grammar: 强调句 It was not until … that … | 直到……才…… | It was not until the twentieth century that the car began to reshape the city.
+grammar: 名词性从句 how / why / what 作宾语或表语 | 解释原因或方式 | This helps explain why housing in many cities has become so expensive.
+grammar: 对比衔接 by contrast / conversely / in contrast to | 学术写作中的对比 | European cities, by contrast, developed long before the automobile.
+vocab: urban 城市的; suburban 郊区的; rural 乡村的; density 密度; sprawl 无序扩张; infrastructure 基础设施; zoning 分区规划; residential 住宅的; commercial 商业的; industrial 工业的; transit 公共交通; highway 高速公路; congestion 拥堵; commute 通勤; pedestrian 行人; housing 住房; affordability 可负担性; gentrification 中产阶级化; segregation 隔离; planning 规划; policy 政策; landmark 地标; neighborhood 社区; metropolitan 大都市的; population 人口; migration 迁移; sustainable 可持续的; amenity 便利设施; regulation 法规; mobility 流动性
+---
+Walk through the center of Paris, and you will find narrow streets lined with five- and six-story buildings, cafés on every corner, apartments above shops, and a metro station within a few minutes' walk of almost anywhere. Drive through the suburbs of Phoenix, Houston, or the Inland Empire in Southern California, and you will find wide roads, single-family houses on separate lots, shopping centers surrounded by enormous parking lots, and very few people walking anywhere at all.
+
+These two kinds of urban environment are not the result of chance, nor simply of cultural preference. They are the product of geography, technology, economics, and, above all, deliberate policy decisions made over many decades. Understanding why cities look the way they do helps explain some of the most pressing issues facing urban residents today, from traffic congestion and long commutes to the soaring cost of housing.
+
+Cities before cars
+
+For almost all of human history, cities were shaped by the speed at which people could walk. Ancient Rome, medieval Venice, and nineteenth-century London were all dense, compact places, because most residents needed to reach their work, markets, and places of worship on foot. Rich and poor lived in close proximity, sometimes in the same building, with wealthier families occupying the lower floors and poorer ones the upper floors, which were harder to reach before elevators existed. Shops, workshops, and homes were mixed together.
+
+The first major technology to reshape the city was the railway, and later the streetcar. In the late nineteenth century, electric streetcars allowed middle-class families to live several miles from their workplaces. "Streetcar suburbs" grew along the transit lines, with houses clustered within walking distance of each stop. Many of the most desirable neighborhoods in older American cities today, with their tree-lined streets and small local shopping districts, were originally built in this way.
+
+It was not until the twentieth century that the car began to reshape the city. The automobile freed people from fixed transit routes, allowing development to spread in every direction. Built around the automobile, many American suburbs are almost impossible to navigate on foot.
+
+The postwar transformation
+
+The most dramatic transformation of the American city took place after the Second World War. Several forces combined to produce rapid suburban growth.
+
+Federal housing policy made it easier than ever for families to buy homes, by insuring long-term mortgages with low down payments. These programs, however, overwhelmingly favored new single-family houses in suburban areas, and for decades they systematically excluded many Black families through a practice known as "redlining," in which neighborhoods with Black residents were marked as high-risk and denied access to mortgage lending. The consequences of these policies for racial segregation and wealth inequality persist to this day.
+
+At the same time, the federal government funded the construction of the Interstate Highway System, a vast network of high-speed roads that made it possible to commute long distances by car. In many cities, highways were deliberately routed through existing neighborhoods, often those inhabited by poor and minority residents, demolishing thousands of homes and dividing communities.
+
+Meanwhile, rising incomes, cheap gasoline, and mass-produced cars made automobile ownership accessible to most families. Developers built enormous housing tracts on inexpensive land at the edge of cities. Shopping moved from downtown streets to suburban malls. Offices and factories followed. The result was a new urban form: low-density, car-dependent, and spread over vast areas. Nowhere is this more visible than in the sprawling metropolitan areas of the American West.
+
+The role of zoning
+
+Perhaps the most important, and least visible, factor shaping modern cities is zoning. Zoning laws divide land into districts and specify what may be built in each one: what kinds of buildings, how tall, how large, and for what purposes.
+
+Zoning originated in the early twentieth century, partly to protect residents from the noise and pollution of factories. Separating heavy industry from homes was a reasonable goal. Over time, however, zoning rules became far more extensive. In many American cities, a large majority of residential land is zoned exclusively for detached single-family houses, meaning that it is illegal to build apartments, townhouses, or even duplexes there. Zoning codes frequently require minimum lot sizes, minimum numbers of parking spaces, and maximum building heights, and they often prohibit shops and offices in residential areas.
+
+These rules have profound effects. By requiring large lots and separating homes from shops and workplaces, they make it almost impossible to live without a car. By limiting the number of homes that can be built on a given area of land, they restrict the supply of housing. And by keeping apartments out of affluent neighborhoods, they can reinforce economic and racial segregation, a practice sometimes called "exclusionary zoning."
+
+The housing affordability crisis
+
+In many of the world's most economically successful cities, from San Francisco and New York to London, Sydney, and Vancouver, housing has become extraordinarily expensive. In some cities, the median home price is more than ten times the median household income. Many younger people find that they cannot afford to buy a home, or even to rent near their work, and must either spend a large share of their income on housing or endure long commutes from more affordable areas.
+
+Economists broadly agree that a central cause of this crisis is a shortage of housing supply relative to demand. When a city's economy grows and attracts new workers, demand for housing rises. If the number of homes cannot increase sufficiently, because of zoning restrictions, lengthy approval processes, neighborhood opposition, or high construction costs, prices rise instead. This helps explain why housing in many cities has become so expensive.
+
+Opposition to new development is often described by the term "NIMBY," which stands for "Not In My Back Yard." Existing residents may oppose new apartment buildings because of concerns about traffic, parking, neighborhood character, or property values. These concerns can be understandable, but the cumulative effect of such opposition can be to make cities unaffordable for teachers, nurses, service workers, and young families. In response, a movement sometimes called "YIMBY" ("Yes In My Back Yard") has emerged, advocating for zoning reform and more housing construction. Several cities and states have recently legalized duplexes and small apartment buildings in areas that were previously restricted to single-family homes.
+
+Gentrification
+
+A related and contested phenomenon is gentrification, the process by which wealthier residents move into a historically lower-income neighborhood, often leading to rising rents, new businesses, and changes in the neighborhood's character. Supporters point out that gentrification can bring investment, reduce crime, and improve services. Critics argue that it can displace long-term residents, especially renters, who can no longer afford to live in the communities they helped build. Research suggests that the effects vary considerably, and that the degree of displacement depends heavily on local housing supply and on policies such as tenant protections and affordable housing requirements.
+
+The costs of car dependence
+
+Car-dependent urban development has significant costs. Driving is the dominant form of transportation in most American metropolitan areas, and households spend a substantial share of their income on owning and operating vehicles. Traffic congestion wastes time and fuel. Transportation is a major source of greenhouse gas emissions. Road traffic accidents kill tens of thousands of people in the United States every year, and pedestrian deaths have risen significantly in recent years. Studies have also linked car-dependent environments to lower levels of physical activity.
+
+A phenomenon known as "induced demand" complicates efforts to solve congestion by building more roads. When a highway is widened, travel initially becomes faster, which encourages more people to drive, to drive more often, or to move farther away. Within a few years, traffic frequently returns to its previous levels. Many transportation researchers therefore argue that adding road capacity is, by itself, an ineffective long-term solution to congestion.
+
+European cities, by contrast, developed long before the automobile and often retained their dense historic cores. Many European countries also invested heavily in public transit and implemented policies that made driving more expensive, such as high fuel taxes and limited parking. As a result, residents of many European cities can meet most of their daily needs by walking, cycling, or public transportation. This is not to say that European cities have avoided suburban sprawl entirely; many have not. But the contrast illustrates how policy choices shape urban form.
+
+Rethinking the city
+
+In recent decades, urban planners have increasingly questioned the car-centered model. Several ideas have gained influence.
+
+Mixed-use development encourages homes, shops, offices, and public spaces to be located close together, so that people can meet more of their needs nearby.
+
+Transit-oriented development concentrates housing and businesses around train and bus stations, making public transportation more convenient and more financially viable.
+
+Complete streets are designed to accommodate pedestrians, cyclists, public transit, and cars safely, rather than prioritizing vehicle speed above all else.
+
+The "fifteen-minute city," a concept popularized by the urban scientist Carlos Moreno and adopted in various forms by cities such as Paris, envisions neighborhoods in which residents can reach most daily necessities, including groceries, schools, healthcare, parks, and workplaces, within a fifteen-minute walk or bicycle ride.
+
+These ideas are not without critics. Some argue that they are unrealistic in regions that have already been built around the car, that they may raise property values and accelerate gentrification, or that they impose particular lifestyles on residents who prefer space and privacy. Others note that many people genuinely value large homes, gardens, and quiet streets, and that suburban living remains popular. Any serious approach to urban planning must balance these competing preferences.
+
+A tale of two commutes
+
+The practical consequences of these choices are easy to see in the daily lives of ordinary workers. Consider two people with similar jobs. The first lives in a dense European city. She walks five minutes to a tram stop, rides for twenty minutes while reading, and walks a few more minutes to her office. On the way home, she buys groceries at a small shop near her apartment. She does not own a car, and her transportation costs are modest.
+
+The second lives in a fast-growing suburb in the American Southwest, chosen because housing there is cheaper than in the city where he works. He drives forty-five miles each way on a congested freeway. On a good day, the trip takes an hour; when there is an accident, it can take two. He spends a significant share of his income on car payments, insurance, gasoline, and maintenance. There is no grocery store within walking distance of his home, and his children cannot safely walk or cycle to school.
+
+Neither person made an irrational decision. Each responded sensibly to the options available. But those options were shaped long before they were born, by highway plans, zoning maps, and mortgage rules. This is perhaps the most important lesson of urban history: individual choices are always made within a built environment that someone else designed.
+
+New pressures
+
+Cities also face emerging challenges. Climate change brings risks of extreme heat, flooding, and wildfires, prompting investment in tree planting, cool roofs, flood defenses, and stricter building codes. The rise of remote work since the pandemic has reduced demand for downtown office space in many cities, raising questions about the future of central business districts and prompting proposals to convert empty offices into housing. And global migration continues to bring millions of new residents to cities every year, particularly in Asia and Africa, where the scale of urban growth is unprecedented.
+
+Conclusion
+
+Cities are among humanity's greatest inventions. They concentrate talent, ideas, and opportunity, and they generate a disproportionate share of economic growth and cultural innovation. But their physical form is not natural or inevitable. The wide roads, parking lots, single-family subdivisions, and expensive downtown apartments that we take for granted are the result of specific technologies and, above all, specific laws and policies. What was designed can be redesigned. The choices that today's residents, planners, and politicians make about zoning, transportation, and housing will shape how people live, work, and move for generations to come.
