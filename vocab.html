@@ -869,7 +869,7 @@ function mergeInbox(){
 }
 function pullInbox(){
   var n = mergeInbox();
-  if (n){ rebuildUser(); if (!$('home').classList.contains('hidden')) renderHome(); toast('从 SubLingo 收进 ' + n + ' 个词'); }
+  if (n){ rebuildUser(); if (!$('home').classList.contains('hidden')) renderHome(); toast('收词箱里收进 ' + n + ' 个词（SubLingo / 人物专栏）'); }
 }
 window.addEventListener('storage', function(e){ if (e.key === INBOX) pullInbox(); });
 document.addEventListener('visibilitychange', function(){ if (!document.hidden) pullInbox(); });
@@ -1544,6 +1544,6 @@ window.addEventListener('hashchange', function(){ if (location.hash === '#listen
 })();
 </script>
 
-<script src="nav.js?v=11" defer></script>
+<script src="nav.js?v=12" defer></script>
 </body>
 </html>

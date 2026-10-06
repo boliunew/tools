@@ -5,8 +5,10 @@ name: 知识库目录与全站搜索
 on:
   push:
     branches: [main]
-    paths: ["kb/**.md", "kb/build.py", "!kb/README.md", "tips/tips.json", "kitchen/*.json", "dream/dreams.json", "mind/*.json", "people/*.json", "scripts/build_search.py"]
+    paths: ["kb/**.md", "kb/build.py", "!kb/README.md", "tips/tips.json", "kitchen/*.json", "dream/dreams.json", "mind/*.json", "people/*.json", "card/daily.json", "scripts/build_search.py", "scripts/build_sky.js"]
   workflow_dispatch: {}
+  schedule:
+    - cron: "23 14 1 * *"   # 每月 1 号：重算首页天象（kb/sky.json）
 
 permissions:
   contents: write
@@ -28,11 +30,12 @@ jobs:
           python-version: "3.12"
       - run: python kb/build.py
       - run: python scripts/build_search.py
+      - run: node scripts/build_sky.js
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add kb/index.json kb/README.md search/index.json
+          git add kb/index.json kb/README.md kb/sky.json search/index.json search/counts.json
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git commit -m "知识库目录 / 搜索索引更新"
           for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done

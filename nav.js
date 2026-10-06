@@ -53,8 +53,8 @@
     '.tnav-a.cur span:after{content:" · 当前";font-size:12px;color:#8A847A}' +
     '.tnav-home{margin:14px 16px 0;display:block;text-align:center;padding:10px;border-radius:12px;border:1px solid #E3DED4;color:inherit;text-decoration:none}' +
     '.tnav-tip{font-size:11.5px;color:#9C958A;text-align:center;margin-top:10px}' +
-    '.tnav-off{position:fixed;left:50%;top:max(8px,env(safe-area-inset-top));transform:translate(-50%,-160%);z-index:2147482999;max-width:92vw;padding:7px 14px;border-radius:999px;background:#3A3A3C;color:#fff;font:13px/1.3 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:transform .25s;pointer-events:none;white-space:nowrap}' +
-    '.tnav-off.on{transform:translate(-50%,0)}' +
+    '.tnav-off{position:fixed;left:50%;top:max(8px,env(safe-area-inset-top));transform:translate(-50%,-160%);z-index:2147482999;max-width:92vw;padding:7px 14px;border-radius:999px;background:#3A3A3C;color:#fff;font:13px/1.3 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:transform .25s,visibility 0s .25s;visibility:hidden;pointer-events:none;white-space:nowrap}' +
+    '.tnav-off.on{transform:translate(-50%,0);visibility:visible;transition:transform .25s}' +
     // 点开时列表依次淡入；只用 backwards，结束后不覆盖「当前」那一项的半透明
     '.tnav-dr.anim .tnav-back,.tnav-dr.anim .tnav-g,.tnav-dr.anim .tnav-a,.tnav-dr.anim .tnav-home{animation:tnavIn .24s ease backwards;animation-delay:calc(var(--i,0) * 14ms + 40ms)}' +
     '@keyframes tnavIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}' +

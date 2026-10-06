@@ -88,6 +88,14 @@ def main():
             out.append({"k": "George Michael", "t": s["title"], "s": short("%s · %s" % (s["year"], s["album"])), "u": "people.html#gm/" + s["id"],
                         "x": flat(s["title"], s["album"], s["story"], s["about"], s.get("mood", []))})
 
+    asi = load("people/asimov.json")
+    if asi:
+        for bk in asi["books"]:
+            out.append({"k": "阿西莫夫", "t": bk["title"] + " " + bk["zh"], "s": short("%s · %s" % (bk["year"], bk["hook"])), "u": "people.html#asimov/" + bk["id"],
+                        "x": flat(bk["title"], bk["zh"], bk["hook"], bk["about"], [v["w"] + " " + v["zh"] for v in bk["vocab"]])})
+        for c in asi["concepts"]:
+            out.append({"k": "阿西莫夫", "t": c["k"], "s": short(c["d"]), "u": "people.html#asimov", "x": flat(c["k"], c["en"], c["d"])})
+
     for f in ("en_work", "en_life", "en_spoken", "es_yard"):
         d = load("speak/%s.json" % f)
         for pk in (d or {}).get("packs", []):
@@ -99,6 +107,23 @@ def main():
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"items": out}, f, ensure_ascii=False, separators=(",", ":"))
     print("%d 条 → %s (%d KB)" % (len(out), OUT, os.path.getsize(OUT) // 1024))
+
+    # 首页卡片上的数字（知识库几篇、技巧几条……）从这里读，不用手改
+    def n(rel, *keys):
+        d = load(rel)
+        for k in keys:
+            d = (d or {}).get(k)
+        return len(d) if d else 0
+    counts = {
+        "kb": n("kb/index.json", "articles"), "tips": n("tips/tips.json", "items"),
+        "recipes": sum(n("kitchen/%s.json" % f, "items") for f in ("recipes_cn", "recipes_cn2", "recipes_cn3", "recipes_west", "recipes_west2", "recipes_west3")),
+        "dreams": n("dream/dreams.json", "items"), "psy": n("mind/psy.json", "items"),
+        "sushi": n("people/sushi_a.json", "items") + n("people/sushi_b.json", "items"), "gm": n("people/gm.json", "songs"),
+        "asimov": n("people/asimov.json", "books"), "cards": n("card/daily.json", "items"),
+    }
+    with open(os.path.join(ROOT, "search", "counts.json"), "w", encoding="utf-8") as f:
+        json.dump(counts, f, separators=(",", ":"))
+    print("counts", counts)
 
 
 if __name__ == "__main__":

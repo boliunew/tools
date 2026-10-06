@@ -1,0 +1,1147 @@
+{
+ "bio": [
+  "艾萨克·阿西莫夫（Isaac Asimov，1920–1992）生在俄国的一个小村子，三岁随家人移民纽约布鲁克林。父母开糖果店，店里卖的廉价科幻杂志成了他的启蒙读物。",
+  "他在哥伦比亚大学读到化学博士，后来在波士顿大学医学院教生物化学。白天是科学家，晚上写小说，十几岁就开始给科幻杂志投稿。",
+  "一生写了、编了五百多本书，从科幻、推理到科普、历史、《圣经》注释、莎士比亚导读，几乎什么都写。他的科普文章以讲得清楚著称，很多美国人的科学启蒙来自他。",
+  "最有名的两条线是「机器人」系列（提出了机器人学三定律）和「基地」系列。1966 年，《基地》三部曲获得雨果奖特设的「史上最佳系列」，击败了《魔戒》。",
+  "他的英文出名地朴素：句子短、对话多、几乎不写景，靠人物斗智推动故事。这正是适合用来读英文原著的原因——你会被情节拖着往下读，而不会被华丽的词句卡住。"
+ ],
+ "concepts": [
+  {
+   "k": "心理史学",
+   "en": "psychohistory",
+   "d": "书里虚构的学科：用数学和统计预测大规模人群（上万亿人）的行为。对单个人不准，对整个银河很准——就像没法预测一个气体分子往哪飞，却能算出整瓶气体的压强。"
+  },
+  {
+   "k": "谢顿计划",
+   "en": "the Seldon Plan",
+   "d": "谢顿算出银河帝国必然崩溃，之后会有三万年的黑暗时代。他设计了一个计划，把黑暗期缩短到一千年，基地就是这个计划的起点。"
+  },
+  {
+   "k": "谢顿危机",
+   "en": "Seldon crisis",
+   "d": "计划里预先算好的关口：表面上走投无路，但到最后只剩一条路可走，而那条路恰好是对的。前几本书的很多章节就是一个个危机。"
+  },
+  {
+   "k": "银河百科全书",
+   "en": "Encyclopedia Galactica",
+   "d": "基地名义上的任务：把人类全部知识编成百科全书，免得在黑暗时代失传。每章开头常引一段虚构的百科条目。"
+  },
+  {
+   "k": "端点星",
+   "en": "Terminus",
+   "d": "基地所在的星球，在银河最边缘，资源贫乏、几乎没有金属。正因为偏远又穷，才被选中。"
+  },
+  {
+   "k": "川陀",
+   "en": "Trantor",
+   "d": "银河帝国的首都，整颗星球被金属穹顶覆盖，住着四百亿人，全靠别的星球运粮食养活。"
+  },
+  {
+   "k": "第二基地",
+   "en": "the Second Foundation",
+   "d": "谢顿说过在「银河的另一端」还有一个基地，但没人知道在哪、是什么人。找它是第二、三本书的主线。"
+  },
+  {
+   "k": "机器人学三定律",
+   "en": "Three Laws of Robotics",
+   "d": "出自阿西莫夫的机器人小说：不伤害人类；服从人类命令；保护自己——前一条优先于后一条。基地系列后面几本会和机器人系列连起来。"
+  }
+ ],
+ "orders": {
+  "pub": {
+   "n": "出版顺序（推荐）",
+   "why": "第一次读建议按这个顺序。后面两本前传是作者晚年写的，里面有几个身份揭晓，要先读完第五本才能体会到。",
+   "ids": [
+    "f1",
+    "f2",
+    "f3",
+    "f4",
+    "f5",
+    "p1",
+    "p2"
+   ]
+  },
+  "story": {
+   "n": "故事时间顺序",
+   "why": "适合重读。从年轻的谢顿开始，一路看到五百年后。",
+   "ids": [
+    "p1",
+    "p2",
+    "f1",
+    "f2",
+    "f3",
+    "f4",
+    "f5"
+   ]
+  }
+ },
+ "books": [
+  {
+   "id": "f1",
+   "n": 1,
+   "title": "Foundation",
+   "zh": "基地",
+   "year": 1951,
+   "era": "基地纪元前夕到约 175 年",
+   "parts": [
+    "The Psychohistorians",
+    "The Encyclopedists",
+    "The Mayors",
+    "The Traders",
+    "The Merchant Princes"
+   ],
+   "hook": "帝国还很强大，一个数学家却说它三百年内必亡。",
+   "about": "其实是五个相连的中篇，每篇跳过几十年，主角换一代人。开头是谢顿和他的计划，后面是端点星上的人怎样一次次在比自己强大得多的邻国之间活下来：先靠口才和算计，再靠「宗教」，再靠贸易。几乎没有打仗的场面，全是谈判和斗智。",
+   "plot": "谢顿在川陀受审，帝国把他的十万人团队流放到端点星编百科全书——这正中他的下怀。五十年后，哈定发现百科全书只是幌子，谢顿的录像证实了这一点，他夺权成为市长。三十年后，哈定把原子能技术包装成宗教，用来控制周围的「四王国」；安纳克里昂的摄政王出兵时，旗舰上的教士们拒绝执行命令。再往后，行商们用小型原子装置做生意，马洛在科瑞尔拒绝动武，靠切断贸易让对方的经济自己垮掉，也因此当上市长。",
+   "english": "最适合起步的一本：章节短，每篇独立成章，读完一篇就有成就感。对话占一大半，生词主要是政治和贸易词汇。",
+   "vocab": [
+    {
+     "w": "psychohistory",
+     "zh": "心理史学（用数学预测大群人的行为）",
+     "en": "Seldon uses psychohistory to predict what whole planets will do, not single people."
+    },
+    {
+     "w": "decline",
+     "zh": "衰落",
+     "en": "The decline of the Empire is so slow that most people never notice it."
+    },
+    {
+     "w": "inevitable",
+     "zh": "不可避免的",
+     "en": "Seldon insists that the fall of the Empire is inevitable."
+    },
+    {
+     "w": "barbarism",
+     "zh": "野蛮（状态）",
+     "en": "Without a plan, the Galaxy faces thousands of years of barbarism."
+    },
+    {
+     "w": "encyclopedia",
+     "zh": "百科全书",
+     "en": "The scientists on Terminus believe they were sent to write an encyclopedia."
+    },
+    {
+     "w": "periphery",
+     "zh": "边缘地带",
+     "en": "Terminus lies on the periphery of the Galaxy, far from the capital."
+    },
+    {
+     "w": "crisis",
+     "zh": "危机",
+     "en": "Every crisis looks impossible to solve until the very last moment."
+    },
+    {
+     "w": "mayor",
+     "zh": "市长",
+     "en": "The mayor prefers clever talk to open war."
+    },
+    {
+     "w": "council",
+     "zh": "议会；委员会",
+     "en": "The council keeps arguing while the danger grows."
+    },
+    {
+     "w": "ultimatum",
+     "zh": "最后通牒",
+     "en": "A powerful neighbour sends Terminus an ultimatum."
+    },
+    {
+     "w": "treaty",
+     "zh": "条约",
+     "en": "Both sides sign a treaty, but neither side trusts the other."
+    },
+    {
+     "w": "priesthood",
+     "zh": "神职人员（体系）",
+     "en": "The machines are wrapped in religion and run by a priesthood."
+    },
+    {
+     "w": "trader",
+     "zh": "行商",
+     "en": "Traders carry small atomic gadgets to distant worlds."
+    },
+    {
+     "w": "merchant",
+     "zh": "商人",
+     "en": "A clever merchant can win where a warship cannot."
+    },
+    {
+     "w": "regent",
+     "zh": "摄政王",
+     "en": "The young king is controlled by his uncle, the regent."
+    },
+    {
+     "w": "vault",
+     "zh": "地下室；保险库",
+     "en": "Everyone waits for the vault to open on the right day."
+    },
+    {
+     "w": "violence",
+     "zh": "暴力",
+     "en": "Hardin sees violence as a sign that you have run out of ideas."
+    },
+    {
+     "w": "interstellar",
+     "zh": "星际的",
+     "en": "Interstellar trade keeps the small kingdoms dependent on Terminus."
+    }
+   ]
+  },
+  {
+   "id": "f2",
+   "n": 2,
+   "title": "Foundation and Empire",
+   "zh": "基地与帝国",
+   "year": 1952,
+   "era": "约 195 年、约 310 年",
+   "parts": [
+    "The General",
+    "The Mule"
+   ],
+   "hook": "垂死的帝国派出最后一位名将；然后，一个谁都算不到的人出现了。",
+   "about": "两个中篇。前一篇是帝国名将对基地发动进攻，基地看起来毫无胜算。后一篇是全书最有名的故事：一个神秘的征服者横扫银河，连谢顿计划都没预料到他。读者会跟着一对年轻夫妇、一位古怪的心理学家和一个胆小的小丑一起逃亡、一起找答案。",
+   "plot": "名将里欧思一路打赢，但多疑的皇帝怕他功高震主，把他召回治罪——强大的将军遇上软弱的皇帝不可能，遇上强大的皇帝不会被允许，所以基地注定赢。一百多年后，「骡」出现：他是能改变别人情绪的突变人，让敌人的军队还没开战就丧失斗志。基地陷落。米斯在川陀的图书馆里拼命寻找第二基地的位置，就在他要说出答案时，贝泰开枪打死了他——因为她终于明白，一路同行的小丑马尼菲科就是骡本人。",
+   "english": "第二篇节奏快、悬念强，是七本里最容易一口气读完的。注意书里大量情绪类形容词，和「骡」的能力正好呼应。",
+   "vocab": [
+    {
+     "w": "general",
+     "zh": "将军",
+     "en": "The young general is brilliant, ambitious and completely honest."
+    },
+    {
+     "w": "campaign",
+     "zh": "战役；军事行动",
+     "en": "He starts a fast campaign against the worlds near Terminus."
+    },
+    {
+     "w": "loyal",
+     "zh": "忠诚的",
+     "en": "He stays loyal to an emperor who does not trust him."
+    },
+    {
+     "w": "suspicion",
+     "zh": "怀疑",
+     "en": "Every victory at the front only increases the emperor's suspicion."
+    },
+    {
+     "w": "patrician",
+     "zh": "贵族",
+     "en": "An old patrician from a conquered world watches the war closely."
+    },
+    {
+     "w": "siege",
+     "zh": "围攻",
+     "en": "The siege goes on for months without a clear winner."
+    },
+    {
+     "w": "mutant",
+     "zh": "突变体",
+     "en": "Rumours say the new warlord is a mutant."
+    },
+    {
+     "w": "warlord",
+     "zh": "军阀",
+     "en": "One warlord after another falls to the stranger."
+    },
+    {
+     "w": "conquer",
+     "zh": "征服",
+     "en": "He conquers whole systems almost without fighting."
+    },
+    {
+     "w": "clown",
+     "zh": "小丑",
+     "en": "A frightened clown joins the travellers on their journey."
+    },
+    {
+     "w": "morale",
+     "zh": "士气",
+     "en": "Whole fleets give up because their morale suddenly collapses."
+    },
+    {
+     "w": "despair",
+     "zh": "绝望",
+     "en": "A strange wave of despair spreads through the city."
+    },
+    {
+     "w": "surrender",
+     "zh": "投降",
+     "en": "The planet surrenders before a single shot is fired."
+    },
+    {
+     "w": "refugee",
+     "zh": "难民",
+     "en": "Refugees crowd onto every ship that is still leaving."
+    },
+    {
+     "w": "psychologist",
+     "zh": "心理学家",
+     "en": "A tired psychologist works day and night in the old library."
+    },
+    {
+     "w": "emotion",
+     "zh": "情绪",
+     "en": "Someone seems able to change other people's emotions."
+    },
+    {
+     "w": "fleet",
+     "zh": "舰队",
+     "en": "The fleet waits in orbit for orders that never come."
+    },
+    {
+     "w": "deduce",
+     "zh": "推断",
+     "en": "She deduces the truth from a handful of small clues."
+    }
+   ]
+  },
+  {
+   "id": "f3",
+   "n": 3,
+   "title": "Second Foundation",
+   "zh": "第二基地",
+   "year": 1953,
+   "era": "约 311–376 年",
+   "parts": [
+    "Search by the Mule",
+    "Search by the Foundation"
+   ],
+   "hook": "所有人都在找第二基地，而第二基地也在找他们。",
+   "about": "两段寻找。前半是征服者派人搜寻传说中的第二基地；后半过了半个多世纪，基地的几位科学家开始怀疑有人在暗中操纵他们的心智，一个十四岁的机灵女孩意外卷入，成了真正的主角。结尾有一连串反转，是三部曲的收官。",
+   "plot": "骡派出被他「转化」的普利吉和年轻的钱宁去找第二基地，钱宁其实是第二基地故意放出的诱饵；第一发言者当面对决骡，在他心里动了手脚，骡回去当了和平的统治者，几年后去世。五十多年后，达瑞尔医生等人发现有人篡改过人脑，决定找出并消灭第二基地；艾卡蒂偷听、逃家、被卷进卡尔根的战争，又在一位川陀农夫普芮姆·帕佛的帮助下脱险。基地人最后认定第二基地就在端点星本地，抓出五十个人了事——其实第二基地一直在川陀，帕佛就是第一发言者，「星空的尽头」指的是银河这个圆没有尽头的另一端：川陀。",
+   "english": "后半部分推理味很重，对话里有不少抽象词（心智、平衡、操纵）。如果某段读不懂，先跳过，反转揭晓时会自然明白。",
+   "vocab": [
+    {
+     "w": "mentalics",
+     "zh": "精神力学（书中的造词，指研究心智的科学）",
+     "en": "In this book, mentalics is the science of the human mind."
+    },
+    {
+     "w": "manipulate",
+     "zh": "操纵",
+     "en": "They fear that someone is quietly manipulating their thoughts."
+    },
+    {
+     "w": "convert",
+     "zh": "使（思想）转变",
+     "en": "People who meet him are slowly converted to his side."
+    },
+    {
+     "w": "elusive",
+     "zh": "难以找到的",
+     "en": "The Second Foundation remains elusive for centuries."
+    },
+    {
+     "w": "agent",
+     "zh": "特工",
+     "en": "Each side sends agents to find the other."
+    },
+    {
+     "w": "eavesdrop",
+     "zh": "偷听",
+     "en": "A teenage girl eavesdrops on her father's secret meeting."
+    },
+    {
+     "w": "adolescent",
+     "zh": "青少年",
+     "en": "The adults underestimate the clever adolescent."
+    },
+    {
+     "w": "conspiracy",
+     "zh": "阴谋",
+     "en": "The small group meets in secret, like a conspiracy."
+    },
+    {
+     "w": "tamper",
+     "zh": "篡改；乱动",
+     "en": "Someone may have tampered with their minds."
+    },
+    {
+     "w": "equilibrium",
+     "zh": "平衡",
+     "en": "The Plan works only if the Galaxy stays in equilibrium."
+    },
+    {
+     "w": "paranoia",
+     "zh": "偏执；多疑",
+     "en": "Fear of hidden mind readers slowly turns into paranoia."
+    },
+    {
+     "w": "subtle",
+     "zh": "微妙的",
+     "en": "The changes in people's minds are subtle and hard to prove."
+    },
+    {
+     "w": "encephalograph",
+     "zh": "脑电图仪",
+     "en": "The doctor studies brain patterns with an encephalograph."
+    },
+    {
+     "w": "illusion",
+     "zh": "错觉；幻象",
+     "en": "Is their freedom real, or only an illusion?"
+    },
+    {
+     "w": "deceive",
+     "zh": "欺骗",
+     "en": "To win, you may have to deceive your friends as well."
+    },
+    {
+     "w": "intrigue",
+     "zh": "阴谋诡计",
+     "en": "The court of the warlord is full of intrigue."
+    },
+    {
+     "w": "bargain",
+     "zh": "交易；讨价还价",
+     "en": "She makes a desperate bargain to escape."
+    }
+   ]
+  },
+  {
+   "id": "f4",
+   "n": 4,
+   "title": "Foundation's Edge",
+   "zh": "基地边缘",
+   "year": 1982,
+   "era": "约 498 年",
+   "parts": [],
+   "hook": "一切都按计划进行——太按计划了，一个年轻议员觉得这本身就很可疑。",
+   "about": "隔了快三十年，阿西莫夫才写了续集，篇幅是前面的两倍，风格也变了：变成一部完整的长篇，主角带着一位研究「人类起源星球」传说的老学者坐飞船出发，一边旅行一边推理。同时，第一基地的女市长和第二基地的年轻发言者也各有盘算。获 1983 年雨果奖。",
+   "plot": "崔维兹认定第二基地仍在暗中操纵，市长布拉诺把他「流放」去找地球，其实是拿他当诱饵。第二基地的简迪拔发现有比他们更强的心灵力量在干预。各方最后都被引到盖娅——一颗整个星球共享同一个意识的世界。盖娅需要崔维兹来做选择，因为他有一种近乎绝对正确的直觉：未来是基地的第二帝国、第二基地的家长式统治，还是把整个银河变成一个共同的意识「银河星系（Galaxia）」？他选了最后一个。",
+   "english": "篇幅长、对话里辩论多，句子比前三本长一些。好处是只有一条主线，读进去之后反而不难。",
+   "vocab": [
+    {
+     "w": "councilman",
+     "zh": "议员",
+     "en": "A young councilman says the Plan works a little too perfectly."
+    },
+    {
+     "w": "exile",
+     "zh": "流放",
+     "en": "The mayor sends him into exile, with a secret purpose."
+    },
+    {
+     "w": "legend",
+     "zh": "传说",
+     "en": "An old scholar collects legends about the first home of humanity."
+    },
+    {
+     "w": "origin",
+     "zh": "起源",
+     "en": "Nobody remembers the origin of the human race anymore."
+    },
+    {
+     "w": "hypothesis",
+     "zh": "假说",
+     "en": "He tests one hypothesis after another during the trip."
+    },
+    {
+     "w": "historian",
+     "zh": "历史学家",
+     "en": "The gentle historian has never left his home planet before."
+    },
+    {
+     "w": "hyperspace",
+     "zh": "超空间",
+     "en": "Ships jump through hyperspace to cross the Galaxy."
+    },
+    {
+     "w": "gravitic",
+     "zh": "重力（驱动）的",
+     "en": "Their small gravitic ship moves fast and quietly."
+    },
+    {
+     "w": "rival",
+     "zh": "对手",
+     "en": "Two rivals in the government watch each other closely."
+    },
+    {
+     "w": "speaker",
+     "zh": "发言者（第二基地领导层的称呼）",
+     "en": "The youngest speaker is ambitious and impatient."
+    },
+    {
+     "w": "intuition",
+     "zh": "直觉",
+     "en": "He trusts his intuition more than his reasoning."
+    },
+    {
+     "w": "consensus",
+     "zh": "共识",
+     "en": "The leaders cannot reach a consensus."
+    },
+    {
+     "w": "collective",
+     "zh": "集体的",
+     "en": "Some worlds may have a collective way of thinking."
+    },
+    {
+     "w": "archive",
+     "zh": "档案馆",
+     "en": "The old archive has been strangely emptied."
+    },
+    {
+     "w": "anomaly",
+     "zh": "异常",
+     "en": "A tiny anomaly in the data worries the mathematicians."
+    },
+    {
+     "w": "decisive",
+     "zh": "决定性的",
+     "en": "In the end, one decisive choice must be made."
+    },
+    {
+     "w": "maneuver",
+     "zh": "策略；调动",
+     "en": "Every side plans its next maneuver in secret."
+    }
+   ]
+  },
+  {
+   "id": "f5",
+   "n": 5,
+   "title": "Foundation and Earth",
+   "zh": "基地与地球",
+   "year": 1986,
+   "era": "约 498 年（紧接上一本）",
+   "parts": [],
+   "hook": "所有图书馆里关于地球的记录都消失了。是谁抹掉的？为什么？",
+   "about": "直接接着第四本。主角对自己做出的选择不放心，决定去找人类的发源地地球，相信答案在那里。这是一部公路小说：一颗星球接一颗星球地拜访，每个世界的社会都很怪，像在做思想实验。结尾把基地系列和阿西莫夫的机器人系列连了起来。",
+   "plot": "崔维兹、裴洛拉特和宝绮思先后到了康普隆、曾是太空殖民世界的极光（只剩野狗）、索拉利（人人独居、雌雄同体，带走了孩子法隆）、梅尔波美尼亚和阿尔法。地球果然有放射性，无法居住。最后在月球上，他们见到了活了两万年的机器人丹尼尔·奥利瓦，他一直在暗中引导人类历史（也就是前传里的丹莫刺尔）。丹尼尔的身体撑不住了，需要和法隆的大脑结合。崔维兹终于明白自己为什么选择盖娅：银河之外可能有威胁，人类需要成为一个整体。",
+   "english": "旅途中每到一个星球就有新名词和新习俗，但结构清楚。各星球之间的对话常讨论哲学和社会，慢慢读即可。",
+   "vocab": [
+    {
+     "w": "erase",
+     "zh": "抹去",
+     "en": "Someone has erased every record about Earth from the libraries."
+    },
+    {
+     "w": "radioactive",
+     "zh": "有放射性的",
+     "en": "Some legends say the old home planet became radioactive."
+    },
+    {
+     "w": "quarantine",
+     "zh": "检疫隔离",
+     "en": "Visitors are held in quarantine before they may land."
+    },
+    {
+     "w": "customs",
+     "zh": "海关",
+     "en": "Their ship is searched by customs at the space station."
+    },
+    {
+     "w": "ancestor",
+     "zh": "祖先",
+     "en": "People argue about where their ancestors came from."
+    },
+    {
+     "w": "myth",
+     "zh": "神话",
+     "en": "Is Earth a real place or only a myth?"
+    },
+    {
+     "w": "abandoned",
+     "zh": "被遗弃的",
+     "en": "They land on an abandoned world full of ruins."
+    },
+    {
+     "w": "isolated",
+     "zh": "孤立的",
+     "en": "One society has been isolated for thousands of years."
+    },
+    {
+     "w": "solitude",
+     "zh": "独处",
+     "en": "The people of one planet value solitude above everything."
+    },
+    {
+     "w": "hostile",
+     "zh": "敌对的",
+     "en": "The locals are polite at first but secretly hostile."
+    },
+    {
+     "w": "decontamination",
+     "zh": "去污；消毒",
+     "en": "Everyone must go through decontamination after the visit."
+    },
+    {
+     "w": "satellite",
+     "zh": "卫星",
+     "en": "The answer may be hidden on a large satellite."
+    },
+    {
+     "w": "nostalgia",
+     "zh": "怀旧",
+     "en": "The old scholar feels a strange nostalgia for a world he has never seen."
+    },
+    {
+     "w": "diplomat",
+     "zh": "外交官",
+     "en": "A smooth diplomat tries to keep them on his planet."
+    },
+    {
+     "w": "dilemma",
+     "zh": "两难",
+     "en": "He faces a dilemma with no easy answer."
+    },
+    {
+     "w": "reluctant",
+     "zh": "不情愿的",
+     "en": "She is reluctant to leave the child behind."
+    },
+    {
+     "w": "wilderness",
+     "zh": "荒野",
+     "en": "Packs of wild dogs roam the wilderness."
+    },
+    {
+     "w": "robot",
+     "zh": "机器人",
+     "en": "The robots there obey only their own masters."
+    }
+   ]
+  },
+  {
+   "id": "p1",
+   "n": 6,
+   "title": "Prelude to Foundation",
+   "zh": "基地前奏",
+   "year": 1988,
+   "era": "基地建立前约 50 年",
+   "parts": [],
+   "hook": "年轻的谢顿只是说「理论上」能预测未来，就被整个帝国追着跑。",
+   "about": "前传。三十出头的谢顿来首都开数学大会，一篇论文让皇帝和他的首相都盯上了他。他在一个神秘记者和一位女历史学家的保护下，在川陀各个「区」之间逃亡，每个区都像一个独立的国家，有自己的宗教、阶级和习俗。逃亡过程中，他慢慢想出怎样让心理史学真正可行。",
+   "plot": "谢顿在一位叫钦曼（Hummin）的记者帮助下逃出皇宫的控制，由历史学家铎丝·凡纳比里贴身保护。他们去过大学区、穹顶外的地面、宗教保守的麦曲生区（偷看了他们的圣书和一个古老的机器人雕像）、贫穷的达尔区（收养了街头少年芮奇，认识了散热井工人雨果）、野心勃勃的卫荷区（那里的女领袖想政变，失败）。最后谢顿推断出：钦曼就是首相丹莫刺尔，而且是一个机器人，一直在引导这一切；他也开始怀疑铎丝的身份。",
+   "english": "七本里最「现代」好读的一本，节奏像冒险小说，适合在读完前五本后放松一下。川陀各区的名字多，记不住没关系。",
+   "vocab": [
+    {
+     "w": "mathematician",
+     "zh": "数学家",
+     "en": "A young mathematician arrives on Trantor for a conference."
+    },
+    {
+     "w": "convention",
+     "zh": "（大型）会议",
+     "en": "He gives a short talk at a mathematics convention."
+    },
+    {
+     "w": "practical",
+     "zh": "可行的；实用的",
+     "en": "He must prove that psychohistory can be practical, not just theory."
+    },
+    {
+     "w": "fugitive",
+     "zh": "逃亡者",
+     "en": "Overnight he becomes a fugitive."
+    },
+    {
+     "w": "sector",
+     "zh": "区（川陀的行政区）",
+     "en": "Trantor is divided into hundreds of sectors with their own customs."
+    },
+    {
+     "w": "dome",
+     "zh": "穹顶",
+     "en": "The whole planet lives under a giant metal dome."
+    },
+    {
+     "w": "emperor",
+     "zh": "皇帝",
+     "en": "The emperor wants to use the theory for his own purposes."
+    },
+    {
+     "w": "minister",
+     "zh": "大臣",
+     "en": "The emperor's chief minister is said to know everything."
+    },
+    {
+     "w": "pursue",
+     "zh": "追捕",
+     "en": "Agents pursue them from one sector to the next."
+    },
+    {
+     "w": "refuge",
+     "zh": "避难所",
+     "en": "Each new sector offers a refuge, but only for a while."
+    },
+    {
+     "w": "bodyguard",
+     "zh": "保镖",
+     "en": "A calm historian becomes his bodyguard."
+    },
+    {
+     "w": "elder",
+     "zh": "长老",
+     "en": "The elders guard their sacred book closely."
+    },
+    {
+     "w": "sacred",
+     "zh": "神圣的",
+     "en": "Outsiders are not allowed to touch the sacred objects."
+    },
+    {
+     "w": "tradition",
+     "zh": "传统",
+     "en": "Every sector clings to its own tradition."
+    },
+    {
+     "w": "heatsink",
+     "zh": "散热井（川陀的深层设施）",
+     "en": "Workers in the heatsinks keep the huge city from overheating."
+    },
+    {
+     "w": "urchin",
+     "zh": "流浪儿",
+     "en": "A quick-witted street urchin helps them in a rough sector."
+    },
+    {
+     "w": "conceal",
+     "zh": "隐藏",
+     "en": "Someone is concealing the truth about the past."
+    },
+    {
+     "w": "hideout",
+     "zh": "藏身处",
+     "en": "They move to a new hideout every few weeks."
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "n": 7,
+   "title": "Forward the Foundation",
+   "zh": "迈向基地",
+   "year": 1993,
+   "era": "基地建立前约 40 年到前夕",
+   "parts": [
+    "Eto Demerzel",
+    "Cleon I",
+    "Dors Venabili",
+    "Wanda Seldon",
+    "Epilogue"
+   ],
+   "hook": "谢顿用一生换一个计划，代价是他身边的每一个人。",
+   "about": "阿西莫夫去世后出版的最后一部小说，也是他写给自己的告别。五个部分跨越几十年：谢顿从中年到老年，从政治漩涡中的首相，变成一个守着项目、缺钱、被人遗忘的老人。情节有暗杀和政变，但真正的主题是衰老、失去，以及一件事值不值得用一辈子去做。",
+   "plot": "第一部分谢顿识破了想推翻丹莫刺尔的政客乔拉南，但丹莫刺尔还是离开了，谢顿被迫当上首相。第二部分皇帝克里昂一世被一名园丁刺杀，军政府上台，谢顿的处境越来越难。第三部分铎丝为保护谢顿而死，她的身份最终揭晓。第四部分谢顿的孙女婉达能读出别人的心思，谢顿意识到这正是计划缺少的另一半——这就是第二基地的起源；芮奇也在外星的动乱中死去。尾声里，老谢顿独自坐在办公室里看着他的「元光体」，在工作中去世。",
+   "english": "语言平实，但情绪很重。建议放在最后读，读完再回头看第一本开头的谢顿，感受完全不同。",
+   "vocab": [
+    {
+     "w": "assassination",
+     "zh": "暗杀",
+     "en": "An assassination changes the government overnight."
+    },
+    {
+     "w": "coup",
+     "zh": "政变",
+     "en": "After the coup, soldiers patrol the palace."
+    },
+    {
+     "w": "retirement",
+     "zh": "退休",
+     "en": "The old minister talks about retirement but never rests."
+    },
+    {
+     "w": "legacy",
+     "zh": "遗产；留给后人的东西",
+     "en": "The Plan is the only legacy he cares about."
+    },
+    {
+     "w": "funding",
+     "zh": "经费",
+     "en": "The project keeps running out of funding."
+    },
+    {
+     "w": "budget",
+     "zh": "预算",
+     "en": "Every year the budget for research gets smaller."
+    },
+    {
+     "w": "bureaucracy",
+     "zh": "官僚体制",
+     "en": "The bureaucracy moves slowly while the Empire decays."
+    },
+    {
+     "w": "decay",
+     "zh": "衰败",
+     "en": "Small signs of decay appear everywhere in the capital."
+    },
+    {
+     "w": "gardener",
+     "zh": "园丁",
+     "en": "A palace gardener is pulled into a dangerous plot."
+    },
+    {
+     "w": "succession",
+     "zh": "继位",
+     "en": "Nobody agrees on the succession to the throne."
+    },
+    {
+     "w": "grief",
+     "zh": "悲痛",
+     "en": "Grief makes him work even harder."
+    },
+    {
+     "w": "aging",
+     "zh": "衰老",
+     "en": "The book is honest about aging and loss."
+    },
+    {
+     "w": "granddaughter",
+     "zh": "孙女",
+     "en": "His granddaughter seems to know what people are thinking."
+    },
+    {
+     "w": "telepathic",
+     "zh": "心灵感应的",
+     "en": "A telepathic child could change everything."
+    },
+    {
+     "w": "persuade",
+     "zh": "说服",
+     "en": "He must persuade a whole university to support him."
+    },
+    {
+     "w": "dedicate",
+     "zh": "献身；致力于",
+     "en": "He dedicates his whole life to a single idea."
+    }
+   ]
+  }
+ ],
+ "people": [
+  {
+   "en": "Hari Seldon",
+   "zh": "哈里·谢顿",
+   "books": [
+    "f1",
+    "p1",
+    "p2"
+   ],
+   "d": "心理史学的创始人。前传里是被追捕的年轻数学家，正传里是只在录像里出现的「先知」。"
+  },
+  {
+   "en": "Gaal Dornick",
+   "zh": "加尔·多尼克",
+   "books": [
+    "f1"
+   ],
+   "d": "第一本开头的年轻数学家，读者跟着他第一次看到川陀和谢顿。"
+  },
+  {
+   "en": "Salvor Hardin",
+   "zh": "塞佛·哈定",
+   "books": [
+    "f1"
+   ],
+   "d": "端点星的首任市长，靠头脑不靠武力，全书最受欢迎的角色之一。"
+  },
+  {
+   "en": "Hober Mallow",
+   "zh": "侯伯·马洛",
+   "books": [
+    "f1"
+   ],
+   "d": "行商出身，用生意代替战争的「商人王」。"
+  },
+  {
+   "en": "Bel Riose",
+   "zh": "贝尔·里欧思",
+   "books": [
+    "f2"
+   ],
+   "d": "帝国最后一位真正的名将，正直、能打，却生错了时代。"
+  },
+  {
+   "en": "Ducem Barr",
+   "zh": "杜森·巴尔",
+   "books": [
+    "f2"
+   ],
+   "d": "被征服世界的老贵族，看得比所有人都透。"
+  },
+  {
+   "en": "The Mule",
+   "zh": "骡",
+   "books": [
+    "f2",
+    "f3"
+   ],
+   "d": "谢顿计划里唯一没被算到的变数。"
+  },
+  {
+   "en": "Bayta Darell",
+   "zh": "贝泰·达瑞尔",
+   "books": [
+    "f2"
+   ],
+   "d": "冷静、敏锐，关键时刻做出最重要的决定。"
+  },
+  {
+   "en": "Toran Darell",
+   "zh": "杜伦·达瑞尔",
+   "books": [
+    "f2"
+   ],
+   "d": "贝泰的丈夫，一路陪她逃亡。"
+  },
+  {
+   "en": "Ebling Mis",
+   "zh": "艾布林·米斯",
+   "books": [
+    "f2"
+   ],
+   "d": "脾气古怪的天才心理学家，拼命想找到第二基地。"
+  },
+  {
+   "en": "Magnifico",
+   "zh": "马尼菲科",
+   "books": [
+    "f2"
+   ],
+   "d": "胆小可怜的宫廷小丑，会弹一种奇妙的乐器。"
+  },
+  {
+   "en": "Arcadia Darell",
+   "zh": "艾卡蒂·达瑞尔",
+   "books": [
+    "f3"
+   ],
+   "d": "贝泰的孙女，十四岁，想当作家，比大人们都机灵。"
+  },
+  {
+   "en": "Golan Trevize",
+   "zh": "葛兰·崔维兹",
+   "books": [
+    "f4",
+    "f5"
+   ],
+   "d": "年轻的议员，直觉准得惊人，嘴比脑子快。"
+  },
+  {
+   "en": "Janov Pelorat",
+   "zh": "詹诺夫·裴洛拉特",
+   "books": [
+    "f4",
+    "f5"
+   ],
+   "d": "温和的老学者，毕生研究地球传说，第一次离开家乡星球。"
+  },
+  {
+   "en": "Harla Branno",
+   "zh": "哈拉·布拉诺",
+   "books": [
+    "f4"
+   ],
+   "d": "铁腕女市长，冷静而强硬。"
+  },
+  {
+   "en": "Stor Gendibal",
+   "zh": "史陀·简迪拔",
+   "books": [
+    "f4"
+   ],
+   "d": "第二基地里最年轻、最有野心的发言者。"
+  },
+  {
+   "en": "Bliss",
+   "zh": "宝绮思",
+   "books": [
+    "f4",
+    "f5"
+   ],
+   "d": "神秘的年轻女子，后两本的重要旅伴。"
+  },
+  {
+   "en": "Dors Venabili",
+   "zh": "铎丝·凡纳比里",
+   "books": [
+    "p1",
+    "p2"
+   ],
+   "d": "历史学家，谢顿的保镖，后来是他的妻子。"
+  },
+  {
+   "en": "Raych",
+   "zh": "芮奇",
+   "books": [
+    "p1",
+    "p2"
+   ],
+   "d": "街头长大的机灵少年，被谢顿收养。"
+  },
+  {
+   "en": "Yugo Amaryl",
+   "zh": "雨果·阿马瑞尔",
+   "books": [
+    "p1",
+    "p2"
+   ],
+   "d": "散热井工人出身的数学天才，谢顿最得力的助手。"
+  },
+  {
+   "en": "Cleon I",
+   "zh": "克里昂一世",
+   "books": [
+    "p1",
+    "p2"
+   ],
+   "d": "皇帝，不算坏人，只是被困在皇位上。"
+  },
+  {
+   "en": "Eto Demerzel",
+   "zh": "伊图·丹莫刺尔",
+   "books": [
+    "p1",
+    "p2"
+   ],
+   "d": "皇帝的首相，传说无所不知，没人知道他的底细。"
+  },
+  {
+   "en": "Wanda Seldon",
+   "zh": "婉达·谢顿",
+   "books": [
+    "p2"
+   ],
+   "d": "谢顿的孙女，从小就有点不一样。"
+  }
+ ],
+ "timeline": [
+  {
+   "y": "约 12020 银河纪元",
+   "t": "年轻的谢顿在川陀的数学大会上提出心理史学（《基地前奏》）",
+   "books": [
+    "p1"
+   ]
+  },
+  {
+   "y": "之后约 40 年",
+   "t": "谢顿当上首相、组建项目、渐渐老去（《迈向基地》）",
+   "books": [
+    "p2"
+   ]
+  },
+  {
+   "y": "基地纪元 1 年",
+   "t": "谢顿受审，十万人被送往端点星编百科全书（《基地》开篇）",
+   "books": [
+    "f1"
+   ]
+  },
+  {
+   "y": "约 50 年",
+   "t": "第一次谢顿危机，哈定掌权",
+   "books": [
+    "f1"
+   ]
+  },
+  {
+   "y": "约 80 年",
+   "t": "哈定用「科学宗教」稳住四王国",
+   "books": [
+    "f1"
+   ]
+  },
+  {
+   "y": "约 135–175 年",
+   "t": "行商与商人王时代",
+   "books": [
+    "f1"
+   ]
+  },
+  {
+   "y": "约 195 年",
+   "t": "帝国最后的名将进攻基地",
+   "books": [
+    "f2"
+   ]
+  },
+  {
+   "y": "约 310 年",
+   "t": "骡出现，基地陷落",
+   "books": [
+    "f2"
+   ]
+  },
+  {
+   "y": "约 315 年",
+   "t": "骡寻找第二基地",
+   "books": [
+    "f3"
+   ]
+  },
+  {
+   "y": "约 376 年",
+   "t": "基地寻找第二基地",
+   "books": [
+    "f3"
+   ]
+  },
+  {
+   "y": "约 498 年",
+   "t": "崔维兹被放逐，寻找第二基地和地球",
+   "books": [
+    "f4",
+    "f5"
+   ]
+  },
+  {
+   "y": "计划目标：约 1000 年",
+   "t": "建立第二银河帝国（不然黑暗时代要持续三万年）",
+   "books": []
+  }
+ ],
+ "more": [
+  {
+   "en": "The Last Question",
+   "zh": "最后的问题",
+   "y": "1956 短篇",
+   "d": "阿西莫夫自己最喜欢的短篇，几千词就讲完人类亿万年的故事。很适合在读《基地》之前先用来热身英文。"
+  },
+  {
+   "en": "Nightfall",
+   "zh": "日暮",
+   "y": "1941 短篇",
+   "d": "一颗有六个太阳、几千年才有一次黑夜的星球。被很多人评为史上最佳科幻短篇。"
+  },
+  {
+   "en": "I, Robot",
+   "zh": "我，机器人",
+   "y": "1950",
+   "d": "机器人三定律的出处，一组短篇，每篇是一个三定律的逻辑谜题。"
+  },
+  {
+   "en": "The Caves of Steel",
+   "zh": "钢穴",
+   "y": "1954",
+   "d": "未来地球的侦探和机器人搭档破案，机器人系列的长篇第一本，也会和基地系列连起来。"
+  },
+  {
+   "en": "The Naked Sun",
+   "zh": "裸阳",
+   "y": "1957",
+   "d": "《钢穴》续集。读过它，你会在《基地与地球》里认出一颗星球。"
+  },
+  {
+   "en": "The Robots of Dawn",
+   "zh": "曙光中的机器人",
+   "y": "1983",
+   "d": "机器人系列第三本，阿西莫夫晚年开始把两个系列合成一个宇宙。"
+  },
+  {
+   "en": "Robots and Empire",
+   "zh": "机器人与帝国",
+   "y": "1985",
+   "d": "机器人系列和帝国系列之间的桥梁，解释了地球为什么会变成那样。"
+  }
+ ],
+ "tips": [
+  "不用查每个生词。阿西莫夫的书靠对话推进，一句没懂，下一句通常会解释。",
+  "每读一本之前，先把这本书的预习词导入语境词库，花两三天刷熟，读的时候会顺很多。",
+  "读到喜欢的句子，用 SubLingo 拆一下语法，再一键收进语境词库，带原句复习。",
+  "书里有不少自造词（psychohistory、mentalics、gravitic……），它们不会出现在词典里，猜意思就好。",
+  "每章开头的「银河百科全书」引文其实是剧情提示，别跳过。"
+ ]
+}
