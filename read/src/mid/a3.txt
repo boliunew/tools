@@ -1,0 +1,104 @@
+kind: article
+title: Technology in Our Everyday Lives
+zh: 生活里的科技
+summary: 从手机、网络、网购到人工智能，用初中被动语态和现在完成时讲科技怎样改变生活，以及怎样安全上网、识别骗局。
+grammar: 一般现在时被动语态 | am/is/are + 过去分词 | Billions of messages are sent every day.
+grammar: 现在完成时被动语态 | have/has been + 过去分词 | Our lives have been changed by technology in many ways.
+grammar: 一般过去时被动语态 | was/were + 过去分词 | The first iPhone was released in 2007.
+grammar: 现在完成时表示经历和变化 | have/has + 过去分词 | Technology has made our lives easier, but it has also created new problems.
+grammar: 不定式作宾语补足语 | allow / help / teach someone to do | Smartphones allow us to do almost anything from our pocket.
+vocab: technology 科技; device 设备; smartphone 智能手机; app 应用程序; internet 互联网; online 在线的; website 网站; download 下载; upload 上传; password 密码; account 账户; data 数据; information 信息; search 搜索; connect 连接; battery 电池; charge 充电; screen 屏幕; camera 相机; message 信息; email 电子邮件; video_call 视频通话; shopping 购物; delivery 送货; robot 机器人; artificial_intelligence 人工智能; privacy 隐私; scam 骗局; safe 安全的; invention 发明
+---
+Imagine waking up one morning and finding that all technology has disappeared. There is no phone next to your bed. There is no internet. There is no TV, no computer, and no music app. How would you know the time? How would you talk to your friends? How would you find your way to a new place? For most of us, it is almost impossible to imagine. Our lives have been changed by technology in many ways, and most of these changes have happened in just the last thirty years.
+
+In this article, we will look at how technology is used in our everyday lives: at home, at school, at work, and in our free time. We will also talk about some of the problems that technology has created, and how we can use it safely and wisely.
+
+A short history
+
+Technology has always been part of human life. The wheel, the printing press, the telephone, and the light bulb were all important inventions that changed the world. But the speed of change today is much faster than ever before.
+
+The first personal computers were sold in the 1970s and 1980s. They were big, slow, and very expensive. The internet was used by only a few scientists and universities until the 1990s, when it started to become popular with ordinary people. In those days, connecting to the internet made a strange screeching noise, and you could not use the telephone at the same time.
+
+Mobile phones also became common in the 1990s, but they could only make calls and send short text messages. Then everything changed. The first iPhone was released in 2007. It had a touch screen, a camera, music, and the internet, all in one small device. Other smartphones soon followed. Today, more than six billion people in the world have a smartphone. That is about three out of every four people on Earth.
+
+The smartphone in your pocket
+
+Smartphones allow us to do almost anything from our pocket. A modern smartphone is more powerful than the computers that were used to send astronauts to the moon in 1969. Think about everything we use it for in a single day. We use it as an alarm clock in the morning. We check the weather and the news. We send messages to our family and friends. We listen to music and podcasts on the bus. We take photos and videos. We look up information when we have a question. We pay for things in stores. We use maps to find our way. We watch videos, play games, and read books. We even use it to check our health, like how many steps we have walked or how well we have slept.
+
+All of these jobs used to need different things: a clock, a newspaper, a radio, a camera, a map, a wallet, a library, and a telephone. Now, they have been put into one small device. That is amazing. But it also explains why so many people find it hard to put their phone down.
+
+Communication
+
+The biggest change that technology has brought is in how we communicate. In the past, if you wanted to talk to someone in another country, you had to write a letter. The letter was carried by ship or plane, and it could take weeks to arrive. Phone calls to other countries were very expensive.
+
+Today, billions of messages are sent every day through apps like WhatsApp, WeChat, and others. They arrive in less than a second, and they are free. You can make video calls to anyone in the world and see their face as if they were in the same room. Families who live far apart can have dinner together on a screen. Grandparents can watch their grandchildren grow up from another continent.
+
+Social media has also changed communication. It allows us to share our lives with many people at once. We can follow our friends, our favorite artists, and people with similar interests. However, social media has also been criticized. Some people spend too many hours on it. Some people compare their lives with the perfect photos they see online and feel unhappy. And false information can spread very quickly. We will talk more about this later.
+
+Shopping and money
+
+Shopping has also been changed completely. In the past, you had to go to a store, look at the products, and pay with cash. Today, millions of people shop online. You can buy almost anything with a few clicks: clothes, food, books, furniture, and even cars. The products are delivered to your door, sometimes on the same day.
+
+Online shopping has many advantages. It is convenient. You can compare prices easily. You can read reviews from other customers. You can shop at any time of day or night. But it also has some disadvantages. You cannot touch or try on the products. Sometimes the product looks different from the photo. And many small local stores have closed, because they cannot compete with the giant online companies.
+
+Behind every online order, there is a huge system of technology. Orders are received by computers. Products are found in giant warehouses, often with the help of robots. Packages are scanned, sorted, and loaded onto trucks. Each package is tracked with a barcode, so you can see exactly where it is on a map. The trucks are guided by GPS. This whole system is called logistics, and it is one of the fastest-growing industries in the world.
+
+Money has become digital too. Many people rarely use cash. They pay with credit cards, with their phones, or with their watches. They check their bank accounts on an app and send money to friends instantly.
+
+School and learning
+
+Technology has also changed the way we learn. In many schools, students use laptops or tablets in class. Homework is submitted online. Teachers share videos, quizzes, and presentations. Students can work together on the same document from different homes.
+
+The internet is also the biggest library in history. Almost any question can be answered in seconds. You can learn a new language with an app, watch a video that teaches you how to fix a bike, or take a free course from a famous university. People who could never afford a university education can now learn from the best teachers in the world.
+
+But this also creates a challenge. Because information is so easy to find, some students copy answers instead of thinking for themselves. And not all information online is correct. Learning how to search well, and how to check if information is true, has become one of the most important skills of the twenty-first century.
+
+Artificial intelligence
+
+The newest big change is artificial intelligence, or AI. AI is a type of computer program that can learn from data and do tasks that used to need human intelligence. AI is already used in many places, even if we do not notice it. It recommends videos and songs that we might like. It translates languages. It recognizes faces in photos. It helps doctors find diseases in X-rays. It helps cars park themselves. And now, AI chat programs can answer questions, write texts, and help with homework.
+
+Many people are excited about AI. They believe it will help us solve big problems, like curing diseases and fighting climate change. Other people are worried. They worry that AI will take people's jobs, that it will be used to spread false information, or that it will make mistakes that are hard to notice. Most experts agree that AI is a powerful tool, and that it must be used carefully and responsibly.
+
+Living with devices
+
+All of these devices need power, and anyone who owns a smartphone knows the feeling of panic when the battery is at two percent. Many people now carry a small power bank so they can charge their phone anywhere. Phone batteries also get weaker over time. After two or three years, many phones cannot last a full day. Here is a tip: avoid letting your battery go to zero, and avoid leaving your phone in a hot car. Heat damages batteries.
+
+We also download and upload huge amounts of data every day. When you watch a video, you download it. When you post a photo, you upload it. When your phone updates its apps, it downloads new versions. All of this data travels through cables under the ocean and through towers that are placed all over our cities. A single minute of high-quality video can use more data than all the text messages a person sends in a whole year. And, of course, technology has changed food too: with a delivery app, a hot meal can be brought to your door in thirty minutes.
+
+The problems with technology
+
+Technology has made our lives easier, but it has also created new problems. Here are some of the most important ones.
+
+Screen time. Many people spend more than seven hours a day looking at screens. This can cause eye problems, back pain, and sleep problems. It also means less time for exercise, outdoor activities, and face-to-face conversations.
+
+Addiction. Many apps are designed to keep you using them for as long as possible. They use notifications, likes, and endless scrolling. Some people feel anxious when they do not have their phone. This is sometimes called "nomophobia," which means "no mobile phone phobia."
+
+Privacy. When we use the internet, a lot of information about us is collected: what we search for, what we buy, where we go, and who we talk to. This data is often used by companies to show us advertisements. Sometimes, it is stolen by criminals.
+
+Online scams. Criminals use technology to trick people and steal their money or personal information. Scams are sent by email, text message, phone call, and social media. They are becoming more and more convincing.
+
+False information. Anyone can post anything online. Some information is wrong by accident, and some is wrong on purpose. False stories are often shared more quickly than true stories, because they are surprising or emotional.
+
+How to stay safe online
+
+The good news is that you can protect yourself with some simple habits.
+
+Use strong passwords. A strong password is long and is not easy to guess. Do not use your name, your birthday, or "123456." Use a different password for each important account. A password manager app can help you remember them.
+
+Turn on two-step verification. This means that when you log in, you need your password and also a code that is sent to your phone. Even if someone steals your password, they cannot get into your account.
+
+Think before you click. Be careful with links in emails and messages, especially if they say something urgent, like "Your account has been locked!" or "You have won a prize!" Real companies do not usually ask for your password or bank details by message. If you are not sure, go directly to the official website or call the company.
+
+Protect your personal information. Do not share your address, your phone number, or your school's name publicly online. Check the privacy settings on your social media accounts. Be careful about which apps can see your location.
+
+Check before you share. Before you share a surprising story, check if it comes from a trusted source. Look for the same news on other reliable websites. If it sounds too crazy to be true, it might not be true.
+
+Keep your devices updated. Updates often fix security problems. When your phone asks you to update, do it.
+
+Finding a healthy balance
+
+Technology is not good or bad by itself. It is a tool, like a hammer. A hammer can be used to build a house, or it can hurt your finger. What matters is how we use it.
+
+Here are some ideas for a healthy balance. Have phone-free times, like during meals or the first hour after you wake up. Turn off notifications that you do not need. Use your phone to create, not only to consume: take photos, write, make music, or learn something new. And spend time every day doing things without a screen: talking with your family, reading a paper book, playing a sport, or simply looking out of the window.
+
+Technology has given us incredible powers. We can talk to anyone, learn anything, and buy almost everything from our pocket. The challenge for our generation is to use these powers wisely, so that technology makes our lives better, and not only busier.

@@ -1,0 +1,96 @@
+kind: story
+title: Grandma Has Joined Social Media
+zh: 奶奶上网了
+summary: 奶奶刚学会用社交软件，就开始给全家"惹麻烦"：在别人的照片下留言写长信、把孙子的尴尬旧照发到网上，最后却意外成了网红。
+grammar: 现在完成时 | have/has + 过去分词，表示过去发生、和现在有关的事，或从过去持续到现在 | Grandma has joined social media.
+grammar: 现在完成时 + ever / never | 问"有没有过"：Have you ever …? 回答常用 never | I have never been so embarrassed in my life.
+grammar: already / yet | already 用在肯定句"已经"；yet 用在否定句或疑问句句末"还（没）" | She hasn't figured out the privacy settings yet.
+grammar: for / since | for + 一段时间；since + 过去某个时间点 | She has had her phone for only three weeks.
+grammar: 定语从句 who / which / that | who 指人，which 指物，that 两者都可以 | the lady who lives next door
+vocab: social_media 社交媒体; account 账号; post 发帖; comment 评论; follower 粉丝; photo 照片; share 分享; embarrassed 尴尬的; privacy 隐私; settings 设置; message 消息; profile 个人主页; delete 删除; viral 爆红的; famous 出名的; grandson 孙子; relative 亲戚; screen 屏幕; type 打字; capital_letters 大写字母
+---
+My name is Kevin, and I am fourteen years old. I have had a phone for three years, and I have used social media for two. In that time, I have seen a lot of strange things online. I have seen cats that play the piano. I have seen people who eat forty hot dogs in ten minutes. But nothing has ever scared me as much as this sentence, which my mom said at dinner last month:
+
+"Guess what? Grandma has joined social media."
+
+I dropped my fork. My sister Jenny, who is sixteen, dropped her phone. My dad just closed his eyes and said, "Oh no."
+
+My grandma is seventy-three. She is a wonderful person. She makes the best dumplings in the world. She knits sweaters for everybody, even for our dog. But Grandma and technology have never been friends. She has owned a microwave for twenty years, and she still doesn't know how to use the timer. She calls the TV remote "the clicker." She thinks the internet lives inside the computer, like a hamster.
+
+Now, suddenly, Grandma had a smartphone. My uncle gave it to her for her birthday. She has had her phone for only three weeks, but she has already made an account on the most popular app. And she has sent friend requests to everyone. Everyone. Me, Jenny, my parents, all my cousins, her doctor, the lady who lives next door, and the man who fixed her washing machine in 2009.
+
+At first, it was fine. Grandma posted a picture of her garden. Twelve people liked it. She was very happy. She called my mom and said, "Twelve people like my tomatoes! I have never been so popular!"
+
+Then she discovered comments.
+
+The first comment appeared under my photo. It was a picture of me and my friends at the basketball court. We were trying to look cool. Under it, Grandma wrote:
+
+"KEVIN, IS THAT YOU? YOU LOOK TOO THIN. ARE YOU EATING ENOUGH? COME TO MY HOUSE ON SUNDAY. I WILL MAKE DUMPLINGS. ALSO, PLEASE CALL YOUR GRANDMOTHER MORE. LOVE, GRANDMA."
+
+Everything was in capital letters. My friends saw it. Within one hour, they had all commented under it. "Kevin, call your grandmother!" "Kevin, are you eating enough?" "Can I come for dumplings too?"
+
+I called Grandma. "Grandma," I said, "you don't need to write in capital letters. It looks like you are shouting."
+
+"I am not shouting," said Grandma. "My eyes are old. Big letters are easier to read. Also, why didn't you call me? I have waited all week."
+
+Jenny was next. She had posted a beautiful photo of the sunset at the beach. It was very artistic. She has worked hard on her photography for a year, and she was very proud of it. Grandma commented:
+
+"Very nice. But where is your jacket? It is cold at the beach in the evening. You will catch a cold. Your mother never wore a jacket either, and she was always sick."
+
+Then my mom saw it, and she commented, "Mom! That is not true!" And Grandma answered, "It is true. Do you remember 1994?" And then my aunt joined in, and my uncle, and soon there were forty-seven comments under Jenny's sunset photo. All of them were about my mom's health in 1994. Nobody said anything about the sunset.
+
+"I have never been so embarrassed in my life," said Jenny. She hid her phone under her pillow for two days.
+
+But the worst was still coming.
+
+Grandma had found the button that lets you share photos. And Grandma has a very big box of old family photos. Hundreds of them. She has kept them since 1970. One Saturday morning, she decided to "share some memories."
+
+The first photo she posted was my mom and dad's wedding. That was cute. The second photo was my uncle in the 1980s with very big hair. That was funny. The third photo was me.
+
+I was three years old. I was in the bathtub. I was wearing nothing except a pirate hat and a lot of bubbles. I was holding a rubber duck and smiling like a crazy person.
+
+Under the photo, Grandma wrote: "MY LITTLE KEVIN, THE BRAVE PIRATE. HE HATED BATH TIME, BUT HE LOVED THIS HAT. SO CUTE!!!"
+
+I saw it at 9:15 in the morning. By 9:30, it had forty likes. By ten o'clock, it had two hundred. My whole school had seen it. My basketball team had seen it. And Sophie Martinez, the girl who sits next to me in science class, had seen it. She commented with three laughing faces and the words, "Arrr, matey!"
+
+I ran to my parents' room. "Mom! Grandma has posted a picture of me in the bathtub! Everyone has seen it! My life is over!"
+
+My mom tried not to laugh. She really tried. But her shoulders were shaking. "I'll call her," she said.
+
+Grandma did not understand the problem. "But it is a beautiful picture," she said on the phone. "You were so cute. Why are you angry?"
+
+"Grandma, you can't post private photos for everyone to see!" I said. "Have you checked your privacy settings?"
+
+"What is privacy settings?"
+
+That was the moment I knew. She hasn't figured out the privacy settings yet. Anyone in the world could see her page. Anyone in the world could see the brave pirate.
+
+That afternoon, I went to Grandma's house. I sat with her at the kitchen table. I showed her how to change the settings. I showed her how to delete a post. I explained that some photos are for family only. I also explained the difference between a comment and a private message.
+
+"So if I write a message, only you can see it?" she asked.
+
+"Yes," I said.
+
+"And if I write a comment, everybody can see it?"
+
+"Yes."
+
+She thought for a moment. "Then why does everyone write such strange things in public? Your cousin Mark wrote that he was 'dead' because of a funny video. I called his mother. I was very worried."
+
+I laughed for five minutes.
+
+We deleted the pirate photo. Grandma was a little sad, but she understood. Then something unexpected happened.
+
+Before we deleted it, the picture had been shared more than three thousand times. People didn't really care about me. They cared about Grandma's comments. Someone had made a screenshot of her comment on my basketball photo, the one that said, "ARE YOU EATING ENOUGH?" And someone else had added the words, "Every grandma ever." It had gone viral. Thousands of people had shared it. They wrote things like, "This is exactly my grandma!" and "I need this woman to adopt me."
+
+In one week, Grandma got more than two thousand followers. Strangers from all over the world asked her for her dumpling recipe. A woman from Australia asked her for advice about her son, who never calls her. A teenager from Canada asked her what to wear on a first date. Grandma answered every single one of them. In capital letters.
+
+"I have never had so many friends," she told us at Sunday dinner. "Two thousand! Kevin, how many followers do you have?"
+
+"Three hundred and twelve," I said quietly.
+
+Grandma patted my hand. "Don't worry. You are young. Eat more dumplings, and one day you will be popular too."
+
+Now Grandma has her own cooking videos. She makes dumplings and talks about life. Her most popular video has been watched eighty thousand times. In it, she looks directly into the camera and says, "Call your grandmother. She is waiting."
+
+I call her every Wednesday now. Not because she asks me to. Well, partly because she asks me to. But mostly because I have learned something: my grandma is much cooler than me. And she has never once worn a pirate hat in public.

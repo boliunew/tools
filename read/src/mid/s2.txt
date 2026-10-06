@@ -1,0 +1,116 @@
+kind: story
+title: Operation Birthday Surprise
+zh: 生日惊喜大作战
+summary: 三兄妹给妈妈准备惊喜生日派对，计划很完美，执行起来一团糟：狗在吃蛋糕、爸爸在错误的时间回家，最后妈妈反而给了大家一个惊喜。
+grammar: 过去进行时 | was/were + 动词-ing，表示过去某一时刻正在发生的事 | At six o'clock, Dad was driving Mom to the restaurant.
+grammar: when / while 连接两个过去动作 | 长动作用过去进行时，打断它的短动作用一般过去时 | While we were decorating the living room, the dog was eating the cake.
+grammar: 过去进行时与一般过去时对比 | 背景用进行时，发生的事件用一般过去时 | We were blowing up balloons when the doorbell rang.
+grammar: 情态动词 should / might | should 应该，might 可能（不太确定） | They might be here in ten minutes!
+grammar: 动名词作主语 / 宾语 | 动词-ing 当名词用：Keeping a secret is hard. | Keeping a secret from my mom is like hiding the sun with a sock.
+vocab: surprise 惊喜; party 派对; balloon 气球; decorate 装饰; cake 蛋糕; candle 蜡烛; secret 秘密; plan 计划; hide 躲藏; guest 客人; doorbell 门铃; neighbor 邻居; frosting 糖霜; ruin 毁掉; panic 惊慌; whisper 低声说; signal 信号; arrive 到达; disaster 灾难; ceiling 天花板
+---
+Keeping a secret from my mom is like hiding the sun with a sock. She always knows. She knows when I haven't done my homework. She knows when I have eaten cookies before dinner. Once, she knew that I had broken a window, and she was at work at the time. So when my older brother Sam said, "Let's throw Mom a surprise party for her fortieth birthday," I thought it was a terrible idea.
+
+"She'll find out," I said. "She always finds out."
+
+"Not this time," said Sam. He is sixteen, and he thinks he is a genius. "This time, we have a plan."
+
+The plan had a name. It was called Operation Birthday Surprise. Sam wrote it on a piece of paper and hid it inside a cereal box, because Mom never eats cereal. The plan was simple. Dad would take Mom out for dinner at six o'clock. While they were eating, Sam, our little sister Lily, and I would decorate the house. We would invite twenty guests. At eight o'clock, Dad would bring Mom home. We would turn off the lights and hide. When Mom opened the door, we would jump out and shout, "SURPRISE!"
+
+"What could go wrong?" said Sam.
+
+Everything. Everything could go wrong.
+
+The first problem happened on the morning of the party. I was eating breakfast when Mom walked into the kitchen. She was holding the cereal box.
+
+"I thought I might try some cereal today," she said. "Why is there a piece of paper inside?"
+
+Sam was drinking orange juice at that moment. He made a noise like a broken vacuum cleaner. Orange juice came out of his nose.
+
+I grabbed the box. "That's mine! It's... homework. Math homework. Very boring. You shouldn't read it."
+
+Mom looked at me. Mom looked at Sam, who was still coughing. "Okay," she said slowly. "Math homework. In a cereal box." She smiled a strange smile and left the kitchen.
+
+"She knows," I whispered.
+
+"She doesn't know," said Sam. "Stay calm."
+
+At six o'clock, Dad was driving Mom to the restaurant. We watched the car leave from the window. "Go, go, go!" shouted Sam. Operation Birthday Surprise had begun.
+
+We worked fast. Lily, who is eight, was in charge of balloons. Sam was in charge of decorations. I was in charge of the cake. I had ordered a big chocolate cake from the bakery. It said "Happy 40th Birthday, Mom!" in pink frosting. It was beautiful. I put it on the kitchen table.
+
+At half past six, the guests started to arrive. Our neighbors came. Mom's best friend, Carol, came. Mom's coworkers came. Grandma came with a big bag of presents. Everybody was whispering, because it was a surprise, even though Mom was not there.
+
+We were blowing up balloons when the doorbell rang. It was Uncle Pete. Uncle Pete is very loud. He doesn't know how to whisper. "WHERE IS THE BIRTHDAY GIRL?" he shouted.
+
+"She's not here yet!" we all whispered back.
+
+"OH! RIGHT! THE SURPRISE!" he shouted. Then he tried to whisper, but his whisper was louder than most people's normal voice.
+
+At seven o'clock, everything was almost ready. There were balloons on the ceiling. There was a big banner over the door. There was music ready to play. I went to the kitchen to check on the cake.
+
+The cake was not on the table.
+
+I looked under the table. And there was Biscuit, our golden retriever. He was lying on his back. His face was brown. His nose was pink. He looked like the happiest dog in the history of the world. Next to him, there was an empty cake box and a small piece of cake that said "Mom!"
+
+"BISCUIT!" I screamed.
+
+Sam ran in. Lily ran in. Uncle Pete ran in. Everyone ran in. While we were decorating the living room, the dog was eating the cake. All of it. Except the word "Mom."
+
+Lily started to cry. Grandma started to laugh. Uncle Pete said, "WELL, AT LEAST HE LEFT THE IMPORTANT PART!"
+
+"We need a new cake," said Sam. He was starting to panic. "The bakery closes at seven-thirty. Max, take your bike. Go! Now!"
+
+I rode my bike faster than I have ever ridden in my life. I arrived at the bakery at 7:28. The lady was locking the door. I begged her. I told her about the dog. She felt sorry for me, and she sold me the last cake in the shop. It was a big white cake with blue flowers. On top, in blue frosting, it said, "Congratulations on Your Retirement, Bob!"
+
+"It's all I have," said the lady.
+
+I took it. There was no time to argue.
+
+When I got home, Sam had another problem. He was holding his phone, and his face was white. "Dad just texted," he said. "Mom wants to come home early. She says she has a headache. They're leaving the restaurant now. They might be here in ten minutes!"
+
+"Ten minutes?" said Carol. "Everybody, hide!"
+
+What happened next was chaos. Twenty-two people tried to hide in one living room. Grandma hid behind the curtains, but her feet were showing. Two neighbors hid under the table. Uncle Pete tried to hide behind a lamp. He is six feet tall, and the lamp is very thin. Lily hid in a cupboard. I put Bob's retirement cake on the table and covered the word "Bob" with a banana. It was the best I could do.
+
+Sam turned off the lights. "Nobody move," he whispered. "When the door opens, wait for my signal."
+
+We waited in the dark. We were all breathing very quietly. Someone's stomach was making noises. Biscuit, who was still full of chocolate cake, was snoring.
+
+Then we heard the car. We heard footsteps. We heard keys in the door.
+
+The door opened. The light came on.
+
+But it wasn't Mom. It was Dad. Alone. He was holding a pizza box.
+
+"Why is it so dark in here?" he said.
+
+Twenty-two people jumped out and shouted, "SURPRISE!"
+
+Dad screamed. He threw the pizza into the air. The pizza landed on Uncle Pete. Grandma came out from behind the curtains and fell over the dog.
+
+"Where's Mom?" shouted Sam.
+
+"She's in the car!" said Dad. "She's on the phone with her sister! I came in first to check that everything was ready!"
+
+"Well, it is NOT ready now!" said Sam.
+
+Then we heard another voice from the door. A calm, amused voice.
+
+"Is this a bad time?"
+
+It was Mom. She was standing in the doorway. She was looking at the balloons, the pizza on Uncle Pete, Grandma on the floor, the sleeping chocolate dog, and the cake that said "Congratulations on Your Retirement, Ba" because the banana had slipped.
+
+For a moment, nobody said anything.
+
+Then Mom started to laugh. She laughed so hard that she had to sit down on the floor next to Grandma. Everyone started laughing. Even Sam.
+
+"I knew," Mom said when she could finally speak. "I knew since this morning. The 'math homework' in the cereal box said 'Operation Birthday Surprise' at the top. In big letters. Sam, you have terrible handwriting, but it's not that terrible."
+
+"Then why didn't you say anything?" I asked.
+
+"Because," said Mom, "I wanted to see what would happen. And this is better than any surprise party in the world."
+
+That night, we ate pizza that had been on Uncle Pete, and we ate Bob's retirement cake. Mom said it was the best birthday she has ever had. She has told the story at every family dinner since then. She always ends it the same way: "And that's why you should never hide a secret plan in a cereal box."
+
+Biscuit did not get any cake. He had already had his share.

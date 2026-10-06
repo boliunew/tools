@@ -1,0 +1,84 @@
+kind: story
+title: If You Give Your Brother a Drum Set
+zh: 如果你给弟弟买一套鼓
+summary: 一家人给十二岁的弟弟买了一套鼓，后果像多米诺骨牌一样一个接一个：邻居、狗、奶奶、警察……每一个"如果"都引出下一个麻烦。
+grammar: 第一条件句 | If + 一般现在时，主句 will + 动词原形：真实可能发生的条件 | If you give Tyler a drum set, he will play it every day.
+grammar: unless | 除非 = if … not | He won't stop unless you take away the sticks.
+grammar: will 表示预测 | 对将来的判断 | The neighbors will complain.
+grammar: so … that | 如此……以至于 | The drums were so loud that the pictures on the wall started to shake.
+grammar: used to | 过去常常（现在不再） | Our house used to be quiet.
+vocab: drum 鼓; sticks 鼓槌; band 乐队; rhythm 节奏; noise 噪音; complain 抱怨; neighbor 邻居; earplugs 耳塞; practice 练习; basement 地下室; garage 车库; concert 音乐会; audience 观众; talent 天赋; patience 耐心; volume 音量; headphones 耳机; police_officer 警察; rock_star 摇滚明星; quiet 安静的
+---
+Our house used to be quiet. My dad used to read the newspaper on Saturday mornings. My mom used to do yoga in the living room. Our dog, Rocket, used to sleep for fourteen hours a day. I used to do my homework in peace. Those were the good old days. Then my little brother Tyler turned twelve, and my parents made the biggest mistake of their lives.
+
+They bought him a drum set.
+
+I tried to warn them. One week before his birthday, I saw the catalog on the kitchen table. There was a red circle around a picture of a shiny black drum set. I took the catalog to my mom.
+
+"Mom," I said, "I want to explain something to you. It's very important. If you give Tyler a drum set, he will play it every day."
+
+"That's the point," said Mom. "He loves music. His teacher says he has a lot of rhythm."
+
+"If he plays it every day, the house will be loud," I continued.
+
+"He'll practice in the garage," said Dad.
+
+"If he practices in the garage, the neighbors will complain," I said.
+
+"The neighbors are very nice people," said Mom.
+
+I gave up. Nobody listens to the middle child.
+
+On Tyler's birthday, the drum set arrived in five big boxes. Tyler screamed with happiness. It took Dad three hours to put it together. When it was finished, Tyler sat down behind it. He picked up the sticks. He looked at us with a serious face, like a rock star before a big concert.
+
+Then he hit everything at once.
+
+BOOM! CRASH! BANG-BANG-BANG! TSSSSS!
+
+The drums were so loud that the pictures on the wall started to shake. A glass fell off the kitchen shelf. Rocket, who had been asleep on the sofa, jumped two feet in the air and ran under the bed. He did not come out for six hours.
+
+"Wonderful!" said Mom, with her hands over her ears. "Maybe a little quieter, sweetheart?"
+
+Tyler did not play quieter. Tyler did not know the meaning of the word quieter.
+
+So the drums went into the garage. And this is what happened next, exactly as I predicted. I want you to notice that I predicted all of it.
+
+If you put a drum set in the garage, your brother will practice there every day after school. Tyler practiced from four o'clock to six o'clock every afternoon. He played the same rhythm again and again. BOOM-tsss, BOOM-BOOM-tsss. I could hear it in my bedroom, in the kitchen, and in the shower. I could hear it in my dreams.
+
+If your brother practices every day, the neighbors will complain. Mr. Henderson lives next door. He is retired, and he grows prize-winning roses. On the third day, he knocked on our door. He was holding a rose. "This rose," he said, "was beautiful yesterday. Today, all its petals have fallen off. I believe it was the vibration."
+
+If the neighbors complain, your parents will buy earplugs. Mom bought a box of fifty earplugs. She gave a pair to everyone in the family, and she gave a pair to Mr. Henderson. She even tried to put earplugs in Rocket's ears. Rocket did not agree with this plan.
+
+If everyone wears earplugs, nobody will hear anything. This was a bigger problem than we expected. Dad didn't hear the phone ring, and he missed an important call from his boss. Mom didn't hear the oven timer, and she burned the lasagna. I didn't hear my alarm clock, and I was late for school two times. And none of us heard Grandma, who came to visit and rang the doorbell for twenty minutes.
+
+If Grandma waits outside for twenty minutes, she will be angry. Grandma was very angry. She finally walked around the house and came in through the garage. She found Tyler there, playing the drums with his eyes closed. She stood in front of him with her arms crossed. Tyler did not see her for a full minute. When he opened his eyes, he screamed and fell off his chair.
+
+But then something surprising happened. Grandma didn't shout at him. She looked at the drums for a long time. Then she said, "Give me those sticks."
+
+It turns out that Grandma used to play the drums. In 1972, she was in a band. A real band. They were called The Silver Spoons, and they played at weddings and parties all over the state. Nobody in our family knew this. Not even Mom.
+
+Grandma sat down behind the drums. She hit them once, twice, to check the sound. And then she played. She played a long, fast, complicated rhythm. Her hands moved so fast that we could not see the sticks. It was amazing. Tyler's mouth was wide open. Mom's mouth was wide open. Even Rocket came out from under the bed to listen.
+
+When she finished, there was a long silence. Then Tyler said, "Grandma, will you teach me?"
+
+"I'll teach you," said Grandma, "but you have to promise me something. You will learn to play quietly first. A good drummer can play soft. Anyone can play loud."
+
+So now Grandma comes every Tuesday and Thursday. And, of course, things kept happening, one after another.
+
+If Grandma teaches your brother, he will get better. Tyler got much better. He learned real rhythms. He learned to play soft and loud. He learned to listen.
+
+If he gets better, he will start a band. Tyler started a band with three boys from his class. They called themselves The Garage Monkeys. They practiced in our garage on Saturdays. Four twelve-year-olds in one garage. You can imagine the noise.
+
+If he starts a band, someone will call the police. On a Saturday afternoon, a police car stopped in front of our house. A police officer got out. He was young and very serious. He walked to the garage. I thought, this is it. Tyler is going to jail.
+
+The police officer listened for a moment. Then he said, "Is that 'Back in Black'? You're playing it a little too fast." It turned out that he played the guitar. He stayed for forty minutes and gave the band some advice. Then he left, because someone had actually called about a stolen bicycle.
+
+If the band gets good enough, they will want to play a concert. The Garage Monkeys wanted to play a concert. Where? In our backyard, of course. They made posters. They invited the whole street.
+
+If you invite the whole street, Mr. Henderson will come. And he did. He sat in the front row with a cup of tea. We were all very nervous. But when the band started playing, something incredible happened. Mr. Henderson started tapping his foot. Then he started nodding his head. By the third song, he was dancing. He was seventy-eight years old, and he was dancing in our backyard.
+
+After the concert, he came to Tyler and shook his hand. "Young man," he said, "my roses have not recovered. But that was the most fun I have had in twenty years."
+
+So, what is the lesson of this story? I am still not sure. Our house is still loud. My homework is still interrupted every afternoon. Rocket still sleeps under the bed on band days. And I still have to wear earplugs at dinner sometimes.
+
+But I'll tell you one thing that I have learned. If you give your brother a drum set, he will make a lot of noise. Unless your grandma is a secret rock star. Then he will make music. He won't stop unless you take away the sticks, but by then, you won't want him to.

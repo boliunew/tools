@@ -1,0 +1,109 @@
+kind: article
+title: Jobs and Work: What Do People Do All Day?
+zh: 工作与职业：大家每天都在做什么？
+summary: 介绍医疗、教育、物流、建筑、餐饮、科技等常见职业，讲工作日、工资、面试和职场用语。初中阶段最常用的职业和工作类词汇。
+grammar: 定语从句 who / which / where | who 修饰人，which 修饰物，where 修饰地点 | A nurse is a person who takes care of patients.
+grammar: be responsible for + doing | 负责（做）某事 | Warehouse workers are responsible for receiving, storing, and shipping goods.
+grammar: 现在完成时谈经历 | have/has + 过去分词 | Have you ever had a part-time job?
+grammar: 动词不定式作表语 | My job is to … / The goal is to … | My job is to make sure every container goes to the right place.
+grammar: 一般现在时被动 | 描述工作流程 | Most goods are carried by trucks for at least part of their journey.
+vocab: job 工作; work 工作; career 职业; company 公司; office 办公室; boss 老板; manager 经理; employee 员工; coworker 同事; customer 顾客; salary 薪水; wage 工资; hour 小时; shift 班次; schedule 日程; skill 技能; experience 经验; training 培训; interview 面试; resume 简历; apply 申请; hire 雇用; deadline 截止日期; meeting 会议; teamwork 团队合作; responsible 负责的; warehouse 仓库; driver 司机; deliver 运送; retire 退休
+---
+Most adults spend about one third of their lives at work. That is more time than they spend with their families, more time than they spend on hobbies, and almost as much time as they spend sleeping. So the question "What do you want to be when you grow up?" is a very important one. In this article, we will look at different kinds of jobs, what people do at work every day, and some useful words and phrases for talking about work.
+
+Why do people work?
+
+The most obvious answer is money. People need money to pay for food, housing, clothes, transportation, and many other things. But money is not the only reason. Work also gives people a sense of purpose. It allows them to use their skills, to learn new things, and to feel that they are useful. Many people make their closest friends at work. And for many people, their job is part of their identity. When you meet someone new, one of the first questions they usually ask is, "So, what do you do?"
+
+Jobs in health care
+
+Health care is one of the biggest areas of work in the world, and it is growing as the population gets older. Doctors are the most famous health care workers. A doctor examines patients, finds out what is wrong with them, and decides on the best treatment. Some doctors are general doctors, who see all kinds of patients. Others are specialists, who focus on one part of the body, like the heart, the skin, or the eyes. Becoming a doctor takes a long time. In the United States, it usually takes about eleven years of study after high school.
+
+A nurse is a person who takes care of patients. Nurses check patients' temperature and blood pressure, give them medicine, clean wounds, and explain things to patients and their families. Many people say that nurses are the heart of a hospital. Nurses often work long shifts. A shift is a period of time when a person works, for example from seven in the morning to seven in the evening. Some nurses work the night shift, from seven in the evening to seven in the morning.
+
+Other health care jobs include dentists, who take care of teeth; pharmacists, who prepare and explain medicine; and paramedics, who drive ambulances and help people in emergencies.
+
+Jobs in education
+
+Teachers help people learn. Kindergarten teachers teach small children to read, count, and get along with others. High school teachers usually teach one or two subjects, like math, history, or English. University professors teach and also do research. Teaching is a job that needs a lot of patience and energy. Teachers do not only work in the classroom. They also plan lessons, grade homework and tests, and meet with parents. Many teachers say that the best part of their job is the moment when a student finally understands something difficult.
+
+Jobs in logistics and transportation
+
+Have you ever wondered how the things in a store get there? Every product you buy, from a banana to a bicycle, has made a long journey. The people who plan and manage this journey work in logistics.
+
+Most goods are carried by trucks for at least part of their journey. But many products also travel by ship, train, or plane. Goods from other countries usually arrive in big metal boxes called shipping containers. A container ship can carry more than twenty thousand containers. At the port, the containers are lifted off the ship by giant cranes and put onto trucks or trains.
+
+Many of these containers then go to a warehouse. A warehouse is a large building where goods are stored before they are sent to stores or customers. Warehouse workers are responsible for receiving, storing, and shipping goods. They unload trucks, check that the products are correct and not damaged, put them on shelves, and prepare orders. Many warehouses use machines like forklifts, and some use robots.
+
+There are also people who work in the yard outside the warehouse. A yard worker checks trucks and trailers when they arrive and leave, and makes sure they are in the right place. One yard worker described her job like this: "My job is to make sure every container goes to the right place. I check the container number, I take photos, and I record everything in the system. If one number is wrong, the container can get lost for days."
+
+Truck drivers carry goods from one place to another. Some drivers do short trips in the same city. Others drive long distances and are away from home for days or weeks. Truck drivers need a special license. They must follow strict rules about how many hours they can drive without resting, because tired drivers are dangerous.
+
+Delivery drivers bring packages to people's homes. Dispatchers work in an office and organize the drivers. They tell drivers where to go, solve problems, and communicate with customers. Logistics is a fast-paced world. Everything has a deadline, and small mistakes can cause big delays.
+
+Jobs in building and repair
+
+Construction workers build houses, roads, bridges, and buildings. It is hard physical work, often outside in hot or cold weather. Electricians install and repair electrical systems. Plumbers install and repair water pipes, toilets, and sinks. Mechanics repair cars and trucks. Carpenters work with wood. These jobs are called skilled trades. They usually need special training, but not always a university degree. Many skilled trades pay very well, because there are not enough trained workers.
+
+Jobs in food and service
+
+Restaurants employ many people. Chefs and cooks prepare food in the kitchen. Servers take orders and bring food to the tables. Dishwashers clean the plates and the kitchen. A restaurant manager is the person who organizes everything: the staff, the schedule, the money, and the customers.
+
+Other service jobs include cashiers, who work in stores and take payments; hairdressers; hotel receptionists; and customer service agents, who help customers on the phone or online. Service jobs need good communication skills and a lot of patience, because customers are not always polite.
+
+Jobs in offices and technology
+
+Many people work in offices. Accountants manage money and taxes for companies or people. Lawyers give legal advice and represent people in court. Marketing workers help companies sell their products. Human resources workers hire new employees and help with problems at work.
+
+Technology jobs are some of the fastest-growing jobs today. Software developers write the code that makes apps and websites work. Data analysts study large amounts of information to find useful patterns. IT support workers fix computer problems for other employees. Many of these jobs can be done from home, which is called remote work.
+
+A typical workday
+
+What does a normal workday look like? Of course, it depends on the job. But many office jobs follow a similar pattern. People arrive at around eight or nine o'clock in the morning. They check their emails and plan their day. There are usually some meetings with their manager or coworkers. A meeting is when a group of people get together to discuss something. In the middle of the day, they have a lunch break, usually thirty minutes to one hour. In the afternoon, they work on projects and try to finish their tasks before the deadline. They usually go home at around five or six o'clock.
+
+Other jobs are very different. Nurses, police officers, firefighters, and factory workers often work in shifts, including nights and weekends. Farmers get up before the sun. Restaurant workers are busiest when other people are relaxing, in the evenings and on weekends.
+
+Bosses and coworkers
+
+At most jobs, you have a boss. Your boss is the person who tells you what to do, checks your work, and helps you when there is a problem. A good boss explains things clearly, listens to employees, and gives praise when people do a good job. A bad boss can make even a great job feel terrible. Many studies have found that people do not leave bad jobs. They leave bad bosses. Your coworkers are also very important. You might spend eight hours a day with them, five days a week. When coworkers help each other, work is faster and more fun. When a delivery driver is sick, for example, a good team finds someone else to deliver the packages so that customers still get them on time.
+
+Money at work
+
+People are paid in different ways. Some people earn a wage, which is money paid for each hour of work. For example, someone might earn twenty dollars an hour. If they work more than forty hours a week, they often get paid more for the extra hours. This is called overtime. Other people earn a salary, which is a fixed amount of money every year, no matter how many hours they work. Salaries are usually paid every two weeks or every month. Some jobs also pay tips, like waiters, or commission, like salespeople.
+
+Many jobs also offer benefits. Benefits are extra things that the company gives, like health insurance, paid vacation days, and money for retirement. When people retire, usually in their sixties, they stop working.
+
+Getting a job
+
+How do people get a job? First, they look for job openings online, in newspapers, or through people they know. Then they apply. To apply for a job, you usually need a resume. A resume is a short document that lists your education, your work experience, and your skills. Many companies also ask for a cover letter, which explains why you want the job and why you are a good choice.
+
+If the company likes your application, they will invite you to an interview. In an interview, the employer asks you questions to learn more about you. Here are some common interview questions:
+
+Tell me about yourself.
+Why do you want to work here?
+What are your strengths and weaknesses?
+Have you ever had a problem at work? How did you solve it?
+Where do you see yourself in five years?
+
+Some tips for a good interview: arrive a few minutes early, dress neatly, smile, and make eye contact. Learn about the company before the interview. Give examples from your experience. And at the end, ask a question of your own, like "What does a typical day look like in this job?" This shows that you are interested.
+
+Your first job
+
+Many teenagers get their first job while they are still in school. Have you ever had a part-time job? Common first jobs include working in a fast-food restaurant, a supermarket, or a movie theater; babysitting; walking dogs; or cutting grass for neighbors. A first job is not usually exciting, but it teaches important lessons. You learn to be on time, to follow instructions, to work with other people, and to deal with customers. You also learn the value of money. When you have worked hard for four hours to earn sixty dollars, you think more carefully before you spend it.
+
+Important skills for any job
+
+No matter what job you do, some skills are always useful. Employers often call them "soft skills."
+
+Communication: speaking and writing clearly, and listening carefully.
+Teamwork: working well with other people to reach a common goal.
+Problem solving: finding solutions when something goes wrong.
+Being responsible: doing what you promised, on time, without someone checking.
+Flexibility: being able to change your plans when the situation changes.
+A positive attitude: staying calm and friendly, even on difficult days.
+
+These skills are not taught in one class at school. You learn them through experience: in sports teams, school projects, volunteering, and part-time jobs.
+
+Choosing a career
+
+Choosing a career is a big decision, and it can feel scary. Here is some advice. Think about what you enjoy and what you are good at. Do you like working with people, with your hands, with numbers, or with ideas? Do you prefer to be inside or outside? Talk to people who do different jobs, and ask them what they like and dislike about their work. Try different things through part-time jobs and volunteering. And remember that you do not have to choose one job for your whole life. Many people change careers two or three times. Your first job is not your last job. It is just the first step.

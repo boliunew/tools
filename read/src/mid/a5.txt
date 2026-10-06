@@ -1,0 +1,137 @@
+kind: article
+title: Traveling Abroad: From the Airport to the Hotel
+zh: 出国旅行：从机场到酒店
+summary: 一次出国旅行的全过程：订票、打包、值机安检、坐飞机、过海关、住酒店、问路、点菜和应对意外。每个环节都有最常用的词和整句。
+grammar: 现在进行时表示安排好的将来 | 已经订好、确定的计划 | We are flying to London next Friday.
+grammar: 间接疑问句 | Could you tell me / Do you know + 疑问词 + 陈述语序 | Could you tell me where the gate is?
+grammar: have to / don't have to | 必须 / 不必 | You don't have to print your boarding pass.
+grammar: will 表示临时决定 | 当场做出的决定 | I'll take the room with the view.
+grammar: 一般将来时的被动 | will be + 过去分词 | Your bag will be checked at the security gate.
+vocab: travel 旅行; trip 旅程; abroad 在国外; passport 护照; visa 签证; ticket 票; flight 航班; airport 机场; airline 航空公司; check_in 办理登机; luggage 行李; suitcase 手提箱; boarding_pass 登机牌; gate 登机口; security 安检; delay 延误; seat 座位; customs 海关; currency 货币; hotel 酒店; reservation 预订; reception 前台; tourist 游客; sightseeing 观光; guide 导游; souvenir 纪念品; map 地图; menu 菜单; local 当地的; culture 文化
+---
+Traveling to another country is one of the most exciting experiences in life. You see new places, try new food, meet new people, and learn about different cultures. But traveling abroad can also be stressful, especially if you do not speak the local language well. The good news is that English is used at airports and hotels almost everywhere in the world. If you learn the most common words and phrases, you will be able to handle most travel situations with confidence.
+
+In this article, we will follow a family on their trip from the United States to London, England. We will go step by step, from planning the trip to coming home again.
+
+Planning the trip
+
+The Lopez family, Mom, Dad, and their two teenagers, Ana and Marco, have been planning this trip for months. "We are flying to London next Friday," Ana told her friends at school. "We are staying for ten days, and then we are taking the train to Paris for three days." She was very excited.
+
+Planning a trip abroad takes time. First, you need a passport. A passport is an official document that shows who you are and which country you are from. You must have a passport to travel to another country. In many countries, it takes several weeks to get one, so do not wait until the last minute. You should also check if you need a visa. A visa is special permission to enter a country. Some countries require a visa, and some do not. It depends on your nationality and the country you are visiting.
+
+Next, you need to book your flights and your accommodation. Accommodation means the place where you sleep, like a hotel, a hostel, or an apartment. The Lopez family booked their flights online three months early, because flights usually become more expensive closer to the travel date. They also made a reservation at a small hotel in central London.
+
+It is also a good idea to buy travel insurance. Travel insurance pays for problems during your trip, like lost luggage, cancelled flights, or a visit to the hospital. Hopefully you will not need it, but if you do, it can save you a lot of money.
+
+Packing
+
+Packing is an art. Most people pack too much. Here are some tips. Check the weather forecast for your destination. Make a list of everything you need. Roll your clothes instead of folding them, because they take less space and do not get as wrinkled. Choose clothes that you can combine in different ways. And always leave a little space in your suitcase for souvenirs.
+
+Some items should always go in your carry-on bag, which is the small bag that you take with you on the plane. These include your passport, your wallet, your phone and charger, any medicine you need, and a change of clothes in case your suitcase gets lost. Liquids in your carry-on bag must be in small bottles, usually no more than one hundred milliliters each.
+
+At the airport
+
+On the day of the flight, the Lopez family arrived at the airport three hours early. For international flights, it is a good idea to arrive at least two or three hours before departure.
+
+The first step is check-in. Today, most people check in online on the airline's app the day before the flight. You don't have to print your boarding pass. You can show it on your phone. A boarding pass is the document that shows your name, your flight number, your seat, and your gate. At the airport, you go to the airline's counter to drop off your checked luggage. Checked luggage is the big suitcase that travels under the plane. The airline worker weighs your suitcase. If it is too heavy, you will have to pay an extra fee.
+
+"Good morning," said the airline worker. "Where are you flying to today?"
+
+"London," said Dad.
+
+"Can I see your passports, please? Are you checking any bags?"
+
+"Yes, two suitcases."
+
+"Did you pack your bags yourself? Are there any batteries or dangerous items inside?"
+
+"No, nothing like that."
+
+"Great. Here are your luggage tags. Your bags will be sent directly to London. Your flight leaves from Gate 42. Boarding starts at 10:15. Have a nice flight!"
+
+The next step is security. Your bag will be checked at the security gate. You put your carry-on bag, your jacket, your laptop, and sometimes your shoes in plastic trays. They go through an X-ray machine. Then you walk through a metal detector or a body scanner. If the machine beeps, a security officer might check you by hand. It is not fun, but it keeps everyone safe.
+
+After security, there is usually time to relax. Airports have shops, restaurants, and cafes. Marco wanted to buy a snack, but he was worried about missing the plane. He found an airport worker and asked politely, "Excuse me, could you tell me where the gate is? Gate 42?"
+
+"Sure," said the worker. "Go straight down this hallway and turn left. It's about a ten-minute walk. Keep an eye on the screens, in case the gate changes."
+
+Airport screens show all departures and arrivals. They show the flight number, the destination, the time, the gate, and the status. The status might say "On time," "Delayed," "Boarding," "Final call," or "Cancelled." When you see "Final call," you must go to the gate immediately, or the plane will leave without you.
+
+On the plane
+
+The Lopez family boarded the plane and found their seats. Ana had a window seat. Marco had an aisle seat, which is the seat next to the walkway. The flight attendants showed the safety instructions. They explained how to use the seatbelt, where the emergency exits were, and what to do if there was a problem.
+
+The flight to London took about ten hours. During the flight, the passengers were served two meals and some snacks. "Would you like chicken or pasta?" asked the flight attendant. "Chicken, please," said Mom. "And could I have some water, please?"
+
+To make a long flight more comfortable, drink a lot of water, walk around the plane every few hours, and try to sleep if it is night time at your destination. This helps your body adjust to the new time zone. The tired feeling you get after flying across many time zones is called jet lag. Jet lag can make you feel tired, hungry at strange times, and confused for a few days.
+
+Arrival and customs
+
+When the plane landed in London, the passengers went to passport control. A border officer checked their passports and asked them some questions.
+
+"What is the purpose of your visit?"
+
+"Tourism. We're on vacation."
+
+"How long are you staying?"
+
+"Ten days in London, then three days in France."
+
+"Where are you staying?"
+
+"At a hotel near Hyde Park."
+
+"Enjoy your stay."
+
+Then they went to baggage claim, the area where you collect your checked luggage. Bags come out on a moving belt called a carousel. The family waited for twenty minutes. Three suitcases arrived. The fourth one did not. "Oh no," said Dad. "Where's my suitcase?"
+
+They went to the lost baggage desk. "My suitcase hasn't arrived," Dad explained. "It's a big black suitcase with a red ribbon on the handle." The airline worker took his information. "Don't worry," she said. "Most bags are found within twenty-four hours. It will be delivered to your hotel." Luckily, Dad had packed a change of clothes in his carry-on bag. The suitcase arrived at the hotel the next evening.
+
+Finally, they went through customs. Customs is the place where officers check if you are bringing anything into the country that is not allowed, or that you need to pay taxes on, like large amounts of alcohol or cigarettes.
+
+Money
+
+Before leaving the airport, the family needed some local money. The currency in the United Kingdom is the British pound. In France, and in many other European countries, the currency is the euro. You can change money at the airport, but the exchange rate is usually not very good. It is often cheaper to take money from an ATM or to pay with a credit card. Before you travel, tell your bank that you are going abroad, so they do not block your card.
+
+At the hotel
+
+The family took the subway, which Londoners call "the Tube," to their hotel. At the reception desk, Mom said, "Hello, we have a reservation under the name Lopez."
+
+"Welcome!" said the receptionist. "Yes, I have your reservation here. Two rooms for ten nights. We have a standard room on the second floor, or for a small extra charge, a room on the eighth floor with a view of the park."
+
+Mom thought for a second. "I'll take the room with the view," she said.
+
+"Excellent choice. Breakfast is served from seven to ten in the restaurant on the ground floor. Here are your key cards. The Wi-Fi password is on the card. If you need anything, just call reception."
+
+Here are some other useful hotel questions:
+
+What time is check-out?
+Could I have an extra towel, please?
+Is there a safe in the room?
+The air conditioning doesn't work. Could someone fix it?
+Can you recommend a good restaurant nearby?
+Could you call a taxi for us?
+
+Getting around the city
+
+In London, the family bought a travel card for the Tube and the buses. Each ticket for a single trip can be expensive, so a weekly card saved them money. They also downloaded a map of the city on their phones, so they could find their way even without the internet. But Mom liked to carry a paper map too. "Phones run out of battery," she said. "Paper maps don't."
+
+Sightseeing
+
+Over the next ten days, the family went sightseeing. Sightseeing means visiting famous and interesting places. They saw Big Ben and the Houses of Parliament. They watched the Changing of the Guard at Buckingham Palace. They rode the London Eye, a giant wheel with amazing views of the city. They visited the British Museum, which is free and has treasures from all over the world. Ana's favorite place was a huge bookstore with five floors. Marco's favorite was a street market where he tried food from ten different countries.
+
+They also took a tour with a guide, a person who shows tourists around and explains the history of the places. The guide was funny and told them many stories about kings, queens, ghosts, and famous writers.
+
+Eating out
+
+Trying local food is one of the best parts of travel. In a restaurant, the server will bring you a menu and ask, "Are you ready to order?" You can say, "Yes, I'd like the fish and chips, please," or "Not yet, could we have a few more minutes?" If you have an allergy, tell the server: "I'm allergic to nuts. Does this dish have any nuts in it?" At the end, ask for the bill: "Could we have the bill, please?" In the United States, people call it "the check."
+
+Tipping customs are different in every country. In the United States, people usually tip fifteen to twenty percent. In the United Kingdom, a service charge is often included in the bill. In Japan, tipping can even be considered rude. Always check the local custom.
+
+Being a good tourist
+
+When you visit another country, remember that you are a guest. Learn a few words in the local language, like "hello," "please," "thank you," and "excuse me." People appreciate the effort, even if your pronunciation is not perfect. Respect local customs. In some places, you have to take off your shoes before entering a home or a temple. In others, you have to cover your shoulders in religious buildings. Be patient and polite, even when things go wrong. And always be aware of your belongings, especially in crowded tourist areas, because pickpockets often target tourists.
+
+Coming home
+
+After two wonderful weeks, the Lopez family flew home. They were tired, their suitcases were full of souvenirs, and their phones were full of photos. Ana had already started planning their next trip. "Next year," she said, "I want to go to Japan." Dad looked at his credit card bill. "Next year," he said, "we're going camping."

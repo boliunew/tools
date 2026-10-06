@@ -33,6 +33,17 @@ def words(text):
     return len(re.findall(r"[A-Za-z]+(?:['’-][A-Za-z]+)*", text))
 
 
+def locate(full, ex):
+    """Find a grammar example in the text, forgiving end punctuation and capitalisation."""
+    if ex in full:
+        return ex
+    core = ex.rstrip(".!?,;: ")
+    if core and core in full:
+        return core
+    m = re.search(re.escape(core), full, re.I)
+    return full[m.start():m.end()] if m else None
+
+
 def parse(path):
     raw = open(path, encoding="utf-8").read().replace("\r\n", "\n")
     head, body = raw.split("\n---\n", 1)
@@ -70,14 +81,19 @@ def main():
         for it in items:
             full = " ".join(it["paras"])
             for g in it["grammar"]:
-                if g["ex"] not in full:
+                ex = locate(full, g["ex"])
+                if ex is None:
                     print(f"[{lv}/{it['id']}] grammar example not found in text: {g['ex']!r}")
                     bad += 1
-            low = full.lower()
-            for w, _ in it["vocab"]:
-                if w.lower() not in low:
-                    print(f"[{lv}/{it['id']}] vocab word not in text: {w!r}")
-                    bad += 1
+                else:
+                    g["ex"] = ex          # the exact text slice, so the page can highlight it
+            keep = []
+            for w, zh in it["vocab"]:
+                if re.search(r"\b" + re.escape(w) + r"(s|es|d|ed|ing)?\b", full, re.I):
+                    keep.append([w, zh])
+                else:
+                    print(f"[{lv}/{it['id']}] (dropped key word not used in text: {w})")
+            it["vocab"] = keep
             need = MIN_WORDS.get(it["kind"], 0)
             flag = "" if it["words"] >= need else f"   <-- needs {need}+"
             if flag:

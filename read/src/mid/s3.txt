@@ -1,0 +1,90 @@
+kind: story
+title: The Science Fair Volcano Was Too Good
+zh: 科学展的火山太成功了
+summary: 双胞胎为了赢科学展，把小苏打火山"升级"了十倍。结果体育馆被泡沫淹没、校长被喷了一身，他们却因为另一个原因拿了奖。
+grammar: 一般过去时的被动语态 | was/were + 过去分词，强调动作的承受者 | The gym was covered in pink foam.
+grammar: 一般现在时的被动语态 | am/is/are + 过去分词 | Volcanoes are made with baking soda and vinegar.
+grammar: by 引出动作执行者 | 被动句中用 by 说明"被谁" | The principal was hit by a wave of foam.
+grammar: 情态动词的被动 | can/must/should + be + 过去分词 | Safety glasses must be worn at all times.
+grammar: too … to / enough to | too + 形容词 + to do 太……而不能；形容词 + enough to do 足够……可以 | The bottle was too small to hold all that foam.
+vocab: science_fair 科学展; volcano 火山; experiment 实验; baking_soda 小苏打; vinegar 醋; foam 泡沫; chemical 化学的; reaction 反应; judge 评委; project 项目; gym 体育馆; principal 校长; explode 爆炸; safety 安全; goggles 护目镜; prize 奖; measure 测量; result 结果; mess 一团糟; mop 拖把
+---
+Every year, our school has a science fair. It is held in the gym in March, and every student in seventh grade must enter a project. The projects are judged by three teachers and one real scientist from the local university. The winner gets a gold medal, a hundred-dollar gift card, and their photo in the town newspaper.
+
+My twin brother Owen and I have entered the science fair three times. We have never won. In fifth grade, we made a model of the solar system, but the dog ate Jupiter. In sixth grade, we tried to grow plants under different colored lights. All of them died, even the ones under normal light. Last year, we built a robot arm. It was supposed to pick up a cup. Instead, it picked up the judge's glasses and threw them across the room.
+
+This year, Owen had a plan. "We are going to make a volcano," he said.
+
+"A volcano?" I said. "Everybody makes a volcano. Volcanoes are made with baking soda and vinegar. Little kids make them in kindergarten."
+
+"Not like ours," said Owen. He had a strange light in his eyes. "Ours is going to be the biggest, the best, and the most powerful volcano that has ever been made at Riverside Middle School."
+
+I should have said no. I really should have said no.
+
+We worked on the volcano for three weeks. The mountain was built from chicken wire and newspaper in our garage. It was painted brown and gray, and there were little plastic trees on the sides. It was taller than our little sister. Inside the mountain, there was a big plastic bottle. That is where the eruption would happen.
+
+The science part is simple. When baking soda is mixed with vinegar, a chemical reaction happens. The reaction produces a gas called carbon dioxide. The gas makes bubbles, and the bubbles push the liquid up and out of the bottle. That is your eruption. Usually, you use two spoons of baking soda and one cup of vinegar, and you get a nice little fountain of foam.
+
+Owen did not want a nice little fountain. Owen wanted Mount Vesuvius.
+
+"More baking soda means a bigger reaction," he explained. "So we will use ten times more." He also added dish soap, because soap makes the bubbles stronger and longer. And he added red and pink food coloring, because "lava should look like lava."
+
+We tested a small version in the backyard. It worked perfectly. The foam went up about one meter and came down the sides of the mountain like real lava. Our mom took a video. "That's wonderful," she said. "But don't make it any bigger."
+
+We did not test the big version. That was our first mistake.
+
+On the day of the science fair, the gym was full. There were sixty projects on long tables. Parents were walking around. Little kids were running everywhere. The judges were moving from table to table with clipboards. Safety glasses must be worn at all times, said a big sign on the wall. Owen and I put on our goggles. We looked very professional.
+
+Our table was in the middle of the gym, between a project about bean plants and a project about which kind of paper airplane flies the farthest. The bean plant girl looked at our volcano nervously. "Is that safe?" she asked.
+
+"Totally safe," said Owen.
+
+At two o'clock, the judges came to our table. There was Mr. Brooks, our science teacher. There was Ms. Chen, the math teacher. There was Dr. Patel, the scientist from the university. And because it was a special day, the principal, Mrs. Graham, was walking with them. She was wearing a beautiful white suit.
+
+"Tell us about your project," said Dr. Patel.
+
+I explained the chemistry. I talked about baking soda, vinegar, and carbon dioxide. I explained why the soap was added. Dr. Patel nodded. He seemed interested. "Very good," he said. "Can we see it?"
+
+Owen smiled. He picked up a big jug of vinegar. Not a cup. A jug. Two liters. I had not seen that jug before.
+
+"Owen," I whispered. "How much baking soda is in the bottle?"
+
+"Three boxes," he whispered back.
+
+"THREE BOXES?"
+
+But it was too late. Owen poured the vinegar into the mountain.
+
+For one second, nothing happened. Then there was a deep sound, like a giant clearing his throat. The mountain shook. And then the volcano erupted.
+
+It was not a fountain. It was an explosion. A huge column of pink foam shot out of the top of the mountain, straight up, almost to the ceiling. Everyone in the gym turned around. Someone screamed. The foam came down like a pink waterfall, and it did not stop. It kept coming and coming. The bottle was too small to hold all that foam, but the reaction did not care.
+
+The bean plants were the first to go. They were buried in pink foam in three seconds. Then the paper airplanes were swept off the next table. Then the foam spread across the floor in every direction, like a slow pink flood. Kids were laughing and running. Parents were lifting their small children into the air.
+
+And the principal was hit by a wave of foam.
+
+It happened in slow motion. The foam fell from the top of the volcano and landed right on Mrs. Graham. Her beautiful white suit was now pink. Her hair was pink. Her glasses were covered with pink bubbles. She stood completely still.
+
+The gym went silent. Even the volcano seemed to stop and wait.
+
+Owen took off his goggles. "So," he said in a very small voice, "that's the eruption."
+
+The cleanup took two hours. The gym was covered in pink foam. Every mop in the school was used. The janitor, Mr. Lee, said that he had worked at the school for twenty-two years, and he had never seen anything like it. He did not seem angry, though. He seemed impressed. He took a lot of photos.
+
+Owen and I were sent to the principal's office. We sat there for thirty minutes, sure that we would be suspended. When Mrs. Graham finally came in, she had changed into a gym T-shirt. Her hair was still a little pink.
+
+"Do you know," she said, "how much that suit cost?"
+
+We shook our heads. We were too scared to speak.
+
+Then the door opened. It was Dr. Patel, the scientist. He was holding a clipboard, and he was smiling. "Mrs. Graham, may I say something?"
+
+He explained that our volcano was a fantastic example of a chemical reaction that gets out of control. In real science, he said, this is a big problem. Engineers must calculate exactly how much gas will be produced, or tanks and pipes can explode. "These two boys," he said, "just showed sixty students, and their parents, what happens when you don't measure carefully. Nobody in that gym will ever forget it. That is the best science lesson I have seen in years."
+
+Mrs. Graham was quiet for a long time. Then, to our surprise, she laughed. "I suppose," she said, "the suit was a little too white anyway."
+
+We did not win the gold medal. The gold medal was won by the girl with the bean plants, because the judges felt sorry for her, and because her plants survived under the foam, which was actually a very interesting result. But Owen and I were given a special prize. It was a certificate, and it said: "For the Most Memorable Experiment in School History."
+
+Our picture was printed in the town newspaper after all. In the photo, we are standing in front of our volcano, wearing goggles, covered in pink foam. Behind us, you can see Mr. Lee holding a mop.
+
+Next year, Owen wants to study electricity. Mrs. Graham has already said no.

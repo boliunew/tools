@@ -1,0 +1,86 @@
+kind: story
+title: The Worst Camping Trip Ever
+zh: 史上最糟的露营
+summary: 从没露营过的城里一家人，被爸爸拉去"亲近大自然"。帐篷搭反了、熊来偷零食、手机没信号，最后一家人却说这是最好的一次旅行。
+grammar: 不定式 to do 表目的 | 为了做某事 | We are going to the mountains to get away from screens.
+grammar: 动词 + to do / 动词 + doing | decide, want, plan 后接 to do；enjoy, finish, mind 后接 doing | Dad decided to teach us how to make a fire.
+grammar: 情态动词 must / have to / don't have to | must 必须（说话人认为）；have to 必须（客观要求）；don't have to 不必 | You don't have to be afraid of bears.
+grammar: 感叹句 What / How | What + (a/an) + 形容词 + 名词！How + 形容词！ | What a beautiful night it was!
+grammar: 形容词 -ed 和 -ing | -ed 描述人的感受（bored），-ing 描述事物的特征（boring） | It was the most exciting and the most frightening night of my life.
+vocab: camping 露营; tent 帐篷; sleeping_bag 睡袋; campfire 篝火; forest 森林; bear 熊; flashlight 手电筒; marshmallow 棉花糖; mosquito 蚊子; signal 信号; map 地图; trail 小路; lake 湖; stars 星星; nature 自然; noise 声音; scared 害怕的; lost 迷路的; wild 野生的; survive 生存
+---
+My family is not an outdoor family. We are an indoor family. My mom works on a computer all day. My dad works on a computer all day. My sister Chloe and I spend most of our free time looking at our phones. Our idea of nature is the plant in the living room, and it is plastic.
+
+So we were all very surprised when Dad came home one Friday and said, "This summer, we are going camping."
+
+"Camping?" said Mom. "Like, in a tent?"
+
+"In a tent," said Dad. "In the forest. For three days. No Wi-Fi. No TV. Just us and nature." He had a strange, happy look on his face. He had been watching survival videos online for a month. We should have seen this coming.
+
+"Why?" asked Chloe. She is fifteen and she asks "why" about everything.
+
+"To get away from screens," said Dad. "We are going to the mountains to get away from screens. We need to reconnect with nature. And with each other."
+
+"I am connected with you," said Chloe. "We are in the same family group chat."
+
+Dad did not listen. Two weeks later, we were driving into the mountains in a car full of equipment. Dad had bought everything: a big tent, four sleeping bags, flashlights, a camping stove, a first-aid kit, a water filter, and a book called How to Survive in the Wild. He had never opened the book.
+
+The campsite was beautiful. I have to admit that. It was next to a lake, surrounded by tall pine trees. The air smelled clean and fresh. There were birds singing and a small river running into the lake. Mom took a deep breath. "Okay," she said. "This is nice."
+
+Then Chloe looked at her phone. "There's no signal," she said. Her voice was the voice of a person in a horror movie.
+
+"Exactly," said Dad. "Isn't it wonderful?"
+
+The first challenge was the tent. Dad said he didn't need the instructions. "How hard can it be?" he said. It was very hard. It took us two hours. First, we put the tent up upside down. Then we put it up inside out. Then we put it up correctly, but on top of a big rock, right in the middle. Finally, we moved it to a flat place. By then, it was getting dark, and we were all hungry and annoyed.
+
+Dad decided to teach us how to make a fire. He had seen it in a video. He collected sticks and dry leaves. He put them in a little pile. He used a special stick to make sparks. He tried for twenty minutes. No fire. He tried for forty minutes. Still no fire. The sun went down. Mosquitoes came out. Hundreds of them. They loved Dad most of all.
+
+Finally, Mom went to the car and came back with a box of matches and a bottle of lighter fluid. In ten seconds, there was a big, beautiful fire. Dad looked at her. "That's cheating," he said.
+
+"That's dinner," said Mom.
+
+We cooked hot dogs on sticks over the fire. Then we toasted marshmallows. My marshmallow caught fire and became a little black ball. Chloe's fell into the fire. Dad's was perfect, golden brown. He held it up proudly. Then a moth landed on it. We ate them anyway. The marshmallows, not the moths.
+
+After dinner, something happened that I didn't expect. Without our phones, we just sat around the fire and talked. Dad told us stories about his childhood. Mom told us how she and Dad met, which was very embarrassing and very funny. Chloe even laughed, a real laugh, not a phone laugh. Then we looked up.
+
+What a beautiful night it was! I had never seen so many stars. In the city, you can see maybe twenty stars. Here, there were thousands. Millions. The whole sky was covered in them. We could even see the Milky Way, like a long white cloud across the sky. Nobody said anything for a long time. We just looked.
+
+Then we went to bed, and things got bad again.
+
+The tent was too small for four people. My sleeping bag was on a rock. Chloe kicked in her sleep. Dad snored like a motorcycle. And the forest at night is not quiet. There were hundreds of noises. Owls. Insects. Wind in the trees. And something else. Something big, walking around outside the tent.
+
+Crunch. Crunch. Crunch.
+
+"Dad," I whispered. "There's something outside."
+
+"It's probably a raccoon," Dad whispered back. But his voice was not confident.
+
+Crunch. Crunch. Then a loud sniffing sound. Then the sound of something heavy hitting our cooler.
+
+Chloe sat up. "That is not a raccoon," she said.
+
+Very slowly, Dad opened the tent door a little, and he turned on the flashlight. There, next to our cooler, was a bear. A real, black bear. It was not very big, but it was a bear. It had opened the cooler with its paws. It was eating our bacon.
+
+Nobody moved. Nobody breathed.
+
+Then Mom, who has never camped in her life, did something brave. She remembered a sign at the entrance of the campsite. She took two cooking pots and started banging them together. CLANG! CLANG! CLANG! "GO AWAY, BEAR!" she shouted. "GO AWAY!"
+
+The bear looked up. It looked at Mom. It looked very annoyed, like a teenager who has been told to go to bed. Then it picked up the whole package of hot dog buns in its mouth and walked slowly back into the forest.
+
+We stayed awake for the rest of the night. Dad finally opened the survival book with his flashlight. "It says here," he read, "you must never keep food near your tent. All food must be locked in your car." He closed the book. "Good to know."
+
+The next morning, we met the park ranger. She was a friendly woman with a big hat. When we told her about the bear, she laughed. "Oh, that's Gus," she said. "He visits all the new campers. You don't have to be afraid of bears like Gus. He's not dangerous. He just loves bacon. You have to keep your food in the car, though. Gus can open a cooler faster than you can."
+
+On the second day, we went hiking. We got lost for three hours because Dad said he didn't need a map. On the third day, it rained all morning, and the tent leaked. My sleeping bag was wet. Chloe's phone ran out of battery, even though there was no signal. Dad got so many mosquito bites that his arm looked like a map of the stars.
+
+When we finally drove home, we were dirty, tired, and wet. Nobody talked for the first hour. Then Chloe said, "That was the worst trip of my life."
+
+"I'm sorry," said Dad. He looked sad.
+
+"No," said Chloe. "I mean, it was terrible. But it was the best worst trip. Can we go again next year?"
+
+We all stared at her.
+
+"What?" she said. "I want to see Gus again."
+
+It was the most exciting and the most frightening night of my life, and I will never forget it. We are going again next summer. This time, Dad has promised to read the book first. And Mom is bringing more pots.
