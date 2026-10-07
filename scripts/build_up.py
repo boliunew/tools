@@ -698,6 +698,7 @@ QSRC = {
     "ss42": ["《42 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=42-up"],
     "ss49": ["《49 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=49-up"],
     "ss56": ["《56 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=56-up"],
+    "srtsu7": ["《Рождённые в СССР. Семилетние》（1991）俄语字幕", ""],
     "kw7": ["Katherine Wikoff · Watching the Up Series #1 Seven Up", "https://katherinewikoff.com/2013/07/08/watching-the-up-series-1-seven-up/"],
     "kw14": ["Katherine Wikoff · #2 7 Plus Seven", "https://katherinewikoff.com/2013/07/14/watching-the-up-series-2-7-plus-seven/"],
     "kw21": ["Katherine Wikoff · #3 21 Up", "https://katherinewikoff.com/2013/07/24/watching-the-up-documentary-series-film-3-21-up/"],
