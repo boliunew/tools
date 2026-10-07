@@ -145,6 +145,32 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 .up-seg button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 4px;font-size:14.5px;font-weight:600}
 .up-seg button.on{background:#2B2B2B;border-color:#2B2B2B;color:#F3EEE4}
 @media (prefers-color-scheme: dark){.up-seg button.on{background:#EDE7DA;border-color:#EDE7DA;color:#16130F}}
+.up-seg{flex-wrap:wrap}.up-seg button{flex:1 0 30%;font-size:14px}
+.ask-in,.pro-in{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 16px;margin:12px 0 10px;font-size:14.5px;line-height:1.7;color:var(--soft)}
+.pro-in b{color:var(--ink);display:block;margin-bottom:4px}.pro-in small{color:var(--faint)}
+.ask-th{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin:10px 0 14px}
+.ask-th button{display:flex;align-items:center;gap:6px;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 10px;font-size:13.5px;font-weight:600;color:var(--ink)}
+.ask-th button i{font-style:normal}.ask-th button small{margin-left:auto;font-weight:400;color:var(--faint);font-size:12px}
+.ask-th button.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.ask-hd{display:flex;gap:12px;align-items:center;margin:4px 0 6px}.ask-hd>i{font-style:normal;font-size:34px}
+.ask-hd h2{margin:0;font-size:22px}.ask-hd p{margin:2px 0 0;color:var(--soft);font-size:13.5px}
+.ask-key{background:var(--gold-soft);border-radius:16px;padding:4px 14px 8px}
+.ask-p{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:4px 14px 8px;margin-bottom:10px}
+.who4{display:flex;align-items:baseline;gap:6px;padding:10px 0 4px;cursor:pointer;font-size:15px}
+.who4 span{color:var(--faint);font-size:12.5px;margin-left:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}.who4 em{margin-left:auto;font-style:normal;color:var(--accent)}
+.ask-none,.foot2{color:var(--faint);font-size:13px;text-align:center;padding:14px 0}
+.pro-sum{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+.pro-sum button{flex:1 0 22%;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:7px 4px;font-size:12.5px;color:var(--soft);display:flex;flex-direction:column;align-items:center;gap:1px}
+.pro-sum button b{font-size:15px;color:var(--ink)}.pro-sum button.on{border-color:var(--accent);background:var(--accent-soft)}
+.pro{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:2px 14px 12px;margin-bottom:10px;box-shadow:var(--shadow)}
+.pro-a,.pro-b{font-size:14.5px;line-height:1.65;padding:6px 0 6px 52px;position:relative}
+.pro-a b,.pro-b b{position:absolute;left:0;top:7px;font-size:12px;border-radius:6px;padding:1px 6px;background:var(--chip);color:var(--soft)}
+.pro-b{border-top:1px dashed var(--line)}.pro-b b{background:var(--ink);color:var(--paper)}
+.pro-c{font-size:13.5px;color:var(--soft);line-height:1.65;margin-top:4px}
+.pv{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;margin-right:6px;background:var(--chip);color:var(--ink)}
+.pv.v-hit{background:#DDEBD8;color:#2F6A2A}.pv.v-half{background:var(--gold-soft);color:var(--gold)}.pv.v-flip{background:#DCE6F2;color:#2D5A8C}.pv.v-miss{background:var(--accent-soft);color:var(--accent)}
+@media (prefers-color-scheme: dark){.pv.v-hit{background:#1E3320;color:#9ED39A}.pv.v-flip{background:#1C2836;color:#9CC0EA}}
+.pro-spo summary{cursor:pointer;color:var(--accent);font-size:13.5px;padding:6px 0}
 .up-intro{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:4px 16px;margin-top:10px}
 .up-intro p{margin:10px 0;font-size:14.5px;line-height:1.85}
 .up-intro .more{border:0;background:none;color:var(--accent);font-size:13.5px;padding:0 0 10px;font-weight:600}
@@ -537,8 +563,8 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     var v = $('view'), h = '';
     h += '<div class="up-hero"><h1>人生七年</h1><div class="sub">每七年拍一次，拍了一辈子 · 英国 1964–2026 · 苏联 1990–2026</div>' +
       '<p>同一批孩子，从七岁开始，每隔七年被镜头找回来一次，问同样的问题：你过得怎么样？你想要什么？英国版拍了 62 年、10 部；苏联版从苏联解体前一年拍到今天。这里是两边 34 个人的全部故事。</p></div>';
-    h += '<div class="up-seg" id="upSeg"><button data-s="uk" class="' + (UPS === 'uk' ? 'on' : '') + '">🇬🇧 英国</button><button data-s="su" class="' + (UPS === 'su' ? 'on' : '') + '">☭ 苏联</button><button data-s="edu" class="' + (UPS === 'edu' ? 'on' : '') + '">🎓 教育</button><button data-s="cmp" class="' + (UPS === 'cmp' ? 'on' : '') + '">🔍 对照</button></div>';
-    if (UPS === 'cmp') h += upCompare(); else if (UPS === 'edu') h += upEdu(); else h += upSide(UP[UPS], UPS);
+    h += '<div class="up-seg" id="upSeg"><button data-s="uk" class="' + (UPS === 'uk' ? 'on' : '') + '">🇬🇧 英国</button><button data-s="su" class="' + (UPS === 'su' ? 'on' : '') + '">☭ 苏联</button><button data-s="ask" class="' + (UPS === 'ask' ? 'on' : '') + '">💬 同一个问题</button><button data-s="pro" class="' + (UPS === 'pro' ? 'on' : '') + '">🔮 七岁看老</button><button data-s="edu" class="' + (UPS === 'edu' ? 'on' : '') + '">🎓 教育</button><button data-s="cmp" class="' + (UPS === 'cmp' ? 'on' : '') + '">🔍 对照</button></div>';
+    if (UPS === 'cmp') h += upCompare(); else if (UPS === 'edu') h += upEdu(); else if (UPS === 'ask') h += upAsk(); else if (UPS === 'pro') h += upPro(); else h += upSide(UP[UPS], UPS);
     h += '<div class="foot">内容依据维基百科、ITV 与谢菲尔德纪录片节介绍、《生意人报》《共青团真理报》等报道整理；<br>只写片中和报道里有的事实，没有可靠资料的年份只标是否出镜。</div>';
     v.innerHTML = h;
   }
@@ -616,6 +642,66 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     var src = UP.compare.qsrc[q[4]] || ['', ''];
     return '<div class="qt' + (q[5] ? ' e' : '') + '"><div class="o">' + esc(q[1]) + '</div><div class="z">' + esc(q[2]) + '</div><div class="c">' + (withWho ? esc(withWho) + ' · ' : '') + q[0] + ' 岁' + (q[3] ? ' · ' + esc(q[3]) : '') + ' · 出处：' + (src[1] ? '<a href="' + esc(src[1]) + '" target="_blank" rel="noopener">' + esc(src[0]) + '</a>' : esc(src[0])) + (q[5] ? ' · 🎓' : '') + '</div></div>';
   }
+
+  /* ---- 💬 同一个问题：按主题看所有人在不同年龄怎么回答 ---- */
+  var UPT = jget('upTheme', 'happy'), UPW = jget('upWho', ''), UPV = '';
+  function upFlag(side) { return side === 'uk' ? '🇬🇧' : '☭'; }
+  function upAsk() {
+    var C = UP.compare, h = '', cnt = {}, th = null;
+    C.themes2.forEach(function (t) { cnt[t[0]] = 0; if (t[0] === UPT) th = t; });
+    if (!th) { th = C.themes2[0]; UPT = th[0]; }
+    var rows = [];   // [side, person, [quotes]]
+    ['uk', 'su'].forEach(function (side) {
+      var lim = upSeen(side) || 999;
+      UP[side].people.forEach(function (p) {
+        var mine = [];
+        (p.q || []).forEach(function (q) {
+          if (q[0] > lim || (UPW && UPW !== side)) return;
+          (q[6] || []).forEach(function (t) { cnt[t]++; });
+          if ((q[6] || []).indexOf(UPT) >= 0) mine.push(q);
+        });
+        if (mine.length) rows.push([side, p, mine]);
+      });
+    });
+    h += '<div class="ask-in">导演每隔七年回来，总会问差不多的几个问题。这里把三十多个人、几十年里的回答按问题放在一起：同一个问题，七岁、二十八岁、五十六岁怎么答，不同出身的人怎么答。</div>';
+    h += '<div class="chips" id="upWho">' + [['', '两边都看'], ['uk', '🇬🇧 只看英国'], ['su', '☭ 只看苏联']].map(function (x) { return '<button data-w="' + x[0] + '" class="' + (UPW === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
+    h += '<div class="ask-th" id="upTh">' + C.themes2.map(function (t) { return '<button data-t="' + t[0] + '" class="' + (t[0] === UPT ? 'on' : '') + '"><i>' + t[1] + '</i>' + esc(t[2]) + '<small>' + cnt[t[0]] + '</small></button>'; }).join('') + '</div>';
+    h += '<div class="ask-hd"><i>' + th[1] + '</i><div><h2>' + esc(th[2]) + '</h2><p>' + esc(th[3]) + ' · ' + rows.length + ' 个人回答过</p></div></div>';
+    var keys = [];
+    rows.forEach(function (r) { r[2].forEach(function (q) { if (q[7] && q[7].indexOf(UPT) >= 0) keys.push([r[0], r[1], q]); }); });
+    if (keys.length) {
+      keys.sort(function (a, b) { return a[2][0] - b[2][0]; });
+      h += '<div class="sec">先读这几句 <small>不同的人、不同的年纪</small></div><div class="ask-key">' + keys.map(function (k) { return upQ(k[2], k[1].icon + ' ' + k[1].zh + ' ' + upFlag(k[0])); }).join('') + '</div>';
+    }
+    h += '<div class="sec">每个人怎么说 <small>按年龄排；点名字看他的完整故事</small></div>';
+    if (!rows.length) h += '<div class="ask-none">这个问题在你看到的集数里还没人谈到。</div>';
+    rows.forEach(function (r) {
+      var ages = r[2].map(function (q) { return q[0]; }).filter(function (v, i, a) { return a.indexOf(v) === i; });
+      h += '<div class="ask-p"><div class="who4" data-go="' + r[0] + '-' + r[1].id + '">' + r[1].icon + ' <b>' + esc(r[1].zh) + '</b> ' + upFlag(r[0]) + '<span>' + ages.join(' → ') + ' 岁</span><em>›</em></div>' + r[2].map(function (q) { return upQ(q); }).join('') + '</div>';
+    });
+    h += '<div class="foot2">只收片中和报道里有出处的原话；同一个人没被问到、或镜头剪掉了，这里就是空的。</div>';
+    return h;
+  }
+
+  /* ---- 🔮 七岁看老：七岁时说的，后来怎样了 ---- */
+  function upPro() {
+    var C = UP.compare, h = '', cnt = {}, all = [];
+    C.verdict.forEach(function (v) { cnt[v[0]] = 0; });
+    ['uk', 'su'].forEach(function (side) { if (UPW && UPW !== side) return; UP[side].people.forEach(function (p) { if (p.pro) { cnt[p.pro[2]]++; all.push([side, p]); } }); });
+    var vmap = {}; C.verdict.forEach(function (v) { vmap[v[0]] = v; });
+    h += '<div class="pro-in"><b>「给我一个七岁的孩子，我还你一个成人。」</b>这是整部片子开头的那句话。它到底准不准？把每个人七岁时说的话，和后来真实的人生摆在一起。<br><small>判定是我的理解，不是定论；很多人的路，用「准」或「不准」都说不清。</small></div>';
+    h += '<div class="chips" id="upWho">' + [['', '两边都看'], ['uk', '🇬🇧 只看英国'], ['su', '☭ 只看苏联']].map(function (x) { return '<button data-w="' + x[0] + '" class="' + (UPW === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
+    h += '<div class="pro-sum" id="upV"><button data-v="" class="' + (UPV ? '' : 'on') + '"><b>' + all.length + '</b>全部</button>' + C.verdict.map(function (v) { return cnt[v[0]] ? '<button data-v="' + v[0] + '" class="v-' + v[0] + (UPV === v[0] ? ' on' : '') + '"><b>' + v[1] + ' ' + cnt[v[0]] + '</b>' + v[2] + '</button>' : ''; }).join('') + '</div>';
+    all.forEach(function (x) {
+      var side = x[0], p = x[1], v = vmap[p.pro[2]], seen = upSeen(side);
+      if (UPV && UPV !== p.pro[2]) return;
+      var later = '<div class="pro-b"><b>后来</b>' + esc(p.pro[1]) + '</div><div class="pro-c"><span class="pv v-' + v[0] + '">' + v[1] + ' ' + v[2] + '</span>' + esc(p.pro[3]) + '</div>';
+      h += '<div class="pro"><div class="who4" data-go="' + side + '-' + p.id + '">' + p.icon + ' <b>' + esc(p.zh) + '</b> ' + upFlag(side) + '<span>' + esc(p.from) + '</span><em>›</em></div>' +
+        '<div class="pro-a"><b>7 岁</b>' + esc(p.pro[0]) + '</div>' +
+        (seen ? '<details class="pro-spo"><summary>🙈 后来怎样（可能剧透）</summary>' + later + '</details>' : later) + '</div>';
+    });
+    return h;
+  }
   function upFind(side, id) { var L = UP[side].people; for (var i = 0; i < L.length; i++) if (L[i].id === id) return L[i]; return null; }
   function upCompare() {
     var C = UP.compare, h = '';
@@ -641,6 +727,9 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     if ((el = t.closest('[data-s]'))) { UPS = el.getAttribute('data-s'); jset('upSide', UPS); UPG = ''; renderUp(); return; }
     if ((el = t.closest('[data-upi]'))) { UPI = +el.getAttribute('data-upi'); renderUp(); return; }
     if ((el = t.closest('#upChips [data-g]'))) { UPG = el.getAttribute('data-g'); var y = window.scrollY; renderUp(); window.scrollTo(0, y); return; }
+    if ((el = t.closest('#upTh [data-t]'))) { UPT = el.getAttribute('data-t'); jset('upTheme', UPT); var yt = $('upTh').getBoundingClientRect().top; renderUp(); var nt = $('upTh'); if (nt) window.scrollBy(0, nt.getBoundingClientRect().top - yt); return; }
+    if ((el = t.closest('#upWho [data-w]'))) { UPW = el.getAttribute('data-w'); jset('upWho', UPW); var yw = window.scrollY; renderUp(); window.scrollTo(0, yw); return; }
+    if ((el = t.closest('#upV [data-v]'))) { UPV = el.getAttribute('data-v'); var yv = window.scrollY; renderUp(); window.scrollTo(0, yv); return; }
     if ((el = t.closest('#upKeys [data-k]'))) { UPK = el.getAttribute('data-k'); var y3 = window.scrollY; renderUp(); window.scrollTo(0, y3); return; }
     if ((el = t.closest('[data-go]'))) { upOpen(el.getAttribute('data-go')); return; }
     if ((el = t.closest('.fr[data-seen]'))) { jset('upSeen-' + UPS, +el.getAttribute('data-seen')); var y2 = window.scrollY; renderUp(); window.scrollTo(0, y2); return; }
