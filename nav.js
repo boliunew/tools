@@ -51,6 +51,11 @@
     '.tnav-a small{display:block;font-size:12px;color:#8A847A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
     '.tnav-a.cur{opacity:.55;pointer-events:none}' +
     '.tnav-a.cur span:after{content:" · 当前";font-size:12px;color:#8A847A}' +
+    '.tnav-th{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:2px 14px 4px}' +
+    '.tnav-th button{border:1px solid #E3DED4;background:none;border-radius:12px;padding:6px 4px 5px;font-size:11.5px;color:inherit;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;font-family:inherit}' +
+    '.tnav-th i{width:100%;height:30px;border-radius:8px;display:block;position:relative;overflow:hidden}' +
+    '.tnav-th i:after{content:"";position:absolute;right:6px;bottom:6px;width:9px;height:9px;border-radius:50%;background:var(--d)}' +
+    '.tnav-th button.on{border-color:#C8553D;box-shadow:0 0 0 1px #C8553D;font-weight:700}' +
     '.tnav-home{margin:14px 16px 0;display:block;text-align:center;padding:10px;border-radius:12px;border:1px solid #E3DED4;color:inherit;text-decoration:none}' +
     '.tnav-tip{font-size:11.5px;color:#9C958A;text-align:center;margin-top:10px}' +
     '.tnav-off{position:fixed;left:50%;top:max(8px,env(safe-area-inset-top));transform:translate(-50%,-160%);z-index:2147482999;max-width:92vw;padding:7px 14px;border-radius:999px;background:#3A3A3C;color:#fff;font:13px/1.3 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:transform .25s,visibility 0s .25s;visibility:hidden;pointer-events:none;white-space:nowrap}' +
@@ -77,6 +82,11 @@
     var bg = document.createElement('div'); bg.className = 'tnav-bg';
     var dr = document.createElement('nav'); dr.className = 'tnav-dr'; dr.setAttribute('aria-label', '穿越');
     var h = '<div class="tnav-hd"><b>🌀 穿越到…</b><button class="tnav-x" type="button" aria-label="关闭">×</button></div>';
+    if (window.THEME) {   // 🎨 全站主题（theme.js）
+      var tk = window.THEME.get();
+      h += '<div class="tnav-g">🎨 主题 · 全站一起换</div><div class="tnav-th"><button type="button" data-th=""' + (tk ? '' : ' class="on"') + '><i style="background:linear-gradient(135deg,#F4F1EA 50%,#1F1D19 50%);--d:#8A847A"></i>原样</button>' +
+        window.THEME.list().map(function (t) { return '<button type="button" data-th="' + t.k + '"' + (tk === t.k ? ' class="on"' : '') + ' title="' + esc(t.desc) + '"><i style="background:linear-gradient(180deg,' + t.sky + ' 0%,' + t.bg + ' 55%,' + t.sil + ' 56%,' + t.sil + ' 100%);--d:' + t.ac + '"></i>' + t.icon + ' ' + esc(t.name) + '</button>'; }).join('') + '</div>';
+    }
     if (prev && ALL[prev] && prev !== cur) h += '<a class="tnav-back" href="' + esc(prev) + '">↩️ 回到刚才：' + ALL[prev][1] + ' ' + esc(ALL[prev][2]) + '</a>';
     for (g = 0; g < GROUPS.length; g++) {
       h += '<div class="tnav-g">' + GROUPS[g][0] + '</div>';
@@ -90,6 +100,11 @@
     var seq = dr.querySelectorAll('.tnav-back,.tnav-g,.tnav-a,.tnav-home');
     for (i = 0; i < seq.length; i++) seq[i].style.setProperty('--i', Math.min(i, 14));
     document.body.appendChild(tab); document.body.appendChild(bg); document.body.appendChild(dr);
+    dr.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-th]'); if (!b || !window.THEME) return;
+      window.THEME.set(b.getAttribute('data-th'));
+      var bs = dr.querySelectorAll('[data-th]'); for (var j = 0; j < bs.length; j++) bs[j].className = bs[j] === b ? 'on' : '';
+    });
 
     var isOpen = false, pushed = false, animT = 0;
     var open = function (anim) {
