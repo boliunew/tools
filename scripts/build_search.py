@@ -82,6 +82,10 @@ def main():
         for w in (d or {}).get("items", []):
             out.append({"k": "苏轼", "t": w["title"], "s": short(w["why"]), "u": "people.html#sushi/" + w["id"],
                         "x": flat(w["title"], w["text"], w["trans"], w["bg"], w["tags"], w["place"])})
+    fun = load("people/sushi_fun.json")
+    for w in (fun or {}).get("items", []):
+        out.append({"k": "苏轼趣闻", "t": w["title"], "s": short(w["why"]), "u": "people.html#sushi/" + w["id"],
+                    "x": flat(w["title"], w["story"], w["src"], w["tags"], w["place"])})
     gm = load("people/gm.json")
     if gm:
         for s in gm["songs"]:

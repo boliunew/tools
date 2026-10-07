@@ -53,6 +53,24 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 .ss-hero .seal{display:inline-block;border:1.5px solid #C9573C;color:#E07A5F;border-radius:4px;font-family:var(--kai);font-size:13px;padding:0 6px;margin-left:8px;vertical-align:4px}
 .ss-hero .bt{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
 .ss-hero .bt button,.ss-hero .bt a{border:1px solid rgba(255,255,255,.35);background:none;color:#F1E6D2;border-radius:999px;padding:5px 13px;font-size:13.5px;text-decoration:none}
+.ss-seg{display:flex;gap:6px;margin:14px 0 2px}
+.ss-seg button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 4px;font-size:15px;font-weight:700;color:var(--ink)}
+.ss-seg button small{font-weight:400;color:var(--faint);margin-left:5px;font-size:12px}
+.ss-seg button.on{background:var(--accent);border-color:var(--accent);color:#fff}.ss-seg button.on small{color:rgba(255,255,255,.8)}
+.fun-in{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 16px;margin:12px 0 10px;font-size:14px;line-height:1.8;color:var(--soft)}
+.fun-in button{display:block;margin-top:8px;border:1px solid var(--accent);color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:5px 14px;font-size:13.5px;font-weight:600}
+.cr{display:inline-block;font-size:11.5px;font-weight:700;border-radius:6px;padding:0 6px;margin:0 3px;line-height:18px}
+.cr.ok{background:#DDEBD8;color:#2F6A2A}.cr.mid{background:var(--gold-soft);color:var(--gold)}.cr.lg{background:var(--chip);color:var(--soft)}
+@media (prefers-color-scheme: dark){.cr.ok{background:#1E3320;color:#9ED39A}}
+.fun{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+.fun .hd{display:flex;gap:12px;align-items:center;padding:12px 14px;cursor:pointer}
+.fun .yr{flex:0 0 52px;text-align:center;font-family:var(--serif);font-weight:800;font-size:16px;color:var(--accent);line-height:1.1}
+.fun .yr small{display:block;font-family:inherit;font-size:11.5px;font-weight:400;color:var(--faint);margin-top:2px}
+.fun .tt h3{margin:0;font-size:16.5px;font-family:var(--kai)}.fun .mt{font-size:12.5px;color:var(--faint);margin-top:3px}
+.fun .bd{display:none;border-top:1px dashed var(--line);padding:12px 16px 14px}.fun.on .bd{display:block}
+.fun .bd p{margin:0;font-size:15px;line-height:1.85}
+.fun .why{margin-top:10px;background:var(--gold-soft);border-radius:10px;padding:8px 12px;font-size:14px;line-height:1.7}
+.fun .src{margin-top:10px;font-size:12.5px;color:var(--soft);line-height:1.6}.fun .src small{color:var(--faint)}
 .road{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;margin:12px -16px 0;padding:4px 16px 8px}
 .road::-webkit-scrollbar{display:none}
 .stop{flex:0 0 auto;min-width:92px;padding:0 8px 0 0;position:relative}
@@ -348,7 +366,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
   /* ====================== 苏轼 ====================== */
   var ROAD = [[1037, '眉山', '出生，四川', 0], [1057, '汴京', '与弟弟同榜进士', 0], [1061, '凤翔', '第一次做官', 0], [1071, '杭州', '通判，爱上西湖', 0], [1074, '密州', '「明月几时有」', 0], [1077, '徐州', '抗洪', 0], [1079, '湖州', '乌台诗案被捕', 1],
     [1080, '黄州', '贬居四年，号东坡', 1], [1086, '汴京', '回朝，官至翰林学士', 0], [1089, '杭州', '知州，修苏堤', 0], [1094, '惠州', '再贬岭南', 1], [1097, '儋州', '贬到海南', 1], [1101, '常州', '北归途中去世', 0]];
-  var SK = jget('ssk', ''), OPEN = {}, MODE = {}, NOTE = {};
+  var SK = jget('ssk', ''), OPEN = {}, MODE = {}, NOTE = {}, SSV = jget('ssv', 'works'), FUN = null, FK = '', FO = {};
   function wiki(t) { return 'https://zh.wikisource.org/w/index.php?search=' + encodeURIComponent(t.replace(/（.*?）/g, '') + ' 苏轼'); }
   function annotate(w) {
     // 把注解词变成可点的下划线；长词优先，避免互相覆盖
@@ -398,6 +416,8 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
       '<p>诗、词、文、书、画样样一流，美食家，水利工程师，一辈子被贬三次，越贬越远，却越活越通透。他把最苦的日子过成了最好的作品。</p>' +
       '<div class="bt"><button id="rnd">🎲 今天读一首</button><a href="kb.html#su-shi">📖 他的一生（长文）</a></div></div>';
     h += '<div class="road">' + ROAD.map(function (r) { return '<div class="stop' + (r[3] ? ' low' : '') + '"><i></i><b>' + r[1] + '</b><small>' + r[0] + '<br>' + r[2] + '</small></div>'; }).join('') + '</div>';
+    h += '<div class="ss-seg" id="ssv"><button data-v="works" class="' + (SSV === 'works' ? 'on' : '') + '">📜 作品<small>' + all.length + '</small></button><button data-v="fun" class="' + (SSV === 'fun' ? 'on' : '') + '">😄 趣闻<small>' + (FUN ? FUN.length : 28) + '</small></button></div>';
+    if (SSV === 'fun') { h += funView(); $('view').innerHTML = h; return; }
     h += '<div class="sec">作品<small>红点是人生低谷 · ' + all.length + ' 篇</small></div>';
     var places = ['黄州', '杭州', '惠州', '密州'];
     h += '<div class="chips" id="ssk"><button data-k="" class="' + (SK ? '' : 'on') + '">全部<small>' + all.length + '</small></button>' +
@@ -407,8 +427,31 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     h += '<div class="foot">原文据通行版本，个别字句各版本略有不同。<br>注解和白话是为了帮助理解写的，不求字字对应。</div>';
     $('view').innerHTML = h;
   }
+
+  /* ---- 😄 苏轼趣闻：按年份排，标出可信度（史实 / 笔记 / 传说） ---- */
+  var CRED = { '史实': ['ok', '他自己的诗文书信或正史里有'], '笔记': ['mid', '宋人笔记记载，大体可信，细节可能加工过'], '传说': ['lg', '后世编的故事，当笑话听'] };
+  function funView() {
+    if (!FUN) { getJSON('people/sushi_fun.json', function (d) { FUN = d ? d.items : []; if (WHO === 'sushi' && SSV === 'fun') renderSushi(); }); return '<div class="empty">加载中…</div>'; }
+    var tags = {}, h = '';
+    FUN.forEach(function (f) { f.tags.forEach(function (t) { tags[t] = (tags[t] || 0) + 1; }); });
+    h += '<div class="fun-in">他一辈子被贬三次，却留下了最多的笑话和美食。这里按年份排，每则都标了出处和可信度：<span class="cr ok">史实</span>他自己写的或正史记载 · <span class="cr mid">笔记</span>宋人笔记，大体可信 · <span class="cr lg">传说</span>后人编的，当故事听。<button id="frnd">🎲 随机讲一个</button></div>';
+    h += '<div class="chips" id="fk"><button data-k="" class="' + (FK ? '' : 'on') + '">全部<small>' + FUN.length + '</small></button>' +
+      Object.keys(tags).sort(function (a, b) { return tags[b] - tags[a]; }).map(function (t) { return '<button data-k="' + esc(t) + '" class="' + (FK === t ? 'on' : '') + '">' + esc(t) + '<small>' + tags[t] + '</small></button>'; }).join('') + '</div>';
+    FUN.forEach(function (f) {
+      if (FK && f.tags.indexOf(FK) < 0) return;
+      var c = CRED[f.cred] || ['mid', ''];
+      h += '<div class="fun' + (FO[f.id] ? ' on' : '') + '" id="f-' + f.id + '"><div class="hd" data-f="' + f.id + '"><div class="yr">' + f.year + '<small>' + f.age + ' 岁</small></div><div class="tt"><h3>' + esc(f.title) + '</h3><div class="mt">' + esc(f.place) + ' · <span class="cr ' + c[0] + '">' + esc(f.cred) + '</span></div></div></div>' +
+        '<div class="bd"><p>' + esc(f.story) + '</p><div class="why">💡 ' + esc(f.why) + '</div><div class="src">出处：' + esc(f.src) + '<br><small>' + esc(f.cred) + '：' + esc(c[1]) + '</small></div></div></div>';
+    });
+    h += '<div class="foot">故事是照原始记载用白话讲的，不是逐字翻译；年龄按实岁算，个别年份是大概时间。</div>';
+    return h;
+  }
   function onSushi(e) {
     var t = e.target, el;
+    if ((el = t.closest('#ssv [data-v]'))) { SSV = el.getAttribute('data-v'); jset('ssv', SSV); renderSushi(); return; }
+    if ((el = t.closest('#fk [data-k]'))) { FK = el.getAttribute('data-k'); var yk = window.scrollY; renderSushi(); window.scrollTo(0, yk); return; }
+    if (t.id === 'frnd' && FUN && FUN.length) { var f0 = FUN[Math.floor(Math.random() * FUN.length)]; FK = ''; FO = {}; FO[f0.id] = 1; renderSushi(); var fe = $('f-' + f0.id); if (fe) fe.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    if ((el = t.closest('.hd[data-f]'))) { var fk = el.getAttribute('data-f'); FO[fk] = !FO[fk]; var fc = $('f-' + fk); if (fc) fc.className = 'fun' + (FO[fk] ? ' on' : ''); return; }
     if (t.id === 'rnd') { var w = SS[Math.floor(Math.random() * SS.length)]; SK = ''; OPEN = {}; OPEN[w.id] = 1; renderSushi(); $('w-' + w.id).scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if ((el = t.closest('#ssk [data-k]'))) { SK = el.getAttribute('data-k'); jset('ssk', SK); renderSushi(); return; }
     if ((el = t.closest('.n'))) { var id = el.closest('.poem').getAttribute('data-w'), n = +el.getAttribute('data-n'); NOTE[id] = NOTE[id] === n ? null : n; redraw(id); return; }
@@ -745,7 +788,13 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     if (WHO === 'gm') { openSong(id); return; }
     if (WHO === 'asimov') { openBook(id); return; }
     if (WHO === 'up') { upOpen(id); return; }
-    SK = ''; OPEN = {}; OPEN[id] = 1; renderSushi();
+    if (/^f\d+$/.test(id)) {   // 趣闻
+      SSV = 'fun'; FK = ''; FO = {}; FO[id] = 1;
+      var goF = function () { renderSushi(); var fe = $('f-' + id); if (fe) fe.scrollIntoView({ block: 'start' }); };
+      if (FUN) goF(); else getJSON('people/sushi_fun.json', function (d) { FUN = d ? d.items : []; goF(); });
+      return;
+    }
+    SSV = 'works'; SK = ''; OPEN = {}; OPEN[id] = 1; renderSushi();
     var el = $('w-' + id); if (el) el.scrollIntoView({ block: 'start' });
   }
   function show(p) {
