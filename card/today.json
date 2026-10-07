@@ -1,16 +1,16 @@
 {
- "date": "2026-10-06",
- "kind": "名言",
- "en": "Make the most of yourself, for that is all there is of you.",
- "zh": "尽力活出最好的自己，因为你只有这一个自己。",
- "by": "Ralph Waldo Emerson",
- "line": "Make the most of yourself, for that is all there is of you. — Ralph Waldo Emerson",
+ "date": "2026-10-07",
+ "kind": "易错",
+ "en": "In my opinion, ...",
+ "zh": "我认为……",
+ "by": "in my opinion 和 I think 是一个意思，二选一",
+ "line": "✗ In my opinion, I think... → ✓ In my opinion, ...",
  "word": {
-  "w": "deliberate",
-  "ph": "di'libәrәt",
-  "zh": "a. 深思熟虑的，故意的，从容的；v. 仔细考虑",
-  "ex": "Every step in the experiment was deliberate.",
-  "exzh": "该实验的每一步都是经过深思熟虑的。"
+  "w": "rip",
+  "ph": "rip",
+  "zh": "n. 裂痕，破绽，拉裂，浪子；vi. 被拉开，裂开，猛冲",
+  "ex": "Someone has ripped out the first three pages of this book.",
+  "exzh": "这本书的头三页被人撕掉了。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
