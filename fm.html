@@ -74,6 +74,12 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 .ctl{display:flex;align-items:center}
 .ctl button{border:0;background:none;width:44px;height:44px;border-radius:50%;font-size:20px}
 .ctl .pp{width:54px;height:54px;background:var(--accent);color:var(--accent-ink);font-size:22px;margin:0 4px}
+.ctl .rc{font-size:20px;width:auto;min-width:34px;padding:0 4px;color:#C0392B}
+.ctl .rc.on{font-size:13px;font-weight:700;color:#fff;background:#C0392B;border-radius:999px;padding:0 10px;height:30px;align-self:center}
+.recs .clip{padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.recs .clip b{font-weight:600}.recs .clip audio{width:100%;height:36px;margin-top:6px}
+.recs .clip .ops{display:flex;gap:12px;margin-top:4px;font-size:13px}.recs .clip .ops a,.recs .clip .ops button{color:var(--accent);background:none;border:0;padding:0;font-size:13px;text-decoration:none;cursor:pointer}
+.recs .tip{font-size:12.5px;color:var(--soft);padding:6px 0 2px;line-height:1.6}
 .ctl .tm{font-size:13px;width:auto;padding:0 6px;color:var(--soft)}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--live);margin-right:5px;animation:pulse 1.4s infinite}
 @keyframes pulse{50%{opacity:.25}}
@@ -91,12 +97,13 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   <div class="chips" id="chips"></div>
   <div class="list" id="list"><div class="msg">加载中…</div></div>
   <details class="songs" id="songs" style="display:none"></details>
+  <details class="songs recs" id="recs" style="display:none"></details>
   <div class="hint">电台目录来自开源的 Radio Browser 社区数据库，节目由各电台官方直播流提供。<br>部分电台只在本国播放、或临时停播，连不上会自动提示。连车载蓝牙时方向盘「上一首 / 下一首」可以换台。</div>
 </main>
 <div class="bar" id="bar" style="display:none"><div class="in">
   <div class="ico" id="bIco">📻</div>
   <div class="t"><b id="bName"></b><span class="song" id="bSong" style="display:none"></span><small id="bStat"></small></div>
-  <div class="ctl"><button id="bPrev" aria-label="上一个台">⏮</button><button class="pp" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一个台">⏭</button><button class="wf" id="bWheel" aria-label="只在收藏里切台" title="⏮ ⏭ 和方向盘只在收藏里切台">☆切</button><button class="tm" id="bTimer" aria-label="睡眠定时">⏲</button></div>
+  <div class="ctl"><button id="bPrev" aria-label="上一个台">⏮</button><button class="pp" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一个台">⏭</button><button class="wf" id="bWheel" aria-label="只在收藏里切台" title="⏮ ⏭ 和方向盘只在收藏里切台">☆切</button><button class="rc" id="bRec" aria-label="录一段" title="录下正在播的 20 秒，方便以后找歌">⏺</button><button class="tm" id="bTimer" aria-label="睡眠定时">⏲</button></div>
 </div></div>
 <div class="toast" id="toast"></div>
 <audio id="au" preload="none"></audio>
@@ -581,6 +588,129 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     })();
   }
   renderSongs();
+
+  /* ---------- ⏺ 录一段：遇到喜欢的歌，录 20 秒存起来，回头用 Shazam / 听歌识曲 找 ----------
+     能录的方式按顺序试：① 直接再拉一路直播流（电台允许跨域就行，不经过麦克风、音质原样）
+     ② 家里服务器的中转 ③ HLS 台：直接录播放器的声音 ④ HLS 台没 hls.js（苹果自带）：抓最近几段切片。
+     录音只存在这台设备的浏览器里（IndexedDB），最多留 30 段。 */
+  var REC = { on: false, stop: null, sec: 20, t: null }, RDB = null;
+  function rdb(cb) {
+    if (RDB) { cb(RDB); return; }
+    try {
+      var rq = indexedDB.open('fm-rec', 1);
+      rq.onupgradeneeded = function () { rq.result.createObjectStore('clips', { keyPath: 'id' }); };
+      rq.onsuccess = function () { RDB = rq.result; cb(RDB); };
+      rq.onerror = function () { cb(null); };
+    } catch (e) { cb(null); }
+  }
+  function rAll(cb) { rdb(function (db) { if (!db) { cb([]); return; } var out = [], c = db.transaction('clips').objectStore('clips').openCursor(); c.onsuccess = function () { var x = c.result; if (x) { out.push(x.value); x.continue(); } else cb(out.sort(function (a, b) { return b.t - a.t; })); }; c.onerror = function () { cb([]); }; }); }
+  function rPut(v, cb) { rdb(function (db) { if (!db) { cb && cb(false); return; } var tx = db.transaction('clips', 'readwrite'); tx.objectStore('clips').put(v); tx.oncomplete = function () { cb && cb(true); }; tx.onerror = function () { cb && cb(false); }; }); }
+  function rDel(id, cb) { rdb(function (db) { if (!db) return; var tx = db.transaction('clips', 'readwrite'); tx.objectStore('clips').delete(id); tx.oncomplete = function () { cb && cb(); }; }); }
+  function ext(type) { type = (type || '').toLowerCase(); return /mpeg|mp3/.test(type) ? 'mp3' : /aac/.test(type) ? 'aac' : /ogg|opus/.test(type) ? 'ogg' : /webm/.test(type) ? 'webm' : /mp2t/.test(type) ? 'ts' : /mp4|m4a/.test(type) ? 'm4a' : 'mp3'; }
+  function recBtn(txt, on) { var b = $('bRec'); b.textContent = txt; b.className = 'rc' + (on ? ' on' : ''); }
+  function recDone(parts, type, st, song, how) {
+    REC.on = false; clearInterval(REC.t); REC.stop = null; recBtn('⏺', false);
+    var size = 0; parts.forEach(function (p) { size += p.size || p.byteLength || 0; });
+    if (size < 8000) { toast('没录到声音（这个台不让网页录）。已把台名和时间记在「最近听到的歌」里'); npNote(st); return; }
+    var blob = new Blob(parts, { type: type || 'audio/mpeg' });
+    var v = { id: Date.now(), t: Date.now(), st: st.name, song: song || '', type: blob.type, blob: blob, how: how };
+    rPut(v, function (ok) {
+      if (!ok) { toast('浏览器不让存录音（可能是无痕模式）'); return; }
+      toast('🎙 录好了，在下面「我的录音」里');
+      rAll(function (all) { all.slice(30).forEach(function (x) { rDel(x.id); }); renderRecs(); });
+    });
+  }
+  function npNote(st) {   // 录不了的时候，至少记下台名和时间
+    NP.hist.unshift({ song: '（' + st.name + ' 正在播的歌，没认出来）', st: st.name, t: Date.now() });
+    if (NP.hist.length > 40) NP.hist.length = 40;
+    put('songs', NP.hist); renderSongs();
+  }
+  function recCountdown() {
+    var left = REC.sec; recBtn('■ ' + left, true);
+    REC.t = setInterval(function () { left--; if (left <= 0) { clearInterval(REC.t); if (REC.stop) REC.stop(); } else recBtn('■ ' + left, true); }, 1000);
+  }
+  // ① ② 直接拉流：把字节原样存下来（mp3 / aac 直播流本身就是能播的文件）
+  function recFetch(urls, st, song, onFail) {
+    if (!window.fetch || !window.ReadableStream) { onFail(); return; }
+    var i = 0;
+    (function next() {
+      if (i >= urls.length) { onFail(); return; }
+      var u = urls[i++], ac = window.AbortController ? new AbortController() : null, parts = [], type = '', done = false;
+      function finish() { if (done) return; done = true; try { ac && ac.abort(); } catch (e) { } recDone(parts, type, st, song, 'stream'); }
+      fetch(u, ac ? { signal: ac.signal, cache: 'no-store' } : { cache: 'no-store' }).then(function (r) {
+        if (!r.ok || !r.body) throw new Error('bad');
+        type = (r.headers.get('content-type') || '').split(';')[0];
+        if (/text|html|mpegurl|json/i.test(type)) throw new Error('not audio');
+        REC.stop = finish; recCountdown();
+        var rd = r.body.getReader();
+        (function pump() { rd.read().then(function (x) { if (done) return; if (x.done) { finish(); return; } parts.push(x.value); pump(); }).catch(function () { finish(); }); })();
+      }).catch(function () { if (!done && !REC.stop) next(); else finish(); });
+    })();
+  }
+  // ③ 录播放器本身的声音（hls.js 播的台是同源数据，可以录）
+  function recCapture(st, song, onFail) {
+    var cs = au.captureStream || au.mozCaptureStream;
+    if (!cs || !window.MediaRecorder) { onFail(); return; }
+    var ms0, mr, parts = [];
+    try { ms0 = cs.call(au); mr = new MediaRecorder(ms0); } catch (e) { onFail(); return; }
+    mr.ondataavailable = function (e) { if (e.data && e.data.size) parts.push(e.data); };
+    mr.onstop = function () { recDone(parts, mr.mimeType || 'audio/webm', st, song, 'capture'); };
+    REC.stop = function () { try { mr.stop(); } catch (e) { } };
+    mr.start(1000); recCountdown();
+  }
+  // ④ 苹果自带 HLS：拿最近 3 段切片（正好是刚刚播过的那十几二十秒）
+  function recSegments(st, song, onFail) {
+    var base = st.url.replace(/^http:\/\//i, 'https://');
+    function txt(u, cb) { fetch(u, { cache: 'no-store' }).then(function (r) { return r.ok ? r.text() : ''; }).then(cb).catch(function () { cb(''); }); }
+    function lines(t) { return t.split(/\r?\n/).filter(function (l) { return l && l.charAt(0) !== '#'; }); }
+    txt(base, function (t) {
+      if (!t) { onFail(); return; }
+      var ls = lines(t), u = base;
+      if (/#EXT-X-STREAM-INF/.test(t) && ls.length) { u = new URL(ls[0], base).href; txt(u, go); } else go(t);
+      function go(t2) {
+        var segs = lines(t2 || '').slice(-3).map(function (l) { return new URL(l, u).href; });
+        if (!segs.length) { onFail(); return; }
+        recBtn('■ …', true); REC.stop = function () { };
+        Promise.all(segs.map(function (x) { return fetch(x).then(function (r) { return r.ok ? r.arrayBuffer() : null; }).catch(function () { return null; }); })).then(function (bufs) {
+          bufs = bufs.filter(function (b) { return b; });
+          var e0 = (segs[0].split('?')[0].split('.').pop() || '').toLowerCase();
+          recDone(bufs, e0 === 'aac' ? 'audio/aac' : e0 === 'mp3' ? 'audio/mpeg' : 'video/mp2t', st, song, 'segments');
+        });
+      }
+    });
+  }
+  $('bRec').onclick = function () {
+    if (REC.on) { clearInterval(REC.t); if (REC.stop) REC.stop(); return; }
+    if (!cur || au.paused) { toast('先播一个台，听到喜欢的再点 ⏺'); return; }
+    REC.on = true; recBtn('…', true);
+    var st = cur, song = NP.song;
+    function nope() { REC.on = false; REC.stop = null; clearInterval(REC.t); recBtn('⏺', false); toast('这个台不让网页录音。已记下台名和时间，可以马上用 Shazam 对着听'); npNote(st); }
+    if (st.hls) { if (hls) recCapture(st, song, nope); else recSegments(st, song, nope); return; }
+    var urls = [st.url.replace(/^http:\/\//i, 'https://')];
+    if (LOCAL && /^http:/i.test(st.url)) urls.unshift('api/stream?u=' + encodeURIComponent(st.url));
+    recFetch(urls, st, song, nope);
+  };
+  var RURL = {};
+  function renderRecs() {
+    rAll(function (all) {
+      var el = $('recs');
+      if (!all.length) { el.style.display = 'none'; return; }
+      el.style.display = 'block';
+      var open = el.open;
+      for (var k in RURL) if (RURL.hasOwnProperty(k)) { try { URL.revokeObjectURL(RURL[k]); } catch (e) { } }
+      RURL = {};
+      el.innerHTML = '<summary>🎙 我的录音（' + all.length + '）</summary><div class="tip">认歌：手机打开 Shazam 或 QQ 音乐「听歌识曲」，再点这里的 ▶ 放给它听。录音只存在这台设备的浏览器里。</div>' + all.map(function (c) {
+        var d = new Date(c.t), u = URL.createObjectURL(c.blob); RURL[c.id] = u;
+        var name = c.st.replace(/[\\/:*?"<>|]/g, '') + '-' + (d.getMonth() + 1) + d.getDate() + '-' + d.getHours() + ('0' + d.getMinutes()).slice(-2) + '.' + ext(c.type);
+        return '<div class="clip"><b>' + esc(c.song || c.st) + '</b><small>' + (c.song ? esc(c.st) + ' · ' : '') + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + ' · ' + Math.round(c.blob.size / 1024) + ' KB</small>' +
+          '<audio controls preload="none" src="' + u + '"></audio><div class="ops"><a href="' + u + '" download="' + esc(name) + '">⬇ 下载</a>' +
+          (c.song ? '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(c.song) + '" target="_blank" rel="noopener">搜歌 ↗</a>' : '') + '<button data-rdel="' + c.id + '">🗑 删除</button></div></div>';
+      }).join('');
+      el.open = open;
+    });
+  }
+  $('recs').addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-rdel]'); if (!b) return; e.preventDefault(); rDel(+b.getAttribute('data-rdel'), renderRecs); });
+  renderRecs();
 
   renderTabs(); open();
   refreshFavs(false, function (changed) { if (changed > 0 && country === 'FAV') open(); });
