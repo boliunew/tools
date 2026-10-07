@@ -26,6 +26,8 @@ UK = {
         "每人每次大约拍两天，访谈常常超过 6 个小时，最后剪进片子里的只有十几分钟",
         "参与者每次拿一份出镜费，片子得奖的奖金大家平分",
         "14 个人里只有 4 个女孩，艾普特后来说这是当年最后悔的事之一",
+        "1964 年的旁白：肯辛顿的男孩都在为公学和大学做准备；而东区学校里从托尼手里领牛奶的这 30 个孩子，「只有三个可能考上文法学校，绝大多数会在 15 岁离校去工作」",
+        "旁白还说：「自由与纪律的区别，是他们整个未来的关键。」——指的是精英学校的操练、普通学校的自由活动和放任自流",
         "两人已经去世：琳恩（2013）、尼克（2023，生前录下了给《70 Up》的最后访谈）",
     ],
     "films": [
@@ -690,6 +692,7 @@ QSRC = {
     "cbs": ["CBS News · Reel life: The mesmerizing saga of 56 Up", "https://www.cbsnews.com/news/reel-life-the-mesmerizing-saga-of-56-up-22-09-2013"],
     "pov": ["PBS POV · 56 Up: About the Characters", "https://archive.pov.org/56up/about-the-characters/"],
     "dis": ["Dissent · Back to the Future: The Up Series", "https://dissentmagazine.org/article/back-to-the-future-the-up-series/"],
+    "srt7": ["《Seven Up!》（1964）片中原声字幕", ""],
     "kw7": ["Katherine Wikoff · Watching the Up Series #1 Seven Up", "https://katherinewikoff.com/2013/07/08/watching-the-up-series-1-seven-up/"],
     "kw14": ["Katherine Wikoff · #2 7 Plus Seven", "https://katherinewikoff.com/2013/07/14/watching-the-up-series-2-7-plus-seven/"],
     "kw21": ["Katherine Wikoff · #3 21 Up", "https://katherinewikoff.com/2013/07/24/watching-the-up-documentary-series-film-3-21-up/"],
@@ -707,10 +710,19 @@ QSRC = {
     "vrn": ["Культура ВРН · «Рождённые в СССР. 35 лет»", "https://culturavrn.ru/cinematv/48467"],
 }
 Q = {
+    "uk-sue": [
+        [7, "We don't do much fighting in school because we think it's horrible and it hurts. Sometimes we play nice with the boys and sometimes we argue with the boys.", '我们在学校不怎么打架，因为觉得那很可怕，还会疼。有时候我们和男孩好好玩，有时候和他们吵架。', '片中旁白介绍她是「杰姬的朋友苏珊」', "srt7", 0],
+    ],
+    "uk-andrew": [
+        [7, "When I leave the school, I go to Broadstairs, St. Peter's Court. And after that I'm going to Charterhouse. And after that Trinity Hall, Cambridge.", '离开这所学校，我去布罗德斯泰斯的圣彼得预备学校，然后去查特豪斯公学，再然后去剑桥三一学堂。', '被问以后的打算；他后来确实读了查特豪斯和剑桥', "srt7", 1],
+    ],
     "uk-charles": [
+        [7, "I'm going to the Dragon School... I might go to Charles House, Marlborough... I can't remember all other places, because mummy has got so many places.", '我要去龙校……也许去马尔伯勒公学……别的地方我记不全了，因为妈妈列了好多学校。', '被问以后去哪；导演问到大学，他说「我可能去牛津」', "srt7", 1],
         [21, "In fact, I'm pleased I didn't.", "其实我很庆幸没去成。", "说起没考上牛津", "kw21", 1],
     ],
     "uk-john": [
+        [7, "I think the Beatles are mad because they make too much noise and their hair-style's so bad. If they composed softer music I wouldn't mind so much. I just loathe their hair-cuts.", '我觉得披头士疯了，他们太吵，发型又那么难看。要是他们写点柔和的音乐，我也就不那么介意了。我就是讨厌他们的发型。', '肯辛顿预备学校课堂上', "srt7", 0],
+        [7, "When I leave the school, I'm going to College Court, and then I would be going to Westminster Boarding School if I pass the exam. Then we think, I am going to Cambridge and Trinity Hall.", '离开这所学校，我会去 College Court，考过的话再去威斯敏斯特寄宿学校。然后我们想，我会去剑桥三一学堂。', '七岁就背得出整条升学路线；后来他读了威斯敏斯特和牛津', "srt7", 1],
         [7, "I think it's not a bad idea to pay for schools because if we didn't, schools would be so nasty and crowded.", "我觉得上学交钱不是坏主意，不然学校会又脏又挤。", "被问到私立学校", "dis", 1],
         [7, "Stop it! Stop it at once!", "住手！马上住手！", "在动物园看见有孩子喂北极熊", "dis", 0],
         [21, "What's undesirable is if people have had options and haven't taken advantage of them.", "不好的是：人明明有过选择，却没有抓住。", "谈机会和阶层", "kw21", 1],
@@ -719,22 +731,27 @@ Q = {
         [70, "We live in a classless society nowadays.", "如今我们生活在一个没有阶级的社会。", "终章里的看法", "nw", 0],
     ],
     "uk-suzy": [
+        [7, "He's up in Scotland and I think he's thirteen, and I'm rather lonely up there because he usually goes to school.", '他在苏格兰，我想他十三岁了。我在那边挺孤单的，因为他平常要上学。', '在女校教员休息室里被问有没有男朋友', "srt7", 0],
         [21, "I don't know, I haven't given it a lot of thought because I'm very, very cynical about it.", "我不知道，没怎么想过，因为我对这事非常非常悲观。", "被问到婚姻", "cbs", 0],
         [28, "I suppose Rupert.", "我想，是因为鲁珀特吧。", "被问是什么让她变了", "cbs", 0],
         [56, "I suppose I have this ridiculous sense of loyalty to it even though I hate it. It's like reading a bad book, I'll see it through.", "我大概对它有种荒谬的忠诚，虽然我讨厌它。就像读一本烂书，我还是会读完。", "说起为什么又回来了", "dis", 0],
         [56, "The problem I have is that you don't get a very rounded picture, you get the odd comment.", "我的问题是，你看不到一个完整的人，只看到零星几句话。", "对片子的不满", "pov", 0],
     ],
     "uk-jackie": [
+        [7, "Well... it's really silly to fight because if you fight and Miss comes in the classroom then you only get told off.", '嗯……打架真傻，因为你一打架，老师一进教室，你就只会挨骂。', '被问男孩子打架', "srt7", 0],
+        [7, "Well, they're nice and it's as same as us really... it's only because their skin is brown and we're white... sort of pinkish we're.", '嗯，他们挺好的，其实和我们一样……只是因为他们皮肤是棕色的，我们是白的……我们算是有点粉吧。', '被问怎么看有色人种；同一段里别的孩子说得刺耳得多', "srt7", 1],
+        [7, 'My Mum, because she got five girls, she had seven years bad luck... he came home and said "It\'s another girl, kids", we all said "awwww!"', '我妈生了五个女孩，说是倒了七年霉……爸爸回家说「孩子们，又是个女孩」，我们全都「唉——」。', '讲家里第五个妹妹出生', "srt7", 0],
         [21, "I say I've had the opportunities I've wanted.", "我要说，我想要的机会，我都有过。", "被问是不是比富家女机会少", "kw21", 1],
         [35, "I don't know where the money will come from.", "我不知道钱从哪儿来。", "一个人养儿子，但她相信总会有办法", "kw35", 0],
         [56, "My glass is always half full, never half empty.", "我的杯子永远是半满的，从来不是半空的。", "", "pov", 0],
     ],
     "uk-lynn": [
+        [7, 'I am going to work in Woolworths.', '我要去伍尔沃斯百货上班。', '被问以后的打算（PBS 等资料认定是琳恩说的）', "srt7", 1],
         [21, "I say I had more.", "我要说，我的机会更多。", "和女孩们一起被问到「机会」", "kw21", 1],
         [56, "What I thought was stress was nothing.", "我以前以为的压力，其实什么都不算。", "", "pov", 0],
     ],
     "uk-tony": [
-        [7, "I wanna be a jockey when I grow up!", "我长大要当骑师！", "", "cbs", 0],
+        [7, "I want to be a jockey when I grow up.", "我长大要当骑师。", "后来他真进了骑师学校，三场比赛后被劝退", "srt7", 0],
         [21, "How can I become a villain? If it's not born in you, you won't become one.", "我怎么会变成坏人？要不是天生的，你就不会变成那样。", "回应导演暗示他可能走上歪路", "kw21", 1],
         [21, "Education is just a thing to say my son is higher than him.", "教育不过是用来说「我儿子比他高一等」的东西。", "谈教育", "kw21", 1],
         [21, "Life is one big rat race.", "人生就是一场大型老鼠赛跑。", "", "kw21", 0],
@@ -743,16 +760,20 @@ Q = {
         [56, "The torch from this Games should be now passed on to the East End, for a new generation to come through.", "这届奥运会的火炬，应该传给东区，让新一代成长起来。", "2012 年伦敦奥运会就在他长大的东区", "dis", 1],
     ],
     "uk-paul": [
+        [7, "Say you had a wife... say she says you have to eat what you're given... I don't like greens, so if she gives me greens then... then that's it.", '比如你有了老婆……她说你得吃她给你的……我不爱吃青菜，要是她给我青菜，那……那就完了。', '被问想不想结婚，他说不想，理由是这个', "srt7", 0],
         [7, "What does 'university' mean?", "「University（大学）」是什么意思？", "被问长大想不想上大学", "kw7", 1],
         [21, "'I did that.' It's substance.", "「这是我盖的。」这是实实在在的东西。", "说起当砌砖工盖房子的成就感", "kw21", 1],
     ],
     "uk-symon": [
-        [7, "Well, before I'm old enough to get a job, I'll just walk around, and see what I can find.", "嗯，在我长大能找工作之前，就到处走走，看看能找到什么。", "", "dis", 0],
+        [7, "Well... before I'm old enough to get a job, I'll just walk around and see what I can find.", "嗯……在我长大能找工作之前，就到处走走，看看能找到什么。", "别的孩子在背公学和剑桥的名字（出处据 Dissent 认定是西蒙）", "dis", 1],
         [21, "No, I haven't really; I suppose I just like hard work, I don't know.", "没有，真没想过；大概我就是喜欢干苦活吧，我也不知道。", "被问有没有想过换份更好的工作", "dis", 1],
         [63, "It's taken me virtually sixty years to understand who I am.", "我差不多花了六十年，才明白自己是谁。", "", "cin", 0],
     ],
     "uk-nick": [
-        [7, "I don't answer those kinds of questions.", "这种问题我不回答。", "被问有没有女朋友", "cbs", 0],
+        [7, 'We play with Richard the Lion Heart and William Tell. Well... we pretend we got swords and then we make the noises of the sword-fighting.', '我们玩狮心王理查和威廉·退尔。就是……假装有剑，然后自己配上打剑的声音。', '在约克郡山谷里只有一间教室的村校', "srt7", 0],
+        [7, 'I am the only child in the village except for my baby brother.', '村里除了我的小弟弟，就只有我一个小孩。', '', "srt7", 0],
+        [7, 'When I grow up I like to find out all about the moon and all that.', '长大以后，我想把月亮什么的都弄明白。', '后来他成了核聚变物理学家', "srt7", 1],
+        [7, "I don't want to answer that. I don't want to answer those kinds of questions.", "我不想回答。这种问题我不想回答。", "被问有没有女朋友", "srt7", 0],
         [21, "It's just that the limitations of such things as what the audience requires, and the time, don't allow it to be a real study.", "只是观众的口味、片长这些限制，让它成不了真正的研究。", "评价这部片子", "cbs", 0],
         [56, "They film me doing all this daft stuff... then present this tiny little snippet.", "他们拍我做一大堆傻事……最后只放出很小的一段。", "", "pov", 0],
         [56, "I pretend while I'm being interviewed that it's just a chat.", "接受采访时，我就假装只是在聊天。", "谈被拍的感受", "npr", 0],
@@ -764,7 +785,10 @@ Q = {
         [56, "I don't think really life is there to be regretted. Life is there to be lived.", "我不觉得人生是用来后悔的。人生是用来过的。", "", "pov", 0],
     ],
     "uk-neil": [
-        [7, "When I grow up, I want to be an astronaut, but if I can't be an astronaut, I think I'll be a coach driver.", "我长大想当宇航员，要是当不成，我想当长途大巴司机。", "", "cbs", 0],
+        [7, "Well I feel like joining in when there's already a fight. I always feel like that.", '嗯，要是已经有人在打架，我就想加进去。我总是这样。', '被问打架重不重要', "srt7", 0],
+        [7, "Because in the winter, if you lived in the country, it would be just all wet and there wouldn't be anything for miles around... But in the town you can always find somewhere to shelter.", '因为冬天要是住在乡下，到处湿漉漉的，几英里内什么都没有……可在城里，总能找到地方躲雨。', '说为什么更喜欢住城里——多年后他恰恰住到了最偏远的地方', "srt7", 0],
+        [7, "I hate her. She's always getting bad tempered and cross with me. ... she says, 'Neil Hughes! Take your chair forward.'", '我讨厌她。她老冲我发脾气……她会说：「尼尔·休斯！把椅子往前挪！」', '说起班上一个女孩', "srt7", 0],
+        [7, "When I grow up, I want to be an astronaut, but if I can't be an astronaut I think I'll be a coach driver. ... I'll have a big loud speaker on the coach and tell them whereabouts we are and what we're going to do.", "我长大想当宇航员，要是当不成，我想当长途大巴司机……车上装个大喇叭，告诉大家我们到哪儿了、要去干什么。", "", "srt7", 0],
         [14, "Being in Set One, it's very, very hard to keep up with the leaders.", "在快班里，要跟上最前面的人非常非常难。", "谈学校里的竞争", "kw28", 1],
         [14, "I never have the time to relax at all.", "我一点放松的时间都没有。", "", "kw14", 1],
         [28, "I don't think I was half as clever as I was told I was.", "我根本没有别人说的一半那么聪明。", "回看自己的求学", "kw28", 1],
@@ -775,7 +799,9 @@ Q = {
         [63, "On balance, I have no regrets about participating.", "总的来说，参加这部片子我不后悔。", "接受《大志》杂志采访", "bi", 0],
     ],
     "uk-bruce": [
-        [7, "Go into Africa, and try and teach people who are not civilized to be, more or less, good.", "去非洲，试着教那些「不开化」的人，多少变得好一些。", "1964 年一个七岁孩子的原话，带着那个年代的殖民眼光", "dis", 1],
+        [7, "My heart's desire is to see my daddy who is six thousand miles away.", '我心里最想的，是见到六千英里外的爸爸。', '父亲在南罗得西亚，他在萨里的寄宿学校', "srt7", 0],
+        [7, 'I think the most important thing in the world is everyone should know about God. I think we should give all... some... most of our money to the poor people.', '我觉得世界上最重要的是每个人都应该知道上帝。我觉得我们应该把全部……一些……大部分钱给穷人。', '旁白：布鲁斯想当传教士', "srt7", 1],
+        [7, "Going to Africa, and try and teach people who are not civilized to be more or less good.", "去非洲，试着教那些「不开化」的人，多少变得好一些。", "1964 年一个七岁孩子的原话，带着那个年代的殖民眼光", "srt7", 1],
         [21, "Far too acquiescent to authority.", "太顺从权威了。", "说寄宿学校把他教成了这样", "kw21", 1],
         [49, "I would say, have a million angels in front of every teacher who's prepared to slog away at an inner-city comprehensive — make way, make way, this is somebody that is prepared to turn up each day and do that job.", "我想说，每一个愿意在市中心公立学校里苦熬的老师面前，都该站着一百万个天使——让开，让开，这是一个愿意每天到场、干好这份工作的人。", "", "dis", 1],
     ],

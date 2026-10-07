@@ -613,7 +613,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 
   function upQ(q, withWho) {
     var src = UP.compare.qsrc[q[4]] || ['', ''];
-    return '<div class="qt' + (q[5] ? ' e' : '') + '"><div class="o">' + esc(q[1]) + '</div><div class="z">' + esc(q[2]) + '</div><div class="c">' + (withWho ? esc(withWho) + ' · ' : '') + q[0] + ' 岁' + (q[3] ? ' · ' + esc(q[3]) : '') + ' · 出处：<a href="' + esc(src[1]) + '" target="_blank" rel="noopener">' + esc(src[0]) + '</a>' + (q[5] ? ' · 🎓' : '') + '</div></div>';
+    return '<div class="qt' + (q[5] ? ' e' : '') + '"><div class="o">' + esc(q[1]) + '</div><div class="z">' + esc(q[2]) + '</div><div class="c">' + (withWho ? esc(withWho) + ' · ' : '') + q[0] + ' 岁' + (q[3] ? ' · ' + esc(q[3]) : '') + ' · 出处：' + (src[1] ? '<a href="' + esc(src[1]) + '" target="_blank" rel="noopener">' + esc(src[0]) + '</a>' : esc(src[0])) + (q[5] ? ' · 🎓' : '') + '</div></div>';
   }
   function upFind(side, id) { var L = UP[side].people; for (var i = 0; i < L.length; i++) if (L[i].id === id) return L[i]; return null; }
   function upCompare() {
