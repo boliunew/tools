@@ -235,7 +235,8 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 .qt.e{border-color:var(--gold)}
 .qn{font-size:12px;color:var(--gold);margin-left:6px;font-weight:600}
 .saybox .qt{background:var(--paper)}
-.saybox .who3{font-size:12.5px;font-weight:700;margin-top:10px;cursor:pointer;color:var(--accent)}
+.saybox .sayp{border-bottom:1px solid var(--line,#8883)}.sayp>summary{cursor:pointer;padding:10px 2px;font-weight:600;list-style:none}.sayp>summary::-webkit-details-marker{display:none}.sayp>summary:before{content:'▸ ';opacity:.6}.sayp[open]>summary:before{content:'▾ '}.sayp>summary small{font-weight:400;opacity:.65;margin-left:6px}
+    .who3{font-size:12.5px;font-weight:700;margin-top:10px;cursor:pointer;color:var(--accent)}
 /* ---------- 阿西莫夫 ---------- */
 .as-hero{background:radial-gradient(1.5px 1.5px at 18% 30%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 72% 18%,rgba(255,255,255,.7),transparent),radial-gradient(1.5px 1.5px at 86% 62%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 40% 78%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 58% 44%,rgba(255,255,255,.6),transparent),radial-gradient(130% 120% at 100% 0%,#3B5A7A 0%,#152232 50%,#080D14 100%);color:#E6EEF6;border-radius:18px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .as-hero:after{content:"";position:absolute;right:-60px;bottom:-90px;width:220px;height:220px;border-radius:50%;border:1px solid rgba(160,200,240,.18);box-shadow:0 0 0 26px rgba(160,200,240,.04),0 0 0 54px rgba(160,200,240,.03);pointer-events:none}
@@ -594,7 +595,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     h += '<div class="sec">关于教育，他们自己怎么说 <small>原话 + 中文，点名字看这个人</small></div><div class="saybox">';
     ['uk', 'su'].forEach(function (side) { UP[side].people.forEach(function (pp) {
       var qs = (pp.q || []).filter(function (q) { return q[5]; }); if (!qs.length) return;
-      h += '<div class="who3" data-go="' + side + '-' + pp.id + '">' + pp.icon + ' ' + esc(pp.zh) + (side === 'uk' ? ' 🇬🇧' : ' ☭') + ' ›</div>' + qs.map(function (q) { return upQ(q); }).join('');
+      h += '<details class="sayp"><summary>' + pp.icon + ' ' + esc(pp.zh) + (side === 'uk' ? ' 🇬🇧' : ' ☭') + ' <small>' + qs.map(function (q) { return q[0]; }).filter(function (v, i, a) { return a.indexOf(v) === i; }).join(' · ') + ' 岁 · ' + qs.length + ' 条</small></summary>' + qs.map(function (q) { return upQ(q); }).join('') + '<div class="who3" data-go="' + side + '-' + pp.id + '">看' + esc(pp.zh) + '的完整故事 ›</div></details>';
     }); });
     h += '</div>';
     // 34 人对照表

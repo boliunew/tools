@@ -127,8 +127,7 @@ UK = {
             "tl": [
                 [7, "和琳恩、苏三个人坐成一排接受采访，从此一起出现了一辈子。"],
                 [21, "19 岁就结了婚。这一集里女孩们被问的几乎全是结婚、孩子、家务——她们后来对此很不满。"],
-                [35, "离婚后再婚，搬去苏格兰。"],
-                [49, "片中最有名的一幕：她当面数落艾普特，说他几十年来一直小看她、只问她家长里短。《纽约客》评论说，这一刻是她迟来的「平反」。此时她已再次离婚，独自养大三个儿子。"],
+                [49, "片中最有名的一幕：她当面数落艾普特，说他几十年来一直小看她、只问她家长里短。《纽约客》评论说，这一刻是她迟来的「平反」。此时她已和孩子们的父亲分开，独自养大三个儿子。"],
                 [56, "因类风湿关节炎靠残疾补助生活已有 14 年；一家人住得很近，关系亲密。"],
                 [63, "据影评，补助被削减后，她每周只靠大约 40 英镑勉强度日。"],
                 [70, "据播出前的介绍，她和新伴侣离开了苏格兰。"],
@@ -209,12 +208,11 @@ UK = {
             "from": "伦敦东区的慈善儿童之家",
             "seven": "片中唯一的混血孩子；从没见过黑人父亲，因为母亲患抑郁症被送进儿童之家。",
             "then": "14 岁前回到母亲身边；早婚生五个孩子，离婚 → 再婚，和妻子一起做寄养父母 → 有 10 个孙辈。",
-            "films": [7, 14, 21, 35, 42, 49, 56, 63, 70],
+            "films": [7, 14, 21, 28, 42, 49, 56, 63, 70],
             "tl": [
                 [7, "全片唯一的混血孩子，从没见过父亲。"],
                 [14, "已经离开儿童之家，回到白人母亲身边生活。他说其实在儿童之家时更开心，那里人人都是他的朋友；零花钱能省就省。"],
                 [21, "在一家香肠厂的冷库工作，说喜欢干活、喜欢团队的感觉，和母亲处得「更像朋友」。和保罗重逢。"],
-                [28, "缺席。"],
                 [35, "正在和第一任妻子、五个孩子的母亲离婚，选择不出镜。"],
                 [42, "回来了：再婚，有一个儿子和一个继女。"],
                 [49, "和妻子成了寄养家庭的父母，照顾别人家的孩子。"],
@@ -693,6 +691,13 @@ QSRC = {
     "pov": ["PBS POV · 56 Up: About the Characters", "https://archive.pov.org/56up/about-the-characters/"],
     "dis": ["Dissent · Back to the Future: The Up Series", "https://dissentmagazine.org/article/back-to-the-future-the-up-series/"],
     "srt7": ["《Seven Up!》（1964）片中原声字幕", ""],
+    "ss14": ["《7 Plus Seven》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=7-plus-seven"],
+    "ss21": ["《21 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=21-up"],
+    "ss28": ["《28 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=28-up"],
+    "ss35": ["《35 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=35-up"],
+    "ss42": ["《42 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=42-up"],
+    "ss49": ["《49 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=49-up"],
+    "ss56": ["《56 Up》片中文字稿（Springfield! Springfield!）", "https://www.springfieldspringfield.co.uk/movie_script.php?movie=56-up"],
     "kw7": ["Katherine Wikoff · Watching the Up Series #1 Seven Up", "https://katherinewikoff.com/2013/07/08/watching-the-up-series-1-seven-up/"],
     "kw14": ["Katherine Wikoff · #2 7 Plus Seven", "https://katherinewikoff.com/2013/07/14/watching-the-up-series-2-7-plus-seven/"],
     "kw21": ["Katherine Wikoff · #3 21 Up", "https://katherinewikoff.com/2013/07/24/watching-the-up-documentary-series-film-3-21-up/"],
@@ -994,12 +999,18 @@ def main():
         for side_key, pid in (pr["a"], pr["b"]):
             side = UK if side_key == "uk" else SU
             assert any(p["id"] == pid for p in side["people"]), pid
+    # 逐集文字稿里摘出的原话和事件（scripts/up_transcripts.json）
+    with open(os.path.join(ROOT, "scripts", "up_transcripts.json"), encoding="utf-8") as f:
+        TR = json.load(f)
+    for k, qs in TR["q"].items():
+        Q.setdefault(k, []).extend(qs)
     for side, key in ((UK, "uk"), (SU, "su")):
         for p in side["people"]:
+            p["tl"] += [list(t) for t in TR["tl"].get(key + "-" + p["id"], [])]
             e = EDU[key + "-" + p["id"]]
             p["edu"], p["work"], p["keys"], p["lesson"] = e
             p["tl"].sort(key=lambda t: t[0])
-            p["q"] = Q.get(key + "-" + p["id"], [])
+            p["q"] = sorted(Q.get(key + "-" + p["id"], []), key=lambda q: q[0])
             for q in p["q"]:
                 assert q[4] in QSRC, q[4]
     for it in LESSONS["items"]:
