@@ -1,18 +1,18 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-10-06（短版）
-#EXTINF:8,通勤电台 - ☀️ 开场 10月6日 星期二
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610060704
-#EXTINF:35,通勤电台 - 🌤️ 天气 Upland 晴 102°/76°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610060704
-#EXTINF:34,通勤电台 - 📊 大盘 防守
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610060704
-#EXTINF:67,通勤电台 - 📈 股票池 37 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610060704
-#EXTINF:7,通勤电台 - 🗓️ 财报与数据 今明两天清静
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610060704
-#EXTINF:82,通勤电台 - 📰 英文新闻 BBC · Al Jazeera · The Guardian
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610060704
-#EXTINF:30,通勤电台 - 🔤 今日单词 river · el arcoíris
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610060704
+#PLAYLIST:通勤电台 2026-10-07（短版）
+#EXTINF:11,通勤电台 - ☀️ 开场 10月7日 星期三
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610071027
+#EXTINF:34,通勤电台 - 🌤️ 天气 Upland 晴 98°/74°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610071027
+#EXTINF:30,通勤电台 - 📊 大盘 谨慎
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610071027
+#EXTINF:65,通勤电台 - 📈 股票池 29 个候选
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610071027
+#EXTINF:12,通勤电台 - 🗓️ 财报与数据 1 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610071027
+#EXTINF:85,通勤电台 - 📰 英文新闻 Al Jazeera · BBC · NPR
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610071027
+#EXTINF:34,通勤电台 - 🔤 今日单词 housework · los lentes
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610071027
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610060704
+https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610071027

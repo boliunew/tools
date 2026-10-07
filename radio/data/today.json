@@ -1,78 +1,78 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-06T14:05:45Z",
- "date": "2026-10-06",
+ "generated": "2026-10-07T17:28:25Z",
+ "date": "2026-10-07",
  "engine": "edge",
- "total": 461.8,
- "short": 268.5,
+ "total": 470.6,
+ "short": 275.6,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610060704",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610071027",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月6日 星期二",
-   "dur": 7.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610060704",
+   "sub": "10月7日 星期三",
+   "dur": 10.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "10月6日，星期二，通勤电台准时上线。不想听的直接按下一首。"
+     "t": "一周过半了。今天是10月7日，星期三。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 102°/76°F",
-   "dur": 34.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610060704",
+   "sub": "Upland 晴 98°/74°F",
+   "dur": 34.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏76度，25摄氏度，体感72度。傍晚5点下班大约华氏96度，35摄氏度，体感90度。白天最高102度，约39摄氏度；最低76度。基本不会下雨。白天空气质量中等，指数最高76。今天日落时间是傍晚6点27分。提醒一下：天气很热，注意防暑，别把东西留在车里。"
+     "t": "Upland今天晴。早上7点出门大约华氏74度，23摄氏度，体感70度。傍晚5点下班大约华氏94度，35摄氏度，体感90度。白天最高98度，约37摄氏度；最低74度。基本不会下雨。白天空气质量中等，指数最高92。今天日落时间是傍晚6点26分。提醒一下：天气很热，注意防暑，别把东西留在车里。"
     }
    ]
   },
   {
    "id": "market",
    "title": "📊 大盘",
-   "sub": "防守",
-   "dur": 34.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610060704",
+   "sub": "谨慎",
+   "dur": 30.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月5日收盘。标普500 ETF 上涨0.7%，纳指100 ETF 上涨0.9%。恐慌指数VIX 15.5，正常水平。标普成分股里，站上50日均线的只占28%。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
+     "t": "先看大盘，数据截至美股10月6日收盘。标普500 ETF 上涨0.5%，纳指100 ETF 上涨0.5%。恐慌指数VIX 15.0，正常水平。标普成分股里，站上50日均线的只占30%。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "37 个候选",
-   "dur": 67.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610060704",
+   "sub": "29 个候选",
+   "dur": 64.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天37个候选，评分最高的是Charles River Laboratories，代码 C R L。不想听细节可以按下一首。"
+     "t": "股票池今天29个候选，评分最高的是Marvell Technology，代码 M R V L。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了500只股票，其中回踩金坑12个，血筹码12个，RSI2 超跌反弹10个，强势新高2个，挤压突破1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中回踩金坑12个，RSI2 超跌反弹8个，血筹码6个，强势新高2个，挤压突破1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Charles River Laboratories，代码 C R L，强势新高信号，收盘价310.77美元，止损参考289.94。"
+     "t": "第1，Marvell Technology，代码 M R V L，强势新高信号，收盘价287.01美元，止损参考258.17。"
     },
     {
      "lang": "zh",
-     "t": "第2，Target，代码 T G T，RSI2 超跌反弹信号，收盘价152.99美元，止损参考143.33。"
+     "t": "第2，Arista Networks，代码 A N E T，强势新高信号，收盘价215.36美元，止损参考201.63。"
     },
     {
      "lang": "zh",
-     "t": "第3，Expeditors International，代码 E X P D，强势新高信号，收盘价194.12美元，止损参考185.98。"
+     "t": "第3，Vistra，代码 V S T，挤压突破信号，收盘价160.50美元，止损参考151.52。"
     },
     {
      "lang": "zh",
@@ -83,22 +83,26 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "今明两天清静",
-   "dur": 6.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610060704",
+   "sub": "1 件大事",
+   "dur": 11.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "今明两天没有重要经济数据，也没有千亿市值以上的公司发财报。"
+     "t": "明天，有1家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "Pepsico，代码 P E P，盘前发财报。期权定价波动正负3.5%。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · The Guardian",
-   "dur": 82.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610060704",
+   "sub": "Al Jazeera · BBC · NPR",
+   "dur": 84.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
@@ -106,48 +110,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，商业，难度B2。大意是：我们每月为孩子节省£ 100 ，但他们要到57岁才能拿到。"
+     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：随着俄罗斯对乌克兰发动“大规模”袭击，基辅至少有两人丧生。"
     },
     {
      "lang": "en",
-     "t": "We're saving £100 a month for our kids but they won't get it until they're 57"
+     "t": "At least two killed in Kyiv as Russia launches ‘massive’ attack on Ukraine"
     },
     {
      "lang": "en",
-     "t": "A growing number of parents are opening retirement funds for their children."
+     "t": "Russia’s Defence Ministry says its forces carried out a 'massive strike' on Kyiv and other Ukrainian regions."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：克里斯蒂亚诺·罗纳尔多（ Cristiano Ronaldo ）与教练耶稣（ Jesus ）争吵。"
+     "t": "第2条，来自BBC，科学，难度B2。大意是：海雀岛（ Puffin island ）因缺水而处于关闭的尖端。"
     },
     {
      "lang": "en",
-     "t": "Will Cristiano Ronaldo play for Portugal after a row with coach Jesus?"
+     "t": "Puffin island on cusp of closure as it runs out of water"
     },
     {
      "lang": "en",
-     "t": "Ronaldo sparked controversy last week when he walked out of the camp after learning that he would not start a game."
+     "t": "Lundy is in \"real jeopardy\" and could be evacuated if supplies run out, bosses say."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自The Guardian，国际，难度B2。大意是：从争夺食物到金牌：印度亚运会冠军背后的故事。"
+     "t": "第3条，来自NPR，综合，难度B1。大意是：女演员伊娃·玛丽·桑特（ Eva Marie Saint ）因《海滨》（ On the Waterfront ）获得奥斯卡奖，享年102岁。"
     },
     {
      "lang": "en",
-     "t": "From competing for food to a gold medal: the stories behind India’s Asian Games winners"
+     "t": "Actress Eva Marie Saint, who won an Oscar for 'On the Waterfront,' dies at 102"
     },
     {
      "lang": "en",
-     "t": "The country’s 85-medal haul included athletes who trained with limited money and borrowed equipment."
+     "t": "Saint won an Oscar for her portrayal of Edie, a Catholic schoolgirl whose longshoreman brother is murdered."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "river · el arcoíris",
-   "dur": 30.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610060704",
+   "sub": "housework · los lentes",
+   "dur": 33.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
@@ -155,15 +159,15 @@
     },
     {
      "lang": "en",
-     "t": "river"
+     "t": "housework"
     },
     {
      "lang": "zh",
-     "t": "意思是：河。拼写是："
+     "t": "意思是：家务。拼写是："
     },
     {
      "lang": "en",
-     "t": "r, i, v, e, r"
+     "t": "h, o, u, s, e, w, o, r, k"
     },
     {
      "lang": "zh",
@@ -171,7 +175,7 @@
     },
     {
      "lang": "en",
-     "t": "river"
+     "t": "housework"
     },
     {
      "lang": "zh",
@@ -179,44 +183,44 @@
     },
     {
      "lang": "es",
-     "t": "el arcoíris"
+     "t": "los lentes"
     },
     {
      "lang": "zh",
-     "t": "意思是：彩虹。跟着读一遍。"
+     "t": "意思是：眼镜。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el arcoíris"
+     "t": "los lentes"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 24.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610060704",
+   "sub": "易错",
+   "dur": 19.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天说一个常见错误。不要说："
     },
     {
      "lang": "en",
-     "t": "Make the most of yourself, for that is all there is of you."
+     "t": "In my opinion, I think..."
     },
     {
      "lang": "zh",
-     "t": "意思是：尽力活出最好的自己，因为你只有这一个自己。这句话出自 Ralph Waldo Emerson。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "应该说："
     },
     {
      "lang": "en",
-     "t": "Make the most of yourself, for that is all there is of you."
+     "t": "In my opinion, ..."
+    },
+    {
+     "lang": "zh",
+     "t": "我认为……。in my opinion 和 I think 是一个意思，二选一"
     }
    ],
    "opt": true
@@ -224,61 +228,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "和主管沟通",
-   "dur": 70.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610060704",
+   "sub": "工作邮件和短信",
+   "dur": 73.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：工作邮件和短信。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "我下周怎么排班？"
+     "t": "封条号和单据一致。"
     },
     {
      "lang": "en",
-     "t": "What's my schedule next week?"
+     "t": "The seal number matches the paperwork."
     },
     {
      "lang": "en",
-     "t": "What's my schedule next week?"
+     "t": "The seal number matches the paperwork."
     },
     {
      "lang": "zh",
-     "t": "我想报告一个问题。"
+     "t": "我发现左门有损坏。"
     },
     {
      "lang": "en",
-     "t": "I want to report a problem."
+     "t": "I found damage on the left door."
     },
     {
      "lang": "en",
-     "t": "I want to report a problem."
+     "t": "I found damage on the left door."
     },
     {
      "lang": "zh",
-     "t": "我手机的相机不太好用。"
+     "t": "这个柜子仍被扣着。"
     },
     {
      "lang": "en",
-     "t": "The camera on my phone isn't working well."
+     "t": "This container is still on hold."
     },
     {
      "lang": "en",
-     "t": "The camera on my phone isn't working well."
+     "t": "This container is still on hold."
     },
     {
      "lang": "zh",
-     "t": "不好意思，能再解释一下吗？"
+     "t": "提醒一下明天提柜的事。"
     },
     {
      "lang": "en",
-     "t": "Sorry, could you explain that again?"
+     "t": "Just a quick reminder about tomorrow's pickup."
     },
     {
      "lang": "en",
-     "t": "Sorry, could you explain that again?"
+     "t": "Just a quick reminder about tomorrow's pickup."
     },
     {
      "lang": "zh",
@@ -290,13 +294,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "微信「客服」发来的链接别点",
-   "dur": 23.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610060704",
+   "sub": "户外干活防中暑",
+   "dur": 23.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：微信「客服」发来的链接别点。假退款、假理赔、假冻结。做法：说「微信支付有问题」「快递丢了要理赔」然后发链接：骗局；官方客服只在微信里：我 → 设置 → 帮助与反馈；任何「客服」让你开屏幕共享或会议软件：立刻挂断。"
+     "t": "今日一招：户外干活防中暑。南加州夏天和秋天的热浪。做法：别等渴了再喝：大约每 15–20 分钟喝一杯水（约 8 盎司）；出汗多时补点含电解质的饮料；头晕、恶心、大汗、抽筋：马上到阴凉处休息、补水、解开衣服降温。"
     }
    ],
    "opt": true
@@ -304,13 +308,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1914 · 1961 · 2010",
-   "dur": 22.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610060704",
+   "sub": "1870 · 1960 · 1996",
+   "dur": 19.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1914年，日军侵占济南，胶济全线为日军所占。1961年，韩国KBS电视部创立。2010年，凯文·斯特罗姆与迈克·克里格首次推出Instagram，为用户免费提供线上图片及视频分享。"
+     "t": "历史上的今天。1870年，法国共和派领袖莱昂·甘必大乘坐热气球逃离普鲁士围困下的巴黎，前往外省寻求援军。1960年，尼日利亚加入联合国。1996年，福克斯新闻频道开播。"
     }
    ],
    "opt": true
@@ -318,21 +322,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "西江月·世事一场大梦",
-   "dur": 52.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610060704",
+   "sub": "蝶恋花·春景",
+   "dur": 58.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：西江月·世事一场大梦。写于1080年，他43岁，在黄州。"
+     "t": "读一首苏轼：蝶恋花·春景。写于1095年，他58岁，在惠州（一说密州）。"
     },
     {
      "lang": "zh",
-     "t": "世事一场大梦，人生几度秋凉？夜来风叶已鸣廊，看取眉头鬓上。酒贱常愁客少，月明多被云妨。中秋谁与共孤光，把盏凄然北望。"
+     "t": "花褪残红青杏小。燕子飞时，绿水人家绕。枝上柳绵吹又少，天涯何处无芳草。墙里秋千墙外道。墙外行人，墙里佳人笑。笑渐不闻声渐悄，多情却被无情恼。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：世上的事就像一场大梦，人生能经历几回秋天的凉意？夜里风吹落叶，在回廊上沙沙作响；看看我的眉头和鬓角，已经添了愁容和白发。酒虽便宜，却常愁没有客人同饮；月亮虽明，却总被云遮住。这中秋之夜，谁和我一起欣赏这孤零零的月光？我只能端着酒杯，凄凉地向北远望。"
+     "t": "白话意思是：花朵褪去了残余的红色，青杏还小小的。燕子飞来飞去的时节，碧绿的溪水环绕着人家。枝头的柳絮被风吹得越来越少，可天涯海角哪里没有芳草呢？墙里有人荡秋千，墙外是一条路。墙外的行人走过，听见墙里美人的笑声。笑声渐渐听不见了，四周慢慢安静下来；多情的行人反被那无心的佳人惹起了烦恼。"
     }
    ],
    "opt": true
@@ -341,12 +345,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610060704",
+   "dur": 5.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610071027",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
     }
    ]
   }
