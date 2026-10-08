@@ -78,6 +78,7 @@ h3{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 8px;font
 .big.hot .no{background:var(--accent);color:var(--accent-ink)}
 .big .bd{flex:1;min-width:0}
 .big a.t{font-size:16px;font-weight:700;line-height:1.4;color:var(--ink);text-decoration:none;display:block}
+.big .en{font-size:12.5px;color:var(--faint);margin-top:2px;line-height:1.4;font-style:italic}
 .big .s{font-size:13.5px;color:var(--soft);margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .big .m{font-size:12px;color:var(--faint);margin-top:5px}
 .big .m b{color:var(--accent);font-weight:600}
@@ -165,11 +166,12 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     h += '<div class="meta">' + (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay()) + ' · 更新于 ' + ago(T.generated) + ((Date.now() - new Date(T.generated).getTime()) / 36e5 > 20 ? ' · <b style="color:#C8412B">⚠️ 超过 20 小时没更新，可能是自动任务失败（<a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">去看看</a>）</b>' : '') + (T.stale_big ? ' · 新闻源这次没抓到，显示的是上一次的' : '') + '</div>';
     var big = T.big || [];
     if (big.length) {
-      h += '<div class="sec"><b>📰 今日大事</b><small>几家中文媒体都在报的排前面</small></div>';
+      h += '<div class="sec"><b>📰 今日大事</b><small>BBC、NPR、卫报等国际英文媒体，多家都在报的排前面 · 机器翻译</small></div>';
       for (i = 0; i < big.length && i < 10; i++) {
         c = big[i];
         var also = (c.others || []).filter(function (o) { return o.source !== c.source; }).slice(0, 3);
         h += '<div class="card big' + (c.n >= 2 ? ' hot' : '') + '"><div class="no">' + (i + 1) + '</div><div class="bd"><a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' +
+          (c.en && c.zh ? '<div class="en">' + esc(c.en) + '</div>' : '') +
           (c.summary ? '<div class="s">' + esc(c.summary) + '</div>' : '') +
           '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + '</div>' +
           (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';

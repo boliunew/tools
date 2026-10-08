@@ -2,8 +2,9 @@
 """
 今日大事 · 趣闻 · 历史上的今天  →  news/data/today.json
 
-* 今日大事：几家中文新闻源（BBC 中文、德国之声、法广、纽约时报中文网、中新网……）的 RSS，
-  把讲同一件事的标题聚成一组，被越多家报道的排越前。只存标题、摘要、链接。
+* 今日大事：不用中文媒体，只用英文国际媒体（BBC、NPR、卫报、半岛、德国之声、法国24、CBC、Sky、ABC……）的 RSS，
+  把讲同一件事的标题聚成一组，被越多家报道的排越前；标题和摘要机翻成中文（谷歌翻译免费接口，失败再用 MyMemory），
+  原文英文标题一起保留。只存标题、摘要、链接。
 * 趣闻：UPI Odd News 等英文奇闻源，标题顺手机翻成中文（MyMemory 免费接口，翻过的会缓存复用）。
 * 历史上的今天：中文维基百科「10月3日」这类日期页的「大事记」和「节假日」，今天和明天（太平洋时间）各一份。
 
@@ -26,13 +27,17 @@ WIKI_UA = "boliunew-tools/1.0 (https://github.com/boliunew/tools; personal reade
 KEEP_HOURS = 30
 TZ = dt.timezone(dt.timedelta(hours=-7))  # 太平洋夏令时；冬令时差一小时，对「今天是几号」影响很小
 
-ZH_FEEDS = [
-    ("BBC 中文", "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"),
-    ("德国之声", "https://rss.dw.com/rdf/rss-chi-all"),
-    ("法广", "https://www.rfi.fr/cn/rss"),
-    ("纽约时报中文网", "https://cn.nytimes.com/rss/"),
-    ("中新网", "https://www.chinanews.com.cn/rss/importnews.xml"),
-    ("中新网", "https://www.chinanews.com.cn/rss/world.xml"),
+ZH_FEEDS = [   # 名字沿用 ZH_FEEDS，内容已经全是英文国际媒体
+    ("BBC", "https://feeds.bbci.co.uk/news/world/rss.xml"),
+    ("NPR", "https://feeds.npr.org/1004/rss.xml"),
+    ("NPR", "https://feeds.npr.org/1001/rss.xml"),
+    ("卫报", "https://www.theguardian.com/world/rss"),
+    ("半岛电视台", "https://www.aljazeera.com/xml/rss/all.xml"),
+    ("德国之声", "https://rss.dw.com/rdf/rss-en-all"),
+    ("法国24", "https://www.france24.com/en/rss"),
+    ("CBC", "https://www.cbc.ca/webfeed/rss/rss-world"),
+    ("Sky News", "https://feeds.skynews.com/feeds/rss/world.xml"),
+    ("ABC News", "https://abcnews.go.com/abcnews/internationalheadlines"),
 ]
 ZH_ORDER = {name: i for i, (name, _) in enumerate(ZH_FEEDS)}
 ODD_FEEDS = [
@@ -94,6 +99,20 @@ def fetch_feed(name, url):
 # ----------------------------------------------------------------------------- 聚类：讲同一件事的放一组
 CJK = re.compile(r"[一-鿿]+")
 LAT = re.compile(r"[A-Za-z][A-Za-z0-9\-]{2,}")
+STOP_EN = set("""the a an and or but of to in on at for from by with as is are was were be been being has have had will would can could
+should may might must not no yes it its this that these those he she they them his her their our we you your i me my who whom whose which what
+when where why how than then there here into onto over under after before about against between during without within up down out off
+says said say new more most some any all many much also just still amid after says report reports update live video watch photos what
+year years day days week weeks month months first last two three one people man woman men women says told""".split())
+
+
+def stem(w):
+    for suf in ("ing", "ies", "es", "s", "ed"):
+        if len(w) > len(suf) + 3 and w.endswith(suf):
+            return w[: -len(suf)] + ("y" if suf == "ies" else "")
+    return w
+
+
 STOP_BIGRAMS = {"表示", "认为", "指出", "报道", "消息", "最新", "今天", "昨天", "一个", "这个", "我们", "他们", "没有", "已经",
                 "可能", "进行", "发生", "问题", "情况", "相关", "目前", "继续", "周一", "周二", "周三", "周四", "周五", "周六",
                 "周日", "星期", "日电", "记者", "中新", "新网", "什么", "为何", "如何", "是否", "不是", "成为", "之后", "以来"}
@@ -103,7 +122,7 @@ def tokens(s):
     toks = []
     for run in CJK.findall(s):
         toks += [run[i:i + 2] for i in range(len(run) - 1)]
-    toks += [w.lower() for w in LAT.findall(s)]
+    toks += [stem(w.lower()) for w in LAT.findall(s) if w.lower() not in STOP_EN]
     return [t for t in toks if t not in STOP_BIGRAMS]
 
 
@@ -147,7 +166,7 @@ def cluster(items):
             if m["source"] not in srcs:
                 srcs.append(m["source"])
         # 代表条目：摘要最完整的那条
-        rep = max(mem, key=lambda m: (len(m["summary"]) > 20, -ZH_ORDER.get(m["source"], 9), len(m["summary"])))
+        rep = max(mem, key=lambda m: (len(m["summary"]) > 20, -ZH_ORDER.get(m["source"], 99), -abs(len(m["summary"]) - 160)))
         latest = max((m["time"] for m in mem if m["time"]), default=None)
         others = [{"source": m["source"], "title": m["title"], "link": m["link"]} for m in mem if m is not rep][:4]
         out.append({"title": rep["title"], "summary": rep["summary"], "link": rep["link"], "source": rep["source"],
@@ -157,10 +176,25 @@ def cluster(items):
 
 
 
-# ----------------------------------------------------------------------------- 趣闻：标题机翻（带缓存）
+# ----------------------------------------------------------------------------- 机翻（带缓存）：先谷歌翻译免费接口，再 MyMemory
+def google_tr(text):
+    q = urllib.parse.urlencode({"client": "gtx", "sl": "en", "tl": "zh-CN", "dt": "t", "q": text[:1800]})
+    d = json.loads(http_get("https://translate.googleapis.com/translate_a/single?" + q, timeout=15))
+    return "".join(seg[0] for seg in (d[0] or []) if seg and seg[0]).strip()
+
+
 def translate(text, cache):
+    if not text:
+        return ""
     if text in cache:
         return cache[text]
+    try:
+        zh = google_tr(text)
+        if zh and zh != text:
+            cache[text] = zh
+            return zh
+    except Exception:
+        pass
     try:
         q = urllib.parse.urlencode({"q": text[:450], "langpair": "en|zh-CN"})
         d = json.loads(http_get("https://api.mymemory.translated.net/get?" + q, timeout=15))
@@ -259,12 +293,20 @@ def main():
             if it["time"] and now - it["time"] > dt.timedelta(hours=KEEP_HOURS if kind == "zh" else 24 * 5):
                 continue
             if kind == "zh":
-                it["title"], it["summary"] = to_simplified(it["title"]), to_simplified(it["summary"])
+                if re.match(r"^(Watch|Video|Live|Listen|In pictures|Quiz)\b\s*[:：]?", it["title"], re.I):
+                    continue   # 视频、直播、图集、测验类不算新闻
                 zh_items.append(it)
             else:
                 odd_items.append(it)
 
     big = cluster(zh_items)[:12] if zh_items else []
+    for c in big:   # 英文 → 中文；翻不出来就先放英文原文
+        c["en"], c["en_summary"] = c["title"], c["summary"]
+        c["title"] = translate(c["title"], tcache) or c["title"]
+        c["summary"] = translate(c["summary"], tcache) if c["summary"] else ""
+        c["zh"] = c["title"] != c["en"]
+        for o in c.get("others", []):
+            o["en"] = o["title"]
 
     odd_items.sort(key=lambda it: it["time"] or now, reverse=True)
     odd, per_src = [], {}
@@ -278,7 +320,7 @@ def main():
                     "time": it["time"].strftime("%Y-%m-%dT%H:%M:%SZ") if it["time"] else None})
         if len(odd) >= 10:
             break
-    keep = set(o["title"] for o in odd)
+    keep = set(o["title"] for o in odd) | set(c["en"] for c in big) | set(c["en_summary"] for c in big)
     tcache = {k: v for k, v in tcache.items() if k in keep}
 
     otd = {}
@@ -304,6 +346,7 @@ def main():
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
     ok = [s["source"] for s in status if s["ok"]]
     bad = ["%s(%s)" % (s["source"], s["err"] or "空") for s in status if not s["ok"]]
+    print("翻译：", sum(1 for c in out["big"] if c.get("zh")), "/", len(out["big"]))
     print("今日大事 %d 组（%d 条）· 趣闻 %d 条 · 历史上的今天 %s" % (len(out["big"]), len(zh_items), len(out["odd"]), {k: len(v["events"]) for k, v in otd.items()}))
     print("OK:", ", ".join(ok))
     if bad:
