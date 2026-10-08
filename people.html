@@ -858,7 +858,8 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     h += '<div class="sec">五季，一句话</div>';
     P.seasons.forEach(function (s) { h += '<div class="poi-s"><div class="n">S' + s.n + '<small>' + s.y + '<br>' + s.eps + ' 集</small></div><div><b>' + esc(s.t) + '</b><p>' + esc(s.p) + '</p></div></div>'; });
     h += '<div class="sec">你可能不知道</div><ul class="poi-f">' + P.facts.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>';
-    var last = P.quotes[P.quotes.length - 1];
+    if (P.trivia && P.trivia.length) h += '<div class="sec">幕后与反响 <small>每条都附出处</small></div><ul class="poi-f">' + P.trivia.map(function (f) { return '<li>' + esc(f.zh) + (f.src ? ' <a href="' + esc(f.src) + '" target="_blank" rel="noopener">出处 ↗</a>' : '') + '</li>'; }).join('') + '</ul>';
+    var last = P.quotes.filter(function (q) { return /^I learned everyone dies alone/.test(q.en); })[0] || P.quotes[0];
     h += '<div class="sec">最后那段话</div>' + poiQ(last);
     return h;
   }
@@ -868,7 +869,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     h += '<div class="chips" id="poiT"><button data-pt="" class="' + (POT ? '' : 'on') + '">全部<small>' + P.quotes.length + '</small></button>' +
       Object.keys(P.themes).filter(function (t) { return cnt[t]; }).sort(function (a, b) { return cnt[b] - cnt[a]; }).map(function (t) { return '<button data-pt="' + t + '" class="' + (POT === t ? 'on' : '') + '">' + P.themes[t][0] + ' ' + esc(P.themes[t][1]) + '<small>' + cnt[t] + '</small></button>'; }).join('') + '</div>';
     var season = 0;
-    P.quotes.forEach(function (q) {
+    P.quotes.slice().sort(function (a, b) { return a.ep < b.ep ? -1 : a.ep > b.ep ? 1 : a.n - b.n; }).forEach(function (q) {
       if (POT && q.th.indexOf(POT) < 0) return;
       var sn = +q.ep.substr(1, 2);
       if (sn !== season) { season = sn; h += '<div class="sec">第 ' + sn + ' 季</div>'; }
@@ -895,12 +896,16 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     });
     return h;
   }
+  var POE = 0;
   function poiEps() {
-    var P = POI, h = '<div class="poi-p">只看几集的话，看这 25 集就能把主线串起来。</div>', season = 0;
+    var P = POI, nstar = P.episodes.filter(function (e) { return e.star; }).length, season = 0;
+    var h = '<div class="poi-p">' + (POE ? '全部 ' + P.episodes.length + ' 集，每集一句话。带黄框的是必看集。' : '只想重温主线，看这 ' + nstar + ' 集就能串起来。') + '</div>' +
+      '<div class="chips" id="poiE"><button data-pe="0" class="' + (POE ? '' : 'on') + '">⭐ 必看 ' + nstar + ' 集</button><button data-pe="1" class="' + (POE ? 'on' : '') + '">📺 全部 ' + P.episodes.length + ' 集</button></div>';
     P.episodes.forEach(function (e) {
+      if (!POE && !e.star) return;
       var sn = +e.code.substr(1, 2);
       if (sn !== season) { season = sn; h += '<div class="sec">第 ' + sn + ' 季</div>'; }
-      h += '<div class="poi-e' + (/If-Then-Else|return 0|The Crossing/.test(e.title) ? ' star' : '') + '"><div class="c">' + e.code.replace('S0', 'S').replace('E', '·E') + '</div><div><b>' + esc(e.title) + '</b><small>' + e.date + '</small><p>' + esc(e.note) + '</p></div></div>';
+      h += '<div class="poi-e' + (POE && e.star ? ' star' : !POE && /If-Then-Else|return 0|The Crossing/.test(e.title) ? ' star' : '') + '"><div class="c">' + e.code.replace('S0', 'S').replace('E', '·E') + '</div><div><b>' + esc(e.title) + '</b><small>' + e.date + '</small><p>' + esc(e.note) + '</p></div></div>';
     });
     return h;
   }
@@ -913,6 +918,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
   function onPOI(e) {
     var t = e.target, el;
     if ((el = t.closest('[data-ps]'))) { POS = el.getAttribute('data-ps'); jset('poiSeg', POS); var y0 = $('poiSeg').getBoundingClientRect().top; renderPOI(); window.scrollBy(0, $('poiSeg').getBoundingClientRect().top - y0); return; }
+    if ((el = t.closest('[data-pe]'))) { POE = +el.getAttribute('data-pe'); var ye = window.scrollY; renderPOI(); window.scrollTo(0, ye); return; }
     if ((el = t.closest('[data-pt]'))) { POT = el.getAttribute('data-pt'); var y1 = window.scrollY; renderPOI(); window.scrollTo(0, y1); return; }
     if ((el = t.closest('[data-pv]'))) { var k = 'v' + el.getAttribute('data-pv'); POO[k] = !POO[k]; var c = $('pv-' + el.getAttribute('data-pv')); if (c) { c.className = 'poi-v' + (POO[k] ? ' on' : ''); c.querySelector('em').textContent = POO[k] ? '收起' : '展开'; } return; }
     if ((el = t.closest('[data-pp]'))) { var k2 = 'p' + el.getAttribute('data-pp'); POO[k2] = !POO[k2]; var c2 = $('pp-' + el.getAttribute('data-pp')); if (c2) c2.className = 'poi-c' + (POO[k2] ? ' on' : ''); }

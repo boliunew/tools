@@ -171,7 +171,21 @@ VALUES = [
 ]
 
 
+SPK = {"Harold Finch": "finch", "John Reese": "reese", "Root": "root", "The Machine": "machine", "Carl Elias": "elias", "Lionel Fusco": "fusco",
+       "Sameen Shaw": "shaw", "Joss Carter": "carter", "John Greer": "greer", "Control": "control", "Nathan Ingram": "nathan", "Zoe Morgan": "zoe",
+       "Leon Tao": "leon", "Samaritan": "samaritan", "Dominic": "dominic", "Harper Rose": "harper",
+       "Alicia Corwin": "other:艾丽西娅·科温（前政府官员）", "Special Counsel": "other:特别顾问（政府官员）", "Genrika Zhirova": "other:根里卡（Gen，小女孩）",
+       "Finch's Father": "other:芬奇的父亲", "Roger McCourt": "other:罗杰·麦考特（科技公司老板）", "Devon Grice": "other:德文·格莱斯（政府特工）", "Terry Easton": "other:特里·伊斯顿（心理学家）"}
+
+
 def main():
+    MORE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "poi_more.json"), encoding="utf-8"))
+    for p in MORE["people"]:
+        PEOPLE.append([p["id"], p["icon"], p["zh"], p["en"], p["actor"], p["tag"], p["bio"], p["why"]])
+        PROLE[p["id"]] = len(PEOPLE) - 1
+    base = len(Q)
+    for q in MORE["quotes"]:
+        Q.append([q["ep"], q["title"], SPK[q["who"]], q["en"], q["zh"], q["deep"], q["th"]])
     quotes = []
     for i, q in enumerate(Q):
         code, title, who, en, zh, deep, th = q
@@ -186,7 +200,7 @@ def main():
     for v in VALUES:
         for k in v[5]:
             assert 0 <= k < len(Q), (v[0], k)
-    eps = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "poi_episodes.json"), encoding="utf-8"))
+    eps = MORE["episodes"]
     out = {
         "intro": INTRO, "facts": FACTS, "narr": NARR,
         "seasons": [{"n": s[0], "y": s[1], "eps": s[2], "t": s[3], "p": s[4]} for s in SEASONS],
@@ -194,7 +208,7 @@ def main():
                     "q": [q["n"] for q in quotes if q["wid"] == p[0]]} for p in PEOPLE],
         "quotes": quotes, "themes": THEMES,
         "values": [{"t": v[0], "icon": v[1], "show": v[2], "us": v[3], "ask": v[4], "q": v[5]} for v in VALUES],
-        "episodes": eps,
+        "episodes": eps, "trivia": MORE["trivia"],
         "src": ["英文维基语录 Wikiquote · Person of Interest 各季页面（台词原文）", "英文维基百科 · List of Person of Interest episodes（集数与播出日期）"],
     }
     path = os.path.join(ROOT, "people", "poi.json")
