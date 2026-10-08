@@ -86,6 +86,15 @@ def main():
     for w in (fun or {}).get("items", []):
         out.append({"k": "苏轼趣闻", "t": w["title"], "s": short(w["why"]), "u": "people.html#sushi/" + w["id"],
                     "x": flat(w["title"], w["story"], w["src"], w["tags"], w["place"])})
+    poi = load("people/poi.json")
+    if poi:
+        for q in poi["quotes"]:
+            out.append({"k": "疑犯追踪", "t": q["zh"][:40], "s": short("%s · %s %s" % (q["who"], q["ep"], q["en"])), "u": "people.html#poi/q-%d" % q["n"],
+                        "x": flat(q["en"], q["zh"], q["deep"], q["who"], q["title"])})
+        for pp in poi["people"]:
+            out.append({"k": "疑犯追踪", "t": pp["zh"], "s": short(pp["tag"] + " · " + pp["bio"]), "u": "people.html#poi/p-" + pp["id"], "x": flat(pp["zh"], pp["en"], pp["bio"], pp["why"], pp["actor"])})
+        for i, v in enumerate(poi["values"]):
+            out.append({"k": "疑犯追踪", "t": v["t"], "s": short(v["show"]), "u": "people.html#poi/v-%d" % i, "x": flat(v["t"], v["show"], v["us"], v["ask"])})
     gm = load("people/gm.json")
     if gm:
         for s in gm["songs"]:

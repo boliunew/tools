@@ -13,13 +13,13 @@ var NAMES = {
 };
 // vocab.html（3.7 MB）和 hanzi.html（1.8 MB）太大，不预先存；打开过一次以后照样能离线用
 var PAGES = Object.keys(NAMES).filter(function (p) { return p !== 'vocab.html' && p !== 'hanzi.html'; });
-var CORE = ['./', 'nav.js?v=15', 'theme.js?v=1', 'sync.js?v=1', 'lookup.js', 'weather.js?v=1', 'tools.webmanifest', 'icons/icon-192.png', 'mind/mind.js'].concat(PAGES);
+var CORE = ['./', 'nav.js?v=16', 'theme.js?v=1', 'sync.js?v=1', 'lookup.js', 'weather.js?v=1', 'tools.webmanifest', 'icons/icon-192.png', 'mind/mind.js'].concat(PAGES);
 var DATA = [
   'news/data/today.json', 'card/today.json', 'card/daily.json', 'stocks/data/latest.json', 'earnings/data/latest.json',
   'kitchen/wellness.json', 'kitchen/recipes_cn.json', 'kitchen/recipes_cn2.json', 'kitchen/recipes_cn3.json',
   'kitchen/recipes_west.json', 'kitchen/recipes_west2.json', 'kitchen/recipes_west3.json',
   'tips/tips.json', 'kb/index.json', 'dream/dreams.json', 'mind/logic.json', 'mind/psy.json',
-  'people/gm.json', 'people/sushi_a.json', 'people/sushi_b.json', 'people/sushi_fun.json', 'people/asimov.json', 'search/counts.json', 'kb/sky.json',
+  'people/gm.json', 'people/sushi_a.json', 'people/sushi_b.json', 'people/sushi_fun.json', 'people/poi.json', 'people/asimov.json', 'search/counts.json', 'kb/sky.json',
   'speak/en_work.json', 'speak/en_life.json', 'speak/en_spoken.json', 'speak/es_yard.json'
 ];
 var SKIP = /\.(mp3|m4a|aac|ogg|opus|wav|flac|mp4|webm|m3u8|ts)(\?|$)/i;

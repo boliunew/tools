@@ -31,8 +31,8 @@ a{color:var(--accent)}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px}
 header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area-inset-top)}
 .brand{font-weight:800;font-size:18px;color:var(--ink);text-decoration:none;margin-right:auto}
-.who{display:flex;gap:8px;margin-bottom:12px}
-.who button{flex:1;min-width:0;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:9px 4px;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who{display:flex;gap:8px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none}.who::-webkit-scrollbar{display:none}
+.who button{flex:1 0 auto;min-width:0;padding-left:12px!important;padding-right:12px!important;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:9px 4px;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .who button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:700}
 .chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 10px;padding:0 16px 2px}
 .chips::-webkit-scrollbar{display:none}
@@ -53,6 +53,53 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 .ss-hero .seal{display:inline-block;border:1.5px solid #C9573C;color:#E07A5F;border-radius:4px;font-family:var(--kai);font-size:13px;padding:0 6px;margin-left:8px;vertical-align:4px}
 .ss-hero .bt{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
 .ss-hero .bt button,.ss-hero .bt a{border:1px solid rgba(255,255,255,.35);background:none;color:#F1E6D2;border-radius:999px;padding:5px 13px;font-size:13.5px;text-decoration:none}
+.poi-hero{position:relative;overflow:hidden;background:#0B0F0C;color:#D7F5DD;border-radius:18px;padding:18px 18px 16px;box-shadow:var(--shadow);font-family:ui-monospace,Menlo,Consolas,monospace}
+.poi-hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(120,255,160,.05) 0 1px,transparent 1px 3px);pointer-events:none}
+.poi-hero .scan{position:absolute;left:14px;top:14px;width:46px;height:46px;border:2px solid #FFD43B;border-radius:4px;opacity:.85}
+.poi-hero .scan:after{content:"";position:absolute;right:-8px;bottom:-8px;width:14px;height:14px;border-right:2px solid #FFD43B;border-bottom:2px solid #FFD43B}
+.poi-hero .tag{font-size:11px;letter-spacing:.2em;color:#7CF29A;margin-left:62px}
+.poi-hero h1{margin:4px 0 0 62px;font-size:28px;letter-spacing:.08em;font-family:var(--kai),serif;color:#fff}
+.poi-hero .sub{margin-left:62px;font-size:12.5px;opacity:.75}
+.poi-hero p{font-family:-apple-system,"PingFang SC",sans-serif;font-size:14px;line-height:1.75;margin:14px 0 0;opacity:.92;position:relative}
+.poi-seg{display:flex;gap:6px;margin:12px 0 4px;overflow-x:auto;scrollbar-width:none}
+.poi-seg button{flex:1 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600;color:var(--ink)}
+.poi-seg button.on{background:#0B0F0C;border-color:#0B0F0C;color:#7CF29A}
+.poi-p{font-size:14.5px;line-height:1.8;color:var(--soft);margin:12px 2px}
+.poi-narr{background:#0B0F0C;color:#C9EFD2;border-radius:14px;padding:12px 16px;font-size:14px;line-height:1.8;margin:12px 0}
+.poi-narr b{display:block;color:#FFD43B;font-size:13px;margin-bottom:4px}.poi-narr small{display:block;opacity:.6;font-size:12px;margin-top:4px}
+.poi-s{display:flex;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.poi-s .n{flex:0 0 54px;font-weight:800;font-size:20px;color:var(--accent);font-family:ui-monospace,Menlo,monospace;line-height:1.1}
+.poi-s .n small{display:block;font-size:11px;color:var(--faint);font-weight:400;margin-top:3px;font-family:inherit}
+.poi-s b{font-size:15.5px}.poi-s p{margin:4px 0 0;font-size:14px;line-height:1.75;color:var(--soft)}
+.poi-f{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 16px 8px 30px;margin:0}
+.poi-f li{font-size:14px;line-height:1.7;padding:4px 0}
+.pq{background:var(--paper);border:1px solid var(--line);border-left:3px solid #FFD43B;border-radius:12px;padding:11px 14px;margin-bottom:9px}
+.pq .en{font-family:var(--serif),Georgia,serif;font-style:italic;font-size:15.5px;line-height:1.55}
+.pq .zh{font-size:15px;line-height:1.7;margin-top:5px;font-weight:600}
+.pq .who5{font-size:12.5px;color:var(--faint);margin-top:5px}.pq .who5 b{color:var(--soft)}
+.pq .deep{font-size:13.5px;line-height:1.75;color:var(--soft);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.pq .deep b{font-size:12px;color:var(--accent);margin-right:6px}
+.pq .pth{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}.pq .pth span{font-size:11.5px;background:var(--chip);color:var(--soft);border-radius:999px;padding:1px 8px}
+.poi-v{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.poi-v .hd{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer}.poi-v .hd i{font-style:normal;font-size:22px}
+.poi-v .hd b{flex:1;font-size:16.5px}.poi-v .hd em{font-style:normal;font-size:12.5px;color:var(--accent)}
+.poi-v .bd{display:none;padding:0 16px 12px}.poi-v.on .bd{display:block}
+.poi-v .r{font-size:14.5px;line-height:1.8;padding:8px 0;border-top:1px dashed var(--line)}
+.poi-v .r b{display:block;font-size:12.5px;color:var(--faint);margin-bottom:2px}
+.poi-v .r.us b{color:#2D5A8C}.poi-v .r.ask{background:var(--gold-soft);border-radius:10px;padding:8px 12px;border:0;margin:6px 0}.poi-v .r.ask b{color:var(--gold)}
+.poi-v .sub2{font-size:12.5px;color:var(--faint);margin:10px 0 6px;font-weight:600}
+.poi-c{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:9px;overflow:hidden}
+.poi-c .hd{display:flex;gap:12px;align-items:center;padding:12px 14px;cursor:pointer}
+.poi-c .av{flex:0 0 44px;height:44px;border-radius:12px;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:24px}
+.poi-c h3{margin:0;font-size:16.5px}.poi-c h3 small{font-weight:400;color:var(--faint);font-size:12.5px;margin-left:6px}
+.poi-c .fm{font-size:12.5px;color:var(--soft);margin-top:2px}
+.poi-c .bd{display:none;padding:0 14px 12px}.poi-c.on .bd{display:block}
+.poi-c .bd p{font-size:14.5px;line-height:1.8;margin:0 0 8px}
+.poi-c .why{background:var(--chip);border-radius:10px;padding:9px 12px;font-size:14px;line-height:1.75;margin-bottom:10px}.poi-c .why b{display:block;font-size:12px;color:var(--accent)}
+.poi-e{display:flex;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:7px}
+.poi-e.star{border-color:#FFD43B;box-shadow:0 0 0 1px #FFD43B inset}
+.poi-e .c{flex:0 0 58px;font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:700;color:var(--accent)}
+.poi-e b{font-size:15px}.poi-e small{color:var(--faint);font-size:12px;margin-left:8px}.poi-e p{margin:3px 0 0;font-size:13.5px;line-height:1.7;color:var(--soft)}
 .ss-seg{display:flex;gap:6px;margin:14px 0 2px}
 .ss-seg button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 4px;font-size:15px;font-weight:700;color:var(--ink)}
 .ss-seg button small{font-weight:400;color:var(--faint);margin-left:5px;font-size:12px}
@@ -349,7 +396,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 <body>
 <div class="wrap">
   <header><a class="brand" href="./">⭐ 人物专栏</a></header>
-  <div class="who" id="who"><button data-p="sushi">🖋️ 苏轼</button><button data-p="gm">🎤 G. Michael</button><button data-p="asimov">🚀 阿西莫夫</button><button data-p="up">📽️ 人生七年</button></div>
+  <div class="who" id="who"><button data-p="sushi">🖋️ 苏轼</button><button data-p="gm">🎤 G. Michael</button><button data-p="asimov">🚀 阿西莫夫</button><button data-p="up">📽️ 人生七年</button><button data-p="poi">🖥️ 疑犯追踪</button></div>
   <div id="view"><div class="empty">加载中…</div></div>
 </div>
 <script>
@@ -781,6 +828,96 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
   }
   document.addEventListener('change', function (e) { if (e.target && e.target.id === 'upSpo') { jset('upSeen-' + UPS, +e.target.value); var y = window.scrollY; renderUp(); window.scrollTo(0, y); } });
 
+
+  /* ====================== 疑犯追踪 Person of Interest ====================== */
+  var POI = null, POS = jget('poiSeg', 'intro'), POT = '', POO = {};
+  function poiQ(q, noWho) {
+    var th = q.th.map(function (t) { var x = POI.themes[t]; return x ? '<span>' + x[0] + ' ' + esc(x[1]) + '</span>' : ''; }).join('');
+    return '<div class="pq" id="pq-' + q.n + '"><div class="en">“' + esc(q.en) + '”</div><div class="zh">' + esc(q.zh) + '</div>' +
+      '<div class="who5">' + (noWho ? '' : '— <b>' + esc(q.who) + '</b> · ') + q.ep + ' 《' + esc(q.title) + '》</div>' +
+      '<div class="deep"><b>深一层</b>' + esc(q.deep) + '</div><div class="pth">' + th + '</div></div>';
+  }
+  function renderPOI() {
+    var P = POI, h = '';
+    h += '<div class="poi-hero"><div class="scan"></div><div class="tag">YOU ARE BEING WATCHED</div><h1>疑犯追踪</h1><div class="sub">Person of Interest · CBS 2011–2016 · 五季 103 集</div>' +
+      '<p>' + esc(P.intro[0]) + '</p></div>';
+    var segs = [['intro', '📖 简介'], ['quotes', '💬 台词'], ['values', '🇺🇸 价值观'], ['people', '👥 人物'], ['eps', '📺 名场面']];
+    h += '<div class="poi-seg" id="poiSeg">' + segs.map(function (x) { return '<button data-ps="' + x[0] + '" class="' + (POS === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
+    if (POS === 'quotes') h += poiQuotes();
+    else if (POS === 'values') h += poiValues();
+    else if (POS === 'people') h += poiPeople();
+    else if (POS === 'eps') h += poiEps();
+    else h += poiIntro();
+    h += '<div class="foot">台词原文核对自英文维基语录（Wikiquote），集数与日期来自英文维基百科；<br>中文翻译、「深一层」和价值观部分是我的理解，不是官方解读。</div>';
+    $('view').innerHTML = h;
+  }
+  function poiIntro() {
+    var P = POI, h = '';
+    h += P.intro.slice(1).map(function (x) { return '<p class="poi-p">' + esc(x) + '</p>'; }).join('');
+    h += '<div class="poi-narr"><b>🎙️ 片头旁白</b>' + esc(P.narr.replace(/^片头旁白（大意）：/, '')) + '<small>（大意，第一季版本）</small></div>';
+    h += '<div class="sec">五季，一句话</div>';
+    P.seasons.forEach(function (s) { h += '<div class="poi-s"><div class="n">S' + s.n + '<small>' + s.y + '<br>' + s.eps + ' 集</small></div><div><b>' + esc(s.t) + '</b><p>' + esc(s.p) + '</p></div></div>'; });
+    h += '<div class="sec">你可能不知道</div><ul class="poi-f">' + P.facts.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>';
+    var last = P.quotes[P.quotes.length - 1];
+    h += '<div class="sec">最后那段话</div>' + poiQ(last);
+    return h;
+  }
+  function poiQuotes() {
+    var P = POI, h = '', cnt = {};
+    P.quotes.forEach(function (q) { q.th.forEach(function (t) { cnt[t] = (cnt[t] || 0) + 1; }); });
+    h += '<div class="chips" id="poiT"><button data-pt="" class="' + (POT ? '' : 'on') + '">全部<small>' + P.quotes.length + '</small></button>' +
+      Object.keys(P.themes).filter(function (t) { return cnt[t]; }).sort(function (a, b) { return cnt[b] - cnt[a]; }).map(function (t) { return '<button data-pt="' + t + '" class="' + (POT === t ? 'on' : '') + '">' + P.themes[t][0] + ' ' + esc(P.themes[t][1]) + '<small>' + cnt[t] + '</small></button>'; }).join('') + '</div>';
+    var season = 0;
+    P.quotes.forEach(function (q) {
+      if (POT && q.th.indexOf(POT) < 0) return;
+      var sn = +q.ep.substr(1, 2);
+      if (sn !== season) { season = sn; h += '<div class="sec">第 ' + sn + ' 季</div>'; }
+      h += poiQ(q);
+    });
+    return h;
+  }
+  function poiValues() {
+    var P = POI, h = '<div class="poi-p">这部剧最打动人的地方，是它把很多美国立国时的观念，放进了一个人工智能和监控无处不在的时代重新追问。下面九条，每条先说剧里怎么讲，再说背后的美国观念，最后留一个问题给自己。</div>';
+    P.values.forEach(function (v, i) {
+      var on = POO['v' + i];
+      h += '<div class="poi-v' + (on ? ' on' : '') + '" id="pv-' + i + '"><div class="hd" data-pv="' + i + '"><i>' + v.icon + '</i><b>' + esc(v.t) + '</b><em>' + (on ? '收起' : '展开') + '</em></div><div class="bd">' +
+        '<div class="r"><b>剧里</b>' + esc(v.show) + '</div><div class="r us"><b>美国观念</b>' + esc(v.us) + '</div><div class="r ask"><b>想一想</b>' + esc(v.ask) + '</div>' +
+        '<div class="sub2">相关台词</div>' + v.q.map(function (k) { return poiQ(P.quotes[k]); }).join('') + '</div></div>';
+    });
+    return h;
+  }
+  function poiPeople() {
+    var P = POI, h = '';
+    P.people.forEach(function (p) {
+      var on = POO['p' + p.id];
+      h += '<div class="poi-c' + (on ? ' on' : '') + '" id="pp-' + p.id + '"><div class="hd" data-pp="' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.en) + '</small></h3><div class="fm">' + esc(p.tag) + ' · ' + esc(p.actor) + (p.q.length ? ' · 💬 ' + p.q.length : '') + '</div></div></div>' +
+        '<div class="bd"><p>' + esc(p.bio) + '</p><div class="why"><b>这个角色代表什么</b>' + esc(p.why) + '</div>' + p.q.map(function (k) { return poiQ(P.quotes[k], true); }).join('') + '</div></div>';
+    });
+    return h;
+  }
+  function poiEps() {
+    var P = POI, h = '<div class="poi-p">只看几集的话，看这 25 集就能把主线串起来。</div>', season = 0;
+    P.episodes.forEach(function (e) {
+      var sn = +e.code.substr(1, 2);
+      if (sn !== season) { season = sn; h += '<div class="sec">第 ' + sn + ' 季</div>'; }
+      h += '<div class="poi-e' + (/If-Then-Else|return 0|The Crossing/.test(e.title) ? ' star' : '') + '"><div class="c">' + e.code.replace('S0', 'S').replace('E', '·E') + '</div><div><b>' + esc(e.title) + '</b><small>' + e.date + '</small><p>' + esc(e.note) + '</p></div></div>';
+    });
+    return h;
+  }
+  function poiGo(id) {   // 搜索跳转：q-12 / p-finch / v-3
+    var m = /^(q|p|v)-(.+)$/.exec(id || ''); if (!m) { renderPOI(); return; }
+    if (m[1] === 'q') { POS = 'quotes'; POT = ''; } else if (m[1] === 'p') { POS = 'people'; POO['p' + m[2]] = 1; } else { POS = 'values'; POO['v' + m[2]] = 1; }
+    renderPOI();
+    var el = $(m[1] === 'q' ? 'pq-' + m[2] : m[1] === 'p' ? 'pp-' + m[2] : 'pv-' + m[2]); if (el) el.scrollIntoView({ block: 'start' });
+  }
+  function onPOI(e) {
+    var t = e.target, el;
+    if ((el = t.closest('[data-ps]'))) { POS = el.getAttribute('data-ps'); jset('poiSeg', POS); var y0 = $('poiSeg').getBoundingClientRect().top; renderPOI(); window.scrollBy(0, $('poiSeg').getBoundingClientRect().top - y0); return; }
+    if ((el = t.closest('[data-pt]'))) { POT = el.getAttribute('data-pt'); var y1 = window.scrollY; renderPOI(); window.scrollTo(0, y1); return; }
+    if ((el = t.closest('[data-pv]'))) { var k = 'v' + el.getAttribute('data-pv'); POO[k] = !POO[k]; var c = $('pv-' + el.getAttribute('data-pv')); if (c) { c.className = 'poi-v' + (POO[k] ? ' on' : ''); c.querySelector('em').textContent = POO[k] ? '收起' : '展开'; } return; }
+    if ((el = t.closest('[data-pp]'))) { var k2 = 'p' + el.getAttribute('data-pp'); POO[k2] = !POO[k2]; var c2 = $('pp-' + el.getAttribute('data-pp')); if (c2) c2.className = 'poi-c' + (POO[k2] ? ' on' : ''); }
+  }
+
   /* ====================== 切换 ====================== */
   function goPend() {   // 从全站搜索跳过来：#sushi/<id> 或 #gm/<id>
     if (!PEND) return;
@@ -788,6 +925,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     if (WHO === 'gm') { openSong(id); return; }
     if (WHO === 'asimov') { openBook(id); return; }
     if (WHO === 'up') { upOpen(id); return; }
+    if (WHO === 'poi') { poiGo(id); return; }
     if (/^f\d+$/.test(id)) {   // 趣闻
       SSV = 'fun'; FK = ''; FO = {}; FO[id] = 1;
       var goF = function () { renderSushi(); var fe = $('f-' + id); if (fe) fe.scrollIntoView({ block: 'start' }); };
@@ -798,15 +936,17 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     var el = $('w-' + id); if (el) el.scrollIntoView({ block: 'start' });
   }
   function show(p) {
-    if (p !== 'gm' && p !== 'asimov' && p !== 'up') p = 'sushi';
+    if (p !== 'gm' && p !== 'asimov' && p !== 'up' && p !== 'poi') p = 'sushi';
     WHO = p; jset('who', p); history.replaceState(null, '', '#' + p);
     var bs = $('who').querySelectorAll('button'), i; for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-p') === p ? 'on' : '';
-    document.title = (p === 'gm' ? 'George Michael' : p === 'asimov' ? '阿西莫夫' : p === 'up' ? '人生七年' : '苏轼') + ' · 人物专栏';
+    document.title = (p === 'gm' ? 'George Michael' : p === 'asimov' ? '阿西莫夫' : p === 'up' ? '人生七年' : p === 'poi' ? '疑犯追踪' : '苏轼') + ' · 人物专栏';
     if (p === 'sushi') {
       if (SS) { renderSushi(); goPend(); }
       else { var left = 2, parts = {}; ['sushi_a', 'sushi_b'].forEach(function (f) { getJSON('people/' + f + '.json', function (d) { parts[f] = d ? d.items : []; if (--left) return; SS = parts.sushi_a.concat(parts.sushi_b); SS.sort(function (a, b) { return (a.year || 9999) - (b.year || 9999); }); if (WHO === 'sushi') { renderSushi(); goPend(); } }); }); }
     } else if (p === 'up') {
       if (UP) { renderUp(); goPend(); } else getJSON('people/up.json', function (d) { UP = d; if (WHO === 'up') { if (UP) { renderUp(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
+    } else if (p === 'poi') {
+      if (POI) { renderPOI(); goPend(); } else getJSON('people/poi.json', function (d) { POI = d; if (WHO === 'poi') { if (POI) { renderPOI(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
     } else if (p === 'asimov') {
       if (AS) { renderAsimov(); goPend(); } else getJSON('people/asimov.json', function (d) { AS = d; if (WHO === 'asimov') { if (AS) { renderAsimov(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
     } else {
@@ -814,12 +954,12 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     }
   }
   $('who').onclick = function (e) { var b = e.target.closest('[data-p]'); if (b) { window.scrollTo(0, 0); show(b.getAttribute('data-p')); } };
-  $('view').onclick = function (e) { if (WHO === 'gm') onGM(e); else if (WHO === 'asimov') onAsimov(e); else if (WHO === 'up') onUp(e); else onSushi(e); };
+  $('view').onclick = function (e) { if (WHO === 'gm') onGM(e); else if (WHO === 'asimov') onAsimov(e); else if (WHO === 'up') onUp(e); else if (WHO === 'poi') onPOI(e); else onSushi(e); };
   // 从语境词库回来时刷新「在学 / 会了」标记
   document.addEventListener('visibilitychange', function () { if (!document.hidden && WHO === 'asimov' && AS) { var y = window.scrollY; renderAsimov(); window.scrollTo(0, y); } });
   show(WHO);
 })();
 </script>
-<script src="nav.js?v=15" defer></script>
+<script src="nav.js?v=16" defer></script>
 </body>
 </html>
