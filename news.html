@@ -166,7 +166,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     h += '<div class="meta">' + (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay()) + ' · 更新于 ' + ago(T.generated) + ((Date.now() - new Date(T.generated).getTime()) / 36e5 > 20 ? ' · <b style="color:#C8412B">⚠️ 超过 20 小时没更新，可能是自动任务失败（<a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">去看看</a>）</b>' : '') + (T.stale_big ? ' · 新闻源这次没抓到，显示的是上一次的' : '') + '</div>';
     var big = T.big || [];
     if (big.length) {
-      h += '<div class="sec"><b>📰 今日大事</b><small>BBC、NPR、卫报等国际英文媒体，多家都在报的排前面 · 机器翻译</small></div>';
+      h += '<div class="sec"><b>📰 今日大事</b><small>BBC、NPR、卫报、日本、新加坡等国际英文媒体，多家都在报的排前面 · 机器翻译</small></div>';
       for (i = 0; i < big.length && i < 10; i++) {
         c = big[i];
         var also = (c.others || []).filter(function (o) { return o.source !== c.source; }).slice(0, 3);

@@ -2,7 +2,7 @@
 """
 今日大事 · 趣闻 · 历史上的今天  →  news/data/today.json
 
-* 今日大事：不用中文媒体，只用英文国际媒体（BBC、NPR、卫报、半岛、德国之声、法国24、CBC、Sky、ABC……）的 RSS，
+* 今日大事：不用中文媒体，只用英文国际媒体（BBC、NPR、卫报、半岛、德国之声、法国24、CBC、Sky、ABC、NHK/日本时报、新加坡 CNA……）的 RSS，
   把讲同一件事的标题聚成一组，被越多家报道的排越前；标题和摘要机翻成中文（谷歌翻译免费接口，失败再用 MyMemory），
   原文英文标题一起保留。只存标题、摘要、链接。
 * 趣闻：UPI Odd News 等英文奇闻源，标题顺手机翻成中文（MyMemory 免费接口，翻过的会缓存复用）。
@@ -38,6 +38,9 @@ ZH_FEEDS = [   # 名字沿用 ZH_FEEDS，内容已经全是英文国际媒体
     ("CBC", "https://www.cbc.ca/webfeed/rss/rss-world"),
     ("Sky News", "https://feeds.skynews.com/feeds/rss/world.xml"),
     ("ABC News", "https://abcnews.go.com/abcnews/internationalheadlines"),
+    ("NHK", "https://www3.nhk.or.jp/nhkworld/en/news/rss/feed.xml"),
+    ("日本时报", "https://www.japantimes.co.jp/feed/"),
+    ("CNA", "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml"),
 ]
 ZH_ORDER = {name: i for i, (name, _) in enumerate(ZH_FEEDS)}
 ODD_FEEDS = [
