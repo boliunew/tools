@@ -151,7 +151,8 @@ def cluster(items):
     for i in sorted(range(n), key=lambda k: items[k]["time"] or dt.datetime.min.replace(tzinfo=dt.timezone.utc), reverse=True):
         best, bs = None, 0.0
         for g in groups:
-            s = max(cos(vecs[i], vecs[j]) for j in g["members"])
+            sims = [cos(vecs[i], vecs[j]) for j in g["members"]]
+            s = 0.5 * max(sims) + 0.5 * sum(sims) / len(sims)   # 兼顾最像的一条和整组平均，防止一路串到别的事上
             if s > bs:
                 best, bs = g, s
         if best is not None and bs >= 0.2:
@@ -160,13 +161,15 @@ def cluster(items):
             groups.append({"members": [i]})
     out = []
     for g in groups:
-        mem = [items[i] for i in g["members"]]
+        idx = g["members"]
+        mem = [items[i] for i in idx]
+        cen = {i: (sum(cos(vecs[i], vecs[j]) for j in idx if j != i) / (len(idx) - 1) if len(idx) > 1 else 1) for i in idx}
         srcs = []
         for m in mem:
             if m["source"] not in srcs:
                 srcs.append(m["source"])
         # 代表条目：摘要最完整的那条
-        rep = max(mem, key=lambda m: (len(m["summary"]) > 20, -ZH_ORDER.get(m["source"], 99), -abs(len(m["summary"]) - 160)))
+        rep = items[max(idx, key=lambda i: (round(cen[i], 1), len(items[i]["summary"]) > 20, -ZH_ORDER.get(items[i]["source"], 99)))]   # 最能代表这一组的那条
         latest = max((m["time"] for m in mem if m["time"]), default=None)
         others = [{"source": m["source"], "title": m["title"], "link": m["link"]} for m in mem if m is not rep][:4]
         out.append({"title": rep["title"], "summary": rep["summary"], "link": rep["link"], "source": rep["source"],
