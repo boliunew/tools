@@ -1,16 +1,16 @@
 {
- "date": "2026-10-07",
- "kind": "易错",
- "en": "In my opinion, ...",
- "zh": "我认为……",
- "by": "in my opinion 和 I think 是一个意思，二选一",
- "line": "✗ In my opinion, I think... → ✓ In my opinion, ...",
+ "date": "2026-10-08",
+ "kind": "口头禅",
+ "en": "See you later",
+ "zh": "回头见",
+ "by": "和人道别",
+ "line": "See you later",
  "word": {
-  "w": "rip",
-  "ph": "rip",
-  "zh": "n. 裂痕，破绽，拉裂，浪子；vi. 被拉开，裂开，猛冲",
-  "ex": "Someone has ripped out the first three pages of this book.",
-  "exzh": "这本书的头三页被人撕掉了。"
+  "w": "referee",
+  "ph": ".refә'ri:",
+  "zh": "n. 仲裁人，调解人，裁判员；v. 仲裁，裁判",
+  "ex": "They seemed to offend the referee.",
+  "exzh": "他们似乎得罪了裁判。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
