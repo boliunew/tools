@@ -483,10 +483,6 @@
 "name": "Cognizant",
 "sector": "Information Technology"
 },
-"CTVA": {
-"name": "Corteva",
-"sector": "Materials"
-},
 "CVNA": {
 "name": "Carvana",
 "sector": "Consumer Discretionary"
@@ -1515,10 +1511,6 @@
 "name": "Public Storage",
 "sector": "Real Estate"
 },
-"PSKY": {
-"name": "Paramount Skydance Corporation",
-"sector": "Communication Services"
-},
 "PSX": {
 "name": "Phillips 66",
 "sector": "Energy"
@@ -1622,6 +1614,10 @@
 "SJM": {
 "name": "J.M. Smucker Company (The)",
 "sector": "Consumer Staples"
+},
+"SKYD": {
+"name": "Paramount Skydance Corporation",
+"sector": "Communication Services"
 },
 "SLB": {
 "name": "Schlumberger",
@@ -1799,6 +1795,10 @@
 "name": "Take-Two Interactive",
 "sector": "Communication Services"
 },
+"TWLO": {
+"name": "Twilio",
+"sector": "Information Technology"
+},
 "TXN": {
 "name": "Texas Instruments",
 "sector": "Information Technology"
@@ -1907,6 +1907,10 @@
 "name": "Viatris",
 "sector": "Health Care"
 },
+"VYLR": {
+"name": "Vylor",
+"sector": "Consumer Staples"
+},
 "VZ": {
 "name": "Verizon",
 "sector": "Communication Services"
@@ -1918,10 +1922,6 @@
 "WAT": {
 "name": "Waters Corporation",
 "sector": "Health Care"
-},
-"WBD": {
-"name": "Warner Bros. Discovery",
-"sector": "Communication Services"
 },
 "WDAY": {
 "name": "Workday, Inc.",
