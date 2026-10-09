@@ -205,8 +205,11 @@ html.locked #gate{display:block}
     for (var i = 0; i < n; i++) h += '<li class="' + w.tips[i].lv + '"><i>' + w.tips[i].i + '</i><span>' + esc(w.tips[i].t) + '</span></li>';
     if (!all && w.tips.length > n) h += '<li><button class="more" id="wxMore">还有 ' + (w.tips.length - n) + ' 条 ›</button></li>';
     put('wx', h + '</ul></div>');
-    var m = $('wxMore'); if (m) m.onclick = function () { wxRender(w, true); };
+    WXL = w;
   }
+  // 别的卡片加载完会重画整个区域，所以「还有 N 条」用事件委托，不直接绑在按钮上
+  var WXL = null;
+  $('tdBody').addEventListener('click', function (e) { if (e.target && e.target.id === 'wxMore' && WXL) { e.preventDefault(); wxRender(WXL, true); } });
   if (window.WX) WX.load(function (w) { wxRender(w, false); });
 
   getJSON('kitchen/wellness.json', function (w) {
