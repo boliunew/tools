@@ -1,16 +1,16 @@
 {
- "date": "2026-10-08",
- "kind": "口头禅",
- "en": "See you later",
- "zh": "回头见",
- "by": "和人道别",
- "line": "See you later",
+ "date": "2026-10-09",
+ "kind": "名言",
+ "en": "The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings.",
+ "zh": "亲爱的勃鲁托斯，我们屈居人下，错不在命运，而在我们自己。",
+ "by": "William Shakespeare",
+ "line": "The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings. — William Shakespeare",
  "word": {
-  "w": "referee",
-  "ph": ".refә'ri:",
-  "zh": "n. 仲裁人，调解人，裁判员；v. 仲裁，裁判",
-  "ex": "They seemed to offend the referee.",
-  "exzh": "他们似乎得罪了裁判。"
+  "w": "soak",
+  "ph": "sәuk",
+  "zh": "n. 浸，湿透，大雨；vt. 使上下湿透，浸，吸入，吸收",
+  "ex": "He was soaking wet from head to toe.",
+  "exzh": "他从头到脚都湿透了。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
