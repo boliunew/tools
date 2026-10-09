@@ -1,78 +1,91 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-08T17:26:16Z",
- "date": "2026-10-08",
+ "generated": "2026-10-09T17:01:38Z",
+ "date": "2026-10-09",
  "engine": "edge",
- "total": 513.6,
- "short": 290.0,
+ "total": 470.0,
+ "short": 282.8,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610081025",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610091000",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月8日 星期四",
-   "dur": 9.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610081025",
+   "sub": "10月9日 星期五",
+   "dur": 9.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "今天是10月8日，星期四。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
+     "t": "周五了，坚持一下就周末了！星期五，10月9日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 97°/71°F",
-   "dur": 33.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610081025",
+   "sub": "Upland 晴 92°/67°F",
+   "dur": 26.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏72度，22摄氏度。傍晚5点下班大约华氏90度，32摄氏度，体感86度。白天最高97度，约36摄氏度；最低71度。基本不会下雨。白天空气质量中等，指数最高97。今天日落时间是傍晚6点25分。提醒一下：天气很热，注意防暑，别把东西留在车里。"
+     "t": "Upland今天晴。早上7点出门大约华氏70度，21摄氏度。傍晚5点下班大约华氏87度，30摄氏度。白天最高92度，约33摄氏度；最低67度。基本不会下雨。白天空气质量中等，指数最高61。今天日落时间是傍晚6点23分。"
+    }
+   ]
+  },
+  {
+   "id": "sky",
+   "title": "🔭 天象",
+   "sub": "Upland",
+   "dur": 17.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610091000",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "天象提醒。明天，新月。前后几晚没有月光，最适合看星星和银河。3天后，水星东大距。傍晚日落后在西边，离太阳 25°，很低，找视野开阔的地方。"
     }
    ]
   },
   {
    "id": "market",
    "title": "📊 大盘",
-   "sub": "防守",
-   "dur": 33.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610081025",
+   "sub": "谨慎",
+   "dur": 30.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月7日收盘。标普500 ETF 下跌0.2%，纳指100 ETF 下跌0.2%。恐慌指数VIX 15.1，正常水平。标普成分股里，站上50日均线的只占29%。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
+     "t": "先看大盘，数据截至美股10月8日收盘。标普500 ETF 下跌0.4%，纳指100 ETF 下跌1.3%。恐慌指数VIX 15.4，正常水平。标普成分股里，站上50日均线的只占34%。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "29 个候选",
-   "dur": 61.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610081025",
+   "sub": "26 个候选",
+   "dur": 66.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天29个候选，评分最高的是Verisign，代码 V R S N。不想听细节可以按下一首。"
+     "t": "股票池今天26个候选，评分最高的是Palantir Technologies，代码 P L T R。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中血筹码12个，回踩金坑10个，RSI2 超跌反弹6个，挤压突破1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中回踩金坑12个，RSI2 超跌反弹7个，血筹码5个，强势新高1个，挤压突破1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Verisign，代码 V R S N，回踩金坑信号，收盘价294.22美元，止损参考285.70。"
+     "t": "第1，Palantir Technologies，代码 P L T R，强势新高信号，收盘价198.78美元，止损参考186.15。"
     },
     {
      "lang": "zh",
-     "t": "第2，Freeport-McMoRan，代码 F C X，回踩金坑信号，收盘价71.86美元，止损参考69.19。"
+     "t": "第2，Cognizant，代码 C T S H，回踩金坑信号，收盘价60.01美元，止损参考54.20。"
     },
     {
      "lang": "zh",
-     "t": "第3，HP，代码 H P Q，回踩金坑信号，收盘价32.24美元，止损参考30.88。"
+     "t": "第3，Charles River Laboratories，代码 C R L，回踩金坑信号，收盘价298.00美元，止损参考286.04。"
     },
     {
      "lang": "zh",
@@ -83,26 +96,22 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "1 件大事",
-   "dur": 11.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610081025",
+   "sub": "今明两天清静",
+   "dur": 6.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有1家大公司发财报。"
-    },
-    {
-     "lang": "zh",
-     "t": "Pepsico，代码 P E P，盘前发财报。期权定价波动正负3.4%。"
+     "t": "今明两天没有重要经济数据，也没有千亿市值以上的公司发财报。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · NPR · The Guardian",
-   "dur": 101.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610081025",
+   "sub": "BBC · NPR · Al Jazeera",
+   "dur": 86.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
@@ -110,48 +119,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，国际，难度B2。大意是：律师告诉BBC ，克里斯塔·派克（ Christa Pike ）在美国处决失败。"
+     "t": "第1条，来自BBC，科技，难度B2。大意是：“不小心使用人工智能才是真正的威胁，而不是鬼故事”。"
     },
     {
      "lang": "en",
-     "t": "Christa Pike now walking after failed US execution, lawyer tells BBC"
+     "t": "'Careless use of AI is the real threat - not the ghost stories'"
     },
     {
      "lang": "en",
-     "t": "A lawyer says the murderer of Colleen Slemmer is moving around her hospital room after surviving two lethal injections."
+     "t": "Meredith Whittaker says the tech has been misunderstood, in an exclusive interview with BBC Global Women."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自NPR，综合，难度B2。大意是：玛丽卡门（ Maricarmen ）是一名87岁的女性，她的驱逐震撼了西班牙，已经死亡。"
+     "t": "第2条，来自NPR，综合，难度B2。大意是：克里斯塔·派克（ Christa Pike ）在尝试处决失败后，正在。"
     },
     {
      "lang": "en",
-     "t": "Maricarmen, the 87-year-old woman whose eviction shook Spain, has died"
+     "t": "Christa Pike is walking with help and eating after failed execution attempt"
     },
     {
      "lang": "en",
-     "t": "María del Carmen Abascal, the 87-year-old woman whose eviction from her Madrid home sparked nationwide protests across Spain and unleashed a political crisis, died on Wednesday while hospitalized."
+     "t": "Pike has begun walking and eating again at a hospital a week after surviving Tennessee's attempt to execute her with lethal drugs, her attorneys said Thursday."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自The Guardian，科学，难度B2。大意是：世卫组织表示，在疑似鼠疫死亡后，它没有来自俄罗斯的“全貌”。"
+     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：El-Sayed和Rogers在密歇根州举行的美国参议院辩论中的关键要点。"
     },
     {
      "lang": "en",
-     "t": "WHO says it does not have ‘full picture’ from Russia following suspected plague death"
+     "t": "Key takeaways from US Senate debate in Michigan between El-Sayed, Rogers"
     },
     {
      "lang": "en",
-     "t": "‘Transparent information sharing’ from Moscow is required to conduct full risk assessment, UN agency says The World Health Organization has said it does not have the “full picture” from Russia following the suspected death from plague last "
+     "t": "Democrat Abdul El-Sayed and Republican Mike Rogers are locked in a toss-up race for the US Senate."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "housework · el arroz",
-   "dur": 32.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610081025",
+   "sub": "aggressive · la ceja",
+   "dur": 34.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
@@ -159,15 +168,15 @@
     },
     {
      "lang": "en",
-     "t": "housework"
+     "t": "aggressive"
     },
     {
      "lang": "zh",
-     "t": "意思是：家务。拼写是："
+     "t": "意思是：好斗的，有进取心的。拼写是："
     },
     {
      "lang": "en",
-     "t": "h, o, u, s, e, w, o, r, k"
+     "t": "a, g, g, r, e, s, s, i, v, e"
     },
     {
      "lang": "zh",
@@ -175,7 +184,7 @@
     },
     {
      "lang": "en",
-     "t": "housework"
+     "t": "aggressive"
     },
     {
      "lang": "zh",
@@ -183,40 +192,44 @@
     },
     {
      "lang": "es",
-     "t": "el arroz"
+     "t": "la ceja"
     },
     {
      "lang": "zh",
-     "t": "意思是：米饭。跟着读一遍。"
+     "t": "意思是：眉毛。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el arroz"
+     "t": "la ceja"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "口头禅",
-   "dur": 11.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610081025",
+   "sub": "名言",
+   "dur": 31.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句口头禅。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "See you later"
+     "t": "The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings."
     },
     {
      "lang": "zh",
-     "t": "意思是：回头见"
+     "t": "意思是：亲爱的勃鲁托斯，我们屈居人下，错不在命运，而在我们自己。这句话出自 William Shakespeare。"
+    },
+    {
+     "lang": "zh",
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "See you later"
+     "t": "The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings."
     }
    ],
    "opt": true
@@ -224,61 +237,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "休息室闲聊",
-   "dur": 66.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610081025",
+   "sub": "给调度打电话",
+   "dur": 67.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：休息室闲聊。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "你觉得谁会赢？"
+     "t": "预约改到明天早上了。"
     },
     {
      "lang": "en",
-     "t": "Who do you think is going to win?"
+     "t": "The appointment was moved to tomorrow morning."
     },
     {
      "lang": "en",
-     "t": "Who do you think is going to win?"
+     "t": "The appointment was moved to tomorrow morning."
     },
     {
      "lang": "zh",
-     "t": "今天好热。"
+     "t": "能把详情发短信给我吗？"
     },
     {
      "lang": "en",
-     "t": "It's so hot today."
+     "t": "Can you text me the details?"
     },
     {
      "lang": "en",
-     "t": "It's so hot today."
+     "t": "Can you text me the details?"
     },
     {
      "lang": "zh",
-     "t": "听说这周末可能下雨。"
+     "t": "这一票是哪个司机？"
     },
     {
      "lang": "en",
-     "t": "I heard it might rain this weekend."
+     "t": "Who's the driver on this one?"
     },
     {
      "lang": "en",
-     "t": "I heard it might rain this weekend."
+     "t": "Who's the driver on this one?"
     },
     {
      "lang": "zh",
-     "t": "10 号公路堵死了。"
+     "t": "我马上回你电话。"
     },
     {
      "lang": "en",
-     "t": "The traffic on the 10 was terrible."
+     "t": "Let me call you right back."
     },
     {
      "lang": "en",
-     "t": "The traffic on the 10 was terrible."
+     "t": "Let me call you right back."
     },
     {
      "lang": "zh",
@@ -290,13 +303,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "五月灰、六月阴是怎么回事",
-   "dur": 31.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610081025",
+   "sub": "锅烧糊了",
+   "dur": 13.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：五月灰、六月阴是怎么回事。南加州初夏早上总是阴天。做法：春末夏初近岸海水还冷，上面的潮湿空气被冷却，形成一层很低的云（海洋层 marine layer）；上方压着一层暖空气（逆温层），云散不掉，夜里和早上被海风往内陆推；白天太阳晒热地面，云从内陆往海边一点点「烧掉」；Upland 离海远，通常上午就转晴。"
+     "t": "今日一招：锅烧糊了。不用使劲刷。做法：加水没过糊的地方，放两勺小苏打；煮开几分钟，关火泡一会；用木铲轻轻刮。"
     }
    ],
    "opt": true
@@ -304,13 +317,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1897 · 1904 · 1955",
-   "dur": 25.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610081025",
+   "sub": "1888 · 1962 · 1981",
+   "dur": 21.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1897年，奥地利皇帝法兰兹·约瑟夫一世任命作曲家古斯塔夫·马勒担任维也纳宫廷歌剧院总监。1904年，位于加拿大阿尔伯塔的埃德蒙顿和萨斯喀彻温的艾伯特亲王城分别成立市法团。1955年，钱学森经香港返回中国。"
+     "t": "历史上的今天。1888年，位于美国华盛顿哥伦比亚特区的华盛顿纪念碑正式对公众开放。1962年，乌干达宣布脱离英国统治而独立，但仍将英国女王伊丽莎白二世视为国家元首。1981年，法国废除死刑。"
     }
    ],
    "opt": true
@@ -318,21 +331,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "水龙吟·次韵章质夫杨花词",
-   "dur": 88.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610081025",
+   "sub": "望江南·超然台作",
+   "dur": 53.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：水龙吟·次韵章质夫杨花词。写于1081年，他44岁，在黄州。"
+     "t": "读一首苏轼：望江南·超然台作。写于1076年，他39岁，在密州超然台。"
     },
     {
      "lang": "zh",
-     "t": "似花还似非花，也无人惜从教坠。抛家傍路，思量却是，无情有思。萦损柔肠，困酣娇眼，欲开还闭。梦随风万里，寻郎去处，又还被、莺呼起。不恨此花飞尽，恨西园、落红难缀。晓来雨过，遗踪何在？一池萍碎。春色三分，二分尘土，一分流水。细看来，不是杨花，点点是离人泪。"
+     "t": "春未老，风细柳斜斜。试上超然台上看，半壕春水一城花。烟雨暗千家。寒食后，酒醒却咨嗟。休对故人思故国，且将新火试新茶。诗酒趁年华。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：它像花又不像花，也没人怜惜，任凭它飘落。离开枝头，落在路旁，细细想来，它看似无情，其实满怀情思。它像一个被愁思缠绕伤了柔肠的女子，困倦的媚眼想睁开又闭上。梦中随风飘到万里之外，去寻找情郎的去处，却又被黄莺的啼声唤醒。我不遗憾杨花飞尽，只遗憾西园满地落花再也不能回到枝头。清晨一场雨过后，杨花的踪迹在哪里？只剩一池细碎的浮萍。如果春色有三分，两分化作了尘土，一分随了流水。仔细看来，那不是杨花，点点都是离别之人的眼泪。"
+     "t": "白话意思是：春天还没有过去，微风轻拂，柳枝斜斜地飘动。登上超然台眺望，半满的护城河里荡着春水，满城都是鲜花，蒙蒙烟雨笼罩着千家万户。寒食节过后，酒醒了，反倒叹起气来。不要在老朋友面前思念故乡了，姑且用新点的火来煮新茶，趁着大好年华，作诗饮酒吧。"
     }
    ],
    "opt": true
@@ -341,12 +354,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610081025",
+   "dur": 5.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610091000",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
     }
    ]
   }
