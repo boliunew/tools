@@ -6,6 +6,7 @@
   • /api/issues   the local stand-in for GitHub issues (股价提醒 / 网页监控); a new or edited one is checked right away
   • /api/ping     lets pages know they are running at home
   • /api/stream   relays an http-only internet radio stream, so the https page may play it (网络电台)
+  • /api/audd     forwards a recorded radio clip to the AudD song-recognition API (网络电台 → 识别歌曲)
 
 Listens on 127.0.0.1 only — reach it through `tailscale serve`, so only your own devices can open it.
 Env: PORT (8080), TOOLS_DATA, OWNER, NTFY_URL, NTFY_SUB (public subscribe URL shown in the page), PUBLIC_URL, PYTHON
@@ -212,6 +213,18 @@ class H(http.server.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         u = urllib.parse.urlsplit(self.path)
+        if u.path == "/api/audd":   # 网络电台「识别歌曲」：浏览器直连 AudD 被拦时，从家里转一手（原样转发 multipart）
+            try:
+                n = int(self.headers.get("Content-Length") or 0)
+                if n <= 0 or n > 11 * 1024 * 1024:
+                    return self.send_json({"status": "error", "error": {"error_message": "录音太大或为空"}}, 400)
+                raw = self.rfile.read(n)
+                req = urllib.request.Request("https://api.audd.io/", data=raw, method="POST",
+                                             headers={"Content-Type": self.headers.get("Content-Type", ""), "User-Agent": "tools-home/1.0"})
+                with urllib.request.urlopen(req, timeout=40) as r:
+                    return self.send_json(json.loads(r.read().decode("utf-8", "replace")))
+            except Exception as e:  # noqa: BLE001
+                return self.send_json({"status": "error", "error": {"error_message": str(e)[:200]}}, 502)
         try:
             body = self.body_json()
             if u.path == "/api/kv":   # {key: {v: string|null, mt: ms}} — the newest write wins, per key

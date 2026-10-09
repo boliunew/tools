@@ -80,6 +80,10 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 .recs .clip{padding:9px 0;border-top:1px solid var(--line);font-size:14px}
 .recs .clip b{font-weight:600}.recs .clip audio{width:100%;height:36px;margin-top:6px}
 .recs .clip .ops{display:flex;gap:12px;margin-top:4px;font-size:13px}.recs .clip .ops a,.recs .clip .ops button{color:var(--accent);background:none;border:0;padding:0;font-size:13px;text-decoration:none;cursor:pointer}
+.recs .rhit{margin-top:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px}
+.recs .rhit small{display:block;color:var(--soft);font-size:12px;margin-top:2px}.recs .rhit .lk{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;font-size:12.5px}
+.recs .rhit .lk a{color:var(--accent);text-decoration:none}.recs .rres{font-size:13px;margin-top:6px;line-height:1.6}.recs .rerr{color:#C0392B}.recs .rwait{color:var(--soft)}
+.recs .tip a{color:var(--accent)}
 .recs .tip{font-size:12.5px;color:var(--soft);padding:6px 0 2px;line-height:1.6}
 .ctl .tm{font-size:13px;width:auto;padding:0 6px;color:var(--soft)}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--live);margin-right:5px;animation:pulse 1.4s infinite}
@@ -700,17 +704,73 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       var open = el.open;
       for (var k in RURL) if (RURL.hasOwnProperty(k)) { try { URL.revokeObjectURL(RURL[k]); } catch (e) { } }
       RURL = {};
-      el.innerHTML = '<summary>🎙 我的录音（' + all.length + '）</summary><div class="tip">认歌：手机打开 Shazam 或 QQ 音乐「听歌识曲」，再点这里的 ▶ 放给它听。录音只存在这台设备的浏览器里。</div>' + all.map(function (c) {
+      el.innerHTML = '<summary>🎙 我的录音（' + all.length + '）</summary><div class="tip">点「🔍 识别歌曲」自动认歌（用 AudD 听歌识曲服务）；也可以手机打开 Shazam，再点 ▶ 放给它听。录音只存在这台设备的浏览器里。' +
+        '<br><a href="#" id="auddSet">⚙️ AudD 令牌' + (get('audd', '') ? '（已设置）' : '（没设也能试几次）') + '</a></div>' + all.map(function (c) {
         var d = new Date(c.t), u = URL.createObjectURL(c.blob); RURL[c.id] = u;
         var name = c.st.replace(/[\\/:*?"<>|]/g, '') + '-' + (d.getMonth() + 1) + d.getDate() + '-' + d.getHours() + ('0' + d.getMinutes()).slice(-2) + '.' + ext(c.type);
         return '<div class="clip"><b>' + esc(c.song || c.st) + '</b><small>' + (c.song ? esc(c.st) + ' · ' : '') + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + ' · ' + Math.round(c.blob.size / 1024) + ' KB</small>' +
           '<audio controls preload="none" src="' + u + '"></audio><div class="ops"><a href="' + u + '" download="' + esc(name) + '">⬇ 下载</a>' +
-          (c.song ? '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(c.song) + '" target="_blank" rel="noopener">搜歌 ↗</a>' : '') + '<button data-rdel="' + c.id + '">🗑 删除</button></div></div>';
+          (c.song ? '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(c.song) + '" target="_blank" rel="noopener">搜歌 ↗</a>' : '') + '<button data-rid="' + c.id + '">🔍 识别歌曲</button><button data-rdel="' + c.id + '">🗑 删除</button></div>' +
+          (c.hit ? hitHtml(c.hit) : '') + '<div class="rres" id="rr-' + c.id + '"></div></div>';
       }).join('');
       el.open = open;
     });
   }
-  $('recs').addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-rdel]'); if (!b) return; e.preventDefault(); rDel(+b.getAttribute('data-rdel'), renderRecs); });
+  $('recs').addEventListener('click', function (e) {
+    var t = e.target, b;
+    if (t.id === 'auddSet') { e.preventDefault(); auddToken(); return; }
+    if ((b = t.closest && t.closest('[data-rid]'))) { e.preventDefault(); identify(+b.getAttribute('data-rid')); return; }
+    b = t.closest && t.closest('[data-rdel]'); if (!b) return; e.preventDefault(); rDel(+b.getAttribute('data-rdel'), renderRecs);
+  });
+  /* ---------- 🔍 识别歌曲：把录音交给 AudD（听歌识曲 API），认出来就记到录音和「最近听到的歌」里 ---------- */
+  function auddToken() {
+    var v = window.prompt('AudD 令牌（api_token）。\n到 dashboard.audd.io 用邮箱免费注册就能拿到，新账号有免费识别次数。\n不填也能试，但匿名次数很少。', get('audd', ''));
+    if (v === null) return;
+    put('audd', v.replace(/\s+/g, '')); renderRecs(); toast(v ? '令牌已保存（只存在这台设备）' : '已清除令牌');
+  }
+  function hitHtml(r) {
+    var links = [];
+    if (r.song_link) links.push('<a href="' + esc(r.song_link) + '" target="_blank" rel="noopener">各平台 ↗</a>');
+    if (r.apple_music && r.apple_music.url) links.push('<a href="' + esc(r.apple_music.url) + '" target="_blank" rel="noopener">Apple Music ↗</a>');
+    if (r.spotify && r.spotify.external_urls && r.spotify.external_urls.spotify) links.push('<a href="' + esc(r.spotify.external_urls.spotify) + '" target="_blank" rel="noopener">Spotify ↗</a>');
+    links.push('<a href="https://music.youtube.com/search?q=' + encodeURIComponent(r.artist + ' ' + r.title) + '" target="_blank" rel="noopener">YouTube Music ↗</a>');
+    return '<div class="rhit">🎵 <b>' + esc(r.title) + '</b> — ' + esc(r.artist) + (r.album ? '<small>专辑《' + esc(r.album) + '》' + (r.release_date ? ' · ' + esc(String(r.release_date).slice(0, 4)) : '') + '</small>' : '') + '<div class="lk">' + links.join('') + '</div></div>';
+  }
+  function identify(id) {
+    rAll(function (all) {
+      var c = all.filter(function (x) { return x.id === id; })[0]; if (!c) return;
+      var box = $('rr-' + id); if (box) box.innerHTML = '<span class="rwait">🔍 识别中…（几秒钟）</span>';
+      function form() {
+        var fd = new FormData();
+        fd.append('file', c.blob, 'clip.' + ext(c.type));
+        fd.append('return', 'apple_music,spotify');
+        var tk = get('audd', ''); if (tk) fd.append('api_token', tk);
+        return fd;
+      }
+      function show(msg) { var b2 = $('rr-' + id); if (b2) b2.innerHTML = msg; }
+      function handle(d) {
+        if (!d || d.status !== 'success') {
+          var er = d && d.error ? d.error : {};
+          if (er.error_code === 901 || /limit/i.test(er.error_message || '')) { show('<span class="rerr">匿名识别次数用完了。<a href="https://dashboard.audd.io/" target="_blank" rel="noopener">免费注册 AudD</a> 拿个令牌，再点上面「⚙️ AudD 令牌」填进去。</span>'); return; }
+          if (er.error_code === 900) { show('<span class="rerr">令牌不对，点「⚙️ AudD 令牌」重新填。</span>'); return; }
+          show('<span class="rerr">识别出错：' + esc(er.error_message || '未知错误') + '</span>'); return;
+        }
+        var r = d.result;
+        if (!r) { show('<span class="rerr">没认出来。可能这 20 秒是主持人在说话、广告，或者歌太冷门。等歌放到副歌再录一段试试。</span>'); return; }
+        c.hit = r; c.song = r.artist + ' - ' + r.title;
+        rPut(c, function () { renderRecs(); });
+        NP.hist = NP.hist.filter(function (h) { return h.song !== c.song; });
+        NP.hist.unshift({ song: c.song, st: c.st, t: c.t }); if (NP.hist.length > 40) NP.hist.length = 40;
+        put('songs', NP.hist); renderSongs();
+        toast('🎵 认出来了：' + c.song);
+      }
+      function viaHome(err0) {
+        if (!LOCAL) { show('<span class="rerr">浏览器连不上识别服务（' + esc(err0) + '）。可以点 ⬇ 下载录音，到 <a href="https://www.aha-music.com/" target="_blank" rel="noopener">AHA Music</a> 网页上传识别，或用手机 Shazam 对着播放。</span>'); return; }
+        fetch('api/audd', { method: 'POST', body: form() }).then(function (r) { return r.json(); }).then(handle).catch(function () { show('<span class="rerr">连不上识别服务。可以点 ⬇ 下载录音，到 <a href="https://www.aha-music.com/" target="_blank" rel="noopener">AHA Music</a> 网页上传识别，或用手机 Shazam 对着播放。</span>'); });
+      }
+      fetch('https://api.audd.io/', { method: 'POST', body: form() }).then(function (r) { return r.json(); }).then(handle).catch(function (e) { viaHome(e.message || String(e)); });
+    });
+  }
   renderRecs();
 
   renderTabs(); open();
