@@ -13,7 +13,7 @@ var NAMES = {
 };
 // vocab.html（3.7 MB）和 hanzi.html（1.8 MB）太大，不预先存；打开过一次以后照样能离线用
 var PAGES = Object.keys(NAMES).filter(function (p) { return p !== 'vocab.html' && p !== 'hanzi.html'; });
-var CORE = ['./', 'nav.js?v=16', 'theme.js?v=1', 'sync.js?v=1', 'lookup.js', 'weather.js?v=1', 'tools.webmanifest', 'icons/icon-192.png', 'mind/mind.js'].concat(PAGES);
+var CORE = ['./', 'nav.js?v=16', 'theme.js?v=1', 'sync.js?v=1', 'lookup.js', 'weather.js?v=2', 'tools.webmanifest', 'icons/icon-192.png', 'mind/mind.js'].concat(PAGES);
 var DATA = [
   'news/data/today.json', 'card/today.json', 'card/daily.json', 'stocks/data/latest.json', 'earnings/data/latest.json',
   'kitchen/wellness.json', 'kitchen/recipes_cn.json', 'kitchen/recipes_cn2.json', 'kitchen/recipes_cn3.json',

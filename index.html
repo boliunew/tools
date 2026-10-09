@@ -177,7 +177,7 @@ html.locked #gate{display:block}
 </details>
 <button class="lockbtn" onclick="__lock()">🔒 退出（这台设备需要重新输密码）</button>
 </main>
-<script src="weather.js?v=1"></script>
+<script src="weather.js?v=2"></script>
 <script>
 (function () {
   // 首页「今天」：日期、节气、月相、每日一句、今日一招、今日大事、打折关注；每块各自加载，失败就不显示
@@ -201,7 +201,7 @@ html.locked #gate{display:block}
   // 天气 + 今天要注意的事（weather.js）
   function wxRender(w, all) {
     if (!w) return;
-    var h = '<div class="row wx"><div class="lb">天气 · 今天注意</div><div class="tx">' + esc(w.line) + '</div><div class="sm">' + esc(w.sub) + '</div><ul class="tips">', n = all ? w.tips.length : Math.min(4, w.tips.length);
+    var h = '<div class="row wx"><div class="lb">天气 · ' + (new Date().getHours() >= 17 || new Date().getHours() < 4 ? '明天注意' : '今天注意') + '</div><div class="tx">' + esc(w.line) + '</div><div class="sm">' + esc(w.sub) + '</div><ul class="tips">', n = all ? w.tips.length : Math.min(4, w.tips.length);
     for (var i = 0; i < n; i++) h += '<li class="' + w.tips[i].lv + '"><i>' + w.tips[i].i + '</i><span>' + esc(w.tips[i].t) + '</span></li>';
     if (!all && w.tips.length > n) h += '<li><button class="more" id="wxMore">还有 ' + (w.tips.length - n) + ' 条 ›</button></li>';
     put('wx', h + '</ul></div>');
@@ -210,7 +210,12 @@ html.locked #gate{display:block}
   // 别的卡片加载完会重画整个区域，所以「还有 N 条」用事件委托，不直接绑在按钮上
   var WXL = null;
   $('tdBody').addEventListener('click', function (e) { if (e.target && e.target.id === 'wxMore' && WXL) { e.preventDefault(); wxRender(WXL, true); } });
-  if (window.WX) WX.load(function (w) { wxRender(w, false); });
+  if (window.WX) {
+    WX.load(function (w) { wxRender(w, false); });
+    // 页面一直开着也会更新：每 20 分钟、或者从后台切回来时重新取一次（weather.js 自带 20 分钟缓存）
+    var wxT = Date.now(), wxRe = function () { if (document.hidden || Date.now() - wxT < 20 * 60000) return; wxT = Date.now(); WX.load(function (w) { wxRender(w, false); }); };
+    setInterval(wxRe, 60000); document.addEventListener('visibilitychange', wxRe);
+  }
 
   getJSON('kitchen/wellness.json', function (w) {
     var list = w.jieqi.slice().sort(function (a, b) { return a.md < b.md ? -1 : 1; }), cur = list[list.length - 1], nx = list[0];
