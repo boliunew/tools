@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: "7 13 * * *"   # 每天 6:07 太平洋夏令时
     - cron: "7 1 * * *"    # 每天 18:07 太平洋夏令时
+    - cron: "37 */2 * * *" # 每两小时只更新「今日大事」（GitHub 定时常晚几个小时，多排几次才跟得上）
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -28,11 +29,15 @@ jobs:
           cache: pip
           cache-dependency-path: news/requirements.txt
       - run: pip install -r news/requirements.txt
-      - run: python news/build.py
-      - run: python news/contexts.py
-      - run: python news/articles.py
+      - if: github.event.schedule != '37 */2 * * *'
+        run: python news/build.py
+      - if: github.event.schedule != '37 */2 * * *'
+        run: python news/contexts.py
+      - if: github.event.schedule != '37 */2 * * *'
+        run: python news/articles.py
       - run: python news/today.py   # 今日大事 · 趣闻 · 历史上的今天
-      - run: python card/today.py   # 每日一句 for home-screen widgets
+      - if: github.event.schedule != '37 */2 * * *'
+        run: python card/today.py   # 每日一句 for home-screen widgets
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
