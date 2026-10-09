@@ -1,0 +1,1413 @@
+{
+ "episodes": [
+  {
+   "code": "S01E01",
+   "title": "Tourist Trapped",
+   "zh": "游客陷阱",
+   "date": "2012-06-15",
+   "note": "迪普和梅宝被送到斯坦叔公的神秘小屋过暑假，迪普在林中捡到写着“3”的神秘日志，而梅宝的新男友诺曼原来是一摞叠起来的地精。",
+   "star": true,
+   "cipher": {
+    "type": "Caesar",
+    "encoded": "ZHOFRPH WR JUDYLWB IDOOV",
+    "decoded": "WELCOME TO GRAVITY FALLS",
+    "zh": "欢迎来到怪诞小镇"
+   }
+  },
+  {
+   "code": "S01E02",
+   "title": "The Legend of the Gobblewonker",
+   "zh": "湖怪传说",
+   "date": "2012-06-29",
+   "note": "双胞胎和苏斯为了赏金去湖上追拍湖怪，结果发现“怪物”是老麦古吉特造的机器；斯坦独自钓鱼的支线写出了他的孤独。",
+   "star": false,
+   "cipher": {
+    "type": "Caesar",
+    "encoded": "QHAW ZHHN: UHWXUQ WR EXWW LVODQG",
+    "decoded": "NEXT WEEK: RETURN TO BUTT ISLAND",
+    "zh": "下周：重返屁股岛"
+   }
+  },
+  {
+   "code": "S01E03",
+   "title": "Headhunters",
+   "zh": "蜡像断头案",
+   "date": "2012-06-30",
+   "note": "梅宝做的斯坦蜡像被“斩首”，双胞胎当起侦探，最后发现凶手是会在夜里活过来的蜡像们。",
+   "star": false,
+   "cipher": {
+    "type": "Caesar",
+    "encoded": "KH'V VWLOO LQ WKH YHQWV.",
+    "decoded": "HE'S STILL IN THE VENTS.",
+    "zh": "他还在通风管里。"
+   }
+  },
+  {
+   "code": "S01E04",
+   "title": "The Hand That Rocks the Mabel",
+   "zh": "摇动梅宝的手",
+   "date": "2012-07-06",
+   "note": "小吉迪恩疯狂追求梅宝，迪普揭穿他的“读心术”全靠一枚护身符，吉迪恩由此成为全季的头号对手。",
+   "star": false,
+   "cipher": {
+    "type": "Caesar",
+    "encoded": "FDUOD, ZKB ZRQ'W BRX FDOO PH?",
+    "decoded": "CARLA, WHY WON'T YOU CALL ME?",
+    "zh": "卡拉，你为什么不给我打电话？",
+    "note": "解密文本经维基核实；网页抓取的密文有一处转录错误，此处密文由已核实的明文按凯撒+3重新推得（凯撒为确定性算法）"
+   }
+  },
+  {
+   "code": "S01E05",
+   "title": "The Inconveniencing",
+   "zh": "闹鬼便利店",
+   "date": "2012-07-13",
+   "note": "迪普为了跟上温蒂谎称自己13岁，和她的朋友们闯进一家闹鬼的便利店，梅宝则在小屋里沉迷甜到发疯的“糖果”。",
+   "star": false,
+   "cipher": {
+    "type": "Caesar",
+    "encoded": "RQZDUGV DRVKLPD!",
+    "decoded": "ONWARDS AOSHIMA!",
+    "zh": "前进吧，青岛！"
+   }
+  },
+  {
+   "code": "S01E06",
+   "title": "Dipper vs. Manliness",
+   "zh": "迪普大战男子气概",
+   "date": "2012-07-20",
+   "note": "迪普想证明自己是“男子汉”，向人牛们拜师，最后却拒绝杀死多头熊——真正的勇气是坚持自己的判断。",
+   "star": false,
+   "cipher": {
+    "type": "Caesar",
+    "encoded": "PU. FDHVDULDQ ZLOO EH RXW QHAW ZHHN. PU. DWEDVK ZLOO VXEVWLWXWH.",
+    "decoded": "MR. CAESARIAN WILL BE OUT NEXT WEEK. MR. ATBASH WILL SUBSTITUTE.",
+    "zh": "凯撒先生下周请假，由埃特巴什先生代课。",
+    "note": "暗示下一集起改用埃特巴什（Atbash）密码"
+   }
+  },
+  {
+   "code": "S01E07",
+   "title": "Double Dipper",
+   "zh": "双重迪普",
+   "date": "2012-08-10",
+   "note": "迪普用复印机复制出一群自己来策划追温蒂；梅宝在派对上与帕西菲卡比人气，并结识了坎迪和格兰达。",
+   "star": false,
+   "cipher": {
+    "type": "Atbash",
+    "encoded": "KZKVI QZN WRKKVI HZBH: \"ZFFTSDCJSTZWHZWFS!\"",
+    "decoded": "PAPER JAM DIPPER SAYS: \"AUUGHWXQHGADSADUH!\"",
+    "zh": "卡纸迪普说：“啊呜呜呃……！”"
+   }
+  },
+  {
+   "code": "S01E08",
+   "title": "Irrational Treasure",
+   "zh": "非理性宝藏",
+   "date": "2012-08-17",
+   "note": "梅宝为反击帕西菲卡，和迪普揭开小镇创始人的真相：真正的创始人是被历史抹去的“第8½任总统”昆汀·特伦布利。",
+   "star": false,
+   "cipher": {
+    "type": "Atbash",
+    "encoded": "V. KOFIRYFH GIVNYOVB.",
+    "decoded": "E. PLURIBUS TREMBLEY.",
+    "zh": "合众为……特伦布利。（戏仿美国格言 E Pluribus Unum）"
+   }
+  },
+  {
+   "code": "S01E09",
+   "title": "The Time Traveler's Pig",
+   "zh": "时间旅行者的猪",
+   "date": "2012-08-24",
+   "note": "迪普借时间旅行者布兰丁的卷尺反复回到过去想赢得温蒂，最终为了让梅宝留住小猪Waddles而放弃了自己的机会。",
+   "star": true,
+   "cipher": {
+    "type": "Atbash",
+    "encoded": "MLG S.T. DVOOH ZKKILEVW.",
+    "decoded": "NOT H.G. WELLS APPROVED.",
+    "zh": "未经 H.G. 威尔斯认可。"
+   }
+  },
+  {
+   "code": "S01E10",
+   "title": "Fight Fighters",
+   "zh": "格斗斗士",
+   "date": "2012-09-14",
+   "note": "迪普为对付罗比，从街机里召唤出格斗游戏角色“拉姆布尔·麦斯克米什”（Rumble McSkirmish），却差点失控。",
+   "star": false,
+   "cipher": {
+    "type": "Atbash",
+    "encoded": "HLIIB, WRKKVI, YFG BLFI DVMWB RH RM ZMLGSVI XZHGOV.",
+    "decoded": "SORRY, DIPPER, BUT YOUR WENDY IS IN ANOTHER CASTLE.",
+    "zh": "抱歉迪普，你的温蒂在另一座城堡里。（戏仿《超级马里奥》）"
+   }
+  },
+  {
+   "code": "S01E11",
+   "title": "Little Dipper",
+   "zh": "小迪普",
+   "date": "2012-09-28",
+   "note": "迪普用能改变大小的水晶想长高超过梅宝，结果和梅宝一起被吉迪恩缩小；斯坦怕老鼠的弱点派上用场。",
+   "star": false,
+   "cipher": {
+    "type": "Atbash",
+    "encoded": "GSV RMERHRYOV DRAZIW RH DZGXSRMT.",
+    "decoded": "THE INVISIBLE WIZARD IS WATCHING.",
+    "zh": "隐形巫师在看着你。"
+   }
+  },
+  {
+   "code": "S01E12",
+   "title": "Summerween",
+   "zh": "夏日万圣节",
+   "date": "2012-10-05",
+   "note": "双胞胎必须在天亮前凑齐500颗糖喂饱“夏日万圣节骗子”；迪普纠结自己是不是太大了，不该再去讨糖。",
+   "star": false,
+   "cipher": {
+    "type": "Atbash",
+    "encoded": "YILFTSG GL BLF YB SLNVDLIP: GSV XZMWB.",
+    "decoded": "BROUGHT TO YOU BY HOMEWORK: THE CANDY.",
+    "zh": "本节目由“作业牌糖果”赞助播出。"
+   }
+  },
+  {
+   "code": "S01E13",
+   "title": "Boss Mabel",
+   "zh": "老板梅宝",
+   "date": "2013-02-15",
+   "note": "斯坦和梅宝打赌，让梅宝用“友善”的方式经营神秘小屋三天，斯坦则去参加电视竞猜节目。",
+   "star": false,
+   "cipher": {
+    "type": "Atbash",
+    "encoded": null,
+    "decoded": null,
+    "zh": null,
+    "verified": false,
+    "note": "未能核实：维基剧集页多次抓取失败，片尾密码原文未取得"
+   }
+  },
+  {
+   "code": "S01E14",
+   "title": "Bottomless Pit!",
+   "zh": "无底洞！",
+   "date": "2013-03-01",
+   "note": "斯坦、苏斯和双胞胎掉进无底洞，下坠途中轮流讲故事打发时间。",
+   "star": false,
+   "cipher": {
+    "type": "A1Z26",
+    "encoded": "14-5-24-20 21-16: \"6-15-15-20-2-15-20 20-23-15: 7-18-21-14-11-12-5'19 7-18-5-22-5-14-7-5.\"",
+    "decoded": "NEXT UP: \"FOOTBOT TWO: GRUNKLE'S GREVENGE.\"",
+    "zh": "接下来：《足球机器人2：叔公的复仇》",
+    "note": "明文经维基核实；抓取到的密文有重复转录，此处按 A1Z26 由明文重新推得"
+   }
+  },
+  {
+   "code": "S01E15",
+   "title": "The Deep End",
+   "zh": "深水区",
+   "date": "2013-03-15",
+   "note": "梅宝在镇上泳池救下人鱼曼多并帮他回到大海，迪普则当上救生员接近温蒂；本集是迪士尼频道收视最高的一集。",
+   "star": false,
+   "cipher": {
+    "type": "A1Z26",
+    "encoded": null,
+    "decoded": null,
+    "zh": null,
+    "verified": false,
+    "note": "未能核实：维基页只有图片，没有转录文字"
+   }
+  },
+  {
+   "code": "S01E16",
+   "title": "Carpet Diem",
+   "zh": "地毯换身",
+   "date": "2013-04-05",
+   "note": "双胞胎为争一间卧室吵架，一块魔法地毯让他们互换身体，最后发现还是一起住更好。",
+   "star": false,
+   "cipher": {
+    "type": "Caesar",
+    "encoded": "SXEHUWB LV WKH JUHDWHVW PBVWHUB RI DOO DOVR: JR RXWVLGH DQG PDNH IULHQGV.",
+    "decoded": "PUBERTY IS THE GREATEST MYSTERY OF ALL ALSO: GO OUTSIDE AND MAKE FRIENDS.",
+    "zh": "青春期才是最大的谜团。另外：出门去交朋友吧。",
+    "note": "维基将此条列于本集“Cryptograms”标题下；在 A1Z26 时期却用凯撒+3，已解密核对一致"
+   }
+  },
+  {
+   "code": "S01E17",
+   "title": "Boyz Crazy",
+   "zh": "男孩狂",
+   "date": "2013-04-19",
+   "note": "梅宝迷上的男团 Sev'ral Timez 原来是被关在笼子里的克隆人，她最终放他们自由；迪普则怀疑罗比送给温蒂的情歌里藏着洗脑信息。",
+   "star": false,
+   "cipher": {
+    "type": "A1Z26",
+    "encoded": "8-1-16-16-25 14-15-23, 1-18-9-5-12?",
+    "decoded": "HAPPY NOW, ARIEL?",
+    "zh": "现在满意了吧，艾莉尔？（艾莉尔是赫希的双胞胎姐姐）"
+   }
+  },
+  {
+   "code": "S01E18",
+   "title": "Land Before Swine",
+   "zh": "史前猪",
+   "date": "2013-06-28",
+   "note": "翼龙抓走了Waddles，斯坦和双胞胎深入地下的史前世界营救；双胞胎一度对斯坦失望，斯坦最终用行动证明了自己。",
+   "star": false,
+   "cipher": {
+    "type": "A1Z26",
+    "encoded": "9-20 23-15-18-11-19 6-15-18 16-9-9-9-9-9-9-9-9-9-9-9-9-9-9-9-9-9-7-19!",
+    "decoded": "IT WORKS FOR PIIIIIIIIIIIIIIIIIGS!",
+    "zh": "对猪~~~~也有效！"
+   }
+  },
+  {
+   "code": "S01E19",
+   "title": "Dreamscaperers",
+   "zh": "入梦者",
+   "date": "2013-07-12",
+   "note": "吉迪恩召唤三角形恶魔比尔·赛弗潜入斯坦的意识偷保险箱密码，双胞胎和苏斯入梦阻止；比尔首次登场，迪普也明白了斯坦严厉背后的关心。",
+   "star": true,
+   "cipher": {
+    "type": "A1Z26",
+    "encoded": "20-15 2-5 3-15-14-20-9-14-21-5-4...",
+    "decoded": "TO BE CONTINUED...",
+    "zh": "未完待续……"
+   }
+  },
+  {
+   "code": "S01E20",
+   "title": "Gideon Rises",
+   "zh": "吉迪恩崛起",
+   "date": "2013-08-02",
+   "note": "吉迪恩夺走神秘小屋并驾驶巨型机器人攻城，双胞胎合力击败他；季终揭示斯坦一直在地下室秘密启动一台机器。",
+   "star": true,
+   "cipher": {
+    "type": "combined",
+    "encoded": "5-19-23-6-21-16 18-9-6 4-16-19 22-12-15-10-20-19-25-19.",
+    "decoded": "SEARCH FOR THE BLINDEYE.",
+    "zh": "寻找盲眼。",
+    "note": "A1Z26 → Atbash → 凯撒，三重组合密码，已逐步解密核对"
+   }
+  },
+  {
+   "code": "S02E01",
+   "title": "Scary-oke",
+   "zh": "恐怖卡拉OK",
+   "date": "2014-08-01",
+   "note": "神秘小屋重新开张，政府特工上门调查；迪普用日志召唤出僵尸，一家人用卡拉OK的完美和声将其消灭。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "SMOFZQA JDFV",
+    "decoded": "WELCOME BACK",
+    "zh": "欢迎回来",
+    "key": "WIDDLE"
+   }
+  },
+  {
+   "code": "S02E02",
+   "title": "Into the Bunker",
+   "zh": "地堡",
+   "date": "2014-08-04",
+   "note": "双胞胎、苏斯和温蒂找到日志作者的地下掩体并被变形怪追杀；迪普向温蒂表白被温柔拒绝，两人成了真正的朋友。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "OOIY DMEV VN IBWRKAMW BRUWLL.",
+    "decoded": "WHAT KIND OF DISASTER INDEED.",
+    "zh": "到底是什么样的灾难呢。",
+    "key": "SHIFTER"
+   }
+  },
+  {
+   "code": "S02E03",
+   "title": "The Golf War",
+   "zh": "迷你高尔夫之战",
+   "date": "2014-08-11",
+   "note": "梅宝和帕西菲卡比赛迷你高尔夫，住在球洞里的“小高尔夫人”挑起战争，两人第一次放下敌意。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "NLMXQWWN IIZ LZFNF",
+    "decoded": "REMEMBER BIG HENRY",
+    "zh": "记住大亨利",
+    "key": "WHATEVS"
+   }
+  },
+  {
+   "code": "S02E04",
+   "title": "Sock Opera",
+   "zh": "袜子歌剧",
+   "date": "2014-09-08",
+   "note": "梅宝为暗恋对象排演袜子木偶剧，迪普为破解电脑密码被比尔骗走身体；梅宝放弃整台演出救回弟弟。",
+   "star": true,
+   "cipher": {
+    "type": "combined",
+    "encoded": "10-9 8-3-8-8-19-4 5-4-6-15-10-17-5 21-23-10 16-9-12-20 11-19 20-9-1-10 / 5-9 8-23-4-15-19-10-4-12-25 15 1-23-4-21-16 4-16-15-5 4-9-1-10 / 23-22-10-9-6-11-23-12 5-9-9-10 1-15-12-12 22-19 4-16-19 10-9-6-11 / 19-10-14-9-25 4-16-19 21-23-12-11 22-19-18-9-6-19 4-16-19 5-4-9-6-11",
+    "decoded": "NO PUPPET STRINGS CAN HOLD ME DOWN, / SO PATIENTLY I WATCH THIS TOWN, / ABNORMAL SOON WILL BE THE NORM, / ENJOY THE CALM BEFORE THE STORM.",
+    "zh": "没有木偶线能把我束缚，我耐心地注视这座小镇；反常很快就会成为常态，享受暴风雨前的平静吧。",
+    "verified": "partial",
+    "note": "这是集末“结束页”的组合密码（A1Z26→Atbash→凯撒，已核对）；片尾字幕里的维吉尼亚密码维基只有图片，未能核实"
+   }
+  },
+  {
+   "code": "S02E05",
+   "title": "Soos and the Real Girl",
+   "zh": "苏斯和真女孩",
+   "date": "2014-09-22",
+   "note": "苏斯在约会模拟游戏里被AI女友吉芬妮缠上，最终勇敢走向真实世界的女孩梅洛迪。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "BRTYMEMNX QBR HRRQPEE",
+    "decoded": "ANTHYDING CAN HADPLEN",
+    "zh": "一切皆有可呃能（故意的乱码版 ANYTHING CAN HAPPEN）",
+    "key": "BEARO",
+    "note": "维基未写明密钥；由密文与明文反推得到 BEARO，与《Sock Opera》中预告的下一集密钥一致"
+   }
+  },
+  {
+   "code": "S02E06",
+   "title": "Little Gift Shop of Horrors",
+   "zh": "恐怖礼品店",
+   "date": "2014-10-04",
+   "note": "斯坦向一位游客讲述三个互不相关的恐怖小故事，是全剧唯一的选集式集数（含一段定格动画）。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "PVREK BIG QF. JCDQZRF' ZNVEFH OBCX: \"C BEWRS VVUTBFL BT BKNX CVAY BKNX CVAY BKNX\"",
+    "decoded": "CHECK OUT DR. WADDLES' LATEST BOOK: \"A BRIEF HISTORY OF OINK OINK OINK OINK OINK\".",
+    "zh": "请阅读Waddles 博士的新书：《哼哼哼哼哼简史》。",
+    "key": "NONCANON",
+    "note": "维基未写明密钥；由密文与明文反推得到 NONCANON（非正史），与本集的非正史性质吻合"
+   }
+  },
+  {
+   "code": "S02E07",
+   "title": "Society of the Blind Eye",
+   "zh": "盲眼社",
+   "date": "2014-10-27",
+   "note": "双胞胎发现老麦古吉特创立了专门抹除镇民记忆的秘密社团，并帮他找回了部分被抹掉的记忆。",
+   "star": true,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "MXNGVEECW MW SLAWW. SUL FPZSK MW SOJMRX.",
+    "decoded": "IGNORANCE IS BLISS. BUT BLISS IS BORING.",
+    "zh": "无知是福。但幸福很无聊。",
+    "key": "ERASE"
+   }
+  },
+  {
+   "code": "S02E08",
+   "title": "Blendin's Game",
+   "zh": "布兰丁的游戏",
+   "date": "2014-11-10",
+   "note": "双胞胎想借时间旅行弥补苏斯每年生日都等不来父亲的遗憾，却卷入布兰丁的复仇和时空决斗“格罗布纳”。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "FOC'T FW MVV VIBE EZBAV KF NOW KTB'K FO IHG BBAV VIBE.",
+    "decoded": "DON'T DO THE TIME CRIME IF YOU CAN'T DO THE TIME TIME.",
+    "zh": "没本事“坐时间牢”，就别犯时间罪。",
+    "key": "CAPACITOR"
+   }
+  },
+  {
+   "code": "S02E09",
+   "title": "The Love God",
+   "zh": "爱神",
+   "date": "2014-11-26",
+   "note": "梅宝从爱神手里抢来爱情药水撮合罗比和坦布里，引出一连串混乱。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "O SAM KVGS.",
+    "decoded": "I EAT KIDS.",
+    "zh": "我吃小孩。",
+    "key": "GOATANDAPIG"
+   }
+  },
+  {
+   "code": "S02E10",
+   "title": "Northwest Mansion Mystery",
+   "zh": "西北庄园之谜",
+   "date": "2015-02-16",
+   "note": "迪普受雇为帕西菲卡家驱除伐木工鬼魂，帕西菲卡第一次违抗父母、打开大门让镇民进来，完成自我救赎。",
+   "star": true,
+   "cipher": {
+    "type": "combined",
+    "encoded": "5-4-23-10-15-5-10-9-4-1-16-23-4-16-19-5-19-19-11-5 (×3)",
+    "decoded": "STANISNOTWHATHESEEMS (×3)",
+    "zh": "斯坦并非他看上去的那样。",
+    "verified": "partial",
+    "note": "这是集末“结束页”的组合密码（已核对）；片尾字幕密码的原文未能核实（维基提到本集关键词 CURSED）"
+   }
+  },
+  {
+   "code": "S02E11",
+   "title": "Not What He Seems",
+   "zh": "他并非表面那样",
+   "date": "2015-03-09",
+   "note": "斯坦被政府逮捕，梅宝在倒计时中选择相信叔公、不关闭传送门；传送门打开，走出来的是日志作者——斯坦的双胞胎兄弟。",
+   "star": true,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "LAR ZPUHTFTY XWEUPJR GHGZT.",
+    "decoded": "THE ORIGINAL MYSTERY TWINS.",
+    "zh": "最初的神秘双胞胎。",
+    "key": "STNLYMBL"
+   }
+  },
+  {
+   "code": "S02E12",
+   "title": "A Tale of Two Stans",
+   "zh": "双斯坦记",
+   "date": "2015-07-13",
+   "note": "斯坦讲出往事：他和天才兄弟斯坦福少年时决裂，斯坦福被吸入传送门后，他冒用兄弟名字、花三十年把他救回。",
+   "star": true,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "TIZOLHAJSIW CKMMWZPMKQ: GLY KJQBH",
+    "decoded": "BACKUPSMORE UNIVERSITY: YOU TRIED",
+    "zh": "巴克普斯莫尔大学：你尽力了",
+    "key": "SIXER",
+    "note": "维基另列一条集末组合密码（关于老父亲 Filbrick 给两兄弟都取名 Stan 的打油诗）"
+   }
+  },
+  {
+   "code": "S02E13",
+   "title": "Dungeons, Dungeons, & More Dungeons",
+   "zh": "地牢、地牢、更多地牢",
+   "date": "2015-08-03",
+   "note": "迪普和福特叔公一起玩桌游，意外召出游戏反派“可能性大师”，两个书呆子终于找到了知音。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "VXFQLKB-AYRTHHEJ!",
+    "decoded": "EXCELSI-WHATEVER!",
+    "zh": "精益求……随便啦！",
+    "key": "RADMASTER"
+   }
+  },
+  {
+   "code": "S02E14",
+   "title": "The Stanchurian Candidate",
+   "zh": "斯坦竞选记",
+   "date": "2015-08-24",
+   "note": "斯坦参选镇长，吉迪恩的父亲巴德则用吉迪恩留下的控制领带想把他变成傀儡，双胞胎及时阻止。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "CWZSQVQBEWZSQVQBEWZSQVQMPHKD'MZ!",
+    "decoded": "GIIIIIIIIIIIIIIIIIIIIIITTTTT'EM!",
+    "zh": "去——————————揍他们！",
+    "key": "WORKINIT",
+    "note": "明文按密文与密钥本地解密得出（字母个数以密文为准）"
+   }
+  },
+  {
+   "code": "S02E15",
+   "title": "The Last Mabelcorn",
+   "zh": "最后的独角兽",
+   "date": "2015-09-07",
+   "note": "福特坦白比尔曾是他的“缪斯”和朋友，后来才看清他的真面目；梅宝去找独角兽取毛发，为小屋布下防护结界。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "S UPYTYH DIP GAVO QETHI MCBK OHK XEXJB VRW YOUWCHIA VRSV OQ LRDIA",
+    "decoded": "A SIMPLE MAN WITH EAGER EARS MAY TRUST THE WHISPERS THAT HE HEARS",
+    "zh": "心思简单、耳根又软的人，会轻信他听到的耳语。",
+    "key": "SCHMENDRICK"
+   }
+  },
+  {
+   "code": "S02E16",
+   "title": "Roadside Attraction",
+   "zh": "公路旅行",
+   "date": "2015-09-21",
+   "note": "斯坦带孩子们公路旅行，教迪普“搭讪术”，结果迪普同时招惹了好几个女孩；坎迪向迪普表白又被婉拒。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": null,
+    "decoded": null,
+    "zh": null,
+    "verified": false,
+    "note": "未能核实：维基页只有密码图片未转录（维基描述其内容与苏斯和一只会说话的斗牛犬有关）"
+   }
+  },
+  {
+   "code": "S02E17",
+   "title": "Dipper and Mabel vs. the Future",
+   "zh": "迪普和梅宝对决未来",
+   "date": "2015-10-12",
+   "note": "福特邀请迪普留下当学徒，害怕长大与分离的梅宝被伪装成布兰丁的比尔骗走了裂缝，直接引发“怪诞末日”。",
+   "star": true,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "ETX CPI ASTD GI?",
+    "decoded": "DID YOU MISS ME?",
+    "zh": "想我了吗？",
+    "key": "BLUEBOOK"
+   }
+  },
+  {
+   "code": "S02E18",
+   "title": "Weirdmageddon Part 1",
+   "zh": "怪诞末日（上）",
+   "date": "2015-10-26",
+   "note": "比尔降临现实，怪诞小镇被怪物和疯狂吞没，福特被抓，迪普与温蒂踏上寻找梅宝的路。",
+   "star": false,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": null,
+    "decoded": null,
+    "zh": null,
+    "verified": false,
+    "note": "未能核实：维基剧集页多次抓取失败"
+   }
+  },
+  {
+   "code": "S02E19",
+   "title": "Weirdmageddon 2: Escape from Reality",
+   "zh": "怪诞末日2：逃离现实",
+   "date": "2015-11-23",
+   "note": "迪普闯进比尔为梅宝打造的“梅宝乐园”泡泡，姐弟俩坦白了对长大的恐惧，梅宝选择回到现实。",
+   "star": true,
+   "cipher": {
+    "type": "combined",
+    "encoded": "1-16-19-10 9-10-19 17-19-4-5 4-6-23-8-8-19-20 15-10-5-15-20-19 4-16-19 8-23-5-4, 20-6-19-23-11-5 21-23-10 4-3-6-10 4-9 10-15-17-16-4-11-23-6-19-5 18-23-5-4.",
+    "decoded": "WHEN ONE GETS TRAPPED INSIDE THE PAST, DREAMS CAN TURN TO NIGHTMARES FAST.",
+    "zh": "一个人一旦困在过去，美梦很快就会变成噩梦。",
+    "note": "A1Z26 → Atbash → 凯撒，已核对"
+   }
+  },
+  {
+   "code": "S02E20",
+   "title": "Weirdmageddon 3: Take Back the Falls",
+   "zh": "怪诞末日3：夺回小镇",
+   "date": "2016-02-15",
+   "note": "神秘小屋变身巨型机器人“Shacktron”，全镇人合力反击，斯坦假扮福特，以抹去自己全部记忆为代价消灭比尔；梅宝的剪贴簿唤回他的记忆，双胞胎在13岁生日后坐车回家。",
+   "star": true,
+   "cipher": {
+    "type": "Vigenère",
+    "encoded": "KVOU VTKSE XVREOW DQTMJKGD MF KNLJH CVE 900 YCHJZ OH XXFB PJPSKC FVQUSIOV LHP: FRNLLCDBFBF.",
+    "decoded": "SOOS LATER FORCED MCGUCKET TO WATCH ALL 900 HOURS OF NEON CRISIS MECHABOT BOY: REVELATIONS.",
+    "zh": "后来苏斯逼麦古吉特看完了全部900小时的《霓虹危机机甲少年：启示录》。",
+    "key": "SHACKTRON",
+    "extra": [
+     {
+      "type": "Vigenère",
+      "encoded": "GLCOPRP GOOGWMJ FXZWG.",
+      "decoded": "GOODBYE GRAVITY FALLS.",
+      "key": "AXOLOTL",
+      "zh": "再见了，怪诞小镇。"
+     }
+    ]
+   }
+  }
+ ],
+ "shorts": [
+  "Creature in the Closet",
+  "Dipper's Guide to the Unexplained",
+  "Mabel's Guide to Life",
+  "Fixin' It with Soos",
+  "Public Access TV",
+  "Mabel's Scrapbook",
+  "Creepy Letters from Lil' Gideon",
+  "Old Man McGucket's Conspiracy Corner",
+  "Grunkle Stan's Lost Mystery Shack Interviews",
+  "'Pocalypse Preppin'",
+  "Mystery Shack: Shop at Home with Mr. Mystery",
+  "Soos' Stan Fiction",
+  "Gravity Falls x Line Rider",
+  "Call Me Maybe Parody",
+  "How NOT to Draw"
+ ],
+ "quotes": [
+  {
+   "ep": "S01E06",
+   "title": "Dipper vs. Manliness",
+   "who": "Multi-Bear",
+   "en": "I accept my fate.",
+   "zh": "我接受我的命运。",
+   "deep": "多头熊在死亡面前的平静，反而让迪普意识到“男子气概”不是杀戮，而是做对的事。",
+   "th": [
+    "courage",
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dipper_vs._Manliness/Transcript"
+  },
+  {
+   "ep": "S01E06",
+   "title": "Dipper vs. Manliness",
+   "who": "Dipper Pines",
+   "en": "I'm not gonna do it.",
+   "zh": "我不干。",
+   "deep": "拒绝别人定义的“成年仪式”，是迪普第一次真正长大。",
+   "th": [
+    "courage",
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dipper_vs._Manliness/Transcript"
+  },
+  {
+   "ep": "S01E07",
+   "title": "Double Dipper",
+   "who": "Candy Chiu",
+   "en": "Maybe we don't have as many friends as Pacifica, but we have each other, and that is pretty good I think.",
+   "zh": "也许我们没有帕西菲卡那么多朋友，但我们有彼此，我觉得这已经很好了。",
+   "deep": "受欢迎与否不重要，真正的友谊是彼此陪伴；梅宝的“闺蜜团”从这里开始。",
+   "th": [
+    "family",
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Double_Dipper/Transcript"
+  },
+  {
+   "ep": "S01E07",
+   "title": "Double Dipper",
+   "who": "Dipper Pines",
+   "en": "I know. Mabel was right, I do get in my own way.",
+   "zh": "我知道。梅宝说得对，我确实总是自己挡自己的路。",
+   "deep": "再周密的计划也替代不了真实的自己，最大的阻碍往往是自己的不安。",
+   "th": [
+    "grow",
+    "siblings"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Double_Dipper/Transcript"
+  },
+  {
+   "ep": "S01E09",
+   "title": "The Time Traveler's Pig",
+   "who": "Dipper Pines",
+   "en": "I couldn't break your heart, Mabel. Besides, there's no way Wendy can date Robbie all summer, right?",
+   "zh": "我不能让你伤心，梅宝。再说了，温蒂不可能整个夏天都跟罗比约会吧？",
+   "deep": "迪普把姐姐的快乐放在自己的心愿之前，姐弟情的第一次“牺牲”。",
+   "th": [
+    "siblings",
+    "sacrifice"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/The_Time_Traveler%27s_Pig/Transcript"
+  },
+  {
+   "ep": "S01E09",
+   "title": "The Time Traveler's Pig",
+   "who": "Mabel Pines",
+   "en": "But what about Waddles? He was my soulmate!",
+   "zh": "那Waddles怎么办？它可是我的灵魂伴侣！",
+   "deep": "梅宝式的夸张里有真心：她对在乎的东西永远全力以赴。",
+   "th": [
+    "humor",
+    "family"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/The_Time_Traveler%27s_Pig/Transcript"
+  },
+  {
+   "ep": "S01E09",
+   "title": "The Time Traveler's Pig",
+   "who": "Blendin Blandin",
+   "en": "I'll get you for this! I'll go back in time and make sure your parents never MEET!!",
+   "zh": "我饶不了你们！我要回到过去，让你们的爸妈永远遇不到！！",
+   "deep": "布兰丁的狠话成了贯穿全剧的笑点，也为他后来的复仇埋下伏笔。",
+   "th": [
+    "humor"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/The_Time_Traveler%27s_Pig/Transcript"
+  },
+  {
+   "ep": "S01E12",
+   "title": "Summerween",
+   "who": "Mabel Pines",
+   "en": "We're getting older, there's not that many Halloweens left!",
+   "zh": "我们在长大，剩下的万圣节已经不多了！",
+   "deep": "童年的节日是有数的，梅宝比迪普更早意识到要珍惜当下。",
+   "th": [
+    "grow",
+    "siblings"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Summerween/Transcript"
+  },
+  {
+   "ep": "S01E12",
+   "title": "Summerween",
+   "who": "Dipper Pines",
+   "en": "I just felt like I was getting a little too old to go trick-or-treating.",
+   "zh": "我只是觉得自己有点太大了，不该再去讨糖了。",
+   "deep": "急着长大的人，常常会主动放弃本该享受的童年。",
+   "th": [
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Summerween/Transcript"
+  },
+  {
+   "ep": "S01E19",
+   "title": "Dreamscaperers",
+   "who": "Bill Cipher",
+   "en": "Remember: reality is an illusion, the universe is a hologram, buy gold, bye!",
+   "zh": "记住：现实是幻觉，宇宙是全息投影，买黄金，拜！",
+   "deep": "比尔的经典台词，荒诞中带着威胁，奠定了他“混沌之神”的形象。",
+   "th": [
+    "weird",
+    "humor"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dreamscaperers/Transcript"
+  },
+  {
+   "ep": "S01E19",
+   "title": "Dreamscaperers",
+   "who": "Dipper Pines",
+   "en": "Sometimes I feel like Stan hates me.",
+   "zh": "有时候我觉得斯坦讨厌我。",
+   "deep": "孩子常把大人的严厉误读成冷漠，这一集要解开的正是这个心结。",
+   "th": [
+    "family",
+    "trust"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dreamscaperers/Transcript"
+  },
+  {
+   "ep": "S01E19",
+   "title": "Dreamscaperers",
+   "who": "Mabel Pines",
+   "en": "We already know how Stan feels about us! He loves us! We're great.",
+   "zh": "我们早就知道斯坦怎么看我们了！他爱我们！我们超棒的。",
+   "deep": "梅宝对家人的信任简单又坚定，这种信任后来在关键时刻拯救了一切。",
+   "th": [
+    "family",
+    "trust"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dreamscaperers/Transcript"
+  },
+  {
+   "ep": "S01E19",
+   "title": "Dreamscaperers",
+   "who": "Grunkle Stan",
+   "en": "You see it? That's why I'm hard on Dipper. To toughen him up. So when the world fights, he fights back.",
+   "zh": "看到了吗？所以我才对迪普那么严。让他坚强起来，这样世界打他的时候，他能还手。",
+   "deep": "斯坦的爱藏在粗粝之下，他用自己被父亲逼迫的方式，笨拙地保护迪普。",
+   "th": [
+    "family",
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dreamscaperers/Transcript"
+  },
+  {
+   "ep": "S01E20",
+   "title": "Gideon Rises",
+   "who": "Grunkle Stan",
+   "en": "Look, I lost, okay? The best thing is for you to be with your parents.",
+   "zh": "听着，我输了，好吗？你们回到爸妈身边才是最好的。",
+   "deep": "失去小屋时，斯坦首先想到的是孩子们，而不是自己。",
+   "th": [
+    "family",
+    "sacrifice"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Gideon_Rises/Transcript"
+  },
+  {
+   "ep": "S01E20",
+   "title": "Gideon Rises",
+   "who": "Mabel Pines",
+   "en": "You're a hero whether you've got that journal or not!",
+   "zh": "不管你有没有那本日志，你都是英雄！",
+   "deep": "真正的力量不在秘密之书，而在人本身——梅宝总能看见弟弟的价值。",
+   "th": [
+    "siblings",
+    "courage"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Gideon_Rises/Transcript"
+  },
+  {
+   "ep": "S01E20",
+   "title": "Gideon Rises",
+   "who": "Dipper Pines",
+   "en": "Let go of my sister!",
+   "zh": "放开我姐姐！",
+   "deep": "一句最直接的话，说明迪普最在乎的是谁。",
+   "th": [
+    "siblings",
+    "courage"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Gideon_Rises/Transcript"
+  },
+  {
+   "ep": "S02E02",
+   "title": "Into the Bunker",
+   "who": "Wendy Corduroy",
+   "en": "Listen Dipper, I'm like, super flattered, but... I'm too old for you. I mean, you know that, right?",
+   "zh": "听着迪普，我真的很受宠若惊，但是……我对你来说太大了。你也知道的，对吧？",
+   "deep": "温柔的拒绝也是一种尊重；迪普的初恋在这里结束，友谊却开始了。",
+   "th": [
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Into_the_Bunker/Transcript"
+  },
+  {
+   "ep": "S02E02",
+   "title": "Into the Bunker",
+   "who": "Shape Shifter",
+   "en": "REVEAL YOURSELF, YOU SINGLE-FORMED HUMAN WEAKLING!",
+   "zh": "现出原形吧，你这个只有一种形态的人类弱者！",
+   "deep": "变形怪讽刺人类“只有一种样子”，而这一集恰恰在讲坦诚面对真实的自己。",
+   "th": [
+    "weird"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Into_the_Bunker/Transcript"
+  },
+  {
+   "ep": "S02E04",
+   "title": "Sock Opera",
+   "who": "Bill Cipher",
+   "en": "Pain is hilarious!!",
+   "zh": "痛苦太好笑了！！",
+   "deep": "比尔把伤害当娱乐，他的恐怖正在于毫无共情。",
+   "th": [
+    "weird",
+    "humor"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Sock_Opera/Transcript"
+  },
+  {
+   "ep": "S02E04",
+   "title": "Sock Opera",
+   "who": "Bill Cipher",
+   "en": "I mean, who would sacrifice everything they've worked for just for their dumb sibling?",
+   "zh": "我是说，谁会为了一个蠢兄弟姐妹，放弃自己努力的一切？",
+   "deep": "比尔无法理解亲情，这正是他最终失败的原因。",
+   "th": [
+    "siblings",
+    "sacrifice"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Sock_Opera/Transcript"
+  },
+  {
+   "ep": "S02E04",
+   "title": "Sock Opera",
+   "who": "Mabel Pines",
+   "en": "Dipper would.",
+   "zh": "迪普会。",
+   "deep": "三个词的回答，是全剧最有力的手足宣言之一：他为我做过，所以我也会。",
+   "th": [
+    "siblings",
+    "sacrifice"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Sock_Opera/Transcript"
+  },
+  {
+   "ep": "S02E04",
+   "title": "Sock Opera",
+   "who": "Mabel Pines",
+   "en": "I'm sorry, Dipper. I spent all week obsessing over a dumb guy. But the dumb guy I should have cared about was you!",
+   "zh": "对不起，迪普。我整个星期都在为一个笨男孩着魔，可我真正该在乎的那个笨蛋是你！",
+   "deep": "梅宝终于意识到，追逐外界认可时最容易忽视身边的人。",
+   "th": [
+    "siblings",
+    "family"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Sock_Opera/Transcript"
+  },
+  {
+   "ep": "S02E11",
+   "title": "Not What He Seems",
+   "who": "Grunkle Stan",
+   "en": "Please don't press that shutdown button, you gotta trust me.",
+   "zh": "求你别按关闭按钮，你得相信我。",
+   "deep": "斯坦把一切押在孩子的信任上，这是他第一次真正示弱。",
+   "th": [
+    "trust",
+    "family"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Not_What_He_Seems/Transcript"
+  },
+  {
+   "ep": "S02E11",
+   "title": "Not What He Seems",
+   "who": "Dipper Pines",
+   "en": "Mabel, what if he's lying? This thing could destroy the universe! Listen to your head!",
+   "zh": "梅宝，万一他在撒谎呢？这东西可能毁掉整个宇宙！听你的理智！",
+   "deep": "迪普代表理性和证据，与梅宝的直觉对峙，两人都没有错。",
+   "th": [
+    "trust",
+    "siblings"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Not_What_He_Seems/Transcript"
+  },
+  {
+   "ep": "S02E11",
+   "title": "Not What He Seems",
+   "who": "Mabel Pines",
+   "en": "I trust you.",
+   "zh": "我相信你。",
+   "deep": "在所有证据都指向背叛时选择相信，是全剧最勇敢的决定之一。",
+   "th": [
+    "trust",
+    "courage",
+    "family"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Not_What_He_Seems/Transcript"
+  },
+  {
+   "ep": "S02E12",
+   "title": "A Tale of Two Stans",
+   "who": "Grunkle Stan",
+   "en": "One of these days, you and me are gonna sail away from this dumb town.",
+   "zh": "总有一天，你和我会驾船离开这个破镇子。",
+   "deep": "少年兄弟的约定，成了跨越几十年的遗憾，也在结局得以兑现。",
+   "th": [
+    "siblings",
+    "memory"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/A_Tale_of_Two_Stans/Transcript"
+  },
+  {
+   "ep": "S02E12",
+   "title": "A Tale of Two Stans",
+   "who": "Ford Pines",
+   "en": "I dub thee: the Stan O' War!",
+   "zh": "我命名你为：斯坦号战舰！",
+   "deep": "一个童年的船名，承载了两兄弟最纯粹的梦想。",
+   "th": [
+    "siblings",
+    "memory"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/A_Tale_of_Two_Stans/Transcript"
+  },
+  {
+   "ep": "S02E12",
+   "title": "A Tale of Two Stans",
+   "who": "Grunkle Stan",
+   "en": "Stanford, come back! I-I DIDN'T MEAN IT!",
+   "zh": "斯坦福，回来！我……我不是故意的！",
+   "deep": "一次争执造成三十年分离，斯坦此后的人生都在赎这一刻的罪。",
+   "th": [
+    "siblings",
+    "sacrifice"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/A_Tale_of_Two_Stans/Transcript"
+  },
+  {
+   "ep": "S02E15",
+   "title": "The Last Mabelcorn",
+   "who": "Ford Pines",
+   "en": "Bill wasn't always my enemy, Dipper. I used to think he was my friend. Long, long ago.",
+   "zh": "比尔并不总是我的敌人，迪普。很久很久以前，我曾以为他是我的朋友。",
+   "deep": "天才也会被孤独和虚荣蒙蔽，信错一个人代价可能是一生。",
+   "th": [
+    "trust"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/The_Last_Mabelcorn/Transcript"
+  },
+  {
+   "ep": "S02E15",
+   "title": "The Last Mabelcorn",
+   "who": "Celestabellebethabelle",
+   "en": "Doing good deeds to make yourself look better isn't good at all.",
+   "zh": "为了让自己显得更好而做好事，根本不算好。",
+   "deep": "善良的动机比形式更重要，梅宝由此反思什么是真正的好人。",
+   "th": [
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/The_Last_Mabelcorn/Transcript"
+  },
+  {
+   "ep": "S02E17",
+   "title": "Dipper and Mabel vs. the Future",
+   "who": "Mabel Pines",
+   "en": "I just wish summer could last forever.",
+   "zh": "我只希望夏天能永远持续下去。",
+   "deep": "全剧对“长大”最直白的抗拒，也是比尔得以趁虚而入的裂缝。",
+   "th": [
+    "grow",
+    "memory"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dipper_and_Mabel_vs._the_Future/Transcript"
+  },
+  {
+   "ep": "S02E17",
+   "title": "Dipper and Mabel vs. the Future",
+   "who": "Mabel Pines",
+   "en": "When we turn thirteen, the summer ends, and I have to leave everything behind.",
+   "zh": "等我们满十三岁，夏天就结束了，我得把一切都留在身后。",
+   "deep": "梅宝害怕的不是年龄，而是失去一个夏天里收获的所有人和事。",
+   "th": [
+    "grow",
+    "siblings"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dipper_and_Mabel_vs._the_Future/Transcript"
+  },
+  {
+   "ep": "S02E17",
+   "title": "Dipper and Mabel vs. the Future",
+   "who": "Bill Cipher",
+   "en": "Summer in Gravity Falls can last as long as you want it to!",
+   "zh": "怪诞小镇的夏天，想持续多久就能持续多久！",
+   "deep": "最危险的诱惑往往是说出你最想听的话。",
+   "th": [
+    "trust",
+    "weird"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Dipper_and_Mabel_vs._the_Future/Transcript"
+  },
+  {
+   "ep": "S02E18",
+   "title": "Weirdmageddon Part 1",
+   "who": "Bill Cipher",
+   "en": "This party never stops. Time is dead and meaning has no meaning.",
+   "zh": "这场派对永不停歇。时间已死，意义毫无意义。",
+   "deep": "比尔的“怪诞末日”是彻底的混乱，没有规则也没有明天。",
+   "th": [
+    "weird"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_Part_1/Transcript"
+  },
+  {
+   "ep": "S02E18",
+   "title": "Weirdmageddon Part 1",
+   "who": "Wendy Corduroy",
+   "en": "Look, dude, it's not over yet. You've beaten Bill twice before, why is this time any different?",
+   "zh": "听着，伙计，还没结束呢。你之前已经打败过比尔两次了，这次凭什么不一样？",
+   "deep": "温蒂用平视的方式鼓励迪普，她早已把他当作可以并肩的伙伴。",
+   "th": [
+    "courage",
+    "trust"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_Part_1/Transcript"
+  },
+  {
+   "ep": "S02E18",
+   "title": "Weirdmageddon Part 1",
+   "who": "Dipper Pines",
+   "en": "I don't know if you can hear me, but wherever you are, whatever happens, I'm going to find you.",
+   "zh": "我不知道你能不能听见，但不管你在哪，不管发生什么，我都会找到你。",
+   "deep": "世界崩塌之际，迪普的第一个念头仍是姐姐。",
+   "th": [
+    "siblings",
+    "courage"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_Part_1/Transcript"
+  },
+  {
+   "ep": "S02E19",
+   "title": "Weirdmageddon 2: Escape from Reality",
+   "who": "Dipper Pines",
+   "en": "You're scared. Of growing up. And who could blame you; I'm scared, too.",
+   "zh": "你害怕长大。谁能怪你呢；我也害怕。",
+   "deep": "承认恐惧比假装勇敢更有力量，姐弟在这里真正互相理解。",
+   "th": [
+    "grow",
+    "siblings",
+    "courage"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_2:_Escape_from_Reality/Transcript"
+  },
+  {
+   "ep": "S02E19",
+   "title": "Weirdmageddon 2: Escape from Reality",
+   "who": "Mabel Pines",
+   "en": "I wanted to hide in my sweater forever.",
+   "zh": "我想永远躲在我的毛衣里。",
+   "deep": "毛衣是梅宝的保护壳，这句话道出了逃避现实的诱惑。",
+   "th": [
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_2:_Escape_from_Reality/Transcript"
+  },
+  {
+   "ep": "S02E19",
+   "title": "Weirdmageddon 2: Escape from Reality",
+   "who": "Dipper Pines",
+   "en": "We've always been there for each other.",
+   "zh": "我们一直都在彼此身边。",
+   "deep": "无论世界怎么变，他们是彼此的锚点。",
+   "th": [
+    "siblings"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_2:_Escape_from_Reality/Transcript"
+  },
+  {
+   "ep": "S02E20",
+   "title": "Weirdmageddon 3: Take Back the Falls",
+   "who": "Grunkle Stan",
+   "en": "Hey, look at me. Turn around and look at me, you one-eyed demon!",
+   "zh": "嘿，看着我。转过来看着我，你这个独眼恶魔！",
+   "deep": "斯坦以“小骗子”的方式完成最大的骗局，用自己的记忆换取全家人的平安。",
+   "th": [
+    "sacrifice",
+    "courage"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_3:_Take_Back_the_Falls/Transcript"
+  },
+  {
+   "ep": "S02E20",
+   "title": "Weirdmageddon 3: Take Back the Falls",
+   "who": "Ford Pines",
+   "en": "You're our hero, Stanley.",
+   "zh": "你是我们的英雄，斯坦利。",
+   "deep": "一辈子活在兄弟阴影下的斯坦，终于被承认为英雄。",
+   "th": [
+    "siblings",
+    "sacrifice",
+    "family"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_3:_Take_Back_the_Falls/Transcript"
+  },
+  {
+   "ep": "S02E20",
+   "title": "Weirdmageddon 3: Take Back the Falls",
+   "who": "Mabel Pines",
+   "en": "Summer's over, Candy. It's time for us to grow up.",
+   "zh": "夏天结束了，坎迪。我们该长大了。",
+   "deep": "曾想让夏天永不结束的梅宝，最终平静地接受了成长。",
+   "th": [
+    "grow",
+    "memory"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_3:_Take_Back_the_Falls/Transcript"
+  },
+  {
+   "ep": "S02E20",
+   "title": "Weirdmageddon 3: Take Back the Falls",
+   "who": "Grunkle Stan",
+   "en": "Kids, you knuckleheads were nothin' but a nuisance and I'm glad to be rid of ya.",
+   "zh": "孩子们，你们这俩笨蛋除了添麻烦啥也不是，总算能把你们打发走了。",
+   "deep": "斯坦式的告别：嘴上嫌弃，眼里不舍，口是心非正是他的爱。",
+   "th": [
+    "family",
+    "humor"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_3:_Take_Back_the_Falls/Transcript"
+  },
+  {
+   "ep": "S02E20",
+   "title": "Weirdmageddon 3: Take Back the Falls",
+   "who": "Dipper Pines (narration)",
+   "en": "But looking here at all of you I realize that every wish came true.",
+   "zh": "但看着这里的你们，我发现每一个愿望都实现了。",
+   "deep": "结尾旁白：这个夏天给他们的不是答案，而是一群家人。",
+   "th": [
+    "family",
+    "memory",
+    "grow"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_3:_Take_Back_the_Falls/Transcript"
+  },
+  {
+   "ep": "S02E20",
+   "title": "Weirdmageddon 3: Take Back the Falls",
+   "who": "Dipper Pines (narration)",
+   "en": "Take a trip. Find it. It's out there somewhere in the woods. Waiting.",
+   "zh": "去旅行吧。去找到它。它就在树林里的某个地方。等待着。",
+   "deep": "全剧最后一句话把神秘留给观众，也鼓励每个人保持好奇。",
+   "th": [
+    "weird",
+    "memory"
+   ],
+   "src": "https://gravityfalls.fandom.com/wiki/Weirdmageddon_3:_Take_Back_the_Falls/Transcript"
+  }
+ ],
+ "people": [
+  {
+   "id": "dipper",
+   "zh": "迪普·派恩斯",
+   "en": "Dipper Pines",
+   "voice": "Jason Ritter",
+   "tag": "好奇的小侦探",
+   "bio": "12岁男孩，比双胞胎姐姐梅宝晚出生五分钟。他在林中捡到神秘日志“3”，从此成为怪诞小镇超自然事件的调查者。聪明、谨慎、爱操心，额头上有北斗七星形状的胎记，“Dipper”这个名字就来自它。",
+   "why": "他是每个急着长大、想被认真对待的孩子；他学会的是：好奇心与勇气同样重要，而家人比答案更重要。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "mabel",
+   "zh": "梅宝·派恩斯",
+   "en": "Mabel Pines",
+   "voice": "Kristen Schaal",
+   "tag": "毛衣与快乐制造机",
+   "bio": "迪普的双胞胎姐姐，乐观、夸张、爱穿自己织的毛衣，养了一只叫Waddles的小猪。原型是创作者亚历克斯·赫希的双胞胎姐姐艾莉尔。她看似天真，却常凭直觉和善良在关键时刻做出正确选择。",
+   "why": "她代表无条件的信任与快乐，也代表对长大的恐惧；她的成长是学会在拥抱童真的同时面对现实。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "stan",
+   "zh": "斯坦叔公（斯坦利·派恩斯）",
+   "en": "Grunkle Stan (Stanley Pines)",
+   "voice": "Alex Hirsch",
+   "tag": "嘴硬心软的老骗子",
+   "bio": "神秘小屋的老板，靠骗游客赚钱，贪财又粗鲁。原型是赫希的祖父斯坦。他冒用兄弟斯坦福的名字生活了三十年，只为把被困在传送门另一端的兄弟救回来。",
+   "why": "他是全剧最动人的“失败者”：一个被看不起的人，用一生的执着和最后的记忆，证明了自己的爱。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "ford",
+   "zh": "福特叔公（斯坦福·派恩斯）",
+   "en": "Grunkle Ford (Stanford Pines)",
+   "voice": "J. K. Simmons",
+   "tag": "六指天才，日志作者",
+   "bio": "斯坦的双胞胎兄弟，天生六根手指，三本日志的作者。他曾受比尔蛊惑建造传送门，后醒悟并被困于其他维度三十年，第二季中段被斯坦救回。",
+   "why": "他代表天才的孤独与骄傲，以及“信错人”的代价；他和斯坦的和解是全剧兄弟主题的终点。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "soos",
+   "zh": "苏斯（苏斯·拉米雷斯）",
+   "en": "Soos Ramirez",
+   "voice": "Alex Hirsch",
+   "tag": "憨厚的打杂大哥",
+   "bio": "神秘小屋的杂工，善良、忠诚，把斯坦当成父亲一样崇拜。原型是赫希在加州艺术学院认识的动画师 Jesus Chambrot。结局中他接手成为神秘小屋的新“神秘先生”。",
+   "why": "他代表无条件的善意和忠诚，证明“被选择的家人”同样是家人。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "wendy",
+   "zh": "温蒂·科德罗伊",
+   "en": "Wendy Corduroy",
+   "voice": "Linda Cardellini",
+   "tag": "酷酷的红发少女",
+   "bio": "15岁，在神秘小屋打工，是迪普的暗恋对象。她随性、能干，出身伐木工家庭。在《地堡》一集她温柔地拒绝了迪普的表白，两人成为真正的朋友。",
+   "why": "她代表少年心中那个“大一点的世界”；她教会迪普，被拒绝并不意味着失去。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "bill",
+   "zh": "比尔·赛弗",
+   "en": "Bill Cipher",
+   "voice": "Alex Hirsch",
+   "tag": "三角形梦境恶魔",
+   "bio": "来自其他维度的独眼三角形恶魔，能进入人的梦境与意识，喜欢与人做交易。他曾骗福特建造传送门，第二季末借梅宝之手打开裂缝发动“怪诞末日”，最终在斯坦的意识中被消灭。",
+   "why": "他是混乱与诱惑的化身，专门利用人的孤独和恐惧；他的失败说明，他永远无法理解家人之间的牺牲。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "gideon",
+   "zh": "小吉迪恩（吉迪恩·格里夫）",
+   "en": "Li'l Gideon Gleeful",
+   "voice": "Thurop Van Orman",
+   "tag": "假笑的通灵神童",
+   "bio": "经营“心灵感应帐篷”的小骗子，靠护身符假装通灵，一心想夺取神秘小屋并追求梅宝。第一季的主要反派，入狱后在第二季逐渐转变，最终站到了众人一边。",
+   "why": "他是斯坦的“镜像”——同样是骗子，却缺少爱；他的转变说明坏人也可能被善意改变。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "pacifica",
+   "zh": "帕西菲卡·西北",
+   "en": "Pacifica Northwest",
+   "voice": "Jackie Buscarino",
+   "tag": "富家千金的觉醒",
+   "bio": "镇上首富西北家族的女儿，起初是梅宝的头号对手。名字是“太平洋西北”（Pacific Northwest）的双关。在《西北庄园之谜》中她第一次违抗父母，做了正确的事。",
+   "why": "她代表被家庭期望束缚的孩子，她的成长是从“顺从”到“选择自己”。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "waddles",
+   "zh": "Waddles",
+   "en": "Waddles",
+   "voice": "Dee Bradley Baker (vocal effects)",
+   "tag": "梅宝的小猪",
+   "bio": "梅宝在镇上集市赢来的宠物猪，从此形影不离。迪普曾为了让梅宝留住它而放弃自己追温蒂的机会。",
+   "why": "它是全剧的萌点和温柔，也提醒人：快乐有时就是一只会哼哼的小猪。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "mcgucket",
+   "zh": "老麦古吉特（菲德福德·麦古吉特）",
+   "en": "Old Man McGucket (Fiddleford McGucket)",
+   "voice": "Alex Hirsch",
+   "tag": "疯癫的天才发明家",
+   "bio": "镇上的疯老头，其实曾是福特的研究伙伴、天才发明家。目睹传送门另一端的恐怖后，他发明了消除记忆的枪并创立“盲眼社”，反复抹去自己的记忆，最终变得疯癫。",
+   "why": "他代表“遗忘”的代价：逃避痛苦的记忆，也会一起失去自己。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "candy-grenda",
+   "zh": "坎迪·秋 与 格兰达",
+   "en": "Candy Chiu & Grenda",
+   "voice": "Niki Yang (Candy); Carl Faruolo (Grenda)",
+   "tag": "梅宝的闺蜜团",
+   "bio": "坎迪戴眼镜、内向又古怪，格兰达嗓音粗犷、力大无穷，两人在《双重迪普》中与梅宝结为好友。格兰达的姓 Grendinator 来自粉丝在 Tumblr 上的提议，被赫希采纳为官方设定。",
+   "why": "她们代表“不完美却真诚”的友谊——不受欢迎没关系，我们有彼此。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "robbie",
+   "zh": "罗比·瓦伦蒂诺",
+   "en": "Robbie Valentino",
+   "voice": "T.J. Miller",
+   "tag": "忧郁系少年",
+   "bio": "喜欢暗黑风格的少年，温蒂的前男友，迪普的情敌。在《爱神》中与坦布里走到了一起。",
+   "why": "他代表青春期的别扭和装酷，后来也证明自己并非真正的坏人。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "id": "journal3",
+   "zh": "日志 3",
+   "en": "Journal 3 (the Author's journals)",
+   "voice": "—",
+   "tag": "写满秘密的书",
+   "bio": "福特在怪诞小镇研究超自然现象时写下的三本日志之一，封面印着六指手掌和数字“3”。迪普在第一集捡到它，整部剧的冒险由此开始。2016年7月26日，迪士尼出版了现实版《Journal 3》，登上《纽约时报》畅销书榜第一。",
+   "why": "它象征好奇心与秘密本身：知识能指引你，也可能把你引向危险。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  }
+ ],
+ "trivia": [
+  {
+   "zh": "梅宝的原型是创作者亚历克斯·赫希的双胞胎姐姐艾莉尔·赫希。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "斯坦叔公的原型是赫希的祖父斯坦，赫希说他“爱讲大话、常常故意逗我们”。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "赫希只在路牌上见过俄勒冈州的小镇 Boring（“无聊镇”），他说怪诞小镇“部分来自我想象中 Boring 的样子”。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "神秘小屋的灵感来自 Mystery Spot、Oregon Vortex 这类美国路边奇景景点。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "2015年11月20日赫希宣布第二季就是最后一季，这“100%是我的选择”，“这部剧不是被砍，而是被完成了”。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "赫希原本想第一季就以悬念收尾结束，是同行 Patrick McHale 劝他“留了那个悬念，你就得把它讲完”。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "实体书《Journal 3》于2016年7月26日由迪士尼出版社出版，登上《纽约时报》畅销书榜第一。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "2016年7月20日至8月3日，赫希发起全球解谜活动“Cipher Hunt”，目标是找到结局片尾一闪而过的比尔雕像；雕像于8月3日在俄勒冈州 Reedsport 的森林中被找到，后来永久移至加州 Piercy 的 Confusion Hill。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "大结局《怪诞末日3》美国首播收视247万，是迪士尼XD频道史上收视最高的节目；《双斯坦记》此前也曾创下该频道纪录。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "本剧获得2座艾美奖、3座安妮奖，以及2015年英国学院儿童奖（BAFTA Children's Awards）最佳国际剧集。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  },
+  {
+   "zh": "2022年6月16日，赫希公开了迪士尼审查部门（S&P）当年的修改意见，例如要求把“poop face”改掉，以及要求警长布拉布斯和副警长德兰德的亲密关系“保持搞笑而非调情”。",
+   "src": "https://www.hollywoodreporter.com/tv/tv-news/gravity-falls-alex-hirsch-disney-standards-and-practices-edits-1235166822/"
+  },
+  {
+   "zh": "片尾密码按时期升级：第1–6集凯撒密码，第6集的密码“凯撒先生下周请假，由埃特巴什先生代课”预告了换成 Atbash，之后是 A1Z26、组合密码，第二季全部改用带关键词的维吉尼亚密码。",
+   "src": "https://gravityfalls.fandom.com/wiki/List_of_cryptograms"
+  },
+  {
+   "zh": "第一集《游客陷阱》虽是故事开端，但实际上在它之前已经制作了六集；剧本里的“hickey”（吻痕）也因迪士尼审查改成了“smooch mark”。",
+   "src": "https://gravityfalls.fandom.com/wiki/Tourist_Trapped"
+  },
+  {
+   "zh": "赫希本人一人分饰斯坦叔公、苏斯、比尔·赛弗和老麦古吉特等多个角色。",
+   "src": "https://en.wikipedia.org/wiki/List_of_Gravity_Falls_characters"
+  },
+  {
+   "zh": "2024年7月23日，赫希出版《The Book of Bill》（比尔之书），同样登上《纽约时报》畅销书榜第一。",
+   "src": "https://en.wikipedia.org/wiki/Gravity_Falls"
+  }
+ ]
+}

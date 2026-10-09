@@ -80,6 +80,80 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 .pq .deep{font-size:13.5px;line-height:1.75;color:var(--soft);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
 .pq .deep b{font-size:12px;color:var(--accent);margin-right:6px}
 .pq .pth{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}.pq .pth span{font-size:11.5px;background:var(--chip);color:var(--soft);border-radius:999px;padding:1px 8px}
+/* ---- 怪诞小镇：日志风 ---- */
+.gf-hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#4A2C1C,#2E1B11 70%);color:#F1E2C2;border-radius:18px;padding:20px 18px 16px;box-shadow:var(--shadow);border:1px solid #6B4A2E}
+.gf-hero:before{content:"ZHOFRPH WR JUDYLWB IDOOV · GSV RMERHRYOV DRAZIW RH DZGXSRMT · 20-15 2-5 3-15-14-20-9-14-21-5-4";position:absolute;inset:-10px -20px auto;font:700 13px/1.9 ui-monospace,Menlo,monospace;letter-spacing:.3em;color:rgba(232,199,122,.07);word-break:break-all;pointer-events:none;height:100%}
+.gf-hero:after{content:"🌲🌲🌲";position:absolute;right:10px;bottom:-6px;font-size:40px;opacity:.16;letter-spacing:-8px;pointer-events:none}
+.gf-hero .tag{position:relative;font:700 11px ui-monospace,Menlo,monospace;letter-spacing:.25em;color:#E8C77A}
+.gf-hero h1{position:relative;margin:6px 0 0;font-family:var(--kai),serif;font-size:31px;letter-spacing:.1em;color:#FFF4DC}
+.gf-hero .sub{position:relative;font-size:12.5px;opacity:.75;margin-top:2px}
+.gf-hero p{position:relative;font-size:14.5px;line-height:1.8;margin:12px 0 0}
+.gf-seg{display:flex;gap:6px;margin:12px 0 4px;overflow-x:auto;scrollbar-width:none}
+.gf-seg button{flex:1 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600;color:var(--ink)}
+.gf-seg button.on{background:#3B2417;border-color:#3B2417;color:#E8C77A}
+.gf-p{font-size:14.5px;line-height:1.85;color:var(--soft);margin:12px 2px}
+.gf-s{display:flex;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.gf-s .n{flex:0 0 58px;font:800 20px/1.1 ui-monospace,Menlo,monospace;color:#8A5A2B}
+.gf-s .n small{display:block;font-size:11px;color:var(--faint);font-weight:400;margin-top:3px}
+.gf-s b{font-size:15.5px}.gf-s p{margin:4px 0 0;font-size:14px;line-height:1.75;color:var(--soft)}
+.gf-f{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 16px 8px 30px;margin:0}
+.gf-f li{font-size:14px;line-height:1.7;padding:4px 0}
+.gf-sh{display:flex;flex-wrap:wrap;gap:6px}.gf-sh span{font-size:12.5px;background:var(--chip);border-radius:999px;padding:3px 10px;color:var(--soft)}
+.gf-es{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.gf-es .hd{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer}
+.gf-es .hd i{font-style:normal;font-size:24px}.gf-es .hd b{display:block;font-size:16.5px;font-family:var(--kai),serif}.gf-es .hd span{display:block;font-size:13px;color:var(--faint);margin-top:2px}
+.gf-es .hd div{flex:1}.gf-es .hd em{font-style:normal;font-size:12.5px;color:#8A5A2B}
+.gf-es .bd{display:none;padding:0 16px 14px}.gf-es.on .bd{display:block}
+.gf-es .bd p{font-size:15px;line-height:1.95;margin:0 0 12px;text-indent:2em}
+.gf-es .ask{background:var(--gold-soft);border-radius:12px;padding:10px 14px;font-size:14.5px;line-height:1.75;margin:4px 0 12px}.gf-es .ask b{display:block;font-size:12.5px;color:var(--gold)}
+.gq{background:var(--paper);border:1px solid var(--line);border-left:3px solid #C9963F;border-radius:12px;padding:11px 14px;margin-bottom:9px}
+.gq .en{font-family:var(--serif),Georgia,serif;font-style:italic;font-size:15.5px;line-height:1.55}
+.gq .zh{font-size:15px;line-height:1.7;margin-top:5px;font-weight:600}
+.gq .w{font-size:12.5px;color:var(--faint);margin-top:5px}.gq .w b{color:var(--soft)}.gq .w a{color:inherit}
+.gq .deep{font-size:13.5px;line-height:1.75;color:var(--soft);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}.gq .deep b{font-size:12px;color:#8A5A2B;margin-right:6px}
+.gq .th{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}.gq .th span{font-size:11.5px;background:var(--chip);color:var(--soft);border-radius:999px;padding:1px 8px}
+.gf-dec{background:#F6EBD3;color:#3B2417;border:1px solid #D9C29A;border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;border-color:#5A4330}
+@media (prefers-color-scheme:dark){html:not([data-theme]) .gf-dec{background:#2E2216;color:#F1E2C2;border-color:#5A4330}}
+.gf-dec h3{margin:0 0 8px;font-size:15px}
+.gf-kind{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:8px}
+.gf-kind button{flex:0 0 auto;border:1px solid #C9A877;background:transparent;color:inherit;border-radius:999px;padding:5px 11px;font-size:13px}
+.gf-kind button.on{background:#3B2417;color:#E8C77A;border-color:#3B2417}
+.gf-dec textarea{width:100%;box-sizing:border-box;min-height:66px;border:1px solid #C9A877;border-radius:10px;background:rgba(255,255,255,.55);color:inherit;font:15px/1.6 ui-monospace,Menlo,monospace;padding:8px 10px;resize:vertical;text-transform:uppercase}
+.gf-dec .row{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:13.5px;flex-wrap:wrap}
+.gf-dec input{border:1px solid #C9A877;border-radius:8px;background:rgba(255,255,255,.55);color:inherit;font:15px ui-monospace,Menlo,monospace;padding:5px 8px;width:9em;text-transform:uppercase}
+.gf-dec input[type=number]{width:4.5em}
+.gf-dec .row button{border:1px solid #C9A877;background:transparent;color:inherit;border-radius:8px;padding:5px 10px;font-size:13px}
+.gf-out{font:700 16px/1.6 ui-monospace,Menlo,monospace;background:#3B2417;color:#FFE9B0;border-radius:10px;padding:10px 12px;min-height:26px;word-break:break-word;white-space:pre-wrap}
+.gf-try{font-size:13px;margin-top:8px}.gf-try div{padding:3px 0;border-top:1px dashed rgba(138,90,43,.3);font-family:ui-monospace,Menlo,monospace;word-break:break-word}.gf-try b{font-family:-apple-system,"PingFang SC",sans-serif;font-weight:600;margin-right:6px;opacity:.7}
+.gf-ct{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 14px;margin-bottom:8px}
+.gf-ct b{font-size:15px}.gf-ct small{color:var(--faint);font-size:12px;margin-left:6px}
+.gf-ct p{margin:4px 0 0;font-size:13.5px;line-height:1.7;color:var(--soft)}
+.gf-ct code{font:700 13.5px ui-monospace,Menlo,monospace;background:var(--chip);border-radius:6px;padding:1px 6px}
+.gf-pz{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 14px;margin-bottom:9px}
+.gf-pz.star{border-color:#C9963F;box-shadow:0 0 0 1px #C9963F inset}
+.gf-pz .t{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}.gf-pz .t b{font-size:15px}.gf-pz .t small{color:var(--faint);font-size:12px}
+.gf-pz .c{font:700 12.5px ui-monospace,Menlo,monospace;color:#8A5A2B}
+.gf-pz .k{font-size:11.5px;border-radius:999px;padding:1px 8px;background:var(--gold-soft);color:var(--gold);margin-left:auto}
+.gf-pz .enc{font:700 14.5px/1.6 ui-monospace,Menlo,monospace;letter-spacing:.04em;margin:8px 0 6px;word-break:break-word;color:var(--ink)}
+.gf-pz .bt{display:flex;gap:6px;flex-wrap:wrap}.gf-pz .bt button{border:1px solid var(--line);background:var(--chip);border-radius:8px;padding:4px 10px;font-size:12.5px;color:var(--ink)}
+.gf-pz .ans{margin-top:8px;padding:8px 12px;border-radius:10px;background:#3B2417;color:#FFE9B0}
+.gf-pz .ans .d{font:700 14.5px/1.6 ui-monospace,Menlo,monospace;word-break:break-word}.gf-pz .ans .z{font-size:14px;margin-top:3px;color:#F1E2C2}.gf-pz .ans small{display:block;font-size:12px;opacity:.65;margin-top:4px;line-height:1.6}
+.gf-pz .hint{font-size:13px;color:var(--gold);margin-top:6px}
+.gf-pz .miss{font-size:13px;color:var(--faint);margin-top:6px}
+.gf-c{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:9px;overflow:hidden}
+.gf-c .hd{display:flex;gap:12px;align-items:center;padding:12px 14px;cursor:pointer}
+.gf-c .av{flex:0 0 44px;height:44px;border-radius:12px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:24px}
+.gf-c h3{margin:0;font-size:16px}.gf-c h3 small{font-weight:400;color:var(--faint);font-size:12.5px;margin-left:6px}
+.gf-c .fm{font-size:12.5px;color:var(--soft);margin-top:2px}
+.gf-c .bd{display:none;padding:0 14px 12px}.gf-c.on .bd{display:block}
+.gf-c .bd p{font-size:14.5px;line-height:1.8;margin:0 0 8px}
+.gf-c .why{background:var(--chip);border-radius:10px;padding:9px 12px;font-size:14px;line-height:1.75;margin-bottom:10px}.gf-c .why b{display:block;font-size:12px;color:#8A5A2B}
+.gf-e{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:7px}
+.gf-e.star{border-color:#C9963F;box-shadow:0 0 0 1px #C9963F inset}
+.gf-e .t{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.gf-e .c{font:700 13px ui-monospace,Menlo,monospace;color:#8A5A2B}
+.gf-e b{font-size:15px}.gf-e small{color:var(--faint);font-size:12px}.gf-e p{margin:4px 0 0;font-size:13.5px;line-height:1.7;color:var(--soft)}
+.gf-e .go{border:0;background:none;color:#8A5A2B;font-size:12.5px;padding:4px 0 0;cursor:pointer}
 .poi-v{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
 .poi-v .hd{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer}.poi-v .hd i{font-style:normal;font-size:22px}
 .poi-v .hd b{flex:1;font-size:16.5px}.poi-v .hd em{font-style:normal;font-size:12.5px;color:var(--accent)}
@@ -396,7 +470,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
 <body>
 <div class="wrap">
   <header><a class="brand" href="./">⭐ 人物专栏</a></header>
-  <div class="who" id="who"><button data-p="sushi">🖋️ 苏轼</button><button data-p="gm">🎤 G. Michael</button><button data-p="asimov">🚀 阿西莫夫</button><button data-p="up">📽️ 人生七年</button><button data-p="poi">🖥️ 疑犯追踪</button></div>
+  <div class="who" id="who"><button data-p="sushi">🖋️ 苏轼</button><button data-p="gm">🎤 G. Michael</button><button data-p="asimov">🚀 阿西莫夫</button><button data-p="up">📽️ 人生七年</button><button data-p="poi">🖥️ 疑犯追踪</button><button data-p="gf">🌲 怪诞小镇</button></div>
   <div id="view"><div class="empty">加载中…</div></div>
 </div>
 <script>
@@ -924,6 +998,179 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     if ((el = t.closest('[data-pp]'))) { var k2 = 'p' + el.getAttribute('data-pp'); POO[k2] = !POO[k2]; var c2 = $('pp-' + el.getAttribute('data-pp')); if (c2) c2.className = 'poi-c' + (POO[k2] ? ' on' : ''); }
   }
 
+  /* ====================== 怪诞小镇 Gravity Falls ====================== */
+  var GF = null, GFS = jget('gfSeg', 'intro'), GFT = '', GFO = {}, GFE = 0, GFR = {}, GFH = {};
+  var GFK = 'caesar', GFIN = 'ZHOFRPH WR JUDYLWB IDOOV', GFKEY = '', GFSH = 3;
+  var GFA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  function gfCaesar(s, n) { return s.replace(/[A-Z]/g, function (c) { return GFA[((GFA.indexOf(c) - n) % 26 + 26) % 26]; }); }
+  function gfAtbash(s) { return s.replace(/[A-Z]/g, function (c) { return GFA[25 - GFA.indexOf(c)]; }); }
+  function gfNum(s) { return s.replace(/\d+(?:-\d+)*/g, function (m) { return m.split('-').map(function (x) { x = +x; return x >= 1 && x <= 26 ? GFA[x - 1] : '?'; }).join(''); }); }
+  function gfVig(s, key) {
+    key = (key || '').toUpperCase().replace(/[^A-Z]/g, ''); if (!key) return s;
+    var i = 0; return s.replace(/[A-Z]/g, function (c) { var k = GFA.indexOf(key[i++ % key.length]); return GFA[(GFA.indexOf(c) - k + 26) % 26]; });
+  }
+  function gfDecode(s, k, key, sh) {
+    s = (s || '').toUpperCase();
+    if (k === 'caesar') return gfCaesar(s, sh == null ? 3 : sh);
+    if (k === 'atbash') return gfAtbash(s);
+    if (k === 'a1z26') return gfNum(s);
+    if (k === 'combo') return gfCaesar(gfAtbash(gfNum(s)), 3);
+    return gfVig(s, key);
+  }
+  var GFKN = { caesar: '凯撒', atbash: '埃特巴什', a1z26: 'A1Z26', combo: '组合', vigenere: '维吉尼亚' };
+  function gfQ(q, noWho) {
+    var th = q.th.map(function (t) { var x = GF.themes[t]; return x ? '<span>' + x[0] + ' ' + esc(x[1]) + '</span>' : ''; }).join('');
+    return '<div class="gq" id="gq-' + q.n + '"><div class="en">“' + esc(q.en) + '”</div><div class="zh">' + esc(q.zh) + '</div>' +
+      '<div class="w">' + (noWho ? '' : '— <b>' + esc(q.who) + '</b> · ') + q.ep + ' 《' + esc(q.title) + '》' + (q.src ? ' · <a href="' + esc(q.src) + '" target="_blank" rel="noopener">原文 ↗</a>' : '') + '</div>' +
+      (q.deep ? '<div class="deep"><b>深一层</b>' + esc(q.deep) + '</div>' : '') + '<div class="th">' + th + '</div></div>';
+  }
+  function renderGF() {
+    var G = GF, h = '';
+    h += '<div class="gf-hero"><div class="tag">TRUST NO ONE · 谁也别信</div><h1>怪诞小镇</h1><div class="sub">Gravity Falls · Disney 2012–2016 · 两季 40 集 · Alex Hirsch</div>' +
+      '<p>' + esc(G.intro[0]) + '</p></div>';
+    var segs = [['intro', '📖 简介'], ['essays', '✍️ 专栏'], ['cipher', '🔐 密码'], ['quotes', '💬 台词'], ['people', '👥 人物'], ['eps', '📺 剧集']];
+    h += '<div class="gf-seg" id="gfSeg">' + segs.map(function (x) { return '<button data-gs="' + x[0] + '" class="' + (GFS === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
+    if (GFS === 'essays') h += gfEssays();
+    else if (GFS === 'cipher') h += gfCipher();
+    else if (GFS === 'quotes') h += gfQuotes();
+    else if (GFS === 'people') h += gfPeople();
+    else if (GFS === 'eps') h += gfEps();
+    else h += gfIntro();
+    h += '<div class="foot">台词原文核对自 Gravity Falls Wiki 的逐集文本，密码全部用程序解过一遍；<br>中文片名、人名多为我的译法，不一定是官方配音版的叫法；专栏文章是我的理解。</div>';
+    $('view').innerHTML = h;
+    if (GFS === 'cipher') gfRun();
+  }
+  function gfIntro() {
+    var G = GF, h = '';
+    h += G.intro.slice(1).map(function (x) { return '<p class="gf-p">' + esc(x) + '</p>'; }).join('');
+    h += '<div class="sec">两季，一句话</div>';
+    G.seasons.forEach(function (s) { h += '<div class="gf-s"><div class="n">S' + s.n + '<small>' + s.y + '<br>' + s.eps + ' 集</small></div><div><b>' + esc(s.t) + '</b><p>' + esc(s.p) + '</p></div></div>'; });
+    h += '<div class="sec">从哪开始 <small>点开就去</small></div>' +
+      '<div class="gf-ct" data-gs="essays" style="cursor:pointer"><b>✍️ 七篇专栏</b><p>兄弟姐妹、斯坦和福特、怕长大、信任、诱惑、记忆、夏天的结尾——这部剧真正在讲的东西。</p></div>' +
+      '<div class="gf-ct" data-gs="cipher" style="cursor:pointer"><b>🔐 自己动手解片尾密码</b><p>每集片尾都有一行密码。这里有解码器和全部 ' + G.episodes.filter(function (e) { return e.ci.length; }).length + ' 集的密文，先自己试，再看答案。</p></div>';
+    h += '<div class="sec">幕后 <small>每条都附出处</small></div><ul class="gf-f">' + G.trivia.map(function (f) { return '<li>' + esc(f.zh) + (f.src ? ' <a href="' + esc(f.src) + '" target="_blank" rel="noopener">出处 ↗</a>' : '') + '</li>'; }).join('') + '</ul>';
+    h += '<div class="sec">番外短片 <small>正片之间的小短片</small></div><div class="gf-sh">' + G.shorts.map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div>';
+    var last = G.quotes.filter(function (q) { return /^But looking here/.test(q.en); })[0];
+    if (last) h += '<div class="sec">最后那段旁白</div>' + gfQ(last);
+    return h;
+  }
+  function gfEssays() {
+    var G = GF, h = '<div class="gf-p">《怪诞小镇》笑点密，但让人记很多年的，是笑点底下那些东西。下面七篇，每篇讲一件这部剧真正在讲的事，最后留一个问题给自己。</div>';
+    G.essays.forEach(function (v, i) {
+      var on = GFO['v' + i];
+      h += '<div class="gf-es' + (on ? ' on' : '') + '" id="gv-' + i + '"><div class="hd" data-gv="' + i + '"><i>' + v.icon + '</i><div><b>' + esc(v.t) + '</b><span>' + esc(v.lead) + '</span></div><em>' + (on ? '收起' : '展开') + '</em></div><div class="bd">' +
+        v.body.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') +
+        '<div class="ask"><b>想一想</b>' + esc(v.ask) + '</div>' + v.q.map(function (k) { return gfQ(G.quotes[k]); }).join('') + '</div></div>';
+    });
+    return h;
+  }
+  function gfCipher() {
+    var G = GF, h = '';
+    h += '<div class="gf-dec" id="gfDec"><h3>🔐 解码器</h3><div class="gf-kind">' + ['caesar', 'atbash', 'a1z26', 'combo', 'vigenere'].map(function (k) { return '<button data-gk="' + k + '" class="' + (GFK === k ? 'on' : '') + '">' + GFKN[k] + '</button>'; }).join('') + '</div>' +
+      '<textarea id="gfIn" spellcheck="false" autocapitalize="characters" autocomplete="off">' + esc(GFIN) + '</textarea>' +
+      '<div class="row" id="gfOpt">' + (GFK === 'caesar' ? '往回退 <input type="number" id="gfSh" min="1" max="25" value="' + GFSH + '"> 位（剧里都是 3）' : GFK === 'vigenere' ? '关键词 <input id="gfKey" value="' + esc(GFKEY) + '" placeholder="比如 WIDDLE" autocapitalize="characters" autocomplete="off">' : '') +
+      '<button data-gx="clr">清空</button></div><div class="gf-out" id="gfOut"></div><div class="gf-try" id="gfTry"></div></div>';
+    h += '<div class="sec">五种密码，怎么解</div>';
+    G.ciphers.forEach(function (c) {
+      h += '<div class="gf-ct"><b>' + esc(c.t) + '</b><small>' + esc(c.when) + '</small><p>' + esc(c.how) + '</p><p>例：<code>' + esc(c.eg[0]) + '</code> → <code>' + esc(c.eg[1]) + '</code>　' + esc(c.tip) + '</p></div>';
+    });
+    h += '<div class="sec">每集的片尾密码 <small>先自己解，再看答案</small></div>';
+    G.episodes.forEach(function (e) { h += gfPuzzles(e); });
+    return h;
+  }
+  function gfPuzzles(e) {
+    var h = '';
+    if (!e.ci.length) return '<div class="gf-pz" id="gz-' + e.code + '"><div class="t"><span class="c">' + e.code + '</span><b>' + esc(e.zh) + '</b><small>' + esc(e.title) + '</small></div><div class="miss">这一集的密码还没核实到文字版（' + esc(e.miss) + '），先空着，不乱写。</div></div>';
+    e.ci.forEach(function (c, j) {
+      var id = e.code + '-' + j, open = GFR[id], hint = GFH[id];
+      h += '<div class="gf-pz' + (e.star ? ' star' : '') + '" id="gz-' + (j ? id : e.code) + '"><div class="t"><span class="c">' + e.code + '</span><b>' + esc(e.zh) + '</b><small>' + esc(e.title) + (j ? ' · 第 ' + (j + 1) + ' 条' : '') + '</small><span class="k">' + GFKN[c.k] + '</span></div>' +
+        '<div class="enc">' + esc(c.enc) + '</div><div class="bt"><button data-gu="' + id + '">放进解码器 ↑</button>' +
+        (c.key ? '<button data-gh="' + id + '">' + (hint ? '关键词：' + esc(c.key) : '🔑 关键词提示') + '</button>' : '') +
+        '<button data-gr="' + id + '">' + (open ? '收起答案' : '看答案') + '</button></div>' +
+        (open ? '<div class="ans"><div class="d">' + esc(c.dec) + '</div>' + (c.zh ? '<div class="z">' + esc(c.zh) + '</div>' : '') + (c.note ? '<small>' + esc(c.note) + '</small>' : '') + '</div>' : '') + '</div>';
+    });
+    return h;
+  }
+  function gfFind(id) { var m = /^(S\d\dE\d\d)-(\d+)$/.exec(id), e = GF.episodes.filter(function (x) { return x.code === m[1]; })[0]; return e && e.ci[+m[2]]; }
+  function gfRun() {
+    var inp = $('gfIn'), out = $('gfOut'); if (!inp || !out) return;
+    GFIN = inp.value; var s = GFIN.toUpperCase();
+    out.textContent = s.trim() ? gfDecode(s, GFK, GFKEY, GFSH) : '（在上面输入密文）';
+    var t = '';
+    if (s.trim() && GFK !== 'vigenere') {
+      t = '<b style="display:block;margin:4px 0">不确定是哪种？四种都试一遍：</b>' + ['caesar', 'atbash', 'a1z26', 'combo'].map(function (k) { return '<div><b>' + GFKN[k] + '</b>' + esc(gfDecode(s, k, '', 3)) + '</div>'; }).join('');
+    }
+    $('gfTry').innerHTML = t;
+  }
+  function gfQuotes() {
+    var G = GF, h = '', cnt = {};
+    G.quotes.forEach(function (q) { q.th.forEach(function (t) { cnt[t] = (cnt[t] || 0) + 1; }); });
+    h += '<div class="chips"><button data-gt="" class="' + (GFT ? '' : 'on') + '">全部<small>' + G.quotes.length + '</small></button>' +
+      Object.keys(G.themes).filter(function (t) { return cnt[t]; }).sort(function (a, b) { return cnt[b] - cnt[a]; }).map(function (t) { return '<button data-gt="' + t + '" class="' + (GFT === t ? 'on' : '') + '">' + G.themes[t][0] + ' ' + esc(G.themes[t][1]) + '<small>' + cnt[t] + '</small></button>'; }).join('') + '</div>';
+    var season = 0;
+    G.quotes.forEach(function (q) {
+      if (GFT && q.th.indexOf(GFT) < 0) return;
+      var sn = +q.ep.substr(1, 2);
+      if (sn !== season) { season = sn; h += '<div class="sec">第 ' + sn + ' 季</div>'; }
+      h += gfQ(q);
+    });
+    return h;
+  }
+  function gfPeople() {
+    var G = GF, h = '<div class="gf-p">中文名大多是我按英文译的，括号里附原名，方便你对照配音版。</div>';
+    G.people.forEach(function (p) {
+      var on = GFO['p' + p.id];
+      h += '<div class="gf-c' + (on ? ' on' : '') + '" id="gp-' + p.id + '"><div class="hd" data-gp="' + p.id + '"><div class="av">' + p.icon + '</div><div><h3>' + esc(p.zh) + '<small>' + esc(p.en) + '</small></h3><div class="fm">' + esc(p.tag) + (p.voice && p.voice !== '—' ? ' · 配音 ' + esc(p.voice) : '') + (p.q.length ? ' · 💬 ' + p.q.length : '') + '</div></div></div>' +
+        '<div class="bd"><p>' + esc(p.bio) + '</p><div class="why"><b>这个角色代表什么</b>' + esc(p.why) + '</div>' + p.q.map(function (k) { return gfQ(G.quotes[k], true); }).join('') + '</div></div>';
+    });
+    return h;
+  }
+  function gfEps() {
+    var G = GF, nstar = G.episodes.filter(function (e) { return e.star; }).length, season = 0;
+    var h = '<div class="gf-p">' + (GFE ? '全部 ' + G.episodes.length + ' 集，每集一句话。金框是主线必看集。' : '只想把主线串起来，看这 ' + nstar + ' 集就够；不过单元集里笑点最多，有空都值得看。') + '</div>' +
+      '<div class="chips"><button data-ge="0" class="' + (GFE ? '' : 'on') + '">⭐ 主线 ' + nstar + ' 集</button><button data-ge="1" class="' + (GFE ? 'on' : '') + '">📺 全部 ' + G.episodes.length + ' 集</button></div>';
+    G.episodes.forEach(function (e) {
+      if (!GFE && !e.star) return;
+      var sn = +e.code.substr(1, 2);
+      if (sn !== season) { season = sn; h += '<div class="sec">第 ' + sn + ' 季</div>'; }
+      h += '<div class="gf-e' + (GFE && e.star ? ' star' : '') + '" id="ge-' + e.code + '"><div class="t"><span class="c">' + e.code + '</span><b>' + esc(e.zh) + '</b><small>' + esc(e.title) + ' · ' + e.date + '</small></div><p>' + esc(e.note) + '</p>' +
+        (e.ci.length ? '<button class="go" data-gc="' + e.code + '">🔐 这集的片尾密码 ›</button>' : '') + '</div>';
+    });
+    return h;
+  }
+  function gfScroll(id) { var el = $(id); if (el) el.scrollIntoView({ block: 'start' }); }
+  function gfGo(id) {   // 搜索跳转：q-12 / p-dipper / v-3 / e-S01E01 / c-S01E01
+    var m = /^(q|p|v|e|c)-(.+)$/.exec(id || ''); if (!m) { renderGF(); return; }
+    if (m[1] === 'q') { GFS = 'quotes'; GFT = ''; } else if (m[1] === 'p') { GFS = 'people'; GFO['p' + m[2]] = 1; }
+    else if (m[1] === 'v') { GFS = 'essays'; GFO['v' + m[2]] = 1; } else if (m[1] === 'e') { GFS = 'eps'; GFE = 1; } else GFS = 'cipher';
+    renderGF();
+    gfScroll({ q: 'gq-', p: 'gp-', v: 'gv-', e: 'ge-', c: 'gz-' }[m[1]] + m[2]);
+  }
+  function onGF(e) {
+    var t = e.target, el;
+    if ((el = t.closest('[data-gs]'))) { GFS = el.getAttribute('data-gs'); jset('gfSeg', GFS); var y0 = $('gfSeg').getBoundingClientRect().top; renderGF(); window.scrollBy(0, $('gfSeg').getBoundingClientRect().top - y0); return; }
+    if ((el = t.closest('[data-ge]'))) { GFE = +el.getAttribute('data-ge'); var ye = window.scrollY; renderGF(); window.scrollTo(0, ye); return; }
+    if ((el = t.closest('[data-gt]'))) { GFT = el.getAttribute('data-gt'); var y1 = window.scrollY; renderGF(); window.scrollTo(0, y1); return; }
+    if ((el = t.closest('[data-gc]'))) { GFS = 'cipher'; jset('gfSeg', GFS); renderGF(); gfScroll('gz-' + el.getAttribute('data-gc')); return; }
+    if ((el = t.closest('[data-gk]'))) { GFK = el.getAttribute('data-gk'); var yk = window.scrollY; renderGF(); window.scrollTo(0, yk); return; }
+    if ((el = t.closest('[data-gx]'))) { $('gfIn').value = ''; gfRun(); $('gfIn').focus(); return; }
+    var id;
+    if ((el = t.closest('[data-gr]'))) { id = el.getAttribute('data-gr'); GFR[id] = !GFR[id]; var yr = window.scrollY; renderGF(); window.scrollTo(0, yr); return; }
+    if ((el = t.closest('[data-gh]'))) { id = el.getAttribute('data-gh'); GFH[id] = 1; el.textContent = '关键词：' + gfFind(id).key; return; }
+    if ((el = t.closest('[data-gu]'))) {
+      var c = gfFind(el.getAttribute('data-gu')); GFK = c.k; GFIN = c.enc; if (c.k === 'vigenere') GFKEY = GFH[el.getAttribute('data-gu')] ? c.key : '';
+      renderGF(); gfScroll('gfDec'); if (c.k === 'vigenere' && !GFKEY && $('gfKey')) $('gfKey').focus(); return;
+    }
+    if ((el = t.closest('[data-gv]'))) { var k = 'v' + el.getAttribute('data-gv'); GFO[k] = !GFO[k]; var cv = $('gv-' + el.getAttribute('data-gv')); if (cv) { cv.className = 'gf-es' + (GFO[k] ? ' on' : ''); cv.querySelector('em').textContent = GFO[k] ? '收起' : '展开'; } return; }
+    if ((el = t.closest('[data-gp]'))) { var k2 = 'p' + el.getAttribute('data-gp'); GFO[k2] = !GFO[k2]; var c2 = $('gp-' + el.getAttribute('data-gp')); if (c2) c2.className = 'gf-c' + (GFO[k2] ? ' on' : ''); }
+  }
+  document.addEventListener('input', function (e) {
+    var id = e.target && e.target.id;
+    if (id === 'gfIn') gfRun();
+    else if (id === 'gfKey') { GFKEY = e.target.value; gfRun(); }
+    else if (id === 'gfSh') { GFSH = Math.max(0, Math.min(25, +e.target.value || 0)); gfRun(); }
+  });
+
   /* ====================== 切换 ====================== */
   function goPend() {   // 从全站搜索跳过来：#sushi/<id> 或 #gm/<id>
     if (!PEND) return;
@@ -932,6 +1179,7 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     if (WHO === 'asimov') { openBook(id); return; }
     if (WHO === 'up') { upOpen(id); return; }
     if (WHO === 'poi') { poiGo(id); return; }
+    if (WHO === 'gf') { gfGo(id); return; }
     if (/^f\d+$/.test(id)) {   // 趣闻
       SSV = 'fun'; FK = ''; FO = {}; FO[id] = 1;
       var goF = function () { renderSushi(); var fe = $('f-' + id); if (fe) fe.scrollIntoView({ block: 'start' }); };
@@ -942,10 +1190,10 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     var el = $('w-' + id); if (el) el.scrollIntoView({ block: 'start' });
   }
   function show(p) {
-    if (p !== 'gm' && p !== 'asimov' && p !== 'up' && p !== 'poi') p = 'sushi';
+    if (p !== 'gm' && p !== 'asimov' && p !== 'up' && p !== 'poi' && p !== 'gf') p = 'sushi';
     WHO = p; jset('who', p); history.replaceState(null, '', '#' + p);
     var bs = $('who').querySelectorAll('button'), i; for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-p') === p ? 'on' : '';
-    document.title = (p === 'gm' ? 'George Michael' : p === 'asimov' ? '阿西莫夫' : p === 'up' ? '人生七年' : p === 'poi' ? '疑犯追踪' : '苏轼') + ' · 人物专栏';
+    document.title = (p === 'gm' ? 'George Michael' : p === 'asimov' ? '阿西莫夫' : p === 'up' ? '人生七年' : p === 'poi' ? '疑犯追踪' : p === 'gf' ? '怪诞小镇' : '苏轼') + ' · 人物专栏';
     if (p === 'sushi') {
       if (SS) { renderSushi(); goPend(); }
       else { var left = 2, parts = {}; ['sushi_a', 'sushi_b'].forEach(function (f) { getJSON('people/' + f + '.json', function (d) { parts[f] = d ? d.items : []; if (--left) return; SS = parts.sushi_a.concat(parts.sushi_b); SS.sort(function (a, b) { return (a.year || 9999) - (b.year || 9999); }); if (WHO === 'sushi') { renderSushi(); goPend(); } }); }); }
@@ -953,6 +1201,8 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
       if (UP) { renderUp(); goPend(); } else getJSON('people/up.json', function (d) { UP = d; if (WHO === 'up') { if (UP) { renderUp(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
     } else if (p === 'poi') {
       if (POI) { renderPOI(); goPend(); } else getJSON('people/poi.json', function (d) { POI = d; if (WHO === 'poi') { if (POI) { renderPOI(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
+    } else if (p === 'gf') {
+      if (GF) { renderGF(); goPend(); } else getJSON('people/gf.json', function (d) { GF = d; if (WHO === 'gf') { if (GF) { renderGF(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
     } else if (p === 'asimov') {
       if (AS) { renderAsimov(); goPend(); } else getJSON('people/asimov.json', function (d) { AS = d; if (WHO === 'asimov') { if (AS) { renderAsimov(); goPend(); } else $('view').innerHTML = '<div class="empty">加载失败</div>'; } });
     } else {
@@ -960,12 +1210,12 @@ header{display:flex;align-items:center;min-height:52px;padding-top:env(safe-area
     }
   }
   $('who').onclick = function (e) { var b = e.target.closest('[data-p]'); if (b) { window.scrollTo(0, 0); show(b.getAttribute('data-p')); } };
-  $('view').onclick = function (e) { if (WHO === 'gm') onGM(e); else if (WHO === 'asimov') onAsimov(e); else if (WHO === 'up') onUp(e); else if (WHO === 'poi') onPOI(e); else onSushi(e); };
+  $('view').onclick = function (e) { if (WHO === 'gm') onGM(e); else if (WHO === 'asimov') onAsimov(e); else if (WHO === 'up') onUp(e); else if (WHO === 'poi') onPOI(e); else if (WHO === 'gf') onGF(e); else onSushi(e); };
   // 从语境词库回来时刷新「在学 / 会了」标记
   document.addEventListener('visibilitychange', function () { if (!document.hidden && WHO === 'asimov' && AS) { var y = window.scrollY; renderAsimov(); window.scrollTo(0, y); } });
   show(WHO);
 })();
 </script>
-<script src="nav.js?v=16" defer></script>
+<script src="nav.js?v=17" defer></script>
 </body>
 </html>

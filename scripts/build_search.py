@@ -86,6 +86,16 @@ def main():
     for w in (fun or {}).get("items", []):
         out.append({"k": "苏轼趣闻", "t": w["title"], "s": short(w["why"]), "u": "people.html#sushi/" + w["id"],
                     "x": flat(w["title"], w["story"], w["src"], w["tags"], w["place"])})
+    gf = load("people/gf.json")
+    if gf:
+        for q in gf["quotes"]:
+            out.append({"k": "怪诞小镇", "t": q["zh"][:40], "s": short("%s · %s %s" % (q["who"], q["ep"], q["en"])), "u": "people.html#gf/q-%d" % q["n"], "x": flat(q["en"], q["zh"], q.get("deep", ""), q["who"])})
+        for pp in gf["people"]:
+            out.append({"k": "怪诞小镇", "t": pp["zh"], "s": short(pp["tag"] + " · " + pp["bio"]), "u": "people.html#gf/p-" + pp["id"], "x": flat(pp["zh"], pp["en"], pp["bio"], pp["why"])})
+        for i, v in enumerate(gf["essays"]):
+            out.append({"k": "怪诞小镇", "t": v["t"], "s": short(v["lead"] + v["body"][0]), "u": "people.html#gf/v-%d" % i, "x": flat(v["t"], *v["body"])})
+        for e in gf["episodes"]:
+            out.append({"k": "怪诞小镇", "t": "%s %s" % (e["code"], e["zh"]), "s": short(e["title"] + " · " + e["note"]), "u": "people.html#gf/e-" + e["code"], "x": flat(e["title"], e["zh"], e["note"], *[c["dec"] for c in e["ci"]])})
     poi = load("people/poi.json")
     if poi:
         for q in poi["quotes"]:
