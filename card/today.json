@@ -1,16 +1,16 @@
 {
- "date": "2026-10-09",
+ "date": "2026-10-10",
  "kind": "名言",
- "en": "The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings.",
- "zh": "亲爱的勃鲁托斯，我们屈居人下，错不在命运，而在我们自己。",
- "by": "William Shakespeare",
- "line": "The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings. — William Shakespeare",
+ "en": "Nature is a mutable cloud which is always and never the same.",
+ "zh": "自然像一朵变幻的云，永远是它，又永远不是它。",
+ "by": "Ralph Waldo Emerson",
+ "line": "Nature is a mutable cloud which is always and never the same. — Ralph Waldo Emerson",
  "word": {
-  "w": "soak",
-  "ph": "sәuk",
-  "zh": "n. 浸，湿透，大雨；vt. 使上下湿透，浸，吸入，吸收",
-  "ex": "He was soaking wet from head to toe.",
-  "exzh": "他从头到脚都湿透了。"
+  "w": "enroll",
+  "ph": "in'rәul",
+  "zh": "vt. 登记，使加入；vi. 参军，注册",
+  "ex": "I want to enroll at graduate school.",
+  "exzh": "我想在研究生院注册。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
