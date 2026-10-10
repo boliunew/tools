@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-09T17:01:38Z",
- "date": "2026-10-09",
+ "generated": "2026-10-10T15:54:19Z",
+ "date": "2026-10-10",
  "engine": "edge",
- "total": 470.0,
- "short": 282.8,
+ "total": 499.4,
+ "short": 315.0,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610091000",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610100853",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月9日 星期五",
-   "dur": 9.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610091000",
+   "sub": "10月10日 星期六",
+   "dur": 10.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "周五了，坚持一下就周末了！星期五，10月9日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "周末还出门，辛苦了。10月10日，星期六，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 92°/67°F",
-   "dur": 26.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610091000",
+   "sub": "Upland 阴天 86°/66°F",
+   "dur": 27.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏70度，21摄氏度。傍晚5点下班大约华氏87度，30摄氏度。白天最高92度，约33摄氏度；最低67度。基本不会下雨。白天空气质量中等，指数最高61。今天日落时间是傍晚6点23分。"
+     "t": "Upland今天阴天。早上7点出门大约华氏69度，20摄氏度。傍晚5点下班大约华氏84度，29摄氏度，体感80度。白天最高86度，约30摄氏度；最低66度。基本不会下雨。白天空气质量中等，指数最高63。今天日落时间是傍晚6点22分。"
     }
    ]
   },
@@ -38,12 +38,12 @@
    "id": "sky",
    "title": "🔭 天象",
    "sub": "Upland",
-   "dur": 17.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610091000",
+   "dur": 17.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。明天，新月。前后几晚没有月光，最适合看星星和银河。3天后，水星东大距。傍晚日落后在西边，离太阳 25°，很低，找视野开阔的地方。"
+     "t": "天象提醒。今天，新月。前后几晚没有月光，最适合看星星和银河。2天后，水星东大距。傍晚日落后在西边，离太阳 25°，很低，找视野开阔的地方。"
     }
    ]
   },
@@ -51,41 +51,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 30.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610091000",
+   "dur": 30.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月8日收盘。标普500 ETF 下跌0.4%，纳指100 ETF 下跌1.3%。恐慌指数VIX 15.4，正常水平。标普成分股里，站上50日均线的只占34%。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月9日收盘。标普500 ETF 上涨0.6%，纳指100 ETF 上涨0.5%。恐慌指数VIX 14.8，处在低位。标普成分股里，站上50日均线的只占36%。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "26 个候选",
-   "dur": 66.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610091000",
+   "sub": "23 个候选",
+   "dur": 63.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天26个候选，评分最高的是Palantir Technologies，代码 P L T R。不想听细节可以按下一首。"
+     "t": "股票池今天23个候选，评分最高的是Skyworks Solutions，代码 S W K S。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中回踩金坑12个，RSI2 超跌反弹7个，血筹码5个，强势新高1个，挤压突破1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中回踩金坑12个，RSI2 超跌反弹9个，血筹码2个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Palantir Technologies，代码 P L T R，强势新高信号，收盘价198.78美元，止损参考186.15。"
+     "t": "第1，Skyworks Solutions，代码 S W K S，RSI2 超跌反弹信号，收盘价76.35美元，止损参考64.47。"
     },
     {
      "lang": "zh",
-     "t": "第2，Cognizant，代码 C T S H，回踩金坑信号，收盘价60.01美元，止损参考54.20。"
+     "t": "第2，Waters，代码 W A T，回踩金坑信号，收盘价433.77美元，止损参考419.07。"
     },
     {
      "lang": "zh",
-     "t": "第3，Charles River Laboratories，代码 C R L，回踩金坑信号，收盘价298.00美元，止损参考286.04。"
+     "t": "第3，Becton Dickinson，代码 B D X，回踩金坑信号，收盘价183.75美元，止损参考177.13。"
     },
     {
      "lang": "zh",
@@ -96,22 +96,34 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "今明两天清静",
-   "dur": 6.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610091000",
+   "sub": "3 件大事",
+   "dur": 35.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "今明两天没有重要经济数据，也没有千亿市值以上的公司发财报。"
+     "t": "10月13日，有3家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "J P Morgan Chase &，代码 J P M，盘前发财报。期权定价波动正负3.6%。"
+    },
+    {
+     "lang": "zh",
+     "t": "Johnson & Johnson，代码 J N J，盘前发财报。期权定价波动正负3.6%。标签：利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "UnitedHealth，代码 U N H，盘前发财报。期权定价波动正负7.0%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · NPR · Al Jazeera",
-   "dur": 86.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610091000",
+   "sub": "Al Jazeera · BBC · The Guardian",
+   "dur": 92.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
@@ -119,48 +131,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，科技，难度B2。大意是：“不小心使用人工智能才是真正的威胁，而不是鬼故事”。"
+     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：台湾总统表示，增加国防开支旨在“遏制战争”。"
     },
     {
      "lang": "en",
-     "t": "'Careless use of AI is the real threat - not the ghost stories'"
+     "t": "Taiwan president says defence spending boost aims to ‘deter war’"
     },
     {
      "lang": "en",
-     "t": "Meredith Whittaker says the tech has been misunderstood, in an exclusive interview with BBC Global Women."
+     "t": "President Lai Ching-te emphasises peace and freedom, vows not to tolerate aggression in Taiwan Strait."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自NPR，综合，难度B2。大意是：克里斯塔·派克（ Christa Pike ）在尝试处决失败后，正在。"
+     "t": "第2条，来自BBC，国际，难度B2。大意是：美国乡村音乐明星Ella Langley因“安全威胁”而取消演出。"
     },
     {
      "lang": "en",
-     "t": "Christa Pike is walking with help and eating after failed execution attempt"
+     "t": "US country music star Ella Langley cancels show due to 'security threat'"
     },
     {
      "lang": "en",
-     "t": "Pike has begun walking and eating again at a hospital a week after surviving Tennessee's attempt to execute her with lethal drugs, her attorneys said Thursday."
+     "t": "Police say they checked the concert venue in Tulsa, Oklahoma but \"could not find any threat\"."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：El-Sayed和Rogers在密歇根州举行的美国参议院辩论中的关键要点。"
+     "t": "第3条，来自The Guardian，国际，难度B2。大意是：三名男子被判在墨西哥谋杀澳大利亚冲浪兄弟和美国朋友。"
     },
     {
      "lang": "en",
-     "t": "Key takeaways from US Senate debate in Michigan between El-Sayed, Rogers"
+     "t": "Three men found guilty of murders of Australian surfer brothers and US friend in Mexico"
     },
     {
      "lang": "en",
-     "t": "Democrat Abdul El-Sayed and Republican Mike Rogers are locked in a toss-up race for the US Senate."
+     "t": "Australian brothers Jake and Callum Robinson, 30 and 33, and friend Carter Rhoad, 30, were killed on a surfing trip in 2024 Get our breaking news email, free app or daily news podcast The parents of Australian surfing brothers murdered in M"
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "aggressive · la ceja",
-   "dur": 34.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610091000",
+   "sub": "keyboard · la llave",
+   "dur": 32.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
@@ -168,15 +180,15 @@
     },
     {
      "lang": "en",
-     "t": "aggressive"
+     "t": "keyboard"
     },
     {
      "lang": "zh",
-     "t": "意思是：好斗的，有进取心的。拼写是："
+     "t": "意思是：键盘。拼写是："
     },
     {
      "lang": "en",
-     "t": "a, g, g, r, e, s, s, i, v, e"
+     "t": "k, e, y, b, o, a, r, d"
     },
     {
      "lang": "zh",
@@ -184,7 +196,7 @@
     },
     {
      "lang": "en",
-     "t": "aggressive"
+     "t": "keyboard"
     },
     {
      "lang": "zh",
@@ -192,15 +204,15 @@
     },
     {
      "lang": "es",
-     "t": "la ceja"
+     "t": "la llave"
     },
     {
      "lang": "zh",
-     "t": "意思是：眉毛。跟着读一遍。"
+     "t": "意思是：钥匙，水龙头。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la ceja"
+     "t": "la llave"
     }
    ]
   },
@@ -208,8 +220,8 @@
    "id": "quote",
    "title": "🎴 每日一句",
    "sub": "名言",
-   "dur": 31.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610091000",
+   "dur": 25.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
@@ -217,11 +229,11 @@
     },
     {
      "lang": "en",
-     "t": "The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings."
+     "t": "Nature is a mutable cloud which is always and never the same."
     },
     {
      "lang": "zh",
-     "t": "意思是：亲爱的勃鲁托斯，我们屈居人下，错不在命运，而在我们自己。这句话出自 William Shakespeare。"
+     "t": "意思是：自然像一朵变幻的云，永远是它，又永远不是它。这句话出自 Ralph Waldo Emerson。"
     },
     {
      "lang": "zh",
@@ -229,7 +241,7 @@
     },
     {
      "lang": "en",
-     "t": "The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings."
+     "t": "Nature is a mutable cloud which is always and never the same."
     }
    ],
    "opt": true
@@ -237,61 +249,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "给调度打电话",
-   "dur": 67.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610091000",
+   "sub": "对讲机用语",
+   "dur": 61.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：对讲机用语。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "预约改到明天早上了。"
+     "t": "五排需要帮忙。"
     },
     {
      "lang": "en",
-     "t": "The appointment was moved to tomorrow morning."
+     "t": "Need a hand at row five."
     },
     {
      "lang": "en",
-     "t": "The appointment was moved to tomorrow morning."
+     "t": "Need a hand at row five."
     },
     {
      "lang": "zh",
-     "t": "能把详情发短信给我吗？"
+     "t": "不对，那个柜子不在这。"
     },
     {
      "lang": "en",
-     "t": "Can you text me the details?"
+     "t": "Negative, that container's not here."
     },
     {
      "lang": "en",
-     "t": "Can you text me the details?"
+     "t": "Negative, that container's not here."
     },
     {
      "lang": "zh",
-     "t": "这一票是哪个司机？"
+     "t": "是的/肯定。"
     },
     {
      "lang": "en",
-     "t": "Who's the driver on this one?"
+     "t": "Affirmative."
     },
     {
      "lang": "en",
-     "t": "Who's the driver on this one?"
+     "t": "Affirmative."
     },
     {
      "lang": "zh",
-     "t": "我马上回你电话。"
+     "t": "一切正常/可以了。"
     },
     {
      "lang": "en",
-     "t": "Let me call you right back."
+     "t": "All clear."
     },
     {
      "lang": "en",
-     "t": "Let me call you right back."
+     "t": "All clear."
     },
     {
      "lang": "zh",
@@ -303,13 +315,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "锅烧糊了",
-   "dur": 13.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610091000",
+   "sub": "烘干机每次清棉絮",
+   "dur": 19.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：锅烧糊了。不用使劲刷。做法：加水没过糊的地方，放两勺小苏打；煮开几分钟，关火泡一会；用木铲轻轻刮。"
+     "t": "今日一招：烘干机每次清棉絮。烘得更快，还能防火。做法：每烘一次都把滤网上的棉絮拿掉；滤网发黏时用水加洗洁精刷一下，晾干再装回去；机器后面的排气管一年左右清一次。"
     }
    ],
    "opt": true
@@ -317,13 +329,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1888 · 1962 · 1981",
-   "dur": 21.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610091000",
+   "sub": "1868 · 1926 · 1937",
+   "dur": 24.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1888年，位于美国华盛顿哥伦比亚特区的华盛顿纪念碑正式对公众开放。1962年，乌干达宣布脱离英国统治而独立，但仍将英国女王伊丽莎白二世视为国家元首。1981年，法国废除死刑。"
+     "t": "历史上的今天。1868年，古巴独立运动领袖塞斯佩德斯宣布古巴脱离西班牙独立，十年战争爆发。1926年，国民革命军北伐：国民革命军占领武昌。1937年，中国抗日战争：中国工农红军南方八省游击队改编为新四军。"
     }
    ],
    "opt": true
@@ -331,21 +343,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "望江南·超然台作",
-   "dur": 53.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610091000",
+   "sub": "南乡子·送述古",
+   "dur": 53.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：望江南·超然台作。写于1076年，他39岁，在密州超然台。"
+     "t": "读一首苏轼：南乡子·送述古。写于1074年，他37岁，在杭州（送别至临平）。"
     },
     {
      "lang": "zh",
-     "t": "春未老，风细柳斜斜。试上超然台上看，半壕春水一城花。烟雨暗千家。寒食后，酒醒却咨嗟。休对故人思故国，且将新火试新茶。诗酒趁年华。"
+     "t": "回首乱山横，不见居人只见城。谁似临平山上塔，亭亭，迎客西来送客行。归路晚风清，一枕初寒梦不成。今夜残灯斜照处，荧荧，秋雨晴时泪不晴。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：春天还没有过去，微风轻拂，柳枝斜斜地飘动。登上超然台眺望，半满的护城河里荡着春水，满城都是鲜花，蒙蒙烟雨笼罩着千家万户。寒食节过后，酒醒了，反倒叹起气来。不要在老朋友面前思念故乡了，姑且用新点的火来煮新茶，趁着大好年华，作诗饮酒吧。"
+     "t": "白话意思是：回头望去，只见群山纵横，看不见城里的人，只看得见城郭。谁能像临平山上的那座塔一样，高高耸立着，迎接客人西来，又目送客人离去？回去的路上晚风清凉，躺下时初秋的寒意让我难以入梦。今夜残灯斜照之处，灯光微微闪烁，秋雨已经停了，我的泪却还没有停。"
     }
    ],
    "opt": true
@@ -354,12 +366,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610091000",
+   "dur": 5.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610100853",
    "text": [
     {
      "lang": "zh",
-     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }
