@@ -1,16 +1,16 @@
 {
- "date": "2026-10-10",
- "kind": "名言",
- "en": "Nature is a mutable cloud which is always and never the same.",
- "zh": "自然像一朵变幻的云，永远是它，又永远不是它。",
- "by": "Ralph Waldo Emerson",
- "line": "Nature is a mutable cloud which is always and never the same. — Ralph Waldo Emerson",
+ "date": "2026-10-11",
+ "kind": "口头禅",
+ "en": "What a shame",
+ "zh": "太可惜了",
+ "by": "表示遗憾",
+ "line": "What a shame",
  "word": {
-  "w": "enroll",
-  "ph": "in'rәul",
-  "zh": "vt. 登记，使加入；vi. 参军，注册",
-  "ex": "I want to enroll at graduate school.",
-  "exzh": "我想在研究生院注册。"
+  "w": "hockey",
+  "ph": "'hɒki",
+  "zh": "n. 冰球，曲棍球",
+  "ex": "Sometimes hockey players get so competitive that fights break out.",
+  "exzh": "有时候冰球运动员相互挑衅得太厉害以至于会引发斗殴。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
