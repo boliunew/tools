@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-11T16:21:32Z",
- "date": "2026-10-11",
- "engine": "edge",
- "total": 536.5,
- "short": 303.2,
+ "generated": "2026-10-12T19:51:11Z",
+ "date": "2026-10-12",
+ "engine": "gtts",
+ "total": 623.7,
+ "short": 389.5,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610110920",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610121249",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月11日 星期日",
-   "dur": 11.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610110920",
+   "sub": "10月12日 星期一",
+   "dur": 13.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。今天是10月11日，星期日。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
+     "t": "新的一周开始了，加油！星期一，10月12日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 中雨 66°/59°F",
-   "dur": 34.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610110920",
+   "sub": "Upland 毛毛雨 64°/53°F",
+   "dur": 39.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天中雨。早上7点出门大约华氏61度，16摄氏度，那时下雨概率55%。傍晚5点下班大约华氏60度，15摄氏度。白天最高66度，约19摄氏度；最低59度。降雨概率71%。白天空气质量中等，指数最高57。今天日落时间是傍晚6点21分。提醒一下：记得带伞，路面湿滑，车速放慢。"
+     "t": "Upland今天毛毛雨。早上7点出门大约华氏56度，13摄氏度，那时下雨概率36%。傍晚5点下班大约华氏59度，15摄氏度。白天最高64度，约18摄氏度；最低53度。降雨概率36%。白天空气质量良好，指数最高40。今天日落时间是傍晚6点20分。"
     }
    ]
   },
@@ -38,12 +38,12 @@
    "id": "sky",
    "title": "🔭 天象",
    "sub": "Upland",
-   "dur": 11.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610110920",
+   "dur": 15.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。明天，水星东大距。傍晚日落后在西边，离太阳 25°，很低，找视野开阔的地方。"
+     "t": "天象提醒。今天，水星东大距。傍晚日落后在西边，离太阳 25°，很低，找视野开阔的地方。"
     }
    ]
   },
@@ -51,8 +51,8 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 30.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610110920",
+   "dur": 39.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
@@ -64,8 +64,8 @@
    "id": "pool",
    "title": "📈 股票池",
    "sub": "23 个候选",
-   "dur": 63.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610110920",
+   "dur": 87.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
@@ -97,12 +97,12 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "3 件大事",
-   "dur": 35.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610110920",
+   "dur": 46.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "10月13日，有3家大公司发财报。"
+     "t": "明天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
@@ -114,7 +114,7 @@
     },
     {
      "lang": "zh",
-     "t": "UnitedHealth，代码 U N H，盘前发财报。期权定价波动正负7.0%。标签：利好出尽型。"
+     "t": "UnitedHealth，代码 U N H，盘前发财报。期权定价波动正负7.2%。标签：利好出尽型。"
     }
    ]
   },
@@ -122,8 +122,8 @@
    "id": "news",
    "title": "📰 英文新闻",
    "sub": "Al Jazeera · BBC · NPR",
-   "dur": 80.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610110920",
+   "dur": 106.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
@@ -131,48 +131,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：一名男子在进入英格兰野生动物园的老虎围栏后死亡。"
+     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：休达还是塞卜塔？为什么一个城市有两个名字和一个有争议的状态。"
     },
     {
      "lang": "en",
-     "t": "Man dies after entering tiger enclosure at England wildlife park"
+     "t": "Ceuta or Sebta? Why one city has two names and a disputed status"
     },
     {
      "lang": "en",
-     "t": "Emergency services called to the scene after reports of a man entering the tiger enclosure at a UK wildlife park."
+     "t": "Felipe VI’s first visit to Ceuta and Melilla as king brings Spain’s territorial dispute with Morocco back into focus."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，国际，难度B2。大意是：伊萨亚斯飓风袭击美国后，四人死亡，数千人停电。"
+     "t": "第2条，来自BBC，国际，难度B2。大意是：澳大利亚标志性乐队Powderfinger宣布17年来首次巡演。"
     },
     {
      "lang": "en",
-     "t": "Four dead and thousands without power after Hurricane Isaias lashes US"
+     "t": "Iconic Australian band Powderfinger announce first tour in 17 years"
     },
     {
      "lang": "en",
-     "t": "Roofs were ripped off buildings after Isaias barrelled into the US on Friday evening, before it weakened to a post-tropical cyclone."
+     "t": "The band, who announced their reunion last week, say they are \"absolutely ecstatic\" to be playing together again."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B2。大意是：克里斯塔·派克（ Christa Pike ）出院并入狱。"
+     "t": "第3条，来自NPR，综合，难度B2。大意是：教皇利奥十四世本周将接受肺部手术。"
     },
     {
      "lang": "en",
-     "t": "Christa Pike discharged from the hospital and back in prison"
+     "t": "Pope Leo XIV to undergo lung surgery this week"
     },
     {
      "lang": "en",
-     "t": "Pike's attorneys say she is grateful for the care of first responders and her medical team."
+     "t": "Pope Leo XIV said he would undergo surgery after doctors found a \"localized nodule\" in his lung."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "along · los hermanos",
-   "dur": 30.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610110920",
+   "sub": "physical · la montaña",
+   "dur": 33.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
@@ -180,15 +180,15 @@
     },
     {
      "lang": "en",
-     "t": "along"
+     "t": "physical"
     },
     {
      "lang": "zh",
-     "t": "意思是：沿着。拼写是："
+     "t": "意思是：身体的。拼写是："
     },
     {
      "lang": "en",
-     "t": "a, l, o, n, g"
+     "t": "p, h, y, s, i, c, a, l"
     },
     {
      "lang": "zh",
@@ -196,7 +196,7 @@
     },
     {
      "lang": "en",
-     "t": "along"
+     "t": "physical"
     },
     {
      "lang": "zh",
@@ -204,40 +204,44 @@
     },
     {
      "lang": "es",
-     "t": "los hermanos"
+     "t": "la montaña"
     },
     {
      "lang": "zh",
-     "t": "意思是：兄弟姐妹。跟着读一遍。"
+     "t": "意思是：山。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "los hermanos"
+     "t": "la montaña"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "口头禅",
-   "dur": 11.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610110920",
+   "sub": "名言",
+   "dur": 24.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句口头禅。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "What a shame"
+     "t": "If there is no struggle, there is no progress."
     },
     {
      "lang": "zh",
-     "t": "意思是：太可惜了"
+     "t": "意思是：没有奋斗，就没有进步。这句话出自 Frederick Douglass。"
+    },
+    {
+     "lang": "zh",
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "What a shame"
+     "t": "If there is no struggle, there is no progress."
     }
    ],
    "opt": true
@@ -245,61 +249,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "报柜号/拼字母",
-   "dur": 85.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610110920",
+   "sub": "进出闸口",
+   "dur": 75.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：报柜号/拼字母。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：进出闸口。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "M-S-C-U 用北约字母读"
+     "t": "能给我一份 EIR 吗？"
     },
     {
      "lang": "en",
-     "t": "M as in Mike, S as in Sierra, C as in Charlie, U as in Uniform."
+     "t": "Can I get a copy of the EIR?"
     },
     {
      "lang": "en",
-     "t": "M as in Mike, S as in Sierra, C as in Charlie, U as in Uniform."
+     "t": "Can I get a copy of the EIR?"
     },
     {
      "lang": "zh",
-     "t": "T、G、H"
+     "t": "请把损坏记在 EIR 上。"
     },
     {
      "lang": "en",
-     "t": "T as in Tango, G as in Golf, H as in Hotel."
+     "t": "Please note the damage on the EIR."
     },
     {
      "lang": "en",
-     "t": "T as in Tango, G as in Golf, H as in Hotel."
+     "t": "Please note the damage on the EIR."
     },
     {
      "lang": "zh",
-     "t": "是 Bravo 的 B，不是 Delta 的 D。"
+     "t": "重柜还是空柜？"
     },
     {
      "lang": "en",
-     "t": "B as in Bravo, not D as in Delta."
+     "t": "Is it loaded or empty?"
     },
     {
      "lang": "en",
-     "t": "B as in Bravo, not D as in Delta."
+     "t": "Is it loaded or empty?"
     },
     {
      "lang": "zh",
-     "t": "M 和 N"
+     "t": "今天闸口五点关。"
     },
     {
      "lang": "en",
-     "t": "M as in Mike, N as in November."
+     "t": "The gate closes at five today."
     },
     {
      "lang": "en",
-     "t": "M as in Mike, N as in November."
+     "t": "The gate closes at five today."
     },
     {
      "lang": "zh",
@@ -311,13 +315,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "好莱坞环球影城 Universal",
-   "dur": 19.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610110920",
+   "sub": "芝加哥（Chicago）",
+   "dur": 23.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：好莱坞环球影城 Universal。电影主题乐园，片场之旅是招牌。做法：从 Upland 开车约 1–1.5 小时；必玩：片场之旅（Studio Tour）、哈利波特园区；任天堂世界人气很高，早上先去。"
+     "t": "今日一招：芝加哥（Chicago）。建筑之城，湖边天际线很漂亮。做法：必做：芝加哥河建筑游船；千禧公园「云门」（The Bean）拍倒影；芝加哥艺术学院、深盘披萨。"
     }
    ],
    "opt": true
@@ -325,13 +329,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1942 · 1968 · 1973",
-   "dur": 33.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610110920",
+   "sub": "1899 · 1960 · 2003",
+   "dur": 42.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1942年，第二次世界大战：在瓜达康纳尔岛西北海岸的埃斯佩兰斯海角海战中，美军舰队拦截并击溃了日本派往攻击亨德森机场的舰队。1968年，美国国家航空航天局的阿波罗7号发射升空，这是美国首次三人太空任务。1973年，1973年帕斯卡古拉事件－希克森和派克声称他们在晚上钓鱼时，被外星人绑架。"
+     "t": "历史上的今天。1899年，第二次波耳战争：以波耳人为首的川斯瓦共和国和奥兰治自由邦向大英帝国宣战。1960年，苏共中央第一书记尼基塔·赫鲁晓夫在联合国大会第902次会议期间拿起鞋子敲桌，抗议菲律宾批评苏联控制东欧作为的发言。2003年，秦沈客运专线正式通车，成为中国第一条高速铁路。"
     }
    ],
    "opt": true
@@ -339,21 +343,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "满庭芳·蜗角虚名",
-   "dur": 83.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610110920",
+   "sub": "浣溪沙·细雨斜风作晓寒",
+   "dur": 68.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：满庭芳·蜗角虚名。写于1082年，他45岁，在黄州。"
+     "t": "读一首苏轼：浣溪沙·细雨斜风作晓寒。写于1084年，他47岁，在泗州（今江苏盱眙一带）南山。"
     },
     {
      "lang": "zh",
-     "t": "蜗角虚名，蝇头微利，算来著甚干忙。事皆前定，谁弱又谁强。且趁闲身未老，尽放我、些子疏狂。百年里，浑教是醉，三万六千场。思量。能几许，忧愁风雨，一半相妨。又何须，抵死说短论长。幸对清风皓月，苔茵展、云幕高张。江南好，千钟美酒，一曲满庭芳。"
+     "t": "细雨斜风作晓寒，淡烟疏柳媚晴滩。入淮清洛渐漫漫。雪沫乳花浮午盏，蓼茸蒿笋试春盘。人间有味是清欢。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：那些像蜗牛触角一样渺小的名声，像苍蝇头一样微薄的利益，算起来何必为它们白白奔忙。事情都是命中注定的，谁弱谁强又有什么好争。暂且趁着清闲、身体还没老，放任我一点疏狂吧。人生百年，全让它都在醉中度过，也不过三万六千场。细想一想，一生能有多少日子，其中忧愁和风雨就占去了一半。又何必总是拼命地议论别人的长短。幸好还有清风明月，青苔铺开像褥垫，云彩高张像帷幕。江南真好，有千杯美酒，再唱一曲《满庭芳》。"
+     "t": "白话意思是：细雨斜风带来清晨的寒意，淡淡的烟雾和稀疏的柳树让放晴的河滩更加妩媚。清澈的洛河流入淮河，水面渐渐变得宽广浩荡。中午泡一盏茶，茶面浮着雪白的泡沫；尝一尝春盘里蓼菜的嫩芽和蒿笋。人间真正有滋味的，是这种清淡的欢乐。"
     }
    ],
    "opt": true
@@ -362,12 +366,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610110920",
+   "dur": 7.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610121249",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
     }
    ]
   }
