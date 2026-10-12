@@ -1,16 +1,16 @@
 {
- "date": "2026-10-11",
- "kind": "口头禅",
- "en": "What a shame",
- "zh": "太可惜了",
- "by": "表示遗憾",
- "line": "What a shame",
+ "date": "2026-10-12",
+ "kind": "名言",
+ "en": "If there is no struggle, there is no progress.",
+ "zh": "没有奋斗，就没有进步。",
+ "by": "Frederick Douglass",
+ "line": "If there is no struggle, there is no progress. — Frederick Douglass",
  "word": {
-  "w": "hockey",
-  "ph": "'hɒki",
-  "zh": "n. 冰球，曲棍球",
-  "ex": "Sometimes hockey players get so competitive that fights break out.",
-  "exzh": "有时候冰球运动员相互挑衅得太厉害以至于会引发斗殴。"
+  "w": "situate",
+  "ph": "'sitjueit",
+  "zh": "vt. 使位于，使处于",
+  "ex": "The town is situated 1,500 meters above sea level.",
+  "exzh": "这个镇海拔1500米。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
