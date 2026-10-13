@@ -1,0 +1,3 @@
+# AI 研判 (stocks/agents.py) — kept separate from stocks/requirements.txt because
+# TradingAgents pulls in LangChain/LangGraph and pandas 3; it lives in its own venv (.venv-agents).
+tradingagents @ git+https://github.com/TauricResearch/TradingAgents@v0.6.0

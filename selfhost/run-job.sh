@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Run one of the site's data jobs at home — the same steps the GitHub Actions workflows ran.
-#   selfhost/run-job.sh stocks|earnings|news|deals|radio|monitor|all
+#   selfhost/run-job.sh stocks|earnings|news|deals|radio|monitor|agents|all
 set -uo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(dirname "$HERE")"
@@ -24,10 +24,11 @@ steps() {
     deals)    printf '%s\n' "deals/build.py" "deals/watch.py" ;;
     radio)    printf '%s\n' "radio/build.py" ;;
     monitor)  printf '%s\n' "monitor/check.py" ;;
+    agents)   printf '%s\n' "stocks/agents.py" ;;   # AI 研判 — needs selfhost/setup-agents.sh first
     *) return 1 ;;
   esac
 }
-list="$(steps "$job")" || { echo "usage: $0 stocks|earnings|news|deals|radio|monitor|all"; exit 2; }
+list="$(steps "$job")" || { echo "usage: $0 stocks|earnings|news|deals|radio|monitor|agents|all"; exit 2; }
 
 LOG="$TOOLS_DATA/logs/$job.log"
 # keep logs small: last ~2000 lines
@@ -43,6 +44,8 @@ status=0
     case "$job" in
       radio)   RADIO_NO_UPLOAD=1 LOCAL_KV="$TOOLS_DATA/kv" "$PY" $step < /dev/null || status=$? ;;
       monitor) EVENT_NAME=schedule "$PY" $step < /dev/null || status=$? ;;
+      agents)  APY="$ROOT/.venv-agents/bin/python"; [ -x "$APY" ] || { echo "AI 研判还没装：bash selfhost/setup-agents.sh"; continue; }
+               "$APY" $step < /dev/null || status=$? ;;
       *)       "$PY" $step < /dev/null || status=$? ;;
     esac
   done <<< "$list"

@@ -159,6 +159,27 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 .crow .r2 b{color:var(--ink)}
 .lowr .plan,.crow.lowr .r2{opacity:.5}
 .lownote{font-size:11.5px;color:var(--faint);margin-top:4px}
+/* AI 研判 */
+.agc{padding:14px 16px}
+.agc .sh{font-weight:700;margin-bottom:4px}
+.agc .agm{font-size:12px;color:var(--faint);margin-bottom:8px}
+.agi{border-top:1px solid var(--line);padding:10px 0 4px}
+.agi:first-of-type{border-top:0}
+.agh{display:flex;align-items:center;flex-wrap:wrap}
+.agh a.t{font-weight:700;font-size:16px;margin-right:8px;text-decoration:none}
+.agh small{color:var(--faint);font-size:12px;margin-left:6px}
+.rt{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--chip);color:var(--soft)}
+.rt-buy{background:var(--on-soft);color:var(--on)} .rt-sell{background:var(--off-soft);color:var(--off)} .rt-hold{background:var(--mid-soft);color:var(--mid)}
+.agg{font-size:14px;color:var(--ink);margin:6px 0 4px;line-height:1.6}
+.agi details{font-size:13px;color:var(--soft);margin:2px 0 4px}
+.agi summary{cursor:pointer;color:var(--accent);font-size:13px;padding:4px 0}
+.agx{background:var(--chip);border-radius:10px;padding:10px 12px;margin:6px 0;line-height:1.65;overflow-wrap:anywhere;max-height:420px;overflow:auto}
+.agx b.hd{display:block;color:var(--ink);margin:8px 0 2px}
+.agx b.hd:first-child{margin-top:0}
+.agerr{font-size:12.5px;color:var(--off)}
+.agoff{font-size:13px;color:var(--soft);line-height:1.7}
+.agoff code{background:var(--chip);padding:1px 5px;border-radius:5px;font-size:12px}
+.tag.ai{background:var(--chip);color:var(--ink)}
 /* 股价提醒 */
 .wr{grid-template-columns:minmax(0,1fr) 84px 76px 26px 22px}
 .wb{border:0;background:none;padding:0;font-size:16px;cursor:pointer;position:relative;opacity:.4;filter:grayscale(1);line-height:1}
@@ -243,7 +264,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 <script>
 (function () {
   'use strict';
-  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score', SNAP = null, ER = null;
+  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score', SNAP = null, ER = null, AG = null;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function pct(x, d) { if (x == null || isNaN(x)) return '—'; return (x > 0 ? '+' : '') + (x * 100).toFixed(d == null ? 2 : d) + '%'; }
   function cls(x) { return x > 0 ? 'up' : x < 0 ? 'down' : ''; }
@@ -284,6 +305,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       render();
       getJSON('stocks/data/snap.json', function (d) { SNAP = d && d.rows ? d : { rows: {}, missing: 1 }; render(); });
       getJSON('earnings/data/latest.json', function (d) { ER = d; render(); });
+      getJSON('stocks/data/agents.json', function (d) { AG = d; render(); });
       getJSON('stocks/data/alerts.json', function (d) { AST = d && d.items ? d : null; render(); });
       loadAlerts();
     };
@@ -307,11 +329,50 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       '<circle cx="' + x(s.length - 1) + '" cy="' + y(s[s.length - 1]) + '" r="2.5" fill="' + (up ? 'var(--up)' : 'var(--down)') + '"/></svg>';
   }
 
+  // ---- AI 研判 (stocks/agents.py → stocks/data/agents.json)
+  function rtCls(r) { return r === 'Buy' || r === 'Overweight' ? 'rt-buy' : r === 'Sell' || r === 'Underweight' ? 'rt-sell' : r === 'Hold' ? 'rt-hold' : ''; }
+  function agOf(t) { if (!AG || !AG.items || AG.date !== (DATA && DATA.date)) return null; for (var i = 0; i < AG.items.length; i++) if (AG.items[i].t === t && AG.items[i].ok) return AG.items[i]; return null; }
+  function md(s) {   // tiny, safe markdown: escape first, then headings / bold / bullets / line breaks
+    return esc(s).split('\n').map(function (ln) {
+      var m = ln.match(/^\s*#{1,6}\s+(.*)$/); if (m) return '<b class="hd">' + m[1].replace(/\*\*/g, '') + '</b>';
+      ln = ln.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/^\s*[-*]\s+/, '• ');
+      return ln;
+    }).join('<br>').replace(/(<br>){3,}/g, '<br><br>');
+  }
+  var AGN = { market: '技术面', news: '新闻面', fundamentals: '基本面', sentiment: '社交情绪' };
+  function agentsHTML() {
+    if (!AG) return '';
+    var h = '<h3>🤖 AI 研判（TradingAgents 多智能体）</h3><div class="card agc">';
+    if (!AG.items || !AG.items.length) {
+      if (AG.status === 'empty') return '';
+      h += '<div class="agoff"><b>还没开启。</b>开启后，每天收盘扫描完，会让多个 AI 分析师（技术面、新闻、基本面 → 多空辩论 → 交易员 → 风控 → 组合经理）给「值得细看」的几只股票各写一份研判。<br>' +
+        '需要一个大模型 API key（按调用量付费，DeepSeek 最便宜，每只股票几美分）。' +
+        (LOCAL ? '<br>在家里主机上运行：<code>bash ~/tools/selfhost/setup-agents.sh</code>' : '<br>在 GitHub 仓库 Settings → Secrets → Actions 里加 <code>DEEPSEEK_API_KEY</code>，下次扫描后自动运行。') + '</div></div>';
+      return h;
+    }
+    var stale = AG.date !== DATA.date;
+    var m = AG.model ? esc(AG.model.provider) + ' · ' + esc(AG.model.deep || '') : '';
+    h += '<div class="agm">' + (AG.demo ? '⚠️ 示例数据 · ' : '') + (stale ? '这是 ' + esc(AG.date) + ' 的研判（今天的还没跑）· ' : '') + esc(AG.engine || '') + (m ? ' · ' + m : '') + '</div>';
+    for (var i = 0; i < AG.items.length; i++) {
+      var it = AG.items[i], sig = it.sig && DATA.signals[it.sig] ? DATA.signals[it.sig].name : (it.src === 'extra' ? '固定关注' : '');
+      h += '<div class="agi"><div class="agh"><a class="t" href="' + (inPool(it.t) ? '#c-' + esc(it.t) : 'https://finance.yahoo.com/quote/' + encodeURIComponent(it.t)) + '"' + (inPool(it.t) ? '' : ' target="_blank" rel="noopener"') + '>' + esc(it.t) + '</a>';
+      if (!it.ok) { h += '<span class="agerr">这只没跑成功：' + esc(it.error || '') + '</span></div></div>'; continue; }
+      h += '<span class="rt ' + rtCls(it.rating) + '">' + esc(it.rating_zh || it.rating) + '</span>' + (sig ? '<small>' + esc(sig) + '</small>' : '') + (it.name ? '<small>' + esc(it.name) + '</small>' : '') + '</div>';
+      if (it.gist) h += '<div class="agg">' + esc(it.gist) + '</div>';
+      h += '<details><summary>看完整研判</summary><div class="agx">' + md(it.decision || '') + '</div>' + (it.plan ? '<div class="agx"><b class="hd">交易员方案</b>' + md(it.plan) + '</div>' : '');
+      var R = it.reports || {};
+      for (var k in AGN) if (R[k]) h += '<details><summary>' + AGN[k] + '分析师报告</summary><div class="agx">' + md(R[k]) + '</div></details>';
+      h += '</details></div>';
+    }
+    h += '<div class="lownote">AI 研判是大语言模型读新闻、财报、技术指标后写的观点，同一只股票每次跑结果都可能不同，也没有经过上面那种回测检验。只当第二意见参考，不能替代止损纪律。</div></div>';
+    return h;
+  }
   function candHTML(c) {
     var S = DATA.signals, tags = '';
     for (var i = 0; i < c.tags.length; i++) tags += '<span class="tag">' + esc(S[c.tags[i]].name) + '</span>';
     if (c.sector) tags += '<span class="tag sec">' + esc(c.sector) + '</span>';
     if (c.earn) tags += '<span class="tag earn">财报 ' + esc(c.earn.slice(5)) + '</span>';
+    var ag = agOf(c.t); if (ag) tags += '<span class="tag ai">🤖 ' + esc(ag.rating_zh || ag.rating) + '</span>';
     var stopPct = c.stop / c.close - 1, tgtPct = c.target / c.close - 1;
     return '<div class="card cand' + (c.r < 1 ? ' lowr' : '') + '" id="c-' + esc(c.t) + '"><div class="c-top"><div class="c-id"><div class="c-t"><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(c.t) + '/chart" target="_blank" rel="noopener">' + esc(c.t) + '</a></div><div class="c-n">' + esc(c.name) + '</div></div>' +
       '<div class="c-px"><b>' + c.close.toFixed(2) + '</b><span class="' + cls(c.chg) + '">' + pct(c.chg) + '</span></div></div>' +
@@ -675,6 +736,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 
     var lab = R.label || '—', rc = lab === '进攻' ? 'rg-on' : lab === '防守' ? 'rg-off' : 'rg-mid';
     h += summaryHTML(rc);
+    h += agentsHTML();
     function idx(name, o) { if (!o) return ''; return '<div>' + name + ' <b>' + o.close.toFixed(2) + '</b><span class="' + cls(o.chg) + '">' + pct(o.chg) + '</span><span class="flag ' + (o.above50 ? 'f-y' : 'f-n') + '">50日线' + (o.above50 ? '上' : '下') + '</span><span class="flag ' + (o.above200 ? 'f-y' : 'f-n') + '">200日线' + (o.above200 ? '上' : '下') + '</span></div>'; }
     h += '<div class="card regime"><div class="rg-l"><span class="rg-badge ' + rc + '">' + esc(lab) + '</span><small>市场环境</small></div><div class="rg-r"><div class="rg-desc">' + esc(R.desc || '') + '</div><div class="idx">' + idx('SPY', R.spy) + idx('QQQ', R.qqq) + (R.vix != null ? '<div>VIX <b>' + R.vix.toFixed(1) + '</b></div>' : '') + '</div>' +
       '<div class="breadth"><div>站上 50 日线 ' + Math.round(R.breadth50 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth50 * 100) + '%"></i></div></div><div>站上 200 日线 ' + Math.round(R.breadth200 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth200 * 100) + '%"></i></div></div></div>' + breadthHTML(R.hist) + '</div></div>';
