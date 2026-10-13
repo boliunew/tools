@@ -1,0 +1,40 @@
+name: 电影 / 音乐 Top 500
+
+# 每周一重算一次，写进知识库：kb/top500-movies.md、kb/top500-music.md
+on:
+  schedule:
+    - cron: "37 12 * * 1"   # 周一 太平洋时间早上 5:37
+  workflow_dispatch: {}
+  push:
+    paths: ["rankings/build.py", ".github/workflows/rankings.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rankings
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # kb/build.py 用 git 历史算文章日期
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python rankings/build.py
+      - run: python kb/build.py
+      - run: python scripts/build_search.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add kb/top500-*.md rankings/data kb/index.json kb/README.md search/index.json search/counts.json
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "电影 / 音乐 Top 500 更新 $(date -u +%F)"
+          B="${GITHUB_REF_NAME}"
+          for i in 1 2 3; do git pull --rebase origin "$B" && git push origin "HEAD:$B" && break; sleep 5; done

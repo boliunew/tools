@@ -114,9 +114,10 @@ timer news     "英文新闻 + 每日一句" "*-*-* 06:07" "*-*-* 18:07"
 timer deals    "打折雷达" "*-*-* 06:17" "*-*-* 17:17"
 timer radio    "通勤电台" "*-*-* 06:20"   # 早上的新闻 6:07 跑完再生成，7 点出门前肯定好了
 timer monitor  "网页监控（每 4 小时）" "*-*-* 00/4:17"
+timer rankings "电影 / 音乐 Top 500（每周一）" "Mon 05:37"
 sudo systemctl daemon-reload
-sudo systemctl restart tools-stocks.timer tools-earnings.timer tools-news.timer tools-deals.timer tools-radio.timer tools-monitor.timer
-ok "6 个定时任务（查看：systemctl list-timers 'tools-*'）"
+sudo systemctl restart tools-stocks.timer tools-earnings.timer tools-news.timer tools-deals.timer tools-radio.timer tools-monitor.timer tools-rankings.timer
+ok "7 个定时任务（查看：systemctl list-timers 'tools-*'）"
 
 # ------------------------------------------------------------------ 4. Tailscale
 say "4/5 Tailscale：只让你自己的手机和电脑访问"
