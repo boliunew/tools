@@ -80,7 +80,7 @@ def sparql(query):
     return json.loads(raw)["results"]["bindings"]
 
 
-ZH_PREF = {"zh-cn": 0, "zh-hans": 1, "zh": 2, "zh-tw": 3, "zh-hk": 4}
+ZH_PREF = {"zh-cn": 0, "zh-hans": 1, "zh-sg": 2, "zh-my": 2, "zh": 3, "zh-tw": 4, "zh-hk": 5}
 
 
 def wd_countries(rows_by_key, key_prop, key_values, country_props):
@@ -93,7 +93,7 @@ def wd_countries(rows_by_key, key_prop, key_values, country_props):
         q = """SELECT ?k ?zh ?c ?iso ?cl ?pri WHERE {
   VALUES ?k { %s }
   ?item wdt:%s ?k .
-  OPTIONAL { ?item rdfs:label ?zh . FILTER(LANG(?zh) IN ("zh-cn","zh-hans","zh","zh-tw","zh-hk")) }
+  OPTIONAL { ?item rdfs:label ?zh . FILTER(LANG(?zh) IN ("zh-cn","zh-hans","zh-sg","zh-my","zh","zh-tw","zh-hk")) }
   OPTIONAL { %s
     OPTIONAL { ?c wdt:P297 ?iso }
     OPTIONAL { ?c rdfs:label ?cl . FILTER(LANG(?cl) IN ("zh-cn","zh-hans","zh")) } }
@@ -124,7 +124,7 @@ def wd_countries(rows_by_key, key_prop, key_values, country_props):
 
 def cc_order(ccs):
     """co-productions: put the 'main' country first (a fixed preference order works better than Wikidata's random order)."""
-    pref = ["US", "GB", "FR", "JP", "KR", "CN", "HK", "TW", "IN", "DE", "IT", "ES", "SU", "RU", "SE", "DK", "BR", "MX", "IR"]
+    pref = ["US", "GB", "FR", "JP", "KR", "CN", "HK", "TW", "IN", "IT", "ES", "DE", "SU", "RU", "SE", "DK", "BR", "MX", "IR"]
     return sorted(ccs, key=lambda c: (pref.index(c[0]) if c[0] in pref else 99, c[0]))
 
 
