@@ -42,11 +42,15 @@
 
 **手机**（2）：[用 S23 Ultra 拍月亮和星空](phone-astrophotography.md) · [USB-C 充电头和线怎么选（PD、PPS、e-marker）](usb-pd-and-cables.md)
 
+**排行榜**（2）：[电影 Top 500（按国家分类）](top500-movies.md) · [音乐 Top 500（按国家分类）](top500-music.md)
+
 **硬件**（2）：[Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md) · [USB-C 充电头和线怎么选（PD、PPS、e-marker）](usb-pd-and-cables.md)
 
 **编程**（2）：[回测里最常见的坑](backtest-pitfalls.md) · [常用技术指标用 Python 怎么算](python-quant-indicators.md)
 
 **露营**（2）：[露营入门：南加州去哪露营、怎么订、带什么](camping-basics.md) · [吃什么、背什么：徒步和露营的食物、水、炉头、背包与穿衣](outdoor-food-and-pack.md)
+
+**音乐**（2）：[音乐 Top 500（按国家分类）](top500-music.md) · [Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
 
 **动物**（1）：[南加州野外的动植物风险：蛇、狮、熊、蜱虫、毒橡树](socal-wildlife-plants.md)
 
@@ -74,6 +78,8 @@
 
 **星座**（1）：[四季星空怎么认：从北斗到猎户座](constellations-by-season.md)
 
+**电影**（1）：[电影 Top 500（按国家分类）](top500-movies.md)
+
 **算法**（1）：[集装箱号和校验位（ISO 6346）](iso-6346-check-digit.md)
 
 **网络**（1）：[家庭网络入门（IP、DHCP、DNS、端口、WiFi）](home-network-basics.md)
@@ -82,10 +88,10 @@
 
 **装备**（1）：[吃什么、背什么：徒步和露营的食物、水、炉头、背包与穿衣](outdoor-food-and-pack.md)
 
-**音乐**（1）：[Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
-
 ## 更新日志
 
+- 2026-10-13 新增 [电影 Top 500（按国家分类）](top500-movies.md)
+- 2026-10-13 新增 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-10-08 新增 [极光和太阳活动：南加州也能看到北极光吗](aurora-and-space-weather.md)
 - 2026-10-08 新增 [露营入门：南加州去哪露营、怎么订、带什么](camping-basics.md)
 - 2026-10-08 新增 [四季星空怎么认：从北斗到猎户座](constellations-by-season.md)
@@ -114,5 +120,3 @@
 - 2026-10-05 新增 [家里主机的备份方案（3-2-1、restic、自动化）](homelab-backup.md)
 - 2026-10-05 新增 [指数基金与定投](index-fund-dca.md)
 - 2026-10-05 新增 [投资里的心理偏差](investing-psychology.md)
-- 2026-10-05 新增 [洛杉矶 / 长滩港实用指南](la-lb-ports-guide.md)
-- 2026-10-05 新增 [装柜和装托：CBM、体积重和怎么摆](load-planning-cbm.md)
