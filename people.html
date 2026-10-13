@@ -326,6 +326,25 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
 .fr b{display:block;font-size:13px;margin-top:4px;line-height:1.35}
 .fr .yr{font-size:11.5px;color:var(--faint)}
 .fr p{font-size:12px;color:var(--soft);margin:5px 0 0;line-height:1.5}
+.fr{flex-basis:178px}
+.fr .era{font-size:11.5px;color:var(--faint);border-top:1px dashed var(--line);margin-top:7px;padding-top:6px;line-height:1.5}
+.fr .era i{font-style:normal;color:var(--gold);font-weight:600;margin-right:3px}
+.pc .gold{font-size:13.5px;line-height:1.6;margin-top:6px;padding-left:10px;border-left:3px solid var(--gold);color:var(--ink)}
+.pc .gold small{color:var(--faint);font-size:11.5px;margin-left:4px;white-space:nowrap}
+.star{font-size:11px;font-weight:700;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:2px;white-space:nowrap}
+.eras{display:grid;gap:8px;margin-bottom:10px}
+.erow{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:10px 14px}
+.erow .ea{font-family:Georgia,serif;font-size:22px;font-weight:700;color:var(--gold);line-height:1}
+.erow .ea small{font-size:12px;color:var(--faint);font-family:inherit;font-weight:400;margin-left:3px}
+.erow .eb{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.erow .eb > div{font-size:13px;line-height:1.6;color:var(--soft)}
+.erow .eb b{display:block;color:var(--ink);font-size:12.5px;margin-bottom:2px}
+@media (max-width:520px){.erow .eb{grid-template-columns:1fr}}
+.mind{background:var(--paper);border:1px solid var(--gold);border-radius:16px;padding:12px 16px;margin:12px 0}
+.mind h3{margin:0 0 8px;font-size:15px}
+.mind div{font-size:13.5px;line-height:1.65;color:var(--soft);padding:5px 0;border-top:1px dashed var(--line)}
+.mind div:first-of-type{border-top:0}
+.mind div b{color:var(--ink);margin-right:6px}
 .spo{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--gold-soft);border-radius:12px;padding:8px 12px;font-size:13px;margin:4px 0 10px}
 .spo select{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:3px 6px;font-size:13.5px}
 .pc{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
@@ -737,7 +756,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     var h = '', seen = upSeen(key), i;
     h += '<div class="up-intro"><p>' + esc(S.intro[0]) + '</p>' + (UPI ? S.intro.slice(1).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '<ul class="up-facts">' + S.facts.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul><button class="more" data-upi="0">收起</button>' : '<button class="more" data-upi="1">读完整介绍 ›</button>') + '</div>';
     h += '<div class="sec">每一集 <small>' + esc(S.en) + '</small></div><div class="reel">';
-    S.films.forEach(function (f) { h += '<div class="fr' + (seen === f.age ? ' on' : '') + '" data-seen="' + f.age + '"><div class="ag">' + f.age + '<small>岁</small></div><b>' + esc(f.t) + '</b><div class="yr">' + esc(f.y) + (f.len ? ' · ' + esc(f.len) : '') + '</div><p>' + esc(f.n) + '</p></div>'; });
+    S.films.forEach(function (f) { h += '<div class="fr' + (seen === f.age ? ' on' : '') + '" data-seen="' + f.age + '"><div class="ag">' + f.age + '<small>岁</small></div><b>' + esc(f.t) + '</b><div class="yr">' + esc(f.y) + (f.len ? ' · ' + esc(f.len) : '') + '</div><p>' + esc(f.n) + '</p>' + (f.era ? '<div class="era"><i>那几年</i>' + esc(f.era) + '</div>' : '') + '</div>'; });
     h += '</div>';
     h += '<div class="spo">🙈 防剧透：我看到了 <select id="upSpo"><option value="0"' + (seen ? '' : ' selected') + '>全部都看过 / 不怕剧透</option>' +
       S.ages.map(function (a) { return '<option value="' + a + '"' + (seen === a ? ' selected' : '') + '>' + a + ' 岁那一集</option>'; }).join('') + '</select>' + (seen ? '<span>之后的内容先藏起来</span>' : '') + '</div>';
@@ -750,9 +769,9 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
   }
   function upCard(S, key, p, seen) {
     var on = UPO[key + '-' + p.id], last = S.ages[S.ages.length - 1], lim = seen || last, h = '';
-    h += '<div class="pc' + (on ? ' on' : '') + '" id="up-' + key + '-' + p.id + '"><div class="hd" data-pc="' + key + '-' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.name) + '</small>' + (p.q && p.q.length ? '<span class="qn">💬 ' + p.q.length + '</span>' : '') + '</h3><div class="fm">' + esc(p.from) + '</div><div class="dots">';
+    h += '<div class="pc' + (on ? ' on' : '') + '" id="up-' + key + '-' + p.id + '"><div class="hd" data-pc="' + key + '-' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.name) + '</small>' + (p.star ? '<span class="star" title="在「两边对照」和「十二条观察」里被提到 ' + p.star + ' 次">⭐ 重点人物</span>' : '') + (p.q && p.q.length ? '<span class="qn">💬 ' + p.q.length + '</span>' : '') + '</h3><div class="fm">' + esc(p.from) + '</div><div class="dots">';
     S.ages.forEach(function (a) { h += '<i class="' + (p.films.indexOf(a) >= 0 ? 'y' : '') + (a > lim ? ' hid' : '') + '" title="' + a + ' 岁' + (p.films.indexOf(a) >= 0 ? '出镜' : '缺席') + '">' + (a > lim ? '?' : a) + '</i>'; });
-    h += '</div><div class="sv"><b>7 岁</b>' + esc(p.seven) + '</div></div></div><div class="bd">';
+    h += '</div><div class="sv"><b>7 岁</b>' + esc(p.seven) + '</div>' + (p.gold && p.gold[0] <= lim ? '<div class="gold">「' + esc(p.gold[2]) + '」<small>' + p.gold[0] + ' 岁</small></div>' : '') + '</div></div><div class="bd">';
     if (!seen) h += '<div class="then"><b>后来</b>' + esc(p.then) + '</div>' + '<div class="edu"><i>🎓</i><div><b>教育路径 → 职业</b>' + esc(p.edu) + ' → ' + esc(p.work) + '</div></div><div class="ktag">' + p.keys.map(function (k) { return '<span>' + esc(k) + '</span>'; }).join('') + '</div>';
     h += '<div class="ages">';
     var shown = {}, hidden = 0, byAge = {}, ages = [];
@@ -777,6 +796,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
   function upEdu() {
     var E = UP.compare.edu, h = '';
     h += '<div class="up-intro"><p>' + esc(E.intro) + '</p></div>';
+    if (UP.compare.mind) h += '<div class="mind"><h3>🧭 带走四句话</h3>' + UP.compare.mind.map(function (m) { return '<div><b>' + esc(m[0]) + '</b>' + esc(m[1]) + '</div>'; }).join('') + '<small style="color:var(--faint);font-size:12px">由下面十二条观察提炼，是我的理解，不是片子的结论。</small></div>';
     h += '<div class="sec">十二条观察 <small>前半是片中事实，后半是我的理解</small></div>';
     E.items.forEach(function (it, i) {
       h += '<div class="les"><h3><i>' + (i + 1) + '</i>' + esc(it[0]) + '</h3><div class="ob"><b>片子里</b>' + esc(it[1]) + '</div><div class="my"><b>想一想</b>' + esc(it[2]) + '</div><div class="who2">';
@@ -872,6 +892,14 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     var C = UP.compare, h = '';
     h += '<div class="sec">四个问题</div>';
     C.themes.forEach(function (t) { h += '<div class="up-th"><h3>' + esc(t.t) + '</h3>' + t.p.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('') + '</div>'; });
+    if (C.eraIntro) {
+      h += '<div class="sec">同一个年龄，两个时代 <small>看不见的那个维度</small></div><div class="up-th">' + C.eraIntro.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('') + '</div><div class="eras">';
+      UP.su.films.forEach(function (sf) {
+        var uf = null; UP.uk.films.forEach(function (f) { if (f.age === sf.age) uf = f; });
+        h += '<div class="erow"><div class="ea">' + sf.age + '<small>岁</small></div><div class="eb"><div><b>🇬🇧 ' + esc(uf ? uf.y : '') + '</b>' + esc(uf ? uf.era : '') + '</div><div><b>☭ ' + esc(sf.y) + '</b>' + esc(sf.era) + '</div></div></div>';
+      });
+      h += '</div>';
+    }
     h += '<div class="sec">两边对照着看 <small>点名字跳到人物</small></div>';
     C.pairs.forEach(function (pr) {
       var a = upFind(pr.a[0], pr.a[1]), b = upFind(pr.b[0], pr.b[1]);
