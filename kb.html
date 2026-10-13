@@ -325,7 +325,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       if (line.indexOf('|') >= 0 && i + 1 < n && /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(L[i + 1])) {
         var head = splitRow(line), al = splitRow(L[i + 1]).map(function (c) { return /^:-+:$/.test(c) ? 'center' : /-:$/.test(c) ? 'right' : ''; }), rows = [];
         i += 2; while (i < n && !isBlank(L[i]) && L[i].indexOf('|') >= 0) { rows.push(splitRow(L[i])); i++; }
-        var st = function (k) { return al[k] ? ' style="text-align:' + al[k] + '"' : ''; };
+        var st = function (k) { return al[k] ? ' style="text-align:' + al[k] + (al[k] === 'right' ? ';white-space:nowrap' : '') + '"' : ''; };
         out.push('<div class="tbl"><table><thead><tr>' + head.map(function (c, k) { return '<th' + st(k) + '>' + inline(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
           rows.map(function (r) { var h = ''; for (var k = 0; k < head.length; k++) h += '<td' + st(k) + '>' + inline(r[k] || '') + '</td>'; return '<tr>' + h + '</tr>'; }).join('') + '</tbody></table></div>');
         continue;
