@@ -1,20 +1,18 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-10-12（短版）
-#EXTINF:14,通勤电台 - ☀️ 开场 10月12日 星期一
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610121249
-#EXTINF:40,通勤电台 - 🌤️ 天气 Upland 毛毛雨 64°/53°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610121249
-#EXTINF:15,通勤电台 - 🔭 天象 Upland
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610121249
-#EXTINF:40,通勤电台 - 📊 大盘 谨慎
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610121249
-#EXTINF:87,通勤电台 - 📈 股票池 23 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610121249
-#EXTINF:46,通勤电台 - 🗓️ 财报与数据 3 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610121249
-#EXTINF:107,通勤电台 - 📰 英文新闻 Al Jazeera · BBC · NPR
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610121249
-#EXTINF:34,通勤电台 - 🔤 今日单词 physical · la montaña
-https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610121249
-#EXTINF:8,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610121249
+#PLAYLIST:通勤电台 2026-10-13（短版）
+#EXTINF:8,通勤电台 - ☀️ 开场 10月13日 星期二
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610131037
+#EXTINF:29,通勤电台 - 🌤️ 天气 Upland 大致晴朗 73°/50°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610131037
+#EXTINF:30,通勤电台 - 📊 大盘 谨慎
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610131037
+#EXTINF:64,通勤电台 - 📈 股票池 25 个候选
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610131037
+#EXTINF:66,通勤电台 - 🗓️ 财报与数据 6 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610131037
+#EXTINF:95,通勤电台 - 📰 英文新闻 The Guardian · BBC · NPR
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610131037
+#EXTINF:32,通勤电台 - 🔤 今日单词 fitness · hacer
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610131037
+#EXTINF:6,通勤电台 - 👋 结束 开车注意安全
+https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610131037

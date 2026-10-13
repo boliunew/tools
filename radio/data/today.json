@@ -1,49 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-12T19:51:11Z",
- "date": "2026-10-12",
- "engine": "gtts",
- "total": 623.7,
- "short": 389.5,
+ "generated": "2026-10-13T17:38:06Z",
+ "date": "2026-10-13",
+ "engine": "edge",
+ "total": 529.6,
+ "short": 330.1,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610121249",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610131037",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月12日 星期一",
-   "dur": 13.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610121249",
+   "sub": "10月13日 星期二",
+   "dur": 7.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "新的一周开始了，加油！星期一，10月12日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "10月13日，星期二，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 毛毛雨 64°/53°F",
-   "dur": 39.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610121249",
+   "sub": "Upland 大致晴朗 73°/50°F",
+   "dur": 29.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天毛毛雨。早上7点出门大约华氏56度，13摄氏度，那时下雨概率36%。傍晚5点下班大约华氏59度，15摄氏度。白天最高64度，约18摄氏度；最低53度。降雨概率36%。白天空气质量良好，指数最高40。今天日落时间是傍晚6点20分。"
-    }
-   ]
-  },
-  {
-   "id": "sky",
-   "title": "🔭 天象",
-   "sub": "Upland",
-   "dur": 15.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610121249",
-   "text": [
-    {
-     "lang": "zh",
-     "t": "天象提醒。今天，水星东大距。傍晚日落后在西边，离太阳 25°，很低，找视野开阔的地方。"
+     "t": "Upland今天大致晴朗。早上7点出门大约华氏52度，11摄氏度，体感47度。傍晚5点下班大约华氏72度，22摄氏度，体感67度。白天最高73度，约23摄氏度；最低50度。基本不会下雨。白天空气质量中等，指数最高54。今天日落时间是傍晚6点18分。"
     }
    ]
   },
@@ -51,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 39.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610121249",
+   "dur": 30.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月9日收盘。标普500 ETF 上涨0.6%，纳指100 ETF 上涨0.5%。恐慌指数VIX 14.8，处在低位。标普成分股里，站上50日均线的只占36%。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月12日收盘。标普500 ETF 下跌0.1%，纳指100 ETF 下跌0.7%。恐慌指数VIX 15.2，正常水平。标普成分股里，站上50日均线的只占37%。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "23 个候选",
-   "dur": 87.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610121249",
+   "sub": "25 个候选",
+   "dur": 63.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天23个候选，评分最高的是Skyworks Solutions，代码 S W K S。不想听细节可以按下一首。"
+     "t": "股票池今天25个候选，评分最高的是Supermicro，代码 S M C I。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中回踩金坑12个，RSI2 超跌反弹9个，血筹码2个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹10个，回踩金坑9个，血筹码6个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Skyworks Solutions，代码 S W K S，RSI2 超跌反弹信号，收盘价76.35美元，止损参考64.47。"
+     "t": "第1，Supermicro，代码 S M C I，RSI2 超跌反弹信号，收盘价39.98美元，止损参考34.05。"
     },
     {
      "lang": "zh",
-     "t": "第2，Waters，代码 W A T，回踩金坑信号，收盘价433.77美元，止损参考419.07。"
+     "t": "第2，HP，代码 H P Q，RSI2 超跌反弹信号，收盘价29.87美元，止损参考26.47。"
     },
     {
      "lang": "zh",
-     "t": "第3，Becton Dickinson，代码 B D X，回踩金坑信号，收盘价183.75美元，止损参考177.13。"
+     "t": "第3，Skyworks Solutions，代码 S W K S，RSI2 超跌反弹信号，收盘价74.70美元，止损参考63.08。"
     },
     {
      "lang": "zh",
@@ -96,17 +83,17 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "3 件大事",
-   "dur": 46.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610121249",
+   "sub": "6 件大事",
+   "dur": 66.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "明天，有3家大公司发财报。"
+     "t": "今天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "J P Morgan Chase &，代码 J P M，盘前发财报。期权定价波动正负3.6%。"
+     "t": "J P Morgan Chase &，代码 J P M，盘前发财报。期权定价波动正负3.2%。"
     },
     {
      "lang": "zh",
@@ -114,16 +101,32 @@
     },
     {
      "lang": "zh",
-     "t": "UnitedHealth，代码 U N H，盘前发财报。期权定价波动正负7.2%。标签：利好出尽型。"
+     "t": "UnitedHealth，代码 U N H，盘前发财报。期权定价波动正负6.7%。标签：利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "明天，有3家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "ASML，代码 A S M L，盘前发财报。期权定价波动正负5.6%。标签：利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "Bank of America，代码 B A C，盘前发财报。期权定价波动正负3.9%。"
+    },
+    {
+     "lang": "zh",
+     "t": "Morgan Stanley，代码 M S，盘前发财报。期权定价波动正负4.3%。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "Al Jazeera · BBC · NPR",
-   "dur": 106.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610121249",
+   "sub": "The Guardian · BBC · NPR",
+   "dur": 95.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
@@ -131,48 +134,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：休达还是塞卜塔？为什么一个城市有两个名字和一个有争议的状态。"
+     "t": "第1条，来自The Guardian，国际，难度B2。大意是：在阿德莱德汽车旅馆发现男婴死亡后，一男一女被起诉。"
     },
     {
      "lang": "en",
-     "t": "Ceuta or Sebta? Why one city has two names and a disputed status"
+     "t": "Man and woman charged after baby boy found dead in Adelaide motel"
     },
     {
      "lang": "en",
-     "t": "Felipe VI’s first visit to Ceuta and Melilla as king brings Spain’s territorial dispute with Morocco back into focus."
+     "t": "South Australia police say infant was aged between six and seven months old and had been ‘deceased for a period of time’ Get our breaking news email, free app or daily news podcast A man and a woman have been charged after a baby boy was fo"
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，国际，难度B2。大意是：澳大利亚标志性乐队Powderfinger宣布17年来首次巡演。"
+     "t": "第2条，来自BBC，国际，难度B2。大意是：Breaking Bad演员RJ Mitte去世，享年34岁。"
     },
     {
      "lang": "en",
-     "t": "Iconic Australian band Powderfinger announce first tour in 17 years"
+     "t": "Breaking Bad actor RJ Mitte dies aged 34"
     },
     {
      "lang": "en",
-     "t": "The band, who announced their reunion last week, say they are \"absolutely ecstatic\" to be playing together again."
+     "t": "Mitte, who lived with cerebral palsy, starred as Walter White Jr in the Emmy-winning drama series."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B2。大意是：教皇利奥十四世本周将接受肺部手术。"
+     "t": "第3条，来自NPR，综合，难度B2。大意是：DNA和车辆追踪帮助法国调查人员追回被盗的雷诺阿。"
     },
     {
      "lang": "en",
-     "t": "Pope Leo XIV to undergo lung surgery this week"
+     "t": "DNA and vehicle-tracking help French investigators recover stolen Renoirs"
     },
     {
      "lang": "en",
-     "t": "Pope Leo XIV said he would undergo surgery after doctors found a \"localized nodule\" in his lung."
+     "t": "DNA left on a protective painting cover helped investigators recover two stolen Renoirs and uncover what they suspected were preparations for another art heist, a French prosecutor said Monday."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "physical · la montaña",
-   "dur": 33.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610121249",
+   "sub": "fitness · hacer",
+   "dur": 31.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
@@ -180,15 +183,15 @@
     },
     {
      "lang": "en",
-     "t": "physical"
+     "t": "fitness"
     },
     {
      "lang": "zh",
-     "t": "意思是：身体的。拼写是："
+     "t": "意思是：健康，健身。拼写是："
     },
     {
      "lang": "en",
-     "t": "p, h, y, s, i, c, a, l"
+     "t": "f, i, t, n, e, s, s"
     },
     {
      "lang": "zh",
@@ -196,7 +199,7 @@
     },
     {
      "lang": "en",
-     "t": "physical"
+     "t": "fitness"
     },
     {
      "lang": "zh",
@@ -204,44 +207,44 @@
     },
     {
      "lang": "es",
-     "t": "la montaña"
+     "t": "hacer"
     },
     {
      "lang": "zh",
-     "t": "意思是：山。跟着读一遍。"
+     "t": "意思是：做。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la montaña"
+     "t": "hacer"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 24.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610121249",
+   "sub": "易错",
+   "dur": 20.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天说一个常见错误。不要说："
     },
     {
      "lang": "en",
-     "t": "If there is no struggle, there is no progress."
+     "t": "Teacher Wang"
     },
     {
      "lang": "zh",
-     "t": "意思是：没有奋斗，就没有进步。这句话出自 Frederick Douglass。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "应该说："
     },
     {
      "lang": "en",
-     "t": "If there is no struggle, there is no progress."
+     "t": "Mr. Wang / Ms. Wang"
+    },
+    {
+     "lang": "zh",
+     "t": "王老师。英语里不说 Teacher + 姓，用 Mr. 或 Ms. + 姓"
     }
    ],
    "opt": true
@@ -249,61 +252,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "进出闸口",
-   "dur": 75.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610121249",
+   "sub": "报告柜子损坏",
+   "dur": 65.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：进出闸口。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：报告柜子损坏。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "能给我一份 EIR 吗？"
+     "t": "四面都拍了照。"
     },
     {
      "lang": "en",
-     "t": "Can I get a copy of the EIR?"
+     "t": "I took photos from all four sides."
     },
     {
      "lang": "en",
-     "t": "Can I get a copy of the EIR?"
+     "t": "I took photos from all four sides."
     },
     {
      "lang": "zh",
-     "t": "请把损坏记在 EIR 上。"
+     "t": "我现在把照片发给你。"
     },
     {
      "lang": "en",
-     "t": "Please note the damage on the EIR."
+     "t": "I'll send you the pictures now."
     },
     {
      "lang": "en",
-     "t": "Please note the damage on the EIR."
+     "t": "I'll send you the pictures now."
     },
     {
      "lang": "zh",
-     "t": "重柜还是空柜？"
+     "t": "这个损坏之前就有吗？"
     },
     {
      "lang": "en",
-     "t": "Is it loaded or empty?"
+     "t": "Was this damage already there?"
     },
     {
      "lang": "en",
-     "t": "Is it loaded or empty?"
+     "t": "Was this damage already there?"
     },
     {
      "lang": "zh",
-     "t": "今天闸口五点关。"
+     "t": "要把它扣下吗？"
     },
     {
      "lang": "en",
-     "t": "The gate closes at five today."
+     "t": "Should I put it on hold?"
     },
     {
      "lang": "en",
-     "t": "The gate closes at five today."
+     "t": "Should I put it on hold?"
     },
     {
      "lang": "zh",
@@ -315,13 +318,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "芝加哥（Chicago）",
-   "dur": 23.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610121249",
+   "sub": "冲绳",
+   "dur": 20.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：芝加哥（Chicago）。建筑之城，湖边天际线很漂亮。做法：必做：芝加哥河建筑游船；千禧公园「云门」（The Bean）拍倒影；芝加哥艺术学院、深盘披萨。"
+     "t": "今日一招：冲绳。亚热带海岛，蓝得透明的海与琉球文化。做法：美丽海水族馆、古宇利岛、万座毛海岸；庆良间群岛浮潜、潜水，海水能见度极高；4–6 月和 10–11 月舒适，夏秋注意台风。"
     }
    ],
    "opt": true
@@ -329,13 +332,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1899 · 1960 · 2003",
-   "dur": 42.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610121249",
+   "sub": "1937 · 1961 · 1972",
+   "dur": 22.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1899年，第二次波耳战争：以波耳人为首的川斯瓦共和国和奥兰治自由邦向大英帝国宣战。1960年，苏共中央第一书记尼基塔·赫鲁晓夫在联合国大会第902次会议期间拿起鞋子敲桌，抗议菲律宾批评苏联控制东欧作为的发言。2003年，秦沈客运专线正式通车，成为中国第一条高速铁路。"
+     "t": "历史上的今天。1937年，新四军建军。1961年，中国和缅甸签署边界协定。1972年，载有橄榄球队成员的乌拉圭空军571号班机在飞越安第斯山脉时失事坠落。同年12月23日获救时剩16人生还。"
     }
    ],
    "opt": true
@@ -343,21 +346,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "浣溪沙·细雨斜风作晓寒",
-   "dur": 68.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610121249",
+   "sub": "洞仙歌·冰肌玉骨",
+   "dur": 69.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：浣溪沙·细雨斜风作晓寒。写于1084年，他47岁，在泗州（今江苏盱眙一带）南山。"
+     "t": "读一首苏轼：洞仙歌·冰肌玉骨。写于1082年，他45岁，在黄州。"
     },
     {
      "lang": "zh",
-     "t": "细雨斜风作晓寒，淡烟疏柳媚晴滩。入淮清洛渐漫漫。雪沫乳花浮午盏，蓼茸蒿笋试春盘。人间有味是清欢。"
+     "t": "冰肌玉骨，自清凉无汗。水殿风来暗香满。绣帘开，一点明月窥人，人未寝，欹枕钗横鬓乱。起来携素手，庭户无声，时见疏星渡河汉。试问夜如何？夜已三更，金波淡，玉绳低转。但屈指西风几时来，又不道流年暗中偷换。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：细雨斜风带来清晨的寒意，淡淡的烟雾和稀疏的柳树让放晴的河滩更加妩媚。清澈的洛河流入淮河，水面渐渐变得宽广浩荡。中午泡一盏茶，茶面浮着雪白的泡沫；尝一尝春盘里蓼菜的嫩芽和蒿笋。人间真正有滋味的，是这种清淡的欢乐。"
+     "t": "白话意思是：她肌肤如冰、骨骼似玉，天生清凉无汗。水殿上风吹来，满是淡淡的花香。绣帘掀开，一轮明月偷偷照着她；她还没睡，斜靠枕头，钗横发乱。起身和君王携手漫步，庭院寂静无声，不时看见稀疏的星星划过银河。问夜到了什么时候？已是三更，月光渐淡，玉绳星低低转动。只顾扳着手指盼秋风早点来，却没想到岁月就在不知不觉中悄悄流逝。"
     }
    ],
    "opt": true
@@ -366,12 +369,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 7.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610121249",
+   "dur": 5.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610131037",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }
