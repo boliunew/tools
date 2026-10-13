@@ -1,16 +1,16 @@
 {
- "date": "2026-10-12",
- "kind": "名言",
- "en": "If there is no struggle, there is no progress.",
- "zh": "没有奋斗，就没有进步。",
- "by": "Frederick Douglass",
- "line": "If there is no struggle, there is no progress. — Frederick Douglass",
+ "date": "2026-10-13",
+ "kind": "易错",
+ "en": "Mr. Wang / Ms. Wang",
+ "zh": "王老师",
+ "by": "英语里不说 Teacher + 姓，用 Mr. 或 Ms. + 姓",
+ "line": "✗ Teacher Wang → ✓ Mr. Wang / Ms. Wang",
  "word": {
-  "w": "situate",
-  "ph": "'sitjueit",
-  "zh": "vt. 使位于，使处于",
-  "ex": "The town is situated 1,500 meters above sea level.",
-  "exzh": "这个镇海拔1500米。"
+  "w": "corn",
+  "ph": "kɒ:n",
+  "zh": "n. 玉蜀黍，谷类，谷粒，鸡眼；vt. 使成颗粒，腌",
+  "ex": "This corn is fresh.",
+  "exzh": "这玉米很新鲜。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
