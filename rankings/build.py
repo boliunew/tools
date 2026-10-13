@@ -209,13 +209,13 @@ def movies():
 
     def row(x):
         co = "、".join(n for _, n in x["countries"][1:4])
-        return "| %d | [**%s**](https://www.imdb.com/title/%s/) | %s | %s | %.1f | %s | %s |" % (
-            x["rank"], esc(x["zh"] or x["title"]), x["id"], esc(x["title"]) if x["zh"] else "", x["year"], x["rating"],
-            "{:,}".format(x["votes"]), ("合拍：" + co) if co else "")
+        sub = " · ".join(p for p in (esc(x["title"]) if x["zh"] else "", ("合拍：" + co) if co else "") if p)
+        return "| %d | [**%s**](https://www.imdb.com/title/%s/)%s | %s | %.1f | %s |" % (
+            x["rank"], esc(x["zh"] or x["title"]), x["id"], (" · " + sub) if sub else "", x["year"], x["rating"], wan(x["votes"]))
 
-    summ, sec = group_md(top, row, "| 排名 | 片名 | 英文名 | 年份 | 评分 | 评分人数 | 备注 |", "|---:|---|---|---|---:|---:|---|")
+    summ, sec = group_md(top, row, "| # | 片名 | 年份 | 评分 | 人数 |", "|---:|---|---|---:|---:|")
     today = dt.date.today().isoformat()
-    top10 = ["| 排名 | 片名 | 国家 | 年份 | 评分 |", "|---:|---|---|---|---:|"] + [
+    top10 = ["| # | 片名 | 国家 | 年份 | 评分 |", "|---:|---|---|---|---:|"] + [
         "| %d | [%s](https://www.imdb.com/title/%s/) | %s %s | %s | %.1f |" % (x["rank"], esc(x["short"]), x["id"], flag(x["cc"]), x["cname"], x["year"], x["rating"]) for x in top[:20]]
     L = ["---", "title: 电影 Top 500（按国家分类）", "tags: [电影, 排行榜]",
          "summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按出品国分组；每周自动更新。", "---", "",
@@ -290,14 +290,14 @@ def music():
 
     def row(s):
         ch = sorted(s["charts"].items(), key=lambda kv: kv[1])
-        where = "、".join("%s%d" % (flag(c), r) for c, r in ch[:5]) + ("…" if len(ch) > 5 else "")
-        return "| %d | [**%s**](%s) | %s | %d | %s |%s" % (
-            s["rank"], esc(s["name"]), s["url"], esc(s["artist"]), len(ch), where, " ≈ |" if s["approx"] else " |")
+        where = " ".join("%s%d" % (flag(c), r) for c, r in ch[:3])
+        return "| %d | [**%s**](%s) · %s%s | %d | %s |" % (
+            s["rank"], esc(s["name"]), s["url"], esc(s["artist"]), " ≈" if s["approx"] else "", len(ch), where)
 
-    summ, sec = group_md(top, row, "| 排名 | 歌曲 | 歌手 | 上榜地区数 | 最好名次 | |", "|---:|---|---|---:|---|---|")
+    summ, sec = group_md(top, row, "| # | 歌曲 · 歌手 | 上榜 | 最好名次 |", "|---:|---|---:|---|")
     today = dt.date.today().isoformat()
-    top20 = ["| 排名 | 歌曲 | 歌手 | 国家 | 上榜地区数 |", "|---:|---|---|---|---:|"] + [
-        "| %d | [%s](%s) | %s | %s %s%s | %d |" % (s["rank"], esc(s["name"]), s["url"], esc(s["artist"]), flag(s["cc"]), s["cname"], "≈" if s["approx"] else "", len(s["charts"])) for s in top[:20]]
+    top20 = ["| # | 歌曲 · 歌手 | 国家 | 上榜 |", "|---:|---|---|---:|"] + [
+        "| %d | [**%s**](%s) · %s | %s %s%s | %d |" % (s["rank"], esc(s["name"]), s["url"], esc(s["artist"]), flag(s["cc"]), s["cname"], "≈" if s["approx"] else "", len(s["charts"])) for s in top[:20]]
     region_names = "、".join(flag(c.upper()) + CC.get(c.upper(), c) for c in got)
     L = ["---", "title: 音乐 Top 500（按国家分类）", "tags: [音乐, 排行榜]",
          "summary: Apple Music 25 个国家和地区的最多播放榜合并成全球热歌前 500，按歌手国家分组；每周自动更新。", "---", "",
@@ -306,7 +306,7 @@ def music():
          "**怎么排的**：取 Apple Music 在 %d 个国家和地区的「最多播放」歌曲榜（每个前 100 名，共 %s 首不同的歌），"
          "每上一个地区的榜得 0.01–1 分（第 1 名 1 分，第 100 名 0.01 分），加起来排出全球前 500。"
          "国家是**歌手**所属国（来自 Wikidata；乐队用所属国）。查不到的按它排名最高的那个地区归类，标「≈」。" % (len(got), "{:,}".format(len(songs))), "",
-         "「最好名次」一栏：🇯🇵3 = 在日本榜排第 3。", "",
+         "「上榜」= 上了几个地区的榜；「最好名次」列出排得最高的 3 个地区，🇯🇵3 = 在日本榜排第 3。", "",
          "统计的地区：" + region_names + "。", "",
          "## 各国数量", ""] + summ + ["", "## 总榜前 20", ""] + top20 + sec + [
          "", "---", "", "数据：[Apple Music RSS 榜单](https://rss.marketingtools.apple.com/)、[Wikidata](https://www.wikidata.org/)（CC0）。"
@@ -315,6 +315,10 @@ def music():
         f.write("\n".join(L))
     save("music", top)
     print("  ✓ kb/top500-music.md（%d 首，%d 首按榜单推断国家）" % (len(top), guess), flush=True)
+
+
+def wan(v):
+    return "%.0f万" % (v / 1e4) if v >= 1e5 else "%.1f万" % (v / 1e4)
 
 
 def save(kind, items):
