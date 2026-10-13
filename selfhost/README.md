@@ -43,6 +43,16 @@ bash ~/tools/selfhost/install.sh
    - 再把仓库改成 Private（Settings → General → 最下面 Change visibility）。代码还在，相当于免费备份。
    - 注意：如果仓库改成私有，以后在主机上运行 `update.sh` 拉代码时，需要登录 GitHub（或换成个人访问令牌）。
 
+## 🤖 可选：AI 研判（TradingAgents）
+
+让多个 AI 分析师每天给股票池里「值得细看」的几只写研判，显示在股票池页面顶部。需要一个大模型 API key（按量付费，DeepSeek 最便宜，每只股票大约几美分）：
+
+```bash
+bash ~/tools/selfhost/setup-agents.sh
+```
+
+脚本会装好 TradingAgents（单独的 Python 环境）、问你要 key、开好定时任务（收盘扫描后跑；同一天做过的不会重复花钱）。手动跑一次：`~/tools/selfhost/run-job.sh agents`。
+
 ## 日常管理（用手机 SSH 登录后）
 
 | 想做什么 | 命令 |
@@ -70,6 +80,7 @@ bash ~/tools/selfhost/install.sh
 | `server.py` | 网页服务，加上同步、提醒、监控的接口 |
 | `localgh.py` | 本地版「issue」，原来存在 GitHub 上的提醒和监控改存在这里，留言就是推送 |
 | `run-job.sh` | 跑数据任务（和原来 GitHub Actions 的步骤一样） |
+| `setup-agents.sh` | 可选：开启 AI 研判（TradingAgents） |
 | `update.sh` | 更新代码，同时保留家里产生的数据 |
 | `config.env` | 安装时生成的设置（推送地址等），不进 git |
 | `../.local-data/` | 同步数据、提醒记录、日志，不进 git |
