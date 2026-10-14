@@ -1,0 +1,37 @@
+name: 节假日数据
+
+# 每月 1 号、15 号重算 holidays/data.json（国务院通常 11 月前后公布下一年的放假安排，python-holidays 跟进后这里自动更新）
+on:
+  schedule:
+    - cron: "17 13 1,15 * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["scripts/build_holidays.py", ".github/workflows/holidays.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: holidays
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --upgrade holidays lunardate
+      - run: python scripts/build_holidays.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add holidays/data.json
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "节假日数据更新 $(date -u +%F)"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
