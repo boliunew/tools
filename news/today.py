@@ -42,6 +42,13 @@ ZH_FEEDS = [   # 名字沿用 ZH_FEEDS，内容已经全是英文国际媒体
     ("CNA", "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml"),
 ]
 ZH_ORDER = {name: i for i, (name, _) in enumerate(ZH_FEEDS)}
+# 「奇闻」源里偶尔混进命案、事故、灾难——这些不该当趣闻看，标题或摘要命中就跳过
+GRIM = re.compile(r"\b(death|deaths|dead|die[sd]?|dying|kill(s|ed|ing|er)?|maul(s|ed|ing)?|murder\w*|homicide|suicide|"
+                  r"fatal\w*|corpse|bod(y|ies)\b|remains|funeral|shot|shooting|stabb\w*|attack(s|ed)?|massacre|"
+                  r"rap(e|ed|ist)|abus\w*|assault\w*|crash(es|ed)?|drown\w*|injur\w*|wound\w*|victim\w*|"
+                  r"war|bomb\w*|terror\w*|hostage|kidnap\w*|missing|tragic|tragedy|disaster|earthquake|flood\w*|"
+                  r"cancer|overdose|child abuse|torture\w*)\b", re.I)
+
 ODD_FEEDS = [
     ("UPI", "https://rss.upi.com/news/odd_news.rss"),
     ("Sky News", "https://feeds.skynews.com/feeds/rss/strange.xml"),
@@ -317,6 +324,8 @@ def main():
     odd, per_src = [], {}
     for it in odd_items:
         if per_src.get(it["source"], 0) >= 6:
+            continue
+        if GRIM.search(it["title"]) or GRIM.search(it["summary"] or ""):
             continue
         per_src[it["source"]] = per_src.get(it["source"], 0) + 1
         title = re.sub(r"^(Watch|Look|Video|Photos?)\s*:\s*", "", it["title"])
