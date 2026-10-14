@@ -163,7 +163,7 @@ def main():
         for k in range(1, 120):
             ls, _ = lines_for(D, day + dt.timedelta(days=k))
             if ls:
-                nxt.append("%s：%s" % (md(day + dt.timedelta(days=k)), ls[0].split("\n")[0]))
+                nxt.append("%s：%s" % (md(day + dt.timedelta(days=k)), re.sub(r"(今天是|明天是|还有 7 天就是)", "", ls[0].split("\n")[0])))
             if len(nxt) >= 3:
                 break
         text = "✅ 节日提醒已开启，手机能收到这条就说明推送通了。\n\n接下来会提醒：\n" + "\n".join(nxt) + "\n\n👉 " + PAGE
