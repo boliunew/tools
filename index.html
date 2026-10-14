@@ -47,6 +47,18 @@ details.grp:not([open]) summary:after{transform:rotate(-90deg)}
 .today .warn .lb{color:#C8412B}
 .today .ok{font-size:12px;color:var(--soft);margin-top:8px}
 .today .wx .tx{font-size:16px}
+.today .city{float:right;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;font-size:12px;padding:1px 9px;cursor:pointer;font-weight:400;letter-spacing:0}
+.cpan{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0 6px}
+.cq{display:flex;gap:6px}
+.cq input{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:16px;background:var(--card);color:var(--ink)}
+.cq button{border:0;border-radius:10px;background:var(--accent);color:#fff;padding:0 14px;font-size:14px;cursor:pointer}
+.cc{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.cc button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;font-size:13px;padding:3px 10px;cursor:pointer}
+.cc button.on{border-color:var(--accent);color:var(--accent);font-weight:600}
+.cr{margin-top:8px;display:grid;gap:4px}
+.cr button{text-align:left;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:7px 10px;font-size:14px;cursor:pointer}
+.cr small{color:var(--soft)}
+.cm{font-size:12.5px;color:var(--soft);margin-top:8px}
 .tips{list-style:none;margin:6px 0 0;padding:0}
 .tips li{display:flex;gap:7px;font-size:13.5px;line-height:1.5;padding:3px 0;color:var(--ink)}
 .tips li i{font-style:normal;flex:0 0 auto}
@@ -178,7 +190,7 @@ html.locked #gate{display:block}
 </details>
 <button class="lockbtn" onclick="__lock()">🔒 退出（这台设备需要重新输密码）</button>
 </main>
-<script src="weather.js?v=2"></script>
+<script src="weather.js?v=3"></script>
 <script>
 (function () {
   // 首页「今天」：日期、节气、月相、每日一句、今日一招、今日大事、打折关注；每块各自加载，失败就不显示
@@ -202,15 +214,42 @@ html.locked #gate{display:block}
   // 天气 + 今天要注意的事（weather.js）
   function wxRender(w, all) {
     if (!w) return;
-    var h = '<div class="row wx"><div class="lb">天气 · ' + (new Date().getHours() >= 17 || new Date().getHours() < 4 ? '明天注意' : '今天注意') + '</div><div class="tx">' + esc(w.line) + '</div><div class="sm">' + esc(w.sub) + '</div><ul class="tips">', n = all ? w.tips.length : Math.min(4, w.tips.length);
+    var C = WX.cur ? WX.cur() : null;
+    var h = '<div class="row wx"><div class="lb">天气 · ' + (new Date().getHours() >= 17 || new Date().getHours() < 4 ? '明天注意' : '今天注意') +
+      (C ? '<button class="city" id="wxCity">📍 ' + esc(C.pref.auto ? '自动 · ' + C.loc.name : C.loc.name) + ' ▾</button>' : '') + '</div>' + (WXP ? cityPanel(C) : '') + '<div class="tx">' + esc(w.line) + '</div><div class="sm">' + esc(w.sub) + '</div><ul class="tips">', n = all ? w.tips.length : Math.min(4, w.tips.length);
     for (var i = 0; i < n; i++) h += '<li class="' + w.tips[i].lv + '"><i>' + w.tips[i].i + '</i><span>' + esc(w.tips[i].t) + '</span></li>';
     if (!all && w.tips.length > n) h += '<li><button class="more" id="wxMore">还有 ' + (w.tips.length - n) + ' 条 ›</button></li>';
     put('wx', h + '</ul></div>');
     WXL = w;
   }
   // 别的卡片加载完会重画整个区域，所以「还有 N 条」用事件委托，不直接绑在按钮上
-  var WXL = null;
-  $('tdBody').addEventListener('click', function (e) { if (e.target && e.target.id === 'wxMore' && WXL) { e.preventDefault(); wxRender(WXL, true); } });
+  var WXL = null, WXP = false, WXQ = '', WXR = null, WXMSG = '';
+  function cityPanel(C) {
+    var chips = [['auto', '🛰️ 自动定位（按网络）'], ['gps', '📍 用手机定位'], ['home', '🏠 ' + C.home.name]];
+    C.recent.forEach(function (x, i) { if (x.name !== C.home.name) chips.push(['r' + i, x.name]); });
+    var h = '<div class="cpan"><div class="cq"><input id="wxQ" placeholder="搜城市：北京、上海、Las Vegas…" value="' + esc(WXQ) + '" autocomplete="off"><button id="wxGo">搜</button></div>' +
+      '<div class="cc">' + chips.map(function (c) { var on = c[0] === 'auto' ? C.pref.auto : (!C.pref.auto && (c[0] === 'home' ? C.loc.name === C.home.name : c[1] === C.loc.name)); return '<button data-wc="' + c[0] + '" class="' + (on ? 'on' : '') + '">' + esc(c[1]) + '</button>'; }).join('') + '</div>';
+    if (WXMSG) h += '<div class="cm">' + esc(WXMSG) + '</div>';
+    if (WXR) h += WXR.length ? '<div class="cr">' + WXR.map(function (x, i) { return '<button data-wr="' + i + '"><b>' + esc(x.name) + '</b> <small>' + esc(x.where || '') + '</small></button>'; }).join('') + '</div>' : '<div class="cm">没找到，换个写法试试（中文、英文都行）</div>';
+    return h + '</div>';
+  }
+  function wxPick(l) { WX.setLoc(l); WXP = false; WXR = null; WXQ = ''; WXMSG = ''; WX.load(function (w) { wxRender(w, false); }); }
+  function wxSearch() { var q = ($('wxQ') || {}).value || ''; WXQ = q; WXMSG = '搜索中…'; wxRender(WXL, false); WX.search(q, function (r) { WXR = r; WXMSG = ''; wxRender(WXL, false); }); }
+  $('tdBody').addEventListener('input', function (e) { if (e.target && e.target.id === 'wxQ') WXQ = e.target.value; });
+  $('tdBody').addEventListener('keydown', function (e) { if (e.target && e.target.id === 'wxQ' && e.key === 'Enter') { e.preventDefault(); wxSearch(); } });
+  $('tdBody').addEventListener('click', function (e) {
+    var t = e.target; if (!t || !t.closest) return;
+    if (t.id === 'wxMore' && WXL) { e.preventDefault(); wxRender(WXL, true); return; }
+    if (t.closest('#wxCity')) { e.preventDefault(); WXP = !WXP; WXMSG = ''; wxRender(WXL, false); if (WXP) { var q = $('wxQ'); if (q) q.focus(); } return; }
+    if (t.closest('#wxGo')) { e.preventDefault(); wxSearch(); return; }
+    var b = t.closest('[data-wr]'); if (b) { wxPick(WXR[+b.getAttribute('data-wr')]); return; }
+    b = t.closest('[data-wc]'); if (!b) return;
+    var k = b.getAttribute('data-wc'), C = WX.cur();
+    if (k === 'auto') wxPick({ auto: 1 });
+    else if (k === 'home') wxPick(C.home);
+    else if (k === 'gps') { WXMSG = '定位中…（浏览器会问你是否允许）'; wxRender(WXL, false); WX.gps(function (l, err) { if (l) wxPick(l); else { WXMSG = err; wxRender(WXL, false); } }); }
+    else wxPick(C.recent[+k.slice(1)]);
+  });
   if (window.WX) {
     WX.load(function (w) { wxRender(w, false); });
     // 页面一直开着也会更新：每 20 分钟、或者从后台切回来时重新取一次（weather.js 自带 20 分钟缓存）
