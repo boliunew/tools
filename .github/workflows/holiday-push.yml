@@ -1,0 +1,36 @@
+name: 节日提醒推送
+
+# 每天早上（太平洋时间 7–8 点）看有没有要提醒的节日，有就在 issue「🗓️ 节日提醒」下留言 @ 仓库主人 → GitHub App 推送到手机
+on:
+  schedule:
+    - cron: "3 15 * * *"
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "发一条测试推送"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: holiday-push
+  cancel-in-progress: false
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          TEST: ${{ github.event.inputs.test }}
+        run: python scripts/holiday_push.py $([ "$TEST" = "true" ] && echo --test)
