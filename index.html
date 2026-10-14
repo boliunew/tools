@@ -196,7 +196,7 @@ html.locked #gate{display:block}
   var SUB = [ph[1] + ' ' + ph[2]];
   function sub() { $('tdSub').textContent = SUB.join(' · '); }
   sub();
-  var slots = {}, ORDER = ['wx', 'health', 'sky', 'market', 'earn', 'card', 'vocab', 'sushi', 'tip', 'news', 'watch', 'ok'];
+  var slots = {}, ORDER = ['wx', 'hol', 'health', 'sky', 'market', 'earn', 'card', 'vocab', 'sushi', 'tip', 'news', 'watch', 'ok'];
   function put(k, html) { slots[k] = html; var h = ''; for (var i = 0; i < ORDER.length; i++) if (slots[ORDER[i]]) h += slots[ORDER[i]]; $('tdBody').innerHTML = h; }
 
   // 天气 + 今天要注意的事（weather.js）
@@ -222,6 +222,37 @@ html.locked #gate{display:block}
     var list = w.jieqi.slice().sort(function (a, b) { return a.md < b.md ? -1 : 1; }), cur = list[list.length - 1], nx = list[0];
     for (var i = 0; i < list.length; i++) { if (list[i].md <= md) { cur = list[i]; nx = list[(i + 1) % list.length]; } }
     SUB.push('节气 ' + cur.name + '（下一个 ' + nx.name + ' ' + nx.md.replace('-', '/') + '）'); sub();
+  });
+  // 节日倒计时（holidays/data.json）：今天是什么节 / 接下来几个节日还有几天
+  getJSON('holidays/data.json?t=' + Math.floor(Date.now() / 36e5), function (H) {
+    var t0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    function pd(x) { var p = x.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+    function dd(x) { return Math.round((pd(x) - t0) / 864e5); }
+    var up = [], todays = [];
+    (H.items || []).forEach(function (x) {
+      var a = dd(x.from || x.d), b = dd(x.to || x.d);
+      if (b < 0) return;
+      if (a <= 0) todays.push([x, b]); else if (a <= 120) up.push([x, a]);
+    });
+    up.sort(function (p, q) { return p[1] - q[1]; });
+    if (!todays.length && !up.length) return;
+    function fl(x) { return x.c === 'cn' ? '🇨🇳' : '🇺🇸'; }
+    function inf(x) { return (H.info || {})[x.c + ':' + x.n.replace(/（补休）$/, '')]; }
+    var h = '<a class="row" href="holidays.html"><div class="lb">节日倒计时</div>', main = todays.length ? todays[0] : up[0], x = main[0], I = inf(x);
+    if (todays.length) {
+      h += '<div class="tx">' + todays.map(function (p) { return p[0].e + ' 今天' + (p[0].len > 1 ? '放假中：' : '是') + esc(p[0].n) + (p[0].len > 1 && p[1] > 0 ? '（还剩 ' + p[1] + ' 天）' : ''); }).join('；') + '</div>';
+    } else {
+      h += '<div class="tx">' + x.e + ' ' + fl(x) + ' ' + esc(x.n) + ' 还有 <b>' + main[1] + '</b> 天' + (x.len > 1 ? '（放假 ' + x.len + ' 天）' : '') + '</div>';
+    }
+    if (I && I.f && I.f.length) h += '<div class="sm">💡 ' + esc(I.f[now.getDate() % I.f.length]) + '</div>';
+    var rest = up.filter(function (p) { return p[0] !== x; }).slice(0, 3);
+    // 两边各自最近的一个放假日，不在前三个里就补上
+    ['cn', 'us'].forEach(function (c) {
+      var o = null; up.forEach(function (p) { if (!o && p[0].c === c && p[0].k === 'off') o = p; });
+      if (o && o[0] !== x && rest.indexOf(o) < 0) rest.push(o);
+    });
+    if (rest.length) h += '<div class="sm">接下来：' + rest.map(function (p) { return p[0].e + esc(p[0].n) + ' ' + p[1] + ' 天' + (p[0].k === 'off' ? '（' + (p[0].c === 'cn' ? '放假' : '联邦假日') + '）' : ''); }).join(' · ') + '</div>';
+    put('hol', h + '</a>');
   });
   getJSON('card/today.json', function (c) {
     put('card', '<a class="row" href="card.html"><div class="lb">每日一句 · ' + esc(c.kind) + '</div><div class="tx">' + esc(c.en) + '</div><div class="sm">' + esc(c.zh) + (c.by ? ' — ' + esc(c.by) : '') + '</div></a>');
