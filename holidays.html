@@ -61,6 +61,17 @@ button{font:inherit;color:inherit;cursor:pointer}
 .it .cd b.today{color:var(--cn);font-family:inherit;font-size:16px}
 .it.cnoff{border-left:4px solid var(--cn)} .it.usoff{border-left:4px solid var(--us)}
 .more{display:block;width:100%;border:1px dashed var(--line);background:none;border-radius:12px;padding:10px;color:var(--soft);font-size:13.5px;margin:10px 0}
+.it{cursor:default}
+.it.has{cursor:pointer}
+.it .tgl{font-size:12.5px;color:var(--cn);margin-top:2px}
+.it.us .tgl{color:var(--us)}
+.ex{display:none;margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+.it.open .ex{display:block}
+.ex h4{margin:8px 0 2px;font-size:12.5px;color:var(--faint);font-weight:700;letter-spacing:.04em}
+.ex h4:first-child{margin-top:0}
+.ex p{margin:0;font-size:14px;line-height:1.7;color:var(--ink)}
+.ex ul{margin:2px 0 0;padding-left:18px;font-size:14px;line-height:1.7}
+.ex li{margin:2px 0}
 .foot{font-size:12px;color:var(--faint);margin-top:18px;line-height:1.7}
 .empty{color:var(--faint);text-align:center;padding:40px 0}
 </style>
@@ -84,7 +95,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function store(k, v) { try { if (v === undefined) return localStorage.getItem('hol:' + k); localStorage.setItem('hol:' + k, v); } catch (e) { return null; } }
   var WD = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-  var F = store('f') || 'all', ALL = false, DATA = null;
+  var F = store('f') || 'all', ALL = false, DATA = null, OPEN = {};
   var FILTERS = [['all', '全部'], ['off', '只看放假'], ['cn', '🇨🇳 中国'], ['us', '🇺🇸 美国'], ['nyse', '📉 美股休市']];
 
   function pd(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
@@ -109,7 +120,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     return '还有<b>' + a + '</b>天';
   }
   function itemHTML(x) {
-    var cls = 'it' + (diff(end(x)) < 0 ? ' past' : '') + (x.k === 'off' ? ' ' + x.c + 'off' : ''), tags = '', sub = '';
+    var I = (DATA.info || {})[x.c + ':' + x.n.replace(/（补休）$/, '')], key = x.c + x.d + x.n;
+    var cls = 'it ' + x.c + (diff(end(x)) < 0 ? ' past' : '') + (x.k === 'off' ? ' ' + x.c + 'off' : '') + (I ? ' has' : '') + (OPEN[key] ? ' open' : ''), tags = '', sub = '';
     if (x.c === 'cn') {
       if (x.k === 'off') {
         tags += '<span class="tg cn">放假 ' + x.len + ' 天</span>' + (x.est ? '<span class="tg gold">预计 · 未正式公布</span>' : '');
@@ -122,8 +134,10 @@ button{font:inherit;color:inherit;cursor:pointer}
     }
     var note = x.note ? esc(x.note) : '';
     if (x.work && x.work.length) note = '调休上班：' + x.work.map(mdw).join('、') + (note ? '。' + note : '');
-    return '<div class="' + cls + '"><div class="em">' + x.e + '</div><div class="bd"><div class="t"><span class="fl">' + (x.c === 'cn' ? '🇨🇳' : '🇺🇸') + '</span>' + esc(x.n) + '</div>' +
-      '<div class="sub">' + sub + '</div>' + (note ? '<div class="note">' + note + '</div>' : '') + '<div class="tags">' + tags + '</div></div><div class="cd">' + cdHTML(x) + '</div></div>';
+    var ex = I ? '<div class="tgl">' + (OPEN[key] ? '收起 ▴' : '由来 · 怎么过 · 冷知识 ▾') + '</div><div class="ex"><h4>📜 由来</h4><p>' + esc(I.o) + '</p><h4>🎉 这一天庆祝什么</h4><p>' + esc(I.c) + '</p>' +
+      (I.f && I.f.length ? '<h4>💡 冷知识</h4><ul>' + I.f.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') + '</div>' : '';
+    return '<div class="' + cls + '" data-k="' + esc(key) + '"><div class="em">' + x.e + '</div><div class="bd"><div class="t"><span class="fl">' + (x.c === 'cn' ? '🇨🇳' : '🇺🇸') + '</span>' + esc(x.n) + '</div>' +
+      '<div class="sub">' + sub + '</div>' + (note ? '<div class="note">' + note + '</div>' : '') + '<div class="tags">' + tags + '</div>' + ex + '</div><div class="cd">' + cdHTML(x) + '</div></div>';
   }
   function nextOf(test) {
     var best = null;
@@ -161,6 +175,12 @@ button{font:inherit;color:inherit;cursor:pointer}
       '。传统节日按农历换算。<br>美国：联邦假日（政府、银行、邮局放假，正日子在周末会补休）、加州州假、纽约证券交易所休市日、常见节日。<br>天数按你手机上的日期算。数据每月自动更新两次，最近一次：' + esc(DATA.generated) + '。';
     var mb = $('more'); if (mb) mb.onclick = function () { ALL = !ALL; render(); };
   }
+  $('list').addEventListener('click', function (e) {
+    var it = e.target.closest('.it.has'); if (!it || e.target.closest('a')) return;
+    var k = it.getAttribute('data-k'); OPEN[k] = !OPEN[k];
+    it.classList.toggle('open', !!OPEN[k]);
+    var t = it.querySelector('.tgl'); if (t) t.textContent = OPEN[k] ? '收起 ▴' : '由来 · 怎么过 · 冷知识 ▾';
+  });
   $('chips').onclick = function (e) { var b = e.target.closest('[data-f]'); if (!b) return; F = b.getAttribute('data-f'); store('f', F); render(); };
   var x = new XMLHttpRequest();
   x.open('GET', 'holidays/data.json?t=' + Math.floor(Date.now() / 36e5));

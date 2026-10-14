@@ -176,9 +176,17 @@ def main():
     years = [y0, y0 + 1, y0 + 2]
     items = china(years) + usa(years)
     items.sort(key=lambda x: (x["d"], x["c"]))
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from holiday_info import INFO
+    used = {x["c"] + ":" + re.sub(r"（补休）$", "", x["n"]) for x in items}
+    miss = sorted(k for k in used if k not in INFO)
+    if miss:
+        print("⚠️ 这些节日还没写由来：", "、".join(miss))
+    info = {k: v for k, v in INFO.items() if k in used}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
-        json.dump({"generated": dt.date.today().isoformat(), "years": years, "items": items}, f, ensure_ascii=False, separators=(",", ":"))
+        json.dump({"generated": dt.date.today().isoformat(), "years": years, "items": items, "info": info}, f, ensure_ascii=False, separators=(",", ":"))
     est = sorted({x["d"][:4] for x in items if x.get("est")})
     print("holidays/data.json：%d 条（%s）；中国放假安排为预计的年份：%s" % (len(items), years, ", ".join(est) or "无"))
 
