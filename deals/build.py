@@ -121,7 +121,7 @@ RULES = [  # order matters: the first match wins
     ("pet", r"\b(dog|dogs|puppy|cats?|cat food|cat litter|cat treats|kitten|kitty|litter|pet|pets|purina|pedigree|friskies|meow mix|iams|blue buffalo|milk-bone|greenies|fancy feast|temptations)\b"),
     ("baby", r"\b(diaper|diapers|pampers|huggies|luvs|baby|babies|infant|toddler|enfamil|similac|gerber|pacifier|stroller|car seat)\b"),
     ("electronics", r"\b(carplay|android auto|dash ?cam|power station|docking station|pc case|ssd|apple (?:airpods|watch|ipad|iphone|macbook|tv|pencil)|tv|tvs|television|oled|qled|laptop|laptops|chromebook|macbook|tablet|ipad|iphone|android phone|smartphone|phone|headphones|earbuds|airpods|speaker|speakers|soundbar|monitor|camera|smart ?watch|apple watch|charger|charging|usb|cable|ssd|hard drive|microsd|router|wi-?fi|gaming|playstation|ps5|xbox|nintendo|switch 2|printer|kindle|echo|alexa|fire tv|roku|streaming|bluetooth|projector|gpu|graphics card|keyboard|mouse|power bank|batteries|drone|dash cam|electronics)\b"),
-    ("drinks", r"\b(soda|sodas|coca-cola|coke|pepsi|sprite|dr\.? pepper|squirt|7up|7-up|fanta|jarritos|water|waters|juice|juices|tea|teas|coffee|k-cup|k-cups|gatorade|powerade|energy drink|monster energy|red bull|beer|beers|wine|wines|vodka|tequila|whiskey|whisky|rum|seltzer|lemonade|kombucha|drink|drinks|beverage|beverages|horchata|agua fresca|bodyarmor|celsius|smoothie)\b"),
+    ("drinks", r"\b(margarita mix|cocktail mix(?:er)?|mixers?|protein shakes?|shakes|soda|sodas|coca-cola|coke|pepsi|sprite|dr\.? pepper|squirt|7up|7-up|fanta|jarritos|water|waters|juice|juices|tea|teas|coffee|k-cup|k-cups|gatorade|powerade|energy drink|monster energy|red bull|beer|beers|wine|wines|vodka|tequila|whiskey|whisky|rum|seltzer|lemonade|kombucha|drink|drinks|beverage|beverages|horchata|agua fresca|bodyarmor|celsius|smoothie)\b"),
     ("snacks", r"\b(nutter butter|chips|doritos|cheetos|lay'?s|ruffles|pringles|takis|tostitos|fritos|cookies|cookie|oreo|crackers|cheez-it|goldfish|candy|candies|chocolate|chocolates|gum|snack|snacks|popcorn|pretzels|nuts|almonds|peanuts|pistachios|trail mix|granola bars?|fruit snacks|jerky|gummies|gummy|m&m'?s|snickers|reese'?s|kit ?kat|skittles|halloween candy)\b"),
     ("frozen", r"\b(frozen|ice cream|popsicles?|ice pops?|hot pockets|burritos|chimichangas|taquitos|nuggets|waffles|tv dinners?|el monterey|totino'?s|digiorno|red baron|stouffer'?s|banquet|lean cuisine|marie callender'?s|eggo|pizza rolls|frozen pizza|pot pies?)\b"),
     ("bakery", r"\b(bread|breads|bagels?|buns|rolls|tortillas?|muffins?|donuts?|doughnuts?|cakes?|pies?|croissants?|pan dulce|conchas|bolillos?|bakery|hawaiian rolls|english muffins)\b"),
@@ -129,7 +129,7 @@ RULES = [  # order matters: the first match wins
     ("seafood", r"\b(shrimp|salmon|tilapia|cod|crab|crabs|lobster|swai|catfish|mussels|clams|scallops|oysters|seafood|fish fillets?|fresh fish|mojarra|pollock)\b"),
     ("meat", r"\b(chicken|beef|pork|steak|steaks|ground|turkey|ham|bacon|sausage|sausages|hot dogs?|franks|ribs|roast|chops|carne|carne asada|chorizo|lamb|wings|thighs|drumsticks|breasts?|tri-tip|tri tip|brisket|deli meat|lunch ?meat|salami|bologna|meat|meats|ribeye|sirloin|fajita|al pastor|tenderloin|loin|carnitas|patties)\b"),
     ("produce", r"\b(apples?|bananas?|oranges?|grapes|berries|strawberries|blueberries|raspberries|blackberries|avocados?|tomatoes|tomato|potatoes|potato|onions?|lettuce|cabbage|carrots?|sweet corn|corn on the cob|peppers|bell peppers?|cucumbers?|squash|zucchini|melons?|watermelons?|cantaloupes?|honeydew|pineapples?|mangos?|mangoes|peaches|pears?|plums?|lemons?|limes?|cilantro|celery|broccoli|cauliflower|spinach|kale|garlic|ginger|jicama|tomatillos?|papayas?|grapefruit|mandarins?|tangerines?|clementines?|kiwis?|cherries|salad|salads|mushrooms?|asparagus|green beans|yams?|sweet potatoes|jalape[nñ]os?|chiles?|produce|fruit|fruits|vegetables?|nectarines|pomegranates?|persimmons?|pumpkins?)\b"),
-    ("pantry", r"\b(rice|beans|pasta|spaghetti|noodles|ramen|ramyun|cereal|oatmeal|oats|flour|sugar|cooking oil|olive oil|sauce|salsa|soups?|broth|spices|seasoning|ketchup|mayo|mayonnaise|mustard|peanut butter|jelly|jam|honey|syrup|tuna|vinegar|masa|maseca|pancake|waffle mix|baking mix|cake mix|grocery|groceries|canned)\b"),
+    ("pantry", r"\b(gravy|sweeteners?|rice|beans|pasta|spaghetti|noodles|ramen|ramyun|cereal|oatmeal|oats|flour|sugar|cooking oil|olive oil|sauce|salsa|soups?|broth|spices|seasoning|ketchup|mayo|mayonnaise|mustard|peanut butter|jelly|jam|honey|syrup|tuna|vinegar|masa|maseca|pancake|waffle mix|baking mix|cake mix|grocery|groceries|canned)\b"),
     ("household", r"\b(disposable|steam pans?|party cups|paper bowls|paper plates|paper towels?|bath tissue|toilet paper|facial tissue|tissues?|napkins|detergent|tide|gain|bleach|clorox|cleaner|cleaners|cleaning|trash bags?|garbage bags?|aluminum foil|foil|plastic wrap|ziploc|storage bags|dish soap|dawn|cascade|finish|fabric softener|downy|dryer sheets|sponges?|lysol|air fresheners?|febreze|pine-sol|swiffer|charmin|bounty|scott|cottonelle|kleenex|plates|cups|utensils)\b"),
     ("beauty", r"\b(shampoo|conditioner|soap|body wash|deodorant|antiperspirant|toothpaste|toothbrush|mouthwash|floss|razors?|shave|lotion|makeup|cosmetics?|mascara|lipstick|vitamins?|supplements?|medicine|pain relief|tylenol|advil|motrin|aleve|allergy|cold & flu|cough|first aid|bandages|hair|skin ?care|sunscreen|feminine|tampons|pads|perfume|cologne|fragrance|nail|serum|moisturizer|cleanser|colgate|crest|dove|olay|neutrogena|cerave|gillette|pharmacy|health)\b"),
     ("toys", r"\b(the game|card game|catan|toy|toys|lego|barbie|hot wheels|dolls?|puzzles?|board games?|nerf|play-doh|plush|action figures?|kids'? games?|pok[eé]mon cards)\b"),
@@ -146,7 +146,51 @@ L1MAP = {
 FOOD = {"meat", "seafood", "produce", "dairy", "bakery", "frozen", "pantry", "snacks", "drinks"}
 
 
+# 网上特价（Slickdeals / DealNews / camel）只有标题、没有分类，标题里的颜色、角色名、「for pets」很容易误判。
+# 这些先按产品本身判断，再看是不是食品；超市周报（有 Flipp 分类）还是走原来的规则。
+FRANCHISE = re.compile(r"\b(disney(?:'s)?\s+)?frozen(\s+(ii|2))?\b(?=.*\b(disney|elsa|olaf|anna|princess|lego|duplo|kids?|toddler|girls?|boys?|bike|doll|toy|costume|pajamas?|backpack)\b)"
+                       r"|\b(disney|pixar)\b.*?\bfrozen\b|\bfrozen\b(?=.*\b(elsa|olaf)\b)|\b(cars|toy story|paw patrol)\b(?=.*\b(kids?|toddler|boys?|baby)\b)", re.I)
+STRONG = [  # 一看就知道是什么的产品，优先
+    ("toys", r"\b(lego|duplo|nerf|super soaker|play-doh|hot wheels|barbie|crayola|fisher-price|melissa ?& ?doug|robo alive|zuru|squishmallows?|funko|magna-tiles|stem\\b|experiment kit|building (?:kit|set|toy)|playsets?|plush|board games?)\b"),
+    ("clothing", r"\b(costumes?|watch(?:es)?|tote bags?|crossbody)\b"),
+    ("outdoor", r"\b(multi-?tool|welding|socket set|bike pump|tires?)\b"),
+    ("home", r"\b(water filters?|filtration|reverse osmosis|air purifiers?|humidifiers?|carpet cleaner|vacuums?|refrigerators?|freezers?|fridge|coffee (?:maker|machine|pot)|thermometers?|lunch ?box|silverware|flatware|dinnerware|kitchen|scissors|tongs|shredder claws|sideboard|cabinet|dining table|string lights|fairy lights|pathway lights|lanterns?|night light|led lights?|lights|(?:wall|tower|ceiling|box|pedestal) fans?|air mattress|pressure cooker|air fryer)\b"),
+    ("beauty", r"\b(petroleum jelly|ointment|vitamins?|supplements?|gummies with|serum|cleanser|deodorant|shave gel)\b"),
+    ("household", r"\b(toilet paper|paper towels?|bath tissue|dish soap|dishwasher|detergent|cleaning (?:kit|sponges?)|toilet bowl|fly (?:control|traps?)|traps?)\b"),
+    ("pet", r"\b(dog (?:bed|toys?|carrier|food|treats|bandanas?)|cat (?:bed|tree|food|litter|treats)|dogs?\b(?! days)|puppy food|kitten|litter box)\b"),
+]
+STRONG = [(k, re.compile(p, re.I)) for k, p in STRONG]
+ONLINE_ORDER = ["media", "toys", "electronics", "home", "clothing", "outdoor", "household", "beauty", "pet", "baby",
+                "drinks", "snacks", "frozen", "pantry", "bakery", "dairy", "seafood", "meat"]   # 网上特价不判「蔬菜水果」：orange、lime、plum 多半是颜色
+WEAK = {   # 这些词在网上特价里太容易误判，只在超市周报里用
+    "drinks": re.compile(r"\b(water|waters|tea|drink|drinks|beverage|beverages)\b", re.I),
+    "pet": re.compile(r"\b(pet|pets|cats?)\b", re.I),
+    "baby": re.compile(r"\b(gerber)\b", re.I),
+}
+RULE = dict(RULES)
+
+
+def classify_online(name):
+    n = FRANCHISE.sub(" ", name)
+    for k, rx in STRONG:
+        if rx.search(n):
+            return k
+    for k in ONLINE_ORDER:
+        m = RULE[k].search(n)
+        if not m:
+            continue
+        w = WEAK.get(k)
+        if w and w.fullmatch(m.group(0)):
+            # 只命中了弱词：看看还有没有别的强词
+            if not any(not w.fullmatch(x.group(0)) for x in RULE[k].finditer(n)):
+                continue
+        return k
+    return "other"
+
+
 def classify(name, l1=None, l2=None, grocery=False):
+    if l1 is None and not grocery:
+        return classify_online(name)
     if l1 == "Home & Garden":
         cat = {"Household Supplies": "household", "Kitchen & Dining": "home", "Lawn & Garden": "outdoor"}.get(l2 or "", None)
         if cat:
