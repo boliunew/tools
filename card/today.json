@@ -1,16 +1,16 @@
 {
- "date": "2026-10-13",
- "kind": "易错",
- "en": "Mr. Wang / Ms. Wang",
- "zh": "王老师",
- "by": "英语里不说 Teacher + 姓，用 Mr. 或 Ms. + 姓",
- "line": "✗ Teacher Wang → ✓ Mr. Wang / Ms. Wang",
+ "date": "2026-10-14",
+ "kind": "习语",
+ "en": "pull someone's leg",
+ "zh": "逗你玩",
+ "by": "开玩笑，逗人玩",
+ "line": "pull someone's leg",
  "word": {
-  "w": "corn",
-  "ph": "kɒ:n",
-  "zh": "n. 玉蜀黍，谷类，谷粒，鸡眼；vt. 使成颗粒，腌",
-  "ex": "This corn is fresh.",
-  "exzh": "这玉米很新鲜。"
+  "w": "ruine",
+  "ph": "'ru:ɪn",
+  "zh": "路因碱",
+  "ex": "The two of you have ruined my life.",
+  "exzh": "你们两个误了我一生。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
