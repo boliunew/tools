@@ -2,7 +2,10 @@ name: 财报与经济日历
 
 on:
   schedule:
-    - cron: "37 12 * * 1-5"   # 工作日早上（太平洋时间约 5:37）
+    # GitHub 的定时任务经常晚 4～6 小时才真正开始，所以早上那次提前到半夜排队
+    - cron: "11 7 * * 1-5"    # 美东凌晨：开盘前把今天的日历准备好
+    - cron: "41 12 * * 1-5"   # 补跑一次（以防上面那次被延迟或失败）
+    - cron: "23 21 * * 1-5"   # 收盘后：补上当天盘前财报的结果、昨晚盘后财报的反应
     - cron: "37 18 * * 0"     # 周日提前准备下周
   workflow_dispatch: {}
   push:
@@ -29,7 +32,36 @@ jobs:
           cache-dependency-path: earnings/requirements.txt
       - run: pip install -r earnings/requirements.txt
       - run: python earnings/build.py
+      - name: Summary (test branches)
+        if: github.ref != 'refs/heads/main'
+        run: |
+          python - <<'PY'
+          import json
+          d = json.load(open("earnings/data/latest.json")); h = json.load(open("earnings/data/history.json"))
+          out = [f"diag {d['diag']}", f"history {len(h)} with result {sum(1 for v in h.values() if v.get('res'))}",
+                 "score " + json.dumps(d["score"], ensure_ascii=False)]
+          E = [e for x in d["days"] for e in x["earnings"]]
+          out.append(f"upcoming {len(E)} when-empty {sum(1 for e in E if not e.get('when'))} guessed {sum(1 for e in E if e.get('when_guess'))} "
+                     f"implied {sum(1 for e in E if e.get('implied'))} sym {sum(1 for e in E if e.get('sym'))}")
+          for x in d["past"]:
+              out.append(f"PAST {x['date']} {len(x['earnings'])} " + str([(m["title"], [l["actual"] for l in m["lines"]][:2]) for m in x["macro"] if m["imp"] != "低"]))
+          for x in d["past"] + d["days"][:1]:
+              for e in x["earnings"][:4]:
+                  out.append(f"RES {x['date']} {e['t']} {e.get('when')} {e.get('tags')} {e.get('res')} " + str([c["txt"] for c in e.get("checks", [])]))
+          for e in [e for e in E if e.get("implied")][:5]:
+              out.append(f"IMP {e['t']} {e['date']} {e['when']} {e['implied']} {e['comment'][0]}")
+          msg = "\n".join(out)
+          for i in range(0, len(msg), 3500):
+              print("::notice title=summary" + str(i // 3500) + "::" + msg[i:i + 3500].replace("%", "%25").replace("\r", "").replace("\n", "%0A"))
+          PY
+      - name: Upload (test branches)
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: earnings-data
+          path: earnings/data/*.json
       - name: Commit
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

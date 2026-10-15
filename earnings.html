@@ -91,6 +91,29 @@ h2.day small{font-size:12.5px;color:var(--faint);font-weight:400;margin-left:8px
 .expl{padding:14px 16px;font-size:13.5px;color:var(--soft);line-height:1.8}
 .expl b{color:var(--ink)}
 footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;line-height:1.7}
+.dn.past{opacity:.62;background:transparent}
+.dn.past.on{opacity:1}
+.stats small{font-size:10.5px;color:var(--mid);margin-left:3px;font-weight:600}
+.res{border:1px solid var(--line);background:var(--chip);border-radius:10px;padding:8px 10px;margin:8px 0;font-size:13px}
+.res .rh{font-size:11.5px;font-weight:700;color:var(--accent);margin-bottom:2px}
+.res b{font-variant-numeric:tabular-nums}
+.chk{margin-top:4px}
+.chk span{display:inline-block;font-size:12px;margin:2px 10px 0 0}
+.chk .ok{color:var(--accent)} .chk .no{color:var(--hi)}
+.msur{font-size:11px;font-weight:700;padding:0 6px;border-radius:5px;background:var(--mid-soft);color:var(--mid);margin-left:2px}
+.rv{padding:6px 14px 10px}
+.rv-r{display:flex;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px;cursor:pointer}
+.rv-r:last-child{border-bottom:0}
+.rv-r .tk{font-weight:700;width:58px;flex:none}
+.rv-r .dt{color:var(--faint);font-size:12px;width:44px;flex:none}
+.rv-r .mid{flex:1;min-width:0;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rv-r .mv{font-weight:700;font-variant-numeric:tabular-nums;margin-left:8px}
+.sc{padding:6px 14px 12px}
+.sc-r{padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.sc-r:last-child{border-bottom:0}
+.sc-r .bar2{height:6px;border-radius:3px;background:var(--chip);margin-top:5px;position:relative;overflow:hidden}
+.sc-r .bar2 i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:3px}
+.sc-r small{color:var(--faint);font-size:12px}
 @media (max-width:560px){ .stats div{width:50%} }
 </style>
 <script src="sync.js?v=1"></script>
@@ -112,6 +135,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   var WD = ['日', '一', '二', '三', '四', '五', '六'];
   function dparts(ds) { var p = ds.split('-'); var d = new Date(+p[0], +p[1] - 1, +p[2]); return { m: +p[1], d: +p[2], w: WD[d.getDay()] }; }
   function isToday(ds) { var n = new Date(); return ds === n.getFullYear() + '-' + ('0' + (n.getMonth() + 1)).slice(-2) + '-' + ('0' + n.getDate()).slice(-2); }
+  function todayStr() { var n = new Date(); return n.getFullYear() + '-' + ('0' + (n.getMonth() + 1)).slice(-2) + '-' + ('0' + n.getDate()).slice(-2); }
+  function num(v) { if (blank(v)) return null; var m = String(v).replace(/,/g, '').match(/-?\d+(\.\d+)?/); return m ? parseFloat(m[0]) : null; }
   function get(url, cb) { var x = new XMLHttpRequest(); x.open('GET', url + '?t=' + Date.now()); x.onload = function () { if (x.status === 200) { try { cb(JSON.parse(x.responseText)); return; } catch (e) { } } cb(null); }; x.onerror = function () { cb(null); }; x.send(); }
 
   get('earnings/data/latest.json', function (d) {
@@ -122,11 +147,14 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 
   function erMatch(e) { return F.scope === 'all' || (F.scope === 'big' && (e.cap || 0) >= 1e11) || (F.scope === 'mine' && (e.watch || POOL[e.t] || MYW[e.t])) || (F.scope === 'hot' && (e.tags || []).length && e.tags.join(',').match(/利好出尽|已提前炒作|大波动/)); }
   function render() {
-    var h = '', i, j, days = D.days;
+    var h = '', i, j, T = todayStr(), seen = {}, days = [];
+    (D.past || []).concat(D.days).forEach(function (d) { if (!seen[d.date]) { seen[d.date] = 1; days.push(d); } });
+    days.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+    for (i = 0; i < days.length; i++) days[i].isPast = days[i].date < T;
     if (D.demo) h += '<div class="banner">⚠️ 当前是<b>示例数据</b>（随机生成），第一次真实更新后会自动替换。</div>';
     var gen = new Date(D.generated);
     if (!D.demo && (Date.now() - gen.getTime()) / 36e5 > 66) h += '<div class="banner">⚠️ 日历已经 ' + Math.floor((Date.now() - gen.getTime()) / 864e5) + ' 天没更新了，可能是自动任务失败，<a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">去 GitHub Actions 看看</a>。</div>';
-    var nE = 0, nM = 0; for (i = 0; i < days.length; i++) { nE += days[i].earnings.length; nM += days[i].macro.length; }
+    var nE = 0, nM = 0; for (i = 0; i < days.length; i++) if (!days[i].isPast) { nE += days[i].earnings.length; nM += days[i].macro.length; }
     h += '<div class="meta">未来两周 · ' + nM + ' 项经济数据 · ' + nE + ' 家公司发财报 · 更新于 ' + (gen.getMonth() + 1) + '月' + gen.getDate() + '日 ' + ('0' + gen.getHours()).slice(-2) + ':' + ('0' + gen.getMinutes()).slice(-2) + ' · <a href="kb.html#economic-indicators">📘 这些经济数据怎么看</a> · <a href="kb.html#market-crash-history">历次大跌</a></div>';
     h += '<div class="daynav">';
     for (i = 0; i < days.length; i++) {
@@ -134,33 +162,41 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
       for (j = 0; j < days[i].macro.length; j++) if (days[i].macro[j].imp === '高') hi = true;
       if (hi) dots += '<i style="background:var(--hi)"></i>'; else if (days[i].macro.length) dots += '<i style="background:var(--mid)"></i>';
       if (days[i].earnings.length) dots += '<i style="background:var(--accent)"></i>';
-      h += '<button class="dn' + (F.sel === i ? ' on' : '') + (isToday(days[i].date) ? ' today' : '') + '" data-d="' + i + '"><small>周' + p.w + '</small><b>' + p.m + '/' + p.d + '</b><small>' + (days[i].earnings.length ? days[i].earnings.length + ' 家' : '—') + '</small><span class="dots">' + dots + '</span></button>';
+      var ne = days[i].earnings.length;
+      h += '<button class="dn' + (F.sel === i ? ' on' : '') + (isToday(days[i].date) ? ' today' : '') + (days[i].isPast ? ' past' : '') + '" data-d="' + i + '"><small>周' + p.w + '</small><b>' + p.m + '/' + p.d + '</b><small>' + (ne ? ne + (days[i].isPast ? ' 已公布' : ' 家') : '—') + '</small><span class="dots">' + dots + '</span></button>';
     }
     h += '</div><div class="filters">';
     var sc = [['all', '全部'], ['big', '千亿美元以上'], ['hot', '利好出尽 / 已炒作'], ['mine', '股票池 & 自选']];
     for (i = 0; i < sc.length; i++) h += '<button class="chip' + (F.scope === sc[i][0] ? ' on' : '') + '" data-s="' + sc[i][0] + '">' + sc[i][1] + '</button>';
     h += '</div>';
     var body = '';
+    if (F.sel == null) body += reviewHTML(days);
     for (i = 0; i < days.length; i++) {
       if (F.sel != null && F.sel !== i) continue;
+      if (F.sel == null && days[i].isPast) continue;
       var dd = days[i], ers = dd.earnings.filter(erMatch);
       if (!dd.macro.length && !ers.length && F.sel == null) continue;
       var pp = dparts(dd.date);
-      body += '<h2 class="day">' + pp.m + '月' + pp.d + '日 周' + pp.w + (isToday(dd.date) ? ' · 今天' : '') + '<small>' + (dd.macro.length ? dd.macro.length + ' 项数据' : '') + (ers.length ? '　' + ers.length + ' 家财报' : '') + '</small></h2>';
+      body += '<h2 class="day">' + pp.m + '月' + pp.d + '日 周' + pp.w + (isToday(dd.date) ? ' · 今天' : dd.isPast ? ' · 已过去' : '') + '<small>' + (dd.macro.length ? dd.macro.length + ' 项数据' : '') + (ers.length ? '　' + ers.length + ' 家财报' : '') + '</small></h2>';
       for (j = 0; j < dd.macro.length; j++) body += macroHTML(dd.macro[j]);
       for (j = 0; j < ers.length; j++) body += erHTML(ers[j]);
       if (!dd.macro.length && !ers.length) body += '<div class="card empty">这一天没有重要数据或符合筛选的财报</div>';
     }
     h += body || '<div class="card empty">没有符合条件的内容</div>';
+    h += scoreHTML(D.score);
     h += '<h2 class="day">怎么看这些数据</h2><div class="card expl">' +
       '<b>相对大盘</b>：所有涨跌都减去了同期 SPY 的涨跌，只看个股自己的反应。<br>' +
       '<b>利好兑现下跌率</b>：业绩超预期（EPS 高于分析师预期）的那几次里，股价当天反而跑输大盘的比例。比例高，说明好消息往往早被提前炒进股价，也就是「利好出尽」。<br>' +
       '<b>财报前 10 日涨幅</b>：财报前有没有被提前炒作。评语会对比历史：以前财报前先涨了，财报当天是继续涨还是回吐。<br>' +
-      '<b>期权隐含波动</b>：用最近一期平值跨式期权价格估算的市场预期波动。和历史实际波动对比，可以看出市场这次押得大还是小。<br>' +
-      '<b>联动股票</b>：统计过去历次财报日，哪些股票的涨跌和这家公司高度同步（相关系数 ≥ 0.55，同向比例 ≥ 70%）。<br>' +
+      '<b>期权隐含波动</b>：用财报后第一个到期日的平值跨式期权价格估算的市场预期波动。期权衡量的是股价本身的涨跌，所以和它对比的「历史实际波动」没有扣除大盘。<br>' +
+      '<b>联动股票</b>：统计过去历次财报日，哪些股票的涨跌和这家公司高度同步（同向比例 ≥ 70%；样本越少，要求的相关系数越高，0.55～0.72）。<br>' +
+      '<b>已公布 / 命中统计</b>：每次财报发布前会把当时的预测冻结保存，发布后自动补上实际 EPS 和股价反应，并逐条核对标签有没有应验。命中率要和「基准」（所有财报的平均情况）比，高出基准才说明这个信号有用。<br>' +
       '样本通常只有 10～16 次财报，统计结论波动较大，只能作为参考。</div>';
-    h += '<footer>数据来自 Nasdaq 日历和 Yahoo Finance，每个工作日早上自动更新。<br>历史统计不代表未来表现，不构成投资建议。</footer>';
+    h += '<footer>数据来自 Nasdaq 日历和 Yahoo Finance，每个工作日早晚各自动更新一次（收盘后那次会补上当天的财报结果）。<br>历史统计不代表未来表现，不构成投资建议。</footer>';
     app.innerHTML = h;
+    var nav = app.querySelector('.daynav'), tb = app.querySelector('.dn.today') || app.querySelector('.dn:not(.past)');
+    if (nav && tb && F.sel == null) nav.scrollLeft = Math.max(0, tb.offsetLeft - nav.offsetLeft - 16);
+    var rr = app.querySelectorAll('.rv-r'); for (i = 0; i < rr.length; i++) rr[i].onclick = function () { F.sel = +this.getAttribute('data-d'); render(); window.scrollTo(0, 0); };
     var b = app.querySelectorAll('.dn'); for (i = 0; i < b.length; i++) b[i].onclick = function () { var k = +this.getAttribute('data-d'); F.sel = F.sel === k ? null : k; render(); };
     b = app.querySelectorAll('.chip'); for (i = 0; i < b.length; i++) b[i].onclick = function () { F.scope = this.getAttribute('data-s'); render(); };
     b = app.querySelectorAll('.more'); for (i = 0; i < b.length; i++) b[i].onclick = function () { var el = this.nextSibling; el.style.display = el.style.display === 'none' ? 'flex' : 'none'; this.textContent = el.style.display === 'none' ? '展开历次财报 ▾' : '收起 ▴'; };
@@ -169,27 +205,70 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var h = '<div class="card macro i-' + m.imp + '"><div class="m-top"><span class="imp ' + m.imp + '">' + m.imp + '影响</span><span class="m-t">' + esc(m.title) + '</span><span class="m-time">' + esc(m.time ? m.time + ' 美东' : '') + '</span></div><div class="m-lines">';
     for (var i = 0; i < m.lines.length && i < 4; i++) {
       var l = m.lines[i];
-      h += '<div><span>' + esc(l.name) + '</span>' + (!blank(l.consensus) ? '<span>预期 <b>' + esc(l.consensus) + '</b></span>' : '') + (!blank(l.previous) ? '<span>前值 ' + esc(l.previous) + '</span>' : '') + (!blank(l.actual) ? '<span>实际 <b>' + esc(l.actual) + '</b></span>' : '') + '</div>';
+      h += '<div><span>' + esc(l.name) + '</span>' + (!blank(l.consensus) ? '<span>预期 <b>' + esc(l.consensus) + '</b></span>' : '') + (!blank(l.previous) ? '<span>前值 ' + esc(l.previous) + '</span>' : '') + (!blank(l.actual) ? '<span>实际 <b>' + esc(l.actual) + '</b>' + surTag(l) + '</span>' : '') + '</div>';
     }
     h += '</div><div class="note">' + esc(m.note) + '</div><div class="syms">';
     for (i = 0; i < m.syms.length; i++) h += '<a class="sym" href="https://finance.yahoo.com/quote/' + encodeURIComponent(m.syms[i]) + '" target="_blank" rel="noopener">' + esc(m.syms[i]) + '</a>';
     return h + '</div></div>';
   }
+  function surTag(l) {
+    var a = num(l.actual), c = num(l.consensus);
+    if (a == null || c == null || a === c) return '';
+    return '<span class="msur">' + (a > c ? '高于预期' : '低于预期') + '</span>';
+  }
+  function resHTML(e) {
+    var r = e.res; if (!r) return '';
+    var h = '<div class="res"><div class="rh">已公布 · 结果' + (e.late ? '<span style="color:var(--faint);font-weight:400">（发布前没有冻结预测，不计入命中统计）</span>' : '') + '</div>';
+    if (r.eps != null) h += '实际 EPS <b>' + r.eps + '</b>' + (r.est != null ? ' vs 预期 ' + r.est : '') + (r.surprise != null ? ' <b class="' + cls(r.surprise) + '">' + (r.surprise > 0 ? '超预期 +' : '低于预期 ') + r.surprise + '%</b>' : '') + '<br>';
+    else h += '<span style="color:var(--faint)">实际 EPS 还没拿到，下次更新补上</span><br>';
+    h += '财报日（' + r.day.slice(5).replace('-', '/') + '）<b class="' + cls(r.raw) + '">' + pct(r.raw) + '</b>，相对大盘 <b class="' + cls(r.ex) + '">' + pct(r.ex) + '</b>，开盘跳空 ' + pct(r.gap);
+    var c = e.checks || [];
+    if (c.length) { h += '<div class="chk">'; for (var i = 0; i < c.length; i++) h += '<span class="' + (c[i].ok ? 'ok' : 'no') + '">' + (c[i].ok ? '✓ ' : '✗ ') + esc(c[i].txt) + '</span>'; h += '</div>'; }
+    return h + '</div>';
+  }
+  function reviewHTML(days) {
+    var rows = [], i, j;
+    for (i = days.length - 1; i >= 0; i--) {
+      if (!days[i].isPast && !isToday(days[i].date)) continue;
+      var es = days[i].earnings.filter(function (e) { return e.res && erMatch(e); });
+      for (j = 0; j < es.length; j++) rows.push({ e: es[j], d: i, date: days[i].date });
+    }
+    if (!rows.length) return '';
+    var h = '<h2 class="day">最近已公布<small>点一行看完整卡片 · 日期栏往左滑看过去几天</small></h2><div class="card rv">';
+    for (i = 0; i < rows.length && i < 8; i++) {
+      var e = rows[i].e, r = e.res, p = dparts(rows[i].date), c = e.checks || [], ok = 0;
+      for (j = 0; j < c.length; j++) if (c[j].ok) ok++;
+      h += '<div class="rv-r" data-d="' + rows[i].d + '"><span class="dt">' + p.m + '/' + p.d + '</span><span class="tk">' + esc(e.t) + '</span><span class="mid">' +
+        (r.surprise != null ? (r.surprise > 0 ? '超预期 +' : '低于预期 ') + r.surprise + '%' : 'EPS 待补') + (c.length ? ' · 标签应验 ' + ok + '/' + c.length : '') +
+        '</span><span class="mv ' + cls(r.ex) + '">' + pct(r.ex) + '</span></div>';
+    }
+    return h + '</div>';
+  }
+  function scoreHTML(sc) {
+    var h = '<h2 class="day">预测命中统计' + (sc && sc.n ? '<small>自 ' + sc.since.slice(5).replace('-', '/') + ' 起 ' + sc.n + ' 次财报</small>' : '') + '</h2><div class="card sc">';
+    if (!sc || !sc.rows || !sc.rows.length) return h + '<div class="empty">每次财报发布前会冻结当时的预测，发布后核对结果。积累几周后，这里会显示每种标签到底准不准。</div></div>';
+    for (var i = 0; i < sc.rows.length; i++) {
+      var r = sc.rows[i];
+      h += '<div class="sc-r"><b>' + Math.round(r.hit * 100) + '%</b> ' + esc(r.label) + ' <small>（' + r.n + ' 次' + (r.base != null ? '，基准 ' + Math.round(r.base * 100) + '%' : '') + (r.n < 10 ? '，样本还少' : '') + '）</small>' +
+        '<div class="bar2"><i style="width:' + Math.round(r.hit * 100) + '%"></i></div></div>';
+    }
+    return h + '</div>';
+  }
   function erHTML(e) {
-    var s = e.stats, h = '<div class="card er"><div class="e-top"><div class="e-id"><div class="e-t"><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(e.t) + '" target="_blank" rel="noopener">' + esc(e.t) + '</a><span class="when">' + (e.when === 'pre' ? '盘前' : e.when === 'post' ? '盘后' : '时间未定') + '</span></div><div class="e-n">' + esc(e.name) + (e.sector ? ' · ' + esc(e.sector) : '') + '</div></div>' +
+    var s = e.stats, h = '<div class="card er"><div class="e-top"><div class="e-id"><div class="e-t"><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(e.t) + '" target="_blank" rel="noopener">' + esc(e.t) + '</a><span class="when">' + (e.when === 'pre' ? '盘前' : e.when === 'post' ? '盘后' : '时间未定') + (e.when_guess ? '（推断）' : '') + '</span></div><div class="e-n">' + esc(e.name) + (e.sector ? ' · ' + esc(e.sector) : '') + '</div></div>' +
       '<div class="e-r"><b>' + capTxt(e.cap) + '</b>市值' + (e.eps_est != null ? '<br>预期 EPS <b style="display:inline">' + e.eps_est + '</b>' : '') + '</div></div>';
     var tags = e.tags || [];
     h += '<div class="tags">' + (POOL[e.t] ? '<span class="tag mid">股票池候选</span>' : '') + (e.watch || MYW[e.t] ? '<span class="tag mid">自选</span>' : '');
     for (var i = 0; i < tags.length; i++) h += '<span class="tag' + (/利好出尽|已提前炒作|常跌/.test(tags[i]) ? ' warn' : /大波动/.test(tags[i]) ? ' mid' : '') + '">' + esc(tags[i]) + '</span>';
-    h += '</div>';
+    h += '</div>' + resHTML(e);
     if (s) {
-      h += '<div class="stats"><div><b>±' + (s.avg_abs * 100).toFixed(1) + '%</b>历史平均波动</div><div><b>' + (e.implied ? '±' + (e.implied.move * 100).toFixed(1) + '%' : '—') + '</b>期权隐含波动</div>' +
-        '<div><b>' + (s.beats ? s.beat_fell + '/' + s.beats : '—') + '</b>利好兑现下跌</div><div><b class="' + cls(e.pre_now) + '">' + pct(e.pre_now) + '</b>财报前 10 日</div></div>';
+      h += '<div class="stats"><div><b>±' + ((s.avg_abs_raw != null ? s.avg_abs_raw : s.avg_abs) * 100).toFixed(1) + '%</b>历史实际波动</div><div><b>' + (e.implied ? '±' + (e.implied.move * 100).toFixed(1) + '%' : '—') + '</b>期权隐含波动</div>' +
+        '<div><b>' + (s.beats ? s.beat_fell + '/' + s.beats + (s.beats < 6 ? '<small>样本少</small>' : '') : '—') + '</b>利好兑现下跌</div><div><b class="' + cls(e.pre_now) + '">' + pct(e.pre_now) + '</b>财报前 10 日' + (e.res ? '（发布前）' : '') + '</div></div>';
     }
     h += '<ul class="cm">'; for (i = 0; i < (e.comment || []).length; i++) h += '<li>' + esc(e.comment[i]) + '</li>'; h += '</ul>';
     if (e.sym && e.sym.length) {
       h += '<div class="symh">联动股票（历次财报日同步涨跌）</div><div class="syms">';
-      for (i = 0; i < e.sym.length; i++) h += '<a class="sym" href="https://finance.yahoo.com/quote/' + encodeURIComponent(e.sym[i].t) + '" target="_blank" rel="noopener" title="' + esc(e.sym[i].name) + '">' + esc(e.sym[i].t) + ' · 相关 ' + e.sym[i].corr.toFixed(2) + '</a>';
+      for (i = 0; i < e.sym.length; i++) h += '<a class="sym" href="https://finance.yahoo.com/quote/' + encodeURIComponent(e.sym[i].t) + '" target="_blank" rel="noopener" title="' + esc(e.sym[i].name) + (e.sym[i].n ? '，基于 ' + e.sym[i].n + ' 次财报' : '') + '">' + esc(e.sym[i].t) + ' · 相关 ' + e.sym[i].corr.toFixed(2) + '</a>';
       h += '</div>';
     }
     if (s && s.recent && s.recent.length) {
