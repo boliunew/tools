@@ -401,41 +401,89 @@ def block_stats(ev, h, n_days):
     return st
 
 
+MAXD = {"rsi2": 7, "blood": 126}   # max holding days (default 15)
+
+
+def sim_exit(sig, A, i, stop, target, entry):
+    """walk forward from the session after signal day i using the signal's real exit rules.
+    A gap through the stop / target fills at the open.  Returns (exit index, gross return, status)
+    or (last index, open return, "持有中") when the trade hasn't finished."""
+    o, h, l, c, s5, e20 = A["open"], A["high"], A["low"], A["close"], A["sma5"], A["ema20"]
+    n, maxd = len(c), MAXD.get(sig, 15)
+    j = i
+    for k in range(maxd):
+        j = i + 1 + k
+        if j >= n:
+            return n - 1, c[n - 1] / entry - 1, "持有中"
+        oo = entry if k == 0 else o[j]
+        if l[j] <= stop or oo <= stop:
+            return j, min(oo, stop) / entry - 1, "止损"
+        if h[j] >= target or oo >= target:
+            return j, max(oo, target) / entry - 1, "止盈"
+        if sig == "rsi2" and c[j] > s5[j]:
+            return j, c[j] / entry - 1, "规则离场"
+        if sig == "momentum" and c[j] < e20[j]:
+            return j, c[j] / entry - 1, "规则离场"
+    return j, c[j] / entry - 1, "到期"
+
+
+def arrays(x):
+    return {k: x[k].to_numpy(dtype=float) for k in ("open", "high", "low", "close", "sma5", "ema20", "atr", "low3")}
+
+
 def signal_stats(frames, sigs, cutoff, regimes):
-    """per signal: overall stats + stats per market regime.  Entry = next open, exit = close t+h, minus COST.
-    `ex` = trade return minus the same-day average of every eligible stock over the same holding window."""
-    out = {}
+    """per signal: overall stats + stats per market regime.  Every signal is replayed as a real trade:
+    buy at the next open, exit by the signal's own stop / target / rule / time limit, minus COST.
+    `ex` = trade return minus an equal-weight basket of every eligible stock over the same days.
+    While a trade is open, new signals on the same stock are ignored."""
     idx = regimes.index
+    pos = {d: k for k, d in enumerate(idx)}
     keep = np.asarray(idx >= cutoff)
     n_days = int(keep.sum())
-    fwd_cache = {}
+    # equal-weight basket of eligible stocks (eligibility judged the day before)
+    R = pd.DataFrame({t: x["close"].pct_change() for t, x in frames.items()}).reindex(idx)
+    E = pd.DataFrame({t: sigs[t]["base"] for t in frames}).reindex(idx).fillna(False).astype(bool).shift(1).fillna(False)
+    ew = (1 + R.where(E).mean(axis=1).fillna(0)).cumprod().to_numpy()
+    reg = regimes.to_numpy()
+    events = {k: [] for k in SIGNALS}
+    for t, x in frames.items():
+        A = arrays(x)
+        gi = np.array([pos.get(d, -1) for d in x.index])
+        S = sigs[t]
+        for key in SIGNALS:
+            col = S[key].to_numpy()
+            busy = -1
+            for i in np.nonzero(col)[0]:
+                if i <= busy or i + 1 >= len(col) or gi[i] < 0 or not keep[gi[i]]:
+                    continue
+                row = {"close": A["close"][i], "atr": A["atr"][i], "low3": A["low3"][i], "sma5": A["sma5"][i]}
+                stop, target, _ = levels(key, row)
+                entry = A["open"][i + 1]
+                j, r, status = sim_exit(key, A, i, stop, target, entry)
+                busy = j
+                if status == "持有中" or not np.isfinite(r):
+                    continue
+                g0, g1 = gi[i], gi[j]
+                if g1 < 0:
+                    continue
+                base = ew[g1] / ew[g0] - 1
+                raw = r - COST
+                events[key].append((g0, raw, base, raw - base, reg[g0], j - i))
+    out = {}
     for key, cfg in SIGNALS.items():
         h = cfg["horizon"]
-        if h not in fwd_cache:
-            F = pd.DataFrame({t: x["close"].shift(-h) / x["open"].shift(-1) - 1 for t, x in frames.items()}).reindex(idx)
-            B = pd.DataFrame({t: sigs[t]["base"] for t in frames}).reindex(idx).fillna(False).astype(bool)
-            fwd_cache[h] = (F, F.where(B).mean(axis=1))
-        F, base = fwd_cache[h]
-        S = pd.DataFrame({t: sigs[t][key] for t in frames}).reindex(idx).fillna(False).astype(bool)
-        # count a stock once per episode: ignore repeats within the holding period of an earlier signal
-        prior = S.astype(float).shift(1).rolling(h, min_periods=1).max().fillna(0) > 0
-        fresh = (S & ~prior & F.notna()).to_numpy(copy=True)
-        fresh[~keep, :] = False
-        dt_, st_ = np.nonzero(fresh)
-        raw = F.values[dt_, st_] - COST
-        b = base.values[dt_]
-        ev = pd.DataFrame({"pos": dt_, "raw": raw, "base": b, "ex": raw - b, "reg": regimes.values[dt_]})
-        ev = ev[np.isfinite(ev["ex"].astype(float))]
+        ev = pd.DataFrame(events[key], columns=["pos", "raw", "base", "ex", "reg", "days"])
         st = block_stats(ev, h, n_days)
+        st["avg_days"] = round(float(ev["days"].mean()), 1) if len(ev) else None
         st["by_regime"] = {}
         for rg in ("进攻", "谨慎", "防守"):
-            days = int(((regimes.values == rg) & keep).sum())
+            days = int(((reg == rg) & keep).sum())
             r = block_stats(ev[ev["reg"] == rg], h, days)
             r["days"] = days
             st["by_regime"][rg] = r
         out[key] = st
     out["_meta"] = {"since": str(idx[keep][0].date()) if keep.any() else None, "days": n_days, "cost": COST,
-                    "regime_days": {rg: int(((regimes.values == rg) & keep).sum()) for rg in ("进攻", "谨慎", "防守")}}
+                    "regime_days": {rg: int(((reg == rg) & keep).sum()) for rg in ("进攻", "谨慎", "防守")}}
     return out
 
 
@@ -471,30 +519,17 @@ def track(frames, today, spy):
             after = x[x.index > pd.Timestamp(p["date"])]
             if after.empty:
                 continue
-            entry = float(after["open"].iloc[0])
-            maxd = {"rsi2": 7, "blood": 126}.get(p["sig"], 15)
-            status, exit_px, days = "持有中", float(after["close"].iloc[-1]), len(after)
-            stop, target = p["stop"], p["target"]
-            for i, (_, bar) in enumerate(after.iterrows()):
-                o = entry if i == 0 else float(bar["open"])
-                if bar["low"] <= stop or o <= stop:
-                    status, exit_px, days = "止损", min(o, stop), i + 1
-                    break
-                if bar["high"] >= target or o >= target:
-                    status, exit_px, days = "止盈", max(o, target), i + 1
-                    break
-                if p["sig"] == "rsi2" and bar["close"] > bar["sma5"]:
-                    status, exit_px, days = "规则离场", float(bar["close"]), i + 1
-                    break
-                if i + 1 >= maxd:
-                    status, exit_px, days = "到期", float(bar["close"]), i + 1
-                    break
+            A = arrays(x)
+            i = int(x.index.searchsorted(pd.Timestamp(p["date"]), side="right")) - 1
+            entry = float(A["open"][i + 1])
+            j, gross, status = sim_exit(p["sig"], A, i, p["stop"], p["target"], entry)
+            days = j - i
             spy_r = None
             if spy is not None:
                 sp = spy.reindex(after.index[:days])
                 if len(sp) and sp["open"].iloc[0] == sp["open"].iloc[0] and sp["close"].iloc[-1] == sp["close"].iloc[-1]:
                     spy_r = float(sp["close"].iloc[-1] / sp["open"].iloc[0] - 1)
-            ret = exit_px / entry - 1 - (COST if status != "持有中" else COST / 2)
+            ret = gross - (COST if status != "持有中" else COST / 2)
             rows.append({"date": p["date"], "t": p["t"], "sig": p["sig"], "tier": p.get("tier", "old"), "reg": p.get("reg"),
                          "entry": round(entry, 2), "ret": round(ret, 4), "spy": None if spy_r is None else round(spy_r, 4),
                          "status": status, "days": days})
