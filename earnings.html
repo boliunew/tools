@@ -218,7 +218,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   }
   function resHTML(e) {
     var r = e.res; if (!r) return '';
-    var h = '<div class="res"><div class="rh">已公布 · 结果</div>';
+    var h = '<div class="res"><div class="rh">已公布 · 结果' + (e.late ? '<span style="color:var(--faint);font-weight:400">（发布前没有冻结预测，不计入命中统计）</span>' : '') + '</div>';
     if (r.eps != null) h += '实际 EPS <b>' + r.eps + '</b>' + (r.est != null ? ' vs 预期 ' + r.est : '') + (r.surprise != null ? ' <b class="' + cls(r.surprise) + '">' + (r.surprise > 0 ? '超预期 +' : '低于预期 ') + r.surprise + '%</b>' : '') + '<br>';
     else h += '<span style="color:var(--faint)">实际 EPS 还没拿到，下次更新补上</span><br>';
     h += '财报日（' + r.day.slice(5).replace('-', '/') + '）<b class="' + cls(r.raw) + '">' + pct(r.raw) + '</b>，相对大盘 <b class="' + cls(r.ex) + '">' + pct(r.ex) + '</b>，开盘跳空 ' + pct(r.gap);

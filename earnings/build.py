@@ -449,7 +449,7 @@ def snapshot(e):
 
 def slim(item):
     """old history rows: keep only what the scorecard needs"""
-    return {k: item[k] for k in ("t", "date", "when", "cap", "implied", "tags", "res", "checks", "eps_est") if k in item}
+    return {k: item[k] for k in ("t", "date", "when", "cap", "implied", "tags", "res", "checks", "eps_est", "late") if k in item}
 
 
 def outcome(item, px, spy, ev, today, now_ny):
@@ -512,7 +512,7 @@ def checks_for(item):
 
 
 def scorecard(hist):
-    done = [h for h in hist.values() if h.get("res")]
+    done = [h for h in hist.values() if h.get("res") and not h.get("late")]
     if not done:
         return {"n": 0, "rows": []}
     ex = [h["res"]["ex"] for h in done]
@@ -698,8 +698,13 @@ def main():
         for pd_ in (prev.get("days") or []) if pgen and not prev.get("demo") else []:
             for e in pd_.get("earnings") or []:
                 k = key_of(e)
-                if k not in hist and "res" not in e and pgen < dt.datetime.combine(react_date(e), dt.time(9, 30), NY):
+                if k in hist or "res" in e:
+                    continue
+                if pgen < dt.datetime.combine(react_date(e), dt.time(9, 30), NY):
                     hist[k] = snapshot(e)
+                else:   # the call was made after the market already reacted → show the result, never score it
+                    hist[k] = {x: e[x] for x in ("t", "name", "sector", "date", "when", "cap", "eps_est", "watch") if x in e}
+                    hist[k]["late"] = True
     if args.demo:
         earn, raw_macro, px, evmap, meta = demo_inputs(days, past)
         watch = set()
