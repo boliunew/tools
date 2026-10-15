@@ -263,7 +263,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 <script>
 (function () {
   'use strict';
-  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score', SNAP = null, ER = null, LP = null, lpOnly = false;
+  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score', SNAP = null, ER = null, LP = null, lpOnly = false, lpAll = false;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function pct(x, d) { if (x == null || isNaN(x)) return '—'; return (x > 0 ? '+' : '') + (x * 100).toFixed(d == null ? 2 : d) + '%'; }
   function cls(x) { return x > 0 ? 'up' : x < 0 ? 'down' : ''; }
@@ -679,6 +679,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     for (i = 0; i < L.length; i++) {
       var r = L[i], P = r.parts || {};
       if (lpOnly && !near[r.t]) continue;
+      if (!lpAll && shown >= 15) { shown++; continue; }
       shown++;
       h += '<div class="crow"><div class="r1"><span class="gd ' + r.grade + '">' + r.grade + '</span><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(r.t) + '" target="_blank" rel="noopener">' + esc(r.t) + '</a><span style="font-size:12.5px;color:var(--soft)">' + Math.round(r.score) + ' 分</span><span class="px">' + r.price.toFixed(2) + '</span></div>' +
         '<div class="r2">' + (r.fair ? '<span>合理价 <b>' + r.fair.toFixed(2) + '</b>（现价 <b class="' + (r.disc <= 0 ? 'up' : '') + '">' + (r.disc <= 0 ? '低 ' + pct(-r.disc, 0).replace('+', '') : '高 ' + pct(r.disc, 0).replace('+', '')) + '</b>）</span>' : '') +
@@ -688,6 +689,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
         ((r.warn || []).length ? '<div class="lpw">' + r.warn.map(esc).join('；') + '</div>' : '') + '</div>';
     }
     if (!shown) h += '<div class="lpn">这周没有符合条件的股票。</div>';
+    else if (!lpAll && shown > 15) h += '<button class="btn" data-lpall="1" style="margin:8px 0">显示全部 ' + shown + ' 只 ▾</button>';
     var RV = LP.review || [];
     if (RV.length) h += '<div class="lpn">⚠️ <b>之前入选、现在要复查</b>：' + RV.map(function (r) { return '<b>' + esc(r.t) + '</b> ' + r.why.map(esc).join('，'); }).join('；') + '</div>';
     if (ts.n) {
@@ -835,6 +837,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     for (i = 0; i < xs.length; i++) xs[i].onclick = function () { var t = this.getAttribute('data-x'), k = WATCH.indexOf(t); if (k >= 0) { WATCH.splice(k, 1); saveWatch(); render(); } };
     var lpc = app.querySelectorAll('[data-lp]');
     for (i = 0; i < lpc.length; i++) lpc[i].onclick = function (e) { e.preventDefault(); lpOnly = this.getAttribute('data-lp') === '1'; OPENS.lp = 1; render(); };
+    var lpa = app.querySelector('[data-lpall]'); if (lpa) lpa.onclick = function () { lpAll = true; OPENS.lp = 1; render(); };
     var sel = document.getElementById('sortSel'); sel.value = sortKey;
     sel.onchange = function () { sortKey = this.value; render(); };
     var chips = app.querySelectorAll('.chip[data-f]');
