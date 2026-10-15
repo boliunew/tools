@@ -32,6 +32,25 @@ jobs:
           cache-dependency-path: earnings/requirements.txt
       - run: pip install -r earnings/requirements.txt
       - run: python earnings/build.py
+      - name: Summary (test branches)
+        if: github.ref != 'refs/heads/main'
+        run: |
+          python - <<'PY'
+          import json
+          d = json.load(open("earnings/data/latest.json")); h = json.load(open("earnings/data/history.json"))
+          print("diag", d["diag"]); print("history", len(h), "with result", sum(1 for v in h.values() if v.get("res")))
+          print("score", json.dumps(d["score"], ensure_ascii=False))
+          E = [e for x in d["days"] for e in x["earnings"]]
+          print("upcoming", len(E), "when empty", sum(1 for e in E if not e.get("when")), "guessed", sum(1 for e in E if e.get("when_guess")),
+                "implied", sum(1 for e in E if e.get("implied")), "sym", sum(1 for e in E if e.get("sym")))
+          for x in d["past"]:
+              print("PAST", x["date"], len(x["earnings"]), [(m["title"], [l["actual"] for l in m["lines"]][:2]) for m in x["macro"] if m["imp"] != "低"])
+          for x in d["past"] + d["days"][:1]:
+              for e in x["earnings"][:5]:
+                  print("RES", x["date"], e["t"], e.get("when"), e.get("tags"), e.get("res"), [c["txt"] for c in e.get("checks", [])])
+          for e in [e for e in E if e.get("implied")][:5]:
+              print("IMP", e["t"], e["date"], e["when"], e["implied"], e["comment"][0])
+          PY
       - name: Upload (test branches)
         if: github.ref != 'refs/heads/main'
         uses: actions/upload-artifact@v4
