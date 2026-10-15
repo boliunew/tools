@@ -169,6 +169,13 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 .rgrow i{font-style:normal}
 .rgbox{padding:8px 12px 4px;border-top:1px solid var(--line)} .rgbox .rgrow{padding:5px 0;border-bottom:1px dashed var(--line)} .rgbox .rgrow:last-child{border-bottom:0}
 .rgt2{font-size:12px;color:var(--faint);margin-bottom:2px}
+.lp{padding:4px 14px 12px}
+.lp .crow{margin:0;border:0;border-top:1px solid var(--line);border-radius:0;padding:10px 0;background:none}
+.gd{display:inline-block;min-width:22px;text-align:center;font-size:12px;font-weight:800;padding:1px 6px;border-radius:6px;margin-right:6px;background:var(--accent-soft);color:var(--accent)}
+.gd.S{background:var(--accent);color:var(--accent-ink)}
+.lpw{font-size:12px;color:var(--warn);margin-top:3px}
+.lpn{font-size:12.5px;color:var(--soft);line-height:1.7;padding:8px 0}
+.lpn b{color:var(--ink)}
 .tiers{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
 .tiers > div{flex:1;min-width:140px;background:var(--bg);border-radius:10px;padding:8px 10px;font-size:12px;color:var(--faint)}
 .tiers b{display:block;font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -256,7 +263,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 <script>
 (function () {
   'use strict';
-  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score', SNAP = null, ER = null;
+  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score', SNAP = null, ER = null, LP = null, lpOnly = false;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function pct(x, d) { if (x == null || isNaN(x)) return '—'; return (x > 0 ? '+' : '') + (x * 100).toFixed(d == null ? 2 : d) + '%'; }
   function cls(x) { return x > 0 ? 'up' : x < 0 ? 'down' : ''; }
@@ -298,6 +305,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       getJSON('stocks/data/snap.json', function (d) { SNAP = d && d.rows ? d : { rows: {}, missing: 1 }; render(); });
       getJSON('earnings/data/latest.json', function (d) { ER = d; render(); });
       getJSON('stocks/data/alerts.json', function (d) { AST = d && d.items ? d : null; render(); });
+      getJSON('longterm/data/latest.json', function (d) { LP = d && d.list ? d : null; render(); });
       loadAlerts();
     };
     xhr.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
@@ -656,6 +664,41 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     return h;
   }
 
+  /* ---------- 🏛️ 长线池 (longterm/build.py, weekly) ---------- */
+  function lpHTML() {
+    if (!LP) return '';
+    var L = LP.list || [], i, near = {}, c = LP.counts || {};
+    (LP.near || []).forEach(function (t) { near[t] = 1; });
+    var nN = (LP.near || []).length, T = LP.tracking || {}, ts = T.summary || {};
+    var sum = 'S 级 <b>' + (c.S || 0) + '</b> · A 级 <b>' + (c.A || 0) + '</b> · <b>' + nN + '</b> 只低于中位估值价' + (ts.n ? ' · 入选以来比 VOO <span class="' + cls(ts.vs_voo) + '">' + pct(ts.vs_voo, 1) + '</span>' : '');
+    var h = '<details class="card xd" data-o="lp"' + (OPENS.lp ? ' open' : '') + '><summary><div class="xt"><b>🏛️ 长线池 <small style="font-weight:400;color:var(--faint)">每周更新 · ' + esc((LP.date || '').slice(5).replace('-', '/')) + '</small></b><span class="xs">' + sum + '</span></div><i class="xa">▾</i></summary><div class="lp">';
+    if (LP.demo) h += '<div class="lpn">⚠️ 示例数据，第一次真实运行后替换。</div>';
+    h += '<div class="lpn">在 ' + LP.n + ' 只股票里打分：<b>护城河</b> 35（资本回报率 = 60% ROIC + 40% ROE、毛利率、利润率稳定性）+ <b>估值</b> 25（市盈率对比它自己的历史中位数）+ <b>技术</b> 20 + <b>回撤</b> 10 + <b>成长</b> 10 − 负债扣分。80 分以上 S，70 分以上 A。<b>中位估值价</b> = 历史中位市盈率 × 最近一年每股收益，现价低于它说明比平时便宜。VOO 是核心仓位，这里只挑卫星仓位，建议总共不超过 10～15 只。</div>';
+    h += '<div class="filters" style="margin:0 0 4px"><button class="chip' + (!lpOnly ? ' on' : '') + '" data-lp="0">全部 S / A<span class="n">' + L.length + '</span></button><button class="chip' + (lpOnly ? ' on' : '') + '" data-lp="1">低于中位估值价<span class="n">' + nN + '</span></button></div>';
+    var shown = 0;
+    for (i = 0; i < L.length; i++) {
+      var r = L[i], P = r.parts || {};
+      if (lpOnly && !near[r.t]) continue;
+      shown++;
+      h += '<div class="crow"><div class="r1"><span class="gd ' + r.grade + '">' + r.grade + '</span><a href="https://finance.yahoo.com/quote/' + encodeURIComponent(r.t) + '" target="_blank" rel="noopener">' + esc(r.t) + '</a><span style="font-size:12.5px;color:var(--soft)">' + Math.round(r.score) + ' 分</span><span class="px">' + r.price.toFixed(2) + '</span></div>' +
+        '<div class="r2">' + (r.fair ? '<span>中位估值价 <b>' + r.fair.toFixed(2) + '</b>（现价 <b class="' + (r.disc <= 0 ? 'up' : '') + '">' + (r.disc <= 0 ? '低 ' + pct(-r.disc, 0).replace('+', '') : '高 ' + pct(r.disc, 0).replace('+', '')) + '</b>）</span>' : '') +
+        (r.pe ? '<span>市盈率 ' + r.pe + (r.med_pe ? ' / 中位 ' + r.med_pe : '') + '</span>' : '') + '<span>距一年高点 ' + pct(-r.dd, 0) + '</span><span>' + esc(r.name) + '</span></div>' +
+        '<div class="r2" style="font-size:12px">护城河 ' + P.moat + ' · 估值 ' + Math.round(P.value) + ' · 技术 ' + Math.round(P.tech) + ' · 回撤 ' + P.dd + ' · 成长 ' + P.growth + (P.debt ? ' · 负债 ' + P.debt : '') + '</div>' +
+        ((r.why || []).length ? '<div class="why" style="color:var(--soft)">' + r.why.map(esc).join('；') + '</div>' : '') +
+        ((r.warn || []).length ? '<div class="lpw">' + r.warn.map(esc).join('；') + '</div>' : '') + '</div>';
+    }
+    if (!shown) h += '<div class="lpn">这周没有符合条件的股票。</div>';
+    var RV = LP.review || [];
+    if (RV.length) h += '<div class="lpn">⚠️ <b>之前入选、现在要复查</b>：' + RV.map(function (r) { return '<b>' + esc(r.t) + '</b> ' + r.why.map(esc).join('，'); }).join('；') + '</div>';
+    if (ts.n) {
+      h += '<div class="lpn"><b>入选以来 vs VOO</b>（从每只股票第一次进入 S / A 那周算起，' + esc(ts.since.slice(5).replace('-', '/')) + ' 起共 ' + ts.n + ' 只）：平均 <span class="' + cls(ts.mean) + '">' + pct(ts.mean, 1) + '</span>，比同期 VOO <span class="' + cls(ts.vs_voo) + '">' + pct(ts.vs_voo, 1) + '</span>，' + Math.round((ts.beat || 0) * 100) + '% 跑赢。</div>';
+      var TR = (T.rows || []).slice().sort(function (a, b) { return (b.ret - (b.voo || 0)) - (a.ret - (a.voo || 0)); });
+      h += '<div class="rgrow" style="padding-bottom:6px">' + TR.slice(0, 30).map(function (r) { return '<span>' + esc(r.t) + (r.still ? '' : '<small>（已出池）</small>') + ' <i class="' + cls(r.ret - (r.voo || 0)) + '">' + pct(r.ret - (r.voo || 0), 1) + '</i></span>'; }).join('') + '</div>';
+    } else h += '<div class="lpn">每周的名单都会存档。从下周起，这里会显示每只股票入选以来比 VOO 多赚还是少赚。</div>';
+    h += '<div class="lpn" style="color:var(--faint);font-size:12px">数据来自 Yahoo Finance 的年报，只有最近 4～5 年，所以「历史中位市盈率」的历史偏短；银行等金融股用 ROE 代替 ROIC，也不扣负债分。打分是筛选工具，不是买入建议。</div>';
+    return h + '</div></details>';
+  }
+
   /* ---------- 🧭 板块强弱 ---------- */
   var SECZH = { 'Information Technology': '科技', 'Health Care': '医疗保健', 'Financials': '金融', 'Industrials': '工业', 'Consumer Discretionary': '可选消费', 'Consumer Staples': '必需消费', 'Utilities': '公用事业', 'Real Estate': '房地产', 'Materials': '原材料', 'Communication Services': '通信服务', 'Energy': '能源' };
   function med(a) { if (!a.length) return null; a = a.slice().sort(function (x, y) { return x - y; }); var m = a.length >> 1; return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; }
@@ -707,7 +750,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       '<div class="breadth"><div>站上 50 日线 ' + Math.round(R.breadth50 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth50 * 100) + '%"></i></div></div><div>站上 200 日线 ' + Math.round(R.breadth200 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth200 * 100) + '%"></i></div></div></div>' + breadthHTML(R.hist) + '</div></div>';
 
     h += watchHTML();
-    h += ltHTML() + sectorHTML();
+    h += lpHTML() + ltHTML() + sectorHTML();
 
     // filters
     var counts = { all: D.candidates.length };
@@ -790,9 +833,11 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     for (i = 0; i < srs.length; i++) srs[i].onclick = function () { var el = document.getElementById('st' + this.getAttribute('data-i')); if (el) el.style.display = el.style.display === 'none' ? '' : 'none'; };
     var xs = app.querySelectorAll('.wx');
     for (i = 0; i < xs.length; i++) xs[i].onclick = function () { var t = this.getAttribute('data-x'), k = WATCH.indexOf(t); if (k >= 0) { WATCH.splice(k, 1); saveWatch(); render(); } };
+    var lpc = app.querySelectorAll('[data-lp]');
+    for (i = 0; i < lpc.length; i++) lpc[i].onclick = function (e) { e.preventDefault(); lpOnly = this.getAttribute('data-lp') === '1'; OPENS.lp = 1; render(); };
     var sel = document.getElementById('sortSel'); sel.value = sortKey;
     sel.onchange = function () { sortKey = this.value; render(); };
-    var chips = app.querySelectorAll('.chip');
+    var chips = app.querySelectorAll('.chip[data-f]');
     for (i = 0; i < chips.length; i++) chips[i].onclick = function () { filter = this.getAttribute('data-f'); render(); };
   }
   load();
