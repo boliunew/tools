@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-14T15:12:20Z",
- "date": "2026-10-14",
+ "generated": "2026-10-15T15:06:11Z",
+ "date": "2026-10-15",
  "engine": "edge",
- "total": 542.6,
- "short": 334.8,
+ "total": 509.7,
+ "short": 316.2,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610140811",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610150805",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月14日 星期三",
-   "dur": 10.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610140811",
+   "sub": "10月15日 星期四",
+   "dur": 7.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "一周过半了。这里是你的通勤电台。今天是10月14日，星期三，方向盘上的下一首可以随时跳段。"
+     "t": "10月15日，星期四，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 81°/55°F",
-   "dur": 27.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610140811",
+   "sub": "Upland 晴 89°/59°F",
+   "dur": 28.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏56度，13摄氏度。傍晚5点下班大约华氏80度，26摄氏度，体感73度。白天最高81度，约27摄氏度；最低55度。基本不会下雨。白天空气质量中等，指数最高56。今天日落时间是傍晚6点17分。"
+     "t": "Upland今天晴。早上7点出门大约华氏60度，16摄氏度，体感55度。傍晚5点下班大约华氏86度，30摄氏度，体感75度。白天最高89度，约32摄氏度；最低59度。基本不会下雨。白天空气质量良好，指数最高42。今天日落时间是傍晚6点16分。"
     }
    ]
   },
@@ -38,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 30.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610140811",
+   "dur": 30.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月13日收盘。标普500 ETF 下跌0.0%，纳指100 ETF 下跌0.3%。恐慌指数VIX 15.3，正常水平。标普成分股里，站上50日均线的只占40%。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月14日收盘。标普500 ETF 下跌1.1%，纳指100 ETF 下跌2.0%。恐慌指数VIX 16.9，正常水平。标普成分股里，站上50日均线的只占36%。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "21 个候选",
-   "dur": 65.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610140811",
+   "sub": "35 个候选",
+   "dur": 66.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天21个候选，评分最高的是Veeva Systems，代码 V E E V。不想听细节可以按下一首。"
+     "t": "股票池今天35个候选，评分最高的是Dell Technologies，代码 D E L L。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中回踩金坑12个，RSI2 超跌反弹4个，血筹码3个，强势新高1个，挤压突破1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，血筹码12个，回踩金坑8个，强势新高3个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Veeva Systems，代码 V E E V，强势新高信号，收盘价301.63美元，止损参考283.03。"
+     "t": "第1，Dell Technologies，代码 D E L L，RSI2 超跌反弹信号，收盘价507.93美元，止损参考431.22。"
     },
     {
      "lang": "zh",
-     "t": "第2，International Flavors & Fragrances，代码 I F F，挤压突破信号，收盘价88.20美元，止损参考85.54。"
+     "t": "第2，Hewlett Packard Enterprise，代码 H P E，RSI2 超跌反弹信号，收盘价63.11美元，止损参考53.71。"
     },
     {
      "lang": "zh",
-     "t": "第3，Salesforce，代码 C R M，回踩金坑信号，收盘价238.01美元，止损参考224.94。"
+     "t": "第3，NetApp，代码 N T A P，RSI2 超跌反弹信号，收盘价222.20美元，止损参考200.12。"
     },
     {
      "lang": "zh",
@@ -83,50 +83,46 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "7 件大事",
-   "dur": 70.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610140811",
+   "sub": "6 件大事",
+   "dur": 59.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有3家大公司发财报。"
+     "t": "今天，重要数据有：美东08:30公布CPI 通胀数据。另外，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "ASML，代码 A S M L，盘前发财报。期权定价波动正负5.4%。标签：利好出尽型。"
+     "t": "Taiwan Semiconductor Manufacturing，代码 T S M，盘前发财报。期权定价波动正负3.7%。"
     },
     {
      "lang": "zh",
-     "t": "Bank of America，代码 B A C，盘前发财报。期权定价波动正负3.5%。"
+     "t": "The Charles Schwab，代码 S C H W，盘前发财报。期权定价波动正负4.0%。"
     },
     {
      "lang": "zh",
-     "t": "Morgan Stanley，代码 M S，盘前发财报。期权定价波动正负4.1%。"
+     "t": "Prologis，代码 P L D，盘前发财报。期权定价波动正负3.3%。"
     },
     {
      "lang": "zh",
-     "t": "明天，重要数据有：美东08:30公布CPI 通胀数据。另外，有3家大公司发财报。"
+     "t": "明天，有2家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Taiwan Semiconductor Manufacturing，代码 T S M，盘前发财报。期权定价波动正负4.1%。"
+     "t": "HDFC Bank，代码 H D B，盘后发财报。期权定价波动正负8.6%。"
     },
     {
      "lang": "zh",
-     "t": "The Charles Schwab，代码 S C H W，盘前发财报。期权定价波动正负4.1%。标签：利好出尽型。"
-    },
-    {
-     "lang": "zh",
-     "t": "Prologis，代码 P L D，盘前发财报。期权定价波动正负3.4%。"
+     "t": "ICICI Bank，代码 I B N，盘后发财报。期权定价波动正负6.6%。标签：财报日常涨。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · The Guardian · NPR",
-   "dur": 91.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610140811",
+   "sub": "BBC · The Guardian · Al Jazeera",
+   "dur": 87.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
@@ -134,48 +130,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，科学，难度B2。大意是：在土耳其海岸发现世界上最古老的沉船。"
+     "t": "第1条，来自BBC，科学，难度B2。大意是：小燕窝的繁殖季节最糟糕。"
     },
     {
      "lang": "en",
-     "t": "World's oldest shipwreck found off coast of Turkey"
+     "t": "Little tern colony has worst breeding season"
     },
     {
      "lang": "en",
-     "t": "Archaeologists say the wreck is up to 4,700 years old, dating to the Early Bronze Age."
+     "t": "Planning is under way to improve the colony for the 2027 breeding season."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自The Guardian，国际，难度B2。大意是：法院告诉记者， Beau Lamarre-Condon此前曾参观过农场，后来他试图在那里沉没尸体。"
+     "t": "第2条，来自The Guardian，科技，难度B2。大意是：波兰着眼于自苏联时代以来转变的国家的经济高度。"
     },
     {
      "lang": "en",
-     "t": "Beau Lamarre-Condon previously visited farm where he later tried to sink bodies, court told"
+     "t": "Poland looks to economic heights in a country transformed since Soviet days"
     },
     {
      "lang": "en",
-     "t": "Jury also shown 3D reconstruction of Paddington terrace outlining prosecution version of alleged murders of Jesse Baird and Luke Davies Follow our Australian politics live blog for latest updates Get our new political email, free app or dai"
+     "t": "In the final part of our series on the country, Poles tell how wages have soared – along with the cost of living Above the rain-soaked streets of Warsaw, the observation deck of the Varso tower overlooks Joseph Stalin’s gift to Poland that "
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B1。大意是：经济学诺贝尔奖获得者对定价的了解。"
+     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：阿根廷的Milei支持特朗普参加美国中期选举，呼吁对西方至关重要的投票。"
     },
     {
      "lang": "en",
-     "t": "What an economics Nobel Prize winner knows about pricing"
+     "t": "Argentina’s Milei backs Trump for US midterms, calls vote crucial for West"
     },
     {
      "lang": "en",
-     "t": "NPR's Ailsa Chang chats with Michael Woodford of Columbia University, who was one of two Americans awarded the Nobel Prize in Economics."
+     "t": "The US President's ally says conservatives “cannot give an inch” in Latin America as he accepts an award in Washington."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "employee · hasta mañana",
-   "dur": 32.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610140811",
+   "sub": "rule · el elefante",
+   "dur": 29.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
@@ -183,15 +179,15 @@
     },
     {
      "lang": "en",
-     "t": "employee"
+     "t": "rule"
     },
     {
      "lang": "zh",
-     "t": "意思是：雇员。拼写是："
+     "t": "意思是：规则。拼写是："
     },
     {
      "lang": "en",
-     "t": "e, m, p, l, o, y, e, e"
+     "t": "r, u, l, e"
     },
     {
      "lang": "zh",
@@ -199,7 +195,7 @@
     },
     {
      "lang": "en",
-     "t": "employee"
+     "t": "rule"
     },
     {
      "lang": "zh",
@@ -207,48 +203,44 @@
     },
     {
      "lang": "es",
-     "t": "hasta mañana"
+     "t": "el elefante"
     },
     {
      "lang": "zh",
-     "t": "意思是：明天见。跟着读一遍。"
+     "t": "意思是：大象。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "hasta mañana"
+     "t": "el elefante"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "习语",
-   "dur": 20.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610140811",
+   "sub": "名言",
+   "dur": 33.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一个地道习语。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "pull someone's leg"
+     "t": "Great men are they who see that spiritual is stronger than any material force, that thoughts rule the world."
     },
     {
      "lang": "zh",
-     "t": "意思是：逗你玩。开玩笑，逗人玩。"
+     "t": "意思是：伟大的人看得出：精神比任何物质力量都强大，思想统治着世界。这句话出自 Ralph Waldo Emerson。"
     },
     {
      "lang": "zh",
-     "t": "例句："
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "Relax, I'm just pulling your leg!"
-    },
-    {
-     "lang": "zh",
-     "t": "放轻松，我逗你玩呢！"
+     "t": "Great men are they who see that spiritual is stronger than any material force, that thoughts rule the world."
     }
    ],
    "opt": true
@@ -256,61 +248,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "指挥倒车与安全",
-   "dur": 67.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610140811",
+   "sub": "和司机打交道",
+   "dur": 66.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：指挥倒车与安全。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：和司机打交道。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "注意脚下。"
+     "t": "你得先去办公室登记。"
     },
     {
      "lang": "en",
-     "t": "Watch your step."
+     "t": "You need to check in at the office first."
     },
     {
      "lang": "en",
-     "t": "Watch your step."
+     "t": "You need to check in at the office first."
     },
     {
      "lang": "zh",
-     "t": "请留在车里。"
+     "t": "请把单据拿到窗口。"
     },
     {
      "lang": "en",
-     "t": "Stay in your truck, please."
+     "t": "Please take your paperwork to the window."
     },
     {
      "lang": "en",
-     "t": "Stay in your truck, please."
+     "t": "Please take your paperwork to the window."
     },
     {
      "lang": "zh",
-     "t": "我在你后视镜里看不到你。"
+     "t": "抱歉让你久等了。"
     },
     {
      "lang": "en",
-     "t": "I can't see you in your mirror."
+     "t": "Sorry for the wait."
     },
     {
      "lang": "en",
-     "t": "I can't see you in your mirror."
+     "t": "Sorry for the wait."
     },
     {
      "lang": "zh",
-     "t": "等一下，有人在你后面走。"
+     "t": "可以走了。"
     },
     {
      "lang": "en",
-     "t": "Hold on, someone's walking behind you."
+     "t": "You're good to go."
     },
     {
      "lang": "en",
-     "t": "Hold on, someone's walking behind you."
+     "t": "You're good to go."
     },
     {
      "lang": "zh",
@@ -322,13 +314,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "维多利亚瀑布",
-   "dur": 20.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610140811",
+   "sub": "越南春节 Tết",
+   "dur": 19.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：维多利亚瀑布。赞比亚与津巴布韦交界，「雷鸣之雾」。做法：两国都可观瀑，景观角度各有不同；丰水期（约 3–5 月）水雾冲天，枯水期可游魔鬼池；可乘直升机或赞比西河日落游船。"
+     "t": "今日一招：越南春节 Tết。越南一年中最重要的节日。做法：与中国农历新年同一天，节前大扫除、准备年货；长辈给孩子红包（lì xì），说吉祥话；传统年粽 bánh chưng（方形）或 bánh tét（圆柱形）。"
     }
    ],
    "opt": true
@@ -336,13 +328,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1888 · 1912 · 2004",
-   "dur": 24.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610140811",
+   "sub": "1904 · 1957 · 2024",
+   "dur": 21.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1888年，法国发明家路易·普林斯在英国利兹拍摄了现存最早的动态电影《朗德海花园场景》。1912年，美国前总统西奥多·罗斯福遇刺。2004年，《中华人民共和国和俄罗斯联邦关于中俄国界东段的补充协定》签定。"
+     "t": "历史上的今天。1904年，日俄战争：俄国波罗的海舰队出发前往旅顺增援。1957年，中国武汉长江大桥通车。2024年，朝鲜民主主义人民共和国炸毁连接朝鲜半岛的公路京义线及东海线。"
     }
    ],
    "opt": true
@@ -350,21 +342,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "行香子·过七里濑",
-   "dur": 75.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610140811",
+   "sub": "鹧鸪天·林断山明竹隐墙",
+   "dur": 53.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：行香子·过七里濑。写于1073年，他36岁，在富阳、桐庐间七里濑（杭州通判任上）。"
+     "t": "读一首苏轼：鹧鸪天·林断山明竹隐墙。写于1083年，他46岁，在黄州。"
     },
     {
      "lang": "zh",
-     "t": "一叶舟轻，双桨鸿惊。水天清、影湛波平。鱼翻藻鉴，鹭点烟汀。过沙溪急，霜溪冷，月溪明。重重似画，曲曲如屏。算当年、虚老严陵。君臣一梦，今古空名。但远山长，云山乱，晓山青。"
+     "t": "林断山明竹隐墙，乱蝉衰草小池塘。翻空白鸟时时见，照水红蕖细细香。村舍外，古城旁，杖藜徐步转斜阳。殷勤昨夜三更雨，又得浮生一日凉。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：一叶小舟轻轻荡漾，两支船桨划动，快得像受惊的鸿雁。水天一色，倒影清澈，波浪平静。鱼在藻荇间翻腾，水面明净如镜；白鹭点缀在烟雾笼罩的沙洲上。经过的沙溪湍急，霜溪清冷，月溪明亮。两岸山峦重重叠叠如画，曲曲折折像屏风。想当年严子陵在这里隐居，白白老去。光武帝和他的君臣情谊不过一场梦，古往今来都是空名。只有远山连绵，云中的山峰错落，晨光里的山色青翠。"
+     "t": "白话意思是：树林尽头，山色明朗，竹林掩映着院墙；蝉声杂乱，枯草丛生，围着一方小池塘。不时看见白鸟在空中翻飞，倒映在水中的红荷散发着淡淡清香。在村舍外、古城旁，我拄着藜杖慢慢散步，直到夕阳西斜。多亏昨夜三更那场殷勤的雨，让我这漂泊的人生又多得了一天清凉。"
     }
    ],
    "opt": true
@@ -373,12 +365,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610140811",
+   "dur": 5.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610150805",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }
