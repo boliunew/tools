@@ -36,12 +36,36 @@ jobs:
       - name: Scan
         run: python stocks/scan.py
       - name: Price alerts
+        if: github.ref == 'refs/heads/main'
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ github.repository_owner }}
         run: python stocks/alerts.py check
+      - name: Summary (test branches)
+        if: github.ref != 'refs/heads/main'
+        run: |
+          python - <<'PY'
+          import json
+          d = json.load(open("stocks/data/latest.json"))
+          out = [f"date {d['date']} regime {d['regime']['label']} stats_meta {d.get('stats_meta')} diag {d.get('diag')}"]
+          for k, v in d["signals"].items():
+              s = v["stats"]
+              out.append(f"{k}: n={s['n']} blocks={s.get('blocks')} edge={s.get('edge')} ci=[{s.get('ci_lo')},{s.get('ci_hi')}] {s['verdict']} | "
+                         + " ".join(f"{rg}:{r.get('edge')}/{r.get('blocks')}/{r['verdict']}" for rg, r in s["by_regime"].items()) + f" | now={v.get('now')}")
+          c = d["candidates"]
+          out.append(f"candidates {len(c)} picks {sum(1 for x in c if x.get('tier') == 'pick')}")
+          for x in c[:14]:
+              out.append(f"  {x['t']} {x['tier']} {x['primary']} exp={x.get('exp')} {x.get('exp_src')} earn={x.get('earn')} {x['sector']} why={x.get('why')}")
+          T = d["tracking"]
+          out.append(f"tracking since {T.get('since')} summary {T['summary']} tiers {T.get('by_tier')}")
+          out.append(f"by_sig {T.get('by_sig')}")
+          msg = "\n".join(out)
+          for i in range(0, len(msg), 3500):
+              print("::notice title=summary" + str(i // 3500) + "::" + msg[i:i + 3500].replace("%", "%25").replace("\r", "").replace("\n", "%0A"))
+          PY
       - name: Commit results
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
