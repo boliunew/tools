@@ -4,7 +4,9 @@
 
 Scores every S&P 500 / Nasdaq-100 stock with the long-term framework from voo_long_term.py:
   moat 0–35       quality (60% ROIC + 40% ROE), gross margin, operating-margin stability
-  valuation 0–25  trailing P/E vs the stock's own median annual P/E (continuous)
+  valuation 0–25  trailing P/E vs a fair multiple = average of the stock's own median annual P/E and
+                  today's median P/E of its sector (Yahoo has only ~4 years of statements, a window that
+                  includes the 2021 peak and the 2022 earnings dip, so the own-history median alone runs high)
   technical 0–20  above 200-day, 50 > 200, 6-month relative strength
   drawdown 0–10   distance from the 52-week high (a 10–30% pullback in a good business scores best)
   growth 0–10     revenue CAGR over the available annual statements
@@ -173,7 +175,7 @@ def lin(x, x0, x1, y0, y1):
     return max(min(y0, y1), min(max(y0, y1), y0 + t * (y1 - y0)))
 
 
-def score_one(t, f, px, rs6, sector):
+def score_one(t, f, px, rs6, sector, sec_pe):
     rev, gp, op, ebit, ni, eps, tax, eq, ic = (ser(f.get(k)) for k in ("rev", "gp", "op", "ebit", "ni", "eps", "tax", "eq", "ic"))
     fin = sector in ("Financials", "Financial Services")
     price = float(px.iloc[-1])
@@ -234,22 +236,25 @@ def score_one(t, f, px, rs6, sector):
     ttm = f.get("ttm_eps")
     pe = price / ttm if ttm and ttm > 0 else None
     med_pe = float(np.median(pes)) if len(pes) >= 3 else None
+    anchors = [x for x in (med_pe, sec_pe) if x]
+    fair_pe = float(np.mean(anchors)) if anchors else None
     vpts = 0
-    if pe and med_pe:
-        ratio = pe / med_pe
+    if pe and fair_pe:
+        ratio = pe / fair_pe
         vpts = round(lin(ratio, 0.7, 1.3, 25, 0), 1)
-        out["fair"] = round(med_pe * ttm, 2)
-        out["disc"] = round(price / out["fair"] - 1, 4)
-        if ratio <= 0.9:
-            out["why"].append(f"市盈率 {pe:.0f}，比自己的历史中位数 {med_pe:.0f} 低 {(1 - ratio) * 100:.0f}%")
-        elif ratio >= 1.1:
-            out["warn"].append(f"市盈率 {pe:.0f} 高于历史中位数 {med_pe:.0f}")
+        out["fair"] = round(fair_pe * ttm, 2)
+        out["disc"] = round(ratio - 1, 4)
+        if ratio <= 0.85:
+            out["why"].append(f"市盈率 {pe:.0f}，比合理市盈率 {fair_pe:.0f} 低 {(1 - ratio) * 100:.0f}%")
+        elif ratio >= 1.15:
+            out["warn"].append(f"市盈率 {pe:.0f} 高于合理市盈率 {fair_pe:.0f}")
     elif pe is None:
         out["warn"].append("最近一年亏损或没有盈利数据")
     else:
-        out["warn"].append("估值历史不足 3 年")
+        out["warn"].append("没有可比的估值数据")
     out["parts"]["value"] = vpts
-    out.update({"pe": None if pe is None else round(pe, 1), "med_pe": None if med_pe is None else round(med_pe, 1), "pe_n": len(pes)})
+    out.update({"pe": None if pe is None else round(pe, 1), "med_pe": None if med_pe is None else round(med_pe, 1), "pe_n": len(pes),
+                "sec_pe": None if not sec_pe else round(sec_pe, 1), "fair_pe": None if fair_pe is None else round(fair_pe, 1)})
 
     # ---- technical 0–20
     s200 = px.rolling(200).mean().iloc[-1]
@@ -385,6 +390,16 @@ def main():
     last = max(c.index[-1] for c in px.values())
     today = last.date().isoformat()
 
+    # today's median P/E per sector (profitable companies, P/E under 150)
+    by_sec = {}
+    for t, f in fund.items():
+        if t in px and f.get("ttm_eps") and f["ttm_eps"] > 0:
+            pe = float(px[t].iloc[-1]) / f["ttm_eps"]
+            if 0 < pe < 150:
+                by_sec.setdefault(meta.get(t, {}).get("sector") or f.get("sector") or "", []).append(pe)
+    sec_pe = {k: float(np.median(v)) for k, v in by_sec.items() if len(v) >= 5}
+    DIAG["sector_pe"] = {k: round(v, 1) for k, v in sec_pe.items()}
+
     res = []
     for t in sorted(fund):
         if t not in px or t == BENCH:
@@ -392,7 +407,7 @@ def main():
         f = fund[t]
         sector = meta.get(t, {}).get("sector") or f.get("sector") or ""
         try:
-            r = score_one(t, f, px[t], rs6.get(t), sector)
+            r = score_one(t, f, px[t], rs6.get(t), sector, sec_pe.get(sector))
         except Exception as e:  # noqa: BLE001
             print("score", t, e)
             continue
@@ -401,6 +416,15 @@ def main():
         r["cap"] = f.get("cap")
         res.append(r)
     res.sort(key=lambda r: -r["score"])
+    # one line per company (GOOG/GOOGL, FOX/FOXA, NWS/NWSA …)
+    seen, dedup = set(), []
+    for r in res:
+        k = (fund[r["t"]].get("name") or r["t"]).strip().lower()
+        if k in seen:
+            continue
+        seen.add(k)
+        dedup.append(r)
+    res = dedup
     cur = {r["t"]: r for r in res}
 
     # review flags for names that were on an earlier list
@@ -421,8 +445,8 @@ def main():
         why = []
         if r["grade"] not in ("S", "A", "B"):
             why.append(f"评分降到 {r['grade']} 级（{r['score']:.0f} 分）")
-        if r.get("pe") and r.get("med_pe") and r["pe"] >= r["med_pe"] * 1.1:
-            why.append(f"市盈率 {r['pe']:.0f} 已回到历史中位数 {r['med_pe']:.0f} 以上")
+        if r.get("pe") and r.get("fair_pe") and r["pe"] >= r["fair_pe"] * 1.1:
+            why.append(f"市盈率 {r['pe']:.0f} 已回到合理市盈率 {r['fair_pe']:.0f} 以上")
         if why:
             review.append({"t": t, "grade": r["grade"], "why": why})
 
@@ -440,7 +464,7 @@ def main():
             json.dump({"date": today, "list": [{"t": r["t"], "price": r["price"], "grade": r["grade"], "score": r["score"]} for r in top]}, f)
     print(f"{today}: scored {len(res)}, grades {counts}, list {len(top)}, below fair {len(out['near'])}, review {len(review)}; diag={DIAG}")
     for r in top[:15]:
-        print(f"  {r['t']:6s} {r['grade']} {r['score']:5.1f} {r['parts']} pe={r.get('pe')} med={r.get('med_pe')} disc={r.get('disc')} {r['why']} {r['warn']}")
+        print(f"  {r['t']:6s} {r['grade']} {r['score']:5.1f} {r['parts']} pe={r.get('pe')} fair={r.get('fair_pe')} disc={r.get('disc')} {r['why']} {r['warn']}")
     return 0
 
 
