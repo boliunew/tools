@@ -8,9 +8,10 @@ For the next 14 days:
 For every upcoming reporter, from its own past earnings (yfinance):
   * average earnings-day move, beat rate, "beat but fell" rate (利好兑现下跌)
   * pre-earnings run-up vs reaction ("提前炒作" check), 5-day post drift
-  * options-implied move for reports within 7 days
+  * options-implied move for reports within 7 days (compared with the plain historical move)
   * sympathy stocks: tickers whose same-day moves track this company's earnings moves
-All moves are measured relative to SPY.  Output: earnings/data/latest.json
+After each report: actual EPS + reaction, checked against the frozen pre-release call.
+Moves are relative to SPY unless noted.  Output: earnings/data/latest.json (+ history.json for the scorecard)
 
 Offline test:  python earnings/build.py --demo
 """
@@ -23,6 +24,7 @@ import os
 import re
 import sys
 import time
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
@@ -30,9 +32,12 @@ import pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 OUT = os.path.join(HERE, "data", "latest.json")
+HIST = os.path.join(HERE, "data", "history.json")   # frozen predictions + actual results, for the scorecard
 UNIVERSE = os.path.join(ROOT, "stocks", "universe.json")
 WATCHLIST = os.path.join(ROOT, "stocks", "watchlist.txt")
 DAYS_AHEAD = 14
+PAST_DAYS = 5            # business days of results to show
+NY = ZoneInfo("America/New_York")
 MAX_REPORTERS = 160
 MIN_CAP = 20e9            # also include non-universe companies above this market cap
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
@@ -196,9 +201,8 @@ def to_et(date_s, time_s, is_gmt):
         return time_s
     if not is_gmt:
         return f"{hh:02d}:{mm:02d}"
-    from zoneinfo import ZoneInfo
     t = dt.datetime.fromisoformat(date_s).replace(hour=hh, minute=mm, tzinfo=dt.timezone.utc)
-    return t.astimezone(ZoneInfo("America/New_York")).strftime("%H:%M")
+    return t.astimezone(NY).strftime("%H:%M")
 
 
 def group_macro(raw, days):
@@ -249,48 +253,80 @@ def download(tickers, period="4y"):
     return out
 
 
-def past_earnings(t):
-    """list of (reaction_date, surprise_pct or None)"""
+def nanf(v):
+    try:
+        v = float(v)
+    except (TypeError, ValueError):
+        return None
+    return None if math.isnan(v) else v
+
+
+def earnings_table(t, limit=20):
     import yfinance as yf
-    df = yf.Ticker(t).get_earnings_dates(limit=20)
+    return yf.Ticker(t).get_earnings_dates(limit=limit)
+
+
+def past_earnings(t, df=None):
+    """list of {day, after (True/False/None = unknown), surprise, eps, est}"""
+    if df is None:
+        df = earnings_table(t)
     ev = []
     if df is None or df.empty:
         return ev
     for ts, row in df.iterrows():
         ts = pd.Timestamp(ts)
-        rep = row.get("Reported EPS")
-        if rep is None or (isinstance(rep, float) and math.isnan(rep)):
-            continue
-        local = ts.tz_convert("America/New_York") if ts.tzinfo else ts
-        after_close = local.hour >= 12
-        sur = row.get("Surprise(%)")
-        sur = None if sur is None or (isinstance(sur, float) and math.isnan(sur)) else float(sur)
-        ev.append({"day": local.tz_localize(None).normalize() if local.tzinfo else local.normalize(), "after": after_close, "surprise": sur})
+        rep = nanf(row.get("Reported EPS"))
+        local = ts.tz_convert(NY) if ts.tzinfo else ts
+        # yfinance puts 00:00 when the release time is unknown → decide later from the price gaps
+        after = None if (local.hour == 0 and local.minute == 0) else local.hour >= 12
+        day = (local.tz_localize(None) if local.tzinfo else local).normalize()
+        ev.append({"day": day, "after": after, "surprise": nanf(row.get("Surprise(%)")),
+                   "eps": rep, "est": nanf(row.get("EPS Estimate"))})
     return ev
 
 
+def react_pos(idx, o, c, day, after):
+    """Index of the session that reacts to a release on `day`.
+    The stated time (pre/post) is trusted unless the other candidate session gapped far more —
+    yfinance times are sometimes wrong.  Unknown time → the session with the larger opening gap."""
+    pos = int(idx.searchsorted(day))
+    if pos >= len(idx):
+        return None
+    if idx[pos] != day:
+        return pos                               # released on a non-trading day
+    if pos < 1 or pos + 1 >= len(idx):
+        return pos if after is False else None
+    g0, g1 = abs(o[pos] / c[pos - 1] - 1), abs(o[pos + 1] / c[pos] - 1)
+    if after is None:
+        return pos + 1 if g1 > g0 else pos
+    if after and g0 > 0.02 and g0 > 2.5 * g1:
+        return pos
+    if not after and g1 > 0.02 and g1 > 2.5 * g0:
+        return pos + 1
+    return pos + 1 if after else pos
+
+
 def reaction_stats(ev, px, spy):
-    """compute per-event moves relative to SPY"""
+    """compute per-event moves; `move` is relative to SPY, `raw` is the plain move"""
     idx = px.index
+    c, o = px["Close"].values, px["Open"].values
+    sc = spy.reindex(idx)["Close"].values
     rows = []
     for e in ev:
-        pos = idx.searchsorted(e["day"])
-        if pos >= len(idx):
+        if e["eps"] is None:
+            continue                             # not reported yet
+        r = react_pos(idx, o, c, e["day"], e["after"])
+        if r is None or r < 11 or r + 5 >= len(idx):
             continue
-        r = pos + 1 if e["after"] else pos      # reaction day index
-        if e["after"] and idx[pos] != e["day"]:
-            r = pos                              # announced on a non-trading day
-        if r < 11 or r + 5 >= len(idx):
-            continue
-        c, o = px["Close"].values, px["Open"].values
-        sc = spy.reindex(idx)["Close"].values
         if np.isnan(sc[[r - 11, r - 1, r, r + 5]]).any():
             continue
-        move = c[r] / c[r - 1] - 1 - (sc[r] / sc[r - 1] - 1)
+        raw = c[r] / c[r - 1] - 1
+        move = raw - (sc[r] / sc[r - 1] - 1)
         gap = o[r] / c[r - 1] - 1
         pre = c[r - 1] / c[r - 11] - 1 - (sc[r - 1] / sc[r - 11] - 1)
         drift = c[r + 5] / c[r] - 1 - (sc[r + 5] / sc[r] - 1)
-        rows.append({"date": str(idx[r].date()), "move": move, "gap": gap, "pre": pre, "drift": drift, "surprise": e["surprise"]})
+        rows.append({"date": str(idx[r].date()), "move": move, "raw": raw, "gap": gap, "pre": pre, "drift": drift,
+                     "surprise": e["surprise"], "after": bool(idx[r] != e["day"])})
     return rows
 
 
@@ -298,18 +334,22 @@ def summarize(rows):
     if len(rows) < 4:
         return None
     mv = np.array([r["move"] for r in rows])
+    raw = np.array([r["raw"] for r in rows])
     pre = np.array([r["pre"] for r in rows])
     dr = np.array([r["drift"] for r in rows])
-    beats = [r for r in rows if r["surprise"] is not None and r["surprise"] > 0]
+    with_sur = [r for r in rows if r["surprise"] is not None]
+    beats = [r for r in with_sur if r["surprise"] > 0]
     beat_fell = [r for r in beats if r["move"] < 0]
     hot = [r for r in rows if r["pre"] > 0.03]
     s = {
         "n": len(rows), "avg_abs": float(np.mean(np.abs(mv))), "max_abs": float(np.max(np.abs(mv))),
+        "avg_abs_raw": float(np.mean(np.abs(raw))),
         "up_rate": float(np.mean(mv > 0)), "avg_move": float(np.mean(mv)),
-        "beats": len(beats), "beat_rate": len(beats) / len([r for r in rows if r["surprise"] is not None]) if any(r["surprise"] is not None for r in rows) else None,
+        "beats": len(beats), "beat_rate": len(beats) / len(with_sur) if with_sur else None,
         "beat_fell": len(beat_fell), "avg_pre": float(np.mean(pre)), "avg_drift": float(np.mean(dr)),
         "hot_n": len(hot), "hot_avg": float(np.mean([r["move"] for r in hot])) if hot else None,
         "corr_pre_move": float(np.corrcoef(pre, mv)[0, 1]) if len(rows) >= 8 and np.std(pre) > 0 and np.std(mv) > 0 else None,
+        "after_share": float(np.mean([r["after"] for r in rows])),
         "recent": [{"date": r["date"], "move": round(r["move"], 4), "pre": round(r["pre"], 4), "surprise": None if r["surprise"] is None else round(r["surprise"], 1)} for r in rows[:8]],
     }
     return s
@@ -320,6 +360,8 @@ def sympathy(t, rows, excess, meta):
     days = [d for d in days if d in excess.index]
     if len(days) < 8 or t not in excess.columns:
         return []
+    # with only 8–12 events, picking the best of ~500 tickers finds 0.55 correlations by pure luck
+    floor = 0.55 if len(days) >= 14 else 0.65 if len(days) >= 11 else 0.72
     sub = excess.loc[days]
     x = sub[t]
     if x.std() == 0 or x.isna().any():
@@ -328,7 +370,7 @@ def sympathy(t, rows, excess, meta):
     others = others.loc[:, others.std() > 0]
     with np.errstate(all="ignore"):
         corr = others.corrwith(x)
-    corr = corr[corr >= 0.55].sort_values(ascending=False)
+    corr = corr[corr >= floor].sort_values(ascending=False)
     sec = meta.get(t, {}).get("sector", "")
     out = []
     for o, c in corr.items():
@@ -339,16 +381,32 @@ def sympathy(t, rows, excess, meta):
         same = float(np.mean(np.sign(x.values) == np.sign(y.values)))
         if same < 0.7 or beta < 0.15:
             continue
-        out.append({"t": o, "name": meta.get(o, {}).get("name", ""), "corr": round(float(c), 2), "beta": round(beta, 2), "same": round(same, 2)})
+        out.append({"t": o, "name": meta.get(o, {}).get("name", ""), "corr": round(float(c), 2), "beta": round(beta, 2),
+                    "same": round(same, 2), "n": len(days)})
         if len(out) >= 5:
             break
     return out
 
 
+def next_bday(d):
+    d += dt.timedelta(days=1)
+    while d.weekday() >= 5:
+        d += dt.timedelta(days=1)
+    return d
+
+
+def react_date(e):
+    """first session that can trade on the news; unknown time → assume after the close (the later, safer day)"""
+    d = dt.date.fromisoformat(e["date"])
+    return d if e.get("when") == "pre" else next_bday(d)
+
+
 def implied_move(t, react_day, price):
+    """at-the-money straddle of the first expiry on/after the reaction session — an expiry on the
+    report date itself would expire before an after-close release and price no earnings move at all"""
     import yfinance as yf
     tk = yf.Ticker(t)
-    exps = [e for e in (tk.options or []) if pd.Timestamp(e) >= pd.Timestamp(react_day)]
+    exps = [e for e in (tk.options or []) if pd.Timestamp(e).date() >= react_day]
     if not exps:
         return None
     ch = tk.option_chain(exps[0])
@@ -368,6 +426,113 @@ def implied_move(t, react_day, price):
     return {"move": (c + p) / price, "expiry": exps[0]}
 
 
+# ----------------------------------------------------------------------------- outcomes
+def load_json(path, default):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:  # noqa: BLE001
+        return default
+
+
+def key_of(e):
+    return f'{e["t"]}|{e["date"]}'
+
+
+SNAP_KEYS = ("t", "name", "sector", "date", "when", "when_guess", "cap", "eps_est", "watch", "stats", "sym",
+             "implied", "pre_now", "price", "comment", "tags")
+
+
+def snapshot(e):
+    return {k: e[k] for k in SNAP_KEYS if k in e}
+
+
+def slim(item):
+    """old history rows: keep only what the scorecard needs"""
+    return {k: item[k] for k in ("t", "date", "when", "cap", "implied", "tags", "res", "checks", "eps_est") if k in item}
+
+
+def outcome(item, px, spy, ev, today, now_ny):
+    """actual result of a past report, or None while the reaction session hasn't closed yet"""
+    t = item["t"]
+    if t not in px or spy is None:
+        return None
+    d = px[t]
+    idx, c, o = d.index, d["Close"].values, d["Open"].values
+    after = {"pre": False, "post": True}.get(item.get("when"))
+    if item.get("when_guess"):
+        after = None
+    r = react_pos(idx, o, c, pd.Timestamp(item["date"]), after)
+    if r is None or r < 1:
+        return None
+    rday = idx[r].date()
+    if rday > today or (rday == today and now_ny.hour * 60 + now_ny.minute < 16 * 60 + 20):
+        return None                              # today's bar is still moving
+    sc = spy.reindex(idx)["Close"].values
+    if np.isnan(sc[[r - 1, r]]).any():
+        return None
+    raw = c[r] / c[r - 1] - 1
+    res = {"day": str(rday), "raw": round(float(raw), 4), "ex": round(float(raw - (sc[r] / sc[r - 1] - 1)), 4),
+           "gap": round(float(o[r] / c[r - 1] - 1), 4)}
+    for e in ev or []:
+        if e["eps"] is not None and abs((e["day"].date() - dt.date.fromisoformat(item["date"])).days) <= 3:
+            res.update({"eps": e["eps"], "est": e["est"], "surprise": None if e["surprise"] is None else round(e["surprise"], 1)})
+            break
+    return res
+
+
+CHECKS = {
+    "vol": "实际波动没超出期权定价",
+    "sell_news": "「利好出尽型」超预期后跑输大盘",
+    "runup": "「已提前炒作」财报日跑输大盘",
+    "up": "「财报日常涨」当天跑赢大盘",
+    "down": "「财报日常跌」当天跑输大盘",
+    "big": "「大波动」当天相对大盘波动超过 5%",
+}
+
+
+def checks_for(item):
+    r, tags, out = item["res"], item.get("tags") or [], []
+    sur = r.get("surprise")
+    im = item.get("implied")
+    if im:
+        out.append({"k": "vol", "ok": abs(r["raw"]) <= im["move"],
+                    "txt": f"实际波动 ±{abs(r['raw']) * 100:.1f}%，期权定价 ±{im['move'] * 100:.1f}%"})
+    if "利好出尽型" in tags and sur is not None and sur > 0:
+        out.append({"k": "sell_news", "ok": r["ex"] < 0, "txt": "利好出尽：" + ("应验，超预期但跑输大盘" if r["ex"] < 0 else "没应验，超预期并且跑赢大盘")})
+    if "已提前炒作" in tags:
+        out.append({"k": "runup", "ok": r["ex"] < 0, "txt": "提前炒作后回吐：" + ("应验" if r["ex"] < 0 else "没应验")})
+    if "财报日常涨" in tags:
+        out.append({"k": "up", "ok": r["ex"] > 0, "txt": "财报日常涨：" + ("应验" if r["ex"] > 0 else "没应验")})
+    if "财报日常跌" in tags:
+        out.append({"k": "down", "ok": r["ex"] < 0, "txt": "财报日常跌：" + ("应验" if r["ex"] < 0 else "没应验")})
+    if "大波动" in tags:
+        out.append({"k": "big", "ok": abs(r["ex"]) >= 0.05, "txt": "大波动：" + ("应验" if abs(r["ex"]) >= 0.05 else "这次波动不大")})
+    return out
+
+
+def scorecard(hist):
+    done = [h for h in hist.values() if h.get("res")]
+    if not done:
+        return {"n": 0, "rows": []}
+    ex = [h["res"]["ex"] for h in done]
+    beats = [h for h in done if (h["res"].get("surprise") or 0) > 0]
+    base = {
+        "vol": None,
+        "sell_news": float(np.mean([h["res"]["ex"] < 0 for h in beats])) if beats else None,
+        "runup": float(np.mean([x < 0 for x in ex])), "down": float(np.mean([x < 0 for x in ex])),
+        "up": float(np.mean([x > 0 for x in ex])), "big": float(np.mean([abs(x) >= 0.05 for x in ex])),
+    }
+    rows = []
+    for k, label in CHECKS.items():
+        cs = [c for h in done for c in (h.get("checks") or []) if c["k"] == k]
+        if cs:
+            rows.append({"k": k, "label": label, "n": len(cs), "hit": round(sum(c["ok"] for c in cs) / len(cs), 3),
+                         "base": None if base[k] is None else round(base[k], 3)})
+    first = min(h["date"] for h in done)
+    return {"n": len(done), "since": first, "rows": rows}
+
+
 # ----------------------------------------------------------------------------- commentary
 def pct(x, d=1):
     return f"{x * 100:+.{d}f}%"
@@ -378,20 +543,24 @@ def comment(e):
     if not s:
         return ["历史财报样本不足，无法给出统计评语。"], ["样本不足"]
     hist = s["avg_abs"]
+    raw = s.get("avg_abs_raw", hist)
     if e.get("implied"):
+        # the straddle prices the stock's own move, so compare it with the plain (not market-adjusted) history
         im = e["implied"]["move"]
-        ratio = im / hist if hist else 1
-        lines.append(f"期权为这次财报定价 ±{im * 100:.1f}% 的波动，过去 {s['n']} 次财报日平均实际波动 ±{hist * 100:.1f}%"
+        ratio = im / raw if raw else 1
+        lines.append(f"期权为这次财报定价 ±{im * 100:.1f}% 的波动，过去 {s['n']} 次财报日平均实际波动 ±{raw * 100:.1f}%"
                      + ("，期权偏贵（市场押注这次波动更大）。" if ratio > 1.25 else "，期权偏便宜（市场可能低估了波动）。" if ratio < 0.8 else "，定价和历史差不多。"))
     else:
-        lines.append(f"过去 {s['n']} 次财报日相对大盘平均波动 ±{hist * 100:.1f}%，最大一次 {s['max_abs'] * 100:.1f}%。")
+        lines.append(f"过去 {s['n']} 次财报日平均波动 ±{raw * 100:.1f}%（扣除大盘后 ±{hist * 100:.1f}%），最大一次相对大盘 {s['max_abs'] * 100:.1f}%。")
     if hist >= 0.07:
         tags.append("大波动")
     if s["beats"] >= 3:
         rate = s["beat_fell"] / s["beats"]
+        few = s["beats"] < 6
         lines.append(f"业绩超预期 {s['beats']} 次，其中 {s['beat_fell']} 次股价反而跑输大盘（利好兑现下跌率 {rate * 100:.0f}%）。"
-                     + ("典型「利好出尽」型：好消息常常早已被价格消化。" if rate >= 0.45 else "超预期后通常能兑现上涨。" if rate <= 0.25 else ""))
-        if rate >= 0.45:
+                     + ("样本太少，仅供参考。" if few else
+                        "典型「利好出尽」型：好消息常常早已被价格消化。" if rate >= 0.45 else "超预期后通常能兑现上涨。" if rate <= 0.25 else ""))
+        if rate >= 0.45 and not few:
             tags.append("利好出尽型")
     pre_now = e.get("pre_now")
     if pre_now is not None:
@@ -411,15 +580,16 @@ def comment(e):
     if abs(s["avg_drift"]) >= 0.01:
         lines.append(f"财报后 5 个交易日平均再{'涨' if s['avg_drift'] > 0 else '跌'} {abs(s['avg_drift']) * 100:.1f}%（相对大盘）"
                      + ("，有财报后漂移效应。" if s["avg_drift"] > 0 else "，发布后容易继续回吐。"))
-    if s["up_rate"] >= 0.7:
-        tags.append("财报日常涨")
-    elif s["up_rate"] <= 0.3:
-        tags.append("财报日常跌")
+    if s["n"] >= 8:
+        if s["up_rate"] >= 0.7:
+            tags.append("财报日常涨")
+        elif s["up_rate"] <= 0.3:
+            tags.append("财报日常跌")
     return lines, tags
 
 
 # ----------------------------------------------------------------------------- demo data
-def demo_inputs(days):
+def demo_inputs(days, past):
     rng = np.random.default_rng(3)
     idx = pd.bdate_range(end=pd.Timestamp.today().normalize(), periods=1000)
     names = ["SPY"] + [f"D{i:02d}" for i in range(40)]
@@ -429,48 +599,115 @@ def demo_inputs(days):
         c = 100 * np.exp(np.cumsum(r))
         o = c * (1 + rng.normal(0, 0.004, len(idx)))
         px[t] = pd.DataFrame({"Open": o, "Close": c}, index=idx)
-    # quarterly earnings with a sympathy relation D00 -> D01, D02
+    # quarterly earnings with a sympathy relation D00 -> D01, D02; D06..D11 already reported in the past window
     evs = {}
-    for t in names[1:12]:
-        ev = []
+    alld = past + days
+    earn = []
+    for i in range(12):
+        t = f"D{i:02d}"
+        date = past[i % len(past)] if i >= 6 else days[i % len(days)]
+        earn.append({"t": t, "name": f"Demo Corp {i}", "date": date.isoformat(), "when": ["pre", "post", ""][i % 3],
+                     "cap": 5e10 + i * 1e10, "eps_est": 1.2 + i / 10, "n_est": 12, "last_eps": 1.0, "fq": "Sep/2026"})
+    for e in earn:
+        t, ev = e["t"], []
         for q in range(14):
-            day = idx[-(q * 63 + 20)] if q else None
-            if day is None:
-                continue
-            pos = idx.get_loc(day)
+            if q == 0:
+                d0 = pd.Timestamp(e["date"])
+                if d0 > idx[-2]:
+                    continue
+                pos = idx.get_loc(d0) + (0 if e["when"] == "pre" else 1)
+                day = d0
+            else:
+                pos = len(idx) - (q * 63 + 20)
+                day = idx[pos]
             jump = rng.normal(0.0, 0.07)
             px[t].iloc[pos:, 1] *= (1 + jump)
+            px[t].iloc[pos, 0] = px[t].iloc[pos - 1, 1] * (1 + jump * 0.8)
             if t == "D00":
                 for s, b in (("D01", 0.6), ("D02", 0.45)):
                     px[s].iloc[pos:, 1] *= (1 + b * jump + rng.normal(0, 0.01))
-            ev.append({"day": day, "after": False, "surprise": float(rng.normal(3, 6))})
+            ev.append({"day": day, "after": {"pre": False, "post": True}.get(e["when"]), "surprise": float(rng.normal(3, 6)),
+                       "eps": 1.3, "est": 1.25})
         evs[t] = ev
-    earn = [{"t": f"D{i:02d}", "name": f"Demo Corp {i}", "date": days[i % len(days)].isoformat(), "when": "pre" if i % 2 else "post",
-             "cap": 5e10 + i * 1e10, "eps_est": 1.2 + i / 10, "n_est": 12, "last_eps": 1.0, "fq": "Sep/2026"} for i in range(12)]
     macro = [{"date": days[1].isoformat(), "time": "12:30", "name": "CPI (MoM) (Sep)", "actual": "", "consensus": "0.3%", "previous": "0.4%"},
              {"date": days[1].isoformat(), "time": "12:30", "name": "Core CPI (YoY) (Sep)", "actual": "", "consensus": "3.1%", "previous": "3.2%"},
              {"date": days[3].isoformat(), "time": "12:30", "name": "Initial Jobless Claims", "actual": "", "consensus": "225K", "previous": "231K"},
+             {"date": past[-1].isoformat(), "time": "12:30", "name": "Retail Sales (MoM) (Sep)", "actual": "0.6%", "consensus": "0.3%", "previous": "0.1%"},
+             {"date": past[-2].isoformat(), "time": "12:30", "name": "Initial Jobless Claims", "actual": "219K", "consensus": "225K", "previous": "231K"},
              {"date": days[4].isoformat(), "time": "12:30", "name": "Nonfarm Payrolls (Sep)", "actual": "", "consensus": "120K", "previous": "142K"}]
     meta = {t: {"name": f"Demo Corp {t[1:]}", "sector": "Tech"} for t in names}
     return earn, macro, px, evs, meta
 
 
 # ----------------------------------------------------------------------------- main
+def enrich(e, px, spy, evmap, excess, meta, watch, today, live):
+    t = e["t"]
+    e["name"] = e["name"] or meta.get(t, {}).get("name", "")
+    e["sector"] = meta.get(t, {}).get("sector", "")
+    e["watch"] = t in watch
+    if t in px and spy is not None and evmap.get(t):
+        rows = reaction_stats(evmap[t], px[t], spy)
+        e["stats"] = summarize(rows)
+        if e["stats"]:
+            e["sym"] = sympathy(t, rows, excess, meta)
+            if not e.get("when"):
+                a = e["stats"]["after_share"]
+                if a >= 0.75 or a <= 0.25:
+                    e["when"], e["when_guess"] = ("post" if a >= 0.75 else "pre"), True
+        d = px[t]
+        if len(d) > 11:
+            sc = spy.reindex(d.index)["Close"]
+            e["pre_now"] = float(d["Close"].iloc[-1] / d["Close"].iloc[-11] - 1 - (sc.iloc[-1] / sc.iloc[-11] - 1))
+            e["price"] = round(float(d["Close"].iloc[-1]), 2)
+    if live and e.get("price") and 0 <= (dt.date.fromisoformat(e["date"]) - today).days <= 7:
+        try:
+            im = implied_move(t, react_date(e), e["price"])
+            if im:
+                e["implied"] = {"move": round(im["move"], 4), "expiry": im["expiry"]}
+        except Exception as ex:  # noqa: BLE001
+            print("options", t, ex)
+    if not live and e.get("stats") and e["t"] in ("D00", "D03", "D06", "D07", "D09"):
+        e["implied"] = {"move": round(e["stats"]["avg_abs_raw"] * (1.5 if e["t"] in ("D00", "D06") else 0.7), 4), "expiry": e["date"]}
+    e["comment"], e["tags"] = comment(e)
+    return e
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--demo", action="store_true")
     args = ap.parse_args()
-    today = dt.datetime.now(dt.timezone.utc).astimezone(dt.timezone(dt.timedelta(hours=-5))).date()
+    live = not args.demo
+    now_ny = dt.datetime.now(NY)
+    today = now_ny.date()
     days = business_days(today, DAYS_AHEAD)
+    past = []
+    d = today
+    while len(past) < PAST_DAYS:
+        d -= dt.timedelta(days=1)
+        if d.weekday() < 5:
+            past.insert(0, d)
 
+    hist = {} if args.demo else load_json(HIST, {})
+    if not args.demo:
+        # seed from the previous output: any call it made before that report's reaction session opened
+        prev = load_json(OUT, {})
+        try:
+            pgen = dt.datetime.strptime(prev.get("generated", ""), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)
+        except ValueError:
+            pgen = None
+        for pd_ in (prev.get("days") or []) if pgen and not prev.get("demo") else []:
+            for e in pd_.get("earnings") or []:
+                k = key_of(e)
+                if k not in hist and "res" not in e and pgen < dt.datetime.combine(react_date(e), dt.time(9, 30), NY):
+                    hist[k] = snapshot(e)
     if args.demo:
-        earn, raw_macro, px, evmap, meta = demo_inputs(days)
+        earn, raw_macro, px, evmap, meta = demo_inputs(days, past)
         watch = set()
     else:
         meta, watch = load_universe()
         earn = nasdaq_earnings(days)
         DIAG["nasdaq_earnings_rows"] = len(earn)
-        raw_macro = nasdaq_macro(days)
+        raw_macro = nasdaq_macro(past + days)
         DIAG["nasdaq_macro_rows"] = len(raw_macro)
         if not earn:
             earn = yf_earnings_fallback(sorted(set(meta) | watch), days)
@@ -485,57 +722,81 @@ def main():
     earn = dedup[:MAX_REPORTERS]
     DIAG["reporters"] = len(earn)
 
-    if not args.demo:
-        px = download(sorted(set(meta) | {e["t"] for e in earn} | {"SPY"}))
+    # history rows whose result is still missing (price or EPS)
+    pending = [h for h in hist.values() if not (h.get("res") and h["res"].get("eps") is not None)
+               and (today - dt.date.fromisoformat(h["date"])).days <= 10]
+    if live:
+        px = download(sorted(set(meta) | {e["t"] for e in earn} | {h["t"] for h in pending} | {"SPY"}))
         evmap = {}
-        for e in earn:
+        for t in sorted({e["t"] for e in earn} | {h["t"] for h in pending}):
             try:
-                evmap[e["t"]] = past_earnings(e["t"])
+                evmap[t] = past_earnings(t)
             except Exception as ex:  # noqa: BLE001
-                print("earnings history", e["t"], ex)
+                print("earnings history", t, ex)
             time.sleep(0.3)
     spy = px.get("SPY")
     rets = pd.DataFrame({t: d["Close"].pct_change() for t, d in px.items()})
     excess = rets.sub(rets["SPY"], axis=0) if "SPY" in rets else rets
 
     for e in earn:
-        t = e["t"]
-        e["name"] = e["name"] or meta.get(t, {}).get("name", "")
-        e["sector"] = meta.get(t, {}).get("sector", "")
-        e["watch"] = t in watch
-        if t in px and spy is not None and evmap.get(t):
-            rows = reaction_stats(evmap[t], px[t], spy)
-            e["stats"] = summarize(rows)
-            if e["stats"]:
-                e["sym"] = sympathy(t, rows, excess, meta)
-            d = px[t]
-            if len(d) > 11:
-                sc = spy.reindex(d.index)["Close"]
-                e["pre_now"] = float(d["Close"].iloc[-1] / d["Close"].iloc[-11] - 1 - (sc.iloc[-1] / sc.iloc[-11] - 1))
-                e["price"] = round(float(d["Close"].iloc[-1]), 2)
-        if not args.demo and e.get("price") and (dt.date.fromisoformat(e["date"]) - today).days <= 7:
-            try:
-                im = implied_move(t, e["date"], e["price"])
-                if im:
-                    e["implied"] = {"move": round(im["move"], 4), "expiry": im["expiry"]}
-            except Exception as ex:  # noqa: BLE001
-                print("options", t, ex)
-        if args.demo and e.get("stats") and e["t"] in ("D00", "D03"):
-            e["implied"] = {"move": round(e["stats"]["avg_abs"] * (1.5 if e["t"] == "D00" else 0.7), 4), "expiry": e["date"]}
-        e["comment"], e["tags"] = comment(e)
+        enrich(e, px, spy, evmap, excess, meta, watch, today, live)
+        # keep the latest pre-release prediction; freeze it once the reaction session opens
+        k = key_of(e)
+        opens = dt.datetime.combine(react_date(e), dt.time(9, 30), NY)
+        if now_ny < opens and not (hist.get(k) or {}).get("res"):
+            hist[k] = snapshot(e)
+        elif k not in hist and args.demo:
+            hist[k] = snapshot(e)
 
-    macro = group_macro(raw_macro, days)
+    # results for everything that has already reported
+    filled = 0
+    for k, h in hist.items():
+        if h.get("res") and h["res"].get("eps") is not None:
+            continue
+        if (today - dt.date.fromisoformat(h["date"])).days > 10:
+            continue
+        r = outcome(h, px, spy, evmap.get(h["t"]), today, now_ny)
+        if r:
+            h["res"] = r
+            h["checks"] = checks_for(h)
+            filled += 1
+    DIAG["results_filled"] = filled
+
+    # prune: full detail for two weeks, a slim row for a year
+    for k in list(hist):
+        age = (today - dt.date.fromisoformat(hist[k]["date"])).days
+        if age > 400:
+            del hist[k]
+        elif age > 14:
+            hist[k] = slim(hist[k])
+
+    macro = group_macro(raw_macro, past + days)
     out_days = []
     for d in days:
         ds = d.isoformat()
-        out_days.append({"date": ds,
-                         "macro": [m for m in macro if m["date"] == ds],
-                         "earnings": sorted([e for e in earn if e["date"] == ds], key=lambda x: -(x["cap"] or 0))})
-    res = {"generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "demo": bool(args.demo), "days": out_days, "diag": DIAG}
+        ers = []
+        for e in earn:
+            if e["date"] != ds:
+                continue
+            h = hist.get(key_of(e))
+            ers.append(h if h and h.get("res") else e)   # already reported today → show the frozen call + result
+        out_days.append({"date": ds, "macro": [m for m in macro if m["date"] == ds],
+                         "earnings": sorted(ers, key=lambda x: -(x.get("cap") or 0))})
+    out_past = []
+    for d in past:
+        ds = d.isoformat()
+        ers = [h for h in hist.values() if h["date"] == ds]
+        out_past.append({"date": ds, "macro": [m for m in macro if m["date"] == ds],
+                         "earnings": sorted(ers, key=lambda x: -(x.get("cap") or 0))})
+    res = {"generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "demo": bool(args.demo),
+           "days": out_days, "past": out_past, "score": scorecard(hist), "diag": DIAG}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(res, f, ensure_ascii=False, separators=(",", ":"), default=lambda o: None)
-    print(f"{len(earn)} reporters, {len(macro)} macro events; diag={DIAG}")
+    if live:
+        with open(HIST, "w", encoding="utf-8") as f:
+            json.dump(hist, f, ensure_ascii=False, separators=(",", ":"), default=lambda o: None)
+    print(f"{len(earn)} reporters, {len(macro)} macro events, {len(hist)} history rows; diag={DIAG}")
     return 0
 
 

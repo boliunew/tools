@@ -2,7 +2,10 @@ name: 财报与经济日历
 
 on:
   schedule:
-    - cron: "37 12 * * 1-5"   # 工作日早上（太平洋时间约 5:37）
+    # GitHub 的定时任务经常晚 4～6 小时才真正开始，所以早上那次提前到半夜排队
+    - cron: "11 7 * * 1-5"    # 美东凌晨：开盘前把今天的日历准备好
+    - cron: "41 12 * * 1-5"   # 补跑一次（以防上面那次被延迟或失败）
+    - cron: "23 21 * * 1-5"   # 收盘后：补上当天盘前财报的结果、昨晚盘后财报的反应
     - cron: "37 18 * * 0"     # 周日提前准备下周
   workflow_dispatch: {}
   push:
@@ -29,7 +32,14 @@ jobs:
           cache-dependency-path: earnings/requirements.txt
       - run: pip install -r earnings/requirements.txt
       - run: python earnings/build.py
+      - name: Upload (test branches)
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: earnings-data
+          path: earnings/data/*.json
       - name: Commit
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
