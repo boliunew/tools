@@ -8,7 +8,12 @@ Signals  : 回踩金坑 / 挤压突破 / 强势新高 / RSI2 超跌反弹 / 血�
 Output   : stocks/data/latest.json (+ dated copy in stocks/data/history/)
 
 Every signal's historical stats are computed on the same universe with strict
-no-lookahead: signal uses data up to close t, forward return is close t -> close t+h.
+no-lookahead: signal uses data up to close t, the trade enters at the next open (t+1)
+and is measured to close t+h, minus a round-trip cost.  Repeated signals on the same
+stock are counted once, and because signals cluster on the same days the uncertainty
+is measured across non-overlapping time blocks, not across individual trades.  Each
+signal is also measured separately for each market regime (进攻 / 谨慎 / 防守), and
+today's picks are ranked by the edge their signal had in regimes like today's.
 
 Local test without network:  python stocks/scan.py --demo
 """
@@ -32,9 +37,13 @@ WATCHLIST = os.path.join(HERE, "watchlist.txt")
 
 MIN_PRICE = 10.0
 MIN_DOLLAR_VOL = 20e6          # 20-day average dollar volume
-STATS_YEARS = 2                # years of history used for signal statistics
+STATS_YEARS = 5                # years of history used for signal statistics (download adds a warm-up year)
 MAX_PER_SIGNAL = 12
-TRACK_DAYS = 20                # how many past trading days of picks to track
+COST = 0.001                   # round-trip cost + slippage per trade
+MIN_BLOCKS = 15                # fewer independent time blocks than this → "样本太少"
+MAX_PICKS = 8                  # 精选 list size
+MAX_PER_SECTOR = 2
+EARN_FILE = os.path.join(os.path.dirname(HERE), "earnings", "data", "latest.json")
 
 SIGNALS = {
     "squeeze": {
@@ -165,7 +174,7 @@ def fetch_universe():
 
 
 # ----------------------------------------------------------------------------- data
-def download(tickers, period="3y"):
+def download(tickers, period="6y"):
     import yfinance as yf
     out = {}
     chunk = 100
@@ -335,58 +344,168 @@ def levels(sig, x):
     return round(stop, 2), round(target, 2), round((target - c) / risk, 2)
 
 
+# ----------------------------------------------------------------------------- regime
+def regime_label(above200, sma50_up, vix, b50):
+    if above200 and sma50_up and vix < 20 and b50 >= 0.5:
+        return "进攻"
+    if (not above200) or vix >= 28 or b50 < 0.3:
+        return "防守"
+    return "谨慎"
+
+
+def regime_series(frames, spy, vix):
+    """the same 进攻 / 谨慎 / 防守 rule the page shows today, evaluated on every past day"""
+    cl = pd.DataFrame({t: x["close"] for t, x in frames.items()})
+    s50 = pd.DataFrame({t: x["sma50"] for t, x in frames.items()})
+    b50 = (cl > s50).astype(float).where(s50.notna()).mean(axis=1)
+    if spy is None:
+        return pd.Series("谨慎", index=cl.index)
+    sp = spy.reindex(cl.index).ffill()
+    vx = vix["close"].reindex(cl.index).ffill().fillna(18) if vix is not None else pd.Series(18.0, index=cl.index)
+    up200 = sp["close"] > sp["sma200"]
+    s50up = sp["sma50"] > sp["sma50"].shift(5)
+    lab = [regime_label(bool(a), bool(b), float(v), float(c)) for a, b, v, c in zip(up200, s50up, vx, b50.fillna(0.5))]
+    return pd.Series(lab, index=cl.index)
+
+
 # ----------------------------------------------------------------------------- stats
-def signal_stats(frames, sigs, cutoff):
+def block_stats(ev, h, n_days):
+    """ev: DataFrame with columns pos (trading-day index), ex, raw, base.  Trades whose holding periods
+    overlap are not independent, so average them inside non-overlapping blocks of 2h trading days and
+    measure the uncertainty across blocks."""
+    st = {"horizon": h, "n": int(len(ev)), "blocks": 0}
+    if len(ev) < 5:
+        st["verdict"] = "样本太少"
+        return st
+    blk = (ev["pos"] // (2 * h)).astype(int)
+    bm = ev.groupby(blk)["ex"].mean()
+    nb = len(bm)
+    edge = float(bm.mean())
+    se = float(bm.std(ddof=1) / math.sqrt(nb)) if nb > 1 else float("nan")
+    r = ev["raw"].values.astype(float)
+    st.update({
+        "blocks": nb, "mean": float(ev.groupby(blk)["raw"].mean().mean()), "base_mean": float(ev.groupby(blk)["base"].mean().mean()),
+        "win": float((r > 0).mean()), "median": float(np.median(r)),
+        "pf": float(r[r > 0].sum() / max(-r[r < 0].sum(), 1e-9)),
+        "edge": edge, "ci_lo": edge - 1.96 * se if se == se else None, "ci_hi": edge + 1.96 * se if se == se else None,
+        "per_year": round(len(ev) / max(n_days / 252, 0.1), 1),
+    })
+    if nb < MIN_BLOCKS or se != se:
+        st["verdict"] = "样本太少"
+    elif st["ci_lo"] > 0:
+        st["verdict"] = "有统计优势"
+    elif st["ci_hi"] < 0:
+        st["verdict"] = "跑输基准"
+    else:
+        st["verdict"] = "优势未证实"
+    return st
+
+
+MAXD = {"rsi2": 7, "blood": 126}   # max holding days (default 15)
+
+
+def sim_exit(sig, A, i, stop, target, entry):
+    """walk forward from the session after signal day i using the signal's real exit rules.
+    A gap through the stop / target fills at the open.  Returns (exit index, gross return, status)
+    or (last index, open return, "持有中") when the trade hasn't finished."""
+    o, h, l, c, s5, e20 = A["open"], A["high"], A["low"], A["close"], A["sma5"], A["ema20"]
+    n, maxd = len(c), MAXD.get(sig, 15)
+    j = i
+    for k in range(maxd):
+        j = i + 1 + k
+        if j >= n:
+            return n - 1, c[n - 1] / entry - 1, "持有中"
+        oo = entry if k == 0 else o[j]
+        if l[j] <= stop or oo <= stop:
+            return j, min(oo, stop) / entry - 1, "止损"
+        if h[j] >= target or oo >= target:
+            return j, max(oo, target) / entry - 1, "止盈"
+        if sig == "rsi2" and c[j] > s5[j]:
+            return j, c[j] / entry - 1, "规则离场"
+        if sig == "momentum" and c[j] < e20[j]:
+            return j, c[j] / entry - 1, "规则离场"
+    return j, c[j] / entry - 1, "到期"
+
+
+def arrays(x):
+    return {k: x[k].to_numpy(dtype=float) for k in ("open", "high", "low", "close", "sma5", "ema20", "atr", "low3")}
+
+
+def signal_stats(frames, sigs, cutoff, regimes):
+    """per signal: overall stats + stats per market regime.  Every signal is replayed as a real trade:
+    buy at the next open, exit by the signal's own stop / target / rule / time limit, minus COST.
+    `ex` = trade return minus an equal-weight basket of every eligible stock over the same days.
+    While a trade is open, new signals on the same stock are ignored."""
+    idx = regimes.index
+    pos = {d: k for k, d in enumerate(idx)}
+    keep = np.asarray(idx >= cutoff)
+    n_days = int(keep.sum())
+    # equal-weight basket of eligible stocks (eligibility judged the day before)
+    R = pd.DataFrame({t: x["close"].pct_change() for t, x in frames.items()}).reindex(idx)
+    E = pd.DataFrame({t: sigs[t]["base"] for t in frames}).reindex(idx).fillna(False).astype(bool).shift(1).fillna(False)
+    ew = (1 + R.where(E).mean(axis=1).fillna(0)).cumprod().to_numpy()
+    reg = regimes.to_numpy()
+    events = {k: [] for k in SIGNALS}
+    for t, x in frames.items():
+        A = arrays(x)
+        gi = np.array([pos.get(d, -1) for d in x.index])
+        S = sigs[t]
+        for key in SIGNALS:
+            col = S[key].to_numpy()
+            busy = -1
+            for i in np.nonzero(col)[0]:
+                if i <= busy or i + 1 >= len(col) or gi[i] < 0 or not keep[gi[i]]:
+                    continue
+                row = {"close": A["close"][i], "atr": A["atr"][i], "low3": A["low3"][i], "sma5": A["sma5"][i]}
+                stop, target, _ = levels(key, row)
+                entry = A["open"][i + 1]
+                j, r, status = sim_exit(key, A, i, stop, target, entry)
+                busy = j
+                if status == "持有中" or not np.isfinite(r):
+                    continue
+                g0, g1 = gi[i], gi[j]
+                if g1 < 0:
+                    continue
+                base = ew[g1] / ew[g0] - 1
+                raw = r - COST
+                events[key].append((g0, raw, base, raw - base, reg[g0], j - i))
     out = {}
-    base_by_h = {}
     for key, cfg in SIGNALS.items():
         h = cfg["horizon"]
-        rets, base = [], base_by_h.get(h)
-        collect_base = base is None
-        if collect_base:
-            base = []
-        for t, x in frames.items():
-            s = sigs[t]
-            fwd = x["close"].shift(-h) / x["close"] - 1
-            ok = (x.index >= cutoff) & fwd.notna()
-            r = fwd[ok & s[key]]
-            rets.extend(r.values.tolist())
-            if collect_base:
-                base.extend(fwd[ok & s["base"]].values.tolist())
-        base_by_h[h] = base
-        r = np.array(rets)
-        b = np.array(base) if len(base) else np.array([0.0])
-        n = len(r)
-        st = {"horizon": h, "n": n, "base_mean": float(b.mean()), "base_win": float((b > 0).mean())}
-        if n >= 5:
-            mean, sd = float(r.mean()), float(r.std(ddof=1))
-            se = sd / math.sqrt(n)
-            edge = mean - st["base_mean"]
-            st.update({
-                "mean": mean, "median": float(np.median(r)), "win": float((r > 0).mean()),
-                "edge": edge, "ci_lo": edge - 1.96 * se, "ci_hi": edge + 1.96 * se,
-                "pf": float(r[r > 0].sum() / max(-r[r < 0].sum(), 1e-9)),
-            })
-            if n < 30:
-                st["verdict"] = "样本太少"
-            elif st["ci_lo"] > 0:
-                st["verdict"] = "有统计优势"
-            elif st["ci_hi"] < 0:
-                st["verdict"] = "跑输基准"
-            else:
-                st["verdict"] = "优势未证实"
-        else:
-            st["verdict"] = "样本太少"
+        ev = pd.DataFrame(events[key], columns=["pos", "raw", "base", "ex", "reg", "days"])
+        st = block_stats(ev, h, n_days)
+        st["avg_days"] = round(float(ev["days"].mean()), 1) if len(ev) else None
+        st["by_regime"] = {}
+        for rg in ("进攻", "谨慎", "防守"):
+            days = int(((reg == rg) & keep).sum())
+            r = block_stats(ev[ev["reg"] == rg], h, days)
+            r["days"] = days
+            st["by_regime"][rg] = r
         out[key] = st
+    out["_meta"] = {"since": str(idx[keep][0].date()) if keep.any() else None, "days": n_days, "cost": COST,
+                    "regime_days": {rg: int(((reg == rg) & keep).sum()) for rg in ("进攻", "谨慎", "防守")}}
     return out
 
 
+def evidence(st, regime):
+    """what we believe about a signal today: its stats in today's regime if there are enough, else overall.
+    "proven" = significant in today's regime, or significant overall and not negative in today's regime."""
+    rg = (st.get("by_regime") or {}).get(regime) or {}
+    enough = rg.get("blocks", 0) >= MIN_BLOCKS
+    use = rg if enough else st
+    proven = rg.get("verdict") == "有统计优势" or (st.get("verdict") == "有统计优势" and (not enough or (rg.get("edge") or 0) > 0))
+    return {"edge": use.get("edge"), "src": "regime" if enough else "all", "proven": bool(proven),
+            "verdict_rg": rg.get("verdict"), "edge_rg": rg.get("edge"), "blocks_rg": rg.get("blocks", 0)}
+
+
 # ----------------------------------------------------------------------------- tracking
-def track(frames, today):
+def track(frames, today, spy):
+    """replay every saved pick: enter at the next open, exit at stop / target / rule / time limit.
+    A gap through the stop or target fills at the open, not at the level."""
     rows = []
     if not os.path.isdir(HIST):
-        return {"rows": [], "summary": {}}
-    files = sorted(f for f in os.listdir(HIST) if f.endswith(".json") and f[:-5] < today)[-TRACK_DAYS:]
+        return {"rows": [], "summary": {}, "by_sig": {}, "by_tier": {}}
+    files = sorted(f for f in os.listdir(HIST) if f.endswith(".json") and f[:-5] < today)
     for fn in files:
         try:
             with open(os.path.join(HIST, fn), encoding="utf-8") as f:
@@ -400,40 +519,69 @@ def track(frames, today):
             after = x[x.index > pd.Timestamp(p["date"])]
             if after.empty:
                 continue
-            maxd = {"rsi2": 7, "blood": 126}.get(p["sig"], 15)
-            status, exit_px, days = "持有中", float(after["close"].iloc[-1]), len(after)
-            for i, (_, bar) in enumerate(after.iterrows()):
-                if bar["low"] <= p["stop"]:
-                    status, exit_px, days = "止损", p["stop"], i + 1
-                    break
-                if bar["high"] >= p["target"]:
-                    status, exit_px, days = "止盈", p["target"], i + 1
-                    break
-                if p["sig"] == "rsi2" and bar["close"] > bar["sma5"]:
-                    status, exit_px, days = "规则离场", float(bar["close"]), i + 1
-                    break
-                if i + 1 >= maxd:
-                    status, exit_px, days = "到期", float(bar["close"]), i + 1
-                    break
-            rows.append({"date": p["date"], "t": p["t"], "sig": p["sig"], "entry": p["entry"],
-                         "ret": round(exit_px / p["entry"] - 1, 4), "status": status, "days": days})
-    closed = [r for r in rows if r["status"] != "持有中"]
-    summary = {"total": len(rows), "closed": len(closed)}
-    if closed:
-        rr = np.array([r["ret"] for r in closed])
-        summary.update({"win": float((rr > 0).mean()), "mean": float(rr.mean())})
+            A = arrays(x)
+            i = int(x.index.searchsorted(pd.Timestamp(p["date"]), side="right")) - 1
+            entry = float(A["open"][i + 1])
+            j, gross, status = sim_exit(p["sig"], A, i, p["stop"], p["target"], entry)
+            days = j - i
+            spy_r = None
+            if spy is not None:
+                sp = spy.reindex(after.index[:days])
+                if len(sp) and sp["open"].iloc[0] == sp["open"].iloc[0] and sp["close"].iloc[-1] == sp["close"].iloc[-1]:
+                    spy_r = float(sp["close"].iloc[-1] / sp["open"].iloc[0] - 1)
+            ret = gross - (COST if status != "持有中" else COST / 2)
+            rows.append({"date": p["date"], "t": p["t"], "sig": p["sig"], "tier": p.get("tier", "old"), "reg": p.get("reg"),
+                         "entry": round(entry, 2), "ret": round(ret, 4), "spy": None if spy_r is None else round(spy_r, 4),
+                         "status": status, "days": days})
+
+    def summ(rs):
+        closed = [r for r in rs if r["status"] != "持有中"]
+        out = {"total": len(rs), "closed": len(closed)}
+        if closed:
+            rr = np.array([r["ret"] for r in closed])
+            vs = [r["ret"] - r["spy"] for r in closed if r["spy"] is not None]
+            out.update({"win": float((rr > 0).mean()), "mean": float(rr.mean()), "vs_spy": float(np.mean(vs)) if vs else None})
+        return out
+    by_sig = {k: summ([r for r in rows if r["sig"] == k]) for k in SIGNALS}
+    by_tier = {k: summ([r for r in rows if r["tier"] == k]) for k in ("pick", "watch", "old")}
     rows.sort(key=lambda r: (r["date"], r["t"]), reverse=True)
-    return {"rows": rows[:120], "summary": summary}
+    return {"rows": rows[:150], "summary": summ(rows), "by_sig": by_sig, "by_tier": by_tier,
+            "since": files[0][:-5] if files else None}
 
 
-def earnings_soon(ticker, asof):
+def load_earnings():
+    """report dates (and typical earnings-day move) from the earnings calendar job"""
+    out = {}
+    try:
+        with open(EARN_FILE, encoding="utf-8") as f:
+            d = json.load(f)
+        for day in d.get("days", []):
+            for e in day.get("earnings", []):
+                st = e.get("stats") or {}
+                out[e["t"]] = {"date": e["date"], "when": e.get("when", ""), "move": st.get("avg_abs_raw", st.get("avg_abs"))}
+    except Exception as ex:  # noqa: BLE001
+        print("earnings file:", ex)
+    return out
+
+
+def hold_end(asof, h):
+    """last calendar day of a holding period of h trading days that starts at the next session"""
+    d, n = asof, 0
+    while n < h + 1:
+        d += dt.timedelta(days=1)
+        if is_session(d):
+            n += 1
+    return d
+
+
+def earnings_soon(ticker, asof, until=None):
     try:
         import yfinance as yf
         cal = yf.Ticker(ticker).calendar
         dates = cal.get("Earnings Date") if isinstance(cal, dict) else None
         if dates:
             d = pd.Timestamp(dates[0]).date()
-            if 0 <= (d - asof).days <= 14:
+            if 0 <= (d - asof).days and d <= (until or asof + dt.timedelta(days=14)):
                 return d.isoformat()
     except Exception:  # noqa: BLE001
         pass
@@ -620,44 +768,11 @@ def main():
     print("dates:", {str(k.date()): v for k, v in counts.most_common(4)}, "-> using", last_date.date())
     today = last_date.date().isoformat()
     cutoff = last_date - pd.DateOffset(years=STATS_YEARS)
-    stats = signal_stats(frames, sigs, cutoff)
+    regimes = regime_series(frames, idx_frames.get("SPY"), idx_frames.get("^VIX"))
+    stats = signal_stats(frames, sigs, cutoff, regimes)
+    smeta = stats.pop("_meta")
 
-    cands = []
-    for t, x in frames.items():
-        if x.index[-1] != last_date:
-            continue
-        s = sigs[t].iloc[-1]
-        tags = [k for k in PRIORITY if bool(s[k])]
-        if not tags:
-            continue
-        last = x.iloc[-1]
-        prim = tags[0]
-        stop, target, rr = levels(prim, last)
-        edge = stats[prim].get("edge", 0.0) or 0.0
-        score = (0.45 * float(last["rs"]) + 0.20 * min(float(last["vr"]), 3) / 3 * 100
-                 + 0.20 * (100 if last["close"] > last["sma200"] else 40)
-                 + 0.15 * max(0, min(100, 50 + edge * 1000)))
-        tail = x.iloc[-60:]
-        cands.append({
-            "t": t, "name": meta.get(t, {}).get("name", ""), "sector": meta.get(t, {}).get("sector", ""),
-            "close": round(float(last["close"]), 2), "chg": round(float(last["chg"]), 4),
-            "rs": round(float(last["rs"]), 0), "vr": round(float(last["vr"]), 2), "rsi": round(float(last["rsi14"]), 1),
-            "rsi2": round(float(last["rsi2"]), 1), "atr_pct": round(float(last["atr"] / last["close"]), 4),
-            "tags": tags, "primary": prim, "stop": stop, "target": target, "r": rr, "score": round(score, 1),
-            "spark": [round(float(v), 2) for v in tail["close"]], "ema": [round(float(v), 2) for v in tail["ema20"]],
-        })
-    # cap per primary signal
-    cands.sort(key=lambda c: -c["score"])
-    per, kept = {}, []
-    for c in cands:
-        per[c["primary"]] = per.get(c["primary"], 0) + 1
-        if per[c["primary"]] <= MAX_PER_SIGNAL:
-            kept.append(c)
-    if not args.demo:
-        for c in kept:
-            c["earn"] = earnings_soon(c["t"], last_date.date())
-
-    # market regime
+    # market regime (today)
     regime = {}
     for k, key in (("SPY", "spy"), ("QQQ", "qqq")):
         if k in idx_frames:
@@ -668,12 +783,74 @@ def main():
     regime["breadth50"] = round(float(np.mean([r["close"] > r["sma50"] for r in lastrows])), 3)
     regime["breadth200"] = round(float(np.mean([r["close"] > r["sma200"] for r in lastrows])), 3)
     spy, vix = regime.get("spy"), regime.get("vix", 18)
-    if spy and spy["above200"] and spy["sma50_up"] and vix < 20 and regime["breadth50"] >= 0.5:
-        regime["label"], regime["desc"] = "进攻", "大盘在 200 日线上方且 50 日线向上，波动率低，市场宽度健康，适合做多类短线信号。"
-    elif (spy and not spy["above200"]) or vix >= 28 or regime["breadth50"] < 0.3:
-        regime["label"], regime["desc"] = "防守", "大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
-    else:
-        regime["label"], regime["desc"] = "谨慎", "大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+    rlab = regime_label(bool(spy and spy["above200"]), bool(spy and spy["sma50_up"]), vix, regime["breadth50"])
+    regime["label"] = rlab
+    regime["desc"] = {
+        "进攻": "大盘在 200 日线上方且 50 日线向上，波动率低，市场宽度健康，适合做多类短线信号。",
+        "防守": "大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。",
+        "谨慎": "大盘多空信号混杂，可以做，但要控制仓位、严格止损。"}[rlab]
+
+    ev_now = {k: evidence(stats[k], rlab) for k in PRIORITY}
+    cands = []
+    for t, x in frames.items():
+        if x.index[-1] != last_date:
+            continue
+        s = sigs[t].iloc[-1]
+        tags = [k for k in PRIORITY if bool(s[k])]
+        if not tags:
+            continue
+        last = x.iloc[-1]
+        # the signal with the best evidence in today's regime leads
+        prim = max(tags, key=lambda k: (ev_now[k]["proven"], ev_now[k]["edge"] if ev_now[k]["edge"] is not None else -1))
+        stop, target, rr = levels(prim, last)
+        ev = ev_now[prim]
+        exp = ev["edge"] if ev["edge"] is not None else 0.0
+        score = max(0.0, min(100.0, 50 + exp * 2500)) * 0.8 + 0.2 * float(last["rs"])
+        tail = x.iloc[-60:]
+        cands.append({
+            "t": t, "name": meta.get(t, {}).get("name", ""), "sector": meta.get(t, {}).get("sector", ""),
+            "close": round(float(last["close"]), 2), "chg": round(float(last["chg"]), 4),
+            "rs": round(float(last["rs"]), 0), "vr": round(float(last["vr"]), 2), "rsi": round(float(last["rsi14"]), 1),
+            "rsi2": round(float(last["rsi2"]), 1), "atr_pct": round(float(last["atr"] / last["close"]), 4),
+            "tags": tags, "primary": prim, "stop": stop, "target": target, "r": rr, "score": round(score, 1),
+            "exp": None if ev["edge"] is None else round(ev["edge"], 4), "exp_src": ev["src"], "proven": ev["proven"],
+            "spark": [round(float(v), 2) for v in tail["close"]], "ema": [round(float(v), 2) for v in tail["ema20"]],
+        })
+    cands.sort(key=lambda c: (-int(c["proven"]), -c["score"]))
+    per, kept = {}, []
+    for c in cands:
+        per[c["primary"]] = per.get(c["primary"], 0) + 1
+        if per[c["primary"]] <= MAX_PER_SIGNAL:
+            kept.append(c)
+
+    # 精选: proven signal in today's regime, no earnings inside the holding window, ≤2 per sector, ≤8 names
+    ER = {} if args.demo else load_earnings()
+    nsec, npick = {}, 0
+    for c in kept:
+        end = hold_end(last_date.date(), SIGNALS[c["primary"]]["horizon"])
+        e = ER.get(c["t"])
+        if e and last_date.date().isoformat() < e["date"] <= end.isoformat():
+            c["earn"], c["earn_when"], c["earn_move"] = e["date"], e["when"], e["move"]
+        elif not args.demo and c["proven"] and c["t"] not in ER:
+            c["earn"] = earnings_soon(c["t"], last_date.date(), end)
+        if not c.get("earn"):
+            c.pop("earn", None)
+        why = None
+        if not c["proven"]:
+            why = "这个信号在当前市场环境下没有经过验证的优势"
+        elif c.get("earn"):
+            why = "持有期内要发财报，结果接近掷硬币"
+        elif nsec.get(c["sector"], 0) >= MAX_PER_SECTOR:
+            why = "同板块已经选了 %d 只，避免押注同一个方向" % MAX_PER_SECTOR
+        elif npick >= MAX_PICKS:
+            why = "精选名额已满（最多 %d 只）" % MAX_PICKS
+        if why:
+            c["tier"], c["why"] = "watch", why
+        else:
+            c["tier"] = "pick"
+            nsec[c["sector"]] = nsec.get(c["sector"], 0) + 1
+            npick += 1
+    kept.sort(key=lambda c: (c["tier"] != "pick", -c["score"]))
 
     try:
         regime["hist"] = breadth_history(frames, idx_frames.get("SPY"), last_date)
@@ -688,7 +865,7 @@ def main():
     except Exception as e:  # noqa: BLE001
         print("WARN: long-term stats failed:", e)
 
-    tracking = track(frames, today)
+    tracking = track(frames, today, idx_frames.get("SPY"))
     stale = None
     if not args.demo:
         exp = expected_session(now_et())
@@ -700,21 +877,22 @@ def main():
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "date": today, "stale": stale, "demo": bool(args.demo), "universe": len(meta), "scanned": len(frames),
         "regime": regime,
-        "signals": {k: dict(SIGNALS[k], stats=stats[k]) for k in PRIORITY},
+        "signals": {k: dict(SIGNALS[k], stats=stats[k], now=ev_now[k]) for k in PRIORITY}, "stats_meta": smeta,
         "candidates": kept, "tracking": tracking, "lt": lt, "diag": DIAG,
     }
     with open(os.path.join(DATA, "latest.json"), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, separators=(",", ":"))
     if not args.demo:
         picks = [{"t": c["t"], "sig": c["primary"], "date": today, "entry": c["close"], "stop": c["stop"],
-                  "target": c["target"]} for c in kept]
+                  "target": c["target"], "tier": c["tier"], "reg": rlab} for c in kept]
         with open(os.path.join(HIST, today + ".json"), "w", encoding="utf-8") as f:
             json.dump({"date": today, "picks": picks}, f, ensure_ascii=False)
-    print(f"{today}: {len(kept)} candidates, regime={regime['label']}")
+    print(f"{today}: {len(kept)} candidates ({npick} picks), regime={rlab}, stats since {smeta['since']}")
     for k in PRIORITY:
         s = stats[k]
-        print(f"  {k:9s} n={s['n']:5d} mean={s.get('mean', 0):+.4f} win={s.get('win', 0):.2f} "
-              f"edge={s.get('edge', 0):+.4f} [{s.get('ci_lo', 0):+.4f},{s.get('ci_hi', 0):+.4f}] {s['verdict']}")
+        print(f"  {k:9s} n={s['n']:5d} blocks={s.get('blocks', 0):4d} edge={s.get('edge') or 0:+.4f} "
+              f"[{s.get('ci_lo') or 0:+.4f},{s.get('ci_hi') or 0:+.4f}] {s['verdict']} | "
+              + " ".join(f"{rg}:{(r.get('edge') or 0):+.4f}/{r.get('blocks', 0)}/{r['verdict']}" for rg, r in s["by_regime"].items()))
     return 0
 
 

@@ -374,11 +374,12 @@ html.locked #gate{display:block}
     feedSeen('股票池', D && D.generated);
     if (!D || D.demo || !D.regime) return;
     var c = (D.candidates || []).slice().sort(function (a, b) { return (b.score || 0) - (a.score || 0); }), top = [];
-    for (var i = 0; i < c.length; i++) { POOL[c[i].t] = 1; if (top.length < 4) top.push('<span class="tk">' + esc(c[i].t) + '</span>'); }
+    var tiered = c.some(function (x) { return x.tier; }), np = 0;
+    for (var i = 0; i < c.length; i++) { POOL[c[i].t] = 1; if (tiered && c[i].tier !== 'pick') continue; np++; if (top.length < 4) top.push('<span class="tk">' + esc(c[i].t) + '</span>'); }
     var r = D.regime, chg = r.spy && typeof r.spy.chg === 'number' ? (r.spy.chg >= 0 ? '+' : '') + (r.spy.chg * 100).toFixed(2) + '%' : '';
     put('market', '<a class="row" href="stocks.html"><div class="lb">大盘 · ' + esc(D.date ? D.date.slice(5).replace('-', '/') : '') + ' 收盘</div>' +
       '<div class="tx">' + esc(r.label || '') + (chg ? ' · SPY ' + chg : '') + (r.vix ? ' · VIX ' + Number(r.vix).toFixed(1) : '') + '</div>' +
-      '<div class="sm">股票池 ' + c.length + ' 只候选' + (top.length ? '：' + top.join('') : '') + (D.stale ? ' · ⏳ 最新收盘数据还没出' : '') + '</div></a>');
+      '<div class="sm">' + (tiered ? (np ? '今日精选 ' + np + ' 只' : '今日没有精选，' + c.length + ' 只在观察') : '股票池 ' + c.length + ' 只候选') + (top.length ? '：' + top.join('') : '') + (D.stale ? ' · ⏳ 最新收盘数据还没出' : '') + '</div></a>');
     if (ER) earn(ER);
   });
 

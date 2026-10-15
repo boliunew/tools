@@ -1,0 +1,52 @@
+name: 长线池
+
+on:
+  schedule:
+    - cron: "17 13 * * 6"     # 每周六（周五收盘后）
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["longterm/build.py"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: longterm
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: stocks/requirements.txt
+      - run: pip install -r stocks/requirements.txt
+      - run: python longterm/build.py
+      - name: Summary (test branches)
+        if: github.ref != 'refs/heads/main'
+        run: |
+          python - <<'PY'
+          import json
+          d = json.load(open("longterm/data/latest.json"))
+          out = [f"date {d['date']} n {d['n']} counts {d['counts']} list {len(d['list'])} near {d['near']} review {len(d['review'])} diag {d['diag']}"]
+          for r in d["list"][:25]:
+              out.append(f"{r['t']} {r['grade']} {r['score']} {r['parts']} pe={r.get('pe')} med={r.get('med_pe')}/{r.get('pe_n')} sec={r.get('sec_pe')} fair={r.get('fair_pe')} disc={r.get('disc')} q={r.get('q')} roic={r.get('roic')} roe={r.get('roe')} gm={r.get('gm')} cagr={r.get('cagr')} nde={r.get('nde')} {r['why']} {r['warn']}")
+          msg = "\n".join(out)
+          for i in range(0, len(msg), 3500):
+              print("::notice title=summary" + str(i // 3500) + "::" + msg[i:i + 3500].replace("%", "%25").replace("\r", "").replace("\n", "%0A"))
+          PY
+      - name: Commit
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add longterm/data
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "长线池更新 $(date -u +%F)"
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; git rebase --abort 2>/dev/null; sleep 5; done
