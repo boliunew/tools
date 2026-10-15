@@ -1,16 +1,16 @@
 {
- "date": "2026-10-14",
- "kind": "习语",
- "en": "pull someone's leg",
- "zh": "逗你玩",
- "by": "开玩笑，逗人玩",
- "line": "pull someone's leg",
+ "date": "2026-10-15",
+ "kind": "名言",
+ "en": "Great men are they who see that spiritual is stronger than any material force, that thoughts rule the world.",
+ "zh": "伟大的人看得出：精神比任何物质力量都强大，思想统治着世界。",
+ "by": "Ralph Waldo Emerson",
+ "line": "Great men are they who see that spiritual is stronger than any material force, that thoughts rule the world. — Ralph Waldo Emerson",
  "word": {
-  "w": "ruine",
-  "ph": "'ru:ɪn",
-  "zh": "路因碱",
-  "ex": "The two of you have ruined my life.",
-  "exzh": "你们两个误了我一生。"
+  "w": "photography",
+  "ph": "fә'tɒgrәfi",
+  "zh": "n. 摄影，摄影术",
+  "ex": "I participated in a photography competition.",
+  "exzh": "我参加了一个摄影比赛。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
