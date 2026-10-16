@@ -9,6 +9,7 @@
   python scripts/build_ferry.py
 """
 import csv
+import re
 import datetime as dt
 import io
 import json
@@ -32,7 +33,7 @@ WANT = [  # (keyword in provider/name, our label, default colour)
     ("alcatraz", "Alcatraz City Cruises", "#6B4F9E"),
 ]
 ZH = [  # stop name keyword → 中文
-    ("ferry building", "旧金山渡轮大厦"), ("pier 41", "旧金山 41 号码头（渔人码头）"), ("pier 39", "旧金山 39 号码头"), ("chase center", "大通中心（勇士队）"),
+    ("ferry building", "旧金山渡轮大厦"), ("san francisco-gate", "旧金山渡轮大厦"), ("pier 33", "旧金山 33 号码头（去恶魔岛）"), ("alcatraz", "恶魔岛"), ("pier 41", "旧金山 41 号码头（渔人码头）"), ("pier 39", "旧金山 39 号码头"), ("chase center", "大通中心（勇士队）"),
     ("oracle", "甲骨文球场（巨人队）"), ("jack london", "奥克兰 杰克伦敦广场"), ("oakland", "奥克兰"), ("main street", "阿拉米达 Main St"),
     ("seaplane", "阿拉米达 水上飞机湖"), ("harbor bay", "阿拉米达 港湾岛"), ("alameda", "阿拉米达"), ("richmond", "列治文"),
     ("mare island", "马雷岛"), ("vallejo", "瓦列霍"), ("south san francisco", "南旧金山（牡蛎角）"), ("oyster point", "南旧金山（牡蛎角）"),
@@ -176,7 +177,7 @@ def parse(label, url, col, today):
         s = stops.get(sid)
         if not s:
             continue
-        nm = s.get("stop_name", sid)
+        nm = re.sub(r"\s*-\s*No Service to .*$", "", s.get("stop_name", sid)).replace("San Francisco-Gate", "SF Ferry Building Gate")
         out_stops[label + ":" + sid] = {"n": nm, "zh": zh_of(nm), "ll": [round(float(s["stop_lat"]), 5), round(float(s["stop_lon"]), 5)]}
     for t in out_trips:
         t["t"] = [[label + ":" + a, b] for a, b in t["t"]]
@@ -231,7 +232,7 @@ def main():
     used = set(x for v in D.values() for x in v)
     T = [t for t in T if t["s"] in used]
     out = {"generated": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"), "from": today.isoformat(), "src": src,
-           "routes": R, "stops": S, "trips": T, "days": D, "debug": DEBUG}
+           "routes": R, "stops": S, "trips": T, "days": D}
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
     print("sf/ferry.json：%d 条航线 · %d 个码头 · %d 班次 · %d KB" % (len(R), len(S), len(T), os.path.getsize(OUT) // 1024))
