@@ -90,10 +90,22 @@ button{cursor:pointer}
 .stl.big span{font-size:12.5px;font-weight:700}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stl span{color:#eee;text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000}}
 .leaflet-container{font:inherit}
+.ferm span{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#E3F1FA;border:2px solid #1F6FB2;box-shadow:0 2px 6px rgba(0,0,0,.35);font-size:15px}
+.fop{font-size:12.5px;color:var(--faint);margin:8px 2px 2px;font-weight:600}
+.fsel{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:6px 10px;font-size:15px}
+.ftab{overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;max-height:65vh;box-shadow:var(--shadow)}
+.ftab table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+.ftab th{position:sticky;top:0;background:var(--paper);text-align:left;font-size:12.5px;padding:8px 10px;border-bottom:1px solid var(--line);z-index:1}
+.ftab th small{display:block;font-weight:400;color:var(--faint);font-size:11px}
+.ftab td{padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.ftab tr.past td{color:var(--faint)}
+.ftab tr.nx td{background:var(--or-soft);font-weight:700}
+.ftab td.dur{color:var(--faint);font-size:12.5px;font-weight:400}
+.ftab td.dur b{display:block;color:var(--or);font-size:12.5px}
 .tipm span{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#FFF8E1;border:2px solid #E0A100;box-shadow:0 2px 6px rgba(0,0,0,.35);font-size:16px}
 .tipm.w span{background:#FDECEA;border-color:#C0362C}
 .tipp{font-size:13.5px;line-height:1.65}
-.tipp b{display:block;font-size:14px;margin-bottom:4px}
+.tipp > b{display:block;font-size:14px;margin-bottom:4px}
 #lmap.sat .leaflet-overlay-pane svg{filter:drop-shadow(0 0 1.5px rgba(255,255,255,.9))}
 #lmap.sat .stl span,#lmap.sat .stl span{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000,0 1px 4px #000}
 .mnote{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
@@ -204,13 +216,16 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     $('list').innerHTML = h;
   }
   // ---- 交通图：可缩放的 SVG
-  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
-  var MAP = ls('map') || 'real', MV = null, RL = ls('rl2') || { tips: 1, bart: 1, muni: 1, cable: 1, bus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
+  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['ferry', '⛴️ 渡轮时刻表', 'https://www.sanfranciscobayferry.com/'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
+  var MAP = ls('map') || 'real', MV = null, RL = ls('rl3') || { tips: 1, bart: 1, muni: 1, cable: 1, ferry: 1, bus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
   function mapHTML() {
     var m = MAPS.filter(function (x) { return x[0] === MAP; })[0] || MAPS[0];
+    if (m[0] === 'ferry') {
+      return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div><div id="ferry"><div class="empty">加载时刻表…</div></div>';
+    }
     if (m[0] === 'real') {
       return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
-        '<div class="mtabs" id="rlay">' + [['tips', '💡 用心提示'], ['bart', '🚇 BART'], ['muni', '🚋 Muni 轻轨'], ['cable', '🔔 叮当车 · F 线'], ['bus', '🚌 主要巴士']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="mtabs" id="rlay">' + [['tips', '💡 用心提示'], ['bart', '🚇 BART'], ['muni', '🚋 Muni 轻轨'], ['cable', '🔔 叮当车 · F 线'], ['ferry', '⛴️ 渡轮'], ['bus', '🚌 主要巴士']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
         '<div class="mapbox" id="lmap" style="cursor:auto"></div>' +
         '<div class="mtabs" style="margin-top:8px"><button id="rBase">' + (BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图') + '</button><button id="rSF">🏙️ 旧金山市区</button><button id="rBay">🌉 整个湾区</button><button id="rMe">📍 我的位置</button></div>' +
         '<div class="mnote">点 💡 看提示，点车站看中英文站名和经过的线路。车站位置是大致的，线路按车站之间连直线画，不是真实轨道走向。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。实时到站用 BART App、MuniMobile 或谷歌地图。</div>';
@@ -219,6 +234,89 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       '<div class="mapbox" id="mbox"><img id="mimg" src="sf/' + m[0] + '.svg?v=1" alt="' + esc(m[1]) + '"><div class="mctl"><button id="mzi" title="放大">＋</button><button id="mzo" title="缩小">－</button><button id="mzr" title="复位">⟲</button><button id="mfs" title="全屏">⛶</button></div></div>' +
       '<div class="mnote">示意图，不是逐站精确地图；线路和终点会调整。<a href="sf/' + m[0] + '.svg" target="_blank" rel="noopener">单独打开这张图</a> · <a href="' + m[2] + '" target="_blank" rel="noopener">官方地图</a>' +
       ' · 实时到站：BART 官方 App、Muni 的 MuniMobile 或谷歌地图。</div>';
+  }
+  // ---- 渡轮（sf/ferry.json：GTFS 时刻表，未来 14 天）
+  var FE = null, FR = ls('fr') || '', FD = '', FDATE = '';
+  function ferryLoad(cb) {
+    if (FE) { cb(); return; }
+    var x = new XMLHttpRequest(); x.open('GET', 'sf/ferry.json?t=' + Math.floor(Date.now() / 36e5));
+    x.onload = function () { try { FE = JSON.parse(x.responseText); } catch (e) { FE = null; } cb(); };
+    x.onerror = function () { cb(); }; x.send();
+  }
+  function laNow() {
+    var p = {}; try { new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; }); } catch (e) { }
+    var d = new Date(); return { date: p.year ? p.year + '-' + p.month + '-' + p.day : d.toISOString().slice(0, 10), min: p.hour ? +p.hour * 60 + +p.minute : d.getHours() * 60 + d.getMinutes() };
+  }
+  function tmin(t) { var a = t.split(':'); return +a[0] * 60 + +a[1]; }
+  function tfmt(t) { var m = tmin(t), h = Math.floor(m / 60) % 24; return (h < 10 ? '0' : '') + h + ':' + t.split(':')[1] + (m >= 1440 ? '（次日）' : ''); }
+  function sname(id) { var s0 = FE.stops[id]; return s0 ? (s0.zh || s0.n) : id; }
+  function svcOn(date) { var o = {}; (FE.days[date] || []).forEach(function (x) { o[x] = 1; }); return o; }
+  function opZh(op) { return { 'SF Bay Ferry': '旧金山湾渡轮', 'Golden Gate Ferry': '金门渡轮', 'Alcatraz City Cruises': '恶魔岛游船' }[op] || op; }
+  function rname(r) {
+    var u = []; r.stops.forEach(function (k) { var n = sname(k); if (u.indexOf(n) < 0) u.push(n); });
+    if (u.length < 2) return r.n;
+    return r.stops[0] !== r.stops[r.stops.length - 1] && u.length === 2 ? u[0] + ' ⇄ ' + u[1] : u.join(' · ');
+  }
+  function dirKey(t) { return t.t[0][0] + '>' + t.t[t.t.length - 1][0]; }
+  function ferryRender() {
+    var box = $('ferry'); if (!box) return;
+    if (!FE || !FE.routes) { box.innerHTML = '<div class="empty">时刻表还没生成或加载失败，请稍后再试。</div>'; return; }
+    var now = laNow(), dates = Object.keys(FE.days).filter(function (d) { return d >= now.date; }).sort();
+    if (!FDATE || dates.indexOf(FDATE) < 0) FDATE = dates[0];
+    var routes = FE.routes.filter(function (r) { return !r.stale; });
+    if (!routes.some(function (r) { return r.id === FR; })) FR = routes[0] && routes[0].id;
+    var R = routes.filter(function (r) { return r.id === FR; })[0], on = svcOn(FDATE);
+    var h = '<div class="ftop">';
+    var ops = {}; routes.forEach(function (r) { (ops[r.op] = ops[r.op] || []).push(r); });
+    for (var op in ops) h += '<div class="fop">' + esc(opZh(op)) + '</div><div class="mtabs">' + ops[op].map(function (r) { return '<button data-fr="' + esc(r.id) + '" class="' + (r.id === FR ? 'on' : '') + '"><i style="display:inline-block;width:9px;height:9px;border-radius:5px;background:' + r.c + ';margin-right:5px"></i>' + esc(rname(r)) + '</button>'; }).join('') + '</div>';
+    h += '</div>';
+    var trips = FE.trips.filter(function (t) { return t.r === FR && on[t.s]; });
+    var dirs = {}; trips.forEach(function (t) { (dirs[dirKey(t)] = dirs[dirKey(t)] || []).push(t); });
+    var dk = Object.keys(dirs).sort(function (a, b) { return dirs[b].length - dirs[a].length; });
+    if (!FD || !dirs[FD]) FD = dk[0];
+    h += '<div class="mtabs"><select id="fdate" class="fsel">' + dates.map(function (d) { var dd = new Date(d + 'T12:00:00'); return '<option value="' + d + '"' + (d === FDATE ? ' selected' : '') + '>' + (d === now.date ? '今天 ' : '') + (dd.getMonth() + 1) + '月' + dd.getDate() + '日 周' + '日一二三四五六'.charAt(dd.getDay()) + '</option>'; }).join('') + '</select></div>';
+    if (!trips.length) { box.innerHTML = h + '<div class="empty">这一天这条航线没有班次。</div>' + ferryFoot(); bindFerry(); return; }
+    h += '<div class="mtabs">' + dk.map(function (k) { var a = k.split('>'); return '<button data-fd="' + esc(k) + '" class="' + (k === FD ? 'on' : '') + '">' + esc(sname(a[0])) + ' → ' + esc(sname(a[1])) + ' <small>' + dirs[k].length + ' 班</small></button>'; }).join('') + '</div>';
+    var L2 = dirs[FD].slice().sort(function (a, b) { return tmin(a.t[0][1]) - tmin(b.t[0][1]); });
+    var cols = []; L2.forEach(function (t) { t.t.forEach(function (x) { if (cols.indexOf(x[0]) < 0) cols.push(x[0]); }); });
+    var isToday = FDATE === now.date, nextDone = false;
+    h += '<div class="ftab"><table><tr>' + cols.map(function (c) { return '<th>' + esc(sname(c)) + '<small>' + esc(FE.stops[c] ? FE.stops[c].n : '') + '</small></th>'; }).join('') + '<th></th></tr>';
+    L2.forEach(function (t) {
+      var m0 = tmin(t.t[0][1]), past = isToday && m0 < now.min, nx = isToday && !past && !nextDone;
+      if (nx) nextDone = true;
+      var at = {}; t.t.forEach(function (x) { at[x[0]] = x[1]; });
+      h += '<tr class="' + (past ? 'past' : '') + (nx ? ' nx' : '') + '">' + cols.map(function (c) { return '<td>' + (at[c] ? tfmt(at[c]) : '—') + '</td>'; }).join('') +
+        '<td class="dur">' + Math.max(0, tmin(t.t[t.t.length - 1][1]) - m0) + ' 分' + (nx ? '<b>还有 ' + (m0 - now.min) + ' 分钟</b>' : '') + '</td></tr>';
+    });
+    h += '</table></div>' + (isToday && !nextDone ? '<div class="mnote">今天这个方向的船已经开完了，看看明天的。</div>' : '');
+    box.innerHTML = h + ferryFoot();
+    bindFerry();
+    var nr = box.querySelector('tr.nx'); if (nr && nr.scrollIntoView) setTimeout(function () { nr.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 80);
+  }
+  function ferryFoot() {
+    var st = (FE.routes || []).filter(function (r) { return r.stale; });
+    return '<div class="mnote">时刻表来自各渡轮公司公开发布的 GTFS 数据，每周更新两次（最近 ' + esc((FE.generated || '').slice(0, 10)) + '）。节假日、球赛日、天气可能临时调整，出发前看官网：' +
+      '<a href="https://www.sanfranciscobayferry.com/" target="_blank" rel="noopener">SF Bay Ferry</a> · <a href="https://www.goldengate.org/ferry/" target="_blank" rel="noopener">Golden Gate Ferry</a> · <a href="https://www.cityexperiences.com/san-francisco/city-cruises/alcatraz/" target="_blank" rel="noopener">恶魔岛游船</a>。' +
+      '<br>票：SF Bay Ferry 和 Golden Gate Ferry 都能用 Clipper 卡（或手机钱包里的 Clipper），比买单程纸票便宜；恶魔岛的船只能在官网提前买票，常常几周前就卖光。' +
+      (st.length ? '<br>' + st.map(function (r) { return esc(r.n); }).join('、') + '：暂时没有最新时刻表，地图上只画了航线。' : '') + '</div>';
+  }
+  function bindFerry() {
+    var box = $('ferry');
+    box.onclick = function (e) {
+      var b = e.target.closest('[data-fr]'); if (b) { FR = b.getAttribute('data-fr'); ls('fr', FR); FD = ''; ferryRender(); return; }
+      b = e.target.closest('[data-fd]'); if (b) { FD = b.getAttribute('data-fd'); ferryRender(); }
+    };
+    var sel = $('fdate'); if (sel) sel.onchange = function () { FDATE = this.value; ferryRender(); };
+    var mt = $('mtabs'); if (mt) mt.onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
+  }
+  function nextAt(ids, n) {   // 某个码头（可能有几个登船口）今天接下来的班次
+    var now = laNow(), on = svcOn(now.date), out = [];
+    FE.trips.forEach(function (t) {
+      if (!on[t.s]) return;
+      for (var i = 0; i < t.t.length - 1; i++) if (ids.indexOf(t.t[i][0]) >= 0 && tmin(t.t[i][1]) >= now.min) { out.push([tmin(t.t[i][1]), t.t[i][1], t.r, t.t[t.t.length - 1][0]]); break; }
+    });
+    out.sort(function (a, b) { return a[0] - b[0]; });
+    return out.slice(0, n || 6);
   }
   function loadLeaflet(cb) {
     if (window.L) { cb(); return; }
@@ -229,10 +327,11 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     document.head.appendChild(j);
   }
   var TR = null;
+  document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('[data-ferry]'); if (!a) return; e.preventDefault(); MAP = 'ferry'; ls('map', MAP); render(); });
   function realInit() {
     LMAP = null;
     $('mtabs').onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
-    $('rlay').onclick = function (e) { var b = e.target.closest('[data-l]'); if (!b) return; var k = b.getAttribute('data-l'); RL[k] = RL[k] ? 0 : 1; ls('rl2', RL); b.className = RL[k] ? 'on' : ''; b.textContent = (RL[k] ? '✓ ' : '') + b.textContent.replace(/^✓ /, ''); draw(); };
+    $('rlay').onclick = function (e) { var b = e.target.closest('[data-l]'); if (!b) return; var k = b.getAttribute('data-l'); RL[k] = RL[k] ? 0 : 1; ls('rl3', RL); b.className = RL[k] ? 'on' : ''; b.textContent = (RL[k] ? '✓ ' : '') + b.textContent.replace(/^✓ /, ''); draw(); };
     function go() {
       loadLeaflet(function () {
         var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
@@ -264,6 +363,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
         };
       });
     }
+    var go0 = go; go = function () { ferryLoad(go0); };
     if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=2'); x.onload = function () { try { TR = JSON.parse(x.responseText); go(); } catch (e) { } }; x.send(); }
   }
   function labels() {
@@ -271,8 +371,37 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     var z = LMAP.getZoom();
     document.querySelectorAll('.stl').forEach(function (el) { el.style.display = (el.classList.contains('big') ? z >= 13 : z >= 15) ? '' : 'none'; });
   }
+  function drawFerry() {
+    if (LMAP.groups.ferry) { LMAP.removeLayer(LMAP.groups.ferry); delete LMAP.groups.ferry; }
+    if (!RL.ferry || !FE || !FE.routes) return;
+    var g = L.layerGroup();
+    FE.routes.forEach(function (r) {
+      var pts = r.shape || r.stops.map(function (k) { return FE.stops[k] && FE.stops[k].ll; }).filter(Boolean);
+      if (pts.length < 2) return;
+      g.addLayer(L.polyline(pts, { color: r.c, weight: 4, opacity: .95, dashArray: '10 7', lineCap: 'round' }).bindTooltip('⛴️ ' + opZh(r.op) + '：' + rname(r), { sticky: true }));
+    });
+    // 同一个码头的几个登船口（比如渡轮大厦 B/C/E/F/G）合成一个点
+    var cl = [];
+    Object.keys(FE.stops).forEach(function (id) {
+      var s0 = FE.stops[id], c = null;
+      cl.forEach(function (x) { if (!c && Math.abs(x.ll[0] - s0.ll[0]) < .0025 && Math.abs(x.ll[1] - s0.ll[1]) < .0035) c = x; });
+      if (c) c.ids.push(id); else cl.push({ ll: s0.ll, ids: [id], n: s0.zh || s0.n, en: s0.n.replace(/ Gate [A-Z]$/, '') });
+    });
+    cl.forEach(function (c) {
+      var mk = L.marker(c.ll, { zIndexOffset: 900, icon: L.divIcon({ className: 'ferm', html: '<span>⛴️</span>', iconSize: [28, 28], iconAnchor: [14, 14] }) });
+      mk.bindPopup(function () {
+        var nx = nextAt(c.ids, 6), rmap = {}; FE.routes.forEach(function (r) { rmap[r.id] = r; });
+        return '<div class="tipp"><b>⛴️ ' + esc(c.n) + '</b><small style="color:#888">' + esc(c.en) + '</small><div style="margin-top:6px">' +
+          (nx.length ? '今天接下来：<br>' + nx.map(function (x) { var r = rmap[x[2]] || {}; return '<span style="display:inline-block;width:9px;height:9px;border-radius:5px;background:' + (r.c || '#888') + ';margin-right:5px"></span><b>' + tfmt(x[1]) + '</b> → ' + esc(sname(x[3])); }).join('<br>') : '今天这里没有更多班次了。') +
+          '</div><a href="#map" data-ferry="1" style="display:inline-block;margin-top:6px">看完整时刻表 →</a></div>';
+      }, { maxWidth: 270 });
+      g.addLayer(mk);
+    });
+    g.addTo(LMAP); LMAP.groups.ferry = g;
+  }
   function draw() {
     if (!LMAP || !TR) return;
+    drawFerry();
     TR.layers.forEach(function (Ly) {
       if (LMAP.groups[Ly.k]) { LMAP.removeLayer(LMAP.groups[Ly.k]); delete LMAP.groups[Ly.k]; }
       if (!RL[Ly.k]) return;
@@ -318,6 +447,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     labels();
   }
   function mapInit() {
+    if (MAP === 'ferry') { ferryLoad(ferryRender); bindFerry(); return; }
     if (MAP === 'real' || !$('mbox')) { realInit(); return; }
     var box = $('mbox'), img = $('mimg'), st = { s: 1, x: 0, y: 0, min: .2 }, pts = {}, last = null;
     function apply() { img.style.transform = 'translate(' + st.x + 'px,' + st.y + 'px) scale(' + st.s + ')'; }

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Run one of the site's data jobs at home — the same steps the GitHub Actions workflows ran.
-#   selfhost/run-job.sh stocks|earnings|news|deals|radio|monitor|rankings|holidays|holpush|all
+#   selfhost/run-job.sh stocks|earnings|news|deals|radio|monitor|rankings|holidays|holpush|ferry|all
 set -uo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(dirname "$HERE")"
@@ -24,13 +24,14 @@ steps() {
     deals)    printf '%s\n' "deals/build.py" "deals/watch.py" ;;
     radio)    printf '%s\n' "radio/build.py" ;;
     monitor)  printf '%s\n' "monitor/check.py" ;;
+    ferry)    printf '%s\n' "scripts/build_ferry.py" ;;   # 渡轮时刻表
     holpush)  printf '%s\n' "scripts/holiday_push.py" ;;   # 节日提醒 → ntfy
     holidays) printf '%s\n' "scripts/build_holidays.py" ;;
     rankings) printf '%s\n' "rankings/build.py" "kb/build.py" "scripts/build_search.py" ;;
     *) return 1 ;;
   esac
 }
-list="$(steps "$job")" || { echo "usage: $0 stocks|earnings|news|deals|radio|monitor|rankings|holidays|holpush|all"; exit 2; }
+list="$(steps "$job")" || { echo "usage: $0 stocks|earnings|news|deals|radio|monitor|rankings|holidays|holpush|ferry|all"; exit 2; }
 
 LOG="$TOOLS_DATA/logs/$job.log"
 # keep logs small: last ~2000 lines

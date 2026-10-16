@@ -6,6 +6,7 @@ on:
     - cron: "41 12 * * 1,4"   # 周一、周四 太平洋时间早上
   workflow_dispatch: {}
   push:
+    branches: [main]
     paths: ["scripts/build_ferry.py", ".github/workflows/ferry.yml"]
 
 permissions:
