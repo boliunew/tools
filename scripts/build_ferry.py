@@ -74,11 +74,12 @@ def find_feeds():
         text = ((r.get("provider") or "") + " " + (r.get("name") or "")).lower()
         for kw, label, col in WANT:
             if kw in text:
-                url = r.get("urls.latest") or r.get("urls.direct_download")
-                if url and (r.get("urls.authentication_type") or "0") in ("0", ""):
-                    lst = found.setdefault(label, [])
-                    if all(u != url for u, *_ in lst):
-                        # 名字里直接带 ferry 的排前面
+                if (r.get("urls.authentication_type") or "0") not in ("0", ""):
+                    continue
+                lst = found.setdefault(label, [])
+                # 先试运营方自己发布的地址（最新），再试 Mobility Database 的镜像
+                for url in (r.get("urls.direct_download"), r.get("urls.latest")):
+                    if url and all(u != url for u, *_ in lst):
                         item = (url, col, r.get("provider"), r.get("mdb_source_id"))
                         (lst.insert(0, item) if "ferry" in text else lst.append(item))
     return found
@@ -184,6 +185,7 @@ def main():
     feeds = find_feeds()
     print("找到的数据源：", {k: [x[2] for x in v] for k, v in feeds.items()}, flush=True)
     R, S, T, D, src = [], {}, [], {}, []
+    stale = {}
     for label, cands in feeds.items():
         res = None
         for url, col, prov, mid in cands[:6]:
@@ -192,8 +194,13 @@ def main():
             except Exception as e:
                 print("  ✗", label, prov, e, flush=True)
                 res = None
-            if res:
+            if res and res[0]:
                 break
+            if res and not stale.get(label):
+                stale[label] = res
+            res = None
+        if not res and stale.get(label):
+            res = None   # 过期的数据不用：时刻表随季节变化，旧表会误导
         if not res:
             continue
         r, s, t, d = res
