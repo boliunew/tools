@@ -90,6 +90,7 @@ button{cursor:pointer}
 .stl.big span{font-size:12.5px;font-weight:700}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stl span{color:#eee;text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000}}
 .leaflet-container{font:inherit}
+#lmap.sat .stl span,#lmap.sat .stl span{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000,0 1px 4px #000}
 .mnote{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
 .mnote a{color:var(--bay)}
 .foot{font-size:12px;color:var(--faint);margin-top:18px;line-height:1.8}
@@ -199,15 +200,15 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   }
   // ---- 交通图：可缩放的 SVG
   var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
-  var MAP = ls('map') || 'real', MV = null, RL = ls('rl') || { bart: 1, muni: 1, cable: 1, bus: 0 }, LMAP = null;
+  var MAP = ls('map') || 'real', MV = null, RL = ls('rl') || { bart: 1, muni: 1, cable: 1, bus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
   function mapHTML() {
     var m = MAPS.filter(function (x) { return x[0] === MAP; })[0] || MAPS[0];
     if (m[0] === 'real') {
       return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
         '<div class="mtabs" id="rlay">' + [['bart', '🚇 BART'], ['muni', '🚋 Muni 轻轨'], ['cable', '🔔 叮当车 · F 线'], ['bus', '🚌 主要巴士']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
         '<div class="mapbox" id="lmap" style="cursor:auto"></div>' +
-        '<div class="mtabs" style="margin-top:8px"><button id="rSF">🏙️ 旧金山市区</button><button id="rBay">🌉 整个湾区</button><button id="rMe">📍 我的位置</button></div>' +
-        '<div class="mnote">点车站看中英文站名。车站位置是大致的，线路按车站之间连直线画，不是真实轨道走向。底图 © OpenStreetMap、© CARTO。实时到站用 BART App、MuniMobile 或谷歌地图。</div>';
+        '<div class="mtabs" style="margin-top:8px"><button id="rBase">' + (BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图') + '</button><button id="rSF">🏙️ 旧金山市区</button><button id="rBay">🌉 整个湾区</button><button id="rMe">📍 我的位置</button></div>' +
+        '<div class="mnote">点车站看中英文站名。车站位置是大致的，线路按车站之间连直线画，不是真实轨道走向。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。实时到站用 BART App、MuniMobile 或谷歌地图。</div>';
     }
     return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
       '<div class="mapbox" id="mbox"><img id="mimg" src="sf/' + m[0] + '.svg?v=1" alt="' + esc(m[1]) + '"><div class="mctl"><button id="mzi" title="放大">＋</button><button id="mzo" title="缩小">－</button><button id="mzr" title="复位">⟲</button><button id="mfs" title="全屏">⛶</button></div></div>' +
@@ -231,7 +232,17 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       loadLeaflet(function () {
         var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
         LMAP = L.map('lmap', { zoomControl: true, attributionControl: true }).setView([37.773, -122.43], 12);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'light_all') + '/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' }).addTo(LMAP);
+        function setBase() {
+          (LMAP.base || []).forEach(function (t) { LMAP.removeLayer(t); });
+          if (BASE === 'sat') LMAP.base = [
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '卫星图 © Esri, Maxar, Earthstar Geographics' }),
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, opacity: .8 })];
+          else LMAP.base = [L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'light_all') + '/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' })];
+          LMAP.base.forEach(function (t) { t.addTo(LMAP); t.bringToBack(); });
+          $('lmap').classList.toggle('sat', BASE === 'sat');
+        }
+        setBase();
+        $('rBase').onclick = function () { BASE = BASE === 'sat' ? 'map' : 'sat'; ls('base', BASE); this.textContent = BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图'; setBase(); };
         LMAP.groups = {};
         LMAP.on('zoomend', labels);
         draw();
