@@ -23,6 +23,7 @@ OUT = os.path.join(ROOT, "sf", "ferry.json")
 UA = "boliunew-tools-ferry/1.0 (https://github.com/boliunew/tools)"
 CATALOG = "https://share.mobilitydata.org/catalogs-csv"
 DAYS = 14
+DEBUG = []
 WANT = [  # (keyword in provider/name, our label, default colour)
     ("bay ferry", "SF Bay Ferry", "#1F6FB2"),
     ("water emergency", "SF Bay Ferry", "#1F6FB2"),
@@ -127,6 +128,10 @@ def parse(label, url, col, today):
                 (act.add if c["exception_type"] == "1" else act.discard)(c["service_id"])
         days[d.isoformat()] = act
     used_services = set().union(*days.values()) if days else set()
+    DEBUG.append({"feed": label, "url": url[:80], "routes4": [(r.get("route_short_name"), r.get("route_long_name")) for r in routes.values()][:20],
+                  "trips": len(trips), "with_times": sum(1 for t in trips if t["trip_id"] in st),
+                  "svc_trips": sorted({t["service_id"] for t in trips})[:15], "cal": [(c["service_id"], c["start_date"], c["end_date"]) for c in cal][:15],
+                  "cd": len(cd), "cd_range": [min((c["date"] for c in cd), default=""), max((c["date"] for c in cd), default="")], "active": sorted(used_services)[:15]})
     # shapes
     shp = {}
     for r in read(z, "shapes.txt"):
@@ -205,7 +210,7 @@ def main():
     used = set(x for v in D.values() for x in v)
     T = [t for t in T if t["s"] in used]
     out = {"generated": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"), "from": today.isoformat(), "src": src,
-           "routes": R, "stops": S, "trips": T, "days": D}
+           "routes": R, "stops": S, "trips": T, "days": D, "debug": DEBUG}
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
     print("sf/ferry.json：%d 条航线 · %d 个码头 · %d 班次 · %d KB" % (len(R), len(S), len(T), os.path.getsize(OUT) // 1024))
