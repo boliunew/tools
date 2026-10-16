@@ -1,0 +1,36 @@
+name: 渡轮时刻表
+
+# 每周一重新下载 SF Bay Ferry、Golden Gate Ferry 公开的 GTFS 时刻表，生成 sf/ferry.json（未来 14 天）
+on:
+  schedule:
+    - cron: "41 12 * * 1,4"   # 周一、周四 太平洋时间早上
+  workflow_dispatch: {}
+  push:
+    paths: ["scripts/build_ferry.py", ".github/workflows/ferry.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ferry
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/build_ferry.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sf/ferry.json
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "渡轮时刻表更新 $(date -u +%F)"
+          B="${GITHUB_REF_NAME}"
+          for i in 1 2 3; do git pull --rebase origin "$B" && git push origin "HEAD:$B" && break; sleep 5; done
