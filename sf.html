@@ -109,11 +109,12 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('sf:' + k) || 'null'); localStorage.setItem('sf:' + k, JSON.stringify(v)); } catch (e) { return null; } }
-  var TABS = [['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['stories', '📜 人文故事'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
+  var TABS = [['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
   var LEAD = {
     hoods: '旧金山不大，却有上百个街区，走过一条街气质就变了。点开看每个街区去做什么、吃什么。',
     eat: '旧金山发明或带火的吃的，和到这儿一定要尝的。店铺会变，去之前查一下营业时间。',
     fun: '景点、冷门好去处和一年里的大活动。点 ☆ 加到「想去」。',
+    tips: '游客不太知道、本地人天天在用的省钱、省事小窍门。票价和开放时间会变，以官网为准。',
     stories: '这座城市是怎么来的：淘金、地震、排华、嬉皮、大桥……',
     go: '怎么去、怎么走、怎么穿，以及本地人的说话习惯。',
     work: '在旧金山工作和生活要知道的事。工资、房租、规定每年会变，以官网为准。',
