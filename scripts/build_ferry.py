@@ -27,7 +27,9 @@ DEBUG = []
 WANT = [  # (keyword in provider/name, our label, default colour)
     ("bay ferry", "SF Bay Ferry", "#1F6FB2"),
     ("water emergency", "SF Bay Ferry", "#1F6FB2"),
-    ("golden gate", "Golden Gate Ferry", "#C0362C"),
+    ("golden gate transit", "Golden Gate Ferry", "#C0362C"),
+    ("golden gate ferry", "Golden Gate Ferry", "#C0362C"),
+    ("alcatraz", "Alcatraz City Cruises", "#6B4F9E"),
 ]
 ZH = [  # stop name keyword → 中文
     ("ferry building", "旧金山渡轮大厦"), ("pier 41", "旧金山 41 号码头（渔人码头）"), ("pier 39", "旧金山 39 号码头"), ("chase center", "大通中心（勇士队）"),
@@ -138,8 +140,11 @@ def parse(label, url, col, today):
     for r in read(z, "shapes.txt"):
         shp.setdefault(r["shape_id"], []).append((int(r["shape_pt_sequence"]), float(r["shape_pt_lat"]), float(r["shape_pt_lon"])))
     out_routes, out_trips, used_stops = [], [], set()
+    stale_mode = not used_services
     for rid, r in routes.items():
         rtrips = [t for t in trips if t["route_id"] == rid and t["service_id"] in used_services and t["trip_id"] in st]
+        if stale_mode:
+            rtrips = [t for t in trips if t["route_id"] == rid and t["trip_id"] in st]
         if not rtrips:
             continue
         shape = None
@@ -158,6 +163,8 @@ def parse(label, url, col, today):
             for s, _ in times:
                 used_stops.add(s)
             seqs.append(tuple(s for s, _ in times))
+            if stale_mode:
+                continue
             out_trips.append({"r": label + ":" + rid, "h": t.get("trip_headsign") or "", "d": t.get("direction_id") or "", "s": label + ":" + t["service_id"], "t": times})
         longest = max(seqs, key=len) if seqs else ()
         name = (r.get("route_long_name") or r.get("route_short_name") or rid).strip()
@@ -177,6 +184,8 @@ def parse(label, url, col, today):
         r["stops"] = [label + ":" + x for x in r["stops"]]
     days = {k: sorted(label + ":" + x for x in v) for k, v in days.items()}
     print("  %d 条航线 · %d 个码头 · %d 班次（服务组）" % (len(out_routes), len(out_stops), len(out_trips)), flush=True)
+    if stale_mode:
+        return [], out_stops, [], {"__stale_routes": out_routes}
     return out_routes, out_stops, out_trips, days
 
 
@@ -196,11 +205,16 @@ def main():
                 res = None
             if res and res[0]:
                 break
-            if res and not stale.get(label):
+            if res and res[3].get("__stale_routes") and not stale.get(label):
                 stale[label] = res
             res = None
         if not res and stale.get(label):
-            res = None   # 过期的数据不用：时刻表随季节变化，旧表会误导
+            # 只有过期的数据：航线和码头照样画在地图上，时刻表不用（随季节变化，旧表会误导）
+            s0, d0 = stale[label][1], stale[label][3]
+            r0 = d0.get("__stale_routes", [])
+            for r in r0:
+                r["stale"] = 1
+            res = (r0, s0, [], {})
         if not res:
             continue
         r, s, t, d = res
