@@ -90,6 +90,11 @@ button{cursor:pointer}
 .stl.big span{font-size:12.5px;font-weight:700}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stl span{color:#eee;text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000}}
 .leaflet-container{font:inherit}
+.tipm span{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#FFF8E1;border:2px solid #E0A100;box-shadow:0 2px 6px rgba(0,0,0,.35);font-size:16px}
+.tipm.w span{background:#FDECEA;border-color:#C0362C}
+.tipp{font-size:13.5px;line-height:1.65}
+.tipp b{display:block;font-size:14px;margin-bottom:4px}
+#lmap.sat .leaflet-overlay-pane svg{filter:drop-shadow(0 0 1.5px rgba(255,255,255,.9))}
 #lmap.sat .stl span,#lmap.sat .stl span{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000,0 1px 4px #000}
 .mnote{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
 .mnote a{color:var(--bay)}
@@ -200,15 +205,15 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   }
   // ---- 交通图：可缩放的 SVG
   var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
-  var MAP = ls('map') || 'real', MV = null, RL = ls('rl') || { bart: 1, muni: 1, cable: 1, bus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
+  var MAP = ls('map') || 'real', MV = null, RL = ls('rl2') || { tips: 1, bart: 1, muni: 1, cable: 1, bus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
   function mapHTML() {
     var m = MAPS.filter(function (x) { return x[0] === MAP; })[0] || MAPS[0];
     if (m[0] === 'real') {
       return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
-        '<div class="mtabs" id="rlay">' + [['bart', '🚇 BART'], ['muni', '🚋 Muni 轻轨'], ['cable', '🔔 叮当车 · F 线'], ['bus', '🚌 主要巴士']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="mtabs" id="rlay">' + [['tips', '💡 用心提示'], ['bart', '🚇 BART'], ['muni', '🚋 Muni 轻轨'], ['cable', '🔔 叮当车 · F 线'], ['bus', '🚌 主要巴士']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
         '<div class="mapbox" id="lmap" style="cursor:auto"></div>' +
         '<div class="mtabs" style="margin-top:8px"><button id="rBase">' + (BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图') + '</button><button id="rSF">🏙️ 旧金山市区</button><button id="rBay">🌉 整个湾区</button><button id="rMe">📍 我的位置</button></div>' +
-        '<div class="mnote">点车站看中英文站名。车站位置是大致的，线路按车站之间连直线画，不是真实轨道走向。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。实时到站用 BART App、MuniMobile 或谷歌地图。</div>';
+        '<div class="mnote">点 💡 看提示，点车站看中英文站名和经过的线路。车站位置是大致的，线路按车站之间连直线画，不是真实轨道走向。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。实时到站用 BART App、MuniMobile 或谷歌地图。</div>';
     }
     return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
       '<div class="mapbox" id="mbox"><img id="mimg" src="sf/' + m[0] + '.svg?v=1" alt="' + esc(m[1]) + '"><div class="mctl"><button id="mzi" title="放大">＋</button><button id="mzo" title="缩小">－</button><button id="mzr" title="复位">⟲</button><button id="mfs" title="全屏">⛶</button></div></div>' +
@@ -227,7 +232,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   function realInit() {
     LMAP = null;
     $('mtabs').onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
-    $('rlay').onclick = function (e) { var b = e.target.closest('[data-l]'); if (!b) return; var k = b.getAttribute('data-l'); RL[k] = RL[k] ? 0 : 1; ls('rl', RL); b.className = RL[k] ? 'on' : ''; b.textContent = (RL[k] ? '✓ ' : '') + b.textContent.replace(/^✓ /, ''); draw(); };
+    $('rlay').onclick = function (e) { var b = e.target.closest('[data-l]'); if (!b) return; var k = b.getAttribute('data-l'); RL[k] = RL[k] ? 0 : 1; ls('rl2', RL); b.className = RL[k] ? 'on' : ''; b.textContent = (RL[k] ? '✓ ' : '') + b.textContent.replace(/^✓ /, ''); draw(); };
     function go() {
       loadLeaflet(function () {
         var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
@@ -259,7 +264,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
         };
       });
     }
-    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=1'); x.onload = function () { try { TR = JSON.parse(x.responseText); go(); } catch (e) { } }; x.send(); }
+    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=2'); x.onload = function () { try { TR = JSON.parse(x.responseText); go(); } catch (e) { } }; x.send(); }
   }
   function labels() {
     if (!LMAP) return;
@@ -272,6 +277,13 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       if (LMAP.groups[Ly.k]) { LMAP.removeLayer(LMAP.groups[Ly.k]); delete LMAP.groups[Ly.k]; }
       if (!RL[Ly.k]) return;
       var g = L.layerGroup(), byId = {};
+      if (Ly.tips) {
+        Ly.tips.forEach(function (t) {
+          g.addLayer(L.marker(t.ll, { zIndexOffset: 1000, icon: L.divIcon({ className: 'tipm' + (t.w ? ' w' : ''), html: '<span>' + t.e + '</span>', iconSize: [30, 30], iconAnchor: [15, 15] }) })
+            .bindPopup('<div class="tipp"><b>' + t.e + ' ' + esc(t.t) + '</b><div>' + esc(t.d) + '</div></div>', { maxWidth: 260 }));
+        });
+        g.addTo(LMAP); LMAP.groups[Ly.k] = g; return;
+      }
       Ly.st.forEach(function (s0) { byId[s0.id] = s0; });
       // 同一段被几条线共用时并排画：按段统计共用的线，各自偏移
       var seg = {};
