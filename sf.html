@@ -81,11 +81,15 @@ button{cursor:pointer}
 .mtabs{display:flex;gap:6px;margin:4px 0 8px;flex-wrap:wrap}
 .mtabs button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13.5px;color:var(--soft)}
 .mtabs button.on{border-color:var(--or);color:var(--or);background:var(--or-soft);font-weight:600}
-.mapbox{position:relative;height:72vh;min-height:360px;background:#FBFAF7;border:1px solid var(--line);border-radius:16px;overflow:hidden;touch-action:none;cursor:grab;box-shadow:var(--shadow)}
+.mapbox{position:relative;isolation:isolate;z-index:0;height:72vh;min-height:360px;background:#FBFAF7;border:1px solid var(--line);border-radius:16px;overflow:hidden;touch-action:none;cursor:grab;box-shadow:var(--shadow)}
 .mapbox:fullscreen{border-radius:0;height:100vh}
 .mapbox img{position:absolute;left:0;top:0;transform-origin:0 0;user-select:none;-webkit-user-drag:none;pointer-events:none;max-width:none}
 .mctl{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px;z-index:2}
 .mctl button{width:40px;height:40px;border-radius:12px;border:1px solid #ccc;background:rgba(255,255,255,.95);color:#222;font-size:19px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.stl span{white-space:nowrap;font:600 11.5px/1 -apple-system,"PingFang SC",sans-serif;color:#222;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
+.stl.big span{font-size:12.5px;font-weight:700}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stl span{color:#eee;text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000}}
+.leaflet-container{font:inherit}
 .mnote{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
 .mnote a{color:var(--bay)}
 .foot{font-size:12px;color:var(--faint);margin-top:18px;line-height:1.8}
@@ -194,16 +198,104 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     $('list').innerHTML = h;
   }
   // ---- 交通图：可缩放的 SVG
-  var MAPS = [['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
-  var MAP = ls('map') || 'bart', MV = null;
+  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
+  var MAP = ls('map') || 'real', MV = null, RL = ls('rl') || { bart: 1, muni: 1, cable: 1, bus: 0 }, LMAP = null;
   function mapHTML() {
     var m = MAPS.filter(function (x) { return x[0] === MAP; })[0] || MAPS[0];
+    if (m[0] === 'real') {
+      return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="mtabs" id="rlay">' + [['bart', '🚇 BART'], ['muni', '🚋 Muni 轻轨'], ['cable', '🔔 叮当车 · F 线'], ['bus', '🚌 主要巴士']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="mapbox" id="lmap" style="cursor:auto"></div>' +
+        '<div class="mtabs" style="margin-top:8px"><button id="rSF">🏙️ 旧金山市区</button><button id="rBay">🌉 整个湾区</button><button id="rMe">📍 我的位置</button></div>' +
+        '<div class="mnote">点车站看中英文站名。车站位置是大致的，线路按车站之间连直线画，不是真实轨道走向。底图 © OpenStreetMap、© CARTO。实时到站用 BART App、MuniMobile 或谷歌地图。</div>';
+    }
     return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
       '<div class="mapbox" id="mbox"><img id="mimg" src="sf/' + m[0] + '.svg?v=1" alt="' + esc(m[1]) + '"><div class="mctl"><button id="mzi" title="放大">＋</button><button id="mzo" title="缩小">－</button><button id="mzr" title="复位">⟲</button><button id="mfs" title="全屏">⛶</button></div></div>' +
       '<div class="mnote">示意图，不是逐站精确地图；线路和终点会调整。<a href="sf/' + m[0] + '.svg" target="_blank" rel="noopener">单独打开这张图</a> · <a href="' + m[2] + '" target="_blank" rel="noopener">官方地图</a>' +
       ' · 实时到站：BART 官方 App、Muni 的 MuniMobile 或谷歌地图。</div>';
   }
+  function loadLeaflet(cb) {
+    if (window.L) { cb(); return; }
+    var c = document.createElement('link'); c.rel = 'stylesheet'; c.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(c);
+    var j = document.createElement('script'); j.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    j.onload = function () { var o = document.createElement('script'); o.src = 'https://unpkg.com/leaflet-polylineoffset@1.1.1/leaflet.polylineoffset.js'; o.onload = o.onerror = cb; document.head.appendChild(o); };
+    j.onerror = function () { $('lmap').innerHTML = '<div class="empty">地图组件加载失败，请检查网络后刷新</div>'; };
+    document.head.appendChild(j);
+  }
+  var TR = null;
+  function realInit() {
+    LMAP = null;
+    $('mtabs').onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
+    $('rlay').onclick = function (e) { var b = e.target.closest('[data-l]'); if (!b) return; var k = b.getAttribute('data-l'); RL[k] = RL[k] ? 0 : 1; ls('rl', RL); b.className = RL[k] ? 'on' : ''; b.textContent = (RL[k] ? '✓ ' : '') + b.textContent.replace(/^✓ /, ''); draw(); };
+    function go() {
+      loadLeaflet(function () {
+        var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
+        LMAP = L.map('lmap', { zoomControl: true, attributionControl: true }).setView([37.773, -122.43], 12);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'light_all') + '/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' }).addTo(LMAP);
+        LMAP.groups = {};
+        LMAP.on('zoomend', labels);
+        draw();
+        $('rSF').onclick = function () { LMAP.setView([37.773, -122.43], 13); };
+        $('rBay').onclick = function () { LMAP.setView([37.78, -122.2], 10); };
+        $('rMe').onclick = function () {
+          if (!navigator.geolocation) return;
+          navigator.geolocation.getCurrentPosition(function (p) {
+            var ll = [p.coords.latitude, p.coords.longitude];
+            if (LMAP.me) LMAP.removeLayer(LMAP.me);
+            LMAP.me = L.circleMarker(ll, { radius: 8, color: '#fff', weight: 3, fillColor: '#2F6F8F', fillOpacity: 1 }).addTo(LMAP).bindPopup('你在这里');
+            LMAP.setView(ll, 15);
+          }, function () { alert('没有拿到位置（可能没有允许定位）'); }, { timeout: 15000 });
+        };
+      });
+    }
+    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=1'); x.onload = function () { try { TR = JSON.parse(x.responseText); go(); } catch (e) { } }; x.send(); }
+  }
+  function labels() {
+    if (!LMAP) return;
+    var z = LMAP.getZoom();
+    document.querySelectorAll('.stl').forEach(function (el) { el.style.display = (el.classList.contains('big') ? z >= 13 : z >= 15) ? '' : 'none'; });
+  }
+  function draw() {
+    if (!LMAP || !TR) return;
+    TR.layers.forEach(function (Ly) {
+      if (LMAP.groups[Ly.k]) { LMAP.removeLayer(LMAP.groups[Ly.k]); delete LMAP.groups[Ly.k]; }
+      if (!RL[Ly.k]) return;
+      var g = L.layerGroup(), byId = {};
+      Ly.st.forEach(function (s0) { byId[s0.id] = s0; });
+      // 同一段被几条线共用时并排画：按段统计共用的线，各自偏移
+      var seg = {};
+      function sk(a, b) { return a < b ? a + '|' + b : b + '|' + a; }
+      Ly.lines.forEach(function (ln, i) { if (ln.st) for (var j = 1; j < ln.st.length; j++) (seg[sk(ln.st[j - 1], ln.st[j])] = seg[sk(ln.st[j - 1], ln.st[j])] || []).push(i); });
+      Ly.lines.forEach(function (ln, i) {
+        var pts = ln.path || ln.st.map(function (k) { return byId[k].ll; });
+        var o = { color: ln.c, weight: Ly.k === 'bus' ? 4 : 5, opacity: Ly.k === 'bus' ? .8 : .95, lineCap: 'round', lineJoin: 'round', dashArray: /F 线|机场线/.test(ln.n) ? '8 6' : null };
+        var tip = ln.n + (ln.d ? '：' + ln.d : '');
+        if (ln.st && L.Polyline.prototype.setOffset) {
+          for (var j = 1; j < ln.st.length; j++) {
+            var key = sk(ln.st[j - 1], ln.st[j]), share = seg[key], idx = share.indexOf(i);
+            var dir = ln.st[j - 1] < ln.st[j] ? 1 : -1;   // 方向不同的线偏移方向要统一
+            var oo = {}; for (var kk in o) oo[kk] = o[kk];
+            oo.offset = (idx - (share.length - 1) / 2) * 4.5 * dir;
+            g.addLayer(L.polyline([byId[ln.st[j - 1]].ll, byId[ln.st[j]].ll], oo).bindTooltip(tip, { sticky: true }));
+          }
+        } else g.addLayer(L.polyline(pts, o).bindTooltip(tip, { sticky: true }));
+        if (ln.no) [pts[0], pts[pts.length - 1]].forEach(function (p) {
+          g.addLayer(L.marker(p, { icon: L.divIcon({ className: '', html: '<div style="background:' + ln.c + ';color:#fff;font:700 11px/20px sans-serif;border-radius:10px;min-width:26px;text-align:center;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3)">' + ln.no + '</div>', iconSize: [30, 24], iconAnchor: [15, 12] }) }).bindTooltip(ln.n + '：' + ln.d));
+        });
+      });
+      Ly.st.forEach(function (s0) {
+        var lines = Ly.lines.filter(function (ln) { return (ln.st || []).indexOf(s0.id) >= 0; }).map(function (ln) { return '<span style="display:inline-block;width:10px;height:10px;border-radius:5px;background:' + ln.c + ';margin-right:4px"></span>' + esc(ln.n); });
+        var m = L.circleMarker(s0.ll, { radius: s0.big ? 6 : 4.5, color: '#222', weight: 2, fillColor: '#fff', fillOpacity: 1 })
+          .bindPopup('<b>' + esc(s0.en) + '</b>' + (s0.zh ? '<br>' + esc(s0.zh) : '') + (lines.length ? '<div style="margin-top:6px;font-size:12px;line-height:1.7">' + lines.join('<br>') + '</div>' : ''));
+        g.addLayer(m);
+        g.addLayer(L.marker(s0.ll, { interactive: false, icon: L.divIcon({ className: 'stl' + (s0.big ? ' big' : ''), html: '<span>' + esc(s0.en) + '</span>', iconSize: [0, 0], iconAnchor: [-8, 6] }) }));
+      });
+      g.addTo(LMAP); LMAP.groups[Ly.k] = g;
+    });
+    labels();
+  }
   function mapInit() {
+    if (MAP === 'real' || !$('mbox')) { realInit(); return; }
     var box = $('mbox'), img = $('mimg'), st = { s: 1, x: 0, y: 0, min: .2 }, pts = {}, last = null;
     function apply() { img.style.transform = 'translate(' + st.x + 'px,' + st.y + 'px) scale(' + st.s + ')'; }
     function fit() {

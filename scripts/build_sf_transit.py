@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+"""旧金山交通 · 实景地图数据 → sf/transit.json（sf.html 的「实景地图」用 Leaflet 画在真实地图上）
+
+车站坐标是大致位置（误差通常在一两百米内），线路按车站之间连线画，不是逐米的轨道走向。
+"""
+import json
+import os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# ---------------------------------------------------------------- BART：全部 50 站  id: (lat, lon, 英文, 中文)
+BS = {
+    "EMBR": (37.7929, -122.3971, "Embarcadero", "内河码头 · 渡轮大厦"), "MONT": (37.7894, -122.4013, "Montgomery St", "蒙哥马利 · 金融区"),
+    "POWL": (37.7844, -122.4079, "Powell St", "鲍威尔 · 联合广场 · 叮当车"), "CIVC": (37.7797, -122.4140, "Civic Center/UN Plaza", "市政中心"),
+    "16TH": (37.7650, -122.4197, "16th St Mission", "16 街 · 米慎区"), "24TH": (37.7522, -122.4184, "24th St Mission", "24 街 · 米慎区"),
+    "GLEN": (37.7331, -122.4339, "Glen Park", "格伦公园"), "BALB": (37.7215, -122.4475, "Balboa Park", "巴尔博亚公园 · 换乘 Muni 轻轨"),
+    "DALY": (37.7063, -122.4692, "Daly City", "戴利城"), "COLM": (37.6847, -122.4662, "Colma", "科尔马"),
+    "SSAN": (37.6643, -122.4439, "South San Francisco", "南旧金山"), "SBRN": (37.6379, -122.4162, "San Bruno", "圣布鲁诺"),
+    "SFIA": (37.6159, -122.3924, "SFO Airport", "旧金山国际机场 ✈"), "MLBR": (37.6002, -122.3866, "Millbrae", "密尔布雷 · 换乘 Caltrain"),
+    "WOAK": (37.8049, -122.2951, "West Oakland", "西奥克兰"), "12TH": (37.8035, -122.2718, "12th St/Oakland City Center", "奥克兰市中心"),
+    "19TH": (37.8085, -122.2686, "19th St/Oakland", "奥克兰 19 街"), "MCAR": (37.8291, -122.2671, "MacArthur", "麦克阿瑟"),
+    "ASHB": (37.8529, -122.2700, "Ashby", "阿什比"), "DBRK": (37.8700, -122.2681, "Downtown Berkeley", "伯克利市中心 · 加州大学"),
+    "NBRK": (37.8740, -122.2834, "North Berkeley", "北伯克利"), "PLZA": (37.9026, -122.2989, "El Cerrito Plaza", "埃尔塞里托广场"),
+    "DELN": (37.9254, -122.3172, "El Cerrito del Norte", "埃尔塞里托北"), "RICH": (37.9370, -122.3533, "Richmond", "列治文 · 换乘 Amtrak"),
+    "ROCK": (37.8447, -122.2512, "Rockridge", "罗克里奇"), "ORIN": (37.8784, -122.1837, "Orinda", "奥林达"),
+    "LAFY": (37.8932, -122.1247, "Lafayette", "拉斐特"), "WCRK": (37.9056, -122.0675, "Walnut Creek", "核桃溪"),
+    "PHIL": (37.9282, -122.0559, "Pleasant Hill/Contra Costa Centre", "快乐山"), "CONC": (37.9737, -122.0290, "Concord", "康科德"),
+    "NCON": (38.0032, -122.0246, "North Concord/Martinez", "北康科德"), "PITT": (38.0189, -121.9452, "Pittsburg/Bay Point", "匹兹堡/贝波因特"),
+    "PCTR": (38.0169, -121.8892, "Pittsburg Center", "匹兹堡中心"), "ANTC": (37.9956, -121.7804, "Antioch", "安提阿"),
+    "LAKE": (37.7973, -122.2655, "Lake Merritt", "梅里特湖 · 奥克兰唐人街"), "FTVL": (37.7748, -122.2242, "Fruitvale", "果谷"),
+    "COLS": (37.7537, -122.1969, "Coliseum", "体育场 · 换乘 Amtrak"), "OAKL": (37.7132, -122.2122, "Oakland Airport (OAK)", "奥克兰机场 ✈"),
+    "SANL": (37.7219, -122.1609, "San Leandro", "圣利安德罗"), "BAYF": (37.6970, -122.1265, "Bay Fair", "湾景"),
+    "CAST": (37.6907, -122.0757, "Castro Valley", "卡斯特罗谷"), "WDUB": (37.6998, -121.9282, "West Dublin/Pleasanton", "西都柏林"),
+    "DUBL": (37.7017, -121.8992, "Dublin/Pleasanton", "都柏林/普莱森顿"), "HAYW": (37.6699, -122.0870, "Hayward", "海沃德"),
+    "SHAY": (37.6348, -122.0572, "South Hayward", "南海沃德"), "UCTY": (37.5906, -122.0175, "Union City", "联合市"),
+    "FRMT": (37.5574, -121.9764, "Fremont", "弗里蒙特"), "WARM": (37.5025, -121.9395, "Warm Springs/South Fremont", "温泉/南弗里蒙特"),
+    "MLPT": (37.4103, -121.8913, "Milpitas", "米尔皮塔斯 · 换乘 VTA"), "BERY": (37.3684, -121.8746, "Berryessa/North San José", "北圣何塞"),
+}
+SF_TRUNK = ["EMBR", "MONT", "POWL", "CIVC", "16TH", "24TH", "GLEN", "BALB", "DALY"]
+BL = [  # name, colour, station sequence
+    ("黄线 Antioch ⇄ SFO / Millbrae", "#F2C500", ["ANTC", "PCTR", "PITT", "NCON", "CONC", "PHIL", "WCRK", "LAFY", "ORIN", "ROCK", "MCAR", "19TH", "12TH", "WOAK", "EMBR", "MONT", "POWL", "CIVC", "16TH", "24TH", "GLEN", "BALB", "DALY", "COLM", "SSAN", "SBRN", "SFIA", "MLBR"]),
+    ("红线 Richmond ⇄ SFO / Millbrae", "#E2231A", ["RICH", "DELN", "PLZA", "NBRK", "DBRK", "ASHB", "MCAR", "19TH", "12TH", "WOAK", "EMBR", "MONT", "POWL", "CIVC", "16TH", "24TH", "GLEN", "BALB", "DALY", "COLM", "SSAN", "SBRN", "MLBR"]),
+    ("绿线 Berryessa ⇄ Daly City", "#4DB848", ["BERY", "MLPT", "WARM", "FRMT", "UCTY", "SHAY", "HAYW", "BAYF", "SANL", "COLS", "FTVL", "LAKE", "WOAK", "EMBR", "MONT", "POWL", "CIVC", "16TH", "24TH", "GLEN", "BALB", "DALY"]),
+    ("橙线 Richmond ⇄ Berryessa", "#F7941D", ["RICH", "DELN", "PLZA", "NBRK", "DBRK", "ASHB", "MCAR", "19TH", "12TH", "LAKE", "FTVL", "COLS", "SANL", "BAYF", "HAYW", "SHAY", "UCTY", "FRMT", "WARM", "MLPT", "BERY"]),
+    ("蓝线 Dublin/Pleasanton ⇄ Daly City", "#00AEEF", ["DUBL", "WDUB", "CAST", "BAYF", "SANL", "COLS", "FTVL", "LAKE", "WOAK", "EMBR", "MONT", "POWL", "CIVC", "16TH", "24TH", "GLEN", "BALB", "DALY"]),
+    ("机场线 Coliseum ⇄ 奥克兰机场", "#B5A27A", ["COLS", "OAKL"]),
+]
+# 红线 to SFO goes San Bruno → SFO; draw that leg too
+BL[1] = (BL[1][0], BL[1][1], BL[1][2][:-1] + ["SFIA", "MLBR"])
+
+# ---------------------------------------------------------------- Muni Metro
+MS = {
+    "EMB": (37.7929, -122.3971, "Embarcadero", "内河码头"), "MON": (37.7894, -122.4013, "Montgomery", "蒙哥马利"), "POW": (37.7844, -122.4079, "Powell", "鲍威尔"),
+    "CIV": (37.7797, -122.4140, "Civic Center", "市政中心"), "VNS": (37.7752, -122.4192, "Van Ness", "范尼斯"), "CHU": (37.7672, -122.4290, "Church", "教堂街"),
+    "CAS": (37.7626, -122.4351, "Castro", "卡斯特罗"), "FOR": (37.7481, -122.4590, "Forest Hill", "森林山"), "WPT": (37.7409, -122.4655, "West Portal", "西门户"),
+    "DUB": (37.7694, -122.4291, "Duboce & Church", ""), "CCO": (37.7656, -122.4498, "Carl & Cole", "科尔谷"), "UCS": (37.7638, -122.4664, "UCSF / 9th Ave & Irving", "内日落区"),
+    "J19": (37.7615, -122.4771, "Judah & 19th Ave", ""), "SUN": (37.7606, -122.4945, "Judah & Sunset Blvd", ""), "OBE": (37.7603, -122.5090, "Judah & La Playa", "海洋海滩"),
+    "FOL": (37.7905, -122.3897, "Folsom", ""), "BRA": (37.7843, -122.3878, "Brannan", ""), "2KI": (37.7795, -122.3897, "2nd & King", "甲骨文球场（巨人队）"),
+    "4KI": (37.7764, -122.3943, "4th & King", "Caltrain 火车站"),
+    "C18": (37.7612, -122.4282, "Church & 18th", "多洛雷斯公园"), "C24": (37.7516, -122.4274, "Church & 24th", "诺伊谷"), "C30": (37.7420, -122.4268, "Church & 30th", ""),
+    "GLP": (37.7330, -122.4337, "San Jose & Glen Park", "近 Glen Park BART"), "BAL": (37.7215, -122.4475, "Balboa Park", "换乘 BART"),
+    "SFC": (37.7350, -122.4715, "St Francis Circle", ""), "OCJ": (37.7316, -122.4718, "Ocean & Junipero Serra", ""), "CCSF": (37.7234, -122.4527, "Ocean & CCSF", "城市学院"),
+    "STN": (37.7281, -122.4753, "Stonestown", "购物中心"), "SFS": (37.7219, -122.4757, "SF State", "旧金山州立大学"), "BRP": (37.7130, -122.4561, "Broad & Plymouth", ""),
+    "T22": (37.7430, -122.4760, "Taraval & 19th Ave", ""), "T46": (37.7420, -122.5040, "Taraval & 46th Ave", ""), "ZOO": (37.7360, -122.5040, "SF Zoo", "动物园"),
+    "CHN": (37.7948, -122.4078, "Chinatown–Rose Pak", "唐人街（中央地铁）"), "USQ": (37.7861, -122.4066, "Union Square/Market St", "联合广场"),
+    "YBM": (37.7832, -122.4024, "Yerba Buena/Moscone", "芳草地 · 会展中心"), "4BR": (37.7778, -122.3971, "4th & Brannan", ""),
+    "UCC": (37.7686, -122.3893, "UCSF / Chase Center", "勇士队球馆"), "20S": (37.7604, -122.3880, "3rd & 20th St", "狗镇 Dogpatch"),
+    "EVA": (37.7429, -122.3878, "3rd & Evans", ""), "PAL": (37.7340, -122.3910, "3rd & Palou", "湾景区 Bayview"), "SUNY": (37.7085, -122.4048, "Sunnydale", "T 线南端"),
+}
+SUB = ["EMB", "MON", "POW", "CIV", "VNS", "CHU", "CAS", "FOR", "WPT"]
+ML = [
+    ("J Church", "#E0A100", ["EMB", "MON", "POW", "CIV", "VNS", "CHU", "DUB", "C18", "C24", "C30", "GLP", "BAL"]),
+    ("K Ingleside", "#5DA9DD", SUB + ["SFC", "OCJ", "CCSF", "BAL"]),
+    ("L Taraval", "#8E4F9C", SUB + ["T22", "T46", "ZOO"]),
+    ("M Ocean View", "#0A8F5A", SUB + ["SFC", "STN", "SFS", "BRP", "BAL"]),
+    ("N Judah", "#1D4E89", ["4KI", "2KI", "BRA", "FOL", "EMB", "MON", "POW", "CIV", "VNS", "CHU", "DUB", "CCO", "UCS", "J19", "SUN", "OBE"]),
+    ("T Third", "#C8102E", ["CHN", "USQ", "YBM", "4BR", "4KI", "UCC", "20S", "EVA", "PAL", "SUNY"]),
+]
+# J really enters the subway at Church (Duboce portal); draw it via DUB to keep the shape right
+ML[0] = (ML[0][0], ML[0][1], ["EMB", "MON", "POW", "CIV", "VNS", "CHU", "C18", "C24", "C30", "GLP", "BAL"])
+
+# ---------------------------------------------------------------- 叮当车 + F 线（地面）
+CS = {
+    "PM": (37.7848, -122.4078, "Powell & Market", "叮当车起点（转盘）"), "PC": (37.7920, -122.4092, "Powell & California", "两线交叉"),
+    "HL": (37.8016, -122.4196, "Hyde & Lombard", "九曲花街顶上"), "HB": (37.8066, -122.4209, "Hyde & Beach", "Powell-Hyde 终点 · 近吉尔德利广场"),
+    "TB": (37.8048, -122.4153, "Taylor & Bay", "Powell-Mason 终点 · 近渔人码头"), "CD": (37.7936, -122.3966, "California & Drumm", "California 线东端"),
+    "CV": (37.7903, -122.4220, "California & Van Ness", "California 线西端"), "GC": (37.7915, -122.4130, "California & Taylor", "格雷斯大教堂 · 诺布山"),
+    "FCA": (37.7626, -122.4351, "17th & Castro", "F 线西端"), "FFB": (37.7955, -122.3937, "Ferry Building", "渡轮大厦"),
+    "FP39": (37.8087, -122.4098, "Pier 39", "海狮"), "FFW": (37.8075, -122.4170, "Jones & Beach", "渔人码头 · F 线终点"),
+}
+CL = [
+    ("叮当车 Powell-Hyde", "#7A4B2A", [CS["PM"][:2], CS["PC"][:2], (37.7947, -122.4103), (37.7955, -122.4170), (37.7963, -122.4175), CS["HL"][:2], CS["HB"][:2]], ["PM", "PC", "HL", "HB"]),
+    ("叮当车 Powell-Mason", "#9C6B3F", [CS["PM"][:2], CS["PC"][:2], (37.7947, -122.4103), (37.7955, -122.4117), (37.8008, -122.4125), (37.8040, -122.4140), CS["TB"][:2]], ["TB"]),
+    ("叮当车 California", "#5C3A1E", [CS["CD"][:2], CS["PC"][:2], CS["GC"][:2], CS["CV"][:2]], ["CD", "GC", "CV"]),
+    ("F 线复古电车", "#D35400", [CS["FCA"][:2], MS["CHU"][:2], MS["VNS"][:2], MS["CIV"][:2], MS["POW"][:2], MS["MON"][:2], MS["EMB"][:2], CS["FFB"][:2],
+                            (37.8005, -122.3990), (37.8060, -122.4045), CS["FP39"][:2], CS["FFW"][:2]], ["FCA", "FFB", "FP39", "FFW"]),
+]
+
+# ---------------------------------------------------------------- 主要巴士（大致走向）
+BUS = [
+    ("38", "#C0392B", "Geary", "市中心 ⇄ 列治文区海边（有 38R 快线）", [(37.7895, -122.3965), (37.787, -122.407), (37.783, -122.447), (37.780, -122.493), (37.780, -122.509)]),
+    ("1", "#2E86C1", "California", "金融区 ⇄ 唐人街 ⇄ 列治文区", [(37.795, -122.397), (37.790, -122.433), (37.788, -122.447), (37.784, -122.493)]),
+    ("5", "#16A085", "Fulton", "市中心 ⇄ 金门公园北边 ⇄ 海洋海滩（有 5R）", [(37.7895, -122.3965), (37.780, -122.418), (37.776, -122.447), (37.773, -122.510)]),
+    ("7", "#8E44AD", "Haight-Noriega", "市中心 ⇄ 海特街 ⇄ 日落区", [(37.791, -122.396), (37.776, -122.418), (37.771, -122.433), (37.769, -122.453), (37.762, -122.470), (37.754, -122.507)]),
+    ("14", "#D35400", "Mission", "市中心 ⇄ 米慎区 ⇄ 戴利城（有 14R）", [(37.7895, -122.3965), (37.776, -122.413), (37.765, -122.419), (37.749, -122.418), (37.724, -122.433), (37.706, -122.448)]),
+    ("22", "#27AE60", "Fillmore", "码头区 ⇄ 菲尔莫尔街 ⇄ 16 街 ⇄ 教会湾", [(37.801, -122.436), (37.785, -122.433), (37.770, -122.432), (37.765, -122.420), (37.766, -122.391)]),
+    ("30", "#F39C12", "Stockton", "Caltrain ⇄ 唐人街 ⇄ 北滩 ⇄ 码头区", [(37.777, -122.395), (37.786, -122.406), (37.796, -122.407), (37.803, -122.410), (37.802, -122.441)]),
+    ("8", "#7F8C8D", "Bayshore", "渔人码头 ⇄ 唐人街 ⇄ 访谷区", [(37.806, -122.416), (37.795, -122.405), (37.784, -122.403), (37.760, -122.405), (37.735, -122.402), (37.711, -122.404)]),
+    ("28", "#1F618D", "19th Ave", "Fort Mason ⇄ 金门大桥 ⇄ 19 大道 ⇄ 戴利城 BART", [(37.805, -122.430), (37.800, -122.449), (37.805, -122.476), (37.785, -122.477), (37.745, -122.476), (37.722, -122.475), (37.706, -122.469)]),
+    ("49", "#A04000", "Van Ness-Mission", "Fort Mason ⇄ 范尼斯大道 ⇄ 米慎区 ⇄ 城市学院", [(37.806, -122.424), (37.775, -122.424), (37.765, -122.419), (37.749, -122.418), (37.728, -122.440), (37.722, -122.452)]),
+    ("29", "#B7950B", "Sunset", "要塞 ⇄ 日落大道 ⇄ 巴尔博亚公园 ⇄ 湾景区", [(37.796, -122.477), (37.776, -122.494), (37.745, -122.494), (37.727, -122.482), (37.722, -122.448), (37.722, -122.395)]),
+    ("24", "#5D6D7E", "Divisadero", "太平洋高地 ⇄ 迪维萨德罗街 ⇄ 诺伊谷", [(37.791, -122.441), (37.770, -122.439), (37.755, -122.435), (37.751, -122.420)]),
+]
+
+
+def st(d, k):
+    lat, lon, en, zh = d[k]
+    return {"id": k, "ll": [lat, lon], "en": en, "zh": zh}
+
+
+def main():
+    big = {"EMBR", "MONT", "POWL", "CIVC", "BALB", "DALY", "SFIA", "MLBR", "WOAK", "12TH", "19TH", "MCAR", "LAKE", "COLS", "BAYF", "RICH", "ANTC", "DUBL", "BERY", "OAKL", "DBRK"}
+    out = {
+        "note": "车站位置是大致的（误差通常在一两百米内），线路按车站间直线连接，不是真实轨道走向。",
+        "layers": [
+            {"k": "bart", "n": "🚇 BART", "lines": [{"n": n, "c": c, "st": seq} for n, c, seq in BL],
+             "st": [dict(st(BS, k), big=k in big) for k in BS]},
+            {"k": "muni", "n": "🚋 Muni 轻轨", "lines": [{"n": n, "c": c, "st": seq} for n, c, seq in ML],
+             "st": [dict(st(MS, k), big=k in set(SUB) | {"CHN", "USQ", "YBM", "4BR", "4KI", "BAL", "OBE", "ZOO", "SUNY"}) for k in MS]},
+            {"k": "cable", "n": "🚋 叮当车 · F 线", "lines": [{"n": n, "c": c, "path": [list(p) for p in path]} for n, c, path, _ in CL],
+             "st": [dict(st(CS, k), big=True) for k in CS]},
+            {"k": "bus", "n": "🚌 主要巴士", "lines": [{"n": "%s %s" % (no, nm), "c": c, "d": d, "no": no, "path": [list(p) for p in path]} for no, c, nm, d, path in BUS], "st": []},
+        ],
+    }
+    p = os.path.join(ROOT, "sf", "transit.json")
+    with open(p, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
+    for L in out["layers"]:
+        ids = {s["id"] for s in L["st"]}
+        for ln in L["lines"]:
+            for k in ln.get("st", []):
+                assert k in ids, (L["k"], ln["n"], k)
+    print("sf/transit.json：BART %d 站 · Muni %d 站 · %d KB" % (len(BS), len(MS), os.path.getsize(p) // 1024))
+
+
+if __name__ == "__main__":
+    main()
