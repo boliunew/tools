@@ -72,10 +72,14 @@ def find_feeds():
             continue
         text = ((r.get("provider") or "") + " " + (r.get("name") or "")).lower()
         for kw, label, col in WANT:
-            if kw in text and label not in found:
+            if kw in text:
                 url = r.get("urls.latest") or r.get("urls.direct_download")
                 if url and (r.get("urls.authentication_type") or "0") in ("0", ""):
-                    found[label] = (url, col, r.get("provider"), r.get("mdb_source_id"))
+                    lst = found.setdefault(label, [])
+                    if all(u != url for u, *_ in lst):
+                        # 名字里直接带 ferry 的排前面
+                        item = (url, col, r.get("provider"), r.get("mdb_source_id"))
+                        (lst.insert(0, item) if "ferry" in text else lst.append(item))
     return found
 
 
@@ -173,14 +177,18 @@ def parse(label, url, col, today):
 def main():
     today = (dt.datetime.utcnow() - dt.timedelta(hours=8)).date()
     feeds = find_feeds()
-    print("找到的数据源：", {k: v[2] for k, v in feeds.items()}, flush=True)
+    print("找到的数据源：", {k: [x[2] for x in v] for k, v in feeds.items()}, flush=True)
     R, S, T, D, src = [], {}, [], {}, []
-    for label, (url, col, prov, mid) in feeds.items():
-        try:
-            res = parse(label, url, col, today)
-        except Exception as e:
-            print("  ✗", label, e, flush=True)
-            continue
+    for label, cands in feeds.items():
+        res = None
+        for url, col, prov, mid in cands[:6]:
+            try:
+                res = parse(label, url, col, today)
+            except Exception as e:
+                print("  ✗", label, prov, e, flush=True)
+                res = None
+            if res:
+                break
         if not res:
             continue
         r, s, t, d = res
