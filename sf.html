@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3A4250">
+<title>旧金山生活 · 街区 吃喝 好玩 故事</title>
+<style>
+:root{
+  --bg:#F2F1EE; --paper:#FFFFFF; --ink:#1E2228; --soft:#5E6670; --faint:#9AA1A9; --line:#E1DFDA; --chip:#ECEAE5;
+  --or:#C0362C; --or-soft:#F7E2DF; --bay:#2F6F8F; --bay-soft:#DDEBF2;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --or:#F07563; --or-soft:#3A221F; --bay:#7FB8D6; --bay-soft:#1B2C36; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --or:#F07563; --or-soft:#3A221F; --bay:#7FB8D6; --bay-soft:#1B2C36; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{position:relative;overflow:hidden;color:#F4F1EC;background:linear-gradient(175deg,#56606E 0%,#3A4250 45%,#232933 100%);padding:calc(16px + env(safe-area-inset-top)) 0 18px}
+.hero:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-30px;height:90px;background:radial-gradient(60% 60% at 30% 40%,rgba(255,255,255,.18),transparent 70%),radial-gradient(50% 60% at 75% 50%,rgba(255,255,255,.14),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.hero a.home{color:#F4F1EC;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif;font-size:28px;margin:6px 0 0;letter-spacing:.04em}
+.hero h1 small{font-family:Georgia,serif;font-size:14px;font-weight:400;opacity:.75;margin-left:8px;letter-spacing:.08em}
+.bridge{display:block;width:100%;height:46px;margin:6px 0 2px}
+.hero p{margin:6px 0 0;font-size:13.5px;opacity:.88;line-height:1.65}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.facts span{font-size:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:2px 9px}
+.facts b{font-weight:600;margin-right:4px;opacity:.75}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:0;background:none;border-radius:999px;padding:6px 12px;font-size:14px;color:var(--soft)}
+.tabs button.on{background:var(--ink);color:var(--paper)}
+.srch{margin:12px 0 4px;display:flex;gap:8px}
+.srch input{flex:1;min-width:0;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 12px;font-size:16px;outline:none}
+.srch button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:0 12px;font-size:14px;white-space:nowrap}
+.lead{font-size:13px;color:var(--faint);margin:10px 2px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+.card .hd{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;cursor:pointer}
+.card .em{font-size:26px;line-height:1.15;flex:0 0 32px;text-align:center}
+.card .ti{flex:1;min-width:0}
+.card h3{margin:0;font-size:16px;line-height:1.35}
+.card h3 small{font-weight:400;color:var(--faint);font-size:12.5px;margin-left:6px}
+.card .s{font-size:13.5px;color:var(--soft);margin-top:2px;line-height:1.55}
+.card .tg{margin-top:5px}
+.card .tg span{display:inline-block;font-size:11.5px;font-weight:600;padding:0 7px;border-radius:6px;margin:0 4px 3px 0;background:var(--chip);color:var(--soft)}
+.card .tg span.hot{background:var(--or-soft);color:var(--or)}
+.card .ar{color:var(--faint);font-size:13px;flex:0 0 auto;margin-top:2px;transition:transform .15s}
+.card.open .ar{transform:rotate(180deg)}
+.card .bd{display:none;padding:0 14px 14px 58px;font-size:14.5px;line-height:1.75}
+.card.open .bd{display:block}
+.card .bd p{margin:0 0 8px}
+.card .bd h4{font-size:12.5px;color:var(--faint);margin:10px 0 2px;letter-spacing:.04em}
+.card .bd ul{margin:2px 0 6px;padding-left:18px}
+.card .bd .tip{background:var(--bay-soft);color:var(--ink);border-radius:10px;padding:8px 10px;font-size:13.5px;margin-top:8px}
+.card .bd .tip b{color:var(--bay)}
+.card .bd .warn{background:var(--or-soft)}
+.card .bd .warn b{color:var(--or)}
+.yr{font-family:Georgia,serif;color:var(--or);font-size:12.5px;font-weight:700}
+.want{border:1px solid var(--line);background:none;border-radius:999px;font-size:12.5px;padding:2px 10px;margin-top:6px;color:var(--soft)}
+.want.on{border-color:var(--or);color:var(--or);background:var(--or-soft)}
+.triv{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:6px 14px;box-shadow:var(--shadow)}
+.triv div{font-size:14px;line-height:1.65;padding:8px 0;border-top:1px dashed var(--line)}
+.triv div:first-child{border-top:0}
+.pop{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(92vw,520px);background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.25);padding:14px 16px;z-index:30;font-size:14.5px;line-height:1.7}
+.pop b{display:block;margin-bottom:4px}
+.pop .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:18px;color:var(--faint)}
+.pop .go{margin-top:8px;border:0;background:var(--ink);color:var(--paper);border-radius:10px;padding:5px 12px;font-size:13.5px}
+.foot{font-size:12px;color:var(--faint);margin-top:18px;line-height:1.8}
+.foot a{color:var(--bay)}
+.empty{color:var(--faint);text-align:center;padding:30px 0}
+mark{background:var(--or-soft);color:inherit;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a class="home" href="index.html">‹ 首页</a>
+  <h1>旧金山生活<small>SAN FRANCISCO</small></h1>
+  <svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 H400" stroke="#E0573F" stroke-width="2.5"/>
+    <path d="M110 6 V40 M290 6 V40" stroke="#E0573F" stroke-width="4"/>
+    <path d="M0 22 Q55 34 110 6 Q200 44 290 6 Q345 34 400 22" fill="none" stroke="#E0573F" stroke-width="1.6"/>
+    <path d="M20 40 V26 M45 40 V31 M70 40 V28 M150 40 V24 M180 40 V32 M200 40 V35 M220 40 V32 M250 40 V24 M330 40 V28 M355 40 V31 M380 40 V26" stroke="#E0573F" stroke-width=".8" opacity=".8"/>
+  </svg>
+  <p id="intro"></p>
+  <div class="facts" id="facts"></div>
+</div></div>
+<div class="tabs"><div class="wrap" id="tabs"></div></div>
+<main class="wrap">
+  <div class="srch"><input id="q" type="search" placeholder="搜：唐人街、卷饼、地震、停车…" autocomplete="off"><button id="rnd">🎲 随便看一个</button></div>
+  <div id="list"><div class="empty">加载中…</div></div>
+  <div class="foot" id="foot"></div>
+</main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('sf:' + k) || 'null'); localStorage.setItem('sf:' + k, JSON.stringify(v)); } catch (e) { return null; } }
+  var TABS = [['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['stories', '📜 人文故事'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
+  var LEAD = {
+    hoods: '旧金山不大，却有上百个街区，走过一条街气质就变了。点开看每个街区去做什么、吃什么。',
+    eat: '旧金山发明或带火的吃的，和到这儿一定要尝的。店铺会变，去之前查一下营业时间。',
+    fun: '景点、冷门好去处和一年里的大活动。点 ☆ 加到「想去」。',
+    stories: '这座城市是怎么来的：淘金、地震、排华、嬉皮、大桥……',
+    go: '怎么去、怎么走、怎么穿，以及本地人的说话习惯。',
+    work: '在旧金山工作和生活要知道的事。工资、房租、规定每年会变，以官网为准。',
+    trivia: '可以拿去跟朋友聊的旧金山冷知识。',
+    want: '你标了「想去」的地方和吃的，存在这台设备上。'
+  };
+  var D = null, TAB = (location.hash || '').replace('#', '').split('/')[0] || ls('tab') || 'hoods', OPEN = {}, Q = '', WANT = ls('want') || {};
+  if (!TABS.some(function (t) { return t[0] === TAB; })) TAB = 'hoods';
+
+  function key(tab, it) { return tab + ':' + (it.id || it.t); }
+  function para(s) { return String(s || '').split('\n\n').map(function (p) { return '<p>' + esc(p).replace(/\n/g, '<br>') + '</p>'; }).join(''); }
+  function hl(h) {
+    if (!Q) return h;
+    var q = Q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return h.replace(new RegExp('(>[^<]*?)(' + q + ')', 'gi'), '$1<mark>$2</mark>');
+  }
+  function text(it) { return [it.t, it.s, it.d, it.tip, it.note, (it.do || []).join(' '), (it.eat || []).join(' '), (it.tag || []).join(' '), it.y].join(' ').toLowerCase(); }
+
+  function card(tab, it) {
+    var k = key(tab, it), o = OPEN[k] || !!Q, h = '';
+    var tags = (it.tag || []).map(function (t) { return '<span class="' + (t === '必去' ? 'hot' : '') + '">' + esc(t) + '</span>'; }).join('');
+    h += '<div class="card' + (o ? ' open' : '') + '" data-k="' + esc(k) + '"><div class="hd"><div class="em">' + it.e + '</div><div class="ti"><h3>' + esc(it.t) + (it.y ? ' <small class="yr">' + esc(it.y) + '</small>' : '') + '</h3><div class="s">' + esc(it.s) + '</div>' +
+      (tags ? '<div class="tg">' + tags + '</div>' : '') + '</div><div class="ar">▾</div></div><div class="bd">' + para(it.d);
+    if (it.do && it.do.length) h += '<h4>去做什么</h4><ul>' + it.do.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    if (it.eat && it.eat.length) h += '<h4>吃什么</h4><ul>' + it.eat.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    if (it.tip) h += '<div class="tip"><b>💡 </b>' + esc(it.tip) + '</div>';
+    if (it.note) h += '<div class="tip warn"><b>⚠️ </b>' + esc(it.note) + '</div>';
+    if (tab === 'hoods' || tab === 'eat' || tab === 'fun' || tab === 'want') {
+      var wk = it.__wk || k;
+      h += '<button class="want' + (WANT[wk] ? ' on' : '') + '" data-w="' + esc(wk) + '">' + (WANT[wk] ? '★ 想去' : '☆ 想去') + '</button>';
+    }
+    return h + '</div></div>';
+  }
+  function items(tab) {
+    if (tab === 'want') {
+      var out = [];
+      ['hoods', 'eat', 'fun'].forEach(function (t) { D[t].forEach(function (it) { var k = key(t, it); if (WANT[k]) { var c = Object.create(it); c.__wk = k; out.push(c); } }); });
+      return out;
+    }
+    return D[tab] || [];
+  }
+  function render() {
+    $('tabs').innerHTML = TABS.map(function (t) { return '<button data-t="' + t[0] + '" class="' + (t[0] === TAB && !Q ? 'on' : '') + '">' + t[1] + (t[0] === 'want' ? ' ' + Object.keys(WANT).filter(function (k) { return WANT[k]; }).length : '') + '</button>'; }).join('');
+    var h = '';
+    if (Q) {
+      var q = Q.toLowerCase(), n = 0;
+      TABS.forEach(function (t) {
+        if (t[0] === 'want' || t[0] === 'trivia') return;
+        var hit = D[t[0]].filter(function (it) { return text(it).indexOf(q) >= 0; });
+        if (!hit.length) return;
+        h += '<div class="lead">' + t[1] + ' · ' + hit.length + '</div>' + hit.map(function (it) { return card(t[0], it); }).join(''); n += hit.length;
+      });
+      var tv = D.trivia.filter(function (x) { return x.toLowerCase().indexOf(q) >= 0; });
+      if (tv.length) { h += '<div class="lead">💡 冷知识 · ' + tv.length + '</div><div class="triv">' + tv.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>'; n += tv.length; }
+      if (!n) h = '<div class="empty">没找到「' + esc(Q) + '」</div>';
+      $('list').innerHTML = hl(h);
+      return;
+    }
+    h += '<div class="lead">' + LEAD[TAB] + '</div>';
+    if (TAB === 'trivia') h += '<div class="triv">' + D.trivia.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
+    else {
+      var L = items(TAB);
+      h += L.length ? L.map(function (it) { return card(TAB, it); }).join('') : '<div class="empty">还没有标「想去」的。在街区、吃喝、好玩里点 ☆ 想去。</div>';
+    }
+    $('list').innerHTML = h;
+  }
+  function setTab(t) { TAB = t; ls('tab', t); Q = ''; $('q').value = ''; history.replaceState(null, '', '#' + t); render(); window.scrollTo(0, Math.min(window.scrollY, $('tabs').offsetTop)); }
+
+  $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (b) setTab(b.getAttribute('data-t')); };
+  $('list').onclick = function (e) {
+    var w = e.target.closest('[data-w]');
+    if (w) { var k = w.getAttribute('data-w'); WANT[k] = !WANT[k]; if (!WANT[k]) delete WANT[k]; ls('want', WANT); var y = window.scrollY; render(); window.scrollTo(0, y); return; }
+    var hd = e.target.closest('.hd'); if (!hd) return;
+    var c = hd.parentNode, ck = c.getAttribute('data-k'); OPEN[ck] = !c.classList.contains('open'); c.classList.toggle('open', OPEN[ck]);
+  };
+  var qt = 0;
+  $('q').oninput = function () { clearTimeout(qt); var v = this.value.trim(); qt = setTimeout(function () { Q = v; render(); }, 200); };
+  $('rnd').onclick = function () {
+    var pool = [];
+    D.stories.forEach(function (x) { pool.push(['stories', x]); });
+    D.trivia.forEach(function (x) { pool.push(['trivia', x]); });
+    D.fun.forEach(function (x) { pool.push(['fun', x]); });
+    var p = pool[Math.floor(Math.random() * pool.length)], old = document.querySelector('.pop'); if (old) old.parentNode.removeChild(old);
+    var el = document.createElement('div'); el.className = 'pop';
+    el.innerHTML = '<button class="x">×</button>' + (p[0] === 'trivia' ? '<b>💡 冷知识</b>' + esc(p[1]) : '<b>' + p[1].e + ' ' + esc(p[1].t) + '</b>' + esc(p[1].s) + '<br><button class="go">看全文</button>');
+    document.body.appendChild(el);
+    el.onclick = function (ev) {
+      if (ev.target.closest('.x')) { el.parentNode.removeChild(el); return; }
+      if (ev.target.closest('.go')) { el.parentNode.removeChild(el); OPEN[key(p[0], p[1])] = true; setTab(p[0]); var c = document.querySelector('[data-k="' + key(p[0], p[1]).replace(/"/g, '\\"') + '"]'); if (c) c.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+    };
+  };
+
+  var x = new XMLHttpRequest();
+  x.open('GET', 'sf/data.json?t=' + Math.floor(Date.now() / 36e5));
+  x.onload = function () {
+    try { D = JSON.parse(x.responseText); } catch (e) { $('list').innerHTML = '<div class="empty">加载失败</div>'; return; }
+    var showIntro = function (all) { $('intro').innerHTML = (all ? D.intro.map(esc).join('<br><br>') : esc(D.intro[0])) + ' <a href="#" id="more" style="color:#F4B8A8">' + (all ? '收起' : '更多 ›') + '</a>'; $('more').onclick = function (e) { e.preventDefault(); showIntro(!all); }; };
+    showIntro(false);
+    $('facts').innerHTML = D.facts.map(function (f) { return '<span><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</span>'; }).join('');
+    $('foot').innerHTML = '内容依据旧金山旅游局、市政府、国家公园管理局、天使岛移民站基金会、FoundSF 等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<br>' +
+      D.sources.map(function (s) { return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>'; }).join(' · ');
+    render();
+  };
+  x.onerror = function () { $('list').innerHTML = '<div class="empty">网络错误，稍后刷新</div>'; };
+  x.send();
+})();
+</script>
+<script src="nav.js?v=17" defer></script>
+</body>
+</html>
