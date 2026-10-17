@@ -1,0 +1,19 @@
+name: probe
+on:
+  push:
+    branches: [bart-probe]
+permissions:
+  contents: write
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p .probe
+          curl -s -D .probe/h1.txt -H "Origin: https://boliunew.github.io" "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=POWL&key=MW9S-E7SL-26DU-VV8V&json=y" -o .probe/b1.json || true
+          curl -s -D .probe/h2.txt -H "Origin: https://boliunew.github.io" "https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&json=y" -o .probe/b2.json || true
+          curl -s -D .probe/h3.txt -H "Origin: https://boliunew.github.io" "https://api.511.org/transit/StopMonitoring?agency=SF&format=json" -o .probe/b3.txt || true
+          head -c 3000 .probe/b1.json; echo
+          git config user.name bot; git config user.email bot@x
+          git add -f .probe && git commit -m probe && git push origin HEAD:bart-probe
