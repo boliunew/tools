@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-16T14:55:32Z",
- "date": "2026-10-16",
+ "generated": "2026-10-17T13:47:10Z",
+ "date": "2026-10-17",
  "engine": "edge",
- "total": 475.1,
- "short": 294.7,
+ "total": 459.2,
+ "short": 290.8,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610160754",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610170646",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月16日 星期五",
-   "dur": 11.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610160754",
+   "sub": "10月17日 星期六",
+   "dur": 9.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "周五了，坚持一下就周末了！这里是你的通勤电台。今天是10月16日，星期五，方向盘上的下一首可以随时跳段。"
+     "t": "周末还出门，辛苦了。星期六，10月17日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 多云 94°/74°F",
-   "dur": 36.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610160754",
+   "sub": "Upland 阴天 89°/71°F",
+   "dur": 29.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天多云。早上7点出门大约华氏76度，24摄氏度，体感63度。傍晚5点下班大约华氏92度，33摄氏度，体感84度。白天最高94度，约34摄氏度；最低74度。基本不会下雨。白天空气质量良好，指数最高41。今天日落时间是傍晚6点15分。提醒一下：风很大，阵风可能超过每小时28英里，开车握稳方向盘。"
+     "t": "Upland今天阴天。早上7点出门大约华氏71度，22摄氏度，体感67度。傍晚5点下班大约华氏87度，30摄氏度，体感80度。白天最高89度，约31摄氏度；最低71度。基本不会下雨。白天空气质量良好，指数最高43。今天日落时间是傍晚6点13分。"
     }
    ]
   },
@@ -38,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 30.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610160754",
+   "dur": 29.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月15日收盘。标普500 ETF 上涨0.3%，纳指100 ETF 下跌0.1%。恐慌指数VIX 16.5，正常水平。标普成分股里，45%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月16日收盘。标普500 ETF 下跌1.1%，纳指100 ETF 下跌2.5%。恐慌指数VIX 20.0，正常水平。标普成分股里，46%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "46 个候选",
-   "dur": 68.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610160754",
+   "sub": "17 个候选",
+   "dur": 63.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天46个候选，评分最高的是ServiceNow，代码 N O W。不想听细节可以按下一首。"
+     "t": "股票池今天17个候选，评分最高的是BlackRock，代码 B L K。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，血筹码12个，回踩金坑11个，挤压突破7个，强势新高4个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，回踩金坑3个，挤压突破1个，血筹码1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，ServiceNow，代码 N O W，挤压突破信号，收盘价148.57美元，止损参考139.58，注意近期有财报。"
+     "t": "第1，BlackRock，代码 B L K，挤压突破信号，收盘价1134.38美元，止损参考1094.35。"
     },
     {
      "lang": "zh",
-     "t": "第2，Thermo Fisher Scientific，代码 T M O，挤压突破信号，收盘价696.49美元，止损参考667.89，注意近期有财报。"
+     "t": "第2，Everpure，代码 P，RSI2 超跌反弹信号，收盘价124.01美元，止损参考104.42。"
     },
     {
      "lang": "zh",
-     "t": "第3，Keurig Dr Pepper，代码 K D P，挤压突破信号，收盘价34.18美元，止损参考32.91。"
+     "t": "第3，Illumina，代码 I L M N，RSI2 超跌反弹信号，收盘价262.54美元，止损参考228.83。"
     },
     {
      "lang": "zh",
@@ -83,21 +83,25 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "2 件大事",
-   "dur": 24.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610160754",
+   "sub": "3 件大事",
+   "dur": 36.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有2家大公司发财报。"
+     "t": "10月20日，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "HDFC Bank，代码 H D B，盘后发财报。期权定价波动正负8.9%。"
+     "t": "GE Aerospace，代码 G E，盘前发财报。期权定价波动正负6.2%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "ICICI Bank，代码 I B N，盘后发财报。期权定价波动正负7.1%。标签：已提前炒作、财报日常涨。"
+     "t": "Netflix，代码 N F L X，盘后发财报。期权定价波动正负9.5%。标签：大波动、利好出尽型、已提前炒作。"
+    },
+    {
+     "lang": "zh",
+     "t": "RTX，代码 R T X，盘前发财报。期权定价波动正负5.1%。"
     }
    ]
   },
@@ -105,8 +109,8 @@
    "id": "news",
    "title": "📰 英文新闻",
    "sub": "BBC · Al Jazeera · NPR",
-   "dur": 86.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610160754",
+   "dur": 83.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
@@ -114,48 +118,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，国际，难度B2。大意是：随着石油出口放缓，霍尔木兹附近的船舶袭击报告创下历史新高。"
+     "t": "第1条，来自BBC，国际，难度B2。大意是：Katie Zacharia离职不到五天。"
     },
     {
      "lang": "en",
-     "t": "Ship attack reports near Hormuz reach record high as oil exports slow"
+     "t": "Katie Zacharia leaving White House role less than five days into job"
     },
     {
      "lang": "en",
-     "t": "BBC Verify analysis of data from a UK maritime agency shows 12 vessels were struck in a week."
+     "t": "Her public debut as press secretary ended with a flurry of media criticism about her credentials and preparedness."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：阿根廷学生在校园抗议Milei的紧缩政策。"
+     "t": "第2条，来自Al Jazeera，国际，难度B1。大意是：美国海岸警卫队在墨西哥下哈海岸沉没后营救了16名船员。"
     },
     {
      "lang": "en",
-     "t": "Argentine students protest on campus over Milei’s austerity"
+     "t": "US coastguard rescues 16 after boat sinks off Mexico’s Baja coast"
     },
     {
      "lang": "en",
-     "t": "Judge fines the government for failing to fund universities as protests over Milei's cuts turn violent."
+     "t": "Eleven people are believed to be still missing, with rescue operations under way."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，科技，难度B1。大意是：为了训练机器人，人工智能公司正在印度付钱给人们拍摄自己做家务的照片。"
+     "t": "第3条，来自NPR，科技，难度B1。大意是：在旧金山科技周，了解硅谷人们对人工智能热潮的看法。"
     },
     {
      "lang": "en",
-     "t": "To train robots, AI companies are paying people in India to film themselves doing chores"
+     "t": "At SF Tech Week, a vibe check on how people in Silicon Valley feel about the AI boom"
     },
     {
      "lang": "en",
-     "t": "Men and women across India are being paid to record themselves doing domestic jobs as developers train AI robots to do household chores."
+     "t": "In Silicon Valley, the AI boom means a lot of people are excited about this new technology, but concerned about when the music might stop."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "review · la playa",
-   "dur": 30.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610160754",
+   "sub": "confident · el mono",
+   "dur": 32.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
@@ -163,15 +167,15 @@
     },
     {
      "lang": "en",
-     "t": "review"
+     "t": "confident"
     },
     {
      "lang": "zh",
-     "t": "意思是：复习。拼写是："
+     "t": "意思是：自信的。拼写是："
     },
     {
      "lang": "en",
-     "t": "r, e, v, i, e, w"
+     "t": "c, o, n, f, i, d, e, n, t"
     },
     {
      "lang": "zh",
@@ -179,7 +183,7 @@
     },
     {
      "lang": "en",
-     "t": "review"
+     "t": "confident"
     },
     {
      "lang": "zh",
@@ -187,44 +191,40 @@
     },
     {
      "lang": "es",
-     "t": "la playa"
+     "t": "el mono"
     },
     {
      "lang": "zh",
-     "t": "意思是：海滩。跟着读一遍。"
+     "t": "意思是：猴子。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la playa"
+     "t": "el mono"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 31.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610160754",
+   "sub": "口头禅",
+   "dur": 11.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天是一句口头禅。"
     },
     {
      "lang": "en",
-     "t": "To be what we are, and to become what we are capable of becoming, is the only end of life."
+     "t": "You're welcome"
     },
     {
      "lang": "zh",
-     "t": "意思是：做真实的自己，并成为自己能够成为的人，这是人生唯一的目的。这句话出自 Robert Louis Stevenson。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "意思是：不客气"
     },
     {
      "lang": "en",
-     "t": "To be what we are, and to become what we are capable of becoming, is the only end of life."
+     "t": "You're welcome"
     }
    ],
    "opt": true
@@ -232,61 +232,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "仓库收发货",
-   "dur": 65.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610160754",
+   "sub": "和主管沟通",
+   "dur": 79.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：仓库收发货。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "这是你的签收单。"
+     "t": "确认一下，你是要我先做这个？"
     },
     {
      "lang": "en",
-     "t": "Here's your POD."
+     "t": "Just to be clear, you want me to do this first?"
     },
     {
      "lang": "en",
-     "t": "Here's your POD."
+     "t": "Just to be clear, you want me to do this first?"
     },
     {
      "lang": "zh",
-     "t": "你错过预约时间了。"
+     "t": "哪个更重要？"
     },
     {
      "lang": "en",
-     "t": "You missed your appointment."
+     "t": "Which one is more important?"
     },
     {
      "lang": "en",
-     "t": "You missed your appointment."
+     "t": "Which one is more important?"
     },
     {
      "lang": "zh",
-     "t": "午饭后可以给你插进来。"
+     "t": "我会晚一点，十五分钟到。"
     },
     {
      "lang": "en",
-     "t": "We can fit you in after lunch."
+     "t": "I'm running a little late. Be there in fifteen."
     },
     {
      "lang": "en",
-     "t": "We can fit you in after lunch."
+     "t": "I'm running a little late. Be there in fifteen."
     },
     {
      "lang": "zh",
-     "t": "到的时候封条完好。"
+     "t": "C 排做完了，接下来做什么？"
     },
     {
      "lang": "en",
-     "t": "The seal was intact when it arrived."
+     "t": "I finished row C. What's next?"
     },
     {
      "lang": "en",
-     "t": "The seal was intact when it arrived."
+     "t": "I finished row C. What's next?"
     },
     {
      "lang": "zh",
@@ -298,13 +298,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "送礼禁忌",
-   "dur": 18.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610160754",
+   "sub": "俄罗斯：门槛上别握手",
+   "dur": 18.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：送礼禁忌。好心送礼也可能犯忌讳。做法：华人：不送钟（送终）、伞（散）、梨（离）；菊花：在法国、意大利、比利时等地多用于悼念；刀剪：多地认为会「切断」关系。"
+     "t": "今日一招：俄罗斯：门槛上别握手。隔着门槛握手、递东西被认为不吉利。做法：先进门，或者对方出来，再握手；送花送单数，双数是给逝者的；做客别空手，带点甜点或花。"
     }
    ],
    "opt": true
@@ -312,13 +312,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1875 · 1951 · 2021",
-   "dur": 34.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610160754",
+   "sub": "1933 · 1973 · 2024",
+   "dur": 29.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1875年，由耶稣基督后期圣徒教会建立之杨百翰大学于美国犹他州普若佛正式成立，并成为美国最大的宗教大学。1951年，华东师范大学在上海举行开学典礼，成为中华人民共和国建国后成立的第一所师范大学。2021年，搭载中国神舟十三号载人飞船的长征二号F运载火箭在酒泉卫星发射中心发射升空，并与天宫空间站对接。"
+     "t": "历史上的今天。1933年，犹太裔普鲁士科学院教授爱因斯坦逃离纳粹德国，前往美国。1973年，石油输出国组织为报复西方国家对以色列的支援而宣布石油禁运，第一次石油危机爆发。2024年，以色列军方确认哈马斯最高领导人叶海亚·辛瓦尔在加沙走廊的南部城市拉法被击杀。"
     }
    ],
    "opt": true
@@ -326,21 +326,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "东坡",
-   "dur": 30.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610160754",
+   "sub": "题西林壁",
+   "dur": 29.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：东坡。写于1083年，他46岁，在黄州。"
+     "t": "读一首苏轼：题西林壁。写于1084年，他47岁，在庐山。"
     },
     {
      "lang": "zh",
-     "t": "雨洗东坡月色清，市人行尽野人行。莫嫌荦确坡头路，自爱铿然曳杖声。"
+     "t": "横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：雨后东坡上的月光格外清亮，城里的人都走光了，只剩我这个乡下人还在走。别嫌坡上的路坑坑洼洼，我就喜欢拐杖敲在石头上那一声声清脆的响。"
+     "t": "白话意思是：正面看是连绵的山岭，侧面看是陡峭的山峰，远近高低，各不一样。之所以看不清庐山的真面目，是因为自己就身在这座山里。"
     }
    ],
    "opt": true
@@ -349,12 +349,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610160754",
+   "dur": 6.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610170646",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
     }
    ]
   }
