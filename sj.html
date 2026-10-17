@@ -121,6 +121,21 @@ button{cursor:pointer}
 .tipp > b{display:block;font-size:14px;margin-bottom:4px}
 #lmap.sat .leaflet-overlay-pane svg{filter:drop-shadow(0 0 1.5px rgba(255,255,255,.9))}
 #lmap.sat .stl span,#lmap.sat .stl span{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000,0 1px 4px #000}
+.rsum{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:10px 12px;margin-bottom:8px}
+.rs-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:15px;margin-bottom:4px}.rs-h small{color:var(--faint);font-size:12px}
+.rs-r{display:grid;grid-template-columns:12px auto 1fr;gap:2px 8px;align-items:center;padding:7px 0;border-top:1px solid var(--line);cursor:pointer}
+.rs-r i{width:12px;height:12px;border-radius:6px}.rs-r b{font-size:15px}.rs-l{font-size:13px;font-weight:700;justify-self:end}
+.rs-r small{grid-column:2/4;color:var(--soft);font-size:12.5px;line-height:1.5}.rs-r small b{font-size:12.5px;color:var(--ink)}
+.rs-n{font-size:12.5px;color:var(--soft);background:var(--bay-soft);border-radius:10px;padding:7px 9px;margin-top:6px;line-height:1.6}
+.rdi{display:flex!important;align-items:center;justify-content:center;font-size:15px;border-radius:50%;background:#fff;border:2px solid #888;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.rdi.rd-inc{border-color:#D33A2C;background:#FDECEA}.rdi.rd-inc2{border-color:#E0A100;background:#FFF8E1;font-size:12px}
+.rdi.rd-full{border-color:#C0362C;font-size:13px}.rdi.rd-lane{border-color:#E07B00;font-size:13px}.rdi.rd-ramp{border-color:#BBB;font-size:10px;opacity:.85}
+.rdi.rd-cms{border-color:#999;font-size:10px;opacity:.8}.rdi.rd-tt{border:0;background:none;box-shadow:none}
+.rdi.rd-tt b{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font:700 12px/1 -apple-system,sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.rd-sign{background:#111;color:#F6C445;font:600 12px/1.5 ui-monospace,Menlo,monospace;border-radius:6px;padding:6px 8px;margin:4px 0 6px;letter-spacing:.04em}
+.rsh span{display:flex;align-items:center;justify-content:center;height:20px;min-width:30px;padding:0 4px;border-radius:5px;font:700 11px/1 -apple-system,sans-serif;color:#fff;border:1.5px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.rsh.si span{background:#3F51B5}.rsh.su span{background:#7B4BB7}.rsh.ss span{background:#2C8C99;border-radius:10px}
+.rkey{margin:10px 2px 0;font-size:13.5px}.rkey summary{cursor:pointer;color:var(--bay);font-weight:600}
 .mnote{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
 .mnote a{color:var(--bay)}
 .gift{margin-bottom:14px}
@@ -186,6 +201,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   <div id="list"><div class="empty">加载中…</div></div>
   <div class="foot" id="foot"></div>
 </main>
+<script src="road.js?v=1"></script>
 <script>
 (function () {
   'use strict';
@@ -310,10 +326,11 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     }
   });
   // ---- 交通图：可缩放的 SVG
-  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.vta.org/go/maps'], ['live', '⏱️ BART 实时到站', 'https://www.bart.gov/schedules/eta']];
+  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.vta.org/go/maps'], ['road', '🚗 湾区路况', 'https://quickmap.dot.ca.gov/'], ['live', '⏱️ BART 实时到站', 'https://www.bart.gov/schedules/eta']];
   var MAP = ls('map') || 'real', MV = null, RL = ls('rl') || { tips: 1, vta: 1, caltrain: 1, bart: 1, vbus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
   function mapHTML() {
     var m = MAPS.filter(function (x) { return x[0] === MAP; })[0] || MAPS[0]; MAP = m[0];
+    if (m[0] === 'road') return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' + (window.BayRoad ? BayRoad.html() : '<div class="empty">加载失败，请刷新</div>');
     if (m[0] === 'live') {
       return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div><div id="live"><div class="empty">加载中…</div></div>';
     }
@@ -609,6 +626,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   function mapInit() {
     if (MAP === 'ferry') { ferryLoad(ferryRender); bindFerry(); return; }
     if (MAP === 'live') { liveInit(); return; }
+    if (MAP === 'road') { $('mtabs').onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); }; if (window.BayRoad) BayRoad.init({ loadLeaflet: loadLeaflet, rerender: render, center: [37.45, -121.98], zoom: 10 }); return; }
     if (MAP === 'real' || !$('mbox')) { realInit(); return; }
     var box = $('mbox'), img = $('mimg'), st = { s: 1, x: 0, y: 0, min: .2 }, pts = {}, last = null;
     function apply() { img.style.transform = 'translate(' + st.x + 'px,' + st.y + 'px) scale(' + st.s + ')'; }
