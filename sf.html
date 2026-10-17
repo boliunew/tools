@@ -110,6 +110,42 @@ button{cursor:pointer}
 #lmap.sat .stl span,#lmap.sat .stl span{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000,0 1px 4px #000}
 .mnote{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
 .mnote a{color:var(--bay)}
+.gift{margin-bottom:14px}
+.gbox{width:100%;border:2px dashed var(--or);background:var(--or-soft);border-radius:20px;padding:26px 16px;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--ink)}
+.gbox .gb{font-size:56px;animation:wob 1.6s ease-in-out infinite}
+.gbox b{font-size:17px}.gbox small{color:var(--soft)}
+@keyframes wob{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg) scale(1.05)}40%{transform:rotate(10deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(3deg)}}
+.gcard{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:14px 16px;box-shadow:var(--shadow);animation:flip .6s ease}
+@keyframes flip{from{transform:perspective(800px) rotateY(90deg);opacity:0}to{transform:none;opacity:1}}
+.gh{display:flex;gap:12px;align-items:center;margin-bottom:6px}
+.gh span{font-size:40px}.gh b{display:block;font-size:17px}.gh small{color:var(--soft);font-size:13px}
+.gtl{list-style:none;margin:6px 0 0;padding:0;border-left:2px solid var(--or-soft);margin-left:22px}
+.gtl li{display:flex;gap:10px;position:relative;padding:6px 0 10px 14px}
+.gtl li:before{content:"";position:absolute;left:-7px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--or)}
+.gtl i{font-style:normal;font-family:Georgia,serif;font-weight:700;color:var(--or);font-size:13px;min-width:44px;padding-top:1px}
+.gtl b{display:block;font-size:15px}.gtl p{margin:2px 0;font-size:13.5px;color:var(--soft);line-height:1.6}.gtl small{font-size:12.5px;color:var(--bay)}
+.gact{display:flex;gap:8px;margin-top:6px}
+.gact button{flex:1;border:1px solid var(--line);background:var(--chip);border-radius:12px;padding:9px;font-size:14px}
+.gact button:first-child{background:var(--or);color:#fff;border-color:var(--or)}
+.pass{background:linear-gradient(160deg,#1F3A5F,#16263D);color:#EEE7D7;border-radius:20px;padding:14px 14px 10px;box-shadow:var(--shadow)}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.ph b{font-size:17px;letter-spacing:.04em}.ph small{display:block;font-size:12px;opacity:.7}
+.pt{text-align:right;font-weight:700;font-size:14px;color:#F2C46D}.pt small{display:block;opacity:.75;color:#EEE7D7;font-weight:400}
+.pbar{height:6px;background:rgba(255,255,255,.15);border-radius:3px;margin:10px 0 12px;overflow:hidden}.pbar i{display:block;height:100%;background:#F2C46D;border-radius:3px}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;justify-items:center}
+.st{position:relative;border:1.5px dashed rgba(238,231,215,.35);background:none;border-radius:50%;width:78px;height:78px;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#EEE7D7;padding:4px;overflow:hidden}
+.st span{font-size:22px;filter:grayscale(1);opacity:.45}
+.st em{font-style:normal;font-size:10px;line-height:1.2;opacity:.6;text-align:center;max-height:2.4em;overflow:hidden}
+.st.on{border:2.5px solid #E0573F;background:rgba(224,87,63,.14);transform:rotate(-8deg)}
+.st.on span{filter:none;opacity:1}.st.on em{opacity:1;color:#FFD9CF}
+.st u{text-decoration:none;font-size:9.5px;color:#F2C46D;font-family:Georgia,serif}
+.st.stp{animation:stamp .35s ease}
+@keyframes stamp{0%{transform:scale(1.3) rotate(-20deg);opacity:0}100%{transform:rotate(-8deg);opacity:1}}
+.pass .mnote{color:rgba(238,231,215,.6)}
+.ttl{position:fixed;left:50%;top:40%;transform:translate(-50%,-50%);background:#1F3A5F;color:#F2C46D;font-weight:700;font-size:18px;padding:14px 22px;border-radius:16px;z-index:100;box-shadow:0 10px 40px rgba(0,0,0,.35);animation:flip .5s ease}
+.conf{position:fixed;inset:0;pointer-events:none;z-index:99;overflow:hidden}
+.conf i{position:absolute;top:-30px;font-style:normal;animation:fall 2.2s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
 .foot{font-size:12px;color:var(--faint);margin-top:18px;line-height:1.8}
 .foot a{color:var(--bay)}
 .empty{color:var(--faint);text-align:center;padding:30px 0}
@@ -141,8 +177,9 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('sf:' + k) || 'null'); localStorage.setItem('sf:' + k, JSON.stringify(v)); } catch (e) { return null; } }
-  var TABS = [['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['map', '🗺️ 交通图'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
+  var TABS = [['gift', '🎁 盲盒 · 护照'], ['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['map', '🗺️ 交通图'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
   var LEAD = {
+    gift: '不知道今天去哪儿？拆一个盲盒，给你一条完整的一日行程。去过的地方在下面的护照上盖个章，集齐有称号。',
     hoods: '旧金山不大，却有上百个街区，走过一条街气质就变了。点开看每个街区去做什么、吃什么。',
     eat: '旧金山发明或带火的吃的，和到这儿一定要尝的。店铺会变，去之前查一下营业时间。',
     fun: '景点、冷门好去处和一年里的大活动。点 ☆ 加到「想去」。',
@@ -207,6 +244,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       return;
     }
     h += '<div class="lead">' + LEAD[TAB] + '</div>';
+    if (TAB === 'gift') { $('list').innerHTML = h + giftHTML(); return; }
     if (TAB === 'map') { $('list').innerHTML = h + mapHTML(); mapInit(); return; }
     if (TAB === 'trivia') h += '<div class="triv">' + D.trivia.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
     else {
@@ -215,6 +253,47 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     }
     $('list').innerHTML = h;
   }
+  // ---- 🎁 一日盲盒 + 🛂 旧金山护照
+  var PL = ls('plan'), STAMP = ls('stamps') || {}, FLIP = false;
+  var TITLES = [[0, '🧳 初来乍到'], [3, '📸 周末游客'], [8, '🚋 叮当车常客'], [15, '🌁 半个本地人'], [25, '🦀 旧金山通'], [35, '🏅 三藩市荣誉市民']];
+  function spots() { var o = []; ['hoods', 'fun', 'eat'].forEach(function (t) { D[t].forEach(function (it) { if (it.t.indexOf('一年里') < 0) o.push([key(t, it), it.e, /^[\u4e00-\u9fff]/.test(it.t) ? it.t.replace(/\s+[A-Za-z].*$/, '') : it.t.replace(/\s*和.*$/, '')]); }); }); return o; }
+  function titleOf(n) { var t = TITLES[0][1]; TITLES.forEach(function (x) { if (n >= x[0]) t = x[1]; }); return t; }
+  function giftHTML() {
+    var h = '<div class="gift">';
+    if (PL == null || !D.plans[PL]) h += '<button class="gbox" id="gOpen"><span class="gb">🎁</span><b>拆一个旧金山一日盲盒</b><small>8 种主题，每次随机一条</small></button>';
+    else {
+      var P = D.plans[PL];
+      h += '<div class="gcard' + (FLIP ? ' flip' : '') + '"><div class="gh"><span>' + P.e + '</span><div><b>' + esc(P.t) + '</b><small>' + esc(P.mood) + '</small></div></div><ol class="gtl">' +
+        P.steps.map(function (x) { return '<li><i>' + esc(x[0]) + '</i><div><b>' + x[1] + ' ' + esc(x[2]) + '</b>' + (x[3] ? '<p>' + esc(x[3]) + '</p>' : '') + '<small>🚏 ' + esc(x[4]) + '</small></div></li>'; }).join('') +
+        '</ol><div class="gact"><button id="gOpen">🎲 再拆一个</button><button data-t2="map">🗺️ 看交通图</button></div></div>';
+    }
+    h += '</div>';
+    var sp = spots(), n = sp.filter(function (x) { return STAMP[x[0]]; }).length;
+    h += '<div class="pass"><div class="ph"><div><b>🛂 旧金山护照</b><small>去过就盖个章（存在这台手机上）</small></div><div class="pt">' + titleOf(n) + '<small>' + n + ' / ' + sp.length + '</small></div></div>' +
+      '<div class="pbar"><i style="width:' + Math.round(n / sp.length * 100) + '%"></i></div><div class="pg">' +
+      sp.map(function (x) { var d = STAMP[x[0]]; return '<button class="st' + (d ? ' on' : '') + '" data-st="' + esc(x[0]) + '"><span>' + x[1] + '</span><em>' + esc(x[2]) + '</em>' + (d ? '<u>' + esc(d.slice(5).replace('-', '/')) + '</u>' : '') + '</button>'; }).join('') +
+      '</div><div class="mnote">点一下盖章，再点一下取消。称号：' + TITLES.map(function (t) { return t[1] + '（' + t[0] + '）'; }).join(' → ') + '</div></div>';
+    return h;
+  }
+  function confetti() {
+    var c = document.createElement('div'); c.className = 'conf';
+    for (var i = 0; i < 40; i++) { var e = document.createElement('i'); e.textContent = ['🎉', '✨', '🌉', '🦀', '🚋', '🥟'][i % 6]; e.style.left = Math.random() * 100 + '%'; e.style.animationDelay = Math.random() * .6 + 's'; e.style.fontSize = (14 + Math.random() * 14) + 'px'; c.appendChild(e); }
+    document.body.appendChild(c); setTimeout(function () { if (c.parentNode) c.parentNode.removeChild(c); }, 2600);
+  }
+  document.addEventListener('click', function (e) {
+    if (TAB !== 'gift' || !e.target.closest) return;
+    var b = e.target.closest('#gOpen');
+    if (b) { var n = D.plans.length, k; do { k = Math.floor(Math.random() * n); } while (n > 1 && k === PL); PL = k; ls('plan', PL); FLIP = true; render(); setTimeout(function () { FLIP = false; }, 50); var g = document.querySelector('.gift'); if (g) g.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+    b = e.target.closest('[data-t2]'); if (b) { setTab(b.getAttribute('data-t2')); return; }
+    b = e.target.closest('[data-st]');
+    if (b) {
+      var k2 = b.getAttribute('data-st'), before = titleOf(Object.keys(STAMP).length);
+      if (STAMP[k2]) delete STAMP[k2]; else STAMP[k2] = laNow().date;
+      ls('stamps', STAMP); var y = window.scrollY; render(); window.scrollTo(0, y);
+      var nb = document.querySelector('[data-st="' + k2 + '"]'); if (nb && STAMP[k2]) nb.classList.add('stp');
+      if (STAMP[k2] && titleOf(Object.keys(STAMP).length) !== before) { confetti(); var tt = document.createElement('div'); tt.className = 'ttl'; tt.textContent = '新称号：' + titleOf(Object.keys(STAMP).length) + '！'; document.body.appendChild(tt); setTimeout(function () { if (tt.parentNode) tt.parentNode.removeChild(tt); }, 2600); }
+    }
+  });
   // ---- 交通图：可缩放的 SVG
   var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['ferry', '⛴️ 渡轮时刻表', 'https://www.sanfranciscobayferry.com/'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
   var MAP = ls('map') || 'real', MV = null, RL = ls('rl3') || { tips: 1, bart: 1, muni: 1, cable: 1, ferry: 1, bus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
