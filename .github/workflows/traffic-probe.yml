@@ -2,11 +2,15 @@ name: traffic-probe
 on:
   push:
     branches: [traffic-probe]
+permissions:
+  contents: write
 jobs:
   p:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - run: |
+          exec > probe.txt 2>&1
           for u in \
             https://cwwp2.dot.ca.gov/data/d4/cms/cmsStatusD04.json \
             https://cwwp2.dot.ca.gov/data/d4/tt/ttStatusD04.json \
@@ -33,3 +37,6 @@ jobs:
             m=json.dumps(x.get('cms',{}).get('message',{}))
             if 'MIN' in m and n<15: print(m[:400]); n+=1
           " || true
+      - run: |
+          git config user.name bot; git config user.email bot@x
+          git add probe.txt; git commit -m out; git push origin HEAD:traffic-probe
