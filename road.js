@@ -1,6 +1,6 @@
 /* 🚗 湾区路况：高速路线图 + 实时事故 / 封路 / 路牌行车时间 + 分区拥堵概况（sf.html、sj.html 共用）
  * 数据：bay/roads.json（OpenStreetMap 高速走向，每月更新）
- *       live-data 分支 bay/live.json（GitHub Actions 每 15 分钟从 CHP、Caltrans 抓一次）
+ *       live-data 分支 bay/live.json（GitHub Actions 每 5 分钟从 CHP、Caltrans 抓一次）
  *       可选：TomTom 实时车速图层（用户自己填免费密钥，只存在本机）
  */
 (function () {
@@ -56,7 +56,7 @@
     (LV.inc || []).forEach(function (i) { var a = A[area(i.ll)]; if (a && !minor(i)) a.inc.push(i); });
     (LV.lcs || []).forEach(function (c) { var a = A[area(c.ll)]; if (a && c.fac === 'Mainline') a.lcs++; });
     (LV.cms || []).forEach(function (s) { var a = A[area(s.ll)]; if (a) s.tt.forEach(function (t) { if (t.base) a.tt.push([ratio(t), t, s]); }); });
-    var h = '<div class="rs-h"><b>🚗 现在湾区路况</b><small>' + (LV.generated ? '更新于 ' + esc(laTime(LV.generated)) : '') + ' · 每 15 分钟</small></div>';
+    var h = '<div class="rs-h"><b>🚗 现在湾区路况</b><small>' + (LV.generated ? '更新于 ' + esc(laTime(LV.generated)) : '') + ' · 每 5 分钟</small></div>';
     AREAS.forEach(function (k) {
       var a = A[k]; a.tt.sort(function (x, y) { return y[0] - x[0]; });
       var worst = a.tt[0], lv = worst ? lvl(worst[0]) : 1, col = a.inc.filter(function (i) { return /车祸|逃逸|SigAlert|逆行|起火/.test(i.zh); }).length;

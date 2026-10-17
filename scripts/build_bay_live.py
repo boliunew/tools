@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🚗 湾区实时路况 → bay-live/live.json（每 15 分钟由 .github/workflows/bay-live.yml 跑，推到 live-data 分支）
+"""🚗 湾区实时路况 → bay-live/live.json（每 5 分钟由 .github/workflows/bay-live.yml 跑，推到 live-data 分支）
 
 数据（都是公开、免密钥）：
   · CHP 加州高速巡警实时事故（Caltrans QuickMap 发布的 KML）

@@ -1,10 +1,11 @@
 name: 湾区实时路况
 
-# 每 15 分钟抓一次 CHP 事故、Caltrans 路牌行车时间和封路，生成 live.json，强推到 live-data 分支（只保留最新一份，不增加主分支历史）
+# 每 5 分钟抓一次 CHP 事故、Caltrans 路牌行车时间和封路，生成 live.json，强推到 live-data 分支（只保留最新一份，不增加主分支历史）
+# GitHub 的定时任务经常被推迟几个小时，所以一次任务在里面循环跑将近 6 小时，每 5 小时左右再接力启动一次
 # 页面从 https://raw.githubusercontent.com/boliunew/tools/live-data/bay/live.json 读
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "7 */2 * * *"   # 每 2 小时接力一次（前一个还在跑就排队，不会重叠）
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -20,25 +21,29 @@ concurrency:
 jobs:
   live:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 355
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Build
-        run: |
-          mkdir -p out/bay
-          curl -sfL -m 30 "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/live-data/bay/cms_base.json?t=$(date +%s)" -o out/bay/cms_base.json || rm -f out/bay/cms_base.json
-          python scripts/build_bay_live.py out/bay
-      - name: Publish to live-data
+      - name: Loop (build + publish every 5 minutes)
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd out
-          git init -q -b live-data
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add bay
-          git commit -qm "湾区实时路况 $(date -u +%FT%TZ)"
-          git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" live-data
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p out/bay
+          curl -sfL -m 30 "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/live-data/bay/cms_base.json?t=$(date +%s)" -o out/bay/cms_base.json || rm -f out/bay/cms_base.json
+          END=$(( $(date +%s) + 340*60 ))
+          # push 触发只跑一轮；定时和手动触发都循环
+          ONCE=0; [ "${GITHUB_EVENT_NAME}" = "push" ] && ONCE=1
+          while :; do
+            T0=$(date +%s)
+            python scripts/build_bay_live.py out/bay || true
+            ( cd out && rm -rf .git && git init -q -b live-data && git add bay && git commit -qm "湾区实时路况 $(date -u +%FT%TZ)" && \
+              git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" live-data ) || echo "push failed"
+            [ "$ONCE" = 1 ] && break
+            NOW=$(date +%s); [ $(( NOW + 300 )) -gt $END ] && break
+            sleep $(( 300 - (NOW - T0) > 30 ? 300 - (NOW - T0) : 30 ))
+          done
