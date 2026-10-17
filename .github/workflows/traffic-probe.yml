@@ -1,0 +1,35 @@
+name: traffic-probe
+on:
+  push:
+    branches: [traffic-probe]
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in \
+            https://cwwp2.dot.ca.gov/data/d4/cms/cmsStatusD04.json \
+            https://cwwp2.dot.ca.gov/data/d4/tt/ttStatusD04.json \
+            https://cwwp2.dot.ca.gov/data/d4/lcs/lcsStatusD04.json \
+            https://cwwp2.dot.ca.gov/data/d4/cctv/cctvStatusD04.json \
+            https://cwwp2.dot.ca.gov/data/d4/rwis/rwisStatusD04.json \
+            https://media.chp.ca.gov/sa_xml/sa.xml \
+            https://quickmap.dot.ca.gov/data/chp-only.kml \
+            https://quickmap.dot.ca.gov/data/tt.kml \
+            https://quickmap.dot.ca.gov/data/cms.kml \
+            https://quickmap.dot.ca.gov/data/lcs2way.kml \
+            "https://api.511.org/traffic/events?format=json" ; do
+            echo "=== $u"
+            curl -sS -m 40 -D /tmp/h -o /tmp/b -H "Origin: https://boliunew.github.io" -A "Mozilla/5.0" "$u"; echo "rc=$?"
+            grep -i -E "^HTTP|access-control|content-type|content-length" /tmp/h
+            wc -c < /tmp/b; head -c 1500 /tmp/b | tr -d '\r'; echo
+          done
+          echo "=== tt sample"; curl -sS -m 40 https://cwwp2.dot.ca.gov/data/d4/tt/ttStatusD04.json | python3 -c "import sys,json;d=json.load(sys.stdin);print(json.dumps(d,indent=0)[:4000])" || true
+          echo "=== cms sample"; curl -sS -m 40 https://cwwp2.dot.ca.gov/data/d4/cms/cmsStatusD04.json | python3 -c "
+          import sys,json;d=json.load(sys.stdin);L=d.get('data',[]);print(len(L));import itertools
+          for x in L[:3]: print(json.dumps(x)[:1500])
+          n=0
+          for x in L:
+            m=json.dumps(x.get('cms',{}).get('message',{}))
+            if 'MIN' in m and n<15: print(m[:400]); n+=1
+          " || true
