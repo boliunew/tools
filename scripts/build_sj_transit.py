@@ -33,20 +33,23 @@ BUS_ZH = {"500": "Diridon 站 ⇄ Berryessa BART（快线）", "522": "Rapid 522
           "523": "Rapid 523：Lockheed Martin ⇄ Berryessa BART（De Anza 学院 · Sunnyvale）", "568": "Rapid 568：Gilroy ⇄ Diridon 站",
           "60": "60 路：Winchester ⇄ Milpitas BART（经过 SJC 机场 · Santa Clara Caltrain）", "22": "22 路：Palo Alto ⇄ Eastridge（El Camino 慢车）",
           "23": "23 路：De Anza 学院 ⇄ Alum Rock（Stevens Creek 大道）"}
-ZH = [  # station keyword → 中文
-    ("diridon", "迪里登车站 · Caltrain · ACE · Amtrak · SAP 中心"), ("san jose diridon", "迪里登车站"), ("convention center", "会展中心"),
-    ("san antonio", "圣安东尼奥街 · 市中心"), ("santa clara", "圣克拉拉街 · 市中心"), ("st james", "圣詹姆斯公园"), ("japantown", "日本町"),
-    ("civic center", "市政中心"), ("paseo de san antonio", "市中心 · 圣何塞州立大学"), ("children's discovery", "儿童探索博物馆"),
-    ("baypointe", "Baypointe（蓝/绿线北端）"), ("great mall", "大商场 Great Mall"), ("milpitas", "米尔皮塔斯 · 换乘 BART"),
-    ("tasman", "Tasman"), ("levi", "李维斯球场 · 49 人队"), ("great america", "大美洲乐园 · 李维斯球场"), ("mountain view", "山景城 · 换乘 Caltrain"),
-    ("alum rock", "Alum Rock（橙线东端）"), ("winchester", "Winchester（绿线西端）"), ("santa teresa", "Santa Teresa（蓝线南端）"),
-    ("old ironsides", "Old Ironsides"), ("tamien", "Tamien · 换乘 Caltrain"), ("capitol", "Capitol"), ("campbell", "坎贝尔"),
-    ("san francisco", "旧金山 4th & King"), ("22nd street", "旧金山 22 街"), ("millbrae", "密尔布雷 · 换乘 BART"), ("san mateo", "圣马特奥"),
-    ("hillsdale", "Hillsdale"), ("redwood city", "红木城"), ("palo alto", "帕罗奥图 · 斯坦福"), ("stanford", "斯坦福球场（赛事日）"),
-    ("california ave", "帕罗奥图 California Ave"), ("sunnyvale", "森尼韦尔"), ("lawrence", "Lawrence"), ("college park", "College Park"),
-    ("gilroy", "吉尔罗伊（大蒜之都）"), ("morgan hill", "摩根山"), ("south san francisco", "南旧金山"), ("burlingame", "伯灵格姆"),
-    ("menlo park", "门洛帕克"), ("san carlos", "圣卡洛斯"), ("belmont", "贝尔蒙特"), ("bayshore", "Bayshore"), ("san bruno", "圣布鲁诺"),
-]
+ZH = {  # (layer, cleaned english name) → 中文
+    "vta": {"Diridon": "迪里登车站 · 换乘 Caltrain / Amtrak · SAP 中心", "Convention Center": "会展中心", "San Antonio": "市中心 · San Antonio St",
+            "Santa Clara": "市中心 · Santa Clara St", "Saint James": "圣詹姆斯公园", "Japantown/Ayer": "日本町", "Civic Center": "市政中心",
+            "Children's Discovery Museum": "儿童探索博物馆", "San Fernando": "市中心 · San Fernando", "Baypointe": "Baypointe（蓝线北端）",
+            "Great Mall": "大商场 Great Mall", "Milpitas": "米尔皮塔斯 · 换乘 BART", "Tasman": "Tasman", "Great America": "大美洲乐园 · 李维斯球场",
+            "Mountain View": "山景城 · 换乘 Caltrain", "Alum Rock": "Alum Rock（橙线东端）", "Winchester": "Winchester（绿线西端）",
+            "Santa Teresa": "Santa Teresa（蓝线南端）", "Old Ironsides": "Old Ironsides（绿线北端）", "Tamien": "Tamien · 换乘 Caltrain",
+            "Campbell": "坎贝尔市中心", "Metro/Airport": "Metro/Airport · 转车去 SJC 机场", "Berryessa": "Berryessa", "Lockheed Martin": "洛克希德·马丁",
+            "Cisco": "思科", "Hamilton": "Hamilton"},
+    "caltrain": {"San Francisco": "旧金山 4th & King · 甲骨文球场", "22nd Street": "旧金山 22 街", "Bayshore": "Bayshore", "South San Francisco": "南旧金山",
+                 "San Bruno": "圣布鲁诺", "Millbrae": "密尔布雷 · 换乘 BART 去 SFO", "Burlingame": "伯灵格姆", "San Mateo": "圣马特奥", "Hayward Park": "Hayward Park",
+                 "Hillsdale": "Hillsdale", "Belmont": "贝尔蒙特", "San Carlos": "圣卡洛斯", "Redwood City": "红木城", "Menlo Park": "门洛帕克",
+                 "Palo Alto": "帕罗奥图 · 斯坦福", "Stanford": "斯坦福球场（赛事日）", "California Avenue": "帕罗奥图 California Ave", "San Antonio": "山景城 San Antonio",
+                 "Mountain View": "山景城 · 换乘 VTA 轻轨", "Sunnyvale": "森尼韦尔", "Lawrence": "Lawrence", "Santa Clara": "圣克拉拉 · 去 SJC 机场换 60 路",
+                 "College Park": "College Park", "San Jose Diridon": "圣何塞迪里登车站", "Tamien": "Tamien · 换乘 VTA 轻轨", "Capitol": "Capitol",
+                 "Blossom Hill": "Blossom Hill", "Morgan Hill": "摩根山", "San Martin": "圣马丁", "Gilroy": "吉尔罗伊（大蒜之都）"},
+}
 
 # ---------------------------------------------------------------- 💡 用心提示 (lat, lon, emoji, 标题, 内容, 警告?)
 TIPS = [
@@ -151,17 +154,14 @@ def read(z, name):
         return []
 
 
-def zh_of(name):
-    n = name.lower()
-    for k, z in ZH:
-        if k in n:
-            return z
-    return ""
+def zh_of(kind, name):
+    return ZH.get(kind, {}).get(name, "")
 
 
 def clean(n):
     n = re.sub(r"\s*\((north|south|east|west)bound\)|\s+(north|south|east|west)bound|\s*\(\d+\)|\s+station$|\s+caltrain$", "", n, flags=re.I)
-    return n.replace(" Light Rail", "").strip()
+    n = n.replace(" Light Rail", "").strip()
+    return re.sub(r"\s+(station|caltrain)$", "", n, flags=re.I).strip()
 
 
 def parse(kind, url):
@@ -174,9 +174,9 @@ def parse(kind, url):
         sn = (r.get("route_short_name") or "").strip()
         if kind == "caltrain" and t == "2":
             want[rid] = "caltrain"
-        elif kind == "vta" and t == "0":
+        elif kind == "vta" and t == "0" and not re.search(r"event|special", (r.get("route_long_name") or "") + sn, re.I):
             want[rid] = "vta"
-        elif kind == "vta" and t == "3" and sn in BUS_KEEP:
+        elif kind == "vta" and t == "3" and re.sub(r"\D", "", sn) in BUS_KEEP:
             want[rid] = "vbus"
     if not want:
         raise RuntimeError("没有需要的线路")
@@ -206,7 +206,7 @@ def parse(kind, url):
             path = [[round(a, 5), round(b, 5)] for _, a, b in pts[::step]] + [[round(pts[-1][1], 5), round(pts[-1][2], 5)]]
         else:
             path = [[round(float(stops[s]["stop_lat"]), 5), round(float(stops[s]["stop_lon"]), 5)] for s in seq if s in stops]
-        sn = (r.get("route_short_name") or "").strip()
+        sn = re.sub(r"\D", "", (r.get("route_short_name") or "")) if kd == "vbus" else (r.get("route_short_name") or "").strip()
         ln_ = (r.get("route_long_name") or "").strip()
         col = r.get("route_color") or ""
         col = "#" + col if len(col) == 6 and col.upper() not in ("FFFFFF", "000000") else {"caltrain": "#E31837", "vta": "#0072CE", "vbus": "#6B7480"}[kd]
@@ -218,8 +218,12 @@ def parse(kind, url):
         if kd == "vta":
             nm = (sn + " " + ln_).strip() if sn and sn.lower() not in ln_.lower() else nm
         lines[kd].append({"n": nm, "c": col, "path": path})
-        if kd == "caltrain" and len(lines[kd]) > 1:
-            continue  # Caltrain 只画一条（几种停站模式走同一条轨道）
+        if kd == "vta":
+            m = re.match(r"(Blue|Green|Orange)\s+Line\s+(.+?)\s+-\s+(.+)$", nm, re.I)
+            if m:
+                lines[kd][-1]["n"] = "%s线 %s ⇄ %s" % ({"blue": "蓝", "green": "绿", "orange": "橙"}[m.group(1).lower()], m.group(2), m.group(3))
+        if kd == "caltrain":
+            idx = 0  # Caltrain 只画一条（几种停站模式走同一条轨道），车站合并
         all_stops = set()
         for t in rt:
             for _, s in cnt[t["trip_id"]]:
@@ -230,18 +234,21 @@ def parse(kind, url):
             so = stops[s]
             par = so.get("parent_station") or ""
             nm2 = clean(stops[par]["stop_name"] if par in stops else so.get("stop_name", s))
+            if "NOT A PUBLIC" in nm2.upper():
+                continue
             key = kd + ":" + nm2.lower()
             o = stns.setdefault(key, {"k": kd, "en": nm2, "pts": [], "ln": set()})
             o["pts"].append((float(so["stop_lat"]), float(so["stop_lon"])))
             o["ln"].add(idx)
     if kind == "caltrain" and lines["caltrain"]:
-        lines["caltrain"] = [dict(lines["caltrain"][0], n="Caltrain 旧金山 ⇄ 圣何塞 ⇄ 吉尔罗伊")]
+        lc = max(lines["caltrain"], key=lambda x: len(x["path"]))
+        lines["caltrain"] = [dict(lc, n="Caltrain 旧金山 ⇄ 圣何塞 ⇄ 吉尔罗伊", c="#E31837")]
     out_st = {"vta": [], "caltrain": []}
     big = re.compile(r"diridon|convention|santa clara|baypointe|milpitas|mountain view|alum rock|winchester|santa teresa|great america|levi|san francisco|palo alto|millbrae|tamien|gilroy|redwood city|sunnyvale|japantown", re.I)
     for key, o in stns.items():
         la = sum(p[0] for p in o["pts"]) / len(o["pts"])
         lo = sum(p[1] for p in o["pts"]) / len(o["pts"])
-        out_st[o["k"]].append({"id": key, "ll": [round(la, 5), round(lo, 5)], "en": o["en"], "zh": zh_of(o["en"]), "big": bool(big.search(o["en"])), "ln": sorted(o["ln"])})
+        out_st[o["k"]].append({"id": key, "ll": [round(la, 5), round(lo, 5)], "en": o["en"], "zh": zh_of(o["k"], o["en"]), "big": bool(big.search(o["en"])), "ln": sorted(o["ln"])})
     print("  轻轨 %d 条 / Caltrain %d / 巴士 %d · 车站 %d" % (len(lines["vta"]), len(lines["caltrain"]), len(lines["vbus"]), len(stns)), flush=True)
     return lines, out_st
 
