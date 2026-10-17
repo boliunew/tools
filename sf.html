@@ -91,6 +91,16 @@ button{cursor:pointer}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stl span{color:#eee;text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000}}
 .leaflet-container{font:inherit}
 .ferm span{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#E3F1FA;border:2px solid #1F6FB2;box-shadow:0 2px 6px rgba(0,0,0,.35);font-size:15px}
+.lhd{margin:6px 2px 4px;font-size:16px}.lhd small{color:var(--soft);font-size:13px}.lhd span{display:block;font-size:12px;color:var(--faint);margin-top:2px}
+.ldir{font-size:13px;font-weight:700;color:var(--soft);margin:12px 2px 6px}
+.ltab{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.lrow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line)}
+.lrow:first-child{border-top:0}
+.lrow i{width:10px;align-self:stretch;border-radius:5px;flex:0 0 10px;border:1px solid rgba(0,0,0,.15)}
+.lrow .ld{flex:1;min-width:0}.lrow .ld b{font-size:15.5px}.lrow .ld small{display:block;color:var(--faint);font-size:12px}
+.lrow .lm{font-size:13px;color:var(--soft);white-space:nowrap}.lrow .lm b{font-size:22px;font-family:Georgia,serif;color:var(--ink)}
+.lrow .lm b.now{font-size:14px;font-family:inherit;color:var(--or)}
+.lrow.soon{background:var(--or-soft)}
 .fop{font-size:12.5px;color:var(--faint);margin:8px 2px 2px;font-weight:600}
 .fsel{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:6px 10px;font-size:15px}
 .ftab{overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;max-height:65vh;box-shadow:var(--shadow)}
@@ -295,10 +305,13 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     }
   });
   // ---- 交通图：可缩放的 SVG
-  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['ferry', '⛴️ 渡轮时刻表', 'https://www.sanfranciscobayferry.com/'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
+  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['live', '⏱️ BART 实时到站', 'https://www.bart.gov/schedules/eta'], ['ferry', '⛴️ 渡轮时刻表', 'https://www.sanfranciscobayferry.com/'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
   var MAP = ls('map') || 'real', MV = null, RL = ls('rl3') || { tips: 1, bart: 1, muni: 1, cable: 1, ferry: 1, bus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
   function mapHTML() {
     var m = MAPS.filter(function (x) { return x[0] === MAP; })[0] || MAPS[0];
+    if (m[0] === 'live') {
+      return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div><div id="live"><div class="empty">加载中…</div></div>';
+    }
     if (m[0] === 'ferry') {
       return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div><div id="ferry"><div class="empty">加载时刻表…</div></div>';
     }
@@ -397,6 +410,68 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     out.sort(function (a, b) { return a[0] - b[0]; });
     return out.slice(0, n || 6);
   }
+  // ---- ⏱️ BART 实时到站（BART 官方开放接口，公开密钥，每 30 秒刷新）
+  var BKEY = 'MW9S-E7SL-26DU-VV8V', LST = ls('livest') || 'POWL', LT = null;
+  var DZH = { 'Antioch': '安提阿', 'Daly City': '戴利城', 'Dublin/Pleasanton': '都柏林', 'Richmond': '列治文', 'Millbrae': '密尔布雷', 'SFO/Millbrae': 'SFO / 密尔布雷', 'SF Airport': 'SFO 机场', 'Berryessa': '北圣何塞', 'Berryessa/North San Jose': '北圣何塞', 'Pittsburg/Bay Point': '匹兹堡/贝波因特', 'Warm Springs': '温泉', 'Fremont': '弗里蒙特', 'MacArthur': '麦克阿瑟', 'Montgomery St.': '蒙哥马利', '24th Street': '24 街', 'Coliseum': '体育场', 'Oakland Airport': '奥克兰机场' };
+  function bartEtd(abbr, cb) {
+    var x = new XMLHttpRequest(); x.open('GET', 'https://api.bart.gov/api/etd.aspx?cmd=etd&orig=' + encodeURIComponent(abbr) + '&key=' + BKEY + '&json=y'); x.timeout = 12000;
+    x.onload = function () { try { var r = JSON.parse(x.responseText).root; cb(r); } catch (e) { cb(null, '数据格式不对'); } };
+    x.onerror = x.ontimeout = function () { cb(null, '连不上 BART（网络不好？）'); }; x.send();
+  }
+  function mins(e) { return e.minutes === 'Leaving' ? 0 : +e.minutes || 0; }
+  function etdList(r) {   // → [[方向, [ [分钟, 目的地, 颜色hex, 车厢, 延误秒, 站台] ... ]]]
+    var st = r && r.station && r.station[0], by = {};
+    if (!st || !st.etd) return [];
+    st.etd.forEach(function (d) { (d.estimate || []).forEach(function (e) { var k = (e.direction === 'North' ? '⬆️ 北行' : '⬇️ 南行') + ' · ' + e.platform + ' 号站台'; (by[k] = by[k] || []).push([mins(e), d.destination, e.hexcolor, e.length, +e.delay || 0, e.cancelflag === '1']); }); });
+    return Object.keys(by).sort().map(function (k) { return [k, by[k].sort(function (a, b) { return a[0] - b[0]; })]; });
+  }
+  function mtxt(m) { return m <= 0 ? '<b class="now">进站中</b>' : '<b>' + m + '</b> 分'; }
+  function etdMini(r) {
+    var L2 = etdList(r); if (!L2.length) return '现在没有车（可能已经收班）。';
+    return '⏱️ <b>实时到站</b><br>' + L2.map(function (g) { return g[1].slice(0, 3).map(function (e) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:5px;background:' + e[2] + ';margin-right:4px;border:1px solid #999"></span>' + esc(DZH[e[1]] || e[1]) + ' ' + (e[0] <= 0 ? '进站中' : e[0] + ' 分'); }).join('<br>'); }).join('<br>');
+  }
+  function liveRender(r, err) {
+    var box = $('live'); if (!box) return;
+    var stns = TR ? TR.layers.filter(function (l) { return l.k === 'bart'; })[0].st.slice().sort(function (a, b) { return a.en < b.en ? -1 : 1; }) : [];
+    var cur = stns.filter(function (s0) { return s0.id === LST; })[0];
+    var h = '<div class="mtabs"><select id="lst" class="fsel">' + stns.map(function (s0) { return '<option value="' + s0.id + '"' + (s0.id === LST ? ' selected' : '') + '>' + esc(s0.en) + (s0.zh ? ' · ' + esc(s0.zh.split(' · ')[0]) : '') + '</option>'; }).join('') + '</select>' +
+      '<button id="lnear">📍 离我最近的站</button><button id="lref">🔄 刷新</button></div>';
+    if (err) h += '<div class="empty">' + esc(err) + '</div>';
+    else if (r) {
+      var L2 = etdList(r);
+      h += '<div class="lhd"><b>' + esc(cur ? cur.en : LST) + '</b>' + (cur && cur.zh ? ' <small>' + esc(cur.zh) + '</small>' : '') + '<span>更新于 ' + esc((r.time || '').replace(/:\d\d (AM|PM) PDT|:\d\d (AM|PM) PST/, ' $1$2')) + ' · 每 30 秒自动刷新</span></div>';
+      if (!L2.length) h += '<div class="empty">现在没有车。BART 大约凌晨 12 点多收班，早上 5 点（周六 6 点、周日 8 点）开始。</div>';
+      L2.forEach(function (g) {
+        h += '<div class="ldir">' + esc(g[0]) + '</div><div class="ltab">' + g[1].map(function (e) {
+          return '<div class="lrow' + (e[0] <= 1 ? ' soon' : '') + '"><i style="background:' + e[2] + '"></i><div class="ld"><b>' + esc(DZH[e[1]] || e[1]) + '</b><small>' + esc(e[1]) + ' · ' + e[3] + ' 节车厢' + (e[4] >= 60 ? ' · 晚点约 ' + Math.round(e[4] / 60) + ' 分' : '') + (e[5] ? ' · 已取消' : '') + '</small></div><div class="lm">' + mtxt(e[0]) + '</div></div>';
+        }).join('') + '</div>';
+      });
+    } else h += '<div class="empty">加载中…</div>';
+    h += '<div class="mnote">数据来自 BART 官方实时接口，分钟数是列车预计到站时间，偶尔会跳。坐 SFO 方向注意看终点：去机场选终点写着「SFO」或「Millbrae」的车。Muni 公交和轻轨的实时到站需要 511 的免费密钥，暂时没接。</div>';
+    box.innerHTML = h;
+    $('lst').onchange = function () { LST = this.value; ls('livest', LST); liveLoad(); };
+    $('lref').onclick = liveLoad;
+    $('lnear').onclick = function () {
+      if (!navigator.geolocation) return;
+      this.textContent = '定位中…';
+      navigator.geolocation.getCurrentPosition(function (p) {
+        var best = null, bd = 1e9;
+        stns.forEach(function (s0) { var d = Math.pow(s0.ll[0] - p.coords.latitude, 2) + Math.pow((s0.ll[1] - p.coords.longitude) * .79, 2); if (d < bd) { bd = d; best = s0; } });
+        if (best) { LST = best.id; ls('livest', LST); liveLoad(); }
+      }, function () { $('lnear').textContent = '📍 定位失败'; }, { timeout: 15000 });
+    };
+    var mt = $('mtabs'); if (mt) mt.onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
+  }
+  function liveLoad() {
+    clearTimeout(LT);
+    if (!$('live')) return;
+    bartEtd(LST, function (r, err) { liveRender(r, err); LT = setTimeout(function () { if (!document.hidden && $('live')) liveLoad(); }, 30000); });
+  }
+  function liveInit() {
+    function go() { liveRender(null); liveLoad(); }
+    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=2'); x.onload = function () { try { TR = JSON.parse(x.responseText); } catch (e) { } go(); }; x.send(); }
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && MAP === 'live' && $('live')) liveLoad(); });
   function loadLeaflet(cb) {
     if (window.L) { cb(); return; }
     var c = document.createElement('link'); c.rel = 'stylesheet'; c.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(c);
@@ -517,7 +592,9 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       Ly.st.forEach(function (s0) {
         var lines = Ly.lines.filter(function (ln) { return (ln.st || []).indexOf(s0.id) >= 0; }).map(function (ln) { return '<span style="display:inline-block;width:10px;height:10px;border-radius:5px;background:' + ln.c + ';margin-right:4px"></span>' + esc(ln.n); });
         var m = L.circleMarker(s0.ll, { radius: s0.big ? 6 : 4.5, color: '#222', weight: 2, fillColor: '#fff', fillOpacity: 1 })
-          .bindPopup('<b>' + esc(s0.en) + '</b>' + (s0.zh ? '<br>' + esc(s0.zh) : '') + (lines.length ? '<div style="margin-top:6px;font-size:12px;line-height:1.7">' + lines.join('<br>') + '</div>' : ''));
+          .bindPopup('<b>' + esc(s0.en) + '</b>' + (s0.zh ? '<br>' + esc(s0.zh) : '') + (lines.length ? '<div style="margin-top:6px;font-size:12px;line-height:1.7">' + lines.join('<br>') + '</div>' : '') +
+            (Ly.k === 'bart' ? '<div class="pl" data-etd="' + s0.id + '" style="margin-top:8px;font-size:12.5px;line-height:1.7;color:#555">⏱️ 实时到站加载中…</div>' : ''), { maxWidth: 280 });
+        if (Ly.k === 'bart') m.on('popupopen', function () { bartEtd(s0.id, function (d, err) { var el = document.querySelector('[data-etd="' + s0.id + '"]'); if (el) el.innerHTML = d ? etdMini(d) : esc(err || '实时数据暂时拿不到'); }); });
         g.addLayer(m);
         g.addLayer(L.marker(s0.ll, { interactive: false, icon: L.divIcon({ className: 'stl' + (s0.big ? ' big' : ''), html: '<span>' + esc(s0.en) + '</span>', iconSize: [0, 0], iconAnchor: [-8, 6] }) }));
       });
@@ -527,6 +604,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   }
   function mapInit() {
     if (MAP === 'ferry') { ferryLoad(ferryRender); bindFerry(); return; }
+    if (MAP === 'live') { liveInit(); return; }
     if (MAP === 'real' || !$('mbox')) { realInit(); return; }
     var box = $('mbox'), img = $('mimg'), st = { s: 1, x: 0, y: 0, min: .2 }, pts = {}, last = null;
     function apply() { img.style.transform = 'translate(' + st.x + 'px,' + st.y + 'px) scale(' + st.s + ')'; }
