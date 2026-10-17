@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#3A4250">
-<title>旧金山生活 · 街区 吃喝 好玩 故事</title>
+<title>湾区生活 · 旧金山</title>
 <style>
 :root{
   --bg:#F2F1EE; --paper:#FFFFFF; --ink:#1E2228; --soft:#5E6670; --faint:#9AA1A9; --line:#E1DFDA; --chip:#ECEAE5;
@@ -30,6 +30,9 @@ button{cursor:pointer}
 .hero{position:relative;overflow:hidden;color:#F4F1EC;background:linear-gradient(175deg,#56606E 0%,#3A4250 45%,#232933 100%);padding:calc(16px + env(safe-area-inset-top)) 0 18px}
 .hero:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-30px;height:90px;background:radial-gradient(60% 60% at 30% 40%,rgba(255,255,255,.18),transparent 70%),radial-gradient(50% 60% at 75% 50%,rgba(255,255,255,.14),transparent 70%);pointer-events:none}
 .hero .wrap{position:relative;z-index:1}
+.city{display:inline-flex;gap:2px;margin-left:10px;vertical-align:middle;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:2px}
+.city a{color:#F4F1EC;text-decoration:none;font-size:13px;padding:3px 11px;border-radius:999px;opacity:.8}
+.city a.on{background:rgba(255,255,255,.92);color:#222;opacity:1;font-weight:600}
 .hero a.home{color:#F4F1EC;text-decoration:none;font-size:13px;opacity:.75}
 .hero h1{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif;font-size:28px;margin:6px 0 0;letter-spacing:.04em}
 .hero h1 small{font-family:Georgia,serif;font-size:14px;font-weight:400;opacity:.75;margin-left:8px;letter-spacing:.08em}
@@ -164,7 +167,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
 </head>
 <body>
 <div class="hero"><div class="wrap">
-  <a class="home" href="index.html">‹ 首页</a>
+  <a class="home" href="index.html">‹ 首页</a><span class="city"><a href="sf.html" class="on">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a></span>
   <h1>旧金山生活<small>SAN FRANCISCO</small></h1>
   <svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 40 H400" stroke="#E0573F" stroke-width="2.5"/>
@@ -679,6 +682,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   x.send();
 })();
 </script>
-<script src="nav.js?v=19" defer></script>
+<script>document.querySelectorAll('.city a').forEach(function(a){a.addEventListener('click',function(e){if(a.classList.contains('on')){e.preventDefault();return;}var h=(location.hash||'').split('/')[0];if(h)a.href=a.getAttribute('href').split('#')[0]+h;});});</script>
+<script src="nav.js?v=20" defer></script>
 </body>
 </html>
