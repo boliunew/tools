@@ -469,7 +469,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   }
   function liveInit() {
     function go() { liveRender(null); liveLoad(); }
-    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=2'); x.onload = function () { try { TR = JSON.parse(x.responseText); } catch (e) { } go(); }; x.send(); }
+    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=3'); x.onload = function () { try { TR = JSON.parse(x.responseText); } catch (e) { } go(); }; x.send(); }
   }
   document.addEventListener('visibilitychange', function () { if (!document.hidden && MAP === 'live' && $('live')) liveLoad(); });
   function loadLeaflet(cb) {
@@ -518,7 +518,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       });
     }
     var go0 = go; go = function () { ferryLoad(go0); };
-    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=2'); x.onload = function () { try { TR = JSON.parse(x.responseText); go(); } catch (e) { } }; x.send(); }
+    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'sf/transit.json?v=3'); x.onload = function () { try { TR = JSON.parse(x.responseText); go(); } catch (e) { } }; x.send(); }
   }
   function labels() {
     if (!LMAP) return;
