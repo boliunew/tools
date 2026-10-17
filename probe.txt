@@ -1,438 +1,104 @@
-=== https://cwwp2.dot.ca.gov/data/d4/cms/cmsStatusD04.json
-rc=0
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 219779
-Access-Control-Allow-Origin: *
-219779
+1694
 {
-	"data":
-	[
-		{
-			"cms":
-			{
-				"index": "1",
-				"recordTimestamp":
-				{
-					"recordDate": "2026-10-17",
-					"recordTime": "03:43:34"
-				},
-				"location":
-				{
-					"district":       "4",
-					"locationName":   "CM001-MRN 101 N\/B S\/OF SIR FRANCIS DRAKE",
-					"nearbyPlace":    "Corte Madera",
-					"longitude":      "-122.515881",
-					"latitude":       "37.932114",
-					"elevation":      "0",
-					"direction":      "North",
-					"county":         "Marin",
-					"route":          "US-101",
-					"routeSuffix":    "",
-					"postmilePrefix": "",
-					"postmile":       "7.79",
-					"alignment":      "",
-					"milepost":       "449.07"
-				},
-				"inService": "true",
-				"message":
-				{
-					"messageTimestamp":
-					{
-						"messageDate": "2026-10-17",
-						"messageTime": "03:29:55"
-					},
-					"display":     "Blank",
-					"displayTime": "Not Reported",
-					"phase1":
-					{
-						"phase1Font":  "Not Reported",
-						"phase1Line1": "",
-						"phase1Line2": "",
-						"phase1Line3": ""
-					},
-					"phase2":
-					{
-						"phase2Font":  "Not Reported",
-						"phase2Line1": "",
-						"phase2Line2": "",
-						"phase2Line3": ""
-					}
-				}
-			}
-		},
-		{
-			"cms":
-			{
-				"index": "2",
-				"recordTimestamp":
-				{
-					"recordDate": "2026-10-17",
-					"recordTime": "03:43:34"
-				},
-				"location":
-				{
-					"district":       "4",
-					"locationName":   "CM002-MRN 101 S\/B S\/OF SAN PEDRO RD UC",
-					"nearbyPlace":    "San Rafael",
-					"longitude":      "-122.529832",
-=== https://cwwp2.dot.ca.gov/data/d4/tt/ttStatusD04.json
-rc=0
-HTTP/1.1 500 Internal Server Error
-Content-Type: text/html
-193
+ "lcs": {
+  "index": "C1EB-0001-2026-10-21-21:01:00",
+  "recordTimestamp": {
+   "recordDate": "2026-10-17",
+   "recordTime": "03:08:02",
+   "recordEpoch": "1792231682"
+  },
+  "location": {
+   "travelFlowDirection": "South",
+   "begin": {
+    "beginDistrict": "4",
+    "beginLocationName": "Route 1",
+    "beginFreeFormDescription": "",
+    "beginNearbyPlace": "Daly City",
+    "beginLongitude": "-122.481549",
+    "beginLatitude": "37.670671",
+    "beginElevation": "518",
+    "beginDirection": "South",
+    "beginCounty": "San Mateo",
+    "beginRoute": "SR-1",
+    "beginRouteSuffix": "",
+    "beginPostmilePrefix": "",
+    "beginPostmile": "46.755",
+    "beginAlignment": "",
+    "beginMilepost": "Not Reported"
+   },
+   "end": {
+    "endDistrict": "4",
+    "endLocationName": "Route 35",
+    "endFreeFormDescription": "",
+    "endNearbyPlace": "Daly City",
+    "endLongitude": "-122.484831",
+    "endLatitude": "37.668917",
+    "endElevation": "613",
+    "endDirection": "",
+    "endCounty": "San Mateo",
+    "endRoute": "SR-1",
+    "endRouteSuffix": "",
+    "endPostmilePrefix": "",
+    "endPostmile": "46.755",
+    "endAlignment": "",
+    "endMilepost": "Not Reported"
+   }
+  },
+  "closure": {
+   "closureID": "C1EB",
+   "logNumber": "1",
+   "closureTimestamp": {
+    "closureRequestDate": "2026-10-13",
+    "closureRequestTime": "09:27:33",
+    "closureRequestEpoch": "1791908853",
+    "closureStartDate": "2026-10-21",
+    "closureStartTime": "21:01:00",
+    "closureStartEpoch": "1792641660",
+    "closureEndDate": "2026-10-22",
+    "closureEndTime": "06:01:00",
+    "closureEndEpoch": "1792674060",
+    "isClosureEndIndefinite": "false"
+   },
+   "facility": "Connector",
+   "typeOfClosure": "Full",
+   "typeOfWork": "Emergency Work",
+   "durationOfClosure": "Standard",
+   "estimatedDelay": "Not Reported",
+   "lanesClosed": "All",
+   "totalExistingLanes": "1",
+   "isCHINReportable": "true",
+   "code1097": {
+    "isCode1097": "false",
+    "code1097Timestamp": {
+     "code1097Date": "",
+     "code1097Time": "",
+     "code1097Epoch": ""
+    }
+   },
+   "code1098": {
+    "isCode1098": "false",
+    "code1098Timestamp": {
+     "code1098Date": "",
+     "code1098Time": "",
+     "code1098Epoch": ""
+    }
+   },
+   "code1022": {
+    "isCode1022": "false",
+    "code1022Timestamp": {
+     "code1022Date": "",
+     "code1022Time": "",
+     "code1022Epoch": ""
+    }
+   }
+  }
+ }
+}
+[(('Full', 'Highway Construction'), 332), (('Full', 'Electrical Work'), 85), (('Full', 'AC Paving/Overlay'), 75), (('Lane', 'Electrical Work'), 74), (('Lane', 'AC Paving/Overlay'), 73), (('Lane', 'Paving Operation'), 68), (('Lane', 'Highway Construction'), 67), (('Full', 'Bridge Repair'), 59), (('Lane', 'Utility Work'), 59), (('One-Way Traffic', 'Striping Operation'), 48), (('Full', 'Utility Work'), 41), (('Full', 'Striping Operation'), 39), (('Lane', 'Demolition'), 36), (('Lane', 'Pavement Repair'), 36), (('One-Way Traffic', 'Tree Work'), 32), (('Full', 'Guardrail Work'), 31), (('Alternating Lanes', 'Median Barrier Work'), 25), (('Alternating Lanes', 'Highway Construction'), 22), (('Lane', 'Roadway Excavation'), 18), (('Lane', 'Bridge Repair'), 17), (('Full', 'Tree Work'), 17), (('Lane', 'Drainage Work'), 17), (('Moving', 'Sweeping Operation'), 17), (('Lane', 'Emergency Work'), 16), (('Alternating Lanes', 'Electrical Work'), 16), (('Full', 'K-rail Installation'), 15), (('Alternating Lanes', 'K-rail Installation'), 15), (('Alternating Lanes', 'Striping Operation'), 15), (('Moving', 'Striping Operation'), 14), (('Lane', 'Horizontal Boring'), 14)]
 <html>
-<head><title>500 Internal Server Error</title></head>
-<body bgcolor="white">
-<center><h1>500 Internal Server Error</h1></center>
-<hr><center>nginx/1.14.1</center>
+<head><title>406 Not Acceptable</title></head>
+<body>
+<center><h1>406 Not Acceptable</h1></center>
+<hr><center>nginx/1.22.1</center>
 </body>
 </html>
-
-=== https://cwwp2.dot.ca.gov/data/d4/lcs/lcsStatusD04.json
-rc=0
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 5147715
-Access-Control-Allow-Origin: *
-5147715
-{
-	"data":
-	[
-		{
-			"lcs":
-			{
-				"index": "C1EB-0001-2026-10-21-21:01:00",
-				"recordTimestamp":
-				{
-					"recordDate":  "2026-10-17",
-					"recordTime":  "03:08:02",
-					"recordEpoch": "1792231682"
-				},
-				"location":
-				{
-					"travelFlowDirection": "South",
-					"begin":
-					{
-						"beginDistrict":            "4",
-						"beginLocationName":        "Route 1",
-						"beginFreeFormDescription": "",
-						"beginNearbyPlace":         "Daly City",
-						"beginLongitude":           "-122.481549",
-						"beginLatitude":            "37.670671",
-						"beginElevation":           "518",
-						"beginDirection":           "South",
-						"beginCounty":              "San Mateo",
-						"beginRoute":               "SR-1",
-						"beginRouteSuffix":         "",
-						"beginPostmilePrefix":      "",
-						"beginPostmile":            "46.755",
-						"beginAlignment":           "",
-						"beginMilepost":            "Not Reported"
-					},
-					"end":
-					{
-						"endDistrict":            "4",
-						"endLocationName":        "Route 35",
-						"endFreeFormDescription": "",
-						"endNearbyPlace":         "Daly City",
-						"endLongitude":           "-122.484831",
-						"endLatitude":            "37.668917",
-						"endElevation":           "613",
-						"endDirection":           "",
-						"endCounty":              "San Mateo",
-						"endRoute":               "SR-1",
-						"endRouteSuffix":         "",
-						"endPostmilePrefix":      "",
-						"endPostmile":            "46.755",
-						
-=== https://cwwp2.dot.ca.gov/data/d4/cctv/cctvStatusD04.json
-rc=0
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 2449426
-Access-Control-Allow-Origin: *
-2449426
-{
- "data":
- [
-   {
-     "cctv":
-     {
-       "index": "1",
-       "recordTimestamp":
-       {
-         "recordDate": "2026-01-23",
-         "recordTime": "14:19:48",
-         "recordEpoch": "1769206788"
-       },
-       "location":
-       {
-         "district":       "4",
-         "locationName":   "TV102 -- I-580 : West of SR-24",
-         "nearbyPlace":    "Oakland",
-         "longitude":      "-122.27291",
-         "latitude":       "37.82539",
-         "elevation":      "49",
-         "direction":      "West",
-         "county":         "Alameda",
-         "route":          "I-580",
-         "routeSuffix":    "",
-         "postmilePrefix": "",
-         "postmile":       "45.44",
-         "alignment":      "",
-         "milepost":       "61.52"
-       },
-       "inService": "true",
-       "imageData":
-       {
-         "imageDescription":  "",
-         "streamingVideoURL": "https:\/\/wzmedia.dot.ca.gov\/D4\/W580_JWO_24_IC.stream\/playlist.m3u8",
-         "static":
-         {
-           "currentImageUpdateFrequency":   "5",
-           "currentImageURL":               "https:\/\/cwwp2.dot.ca.gov\/data\/d4\/cctv\/image\/tv102i580westofsr24\/tv102i580westofsr24.jpg",
-           "referenceImageUpdateFrequency": "60",
-           "referenceImage1UpdateAgoURL":   "https:\/\/cwwp2.dot.ca.gov\/data\/d4\/cctv\/image\/tv102i580westofsr24\/previous\/tv102i580westofsr24-1.jpg",
-           "referenceImage2UpdatesAgoURL":  "https:\/\/cwwp2.dot.ca.gov\/data\/d4\/cctv\/image\/tv102i580west
-=== https://cwwp2.dot.ca.gov/data/d4/rwis/rwisStatusD04.json
-rc=0
-HTTP/1.1 500 Internal Server Error
-Content-Type: text/html
-193
-<html>
-<head><title>500 Internal Server Error</title></head>
-<body bgcolor="white">
-<center><h1>500 Internal Server Error</h1></center>
-<hr><center>nginx/1.14.1</center>
-</body>
-</html>
-
-=== https://media.chp.ca.gov/sa_xml/sa.xml
-rc=0
-HTTP/1.1 200 OK
-Content-Type: text/xml
-Content-Length: 196608
-196608
-<?xml version="1.0" ?>
-<State><Center ID = "SAHB">
-<Dispatch ID = "SACC">
-
-		<Log ID = "261017SA0069">
-			<LogTime>"Oct 17 2026  1:57AM"</LogTime>
-			<LogType>"1179-Trfc Collision-1141 Enrt"</LogType>
-			<Location>"3842 Annadale Ln"</Location>
-			<LocationDesc>""</LocationDesc>
-			<Area>"North Sac"</Area>
-			<ThomasBrothers>""</ThomasBrothers>
-			<LATLON>"38635182:121380061"</LATLON>
-			<LogDetails>
-		<details>
-			<DetailTime>"Oct 17 2026  2:00AM"</DetailTime>
-			<IncidentDetail>"[10] NOBODY HAS BEEN HIT YET BUT PTY CAN BE HEARD IN BACKGROUND ATTEMPTING  [Shared]"</IncidentDetail>
-		</details>
-		<details>
-			<DetailTime>"Oct 17 2026  1:59AM"</DetailTime>
-			<IncidentDetail>"[7] RP DOES NOT KNOW WHO IS IN VEH  [Shared]"</IncidentDetail>
-		</details>
-		<details>
-			<DetailTime>"Oct 17 2026  1:59AM"</DetailTime>
-			<IncidentDetail>"[6] UNK SUV TRYING TO HIT PED ON THE RDWY [Shared]"</IncidentDetail>
-		</details>
-		<details>
-			<DetailTime>"Oct 17 2026  1:58AM"</DetailTime>
-			<IncidentDetail>"[2] RP SAYING VEH IS TC INTO HIS FAMILY "</IncidentDetail>
-		</details>
-		<details>
-			<DetailTime>"Oct 17 2026  1:58AM"</DetailTime>
-			<IncidentDetail>"[1] VEH VS PED "</IncidentDetail>
-		</details><units>
-			<UnitTime>"Oct 17 2026  1:59AM"</UnitTime>
-			<UnitDetail>"Unit Assigned"</UnitDetail></units></LogDetails></Log>
-
-		<Log ID = "261017SA0061">
-			<LogTime>"Oct 17 2026  1:35AM"</LogTime>
-			<LogType>"1182-Trfc Collision-No Inj"</LogType>
-			<Loc
-=== https://quickmap.dot.ca.gov/data/chp-only.kml
-rc=0
-HTTP/1.1 200 OK
-Content-Length: 163334
-Content-Type: application/vnd.google-earth.kml+xml
-163334
-<kml xmlns="http://www.opengis.net/kml/2.2">
-<Document>
-<name>CHP Incidents</name>
-<Style id="chp">
-  <LabelStyle><scale>0</scale></LabelStyle>
-  <IconStyle><Icon>
-    <href>https://quickmap.dot.ca.gov/img/chp-32x32.png</href>
-    <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-  </Icon></IconStyle>
-</Style>
-<Style id="emergency">
-  <IconStyle><Icon>
-    <href>https://quickmap.dot.ca.gov/img/emergency.png</href>
-    <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-  </Icon></IconStyle>
-</Style>
-<Style id="full-closure">
-  <IconStyle><Icon>
-    <href>https://quickmap.dot.ca.gov/img/full-closure-32x32.png</href>
-    <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-  </Icon></IconStyle>
-</Style>
-<Placemark>
-  <name> </name>
-  <description><![CDATA[<link rel="stylesheet" type="text/css" href="https://quickmap.dot.ca.gov/css/gm-infowindow.css?v=9" />
-<div class="infowindow-content">
-    <div class="iw-header">
-        <div class="iw-header-left">
-            <img class="iw-icon" src="https://quickmap.dot.ca.gov/img/chp-32x32.png" />
-            CHP Incident 261017HM0013
-        </div>
-    </div>
-
-    <div class="iw-body">
-        <h2 class="iw-title">1183-Trfc Collision-Unkn Inj</h2>
-        
-        <p class="iw-text">Oct 17 2026  3:15AM <br> 0 Us101 S</p>
-        <p class="iw-text">Oct 17 2026  3:34AM [19] [Rotation Request Comment] 1039 CLYDES TOWING (XXX) XXX-XXXX<br />Oct 17 2026  3:32AM [18] C16-030 1185R HYUND SON FRONT LEFT TIRE B
-=== https://quickmap.dot.ca.gov/data/tt.kml
-rc=0
-HTTP/1.1 404 Not Found
-Content-Length: 196
-Content-Type: text/html; charset=iso-8859-1
-196
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL was not found on this server.</p>
-</body></html>
-
-=== https://quickmap.dot.ca.gov/data/cms.kml
-rc=0
-HTTP/1.1 200 OK
-Content-Length: 1829141
-Content-Type: application/vnd.google-earth.kml+xml
-1829141
-<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-  <Document>
-    <name>Changeable Message Sign</name>
-    <Style id="cms">
-      <LabelStyle>
-        <scale>0</scale>
-      </LabelStyle>
-      <IconStyle id="CMS">
-        <Icon>
-          <href>https://quickmap.dot.ca.gov/img/cms32x32.png</href>
-        </Icon>
-        <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-      </IconStyle>
-    </Style>
-    <Style id="cms_empty">
-      <LabelStyle>
-        <scale>0</scale>
-      </LabelStyle>
-      <IconStyle id="CMS_EMPTY">
-        <Icon>
-          <href>https://quickmap.dot.ca.gov/img/cms32x32.png</href>
-        </Icon>
-        <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-      </IconStyle>
-    </Style>
-    <Style id="cms_oos">
-      <LabelStyle>
-        <scale>0</scale>
-      </LabelStyle>
-      <IconStyle id="CMS_OOS">
-        <Icon>
-          <href>https://quickmap.dot.ca.gov/img/cms32x32.png</href>
-        </Icon>
-        <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-      </IconStyle>
-    </Style>
-    <Placemark>
-      <name> </name>
-      <description><![CDATA[<link rel="stylesheet" type="text/css" href="https://quickmap.dot.ca.gov/css/gm-infowindow.css?v=9" />
-<div class="infowindow-content" style="padding-bottom: 0px !important;">
-    <div class="iw-header">
-        <div class="iw-header-left">
-            <img class="iw-icon" src="https://quickmap.dot.ca.gov/img/cms32x32.png" />
-       
-=== https://quickmap.dot.ca.gov/data/lcs2way.kml
-rc=0
-HTTP/1.1 200 OK
-Content-Length: 732231
-Content-Type: application/vnd.google-earth.kml+xml
-732231
-<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-<Document>
-<name>Caltrans Lane Closures</name>
-<copyright>(c) 2026 California Department of Transportation. All rights reserved.</copyright>
-<Style id="lcs">
-  <LabelStyle><scale>0</scale></LabelStyle>
-  <IconStyle>
-    <Icon><href>https://quickmap.dot.ca.gov/QM/img/lcs-32x32.png</href></Icon>
-    <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-  </IconStyle>
-</Style>
-<Style id="full-closure">
-  <IconStyle>
-    <Icon><href>https://quickmap.dot.ca.gov/img/full-closure-32x32.png</href></Icon>
-    <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-  </IconStyle>
-</Style>
-<Style id="full-closure-hsr">
-  <IconStyle>
-    <Icon><href>https://quickmap.dot.ca.gov/QM/img/hsrwithbarriertransparent8888v2.png</href></Icon>
-    <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-  </IconStyle>
-</Style>
-<Style id="lcs-hsr">
-  <IconStyle>
-    <Icon><href>https://quickmap.dot.ca.gov/QM/img/lcs-hsr-32x32.png</href></Icon>
-    <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-  </IconStyle>
-</Style>
-<Style id="SRRA-closed">
-  <IconStyle>
-    <Icon><href>https://quickmap.dot.ca.gov/QM/img/srra_closed.png</href></Icon>
-    <hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
-  </IconStyle>
-</Style>
-<Style id="pending-full-closure">
-  <IconStyle>
-    <Icon><href>https://quickmap.dot.ca.gov/QM/img/pending-full-closure-32x32.png</href></Icon>
-    <hotSpot x
-=== https://api.511.org/traffic/events?format=json
-rc=0
-HTTP/1.1 401 Unauthorized
-Content-Type: text/plain; charset=utf-8
-Content-Length: 28
-28
-The API key is not provided.
-=== tt sample
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
-    return loads(fp.read(),
-           ^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
-    return _default_decoder.decode(s)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
-    raise JSONDecodeError("Expecting value", s, err.value) from None
-json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
-=== cms sample
-189
-{"cms": {"index": "1", "recordTimestamp": {"recordDate": "2026-10-17", "recordTime": "03:43:34"}, "location": {"district": "4", "locationName": "CM001-MRN 101 N/B S/OF SIR FRANCIS DRAKE", "nearbyPlace": "Corte Madera", "longitude": "-122.515881", "latitude": "37.932114", "elevation": "0", "direction": "North", "county": "Marin", "route": "US-101", "routeSuffix": "", "postmilePrefix": "", "postmile": "7.79", "alignment": "", "milepost": "449.07"}, "inService": "true", "message": {"messageTimestamp": {"messageDate": "2026-10-17", "messageTime": "03:29:55"}, "display": "Blank", "displayTime": "Not Reported", "phase1": {"phase1Font": "Not Reported", "phase1Line1": "", "phase1Line2": "", "phase1Line3": ""}, "phase2": {"phase2Font": "Not Reported", "phase2Line1": "", "phase2Line2": "", "phase2Line3": ""}}}}
-{"cms": {"index": "2", "recordTimestamp": {"recordDate": "2026-10-17", "recordTime": "03:43:34"}, "location": {"district": "4", "locationName": "CM002-MRN 101 S/B S/OF SAN PEDRO RD UC", "nearbyPlace": "San Rafael", "longitude": "-122.529832", "latitude": "37.990837", "elevation": "157", "direction": "South", "county": "Marin", "route": "US-101", "routeSuffix": "", "postmilePrefix": "", "postmile": "12.43", "alignment": "", "milepost": "453.7"}, "inService": "true", "message": {"messageTimestamp": {"messageDate": "2026-10-16", "messageTime": "23:20:58"}, "display": "1 Page (Normal)", "displayTime": "Not Reported", "phase1": {"phase1Font": "Not Reported", "phase1Line1": "S101 CLOSED", "phase1Line2": "SAN FRANCISCO", "phase1Line3": "USE ALT ROUTES"}, "phase2": {"phase2Font": "Not Reported", "phase2Line1": "", "phase2Line2": "", "phase2Line3": ""}}}}
-{"cms": {"index": "3", "recordTimestamp": {"recordDate": "2026-10-17", "recordTime": "03:43:34"}, "location": {"district": "4", "locationName": "CM003-MRN 101 N/B N/OF PACHECO CRK OC", "nearbyPlace": "Novato", "longitude": "-122.530845", "latitude": "38.051245", "elevation": "82", "direction": "North", "county": "Marin", "route": "US-101", "routeSuffix": "", "postmilePrefix": "", "postmile": "16.87", "alignment": "", "milepost": "458.14"}, "inService": "true", "message": {"messageTimestamp": {"messageDate": "2026-10-15", "messageTime": "17:41:40"}, "display": "1 Page (Normal)", "displayTime": "Not Reported", "phase1": {"phase1Font": "Not Reported", "phase1Line1": "TRAFFIC SIGNALS", "phase1Line2": "OUT? TREAT", "phase1Line3": "AS STOP SIGN"}, "phase2": {"phase2Font": "Not Reported", "phase2Line1": "", "phase2Line2": "", "phase2Line3": ""}}}}
