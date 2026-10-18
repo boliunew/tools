@@ -7,7 +7,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["scripts/build_stations.py", ".github/workflows/stations.yml", "amtrak.html"]
+    paths: ["scripts/build_stations.py", ".github/workflows/stations.yml", "amtrak.html", "ny/transit.json", "la/transit.json"]
 
 permissions:
   contents: write

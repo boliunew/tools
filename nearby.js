@@ -6,12 +6,13 @@
   if (window.Nearby) return;
   var KIND = {
     amtrak: ['🚆', 'Amtrak', '#1B5E96'], metrolink: ['🚈', 'Metrolink', '#00728F'], bart: ['🚇', 'BART', '#0099D8'],
-    muni: ['🚋', 'Muni 轻轨', '#C0362C'], vta: ['🚋', 'VTA 轻轨', '#0072CE'], caltrain: ['🚆', 'Caltrain', '#E31837']
+    muni: ['🚋', 'Muni 轻轨', '#C0362C'], vta: ['🚋', 'VTA 轻轨', '#0072CE'], caltrain: ['🚆', 'Caltrain', '#E31837'],
+    nysub: ['🚇', '纽约地铁', '#0039A6'], lametro: ['🚇', 'LA Metro', '#E16710']
   };
-  var FILT = [['all', '全部'], ['amtrak', '🚆 Amtrak'], ['metrolink', '🚈 Metrolink'], ['bart', '🚇 BART'], ['rail', '🚋 轻轨'], ['caltrain', '🚆 Caltrain']];
+  var FILT = [['all', '全部'], ['amtrak', '🚆 Amtrak'], ['metrolink', '🚈 Metrolink'], ['sub', '🚇 地铁'], ['rail', '🚋 轻轨'], ['caltrain', '🚆 Caltrain']];
   var HOME = { lat: 34.0975, lon: -117.6484, name: 'Upland（家）' };
   var BKEY = 'MW9S-E7SL-26DU-VV8V';
-  var D = null, POS = null, F = get('f') || 'all', BUSY = false, OPEN = {}, DET = null, DAY = 0, DEPS = null, DMAP = null;
+  var D = null, POS = null, F = get('f') || 'all'; if (F === 'bart') F = 'sub'; var BUSY = false, OPEN = {}, DET = null, DAY = 0, DEPS = null, DMAP = null;
   function get(k) { try { return JSON.parse(localStorage.getItem('near:' + k) || 'null'); } catch (e) { return null; } }
   function put(k, v) { try { localStorage.setItem('near:' + k, JSON.stringify(v)); } catch (e) { } }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -149,7 +150,7 @@
     if (!D) { $('nbL').innerHTML = '<div class="nb-e">加载车站…</div>'; return; }
     if (!POS) { if (!BUSY) $('nbL').innerHTML = '<div class="nb-e">点「重新定位」找附近的车站。<br><button data-retry="1">📍 定位</button> <button data-home="1">用 Upland 家的位置</button></div>'; return; }
     if (!BUSY) status(POS.home ? '🏠 用的是 Upland 家的位置。点「重新定位」用你现在的位置。' : '📍 你的位置（' + ago(POS.t) + (POS.acc ? '，精度约 ' + Math.round(POS.acc) + ' 米' : '') + '）');
-    var L = D.st.filter(function (s) { return F === 'all' || s.k === F || (F === 'rail' && (s.k === 'muni' || s.k === 'vta')); })
+    var L = D.st.filter(function (s) { return F === 'all' || s.k === F || (F === 'rail' && (s.k === 'muni' || s.k === 'vta')) || (F === 'sub' && (s.k === 'bart' || s.k === 'nysub' || s.k === 'lametro')); })
       .map(function (s) { return [dist(POS.lat, POS.lon, s.ll[0], s.ll[1]), s]; })
       .sort(function (a, b) { return a[0] - b[0]; });
     // 同一个地方的同类车站（比如两个方向的站台）只留一个
@@ -157,7 +158,7 @@
     for (var i = 0; i < L.length && out.length < 10; i++) { var k = L[i][1].k + '|' + L[i][1].ll[0].toFixed(3) + L[i][1].ll[1].toFixed(3); if (!seen[k]) { seen[k] = 1; out.push(L[i]); } }
     if (!out.length) { $('nbL').innerHTML = '<div class="nb-e">没有这类车站。</div>'; return; }
     var far = out[0][0] > 60;
-    $('nbL').innerHTML = (far ? '<div class="nb-e" style="padding:10px 0">离最近的车站也有 ' + Math.round(out[0][0]) + ' 英里，这里的车站数据只覆盖加州和 Amtrak 沿线。</div>' : '') + out.map(function (x) {
+    $('nbL').innerHTML = (far ? '<div class="nb-e" style="padding:10px 0">离最近的车站也有 ' + Math.round(out[0][0]) + ' 英里，这里的车站数据覆盖 Amtrak 全线、加州（湾区、洛杉矶）和纽约地铁。</div>' : '') + out.map(function (x) {
       var d = x[0], s = x[1], K = KIND[s.k] || ['🚉', s.k, '#555'], id = s.k + ':' + s.id;
       var walk = Math.round(d * 1.2 / 3 * 60), dtx = d < 0.1 ? Math.round(d * 5280) + ' 英尺' : d.toFixed(d < 10 ? 1 : 0) + ' 英里';
       var sub = (s.zh ? esc(s.n) + ' · ' : '') + K[1] + (s.l && s.l.length ? ' · ' + esc(s.l.slice(0, 3).join('、')) : '');
@@ -186,7 +187,9 @@
     bart: function (s) { return ['BART 车站页', 'https://www.bart.gov/stations/' + s.id.toLowerCase()]; },
     caltrain: function () { return ['Caltrain 车站', 'https://www.caltrain.com/stations']; },
     muni: function () { return ['Muni 线路图', 'https://www.sfmta.com/maps/muni-metro-map']; },
-    vta: function () { return ['VTA 轻轨', 'https://www.vta.org/go/maps']; }
+    vta: function () { return ['VTA 轻轨', 'https://www.vta.org/go/maps']; },
+    nysub: function () { return ['MTA 地铁地图和服务变更', 'https://new.mta.info/maps']; },
+    lametro: function () { return ['LA Metro 线路图', 'https://www.metro.net/riding/guide/system-maps/']; }
   };
   var KTIP = {
     amtrak: ['开车前 30 分钟左右到站；小站没有售票窗口，提前在 Amtrak App 买票。', '大站在大屏幕上看站台（Track）；小站一般就一个站台，车停的时间很短，提前在站台等。', '长途车晚点很常见，看下面的「实时」再出门。'],
@@ -194,7 +197,9 @@
     bart: ['进出站都要刷 Clipper（卡或手机），按距离收费，余额不够出不了站，闸内有补票机。', '看清列车终点站再上车，几条线共用轨道。'],
     caltrain: ['上车前在站台刷 Clipper「tag on」，下车后「tag off」，忘了下车刷会按最远收费。', '快车（Limited / Express）不是每站都停，看清车次。', '周末班次少。'],
     muni: ['前门后门都能上（刷了 Clipper 或有电子票），2 小时内换乘免费。', '地下站进站要刷卡。'],
-    vta: ['在站台售票机或 Clipper 刷卡后上车，2 小时内换乘免费。', '市中心一段和汽车混行，比较慢。']
+    vta: ['在站台售票机或 Clipper 刷卡后上车，2 小时内换乘免费。', '市中心一段和汽车混行，比较慢。'],
+    nysub: ['进站用 OMNY：直接刷手机或信用卡，7 天内刷满一定次数后本周免费（封顶）。', '看清是快车（Express）还是慢车（Local），快车跳站。', '周末和深夜常改线、停站，进站前看 MTA App 或站内告示。', '同一个站名可能有好几个不相通的站，看清线路颜色和字母数字。'],
+    lametro: ['进站前刷 TAP 卡或手机钱包里的 TAP，2 小时内换乘免费，有每日每周封顶。', '联合车站可以换 Metrolink 和 Amtrak；A 线往东通到 Pomona North，离 Upland 不远。', '夜里人少时坐靠近司机的车厢。']
   };
   var STIP = {
     'ML:125': ['从家走到这里最近：Upland 站在市中心 A St 和 2nd Ave 附近，旁边就是 Upland 老城（Historic Downtown）的餐厅和咖啡馆。', '坐 San Bernardino 线往西，大约一小时到洛杉矶联合车站，再换 Amtrak。'],

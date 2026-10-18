@@ -237,6 +237,8 @@ def main():
     transit(out, "sf/transit.json", "muni", "muni")
     transit(out, "sj/transit.json", "vta", "vta")
     transit(out, "sj/transit.json", "caltrain", "caltrain")
+    transit(out, "ny/transit.json", "sub", "nysub")
+    transit(out, "la/transit.json", "metro", "lametro")
     metrolink(out)
     caltrain()
     for k in DEPS["d"]:
