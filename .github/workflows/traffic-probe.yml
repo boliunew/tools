@@ -12,20 +12,12 @@ jobs:
       - run: |
           set +e; exec > probe.txt 2>&1
           H(){ echo "=== $1"; curl -sS -m 30 -D /tmp/h -o /tmp/b -A "Mozilla/5.0 (Linux; Android 14)" -H "Origin: https://boliunew.github.io" "$1"; echo "rc=$?"; grep -i -E "^HTTP|access-control-allow-origin|^location|content-type" /tmp/h; head -c ${2:-600} /tmp/b | tr -d '\r'; echo; }
-          H "https://api.fxtwitter.com/status/1585341984679469056" 3000
-          V=$(python3 -c "import json;d=json.load(open('/tmp/b'));m=d['tweet'].get('media',{});print((m.get('videos') or [{}])[0].get('url',''))" 2>/dev/null); echo "VIDEO=$V"
-          [ -n "$V" ] && { curl -sS -m 30 -I -H "Origin: https://boliunew.github.io" "$V" | grep -i -E "^HTTP|access-control|content-type|content-length"; }
-          curl -sS -m 30 -I -H "Origin: https://boliunew.github.io" "https://pbs.twimg.com/profile_images/1683325380441128960/yRsRRjGO_400x400.jpg" | grep -i -E "^HTTP|access-control"
-          H "https://api.vxtwitter.com/Twitter/status/1585341984679469056" 800
-          # Instagram: find a shortcode, then try InstaFix-style hosts
-          curl -sS -m 30 -A "Mozilla/5.0" "https://www.instagram.com/instagram/" -o /tmp/ig.html; echo "ig profile bytes $(wc -c </tmp/ig.html)"
-          CODE=$(grep -oE '/(p|reel)/[A-Za-z0-9_-]{8,14}' /tmp/ig.html | head -1 | cut -d/ -f3); echo "CODE=$CODE"
-          CODE=${CODE:-DPa8cY1kZ0b}
-          H "https://www.instagram.com/p/$CODE/embed/captioned/" 300
-          grep -oE '"video_url":"[^"]+' /tmp/b | head -2; grep -oE 'EmbeddedMediaImage[^>]+src="[^"]+' /tmp/b | head -2 | cut -c1-200
-          for host in www.ddinstagram.com d.ddinstagram.com kkinstagram.com www.kkinstagram.com instagramez.com www.instagramez.com uuinstagram.com vxinstagram.com www.vxinstagram.com eeinstagram.com; do H "https://$host/p/$CODE/" 200; H "https://$host/images/$CODE/1" 120; H "https://$host/videos/$CODE/1" 120; done
-          H "https://api.cobalt.tools/" 400
-          curl -sS -m 30 -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Origin: https://boliunew.github.io" -d "{\"url\":\"https://www.instagram.com/p/$CODE/\"}" -D /tmp/h https://api.cobalt.tools/ | head -c 400; echo; grep -i -E "^HTTP|access-control" /tmp/h
+          for CODE in BsOGulcndj- C3bJ6ZRuBmQ; do
+          H "https://www.instagram.com/p/$CODE/embed/captioned/" 100
+          grep -oE '"video_url":"[^"]{0,160}' /tmp/b | head -2; grep -oE 'class="EmbeddedMediaImage"[^>]{0,300}' /tmp/b | head -1; grep -oE 'https://scontent[^"\\ ]{0,200}' /tmp/b | head -3
+          for host in uuinstagram.com eeinstagram.com www.kkinstagram.com; do H "https://$host/images/$CODE/1" 300; L=$(grep -i "^location" /tmp/h | awk '{print $2}' | tr -d '\r'); [ -n "$L" ] && curl -sS -m 30 -I -H "Origin: https://boliunew.github.io" "$L" | grep -i -E "^HTTP|access-control|content-type|^location"; H "https://$host/videos/$CODE/1" 300; done
+          H "https://eeinstagram.com/p/$CODE/" 100; grep -oE '<meta property="og:(image|video)[^>]+' /tmp/b | head -4
+          done
       - run: |
           git config user.name bot; git config user.email bot@x
           git add probe.txt; git commit -m out; git push origin HEAD:traffic-probe
