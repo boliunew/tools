@@ -190,6 +190,9 @@ def parse(kind, name, url, types):
         sn, ln = (r.get("route_short_name") or "").strip(), (r.get("route_long_name") or "").strip()
         col = r.get("route_color") or ""
         col = "#" + col if len(col) == 6 and col.upper() not in ("FFFFFF", "000000") else "#56606E"
+        m = re.match(r"^Metro ([A-Z]) Line$", ln)
+        if m:
+            sn, ln = m.group(1), ""
         if kind == "ml":
             nm = ln.replace("Metrolink ", "").replace(" Line", " 线")
         elif sn:
@@ -258,7 +261,8 @@ def main():
                 got = old[kind]
             if got:
                 for s in got["st"]:
-                    s["zh"] = s.get("zh") or ZH.get(city, {}).get(s["en"], "")
+                    zmap = {re.sub(r"\s*/\s*", "/", k): v for k, v in ZH.get(city, {}).items()}
+                    s["zh"] = s.get("zh") or zmap.get(re.sub(r"\s*/\s*", "/", s["en"]), "")
                 layers.append(got)
         layers.append({"k": "tips", "n": "💡 用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS[city]]})
         os.makedirs(os.path.dirname(out), exist_ok=True)
