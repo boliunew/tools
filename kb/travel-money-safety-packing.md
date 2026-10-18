@@ -83,4 +83,4 @@ summary: 出门带什么卡、小费给多少、怎么防偷防骗、证件丢�
 - [ ] 几个折叠购物袋（加州超市袋子要钱）
 - [ ] 一个小锁、行李定位器
 
-相关：[旅行防骗大全](travel-scams.md) · [订酒店不踩雷](travel-hotels.md) · [坐飞机](travel-flights-airports.md) · [公路旅行和租车](travel-road-trip.md)
+相关：[Amtrak 坐火车完全攻略](amtrak-guide.md) · [旅行防骗大全](travel-scams.md) · [订酒店不踩雷](travel-hotels.md) · [坐飞机](travel-flights-airports.md) · [公路旅行和租车](travel-road-trip.md)
