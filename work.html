@@ -32,7 +32,7 @@ a{color:var(--accent)}
 .wrap{max-width:640px;margin:0 auto;padding:0 16px}
 header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area-inset-top)}
 .brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px;position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:12px;position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
 .tabs button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 2px;font-size:14px;line-height:1.25}
 .tabs button span{display:block;font-size:20px}
 .tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:700}
@@ -96,13 +96,43 @@ th{font-size:12px;color:var(--soft);font-weight:600}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(28,28,30,.92);color:#fff;padding:8px 16px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:.2s;z-index:50}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 [hidden]{display:none!important}
+.lg-in{width:100%;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 12px;font-size:16px;line-height:1.5;resize:vertical;min-height:64px;outline:none}
+.lg-in:focus{border-color:var(--accent)}
+.lg-f{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.lg-f label{font-size:12.5px;color:var(--soft)}
+.lg-f input,.lg-f select{display:block;width:100%;margin-top:2px;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 9px;font-size:15px;outline:none;color:var(--ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.chips button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 11px;font-size:13.5px}
+.chips button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.lg-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+.lg-sum div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-size:12px;color:var(--soft);box-shadow:var(--shadow)}
+.lg-sum b{display:block;font-size:20px;color:var(--ink);font-family:var(--mono)}
+.lg-sum .warn b{color:var(--bad)}
+.lg-day{font-size:13px;font-weight:700;color:var(--soft);margin:14px 2px 6px;display:flex;justify-content:space-between}
+.lg-day small{font-weight:400;color:var(--faint)}
+.lg{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:9px 10px;margin-bottom:6px}
+.lg .ck2{flex:0 0 auto;width:30px;height:30px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);font-size:16px;line-height:26px;text-align:center;padding:0}
+.lg .ck2.td{border-color:var(--accent);color:var(--accent)}
+.lg .ck2.dn{background:var(--ok);border-color:var(--ok);color:#fff}
+.lg .bd{flex:1;min-width:0}
+.lg .bd p{margin:0;font-size:15px;white-space:pre-wrap;word-break:break-word}
+.lg.done .bd p{color:var(--soft)}
+.lg .meta{font-size:12px;color:var(--faint);margin-top:3px}
+.lg .meta b{color:var(--accent);font-weight:600}
+.lg .meta .od{color:var(--bad);font-weight:700}
+.lg .cno{display:inline-block;font-family:var(--mono);font-size:12px;border-radius:5px;padding:0 5px;margin-right:4px}
+.lg .cno.y{background:rgba(30,142,78,.12);color:var(--ok)}.lg .cno.n{background:rgba(192,57,43,.12);color:var(--bad)}
+.lg .ops{flex:0 0 auto;display:flex;flex-direction:column;gap:4px}
+.lg .ops button{border:0;background:none;color:var(--faint);font-size:15px;padding:2px 4px}
+.lg-tools{display:flex;gap:6px;flex-wrap:wrap}
+
 </style>
 </head>
 <body>
 <div class="wrap">
 <header><a class="brand" href="index.html">🦺 现场工具</a></header>
 <nav class="tabs" id="tabs">
-  <button data-t="no"><span>🔢</span>柜号</button><button data-t="load"><span>📦</span>装柜</button><button data-t="cv"><span>⚖️</span>换算</button><button data-t="chk"><span>📸</span>验柜</button>
+  <button data-t="no"><span>🔢</span>柜号</button><button data-t="load"><span>📦</span>装柜</button><button data-t="cv"><span>⚖️</span>换算</button><button data-t="chk"><span>📸</span>验柜</button><button data-t="log"><span>📋</span>日志</button>
 </nav>
 
 <section id="v-no">
@@ -141,6 +171,32 @@ th{font-size:12px;color:var(--soft);font-weight:600}
     <img id="prev" hidden alt="">
   </div>
 </section>
+
+<section id="v-log" hidden>
+  <div class="card">
+    <textarea class="lg-in" id="lgX" placeholder="什么事？比如：CSQU3054383 门封破损，已拍照报调度 / 叉车 3 号刹车不灵，报修 / 明天 7 点前把 12 号门的柜调走"></textarea>
+    <div class="chips" id="lgC"></div>
+    <div class="lg-f">
+      <label>日期<input type="date" id="lgD"></label>
+      <label>时间<input type="time" id="lgT"></label>
+    </div>
+    <div class="chips" id="lgS"><button data-s="0" class="on">✅ 已做完</button><button data-s="1">📌 待办 / 要跟进</button></div>
+    <div class="lg-f" id="lgDueW" hidden><label>什么时候前要做完<input type="date" id="lgDue"></label><label>&nbsp;<input id="lgWho" placeholder="交给谁（可不填）"></label></div>
+    <div class="row"><button class="btn pri" id="lgAdd">记下来</button><button class="btn" id="lgCancel" hidden>取消修改</button><span class="hint" id="lgMsg"></span></div>
+  </div>
+  <div class="lg-sum" id="lgSum"></div>
+  <div class="card" style="padding:10px 12px">
+    <div class="chips" id="lgR" style="margin-top:0"><button data-r="today" class="on">今天</button><button data-r="week">本周</button><button data-r="month">本月</button><button data-r="todo">📌 待办</button><button data-r="all">全部</button></div>
+    <div class="chips" id="lgFC"></div>
+    <input id="lgQ" class="lg-in" style="min-height:0;margin-top:8px;padding:8px 12px;font-size:15px" placeholder="🔍 搜索：柜号、人名、关键词…">
+  </div>
+  <div id="lgList"></div>
+  <div class="card">
+    <h3>导出 / 备份</h3>
+    <div class="lg-tools"><button class="btn pri" id="lgHand">📋 复制交接班记录</button><button class="btn" id="lgCsv">⬇ 导出表格（Excel）</button><button class="btn" id="lgBak">💾 备份</button><label class="btn" style="cursor:pointer">📂 恢复备份<input type="file" id="lgImp" accept=".json,application/json" hidden></label></div>
+    <div class="hint" style="margin-top:8px">「交接班记录」把今天做过的事和还没完成的待办整理成一段文字，贴到微信、短信或邮件里。「导出表格」按当前筛选导出 CSV，用 Excel 或 Google 表格打开。<br>记录只存在这台手机的浏览器里（清浏览器数据会丢），隔一段时间点「备份」存一份文件。网站是公开的，但记录不会上传。</div>
+  </div>
+</section>
 </div>
 <div class="toast" id="toast"></div>
 <script>
@@ -166,7 +222,7 @@ th{font-size:12px;color:var(--soft);font-weight:600}
     TAB = t; jset('tab', t);
     var bs = $('tabs').querySelectorAll('button'), i;
     for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-t') === t ? 'on' : '';
-    ['no', 'load', 'cv', 'chk'].forEach(function (k) { $('v-' + k).hidden = k !== t; });
+    ['no', 'load', 'cv', 'chk', 'log'].forEach(function (k) { $('v-' + k).hidden = k !== t; });
     try { history.replaceState(null, '', '#' + t); } catch (e) { }
   }
   $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (b) setTab(b.getAttribute('data-t')); };
@@ -407,10 +463,147 @@ th{font-size:12px;color:var(--soft);font-weight:600}
     navigator.share({ files: [f], text: summary().join('\n') }).then(null, function () { });
   };
 
+
+  /* ---------- 📋 工作日志 ---------- */
+  var LCAT = [['box', '📦', '柜 / 车'], ['ppl', '👷', '人员'], ['safe', '⚠️', '安全'], ['eq', '🔧', '设备'], ['hand', '🔁', '交接'], ['talk', '📞', '沟通'], ['etc', '📌', '其他']];
+  var LOG = jget('log', []), LC = 'box', LS = 0, LR = jget('logR', 'today'), LF = '', EDIT = null;
+  function ymd(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function hm(d) { return pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+  function catOf(k) { for (var i = 0; i < LCAT.length; i++) if (LCAT[i][0] === k) return LCAT[i]; return LCAT[LCAT.length - 1]; }
+  function lsave() { jset('log', LOG); }
+  function wkStart(d) { var x = new Date(d); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return ymd(x); }
+  function dayName(s) {
+    var t = ymd(new Date()), y = new Date(); y.setDate(y.getDate() - 1);
+    var d = new Date(s + 'T12:00:00'), w = '日一二三四五六'.charAt(d.getDay());
+    return (s === t ? '今天 · ' : s === ymd(y) ? '昨天 · ' : '') + (d.getMonth() + 1) + '月' + d.getDate() + '日 周' + w;
+  }
+  function cnos(x) {   // 文字里出现的柜号，顺便校验
+    var out = [], m, re = /\b([A-Z]{4})\s?(\d{6})\s?(\d)\b/gi;
+    while ((m = re.exec(x))) { var s = (m[1] + m[2] + m[3]).toUpperCase(); out.push([s, isoOk(s)]); }
+    return out;
+  }
+  function lgForm() {
+    $('lgC').innerHTML = LCAT.map(function (c) { return '<button data-c="' + c[0] + '" class="' + (c[0] === LC ? 'on' : '') + '">' + c[1] + ' ' + c[2] + '</button>'; }).join('');
+    var bs = $('lgS').querySelectorAll('button'), i; for (i = 0; i < bs.length; i++) bs[i].className = +bs[i].getAttribute('data-s') === LS ? 'on' : '';
+    $('lgDueW').hidden = !LS;
+  }
+  function lgReset() {
+    var n = new Date(); EDIT = null; $('lgX').value = ''; $('lgD').value = ymd(n); $('lgT').value = hm(n); $('lgDue').value = ''; $('lgWho').value = '';
+    LS = 0; $('lgAdd').textContent = '记下来'; $('lgCancel').hidden = true; lgForm();
+  }
+  function lgFilter() {
+    var t = ymd(new Date()), w = wkStart(new Date()), m = t.slice(0, 7), q = ($('lgQ').value || '').trim().toLowerCase();
+    return LOG.filter(function (e) {
+      if (LF && e.c !== LF) return false;
+      if (q && (e.x + ' ' + (e.who || '')).toLowerCase().indexOf(q) < 0) return false;
+      if (q && LR !== 'todo') return true;   // 搜索时不限日期
+      if (LR === 'today') return e.d === t || (e.todo && !e.done && e.d < t);
+      if (LR === 'week') return e.d >= w;
+      if (LR === 'month') return e.d.slice(0, 7) === m;
+      if (LR === 'todo') return e.todo && !e.done;
+      return true;
+    }).sort(function (a, b) { return (b.d + b.t).localeCompare(a.d + a.t) || b.ts - a.ts; });
+  }
+  function lgRender() {
+    var t = ymd(new Date()), todayN = LOG.filter(function (e) { return e.d === t; }).length;
+    var open = LOG.filter(function (e) { return e.todo && !e.done; }), late = open.filter(function (e) { return e.due && e.due < t; }).length;
+    $('lgSum').innerHTML = '<div>今天记了<b>' + todayN + '</b></div><div>待办没做完<b>' + open.length + '</b></div><div class="' + (late ? 'warn' : '') + '">已经过期<b>' + late + '</b></div>';
+    var rb = $('lgR').querySelectorAll('button'), i; for (i = 0; i < rb.length; i++) rb[i].className = rb[i].getAttribute('data-r') === LR ? 'on' : '';
+    $('lgFC').innerHTML = '<button data-f="" class="' + (LF ? '' : 'on') + '">全部类别</button>' + LCAT.map(function (c) { return '<button data-f="' + c[0] + '" class="' + (c[0] === LF ? 'on' : '') + '">' + c[1] + '</button>'; }).join('');
+    var L = lgFilter(), h = '', cur = '';
+    if (!L.length) h = '<div class="hint" style="text-align:center;padding:20px 0">' + (LOG.length ? '这个范围里没有记录。' : '还没有记录。在上面写下第一件事吧。') + '</div>';
+    var byDay = {}; L.forEach(function (e) { byDay[e.d] = (byDay[e.d] || 0) + 1; });
+    L.forEach(function (e) {
+      if (e.d !== cur) { cur = e.d; h += '<div class="lg-day"><span>' + dayName(e.d) + '</span><small>' + byDay[e.d] + ' 条</small></div>'; }
+      var c = catOf(e.c), cn = cnos(e.x), od = e.todo && !e.done && e.due && e.due < t;
+      h += '<div class="lg' + (e.done ? ' done' : '') + '" data-id="' + e.id + '">' +
+        (e.todo ? '<button class="ck2 ' + (e.done ? 'dn' : 'td') + '" data-a="tg" title="标记完成">' + (e.done ? '✓' : '') + '</button>' : '<button class="ck2" data-a="tg" title="改成待办" style="opacity:.55">' + c[1] + '</button>') +
+        '<div class="bd"><p>' + esc(e.x) + '</p><div class="meta">' + (e.t ? e.t + ' · ' : '') + c[1] + ' ' + c[2] +
+        cn.map(function (x) { return ' <span class="cno ' + (x[1] ? 'y' : 'n') + '">' + x[0] + (x[1] ? ' ✓' : ' 校验位不对') + '</span>'; }).join('') +
+        (e.todo ? (e.done ? ' · ✅ ' + esc(e.done) + ' 完成' : ' · <b>待办</b>' + (e.due ? ' · <span class="' + (od ? 'od' : '') + '">' + (od ? '已过期 ' : '截止 ') + e.due.slice(5).replace('-', '/') + '</span>' : '')) : '') +
+        (e.who ? ' · 👤 ' + esc(e.who) : '') + '</div></div>' +
+        '<div class="ops"><button data-a="ed" title="修改">✏️</button><button data-a="rm" title="删除">🗑️</button></div></div>';
+    });
+    $('lgList').innerHTML = h;
+  }
+  $('lgC').onclick = function (e) { var b = e.target.closest('[data-c]'); if (b) { LC = b.getAttribute('data-c'); lgForm(); } };
+  $('lgS').onclick = function (e) { var b = e.target.closest('[data-s]'); if (b) { LS = +b.getAttribute('data-s'); lgForm(); } };
+  $('lgR').onclick = function (e) { var b = e.target.closest('[data-r]'); if (b) { LR = b.getAttribute('data-r'); jset('logR', LR); lgRender(); } };
+  $('lgFC').onclick = function (e) { var b = e.target.closest('[data-f]'); if (b) { LF = b.getAttribute('data-f'); lgRender(); } };
+  var lqT; $('lgQ').oninput = function () { clearTimeout(lqT); lqT = setTimeout(lgRender, 200); };
+  $('lgAdd').onclick = function () {
+    var x = $('lgX').value.trim();
+    if (!x) { $('lgX').focus(); toast('先写上是什么事'); return; }
+    var e = EDIT ? LOG.filter(function (z) { return z.id === EDIT; })[0] : null;
+    if (!e) { e = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), ts: Date.now() }; LOG.push(e); }
+    e.x = x; e.c = LC; e.d = $('lgD').value || ymd(new Date()); e.t = $('lgT').value || ''; e.todo = !!LS;
+    e.due = LS ? $('lgDue').value : ''; e.who = LS ? $('lgWho').value.trim() : '';
+    if (!e.todo) e.done = null;
+    lsave(); toast(EDIT ? '已修改' : '记下了');
+    var bad = cnos(x).filter(function (z) { return !z[1]; });
+    if (bad.length) setTimeout(function () { toast('注意：' + bad[0][0] + ' 校验位不对，核对一下柜号'); }, 1700);
+    lgReset(); lgRender();
+  };
+  $('lgCancel').onclick = function () { lgReset(); };
+  $('lgList').onclick = function (ev) {
+    var b = ev.target.closest('[data-a]'); if (!b) return;
+    var id = b.closest('[data-id]').getAttribute('data-id'), e = LOG.filter(function (z) { return z.id === id; })[0]; if (!e) return;
+    var a = b.getAttribute('data-a');
+    if (a === 'tg') {
+      if (!e.todo) { e.todo = true; e.done = null; toast('改成待办了'); }
+      else if (!e.done) { e.done = ymd(new Date()).slice(5).replace('-', '/') + ' ' + hm(new Date()); toast('✅ 完成'); }
+      else { e.done = null; toast('改回没完成'); }
+      lsave(); lgRender();
+    } else if (a === 'rm') {
+      if (!confirm('删除这条记录？\n\n' + e.x.slice(0, 60))) return;
+      LOG = LOG.filter(function (z) { return z.id !== id; }); lsave(); lgRender(); toast('已删除');
+    } else if (a === 'ed') {
+      EDIT = id; $('lgX').value = e.x; $('lgD').value = e.d; $('lgT').value = e.t || ''; LC = e.c; LS = e.todo ? 1 : 0;
+      $('lgDue').value = e.due || ''; $('lgWho').value = e.who || ''; $('lgAdd').textContent = '保存修改'; $('lgCancel').hidden = false; lgForm();
+      window.scrollTo({ top: $('v-log').offsetTop - 70, behavior: 'smooth' }); $('lgX').focus();
+    }
+  };
+  $('lgHand').onclick = function () {
+    var t = ymd(new Date()), done = LOG.filter(function (e) { return e.d === t; }).sort(function (a, b) { return (a.t || '').localeCompare(b.t || ''); });
+    var open = LOG.filter(function (e) { return e.todo && !e.done; }).sort(function (a, b) { return (a.due || '9').localeCompare(b.due || '9'); });
+    var s = ['【交接班记录】' + dayName(t).replace('今天 · ', '')];
+    s.push('', '今天的事（' + done.length + '）：');
+    done.forEach(function (e) { s.push('• ' + (e.t ? e.t + ' ' : '') + catOf(e.c)[1] + ' ' + e.x + (e.todo ? (e.done ? '（已完成）' : '（待办）') : '')); });
+    if (!done.length) s.push('（无）');
+    s.push('', '还没完成的待办（' + open.length + '）：');
+    open.forEach(function (e) { s.push('• ' + e.x + (e.due ? '（截止 ' + e.due.slice(5).replace('-', '/') + (e.due < t ? '，已过期' : '') + '）' : '') + (e.who ? ' → ' + e.who : '')); });
+    if (!open.length) s.push('（无）');
+    copy(s.join('\n'));
+  };
+  function dl(name, text, type) {
+    var a = document.createElement('a'), u = URL.createObjectURL(new Blob([text], { type: type }));
+    a.href = u; a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.parentNode.removeChild(a); }, 3000);
+  }
+  $('lgCsv').onclick = function () {
+    var L = lgFilter().slice().reverse();
+    function q(v) { v = String(v == null ? '' : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+    var rows = [['日期', '时间', '类别', '事情', '待办', '截止日期', '交给谁', '完成时间']].concat(L.map(function (e) { return [e.d, e.t, catOf(e.c)[2], e.x, e.todo ? '是' : '', e.due || '', e.who || '', e.done || '']; }));
+    dl('工作日志_' + ymd(new Date()) + '.csv', '﻿' + rows.map(function (r) { return r.map(q).join(','); }).join('\r\n'), 'text/csv;charset=utf-8');
+    toast('已导出 ' + L.length + ' 条');
+  };
+  $('lgBak').onclick = function () { dl('工作日志备份_' + ymd(new Date()) + '.json', JSON.stringify({ v: 1, log: LOG }), 'application/json'); toast('备份文件已保存'); };
+  $('lgImp').onchange = function () {
+    var f = this.files[0]; if (!f) return; var r = new FileReader();
+    r.onload = function () {
+      try {
+        var d = JSON.parse(r.result), L = d.log || d, have = {}, n = 0;
+        LOG.forEach(function (e) { have[e.id] = 1; });
+        L.forEach(function (e) { if (e && e.id && e.x && !have[e.id]) { LOG.push(e); n++; } });
+        lsave(); lgRender(); toast('恢复了 ' + n + ' 条（重复的跳过）');
+      } catch (e) { toast('文件格式不对'); }
+    };
+    r.readAsText(f); this.value = '';
+  };
+  lgReset(); lgRender();
   setTab((location.hash || '').replace('#', '') || jget('tab', 'no'));
   renderNo(); renderHist(); runLoad(); renderCk();
 })();
 </script>
-<script src="nav.js?v=21" defer></script>
+<script src="nav.js?v=22" defer></script>
 </body>
 </html>
