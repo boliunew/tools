@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123A5C">
+<title>Amtrak 火车旅行</title>
+<style>
+:root{
+  --bg:#F1F2EF; --paper:#FFFFFF; --ink:#1B2230; --soft:#566070; --faint:#959DA8; --line:#DFE2DD; --chip:#E9ECE7;
+  --acc:#1B5E96; --acc-soft:#DCEAF6; --red:#C0362C; --red-soft:#F7E2DF; --gold:#C98A12; --ok:#2E9D4F;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161C; --paper:#1A2029; --ink:#E7EBF0; --soft:#A8B1BD; --faint:#6D7682; --line:#29313C; --chip:#232A34;
+  --acc:#7DB4E6; --acc-soft:#1A2B3D; --red:#F07563; --red-soft:#3A221F; --gold:#E9B44C; --ok:#5BD38E; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#12161C; --paper:#1A2029; --ink:#E7EBF0; --soft:#A8B1BD; --faint:#6D7682; --line:#29313C; --chip:#232A34;
+  --acc:#7DB4E6; --acc-soft:#1A2B3D; --red:#F07563; --red-soft:#3A221F; --gold:#E9B44C; --ok:#5BD38E; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--acc)}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+.hero{position:relative;overflow:hidden;color:#EEF3F8;background:linear-gradient(170deg,#1E4E78 0%,#123A5C 50%,#0B2238 100%);padding:calc(16px + env(safe-area-inset-top)) 0 16px}
+.hero a.home{color:#EEF3F8;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{margin:6px 0 0;font-size:27px;letter-spacing:.03em;font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif}
+.hero h1 small{font-family:Georgia,serif;font-size:14px;font-weight:400;opacity:.75;margin-left:8px;letter-spacing:.1em}
+.rail{display:block;width:100%;height:40px;margin:6px 0 2px}
+.hero p{margin:4px 0 0;font-size:13.5px;opacity:.88;line-height:1.65}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.facts span{font-size:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:2px 9px}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:0;background:none;border-radius:999px;padding:6px 12px;font-size:14px;color:var(--soft)}
+.tabs button.on{background:var(--ink);color:var(--paper)}
+.lead{font-size:13px;color:var(--faint);margin:12px 2px 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+.card .hd{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;cursor:pointer}
+.card .em{font-size:26px;line-height:1.15;flex:0 0 32px;text-align:center}
+.card .ti{flex:1;min-width:0}
+.card h3{margin:0;font-size:16px;line-height:1.35}
+.card .s{font-size:13.5px;color:var(--soft);margin-top:2px;line-height:1.55}
+.card .ar{color:var(--faint);font-size:13px;flex:0 0 auto;margin-top:2px;transition:transform .15s}
+.card.open .ar{transform:rotate(180deg)}
+.card .bd{display:none;padding:0 14px 14px 58px;font-size:14.5px;line-height:1.75}
+.card.open .bd{display:block}
+.card .bd p{margin:0 0 8px}
+.card .bd ul{margin:2px 0 8px;padding-left:18px}
+.tip{background:var(--acc-soft);border-radius:10px;padding:8px 10px;font-size:13.5px;margin-top:8px;line-height:1.65}
+.tip.warn{background:var(--red-soft)}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px;margin-bottom:10px}
+.box h2{margin:0 0 4px;font-size:18px}
+.box h4{margin:12px 0 4px;font-size:13px;color:var(--soft);letter-spacing:.04em}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px}
+.chips button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13.5px;color:var(--soft)}
+.chips button.on{border-color:var(--acc);color:var(--acc);background:var(--acc-soft);font-weight:600}
+.chips button i{display:inline-block;width:9px;height:9px;border-radius:5px;margin-right:5px;vertical-align:1px}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}
+.kpi div{background:var(--bg);border-radius:10px;padding:7px 9px;font-size:12px;color:var(--soft)}
+.kpi b{display:block;font-size:15.5px;color:var(--ink)}
+.map{position:relative;isolation:isolate;z-index:0;height:56vh;min-height:320px;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:10px;background:#DDE3E8}
+.leaflet-container{font:inherit}
+.hl{display:flex;gap:10px;padding:8px 0;border-top:1px dashed var(--line);cursor:pointer}
+.hl:first-child{border-top:0}
+.hl span{font-size:20px}
+.hl b{display:block;font-size:14.5px}
+.hl small{color:var(--soft);font-size:13px;line-height:1.55}
+.tt{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tt td{padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+.tt td:first-child{white-space:nowrap;font-weight:700;width:60px}
+.tt td small{display:block;color:var(--faint);font-size:12px}
+.tt tr.big td{background:var(--acc-soft)}
+.tt .d{color:var(--gold);font-size:11.5px;font-weight:700;margin-left:2px}
+.sel{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 10px;font-size:15px;color:var(--ink);max-width:100%}
+.frm{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:end}
+.frm label{font-size:12.5px;color:var(--soft)}
+.frm .sel{width:100%;display:block;margin-top:2px}
+.swap{border:1px solid var(--line);background:var(--paper);border-radius:10px;height:40px;width:40px;font-size:17px}
+.res{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:8px;overflow:hidden}
+.res .rh{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer}
+.res .tm{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.res .tm small{font-size:12px;color:var(--gold);margin-left:2px}
+.res .ar2{color:var(--faint)}
+.res .rm{flex:1;min-width:0;text-align:right;font-size:12.5px;color:var(--soft);line-height:1.45}
+.res .rm b{color:var(--ink);font-size:13.5px}
+.res .rb{display:none;padding:0 12px 10px}
+.res.open .rb{display:block}
+.empty{color:var(--faint);text-align:center;padding:24px 0}
+.tr{display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line);cursor:pointer}
+.tr:first-child{border-top:0}
+.tr .no{min-width:44px;text-align:center;font-weight:800;border-radius:8px;color:#fff;padding:3px 0;font-size:13.5px}
+.tr .mid{flex:1;min-width:0}
+.tr .mid b{font-size:14.5px}.tr .mid small{display:block;color:var(--faint);font-size:12px}
+.tr .dl{font-size:12.5px;font-weight:700;white-space:nowrap}
+.trm span{display:flex;align-items:center;justify-content:center;min-width:30px;height:22px;padding:0 4px;border-radius:11px;color:#fff;font:700 11px/1 -apple-system,sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.hlm span{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#FFF8E1;border:2px solid #E0A100;font-size:14px;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.pp{font-size:13px;line-height:1.6}
+.pp b{font-size:14px}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-top:1px dashed var(--line);cursor:pointer}
+.ck:first-child{border-top:0}
+.ck i{flex:0 0 22px;height:22px;border-radius:6px;border:1.5px solid var(--line);font-style:normal;text-align:center;line-height:19px;color:#fff;font-size:14px}
+.ck.on i{background:var(--ok);border-color:var(--ok)}
+.ck.on span{color:var(--faint);text-decoration:line-through}
+.ck small{display:block;color:var(--faint);font-size:12px}
+.trip{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px;margin-bottom:10px}
+.trip .th{display:flex;gap:10px;align-items:center}
+.trip .th span{font-size:30px}
+.trip .th b{display:block;font-size:16px}.trip .th small{color:var(--soft);font-size:13px}
+.trip ol{margin:8px 0 6px;padding-left:20px;font-size:14px;line-height:1.75}
+.trip .go{display:flex;gap:6px;flex-wrap:wrap}
+.trip .go button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 11px;font-size:13px}
+.note{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
+.ups td{padding:5px 4px;border-bottom:1px solid var(--line);font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a class="home" href="index.html">‹ 首页</a>
+  <h1>Amtrak 火车旅行<small>ALL ABOARD</small></h1>
+  <svg class="rail" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 26 Q60 10 120 22 T240 18 T400 14" fill="none" stroke="#9FC4E6" stroke-width="1" opacity=".5"/>
+    <path d="M0 36 H400" stroke="#9FC4E6" stroke-width="2"/>
+    <path d="M10 36 v4 M30 36 v4 M50 36 v4 M70 36 v4 M90 36 v4 M110 36 v4 M130 36 v4 M150 36 v4 M170 36 v4 M190 36 v4 M210 36 v4 M230 36 v4 M250 36 v4 M270 36 v4 M290 36 v4 M310 36 v4 M330 36 v4 M350 36 v4 M370 36 v4 M390 36 v4" stroke="#9FC4E6" stroke-width="1.2" opacity=".7"/>
+    <g fill="#EEF3F8"><rect x="236" y="18" width="46" height="15" rx="3"/><rect x="286" y="18" width="40" height="15" rx="2" opacity=".85"/><rect x="330" y="18" width="40" height="15" rx="2" opacity=".7"/><path d="M226 33 L236 18 V33 Z"/></g>
+    <g fill="#123A5C"><rect x="244" y="22" width="7" height="5"/><rect x="255" y="22" width="7" height="5"/><rect x="266" y="22" width="7" height="5"/><rect x="292" y="22" width="28" height="4"/><rect x="336" y="22" width="28" height="4"/></g>
+  </svg>
+  <p>坐火车慢慢看美国：太平洋海岸、内华达雪山、科罗拉多峡谷、亚利桑那沙漠。从 Upland 出发，一小时就能坐上第一班。</p>
+  <div class="facts" id="facts"></div>
+</div></div>
+<div class="tabs"><div class="wrap" id="tabs"></div></div>
+<main class="wrap" id="main"><div class="empty">加载中…</div></main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('amtk:' + k) || 'null'); localStorage.setItem('amtk:' + k, JSON.stringify(v)); } catch (e) { return null; } }
+
+  // ================= 内容 =================
+  var ZH = { GDL: '格伦代尔', NRG: '北岭', SBB: '索拉纳海滩', LAX: '洛杉矶联合车站', SAN: '圣迭戈', OLT: '圣迭戈老城', SOL: '索拉纳海滩', OSD: '欧申赛德', SNC: '圣胡安卡皮斯特拉诺', IRV: '欧文', SNA: '圣塔安娜', ANA: '阿纳海姆', FUL: '富勒顿', BUR: '伯班克机场', VNC: '范奈斯', CWT: '查茨沃斯', SIM: '西米谷', MPK: '穆尔帕克', CML: '卡马里奥', OXN: '奥克斯纳德', VEC: '文图拉', CPN: '卡平特里亚', SBA: '圣巴巴拉', GTA: '戈利塔', LPS: '隆波克', GVB: '格罗弗海滩', SLO: '圣路易斯奥比斯波', PRB: '帕索罗布尔斯', SLN: '萨利纳斯', SJC: '圣何塞', OKJ: '奥克兰 杰克伦敦广场', EMY: '埃默里维尔（旧金山）', MTZ: '马丁内斯', DAV: '戴维斯', SAC: '萨克拉门托', CIC: '奇科', RDD: '雷丁', DUN: '邓斯缪尔（沙斯塔山）', KFS: '克拉马斯福尔斯', CMO: '奇莫尔特', EUG: '尤金', ALY: '奥尔巴尼', SLM: '塞勒姆', PDX: '波特兰', VAN: '温哥华（华盛顿州）', KEL: '凯尔索', CTL: '森特勒利亚', OLW: '莱西', TAC: '塔科马', SEA: '西雅图', RIC: '里士满', BKY: '伯克利', HAY: '海沃德', FMT: '弗里蒙特', GAC: '圣克拉拉 大美洲乐园', SCC: '圣克拉拉', ARN: '奥本', CFC: '科尔法克斯', TRU: '特拉基', RNO: '里诺', SPK: '斯帕克斯', WNN: '温尼马卡', ELK: '埃尔科', SLC: '盐湖城', PRO: '普罗沃', HER: '海尔帕', GRI: '格林河', GJT: '大章克申', GSC: '格伦伍德温泉', GRA: '格兰比', FRA: '弗雷泽 / 冬季公园', DEN: '丹佛', FMG: '摩根堡', MCK: '麦库克', HOL: '霍尔德里奇', HAS: '黑斯廷斯', LNK: '林肯', OMA: '奥马哈', CRT: '克雷斯顿', OSC: '奥西奥拉', OTM: '奥塔姆瓦', BRL: '伯灵顿', MTP: '芒特普莱森特', GBB: '盖尔斯堡', PCT: '普林斯顿', NPV: '内珀维尔', CHI: '芝加哥', SNB: '圣贝纳迪诺', RIV: '河滨', VRV: '维克多维尔', BAR: '巴斯托', NDL: '尼德尔斯', KNG: '金曼', WLO: '温斯洛', FLG: '弗拉格斯塔夫（大峡谷）', GLP: '盖洛普', ABQ: '阿尔伯克基', LMY: '拉米（圣塔菲）', LSV: '拉斯维加斯（新墨西哥）', RAT: '拉顿', TRI: '特立尼达', LAJ: '拉洪塔', GCK: '加登城', DDG: '道奇城', HUT: '哈钦森', NEW: '牛顿', EMP: '恩波里亚', TOP: '托皮卡', LRC: '劳伦斯', KCY: '堪萨斯城', LAP: '拉普拉塔', FMD: '麦迪逊堡', ONA: '安大略', POS: '波莫纳', PSN: '棕榈泉', YUM: '尤马', MRC: '马里科帕（凤凰城）', TUS: '图森', BEN: '本森', LDB: '洛兹堡', DEM: '戴明', ELP: '埃尔帕索', ALP: '阿尔派恩（大弯国家公园）', SND: '桑德森', DRT: '德尔里奥', SAS: '圣安东尼奥', HOS: '休斯顿', BMT: '博蒙特', LCH: '莱克查尔斯', LFT: '拉法耶特', NIB: '新伊比利亚', SCH: '斯奇维格', NOL: '新奥尔良', AUS: '奥斯汀', FTW: '沃斯堡', DAL: '达拉斯', LVW: '朗维尤', TXA: '特克萨卡纳', LRK: '小石城', STL: '圣路易斯', SPI: '斯普林菲尔德', BNL: '布卢明顿', JOL: '乔利埃特', SUI: '休森', BBK: '伯克利', ROS: '罗斯维尔' };
+  function sn(code) { var s = D.stations[code]; return ZH[code] || (s ? s.n : code); }
+  function sen(code) { var s = D.stations[code]; return s ? s.n : code; }
+
+  var RI = {   // 每条线的介绍、坐哪边、沿途看点（坐标是大致位置）
+    'Pacific Surfliner': { e: '🌊', s: '圣迭戈 ⇄ 洛杉矶 ⇄ 圣巴巴拉 ⇄ 圣路易斯奥比斯波。加州最美、也最容易上手的一日火车，一天十几班。', side: '往北（去圣巴巴拉）坐<b>左边</b>，往南（去圣迭戈）坐<b>右边</b>，都是靠海的一侧。双层车厢坐楼上视野最好。', hl: [
+      [32.96, -117.27, '🌊', 'Del Mar 悬崖', '铁轨就在海边悬崖顶上，下面是沙滩和冲浪的人。'],
+      [33.42, -117.62, '🏄', 'San Clemente 沙滩段', '好几英里的铁轨贴着沙滩，近到能看清浪花。'],
+      [34.06, -118.24, '🚉', '洛杉矶联合车站', '1939 年建成的大厅，本身就值得逛。'],
+      [34.37, -119.47, '🌅', 'Rincon 海岸', 'Ventura 到 Carpinteria 一段铁轨和 101 公路一起贴着海走。'],
+      [34.414, -119.692, '🏛️', '圣巴巴拉', '下车走 10 分钟就是 State St 和 Stearns 码头，一日游的最佳目的地。'],
+      [34.6, -120.63, '🚀', '范登堡海岸', '只有开到圣路易斯奥比斯波的班次经过：太空军基地里一百多英里没有公路的海岸线，只有火车看得到。']] },
+    'Coast Starlight': { e: '🌲', s: '洛杉矶 ⇄ 湾区 ⇄ 波特兰 ⇄ 西雅图，大约 35 小时，每天一班。被很多人评为美国最美的火车线之一：海岸、农田、雪山、森林。', side: '从洛杉矶<b>往北坐左边</b>：Ventura 到圣路易斯奥比斯波一路看海（上午到午后）。往南坐右边。观景车（Sightseer Lounge）有通顶的大窗户，谁都能去坐。', hl: [
+      [34.37, -119.47, '🌊', '海岸段', '北行上午到午后经过：从 Ventura 开始贴着海，过圣巴巴拉后还有范登堡一百多英里没有公路的海岸线。'],
+      [35.33, -120.63, '🐎', 'Cuesta 坡和马蹄弯', '出了圣路易斯奥比斯波，火车绕着马蹄形弯道爬上山，能看到自己车尾。'],
+      [36.4, -121.3, '🥬', '萨利纳斯谷', '「世界沙拉碗」，一望无际的菜地，斯坦贝克小说的故乡。'],
+      [37.794, -122.272, '🌉', '奥克兰 / 湾区', '北行晚上到湾区，坐到圣何塞或奥克兰下车就能接上湾区生活。'],
+      [41.31, -122.31, '🏔️', '沙斯塔山', '加州北部的大雪山。火车多数时候在夜里经过，夏天北行天亮得早，运气好在黎明时分能看到。'],
+      [43.57, -122.0, '🌲', '喀斯喀特山脉', '俄勒冈的高山森林和湖泊，奥德尔湖一段很美；北行在早上经过，南行在傍晚。']] },
+    'California Zephyr': { e: '🏔️', s: '湾区（Emeryville）⇄ 芝加哥，大约 51 小时，每天一班。公认全美风景最壮观的火车：内华达山、犹他荒漠、科罗拉多落基山的峡谷。', side: '两边都好看，提早去观景车占位。从湾区东行，中午到下午翻越内华达山；西行是上午经过。', hl: [
+      [39.12, -120.89, '🌄', 'Cape Horn', '火车开在美洲河峡谷的悬崖边，往下几百英尺。'],
+      [39.32, -120.33, '❄️', '唐纳山口', '1846 年唐纳大队被大雪困住的地方，冬天窗外是厚厚的积雪。'],
+      [39.53, -119.81, '🎰', '里诺', '「世界上最大的小城」，停车时间比较长。'],
+      [39.17, -109.05, '🏜️', 'Ruby 峡谷', '科罗拉多河的红色峡谷，公路到不了，只有火车和漂流船能进来。'],
+      [39.57, -107.25, '🏞️', '格伦伍德峡谷', '整条线最出名的一段：科罗拉多河在峭壁间穿行。'],
+      [39.99, -106.47, '🛶', 'Gore 峡谷', '又深又窄的峡谷，只有铁路和漂流船能进来，河上的人常常朝火车挥手。'],
+      [39.90, -105.64, '🚇', '莫法特隧道', '6 英里长，穿过大陆分水岭，出来就快到丹佛了。']] },
+    'Southwest Chief': { e: '🌵', s: '洛杉矶 ⇄ 芝加哥，大约 43 小时，每天一班。走当年圣达菲铁路的路线：莫哈维沙漠、印第安土地、新墨西哥高原、堪萨斯大平原。', side: '去大峡谷在<b>弗拉格斯塔夫</b>下车。新墨西哥的拉顿山口一段两边都好看。从 Upland 上车可以去圣贝纳迪诺或河滨站（晚上）。', hl: [
+      [34.30, -117.45, '⛰️', 'Cajon 山口', '翻越圣贝纳迪诺山，就在 Upland 东北边，东行晚上经过。'],
+      [35.198, -111.648, '🏜️', '弗拉格斯塔夫', '大峡谷的门口：坐接驳车或租车大约 1.5 小时到南缘。'],
+      [35.08, -106.65, '🪶', '阿尔伯克基', '停车时间较长，可以下车走走。'],
+      [35.48, -105.88, '🎨', '拉米（圣塔菲）', '下车坐接驳车去圣塔菲，美国最老的州首府，土坯房和艺术区。'],
+      [36.98, -104.48, '🚂', '拉顿山口', '整条线的最高点，新墨西哥和科罗拉多交界。'],
+      [40.62, -91.32, '🌊', '密西西比河', '在麦迪逊堡过密西西比河大桥。']] },
+    'Sunset Limited': { e: '🌅', s: '洛杉矶 ⇄ 新奥尔良，大约 46 小时，<b>每周只有 3 班</b>。美国最老的长途车名之一：沙漠、德州大平原、路易斯安那的沼泽和爵士之城。', side: '离 Upland 最近的一条线：在<b>安大略（Ontario）</b>和<b>波莫纳</b>都停，但时间在半夜或凌晨。', hl: [
+      [34.06, -117.65, '🏠', '安大略站', '离 Upland 十几分钟。站台无人值守，提前在 App 上买票，注意是深夜 / 凌晨发车。'],
+      [32.22, -110.97, '🌵', '图森', '巨人柱仙人掌的故乡。'],
+      [31.76, -106.49, '🌮', '埃尔帕索', '对岸就是墨西哥。'],
+      [29.71, -101.37, '🌉', '佩科斯河高桥', '美国最高的铁路桥之一，离河面三百多英尺。'],
+      [29.42, -98.48, '🏛️', '圣安东尼奥', '阿拉莫和河滨步道。德州之鹰号的车厢在这里接上 / 分开。'],
+      [29.94, -90.17, '🎺', '新奥尔良', '过休伊·朗大桥进城，终点就是爵士乐的故乡。']] },
+    'Texas Eagle': { e: '🦅', s: '芝加哥 ⇄ 圣路易斯 ⇄ 达拉斯 ⇄ 圣安东尼奥。部分车厢在圣安东尼奥挂上日落特快，一路开到洛杉矶。', side: '想从洛杉矶直达芝加哥又不想走西南酋长号，可以坐它的直通车厢，全程大约 65 小时。', hl: [
+      [38.62, -90.18, '🌈', '圣路易斯拱门', '过密西西比河时能看到大拱门。'],
+      [30.27, -97.74, '🎸', '奥斯汀', '现场音乐之都。'],
+      [32.78, -96.81, '🤠', '达拉斯', '']] },
+    'Capitol Corridor': { e: '🌉', s: '圣何塞 ⇄ 奥克兰 ⇄ 萨克拉门托，湾区的城际通勤火车，班次很多。', side: '往萨克拉门托方向坐<b>左边</b>，过卡奎内斯海峡时铁轨就贴着水边。', hl: [
+      [37.794, -122.272, '⚓', '杰克伦敦广场', '奥克兰海边，下车就是餐厅和渡轮码头。'],
+      [38.05, -122.23, '🌊', '卡奎内斯海峡', '铁轨贴着海峡和大桥底下开。'],
+      [38.15, -121.95, '🦆', '苏伊森湿地', '西海岸最大的河口湿地之一，看鸟。'],
+      [38.58, -121.51, '🏛️', '萨克拉门托', '加州首府，从车站走几分钟就是老城区的加州铁路博物馆，非常值得看。']] }
+  };
+
+  var GUIDE = {
+    book: [
+      ['📅', '越早买越便宜', '票价分档，便宜的那档卖完就自动涨价。',
+        '<p>Amtrak 和机票一样按需求定价：长途车、卧铺、节假日前后涨得最厉害。提前几周到几个月买最划算；太平洋冲浪者号这种短途车价格比较稳定。</p><p>在 Amtrak 官网或 App 里买，电子票存在手机上，查票时给乘务员扫一下就行。<b>别在第三方网站买</b>，改签退票很麻烦。</p>', '在官网用日历视图（「Flexible dates」）比较前后几天的价格。'],
+      ['🎟️', '票种：Saver、Value、Flex', '便宜的不能退，贵的随便改。',
+        '<ul><li><b>Saver</b>：最便宜，退票基本不退钱，改签要扣费。</li><li><b>Value</b>：普通票，可以改签（可能补差价），退票有手续费或退成代金券。</li><li><b>Flex</b>：最贵，全额可退。</li><li><b>Business / 商务座</b>：短途线上有，座位更宽、有免费饮料。</li><li><b>卧铺</b>：按房间收费，含餐。</li></ul>', '具体退改规则以买票时页面上写的为准，常常调整。'],
+      ['🏷️', '常见折扣', '老人、儿童、学生、军人、AAA 会员都有折扣。',
+        '<p>65 岁以上老人、2–12 岁儿童（大人带）、学生、现役和退伍军人、AAA 会员等常有折扣；比例和能不能叠加以官网为准，有的折扣不能用在最便宜的 Saver 票上。官网常有限时促销，比如「两人同行一人半价」。</p>', ''],
+      ['⭐', '免费注册 Guest Rewards', '攒积分换车票、升舱。',
+        '<p>Amtrak Guest Rewards 会员免费注册，坐车攒积分，积分能直接换车票或卧铺。用 Amtrak 联名信用卡攒得更快（有年费，自己算划不划算）。</p>', ''],
+      ['🔼', 'BidUp：竞价升舱', '出发前几天收到邮件，出个价就可能升卧铺或商务。',
+        '<p>如果你坐的车有空余的高等级座位，出发前几天 Amtrak 可能发邮件邀请你竞价升舱。出一个你觉得值的价钱，被接受了才扣钱。坐长途经济座的话，这是用低价体验卧铺的好机会。</p>', ''],
+      ['🎫', 'USA Rail Pass：大环线最划算', '30 天内坐 10 段。',
+        '<p>适合想绕美国一圈的人：比如洛杉矶 → 芝加哥（西南酋长号）→ 湾区（加州和风号）→ 洛杉矶（海岸星光号）。只包经济座，要提前在 App 上为每一段订座，卧铺可以另外加钱升级。价格会变，常有促销。</p>', '一段 = 一次上车到下车，中途换车算两段。'],
+      ['🛏️', '卧铺两个人住更划算', '房间价格固定，一个人和两个人差不多。',
+        '<p>卧铺按房间卖，第二个人只多一点点钱，所以两个人分摊每人便宜很多。卧铺票已经<b>包含三餐</b>（餐车），还能用大站的贵宾休息室，算上吃饭和住宿，长途其实没有看起来那么贵。</p>', ''],
+      ['📱', '用 Amtrak App', '买票、电子票、查晚点、改签都在里面。',
+        '<p>App 里能看到车现在开到哪儿、预计几点到站、站台号（大站）。上车前一天看一下车有没有改点或者换成大巴（施工时偶尔会这样）。</p>', '本页「📡 实时」也能看所有列车现在的位置和晚点。']
+    ],
+    seat: [
+      ['💺', '经济座（Coach）', '比飞机宽得多，腿能伸直。',
+        '<p>西部长途车（海岸星光、加州和风、西南酋长、日落特快、德州之鹰）用的是双层的 <b>Superliner</b> 车厢：经济座在楼上，座位又宽又能深度后仰，有脚托，腿前空间比飞机头等舱还大。每个座位有插座。</p><ul><li>楼上看风景好，也安静；楼下有厕所和行李架。</li><li>别选靠楼梯和厕所的座位，人来人往。</li><li>晚上灯会调暗，带眼罩、耳塞、小毯子就能睡。</li></ul>', '长途经济座一般由乘务员分座位，同行的人会排在一起。'],
+      ['🛏️', '小卧室（Roomette）', '两个座位晚上变成上下铺。',
+        '<p>白天是两个面对面的宽座位，靠大窗户；晚上乘务员帮你铺成上下铺。房间很小（大约 3.5 × 6.5 英尺），厕所和淋浴在车厢里共用。<b>含餐车的三餐</b>，乘务员会送咖啡、帮铺床。</p><ul><li>上铺比较窄、离车顶近，个子大的人睡下铺。</li><li>楼下的房间离行李近，楼上视野好、晃得少一点。</li></ul>', '一般给卧铺乘务员每人每晚 10–20 美元小费。'],
+      ['🚪', '卧室（Bedroom）', '有独立的厕所和淋浴。',
+        '<p>比 Roomette 大一倍，有沙发、扶手椅、独立的卫生间（厕所 + 淋浴在一个小隔间里），晚上也是上下铺。适合两个人长途坐好几天。还有能住两大两小的家庭卧室和无障碍卧室。</p>', ''],
+      ['🌅', '观景车（Sightseer Lounge）', '所有乘客都能去坐的「移动观景台」。',
+        '<p>车顶到车窗都是玻璃，座位朝窗外。经过好风景时人很多，提前去占位。楼下通常是咖啡车（Café），卖咖啡、零食、三明治、啤酒。</p>', '有些路段会有志愿讲解员在观景车里介绍沿途历史。'],
+      ['🌊', '太平洋冲浪者号的座位', '短途车，经济座不对号入座。',
+        '<p>经济座买了票上车随便坐（周末和节假日可能要站一会儿）；商务座有固定座位和免费饮料零食。双层车厢坐楼上看海，靠海的一侧：往北坐左边，往南坐右边。车上能带自行车。</p>', '']
+    ],
+    board: [
+      ['🧳', '行李', '每人免费：2 件随身行李 + 2 件小包。',
+        '<p>一般规定：每人可以免费带 <b>2 件随身行李</b>（每件不超过 50 磅、28 × 22 × 14 英寸）和 <b>2 件个人物品</b>（不超过 25 磅）。有行李车的线路还能免费托运 2 件。比坐飞机宽松得多，但上下车要自己拎，别带太多。</p>', '大站有红帽子（Red Cap）行李员可以帮忙，给点小费。'],
+      ['🍽️', '吃饭', '卧铺含三餐；经济座可以去咖啡车买，也可以自己带。',
+        '<p>长途车上有餐车或者「流线型餐饮」，卧铺乘客的三餐已经包含在票价里。经济座乘客可以去咖啡车买热狗、汉堡、泡面、零食和饮料，价格偏贵。<b>自己带吃的完全可以</b>：三明治、水果、泡面（车上有热水）、零食。</p>', '在餐车里，乘务员会把你和不认识的人安排在一桌——这是坐火车的乐趣之一，聊天能认识很多有意思的人。'],
+      ['🔌', '充电和上网', '每个座位有插座；Wi-Fi 在西部基本靠不住。',
+        '<p>座位旁边有插座，带一个<b>短的插线板</b>很实用。西部长途车很多路段穿过山区和沙漠，手机都没信号，提前下载好电影、音乐、地图和电子书。</p>', ''],
+      ['🚬', '下车透气', '长时间停站可以下车走走，但别走远。',
+        '<p>有些大站会停 10–30 分钟（列车员会广播「fresh air break」），可以下车活动、吸烟。<b>离车门近一点</b>，火车不会等人，听到「All aboard」就上车。</p>', ''],
+      ['⏰', '晚点很常见', '长途车晚点一两个小时很正常。',
+        '<p>Amtrak 在西部大多跑在货运铁路的轨道上，常常要停下来给货车让路，长途车晚点一两个小时、甚至更多很常见。<b>别把转车、航班、酒店入住安排得太紧</b>，留出半天的余量。</p>', '本页「📡 实时」能看每列车现在晚了多少。'],
+      ['🚿', '睡觉和洗澡', '卧铺有淋浴，经济座带好小件就能睡。',
+        '<p>经济座过夜：颈枕、眼罩、耳塞、厚外套或小毯子（晚上冷气足）、拖鞋、湿巾、牙刷。卧铺车厢有淋浴间，毛巾和香皂都有。</p>', ''],
+      ['🔒', '安全', '和坐飞机一样，看好自己的东西。',
+        '<p>经济座晚上睡觉时，钱包、手机、证件贴身放；大行李放在楼下行李架，锁上。离开座位时把贵重物品带走。遇到问题找列车员（conductor）。</p>', ''],
+      ['🎒', '最实用的小东西', '老火车迷的经验。',
+        '<ul><li>短插线板、长充电线</li><li>拖鞋（长途脱鞋舒服很多）</li><li>保温杯（咖啡车有热水）</li><li>一卷胶带或夹子（窗帘透光时夹住）</li><li>双筒望远镜（看动物、看远山）</li><li>零钱（小费、咖啡）</li><li>离线地图和这一页的时刻表截图</li></ul>', '']
+    ],
+    upland: [
+      ['🚆', '最方便：Metrolink 到洛杉矶联合车站', 'Upland 站坐圣贝纳迪诺线，一小时左右到市中心。',
+        '<p>Upland 有 Metrolink 车站（不是 Amtrak 站）。坐 <b>San Bernardino Line</b> 往洛杉矶方向，终点就是洛杉矶联合车站（Union Station），所有 Amtrak 西部长途车和太平洋冲浪者号都从这里出发。</p><ul><li>工作日班次多，周末少一些，先在 Metrolink App 查好时刻。</li><li>Metrolink 周末常有优惠的一日通票，票价以官网为准。</li><li>Upland 站可以免费停车（以现场告示为准）。</li></ul>', '赶早上的海岸星光号（约 10 点开），坐早一班 Metrolink，留出 45 分钟。'],
+      ['🏠', '离家最近的 Amtrak 站：安大略、波莫纳', '日落特快在这两站停，但时间在半夜或凌晨。',
+        '<p>安大略（ONA）和波莫纳（POS）只有日落特快 / 德州之鹰直通车厢停靠，每周 3 班，时间不太友好（见下面的时刻）。站台无人值守，没有售票窗口，提前在 App 上买好票，夜里让家人或叫车送你。</p>', ''],
+      ['🌵', '西南酋长号：圣贝纳迪诺、河滨、富勒顿', '往东的车傍晚从洛杉矶开，晚上经过这几站。',
+        '<p>去大峡谷（弗拉格斯塔夫）、圣塔菲、芝加哥，可以不进洛杉矶市区，直接去圣贝纳迪诺或河滨上车，离 Upland 更近。但到站时间在晚上，车站周围不热闹，最好有人送。</p>', ''],
+      ['🏛️', '洛杉矶联合车站小攻略', '提前 30–45 分钟到。',
+        '<ul><li>大屏幕上找车次号和站台（Track），开车前 15–30 分钟开始上车。</li><li>坐卧铺可以去 <b>Metropolitan Lounge</b> 贵宾休息室：免费饮料、零食、存行李，工作人员会带你上车。</li><li>大厅本身很美：1939 年的西班牙复兴式建筑，木质长椅、装饰艺术吊灯，很多电影在这里拍。</li><li>马路对面就是 Olvera Street（洛杉矶最老的街，墨西哥风情），往北走几分钟是唐人街。</li></ul>', '自己开车去的话，车站有收费停车场，长途旅行停好几天费用不少，Metrolink 往往更划算。']
+    ]
+  };
+  var TRIPS = [
+    ['🌊', '一日游：圣巴巴拉', '第一次坐 Amtrak 的完美选择', ['早上从 Upland 坐 Metrolink 到洛杉矶联合车站', '坐太平洋冲浪者号往北，<b>坐左边</b>，大约 2.5 小时到圣巴巴拉', '走到 State St 吃午饭，逛 Stearns 码头、法院钟楼（免费上顶楼看风景）', '傍晚坐回程车，日落时 Ventura 一段正好看海'], 'Pacific Surfliner', ['LAX', 'SBA']],
+    ['🌴', '周末：圣迭戈', '海边悬崖、老城、小意大利', ['洛杉矶坐太平洋冲浪者号往南，<b>坐右边</b>，大约 3 小时', '过 San Clemente 和 Del Mar 时铁轨就在海边', '圣迭戈 Santa Fe Depot 下车，走路就到小意大利和海港', '想住海边就在 Old Town 或 Solana Beach 下车'], 'Pacific Surfliner', ['LAX', 'SAN']],
+    ['🌉', '坐火车去湾区', '海岸星光号：一整天的海景和农田', ['早上从洛杉矶上海岸星光号（每天一班），<b>坐左边</b>', '上午到午后一路看海：Ventura、圣巴巴拉、范登堡海岸', '下午过 Cuesta 马蹄弯，傍晚穿过萨利纳斯谷', '晚上到圣何塞或奥克兰下车，接上本站「湾区生活」'], 'Coast Starlight', ['LAX', 'SJC']],
+    ['🏜️', '去大峡谷', '西南酋长号睡一夜，早上到弗拉格斯塔夫', ['傍晚从洛杉矶（或圣贝纳迪诺 / 河滨）上西南酋长号', '车上过一夜（推荐 Roomette）', '清晨到弗拉格斯塔夫，租车或坐接驳车 1.5 小时到大峡谷南缘', '回程同样坐夜车回来，3–4 天'], 'Southwest Chief', ['LAX', 'FLG']],
+    ['🌲', '经典：海岸星光号全程', '洛杉矶到西雅图，35 小时', ['订一间 Roomette，两人分摊', '第一天看海岸和农田，晚上在餐车吃饭', '第二天早上醒来是俄勒冈的雪山、湖泊和森林', '傍晚到西雅图，逛派克市场'], 'Coast Starlight', ['LAX', 'SEA']],
+    ['🏔️', '终极：加州和风号', '公认美国最美的火车', ['从湾区 Emeryville 出发（可以先坐海岸星光号到湾区）', '第一天中午到下午翻越内华达山、唐纳山口', '夜里穿过内华达和犹他，第二天白天是科罗拉多的峡谷和落基山', '在丹佛下车，或者一直坐到芝加哥'], 'California Zephyr', ['EMY', 'DEN']],
+    ['🎺', '去新奥尔良', '日落特快，就从家门口的安大略上车', ['日落特快每周 3 班，在安大略站停', '两天穿过亚利桑那、德州', '到新奥尔良听爵士、吃法式甜甜圈', '注意上车时间在深夜，提前安排好接送'], 'Sunset Limited', ['ONA', 'NOL']],
+    ['🔁', '大环线：一周绕西部一圈', 'USA Rail Pass 最划算的用法', ['洛杉矶 → 芝加哥：西南酋长号', '芝加哥 → 湾区：加州和风号', '湾区 → 洛杉矶：海岸星光号', '中间在大峡谷、丹佛、湾区各停几天'], 'California Zephyr', ['CHI', 'EMY']]
+  ];
+  var PACK = [
+    ['证件和票', ['Real ID 驾照或护照', '手机里的电子票（截图备一份）', '信用卡 + 一点现金（小费、咖啡）']],
+    ['电子', ['手机充电器 + 长线', '短插线板（座位只有一两个插座）', '充电宝', '耳机', '提前下载好的电影、音乐、离线地图']],
+    ['睡得好', ['颈枕', '眼罩、耳塞', '小毯子或厚外套（车上冷气足）', '拖鞋']],
+    ['吃喝', ['水瓶或保温杯', '三明治、水果、零食', '泡面或速溶咖啡（车上有热水）']],
+    ['洗漱', ['牙刷牙膏、湿巾、免洗洗手液', '常用药、晕车药', '卧铺：洗澡用的拖鞋']],
+    ['好玩', ['双筒望远镜', '一本书', '这一页的时刻表和沿途看点（截个图）']]
+  ];
+
+  // ================= 页面骨架 =================
+  var TABS = [['start', '🚂 入门'], ['routes', '🗺️ 线路'], ['time', '⏱️ 查时刻'], ['live', '📡 实时'], ['trips', '🗓️ 行程推荐'], ['book', '🎫 订票省钱'], ['seat', '🛏️ 座位卧铺'], ['board', '🧳 车上'], ['upland', '🏠 从 Upland 出发'], ['pack', '✅ 打包清单']];
+  var D = null, TAB = (location.hash || '').slice(1) || ls('tab') || 'start', RT = ls('rt') || 'Pacific Surfliner', MAPS = {}, LIVE = null, LT = null;
+  if (!TABS.some(function (t) { return t[0] === TAB; })) TAB = 'start';
+
+  function render() {
+    $('tabs').innerHTML = TABS.map(function (t) { return '<button data-t="' + t[0] + '" class="' + (t[0] === TAB ? 'on' : '') + '">' + t[1] + '</button>'; }).join('');
+    Object.keys(MAPS).forEach(function (k) { try { MAPS[k].remove(); } catch (e) { } delete MAPS[k]; });
+    clearTimeout(LT);
+    var f = { start: start, routes: routes, time: timeTab, live: live, trips: trips, pack: pack }[TAB];
+    if (f) f(); else guide(TAB);
+    var on = $('tabs').querySelector('.on'); if (on && on.scrollIntoView) on.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }
+  function setTab(t) { TAB = t; ls('tab', t); try { history.replaceState(null, '', '#' + t); } catch (e) { } render(); window.scrollTo(0, Math.min(window.scrollY, $('tabs').offsetTop)); }
+  $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (b) setTab(b.getAttribute('data-t')); };
+
+  function cards(list) {
+    return list.map(function (x, i) { return '<div class="card" data-c="' + i + '"><div class="hd"><div class="em">' + x[0] + '</div><div class="ti"><h3>' + x[1] + '</h3><div class="s">' + x[2] + '</div></div><div class="ar">▾</div></div><div class="bd">' + x[3] + (x[4] ? '<div class="tip">💡 ' + x[4] + '</div>' : '') + '</div></div>'; }).join('');
+  }
+  document.addEventListener('click', function (e) { var h = e.target.closest && e.target.closest('.card .hd'); if (h) h.parentNode.classList.toggle('open'); });
+
+  // ---------- 数据工具 ----------
+  function tmin(t) { var a = t.split(':'); return +a[0] * 60 + +a[1]; }
+  function ymd(d) { return d.getFullYear() + '' + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2); }
+  function runs(t, date) {   // 这班车在 date（Date，始发站当地日期）开不开；合并过的车次看所有日历
+    var k = ymd(date), wd = (date.getDay() + 6) % 7;
+    return (t.cals || [t]).some(function (c) { return k >= c.from && k <= c.to && c.days.charAt(wd) === '1'; });
+  }
+  function curDays(t) {   // 今天起有效的开行星期（多个日历合并）
+    var k = ymd(new Date()), o = [0, 0, 0, 0, 0, 0, 0];
+    (t.cals || [t]).forEach(function (c) { if (c.to >= k) for (var i = 0; i < 7; i++) if (c.days.charAt(i) === '1') o[i] = 1; });
+    return o.join('');
+  }
+  function shiftDays(days, off) { var o = ''; for (var i = 0; i < 7; i++) o += days.charAt(((i - off) % 7 + 7) % 7); return o; }
+  function dur(m) { var h = Math.floor(m / 60), mm = m % 60; return (h ? h + ' 小时' : '') + (mm ? ' ' + mm + ' 分' : ''); }
+  function span(t, a, b) {   // 从第 a 个站开到第 b 个站要多少分钟
+    var A = t.st[a], B = t.st[b];
+    if (A.length > 5) return B[4] - A[5];   // 数据里带了经过的分钟数，跨时区也准
+    return (B[3] - A[3]) * 1440 + tmin(B[1] || B[2]) - tmin(A[2] || A[1]);
+  }
+  function routeOf(name) { return D.routes.filter(function (r) { return r.n === name; })[0]; }
+  function tripsOf(r) { return D.trips.filter(function (t) { return t.r === r.i; }); }
+  function uniq(list) {   // 同一车次、同样时刻的多条（不同日历）合并成一条，日历都保留在 cals 里
+    var seen = {}, out = [];
+    list.forEach(function (t) {
+      var k = t.no + '|' + t.st.map(function (x) { return x[0] + x[2]; }).join(',');
+      if (!seen[k]) { seen[k] = { r: t.r, no: t.no, h: t.h, dir: t.dir, st: t.st, cals: [] }; out.push(seen[k]); }
+      seen[k].cals.push({ days: t.days, from: t.from, to: t.to });
+    });
+    out.forEach(function (t) { t.days = curDays(t); });
+    return out;
+  }
+  function freq(r) {
+    var ts = tripsOf(r), today = new Date(), n = {};
+    for (var i = 0; i < 7; i++) { var d = new Date(today); d.setDate(d.getDate() + i); ts.forEach(function (t) { if (runs(t, d)) n[t.no] = 1; }); }
+    return Object.keys(n).length;
+  }
+  function wdays(days) { var s = '一二三四五六日', o = ''; for (var i = 0; i < 7; i++) if (days.charAt(i) === '1') o += s.charAt(i); return o.length === 7 ? '每天' : '周' + o.split('').join('、'); }
+
+  // ---------- 🚂 入门 ----------
+  function start() {
+    var h = '<div class="lead">Amtrak 是美国的国家铁路公司，全国几乎所有的城际客运火车都是它开的。坐火车比开车轻松、比飞机自在：能站起来走、去观景车看风景、在餐车和陌生人聊天，还能带两大件行李。</div>';
+    h += '<div class="box"><h2>⭐ 先从这几条开始</h2>';
+    D.routes.forEach(function (r) {
+      var info = RI[r.n] || {}, ts = tripsOf(r), long = ts.slice().sort(function (a, b) { return b.st.length - a.st.length; })[0];
+      h += '<div class="hl" data-rt="' + esc(r.n) + '"><span>' + (info.e || '🚆') + '</span><div><b style="color:' + r.c + '">' + esc(r.zh) + ' <small style="color:var(--faint);font-weight:400">' + esc(r.n) + '</small></b><small>' + (info.s || '') + '</small></div></div>';
+    });
+    h += '</div>';
+    h += '<div class="box"><h2>🧭 第一次坐，记住这几条</h2><ul style="margin:6px 0;padding-left:20px;line-height:1.8"><li>在官网或 <b>Amtrak App</b> 买票，越早越便宜。</li><li>从 Upland 坐 <b>Metrolink</b> 一小时到洛杉矶联合车站，西部长途车都从这里出发。</li><li>提前 30–45 分钟到站，大屏幕找车次号和站台。</li><li>长途车<b>晚点很常见</b>，别把后面的安排排太紧。</li><li>经济座就很舒服；过夜的话 Roomette 小卧室含三餐，两个人分摊更划算。</li><li>去<b>观景车</b>看风景，去<b>餐车</b>和陌生人拼桌聊天。</li></ul></div>';
+    h += '<div class="box"><h2>🔗 常用链接</h2><p style="margin:4px 0;line-height:2"><a href="https://www.amtrak.com/" target="_blank" rel="noopener">Amtrak 官网（买票）</a> · <a href="https://www.amtrak.com/track-your-train.html" target="_blank" rel="noopener">官方查车</a> · <a href="https://www.pacificsurfliner.com/" target="_blank" rel="noopener">太平洋冲浪者号</a> · <a href="https://metrolinktrains.com/" target="_blank" rel="noopener">Metrolink</a> · <a href="https://amtraker.com/" target="_blank" rel="noopener">Amtraker 实时地图</a></p></div>';
+    $('main').innerHTML = h;
+    $('main').onclick = function (e) { var b = e.target.closest('[data-rt]'); if (b) { RT = b.getAttribute('data-rt'); ls('rt', RT); setTab('routes'); } };
+  }
+
+  // ---------- 🗺️ 线路 ----------
+  var DIR = {};
+  function routes() {
+    var r = routeOf(RT) || D.routes[0], info = RI[r.n] || {}, ts = tripsOf(r);
+    var h = '<div class="chips" id="rch">' + D.routes.map(function (x) { return '<button data-r="' + esc(x.n) + '" class="' + (x.n === r.n ? 'on' : '') + '"><i style="background:' + x.c + '"></i>' + esc(x.zh.replace(/（.*/, '')) + '</button>'; }).join('') + '</div>';
+    var long = ts.slice().sort(function (a, b) { return b.st.length - a.st.length; })[0], tot = long ? span(long, 0, long.st.length - 1) : 0;
+    h += '<div class="box"><h2>' + (info.e || '🚆') + ' ' + esc(r.zh) + ' <small style="color:var(--faint);font-weight:400;font-size:14px">' + esc(r.n) + '</small></h2><div style="font-size:14.5px;color:var(--soft)">' + (info.s || '') + '</div>' +
+      '<div class="kpi"><div>全程<b>' + (long ? esc(sn(long.st[0][0]).replace(/（.*/, '')) + ' → ' + esc(sn(long.st[long.st.length - 1][0]).replace(/（.*/, '')) : '') + '</b></div><div>大约<b>' + dur(tot) + '</b></div><div>未来 7 天<b>' + freq(r) + ' 个车次</b></div></div>' +
+      (info.side ? '<div class="tip">🪟 <b>坐哪边：</b>' + info.side + '</div>' : '') + '</div>';
+    h += '<div class="map" id="rmap"></div>';
+    if (info.hl && info.hl.length) h += '<div class="box"><h2>✨ 沿途看点</h2>' + info.hl.map(function (x, i) { return '<div class="hl" data-hl="' + i + '"><span>' + x[2] + '</span><div><b>' + esc(x[3]) + '</b><small>' + esc(x[4]) + '</small></div></div>'; }).join('') + '<div class="note">点一下在地图上看位置。经过的时间取决于车次和晚点，看下面的时刻表估算。</div></div>';
+    // 时刻表：按方向（起点站）分组，选今天开的车次
+    var groups = {};
+    uniq(ts).forEach(function (t) { var k = t.st[0][0] + '>' + t.st[t.st.length - 1][0]; (groups[k] = groups[k] || []).push(t); });
+    var dirs = {}; uniq(ts).forEach(function (t) { var k = t.dir || '0'; (dirs[k] = dirs[k] || []).push(t); });
+    var dk = Object.keys(dirs).sort(), cur = DIR[r.n] != null && dirs[DIR[r.n]] ? DIR[r.n] : dk[0];
+    h += '<div class="box"><h2>🕐 时刻表</h2><div class="chips" id="dch">' + dk.map(function (k) {
+      var t = dirs[k].slice().sort(function (a, b) { return b.st.length - a.st.length; })[0];
+      return '<button data-d="' + k + '" class="' + (k === cur ? 'on' : '') + '">往 ' + esc(sn(t.st[t.st.length - 1][0]).replace(/（.*/, '')) + '</button>';
+    }).join('') + '</div><div id="ttw"></div></div>';
+    h += '<div class="note">时刻来自 Amtrak 官方公开的时刻表数据（每周更新，最近 ' + esc(D.generated.slice(0, 10)) + '），都是各站当地时间。临时改点、施工换大巴以 Amtrak App 为准。</div>';
+    $('main').innerHTML = h;
+    function tt(k) {
+      var L = dirs[k].slice(), today = new Date(), todays = L.filter(function (t) { return runs(t, today); });
+      var pool = (todays.length ? todays : L).slice().sort(function (a, b) { return tmin(a.st[0][2] || a.st[0][1]) - tmin(b.st[0][2] || b.st[0][1]); });
+      var sel = ls('tn:' + r.n + ':' + k), t = pool.filter(function (x) { return x.no === sel; })[0] || pool.slice().sort(function (a, b) { return b.st.length - a.st.length; })[0];
+      var hh = (pool.length > 1 ? '<select class="sel" id="tsel">' + pool.map(function (x) { return '<option value="' + esc(x.no) + '"' + (x === t ? ' selected' : '') + '>' + esc(x.no) + ' 次 · ' + (x.st[0][2] || x.st[0][1]) + ' 从' + esc(sn(x.st[0][0]).replace(/（.*/, '')) + ' 开 → ' + esc(sn(x.st[x.st.length - 1][0]).replace(/（.*/, '')) + '</option>'; }).join('') + '</select>' : '') +
+        '<div class="note" style="margin-top:6px">' + esc(t.no) + ' 次 · ' + wdays(t.days) + '（始发站）' + (todays.length ? '' : ' · 今天不开') + '</div><table class="tt">' +
+        t.st.map(function (x) { var big = /^(LAX|SAN|SBA|SLO|SJC|OKJ|EMY|SAC|SEA|PDX|DEN|SLC|CHI|FLG|ABQ|NOL|SAS|ONA|POS|RNO|GSC|LMY|TUS|ELP|STL|DAL)$/.test(x[0]); return '<tr class="' + (big ? 'big' : '') + '"><td>' + (x[2] || x[1]) + (x[3] ? '<span class="d">+' + x[3] + '</span>' : '') + '</td><td>' + esc(sn(x[0])) + '<small>' + esc(sen(x[0])) + ' · ' + x[0] + '</small></td></tr>'; }).join('') + '</table>';
+      $('ttw').innerHTML = hh;
+      if ($('tsel')) $('tsel').onchange = function () { ls('tn:' + r.n + ':' + k, this.value); tt(k); };
+    }
+    tt(cur);
+    $('main').onclick = function (e) {
+      var b = e.target.closest('[data-r]'); if (b) { RT = b.getAttribute('data-r'); ls('rt', RT); render(); return; }
+      b = e.target.closest('[data-d]'); if (b) { DIR[r.n] = b.getAttribute('data-d'); routes(); return; }
+      b = e.target.closest('[data-hl]'); if (b && MAPS.r) { var x = info.hl[+b.getAttribute('data-hl')]; MAPS.r.setView([x[0], x[1]], 10); MAPS.r.hlm[+b.getAttribute('data-hl')].openPopup(); $('rmap').scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    };
+    loadLeaflet(function () {
+      var m = mkmap('rmap', 'r');
+      var line = L.polyline(r.shape, { color: r.c, weight: 5, opacity: .9 }).addTo(m);
+      r.stops.forEach(function (c) { var s = D.stations[c]; if (!s) return; L.circleMarker(s.ll, { radius: 4.5, color: '#222', weight: 1.5, fillColor: '#fff', fillOpacity: 1 }).bindPopup('<div class="pp"><b>' + esc(sn(c)) + '</b><br>' + esc(s.n) + ' · ' + c + '</div>').addTo(m); });
+      m.hlm = (info.hl || []).map(function (x) { return L.marker([x[0], x[1]], { zIndexOffset: 500, icon: L.divIcon({ className: 'hlm', html: '<span>' + x[2] + '</span>', iconSize: [26, 26], iconAnchor: [13, 13] }) }).bindPopup('<div class="pp"><b>' + x[2] + ' ' + esc(x[3]) + '</b><br>' + esc(x[4]) + '</div>', { maxWidth: 240 }).addTo(m); });
+      if (r.shape.length) m.fitBounds(line.getBounds(), { padding: [20, 20] });
+    });
+  }
+
+  // ---------- ⏱️ 查时刻 ----------
+  function timeTab() {
+    var codes = {}; D.trips.forEach(function (t) { t.st.forEach(function (x) { codes[x[0]] = 1; }); });
+    var list = Object.keys(codes).sort(function (a, b) { return sn(a).localeCompare(sn(b), 'zh'); });
+    var q = ls('q') || { a: 'LAX', b: 'SBA' }, d = new Date(), ds = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    function opts(v) { return list.map(function (c) { return '<option value="' + c + '"' + (c === v ? ' selected' : '') + '>' + esc(sn(c)) + ' · ' + c + '</option>'; }).join(''); }
+    $('main').innerHTML = '<div class="lead">选出发站、到达站和日期，列出这天所有直达的车。包括太平洋冲浪者号、海岸星光号、加州和风号、西南酋长号、日落特快、德州之鹰号和首府走廊。</div>' +
+      '<div class="box"><div class="frm"><label>从<select class="sel" id="qa">' + opts(q.a) + '</select></label><button class="swap" id="qs" title="对调">⇄</button><label>到<select class="sel" id="qb">' + opts(q.b) + '</select></label></div>' +
+      '<div class="chips" style="margin:10px 0 0">' + [['LAX', 'SBA'], ['LAX', 'SAN'], ['LAX', 'SJC'], ['LAX', 'FLG'], ['ONA', 'NOL'], ['EMY', 'DEN'], ['LAX', 'SEA']].map(function (p) { return '<button data-p="' + p[0] + '>' + p[1] + '">' + esc(sn(p[0]).replace(/（.*/, '')) + '→' + esc(sn(p[1]).replace(/（.*/, '')) + '</button>'; }).join('') + '</div>' +
+      '<label style="font-size:12.5px;color:var(--soft)">日期 <input type="date" class="sel" id="qd" value="' + ds + '"></label></div><div id="qr"></div>' +
+      '<div class="note">只列直达车（不含换乘和 Amtrak Thruway 接驳大巴）。时间都是当地时间；「+1」表示第二天到。票价、余票在 <a href="https://www.amtrak.com/" target="_blank" rel="noopener">Amtrak 官网</a> 或 App 查。</div>';
+    function go() {
+      var a = $('qa').value, b = $('qb').value, dd = new Date(($('qd').value || ds) + 'T12:00:00'); if (isNaN(dd)) dd = new Date(); ls('q', { a: a, b: b });
+      var res = [];
+      uniq(D.trips).forEach(function (t) {
+        var ia = -1, ib = -1; t.st.forEach(function (x, i) { if (x[0] === a && ia < 0) ia = i; if (x[0] === b) ib = i; });
+        if (ia < 0 || ib <= ia) return;
+        var start = new Date(dd); start.setDate(start.getDate() - t.st[ia][3]);   // 车次的始发日期
+        if (!runs(t, start)) return;
+        res.push([t, ia, ib]);
+      });
+      res.sort(function (x, y) { return tmin(x[0].st[x[1]][2] || x[0].st[x[1]][1]) - tmin(y[0].st[y[1]][2] || y[0].st[y[1]][1]); });
+      var seen = {}; res = res.filter(function (x) { var k = x[0].no + x[0].st[x[1]][2]; if (seen[k]) return false; seen[k] = 1; return true; });
+      if (!res.length) { $('qr').innerHTML = '<div class="empty">这一天没有从' + esc(sn(a)) + '直达' + esc(sn(b)) + '的车。<br>换个日期，或者看看反方向 / 换乘。</div>'; return; }
+      $('qr').innerHTML = res.map(function (x, i) {
+        var t = x[0], A = t.st[x[1]], B = t.st[x[2]], r = D.routes.filter(function (z) { return z.i === t.r; })[0] || {}, plus = B[3] - A[3];
+        return '<div class="res" data-i="' + i + '"><div class="rh"><div class="tm">' + (A[2] || A[1]) + '</div><div class="ar2">→</div><div class="tm">' + (B[1] || B[2]) + (plus ? '<small>+' + plus + '天</small>' : '') + '</div>' +
+          '<div class="rm"><b style="color:' + (r.c || 'inherit') + '">' + esc((r.zh || '').replace(/（.*/, '')) + ' ' + esc(t.no) + ' 次</b><br>' + dur(span(t, x[1], x[2])) + ' · ' + (x[2] - x[1]) + ' 站</div></div>' +
+          '<div class="rb"><table class="tt">' + t.st.slice(x[1], x[2] + 1).map(function (s) { return '<tr><td>' + (s[2] || s[1]) + (s[3] - A[3] ? '<span class="d">+' + (s[3] - A[3]) + '</span>' : '') + '</td><td>' + esc(sn(s[0])) + '<small>' + esc(sen(s[0])) + '</small></td></tr>'; }).join('') + '</table></div></div>';
+      }).join('');
+    }
+    $('qa').onchange = $('qb').onchange = $('qd').onchange = go;
+    $('qs').onclick = function () { var a = $('qa').value; $('qa').value = $('qb').value; $('qb').value = a; go(); };
+    $('main').onclick = function (e) {
+      var p = e.target.closest('[data-p]'); if (p) { var v = p.getAttribute('data-p').split('>'); $('qa').value = v[0]; $('qb').value = v[1]; go(); return; }
+      var r = e.target.closest('.res .rh'); if (r) r.parentNode.classList.toggle('open');
+    };
+    go();
+  }
+
+  // ---------- 📡 实时 ----------
+  var LF = ls('lf') || 'west', LSEL = null;
+  function delayOf(t) {   // 下一站的预计晚点（分钟）和下一站
+    var st = t.stations || [], nx = null;
+    for (var i = 0; i < st.length; i++) if (st[i].status === 'Enroute' || st[i].status === 'Station') { nx = st[i]; break; }
+    if (!nx) return { done: st.length && st[st.length - 1].status === 'Departed', nx: null, d: 0 };
+    var s = Date.parse(nx.schArr || nx.schDep), a = Date.parse(nx.arr || nx.dep);
+    return { nx: nx, d: isNaN(s) || isNaN(a) ? 0 : Math.round((a - s) / 60000) };
+  }
+  function dcol(d) { return d <= 5 ? '#2E9D4F' : d <= 30 ? '#D29A00' : d <= 90 ? '#E07B00' : '#C0362C'; }
+  function dtxt(d) { return d <= 1 ? '准点' : d < 60 ? '晚 ' + d + ' 分' : '晚 ' + Math.floor(d / 60) + ' 小时' + (d % 60 ? ' ' + d % 60 + ' 分' : ''); }
+  function ltime(iso, tz) { if (!iso) return ''; try { return new Date(iso).toLocaleTimeString('zh-CN', { timeZone: tz || 'America/Los_Angeles', hour: '2-digit', minute: '2-digit', hour12: false }); } catch (e) { return iso.slice(11, 16); } }
+  function live() {
+    $('main').innerHTML = '<div class="lead">全美 Amtrak 列车现在在哪儿、晚了多少。每分钟自动刷新。点列车看接下来的站和预计到站时间。</div>' +
+      '<div class="chips" id="lfc">' + [['west', '🌄 西部'], ['fav', '⭐ 本页这几条线'], ['all', '🇺🇸 全美']].map(function (x) { return '<button data-f="' + x[0] + '" class="' + (x[0] === LF ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+      '<div class="box" style="padding:8px 12px"><input class="sel" id="lq" style="width:100%" placeholder="🔍 搜车次号或车名，比如 14、Starlight、Chief"></div>' +
+      '<div class="map" id="lmap"></div><div class="box" style="padding:0" id="lls"><div class="empty">加载中…</div></div>' +
+      '<div class="note">位置和晚点数据来自 <a href="https://amtraker.com/" target="_blank" rel="noopener">Amtraker</a>（整合 Amtrak 官方的列车定位，非官方项目），偶尔会延迟几分钟；以 Amtrak App 为准。颜色：🟢 准点 · 🟡 晚半小时内 · 🟠 晚一个半小时内 · 🔴 更晚。</div>';
+    loadLeaflet(function () {
+      var m = mkmap('lmap', 'l'); m.setView([37.5, -112], 4); m.g = L.layerGroup().addTo(m);
+      D.routes.forEach(function (r) { L.polyline(r.shape, { color: r.c, weight: 2.5, opacity: .45, interactive: false }).addTo(m); });
+      liveLoad();
+    });
+    $('main').onclick = function (e) {
+      var b = e.target.closest('[data-f]'); if (b) { LF = b.getAttribute('data-f'); ls('lf', LF); var bs = $('lfc').querySelectorAll('button'); for (var i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-f') === LF ? 'on' : ''; liveDraw(); return; }
+      b = e.target.closest('[data-tid]'); if (b) { LSEL = b.getAttribute('data-tid'); var mk = MAPS.l && MAPS.l.mk && MAPS.l.mk[LSEL]; if (mk) { MAPS.l.setView(mk.getLatLng(), 8); mk.openPopup(); $('lmap').scrollIntoView({ block: 'center', behavior: 'smooth' }); } }
+    };
+    var qt; $('lq').oninput = function () { clearTimeout(qt); qt = setTimeout(liveDraw, 250); };
+  }
+  function liveLoad() {
+    clearTimeout(LT);
+    if (!$('lmap')) return;
+    var x = new XMLHttpRequest(); x.open('GET', 'https://api-v3.amtraker.com/v3/trains'); x.timeout = 20000;
+    x.onload = function () { try { LIVE = JSON.parse(x.responseText); } catch (e) { } liveDraw(); };
+    x.onerror = x.ontimeout = function () { if ($('lls')) $('lls').innerHTML = '<div class="empty">实时数据暂时取不到，稍后再试。</div>'; };
+    x.send();
+    LT = setTimeout(function () { if (!document.hidden) liveLoad(); else LT = setTimeout(liveLoad, 60000); }, 60000);
+  }
+  function liveDraw() {
+    var m = MAPS.l; if (!m || !LIVE) return;
+    var fav = {}; D.routes.forEach(function (r) { fav[r.n] = r; });
+    var q = ($('lq').value || '').trim().toLowerCase(), all = [];
+    Object.keys(LIVE).forEach(function (k) { (LIVE[k] || []).forEach(function (t) { if (t && t.lat) all.push(t); }); });
+    var L2 = all.filter(function (t) {
+      if (q) return (t.trainNum + ' ' + t.routeName).toLowerCase().indexOf(q) >= 0 || (fav[t.routeName] && fav[t.routeName].zh.indexOf(q) >= 0);
+      if (LF === 'west') return t.lon < -104;
+      if (LF === 'fav') return !!fav[t.routeName];
+      return true;
+    });
+    m.g.clearLayers(); m.mk = {};
+    L2.forEach(function (t) {
+      var dl = delayOf(t), c = dl.done ? '#888' : dcol(dl.d), up = (t.stations || []).filter(function (s) { return s.status !== 'Departed'; }).slice(0, 5), r = fav[t.routeName];
+      var mk = L.marker([t.lat, t.lon], { icon: L.divIcon({ className: 'trm', html: '<span style="background:' + c + '">' + esc(t.trainNum) + '</span>', iconSize: [34, 22], iconAnchor: [17, 11] }), zIndexOffset: r ? 500 : 0 })
+        .bindPopup(function () {
+          return '<div class="pp"><b>' + esc(t.trainNum) + ' 次 ' + esc(r ? r.zh.replace(/（.*/, '') : t.routeName) + '</b><br><span style="color:#888">' + esc(t.routeName) + '</span><br>' +
+            (dl.done ? '已到终点' : '<b style="color:' + c + '">' + dtxt(dl.d) + '</b>' + (dl.nx ? ' · 下一站 ' + esc(ZH[dl.nx.code] || dl.nx.name) : '')) +
+            (up.length ? '<table style="margin-top:6px;font-size:12.5px;border-collapse:collapse">' + up.map(function (s) { return '<tr><td style="padding:2px 8px 2px 0;white-space:nowrap"><b>' + ltime(s.arr || s.dep, s.tz) + '</b></td><td>' + esc(ZH[s.code] || s.name) + '</td></tr>'; }).join('') + '</table><span style="color:#888;font-size:11.5px">预计到站，各站当地时间</span>' : '') + '</div>';
+        }, { maxWidth: 260 });
+      m.g.addLayer(mk); m.mk[t.trainID] = mk;
+    });
+    var favL = L2.filter(function (t) { return fav[t.routeName]; }).concat(L2.filter(function (t) { return !fav[t.routeName]; }));
+    $('lls').innerHTML = (favL.length ? favL.slice(0, 80).map(function (t) {
+      var dl = delayOf(t), r = fav[t.routeName], c = dl.done ? '#888' : dcol(dl.d);
+      return '<div class="tr" data-tid="' + esc(t.trainID) + '"><span class="no" style="background:' + (r ? r.c : '#56606E') + '">' + esc(t.trainNum) + '</span><div class="mid"><b>' + esc(r ? r.zh.replace(/（.*/, '') : t.routeName) + '</b><small>' + (dl.done ? '已到终点' : dl.nx ? '下一站 ' + esc(ZH[dl.nx.code] || dl.nx.name) + ' · 预计 ' + ltime(dl.nx.arr || dl.nx.dep, dl.nx.tz) : '') + '</small></div><span class="dl" style="color:' + c + '">' + (dl.done ? '' : dtxt(dl.d)) + '</span></div>';
+    }).join('') : '<div class="empty">没有符合的列车。</div>') + (favL.length > 80 ? '<div class="note" style="padding:0 12px">只列前 80 列，地图上是全部。</div>' : '');
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && TAB === 'live' && $('lmap')) liveLoad(); });
+
+  // ---------- 🗓️ 行程 ----------
+  function trips() {
+    $('main').innerHTML = '<div class="lead">从一日游到一周大环线，按难度排。点「看线路」「查时刻」直接跳过去。</div>' + TRIPS.map(function (x, i) {
+      return '<div class="trip"><div class="th"><span>' + x[0] + '</span><div><b>' + x[1] + '</b><small>' + x[2] + '</small></div></div><ol>' + x[3].map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ol>' +
+        '<div class="go"><button data-gr="' + i + '">🗺️ 看线路</button><button data-gt="' + i + '">⏱️ 查时刻</button></div></div>';
+    }).join('');
+    $('main').onclick = function (e) {
+      var b = e.target.closest('[data-gr]'); if (b) { RT = TRIPS[+b.getAttribute('data-gr')][4]; ls('rt', RT); setTab('routes'); return; }
+      b = e.target.closest('[data-gt]'); if (b) { var p = TRIPS[+b.getAttribute('data-gt')][5]; ls('q', { a: p[0], b: p[1] }); setTab('time'); }
+    };
+  }
+
+  // ---------- 文字攻略 ----------
+  function guide(k) {
+    var lead = { book: '买票前看一眼，能省不少钱。票价、折扣和退改规则经常变，以 Amtrak 官网为准。', seat: '西部长途车用双层的 Superliner 车厢，经济座就很舒服；过夜可以考虑卧铺。', board: '车上怎么吃、怎么睡、怎么带行李，以及长途车的老规矩。', upland: '从家出发怎么最快坐上 Amtrak。' }[k];
+    var h = '<div class="lead">' + lead + '</div>' + cards(GUIDE[k] || []);
+    if (k === 'upland') {
+      var rows = [];
+      ['ONA', 'POS', 'SNB', 'RIV', 'FUL', 'LAX'].forEach(function (c) {
+        var seen = {};
+        uniq(D.trips).forEach(function (t) {
+          t.st.forEach(function (x, i) {
+            if (x[0] !== c || i === t.st.length - 1) return;
+            var r = D.routes.filter(function (z) { return z.i === t.r; })[0];
+            if (!r || r.n === 'Pacific Surfliner') return;
+            var key = c + t.no; if (seen[key]) return; seen[key] = 1;
+            rows.push([c, x[2] || x[1], t.no, r.zh.replace(/（.*/, ''), sn(t.st[t.st.length - 1][0]).replace(/（.*/, ''), wdays(shiftDays(t.days, x[3])) + '在这站开']);
+          });
+        });
+      });
+      h += '<div class="box"><h2>🕐 离 Upland 近的站，长途车几点到</h2><table class="tt ups">' + rows.map(function (x) { return '<tr><td>' + x[1] + '</td><td><b>' + esc(sn(x[0])) + '</b> · ' + esc(x[3]) + ' ' + esc(x[2]) + ' 次 → ' + esc(x[4]) + '<small>' + x[5] + '</small></td></tr>'; }).join('') + '</table><div class="note">太平洋冲浪者号班次多，在「⏱️ 查时刻」里查。时刻会变，出发前在 App 确认。</div></div>';
+    }
+    $('main').innerHTML = h;
+    $('main').onclick = null;
+  }
+
+  // ---------- ✅ 清单 ----------
+  function pack() {
+    var C = ls('pack') || {};
+    function draw() {
+      var n = 0, tot = 0;
+      var h = '<div class="lead">出发前一项项打勾，存在这台手机上。</div>' + PACK.map(function (g, gi) {
+        return '<div class="box"><h2 style="font-size:16px">' + g[0] + '</h2>' + g[1].map(function (x, i) { var k = gi + '-' + i, on = !!C[k]; tot++; if (on) n++; return '<div class="ck' + (on ? ' on' : '') + '" data-k="' + k + '"><i>' + (on ? '✓' : '') + '</i><span>' + esc(x) + '</span></div>'; }).join('') + '</div>';
+      }).join('');
+      h = '<div class="box" style="display:flex;align-items:center;gap:10px"><b style="font-size:18px">' + n + ' / ' + tot + '</b><span style="flex:1;color:var(--soft);font-size:13.5px">' + (n === tot ? '🎉 都准备好了，一路顺风！' : '还差 ' + (tot - n) + ' 样') + '</span><button class="swap" style="width:auto;padding:0 12px" id="pr">清空</button></div>' + h;
+      $('main').innerHTML = h;
+    }
+    draw();
+    $('main').onclick = function (e) {
+      if (e.target.id === 'pr') { C = {}; ls('pack', C); draw(); return; }
+      var b = e.target.closest('[data-k]'); if (b) { var k = b.getAttribute('data-k'); if (C[k]) delete C[k]; else C[k] = 1; ls('pack', C); draw(); }
+    };
+  }
+
+  // ---------- 地图 ----------
+  function loadLeaflet(cb) {
+    if (window.L) { cb(); return; }
+    var c = document.createElement('link'); c.rel = 'stylesheet'; c.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(c);
+    var j = document.createElement('script'); j.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'; j.onload = cb;
+    j.onerror = function () { var m = document.querySelector('.map'); if (m) m.innerHTML = '<div class="empty">地图组件加载失败，请检查网络后刷新</div>'; };
+    document.head.appendChild(j);
+  }
+  function mkmap(id, key) {
+    var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
+    var m = L.map(id, { zoomControl: true });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'rastertiles/voyager') + '/{z}/{x}/{y}{r}.png', { maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' }).addTo(m);
+    MAPS[key] = m; return m;
+  }
+
+  // ---------- 启动 ----------
+  var x = new XMLHttpRequest(); x.open('GET', 'amtrak/data.json?t=' + Math.floor(Date.now() / 36e5));
+  x.onload = function () {
+    try { D = JSON.parse(x.responseText); } catch (e) { $('main').innerHTML = '<div class="empty">加载失败，刷新试试</div>'; return; }
+    $('facts').innerHTML = ['🚆 ' + D.routes.length + ' 条精选线路', '🕐 ' + uniq(D.trips).length + ' 个车次时刻', '📡 全美列车实时位置', '🏠 Upland 出发 1 小时上车'].map(function (s) { return '<span>' + s + '</span>'; }).join('');
+    render();
+  };
+  x.onerror = function () { $('main').innerHTML = '<div class="empty">网络错误，稍后刷新</div>'; };
+  x.send();
+})();
+</script>
+<script src="nav.js?v=23" defer></script>
+</body>
+</html>
