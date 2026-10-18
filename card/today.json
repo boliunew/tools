@@ -1,16 +1,16 @@
 {
- "date": "2026-10-17",
- "kind": "口头禅",
- "en": "You're welcome",
- "zh": "不客气",
- "by": "别人向你道谢",
- "line": "You're welcome",
+ "date": "2026-10-18",
+ "kind": "名言",
+ "en": "A thing long expected takes the form of the unexpected when at last it comes.",
+ "zh": "期待已久的事，真正到来时，反倒像是意料之外。",
+ "by": "Mark Twain",
+ "line": "A thing long expected takes the form of the unexpected when at last it comes. — Mark Twain",
  "word": {
-  "w": "decisive",
-  "ph": "di'saisiv",
-  "zh": "a. 决定性的，坚定的，果断的",
-  "ex": "None of these considerations are decisive.",
-  "exzh": "这些考虑没有一项是决定性的。"
+  "w": "suburb",
+  "ph": "'sʌbә:b",
+  "zh": "n. 市郊住宅区，郊区，边缘",
+  "ex": "The other day something horrible happened in a Tokyo suburb.",
+  "exzh": "前几天，东京郊外发生了件可怕的事情。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
