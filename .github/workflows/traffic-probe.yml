@@ -11,9 +11,15 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           set +e
-          curl -sS -m 30 "https://api.fxtwitter.com/status/1585341984679469056" -o fx1.json
-          curl -sS -m 30 "https://api.fxtwitter.com/NASA/status/1838297133457662341" -o fx2.json
-          ls -la fx*.json > probe.txt
+          exec > probe.txt 2>&1
+          H(){ echo "=== $1"; curl -sS -m 60 -D /tmp/h -o /tmp/b -A "Mozilla/5.0" -H "Origin: https://boliunew.github.io" "$1"; echo "rc=$?"; grep -i -E "^HTTP|access-control-allow-origin|^location|content-type|content-length" /tmp/h; head -c ${2:-600} /tmp/b | tr -d '\r'; echo; }
+          H "https://api-v3.amtraker.com/v3/trains" 1500
+          H "https://api-v3.amtraker.com/v3/stations/LAX" 800
+          H "https://content.amtrak.com/content/gtfs/GTFS.zip" 100
+          curl -sSL -m 120 -A "Mozilla/5.0" https://content.amtrak.com/content/gtfs/GTFS.zip -o g.zip; ls -la g.zip; unzip -l g.zip
+          unzip -p g.zip routes.txt | head -60
+          unzip -p g.zip calendar.txt | head -5
+          unzip -p g.zip stops.txt | grep -i -E "upland|ontario|pomona|los angeles|san bernardino|riverside|fullerton" | head
       - run: |
           git config user.name bot; git config user.email bot@x
-          git add -A; git commit -m out; git push origin HEAD:traffic-probe
+          git add probe.txt; git commit -m out; git push origin HEAD:traffic-probe
