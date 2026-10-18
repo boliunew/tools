@@ -30,8 +30,8 @@ button{cursor:pointer}
 .hero{position:relative;overflow:hidden;color:#F4F1EC;background:linear-gradient(175deg,#E9B44C 0%,#C9733A 45%,#4A3326 100%);padding:calc(16px + env(safe-area-inset-top)) 0 18px}
 .hero:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-30px;height:90px;background:radial-gradient(60% 60% at 30% 40%,rgba(255,255,255,.18),transparent 70%),radial-gradient(50% 60% at 75% 50%,rgba(255,255,255,.14),transparent 70%);pointer-events:none}
 .hero .wrap{position:relative;z-index:1}
-.city{display:flex;width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none;gap:2px;margin:8px 0 0;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:2px}
-.city a{color:#F4F1EC;text-decoration:none;font-size:12.5px;padding:3px 8px;white-space:nowrap;border-radius:999px;opacity:.8}
+.city{display:flex;width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none;gap:0;margin:8px 0 0;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:2px}
+.city a{color:#F4F1EC;text-decoration:none;font-size:12.5px;padding:3px 7px;white-space:nowrap;border-radius:999px;opacity:.8}
 .city a.on{background:rgba(255,255,255,.92);color:#222;opacity:1;font-weight:600}
 .hero a.home{color:#F4F1EC;text-decoration:none;font-size:13px;opacity:.75}
 .hero h1{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif;font-size:28px;margin:6px 0 0;letter-spacing:.04em}
@@ -183,7 +183,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
 </head>
 <body>
 <div class="hero"><div class="wrap">
-  <a class="home" href="index.html">‹ 首页</a><span class="city"><a href="sf.html">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a><a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html" class="on">🍊 内陆帝国</a></span>
+  <a class="home" href="index.html">‹ 首页</a><span class="city"><a href="sf.html">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a><a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html" class="on">🍊 IE</a></span>
   <h1>内陆帝国<small>INLAND EMPIRE</small></h1>
   <svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 40 L60 16 L95 26 L140 4 L185 22 L230 12 L290 28 L340 14 L400 30 V40 Z" fill="#F4C27A" opacity=".22"/>

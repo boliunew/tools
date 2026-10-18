@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = open(os.path.join(ROOT, "sj.html"), encoding="utf-8").read()
 
 SWITCH = ('<span class="city"><a href="sf.html">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a>'
-          '<a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html">🍊 内陆帝国</a></span>')
+          '<a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html">🍊 IE</a></span>')
 
 NY_SVG = '''<svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 40 H400" stroke="#F4C27A" stroke-width="2"/>
