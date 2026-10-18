@@ -1,36 +1,49 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-17T13:47:10Z",
- "date": "2026-10-17",
+ "generated": "2026-10-18T14:03:46Z",
+ "date": "2026-10-18",
  "engine": "edge",
- "total": 459.2,
- "short": 290.8,
+ "total": 487.3,
+ "short": 315.0,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610170646",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610180703",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月17日 星期六",
+   "sub": "10月18日 星期日",
    "dur": 9.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610170646",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。星期六，10月17日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "周末还出门，辛苦了。星期日，10月18日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 阴天 89°/71°F",
-   "dur": 29.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610170646",
+   "sub": "Upland 晴 87°/62°F",
+   "dur": 29.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天阴天。早上7点出门大约华氏71度，22摄氏度，体感67度。傍晚5点下班大约华氏87度，30摄氏度，体感80度。白天最高89度，约31摄氏度；最低71度。基本不会下雨。白天空气质量良好，指数最高43。今天日落时间是傍晚6点13分。"
+     "t": "Upland今天晴。早上7点出门大约华氏62度，16摄氏度，体感57度。傍晚5点下班大约华氏84度，29摄氏度，体感77度。白天最高87度，约30摄氏度；最低62度。基本不会下雨。白天空气质量良好，指数最高46。今天日落时间是傍晚6点12分。"
+    }
+   ]
+  },
+  {
+   "id": "sky",
+   "title": "🔭 天象",
+   "sub": "Upland",
+   "dur": 14.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610180703",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "天象提醒。3天后，猎户座流星雨。10/21 夜里到次日凌晨 · 月光干扰大，月亮 84%· 理想每小时 20 颗 · 哈雷彗星的碎屑。"
     }
    ]
   },
@@ -39,7 +52,7 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 29.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610170646",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
@@ -52,7 +65,7 @@
    "title": "📈 股票池",
    "sub": "17 个候选",
    "dur": 63.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610170646",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
@@ -85,7 +98,7 @@
    "title": "🗓️ 财报与数据",
    "sub": "3 件大事",
    "dur": 36.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610170646",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
@@ -108,9 +121,9 @@
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · NPR",
-   "dur": 83.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610170646",
+   "sub": "BBC · Al Jazeera · The Guardian",
+   "dur": 95.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
@@ -118,48 +131,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，国际，难度B2。大意是：Katie Zacharia离职不到五天。"
+     "t": "第1条，来自BBC，国际，难度B1。大意是：一波自制合成毒品席卷美国并加深危机。"
     },
     {
      "lang": "en",
-     "t": "Katie Zacharia leaving White House role less than five days into job"
+     "t": "A wave of homemade, synthetic drugs sweeps US and deepens crisis"
     },
     {
      "lang": "en",
-     "t": "Her public debut as press secretary ended with a flurry of media criticism about her credentials and preparedness."
+     "t": "BBC News hears from users, dealers, prison and recovery workers as the country battles with a deadly new drug epidemic."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B1。大意是：美国海岸警卫队在墨西哥下哈海岸沉没后营救了16名船员。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：随着对美好生活的承诺逐渐消失，突尼斯的经济危机加深。"
     },
     {
      "lang": "en",
-     "t": "US coastguard rescues 16 after boat sinks off Mexico’s Baja coast"
+     "t": "Tunisia’s economic crisis deepens as the promise of a better life fades"
     },
     {
      "lang": "en",
-     "t": "Eleven people are believed to be still missing, with rescue operations under way."
+     "t": "Joblessness, failing services and rising costs deepen hardship across the country."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，科技，难度B1。大意是：在旧金山科技周，了解硅谷人们对人工智能热潮的看法。"
+     "t": "第3条，来自The Guardian，国际，难度B2。大意是：“4,000人关心我们自己的事业” ：四十年后，福克兰群岛再次面临敌对的阿根廷。"
     },
     {
      "lang": "en",
-     "t": "At SF Tech Week, a vibe check on how people in Silicon Valley feel about the AI boom"
+     "t": "‘4,000 people minding our own business’: four decades on, Falklands again face a hostile Argentina"
     },
     {
      "lang": "en",
-     "t": "In Silicon Valley, the AI boom means a lot of people are excited about this new technology, but concerned about when the music might stop."
+     "t": "Facing a slump in the polls, Argentina’s president is making economic attacks on the islands’ oil industry, and suggesting its key fisheries industry could be next A dozen local people and a uniformed military police officer (“Do you mind i"
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "confident · el mono",
-   "dur": 32.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610170646",
+   "sub": "forget · la plaza",
+   "dur": 30.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
@@ -167,15 +180,15 @@
     },
     {
      "lang": "en",
-     "t": "confident"
+     "t": "forget"
     },
     {
      "lang": "zh",
-     "t": "意思是：自信的。拼写是："
+     "t": "意思是：忘记。拼写是："
     },
     {
      "lang": "en",
-     "t": "c, o, n, f, i, d, e, n, t"
+     "t": "f, o, r, g, e, t"
     },
     {
      "lang": "zh",
@@ -183,7 +196,7 @@
     },
     {
      "lang": "en",
-     "t": "confident"
+     "t": "forget"
     },
     {
      "lang": "zh",
@@ -191,40 +204,44 @@
     },
     {
      "lang": "es",
-     "t": "el mono"
+     "t": "la plaza"
     },
     {
      "lang": "zh",
-     "t": "意思是：猴子。跟着读一遍。"
+     "t": "意思是：广场。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el mono"
+     "t": "la plaza"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "口头禅",
-   "dur": 11.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610170646",
+   "sub": "名言",
+   "dur": 27.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句口头禅。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "You're welcome"
+     "t": "A thing long expected takes the form of the unexpected when at last it comes."
     },
     {
      "lang": "zh",
-     "t": "意思是：不客气"
+     "t": "意思是：期待已久的事，真正到来时，反倒像是意料之外。这句话出自 Mark Twain。"
+    },
+    {
+     "lang": "zh",
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "You're welcome"
+     "t": "A thing long expected takes the form of the unexpected when at last it comes."
     }
    ],
    "opt": true
@@ -232,61 +249,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "和主管沟通",
-   "dur": 79.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610170646",
+   "sub": "工作邮件和短信",
+   "dur": 67.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：工作邮件和短信。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "确认一下，你是要我先做这个？"
+     "t": "能确认一下提柜时间吗？"
     },
     {
      "lang": "en",
-     "t": "Just to be clear, you want me to do this first?"
+     "t": "Can you confirm the pickup time?"
     },
     {
      "lang": "en",
-     "t": "Just to be clear, you want me to do this first?"
+     "t": "Can you confirm the pickup time?"
     },
     {
      "lang": "zh",
-     "t": "哪个更重要？"
+     "t": "抱歉回复晚了。"
     },
     {
      "lang": "en",
-     "t": "Which one is more important?"
+     "t": "Sorry for the late reply."
     },
     {
      "lang": "en",
-     "t": "Which one is more important?"
+     "t": "Sorry for the late reply."
     },
     {
      "lang": "zh",
-     "t": "我会晚一点，十五分钟到。"
+     "t": "我今天下午跟进。"
     },
     {
      "lang": "en",
-     "t": "I'm running a little late. Be there in fifteen."
+     "t": "I'll follow up this afternoon."
     },
     {
      "lang": "en",
-     "t": "I'm running a little late. Be there in fifteen."
+     "t": "I'll follow up this afternoon."
     },
     {
      "lang": "zh",
-     "t": "C 排做完了，接下来做什么？"
+     "t": "有问题请告诉我。"
     },
     {
      "lang": "en",
-     "t": "I finished row C. What's next?"
+     "t": "Let me know if you have any questions."
     },
     {
      "lang": "en",
-     "t": "I finished row C. What's next?"
+     "t": "Let me know if you have any questions."
     },
     {
      "lang": "zh",
@@ -298,13 +315,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "俄罗斯：门槛上别握手",
-   "dur": 18.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610170646",
+   "sub": "中国：饭桌上别敲碗",
+   "dur": 16.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：俄罗斯：门槛上别握手。隔着门槛握手、递东西被认为不吉利。做法：先进门，或者对方出来，再握手；送花送单数，双数是给逝者的；做客别空手，带点甜点或花。"
+     "t": "今日一招：中国：饭桌上别敲碗。筷子敲碗被一些人看作像乞讨，不吉利。做法：别用筷子敲碗、敲盘子；别把筷子插在饭碗中间；别用筷子指人。"
     }
    ],
    "opt": true
@@ -312,13 +329,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1933 · 1973 · 2024",
-   "dur": 29.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610170646",
+   "sub": "1910 · 1968 · 1977",
+   "dur": 29.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1933年，犹太裔普鲁士科学院教授爱因斯坦逃离纳粹德国，前往美国。1973年，石油输出国组织为报复西方国家对以色列的支援而宣布石油禁运，第一次石油危机爆发。2024年，以色列军方确认哈马斯最高领导人叶海亚·辛瓦尔在加沙走廊的南部城市拉法被击杀。"
+     "t": "历史上的今天。1910年，中国首届全国运动会开幕。1968年，在墨西哥城举行的夏季奥运会上，美国选手鲍勃·比蒙在跳远项目中跳出8.90米的距离，创下了保持23年之久的世界纪录。1977年，美国海军艾森豪号航空母舰开始服役，取代在二战时代就已建造的老航舰罗斯福号航空母舰。"
     }
    ],
    "opt": true
@@ -326,21 +343,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "题西林壁",
-   "dur": 29.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610170646",
+   "sub": "饮湖上初晴后雨（其二）",
+   "dur": 32.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：题西林壁。写于1084年，他47岁，在庐山。"
+     "t": "读一首苏轼：饮湖上初晴后雨（其二）。写于1073年，他36岁，在杭州。"
     },
     {
      "lang": "zh",
-     "t": "横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。"
+     "t": "水光潋滟晴方好，山色空蒙雨亦奇。欲把西湖比西子，淡妆浓抹总相宜。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：正面看是连绵的山岭，侧面看是陡峭的山峰，远近高低，各不一样。之所以看不清庐山的真面目，是因为自己就身在这座山里。"
+     "t": "白话意思是：晴天时湖水波光闪闪，正好看；下雨时山色迷迷蒙蒙，也很奇妙。要是把西湖比作美女西施，不管淡妆还是浓妆，都一样漂亮。"
     }
    ],
    "opt": true
@@ -349,12 +366,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610170646",
+   "dur": 5.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610180703",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }
