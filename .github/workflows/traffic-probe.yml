@@ -12,14 +12,10 @@ jobs:
       - run: |
           set +e
           exec > probe.txt 2>&1
-          H(){ echo "=== $1"; curl -sS -m 60 -D /tmp/h -o /tmp/b -A "Mozilla/5.0" -H "Origin: https://boliunew.github.io" "$1"; echo "rc=$?"; grep -i -E "^HTTP|access-control-allow-origin|^location|content-type|content-length" /tmp/h; head -c ${2:-600} /tmp/b | tr -d '\r'; echo; }
-          curl -sS -m 60 "https://api-v3.amtraker.com/v3/trains" -o tr.json
-          python3 -c "import json;d=json.load(open('tr.json'));t=d.get('11',d[list(d)[0]])[0];print(json.dumps(t,indent=1)[:5000]);print(len(d), sum(len(v) for v in d.values()))"
-          curl -sSL -m 120 -A "Mozilla/5.0" https://content.amtrak.com/content/gtfs/GTFS.zip -o g.zip
-          unzip -p g.zip agency.txt | head -5
-          unzip -p g.zip routes.txt | grep -i -E "joaquin|surfliner|starlight|zephyr|chief|sunset|eagle|capitol"
-          unzip -p g.zip trips.txt | head -3
-          unzip -p g.zip stop_times.txt | head -3
+          for u in "https://embed.waze.com/iframe?zoom=10&lat=37.6&lon=-122.2&pin=1" "https://www.waze.com/live-map/" "https://embed.waze.com/iframe?zoom=12&lat=37.77&lon=-122.42&ct=livemap"; do
+            echo "=== $u"; curl -sS -m 30 -L -D /tmp/h -o /tmp/b -A "Mozilla/5.0 (Linux; Android 14)" "$u"; echo rc=$?
+            grep -i -E "^HTTP|x-frame-options|content-security-policy|^location" /tmp/h | cut -c1-300; head -c 500 /tmp/b; echo
+          done
       - run: |
           git config user.name bot; git config user.email bot@x
           git add probe.txt; git commit -m out; git push origin HEAD:traffic-probe
