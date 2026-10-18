@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          exec > probe.txt 2>&1
+          set +e; exec > probe.txt 2>&1
           H(){ echo "=== $1"; curl -sS -m 30 -D /tmp/h -o /tmp/b -A "Mozilla/5.0 (Linux; Android 14)" -H "Origin: https://boliunew.github.io" "$1"; echo "rc=$?"; grep -i -E "^HTTP|access-control-allow-origin|^location|content-type" /tmp/h; head -c ${2:-600} /tmp/b | tr -d '\r'; echo; }
           H "https://api.fxtwitter.com/status/1585341984679469056" 3000
           V=$(python3 -c "import json;d=json.load(open('/tmp/b'));m=d['tweet'].get('media',{});print((m.get('videos') or [{}])[0].get('url',''))" 2>/dev/null); echo "VIDEO=$V"
