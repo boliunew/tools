@@ -29,6 +29,59 @@ ML_ZH = {"Upland": "Upland（家门口）", "L.A. Union": "洛杉矶联合车站
          "El Monte": "埃尔蒙特", "Cal State LA": "加州州立大学洛杉矶分校", "Industry": "工业市", "Glendale": "格伦代尔", "Santa Ana": "圣塔安娜"}
 
 
+DEPS = {"base": "", "svc": {}, "d": {}}   # 发车时刻（stations/deps.json），点开车站详情时才加载
+HORIZON = 21
+
+
+def gtfs_deps(z, prefix, station_of, line_of):
+    """把一个 GTFS 里每个车站接下来 HORIZON 天的发车整理进 DEPS。station_of(stop_row) → 我们的车站 id 或 None。"""
+    import datetime as dt
+    rd = lambda n: list(csv.DictReader(io.TextIOWrapper(z.open(n), "utf-8-sig"))) if n in z.namelist() else []
+    base = (dt.datetime.utcnow() - dt.timedelta(hours=8)).date()
+    DEPS["base"] = base.strftime("%Y%m%d")
+    days = [base + dt.timedelta(days=i) for i in range(HORIZON)]
+    act = {}
+    wk = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    for c in rd("calendar.txt"):
+        for i, d in enumerate(days):
+            ds = d.strftime("%Y%m%d")
+            if c["start_date"] <= ds <= c["end_date"] and c.get(wk[d.weekday()]) == "1":
+                act.setdefault(c["service_id"], set()).add(i)
+    idx = {d.strftime("%Y%m%d"): i for i, d in enumerate(days)}
+    for c in rd("calendar_dates.txt"):
+        i = idx.get(c["date"])
+        if i is None:
+            continue
+        if c["exception_type"] == "1":
+            act.setdefault(c["service_id"], set()).add(i)
+        else:
+            act.get(c["service_id"], set()).discard(i)
+    routes = {r["route_id"]: r for r in rd("routes.txt")}
+    trips = {t["trip_id"]: t for t in rd("trips.txt") if act.get(t["service_id"])}
+    stops = {x["stop_id"]: x for x in rd("stops.txt")}
+    seq = {}
+    for r in rd("stop_times.txt"):
+        if r["trip_id"] in trips:
+            seq.setdefault(r["trip_id"], []).append(r)
+    n = 0
+    for tid, rows in seq.items():
+        t = trips[tid]
+        rows.sort(key=lambda x: int(x["stop_sequence"]))
+        sk = prefix + t["service_id"]
+        DEPS["svc"][sk] = sorted(act[t["service_id"]])
+        line = line_of(routes.get(t["route_id"], {}))
+        last = stops.get(rows[-1]["stop_id"], {})
+        head = t.get("trip_headsign") or re.sub(r"\s+(Metrolink )?Station$", "", last.get("stop_name", "")).strip()
+        for r in rows[:-1]:
+            sid = station_of(stops.get(r["stop_id"], {}))
+            tm = (r.get("departure_time") or r.get("arrival_time") or "")[:5]
+            if not sid or not tm:
+                continue
+            DEPS["d"].setdefault(sid, []).append([tm, line, head, sk, t.get("trip_short_name") or ""])
+            n += 1
+    print("  departures", prefix, n)
+
+
 def get(url, timeout=180):
     for i in range(3):
         try:
@@ -146,9 +199,35 @@ def metrolink(out):
                 out.append({"k": "metrolink", "id": "ML:" + sid, "n": nm, "zh": ML_ZH.get(nm, ""), "ll": [round(float(s["stop_lat"]), 5), round(float(s["stop_lon"]), 5)], "l": names})
             print("metrolink", url, len(out) - n0, "stations")
             if len(out) > n0:
+                gtfs_deps(z, "ML", lambda st: ("ML:" + (st.get("parent_station") or st.get("stop_id"))) if st else None,
+                          lambda r: (r.get("route_long_name") or r.get("route_short_name") or "").replace("Metrolink ", "").replace(" Line", " 线"))
                 return
         except Exception as e:
             print("  ✗", url, e)
+
+
+def caltrain():
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    try:
+        from build_sj_transit import clean, catalog_urls, FEEDS
+    except Exception as e:
+        print("caltrain import", e)
+        return
+    fb = [f for f in FEEDS if f[0] == "caltrain"][0]
+    for url in catalog_urls(fb[1]) + fb[2]:
+        try:
+            z = zipfile.ZipFile(io.BytesIO(get(url)))
+            stops = {x["stop_id"]: x for x in csv.DictReader(io.TextIOWrapper(z.open("stops.txt"), "utf-8-sig"))}
+
+            def st_of(st):
+                if not st:
+                    return None
+                par = stops.get(st.get("parent_station") or "")
+                return "caltrain:" + clean((par or st).get("stop_name", "")).lower()
+            gtfs_deps(z, "CT", st_of, lambda r: "Caltrain " + (r.get("route_short_name") or r.get("route_long_name") or ""))
+            return
+        except Exception as e:
+            print("  ✗ caltrain", url, e)
 
 
 def main():
@@ -159,6 +238,12 @@ def main():
     transit(out, "sj/transit.json", "vta", "vta")
     transit(out, "sj/transit.json", "caltrain", "caltrain")
     metrolink(out)
+    caltrain()
+    for k in DEPS["d"]:
+        DEPS["d"][k].sort(key=lambda x: x[0])
+    with open(os.path.join(ROOT, "stations", "deps.json"), "w", encoding="utf-8") as f:
+        json.dump(DEPS, f, ensure_ascii=False, separators=(",", ":"))
+    print("stations/deps.json：", len(DEPS["d"]), "stations", os.path.getsize(os.path.join(ROOT, "stations", "deps.json")) // 1024, "KB")
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "st": out}, f, ensure_ascii=False, separators=(",", ":"))
