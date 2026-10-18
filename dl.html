@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1D2430">
+<title>媒体下载 · 𝕏 / Instagram</title>
+<style>
+:root{
+  --bg:#F2F1EE; --paper:#FFFFFF; --ink:#1E2228; --soft:#5E6670; --faint:#9AA1A9; --line:#E1DFDA; --chip:#ECEAE5;
+  --acc:#2E6BD8; --acc-soft:#E3ECFB; --ok:#2E9D4F; --warn:#C0362C; --warn-soft:#F7E2DF;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --acc:#7FA8F0; --acc-soft:#1D2A40; --warn:#F07563; --warn-soft:#3A221F; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --acc:#7FA8F0; --acc-soft:#1D2A40; --warn:#F07563; --warn-soft:#3A221F; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(170deg,#2B3442 0%,#1D2430 60%,#161B24 100%);color:#EEF1F5;padding:calc(16px + env(safe-area-inset-top)) 0 18px}
+.hero a{color:#EEF1F5;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{margin:6px 0 2px;font-size:25px;letter-spacing:.02em}
+.hero p{margin:4px 0 0;font-size:13.5px;opacity:.85}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px;margin:14px 0}
+.row{display:flex;gap:8px}
+.row input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:11px 12px;font-size:16px;outline:none}
+.row input:focus{border-color:var(--acc)}
+.btn{border:0;border-radius:12px;padding:0 14px;font-size:15px;font-weight:600;background:var(--acc);color:#fff;white-space:nowrap}
+.btn2{border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:500}
+.hint{font-size:12.5px;color:var(--faint);margin-top:8px;line-height:1.7}
+.st{margin:10px 2px;font-size:14px;color:var(--soft)}
+.st.err{color:var(--warn)}
+.post{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px}
+.ph{display:flex;gap:10px;align-items:center;padding:12px}
+.ph img{width:40px;height:40px;border-radius:50%;flex:0 0 40px;background:var(--chip)}
+.ph b{display:block;font-size:15px}.ph small{color:var(--faint);font-size:12.5px}
+.txt{padding:0 12px 10px;font-size:14.5px;white-space:pre-wrap;word-break:break-word}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;padding:0 12px 12px}
+.m{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--chip);display:flex;flex-direction:column}
+.m .pv{position:relative;aspect-ratio:1;background:#000;display:flex;align-items:center;justify-content:center}
+.m .pv img,.m .pv video{width:100%;height:100%;object-fit:contain;display:block}
+.m .tag{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.65);color:#fff;font-size:11.5px;border-radius:6px;padding:1px 6px}
+.m .act{display:flex;flex-direction:column;gap:6px;padding:8px}
+.m .act a,.m .act button{display:block;text-align:center;border:0;border-radius:9px;padding:7px 6px;font-size:13.5px;font-weight:600;background:var(--acc);color:#fff;text-decoration:none}
+.m .act .sec{background:var(--paper);color:var(--ink);border:1px solid var(--line);font-weight:500}
+.m .act small{color:var(--faint);font-size:11.5px;text-align:center}
+.all{padding:0 12px 12px}
+.all button{width:100%;padding:10px}
+.tip{background:var(--acc-soft);border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.7;margin:0 12px 12px}
+.help h3{font-size:15px;margin:4px 0 6px}
+.help ol,.help ul{margin:4px 0 10px;padding-left:20px;font-size:14px;line-height:1.75}
+.help p{font-size:13.5px;color:var(--soft);margin:6px 0}
+.hist{display:flex;flex-direction:column;gap:6px}
+.hist button{text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:7px 10px;font-size:13px;color:var(--soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar{height:4px;background:var(--chip);border-radius:2px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:var(--acc);transition:width .2s}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a href="index.html">‹ 首页</a>
+  <h1>📥 媒体下载</h1>
+  <p>粘贴 𝕏（推特）或 Instagram 帖子的链接，下载里面的照片和视频（原图、最高清晰度）。只能下载公开的帖子。</p>
+</div></div>
+<main class="wrap">
+  <div class="box">
+    <div class="row"><input id="u" type="url" inputmode="url" placeholder="粘贴链接：x.com/…/status/… 或 instagram.com/p/…" autocomplete="off"><button class="btn btn2" id="paste">粘贴</button></div>
+    <div class="row" style="margin-top:8px"><button class="btn" id="go" style="flex:1;padding:11px">🔍 解析</button></div>
+    <div class="hint">在 𝕏 / Instagram App 里点「分享 → 复制链接」，回到这里点「粘贴」再点「解析」。</div>
+  </div>
+  <div id="st" class="st"></div>
+  <div id="out"></div>
+  <div class="box" id="histBox" style="display:none"><div style="font-size:13px;font-weight:700;color:var(--soft);margin-bottom:6px">最近解析过</div><div class="hist" id="hist"></div></div>
+  <div class="box help">
+    <h3>怎么用、存到哪</h3>
+    <ul>
+      <li><b>𝕏（推特）</b>：照片是原图，视频自动选最高清的那一档。点「⬇ 下载」直接存进手机的「下载（Download）」文件夹，在「我的文件」或相册里就能看到。</li>
+      <li><b>Instagram</b>：点「打开原图 / 视频」，在新页面里<b>长按图片 →「下载图片」</b>，视频点播放器右下角的 <b>⋮ → 下载</b>。多图帖子会把每一张都列出来。</li>
+      <li>只支持<b>公开</b>的帖子；私密账号、限时动态（Stories）、需要登录才能看的内容下载不了。</li>
+    </ul>
+    <h3>注意</h3>
+    <p>𝕏 的数据来自公开的 FxTwitter 接口，Instagram 借用 InstaFix 类的公开转接服务（uuinstagram / eeinstagram）。这些是第三方免费服务，偶尔会抽风或失效，过一会儿再试，或者换另一个服务。</p>
+    <p>下载的内容版权归原作者，自己收藏、留证据没问题；转发、二次发布请注明出处或征得同意。</p>
+  </div>
+</main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('dl:' + k) || 'null'); localStorage.setItem('dl:' + k, JSON.stringify(v)); } catch (e) { return null; } }
+  var IGH = ['https://uuinstagram.com', 'https://eeinstagram.com'];
+  var MEDIA = [];
+
+  function parse(s) {
+    s = String(s || '').trim();
+    var m = s.match(/(?:twitter\.com|x\.com|fxtwitter\.com|fixupx\.com|vxtwitter\.com|fixvx\.com|nitter\.[a-z.]+)\/(?:i\/web\/|[A-Za-z0-9_]+\/)?status(?:es)?\/(\d{5,25})/i);
+    if (m) return { k: 'x', id: m[1] };
+    m = s.match(/instagram\.com\/(?:[A-Za-z0-9_.]+\/)?(p|reel|reels|tv)\/([A-Za-z0-9_-]{5,40})/i);
+    if (m) return { k: 'ig', id: m[2], reel: /reel|tv/i.test(m[1]) };
+    if (/instagram\.com\/stories\//i.test(s)) return { k: 'err', msg: '限时动态（Stories）要登录才能看，下载不了。' };
+    return null;
+  }
+  function status(t, err) { $('st').textContent = t || ''; $('st').className = 'st' + (err ? ' err' : ''); }
+  function hist(add) {
+    var h = ls('hist') || [];
+    if (add) { h = h.filter(function (x) { return x !== add; }); h.unshift(add); h = h.slice(0, 8); ls('hist', h); }
+    $('histBox').style.display = h.length ? '' : 'none';
+    $('hist').innerHTML = h.map(function (x) { return '<button data-h="' + esc(x) + '">' + esc(x) + '</button>'; }).join('');
+  }
+  function fname(base, url, i, ext) {
+    var e = ext || ((url.match(/\.(jpe?g|png|webp|gif|mp4|mov)(?:[?#]|$)/i) || [])[1] || 'jpg');
+    return base + (i != null ? '_' + (i + 1) : '') + '.' + e.toLowerCase().replace('jpeg', 'jpg');
+  }
+
+  // ---- 下载：先抓成 blob 再保存（保留文件名）；不行就新窗口打开
+  function save(url, name, btn) {
+    var old = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = '下载中…'; }
+    var x = new XMLHttpRequest();
+    x.open('GET', url); x.responseType = 'blob';
+    x.onprogress = function (e) { if (btn && e.lengthComputable) btn.textContent = '下载中 ' + Math.round(e.loaded / e.total * 100) + '%'; };
+    x.onload = function () {
+      if (x.status !== 200) return fail();
+      var a = document.createElement('a'), u = URL.createObjectURL(x.response);
+      a.href = u; a.download = name; document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(u); a.parentNode.removeChild(a); }, 4000);
+      if (btn) { btn.disabled = false; btn.textContent = '✓ 已保存'; setTimeout(function () { btn.textContent = old; }, 2500); }
+    };
+    x.onerror = fail; x.send();
+    function fail() { if (btn) { btn.disabled = false; btn.textContent = old; } window.open(url, '_blank', 'noopener'); status('没能直接保存，已在新页面打开：长按图片「下载图片」，视频点 ⋮ →「下载」。'); }
+  }
+
+  // ---- 𝕏（推特）：FxTwitter 公开接口
+  function loadX(id) {
+    status('正在读取 𝕏 帖子…');
+    var x = new XMLHttpRequest(); x.open('GET', 'https://api.fxtwitter.com/status/' + id); x.timeout = 20000;
+    x.onload = function () {
+      var d = null; try { d = JSON.parse(x.responseText); } catch (e) { }
+      if (!d || !d.tweet) { status(x.status === 404 ? '找不到这条帖子（可能被删了，或者是私密账号）。' : '读取失败（' + x.status + '），稍后再试。', true); return; }
+      renderX(d.tweet);
+    };
+    x.onerror = x.ontimeout = function () { status('连不上 FxTwitter 接口，检查网络后再试。', true); };
+    x.send();
+  }
+  function xItems(t) {
+    var out = [], all = (t.media && (t.media.all || [].concat(t.media.photos || [], t.media.videos || []))) || [];
+    all.forEach(function (m) {
+      if (m.type === 'photo') {
+        var base = m.url.split('?')[0];
+        out.push({ type: 'photo', prev: m.url, url: /pbs\.twimg\.com\/media\//.test(base) ? base + '?name=orig' : m.url, w: m.width, h: m.height });
+      } else {
+        var best = m.url, vs = (m.variants || []).filter(function (v) { return /mp4/.test(v.content_type || v.url || ''); });
+        vs.sort(function (a, b) { return (b.bitrate || 0) - (a.bitrate || 0); });
+        if (vs.length) best = vs[0].url;
+        out.push({ type: m.type === 'gif' ? 'gif' : 'video', prev: m.thumbnail_url, url: best, w: m.width, h: m.height, dur: m.duration, alt: vs.slice(1, 3) });
+      }
+    });
+    return out;
+  }
+  function renderX(t) {
+    var items = xItems(t), q = t.quote ? xItems(t.quote) : [];
+    if (!items.length && q.length) { items = q; }
+    var who = (t.author && (t.author.name + ' @' + t.author.screen_name)) || '';
+    var base = 'x_' + (t.author ? t.author.screen_name : 'post') + '_' + t.id;
+    var h = '<div class="post"><div class="ph">' + (t.author && t.author.avatar_url ? '<img src="' + esc(t.author.avatar_url) + '" alt="">' : '') + '<div><b>' + esc(who) + '</b><small>' + esc(t.created_at ? new Date(t.created_at).toLocaleString() : '') + ' · 𝕏</small></div></div>' +
+      (t.text ? '<div class="txt">' + esc(t.text) + '</div>' : '');
+    if (!items.length) { h += '<div class="tip">这条帖子里没有照片或视频。</div></div>'; $('out').innerHTML = h; status(''); return; }
+    MEDIA = items.map(function (m, i) { return { url: m.url, name: fname(base, m.url, items.length > 1 ? i : null, m.type === 'photo' ? null : 'mp4') }; });
+    h += '<div class="grid">' + items.map(function (m, i) {
+      var tag = m.type === 'photo' ? '图 ' + (i + 1) : m.type === 'gif' ? 'GIF' : '视频' + (m.dur ? ' ' + Math.round(m.dur) + ' 秒' : '');
+      return '<div class="m"><div class="pv">' + (m.type === 'photo' ? '<img src="' + esc(m.prev) + '" loading="lazy" alt="">' : '<video src="' + esc(m.url) + '" poster="' + esc(m.prev || '') + '" controls playsinline preload="none"></video>') + '<span class="tag">' + tag + '</span></div>' +
+        '<div class="act"><button data-i="' + i + '">⬇ 下载' + (m.type === 'photo' ? '原图' : '') + '</button><a class="sec" href="' + esc(m.url) + '" target="_blank" rel="noopener">在新页面打开</a>' +
+        (m.w ? '<small>' + m.w + '×' + m.h + '</small>' : '') + '</div></div>';
+    }).join('') + '</div>' + (items.length > 1 ? '<div class="all"><button class="btn" id="dlAll">⬇ 全部下载（' + items.length + ' 个）</button></div>' : '') + '</div>';
+    $('out').innerHTML = h; status('');
+  }
+
+  // ---- Instagram：InstaFix 类公开转接服务（/images/代码/序号、/videos/代码/序号 会跳到 Instagram 的原始文件）
+  function loadIG(code, reel) {
+    status('正在读取 Instagram 帖子…（多图帖子会一张张加载出来）');
+    var base = 'ig_' + code, h = '<div class="post"><div class="ph"><div><b>Instagram · ' + esc(code) + '</b><small>' + (reel ? 'Reel 视频' : '帖子') + '</small></div></div>' +
+      '<div class="tip">点「打开原图 / 视频」→ 在新页面<b>长按图片选「下载图片」</b>；视频点播放器的 <b>⋮ → 下载</b>。</div><div class="grid" id="igg"></div></div>';
+    $('out').innerHTML = h; MEDIA = [];
+    var grid = $('igg'), n = 0, hi = 0, found = 0;
+    function next() {
+      n++;
+      if (n > 20) return done();
+      var cell = document.createElement('div'); cell.className = 'm';
+      var img = new Image(), tried = 0;
+      img.alt = ''; img.loading = 'eager';
+      img.onload = function () {
+        found++;
+        var media = IGH[hi] + '/videos/' + code + '/' + n, still = IGH[hi] + '/images/' + code + '/' + n;
+        cell.innerHTML = '<div class="pv"></div><div class="act"><a href="' + esc(media) + '" target="_blank" rel="noopener">⬇ 打开原图 / 视频</a><a class="sec" href="' + esc(still) + '" target="_blank" rel="noopener">只要图片（视频封面）</a><small>第 ' + n + ' 个</small></div>';
+        cell.firstChild.appendChild(img);
+        var tg = document.createElement('span'); tg.className = 'tag'; tg.textContent = reel && n === 1 ? '视频' : '第 ' + n + ' 个'; cell.firstChild.appendChild(tg);
+        grid.appendChild(cell);
+        next();
+      };
+      img.onerror = function () {
+        if (n === 1 && hi < IGH.length - 1) { hi++; img.src = IGH[hi] + '/images/' + code + '/' + n; return; }   // 第一个服务不行就换下一个
+        done();
+      };
+      img.src = IGH[hi] + '/images/' + code + '/' + n;
+    }
+    function done() {
+      if (!found) { status('没读到内容：帖子可能是私密的、已删除，或者转接服务暂时不可用。过一会儿再试。', true); grid.parentNode.querySelector('.tip').style.display = 'none'; }
+      else status('找到 ' + found + ' 个' + (found > 1 ? '（多图 / 多视频帖子）' : '') + '。');
+    }
+    next();
+  }
+
+  function go() {
+    var v = $('u').value, p = parse(v);
+    if (!p) { status('认不出这个链接。支持 x.com / twitter.com 的帖子链接，和 instagram.com/p/…、/reel/… 链接。', true); return; }
+    if (p.k === 'err') { status(p.msg, true); return; }
+    hist(v.trim());
+    $('out').innerHTML = '';
+    if (p.k === 'x') loadX(p.id); else loadIG(p.id, p.reel);
+  }
+  $('go').onclick = go;
+  $('u').onkeydown = function (e) { if (e.key === 'Enter') go(); };
+  $('paste').onclick = function () {
+    if (navigator.clipboard && navigator.clipboard.readText) navigator.clipboard.readText().then(function (t) { $('u').value = t.trim(); if (parse(t)) go(); }, function () { $('u').focus(); status('浏览器不让直接读剪贴板：长按输入框选「粘贴」。'); });
+    else { $('u').focus(); status('长按输入框选「粘贴」。'); }
+  };
+  $('hist').onclick = function (e) { var b = e.target.closest('[data-h]'); if (b) { $('u').value = b.getAttribute('data-h'); go(); } };
+  $('out').onclick = function (e) {
+    var b = e.target.closest('[data-i]');
+    if (b) { var m = MEDIA[+b.getAttribute('data-i')]; save(m.url, m.name, b); return; }
+    if (e.target.id === 'dlAll') { var i = 0, btn = e.target; (function one() { if (i >= MEDIA.length) { btn.textContent = '✓ 全部完成'; return; } btn.textContent = '下载中 ' + (i + 1) + ' / ' + MEDIA.length; var m = MEDIA[i++]; save(m.url, m.name, null); setTimeout(one, 1200); })(); }
+  };
+  // 从「分享到」或网址带进来的链接：dl.html?u=…
+  var q = (location.search.match(/[?&](?:u|url|text)=([^&]+)/) || [])[1];
+  if (q) { try { $('u').value = decodeURIComponent(q); go(); } catch (e) { } }
+  hist();
+})();
+</script>
+<script src="nav.js?v=21" defer></script>
+</body>
+</html>
