@@ -11,7 +11,17 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('bay:' + k) || 'null'); localStorage.setItem('bay:' + k, JSON.stringify(v)); } catch (e) { return null; } }
   var LY = ls('road') || { hw: 1, inc: 1, lcs: 1, cms: 1, tt: 0 };
-  var LAYERS = [['hw', '🛣️ 高速路线'], ['inc', '🚨 事故'], ['lcs', '🚧 封路施工'], ['cms', '🪧 路牌行车时间'], ['tt', '🔴 实时车速（需密钥）']];
+  var LAYERS = [['hw', '🛣️ 高速路线'], ['inc', '🚨 事故'], ['lcs', '🚧 封路施工'], ['cms', '🪧 路牌行车时间']];
+  var VIEW = ls('view') || 'waze';
+  function wazeUrl(lat, lon, z) { return 'https://embed.waze.com/iframe?zoom=' + Math.max(3, Math.min(17, Math.round(z))) + '&lat=' + lat.toFixed(4) + '&lon=' + lon.toFixed(4); }
+  function gmapUrl(lat, lon, z) { return 'https://www.google.com/maps/@' + lat.toFixed(4) + ',' + lon.toFixed(4) + ',' + Math.round(z) + 'z/data=!5m1!1e1'; }
+  var WV = { lat: 37.62, lon: -122.15, z: 9 };
+  function goTo(lat, lon, z) {   // 两种地图一起移动
+    WV = { lat: lat, lon: lon, z: z };
+    if (MAPR) MAPR.setView([lat, lon], z);
+    var f = $('rwazef'); if (f && VIEW === 'waze') f.src = wazeUrl(lat, lon, z);
+    var g = $('rgG'); if (g) g.href = gmapUrl(lat, lon, z);
+  }
   var DIR = { North: '北向', South: '南向', East: '东向', West: '西向', 'Both Directions': '双向', Both: '双向' };
   var CLO = { Full: '全封', Lane: '封车道', 'One-Way Traffic': '单向放行', 'Alternating Lanes': '轮流封道', Moving: '移动施工', Shoulder: '封路肩' };
   var FAC = { Mainline: '主线', Connector: '立交连接道', 'On Ramp': '入口匝道', 'Off Ramp': '出口匝道', 'Collector-Distributor': '辅道' };
@@ -76,7 +86,7 @@
     box.onclick = function (e) {
       var row = e.target.closest('[data-area]'); if (!row || !MAPR) return;
       var c = { '旧金山': [37.765, -122.43, 12], '半岛': [37.56, -122.3, 11], '南湾': [37.35, -121.93, 11], '东湾': [37.75, -122.12, 10], '北湾': [38.0, -122.5, 10] }[row.getAttribute('data-area')];
-      MAPR.setView([c[0], c[1]], c[2]); $('rmap').scrollIntoView({ block: 'center', behavior: 'smooth' });
+      goTo(c[0], c[1], c[2]); $(VIEW === 'waze' ? 'rwaze' : 'rmap').scrollIntoView({ block: 'center', behavior: 'smooth' });
     };
   }
 
@@ -164,10 +174,13 @@
   function html() {
     var key = ls('ttkey');
     return '<div class="rsum" id="rsum"><div class="rs-h">加载中…</div></div>' +
-      '<div class="mtabs" id="rlay2">' + LAYERS.map(function (x) { return '<button data-rl="' + x[0] + '" class="' + (LY[x[0]] ? 'on' : '') + '">' + (LY[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
-      '<div class="mapbox" id="rmap" style="cursor:auto"></div>' +
-      '<div class="mtabs" style="margin-top:8px"><button id="rgBay">🌉 整个湾区</button><button id="rgSF">🌁 旧金山</button><button id="rgSJ">🌴 圣何塞</button><button id="rgMe">📍 我的位置</button><button id="rgRe">🔄 刷新</button></div>' +
-      '<details class="rkey"' + (key ? '' : '') + '><summary>🔴 想看每条路实时的红黄绿车速？' + (key ? '（已开启）' : '') + '</summary>' +
+      '<div class="mtabs" id="rview"><button data-v="waze" class="' + (VIEW === 'waze' ? 'on' : '') + '">🚦 实时车流（哪里堵）</button><button data-v="ours" class="' + (VIEW === 'ours' ? 'on' : '') + '">📍 事故 · 封路 · 路牌</button></div>' +
+      '<div class="mapbox" id="rwaze" style="cursor:auto"' + (VIEW === 'waze' ? '' : ' hidden') + '><iframe id="rwazef" title="Waze 实时路况" style="width:100%;height:100%;border:0" loading="lazy" allow="geolocation" src="' + (VIEW === 'waze' ? wazeUrl(WV.lat, WV.lon, WV.z) : 'about:blank') + '"></iframe></div>' +
+      '<div class="mtabs" id="rlay2"' + (VIEW === 'waze' ? ' hidden' : '') + '>' + LAYERS.map(function (x) { return '<button data-rl="' + x[0] + '" class="' + (LY[x[0]] ? 'on' : '') + '">' + (LY[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
+      '<div class="mapbox" id="rmap" style="cursor:auto"' + (VIEW === 'waze' ? ' hidden' : '') + '></div>' +
+      '<div class="mtabs" style="margin-top:8px"><button id="rgBay">🌉 整个湾区</button><button id="rgSF">🌁 旧金山</button><button id="rgSJ">🌴 圣何塞</button><button id="rgMe">📍 我的位置</button><button id="rgRe">🔄 刷新</button><a class="btn2" id="rgG" target="_blank" rel="noopener" href="' + gmapUrl(WV.lat, WV.lon, WV.z) + '" style="text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13.5px;color:var(--soft)">🗺️ 用谷歌地图看路况</a></div>' +
+      '<div class="mnote" id="rwnote"' + (VIEW === 'waze' ? '' : ' hidden') + '>🚦 实时车流用的是 Waze 官方的嵌入地图，不用任何密钥：路上<b style="color:#E0A100">黄</b>、<b style="color:#E07B00">橙</b>、<b style="color:#C0362C">红</b>色的线就是在堵，颜色越深越慢，还能看到网友报告的事故、警察和道路危险。可以拖动缩放；点上面的分区或下面的按钮会跳过去。「用谷歌地图看路况」会在谷歌地图 App 里打开同一个位置并打开路况图层。</div>' +
+      '<details class="rkey"' + (key ? '' : '') + '><summary>⚙️ 进阶：在「事故 · 封路 · 路牌」地图上也叠加车速（需要 TomTom 密钥，可不用）' + (key ? '（已开启）' : '') + '</summary>' +
       '<div class="mnote" style="margin-top:4px">需要一个免费的 TomTom 地图密钥（个人用免费额度足够）：<br>① 打开 <a href="https://developer.tomtom.com/user/register" target="_blank" rel="noopener">developer.tomtom.com</a> 免费注册；② 在 Dashboard 里复制 API Key；③ 粘贴到下面。密钥只存在这台手机上，不会上传。</div>' +
       '<div class="mtabs"><input id="rkey" class="fsel" style="flex:1;min-width:0" placeholder="粘贴 TomTom API Key" value="' + esc(key || '') + '"><button id="rkeyOk">保存</button>' + (key ? '<button id="rkeyDel">删除</button>' : '') + '</div></details>' +
       '<div class="mnote">分区颜色怎么来的：Caltrans 高速路牌上显示的行车时间，和这块路牌过去显示过的最快时间比较（慢 25% 以上算「有点慢」，慢 60% 以上算「拥堵」），再加上 CHP 报告的车祸。路牌多在白天显示行车时间，刚上线的几天「平时」基准还在积累。' +
@@ -181,6 +194,14 @@
       if (k === 'tt' && !ls('ttkey') && !LY.tt) { var d = document.querySelector('.rkey'); if (d) { d.open = true; d.scrollIntoView({ block: 'center', behavior: 'smooth' }); } }
       LY[k] = LY[k] ? 0 : 1; ls('road', LY); b.className = LY[k] ? 'on' : ''; b.textContent = (LY[k] ? '✓ ' : '') + b.textContent.replace(/^✓ /, ''); draw();
     };
+    $('rview').onclick = function (e) {
+      var b = e.target.closest('[data-v]'); if (!b) return; VIEW = b.getAttribute('data-v'); ls('view', VIEW);
+      var bs = $('rview').querySelectorAll('button'), i; for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-v') === VIEW ? 'on' : '';
+      var w = VIEW === 'waze';
+      if (MAPR && !w) { } else if (MAPR) { var c = MAPR.getCenter(); WV = { lat: c.lat, lon: c.lng, z: MAPR.getZoom() }; }
+      $('rwaze').hidden = !w; $('rwnote').hidden = !w; $('rmap').hidden = w; $('rlay2').hidden = w;
+      if (w) $('rwazef').src = wazeUrl(WV.lat, WV.lon, WV.z); else if (MAPR) { MAPR.invalidateSize(); MAPR.setView([WV.lat, WV.lon], WV.z); }
+    };
     $('rkeyOk').onclick = function () { var v = $('rkey').value.trim(); ls('ttkey', v || null); LY.tt = v ? 1 : 0; ls('road', LY); TTL = null; CTX.rerender(); };
     if ($('rkeyDel')) $('rkeyDel').onclick = function () { ls('ttkey', null); TTL = null; CTX.rerender(); };
     summary();
@@ -188,9 +209,10 @@
       var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
       MAPR = L.map('rmap', { zoomControl: true }).setView(ctx.center || [37.62, -122.15], ctx.zoom || 9);
       L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'light_all') + '/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' }).addTo(MAPR);
-      $('rgBay').onclick = function () { MAPR.setView([37.62, -122.15], 9); };
-      $('rgSF').onclick = function () { MAPR.setView([37.765, -122.43], 12); };
-      $('rgSJ').onclick = function () { MAPR.setView([37.35, -121.92], 11); };
+      $('rgBay').onclick = function () { goTo(37.62, -122.15, 9); };
+      $('rgSF').onclick = function () { goTo(37.765, -122.43, 12); };
+      $('rgSJ').onclick = function () { goTo(37.35, -121.92, 11); };
+      MAPR.on('moveend', function () { if (VIEW !== 'ours') return; var c = MAPR.getCenter(); WV = { lat: c.lat, lon: c.lng, z: MAPR.getZoom() }; var g = $('rgG'); if (g) g.href = gmapUrl(c.lat, c.lng, MAPR.getZoom()); });
       $('rgRe').onclick = function () { loadLive(); if (TTL) TTL.redraw(); };
       $('rgMe').onclick = function () {
         if (!navigator.geolocation) return;
@@ -198,7 +220,7 @@
           var ll = [p.coords.latitude, p.coords.longitude];
           if (MAPR.me) MAPR.removeLayer(MAPR.me);
           MAPR.me = L.circleMarker(ll, { radius: 8, color: '#fff', weight: 3, fillColor: '#2F6F8F', fillOpacity: 1 }).addTo(MAPR).bindPopup('你在这里（' + area(ll) + '）');
-          MAPR.setView(ll, 12);
+          goTo(ll[0], ll[1], 13);
         }, function () { }, { timeout: 15000 });
       };
       MAPR.on('zoomend', function () { var z = MAPR.getZoom(), b = z < 10 ? 0 : z < 11 ? 1 : 2; if (b !== MAPR.zb) { MAPR.zb = b; draw(); } });
