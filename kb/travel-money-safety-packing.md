@@ -40,6 +40,7 @@ summary: 出门带什么卡、小费给多少、怎么防偷防骗、证件丢�
   - 公共 Wi-Fi 别登录网银。
 - 晚上走路选人多、有灯的路；喝了酒别开车，叫车回去。
 - 把**住址、紧急联系人**存在手机锁屏能看到的「医疗急救卡」里。
+- 更多骗局和被骗后怎么办，看 [旅行防骗大全](travel-scams.md)。
 
 ## 证件和东西丢了怎么办
 
@@ -82,4 +83,4 @@ summary: 出门带什么卡、小费给多少、怎么防偷防骗、证件丢�
 - [ ] 几个折叠购物袋（加州超市袋子要钱）
 - [ ] 一个小锁、行李定位器
 
-相关：[订酒店不踩雷](travel-hotels.md) · [坐飞机](travel-flights-airports.md) · [公路旅行和租车](travel-road-trip.md)
+相关：[旅行防骗大全](travel-scams.md) · [订酒店不踩雷](travel-hotels.md) · [坐飞机](travel-flights-airports.md) · [公路旅行和租车](travel-road-trip.md)

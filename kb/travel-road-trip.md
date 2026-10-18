@@ -59,4 +59,4 @@ summary: 租车怎么省钱、要不要买租车公司的保险、过路费和�
 - **大峡谷 / 拉斯维加斯 / 锡安**：I-15 一路往东北。
 - **优胜美地**：I-5 或 99 号公路北上，冬天部分山路封闭。
 
-相关：[订酒店不踩雷](travel-hotels.md) · [坐飞机](travel-flights-airports.md) · [钱、安全和打包清单](travel-money-safety-packing.md) · [在加州开车要知道的](california-driving-basics.md)
+相关：[旅行防骗大全](travel-scams.md) · [订酒店不踩雷](travel-hotels.md) · [坐飞机](travel-flights-airports.md) · [钱、安全和打包清单](travel-money-safety-packing.md) · [在加州开车要知道的](california-driving-basics.md)

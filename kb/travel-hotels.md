@@ -76,4 +76,4 @@ summary: 连锁和独立旅馆怎么选、看差评的正确方法、进门先�
 - 帮你搬行李：每件 1–2 美元。
 - 代客泊车：取车时 2–5 美元。
 
-相关：[坐飞机](travel-flights-airports.md) · [公路旅行和租车](travel-road-trip.md) · [钱、安全和打包清单](travel-money-safety-packing.md)
+相关：[旅行防骗大全](travel-scams.md) · [坐飞机](travel-flights-airports.md) · [公路旅行和租车](travel-road-trip.md) · [钱、安全和打包清单](travel-money-safety-packing.md)

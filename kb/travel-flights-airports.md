@@ -51,4 +51,4 @@ summary: 怎么订到便宜机票、24 小时免费取消规则、基本经济�
 - 接送机：别在航站楼门口等，去机场的**手机等候区（Cell Phone Lot）**，人出来了再开过去。
 - 长途飞行穿宽松的衣服，多喝水，起来走动走动。
 
-相关：[订酒店不踩雷](travel-hotels.md) · [公路旅行和租车](travel-road-trip.md) · [钱、安全和打包清单](travel-money-safety-packing.md)
+相关：[旅行防骗大全](travel-scams.md) · [订酒店不踩雷](travel-hotels.md) · [公路旅行和租车](travel-road-trip.md) · [钱、安全和打包清单](travel-money-safety-packing.md)
