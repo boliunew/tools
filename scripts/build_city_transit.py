@@ -227,9 +227,11 @@ def parse(kind, name, url, types):
         if m:
             sn, ln = m.group(1), ""
         if kind == "ml":
-            nm = ln.replace("Metrolink ", "").replace(" Line", " 线")
+            nm = ln.replace("Metrolink ", "").replace(" Line", "")
+            nm = {"91-Perris Valley": "91 / Perris Valley 线", "Antelope Valley": "羚羊谷线", "Inland Empire-Orange County": "内陆帝国—橙县线",
+                  "Orange County": "橙县线", "Riverside": "河滨线", "San Bernardino": "圣贝纳迪诺线（经过 Upland）", "Ventura County": "文图拉县线"}.get(nm, nm + " 线")
         elif kind == "omni":
-            nm = (sn + " 路" if sn else "") + (" · " + ln if ln else "")
+            nm = " · ".join(x for x in [(sn + " 路") if sn else "", ln] if x)
         elif sn:
             nm = sn + (" 线" if re.match(r"^[A-Z0-9]{1,3}X?$", sn) else "") + (" · " + ln if ln and ln != sn else "")
         else:
@@ -272,7 +274,11 @@ ZH = {
            "Culver City": "卡尔弗城", "Westwood/Rancho Park": "西木", "Fullerton": "富勒顿", "Anaheim - ARTIC": "阿纳海姆（迪士尼附近）", "Irvine": "欧文", "Burbank - Downtown": "伯班克市中心"},
     "ie": {"Ontario-East": "安大略东站", "Fontana": "Fontana", "Rialto": "Rialto", "San Bernardino Depot": "圣贝纳迪诺老火车站", "San Bernardino-Downtown": "圣贝纳迪诺市中心",
            "Riverside-Downtown": "河滨市中心", "Riverside-La Sierra": "河滨 La Sierra", "Riverside-Hunter Park/UCR": "河滨 Hunter Park（UCR）", "Moreno Valley/March Field": "Moreno Valley · March 机场",
-           "Perris-Downtown": "Perris 市中心", "Corona-North Main": "科罗纳北站", "Pomona-North": "波莫纳北站", "Pomona-Downtown": "波莫纳市中心", "Redlands-Downtown": "雷德兰兹老城", "Redlands-University": "雷德兰兹大学", "Redlands-Esri": "雷德兰兹 Esri", "San Bernardino-Tippecanoe": "圣贝纳迪诺 Tippecanoe"},
+           "Perris-Downtown": "Perris 市中心", "Corona-North Main": "科罗纳北站", "Pomona-North": "波莫纳北站", "Pomona-Downtown": "波莫纳市中心", "Redlands-Downtown": "雷德兰兹老城", "Redlands-University": "雷德兰兹大学", "Redlands-Esri": "雷德兰兹 Esri", "San Bernardino-Tippecanoe": "圣贝纳迪诺 Tippecanoe",
+           "Corona-West": "科罗纳西站", "Perris-South": "Perris 南站", "Buena Park": "布埃纳公园（Knott's）", "Norwalk/Santa Fe Springs": "诺沃克", "Glendale": "格伦代尔",
+           "Burbank Airport-North (AV Line)": "伯班克机场北站", "Burbank Airport-South (VC Line)": "伯班克机场南站", "Santa Ana": "圣安娜", "Orange": "橙市", "Tustin": "塔斯廷",
+           "Anaheim Canyon": "阿纳海姆峡谷", "Oceanside": "海洋城", "San Clemente": "圣克莱门特", "San Juan Capistrano": "圣胡安卡皮斯特拉诺（传教站）", "Industry": "工业市", "Covina": "科维纳", "El Monte": "埃尔蒙特",
+           "Baldwin Park": "鲍德温公园（In-N-Out 老家）", "Cal State LA": "加州州立大学洛杉矶分校", "Lancaster": "兰开斯特", "Palmdale": "帕姆代尔", "Santa Clarita": "圣克拉丽塔", "Chatsworth": "查茨沃斯", "Ventura-East": "文图拉东站", "Oxnard": "奥克斯纳德"},
 }
 
 
@@ -301,8 +307,8 @@ def main():
                 got = old[kind]
             if got:
                 for s in got["st"]:
-                    zmap = {re.sub(r"\s*/\s*", "/", k): v for k, v in dict(ZH.get("la", {}) if city == "ie" else {}, **ZH.get(city, {})).items()}
-                    s["zh"] = s.get("zh") or zmap.get(re.sub(r"\s*/\s*", "/", s["en"]), "")
+                    zmap = {re.sub(r"\s*([-/])\s*", r"\1", k): v for k, v in (dict(ZH["la"], **ZH["ie"]) if city in ("la", "ie") else ZH.get(city, {})).items()}
+                    s["zh"] = s.get("zh") or zmap.get(re.sub(r"\s*([-/])\s*", r"\1", s["en"]), "")
                 layers.append(got)
         layers.append({"k": "tips", "n": "💡 用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS[city]]})
         os.makedirs(os.path.dirname(out), exist_ok=True)
