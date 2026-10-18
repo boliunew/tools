@@ -22,7 +22,7 @@ OUT = os.path.join(ROOT, "stations", "near.json")
 UA = "boliunew-tools-stations/1.0 (https://github.com/boliunew/tools)"
 CATALOG = "https://share.mobilitydata.org/catalogs-csv"
 ML_FALLBACK = ["https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip"]
-ML_ZH = {"Upland": "Upland（家门口）", "L.A. Union Station": "洛杉矶联合车站", "Los Angeles Union Station": "洛杉矶联合车站", "Montclair": "蒙特克莱尔", "Claremont": "克莱蒙特",
+ML_ZH = {"Upland": "Upland（家门口）", "L.A. Union": "洛杉矶联合车站", "Pomona - North": "波莫纳北站", "Pomona - Downtown": "波莫纳市中心", "Ontario - East": "安大略东站", "Riverside - Downtown": "河滨市中心", "San Bernardino - Downtown": "圣贝纳迪诺市中心", "Anaheim - ARTIC": "阿纳海姆", "Burbank Airport - South (VC Line)": "伯班克机场南", "Burbank Airport - North (AV Line)": "伯班克机场北", "Redlands - University": "雷德兰兹大学", "Oceanside": "欧申赛德", "Lancaster": "兰开斯特", "Palmdale": "帕姆代尔", "Orange": "橙市", "Tustin": "塔斯廷", "San Clemente": "圣克莱门特", "Oxnard": "奥克斯纳德", "Northridge": "北岭", "Van Nuys": "范奈斯", "Chatsworth": "查茨沃斯", "Moorpark": "穆尔帕克", "Simi Valley": "西米谷", "Camarillo": "卡马里奥", "Buena Park": "布埃纳帕克", "Norwalk / Santa Fe Springs": "诺沃克", "Santa Clarita": "圣克拉丽塔", "L.A. Union Station": "洛杉矶联合车站", "Los Angeles Union Station": "洛杉矶联合车站", "Montclair": "蒙特克莱尔", "Claremont": "克莱蒙特",
          "Pomona North": "波莫纳北站", "Pomona Downtown": "波莫纳市中心", "Rancho Cucamonga": "兰乔库卡蒙格", "Fontana": "丰塔纳", "Rialto": "里亚尔托",
          "San Bernardino Depot": "圣贝纳迪诺", "San Bernardino-Downtown": "圣贝纳迪诺市中心", "Ontario-East": "安大略东站", "Riverside-Downtown": "河滨市中心",
          "Fullerton": "富勒顿", "Anaheim-ARTIC": "阿纳海姆", "Irvine": "欧文", "Burbank-Airport-South": "伯班克机场", "Covina": "科维纳", "Baldwin Park": "鲍德温公园",
@@ -79,11 +79,20 @@ def amtrak(out):
             if t["days"][i] == "1":
                 m["days"][i] = 1
     dep = {}
+    seen = {}
     for m in merged.values():
         t, days = m["t"], "".join(str(x) for x in m["days"])
         last = t["st"][-1][0]
         for x in t["st"][:-1]:
-            dep.setdefault(x[0], []).append([x[2] or x[1], t["no"], rz.get(t["r"], ("", ""))[0], zh.get(last, d["stations"].get(last, {}).get("n", last)).split("（")[0], shift(days, x[3])])
+            kk = (x[0], x[2] or x[1], t["no"])
+            sd = shift(days, x[3])
+            if kk in seen:   # 同一班车不同时期的时刻表：合并开行日
+                e = seen[kk]
+                e[4] = "".join("1" if a == "1" or b == "1" else "0" for a, b in zip(e[4], sd))
+                continue
+            e = [x[2] or x[1], t["no"], rz.get(t["r"], ("", ""))[0], zh.get(last, d["stations"].get(last, {}).get("n", last)).split("（")[0], sd]
+            seen[kk] = e
+            dep.setdefault(x[0], []).append(e)
     for code, s in d["stations"].items():
         ds = sorted(dep.get(code, []), key=lambda x: x[0])
         lines = sorted({x[2] for x in ds})
@@ -133,7 +142,7 @@ def metrolink(out):
                 if not s:
                     continue
                 nm = re.sub(r"\s+(Metrolink )?Station$", "", s["stop_name"]).strip()
-                names = sorted({(routes[r].get("route_long_name") or routes[r].get("route_short_name") or r).replace(" Line", " 线") for r in rids if r in routes})
+                names = sorted({(routes[r].get("route_long_name") or routes[r].get("route_short_name") or r).replace("Metrolink ", "").replace(" Line", " 线") for r in rids if r in routes})
                 out.append({"k": "metrolink", "id": "ML:" + sid, "n": nm, "zh": ML_ZH.get(nm, ""), "ll": [round(float(s["stop_lat"]), 5), round(float(s["stop_lon"]), 5)], "l": names})
             print("metrolink", url, len(out) - n0, "stations")
             if len(out) > n0:
