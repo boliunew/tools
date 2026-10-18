@@ -136,8 +136,11 @@ def main():
                 a, d = loc(x["arrival_time"]), loc(x["departure_time"])
                 if first_local is None:
                     first_local = (d or a).date()
+                    first_dt = d or a
                 ref_dt = d or a
-                pts.append([x["stop_id"], a.strftime("%H:%M") if a else "", d.strftime("%H:%M") if d else "", (ref_dt.date() - first_local).days])
+                # 第 5 项：从始发站开车算起经过的分钟（到站时间，跨时区也准）
+                pts.append([x["stop_id"], a.strftime("%H:%M") if a else "", d.strftime("%H:%M") if d else "", (ref_dt.date() - first_local).days,
+                            int(((a or d) - first_dt).total_seconds() // 60), int(((d or a) - first_dt).total_seconds() // 60)])
                 used.add(x["stop_id"])
             if len(pts) < 2:
                 continue
