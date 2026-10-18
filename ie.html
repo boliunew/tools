@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#8A5A2E">
+<title>城市生活 · 内陆帝国</title>
+<style>
+:root{
+  --bg:#F2F1EE; --paper:#FFFFFF; --ink:#1E2228; --soft:#5E6670; --faint:#9AA1A9; --line:#E1DFDA; --chip:#ECEAE5;
+  --or:#C0362C; --or-soft:#F7E2DF; --bay:#2F6F8F; --bay-soft:#DDEBF2;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --or:#F07563; --or-soft:#3A221F; --bay:#7FB8D6; --bay-soft:#1B2C36; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --or:#F07563; --or-soft:#3A221F; --bay:#7FB8D6; --bay-soft:#1B2C36; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{position:relative;overflow:hidden;color:#F4F1EC;background:linear-gradient(175deg,#E9B44C 0%,#C9733A 45%,#4A3326 100%);padding:calc(16px + env(safe-area-inset-top)) 0 18px}
+.hero:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-30px;height:90px;background:radial-gradient(60% 60% at 30% 40%,rgba(255,255,255,.18),transparent 70%),radial-gradient(50% 60% at 75% 50%,rgba(255,255,255,.14),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.city{display:flex;width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none;gap:2px;margin:8px 0 0;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:2px}
+.city a{color:#F4F1EC;text-decoration:none;font-size:12.5px;padding:3px 8px;white-space:nowrap;border-radius:999px;opacity:.8}
+.city a.on{background:rgba(255,255,255,.92);color:#222;opacity:1;font-weight:600}
+.hero a.home{color:#F4F1EC;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif;font-size:28px;margin:6px 0 0;letter-spacing:.04em}
+.hero h1 small{font-family:Georgia,serif;font-size:14px;font-weight:400;opacity:.75;margin-left:8px;letter-spacing:.08em}
+.bridge{display:block;width:100%;height:46px;margin:6px 0 2px}
+.hero p{margin:6px 0 0;font-size:13.5px;opacity:.88;line-height:1.65}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.facts span{font-size:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:2px 9px}
+.facts b{font-weight:600;margin-right:4px;opacity:.75}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:0;background:none;border-radius:999px;padding:6px 12px;font-size:14px;color:var(--soft)}
+.tabs button.on{background:var(--ink);color:var(--paper)}
+.srch{margin:12px 0 4px;display:flex;gap:8px}
+.srch input{flex:1;min-width:0;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 12px;font-size:16px;outline:none}
+.srch button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:0 12px;font-size:14px;white-space:nowrap}
+.lead{font-size:13px;color:var(--faint);margin:10px 2px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+.card .hd{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;cursor:pointer}
+.card .em{font-size:26px;line-height:1.15;flex:0 0 32px;text-align:center}
+.card .ti{flex:1;min-width:0}
+.card h3{margin:0;font-size:16px;line-height:1.35}
+.card h3 small{font-weight:400;color:var(--faint);font-size:12.5px;margin-left:6px}
+.card .s{font-size:13.5px;color:var(--soft);margin-top:2px;line-height:1.55}
+.card .tg{margin-top:5px}
+.card .tg span{display:inline-block;font-size:11.5px;font-weight:600;padding:0 7px;border-radius:6px;margin:0 4px 3px 0;background:var(--chip);color:var(--soft)}
+.card .tg span.hot{background:var(--or-soft);color:var(--or)}
+.card .ar{color:var(--faint);font-size:13px;flex:0 0 auto;margin-top:2px;transition:transform .15s}
+.card.open .ar{transform:rotate(180deg)}
+.card .bd{display:none;padding:0 14px 14px 58px;font-size:14.5px;line-height:1.75}
+.card.open .bd{display:block}
+.card .bd p{margin:0 0 8px}
+.card .bd h4{font-size:12.5px;color:var(--faint);margin:10px 0 2px;letter-spacing:.04em}
+.card .bd ul{margin:2px 0 6px;padding-left:18px}
+.card .bd .tip{background:var(--bay-soft);color:var(--ink);border-radius:10px;padding:8px 10px;font-size:13.5px;margin-top:8px}
+.card .bd .tip b{color:var(--bay)}
+.card .bd .warn{background:var(--or-soft)}
+.card .bd .warn b{color:var(--or)}
+.yr{font-family:Georgia,serif;color:var(--or);font-size:12.5px;font-weight:700}
+.want{border:1px solid var(--line);background:none;border-radius:999px;font-size:12.5px;padding:2px 10px;margin-top:6px;color:var(--soft)}
+.want.on{border-color:var(--or);color:var(--or);background:var(--or-soft)}
+.triv{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:6px 14px;box-shadow:var(--shadow)}
+.triv div{font-size:14px;line-height:1.65;padding:8px 0;border-top:1px dashed var(--line)}
+.triv div:first-child{border-top:0}
+.pop{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(92vw,520px);background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.25);padding:14px 16px;z-index:30;font-size:14.5px;line-height:1.7}
+.pop b{display:block;margin-bottom:4px}
+.pop .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:18px;color:var(--faint)}
+.pop .go{margin-top:8px;border:0;background:var(--ink);color:var(--paper);border-radius:10px;padding:5px 12px;font-size:13.5px}
+.mtabs{display:flex;gap:6px;margin:4px 0 8px;flex-wrap:wrap}
+.mtabs button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13.5px;color:var(--soft)}
+.mtabs button.on{border-color:var(--or);color:var(--or);background:var(--or-soft);font-weight:600}
+.mapbox{position:relative;isolation:isolate;z-index:0;height:72vh;min-height:360px;background:#FBFAF7;border:1px solid var(--line);border-radius:16px;overflow:hidden;touch-action:none;cursor:grab;box-shadow:var(--shadow)}
+.mapbox:fullscreen{border-radius:0;height:100vh}
+.mapbox img{position:absolute;left:0;top:0;transform-origin:0 0;user-select:none;-webkit-user-drag:none;pointer-events:none;max-width:none}
+.mctl{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px;z-index:2}
+.mctl button{width:40px;height:40px;border-radius:12px;border:1px solid #ccc;background:rgba(255,255,255,.95);color:#222;font-size:19px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.stl span{white-space:nowrap;font:600 11.5px/1 -apple-system,"PingFang SC",sans-serif;color:#222;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
+.stl.big span{font-size:12.5px;font-weight:700}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stl span{color:#eee;text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000}}
+.leaflet-container{font:inherit}
+.ferm span{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#E3F1FA;border:2px solid #1F6FB2;box-shadow:0 2px 6px rgba(0,0,0,.35);font-size:15px}
+.lhd{margin:6px 2px 4px;font-size:16px}.lhd small{color:var(--soft);font-size:13px}.lhd span{display:block;font-size:12px;color:var(--faint);margin-top:2px}
+.ldir{font-size:13px;font-weight:700;color:var(--soft);margin:12px 2px 6px}
+.ltab{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.lrow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line)}
+.lrow:first-child{border-top:0}
+.lrow i{width:10px;align-self:stretch;border-radius:5px;flex:0 0 10px;border:1px solid rgba(0,0,0,.15)}
+.lrow .ld{flex:1;min-width:0}.lrow .ld b{font-size:15.5px}.lrow .ld small{display:block;color:var(--faint);font-size:12px}
+.lrow .lm{font-size:13px;color:var(--soft);white-space:nowrap}.lrow .lm b{font-size:22px;font-family:Georgia,serif;color:var(--ink)}
+.lrow .lm b.now{font-size:14px;font-family:inherit;color:var(--or)}
+.lrow.soon{background:var(--or-soft)}
+.fop{font-size:12.5px;color:var(--faint);margin:8px 2px 2px;font-weight:600}
+.fsel{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:6px 10px;font-size:15px}
+.ftab{overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;max-height:65vh;box-shadow:var(--shadow)}
+.ftab table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+.ftab th{position:sticky;top:0;background:var(--paper);text-align:left;font-size:12.5px;padding:8px 10px;border-bottom:1px solid var(--line);z-index:1}
+.ftab th small{display:block;font-weight:400;color:var(--faint);font-size:11px}
+.ftab td{padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.ftab tr.past td{color:var(--faint)}
+.ftab tr.nx td{background:var(--or-soft);font-weight:700}
+.ftab td.dur{color:var(--faint);font-size:12.5px;font-weight:400}
+.ftab td.dur b{display:block;color:var(--or);font-size:12.5px}
+.tipm span{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#FFF8E1;border:2px solid #E0A100;box-shadow:0 2px 6px rgba(0,0,0,.35);font-size:16px}
+.tipm.w span{background:#FDECEA;border-color:#C0362C}
+.tipp{font-size:13.5px;line-height:1.65}
+.tipp > b{display:block;font-size:14px;margin-bottom:4px}
+#lmap.sat .leaflet-overlay-pane svg{filter:drop-shadow(0 0 1.5px rgba(255,255,255,.9))}
+#lmap.sat .stl span,#lmap.sat .stl span{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000,0 1px 4px #000}
+.rsum{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:10px 12px;margin-bottom:8px}
+.rs-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:15px;margin-bottom:4px}.rs-h small{color:var(--faint);font-size:12px}
+.rs-r{display:grid;grid-template-columns:12px auto 1fr;gap:2px 8px;align-items:center;padding:7px 0;border-top:1px solid var(--line);cursor:pointer}
+.rs-r i{width:12px;height:12px;border-radius:6px}.rs-r b{font-size:15px}.rs-l{font-size:13px;font-weight:700;justify-self:end}
+.rs-r small{grid-column:2/4;color:var(--soft);font-size:12.5px;line-height:1.5}.rs-r small b{font-size:12.5px;color:var(--ink)}
+.rs-n{font-size:12.5px;color:var(--soft);background:var(--bay-soft);border-radius:10px;padding:7px 9px;margin-top:6px;line-height:1.6}
+.rdi{display:flex!important;align-items:center;justify-content:center;font-size:15px;border-radius:50%;background:#fff;border:2px solid #888;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.rdi.rd-inc{border-color:#D33A2C;background:#FDECEA}.rdi.rd-inc2{border-color:#E0A100;background:#FFF8E1;font-size:12px}
+.rdi.rd-full{border-color:#C0362C;font-size:13px}.rdi.rd-lane{border-color:#E07B00;font-size:13px}.rdi.rd-ramp{border-color:#BBB;font-size:10px;opacity:.85}
+.rdi.rd-cms{border-color:#999;font-size:10px;opacity:.8}.rdi.rd-tt{border:0;background:none;box-shadow:none}
+.rdi.rd-tt b{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font:700 12px/1 -apple-system,sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.rd-sign{background:#111;color:#F6C445;font:600 12px/1.5 ui-monospace,Menlo,monospace;border-radius:6px;padding:6px 8px;margin:4px 0 6px;letter-spacing:.04em}
+.rsh span{display:flex;align-items:center;justify-content:center;height:20px;min-width:30px;padding:0 4px;border-radius:5px;font:700 11px/1 -apple-system,sans-serif;color:#fff;border:1.5px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.rsh.si span{background:#3F51B5}.rsh.su span{background:#7B4BB7}.rsh.ss span{background:#2C8C99;border-radius:10px}
+.rkey{margin:10px 2px 0;font-size:13.5px}.rkey summary{cursor:pointer;color:var(--bay);font-weight:600}
+[hidden]{display:none!important}
+.mnote{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
+.mnote a{color:var(--bay)}
+.gift{margin-bottom:14px}
+.gbox{width:100%;border:2px dashed var(--or);background:var(--or-soft);border-radius:20px;padding:26px 16px;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--ink)}
+.gbox .gb{font-size:56px;animation:wob 1.6s ease-in-out infinite}
+.gbox b{font-size:17px}.gbox small{color:var(--soft)}
+@keyframes wob{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg) scale(1.05)}40%{transform:rotate(10deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(3deg)}}
+.gcard{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:14px 16px;box-shadow:var(--shadow);animation:flip .6s ease}
+@keyframes flip{from{transform:perspective(800px) rotateY(90deg);opacity:0}to{transform:none;opacity:1}}
+.gh{display:flex;gap:12px;align-items:center;margin-bottom:6px}
+.gh span{font-size:40px}.gh b{display:block;font-size:17px}.gh small{color:var(--soft);font-size:13px}
+.gtl{list-style:none;margin:6px 0 0;padding:0;border-left:2px solid var(--or-soft);margin-left:22px}
+.gtl li{display:flex;gap:10px;position:relative;padding:6px 0 10px 14px}
+.gtl li:before{content:"";position:absolute;left:-7px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--or)}
+.gtl i{font-style:normal;font-family:Georgia,serif;font-weight:700;color:var(--or);font-size:13px;min-width:44px;padding-top:1px}
+.gtl b{display:block;font-size:15px}.gtl p{margin:2px 0;font-size:13.5px;color:var(--soft);line-height:1.6}.gtl small{font-size:12.5px;color:var(--bay)}
+.gact{display:flex;gap:8px;margin-top:6px}
+.gact button{flex:1;border:1px solid var(--line);background:var(--chip);border-radius:12px;padding:9px;font-size:14px}
+.gact button:first-child{background:var(--or);color:#fff;border-color:var(--or)}
+.pass{background:linear-gradient(160deg,#1F3A5F,#16263D);color:#EEE7D7;border-radius:20px;padding:14px 14px 10px;box-shadow:var(--shadow)}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.ph b{font-size:17px;letter-spacing:.04em}.ph small{display:block;font-size:12px;opacity:.7}
+.pt{text-align:right;font-weight:700;font-size:14px;color:#F2C46D}.pt small{display:block;opacity:.75;color:#EEE7D7;font-weight:400}
+.pbar{height:6px;background:rgba(255,255,255,.15);border-radius:3px;margin:10px 0 12px;overflow:hidden}.pbar i{display:block;height:100%;background:#F2C46D;border-radius:3px}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;justify-items:center}
+.st{position:relative;border:1.5px dashed rgba(238,231,215,.35);background:none;border-radius:50%;width:78px;height:78px;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#EEE7D7;padding:4px;overflow:hidden}
+.st span{font-size:22px;filter:grayscale(1);opacity:.45}
+.st em{font-style:normal;font-size:10px;line-height:1.2;opacity:.6;text-align:center;max-height:2.4em;overflow:hidden}
+.st.on{border:2.5px solid #E0573F;background:rgba(224,87,63,.14);transform:rotate(-8deg)}
+.st.on span{filter:none;opacity:1}.st.on em{opacity:1;color:#FFD9CF}
+.st u{text-decoration:none;font-size:9.5px;color:#F2C46D;font-family:Georgia,serif}
+.st.stp{animation:stamp .35s ease}
+@keyframes stamp{0%{transform:scale(1.3) rotate(-20deg);opacity:0}100%{transform:rotate(-8deg);opacity:1}}
+.pass .mnote{color:rgba(238,231,215,.6)}
+.ttl{position:fixed;left:50%;top:40%;transform:translate(-50%,-50%);background:#1F3A5F;color:#F2C46D;font-weight:700;font-size:18px;padding:14px 22px;border-radius:16px;z-index:100;box-shadow:0 10px 40px rgba(0,0,0,.35);animation:flip .5s ease}
+.conf{position:fixed;inset:0;pointer-events:none;z-index:99;overflow:hidden}
+.conf i{position:absolute;top:-30px;font-style:normal;animation:fall 2.2s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.foot{font-size:12px;color:var(--faint);margin-top:18px;line-height:1.8}
+.foot a{color:var(--bay)}
+.empty{color:var(--faint);text-align:center;padding:30px 0}
+mark{background:var(--or-soft);color:inherit;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a class="home" href="index.html">‹ 首页</a><span class="city"><a href="sf.html">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a><a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html" class="on">🍊 内陆帝国</a></span>
+  <h1>内陆帝国<small>INLAND EMPIRE</small></h1>
+  <svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 L60 16 L95 26 L140 4 L185 22 L230 12 L290 28 L340 14 L400 30 V40 Z" fill="#F4C27A" opacity=".22"/>
+    <path d="M128 9 L140 4 L152 10 M222 15 L230 12 L240 16" stroke="#FFF4DC" stroke-width="2" fill="none" opacity=".85"/>
+    <path d="M0 40 H400" stroke="#F4C27A" stroke-width="2"/>
+    <circle cx="40" cy="34" r="4.5" fill="#F4A340"/><circle cx="52" cy="35" r="4" fill="#F4A340"/><circle cx="64" cy="34" r="4.5" fill="#FFD84A"/>
+    <path d="M36 30 q4 -5 8 -1 M60 30 q4 -5 8 -1" stroke="#9BC27A" stroke-width="1.4" fill="none"/>
+    <path d="M250 40 V28 H290 V40 M254 28 V24 H286 V28 M300 40 V30 H340 V40" stroke="#F4C27A" stroke-width="1.1" fill="none" opacity=".85"/>
+    <path d="M350 40 V34 H372 V40 M352 40 a3 3 0 1 0 0.1 0 M370 40 a3 3 0 1 0 0.1 0" stroke="#F4C27A" stroke-width="1.2" fill="none"/>
+    <path d="M362 18 L362 40 M357 22 L362 18 L367 22" stroke="#FFE7A8" stroke-width="1.4" fill="none"/>
+  </svg>
+  <p id="intro"></p>
+  <div class="facts" id="facts"></div>
+</div></div>
+<div class="tabs"><div class="wrap" id="tabs"></div></div>
+<main class="wrap">
+  <div class="srch"><input id="q" type="search" placeholder="搜：Upland、Baldy、66 号公路、橙子、仓库…" autocomplete="off"><button id="rnd">🎲 随便看一个</button></div>
+  <div id="list"><div class="empty">加载中…</div></div>
+  <div class="foot" id="foot"></div>
+</main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('ie:' + k) || 'null'); localStorage.setItem('ie:' + k, JSON.stringify(v)); } catch (e) { return null; } }
+  var TABS = [['gift', '🎁 盲盒 · 护照'], ['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['map', '🗺️ 交通图'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
+  var LEAD = {
+    gift: '不知道今天去哪儿？拆一个盲盒，给你一条完整的一日行程。去过的地方在下面的护照上盖个章，集齐有称号。',
+    hoods: '从 Upland 家门口往外走：克莱蒙特、安大略、兰乔、Baldy 山、66 号公路、河滨、雷德兰兹，再远一点是大熊湖、酒乡和沙漠。',
+    eat: '快餐的老家、塔可和 birria、Oak Glen 苹果派、沙漠里的椰枣奶昔，还有离家不远的中餐。店铺会变，去之前查一下营业时间。',
+    fun: '景点、博物馆、山和海，以及一年里的大活动。点 ☆ 加到「想去」。',
+    tips: '本地人天天在用的省钱、省事小窍门。票价和开放时间会变，以官网为准。',
+    stories: '这片地方是怎么来的：摩门拓荒者、两棵脐橙树、查菲的模范殖民地、66 号公路、第一家麦当劳、钢铁厂和仓库……',
+    map: '两指缩放、拖动查看。Metrolink 和 Omnitrans 公交按官方 GTFS 数据画出真实走向，每月更新；点 💡 看用心提示。出行前用 Metrolink App 或谷歌地图确认。',
+    go: '怎么去、怎么走、怎么穿，以及本地人的说法。',
+    work: '在 IE 工作和生活要知道的事：物流、防暑、医疗、学校。工资、规定每年会变，以官网为准。',
+    trivia: '可以拿去跟朋友聊的 IE 冷知识。',
+    want: '你标了「想去」的地方和吃的，存在这台设备上。'
+  };
+  var D = null, TAB = (location.hash || '').replace('#', '').split('/')[0] || ls('tab') || 'hoods', OPEN = {}, Q = '', WANT = ls('want') || {};
+  if (!TABS.some(function (t) { return t[0] === TAB; })) TAB = 'hoods';
+
+  function key(tab, it) { return tab + ':' + (it.id || it.t); }
+  function para(s) { return String(s || '').split('\n\n').map(function (p) { return '<p>' + esc(p).replace(/\n/g, '<br>') + '</p>'; }).join(''); }
+  function hl(h) {
+    if (!Q) return h;
+    var q = Q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return h.replace(new RegExp('(>[^<]*?)(' + q + ')', 'gi'), '$1<mark>$2</mark>');
+  }
+  function text(it) { return [it.t, it.s, it.d, it.tip, it.note, (it.do || []).join(' '), (it.eat || []).join(' '), (it.tag || []).join(' '), it.y].join(' ').toLowerCase(); }
+
+  function card(tab, it) {
+    var k = key(tab, it), o = OPEN[k] || !!Q, h = '';
+    var tags = (it.tag || []).map(function (t) { return '<span class="' + (t === '必去' ? 'hot' : '') + '">' + esc(t) + '</span>'; }).join('');
+    h += '<div class="card' + (o ? ' open' : '') + '" data-k="' + esc(k) + '"><div class="hd"><div class="em">' + it.e + '</div><div class="ti"><h3>' + esc(it.t) + (it.y ? ' <small class="yr">' + esc(it.y) + '</small>' : '') + '</h3><div class="s">' + esc(it.s) + '</div>' +
+      (tags ? '<div class="tg">' + tags + '</div>' : '') + '</div><div class="ar">▾</div></div><div class="bd">' + para(it.d);
+    if (it.do && it.do.length) h += '<h4>去做什么</h4><ul>' + it.do.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    if (it.eat && it.eat.length) h += '<h4>吃什么</h4><ul>' + it.eat.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    if (it.tip) h += '<div class="tip"><b>💡 </b>' + esc(it.tip) + '</div>';
+    if (it.note) h += '<div class="tip warn"><b>⚠️ </b>' + esc(it.note) + '</div>';
+    if (tab === 'hoods' || tab === 'eat' || tab === 'fun' || tab === 'want') {
+      var wk = it.__wk || k;
+      h += '<button class="want' + (WANT[wk] ? ' on' : '') + '" data-w="' + esc(wk) + '">' + (WANT[wk] ? '★ 想去' : '☆ 想去') + '</button>';
+    }
+    return h + '</div></div>';
+  }
+  function items(tab) {
+    if (tab === 'want') {
+      var out = [];
+      ['hoods', 'eat', 'fun'].forEach(function (t) { D[t].forEach(function (it) { var k = key(t, it); if (WANT[k]) { var c = Object.create(it); c.__wk = k; out.push(c); } }); });
+      return out;
+    }
+    return D[tab] || [];
+  }
+  function render() {
+    $('tabs').innerHTML = TABS.map(function (t) { return '<button data-t="' + t[0] + '" class="' + (t[0] === TAB && !Q ? 'on' : '') + '">' + t[1] + (t[0] === 'want' ? ' ' + Object.keys(WANT).filter(function (k) { return WANT[k]; }).length : '') + '</button>'; }).join('');
+    var h = '';
+    if (Q) {
+      var q = Q.toLowerCase(), n = 0;
+      TABS.forEach(function (t) {
+        if (t[0] === 'want' || t[0] === 'trivia') return;
+        var hit = D[t[0]].filter(function (it) { return text(it).indexOf(q) >= 0; });
+        if (!hit.length) return;
+        h += '<div class="lead">' + t[1] + ' · ' + hit.length + '</div>' + hit.map(function (it) { return card(t[0], it); }).join(''); n += hit.length;
+      });
+      var tv = D.trivia.filter(function (x) { return x.toLowerCase().indexOf(q) >= 0; });
+      if (tv.length) { h += '<div class="lead">💡 冷知识 · ' + tv.length + '</div><div class="triv">' + tv.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>'; n += tv.length; }
+      if (!n) h = '<div class="empty">没找到「' + esc(Q) + '」</div>';
+      $('list').innerHTML = hl(h);
+      return;
+    }
+    h += '<div class="lead">' + LEAD[TAB] + '</div>';
+    if (TAB === 'gift') { $('list').innerHTML = h + giftHTML(); return; }
+    if (TAB === 'map') { $('list').innerHTML = h + mapHTML(); mapInit(); return; }
+    if (TAB === 'trivia') h += '<div class="triv">' + D.trivia.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
+    else {
+      var L = items(TAB);
+      h += L.length ? L.map(function (it) { return card(TAB, it); }).join('') : '<div class="empty">还没有标「想去」的。在街区、吃喝、好玩里点 ☆ 想去。</div>';
+    }
+    $('list').innerHTML = h;
+  }
+  // ---- 🎁 一日盲盒 + 🛂 硅谷护照
+  var PL = ls('plan'), STAMP = ls('stamps') || {}, FLIP = false;
+  var TITLES = [[0, '🧳 初来乍到'], [3, '📸 周末出游'], [8, '🍋 Upland 街坊'], [15, '🍊 半个 IE 人'], [25, '🛣️ 66 号公路通'], [35, '🏅 内陆帝国荣誉市民']];
+  function spots() { var o = []; ['hoods', 'fun', 'eat'].forEach(function (t) { D[t].forEach(function (it) { if (it.t.indexOf('一年里') < 0) o.push([key(t, it), it.e, /^[\u4e00-\u9fff]/.test(it.t) ? it.t.replace(/\s+[A-Za-z].*$/, '').replace(/：.*$/, '').replace(/[\s·]+$/, '') : it.t.replace(/\s*和.*$/, '')]); }); }); return o; }
+  function titleOf(n) { var t = TITLES[0][1]; TITLES.forEach(function (x) { if (n >= x[0]) t = x[1]; }); return t; }
+  function giftHTML() {
+    var h = '<div class="gift">';
+    if (PL == null || !D.plans[PL]) h += '<button class="gbox" id="gOpen"><span class="gb">🎁</span><b>拆一个内陆帝国一日盲盒</b><small>8 种主题，每次随机一条</small></button>';
+    else {
+      var P = D.plans[PL];
+      h += '<div class="gcard' + (FLIP ? ' flip' : '') + '"><div class="gh"><span>' + P.e + '</span><div><b>' + esc(P.t) + '</b><small>' + esc(P.mood) + '</small></div></div><ol class="gtl">' +
+        P.steps.map(function (x) { return '<li><i>' + esc(x[0]) + '</i><div><b>' + x[1] + ' ' + esc(x[2]) + '</b>' + (x[3] ? '<p>' + esc(x[3]) + '</p>' : '') + '<small>🚏 ' + esc(x[4]) + '</small></div></li>'; }).join('') +
+        '</ol><div class="gact"><button id="gOpen">🎲 再拆一个</button><button data-t2="map">🗺️ 看交通图</button></div></div>';
+    }
+    h += '</div>';
+    var sp = spots(), n = sp.filter(function (x) { return STAMP[x[0]]; }).length;
+    h += '<div class="pass"><div class="ph"><div><b>🛂 内陆帝国护照</b><small>去过就盖个章（存在这台手机上）</small></div><div class="pt">' + titleOf(n) + '<small>' + n + ' / ' + sp.length + '</small></div></div>' +
+      '<div class="pbar"><i style="width:' + Math.round(n / sp.length * 100) + '%"></i></div><div class="pg">' +
+      sp.map(function (x) { var d = STAMP[x[0]]; return '<button class="st' + (d ? ' on' : '') + '" data-st="' + esc(x[0]) + '"><span>' + x[1] + '</span><em>' + esc(x[2]) + '</em>' + (d ? '<u>' + esc(d.slice(5).replace('-', '/')) + '</u>' : '') + '</button>'; }).join('') +
+      '</div><div class="mnote">点一下盖章，再点一下取消。称号：' + TITLES.map(function (t) { return t[1] + '（' + t[0] + '）'; }).join(' → ') + '</div></div>';
+    return h;
+  }
+  function confetti() {
+    var c = document.createElement('div'); c.className = 'conf';
+    for (var i = 0; i < 40; i++) { var e = document.createElement('i'); e.textContent = ['🎉', '✨', '🌴', '🍎', '🚋', '🍜'][i % 6]; e.style.left = Math.random() * 100 + '%'; e.style.animationDelay = Math.random() * .6 + 's'; e.style.fontSize = (14 + Math.random() * 14) + 'px'; c.appendChild(e); }
+    document.body.appendChild(c); setTimeout(function () { if (c.parentNode) c.parentNode.removeChild(c); }, 2600);
+  }
+  document.addEventListener('click', function (e) {
+    if (TAB !== 'gift' || !e.target.closest) return;
+    var b = e.target.closest('#gOpen');
+    if (b) { var n = D.plans.length, k; do { k = Math.floor(Math.random() * n); } while (n > 1 && k === PL); PL = k; ls('plan', PL); FLIP = true; render(); setTimeout(function () { FLIP = false; }, 50); var g = document.querySelector('.gift'); if (g) g.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+    b = e.target.closest('[data-t2]'); if (b) { setTab(b.getAttribute('data-t2')); return; }
+    b = e.target.closest('[data-st]');
+    if (b) {
+      var k2 = b.getAttribute('data-st'), before = titleOf(Object.keys(STAMP).length);
+      if (STAMP[k2]) delete STAMP[k2]; else STAMP[k2] = laNow().date;
+      ls('stamps', STAMP); var y = window.scrollY; render(); window.scrollTo(0, y);
+      var nb = document.querySelector('[data-st="' + k2 + '"]'); if (nb && STAMP[k2]) nb.classList.add('stp');
+      if (STAMP[k2] && titleOf(Object.keys(STAMP).length) !== before) { confetti(); var tt = document.createElement('div'); tt.className = 'ttl'; tt.textContent = '新称号：' + titleOf(Object.keys(STAMP).length) + '！'; document.body.appendChild(tt); setTimeout(function () { if (tt.parentNode) tt.parentNode.removeChild(tt); }, 2600); }
+    }
+  });
+  // ---- 交通图：可缩放的 SVG
+  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://metrolinktrains.com/schedules/']];
+  var MAP = ls('map') || 'real', MV = null, RL = ls('rl') || { tips: 1, ml: 1, omni: 0 }, LMAP = null, BASE = ls('base') || 'sat';
+  function mapHTML() {
+    var m = MAPS.filter(function (x) { return x[0] === MAP; })[0] || MAPS[0]; MAP = m[0];
+    if (m[0] === 'road') return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' + (window.BayRoad ? BayRoad.html() : '<div class="empty">加载失败，请刷新</div>');
+    if (m[0] === 'live') {
+      return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div><div id="live"><div class="empty">加载中…</div></div>';
+    }
+    if (m[0] === 'ferry') {
+      return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div><div id="ferry"><div class="empty">加载时刻表…</div></div>';
+    }
+    if (m[0] === 'real') {
+      return '<div class="mtabs" id="mtabs"' + (MAPS.length < 2 ? ' hidden' : '') + '>' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="mtabs" id="rlay">' + [['tips', '💡 用心提示'], ['ml', '🚈 Metrolink'], ['omni', '🚌 Omnitrans 公交']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="mapbox" id="lmap" style="cursor:auto"></div>' +
+        '<div class="mtabs" style="margin-top:8px"><button id="rBase">' + (BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图') + '</button><button id="rSF">🍋 Upland</button><button id="rBay">🍊 整个 IE</button><button id="rMe">📍 我的位置</button></div>' +
+        '<div class="mnote">点 💡 看提示，点车站看中英文站名和经过的线路。Metrolink 和 Omnitrans 公交按官方 GTFS 数据画出真实走向，每月更新。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。<a href="la.html#map">洛杉矶的交通图 →</a></div>';
+    }
+    return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+      '<div class="mapbox" id="mbox"><img id="mimg" src="sf/' + m[0] + '.svg?v=1" alt="' + esc(m[1]) + '"><div class="mctl"><button id="mzi" title="放大">＋</button><button id="mzo" title="缩小">－</button><button id="mzr" title="复位">⟲</button><button id="mfs" title="全屏">⛶</button></div></div>' +
+      '<div class="mnote">示意图，不是逐站精确地图；线路和终点会调整。<a href="sf/' + m[0] + '.svg" target="_blank" rel="noopener">单独打开这张图</a> · <a href="' + m[2] + '" target="_blank" rel="noopener">官方地图</a>' +
+      ' · 实时到站：BART 官方 App、Muni 的 MuniMobile 或谷歌地图。</div>';
+  }
+  // ---- 渡轮（sf/ferry.json：GTFS 时刻表，未来 14 天）
+  var FE = null, FR = ls('fr') || '', FD = '', FDATE = '';
+  function ferryLoad(cb) {
+    if (FE) { cb(); return; }
+    var x = new XMLHttpRequest(); x.open('GET', 'sf/ferry.json?t=' + Math.floor(Date.now() / 36e5));
+    x.onload = function () { try { FE = JSON.parse(x.responseText); } catch (e) { FE = null; } cb(); };
+    x.onerror = function () { cb(); }; x.send();
+  }
+  function laNow() {
+    var p = {}; try { new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; }); } catch (e) { }
+    var d = new Date(); return { date: p.year ? p.year + '-' + p.month + '-' + p.day : d.toISOString().slice(0, 10), min: p.hour ? +p.hour * 60 + +p.minute : d.getHours() * 60 + d.getMinutes() };
+  }
+  function tmin(t) { var a = t.split(':'); return +a[0] * 60 + +a[1]; }
+  function tfmt(t) { var m = tmin(t), h = Math.floor(m / 60) % 24; return (h < 10 ? '0' : '') + h + ':' + t.split(':')[1] + (m >= 1440 ? '（次日）' : ''); }
+  function sname(id) { var s0 = FE.stops[id]; return s0 ? (s0.zh || s0.n) : id; }
+  function svcOn(date) { var o = {}; (FE.days[date] || []).forEach(function (x) { o[x] = 1; }); return o; }
+  function opZh(op) { return { 'SF Bay Ferry': '旧金山湾渡轮', 'Golden Gate Ferry': '金门渡轮', 'Alcatraz City Cruises': '恶魔岛游船' }[op] || op; }
+  function rname(r) {
+    var u = []; r.stops.forEach(function (k) { var n = sname(k); if (u.indexOf(n) < 0) u.push(n); });
+    if (u.length < 2) return r.n;
+    return r.stops[0] !== r.stops[r.stops.length - 1] && u.length === 2 ? u[0] + ' ⇄ ' + u[1] : u.join(' · ');
+  }
+  function dirKey(t) { return t.t[0][0] + '>' + t.t[t.t.length - 1][0]; }
+  function ferryRender() {
+    var box = $('ferry'); if (!box) return;
+    if (!FE || !FE.routes) { box.innerHTML = '<div class="empty">时刻表还没生成或加载失败，请稍后再试。</div>'; return; }
+    var now = laNow(), dates = Object.keys(FE.days).filter(function (d) { return d >= now.date; }).sort();
+    if (!FDATE || dates.indexOf(FDATE) < 0) FDATE = dates[0];
+    var routes = FE.routes.filter(function (r) { return !r.stale; });
+    if (!routes.some(function (r) { return r.id === FR; })) FR = routes[0] && routes[0].id;
+    var R = routes.filter(function (r) { return r.id === FR; })[0], on = svcOn(FDATE);
+    var h = '<div class="ftop">';
+    var ops = {}; routes.forEach(function (r) { (ops[r.op] = ops[r.op] || []).push(r); });
+    for (var op in ops) h += '<div class="fop">' + esc(opZh(op)) + '</div><div class="mtabs">' + ops[op].map(function (r) { return '<button data-fr="' + esc(r.id) + '" class="' + (r.id === FR ? 'on' : '') + '"><i style="display:inline-block;width:9px;height:9px;border-radius:5px;background:' + r.c + ';margin-right:5px"></i>' + esc(rname(r)) + '</button>'; }).join('') + '</div>';
+    h += '</div>';
+    var trips = FE.trips.filter(function (t) { return t.r === FR && on[t.s]; });
+    var dirs = {}; trips.forEach(function (t) { (dirs[dirKey(t)] = dirs[dirKey(t)] || []).push(t); });
+    var dk = Object.keys(dirs).sort(function (a, b) { return dirs[b].length - dirs[a].length; });
+    if (!FD || !dirs[FD]) FD = dk[0];
+    h += '<div class="mtabs"><select id="fdate" class="fsel">' + dates.map(function (d) { var dd = new Date(d + 'T12:00:00'); return '<option value="' + d + '"' + (d === FDATE ? ' selected' : '') + '>' + (d === now.date ? '今天 ' : '') + (dd.getMonth() + 1) + '月' + dd.getDate() + '日 周' + '日一二三四五六'.charAt(dd.getDay()) + '</option>'; }).join('') + '</select></div>';
+    if (!trips.length) { box.innerHTML = h + '<div class="empty">这一天这条航线没有班次。</div>' + ferryFoot(); bindFerry(); return; }
+    h += '<div class="mtabs">' + dk.map(function (k) { var a = k.split('>'); return '<button data-fd="' + esc(k) + '" class="' + (k === FD ? 'on' : '') + '">' + esc(sname(a[0])) + ' → ' + esc(sname(a[1])) + ' <small>' + dirs[k].length + ' 班</small></button>'; }).join('') + '</div>';
+    var L2 = dirs[FD].slice().sort(function (a, b) { return tmin(a.t[0][1]) - tmin(b.t[0][1]); });
+    var cols = []; L2.forEach(function (t) { t.t.forEach(function (x) { if (cols.indexOf(x[0]) < 0) cols.push(x[0]); }); });
+    var isToday = FDATE === now.date, nextDone = false;
+    h += '<div class="ftab"><table><tr>' + cols.map(function (c) { return '<th>' + esc(sname(c)) + '<small>' + esc(FE.stops[c] ? FE.stops[c].n : '') + '</small></th>'; }).join('') + '<th></th></tr>';
+    L2.forEach(function (t) {
+      var m0 = tmin(t.t[0][1]), past = isToday && m0 < now.min, nx = isToday && !past && !nextDone;
+      if (nx) nextDone = true;
+      var at = {}; t.t.forEach(function (x) { at[x[0]] = x[1]; });
+      h += '<tr class="' + (past ? 'past' : '') + (nx ? ' nx' : '') + '">' + cols.map(function (c) { return '<td>' + (at[c] ? tfmt(at[c]) : '—') + '</td>'; }).join('') +
+        '<td class="dur">' + Math.max(0, tmin(t.t[t.t.length - 1][1]) - m0) + ' 分' + (nx ? '<b>还有 ' + (m0 - now.min) + ' 分钟</b>' : '') + '</td></tr>';
+    });
+    h += '</table></div>' + (isToday && !nextDone ? '<div class="mnote">今天这个方向的船已经开完了，看看明天的。</div>' : '');
+    box.innerHTML = h + ferryFoot();
+    bindFerry();
+    var nr = box.querySelector('tr.nx'); if (nr && nr.scrollIntoView) setTimeout(function () { nr.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 80);
+  }
+  function ferryFoot() {
+    var st = (FE.routes || []).filter(function (r) { return r.stale; });
+    return '<div class="mnote">时刻表来自各渡轮公司公开发布的 GTFS 数据，每周更新两次（最近 ' + esc((FE.generated || '').slice(0, 10)) + '）。节假日、球赛日、天气可能临时调整，出发前看官网：' +
+      '<a href="https://www.sanfranciscobayferry.com/" target="_blank" rel="noopener">SF Bay Ferry</a> · <a href="https://www.goldengate.org/ferry/" target="_blank" rel="noopener">Golden Gate Ferry</a> · <a href="https://www.cityexperiences.com/san-francisco/city-cruises/alcatraz/" target="_blank" rel="noopener">恶魔岛游船</a>。' +
+      '<br>票：SF Bay Ferry 和 Golden Gate Ferry 都能用 Clipper 卡（或手机钱包里的 Clipper），比买单程纸票便宜；恶魔岛的船只能在官网提前买票，常常几周前就卖光。' +
+      (st.length ? '<br>' + st.map(function (r) { return esc(r.n); }).join('、') + '：暂时没有最新时刻表，地图上只画了航线。' : '') + '</div>';
+  }
+  function bindFerry() {
+    var box = $('ferry');
+    box.onclick = function (e) {
+      var b = e.target.closest('[data-fr]'); if (b) { FR = b.getAttribute('data-fr'); ls('fr', FR); FD = ''; ferryRender(); return; }
+      b = e.target.closest('[data-fd]'); if (b) { FD = b.getAttribute('data-fd'); ferryRender(); }
+    };
+    var sel = $('fdate'); if (sel) sel.onchange = function () { FDATE = this.value; ferryRender(); };
+    var mt = $('mtabs'); if (mt) mt.onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
+  }
+  function nextAt(ids, n) {   // 某个码头（可能有几个登船口）今天接下来的班次
+    var now = laNow(), on = svcOn(now.date), out = [];
+    FE.trips.forEach(function (t) {
+      if (!on[t.s]) return;
+      for (var i = 0; i < t.t.length - 1; i++) if (ids.indexOf(t.t[i][0]) >= 0 && tmin(t.t[i][1]) >= now.min) { out.push([tmin(t.t[i][1]), t.t[i][1], t.r, t.t[t.t.length - 1][0]]); break; }
+    });
+    out.sort(function (a, b) { return a[0] - b[0]; });
+    return out.slice(0, n || 6);
+  }
+  // ---- ⏱️ BART 实时到站（BART 官方开放接口，公开密钥，每 30 秒刷新）
+  var BKEY = 'MW9S-E7SL-26DU-VV8V', LST = ls('livest') || 'BERY', LT = null;
+  var DZH = { 'Antioch': '安提阿', 'Daly City': '戴利城', 'Dublin/Pleasanton': '都柏林', 'Richmond': '列治文', 'Millbrae': '密尔布雷', 'SFO/Millbrae': 'SFO / 密尔布雷', 'SF Airport': 'SFO 机场', 'Berryessa': '北圣何塞', 'Berryessa/North San Jose': '北圣何塞', 'Pittsburg/Bay Point': '匹兹堡/贝波因特', 'Warm Springs': '温泉', 'Fremont': '弗里蒙特', 'MacArthur': '麦克阿瑟', 'Montgomery St.': '蒙哥马利', '24th Street': '24 街', 'Coliseum': '体育场', 'Oakland Airport': '奥克兰机场' };
+  function bartEtd(abbr, cb) {
+    var x = new XMLHttpRequest(); x.open('GET', 'https://api.bart.gov/api/etd.aspx?cmd=etd&orig=' + encodeURIComponent(abbr) + '&key=' + BKEY + '&json=y'); x.timeout = 12000;
+    x.onload = function () { try { var r = JSON.parse(x.responseText).root; cb(r); } catch (e) { cb(null, '数据格式不对'); } };
+    x.onerror = x.ontimeout = function () { cb(null, '连不上 BART（网络不好？）'); }; x.send();
+  }
+  function mins(e) { return e.minutes === 'Leaving' ? 0 : +e.minutes || 0; }
+  function etdList(r) {   // → [[方向, [ [分钟, 目的地, 颜色hex, 车厢, 延误秒, 站台] ... ]]]
+    var st = r && r.station && r.station[0], by = {};
+    if (!st || !st.etd) return [];
+    st.etd.forEach(function (d) { (d.estimate || []).forEach(function (e) { var k = (e.direction === 'North' ? '⬆️ 北行' : '⬇️ 南行') + ' · ' + e.platform + ' 号站台'; (by[k] = by[k] || []).push([mins(e), d.destination, e.hexcolor, e.length, +e.delay || 0, e.cancelflag === '1']); }); });
+    return Object.keys(by).sort().map(function (k) { return [k, by[k].sort(function (a, b) { return a[0] - b[0]; })]; });
+  }
+  function mtxt(m) { return m <= 0 ? '<b class="now">进站中</b>' : '<b>' + m + '</b> 分'; }
+  function etdMini(r) {
+    var L2 = etdList(r); if (!L2.length) return '现在没有车（可能已经收班）。';
+    return '⏱️ <b>实时到站</b><br>' + L2.map(function (g) { return g[1].slice(0, 3).map(function (e) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:5px;background:' + e[2] + ';margin-right:4px;border:1px solid #999"></span>' + esc(DZH[e[1]] || e[1]) + ' ' + (e[0] <= 0 ? '进站中' : e[0] + ' 分'); }).join('<br>'); }).join('<br>');
+  }
+  function liveRender(r, err) {
+    var box = $('live'); if (!box) return;
+    var stns = TR ? TR.layers.filter(function (l) { return l.k === 'bart'; })[0].st.slice().sort(function (a, b) { return a.en < b.en ? -1 : 1; }) : [];
+    var cur = stns.filter(function (s0) { return s0.id === LST; })[0];
+    var h = '<div class="mtabs"><select id="lst" class="fsel">' + stns.map(function (s0) { return '<option value="' + s0.id + '"' + (s0.id === LST ? ' selected' : '') + '>' + esc(s0.en) + (s0.zh ? ' · ' + esc(s0.zh.split(' · ')[0]) : '') + '</option>'; }).join('') + '</select>' +
+      '<button id="lnear">📍 离我最近的站</button><button id="lref">🔄 刷新</button></div>';
+    if (err) h += '<div class="empty">' + esc(err) + '</div>';
+    else if (r) {
+      var L2 = etdList(r);
+      h += '<div class="lhd"><b>' + esc(cur ? cur.en : LST) + '</b>' + (cur && cur.zh ? ' <small>' + esc(cur.zh) + '</small>' : '') + '<span>更新于 ' + esc((r.time || '').replace(/:\d\d (AM|PM) PDT|:\d\d (AM|PM) PST/, ' $1$2')) + ' · 每 30 秒自动刷新</span></div>';
+      if (!L2.length) h += '<div class="empty">现在没有车。BART 大约凌晨 12 点多收班，早上 5 点（周六 6 点、周日 8 点）开始。</div>';
+      L2.forEach(function (g) {
+        h += '<div class="ldir">' + esc(g[0]) + '</div><div class="ltab">' + g[1].map(function (e) {
+          return '<div class="lrow' + (e[0] <= 1 ? ' soon' : '') + '"><i style="background:' + e[2] + '"></i><div class="ld"><b>' + esc(DZH[e[1]] || e[1]) + '</b><small>' + esc(e[1]) + ' · ' + e[3] + ' 节车厢' + (e[4] >= 60 ? ' · 晚点约 ' + Math.round(e[4] / 60) + ' 分' : '') + (e[5] ? ' · 已取消' : '') + '</small></div><div class="lm">' + mtxt(e[0]) + '</div></div>';
+        }).join('') + '</div>';
+      });
+    } else h += '<div class="empty">加载中…</div>';
+    h += '<div class="mnote">数据来自 BART 官方实时接口，分钟数是列车预计到站时间，偶尔会跳。坐 SFO 方向注意看终点：去机场选终点写着「SFO」或「Millbrae」的车。VTA 轻轨和巴士的实时到站用 Transit App 或谷歌地图。去旧金山也可以坐 Caltrain。</div>';
+    box.innerHTML = h;
+    $('lst').onchange = function () { LST = this.value; ls('livest', LST); liveLoad(); };
+    $('lref').onclick = liveLoad;
+    $('lnear').onclick = function () {
+      if (!navigator.geolocation) return;
+      this.textContent = '定位中…';
+      navigator.geolocation.getCurrentPosition(function (p) {
+        var best = null, bd = 1e9;
+        stns.forEach(function (s0) { var d = Math.pow(s0.ll[0] - p.coords.latitude, 2) + Math.pow((s0.ll[1] - p.coords.longitude) * .79, 2); if (d < bd) { bd = d; best = s0; } });
+        if (best) { LST = best.id; ls('livest', LST); liveLoad(); }
+      }, function () { $('lnear').textContent = '📍 定位失败'; }, { timeout: 15000 });
+    };
+    var mt = $('mtabs'); if (mt) mt.onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
+  }
+  function liveLoad() {
+    clearTimeout(LT);
+    if (!$('live')) return;
+    bartEtd(LST, function (r, err) { liveRender(r, err); LT = setTimeout(function () { if (!document.hidden && $('live')) liveLoad(); }, 30000); });
+  }
+  function liveInit() {
+    function go() { liveRender(null); liveLoad(); }
+    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'ie/transit.json?t=' + Math.floor(Date.now() / 864e5)); x.onload = function () { try { TR = JSON.parse(x.responseText); } catch (e) { } go(); }; x.send(); }
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && MAP === 'live' && $('live')) liveLoad(); });
+  function loadLeaflet(cb) {
+    if (window.L) { cb(); return; }
+    var c = document.createElement('link'); c.rel = 'stylesheet'; c.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(c);
+    var j = document.createElement('script'); j.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    j.onload = function () { var o = document.createElement('script'); o.src = 'https://unpkg.com/leaflet-polylineoffset@1.1.1/leaflet.polylineoffset.js'; o.onload = o.onerror = cb; document.head.appendChild(o); };
+    j.onerror = function () { $('lmap').innerHTML = '<div class="empty">地图组件加载失败，请检查网络后刷新</div>'; };
+    document.head.appendChild(j);
+  }
+  var TR = null;
+  document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('[data-ferry]'); if (!a) return; e.preventDefault(); MAP = 'ferry'; ls('map', MAP); render(); });
+  function realInit() {
+    LMAP = null;
+    $('mtabs').onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
+    $('rlay').onclick = function (e) { var b = e.target.closest('[data-l]'); if (!b) return; var k = b.getAttribute('data-l'); RL[k] = RL[k] ? 0 : 1; ls('rl', RL); b.className = RL[k] ? 'on' : ''; b.textContent = (RL[k] ? '✓ ' : '') + b.textContent.replace(/^✓ /, ''); draw(); };
+    function go() {
+      loadLeaflet(function () {
+        var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
+        LMAP = L.map('lmap', { zoomControl: true, attributionControl: true }).setView([34.08, -117.55], 10);
+        function setBase() {
+          (LMAP.base || []).forEach(function (t) { LMAP.removeLayer(t); });
+          if (BASE === 'sat') LMAP.base = [
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '卫星图 © Esri, Maxar, Earthstar Geographics' }),
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, opacity: .8 })];
+          else LMAP.base = [L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'light_all') + '/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' })];
+          LMAP.base.forEach(function (t) { t.addTo(LMAP); t.bringToBack(); });
+          $('lmap').classList.toggle('sat', BASE === 'sat');
+        }
+        setBase();
+        $('rBase').onclick = function () { BASE = BASE === 'sat' ? 'map' : 'sat'; ls('base', BASE); this.textContent = BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图'; setBase(); };
+        LMAP.groups = {};
+        LMAP.on('zoomend', labels);
+        draw();
+        $('rSF').onclick = function () { LMAP.setView([34.100, -117.650], 14); };
+        $('rBay').onclick = function () { LMAP.setView([34.00, -117.35], 9); };
+        $('rMe').onclick = function () {
+          if (!navigator.geolocation) return;
+          navigator.geolocation.getCurrentPosition(function (p) {
+            var ll = [p.coords.latitude, p.coords.longitude];
+            if (LMAP.me) LMAP.removeLayer(LMAP.me);
+            LMAP.me = L.circleMarker(ll, { radius: 8, color: '#fff', weight: 3, fillColor: '#2F6F8F', fillOpacity: 1 }).addTo(LMAP).bindPopup('你在这里');
+            LMAP.setView(ll, 15);
+          }, function () { alert('没有拿到位置（可能没有允许定位）'); }, { timeout: 15000 });
+        };
+      });
+    }
+    if (TR) go(); else { var x = new XMLHttpRequest(); x.open('GET', 'ie/transit.json?t=' + Math.floor(Date.now() / 864e5)); x.onload = function () { try { TR = JSON.parse(x.responseText); go(); } catch (e) { } }; x.send(); }
+  }
+  function labels() {
+    if (!LMAP) return;
+    var z = LMAP.getZoom();
+    document.querySelectorAll('.stl').forEach(function (el) { el.style.display = (el.classList.contains('big') ? z >= 13 : z >= 15) ? '' : 'none'; });
+  }
+  function drawFerry() {
+    if (LMAP.groups.ferry) { LMAP.removeLayer(LMAP.groups.ferry); delete LMAP.groups.ferry; }
+    if (!RL.ferry || !FE || !FE.routes) return;
+    var g = L.layerGroup();
+    FE.routes.forEach(function (r) {
+      var pts = r.shape || r.stops.map(function (k) { return FE.stops[k] && FE.stops[k].ll; }).filter(Boolean);
+      if (pts.length < 2) return;
+      g.addLayer(L.polyline(pts, { color: r.c, weight: 4, opacity: .95, dashArray: '10 7', lineCap: 'round' }).bindTooltip('⛴️ ' + opZh(r.op) + '：' + rname(r), { sticky: true }));
+    });
+    // 同一个码头的几个登船口（比如渡轮大厦 B/C/E/F/G）合成一个点
+    var cl = [];
+    Object.keys(FE.stops).forEach(function (id) {
+      var s0 = FE.stops[id], c = null;
+      cl.forEach(function (x) { if (!c && Math.abs(x.ll[0] - s0.ll[0]) < .0025 && Math.abs(x.ll[1] - s0.ll[1]) < .0035) c = x; });
+      if (c) c.ids.push(id); else cl.push({ ll: s0.ll, ids: [id], n: s0.zh || s0.n, en: s0.n.replace(/ Gate [A-Z]$/, '') });
+    });
+    cl.forEach(function (c) {
+      var mk = L.marker(c.ll, { zIndexOffset: 900, icon: L.divIcon({ className: 'ferm', html: '<span>⛴️</span>', iconSize: [28, 28], iconAnchor: [14, 14] }) });
+      mk.bindPopup(function () {
+        var nx = nextAt(c.ids, 6), rmap = {}; FE.routes.forEach(function (r) { rmap[r.id] = r; });
+        return '<div class="tipp"><b>⛴️ ' + esc(c.n) + '</b><small style="color:#888">' + esc(c.en) + '</small><div style="margin-top:6px">' +
+          (nx.length ? '今天接下来：<br>' + nx.map(function (x) { var r = rmap[x[2]] || {}; return '<span style="display:inline-block;width:9px;height:9px;border-radius:5px;background:' + (r.c || '#888') + ';margin-right:5px"></span><b>' + tfmt(x[1]) + '</b> → ' + esc(sname(x[3])); }).join('<br>') : '今天这里没有更多班次了。') +
+          '</div><a href="#map" data-ferry="1" style="display:inline-block;margin-top:6px">看完整时刻表 →</a></div>';
+      }, { maxWidth: 270 });
+      g.addLayer(mk);
+    });
+    g.addTo(LMAP); LMAP.groups.ferry = g;
+  }
+  function draw() {
+    if (!LMAP || !TR) return;
+    drawFerry();
+    TR.layers.forEach(function (Ly) {
+      if (LMAP.groups[Ly.k]) { LMAP.removeLayer(LMAP.groups[Ly.k]); delete LMAP.groups[Ly.k]; }
+      if (!RL[Ly.k]) return;
+      var g = L.layerGroup(), byId = {};
+      if (Ly.tips) {
+        Ly.tips.forEach(function (t) {
+          g.addLayer(L.marker(t.ll, { zIndexOffset: 1000, icon: L.divIcon({ className: 'tipm' + (t.w ? ' w' : ''), html: '<span>' + t.e + '</span>', iconSize: [30, 30], iconAnchor: [15, 15] }) })
+            .bindPopup('<div class="tipp"><b>' + t.e + ' ' + esc(t.t) + '</b><div>' + esc(t.d) + '</div></div>', { maxWidth: 260 }));
+        });
+        g.addTo(LMAP); LMAP.groups[Ly.k] = g; return;
+      }
+      Ly.st.forEach(function (s0) { byId[s0.id] = s0; });
+      // 同一段被几条线共用时并排画：按段统计共用的线，各自偏移
+      var seg = {};
+      function sk(a, b) { return a < b ? a + '|' + b : b + '|' + a; }
+      Ly.lines.forEach(function (ln, i) { if (ln.st) for (var j = 1; j < ln.st.length; j++) (seg[sk(ln.st[j - 1], ln.st[j])] = seg[sk(ln.st[j - 1], ln.st[j])] || []).push(i); });
+      Ly.lines.forEach(function (ln, i) {
+        var pts = ln.path || ln.st.map(function (k) { return byId[k].ll; });
+        var o = { color: ln.c, weight: /vbus|omni/.test(Ly.k) ? 3.5 : Ly.k === 'caltrain' ? 6 : 5, opacity: /vbus|omni/.test(Ly.k) ? .8 : .95, lineCap: 'round', lineJoin: 'round', dashArray: /F 线|机场线/.test(ln.n) ? '8 6' : null };
+        var tip = ln.n + (ln.d ? '：' + ln.d : '');
+        if (ln.st && L.Polyline.prototype.setOffset) {
+          for (var j = 1; j < ln.st.length; j++) {
+            var key = sk(ln.st[j - 1], ln.st[j]), share = seg[key], idx = share.indexOf(i);
+            var dir = ln.st[j - 1] < ln.st[j] ? 1 : -1;   // 方向不同的线偏移方向要统一
+            var oo = {}; for (var kk in o) oo[kk] = o[kk];
+            oo.offset = (idx - (share.length - 1) / 2) * 4.5 * dir;
+            g.addLayer(L.polyline([byId[ln.st[j - 1]].ll, byId[ln.st[j]].ll], oo).bindTooltip(tip, { sticky: true }));
+          }
+        } else g.addLayer(L.polyline(pts, o).bindTooltip(tip, { sticky: true }));
+        if (ln.no) [pts[0], pts[pts.length - 1]].forEach(function (p) {
+          g.addLayer(L.marker(p, { icon: L.divIcon({ className: '', html: '<div style="background:' + ln.c + ';color:#fff;font:700 11px/20px sans-serif;border-radius:10px;min-width:26px;text-align:center;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3)">' + ln.no + '</div>', iconSize: [30, 24], iconAnchor: [15, 12] }) }).bindTooltip(ln.n + '：' + ln.d));
+        });
+      });
+      Ly.st.forEach(function (s0) {
+        var lines = Ly.lines.filter(function (ln, i) { return (ln.st || []).indexOf(s0.id) >= 0 || (s0.ln || []).indexOf(i) >= 0; }).map(function (ln) { return '<span style="display:inline-block;width:10px;height:10px;border-radius:5px;background:' + ln.c + ';margin-right:4px"></span>' + esc(ln.n); });
+        var m = L.circleMarker(s0.ll, { radius: s0.big ? 6 : 4.5, color: '#222', weight: 2, fillColor: '#fff', fillOpacity: 1 })
+          .bindPopup('<b>' + esc(s0.en) + '</b>' + (s0.zh ? '<br>' + esc(s0.zh) : '') + (lines.length ? '<div style="margin-top:6px;font-size:12px;line-height:1.7">' + lines.join('<br>') + '</div>' : '') +
+            (Ly.k === 'bart' ? '<div class="pl" data-etd="' + s0.id + '" style="margin-top:8px;font-size:12.5px;line-height:1.7;color:#555">⏱️ 实时到站加载中…</div>' : ''), { maxWidth: 280 });
+        if (Ly.k === 'bart') m.on('popupopen', function () { bartEtd(s0.id, function (d, err) { var el = document.querySelector('[data-etd="' + s0.id + '"]'); if (el) el.innerHTML = d ? etdMini(d) : esc(err || '实时数据暂时拿不到'); }); });
+        g.addLayer(m);
+        g.addLayer(L.marker(s0.ll, { interactive: false, icon: L.divIcon({ className: 'stl' + (s0.big ? ' big' : ''), html: '<span>' + esc(s0.en) + '</span>', iconSize: [0, 0], iconAnchor: [-8, 6] }) }));
+      });
+      g.addTo(LMAP); LMAP.groups[Ly.k] = g;
+    });
+    labels();
+  }
+  function mapInit() {
+    if (MAP === 'ferry') { ferryLoad(ferryRender); bindFerry(); return; }
+    if (MAP === 'live') { liveInit(); return; }
+    if (MAP === 'road') { $('mtabs').onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); }; if (window.BayRoad) BayRoad.init({ loadLeaflet: loadLeaflet, rerender: render, center: [37.45, -121.98], zoom: 10 }); return; }
+    if (MAP === 'real' || !$('mbox')) { realInit(); return; }
+    var box = $('mbox'), img = $('mimg'), st = { s: 1, x: 0, y: 0, min: .2 }, pts = {}, last = null;
+    function apply() { img.style.transform = 'translate(' + st.x + 'px,' + st.y + 'px) scale(' + st.s + ')'; }
+    function fit() {
+      var bw = box.clientWidth, bh = box.clientHeight, iw = img.naturalWidth || 1000, ih = img.naturalHeight || 1000;
+      st.s = Math.min(bw / iw, bh / ih); st.min = st.s * .8; st.x = (bw - iw * st.s) / 2; st.y = (bh - ih * st.s) / 2; apply();
+    }
+    function zoom(f, cx, cy) {
+      var ns = Math.max(st.min, Math.min(st.s * f, 6));
+      if (cx == null) { cx = box.clientWidth / 2; cy = box.clientHeight / 2; }
+      st.x = cx - (cx - st.x) * ns / st.s; st.y = cy - (cy - st.y) * ns / st.s; st.s = ns; apply();
+    }
+    img.onload = fit; if (img.complete) fit();
+    function rel(e) { var r = box.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+    box.addEventListener('pointerdown', function (e) { if (e.target.closest('.mctl')) return; box.setPointerCapture(e.pointerId); pts[e.pointerId] = rel(e); last = null; });
+    box.addEventListener('pointermove', function (e) {
+      if (!pts[e.pointerId]) return;
+      var p = rel(e), ids = Object.keys(pts);
+      if (ids.length === 1) { st.x += p[0] - pts[e.pointerId][0]; st.y += p[1] - pts[e.pointerId][1]; pts[e.pointerId] = p; apply(); return; }
+      pts[e.pointerId] = p;
+      var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a[0] - b[0], a[1] - b[1]), c = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+      if (last) { zoom(d / last.d, c[0], c[1]); st.x += c[0] - last.c[0]; st.y += c[1] - last.c[1]; apply(); }
+      last = { d: d, c: c };
+    });
+    function up(e) { delete pts[e.pointerId]; last = null; }
+    box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
+    box.addEventListener('wheel', function (e) { e.preventDefault(); var p = rel(e); zoom(e.deltaY < 0 ? 1.15 : 1 / 1.15, p[0], p[1]); }, { passive: false });
+    box.addEventListener('dblclick', function (e) { var p = rel(e); zoom(2, p[0], p[1]); });
+    $('mzi').onclick = function () { zoom(1.4); }; $('mzo').onclick = function () { zoom(1 / 1.4); }; $('mzr').onclick = fit;
+    $('mfs').onclick = function () { try { if (document.fullscreenElement) document.exitFullscreen(); else box.requestFullscreen(); } catch (er) { } };
+    document.addEventListener('fullscreenchange', function () { setTimeout(fit, 120); });
+    $('mtabs').onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
+  }
+  function setTab(t) { TAB = t; ls('tab', t); Q = ''; $('q').value = ''; history.replaceState(null, '', '#' + t); render(); window.scrollTo(0, Math.min(window.scrollY, $('tabs').offsetTop)); }
+
+  $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (b) setTab(b.getAttribute('data-t')); };
+  $('list').onclick = function (e) {
+    var w = e.target.closest('[data-w]');
+    if (w) { var k = w.getAttribute('data-w'); WANT[k] = !WANT[k]; if (!WANT[k]) delete WANT[k]; ls('want', WANT); var y = window.scrollY; render(); window.scrollTo(0, y); return; }
+    var hd = e.target.closest('.hd'); if (!hd) return;
+    var c = hd.parentNode, ck = c.getAttribute('data-k'); OPEN[ck] = !c.classList.contains('open'); c.classList.toggle('open', OPEN[ck]);
+  };
+  var qt = 0;
+  $('q').oninput = function () { clearTimeout(qt); var v = this.value.trim(); qt = setTimeout(function () { Q = v; render(); }, 200); };
+  $('rnd').onclick = function () {
+    var pool = [];
+    D.stories.forEach(function (x) { pool.push(['stories', x]); });
+    D.trivia.forEach(function (x) { pool.push(['trivia', x]); });
+    D.fun.forEach(function (x) { pool.push(['fun', x]); });
+    var p = pool[Math.floor(Math.random() * pool.length)], old = document.querySelector('.pop'); if (old) old.parentNode.removeChild(old);
+    var el = document.createElement('div'); el.className = 'pop';
+    el.innerHTML = '<button class="x">×</button>' + (p[0] === 'trivia' ? '<b>💡 冷知识</b>' + esc(p[1]) : '<b>' + p[1].e + ' ' + esc(p[1].t) + '</b>' + esc(p[1].s) + '<br><button class="go">看全文</button>');
+    document.body.appendChild(el);
+    el.onclick = function (ev) {
+      if (ev.target.closest('.x')) { el.parentNode.removeChild(el); return; }
+      if (ev.target.closest('.go')) { el.parentNode.removeChild(el); OPEN[key(p[0], p[1])] = true; setTab(p[0]); var c = document.querySelector('[data-k="' + key(p[0], p[1]).replace(/"/g, '\\"') + '"]'); if (c) c.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+    };
+  };
+
+  var x = new XMLHttpRequest();
+  x.open('GET', 'ie/data.json?t=' + Math.floor(Date.now() / 36e5));
+  x.onload = function () {
+    try { D = JSON.parse(x.responseText); } catch (e) { $('list').innerHTML = '<div class="empty">加载失败</div>'; return; }
+    var showIntro = function (all) { $('intro').innerHTML = (all ? D.intro.map(esc).join('<br><br>') : esc(D.intro[0])) + ' <a href="#" id="more" style="color:#FFD9A8">' + (all ? '收起' : '更多 ›') + '</a>'; $('more').onclick = function (e) { e.preventDefault(); showIntro(!all); }; };
+    showIntro(false);
+    $('facts').innerHTML = D.facts.map(function (f) { return '<span><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</span>'; }).join('');
+    $('foot').innerHTML = '内容依据 Upland、Ontario、Riverside 等市政府和旅游官网、Metrolink、Omnitrans、加州历史地标和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href="la.html">🌇 洛杉矶生活 →</a><br>' +
+      D.sources.map(function (s) { return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>'; }).join(' · ');
+    render();
+  };
+  x.onerror = function () { $('list').innerHTML = '<div class="empty">网络错误，稍后刷新</div>'; };
+  x.send();
+})();
+</script>
+<script>document.querySelectorAll('.city a').forEach(function(a){a.addEventListener('click',function(e){if(a.classList.contains('on')){e.preventDefault();return;}var h=(location.hash||'').split('/')[0];if(h)a.href=a.getAttribute('href').split('#')[0]+h;});});</script>
+<script src="nearby.js?v=3" defer></script>
+<script src="nav.js?v=25" defer></script>
+</body>
+</html>

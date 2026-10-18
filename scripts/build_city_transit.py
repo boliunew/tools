@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""🗺️ 城市实景交通图（纽约、洛杉矶）→ ny/transit.json、la/transit.json（ny.html、la.html 用）
+"""🗺️ 城市实景交通图（纽约、洛杉矶、内陆帝国）→ ny/ la/ ie/ transit.json（ny.html、la.html、ie.html 用）
 
 线路走向和车站来自各家官方公开的 GTFS（通过 Mobility Database 公开目录找下载地址，失败时用备用地址）：
   · 纽约：MTA 地铁（含斯塔滕岛铁路）
   · 洛杉矶：LA Metro 轨道（A/B/C/D/E/K 线）、Metrolink 通勤火车
+  · 内陆帝国：Metrolink（含 Arrow）、Omnitrans 公交
 车站按 GTFS 的母站（parent_station）合并——纽约有好几个「86 St」，不能按名字合。
 💡 用心提示在下面 TIPS 里手写。只用标准库。
   python3 scripts/build_city_transit.py [ny|la]
@@ -23,6 +24,36 @@ UA = "boliunew-tools-city/1.0 (https://github.com/boliunew/tools)"
 CATALOG = "https://share.mobilitydata.org/catalogs-csv"
 
 TIPS = {
+    "ie": [
+        (34.0975, -117.6478, "🚉", "Upland Metrolink 站（家门口）", "圣贝纳迪诺线，往西大约一小时到洛杉矶联合车站，往东到圣贝纳迪诺。工作日班次多，周末少，提前在 Metrolink App 查好、买好票（车上不卖票）。", 0),
+        (34.0972, -117.6496, "🍋", "Upland 老城 Historic Downtown", "2nd Ave 一带两百来家店，4–10 月周六有农夫市场，每年 4 月办柠檬节。", 0),
+        (34.1068, -117.6508, "🗽", "拓荒圣母像 Madonna of the Trail", "1929 年立在 Foothill（老 66 号公路）和 Euclid 路口，是全美 12 座里最西边的一座。", 0),
+        (34.1200, -117.6510, "🐴", "Euclid 大道骑马道", "大道中间三英里长的骑马道，从 Foothill 到 24th St，两边是百年老房子和胡椒树。查菲 1880 年代用欧几里得命名了这条路。", 0),
+        (34.1116, -117.6877, "🛩️", "Cable 机场", "号称世界最大的家族私有公共机场，路边能看小飞机起降，带孩子很开心。", 0),
+        (34.0966, -117.7197, "🎓", "克莱蒙特 The Village", "七所学院的大学城，步行小镇，Metrolink 站就在小镇里。", 0),
+        (34.2502, -117.6359, "🥾", "Ice House Canyon 步道", "Baldy 山最热门的溪谷步道。停车要挂 Adventure Pass，周末早上 7 点前就满。", 0),
+        (34.2364, -117.6589, "🏔️", "Baldy 村和缆车", "冬天滑雪玩雪，夏天坐缆车到 Notch。上山查路况，冬天常要求带雪链。", 1),
+        (34.0560, -117.6012, "✈️", "安大略机场 ONT", "从 Upland 十几分钟，安检快、停车近。能飞 ONT 就别跑 LAX。", 0),
+        (34.0729, -117.5520, "🛍️", "Ontario Mills", "室内奥特莱斯，下雨天和大热天的去处。", 0),
+        (34.1105, -117.5321, "🌳", "Victoria Gardens", "兰乔库卡蒙格的露天购物街，有图书馆和剧院。", 0),
+        (34.1066, -117.5928, "🍇", "库卡蒙格酒庄历史地标", "加州历史地标第 490 号，加州最早的葡萄酒产区之一。就在 66 号公路边。", 0),
+        (34.1015, -117.5735, "🚄", "兰乔库卡蒙格站", "Metrolink 站；Brightline West 去拉斯维加斯的高铁计划从这里出发，开通时间以官方为准。", 0),
+        (34.0818, -117.7680, "🎡", "Fairplex（洛杉矶县博览会）", "每年五月前后的县博览会，1922 年办起。", 0),
+        (34.1068, -117.3647, "⛺", "Wigwam Motel", "1949 年开张的 66 号公路汽车旅馆，可以住进水泥做的印第安帐篷。", 0),
+        (34.1255, -117.2943, "🍟", "第一家麦当劳原址", "1948 年麦当劳兄弟在这里开了第一家麦当劳汉堡店，现在是一个免费的小博物馆。", 0),
+        (34.1095, -117.3138, "🌯", "Mitla Cafe", "1937 年开的墨西哥老馆子，据说启发了塔可钟。", 0),
+        (34.3160, -117.4680, "🚂", "Cajon 山口看火车", "全美最繁忙的山口铁路之一，从港口出来的集装箱火车一列接一列。只在公共道路边看，别进铁路范围。", 0),
+        (34.0617, -117.3224, "🛤️", "Colton 铁路交叉口", "BNSF 和联合太平洋两条大干线在这里交叉，2013 年修了立交，减少了互相等车。", 0),
+        (33.9833, -117.3741, "🔔", "米慎酒店 Mission Inn", "城堡一样的老酒店，很多位总统住过。11 月到 1 月的灯光节最热闹。", 0),
+        (33.9836, -117.3907, "⛰️", "Mt. Rubidoux", "河滨本地人天天爬的小山，山顶有十字架和和平塔，看全城。", 0),
+        (33.9289, -117.4070, "🍊", "脐橙母树", "1873 年种下的巴西脐橙之一，至今还活着，加州橙子产业从这里开始。", 0),
+        (34.0532, -117.1807, "🎶", "Redlands Bowl", "夏天的露天音乐会从 1924 年起一直免费。Arrow 小火车到雷德兰兹老城。", 0),
+        (34.0466, -116.9520, "🍎", "Oak Glen 苹果园", "9–11 月摘苹果、吃苹果派。秋天周末很堵，早上去。", 0),
+        (34.0483, -117.2612, "🥗", "洛马林达 Loma Linda", "全球公认的「长寿蓝区」之一，也是大型医学中心所在地。", 0),
+        (33.9750, -117.6380, "✈️", "名机航空博物馆 Planes of Fame", "奇诺机场里，很多能飞的二战老飞机。", 0),
+        (34.0700, -117.5000, "🚛", "仓库带：I-10 / SR-60 沿线", "Ontario、Fontana、Eastvale 一带是全美最大的仓库区之一。工作日下午 I-10 往东很堵，别待在大货车盲区里。", 1),
+        (34.1500, -117.4500, "🌬️", "圣安娜风大风区", "秋冬刮圣安娜风时，Fontana、Rancho 和 Cajon 山口风特别大，高边车容易被吹翻，也最容易起山火。", 1),
+    ],
     "ny": [
         (40.7553, -73.9868, "🎭", "时代广场", "最热闹也最游客的地方。扮成卡通人物、自由女神的人主动拉你合影，拍完就要钱；「送你一张 CD」的也一样，直接走开。百老汇剧院都在附近，TKTS 红色台阶下面卖当天打折票。", 1),
         (40.7527, -73.9772, "🌌", "中央车站（Grand Central）", "1913 年的车站大厅，天花板上的星座是画反了的。地下美食街的生蚝吧很有名；大厅一角的「耳语回廊」：站在对角说悄悄话，对面听得清清楚楚。", 0),
@@ -93,6 +124,8 @@ CITIES = {
     "ny": {"feeds": [("sub", "🚇 地铁", ["mta new york city transit"], "subway", ["https://rrgtfsfeeds.s3.amazonaws.com/gtfs_subway.zip"], {"1", "2"})]},
     "la": {"feeds": [("metro", "🚇 Metro 轨道", ["los angeles county metropolitan", "la metro"], "rail", ["https://gitlab.com/LACMTA/gtfs_rail/-/raw/master/gtfs_rail.zip"], {"0", "1"}),
                      ("ml", "🚈 Metrolink", ["metrolink", "southern california regional rail"], "", ["https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip"], {"2"})]},
+    "ie": {"feeds": [("ml", "🚈 Metrolink", ["metrolink", "southern california regional rail"], "", ["https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip"], {"2"}),
+                     ("omni", "🚌 Omnitrans 公交", ["omnitrans"], "", [], {"3"})]},
 }
 
 
@@ -195,6 +228,8 @@ def parse(kind, name, url, types):
             sn, ln = m.group(1), ""
         if kind == "ml":
             nm = ln.replace("Metrolink ", "").replace(" Line", " 线")
+        elif kind == "omni":
+            nm = (sn + " 路" if sn else "") + (" · " + ln if ln else "")
         elif sn:
             nm = sn + (" 线" if re.match(r"^[A-Z0-9]{1,3}X?$", sn) else "") + (" · " + ln if ln and ln != sn else "")
         else:
@@ -212,6 +247,8 @@ def parse(kind, name, url, types):
                                          "en": re.sub(r"\s+(Metrolink )?Station$", "", p["stop_name"]).strip(), "zh": "", "ln": set()})
                 o["ln"].add(idx)
     st = []
+    if kind == "omni":   # 公交站太多（几千个），只画线不画站
+        stn = {}
     for o in stn.values():
         o["ln"] = sorted(o["ln"])
         o["big"] = len(o["ln"]) >= (4 if kind == "sub" else 2)
@@ -233,6 +270,9 @@ ZH = {
            "Expo Park/USC": "博览会公园 · 南加大", "Downtown Long Beach": "长滩市中心", "Memorial Park": "帕萨迪纳老城", "Del Mar": "帕萨迪纳 Del Mar", "Arcadia": "阿卡迪亚", "APU/Citrus College": "阿祖萨",
            "Pomona North": "波莫纳北站", "Upland": "Upland（家门口）", "Montclair": "蒙特克莱尔", "Claremont": "克莱蒙特", "Rancho Cucamonga": "兰乔库卡蒙格", "LAX/Metro Transit Center": "LAX 机场换乘中心",
            "Culver City": "卡尔弗城", "Westwood/Rancho Park": "西木", "Fullerton": "富勒顿", "Anaheim - ARTIC": "阿纳海姆（迪士尼附近）", "Irvine": "欧文", "Burbank - Downtown": "伯班克市中心"},
+    "ie": {"Ontario-East": "安大略东站", "Fontana": "Fontana", "Rialto": "Rialto", "San Bernardino Depot": "圣贝纳迪诺老火车站", "San Bernardino-Downtown": "圣贝纳迪诺市中心",
+           "Riverside-Downtown": "河滨市中心", "Riverside-La Sierra": "河滨 La Sierra", "Riverside-Hunter Park/UCR": "河滨 Hunter Park（UCR）", "Moreno Valley/March Field": "Moreno Valley · March 机场",
+           "Perris-Downtown": "Perris 市中心", "Corona-North Main": "科罗纳北站", "Pomona-North": "波莫纳北站", "Pomona-Downtown": "波莫纳市中心", "Redlands-Downtown": "雷德兰兹老城", "Redlands-University": "雷德兰兹大学", "Redlands-Esri": "雷德兰兹 Esri", "San Bernardino-Tippecanoe": "圣贝纳迪诺 Tippecanoe"},
 }
 
 
@@ -261,7 +301,7 @@ def main():
                 got = old[kind]
             if got:
                 for s in got["st"]:
-                    zmap = {re.sub(r"\s*/\s*", "/", k): v for k, v in ZH.get(city, {}).items()}
+                    zmap = {re.sub(r"\s*/\s*", "/", k): v for k, v in dict(ZH.get("la", {}) if city == "ie" else {}, **ZH.get(city, {})).items()}
                     s["zh"] = s.get("zh") or zmap.get(re.sub(r"\s*/\s*", "/", s["en"]), "")
                 layers.append(got)
         layers.append({"k": "tips", "n": "💡 用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS[city]]})

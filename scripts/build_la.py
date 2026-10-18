@@ -3,6 +3,7 @@
 写法同 build_sf.py：只写有据可查的事实；店铺、票价、规定会变，页面上提醒「去之前查官网」。"""
 import json
 import os
+import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -305,6 +306,9 @@ PLANS = [
 
 
 def main():
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from city_extra import merge
+    merge("la", globals())
     out = {"intro": INTRO, "facts": FACTS, "hoods": HOODS, "eat": EAT, "fun": FUN, "go": GO, "work": WORK,
            "stories": STORIES, "tips": TIPS, "trivia": TRIVIA, "sources": SOURCES, "plans": PLANS}
     os.makedirs(os.path.join(ROOT, "la"), exist_ok=True)

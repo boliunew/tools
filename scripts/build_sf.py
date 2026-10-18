@@ -6,6 +6,7 @@
 """
 import json
 import os
+import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -413,6 +414,9 @@ PLANS = [
 
 
 def main():
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from city_extra import merge
+    merge("sf", globals())
     out = {"intro": INTRO, "facts": FACTS, "hoods": HOODS, "eat": EAT, "fun": FUN, "go": GO, "work": WORK,
            "stories": STORIES, "tips": TIPS, "trivia": TRIVIA, "sources": SOURCES, "plans": PLANS}
     os.makedirs(os.path.join(ROOT, "sf"), exist_ok=True)

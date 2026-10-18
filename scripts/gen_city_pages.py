@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = open(os.path.join(ROOT, "sj.html"), encoding="utf-8").read()
 
 SWITCH = ('<span class="city"><a href="sf.html">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a>'
-          '<a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a></span>')
+          '<a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html">🍊 内陆帝国</a></span>')
 
 NY_SVG = '''<svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 40 H400" stroke="#F4C27A" stroke-width="2"/>
@@ -27,6 +27,17 @@ LA_SVG = '''<svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" 
     <circle cx="330" cy="14" r="7" fill="#FFE7A8" opacity=".8"/>
     <path d="M40 40 Q43 24 38 8 M38 8 q-10 -2 -15 5 M38 8 q9 -4 15 1 M38 8 q-4 -7 -12 -7 M38 8 q4 -7 12 -6 M70 40 Q72 28 69 16 M69 16 q-8 -2 -13 4 M69 16 q8 -4 13 1 M69 16 q-4 -6 -10 -6 M69 16 q4 -6 10 -5 M372 40 Q375 22 370 6 M370 6 q-10 -2 -15 5 M370 6 q9 -4 15 1 M370 6 q-4 -7 -12 -7 M370 6 q4 -7 12 -6" stroke="#F4C27A" stroke-width="1.5" fill="none"/>
     <path d="M250 40 V30 H262 V40 M266 40 V24 H274 V40 M278 40 V32 H290 V40" stroke="#F4C27A" stroke-width="1" fill="none" opacity=".8"/>
+  </svg>'''
+
+IE_SVG = '''<svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 L60 16 L95 26 L140 4 L185 22 L230 12 L290 28 L340 14 L400 30 V40 Z" fill="#F4C27A" opacity=".22"/>
+    <path d="M128 9 L140 4 L152 10 M222 15 L230 12 L240 16" stroke="#FFF4DC" stroke-width="2" fill="none" opacity=".85"/>
+    <path d="M0 40 H400" stroke="#F4C27A" stroke-width="2"/>
+    <circle cx="40" cy="34" r="4.5" fill="#F4A340"/><circle cx="52" cy="35" r="4" fill="#F4A340"/><circle cx="64" cy="34" r="4.5" fill="#FFD84A"/>
+    <path d="M36 30 q4 -5 8 -1 M60 30 q4 -5 8 -1" stroke="#9BC27A" stroke-width="1.4" fill="none"/>
+    <path d="M250 40 V28 H290 V40 M254 28 V24 H286 V28 M300 40 V30 H340 V40" stroke="#F4C27A" stroke-width="1.1" fill="none" opacity=".85"/>
+    <path d="M350 40 V34 H372 V40 M352 40 a3 3 0 1 0 0.1 0 M370 40 a3 3 0 1 0 0.1 0" stroke="#F4C27A" stroke-width="1.2" fill="none"/>
+    <path d="M362 18 L362 40 M357 22 L362 18 L367 22" stroke="#FFE7A8" stroke-width="1.4" fill="none"/>
   </svg>'''
 
 CITIES = {
@@ -66,6 +77,24 @@ CITIES = {
         view="[34.05, -118.10], 10", b1=("🏙️ 市中心", "[34.050, -118.245], 14"), b2=("🌴 洛杉矶 · Upland", "[34.05, -117.95], 10"),
         mnote="点 💡 看提示，点车站看中英文站名和经过的线路。Metro 轨道（A/B/C/D/E/K 线）和 Metrolink 按官方 GTFS 数据画出真实走向，每月更新。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。<a href=\"ny.html#map\">纽约的交通图 →</a>",
         foot="内容依据洛杉矶旅游局（Discover Los Angeles）、LA Metro、Metrolink、El Pueblo 和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href=\"ny.html\">🗽 纽约生活 →</a>"),
+    "ie": dict(
+        title="城市生活 · 内陆帝国", h1="内陆帝国<small>INLAND EMPIRE</small>", svg=IE_SVG,
+        hero="linear-gradient(175deg,#E9B44C 0%,#C9733A 45%,#4A3326 100%)", theme="#8A5A2E",
+        q="搜：Upland、Baldy、66 号公路、橙子、仓库…",
+        lead=dict(
+            hoods="从 Upland 家门口往外走：克莱蒙特、安大略、兰乔、Baldy 山、66 号公路、河滨、雷德兰兹，再远一点是大熊湖、酒乡和沙漠。",
+            eat="快餐的老家、塔可和 birria、Oak Glen 苹果派、沙漠里的椰枣奶昔，还有离家不远的中餐。店铺会变，去之前查一下营业时间。",
+            stories="这片地方是怎么来的：摩门拓荒者、两棵脐橙树、查菲的模范殖民地、66 号公路、第一家麦当劳、钢铁厂和仓库……",
+            map="两指缩放、拖动查看。Metrolink 和 Omnitrans 公交按官方 GTFS 数据画出真实走向，每月更新；点 💡 看用心提示。出行前用 Metrolink App 或谷歌地图确认。",
+            work="在 IE 工作和生活要知道的事：物流、防暑、医疗、学校。工资、规定每年会变，以官网为准。",
+            trivia="可以拿去跟朋友聊的 IE 冷知识。"),
+        titles="[[0, '🧳 初来乍到'], [3, '📸 周末出游'], [8, '🍋 Upland 街坊'], [15, '🍊 半个 IE 人'], [25, '🛣️ 66 号公路通'], [35, '🏅 内陆帝国荣誉市民']]",
+        gift="拆一个内陆帝国一日盲盒", passport="🛂 内陆帝国护照",
+        maps="[['real', '🗺️ 实景地图（全部线路）', 'https://metrolinktrains.com/schedules/']]",
+        rl="{ tips: 1, ml: 1, omni: 0 }", rlay="[['tips', '💡 用心提示'], ['ml', '🚈 Metrolink'], ['omni', '🚌 Omnitrans 公交']]",
+        view="[34.08, -117.55], 10", b1=("🍋 Upland", "[34.100, -117.650], 14"), b2=("🍊 整个 IE", "[34.00, -117.35], 9"),
+        mnote="点 💡 看提示，点车站看中英文站名和经过的线路。Metrolink 和 Omnitrans 公交按官方 GTFS 数据画出真实走向，每月更新。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。<a href=\"la.html#map\">洛杉矶的交通图 →</a>",
+        foot="内容依据 Upland、Ontario、Riverside 等市政府和旅游官网、Metrolink、Omnitrans、加州历史地标和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href=\"la.html\">🌇 洛杉矶生活 →</a>"),
 }
 
 
