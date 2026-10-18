@@ -1,104 +1,281 @@
-1694
-{
- "lcs": {
-  "index": "C1EB-0001-2026-10-21-21:01:00",
-  "recordTimestamp": {
-   "recordDate": "2026-10-17",
-   "recordTime": "03:08:02",
-   "recordEpoch": "1792231682"
-  },
-  "location": {
-   "travelFlowDirection": "South",
-   "begin": {
-    "beginDistrict": "4",
-    "beginLocationName": "Route 1",
-    "beginFreeFormDescription": "",
-    "beginNearbyPlace": "Daly City",
-    "beginLongitude": "-122.481549",
-    "beginLatitude": "37.670671",
-    "beginElevation": "518",
-    "beginDirection": "South",
-    "beginCounty": "San Mateo",
-    "beginRoute": "SR-1",
-    "beginRouteSuffix": "",
-    "beginPostmilePrefix": "",
-    "beginPostmile": "46.755",
-    "beginAlignment": "",
-    "beginMilepost": "Not Reported"
-   },
-   "end": {
-    "endDistrict": "4",
-    "endLocationName": "Route 35",
-    "endFreeFormDescription": "",
-    "endNearbyPlace": "Daly City",
-    "endLongitude": "-122.484831",
-    "endLatitude": "37.668917",
-    "endElevation": "613",
-    "endDirection": "",
-    "endCounty": "San Mateo",
-    "endRoute": "SR-1",
-    "endRouteSuffix": "",
-    "endPostmilePrefix": "",
-    "endPostmile": "46.755",
-    "endAlignment": "",
-    "endMilepost": "Not Reported"
-   }
-  },
-  "closure": {
-   "closureID": "C1EB",
-   "logNumber": "1",
-   "closureTimestamp": {
-    "closureRequestDate": "2026-10-13",
-    "closureRequestTime": "09:27:33",
-    "closureRequestEpoch": "1791908853",
-    "closureStartDate": "2026-10-21",
-    "closureStartTime": "21:01:00",
-    "closureStartEpoch": "1792641660",
-    "closureEndDate": "2026-10-22",
-    "closureEndTime": "06:01:00",
-    "closureEndEpoch": "1792674060",
-    "isClosureEndIndefinite": "false"
-   },
-   "facility": "Connector",
-   "typeOfClosure": "Full",
-   "typeOfWork": "Emergency Work",
-   "durationOfClosure": "Standard",
-   "estimatedDelay": "Not Reported",
-   "lanesClosed": "All",
-   "totalExistingLanes": "1",
-   "isCHINReportable": "true",
-   "code1097": {
-    "isCode1097": "false",
-    "code1097Timestamp": {
-     "code1097Date": "",
-     "code1097Time": "",
-     "code1097Epoch": ""
-    }
-   },
-   "code1098": {
-    "isCode1098": "false",
-    "code1098Timestamp": {
-     "code1098Date": "",
-     "code1098Time": "",
-     "code1098Epoch": ""
-    }
-   },
-   "code1022": {
-    "isCode1022": "false",
-    "code1022Timestamp": {
-     "code1022Date": "",
-     "code1022Time": "",
-     "code1022Epoch": ""
-    }
-   }
-  }
- }
-}
-[(('Full', 'Highway Construction'), 332), (('Full', 'Electrical Work'), 85), (('Full', 'AC Paving/Overlay'), 75), (('Lane', 'Electrical Work'), 74), (('Lane', 'AC Paving/Overlay'), 73), (('Lane', 'Paving Operation'), 68), (('Lane', 'Highway Construction'), 67), (('Full', 'Bridge Repair'), 59), (('Lane', 'Utility Work'), 59), (('One-Way Traffic', 'Striping Operation'), 48), (('Full', 'Utility Work'), 41), (('Full', 'Striping Operation'), 39), (('Lane', 'Demolition'), 36), (('Lane', 'Pavement Repair'), 36), (('One-Way Traffic', 'Tree Work'), 32), (('Full', 'Guardrail Work'), 31), (('Alternating Lanes', 'Median Barrier Work'), 25), (('Alternating Lanes', 'Highway Construction'), 22), (('Lane', 'Roadway Excavation'), 18), (('Lane', 'Bridge Repair'), 17), (('Full', 'Tree Work'), 17), (('Lane', 'Drainage Work'), 17), (('Moving', 'Sweeping Operation'), 17), (('Lane', 'Emergency Work'), 16), (('Alternating Lanes', 'Electrical Work'), 16), (('Full', 'K-rail Installation'), 15), (('Alternating Lanes', 'K-rail Installation'), 15), (('Alternating Lanes', 'Striping Operation'), 15), (('Moving', 'Striping Operation'), 14), (('Lane', 'Horizontal Boring'), 14)]
+=== https://api.fxtwitter.com/status/1585341984679469056
+rc=0
+HTTP/2 200 
+content-type: application/json
+access-control-allow-origin: *
+{"code":200,"message":"OK","tweet":{"url":"https://x.com/elonmusk/status/1585341984679469056","id":"1585341984679469056","text":"Entering Twitter HQ – let that sink in!","raw_text":{"text":"Entering Twitter HQ – let that sink in! https://t.co/D68z4K2wq7","display_text_range":[0,39],"facets":[{"type":"media","indices":[40,63],"id":"1585341912877146112","display":"pic.x.com/D68z4K2wq7","original":"https://t.co/D68z4K2wq7","replacement":"https://x.com/elonmusk/status/1585341984679469056/video/1"}]},"author":{"screen_name":"elonmusk","url":"https://x.com/elonmusk","id":"44196397","followers":241511634,"following":1420,"likes":253903,"media_count":4741,"name":"Elon Musk","description":"http://Terafab.AI","raw_description":{"text":"https://t.co/ZdBx5WABYx","facets":[{"type":"url","indices":[0,23],"original":"https://t.co/ZdBx5WABYx","replacement":"http://Terafab.AI","display":"Terafab.AI"}]},"location":"","banner_url":"https://pbs.twimg.com/profile_banners/44196397/1774145451","avatar_url":"https://pbs.twimg.com/profile_images/2103567689515954176/aR-Kjpp4_200x200.jpg","joined":"Tue Jun 02 20:12:29 +0000 2009","protected":false,"website":null,"verification":{"verified":true,"verified_at":null,"type":"individual"},"avatar_color":null},"replies":57985,"retweets":153992,"likes":1219820,"bookmarks":13287,"quotes":42484,"created_at":"Wed Oct 26 18:45:58 +0000 2022","created_timestamp":1666809958,"possibly_sensitive":false,"views":null,"is_note_tweet":false,"community_note":null,"lang":"en","replying_to":null,"replying_to_status":null,"media":{"all":[{"id":"1585341912877146112","url":"https://video.twimg.com/ext_tw_video/1585341912877146112/pu/vid/1920x1080/aeoVUvTgj4wHShhN.mp4?tag=14","thumbnail_url":"https://pbs.twimg.com/ext_tw_video_thumb/1585341912877146112/pu/img/DwJ7wlGIe9iryk6N.jpg","duration":9.301,"width":1920,"height":1080,"format":"video/mp4","type":"video","formats":[{"url":"https://video.twimg.com/ext_tw_video/1585341912877146112/pu/pl/TyyErONagoNhghKI.m3u8?tag=14&v=9a8","container":"m3u8"},{"url":"https://video.twimg.com/ext_tw_video/1585341912877146112/pu/vid/480x270/6tarM2TjLH1Ahh90.mp4?tag=14","bitrate":256000,"container":"mp4","codec":"h264"},{"url":"https://video.twimg.com/ext_tw_video/1585341912877146112/pu/vid/640x360/UOvGixKQhzYgqVGG.mp4?tag=14","bitrate":832000,"container":"mp4","codec":"h264"},{"url":"https://video.twimg.com/ext_tw_video/1585341912877146112/pu/vid/1280x720/cwj11yOgYZ05R_sY.mp4?tag=14","bitrate":2176000,"container":"mp4","codec":"h264"},{"url":"https://video.twimg.com/ext_tw_video/1585341912877146112/pu/vid/1920x1080/aeoVUvTgj4wHShhN.mp4?tag=14","bitrate":10368000,"container":"mp4","codec":"h264"}],"publisher":null,"variants":[{"url":"https://video.twimg.com/ext_tw_video/1585341912877146112/pu/pl/TyyErONagoNhghKI.m3u8?tag=14&v=9a8","bitrate":0,"content_type":"application/x-mpegURL"},{"url":"https://video.twimg.com/ext_tw_video/1585341912877146112/pu/vid/480x270/6tarM2TjLH1Ahh90.mp4?tag=14","bitrate":256000,"content
+VIDEO=https://video.twimg.com/ext_tw_video/1585341912877146112/pu/vid/1920x1080/aeoVUvTgj4wHShhN.mp4?tag=14
+HTTP/2 200 
+content-type: video/mp4
+x-content-type-options: nosniff
+access-control-allow-origin: https://boliunew.github.io
+access-control-expose-headers: X-Acted-As-User-Id,X-Rate-Limit-Limit,X-Rate-Limit-Remaining,X-Rate-Limit-Reset,X-TD-Mtime
+content-length: 3139253
+HTTP/2 200 
+access-control-allow-origin: https://boliunew.github.io
+access-control-expose-headers: X-Acted-As-User-Id,X-Rate-Limit-Limit,X-Rate-Limit-Remaining,X-Rate-Limit-Reset,X-TD-Mtime
+=== https://api.vxtwitter.com/Twitter/status/1585341984679469056
+rc=0
+HTTP/2 403 
+content-type: text/html; charset=UTF-8
+x-content-type-options: nosniff
+access-control-allow-origin: *
+<!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="content-security-policy" content="default-src &#39;none&#39;; script-src &#39;nonce-JkIhOpQJ8TxXlK5JRLymXa&#39; &#39;unsafe-eval&#39; https://challenges.cloudflare.com; script-src-attr &#39;none&#39;; style-src &#39;unsafe-inline&#39;; img-src &#39;self&#39; https://challenges.cloudflare.com; connect-src &#39;self&#39; https://challenges.cloudflare.com; frame-src &#39;self&#39; https://challenges.cloudflare.com blob:; child-src &#39;self&#39; https://challenges.cloudflare.
+ig profile bytes 0
+CODE=
+=== https://www.instagram.com/p/DPa8cY1kZ0b/embed/captioned/
+rc=0
+HTTP/2 200 
+x-content-type-options: nosniff
+content-type: text/html; charset="utf-8"
+<!DOCTYPE html>
+<html lang="en" id="facebook" class="no_js">
+<head><meta charset="utf-8" /><meta name="referrer" content="default" id="meta_referrer" /><script nonce="dVYeBkI3">function envFlush(e){function t(t){for(var n in e)t[n]=e[n]}window.requireLazy?window.requireLazy(["Env"],t):(window.Env=wi
+=== https://www.ddinstagram.com/p/DPa8cY1kZ0b/
+curl: (6) Could not resolve host: www.ddinstagram.com
+rc=6
+<!DOCTYPE html>
+<html lang="en" id="facebook" class="no_js">
+<head><meta charset="utf-8" /><meta name="referrer" content="default" id="meta_referrer" /><script nonce="dVYeBkI3">function envFlush(e){fu
+=== https://www.ddinstagram.com/images/DPa8cY1kZ0b/1
+curl: (6) Could not resolve host: www.ddinstagram.com
+rc=6
+<!DOCTYPE html>
+<html lang="en" id="facebook" class="no_js">
+<head><meta charset="utf-8" /><meta name="referrer" content
+=== https://www.ddinstagram.com/videos/DPa8cY1kZ0b/1
+curl: (6) Could not resolve host: www.ddinstagram.com
+rc=6
+<!DOCTYPE html>
+<html lang="en" id="facebook" class="no_js">
+<head><meta charset="utf-8" /><meta name="referrer" content
+=== https://d.ddinstagram.com/p/DPa8cY1kZ0b/
+curl: (6) Could not resolve host: d.ddinstagram.com
+rc=6
+<!DOCTYPE html>
+<html lang="en" id="facebook" class="no_js">
+<head><meta charset="utf-8" /><meta name="referrer" content="default" id="meta_referrer" /><script nonce="dVYeBkI3">function envFlush(e){fu
+=== https://d.ddinstagram.com/images/DPa8cY1kZ0b/1
+curl: (6) Could not resolve host: d.ddinstagram.com
+rc=6
+<!DOCTYPE html>
+<html lang="en" id="facebook" class="no_js">
+<head><meta charset="utf-8" /><meta name="referrer" content
+=== https://d.ddinstagram.com/videos/DPa8cY1kZ0b/1
+curl: (6) Could not resolve host: d.ddinstagram.com
+rc=6
+<!DOCTYPE html>
+<html lang="en" id="facebook" class="no_js">
+<head><meta charset="utf-8" /><meta name="referrer" content
+=== https://kkinstagram.com/p/DPa8cY1kZ0b/
+rc=0
+HTTP/2 301 
+location: http://kkclip.com/open/ig/3736564674461801755/DPa8cY1kZ0b
+access-control-allow-origin: *
+
+=== https://kkinstagram.com/images/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 404 
+content-type: application/json
+access-control-allow-origin: *
+{"detail":"Not Found"}
+=== https://kkinstagram.com/videos/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 301 
+location: http://kkclip.com/open/ig/3736564674461801755/DPa8cY1kZ0b
+access-control-allow-origin: *
+
+=== https://www.kkinstagram.com/p/DPa8cY1kZ0b/
+rc=0
+HTTP/2 301 
+location: http://kkclip.com/open/ig/3736564674461801755/DPa8cY1kZ0b
+access-control-allow-origin: *
+
+=== https://www.kkinstagram.com/images/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 404 
+content-type: application/json
+access-control-allow-origin: *
+{"detail":"Not Found"}
+=== https://www.kkinstagram.com/videos/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 301 
+location: http://kkclip.com/open/ig/3736564674461801755/DPa8cY1kZ0b
+access-control-allow-origin: *
+
+=== https://instagramez.com/p/DPa8cY1kZ0b/
+rc=0
+HTTP/2 307 
+content-type: text/html; charset=UTF-8
+location: https://www.effectivegatecpm.com/nf52nwk7?key=bd2c457b75ed50c2925807e89c0ac161
 <html>
-<head><title>406 Not Acceptable</title></head>
+<head><title>307 Temporary Redirect</title></head>
 <body>
-<center><h1>406 Not Acceptable</h1></center>
-<hr><center>nginx/1.22.1</center>
+<center><h1>307 Temporary Redirect</h1></center>
+<hr><center>cloudflare</center>
 </body>
 </html>
+
+=== https://instagramez.com/images/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 307 
+content-type: text/html; charset=UTF-8
+location: https://www.effectivegatecpm.com/nf52nwk7?key=bd2c457b75ed50c2925807e89c0ac161
+<html>
+<head><title>307 Temporary Redirect</title></head>
+<body>
+<center><h1>307 Temporary Redirect</h1></center>
+<h
+=== https://instagramez.com/videos/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 307 
+content-type: text/html; charset=UTF-8
+location: https://www.effectivegatecpm.com/nf52nwk7?key=bd2c457b75ed50c2925807e89c0ac161
+<html>
+<head><title>307 Temporary Redirect</title></head>
+<body>
+<center><h1>307 Temporary Redirect</h1></center>
+<h
+=== https://www.instagramez.com/p/DPa8cY1kZ0b/
+rc=0
+HTTP/2 307 
+content-type: text/html; charset=UTF-8
+location: https://www.effectivegatecpm.com/nf52nwk7?key=bd2c457b75ed50c2925807e89c0ac161
+<html>
+<head><title>307 Temporary Redirect</title></head>
+<body>
+<center><h1>307 Temporary Redirect</h1></center>
+<hr><center>cloudflare</center>
+</body>
+</html>
+
+=== https://www.instagramez.com/images/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 307 
+content-type: text/html; charset=UTF-8
+location: https://www.effectivegatecpm.com/nf52nwk7?key=bd2c457b75ed50c2925807e89c0ac161
+<html>
+<head><title>307 Temporary Redirect</title></head>
+<body>
+<center><h1>307 Temporary Redirect</h1></center>
+<h
+=== https://www.instagramez.com/videos/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 307 
+content-type: text/html; charset=UTF-8
+location: https://www.effectivegatecpm.com/nf52nwk7?key=bd2c457b75ed50c2925807e89c0ac161
+<html>
+<head><title>307 Temporary Redirect</title></head>
+<body>
+<center><h1>307 Temporary Redirect</h1></center>
+<h
+=== https://uuinstagram.com/p/DPa8cY1kZ0b/
+rc=0
+HTTP/2 302 
+content-type: text/html; charset=utf-8
+location: https://instagram.com/p/DPa8cY1kZ0b/
+
+=== https://uuinstagram.com/images/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 500 
+content-type: text/plain; charset=utf-8
+x-content-type-options: nosniff
+post not found
+
+=== https://uuinstagram.com/videos/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 500 
+content-type: text/plain; charset=utf-8
+x-content-type-options: nosniff
+post not found
+
+=== https://vxinstagram.com/p/DPa8cY1kZ0b/
+rc=0
+HTTP/2 301 
+location: https://www.vxinstagram.com/p/DPa8cY1kZ0b/
+
+=== https://vxinstagram.com/images/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 301 
+location: https://www.vxinstagram.com/images/DPa8cY1kZ0b/1
+
+=== https://vxinstagram.com/videos/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 301 
+location: https://www.vxinstagram.com/videos/DPa8cY1kZ0b/1
+
+=== https://www.vxinstagram.com/p/DPa8cY1kZ0b/
+rc=0
+HTTP/2 401 
+content-type: text/html;charset=utf-8
+x-content-type-options: nosniff
+<!DOCTYPE HTML>
+<html>
+<head>
+
+  <title>Private Site</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" con
+=== https://www.vxinstagram.com/images/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 401 
+content-type: text/html;charset=utf-8
+x-content-type-options: nosniff
+<!DOCTYPE HTML>
+<html>
+<head>
+
+  <title>Private Site</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="
+=== https://www.vxinstagram.com/videos/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 401 
+content-type: text/html;charset=utf-8
+x-content-type-options: nosniff
+<!DOCTYPE HTML>
+<html>
+<head>
+
+  <title>Private Site</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="
+=== https://eeinstagram.com/p/DPa8cY1kZ0b/
+rc=0
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QZN87XJQ0"></script>
+    <sc
+=== https://eeinstagram.com/images/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 500 
+content-type: text/plain; charset=utf-8
+x-content-type-options: nosniff
+post not found
+
+=== https://eeinstagram.com/videos/DPa8cY1kZ0b/1
+rc=0
+HTTP/2 500 
+content-type: text/plain; charset=utf-8
+x-content-type-options: nosniff
+post not found
+
+=== https://api.cobalt.tools/
+rc=0
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+access-control-allow-origin: *
+{"cobalt":{"version":"11.7.1","url":"https://sunny.imput.net/","startTime":"1792300695668","turnstileSitekey":"0x4AAAAAAAhUvTuTxLs2HYH4","services":["bilibili","bluesky","dailymotion","facebook","instagram","loom","ok","pinterest","newgrounds","reddit","rutube","snapchat","soundcloud","streamable","tiktok","tumblr","twitch clips","twitter","vimeo","vk"]},"git":{"branch":"fix-redis","commit":"97116
+{"status":"error","error":{"code":"error.api.auth.jwt.missing"}}
+HTTP/2 400 
+access-control-allow-origin: *
+access-control-expose-headers: Ratelimit-Limit,Ratelimit-Policy,Ratelimit-Remaining,Ratelimit-Reset
