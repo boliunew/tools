@@ -11,16 +11,21 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           exec > probe.txt 2>&1
-          curl -sS -m 60 https://cwwp2.dot.ca.gov/data/d4/lcs/lcsStatusD04.json -o lcs.json
-          python3 -c "
-          import json;d=json.load(open('lcs.json'))['data'];print(len(d))
-          print(json.dumps(d[0],indent=1)[:6000])
-          import collections;c=collections.Counter()
-          for x in d:
-            cl=x['lcs'].get('closure',{});c[(cl.get('typeOfClosure'),cl.get('typeOfWork'))]+=1
-          print(c.most_common(30))
-          "
-          curl -sS -m 60 -o overpass.json --data-urlencode 'data=[out:json][timeout:120];way["highway"="motorway"]["ref"](37.70,-122.52,37.80,-122.38);out tags 20;' https://overpass-api.de/api/interpreter; head -c 3000 overpass.json
+          H(){ echo "=== $1"; curl -sS -m 30 -D /tmp/h -o /tmp/b -A "Mozilla/5.0 (Linux; Android 14)" -H "Origin: https://boliunew.github.io" "$1"; echo "rc=$?"; grep -i -E "^HTTP|access-control-allow-origin|^location|content-type" /tmp/h; head -c ${2:-600} /tmp/b | tr -d '\r'; echo; }
+          H "https://api.fxtwitter.com/status/1585341984679469056" 3000
+          V=$(python3 -c "import json;d=json.load(open('/tmp/b'));m=d['tweet'].get('media',{});print((m.get('videos') or [{}])[0].get('url',''))" 2>/dev/null); echo "VIDEO=$V"
+          [ -n "$V" ] && { curl -sS -m 30 -I -H "Origin: https://boliunew.github.io" "$V" | grep -i -E "^HTTP|access-control|content-type|content-length"; }
+          curl -sS -m 30 -I -H "Origin: https://boliunew.github.io" "https://pbs.twimg.com/profile_images/1683325380441128960/yRsRRjGO_400x400.jpg" | grep -i -E "^HTTP|access-control"
+          H "https://api.vxtwitter.com/Twitter/status/1585341984679469056" 800
+          # Instagram: find a shortcode, then try InstaFix-style hosts
+          curl -sS -m 30 -A "Mozilla/5.0" "https://www.instagram.com/instagram/" -o /tmp/ig.html; echo "ig profile bytes $(wc -c </tmp/ig.html)"
+          CODE=$(grep -oE '/(p|reel)/[A-Za-z0-9_-]{8,14}' /tmp/ig.html | head -1 | cut -d/ -f3); echo "CODE=$CODE"
+          CODE=${CODE:-DPa8cY1kZ0b}
+          H "https://www.instagram.com/p/$CODE/embed/captioned/" 300
+          grep -oE '"video_url":"[^"]+' /tmp/b | head -2; grep -oE 'EmbeddedMediaImage[^>]+src="[^"]+' /tmp/b | head -2 | cut -c1-200
+          for host in www.ddinstagram.com d.ddinstagram.com kkinstagram.com www.kkinstagram.com instagramez.com www.instagramez.com uuinstagram.com vxinstagram.com www.vxinstagram.com eeinstagram.com; do H "https://$host/p/$CODE/" 200; H "https://$host/images/$CODE/1" 120; H "https://$host/videos/$CODE/1" 120; done
+          H "https://api.cobalt.tools/" 400
+          curl -sS -m 30 -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Origin: https://boliunew.github.io" -d "{\"url\":\"https://www.instagram.com/p/$CODE/\"}" -D /tmp/h https://api.cobalt.tools/ | head -c 400; echo; grep -i -E "^HTTP|access-control" /tmp/h
       - run: |
           git config user.name bot; git config user.email bot@x
           git add probe.txt; git commit -m out; git push origin HEAD:traffic-probe
