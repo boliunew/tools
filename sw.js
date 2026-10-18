@@ -1,7 +1,7 @@
 /* 离线缓存：先上网拿最新的，网络不通（或 5 秒没回应）就用上次存下的。
    只缓存本站文件；音频视频、跨站请求、断点续传都直接放行，不进缓存。
    装好时先把常用页面和数据存一份，没打开过的页面在没信号时也能看。 */
-var CACHE = 'tools-v22';
+var CACHE = 'tools-v23';
 var NAMES = {
   'index.html': '🏠 首页', 'work.html': '🦺 现场工具', 'search.html': '🔍 全站搜索', 'kb.html': '🗂️ 知识库', 'tips.html': '💡 技巧与科普',
   'kitchen.html': '🍳 厨房与养生', 'convert.html': '💱 汇率与单位换算', 'news.html': '📰 新闻', 'stocks.html': '📈 今日股票池',
@@ -57,8 +57,11 @@ self.addEventListener('fetch', function (e) {
     }
     var timer = setTimeout(function () {
       fromCache().then(function (hit) { if (hit && !done) { done = true; resolve(hit); } });
-    }, 5000);
-    fetch(r).then(function (res) {
+    }, 8000);
+    // 每次都向服务器确认是不是最新的（没变只回 304，很省流量），免得手机用 10 分钟前的旧页面
+    var net;
+    try { net = fetch(r.url, { cache: 'no-cache', credentials: 'same-origin' }); } catch (er) { net = fetch(r); }
+    net.then(function (res) {
       clearTimeout(timer);
       if (res && res.status === 200 && res.type === 'basic') {
         var copy = res.clone(), key = /[?&](t|_)=\d/.test(u.search) ? u.origin + u.pathname : r;   // 带时间戳防缓存的只存一份

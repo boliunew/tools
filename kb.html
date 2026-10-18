@@ -794,7 +794,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     if (e.key === 'Escape') closeToc();
   });
 
-  get('kb/index.json', function (txt) {
+  get('kb/index.json?t=' + Math.floor(Date.now() / 6e5), function (txt) {
     try { IDX = JSON.parse(txt); } catch (e) { IDX = null; }
     if (!IDX) { $('list').innerHTML = '<div class="empty">目录加载失败，刷新试试</div>'; return; }
     route(); booted = true;
