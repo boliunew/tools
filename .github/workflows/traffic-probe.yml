@@ -12,12 +12,13 @@ jobs:
       - run: |
           set +e; exec > probe.txt 2>&1
           H(){ echo "=== $1"; curl -sS -m 30 -D /tmp/h -o /tmp/b -A "Mozilla/5.0 (Linux; Android 14)" -H "Origin: https://boliunew.github.io" "$1"; echo "rc=$?"; grep -i -E "^HTTP|access-control-allow-origin|^location|content-type" /tmp/h; head -c ${2:-600} /tmp/b | tr -d '\r'; echo; }
-          for CODE in BsOGulcndj- C3bJ6ZRuBmQ; do
-          H "https://www.instagram.com/p/$CODE/embed/captioned/" 100
-          grep -oE '"video_url":"[^"]{0,160}' /tmp/b | head -2; grep -oE 'class="EmbeddedMediaImage"[^>]{0,300}' /tmp/b | head -1; grep -oE 'https://scontent[^"\\ ]{0,200}' /tmp/b | head -3
-          for host in uuinstagram.com eeinstagram.com www.kkinstagram.com; do H "https://$host/images/$CODE/1" 300; L=$(grep -i "^location" /tmp/h | awk '{print $2}' | tr -d '\r'); [ -n "$L" ] && curl -sS -m 30 -I -H "Origin: https://boliunew.github.io" "$L" | grep -i -E "^HTTP|access-control|content-type|^location"; H "https://$host/videos/$CODE/1" 300; done
-          H "https://eeinstagram.com/p/$CODE/" 100; grep -oE '<meta property="og:(image|video)[^>]+' /tmp/b | head -4
-          done
+          curl -sS -m 30 "https://api.fxtwitter.com/status/1585341984679469056" -o fx1.json
+          curl -sS -m 30 "https://api.fxtwitter.com/NASA/status/1838297133457662341" -o fx2.json
+          python3 -c "
+          import json
+          for f in ('fx1.json','fx2.json'):
+            d=json.load(open(f)); print(f, d.get('code')); print(json.dumps(d.get('tweet',{}).get('media'),indent=0)[:2500])
+          "
       - run: |
           git config user.name bot; git config user.email bot@x
-          git add probe.txt; git commit -m out; git push origin HEAD:traffic-probe
+          git add probe.txt fx1.json fx2.json; git commit -m out; git push origin HEAD:traffic-probe
