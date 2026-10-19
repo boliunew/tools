@@ -96,6 +96,21 @@ h3{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 8px;font
 .hol{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
 .hol span{font-size:12.5px;background:var(--chip);color:var(--soft);border-radius:999px;padding:2px 10px}
 .more{display:block;text-align:center;font-size:13px;padding:10px 0 4px}
+/* 国际局势 */
+.rg{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:12px -16px 4px;padding:0 16px 2px}
+.rg::-webkit-scrollbar{display:none}
+.rg button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:7px 12px;font-size:14.5px;line-height:1.25;text-align:left}
+.rg button small{display:block;font-size:11px;color:var(--faint);font-weight:400}
+.rg button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.rg button.on small{color:inherit;opacity:.8}
+.hot{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.hot button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 10px;font-size:13px;color:var(--soft)}
+.hot button b{color:var(--ink);font-weight:600;margin-left:2px}.hot button i{font-style:normal;font-size:11px;color:var(--faint);margin-left:4px}
+.hot button.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}.hot button.on b,.hot button.on i{color:inherit}
+.big .cf{font-size:12.5px;margin-top:4px;color:var(--soft)}
+.big .cf span{margin-right:8px;white-space:nowrap}
+.srcs{font-size:12px;color:var(--faint);line-height:1.8;margin-top:6px}
+.srcs .x{color:#C8412B}
 footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;line-height:1.7}
 </style>
 <script src="sync.js?v=1"></script>
@@ -105,7 +120,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 <header class="top"><div class="wrap"><div class="bar">
   <a class="brand" href="./"><i></i>新闻</a>
   <button class="btn ghost" id="refreshBtn">🔄 刷新</button><a class="btn ghost" href="sublingo.html">SubLingo</a>
-</div><div class="tabs" id="tabs"><button data-tab="today">📌 今日</button><button data-tab="en">📰 英文精选</button></div></div></header>
+</div><div class="tabs" id="tabs"><button data-tab="today">📌 今日</button><button data-tab="world">🌍 国际局势</button><button data-tab="en">📰 英文精选</button></div></div></header>
 <main class="wrap" id="app"><div class="empty">加载中…</div></main>
 <script>
 (function () {
@@ -139,7 +154,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var bs = document.querySelectorAll('#tabs button'), i;
     for (i = 0; i < bs.length; i++) bs[i].className = bs[i].getAttribute('data-tab') === t ? 'on' : '';
     window.scrollTo(0, 0);
-    if (t === 'today') { if (T) renderToday(); else loadToday(false); } else { if (D) render(); else load(false); }
+    if (t === 'today') { if (T) renderToday(); else loadToday(false); } else if (t === 'world') { if (W) renderWorld(); else loadWorld(false); } else { if (D) render(); else load(false); }
   }
   document.getElementById('tabs').onclick = function (e) { var b = e.target.closest('[data-tab]'); if (b) setTab(b.getAttribute('data-tab')); };
 
@@ -200,6 +215,55 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     app.innerHTML = h;
   }
 
+
+  // ================= 🌍 国际局势 · 分大洲 =================
+  var W = null, prevW = null, WR = get('wr', 'eu'), WC = '';
+  function loadWorld(manual) {
+    var rb = document.getElementById('refreshBtn');
+    if (manual) { rb.disabled = true; rb.textContent = '⏳ 刷新中'; }
+    if (!W) app.innerHTML = '<div class="empty">加载中…</div>';
+    var x = new XMLHttpRequest();
+    x.open('GET', 'news/data/world.json?t=' + Date.now());
+    x.onload = function () {
+      if (x.status !== 200) { app.innerHTML = '<div class="card empty" style="margin-top:16px"><b style="font-size:17px;color:var(--ink)">等待第一次更新</b><br>国际局势每两小时自动更新一次。</div>'; return; }
+      try { W = JSON.parse(x.responseText); } catch (e) { app.innerHTML = '<div class="empty">数据格式错误</div>'; return; }
+      if (TAB === 'world') renderWorld();
+      if (manual) flashMsg(prevW && prevW === W.generated ? '已经是最新的了（' + ago(W.generated) + '更新）' : '已刷新 ✓');
+      prevW = W.generated;
+    };
+    x.onloadend = function () { rb.disabled = false; rb.textContent = '🔄 刷新'; };
+    x.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
+    x.send();
+  }
+  function renderWorld() {
+    var R = W.regions || [], r = R.filter(function (x) { return x.k === WR; })[0] || R[0], h = '', i;
+    if (!r) { app.innerHTML = '<div class="card empty">还没有数据，稍后刷新。</div>'; return; }
+    WR = r.k;
+    h += '<div class="meta">更新于 ' + ago(W.generated) + ' · 每两小时自动更新 · 标题和摘要是机器翻译' + ((Date.now() - new Date(W.generated).getTime()) / 36e5 > 8 ? ' · <b style="color:#C8412B">⚠️ 好几个小时没更新了</b>' : '') + '</div>';
+    h += '<div class="rg" id="wrg">' + R.map(function (x) { return '<button data-wr="' + x.k + '" class="' + (x.k === WR ? 'on' : '') + '">' + x.e + ' ' + esc(x.n) + '<small>' + (x.stories || []).length + ' 件事' + (x.stories && x.stories[0] && x.stories[0].n >= 3 ? ' · 🔥' : '') + '</small></button>'; }).join('') + '</div>';
+    var hot = r.hot || [];
+    if (hot.length) h += '<div class="hot" id="whot"><button data-wc="" class="' + (WC ? '' : 'on') + '">全部</button>' + hot.map(function (c) { return '<button data-wc="' + esc(c[1]) + '" class="' + (WC === c[1] ? 'on' : '') + '">' + c[0] + '<b>' + esc(c[1]) + '</b><i>' + c[3] + '</i></button>'; }).join('') + '</div>';
+    var list = (r.stories || []).filter(function (c) { return !WC || (c.c || []).some(function (x) { return x[1] === WC; }); });
+    h += '<div class="sec"><b>' + r.e + ' ' + esc(r.n) + (WC ? ' · ' + esc(WC) : '') + '</b><small>多家媒体都在报的排前面' + (r.stale ? ' · 这次没抓到，显示的是上一次的' : '') + '</small></div>';
+    if (!list.length) h += '<div class="card empty">' + (WC ? '这个国家最近没有新消息了。' : '这个地区暂时没有新消息。') + '</div>';
+    for (i = 0; i < list.length; i++) {
+      var c = list[i], also = (c.others || []).filter(function (o) { return o.source !== c.source; }).slice(0, 3);
+      h += '<div class="card big' + (c.n >= 2 ? ' hot' : '') + '"><div class="no">' + (i + 1) + '</div><div class="bd"><a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' +
+        (c.en && c.zh ? '<div class="en">' + esc(c.en) + '</div>' : '') +
+        (c.summary ? '<div class="s">' + esc(c.summary) + '</div>' : '') +
+        ((c.c || []).length ? '<div class="cf">' + c.c.map(function (x) { return '<span>' + x[0] + ' ' + esc(x[1]) + '</span>'; }).join('') + '</div>' : '') +
+        '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="sublingo.html?url=' + encodeURIComponent(c.link) + '" style="color:var(--faint)">精读原文</a></div>' +
+        (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';
+    }
+    var src = (W.sources || []).filter(function (s) { return s.region === WR; });
+    h += '<div class="srcs">来源：' + src.map(function (s) { return '<span class="' + (s.ok ? '' : 'x') + '">' + esc(s.source) + (s.ok ? '' : '（这次没抓到）') + '</span>'; }).join(' · ') + '</div>';
+    h += '<footer>国际局势来自 BBC、卫报、法国24、德国之声、半岛电视台、CNA、日本时报、CBC、NPR、ABC 澳洲、RNZ 等英文媒体的地区频道 RSS，只展示标题和摘要，版权归原媒体。<br>同一件事被几家报道就合在一起；国家标签按标题和摘要里的地名自动识别，可能有误。</footer>';
+    app.innerHTML = h;
+    document.getElementById('wrg').onclick = function (e) { var b = e.target.closest('[data-wr]'); if (!b) return; WR = b.getAttribute('data-wr'); WC = ''; set('wr', WR); renderWorld(); window.scrollTo(0, 0); };
+    var wh = document.getElementById('whot'); if (wh) wh.onclick = function (e) { var b = e.target.closest('[data-wc]'); if (!b) return; WC = b.getAttribute('data-wc'); renderWorld(); };
+    var on = document.querySelector('#wrg .on'); if (on && on.scrollIntoView) on.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }
+
   var prevGen = null;
   function load(manual) {
     var rb = document.getElementById('refreshBtn');
@@ -224,7 +288,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     el.textContent = t; el.style.opacity = '1';
     clearTimeout(el._t); el._t = setTimeout(function () { el.style.opacity = '0'; }, 2200);
   }
-  document.getElementById('refreshBtn').onclick = function () { if (TAB === 'today') loadToday(true); else load(true); };
+  document.getElementById('refreshBtn').onclick = function () { if (TAB === 'today') loadToday(true); else if (TAB === 'world') loadWorld(true); else load(true); };
 
   function chip(key, val, label, n) { return '<button class="chip' + (F[key] === val ? ' on' : '') + '" data-k="' + key + '" data-v="' + esc(val) + '">' + esc(label) + (n != null ? '<span class="n">' + n + '</span>' : '') + '</button>'; }
 
@@ -282,9 +346,9 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var card = el; while (card && !(card.classList && card.classList.contains('art'))) card = card.parentNode;
     if (card) { READ[card.getAttribute('data-id')] = Date.now(); set('read', READ); card.classList.add('read'); }
   });
-  setTab(TAB === 'en' ? 'en' : 'today');
+  setTab(TAB === 'en' || TAB === 'world' ? TAB : 'today');
 })();
 </script>
-<script src="nav.js?v=26" defer></script>
+<script src="nav.js?v=27" defer></script>
 </body>
 </html>

@@ -83,7 +83,7 @@ C = [
     ("eu", "🇧🇪", "比利时", r"Belgi\w*|Brussels"), ("eu", "🇪🇺", "欧盟", r"\bEU\b|European Union|European Commission|von der Leyen|Eurozone"),
     ("eu", "🛡️", "北约", r"\bNato\b|\bNATO\b"), ("eu", "🇭🇺", "匈牙利", r"Hungar\w*|Budapest|Orb[aá]n"),
     ("eu", "🇷🇴", "罗马尼亚", r"Romania\w*|Bucharest"), ("eu", "🇲🇩", "摩尔多瓦", r"Moldova\w*"), ("eu", "🇧🇾", "白俄罗斯", r"Belarus\w*|Lukashenko|Minsk"),
-    ("eu", "🇬🇪", "格鲁吉亚", r"Tbilisi|Georgian Dream|Kobakhidze"), ("eu", "🇷🇸", "塞尔维亚", r"Serbia\w*|Belgrade"), ("eu", "🇬🇷", "希腊", r"Greece|Greek|Athens"),
+    ("eu", "🇬🇪", "格鲁吉亚", r"Tbilisi|Georgian Dream|Kobakhidze"), ("eu", "🇷🇸", "塞尔维亚", r"Serbia\w*|Belgrade"), ("eu", "🇬🇷", "希腊", r"Greece|Greek|Athens"), ("eu", "🇦🇱", "西巴尔干", r"Albania\w*|Tirana|Kosovo\w*|Bosnia\w*|Sarajevo|Montenegr\w*|North Macedonia\w*"),
     ("eu", "🇵🇹", "葡萄牙", r"Portug\w*|Lisbon"), ("eu", "🇮🇪", "爱尔兰", r"Ireland|Irish|Dublin"), ("eu", "🇸🇪", "瑞典", r"Swed\w*|Stockholm"),
     ("eu", "🇳🇴", "挪威", r"Norw\w*|Oslo"), ("eu", "🇫🇮", "芬兰", r"Finland|Finnish|Helsinki"), ("eu", "🇩🇰", "丹麦", r"Denmark|Danish|Copenhagen|Greenland"),
     ("eu", "🇨🇭", "瑞士", r"Switzerland|Swiss|Geneva|Zurich"), ("eu", "🇦🇹", "奥地利", r"Austria\w*|Vienna"), ("eu", "🇨🇿", "捷克", r"Czech|Prague"),
@@ -170,9 +170,9 @@ def main():
     regions = []
     for k, zh, emo, feeds in REGIONS:
         its = items[k]
-        # Sky、半岛、日本时报这类综合源不分地区：只留提到本洲国家的
+        # Sky、半岛、日本时报、CBC 国际、NPR 国际这类综合源不分地区：只留提到本洲国家的
         own = [c for c in C if c[0] == k]
-        its = [it for it in its if it["source"] not in ("Sky News", "半岛电视台", "日本时报") or
+        its = [it for it in its if it["source"] not in ("Sky News", "半岛电视台", "日本时报", "CBC", "NPR") or
                any(re.search(r"\b(?:" + rx + ")", it["title"] + " " + it["summary"]) for _, _, _, rx in own)]
         groups = cluster(its)[:PER_REGION] if its else []
         hot = {}
