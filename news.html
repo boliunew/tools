@@ -110,6 +110,21 @@ h3{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 8px;font
 .big .cf{font-size:12.5px;margin-top:4px;color:var(--soft)}
 .big .cf span{margin-right:8px;white-space:nowrap}
 .srcs{font-size:12px;color:var(--faint);line-height:1.8;margin-top:6px}
+.radar{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px 6px;margin:10px 0 4px}
+.radar .h{font-size:13px;color:var(--soft);margin-bottom:6px}.radar .h b{color:var(--ink);font-size:14.5px;margin-right:6px}
+.radar .ch{display:flex;flex-wrap:wrap;gap:6px}
+.radar button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:4px 9px;font-size:13px;color:var(--ink)}
+.radar button i{font-style:normal;color:var(--accent);font-weight:700;margin-left:4px}
+.radar button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}.radar button.on i{color:inherit}
+.radar button.z{opacity:.45}
+.imp{margin-top:7px;border-radius:10px;background:var(--chip);font-size:13px}
+.imp summary{cursor:pointer;list-style:none;padding:6px 10px;color:var(--soft)}.imp summary::-webkit-details-marker{display:none}
+.imp summary b{color:var(--ink);font-weight:600}
+.imp[open] summary{border-bottom:1px solid var(--line)}
+.imp .it{padding:6px 10px;line-height:1.55;color:var(--ink)}.imp .it+.it{border-top:1px dashed var(--line)}
+.imp .it b{display:block;font-size:13px}
+.imp .nt{padding:4px 10px 7px;font-size:11.5px;color:var(--faint)}
+.rgt{display:inline-block;font-size:11.5px;background:var(--chip);color:var(--soft);border-radius:6px;padding:0 6px;margin-right:6px;vertical-align:2px}
 .srcs .x{color:#C8412B}
 footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;line-height:1.7}
 </style>
@@ -217,7 +232,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 
 
   // ================= 🌍 国际局势 · 分大洲 =================
-  var W = null, prevW = null, WR = get('wr', 'eu'), WC = '';
+  var W = null, prevW = null, WR = get('wr', 'eu'), WC = '', WI = '';
   function loadWorld(manual) {
     var rb = document.getElementById('refreshBtn');
     if (manual) { rb.disabled = true; rb.textContent = '⏳ 刷新中'; }
@@ -240,17 +255,31 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     if (!r) { app.innerHTML = '<div class="card empty">还没有数据，稍后刷新。</div>'; return; }
     WR = r.k;
     h += '<div class="meta">更新于 ' + ago(W.generated) + ' · 每两小时自动更新 · 标题和摘要是机器翻译' + ((Date.now() - new Date(W.generated).getTime()) / 36e5 > 8 ? ' · <b style="color:#C8412B">⚠️ 好几个小时没更新了</b>' : '') + '</div>';
-    h += '<div class="rg" id="wrg">' + R.map(function (x) { return '<button data-wr="' + x.k + '" class="' + (x.k === WR ? 'on' : '') + '">' + x.e + ' ' + esc(x.n) + '<small>' + (x.stories || []).length + ' 件事' + (x.stories && x.stories[0] && x.stories[0].n >= 3 ? ' · 🔥' : '') + '</small></button>'; }).join('') + '</div>';
-    var hot = r.hot || [];
+    h += '<div class="rg" id="wrg">' + R.map(function (x) { return '<button data-wr="' + x.k + '" class="' + (x.k === WR && !WI ? 'on' : '') + '">' + x.e + ' ' + esc(x.n) + '<small>' + (x.stories || []).length + ' 件事' + (x.stories && x.stories[0] && x.stories[0].n >= 3 ? ' · 🔥' : '') + '</small></button>'; }).join('') + '</div>';
+    var IM = {}; (W.impacts || []).forEach(function (x) { IM[x.k] = x; });
+    var total = R.reduce(function (a, x) { return a + (x.stories || []).length; }, 0);
+    if ((W.impacts || []).length) h += '<div class="radar"><div class="h"><b>📡 影响雷达</b>五个地区 ' + total + ' 件事里，各方面被牵动的次数 · 点一下看是哪些事</div><div class="ch" id="wimp">' +
+      W.impacts.filter(function (x) { return x.count || WI === x.k; }).map(function (x) { return '<button data-wi="' + x.k + '" class="' + (WI === x.k ? 'on' : x.count ? '' : 'z') + '">' + x.e + ' ' + esc(x.n) + '<i>' + x.count + '</i></button>'; }).join('') + '</div></div>';
+    var hot = WI ? [] : (r.hot || []);
     if (hot.length) h += '<div class="hot" id="whot"><button data-wc="" class="' + (WC ? '' : 'on') + '">全部</button>' + hot.map(function (c) { return '<button data-wc="' + esc(c[1]) + '" class="' + (WC === c[1] ? 'on' : '') + '">' + c[0] + '<b>' + esc(c[1]) + '</b><i>' + c[3] + '</i></button>'; }).join('') + '</div>';
-    var list = (r.stories || []).filter(function (c) { return !WC || (c.c || []).some(function (x) { return x[1] === WC; }); });
-    h += '<div class="sec"><b>' + r.e + ' ' + esc(r.n) + (WC ? ' · ' + esc(WC) : '') + '</b><small>多家媒体都在报的排前面' + (r.stale ? ' · 这次没抓到，显示的是上一次的' : '') + '</small></div>';
+    var list;
+    if (WI && IM[WI]) {
+      list = []; var seenW = {}; R.forEach(function (x) { (x.stories || []).forEach(function (c) { if ((c.imp || []).indexOf(WI) >= 0 && !seenW[c.en || c.title]) { seenW[c.en || c.title] = 1; list.push(Object.assign({ _r: x.e + ' ' + x.n }, c)); } }); });
+      list.sort(function (a, b) { return b.n - a.n; });
+      h += '<div class="sec"><b>' + IM[WI].e + ' 可能影响：' + esc(IM[WI].n) + '</b><small>五个地区一起看 · <a href="#" id="wiX">返回' + esc(r.n) + '</a></small></div><div class="card" style="padding:10px 14px;font-size:14px;line-height:1.6;margin-bottom:10px">💡 ' + esc(IM[WI].why) + '</div>';
+    } else {
+      list = (r.stories || []).filter(function (c) { return !WC || (c.c || []).some(function (x) { return x[1] === WC; }); });
+      h += '<div class="sec"><b>' + r.e + ' ' + esc(r.n) + (WC ? ' · ' + esc(WC) : '') + '</b><small>多家媒体都在报的排前面' + (r.stale ? ' · 这次没抓到，显示的是上一次的' : '') + '</small></div>';
+    }
     if (!list.length) h += '<div class="card empty">' + (WC ? '这个国家最近没有新消息了。' : '这个地区暂时没有新消息。') + '</div>';
     for (i = 0; i < list.length; i++) {
       var c = list[i], also = (c.others || []).filter(function (o) { return o.source !== c.source; }).slice(0, 3);
-      h += '<div class="card big' + (c.n >= 2 ? ' hot' : '') + '"><div class="no">' + (i + 1) + '</div><div class="bd"><a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' +
+      var imps = (c.imp || []).filter(function (k) { return IM[k]; });
+      h += '<div class="card big' + (c.n >= 2 ? ' hot' : '') + '"><div class="no">' + (i + 1) + '</div><div class="bd">' + (c._r ? '<span class="rgt">' + esc(c._r) + '</span>' : '') + '<a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' +
         (c.en && c.zh ? '<div class="en">' + esc(c.en) + '</div>' : '') +
         (c.summary ? '<div class="s">' + esc(c.summary) + '</div>' : '') +
+        (imps.length ? '<details class="imp"><summary>📊 可能影响：<b>' + imps.map(function (k) { return IM[k].e + ' ' + esc(IM[k].n); }).join('　') + '</b> ›</summary>' +
+          imps.map(function (k) { return '<div class="it"><b>' + IM[k].e + ' ' + esc(IM[k].n) + '</b>' + esc(IM[k].why) + '</div>'; }).join('') + '<div class="nt">按新闻里的关键词自动判断的大方向，不是对这条新闻的专门分析。</div></details>' : '') +
         ((c.c || []).length ? '<div class="cf">' + c.c.map(function (x) { return '<span>' + x[0] + ' ' + esc(x[1]) + '</span>'; }).join('') + '</div>' : '') +
         '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="sublingo.html?url=' + encodeURIComponent(c.link) + '" style="color:var(--faint)">精读原文</a></div>' +
         (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';
@@ -259,7 +288,9 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     h += '<div class="srcs">来源：' + src.map(function (s) { return '<span class="' + (s.ok ? '' : 'x') + '">' + esc(s.source) + (s.ok ? '' : '（这次没抓到）') + '</span>'; }).join(' · ') + '</div>';
     h += '<footer>国际局势来自 BBC、卫报、法国24、德国之声、半岛电视台、CNA、日本时报、CBC、NPR、ABC 澳洲、RNZ 等英文媒体的地区频道 RSS，只展示标题和摘要，版权归原媒体。<br>同一件事被几家报道就合在一起；国家标签按标题和摘要里的地名自动识别，可能有误。</footer>';
     app.innerHTML = h;
-    document.getElementById('wrg').onclick = function (e) { var b = e.target.closest('[data-wr]'); if (!b) return; WR = b.getAttribute('data-wr'); WC = ''; set('wr', WR); renderWorld(); window.scrollTo(0, 0); };
+    document.getElementById('wrg').onclick = function (e) { var b = e.target.closest('[data-wr]'); if (!b) return; WR = b.getAttribute('data-wr'); WC = ''; WI = ''; set('wr', WR); renderWorld(); window.scrollTo(0, 0); };
+    document.getElementById('wimp') && (document.getElementById('wimp').onclick = function (e) { var b = e.target.closest('[data-wi]'); if (!b) return; WI = WI === b.getAttribute('data-wi') ? '' : b.getAttribute('data-wi'); WC = ''; renderWorld(); var s0 = document.querySelector('.sec'); if (WI && s0) s0.scrollIntoView({ block: 'start', behavior: 'smooth' }); });
+    var wx = document.getElementById('wiX'); if (wx) wx.onclick = function (e) { e.preventDefault(); WI = ''; renderWorld(); };
     var wh = document.getElementById('whot'); if (wh) wh.onclick = function (e) { var b = e.target.closest('[data-wc]'); if (!b) return; WC = b.getAttribute('data-wc'); renderWorld(); };
     var on = document.querySelector('#wrg .on'); if (on && on.scrollIntoView) on.scrollIntoView({ inline: 'center', block: 'nearest' });
   }

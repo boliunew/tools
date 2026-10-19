@@ -129,7 +129,46 @@ C = [
     ("mea", "🇬🇭", "西非", r"Ghana\w*|Senegal\w*|Ivory Coast|C[oô]te d'Ivoire|Cameroon\w*|(?<!New )Guinea\b|Sierra Leone|Liberia\w*"),
 ]
 CRX = [(reg, flag, zh, re.compile(r"\b(?:" + rx + r")")) for reg, flag, zh, rx in C]
-SKIP = re.compile(r"^(Watch|Video|Live|Listen|In pictures|Quiz|Podcast|Newsletter|The week in|Morning mail|Crossword)\b\s*[:：]?", re.I)
+SKIP = re.compile(r"^(Watch|Video|Live|Listen|In pictures|Quiz|Podcast|Newsletter|The week in|Morning mail|Crossword|Latest news bulletin|News bulletin)\b\s*[:：]?", re.I)
+
+
+# 局势影响：按英文标题+摘要里的关键词判断这件事「可能影响」到哪一块，配上传导路径的说明。
+# 只是关键词规则，不是逐条分析；页面上写明「可能影响」。顺序就是优先级，每条最多标 3 个。
+IMPACTS = [
+    ("oil", "🛢️", "油价 · 能源", r"\boil\b|crude|OPEC|Hormuz|petrol|gasoline|diesel|\bLNG\b|natural gas|gas pipeline|refiner\w*|energy (?:price|crisis|supply|infrastructure)|power plants?|Aramco",
+     "产油国动荡、OPEC 决定、能源设施遇袭会让国际油价波动，几周内传到加州油价、柴油价和运输成本。"),
+    ("ship", "🚢", "航运 · 港口物流", r"shipping|\bports?\b|container|freight|cargo|Red Sea|Suez|Panama Canal|Strait of|Houthi\w* (?:attack|strike|missile)\w* on ships?|supply chain|dockworkers?|longshore\w*|vessel|tanker|logistic\w*",
+     "航线受阻、港口罢工、运费上涨会改变到港时间和货量，最后体现在洛杉矶/长滩港的柜量和 IE 仓库的忙闲。"),
+    ("trade", "🧾", "关税 · 贸易", r"tariff\w*|trade (?:war|deal|talks|deficit|surplus|agreement|tensions?)|sanction\w*|export controls?|export ban|import (?:ban|duties)|\bWTO\b|customs dut\w*|exports?\b|imports?\b",
+     "关税、制裁和贸易谈判改变进口成本：商品涨价、进口商提前抢运或砍单，港口货量会跟着大起大落。"),
+    ("chip", "💾", "科技 · 芯片", r"semiconductor\w*|\bchips?\b|chipmak\w*|TSMC|Nvidia|rare earths?|artificial intelligence|\bAI\b|5G|Huawei",
+     "芯片、稀土和 AI 是科技公司的命脉，出口管制、台海和供应消息常让科技股大幅波动，也影响电子产品价格。"),
+    ("market", "📈", "股市 · 利率 · 汇率", r"stock\w*|share prices?|(?:stock|financial|bond|oil) markets?|markets? (?:fell|fall|rose|rise|tumbl|rall|slump|plung)\w*|Wall Street|interest rates?|central bank|Federal Reserve|\bFed\b|inflation|\bGDP\b|recession|bond\w*|currenc\w*|\byen\b|\byuan\b|\beuro\b|economy|economic growth|(?:national|sovereign|government) debt|debt crisis",
+     "经济数据和央行决定牵动美股、利率和汇率：持仓、房贷车贷利率、换汇和回国汇款都会受影响。"),
+    ("food", "🌾", "粮食 · 物价", r"wheat|grain|\bcorn\b|rice prices?|food (?:prices?|security|shortage|aid|insecurity)|famine|hunger|drought|harvest|fertili[sz]er|cocoa|coffee prices?|Black Sea",
+     "产粮区的战争、干旱和出口限制会推高粮价，慢慢传到超市的面包、肉、咖啡和巧克力价格。"),
+    ("sec", "⚔️", "冲突 · 安全", r"\bwar\b|missile\w*|air ?strikes?|drone (?:attack|strike)s?|invasion|troops|nuclear|ceasefire|truce|bombing|shelling|offensive|military|militants?|insurgen\w*|coup",
+     "冲突升级或停火是油价、黄金、美元和军工股的风向标，也决定当地人道局势和周边国家的安全。"),
+    ("cn", "🤝", "中美关系", r"(?:China|Chinese|Beijing|Xi)\b[^.]{0,80}\b(?:US|U\.S\.|Washington|Trump|American)|(?:US|U\.S\.|Washington|Trump|American)\b[^.]{0,80}\b(?:China|Chinese|Beijing|Xi)\b",
+     "中美关系牵动关税、科技管制、签证留学、航班和两地往来，也是港口货量的大变量。"),
+    ("travel", "✈️", "出行 · 旅行", r"flights? (?:cancel|delay|divert|suspend|ground)\w*|airlines?|airports?|airspace|travel (?:advisory|warning|ban|chaos|disruption)s?|tourists?|tourism|visas?\b|passports?|border (?:closure|crossing)|evacuat\w*|strikes? (?:by|at) (?:rail|train|airport|transport)",
+     "航班取消、空域关闭、签证政策、罢工和疏散会打乱行程，计划出门前先看一眼。"),
+    ("nature", "🌪️", "天灾 · 气候", r"earthquake|typhoon|hurricane|cyclone|floods?\b|flooding|wildfires?|bushfires?|heatwave|tsunami|volcan\w*|landslide|tropical storm|winter storm|storms? (?:hit|lash|batter|slam)\w*|climate change",
+     "天灾会打断当地生产和运输，严重时波及全球供应链、保险和农产品价格。"),
+    ("us", "🇺🇸", "美国政策 · 生活", r"White House|Congress|Senate|Supreme Court|federal|Trump administration|executive order|immigration|deportation|government shutdown|California|Los Angeles",
+     "联邦政策、法院判决、移民和政府停摆这些事，会直接影响在美国工作、报税、出行和办事。"),
+]
+IRX = [(k, e, n, re.compile(r"(?:" + rx + r")", re.I if k in ("ship", "food", "nature", "travel", "sec") else 0), why) for k, e, n, rx, why in IMPACTS]
+
+
+def impacts(text, cs=()):
+    out = []
+    for k, e, n, rx, why in IRX:
+        if k == "us" and "美国" not in cs:      # 美国政策：必须是讲美国的事（巴西也有联邦法院）
+            continue
+        if rx.search(text):
+            out.append(k)
+    return out[:3]
 
 
 def countries(text):
@@ -180,6 +219,7 @@ def main():
             g["en"], g["en_summary"] = g["title"], g["summary"]
             text = g["en"] + " " + g["en_summary"] + " " + " ".join(o["title"] for o in g.get("others", []))
             g["c"] = countries(text)[:4]
+            g["imp"] = impacts(text, [x[1] for x in g["c"]])
             for flag, cz, reg in g["c"]:
                 w = hot.setdefault(cz, [flag, cz, reg, 0])
                 w[3] += g["n"]
@@ -200,7 +240,12 @@ def main():
             keep.add(g.get("en", ""))
             keep.add(g.get("en_summary", ""))
     tcache = {a: b for a, b in tcache.items() if a in keep}
-    out = {"generated": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "regions": regions, "sources": status, "tcache": tcache}
+    imp = {k: {"k": k, "e": e, "n": n, "why": why, "count": 0} for k, e, n, rx, why in IRX}
+    for r in regions:
+        for g in r["stories"]:
+            for k in g.get("imp") or []:
+                imp[k]["count"] += 1
+    out = {"generated": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "regions": regions, "impacts": [imp[k] for k, *_ in IMPACTS], "sources": status, "tcache": tcache}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
