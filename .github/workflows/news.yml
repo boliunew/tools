@@ -8,7 +8,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["news/build.py", "news/feeds.json", "news/contexts.py", "news/articles.py", "news/today.py"]
+    paths: ["news/build.py", "news/feeds.json", "news/contexts.py", "news/articles.py", "news/today.py", "news/world.py"]
 
 permissions:
   contents: write
@@ -36,6 +36,7 @@ jobs:
       - if: github.event.schedule != '37 */2 * * *'
         run: python news/articles.py
       - run: python news/today.py   # 今日大事 · 趣闻 · 历史上的今天
+      - run: python news/world.py   # 🌍 国际局势 · 分大洲
       - if: github.event.schedule != '37 */2 * * *'
         run: python card/today.py   # 每日一句 for home-screen widgets
       - name: Commit
