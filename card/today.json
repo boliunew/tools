@@ -1,16 +1,16 @@
 {
- "date": "2026-10-18",
- "kind": "名言",
- "en": "A thing long expected takes the form of the unexpected when at last it comes.",
- "zh": "期待已久的事，真正到来时，反倒像是意料之外。",
- "by": "Mark Twain",
- "line": "A thing long expected takes the form of the unexpected when at last it comes. — Mark Twain",
+ "date": "2026-10-19",
+ "kind": "易错",
+ "en": "Study hard and make progress every day",
+ "zh": "好好学习，天天向上",
+ "by": "著名的中式英语，逐字翻译老外听不懂",
+ "line": "✗ Good good study, day day up → ✓ Study hard and make progress every day",
  "word": {
-  "w": "suburb",
-  "ph": "'sʌbә:b",
-  "zh": "n. 市郊住宅区，郊区，边缘",
-  "ex": "The other day something horrible happened in a Tokyo suburb.",
-  "exzh": "前几天，东京郊外发生了件可怕的事情。"
+  "w": "aide",
+  "ph": "eid",
+  "zh": "n. 助手，副官",
+  "ex": "His trusted discreet aide.",
+  "exzh": "他那位可靠又谨慎的助手。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
