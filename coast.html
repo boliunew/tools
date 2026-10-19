@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F4C6B">
+<title>加州海岸线</title>
+<style>
+:root{
+  --bg:#EFF3F2; --paper:#FFFFFF; --ink:#18232B; --soft:#53636E; --faint:#93A0A8; --line:#DCE3E2; --chip:#E5ECEB;
+  --acc:#0F6E8C; --acc-soft:#D9EDF2; --red:#C0362C; --red-soft:#F7E2DF; --gold:#B5841C; --gold-soft:#F6ECD3; --ok:#2E9D4F;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(20,50,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10171B; --paper:#18222A; --ink:#E5ECEF; --soft:#A5B3BB; --faint:#6A7780; --line:#26323A; --chip:#212C34;
+  --acc:#6CC3DD; --acc-soft:#16303A; --red:#F07563; --red-soft:#3A221F; --gold:#E8BB57; --gold-soft:#372C14; --ok:#5BD38E; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#10171B; --paper:#18222A; --ink:#E5ECEF; --soft:#A5B3BB; --faint:#6A7780; --line:#26323A; --chip:#212C34;
+  --acc:#6CC3DD; --acc-soft:#16303A; --red:#F07563; --red-soft:#3A221F; --gold:#E8BB57; --gold-soft:#372C14; --ok:#5BD38E; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--acc)}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{position:relative;overflow:hidden;color:#EEF6F8;background:linear-gradient(172deg,#5FA8C2 0%,#1F6F8F 42%,#0F3E57 100%);padding:calc(16px + env(safe-area-inset-top)) 0 16px}
+.hero a.home{color:#EEF6F8;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{margin:6px 0 0;font-size:27px;letter-spacing:.03em;font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif}
+.hero h1 small{font-family:Georgia,serif;font-size:14px;font-weight:400;opacity:.75;margin-left:8px;letter-spacing:.1em}
+.wave{display:block;width:100%;height:42px;margin:6px 0 2px}
+.hero p{margin:4px 0 0;font-size:13.5px;opacity:.9;line-height:1.65}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.facts span{font-size:12px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:2px 9px}
+.facts b{font-weight:600;margin-right:4px;opacity:.8}
+.prog{margin-top:10px;font-size:12.5px;opacity:.92}
+.prog i{display:block;height:6px;border-radius:3px;background:rgba(255,255,255,.2);margin-top:4px;overflow:hidden}
+.prog i u{display:block;height:100%;background:#FFE7A8;border-radius:3px}
+.tabs{position:sticky;top:0;z-index:500;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:0;background:none;border-radius:999px;padding:6px 12px;font-size:14px;color:var(--soft)}
+.tabs button.on{background:var(--ink);color:var(--paper)}
+.lead{font-size:13px;color:var(--faint);margin:12px 2px 10px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 10px;padding:0 16px 2px}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 11px;font-size:13.5px}
+.chips button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600}
+.chips button i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:0}
+#map{height:62vh;min-height:380px;border-radius:16px;border:1px solid var(--line);overflow:hidden;background:#AAD3DF;box-shadow:var(--shadow)}
+.mbar{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.mbar button{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:5px 10px;font-size:13px}
+.cm{display:flex!important;align-items:center;justify-content:center;border-radius:50%;background:#fff;border:2.5px solid #888;box-shadow:0 1px 4px rgba(0,0,0,.35);font-size:15px}
+.cm.been{box-shadow:0 0 0 3px #FFD84A,0 1px 4px rgba(0,0,0,.35)}
+.pop b{font-size:15px}.pop small{color:#888;display:block;margin-bottom:4px}
+.pop p{margin:4px 0 6px;font-size:13px;line-height:1.55}
+.pop a{display:inline-block;margin:2px 8px 0 0;font-size:13px}
+.seg{margin:18px 0 8px;display:flex;gap:10px;align-items:flex-start}
+.seg .bar{flex:0 0 6px;align-self:stretch;border-radius:3px}
+.seg h2{margin:0;font-size:18px;line-height:1.3}.seg h2 small{font-size:12px;color:var(--faint);font-weight:400;margin-left:6px;font-family:Georgia,serif}
+.seg p{margin:3px 0 0;font-size:13.5px;color:var(--soft);line-height:1.6}
+.seg .dr{font-size:12px;color:var(--faint);margin-top:2px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:9px;box-shadow:var(--shadow);overflow:hidden}
+.card .hd{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;cursor:pointer}
+.card .em{font-size:25px;line-height:1.15;flex:0 0 32px;text-align:center}
+.card .ti{flex:1;min-width:0}
+.card h3{margin:0;font-size:16px;line-height:1.35}
+.card h3 small{display:block;font-size:12px;color:var(--faint);font-weight:400;margin-top:1px}
+.card .s{font-size:13.5px;color:var(--soft);margin-top:3px;line-height:1.55}
+.card .tg{margin-top:5px}.card .tg span{display:inline-block;font-size:11.5px;background:var(--chip);color:var(--soft);border-radius:6px;padding:0 6px;margin:0 4px 3px 0}
+.card .ok{flex:0 0 auto;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 8px;color:var(--faint);background:none}
+.card .ok.on{background:#FFF3C4;border-color:#E3B341;color:#7A5600}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .card .ok.on{background:#3A3013;border-color:#8C6A1D;color:#F3D27A}}
+.card .bd{display:none;padding:0 14px 14px 58px;font-size:14.5px;line-height:1.75}
+.card.open .bd{display:block}
+.card .bd p{margin:0 0 8px}
+.card .bd ul{margin:2px 0 8px;padding-left:18px}
+.card .bd .go a{display:inline-block;margin:4px 10px 0 0;font-size:13.5px}
+.tip{background:var(--acc-soft);border-radius:10px;padding:8px 10px;font-size:13.5px;margin-top:8px;line-height:1.65}
+.tip.warn{background:var(--red-soft)}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px;margin-bottom:10px}
+.box h3{margin:0 0 4px;font-size:16px}
+.box .m{font-size:12.5px;color:var(--faint)}
+.box ol,.box ul{margin:6px 0 2px;padding-left:20px;font-size:14.5px;line-height:1.75}
+.box p{margin:4px 0;font-size:14.5px;line-height:1.7}
+.mon{display:inline-block;font-size:12px;background:var(--gold-soft);color:var(--gold);border-radius:6px;padding:0 7px;margin-left:6px;font-weight:600}
+.road li{margin-bottom:6px}
+.foot{font-size:12px;color:var(--faint);text-align:center;margin:24px 0 8px;line-height:1.8}
+.empty{color:var(--faint);text-align:center;padding:30px 0}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a class="home" href="index.html">‹ 首页</a>
+  <h1>加州海岸线<small>CALIFORNIA COAST</small></h1>
+  <svg class="wave" viewBox="0 0 400 42" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 30 Q25 22 50 30 T100 30 T150 30 T200 30 T250 30 T300 30 T350 30 T400 30 V42 H0 Z" fill="#BFE6F2" opacity=".28"/>
+    <path d="M0 35 Q25 28 50 35 T100 35 T150 35 T200 35 T250 35 T300 35 T350 35 T400 35" stroke="#E5F6FB" stroke-width="1.6" fill="none" opacity=".8"/>
+    <path d="M300 30 L304 8 L310 8 L314 30 M302 18 H312 M303 12 H311" stroke="#FFF4DC" stroke-width="1.5" fill="none"/>
+    <circle cx="307" cy="6" r="2.4" fill="#FFE7A8"/>
+    <path d="M70 30 L70 14 M70 14 q-8 -2 -12 4 M70 14 q8 -3 12 2 M70 14 q-3 -6 -9 -6 M70 14 q3 -6 9 -5" stroke="#E5F6FB" stroke-width="1.4" fill="none"/>
+    <path d="M130 31 C150 20 175 20 196 31 M140 31 V24 M186 31 V24" stroke="#F4C27A" stroke-width="1.4" fill="none" opacity=".9"/>
+  </svg>
+  <p id="intro">从俄勒冈州边界的红杉林，一路往南到墨西哥边界的边境墙。10 段海岸、几十个停靠点，地图、自驾路线、季节、路况和本地人秘籍都在这里。</p>
+  <div class="facts" id="facts"></div>
+  <div class="prog" id="prog"></div>
+</div></div>
+<div class="tabs"><div class="wrap" id="tabs"></div></div>
+<main class="wrap" id="main"><div class="empty">加载中…</div></main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('coast:' + k) || 'null'); localStorage.setItem('coast:' + k, JSON.stringify(v)); } catch (e) { return null; } }
+  var TABS = [['map', '🗺️ 地图'], ['segs', '🧭 一段一段'], ['routes', '🚗 自驾路线'], ['seasons', '📅 什么季节去'], ['road', '⚠️ 路况'], ['tips', '💡 秘籍']];
+  var D = null, TAB = (location.hash || '').replace('#', '') || ls('tab') || 'map', SEG = ls('seg') || '', BEEN = ls('been') || {}, OPEN = {}, MAP = null, BASE = ls('base') || 'map';
+  if (!TABS.some(function (t) { return t[0] === TAB; })) TAB = 'map';
+  var SEGM = {};
+
+  function gm(s, mode) { return 'https://www.google.com/maps/dir/?api=1&destination=' + s.ll[0] + '%2C' + s.ll[1] + '&travelmode=' + (mode || 'driving'); }
+  function gs(s) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s.en + ', California'); }
+  function prog() {
+    var n = D.stops.filter(function (s) { return BEEN[s.id]; }).length, t = D.stops.length;
+    $('prog').innerHTML = '🏅 我去过 ' + n + ' / ' + t + ' 个停靠点' + (n ? '' : '（在每个地方点「去过」打卡）') + '<i><u style="width:' + Math.round(n * 100 / t) + '%"></u></i>';
+  }
+  function tabsHTML() { $('tabs').innerHTML = TABS.map(function (t) { return '<button data-t="' + t[0] + '" class="' + (t[0] === TAB ? 'on' : '') + '">' + t[1] + '</button>'; }).join(''); }
+  function segChips(id) {
+    return '<div class="chips" id="' + id + '"><button data-s="" class="' + (SEG ? '' : 'on') + '">全部 ' + D.stops.length + '</button>' + D.segs.map(function (g) {
+      var n = D.stops.filter(function (s) { return s.seg === g.k; }).length;
+      return '<button data-s="' + g.k + '" class="' + (SEG === g.k ? 'on' : '') + '"><i style="background:' + g.c + '"></i>' + g.e + ' ' + esc(g.n) + ' ' + n + '</button>';
+    }).join('') + '</div>';
+  }
+  function card(s) {
+    var b = !!BEEN[s.id], g = SEGM[s.seg];
+    return '<div class="card' + (OPEN[s.id] ? ' open' : '') + '" data-id="' + s.id + '"><div class="hd"><div class="em">' + s.e + '</div><div class="ti"><h3>' + esc(s.n) + '<small>' + esc(s.en) + '</small></h3><div class="s">' + esc(s.s) + '</div>' +
+      '<div class="tg">' + s.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div></div><button class="ok' + (b ? ' on' : '') + '" data-been="' + s.id + '">' + (b ? '✓ 去过' : '去过') + '</button></div>' +
+      '<div class="bd"><p>' + esc(s.d) + '</p>' + (s.do.length ? '<b>可以做什么</b><ul>' + s.do.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '') +
+      (s.tip ? '<div class="tip">💡 ' + esc(s.tip) + '</div>' : '') + (s.warn ? '<div class="tip warn">⚠️ ' + esc(s.warn) + '</div>' : '') +
+      '<div class="go"><a href="' + gm(s) + '" target="_blank" rel="noopener">🚗 导航过去</a><a href="' + gs(s) + '" target="_blank" rel="noopener">📍 谷歌地图里看</a><a href="#" data-onmap="' + s.id + '">🗺️ 在地图上</a></div>' +
+      '<div style="font-size:12px;color:var(--faint);margin-top:6px">' + (g ? g.e + ' ' + esc(g.n) : '') + '</div></div></div>';
+  }
+
+  // ---------------- 各个标签 ----------------
+  function render() {
+    tabsHTML(); ls('tab', TAB); MAP = null;
+    var h = '';
+    if (TAB === 'map') {
+      h += '<div class="lead">两指缩放、拖动。圆点颜色代表不同路段，带金边的是你去过的。点圆点看简介、一键导航。</div>' + segChips('mchips') +
+        '<div id="map"></div><div class="mbar"><button id="mBase">' + (BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图') + '</button><button id="mAll">🌊 看整条海岸</button><button id="mMe">📍 我的位置</button><button id="mHome">🏠 从 Upland 出发</button></div>' +
+        '<div class="lead" style="margin-top:2px">线是按停靠点的顺序连起来的示意，不是精确的公路走向；导航请用「导航过去」。底图 © OpenStreetMap · © CARTO，卫星图 © Esri。</div>';
+    } else if (TAB === 'segs') {
+      h += '<div class="lead">从北到南十段，点开每个地方看详情、导航，去过的点「去过」打卡（存在这台手机上）。</div>' + segChips('schips');
+      D.segs.forEach(function (g) {
+        if (SEG && SEG !== g.k) return;
+        h += '<div class="seg"><div class="bar" style="background:' + g.c + '"></div><div><h2>' + g.e + ' ' + esc(g.n) + '<small>' + esc(g.en) + '</small></h2><p>' + esc(g.d) + '</p><div class="dr">🚗 ' + esc(g.drive) + '</div></div></div>';
+        D.stops.filter(function (s) { return s.seg === g.k; }).forEach(function (s) { h += card(s); });
+      });
+    } else if (TAB === 'routes') {
+      h += '<div class="lead">都从 Upland 出发算。时间是不堵车的大概时间，周末和节假日要多留。</div>';
+      D.routes.forEach(function (r) {
+        h += '<div class="box"><h3>' + r.e + ' ' + esc(r.t) + '</h3><div class="m">' + esc(r.from) + ' · ' + esc(r.d) + '</div><ol>' + r.steps.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ol></div>';
+      });
+      h += '<div class="box"><p>🚆 想坐火车：<a href="amtrak.html">Amtrak 火车旅行</a>里有太平洋冲浪者号、海岸星光号的时刻和看海的座位技巧。</p></div>';
+    } else if (TAB === 'seasons') {
+      h += '<div class="lead">同一段海岸，不同季节完全是两个样子。</div>';
+      D.seasons.forEach(function (x) { h += '<div class="box"><h3>' + x.e + ' ' + esc(x.t) + '<span class="mon">' + esc(x.m) + '</span></h3><p>' + esc(x.d) + '</p></div>'; });
+    } else if (TAB === 'road') {
+      h += '<div class="lead">整理于 ' + esc(D.road.updated) + '。海岸公路随时可能因为塌方、山火、风暴封路，出发当天一定再查一次。</div>' +
+        '<div class="box road"><h3>🚧 目前要知道的</h3><ul>' + D.road.now.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
+        '<div class="box"><h3>🔎 出发前查这些</h3><ul>' + D.road.check.map(function (x) { return '<li><a href="' + esc(x[1]) + '" target="_blank" rel="noopener">' + esc(x[0]) + '</a></li>'; }).join('') + '</ul>' +
+        '<p style="font-size:13px;color:var(--soft)">本站的 <a href="sf.html#map">🚗 湾区路况</a> 也能看北加州高速的实时拥堵和事故。</p></div>';
+    } else if (TAB === 'tips') {
+      h += '<div class="lead">开过很多遍的人才会告诉你的事。</div>';
+      D.tips.forEach(function (x) { h += '<div class="box"><h3>' + x.e + ' ' + esc(x.t) + '</h3><p>' + esc(x.d) + '</p></div>'; });
+    }
+    h += '<div class="foot">内容依据加州州立公园、国家公园管理局、Caltrans、各地旅游局等公开资料整理。门票、预约、开放时间和路况会变，出发前查官网。<br><a href="kb.html#california-coast">📘 知识库里的加州海岸攻略</a> · <a href="la.html">🌇 洛杉矶</a> · <a href="ie.html">🍊 内陆帝国</a></div>';
+    $('main').innerHTML = h;
+    bind();
+    if (TAB === 'map') mapInit();
+  }
+  function bind() {
+    $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (!b) return; TAB = b.getAttribute('data-t'); history.replaceState(null, '', '#' + TAB); render(); window.scrollTo(0, 0); };
+    ['mchips', 'schips'].forEach(function (id) { var c = $(id); if (c) c.onclick = function (e) { var b = e.target.closest('[data-s]'); if (!b) return; SEG = b.getAttribute('data-s'); ls('seg', SEG); if (TAB === 'map' && MAP) { c.querySelectorAll('button').forEach(function (x) { x.className = x.getAttribute('data-s') === SEG ? 'on' : ''; }); drawMap(true); } else render(); }; });
+    $('main').onclick = function (e) {
+      var bb = e.target.closest('[data-been]');
+      if (bb) { e.stopPropagation(); var id = bb.getAttribute('data-been'); if (BEEN[id]) delete BEEN[id]; else BEEN[id] = new Date().toISOString().slice(0, 10); ls('been', BEEN); bb.className = 'ok' + (BEEN[id] ? ' on' : ''); bb.textContent = BEEN[id] ? '✓ 去过' : '去过'; prog(); return; }
+      var om = e.target.closest('[data-onmap]');
+      if (om) { e.preventDefault(); var sid = om.getAttribute('data-onmap'); TAB = 'map'; SEG = ''; ls('seg', ''); history.replaceState(null, '', '#map'); render(); window.scrollTo(0, 0); setTimeout(function () { focusStop(sid); }, 600); return; }
+      var hd = e.target.closest('.card .hd');
+      if (hd && !e.target.closest('a')) { var c = hd.parentNode, k = c.getAttribute('data-id'); OPEN[k] = !OPEN[k]; c.classList.toggle('open', !!OPEN[k]); }
+    };
+  }
+
+  // ---------------- 地图 ----------------
+  function loadLeaflet(cb) {
+    if (window.L) return cb();
+    var c = document.createElement('link'); c.rel = 'stylesheet'; c.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(c);
+    var j = document.createElement('script'); j.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'; j.onload = cb;
+    j.onerror = function () { var m = $('map'); if (m) m.innerHTML = '<div class="empty">地图组件加载失败，请检查网络后刷新</div>'; };
+    document.head.appendChild(j);
+  }
+  function mapInit() {
+    loadLeaflet(function () {
+      if (!$('map')) return;
+      var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
+      MAP = L.map('map', { zoomControl: true }).setView([36.8, -120.6], 6);
+      function setBase() {
+        (MAP.base || []).forEach(function (t) { MAP.removeLayer(t); });
+        MAP.base = BASE === 'sat' ? [L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '卫星图 © Esri, Maxar' }),
+          L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, opacity: .85 })]
+          : [L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'rastertiles/voyager') + '/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' })];
+        MAP.base.forEach(function (t) { t.addTo(MAP); t.bringToBack(); });
+      }
+      setBase();
+      $('mBase').onclick = function () { BASE = BASE === 'sat' ? 'map' : 'sat'; ls('base', BASE); this.textContent = BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图'; setBase(); };
+      $('mAll').onclick = function () { SEG = ''; ls('seg', ''); $('mchips').querySelectorAll('button').forEach(function (x) { x.className = x.getAttribute('data-s') === '' ? 'on' : ''; }); drawMap(true); };
+      $('mMe').onclick = function () {
+        if (!navigator.geolocation) return;
+        navigator.geolocation.getCurrentPosition(function (p) {
+          var ll = [p.coords.latitude, p.coords.longitude];
+          if (MAP.me) MAP.removeLayer(MAP.me);
+          MAP.me = L.circleMarker(ll, { radius: 8, color: '#fff', weight: 3, fillColor: '#1F6FB2', fillOpacity: 1 }).addTo(MAP).bindPopup('你在这里');
+          var near = D.stops.map(function (s) { return [Math.pow(s.ll[0] - ll[0], 2) + Math.pow((s.ll[1] - ll[1]) * Math.cos(ll[0] * Math.PI / 180), 2), s]; }).sort(function (a, b) { return a[0] - b[0]; })[0];
+          MAP.fitBounds(L.latLngBounds([ll, near[1].ll]).pad(.3));
+          if (MAP.mk[near[1].id]) MAP.mk[near[1].id].openPopup();
+        }, function () { alert('没有拿到位置（可能没有允许定位）'); }, { timeout: 15000 });
+      };
+      $('mHome').onclick = function () {
+        var home = [34.0975, -117.6484];
+        if (MAP.home) MAP.removeLayer(MAP.home);
+        MAP.home = L.marker(home, { icon: L.divIcon({ className: '', html: '<div class="cm" style="width:30px;height:30px;border-color:#E16710">🏠</div>', iconSize: [30, 30], iconAnchor: [15, 15] }) }).addTo(MAP)
+          .bindPopup('<div class="pop"><b>🏠 Upland</b><p>离家最近的海：橙县和马里布约 1 小时，圣地亚哥 1.5–2 小时，圣巴巴拉 2–2.5 小时，大苏尔 5–6 小时。</p></div>').openPopup();
+        MAP.setView([34.0, -118.2], 8);
+      };
+      drawMap(true);
+    });
+  }
+  function drawMap(fit) {
+    if (!MAP) return;
+    if (MAP.g) MAP.removeLayer(MAP.g);
+    var g = L.layerGroup(), pts = [];
+    MAP.mk = {};
+    D.segs.forEach(function (sg) {
+      var ss = D.stops.filter(function (s) { return s.seg === sg.k; });
+      if (SEG && SEG !== sg.k) return;
+      if (ss.length > 1) g.addLayer(L.polyline(ss.map(function (s) { return s.ll; }), { color: sg.c, weight: 4, opacity: .75, dashArray: '2 8', lineCap: 'round' }));
+      ss.forEach(function (s) {
+        pts.push(s.ll);
+        var m = L.marker(s.ll, { icon: L.divIcon({ className: '', html: '<div class="cm' + (BEEN[s.id] ? ' been' : '') + '" style="width:30px;height:30px;border-color:' + sg.c + '">' + s.e + '</div>', iconSize: [30, 30], iconAnchor: [15, 15] }) });
+        m.bindPopup(function () {
+          return '<div class="pop"><b>' + s.e + ' ' + esc(s.n) + '</b><small>' + esc(s.en) + ' · ' + sg.e + ' ' + esc(sg.n) + '</small><p>' + esc(s.s) + '</p>' +
+            (s.warn ? '<p style="color:#B23A2B">⚠️ ' + esc(s.warn) + '</p>' : '') +
+            '<a href="' + gm(s) + '" target="_blank" rel="noopener">🚗 导航</a><a href="#" data-det="' + s.id + '">📖 详情</a><a href="#" data-pb="' + s.id + '">' + (BEEN[s.id] ? '✓ 去过' : '打卡去过') + '</a></div>';
+        }, { maxWidth: 270 });
+        MAP.mk[s.id] = m; g.addLayer(m);
+      });
+    });
+    g.addTo(MAP); MAP.g = g;
+    if (fit && pts.length) MAP.fitBounds(L.latLngBounds(pts).pad(.08));
+    MAP.off('popupopen').on('popupopen', function (ev) {
+      var el = ev.popup.getElement(); if (!el) return;
+      el.onclick = function (e) {
+        var a = e.target.closest('[data-det]'), b = e.target.closest('[data-pb]');
+        if (a) { e.preventDefault(); var id = a.getAttribute('data-det'); OPEN[id] = true; SEG = D.stops.filter(function (s) { return s.id === id; })[0].seg; ls('seg', SEG); TAB = 'segs'; history.replaceState(null, '', '#segs'); render(); var c = document.querySelector('[data-id="' + id + '"]'); if (c) c.scrollIntoView({ block: 'center' }); }
+        if (b) { e.preventDefault(); var k = b.getAttribute('data-pb'); if (BEEN[k]) delete BEEN[k]; else BEEN[k] = new Date().toISOString().slice(0, 10); ls('been', BEEN); prog(); b.textContent = BEEN[k] ? '✓ 去过' : '打卡去过'; var ic = MAP.mk[k] && MAP.mk[k].getElement(); if (ic) { var d0 = ic.querySelector('.cm'); if (d0) d0.classList.toggle('been', !!BEEN[k]); } }
+      };
+    });
+  }
+  function focusStop(id) { if (!MAP || !MAP.mk || !MAP.mk[id]) return; var s = D.stops.filter(function (x) { return x.id === id; })[0]; MAP.setView(s.ll, 11); MAP.mk[id].openPopup(); }
+
+  var x = new XMLHttpRequest();
+  x.open('GET', 'coast/data.json?t=' + Math.floor(Date.now() / 36e5));
+  x.onload = function () {
+    try { D = JSON.parse(x.responseText); } catch (e) { $('main').innerHTML = '<div class="empty">加载失败，刷新试试</div>'; return; }
+    D.segs.forEach(function (g) { SEGM[g.k] = g; });
+    $('facts').innerHTML = D.facts.map(function (f) { return '<span><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</span>'; }).join('');
+    prog(); render();
+  };
+  x.onerror = function () { $('main').innerHTML = '<div class="empty">网络错误，稍后刷新</div>'; };
+  x.send();
+})();
+</script>
+<script src="nav.js?v=28" defer></script>
+</body>
+</html>
