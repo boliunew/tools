@@ -47,12 +47,12 @@ def main():
             out.append({"k": "知识库", "t": a["title"], "s": short(a["summary"]), "u": "kb.html#" + a["slug"],
                         "x": flat(a["title"], a["summary"], a["tags"], a.get("text", ""), limit=6000)})
 
-    for f in ("recipes_cn", "recipes_cn2", "recipes_cn3", "recipes_west", "recipes_west2", "recipes_west3"):
+    for f in ("recipes_cn", "recipes_cn2", "recipes_cn3", "recipes_west", "recipes_west2", "recipes_west3", "recipes_mian"):
         d = load("kitchen/%s.json" % f)
         for r in (d or {}).get("items", []):
             out.append({"k": "菜谱·" + r["cuisine"], "t": r["name"], "s": short("%s · %s · %d 分钟" % (r["en"], r["type"], r["time"])),
                         "u": "kitchen.html#r=" + r["id"],
-                        "x": flat(r["name"], r["en"], r["type"], r["tags"], [i["n"] + " " + (i.get("buy") or "") for i in r["ing"]], r.get("tip", ""))})
+                        "x": flat(r["name"], r["en"], r["type"], r.get("mian", ""), "面食" if r.get("mian") else "", r["tags"], [i["n"] + " " + (i.get("buy") or "") for i in r["ing"]], r.get("tip", ""))})
 
     well = load("kitchen/wellness.json")
     if well:
@@ -146,7 +146,7 @@ def main():
         return len(d) if d else 0
     counts = {
         "kb": n("kb/index.json", "articles"), "tips": n("tips/tips.json", "items"),
-        "recipes": sum(n("kitchen/%s.json" % f, "items") for f in ("recipes_cn", "recipes_cn2", "recipes_cn3", "recipes_west", "recipes_west2", "recipes_west3")),
+        "recipes": sum(n("kitchen/%s.json" % f, "items") for f in ("recipes_cn", "recipes_cn2", "recipes_cn3", "recipes_west", "recipes_west2", "recipes_west3", "recipes_mian")),
         "dreams": n("dream/dreams.json", "items"), "psy": n("mind/psy.json", "items"),
         "sushi": n("people/sushi_a.json", "items") + n("people/sushi_b.json", "items"), "gm": n("people/gm.json", "songs"),
         "asimov": n("people/asimov.json", "books"), "cards": n("card/daily.json", "items"),
