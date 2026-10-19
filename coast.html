@@ -92,6 +92,34 @@ a{color:var(--acc)}
 .road li{margin-bottom:6px}
 .foot{font-size:12px;color:var(--faint);text-align:center;margin:24px 0 8px;line-height:1.8}
 .empty{color:var(--faint);text-align:center;padding:30px 0}
+.rail{margin-top:8px;font-size:13.5px;line-height:1.7;background:var(--chip);border-radius:10px;padding:7px 10px}
+.rail a{margin-left:6px;font-size:13px}
+.nf-btn{position:fixed;right:14px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:900;border:0;border-radius:999px;padding:10px 15px 10px 12px;background:#0F6E8C;color:#fff;font-weight:600;font-size:14px;box-shadow:0 4px 16px rgba(0,0,0,.28);display:flex;align-items:center;gap:6px}
+.nf-btn b{font-size:17px}
+.nf-bg{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .2s}
+.nf-bg.on{opacity:1;pointer-events:auto}
+.nf-sh{position:fixed;left:0;right:0;bottom:0;z-index:1001;max-height:86vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--bg);border-radius:20px 20px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.3);transform:translateY(105%);transition:transform .25s cubic-bezier(.2,.8,.2,1);padding:0 14px calc(18px + env(safe-area-inset-bottom))}
+.nf-sh.on{transform:none}
+.nf-in{max-width:680px;margin:0 auto}
+.nf-hd{position:sticky;top:0;background:var(--bg);padding:10px 0 6px;z-index:1}
+.nf-grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 8px}
+.nf-t{display:flex;align-items:center;gap:8px}.nf-t b{font-size:18px;flex:1}
+.nf-t button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 10px;font-size:13px}
+.nf-st{font-size:12.5px;color:var(--soft);margin:6px 0 4px;line-height:1.6}
+.nf-c{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:8px;box-shadow:var(--shadow);overflow:hidden}
+.nf-r{display:flex;gap:10px;align-items:center;padding:10px 12px;cursor:pointer}
+.nf-r .e{font-size:24px;flex:0 0 30px;text-align:center}
+.nf-r .m{flex:1;min-width:0}.nf-r .m b{display:block;font-size:15px;line-height:1.35}.nf-r .m small{color:var(--soft);font-size:12.5px;display:block;line-height:1.45}
+.nf-r .d{text-align:right;flex:0 0 auto}.nf-r .d b{display:block;font-size:15px;color:var(--acc)}.nf-r .d small{font-size:11.5px;color:var(--faint)}
+.nf-x{display:none;padding:0 12px 12px 52px;font-size:13.5px;line-height:1.65}
+.nf-c.open .nf-x{display:block}
+.nf-go{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.nf-go a,.nf-go button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 10px;font-size:13.5px;text-decoration:none;color:var(--ink)}
+.nf-go a.p{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+.nf-go button.on{background:#FFF3C4;border-color:#E3B341;color:#7A5600}
+.nf-f{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-top:6px}
+.nf-f button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 10px;font-size:13px}
+.nf-f button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 </style>
 </head>
 <body>
@@ -125,6 +153,12 @@ a{color:var(--acc)}
 
   function gm(s, mode) { return 'https://www.google.com/maps/dir/?api=1&destination=' + s.ll[0] + '%2C' + s.ll[1] + '&travelmode=' + (mode || 'driving'); }
   function gs(s) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s.en + ', California'); }
+  function railHTML(s) {
+    var r = s.rail || [];
+    if (!r.length) return '<div class="rail">🚆 15 英里内没有火车站，基本只能开车；点「🚌 公交」让谷歌地图找巴士。</div>';
+    return '<div class="rail">🚆 最近的火车站：' + r.map(function (x) { return '<br><b>' + esc(x.zh || x.n) + '</b>（' + esc(x.kind) + (x.l && x.l.length ? ' · ' + esc(x.l[0]) : '') + '）离这里约 ' + x.d + ' 英里' +
+      '<a href="https://www.google.com/maps/dir/?api=1&origin=' + x.ll[0] + '%2C' + x.ll[1] + '&destination=' + s.ll[0] + '%2C' + s.ll[1] + '&travelmode=transit" target="_blank" rel="noopener">从车站怎么过去 ›</a>'; }).join('') + '</div>';
+  }
   function prog() {
     var n = D.stops.filter(function (s) { return BEEN[s.id]; }).length, t = D.stops.length;
     $('prog').innerHTML = '🏅 我去过 ' + n + ' / ' + t + ' 个停靠点' + (n ? '' : '（在每个地方点「去过」打卡）') + '<i><u style="width:' + Math.round(n * 100 / t) + '%"></u></i>';
@@ -141,7 +175,7 @@ a{color:var(--acc)}
     return '<div class="card' + (OPEN[s.id] ? ' open' : '') + '" data-id="' + s.id + '"><div class="hd"><div class="em">' + s.e + '</div><div class="ti"><h3>' + esc(s.n) + '<small>' + esc(s.en) + '</small></h3><div class="s">' + esc(s.s) + '</div>' +
       '<div class="tg">' + s.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div></div><button class="ok' + (b ? ' on' : '') + '" data-been="' + s.id + '">' + (b ? '✓ 去过' : '去过') + '</button></div>' +
       '<div class="bd"><p>' + esc(s.d) + '</p>' + (s.do.length ? '<b>可以做什么</b><ul>' + s.do.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '') +
-      (s.tip ? '<div class="tip">💡 ' + esc(s.tip) + '</div>' : '') + (s.warn ? '<div class="tip warn">⚠️ ' + esc(s.warn) + '</div>' : '') +
+      (s.tip ? '<div class="tip">💡 ' + esc(s.tip) + '</div>' : '') + (s.warn ? '<div class="tip warn">⚠️ ' + esc(s.warn) + '</div>' : '') + railHTML(s) +
       '<div class="go"><a href="' + gm(s) + '" target="_blank" rel="noopener">🚗 导航过去</a><a href="' + gs(s) + '" target="_blank" rel="noopener">📍 谷歌地图里看</a><a href="#" data-onmap="' + s.id + '">🗺️ 在地图上</a></div>' +
       '<div style="font-size:12px;color:var(--faint);margin-top:6px">' + (g ? g.e + ' ' + esc(g.n) : '') + '</div></div></div>';
   }
@@ -274,18 +308,85 @@ a{color:var(--acc)}
   }
   function focusStop(id) { if (!MAP || !MAP.mk || !MAP.mk[id]) return; var s = D.stops.filter(function (x) { return x.id === id; })[0]; MAP.setView(s.ll, 11); MAP.mk[id].openPopup(); }
 
+
+  // ---------------- 📍 附近好玩：定位后按远近列出海边景点 ----------------
+  var POS = null, NF = 'all', NOPEN = {};
+  try { POS = JSON.parse(localStorage.getItem('coast:pos') || 'null'); if (POS && Date.now() - POS.t > 6 * 36e5) POS = null; } catch (e) { }
+  function mi(a, b, c, d) { var R = 3958.8, p1 = a * Math.PI / 180, p2 = c * Math.PI / 180, x = Math.sin((p2 - p1) / 2), y = Math.sin((d - b) * Math.PI / 360); return 2 * R * Math.asin(Math.sqrt(x * x + Math.cos(p1) * Math.cos(p2) * y * y)); }
+  function nfBuild() {
+    if ($('nfSh')) return;
+    var b = document.createElement('button'); b.className = 'nf-btn'; b.innerHTML = '<b>📍</b>附近好玩'; b.onclick = nfOpen; document.body.appendChild(b);
+    var bg = document.createElement('div'); bg.className = 'nf-bg'; bg.id = 'nfBg'; bg.onclick = nfClose; document.body.appendChild(bg);
+    var sh = document.createElement('div'); sh.className = 'nf-sh'; sh.id = 'nfSh';
+    sh.innerHTML = '<div class="nf-in"><div class="nf-hd"><div class="nf-grab"></div><div class="nf-t"><b>📍 我附近的海边</b><button id="nfRe">🔄 重新定位</button><button id="nfX">✕</button></div><div class="nf-st" id="nfSt"></div>' +
+      '<div class="nf-f" id="nfF"></div></div><div id="nfL"></div><div class="nf-st" style="margin-top:10px">距离是直线距离，开车时间按海边公路平均每小时 35 英里粗估；点「开车 / 公交 / 步行」直接用谷歌地图导航和查班次。位置只在这台手机上用，不会上传。' +
+      '<br><a href="#" id="nfSt2">🚉 看我附近的火车站、地铁站 ›</a>' + '</div></div>';
+    document.body.appendChild(sh);
+    $('nfX').onclick = nfClose; $('nfRe').onclick = function () { locate(true); };
+    $('nfF').onclick = function (e) { var x = e.target.closest('[data-nf]'); if (!x) return; NF = x.getAttribute('data-nf'); nfDraw(); };
+    $('nfSt2').onclick = function (e) { e.preventDefault(); nfClose(); if (window.Nearby) window.Nearby.open(); else location.href = 'amtrak.html'; };
+    $('nfL').onclick = function (e) {
+      var bb = e.target.closest('[data-nb]');
+      if (bb) { var k = bb.getAttribute('data-nb'); if (BEEN[k]) delete BEEN[k]; else BEEN[k] = new Date().toISOString().slice(0, 10); ls('been', BEEN); prog(); nfDraw(); return; }
+      var dt = e.target.closest('[data-nd]');
+      if (dt) { e.preventDefault(); var id = dt.getAttribute('data-nd'); nfClose(); OPEN[id] = true; SEG = D.stops.filter(function (x) { return x.id === id; })[0].seg; ls('seg', SEG); TAB = 'segs'; history.replaceState(null, '', '#segs'); render(); var c = document.querySelector('[data-id="' + id + '"]'); if (c) c.scrollIntoView({ block: 'center' }); return; }
+      var r = e.target.closest('.nf-r'); if (r) { var c2 = r.parentNode, k2 = c2.getAttribute('data-k'); NOPEN[k2] = !NOPEN[k2]; c2.classList.toggle('open', !!NOPEN[k2]); }
+    };
+  }
+  function nfOpen() { nfBuild(); $('nfBg').className = 'nf-bg on'; $('nfSh').className = 'nf-sh on'; nfDraw(); if (!POS) locate(false); }
+  function nfClose() { $('nfBg').className = 'nf-bg'; $('nfSh').className = 'nf-sh'; }
+  function locate(force) {
+    if (!navigator.geolocation) { $('nfSt').textContent = '这个浏览器不支持定位。'; return; }
+    $('nfSt').textContent = '⏳ 正在定位…';
+    navigator.geolocation.getCurrentPosition(function (p) {
+      POS = { lat: p.coords.latitude, lon: p.coords.longitude, acc: p.coords.accuracy, t: Date.now() };
+      try { localStorage.setItem('coast:pos', JSON.stringify(POS)); } catch (e) { }
+      nfDraw();
+    }, function (err) {
+      $('nfSt').innerHTML = (err && err.code === 1 ? '浏览器没有允许定位。在网站设置里允许「位置」后点「重新定位」。' : '暂时没定位成功（室内信号差时常见）。') + ' <a href="#" id="nfHome">先用 Upland 家的位置</a>';
+      $('nfHome').onclick = function (e) { e.preventDefault(); POS = { lat: 34.0975, lon: -117.6484, home: 1, t: Date.now() }; nfDraw(); };
+    }, { enableHighAccuracy: true, timeout: 15000, maximumAge: force ? 0 : 120000 });
+  }
+  function nfDraw() {
+    var F = [['all', '全部'], ['must', '⭐ 必去'], ['free', '🆓 免费'], ['animal', '🦭 看动物'], ['hike', '🥾 徒步'], ['town', '🏘️ 小镇'], ['notbeen', '还没去过']];
+    var TEST = { must: /必去/, free: /免费/, animal: /海豹|海狮|象海豹|海獭|鲸|帝王蝶|海豚/, hike: /徒步|步道|悬崖/, town: /小镇|小城/ };
+    $('nfF').innerHTML = F.map(function (f) { return '<button data-nf="' + f[0] + '" class="' + (NF === f[0] ? 'on' : '') + '">' + f[1] + '</button>'; }).join('');
+    if (!D) { $('nfL').innerHTML = '<div class="empty">加载中…</div>'; return; }
+    if (!POS) { $('nfL').innerHTML = '<div class="empty">点「重新定位」找附近的海边景点</div>'; return; }
+    $('nfSt').innerHTML = POS.home ? '🏠 用的是 Upland 家的位置，点「重新定位」用你现在的位置。' : '📍 你的位置' + (POS.acc ? '（精度约 ' + Math.round(POS.acc) + ' 米）' : '');
+    var L = D.stops.filter(function (s) {
+      if (NF === 'all') return true; if (NF === 'notbeen') return !BEEN[s.id];
+      var t = s.tags.join(' ') + ' ' + s.n + ' ' + s.s; return TEST[NF].test(t);
+    }).map(function (s) { return [mi(POS.lat, POS.lon, s.ll[0], s.ll[1]), s]; }).sort(function (a, b) { return a[0] - b[0]; }).slice(0, 12);
+    if (!L.length) { $('nfL').innerHTML = '<div class="empty">没有这类地方。</div>'; return; }
+    var far = L[0][0] > 40;
+    $('nfL').innerHTML = (far ? '<div class="nf-st">离最近的海边景点也有 ' + Math.round(L[0][0]) + ' 英里——下面按远近排，适合规划下一次出门。</div>' : '') + L.map(function (x, i) {
+      var d = x[0], s = x[1], g = SEGM[s.seg], k = s.id, open = NOPEN[k] || (i === 0 && !Object.keys(NOPEN).length);
+      var mins = d < 1.5 ? Math.round(d * 1.2 / 3 * 60) + ' 分钟走路' : (d < 60 ? '开车约 ' + Math.max(5, Math.round(d * 1.25 / 35 * 60 / 5) * 5) + ' 分' : '开车约 ' + (Math.round(d * 1.25 / 50 * 2) / 2) + ' 小时');
+      var modes = d < 1.5 ? [['walking', '🚶 步行'], ['transit', '🚌 公交'], ['driving', '🚗 开车']] : [['driving', '🚗 开车'], ['transit', '🚌 公交'], ['walking', '🚶 步行']];
+      return '<div class="nf-c' + (open ? ' open' : '') + '" data-k="' + k + '"><div class="nf-r"><div class="e">' + s.e + '</div><div class="m"><b>' + esc(s.n) + (BEEN[k] ? ' <small style="display:inline;color:#B5841C">✓ 去过</small>' : '') + '</b><small>' + esc(s.s) + '</small></div>' +
+        '<div class="d"><b>' + (d < 10 ? d.toFixed(1) : Math.round(d)) + ' 英里</b><small>' + mins + '</small></div></div>' +
+        '<div class="nf-x"><div style="font-size:12px;color:var(--faint)">' + (g ? g.e + ' ' + esc(g.n) : '') + ' · ' + s.tags.map(esc).join(' · ') + '</div>' +
+        '<div class="nf-go">' + modes.map(function (m, j) { return '<a class="' + (j ? '' : 'p') + '" href="' + gm(s, m[0]) + '" target="_blank" rel="noopener">' + m[1] + '</a>'; }).join('') +
+        '<button data-nb="' + k + '" class="' + (BEEN[k] ? 'on' : '') + '">' + (BEEN[k] ? '✓ 去过' : '打卡去过') + '</button><a href="#" data-nd="' + k + '">📖 详情</a></div>' +
+        (s.tip ? '<div>💡 ' + esc(s.tip) + '</div>' : '') + (s.warn ? '<div style="color:var(--red)">⚠️ ' + esc(s.warn) + '</div>' : '') + railHTML(s) + '</div></div>';
+    }).join('');
+  }
+
   var x = new XMLHttpRequest();
   x.open('GET', 'coast/data.json?t=' + Math.floor(Date.now() / 36e5));
   x.onload = function () {
     try { D = JSON.parse(x.responseText); } catch (e) { $('main').innerHTML = '<div class="empty">加载失败，刷新试试</div>'; return; }
     D.segs.forEach(function (g) { SEGM[g.k] = g; });
     $('facts').innerHTML = D.facts.map(function (f) { return '<span><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</span>'; }).join('');
-    prog(); render();
+    prog(); render(); nfBuild(); if (location.hash === '#near') nfOpen();
   };
   x.onerror = function () { $('main').innerHTML = '<div class="empty">网络错误，稍后刷新</div>'; };
   x.send();
 })();
 </script>
+<script>window.NEARBY_NOBTN = true;</script>
+<script src="nearby.js?v=5" defer></script>
 <script src="nav.js?v=28" defer></script>
 </body>
 </html>

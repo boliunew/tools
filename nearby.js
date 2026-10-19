@@ -93,7 +93,7 @@
 
   function build() {
     var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
-    var b = document.createElement('button'); b.className = 'nb-btn'; b.innerHTML = '<b>📍</b>附近车站'; b.onclick = open; document.body.appendChild(b);
+    if (!window.NEARBY_NOBTN) { var b = document.createElement('button'); b.className = 'nb-btn'; b.innerHTML = '<b>📍</b>附近车站'; b.onclick = open; document.body.appendChild(b); }
     var bg = document.createElement('div'); bg.className = 'nb-bg'; bg.id = 'nbBg'; bg.onclick = close; document.body.appendChild(bg);
     var sh = document.createElement('div'); sh.className = 'nb-sh'; sh.id = 'nbSh';
     sh.innerHTML = '<div class="nb-in"><div class="nb-hd"><div class="nb-grab"></div><div class="nb-t"><b>📍 我附近的车站</b><button id="nbRe">🔄 重新定位</button><button id="nbX">✕</button></div><div class="nb-st" id="nbSt"></div><div class="nb-f" id="nbF"></div></div><div id="nbL"></div>' +

@@ -318,6 +318,37 @@ FACTS = [["海岸线", "约 840 英里（NOAA 一般海岸线）"], ["1 号公�
          ["最美一段", "大苏尔（约 90 英里）"], ["停靠点", "%d 个"], ["离 Upland 最近", "橙县、马里布约 1 小时"]]
 
 
+KIND = {"amtrak": "Amtrak", "metrolink": "Metrolink", "caltrain": "Caltrain", "bart": "BART", "lametro": "LA Metro", "muni": "Muni", "vta": "VTA"}
+
+
+def add_rail(stops):
+    """每个停靠点找最近的两个火车 / 轨道站（stations/near.json，附近车站功能的同一份数据），15 英里以内。"""
+    import math
+    try:
+        st = [x for x in json.load(open(os.path.join(ROOT, "stations", "near.json"), encoding="utf-8"))["st"] if x["k"] in KIND]
+    except Exception as e:
+        print("stations/near.json 读不到，跳过最近车站：", e)
+        return
+
+    def mi(a, b):
+        p1, p2 = math.radians(a[0]), math.radians(b[0])
+        h = math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(math.radians(b[1] - a[1]) / 2) ** 2
+        return 3958.8 * 2 * math.asin(math.sqrt(h))
+
+    for s in stops:
+        cand = sorted(((mi(s["ll"], x["ll"]), x) for x in st), key=lambda t: t[0])
+        out, seen = [], set()
+        for d, x in cand:
+            if d > 15 or len(out) >= 2:
+                break
+            key = (x["n"], x["k"])
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({"k": x["k"], "kind": KIND[x["k"]], "n": x["n"], "zh": x.get("zh", ""), "d": round(d, 1), "ll": x["ll"], "l": (x.get("l") or [])[:2]})
+        s["rail"] = out
+
+
 def kb_article(stops):
     """知识库「旅行」标签下的一篇总攻略，内容和页面同源。"""
     L = ["---", "title: 加州海岸线自驾全攻略：从红杉到边境墙",
@@ -356,6 +387,7 @@ def kb_article(stops):
 
 def main():
     FACTS[4][1] = FACTS[4][1] % len(STOPS)
+    add_rail(STOPS)
     out = {"segs": [{"k": k, "e": e, "n": n, "en": en, "c": c, "d": d, "drive": dr} for k, e, n, en, c, d, dr in SEGS],
            "stops": STOPS, "routes": ROUTES, "seasons": SEASONS, "road": ROAD, "tips": TIPS, "facts": FACTS}
     os.makedirs(os.path.join(ROOT, "coast"), exist_ok=True)
