@@ -517,8 +517,8 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
           if (BASE === 'sat') LMAP.base = [
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '卫星图 © Esri, Maxar, Earthstar Geographics' }),
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, opacity: .8 })];
-          else LMAP.base = [L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'light_all') + '/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' })];
-          LMAP.base.forEach(function (t) { t.addTo(LMAP); t.bringToBack(); });
+          else LMAP.base = (function (d, k) { var E = 'https://server.arcgisonline.com/ArcGIS/rest/services/', a = { maxZoom: 19, maxNativeZoom: 16, attribution: '底图 © Esri' }, b = { maxZoom: 19, maxNativeZoom: 16 }; return d ? [L.tileLayer(E + 'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', a), L.tileLayer(E + 'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', b)] : k === 'gray' ? [L.tileLayer(E + 'Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', a), L.tileLayer(E + 'Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', b)] : [L.tileLayer(E + 'World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '底图 © Esri' })]; })(dark, 'gray');
+          LMAP.base.slice().reverse().forEach(function (t) { t.addTo(LMAP); t.bringToBack(); });
           $('lmap').classList.toggle('sat', BASE === 'sat');
         }
         setBase();
@@ -702,7 +702,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
 })();
 </script>
 <script>document.querySelectorAll('.city a').forEach(function(a){a.addEventListener('click',function(e){if(a.classList.contains('on')){e.preventDefault();return;}var h=(location.hash||'').split('/')[0];if(h)a.href=a.getAttribute('href').split('#')[0]+h;});});</script>
-<script src="nearby.js?v=3" defer></script>
+<script src="nearby.js?v=4" defer></script>
 <script src="nav.js?v=28" defer></script>
 </body>
 </html>

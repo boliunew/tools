@@ -572,7 +572,7 @@ a{color:var(--acc)}
   function mkmap(id, key) {
     var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.getAttribute('data-theme') !== 'light';
     var m = L.map(id, { zoomControl: true });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'rastertiles/voyager') + '/{z}/{x}/{y}{r}.png', { maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' }).addTo(m);
+    L.layerGroup((function (d, k) { var E = 'https://server.arcgisonline.com/ArcGIS/rest/services/', a = { maxZoom: 19, maxNativeZoom: 16, attribution: '底图 © Esri' }, b = { maxZoom: 19, maxNativeZoom: 16 }; return d ? [L.tileLayer(E + 'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', a), L.tileLayer(E + 'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', b)] : k === 'gray' ? [L.tileLayer(E + 'Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', a), L.tileLayer(E + 'Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', b)] : [L.tileLayer(E + 'World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '底图 © Esri' })]; })(dark, 'street')).addTo(m);
     MAPS[key] = m; return m;
   }
 
@@ -587,7 +587,7 @@ a{color:var(--acc)}
   x.send();
 })();
 </script>
-<script src="nearby.js?v=3" defer></script>
+<script src="nearby.js?v=4" defer></script>
 <script src="nav.js?v=28" defer></script>
 </body>
 </html>

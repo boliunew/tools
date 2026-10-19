@@ -214,8 +214,8 @@ a{color:var(--acc)}
         (MAP.base || []).forEach(function (t) { MAP.removeLayer(t); });
         MAP.base = BASE === 'sat' ? [L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '卫星图 © Esri, Maxar' }),
           L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, opacity: .85 })]
-          : [L.tileLayer('https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'rastertiles/voyager') + '/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' })];
-        MAP.base.forEach(function (t) { t.addTo(MAP); t.bringToBack(); });
+          : (function (d, k) { var E = 'https://server.arcgisonline.com/ArcGIS/rest/services/', a = { maxZoom: 19, maxNativeZoom: 16, attribution: '底图 © Esri' }, b = { maxZoom: 19, maxNativeZoom: 16 }; return d ? [L.tileLayer(E + 'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', a), L.tileLayer(E + 'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', b)] : k === 'gray' ? [L.tileLayer(E + 'Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', a), L.tileLayer(E + 'Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', b)] : [L.tileLayer(E + 'World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '底图 © Esri' })]; })(dark, 'street');
+        MAP.base.slice().reverse().forEach(function (t) { t.addTo(MAP); t.bringToBack(); });
       }
       setBase();
       $('mBase').onclick = function () { BASE = BASE === 'sat' ? 'map' : 'sat'; ls('base', BASE); this.textContent = BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图'; setBase(); };

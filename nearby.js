@@ -235,7 +235,7 @@
       var el = $('nbMap'); if (!el || !window.L) return;
       if (DMAP) { try { DMAP.remove(); } catch (e) { } }
       DMAP = L.map(el, { zoomControl: false, attributionControl: true });
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap · © CARTO' }).addTo(DMAP);
+      L.layerGroup((function (d, k) { var E = 'https://server.arcgisonline.com/ArcGIS/rest/services/', a = { maxZoom: 19, maxNativeZoom: 16, attribution: '底图 © Esri' }, b = { maxZoom: 19, maxNativeZoom: 16 }; return d ? [L.tileLayer(E + 'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', a), L.tileLayer(E + 'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', b)] : k === 'gray' ? [L.tileLayer(E + 'Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', a), L.tileLayer(E + 'Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', b)] : [L.tileLayer(E + 'World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: '底图 © Esri' })]; })(false, 'street')).addTo(DMAP);
       L.marker(s.ll, { icon: L.divIcon({ className: '', html: '<div style="width:30px;height:30px;border-radius:9px;background:' + K[2] + ';color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.4)">' + K[0] + '</div>', iconSize: [30, 30], iconAnchor: [15, 15] }) }).addTo(DMAP);
       if (POS && d != null && d < 40) {
         var me = [POS.lat, POS.lon];
