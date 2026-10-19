@@ -93,14 +93,14 @@
 ## 更新日志
 
 - 2026-10-19 新增 [加州海岸线自驾全攻略：从红杉到边境墙](california-coast.md)
+- 2026-10-19 更新 [电影 Top 500（按国家分类）](top500-movies.md)
+- 2026-10-19 更新 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-10-18 新增 [Amtrak 坐火车完全攻略：注意事项和技巧](amtrak-guide.md)
 - 2026-10-18 新增 [旅行防骗大全](travel-scams.md)
 - 2026-10-18 更新 [坐飞机：订票、行李、安检、延误退款](travel-flights-airports.md)
 - 2026-10-18 更新 [订酒店不踩雷：从挑酒店到退房](travel-hotels.md)
 - 2026-10-18 更新 [旅行的钱、安全和打包清单](travel-money-safety-packing.md)
 - 2026-10-18 更新 [公路旅行和租车](travel-road-trip.md)
-- 2026-10-13 新增 [电影 Top 500（按国家分类）](top500-movies.md)
-- 2026-10-13 新增 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-10-08 新增 [极光和太阳活动：南加州也能看到北极光吗](aurora-and-space-weather.md)
 - 2026-10-08 新增 [露营入门：南加州去哪露营、怎么订、带什么](camping-basics.md)
 - 2026-10-08 新增 [四季星空怎么认：从北斗到猎户座](constellations-by-season.md)
