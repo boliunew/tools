@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#22314F">
+<title>美国生活指南</title>
+<style>
+:root{
+  --bg:#F2F2EE; --paper:#FFFFFF; --ink:#1C2230; --soft:#566070; --faint:#959DA8; --line:#E0E1DA; --chip:#EAEBE5;
+  --acc:#2B4C8C; --acc-soft:#DFE7F5; --red:#B8322A; --red-soft:#F7E2DF; --gold:#B5841C; --gold-soft:#F6ECD3;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12151B; --paper:#1A1F28; --ink:#E7EAF0; --soft:#A8B0BD; --faint:#6D7582; --line:#29303B; --chip:#232A34;
+  --acc:#8FB0EA; --acc-soft:#1C2740; --red:#F07563; --red-soft:#3A221F; --gold:#E8BB57; --gold-soft:#372C14; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#12151B; --paper:#1A1F28; --ink:#E7EAF0; --soft:#A8B0BD; --faint:#6D7582; --line:#29303B; --chip:#232A34;
+  --acc:#8FB0EA; --acc-soft:#1C2740; --red:#F07563; --red-soft:#3A221F; --gold:#E8BB57; --gold-soft:#372C14; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--acc)}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{position:relative;overflow:hidden;color:#F3F5FA;background:linear-gradient(170deg,#3A5A9A 0%,#22314F 55%,#151D30 100%);padding:calc(16px + env(safe-area-inset-top)) 0 16px}
+.hero:before{content:"";position:absolute;right:-30px;top:-10px;width:200px;height:120px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 10px,transparent 10px 20px);transform:rotate(-8deg);pointer-events:none}
+.hero .wrap{position:relative}
+.hero a.home{color:#F3F5FA;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{margin:6px 0 0;font-size:27px;letter-spacing:.03em;font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif}
+.hero h1 small{font-family:Georgia,serif;font-size:14px;font-weight:400;opacity:.75;margin-left:8px;letter-spacing:.1em}
+.hero p{margin:8px 0 0;font-size:13.5px;opacity:.9;line-height:1.65}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.quick a{font-size:12.5px;color:#F3F5FA;text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px 10px}
+.quick a b{margin-left:4px}
+.srch{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line)}
+.srch input{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 12px;font-size:15px;outline:none}
+.srch input:focus{border-color:var(--acc)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:8px -16px 0;padding:0 16px 2px}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 11px;font-size:13.5px}
+.chips button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600}
+.chips button small{opacity:.55;margin-left:3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:14px 0 4px}
+.gc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px;text-align:left;box-shadow:var(--shadow)}
+.gc .e{font-size:22px}.gc b{display:block;font-size:15px;margin-top:2px}.gc small{display:block;color:var(--faint);font-size:12px;line-height:1.45;margin-top:2px}
+.sec{margin:20px 0 8px}.sec h2{margin:0;font-size:18px}.sec p{margin:2px 0 0;font-size:13px;color:var(--soft)}
+.it{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:8px;box-shadow:var(--shadow);overflow:hidden}
+.it .q{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;cursor:pointer;font-weight:600;font-size:15px;line-height:1.45}
+.it .q span{flex:1}.it .q i{font-style:normal;color:var(--faint);font-weight:400;transition:transform .15s}
+.it.open .q i{transform:rotate(180deg)}
+.it .q .st{font-weight:400;color:var(--faint);font-size:16px;line-height:1}
+.it .q .st.on{color:var(--gold)}
+.it .a{display:none;padding:0 14px 12px;font-size:14.5px;line-height:1.75;color:var(--ink)}
+.it.open .a{display:block}
+.it .a p{margin:0 0 6px;white-space:pre-line}
+.tip{background:var(--acc-soft);border-radius:10px;padding:7px 10px;font-size:13.5px;margin-top:6px;line-height:1.65}
+.tip.warn{background:var(--red-soft)}
+.lk{margin-top:6px;font-size:13.5px}.lk a{display:inline-block;margin:2px 12px 0 0}
+.ct{font-size:11.5px;color:var(--faint);margin-top:6px}
+mark{background:var(--gold-soft);color:inherit;border-radius:3px}
+.empty{color:var(--faint);text-align:center;padding:30px 0}
+.foot{font-size:12px;color:var(--faint);text-align:center;margin:24px 0 8px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a class="home" href="index.html">‹ 首页</a>
+  <h1>美国生活指南<small>LIFE IN THE U.S.</small></h1>
+  <p id="intro">办证、租房、开车、银行、看病、工作、购物、防骗、法律、家务、节日……生活里大大小小的事，按「遇到什么事」查。按加州写，深的内容链接到本站知识库。</p>
+  <div class="quick" id="quick"></div>
+</div></div>
+<div class="srch"><div class="wrap"><input id="q" type="search" placeholder="🔍 搜：押金、车祸、报税、小费、垃圾…" autocomplete="off"><div class="chips" id="chips"></div></div></div>
+<main class="wrap" id="main"><div class="empty">加载中…</div></main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('usa:' + k) || 'null'); localStorage.setItem('usa:' + k, JSON.stringify(v)); } catch (e) { return null; } }
+  var D = null, CAT = (location.hash || '').replace('#', '') || '', OPEN = {}, STAR = ls('star') || {}, Q = '';
+  function key(c, i) { return c.k + ':' + i; }
+  function hl(s, w) { s = esc(s); if (!w) return s; return s.replace(new RegExp('(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>'); }
+  function item(c, i, it, w) {
+    var k = key(c, i), open = OPEN[k] || !!w;
+    return '<div class="it' + (open ? ' open' : '') + '" data-k="' + k + '"><div class="q"><span>' + hl(it.q, w) + '</span><b class="st' + (STAR[k] ? ' on' : '') + '" data-star="' + k + '">' + (STAR[k] ? '★' : '☆') + '</b><i>⌄</i></div>' +
+      '<div class="a"><p>' + hl(it.a, w) + '</p>' + (it.tip ? '<div class="tip">💡 ' + hl(it.tip, w) + '</div>' : '') + (it.warn ? '<div class="tip warn">⚠️ ' + hl(it.warn, w) + '</div>' : '') +
+      (it.links.length ? '<div class="lk">' + it.links.map(function (l) { var ext = /^https?:/.test(l[1]); return '<a href="' + esc(l[1]) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + (ext ? '🔗 ' : '📘 ') + esc(l[0]) + '</a>'; }).join('') + '</div>' : '') +
+      (w || CAT === 'star' ? '<div class="ct">' + c.e + ' ' + esc(c.n) + '</div>' : '') + '</div></div>';
+  }
+  function render() {
+    var h = '', w = Q;
+    $('chips').innerHTML = '<button data-c="" class="' + (!CAT && !w ? 'on' : '') + '">全部 ' + D.count + '</button><button data-c="star" class="' + (CAT === 'star' ? 'on' : '') + '">⭐ 收藏 ' + Object.keys(STAR).length + '</button>' +
+      D.cats.map(function (c) { return '<button data-c="' + c.k + '" class="' + (CAT === c.k && !w ? 'on' : '') + '">' + c.e + ' ' + esc(c.n) + '<small>' + c.items.length + '</small></button>'; }).join('');
+    if (w) {
+      var n = 0, lw = w.toLowerCase();
+      D.cats.forEach(function (c) { c.items.forEach(function (it, i) { if ((it.q + it.a + it.tip + it.warn + c.n).toLowerCase().indexOf(lw) >= 0) { h += item(c, i, it, w); n++; } }); });
+      h = '<div class="sec"><p>搜「' + esc(w) + '」找到 ' + n + ' 条</p></div>' + (h || '<div class="empty">没找到，换个词试试，比如「押金」「罚单」「病假」</div>');
+    } else if (CAT === 'star') {
+      D.cats.forEach(function (c) { c.items.forEach(function (it, i) { if (STAR[key(c, i)]) h += item(c, i, it, ''); }); });
+      h = '<div class="sec"><h2>⭐ 我的收藏</h2><p>点每条右边的 ☆ 收藏，存在这台手机上。</p></div>' + (h || '<div class="empty">还没有收藏</div>');
+    } else if (CAT) {
+      var c = D.cats.filter(function (x) { return x.k === CAT; })[0];
+      if (c) { h += '<div class="sec"><h2>' + c.e + ' ' + esc(c.n) + '</h2><p>' + esc(c.d) + '</p></div>'; c.items.forEach(function (it, i) { h += item(c, i, it, ''); }); }
+    } else {
+      h += '<div class="grid">' + D.cats.map(function (c) { return '<button class="gc" data-c="' + c.k + '"><div class="e">' + c.e + '</div><b>' + esc(c.n) + '</b><small>' + esc(c.d) + '</small></button>'; }).join('') + '</div>';
+      D.cats.forEach(function (c) { h += '<div class="sec"><h2>' + c.e + ' ' + esc(c.n) + '</h2><p>' + esc(c.d) + '</p></div>'; c.items.forEach(function (it, i) { h += item(c, i, it, ''); }); });
+    }
+    h += '<div class="foot">整理于 ' + esc(D.updated) + '，按加州（Upland，圣贝纳迪诺县）写。法规、金额、税率每年会变，以官网为准；这里是生活常识，不是法律、税务或医疗建议。<br>' +
+      '相关：<a href="kb.html">🗂️ 知识库</a> · <a href="tips.html">💡 小技巧</a> · <a href="ie.html">🍊 内陆帝国</a> · <a href="holidays.html">🗓️ 节假日</a></div>';
+    $('main').innerHTML = h;
+  }
+  function go(c) { CAT = c; Q = ''; $('q').value = ''; history.replaceState(null, '', c ? '#' + c : location.pathname); render(); window.scrollTo(0, document.querySelector('.srch').offsetTop); }
+  $('chips').onclick = function (e) { var b = e.target.closest('[data-c]'); if (b) go(b.getAttribute('data-c')); };
+  $('main').onclick = function (e) {
+    var g = e.target.closest('.gc'); if (g) { go(g.getAttribute('data-c')); return; }
+    var s = e.target.closest('[data-star]');
+    if (s) { var k = s.getAttribute('data-star'); if (STAR[k]) delete STAR[k]; else STAR[k] = 1; ls('star', STAR); s.className = 'st' + (STAR[k] ? ' on' : ''); s.textContent = STAR[k] ? '★' : '☆'; var cb = document.querySelector('[data-c="star"]'); if (cb) cb.textContent = '⭐ 收藏 ' + Object.keys(STAR).length; return; }
+    var q = e.target.closest('.it .q'); if (q) { var it = q.parentNode, kk = it.getAttribute('data-k'); OPEN[kk] = !it.classList.contains('open'); it.classList.toggle('open', OPEN[kk]); }
+  };
+  var qt = null; $('q').oninput = function () { clearTimeout(qt); var v = this.value.replace(/^\s+|\s+$/g, ''); qt = setTimeout(function () { Q = v; render(); }, 200); };
+
+  var x = new XMLHttpRequest();
+  x.open('GET', 'usa/data.json?t=' + Math.floor(Date.now() / 36e5));
+  x.onload = function () {
+    try { D = JSON.parse(x.responseText); } catch (e) { $('main').innerHTML = '<div class="empty">加载失败，刷新试试</div>'; return; }
+    $('quick').innerHTML = D.quick.map(function (p) { return '<a href="tel:' + p[1].replace(/[^0-9]/g, '') + '">' + p[0] + '<b>' + esc(p[1]) + '</b></a>'; }).join('');
+    if (CAT && CAT !== 'star' && !D.cats.some(function (c) { return c.k === CAT; })) CAT = '';
+    render();
+  };
+  x.onerror = function () { $('main').innerHTML = '<div class="empty">网络错误，稍后刷新</div>'; };
+  x.send();
+})();
+</script>
+<script src="nav.js?v=29" defer></script>
+</body>
+</html>

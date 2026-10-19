@@ -58,6 +58,12 @@ def main():
     if well:
         for t in well["tips"]:
             out.append({"k": "养生", "t": t["k"], "s": short(t["d"]), "u": "kitchen.html#well", "x": flat(t["k"], t["c"], t["d"], t["how"])})
+
+    usa = load("usa/data.json")
+    if usa:
+        for c in usa["cats"]:
+            for it in c["items"]:
+                out.append({"k": "美国生活·" + c["n"], "t": it["q"], "s": short(it["a"]), "u": "usa.html#" + c["k"], "x": flat(it["q"], it["a"], it.get("tip", ""), c["n"])})
         for j in well["jieqi"]:
             out.append({"k": "节气", "t": j["name"], "s": short(j["tcm"]), "u": "kitchen.html#well", "x": flat(j["name"], j["tcm"], j["eat"], j["life"], j["modern"])})
 
