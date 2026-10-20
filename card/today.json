@@ -1,16 +1,16 @@
 {
- "date": "2026-10-19",
- "kind": "易错",
- "en": "Study hard and make progress every day",
- "zh": "好好学习，天天向上",
- "by": "著名的中式英语，逐字翻译老外听不懂",
- "line": "✗ Good good study, day day up → ✓ Study hard and make progress every day",
+ "date": "2026-10-20",
+ "kind": "习语",
+ "en": "Hold your horses",
+ "zh": "稍安勿躁",
+ "by": "别急，等一下",
+ "line": "Hold your horses",
  "word": {
-  "w": "aide",
-  "ph": "eid",
-  "zh": "n. 助手，副官",
-  "ex": "His trusted discreet aide.",
-  "exzh": "他那位可靠又谨慎的助手。"
+  "w": "fling",
+  "ph": "fliŋ",
+  "zh": "n. 投掷，急冲，嘲弄；vt. 投，丢下，抛弃，使陷入",
+  "ex": "Then he lit a cigarette and flung himself down on the sofa.",
+  "exzh": "然后他点了支烟，一下子倒在沙发上。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
