@@ -24,6 +24,42 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
   var cur = here();
+
+  // 🔗 相关：每个页面跟哪些工具、知识库文章相通（页面底部一条 + 穿越抽屉顶部）
+  var K = function (slug, t) { return ['kb.html#' + slug, '📘', t]; };
+  var CITY = [['coast.html', '🌊', '加州海岸线'], ['amtrak.html', '🚆', 'Amtrak'], ['usa.html', '🇺🇸', '美国生活指南'], K('travel-road-trip', '公路旅行和租车'), K('travel-scams', '旅行防骗'), ['holidays.html', '🗓️', '节假日']];
+  var LANG = [['speak.html', '🗣️', '开口说'], ['vocab.html', '📖', '语境词库'], ['card.html', '🎴', '单词抽卡'], ['english.html', '🔤', '英语练习'], ['sublingo.html', '🎞️', 'SubLingo'], ['news.html#en', '📰', '英文新闻精选']];
+  var LISTEN = [['radio.html', '🚗', '通勤电台'], ['fm.html', '📻', '网络电台'], ['books.html', '🎧', '听书'], ['sleep.html', '😴', '助眠'], ['player.html', '🎬', '播放器']];
+  var REL = {
+    'work.html': [K('yard-terms-glossary', '码头堆场术语'), K('iso-6346-check-digit', '柜号校验原理'), K('container-type-codes', '箱型代码'), K('truck-trailer-types', '卡车和拖车类型'), K('hazmat-placards', '危险品标牌'), K('load-planning-cbm', '装柜计算'), K('la-lb-ports-guide', '洛杉矶/长滩港'), K('container-logistics-101', '集装箱物流入门'), ['ie.html#work', '🍊', 'IE 物流和防暑'], ['news.html#world', '🌍', '国际局势（航运影响）'], ['spanish.html', '🇲🇽', '现场西语']],
+    'stocks.html': [['earnings.html', '📅', '财报与经济日历'], ['news.html#world', '🌍', '国际局势和影响'], K('stock-pool-signals', '股票池信号怎么看'), K('my-trading-systems', '我的交易系统'), K('economic-indicators', '经济数据'), K('index-fund-dca', '指数基金定投'), K('investing-psychology', '投资心理'), K('market-crash-history', '股灾史'), K('us-investment-accounts-tax', '投资账户与税'), ['convert.html', '💱', '汇率换算']],
+    'earnings.html': [['stocks.html', '📈', '今日股票池'], ['news.html#world', '🌍', '国际局势'], K('economic-indicators', '经济数据怎么看'), K('stock-pool-signals', '股票池信号')],
+    'news.html': [['stocks.html', '📈', '股票池'], ['earnings.html', '📅', '财报日历'], K('la-lb-ports-guide', '港口指南'), K('customs-tariff-basics', '关税基础'), ['convert.html', '💱', '汇率'], ['sublingo.html', '🎞️', 'SubLingo 精读'], ['vocab.html', '📖', '语境词库']],
+    'kb.html': [['search.html', '🔍', '全站搜索'], ['tips.html', '💡', '技巧与科普'], ['usa.html', '🇺🇸', '美国生活指南']],
+    'tips.html': [['kb.html', '🗂️', '知识库'], ['usa.html', '🇺🇸', '美国生活指南'], ['search.html', '🔍', '全站搜索']],
+    'search.html': [['kb.html', '🗂️', '知识库'], ['tips.html', '💡', '技巧'], ['usa.html', '🇺🇸', '美国生活指南']],
+    'usa.html': [K('camry-2025-hybrid', '我的凯美瑞'), K('car-basics', '汽车零基础'), K('w2-tax-basics', '报税入门'), K('us-health-insurance-terms', '医保名词'), K('earthquake-prep', '地震准备'), K('wildfire-smoke-santa-ana', '山火季'), ['tips.html#safe', '🛡️', '安全防骗'], ['tips.html#money', '💵', '钱和账单'], ['holidays.html', '🗓️', '节假日'], ['deals.html', '🏷️', '打折'], ['ie.html', '🍊', '内陆帝国']],
+    'kitchen.html': [['deals.html', '🏷️', '打折雷达'], ['usa.html#shop', '🛒', '去哪买菜'], ['holidays.html', '🗓️', '节假日'], ['convert.html', '💱', '单位换算']],
+    'amtrak.html': [['coast.html', '🌊', '加州海岸线'], K('amtrak-guide', 'Amtrak 完全攻略'), ['sf.html', '🌉', '旧金山'], ['la.html', '🌇', '洛杉矶'], ['ie.html', '🍊', '内陆帝国'], K('travel-hotels', '订酒店'), K('travel-money-safety-packing', '打包清单')],
+    'coast.html': [K('california-coast', '海岸线总攻略'), ['amtrak.html', '🚆', 'Amtrak 看海'], ['la.html', '🌇', '洛杉矶'], ['sf.html', '🌉', '旧金山'], K('travel-road-trip', '公路旅行和租车'), K('car-roadside-emergencies', '路上出状况'), K('camping-basics', '露营'), K('socal-hiking-trails', '徒步路线'), K('travel-hotels', '订酒店')],
+    'sf.html': CITY, 'sj.html': CITY, 'ny.html': CITY,
+    'la.html': [['coast.html', '🌊', '加州海岸线'], ['ie.html', '🍊', '内陆帝国'], K('la-lb-ports-guide', '洛杉矶/长滩港'), ['amtrak.html', '🚆', 'Amtrak'], ['usa.html', '🇺🇸', '美国生活指南']].concat(CITY.slice(3)),
+    'ie.html': [['usa.html', '🇺🇸', '美国生活指南'], ['work.html', '🦺', '现场工具'], K('socal-hiking-trails', 'Upland 附近徒步'), K('earthquake-prep', '地震准备'), K('wildfire-smoke-santa-ana', '山火季'), K('container-logistics-101', '集装箱物流'), ['coast.html', '🌊', '加州海岸线'], ['amtrak.html', '🚆', 'Amtrak'], ['la.html', '🌇', '洛杉矶']],
+    'holidays.html': [['kitchen.html', '🍳', '节日做菜'], ['usa.html#social', '🎉', '节日礼节'], ['deals.html', '🏷️', '节日打折'], ['coast.html', '🌊', '放假去海边']],
+    'deals.html': [['convert.html', '💱', '换算'], ['usa.html#shop', '🛒', '购物指南'], ['holidays.html', '🗓️', '大促节日']],
+    'convert.html': [['deals.html', '🏷️', '打折'], ['stocks.html', '📈', '股票池'], ['work.html', '🦺', '装柜换算']],
+    'speak.html': LANG, 'vocab.html': LANG, 'card.html': LANG, 'english.html': LANG, 'sublingo.html': LANG, 'spanish.html': [['speak.html', '🗣️', '开口说'], ['work.html', '🦺', '现场工具']].concat(LANG.slice(1)),
+    'hanzi.html': [['people.html', '⭐', '人物专栏'], K('su-shi', '苏轼'), ['card.html', '🎴', '每日一句']],
+    'radio.html': LISTEN.slice(1).concat([['news.html', '📰', '新闻'], ['stocks.html', '📈', '股票池']]), 'fm.html': LISTEN, 'books.html': LISTEN, 'sleep.html': LISTEN.concat([['dream.html', '🌙', '心灵小站']]), 'player.html': LISTEN,
+    'people.html': [K('su-shi', '苏轼'), ['books.html', '🎧', '听书'], K('top500-movies', '电影 500'), K('top500-music', '音乐 500')],
+    'dream.html': [['sleep.html', '😴', '助眠'], ['kitchen.html#well', '🌿', '节气养生']],
+    'toolbox.html': [['dl.html', '📥', '媒体下载'], ['pan.html', '☁️', '网盘搜索'], ['monitor.html', '🔔', '网页监控'], ['convert.html', '💱', '换算']],
+    'dl.html': [['player.html', '🎬', '播放器'], ['toolbox.html', '🧰', '工具箱'], ['pan.html', '☁️', '网盘搜索']],
+    'pan.html': [['dl.html', '📥', '媒体下载'], ['player.html', '🎬', '播放器']],
+    'monitor.html': [['toolbox.html', '🧰', '工具箱'], ['deals.html', '🏷️', '打折雷达']]
+  };
+  var rel = (REL[cur] || []).filter(function (r) { return r[0].split('#')[0] !== cur; });
+  function relHTML(cls) { return rel.length ? '<div class="' + cls + '">' + rel.map(function (r) { return '<a href="' + esc(r[0]) + '">' + r[1] + ' ' + esc(r[2]) + '</a>'; }).join('') + '</div>' : ''; }
   // remember where we have been (most recent first)
   var hist = get('hist', []), k;
   for (k = hist.length - 1; k >= 0; k--) if (hist[k] === cur) hist.splice(k, 1);
@@ -32,6 +68,12 @@
   put('hist', hist.slice(0, 8));
 
   var css = '' +
+    '.tnav-rel{max-width:760px;margin:22px auto 12px;padding:12px 16px 4px;border-top:1px dashed rgba(128,128,128,.35);font:13px/1.5 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}' +
+    '.tnav-rel b{display:block;font-size:12.5px;opacity:.6;margin-bottom:6px;font-weight:600}' +
+    '.tnav-rel a{display:inline-block;margin:0 6px 8px 0;padding:4px 10px;border-radius:999px;border:1px solid rgba(128,128,128,.3);background:rgba(128,128,128,.08);color:inherit;text-decoration:none;white-space:nowrap}' +
+    '.tnav-rd{display:flex;flex-wrap:wrap;gap:6px;padding:4px 14px 6px}' +
+    '.tnav-rd a{font-size:12.5px;padding:3px 9px;border-radius:999px;background:rgba(0,0,0,.05);color:inherit;text-decoration:none}' +
+    '@media (prefers-color-scheme: dark){.tnav-rd a{background:rgba(255,255,255,.08)}}' +
     '.tnav-tab{position:fixed;left:0;z-index:29;width:24px;height:44px;border:0;padding:0 1px 0 0;border-radius:0 22px 22px 0;background:rgba(28,28,30,.45);color:#fff;font-size:15px;line-height:44px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:.65;touch-action:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .2s,width .15s}' +
     '.tnav-tab:hover,.tnav-tab.drag{opacity:1;width:34px}' +
     '@media (prefers-color-scheme: dark){.tnav-tab{background:rgba(255,255,255,.2)}}' +
@@ -88,6 +130,7 @@
         window.THEME.list().map(function (t) { return '<button type="button" data-th="' + t.k + '"' + (tk === t.k ? ' class="on"' : '') + ' title="' + esc(t.desc) + '"><i style="background:linear-gradient(180deg,' + t.sky + ' 0%,' + t.bg + ' 55%,' + t.sil + ' 56%,' + t.sil + ' 100%);--d:' + t.ac + '"></i>' + t.icon + ' ' + esc(t.name) + '</button>'; }).join('') + '</div>';
     }
     if (prev && ALL[prev] && prev !== cur) h += '<a class="tnav-back" href="' + esc(prev) + '">↩️ 回到刚才：' + ALL[prev][1] + ' ' + esc(ALL[prev][2]) + '</a>';
+    if (rel.length) h += '<div class="tnav-g">🔗 跟这页相关</div>' + relHTML('tnav-rd');
     for (g = 0; g < GROUPS.length; g++) {
       h += '<div class="tnav-g">' + GROUPS[g][0] + '</div>';
       for (i = 0; i < GROUPS[g][1].length; i++) {
@@ -99,6 +142,7 @@
     dr.innerHTML = h;
     var seq = dr.querySelectorAll('.tnav-back,.tnav-g,.tnav-a,.tnav-home');
     for (i = 0; i < seq.length; i++) seq[i].style.setProperty('--i', Math.min(i, 14));
+    if (rel.length && !window.NO_REL && !document.getElementById('tnav-rel')) { var rb = document.createElement('div'); rb.innerHTML = relHTML('tnav-rel').replace('<div class="tnav-rel">', '<div class="tnav-rel" id="tnav-rel"><b>🔗 相关</b>'); document.body.appendChild(rb.firstChild); }
     document.body.appendChild(tab); document.body.appendChild(bg); document.body.appendChild(dr);
     dr.addEventListener('click', function (e) {
       var b = e.target.closest && e.target.closest('[data-th]'); if (!b || !window.THEME) return;

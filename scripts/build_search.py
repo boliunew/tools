@@ -59,6 +59,20 @@ def main():
         for t in well["tips"]:
             out.append({"k": "养生", "t": t["k"], "s": short(t["d"]), "u": "kitchen.html#well", "x": flat(t["k"], t["c"], t["d"], t["how"])})
 
+    coast = load("coast/data.json")
+    if coast:
+        segn = {g["k"]: g["n"] for g in coast["segs"]}
+        for st in coast["stops"]:
+            out.append({"k": "海岸线·" + segn.get(st["seg"], ""), "t": st["e"] + " " + st["n"], "s": short(st["s"]), "u": "coast.html#segs",
+                        "x": flat(st["n"], st["en"], st["s"], st["d"], st["tags"], st.get("tip", ""))})
+    for code, cname in (("sf", "旧金山"), ("sj", "圣何塞"), ("ny", "纽约"), ("la", "洛杉矶"), ("ie", "内陆帝国")):
+        cd = load("%s/data.json" % code)
+        if not cd:
+            continue
+        for sec, zh in (("hoods", "街区"), ("eat", "吃喝"), ("fun", "好玩"), ("tips", "秘籍"), ("stories", "故事")):
+            for it in cd.get(sec, []):
+                out.append({"k": "城市·%s·%s" % (cname, zh), "t": it.get("e", "") + " " + it["t"], "s": short(it.get("s", "")), "u": "%s.html#%s" % (code, sec),
+                            "x": flat(it["t"], it.get("s", ""), it.get("d", ""), it.get("tip", ""), it.get("tag", []), it.get("do", []), it.get("eat", []))})
     usa = load("usa/data.json")
     if usa:
         for c in usa["cats"]:

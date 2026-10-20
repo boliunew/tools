@@ -202,12 +202,12 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     D.cats.forEach(function (c) { CI[c.k] = c; });
     if (CAT !== 'all' && CAT !== 'fav' && !CI[CAT]) CAT = 'all';
     renderDaily(); renderTabs(); renderList();
-    var h = (location.hash || '').replace('#', ''); if (h) { for (var i = 0; i < D.items.length; i++) if (D.items[i].id === h) { CAT = D.items[i].c; OPEN[h] = true; renderTabs(); renderList(); var el = document.querySelector('[data-id="' + h + '"]'); if (el) el.scrollIntoView({ block: 'center' }); } }
+    var h = (location.hash || '').replace('#', ''); if (h && (D.cats || []).some(function (c) { return c.k === h; })) { CAT = h; renderTabs(); renderList(); h = ''; } if (h) { for (var i = 0; i < D.items.length; i++) if (D.items[i].id === h) { CAT = D.items[i].c; OPEN[h] = true; renderTabs(); renderList(); var el = document.querySelector('[data-id="' + h + '"]'); if (el) el.scrollIntoView({ block: 'center' }); } }
   };
   x.onerror = function () { $('daily').innerHTML = '<h2>加载失败，检查网络后刷新</h2>'; };
   x.send();
 })();
 </script>
-<script src="nav.js?v=29" defer></script>
+<script src="nav.js?v=30" defer></script>
 </body>
 </html>

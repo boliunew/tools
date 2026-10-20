@@ -97,7 +97,7 @@
     var bg = document.createElement('div'); bg.className = 'nb-bg'; bg.id = 'nbBg'; bg.onclick = close; document.body.appendChild(bg);
     var sh = document.createElement('div'); sh.className = 'nb-sh'; sh.id = 'nbSh';
     sh.innerHTML = '<div class="nb-in"><div class="nb-hd"><div class="nb-grab"></div><div class="nb-t"><b>📍 我附近的车站</b><button id="nbRe">🔄 重新定位</button><button id="nbX">✕</button></div><div class="nb-st" id="nbSt"></div><div class="nb-f" id="nbF"></div></div><div id="nbL"></div>' +
-      '<div class="nb-st" style="margin-top:10px">距离是直线距离，步行时间按每小时 3 英里、绕路多算两成估的。点「步行 / 公交 / 开车」直接打开谷歌地图导航。Amtrak 的下一班按官方时刻表，BART 是实时到站；临时改点以官方 App 为准。位置只在这台手机上用，不会上传。</div></div>';
+      '<div class="nb-st" style="margin-top:10px">距离是直线距离，步行时间按每小时 3 英里、绕路多算两成估的。点「步行 / 公交 / 开车」直接打开谷歌地图导航。Amtrak 的下一班按官方时刻表，BART 是实时到站；临时改点以官方 App 为准。位置只在这台手机上用，不会上传。' + (/coast\.html$/.test(location.pathname) ? '' : '<br><a href="coast.html#near" style="color:inherit">🌊 附近的海边景点 ›</a> · <a href="amtrak.html" style="color:inherit">🚆 Amtrak 查时刻 ›</a>') + '</div></div>';
     document.body.appendChild(sh);
     $('nbX').onclick = close;
     $('nbRe').onclick = function () { locate(true); };

@@ -163,7 +163,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     return (d.getMonth() + 1) + '月' + d.getDate() + '日';
   }
 
-  var TAB = get('tab', 'today'), T = null, prevT = null;
+  var TAB = /^#(today|world|en)$/.test(location.hash) ? location.hash.slice(1) : get('tab', 'today'), T = null, prevT = null;
   function setTab(t) {
     TAB = t; set('tab', t);
     var bs = document.querySelectorAll('#tabs button'), i;
@@ -232,6 +232,20 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 
 
   // ================= 🌍 国际局势 · 分大洲 =================
+  // 「可能影响」直接连到站里相关的工具和文章
+  var IMPL = {
+    oil: [['stocks.html', '📈 看股票池'], ['kb.html#car-maintenance', '🚗 省油养车']],
+    ship: [['kb.html#la-lb-ports-guide', '🚢 洛杉矶/长滩港'], ['work.html', '🦺 现场工具'], ['kb.html#container-logistics-101', '📦 集装箱物流']],
+    trade: [['kb.html#customs-tariff-basics', '🧾 关税基础'], ['stocks.html', '📈 股票池'], ['kb.html#la-lb-ports-guide', '🚢 港口']],
+    chip: [['stocks.html', '📈 股票池'], ['earnings.html', '📅 财报日历']],
+    market: [['stocks.html', '📈 股票池'], ['earnings.html', '📅 经济日历'], ['convert.html', '💱 汇率']],
+    food: [['deals.html', '🏷️ 打折雷达'], ['kitchen.html', '🍳 厨房']],
+    sec: [['stocks.html', '📈 大盘环境']],
+    cn: [['kb.html#customs-tariff-basics', '🧾 关税基础'], ['stocks.html', '📈 股票池']],
+    travel: [['kb.html#travel-flights-airports', '✈️ 坐飞机攻略'], ['amtrak.html', '🚆 Amtrak'], ['usa.html', '🇺🇸 生活指南']],
+    nature: [['kb.html#earthquake-prep', '🌍 地震准备'], ['kb.html#wildfire-smoke-santa-ana', '🔥 山火季']],
+    us: [['usa.html', '🇺🇸 美国生活指南']]
+  };
   var W = null, prevW = null, WR = get('wr', 'eu'), WC = '', WI = '';
   function loadWorld(manual) {
     var rb = document.getElementById('refreshBtn');
@@ -279,7 +293,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
         (c.en && c.zh ? '<div class="en">' + esc(c.en) + '</div>' : '') +
         (c.summary ? '<div class="s">' + esc(c.summary) + '</div>' : '') +
         (imps.length ? '<details class="imp"><summary>📊 可能影响：<b>' + imps.map(function (k) { return IM[k].e + ' ' + esc(IM[k].n); }).join('　') + '</b> ›</summary>' +
-          imps.map(function (k) { return '<div class="it"><b>' + IM[k].e + ' ' + esc(IM[k].n) + '</b>' + esc(IM[k].why) + '</div>'; }).join('') + '<div class="nt">按新闻里的关键词自动判断的大方向，不是对这条新闻的专门分析。</div></details>' : '') +
+          imps.map(function (k) { return '<div class="it"><b>' + IM[k].e + ' ' + esc(IM[k].n) + '</b>' + esc(IM[k].why) + ((IMPL[k] || []).length ? '<div style="margin-top:3px">' + IMPL[k].map(function (l) { return '<a href="' + l[0] + '" style="margin-right:10px;font-size:12.5px">' + l[1] + ' ›</a>'; }).join('') + '</div>' : '') + '</div>'; }).join('') + '<div class="nt">按新闻里的关键词自动判断的大方向，不是对这条新闻的专门分析。</div></details>' : '') +
         ((c.c || []).length ? '<div class="cf">' + c.c.map(function (x) { return '<span>' + x[0] + ' ' + esc(x[1]) + '</span>'; }).join('') + '</div>' : '') +
         '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="sublingo.html?url=' + encodeURIComponent(c.link) + '" style="color:var(--faint)">精读原文</a></div>' +
         (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';
@@ -380,6 +394,6 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   setTab(TAB === 'en' || TAB === 'world' ? TAB : 'today');
 })();
 </script>
-<script src="nav.js?v=29" defer></script>
+<script src="nav.js?v=30" defer></script>
 </body>
 </html>
