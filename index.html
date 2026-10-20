@@ -144,6 +144,7 @@ html.locked #gate{display:block}
 <h1>我的工具</h1>
 <form class="srch" action="search.html" onsubmit="location.href='search.html#q='+encodeURIComponent(this.q.value);return false"><input name="q" type="search" placeholder="搜全站：菜谱、技巧、诗词、梦……" enterkeyhint="search"><button>搜</button></form>
 <div class="today" id="today"><div class="hd"><b id="tdDate"></b><span id="tdSub"></span></div><div id="tdBody"></div>
+<div class="quick" id="myTop" style="display:none"></div>
 <div class="quick"><a href="work.html">🦺 现场工具</a><a href="news.html">📰 新闻</a><a href="stocks.html">📈 股票池</a><a href="deals.html">🏷️ 打折</a><a href="kitchen.html">🍳 今天吃啥</a><a href="convert.html">💱 汇率</a></div>
 <div class="recent" id="recent" hidden></div></div>
 <div class="sect">全部工具 <span class="hint">点分组名可以收起</span></div>
@@ -450,6 +451,18 @@ html.locked #gate{display:block}
   });
 })();
 </script>
-<script src="nav.js?v=31" defer></script>
+<script src="nav.js?v=32" defer></script>
+<script>
+(function () {
+  function draw() {
+    if (!window.TNAV) return setTimeout(draw, 200);
+    var top = window.TNAV.top(6), el = document.getElementById('myTop');
+    if (!el || top.length < 3) return;   // 用得还少时先不显示，免得一两次点击就占位置
+    el.innerHTML = '<span style="font-size:12.5px;opacity:.6;align-self:center;margin-right:2px">🌟 我常用的</span>' + top.map(function (p) { return '<a href="' + p[0] + '">' + p[1] + ' ' + p[2] + '</a>'; }).join('');
+    el.style.display = "";
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', draw); else draw();
+})();
+</script>
 </body>
 </html>

@@ -67,6 +67,17 @@
   var prev = hist.length ? hist[0] : null;
   if (ALL[cur]) hist.unshift(cur);
   put('hist', hist.slice(0, 8));
+  // 🌟 常用：每个页面打开了几次（同一页 10 分钟内只算一次），首页「我常用的」用
+  if (ALL[cur]) {
+    var cnt = get('cnt', {}), c0 = cnt[cur] || [0, 0], nowT = Date.now();
+    if (nowT - c0[1] > 6e5) { cnt[cur] = [c0[0] + 1, nowT]; put('cnt', cnt); }
+  }
+  window.TNAV = { all: ALL, top: function (n) {
+    var cnt = get('cnt', {}), half = 30 * 864e5, nowT = Date.now();
+    return Object.keys(cnt).filter(function (p) { return ALL[p] && p !== 'index.html'; })
+      .map(function (p) { var c = cnt[p], w = c[0] * Math.pow(0.5, (nowT - c[1]) / half); return [w, p]; })   // 最近用得多的排前面，一个月不用就慢慢沉下去
+      .sort(function (a, b) { return b[0] - a[0]; }).slice(0, n || 6).map(function (x) { return ALL[x[1]]; });
+  } };
 
   var css = '' +
     '.tnav-rel{max-width:760px;margin:22px auto 12px;padding:12px 16px 4px;border-top:1px dashed rgba(128,128,128,.35);font:13px/1.5 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}' +

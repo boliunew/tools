@@ -338,5 +338,6 @@
     x.send();
   }
   window.Nearby = { open: function () { if (!$('nbSh')) build(); open(); } };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build); else build();
+  function boot() { build(); if (location.hash === '#stations') setTimeout(function () { window.Nearby.open(); }, 300); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

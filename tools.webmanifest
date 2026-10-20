@@ -9,13 +9,75 @@
   "theme_color": "#2F6F5E",
   "lang": "zh-CN",
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icons/icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "现场工具", "url": "work.html", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "全站搜索", "url": "search.html", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "新闻", "url": "news.html", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+    {
+      "name": "现场工具",
+      "short_name": "现场工具",
+      "description": "柜号校验 · 装柜 · 日志",
+      "url": "work.html?src=sc",
+      "icons": [
+        {
+          "src": "icons/sc-work.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "国际局势",
+      "short_name": "国际局势",
+      "description": "五大洲新闻和可能影响",
+      "url": "news.html?src=sc#world",
+      "icons": [
+        {
+          "src": "icons/sc-world.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "今日股票池",
+      "short_name": "股票池",
+      "description": "大盘环境和信号",
+      "url": "stocks.html?src=sc",
+      "icons": [
+        {
+          "src": "icons/sc-stocks.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "附近车站",
+      "short_name": "附近车站",
+      "description": "定位找最近的车站",
+      "url": "amtrak.html?src=sc#stations",
+      "icons": [
+        {
+          "src": "icons/sc-near.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
   ]
 }
