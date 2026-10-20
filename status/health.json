@@ -1,0 +1,232 @@
+{
+ "generated": "2026-10-20T15:07:23Z",
+ "ok": true,
+ "problems": [],
+ "sig": "",
+ "data": [
+  {
+   "k": "news_today",
+   "e": "📌",
+   "n": "今日大事",
+   "page": "news.html",
+   "wf": "news.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T11:58:54Z",
+   "detail": "12 条"
+  },
+  {
+   "k": "news_world",
+   "e": "🌍",
+   "n": "国际局势",
+   "page": "news.html#world",
+   "wf": "news.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T11:59:02Z",
+   "detail": "75 条"
+  },
+  {
+   "k": "news_en",
+   "e": "📰",
+   "n": "英文新闻精选",
+   "page": "news.html#en",
+   "wf": "news.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T05:52:38Z",
+   "detail": "269 条"
+  },
+  {
+   "k": "stocks",
+   "e": "📈",
+   "n": "今日股票池",
+   "page": "stocks.html",
+   "wf": "stock-scan.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T06:06:19Z",
+   "detail": "数据日期 2026-10-19 · 499 条"
+  },
+  {
+   "k": "earnings",
+   "e": "📅",
+   "n": "财报与经济日历",
+   "page": "earnings.html",
+   "wf": "earnings.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T12:47:09Z"
+  },
+  {
+   "k": "deals",
+   "e": "🏷️",
+   "n": "打折雷达",
+   "page": "deals.html",
+   "wf": "deals.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T04:48:28Z"
+  },
+  {
+   "k": "radio",
+   "e": "🚗",
+   "n": "通勤电台",
+   "page": "radio.html",
+   "wf": "radio.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-19T17:01:20Z"
+  },
+  {
+   "k": "card",
+   "e": "🎴",
+   "n": "每日一句",
+   "page": "card.html",
+   "wf": "news.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-19T23:59:00Z"
+  },
+  {
+   "k": "monitor",
+   "e": "🔔",
+   "n": "网页监控",
+   "page": "monitor.html",
+   "wf": "monitor.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T13:35:52Z"
+  },
+  {
+   "k": "bay_live",
+   "e": "🚗",
+   "n": "湾区实时路况",
+   "page": "sf.html#map",
+   "wf": "bay-live.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T15:03:50Z"
+  },
+  {
+   "k": "longterm",
+   "e": "🐢",
+   "n": "长线池",
+   "page": "stocks.html",
+   "wf": "longterm.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-17T16:28:00Z"
+  },
+  {
+   "k": "amtrak",
+   "e": "🚆",
+   "n": "Amtrak 时刻表",
+   "page": "amtrak.html",
+   "wf": "amtrak.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-18T12:14:22Z"
+  },
+  {
+   "k": "stations",
+   "e": "📍",
+   "n": "附近车站",
+   "page": "amtrak.html",
+   "wf": "stations.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T01:26:04Z",
+   "detail": "1022 条"
+  },
+  {
+   "k": "ferry",
+   "e": "⛴️",
+   "n": "旧金山渡轮",
+   "page": "sf.html#map",
+   "wf": "ferry.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-19T18:50:07Z"
+  },
+  {
+   "k": "rankings",
+   "e": "🎬",
+   "n": "电影 / 音乐 Top 500",
+   "page": "kb.html",
+   "wf": "rankings.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-19T23:59:00Z"
+  },
+  {
+   "k": "holidays",
+   "e": "🗓️",
+   "n": "节假日",
+   "page": "holidays.html",
+   "wf": "holidays.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-15T23:59:00Z"
+  },
+  {
+   "k": "sky",
+   "e": "🔭",
+   "n": "天象（知识库首页）",
+   "page": "kb.html",
+   "wf": "kb.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-20T01:26:08Z"
+  },
+  {
+   "k": "bay_roads",
+   "e": "🛣️",
+   "n": "湾区高速路线",
+   "page": "sf.html#map",
+   "wf": "bay-roads.yml",
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-17T10:49:41Z"
+  }
+ ],
+ "external": [
+  {
+   "k": "tile_street",
+   "e": "🗺️",
+   "n": "街道底图（Esri）",
+   "ok": true,
+   "msg": ""
+  },
+  {
+   "k": "tile_gray",
+   "e": "🗺️",
+   "n": "浅灰底图（Esri）",
+   "ok": true,
+   "msg": ""
+  },
+  {
+   "k": "tile_sat",
+   "e": "🛰️",
+   "n": "卫星图（Esri）",
+   "ok": true,
+   "msg": ""
+  },
+  {
+   "k": "amtraker",
+   "e": "🚆",
+   "n": "Amtrak 实时列车接口",
+   "ok": true,
+   "msg": ""
+  },
+  {
+   "k": "bart",
+   "e": "🚇",
+   "n": "BART 实时到站接口",
+   "ok": true,
+   "msg": ""
+  }
+ ],
+ "failed_runs": [],
+ "since": "2026-10-20T15:07:23Z"
+}
