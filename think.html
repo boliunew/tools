@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<script src="sync.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3B3456">
+<title>思考本</title>
+<style>
+:root{--bg:#F3F2EF;--paper:#FFFFFF;--ink:#1E1C26;--soft:#5C5868;--faint:#9A96A3;--line:#E2E0E6;--chip:#ECEAF0;
+  --acc:#5B4BA8;--acc-soft:#E7E3F6;--ok:#2E9D4F;--ok-soft:#DFF1E4;--warn:#B5841C;--warn-soft:#F6ECD3;--red:#C0362C;--shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(40,30,70,.07)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14131A;--paper:#1C1B24;--ink:#E9E7EF;--soft:#AAA6B5;--faint:#6F6B7A;--line:#2B2936;--chip:#26242F;
+  --acc:#A99BF0;--acc-soft:#2A2442;--ok:#5BD38E;--ok-soft:#173326;--warn:#E8BB57;--warn-soft:#372C14;--red:#F07563;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#14131A;--paper:#1C1B24;--ink:#E9E7EF;--soft:#AAA6B5;--faint:#6F6B7A;--line:#2B2936;--chip:#26242F;
+  --acc:#A99BF0;--acc-soft:#2A2442;--ok:#5BD38E;--ok-soft:#173326;--warn:#E8BB57;--warn-soft:#372C14;--red:#F07563;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.65;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:var(--acc)}
+[hidden]{display:none!important}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+.hd{padding:calc(14px + env(safe-area-inset-top)) 0 4px}
+.hd a.home{font-size:13px;color:var(--faint);text-decoration:none}
+.hd h1{margin:4px 0 0;font-size:24px;font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif}
+.hd p{margin:4px 0 0;font-size:13.5px;color:var(--soft)}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:10px 0 8px;margin:0 -16px;padding-left:16px;padding-right:16px;border-bottom:1px solid var(--line)}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:14px}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600}
+.tabs button small{opacity:.6;margin-left:3px}
+.bar{display:flex;gap:8px;margin:12px 0}
+.bar button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 12px;font-size:14px}
+.bar button.p{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+.tip{background:var(--acc-soft);border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.65;margin:10px 0}
+.tip.warn{background:var(--warn-soft)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden}
+.card .top{padding:12px 14px;cursor:pointer}
+.card h3{margin:0;font-size:16px;line-height:1.4}
+.card .m{font-size:12px;color:var(--faint);margin-top:3px}
+.chips{margin-top:6px}.chips span{display:inline-block;font-size:12px;background:var(--chip);color:var(--soft);border-radius:6px;padding:0 7px;margin:0 4px 4px 0}
+.chips span.f{background:var(--warn-soft);color:var(--warn)}.chips span.d{background:var(--ok-soft);color:var(--ok)}.chips span.new{background:var(--red);color:#fff}
+.card .q1{font-size:13.5px;color:var(--soft);margin-top:4px}
+.card .bd{display:none;padding:0 14px 12px;border-top:1px solid var(--line)}
+.card.open .bd{display:block}
+.sec{margin-top:10px}.sec b{display:block;font-size:13px;color:var(--soft);font-weight:600}.sec p{margin:2px 0 0;white-space:pre-wrap}
+.sec.pro b{color:var(--ok)}.sec.con b{color:var(--red)}.sec.q b{color:var(--warn)}
+.rev{border-left:3px solid var(--acc-soft);padding:2px 0 2px 10px;margin:6px 0}.rev small{color:var(--faint);display:block;font-size:12px}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.acts button,.acts a{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:5px 10px;font-size:13px;text-decoration:none;color:var(--ink)}
+.tl{margin-top:10px;background:var(--bg);border-radius:12px;padding:8px 10px}
+.tl b.h{font-size:13px;color:var(--soft)}
+.tl .it{display:flex;gap:8px;padding:6px 0;border-top:1px dashed var(--line);font-size:13.5px;line-height:1.5}
+.tl .it:first-of-type{border-top:0}
+.tl .it i{font-style:normal;flex:0 0 46px;color:var(--faint);font-size:12px;padding-top:1px}
+.tl .it a{color:var(--ink);text-decoration:none}.tl .it.new a{font-weight:600}
+.tl .it small{color:var(--faint);display:block;font-size:12px}
+.ed{background:var(--paper);border:2px solid var(--acc);border-radius:16px;padding:12px 14px;margin:12px 0;box-shadow:var(--shadow)}
+.ed label{display:block;font-size:13px;font-weight:600;color:var(--soft);margin:10px 0 3px}
+.ed label small{font-weight:400;color:var(--faint)}
+.ed input,.ed textarea{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 10px;font-size:15px;outline:none}
+.ed textarea{min-height:64px;resize:vertical}
+.ed input:focus,.ed textarea:focus{border-color:var(--acc)}
+.ed .src{font-size:13px;color:var(--soft);background:var(--bg);border-radius:10px;padding:8px 10px}
+.ed .row{display:flex;gap:8px;margin-top:12px}
+.ed .row button{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:9px;font-size:15px}
+.ed .row button.p{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+.empty{color:var(--faint);text-align:center;padding:30px 10px;line-height:1.8}
+.foot{font-size:12px;color:var(--faint);text-align:center;margin:24px 0 8px;line-height:1.8}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:999px;font-size:14px;z-index:50;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd"><a class="home" href="index.html">‹ 首页</a><h1>🧠 思考本</h1>
+    <p>记下自己的判断、证据和没想通的问题；你关注的事情有新报道时，系统会把它们接到时间线上，相关新闻出现时也会提醒你「之前想过」。</p></div>
+  <div class="tabs" id="tabs"></div>
+  <div id="main"><div class="empty">加载中…</div></div>
+  <div class="foot">笔记存在这台设备的浏览器里，「🧳 搬家」导出时会一起带走；也可以在下面单独导出备份。<br>
+    <a href="#" id="exp">⬇️ 导出思考本</a> · <a href="#" id="imp">⬆️ 导入</a> · <a href="news.html#world">🌍 去看国际局势</a> · <a href="kb.html">🗂️ 知识库</a></div>
+  <input type="file" id="file" accept=".json,application/json" hidden>
+</div>
+<div class="toast" id="toast"></div>
+<script src="think.js?v=2"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function toast(t) { var el = $('toast'); el.textContent = t; el.className = 'toast on'; clearTimeout(el._t); el._t = setTimeout(function () { el.className = 'toast'; }, 1800); }
+  function day(iso) { var d = new Date(iso); return (d.getMonth() + 1) + '/' + d.getDate(); }
+  function today() { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  var IMPN = { oil: '🛢️ 油价', ship: '🚢 航运', trade: '🧾 关税贸易', chip: '💾 芯片', market: '📈 股市利率', food: '🌾 粮价', sec: '⚔️ 冲突', cn: '🤝 中美', travel: '✈️ 出行', nature: '🌪️ 天灾', us: '🇺🇸 美国政策' };
+  var N = Think.load(), TAB = (location.hash || '').replace('#', '') || 'all', OPEN = {}, EDIT = null, ARCH = [], WORLD = [];
+  if (!/^(all|open|follow|done)$/.test(TAB)) TAB = 'all';
+
+  // ---------- 新闻存档：本月 + 上个月 + 当前的国际局势 ----------
+  function getJSON(u, cb) { var x = new XMLHttpRequest(); x.open('GET', u); x.onload = function () { var d = null; try { d = JSON.parse(x.responseText); } catch (e) { } cb(x.status === 200 ? d : null); }; x.onerror = function () { cb(null); }; x.send(); }
+  function loadNews(cb) {
+    var now = new Date(), m1 = now.toISOString().slice(0, 7), p = new Date(now.getFullYear(), now.getMonth() - 1, 15), m0 = p.toISOString().slice(0, 7), left = 3, seen = {};
+    function add(items) { (items || []).forEach(function (it) { var k = (it.l || '').split('?')[0]; if (!k || seen[k]) return; seen[k] = 1; ARCH.push(it); }); }
+    function done() { if (--left) return; ARCH.sort(function (a, b) { return a.d < b.d ? 1 : -1; }); cb(); }
+    getJSON('news/data/archive/' + m0 + '.json?t=' + Math.floor(Date.now() / 36e5), function (d) { add(d && d.items); done(); });
+    getJSON('news/data/archive/' + m1 + '.json?t=' + Math.floor(Date.now() / 36e5), function (d) { add(d && d.items); done(); });
+    getJSON('news/data/world.json?t=' + Math.floor(Date.now() / 6e5), function (d) {
+      var it = [];
+      (d && d.regions || []).forEach(function (r) { (r.stories || []).forEach(function (g) { it.push({ d: g.time, t: g.title, e: g.en, es: g.en_summary, l: g.link, s: g.source, n: g.n, c: (g.c || []).map(function (x) { return x[1]; }), i: g.imp || [], r: r.k }); }); });
+      add(it); done();
+    });
+  }
+  function timeline(n) { return ARCH.filter(function (st) { return Think.score(n, st) > 0; }).slice(0, 30); }
+  function newCount(n) { var s = n.seen || n.created || ''; return timeline(n).filter(function (st) { return (st.d || '') > s && (!n.src || st.l !== n.src.l); }).length; }
+
+  // ---------- 渲染 ----------
+  function tabs() {
+    var c = { all: N.length, open: N.filter(function (n) { return n.status !== 'done' && n.q; }).length, follow: N.filter(function (n) { return n.follow; }).length, done: N.filter(function (n) { return n.status === 'done'; }).length };
+    var fn = N.filter(function (n) { return n.follow && newCount(n); }).length;
+    $('tabs').innerHTML = [['all', '📝 全部'], ['open', '❓ 没想通的'], ['follow', '📌 关注的事件' + (fn ? ' 🔴' : '')], ['done', '✅ 想通了']].map(function (t) {
+      return '<button data-t="' + t[0] + '" class="' + (TAB === t[0] ? 'on' : '') + '">' + t[1] + '<small>' + c[t[0]] + '</small></button>';
+    }).join('');
+  }
+  function list() {
+    return N.filter(function (n) {
+      if (TAB === 'open') return n.status !== 'done' && n.q;
+      if (TAB === 'follow') return n.follow;
+      if (TAB === 'done') return n.status === 'done';
+      return true;
+    }).sort(function (a, b) { return (b.updated || '') > (a.updated || '') ? 1 : -1; });
+  }
+  function weekPick() {
+    var open = N.filter(function (n) { return n.status !== 'done' && n.q; });
+    if (!open.length) return null;
+    var wk = Math.floor(Date.now() / (7 * 864e5));
+    return open.sort(function (a, b) { return a.id < b.id ? -1 : 1; })[wk % open.length];
+  }
+  function card(n) {
+    var nc = n.follow ? newCount(n) : 0, open = OPEN[n.id];
+    var h = '<div class="card' + (open ? ' open' : '') + '" data-id="' + n.id + '"><div class="top"><h3>' + esc(n.t || '（没有标题）') + '</h3>' +
+      '<div class="m">' + esc((n.created || '').slice(0, 10)) + (n.revs && n.revs.length ? ' · 修正过 ' + n.revs.length + ' 次' : '') + (n.src && n.src.s ? ' · 来自 ' + esc(n.src.s) : '') + '</div>' +
+      '<div class="chips">' + (n.follow ? '<span class="f">📌 关注中</span>' : '') + (nc ? '<span class="new">' + nc + ' 条新报道</span>' : '') + (n.status === 'done' ? '<span class="d">✅ 想通了</span>' : '') +
+      (n.c || []).map(function (x) { return '<span>' + esc(x) + '</span>'; }).join('') + (n.imp || []).map(function (x) { return '<span>' + esc(IMPN[x] || x) + '</span>'; }).join('') +
+      (n.tags || []).map(function (x) { return '<span>#' + esc(x) + '</span>'; }).join('') + '</div>' +
+      (!open && n.q ? '<div class="q1">❓ ' + esc(n.q.split('\n')[0]) + '</div>' : (!open && n.judge ? '<div class="q1">💡 ' + esc(n.judge.split('\n')[0]) + '</div>' : '')) + '</div>';
+    if (open) {
+      h += '<div class="bd">';
+      if (n.src && n.src.l) h += '<div class="sec"><b>📰 起因</b><p><a href="' + esc(n.src.l) + '" target="_blank" rel="noopener">' + esc(n.src.t || n.src.e) + '</a>' + (n.src.e && n.src.t !== n.src.e ? '<br><small style="color:var(--faint)">' + esc(n.src.e) + '</small>' : '') + '</p></div>';
+      [['judge', '💡 我的判断', ''], ['pro', '👍 支持的证据', 'pro'], ['con', '👎 反对的证据 / 可能推翻它的', 'con'], ['q', '❓ 还没想通的', 'q']].forEach(function (f) {
+        if (n[f[0]]) h += '<div class="sec ' + f[2] + '"><b>' + f[1] + '</b><p>' + esc(n[f[0]]) + '</p></div>';
+      });
+      if (n.revs && n.revs.length) h += '<div class="sec"><b>🔄 后来我觉得…</b>' + n.revs.map(function (r) { return '<div class="rev"><small>' + esc(r.d) + '</small>' + esc(r.text) + '</div>'; }).join('') + '</div>';
+      if (n.follow || timeline(n).length) {
+        var tl = timeline(n), s = n.seen || n.created || '';
+        h += '<div class="tl"><b class="h">📌 事件时间线' + (tl.length ? '（最近 ' + tl.length + ' 条相关报道，粗体是你上次看过之后的）' : '') + '</b>' +
+          (tl.length ? tl.map(function (st) {
+            var isNew = (st.d || '') > s;
+            return '<div class="it' + (isNew ? ' new' : '') + '"><i>' + day(st.d) + '</i><div><a href="' + esc(st.l) + '" target="_blank" rel="noopener">' + esc(st.t || st.e) + '</a><small>' + esc(st.s) + (st.n >= 2 ? ' · ' + st.n + ' 家报道' : '') + (st.c && st.c.length ? ' · ' + esc(st.c.join('、')) : '') + '</small></div></div>';
+          }).join('') : '<div class="it"><div style="color:var(--faint)">暂时还没有新的相关报道。系统按「追踪关键词」找，觉得找得不准可以在编辑里改关键词。</div></div>') + '</div>';
+      }
+      h += '<div class="acts"><button data-a="rev">🔄 后来我觉得…</button><button data-a="edit">✏️ 编辑</button><button data-a="follow">' + (n.follow ? '📌 取消关注' : '📌 关注这件事') + '</button>' +
+        '<button data-a="done">' + (n.status === 'done' ? '↩️ 重新打开' : '✅ 想通了') + '</button><button data-a="ask">🤖 请 Claude 补背景</button><button data-a="del">🗑️ 删除</button></div></div>';
+    }
+    return h + '</div>';
+  }
+  function editor(n) {
+    var src = n.src && (n.src.t || n.src.e);
+    return '<div class="ed" id="ed"><b style="font-size:16px">' + (n._new ? '💭 记一笔' : '✏️ 编辑') + '</b>' +
+      (src ? '<div class="src" style="margin-top:8px">📰 ' + esc(src) + (n.src.s ? ' · ' + esc(n.src.s) : '') + '</div>' : '') +
+      '<label>这件事 / 这个问题，一句话</label><input id="f_t" value="' + esc(n.t || '') + '" placeholder="比如：美国限制芯片出口">' +
+      '<label>💡 我的判断 <small>我现在怎么看，写一句也行</small></label><textarea id="f_judge" placeholder="比如：短期会伤到美国芯片公司的收入，长期会逼着中国自己造">' + esc(n.judge || '') + '</textarea>' +
+      '<label>👍 支持的证据 <small>为什么这么想，可以空着</small></label><textarea id="f_pro">' + esc(n.pro || '') + '</textarea>' +
+      '<label>👎 反对的证据 <small>什么情况会说明我想错了，可以空着</small></label><textarea id="f_con">' + esc(n.con || '') + '</textarea>' +
+      '<label>❓ 还没想通的 <small>想继续弄明白的问题</small></label><textarea id="f_q" placeholder="比如：限制出口的成本最后由谁承担？">' + esc(n.q || '') + '</textarea>' +
+      '<label>🏷️ 自己的标签 <small>用空格隔开，比如 芯片 中美 港口</small></label><input id="f_tags" value="' + esc((n.tags || []).join(' ')) + '">' +
+      '<label>🔎 追踪关键词 <small>英文，系统用它们在新闻里找相关报道；自动从标题里挑的，不准可以改</small></label><input id="f_kw" value="' + esc((n.kw || []).join(' ')) + '" placeholder="chip export Nvidia">' +
+      '<label style="display:flex;align-items:center;gap:8px;font-weight:400;color:var(--ink)"><input type="checkbox" id="f_follow" style="width:auto"' + (n.follow ? ' checked' : '') + '> 📌 关注这件事（有新报道接到时间线上）</label>' +
+      '<div class="row"><button id="edCancel">取消</button><button class="p" id="edSave">保存</button></div></div>';
+  }
+  function render() {
+    tabs();
+    var h = '';
+    if (EDIT) h += editor(EDIT);
+    if (!EDIT) h += '<div class="bar"><button class="p" id="addNew">＋ 记一个想法</button><button onclick="location.href=\'news.html#world\'">🌍 从新闻里找</button></div>';
+    if (TAB === 'all' && !EDIT) {
+      var wp = weekPick();
+      if (wp) h += '<div class="tip">🗓️ <b>这周回看一个问题</b>：' + esc(wp.q.split('\n')[0]) + '<br><small>来自「' + esc(wp.t) + '」。有新的证据就补一句，没有就跳过，不用打卡。</small> <a href="#" data-open="' + wp.id + '">打开 ›</a></div>';
+      var last = +localStorage.getItem('think:exported') || 0;
+      if (N.length >= 3 && Date.now() - last > 30 * 864e5) h += '<div class="tip warn">💾 ' + (last ? '上次导出是 ' + Math.round((Date.now() - last) / 864e5) + ' 天前' : '思考本还没导出过') + '。笔记只存在这台设备上，点下面「⬇️ 导出思考本」存一份到网盘更放心。</div>';
+    }
+    var L = list();
+    if (!L.length) h += '<div class="empty">' + ({ all: '还没有笔记。<br>在「🌍 国际局势」看到让你想多想一下的新闻，点「💭 记一笔」；<br>或者直接点上面「＋ 记一个想法」。', open: '没有待想的问题。', follow: '还没有关注的事件。<br>打开一条笔记，点「📌 关注这件事」，之后的相关报道会自动接到时间线上。', done: '还没有标成「想通了」的。' })[TAB] + '</div>';
+    L.forEach(function (n) { h += card(n); });
+    $('main').innerHTML = h;
+    if (EDIT) { var t = $('f_t'); if (t && !t.value) t.focus(); }
+  }
+
+  // ---------- 操作 ----------
+  function find(id) { return N.filter(function (n) { return n.id === id; })[0]; }
+  function persist() { if (!Think.save(N)) toast('保存失败（浏览器存储满了？）'); }
+  function startNew(st) {
+    var c = st && st.c || [], imp = st && st.i || [];
+    EDIT = { _new: true, id: Think.id(), t: st ? (st.t || st.e || '') : '', c: c, imp: imp, kw: st ? Think.keywords(st.e, st.es) : [], tags: [], follow: !!st,
+      src: st ? { t: st.t, e: st.e, l: st.l, s: st.s, d: st.d } : null };
+    render(); window.scrollTo(0, 0);
+  }
+  function saveEdit() {
+    var n = EDIT, isNew = n._new;
+    n.t = $('f_t').value.trim(); n.judge = $('f_judge').value.trim(); n.pro = $('f_pro').value.trim(); n.con = $('f_con').value.trim(); n.q = $('f_q').value.trim();
+    n.tags = $('f_tags').value.split(/[\s,，、]+/).filter(Boolean);
+    n.kw = $('f_kw').value.split(/[\s,，、]+/).filter(Boolean).map(Think.stem);
+    if (!n.kw.length) n.kw = Think.keywords(n.t + ' ' + (n.src && n.src.e || ''));
+    n.follow = $('f_follow').checked;
+    if (!n.t && !n.judge && !n.q) { toast('至少写一句吧'); return; }
+    var now = new Date().toISOString();
+    n.updated = now; if (isNew) { n.created = now; n.seen = now; n.status = 'open'; n.revs = []; }
+    delete n._new;
+    if (isNew) N.unshift(n);
+    persist(); EDIT = null; OPEN[n.id] = true; render(); toast(isNew ? '记下了 ✓' : '已保存 ✓');
+  }
+  function askPrompt(n) {
+    return '请帮我补一篇知识库文章，作为背景资料（标清楚来源，事实和推测分开写）：\n\n主题：' + (n.t || '') + (n.src && n.src.l ? '\n起因的新闻：' + (n.src.e || n.src.t) + ' ' + n.src.l : '') +
+      (n.judge ? '\n我现在的判断：' + n.judge : '') + (n.q ? '\n我还没想通的：' + n.q : '') + '\n\n想知道：这件事的来龙去脉、各方的说法、关键的数据和证据、对普通人（特别是港口物流、股市）可能有什么影响。';
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    var tb = t.closest('[data-t]'); if (tb && tb.parentNode.id === 'tabs') { TAB = tb.getAttribute('data-t'); history.replaceState(null, '', '#' + TAB); EDIT = null; render(); return; }
+    if (t.id === 'addNew') { startNew(null); return; }
+    if (t.id === 'edCancel') { EDIT = null; history.replaceState(null, '', '#' + TAB); render(); return; }
+    if (t.id === 'edSave') { saveEdit(); history.replaceState(null, '', '#' + TAB); return; }
+    var op = t.closest('[data-open]'); if (op) { e.preventDefault(); OPEN[op.getAttribute('data-open')] = true; TAB = 'all'; render(); var c0 = document.querySelector('[data-id="' + op.getAttribute('data-open') + '"]'); if (c0) c0.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+    var c = t.closest('.card'); if (!c) return;
+    var n = find(c.getAttribute('data-id')); if (!n) return;
+    var a = t.closest('[data-a]');
+    if (!a) {
+      if (t.closest('.top')) {
+        OPEN[n.id] = !OPEN[n.id];
+        if (OPEN[n.id] && n.follow) { n.seenPrev = n.seen; }
+        render();
+        if (!OPEN[n.id] && n.follow) { n.seen = new Date().toISOString(); persist(); tabs(); }   // 收起时才算「看过了」，这样展开时能看清哪些是新的
+      }
+      return;
+    }
+    var k = a.getAttribute('data-a'), now = new Date().toISOString();
+    if (k === 'edit') { EDIT = n; render(); window.scrollTo(0, 0); }
+    else if (k === 'rev') { var txt = prompt('后来我觉得……（会带日期记下来，原来的判断保留）'); if (txt && txt.trim()) { (n.revs = n.revs || []).push({ d: today(), text: txt.trim() }); n.updated = now; persist(); render(); toast('记下了 ✓'); } }
+    else if (k === 'follow') { n.follow = !n.follow; if (n.follow) n.seen = now; n.updated = now; persist(); render(); toast(n.follow ? '📌 关注了，新报道会接到时间线上' : '取消关注了'); }
+    else if (k === 'done') { n.status = n.status === 'done' ? 'open' : 'done'; n.updated = now; persist(); render(); }
+    else if (k === 'del') { if (confirm('删除这条笔记？删了就找不回来了。')) { N = N.filter(function (x) { return x.id !== n.id; }); persist(); render(); } }
+    else if (k === 'ask') { var p = askPrompt(n); try { navigator.clipboard.writeText(p).then(function () { toast('已复制，发给 Claude 就行'); }, function () { window.prompt('复制下面这段发给 Claude：', p); }); } catch (er) { window.prompt('复制下面这段发给 Claude：', p); } }
+  });
+  // 导出 / 导入
+  $('exp').onclick = function (e) {
+    e.preventDefault();
+    var blob = new Blob([JSON.stringify({ app: 'think', exported: new Date().toISOString(), notes: N }, null, 1)], { type: 'application/json' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = '思考本-' + today() + '.json'; document.body.appendChild(a); a.click(); a.remove();
+    try { localStorage.setItem('think:exported', String(Date.now())); } catch (er) { }
+    toast('已导出 ✓');
+  };
+  $('imp').onclick = function (e) { e.preventDefault(); $('file').click(); };
+  $('file').onchange = function () {
+    var f = this.files[0]; if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      try {
+        var d = JSON.parse(r.result), add = 0, upd = 0;
+        (d.notes || []).forEach(function (x) { var o = find(x.id); if (!o) { N.push(x); add++; } else if ((x.updated || '') > (o.updated || '')) { N[N.indexOf(o)] = x; upd++; } });
+        persist(); render(); toast('导入了 ' + add + ' 条新的，更新 ' + upd + ' 条');
+      } catch (er) { toast('文件格式不对'); }
+    };
+    r.readAsText(f);
+  };
+
+  // 从新闻来的草稿
+  if (location.hash === '#new') {
+    var st = null; try { st = JSON.parse(localStorage.getItem('think:draft') || 'null'); localStorage.removeItem('think:draft'); } catch (e) { }
+    TAB = 'all'; startNew(st);
+  } else if (/^#n/.test(location.hash) && find(location.hash.slice(1))) { OPEN[location.hash.slice(1)] = true; TAB = 'all'; }
+  render();
+  loadNews(function () { render(); });
+})();
+</script>
+<script src="nav.js?v=33" defer></script>
+</body>
+</html>

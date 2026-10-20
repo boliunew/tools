@@ -179,6 +179,41 @@ def countries(text):
     return out
 
 
+def archive(regions, now):
+    """把这次的报道追加到按月存档 news/data/archive/YYYY-MM.json（思考本的「事件追踪」时间线用）。
+    同一条（按原文链接）只存一次，后来报道的媒体变多了就更新家数。只存标题、链接、来源、时间、国家和影响标签。"""
+    adir = os.path.join(HERE, "data", "archive")
+    os.makedirs(adir, exist_ok=True)
+    path = os.path.join(adir, now.strftime("%Y-%m") + ".json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            items = json.load(f)["items"]
+    except Exception:
+        items = []
+    idx = {it["l"].split("?")[0]: it for it in items}
+    added = 0
+    for r in regions:
+        if r.get("stale"):
+            continue
+        for g in r["stories"]:
+            key = (g.get("link") or "").split("?")[0]
+            if not key:
+                continue
+            if key in idx:
+                old = idx[key]
+                old["n"] = max(old.get("n", 1), g.get("n", 1))
+                continue
+            it = {"d": g.get("time") or now.strftime("%Y-%m-%dT%H:%M:%SZ"), "t": g.get("title", ""), "e": g.get("en", ""), "l": g.get("link", ""),
+                  "s": g.get("source", ""), "n": g.get("n", 1), "c": [c[1] for c in g.get("c", [])], "i": g.get("imp", []), "r": r["k"]}
+            items.append(it)
+            idx[key] = it
+            added += 1
+    items.sort(key=lambda x: x["d"])
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"month": now.strftime("%Y-%m"), "items": items}, f, ensure_ascii=False, separators=(",", ":"))
+    print("存档 %s：新增 %d 条，共 %d 条" % (os.path.basename(path), added, len(items)))
+
+
 def main():
     now = dt.datetime.now(dt.timezone.utc)
     prev = {}
@@ -234,6 +269,7 @@ def main():
             r = dict(prev_regions[k], stale=True)
         regions.append(r)
 
+    archive(regions, now)
     keep = set()
     for r in regions:
         for g in r["stories"]:

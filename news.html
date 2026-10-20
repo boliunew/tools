@@ -130,6 +130,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 </style>
 <script src="sync.js?v=1"></script>
 <script src="lookup.js?v=2"></script>
+<script src="think.js?v=2"></script>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="bar">
@@ -195,6 +196,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var key = ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2), otd = (T.onthisday || {})[key];
     h += '<div class="meta">' + (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay()) + ' · 更新于 ' + ago(T.generated) + ((Date.now() - new Date(T.generated).getTime()) / 36e5 > 20 ? ' · <b style="color:#C8412B">⚠️ 超过 20 小时没更新，可能是自动任务失败（<a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">去看看</a>）</b>' : '') + (T.stale_big ? ' · 新闻源这次没抓到，显示的是上一次的' : '') + '</div>';
     var big = T.big || [];
+    big.forEach(function (c) { WSTORIES[c.link] = c; });
     if (big.length) {
       h += '<div class="sec"><b>📰 今日大事</b><small>BBC、NPR、卫报、日本、新加坡等国际英文媒体，多家都在报的排前面 · 机器翻译</small></div>';
       for (i = 0; i < big.length && i < 10; i++) {
@@ -203,7 +205,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
         h += '<div class="card big' + (c.n >= 2 ? ' hot' : '') + '"><div class="no">' + (i + 1) + '</div><div class="bd"><a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' +
           (c.en && c.zh ? '<div class="en">' + esc(c.en) + '</div>' : '') +
           (c.summary ? '<div class="s">' + esc(c.summary) + '</div>' : '') +
-          '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + '</div>' +
+          '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="#" data-think="' + esc(c.link) + '" style="color:var(--accent)">💭 记一笔</a></div>' +
+          thinkHint({ t: c.title, e: c.en || c.title, es: c.en_summary || '', l: c.link, c: [], i: [] }) +
           (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';
       }
     }
@@ -246,6 +249,20 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     nature: [['kb.html#earthquake-prep', '🌍 地震准备'], ['kb.html#wildfire-smoke-santa-ana', '🔥 山火季']],
     us: [['usa.html', '🇺🇸 美国生活指南']]
   };
+  // 🧠 思考本：每条新闻能「记一笔」，跟你以前的笔记有关时提醒「你之前想过」
+  var WSTORIES = {}, TNOTES = window.Think ? Think.load() : [];
+  function stOf(c) { return { t: c.title, e: c.en || c.title, es: c.en_summary || '', l: c.link, s: c.source, d: c.time, c: (c.c || []).map(function (x) { return x[1]; }), i: c.imp || [] }; }
+  function thinkHint(st) {
+    if (!window.Think || !TNOTES.length) return '';
+    var rel = Think.related(st, TNOTES).filter(function (n) { return !n.src || n.src.l !== st.l; }).slice(0, 2);
+    return rel.length ? '<div class="also" style="margin-top:5px">💭 你之前想过：' + rel.map(function (n) { return '<a href="think.html#' + n.id + '" style="color:var(--accent)">' + esc(n.t) + '</a>'; }).join('、') + '</div>' : '';
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-think]'); if (!a || !window.Think) return;
+    e.preventDefault();
+    var c = WSTORIES[a.getAttribute('data-think')];
+    if (c) Think.draft(stOf(c));
+  });
   var W = null, prevW = null, WR = get('wr', 'eu'), WC = '', WI = '';
   function loadWorld(manual) {
     var rb = document.getElementById('refreshBtn');
@@ -295,7 +312,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
         (imps.length ? '<details class="imp"><summary>📊 可能影响：<b>' + imps.map(function (k) { return IM[k].e + ' ' + esc(IM[k].n); }).join('　') + '</b> ›</summary>' +
           imps.map(function (k) { return '<div class="it"><b>' + IM[k].e + ' ' + esc(IM[k].n) + '</b>' + esc(IM[k].why) + ((IMPL[k] || []).length ? '<div style="margin-top:3px">' + IMPL[k].map(function (l) { return '<a href="' + l[0] + '" style="margin-right:10px;font-size:12.5px">' + l[1] + ' ›</a>'; }).join('') + '</div>' : '') + '</div>'; }).join('') + '<div class="nt">按新闻里的关键词自动判断的大方向，不是对这条新闻的专门分析。</div></details>' : '') +
         ((c.c || []).length ? '<div class="cf">' + c.c.map(function (x) { return '<span>' + x[0] + ' ' + esc(x[1]) + '</span>'; }).join('') + '</div>' : '') +
-        '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="sublingo.html?url=' + encodeURIComponent(c.link) + '" style="color:var(--faint)">精读原文</a></div>' +
+        '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="sublingo.html?url=' + encodeURIComponent(c.link) + '" style="color:var(--faint)">精读原文</a> · <a href="#" data-think="' + esc(c.link) + '" style="color:var(--accent)">💭 记一笔</a></div>' +
+        thinkHint(stOf(c)) +
         (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';
     }
     var src = (W.sources || []).filter(function (s) { return s.region === WR; });
@@ -305,6 +323,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     document.getElementById('wrg').onclick = function (e) { var b = e.target.closest('[data-wr]'); if (!b) return; WR = b.getAttribute('data-wr'); WC = ''; WI = ''; set('wr', WR); renderWorld(); window.scrollTo(0, 0); };
     document.getElementById('wimp') && (document.getElementById('wimp').onclick = function (e) { var b = e.target.closest('[data-wi]'); if (!b) return; WI = WI === b.getAttribute('data-wi') ? '' : b.getAttribute('data-wi'); WC = ''; renderWorld(); var s0 = document.querySelector('.sec'); if (WI && s0) s0.scrollIntoView({ block: 'start', behavior: 'smooth' }); });
     var wx = document.getElementById('wiX'); if (wx) wx.onclick = function (e) { e.preventDefault(); WI = ''; renderWorld(); };
+    WSTORIES = {}; R.forEach(function (x) { (x.stories || []).forEach(function (c) { WSTORIES[c.link] = c; }); });
     var wh = document.getElementById('whot'); if (wh) wh.onclick = function (e) { var b = e.target.closest('[data-wc]'); if (!b) return; WC = b.getAttribute('data-wc'); renderWorld(); };
     var on = document.querySelector('#wrg .on'); if (on && on.scrollIntoView) on.scrollIntoView({ inline: 'center', block: 'nearest' });
   }
@@ -394,6 +413,6 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   setTab(TAB === 'en' || TAB === 'world' ? TAB : 'today');
 })();
 </script>
-<script src="nav.js?v=32" defer></script>
+<script src="nav.js?v=33" defer></script>
 </body>
 </html>

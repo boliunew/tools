@@ -145,6 +145,7 @@ html.locked #gate{display:block}
 <form class="srch" action="search.html" onsubmit="location.href='search.html#q='+encodeURIComponent(this.q.value);return false"><input name="q" type="search" placeholder="搜全站：菜谱、技巧、诗词、梦……" enterkeyhint="search"><button>搜</button></form>
 <div class="today" id="today"><div class="hd"><b id="tdDate"></b><span id="tdSub"></span></div><div id="tdBody"></div>
 <div class="quick" id="myTop" style="display:none"></div>
+<div id="thinkCard" style="display:none;margin-top:10px;font-size:14px;line-height:1.6"></div>
 <div class="quick"><a href="work.html">🦺 现场工具</a><a href="news.html">📰 新闻</a><a href="stocks.html">📈 股票池</a><a href="deals.html">🏷️ 打折</a><a href="kitchen.html">🍳 今天吃啥</a><a href="convert.html">💱 汇率</a></div>
 <div class="recent" id="recent" hidden></div></div>
 <div class="sect">全部工具 <span class="hint">点分组名可以收起</span></div>
@@ -159,6 +160,7 @@ html.locked #gate{display:block}
 </details>
 <details class="grp" data-g="read" open><summary>📰 读 <small>4</small></summary>
 <a class="card" href="news.html"><div class="t">📰 新闻</div><div class="d">今日大事（几家国际媒体都在报的排前面）、🌍 国际局势（欧洲 · 亚洲 · 美洲 · 澳洲 · 中东非洲，每两小时更新，可按热点国家筛选）、世界趣闻、历史上的今天；英文精选按 A2–C2 难度分级。每天自动更新两次</div></a>
+<a class="card" href="think.html"><div class="t">🧠 思考本</div><div class="d">看新闻时点「💭 记一笔」：写下自己的判断、支持和反对的证据、还没想通的问题，改观点时保留旧的；关注的事件每天自动接上新报道成时间线，相关新闻出现时提醒「你之前想过」。每周首页挑一个问题回看，不打卡</div></a>
 <a class="card" href="kb.html"><div class="t">🗂️ 知识库</div><div class="d"><span data-n="kb">36</span> 篇长文：投资量化（指标代码、回测陷阱、账户与税、定投计算器）、物流（拖车类型、危险品标志、装柜计算器、报关关税）；今晚星空和天象日历（按 Upland 现算）、月亮与日月食、手机拍星空；FBA 头程、箱标托盘规范、南加州亚马逊仓代码；集装箱号校验、码头到仓库；USB-C 充电。按标签找、全文搜索，Markdown 写、自动出目录</div></a>
 <a class="card" href="tips.html"><div class="t">💡 技巧与科普</div><div class="d"><span data-n="tips">744</span> 条：三星手机、Windows、Linux 主机的实用技巧，钱和账单，防骗与隐私，南加州生活常识，厨房清洁小妙招，世界各地风土习俗与忌讳、经典旅游景点；每日一招、搜索、收藏</div></a>
 <a class="card" href="people.html"><div class="t">⭐ 人物专栏</div><div class="d">苏轼：<span data-n="sushi">33</span> 篇诗词文，点开读原文，难字点一下看注解，配白话和写作背景，一生贬谪路线图；George Michael：生平、专辑导览、<span data-n="gm">34</span> 首歌背后的故事、入门听歌路线，一键去 YouTube / Spotify 听；阿西莫夫：《基地》七部曲读书伴侣，每本书的预习生词一键进语境词库；📽️ 人生七年：英国 Up 系列 14 人（1964–2026）+ 苏联版 20 人（1990–2026），每人每七年的经历、防剧透、两边对照；🖥️ 疑犯追踪：106 句经典台词的原文、翻译和深一层意思，九条美国价值观、25 个人物、全部 103 集导览；🌲 怪诞小镇：七篇专栏（兄弟姐妹、斯坦和福特、怕长大……）、片尾密码解码器和 37 条密文、45 句台词、40 集导览</div></a>
@@ -451,7 +453,7 @@ html.locked #gate{display:block}
   });
 })();
 </script>
-<script src="nav.js?v=32" defer></script>
+<script src="nav.js?v=33" defer></script>
 <script>
 (function () {
   function draw() {
@@ -462,6 +464,40 @@ html.locked #gate{display:block}
     el.style.display = "";
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', draw); else draw();
+})();
+</script>
+<script src="think.js?v=2"></script>
+<script>
+(function () {
+  // 🧠 继续上次的思考：没想通的问题、关注的事件有没有新报道
+  if (!window.Think) return;
+  var N = Think.load(); if (!N.length) return;
+  var el = document.getElementById('thinkCard'); if (!el) return;
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var open = N.filter(function (n) { return n.status !== 'done' && n.q; }), fol = N.filter(function (n) { return n.follow; });
+  var wk = Math.floor(Date.now() / (7 * 864e5)), pick = open.length ? open.slice().sort(function (a, b) { return a.id < b.id ? -1 : 1; })[wk % open.length] : null;
+  function draw(newMap) {
+    var hot = fol.filter(function (n) { return newMap[n.id]; });
+    var h = '<a href="think.html" style="text-decoration:none;color:inherit;display:block;border-top:1px dashed rgba(128,128,128,.35);padding-top:8px"><b style="font-size:12.5px;opacity:.65">🧠 继续上次的思考</b><br>';
+    if (hot.length) h += hot.slice(0, 2).map(function (n) { return '📌 「' + esc(n.t) + '」有 <b>' + newMap[n.id] + '</b> 条新报道'; }).join('<br>') + '<br>';
+    if (pick) h += '❓ 这周回看：' + esc(pick.q.split('\n')[0]) + '<br>';
+    h += '<span style="font-size:12.5px;opacity:.6">' + N.length + ' 条笔记 · ' + open.length + ' 个没想通 · ' + fol.length + ' 件在关注 ›</span></a>';
+    el.innerHTML = h; el.style.display = '';
+  }
+  if (!fol.length) return draw({});
+  var x = new XMLHttpRequest(); x.open('GET', 'news/data/world.json?t=' + Math.floor(Date.now() / 6e5));
+  x.onload = function () {
+    var m = {};
+    try {
+      JSON.parse(x.responseText).regions.forEach(function (r) { r.stories.forEach(function (g) {
+        var st = { e: g.en, es: g.en_summary, c: (g.c || []).map(function (c) { return c[1]; }), i: g.imp || [] };
+        fol.forEach(function (n) { if ((g.time || '') > (n.seen || n.created || '') && Think.score(n, st) > 0 && (!n.src || n.src.l !== g.link)) m[n.id] = (m[n.id] || 0) + 1; });
+      }); });
+    } catch (e) { }
+    draw(m);
+  };
+  x.onerror = function () { draw({}); };
+  x.send();
 })();
 </script>
 </body>
