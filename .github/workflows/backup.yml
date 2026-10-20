@@ -1,0 +1,43 @@
+name: 每月备份
+
+# 每月 1 号把整个工具箱（页面 + 数据 + 脚本，不含 git 历史）打成一个 zip，发布到 Releases，随时能下载。
+# 只保留最近 12 个月的备份。
+on:
+  schedule:
+    - cron: "41 15 1 * *"   # 每月 1 号 太平洋时间早上
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zip
+        run: |
+          D=$(TZ=America/Los_Angeles date +%F)
+          echo "D=$D" >> "$GITHUB_ENV"
+          cat > README_备份说明.txt <<'TXT'
+          工具箱备份（boliunew/tools）
+          打开方法：解压 → 在文件夹里运行 python -m http.server 8000 → 浏览器打开 http://localhost:8000
+          这是一份快照，每天自动更新的数据停在打包那一刻；手机上的收藏、打卡、日志等记录不在里面，用「🧳 搬家」页面导出。
+          TXT
+          zip -qr9 "/tmp/tools-backup-$D.zip" . -x '.git/*' -x '*/__pycache__/*' -x '*.pyc'
+          ls -la "/tmp/tools-backup-$D.zip"
+      - name: Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="backup-$D"
+          gh release delete "$TAG" -y --cleanup-tag 2>/dev/null || true
+          gh release create "$TAG" "/tmp/tools-backup-$D.zip" --title "📦 每月备份 $D" \
+            --notes "整个工具箱的快照（页面、数据、脚本）。下载 zip，解压后在文件夹里运行 \`python -m http.server 8000\`，浏览器打开 http://localhost:8000 。"
+          # 只留最近 12 份
+          gh release list --limit 100 --json tagName -q '.[].tagName' | grep '^backup-' | sort -r | tail -n +13 | while read t; do gh release delete "$t" -y --cleanup-tag; done

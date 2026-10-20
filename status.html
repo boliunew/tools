@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1E3A34">
+<title>系统状态</title>
+<style>
+:root{--bg:#F2F3F0;--paper:#FFFFFF;--ink:#1B2226;--soft:#56626A;--faint:#939CA3;--line:#DFE3E0;--ok:#2E9D4F;--ok-soft:#DFF1E4;--bad:#C0362C;--bad-soft:#F7E2DF;--shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#11161A;--paper:#192127;--ink:#E6ECEF;--soft:#A6B2BA;--faint:#6B7780;--line:#27323A;--ok:#5BD38E;--ok-soft:#173326;--bad:#F07563;--bad-soft:#3A221F;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#11161A;--paper:#192127;--ink:#E6ECEF;--soft:#A6B2BA;--faint:#6B7780;--line:#27323A;--ok:#5BD38E;--ok-soft:#173326;--bad:#F07563;--bad-soft:#3A221F;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(30px + env(safe-area-inset-bottom))}
+a{color:inherit}
+.wrap{max-width:720px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top)) 16px 0}
+h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
+.ban{border-radius:16px;padding:14px 16px;margin:14px 0;box-shadow:var(--shadow)}
+.ban.ok{background:var(--ok-soft)}.ban.bad{background:var(--bad-soft)}
+.ban b{font-size:18px;display:block}.ban ul{margin:6px 0 0;padding-left:20px;font-size:14px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.box h2{font-size:15px;margin:0;padding:10px 14px;border-bottom:1px solid var(--line)}
+.row{display:flex;gap:10px;align-items:center;padding:9px 14px;border-top:1px solid var(--line);text-decoration:none}
+.row:first-of-type{border-top:0}
+.dot{flex:0 0 10px;height:10px;border-radius:50%;background:var(--ok)}.dot.bad{background:var(--bad)}
+.row .n{flex:1;min-width:0}.row .n b{font-weight:600;font-size:14.5px}.row .n small{display:block;color:var(--soft);font-size:12.5px;line-height:1.45}
+.row .t{flex:0 0 auto;text-align:right;font-size:12.5px;color:var(--faint)}
+.row.bad .n small{color:var(--bad)}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px}
+.acts a{font-size:13.5px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;text-decoration:none}
+.note{font-size:12.5px;color:var(--faint);line-height:1.7;margin:16px 2px}
+.empty{color:var(--faint);text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" style="font-size:13px;color:var(--faint);text-decoration:none">‹ 首页</a>
+  <h1>🩺 系统状态</h1>
+  <div class="sub" id="sub">加载中…</div>
+  <div id="app"></div>
+  <div class="acts">
+    <a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">⚙️ GitHub 自动任务</a>
+    <a href="https://github.com/boliunew/tools/issues?q=%F0%9F%A9%BA" target="_blank" rel="noopener">🔔 体检提醒记录</a>
+    <a href="https://github.com/boliunew/tools/releases" target="_blank" rel="noopener">📦 每月备份下载</a>
+  </div>
+  <div class="note">每天早上 7 点多、晚上 8 点左右（太平洋时间）自动体检一次：看每份数据是不是按时更新、内容是不是正常，自动任务有没有失败，地图底图和实时接口能不能用。发现<b>新</b>问题会在 GitHub 上留言提醒（手机 GitHub App 推送 + 邮件），同样的问题不重复提醒，恢复了再说一声。<br>大部分问题会在下一次自动任务里自己好；连着两三天都是红的，就找 Claude 看看。</div>
+</div>
+<script>
+(function () {
+  'use strict';
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ago(iso) {
+    if (!iso) return '';
+    var m = (Date.now() - new Date(iso).getTime()) / 60000;
+    if (m < 60) return Math.max(1, Math.round(m)) + ' 分钟前';
+    if (m < 2880) return Math.round(m / 60) + ' 小时前';
+    return Math.round(m / 1440) + ' 天前';
+  }
+  var x = new XMLHttpRequest();
+  x.open('GET', 'status/health.json?t=' + Date.now());
+  x.onload = function () {
+    var D; try { D = JSON.parse(x.responseText); } catch (e) { document.getElementById('sub').textContent = '还没有体检结果（第一次体检跑完后就有了）'; return; }
+    var stale = (Date.now() - new Date(D.generated).getTime()) / 36e5 > 30;
+    document.getElementById('sub').innerHTML = '上次体检：' + ago(D.generated) + (stale ? ' · <b style="color:var(--bad)">体检本身超过一天没跑了</b>' : '');
+    var h = '';
+    h += D.ok ? '<div class="ban ok"><b>✅ 一切正常</b>所有数据都按时更新，接口和地图都能用' + (D.since ? '（从 ' + ago(D.since).replace('前', '前起') + '）' : '') + '。</div>'
+      : '<div class="ban bad"><b>⚠️ 发现 ' + D.problems.length + ' 个问题</b><ul>' + D.problems.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul></div>';
+    h += '<div class="box"><h2>📦 自动更新的数据</h2>' + D.data.map(function (r) {
+      return '<a class="row' + (r.ok ? '' : ' bad') + '" href="' + esc(r.page) + '"><span class="dot' + (r.ok ? '' : ' bad') + '"></span><span class="n"><b>' + r.e + ' ' + esc(r.n) + '</b><small>' + esc(r.ok ? (r.detail || '正常') : r.msg) + '</small></span><span class="t">' + (r.at ? '更新于<br>' + ago(r.at) : '') + '</span></a>';
+    }).join('') + '</div>';
+    h += '<div class="box"><h2>🌐 地图和实时接口</h2>' + D.external.map(function (r) {
+      return '<div class="row' + (r.ok ? '' : ' bad') + '"><span class="dot' + (r.ok ? '' : ' bad') + '"></span><span class="n"><b>' + r.e + ' ' + esc(r.n) + '</b><small>' + esc(r.ok ? '能用' : r.msg) + '</small></span></div>';
+    }).join('') + '</div>';
+    h += '<div class="box"><h2>⚙️ 自动任务</h2>' + (D.failed_runs.length ? D.failed_runs.map(function (r) {
+      return '<a class="row bad" href="' + esc(r.url) + '" target="_blank" rel="noopener"><span class="dot bad"></span><span class="n"><b>' + esc(r.n) + '</b><small>上次运行失败（' + esc(r.conclusion) + '）</small></span><span class="t">' + ago(r.at) + '</span></a>';
+    }).join('') : '<div class="row"><span class="dot"></span><span class="n"><b>过去一天没有失败的任务</b></span></div>') + '</div>';
+    document.getElementById('app').innerHTML = h;
+  };
+  x.onerror = function () { document.getElementById('sub').textContent = '网络错误，稍后刷新'; };
+  x.send();
+})();
+</script>
+<script src="nav.js?v=31" defer></script>
+</body>
+</html>

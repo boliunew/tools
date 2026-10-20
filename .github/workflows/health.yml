@@ -1,0 +1,44 @@
+name: 系统体检
+
+# 每天早晚各一次：检查各份数据是不是新鲜、内容是否正常、自动任务有没有失败、地图底图和实时接口能不能用。
+# 结果写进 status/health.json（status.html 状态页）；有新问题时在 issue「🩺 系统体检」留言 @ 主人（GitHub App 推送 + 邮件）。
+on:
+  schedule:
+    - cron: "23 14 * * *"   # 太平洋夏令时 7:23
+    - cron: "53 2 * * *"    # 太平洋夏令时 19:53（股票扫描之后）
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["scripts/health_check.py", ".github/workflows/health.yml"]
+
+permissions:
+  contents: write
+  issues: write
+  actions: read
+
+concurrency:
+  group: health
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+        run: python scripts/health_check.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add status/health.json
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "体检 $(date -u +%F-%H%M)"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
