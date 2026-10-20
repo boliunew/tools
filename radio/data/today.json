@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-19T17:01:20Z",
- "date": "2026-10-19",
+ "generated": "2026-10-20T15:10:16Z",
+ "date": "2026-10-20",
  "engine": "edge",
- "total": 500.2,
- "short": 316.8,
+ "total": 520.7,
+ "short": 332.8,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610190959",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610200809",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月19日 星期一",
-   "dur": 9.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610190959",
+   "sub": "10月20日 星期二",
+   "dur": 8.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "新的一周开始了，加油！星期一，10月19日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "这里是你的通勤电台。今天是10月20日，星期二，方向盘上的下一首可以随时跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 大致晴朗 86°/61°F",
-   "dur": 29.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610190959",
+   "sub": "Upland 阴天 81°/61°F",
+   "dur": 26.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天大致晴朗。早上7点出门大约华氏62度，17摄氏度，体感56度。傍晚5点下班大约华氏81度，27摄氏度，体感75度。白天最高86度，约30摄氏度；最低61度。基本不会下雨。白天空气质量中等，指数最高61。今天日落时间是傍晚6点11分。"
+     "t": "Upland今天阴天。早上7点出门大约华氏61度，16摄氏度。傍晚5点下班大约华氏74度，24摄氏度。白天最高81度，约27摄氏度；最低61度。基本不会下雨。白天空气质量中等，指数最高58。今天日落时间是傍晚6点10分。"
     }
    ]
   },
@@ -38,12 +38,12 @@
    "id": "sky",
    "title": "🔭 天象",
    "sub": "Upland",
-   "dur": 14.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610190959",
+   "dur": 14.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。2天后，猎户座流星雨。10/21 夜里到次日凌晨 · 月光干扰大，月亮 84%· 理想每小时 20 颗 · 哈雷彗星的碎屑。"
+     "t": "天象提醒。明晚，猎户座流星雨。10/21 夜里到次日凌晨 · 月光干扰大，月亮 84%· 理想每小时 20 颗 · 哈雷彗星的碎屑。"
     }
    ]
   },
@@ -51,41 +51,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 29.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610190959",
+   "dur": 30.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月16日收盘。标普500 ETF 下跌1.1%，纳指100 ETF 下跌2.5%。恐慌指数VIX 20.0，正常水平。标普成分股里，46%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月19日收盘。标普500 ETF 上涨0.4%，纳指100 ETF 上涨1.2%。恐慌指数VIX 18.4，正常水平。标普成分股里，44%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "17 个候选",
-   "dur": 63.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610190959",
+   "sub": "18 个候选",
+   "dur": 65.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天17个候选，评分最高的是BlackRock，代码 B L K。不想听细节可以按下一首。"
+     "t": "股票池今天18个候选，评分最高的是Illumina，代码 I L M N。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，回踩金坑3个，挤压突破1个，血筹码1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中回踩金坑8个，RSI2 超跌反弹7个，血筹码3个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，BlackRock，代码 B L K，挤压突破信号，收盘价1134.38美元，止损参考1094.35。"
+     "t": "第1，Illumina，代码 I L M N，RSI2 超跌反弹信号，收盘价262.66美元，止损参考229.44。"
     },
     {
      "lang": "zh",
-     "t": "第2，Everpure，代码 P，RSI2 超跌反弹信号，收盘价124.01美元，止损参考104.42。"
+     "t": "第2，CrowdStrike，代码 C R W D，RSI2 超跌反弹信号，收盘价228.10美元，止损参考197.50。"
     },
     {
      "lang": "zh",
-     "t": "第3，Illumina，代码 I L M N，RSI2 超跌反弹信号，收盘价262.54美元，止损参考228.83。"
+     "t": "第3，Synopsys，代码 S N P S，RSI2 超跌反弹信号，收盘价454.58美元，止损参考409.83。"
     },
     {
      "lang": "zh",
@@ -96,34 +96,50 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "3 件大事",
-   "dur": 36.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610190959",
+   "sub": "6 件大事",
+   "dur": 72.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610200809",
    "text": [
+    {
+     "lang": "zh",
+     "t": "今天，有3家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "GE Aerospace，代码 G E，盘前发财报。期权定价波动正负5.8%。标签：利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "Netflix，代码 N F L X，盘后发财报。期权定价波动正负10.0%。标签：大波动、利好出尽型、已提前炒作。"
+    },
+    {
+     "lang": "zh",
+     "t": "RTX，代码 R T X，盘前发财报。期权定价波动正负5.1%。"
+    },
     {
      "lang": "zh",
      "t": "明天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "GE Aerospace，代码 G E，盘前发财报。期权定价波动正负5.9%。标签：利好出尽型。"
+     "t": "Meta Platforms，代码 M E T A，盘后发财报。期权定价波动正负6.9%。标签：大波动。"
     },
     {
      "lang": "zh",
-     "t": "Netflix，代码 N F L X，盘后发财报。期权定价波动正负9.4%。标签：大波动、利好出尽型、已提前炒作。"
+     "t": "Tesla，代码 T S L A，盘后发财报。期权定价波动正负6.9%。标签：大波动。"
     },
     {
      "lang": "zh",
-     "t": "RTX，代码 R T X，盘前发财报。期权定价波动正负5.0%。"
+     "t": "Lam Research，代码 L R C X，盘后发财报。期权定价波动正负7.8%。标签：财报日常涨。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "NPR · The Guardian · Al Jazeera",
-   "dur": 96.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610190959",
+   "sub": "BBC · Al Jazeera · NPR",
+   "dur": 79.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
@@ -131,48 +147,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自NPR，综合，难度B2。大意是：2026年中期选举可能是有史以来最昂贵的。而且，马克龙谴责抗议活动。"
+     "t": "第1条，来自BBC，科学，难度B2。大意是：红松鼠繁衍生息的英国岛屿。"
     },
     {
      "lang": "en",
-     "t": "2026 midterms could be the most expensive on record. And, Macron condemns protests"
+     "t": "The British island where red squirrels are thriving"
     },
     {
      "lang": "en",
-     "t": "More than $15 billion has been raised in this year's midterm elections."
+     "t": "Conservationists say that, with red squirrels dwindling in the UK, Jersey is an \"important refuge\"."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自The Guardian，科技，难度B2。大意是：人工智能公司Anthropic承诺将5%的股份用于“公共利益”。"
+     "t": "第2条，来自Al Jazeera，国际，难度B1。大意是：Angel Reese在WNBA总决赛中以梦幻般的眩晕女武神获得30分。"
     },
     {
      "lang": "en",
-     "t": "AI firm Anthropic to commit 5% of shares to fund for ‘public good’"
+     "t": "Angel Reese scores 30 as Dream stun Valkyries to go level in WNBA Finals"
     },
     {
      "lang": "en",
-     "t": "The $48bn giveaway comes amid concerns about the tech and preparations for a stock market listing Anthropic has said it will commit 5% of its shares to a fund for the “public good”, as the AI developer behind the Claude chatbot seeks to bol"
+     "t": "Atlanta Dream defeat Golden State Valkyries 79-65 to tie the best-of-seven WNBA Finals at 1-1."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：澳大利亚国会议员海伦·海恩斯（ Helen Haines ）在“故意”撞车中受重伤。"
+     "t": "第3条，来自NPR，科技，难度B1。大意是：在都柏林，科技工作者提出了对人工智能的担忧。"
     },
     {
      "lang": "en",
-     "t": "Australian MP Helen Haines critically injured in ‘deliberate’ car ramming"
+     "t": "In Dublin, tech workers raise concerns about AI"
     },
     {
      "lang": "en",
-     "t": "Lawmaker was struck by a car outside her office in what Prime Minister ⁠Anthony Albanese called a 'deliberate act'."
+     "t": "Dublin, Ireland, is a longtime hub for American tech companies."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "member · el departamento",
-   "dur": 31.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610190959",
+   "sub": "cloudy · el hombro",
+   "dur": 30.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
@@ -180,15 +196,15 @@
     },
     {
      "lang": "en",
-     "t": "member"
+     "t": "cloudy"
     },
     {
      "lang": "zh",
-     "t": "意思是：成员。拼写是："
+     "t": "意思是：多云的。拼写是："
     },
     {
      "lang": "en",
-     "t": "m, e, m, b, e, r"
+     "t": "c, l, o, u, d, y"
     },
     {
      "lang": "zh",
@@ -196,7 +212,7 @@
     },
     {
      "lang": "en",
-     "t": "member"
+     "t": "cloudy"
     },
     {
      "lang": "zh",
@@ -204,44 +220,48 @@
     },
     {
      "lang": "es",
-     "t": "el departamento"
+     "t": "el hombro"
     },
     {
      "lang": "zh",
-     "t": "意思是：公寓。跟着读一遍。"
+     "t": "意思是：肩膀。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el departamento"
+     "t": "el hombro"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "易错",
-   "dur": 22.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610190959",
+   "sub": "习语",
+   "dur": 22.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天说一个常见错误。不要说："
+     "t": "每日一句，今天是一个地道习语。"
     },
     {
      "lang": "en",
-     "t": "Good good study, day day up"
+     "t": "Hold your horses"
     },
     {
      "lang": "zh",
-     "t": "应该说："
+     "t": "意思是：稍安勿躁。别急，等一下。"
+    },
+    {
+     "lang": "zh",
+     "t": "例句："
     },
     {
      "lang": "en",
-     "t": "Study hard and make progress every day"
+     "t": "Hold your horses! Wait for the green light."
     },
     {
      "lang": "zh",
-     "t": "好好学习，天天向上。著名的中式英语，逐字翻译老外听不懂"
+     "t": "别急！等绿灯。"
     }
    ],
    "opt": true
@@ -249,61 +269,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "休息室闲聊",
-   "dur": 66.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610190959",
+   "sub": "给调度打电话",
+   "dur": 71.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：休息室闲聊。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "你午饭吃什么？"
+     "t": "抱歉，我在接另一个电话，稍等。"
     },
     {
      "lang": "en",
-     "t": "What are you having for lunch?"
+     "t": "Sorry, I'm on another call. One second."
     },
     {
      "lang": "en",
-     "t": "What are you having for lunch?"
+     "t": "Sorry, I'm on another call. One second."
     },
     {
      "lang": "zh",
-     "t": "你去过 Foothill 上那家塔可店吗？"
+     "t": "谢谢你告诉我最新情况。"
     },
     {
      "lang": "en",
-     "t": "Have you tried that taco place on Foothill?"
+     "t": "Thanks for the update."
     },
     {
      "lang": "en",
-     "t": "Have you tried that taco place on Foothill?"
+     "t": "Thanks for the update."
     },
     {
      "lang": "zh",
-     "t": "听起来不错。"
+     "t": "我的货现在在哪？"
     },
     {
      "lang": "en",
-     "t": "That sounds great."
+     "t": "Where's my load right now?"
     },
     {
      "lang": "en",
-     "t": "That sounds great."
+     "t": "Where's my load right now?"
     },
     {
      "lang": "zh",
-     "t": "假期有什么计划吗？"
+     "t": "那个司机预计几点到？"
     },
     {
      "lang": "en",
-     "t": "Any plans for the holiday?"
+     "t": "What's the ETA on that driver?"
     },
     {
      "lang": "en",
-     "t": "Any plans for the holiday?"
+     "t": "What's the ETA on that driver?"
     },
     {
      "lang": "zh",
@@ -315,13 +335,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "丢了手机能找回、能远程锁",
-   "dur": 23.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610190959",
+   "sub": "口译模式：面对面中英对话",
+   "dur": 20.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：丢了手机能找回、能远程锁。提前开好，丢了才用得上。做法：设置 → 安全与隐私 → 丢失设备保护（或「查找我的手机」）；打开「远程解锁」「离线查找」「发送最后位置」；丢了以后在 smartthingsfind.samsung.com 登录三星账号定位、响铃、锁定。"
+     "t": "今日一招：口译模式：面对面中英对话。跟老外当面聊，手机放中间。做法：下拉快捷开关，加一个「口译」（Interpreter）按钮；打开后选中文和英语；切到对话视图，屏幕分上下两半，对面的人看他那一半。"
     }
    ],
    "opt": true
@@ -329,13 +349,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1943 · 1987 · 2004",
-   "dur": 39.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610190959",
+   "sub": "1883 · 1990 · 2011",
+   "dur": 38.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1943年，美国罗格斯大学赛尔曼·A·瓦克斯曼实验室首次成功从革兰氏阳性放线菌灰色链霉菌培养液中分离出链霉素，后成为首个用于治疗肺结核的抗生素。1987年，美国股市遭遇黑色星期一，全球股市在美股带动下全面下泻，其中香港股市当月暴跌45.8%。2004年，缅甸国家和平与发展委员会（军政府）任命和发会第一秘书长梭温中将为缅甸新总理。"
+     "t": "历史上的今天。1883年，秘鲁按照《安孔条约》把塔拉帕卡大区割让给智利，智利亦将于硝石战争中征服的塔克纳省和阿里卡省托管十年，之后由全民投票决定两省命运，然从未举行过全民公决。1990年，马来西亚举行第8届选举，投票结果以马哈蒂尔·穆罕默德领导的国民阵线获胜。2011年，统一7-ELEVEn狮在中华职棒22年总冠军赛击败Lamigo桃猿，获得年度总冠军。"
     }
    ],
    "opt": true
@@ -343,21 +363,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "惠崇春江晚景（其一）",
-   "dur": 31.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610190959",
+   "sub": "六月二十七日望湖楼醉书（其一）",
+   "dur": 35.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：惠崇春江晚景（其一）。写于1085年，他48岁，在汴京。"
+     "t": "读一首苏轼：六月二十七日望湖楼醉书（其一）。写于1072年，他35岁，在杭州。"
     },
     {
      "lang": "zh",
-     "t": "竹外桃花三两枝，春江水暖鸭先知。蒌蒿满地芦芽短，正是河豚欲上时。"
+     "t": "黑云翻墨未遮山，白雨跳珠乱入船。卷地风来忽吹散，望湖楼下水如天。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：竹林外两三枝桃花开了，江水变暖，最先知道的是水里的鸭子。地上长满了蒌蒿，芦苇刚冒出短短的嫩芽，正是河豚要逆流而上的时候。"
+     "t": "白话意思是：乌云像打翻的墨汁一样涌上来，还没把山遮住，白花花的雨点就像珍珠一样乱蹦着砸进船里。忽然一阵大风卷地而来，把云和雨全吹散了，望湖楼下的湖水平静得像天空一样。"
     }
    ],
    "opt": true
@@ -366,12 +386,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610190959",
+   "dur": 6.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610200809",
    "text": [
     {
      "lang": "zh",
-     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
+     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
     }
    ]
   }
