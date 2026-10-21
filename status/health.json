@@ -1,9 +1,21 @@
 {
- "generated": "2026-10-20T15:07:23Z",
- "ok": true,
- "problems": [],
- "sig": "",
+ "generated": "2026-10-21T01:41:52Z",
+ "ok": false,
+ "problems": [
+  "☀️ 每日简报（Claude 定时任务）：读不到数据：[Errno 2] No such file or directory: '/home/runner/work/tools/tools/brief/data/index.json'"
+ ],
+ "sig": "☀️ 每日简报（Claude 定时任务）",
  "data": [
+  {
+   "k": "brief",
+   "e": "☀️",
+   "n": "每日简报（Claude 定时任务）",
+   "page": "brief.html",
+   "wf": "",
+   "ok": false,
+   "msg": "读不到数据：[Errno 2] No such file or directory: '/home/runner/work/tools/tools/brief/data/index.json'",
+   "at": null
+  },
   {
    "k": "news_today",
    "e": "📌",
@@ -12,7 +24,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T11:58:54Z",
+   "at": "2026-10-21T00:48:44Z",
    "detail": "12 条"
   },
   {
@@ -23,7 +35,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T11:59:02Z",
+   "at": "2026-10-21T00:48:53Z",
    "detail": "75 条"
   },
   {
@@ -34,8 +46,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T05:52:38Z",
-   "detail": "269 条"
+   "at": "2026-10-20T17:55:24Z",
+   "detail": "300 条"
   },
   {
    "k": "stocks",
@@ -45,7 +57,7 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T06:06:19Z",
+   "at": "2026-10-21T00:11:15Z",
    "detail": "数据日期 2026-10-19 · 499 条"
   },
   {
@@ -56,7 +68,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T12:47:09Z"
+   "at": "2026-10-21T00:01:59Z"
   },
   {
    "k": "deals",
@@ -66,7 +78,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T04:48:28Z"
+   "at": "2026-10-20T18:01:14Z"
   },
   {
    "k": "radio",
@@ -76,7 +88,7 @@
    "wf": "radio.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-19T17:01:20Z"
+   "at": "2026-10-20T15:10:16Z"
   },
   {
    "k": "card",
@@ -86,7 +98,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-19T23:59:00Z"
+   "at": "2026-10-20T23:59:00Z"
   },
   {
    "k": "monitor",
@@ -96,7 +108,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T13:35:52Z"
+   "at": "2026-10-20T23:12:44Z"
   },
   {
    "k": "bay_live",
@@ -106,7 +118,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T15:03:50Z"
+   "at": "2026-10-21T01:39:18Z"
   },
   {
    "k": "longterm",
@@ -126,7 +138,7 @@
    "wf": "amtrak.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-18T12:14:22Z"
+   "at": "2026-10-20T17:58:12Z"
   },
   {
    "k": "stations",
@@ -136,7 +148,7 @@
    "wf": "stations.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T01:26:04Z",
+   "at": "2026-10-20T20:57:05Z",
    "detail": "1022 条"
   },
   {
@@ -177,7 +189,7 @@
    "wf": "kb.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T01:26:08Z"
+   "at": "2026-10-21T00:52:08Z"
   },
   {
    "k": "bay_roads",
@@ -228,5 +240,5 @@
   }
  ],
  "failed_runs": [],
- "since": "2026-10-20T15:07:23Z"
+ "since": "2026-10-21T01:41:52Z"
 }
