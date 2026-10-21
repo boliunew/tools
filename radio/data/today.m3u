@@ -1,30 +1,30 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-10-20
-#EXTINF:9,通勤电台 - ☀️ 开场 10月20日 星期二
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610200809
-#EXTINF:26,通勤电台 - 🌤️ 天气 Upland 阴天 81°/61°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610200809
+#PLAYLIST:通勤电台 2026-10-21
+#EXTINF:9,通勤电台 - ☀️ 开场 10月21日 星期三
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610210818
+#EXTINF:32,通勤电台 - 🌤️ 天气 Upland 大雨 78°/59°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610210818
 #EXTINF:14,通勤电台 - 🔭 天象 Upland
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610200809
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610210818
 #EXTINF:30,通勤电台 - 📊 大盘 谨慎
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610200809
-#EXTINF:65,通勤电台 - 📈 股票池 18 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610200809
-#EXTINF:72,通勤电台 - 🗓️ 财报与数据 6 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610200809
-#EXTINF:79,通勤电台 - 📰 英文新闻 BBC · Al Jazeera · NPR
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610200809
-#EXTINF:31,通勤电台 - 🔤 今日单词 cloudy · el hombro
-https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610200809
-#EXTINF:22,通勤电台 - 🎴 每日一句 习语
-https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610200809
-#EXTINF:71,通勤电台 - 🗣️ 跟读 给调度打电话
-https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610200809
-#EXTINF:20,通勤电台 - 💡 今日一招 口译模式：面对面中英对话
-https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610200809
-#EXTINF:38,通勤电台 - 📜 历史上的今天 1883 · 1990 · 2011
-https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610200809
-#EXTINF:36,通勤电台 - 🖋️ 读苏轼 六月二十七日望湖楼醉书（其一）
-https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610200809
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610210818
+#EXTINF:64,通勤电台 - 📈 股票池 22 个候选
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610210818
+#EXTINF:67,通勤电台 - 🗓️ 财报与数据 6 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610210818
+#EXTINF:71,通勤电台 - 📰 英文新闻 BBC · NPR · Al Jazeera
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610210818
+#EXTINF:32,通勤电台 - 🔤 今日单词 download · el pecho
+https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610210818
+#EXTINF:25,通勤电台 - 🎴 每日一句 名言
+https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610210818
+#EXTINF:53,通勤电台 - 🗣️ 跟读 对讲机用语
+https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610210818
+#EXTINF:20,通勤电台 - 💡 今日一招 录屏：录下操作教家人
+https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610210818
+#EXTINF:36,通勤电台 - 📜 历史上的今天 1945 · 1959 · 1994
+https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610210818
+#EXTINF:31,通勤电台 - 🖋️ 读苏轼 赠刘景文
+https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610210818
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610200809
+https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610210818

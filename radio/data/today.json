@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-20T15:10:16Z",
- "date": "2026-10-20",
+ "generated": "2026-10-21T15:20:10Z",
+ "date": "2026-10-21",
  "engine": "edge",
- "total": 520.7,
- "short": 332.8,
+ "total": 488.7,
+ "short": 324.0,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610200809",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610210818",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月20日 星期二",
+   "sub": "10月21日 星期三",
    "dur": 8.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610200809",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "这里是你的通勤电台。今天是10月20日，星期二，方向盘上的下一首可以随时跳段。"
+     "t": "一周过半了。星期三，10月21日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 阴天 81°/61°F",
-   "dur": 26.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610200809",
+   "sub": "Upland 大雨 78°/59°F",
+   "dur": 31.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天阴天。早上7点出门大约华氏61度，16摄氏度。傍晚5点下班大约华氏74度，24摄氏度。白天最高81度，约27摄氏度；最低61度。基本不会下雨。白天空气质量中等，指数最高58。今天日落时间是傍晚6点10分。"
+     "t": "Upland今天大雨。早上7点出门大约华氏59度，15摄氏度。傍晚5点下班大约华氏71度，22摄氏度。白天最高78度，约26摄氏度；最低59度。降雨概率66%。白天空气质量中等，指数最高51。今天日落时间是傍晚6点08分。提醒一下：记得带伞，路面湿滑，车速放慢。"
     }
    ]
   },
@@ -38,12 +38,12 @@
    "id": "sky",
    "title": "🔭 天象",
    "sub": "Upland",
-   "dur": 14.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610200809",
+   "dur": 14.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。明晚，猎户座流星雨。10/21 夜里到次日凌晨 · 月光干扰大，月亮 84%· 理想每小时 20 颗 · 哈雷彗星的碎屑。"
+     "t": "天象提醒。今晚，猎户座流星雨。10/21 夜里到次日凌晨 · 月光干扰大，月亮 84%· 理想每小时 20 颗 · 哈雷彗星的碎屑。"
     }
    ]
   },
@@ -51,41 +51,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 30.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610200809",
+   "dur": 29.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月19日收盘。标普500 ETF 上涨0.4%，纳指100 ETF 上涨1.2%。恐慌指数VIX 18.4，正常水平。标普成分股里，44%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月20日收盘。标普500 ETF 上涨0.3%，纳指100 ETF 下跌0.1%。恐慌指数VIX 17.3，正常水平。标普成分股里，54%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "18 个候选",
-   "dur": 65.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610200809",
+   "sub": "22 个候选",
+   "dur": 64.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天18个候选，评分最高的是Illumina，代码 I L M N。不想听细节可以按下一首。"
+     "t": "股票池今天22个候选，评分最高的是Gartner，代码 I T。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中回踩金坑8个，RSI2 超跌反弹7个，血筹码3个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中回踩金坑9个，血筹码6个，RSI2 超跌反弹5个，挤压突破1个，强势新高1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Illumina，代码 I L M N，RSI2 超跌反弹信号，收盘价262.66美元，止损参考229.44。"
+     "t": "第1，Gartner，代码 I T，挤压突破信号，收盘价219.64美元，止损参考207.34。"
     },
     {
      "lang": "zh",
-     "t": "第2，CrowdStrike，代码 C R W D，RSI2 超跌反弹信号，收盘价228.10美元，止损参考197.50。"
+     "t": "第2，Charles River Laboratories，代码 C R L，强势新高信号，收盘价315.45美元，止损参考291.91。"
     },
     {
      "lang": "zh",
-     "t": "第3，Synopsys，代码 S N P S，RSI2 超跌反弹信号，收盘价454.58美元，止损参考409.83。"
+     "t": "第3，CrowdStrike，代码 C R W D，RSI2 超跌反弹信号，收盘价227.37美元，止损参考197.55。"
     },
     {
      "lang": "zh",
@@ -97,8 +97,8 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "6 件大事",
-   "dur": 72.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610200809",
+   "dur": 66.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
@@ -106,15 +106,15 @@
     },
     {
      "lang": "zh",
-     "t": "GE Aerospace，代码 G E，盘前发财报。期权定价波动正负5.8%。标签：利好出尽型。"
+     "t": "Meta Platforms，代码 M E T A，盘后发财报。期权定价波动正负7.0%。标签：大波动。"
     },
     {
      "lang": "zh",
-     "t": "Netflix，代码 N F L X，盘后发财报。期权定价波动正负10.0%。标签：大波动、利好出尽型、已提前炒作。"
+     "t": "Tesla，代码 T S L A，盘后发财报。期权定价波动正负6.5%。标签：大波动。"
     },
     {
      "lang": "zh",
-     "t": "RTX，代码 R T X，盘前发财报。期权定价波动正负5.1%。"
+     "t": "Lam Research，代码 L R C X，盘后发财报。期权定价波动正负7.5%。标签：财报日常涨。"
     },
     {
      "lang": "zh",
@@ -122,24 +122,24 @@
     },
     {
      "lang": "zh",
-     "t": "Meta Platforms，代码 M E T A，盘后发财报。期权定价波动正负6.9%。标签：大波动。"
+     "t": "Procter & Gamble，代码 P G，盘前发财报。期权定价波动正负3.6%。标签：已提前炒作。"
     },
     {
      "lang": "zh",
-     "t": "Tesla，代码 T S L A，盘后发财报。期权定价波动正负6.9%。标签：大波动。"
+     "t": "Union Pacific，代码 U N P，盘前发财报。"
     },
     {
      "lang": "zh",
-     "t": "Lam Research，代码 L R C X，盘后发财报。期权定价波动正负7.8%。标签：财报日常涨。"
+     "t": "Western Digital，代码 W D C，盘后发财报。期权定价波动正负8.4%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · NPR",
-   "dur": 79.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610200809",
+   "sub": "BBC · NPR · Al Jazeera",
+   "dur": 70.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
@@ -147,48 +147,44 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，科学，难度B2。大意是：红松鼠繁衍生息的英国岛屿。"
+     "t": "第1条，来自BBC，国际，难度B2。大意是：Elon Musk考虑合并Tesla-SpaceX。"
     },
     {
      "lang": "en",
-     "t": "The British island where red squirrels are thriving"
+     "t": "Elon Musk considering Tesla-SpaceX merger"
     },
     {
      "lang": "en",
-     "t": "Conservationists say that, with red squirrels dwindling in the UK, Jersey is an \"important refuge\"."
+     "t": "Musk says special committees within both companies have been formed to look at a possible mega-merger."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B1。大意是：Angel Reese在WNBA总决赛中以梦幻般的眩晕女武神获得30分。"
+     "t": "第2条，来自NPR，综合，难度B2。大意是：联合国报告强调美国气候污染显著增加。"
     },
     {
      "lang": "en",
-     "t": "Angel Reese scores 30 as Dream stun Valkyries to go level in WNBA Finals"
-    },
-    {
-     "lang": "en",
-     "t": "Atlanta Dream defeat Golden State Valkyries 79-65 to tie the best-of-seven WNBA Finals at 1-1."
+     "t": "United Nations report highlights significant increase in U.S. climate pollution"
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，科技，难度B1。大意是：在都柏林，科技工作者提出了对人工智能的担忧。"
+     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：埃隆·马斯克（ Elon Musk ）表示， SpaceX和特斯拉正在探索历史上最大的合并。"
     },
     {
      "lang": "en",
-     "t": "In Dublin, tech workers raise concerns about AI"
+     "t": "Elon Musk says SpaceX and Tesla exploring largest merger in history"
     },
     {
      "lang": "en",
-     "t": "Dublin, Ireland, is a longtime hub for American tech companies."
+     "t": "Tech mogul says tie-up has a 'lot of merit', given firms' complementary work on AI."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "cloudy · el hombro",
-   "dur": 30.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610200809",
+   "sub": "download · el pecho",
+   "dur": 31.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
@@ -196,15 +192,15 @@
     },
     {
      "lang": "en",
-     "t": "cloudy"
+     "t": "download"
     },
     {
      "lang": "zh",
-     "t": "意思是：多云的。拼写是："
+     "t": "意思是：下载。拼写是："
     },
     {
      "lang": "en",
-     "t": "c, l, o, u, d, y"
+     "t": "d, o, w, n, l, o, a, d"
     },
     {
      "lang": "zh",
@@ -212,7 +208,7 @@
     },
     {
      "lang": "en",
-     "t": "cloudy"
+     "t": "download"
     },
     {
      "lang": "zh",
@@ -220,48 +216,44 @@
     },
     {
      "lang": "es",
-     "t": "el hombro"
+     "t": "el pecho"
     },
     {
      "lang": "zh",
-     "t": "意思是：肩膀。跟着读一遍。"
+     "t": "意思是：胸。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el hombro"
+     "t": "el pecho"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "习语",
-   "dur": 22.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610200809",
+   "sub": "名言",
+   "dur": 24.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一个地道习语。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "Hold your horses"
+     "t": "To get the full value of joy you must have somebody to divide it with."
     },
     {
      "lang": "zh",
-     "t": "意思是：稍安勿躁。别急，等一下。"
+     "t": "意思是：想把快乐享受到十足，就得有人和你分享。这句话出自 Mark Twain。"
     },
     {
      "lang": "zh",
-     "t": "例句："
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "Hold your horses! Wait for the green light."
-    },
-    {
-     "lang": "zh",
-     "t": "别急！等绿灯。"
+     "t": "To get the full value of joy you must have somebody to divide it with."
     }
    ],
    "opt": true
@@ -269,61 +261,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "给调度打电话",
-   "dur": 71.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610200809",
+   "sub": "对讲机用语",
+   "dur": 53.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：对讲机用语。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "抱歉，我在接另一个电话，稍等。"
+     "t": "完毕（说完了，等你回话）。"
     },
     {
      "lang": "en",
-     "t": "Sorry, I'm on another call. One second."
+     "t": "Over."
     },
     {
      "lang": "en",
-     "t": "Sorry, I'm on another call. One second."
+     "t": "Over."
     },
     {
      "lang": "zh",
-     "t": "谢谢你告诉我最新情况。"
+     "t": "收到。"
     },
     {
      "lang": "en",
-     "t": "Thanks for the update."
+     "t": "Copy that."
     },
     {
      "lang": "en",
-     "t": "Thanks for the update."
+     "t": "Copy that."
     },
     {
      "lang": "zh",
-     "t": "我的货现在在哪？"
+     "t": "收到/明白。"
     },
     {
      "lang": "en",
-     "t": "Where's my load right now?"
+     "t": "10-4."
     },
     {
      "lang": "en",
-     "t": "Where's my load right now?"
+     "t": "10-4."
     },
     {
      "lang": "zh",
-     "t": "那个司机预计几点到？"
+     "t": "请讲。"
     },
     {
      "lang": "en",
-     "t": "What's the ETA on that driver?"
+     "t": "Go ahead."
     },
     {
      "lang": "en",
-     "t": "What's the ETA on that driver?"
+     "t": "Go ahead."
     },
     {
      "lang": "zh",
@@ -335,13 +327,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "口译模式：面对面中英对话",
-   "dur": 20.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610200809",
+   "sub": "录屏：录下操作教家人",
+   "dur": 19.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：口译模式：面对面中英对话。跟老外当面聊，手机放中间。做法：下拉快捷开关，加一个「口译」（Interpreter）按钮；打开后选中文和英语；切到对话视图，屏幕分上下两半，对面的人看他那一半。"
+     "t": "今日一招：录屏：录下操作教家人。教别人怎么设置，录一段发过去。做法：下拉快捷开关点「屏幕录制」；选声音：无、媒体声音、或媒体和麦克风；录的时候可以用 S Pen 在屏幕上画圈标注。"
     }
    ],
    "opt": true
@@ -349,13 +341,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1883 · 1990 · 2011",
-   "dur": 38.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610200809",
+   "sub": "1945 · 1959 · 1994",
+   "dur": 35.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1883年，秘鲁按照《安孔条约》把塔拉帕卡大区割让给智利，智利亦将于硝石战争中征服的塔克纳省和阿里卡省托管十年，之后由全民投票决定两省命运，然从未举行过全民公决。1990年，马来西亚举行第8届选举，投票结果以马哈蒂尔·穆罕默德领导的国民阵线获胜。2011年，统一7-ELEVEn狮在中华职棒22年总冠军赛击败Lamigo桃猿，获得年度总冠军。"
+     "t": "历史上的今天。1945年，阿根廷领袖胡安·庇隆同伊娃·裴隆结婚。1959年，位于美国纽约市曼哈顿上东城由美国建筑设计师赖特应古根汉基金会创办人古根汉先生的邀请所设计的索罗门·古根汉美术馆正式对公众开放。1994年，朝鲜核问题：北朝鲜和美国政府在日内瓦签署《关于解决朝鲜核问题的框架协议》，同意停止核武器开发，并接受外界检查。"
     }
    ],
    "opt": true
@@ -363,21 +355,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "六月二十七日望湖楼醉书（其一）",
-   "dur": 35.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610200809",
+   "sub": "赠刘景文",
+   "dur": 31.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：六月二十七日望湖楼醉书（其一）。写于1072年，他35岁，在杭州。"
+     "t": "读一首苏轼：赠刘景文。写于1090年，他53岁，在杭州。"
     },
     {
      "lang": "zh",
-     "t": "黑云翻墨未遮山，白雨跳珠乱入船。卷地风来忽吹散，望湖楼下水如天。"
+     "t": "荷尽已无擎雨盖，菊残犹有傲霜枝。一年好景君须记，最是橙黄橘绿时。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：乌云像打翻的墨汁一样涌上来，还没把山遮住，白花花的雨点就像珍珠一样乱蹦着砸进船里。忽然一阵大风卷地而来，把云和雨全吹散了，望湖楼下的湖水平静得像天空一样。"
+     "t": "白话意思是：荷花谢了，连像伞一样的荷叶也没了；菊花虽然残了，枝干还傲然顶着寒霜。您一定要记住，一年里最好的风景，正是橙子黄、橘子绿的初冬时节。"
     }
    ],
    "opt": true
@@ -386,12 +378,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610200809",
+   "dur": 5.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610210818",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
     }
    ]
   }
