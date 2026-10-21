@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21T08:01:31Z",
+ "generated": "2026-10-21T18:46:03Z",
  "ok": false,
  "problems": [
   "☀️ 每日简报（Claude 定时任务）：读不到数据：[Errno 2] No such file or directory: '/home/runner/work/tools/tools/brief/data/index.json'"
@@ -24,7 +24,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-21T07:56:21Z",
+   "at": "2026-10-21T17:59:14Z",
    "detail": "12 条"
   },
   {
@@ -35,7 +35,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-21T07:56:26Z",
+   "at": "2026-10-21T17:59:22Z",
    "detail": "75 条"
   },
   {
@@ -46,8 +46,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-21T05:53:34Z",
-   "detail": "303 条"
+   "at": "2026-10-21T17:58:49Z",
+   "detail": "311 条"
   },
   {
    "k": "stocks",
@@ -57,8 +57,8 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-21T06:06:38Z",
-   "detail": "数据日期 2026-10-20 · 499 条"
+   "at": "2026-10-21T18:16:47Z",
+   "detail": "数据日期 2026-10-20 · 498 条"
   },
   {
    "k": "earnings",
@@ -68,7 +68,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-21T00:01:59Z"
+   "at": "2026-10-21T17:45:45Z"
   },
   {
    "k": "deals",
@@ -78,7 +78,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-21T04:43:58Z"
+   "at": "2026-10-21T18:07:09Z"
   },
   {
    "k": "radio",
@@ -88,7 +88,7 @@
    "wf": "radio.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T15:10:16Z"
+   "at": "2026-10-21T15:20:10Z"
   },
   {
    "k": "card",
@@ -98,7 +98,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-20T23:59:00Z"
+   "at": "2026-10-21T23:59:00Z"
   },
   {
    "k": "monitor",
@@ -108,7 +108,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-21T04:56:33Z"
+   "at": "2026-10-21T13:52:12Z"
   },
   {
    "k": "bay_live",
@@ -118,7 +118,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-21T07:59:33Z"
+   "at": "2026-10-21T18:45:02Z"
   },
   {
    "k": "longterm",
