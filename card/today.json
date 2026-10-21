@@ -1,16 +1,16 @@
 {
- "date": "2026-10-20",
- "kind": "习语",
- "en": "Hold your horses",
- "zh": "稍安勿躁",
- "by": "别急，等一下",
- "line": "Hold your horses",
+ "date": "2026-10-21",
+ "kind": "名言",
+ "en": "To get the full value of joy you must have somebody to divide it with.",
+ "zh": "想把快乐享受到十足，就得有人和你分享。",
+ "by": "Mark Twain",
+ "line": "To get the full value of joy you must have somebody to divide it with. — Mark Twain",
  "word": {
-  "w": "fling",
-  "ph": "fliŋ",
-  "zh": "n. 投掷，急冲，嘲弄；vt. 投，丢下，抛弃，使陷入",
-  "ex": "Then he lit a cigarette and flung himself down on the sofa.",
-  "exzh": "然后他点了支烟，一下子倒在沙发上。"
+  "w": "inherit",
+  "ph": "in'herit",
+  "zh": "vt. 继承，遗传；vi. 接受遗产",
+  "ex": "What did Tom inherit?",
+  "exzh": "汤姆继承了什么？"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
