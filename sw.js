@@ -1,10 +1,10 @@
 /* 离线缓存：先上网拿最新的，网络不通（或 5 秒没回应）就用上次存下的。
    只缓存本站文件；音频视频、跨站请求、断点续传都直接放行，不进缓存。
    装好时先把常用页面和数据存一份，没打开过的页面在没信号时也能看。 */
-var CACHE = 'tools-v41';
+var CACHE = 'tools-v42';
 var NAMES = {
   'index.html': '🏠 首页', 'work.html': '🦺 现场工具', 'search.html': '🔍 全站搜索', 'kb.html': '🗂️ 知识库', 'tips.html': '💡 技巧与科普',
-  'kitchen.html': '🍳 厨房与养生', 'convert.html': '💱 汇率与单位换算', 'news.html': '📰 新闻', 'stocks.html': '📈 今日股票池',
+  'kitchen.html': '🍳 厨房与养生', 'convert.html': '💱 汇率与单位换算', 'brief.html': '☀️ 每日简报', 'news.html': '📰 新闻', 'stocks.html': '📈 今日股票池',
   'earnings.html': '📅 财报与经济日历', 'deals.html': '🏷️ 打折雷达', 'toolbox.html': '🧰 工具箱', 'people.html': '⭐ 人物专栏',
   'dream.html': '🌙 心灵小站', 'speak.html': '🗣️ 开口说', 'card.html': '🎴 每日一句', 'radio.html': '🚗 通勤电台',
   'fm.html': '📻 环球网络电台', 'books.html': '🎧 听书', 'sleep.html': '😴 夜之声', 'player.html': '🎬 探测播放器',
@@ -15,7 +15,7 @@ var NAMES = {
 var PAGES = Object.keys(NAMES).filter(function (p) { return p !== 'vocab.html' && p !== 'hanzi.html'; });
 var CORE = ['./', 'nav.js?v=18', 'theme.js?v=1', 'sync.js?v=1', 'lookup.js', 'weather.js?v=3', 'tools.webmanifest', 'icons/icon-192.png', 'mind/mind.js', 'think.js?v=2'].concat(PAGES);
 var DATA = [
-  'news/data/today.json', 'news/data/world.json', 'card/today.json', 'card/daily.json', 'stocks/data/latest.json', 'earnings/data/latest.json',
+  'brief/data/index.json', 'news/data/today.json', 'news/data/world.json', 'card/today.json', 'card/daily.json', 'stocks/data/latest.json', 'earnings/data/latest.json',
   'kitchen/wellness.json', 'kitchen/recipes_cn.json', 'kitchen/recipes_cn2.json', 'kitchen/recipes_cn3.json',
   'kitchen/recipes_west.json', 'kitchen/recipes_west2.json', 'kitchen/recipes_west3.json', 'kitchen/recipes_mian.json',
   'tips/tips.json', 'kb/index.json', 'dream/dreams.json', 'mind/logic.json', 'mind/psy.json',

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1E3A34">
+<title>每日简报</title>
+<style>
+:root{--bg:#F2F3F0;--paper:#FFFFFF;--ink:#1B2226;--soft:#56626A;--faint:#939CA3;--line:#DFE3E0;--accent:#1F6F66;--accent-soft:#DCEEEA;--pick:#FBEBD3;--pick-ink:#8A4B05;--shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#11161A;--paper:#192127;--ink:#E6ECEF;--soft:#A6B2BA;--faint:#6B7780;--line:#27323A;--accent:#5CC2B3;--accent-soft:#1E3632;--pick:#3A2E1A;--pick-ink:#F2B35E;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#11161A;--paper:#192127;--ink:#E6ECEF;--soft:#A6B2BA;--faint:#6B7780;--line:#27323A;--accent:#5CC2B3;--accent-soft:#1E3632;--pick:#3A2E1A;--pick-ink:#F2B35E;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15.5px;line-height:1.65;padding-bottom:calc(30px + env(safe-area-inset-bottom))}
+a{color:var(--accent)}
+.wrap{max-width:720px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top)) 16px 0}
+h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
+.days{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:12px -16px 4px;padding:0 16px 4px}
+.days::-webkit-scrollbar{display:none}
+.days button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:4px 12px;font:inherit;font-size:13.5px;cursor:pointer}
+.days button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin:12px 0;overflow:hidden}
+.box h2{font-size:16px;margin:0;padding:11px 15px;border-bottom:1px solid var(--line)}
+.it{padding:11px 15px;border-top:1px solid var(--line)}
+.it:first-of-type{border-top:0}
+.it b{display:block;font-size:15.5px;line-height:1.45}
+.it p{margin:3px 0 0;color:var(--soft);font-size:14.5px}
+.src{margin-top:4px;font-size:12.5px}
+.src a{text-decoration:none;margin-right:10px;white-space:nowrap}
+.pick{background:var(--pick);border-radius:16px;padding:13px 15px;margin:12px 0}
+.pick .lb{font-size:13px;font-weight:700;color:var(--pick-ink)}
+.pick b{display:block;font-size:16px;margin-top:2px}
+.pick p{margin:4px 0 0;font-size:14.5px}
+.week .it b{font-size:14.5px}
+.note{font-size:12.5px;color:var(--faint);line-height:1.7;margin:16px 2px}
+.empty{color:var(--soft);text-align:center;padding:48px 10px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" style="font-size:13px;color:var(--faint);text-decoration:none">‹ 首页</a>
+  <h1>☀️ 每日简报</h1>
+  <div class="sub" id="sub">加载中…</div>
+  <div class="days" id="days"></div>
+  <div id="app"></div>
+  <div class="note">每天早上 6 点前（太平洋时间）由 Claude 自动整理：AI 与科技 · 美股市场 · 宏观经济 · 世界大事，每块只挑 2–4 件真正重要的事，10 分钟看完。周一多一段“本周关注”。来源以国际英文媒体和官方一手资料为主；只讲发生了什么、为什么重要，不做投资建议。</div>
+</div>
+<script>
+(function () {
+  'use strict';
+  var WK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function safeUrl(u) { return /^https?:\/\//i.test(u || '') ? u : '#'; }
+  function label(d) { var p = d.split('-'); var dt = new Date(+p[0], +p[1] - 1, +p[2]); return (+p[1]) + '月' + (+p[2]) + '日 ' + WK[dt.getDay()]; }
+  function get(url, ok, bad) {
+    var x = new XMLHttpRequest();
+    x.open('GET', url + '?t=' + Date.now());
+    x.onload = function () { var d; try { d = JSON.parse(x.responseText); } catch (e) { bad && bad(); return; } ok(d); };
+    x.onerror = function () { bad && bad(); };
+    x.send();
+  }
+  function items(list) {
+    return (list || []).map(function (it) {
+      var src = (it.src || []).map(function (s) { return '<a href="' + esc(safeUrl(s.u)) + '" target="_blank" rel="noopener">↗ ' + esc(s.n || '来源') + '</a>'; }).join('');
+      return '<div class="it"><b>' + esc(it.t) + '</b>' + (it.d ? '<p>' + esc(it.d) + '</p>' : '') + (src ? '<div class="src">' + src + '</div>' : '') + '</div>';
+    }).join('');
+  }
+  function render(D) {
+    var h = '';
+    (D.sections || []).forEach(function (s) { if (s.items && s.items.length) h += '<div class="box"><h2>' + esc(s.title) + '</h2>' + items(s.items) + '</div>'; });
+    if (D.pick && D.pick.t) h += '<div class="pick"><div class="lb">📌 今日一件事</div><b>' + esc(D.pick.t) + '</b>' + (D.pick.d ? '<p>' + esc(D.pick.d) + '</p>' : '') + '</div>';
+    if (D.week && D.week.length) h += '<div class="box week"><h2>🗓️ 本周关注</h2>' + items(D.week) + '</div>';
+    document.getElementById('app').innerHTML = h || '<div class="empty">这一期没有内容</div>';
+    document.getElementById('sub').textContent = label(D.date) + (D.generated ? ' · ' + new Date(D.generated).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }) + ' 整理' : '');
+    window.scrollTo(0, 0);
+  }
+  function load(date, btn) {
+    [].forEach.call(document.querySelectorAll('.days button'), function (b) { b.classList.toggle('on', b === btn); });
+    get('brief/data/' + date + '.json', render, function () { document.getElementById('app').innerHTML = '<div class="empty">这一期读取失败，稍后再试</div>'; });
+  }
+  get('brief/data/index.json', function (idx) {
+    var dates = (idx.dates || []).slice(0, 14);
+    if (!dates.length) { empty(); return; }
+    document.getElementById('days').innerHTML = dates.map(function (d, i) { return '<button data-d="' + esc(d) + '">' + (i === 0 ? '最新 · ' : '') + esc(label(d)) + '</button>'; }).join('');
+    [].forEach.call(document.querySelectorAll('.days button'), function (b) { b.onclick = function () { load(b.getAttribute('data-d'), b); }; });
+    var want = (location.hash || '').slice(1), first = document.querySelector('.days button');
+    var pickBtn = want && document.querySelector('.days button[data-d="' + want + '"]');
+    load((pickBtn || first).getAttribute('data-d'), pickBtn || first);
+  }, empty);
+  function empty() {
+    document.getElementById('sub').textContent = '';
+    document.getElementById('app').innerHTML = '<div class="empty">☀️ 第一期简报会在明天早上 6 点前送到这里</div>';
+  }
+})();
+</script>
+<script src="nav.js?v=36" defer></script>
+</body>
+</html>
