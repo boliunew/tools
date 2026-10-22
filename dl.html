@@ -85,11 +85,11 @@ button{cursor:pointer}
     <h3>怎么用、存到哪</h3>
     <ul>
       <li><b>𝕏（推特）</b>：照片是原图，视频自动选最高清的那一档。点「⬇ 下载」直接存进手机的「下载（Download）」文件夹，在「我的文件」或相册里就能看到。</li>
-      <li><b>Instagram</b>：点「打开原图 / 视频」，在新页面里<b>长按图片 →「下载图片」</b>，视频点播放器右下角的 <b>⋮ → 下载</b>。多图帖子会把每一张都列出来。</li>
+      <li><b>Instagram</b>：解析后链接会自动复制，点一个下载站（snapinsta、fastdl…），在那边粘贴 → 点 Download。一个不行换下一个；别点那些站弹出的「安装 / 允许通知」。</li>
       <li>只支持<b>公开</b>的帖子；私密账号、限时动态（Stories）、需要登录才能看的内容下载不了。</li>
     </ul>
     <h3>注意</h3>
-    <p>𝕏 的数据来自公开的 FxTwitter 接口，Instagram 借用 InstaFix 类的公开转接服务（kkinstagram、uuinstagram 等，会自动轮换并记住上次能用的那个）。这些是第三方免费服务，偶尔会抽风或失效，过一会儿再试，或者换另一个服务。</p>
+    <p>𝕏 的数据来自公开的 FxTwitter 接口，Instagram 原来借用的转接服务都已关停，现在改成复制链接、跳到第三方下载站（snapinsta、fastdl 等）去下载。这些是第三方免费服务，偶尔会抽风或失效，过一会儿再试，或者换另一个服务。</p>
     <p>下载的内容版权归原作者，自己收藏、留证据没问题；转发、二次发布请注明出处或征得同意。</p>
   </div>
 </main>
@@ -99,8 +99,15 @@ button{cursor:pointer}
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('dl:' + k) || 'null'); localStorage.setItem('dl:' + k, JSON.stringify(v)); } catch (e) { return null; } }
-  var IGH = ['https://kkinstagram.com', 'https://uuinstagram.com', 'https://eeinstagram.com', 'https://instagramez.com', 'https://vxinstagram.com', 'https://ddinstagram.com'];
-  (function () { var w = ls('igok'); if (w && IGH.indexOf(w) > 0) { IGH.splice(IGH.indexOf(w), 1); IGH.unshift(w); } })();   // 上次能用的站排第一
+  // Instagram：转接站（InstaFix 类）已全部失效，改成复制链接 + 跳到第三方下载站，在那边粘贴下载
+  var IGS = [
+    ['snapinsta.app', 'https://snapinsta.app/'],
+    ['fastdl.app', 'https://fastdl.app/'],
+    ['sssinstagram.com', 'https://sssinstagram.com/'],
+    ['indown.io', 'https://indown.io/'],
+    ['saveclip.app', 'https://saveclip.app/'],
+    ['igram.world', 'https://igram.world/']
+  ];
   var MEDIA = [];
 
   function parse(s) {
@@ -187,54 +194,31 @@ button{cursor:pointer}
     $('out').innerHTML = h; status('');
   }
 
-  // ---- Instagram：InstaFix 类公开转接服务（/images/代码/序号、/videos/代码/序号 会跳到 Instagram 的原始文件）
-  function loadIG(code, reel) {
-    status('正在读取 Instagram 帖子…（多图帖子会一张张加载出来）');
-    var base = 'ig_' + code, h = '<div class="post"><div class="ph"><div><b>Instagram · ' + esc(code) + '</b><small>' + (reel ? 'Reel 视频' : '帖子') + '</small></div></div>' +
-      '<div class="tip">点「打开原图 / 视频」→ 在新页面<b>长按图片选「下载图片」</b>；视频点播放器的 <b>⋮ → 下载</b>。</div><div class="grid" id="igg"></div></div>';
-    $('out').innerHTML = h; MEDIA = [];
-    var grid = $('igg'), n = 0, hi = 0, found = 0;
-    function next() {
-      n++;
-      if (n > 20) return done();
-      var cell = document.createElement('div'); cell.className = 'm';
-      var timer = null, img;
-      function fail() {
-        clearTimeout(timer); if (img) img.onload = img.onerror = null;
-        if (n === 1 && hi < IGH.length - 1) {   // 第一个都读不到：换下一个转接站
-          hi++; status('正在读取 Instagram 帖子…（换第 ' + (hi + 1) + ' / ' + IGH.length + ' 个转接站）');
-          return attempt();
-        }
-        done();
-      }
-      function ok() {
-        clearTimeout(timer);
-        found++;
-        if (n === 1) ls('igok', IGH[hi]);
-        var media = IGH[hi] + '/videos/' + code + '/' + n, still = IGH[hi] + '/images/' + code + '/' + n;
-        cell.innerHTML = '<div class="pv"></div><div class="act"><a href="' + esc(media) + '" target="_blank" rel="noopener">⬇ 打开原图 / 视频</a><a class="sec" href="' + esc(still) + '" target="_blank" rel="noopener">只要图片（视频封面）</a><small>第 ' + n + ' 个 · ' + esc(IGH[hi].replace('https://', '')) + '</small></div>';
-        cell.firstChild.appendChild(img);
-        var tg = document.createElement('span'); tg.className = 'tag'; tg.textContent = reel && n === 1 ? '视频' : '第 ' + n + ' 个'; cell.firstChild.appendChild(tg);
-        grid.appendChild(cell);
-        next();
-      }
-      function attempt() {
-        img = new Image(); img.alt = ''; img.loading = 'eager';
-        img.onload = ok; img.onerror = fail;
-        timer = setTimeout(fail, n === 1 ? 10000 : 15000);   // 某个站卡住不回应，10 秒后放弃换下一个
-        img.src = IGH[hi] + '/images/' + code + '/' + n;
-      }
-      attempt();
+  // ---- Instagram：复制链接，打开第三方下载站（站名旁标 ✓ 表示上次用过）
+  function loadIG(code, reel, raw) {
+    var link = 'https://www.instagram.com/' + (reel ? 'reel' : 'p') + '/' + code + '/', last = ls('igsite');
+    var h = '<div class="post"><div class="ph"><div><b>Instagram · ' + esc(code) + '</b><small>' + (reel ? 'Reel 视频' : '帖子') + '</small></div></div>' +
+      '<div class="tip">点下面任意一个下载站：链接<b>已自动复制</b>，到那边长按输入框「粘贴」→ 点它的 Download。哪个打不开或下载不了就换下一个。<br>那些站广告多，<b>别点弹出来的「安装 / 允许通知」</b>，只认带 Download 字样的按钮。</div>' +
+      '<div class="grid">' + IGS.map(function (x) {
+        return '<div class="m"><div class="act"><a href="' + esc(x[1]) + '" target="_blank" rel="noopener" data-igs="' + esc(x[0]) + '">⬇ ' + esc(x[0]) + (x[0] === last ? ' ✓' : '') + '</a></div></div>';
+      }).join('') + '</div>' +
+      '<div class="tip">链接：<span style="word-break:break-all">' + esc(link) + '</span> <button class="btn btn2" id="igcopy" style="height:30px;font-size:13px">再复制一次</button></div></div>';
+    $('out').innerHTML = h;
+    MEDIA = [];
+    copy(link, true);
+    $('out').querySelectorAll('[data-igs]').forEach(function (a) { a.onclick = function () { copy(link); ls('igsite', a.getAttribute('data-igs')); }; });
+    $('igcopy').onclick = function () { copy(link); };
+  }
+  function copy(t, quiet) {
+    var okMsg = '链接已复制，点一个下载站去粘贴。';
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { status(okMsg); }, function () { fallback(); });
+    else fallback();
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      status(ok ? okMsg : (quiet ? '点一个下载站，到那边粘贴链接（如没自动复制，用下面的「再复制一次」）。' : '复制没成功：长按上面的链接手动复制。'));
     }
-    function done() {
-      if (!found) {
-        status('没读到内容：' + IGH.length + ' 个转接站都没返回。多半是这些第三方服务暂时挂了（也可能帖子是私密的或已删除）。可以过一会儿再试，或点下面的备用链接碰碰运气。', true);
-        grid.parentNode.querySelector('.tip').style.display = 'none';
-        grid.outerHTML = '<div class="tip" style="display:block">备用：直接打开 ' + IGH.map(function (b) { return '<a href="' + esc(b + '/videos/' + code + '/1') + '" target="_blank" rel="noopener">' + esc(b.replace('https://', '')) + '</a>'; }).join(' · ') + '</div>';
-      }
-      else status('找到 ' + found + ' 个' + (found > 1 ? '（多图 / 多视频帖子）' : '') + '。');
-    }
-    next();
   }
 
   function go() {
