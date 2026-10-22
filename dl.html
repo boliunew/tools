@@ -89,7 +89,7 @@ button{cursor:pointer}
       <li>只支持<b>公开</b>的帖子；私密账号、限时动态（Stories）、需要登录才能看的内容下载不了。</li>
     </ul>
     <h3>注意</h3>
-    <p>𝕏 的数据来自公开的 FxTwitter 接口，Instagram 借用 InstaFix 类的公开转接服务（uuinstagram / eeinstagram）。这些是第三方免费服务，偶尔会抽风或失效，过一会儿再试，或者换另一个服务。</p>
+    <p>𝕏 的数据来自公开的 FxTwitter 接口，Instagram 借用 InstaFix 类的公开转接服务（kkinstagram、uuinstagram 等，会自动轮换并记住上次能用的那个）。这些是第三方免费服务，偶尔会抽风或失效，过一会儿再试，或者换另一个服务。</p>
     <p>下载的内容版权归原作者，自己收藏、留证据没问题；转发、二次发布请注明出处或征得同意。</p>
   </div>
 </main>
@@ -99,7 +99,8 @@ button{cursor:pointer}
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('dl:' + k) || 'null'); localStorage.setItem('dl:' + k, JSON.stringify(v)); } catch (e) { return null; } }
-  var IGH = ['https://uuinstagram.com', 'https://eeinstagram.com'];
+  var IGH = ['https://kkinstagram.com', 'https://uuinstagram.com', 'https://eeinstagram.com', 'https://instagramez.com', 'https://vxinstagram.com', 'https://ddinstagram.com'];
+  (function () { var w = ls('igok'); if (w && IGH.indexOf(w) > 0) { IGH.splice(IGH.indexOf(w), 1); IGH.unshift(w); } })();   // 上次能用的站排第一
   var MEDIA = [];
 
   function parse(s) {
@@ -197,25 +198,40 @@ button{cursor:pointer}
       n++;
       if (n > 20) return done();
       var cell = document.createElement('div'); cell.className = 'm';
-      var img = new Image(), tried = 0;
-      img.alt = ''; img.loading = 'eager';
-      img.onload = function () {
+      var timer = null, img;
+      function fail() {
+        clearTimeout(timer); if (img) img.onload = img.onerror = null;
+        if (n === 1 && hi < IGH.length - 1) {   // 第一个都读不到：换下一个转接站
+          hi++; status('正在读取 Instagram 帖子…（换第 ' + (hi + 1) + ' / ' + IGH.length + ' 个转接站）');
+          return attempt();
+        }
+        done();
+      }
+      function ok() {
+        clearTimeout(timer);
         found++;
+        if (n === 1) ls('igok', IGH[hi]);
         var media = IGH[hi] + '/videos/' + code + '/' + n, still = IGH[hi] + '/images/' + code + '/' + n;
-        cell.innerHTML = '<div class="pv"></div><div class="act"><a href="' + esc(media) + '" target="_blank" rel="noopener">⬇ 打开原图 / 视频</a><a class="sec" href="' + esc(still) + '" target="_blank" rel="noopener">只要图片（视频封面）</a><small>第 ' + n + ' 个</small></div>';
+        cell.innerHTML = '<div class="pv"></div><div class="act"><a href="' + esc(media) + '" target="_blank" rel="noopener">⬇ 打开原图 / 视频</a><a class="sec" href="' + esc(still) + '" target="_blank" rel="noopener">只要图片（视频封面）</a><small>第 ' + n + ' 个 · ' + esc(IGH[hi].replace('https://', '')) + '</small></div>';
         cell.firstChild.appendChild(img);
         var tg = document.createElement('span'); tg.className = 'tag'; tg.textContent = reel && n === 1 ? '视频' : '第 ' + n + ' 个'; cell.firstChild.appendChild(tg);
         grid.appendChild(cell);
         next();
-      };
-      img.onerror = function () {
-        if (n === 1 && hi < IGH.length - 1) { hi++; img.src = IGH[hi] + '/images/' + code + '/' + n; return; }   // 第一个服务不行就换下一个
-        done();
-      };
-      img.src = IGH[hi] + '/images/' + code + '/' + n;
+      }
+      function attempt() {
+        img = new Image(); img.alt = ''; img.loading = 'eager';
+        img.onload = ok; img.onerror = fail;
+        timer = setTimeout(fail, n === 1 ? 10000 : 15000);   // 某个站卡住不回应，10 秒后放弃换下一个
+        img.src = IGH[hi] + '/images/' + code + '/' + n;
+      }
+      attempt();
     }
     function done() {
-      if (!found) { status('没读到内容：帖子可能是私密的、已删除，或者转接服务暂时不可用。过一会儿再试。', true); grid.parentNode.querySelector('.tip').style.display = 'none'; }
+      if (!found) {
+        status('没读到内容：' + IGH.length + ' 个转接站都没返回。多半是这些第三方服务暂时挂了（也可能帖子是私密的或已删除）。可以过一会儿再试，或点下面的备用链接碰碰运气。', true);
+        grid.parentNode.querySelector('.tip').style.display = 'none';
+        grid.outerHTML = '<div class="tip" style="display:block">备用：直接打开 ' + IGH.map(function (b) { return '<a href="' + esc(b + '/videos/' + code + '/1') + '" target="_blank" rel="noopener">' + esc(b.replace('https://', '')) + '</a>'; }).join(' · ') + '</div>';
+      }
       else status('找到 ' + found + ' 个' + (found > 1 ? '（多图 / 多视频帖子）' : '') + '。');
     }
     next();
