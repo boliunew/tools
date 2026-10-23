@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T18:39:21Z",
+ "generated": "2026-10-23T07:58:02Z",
  "ok": false,
  "problems": [
   "☀️ 每日简报（Claude 定时任务）：读不到数据：[Errno 2] No such file or directory: '/home/runner/work/tools/tools/brief/data/index.json'"
@@ -24,7 +24,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T17:56:02Z",
+   "at": "2026-10-23T07:52:04Z",
    "detail": "12 条"
   },
   {
@@ -35,7 +35,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T17:56:09Z",
+   "at": "2026-10-23T07:52:09Z",
    "detail": "75 条"
   },
   {
@@ -46,8 +46,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T17:55:37Z",
-   "detail": "306 条"
+   "at": "2026-10-23T05:54:39Z",
+   "detail": "290 条"
   },
   {
    "k": "stocks",
@@ -57,8 +57,8 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T18:11:08Z",
-   "detail": "数据日期 2026-10-21 · 499 条"
+   "at": "2026-10-23T06:05:15Z",
+   "detail": "数据日期 2026-10-22 · 499 条"
   },
   {
    "k": "earnings",
@@ -68,7 +68,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T17:43:59Z"
+   "at": "2026-10-23T00:06:05Z"
   },
   {
    "k": "deals",
@@ -78,7 +78,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T18:02:22Z"
+   "at": "2026-10-23T04:46:55Z"
   },
   {
    "k": "radio",
@@ -108,7 +108,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T13:50:51Z"
+   "at": "2026-10-23T04:58:30Z"
   },
   {
    "k": "bay_live",
@@ -118,7 +118,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T18:36:02Z"
+   "at": "2026-10-23T07:56:32Z"
   },
   {
    "k": "longterm",
