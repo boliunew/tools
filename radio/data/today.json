@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-22T15:20:53Z",
- "date": "2026-10-22",
+ "generated": "2026-10-23T15:08:50Z",
+ "date": "2026-10-23",
  "engine": "edge",
- "total": 504.1,
- "short": 296.2,
+ "total": 456.2,
+ "short": 305.9,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610220819",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610230808",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月22日 星期四",
-   "dur": 9.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610220819",
+   "sub": "10月23日 星期五",
+   "dur": 10.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "这里是你的通勤电台。今天是10月22日，星期四，方向盘上的下一首可以随时跳段。"
+     "t": "周五了，坚持一下就周末了！10月23日，星期五，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 毛毛雨 65°/55°F",
-   "dur": 31.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610220819",
+   "sub": "Upland 大雨 67°/55°F",
+   "dur": 26.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天毛毛雨。早上7点出门大约华氏60度，15摄氏度。傍晚5点下班大约华氏61度，16摄氏度。白天最高65度，约18摄氏度；最低55度。降雨概率52%。白天空气质量良好，指数最高38。今天日落时间是傍晚6点07分。提醒一下：记得带伞，路面湿滑，车速放慢。"
+     "t": "Upland今天大雨。早上7点出门大约华氏55度，13摄氏度。傍晚5点下班大约华氏66度，19摄氏度。白天最高67度，约19摄氏度；最低55度。降雨概率20%。白天空气质量良好，指数最高37。今天日落时间是傍晚6点06分。"
     }
    ]
   },
@@ -38,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 30.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610220819",
+   "dur": 29.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月21日收盘。标普500 ETF 上涨0.5%，纳指100 ETF 上涨1.1%。恐慌指数VIX 16.7，正常水平。标普成分股里，56%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月22日收盘。标普500 ETF 下跌1.2%，纳指100 ETF 下跌2.9%。恐慌指数VIX 19.0，正常水平。标普成分股里，62%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "14 个候选",
-   "dur": 64.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610220819",
+   "sub": "23 个候选",
+   "dur": 65.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天14个候选，评分最高的是Charles River Laboratories，代码 C R L。不想听细节可以按下一首。"
+     "t": "股票池今天23个候选，评分最高的是ServiceNow，代码 N O W。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中回踩金坑7个，挤压突破3个，血筹码2个，强势新高1个，RSI2 超跌反弹1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中挤压突破9个，RSI2 超跌反弹5个，强势新高3个，回踩金坑3个，血筹码3个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Charles River Laboratories，代码 C R L，挤压突破信号，收盘价344.87美元，止损参考324.71。"
+     "t": "第1，ServiceNow，代码 N O W，挤压突破信号，收盘价157.00美元，止损参考147.78，注意近期有财报。"
     },
     {
      "lang": "zh",
-     "t": "第2，IQVIA，代码 I Q V，强势新高信号，收盘价276.63美元，止损参考260.83。"
+     "t": "第2，Workday，代码 W D A Y，强势新高信号，收盘价209.99美元，止损参考195.48。"
     },
     {
      "lang": "zh",
-     "t": "第3，IBM，代码 I B M，挤压突破信号，收盘价251.46美元，止损参考241.22。"
+     "t": "第3，Estée Lauder Companies (The)，代码 E L，强势新高信号，收盘价107.72美元，止损参考100.53。"
     },
     {
      "lang": "zh",
@@ -83,42 +83,38 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "4 件大事",
-   "dur": 44.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610220819",
+   "sub": "3 件大事",
+   "dur": 44.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有3家大公司发财报。"
+     "t": "今天，有1家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Procter & Gamble，代码 P G，盘前发财报。期权定价波动正负3.0%。标签：已提前炒作。"
+     "t": "American Express，代码 A X P，盘前发财报。期权定价波动正负3.8%。标签：利好出尽型、已提前炒作、财报日常跌。"
     },
     {
      "lang": "zh",
-     "t": "Union Pacific，代码 U N P，盘前发财报。"
+     "t": "10月26日，有2家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Western Digital，代码 W D C，盘后发财报。期权定价波动正负8.2%。标签：利好出尽型。"
+     "t": "Verizon Communications，代码 V Z，盘前发财报。期权定价波动正负4.6%。标签：财报日常涨。"
     },
     {
      "lang": "zh",
-     "t": "明天，有1家大公司发财报。"
-    },
-    {
-     "lang": "zh",
-     "t": "American Express，代码 A X P，盘前发财报。标签：利好出尽型、已提前炒作、财报日常跌。"
+     "t": "Welltower，代码 W E L L，盘后发财报。期权定价波动正负6.1%。标签：财报日常涨。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · NPR · Al Jazeera",
-   "dur": 80.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610220819",
+   "sub": "BBC · Al Jazeera · The Guardian",
+   "dur": 89.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
@@ -126,48 +122,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，国际，难度B2。大意是：无订单，无座位：星巴克中国推出新店政策。"
+     "t": "第1条，来自BBC，科学，难度B2。大意是：随着风暴奥斯汀席卷苏格兰，暴雨警告。"
     },
     {
      "lang": "en",
-     "t": "No order, no seat: Starbucks China rolls out new store policy"
+     "t": "Heavy rain warning as Storm Austen sweeps across Scotland"
     },
     {
      "lang": "en",
-     "t": "Starbucks says it is improving customers' in-store experience as it competes with homegrown rivals."
+     "t": "The Met Office has issued a yellow warning for rain across Scotland on Friday, followed by a wind warning on Saturday."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自NPR，科技，难度B1。大意是：人工智能正在撼动数学领域。但接下来会发生什么？。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：让Madhubala活着：为卡拉奇的圈养大象而战。"
     },
     {
      "lang": "en",
-     "t": "AI is shaking up the field of mathematics. But what comes next?"
+     "t": "Keeping Madhubala alive: The fight for Karachi’s captive elephants"
     },
     {
      "lang": "en",
-     "t": "AI-written mathematical proofs have saddled the community with a lot of extra homework."
+     "t": "Karachi's last two African elephants remain in captivity."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：加泰罗尼亚的新极右翼：反穆斯林情绪如何重塑政治。"
+     "t": "第3条，来自The Guardian，国际，难度B2。大意是：7级地震袭击中国西藏，造成至少16人死亡，数百所房屋被毁。"
     },
     {
      "lang": "en",
-     "t": "Catalonia’s new far right: How anti-Muslim sentiment is reshaping politics"
+     "t": "Magnitude-7 earthquake hits China’s Tibet, killing at least 16 and destroying hundreds of homes"
     },
     {
      "lang": "en",
-     "t": "The rise of Catalan Alliance is causing alarm among Muslims ahead of Spain's snap election in November."
+     "t": "Search and rescue efforts under way after quake strikes region’s north, officials say, while at least seven aftershocks recorded A magnitude-7 earthquake has hit China’s Tibet region, killing at least 16 people, injuring 54 and collapsing h"
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "cost · la llave",
-   "dur": 30.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610220819",
+   "sub": "dictionary · lila",
+   "dur": 33.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
@@ -175,15 +171,15 @@
     },
     {
      "lang": "en",
-     "t": "cost"
+     "t": "dictionary"
     },
     {
      "lang": "zh",
-     "t": "意思是：花费，成本。拼写是："
+     "t": "意思是：词典。拼写是："
     },
     {
      "lang": "en",
-     "t": "c, o, s, t"
+     "t": "d, i, c, t, i, o, n, a, r, y"
     },
     {
      "lang": "zh",
@@ -191,7 +187,7 @@
     },
     {
      "lang": "en",
-     "t": "cost"
+     "t": "dictionary"
     },
     {
      "lang": "zh",
@@ -199,44 +195,40 @@
     },
     {
      "lang": "es",
-     "t": "la llave"
+     "t": "lila"
     },
     {
      "lang": "zh",
-     "t": "意思是：钥匙，水龙头。跟着读一遍。"
+     "t": "意思是：淡紫色的。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la llave"
+     "t": "lila"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 19.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610220819",
+   "sub": "口头禅",
+   "dur": 11.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天是一句口头禅。"
     },
     {
      "lang": "en",
-     "t": "Well done is better than well said."
+     "t": "Oh my gosh"
     },
     {
      "lang": "zh",
-     "t": "意思是：说得好不如做得好。这句话出自 Benjamin Franklin。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "意思是：天哪"
     },
     {
      "lang": "en",
-     "t": "Well done is better than well said."
+     "t": "Oh my gosh"
     }
    ],
    "opt": true
@@ -244,61 +236,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "报柜号/拼字母",
-   "dur": 82.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610220819",
+   "sub": "进出闸口",
+   "dur": 62.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：报柜号/拼字母。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：进出闸口。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "F 和 S"
+     "t": "请开到下一条道。"
     },
     {
      "lang": "en",
-     "t": "F as in Foxtrot, S as in Sierra."
+     "t": "Pull up to the next lane, please."
     },
     {
      "lang": "en",
-     "t": "F as in Foxtrot, S as in Sierra."
+     "t": "Pull up to the next lane, please."
     },
     {
      "lang": "zh",
-     "t": "A、E、I"
+     "t": "好了，可以走了。"
     },
     {
      "lang": "en",
-     "t": "A as in Alpha, E as in Echo, I as in India."
+     "t": "You're all set."
     },
     {
      "lang": "en",
-     "t": "A as in Alpha, E as in Echo, I as in India."
+     "t": "You're all set."
     },
     {
      "lang": "zh",
-     "t": "K、X、Y"
+     "t": "我来提货。"
     },
     {
      "lang": "en",
-     "t": "K as in Kilo, X as in X-ray, Y as in Yankee."
+     "t": "I'm here to pick up a load."
     },
     {
      "lang": "en",
-     "t": "K as in Kilo, X as in X-ray, Y as in Yankee."
+     "t": "I'm here to pick up a load."
     },
     {
      "lang": "zh",
-     "t": "O、P、R"
+     "t": "这是订舱号。"
     },
     {
      "lang": "en",
-     "t": "O as in Oscar, P as in Papa, R as in Romeo."
+     "t": "Here's the booking number."
     },
     {
      "lang": "en",
-     "t": "O as in Oscar, P as in Papa, R as in Romeo."
+     "t": "Here's the booking number."
     },
     {
      "lang": "zh",
@@ -310,13 +302,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "「刷单」「做任务」兼职是骗局",
-   "dur": 22.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610220819",
+   "sub": "券商账户再加一层锁",
+   "dur": 20.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：「刷单」「做任务」兼职是骗局。点赞、评分就能赚钱的工作。做法：正经工作不会让你先充值才能「解锁任务」；开始给你一点小钱尝甜头，后面要你越投越多；陌生人用 WhatsApp、Telegram 主动找你谈工作：提高警惕。"
+     "t": "今日一招：券商账户再加一层锁。防有人登录后把钱转走。做法：打开登录、改密码、新增银行账户、资金转出的提醒；看券商有没有语音验证、账户锁定之类的额外保护；不在别人的电脑上登录券商。"
     }
    ],
    "opt": true
@@ -324,13 +316,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1940 · 1966 · 1991",
-   "dur": 30.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610220819",
+   "sub": "1884 · 1906 · 2002",
+   "dur": 23.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1940年，比利时首相于贝尔·皮埃洛在躲避维希法国与佛朗哥西班牙当局的追捕后抵达伦敦，标志着比利时流亡政府的成立。1966年，凭借专辑《The Supremes A' Go-Go》，至上女声三重唱成为首支登上告示牌二百大专辑榜冠军的全女子团体。1991年，巴尔多禄茂一世就任东正教普世牧首。"
+     "t": "历史上的今天。1884年，中法战争：法军司令孤拔宣布封锁台湾。1906年，亚伯托·桑托斯·杜蒙驾驶他的双翼机14-bis在约4米的高度飞行了50米。2002年，《联合国气候变化纲要公约》第8届缔约方会议召开。"
     }
    ],
    "opt": true
@@ -338,21 +330,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "和子由渑池怀旧",
-   "dur": 52.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610220819",
+   "sub": "海棠",
+   "dur": 31.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：和子由渑池怀旧。写于1061年，他24岁，在赴凤翔途中。"
+     "t": "读一首苏轼：海棠。写于1084年，他47岁，在黄州。"
     },
     {
      "lang": "zh",
-     "t": "人生到处知何似，应似飞鸿踏雪泥。泥上偶然留指爪，鸿飞那复计东西。老僧已死成新塔，坏壁无由见旧题。往日崎岖还记否，路长人困蹇驴嘶。"
+     "t": "东风袅袅泛崇光，香雾空蒙月转廊。只恐夜深花睡去，故烧高烛照红妆。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：人这一辈子四处奔波，像什么呢？就像大雁落在雪地上，偶然留下几个爪印，飞走之后，哪还管自己落在了东边还是西边。当年留宿的老和尚已经去世，变成了一座新塔；我们题诗的那面墙也坏了，旧诗再也看不到了。你还记得当年那段崎岖的路吗？路那么长，人那么累，跛脚的驴一路嘶叫。"
+     "t": "白话意思是：春风轻轻吹，海棠花泛着美丽的光泽；花香像雾一样弥漫，月亮已经转过了回廊。我只怕夜太深了，花儿也要睡去，所以特地点起高高的蜡烛，照着这身红妆。"
     }
    ],
    "opt": true
@@ -361,12 +353,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610220819",
+   "dur": 6.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610230808",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
     }
    ]
   }
