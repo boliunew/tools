@@ -1,16 +1,16 @@
 {
- "date": "2026-10-22",
- "kind": "名言",
- "en": "Well done is better than well said.",
- "zh": "说得好不如做得好。",
- "by": "Benjamin Franklin",
- "line": "Well done is better than well said. — Benjamin Franklin",
+ "date": "2026-10-23",
+ "kind": "口头禅",
+ "en": "Oh my gosh",
+ "zh": "天哪",
+ "by": "非常惊讶（比 Oh my God 更委婉）",
+ "line": "Oh my gosh",
  "word": {
-  "w": "trench",
-  "ph": "trentʃ",
-  "zh": "n. 渠，沟渠，战壕；vt. 在...开沟，挖战壕于，用战壕围住",
-  "ex": "Look at the great trench in the opposite hill.",
-  "exzh": "看对面山上那条大沟。"
+  "w": "continually",
+  "ph": "kәn'tinjuәli",
+  "zh": "adv. 不断地，频繁地",
+  "ex": "Ever since his graduation from university until his retirement, Lao Wang had continually worked as a teacher.",
+  "exzh": "从大学毕业到退休，老王一直担任教学工作。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
