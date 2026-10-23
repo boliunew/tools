@@ -1,0 +1,31 @@
+{"date":"2026-10-23","generated":"2026-10-23T12:52:27Z","sections":[
+{"key":"ai","title":"🤖 AI 与科技","items":[
+{"t":"OpenAI 据报正以 1.25 万亿美元估值融资最多 300 亿美元","d":"CNBC 援引消息称，本轮由 Coatue 和阿联酋投资者牵头，条款仍在谈判中，可能与阿联酋算力合作挂钩。若成交，将是史上估值最高的私营公司，也为其 IPO 定调；Anthropic 同样已秘密递交 IPO 申请。","src":[{"n":"TechCrunch","u":"https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo"}]},
+{"t":"沃尔玛推出 Agent Gateway，向 AI 购物代理开放门店","d":"这是一个 
+MCP 服务器，经批准的 AI 代理可以查库存并替用户下单，每个代理有独立账户、消费上限和逐笔审批。与亚马逊屏蔽外部代理的做法形成对比，是“代理式电商”落地的标志性一步。","src":[{"n":"TechCrunch","u":"https://techcrunch.com/2026/10/21/while-amazon-blocks-ai-agents-walmart-rolls-out-the-welcome-mat/"}]},
+{"t":"Meta 加码 AI 资本开支，引发市场对 AI 投入回报的再度担忧","d":"Meta 三季度营收超预期，但宣布发行无投票权股票并拆股，市场解读为资本承诺持续膨胀，股价当日跌 7%，并拖累整个 AI/芯片板块。","src":[{"n":"Yahoo Finance","u":"https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-22-dow-sp
+-500-nasdaq-tesla-meta-112217857.html"}]}
+]},
+{"key":"market","title":"📈 美股市场","items":[
+{"t":"周四收盘：纳指 -2.6%，标普 -1.2%（7,663.43），道指持平（+0.02%，52,867.98）","d":"纳指录得 6 月初以来最大单日跌幅，费城半导体指数跌约 6.7%。资金转向避险，10 年期美债收益率大跌约 19 个基点至 4.95%，为 2023 年 3 月以来最大单日降幅。","src":[{"n":"Reuters via MarketScreener","u":"https://www.marketscreener.com/news/stocks-drop-as-meta-fans-ai-worries-treasuries-gain-ce785cdede89f223"},{"n":"CNBC","u":"https://www.cnbc.com/2026/10
+/21/stock-market-today-live-updates.html"}]},
+{"t":"个股异动：Meta -7%、特斯拉 -3.1%、CoreWeave 约 -10%、Moderna 跌超 20%","d":"特斯拉财报超预期，但 2027–28 年在 Optimus、Cybercab 等项目上的支出计划引发顾虑；CoreWeave 因高负债和融资成本承压；Moderna 因癌症疫苗研究结果不及预期大跌。黑石则因退出和费用前景乐观涨 8.4%。","src":[{"n":"Yahoo Finance","u":"https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-22-dow-sp-500-nasdaq-tesla-meta-112217857.html"}]},
+{"t":"油价升至五个月高位：布伦特原油收于 113.17 美元","d":"中东局势升级推动布伦特单日涨约 4%。
+高油价会直接抬升通胀预期，也是近期美联储偏鹰的重要背景，能源与航空等板块敏感度高。","src":[{"n":"Reuters via MarketScreener","u":"https://www.marketscreener.com/news/stocks-drop-as-meta-fans-ai-worries-treasuries-gain-ce785cdede89f223"}]}
+]},
+{"key":"macro","title":"🏦 宏观经济","items":[
+{"t":"路透调查：经济学家几乎一致预计美联储 10 月按兵不动、12 月再次加息","d":"在油价推升通胀的背景下，美联储已处于加息周期。市场关注主席沃什（Kevin Warsh）是否会在下周会议上给出意外信号。","src":[{"n":"Reuters via US News","u":"https://money.usnews
+.com/investing/news/articles/2026-10-20/fed-to-skip-october-but-raise-rates-again-in-december-nearly-all-economists-say-reuters-poll"},{"n":"CNBC","u":"https://www.cnbc.com/2026/10/16/kevin-warsh-fed-october-rate-hike-interest-rates-markets.html"}]},
+{"t":"首申失业金人数降至 19.4 万，为三个月低点","d":"低于预期的 20 万，显示劳动力市场依然紧，这让美联储继续收紧政策的理由更充分。周四 5 年期 TIPS 拍卖收益率 2.367%，明显高于上次的 1.955%。","src":[{"n":"Trading Economics","u":"https://tradingeconomics.com/united-states/calendar"}]},
+{"t":"今日数据（美东时间）：9:45 标普全球 10 月 PMI 初值；10:00 密
+歇根大学消费者信心终值","d":"密歇根信心预期 46.3（前值 48.1），1 年通胀预期预计 4.7%、5 年 3.5%。通胀预期数据是美联储下周开会前的最后一批重要参考。","src":[{"n":"Trading Economics","u":"https://tradingeconomics.com/united-states/calendar"}]}
+]},
+{"key":"world","title":"🌍 世界大事","items":[
+{"t":"伊朗局势升级：霍尔木兹海峡附近多艘船只遇袭或触雷，美伊谈判陷入僵局","d":"伊朗革命卫队称有船只在波斯湾被击中、另有船只触雷，并威胁若美国继续护航将打击其地区基地。《纽约时报》报道美以已制定中期选举（11 月 3 日）后的打击计划。这是推动油价上涨的核心变量。","src":
+[{"n":"Times of Israel","u":"https://www.timesofisrael.com/liveblog-october-22-2026/"}]},
+{"t":"沙特东部遭袭：达曼机场遇导弹袭击，阿美据报疏散总部员工","d":"沙特当局称袭击造成人员伤亡；阿美石油总部所在的达兰地区紧张，市场担忧海湾产油设施安全，进一步推高原油风险溢价。","src":[{"n":"Times of Israel","u":"https://www.timesofisrael.com/liveblog-october-22-2026/"}]},
+{"t":"法国 10 年期国债收益率自 2013 年以来首次高于美债","d":"财政担忧叠加街头抗议推高法债收益率，反映欧元区核心国家的财政风险正被重新定价。","src":[{"n":"Reuters via 
+MarketScreener","u":"https://www.marketscreener.com/news/stocks-drop-as-meta-fans-ai-worries-treasuries-gain-ce785cdede89f223"}]}
+]}],
+"pick":{"t":"读懂“AI 资本开支焦虑”：昨天的下跌为何从 Meta 一路传导到芯片和美债","d":"一家公司的财报引发纳指 -2.6%、半导体 -6.7%、10 年美债收益率 -19bp，这是观察 AI 投资周期与融资链条（CoreWeave 等高负债算力商）如何相互影响的好样本。作为量化开发者，可以用 Python 拉取 META、NVDA、SOXX、CRWV、TLT 的日内数据，看看冲击的先后顺序和相关性变化。"},
+"week":[]}
