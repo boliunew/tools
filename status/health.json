@@ -1,8 +1,8 @@
 {
- "generated": "2026-10-23T07:58:02Z",
+ "generated": "2026-10-23T18:30:12Z",
  "ok": false,
  "problems": [
-  "☀️ 每日简报（Claude 定时任务）：读不到数据：[Errno 2] No such file or directory: '/home/runner/work/tools/tools/brief/data/index.json'"
+  "☀️ 每日简报（Claude 定时任务）：读不到数据：Invalid control character at: line 4 column 52 (char 451)"
  ],
  "sig": "☀️ 每日简报（Claude 定时任务）",
  "data": [
@@ -13,7 +13,7 @@
    "page": "brief.html",
    "wf": "",
    "ok": false,
-   "msg": "读不到数据：[Errno 2] No such file or directory: '/home/runner/work/tools/tools/brief/data/index.json'",
+   "msg": "读不到数据：Invalid control character at: line 4 column 52 (char 451)",
    "at": null
   },
   {
@@ -24,7 +24,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T07:52:04Z",
+   "at": "2026-10-23T17:50:36Z",
    "detail": "12 条"
   },
   {
@@ -35,7 +35,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T07:52:09Z",
+   "at": "2026-10-23T17:50:44Z",
    "detail": "75 条"
   },
   {
@@ -46,8 +46,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T05:54:39Z",
-   "detail": "290 条"
+   "at": "2026-10-23T17:50:16Z",
+   "detail": "284 条"
   },
   {
    "k": "stocks",
@@ -57,7 +57,7 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T06:05:15Z",
+   "at": "2026-10-23T17:59:04Z",
    "detail": "数据日期 2026-10-22 · 499 条"
   },
   {
@@ -68,7 +68,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T00:06:05Z"
+   "at": "2026-10-23T17:31:56Z"
   },
   {
    "k": "deals",
@@ -78,7 +78,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T04:46:55Z"
+   "at": "2026-10-23T17:54:05Z"
   },
   {
    "k": "radio",
@@ -88,7 +88,7 @@
    "wf": "radio.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T15:20:53Z"
+   "at": "2026-10-23T15:08:50Z"
   },
   {
    "k": "card",
@@ -98,7 +98,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-22T23:59:00Z"
+   "at": "2026-10-23T23:59:00Z"
   },
   {
    "k": "monitor",
@@ -108,7 +108,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T04:58:30Z"
+   "at": "2026-10-23T13:30:44Z"
   },
   {
    "k": "bay_live",
@@ -118,7 +118,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T07:56:32Z"
+   "at": "2026-10-23T18:27:00Z"
   },
   {
    "k": "longterm",
