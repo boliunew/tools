@@ -118,9 +118,10 @@ timer rankings "电影 / 音乐 Top 500（每周一）" "Mon 05:37"
 timer holidays "节假日数据（每月 1 号、15 号）" "*-*-01,15 06:17"
 timer holpush  "节日提醒推送（每天早上）" "*-*-* 08:03"
 timer ferry    "渡轮时刻表（周一、周四）" "Mon,Thu 05:41"
+timer signal   "信号日报 → Telegram（收盘后、第二天早上补一次）" "Mon..Fri 14:52" "Tue..Sat 06:52"
 sudo systemctl daemon-reload
-sudo systemctl restart tools-stocks.timer tools-earnings.timer tools-news.timer tools-deals.timer tools-radio.timer tools-monitor.timer tools-rankings.timer tools-holidays.timer tools-holpush.timer tools-ferry.timer
-ok "10 个定时任务（查看：systemctl list-timers 'tools-*'）"
+sudo systemctl restart tools-stocks.timer tools-earnings.timer tools-news.timer tools-deals.timer tools-radio.timer tools-monitor.timer tools-rankings.timer tools-holidays.timer tools-holpush.timer tools-signal.timer tools-ferry.timer
+ok "11 个定时任务（查看：systemctl list-timers 'tools-*'）"
 
 # ------------------------------------------------------------------ 4. Tailscale
 say "4/5 Tailscale：只让你自己的手机和电脑访问"

@@ -1,0 +1,49 @@
+name: 信号日报推送
+
+# 每个交易日收盘后，把 6 只股票的 RSI / 趋势 / 吸筹信号推送到 Telegram。
+# 需要在 Settings → Secrets and variables → Actions 里加两个 secret：TG_BOT_TOKEN、TG_CHAT_ID。
+# 同一根收盘K只推一次：重跑、补跑都不会重复推送。
+on:
+  schedule:
+    - cron: "52 21 * * 1-5"   # 收盘后（夏令时 14:52 太平洋）
+    - cron: "52 13 * * 2-6"   # 第二天早上补一次（Yahoo 偶尔延迟）
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "强制再推一次（即使今天已推过）"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: signal-bot
+  cancel-in-progress: false
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: stocks/requirements.txt
+      - run: pip install -r stocks/requirements.txt
+      - name: Signal report
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          FORCE: ${{ github.event.inputs.force }}
+        run: python stocks/signal_bot.py $([ "$FORCE" = "true" ] && echo --force)
+      - name: Commit state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stocks/data/signal_bot_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "信号日报状态 $(date -u +%F)"
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; git rebase --abort 2>/dev/null; sleep 5; done
