@@ -25,7 +25,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 🇪🇸 西班牙 | 5 | #129 潘神的迷宮 |
 | 🇰🇷 韩国 | 4 | #40 寄生虫 |
 | 🇩🇪 德国 | 3 | #75 窃听风暴 |
-| 🌐 其他 13 个国家和地区 | 17 | #113 纳德和西敏：一次别离 |
+| 🌐 其他 13 个国家和地区 | 17 | #114 纳德和西敏：一次别离 |
 
 ## 总榜前 20
 
@@ -76,7 +76,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 19 | [**七宗罪**](https://www.imdb.com/title/tt0114369/) · Seven | 1995 | 8.6 | 207万 |
 | 20 | [**沉默的羔羊**](https://www.imdb.com/title/tt0102926/) · The Silence of the Lambs | 1991 | 8.6 | 176万 |
 | 21 | [**拯救大兵瑞恩**](https://www.imdb.com/title/tt0120815/) · Saving Private Ryan | 1998 | 8.6 | 167万 |
-| 22 | [**星球大战：曙光乍现**](https://www.imdb.com/title/tt0076759/) · Star Wars: Episode IV - A New Hope | 1977 | 8.6 | 159万 |
+| 22 | [**星球大战：曙光乍现**](https://www.imdb.com/title/tt0076759/) · Star Wars: Episode IV - A New Hope | 1977 | 8.6 | 160万 |
 | 23 | [**绿里奇迹**](https://www.imdb.com/title/tt0120689/) · The Green Mile | 1999 | 8.6 | 159万 |
 | 24 | [**终结者2：审判日**](https://www.imdb.com/title/tt0103064/) · Terminator 2: Judgment Day | 1991 | 8.6 | 131万 |
 | 25 | [**飞越疯人院**](https://www.imdb.com/title/tt0073486/) · One Flew Over the Cuckoo's Nest | 1975 | 8.6 | 117万 |
@@ -113,7 +113,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 67 | [**现代启示录**](https://www.imdb.com/title/tt0078788/) · Apocalypse Now | 1979 | 8.4 | 78万 |
 | 68 | [**寻梦环游记**](https://www.imdb.com/title/tt2380307/) · Coco · 合拍：墨西哥 | 2017 | 8.4 | 73万 |
 | 70 | [**后窗**](https://www.imdb.com/title/tt0047396/) · Rear Window | 1954 | 8.4 | 58万 |
-| 71 | [**奥德赛**](https://www.imdb.com/title/tt33764258/) · The Odyssey · 合拍：英国 | 2026 | 8.4 | 53万 |
+| 71 | [**奥德赛**](https://www.imdb.com/title/tt33764258/) · The Odyssey · 合拍：英国 | 2026 | 8.4 | 54万 |
 | 73 | [**莫扎特传**](https://www.imdb.com/title/tt0086879/) · Amadeus | 1984 | 8.4 | 47万 |
 | 74 | [**城市之光**](https://www.imdb.com/title/tt0021749/) · City Lights | 1931 | 8.5 | 22万 |
 | 78 | [**小丑**](https://www.imdb.com/title/tt7286456/) · Joker | 2019 | 8.3 | 173万 |
@@ -145,7 +145,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 110 | [**老无所依**](https://www.imdb.com/title/tt0477348/) · No Country for Old Men | 2007 | 8.2 | 122万 |
 | 111 | [**侏罗纪公园**](https://www.imdb.com/title/tt0107290/) · Jurassic Park | 1993 | 8.2 | 120万 |
 | 112 | [**落水狗**](https://www.imdb.com/title/tt0105236/) · Reservoir Dogs | 1992 | 8.2 | 119万 |
-| 114 | [**第六感**](https://www.imdb.com/title/tt0167404/) · The Sixth Sense | 1999 | 8.2 | 117万 |
+| 113 | [**第六感**](https://www.imdb.com/title/tt0167404/) · The Sixth Sense | 1999 | 8.2 | 117万 |
 | 115 | [**奥本海默**](https://www.imdb.com/title/tt15398776/) · Oppenheimer · 合拍：英国 | 2023 | 8.2 | 111万 |
 | 116 | [**美丽心灵**](https://www.imdb.com/title/tt0268978/) · A Beautiful Mind | 2001 | 8.2 | 107万 |
 | 117 | [**出租车司机**](https://www.imdb.com/title/tt0075314/) · Taxi Driver | 1976 | 8.2 | 105万 |
@@ -270,8 +270,8 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 300 | [**漫漫回家路**](https://www.imdb.com/title/tt3741834/) · Lion · 合拍：英国、澳大利亚 | 2016 | 8.0 | 27万 |
 | 301 | [**罗丝玛丽的婴儿**](https://www.imdb.com/title/tt0063522/) · Rosemary's Baby | 1968 | 8.0 | 26万 |
 | 303 | [**阿凡达**](https://www.imdb.com/title/tt0499549/) · Avatar | 2009 | 7.9 | 152万 |
-| 307 | [**钢铁侠**](https://www.imdb.com/title/tt0371746/) · Iron Man | 2008 | 7.9 | 126万 |
-| 308 | [**神枪手与智多星**](https://www.imdb.com/title/tt0064115/) · Butch Cassidy and the Sundance Kid | 1969 | 8.0 | 24万 |
+| 307 | [**神枪手与智多星**](https://www.imdb.com/title/tt0064115/) · Butch Cassidy and the Sundance Kid | 1969 | 8.0 | 24万 |
+| 308 | [**钢铁侠**](https://www.imdb.com/title/tt0371746/) · Iron Man | 2008 | 7.9 | 126万 |
 | 311 | [**史密斯先生到华盛顿**](https://www.imdb.com/title/tt0031679/) · Mr. Smith Goes to Washington | 1939 | 8.1 | 13万 |
 | 312 | [**健听女孩**](https://www.imdb.com/title/tt10366460/) · CODA · 合拍：法国、加拿大 | 2021 | 8.0 | 23万 |
 | 314 | [**淘金记**](https://www.imdb.com/title/tt0015864/) · The Gold Rush | 1925 | 8.1 | 13万 |
@@ -305,11 +305,11 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 356 | [**科学怪人奇谭**](https://www.imdb.com/title/tt0072431/) · Young Frankenstein | 1974 | 8.0 | 18万 |
 | 357 | [**银河护卫队3**](https://www.imdb.com/title/tt6791350/) · Guardians of the Galaxy Vol. 3 | 2023 | 7.9 | 49万 |
 | 359 | [**查克·史奈德之正义联盟**](https://www.imdb.com/title/tt12361974/) · Zack Snyder's Justice League | 2021 | 7.9 | 48万 |
-| 360 | [**梦幻人生**](https://www.imdb.com/title/tt0319061/) · Big Fish | 2003 | 7.9 | 48万 |
+| 361 | [**梦幻人生**](https://www.imdb.com/title/tt0319061/) · Big Fish | 2003 | 7.9 | 48万 |
 | 362 | [**E.T.外星人**](https://www.imdb.com/title/tt0083866/) · E.T. the Extra-Terrestrial | 1982 | 7.9 | 48万 |
 | 363 | [**天地玄黄**](https://www.imdb.com/title/tt0103767/) · Baraka | 1992 | 8.5 | 4.4万 |
-| 364 | [**穆赫兰大道**](https://www.imdb.com/title/tt0166924/) · Mulholland Drive | 2001 | 7.9 | 44万 |
-| 365 | [**愤怒的葡萄 (电影)**](https://www.imdb.com/title/tt0032551/) · The Grapes of Wrath | 1940 | 8.1 | 11万 |
+| 364 | [**愤怒的葡萄 (电影)**](https://www.imdb.com/title/tt0032551/) · The Grapes of Wrath | 1940 | 8.1 | 11万 |
+| 365 | [**穆赫兰大道**](https://www.imdb.com/title/tt0166924/) · Mulholland Drive | 2001 | 7.9 | 44万 |
 | 369 | [**将军号**](https://www.imdb.com/title/tt0017925/) · The General | 1926 | 8.1 | 11万 |
 | 370 | [**怪诞城之夜**](https://www.imdb.com/title/tt0107688/) · The Nightmare Before Christmas | 1993 | 7.9 | 42万 |
 | 374 | [**年少时代**](https://www.imdb.com/title/tt1065073/) · Boyhood | 2014 | 7.9 | 38万 |
@@ -332,8 +332,8 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 402 | [**角頭風雲**](https://www.imdb.com/title/tt0106519/) · Carlito's Way | 1993 | 7.9 | 25万 |
 | 406 | [**鞋猫剑客2**](https://www.imdb.com/title/tt3915174/) · Puss in Boots: The Last Wish | 2022 | 7.9 | 23万 |
 | 407 | [**蓝调兄弟**](https://www.imdb.com/title/tt0080455/) · The Blues Brothers | 1980 | 7.9 | 23万 |
-| 411 | [**美国队长：内战**](https://www.imdb.com/title/tt3498820/) · Captain America: Civil War | 2016 | 7.8 | 95万 |
-| 412 | [**蝙蝠侠**](https://www.imdb.com/title/tt1877830/) · The Batman | 2022 | 7.8 | 95万 |
+| 411 | [**蝙蝠侠**](https://www.imdb.com/title/tt1877830/) · The Batman | 2022 | 7.8 | 95万 |
+| 412 | [**美国队长：内战**](https://www.imdb.com/title/tt3498820/) · Captain America: Civil War | 2016 | 7.8 | 95万 |
 | 413 | [**哈比人：不思议之旅**](https://www.imdb.com/title/tt0903624/) · The Hobbit: An Unexpected Journey · 合拍：新西兰 | 2012 | 7.8 | 94万 |
 | 415 | [**逃出绝命镇**](https://www.imdb.com/title/tt5052448/) · Get Out · 合拍：日本 | 2017 | 7.8 | 84万 |
 | 416 | [**社交网络**](https://www.imdb.com/title/tt1285016/) · The Social Network | 2010 | 7.8 | 83万 |
@@ -350,8 +350,8 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 430 | [**荒岛余生**](https://www.imdb.com/title/tt0162222/) · Cast Away | 2000 | 7.8 | 70万 |
 | 432 | [**独家腥闻**](https://www.imdb.com/title/tt2872718/) · Nightcrawler | 2014 | 7.8 | 69万 |
 | 434 | [**爱在午夜希腊时**](https://www.imdb.com/title/tt2209418/) · Before Midnight | 2013 | 7.9 | 19万 |
-| 435 | [**回到未来II**](https://www.imdb.com/title/tt0096874/) · Back to the Future Part II | 1989 | 7.8 | 63万 |
-| 436 | [**史崔特先生的故事**](https://www.imdb.com/title/tt0166896/) · The Straight Story · 合拍：英国、法国 | 1999 | 8.0 | 11万 |
+| 435 | [**史崔特先生的故事**](https://www.imdb.com/title/tt0166896/) · The Straight Story · 合拍：英国、法国 | 1999 | 8.0 | 11万 |
+| 436 | [**回到未来II**](https://www.imdb.com/title/tt0096874/) · Back to the Future Part II | 1989 | 7.8 | 63万 |
 | 437 | [**谍影重重**](https://www.imdb.com/title/tt0258463/) · The Bourne Identity · 合拍：德国、捷克 | 2002 | 7.8 | 62万 |
 | 438 | [**黄金时代**](https://www.imdb.com/title/tt0036868/) · The Best Years of Our Lives | 1946 | 8.1 | 7.7万 |
 | 440 | [**黑鲸**](https://www.imdb.com/title/tt2545118/) · Blackfish | 2013 | 8.1 | 7.7万 |
@@ -378,8 +378,8 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 471 | [**摇滚万万岁**](https://www.imdb.com/title/tt0088258/) · This Is Spinal Tap | 1984 | 7.9 | 16万 |
 | 472 | [**今天不是读书天**](https://www.imdb.com/title/tt0091042/) · Ferris Bueller's Day Off | 1986 | 7.8 | 42万 |
 | 474 | [**斗士**](https://www.imdb.com/title/tt0964517/) · The Fighter | 2010 | 7.8 | 41万 |
-| 476 | [**驯龙高手2**](https://www.imdb.com/title/tt1646971/) · How to Train Your Dragon 2 | 2014 | 7.8 | 41万 |
-| 478 | [**痴迷**](https://www.imdb.com/title/tt37287335/) · Obsession | 2025 | 7.8 | 41万 |
+| 476 | [**痴迷**](https://www.imdb.com/title/tt37287335/) · Obsession | 2025 | 7.8 | 41万 |
+| 478 | [**驯龙高手2**](https://www.imdb.com/title/tt1646971/) · How to Train Your Dragon 2 | 2014 | 7.8 | 41万 |
 | 480 | [**2009月球漫游**](https://www.imdb.com/title/tt1182345/) · Moon · 合拍：英国 | 2009 | 7.8 | 40万 |
 | 481 | [**傲慢与偏见**](https://www.imdb.com/title/tt0414387/) · Pride & Prejudice · 合拍：英国、法国 | 2005 | 7.8 | 38万 |
 | 483 | [**科伦拜恩的保龄**](https://www.imdb.com/title/tt0310793/) · Bowling for Columbine · 合拍：德国、加拿大 | 2002 | 7.9 | 15万 |
@@ -434,7 +434,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 348 | [**科拉爾金礦**](https://www.imdb.com/title/tt7838252/) · K.G.F: Chapter 1 | 2018 | 8.1 | 11万 |
 | 349 | [**小萝莉的猴神大叔**](https://www.imdb.com/title/tt3863552/) · Bajrangi Bhaijaan | 2015 | 8.1 | 11万 |
 | 358 | [**灵魂奔跑者**](https://www.imdb.com/title/tt2356180/) · Bhaag Milkha Bhaag | 2013 | 8.2 | 8.0万 |
-| 361 | [**迷途新娘**](https://www.imdb.com/title/tt21626284/) · Lost Ladies | 2023 | 8.3 | 6.3万 |
+| 360 | [**迷途新娘**](https://www.imdb.com/title/tt21626284/) · Lost Ladies | 2023 | 8.3 | 6.3万 |
 | 366 | [**Ratsasan**](https://www.imdb.com/title/tt7060344/) | 2018 | 8.3 | 6.2万 |
 | 367 | [**塔巴德**](https://www.imdb.com/title/tt8239946/) · Tumbbad · 合拍：瑞典 | 2018 | 8.2 | 7.8万 |
 | 372 | [**视觉**](https://www.imdb.com/title/tt3417422/) · Drishyam | 2013 | 8.4 | 5.0万 |
@@ -471,7 +471,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 220 | [**声之形**](https://www.imdb.com/title/tt5323662/) · A Silent Voice: The Movie | 2016 | 8.2 | 15万 |
 | 227 | [**大镖客**](https://www.imdb.com/title/tt0055630/) · Yojimbo | 1961 | 8.2 | 15万 |
 | 236 | [**天國與地獄**](https://www.imdb.com/title/tt0057565/) · High and Low | 1963 | 8.4 | 7.4万 |
-| 271 | [**鬼滅之刃劇場版 無限城篇**](https://www.imdb.com/title/tt32820897/) · Demon Slayer: Kimetsu No Yaiba Infinity Castle | 2025 | 8.3 | 8.8万 |
+| 271 | [**鬼滅之刃劇場版 無限城篇**](https://www.imdb.com/title/tt32820897/) · Demon Slayer: Kimetsu No Yaiba Infinity Castle | 2025 | 8.3 | 8.9万 |
 | 272 | [**罗生门**](https://www.imdb.com/title/tt0042876/) · Rashomon | 1950 | 8.1 | 20万 |
 | 289 | [**鬼滅之刃劇場版 無限列車篇**](https://www.imdb.com/title/tt11032374/) · Demon Slayer: Kimetsu no Yaiba - The Movie: Mugen Train | 2020 | 8.2 | 10万 |
 | 302 | [**链锯人剧场版：蕾洁篇**](https://www.imdb.com/title/tt30472557/) · Chainsaw Man - The Movie: Reze Arc | 2025 | 8.3 | 7.2万 |
@@ -479,7 +479,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 335 | [**天空之城**](https://www.imdb.com/title/tt0092067/) · Castle in the Sky | 1986 | 8.0 | 20万 |
 | 338 | [**風之谷**](https://www.imdb.com/title/tt0087544/) · Nausicaä of the Valley of the Wind | 1984 | 8.0 | 20万 |
 | 404 | [**未麻之部屋**](https://www.imdb.com/title/tt0156887/) · Perfect Blue | 1997 | 8.0 | 13万 |
-| 428 | [**新世纪福音战士剧场版：THE END OF EVANGELION**](https://www.imdb.com/title/tt0169858/) · Neon Genesis Evangelion: The End of Evangelion | 1997 | 8.1 | 8.0万 |
+| 427 | [**新世纪福音战士剧场版：THE END OF EVANGELION**](https://www.imdb.com/title/tt0169858/) · Neon Genesis Evangelion: The End of Evangelion | 1997 | 8.1 | 8.0万 |
 | 431 | [**东京物语**](https://www.imdb.com/title/tt0046438/) · Tokyo Story | 1953 | 8.1 | 7.9万 |
 
 ## 🇫🇷 法国（20）
@@ -521,8 +521,8 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 255 | [**国王的演讲**](https://www.imdb.com/title/tt1504320/) · The King's Speech | 2010 | 8.0 | 74万 |
 | 273 | [**第三人**](https://www.imdb.com/title/tt0041959/) · The Third Man | 1949 | 8.1 | 20万 |
 | 283 | [**蒙提·派森之布莱恩的一生**](https://www.imdb.com/title/tt0079470/) · Monty Python's Life of Brian | 1979 | 8.0 | 44万 |
-| 304 | [**甘地传**](https://www.imdb.com/title/tt0083987/) · Gandhi · 合拍：印度 | 1982 | 8.0 | 25万 |
-| 305 | [**7天**](https://www.imdb.com/title/tt31514146/) · I Swear | 2025 | 8.3 | 7.1万 |
+| 304 | [**7天**](https://www.imdb.com/title/tt31514146/) · I Swear | 2025 | 8.3 | 7.1万 |
+| 305 | [**甘地传**](https://www.imdb.com/title/tt0083987/) · Gandhi · 合拍：印度 | 1982 | 8.0 | 25万 |
 | 371 | [**狗镇**](https://www.imdb.com/title/tt0276919/) · Dogville · 合拍：法国、德国、瑞典 | 2003 | 8.0 | 17万 |
 | 373 | [**寻找甜秘客**](https://www.imdb.com/title/tt2125608/) · Searching for Sugar Man · 合拍：瑞典 | 2012 | 8.2 | 7.7万 |
 | 433 | [**僵尸肖恩**](https://www.imdb.com/title/tt0365748/) · Shaun of the Dead · 合拍：法国 | 2004 | 7.8 | 65万 |
@@ -596,7 +596,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 
 | # | 片名 | 年份 | 评分 | 人数 |
 |---:|---|---|---:|---:|
-| 113 | [**纳德和西敏：一次别离**](https://www.imdb.com/title/tt1832382/) · A Separation | 2011 | 8.3 | 28万 |
+| 114 | [**纳德和西敏：一次别离**](https://www.imdb.com/title/tt1832382/) · A Separation | 2011 | 8.3 | 28万 |
 | 143 | [**我想有个家**](https://www.imdb.com/title/tt8267604/) · Capernaum | 2018 | 8.4 | 13万 |
 | 198 | [**纳粹屠城**](https://www.imdb.com/title/tt0091251/) · Come and See | 1985 | 8.3 | 13万 |
 | 199 | [**大都会**](https://www.imdb.com/title/tt0017136/) · Metropolis | 1927 | 8.2 | 20万 |
@@ -608,7 +608,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 380 | [**潜行者**](https://www.imdb.com/title/tt0079944/) · Stalker | 1979 | 8.0 | 16万 |
 | 392 | [**无间道**](https://www.imdb.com/title/tt0338564/) · Infernal Affairs | 2002 | 8.0 | 14万 |
 | 409 | [**精英部队**](https://www.imdb.com/title/tt0861739/) · Elite Squad | 2007 | 8.0 | 12万 |
-| 427 | [**英雄**](https://www.imdb.com/title/tt0299977/) · Hero | 2002 | 7.9 | 20万 |
+| 428 | [**英雄**](https://www.imdb.com/title/tt0299977/) · Hero | 2002 | 7.9 | 20万 |
 | 468 | [**我的章鱼老师**](https://www.imdb.com/title/tt12888462/) · My Octopus Teacher | 2020 | 8.1 | 7.3万 |
 | 470 | [**唯一的家园**](https://www.imdb.com/title/tt30953759/) · No Other Land | 2024 | 8.2 | 5.7万 |
 | 493 | [**精英部隊2：大敵當前**](https://www.imdb.com/title/tt1555149/) · Elite Squad 2: The Enemy Within | 2010 | 8.0 | 9.3万 |
