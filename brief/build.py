@@ -168,9 +168,12 @@ def sec_market(today):
         secs = {}
         for k, v in up + dn:
             secs.setdefault(v.get("s", ""), []).append(k)
-        crowd = [s for s, ks in secs.items() if s and len(ks) >= 2]
+        ZH = {"Information Technology": "信息技术", "Health Care": "医疗保健", "Financials": "金融", "Consumer Discretionary": "可选消费",
+              "Consumer Staples": "必需消费", "Industrials": "工业", "Energy": "能源", "Materials": "原材料", "Utilities": "公用事业",
+              "Real Estate": "房地产", "Communication Services": "通信服务"}
+        crowd = [ZH.get(s, s) for s, ks in secs.items() if s and len(ks) >= 2]
         if crowd:
-            why.append("%s板块集中出现在榜上" % "、".join(crowd))
+            why.append("%s 板块的股票在涨跌榜上占了不止一席" % "、".join(crowd))
         items.append({"t": "涨幅最大：%s；跌幅最大：%s" % ("、".join(fmt(x) for x in up), "、".join(fmt(x) for x in dn)),
                       "d": ("扫描范围约 %d 只股票（标普 500 为主）。" % len(rows)) + ("".join(w + "。" for w in why)),
                       "src": [{"n": "今日股票池", "u": SITE + "/stocks.html"}]})
