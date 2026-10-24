@@ -1,16 +1,16 @@
 {
- "date": "2026-10-23",
- "kind": "口头禅",
- "en": "Oh my gosh",
- "zh": "天哪",
- "by": "非常惊讶（比 Oh my God 更委婉）",
- "line": "Oh my gosh",
+ "date": "2026-10-24",
+ "kind": "名言",
+ "en": "Be not afraid of greatness: some are born great, some achieve greatness, and some have greatness thrust upon 'em.",
+ "zh": "不要害怕伟大：有人生而伟大，有人成就伟大，有人被迫伟大。",
+ "by": "William Shakespeare",
+ "line": "Be not afraid of greatness: some are born great, some achieve greatness, and some have greatness thrust upon 'em. — William Shakespeare",
  "word": {
-  "w": "continually",
-  "ph": "kәn'tinjuәli",
-  "zh": "adv. 不断地，频繁地",
-  "ex": "Ever since his graduation from university until his retirement, Lao Wang had continually worked as a teacher.",
-  "exzh": "从大学毕业到退休，老王一直担任教学工作。"
+  "w": "continent",
+  "ph": "'kɒntinәnt",
+  "zh": "n. 大陆，洲；a. 自制的",
+  "ex": "Africa is a very large continent.",
+  "exzh": "非洲是一块非常大的大陆。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
