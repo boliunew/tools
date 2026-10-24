@@ -72,4 +72,4 @@ jobs:
           git add stocks/data stocks/universe.json 2>/dev/null || true
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git commit -m "股票池更新 $(date -u +%F)"
-          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; git rebase --abort 2>/dev/null; sleep 5; done
+          ok=0; for i in 1 2 3 4 5; do git pull --rebase -X theirs origin main && git push && { ok=1; break; }; git rebase --abort 2>/dev/null || true; sleep $((i * 5)); done; [ "$ok" = 1 ] || { echo "::error::推送失败（重试 5 次）"; exit 1; }
