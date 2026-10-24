@@ -6,3 +6,4 @@ __pycache__/
 selfhost/config.env
 radio/_local/
 kb/.obsidian/
+cf/wrangler.toml

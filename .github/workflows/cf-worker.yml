@@ -1,0 +1,39 @@
+name: Cloudflare 后端
+
+# 部署 cf/worker.js（拍照识别柜号 + 盘中股价提醒）到 Cloudflare Workers，部署完自动测一遍。
+# 需要 secret：CLOUDFLARE_API_TOKEN、CLOUDFLARE_ACCOUNT_ID；可选 TG_BOT_TOKEN、TG_CHAT_ID（盘中提醒推送到 Telegram）。
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["cf/**", ".github/workflows/cf-worker.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cf-worker
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - run: pip install -q pillow
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: bash cf/deploy.sh
+      - name: Commit cf.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cf.json
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "Cloudflare 接口地址"
+          ok=0; for i in 1 2 3 4 5; do git pull --rebase -X theirs origin main && git push && { ok=1; break; }; git rebase --abort 2>/dev/null || true; sleep $((i * 5)); done; [ "$ok" = 1 ] || { echo "::error::推送失败（重试 5 次）"; exit 1; }
