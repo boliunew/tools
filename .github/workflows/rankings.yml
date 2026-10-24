@@ -37,4 +37,4 @@ jobs:
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git commit -m "电影 / 音乐 Top 500 更新 $(date -u +%F)"
           B="${GITHUB_REF_NAME}"
-          ok=0; for i in 1 2 3 4 5; do git pull --rebase origin "$B" && git push origin "HEAD:$B" && { ok=1; break; }; git rebase --abort 2>/dev/null || true; sleep $((i * 5)); done; [ "$ok" = 1 ] || { echo "::error::推送失败（重试 5 次）"; exit 1; }
+          ok=0; for i in 1 2 3 4 5; do git pull --rebase -X theirs origin "$B" && git push origin "HEAD:$B" && { ok=1; break; }; git rebase --abort 2>/dev/null || true; sleep $((i * 5)); done; [ "$ok" = 1 ] || { echo "::error::推送失败（重试 5 次）"; exit 1; }
