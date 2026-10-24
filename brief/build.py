@@ -382,6 +382,104 @@ def parse_json(text):
     return json.loads(text[i:j + 1])
 
 
+# ----------------------------------------------------------------------------- 抓原文正文（只用标准库）
+from html.parser import HTMLParser
+
+
+class _Paras(HTMLParser):
+    SKIP = {"script", "style", "nav", "header", "footer", "aside", "figure", "figcaption", "form", "button", "noscript"}
+
+    def __init__(self):
+        super().__init__()
+        self.depth_skip = 0
+        self.in_p = 0
+        self.in_article = 0
+        self.buf = []
+        self.paras = []   # (in_article, text)
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.SKIP:
+            self.depth_skip += 1
+        elif tag == "article":
+            self.in_article += 1
+        elif tag == "p" and not self.depth_skip:
+            self.in_p += 1
+            self.buf = []
+
+    def handle_endtag(self, tag):
+        if tag in self.SKIP and self.depth_skip:
+            self.depth_skip -= 1
+        elif tag == "article" and self.in_article:
+            self.in_article -= 1
+        elif tag == "p" and self.in_p:
+            self.in_p -= 1
+            t = re.sub(r"\s+", " ", "".join(self.buf)).strip()
+            if len(t) >= 50:
+                self.paras.append((self.in_article > 0, t))
+
+    def handle_data(self, data):
+        if self.in_p and not self.depth_skip:
+            self.buf.append(data)
+
+
+BOILER = re.compile(r"(sign up|newsletter|cookie|subscribe|all rights reserved|follow us|click here|support (the|our) journalism|"
+                    r"this article (was|is)|related:|read more:|copyright|terms of (use|service))", re.I)
+
+
+def article_text(url, limit=3500):
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36",
+                                                   "Accept-Language": "en-US,en;q=0.9"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            raw = r.read(2_000_000).decode("utf-8", "replace")
+        p = _Paras()
+        p.feed(raw)
+        paras = [t for a, t in p.paras if a] or [t for a, t in p.paras]
+        paras = [t for t in paras if not BOILER.search(t)]
+        text = "\n".join(paras)
+        return text[:limit] if len(text) >= 300 else ""
+    except Exception:
+        return ""
+
+
+def ai_rewrite(items):
+    """第二步：把选中新闻的正文抓下来，让 AI 根据正文重写标题和总结。抓不到正文的保留第一步写的。"""
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(6) as ex:
+        texts = list(ex.map(lambda it: article_text(it["src"][0]["u"]), items))
+    got = [i for i, t in enumerate(texts) if t]
+    if not got:
+        return 0, "一篇正文都没抓到"
+    parts = []
+    for i in got:
+        parts.append("【%d】原标题：%s\n来源：%s\n正文：\n%s" % (i, items[i]["_en"], items[i]["src"][0]["n"], texts[i]))
+    system = ("你是给美股散户投资者兼量化交易系统开发者写每日简报的中文编辑。根据给你的新闻正文写简短、准确的中文总结："
+              "先说清楚发生了什么（谁、做了什么、关键数字或时间），再用一句话说为什么重要（对科技行业、市场或世界格局的影响）。"
+              "只根据正文写，不编造正文里没有的事实；保持中立，不给投资建议，不预测涨跌。只输出 JSON。")
+    user = ("\n\n".join(parts) + "\n\n输出格式：" + '{"items":[{"i":编号,"t":"中文标题（不超过 30 字）","d":"2–3 句总结（不超过 130 字）"}]}'
+            + "\n每篇都要写，编号用上面【】里的数字。")
+    text, model, err = cf_ai(system, user)
+    if not text:
+        return 0, err
+    try:
+        J = parse_json(text)
+    except Exception as e:
+        return 0, "返回的不是合法 JSON：%s" % e
+    n = 0
+    for x in J.get("items") or []:
+        try:
+            i = int(x.get("i"))
+        except Exception:
+            continue
+        if i in got and 0 <= i < len(items):
+            t, d = clip(x.get("t", ""), 40), clip(x.get("d", ""), 170)
+            if t and d and re.search(r"[\u4e00-\u9fff]", t + d):
+                items[i]["t"], items[i]["d"] = t, d
+                items[i]["full"] = True
+                n += 1
+    return n, "抓到 %d/%d 篇正文" % (len(got), len(items))
+
+
 def ai_curate(now_utc, market, macro):
     tp, wp = tech_pool(now_utc), world_pool()
     if len(tp) < 3 and len(wp) < 3:
@@ -426,7 +524,7 @@ def ai_curate(now_utc, market, macro):
             src = [{"n": g.get("source", "来源"), "u": g.get("link", "")}]
             for o in (g.get("others") or [])[:1]:
                 src.append({"n": o.get("source", "来源"), "u": o.get("link", "")})
-            out.append({"t": t, "d": d, "src": src})
+            out.append({"t": t, "d": d, "src": src, "_en": g.get("en") or g.get("title", "")})
         return out if len(out) >= lo else None
     ai = items(J.get("ai"), tp, "T", 1, 4)
     world = items(J.get("world"), wp, "W", 2, 4)
@@ -434,6 +532,10 @@ def ai_curate(now_utc, market, macro):
         return None, "%s 选出的条目不够或格式不对" % model
     pk = J.get("pick") or {}
     pick = {"t": clip(pk.get("t", ""), 40), "d": clip(pk.get("d", ""), 120)} if pk.get("t") else {}
+    n, msg = ai_rewrite(ai + world)
+    notice("读全文重写：%d 条（%s）" % (n, msg))
+    for it in ai + world:
+        it.pop("_en", None)
     return {"ai": ai, "world": world, "pick": pick, "model": model}, ""
 
 
