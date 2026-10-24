@@ -1,36 +1,36 @@
 {
  "date": "2026-10-24",
- "generated": "2026-10-24T22:58:20Z",
+ "generated": "2026-10-24T22:59:57Z",
  "auto": true,
- "ai": null,
+ "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
   {
    "key": "ai",
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "隔壁的数据中心：处于科技最新大卫与歌利亚之战的前线",
-     "d": "人工智能的繁荣让当地居民与寻求为其能源匮乏的网络提供动力的企业巨头展开竞争，但威尔士的一座城市正在反击，戴尔·约翰斯顿(Dale Johnston)在南威尔士纽波特西部边缘打开了通往他整洁的郊区花园的大门。草坪上有蹦床和滑梯……",
+     "t": "OpenAI 前安全研究员被解雇",
+     "d": "两名因坚持安全优先而被解雇的 OpenAI 研究员公开批评公司对安全审计缺乏独立性，凸显行业在快速商业化压力下的安全治理挑战。",
      "src": [
       {
-       "n": "The Guardian",
-       "u": "https://www.theguardian.com/technology/2026/oct/24/the-datacentre-next-door-on-the-frontline-of-techs-latest-david-v-goliath-battle"
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/10/23/nx-s1-6012235/fired-openai-researchers-say-independent-safety-audits-arent-going-well"
       }
      ]
     },
     {
-     "t": "蓝色星球 III 采用更阴暗的镜头来证明 AI 热潮中的真实性",
-     "d": "制作人表示，BBC 剧集故意使用“更有机”的镜头，以确保观众的动物不是人工智能生成的，大卫·阿滕伯勒 (David Attenborough) 解说的剧集《蓝色星球 III》故意包含了更模糊、不那么精致的镜头，以对抗人工智能造假并向观众保证它是“真实的”，其制作人……",
+     "t": "AI 驱动的 PHP 漏洞引发安全警报",
+     "d": "重大 PHP 编程语言缺陷被披露，可能被 AI 利用进行大规模网络攻击，业内担忧将出现“漏洞海啸”，对互联网基础设施安全构成即时风险。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/media/2026/oct/24/blue-planet-iii-cloudier-footage-prove-authenticity-ai-boom"
+       "u": "https://www.theguardian.com/technology/2026/oct/23/cybersecurity-ai-hacking-php-vulnerability"
       }
      ]
     },
     {
-     "t": "约翰·希利承诺利用预算利用人工智能的力量来加强英国的安全",
-     "d": "英国财政大臣表示，政府将投入数亿美元开发“英国特色”的人工智能方法约翰·希利 (John Healey) 承诺利用周三的预算，利用人工智能的力量，增强英国的安全与繁荣，应对全球经济加速增长带来的风险。",
+     "t": "英政府预算拨款强化 AI 国防",
+     "d": "英国财政大臣宣布投入数亿美元发展“本土化” AI，旨在提升国家安全及防御能力，标志政府对 AI 战略重要性的官方确认。",
      "src": [
       {
        "n": "The Guardian",
@@ -127,8 +127,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "乌克兰军方表示，星链卫星连接在最近的限制后保持稳定",
-     "d": "但埃隆·马斯克 (Elon Musk) 的公司 SpaceX 拥有 Starlink，他指责乌克兰军方违反了该公司的条款。 乌克兰政府在其发布声明 10 天后表示，乌克兰军方“与 Starlink 保持着稳定的连接”。（9 家媒体同时报道）",
+     "t": "乌克兰军方称 Starlink 连接已恢复",
+     "d": "在近期限制后，乌克兰军方报告卫星互联网已恢复稳定，涉及美方与乌克兰在使用条款上的争议，对冲突信息化支持具关键影响。",
      "src": [
       {
        "n": "卫报",
@@ -141,8 +141,8 @@
      ]
     },
     {
-     "t": "朝鲜领导人金正恩经新开通的大桥前往中国边境城市",
-     "d": "朝鲜领导人金正恩通过一座新开通的连接两国的桥梁前往中国边境城市丹东，并在那里会见了一名中国高级官员。（6 家媒体同时报道）",
+     "t": "金正恩赴中新边境城 Dandong 会晤",
+     "d": "朝鲜最高领导人通过新桥前往中国边境城市，标志两国在基础设施合作与外交接触上的新动向，对地区安全格局有潜在影响。",
      "src": [
       {
        "n": "德国之声",
@@ -155,22 +155,8 @@
      ]
     },
     {
-     "t": "欧洲各地发生抗议活动，数十万人在法国游行 - 正如所发生的那样",
-     "d": "法国警方逮捕了 1,000 人，意大利警察突击搜查了米兰的住宅，西班牙和阿尔巴尼亚也发生了抗议活动，来自巴黎北部的 40 岁慈善工作者杰西也参加了抗议活动。（5 家媒体同时报道）",
-     "src": [
-      {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/world/live/2026/oct/24/france-demonstrations-police-macron-italy-albania-belgium-spain-ukraine-russia-europe-latest-news"
-      },
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/france/20261024-the-marches-went-well-%E2%80%93-french-government-on-demonstrations-a-week-after-looting-and-violence"
-      }
-     ]
-    },
-    {
-     "t": "以色列总理承诺在约旦河西岸检查站袭击后采取大规模军事行动",
-     "d": "以色列总理誓言要在约旦河西岸发起大规模军事行动，以回应两名巴勒斯坦枪手袭击以色列军事检查站、造成两名士兵死亡的事件。（5 家媒体同时报道）",
+     "t": "以色列承诺大规模军事行动",
+     "d": "针对西岸检查站枪击事件致两名以军士兵死亡，以色列总理誓言展开大规模行动，可能加剧地区冲突并影响能源市场情绪。",
      "src": [
       {
        "n": "NPR",
@@ -181,13 +167,27 @@
        "u": "https://www.aljazeera.com/video/inside-story/2026/10/24/could-israels-military-crackdown-influence-tuesdays-election?traffic_source=rss"
       }
      ]
+    },
+    {
+     "t": "法国及欧洲多国爆发大规模示威",
+     "d": "法国警察逮捕千人，意大利、西班牙等国同步抗议，显示欧洲社会动荡上升，可能影响欧元区经济政策与消费者信心。",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/live/2026/oct/24/france-demonstrations-police-macron-italy-albania-belgium-spain-ukraine-russia-europe-latest-news"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/france/20261024-the-marches-went-well-%E2%80%93-french-government-on-demonstrations-a-week-after-looting-and-violence"
+      }
+     ]
     }
    ]
   }
  ],
  "pick": {
-  "t": "乌克兰军方表示，星链卫星连接在最近的限制后保持稳定",
-  "d": "今天报道媒体最多的一件事。但埃隆·马斯克 (Elon Musk) 的公司 SpaceX 拥有 Starlink，他指责乌克兰军方违反了该公司的条款。 乌克兰政府在其发布声明 10 天后表示，乌克兰军方“与 Starlink 保持着稳定的连接”。（9 家媒体同时报道）"
+  "t": "AI 驱动的 PHP 漏洞引发安全警报",
+  "d": "该漏洞可能被 AI 自动化利用，对全球数十万网站构成系统性风险，短期内可能触发大规模网络攻击，直接关联科技股与网络安全市场情绪。"
  },
  "week": []
 }
