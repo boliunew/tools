@@ -1,0 +1,192 @@
+{
+ "date": "2026-10-24",
+ "generated": "2026-10-24T21:37:16Z",
+ "auto": true,
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "隔壁的数据中心：处于科技最新大卫与歌利亚之战的前线",
+     "d": "人工智能的繁荣让当地居民与寻求为其能源匮乏的网络提供动力的企业巨头展开竞争，但威尔士的一座城市正在反击，戴尔·约翰斯顿(Dale Johnston)在南威尔士纽波特西部边缘打开了通往他整洁的郊区花园的大门。草坪上有蹦床和滑梯……",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/oct/24/the-datacentre-next-door-on-the-frontline-of-techs-latest-david-v-goliath-battle"
+      }
+     ]
+    },
+    {
+     "t": "蓝色星球 III 采用更阴暗的镜头来证明 AI 热潮中的真实性",
+     "d": "制作人表示，BBC 剧集故意使用“更有机”的镜头，以确保观众的动物不是人工智能生成的，大卫·阿滕伯勒 (David Attenborough) 解说的剧集《蓝色星球 III》故意包含了更模糊、不那么精致的镜头，以对抗人工智能造假并向观众保证它是“真实的”，其制作人……",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/media/2026/oct/24/blue-planet-iii-cloudier-footage-prove-authenticity-ai-boom"
+      }
+     ]
+    },
+    {
+     "t": "约翰·希利承诺利用预算利用人工智能的力量来加强英国的安全",
+     "d": "英国财政大臣表示，政府将投入数亿美元开发“英国特色”的人工智能方法约翰·希利 (John Healey) 承诺利用周三的预算，利用人工智能的力量，增强英国的安全与繁荣，应对全球经济加速增长带来的风险。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/uk-news/2026/oct/24/john-healey-pledges-to-use-budget-to-harness-power-of-ai-to-bolster-britains-security"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "10/23 周五 收盘：标普500 ETF（SPY）-0.52%，纳指100 ETF（QQQ）-0.01%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 19.4；59% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：CCI +9.1%、CRWD +8.2%、PANW +7.2%；跌幅最大：BE -11.2%、FIX -9.3%、GL -8.1%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。Information Technology、Industrials板块集中出现在榜上。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "10/26 周一的重要财报：VZ（盘前）、WELL（盘后）、CDNS（盘后）",
+     "d": "按市值挑出最大的几家，共 3 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（10/23 周五）",
+     "d": "Initial Jobless Claims 实际 194K（预期 200K，前值 200K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/28 周三 10:00：消费者信心（重要性：低）",
+     "d": "关注其中的通胀预期分项，突然走高会引起美联储警惕。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/29 周四 10:30：EIA 原油库存（重要性：低）",
+     "d": "库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/29 周四 14:00：美联储利率决议（重要性：高）",
+     "d": "关注利率决定、点阵图和鲍威尔发布会措辞。鹰派 → 美元、收益率上行，科技股承压；鸽派 → 成长股、黄金、比特币受益。决议当天波动往往在发布会期间。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "金正恩穿过新开通的大桥进入中国",
+     "d": "朝鲜领导人穿越新鸭绿江大桥会见共产党高级委员金正恩访问中国，为一座连接两国的桥梁举行落成仪式，并表示希望扩大合作（5 家媒体同时报道）",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/oct/24/kim-jong-un-crosses-newly-opened-bridge-into-china"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/10/24/kim-jong-un-crosses-new-bridge-linking-north-korea-and-china?traffic_source=rss"
+      }
+     ]
+    },
+    {
+     "t": "以色列总理承诺在约旦河西岸检查站袭击后采取大规模军事行动",
+     "d": "以色列总理誓言要在约旦河西岸发起大规模军事行动，以回应两名巴勒斯坦枪手袭击以色列军事检查站、造成两名士兵死亡的事件。（5 家媒体同时报道）",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/10/23/nx-s1-6013613/israeli-pm-pledges-massive-military-operation-after-west-bank-checkpoint-attack"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/israel-begins-demolitions-in-west-bank"
+      }
+     ]
+    },
+    {
+     "t": "一名男子在希特勒山顶的鹰巢度假胜地遭火灾后被捕",
+     "d": "大约200名应急人员被派往德国纳粹独裁者的阿尔卑斯山住所扑灭大火。（5 家媒体同时报道）",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cr93zwjw1k4qo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/fire-breaks-eagles-nest-retreat-built-hitler-germany-137533542"
+      }
+     ]
+    },
+    {
+     "t": "白宫称梅拉尼娅·特朗普斡旋乌克兰城市“处于灾难边缘”停火",
+     "d": "乌克兰和俄罗斯确认在俄罗斯占领的奥列什基停战，那里的居民不得不吃花园里的杂草才能生存。（5 家媒体同时报道）",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c6vgxkvl4w5eo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/melania-trump-brokered-ceasefire-russian-occupied-oleshky-137535127"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "金正恩穿过新开通的大桥进入中国",
+  "d": "今天报道媒体最多的一件事。朝鲜领导人穿越新鸭绿江大桥会见共产党高级委员金正恩访问中国，为一座连接两国的桥梁举行落成仪式，并表示希望扩大合作（5 家媒体同时报道）"
+ },
+ "week": []
+}
