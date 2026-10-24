@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Already built today?
         id: chk
         run: |
@@ -28,7 +28,7 @@ jobs:
           today=$(TZ=America/Los_Angeles date +%F)
           echo "have=$have today=$today event=${{ github.event_name }}"
           if [ "${{ github.event_name }}" = "schedule" ] && [ "$have" = "$today" ]; then echo "skip=1" >> "$GITHUB_OUTPUT"; fi
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         if: steps.chk.outputs.skip != '1'
         with:
           python-version: "3.12"
