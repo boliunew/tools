@@ -1,10 +1,8 @@
 {
- "generated": "2026-10-23T18:30:12Z",
- "ok": false,
- "problems": [
-  "☀️ 每日简报（Claude 定时任务）：读不到数据：Invalid control character at: line 4 column 52 (char 451)"
- ],
- "sig": "☀️ 每日简报（Claude 定时任务）",
+ "generated": "2026-10-24T01:01:01Z",
+ "ok": true,
+ "problems": [],
+ "sig": "",
  "data": [
   {
    "k": "brief",
@@ -12,9 +10,10 @@
    "n": "每日简报（Claude 定时任务）",
    "page": "brief.html",
    "wf": "",
-   "ok": false,
-   "msg": "读不到数据：Invalid control character at: line 4 column 52 (char 451)",
-   "at": null
+   "ok": true,
+   "msg": "",
+   "at": "2026-10-23T12:52:27Z",
+   "detail": "1 条"
   },
   {
    "k": "news_today",
@@ -24,7 +23,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T17:50:36Z",
+   "at": "2026-10-23T23:22:46Z",
    "detail": "12 条"
   },
   {
@@ -35,7 +34,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T17:50:44Z",
+   "at": "2026-10-23T23:23:08Z",
    "detail": "75 条"
   },
   {
@@ -57,7 +56,7 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T17:59:04Z",
+   "at": "2026-10-24T00:04:45Z",
    "detail": "数据日期 2026-10-22 · 499 条"
   },
   {
@@ -68,7 +67,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T17:31:56Z"
+   "at": "2026-10-23T23:57:58Z"
   },
   {
    "k": "deals",
@@ -108,7 +107,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T13:30:44Z"
+   "at": "2026-10-23T23:11:28Z"
   },
   {
    "k": "bay_live",
@@ -118,7 +117,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T18:27:00Z"
+   "at": "2026-10-24T00:57:15Z"
   },
   {
    "k": "longterm",
@@ -240,5 +239,5 @@
   }
  ],
  "failed_runs": [],
- "since": "2026-10-21T01:41:52Z"
+ "since": "2026-10-24T01:01:01Z"
 }
