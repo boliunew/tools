@@ -56,9 +56,24 @@ h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
   function get(url, ok, bad) {
     var x = new XMLHttpRequest();
     x.open('GET', url + '?t=' + Date.now());
-    x.onload = function () { var d; try { d = JSON.parse(x.responseText); } catch (e) { bad && bad(); return; } ok(d); };
+    x.onload = function () {
+      if (x.status >= 400) { bad && bad(); return; }
+      var d; try { d = JSON.parse(x.responseText); } catch (e) { try { d = JSON.parse(loose(x.responseText)); } catch (e2) { bad && bad(); return; } }
+      ok(d);
+    };
     x.onerror = function () { bad && bad(); };
     x.send();
+  }
+  // 手动粘贴时字符串里常被插进换行，JSON.parse 会失败：把字符串里的裸换行去掉再试
+  function loose(t) {
+    var o = '', ins = false, es = false, i, c;
+    for (i = 0; i < t.length; i++) {
+      c = t.charAt(i);
+      if (ins) { if (es) es = false; else if (c === '\\') es = true; else if (c === '"') ins = false; else if (c === '\n' || c === '\r') continue; }
+      else if (c === '"') ins = true;
+      o += c;
+    }
+    return o;
   }
   function items(list) {
     return (list || []).map(function (it) {
@@ -80,6 +95,8 @@ h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
     get('brief/data/' + date + '.json', render, function () { document.getElementById('app').innerHTML = '<div class="empty">这一期读取失败，稍后再试</div>'; });
   }
   get('brief/data/index.json', function (idx) {
+    // index.json 里直接放了一整期简报（手动上传时容易发生）：直接显示
+    if (idx && idx.sections) { if (idx.date) document.getElementById('days').innerHTML = '<button class="on">最新 · ' + esc(label(idx.date)) + '</button>'; render(idx); return; }
     var dates = (idx.dates || []).slice(0, 14);
     if (!dates.length) { empty(); return; }
     document.getElementById('days').innerHTML = dates.map(function (d, i) { return '<button data-d="' + esc(d) + '">' + (i === 0 ? '最新 · ' : '') + esc(label(d)) + '</button>'; }).join('');
