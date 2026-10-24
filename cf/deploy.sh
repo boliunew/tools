@@ -83,6 +83,16 @@ d.text((60, 380), "TARE 2,200 KG", fill="white", font=small)
 buf = io.BytesIO(); img.save(buf, "JPEG", quality=85)
 body = json.dumps({"image": "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()}).encode()
 req = urllib.request.Request(url + "/ocr", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA})
+import time
+for attempt in range(4):   # 新密钥生效要几秒
+    try:
+        urllib.request.urlopen(urllib.request.Request(url + "/intraday", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA}), timeout=30)
+        break
+    except urllib.error.HTTPError as e:
+        if e.code != 401: break
+        time.sleep(10)
+    except Exception:
+        time.sleep(5)
 try:
     r = json.loads(urllib.request.urlopen(req, timeout=90).read())
     best = (r.get("containers") or [{}])[0]
