@@ -195,7 +195,12 @@ def send_telegram(text: str, cfg: dict) -> None:
               "disable_web_page_preview": True},
         timeout=20,
     )
-    r.raise_for_status()
+    if not r.ok:
+        # 不打印令牌；Telegram 的报错一般是 chat not found（没先给机器人发过消息 / ID 填错）或 Unauthorized（令牌错）
+        msg = "Telegram 推送失败：HTTP %s %s" % (r.status_code, r.text[:200])
+        if os.environ.get("GITHUB_ACTIONS"):
+            print("::error title=信号日报::" + msg)
+        raise RuntimeError(msg)
 
 
 # ============================== 主流程 ==============================
@@ -227,6 +232,8 @@ def run(cfg: dict, dry_run: bool = False, force: bool = False, fetch=fetch_histo
 
     if not rows:
         print("全部股票都拿不到数据：", errors)
+        if os.environ.get("GITHUB_ACTIONS"):
+            print("::warning title=信号日报::全部股票都拿不到数据：" + "；".join(errors)[:300])
         return None
 
     latest = max(dates)
@@ -249,6 +256,8 @@ def run(cfg: dict, dry_run: bool = False, force: bool = False, fetch=fetch_histo
         state["last_sent_date"] = latest
         Path(cfg["STATE_FILE"]).write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
         print("\n✅ 已推送")
+        if os.environ.get("GITHUB_ACTIONS"):
+            print("::notice title=信号日报::已推送到 Telegram（%s，%d 只）" % (latest, len(rows)))
     return msg
 
 
