@@ -1,0 +1,47 @@
+{
+  "last_sent_date": "2026-10-23",
+  "tickers": {
+    "NVDA": {
+      "oversold": false,
+      "overbought": false,
+      "trend": false,
+      "date": "2026-10-23",
+      "prev_state": {}
+    },
+    "AMD": {
+      "oversold": false,
+      "overbought": false,
+      "trend": false,
+      "date": "2026-10-23",
+      "prev_state": {}
+    },
+    "MSFT": {
+      "oversold": false,
+      "overbought": false,
+      "trend": true,
+      "date": "2026-10-23",
+      "prev_state": {}
+    },
+    "GOOGL": {
+      "oversold": true,
+      "overbought": false,
+      "trend": false,
+      "date": "2026-10-23",
+      "prev_state": {}
+    },
+    "AAPL": {
+      "oversold": false,
+      "overbought": false,
+      "trend": true,
+      "date": "2026-10-23",
+      "prev_state": {}
+    },
+    "TSLA": {
+      "oversold": false,
+      "overbought": false,
+      "trend": true,
+      "date": "2026-10-23",
+      "prev_state": {}
+    }
+  }
+}
