@@ -330,6 +330,15 @@ def cf_diagnose(tok, acc):
     out = ["Cloudflare 拒绝了请求。诊断："]
     out.append("令牌长度 %d、Account ID 长度 %d（Account ID 应为 32 位 0-9a-f：%s）" % (
         len(tok), len(acc), "格式正确" if re.fullmatch(r"[0-9a-f]{32}", acc) else "格式不对"))
+    shape = []
+    if re.search(r"\s", tok): shape.append("含空格或换行")
+    if re.search(r"[\"'`]", tok): shape.append("含引号")
+    if re.search(r"[^A-Za-z0-9_\-]", tok): shape.append("含特殊字符")
+    m = re.match(r"^([a-z]{2,6})_", tok)
+    if m: shape.append("前缀 %s_" % m.group(1))
+    out.append("令牌格式：%s" % ("、".join(shape) or "只有字母数字"))
+    st2, d2 = call("/accounts/%s/tokens/verify" % acc)
+    out.append("按账户令牌验证：%s" % ("有效" if st2 == 200 and d2.get("success") else "HTTP %s %s" % (st2, json.dumps(d2.get("errors"), ensure_ascii=False)[:100])))
     st, d = call("/user/tokens/verify")
     out.append("令牌本身：%s" % ("有效（%s）" % (d.get("result") or {}).get("status", "") if st == 200 and d.get("success") else "无效 / 复制错了（HTTP %s %s）" % (st, json.dumps(d.get("errors"), ensure_ascii=False)[:120])))
     st, d = call("/accounts")
