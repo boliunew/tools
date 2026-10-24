@@ -11,7 +11,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["stocks/scan.py", "stocks/alerts.py"]
+    paths: ["stocks/scan.py", "stocks/alerts.py", "stocks/ai_review.py"]
 
 permissions:
   contents: write
@@ -35,6 +35,13 @@ jobs:
       - run: pip install -r stocks/requirements.txt
       - name: Scan
         run: python stocks/scan.py
+      - name: AI review (Cloudflare Workers AI)
+        if: github.ref == 'refs/heads/main'
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: python stocks/ai_review.py
       - name: Price alerts
         if: github.ref == 'refs/heads/main'
         continue-on-error: true

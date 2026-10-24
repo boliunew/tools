@@ -132,6 +132,15 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 .sumc .sl{font-size:14px;line-height:1.75;margin:3px 0}
 .sumc .sl a{color:var(--accent);font-weight:700;text-decoration:none}
 .sumc .sl small{color:var(--soft)}
+.aic{padding:12px 14px;margin-bottom:12px;border-left:4px solid #8B6FD6}
+.aic .sh{font-weight:700;font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.aic .sh small{font-weight:400;color:var(--faint);font-size:12px;margin-left:auto}
+.aic p{margin:4px 0;font-size:14px;line-height:1.75}
+.aic .pk{margin:6px 0;font-size:14px;line-height:1.7}
+.aic .pk a{font-weight:700;color:var(--accent);text-decoration:none;margin-right:4px}
+.aic ul{margin:4px 0;padding-left:20px;font-size:14px;line-height:1.7}
+.aic .ls{margin-top:6px;font-size:13.5px;color:var(--soft)}
+.aic .ft{font-size:12px;color:var(--faint);margin-top:6px}
 .rgt{display:inline-block;padding:0 8px;border-radius:6px;font-size:13px;margin-right:4px}
 .rgt.rg-on{background:var(--on-soft);color:var(--on)}.rgt.rg-mid{background:var(--mid-soft);color:var(--mid)}.rgt.rg-off{background:var(--off-soft);color:var(--off)}
 .wl{padding:4px 12px 6px}
@@ -263,7 +272,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 <script>
 (function () {
   'use strict';
-  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score', SNAP = null, ER = null, LP = null, lpOnly = false, lpAll = false;
+  var app = document.getElementById('app'), DATA = null, filter = 'all', sortKey = 'score', SNAP = null, ER = null, LP = null, AI = null, lpOnly = false, lpAll = false;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function pct(x, d) { if (x == null || isNaN(x)) return '—'; return (x > 0 ? '+' : '') + (x * 100).toFixed(d == null ? 2 : d) + '%'; }
   function cls(x) { return x > 0 ? 'up' : x < 0 ? 'down' : ''; }
@@ -306,6 +315,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       getJSON('earnings/data/latest.json', function (d) { ER = d; render(); });
       getJSON('stocks/data/alerts.json', function (d) { AST = d && d.items ? d : null; render(); });
       getJSON('longterm/data/latest.json', function (d) { LP = d && d.list ? d : null; render(); });
+      getJSON('stocks/data/ai.json', function (d) { AI = d && d.market ? d : null; render(); });
       loadAlerts();
     };
     xhr.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
@@ -384,6 +394,18 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       var e = earnOf(t); if (e) out.push('<b>' + esc(t) + '</b> ' + dayLabel(e.date) + ' 发财报' + (whenZh(e.when) ? '（' + whenZh(e.when) + '）' : ''));
     }
     return out;
+  }
+  // 🤖 AI 盘后解读（stocks/ai_review.py 生成；只在数据日期和当前股票池一致时显示）
+  function aiHTML() {
+    if (!AI || !DATA || AI.date !== DATA.date) return '';
+    var h = '<div class="card aic"><div class="sh">🤖 AI 盘后解读<small>' + esc(AI.date) + '</small></div>';
+    h += '<p>' + esc(AI.market) + '</p>';
+    if (AI.sectors) h += '<p>' + esc(AI.sectors) + '</p>';
+    (AI.picks || []).forEach(function (p) { h += '<div class="pk"><a href="#c-' + esc(p.t) + '">' + esc(p.t) + '</a>' + esc(p.note) + '</div>'; });
+    if (AI.watch && AI.watch.length) h += '<ul>' + AI.watch.map(function (w) { return '<li>' + esc(w) + '</li>'; }).join('') + '</ul>';
+    if (AI.lesson) h += '<div class="ls">💡 ' + esc(AI.lesson) + '</div>';
+    h += '<div class="ft">由 Cloudflare Workers AI 根据当天的扫描数据写成，数字来自数据本身；只是解读，不是买卖建议，可能有误。</div></div>';
+    return h;
   }
   function summaryHTML(rc) {
     var D = DATA, R = D.regime || {}, S = D.signals, lab = R.label || '谨慎';
@@ -747,6 +769,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 
     var lab = R.label || '—', rc = lab === '进攻' ? 'rg-on' : lab === '防守' ? 'rg-off' : 'rg-mid';
     h += summaryHTML(rc);
+    h += aiHTML();
     function idx(name, o) { if (!o) return ''; return '<div>' + name + ' <b>' + o.close.toFixed(2) + '</b><span class="' + cls(o.chg) + '">' + pct(o.chg) + '</span><span class="flag ' + (o.above50 ? 'f-y' : 'f-n') + '">50日线' + (o.above50 ? '上' : '下') + '</span><span class="flag ' + (o.above200 ? 'f-y' : 'f-n') + '">200日线' + (o.above200 ? '上' : '下') + '</span></div>'; }
     h += '<div class="card regime"><div class="rg-l"><span class="rg-badge ' + rc + '">' + esc(lab) + '</span><small>市场环境</small></div><div class="rg-r"><div class="rg-desc">' + esc(R.desc || '') + '</div><div class="idx">' + idx('SPY', R.spy) + idx('QQQ', R.qqq) + (R.vix != null ? '<div>VIX <b>' + R.vix.toFixed(1) + '</b></div>' : '') + '</div>' +
       '<div class="breadth"><div>站上 50 日线 ' + Math.round(R.breadth50 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth50 * 100) + '%"></i></div></div><div>站上 200 日线 ' + Math.round(R.breadth200 * 100) + '%<div class="bb"><i style="width:' + Math.round(R.breadth200 * 100) + '%"></i></div></div></div>' + breadthHTML(R.hist) + '</div></div>';
