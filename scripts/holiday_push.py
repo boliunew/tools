@@ -25,6 +25,13 @@ import re
 import sys
 import urllib.request
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+try:
+    from notify import tg, strip_mention   # 📲 Telegram（没配就返回 False，照旧走 GitHub 留言）
+except Exception:  # noqa: BLE001
+    def tg(*a, **k): return False
+    def strip_mention(b, o=None): return b
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "holidays", "data.json")
 TITLE = "🗓️ 节日提醒"
@@ -145,8 +152,9 @@ def deliver(text, tag):
     if any(tag in (c.get("body") or "") for c in cs):
         print("今天已经推过了。")
         return
-    gh("POST", "/issues/%d/comments" % iss["number"], {"body": text + "\n\n@" + OWNER + "\n" + tag})
-    print("已推送（GitHub issue #%d）" % iss["number"])
+    sent = tg(text, "holiday")
+    gh("POST", "/issues/%d/comments" % iss["number"], {"body": text + ("" if sent else "\n\n@" + OWNER) + "\n" + tag})
+    print("已推送（%s）" % ("Telegram，GitHub 留言只做记录" if sent else "GitHub issue #%d" % iss["number"]))
 
 
 def main():

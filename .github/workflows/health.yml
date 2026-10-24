@@ -23,6 +23,9 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
+    env:
+      TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+      TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5

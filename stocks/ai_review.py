@@ -127,9 +127,34 @@ def main(dry=False):
     if dry:
         print(json.dumps(out, ensure_ascii=False, indent=1))
         return 0
+    try:
+        prev_date = json.load(open(OUT, encoding="utf-8")).get("date")
+    except Exception:
+        prev_date = None
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
+    if prev_date != out["date"]:
+        push(out)
     return 0
+
+
+def push(o):
+    """📲 新的一天的解读推一条精简版到 Telegram"""
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    try:
+        from notify import tg
+    except Exception:
+        return
+    lines = ["🤖 **AI 盘后解读 · %s**" % md(o["date"]), "", o["market"]]
+    if o.get("picks"):
+        lines.append("")
+        lines += ["**%s** %s" % (p["t"], p["note"]) for p in o["picks"]]
+    if o.get("watch"):
+        lines += ["", "📅 " + "；".join(o["watch"])]
+    if o.get("lesson"):
+        lines += ["", "💡 " + o["lesson"]]
+    lines += ["", "[打开股票池](https://boliunew.github.io/tools/stocks.html) · AI 解读不是买卖建议"]
+    tg("\n".join(lines), "ai")
 
 
 if __name__ == "__main__":

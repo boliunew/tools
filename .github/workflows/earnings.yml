@@ -22,6 +22,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+      TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v5
@@ -32,6 +35,9 @@ jobs:
           cache-dependency-path: earnings/requirements.txt
       - run: pip install -r earnings/requirements.txt
       - run: python earnings/build.py
+      - name: 财报提醒 → Telegram
+        continue-on-error: true
+        run: python stocks/earn_remind.py
       - name: Summary (test branches)
         if: github.ref != 'refs/heads/main'
         run: |

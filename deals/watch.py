@@ -18,6 +18,13 @@ import sys
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+try:
+    from notify import tg, strip_mention   # 📲 Telegram（没配就返回 False，照旧走 GitHub 留言）
+except Exception:  # noqa: BLE001
+    def tg(*a, **k): return False
+    def strip_mention(b, o=None): return b
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 SEEN = os.path.join(DATA, "watch_seen.json")
@@ -171,6 +178,8 @@ def main():
             body += "\n\n……还有 %d 件，在页面的 🔔 关注 里看全部。" % (len(new) - 15)
         body += "\n\n[打开打折雷达](%s) · 不想再收到就关掉这个 issue。" % PAGE
         try:
+            if tg("🏷️ **打折关注**\n\n" + body, "deals"):
+                body = strip_mention(body)
             gh.comment(n, body)
             print("issue #%s: %d new" % (n, len(new)))
         except Exception as e:  # noqa: BLE001

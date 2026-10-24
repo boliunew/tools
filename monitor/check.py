@@ -18,6 +18,13 @@ import re
 import sys
 import time
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+try:
+    from notify import tg, strip_mention   # 📲 Telegram（没配就返回 False，照旧走 GitHub 留言）
+except Exception:  # noqa: BLE001
+    def tg(*a, **k): return False
+    def strip_mention(b, o=None): return b
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE = os.path.join(HERE, "data", "state.json")
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -375,6 +382,8 @@ def main():
         msg = evaluate(n, w, st, r, first=reset)
         if msg:
             try:
+                if tg("🌐 **网页监控 · %s**\n\n%s\n\n[查看这个监控](%s)" % (iss.get("title", ""), msg, iss.get("html_url", "")), "monitor"):
+                    msg = strip_mention(msg)
                 gh.comment(iss["number"], msg)
             except Exception as e:  # noqa: BLE001
                 print("comment failed", e)

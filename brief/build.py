@@ -539,6 +539,26 @@ def ai_curate(now_utc, market, macro):
     return {"ai": ai, "world": world, "pick": pick, "model": model}, ""
 
 
+def push_brief(D):
+    """📲 每天第一次生成时推一条到 Telegram：每个板块最重要的一条 + 今日一件事"""
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    try:
+        from notify import tg
+    except Exception:
+        return
+    t = dt.date.fromisoformat(D["date"])
+    lines = ["☀️ **每日简报 · %d月%d日 周%s**%s" % (t.month, t.day, WK[t.weekday()], "（AI 整理）" if D.get("ai") else ""), ""]
+    for s in D["sections"]:
+        if s["items"]:
+            lines.append("%s：%s" % (s["title"], s["items"][0]["t"]))
+    if D.get("pick", {}).get("t"):
+        lines += ["", "📌 **今日一件事**：" + D["pick"]["t"]]
+    if D.get("week"):
+        lines += ["", "🗓️ 本周关注 %d 件" % len(D["week"])]
+    lines += ["", "[看全文](%s/brief.html)" % SITE]
+    tg("\n".join(lines), "brief")
+
+
 def build(dry=False, no_ai=False):
     now_utc = dt.datetime.now(dt.timezone.utc)
     today = la_now().date().isoformat()
@@ -598,6 +618,7 @@ def build(dry=False, no_ai=False):
         return 0
 
     os.makedirs(OUT, exist_ok=True)
+    first_today = not os.path.exists(os.path.join(OUT, today + ".json"))
     with open(os.path.join(OUT, today + ".json"), "w", encoding="utf-8") as f:
         json.dump(D, f, ensure_ascii=False, indent=1)
     # index.json：只放日期列表（最新在前，最多 30 天），清理旧文件
@@ -612,6 +633,8 @@ def build(dry=False, no_ai=False):
     with open(TCACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(keep_cache, f, ensure_ascii=False)
     print("✅ 已写入 brief/data/%s.json（共保留 %d 期）" % (today, len(keep)))
+    if first_today or os.environ.get("BRIEF_PUSH") == "1":
+        push_brief(D)
     return 0
 
 

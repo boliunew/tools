@@ -27,6 +27,13 @@ import sys
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+try:
+    from notify import tg, strip_mention   # 📲 Telegram（没配就返回 False，照旧走 GitHub 留言）
+except Exception:  # noqa: BLE001
+    def tg(*a, **k): return False
+    def strip_mention(b, o=None): return b
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 SNAP = os.path.join(HERE, "data", "snap.json")
 LATEST = os.path.join(HERE, "data", "latest.json")
@@ -34,7 +41,7 @@ STATE = os.path.join(HERE, "data", "alerts.json")
 WATCHLIST = os.path.join(HERE, "watchlist.txt")
 LOCAL = bool(os.environ.get("LOCAL_ISSUES"))          # running on the home server (selfhost/), not GitHub
 PAGE = (os.environ.get("PUBLIC_URL", "").rstrip("/") + "/stocks.html") if LOCAL and os.environ.get("PUBLIC_URL") else "https://boliunew.github.io/tools/stocks.html"
-PUSH_TXT = "手机上的 ntfy 会推送" if LOCAL else "GitHub App 会推送到手机，也会发邮件"
+PUSH_TXT = "手机上的 ntfy 会推送" if LOCAL else "会推送到 Telegram"
 CLOSE_TXT = "在「通知中心」关掉它" if LOCAL else "关闭这个 issue"
 PREFIX = "股价提醒"
 SIGNAMES = {"squeeze": "挤压突破", "pit": "回踩金坑", "momentum": "强势新高", "rsi2": "RSI2 超跌反弹", "blood": "血筹码"}
@@ -282,7 +289,9 @@ def check(gh):
             # a ticker the ack just added to watchlist.txt only shows up after the next full scan
             if not st.get("missing") and age_hours(iss.get("created_at")) > 30:
                 try:
-                    gh.comment(key, "⚠️ 今天（%s）的扫描里没有 **%s** 的数据：代码可能写错了，或者上市不到一年（扫描需要一年以上的日线）。改一下标题里的代码就行。" % (mmdd(date), a["t"]))
+                    txt = "⚠️ 今天（%s）的扫描里没有 **%s** 的数据：代码可能写错了，或者上市不到一年（扫描需要一年以上的日线）。改一下标题里的代码就行。" % (mmdd(date), a["t"])
+                    tg("🔔 **股价提醒**\n" + txt + "\n[查看提醒](%s)" % iss.get("html_url", PAGE), "alert")
+                    gh.comment(key, txt)
                     st["missing"] = date
                 except Exception as e:  # noqa: BLE001
                     print("comment failed", key, e)
@@ -301,7 +310,10 @@ def check(gh):
             fire = not (a["kind"] == "sig" and st.get("sigs") == sigs and recent(st.get("last"), date, 7))
         if fire:
             try:
-                gh.comment(key, fire_text(a, r, date, plans.get(a["t"])))
+                txt = fire_text(a, r, date, plans.get(a["t"]))
+                if tg(txt + "\n\n[查看提醒](%s)" % iss.get("html_url", PAGE), "alert"):
+                    txt = strip_mention(txt)
+                gh.comment(key, txt)
                 fired += 1
                 st["last"] = date
                 if a["kind"] in LEVEL:

@@ -13,6 +13,13 @@ import os
 import sys
 import urllib.request
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+try:
+    from notify import tg, strip_mention   # 📲 Telegram（没配就返回 False，照旧走 GitHub 留言）
+except Exception:  # noqa: BLE001
+    def tg(*a, **k): return False
+    def strip_mention(b, o=None): return b
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "status", "health.json")
 REPO = os.environ.get("GITHUB_REPOSITORY", "boliunew/tools")
@@ -209,6 +216,8 @@ def notify(problems, prev_sig, sig):
             "\n\n大部分会在下一次自动任务里自己恢复；连着两三天还在，就找 Claude 看看。\n\n[打开状态页](%s)\n\n@%s" % (PAGE, OWNER)
     else:
         text = "### ✅ 全部恢复正常\n\n之前的问题都没了。[状态页](%s)\n\n@%s" % (PAGE, OWNER)
+    if tg(text, "health"):
+        text = strip_mention(text, OWNER)
     gh("POST", "/issues/%d/comments" % iss["number"], {"body": text})
     if not problems:
         gh("PATCH", "/issues/%d" % iss["number"], {"state": "closed"})
