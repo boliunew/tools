@@ -1,7 +1,8 @@
 {
  "date": "2026-10-24",
- "generated": "2026-10-24T21:38:03Z",
+ "generated": "2026-10-24T22:53:44Z",
  "auto": true,
+ "ai": null,
  "sections": [
   {
    "key": "ai",
@@ -126,16 +127,44 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "金正恩穿过新开通的大桥进入中国",
-     "d": "朝鲜领导人穿越新鸭绿江大桥会见共产党高级委员金正恩访问中国，为一座连接两国的桥梁举行落成仪式，并表示希望扩大合作（5 家媒体同时报道）",
+     "t": "乌克兰军方表示，星链卫星连接在最近的限制后保持稳定",
+     "d": "但埃隆·马斯克 (Elon Musk) 的公司 SpaceX 拥有 Starlink，他指责乌克兰军方违反了该公司的条款。 乌克兰政府在其发布声明 10 天后表示，乌克兰军方“与 Starlink 保持着稳定的连接”。（9 家媒体同时报道）",
      "src": [
       {
        "n": "卫报",
-       "u": "https://www.theguardian.com/world/2026/oct/24/kim-jong-un-crosses-newly-opened-bridge-into-china"
+       "u": "https://www.theguardian.com/world/2026/oct/24/ukraine-zelenskyy-military-starlink-satellite-connection-stable-after-restrictions"
       },
       {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/newsfeed/2026/10/24/kim-jong-un-crosses-new-bridge-linking-north-korea-and-china?traffic_source=rss"
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/ukraine-starlink-satellite-speeds-restored-to-normal/a-79752155?maca=en-rss-en-all-1573-rdf"
+      }
+     ]
+    },
+    {
+     "t": "朝鲜领导人金正恩经新开通的大桥前往中国边境城市",
+     "d": "朝鲜领导人金正恩通过一座新开通的连接两国的桥梁前往中国边境城市丹东，并在那里会见了一名中国高级官员。（6 家媒体同时报道）",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/north-korean-leader-kim-jong-un-travels-to-chinese-border-city-via-newly-opened-bridge/a-79748580?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/east-asia/north-koreas-kim-returns-home-after-visit-chinese-border-city-6489741"
+      }
+     ]
+    },
+    {
+     "t": "欧洲各地发生抗议活动，数十万人在法国游行 - 正如所发生的那样",
+     "d": "法国警方逮捕了 1,000 人，意大利警察突击搜查了米兰的住宅，西班牙和阿尔巴尼亚也发生了抗议活动，来自巴黎北部的 40 岁慈善工作者杰西也参加了抗议活动。（5 家媒体同时报道）",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/live/2026/oct/24/france-demonstrations-police-macron-italy-albania-belgium-spain-ukraine-russia-europe-latest-news"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/france/20261024-the-marches-went-well-%E2%80%93-french-government-on-demonstrations-a-week-after-looting-and-violence"
       }
      ]
     },
@@ -148,36 +177,8 @@
        "u": "https://www.npr.org/2026/10/23/nx-s1-6013613/israeli-pm-pledges-massive-military-operation-after-west-bank-checkpoint-attack"
       },
       {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/israel-begins-demolitions-in-west-bank"
-      }
-     ]
-    },
-    {
-     "t": "一名男子在希特勒山顶的鹰巢度假胜地遭火灾后被捕",
-     "d": "大约200名应急人员被派往德国纳粹独裁者的阿尔卑斯山住所扑灭大火。（5 家媒体同时报道）",
-     "src": [
-      {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/cr93zwjw1k4qo?at_medium=RSS&at_campaign=rss"
-      },
-      {
-       "n": "ABC News",
-       "u": "https://abcnews.com/International/wireStory/fire-breaks-eagles-nest-retreat-built-hitler-germany-137533542"
-      }
-     ]
-    },
-    {
-     "t": "白宫称梅拉尼娅·特朗普斡旋乌克兰城市“处于灾难边缘”停火",
-     "d": "乌克兰和俄罗斯确认在俄罗斯占领的奥列什基停战，那里的居民不得不吃花园里的杂草才能生存。（5 家媒体同时报道）",
-     "src": [
-      {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/c6vgxkvl4w5eo?at_medium=RSS&at_campaign=rss"
-      },
-      {
-       "n": "ABC News",
-       "u": "https://abcnews.com/International/wireStory/melania-trump-brokered-ceasefire-russian-occupied-oleshky-137535127"
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/inside-story/2026/10/24/could-israels-military-crackdown-influence-tuesdays-election?traffic_source=rss"
       }
      ]
     }
@@ -185,8 +186,8 @@
   }
  ],
  "pick": {
-  "t": "金正恩穿过新开通的大桥进入中国",
-  "d": "今天报道媒体最多的一件事。朝鲜领导人穿越新鸭绿江大桥会见共产党高级委员金正恩访问中国，为一座连接两国的桥梁举行落成仪式，并表示希望扩大合作（5 家媒体同时报道）"
+  "t": "乌克兰军方表示，星链卫星连接在最近的限制后保持稳定",
+  "d": "今天报道媒体最多的一件事。但埃隆·马斯克 (Elon Musk) 的公司 SpaceX 拥有 Starlink，他指责乌克兰军方违反了该公司的条款。 乌克兰政府在其发布声明 10 天后表示，乌克兰军方“与 Starlink 保持着稳定的连接”。（9 家媒体同时报道）"
  },
  "week": []
 }
