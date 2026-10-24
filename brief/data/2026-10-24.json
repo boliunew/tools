@@ -1,6 +1,6 @@
 {
  "date": "2026-10-24",
- "generated": "2026-10-24T23:06:38Z",
+ "generated": "2026-10-24T23:59:24Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "OpenAI 前安全研究员称被解雇因优先安全",
-     "d": "被解雇的 OpenAI 安全研究员 Mikita Balesni 与 Tomek Korbak 在首次接受采访时表示，因在公司短期利益与安全之间坚持安全立场而被辞退。此事凸显 AI 研发公司内部对安全与商业目标的冲突。",
+     "t": "OpenAI 前安全研究员称被解雇因坚持安全",
+     "d": "OpenAI 安全研究员 Mikita Balesni 与 Tomek Korbak 在被解雇后首次接受采访，称因将安全置于公司短期利益之上而被辞退。此事凸显了人工智能企业内部对安全与商业目标平衡的争议。",
      "src": [
       {
        "n": "NPR",
@@ -20,8 +20,8 @@
      "full": true
     },
     {
-     "t": "“黑色十月”：AI 引发安全漏洞潮",
-     "d": "在发现 PHP 编程语言严重漏洞后，业界警告 AI 将加速发现并利用全球互联网基础设施的安全缺口，导致可能出现“漏洞海啸”。此事表明 AI 可能使网络安全防护难以跟上攻击速度，冲击整个科技行业的安全格局。",
+     "t": "“黑色十月”揭示 AI 引发的安全漏洞潮",
+     "d": "研究人员利用 AI 发现 PHP 编程语言的严重漏洞，导致约 70% 网站面临风险，短时间内出现大规模攻击尝试。此事件警示 AI 在加速漏洞发现的同时，也可能被恶意使用，导致网络安全形势急剧恶化。",
      "src": [
       {
        "n": "The Guardian",
@@ -31,8 +31,8 @@
      "full": true
     },
     {
-     "t": "Anthropic 报告称 AI 改变工作模式受质疑",
-     "d": "Anthropic 发布报告称其 AI 代理已取代部分初级技术岗位，员工花 22% 时间管理 Claude 代理，但外部专家质疑报告的真实性并认为可能是为公司 IPO 做宣传。此事反映 AI 对企业内部人力结构的影响仍存争议。",
+     "t": "Anthropic 报告称 AI 改变内部工作，引发质疑",
+     "d": "Anthropic 发布报告称 AI 代理已超过人类工作时间，导致初级技术岗位下降并将人类注意力变为瓶颈。专家怀疑报告夸大影响，可能是为公司 IPO 提升估值的宣传手段。",
      "src": [
       {
        "n": "The Guardian",
@@ -130,8 +130,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "乌克兰军方称 Starlink 连接已恢复",
-     "d": "乌克兰军方在星链服务被限速 10 天后宣布连接已恢复，SpaceX CEO 马斯克指责乌方违反使用条款而美政府否认介入。此事揭示军用卫星通信在冲突中的关键性及其政治敏感性。",
+     "t": "乌克兰军方称 Starlink 连接恢复，Musk 仍指责违约",
+     "d": "乌克兰军方称其 Starlink 卫星通信已恢复正常，但 SpaceX CEO Elon Musk 指责乌克兰违反使用条款，双方互相推诿责任。此事反映了关键军事通信依赖的私营企业与政府之间的复杂关系。",
      "src": [
       {
        "n": "卫报",
@@ -145,8 +145,8 @@
      "full": true
     },
     {
-     "t": "金正恩经新燕丹桥访华",
-     "d": "朝鲜领袖金正恩通过新开通的燕丹桥进入中国，接受中国政界高层会见，双方承诺加强战略沟通及经贸合作。此举标志中朝关系在基础设施连通后可能进一步深化。",
+     "t": "金正恩经新亚尔河大桥抵达中国边境城市",
+     "d": "金正恩乘坐新开通的亚尔河四车道大桥进入中国丹东，期间与中方政治顾问王沪宁会面，双方承诺加强战略沟通与经贸合作。此举标志着朝中关系在基础设施连接下进一步紧密。",
      "src": [
       {
        "n": "德国之声",
@@ -160,16 +160,16 @@
      "full": true
     },
     {
-     "t": "以色列总理承诺对西岸展开大规模军事行动",
-     "d": "在西岸检查站遭袭导致两名以军士兵死亡后，内塔尼亚胡宣布将开展“自六日战争以来最大规模”行动，拆除房屋并驱逐巴勒斯坦人。此举可能加剧地区冲突并影响即将到来的以色列选举。",
+     "t": "法国及欧洲多国爆发大规模示威，逮捕近千人",
+     "d": "法国约有 40‑80 万人走上街头抗议生活成本，警方逮捕近千人并使用催泪弹，暴力升级波及意大利、西班牙等国。大规模抗议显示欧洲社会对经济压力的广泛不满，可能影响当地政治稳定。",
      "src": [
       {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/10/23/nx-s1-6013613/israeli-pm-pledges-massive-military-operation-after-west-bank-checkpoint-attack"
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/live/2026/oct/24/france-demonstrations-police-macron-italy-albania-belgium-spain-ukraine-russia-europe-latest-news"
       },
       {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/inside-story/2026/10/24/could-israels-military-crackdown-influence-tuesdays-election?traffic_source=rss"
+       "n": "法国24",
+       "u": "https://www.france24.com/en/france/20261024-the-marches-went-well-%E2%80%93-french-government-on-demonstrations-a-week-after-looting-and-violence"
       }
      ],
      "full": true
@@ -178,8 +178,8 @@
   }
  ],
  "pick": {
-  "t": "OpenAI 前安全研究员称审计受阻",
-  "d": "安全审计受阻凸显 AI 巨头内部治理缺陷，对行业监管、风险管理及投资者信心产生直接影响，值得今日重点关注。"
+  "t": "乌克兰军方称 Starlink 连接已恢复 稳定运行",
+  "d": "Starlink 的稳定性直接关系到乌克兰的指挥、情报和无人机作战，对冲突走向与西方技术支援政策具有重要指示意义。"
  },
  "week": []
 }
