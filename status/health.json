@@ -1,8 +1,10 @@
 {
- "generated": "2026-10-24T01:13:20Z",
- "ok": true,
- "problems": [],
- "sig": "",
+ "generated": "2026-10-24T07:37:29Z",
+ "ok": false,
+ "problems": [
+  "⚙️ 自动任务「电影 / 音乐 Top 500」上次运行失败（https://github.com/boliunew/tools/actions/runs/40047961961）"
+ ],
+ "sig": "⚙️ 自动任务「电影 / 音乐 Top 500」上次运行失败（https://github.com/boliunew/tools/actions/runs/40047961961）",
  "data": [
   {
    "k": "brief",
@@ -23,7 +25,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T23:22:46Z",
+   "at": "2026-10-24T05:38:49Z",
    "detail": "12 条"
   },
   {
@@ -34,7 +36,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T23:23:08Z",
+   "at": "2026-10-24T05:38:54Z",
    "detail": "75 条"
   },
   {
@@ -45,8 +47,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T17:50:16Z",
-   "detail": "284 条"
+   "at": "2026-10-24T05:38:28Z",
+   "detail": "280 条"
   },
   {
    "k": "stocks",
@@ -56,8 +58,8 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-24T00:04:45Z",
-   "detail": "数据日期 2026-10-22 · 499 条"
+   "at": "2026-10-24T05:58:05Z",
+   "detail": "数据日期 2026-10-23 · 499 条"
   },
   {
    "k": "earnings",
@@ -77,7 +79,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-24T01:02:53Z"
+   "at": "2026-10-24T04:34:22Z"
   },
   {
    "k": "radio",
@@ -107,7 +109,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-23T23:11:28Z"
+   "at": "2026-10-24T04:43:23Z"
   },
   {
    "k": "bay_live",
@@ -117,7 +119,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-24T01:02:27Z"
+   "at": "2026-10-24T07:33:23Z"
   },
   {
    "k": "longterm",
@@ -198,7 +200,7 @@
    "wf": "bay-roads.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-24T01:01:48Z"
+   "at": "2026-10-24T01:13:52Z"
   }
  ],
  "external": [
@@ -238,6 +240,14 @@
    "msg": ""
   }
  ],
- "failed_runs": [],
- "since": "2026-10-24T01:13:20Z"
+ "failed_runs": [
+  {
+   "wf": "rankings.yml",
+   "n": "电影 / 音乐 Top 500",
+   "conclusion": "failure",
+   "url": "https://github.com/boliunew/tools/actions/runs/40047961961",
+   "at": "2026-10-24T01:02:47Z"
+  }
+ ],
+ "since": "2026-10-24T07:37:29Z"
 }
