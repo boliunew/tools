@@ -284,7 +284,8 @@ def world_pool():
 
 
 def cf_ai(system, user):
-    tok, acc = os.environ.get("CLOUDFLARE_API_TOKEN", "").strip(), os.environ.get("CLOUDFLARE_ACCOUNT_ID", "").strip()
+    tok = re.sub(r"^(Bearer\s+)", "", os.environ.get("CLOUDFLARE_API_TOKEN", "").strip(), flags=re.I).strip()
+    acc = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "").strip().strip("/")
     if not tok or not acc:
         return None, None, "没有设置 Cloudflare 的 secret"
     errs = []
@@ -307,7 +308,39 @@ def cf_ai(system, user):
                 errs.append("%s：HTTP %s %s" % (model, e.code, e.read()[:200].decode("utf-8", "replace")))
             except Exception as e:
                 errs.append("%s：%s" % (model, str(e)[:150]))
+    if any("HTTP 401" in e or "HTTP 403" in e for e in errs):
+        return None, None, cf_diagnose(tok, acc)
     return None, None, "；".join(errs)
+
+
+def cf_diagnose(tok, acc):
+    """401/403 时查清楚是令牌、Account ID 还是权限的问题（不会打印令牌内容）"""
+    def call(path):
+        req = urllib.request.Request("https://api.cloudflare.com/client/v4" + path, headers={"Authorization": "Bearer " + tok})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return r.status, json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            try:
+                return e.code, json.loads(e.read().decode("utf-8"))
+            except Exception:
+                return e.code, {}
+        except Exception as e:
+            return 0, {"errors": [{"message": str(e)[:100]}]}
+    out = ["Cloudflare 拒绝了请求。诊断："]
+    out.append("令牌长度 %d、Account ID 长度 %d（Account ID 应为 32 位 0-9a-f：%s）" % (
+        len(tok), len(acc), "格式正确" if re.fullmatch(r"[0-9a-f]{32}", acc) else "格式不对"))
+    st, d = call("/user/tokens/verify")
+    out.append("令牌本身：%s" % ("有效（%s）" % (d.get("result") or {}).get("status", "") if st == 200 and d.get("success") else "无效 / 复制错了（HTTP %s %s）" % (st, json.dumps(d.get("errors"), ensure_ascii=False)[:120])))
+    st, d = call("/accounts")
+    if st == 200:
+        ids = [a.get("id", "") for a in d.get("result") or []]
+        out.append("令牌能看到 %d 个账户；Account ID %s其中" % (len(ids), "在" if acc in ids else "【不在】"))
+    else:
+        out.append("列账户：HTTP %s（缺 Account Settings 读权限时正常）" % st)
+    st, d = call("/accounts/%s/ai/models/search?per_page=1" % acc)
+    out.append("Workers AI 权限：%s" % ("有" if st == 200 else "没有或 Account ID 不对（HTTP %s %s）" % (st, json.dumps(d.get("errors"), ensure_ascii=False)[:120])))
+    return " ｜ ".join(out)
 
 
 def ai_text(res):
