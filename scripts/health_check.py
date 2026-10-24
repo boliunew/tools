@@ -75,7 +75,7 @@ def prev_weekday(d):
 
 # (key, emoji, 名称, 数据, 时间字段, 最长几小时算正常, 内容检查（表达式, 最少条数）, 页面, workflow 文件)
 CHECKS = [
-    ("brief", "☀️", "每日简报（Claude 定时任务）", "brief/data/index.json", "generated", 30, ("len(d['dates'])", 1), "brief.html", ""),
+    ("brief", "☀️", "每日简报", "brief/data/index.json", "generated", 30, ("len(d['dates'])", 1), "brief.html", "brief.yml"),
     ("news_today", "📌", "今日大事", "news/data/today.json", "generated", 8, ("len(d['big'])", 5), "news.html", "news.yml"),
     ("news_world", "🌍", "国际局势", "news/data/world.json", "generated", 8, ("sum(len(r['stories']) for r in d['regions'])", 30), "news.html#world", "news.yml"),
     ("news_en", "📰", "英文新闻精选", "news/data/latest.json", "generated", 30, ("len(d.get('items') or d.get('articles') or [])", 10), "news.html#en", "news.yml"),

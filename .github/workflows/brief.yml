@@ -1,0 +1,38 @@
+name: 每日简报
+
+# 每天早上用网站已有的新闻、股票池、财报日历自动拼出一期简报（brief/build.py），不需要 AI 和授权。
+# 排在早上新闻更新（6:07）之后；GitHub 定时常被推迟，所以晚一点再补跑一次（同一天重跑会用更新的数据覆盖）。
+on:
+  schedule:
+    - cron: "29 14 * * *"   # 7:29 太平洋夏令时 / 6:29 冬令时
+    - cron: "49 16 * * *"   # 补跑一次
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["brief/build.py", ".github/workflows/brief.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: brief
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python brief/build.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A brief/data
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "☀️ 每日简报 $(TZ=America/Los_Angeles date +%F)"
+          ok=0; for i in 1 2 3 4 5; do git pull --rebase -X theirs origin main && git push && { ok=1; break; }; git rebase --abort 2>/dev/null || true; sleep $((i * 5)); done; [ "$ok" = 1 ] || { echo "::error::推送失败（重试 5 次）"; exit 1; }
