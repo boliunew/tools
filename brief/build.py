@@ -19,6 +19,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -239,7 +240,162 @@ def sec_world():
     return items
 
 
-def build(dry=False):
+# ----------------------------------------------------------------------------- AI 整理（Cloudflare Workers AI，可选）
+# 设置了 CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID 就让 AI 从候选新闻里挑重点、写中文的「发生了什么 + 为什么重要」。
+# 只交给 AI 挑新闻和写文字；股价、涨跌幅、经济数据这些数字仍然直接取自数据，不让 AI 改。任何一步失败都退回规则版。
+AI_MODELS = ["@cf/openai/gpt-oss-120b", "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/qwen/qwen3-30b-a3b-fp8"]
+
+
+def notice(msg):
+    if os.environ.get("GITHUB_ACTIONS"):
+        print("::notice title=每日简报::" + msg.replace("%", "%25").replace("\n", "%0A"))
+    else:
+        print(msg)
+
+
+def tech_pool(now_utc):
+    L = load("news/data/latest.json")
+    out = []
+    for a in L.get("articles", []):
+        if a.get("topic") not in ("科技", "商业") or SKIP_TECH.search(a.get("title", "")):
+            continue
+        t = parse_t(a.get("time"))
+        if not t or (now_utc - t).total_seconds() > 48 * 3600:
+            continue
+        out.append(a)
+    out.sort(key=lambda a: a.get("time", ""), reverse=True)
+    return out[:18]
+
+
+def world_pool():
+    T = load("news/data/today.json")
+    W = load("news/data/world.json")
+    out, seen = [], set()
+    for g in (T.get("big") or [])[:12]:
+        out.append(g)
+        seen.add((g.get("link") or "").split("?")[0])
+    for r in W.get("regions", []):
+        for g in r.get("stories", [])[:4]:
+            k = (g.get("link") or "").split("?")[0]
+            if k and k not in seen and (g.get("imp") or g.get("n", 1) >= 3):
+                out.append(g)
+                seen.add(k)
+    return out[:20]
+
+
+def cf_ai(system, user):
+    tok, acc = os.environ.get("CLOUDFLARE_API_TOKEN", "").strip(), os.environ.get("CLOUDFLARE_ACCOUNT_ID", "").strip()
+    if not tok or not acc:
+        return None, None, "没有设置 Cloudflare 的 secret"
+    errs = []
+    for model in AI_MODELS:
+        url = "https://api.cloudflare.com/client/v4/accounts/%s/ai/run/%s" % (acc, model)
+        bodies = [{"messages": [{"role": "system", "content": system}, {"role": "user", "content": user}], "max_tokens": 3000, "temperature": 0.3}]
+        if "gpt-oss" in model:
+            bodies.insert(0, {"instructions": system, "input": user, "reasoning": {"effort": "low"}})
+        for body in bodies:
+            try:
+                req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST",
+                                             headers={"Authorization": "Bearer " + tok, "Content-Type": "application/json"})
+                with urllib.request.urlopen(req, timeout=120) as r:
+                    d = json.loads(r.read().decode("utf-8"))
+                text = ai_text(d.get("result"))
+                if text:
+                    return text, model, ""
+                errs.append("%s：返回里没有文字" % model)
+            except urllib.error.HTTPError as e:
+                errs.append("%s：HTTP %s %s" % (model, e.code, e.read()[:200].decode("utf-8", "replace")))
+            except Exception as e:
+                errs.append("%s：%s" % (model, str(e)[:150]))
+    return None, None, "；".join(errs)
+
+
+def ai_text(res):
+    """兼容几种返回格式：{response}、{output:[{type:message, content:[{text}]}]}、{choices:[{message:{content}}]}"""
+    if not res:
+        return ""
+    if isinstance(res, str):
+        return res
+    r = res.get("response")
+    if isinstance(r, str) and r.strip():
+        return r
+    if isinstance(r, (dict, list)):
+        return json.dumps(r, ensure_ascii=False)
+    for o in res.get("output") or []:
+        if o.get("type") == "message":
+            t = "".join(c.get("text", "") for c in o.get("content") or [] if isinstance(c, dict))
+            if t.strip():
+                return t
+    ch = res.get("choices") or []
+    if ch and isinstance(ch[0], dict):
+        return ((ch[0].get("message") or {}).get("content")) or ch[0].get("text") or ""
+    return ""
+
+
+def parse_json(text):
+    text = re.sub(r"<think>.*?</think>", "", text or "", flags=re.S)
+    i, j = text.find("{"), text.rfind("}")
+    if i < 0 or j <= i:
+        raise ValueError("找不到 JSON")
+    return json.loads(text[i:j + 1])
+
+
+def ai_curate(now_utc, market, macro):
+    tp, wp = tech_pool(now_utc), world_pool()
+    if len(tp) < 3 and len(wp) < 3:
+        return None, "候选新闻太少"
+    lines = ["【科技 / 商业候选】"]
+    for i, a in enumerate(tp):
+        lines.append("T%d | %s | %s | %s" % (i, a.get("source", ""), a.get("title", ""), clip(a.get("summary", ""), 220)))
+    lines.append("\n【国际候选】（n = 同时报道的媒体数）")
+    for i, g in enumerate(wp):
+        lines.append("W%d | n=%s | %s | %s" % (i, g.get("n", 1), g.get("en") or g.get("title", ""), clip(g.get("en_summary") or g.get("summary", ""), 220)))
+    lines.append("\n【今天的市场与经济数据（只作背景，不要改写数字）】")
+    for it in market + macro:
+        lines.append("- " + it["t"] + "：" + clip(it.get("d", ""), 120))
+    system = ("你是一位给美股散户投资者兼量化交易系统开发者写每日简报的中文编辑。读者想跟上世界的重要动态，但不想被信息焦虑淹没。"
+              "原则：只挑真正重要、对科技行业 / 市场 / 世界格局有实质影响的事，宁少勿多；不要标题党、不要情绪化；地缘政治保持中立客观；"
+              "不给投资建议、不预测涨跌；只根据给你的候选内容写，不要编造候选里没有的事实和数字。只输出 JSON，不要任何其他文字。")
+    user = ("\n".join(lines) + "\n\n请按下面的格式输出 JSON：\n"
+            '{"ai":[{"id":"T编号","t":"一句话中文标题（不超过 30 字）","d":"1–2 句：发生了什么 + 为什么重要（不超过 90 字）"}],'
+            '"world":[{"id":"W编号","t":"…","d":"…"}],'
+            '"pick":{"id":"T或W编号","t":"…","d":"为什么今天最值得深入了解（不超过 80 字）"}}\n'
+            "要求：ai 选 2–4 条（优先 AI、芯片、大型科技公司、重要新产品；没有足够重要的就少选），world 选 3–4 条（优先对市场或世界格局有影响的、报道媒体多的；"
+            "同一件事只选一次），pick 从你选中的条目里挑 1 条。")
+    text, model, err = cf_ai(system, user)
+    if not text:
+        return None, err
+    try:
+        J = parse_json(text)
+    except Exception as e:
+        return None, "%s 返回的不是合法 JSON：%s" % (model, e)
+
+    def items(lst, pool, prefix, lo, hi):
+        out, used = [], set()
+        for x in (lst or [])[:hi]:
+            m = re.fullmatch(prefix + r"(\d+)", str(x.get("id", "")).strip())
+            if not m or int(m.group(1)) >= len(pool) or m.group(1) in used:
+                continue
+            used.add(m.group(1))
+            g = pool[int(m.group(1))]
+            t, d = clip(x.get("t", ""), 40), clip(x.get("d", ""), 130)
+            if not t or not re.search(r"[\u4e00-\u9fff]", t + d):
+                continue
+            src = [{"n": g.get("source", "来源"), "u": g.get("link", "")}]
+            for o in (g.get("others") or [])[:1]:
+                src.append({"n": o.get("source", "来源"), "u": o.get("link", "")})
+            out.append({"t": t, "d": d, "src": src})
+        return out if len(out) >= lo else None
+    ai = items(J.get("ai"), tp, "T", 1, 4)
+    world = items(J.get("world"), wp, "W", 2, 4)
+    if not ai or not world:
+        return None, "%s 选出的条目不够或格式不对" % model
+    pk = J.get("pick") or {}
+    pick = {"t": clip(pk.get("t", ""), 40), "d": clip(pk.get("d", ""), 120)} if pk.get("t") else {}
+    return {"ai": ai, "world": world, "pick": pick, "model": model}, ""
+
+
+def build(dry=False, no_ai=False):
     now_utc = dt.datetime.now(dt.timezone.utc)
     today = la_now().date().isoformat()
     try:
@@ -263,6 +419,17 @@ def build(dry=False):
     for w in world:
         w.pop("_n", None)
 
+    used_ai = None
+    if not no_ai:
+        res, err = ai_curate(now_utc, market, macro)
+        if res:
+            ai, world, used_ai = res["ai"], res["world"], res["model"]
+            if res["pick"] and not hi:   # 近 3 天有高重要性经济数据时仍然把它当「今日一件事」
+                pick = res["pick"]
+            notice("AI 整理成功（%s）：科技 %d 条、国际 %d 条" % (used_ai, len(ai), len(world)))
+        else:
+            notice("AI 整理没用上，改用规则版：" + err)
+
     week = []
     if dt.date.fromisoformat(today).weekday() == 0:
         E = load("earnings/data/latest.json")
@@ -275,7 +442,7 @@ def build(dry=False):
                 week.append({"t": "%s 财报：%s" % (md(d["date"]), "、".join(e["t"] for e in big)), "d": "当天共 %d 家公司发布财报，这里列市值最大的几家。" % len(d["earnings"])})
 
     secs = [("ai", "🤖 AI 与科技", ai), ("market", "📈 美股市场", market), ("macro", "🏦 宏观经济", macro), ("world", "🌍 世界大事", world)]
-    D = {"date": today, "generated": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"), "auto": True,
+    D = {"date": today, "generated": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"), "auto": True, "ai": used_ai,
          "sections": [{"key": k, "title": t, "items": it} for k, t, it in secs], "pick": pick, "week": week}
     n = sum(len(s["items"]) for s in D["sections"])
     print("%s：%s，共 %d 条%s" % (today, " / ".join("%s %d" % (t, len(it)) for _, t, it in secs), n, "，含本周关注 %d 条" % len(week) if week else ""))
@@ -309,4 +476,6 @@ if __name__ == "__main__":
         sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry", action="store_true")
-    sys.exit(build(ap.parse_args().dry))
+    ap.add_argument("--no-ai", action="store_true", help="不调用 AI，只用规则版")
+    a = ap.parse_args()
+    sys.exit(build(a.dry, a.no_ai))

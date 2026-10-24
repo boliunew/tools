@@ -44,7 +44,7 @@ h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
   <div class="sub" id="sub">加载中…</div>
   <div class="days" id="days"></div>
   <div id="app"></div>
-  <div class="note">每天早上 7 点左右（太平洋时间）自动生成，不需要任何操作：AI 与科技来自 BBC、NPR、卫报的科技新闻（机器翻译），美股市场来自「今日股票池」，宏观经济来自「财报与经济日历」，世界大事是「今日大事」里多家媒体同时报道的新闻。周一多一段“本周关注”。只讲发生了什么，不做投资建议。</div>
+  <div class="note">每天早上 7 点左右（太平洋时间）自动生成，不需要任何操作。科技和世界大事由 Cloudflare 的 AI 从 BBC、NPR、卫报等英文媒体的新闻里挑重点并写中文点评（AI 不可用时按规则挑选、机器翻译）；美股市场来自「今日股票池」，宏观经济来自「财报与经济日历」，候选新闻来自「今日大事」和「国际局势」。数字都直接取自数据，不经 AI 改写。周一多一段“本周关注”。只讲发生了什么，不做投资建议。</div>
 </div>
 <script>
 (function () {
@@ -87,7 +87,7 @@ h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
     if (D.pick && D.pick.t) h += '<div class="pick"><div class="lb">📌 今日一件事</div><b>' + esc(D.pick.t) + '</b>' + (D.pick.d ? '<p>' + esc(D.pick.d) + '</p>' : '') + '</div>';
     if (D.week && D.week.length) h += '<div class="box week"><h2>🗓️ 本周关注</h2>' + items(D.week) + '</div>';
     document.getElementById('app').innerHTML = h || '<div class="empty">这一期没有内容</div>';
-    document.getElementById('sub').textContent = label(D.date) + (D.generated ? ' · ' + new Date(D.generated).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }) + ' 整理' : '');
+    document.getElementById('sub').textContent = label(D.date) + (D.generated ? ' · ' + new Date(D.generated).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }) + (D.ai ? ' AI 整理' : D.auto ? ' 自动生成' : ' 整理') : '');
     window.scrollTo(0, 0);
   }
   function load(date, btn) {
