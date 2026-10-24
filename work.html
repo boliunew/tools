@@ -126,6 +126,14 @@ th{font-size:12px;color:var(--soft);font-weight:600}
 .lg .ops button{border:0;background:none;color:var(--faint);font-size:15px;padding:2px 4px}
 .lg-tools{display:flex;gap:6px;flex-wrap:wrap}
 
+.snap{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:0 0 10px;padding:12px;border:1.5px dashed var(--accent);border-radius:14px;background:transparent;color:var(--accent);font-size:16px;font-weight:700}
+.snap.sm{width:auto;margin:6px 0 0;padding:5px 12px;font-size:13.5px;border-width:1px}
+.ocr{margin:0 0 10px;font-size:14px}
+.ocr .cands{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.ocr .cands button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 10px;font-size:15px;font-weight:700;letter-spacing:.04em;font-family:ui-monospace,Menlo,Consolas,monospace}
+.ocr .cands button.good{border-color:var(--ok);color:var(--ok)}
+.ocr .cands button small{font-weight:400;font-family:inherit;letter-spacing:0;margin-left:4px;font-size:12px}
+.ocr img{max-width:120px;max-height:90px;border-radius:8px;float:right;margin-left:8px}
 </style>
 </head>
 <body>
@@ -137,12 +145,14 @@ th{font-size:12px;color:var(--soft);font-weight:600}
 
 <section id="v-no">
   <div class="card">
+    <button class="snap" id="snapNo">📷 拍照识别柜号</button>
+    <div class="ocr" id="ocrNo" hidden></div>
     <input class="big-in" id="no" placeholder="柜号 如 CSQU3054383" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">
     <div class="res" id="noRes"></div>
     <div class="row"><button class="btn pri" id="noSave">记下来</button><button class="btn" id="noCopy">复制</button><button class="btn" id="noClr">清空</button></div>
   </div>
   <div class="card"><h3>今天记过的柜号</h3><div class="hist" id="hist"></div></div>
-  <div class="hint">校验位按 ISO 6346 算，自动把放错位置的 O/0、I/1 之类纠正过来。原理见 <a href="kb.html#iso-6346-check-digit">知识库</a>。记录只存在这台手机上。</div>
+  <div class="hint">校验位按 ISO 6346 算，自动把放错位置的 O/0、I/1 之类纠正过来。拍照识别用 Cloudflare 的 AI 读图（需要先在首页输入密码解锁、勾选「记住我」，照片不保存），识别结果一定会过一遍校验位。原理见 <a href="kb.html#iso-6346-check-digit">知识库</a>。记录只存在这台手机上。</div>
 </section>
 
 <section id="v-load" hidden>
@@ -163,7 +173,10 @@ th{font-size:12px;color:var(--soft);font-weight:600}
   <div class="card">
     <div class="f2"><label>柜号<input id="cNo" autocapitalize="characters" autocomplete="off" spellcheck="false"></label><label>封条号<input id="cSeal" autocapitalize="characters" autocomplete="off" spellcheck="false"></label></div>
     <div class="hint" id="cNoRes" style="margin-top:4px"></div>
+    <button class="snap sm" id="snapChk">📷 拍照识别柜号 / 封条号</button>
+    <div class="ocr" id="ocrChk" hidden style="margin-top:8px"></div>
   </div>
+  <input type="file" id="snapFile" accept="image/*" capture="environment" hidden>
   <div class="card"><h3>七点 + 封条检查 <small class="hint">点 ✓ / ✗，拍照，写备注</small></h3><div id="cks"></div></div>
   <div class="card">
     <div class="row" style="margin-top:0"><button class="btn pri" id="mk">生成汇总图</button><button class="btn" id="txt">复制文字记录</button><button class="btn" id="share" hidden>分享</button><button class="btn" id="reset">重新开始</button></div>
@@ -601,6 +614,67 @@ th{font-size:12px;color:var(--soft);font-weight:600}
   };
   lgReset(); lgRender();
   setTab((location.hash || '').replace('#', '') || jget('tab', 'no'));
+  /* ---------- 📷 拍照识别（Cloudflare Worker /ocr） ---------- */
+  var API = null, SNAP_TO = 'no';
+  (function () { var x = new XMLHttpRequest(); x.open('GET', 'cf.json?t=' + Math.floor(Date.now() / 36e5)); x.onload = function () { try { API = JSON.parse(x.responseText).api; } catch (e) { } }; x.send(); })();
+  function toolsKey() { try { return localStorage.getItem('home:unlock') || ''; } catch (e) { return ''; } }
+  function shrink(file, cb) {
+    var img = new Image(), url = URL.createObjectURL(file);
+    img.onload = function () {
+      var m = 1600, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, m / Math.max(w, h));
+      var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+      cb(c.toDataURL('image/jpeg', 0.85));
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); cb(null); };
+    img.src = url;
+  }
+  function snapStart(to) {
+    if (!toolsKey()) { toast('先到首页输入密码解锁，并勾选「记住我」'); return; }
+    if (!API) { toast('接口地址还没加载好，稍等再试'); return; }
+    SNAP_TO = to; $('snapFile').value = ''; $('snapFile').click();
+  }
+  $('snapNo').onclick = function () { snapStart('no'); };
+  $('snapChk').onclick = function () { snapStart('chk'); };
+  $('snapFile').onchange = function () {
+    var f = this.files && this.files[0]; if (!f) return;
+    var box = $(SNAP_TO === 'no' ? 'ocrNo' : 'ocrChk');
+    box.hidden = false; box.innerHTML = '⏳ 正在识别…（一般 3–10 秒）';
+    shrink(f, function (data) {
+      if (!data) { box.innerHTML = '照片读不出来，换一张试试'; return; }
+      var x = new XMLHttpRequest();
+      x.open('POST', API + '/ocr'); x.setRequestHeader('Content-Type', 'application/json'); x.setRequestHeader('X-Tools-Key', toolsKey());
+      x.timeout = 60000;
+      x.onload = function () {
+        var r = null; try { r = JSON.parse(x.responseText); } catch (e) { }
+        if (x.status !== 200 || !r) { box.innerHTML = '识别失败：' + esc((r && r.msg) || ('HTTP ' + x.status)); return; }
+        ocrShow(box, r, data);
+      };
+      x.onerror = x.ontimeout = function () { box.innerHTML = '网络不通或超时，稍后再试'; };
+      x.send(JSON.stringify({ image: data }));
+    });
+  };
+  function ocrShow(box, r, thumb) {
+    var C = r.containers || [], S = r.seals || [], h = '<img src="' + thumb + '" alt="">';
+    if (!C.length && !S.length) h += '没认出柜号。靠近一点、正对着拍，避开反光再试一次。' + (r.text ? '<div class="hint">读到的文字：' + esc(r.text) + '</div>' : '');
+    if (C.length) h += '<div>柜号（点一下填进去）：</div><div class="cands">' + C.map(function (c) {
+      return '<button data-fill="' + esc(c.no) + '" data-k="no" class="' + (c.ok ? 'good' : '') + '">' + esc(c.no.slice(0, 4) + ' ' + c.no.slice(4, 10) + ' ' + c.no.slice(10)) +
+        '<small>' + (c.calc ? '补算校验位' : c.ok ? (c.fixed ? '✓ 已纠错' : '✓') : '⚠️ 校验位不对') + '</small></button>';
+    }).join('') + '</div>';
+    if (S.length && SNAP_TO === 'chk') h += '<div style="margin-top:6px">封条号：</div><div class="cands">' + S.map(function (s) { return '<button data-fill="' + esc(s) + '" data-k="seal">' + esc(s) + '</button>'; }).join('') + '</div>';
+    h += '<div class="hint" style="clear:both">AI 读图可能出错，填进去之后请对一眼实物</div>';
+    box.innerHTML = h;
+    var best = C.filter(function (c) { return c.ok; })[0];
+    if (best && C.filter(function (c) { return c.ok; }).length === 1) fillOcr(best.no, 'no');
+    if (S.length === 1 && SNAP_TO === 'chk' && !$('cSeal').value) $('cSeal').value = S[0];
+  }
+  function fillOcr(v, k) {
+    if (k === 'seal') { $('cSeal').value = v; toast('已填入封条号'); return; }
+    if (SNAP_TO === 'no') { $('no').value = v; renderNo(); } else { $('cNo').value = v; cNoCheck(); }
+    toast('已填入 ' + v);
+  }
+  $('ocrNo').onclick = $('ocrChk').onclick = function (e) { var b = e.target.closest('[data-fill]'); if (b) fillOcr(b.getAttribute('data-fill'), b.getAttribute('data-k')); };
+
   renderNo(); renderHist(); runLoad(); renderCk();
 })();
 </script>
