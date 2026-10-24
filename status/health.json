@@ -1,10 +1,10 @@
 {
- "generated": "2026-10-24T17:29:58Z",
+ "generated": "2026-10-24T21:10:13Z",
  "ok": false,
  "problems": [
-  "⚙️ 自动任务「电影 / 音乐 Top 500」上次运行失败（https://github.com/boliunew/tools/actions/runs/40047961961）"
+  "☀️ 每日简报（Claude 定时任务）：已经 32 小时 没更新（超过 30 小时）"
  ],
- "sig": "⚙️ 自动任务「电影 / 音乐 Top 500」上次运行失败（https://github.com/boliunew/tools/actions/runs/40047961961）",
+ "sig": "☀️ 每日简报（Claude 定时任务）",
  "data": [
   {
    "k": "brief",
@@ -12,10 +12,9 @@
    "n": "每日简报（Claude 定时任务）",
    "page": "brief.html",
    "wf": "",
-   "ok": true,
-   "msg": "",
-   "at": "2026-10-23T12:52:27Z",
-   "detail": "1 条"
+   "ok": false,
+   "msg": "已经 32 小时 没更新（超过 30 小时）",
+   "at": "2026-10-23T12:52:27Z"
   },
   {
    "k": "news_today",
@@ -25,7 +24,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-24T16:32:18Z",
+   "at": "2026-10-24T18:55:46Z",
    "detail": "12 条"
   },
   {
@@ -36,7 +35,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-24T16:32:36Z",
+   "at": "2026-10-24T18:55:53Z",
    "detail": "75 条"
   },
   {
@@ -109,7 +108,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-24T12:43:59Z"
+   "at": "2026-10-24T18:49:33Z"
   },
   {
    "k": "bay_live",
@@ -119,7 +118,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-10-24T17:25:40Z"
+   "at": "2026-10-24T21:05:40Z"
   },
   {
    "k": "longterm",
@@ -240,14 +239,6 @@
    "msg": ""
   }
  ],
- "failed_runs": [
-  {
-   "wf": "rankings.yml",
-   "n": "电影 / 音乐 Top 500",
-   "conclusion": "failure",
-   "url": "https://github.com/boliunew/tools/actions/runs/40047961961",
-   "at": "2026-10-24T01:02:47Z"
-  }
- ],
+ "failed_runs": [],
  "since": "2026-10-24T07:37:29Z"
 }
