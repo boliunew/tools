@@ -67,6 +67,7 @@ python3 - "$URL" "$TEST_KEY" <<'PY'
 import base64, io, json, sys, urllib.request
 from PIL import Image, ImageDraw, ImageFont
 url, key = sys.argv[1], sys.argv[2]
+UA = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Mobile Safari/537.36"
 img = Image.new("RGB", (900, 520), (178, 34, 34))           # 红色箱门
 d = ImageDraw.Draw(img)
 try:
@@ -81,7 +82,7 @@ d.text((60, 300), "MAX GROSS 30,480 KG", fill="white", font=small)
 d.text((60, 380), "TARE 2,200 KG", fill="white", font=small)
 buf = io.BytesIO(); img.save(buf, "JPEG", quality=85)
 body = json.dumps({"image": "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()}).encode()
-req = urllib.request.Request(url + "/ocr", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key})
+req = urllib.request.Request(url + "/ocr", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA})
 try:
     r = json.loads(urllib.request.urlopen(req, timeout=90).read())
     best = (r.get("containers") or [{}])[0]
@@ -91,7 +92,7 @@ except urllib.error.HTTPError as e:
     print("::warning title=柜号识别测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
 except Exception as e:
     print("::warning title=柜号识别测试::%s" % e)
-req = urllib.request.Request(url + "/intraday?force=1", data=b"", method="POST", headers={"X-Tools-Key": key})
+req = urllib.request.Request(url + "/intraday?force=1", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA})
 try:
     print("::notice title=盘中提醒测试::" + urllib.request.urlopen(req, timeout=60).read().decode()[:600])
 except Exception as e:
