@@ -63,6 +63,16 @@ a{color:var(--acc)}
 .site b{display:block;font-size:15px}
 .site small{display:block;color:var(--soft);font-size:12px;line-height:1.45;margin-top:2px}
 .site.top{border-color:var(--acc);background:var(--acc-soft)}
+.site.dim{opacity:.72}
+.flexrow{margin-top:10px}
+.flexrow .lb2{display:block;font-size:12px;color:var(--faint);margin:0 0 3px 2px}
+.seg.full{display:flex;width:100%}
+.seg.full button{flex:1;padding:6px 4px;font-size:13.5px}
+.note{margin-top:12px;background:var(--gold-soft);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.65}
+.note b{color:var(--ink)}
+.note ol{margin:4px 0 0;padding-left:20px}
+.tag{display:inline-block;font-size:11px;font-weight:600;border-radius:6px;padding:0 6px;margin-left:6px;vertical-align:1px;background:var(--acc);color:var(--onacc)}
+.tag.w{background:var(--chip);color:var(--soft)}
 .sum{font-size:14px;color:var(--soft);margin-top:12px}
 .sum b{color:var(--ink)}
 .acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
@@ -118,12 +128,16 @@ a{color:var(--acc)}
       <div class="f"><label for="pax">成人</label><select id="pax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
       <div class="f"><label for="cab">舱位</label><select id="cab"><option value="e">经济舱</option><option value="p">超级经济舱</option><option value="b">商务舱</option><option value="f">头等舱</option></select></div>
     </div>
+    <div class="flexrow"><span class="lb2">退改要求</span>
+      <div class="seg full" id="flex"><button data-v="c" class="on">💰 最便宜</button><button data-v="a">🔁 能改签</button><button data-v="r">💵 全额可退</button></div>
+    </div>
     <div class="chips" id="near"></div>
     <div class="chips" id="far"></div>
     <button class="go" id="go">🔍 比价</button>
     <div class="err" id="err" hidden></div>
     <div id="out" hidden>
       <div class="sum" id="sum"></div>
+      <div class="note" id="note" hidden></div>
       <div class="sites" id="sites"></div>
       <div class="acts">
         <button id="save">⭐ 保存这条航线</button>
@@ -207,6 +221,15 @@ a{color:var(--acc)}
   }
   $('trip').onclick = function (e) { var b = e.target.closest('button'); if (b) setTrip(b.getAttribute('data-v')); };
 
+  // ---------- 退改要求 ----------
+  var FLEX = 'c';
+  var FLEXN = { c: '最便宜', a: '能改签', r: '全额可退' };
+  function setFlex(v) {
+    FLEX = FLEXN[v] ? v : 'c';
+    [].forEach.call($('flex').children, function (b) { b.className = b.getAttribute('data-v') === FLEX ? 'on' : ''; });
+  }
+  $('flex').onclick = function (e) { var b = e.target.closest('button'); if (!b) return; setFlex(b.getAttribute('data-v')); if (CUR) search(read()); };
+
   // ---------- 日期 ----------
   function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function plus(n) { var d = new Date(); d.setDate(d.getDate() + n); return iso(d); }
@@ -226,27 +249,35 @@ a{color:var(--acc)}
     n: { e: '经济舱', p: '超级经济舱', b: '商务舱', f: '头等舱' }
   };
   function links(q) {
-    var rt = q.trip === 'rt', a = q.from, b = q.to, n = q.pax, c = q.cab, L = [];
+    var rt = q.trip === 'rt', a = q.from, b = q.to, n = q.pax, c = q.cab, fx = q.flex || 'c', L = [];
+    var GF = { c: '最全最快，看价格日历、开价格追踪', a: '选好航班后挑 Economy / Main Cabin 档，别选 Basic', r: '选好航班后挑写着 Refundable 的那一档' };
+    var KY = { c: '比价网站，含小航司和组合票', a: '打开左侧「Flexible options」筛选 → 只看不收改签费的', r: '先开「Flexible options」筛选，再到航司官网选 Refundable 档' };
+    var THIRD = '第三方网站：退改要先找它们，比较麻烦';
     var gq = 'Flights from ' + a + ' to ' + b + ' on ' + q.d1 + (rt ? ' through ' + q.d2 : ' one way') + CAB.g[c] + (n > 1 ? ' for ' + n + ' adults' : '');
-    L.push({ n: 'Google Flights', d: '最全最快，看价格日历、开价格追踪', u: 'https://www.google.com/travel/flights?q=' + encodeURIComponent(gq), top: 1 });
-    L.push({ n: 'Kayak', d: '比价网站，含小航司和组合票', u: 'https://www.kayak.com/flights/' + a + '-' + b + '/' + q.d1 + (rt ? '/' + q.d2 : '') + CAB.k[c] + '/' + n + 'adults?sort=bestflight_a' });
-    L.push({ n: 'Skyscanner', d: '国际航线常有便宜代理价', u: 'https://www.skyscanner.com/transport/flights/' + a.toLowerCase() + '/' + b.toLowerCase() + '/' + yymmdd(q.d1) + '/' + (rt ? yymmdd(q.d2) + '/' : '') + '?adultsv2=' + n + '&cabinclass=' + CAB.s[c] + '&rtn=' + (rt ? 1 : 0) });
-    L.push({ n: 'Expedia', d: '机票 + 酒店打包有时更省', u: 'https://www.expedia.com/Flights-Search?trip=' + (rt ? 'roundtrip' : 'oneway') + '&leg1=' + encodeURIComponent('from:' + a + ',to:' + b + ',departure:' + mdy(q.d1) + 'TANYT') + (rt ? '&leg2=' + encodeURIComponent('from:' + b + ',to:' + a + ',departure:' + mdy(q.d2) + 'TANYT') : '') + '&passengers=' + encodeURIComponent('adults:' + n) + '&options=' + encodeURIComponent('cabinclass:' + CAB.x[c]) + '&mode=search' });
+    L.push({ n: 'Google Flights', d: GF[fx], u: 'https://www.google.com/travel/flights?q=' + encodeURIComponent(gq), top: 1, tag: fx !== 'c' ? '先看这里' : '' });
+    L.push({ n: 'Kayak', d: KY[fx], top: fx !== 'c', tag: fx !== 'c' ? '有筛选' : '', u: 'https://www.kayak.com/flights/' + a + '-' + b + '/' + q.d1 + (rt ? '/' + q.d2 : '') + CAB.k[c] + '/' + n + 'adults?sort=bestflight_a' });
+    L.push({ n: 'Skyscanner', d: fx !== 'c' ? THIRD : '国际航线常有便宜代理价', dim: fx !== 'c', u: 'https://www.skyscanner.com/transport/flights/' + a.toLowerCase() + '/' + b.toLowerCase() + '/' + yymmdd(q.d1) + '/' + (rt ? yymmdd(q.d2) + '/' : '') + '?adultsv2=' + n + '&cabinclass=' + CAB.s[c] + '&rtn=' + (rt ? 1 : 0) });
+    L.push({ n: 'Expedia', d: fx !== 'c' ? THIRD : '机票 + 酒店打包有时更省', dim: fx !== 'c', u: 'https://www.expedia.com/Flights-Search?trip=' + (rt ? 'roundtrip' : 'oneway') + '&leg1=' + encodeURIComponent('from:' + a + ',to:' + b + ',departure:' + mdy(q.d1) + 'TANYT') + (rt ? '&leg2=' + encodeURIComponent('from:' + b + ',to:' + a + ',departure:' + mdy(q.d2) + 'TANYT') : '') + '&passengers=' + encodeURIComponent('adults:' + n) + '&options=' + encodeURIComponent('cabinclass:' + CAB.x[c]) + '&mode=search' });
     if (US.test(a) && US.test(b)) {
-      L.push({ n: '西南航空 Southwest', d: '票价不一定全在比价网站上，官网再看一眼', u: 'https://www.southwest.com/air/booking/select.html?originationAirportCode=' + a + '&destinationAirportCode=' + b + '&departureDate=' + q.d1 + (rt ? '&returnDate=' + q.d2 : '') + '&tripType=' + (rt ? 'roundtrip' : 'oneway') + '&adultPassengersCount=' + n });
+      L.push({ n: '西南航空 Southwest', d: fx !== 'c' ? '官网每档票价都写了能不能改、能不能退现金' : '票价不一定全在比价网站上，官网再看一眼', u: 'https://www.southwest.com/air/booking/select.html?originationAirportCode=' + a + '&destinationAirportCode=' + b + '&departureDate=' + q.d1 + (rt ? '&returnDate=' + q.d2 : '') + '&tripType=' + (rt ? 'roundtrip' : 'oneway') + '&adultPassengersCount=' + n });
     }
-    L.push({ n: 'Trip.com 携程', d: ASIA_CN.test(a) || ASIA_CN.test(b) ? '回国航线常更便宜，中文客服' : '亚洲航线和中文客服', u: 'https://us.trip.com/flights/showfarefirst?dcity=' + a.toLowerCase() + '&acity=' + b.toLowerCase() + '&ddate=' + q.d1 + (rt ? '&rdate=' + q.d2 : '') + '&triptype=' + (rt ? 'rt' : 'ow') + '&class=' + CAB.t[c] + '&quantity=' + n, top: ASIA_CN.test(a) || ASIA_CN.test(b) });
-    L.push({ n: 'Kayak 随便去', d: '不知道去哪？看从 ' + a + ' 出发哪里便宜', u: 'https://www.kayak.com/explore/' + a + '-anywhere' });
+    if (fx !== 'c' && (US.test(a) || US.test(b))) {
+      [['United 联合航空', 'https://www.united.com/'], ['Delta 达美航空', 'https://www.delta.com/'], ['American 美国航空', 'https://www.aa.com/'], ['Alaska 阿拉斯加航空', 'https://www.alaskaair.com/']].forEach(function (x) {
+        L.push({ n: x[0], d: '航司官网直接订，退改最好办（需在官网重新填一次航线）', u: x[1], tag: '官网' });
+      });
+    }
+    L.push({ n: 'Trip.com 携程', dim: fx !== 'c', d: fx !== 'c' ? THIRD : (ASIA_CN.test(a) || ASIA_CN.test(b) ? '回国航线常更便宜，中文客服' : '亚洲航线和中文客服'), u: 'https://us.trip.com/flights/showfarefirst?dcity=' + a.toLowerCase() + '&acity=' + b.toLowerCase() + '&ddate=' + q.d1 + (rt ? '&rdate=' + q.d2 : '') + '&triptype=' + (rt ? 'rt' : 'ow') + '&class=' + CAB.t[c] + '&quantity=' + n, top: fx === 'c' && (ASIA_CN.test(a) || ASIA_CN.test(b)) });
+    if (fx === 'c') L.push({ n: 'Kayak 随便去', d: '不知道去哪？看从 ' + a + ' 出发哪里便宜', u: 'https://www.kayak.com/explore/' + a + '-anywhere' });
     return L;
   }
 
   function read() {
-    return { trip: TRIP, from: $('from').value.trim(), to: $('to').value.trim(), d1: $('d1').value, d2: $('d2').value, pax: +$('pax').value, cab: $('cab').value };
+    return { trip: TRIP, from: $('from').value.trim(), to: $('to').value.trim(), d1: $('d1').value, d2: $('d2').value, pax: +$('pax').value, cab: $('cab').value, flex: FLEX };
   }
   function fill(q) {
     setTrip(q.trip || 'rt'); $('from').value = q.from || ''; $('to').value = q.to || ''; nm('from'); nm('to');
     if (q.d1 && q.d1 >= plus(0)) { $('d1').value = q.d1; $('d2').value = q.d2 || ''; } else defaultDates();
-    $('pax').value = String(q.pax || 1); $('cab').value = q.cab || 'e';
+    $('pax').value = String(q.pax || 1); $('cab').value = q.cab || 'e'; setFlex(q.flex || 'c');
   }
   function bad(q) {
     if (!/^[A-Z]{3}$/.test(q.from) || !/^[A-Z]{3}$/.test(q.to)) return '出发和到达请填 3 位机场代码，比如 ONT、SFO、PVG';
@@ -262,8 +293,13 @@ a{color:var(--acc)}
     if (m) { $('out').hidden = true; return; }
     CUR = q;
     var L = links(q);
-    $('sum').innerHTML = '<b>' + q.from + ' → ' + q.to + '</b> · ' + (q.trip === 'rt' ? q.d1 + ' 去，' + q.d2 + ' 回' : q.d1 + ' 单程') + ' · ' + q.pax + ' 人 · ' + CAB.n[q.cab] + '<br>点下面任意一家打开（新窗口）：';
-    $('sites').innerHTML = L.map(function (l) { return '<a class="site' + (l.top ? ' top' : '') + '" target="_blank" rel="noopener" href="' + esc(l.u) + '"><b>' + esc(l.n) + ' ↗</b><small>' + esc(l.d) + '</small></a>'; }).join('');
+    $('sum').innerHTML = '<b>' + q.from + ' → ' + q.to + '</b> · ' + (q.trip === 'rt' ? q.d1 + ' 去，' + q.d2 + ' 回' : q.d1 + ' 单程') + ' · ' + q.pax + ' 人 · ' + CAB.n[q.cab] + ' · ' + FLEXN[q.flex || 'c'] + '<br>点下面任意一家打开（新窗口）：';
+    var NOTE = {
+      a: '<b>🔁 能改签</b>：美国几家大航空公司的普通经济舱（Economy / Main Cabin）及以上改签一般不收手续费，只补差价；取消多半退成<b>航空公司积分</b>，不是现金。<ol><li>别选 <b>Basic Economy（基本经济舱）</b>。</li><li>Kayak 打开「Flexible options」筛选最快。</li><li>付款前看 Fare rules，确认写着 “No change fee”。</li></ol>',
+      r: '<b>💵 全额可退</b>：要退回信用卡，得买写明 <b>Refundable / Fully Refundable</b> 的票，通常贵不少。<ol><li>在 Google Flights 或航司官网的票价档位里选标 Refundable 的那档。</li><li>最好在<b>航空公司官网</b>直接订，退款直接找航司。</li><li>付款前看 Fare rules：要写 “Refundable”，只写 “No change fee” 的取消只给积分。</li><li>只是怕订错？出发前 7 天以上在官网订的票，<b>24 小时内</b>本来就能全额退。</li></ol>'
+    };
+    $('note').hidden = !NOTE[q.flex]; $('note').innerHTML = NOTE[q.flex] || '';
+    $('sites').innerHTML = L.map(function (l) { return '<a class="site' + (l.top ? ' top' : '') + (l.dim ? ' dim' : '') + '" target="_blank" rel="noopener" href="' + esc(l.u) + '"><b>' + esc(l.n) + ' ↗' + (l.tag ? '<span class="tag">' + esc(l.tag) + '</span>' : '') + (l.dim ? '<span class="tag w">不推荐</span>' : '') + '</b><small>' + esc(l.d) + '</small></a>'; }).join('');
     $('out').hidden = false;
     var r = (ls('recent') || []).filter(function (x) { return !(x.from === q.from && x.to === q.to && x.d1 === q.d1 && x.d2 === q.d2 && x.trip === q.trip); });
     r.unshift(q); ls('recent', r.slice(0, 6)); ls('last', q);
@@ -279,15 +315,15 @@ a{color:var(--acc)}
   $('save').onclick = function () {
     if (!CUR) return;
     var s = ls('saved') || [];
-    if (!s.some(function (x) { return x.from === CUR.from && x.to === CUR.to && x.trip === CUR.trip; })) s.unshift({ from: CUR.from, to: CUR.to, trip: CUR.trip, pax: CUR.pax, cab: CUR.cab });
+    if (!s.some(function (x) { return x.from === CUR.from && x.to === CUR.to && x.trip === CUR.trip; })) s.unshift({ from: CUR.from, to: CUR.to, trip: CUR.trip, pax: CUR.pax, cab: CUR.cab, flex: CUR.flex });
     ls('saved', s.slice(0, 20)); renderLists();
     this.textContent = '✅ 已保存'; var b = this; setTimeout(function () { b.textContent = '⭐ 保存这条航线'; }, 1500);
   };
 
   function rowHtml(x, i, kind) {
     var sub = kind === 'saved'
-      ? (x.trip === 'rt' ? '往返' : '单程') + ' · ' + (x.pax || 1) + ' 人 · ' + CAB.n[x.cab || 'e'] + ' · ' + esc(AP[x.from] || '') + ' → ' + esc(AP[x.to] || '')
-      : (x.trip === 'rt' ? x.d1 + ' → ' + x.d2 : x.d1 + ' 单程') + ' · ' + x.pax + ' 人 · ' + CAB.n[x.cab];
+      ? (x.trip === 'rt' ? '往返' : '单程') + ' · ' + (x.pax || 1) + ' 人 · ' + CAB.n[x.cab || 'e'] + (x.flex && x.flex !== 'c' ? ' · ' + FLEXN[x.flex] : '') + ' · ' + esc(AP[x.from] || '') + ' → ' + esc(AP[x.to] || '')
+      : (x.trip === 'rt' ? x.d1 + ' → ' + x.d2 : x.d1 + ' 单程') + ' · ' + x.pax + ' 人 · ' + CAB.n[x.cab] + (x.flex && x.flex !== 'c' ? ' · ' + FLEXN[x.flex] : '');
     return '<div class="rt"><div class="t" data-run="' + kind + ':' + i + '"><b>' + x.from + ' → ' + x.to + '</b><small>' + sub + '</small></div>' +
       (kind === 'saved' ? '<button data-flip="' + i + '" title="反向">⇄</button><button data-del="' + i + '" title="删除">×</button>' : '') + '</div>';
   }
@@ -300,16 +336,17 @@ a{color:var(--acc)}
     var t = e.target.closest('[data-run]'), d = e.target.closest('[data-del]'), f = e.target.closest('[data-flip]'), s = ls('saved') || [];
     if (t) {
       var p = t.getAttribute('data-run').split(':'), x = (ls(p[0]) || [])[+p[1]]; if (!x) return;
-      var q = { trip: x.trip, from: x.from, to: x.to, pax: x.pax, cab: x.cab, d1: p[0] === 'recent' ? x.d1 : '', d2: p[0] === 'recent' ? x.d2 : '' };
+      var q = { trip: x.trip, from: x.from, to: x.to, pax: x.pax, cab: x.cab, flex: x.flex, d1: p[0] === 'recent' ? x.d1 : '', d2: p[0] === 'recent' ? x.d2 : '' };
       fill(q); search(read()); $('form').scrollIntoView({ behavior: 'smooth' });
     } else if (d) { s.splice(+d.getAttribute('data-del'), 1); ls('saved', s); renderLists(); }
-    else if (f) { var y = s[+f.getAttribute('data-flip')]; fill({ trip: y.trip, from: y.to, to: y.from, pax: y.pax, cab: y.cab }); search(read()); $('form').scrollIntoView({ behavior: 'smooth' }); }
+    else if (f) { var y = s[+f.getAttribute('data-flip')]; fill({ trip: y.trip, from: y.to, to: y.from, pax: y.pax, cab: y.cab, flex: y.flex }); search(read()); $('form').scrollIntoView({ behavior: 'smooth' }); }
   });
 
   // ---------- 技巧 ----------
   var TIPS = [
     ['什么时候买最便宜', '<ul><li>美国国内：一般提前 <b>1–3 个月</b>；国际和回国：提前 <b>2–6 个月</b>。</li><li>感恩节、圣诞、春节、暑假要更早，越临近越贵。</li><li>“周二买票最便宜”基本不灵。真正有用的是<b>哪天飞</b>：周二、周三、周六出发通常比周五、周日便宜。</li><li>在 Google Flights 搜完点“价格图 / 日期网格”，整月一眼看完，前后挪一两天常能省不少。</li></ul>'],
     ['让价格来找你：开价格追踪', '<ul><li>Google Flights 搜索结果页打开“追踪价格”，降价会发邮件。</li><li>想买但不急的航线先追踪两三周，心里有个“正常价”，看到明显低于它就下手。</li><li>多试“附近机场”：洛杉矶一带 ONT、LAX、BUR、SNA、LGB 价格可能差很多。ONT 离 Upland 近、停车便宜、排队短；LAX 国际航线最多。</li></ul>'],
+    ['想要能退能改：怎么买', '<ul><li><b>能改</b>和<b>能退</b>不是一回事。美国大航空公司（United、Delta、American、Alaska）的普通经济舱及以上，改签一般不收手续费，只补差价；取消多半给<b>航空公司积分</b>，不退现金。</li><li>要退回信用卡，得买写明 <b>Refundable / Fully Refundable</b> 的票，价格高不少。</li><li>Basic Economy 通常不能改、不能退。</li><li>上面的比价选「🔁 能改签」或「💵 全额可退」，会提示每家网站怎么筛，并给出航司官网。Kayak 左侧有「Flexible options」筛选。</li><li>最好在航司官网订，付款前一定看 Fare rules。</li><li>西南航空 2025–2026 年改了票价档位，以官网每档写的规则为准。</li></ul>'],
     ['基本经济舱（Basic Economy）要看清', '<ul><li>最便宜的那档通常：<b>不能选座</b>、改签受限或不能改、登机最晚。</li><li>有的航空公司国内基本经济舱<b>不能带大件随身行李</b>，到登机口要补钱托运，反而更贵。</li><li>两个人想坐一起、或带大箱子，直接比较“普通经济舱 + 行李”的总价。</li></ul>'],
     ['订错了？24 小时内免费取消', '<ul><li>美国交通部规定：<b>出发前 7 天以上</b>直接在航空公司订的票，<b>24 小时内</b>可以免费取消（或免费保留价格）。</li><li>所以看到好价可以先订住，再慢慢确认假期。</li><li>通过第三方网站买的票，退改要按那家网站的规则，麻烦时先找它们的客服。</li></ul>'],
     ['航班取消或大延误：可以要现金退款', '<ul><li>航空公司取消航班，或大幅改动（国内延误 3 小时以上、国际 6 小时以上等），你选择不坐，有权拿<b>原路退款</b>，不必接受代金券。</li><li>需要改签时，先在 App 里自己改，往往比排队快；同时打客服电话，谁先接通用谁。</li><li>天气原因航空公司一般不赔餐宿，但机械故障等航空公司原因，大航司通常会给餐券或酒店，记得主动问。</li></ul>'],
