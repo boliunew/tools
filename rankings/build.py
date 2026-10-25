@@ -135,6 +135,12 @@ def yt(q):
     return "[▶️](https://www.youtube.com/results?search_query=%s)" % urllib.parse.quote_plus(re.sub(r"\s+", " ", q).strip())
 
 
+def cp(text):
+    """📋 复制按钮（知识库页面把 copy: 链接显示成一点就复制的按钮）"""
+    import urllib.parse
+    return "[📋](copy:%s)" % urllib.parse.quote(str(text).strip(), safe="")
+
+
 def esc(s):
     s = str(s or "").replace("|", "／").replace("\n", " ").replace("[", "(").replace("]", ")").replace("*", "＊").replace("`", "'")
     return s.replace("__", "_ _").strip()
@@ -219,13 +225,13 @@ def movies():
         sub = " · ".join(p for p in (esc(x["title"]) if x["zh"] else "", ("合拍：" + co) if co else "") if p)
         return "| %d | [**%s**](https://www.imdb.com/title/%s/)%s | %s | %.1f | %s | %s |" % (
             x["rank"], esc(x["zh"] or x["title"]), x["id"], (" · " + sub) if sub else "", x["year"], x["rating"], wan(x["votes"]),
-            yt("%s %s trailer" % (x["title"], x["year"])))
+            yt("%s %s trailer" % (x["title"], x["year"])) + " " + cp(x["zh"] or x["title"]))
 
-    summ, sec = group_md(top, row, "| # | 片名 | 年份 | 评分 | 人数 | 预告片 |", "|---:|---|---|---:|---:|:---:|")
+    summ, sec = group_md(top, row, "| # | 片名 | 年份 | 评分 | 人数 | 预告片 · 复制 |", "|---:|---|---|---:|---:|:---:|")
     today = dt.date.today().isoformat()
-    top10 = ["| # | 片名 | 国家 | 年份 | 评分 | 预告片 |", "|---:|---|---|---|---:|:---:|"] + [
+    top10 = ["| # | 片名 | 国家 | 年份 | 评分 | 预告片 · 复制 |", "|---:|---|---|---|---:|:---:|"] + [
         "| %d | [%s](https://www.imdb.com/title/%s/) | %s %s | %s | %.1f | %s |" % (x["rank"], esc(x["short"]), x["id"], flag(x["cc"]), x["cname"], x["year"], x["rating"],
-                                                                          yt("%s %s trailer" % (x["title"], x["year"]))) for x in top[:20]]
+                                                                          yt("%s %s trailer" % (x["title"], x["year"])) + " " + cp(x["zh"] or x["title"])) for x in top[:20]]
     L = ["---", "title: 电影 Top 500（按国家分类）", "tags: [电影, 排行榜]",
          "summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按出品国分组；每周自动更新。", "---", "",
          "# 🎬 电影 Top 500（按国家分类）", "",
@@ -301,13 +307,13 @@ def music():
         ch = sorted(s["charts"].items(), key=lambda kv: kv[1])
         where = " ".join("%s%d" % (flag(c), r) for c, r in ch[:3])
         return "| %d | [**%s**](%s) · %s%s | %d | %s | %s |" % (
-            s["rank"], esc(s["name"]), s["url"], esc(s["artist"]), " ≈" if s["approx"] else "", len(ch), where, yt("%s %s" % (s["name"], s["artist"])))
+            s["rank"], esc(s["name"]), s["url"], esc(s["artist"]), " ≈" if s["approx"] else "", len(ch), where, yt("%s %s" % (s["name"], s["artist"])) + " " + cp("%s %s" % (s["name"], s["artist"])))
 
-    summ, sec = group_md(top, row, "| # | 歌曲 · 歌手 | 上榜 | 最好名次 | YouTube |", "|---:|---|---:|---|:---:|")
+    summ, sec = group_md(top, row, "| # | 歌曲 · 歌手 | 上榜 | 最好名次 | YouTube · 复制 |", "|---:|---|---:|---|:---:|")
     today = dt.date.today().isoformat()
-    top20 = ["| # | 歌曲 · 歌手 | 国家 | 上榜 | YouTube |", "|---:|---|---|---:|:---:|"] + [
+    top20 = ["| # | 歌曲 · 歌手 | 国家 | 上榜 | YouTube · 复制 |", "|---:|---|---|---:|:---:|"] + [
         "| %d | [**%s**](%s) · %s | %s %s%s | %d | %s |" % (s["rank"], esc(s["name"]), s["url"], esc(s["artist"]), flag(s["cc"]), s["cname"], "≈" if s["approx"] else "",
-                                                       len(s["charts"]), yt("%s %s" % (s["name"], s["artist"]))) for s in top[:20]]
+                                                       len(s["charts"]), yt("%s %s" % (s["name"], s["artist"])) + " " + cp("%s %s" % (s["name"], s["artist"]))) for s in top[:20]]
     region_names = "、".join(flag(c.upper()) + CC.get(c.upper(), c) for c in got)
     L = ["---", "title: 音乐 Top 500（按国家分类）", "tags: [音乐, 排行榜]",
          "summary: Apple Music 25 个国家和地区的最多播放榜合并成全球热歌前 500，按歌手国家分组；每周自动更新。", "---", "",
