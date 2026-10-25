@@ -250,6 +250,12 @@ def run(cfg: dict, dry_run: bool = False, force: bool = False, fetch=fetch_histo
         print("\n⚠️ 没有设置 TG_BOT_TOKEN / TG_CHAT_ID，只打印不推送")
         return msg
     if not dry_run:
+        try:   # 📱 同时推到工具箱 App
+            sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+            from notify import push_app
+            push_app(msg, "signal")
+        except Exception as e:  # noqa: BLE001
+            print("App 推送跳过：", e)
         send_telegram(msg, cfg)
         Path(cfg["STATE_FILE"]).parent.mkdir(parents=True, exist_ok=True)
         state["tickers"].update(new_states)

@@ -157,6 +157,11 @@ function etNow() {
 }
 
 async function tg(env, text) {
+  // 盘中提醒、大盘异动：同时推到 App（Firebase）和 Telegram
+  const plain = text.replace(/<a href="([^"]+)">[^<]*<\/a>/g, '').replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').trim();
+  const link = (/<a href="([^"]+)"/.exec(text) || [])[1];
+  const lines = plain.split('\n').filter(Boolean);
+  try { await fcmSend(env, { title: lines[0] || '工具箱', body: lines.slice(1).join('\n'), url: link }); } catch (e) { /* App 推送失败不影响 Telegram */ }
   if (!env.TG_BOT_TOKEN || !env.TG_CHAT_ID) return false;
   const r = await fetch(`https://api.telegram.org/bot${env.TG_BOT_TOKEN}/sendMessage`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -164,6 +169,47 @@ async function tg(env, text) {
   });
   return r.ok;
 }
+
+// ---------------------------------------------------------------------------- App 推送（Firebase Cloud Messaging）
+// App 解锁后把自己的推送地址（token）登记到 /push/register；GitHub 上的自动任务通过 /push/send 发（用 Telegram 令牌派生的密钥认证）。
+// 需要 Worker 密钥 FCM_SERVICE_ACCOUNT（Firebase 服务账号 JSON）。
+function pemToDer(pem) { const b = atob(pem.replace(/-----[^-]+-----/g, '').replace(/\s+/g, '')); return Uint8Array.from(b, c => c.charCodeAt(0)); }
+const b64url = x => btoa(typeof x === 'string' ? unescape(encodeURIComponent(x)) : String.fromCharCode(...new Uint8Array(x))).replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
+async function fcmAccess(env) {
+  const cached = await env.KV.get('fcm:access');
+  if (cached) return cached;
+  const sa = JSON.parse(env.FCM_SERVICE_ACCOUNT);
+  const now = Math.floor(Date.now() / 1000);
+  const unsigned = b64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' })) + '.' + b64url(JSON.stringify({
+    iss: sa.client_email, scope: 'https://www.googleapis.com/auth/firebase.messaging', aud: 'https://oauth2.googleapis.com/token', iat: now, exp: now + 3600 }));
+  const key = await crypto.subtle.importKey('pkcs8', pemToDer(sa.private_key), { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
+  const sig = await crypto.subtle.sign('RSASSA-PKCS1-v1_5', key, new TextEncoder().encode(unsigned));
+  const r = await fetch('https://oauth2.googleapis.com/token', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=' + unsigned + '.' + b64url(sig) });
+  const j = await r.json();
+  if (!j.access_token) throw new Error('Google 授权失败：' + JSON.stringify(j).slice(0, 200));
+  await env.KV.put('fcm:access', j.access_token, { expirationTtl: 3000 });
+  return j.access_token;
+}
+async function fcmSend(env, { title, body, url, kind }) {
+  if (!env.FCM_SERVICE_ACCOUNT) return { sent: 0, why: '没有配置 FCM_SERVICE_ACCOUNT' };
+  const tokens = JSON.parse((await env.KV.get('fcm:tokens')) || '[]');
+  if (!tokens.length) return { sent: 0, why: 'App 还没登记（打开 App、首页解锁一次）' };
+  const pid = JSON.parse(env.FCM_SERVICE_ACCOUNT).project_id, access = await fcmAccess(env);
+  let sent = 0;
+  const keep = [];
+  for (const t of tokens) {
+    const r = await fetch(`https://fcm.googleapis.com/v1/projects/${pid}/messages:send`, {
+      method: 'POST', headers: { Authorization: 'Bearer ' + access, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: { token: t.token, data: { title: String(title || '工具箱').slice(0, 120), body: String(body || '').slice(0, 1500), url: url || '', kind: kind || '' }, android: { priority: 'high' } } })
+    });
+    if (r.ok) { sent++; keep.push(t); }
+    else if (![404, 400].includes(r.status)) keep.push(t);        // 404 / 400 = 这个 App 已卸载或地址失效，删掉
+  }
+  if (keep.length !== tokens.length) await env.KV.put('fcm:tokens', JSON.stringify(keep));
+  return { sent, devices: tokens.length };
+}
+async function pushKey(env) { return env.TG_BOT_TOKEN ? (await sha256hex('push:' + env.TG_BOT_TOKEN)).slice(0, 32) : null; }
 
 // ---------------------------------------------------------------------------- 盘中检查
 const MARKET = [['SPY', '标普500 ETF'], ['QQQ', '纳指100 ETF']], MARKET_MOVE = 1.5;
@@ -587,9 +633,25 @@ export default {
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors(req) });
     if (url.pathname === '/ocr' && req.method === 'POST') return ocr(req, env);
     if (url.pathname.startsWith('/tg/') && req.method === 'POST') return tgWebhook(req, env, ctx, url);
+    if (url.pathname === '/push/register' && req.method === 'POST') {   // App 登记推送地址（需要首页密码解锁过）
+      if (!(await authed(req, env))) return json(req, { error: 'key' }, 401);
+      const b = await req.json().catch(() => ({}));
+      if (!b.token || String(b.token).length < 20) return json(req, { error: 'token' }, 400);
+      const list = JSON.parse((await env.KV.get('fcm:tokens')) || '[]').filter(t => t.token !== b.token);
+      list.push({ token: String(b.token), device: String(b.device || '').slice(0, 60), at: new Date().toISOString() });
+      await env.KV.put('fcm:tokens', JSON.stringify(list.slice(-5)));
+      return json(req, { ok: true, devices: list.slice(-5).length });
+    }
+    if (url.pathname === '/push/send' && req.method === 'POST') {      // GitHub 上的自动任务发推送
+      const k = await pushKey(env);
+      if (!k || req.headers.get('X-Push-Key') !== k) return json(req, { error: 'key' }, 401);
+      const b = await req.json().catch(() => ({}));
+      try { return json(req, await fcmSend(env, b)); } catch (e) { return json(req, { error: String(e).slice(0, 300) }, 500); }
+    }
     if (url.pathname === '/health') {
       const last = await env.KV.get('last-run');
-      return json(req, { ok: true, ai: !!env.AI, kv: !!env.KV, telegram: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID), check: !!env.CHECK, last: last ? JSON.parse(last) : null });
+      const devices = JSON.parse((await env.KV.get('fcm:tokens')) || '[]').length;
+      return json(req, { ok: true, ai: !!env.AI, kv: !!env.KV, telegram: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID), check: !!env.CHECK, fcm: !!env.FCM_SERVICE_ACCOUNT, app_devices: devices, last: last ? JSON.parse(last) : null });
     }
     if (url.pathname === '/selftest' && req.method === 'POST') {   // 部署后自检：翻译 → 西语朗读 → 再听写回来
       if (!(await authed(req, env))) return json(req, { error: 'key' }, 401);

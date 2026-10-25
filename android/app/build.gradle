@@ -1,4 +1,7 @@
-plugins { id "com.android.application" }
+plugins {
+    id "com.android.application"
+    id "com.google.gms.google-services"   // 读 app/google-services.json（CI 从 secret GOOGLE_SERVICES_JSON 写出来）
+}
 
 def runNo = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInteger()
 
@@ -35,4 +38,6 @@ android {
 
 dependencies {
     implementation "androidx.core:core:1.13.1"
+    implementation platform("com.google.firebase:firebase-bom:33.5.1")
+    implementation "com.google.firebase:firebase-messaging"
 }

@@ -28,6 +28,8 @@ import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +41,7 @@ import java.util.List;
  */
 public class MainActivity extends Activity {
     private static final String HOME = "https://boliunew.github.io/tools/";
-    private static final int REQ_FILE = 1, REQ_MIC = 2, REQ_GEO = 3;
+    private static final int REQ_FILE = 1, REQ_MIC = 2, REQ_GEO = 3, REQ_NOTIFY = 4;
 
     private WebView web;
     private ValueCallback<Uri[]> fileCallback;
@@ -84,6 +86,12 @@ public class MainActivity extends Activity {
             @Override
             public void onPageStarted(WebView v, String url, Bitmap favicon) {
                 super.onPageStarted(v, url, favicon);
+            }
+
+            @Override
+            public void onPageFinished(WebView v, String url) {
+                super.onPageFinished(v, url);
+                registerPush();
             }
         });
 
@@ -174,8 +182,31 @@ public class MainActivity extends Activity {
             }
         });
 
+        PushService.channel(this);
+        if (Build.VERSION.SDK_INT >= 33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQ_NOTIFY);
+        }
         if (saved != null) web.restoreState(saved);
         else web.loadUrl(startUrl(getIntent()));
+    }
+
+    private boolean pushChecked = false;
+
+    /** 首页解锁后（浏览器里存了密钥），把这台手机登记成推送接收设备。 */
+    private void registerPush() {
+        if (pushChecked) return;
+        web.evaluateJavascript("(function(){try{return localStorage.getItem('home:unlock')||''}catch(e){return ''}})()", v -> {
+            String key = v == null ? "" : v.replace("\"", "").trim();
+            if (key.isEmpty() || key.equals("null")) return;
+            pushChecked = true;
+            PushService.prefs(this).edit().putString("tools_key", key).apply();
+            try {
+                FirebaseMessaging.getInstance().getToken().addOnSuccessListener(token -> {
+                    String done = PushService.prefs(this).getString("registered", "");
+                    if (!done.equals(key.substring(0, 8) + token)) PushService.register(this, key, token);
+                });
+            } catch (Exception ignored) { }
+        });
     }
 
     private String startUrl(Intent i) {

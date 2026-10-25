@@ -96,11 +96,42 @@ def chunks(text, n=4000):
     return parts
 
 
+def push_app(text_html, kind):
+    """📱 同一条消息也推到工具箱 App（经 Cloudflare 后端 → Firebase）。没配好就静默跳过。"""
+    tok = os.environ.get("TG_BOT_TOKEN", "").strip()
+    try:
+        api = json.load(open(os.path.join(ROOT, "cf.json"), encoding="utf-8"))["api"]
+    except Exception:
+        return False
+    if not tok or not api:
+        return False
+    import hashlib
+    link = (re.search(r'<a href="([^"]+)"', text_html) or [None, ""])[1]
+    plain = html.unescape(re.sub(r"<[^>]+>", "", re.sub(r'<a href="[^"]+">[^<]*</a>', "", text_html))).strip()
+    lines = [l for l in plain.split("\n") if l.strip()]
+    body = {"title": (lines[0] if lines else KINDS.get(kind, "工具箱"))[:120], "body": "\n".join(lines[1:])[:1500], "url": html.unescape(link), "kind": kind}
+    req = urllib.request.Request(api.rstrip("/") + "/push/send", data=json.dumps(body).encode("utf-8"), method="POST",
+                                 headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 tools-notify",
+                                          "X-Push-Key": hashlib.sha256(("push:" + tok).encode()).hexdigest()[:32]})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            res = json.loads(r.read().decode("utf-8"))
+        if os.environ.get("GITHUB_ACTIONS") and res.get("sent"):
+            print("::notice title=推送::已推到 App（%s，%d 台设备）" % (KINDS.get(kind, kind), res["sent"]))
+        return bool(res.get("sent"))
+    except Exception as e:  # noqa: BLE001
+        print("App 推送没发出去：%s" % str(e)[:150])
+        return False
+
+
 def tg(markdown, kind="test", html_ready=False):
-    """发一条推送；成功返回 True。markdown 是 GitHub 评论风格的文字（html_ready=True 表示已经是 Telegram HTML）。"""
-    if not configured() or not enabled(kind):
+    """发一条推送（Telegram + 工具箱 App）；Telegram 成功返回 True。markdown 是 GitHub 评论风格的文字（html_ready=True 表示已经是 Telegram HTML）。"""
+    if not enabled(kind):
         return False
     text = markdown if html_ready else md2html(markdown)
+    push_app(text, kind)
+    if not configured():
+        return False
     ok = True
     for part in chunks(text):
         try:

@@ -55,8 +55,8 @@ code=${PIPESTATUS[0]}
 
 # 5. 密钥：测试密钥每次重新生成；Telegram 有就带上
 TEST_KEY=$(openssl rand -hex 24); echo "::add-mask::$TEST_KEY"
-jq -n --arg t "$TEST_KEY" --arg b "${TG_BOT_TOKEN:-}" --arg c "${TG_CHAT_ID:-}" \
-  '{TEST_KEY:$t} + (if $b != "" and $c != "" then {TG_BOT_TOKEN:$b, TG_CHAT_ID:$c} else {} end)' > /tmp/secrets.json
+jq -n --arg t "$TEST_KEY" --arg b "${TG_BOT_TOKEN:-}" --arg c "${TG_CHAT_ID:-}" --arg f "${FCM_SERVICE_ACCOUNT:-}" \
+  '{TEST_KEY:$t} + (if $b != "" and $c != "" then {TG_BOT_TOKEN:$b, TG_CHAT_ID:$c} else {} end) + (if $f != "" then {FCM_SERVICE_ACCOUNT:$f} else {} end)' > /tmp/secrets.json
 npx --yes wrangler@4 secret bulk /tmp/secrets.json --config cf/wrangler.toml 2>&1 | tail -5
 rm -f /tmp/secrets.json
 
