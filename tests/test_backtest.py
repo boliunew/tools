@@ -17,3 +17,8 @@ def test_membership_point_in_time():
     since, removed = scan.membership(rows, {"OLD", "NEW", "BACK", "NDXONLY"}, pd.Timestamp("2021-10-23"), {"OLD", "NEW", "BACK"})
     assert {k: str(v.date()) for k, v in since.items()} == {"NEW": "2024-03-01", "BACK": "2025-01-01"}
     assert removed == {"GONE"}
+
+
+def test_membership_uses_date_added_column():
+    since, _ = scan.membership([], {"A", "B", "C"}, pd.Timestamp("2021-10-23"), {"A", "B", "C"}, {"A": "2010-01-01", "B": "2023-06-20"})
+    assert {k: str(v.date()) for k, v in since.items()} == {"B": "2023-06-20"}

@@ -135,6 +135,9 @@ def fetch_universe():
         for _, row in t.iterrows():
             sym = str(row["Symbol"]).strip().replace(".", "-")
             meta[sym] = {"name": str(row.get("Security", "")), "sector": str(row.get("GICS Sector", "")), "sp500": True}
+            added = pd.to_datetime(str(row.get("Date added", "")).split("[")[0].strip(), errors="coerce")   # 调入标普 500 的日期
+            if not pd.isna(added):
+                meta[sym]["added"] = added.date().isoformat()
         print(f"S&P 500: {len(t)} tickers")
     except Exception as e:  # noqa: BLE001
         print("WARN: S&P 500 list fetch failed:", e)
@@ -183,7 +186,6 @@ def fetch_sp500_changes():
     try:
         html = http_get("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
         tables = pd.read_html(io.StringIO(html))
-        CHANGES_DIAG["tables"] = [[" | ".join(str(x) for x in (c if isinstance(c, tuple) else (c,))) for c in t.columns][:6] for t in tables[:3]]
         for t in tables:
             flat = [" ".join(str(x) for x in (c if isinstance(c, tuple) else (c,))).lower() for c in t.columns]
             if not (any("added" in c for c in flat) and any("removed" in c for c in flat)):
@@ -215,13 +217,16 @@ def fetch_sp500_changes():
     return rows
 
 
-def membership(rows, tickers, cutoff, sp500):
+def membership(rows, tickers, cutoff, sp500, added=None):
     """每只股票「从哪天起算」：窗口内才调入标普 500 的，调入之前的信号和基准都不算（避免「涨上去了才被选进指数」的偏差）。
     只在纳指 100 里的股票没有可靠的历史变动表，照旧全算。"""
     since, removed = {}, set()
+    for t, d in (added or {}).items():              # 成分股表里的「Date added」（最可靠）
+        if t in tickers and t in sp500:
+            since[t] = pd.Timestamp(d)
     for r in sorted(rows, key=lambda r: r["d"]):
         d = pd.Timestamp(r["d"])
-        if r["add"] and r["add"] in tickers and r["add"] in sp500:
+        if r["add"] and r["add"] in tickers and r["add"] in sp500 and r["add"] not in (added or {}):
             since[r["add"]] = d                       # 多次进出时取最近一次调入
         if r["rem"] and d >= cutoff and r["rem"] not in sp500:
             removed.add(r["rem"])
@@ -834,10 +839,11 @@ def main():
     cutoff = last_date - pd.DateOffset(years=STATS_YEARS)
     regimes = regime_series(frames, idx_frames.get("SPY"), idx_frames.get("^VIX"))
     sp500 = {t for t, m in meta.items() if m.get("sp500")}
-    since, removed = membership(fetch_sp500_changes(), set(frames), cutoff, sp500) if sp500 else ({}, set())
+    added = {t: m["added"] for t, m in meta.items() if m.get("sp500") and m.get("added")}
+    since, removed = membership(fetch_sp500_changes(), set(frames), cutoff, sp500, added) if sp500 else ({}, set())
     stats = signal_stats(frames, sigs, cutoff, regimes, since)
     smeta = stats.pop("_meta")
-    smeta["pit"] = {"late_added": len(since), "removed_missing": len(removed), "sp500": len(sp500), "diag": CHANGES_DIAG}
+    smeta["pit"] = {"late_added": len(since), "removed_missing": len(removed) or None, "sp500": len(sp500), "with_date": len(added), "changes_rows": CHANGES_DIAG.get("rows")}
     print(f"point-in-time: {len(since)} stocks counted only after joining the S&P 500; {len(removed)} removed stocks not in the data")
 
     # market regime (today)
