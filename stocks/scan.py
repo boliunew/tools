@@ -33,7 +33,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 HIST = os.path.join(DATA, "history")
 UNIVERSE_CACHE = os.path.join(HERE, "universe.json")
-CHANGES_CACHE = os.path.join(HERE, "sp500_changes.json")   # 标普 500 历次调入 / 调出（维基百科），用来减轻幸存者偏差
+CHANGES_CACHE = os.path.join(HERE, "sp500_changes.json")
+CHANGES_DIAG = {}   # 标普 500 历次调入 / 调出（维基百科），用来减轻幸存者偏差
 WATCHLIST = os.path.join(HERE, "watchlist.txt")
 
 MIN_PRICE = 10.0
@@ -178,9 +179,12 @@ def fetch_sp500_changes():
     """标普 500 的历次成分股变动（维基百科 List of S&P 500 companies 的第二张表）→ {ticker: 最近一次调入日期}，
     以及窗口内被调出、现在不在名单里的股票数量。抓不到就用上次存下的。"""
     rows = []
+    CHANGES_DIAG.clear()
     try:
         html = http_get("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
-        for t in pd.read_html(io.StringIO(html)):
+        tables = pd.read_html(io.StringIO(html))
+        CHANGES_DIAG["tables"] = [[" | ".join(str(x) for x in (c if isinstance(c, tuple) else (c,))) for c in t.columns][:6] for t in tables[:3]]
+        for t in tables:
             flat = [" ".join(str(x) for x in (c if isinstance(c, tuple) else (c,))).lower() for c in t.columns]
             if not (any("added" in c for c in flat) and any("removed" in c for c in flat)):
                 continue
@@ -202,6 +206,8 @@ def fetch_sp500_changes():
             print(f"S&P 500 changes: {len(rows)} rows")
     except Exception as e:  # noqa: BLE001
         print("WARN: S&P 500 changes fetch failed:", e)
+        CHANGES_DIAG["error"] = str(e)[:200]
+    CHANGES_DIAG["rows"] = len(rows)
     if len(rows) < 50 and os.path.exists(CHANGES_CACHE):
         with open(CHANGES_CACHE, encoding="utf-8") as f:
             rows = json.load(f)
@@ -831,7 +837,7 @@ def main():
     since, removed = membership(fetch_sp500_changes(), set(frames), cutoff, sp500) if sp500 else ({}, set())
     stats = signal_stats(frames, sigs, cutoff, regimes, since)
     smeta = stats.pop("_meta")
-    smeta["pit"] = {"late_added": len(since), "removed_missing": len(removed), "sp500": len(sp500)}
+    smeta["pit"] = {"late_added": len(since), "removed_missing": len(removed), "sp500": len(sp500), "diag": CHANGES_DIAG}
     print(f"point-in-time: {len(since)} stocks counted only after joining the S&P 500; {len(removed)} removed stocks not in the data")
 
     # market regime (today)
