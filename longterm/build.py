@@ -180,6 +180,9 @@ def score_one(t, f, px, rs6, sector, sec_pe):
     fin = sector in ("Financials", "Financial Services")
     price = float(px.iloc[-1])
     out = {"t": t, "price": round(price, 2), "parts": {}, "why": [], "warn": []}
+    # 缺数据的统一规则：核心指标（资本回报率、估值）缺了给 0 分，并且最高只能评 C；
+    # 次要指标（毛利率、利润率稳定性、收入增长、负债）缺了给该项一半的分，并在提示里写明缺了什么。
+    missing = []
 
     # ---- moat 0–35
     roic = None
@@ -209,7 +212,9 @@ def score_one(t, f, px, rs6, sector, sec_pe):
         y = sorted(set(gp.index) & set(rev.index))
         if y and rev[y[-1]] > 0:
             gm = gp[y[-1]] / rev[y[-1]]
-    gpts = 3 if gm is None else 8 if gm >= 0.6 else 6 if gm >= 0.4 else 3 if gm >= 0.25 else 0
+    if gm is None and not fin:
+        missing.append("毛利率")
+    gpts = 4 if gm is None else 8 if gm >= 0.6 else 6 if gm >= 0.4 else 3 if gm >= 0.25 else 0
     opm = None
     spts = 0
     if len(op) and len(rev):
@@ -218,7 +223,13 @@ def score_one(t, f, px, rs6, sector, sec_pe):
         if len(m) >= 3:
             opm = float(m[-1])
             spts = 7 if (m > 0).all() and m.std() < 0.05 else 4 if (m > 0).all() else 0
-    moat = qpts + gpts + spts
+    if opm is None:
+        if not fin:
+            missing.append("利润率历史")
+        spts = 3.5
+    if q is None:
+        missing.append("资本回报率")
+    moat = qpts + gpts + spts      # 银行保险没有毛利率这类指标：按「次要指标给一半」处理，但不算缺数据
     out["parts"]["moat"] = moat
     out.update({"roic": None if roic is None else round(roic, 3), "roe": None if roe is None else round(roe, 3),
                 "q": None if q is None else round(q, 3), "gm": None if gm is None else round(gm, 3), "opm": None if opm is None else round(opm, 3)})
@@ -276,7 +287,9 @@ def score_one(t, f, px, rs6, sector, sec_pe):
     if len(rev) >= 3 and rev.iloc[0] > 0 and rev.iloc[-1] > 0:
         yrs = (rev.index[-1] - rev.index[0]).days / 365.25
         cagr = (rev.iloc[-1] / rev.iloc[0]) ** (1 / yrs) - 1 if yrs > 0.9 else None
-    gpts2 = 0 if cagr is None else 10 if cagr >= 0.15 else 7 if cagr >= 0.08 else 4 if cagr >= 0.03 else 2 if cagr >= 0 else 0
+    if cagr is None:
+        missing.append("收入增长")
+    gpts2 = 5 if cagr is None else 10 if cagr >= 0.15 else 7 if cagr >= 0.08 else 4 if cagr >= 0.03 else 2 if cagr >= 0 else 0
     out["parts"]["growth"] = gpts2
     out["cagr"] = None if cagr is None else round(cagr, 3)
     if cagr is not None and cagr >= 0.12:
@@ -290,12 +303,22 @@ def score_one(t, f, px, rs6, sector, sec_pe):
         pen = -10 if nde > 3 else -5 if nde > 2 else 0
         if pen:
             out["warn"].append(f"净负债是 EBITDA 的 {nde:.1f} 倍")
+    if nde is None and not fin:
+        missing.append("负债")
+        pen = -2.5   # 负债情况不明：扣一半的轻度分（-5 的一半），不当成「没负债」
     out["parts"]["debt"] = pen
     out["nde"] = None if nde is None else round(nde, 2)
 
     sc = moat + vpts + tpts + dpts + gpts2 + pen
     out["score"] = round(float(sc), 1)
-    out["grade"] = "S" if sc >= 80 else "A" if sc >= 70 else "B" if sc >= 60 else "C" if sc >= 50 else "D"
+    grade = "S" if sc >= 80 else "A" if sc >= 70 else "B" if sc >= 60 else "C" if sc >= 50 else "D"
+    if (q is None or not (pe and fair_pe)) and grade in ("S", "A", "B"):
+        grade = "C"   # 核心数据不全，不给高评级
+        out["warn"].append("核心数据不全，评级最高给到 C")
+    out["grade"] = grade
+    if missing:
+        out["warn"].append("缺数据：" + "、".join(missing))
+    out["missing"] = missing
     out["data_ok"] = q is not None and len(rev) >= 3
     return out
 

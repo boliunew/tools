@@ -7,3 +7,5 @@ selfhost/config.env
 radio/_local/
 kb/.obsidian/
 cf/wrangler.toml
+tests/.worker_under_test.mjs
+.pytest_cache/
