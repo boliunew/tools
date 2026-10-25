@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-24T14:03:31Z",
- "date": "2026-10-24",
+ "generated": "2026-10-25T14:25:35Z",
+ "date": "2026-10-25",
  "engine": "edge",
- "total": 510.4,
- "short": 327.4,
+ "total": 491.3,
+ "short": 334.1,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610240702",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610250724",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月24日 星期六",
-   "dur": 9.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610240702",
+   "sub": "10月25日 星期日",
+   "dur": 12.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。星期六，10月24日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "周末还出门，辛苦了。今天是10月25日，星期日。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 76°/55°F",
-   "dur": 26.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610240702",
+   "sub": "Upland 晴 79°/56°F",
+   "dur": 27.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏55度，13摄氏度。傍晚5点下班大约华氏75度，24摄氏度。白天最高76度，约24摄氏度；最低55度。基本不会下雨。白天空气质量良好，指数最高50。今天日落时间是傍晚6点05分。"
+     "t": "Upland今天晴。早上7点出门大约华氏56度，13摄氏度。傍晚5点下班大约华氏77度，25摄氏度，体感72度。白天最高79度，约26摄氏度；最低56度。基本不会下雨。白天空气质量中等，指数最高53。今天日落时间是傍晚6点04分。"
     }
    ]
   },
@@ -38,12 +38,12 @@
    "id": "sky",
    "title": "🔭 天象",
    "sub": "Upland",
-   "dur": 7.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610240702",
+   "dur": 7.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。明天，满月。21:12 最圆，整晚都亮。"
+     "t": "天象提醒。今天，满月。21:12 最圆，整晚都亮。"
     }
    ]
   },
@@ -52,7 +52,7 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 30.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610240702",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
@@ -64,12 +64,12 @@
    "id": "pool",
    "title": "📈 股票池",
    "sub": "37 个候选",
-   "dur": 67.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610240702",
+   "dur": 65.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天37个候选，评分最高的是Motorola Solutions，代码 M S I。不想听细节可以按下一首。"
+     "t": "股票池今天37个候选，评分最高的是Estée Lauder Companies (The)，代码 E L。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
@@ -77,15 +77,15 @@
     },
     {
      "lang": "zh",
-     "t": "第1，Motorola Solutions，代码 M S I，挤压突破信号，收盘价481.83美元，止损参考469.37，注意近期有财报。"
+     "t": "第1，Estée Lauder Companies (The)，代码 E L，强势新高信号，收盘价108.67美元，止损参考101.57。"
     },
     {
      "lang": "zh",
-     "t": "第2，Allegion，代码 A L L E，挤压突破信号，收盘价178.98美元，止损参考172.35。"
+     "t": "第2，Intuitive Surgical，代码 I S R G，强势新高信号，收盘价452.29美元，止损参考425.84。"
     },
     {
      "lang": "zh",
-     "t": "第3，Estée Lauder Companies (The)，代码 E L，强势新高信号，收盘价108.67美元，止损参考101.57。"
+     "t": "第3，Devon Energy，代码 D V N，强势新高信号，收盘价51.39美元，止损参考48.37。"
     },
     {
      "lang": "zh",
@@ -97,12 +97,12 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "5 件大事",
-   "dur": 55.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610240702",
+   "dur": 55.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "10月26日，有2家大公司发财报。"
+     "t": "明天，有2家大公司发财报。"
     },
     {
      "lang": "zh",
@@ -133,9 +133,9 @@
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · The Guardian · Al Jazeera",
-   "dur": 92.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610240702",
+   "sub": "BBC · NPR · The Guardian",
+   "dur": 98.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
@@ -143,48 +143,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，国际，难度B2。大意是：希特勒鹰巢度假屋火灾后被捕。"
+     "t": "第1条，来自BBC，商业，难度B2。大意是：罗斯班克：政治风暴中心的油田生活。"
     },
     {
      "lang": "en",
-     "t": "Arrest made after fire at Hitler's Eagle's Nest retreat"
+     "t": "Rosebank: Life on the oil field at the centre of a political storm"
     },
     {
      "lang": "en",
-     "t": "Around 200 emergency personnel are deployed to fight the blaze at the Nazi dictator's Alpine residence in Germany."
+     "t": "Scotland editor James Cook finds out what life is like on board a ship in an untapped oil field awaiting its fate."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自The Guardian，国际，难度B2。大意是：台风冠军在台湾前往中国期间造成一人死亡， 500多人受伤。"
+     "t": "第2条，来自NPR，综合，难度B2。大意是：纽约总教区同意就性虐待索赔达成8亿美元的和解协议。"
     },
     {
      "lang": "en",
-     "t": "Typhoon Champi kills one and injures more than 500 in Taiwan as it heads to China"
+     "t": "Archdiocese of New York agrees to $800 million settlement over sexual abuse claims"
     },
     {
      "lang": "en",
-     "t": "Super typhoon weakening but large parts of Taiwan, including Taipei, still mostly closed and flights cancelled Typhoon Champi swept past Taiwan on Saturday killing one person, injuring more than 500, and uprooting trees and severing power a"
+     "t": "The 1,300 survivors of sexual abuse by clergy members and lay workers have all agreed to the settlement, according to an attorney for some of the plaintiffs."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：阿根廷法官撤销对Milei加密货币丑闻的欺诈调查。"
+     "t": "第3条，来自The Guardian，科技，难度B2。大意是：“合成双胞胎” ：为什么Socceroo Cristian Volpato是最新获得人工智能克隆许可的足球运动员。"
     },
     {
      "lang": "en",
-     "t": "Argentinian judge drops fraud investigation into Milei over crypto scandal"
+     "t": "‘Synthetic twin’: Why Socceroo Cristian Volpato is the latest footballer to license his AI clone"
     },
     {
      "lang": "en",
-     "t": "President Javier Milei’s role in cryptocurrency launch does not translate into a fraudulent scheme, judge says."
+     "t": "Athletes’ scramble to control – and monetise – their digital identities at the cutting edge of AI rights deals Get our new political email, free app or daily news podcast The Socceroos star stares at the camera as he strides through an enor"
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "habitat · buenas tardes",
-   "dur": 32.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610240702",
+   "sub": "extinct · la uva",
+   "dur": 31.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
@@ -192,15 +192,15 @@
     },
     {
      "lang": "en",
-     "t": "habitat"
+     "t": "extinct"
     },
     {
      "lang": "zh",
-     "t": "意思是：栖息地。拼写是："
+     "t": "意思是：灭绝的。拼写是："
     },
     {
      "lang": "en",
-     "t": "h, a, b, i, t, a, t"
+     "t": "e, x, t, i, n, c, t"
     },
     {
      "lang": "zh",
@@ -208,7 +208,7 @@
     },
     {
      "lang": "en",
-     "t": "habitat"
+     "t": "extinct"
     },
     {
      "lang": "zh",
@@ -216,44 +216,44 @@
     },
     {
      "lang": "es",
-     "t": "buenas tardes"
+     "t": "la uva"
     },
     {
      "lang": "zh",
-     "t": "意思是：下午好。跟着读一遍。"
+     "t": "意思是：葡萄。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "buenas tardes"
+     "t": "la uva"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 33.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610240702",
+   "sub": "易错",
+   "dur": 20.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天说一个常见错误。不要说："
     },
     {
      "lang": "en",
-     "t": "Be not afraid of greatness: some are born great, some achieve greatness, and some have greatness thrust upon 'em."
+     "t": "I want to ask for leave"
     },
     {
      "lang": "zh",
-     "t": "意思是：不要害怕伟大：有人生而伟大，有人成就伟大，有人被迫伟大。这句话出自 William Shakespeare。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "应该说："
     },
     {
      "lang": "en",
-     "t": "Be not afraid of greatness: some are born great, some achieve greatness, and some have greatness thrust upon 'em."
+     "t": "I'd like to take a day off"
+    },
+    {
+     "lang": "zh",
+     "t": "我想请假。口语更常说 take a day off 或 take some time off"
     }
    ],
    "opt": true
@@ -261,61 +261,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "报告柜子损坏",
-   "dur": 68.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610240702",
+   "sub": "指挥倒车与安全",
+   "dur": 59.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：报告柜子损坏。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：指挥倒车与安全。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "看起来是运输途中弄的。"
+     "t": "场内请慢行。"
     },
     {
      "lang": "en",
-     "t": "It looks like it happened in transit."
+     "t": "Slow down in the yard, please."
     },
     {
      "lang": "en",
-     "t": "It looks like it happened in transit."
+     "t": "Slow down in the yard, please."
     },
     {
      "lang": "zh",
-     "t": "左侧板有个凹痕。"
+     "t": "慢慢倒。"
     },
     {
      "lang": "en",
-     "t": "There's a dent on the left side panel."
+     "t": "Back it up slow."
     },
     {
      "lang": "en",
-     "t": "There's a dent on the left side panel."
+     "t": "Back it up slow."
     },
     {
      "lang": "zh",
-     "t": "顶板有个洞。"
+     "t": "继续，继续。"
     },
     {
      "lang": "en",
-     "t": "There's a hole in the roof."
+     "t": "Keep coming."
     },
     {
      "lang": "en",
-     "t": "There's a hole in the roof."
+     "t": "Keep coming."
     },
     {
      "lang": "zh",
-     "t": "里面地板坏了。"
+     "t": "就停那儿！"
     },
     {
      "lang": "en",
-     "t": "The floor is damaged inside."
+     "t": "Stop right there!"
     },
     {
      "lang": "en",
-     "t": "The floor is damaged inside."
+     "t": "Stop right there!"
     },
     {
      "lang": "zh",
@@ -327,13 +327,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "FSA 的钱年底前要用完",
-   "dur": 25.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610240702",
+   "sub": "蜂蜜为什么很难坏",
+   "dur": 26.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：FSA 的钱年底前要用完。过期不用就没了。做法：医疗 FSA 一般是「用掉或作废」，只有少数计划允许少量结转或宽限期；年底前检查余额，拿去配眼镜、买隐形眼镜、看牙；很多药店的非处方药、防晒霜、急救用品也能用 FSA 卡付。"
+     "t": "今日一招：蜂蜜为什么很难坏。顺便说说结晶不是变质。做法：蜂蜜含水很少、糖分极高、偏酸，还会产生微量过氧化氢，细菌和霉菌很难活；盖紧放室温就行，别让水汽进去；进了水才可能发酵；结晶变硬是正常现象：整瓶泡在温水里慢慢化开，别用大火煮。"
     }
    ],
    "opt": true
@@ -341,13 +341,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1894 · 2015 · 2023",
-   "dur": 28.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610240702",
+   "sub": "1915 · 1951 · 2009",
+   "dur": 22.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1894年，甲午战争：日军进入中国境内。2015年，香港铜锣湾书店老板林荣基以出版中国大陆禁售的政治书籍闻名，遭中国当局绑架。2023年，第十四届全国人大常委会第六次会议表决通过《中华人民共和国爱国主义教育法》，自2024年1月1日起施行。"
+     "t": "历史上的今天。1915年，孙中山和宋庆龄在日本东京登记结婚。1951年，英国大选，保守党击败工党，邱吉尔再任首相。2009年，统一7-ELEVEn狮在中华职棒20年总冠军赛击败兄弟象，获得年度总冠军。"
     }
    ],
    "opt": true
@@ -355,21 +355,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "春宵",
-   "dur": 28.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610240702",
+   "sub": "洗儿戏作",
+   "dur": 28.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：春宵。"
+     "t": "读一首苏轼：洗儿戏作。写于1083年，他46岁，在黄州。"
     },
     {
      "lang": "zh",
-     "t": "春宵一刻值千金，花有清香月有阴。歌管楼台声细细，秋千院落夜沉沉。"
+     "t": "人皆养子望聪明，我被聪明误一生。惟愿孩儿愚且鲁，无灾无难到公卿。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：春天的夜晚，哪怕很短的一会儿也值千金。花散发着清香，月光下花影朦胧。楼台上的歌声和乐声轻轻地飘着，挂着秋千的院子里，夜已经很深很静了。"
+     "t": "白话意思是：别人养孩子都希望他聪明，我却被「聪明」耽误了一辈子。只希望我的孩子又笨又迟钝，一辈子没灾没难，一路做到大官。"
     }
    ],
    "opt": true
@@ -378,12 +378,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610240702",
+   "dur": 6.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610250724",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
     }
    ]
   }

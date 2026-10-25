@@ -1,20 +1,20 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-10-24（短版）
-#EXTINF:10,通勤电台 - ☀️ 开场 10月24日 星期六
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610240702
-#EXTINF:26,通勤电台 - 🌤️ 天气 Upland 晴 76°/55°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610240702
-#EXTINF:7,通勤电台 - 🔭 天象 Upland
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610240702
+#PLAYLIST:通勤电台 2026-10-25（短版）
+#EXTINF:12,通勤电台 - ☀️ 开场 10月25日 星期日
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610250724
+#EXTINF:28,通勤电台 - 🌤️ 天气 Upland 晴 79°/56°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610250724
+#EXTINF:8,通勤电台 - 🔭 天象 Upland
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610250724
 #EXTINF:30,通勤电台 - 📊 大盘 谨慎
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610240702
-#EXTINF:67,通勤电台 - 📈 股票池 37 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610240702
-#EXTINF:56,通勤电台 - 🗓️ 财报与数据 5 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610240702
-#EXTINF:93,通勤电台 - 📰 英文新闻 BBC · The Guardian · Al Jazeera
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610240702
-#EXTINF:33,通勤电台 - 🔤 今日单词 habitat · buenas tardes
-https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610240702
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610250724
+#EXTINF:65,通勤电台 - 📈 股票池 37 个候选
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610250724
+#EXTINF:55,通勤电台 - 🗓️ 财报与数据 5 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610250724
+#EXTINF:99,通勤电台 - 📰 英文新闻 BBC · NPR · The Guardian
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610250724
+#EXTINF:31,通勤电台 - 🔤 今日单词 extinct · la uva
+https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610250724
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610240702
+https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610250724
