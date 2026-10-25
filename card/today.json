@@ -1,16 +1,16 @@
 {
- "date": "2026-10-24",
- "kind": "名言",
- "en": "Be not afraid of greatness: some are born great, some achieve greatness, and some have greatness thrust upon 'em.",
- "zh": "不要害怕伟大：有人生而伟大，有人成就伟大，有人被迫伟大。",
- "by": "William Shakespeare",
- "line": "Be not afraid of greatness: some are born great, some achieve greatness, and some have greatness thrust upon 'em. — William Shakespeare",
+ "date": "2026-10-25",
+ "kind": "易错",
+ "en": "I'd like to take a day off",
+ "zh": "我想请假",
+ "by": "口语更常说 take a day off 或 take some time off",
+ "line": "✗ I want to ask for leave → ✓ I'd like to take a day off",
  "word": {
-  "w": "continent",
-  "ph": "'kɒntinәnt",
-  "zh": "n. 大陆，洲；a. 自制的",
-  "ex": "Africa is a very large continent.",
-  "exzh": "非洲是一块非常大的大陆。"
+  "w": "promptly",
+  "ph": "'prɒmptli",
+  "zh": "adv. 敏捷地，迅速地",
+  "ex": "Would you please replace the broken one promptly?",
+  "exzh": "请快点把碎了的那个换掉好吗？"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
