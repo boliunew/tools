@@ -234,11 +234,12 @@ const WHISPER = ['@cf/openai/whisper-large-v3-turbo', '@cf/openai/whisper'];
 const HELP = [
   '🤖 <b>我能做这些</b>',
   '📷 <b>发照片</b>：认柜号 / 封条号（自动校验）；拍的是提单、装箱单就整理关键字段。配文写「单据」强制按单据读',
-  '🎙️ <b>发语音</b>：说中文 → 翻成西班牙语 + 英语，还附西语朗读；说西语 / 英语 → 翻成中文',
-  '⌨️ <b>直接打字</b>：中文 ↔ 西班牙语 / 英语翻译',
+  '🎙️ <b>发语音</b>：现场翻译——说中文 → 西班牙语 + 英语 + 朗读；说西语 / 英语 → 中文',
+  '💬 <b>直接打中文</b>：问我任何事（问股市会参考实时行情和股票池）',
+  '🌐 <b>翻译</b>：打「翻译 把柜子放到12号门」→ 西语 + 英语 + 朗读；收到西语 / 英语直接转发给我 → 中文',
   '🔔 <code>/提醒 VOO 跌到 650</code>（也可以：涨到 250、单日涨跌 5、回撤 10）',
   '📋 <code>/提醒列表</code> · <code>/删除 3</code>',
-  '📈 <code>/股价 NVDA</code> · ☀️ <code>/简报</code>'
+  '📈 <code>/q</code> 大盘 · <code>/q NVDA</code> 个股 · ☀️ <code>/简报</code>'
 ].join('\n');
 
 const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
@@ -334,24 +335,73 @@ async function sendSpanishVoice(env, chat, text) {
     const bytes = Uint8Array.from(atob(audio), c => c.charCodeAt(0));
     const fd = new FormData();
     fd.append('chat_id', String(chat));
-    fd.append('title', 'Español');
+    fd.append('title', text.slice(0, 60));
+    fd.append('performer', '🇲🇽 西语朗读');
     fd.append('audio', new Blob([bytes], { type: 'audio/mpeg' }), 'espanol.mp3');
     await fetch(`https://api.telegram.org/bot${env.TG_BOT_TOKEN}/sendAudio`, { method: 'POST', body: fd });
   } catch (e) { /* 朗读失败就只发文字 */ }
 }
 
-async function onText(env, chat, text, fromVoice = '', lang = '') {
+async function doTranslate(env, chat, text, fromVoice = '', lang = '', speak = false) {
   await tgApi(env, 'sendChatAction', { chat_id: chat, action: 'typing' });
   const { zh, J } = await translate(env, text, lang);
   const head = fromVoice ? `🎙️ 听到：${esc(text)}\n\n` : '';
   if (zh) {
     if (!J.es && !J.en) return reply(env, chat, head + '😵 翻译失败，再发一次试试');
     await reply(env, chat, head + `🇲🇽 <b>${esc(J.es || '')}</b>\n\n🇺🇸 ${esc(J.en || '')}`);
-    if (J.es) await sendSpanishVoice(env, chat, J.es);
+    if (J.es && speak) await sendSpanishVoice(env, chat, J.es);
   } else {
     if (!J.zh) return reply(env, chat, head + '😵 翻译失败，再发一次试试');
     await reply(env, chat, head + `🇨🇳 <b>${esc(J.zh)}</b>` + (J.src ? `\n<i>（${esc(J.src)}）</i>` : ''));
   }
+}
+
+// 打字：中文 → AI 助手回答（带行情 / 股票池 / 简报数据）；「翻译 …」→ 翻出去（附西语朗读）；西语 / 英语 → 翻成中文
+async function onText(env, chat, text) {
+  const tr = /^\s*(翻译|翻一下|fy)\s*[:：,，]?\s*([\s\S]+)$/i.exec(text);
+  if (tr) return doTranslate(env, chat, tr[2].trim(), '', '', true);
+  if (!/[\u4e00-\u9fff]/.test(text)) return doTranslate(env, chat, text);
+  return askAI(env, chat, text);
+}
+
+const TICK_STOP = new Set(['AI', 'ETF', 'RSI', 'VIX', 'CEO', 'IPO', 'EPS', 'GDP', 'CPI', 'PCE', 'FOMC', 'USD', 'OK', 'US', 'BL', 'TG']);
+async function marketContext(env, question) {
+  const site = env.SITE, h = Math.floor(Date.now() / 36e5);
+  const getj = p => fetch(`${site}/${p}?t=${h}`).then(r => r.json()).catch(() => null);
+  const named = [...new Set((question.toUpperCase().match(/\b[A-Z]{1,5}\b/g) || []).filter(t => !TICK_STOP.has(t)))].slice(0, 4);
+  const [Q, pool, snap, ai, idx] = await Promise.all([quotes(['SPY', 'QQQ', '^VIX', ...named]), getj('stocks/data/latest.json'), getj('stocks/data/snap.json'), getj('stocks/data/ai.json'), getj('brief/data/index.json')]);
+  const brief = idx && idx.dates && idx.dates[0] ? await getj(`brief/data/${idx.dates[0]}.json`) : null;
+  const L = [];
+  const now = etNow();
+  L.push(`现在美东时间 ${now.date} ${String(Math.floor(now.mins / 60)).padStart(2, '0')}:${String(now.mins % 60).padStart(2, '0')}（${now.wd}）`);
+  for (const s of ['SPY', 'QQQ', '^VIX']) { const q = Q[s]; if (q) L.push(`${s} 最新 ${q.p}` + (q.prev ? `（较前收 ${pctTxt((q.p / q.prev - 1) * 100)}）` : '')); }
+  if (pool && pool.regime) L.push(`股票池大盘状态「${pool.regime.label}」：${pool.regime.desc || ''}；站上50日线的股票占 ${Math.round((pool.regime.breadth50 || 0) * 100)}%`);
+  if (pool && pool.signals) L.push('各信号回测结论：' + Object.values(pool.signals).map(v => `${v.name}「${(v.stats || {}).verdict}」`).join('，'));
+  if (pool && pool.candidates) L.push('股票池评分前 5：' + pool.candidates.slice().sort((a, b) => b.score - a.score).slice(0, 5).map(c => `${c.t}(${c.primary}, RSI ${c.rsi})`).join('、'));
+  if (ai && ai.market) L.push(`AI 盘后解读（${ai.date}）：${ai.market} ${ai.sectors || ''}`);
+  for (const t of named) {
+    const q = Q[t], r = snap && snap.rows && snap.rows[t], c = pool && (pool.candidates || []).find(x => x.t === t);
+    if (q || r) L.push(`${t}：` + (q ? `现价 ${q.p}` + (q.prev ? `（${pctTxt((q.p / q.prev - 1) * 100)}）` : '') : '') + (r ? `；${snap.date} 收盘 ${r.c}，RSI14 ${r.rsi}，${r.a50 ? '在' : '不在'}50日线上，${r.a200 ? '在' : '不在'}200日线上，距一年高点 ${pctTxt((r.h || 0) * 100)}，相对强度 ${r.rs}` : '') + (c ? `；在今日股票池（${c.primary}，止损 ${c.stop}，目标 ${c.target}${c.earn ? '，财报 ' + c.earn : ''}）` : ''));
+  }
+  if (brief) L.push(`今日简报（${brief.date}）：` + (brief.sections || []).map(s => s.title + '：' + (s.items || []).slice(0, 2).map(i => i.t).join('；')).join(' ｜ '));
+  return L.join('\n');
+}
+
+async function askAI(env, chat, text) {
+  await tgApi(env, 'sendChatAction', { chat_id: chat, action: 'typing' });
+  const hist = JSON.parse((await env.KV.get('chat:' + chat)) || '[]');
+  const ctx = await marketContext(env, text);
+  const system = '你是用户的私人助理，用户是美国货运堆场的现场主管，也是用 Python 做量化波段交易的散户。用中文回答，简洁、口语、直接给结论，一般 3–6 句；' +
+    '涉及股市时以【实时数据】为准，数字照抄不要编，数据里没有的就说不知道；不给买卖建议、不预测涨跌，可以解释数据说明了什么、有哪些风险。' +
+    '其他问题（工作、生活、英语西语、常识）正常回答。不要用 Markdown 表格。';
+  const convo = hist.map(m => (m.r === 'u' ? '用户：' : '助理：') + m.t).join('\n');
+  const user = `【实时数据】\n${ctx}\n\n` + (convo ? `【之前的对话】\n${convo}\n\n` : '') + `【用户现在问】\n${text}`;
+  const ans = (await llm(env, system, user, 900)).trim();
+  if (!ans) return reply(env, chat, '😵 AI 没回上来，再问一次试试');
+  hist.push({ r: 'u', t: text.slice(0, 300) }, { r: 'a', t: ans.slice(0, 500) });
+  await env.KV.put('chat:' + chat, JSON.stringify(hist.slice(-8)), { expirationTtl: 6 * 3600 });
+  const html = esc(ans).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/^#{1,6}\s*(.+)$/gm, '<b>$1</b>');
+  return reply(env, chat, html);
 }
 
 async function onVoice(env, chat, msg) {
@@ -369,7 +419,7 @@ async function onVoice(env, chat, msg) {
     } catch (e) { /* 换下一个模型 */ }
   }
   if (!text.trim()) return reply(env, chat, '😵 没听清，靠近手机再说一次');
-  return onText(env, chat, text.trim(), '1', lang);
+  return doTranslate(env, chat, text.trim(), '1', lang, true);
 }
 
 // ---------- 股价提醒（存在 KV，盘中检查见 intraday）
@@ -407,9 +457,19 @@ async function cmdDel(env, chat, arg) {
 }
 
 // ---------- 股价 / 简报
+async function cmdMarket(env, chat) {
+  const site = env.SITE;
+  const [Q, pool] = await Promise.all([quotes(['SPY', 'QQQ', 'IWM', '^VIX']), fetch(`${site}/stocks/data/latest.json?t=${Math.floor(Date.now() / 36e5)}`).then(r => r.json()).catch(() => ({}))]);
+  const name = { SPY: '标普500', QQQ: '纳指100', IWM: '罗素2000', '^VIX': 'VIX 恐慌指数' };
+  const L = ['📊 <b>大盘</b>'];
+  for (const s of ['SPY', 'QQQ', 'IWM', '^VIX']) { const q = Q[s]; if (q) L.push(`${name[s]}（${s.replace('^', '')}）<b>${q.p.toFixed(2)}</b>` + (q.prev ? ` ${pctTxt((q.p / q.prev - 1) * 100)}` : '')); }
+  if (pool.regime && pool.regime.label) L.push(`\n股票池判断：「${esc(pool.regime.label)}」${esc(pool.regime.desc || '')}`);
+  L.push('\n查个股：<code>/q NVDA</code> · 也可以直接打字问我');
+  return reply(env, chat, L.join('\n'));
+}
 async function cmdQuote(env, chat, arg) {
   const t = (/[A-Za-z][A-Za-z0-9.\-]{0,6}/.exec(arg || '') || [])[0];
-  if (!t) return reply(env, chat, '格式：<code>/股价 NVDA</code>');
+  if (!t) return cmdMarket(env, chat);
   const T = t.toUpperCase().replace('.', '-'), site = env.SITE;
   const [q, snap, pool] = await Promise.all([
     quotes([T]),
@@ -471,7 +531,7 @@ async function handle(env, msg) {
   if (/^(删除|del|rm)$/i.test(cmd)) return cmdDel(env, chat, arg);
   if (/^(股价|q|quote|gj)$/i.test(cmd)) return cmdQuote(env, chat, arg);
   if (/^(简报|brief|jb)$/i.test(cmd)) return cmdBrief(env, chat);
-  if (/^(翻译|fy|tr)$/i.test(cmd)) return arg.trim() ? onText(env, chat, arg.trim()) : reply(env, chat, '直接打字或发语音就会翻译');
+  if (/^(翻译|fy|tr)$/i.test(cmd)) return arg.trim() ? doTranslate(env, chat, arg.trim(), '', '', true) : reply(env, chat, '打「翻译 要翻的话」，或者直接发语音');
   return reply(env, chat, HELP);
 }
 
