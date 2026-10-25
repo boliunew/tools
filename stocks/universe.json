@@ -1,2014 +1,3020 @@
 {
 "A": {
+"added": "2000-06-05",
 "name": "Agilent Technologies",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "AAPL": {
+"added": "1982-11-30",
 "name": "Apple Inc.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ABBV": {
+"added": "2012-12-31",
 "name": "AbbVie",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "ABNB": {
+"added": "2023-09-18",
 "name": "Airbnb",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "ABT": {
+"added": "1957-03-04",
 "name": "Abbott Laboratories",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "ACGL": {
+"added": "2022-11-01",
 "name": "Arch Capital Group",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "ACN": {
+"added": "2011-07-06",
 "name": "Accenture",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ADBE": {
+"added": "1997-05-05",
 "name": "Adobe Inc.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ADI": {
+"added": "1999-10-12",
 "name": "Analog Devices",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ADM": {
+"added": "1957-03-04",
 "name": "Archer Daniels Midland",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "ADP": {
+"added": "1981-03-31",
 "name": "Automatic Data Processing",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "ADSK": {
+"added": "1989-12-01",
 "name": "Autodesk",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "AEE": {
+"added": "1991-09-19",
 "name": "Ameren",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "AEP": {
+"added": "1957-03-04",
 "name": "American Electric Power",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "AES": {
+"added": "1998-10-02",
 "name": "AES Corporation",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "AFL": {
+"added": "1999-05-28",
 "name": "Aflac",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "AIG": {
+"added": "1980-03-31",
 "name": "American International Group",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "AIZ": {
+"added": "2007-04-10",
 "name": "Assurant",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "AJG": {
+"added": "2016-05-31",
 "name": "Arthur J. Gallagher & Co.",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "AKAM": {
+"added": "2007-07-12",
 "name": "Akamai Technologies",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ALB": {
+"added": "2016-07-01",
 "name": "Albemarle Corporation",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "ALGN": {
+"added": "2017-06-19",
 "name": "Align Technology",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "ALL": {
+"added": "1995-07-13",
 "name": "Allstate",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "ALLE": {
+"added": "2013-12-02",
 "name": "Allegion",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "AMAT": {
+"added": "1995-03-16",
 "name": "Applied Materials",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "AMCR": {
+"added": "2019-06-07",
 "name": "Amcor",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "AMD": {
+"added": "2017-03-20",
 "name": "Advanced Micro Devices",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "AME": {
+"added": "2013-09-23",
 "name": "Ametek",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "AMGN": {
+"added": "1992-01-02",
 "name": "Amgen",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "AMP": {
+"added": "2005-10-03",
 "name": "Ameriprise Financial",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "AMT": {
+"added": "2007-11-19",
 "name": "American Tower",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "AMZN": {
+"added": "2005-11-18",
 "name": "Amazon",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "ANET": {
+"added": "2018-08-28",
 "name": "Arista Networks",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "AON": {
+"added": "1996-04-23",
 "name": "Aon plc",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "AOS": {
+"added": "2017-07-26",
 "name": "A. O. Smith",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "APA": {
+"added": "1997-07-28",
 "name": "APA Corporation",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "APD": {
+"added": "1985-04-30",
 "name": "Air Products",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "APH": {
+"added": "2008-09-30",
 "name": "Amphenol",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "APO": {
+"added": "2024-12-23",
 "name": "Apollo Global Management",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "APP": {
+"added": "2025-09-22",
 "name": "AppLovin",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "APTV": {
+"added": "2012-12-24",
 "name": "Aptiv",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "ARE": {
+"added": "2017-03-20",
 "name": "Alexandria Real Estate Equities",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "ARES": {
+"added": "2025-12-11",
 "name": "Ares Management",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "ATO": {
+"added": "2019-02-15",
 "name": "Atmos Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "AVGO": {
+"added": "2014-05-08",
 "name": "Broadcom",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "AVY": {
+"added": "1987-12-31",
 "name": "Avery Dennison",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "AWK": {
+"added": "2016-03-04",
 "name": "American Water Works",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "AXON": {
+"added": "2023-05-04",
 "name": "Axon Enterprise",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "AXP": {
+"added": "1976-06-30",
 "name": "American Express",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "AZO": {
+"added": "1997-01-02",
 "name": "AutoZone",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "BA": {
+"added": "1957-03-04",
 "name": "Boeing",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "BAC": {
+"added": "1976-06-30",
 "name": "Bank of America",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "BALL": {
+"added": "1984-10-31",
 "name": "Ball Corporation",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "BAX": {
+"added": "1972-09-30",
 "name": "Baxter International",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "BBY": {
+"added": "1999-06-29",
 "name": "Best Buy",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "BDX": {
+"added": "1972-09-30",
 "name": "Becton Dickinson",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "BE": {
+"added": "2026-09-21",
 "name": "Bloom Energy",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "BEN": {
+"added": "1998-04-30",
 "name": "Franklin Resources",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "BF-B": {
+"added": "1982-10-31",
 "name": "Brown–Forman",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "BG": {
+"added": "2023-03-15",
 "name": "Bunge Global",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "BIIB": {
+"added": "2003-11-13",
 "name": "Biogen",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "BKNG": {
+"added": "2009-11-06",
 "name": "Booking Holdings",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "BKR": {
+"added": "2017-07-07",
 "name": "Baker Hughes",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "BLK": {
+"added": "2011-04-04",
 "name": "BlackRock",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "BMY": {
+"added": "1957-03-04",
 "name": "Bristol Myers Squibb",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "BNY": {
+"added": "1995-03-31",
 "name": "BNY Mellon",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "BR": {
+"added": "2018-06-18",
 "name": "Broadridge Financial Solutions",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "BRK-B": {
+"added": "2010-02-16",
 "name": "Berkshire Hathaway",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "BRO": {
+"added": "2021-09-20",
 "name": "Brown & Brown",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "BSX": {
+"added": "1995-02-24",
 "name": "Boston Scientific",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "BX": {
+"added": "2023-09-18",
 "name": "Blackstone Inc.",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "BXP": {
+"added": "2006-04-03",
 "name": "BXP, Inc.",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "C": {
+"added": "1988-05-31",
 "name": "Citigroup",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "CAH": {
+"added": "1997-05-27",
 "name": "Cardinal Health",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "CARR": {
+"added": "2020-04-03",
 "name": "Carrier Global",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "CASY": {
+"added": "2026-04-09",
 "name": "Casey's",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "CAT": {
+"added": "1957-03-04",
 "name": "Caterpillar Inc.",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "CB": {
+"added": "2010-07-15",
 "name": "Chubb Limited",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "CBOE": {
+"added": "2017-03-01",
 "name": "Cboe Global Markets",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "CBRE": {
+"added": "2006-11-10",
 "name": "CBRE Group",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "CCI": {
+"added": "2012-03-14",
 "name": "Crown Castle",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "CCL": {
+"added": "1998-12-22",
 "name": "Carnival Corporation",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "CDNS": {
+"added": "2017-09-18",
 "name": "Cadence Design Systems",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "CDW": {
+"added": "2019-09-23",
 "name": "CDW Corporation",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "CEG": {
+"added": "2022-02-02",
 "name": "Constellation Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "CF": {
+"added": "2008-08-27",
 "name": "CF Industries",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "CFG": {
+"added": "2016-01-29",
 "name": "Citizens Financial Group",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "CHD": {
+"added": "2015-12-29",
 "name": "Church & Dwight",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "CHRW": {
+"added": "2007-03-02",
 "name": "C.H. Robinson",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "CHTR": {
+"added": "2016-09-08",
 "name": "Charter Communications",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "CI": {
+"added": "1976-06-30",
 "name": "Cigna",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "CIEN": {
+"added": "2026-02-09",
 "name": "Ciena",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "CINF": {
+"added": "1997-12-18",
 "name": "Cincinnati Financial",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "CL": {
+"added": "1957-03-04",
 "name": "Colgate-Palmolive",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "CLX": {
+"added": "1969-03-31",
 "name": "Clorox",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "CMCSA": {
+"added": "2002-11-19",
 "name": "Comcast",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "CME": {
+"added": "2006-08-11",
 "name": "CME Group",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "CMG": {
+"added": "2011-04-28",
 "name": "Chipotle Mexican Grill",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "CMI": {
+"added": "1965-03-31",
 "name": "Cummins",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "CMS": {
+"added": "1957-03-04",
 "name": "CMS Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "CNC": {
+"added": "2016-03-30",
 "name": "Centene Corporation",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "CNP": {
+"added": "1985-07-31",
 "name": "CenterPoint Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "COF": {
+"added": "1998-07-01",
 "name": "Capital One",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "COHR": {
+"added": "2026-03-23",
 "name": "Coherent Corp.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "COIN": {
+"added": "2025-05-19",
 "name": "Coinbase",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "COO": {
+"added": "2016-09-23",
 "name": "Cooper Companies (The)",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "COP": {
+"added": "1957-03-04",
 "name": "ConocoPhillips",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "COR": {
+"added": "2001-08-30",
 "name": "Cencora",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "COST": {
+"added": "1993-10-01",
 "name": "Costco",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "CPAY": {
+"added": "2018-06-20",
 "name": "Corpay",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "CPRT": {
+"added": "2018-07-02",
 "name": "Copart",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "CPT": {
+"added": "2022-04-04",
 "name": "Camden Property Trust",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "CRH": {
+"added": "2025-12-22",
 "name": "CRH plc",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "CRL": {
+"added": "2021-05-14",
 "name": "Charles River Laboratories",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "CRM": {
+"added": "2008-09-15",
 "name": "Salesforce",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "CRWD": {
+"added": "2024-06-24",
 "name": "CrowdStrike",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "CSCO": {
+"added": "1993-12-01",
 "name": "Cisco",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "CSGP": {
+"added": "2022-09-19",
 "name": "CoStar Group",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "CSX": {
+"added": "1957-03-04",
 "name": "CSX Corporation",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "CTAS": {
+"added": "2001-03-01",
 "name": "Cintas",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "CTSH": {
+"added": "2006-11-17",
 "name": "Cognizant",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "CVNA": {
+"added": "2025-12-22",
 "name": "Carvana",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "CVS": {
+"added": "1957-03-04",
 "name": "CVS Health",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "CVX": {
+"added": "1957-03-04",
 "name": "Chevron Corporation",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "D": {
+"added": "2016-11-30",
 "name": "Dominion Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "DAL": {
+"added": "2013-09-11",
 "name": "Delta Air Lines",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "DASH": {
+"added": "2025-03-24",
 "name": "DoorDash",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "DD": {
+"added": "2019-06-03",
 "name": "DuPont",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "DDOG": {
+"added": "2025-07-09",
 "name": "Datadog",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "DE": {
+"added": "1957-03-04",
 "name": "Deere & Company",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "DECK": {
+"added": "2024-03-18",
 "name": "Deckers Brands",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "DELL": {
+"added": "2024-09-23",
 "name": "Dell Technologies",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "DG": {
+"added": "2012-12-03",
 "name": "Dollar General",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "DGX": {
+"added": "2002-12-12",
 "name": "Quest Diagnostics",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "DHI": {
+"added": "2005-06-22",
 "name": "D. R. Horton",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "DHR": {
+"added": "1998-11-18",
 "name": "Danaher Corporation",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "DIS": {
+"added": "1976-06-30",
 "name": "Walt Disney Company (The)",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "DLR": {
+"added": "2016-05-18",
 "name": "Digital Realty",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "DLTR": {
+"added": "2011-12-19",
 "name": "Dollar Tree",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "DOC": {
+"added": "2008-03-31",
 "name": "Healthpeak Properties",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "DOV": {
+"added": "1985-10-31",
 "name": "Dover Corporation",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "DOW": {
+"added": "2019-04-01",
 "name": "Dow Inc.",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "DPZ": {
+"added": "2020-05-12",
 "name": "Domino's",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "DRI": {
+"added": "1995-05-31",
 "name": "Darden Restaurants",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "DTE": {
+"added": "1957-03-04",
 "name": "DTE Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "DUK": {
+"added": "1976-06-30",
 "name": "Duke Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "DVA": {
+"added": "2008-07-31",
 "name": "DaVita",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "DVN": {
+"added": "2000-08-30",
 "name": "Devon Energy",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "DXCM": {
+"added": "2020-05-12",
 "name": "Dexcom",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "EBAY": {
+"added": "2002-07-22",
 "name": "eBay Inc.",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "ECHO": {
+"added": "2026-03-23",
 "name": "EchoStar",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "ECL": {
+"added": "1989-01-31",
 "name": "Ecolab",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "ED": {
+"added": "1957-03-04",
 "name": "Consolidated Edison",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "EFX": {
+"added": "1997-06-19",
 "name": "Equifax",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "EG": {
+"added": "2017-06-19",
 "name": "Everest Group",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "EIX": {
+"added": "1957-03-04",
 "name": "Edison International",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "EL": {
+"added": "2006-01-05",
 "name": "Estée Lauder Companies (The)",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "ELV": {
+"added": "2002-07-25",
 "name": "Elevance Health",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "EME": {
+"added": "2025-09-22",
 "name": "Emcor",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "EMR": {
+"added": "1965-03-31",
 "name": "Emerson Electric",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "EOG": {
+"added": "2000-11-02",
 "name": "EOG Resources",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "EQIX": {
+"added": "2015-03-20",
 "name": "Equinix",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "EQT": {
+"added": "2022-10-03",
 "name": "EQT Corporation",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "ERIE": {
+"added": "2024-09-23",
 "name": "Erie Indemnity",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "ES": {
+"added": "2009-07-24",
 "name": "Eversource Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "ESS": {
+"added": "2014-04-02",
 "name": "Essex Property Trust",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "ETN": {
+"added": "1957-03-04",
 "name": "Eaton Corporation",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "ETR": {
+"added": "1957-03-04",
 "name": "Entergy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "EVRG": {
+"added": "2018-06-05",
 "name": "Evergy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "EW": {
+"added": "2011-04-01",
 "name": "Edwards Lifesciences",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "EXC": {
+"added": "1957-03-04",
 "name": "Exelon",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "EXE": {
+"added": "2025-03-24",
 "name": "Expand Energy",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "EXPD": {
+"added": "2007-10-10",
 "name": "Expeditors International",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "EXPE": {
+"added": "2007-10-02",
 "name": "Expedia Group",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "EXR": {
+"added": "2016-01-19",
 "name": "Extra Space Storage",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "F": {
+"added": "1957-03-04",
 "name": "Ford Motor Company",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "FANG": {
+"added": "2018-12-03",
 "name": "Diamondback Energy",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "FAST": {
+"added": "2008-09-15",
 "name": "Fastenal",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "FCX": {
+"added": "2011-07-01",
 "name": "Freeport-McMoRan",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "FDS": {
+"added": "2021-12-20",
 "name": "FactSet",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "FDX": {
+"added": "1980-12-31",
 "name": "FedEx",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "FDXF": {
+"added": "2026-06-01",
 "name": "FedEx Freight",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "FE": {
+"added": "1997-11-28",
 "name": "FirstEnergy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "FERG": {
+"added": "2026-08-05",
 "name": "Ferguson Enterprises",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "FFIV": {
+"added": "2010-12-20",
 "name": "F5, Inc.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "FICO": {
+"added": "2023-03-20",
 "name": "Fair Isaac",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "FIS": {
+"added": "2006-11-10",
 "name": "Fidelity National Information Services",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "FISV": {
+"added": "2001-04-02",
 "name": "Fiserv",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "FITB": {
+"added": "1996-03-29",
 "name": "Fifth Third Bancorp",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "FIX": {
+"added": "2025-12-22",
 "name": "Comfort Systems USA",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "FLEX": {
+"added": "2026-06-22",
 "name": "Flex Ltd.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "FOX": {
+"added": "2019-03-19",
 "name": "Fox Corporation (Class B)",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "FOXA": {
+"added": "2019-03-19",
 "name": "Fox Corporation (Class A)",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "FRT": {
+"added": "2016-02-01",
 "name": "Federal Realty Investment Trust",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "FSLR": {
+"added": "2022-12-19",
 "name": "First Solar",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "FTNT": {
+"added": "2018-10-11",
 "name": "Fortinet",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "FTV": {
+"added": "2016-07-01",
 "name": "Fortive",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "GD": {
+"added": "1957-03-04",
 "name": "General Dynamics",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "GDDY": {
+"added": "2024-06-24",
 "name": "GoDaddy",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "GE": {
+"added": "1957-03-04",
 "name": "GE Aerospace",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "GEHC": {
+"added": "2023-01-04",
 "name": "GE HealthCare",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "GEN": {
+"added": "2003-03-25",
 "name": "Gen Digital",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "GEV": {
+"added": "2024-04-02",
 "name": "GE Vernova",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "GILD": {
+"added": "2004-07-01",
 "name": "Gilead Sciences",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "GIS": {
+"added": "1957-03-04",
 "name": "General Mills",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "GL": {
+"added": "1989-04-30",
 "name": "Globe Life",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "GLW": {
+"added": "1995-02-27",
 "name": "Corning Inc.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "GM": {
+"added": "2013-06-06",
 "name": "General Motors",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "GNRC": {
+"added": "2021-03-22",
 "name": "Generac",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "GOOG": {
+"added": "2014-04-03",
 "name": "Alphabet Inc. (Class C)",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "GOOGL": {
+"added": "2006-04-03",
 "name": "Alphabet Inc. (Class A)",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "GPC": {
+"added": "1973-12-31",
 "name": "Genuine Parts Company",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "GPN": {
+"added": "2016-04-25",
 "name": "Global Payments",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "GRMN": {
+"added": "2012-12-12",
 "name": "Garmin",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "GS": {
+"added": "2002-07-22",
 "name": "Goldman Sachs",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "GWW": {
+"added": "1981-06-30",
 "name": "W. W. Grainger",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "HAL": {
+"added": "1957-03-04",
 "name": "Halliburton",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "HAS": {
+"added": "1984-09-30",
 "name": "Hasbro",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "HBAN": {
+"added": "1997-08-28",
 "name": "Huntington Bancshares",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "HCA": {
+"added": "2015-01-27",
 "name": "HCA Healthcare",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "HD": {
+"added": "1988-03-31",
 "name": "Home Depot (The)",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "HIG": {
+"added": "1957-03-04",
 "name": "Hartford (The)",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "HII": {
+"added": "2018-01-03",
 "name": "Huntington Ingalls Industries",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "HLT": {
+"added": "2017-06-19",
 "name": "Hilton Worldwide",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "HON": {
+"added": "1957-03-04",
 "name": "Honeywell Technologies",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "HONA": {
+"added": "2026-06-29",
 "name": "Honeywell Aerospace",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "HOOD": {
+"added": "2025-09-22",
 "name": "Robinhood Markets",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "HPE": {
+"added": "2015-11-02",
 "name": "Hewlett Packard Enterprise",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "HPQ": {
+"added": "1974-12-31",
 "name": "HP Inc.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "HRL": {
+"added": "2009-03-04",
 "name": "Hormel Foods",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "HSIC": {
+"added": "2015-03-17",
 "name": "Henry Schein",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "HST": {
+"added": "2007-03-20",
 "name": "Host Hotels & Resorts",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "HSY": {
+"added": "1957-03-04",
 "name": "Hershey Company (The)",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "HUBB": {
+"added": "2023-10-18",
 "name": "Hubbell Incorporated",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "HUM": {
+"added": "2012-12-10",
 "name": "Humana",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "HWM": {
+"added": "2016-10-21",
 "name": "Howmet Aerospace",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "IBKR": {
+"added": "2025-08-28",
 "name": "Interactive Brokers",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "IBM": {
+"added": "1957-03-04",
 "name": "IBM",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ICE": {
+"added": "2007-09-26",
 "name": "Intercontinental Exchange",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "IDXX": {
+"added": "2017-01-05",
 "name": "Idexx Laboratories",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "IEX": {
+"added": "2019-08-09",
 "name": "IDEX Corporation",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "IFF": {
+"added": "1976-03-31",
 "name": "International Flavors & Fragrances",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "ILMN": {
+"added": "2026-09-21",
 "name": "Illumina, Inc.",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "INCY": {
+"added": "2017-02-28",
 "name": "Incyte",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "INTC": {
+"added": "1976-12-31",
 "name": "Intel",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "INTU": {
+"added": "2000-12-05",
 "name": "Intuit",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "INVH": {
+"added": "2022-09-19",
 "name": "Invitation Homes",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "IP": {
+"added": "1957-03-04",
 "name": "International Paper",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "IQV": {
+"added": "2017-08-29",
 "name": "IQVIA",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "IR": {
+"added": "2020-03-03",
 "name": "Ingersoll Rand",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "IRM": {
+"added": "2009-01-06",
 "name": "Iron Mountain",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "ISRG": {
+"added": "2008-06-02",
 "name": "Intuitive Surgical",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "IT": {
+"added": "2017-04-05",
 "name": "Gartner",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ITW": {
+"added": "1986-02-28",
 "name": "Illinois Tool Works",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "IVZ": {
+"added": "2008-08-21",
 "name": "Invesco",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "J": {
+"added": "2007-10-26",
 "name": "Jacobs Solutions",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "JBHT": {
+"added": "2015-07-01",
 "name": "J.B. Hunt",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "JBL": {
+"added": "2023-12-18",
 "name": "Jabil",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "JCI": {
+"added": "2010-08-27",
 "name": "Johnson Controls",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "JKHY": {
+"added": "2018-11-13",
 "name": "Jack Henry & Associates",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "JNJ": {
+"added": "1973-06-30",
 "name": "Johnson & Johnson",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "JPM": {
+"added": "1975-06-30",
 "name": "JPMorgan Chase",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "KDP": {
+"added": "2022-06-21",
 "name": "Keurig Dr Pepper",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "KEY": {
+"added": "1994-03-01",
 "name": "KeyCorp",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "KEYS": {
+"added": "2018-11-06",
 "name": "Keysight Technologies",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "KHC": {
+"added": "2015-07-06",
 "name": "Kraft Heinz",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "KIM": {
+"added": "2006-04-04",
 "name": "Kimco Realty",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "KKR": {
+"added": "2024-06-24",
 "name": "KKR & Co.",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "KLAC": {
+"added": "1997-09-30",
 "name": "KLA Corporation",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "KMB": {
+"added": "1957-03-04",
 "name": "Kimberly-Clark",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "KMI": {
+"added": "2012-05-25",
 "name": "Kinder Morgan",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "KO": {
+"added": "1957-03-04",
 "name": "Coca-Cola Company (The)",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "KR": {
+"added": "1957-03-04",
 "name": "Kroger",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "KVUE": {
+"added": "2023-08-25",
 "name": "Kenvue",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "L": {
+"added": "1995-05-31",
 "name": "Loews Corporation",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "LDOS": {
+"added": "2019-08-09",
 "name": "Leidos",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "LEN": {
+"added": "2005-10-04",
 "name": "Lennar",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "LH": {
+"added": "2004-11-01",
 "name": "Labcorp",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "LHX": {
+"added": "2008-09-22",
 "name": "L3Harris",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "LII": {
+"added": "2024-12-23",
 "name": "Lennox International",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "LIN": {
+"added": "1992-07-01",
 "name": "Linde plc",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "LITE": {
+"added": "2026-03-23",
 "name": "Lumentum",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "LLY": {
+"added": "1970-12-31",
 "name": "Lilly (Eli)",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "LMT": {
+"added": "1957-03-04",
 "name": "Lockheed Martin",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "LNT": {
+"added": "2016-07-01",
 "name": "Alliant Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "LOW": {
+"added": "1984-02-29",
 "name": "Lowe's",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "LRCX": {
+"added": "2012-06-29",
 "name": "Lam Research",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "LULU": {
+"added": "2023-10-18",
 "name": "Lululemon Athletica",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "LUV": {
+"added": "1994-07-01",
 "name": "Southwest Airlines",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "LVS": {
+"added": "2019-10-03",
 "name": "Las Vegas Sands",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "LYB": {
+"added": "2012-09-05",
 "name": "LyondellBasell",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "LYV": {
+"added": "2019-12-23",
 "name": "Live Nation Entertainment",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "MA": {
+"added": "2008-07-18",
 "name": "Mastercard",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "MAA": {
+"added": "2016-12-02",
 "name": "Mid-America Apartment Communities",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "MAR": {
+"added": "1998-05-29",
 "name": "Marriott International",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "MAS": {
+"added": "1981-06-30",
 "name": "Masco",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "MCD": {
+"added": "1970-06-30",
 "name": "McDonald's",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "MCHP": {
+"added": "2007-09-07",
 "name": "Microchip Technology",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "MCK": {
+"added": "1999-01-13",
 "name": "McKesson",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "MCO": {
+"added": "1998-07-01",
 "name": "Moody's Corporation",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "MDLZ": {
+"added": "2012-10-02",
 "name": "Mondelez International",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "MDT": {
+"added": "1986-10-31",
 "name": "Medtronic",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "MET": {
+"added": "2000-12-11",
 "name": "MetLife",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "META": {
+"added": "2013-12-23",
 "name": "Meta Platforms",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "MGM": {
+"added": "2017-07-26",
 "name": "MGM Resorts",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "MKC": {
+"added": "2003-03-20",
 "name": "McCormick & Company",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "MLM": {
+"added": "2014-07-02",
 "name": "Martin Marietta Materials",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "MMM": {
+"added": "1957-03-04",
 "name": "3M",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "MNST": {
+"added": "2012-06-28",
 "name": "Monster Beverage",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "MO": {
+"added": "1957-03-04",
 "name": "Altria",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "MOS": {
+"added": "2011-09-26",
 "name": "Mosaic Company (The)",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "MPC": {
+"added": "2011-07-01",
 "name": "Marathon Petroleum",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "MPWR": {
+"added": "2021-02-12",
 "name": "Monolithic Power Systems",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "MRK": {
+"added": "1957-03-04",
 "name": "Merck & Co.",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "MRNA": {
+"added": "2021-07-21",
 "name": "Moderna",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "MRSH": {
+"added": "1987-08-31",
 "name": "Marsh McLennan",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "MRVL": {
+"added": "2026-06-22",
 "name": "Marvell Technology",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "MS": {
+"added": "1993-07-29",
 "name": "Morgan Stanley",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "MSCI": {
+"added": "2018-04-04",
 "name": "MSCI",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "MSFT": {
+"added": "1994-06-01",
 "name": "Microsoft",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "MSI": {
+"added": "1957-03-04",
 "name": "Motorola Solutions",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "MTB": {
+"added": "2004-02-23",
 "name": "M&T Bank",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "MTD": {
+"added": "2016-09-06",
 "name": "Mettler Toledo",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "MU": {
+"added": "1994-09-27",
 "name": "Micron Technology",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "NCLH": {
+"added": "2017-10-13",
 "name": "Norwegian Cruise Line Holdings",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "NDAQ": {
+"added": "2008-10-22",
 "name": "Nasdaq, Inc.",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "NDSN": {
+"added": "2022-02-15",
 "name": "Nordson Corporation",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "NEE": {
+"added": "1976-06-30",
 "name": "NextEra Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "NEM": {
+"added": "1969-06-30",
 "name": "Newmont",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "NFLX": {
+"added": "2010-12-20",
 "name": "Netflix",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "NI": {
+"added": "2000-11-02",
 "name": "NiSource",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "NKE": {
+"added": "1988-11-30",
 "name": "Nike, Inc.",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "NOC": {
+"added": "1957-03-04",
 "name": "Northrop Grumman",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "NOW": {
+"added": "2019-11-21",
 "name": "ServiceNow",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "NRG": {
+"added": "2010-01-29",
 "name": "NRG Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "NSC": {
+"added": "1957-03-04",
 "name": "Norfolk Southern",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "NTAP": {
+"added": "1999-06-25",
 "name": "NetApp",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "NTRS": {
+"added": "1998-01-30",
 "name": "Northern Trust",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "NUE": {
+"added": "1985-04-30",
 "name": "Nucor",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "NVDA": {
+"added": "2001-11-30",
 "name": "Nvidia",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "NVR": {
+"added": "2019-09-26",
 "name": "NVR, Inc.",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "NWS": {
+"added": "2015-09-18",
 "name": "News Corp (Class B)",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "NWSA": {
+"added": "2013-08-01",
 "name": "News Corp (Class A)",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "NXPI": {
+"added": "2021-03-22",
 "name": "NXP Semiconductors",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "O": {
+"added": "2015-04-07",
 "name": "Realty Income",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "ODFL": {
+"added": "2019-12-09",
 "name": "Old Dominion",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "OKE": {
+"added": "2010-03-15",
 "name": "Oneok",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "OMC": {
+"added": "1997-12-31",
 "name": "Omnicom Group",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "ON": {
+"added": "2022-06-21",
 "name": "ON Semiconductor",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ORCL": {
+"added": "1989-08-31",
 "name": "Oracle Corporation",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ORLY": {
+"added": "2009-03-27",
 "name": "O'Reilly Automotive",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "OTIS": {
+"added": "2020-04-03",
 "name": "Otis Worldwide",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "OXY": {
+"added": "1957-03-04",
 "name": "Occidental Petroleum",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "P": {
+"added": "2026-09-21",
 "name": "Everpure",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "PANW": {
+"added": "2023-06-20",
 "name": "Palo Alto Networks",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "PAYX": {
+"added": "1998-10-01",
 "name": "Paychex",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "PCAR": {
+"added": "1980-12-31",
 "name": "Paccar",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "PCG": {
+"added": "2022-10-03",
 "name": "PG&E Corporation",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "PEG": {
+"added": "1957-03-04",
 "name": "Public Service Enterprise Group",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "PEP": {
+"added": "1957-03-04",
 "name": "PepsiCo",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "PFE": {
+"added": "1957-03-04",
 "name": "Pfizer",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "PFG": {
+"added": "2002-07-22",
 "name": "Principal Financial Group",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "PG": {
+"added": "1957-03-04",
 "name": "Procter & Gamble",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "PGR": {
+"added": "1997-08-04",
 "name": "Progressive Corporation",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "PH": {
+"added": "1985-11-30",
 "name": "Parker Hannifin",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "PHM": {
+"added": "1984-04-30",
 "name": "PulteGroup",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "PKG": {
+"added": "2017-07-26",
 "name": "Packaging Corporation of America",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "PLD": {
+"added": "2003-07-17",
 "name": "Prologis",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "PLTR": {
+"added": "2024-09-23",
 "name": "Palantir Technologies",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "PM": {
+"added": "2008-03-31",
 "name": "Philip Morris International",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "PNC": {
+"added": "1988-04-30",
 "name": "PNC Financial Services",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "PNR": {
+"added": "2012-10-01",
 "name": "Pentair",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "PNW": {
+"added": "1999-10-04",
 "name": "Pinnacle West Capital",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "PODD": {
+"added": "2023-03-15",
 "name": "Insulet Corporation",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "PPG": {
+"added": "1957-03-04",
 "name": "PPG Industries",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "PPL": {
+"added": "2001-10-01",
 "name": "PPL Corporation",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "PRU": {
+"added": "2002-07-22",
 "name": "Prudential Financial",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "PSA": {
+"added": "2005-08-19",
 "name": "Public Storage",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "PSX": {
+"added": "2012-05-01",
 "name": "Phillips 66",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "PTC": {
+"added": "2021-04-20",
 "name": "PTC Inc.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "PWR": {
+"added": "2009-07-01",
 "name": "Quanta Services",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "PYPL": {
+"added": "2015-07-20",
 "name": "PayPal",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "Q": {
+"added": "2025-11-03",
 "name": "Qnity Electronics",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "QCOM": {
+"added": "1999-07-22",
 "name": "Qualcomm",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "RCL": {
+"added": "2014-12-05",
 "name": "Royal Caribbean Group",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "RDDT": {
+"added": "2026-08-18",
 "name": "Reddit",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "REG": {
+"added": "2017-03-02",
 "name": "Regency Centers",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "REGN": {
+"added": "2013-05-01",
 "name": "Regeneron Pharmaceuticals",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "RF": {
+"added": "1998-08-28",
 "name": "Regions Financial Corporation",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "RJF": {
+"added": "2017-03-20",
 "name": "Raymond James Financial",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "RL": {
+"added": "2007-02-02",
 "name": "Ralph Lauren Corporation",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "RMD": {
+"added": "2017-07-26",
 "name": "ResMed",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "ROK": {
+"added": "2000-03-12",
 "name": "Rockwell Automation",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "ROL": {
+"added": "2018-10-01",
 "name": "Rollins, Inc.",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "ROP": {
+"added": "2009-12-23",
 "name": "Roper Technologies",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ROST": {
+"added": "2009-12-21",
 "name": "Ross Stores",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "RSG": {
+"added": "2008-12-05",
 "name": "Republic Services",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "RTX": {
+"added": "1957-03-04",
 "name": "RTX Corporation",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "RVTY": {
+"added": "1985-05-31",
 "name": "Revvity",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "SBAC": {
+"added": "2017-09-01",
 "name": "SBA Communications",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "SBUX": {
+"added": "2000-06-07",
 "name": "Starbucks",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "SCHW": {
+"added": "1997-06-02",
 "name": "Charles Schwab Corporation",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "SHW": {
+"added": "1964-06-30",
 "name": "Sherwin-Williams",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "SJM": {
+"added": "2008-11-06",
 "name": "J.M. Smucker Company (The)",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "SKYD": {
+"added": "1994-09-30",
 "name": "Skydance Corporation",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "SLB": {
+"added": "1957-03-04",
 "name": "Schlumberger",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "SMCI": {
+"added": "2024-03-18",
 "name": "Supermicro",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "SNA": {
+"added": "1982-09-30",
 "name": "Snap-on",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "SNDK": {
+"added": "2025-11-28",
 "name": "Sandisk",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "SNPS": {
+"added": "2017-03-16",
 "name": "Synopsys",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "SO": {
+"added": "1957-03-04",
 "name": "Southern Company",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "SOLV": {
+"added": "2024-04-01",
 "name": "Solventum",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "SPG": {
+"added": "2002-06-26",
 "name": "Simon Property Group",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "SPGI": {
+"added": "1957-03-04",
 "name": "S&P Global",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "SRE": {
+"added": "2017-03-17",
 "name": "Sempra",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "STE": {
+"added": "2019-12-23",
 "name": "Steris",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "STLD": {
+"added": "2022-12-22",
 "name": "Steel Dynamics",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "STT": {
+"added": "2003-03-14",
 "name": "State Street Corporation",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "STX": {
+"added": "2012-07-02",
 "name": "Seagate Technology",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "STZ": {
+"added": "2005-07-01",
 "name": "Constellation Brands",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "SW": {
+"added": "2024-07-08",
 "name": "Smurfit Westrock",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "SWK": {
+"added": "1982-09-30",
 "name": "Stanley Black & Decker",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "SWKS": {
+"added": "2015-03-12",
 "name": "Skyworks Solutions",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "SYF": {
+"added": "2015-11-18",
 "name": "Synchrony Financial",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "SYK": {
+"added": "2000-12-12",
 "name": "Stryker Corporation",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "SYY": {
+"added": "1986-12-31",
 "name": "Sysco",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "T": {
+"added": "1983-11-30",
 "name": "AT&T",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "TDG": {
+"added": "2016-06-03",
 "name": "TransDigm Group",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "TDY": {
+"added": "2020-06-22",
 "name": "Teledyne Technologies",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "TECH": {
+"added": "2021-08-30",
 "name": "Bio-Techne",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "TEL": {
+"added": "2011-10-17",
 "name": "TE Connectivity",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "TER": {
+"added": "2020-09-21",
 "name": "Teradyne",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "TFC": {
+"added": "1997-12-04",
 "name": "Truist Financial",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "TGT": {
+"added": "1976-12-31",
 "name": "Target Corporation",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "TJX": {
+"added": "1985-09-30",
 "name": "TJX Companies",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "TKO": {
+"added": "2025-03-24",
 "name": "TKO Group Holdings",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "TMO": {
+"added": "2004-08-03",
 "name": "Thermo Fisher Scientific",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "TMUS": {
+"added": "2019-07-15",
 "name": "T-Mobile US",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "TPL": {
+"added": "2024-11-26",
 "name": "Texas Pacific Land Corporation",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "TPR": {
+"added": "2004-09-01",
 "name": "Tapestry, Inc.",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "TRGP": {
+"added": "2022-10-12",
 "name": "Targa Resources",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "TRMB": {
+"added": "2021-01-21",
 "name": "Trimble Inc.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "TROW": {
+"added": "2019-07-29",
 "name": "T. Rowe Price",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "TRV": {
+"added": "2002-08-21",
 "name": "Travelers Companies (The)",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "TSCO": {
+"added": "2014-01-24",
 "name": "Tractor Supply",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "TSLA": {
+"added": "2020-12-21",
 "name": "Tesla, Inc.",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "TSN": {
+"added": "2005-08-10",
 "name": "Tyson Foods",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "TT": {
+"added": "2010-11-17",
 "name": "Trane Technologies",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "TTWO": {
+"added": "2018-03-19",
 "name": "Take-Two Interactive",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "TWLO": {
+"added": "2026-10-06",
 "name": "Twilio",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "TXN": {
+"added": "2001-03-12",
 "name": "Texas Instruments",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "TXT": {
+"added": "1978-12-31",
 "name": "Textron",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "TYL": {
+"added": "2020-06-22",
 "name": "Tyler Technologies",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "UAL": {
+"added": "2015-09-03",
 "name": "United Airlines Holdings",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "UBER": {
+"added": "2023-12-18",
 "name": "Uber",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "UDR": {
+"added": "2016-03-07",
 "name": "UDR, Inc.",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "UHS": {
+"added": "2014-09-20",
 "name": "Universal Health Services",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "ULTA": {
+"added": "2016-04-18",
 "name": "Ulta Beauty",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "UNH": {
+"added": "1994-07-01",
 "name": "UnitedHealth Group",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "UNP": {
+"added": "1957-03-04",
 "name": "Union Pacific Corporation",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "UPS": {
+"added": "2002-07-22",
 "name": "United Parcel Service",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "URI": {
+"added": "2014-09-20",
 "name": "United Rentals",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "USB": {
+"added": "1999-11-01",
 "name": "U.S. Bancorp",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "V": {
+"added": "2009-12-21",
 "name": "Visa Inc.",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "VEEV": {
+"added": "2026-05-07",
 "name": "Veeva Systems",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "VICI": {
+"added": "2022-06-08",
 "name": "Vici Properties",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "VLO": {
+"added": "2002-12-20",
 "name": "Valero Energy",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "VLTO": {
+"added": "2023-10-02",
 "name": "Veralto",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "VMC": {
+"added": "1999-06-30",
 "name": "Vulcan Materials Company",
-"sector": "Materials"
+"sector": "Materials",
+"sp500": true
 },
 "VMRK": {
+"added": "2001-12-03",
 "name": "Vivmark Residential",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "VRSK": {
+"added": "2015-10-08",
 "name": "Verisk Analytics",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "VRSN": {
+"added": "2006-02-01",
 "name": "Verisign",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "VRT": {
+"added": "2026-03-23",
 "name": "Vertiv",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "VRTX": {
+"added": "2013-09-23",
 "name": "Vertex Pharmaceuticals",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "VST": {
+"added": "2024-05-08",
 "name": "Vistra Corp.",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "VTR": {
+"added": "2009-03-04",
 "name": "Ventas",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "VTRS": {
+"added": "2004-04-23",
 "name": "Viatris",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "VYLR": {
+"added": "2026-10-01",
 "name": "Vylor",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "VZ": {
+"added": "1983-11-30",
 "name": "Verizon",
-"sector": "Communication Services"
+"sector": "Communication Services",
+"sp500": true
 },
 "WAB": {
+"added": "2019-02-27",
 "name": "Wabtec",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "WAT": {
+"added": "2002-01-02",
 "name": "Waters Corporation",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "WDAY": {
+"added": "2024-12-23",
 "name": "Workday, Inc.",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "WDC": {
+"added": "2009-07-01",
 "name": "Western Digital",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "WEC": {
+"added": "2008-10-31",
 "name": "WEC Energy Group",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "WELL": {
+"added": "2009-01-30",
 "name": "Welltower",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "WFC": {
+"added": "1976-06-30",
 "name": "Wells Fargo",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "WM": {
+"added": "1998-08-31",
 "name": "Waste Management",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "WMB": {
+"added": "1975-03-31",
 "name": "Williams Companies",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "WMT": {
+"added": "1982-08-31",
 "name": "Walmart",
-"sector": "Consumer Staples"
+"sector": "Consumer Staples",
+"sp500": true
 },
 "WRB": {
+"added": "2019-12-05",
 "name": "W. R. Berkley Corporation",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "WSM": {
+"added": "2025-03-24",
 "name": "Williams-Sonoma, Inc.",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "WST": {
+"added": "2020-05-22",
 "name": "West Pharmaceutical Services",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "WTW": {
+"added": "2016-01-05",
 "name": "Willis Towers Watson",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "WY": {
+"added": "1979-10-01",
 "name": "Weyerhaeuser",
-"sector": "Real Estate"
+"sector": "Real Estate",
+"sp500": true
 },
 "WYNN": {
+"added": "2008-11-14",
 "name": "Wynn Resorts",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "XEL": {
+"added": "1957-03-04",
 "name": "Xcel Energy",
-"sector": "Utilities"
+"sector": "Utilities",
+"sp500": true
 },
 "XOM": {
+"added": "1957-03-04",
 "name": "ExxonMobil",
-"sector": "Energy"
+"sector": "Energy",
+"sp500": true
 },
 "XYL": {
+"added": "2011-11-01",
 "name": "Xylem Inc.",
-"sector": "Industrials"
+"sector": "Industrials",
+"sp500": true
 },
 "XYZ": {
+"added": "2025-07-23",
 "name": "Block, Inc.",
-"sector": "Financials"
+"sector": "Financials",
+"sp500": true
 },
 "YUM": {
+"added": "1997-10-06",
 "name": "Yum! Brands",
-"sector": "Consumer Discretionary"
+"sector": "Consumer Discretionary",
+"sp500": true
 },
 "ZBH": {
+"added": "2001-08-07",
 "name": "Zimmer Biomet",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 },
 "ZBRA": {
+"added": "2019-12-23",
 "name": "Zebra Technologies",
-"sector": "Information Technology"
+"sector": "Information Technology",
+"sp500": true
 },
 "ZTS": {
+"added": "2013-06-21",
 "name": "Zoetis",
-"sector": "Health Care"
+"sector": "Health Care",
+"sp500": true
 }
 }
