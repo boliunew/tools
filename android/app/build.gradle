@@ -1,0 +1,38 @@
+plugins { id "com.android.application" }
+
+def runNo = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInteger()
+
+android {
+    namespace "io.github.boliunew.tools"
+    compileSdk 34
+    defaultConfig {
+        applicationId "io.github.boliunew.tools"
+        minSdk 24
+        targetSdk 34
+        versionCode runNo
+        versionName "1." + runNo
+    }
+    signingConfigs {
+        // 固定签名：以后每次新版本都能直接覆盖安装（个人自用，不上架应用商店）
+        release {
+            storeFile file("../tools.keystore")
+            storePassword "boliunew-tools"
+            keyAlias "tools"
+            keyPassword "boliunew-tools"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core:1.13.1"
+}

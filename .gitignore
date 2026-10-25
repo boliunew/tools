@@ -9,3 +9,7 @@ kb/.obsidian/
 cf/wrangler.toml
 tests/.worker_under_test.mjs
 .pytest_cache/
+android/.gradle/
+android/build/
+android/app/build/
+android/app/src/main/res/mipmap-*/
