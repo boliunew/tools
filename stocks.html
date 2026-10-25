@@ -812,7 +812,12 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
         rgh += '<div class="rgrow">' + parts.join('') + '</div>';
       }
     }
-    h += '</table></div>' + (rgh ? '<div class="rgbox"><div class="rgt2">按市场环境拆开看（超额 · ✓ = 有统计优势）</div>' + rgh + '</div>' : '') + '<div class="note">「超额」= 信号出现后<b>第二天开盘买入</b>、持有 N 天的收益，减去同期随便买池子里任意一只股票的收益，已扣 0.1% 交易成本。同一只股票连续几天重复出信号只算一次。很多信号扎堆出现在同一批日子里，所以不确定性按「时段」（每 2N 个交易日一段）来算，而不是按笔数——只有「超额」的 95% 区间整体大于 0 才算有统计优势。股票池是现在的成分股，回看时会稍微高估（倒闭或被剔除的公司不在里面）。</div></div>';
+    var PIT = SM.pit || null;
+    var pitNote = '<div class="note" style="border-left:3px solid var(--gold,#B5841C);padding-left:8px">⚠️ <b>幸存者偏差</b>：回测用的是<b>现在的</b>标普 500 + 纳指 100 成分股。' +
+      (PIT && PIT.late_added ? '已做「按入选日期算」修正：' + PIT.late_added + ' 只这几年才调入标普 500 的股票，只从调入那天起计入统计和基准。' : '') +
+      (PIT && PIT.removed_missing ? '但这段时间被调出指数的 ' + PIT.removed_missing + ' 只（很多是跌出去、被收购或退市的）拿不到免费数据，不在样本里——' : '被调出指数的股票不在样本里——') +
+      '所以表里的成绩<b>偏乐观</b>，真实表现大概率更差。</div>';
+    h += '</table></div>' + pitNote + (rgh ? '<div class="rgbox"><div class="rgt2">按市场环境拆开看（超额 · ✓ = 有统计优势）</div>' + rgh + '</div>' : '') + '<div class="note">「超额」= 信号出现后<b>第二天开盘买入</b>、持有 N 天的收益，减去同期随便买池子里任意一只股票的收益，已扣 0.1% 交易成本。同一只股票连续几天重复出信号只算一次。很多信号扎堆出现在同一批日子里，所以不确定性按「时段」（每 2N 个交易日一段）来算，而不是按笔数——只有「超额」的 95% 区间整体大于 0 才算有统计优势。股票池是现在的成分股，回看时会稍微高估（倒闭或被剔除的公司不在里面）。</div></div>';
 
     // tracking
     var T = D.tracking || { rows: [], summary: {} }, sm = T.summary || {}, BT = T.by_tier || {};
