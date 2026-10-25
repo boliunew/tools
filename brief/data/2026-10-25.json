@@ -1,0 +1,185 @@
+{
+ "date": "2026-10-25",
+ "generated": "2026-10-25T17:42:55Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "AI发现PHP2SHELL漏洞，黑客开始利用",
+     "d": "AI检测到互联网架构组件PHP2SHELL的漏洞，安全研究人员紧急修补，但漏洞信息泄露后黑客迅速展开攻击。此事凸显AI在安全发现与攻击双方的双刃剑效应。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/10/24/nx-s1-6012327/ai-found-the-flaw-hackers-found-the-leak-the-race-to-save-php2shell"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "“黑色十月”警告AI驱动的漏洞潮",
+     "d": "在PHP语言中发现重大漏洞后，业界担忧AI将加速发现和利用全球网络基础设施的缺陷，预计未来数月将出现“漏洞海啸”。此警示对网络安全防护成本和速度提出严峻挑战。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/oct/23/cybersecurity-ai-hacking-php-vulnerability"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "球员Volpato授权AI克隆形象获利",
+     "d": "22岁澳大利亚足球运动员Cristian Volpato与AI授权公司签约，许可其数字形象、声音和生物特征用于品牌营销。此举标志运动员数字版权商业化的新趋势。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/oct/25/synthetic-twin-why-socceroo-cristian-volpato-is-the-latest-footballer-to-license-his-ai-clone"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "10/23 周五 收盘：标普500 ETF（SPY）-0.52%，纳指100 ETF（QQQ）-0.01%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 19.4；59% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：CCI +9.1%、CRWD +8.2%、PANW +7.2%；跌幅最大：BE -11.2%、FIX -9.3%、GL -8.1%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术、工业 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "10/26 周一的重要财报：VZ（盘前）、WELL（盘后）、CDNS（盘后）",
+     "d": "按市值挑出最大的几家，共 3 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（10/23 周五）",
+     "d": "Initial Jobless Claims 实际 194K（预期 200K，前值 200K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/28 周三 10:00：消费者信心（重要性：低）",
+     "d": "关注其中的通胀预期分项，突然走高会引起美联储警惕。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/29 周四 10:30：EIA 原油库存（重要性：低）",
+     "d": "库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/29 周四 14:00：美联储利率决议（重要性：高）",
+     "d": "关注利率决定、点阵图和鲍威尔发布会措辞。鹰派 → 美元、收益率上行，科技股承压；鸽派 → 成长股、黄金、比特币受益。决议当天波动往往在发布会期间。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "法国连日大规模示威，逾1300人被捕",
+     "d": "法国各地再次爆发大规模抗议，官方称约有41‑80万人参与，警方使用催泪弹与水炮，逮捕超过1300人。持续的社会动荡对法国政治稳定和经济活动构成压力。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/france-110-000-protesters-in-paris"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "马斯克称SpaceX限制乌克兰Starlink后恢复",
+     "d": "Elon Musk透露SpaceX曾限制乌克兰Starlink服务，后在美国总统特朗普干预后恢复，且强调Starlink仅用于防御而非攻击。此事涉及商业公司在冲突地区提供通信服务的政策争议。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cvx28ljp8n4xo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/ukraine-disputes-elon-musks-claim-military-violated-starlinks-137552738"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "巴西总统大选第二轮投票进行中",
+     "d": "巴西选民在周日投票决定是继续左翼总统卢拉，还是支持右翼候选人弗拉维奥·博尔索纳罗，后者在首轮领先200万票。选举结果将影响拉美政治走向及中美关系。",
+     "src": [
+      {
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/latest-brazilians-choose-lula-flvio-bolsonaro-presidential-runoff-137550398"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/oct/25/lula-da-silva-flavio-bolsonaro-brazil-presidential-election"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "巴西总统选举进入决战轮投票",
+  "d": "巴西是全球主要大豆、铁矿石和石油出口国，选举结果将直接左右宏观经济政策和商品供给，对全球市场格局影响深远。"
+ },
+ "week": []
+}
