@@ -60,7 +60,22 @@ jq -n --arg t "$TEST_KEY" --arg b "${TG_BOT_TOKEN:-}" --arg c "${TG_CHAT_ID:-}" 
 npx --yes wrangler@4 secret bulk /tmp/secrets.json --config cf/wrangler.toml 2>&1 | tail -5
 rm -f /tmp/secrets.json
 
-# 6. 冒烟测试
+# 6. Telegram 机器人：消息推到 /tg/<密钥>，再设好命令菜单
+if [ -n "${TG_BOT_TOKEN:-}" ]; then
+  HOOK=$(printf 'tg-hook:%s' "$TG_BOT_TOKEN" | sha256sum | cut -c1-32)
+  r=$(curl -sS "https://api.telegram.org/bot$TG_BOT_TOKEN/setWebhook" -H "Content-Type: application/json" \
+      -d "{\"url\":\"$URL/tg/$HOOK\",\"secret_token\":\"$HOOK\",\"allowed_updates\":[\"message\",\"edited_message\"],\"drop_pending_updates\":true}")
+  note "Telegram webhook：$(echo "$r" | jq -c '{ok, description}')"
+  curl -sS "https://api.telegram.org/bot$TG_BOT_TOKEN/setMyCommands" -H "Content-Type: application/json" -d '{"commands":[
+    {"command":"help","description":"我能做什么"},
+    {"command":"q","description":"查股价：/q NVDA"},
+    {"command":"alert","description":"设提醒：/alert VOO 跌到 650"},
+    {"command":"list","description":"我的提醒"},
+    {"command":"del","description":"删除提醒：/del 3"},
+    {"command":"brief","description":"今天的简报"}]}' >/dev/null
+fi
+
+# 7. 冒烟测试
 for i in 1 2 3 4 5 6; do h=$(curl -sS "$URL/health"); echo "$h" | jq -e .ok >/dev/null 2>&1 && break; sleep 10; done
 note "已部署 $URL ｜ health: $h"
 python3 - "$URL" "$TEST_KEY" <<'PY'
@@ -102,6 +117,11 @@ except urllib.error.HTTPError as e:
     print("::warning title=柜号识别测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
 except Exception as e:
     print("::warning title=柜号识别测试::%s" % e)
+try:
+    st = urllib.request.urlopen(urllib.request.Request(url + "/selftest", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA}), timeout=120).read().decode()
+    print("::notice title=机器人自检（翻译 / 朗读 / 听写）::" + st[:900])
+except Exception as e:
+    print("::warning title=机器人自检::%s" % e)
 req = urllib.request.Request(url + "/intraday?force=1", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA})
 try:
     print("::notice title=盘中提醒测试::" + urllib.request.urlopen(req, timeout=60).read().decode()[:600])
@@ -109,5 +129,5 @@ except Exception as e:
     print("::warning title=盘中提醒测试::%s" % e)
 PY
 
-# 7. 把接口地址告诉网页
+# 8. 把接口地址告诉网页
 echo "{\"api\":\"$URL\"}" > cf.json

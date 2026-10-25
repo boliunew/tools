@@ -3,6 +3,7 @@
 //  POST /ocr     拍照识别柜号 / 封条号（Workers AI 视觉模型 + ISO 6346 校验）。需要请求头 X-Tools-Key：
 //                网站首页解锁后存在浏览器里的那串密钥（sha256 后等于 CHECK），或部署时生成的测试密钥。
 //  GET  /health  看看活着没有、配了哪些东西
+//  POST /tg/<密钥> Telegram 机器人（照片认柜号 / 单据、语音翻译、/提醒 /股价 /简报），见下面「Telegram 双向机器人」
 //  定时任务      美股交易时间每 5 分钟：检查「股价提醒」（stocks/data/alerts.json 里的规则）和大盘异动，触发就推送到 Telegram。
 //
 // 环境：AI（Workers AI 绑定）、KV（去重 / 状态）、CHECK、SITE、TEST_KEY、TG_BOT_TOKEN、TG_CHAT_ID
@@ -83,14 +84,14 @@ const OCR_PROMPT = 'This photo was taken in a freight / container yard. Read eve
   'Seal numbers are on the bolt seal at the door handle. Copy characters exactly as you see them; do not guess or invent. ' +
   'Reply with JSON only: {"containers":["…"],"seals":["…"],"others":["other codes: trailer / chassis / plate numbers"],"text":"all other text you can read"}';
 
-async function runVision(env, bytes, mime) {
+async function runVision(env, bytes, mime, prompt = OCR_PROMPT, maxTokens = 600) {
   const errs = [];
   const dataUri = `data:${mime};base64,${b64(bytes)}`;
   for (const model of VISION) {
     try {
       let input;
-      if (model.includes('llama-3.2')) input = { messages: [{ role: 'user', content: OCR_PROMPT }], image: [...bytes], max_tokens: 600 };
-      else input = { messages: [{ role: 'user', content: [{ type: 'text', text: OCR_PROMPT }, { type: 'image_url', image_url: { url: dataUri } }] }], max_tokens: 600, temperature: 0 };
+      if (model.includes('llama-3.2')) input = { messages: [{ role: 'user', content: prompt }], image: [...bytes], max_tokens: maxTokens };
+      else input = { messages: [{ role: 'user', content: [{ type: 'text', text: prompt }, { type: 'image_url', image_url: { url: dataUri } }] }], max_tokens: maxTokens, temperature: 0 };
       let r;
       try { r = await env.AI.run(model, input); }
       catch (e) {
@@ -174,7 +175,8 @@ async function intraday(env, force = false) {
   const site = env.SITE || 'https://boliunew.github.io/tools';
   const A = await fetch(`${site}/stocks/data/alerts.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({ items: {} }));
   const snap = await fetch(`${site}/stocks/data/snap.json?t=${Math.floor(Date.now() / 36e5)}`, { cf: { cacheTtl: 3600 } }).then(r => r.json()).catch(() => ({ rows: {} }));
-  const rules = Object.entries(A.items || {}).filter(([, a]) => ['below', 'above', 'move', 'dd'].includes(a.kind) && a.t);
+  const kvRules = JSON.parse((await env.KV.get('rules')) || '[]').map(r => ['k' + r.id, { ...r, url: null }]);
+  const rules = [...Object.entries(A.items || {}), ...kvRules].filter(([, a]) => ['below', 'above', 'move', 'dd'].includes(a.kind) && a.t);
   const syms = [...new Set([...MARKET.map(m => m[0]), ...rules.map(([, a]) => a.t)])];
   const Q = await quotes(syms);
   const sent = [];
@@ -210,7 +212,7 @@ async function intraday(env, force = false) {
       if (disarmed && rearm) { await env.KV.delete(armKey); continue; }
       if (!met || disarmed) continue;
     } else if (!met || (!force && await env.KV.get(dayKey))) continue;
-    const ok = await tg(env, `🔔 <b>股价提醒（盘中）</b>：<b>${a.t}</b> ${a.desc || ''}\n${detail}\n<a href="${a.url || site + '/stocks.html'}">查看提醒</a> · <a href="${site}/stocks.html">股票池</a>`);
+    const ok = await tg(env, `🔔 <b>股价提醒（盘中）</b>：<b>${a.t}</b> ${a.desc || ''}\n${detail}\n` + (a.url ? `<a href="${a.url}">查看提醒</a> · ` : `（Telegram 设的提醒 #${a.id}，/删除 ${a.id} 可以关掉）\n`) + `<a href="${site}/stocks.html">股票池</a>`);
     if (ok) {
       sent.push(id);
       if (level) await env.KV.put(armKey, now.date, { expirationTtl: 86400 * 60 });
@@ -221,15 +223,291 @@ async function intraday(env, force = false) {
   return { et: now, rules: rules.length, quotes: Object.fromEntries(Object.entries(Q).map(([k, v]) => [k, v.p])), sent, telegram: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID) };
 }
 
+// ---------------------------------------------------------------------------- Telegram 双向机器人
+// Telegram 把消息推到 /tg/<密钥>（部署时 setWebhook）。只理你自己（TG_CHAT_ID）发的消息。
+//  照片            → 柜号 / 封条号（ISO 6346 校验）；像单据就整理提单号、件数、重量等字段。配文「单据」强制按单据读
+//  语音            → Whisper 听写，中文翻成西班牙语 + 英语（附西语朗读），西语 / 英语翻成中文
+//  直接打字        → 同上，中 ↔ 西 / 英翻译
+//  /提醒 VOO 跌到 650 · /提醒列表 · /删除 3 · /股价 NVDA · /简报 · /帮助
+const LLM = ['@cf/openai/gpt-oss-120b', '@cf/meta/llama-3.3-70b-instruct-fp8-fast'];
+const WHISPER = ['@cf/openai/whisper-large-v3-turbo', '@cf/openai/whisper'];
+const HELP = [
+  '🤖 <b>我能做这些</b>',
+  '📷 <b>发照片</b>：认柜号 / 封条号（自动校验）；拍的是提单、装箱单就整理关键字段。配文写「单据」强制按单据读',
+  '🎙️ <b>发语音</b>：说中文 → 翻成西班牙语 + 英语，还附西语朗读；说西语 / 英语 → 翻成中文',
+  '⌨️ <b>直接打字</b>：中文 ↔ 西班牙语 / 英语翻译',
+  '🔔 <code>/提醒 VOO 跌到 650</code>（也可以：涨到 250、单日涨跌 5、回撤 10）',
+  '📋 <code>/提醒列表</code> · <code>/删除 3</code>',
+  '📈 <code>/股价 NVDA</code> · ☀️ <code>/简报</code>'
+].join('\n');
+
+const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+async function tgApi(env, method, body) {
+  const r = await fetch(`https://api.telegram.org/bot${env.TG_BOT_TOKEN}/${method}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  return r.json().catch(() => ({}));
+}
+async function reply(env, chat, html, extra = {}) {
+  const r = await tgApi(env, 'sendMessage', { chat_id: chat, text: html.slice(0, 4000), parse_mode: 'HTML', disable_web_page_preview: true, ...extra });
+  if (!r.ok) await tgApi(env, 'sendMessage', { chat_id: chat, text: html.replace(/<[^>]+>/g, '').slice(0, 4000) });
+}
+async function tgFile(env, fileId) {
+  const f = await tgApi(env, 'getFile', { file_id: fileId });
+  if (!f.ok) throw new Error('getFile 失败');
+  const r = await fetch(`https://api.telegram.org/file/bot${env.TG_BOT_TOKEN}/${f.result.file_path}`);
+  return { bytes: new Uint8Array(await r.arrayBuffer()), path: f.result.file_path };
+}
+
+async function llm(env, system, user, maxTokens = 800) {
+  for (const model of LLM) {
+    try {
+      const input = model.includes('gpt-oss')
+        ? { instructions: system, input: user, reasoning: { effort: 'low' } }
+        : { messages: [{ role: 'system', content: system }, { role: 'user', content: user }], max_tokens: maxTokens, temperature: 0.2 };
+      const t = aiText(await env.AI.run(model, input));
+      if (t) return t;
+    } catch (e) { /* 换下一个模型 */ }
+  }
+  return '';
+}
+
+// ---------- 照片：柜号 / 单据
+const DOC_PROMPT = 'This is a photo from a freight / container yard. First decide: is it mainly a DOCUMENT (bill of lading, delivery order, packing list, gate ticket, seal record, any printed form) or a CONTAINER / TRAILER / SEAL photo? ' +
+  'Copy characters exactly; never guess. Reply with JSON only: ' +
+  '{"type":"document" or "container","containers":["container numbers like CSQU 305438 3"],"seals":["seal numbers"],"others":["trailer / chassis / plate / booking numbers"],' +
+  '"fields":{"bl":"B/L number","booking":"booking number","shipper":"","consignee":"","carrier":"","vessel":"vessel / voyage","pol":"port of loading","pod":"port of discharge","pieces":"packages / pieces with unit","weight":"gross weight with unit","volume":"CBM","description":"goods description, short","date":""},' +
+  '"text":"other important text, short"}. Use empty strings for fields you cannot see.';
+const FIELD_ZH = { bl: '提单号', booking: '订舱号', shipper: '发货人', consignee: '收货人', carrier: '船公司 / 承运人', vessel: '船名航次', pol: '装货港', pod: '卸货港', pieces: '件数', weight: '毛重', volume: '体积', description: '货物', date: '日期' };
+
+async function onPhoto(env, chat, msg) {
+  const ph = msg.photo ? msg.photo[msg.photo.length - 1] : msg.document;
+  if (!ph) return;
+  if ((ph.file_size || 0) > 9e6) return reply(env, chat, '照片太大了，用 Telegram 默认的压缩方式发（不要“按文件发送”）');
+  await tgApi(env, 'sendChatAction', { chat_id: chat, action: 'typing' });
+  const { bytes, path } = await tgFile(env, ph.file_id);
+  const mime = /\.png$/i.test(path) ? 'image/png' : 'image/jpeg';
+  const forceDoc = /单据|提单|文件|doc|bl\b/i.test(msg.caption || '');
+  const v = await runVision(env, bytes, mime, forceDoc ? DOC_PROMPT.replace('First decide', 'It IS a document. Still') : DOC_PROMPT, 900);
+  if (!v.text) return reply(env, chat, '😵 AI 没读出来，换个角度再拍一张试试');
+  const J = parseJSON(v.text) || {};
+  const arr = x => (Array.isArray(x) ? x : x ? [x] : []).map(s => String(s).trim()).filter(Boolean);
+  let C = containerCandidates(arr(J.containers));
+  if (!C.length) C = containerCandidates([...arr(J.others), J.text || '', Object.keys(J).length ? '' : v.text]);
+  const S = arr(J.seals).map(s => s.toUpperCase().replace(/\s+/g, '')).filter(s => /\d{4,}/.test(s));
+  const out = [];
+  const isDoc = forceDoc || J.type === 'document';
+  if (isDoc) {
+    out.push('📄 <b>单据识别</b>');
+    for (const [k, zh] of Object.entries(FIELD_ZH)) { const val = J.fields && String(J.fields[k] || '').trim(); if (val) out.push(`${zh}：<code>${esc(val)}</code>`); }
+  }
+  if (C.length) {
+    out.push(isDoc ? '\n📦 <b>柜号</b>' : '📦 <b>柜号</b>');
+    for (const c of C.slice(0, 6)) {
+      const g = `${c.no.slice(0, 4)} ${c.no.slice(4, 10)} ${c.no.slice(10)}`;
+      out.push(`<code>${c.no}</code>  ${esc(g)}  ${c.calc ? '（没拍到校验位，已补算）' : c.ok ? (c.fixed ? '✅ 校验通过（已纠正 O/0 之类）' : '✅ 校验通过') : `⚠️ 校验位不对（应为 ${c.cd}），再看一眼`}`);
+    }
+  }
+  if (S.length) out.push('🔒 <b>封条号</b>：' + S.slice(0, 4).map(s => `<code>${esc(s)}</code>`).join('  '));
+  const others = arr(J.others).filter(o => !C.some(c => o.replace(/\W/g, '').toUpperCase().includes(c.no.slice(0, 10)))).slice(0, 5);
+  if (others.length) out.push('🔖 其他编号：' + others.map(o => `<code>${esc(o)}</code>`).join('  '));
+  if (out.length <= (isDoc ? 1 : 0)) out.push('没认出编号。' + (J.text ? '读到的文字：' + esc(String(J.text).slice(0, 300)) : '靠近一点、正对着拍、避开反光再试。'));
+  out.push('<i>点编号可以复制。AI 可能读错，请对一眼实物</i>');
+  return reply(env, chat, out.join('\n'), { reply_to_message_id: msg.message_id });
+}
+
+// ---------- 翻译（文字 / 语音）
+async function translate(env, text, lang) {
+  const zh = /[一-鿿]/.test(text) || /^zh|chinese/i.test(lang || '');
+  const system = '你是货运堆场现场的翻译，帮一位中文母语的现场主管和墨西哥 / 美国司机、工人沟通。翻译要口语、简短、准确，保留数字、柜号、门号、时间。只输出 JSON。';
+  const user = zh
+    ? `把这句中文翻成墨西哥口语西班牙语和美式英语，输出 {"es":"…","en":"…"}：\n${text}`
+    : `把这句话（可能是西班牙语或英语）翻成中文，输出 {"src":"原文语言（中文写，如 西班牙语）","zh":"中文翻译"}：\n${text}`;
+  const J = parseJSON(await llm(env, system, user)) || {};
+  return { zh, J };
+}
+
+async function sendSpanishVoice(env, chat, text) {
+  try {
+    const r = await env.AI.run('@cf/myshell-ai/melotts', { prompt: text, lang: 'es' });
+    const audio = typeof r === 'string' ? r : r && r.audio;
+    if (!audio) return;
+    const bytes = Uint8Array.from(atob(audio), c => c.charCodeAt(0));
+    const fd = new FormData();
+    fd.append('chat_id', String(chat));
+    fd.append('title', 'Español');
+    fd.append('audio', new Blob([bytes], { type: 'audio/mpeg' }), 'espanol.mp3');
+    await fetch(`https://api.telegram.org/bot${env.TG_BOT_TOKEN}/sendAudio`, { method: 'POST', body: fd });
+  } catch (e) { /* 朗读失败就只发文字 */ }
+}
+
+async function onText(env, chat, text, fromVoice = '', lang = '') {
+  await tgApi(env, 'sendChatAction', { chat_id: chat, action: 'typing' });
+  const { zh, J } = await translate(env, text, lang);
+  const head = fromVoice ? `🎙️ 听到：${esc(text)}\n\n` : '';
+  if (zh) {
+    if (!J.es && !J.en) return reply(env, chat, head + '😵 翻译失败，再发一次试试');
+    await reply(env, chat, head + `🇲🇽 <b>${esc(J.es || '')}</b>\n\n🇺🇸 ${esc(J.en || '')}`);
+    if (J.es) await sendSpanishVoice(env, chat, J.es);
+  } else {
+    if (!J.zh) return reply(env, chat, head + '😵 翻译失败，再发一次试试');
+    await reply(env, chat, head + `🇨🇳 <b>${esc(J.zh)}</b>` + (J.src ? `\n<i>（${esc(J.src)}）</i>` : ''));
+  }
+}
+
+async function onVoice(env, chat, msg) {
+  const v = msg.voice || msg.audio;
+  if ((v.duration || 0) > 120) return reply(env, chat, '语音太长了，2 分钟以内的我才听');
+  await tgApi(env, 'sendChatAction', { chat_id: chat, action: 'typing' });
+  const { bytes } = await tgFile(env, v.file_id);
+  let text = '', lang = '';
+  for (const model of WHISPER) {
+    try {
+      const r = model.includes('turbo') ? await env.AI.run(model, { audio: b64(bytes) }) : await env.AI.run(model, { audio: [...bytes] });
+      text = (r && (r.text || (r.segments || []).map(s => s.text).join(' '))) || '';
+      lang = (r && r.transcription_info && r.transcription_info.language) || '';
+      if (text.trim()) break;
+    } catch (e) { /* 换下一个模型 */ }
+  }
+  if (!text.trim()) return reply(env, chat, '😵 没听清，靠近手机再说一次');
+  return onText(env, chat, text.trim(), '1', lang);
+}
+
+// ---------- 股价提醒（存在 KV，盘中检查见 intraday）
+const KINDS_JS = [['dd', /回撤|回调|距.{0,4}高点/], ['move', /单日|涨跌幅|涨跌|异动/], ['above', /涨到|涨破|涨过|高于|突破|>/], ['below', /跌到|跌破|跌至|低于|</]];
+const KIND_ZH = { below: '跌到', above: '涨到', move: '单日涨跌 ≥', dd: '距一年高点回撤 ≥' };
+async function cmdAlert(env, chat, arg) {
+  const m = /^\s*\$?([A-Za-z][A-Za-z0-9.\-]{0,6})\s*(.*)$/.exec(arg || '');
+  if (!m) return reply(env, chat, '格式：<code>/提醒 VOO 跌到 650</code>（还可以：涨到 250、单日涨跌 5、回撤 10）');
+  const t = m[1].toUpperCase().replace('.', '-'), rest = m[2];
+  const k = (KINDS_JS.find(([, rx]) => rx.test(rest)) || [])[0];
+  const n = /\d+(\.\d+)?/.exec(rest.replace(/,/g, ''));
+  if (!k || !n) return reply(env, chat, '没看懂条件。写成：跌到 650 / 涨到 250 / 单日涨跌 5 / 回撤 10');
+  const v = +n[0];
+  const rules = JSON.parse((await env.KV.get('rules')) || '[]');
+  const id = rules.reduce((a, r) => Math.max(a, r.id), 0) + 1;
+  const desc = `${KIND_ZH[k]} ${v}${k === 'move' || k === 'dd' ? '%' : ''}`;
+  rules.push({ id, t, kind: k, v, desc, created: new Date().toISOString() });
+  await env.KV.put('rules', JSON.stringify(rules));
+  const q = (await quotes([t]))[t];
+  return reply(env, chat, `✅ 提醒 #${id}：<b>${t}</b> ${esc(desc)}` + (q ? `\n现价 ${q.p.toFixed(2)}` : '\n⚠️ 暂时查不到这个代码的行情，确认一下拼写') + '\n美股交易时间每 5 分钟检查一次，触发就推送。<code>/提醒列表</code> 查看全部');
+}
+async function cmdList(env, chat) {
+  const rules = JSON.parse((await env.KV.get('rules')) || '[]');
+  if (!rules.length) return reply(env, chat, '还没有用 Telegram 设的提醒。例：<code>/提醒 VOO 跌到 650</code>');
+  const q = await quotes([...new Set(rules.map(r => r.t))]);
+  return reply(env, chat, '📋 <b>我的提醒</b>（在 GitHub 开的提醒不在这里）\n' + rules.map(r => `#${r.id} <b>${r.t}</b> ${esc(r.desc)}` + (q[r.t] ? `  · 现价 ${q[r.t].p.toFixed(2)}` : '')).join('\n') + '\n\n删除：<code>/删除 编号</code>');
+}
+async function cmdDel(env, chat, arg) {
+  const id = +((/\d+/.exec(arg || '') || [])[0]);
+  const rules = JSON.parse((await env.KV.get('rules')) || '[]');
+  const left = rules.filter(r => r.id !== id);
+  if (left.length === rules.length) return reply(env, chat, '没有这个编号。<code>/提醒列表</code> 看看');
+  await env.KV.put('rules', JSON.stringify(left));
+  return reply(env, chat, `🗑️ 已删除提醒 #${id}`);
+}
+
+// ---------- 股价 / 简报
+async function cmdQuote(env, chat, arg) {
+  const t = (/[A-Za-z][A-Za-z0-9.\-]{0,6}/.exec(arg || '') || [])[0];
+  if (!t) return reply(env, chat, '格式：<code>/股价 NVDA</code>');
+  const T = t.toUpperCase().replace('.', '-'), site = env.SITE;
+  const [q, snap, pool] = await Promise.all([
+    quotes([T]),
+    fetch(`${site}/stocks/data/snap.json?t=${Math.floor(Date.now() / 36e5)}`).then(r => r.json()).catch(() => ({ rows: {} })),
+    fetch(`${site}/stocks/data/latest.json?t=${Math.floor(Date.now() / 36e5)}`).then(r => r.json()).catch(() => ({}))
+  ]);
+  const p = q[T], r = (snap.rows || {})[T], c = (pool.candidates || []).find(x => x.t === T);
+  if (!p && !r) return reply(env, chat, `查不到 ${esc(T)}，确认一下代码`);
+  const L = [`📈 <b>${T}</b>${r && r.n ? ' ' + esc(r.n) : ''}`];
+  if (p) L.push(`现价 <b>${p.p.toFixed(2)}</b>` + (p.prev ? `（${pctTxt((p.p / p.prev - 1) * 100)}）` : ''));
+  if (r) {
+    L.push(`${snap.date} 收盘 ${r.c} · RSI14 ${r.rsi} · ${r.a50 ? '站上' : '跌破'} 50 日线 · ${r.a200 ? '站上' : '跌破'} 200 日线`);
+    if (r.h != null) L.push(`距一年高点 ${pctTxt(r.h * 100)} · 近 1 月 ${pctTxt((r.m1 || 0) * 100)} · 近 3 月 ${pctTxt((r.m3 || 0) * 100)} · 相对强度 ${r.rs}`);
+  }
+  if (c) L.push(`🎯 在今日股票池里：${esc(c.primary)} · 止损 ${c.stop} · 目标 ${c.target}${c.earn ? ` · 财报 ${c.earn}` : ''}`);
+  if (pool.regime && pool.regime.label) L.push(`大盘状态：${esc(pool.regime.label)}`);
+  L.push(`<a href="${site}/stocks.html">打开股票池</a>`);
+  return reply(env, chat, L.join('\n'));
+}
+async function cmdBrief(env, chat) {
+  const site = env.SITE;
+  const idx = await fetch(`${site}/brief/data/index.json?t=${Date.now()}`).then(r => r.json()).catch(() => null);
+  const d = idx && idx.dates && idx.dates[0];
+  if (!d) return reply(env, chat, '今天的简报还没生成');
+  const B = await fetch(`${site}/brief/data/${d}.json?t=${Date.now()}`).then(r => r.json()).catch(() => null);
+  if (!B) return reply(env, chat, '简报读取失败');
+  const L = [`☀️ <b>每日简报 ${d}</b>`];
+  for (const s of B.sections || []) {
+    if (!s.items || !s.items.length) continue;
+    L.push(`\n<b>${esc(s.title)}</b>`);
+    for (const it of s.items.slice(0, 3)) L.push(`• <b>${esc(it.t)}</b>\n  ${esc(it.d)}`);
+  }
+  if (B.pick && B.pick.t) L.push(`\n📌 <b>今日一件事</b>：${esc(B.pick.t)}`);
+  L.push(`\n<a href="${site}/brief.html">网页版</a>`);
+  return reply(env, chat, L.join('\n'));
+}
+
+// ---------- 入口
+async function tgWebhook(req, env, ctx, url) {
+  const want = env.TG_BOT_TOKEN ? (await sha256hex('tg-hook:' + env.TG_BOT_TOKEN)).slice(0, 32) : '';
+  if (!want || url.pathname !== '/tg/' + want || req.headers.get('X-Telegram-Bot-Api-Secret-Token') !== want) return new Response('no', { status: 403 });
+  const up = await req.json().catch(() => ({}));
+  const msg = up.message || up.edited_message;
+  if (!msg || String(msg.chat && msg.chat.id) !== String(env.TG_CHAT_ID)) return new Response('ok');   // 只理主人
+  ctx.waitUntil(handle(env, msg).catch(e => reply(env, msg.chat.id, '😵 出错了：' + esc(String(e).slice(0, 200)))));
+  return new Response('ok');
+}
+async function handle(env, msg) {
+  const chat = msg.chat.id;
+  if (msg.photo || (msg.document && /^image\//.test(msg.document.mime_type || ''))) return onPhoto(env, chat, msg);
+  if (msg.voice || msg.audio) return onVoice(env, chat, msg);
+  const text = (msg.text || '').trim();
+  if (!text) return;
+  const m = /^\/(\S+?)(?:@\w+)?(?:\s+([\s\S]*))?$/.exec(text);
+  if (!m) return onText(env, chat, text);
+  const [, cmd, arg = ''] = m;
+  if (/^(提醒|alert|tx)$/i.test(cmd)) return arg.trim() ? cmdAlert(env, chat, arg) : cmdList(env, chat);
+  if (/^(提醒列表|列表|list|alerts)$/i.test(cmd)) return cmdList(env, chat);
+  if (/^(删除|del|rm)$/i.test(cmd)) return cmdDel(env, chat, arg);
+  if (/^(股价|q|quote|gj)$/i.test(cmd)) return cmdQuote(env, chat, arg);
+  if (/^(简报|brief|jb)$/i.test(cmd)) return cmdBrief(env, chat);
+  if (/^(翻译|fy|tr)$/i.test(cmd)) return arg.trim() ? onText(env, chat, arg.trim()) : reply(env, chat, '直接打字或发语音就会翻译');
+  return reply(env, chat, HELP);
+}
+
 // ---------------------------------------------------------------------------- 入口
 export default {
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
     const url = new URL(req.url);
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors(req) });
     if (url.pathname === '/ocr' && req.method === 'POST') return ocr(req, env);
+    if (url.pathname.startsWith('/tg/') && req.method === 'POST') return tgWebhook(req, env, ctx, url);
     if (url.pathname === '/health') {
       const last = await env.KV.get('last-run');
       return json(req, { ok: true, ai: !!env.AI, kv: !!env.KV, telegram: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID), check: !!env.CHECK, last: last ? JSON.parse(last) : null });
+    }
+    if (url.pathname === '/selftest' && req.method === 'POST') {   // 部署后自检：翻译 → 西语朗读 → 再听写回来
+      if (!(await authed(req, env))) return json(req, { error: 'key' }, 401);
+      const out = {};
+      try { out.translate = (await translate(env, '把这个柜子放到12号门', 'zh')).J; } catch (e) { out.translate = 'ERR ' + String(e).slice(0, 150); }
+      let mp3 = null;
+      try {
+        const r = await env.AI.run('@cf/myshell-ai/melotts', { prompt: (out.translate && out.translate.es) || 'Pon este contenedor en la puerta doce', lang: 'es' });
+        const a = typeof r === 'string' ? r : r && r.audio;
+        mp3 = a ? Uint8Array.from(atob(a), c => c.charCodeAt(0)) : null;
+        out.tts = mp3 ? mp3.length + ' bytes' : 'empty';
+      } catch (e) { out.tts = 'ERR ' + String(e).slice(0, 150); }
+      if (mp3) {
+        for (const model of WHISPER) {
+          try {
+            const r = model.includes('turbo') ? await env.AI.run(model, { audio: b64(mp3) }) : await env.AI.run(model, { audio: [...mp3] });
+            out.whisper = model + ': ' + ((r && r.text) || JSON.stringify(r).slice(0, 120));
+            if (r && r.text) break;
+          } catch (e) { out.whisper = model + ' ERR ' + String(e).slice(0, 150); }
+        }
+      }
+      try { out.reverse = (await translate(env, 'Estoy esperando en la puerta tres', 'es')).J; } catch (e) { out.reverse = 'ERR ' + String(e).slice(0, 150); }
+      return json(req, out);
     }
     if (url.pathname === '/intraday' && req.method === 'POST') {   // 手动跑一次（测试用）
       if (!(await authed(req, env))) return json(req, { error: 'key' }, 401);
