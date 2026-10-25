@@ -119,6 +119,7 @@ async function ocr(req, env) {
   }
   if (bytes.length > 4.5e6) return json(req, { error: 'size', msg: '图片太大（超过 4.5 MB）' }, 413);
   const t0 = Date.now();
+  await track(env, 'vision');
   const v = await runVision(env, bytes, mime);
   if (!v.text) return json(req, { error: 'ai', msg: 'AI 没读出来', detail: v.errs }, 502);
   const J = parseJSON(v.text) || {};
@@ -239,8 +240,46 @@ const HELP = [
   '🌐 <b>翻译</b>：打「翻译 把柜子放到12号门」→ 西语 + 英语 + 朗读；收到西语 / 英语直接转发给我 → 中文',
   '🔔 <code>/提醒 VOO 跌到 650</code>（也可以：涨到 250、单日涨跌 5、回撤 10）',
   '📋 <code>/提醒列表</code> · <code>/删除 3</code>',
-  '📈 <code>/q</code> 大盘 · <code>/q NVDA</code> 个股 · ☀️ <code>/简报</code>'
+  '📈 <code>/q</code> 大盘 · <code>/q NVDA</code> 个股 · ☀️ <code>/简报</code> · 📊 <code>/用量</code>'
 ].join('\n');
+
+// ---------- 用量统计（按公开价格粗估的神经元；免费额度每天 10,000，UTC 零点重置 = 太平洋时间下午 5 点 / 冬令时 4 点）
+const COST = { chat: 100, vision: 100, whisper: 50, translate: 40, tts: 20 };
+const COST_ZH = { chat: '💬 聊天', vision: '📷 认图', whisper: '🎙️ 听写', translate: '🌐 翻译', tts: '🔊 朗读' };
+const AUTO_DAILY = 600;   // 每日简报 + 盘后解读（在 GitHub 上调用，这里按固定值估）
+async function track(env, kind) {
+  try {
+    const key = 'use:' + new Date().toISOString().slice(0, 10);
+    const u = JSON.parse((await env.KV.get(key)) || '{}');
+    u[kind] = (u[kind] || 0) + 1;
+    await env.KV.put(key, JSON.stringify(u), { expirationTtl: 86400 * 8 });
+  } catch (e) { /* 统计失败不影响正常功能 */ }
+}
+async function cmdUsage(env, chat) {
+  const today = new Date().toISOString().slice(0, 10);
+  const u = JSON.parse((await env.KV.get('use:' + today)) || '{}');
+  let used = AUTO_DAILY;
+  const L = ['📊 <b>今天的 AI 用量</b>（估算）'];
+  for (const k of Object.keys(COST)) if (u[k]) { used += u[k] * COST[k]; L.push(`${COST_ZH[k]} ${u[k]} 次 ≈ ${u[k] * COST[k]}`); }
+  L.push(`⚙️ 自动任务（简报、盘后解读）≈ ${AUTO_DAILY}`);
+  const pct = Math.min(100, Math.round(used / 100));
+  const bar = '▓'.repeat(Math.round(pct / 10)) + '░'.repeat(10 - Math.round(pct / 10));
+  L.push(`\n合计约 <b>${used}</b> / 10,000 神经元\n${bar} ${pct}%`);
+  L.push(`还能再聊大约 <b>${Math.max(0, Math.floor((10000 - used) / COST.chat))}</b> 条（或拍 ${Math.max(0, Math.floor((10000 - used) / COST.vision))} 张照片）`);
+  const reset = new Date(); reset.setUTCHours(24, 0, 0, 0);
+  const hrs = Math.max(0, (reset - Date.now()) / 36e5);
+  const at = new Intl.DateTimeFormat('zh-CN', { timeZone: 'America/Los_Angeles', hour: 'numeric', hour12: true }).format(reset);
+  L.push(`额度在 ${Math.floor(hrs)} 小时 ${Math.round((hrs % 1) * 60)} 分后重置（太平洋时间${at}）`);
+  const week = [];
+  for (let i = 1; i <= 6; i++) {
+    const d = new Date(Date.now() - i * 864e5).toISOString().slice(0, 10);
+    const x = JSON.parse((await env.KV.get('use:' + d)) || 'null');
+    if (x) week.push(`${d.slice(5)} ≈ ${AUTO_DAILY + Object.entries(x).reduce((a, [k, n]) => a + (COST[k] || 0) * n, 0)}`);
+  }
+  if (week.length) L.push('\n前几天：' + week.join('，'));
+  L.push('\n<i>按公开价格粗估，准确数字看 Cloudflare 后台 AI → Workers AI</i>');
+  return reply(env, chat, L.join('\n'));
+}
 
 const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 
@@ -288,6 +327,7 @@ async function onPhoto(env, chat, msg) {
   const { bytes, path } = await tgFile(env, ph.file_id);
   const mime = /\.png$/i.test(path) ? 'image/png' : 'image/jpeg';
   const forceDoc = /单据|提单|文件|doc|bl\b/i.test(msg.caption || '');
+  await track(env, 'vision');
   const v = await runVision(env, bytes, mime, forceDoc ? DOC_PROMPT.replace('First decide', 'It IS a document. Still') : DOC_PROMPT, 900);
   if (!v.text) return reply(env, chat, '😵 AI 没读出来，换个角度再拍一张试试');
   const J = parseJSON(v.text) || {};
@@ -329,6 +369,7 @@ async function translate(env, text, lang) {
 
 async function sendSpanishVoice(env, chat, text) {
   try {
+    await track(env, 'tts');
     const r = await env.AI.run('@cf/myshell-ai/melotts', { prompt: text, lang: 'es' });
     const audio = typeof r === 'string' ? r : r && r.audio;
     if (!audio) return;
@@ -345,6 +386,7 @@ async function sendSpanishVoice(env, chat, text) {
 async function doTranslate(env, chat, text, fromVoice = '', lang = '', speak = false) {
   await tgApi(env, 'sendChatAction', { chat_id: chat, action: 'typing' });
   const { zh, J } = await translate(env, text, lang);
+  await track(env, 'translate');
   const head = fromVoice ? `🎙️ 听到：${esc(text)}\n\n` : '';
   if (zh) {
     if (!J.es && !J.en) return reply(env, chat, head + '😵 翻译失败，再发一次试试');
@@ -397,6 +439,7 @@ async function askAI(env, chat, text) {
   const convo = hist.map(m => (m.r === 'u' ? '用户：' : '助理：') + m.t).join('\n');
   const user = `【实时数据】\n${ctx}\n\n` + (convo ? `【之前的对话】\n${convo}\n\n` : '') + `【用户现在问】\n${text}`;
   const ans = (await llm(env, system, user, 900)).trim();
+  await track(env, 'chat');
   if (!ans) return reply(env, chat, '😵 AI 没回上来，再问一次试试');
   hist.push({ r: 'u', t: text.slice(0, 300) }, { r: 'a', t: ans.slice(0, 500) });
   await env.KV.put('chat:' + chat, JSON.stringify(hist.slice(-8)), { expirationTtl: 6 * 3600 });
@@ -409,6 +452,7 @@ async function onVoice(env, chat, msg) {
   if ((v.duration || 0) > 120) return reply(env, chat, '语音太长了，2 分钟以内的我才听');
   await tgApi(env, 'sendChatAction', { chat_id: chat, action: 'typing' });
   const { bytes } = await tgFile(env, v.file_id);
+  await track(env, 'whisper');
   let text = '', lang = '';
   for (const model of WHISPER) {
     try {
@@ -531,6 +575,7 @@ async function handle(env, msg) {
   if (/^(删除|del|rm)$/i.test(cmd)) return cmdDel(env, chat, arg);
   if (/^(股价|q|quote|gj)$/i.test(cmd)) return cmdQuote(env, chat, arg);
   if (/^(简报|brief|jb)$/i.test(cmd)) return cmdBrief(env, chat);
+  if (/^(用量|usage|yl)$/i.test(cmd)) return cmdUsage(env, chat);
   if (/^(翻译|fy|tr)$/i.test(cmd)) return arg.trim() ? doTranslate(env, chat, arg.trim(), '', '', true) : reply(env, chat, '打「翻译 要翻的话」，或者直接发语音');
   return reply(env, chat, HELP);
 }

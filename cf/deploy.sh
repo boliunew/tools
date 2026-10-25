@@ -72,7 +72,8 @@ if [ -n "${TG_BOT_TOKEN:-}" ]; then
     {"command":"alert","description":"设提醒：/alert VOO 跌到 650"},
     {"command":"list","description":"我的提醒"},
     {"command":"del","description":"删除提醒：/del 3"},
-    {"command":"brief","description":"今天的简报"}]}' >/dev/null
+    {"command":"brief","description":"今天的简报"},
+    {"command":"usage","description":"今天的 AI 用量"}]}' >/dev/null
 fi
 
 # 7. 冒烟测试
