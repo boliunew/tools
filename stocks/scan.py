@@ -33,6 +33,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 HIST = os.path.join(DATA, "history")
 UNIVERSE_CACHE = os.path.join(HERE, "universe.json")
+CHANGES_CACHE = os.path.join(HERE, "sp500_changes.json")   # 标普 500 历次调入 / 调出（维基百科），用来减轻幸存者偏差
 WATCHLIST = os.path.join(HERE, "watchlist.txt")
 
 MIN_PRICE = 10.0
@@ -132,7 +133,7 @@ def fetch_universe():
         t = pd.read_html(io.StringIO(html))[0]
         for _, row in t.iterrows():
             sym = str(row["Symbol"]).strip().replace(".", "-")
-            meta[sym] = {"name": str(row.get("Security", "")), "sector": str(row.get("GICS Sector", ""))}
+            meta[sym] = {"name": str(row.get("Security", "")), "sector": str(row.get("GICS Sector", "")), "sp500": True}
         print(f"S&P 500: {len(t)} tickers")
     except Exception as e:  # noqa: BLE001
         print("WARN: S&P 500 list fetch failed:", e)
@@ -171,6 +172,55 @@ def fetch_universe():
                 if s and s not in meta:
                     meta[s] = {"name": "", "sector": "自选"}
     return meta
+
+
+def fetch_sp500_changes():
+    """标普 500 的历次成分股变动（维基百科 List of S&P 500 companies 的第二张表）→ {ticker: 最近一次调入日期}，
+    以及窗口内被调出、现在不在名单里的股票数量。抓不到就用上次存下的。"""
+    rows = []
+    try:
+        html = http_get("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+        for t in pd.read_html(io.StringIO(html)):
+            flat = [" ".join(str(x) for x in (c if isinstance(c, tuple) else (c,))).lower() for c in t.columns]
+            if not (any("added" in c for c in flat) and any("removed" in c for c in flat)):
+                continue
+            ci = lambda *keys: next((i for i, c in enumerate(flat) if all(k in c for k in keys)), None)
+            i_date, i_add, i_rem = ci("date"), ci("added", "ticker"), ci("removed", "ticker")
+            if i_date is None or i_add is None:
+                continue
+            for _, r in t.iterrows():
+                d = pd.to_datetime(str(r.iloc[i_date]).split("[")[0].strip(), errors="coerce")
+                if pd.isna(d):
+                    continue
+                add = str(r.iloc[i_add]).strip().replace(".", "-") if i_add is not None else ""
+                rem = str(r.iloc[i_rem]).strip().replace(".", "-") if i_rem is not None else ""
+                rows.append({"d": d.date().isoformat(), "add": "" if add in ("nan", "") else add, "rem": "" if rem in ("nan", "") else rem})
+            break
+        if len(rows) >= 50:
+            with open(CHANGES_CACHE, "w", encoding="utf-8") as f:
+                json.dump(rows, f, ensure_ascii=False, separators=(",", ":"))
+            print(f"S&P 500 changes: {len(rows)} rows")
+    except Exception as e:  # noqa: BLE001
+        print("WARN: S&P 500 changes fetch failed:", e)
+    if len(rows) < 50 and os.path.exists(CHANGES_CACHE):
+        with open(CHANGES_CACHE, encoding="utf-8") as f:
+            rows = json.load(f)
+        print("Using cached sp500_changes.json")
+    return rows
+
+
+def membership(rows, tickers, cutoff, sp500):
+    """每只股票「从哪天起算」：窗口内才调入标普 500 的，调入之前的信号和基准都不算（避免「涨上去了才被选进指数」的偏差）。
+    只在纳指 100 里的股票没有可靠的历史变动表，照旧全算。"""
+    since, removed = {}, set()
+    for r in sorted(rows, key=lambda r: r["d"]):
+        d = pd.Timestamp(r["d"])
+        if r["add"] and r["add"] in tickers and r["add"] in sp500:
+            since[r["add"]] = d                       # 多次进出时取最近一次调入
+        if r["rem"] and d >= cutoff and r["rem"] not in sp500:
+            removed.add(r["rem"])
+    since = {t: d for t, d in since.items() if d > cutoff}
+    return since, removed
 
 
 # ----------------------------------------------------------------------------- data
@@ -431,7 +481,7 @@ def arrays(x):
     return {k: x[k].to_numpy(dtype=float) for k in ("open", "high", "low", "close", "sma5", "ema20", "atr", "low3")}
 
 
-def signal_stats(frames, sigs, cutoff, regimes):
+def signal_stats(frames, sigs, cutoff, regimes, since=None):
     """per signal: overall stats + stats per market regime.  Every signal is replayed as a real trade:
     buy at the next open, exit by the signal's own stop / target / rule / time limit, minus COST.
     `ex` = trade return minus an equal-weight basket of every eligible stock over the same days.
@@ -442,7 +492,12 @@ def signal_stats(frames, sigs, cutoff, regimes):
     n_days = int(keep.sum())
     # equal-weight basket of eligible stocks (eligibility judged the day before)
     R = pd.DataFrame({t: x["close"].pct_change() for t, x in frames.items()}).reindex(idx)
-    E = pd.DataFrame({t: sigs[t]["base"] for t in frames}).reindex(idx).fillna(False).astype(bool).shift(1).fillna(False)
+    E = pd.DataFrame({t: sigs[t]["base"] for t in frames}).reindex(idx).fillna(False).astype(bool)
+    since = since or {}
+    for t, d0 in since.items():          # 调入标普 500 之前：不算进基准，也不算它的信号
+        if t in E.columns:
+            E.loc[E.index < d0, t] = False
+    E = E.shift(1).fillna(False)
     ew = (1 + R.where(E).mean(axis=1).fillna(0)).cumprod().to_numpy()
     reg = regimes.to_numpy()
     events = {k: [] for k in SIGNALS}
@@ -453,8 +508,11 @@ def signal_stats(frames, sigs, cutoff, regimes):
         for key in SIGNALS:
             col = S[key].to_numpy()
             busy = -1
+            d0 = since.get(t)
             for i in np.nonzero(col)[0]:
                 if i <= busy or i + 1 >= len(col) or gi[i] < 0 or not keep[gi[i]]:
+                    continue
+                if d0 is not None and x.index[i] < d0:
                     continue
                 row = {"close": A["close"][i], "atr": A["atr"][i], "low3": A["low3"][i], "sma5": A["sma5"][i]}
                 stop, target, _ = levels(key, row)
@@ -769,8 +827,12 @@ def main():
     today = last_date.date().isoformat()
     cutoff = last_date - pd.DateOffset(years=STATS_YEARS)
     regimes = regime_series(frames, idx_frames.get("SPY"), idx_frames.get("^VIX"))
-    stats = signal_stats(frames, sigs, cutoff, regimes)
+    sp500 = {t for t, m in meta.items() if m.get("sp500")}
+    since, removed = membership(fetch_sp500_changes(), set(frames), cutoff, sp500) if sp500 else ({}, set())
+    stats = signal_stats(frames, sigs, cutoff, regimes, since)
     smeta = stats.pop("_meta")
+    smeta["pit"] = {"late_added": len(since), "removed_missing": len(removed), "sp500": len(sp500)}
+    print(f"point-in-time: {len(since)} stocks counted only after joining the S&P 500; {len(removed)} removed stocks not in the data")
 
     # market regime (today)
     regime = {}
