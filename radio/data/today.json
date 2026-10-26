@@ -1,49 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-25T14:25:35Z",
- "date": "2026-10-25",
+ "generated": "2026-10-26T16:50:33Z",
+ "date": "2026-10-26",
  "engine": "edge",
- "total": 491.3,
- "short": 334.1,
+ "total": 498.4,
+ "short": 323.9,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610250724",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610260949",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月25日 星期日",
-   "dur": 12.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610250724",
+   "sub": "10月26日 星期一",
+   "dur": 10.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。今天是10月25日，星期日。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
+     "t": "新的一周开始了，加油！10月26日，星期一，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 79°/56°F",
-   "dur": 27.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610250724",
+   "sub": "Upland 阴天 79°/57°F",
+   "dur": 27.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏56度，13摄氏度。傍晚5点下班大约华氏77度，25摄氏度，体感72度。白天最高79度，约26摄氏度；最低56度。基本不会下雨。白天空气质量中等，指数最高53。今天日落时间是傍晚6点04分。"
-    }
-   ]
-  },
-  {
-   "id": "sky",
-   "title": "🔭 天象",
-   "sub": "Upland",
-   "dur": 7.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610250724",
-   "text": [
-    {
-     "lang": "zh",
-     "t": "天象提醒。今天，满月。21:12 最圆，整晚都亮。"
+     "t": "Upland今天阴天。早上7点出门大约华氏57度，14摄氏度。傍晚5点下班大约华氏76度，25摄氏度，体感70度。白天最高79度，约26摄氏度；最低57度。基本不会下雨。白天空气质量中等，指数最高61。今天日落时间是傍晚6点03分。"
     }
    ]
   },
@@ -52,7 +39,7 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 30.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610250724",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
@@ -65,7 +52,7 @@
    "title": "📈 股票池",
    "sub": "37 个候选",
    "dur": 65.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610250724",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
@@ -97,45 +84,45 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "5 件大事",
-   "dur": 55.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610250724",
+   "dur": 54.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "明天，有2家大公司发财报。"
+     "t": "今天，有2家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Verizon Communications，代码 V Z，盘前发财报。期权定价波动正负4.5%。标签：已提前炒作、财报日常涨。"
+     "t": "Verizon Communications，代码 V Z，盘前发财报。期权定价波动正负3.3%。标签：已提前炒作、财报日常涨。"
     },
     {
      "lang": "zh",
-     "t": "Welltower，代码 W E L L，盘后发财报。期权定价波动正负6.5%。标签：财报日常涨。"
+     "t": "Welltower，代码 W E L L，盘后发财报。期权定价波动正负6.3%。标签：财报日常涨。"
     },
     {
      "lang": "zh",
-     "t": "10月27日，有3家大公司发财报。"
+     "t": "明天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Visa，代码 V，盘后发财报。期权定价波动正负3.5%。"
+     "t": "Visa，代码 V，盘后发财报。期权定价波动正负3.4%。"
     },
     {
      "lang": "zh",
-     "t": "Coca-Cola，代码 K O，盘前发财报。期权定价波动正负3.3%。"
+     "t": "Coca-Cola，代码 K O，盘前发财报。期权定价波动正负3.1%。"
     },
     {
      "lang": "zh",
-     "t": "HSBC，代码 H S B C，发财报。期权定价波动正负4.5%。"
+     "t": "HSBC，代码 H S B C，发财报。期权定价波动正负4.1%。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · NPR · The Guardian",
-   "dur": 98.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610250724",
+   "sub": "The Guardian · Al Jazeera · BBC",
+   "dur": 94.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
@@ -143,48 +130,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，商业，难度B2。大意是：罗斯班克：政治风暴中心的油田生活。"
+     "t": "第1条，来自The Guardian，国际，难度B2。大意是：前RAAF飞行员涉嫌谋杀妻子是“爱情老鼠”和“操纵大师” ，陪审团听到。"
     },
     {
      "lang": "en",
-     "t": "Rosebank: Life on the oil field at the centre of a political storm"
+     "t": "Former RAAF pilot who allegedly murdered wife was ‘love rat’ and ‘master manipulator’, jury hears"
     },
     {
      "lang": "en",
-     "t": "Scotland editor James Cook finds out what life is like on board a ship in an untapped oil field awaiting its fate."
+     "t": "Robert John Crawford on trial after wife found near ride-on lawnmower on their Toowoomba property A former RAAF pilot was a “love rat” and “master manipulator” who staged his wife’s death to make it appear a tragic accident, a jury has hear"
     },
     {
      "lang": "zh",
-     "t": "第2条，来自NPR，综合，难度B2。大意是：纽约总教区同意就性虐待索赔达成8亿美元的和解协议。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：冈比亚的第一位盲人治安法官测试了为视力障碍者建造的系统。"
     },
     {
      "lang": "en",
-     "t": "Archdiocese of New York agrees to $800 million settlement over sexual abuse claims"
+     "t": "The Gambia’s first blind magistrate tests a system built for the sighted"
     },
     {
      "lang": "en",
-     "t": "The 1,300 survivors of sexual abuse by clergy members and lay workers have all agreed to the settlement, according to an attorney for some of the plaintiffs."
+     "t": "For a decade, Muhammed Krubally has shown what is possible and what still needs to change."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自The Guardian，科技，难度B2。大意是：“合成双胞胎” ：为什么Socceroo Cristian Volpato是最新获得人工智能克隆许可的足球运动员。"
+     "t": "第3条，来自BBC，科学，难度B2。大意是：两名男子因倒塌的树木而丧生，因为风暴Boelo导致9万处房产停电。"
     },
     {
      "lang": "en",
-     "t": "‘Synthetic twin’: Why Socceroo Cristian Volpato is the latest footballer to license his AI clone"
+     "t": "Two men killed by falling trees as Storm Boelo leaves 90,000 properties without power"
     },
     {
      "lang": "en",
-     "t": "Athletes’ scramble to control – and monetise – their digital identities at the cutting edge of AI rights deals Get our new political email, free app or daily news podcast The Socceroos star stares at the camera as he strides through an enor"
+     "t": "An amber wind warning has now expired after severe weather sweeps across the UK."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "extinct · la uva",
-   "dur": 31.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610250724",
+   "sub": "scholarship · el refrigerador",
+   "dur": 35.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
@@ -192,15 +179,15 @@
     },
     {
      "lang": "en",
-     "t": "extinct"
+     "t": "scholarship"
     },
     {
      "lang": "zh",
-     "t": "意思是：灭绝的。拼写是："
+     "t": "意思是：奖学金。拼写是："
     },
     {
      "lang": "en",
-     "t": "e, x, t, i, n, c, t"
+     "t": "s, c, h, o, l, a, r, s, h, i, p"
     },
     {
      "lang": "zh",
@@ -208,7 +195,7 @@
     },
     {
      "lang": "en",
-     "t": "extinct"
+     "t": "scholarship"
     },
     {
      "lang": "zh",
@@ -216,44 +203,48 @@
     },
     {
      "lang": "es",
-     "t": "la uva"
+     "t": "el refrigerador"
     },
     {
      "lang": "zh",
-     "t": "意思是：葡萄。跟着读一遍。"
+     "t": "意思是：冰箱。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la uva"
+     "t": "el refrigerador"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "易错",
-   "dur": 20.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610250724",
+   "sub": "习语",
+   "dur": 26.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天说一个常见错误。不要说："
+     "t": "每日一句，今天是一个地道习语。"
     },
     {
      "lang": "en",
-     "t": "I want to ask for leave"
+     "t": "Every cloud has a silver lining"
     },
     {
      "lang": "zh",
-     "t": "应该说："
+     "t": "意思是：柳暗花明。坏事里也有希望。"
+    },
+    {
+     "lang": "zh",
+     "t": "例句："
     },
     {
      "lang": "en",
-     "t": "I'd like to take a day off"
+     "t": "It rained all week, but every cloud has a silver lining: I finished my novel."
     },
     {
      "lang": "zh",
-     "t": "我想请假。口语更常说 take a day off 或 take some time off"
+     "t": "下了一周雨，也有好处：我把小说读完了。"
     }
    ],
    "opt": true
@@ -261,61 +252,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "指挥倒车与安全",
-   "dur": 59.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610250724",
+   "sub": "和司机打交道",
+   "dur": 58.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：指挥倒车与安全。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：和司机打交道。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "场内请慢行。"
+     "t": "路上小心。"
     },
     {
      "lang": "en",
-     "t": "Slow down in the yard, please."
+     "t": "Drive safe."
     },
     {
      "lang": "en",
-     "t": "Slow down in the yard, please."
+     "t": "Drive safe."
     },
     {
      "lang": "zh",
-     "t": "慢慢倒。"
+     "t": "你要去哪？"
     },
     {
      "lang": "en",
-     "t": "Back it up slow."
+     "t": "Where are you headed?"
     },
     {
      "lang": "en",
-     "t": "Back it up slow."
+     "t": "Where are you headed?"
     },
     {
      "lang": "zh",
-     "t": "继续，继续。"
+     "t": "能看下你的单据吗？"
     },
     {
      "lang": "en",
-     "t": "Keep coming."
+     "t": "Can I see your paperwork?"
     },
     {
      "lang": "en",
-     "t": "Keep coming."
+     "t": "Can I see your paperwork?"
     },
     {
      "lang": "zh",
-     "t": "就停那儿！"
+     "t": "你走错门了。"
     },
     {
      "lang": "en",
-     "t": "Stop right there!"
+     "t": "You're at the wrong door."
     },
     {
      "lang": "en",
-     "t": "Stop right there!"
+     "t": "You're at the wrong door."
     },
     {
      "lang": "zh",
@@ -327,13 +318,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "蜂蜜为什么很难坏",
-   "dur": 26.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610250724",
+   "sub": "微波炉不会让食物带辐射",
+   "dur": 30.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：蜂蜜为什么很难坏。顺便说说结晶不是变质。做法：蜂蜜含水很少、糖分极高、偏酸，还会产生微量过氧化氢，细菌和霉菌很难活；盖紧放室温就行，别让水汽进去；进了水才可能发酵；结晶变硬是正常现象：整瓶泡在温水里慢慢化开，别用大火煮。"
+     "t": "今日一招：微波炉不会让食物带辐射。顺便讲讲真正要注意的。做法：微波和收音机、Wi-Fi 的电波一样是非电离辐射，只是让食物里的水分子来回转动发热，不会改变原子，也不会留下放射性；一关机就没了，食物里不会「存」辐射；真正要注意的是加热不均：中途翻一翻，热完盖着焖一两分钟，让冷点也热透。"
     }
    ],
    "opt": true
@@ -341,13 +332,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1915 · 1951 · 2009",
-   "dur": 22.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610250724",
+   "sub": "1897 · 1962 · 1987",
+   "dur": 29.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1915年，孙中山和宋庆龄在日本东京登记结婚。1951年，英国大选，保守党击败工党，邱吉尔再任首相。2009年，统一7-ELEVEn狮在中华职棒20年总冠军赛击败兄弟象，获得年度总冠军。"
+     "t": "历史上的今天。1897年，清朝维新派严复、王修植、夏曾佑、杭辛斋等人创办国闻报。1962年，古巴导弹危机：赫鲁晓夫要求美国从土耳其撤出导弹，以换取苏联从古巴撤出导弹，遭到美国拒绝。1987年，香港恒生指数单日下跌33.3%，是有史以来全球最大单日跌幅。"
     }
    ],
    "opt": true
@@ -355,21 +346,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "洗儿戏作",
-   "dur": 28.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610250724",
+   "sub": "惠州一绝（食荔枝）",
+   "dur": 29.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：洗儿戏作。写于1083年，他46岁，在黄州。"
+     "t": "读一首苏轼：惠州一绝（食荔枝）。写于1096年，他59岁，在惠州。"
     },
     {
      "lang": "zh",
-     "t": "人皆养子望聪明，我被聪明误一生。惟愿孩儿愚且鲁，无灾无难到公卿。"
+     "t": "罗浮山下四时春，卢橘杨梅次第新。日啖荔枝三百颗，不辞长作岭南人。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：别人养孩子都希望他聪明，我却被「聪明」耽误了一辈子。只希望我的孩子又笨又迟钝，一辈子没灾没难，一路做到大官。"
+     "t": "白话意思是：罗浮山下一年四季都是春天，枇杷、杨梅一样接一样地成熟。每天吃上三百颗荔枝，我情愿一辈子做个岭南人。"
     }
    ],
    "opt": true
@@ -378,12 +369,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610250724",
+   "dur": 5.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610260949",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }

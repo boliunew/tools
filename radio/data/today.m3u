@@ -1,30 +1,28 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-10-25
-#EXTINF:12,通勤电台 - ☀️ 开场 10月25日 星期日
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610250724
-#EXTINF:28,通勤电台 - 🌤️ 天气 Upland 晴 79°/56°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610250724
-#EXTINF:8,通勤电台 - 🔭 天象 Upland
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610250724
+#PLAYLIST:通勤电台 2026-10-26
+#EXTINF:11,通勤电台 - ☀️ 开场 10月26日 星期一
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610260949
+#EXTINF:28,通勤电台 - 🌤️ 天气 Upland 阴天 79°/57°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610260949
 #EXTINF:30,通勤电台 - 📊 大盘 谨慎
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610250724
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610260949
 #EXTINF:65,通勤电台 - 📈 股票池 37 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610250724
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610260949
 #EXTINF:55,通勤电台 - 🗓️ 财报与数据 5 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610250724
-#EXTINF:99,通勤电台 - 📰 英文新闻 BBC · NPR · The Guardian
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610250724
-#EXTINF:31,通勤电台 - 🔤 今日单词 extinct · la uva
-https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610250724
-#EXTINF:20,通勤电台 - 🎴 每日一句 易错
-https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610250724
-#EXTINF:59,通勤电台 - 🗣️ 跟读 指挥倒车与安全
-https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610250724
-#EXTINF:27,通勤电台 - 💡 今日一招 蜂蜜为什么很难坏
-https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610250724
-#EXTINF:23,通勤电台 - 📜 历史上的今天 1915 · 1951 · 2009
-https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610250724
-#EXTINF:28,通勤电台 - 🖋️ 读苏轼 洗儿戏作
-https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610250724
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610260949
+#EXTINF:95,通勤电台 - 📰 英文新闻 The Guardian · Al Jazeera · BBC
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610260949
+#EXTINF:35,通勤电台 - 🔤 今日单词 scholarship · el refrigerador
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610260949
+#EXTINF:26,通勤电台 - 🎴 每日一句 习语
+https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610260949
+#EXTINF:59,通勤电台 - 🗣️ 跟读 和司机打交道
+https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610260949
+#EXTINF:31,通勤电台 - 💡 今日一招 微波炉不会让食物带辐射
+https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610260949
+#EXTINF:30,通勤电台 - 📜 历史上的今天 1897 · 1962 · 1987
+https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610260949
+#EXTINF:29,通勤电台 - 🖋️ 读苏轼 惠州一绝（食荔枝）
+https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610260949
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202610250724
+https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610260949
