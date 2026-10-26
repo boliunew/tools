@@ -1,6 +1,6 @@
 {
  "updated": "2026-10-25",
- "note": "静态精选，不随每周动态榜更新；歌单内容与试改版 rankings.html 一致，仅字段名转换，未增删改任何一首。",
+ "note": "静态精选，不随每周动态榜更新；原有320首原样保留，新增19组、380首，详见 EXPANSION.md。",
  "items": [
   {
    "name": "Will You Love Me Tomorrow",
@@ -2881,6 +2881,3426 @@
    "cc": "GB",
    "decade": 2020,
    "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作（详见年代经典榜文头）"
+  },
+  {
+   "name": "Non, je ne regrette rien",
+   "artist": "Edith Piaf",
+   "year": 1960,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "La Bohème",
+   "artist": "Charles Aznavour",
+   "year": 1965,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hier encore",
+   "artist": "Charles Aznavour",
+   "year": 1964,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "La Mamma",
+   "artist": "Charles Aznavour",
+   "year": 1963,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tous les garçons et les filles",
+   "artist": "Françoise Hardy",
+   "year": 1962,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Le temps de l'amour",
+   "artist": "Françoise Hardy",
+   "year": 1962,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Comment te dire adieu",
+   "artist": "Françoise Hardy",
+   "year": 1968,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Poupée de cire, poupée de son",
+   "artist": "France Gall",
+   "year": 1965,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Les Sucettes",
+   "artist": "France Gall",
+   "year": 1966,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Elisa",
+   "artist": "Serge Gainsbourg",
+   "year": 1969,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Bonnie and Clyde",
+   "artist": "Serge Gainsbourg & Brigitte Bardot",
+   "year": 1968,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Initials B.B.",
+   "artist": "Serge Gainsbourg",
+   "year": 1968,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Que je t'aime",
+   "artist": "Johnny Hallyday",
+   "year": 1969,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Noir c'est noir",
+   "artist": "Johnny Hallyday",
+   "year": 1966,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Le Pénitencier",
+   "artist": "Johnny Hallyday",
+   "year": 1964,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Aline",
+   "artist": "Christophe",
+   "year": 1965,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Les Champs-Élysées",
+   "artist": "Joe Dassin",
+   "year": 1969,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Siffler sur la colline",
+   "artist": "Joe Dassin",
+   "year": 1968,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Le Métèque",
+   "artist": "Georges Moustaki",
+   "year": 1969,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "La Javanaise",
+   "artist": "Serge Gainsbourg",
+   "year": 1963,
+   "country": "法国",
+   "cc": "FR",
+   "decade": 1960,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Construção",
+   "artist": "Chico Buarque",
+   "year": 1971,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Apesar de Você",
+   "artist": "Chico Buarque",
+   "year": 1970,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Deus Lhe Pague",
+   "artist": "Chico Buarque",
+   "year": 1971,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Águas de Março",
+   "artist": "Elis Regina & Antônio Carlos Jobim",
+   "year": 1974,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Como Nossos Pais",
+   "artist": "Elis Regina",
+   "year": 1976,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "O Bêbado e a Equilibrista",
+   "artist": "Elis Regina",
+   "year": 1979,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Expresso 2222",
+   "artist": "Gilberto Gil",
+   "year": 1972,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Back in Bahia",
+   "artist": "Gilberto Gil",
+   "year": 1972,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Refazenda",
+   "artist": "Gilberto Gil",
+   "year": 1975,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sampa",
+   "artist": "Caetano Veloso",
+   "year": 1978,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Terra",
+   "artist": "Caetano Veloso",
+   "year": 1978,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "O Leãozinho",
+   "artist": "Caetano Veloso",
+   "year": 1977,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Cajuína",
+   "artist": "Caetano Veloso",
+   "year": 1979,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tigresa",
+   "artist": "Caetano Veloso",
+   "year": 1977,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Maria, Maria",
+   "artist": "Milton Nascimento",
+   "year": 1978,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Clube da Esquina No. 2",
+   "artist": "Milton Nascimento & Lô Borges",
+   "year": 1972,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "O Trem Azul",
+   "artist": "Lô Borges",
+   "year": 1972,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Fio Maravilha",
+   "artist": "Jorge Ben",
+   "year": 1972,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Taj Mahal",
+   "artist": "Jorge Ben",
+   "year": 1972,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Bebete Vãobora",
+   "artist": "Jorge Ben",
+   "year": 1976,
+   "country": "巴西",
+   "cc": "BR",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Heart of Gold",
+   "artist": "Neil Young",
+   "year": 1972,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Old Man",
+   "artist": "Neil Young",
+   "year": 1972,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "After the Gold Rush",
+   "artist": "Neil Young",
+   "year": 1970,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Southern Man",
+   "artist": "Neil Young",
+   "year": 1970,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Big Yellow Taxi",
+   "artist": "Joni Mitchell",
+   "year": 1970,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "A Case of You",
+   "artist": "Joni Mitchell",
+   "year": 1971,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "River",
+   "artist": "Joni Mitchell",
+   "year": 1971,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Help Me",
+   "artist": "Joni Mitchell",
+   "year": 1974,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Free Man in Paris",
+   "artist": "Joni Mitchell",
+   "year": 1974,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Coyote",
+   "artist": "Joni Mitchell",
+   "year": 1976,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Famous Blue Raincoat",
+   "artist": "Leonard Cohen",
+   "year": 1971,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "If You Could Read My Mind",
+   "artist": "Gordon Lightfoot",
+   "year": 1970,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sundown",
+   "artist": "Gordon Lightfoot",
+   "year": 1974,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "The Wreck of the Edmund Fitzgerald",
+   "artist": "Gordon Lightfoot",
+   "year": 1976,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Carefree Highway",
+   "artist": "Gordon Lightfoot",
+   "year": 1974,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "American Woman",
+   "artist": "The Guess Who",
+   "year": 1970,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Takin' Care of Business",
+   "artist": "Bachman-Turner Overdrive",
+   "year": 1973,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "You Ain't Seen Nothing Yet",
+   "artist": "Bachman-Turner Overdrive",
+   "year": 1974,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Snowbird",
+   "artist": "Anne Murray",
+   "year": 1970,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "You Needed Me",
+   "artist": "Anne Murray",
+   "year": 1978,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1970,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "99 Luftballons",
+   "artist": "Nena",
+   "year": 1983,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Rock You Like a Hurricane",
+   "artist": "Scorpions",
+   "year": 1984,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Still Loving You",
+   "artist": "Scorpions",
+   "year": 1984,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "No One Like You",
+   "artist": "Scorpions",
+   "year": 1982,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Forever Young",
+   "artist": "Alphaville",
+   "year": 1984,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Big in Japan",
+   "artist": "Alphaville",
+   "year": 1984,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "You're My Heart, You're My Soul",
+   "artist": "Modern Talking",
+   "year": 1984,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Cheri, Cheri Lady",
+   "artist": "Modern Talking",
+   "year": 1985,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Brother Louie",
+   "artist": "Modern Talking",
+   "year": 1986,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Computer Love",
+   "artist": "Kraftwerk",
+   "year": 1981,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tour de France",
+   "artist": "Kraftwerk",
+   "year": 1983,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Da Da Da",
+   "artist": "Trio",
+   "year": 1982,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Major Tom (Coming Home)",
+   "artist": "Peter Schilling",
+   "year": 1983,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Maria Magdalena",
+   "artist": "Sandra",
+   "year": 1985,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Männer",
+   "artist": "Herbert Grönemeyer",
+   "year": 1984,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sonderzug nach Pankow",
+   "artist": "Udo Lindenberg",
+   "year": 1983,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Skandal im Sperrbezirk",
+   "artist": "Spider Murphy Gang",
+   "year": 1981,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Blaue Augen",
+   "artist": "Ideal",
+   "year": 1980,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Verdamp lang her",
+   "artist": "BAP",
+   "year": 1981,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hier kommt Alex",
+   "artist": "Die Toten Hosen",
+   "year": 1988,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ride on Time",
+   "artist": "Tatsuro Yamashita",
+   "year": 1980,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Christmas Eve",
+   "artist": "Tatsuro Yamashita",
+   "year": 1983,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sparkle",
+   "artist": "Tatsuro Yamashita",
+   "year": 1982,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Plastic Love",
+   "artist": "Mariya Takeuchi",
+   "year": 1984,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Aoi Sangoshō",
+   "artist": "Seiko Matsuda",
+   "year": 1980,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Akai Sweet Pea",
+   "artist": "Seiko Matsuda",
+   "year": 1982,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sweet Memories",
+   "artist": "Seiko Matsuda",
+   "year": 1983,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Second Love",
+   "artist": "Akina Nakamori",
+   "year": 1982,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kinku",
+   "artist": "Akina Nakamori",
+   "year": 1983,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Wine Red no Kokoro",
+   "artist": "Anzen Chitai",
+   "year": 1983,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Yes-No",
+   "artist": "Off Course",
+   "year": 1980,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Chako no Kaigan Monogatari",
+   "artist": "Southern All Stars",
+   "year": 1982,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Miss Brand New Day",
+   "artist": "Southern All Stars",
+   "year": 1984,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Cat's Eye",
+   "artist": "Anri",
+   "year": 1983,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kanashimi ga Tomaranai",
+   "artist": "Anri",
+   "year": 1983,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Julia ni Heartbreak",
+   "artist": "The Checkers",
+   "year": 1984,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Romantic ga Tomaranai",
+   "artist": "C-C-B",
+   "year": 1985,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sailor Fuku to Kikanju",
+   "artist": "Hiroko Yakushimaru",
+   "year": 1981,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mamotte Agetai",
+   "artist": "Yumi Matsutoya",
+   "year": 1981,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Dandelion",
+   "artist": "Yumi Matsutoya",
+   "year": 1983,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Run to You",
+   "artist": "Bryan Adams",
+   "year": 1984,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Summer of '69",
+   "artist": "Bryan Adams",
+   "year": 1984,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Heaven",
+   "artist": "Bryan Adams",
+   "year": 1984,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Cuts Like a Knife",
+   "artist": "Bryan Adams",
+   "year": 1983,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tom Sawyer",
+   "artist": "Rush",
+   "year": 1981,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Limelight",
+   "artist": "Rush",
+   "year": 1981,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Subdivisions",
+   "artist": "Rush",
+   "year": 1982,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sunglasses at Night",
+   "artist": "Corey Hart",
+   "year": 1983,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Never Surrender",
+   "artist": "Corey Hart",
+   "year": 1985,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Don't Forget Me (When I'm Gone)",
+   "artist": "Glass Tiger",
+   "year": 1986,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Someday",
+   "artist": "Glass Tiger",
+   "year": 1986,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "New Girl Now",
+   "artist": "Honeymoon Suite",
+   "year": 1984,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Working for the Weekend",
+   "artist": "Loverboy",
+   "year": 1981,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Turn Me Loose",
+   "artist": "Loverboy",
+   "year": 1980,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Lovin' Every Minute of It",
+   "artist": "Loverboy",
+   "year": 1985,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "The Safety Dance",
+   "artist": "Men Without Hats",
+   "year": 1982,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Pop Goes the World",
+   "artist": "Men Without Hats",
+   "year": 1987,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Magic Power",
+   "artist": "Triumph",
+   "year": 1981,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Eyes of a Stranger",
+   "artist": "Payolas",
+   "year": 1982,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Fantasy",
+   "artist": "Aldo Nova",
+   "year": 1982,
+   "country": "加拿大",
+   "cc": "CA",
+   "decade": 1980,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "innocent world",
+   "artist": "Mr. Children",
+   "year": 1994,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tomorrow Never Knows",
+   "artist": "Mr. Children",
+   "year": 1994,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Namonaki Uta",
+   "artist": "Mr. Children",
+   "year": 1996,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Love Love Love",
+   "artist": "Dreams Come True",
+   "year": 1995,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Makenaide",
+   "artist": "Zard",
+   "year": 1993,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Automatic",
+   "artist": "Hikaru Utada",
+   "year": 1998,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "First Love",
+   "artist": "Hikaru Utada",
+   "year": 1999,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "poker face",
+   "artist": "Ayumi Hamasaki",
+   "year": 1998,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Boys & Girls",
+   "artist": "Ayumi Hamasaki",
+   "year": 1999,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Can You Celebrate?",
+   "artist": "Namie Amuro",
+   "year": 1997,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sweet 19 Blues",
+   "artist": "Namie Amuro",
+   "year": 1996,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Feel Like Dance",
+   "artist": "Globe",
+   "year": 1995,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Departures",
+   "artist": "Globe",
+   "year": 1996,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Robinson",
+   "artist": "Spitz",
+   "year": 1995,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Cherry",
+   "artist": "Spitz",
+   "year": 1996,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Honey",
+   "artist": "L'Arc-en-Ciel",
+   "year": 1998,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Flower",
+   "artist": "L'Arc-en-Ciel",
+   "year": 1996,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "However",
+   "artist": "Glay",
+   "year": 1997,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Yuuwaku",
+   "artist": "Glay",
+   "year": 1998,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sekai ga Owaru Made wa",
+   "artist": "Wands",
+   "year": 1994,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Wind of Change",
+   "artist": "Scorpions",
+   "year": 1990,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Du Hast",
+   "artist": "Rammstein",
+   "year": 1997,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Engel",
+   "artist": "Rammstein",
+   "year": 1997,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sadeness (Part I)",
+   "artist": "Enigma",
+   "year": 1990,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Return to Innocence",
+   "artist": "Enigma",
+   "year": 1993,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Rhythm Is a Dancer",
+   "artist": "Snap!",
+   "year": 1992,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "The Power",
+   "artist": "Snap!",
+   "year": 1990,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mr. Vain",
+   "artist": "Culture Beat",
+   "year": 1993,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "What Is Love",
+   "artist": "Haddaway",
+   "year": 1993,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Be My Lover",
+   "artist": "La Bouche",
+   "year": 1995,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sweet Dreams",
+   "artist": "La Bouche",
+   "year": 1994,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Another Night",
+   "artist": "Real McCoy",
+   "year": 1993,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hyper Hyper",
+   "artist": "Scooter",
+   "year": 1994,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "More and More",
+   "artist": "Captain Hollywood Project",
+   "year": 1992,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Schrei nach Liebe",
+   "artist": "Die Ärzte",
+   "year": 1993,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Alles aus Liebe",
+   "artist": "Die Toten Hosen",
+   "year": 1993,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ich find' dich scheiße",
+   "artist": "Tic Tac Toe",
+   "year": 1995,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Herz an Herz",
+   "artist": "Blümchen",
+   "year": 1995,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tears Don't Lie",
+   "artist": "Mark'Oh",
+   "year": 1994,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Somewhere Over the Rainbow",
+   "artist": "Marusha",
+   "year": 1994,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Rayando el Sol",
+   "artist": "Maná",
+   "year": 1990,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Oye Mi Amor",
+   "artist": "Maná",
+   "year": 1992,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Vivir Sin Aire",
+   "artist": "Maná",
+   "year": 1992,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Entrégate",
+   "artist": "Luis Miguel",
+   "year": 1990,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "La Media Vuelta",
+   "artist": "Luis Miguel",
+   "year": 1994,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hasta Que Me Olvides",
+   "artist": "Luis Miguel",
+   "year": 1993,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Pelo Suelto",
+   "artist": "Gloria Trevi",
+   "year": 1991,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Piel Morena",
+   "artist": "Thalía",
+   "year": 1995,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Amor a la Mexicana",
+   "artist": "Thalía",
+   "year": 1997,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mío",
+   "artist": "Paulina Rubio",
+   "year": 1992,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "La Ingrata",
+   "artist": "Café Tacvba",
+   "year": 1994,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Las Flores",
+   "artist": "Café Tacvba",
+   "year": 1994,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Chilanga Banda",
+   "artist": "Café Tacvba",
+   "year": 1996,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Re",
+   "artist": "Café Tacvba",
+   "year": 1994,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "No Podrás",
+   "artist": "Cristian Castro",
+   "year": 1992,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Lloran las Rosas",
+   "artist": "Cristian Castro",
+   "year": 1996,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Me Estoy Enamorando",
+   "artist": "Alejandro Fernández",
+   "year": 1997,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Si Tú Supieras",
+   "artist": "Alejandro Fernández",
+   "year": 1997,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Como Quien Pierde Una Estrella",
+   "artist": "Alejandro Fernández",
+   "year": 1995,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "El Privilegio de Amar",
+   "artist": "Mijares & Lucero",
+   "year": 1998,
+   "country": "墨西哥",
+   "cc": "MX",
+   "decade": 1990,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "It's Raining",
+   "artist": "Rain",
+   "year": 2004,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "No. 1",
+   "artist": "BoA",
+   "year": 2002,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Girls on Top",
+   "artist": "BoA",
+   "year": 2005,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hug",
+   "artist": "TVXQ",
+   "year": 2004,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mirotic",
+   "artist": "TVXQ",
+   "year": 2008,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sorry, Sorry",
+   "artist": "Super Junior",
+   "year": 2009,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "U",
+   "artist": "Super Junior",
+   "year": 2006,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Gee",
+   "artist": "Girls' Generation",
+   "year": 2009,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Genie",
+   "artist": "Girls' Generation",
+   "year": 2009,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Into the New World",
+   "artist": "Girls' Generation",
+   "year": 2007,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "So Hot",
+   "artist": "Wonder Girls",
+   "year": 2008,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Nobody",
+   "artist": "Wonder Girls",
+   "year": 2008,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tell Me",
+   "artist": "Wonder Girls",
+   "year": 2007,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Lies",
+   "artist": "Big Bang",
+   "year": 2007,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Haru Haru",
+   "artist": "Big Bang",
+   "year": 2008,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Last Farewell",
+   "artist": "Big Bang",
+   "year": 2007,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Fire",
+   "artist": "2NE1",
+   "year": 2009,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Again & Again",
+   "artist": "2PM",
+   "year": 2009,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Replay",
+   "artist": "Shinee",
+   "year": 2008,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ring Ding Dong",
+   "artist": "Shinee",
+   "year": 2009,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "M",
+   "artist": "Ayumi Hamasaki",
+   "year": 2000,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Evolution",
+   "artist": "Ayumi Hamasaki",
+   "year": 2001,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Voyage",
+   "artist": "Ayumi Hamasaki",
+   "year": 2002,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sakura Drops",
+   "artist": "Hikaru Utada",
+   "year": 2002,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Colors",
+   "artist": "Hikaru Utada",
+   "year": 2003,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Flavor of Life",
+   "artist": "Hikaru Utada",
+   "year": 2007,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hero",
+   "artist": "Mr. Children",
+   "year": 2002,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sign",
+   "artist": "Mr. Children",
+   "year": 2004,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hanabi",
+   "artist": "Mr. Children",
+   "year": 2008,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ultra Soul",
+   "artist": "B'z",
+   "year": 2001,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Love So Sweet",
+   "artist": "Arashi",
+   "year": 2007,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Truth",
+   "artist": "Arashi",
+   "year": 2008,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hana",
+   "artist": "Orange Range",
+   "year": 2004,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Aitakatta",
+   "artist": "AKB48",
+   "year": 2006,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kiseki",
+   "artist": "GReeeeN",
+   "year": 2008,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ai Uta",
+   "artist": "GReeeeN",
+   "year": 2007,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Planetarium",
+   "artist": "Ai Otsuka",
+   "year": 2005,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sakuranbo",
+   "artist": "Ai Otsuka",
+   "year": 2003,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Yuki no Hana",
+   "artist": "Mika Nakashima",
+   "year": 2003,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Story",
+   "artist": "Ai",
+   "year": 2005,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "龙卷风",
+   "artist": "周杰伦",
+   "year": 2000,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "简单爱",
+   "artist": "周杰伦",
+   "year": 2001,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "东风破",
+   "artist": "周杰伦",
+   "year": 2003,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "七里香",
+   "artist": "周杰伦",
+   "year": 2004,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "夜曲",
+   "artist": "周杰伦",
+   "year": 2005,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "青花瓷",
+   "artist": "周杰伦",
+   "year": 2007,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "倒带",
+   "artist": "蔡依林",
+   "year": 2004,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "舞娘",
+   "artist": "蔡依林",
+   "year": 2006,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Super Star",
+   "artist": "S.H.E",
+   "year": 2003,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "中国话",
+   "artist": "S.H.E",
+   "year": 2007,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "倔强",
+   "artist": "五月天",
+   "year": 2004,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "温柔",
+   "artist": "五月天",
+   "year": 2000,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "知足",
+   "artist": "五月天",
+   "year": 2005,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "爱的主打歌",
+   "artist": "萧亚轩",
+   "year": 2002,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "最熟悉的陌生人",
+   "artist": "萧亚轩",
+   "year": 2001,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "王妃",
+   "artist": "萧敬腾",
+   "year": 2009,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "说谎",
+   "artist": "林宥嘉",
+   "year": 2009,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "残酷月光",
+   "artist": "林宥嘉",
+   "year": 2008,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "遗失的美好",
+   "artist": "张韶涵",
+   "year": 2004,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "欧若拉",
+   "artist": "张韶涵",
+   "year": 2004,
+   "country": "中国台湾",
+   "cc": "TW",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sonne",
+   "artist": "Rammstein",
+   "year": 2001,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ich Will",
+   "artist": "Rammstein",
+   "year": 2001,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Links 2-3-4",
+   "artist": "Rammstein",
+   "year": 2001,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mein Teil",
+   "artist": "Rammstein",
+   "year": 2004,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Amerika",
+   "artist": "Rammstein",
+   "year": 2004,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Durch den Monsun",
+   "artist": "Tokio Hotel",
+   "year": 2005,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Schrei",
+   "artist": "Tokio Hotel",
+   "year": 2005,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Der letzte Tag",
+   "artist": "Tokio Hotel",
+   "year": 2006,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "54, 74, 90, 2010",
+   "artist": "Sportfreunde Stiller",
+   "year": 2006,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ein Kompliment",
+   "artist": "Sportfreunde Stiller",
+   "year": 2002,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Gekommen um zu bleiben",
+   "artist": "Wir Sind Helden",
+   "year": 2002,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Denkmal",
+   "artist": "Wir Sind Helden",
+   "year": 2003,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Nur ein Wort",
+   "artist": "Wir Sind Helden",
+   "year": 2005,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Perfekte Welle",
+   "artist": "Juli",
+   "year": 2004,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Geile Zeit",
+   "artist": "Juli",
+   "year": 2004,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Symphonie",
+   "artist": "Silbermond",
+   "year": 2004,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Das Beste",
+   "artist": "Silbermond",
+   "year": 2006,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Liebe ist alles",
+   "artist": "Rosenstolz",
+   "year": 2004,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Dieser Weg",
+   "artist": "Xavier Naidoo",
+   "year": 2005,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mein Block",
+   "artist": "Sido",
+   "year": 2004,
+   "country": "德国",
+   "cc": "DE",
+   "decade": 2000,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Gangnam Style",
+   "artist": "Psy",
+   "year": 2012,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Gentleman",
+   "artist": "Psy",
+   "year": 2013,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Fantastic Baby",
+   "artist": "Big Bang",
+   "year": 2012,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Bang Bang Bang",
+   "artist": "Big Bang",
+   "year": 2015,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Growl",
+   "artist": "Exo",
+   "year": 2013,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Call Me Baby",
+   "artist": "Exo",
+   "year": 2015,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Blood Sweat & Tears",
+   "artist": "BTS",
+   "year": 2016,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Spring Day",
+   "artist": "BTS",
+   "year": 2017,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "DNA",
+   "artist": "BTS",
+   "year": 2017,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Fake Love",
+   "artist": "BTS",
+   "year": 2018,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Whistle",
+   "artist": "Blackpink",
+   "year": 2016,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ddu-du Ddu-du",
+   "artist": "Blackpink",
+   "year": 2018,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kill This Love",
+   "artist": "Blackpink",
+   "year": 2019,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "I Got a Boy",
+   "artist": "Girls' Generation",
+   "year": 2013,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Cheer Up",
+   "artist": "Twice",
+   "year": 2016,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "TT",
+   "artist": "Twice",
+   "year": 2016,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Red Flavor",
+   "artist": "Red Velvet",
+   "year": 2017,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Bad Boy",
+   "artist": "Red Velvet",
+   "year": 2018,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Love Scenario",
+   "artist": "iKon",
+   "year": 2018,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Energetic",
+   "artist": "Wanna One",
+   "year": 2017,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Heavy Rotation",
+   "artist": "AKB48",
+   "year": 2010,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Flying Get",
+   "artist": "AKB48",
+   "year": 2011,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Koi Suru Fortune Cookie",
+   "artist": "AKB48",
+   "year": 2013,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "365 Nichi no Kamihikouki",
+   "artist": "AKB48",
+   "year": 2015,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Lemon",
+   "artist": "Kenshi Yonezu",
+   "year": 2018,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Loser",
+   "artist": "Kenshi Yonezu",
+   "year": 2016,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Pretender",
+   "artist": "Official HIGE DANdism",
+   "year": 2019,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Marigold",
+   "artist": "Aimyon",
+   "year": 2018,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Gurenge",
+   "artist": "LiSA",
+   "year": 2019,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Zenzenzense",
+   "artist": "Radwimps",
+   "year": 2016,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Nandemonaiya",
+   "artist": "Radwimps",
+   "year": 2016,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Uchiage Hanabi",
+   "artist": "Daoko & Kenshi Yonezu",
+   "year": 2017,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Koi",
+   "artist": "Gen Hoshino",
+   "year": 2016,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Family Song",
+   "artist": "Gen Hoshino",
+   "year": 2017,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Prayer X",
+   "artist": "King Gnu",
+   "year": 2018,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Arigatou",
+   "artist": "Ikimonogakari",
+   "year": 2010,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mabataki",
+   "artist": "Back Number",
+   "year": 2017,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Christmas Song",
+   "artist": "Back Number",
+   "year": 2015,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Takane no Hanako-san",
+   "artist": "Back Number",
+   "year": 2013,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Himawari no Yakusoku",
+   "artist": "Motohiro Hata",
+   "year": 2014,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ojuelegba",
+   "artist": "Wizkid",
+   "year": 2014,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Come Closer",
+   "artist": "Wizkid",
+   "year": 2017,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Joro",
+   "artist": "Wizkid",
+   "year": 2019,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Fall",
+   "artist": "Davido",
+   "year": 2017,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "If",
+   "artist": "Davido",
+   "year": 2017,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Assurance",
+   "artist": "Davido",
+   "year": 2018,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Risky",
+   "artist": "Davido",
+   "year": 2019,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Ye",
+   "artist": "Burna Boy",
+   "year": 2018,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "On the Low",
+   "artist": "Burna Boy",
+   "year": 2018,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "All Over",
+   "artist": "Tiwa Savage",
+   "year": 2017,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Leg Over",
+   "artist": "Mr Eazi",
+   "year": 2016,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Pana",
+   "artist": "Tekno",
+   "year": 2016,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Duro",
+   "artist": "Tekno",
+   "year": 2015,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Skeletun",
+   "artist": "Tekno",
+   "year": 2019,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Johnny",
+   "artist": "Yemi Alade",
+   "year": 2014,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Wo",
+   "artist": "Olamide",
+   "year": 2017,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Soco",
+   "artist": "Starboy",
+   "year": 2018,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mad Over You",
+   "artist": "Runtown",
+   "year": 2016,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Dumebi",
+   "artist": "Rema",
+   "year": 2019,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Iron Man",
+   "artist": "Rema",
+   "year": 2019,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2010,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Dynamite",
+   "artist": "BTS",
+   "year": 2020,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Butter",
+   "artist": "BTS",
+   "year": 2021,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Permission to Dance",
+   "artist": "BTS",
+   "year": 2021,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "How You Like That",
+   "artist": "Blackpink",
+   "year": 2020,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Pink Venom",
+   "artist": "Blackpink",
+   "year": 2022,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hype Boy",
+   "artist": "NewJeans",
+   "year": 2022,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Super Shy",
+   "artist": "NewJeans",
+   "year": 2023,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Love Dive",
+   "artist": "Ive",
+   "year": 2022,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "I Am",
+   "artist": "Ive",
+   "year": 2023,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "After Like",
+   "artist": "Ive",
+   "year": 2022,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Next Level",
+   "artist": "Aespa",
+   "year": 2021,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Supernova",
+   "artist": "Aespa",
+   "year": 2024,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tomboy",
+   "artist": "(G)I-dle",
+   "year": 2022,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Queencard",
+   "artist": "(G)I-dle",
+   "year": 2023,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Super",
+   "artist": "Seventeen",
+   "year": 2023,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "God of Music",
+   "artist": "Seventeen",
+   "year": 2023,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "God's Menu",
+   "artist": "Stray Kids",
+   "year": 2020,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "S-Class",
+   "artist": "Stray Kids",
+   "year": 2023,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "I Can't Stop Me",
+   "artist": "Twice",
+   "year": 2020,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Feel My Rhythm",
+   "artist": "Red Velvet",
+   "year": 2022,
+   "country": "韩国",
+   "cc": "KR",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Idol",
+   "artist": "Yoasobi",
+   "year": 2023,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kaibutsu",
+   "artist": "Yoasobi",
+   "year": 2021,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Gunjou",
+   "artist": "Yoasobi",
+   "year": 2020,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Tabun",
+   "artist": "Yoasobi",
+   "year": 2020,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kick Back",
+   "artist": "Kenshi Yonezu",
+   "year": 2022,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kirari",
+   "artist": "Fujii Kaze",
+   "year": 2021,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Shinunoga E-Wa",
+   "artist": "Fujii Kaze",
+   "year": 2020,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Usseewa",
+   "artist": "Ado",
+   "year": 2020,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kaiju no Hanauta",
+   "artist": "Vaundy",
+   "year": 2020,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Odoriko",
+   "artist": "Vaundy",
+   "year": 2021,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Soranji",
+   "artist": "Mrs. Green Apple",
+   "year": 2022,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Dancehall",
+   "artist": "Mrs. Green Apple",
+   "year": 2022,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Lilac",
+   "artist": "Mrs. Green Apple",
+   "year": 2024,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Bling-Bang-Bang-Born",
+   "artist": "Creepy Nuts",
+   "year": 2024,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Subtitles",
+   "artist": "Official HIGE DANdism",
+   "year": 2022,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Mixed Nuts",
+   "artist": "Official HIGE DANdism",
+   "year": 2022,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Cry Baby",
+   "artist": "Official HIGE DANdism",
+   "year": 2021,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Suzume",
+   "artist": "Radwimps",
+   "year": 2022,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kanata Haluka",
+   "artist": "Radwimps",
+   "year": 2022,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Hana ni Bourei",
+   "artist": "Yorushika",
+   "year": 2020,
+   "country": "日本",
+   "cc": "JP",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Essence",
+   "artist": "Wizkid",
+   "year": 2020,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kese (Dance)",
+   "artist": "Wizkid",
+   "year": 2024,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Piece of My Heart",
+   "artist": "Wizkid",
+   "year": 2024,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Last Last",
+   "artist": "Burna Boy",
+   "year": 2022,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Higher",
+   "artist": "Burna Boy",
+   "year": 2024,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "City Boys",
+   "artist": "Burna Boy",
+   "year": 2023,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Free Mind",
+   "artist": "Tems",
+   "year": 2020,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Calm Down",
+   "artist": "Rema",
+   "year": 2022,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "DND",
+   "artist": "Rema",
+   "year": 2023,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Baby (Is It a Crime)",
+   "artist": "Rema",
+   "year": 2025,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Rush",
+   "artist": "Ayra Starr",
+   "year": 2022,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sability",
+   "artist": "Ayra Starr",
+   "year": 2023,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Commas",
+   "artist": "Ayra Starr",
+   "year": 2024,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Sungba",
+   "artist": "Asake",
+   "year": 2022,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Terminator",
+   "artist": "Asake",
+   "year": 2022,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Amapiano",
+   "artist": "Asake",
+   "year": 2023,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Why Love",
+   "artist": "Asake",
+   "year": 2025,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Unavailable",
+   "artist": "Davido",
+   "year": 2023,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Feel",
+   "artist": "Davido",
+   "year": 2023,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
+  },
+  {
+   "name": "Kante",
+   "artist": "Davido",
+   "year": 2023,
+   "country": "尼日利亚",
+   "cc": "NG",
+   "decade": 2020,
+   "source": "Rolling Stone《500首历代最佳歌曲》(2021)/Billboard历代Hot 100(2021)/Grammy年度制作/各国官方榜单与音乐史资料（详见年代经典榜文头）"
   }
  ]
 }
