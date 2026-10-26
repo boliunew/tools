@@ -762,6 +762,19 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
   function openArt(slug) {
     var a = findArt(slug);
     if (!a) { $('body').innerHTML = '<p class="empty">找不到这篇文章：' + esc(slug) + '</p><p style="text-align:center"><a href="#">回目录</a></p>'; $('after').innerHTML = $('rel').innerHTML = ''; show('art'); return; }
+    /* RANKINGS-INTEGRATION: Top500 文章不走 Markdown 渲染，改由 rankings-ui.js 渲染互动排行榜（电影/音乐动态榜 + 年代经典榜）；其他文章一律走下面的原有流程。 */
+    if (slug === 'top500-movies' || slug === 'top500-music') {
+      CUR = a; document.title = a.title + ' · 知识库';
+      $('editBtn').href = REPO + '/edit/main/rankings-ui.js';
+      show('art'); window.scrollTo(0, 0);
+      $('after').innerHTML = '互动版数据：动态榜来自 rankings/data/movies.json 与 music.json（每周随 rankings/build.py 更新）· 年代经典榜来自 rankings/data/classics.json（静态精选）<br><a href="kb/top500-movies.md" target="_blank">原文 .md（电影）</a> · <a href="kb/top500-music.md" target="_blank">原文 .md（音乐）</a>';
+      $('rel').innerHTML = '';
+      $('tocBtn').style.display = 'none'; $('toc').innerHTML = '';
+      READ[a.slug] = a.updated; jset('read', READ);
+      if (window.RankingsUI && RankingsUI.render) { RankingsUI.render(slug === 'top500-music' ? 'music' : 'movie'); }
+      else { $('body').innerHTML = '<p class="empty">排行榜脚本加载失败，刷新试试</p>'; }
+      return;
+    }
     CUR = a; document.title = a.title + ' · 知识库';
     $('body').innerHTML = '<p class="empty">加载中…</p>'; $('after').innerHTML = $('rel').innerHTML = '';
     $('editBtn').href = REPO + '/edit/main/kb/' + encodeURIComponent(a.slug) + '.md';
@@ -816,6 +829,8 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
   });
 })();
 </script>
+<!-- RANKINGS-INTEGRATION: 排行榜互动版脚本（仅供 openArt 拦截 Top500 文章时调用，其他文章不受影响） -->
+<script src="rankings-ui.js?v=1"></script>
 <script src="nav.js?v=36" defer></script>
 </body>
 </html>
