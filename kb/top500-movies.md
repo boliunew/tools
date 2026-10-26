@@ -6,9 +6,9 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 
 # 🎬 电影 Top 500（按国家分类）
 
-> 自动生成，最近更新：**2026-10-25**。每周一自动重算一次，评分和名次会随 IMDb 数据变化。
+> 自动生成，最近更新：**2026-10-26**。每周一自动重算一次，评分和名次会随 IMDb 数据变化。
 
-**怎么排的**：从 IMDb 官方公开数据里，挑出评分人数 ≥ 25,000 的全部电影（7,313 部），按和 IMDb Top 250 相同的**加权评分**排序：评分人数越少，分数越会被拉向平均分（6.7），避免小众片靠少量高分冲榜。国家是 Wikidata 里的**出品国**，多国合拍的放在主要出品国下，备注里写合拍国。中文片名来自 Wikidata，没有的显示英文名。
+**怎么排的**：从 IMDb 官方公开数据里，挑出评分人数 ≥ 25,000 的全部电影（7,315 部），按和 IMDb Top 250 相同的**加权评分**排序：评分人数越少，分数越会被拉向平均分（6.7），避免小众片靠少量高分冲榜。国家是 Wikidata 里的**出品国**，多国合拍的放在主要出品国下，备注里写合拍国。中文片名来自 Wikidata，没有的显示英文名。
 
 ## 各国数量
 
@@ -25,7 +25,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 🇪🇸 西班牙 | 5 | #129 潘神的迷宮 |
 | 🇰🇷 韩国 | 4 | #40 寄生虫 |
 | 🇩🇪 德国 | 3 | #75 窃听风暴 |
-| 🌐 其他 13 个国家和地区 | 17 | #113 纳德和西敏：一次别离 |
+| 🌐 其他 13 个国家和地区 | 17 | #114 纳德和西敏：一次别离 |
 
 ## 总榜前 20
 
@@ -96,7 +96,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 46 | [**卡萨布兰卡**](https://www.imdb.com/title/tt0034583/) · Casablanca | 1942 | 8.5 | 66万 | [▶️](https://www.youtube.com/results?search_query=Casablanca+1942+trailer) [📋](copy:%E5%8D%A1%E8%90%A8%E5%B8%83%E5%85%B0%E5%8D%A1) |
 | 47 | [**蜘蛛侠：穿越新宇宙**](https://www.imdb.com/title/tt9362722/) · Spider-Man: Across the Spider-Verse | 2023 | 8.5 | 56万 | [▶️](https://www.youtube.com/results?search_query=Spider-Man%3A+Across+the+Spider-Verse+2023+trailer) [📋](copy:%E8%9C%98%E8%9B%9B%E4%BE%A0%EF%BC%9A%E7%A9%BF%E8%B6%8A%E6%96%B0%E5%AE%87%E5%AE%99) |
 | 51 | [**西部往事**](https://www.imdb.com/title/tt0064116/) · Once Upon a Time in the West · 合拍：意大利 | 1968 | 8.5 | 39万 | [▶️](https://www.youtube.com/results?search_query=Once+Upon+a+Time+in+the+West+1968+trailer) [📋](copy:%E8%A5%BF%E9%83%A8%E5%BE%80%E4%BA%8B) |
-| 52 | [**蝙蝠侠：黑暗骑士崛起**](https://www.imdb.com/title/tt1345836/) · The Dark Knight Rises · 合拍：英国 | 2012 | 8.4 | 203万 | [▶️](https://www.youtube.com/results?search_query=The+Dark+Knight+Rises+2012+trailer) [📋](copy:%E8%9D%99%E8%9D%A0%E4%BE%A0%EF%BC%9A%E9%BB%91%E6%9A%97%E9%AA%91%E5%A3%AB%E5%B4%9B%E8%B5%B7) |
+| 52 | [**蝙蝠侠：黑暗骑士崛起**](https://www.imdb.com/title/tt1345836/) · The Dark Knight Rises · 合拍：英国 | 2012 | 8.4 | 204万 | [▶️](https://www.youtube.com/results?search_query=The+Dark+Knight+Rises+2012+trailer) [📋](copy:%E8%9D%99%E8%9D%A0%E4%BE%A0%EF%BC%9A%E9%BB%91%E6%9A%97%E9%AA%91%E5%A3%AB%E5%B4%9B%E8%B5%B7) |
 | 53 | [**无耻混蛋**](https://www.imdb.com/title/tt0361748/) · Inglourious Basterds · 合拍：德国 | 2009 | 8.4 | 183万 | [▶️](https://www.youtube.com/results?search_query=Inglourious+Basterds+2009+trailer) [📋](copy:%E6%97%A0%E8%80%BB%E6%B7%B7%E8%9B%8B) |
 | 54 | [**复仇者联盟4**](https://www.imdb.com/title/tt4154796/) · Avengers: Endgame | 2019 | 8.4 | 150万 | [▶️](https://www.youtube.com/results?search_query=Avengers%3A+Endgame+2019+trailer) [📋](copy:%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F4) |
 | 55 | [**记忆碎片**](https://www.imdb.com/title/tt0209144/) · Memento | 2000 | 8.4 | 146万 | [▶️](https://www.youtube.com/results?search_query=Memento+2000+trailer) [📋](copy:%E8%AE%B0%E5%BF%86%E7%A2%8E%E7%89%87) |
@@ -145,25 +145,25 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 110 | [**老无所依**](https://www.imdb.com/title/tt0477348/) · No Country for Old Men | 2007 | 8.2 | 122万 | [▶️](https://www.youtube.com/results?search_query=No+Country+for+Old+Men+2007+trailer) [📋](copy:%E8%80%81%E6%97%A0%E6%89%80%E4%BE%9D) |
 | 111 | [**侏罗纪公园**](https://www.imdb.com/title/tt0107290/) · Jurassic Park | 1993 | 8.2 | 120万 | [▶️](https://www.youtube.com/results?search_query=Jurassic+Park+1993+trailer) [📋](copy:%E4%BE%8F%E7%BD%97%E7%BA%AA%E5%85%AC%E5%9B%AD) |
 | 112 | [**落水狗**](https://www.imdb.com/title/tt0105236/) · Reservoir Dogs | 1992 | 8.2 | 119万 | [▶️](https://www.youtube.com/results?search_query=Reservoir+Dogs+1992+trailer) [📋](copy:%E8%90%BD%E6%B0%B4%E7%8B%97) |
-| 114 | [**第六感**](https://www.imdb.com/title/tt0167404/) · The Sixth Sense | 1999 | 8.2 | 117万 | [▶️](https://www.youtube.com/results?search_query=The+Sixth+Sense+1999+trailer) [📋](copy:%E7%AC%AC%E5%85%AD%E6%84%9F) |
+| 113 | [**第六感**](https://www.imdb.com/title/tt0167404/) · The Sixth Sense | 1999 | 8.2 | 117万 | [▶️](https://www.youtube.com/results?search_query=The+Sixth+Sense+1999+trailer) [📋](copy:%E7%AC%AC%E5%85%AD%E6%84%9F) |
 | 115 | [**奥本海默**](https://www.imdb.com/title/tt15398776/) · Oppenheimer · 合拍：英国 | 2023 | 8.2 | 111万 | [▶️](https://www.youtube.com/results?search_query=Oppenheimer+2023+trailer) [📋](copy:%E5%A5%A5%E6%9C%AC%E6%B5%B7%E9%BB%98) |
 | 116 | [**美丽心灵**](https://www.imdb.com/title/tt0268978/) · A Beautiful Mind | 2001 | 8.2 | 107万 | [▶️](https://www.youtube.com/results?search_query=A+Beautiful+Mind+2001+trailer) [📋](copy:%E7%BE%8E%E4%B8%BD%E5%BF%83%E7%81%B5) |
 | 117 | [**出租车司机**](https://www.imdb.com/title/tt0075314/) · Taxi Driver | 1976 | 8.2 | 105万 | [▶️](https://www.youtube.com/results?search_query=Taxi+Driver+1976+trailer) [📋](copy:%E5%87%BA%E7%A7%9F%E8%BD%A6%E5%8F%B8%E6%9C%BA) |
 | 118 | [**虎胆龙威**](https://www.imdb.com/title/tt0095016/) · Die Hard | 1988 | 8.2 | 104万 | [▶️](https://www.youtube.com/results?search_query=Die+Hard+1988+trailer) [📋](copy:%E8%99%8E%E8%83%86%E9%BE%99%E5%A8%81) |
 | 119 | [**偷拐抢骗**](https://www.imdb.com/title/tt0208092/) · Snatch · 合拍：英国 | 2000 | 8.2 | 99万 | [▶️](https://www.youtube.com/results?search_query=Snatch+2000+trailer) [📋](copy:%E5%81%B7%E6%8B%90%E6%8A%A2%E9%AA%97) |
-| 120 | [**囚徒**](https://www.imdb.com/title/tt1392214/) · Prisoners | 2013 | 8.2 | 96万 | [▶️](https://www.youtube.com/results?search_query=Prisoners+2013+trailer) [📋](copy:%E5%9B%9A%E5%BE%92) |
+| 120 | [**囚徒**](https://www.imdb.com/title/tt1392214/) · Prisoners | 2013 | 8.2 | 97万 | [▶️](https://www.youtube.com/results?search_query=Prisoners+2013+trailer) [📋](copy:%E5%9B%9A%E5%BE%92) |
 | 121 | [**发条橙**](https://www.imdb.com/title/tt0066921/) · A Clockwork Orange · 合拍：英国 | 1971 | 8.2 | 95万 | [▶️](https://www.youtube.com/results?search_query=A+Clockwork+Orange+1971+trailer) [📋](copy:%E5%8F%91%E6%9D%A1%E6%A9%99) |
 | 122 | [**捍卫战士：独行侠**](https://www.imdb.com/title/tt1745960/) · Top Gun: Maverick | 2022 | 8.2 | 91万 | [▶️](https://www.youtube.com/results?search_query=Top+Gun%3A+Maverick+2022+trailer) [📋](copy:%E6%8D%8D%E5%8D%AB%E6%88%98%E5%A3%AB%EF%BC%9A%E7%8B%AC%E8%A1%8C%E4%BE%A0) |
 | 124 | [**最后远征**](https://www.imdb.com/title/tt0097576/) · Indiana Jones and the Last Crusade | 1989 | 8.2 | 87万 | [▶️](https://www.youtube.com/results?search_query=Indiana+Jones+and+the+Last+Crusade+1989+trailer) [📋](copy:%E6%9C%80%E5%90%8E%E8%BF%9C%E5%BE%81) |
 | 125 | [**全金属外壳**](https://www.imdb.com/title/tt0093058/) · Full Metal Jacket · 合拍：英国 | 1987 | 8.2 | 86万 | [▶️](https://www.youtube.com/results?search_query=Full+Metal+Jacket+1987+trailer) [📋](copy:%E5%85%A8%E9%87%91%E5%B1%9E%E5%A4%96%E5%A3%B3) |
 | 127 | [**1917**](https://www.imdb.com/title/tt8579674/) · 合拍：英国 | 2019 | 8.2 | 79万 | [▶️](https://www.youtube.com/results?search_query=1917+2019+trailer) [📋](copy:1917) |
-| 130 | [**杀死比尔：血色全传**](https://www.imdb.com/title/tt6019206/) · Kill Bill: The Whole Bloody Affair | 2004 | 8.7 | 6.6万 | [▶️](https://www.youtube.com/results?search_query=Kill+Bill%3A+The+Whole+Bloody+Affair+2004+trailer) [📋](copy:%E6%9D%80%E6%AD%BB%E6%AF%94%E5%B0%94%EF%BC%9A%E8%A1%80%E8%89%B2%E5%85%A8%E4%BC%A0) |
+| 130 | [**杀死比尔：血色全传**](https://www.imdb.com/title/tt6019206/) · Kill Bill: The Whole Bloody Affair | 2004 | 8.7 | 6.7万 | [▶️](https://www.youtube.com/results?search_query=Kill+Bill%3A+The+Whole+Bloody+Affair+2004+trailer) [📋](copy:%E6%9D%80%E6%AD%BB%E6%AF%94%E5%B0%94%EF%BC%9A%E8%A1%80%E8%89%B2%E5%85%A8%E4%BC%A0) |
 | 131 | [**血色将至**](https://www.imdb.com/title/tt0469494/) · There Will Be Blood | 2007 | 8.2 | 72万 | [▶️](https://www.youtube.com/results?search_query=There+Will+Be+Blood+2007+trailer) [📋](copy:%E8%A1%80%E8%89%B2%E5%B0%86%E8%87%B3) |
 | 132 | [**绿皮书**](https://www.imdb.com/title/tt6966692/) · Green Book | 2018 | 8.2 | 71万 | [▶️](https://www.youtube.com/results?search_query=Green+Book+2018+trailer) [📋](copy:%E7%BB%BF%E7%9A%AE%E4%B9%A6) |
 | 134 | [**洛城机密**](https://www.imdb.com/title/tt0119488/) · L.A. Confidential | 1997 | 8.2 | 67万 | [▶️](https://www.youtube.com/results?search_query=L.A.+Confidential+1997+trailer) [📋](copy:%E6%B4%9B%E5%9F%8E%E6%9C%BA%E5%AF%86) |
 | 135 | [**赌城风云**](https://www.imdb.com/title/tt0112641/) · Casino · 合拍：法国 | 1995 | 8.2 | 63万 | [▶️](https://www.youtube.com/results?search_query=Casino+1995+trailer) [📋](copy:%E8%B5%8C%E5%9F%8E%E9%A3%8E%E4%BA%91) |
-| 136 | [**桃色公寓**](https://www.imdb.com/title/tt0053604/) · The Apartment | 1960 | 8.3 | 22万 | [▶️](https://www.youtube.com/results?search_query=The+Apartment+1960+trailer) [📋](copy:%E6%A1%83%E8%89%B2%E5%85%AC%E5%AF%93) |
-| 137 | [**挽救计划**](https://www.imdb.com/title/tt12042730/) · Project Hail Mary | 2026 | 8.2 | 59万 | [▶️](https://www.youtube.com/results?search_query=Project+Hail+Mary+2026+trailer) [📋](copy:%E6%8C%BD%E6%95%91%E8%AE%A1%E5%88%92) |
+| 136 | [**挽救计划**](https://www.imdb.com/title/tt12042730/) · Project Hail Mary | 2026 | 8.2 | 59万 | [▶️](https://www.youtube.com/results?search_query=Project+Hail+Mary+2026+trailer) [📋](copy:%E6%8C%BD%E6%95%91%E8%AE%A1%E5%88%92) |
+| 137 | [**桃色公寓**](https://www.imdb.com/title/tt0053604/) · The Apartment | 1960 | 8.3 | 22万 | [▶️](https://www.youtube.com/results?search_query=The+Apartment+1960+trailer) [📋](copy:%E6%A1%83%E8%89%B2%E5%85%AC%E5%AF%93) |
 | 138 | [**怪形**](https://www.imdb.com/title/tt0084787/) · The Thing · 合拍：加拿大 | 1982 | 8.2 | 54万 | [▶️](https://www.youtube.com/results?search_query=The+Thing+1982+trailer) [📋](copy:%E6%80%AA%E5%BD%A2) |
 | 140 | [**公民凯恩**](https://www.imdb.com/title/tt0033467/) · Citizen Kane | 1941 | 8.2 | 50万 | [▶️](https://www.youtube.com/results?search_query=Citizen+Kane+1941+trailer) [📋](copy:%E5%85%AC%E6%B0%91%E5%87%AF%E6%81%A9) |
 | 141 | [**不可饶恕**](https://www.imdb.com/title/tt0105695/) · Unforgiven | 1992 | 8.2 | 47万 | [▶️](https://www.youtube.com/results?search_query=Unforgiven+1992+trailer) [📋](copy:%E4%B8%8D%E5%8F%AF%E9%A5%B6%E6%81%95) |
@@ -188,11 +188,11 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 165 | [**终结者**](https://www.imdb.com/title/tt0088247/) · The Terminator · 合拍：英国 | 1984 | 8.1 | 102万 | [▶️](https://www.youtube.com/results?search_query=The+Terminator+1984+trailer) [📋](copy:%E7%BB%88%E7%BB%93%E8%80%85) |
 | 166 | [**布達佩斯大飯店**](https://www.imdb.com/title/tt2278388/) · The Grand Budapest Hotel · 合拍：德国 | 2014 | 8.1 | 99万 | [▶️](https://www.youtube.com/results?search_query=The+Grand+Budapest+Hotel+2014+trailer) [📋](copy:%E5%B8%83%E9%81%94%E4%BD%A9%E6%96%AF%E5%A4%A7%E9%A3%AF%E5%BA%97) |
 | 167 | [**美食总动员**](https://www.imdb.com/title/tt0382932/) · Ratatouille · 合拍：法国、日本 | 2007 | 8.1 | 97万 | [▶️](https://www.youtube.com/results?search_query=Ratatouille+2007+trailer) [📋](copy:%E7%BE%8E%E9%A3%9F%E6%80%BB%E5%8A%A8%E5%91%98) |
-| 168 | [**罗根**](https://www.imdb.com/title/tt3315342/) · Logan | 2017 | 8.1 | 94万 | [▶️](https://www.youtube.com/results?search_query=Logan+2017+trailer) [📋](copy:%E7%BD%97%E6%A0%B9) |
+| 168 | [**罗根**](https://www.imdb.com/title/tt3315342/) · Logan | 2017 | 8.1 | 95万 | [▶️](https://www.youtube.com/results?search_query=Logan+2017+trailer) [📋](copy:%E7%BD%97%E6%A0%B9) |
 | 169 | [**头脑特工队**](https://www.imdb.com/title/tt2096673/) · Inside Out | 2015 | 8.1 | 94万 | [▶️](https://www.youtube.com/results?search_query=Inside+Out+2015+trailer) [📋](copy:%E5%A4%B4%E8%84%91%E7%89%B9%E5%B7%A5%E9%98%9F) |
 | 171 | [**离奇绑架**](https://www.imdb.com/title/tt0118715/) · The Big Lebowski · 合拍：英国 | 1998 | 8.1 | 93万 | [▶️](https://www.youtube.com/results?search_query=The+Big+Lebowski+1998+trailer) [📋](copy:%E7%A6%BB%E5%A5%87%E7%BB%91%E6%9E%B6) |
 | 172 | [**驯龙高手**](https://www.imdb.com/title/tt0892769/) · How to Train Your Dragon | 2010 | 8.1 | 91万 | [▶️](https://www.youtube.com/results?search_query=How+to+Train+Your+Dragon+2010+trailer) [📋](copy:%E9%A9%AF%E9%BE%99%E9%AB%98%E6%89%8B) |
-| 173 | [**银翼杀手**](https://www.imdb.com/title/tt0083658/) · Blade Runner · 合拍：中国香港 | 1982 | 8.1 | 89万 | [▶️](https://www.youtube.com/results?search_query=Blade+Runner+1982+trailer) [📋](copy:%E9%93%B6%E7%BF%BC%E6%9D%80%E6%89%8B) |
+| 173 | [**银翼杀手**](https://www.imdb.com/title/tt0083658/) · Blade Runner · 合拍：中国香港 | 1982 | 8.1 | 90万 | [▶️](https://www.youtube.com/results?search_query=Blade+Runner+1982+trailer) [📋](copy:%E9%93%B6%E7%BF%BC%E6%9D%80%E6%89%8B) |
 | 174 | [**汉密尔顿**](https://www.imdb.com/title/tt8503618/) · Hamilton | 2020 | 8.3 | 14万 | [▶️](https://www.youtube.com/results?search_query=Hamilton+2020+trailer) [📋](copy:%E6%B1%89%E5%AF%86%E5%B0%94%E9%A1%BF) |
 | 176 | [**老爷车**](https://www.imdb.com/title/tt1205489/) · Gran Torino · 合拍：德国、澳大利亚 | 2008 | 8.1 | 87万 | [▶️](https://www.youtube.com/results?search_query=Gran+Torino+2008+trailer) [📋](copy:%E8%80%81%E7%88%B7%E8%BD%A6) |
 | 178 | [**冰血暴**](https://www.imdb.com/title/tt0116282/) · Fargo · 合拍：英国 | 1996 | 8.1 | 80万 | [▶️](https://www.youtube.com/results?search_query=Fargo+1996+trailer) [📋](copy:%E5%86%B0%E8%A1%80%E6%9A%B4) |
@@ -203,7 +203,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 187 | [**拉鋸戰**](https://www.imdb.com/title/tt2119532/) · Hacksaw Ridge · 合拍：澳大利亚 | 2016 | 8.1 | 70万 | [▶️](https://www.youtube.com/results?search_query=Hacksaw+Ridge+2016+trailer) [📋](copy:%E6%8B%89%E9%8B%B8%E6%88%B0) |
 | 188 | [**死亡诗社**](https://www.imdb.com/title/tt0097165/) · Dead Poets Society | 1989 | 8.1 | 67万 | [▶️](https://www.youtube.com/results?search_query=Dead+Poets+Society+1989+trailer) [📋](copy:%E6%AD%BB%E4%BA%A1%E8%AF%97%E7%A4%BE) |
 | 190 | [**三块广告牌**](https://www.imdb.com/title/tt5027774/) · Three Billboards Outside Ebbing, Missouri · 合拍：英国 | 2017 | 8.1 | 62万 | [▶️](https://www.youtube.com/results?search_query=Three+Billboards+Outside+Ebbing%2C+Missouri+2017+trailer) [📋](copy:%E4%B8%89%E5%9D%97%E5%B9%BF%E5%91%8A%E7%89%8C) |
-| 192 | [**赛道狂人**](https://www.imdb.com/title/tt1950186/) · Ford v Ferrari · 合拍：法国 | 2019 | 8.1 | 59万 | [▶️](https://www.youtube.com/results?search_query=Ford+v+Ferrari+2019+trailer) [📋](copy:%E8%B5%9B%E9%81%93%E7%8B%82%E4%BA%BA) |
+| 193 | [**赛道狂人**](https://www.imdb.com/title/tt1950186/) · Ford v Ferrari · 合拍：法国 | 2019 | 8.1 | 59万 | [▶️](https://www.youtube.com/results?search_query=Ford+v+Ferrari+2019+trailer) [📋](copy:%E8%B5%9B%E9%81%93%E7%8B%82%E4%BA%BA) |
 | 194 | [**极速激情**](https://www.imdb.com/title/tt1979320/) · Rush · 合拍：英国、德国 | 2013 | 8.1 | 57万 | [▶️](https://www.youtube.com/results?search_query=Rush+2013+trailer) [📋](copy:%E6%9E%81%E9%80%9F%E6%BF%80%E6%83%85) |
 | 195 | [**惊爆焦点**](https://www.imdb.com/title/tt1895587/) · Spotlight | 2015 | 8.1 | 54万 | [▶️](https://www.youtube.com/results?search_query=Spotlight+2015+trailer) [📋](copy:%E6%83%8A%E7%88%86%E7%84%A6%E7%82%B9) |
 | 196 | [**勇士**](https://www.imdb.com/title/tt1291584/) · Warrior | 2011 | 8.1 | 54万 | [▶️](https://www.youtube.com/results?search_query=Warrior+2011+trailer) [📋](copy:%E5%8B%87%E5%A3%AB) |
@@ -233,7 +233,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 233 | [**桂河大桥**](https://www.imdb.com/title/tt0050212/) · The Bridge on the River Kwai · 合拍：英国 | 1957 | 8.1 | 25万 | [▶️](https://www.youtube.com/results?search_query=The+Bridge+on+the+River+Kwai+1957+trailer) [📋](copy:%E6%A1%82%E6%B2%B3%E5%A4%A7%E6%A1%A5) |
 | 234 | [**沙丘**](https://www.imdb.com/title/tt1160419/) · Dune · 合拍：阿联酋、加拿大、匈牙利 | 2021 | 8.0 | 110万 | [▶️](https://www.youtube.com/results?search_query=Dune+2021+trailer) [📋](copy:%E6%B2%99%E4%B8%98) |
 | 235 | [**火星救援**](https://www.imdb.com/title/tt3659388/) · The Martian | 2015 | 8.0 | 103万 | [▶️](https://www.youtube.com/results?search_query=The+Martian+2015+trailer) [📋](copy:%E7%81%AB%E6%98%9F%E6%95%91%E6%8F%B4) |
-| 239 | [**荒野機器人**](https://www.imdb.com/title/tt29623480/) · The Wild Robot | 2024 | 8.1 | 24万 | [▶️](https://www.youtube.com/results?search_query=The+Wild+Robot+2024+trailer) [📋](copy:%E8%8D%92%E9%87%8E%E6%A9%9F%E5%99%A8%E4%BA%BA) |
+| 238 | [**荒野機器人**](https://www.imdb.com/title/tt29623480/) · The Wild Robot | 2024 | 8.1 | 24万 | [▶️](https://www.youtube.com/results?search_query=The+Wild+Robot+2024+trailer) [📋](copy:%E8%8D%92%E9%87%8E%E6%A9%9F%E5%99%A8%E4%BA%BA) |
 | 240 | [**荒野猎人**](https://www.imdb.com/title/tt1663202/) · The Revenant | 2015 | 8.0 | 97万 | [▶️](https://www.youtube.com/results?search_query=The+Revenant+2015+trailer) [📋](copy:%E8%8D%92%E9%87%8E%E7%8C%8E%E4%BA%BA) |
 | 241 | [**死亡幻觉**](https://www.imdb.com/title/tt0246578/) · Donnie Darko | 2001 | 8.0 | 92万 | [▶️](https://www.youtube.com/results?search_query=Donnie+Darko+2001+trailer) [📋](copy:%E6%AD%BB%E4%BA%A1%E5%B9%BB%E8%A7%89) |
 | 242 | [**超人总动员**](https://www.imdb.com/title/tt0317705/) · The Incredibles | 2004 | 8.0 | 92万 | [▶️](https://www.youtube.com/results?search_query=The+Incredibles+2004+trailer) [📋](copy:%E8%B6%85%E4%BA%BA%E6%80%BB%E5%8A%A8%E5%91%98) |
@@ -269,7 +269,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 294 | [**炎热的下午**](https://www.imdb.com/title/tt0072890/) · Dog Day Afternoon | 1975 | 8.0 | 30万 | [▶️](https://www.youtube.com/results?search_query=Dog+Day+Afternoon+1975+trailer) [📋](copy:%E7%82%8E%E7%83%AD%E7%9A%84%E4%B8%8B%E5%8D%88) |
 | 300 | [**漫漫回家路**](https://www.imdb.com/title/tt3741834/) · Lion · 合拍：英国、澳大利亚 | 2016 | 8.0 | 27万 | [▶️](https://www.youtube.com/results?search_query=Lion+2016+trailer) [📋](copy:%E6%BC%AB%E6%BC%AB%E5%9B%9E%E5%AE%B6%E8%B7%AF) |
 | 301 | [**罗丝玛丽的婴儿**](https://www.imdb.com/title/tt0063522/) · Rosemary's Baby | 1968 | 8.0 | 26万 | [▶️](https://www.youtube.com/results?search_query=Rosemary%27s+Baby+1968+trailer) [📋](copy:%E7%BD%97%E4%B8%9D%E7%8E%9B%E4%B8%BD%E7%9A%84%E5%A9%B4%E5%84%BF) |
-| 303 | [**阿凡达**](https://www.imdb.com/title/tt0499549/) · Avatar | 2009 | 7.9 | 152万 | [▶️](https://www.youtube.com/results?search_query=Avatar+2009+trailer) [📋](copy:%E9%98%BF%E5%87%A1%E8%BE%BE) |
+| 304 | [**阿凡达**](https://www.imdb.com/title/tt0499549/) · Avatar | 2009 | 7.9 | 152万 | [▶️](https://www.youtube.com/results?search_query=Avatar+2009+trailer) [📋](copy:%E9%98%BF%E5%87%A1%E8%BE%BE) |
 | 307 | [**神枪手与智多星**](https://www.imdb.com/title/tt0064115/) · Butch Cassidy and the Sundance Kid | 1969 | 8.0 | 24万 | [▶️](https://www.youtube.com/results?search_query=Butch+Cassidy+and+the+Sundance+Kid+1969+trailer) [📋](copy:%E7%A5%9E%E6%9E%AA%E6%89%8B%E4%B8%8E%E6%99%BA%E5%A4%9A%E6%98%9F) |
 | 308 | [**钢铁侠**](https://www.imdb.com/title/tt0371746/) · Iron Man | 2008 | 7.9 | 126万 | [▶️](https://www.youtube.com/results?search_query=Iron+Man+2008+trailer) [📋](copy:%E9%92%A2%E9%93%81%E4%BE%A0) |
 | 311 | [**史密斯先生到华盛顿**](https://www.imdb.com/title/tt0031679/) · Mr. Smith Goes to Washington | 1939 | 8.1 | 13万 | [▶️](https://www.youtube.com/results?search_query=Mr.+Smith+Goes+to+Washington+1939+trailer) [📋](copy:%E5%8F%B2%E5%AF%86%E6%96%AF%E5%85%88%E7%94%9F%E5%88%B0%E5%8D%8E%E7%9B%9B%E9%A1%BF) |
@@ -277,7 +277,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 314 | [**淘金记**](https://www.imdb.com/title/tt0015864/) · The Gold Rush | 1925 | 8.1 | 13万 | [▶️](https://www.youtube.com/results?search_query=The+Gold+Rush+1925+trailer) [📋](copy:%E6%B7%98%E9%87%91%E8%AE%B0) |
 | 315 | [**Dear Zachary: A Letter to a Son About His Father**](https://www.imdb.com/title/tt1152758/) | 2008 | 8.5 | 4.7万 | [▶️](https://www.youtube.com/results?search_query=Dear+Zachary%3A+A+Letter+to+a+Son+About+His+Father+2008+trailer) [📋](copy:Dear%20Zachary%3A%20A%20Letter%20to%20a%20Son%20About%20His%20Father) |
 | 317 | [**雷神3：诸神黄昏**](https://www.imdb.com/title/tt3501632/) · Thor: Ragnarok | 2017 | 7.9 | 92万 | [▶️](https://www.youtube.com/results?search_query=Thor%3A+Ragnarok+2017+trailer) [📋](copy:%E9%9B%B7%E7%A5%9E3%EF%BC%9A%E8%AF%B8%E7%A5%9E%E9%BB%84%E6%98%8F) |
-| 318 | [**锋回路转**](https://www.imdb.com/title/tt8946378/) · Knives Out | 2019 | 7.9 | 89万 | [▶️](https://www.youtube.com/results?search_query=Knives+Out+2019+trailer) [📋](copy:%E9%94%8B%E5%9B%9E%E8%B7%AF%E8%BD%AC) |
+| 318 | [**锋回路转**](https://www.imdb.com/title/tt8946378/) · Knives Out | 2019 | 7.9 | 90万 | [▶️](https://www.youtube.com/results?search_query=Knives+Out+2019+trailer) [📋](copy:%E9%94%8B%E5%9B%9E%E8%B7%AF%E8%BD%AC) |
 | 319 | [**异星入境**](https://www.imdb.com/title/tt2543164/) · Arrival | 2016 | 7.9 | 88万 | [▶️](https://www.youtube.com/results?search_query=Arrival+2016+trailer) [📋](copy:%E5%BC%82%E6%98%9F%E5%85%A5%E5%A2%83) |
 | 322 | [**怪物史莱克**](https://www.imdb.com/title/tt0126029/) · Shrek | 2001 | 7.9 | 82万 | [▶️](https://www.youtube.com/results?search_query=Shrek+2001+trailer) [📋](copy:%E6%80%AA%E7%89%A9%E5%8F%B2%E8%8E%B1%E5%85%8B) |
 | 323 | [**明日边界**](https://www.imdb.com/title/tt1631867/) · Edge of Tomorrow | 2014 | 7.9 | 82万 | [▶️](https://www.youtube.com/results?search_query=Edge+of+Tomorrow+2014+trailer) [📋](copy:%E6%98%8E%E6%97%A5%E8%BE%B9%E7%95%8C) |
@@ -292,7 +292,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 334 | [**波希米亚狂想曲：摇滚传说**](https://www.imdb.com/title/tt1727824/) · Bohemian Rhapsody · 合拍：英国 | 2018 | 7.9 | 66万 | [▶️](https://www.youtube.com/results?search_query=Bohemian+Rhapsody+2018+trailer) [📋](copy:%E6%B3%A2%E5%B8%8C%E7%B1%B3%E4%BA%9A%E7%8B%82%E6%83%B3%E6%9B%B2%EF%BC%9A%E6%91%87%E6%BB%9A%E4%BC%A0%E8%AF%B4) |
 | 337 | [**星际迷航**](https://www.imdb.com/title/tt0796366/) · Star Trek | 2009 | 7.9 | 64万 | [▶️](https://www.youtube.com/results?search_query=Star+Trek+2009+trailer) [📋](copy:%E6%98%9F%E9%99%85%E8%BF%B7%E8%88%AA) |
 | 339 | [**铁窗喋血**](https://www.imdb.com/title/tt0061512/) · Cool Hand Luke | 1967 | 8.0 | 20万 | [▶️](https://www.youtube.com/results?search_query=Cool+Hand+Luke+1967+trailer) [📋](copy:%E9%93%81%E7%AA%97%E5%96%8B%E8%A1%80) |
-| 340 | [**壁花男孩**](https://www.imdb.com/title/tt1659337/) · The Perks of Being a Wallflower | 2012 | 7.9 | 61万 | [▶️](https://www.youtube.com/results?search_query=The+Perks+of+Being+a+Wallflower+2012+trailer) [📋](copy:%E5%A3%81%E8%8A%B1%E7%94%B7%E5%AD%A9) |
+| 341 | [**壁花男孩**](https://www.imdb.com/title/tt1659337/) · The Perks of Being a Wallflower | 2012 | 7.9 | 61万 | [▶️](https://www.youtube.com/results?search_query=The+Perks+of+Being+a+Wallflower+2012+trailer) [📋](copy:%E5%A3%81%E8%8A%B1%E7%94%B7%E5%AD%A9) |
 | 342 | [**血色海灣**](https://www.imdb.com/title/tt1313104/) · The Cove | 2009 | 8.4 | 5.3万 | [▶️](https://www.youtube.com/results?search_query=The+Cove+2009+trailer) [📋](copy:%E8%A1%80%E8%89%B2%E6%B5%B7%E7%81%A3) |
 | 343 | [**幕後黑手**](https://www.imdb.com/title/tt1645089/) · Inside Job | 2010 | 8.2 | 8.3万 | [▶️](https://www.youtube.com/results?search_query=Inside+Job+2010+trailer) [📋](copy:%E5%B9%95%E5%BE%8C%E9%BB%91%E6%89%8B) |
 | 344 | [**人类之子**](https://www.imdb.com/title/tt0206634/) · Children of Men · 合拍：英国、日本 | 2006 | 7.9 | 57万 | [▶️](https://www.youtube.com/results?search_query=Children+of+Men+2006+trailer) [📋](copy:%E4%BA%BA%E7%B1%BB%E4%B9%8B%E5%AD%90) |
@@ -315,8 +315,8 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 374 | [**年少时代**](https://www.imdb.com/title/tt1065073/) · Boyhood | 2014 | 7.9 | 38万 | [▶️](https://www.youtube.com/results?search_query=Boyhood+2014+trailer) [📋](copy:%E5%B9%B4%E5%B0%91%E6%97%B6%E4%BB%A3) |
 | 375 | [**蝴蝶梦**](https://www.imdb.com/title/tt0032976/) · Rebecca | 1940 | 8.0 | 16万 | [▶️](https://www.youtube.com/results?search_query=Rebecca+1940+trailer) [📋](copy:%E8%9D%B4%E8%9D%B6%E6%A2%A6) |
 | 376 | [**婚姻故事**](https://www.imdb.com/title/tt7653254/) · Marriage Story · 合拍：英国 | 2019 | 7.9 | 38万 | [▶️](https://www.youtube.com/results?search_query=Marriage+Story+2019+trailer) [📋](copy:%E5%A9%9A%E5%A7%BB%E6%95%85%E4%BA%8B) |
-| 377 | [**亚波卡猎逃**](https://www.imdb.com/title/tt0472043/) · Apocalypto · 合拍：墨西哥 | 2006 | 7.9 | 37万 | [▶️](https://www.youtube.com/results?search_query=Apocalypto+2006+trailer) [📋](copy:%E4%BA%9A%E6%B3%A2%E5%8D%A1%E7%8C%8E%E9%80%83) |
-| 378 | [**蜘蛛人：重生日**](https://www.imdb.com/title/tt22084616/) · Spider-Man: Brand New Day · 合拍：英国、德国、加拿大 | 2026 | 7.9 | 36万 | [▶️](https://www.youtube.com/results?search_query=Spider-Man%3A+Brand+New+Day+2026+trailer) [📋](copy:%E8%9C%98%E8%9B%9B%E4%BA%BA%EF%BC%9A%E9%87%8D%E7%94%9F%E6%97%A5) |
+| 377 | [**蜘蛛人：重生日**](https://www.imdb.com/title/tt22084616/) · Spider-Man: Brand New Day · 合拍：英国、德国、加拿大 | 2026 | 7.9 | 37万 | [▶️](https://www.youtube.com/results?search_query=Spider-Man%3A+Brand+New+Day+2026+trailer) [📋](copy:%E8%9C%98%E8%9B%9B%E4%BA%BA%EF%BC%9A%E9%87%8D%E7%94%9F%E6%97%A5) |
+| 378 | [**亚波卡猎逃**](https://www.imdb.com/title/tt0472043/) · Apocalypto · 合拍：墨西哥 | 2006 | 7.9 | 37万 | [▶️](https://www.youtube.com/results?search_query=Apocalypto+2006+trailer) [📋](copy:%E4%BA%9A%E6%B3%A2%E5%8D%A1%E7%8C%8E%E9%80%83) |
 | 379 | [**罗马假日**](https://www.imdb.com/title/tt0046250/) · Roman Holiday | 1953 | 8.0 | 16万 | [▶️](https://www.youtube.com/results?search_query=Roman+Holiday+1953+trailer) [📋](copy:%E7%BD%97%E9%A9%AC%E5%81%87%E6%97%A5) |
 | 383 | [**力挽狂澜**](https://www.imdb.com/title/tt1125849/) · The Wrestler · 合拍：法国 | 2008 | 7.9 | 33万 | [▶️](https://www.youtube.com/results?search_query=The+Wrestler+2008+trailer) [📋](copy:%E5%8A%9B%E6%8C%BD%E7%8B%82%E6%BE%9C) |
 | 384 | [**成名在望**](https://www.imdb.com/title/tt0181875/) · Almost Famous | 2000 | 7.9 | 32万 | [▶️](https://www.youtube.com/results?search_query=Almost+Famous+2000+trailer) [📋](copy:%E6%88%90%E5%90%8D%E5%9C%A8%E6%9C%9B) |
@@ -332,8 +332,8 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 402 | [**角頭風雲**](https://www.imdb.com/title/tt0106519/) · Carlito's Way | 1993 | 7.9 | 25万 | [▶️](https://www.youtube.com/results?search_query=Carlito%27s+Way+1993+trailer) [📋](copy:%E8%A7%92%E9%A0%AD%E9%A2%A8%E9%9B%B2) |
 | 406 | [**鞋猫剑客2**](https://www.imdb.com/title/tt3915174/) · Puss in Boots: The Last Wish | 2022 | 7.9 | 23万 | [▶️](https://www.youtube.com/results?search_query=Puss+in+Boots%3A+The+Last+Wish+2022+trailer) [📋](copy:%E9%9E%8B%E7%8C%AB%E5%89%91%E5%AE%A22) |
 | 407 | [**蓝调兄弟**](https://www.imdb.com/title/tt0080455/) · The Blues Brothers | 1980 | 7.9 | 23万 | [▶️](https://www.youtube.com/results?search_query=The+Blues+Brothers+1980+trailer) [📋](copy:%E8%93%9D%E8%B0%83%E5%85%84%E5%BC%9F) |
-| 411 | [**美国队长：内战**](https://www.imdb.com/title/tt3498820/) · Captain America: Civil War | 2016 | 7.8 | 95万 | [▶️](https://www.youtube.com/results?search_query=Captain+America%3A+Civil+War+2016+trailer) [📋](copy:%E7%BE%8E%E5%9B%BD%E9%98%9F%E9%95%BF%EF%BC%9A%E5%86%85%E6%88%98) |
-| 412 | [**蝙蝠侠**](https://www.imdb.com/title/tt1877830/) · The Batman | 2022 | 7.8 | 95万 | [▶️](https://www.youtube.com/results?search_query=The+Batman+2022+trailer) [📋](copy:%E8%9D%99%E8%9D%A0%E4%BE%A0) |
+| 411 | [**蝙蝠侠**](https://www.imdb.com/title/tt1877830/) · The Batman | 2022 | 7.8 | 96万 | [▶️](https://www.youtube.com/results?search_query=The+Batman+2022+trailer) [📋](copy:%E8%9D%99%E8%9D%A0%E4%BE%A0) |
+| 412 | [**美国队长：内战**](https://www.imdb.com/title/tt3498820/) · Captain America: Civil War | 2016 | 7.8 | 95万 | [▶️](https://www.youtube.com/results?search_query=Captain+America%3A+Civil+War+2016+trailer) [📋](copy:%E7%BE%8E%E5%9B%BD%E9%98%9F%E9%95%BF%EF%BC%9A%E5%86%85%E6%88%98) |
 | 413 | [**哈比人：不思议之旅**](https://www.imdb.com/title/tt0903624/) · The Hobbit: An Unexpected Journey · 合拍：新西兰 | 2012 | 7.8 | 94万 | [▶️](https://www.youtube.com/results?search_query=The+Hobbit%3A+An+Unexpected+Journey+2012+trailer) [📋](copy:%E5%93%88%E6%AF%94%E4%BA%BA%EF%BC%9A%E4%B8%8D%E6%80%9D%E8%AE%AE%E4%B9%8B%E6%97%85) |
 | 415 | [**逃出绝命镇**](https://www.imdb.com/title/tt5052448/) · Get Out · 合拍：日本 | 2017 | 7.8 | 84万 | [▶️](https://www.youtube.com/results?search_query=Get+Out+2017+trailer) [📋](copy:%E9%80%83%E5%87%BA%E7%BB%9D%E5%91%BD%E9%95%87) |
 | 416 | [**社交网络**](https://www.imdb.com/title/tt1285016/) · The Social Network | 2010 | 7.8 | 83万 | [▶️](https://www.youtube.com/results?search_query=The+Social+Network+2010+trailer) [📋](copy:%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C) |
@@ -378,7 +378,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 471 | [**摇滚万万岁**](https://www.imdb.com/title/tt0088258/) · This Is Spinal Tap | 1984 | 7.9 | 16万 | [▶️](https://www.youtube.com/results?search_query=This+Is+Spinal+Tap+1984+trailer) [📋](copy:%E6%91%87%E6%BB%9A%E4%B8%87%E4%B8%87%E5%B2%81) |
 | 472 | [**今天不是读书天**](https://www.imdb.com/title/tt0091042/) · Ferris Bueller's Day Off | 1986 | 7.8 | 42万 | [▶️](https://www.youtube.com/results?search_query=Ferris+Bueller%27s+Day+Off+1986+trailer) [📋](copy:%E4%BB%8A%E5%A4%A9%E4%B8%8D%E6%98%AF%E8%AF%BB%E4%B9%A6%E5%A4%A9) |
 | 474 | [**斗士**](https://www.imdb.com/title/tt0964517/) · The Fighter | 2010 | 7.8 | 41万 | [▶️](https://www.youtube.com/results?search_query=The+Fighter+2010+trailer) [📋](copy:%E6%96%97%E5%A3%AB) |
-| 476 | [**痴迷**](https://www.imdb.com/title/tt37287335/) · Obsession | 2025 | 7.8 | 41万 | [▶️](https://www.youtube.com/results?search_query=Obsession+2025+trailer) [📋](copy:%E7%97%B4%E8%BF%B7) |
+| 475 | [**痴迷**](https://www.imdb.com/title/tt37287335/) · Obsession | 2025 | 7.8 | 41万 | [▶️](https://www.youtube.com/results?search_query=Obsession+2025+trailer) [📋](copy:%E7%97%B4%E8%BF%B7) |
 | 478 | [**驯龙高手2**](https://www.imdb.com/title/tt1646971/) · How to Train Your Dragon 2 | 2014 | 7.8 | 41万 | [▶️](https://www.youtube.com/results?search_query=How+to+Train+Your+Dragon+2+2014+trailer) [📋](copy:%E9%A9%AF%E9%BE%99%E9%AB%98%E6%89%8B2) |
 | 480 | [**2009月球漫游**](https://www.imdb.com/title/tt1182345/) · Moon · 合拍：英国 | 2009 | 7.8 | 40万 | [▶️](https://www.youtube.com/results?search_query=Moon+2009+trailer) [📋](copy:2009%E6%9C%88%E7%90%83%E6%BC%AB%E6%B8%B8) |
 | 481 | [**傲慢与偏见**](https://www.imdb.com/title/tt0414387/) · Pride & Prejudice · 合拍：英国、法国 | 2005 | 7.8 | 38万 | [▶️](https://www.youtube.com/results?search_query=Pride+%26+Prejudice+2005+trailer) [📋](copy:%E5%82%B2%E6%85%A2%E4%B8%8E%E5%81%8F%E8%A7%81) |
@@ -412,7 +412,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 185 | [**謝爾沙**](https://www.imdb.com/title/tt10295212/) · Shershaah | 2021 | 8.3 | 14万 | [▶️](https://www.youtube.com/results?search_query=Shershaah+2021+trailer) [📋](copy:%E8%AC%9D%E7%88%BE%E6%B2%99) |
 | 211 | [**科拉爾金礦2**](https://www.imdb.com/title/tt10698680/) · K.G.F: Chapter 2 | 2022 | 8.2 | 17万 | [▶️](https://www.youtube.com/results?search_query=K.G.F%3A+Chapter+2+2022+trailer) [📋](copy:%E7%A7%91%E6%8B%89%E7%88%BE%E9%87%91%E7%A4%A62) |
 | 219 | [**黑境行者**](https://www.imdb.com/title/tt33014583/) · Dhurandhar | 2025 | 8.2 | 15万 | [▶️](https://www.youtube.com/results?search_query=Dhurandhar+2025+trailer) [📋](copy:%E9%BB%91%E5%A2%83%E8%A1%8C%E8%80%85) |
-| 238 | [**巴霍巴利王（下）：终结**](https://www.imdb.com/title/tt4849438/) · Baahubali 2: The Conclusion | 2017 | 8.2 | 14万 | [▶️](https://www.youtube.com/results?search_query=Baahubali+2%3A+The+Conclusion+2017+trailer) [📋](copy:%E5%B7%B4%E9%9C%8D%E5%B7%B4%E5%88%A9%E7%8E%8B%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%9A%E7%BB%88%E7%BB%93) |
+| 239 | [**巴霍巴利王（下）：终结**](https://www.imdb.com/title/tt4849438/) · Baahubali 2: The Conclusion | 2017 | 8.2 | 14万 | [▶️](https://www.youtube.com/results?search_query=Baahubali+2%3A+The+Conclusion+2017+trailer) [📋](copy:%E5%B7%B4%E9%9C%8D%E5%B7%B4%E5%88%A9%E7%8E%8B%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%9A%E7%BB%88%E7%BB%93) |
 | 249 | [**PK外傳**](https://www.imdb.com/title/tt2338151/) · PK | 2014 | 8.1 | 23万 | [▶️](https://www.youtube.com/results?search_query=PK+2014+trailer) [📋](copy:PK%E5%A4%96%E5%82%B3) |
 | 258 | [**考萊塢之硬漢任務**](https://www.imdb.com/title/tt9179430/) · Vikram | 2022 | 8.3 | 9.2万 | [▶️](https://www.youtube.com/results?search_query=Vikram+2022+trailer) [📋](copy:%E8%80%83%E8%90%8A%E5%A1%A2%E4%B9%8B%E7%A1%AC%E6%BC%A2%E4%BB%BB%E5%8B%99) |
 | 260 | [**幸運狗狗來造訪**](https://www.imdb.com/title/tt7466810/) · 777 Charlie | 2022 | 8.6 | 4.9万 | [▶️](https://www.youtube.com/results?search_query=777+Charlie+2022+trailer) [📋](copy:%E5%B9%B8%E9%81%8B%E7%8B%97%E7%8B%97%E4%BE%86%E9%80%A0%E8%A8%AA) |
@@ -429,7 +429,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 316 | [**芭萨提的颜色**](https://www.imdb.com/title/tt0405508/) · Rang De Basanti | 2006 | 8.1 | 13万 | [▶️](https://www.youtube.com/results?search_query=Rang+De+Basanti+2006+trailer) [📋](copy:%E8%8A%AD%E8%90%A8%E6%8F%90%E7%9A%84%E9%A2%9C%E8%89%B2) |
 | 330 | [**乌里：外科手术式打击**](https://www.imdb.com/title/tt8291224/) · Uri: The Surgical Strike | 2019 | 8.2 | 8.6万 | [▶️](https://www.youtube.com/results?search_query=Uri%3A+The+Surgical+Strike+2019+trailer) [📋](copy:%E4%B9%8C%E9%87%8C%EF%BC%9A%E5%A4%96%E7%A7%91%E6%89%8B%E6%9C%AF%E5%BC%8F%E6%89%93%E5%87%BB) |
 | 336 | [**Kantara**](https://www.imdb.com/title/tt15327088/) | 2022 | 8.1 | 12万 | [▶️](https://www.youtube.com/results?search_query=Kantara+2022+trailer) [📋](copy:Kantara) |
-| 341 | [**機關槍囚徒**](https://www.imdb.com/title/tt9900782/) · Kaithi | 2019 | 8.4 | 5.3万 | [▶️](https://www.youtube.com/results?search_query=Kaithi+2019+trailer) [📋](copy:%E6%A9%9F%E9%97%9C%E6%A7%8D%E5%9B%9A%E5%BE%92) |
+| 340 | [**機關槍囚徒**](https://www.imdb.com/title/tt9900782/) · Kaithi | 2019 | 8.4 | 5.3万 | [▶️](https://www.youtube.com/results?search_query=Kaithi+2019+trailer) [📋](copy:%E6%A9%9F%E9%97%9C%E6%A7%8D%E5%9B%9A%E5%BE%92) |
 | 346 | [**诱惑的陷阱**](https://www.imdb.com/title/tt0242519/) · Hera Pheri | 2000 | 8.2 | 8.2万 | [▶️](https://www.youtube.com/results?search_query=Hera+Pheri+2000+trailer) [📋](copy:%E8%AF%B1%E6%83%91%E7%9A%84%E9%99%B7%E9%98%B1) |
 | 348 | [**科拉爾金礦**](https://www.imdb.com/title/tt7838252/) · K.G.F: Chapter 1 | 2018 | 8.1 | 11万 | [▶️](https://www.youtube.com/results?search_query=K.G.F%3A+Chapter+1+2018+trailer) [📋](copy:%E7%A7%91%E6%8B%89%E7%88%BE%E9%87%91%E7%A4%A6) |
 | 349 | [**小萝莉的猴神大叔**](https://www.imdb.com/title/tt3863552/) · Bajrangi Bhaijaan | 2015 | 8.1 | 11万 | [▶️](https://www.youtube.com/results?search_query=Bajrangi+Bhaijaan+2015+trailer) [📋](copy:%E5%B0%8F%E8%90%9D%E8%8E%89%E7%9A%84%E7%8C%B4%E7%A5%9E%E5%A4%A7%E5%8F%94) |
@@ -465,13 +465,13 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 96 | [**幽灵公主**](https://www.imdb.com/title/tt0119698/) · Princess Mononoke | 1997 | 8.3 | 49万 | [▶️](https://www.youtube.com/results?search_query=Princess+Mononoke+1997+trailer) [📋](copy:%E5%B9%BD%E7%81%B5%E5%85%AC%E4%B8%BB) |
 | 99 | [**切腹**](https://www.imdb.com/title/tt0056058/) · Harakiri | 1962 | 8.6 | 9.5万 | [▶️](https://www.youtube.com/results?search_query=Harakiri+1962+trailer) [📋](copy:%E5%88%87%E8%85%B9) |
 | 139 | [**哈尔的移动城堡**](https://www.imdb.com/title/tt0347149/) · Howl's Moving Castle | 2004 | 8.2 | 52万 | [▶️](https://www.youtube.com/results?search_query=Howl%27s+Moving+Castle+2004+trailer) [📋](copy:%E5%93%88%E5%B0%94%E7%9A%84%E7%A7%BB%E5%8A%A8%E5%9F%8E%E5%A0%A1) |
-| 193 | [**Attack on Titan: The Last Attack**](https://www.imdb.com/title/tt33175825/) | 2024 | 8.9 | 3.9万 | [▶️](https://www.youtube.com/results?search_query=Attack+on+Titan%3A+The+Last+Attack+2024+trailer) [📋](copy:Attack%20on%20Titan%3A%20The%20Last%20Attack) |
+| 192 | [**Attack on Titan: The Last Attack**](https://www.imdb.com/title/tt33175825/) | 2024 | 8.9 | 4.0万 | [▶️](https://www.youtube.com/results?search_query=Attack+on+Titan%3A+The+Last+Attack+2024+trailer) [📋](copy:Attack%20on%20Titan%3A%20The%20Last%20Attack) |
 | 205 | [**龙猫**](https://www.imdb.com/title/tt0096283/) · My Neighbor Totoro | 1988 | 8.1 | 44万 | [▶️](https://www.youtube.com/results?search_query=My+Neighbor+Totoro+1988+trailer) [📋](copy:%E9%BE%99%E7%8C%AB) |
 | 218 | [**生之欲**](https://www.imdb.com/title/tt0044741/) · Ikiru | 1952 | 8.3 | 10万 | [▶️](https://www.youtube.com/results?search_query=Ikiru+1952+trailer) [📋](copy:%E7%94%9F%E4%B9%8B%E6%AC%B2) |
 | 220 | [**声之形**](https://www.imdb.com/title/tt5323662/) · A Silent Voice: The Movie | 2016 | 8.2 | 15万 | [▶️](https://www.youtube.com/results?search_query=A+Silent+Voice%3A+The+Movie+2016+trailer) [📋](copy:%E5%A3%B0%E4%B9%8B%E5%BD%A2) |
 | 227 | [**大镖客**](https://www.imdb.com/title/tt0055630/) · Yojimbo | 1961 | 8.2 | 15万 | [▶️](https://www.youtube.com/results?search_query=Yojimbo+1961+trailer) [📋](copy:%E5%A4%A7%E9%95%96%E5%AE%A2) |
 | 236 | [**天國與地獄**](https://www.imdb.com/title/tt0057565/) · High and Low | 1963 | 8.4 | 7.4万 | [▶️](https://www.youtube.com/results?search_query=High+and+Low+1963+trailer) [📋](copy:%E5%A4%A9%E5%9C%8B%E8%88%87%E5%9C%B0%E7%8D%84) |
-| 271 | [**鬼滅之刃劇場版 無限城篇**](https://www.imdb.com/title/tt32820897/) · Demon Slayer: Kimetsu No Yaiba Infinity Castle | 2025 | 8.3 | 8.9万 | [▶️](https://www.youtube.com/results?search_query=Demon+Slayer%3A+Kimetsu+No+Yaiba+Infinity+Castle+2025+trailer) [📋](copy:%E9%AC%BC%E6%BB%85%E4%B9%8B%E5%88%83%E5%8A%87%E5%A0%B4%E7%89%88%20%E7%84%A1%E9%99%90%E5%9F%8E%E7%AF%87) |
+| 270 | [**鬼滅之刃劇場版 無限城篇**](https://www.imdb.com/title/tt32820897/) · Demon Slayer: Kimetsu No Yaiba Infinity Castle | 2025 | 8.3 | 8.9万 | [▶️](https://www.youtube.com/results?search_query=Demon+Slayer%3A+Kimetsu+No+Yaiba+Infinity+Castle+2025+trailer) [📋](copy:%E9%AC%BC%E6%BB%85%E4%B9%8B%E5%88%83%E5%8A%87%E5%A0%B4%E7%89%88%20%E7%84%A1%E9%99%90%E5%9F%8E%E7%AF%87) |
 | 272 | [**罗生门**](https://www.imdb.com/title/tt0042876/) · Rashomon | 1950 | 8.1 | 20万 | [▶️](https://www.youtube.com/results?search_query=Rashomon+1950+trailer) [📋](copy:%E7%BD%97%E7%94%9F%E9%97%A8) |
 | 289 | [**鬼滅之刃劇場版 無限列車篇**](https://www.imdb.com/title/tt11032374/) · Demon Slayer: Kimetsu no Yaiba - The Movie: Mugen Train | 2020 | 8.2 | 10万 | [▶️](https://www.youtube.com/results?search_query=Demon+Slayer%3A+Kimetsu+no+Yaiba+-+The+Movie%3A+Mugen+Train+2020+trailer) [📋](copy:%E9%AC%BC%E6%BB%85%E4%B9%8B%E5%88%83%E5%8A%87%E5%A0%B4%E7%89%88%20%E7%84%A1%E9%99%90%E5%88%97%E8%BB%8A%E7%AF%87) |
 | 302 | [**链锯人剧场版：蕾洁篇**](https://www.imdb.com/title/tt30472557/) · Chainsaw Man - The Movie: Reze Arc | 2025 | 8.3 | 7.2万 | [▶️](https://www.youtube.com/results?search_query=Chainsaw+Man+-+The+Movie%3A+Reze+Arc+2025+trailer) [📋](copy:%E9%93%BE%E9%94%AF%E4%BA%BA%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%95%BE%E6%B4%81%E7%AF%87) |
@@ -504,7 +504,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 446 | [**我在伊朗长大**](https://www.imdb.com/title/tt0808417/) · Persepolis | 2007 | 8.0 | 11万 | [▶️](https://www.youtube.com/results?search_query=Persepolis+2007+trailer) [📋](copy:%E6%88%91%E5%9C%A8%E4%BC%8A%E6%9C%97%E9%95%BF%E5%A4%A7) |
 | 459 | [**恐惧的代价**](https://www.imdb.com/title/tt0046268/) · The Wages of Fear · 合拍：意大利 | 1953 | 8.1 | 7.5万 | [▶️](https://www.youtube.com/results?search_query=The+Wages+of+Fear+1953+trailer) [📋](copy:%E6%81%90%E6%83%A7%E7%9A%84%E4%BB%A3%E4%BB%B7) |
 | 463 | [**像恶魔的女人**](https://www.imdb.com/title/tt0046911/) · Diabolique | 1955 | 8.1 | 7.4万 | [▶️](https://www.youtube.com/results?search_query=Diabolique+1955+trailer) [📋](copy:%E5%83%8F%E6%81%B6%E9%AD%94%E7%9A%84%E5%A5%B3%E4%BA%BA) |
-| 475 | [**芬妮与亚历山大**](https://www.imdb.com/title/tt0083922/) · Fanny and Alexander · 合拍：德国、瑞典 | 1982 | 8.1 | 7.2万 | [▶️](https://www.youtube.com/results?search_query=Fanny+and+Alexander+1982+trailer) [📋](copy:%E8%8A%AC%E5%A6%AE%E4%B8%8E%E4%BA%9A%E5%8E%86%E5%B1%B1%E5%A4%A7) |
+| 476 | [**芬妮与亚历山大**](https://www.imdb.com/title/tt0083922/) · Fanny and Alexander · 合拍：德国、瑞典 | 1982 | 8.1 | 7.2万 | [▶️](https://www.youtube.com/results?search_query=Fanny+and+Alexander+1982+trailer) [📋](copy:%E8%8A%AC%E5%A6%AE%E4%B8%8E%E4%BA%9A%E5%8E%86%E5%B1%B1%E5%A4%A7) |
 | 488 | [**圣女贞德蒙难记**](https://www.imdb.com/title/tt0019254/) · The Passion of Joan of Arc | 1928 | 8.1 | 7.0万 | [▶️](https://www.youtube.com/results?search_query=The+Passion+of+Joan+of+Arc+1928+trailer) [📋](copy:%E5%9C%A3%E5%A5%B3%E8%B4%9E%E5%BE%B7%E8%92%99%E9%9A%BE%E8%AE%B0) |
 
 ## 🇬🇧 英国（19）
@@ -516,12 +516,12 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 | 189 | [**两只大烟枪**](https://www.imdb.com/title/tt0120735/) · Lock, Stock and Two Smoking Barrels | 1998 | 8.1 | 66万 | [▶️](https://www.youtube.com/results?search_query=Lock%2C+Stock+and+Two+Smoking+Barrels+1998+trailer) [📋](copy:%E4%B8%A4%E5%8F%AA%E5%A4%A7%E7%83%9F%E6%9E%AA) |
 | 191 | [**巨蟒与圣杯**](https://www.imdb.com/title/tt0071853/) · Monty Python and the Holy Grail | 1975 | 8.1 | 61万 | [▶️](https://www.youtube.com/results?search_query=Monty+Python+and+the+Holy+Grail+1975+trailer) [📋](copy:%E5%B7%A8%E8%9F%92%E4%B8%8E%E5%9C%A3%E6%9D%AF) |
 | 212 | [**賽納**](https://www.imdb.com/title/tt1424432/) · Senna | 2010 | 8.4 | 8.5万 | [▶️](https://www.youtube.com/results?search_query=Senna+2010+trailer) [📋](copy:%E8%B3%BD%E7%B4%8D) |
-| 214 | [**大卫·爱登堡：地球上的一段生命旅程**](https://www.imdb.com/title/tt11989890/) · David Attenborough: A Life on Our Planet | 2020 | 8.9 | 3.6万 | [▶️](https://www.youtube.com/results?search_query=David+Attenborough%3A+A+Life+on+Our+Planet+2020+trailer) [📋](copy:%E5%A4%A7%E5%8D%AB%C2%B7%E7%88%B1%E7%99%BB%E5%A0%A1%EF%BC%9A%E5%9C%B0%E7%90%83%E4%B8%8A%E7%9A%84%E4%B8%80%E6%AE%B5%E7%94%9F%E5%91%BD%E6%97%85%E7%A8%8B) |
+| 214 | [**大卫·爱登堡：地球上的一段生命旅程**](https://www.imdb.com/title/tt11989890/) · David Attenborough: A Life on Our Planet | 2020 | 8.9 | 3.7万 | [▶️](https://www.youtube.com/results?search_query=David+Attenborough%3A+A+Life+on+Our+Planet+2020+trailer) [📋](copy:%E5%A4%A7%E5%8D%AB%C2%B7%E7%88%B1%E7%99%BB%E5%A0%A1%EF%BC%9A%E5%9C%B0%E7%90%83%E4%B8%8A%E7%9A%84%E4%B8%80%E6%AE%B5%E7%94%9F%E5%91%BD%E6%97%85%E7%A8%8B) |
 | 243 | [**贫民窟的百万富翁**](https://www.imdb.com/title/tt1010048/) · Slumdog Millionaire | 2008 | 8.0 | 92万 | [▶️](https://www.youtube.com/results?search_query=Slumdog+Millionaire+2008+trailer) [📋](copy:%E8%B4%AB%E6%B0%91%E7%AA%9F%E7%9A%84%E7%99%BE%E4%B8%87%E5%AF%8C%E7%BF%81) |
 | 255 | [**国王的演讲**](https://www.imdb.com/title/tt1504320/) · The King's Speech | 2010 | 8.0 | 74万 | [▶️](https://www.youtube.com/results?search_query=The+King%27s+Speech+2010+trailer) [📋](copy:%E5%9B%BD%E7%8E%8B%E7%9A%84%E6%BC%94%E8%AE%B2) |
 | 273 | [**第三人**](https://www.imdb.com/title/tt0041959/) · The Third Man | 1949 | 8.1 | 20万 | [▶️](https://www.youtube.com/results?search_query=The+Third+Man+1949+trailer) [📋](copy:%E7%AC%AC%E4%B8%89%E4%BA%BA) |
 | 283 | [**蒙提·派森之布莱恩的一生**](https://www.imdb.com/title/tt0079470/) · Monty Python's Life of Brian | 1979 | 8.0 | 44万 | [▶️](https://www.youtube.com/results?search_query=Monty+Python%27s+Life+of+Brian+1979+trailer) [📋](copy:%E8%92%99%E6%8F%90%C2%B7%E6%B4%BE%E6%A3%AE%E4%B9%8B%E5%B8%83%E8%8E%B1%E6%81%A9%E7%9A%84%E4%B8%80%E7%94%9F) |
-| 304 | [**7天**](https://www.imdb.com/title/tt31514146/) · I Swear | 2025 | 8.3 | 7.1万 | [▶️](https://www.youtube.com/results?search_query=I+Swear+2025+trailer) [📋](copy:7%E5%A4%A9) |
+| 303 | [**7天**](https://www.imdb.com/title/tt31514146/) · I Swear | 2025 | 8.3 | 7.1万 | [▶️](https://www.youtube.com/results?search_query=I+Swear+2025+trailer) [📋](copy:7%E5%A4%A9) |
 | 305 | [**甘地传**](https://www.imdb.com/title/tt0083987/) · Gandhi · 合拍：印度 | 1982 | 8.0 | 25万 | [▶️](https://www.youtube.com/results?search_query=Gandhi+1982+trailer) [📋](copy:%E7%94%98%E5%9C%B0%E4%BC%A0) |
 | 371 | [**狗镇**](https://www.imdb.com/title/tt0276919/) · Dogville · 合拍：法国、德国、瑞典 | 2003 | 8.0 | 17万 | [▶️](https://www.youtube.com/results?search_query=Dogville+2003+trailer) [📋](copy:%E7%8B%97%E9%95%87) |
 | 373 | [**寻找甜秘客**](https://www.imdb.com/title/tt2125608/) · Searching for Sugar Man · 合拍：瑞典 | 2012 | 8.2 | 7.7万 | [▶️](https://www.youtube.com/results?search_query=Searching+for+Sugar+Man+2012+trailer) [📋](copy:%E5%AF%BB%E6%89%BE%E7%94%9C%E7%A7%98%E5%AE%A2) |
@@ -577,7 +577,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 
 | # | 片名 | 年份 | 评分 | 人数 | 预告片 · 复制 |
 |---:|---|---|---:|---:|:---:|
-| 40 | [**寄生虫**](https://www.imdb.com/title/tt6751668/) · Parasite | 2019 | 8.5 | 120万 | [▶️](https://www.youtube.com/results?search_query=Parasite+2019+trailer) [📋](copy:%E5%AF%84%E7%94%9F%E8%99%AB) |
+| 40 | [**寄生虫**](https://www.imdb.com/title/tt6751668/) · Parasite | 2019 | 8.5 | 121万 | [▶️](https://www.youtube.com/results?search_query=Parasite+2019+trailer) [📋](copy:%E5%AF%84%E7%94%9F%E8%99%AB) |
 | 222 | [**杀人回忆**](https://www.imdb.com/title/tt0353969/) · Memories of Murder | 2003 | 8.1 | 28万 | [▶️](https://www.youtube.com/results?search_query=Memories+of+Murder+2003+trailer) [📋](copy:%E6%9D%80%E4%BA%BA%E5%9B%9E%E5%BF%86) |
 | 265 | [**小姐**](https://www.imdb.com/title/tt4016934/) · The Handmaiden | 2016 | 8.1 | 21万 | [▶️](https://www.youtube.com/results?search_query=The+Handmaiden+2016+trailer) [📋](copy:%E5%B0%8F%E5%A7%90) |
 | 497 | [**春夏秋冬又一春**](https://www.imdb.com/title/tt0374546/) · Spring, Summer, Fall, Winter... and Spring · 合拍：德国 | 2003 | 8.0 | 9.2万 | [▶️](https://www.youtube.com/results?search_query=Spring%2C+Summer%2C+Fall%2C+Winter...+and+Spring+2003+trailer) [📋](copy:%E6%98%A5%E5%A4%8F%E7%A7%8B%E5%86%AC%E5%8F%88%E4%B8%80%E6%98%A5) |
@@ -588,7 +588,7 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 |---:|---|---|---:|---:|:---:|
 | 75 | [**窃听风暴**](https://www.imdb.com/title/tt0405094/) · The Lives of Others | 2006 | 8.4 | 45万 | [▶️](https://www.youtube.com/results?search_query=The+Lives+of+Others+2006+trailer) [📋](copy:%E7%AA%83%E5%90%AC%E9%A3%8E%E6%9A%B4) |
 | 106 | [**從海底出擊**](https://www.imdb.com/title/tt0082096/) · Das Boot | 1981 | 8.3 | 29万 | [▶️](https://www.youtube.com/results?search_query=Das+Boot+1981+trailer) [📋](copy:%E5%BE%9E%E6%B5%B7%E5%BA%95%E5%87%BA%E6%93%8A) |
-| 145 | [**M就是凶手**](https://www.imdb.com/title/tt0022100/) · M · 合拍：魏瑪共和国 | 1931 | 8.3 | 18万 | [▶️](https://www.youtube.com/results?search_query=M+1931+trailer) [📋](copy:M%E5%B0%B1%E6%98%AF%E5%87%B6%E6%89%8B) |
+| 145 | [**M就是凶手**](https://www.imdb.com/title/tt0022100/) · M · 合拍：魏瑪共和国 | 1931 | 8.3 | 19万 | [▶️](https://www.youtube.com/results?search_query=M+1931+trailer) [📋](copy:M%E5%B0%B1%E6%98%AF%E5%87%B6%E6%89%8B) |
 
 ## 🌐 其他国家和地区（17）
 
@@ -596,11 +596,11 @@ summary: IMDb 评分人数 ≥ 2.5 万的电影按加权评分取前 500，按�
 
 | # | 片名 | 年份 | 评分 | 人数 | 预告片 · 复制 |
 |---:|---|---|---:|---:|:---:|
-| 113 | [**纳德和西敏：一次别离**](https://www.imdb.com/title/tt1832382/) · A Separation | 2011 | 8.3 | 28万 | [▶️](https://www.youtube.com/results?search_query=A+Separation+2011+trailer) [📋](copy:%E7%BA%B3%E5%BE%B7%E5%92%8C%E8%A5%BF%E6%95%8F%EF%BC%9A%E4%B8%80%E6%AC%A1%E5%88%AB%E7%A6%BB) |
+| 114 | [**纳德和西敏：一次别离**](https://www.imdb.com/title/tt1832382/) · A Separation | 2011 | 8.3 | 28万 | [▶️](https://www.youtube.com/results?search_query=A+Separation+2011+trailer) [📋](copy:%E7%BA%B3%E5%BE%B7%E5%92%8C%E8%A5%BF%E6%95%8F%EF%BC%9A%E4%B8%80%E6%AC%A1%E5%88%AB%E7%A6%BB) |
 | 143 | [**我想有个家**](https://www.imdb.com/title/tt8267604/) · Capernaum | 2018 | 8.4 | 13万 | [▶️](https://www.youtube.com/results?search_query=Capernaum+2018+trailer) [📋](copy:%E6%88%91%E6%83%B3%E6%9C%89%E4%B8%AA%E5%AE%B6) |
 | 198 | [**纳粹屠城**](https://www.imdb.com/title/tt0091251/) · Come and See | 1985 | 8.3 | 13万 | [▶️](https://www.youtube.com/results?search_query=Come+and+See+1985+trailer) [📋](copy:%E7%BA%B3%E7%B2%B9%E5%B1%A0%E5%9F%8E) |
 | 199 | [**大都会**](https://www.imdb.com/title/tt0017136/) · Metropolis | 1927 | 8.2 | 20万 | [▶️](https://www.youtube.com/results?search_query=Metropolis+1927+trailer) [📋](copy:%E5%A4%A7%E9%83%BD%E4%BC%9A) |
-| 270 | [**玛丽和马克思**](https://www.imdb.com/title/tt0978762/) · Mary and Max | 2009 | 8.1 | 20万 | [▶️](https://www.youtube.com/results?search_query=Mary+and+Max+2009+trailer) [📋](copy:%E7%8E%9B%E4%B8%BD%E5%92%8C%E9%A9%AC%E5%85%8B%E6%80%9D) |
+| 271 | [**玛丽和马克思**](https://www.imdb.com/title/tt0978762/) · Mary and Max | 2009 | 8.1 | 20万 | [▶️](https://www.youtube.com/results?search_query=Mary+and+Max+2009+trailer) [📋](copy:%E7%8E%9B%E4%B8%BD%E5%92%8C%E9%A9%AC%E5%85%8B%E6%80%9D) |
 | 298 | [**爱情是狗娘**](https://www.imdb.com/title/tt0245712/) · Amores Perros | 2000 | 8.0 | 27万 | [▶️](https://www.youtube.com/results?search_query=Amores+Perros+2000+trailer) [📋](copy:%E7%88%B1%E6%83%85%E6%98%AF%E7%8B%97%E5%A8%98) |
 | 306 | [**叶问**](https://www.imdb.com/title/tt1220719/) · Ip Man | 2008 | 8.0 | 25万 | [▶️](https://www.youtube.com/results?search_query=Ip+Man+2008+trailer) [📋](copy:%E5%8F%B6%E9%97%AE) |
 | 309 | [**乖乖孩儿**](https://www.imdb.com/title/tt0118849/) · Children of Heaven | 1997 | 8.2 | 9.2万 | [▶️](https://www.youtube.com/results?search_query=Children+of+Heaven+1997+trailer) [📋](copy:%E4%B9%96%E4%B9%96%E5%AD%A9%E5%84%BF) |
