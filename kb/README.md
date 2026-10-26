@@ -36,6 +36,8 @@
 
 **野外**（10）：[露营入门：南加州去哪露营、怎么订、带什么](camping-basics.md) · [火：什么时候能生、怎么生、怎么灭，遇到山火怎么逃](fire-and-campfire-rules.md) · [失温和中暑：从早期征兆到怎么处理](hypothermia-heat-illness.md) · [迷路了怎么办：S.T.O.P.、手机定位、指南针和求救](lost-navigation.md) · [山地天气和地形风险：温度、雷暴、山洪、高原反应、冰雪、落石、天黑](mountain-weather-dangers.md) · [吃什么、背什么：徒步和露营的食物、水、炉头、背包与穿衣](outdoor-food-and-pack.md) · [南加州野外的动植物风险：蛇、狮、熊、蜱虫、毒橡树](socal-wildlife-plants.md) · [出门前：十大必备、行程计划和掉头时间](ten-essentials-trip-plan.md) · [野外的水：喝多少、去哪找、怎么净化](water-in-the-wild.md) · [野外急救基础：出事以后的头十分钟](wilderness-first-aid.md)
 
+**音乐**（8）：[华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md) · [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md) · [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md) · [怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md) · [经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md) · [乐理基础（音高、音程、调式、和弦、节奏、曲式）](music-theory-basics.md) · [音乐 Top 500（按国家分类）](top500-music.md) · [Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
+
 **旅行**（7）：[加州海岸线自驾全攻略：从红杉到边境墙](california-coast.md) · [Amtrak 坐火车完全攻略：注意事项和技巧](amtrak-guide.md) · [旅行防骗大全](travel-scams.md) · [坐飞机：订票、行李、安检、延误退款](travel-flights-airports.md) · [订酒店不踩雷：从挑酒店到退房](travel-hotels.md) · [旅行的钱、安全和打包清单](travel-money-safety-packing.md) · [公路旅行和租车](travel-road-trip.md)
 
 **量化**（6）：[回测里最常见的坑](backtest-pitfalls.md) · [经济指标怎么看](economic-indicators.md) · [投资里的心理偏差](investing-psychology.md) · [我的几套交易系统：一张总览](my-trading-systems.md) · [常用技术指标用 Python 怎么算](python-quant-indicators.md) · [股票池的五个信号：规则、回测数字和怎么看](stock-pool-signals.md)
@@ -49,6 +51,8 @@
 **中东**（3）：[中东（三）：伊朗、海湾和大国——从 1953 年政变到 2026 年伊朗战争](uw-mideast-iran-gulf.md) · [中东（二）：以色列和巴勒斯坦——两个民族、一块土地](uw-mideast-israel-palestine.md) · [中东（一）：宗教、民族、边界和石油——读懂中东的底图](uw-mideast-overview.md)
 
 **中国史**（3）：[中国近代史（一）：从鸦片战争到辛亥革命（1840–1912）](uw-china-late-qing.md) · [中国近代史（三）：1949 年以后](uw-china-prc.md) · [中国近代史（二）：民国时代（1912–1949）](uw-china-republic.md)
+
+**历史**（3）：[华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md) · [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md) · [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md)
 
 **电脑**（3）：[家庭网络入门（IP、DHCP、DNS、端口、WiFi）](home-network-basics.md) · [家里主机的备份方案（3-2-1、restic、自动化）](homelab-backup.md) · [USB-C 充电头和线怎么选（PD、PPS、e-marker）](usb-pd-and-cables.md)
 
@@ -74,7 +78,9 @@
 
 **露营**（2）：[露营入门：南加州去哪露营、怎么订、带什么](camping-basics.md) · [吃什么、背什么：徒步和露营的食物、水、炉头、背包与穿衣](outdoor-food-and-pack.md)
 
-**音乐**（2）：[音乐 Top 500（按国家分类）](top500-music.md) · [Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
+**乐理**（1）：[乐理基础（音高、音程、调式、和弦、节奏、曲式）](music-theory-basics.md)
+
+**入门**（1）：[怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md)
 
 **动物**（1）：[南加州野外的动植物风险：蛇、狮、熊、蜱虫、毒橡树](socal-wildlife-plants.md)
 
@@ -114,8 +120,16 @@
 
 **装备**（1）：[吃什么、背什么：徒步和露营的食物、水、炉头、背包与穿衣](outdoor-food-and-pack.md)
 
+**赏析**（1）：[经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md)
+
 ## 更新日志
 
+- 2026-10-26 新增 [华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md)
+- 2026-10-26 新增 [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md)
+- 2026-10-26 新增 [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md)
+- 2026-10-26 新增 [怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md)
+- 2026-10-26 新增 [经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md)
+- 2026-10-26 新增 [乐理基础（音高、音程、调式、和弦、节奏、曲式）](music-theory-basics.md)
 - 2026-10-25 更新 [电影 Top 500（按国家分类）](top500-movies.md)
 - 2026-10-25 更新 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-10-20 新增 [背景资料：特朗普称将花 4 亿美元支持共和党中期选举（2026-10-20）](bg-2026-trump-midterm-400m.md)
@@ -140,9 +154,3 @@
 - 2026-10-20 新增 [看国际关系的三副眼镜：现实主义、自由主义、建构主义](uw-politics-ir-theories.md)
 - 2026-10-20 新增 [政治制度有哪几种：民主、威权、总统制、议会制](uw-politics-regimes.md)
 - 2026-10-20 新增 [国家和政府：政府到底是用来做什么的](uw-politics-state.md)
-- 2026-10-20 新增 [美国政治是怎么运作的](uw-politics-us-system.md)
-- 2026-10-20 新增 [美国史（五）：21 世纪的美国（2000–2026）](uw-us-history-21st.md)
-- 2026-10-20 新增 [美国史（二）：西进、奴隶制与南北战争（1800–1877）](uw-us-history-civil-war.md)
-- 2026-10-20 新增 [美国史（一）：从殖民地到建国（1607–1800）](uw-us-history-founding.md)
-- 2026-10-20 新增 [美国史（四）：战后的美国（1945–2000）](uw-us-history-postwar.md)
-- 2026-10-20 新增 [美国史（三）：工业强国与世界大国（1877–1945）](uw-us-history-rise.md)
