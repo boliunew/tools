@@ -1,16 +1,16 @@
 {
- "date": "2026-10-25",
- "kind": "易错",
- "en": "I'd like to take a day off",
- "zh": "我想请假",
- "by": "口语更常说 take a day off 或 take some time off",
- "line": "✗ I want to ask for leave → ✓ I'd like to take a day off",
+ "date": "2026-10-26",
+ "kind": "习语",
+ "en": "Every cloud has a silver lining",
+ "zh": "柳暗花明",
+ "by": "坏事里也有希望",
+ "line": "Every cloud has a silver lining",
  "word": {
-  "w": "promptly",
-  "ph": "'prɒmptli",
-  "zh": "adv. 敏捷地，迅速地",
-  "ex": "Would you please replace the broken one promptly?",
-  "exzh": "请快点把碎了的那个换掉好吗？"
+  "w": "patrol",
+  "ph": "pә'trәul",
+  "zh": "n. 巡逻，巡逻员，侦察队；v. 巡逻，巡视",
+  "ex": "Policeman patrolled the streets ahorseback.",
+  "exzh": "警察骑着马在街上巡逻。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
