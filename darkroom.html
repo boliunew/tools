@@ -1585,12 +1585,8 @@ $("#bSave").addEventListener("click", async () => {
         blob = new Blob([spliceExif(await blob.arrayBuffer(), app1)], {type});
       }
     }
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
     const stem = fileName.replace(/\.[^.]+$/,"") || "photo";
-    a.download = `${stem}_暗房.${fmt}`;
-    a.click();
-    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+    SaveSheet.show(blob, `${stem}_暗房.${fmt}`, {w:ow, h:oh});
   } catch(err){
     console.error(err);
     alert("导出失败：" + (err && err.message ? err.message : err));
@@ -1599,6 +1595,7 @@ $("#bSave").addEventListener("click", async () => {
   }
 });
 </script>
+<script src="savesheet.js?v=1"></script>
 <script src="nav.js?v=39" defer></script>
 </body>
 </html>

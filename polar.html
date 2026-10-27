@@ -370,26 +370,25 @@ h3{font-size:15px;margin:2px 0 8px}
   st.addEventListener('pointerup', function () { dragging = false; });
   st.addEventListener('pointercancel', function () { dragging = false; });
 
-  // 保存：按原图尺寸（最长边最多 4096）重新算一遍
+  // 保存：按原图尺寸（最长边最多 4096）重新算一遍，做好以后交给保存面板
+  var saving = false;
   $('bSave').onclick = function () {
-    if (!img) return;
+    if (!img || saving) return;
+    saving = true; var btn = this; btn.disabled = true; btn.textContent = '⏳ 处理中…';
     $('busy').style.display = 'block';
     setTimeout(function () {
-      var sz = fit(img.width || img.naturalWidth, img.height || img.naturalHeight, MAXE);
-      var c = toCanvas(img, sz[0], sz[1]), B = prep(c), ctx = c.getContext('2d'), od = ctx.createImageData(sz[0], sz[1]);
-      render(B, P, od); ctx.putImageData(od, 0, 0);
-      c.toBlob(function (blob) {
-        $('busy').style.display = 'none';
-        var name = fname + '-偏光.jpg';
-        var file = null; try { file = new File([blob], name, { type: 'image/jpeg' }); } catch (e) { }
-        if (file && navigator.canShare && navigator.canShare({ files: [file] }) && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-          navigator.share({ files: [file], title: name }).catch(function () { });
-        } else {
-          var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
-          document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
-        }
-      }, 'image/jpeg', 0.92);
-    }, 30);
+      function done() { saving = false; btn.disabled = false; btn.textContent = '💾 保存图片'; $('busy').style.display = 'none'; }
+      try {
+        var sz = fit(img.width || img.naturalWidth, img.height || img.naturalHeight, MAXE);
+        var c = toCanvas(img, sz[0], sz[1]), B = prep(c), ctx = c.getContext('2d'), od = ctx.createImageData(sz[0], sz[1]);
+        render(B, P, od); ctx.putImageData(od, 0, 0);
+        c.toBlob(function (blob) {
+          done();
+          if (!blob) { alert('图片太大，手机内存不够。换张小一点的图试试。'); return; }
+          SaveSheet.show(blob, fname + '-偏光.jpg', { w: sz[0], h: sz[1] });
+        }, 'image/jpeg', 0.92);
+      } catch (e) { done(); alert('保存失败：' + (e && e.message || e)); }
+    }, 50);
   };
 
   // 示例图：有雾的海边，太阳在水面上的反光
@@ -424,6 +423,7 @@ h3{font-size:15px;margin:2px 0 8px}
   sync();
 })();
 </script>
+<script src="savesheet.js?v=1"></script>
 <script src="nav.js?v=39" defer></script>
 </body>
 </html>
