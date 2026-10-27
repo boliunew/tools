@@ -75,7 +75,7 @@ h3{font-size:15px;margin:2px 0 8px}
     </div>
   </div>
   <input type="file" id="file" accept="image/*" hidden>
-  <div class="hint">照片只在你的手机或电脑上处理，不会上传。</div>
+  <div class="hint">照片只在你的手机或电脑上处理，不会上传。想同时调曝光、裁剪、锐化？用 <a href="darkroom.html">🎞️ 暗房</a>，里面也有「偏光」面板。</div>
 </div>
 
 <div id="work" hidden>
@@ -266,7 +266,7 @@ h3{font-size:15px;margin:2px 0 8px}
         var v = mx, s = mx > 0 ? (mx - mn) / mx : 0, h = hue(r, g, b, mx, mn);
         if (sky > 0 && sm > 0) {
           var cw = 1 - ss(0.12, 0.04, s);   // 白云（几乎无色）基本不压
-          v *= 1 - 0.28 * sky * sm * cw; s *= 1 + 0.55 * sky * sm * cw;
+          v *= 1 - 0.26 * sky * sm * cw; s *= 1 + 0.38 * sky * sm * cw;
         }
         if (sat > 0) {
           var fw = (1 - ss(40, 80, Math.abs(h - 140)));   // 绿到青蓝：草木和水
@@ -424,6 +424,6 @@ h3{font-size:15px;margin:2px 0 8px}
   sync();
 })();
 </script>
-<script src="nav.js?v=38" defer></script>
+<script src="nav.js?v=39" defer></script>
 </body>
 </html>

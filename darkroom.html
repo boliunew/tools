@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>暗房 · 照片微调</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#161920">
+<style>
+:root{
+  --ink-900:#101216; --ink-850:#161920; --ink-800:#1B1F27; --ink-750:#222732;
+  --ink-700:#2B313D; --line:#333A47; --stage:#0B0C0F;
+  --text:#E7EAEF; --muted:#8A93A2; --dim:#5E6675;
+  --amber:#E9A13B; --amber-soft:rgba(233,161,59,.16);
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,"Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,"Roboto Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--ink-900);color:var(--text);font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;overflow:hidden}
+button,input,select{font-family:inherit;color:inherit}
+button{background:none;border:none;cursor:pointer}
+
+#app{height:100dvh;display:flex;flex-direction:column}
+.bar{height:52px;flex:none;display:flex;align-items:center;gap:14px;padding:0 16px;
+  border-bottom:1px solid var(--line);background:var(--ink-850)}
+.brand{display:flex;align-items:baseline;gap:8px;font-size:15px;font-weight:600;letter-spacing:.06em}
+.brand em{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;
+  color:var(--dim);text-transform:uppercase}
+.filename{flex:1;min-width:0;font-family:var(--mono);font-size:11px;color:var(--dim);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .acts{display:flex;gap:6px;flex:none}
+.tbtn{height:30px;padding:0 12px;border-radius:6px;font-size:12.5px;color:var(--muted);
+  border:1px solid transparent;transition:background .12s,color .12s}
+.tbtn:hover{background:var(--ink-750);color:var(--text)}
+.tbtn:active,.tbtn.on{background:var(--amber-soft);color:var(--amber)}
+.tbtn:disabled{opacity:.35;cursor:default}
+.tbtn:disabled:hover{background:none;color:var(--muted)}
+.tbtn.hero{border-color:var(--line);color:var(--amber);display:flex;align-items:center;gap:6px}
+.tbtn.hero svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round}
+.tbtn.hero:hover{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+.tbtn.hero:disabled{color:var(--muted)}
+
+main{flex:1;min-height:0;display:flex}
+.stage{flex:1;min-width:0;position:relative;background:var(--stage);display:flex;
+  align-items:center;justify-content:center;padding:22px;
+  background-image:radial-gradient(120% 90% at 50% 0%,#15171C 0%,#0B0C0F 70%)}
+.frame{position:relative;line-height:0;box-shadow:0 18px 50px rgba(0,0,0,.55);touch-action:none}
+canvas{display:block;border-radius:2px}
+.tag{position:absolute;left:10px;top:10px;padding:3px 8px;border-radius:4px;
+  background:rgba(10,11,14,.78);color:var(--amber);font-family:var(--mono);
+  font-size:10px;letter-spacing:.14em;opacity:0;transition:opacity .1s;pointer-events:none}
+.tag.show{opacity:1}
+.splitlab{position:absolute;top:10px;padding:3px 8px;border-radius:4px;
+  background:rgba(10,11,14,.78);font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;pointer-events:none;display:none}
+.splitlab.show{display:block}
+#labA{left:10px;color:var(--amber)} #labB{right:10px;color:var(--muted)}
+
+.drop{position:absolute;inset:22px;border:1px dashed var(--line);border-radius:8px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  text-align:center;padding:24px;transition:border-color .15s,background .15s}
+.drop.hot{border-color:var(--amber);background:var(--amber-soft)}
+.drop h1{font-size:17px;font-weight:600;letter-spacing:.02em}
+.drop p{font-size:12.5px;color:var(--muted);line-height:1.8}
+.drop kbd{font-family:var(--mono);font-size:11px;background:var(--ink-750);
+  border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+.pick{margin-top:4px;height:34px;padding:0 18px;border-radius:6px;background:var(--amber);
+  color:#191204;font-size:13px;font-weight:600}
+.hint{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
+
+.cropper{position:absolute;inset:0;display:none;touch-action:none}
+.cropper.on{display:block}
+.crect{position:absolute;box-shadow:0 0 0 9999px rgba(8,9,12,.62);cursor:move;
+  outline:1px solid rgba(255,255,255,.85)}
+.crect .grid{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.crect .grid::before,.crect .grid::after{content:"";position:absolute;inset:0}
+.crect .grid::before{border-left:1px solid rgba(255,255,255,.5);
+  border-right:1px solid rgba(255,255,255,.5);left:33.333%;right:33.333%}
+.crect .grid::after{border-top:1px solid rgba(255,255,255,.5);
+  border-bottom:1px solid rgba(255,255,255,.5);top:33.333%;bottom:33.333%}
+.h{position:absolute;width:30px;height:30px;touch-action:none}
+.h[data-h$="w"]{left:-15px}.h[data-h$="e"]{right:-15px}
+.h[data-h^="n"]{top:-15px}.h[data-h^="s"]{bottom:-15px}
+.h[data-h="n"],.h[data-h="s"]{left:50%;margin-left:-15px}
+.h[data-h="w"],.h[data-h="e"]{top:50%;margin-top:-15px}
+.h[data-h="nw"],.h[data-h="se"]{cursor:nwse-resize}
+.h[data-h="ne"],.h[data-h="sw"]{cursor:nesw-resize}
+.h[data-h="n"],.h[data-h="s"]{cursor:ns-resize}
+.h[data-h="w"],.h[data-h="e"]{cursor:ew-resize}
+.h::after,.h::before{content:"";position:absolute;background:#fff;border-radius:1px}
+.h[data-h="nw"]::after,.h[data-h="ne"]::after,.h[data-h="sw"]::after,.h[data-h="se"]::after{
+  width:16px;height:3px;top:13.5px;left:7px}
+.h[data-h="nw"]::before,.h[data-h="ne"]::before,.h[data-h="sw"]::before,.h[data-h="se"]::before{
+  width:3px;height:16px;top:7px;left:13.5px}
+.h[data-h="n"]::after,.h[data-h="s"]::after{width:22px;height:3px;left:4px;top:13.5px}
+.h[data-h="n"]::before,.h[data-h="s"]::before{display:none}
+.h[data-h="w"]::after,.h[data-h="e"]::after{width:3px;height:22px;top:4px;left:13.5px}
+.h[data-h="w"]::before,.h[data-h="e"]::before{display:none}
+
+.rail{width:322px;flex:none;background:var(--ink-850);border-left:1px solid var(--line);
+  display:flex;flex-direction:column;min-height:0}
+.rail.locked{opacity:.35;pointer-events:none}
+
+.hgram{flex:none;padding:10px 14px 8px;border-bottom:1px solid var(--line);background:var(--ink-800)}
+.hgram canvas{width:100%;height:58px;display:block;border-radius:3px;background:#0D0F13}
+.hgram .meta{display:flex;justify-content:space-between;margin-top:5px;
+  font-family:var(--mono);font-size:9.5px;color:var(--dim);letter-spacing:.1em}
+.hgram .meta .warn{color:var(--amber)}
+
+.presets{flex:none;padding:12px 0 12px 14px;border-bottom:1px solid var(--line);
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.presets::-webkit-scrollbar{display:none}
+.chip{flex:none;height:27px;padding:0 12px;border-radius:14px;border:1px solid var(--line);
+  font-size:12px;color:var(--muted);transition:.12s;white-space:nowrap}
+.chip:hover{border-color:var(--dim);color:var(--text)}
+.chip.on{background:var(--amber);border-color:var(--amber);color:#191204;font-weight:600}
+.presets .chip:last-child{margin-right:14px}
+
+.diag{display:none;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--ink-800);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);line-height:1.7}
+.diag.show{display:block}
+.diag.stale{opacity:.45}
+.diag .stale{color:var(--dim);font-style:normal;margin-left:6px}
+.diag b{color:var(--amber);font-weight:500;letter-spacing:.16em;margin-right:8px}
+.scenes{display:none;padding:10px 0 10px 14px;border-bottom:1px solid var(--line);
+  gap:6px;overflow-x:auto;scrollbar-width:none;background:var(--ink-800)}
+.scenes::-webkit-scrollbar{display:none}
+.scenes .chip:last-child{margin-right:14px}
+.tbtn.hero.solid{background:var(--amber);color:#191204;border-color:var(--amber);font-weight:600}
+.tbtn.hero.solid:hover{background:var(--amber);filter:brightness(1.08);color:#191204}
+.tbtn.hero.solid:disabled{background:none;color:var(--muted);border-color:var(--line)}
+
+.tabs{flex:none;display:flex;padding:0 14px;border-bottom:1px solid var(--line)}
+.tab{flex:1;height:42px;font-size:13px;color:var(--muted);position:relative;transition:color .12s}
+.tab:hover{color:var(--text)}
+.tab.on{color:var(--amber)}
+.tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--amber)}
+
+.panes{flex:1;min-height:0;overflow-y:auto;padding:6px 14px 18px}
+.panes::-webkit-scrollbar{width:8px}
+.panes::-webkit-scrollbar-thumb{background:var(--ink-700);border-radius:4px}
+.pane{display:none}
+.pane.on{display:block}
+
+.group{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--dim);
+  text-transform:uppercase;margin:16px 0 6px}
+.group:first-child{margin-top:12px}
+
+.sl{padding:7px 0}
+.sl .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+.sl .name{font-size:12.5px;color:var(--muted);cursor:pointer;user-select:none}
+.sl .val{font-family:var(--mono);font-size:11.5px;color:var(--dim);font-variant-numeric:tabular-nums}
+.sl.dirty .name{color:var(--text)}
+.sl.dirty .val{color:var(--amber)}
+.sl .wrap{position:relative;height:22px}
+.sl .track{position:absolute;top:10px;left:0;right:0;height:2px;background:var(--ink-700);border-radius:1px}
+.sl .fill{position:absolute;top:10px;height:2px;background:var(--amber);border-radius:1px}
+.sl .notch{position:absolute;top:7px;width:1px;height:8px;background:var(--line)}
+.sl input{position:absolute;inset:0;width:100%;height:22px;-webkit-appearance:none;
+  appearance:none;background:transparent;cursor:pointer}
+.sl input::-webkit-slider-thumb{-webkit-appearance:none;width:19px;height:19px;border-radius:50%;
+  background:var(--text);border:none;box-shadow:0 1px 3px rgba(0,0,0,.6);cursor:grab}
+.sl input:active::-webkit-slider-thumb{background:var(--amber);cursor:grabbing}
+.sl input::-moz-range-thumb{width:19px;height:19px;border-radius:50%;background:var(--text);
+  border:none;cursor:grab}
+.sl input:focus-visible{outline:2px solid var(--amber);outline-offset:2px;border-radius:11px}
+
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.gbtn{height:36px;flex:1;min-width:64px;border-radius:6px;border:1px solid var(--line);
+  font-size:12px;color:var(--muted);transition:.12s;display:flex;align-items:center;
+  justify-content:center;gap:5px}
+.gbtn:hover{border-color:var(--dim);color:var(--text)}
+.gbtn.on{border-color:var(--amber);color:var(--amber);background:var(--amber-soft)}
+.gbtn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+
+.out{flex:none;border-top:1px solid var(--line);padding:12px 14px;background:var(--ink-800)}
+.out .line{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.out .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--dim);
+  text-transform:uppercase;width:46px;flex:none}
+.seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{height:28px;padding:0 11px;font-size:11.5px;color:var(--muted);font-family:var(--mono)}
+.seg button.on{background:var(--amber);color:#191204;font-weight:600}
+.qwrap{flex:1;display:flex;align-items:center;gap:8px}
+.qwrap input{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--ink-700);
+  border-radius:1px;cursor:pointer}
+.qwrap input::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
+  border-radius:50%;background:var(--text)}
+.qwrap input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--text);border:none}
+.qwrap span{font-family:var(--mono);font-size:11px;color:var(--dim);width:26px;text-align:right}
+.chk{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);cursor:pointer}
+.chk input{width:15px;height:15px;accent-color:var(--amber);cursor:pointer}
+.save{width:100%;height:40px;border-radius:7px;background:var(--amber);color:#191204;
+  font-size:13.5px;font-weight:600;letter-spacing:.02em;transition:filter .12s;margin-top:3px}
+.save:hover{filter:brightness(1.08)}
+.save:disabled{opacity:.5;cursor:default}
+.dims{margin-top:8px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.6}
+.dims .note{color:var(--amber)}
+
+.pnote{font-size:11.5px;color:var(--dim);line-height:1.7;margin-top:12px}
+@media (max-width:820px){
+  main{flex-direction:column}
+  .stage{padding:12px;min-height:34dvh}
+  .rail{width:auto;border-left:none;border-top:1px solid var(--line);max-height:56dvh}
+  .bar{padding:0 10px;gap:8px;height:48px}
+  .brand em,.filename{display:none}
+  .brand{white-space:nowrap;flex:none}
+  .bar .acts{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+  .bar .acts::-webkit-scrollbar{display:none}
+  .tbtn{flex:none;white-space:nowrap}
+  .tbtn{padding:0 9px;font-size:12px}
+  .drop{inset:12px}
+  .hgram{padding:8px 14px 6px}
+  .hgram canvas{height:46px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="bar">
+    <a class="brand" href="index.html" style="color:inherit;text-decoration:none" title="回工具箱首页">暗房<em>Darkroom</em></a>
+    <div class="filename" id="fname"></div>
+    <div class="acts">
+      <button class="tbtn hero solid" id="bBeauty" disabled><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>一键美化</button>
+      <button class="tbtn hero" id="bAuto" disabled><svg viewBox="0 0 24 24"><path d="M4 12h4l3-7 3 14 3-7h4"/></svg>还原校正</button>
+      <button class="tbtn" id="bSplit" disabled>分屏</button>
+      <button class="tbtn" id="bCompare" disabled>看原图</button>
+      <button class="tbtn" id="bReset" disabled>重置</button>
+      <button class="tbtn" id="bOpen">打开</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="stage" id="stage">
+      <div class="drop" id="drop">
+        <div class="hint">本地处理 · 不上传 · 无外部依赖</div>
+        <h1>把照片拖进来</h1>
+        <p>也可以粘贴剪贴板里的图 <kbd>Ctrl</kbd> <kbd>V</kbd><br>支持 JPG / PNG / WebP / AVIF</p>
+        <button class="pick" id="bPick">选择文件</button>
+      </div>
+      <div class="frame" id="frame" style="display:none">
+        <canvas id="view"></canvas>
+        <div class="cropper" id="cropper">
+          <div class="crect" id="crect">
+            <div class="grid"></div>
+            <span class="h" data-h="nw"></span><span class="h" data-h="n"></span><span class="h" data-h="ne"></span>
+            <span class="h" data-h="w"></span><span class="h" data-h="e"></span>
+            <span class="h" data-h="sw"></span><span class="h" data-h="s"></span><span class="h" data-h="se"></span>
+          </div>
+        </div>
+        <div class="tag" id="tag">原图</div>
+        <div class="splitlab" id="labA">调整后</div>
+        <div class="splitlab" id="labB">原图</div>
+      </div>
+    </section>
+
+    <aside class="rail locked" id="rail">
+      <div class="hgram">
+        <canvas id="hist" width="600" height="120"></canvas>
+        <div class="meta"><span id="hL">—</span><span id="hR">—</span></div>
+      </div>
+      <div class="presets" id="presets"></div>
+      <div class="scenes" id="scenes"></div>
+      <div class="diag" id="diag"></div>
+      <nav class="tabs" id="tabs">
+        <button class="tab on" data-p="light">光</button>
+        <button class="tab" data-p="color">色</button>
+        <button class="tab" data-p="tex">质感</button>
+        <button class="tab" data-p="polar">偏光</button>
+        <button class="tab" data-p="crop">构图</button>
+      </nav>
+      <div class="panes">
+        <div class="pane on" data-p="light"></div>
+        <div class="pane" data-p="color"></div>
+        <div class="pane" data-p="tex"></div>
+        <div class="pane" data-p="polar"></div>
+        <div class="pane" data-p="crop">
+          <div class="group">比例</div>
+          <div class="row" id="ratios"></div>
+          <div class="group">翻转与旋转</div>
+          <div class="row">
+            <button class="gbtn" data-g="rl"><svg viewBox="0 0 24 24"><path d="M3 8h11a5 5 0 0 1 0 10H8"/><path d="M6 5 3 8l3 3"/></svg>左转</button>
+            <button class="gbtn" data-g="rr"><svg viewBox="0 0 24 24"><path d="M21 8H10a5 5 0 0 0 0 10h6"/><path d="M18 5l3 3-3 3"/></svg>右转</button>
+          </div>
+          <div class="row">
+            <button class="gbtn" data-g="fh"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M8 7 4 12l4 5z"/><path d="M16 7l4 5-4 5z"/></svg>水平翻转</button>
+            <button class="gbtn" data-g="fv"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M7 8 12 4l5 4z"/><path d="M7 16l5 4 5-4z"/></svg>垂直翻转</button>
+          </div>
+          <div class="group">校正</div>
+          <div id="cropSliders"></div>
+          <div class="row" style="margin-top:10px">
+            <button class="gbtn" data-g="rc">还原构图</button>
+          </div>
+        </div>
+      </div>
+      <div class="out">
+        <div class="line">
+          <span class="lab">格式</span>
+          <div class="seg" id="fmt">
+            <button class="on" data-f="jpg">JPG</button>
+            <button data-f="png">PNG</button>
+          </div>
+          <label class="chk" style="margin-left:auto" id="exifWrap">
+            <input type="checkbox" id="keepExif" checked>拍摄信息
+          </label>
+        </div>
+        <div class="line" id="qline">
+          <span class="lab">画质</span>
+          <div class="qwrap">
+            <input type="range" id="q" min="50" max="100" value="92">
+            <span id="qv">92</span>
+          </div>
+        </div>
+        <div class="line">
+          <span class="lab">长边</span>
+          <div class="seg" id="size">
+            <button class="on" data-s="0">原图</button>
+            <button data-s="4096">4K</button>
+            <button data-s="2048">2048</button>
+            <button data-s="1080">1080</button>
+          </div>
+        </div>
+        <button class="save" id="bSave">导出图片</button>
+        <div class="dims" id="dims"></div>
+      </div>
+    </aside>
+  </main>
+</div>
+<input type="file" id="file" accept="image/*" hidden>
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const clamp = (v,a,b) => v<a?a:v>b?b:v;
+
+/* ===== sRGB <-> 线性光 查表 ===== */
+const LIN = new Float32Array(256);
+for (let i=0;i<256;i++){
+  const s = i/255;
+  LIN[i] = s<=0.04045 ? s/12.92 : Math.pow((s+0.055)/1.055, 2.4);
+}
+const GN = 4096;
+const GAM = new Uint8ClampedArray(GN+1);
+for (let i=0;i<=GN;i++){
+  const l = i/GN;
+  const s = l<=0.0031308 ? l*12.92 : 1.055*Math.pow(l,1/2.4)-0.055;
+  GAM[i] = s*255;
+}
+const toG = l => GAM[l<=0 ? 0 : (l>=1 ? GN : (l*GN)|0)];
+
+/* ===== 状态 ===== */
+const DEF = {
+  exposure:0, contrast:0, highlights:0, shadows:0, whites:0, blacks:0,
+  temp:0, tint:0, vibrance:0, saturation:0,
+  sharpen:0, sradius:30, sthresh:8, fade:0, grain:0, vignette:0, angle:0,
+  polar:0, prot:0, psky:60, pglare:50, phaze:30, plens:1
+};
+let adj = {...DEF};
+let geo = {rot:0, flipH:false, flipV:false};
+let crop = {x:0, y:0, w:1, h:1};
+let ratio = null;
+
+let img = null, base = null, fileName = "", srcBuf = null, capped = false;
+let cropMode = false, comparing = false, splitOn = false, splitX = 0.5;
+let raw = null, rawKey = "";
+
+const MAX_BASE_PX = 16.7e6;   // iOS Safari canvas 上限兜底
+const SHARP_REF   = 1200;     // 锐化半径的参考长边，保证预览=导出
+
+const SLIDERS = {
+  light:[["曝光","exposure",-100,100],["对比度","contrast",-100,100],
+    ["高光","highlights",-100,100],["阴影","shadows",-100,100],
+    ["白色","whites",-100,100],["黑色","blacks",-100,100]],
+  color:[["色温","temp",-100,100],["色调","tint",-100,100],
+    ["自然饱和度","vibrance",-100,100],["饱和度","saturation",-100,100]],
+  tex:[["锐化","sharpen",0,100],["锐化半径","sradius",5,100],["锐化阈值","sthresh",0,100],
+    ["褪色","fade",0,100],["颗粒","grain",0,100],["暗角","vignette",-100,100]],
+  polar:[["偏光强度","polar",0,100],["镜片角度","prot",0,180],["天空加深","psky",0,100],
+    ["压反光","pglare",0,100],["降低灰雾","phaze",0,100]],
+  crop:[["旋转校正","angle",-45,45]]
+};
+const SL_DEF = {sradius:30, sthresh:8, psky:60, pglare:50, phaze:30};
+
+const PRESETS = {
+  "原图":{},
+  "通透":{exposure:6,contrast:12,highlights:-16,shadows:20,vibrance:18,sharpen:22},
+  "暖阳":{exposure:8,temp:20,highlights:-12,shadows:14,vibrance:14,fade:8},
+  "冷冽":{temp:-22,contrast:14,blacks:-10,vibrance:12,sharpen:14},
+  "胶片":{fade:32,contrast:12,temp:8,saturation:-10,blacks:12,grain:22},
+  "浓郁":{contrast:18,saturation:16,vibrance:14,blacks:-12,vignette:20},
+  "黑白":{saturation:-100,contrast:18,shadows:10,sharpen:18,grain:12},
+  "偏光墨镜":{polar:100,plens:1,sharpen:10}
+};
+const SCENES = {
+  doc:     "记录 / 文档",
+  night:   "夜景 / 弱光",
+  backlit: "逆光 / 高反差",
+  portrait:"人像",
+  sky:     "风光 / 天空",
+  foliage: "绿意 / 植物",
+  highkey: "明亮 / 高调",
+  general: "通用"
+};
+const RATIOS = [["自由",null],["原图","src"],["1:1",1],["4:5",.8],["5:4",1.25],
+                ["3:2",1.5],["2:3",2/3],["16:9",16/9],["9:16",9/16]];
+
+const LENSES = [
+  {n:"无色",      m:[1,1,1],          con:0.10, dim:0},
+  {n:"灰色",      m:[1,1,1],          con:0.14, dim:0.22},
+  {n:"茶色",      m:[1.07,0.97,0.78], con:0.20, dim:0.18},
+  {n:"墨绿 G-15", m:[0.97,1.02,0.94], con:0.16, dim:0.22},
+  {n:"冰蓝镀膜",  m:[0.92,0.99,1.09], con:0.14, dim:0.16},
+  {n:"玫瑰",      m:[1.07,0.93,0.95], con:0.16, dim:0.14},
+  {n:"琥珀黄",    m:[1.08,1.02,0.72], con:0.20, dim:0.06}
+];
+
+/* ===== 撤销历史 ===== */
+const hist = {stack:[], i:-1, lock:false};
+const snap = () => JSON.stringify({adj, geo, crop, ratio});
+function commit(){
+  if (hist.lock || !base) return;
+  const s = snap();
+  if (hist.stack[hist.i] === s) return;
+  hist.stack.length = hist.i+1;
+  hist.stack.push(s);
+  if (hist.stack.length > 60) hist.stack.shift();
+  hist.i = hist.stack.length-1;
+}
+function restore(k){
+  if (k < 0 || k >= hist.stack.length) return;
+  hist.i = k;
+  const s = JSON.parse(hist.stack[k]);
+  adj = s.adj; geo = s.geo; crop = s.crop; ratio = s.ratio;
+  hist.lock = true;
+  syncSliders(); syncButtons(); markPreset();
+  hist.lock = false;
+  refreshDiagState();
+  buildBase(); draw();
+}
+
+/* ===== 界面 ===== */
+function slider(name,key,min,max){
+  const el = document.createElement("div");
+  el.className = "sl"; el.dataset.k = key;
+  el.innerHTML = `<div class="top"><span class="name">${name}</span><span class="val">0</span></div>
+    <div class="wrap"><div class="track"></div><div class="fill"></div><div class="notch"></div>
+    <input type="range" min="${min}" max="${max}" value="0" step="1" aria-label="${name}"></div>`;
+  const input = el.querySelector("input");
+  const zeroOf = () => SL_DEF[key] ?? 0;
+  input.addEventListener("input", () => { adj[key] = +input.value; paintSlider(el); onAdjust(); });
+  input.addEventListener("change", commit);
+  const reset = () => { adj[key] = zeroOf(); input.value = adj[key]; paintSlider(el); onAdjust(); commit(); };
+  el.addEventListener("dblclick", reset);
+  el.querySelector(".name").addEventListener("click", reset);
+  return el;
+}
+function paintSlider(el){
+  const input = el.querySelector("input");
+  const min = +input.min, max = +input.max, v = +input.value;
+  const home = SL_DEF[el.dataset.k] ?? 0;
+  const zero = (home-min)/(max-min), pos = (v-min)/(max-min);
+  const pad = 9.5;
+  const px = p => `calc(${pad}px + (100% - ${pad*2}px) * ${p})`;
+  const fill = el.querySelector(".fill");
+  fill.style.left = px(Math.min(zero,pos));
+  fill.style.width = `calc((100% - ${pad*2}px) * ${Math.abs(pos-zero)})`;
+  el.querySelector(".notch").style.left = px(zero);
+  el.querySelector(".val").textContent = (home===0 && v>0 ? "+" : "") + v;
+  el.classList.toggle("dirty", v !== home);
+}
+function syncSliders(){
+  $$(".sl").forEach(el => {
+    const input = el.querySelector("input");
+    input.value = adj[el.dataset.k] ?? 0;
+    paintSlider(el);
+  });
+  $$("#lenses .gbtn").forEach(b => b.classList.toggle("on", +b.dataset.lens === (adj.plens|0)));
+}
+function syncButtons(){
+  $$("#ratios .gbtn").forEach(x => {
+    const v = x.dataset.r;
+    const cur = ratio === null ? "null" : String(ratio);
+    x.classList.toggle("on", v === cur);
+  });
+  $("[data-g='fh']").classList.toggle("on", geo.flipH);
+  $("[data-g='fv']").classList.toggle("on", geo.flipV);
+}
+
+(function build(){
+  for (const [pane,list] of Object.entries(SLIDERS)){
+    const host = pane === "crop" ? $("#cropSliders") : $(`.pane[data-p="${pane}"]`);
+    if (pane !== "crop"){
+      const g = document.createElement("div");
+      g.className = "group";
+      g.textContent = {light:"影调", color:"色彩平衡", tex:"细节", polar:"偏光镜（模拟）"}[pane];
+      host.appendChild(g);
+    }
+    list.forEach(s => host.appendChild(slider(...s)));
+  }
+  {
+    const host = $(`.pane[data-p="polar"]`);
+    const g = document.createElement("div"); g.className = "group"; g.textContent = "镜片颜色";
+    const row = document.createElement("div"); row.className = "row"; row.id = "lenses";
+    LENSES.forEach((L,i) => {
+      const b = document.createElement("button");
+      b.className = "gbtn"; b.dataset.lens = i; b.textContent = L.n;
+      b.style.flex = "0 0 auto"; b.style.minWidth = "58px"; b.style.padding = "0 10px";
+      row.appendChild(b);
+    });
+    const note = document.createElement("p"); note.className = "pnote";
+    note.innerHTML = "模拟偏光镜在合适光线和角度下常见的观感：蓝天加深、白云更突出、非金属表面的反光变弱、远景对比更强。真偏光镜的效果因太阳方向、反光角度和镜片而异；「降低灰雾」是图像处理算法，不是偏光镜本身的功能。镜片角度是简化规则：0° 模拟效果最强，90° 最弱。<br>被反光盖住的内容拍下来就丢了，软件找不回来。";
+    host.appendChild(g); host.appendChild(row); host.appendChild(note);
+  }
+  Object.entries(SCENES).forEach(([k,label]) => {
+    const b = document.createElement("button");
+    b.className = "chip"; b.textContent = label; b.dataset.sc = k;
+    $("#scenes").appendChild(b);
+  });
+  Object.keys(PRESETS).forEach((n,i) => {
+    const b = document.createElement("button");
+    b.className = "chip" + (i===0?" on":""); b.textContent = n; b.dataset.preset = n;
+    $("#presets").appendChild(b);
+  });
+  RATIOS.forEach(([n,v],i) => {
+    const b = document.createElement("button");
+    b.className = "gbtn" + (i===0?" on":""); b.textContent = n; b.dataset.r = String(v);
+    b.style.flex = "0 0 auto"; b.style.minWidth = "58px"; b.style.padding = "0 10px";
+    $("#ratios").appendChild(b);
+  });
+  adj = {...DEF}; syncSliders();
+})();
+
+/* ===== 影调 LUT（曝光在线性光里做） ===== */
+function buildLUT(a){
+  const lut = new Uint8ClampedArray(256);
+  const gain = Math.pow(2, (a.exposure/100)*1.15);
+  const c = a.contrast/100, cf = 1 + (c>=0 ? c*0.9 : c*0.8);
+  const hi = a.highlights/100, sh = a.shadows/100;
+  const wh = a.whites/100, bl = a.blacks/100, fade = a.fade/100;
+  for (let i=0;i<256;i++){
+    let v = gain !== 1 ? toG(LIN[i]*gain)/255 : i/255;   // 曝光：线性光乘法
+    v = (v-0.5)*cf + 0.5;
+    const s = Math.max(0,1-v), h = Math.max(0,v);
+    v += sh*0.5*s*s;
+    v += hi*0.5*h*h;
+    v += wh*0.28*h*h*h;
+    v += bl*0.28*s*s*s;
+    if (fade) v = v*(1-0.16*fade) + 0.17*fade;
+    lut[i] = clamp(v,0,1)*255;
+  }
+  return lut;
+}
+
+/* ===== 主像素处理 ===== */
+function processPixels(d,w,h,a,y0,y1,cx,cy,maxD){
+  const lut = buildLUT(a);
+  const temp = a.temp/100, tint = a.tint/100;
+  const sat = a.saturation/100, vib = a.vibrance/100;
+  const vig = a.vignette/100, grain = a.grain/100;
+  const tR = temp*26, tB = -temp*26, gG = -tint*18, gRB = tint*9;
+  const gAmt = grain*70;
+  const doCol = vib !== 0 || sat !== 0;
+
+  for (let y=y0;y<y1;y++){
+    const dy = y-cy;
+    for (let x=0;x<w;x++){
+      const i = (y*w+x)*4;
+      let r = d[i], g = d[i+1], b = d[i+2];
+
+      if (temp){ r += tR; b += tB; }
+      if (tint){ g += gG; r += gRB; b += gRB; }
+
+      r = lut[r<0?0:r>255?255:r|0];
+      g = lut[g<0?0:g>255?255:g|0];
+      b = lut[b<0?0:b>255?255:b|0];
+
+      // 饱和度 / 暗角在线性光里算，避免高饱和色相偏移
+      if (doCol || vig){
+        let lr = LIN[r|0], lg = LIN[g|0], lb = LIN[b|0];
+        if (doCol){
+          const lum = 0.2126*lr + 0.7152*lg + 0.0722*lb;
+          if (vib){
+            const mx = r>g?(r>b?r:b):(g>b?g:b);
+            const mn = r<g?(r<b?r:b):(g<b?g:b);
+            const f = 1 + vib*(1-(mx-mn)/255)*1.15;
+            lr = lum+(lr-lum)*f; lg = lum+(lg-lum)*f; lb = lum+(lb-lum)*f;
+          }
+          if (sat){
+            const f = 1+sat;
+            lr = lum+(lr-lum)*f; lg = lum+(lg-lum)*f; lb = lum+(lb-lum)*f;
+          }
+        }
+        if (vig){
+          const dx = x-cx;
+          let t = Math.sqrt(dx*dx+dy*dy)/maxD;
+          t = clamp((t-0.32)/0.68,0,1); t = t*t*(3-2*t);
+          const m = 1 - vig*0.85*t;
+          lr *= m; lg *= m; lb *= m;
+        }
+        r = toG(lr); g = toG(lg); b = toG(lb);
+      }
+
+      if (grain){
+        const n = (Math.random()-0.5)*gAmt;
+        r += n; g += n; b += n;
+      }
+      d[i] = r; d[i+1] = g; d[i+2] = b;
+    }
+  }
+}
+
+/* ===== Unsharp Mask（亮度通道 + 阈值 + 半径随分辨率缩放） ===== */
+function boxBlur(src,tmp,w,h,r){
+  const inv = 1/(2*r+1);
+  for (let y=0;y<h;y++){
+    const o = y*w;
+    let acc = src[o]*(r+1);
+    for (let i=1;i<=r;i++) acc += src[o+Math.min(i,w-1)];
+    for (let x=0;x<w;x++){
+      tmp[o+x] = acc*inv;
+      acc += src[o+Math.min(x+r+1,w-1)] - src[o+Math.max(x-r,0)];
+    }
+  }
+  for (let x=0;x<w;x++){
+    let acc = tmp[x]*(r+1);
+    for (let i=1;i<=r;i++) acc += tmp[Math.min(i,h-1)*w+x];
+    for (let y=0;y<h;y++){
+      src[y*w+x] = acc*inv;
+      acc += tmp[Math.min(y+r+1,h-1)*w+x] - tmp[Math.max(y-r,0)*w+x];
+    }
+  }
+}
+function unsharp(d,w,h,amount,radiusPx,thresh){
+  const n = w*h;
+  const lum = new Float32Array(n), blur = new Float32Array(n), tmp = new Float32Array(n);
+  for (let i=0,p=0;i<n;i++,p+=4)
+    lum[i] = blur[i] = 0.2126*d[p] + 0.7152*d[p+1] + 0.0722*d[p+2];
+  const r = Math.max(1, Math.round(radiusPx));
+  boxBlur(blur,tmp,w,h,r); boxBlur(blur,tmp,w,h,r); boxBlur(blur,tmp,w,h,r);
+  for (let i=0,p=0;i<n;i++,p+=4){
+    const det = lum[i]-blur[i];
+    if (det > thresh || det < -thresh){
+      const add = det*amount;
+      d[p] += add; d[p+1] += add; d[p+2] += add;
+    }
+  }
+}
+function sharpRadius(w,h){
+  return clamp((adj.sradius/30) * (Math.max(w,h)/SHARP_REF), 1, 24);
+}
+function renderInto(data,w,h,P){
+  if (adj.polar > 0) polarApply(data,w,h,adj,P,0,h);
+  const cx = (w-1)/2, cy = (h-1)/2;
+  const maxD = Math.sqrt(cx*cx+cy*cy) || 1;
+  processPixels(data,w,h,adj,0,h,cx,cy,maxD);
+  if (adj.sharpen > 0)
+    unsharp(data,w,h,(adj.sharpen/100)*1.4, sharpRadius(w,h), adj.sthresh*0.3);
+}
+
+/* ===== 偏光镜模拟（在所有调整之前做，相当于镜头前的一片镜片） ===== */
+const sstep = (a,b,x) => { let t=(x-a)/(b-a); t=t<0?0:t>1?1:t; return t*t*(3-2*t); };
+function hueOf(r,g,b,mx,mn){
+  const d = mx-mn; if (d < 1e-6) return 0;
+  let h = mx===r ? ((g-b)/d)%6 : mx===g ? (b-r)/d+2 : (r-g)/d+4;
+  h *= 60; return h < 0 ? h+360 : h;
+}
+function gridMin(a,w,h){
+  const o = new Float32Array(a.length);
+  for (let y=0;y<h;y++) for (let x=0;x<w;x++){
+    let m = 1;
+    for (let j=-1;j<=1;j++) for (let i=-1;i<=1;i++){
+      const yy=y+j, xx=x+i; if (yy<0||yy>=h||xx<0||xx>=w) continue;
+      const v = a[yy*w+xx]; if (v<m) m=v;
+    }
+    o[y*w+x] = m;
+  }
+  return o;
+}
+function gridBlur(a,w,h){
+  const o = new Float32Array(a.length);
+  for (let y=0;y<h;y++) for (let x=0;x<w;x++){
+    let s=0, n=0;
+    for (let j=-1;j<=1;j++) for (let i=-1;i<=1;i++){
+      const yy=y+j, xx=x+i; if (yy<0||yy>=h||xx<0||xx>=w) continue;
+      s += a[yy*w+xx]; n++;
+    }
+    o[y*w+x] = s/n;
+  }
+  return o;
+}
+// 只和画面有关、和参数无关：暗通道（估雾）与天空概率，存在低分辨率网格里
+function polarPrep(d,w,h){
+  const cs = Math.max(4, Math.round(Math.max(w,h)/160));
+  const gw = Math.ceil(w/cs), gh = Math.ceil(h/cs);
+  let dcG = new Float32Array(gw*gh).fill(1), skyG = new Float32Array(gw*gh);
+  const cnt = new Float32Array(gw*gh);
+  const step = Math.max(1, Math.floor(cs/4));          // 大图隔点采样，网格够用
+  for (let y=0;y<h;y+=step){
+    const gy = (y/cs)|0, yw = 1 - 0.75*sstep(0.3,0.85,y/h);
+    for (let x=0;x<w;x+=step){
+      const p = (y*w+x)*4;
+      const r=d[p]/255, g=d[p+1]/255, b=d[p+2]/255;
+      const mx = r>g?(r>b?r:b):(g>b?g:b), mn = r<g?(r<b?r:b):(g<b?g:b);
+      const s = mx>0 ? (mx-mn)/mx : 0;
+      const gi = gy*gw + ((x/cs)|0);
+      if (mn < dcG[gi]) dcG[gi] = mn;
+      const dh = Math.abs(hueOf(r,g,b,mx,mn)-215);
+      skyG[gi] += (1-sstep(25,55,dh)) * sstep(0.06,0.22,s) * sstep(0.3,0.55,mx) * yw;
+      cnt[gi]++;
+    }
+  }
+  for (let i=0;i<skyG.length;i++) skyG[i] = cnt[i] ? skyG[i]/cnt[i] : 0;
+  dcG = gridBlur(gridBlur(gridMin(dcG,gw,gh),gw,gh),gw,gh);
+  skyG = gridBlur(gridBlur(skyG,gw,gh),gw,gh);
+  const sorted = Array.from(dcG).sort((a,b)=>b-a);
+  const A = clamp(sorted[Math.floor(sorted.length*0.01)] + 0.08, 0.7, 1);
+  return {cs,gw,gh,dcG,skyG,A};
+}
+function gridAt(G,P,x,y){
+  const {gw,gh,cs} = P;
+  let fx = (x+0.5)/cs-0.5, fy = (y+0.5)/cs-0.5;
+  fx = fx<0?0:fx>gw-1?gw-1:fx; fy = fy<0?0:fy>gh-1?gh-1:fy;
+  const x0=fx|0, y0=fy|0, x1=Math.min(x0+1,gw-1), y1=Math.min(y0+1,gh-1), tx=fx-x0, ty=fy-y0;
+  const a=G[y0*gw+x0], b=G[y0*gw+x1], c=G[y1*gw+x0], e=G[y1*gw+x1];
+  const top = a+(b-a)*tx, bot = c+(e-c)*tx;
+  return top+(bot-top)*ty;
+}
+function polarApply(d,w,h,a,P,y0,y1){
+  const amt = a.polar/100; if (!(amt>0) || !P) return;
+  const L = LENSES[a.plens|0] || LENSES[0];
+  const th = a.prot*Math.PI/180, k = 0.12 + 0.88*Math.cos(th)*Math.cos(th);
+  const sky = a.psky/100*k, gl = a.pglare/100*k, hz = a.phaze/100*k, sat = 0.35*k;
+  const con = L.con*(0.5+0.5*k), dimf = 1-0.4*L.dim;
+  const tr = L.m[0]*dimf, tg = L.m[1]*dimf, tb = L.m[2]*dimf, A = P.A;
+  for (let y=y0;y<y1;y++){
+    for (let x=0;x<w;x++){
+      const q = (y*w+x)*4;
+      const r0=d[q]/255, g0=d[q+1]/255, b0=d[q+2]/255;
+      let r=r0, g=g0, b=b0;
+      let sm = gridAt(P.skyG,P,x,y); sm = sm>0.01 ? Math.min(1,sm*1.6) : 0;
+      if (hz>0){                                   // 天空本来就亮，别当成雾
+        let t = 1 - 0.75*hz*(1-0.85*sm)*gridAt(P.dcG,P,x,y)/A; if (t<0.6) t=0.6;
+        r=(r-A)/t+A; g=(g-A)/t+A; b=(b-A)/t+A;
+        if (r<0) r=0; if (g<0) g=0; if (b<0) b=0;
+      }
+      let mx = r0>g0?(r0>b0?r0:b0):(g0>b0?g0:b0), mn = r0<g0?(r0<b0?r0:b0):(g0<b0?g0:b0);
+      const s0 = mx>0 ? (mx-mn)/mx : 0, L0 = 0.2126*r0+0.7152*g0+0.0722*b0;
+      const gm = sstep(0.7,0.96,L0)*(1-sstep(0.1,0.3,s0));       // 又亮又没颜色：多半是反光
+      if (gm>0 && gl>0){ const f = 1-0.4*gl*gm*(1-0.9*sm); r*=f; g*=f; b*=f; }   // 白云不算
+      mx = r>g?(r>b?r:b):(g>b?g:b); mn = r<g?(r<b?r:b):(g<b?g:b);
+      let v = mx, s = mx>0 ? (mx-mn)/mx : 0;
+      const hu = hueOf(r,g,b,mx,mn);
+      if (sky>0 && sm>0){ const cw = 1-sstep(0.12,0.04,s); v *= 1-0.26*sky*sm*cw; s *= 1+0.38*sky*sm*cw; }
+      s *= 1 + sat*(0.3+0.35*(1-sstep(40,80,Math.abs(hu-140))));
+      if (s>1) s=1; if (v>1) v=1;
+      const c = v*s, hh = hu/60, X = c*(1-Math.abs(hh%2-1)), m = v-c;
+      let R,G,B;
+      if (hh<1){R=c;G=X;B=0;} else if (hh<2){R=X;G=c;B=0;} else if (hh<3){R=0;G=c;B=X;}
+      else if (hh<4){R=0;G=X;B=c;} else if (hh<5){R=X;G=0;B=c;} else {R=c;G=0;B=X;}
+      r=R+m; g=G+m; b=B+m;
+      r += con*(r*r*(3-2*r)-r); g += con*(g*g*(3-2*g)-g); b += con*(b*b*(3-2*b)-b);
+      r*=tr; g*=tg; b*=tb;
+      d[q]   = (r0+(r-r0)*amt)*255;
+      d[q+1] = (g0+(g-g0)*amt)*255;
+      d[q+2] = (b0+(b-b0)*amt)*255;
+    }
+  }
+}
+let polarCache = {key:"", P:null};
+
+/* ===== 几何 ===== */
+function buildBase(){
+  if (!img) return;
+  let w0 = img.naturalWidth, h0 = img.naturalHeight;
+  let s = 1;
+  capped = false;
+  if (w0*h0 > MAX_BASE_PX){ s = Math.sqrt(MAX_BASE_PX/(w0*h0)); capped = true; }
+  const dw = Math.round(w0*s), dh = Math.round(h0*s);
+  const swap = geo.rot % 180 !== 0;
+  const bw = swap ? dh : dw, bh = swap ? dw : dh;
+  base = document.createElement("canvas");
+  base.width = bw; base.height = bh;
+  const c = base.getContext("2d");
+  c.imageSmoothingQuality = "high";
+  c.translate(bw/2, bh/2);
+  const rad = adj.angle*Math.PI/180;
+  const cos = Math.abs(Math.cos(rad)), sin = Math.abs(Math.sin(rad));
+  c.scale(Math.max((bw*cos+bh*sin)/bw, (bw*sin+bh*cos)/bh), Math.max((bw*cos+bh*sin)/bw, (bw*sin+bh*cos)/bh));
+  c.rotate(rad);
+  c.rotate(geo.rot*Math.PI/180);
+  c.scale(geo.flipH?-1:1, geo.flipV?-1:1);
+  c.drawImage(img, -dw/2, -dh/2, dw, dh);
+  rawKey = "";
+}
+
+/* ===== 直方图 ===== */
+const hc = $("#hist"), hctx = hc.getContext("2d");
+function drawHistogram(data,w,h){
+  const R = new Float64Array(64), G = new Float64Array(64), B = new Float64Array(64);
+  const n = w*h;
+  const step = Math.max(1, Math.floor(n/120000));
+  let cnt = 0, lo = 0, hi = 0;
+  for (let i=0;i<n;i+=step){
+    const p = i*4;
+    const r = data[p], g = data[p+1], b = data[p+2];
+    R[r>>2]++; G[g>>2]++; B[b>>2]++;
+    const l = 0.2126*r + 0.7152*g + 0.0722*b;
+    if (l <= 4) lo++; if (l >= 250) hi++;
+    cnt++;
+  }
+  let mx = 0;
+  for (let i=1;i<63;i++) mx = Math.max(mx,R[i],G[i],B[i]);
+  mx = mx || 1;
+  const W = hc.width, H = hc.height;
+  hctx.clearRect(0,0,W,H);
+  hctx.globalCompositeOperation = "lighter";
+  const bar = W/64;
+  [[R,"#FF4D4D"],[G,"#4DFF7A"],[B,"#4D8CFF"]].forEach(([arr,col]) => {
+    hctx.fillStyle = col; hctx.globalAlpha = .55;
+    hctx.beginPath(); hctx.moveTo(0,H);
+    for (let i=0;i<64;i++){
+      const y = H - Math.min(1, Math.sqrt(arr[i]/mx))*H;
+      hctx.lineTo(i*bar, y); hctx.lineTo((i+1)*bar, y);
+    }
+    hctx.lineTo(W,H); hctx.closePath(); hctx.fill();
+  });
+  hctx.globalCompositeOperation = "source-over";
+  hctx.globalAlpha = 1;
+  const pl = lo/cnt*100, ph = hi/cnt*100;
+  const L = $("#hL"), Rn = $("#hR");
+  L.textContent = "死黑 " + pl.toFixed(2) + "%";
+  Rn.textContent = "死白 " + ph.toFixed(2) + "%";
+  L.className = pl > 1 ? "warn" : "";
+  Rn.className = ph > 1 ? "warn" : "";
+}
+
+/* ===== 绘制 ===== */
+const view = $("#view");
+const ctx = view.getContext("2d", {willReadFrequently:true});
+let pending = false;
+function schedule(){
+  if (pending) return;
+  pending = true;
+  requestAnimationFrame(() => { pending = false; draw(); });
+}
+function draw(){
+  if (!base) return;
+  const region = cropMode ? {x:0,y:0,w:1,h:1} : crop;
+  const bw = base.width, bh = base.height;
+  const sx = Math.round(region.x*bw), sy = Math.round(region.y*bh);
+  const sw = Math.max(1,Math.round(region.w*bw)), sh = Math.max(1,Math.round(region.h*bh));
+
+  const stage = $("#stage");
+  const availW = Math.max(120, stage.clientWidth - 44);
+  const availH = Math.max(120, stage.clientHeight - 44);
+  const fit = Math.min(availW/sw, availH/sh, 1);
+  const dispW = Math.max(40,Math.round(sw*fit)), dispH = Math.max(40,Math.round(sh*fit));
+  const dpr = Math.min(window.devicePixelRatio||1, 2);
+  const px = Math.min(dpr, Math.max(1, 1500/Math.max(dispW,dispH)));
+  const pw = Math.round(dispW*px), ph = Math.round(dispH*px);
+
+  const frame = $("#frame");
+  frame.style.width = dispW+"px"; frame.style.height = dispH+"px";
+  view.style.width = dispW+"px"; view.style.height = dispH+"px";
+
+  const key = [sx,sy,sw,sh,pw,ph].join("|");
+  if (key !== rawKey){
+    view.width = pw; view.height = ph;
+    ctx.imageSmoothingQuality = "high";
+    ctx.clearRect(0,0,pw,ph);
+    ctx.drawImage(base, sx,sy,sw,sh, 0,0,pw,ph);
+    raw = ctx.getImageData(0,0,pw,ph);
+    rawKey = key;
+  }
+
+  if (comparing){
+    ctx.putImageData(raw,0,0);
+    drawHistogram(raw.data, raw.width, raw.height);
+  } else {
+    const out = new ImageData(new Uint8ClampedArray(raw.data), raw.width, raw.height);
+    if (adj.polar > 0 && polarCache.key !== rawKey){ polarCache = {key:rawKey, P:polarPrep(raw.data, raw.width, raw.height)}; }
+    renderInto(out.data, out.width, out.height, polarCache.P);
+    drawHistogram(out.data, out.width, out.height);
+    if (splitOn && !cropMode){
+      const cut = Math.round(splitX*out.width);
+      const src = raw.data, dst = out.data;
+      for (let y=0;y<out.height;y++){
+        let p = (y*out.width+cut)*4;
+        for (let x=cut;x<out.width;x++,p+=4){
+          dst[p]=src[p]; dst[p+1]=src[p+1]; dst[p+2]=src[p+2];
+        }
+      }
+      ctx.putImageData(out,0,0);
+      ctx.fillStyle = "rgba(255,255,255,.9)";
+      ctx.fillRect(cut-1,0,2,out.height);
+    } else ctx.putImageData(out,0,0);
+  }
+
+  paintCrop();
+  const capNote = capped ? '<br><span class="note">超大图已降采样至 16MP 以兼容移动端</span>' : "";
+  $("#dims").innerHTML = `${Math.round(crop.w*bw)} × ${Math.round(crop.h*bh)} px` + capNote;
+}
+function onAdjust(){ markPreset(); refreshDiagState(); schedule(); }
+let resizeT;
+addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(()=>{rawKey="";draw();},120); });
+
+/* ===== 裁剪 ===== */
+const cropper = $("#cropper"), crect = $("#crect");
+function paintCrop(){
+  cropper.classList.toggle("on", cropMode);
+  if (!cropMode) return;
+  crect.style.left = crop.x*100+"%"; crect.style.top = crop.y*100+"%";
+  crect.style.width = crop.w*100+"%"; crect.style.height = crop.h*100+"%";
+}
+const targetRatio = () => ratio === null ? null : (ratio === "src" ? base.width/base.height : ratio);
+function fitRatio(){
+  const R = targetRatio();
+  if (!R || !base) return;
+  const bw = base.width, bh = base.height;
+  const cx = crop.x+crop.w/2, cy = crop.y+crop.h/2;
+  let w = crop.w, h = (w*bw)/(R*bh);
+  if (h>1){ h=1; w=(h*bh*R)/bw; }
+  if (w>1){ w=1; h=(w*bw)/(R*bh); }
+  crop.w=w; crop.h=h;
+  crop.x = clamp(cx-w/2,0,1-w); crop.y = clamp(cy-h/2,0,1-h);
+}
+let drag = null;
+cropper.addEventListener("pointerdown", e => {
+  const handle = e.target.dataset.h || (e.target.closest("#crect") ? "move" : null);
+  if (!handle) return;
+  e.preventDefault();
+  drag = {h:handle, box:cropper.getBoundingClientRect(), px:e.clientX, py:e.clientY, s:{...crop}};
+  cropper.setPointerCapture(e.pointerId);
+});
+cropper.addEventListener("pointermove", e => {
+  if (!drag) return;
+  const {box,s,h} = drag;
+  const dx = (e.clientX-drag.px)/box.width, dy = (e.clientY-drag.py)/box.height;
+  const MIN = 0.04;
+  if (h === "move"){
+    crop.x = clamp(s.x+dx,0,1-s.w); crop.y = clamp(s.y+dy,0,1-s.h);
+  } else {
+    let x0=s.x, y0=s.y, x1=s.x+s.w, y1=s.y+s.h;
+    if (h.includes("w")) x0 = clamp(s.x+dx,0,x1-MIN);
+    if (h.includes("e")) x1 = clamp(s.x+s.w+dx,x0+MIN,1);
+    if (h.includes("n")) y0 = clamp(s.y+dy,0,y1-MIN);
+    if (h.includes("s")) y1 = clamp(s.y+s.h+dy,y0+MIN,1);
+    const R = targetRatio();
+    if (R){
+      const bw = base.width, bh = base.height;
+      if (h === "n" || h === "s"){
+        let ww = Math.min(1,((y1-y0)*bh*R)/bw);
+        const cx = s.x+s.w/2;
+        x0 = clamp(cx-ww/2,0,1-ww); x1 = x0+ww;
+      } else {
+        let hh = Math.min(1,((x1-x0)*bw)/(R*bh));
+        if (h.includes("n")) y0 = y1-hh;
+        else if (h.includes("s")) y1 = y0+hh;
+        else { const cy = s.y+s.h/2; y0 = cy-hh/2; y1 = y0+hh; }
+        if (y0<0){ y1-=y0; y0=0; }
+        if (y1>1){ y0-=(y1-1); y1=1; }
+        if (y0<0) y0=0;
+      }
+    }
+    crop = {x:x0,y:y0,w:Math.max(MIN,x1-x0),h:Math.max(MIN,y1-y0)};
+  }
+  paintCrop();
+  $("#dims").textContent = `${Math.round(crop.w*base.width)} × ${Math.round(crop.h*base.height)} px`;
+});
+const endDrag = () => { if (drag){ drag=null; rawKey=""; commit(); draw(); } };
+cropper.addEventListener("pointerup", endDrag);
+cropper.addEventListener("pointercancel", endDrag);
+
+/* ===== 分屏拖动 ===== */
+const frameEl = $("#frame");
+let sdrag = false;
+frameEl.addEventListener("pointerdown", e => {
+  if (!splitOn || cropMode) return;
+  sdrag = true; frameEl.setPointerCapture(e.pointerId);
+  const r = frameEl.getBoundingClientRect();
+  splitX = clamp((e.clientX-r.left)/r.width,0,1); schedule();
+});
+frameEl.addEventListener("pointermove", e => {
+  if (!sdrag) return;
+  const r = frameEl.getBoundingClientRect();
+  splitX = clamp((e.clientX-r.left)/r.width,0,1); schedule();
+});
+["pointerup","pointercancel"].forEach(ev => frameEl.addEventListener(ev, () => sdrag = false));
+
+/* ===== 一键优化 ===== */
+function analyze(){
+  const bw = base.width, bh = base.height;
+  const sx = Math.round(crop.x*bw), sy = Math.round(crop.y*bh);
+  const sw = Math.max(1,Math.round(crop.w*bw)), sh = Math.max(1,Math.round(crop.h*bh));
+  const sc = Math.min(240/sw, 240/sh, 1);
+  const w = Math.max(1,Math.round(sw*sc)), h = Math.max(1,Math.round(sh*sc));
+  const c = document.createElement("canvas");
+  c.width=w; c.height=h;
+  const cc = c.getContext("2d",{willReadFrequently:true});
+  cc.drawImage(base, sx,sy,sw,sh, 0,0,w,h);
+  const d = cc.getImageData(0,0,w,h).data;
+
+  const H = new Float64Array(256);
+  let n=0, lumSum=0, satSum=0, mR=0,mG=0,mB=0,mN=0;
+  let hx=0, hy=0, hw=0;                       // 色相集中度
+  let green=0, blue=0, chroma=0;
+  let topL=0,topN=0, botL=0,botN=0, topBlue=0;
+  const skinMask = new Uint8Array(w*h);
+  let skinN = 0;
+  const topEnd = (h*0.38)|0, botStart = (h*0.62)|0;
+  for (let y=0;y<h;y++){
+    for (let x=0;x<w;x++){
+      const i=(y*w+x)*4;
+      const r=d[i], g=d[i+1], b=d[i+2];
+      const l=(0.2126*r+0.7152*g+0.0722*b)|0;
+      H[l]++; n++; lumSum+=l;
+      const mx=r>g?(r>b?r:b):(g>b?g:b), mn=r<g?(r<b?r:b):(g<b?g:b);
+      const s=(mx-mn)/255; satSum+=s;
+      if (y<topEnd){ topL+=l; topN++; if (b>r+12 && b>=g) topBlue++; }
+      else if (y>=botStart){ botL+=l; botN++; }
+      if (l>=35 && l<=225){
+        mR+=r; mG+=g; mB+=b; mN++;
+        if (s>0.12){
+          const hu=Math.atan2(1.7320508*(g-b), 2*r-g-b);
+          hx+=Math.cos(hu)*s; hy+=Math.sin(hu)*s; hw+=s;
+          chroma++;
+          if (g>r+8 && g>b+8) green++;
+          else if (b>r+8 && b>g) blue++;
+        }
+      }
+      if (r>95 && g>40 && b>20 && (mx-mn)>15 && r>g+15 && r>b && l>=60 && l<=235){
+        skinMask[y*w+x] = 1; skinN++;
+      }
+    }
+  }
+  // 顶部与全图纹理：天空平滑，车顶/棚顶/树冠高频 —— 用来挡掉天空误判
+  let topTex=0, topTexN=0, allTex=0, allTexN=0;
+  {
+    const L = o => { const i=o*4; return 0.2126*d[i]+0.7152*d[i+1]+0.0722*d[i+2]; };
+    for (let y=1;y<h-1;y++) for (let x=1;x<w-1;x++){
+      const lap = Math.abs(4*L(y*w+x) - L((y-1)*w+x) - L((y+1)*w+x) - L(y*w+x-1) - L(y*w+x+1));
+      allTex += lap; allTexN++;
+      if (y < topEnd){ topTex += lap; topTexN++; }
+    }
+  }
+  topTex = topTex/(topTexN||1); allTex = allTex/(allTexN||1);
+
+  // 肤色掩膜内的纹理：皮肤平滑，泥土/木头/纸箱高频 —— 用来挡掉肤色误判
+  let skinTex = 0;
+  if (skinN > 0){
+    let sum=0, cnt=0;
+    const L = o => { const i=o*4; return 0.2126*d[i]+0.7152*d[i+1]+0.0722*d[i+2]; };
+    for (let y=1;y<h-1;y++) for (let x=1;x<w-1;x++){
+      if (!skinMask[y*w+x]) continue;
+      const c = L(y*w+x);
+      sum += Math.abs(4*c - L((y-1)*w+x) - L((y+1)*w+x) - L(y*w+x-1) - L(y*w+x+1));
+      cnt++;
+    }
+    skinTex = cnt ? sum/cnt : 99;
+  }
+  const pct=p=>{let a=0;const t=n*p;for(let i=0;i<256;i++){a+=H[i];if(a>=t)return i;}return 255;};
+  let cl=0,ch=0,dm=0,hm=0,mm=0;
+  for(let i=0;i<=4;i++) cl+=H[i];
+  for(let i=250;i<256;i++) ch+=H[i];
+  for(let i=0;i<32;i++) dm+=H[i];
+  for(let i=224;i<256;i++) hm+=H[i];
+  for(let i=64;i<=192;i++) mm+=H[i];
+
+  // 白点估计：取最亮但未溢出的一档像素
+  const pHi = pct(0.88);
+  let wR=0,wG=0,wB=0,wN=0,wS=0;
+  for (let i=0;i<d.length;i+=4){
+    const r=d[i],g=d[i+1],b=d[i+2];
+    const l=0.2126*r+0.7152*g+0.0722*b;
+    if (l>=pHi && l<250){
+      wR+=r; wG+=g; wB+=b; wN++;
+      const mx=r>g?(r>b?r:b):(g>b?g:b), mn=r<g?(r<b?r:b):(g<b?g:b);
+      wS += (mx-mn)/(mx||1);                     // 白点自身饱和度
+    }
+  }
+  const mid=mN||1, wn=wN||1, chr=chroma||1;
+  return {
+    mean:lumSum/n/255, p1:pct(.01), p2:pct(.02), p98:pct(.98), p99:pct(.99),
+    clipLo:cl/n, clipHi:ch/n, darkMass:dm/n, highMass:hm/n, midMass:mm/n,
+    avgR:mR/mid, avgG:mG/mid, avgB:mB/mid,
+    wpR:wR/wn, wpG:wG/wn, wpB:wB/wn, wpOK:wN > n*0.02, wpSat:wS/wn,
+    sat:satSum/n, hasMid:mN>n*0.05,
+    hueConc: hw>0 ? Math.hypot(hx,hy)/hw : 0,
+    meanHue: hw>0 ? (Math.atan2(hy,hx)*180/Math.PI+360)%360 : -1,
+    greenFrac:green/chr, blueFrac:blue/chr,
+    skinFrac:skinN/n, skinTex,
+    topMean:topN?topL/topN/255:0, botMean:botN?botL/botN/255:0,
+    topBlueFrac:topN?topBlue/topN:0, topTex, allTex
+  };
+}
+
+/* ===== 场景识别 ===== */
+function classify(a){
+  const S = {};
+  S.night = (a.mean<0.30?1:0)*0.5 + clamp((a.darkMass-0.25)/0.30,0,1)*0.35
+          + clamp((0.03-a.highMass)/0.03,0,1)*0.15;
+  S.backlit = clamp((a.darkMass-0.15)/0.25,0,1)*0.45
+            + clamp((a.highMass-0.08)/0.20,0,1)*0.45
+            + clamp((0.55-a.midMass)/0.30,0,1)*0.10;
+  // 肤色必须同时满足占比与平滑度，否则泥土、木头、纸箱都会误判成人
+  S.portrait = (a.skinTex < 20 && a.skinFrac > 0.08)
+             ? clamp((a.skinFrac-0.06)/0.20,0,1) : 0;
+  // 真天空必须同时：平滑、比地面亮、偏蓝。缺一项就不是天空（车顶/棚顶会全中前两项之一）
+  const skyGate = a.topTex < 12 && a.topMean > a.botMean*1.05 && a.topBlueFrac > 0.25;
+  S.sky = skyGate
+        ? clamp((a.topBlueFrac-0.30)/0.45,0,1)*0.6 + clamp((a.topMean-a.botMean)/0.25,0,1)*0.4
+        : 0;
+  // 主色集中还不够，还得确认主色方向真的落在绿区，否则蓝天夜空也会命中
+  // 补光灯下的植物普遍偏黄绿，绿区要放宽到 50°；再用绿像素占比设底线挡掉夕阳/食物
+  const greenHue = a.meanHue >= 50 && a.meanHue <= 170;
+  S.foliage = clamp((a.greenFrac-0.25)/0.35,0,1)*0.5
+            + (greenHue && a.greenFrac > 0.15 ? clamp((a.hueConc-0.55)/0.35,0,1)*0.5 : 0);
+  // 亮度是硬门槛：暗部少不等于高调
+  S.highkey = a.mean>0.58
+            ? 0.5 + clamp((0.06-a.darkMass)/0.06,0,1)*0.5 : 0;
+  S.general = 0.30;
+  // "记录/文档"不参与自动判定：像素统计区分不开作业记录照和普通室内照，
+  // 实测两者分差只有 0.04，等于噪声。它只作为手动标签存在（选中后会被固定）。
+  let best="general", bs=-1;
+  for (const k in S) if (k !== "doc" && S[k]>bs){ bs=S[k]; best=k; }
+  return {scene:best, score:bs, all:S};
+}
+
+// 场景修饰：在实测基线之上叠加取向，而不是取代它
+const SCENE_MOD = {
+  night(o){
+    o.shadows = Math.min(o.shadows, 14);      // 剪影本来就该黑，别硬提
+    o.exposure = Math.min(o.exposure, 20);    // 夜就该像夜
+    o.blacks = clamp(o.blacks-5, -20, 20);
+    o.contrast += 6; o.vibrance += 10; o.sharpen = 12; o.vignette += 8;
+    o.temp = 0; o.tint = 0;                   // 夜间光源是现场氛围，不校
+    return "夜景：保留剪影与氛围，不强提暗部";
+  },
+  backlit(o){
+    o.shadows = clamp(o.shadows+14, 0, 42);
+    o.highlights = clamp(o.highlights-10, -40, 0);
+    o.contrast = Math.max(0, o.contrast-4);
+    o.vibrance += 6; o.sharpen = 12;
+    return "逆光：提暗部、压高光，找回两端细节";
+  },
+  portrait(o){
+    o.sharpen = 8; o.sthresh = 24;            // 别把毛孔锐出来
+    o.saturation = 0; o.vibrance += 6;
+    o.shadows = clamp(o.shadows+8, 0, 34);
+    o.contrast = Math.max(0, o.contrast-2);
+    o.blacks = Math.max(o.blacks, -6);
+    o.temp = Math.round(o.temp*0.5); o.tint = Math.round(o.tint*0.5);
+    return "人像：弱锐化保肤质，肤色偏移减半";
+  },
+  sky(o){
+    o.vibrance += 14; o.contrast += 6; o.sharpen = 20;
+    o.blacks = clamp(o.blacks-4, -20, 20);
+    o.highlights = clamp(o.highlights-6, -40, 0); o.vignette += 8;
+    return "风光：加通透度与层次";
+  },
+  foliage(o){
+    o.vibrance += 8; o.saturation -= 5;       // 绿叶已经很饱和，压一点防塑料感
+    o.sharpen = 16; o.temp = 0; o.tint = 0;
+    return "绿植：自然饱和替代全局饱和，跳过白平衡";
+  },
+  highkey(o){
+    o.highlights = clamp(o.highlights-12, -40, 0);
+    o.whites = Math.max(0, o.whites-6);
+    o.contrast += 8; o.vibrance += 6; o.sharpen = 14;
+    return "高调：收高光，防止大片死白";
+  },
+  doc(o){
+    // 目标是看得清，不是好看：不加暗角、不加饱和、暗部尽量提到可读
+    o.shadows = clamp(Math.max(o.shadows, 18), 0, 40);
+    o.highlights = clamp(Math.min(o.highlights, -8), -40, 0);
+    o.vignette = 0;
+    o.vibrance = Math.min(o.vibrance, 6);
+    o.saturation = 0;
+    o.contrast = clamp(o.contrast, 0, 12);
+    o.sharpen = 26; o.sthresh = 4;            // 标签、编号、字要锐得起来
+    return "记录：提可读性，不加暗角与饱和";
+  },
+  general(o){
+    o.vibrance += 5; o.contrast += 3; o.sharpen = 12;
+    return "";
+  }
+};
+
+let lastA = null, lastScene = null, pinnedScene = null;
+
+function baseline(a){
+  const out = {...DEF, angle:adj.angle, sradius:adj.sradius, sthresh:adj.sthresh,
+    polar:adj.polar, prot:adj.prot, psky:adj.psky, pglare:adj.pglare, phaze:adj.phaze, plens:adj.plens};
+
+  const key = Math.max(a.mean, 0.02);
+  const stops = clamp(Math.log2(clamp(0.46/key,0.5,2.0))*0.6, -0.6, 0.8);
+  out.exposure = Math.round(clamp(stops/1.15*100, -38, 42));
+  const eff = Math.min(1,(a.p98-a.p2)/255*Math.pow(2,stops));
+  out.contrast = Math.round(clamp((0.82-eff)*110, 0, 28));
+  out.shadows    =  Math.round(clamp((a.clipLo*100-0.5)*5 + (a.darkMass*100-10)*0.7, 0, 32));
+  out.highlights = -Math.round(clamp((a.clipHi*100-0.5)*7 + (a.highMass*100-12)*0.5, 0, 30));
+  out.blacks = -Math.round(clamp((a.p1-18)/3, 0, 14));
+  out.whites =  Math.round(clamp((234-a.p99)/3, 0, 14));
+
+  // ── 白平衡：白点估计 + 灰世界，取保守者；主色集中时降权 ──
+  // 两级判定：白点够中性就信白点；否则退回灰世界，并按色相集中度降权
+  let wbNote = "";
+  const trust = a.wpOK && a.wpSat < 0.12;
+  const conf = trust ? 1 : clamp((0.85-a.hueConc)/0.30, 0, 1)*0.7;
+  if (a.sat > 0.05 && a.hasMid && conf > 0.05){
+    const gwD = a.avgB-a.avgR, gwE = a.avgG-(a.avgR+a.avgB)/2;
+    const wpD = a.wpB-a.wpR, wpE = a.wpG-(a.wpR+a.wpB)/2;
+    let D, E;
+    if (trust){ D = wpD; E = wpE; }
+    else {
+      // 两种估计只在方向一致时才动手，取幅度较小的那个
+      const safe = (p,q) => (p>0)===(q>0) ? (Math.abs(p)<Math.abs(q)?p:q) : 0;
+      D = safe(gwD,wpD); E = safe(gwE,wpE);
+    }
+    const damp = trust ? 0.65 : 1;              // 可信也不做满，保留现场氛围
+    let t = D/0.52*0.5*conf*damp, i = E*0.9*conf*damp;
+    if (Math.abs(t)<4) t=0;
+    if (Math.abs(i)<4) i=0;
+    out.temp = Math.round(clamp(t,-24,24));
+    out.tint = Math.round(clamp(i,-18,18));
+    if (!trust && conf < 0.5 && (out.temp||out.tint)) wbNote = "无中性参考·白平衡已降权";
+  } else if (a.sat > 0.05) {
+    wbNote = "画面主色单一·已跳过白平衡";
+  }
+
+  out.vibrance = a.sat < 0.02 ? 0 : Math.round(clamp((0.18-a.sat)*140, 0, 22));
+  out.sharpen  = 14;
+  return {out, wbNote};
+}
+
+function tagsOf(out, wbNote){
+  const tags = [];
+  if (out.exposure>7) tags.push("整体偏暗"); else if (out.exposure<-7) tags.push("整体偏亮");
+  if (out.contrast>10) tags.push("反差平");
+  if (out.highlights<-8) tags.push("高光溢出");
+  if (out.shadows>12) tags.push("暗部发闷");
+  if (out.temp>7) tags.push("色温偏冷"); else if (out.temp<-7) tags.push("色温偏暖");
+  if (out.tint>7) tags.push("偏绿"); else if (out.tint<-7) tags.push("偏品红");
+  if (out.vibrance>10) tags.push("色彩发灰");
+  if (wbNote) tags.push(wbNote);
+  return tags;
+}
+
+// 一键优化：只做实测还原，不带取向
+function autoEnhance(){
+  if (!base) return;
+  lastA = analyze(); lastScene = null;
+  const {out, wbNote} = baseline(lastA);
+  const tags = tagsOf(out, wbNote);
+  adj = out;
+  applyAndShow(tags.length ? tags.join(" · ") : "影调已经比较均衡，只做了轻微提亮和锐化", null);
+}
+
+// 一键美化：实测还原 + 场景取向
+function beautify(forceScene){
+  if (!base) return;
+  if (!lastA || !forceScene) lastA = analyze();
+  const {out, wbNote} = baseline(lastA);
+  const c = classify(lastA);
+  const scene = forceScene || pinnedScene || c.scene;
+  lastScene = scene;
+  if (forceScene) pinnedScene = forceScene;
+  const note = SCENE_MOD[scene](out);
+  const pinNote = (pinnedScene && !forceScene) ? "（已固定，点其它标签可换）" : "";
+  // 场景修饰后统一收口
+  out.vibrance   = Math.round(clamp(out.vibrance,   -100, 60));
+  out.saturation = Math.round(clamp(out.saturation, -100, 60));
+  out.contrast   = Math.round(clamp(out.contrast,   -100, 60));
+  out.vignette   = Math.round(clamp(out.vignette,   -100, 60));
+  out.sharpen    = Math.round(clamp(out.sharpen,       0, 100));
+  adj = out;
+  const tags = tagsOf(out, wbNote);
+  const head = `<b>场景</b>${SCENES[scene]}${pinNote}` + (note ? " · " + note : "");
+  applyAndShow(tags.join(" · "), head, scene);
+}
+
+let sceneSnapshot = null;      // 场景生效瞬间的参数，用来判断之后有没有被手改
+
+function applyAndShow(body, head, scene){
+  syncSliders(); markPreset(); schedule(); commit();
+  const diag = $("#diag");
+  diag.dataset.head = head || "";
+  diag.dataset.body = body || "";
+  diag.innerHTML = (head ? head + "<br>" : "") + (body ? `<b>诊断</b>${body}` : "");
+  diag.classList.add("show");
+  diag.classList.remove("stale");
+  const row = $("#scenes");
+  row.style.display = scene ? "flex" : "none";
+  if (scene) $$("#scenes .chip").forEach(x => x.classList.toggle("on", x.dataset.sc === scene));
+  sceneSnapshot = JSON.stringify(adj);
+}
+
+// 参数被手动改动后，诊断文字就不再描述当前画面了 —— 标灰并说明
+function refreshDiagState(){
+  const diag = $("#diag");
+  if (!diag.classList.contains("show") || !sceneSnapshot) return;
+  const changed = JSON.stringify(adj) !== sceneSnapshot;
+  if (changed === diag.classList.contains("stale")) return;
+  diag.classList.toggle("stale", changed);
+  diag.innerHTML = (diag.dataset.head ? diag.dataset.head + "<br>" : "")
+    + (diag.dataset.body ? `<b>诊断</b>${diag.dataset.body}` : "")
+    + (changed ? `<i class="stale">（已手动调整，以下为当时的判断）</i>` : "");
+}
+
+function clearScene(){
+  sceneSnapshot = null; lastScene = null; pinnedScene = null;
+  $("#diag").classList.remove("show","stale");
+  $("#scenes").style.display = "none";
+}
+
+$("#bAuto").addEventListener("click", autoEnhance);
+$("#bBeauty").addEventListener("click", () => beautify(null));
+$("#scenes").addEventListener("click", e => {
+  const c = e.target.closest(".chip"); if (!c) return;
+  beautify(c.dataset.sc);
+});
+
+/* ===== 面板事件 ===== */
+$("#tabs").addEventListener("click", e => {
+  const t = e.target.closest(".tab"); if (!t) return;
+  $$(".tab").forEach(x => x.classList.toggle("on", x===t));
+  $$(".pane").forEach(x => x.classList.toggle("on", x.dataset.p===t.dataset.p));
+  const want = t.dataset.p === "crop";
+  if (want !== cropMode){ cropMode = want; rawKey=""; draw(); }
+});
+$("#presets").addEventListener("click", e => {
+  const c = e.target.closest(".chip"); if (!c) return;
+  const p = PRESETS[c.dataset.preset];
+  adj = {...DEF, ...p, angle:adj.angle, sradius:adj.sradius, sthresh:adj.sthresh};
+  syncSliders();
+  $$("#presets .chip").forEach(x => x.classList.toggle("on", x===c));
+  clearScene();
+  schedule(); commit();
+});
+function markPreset(){
+  const norm = o => JSON.stringify({...o, angle:0, sradius:0, sthresh:0});
+  const cur = norm(adj);
+  let hit = null;
+  for (const [n,p] of Object.entries(PRESETS))
+    if (norm({...DEF,...p}) === cur){ hit = n; break; }
+  $$("#presets .chip").forEach(x => x.classList.toggle("on", x.dataset.preset === hit));
+}
+$("#ratios").addEventListener("click", e => {
+  const b = e.target.closest(".gbtn"); if (!b) return;
+  $$("#ratios .gbtn").forEach(x => x.classList.toggle("on", x===b));
+  const v = b.dataset.r;
+  ratio = v==="null" ? null : (v==="src" ? "src" : +v);
+  fitRatio(); rawKey=""; draw(); commit();
+});
+$(".pane[data-p='crop']").addEventListener("click", e => {
+  const b = e.target.closest(".gbtn[data-g]"); if (!b) return;
+  const g = b.dataset.g;
+  if (g==="rl"){ geo.rot=(geo.rot+270)%360; crop={x:0,y:0,w:1,h:1}; }
+  if (g==="rr"){ geo.rot=(geo.rot+90)%360; crop={x:0,y:0,w:1,h:1}; }
+  if (g==="fh"){ geo.flipH=!geo.flipH; b.classList.toggle("on",geo.flipH); }
+  if (g==="fv"){ geo.flipV=!geo.flipV; b.classList.toggle("on",geo.flipV); }
+  if (g==="rc"){
+    geo={rot:0,flipH:false,flipV:false}; adj.angle=0; ratio=null; crop={x:0,y:0,w:1,h:1};
+    syncSliders(); syncButtons();
+  }
+  buildBase(); fitRatio(); draw(); commit();
+});
+$(".pane[data-p='polar']").addEventListener("click", e => {
+  const b = e.target.closest("#lenses .gbtn"); if (!b) return;
+  adj.plens = +b.dataset.lens;
+  if (!adj.polar) adj.polar = 100;                  // 选镜片就顺手打开偏光
+  syncSliders(); onAdjust(); commit();
+});
+$("#cropSliders").addEventListener("input", () => { buildBase(); fitRatio(); draw(); });
+
+/* ===== 对比 / 分屏 ===== */
+function compare(on){
+  if (!base || comparing===on) return;
+  comparing = on;
+  $("#tag").classList.toggle("show", on);
+  $("#bCompare").classList.toggle("on", on);
+  draw();
+}
+const bC = $("#bCompare");
+bC.addEventListener("pointerdown", () => compare(true));
+["pointerup","pointerleave","pointercancel"].forEach(ev => bC.addEventListener(ev,()=>compare(false)));
+$("#bSplit").addEventListener("click", () => {
+  splitOn = !splitOn;
+  $("#bSplit").classList.toggle("on", splitOn);
+  $("#labA").classList.toggle("show", splitOn);
+  $("#labB").classList.toggle("show", splitOn);
+  schedule();
+});
+$("#bReset").addEventListener("click", () => {
+  adj = {...DEF}; geo = {rot:0,flipH:false,flipV:false};
+  crop = {x:0,y:0,w:1,h:1}; ratio = null;
+  syncSliders(); syncButtons(); markPreset(); buildBase(); draw(); commit();
+  $("#diag").classList.remove("show");
+});
+
+addEventListener("keydown", e => {
+  const tag = (e.target.tagName||"").toLowerCase();
+  if (e.code==="Space" && !e.repeat && base && tag!=="input"){ e.preventDefault(); compare(true); }
+  if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==="z"){
+    e.preventDefault();
+    e.shiftKey ? restore(hist.i+1) : restore(hist.i-1);
+  }
+  if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==="y"){ e.preventDefault(); restore(hist.i+1); }
+});
+addEventListener("keyup", e => { if (e.code==="Space") compare(false); });
+
+/* ===== 载入 ===== */
+$("#bPick").addEventListener("click", ()=>$("#file").click());
+$("#bOpen").addEventListener("click", ()=>$("#file").click());
+$("#file").addEventListener("change", e => { if (e.target.files[0]) load(e.target.files[0]); });
+const drop = $("#drop");
+["dragenter","dragover"].forEach(ev => $("#stage").addEventListener(ev, e => {
+  e.preventDefault(); drop.classList.add("hot"); }));
+["dragleave","drop"].forEach(ev => $("#stage").addEventListener(ev, e => {
+  e.preventDefault(); drop.classList.remove("hot"); }));
+$("#stage").addEventListener("drop", e => {
+  const f = [...e.dataTransfer.files].find(f => f.type.startsWith("image/"));
+  if (f) load(f);
+});
+addEventListener("paste", e => {
+  const it = [...(e.clipboardData?.items||[])].find(i => i.type.startsWith("image/"));
+  if (it) load(it.getAsFile());
+});
+
+async function load(file){
+  srcBuf = null;
+  if (/jpe?g$/i.test(file.type) || /\.jpe?g$/i.test(file.name||"")){
+    try { srcBuf = await file.arrayBuffer(); } catch(_){}
+  }
+  const url = URL.createObjectURL(file);
+  const im = new Image();
+  im.onload = () => {
+    URL.revokeObjectURL(url);
+    img = im; fileName = file.name || "剪贴板图片";
+    $("#fname").textContent = `${fileName} · ${im.naturalWidth}×${im.naturalHeight}`;
+    drop.style.display = "none";
+    $("#frame").style.display = "";
+    $("#rail").classList.remove("locked");
+    ["bCompare","bReset","bAuto","bBeauty","bSplit"].forEach(id => $("#"+id).disabled = false);
+    clearScene();
+    lastA = null;
+    $("#exifWrap").style.visibility = srcBuf ? "visible" : "hidden";
+    crop = {x:0,y:0,w:1,h:1}; ratio = null;
+    geo = {rot:0,flipH:false,flipV:false};
+    adj = {...DEF};
+    hist.stack = []; hist.i = -1;
+    syncSliders(); syncButtons(); markPreset();
+    buildBase(); draw(); commit();
+  };
+  im.onerror = () => {
+    URL.revokeObjectURL(url);
+    drop.querySelector("h1").textContent = "这张图打不开";
+    drop.querySelector("p").textContent = "浏览器无法解码这个文件（HEIC / RAW 通常不支持）。换一张 JPG 或 PNG 试试。";
+  };
+  im.src = url;
+}
+
+/* ===== EXIF 搬运 ===== */
+function findApp1(buf){
+  const d = new DataView(buf);
+  if (d.byteLength < 4 || d.getUint16(0) !== 0xFFD8) return null;
+  let off = 2;
+  while (off+4 <= d.byteLength){
+    const marker = d.getUint16(off);
+    if ((marker & 0xFF00) !== 0xFF00) break;
+    if (marker === 0xFFDA) break;
+    const size = d.getUint16(off+2);
+    if (size < 2) break;
+    if (marker === 0xFFE1 && d.byteLength >= off+10 &&
+        d.getUint32(off+4) === 0x45786966) return {off, size};
+    off += 2 + size;
+  }
+  return null;
+}
+// 方向位必须归 1：浏览器解码时已经转正，原样搬回去会导致二次旋转
+function sanitizeExif(app1, dropGPS){
+  const d = new DataView(app1.buffer, app1.byteOffset, app1.byteLength);
+  const T = 10;                                     // TIFF header 起点
+  if (app1.byteLength < T+8) return app1;
+  const le = d.getUint16(T) === 0x4949;
+  const u16 = o => d.getUint16(o, le), u32 = o => d.getUint32(o, le);
+  const ifd0 = T + u32(T+4);
+  if (ifd0+2 > app1.byteLength) return app1;
+  const n = u16(ifd0);
+  for (let i=0;i<n;i++){
+    const e = ifd0 + 2 + i*12;
+    if (e+12 > app1.byteLength) break;
+    const tag = u16(e);
+    if (tag === 0x0112) d.setUint16(e+8, 1, le);     // Orientation → 1
+    if (tag === 0x8825 && dropGPS) d.setUint16(e, 0x0001, le); // GPS 指针失效
+  }
+  return app1;
+}
+function spliceExif(jpegBuf, app1){
+  const src = new Uint8Array(jpegBuf);
+  let ins = 2;
+  if (src.length > 4 && src[2] === 0xFF && src[3] === 0xE0)
+    ins = 4 + ((src[4]<<8) | src[5]);              // 放在 APP0 之后
+  const out = new Uint8Array(src.length + app1.length);
+  out.set(src.subarray(0,ins), 0);
+  out.set(app1, ins);
+  out.set(src.subarray(ins), ins + app1.length);
+  return out;
+}
+
+/* ===== 导出 ===== */
+let fmt = "jpg", longEdge = 0;
+$("#fmt").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  fmt = b.dataset.f;
+  $$("#fmt button").forEach(x => x.classList.toggle("on", x===b));
+  $("#qline").style.display = fmt==="png" ? "none" : "";
+  $("#exifWrap").style.display = fmt==="png" ? "none" : "";
+});
+$("#size").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  longEdge = +b.dataset.s;
+  $$("#size button").forEach(x => x.classList.toggle("on", x===b));
+});
+$("#q").addEventListener("input", e => $("#qv").textContent = e.target.value);
+
+const idle = () => new Promise(r => setTimeout(r,0));
+
+$("#bSave").addEventListener("click", async () => {
+  if (!base) return;
+  const btn = $("#bSave");
+  btn.disabled = true;
+  try {
+    const bw = base.width, bh = base.height;
+    const sx = Math.round(crop.x*bw), sy = Math.round(crop.y*bh);
+    const sw = Math.max(1,Math.round(crop.w*bw)), sh = Math.max(1,Math.round(crop.h*bh));
+    let ow = sw, oh = sh;
+    if (longEdge && Math.max(sw,sh) > longEdge){
+      const s = longEdge/Math.max(sw,sh);
+      ow = Math.max(1,Math.round(sw*s)); oh = Math.max(1,Math.round(sh*s));
+    }
+    btn.textContent = "准备中…";
+    await idle();
+
+    const c = document.createElement("canvas");
+    c.width = ow; c.height = oh;
+    const cc = c.getContext("2d",{willReadFrequently:true});
+    cc.imageSmoothingQuality = "high";
+    cc.drawImage(base, sx,sy,sw,sh, 0,0,ow,oh);
+    const imgd = cc.getImageData(0,0,ow,oh);
+    const data = imgd.data;
+
+    // 分块跑，中间让出主线程，避免大图卡死界面
+    const cx = (ow-1)/2, cy = (oh-1)/2;
+    const maxD = Math.sqrt(cx*cx+cy*cy) || 1;
+    const band = Math.max(64, Math.ceil(400000/ow));
+    let PP = null;
+    if (adj.polar > 0){ btn.textContent = "偏光分析…"; await idle(); PP = polarPrep(data, ow, oh); }
+    for (let y=0;y<oh;y+=band){
+      if (PP) polarApply(data, ow, oh, adj, PP, y, Math.min(oh,y+band));
+      processPixels(data, ow, oh, adj, y, Math.min(oh,y+band), cx, cy, maxD);
+      btn.textContent = `处理中 ${Math.round(Math.min(oh,y+band)/oh*100)}%`;
+      await idle();
+    }
+    if (adj.sharpen > 0){
+      btn.textContent = "锐化中…";
+      await idle();
+      unsharp(data, ow, oh, (adj.sharpen/100)*1.4, sharpRadius(ow,oh), adj.sthresh*0.3);
+    }
+    cc.putImageData(imgd,0,0);
+
+    btn.textContent = "编码中…";
+    await idle();
+    const type = fmt==="png" ? "image/png" : "image/jpeg";
+    let blob = await new Promise(r => c.toBlob(r, type, +$("#q").value/100));
+
+    if (fmt==="jpg" && srcBuf && $("#keepExif").checked){
+      const seg = findApp1(srcBuf);
+      if (seg){
+        const app1 = sanitizeExif(new Uint8Array(srcBuf.slice(seg.off, seg.off+seg.size+2)), true);
+        blob = new Blob([spliceExif(await blob.arrayBuffer(), app1)], {type});
+      }
+    }
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    const stem = fileName.replace(/\.[^.]+$/,"") || "photo";
+    a.download = `${stem}_暗房.${fmt}`;
+    a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+  } catch(err){
+    console.error(err);
+    alert("导出失败：" + (err && err.message ? err.message : err));
+  } finally {
+    btn.disabled = false; btn.textContent = "导出图片";
+  }
+});
+</script>
+<script src="nav.js?v=39" defer></script>
+</body>
+</html>
