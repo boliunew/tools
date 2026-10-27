@@ -1,16 +1,16 @@
 {
- "date": "2026-10-26",
- "kind": "习语",
- "en": "Every cloud has a silver lining",
- "zh": "柳暗花明",
- "by": "坏事里也有希望",
- "line": "Every cloud has a silver lining",
+ "date": "2026-10-27",
+ "kind": "名言",
+ "en": "Anybody can make history. Only a great man can write it.",
+ "zh": "谁都能创造历史，但只有伟人才写得出历史。",
+ "by": "Oscar Wilde",
+ "line": "Anybody can make history. Only a great man can write it. — Oscar Wilde",
  "word": {
-  "w": "patrol",
-  "ph": "pә'trәul",
-  "zh": "n. 巡逻，巡逻员，侦察队；v. 巡逻，巡视",
-  "ex": "Policeman patrolled the streets ahorseback.",
-  "exzh": "警察骑着马在街上巡逻。"
+  "w": "specify",
+  "ph": "'spesifai",
+  "zh": "vt. 详列，指定，说明",
+  "ex": "Please specify any conditions you have for the use of this information.",
+  "exzh": "如果您有关于这份问卷信息的使用条件，请在这里指定。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
