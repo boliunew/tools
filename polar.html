@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F1EA">
+<title>偏光滤镜</title>
+<style>
+:root{
+  --bg:#F4F1EA; --paper:#FFFDF8; --ink:#1D2028; --soft:#5E6573; --faint:#99A0AA; --line:#E3DED3; --chip:#EEE9DF;
+  --accent:#2C6E8F; --accent-ink:#fff; --accent-soft:#DDEBF2;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 5px 18px rgba(30,35,50,.07);
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#13161C; --paper:#1B1F27; --ink:#E9ECF1; --soft:#A7AEBA; --faint:#6E7583; --line:#2B303B; --chip:#252A35;
+  --accent:#6CB6DA; --accent-ink:#0B1A22; --accent-soft:#1B3240;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 5px 18px rgba(0,0,0,.35);
+}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.55;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area-inset-top)}
+.brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;margin-bottom:12px}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:26px 14px;text-align:center;color:var(--soft)}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.drop b{color:var(--ink);font-size:16px}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-size:14px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.stage{position:relative;border-radius:12px;overflow:hidden;background:#000;touch-action:none;user-select:none;-webkit-user-select:none}
+.stage canvas{display:block;width:100%;height:auto}
+#cOrig{position:absolute;inset:0;width:100%;height:100%}
+.split{position:absolute;top:0;bottom:0;width:2px;background:#fff;box-shadow:0 0 4px rgba(0,0,0,.6);pointer-events:none}
+.split::after{content:'⇆';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:#222;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 5px rgba(0,0,0,.4)}
+.lab{position:absolute;top:8px;font-size:12px;color:#fff;background:rgba(0,0,0,.45);padding:2px 8px;border-radius:999px;pointer-events:none}
+.lab.l{left:8px}.lab.r{right:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:14px;display:flex;align-items:center;gap:6px}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:700}
+.dot{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.2)}
+.sl{display:grid;grid-template-columns:5.6em 1fr 2.6em;gap:8px;align-items:center;margin:8px 0}
+.sl label{font-size:14px;color:var(--soft)}
+.sl output{font-size:13px;text-align:right;color:var(--faint);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.dial{display:flex;align-items:center;gap:12px;margin:6px 0 10px}
+.dial svg{flex:0 0 auto}
+.dial .t{font-size:13px;color:var(--soft);line-height:1.45}
+h3{font-size:15px;margin:2px 0 8px}
+.note{font-size:13.5px;color:var(--soft)}
+.note p{margin:6px 0}
+.hint{font-size:12.5px;color:var(--faint);margin-top:6px}
+.tog{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--soft)}
+#busy{position:absolute;right:8px;bottom:8px;font-size:12px;color:#fff;background:rgba(0,0,0,.5);padding:2px 8px;border-radius:999px;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="index.html">🕶️ 偏光滤镜</a></header>
+
+<div class="card" id="pick">
+  <div class="drop" id="drop">
+    <b>选一张照片</b><br>
+    <span>点这里选图，也可以拖进来或粘贴（Ctrl+V）</span>
+    <div class="row" style="justify-content:center;margin-top:12px">
+      <button class="btn pri" id="bPick">📷 选照片</button>
+      <button class="btn" id="bDemo">🌊 用示例图试试</button>
+    </div>
+  </div>
+  <input type="file" id="file" accept="image/*" hidden>
+  <div class="hint">照片只在你的手机或电脑上处理，不会上传。</div>
+</div>
+
+<div id="work" hidden>
+  <div class="card" style="padding:8px">
+    <div class="stage" id="stage">
+      <canvas id="cOut"></canvas>
+      <canvas id="cOrig"></canvas>
+      <div class="split" id="split"></div>
+      <span class="lab l">原图</span><span class="lab r">偏光</span>
+      <span id="busy">处理中…</span>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button class="btn pri" id="bSave">💾 保存图片</button>
+      <button class="btn" id="bNew">换一张</button>
+      <button class="btn" id="bReset">恢复默认</button>
+      <span class="hint" style="margin:0">拖动中间的线对比原图</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>镜片颜色</h3>
+    <div class="chips" id="tints"></div>
+  </div>
+
+  <div class="card">
+    <h3>转动镜片</h3>
+    <div class="dial">
+      <svg id="dial" width="64" height="64" viewBox="-32 -32 64 64" aria-hidden="true">
+        <circle r="28" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="4"/>
+        <g id="dialG"><line x1="0" y1="-24" x2="0" y2="24" stroke="currentColor" stroke-width="2"/>
+        <line x1="-6" y1="-24" x2="-6" y2="24" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/>
+        <line x1="6" y1="-24" x2="6" y2="24" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/>
+        <circle cx="0" cy="-26" r="3" fill="var(--accent)"/></g>
+      </svg>
+      <div class="t" id="dialT"></div>
+    </div>
+    <div class="sl"><label>角度</label><input type="range" id="rot" min="0" max="180" step="1"><output id="o_rot"></output></div>
+    <div class="hint">和真的偏光镜一样：转到 0° 压反光最狠，转到 90° 几乎没有偏光效果，只剩镜片的颜色。</div>
+  </div>
+
+  <div class="card">
+    <h3>细调</h3>
+    <div class="sl"><label>总强度</label><input type="range" id="amt" min="0" max="100"><output id="o_amt"></output></div>
+    <div class="sl"><label>天空加深</label><input type="range" id="sky" min="0" max="100"><output id="o_sky"></output></div>
+    <div class="sl"><label>去反光</label><input type="range" id="glare" min="0" max="100"><output id="o_glare"></output></div>
+    <div class="sl"><label>去雾通透</label><input type="range" id="haze" min="0" max="100"><output id="o_haze"></output></div>
+    <div class="sl"><label>色彩饱和</label><input type="range" id="sat" min="0" max="100"><output id="o_sat"></output></div>
+    <div class="sl"><label>镜片暗度</label><input type="range" id="dim" min="0" max="100"><output id="o_dim"></output></div>
+    <label class="tog"><input type="checkbox" id="vig"> 镜框暗角（像隔着墨镜看出去）</label>
+  </div>
+
+  <div class="card note">
+    <h3>这个滤镜做了什么</h3>
+    <p>偏光墨镜能挡住水面、玻璃、漆面反射出来的那层白光，所以戴上以后天空更蓝、水更透、颜色更浓。这里用算法模仿这种观感：</p>
+    <p>· <b>天空加深</b>：找出偏蓝的天空区域，压暗、加饱和，越靠上越明显。<br>
+       · <b>去反光</b>：把又亮又没有颜色的地方（多半是反光）压下去。<br>
+       · <b>去雾</b>：估算画面里的雾气并减掉，远处更清楚。<br>
+       · <b>镜片颜色</b>：茶色暖、对比强；墨绿接近真实色彩；灰色最中性。</p>
+    <p><b>做不到的事：</b>真正被反光盖住的东西（比如箱门上被白光吃掉的字），拍下来以后就丢了，任何软件都找不回来。想拍清楚，得在镜头前加真的偏光镜。</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  var TINTS = [
+    { k: 'none', n: '只偏振', c: '#ffffff', m: [1, 1, 1], con: 0.10, dim: 0 },
+    { k: 'gray', n: '灰色', c: '#55585c', m: [1, 1, 1], con: 0.14, dim: 0.22 },
+    { k: 'brown', n: '茶色', c: '#8a5a2b', m: [1.07, 0.97, 0.78], con: 0.24, dim: 0.18 },
+    { k: 'g15', n: '墨绿 G-15', c: '#3f5a3c', m: [0.97, 1.02, 0.94], con: 0.16, dim: 0.22 },
+    { k: 'blue', n: '冰蓝镀膜', c: '#4f7fa8', m: [0.92, 0.99, 1.09], con: 0.14, dim: 0.16 },
+    { k: 'rose', n: '玫瑰', c: '#b7737d', m: [1.07, 0.93, 0.95], con: 0.16, dim: 0.14 },
+    { k: 'amber', n: '琥珀黄', c: '#d0a03a', m: [1.08, 1.02, 0.72], con: 0.2, dim: 0.06 }
+  ];
+  var DEF = { tint: 'gray', rot: 0, amt: 100, sky: 70, glare: 60, haze: 40, sat: 45, dim: 22, vig: false };
+  var P = load();
+  var MAXP = 1400, MAXE = 4096;
+  var img = null, prev = null, outData = null, raf = 0, splitX = 0.5, fname = 'photo';
+
+  function load() {
+    var o = {}; for (var k in DEF) o[k] = DEF[k];
+    try { var s = JSON.parse(localStorage.getItem('polar:set') || 'null'); if (s) for (k in DEF) if (k in s) o[k] = s[k]; } catch (e) { }
+    return o;
+  }
+  function save() { try { localStorage.setItem('polar:set', JSON.stringify(P)); } catch (e) { } }
+  function tintOf(k) { for (var i = 0; i < TINTS.length; i++) if (TINTS[i].k === k) return TINTS[i]; return TINTS[0]; }
+  function ss(a, b, x) { var t = (x - a) / (b - a); t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); }
+
+  // ---------- 准备：只和图片有关、和参数无关的东西，算一次 ----------
+  function prep(canvas) {
+    var W = canvas.width, H = canvas.height;
+    var src = canvas.getContext('2d').getImageData(0, 0, W, H).data;
+    var cs = Math.max(4, Math.round(Math.max(W, H) / 160));
+    var gw = Math.ceil(W / cs), gh = Math.ceil(H / cs);
+    var dcG = new Float32Array(gw * gh).fill(1), skyG = new Float32Array(gw * gh), cnt = new Float32Array(gw * gh);
+    var glM = new Float32Array(W * H);
+    for (var y = 0; y < H; y++) {
+      var gy = (y / cs) | 0, yw = 1 - 0.75 * ss(0.3, 0.85, y / H);
+      for (var x = 0; x < W; x++) {
+        var i = y * W + x, p = i * 4;
+        var r = src[p] / 255, g = src[p + 1] / 255, b = src[p + 2] / 255;
+        var mx = r > g ? (r > b ? r : b) : (g > b ? g : b), mn = r < g ? (r < b ? r : b) : (g < b ? g : b);
+        var s = mx > 0 ? (mx - mn) / mx : 0;
+        var gi = gy * gw + ((x / cs) | 0);
+        if (mn < dcG[gi]) dcG[gi] = mn;
+        // 天空：偏蓝、有点饱和、不太暗、越靠上越像
+        var h = hue(r, g, b, mx, mn), dh = Math.abs(h - 215);
+        skyG[gi] += (1 - ss(25, 55, dh)) * ss(0.06, 0.22, s) * ss(0.3, 0.55, mx) * yw;
+        cnt[gi]++;
+        // 反光：很亮、几乎没颜色
+        var L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        glM[i] = ss(0.7, 0.96, L) * (1 - ss(0.1, 0.3, s));
+      }
+    }
+    for (i = 0; i < skyG.length; i++) skyG[i] = cnt[i] ? skyG[i] / cnt[i] : 0;
+    dcG = minf(dcG, gw, gh); dcG = blur(blur(dcG, gw, gh), gw, gh);
+    skyG = blur(blur(skyG, gw, gh), gw, gh);
+    // 大气光：雾最浓的那 1% 格子的平均亮度
+    var sorted = Array.prototype.slice.call(dcG).sort(function (a, b) { return b - a; });
+    var A = sorted[Math.max(0, Math.floor(sorted.length * 0.01))];
+    A = Math.min(1, Math.max(0.7, A + 0.08));
+    return { W: W, H: H, src: src, cs: cs, gw: gw, gh: gh, dcG: dcG, skyG: skyG, glM: glM, A: A };
+  }
+  function hue(r, g, b, mx, mn) {
+    var d = mx - mn; if (d < 1e-6) return 0;
+    var h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
+    h *= 60; return h < 0 ? h + 360 : h;
+  }
+  function minf(a, w, h) {
+    var o = new Float32Array(a.length);
+    for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+      var m = 1;
+      for (var j = -1; j <= 1; j++) for (var i = -1; i <= 1; i++) {
+        var yy = y + j, xx = x + i; if (yy < 0 || yy >= h || xx < 0 || xx >= w) continue;
+        var v = a[yy * w + xx]; if (v < m) m = v;
+      }
+      o[y * w + x] = m;
+    }
+    return o;
+  }
+  function blur(a, w, h) {
+    var o = new Float32Array(a.length);
+    for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+      var s = 0, n = 0;
+      for (var j = -1; j <= 1; j++) for (var i = -1; i <= 1; i++) {
+        var yy = y + j, xx = x + i; if (yy < 0 || yy >= h || xx < 0 || xx >= w) continue;
+        s += a[yy * w + xx]; n++;
+      }
+      o[y * w + x] = s / n;
+    }
+    return o;
+  }
+  function samp(G, gw, gh, cs, x, y) {
+    var fx = (x + 0.5) / cs - 0.5, fy = (y + 0.5) / cs - 0.5;
+    if (fx < 0) fx = 0; if (fy < 0) fy = 0; if (fx > gw - 1) fx = gw - 1; if (fy > gh - 1) fy = gh - 1;
+    var x0 = fx | 0, y0 = fy | 0, x1 = Math.min(x0 + 1, gw - 1), y1 = Math.min(y0 + 1, gh - 1), tx = fx - x0, ty = fy - y0;
+    var a = G[y0 * gw + x0], b = G[y0 * gw + x1], c = G[y1 * gw + x0], d = G[y1 * gw + x1];
+    return (a + (b - a) * tx) + ((c + (d - c) * tx) - (a + (b - a) * tx)) * ty;
+  }
+
+  // ---------- 按参数出图 ----------
+  function render(B, p, out) {
+    var W = B.W, H = B.H, src = B.src, A = B.A, T = tintOf(p.tint);
+    var th = p.rot * Math.PI / 180, k = 0.12 + 0.88 * Math.cos(th) * Math.cos(th);   // 偏振强度：cos²θ
+    var amt = p.amt / 100, sky = p.sky / 100 * k, gl = p.glare / 100 * k, hz = p.haze / 100 * k, sat = p.sat / 100 * k;
+    var con = T.con * (0.5 + 0.5 * k), dimf = 1 - 0.4 * (p.dim / 100);
+    var tr = T.m[0] * dimf, tg = T.m[1] * dimf, tb = T.m[2] * dimf;
+    var cx = W / 2, cy = H / 2, rd = Math.sqrt(cx * cx + cy * cy);
+    var o = out.data, cs = B.cs, gw = B.gw, gh = B.gh;
+    for (var y = 0; y < H; y++) {
+      for (var x = 0; x < W; x++) {
+        var i = y * W + x, q = i * 4;
+        var r0 = src[q] / 255, g0 = src[q + 1] / 255, b0 = src[q + 2] / 255, r = r0, g = g0, b = b0;
+        // 去雾
+        var sm = samp(B.skyG, gw, gh, cs, x, y); sm = sm > 0.01 ? Math.min(1, sm * 1.6) : 0;
+        if (hz > 0) {   // 天空本来就亮，别当成雾
+          var dc = samp(B.dcG, gw, gh, cs, x, y), t = 1 - 0.75 * hz * (1 - 0.85 * sm) * dc / A; if (t < 0.6) t = 0.6;
+          r = (r - A) / t + A; g = (g - A) / t + A; b = (b - A) / t + A;
+          if (r < 0) r = 0; if (g < 0) g = 0; if (b < 0) b = 0;
+        }
+        // 去反光
+        var gm = B.glM[i];
+        if (gm > 0 && gl > 0) { var f = 1 - 0.4 * gl * gm * (1 - 0.9 * sm); r *= f; g *= f; b *= f; }   // 云不算反光
+        // HSV 里调天空和饱和
+        var mx = r > g ? (r > b ? r : b) : (g > b ? g : b), mn = r < g ? (r < b ? r : b) : (g < b ? g : b);
+        var v = mx, s = mx > 0 ? (mx - mn) / mx : 0, h = hue(r, g, b, mx, mn);
+        if (sky > 0 && sm > 0) {
+          var cw = 1 - ss(0.12, 0.04, s);   // 白云（几乎无色）基本不压
+          v *= 1 - 0.28 * sky * sm * cw; s *= 1 + 0.55 * sky * sm * cw;
+        }
+        if (sat > 0) {
+          var fw = (1 - ss(40, 80, Math.abs(h - 140)));   // 绿到青蓝：草木和水
+          s *= 1 + sat * (0.3 + 0.35 * fw);
+        }
+        if (s > 1) s = 1; if (v > 1) v = 1;
+        // 回到 RGB
+        var c = v * s, hh = h / 60, X = c * (1 - Math.abs(hh % 2 - 1)), m = v - c, R, G, Bb;
+        if (hh < 1) { R = c; G = X; Bb = 0; } else if (hh < 2) { R = X; G = c; Bb = 0; } else if (hh < 3) { R = 0; G = c; Bb = X; }
+        else if (hh < 4) { R = 0; G = X; Bb = c; } else if (hh < 5) { R = X; G = 0; Bb = c; } else { R = c; G = 0; Bb = X; }
+        r = R + m; g = G + m; b = Bb + m;
+        // 对比（S 形曲线）
+        r = r + con * (r * r * (3 - 2 * r) - r); g = g + con * (g * g * (3 - 2 * g) - g); b = b + con * (b * b * (3 - 2 * b) - b);
+        // 镜片颜色和暗度
+        r *= tr; g *= tg; b *= tb;
+        if (p.vig) { var dx = x - cx, dy = y - cy, d = Math.sqrt(dx * dx + dy * dy) / rd, vf = 1 - 0.5 * ss(0.5, 1.05, d); r *= vf; g *= vf; b *= vf; }
+        // 总强度
+        r = r0 + (r - r0) * amt; g = g0 + (g - g0) * amt; b = b0 + (b - b0) * amt;
+        o[q] = r * 255; o[q + 1] = g * 255; o[q + 2] = b * 255; o[q + 3] = 255;
+      }
+    }
+  }
+
+  // ---------- 界面 ----------
+  function fit(w, h, max) { var s = Math.min(1, max / Math.max(w, h)); return [Math.round(w * s), Math.round(h * s)]; }
+  function toCanvas(src, w, h) { var c = document.createElement('canvas'); c.width = w; c.height = h; c.getContext('2d').drawImage(src, 0, 0, w, h); return c; }
+
+  function setImage(source, name) {
+    img = source; fname = (name || 'photo').replace(/\.[^.]+$/, '');
+    var sz = fit(source.width || source.naturalWidth, source.height || source.naturalHeight, MAXP);
+    var c = toCanvas(source, sz[0], sz[1]);
+    prev = prep(c);
+    var co = $('cOrig'), cu = $('cOut');
+    co.width = cu.width = sz[0]; co.height = cu.height = sz[1];
+    co.getContext('2d').drawImage(c, 0, 0);
+    outData = cu.getContext('2d').createImageData(sz[0], sz[1]);
+    $('pick').hidden = true; $('work').hidden = false;
+    setSplit(0.5); draw();
+  }
+  function draw() {
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      raf = 0; if (!prev) return;
+      render(prev, P, outData); $('cOut').getContext('2d').putImageData(outData, 0, 0);
+    });
+  }
+  function setSplit(f) {
+    splitX = Math.max(0, Math.min(1, f));
+    $('cOrig').style.clipPath = 'inset(0 ' + ((1 - splitX) * 100) + '% 0 0)';
+    $('split').style.left = 'calc(' + (splitX * 100) + '% - 1px)';
+  }
+
+  var SL = ['rot', 'amt', 'sky', 'glare', 'haze', 'sat', 'dim'];
+  function sync() {
+    SL.forEach(function (k) { $(k).value = P[k]; $('o_' + k).textContent = k === 'rot' ? P[k] + '°' : P[k]; });
+    $('vig').checked = !!P.vig;
+    $('tints').innerHTML = TINTS.map(function (t) {
+      return '<button class="chip' + (t.k === P.tint ? ' on' : '') + '" data-k="' + t.k + '"><span class="dot" style="background:' + t.c + '"></span>' + t.n + '</button>';
+    }).join('');
+    $('dialG').setAttribute('transform', 'rotate(' + P.rot + ')');
+    var k = Math.round((0.12 + 0.88 * Math.pow(Math.cos(P.rot * Math.PI / 180), 2)) * 100);
+    $('dialT').innerHTML = '偏振效果 <b>' + k + '%</b><br>' + (k > 85 ? '反光压得最狠' : k > 40 ? '压掉一部分反光' : '几乎没有偏振，只剩镜片颜色');
+  }
+  SL.forEach(function (k) {
+    $(k).addEventListener('input', function () { P[k] = +this.value; sync(); save(); draw(); });
+  });
+  $('vig').onchange = function () { P.vig = this.checked; save(); draw(); };
+  $('tints').onclick = function (e) {
+    var b = e.target.closest('.chip'); if (!b) return;
+    var t = tintOf(b.getAttribute('data-k')); P.tint = t.k; P.dim = Math.round(t.dim * 100);
+    sync(); save(); draw();
+  };
+  $('bReset').onclick = function () { for (var k in DEF) P[k] = DEF[k]; sync(); save(); draw(); };
+  $('bNew').onclick = function () { $('file').value = ''; $('file').click(); };
+  $('bPick').onclick = function (e) { e.stopPropagation(); $('file').click(); };
+  $('drop').onclick = function () { $('file').click(); };
+  $('bDemo').onclick = function (e) { e.stopPropagation(); setImage(demo(), 'demo'); };
+  $('file').onchange = function () { if (this.files && this.files[0]) openFile(this.files[0]); };
+
+  function openFile(f) {
+    if (!/^image\//.test(f.type)) { alert('这个文件不是图片'); return; }
+    var u = URL.createObjectURL(f), im = new Image();
+    im.onload = function () { setImage(im, f.name); };
+    im.onerror = function () { alert('这张图打不开（HEIC 格式的话，先在手机上存成 JPG 再试）'); URL.revokeObjectURL(u); };
+    im.src = u;
+  }
+  var dz = $('drop');
+  ['dragenter', 'dragover'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('over'); }); });
+  document.addEventListener('drop', function (e) { var f = e.dataTransfer && e.dataTransfer.files[0]; if (f) openFile(f); });
+  document.addEventListener('paste', function (e) {
+    var it = e.clipboardData && e.clipboardData.items; if (!it) return;
+    for (var i = 0; i < it.length; i++) if (it[i].type.indexOf('image') === 0) { openFile(it[i].getAsFile()); break; }
+  });
+
+  // 对比线：在图上按住拖
+  var st = $('stage'), dragging = false;
+  function pos(e) { var r = st.getBoundingClientRect(); setSplit((e.clientX - r.left) / r.width); }
+  st.addEventListener('pointerdown', function (e) { dragging = true; st.setPointerCapture(e.pointerId); pos(e); });
+  st.addEventListener('pointermove', function (e) { if (dragging) pos(e); });
+  st.addEventListener('pointerup', function () { dragging = false; });
+  st.addEventListener('pointercancel', function () { dragging = false; });
+
+  // 保存：按原图尺寸（最长边最多 4096）重新算一遍
+  $('bSave').onclick = function () {
+    if (!img) return;
+    $('busy').style.display = 'block';
+    setTimeout(function () {
+      var sz = fit(img.width || img.naturalWidth, img.height || img.naturalHeight, MAXE);
+      var c = toCanvas(img, sz[0], sz[1]), B = prep(c), ctx = c.getContext('2d'), od = ctx.createImageData(sz[0], sz[1]);
+      render(B, P, od); ctx.putImageData(od, 0, 0);
+      c.toBlob(function (blob) {
+        $('busy').style.display = 'none';
+        var name = fname + '-偏光.jpg';
+        var file = null; try { file = new File([blob], name, { type: 'image/jpeg' }); } catch (e) { }
+        if (file && navigator.canShare && navigator.canShare({ files: [file] }) && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          navigator.share({ files: [file], title: name }).catch(function () { });
+        } else {
+          var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+          document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+        }
+      }, 'image/jpeg', 0.92);
+    }, 30);
+  };
+
+  // 示例图：有雾的海边，太阳在水面上的反光
+  function demo() {
+    var W = 1200, H = 800, c = document.createElement('canvas'); c.width = W; c.height = H;
+    var x = c.getContext('2d'), hz = H * 0.55;
+    var sk = x.createLinearGradient(0, 0, 0, hz); sk.addColorStop(0, '#7fb0dc'); sk.addColorStop(0.7, '#bcd3e6'); sk.addColorStop(1, '#e4ebf0');
+    x.fillStyle = sk; x.fillRect(0, 0, W, hz);
+    var sun = x.createRadialGradient(W * 0.72, H * 0.16, 5, W * 0.72, H * 0.16, 260);
+    sun.addColorStop(0, 'rgba(255,255,250,.95)'); sun.addColorStop(0.15, 'rgba(255,255,245,.5)'); sun.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = sun; x.fillRect(0, 0, W, hz);
+    x.fillStyle = 'rgba(255,255,255,.7)';
+    [[120, 110, 90], [240, 90, 70], [420, 150, 60], [960, 70, 80]].forEach(function (cl) { x.beginPath(); x.ellipse(cl[0], cl[1], cl[2], cl[2] * 0.35, 0, 0, 7); x.fill(); });
+    x.fillStyle = '#7d9a8f'; x.beginPath(); x.moveTo(0, hz); x.bezierCurveTo(160, hz - 120, 330, hz - 150, 520, hz); x.fill();
+    x.fillStyle = '#9fb3ad'; x.beginPath(); x.moveTo(380, hz); x.bezierCurveTo(560, hz - 70, 700, hz - 60, 860, hz); x.fill();
+    var sea = x.createLinearGradient(0, hz, 0, H * 0.82); sea.addColorStop(0, '#9cbccb'); sea.addColorStop(1, '#3f7f8f');
+    x.fillStyle = sea; x.fillRect(0, hz, W, H * 0.27);
+    for (var i = 0; i < 900; i++) {
+      var yy = hz + Math.pow(Math.random(), 1.4) * H * 0.27, spread = 30 + (yy - hz) * 0.9;
+      var xx = W * 0.72 + (Math.random() - 0.5) * spread * 2;
+      x.fillStyle = 'rgba(255,255,255,' + (0.45 + Math.random() * 0.5) + ')';
+      x.fillRect(xx, yy, 6 + Math.random() * 22, 1.5 + Math.random() * 2);
+    }
+    var sand = x.createLinearGradient(0, H * 0.82, 0, H); sand.addColorStop(0, '#d9c7a3'); sand.addColorStop(1, '#bfa77c');
+    x.fillStyle = sand; x.fillRect(0, H * 0.82, W, H * 0.18);
+    x.fillStyle = '#4f7a3a'; x.beginPath(); x.moveTo(0, H); x.lineTo(0, H * 0.78); x.bezierCurveTo(90, H * 0.74, 180, H * 0.86, 300, H); x.fill();
+    var haze = x.createLinearGradient(0, hz - 120, 0, hz + 80); haze.addColorStop(0, 'rgba(235,240,243,0)'); haze.addColorStop(0.5, 'rgba(235,240,243,.45)'); haze.addColorStop(1, 'rgba(235,240,243,0)');
+    x.fillStyle = haze; x.fillRect(0, hz - 120, W, 200);
+    return c;
+  }
+
+  sync();
+})();
+</script>
+<script src="nav.js?v=37" defer></script>
+</body>
+</html>
