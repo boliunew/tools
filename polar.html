@@ -113,15 +113,15 @@ h3{font-size:15px;margin:2px 0 8px}
       <div class="t" id="dialT"></div>
     </div>
     <div class="sl"><label>角度</label><input type="range" id="rot" min="0" max="180" step="1"><output id="o_rot"></output></div>
-    <div class="hint">和真的偏光镜一样：转到 0° 压反光最狠，转到 90° 几乎没有偏光效果，只剩镜片的颜色。</div>
+    <div class="hint">这里用一个简化的规则模拟转动：0° 模拟效果最强，90° 最弱，只剩镜片颜色。真偏光镜转动时，哪个角度最有效、变化有多大，要看光线和反光的方向，不一定会从「很强」变成「几乎没有」。</div>
   </div>
 
   <div class="card">
     <h3>细调</h3>
     <div class="sl"><label>总强度</label><input type="range" id="amt" min="0" max="100"><output id="o_amt"></output></div>
     <div class="sl"><label>天空加深</label><input type="range" id="sky" min="0" max="100"><output id="o_sky"></output></div>
-    <div class="sl"><label>去反光</label><input type="range" id="glare" min="0" max="100"><output id="o_glare"></output></div>
-    <div class="sl"><label>去雾通透</label><input type="range" id="haze" min="0" max="100"><output id="o_haze"></output></div>
+    <div class="sl"><label>压反光</label><input type="range" id="glare" min="0" max="100"><output id="o_glare"></output></div>
+    <div class="sl"><label>降低灰雾</label><input type="range" id="haze" min="0" max="100"><output id="o_haze"></output></div>
     <div class="sl"><label>色彩饱和</label><input type="range" id="sat" min="0" max="100"><output id="o_sat"></output></div>
     <div class="sl"><label>镜片暗度</label><input type="range" id="dim" min="0" max="100"><output id="o_dim"></output></div>
     <label class="tog"><input type="checkbox" id="vig"> 镜框暗角（像隔着墨镜看出去）</label>
@@ -129,12 +129,12 @@ h3{font-size:15px;margin:2px 0 8px}
 
   <div class="card note">
     <h3>这个滤镜做了什么</h3>
-    <p>偏光墨镜能挡住水面、玻璃、漆面反射出来的那层白光，所以戴上以后天空更蓝、水更透、颜色更浓。这里用算法模仿这种观感：</p>
-    <p>· <b>天空加深</b>：找出偏蓝的天空区域，压暗、加饱和，越靠上越明显。<br>
-       · <b>去反光</b>：把又亮又没有颜色的地方（多半是反光）压下去。<br>
-       · <b>去雾</b>：估算画面里的雾气并减掉，远处更清楚。<br>
-       · <b>镜片颜色</b>：茶色暖、对比强；墨绿接近真实色彩；灰色最中性。</p>
-    <p><b>做不到的事：</b>真正被反光盖住的东西（比如箱门上被白光吃掉的字），拍下来以后就丢了，任何软件都找不回来。想拍清楚，得在镜头前加真的偏光镜。</p>
+    <p>这是一个<b>视觉模拟</b>：模仿偏光镜在合适的光线和角度下常见的观感。真偏光镜的实际效果会因太阳方向、天空状况、反光角度和镜片而不同，不是每个场景都明显。</p>
+    <p>· <b>天空加深</b>：把偏蓝的天空压暗、加饱和，几乎无色的白云基本不动，所以云显得更突出。真偏光镜下，蓝天在与太阳大约成 90° 的方向上变深最明显，正对或背对太阳时变化很小。<br>
+       · <b>压反光</b>：把又亮又几乎没有颜色的区域压暗。真偏光镜能削弱水面、玻璃、漆面这类非金属表面在特定角度下的反射光，但不是所有反光都能压掉，金属的亮斑基本压不住。<br>
+       · <b>降低灰雾感</b>：这是图像处理里的去雾算法，用来增强远景对比。偏光镜有时能让远景显得更清楚，但「去雾」不是它普遍的、独立的功能。<br>
+       · <b>镜片颜色</b>：只是颜色滤镜的模拟。不同颜色镜片的观感因具体产品和场景而异。</p>
+    <p><b>做不到的事：</b>真正被反光盖住的东西（比如箱门上被白光吃掉的字），拍下来以后就丢了，任何软件都找不回来。想拍清楚，得在拍摄时于镜头前加偏光镜，并且转到合适的角度。</p>
   </div>
 </div>
 </div>
@@ -328,7 +328,7 @@ h3{font-size:15px;margin:2px 0 8px}
     }).join('');
     $('dialG').setAttribute('transform', 'rotate(' + P.rot + ')');
     var k = Math.round((0.12 + 0.88 * Math.pow(Math.cos(P.rot * Math.PI / 180), 2)) * 100);
-    $('dialT').innerHTML = '偏振效果 <b>' + k + '%</b><br>' + (k > 85 ? '反光压得最狠' : k > 40 ? '压掉一部分反光' : '几乎没有偏振，只剩镜片颜色');
+    $('dialT').innerHTML = '模拟强度 <b>' + k + '%</b><br>' + (k > 85 ? '偏光模拟效果最强' : k > 40 ? '偏光模拟效果减弱' : '偏光模拟效果最弱，主要是镜片颜色');
   }
   SL.forEach(function (k) {
     $(k).addEventListener('input', function () { P[k] = +this.value; sync(); save(); draw(); });
@@ -424,6 +424,6 @@ h3{font-size:15px;margin:2px 0 8px}
   sync();
 })();
 </script>
-<script src="nav.js?v=37" defer></script>
+<script src="nav.js?v=38" defer></script>
 </body>
 </html>
