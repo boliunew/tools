@@ -356,7 +356,7 @@ const toG = l => GAM[l<=0 ? 0 : (l>=1 ? GN : (l*GN)|0)];
 const DEF = {
   exposure:0, contrast:0, highlights:0, shadows:0, whites:0, blacks:0,
   temp:0, tint:0, vibrance:0, saturation:0,
-  sharpen:0, sradius:30, sthresh:8, fade:0, grain:0, vignette:0, angle:0,
+  clarity:0, texture:0, sharpen:0, sradius:30, sthresh:8, fade:0, grain:0, vignette:0, angle:0,
   polar:0, prot:0, psky:60, pglare:50, phaze:30, plens:1
 };
 let adj = {...DEF};
@@ -377,7 +377,7 @@ const SLIDERS = {
     ["白色","whites",-100,100],["黑色","blacks",-100,100]],
   color:[["色温","temp",-100,100],["色调","tint",-100,100],
     ["自然饱和度","vibrance",-100,100],["饱和度","saturation",-100,100]],
-  tex:[["锐化","sharpen",0,100],["锐化半径","sradius",5,100],["锐化阈值","sthresh",0,100],
+  tex:[["清晰度","clarity",-100,100],["纹理","texture",-100,100],["锐化","sharpen",0,100],["锐化半径","sradius",5,100],["锐化阈值","sthresh",0,100],
     ["褪色","fade",0,100],["颗粒","grain",0,100],["暗角","vignette",-100,100]],
   polar:[["偏光强度","polar",0,100],["镜片角度","prot",0,180],["天空加深","psky",0,100],
     ["压反光","pglare",0,100],["降低灰雾","phaze",0,100]],
@@ -514,6 +514,14 @@ function syncButtons(){
     const note = document.createElement("p"); note.className = "pnote";
     note.innerHTML = "模拟偏光镜在合适光线和角度下常见的观感：蓝天加深、白云更突出、非金属表面的反光变弱、远景对比更强。真偏光镜的效果因太阳方向、反光角度和镜片而异；「降低灰雾」是图像处理算法，不是偏光镜本身的功能。镜片角度是简化规则：0° 模拟效果最强，90° 最弱。<br>被反光盖住的内容拍下来就丢了，软件找不回来。";
     host.appendChild(g); host.appendChild(row); host.appendChild(note);
+  }
+  {
+    const host = $(`.pane[data-p="tex"]`);
+    const row = document.createElement("div"); row.className = "row"; row.style.marginTop = "12px";
+    row.innerHTML = '<button class="gbtn" id="bDetail" style="color:var(--amber);border-color:var(--amber)">✨ 自动细节</button>';
+    const tip = document.createElement("p"); tip.className = "pnote"; tip.style.marginTop = "4px";
+    tip.textContent = "按画面的清晰程度和噪点，自动配清晰度、纹理和锐化。增强的是照片里已有的细节，不会凭空生成。";
+    host.prepend(tip); host.prepend(row);
   }
   Object.entries(SCENES).forEach(([k,label]) => {
     const b = document.createElement("button");
@@ -657,8 +665,90 @@ function renderInto(data,w,h,P){
   const cx = (w-1)/2, cy = (h-1)/2;
   const maxD = Math.sqrt(cx*cx+cy*cy) || 1;
   processPixels(data,w,h,adj,0,h,cx,cy,maxD);
+  if (adj.clarity || adj.texture) localDetail(data,w,h,adj.clarity/100,adj.texture/100);
   if (adj.sharpen > 0)
     unsharp(data,w,h,(adj.sharpen/100)*1.4, sharpRadius(w,h), adj.sthresh*0.3);
+}
+
+/* ===== 清晰度 / 纹理：亮度通道上的局部对比，半径随分辨率缩放，预览=导出 ===== */
+function localDetail(d,w,h,cl,tx){
+  const n = w*h, L = new Float32Array(n), B = new Float32Array(n), T = new Float32Array(n);
+  const scale = Math.max(w,h)/SHARP_REF;
+  const pass = (amt, rad, fn) => {
+    for (let i=0,p=0;i<n;i++,p+=4) B[i] = L[i] = 0.2126*d[p] + 0.7152*d[p+1] + 0.0722*d[p+2];
+    boxBlur(B,T,w,h,rad); boxBlur(B,T,w,h,rad);
+    for (let i=0,p=0;i<n;i++,p+=4){
+      const add = fn(L[i]-B[i], L[i]) * amt;
+      if (add){ d[p] += add; d[p+1] += add; d[p+2] += add; }
+    }
+  };
+  if (cl){   // 清晰度：大半径，只动中间调，限幅防光晕
+    pass(cl*0.9, clamp(Math.round(18*scale),2,80), (det,l) => {
+      det = det>40?40:det<-40?-40:det; const t = l/255*2-1; return det*(1-t*t);
+    });
+  }
+  if (tx){   // 纹理：小半径，太小的起伏当噪点不碰
+    pass(tx>0 ? tx*1.1 : tx*0.9, clamp(Math.round(3*scale),1,12), det => {
+      if (det<1.5 && det>-1.5) return 0; return det>30?30:det<-30?-30:det;
+    });
+  }
+}
+
+/* ===== 自动细节：量一下画面有多软、噪点多大、反差多平，再配参数 ===== */
+function detailAnalyze(){
+  const bw = base.width, bh = base.height;
+  const sx = Math.round(crop.x*bw), sy = Math.round(crop.y*bh);
+  const sw = Math.max(1,Math.round(crop.w*bw)), sh = Math.max(1,Math.round(crop.h*bh));
+  const sc = Math.min(900/sw, 900/sh, 1);
+  const w = Math.max(8,Math.round(sw*sc)), h = Math.max(8,Math.round(sh*sc));
+  const c = document.createElement("canvas"); c.width = w; c.height = h;
+  const cc = c.getContext("2d",{willReadFrequently:true});
+  cc.imageSmoothingQuality = "high";
+  cc.drawImage(base, sx,sy,sw,sh, 0,0,w,h);
+  const d = cc.getImageData(0,0,w,h).data, n = w*h;
+  const L = new Float32Array(n);
+  for (let i=0,p=0;i<n;i++,p+=4) L[i] = 0.2126*d[p]+0.7152*d[p+1]+0.0722*d[p+2];
+  // 分成 16×16 的小块，每块算平均拉普拉斯（起伏）：
+  // 最平的那 10% 块里还有起伏 = 噪点；最有内容的 10% 块够不够尖 = 清晰度
+  const BS = 16, bx = Math.floor((w-2)/BS), by = Math.floor((h-2)/BS), blocks = [];
+  for (let j=0;j<by;j++) for (let i=0;i<bx;i++){
+    let s2 = 0;
+    for (let y=1+j*BS;y<1+(j+1)*BS;y++) for (let x=1+i*BS;x<1+(i+1)*BS;x++){
+      const k = y*w+x; s2 += Math.abs(4*L[k]-L[k-1]-L[k+1]-L[k-w]-L[k+w]);
+    }
+    blocks.push(s2/(BS*BS));
+  }
+  blocks.sort((a,b)=>a-b);
+  const q = f => blocks.length ? blocks[Math.min(blocks.length-1, Math.floor(blocks.length*f))] : 0;
+  const med = q(0.10), sharpQ = q(0.90);
+  // 大尺度反差：模糊后亮度的 5%–95% 跨度
+  const B = new Float32Array(L), T = new Float32Array(n), r = Math.max(2, Math.round(Math.max(w,h)/60));
+  boxBlur(B,T,w,h,r);
+  const hb = new Uint32Array(256); for (let i=0;i<n;i++) hb[clamp(B[i]|0,0,255)]++;
+  const pc = q => { let a=0; for (let i=0;i<256;i++){ a+=hb[i]; if (a>=n*q) return i; } return 255; };
+  return {sharp: sharpQ, noise: med, spread: (pc(0.95)-pc(0.05))/255, srcLong: Math.max(sw,sh)};
+}
+function autoDetail(o, scene){
+  const m = detailAnalyze();
+  const noisy = clamp((m.noise-3)/6, 0, 1);         // 平坦处的起伏：0 干净 → 1 噪点多（实测 干净≈1.5，噪点≈12）
+  const soft  = clamp((45-(m.sharp-2*m.noise))/30, 0, 1);   // 细节处的尖锐度，先扣掉噪点：0 很锐 → 1 很软（实测 清楚≈70，糊≈12）
+  const flat  = clamp((0.55-m.spread)/0.35, 0, 1);  // 0 反差足 → 1 发平
+  o.texture = Math.round(8 + 22*soft - 20*noisy);
+  o.clarity = Math.round(6 + 24*flat - 6*noisy);
+  o.sharpen = Math.round(12 + 22*soft - 14*noisy);
+  o.sthresh = Math.round(6 + 20*noisy);
+  const why = [];
+  if (scene === "portrait"){ o.texture = Math.min(o.texture, -8); o.clarity = Math.min(o.clarity, 8); o.sharpen = Math.min(o.sharpen, 10); o.sthresh = Math.max(o.sthresh, 24); why.push("人像：纹理反向，保肤质"); }
+  if (scene === "doc"){ o.texture += 8; o.clarity += 6; o.sharpen = Math.max(o.sharpen, 26); o.sthresh = Math.min(o.sthresh, 6); why.push("记录：字和编号优先"); }
+  if (scene === "night"){ o.texture -= 6; o.sthresh += 6; why.push("夜景：少动暗部噪点"); }
+  if (scene === "foliage"){ o.texture += 6; }
+  if (scene === "sky"){ o.clarity += 6; }
+  o.texture = clamp(o.texture, -30, 40); o.clarity = clamp(o.clarity, 0, 40);
+  o.sharpen = clamp(o.sharpen, 0, 45);   o.sthresh = clamp(o.sthresh, 0, 40);
+  const desc = [soft>0.5 ? "画面偏软" : soft>0.15 ? "清晰度一般" : "已经很清楚",
+                noisy>0.5 ? "噪点多" : noisy>0.15 ? "有些噪点" : "噪点少",
+                flat>0.5 ? "反差平" : ""].filter(Boolean).join(" · ");
+  return `${desc} → 清晰度 +${o.clarity} · 纹理 ${o.texture>0?"+":""}${o.texture} · 锐化 ${o.sharpen}` + (why.length ? `（${why.join("；")}）` : "");
 }
 
 /* ===== 偏光镜模拟（在所有调整之前做，相当于镜头前的一片镜片） ===== */
@@ -1270,6 +1360,7 @@ function beautify(forceScene){
   lastScene = scene;
   if (forceScene) pinnedScene = forceScene;
   const note = SCENE_MOD[scene](out);
+  const dnote = autoDetail(out, scene);
   const pinNote = (pinnedScene && !forceScene) ? "（已固定，点其它标签可换）" : "";
   // 场景修饰后统一收口
   out.vibrance   = Math.round(clamp(out.vibrance,   -100, 60));
@@ -1279,6 +1370,7 @@ function beautify(forceScene){
   out.sharpen    = Math.round(clamp(out.sharpen,       0, 100));
   adj = out;
   const tags = tagsOf(out, wbNote);
+  tags.push("细节：" + dnote);
   const head = `<b>场景</b>${SCENES[scene]}${pinNote}` + (note ? " · " + note : "");
   applyAndShow(tags.join(" · "), head, scene);
 }
@@ -1318,6 +1410,12 @@ function clearScene(){
 }
 
 $("#bAuto").addEventListener("click", autoEnhance);
+document.addEventListener("click", e => {
+  if (!e.target.closest("#bDetail") || !base) return;
+  const o = {...adj};
+  const msg = autoDetail(o, pinnedScene || lastScene);
+  adj = o; applyAndShow(msg, "<b>自动细节</b>只改了清晰度、纹理、锐化，其它调整保持不变", lastScene);
+});
 $("#bBeauty").addEventListener("click", () => beautify(null));
 $("#scenes").addEventListener("click", e => {
   const c = e.target.closest(".chip"); if (!c) return;
@@ -1565,6 +1663,11 @@ $("#bSave").addEventListener("click", async () => {
       processPixels(data, ow, oh, adj, y, Math.min(oh,y+band), cx, cy, maxD);
       btn.textContent = `处理中 ${Math.round(Math.min(oh,y+band)/oh*100)}%`;
       await idle();
+    }
+    if (adj.clarity || adj.texture){
+      btn.textContent = "细节中…";
+      await idle();
+      localDetail(data, ow, oh, adj.clarity/100, adj.texture/100);
     }
     if (adj.sharpen > 0){
       btn.textContent = "锐化中…";
