@@ -132,7 +132,7 @@
     tab.id = 'tnav-tab'; tab.className = 'tnav-tab'; tab.type = 'button';
     tab.setAttribute('aria-label', '穿越到其他页面'); tab.title = '穿越到其他页面（可上下拖动）';
     tab.textContent = '🌀';
-    var y = get('y', 0.58);
+    var y = typeof window.TNAV_Y === 'number' ? window.TNAV_Y : get('y', 0.58);   // 页面可以指定默认位置（比如暗房：别挡住滑杆）
     var place = function (f) { var h = window.innerHeight || 600; f = Math.max(0.08, Math.min(0.9, f)); tab.style.top = Math.round(f * h - 24) + 'px'; return f; };
     y = place(y);
 
