@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "generated": "2026-10-27T19:30:34Z",
+ "generated": "2026-10-27T21:00:06Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "Anthropic提交上市招股说明书披露财务与风险",
-     "d": "AI 初创公司 Anthropic 向美国监管机构提交 S-1 文件，首次公开披露其财报，显示业务增长快速但成本高企，同时列出超过 90 页的风险，包括网络攻击和安全防护限制。此文件为业界提供该公司真实财务和风险情况，帮助投资者评估 AI 初创企业的可持续性。",
+     "t": "Anthropic提交上市文件 首次公开财务与风险",
+     "d": "AI公司Anthropic向美国监管机构递交S‑1文件，首次披露审计财务数据和超过90页风险清单，显示其业务增长快速但成本高昂。此文件揭示了行业高速扩张背后的财务压力和潜在监管风险。",
      "src": [
       {
        "n": "The Guardian",
@@ -20,12 +20,23 @@
      "full": true
     },
     {
-     "t": "Meta计划筹资95亿美元用于AI扩张",
-     "d": "Meta 宣布分两阶段募集 95 亿美元，其中 35 亿通过公开发行新股，另 60 亿通过按市价持续发行，旨为 AI 基础设施和个人超级智能投入提供资金。此举显示大型科技公司在 AI 竞争中加大资本投入，同时突显小型“新云”供应商面临融资压力的行业格局。",
+     "t": "Meta计划95亿美元融资 支持AI扩张",
+     "d": "Meta宣布两阶段融资计划，首阶段通过35亿美元公开发行股票，次阶段通过60亿美元的按市价发行，整体筹资约95亿美元，以支持其AI基础设施建设。此举反映大型科技公司在AI竞争中加大资金投入，而小型“新云”公司面临资金紧张。",
      "src": [
       {
        "n": "The Guardian",
        "u": "https://www.theguardian.com/technology/2026/oct/26/meta-plans-95bn-stock-offering-to-help-cover-ai-expansion"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI生成虚假信息冲击美中期选举",
+     "d": "专家警告称，在美国即将到来的中期选举前，社交媒体上AI生成的虚假信息大量出现，平台因削减内容审核团队而难以有效拦截。此现象凸显AI技术在政治误导方面的风险以及平台监管的挑战。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/us-news/2026/oct/27/ai-disinformation-social-media-midterm-elections"
       }
      ],
      "full": true
@@ -119,22 +130,52 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "巴西候选人弗拉维奥·博尔索纳罗逃往美国",
-     "d": "尽管护照被撤，败选的弗拉维奥仍离境，引发对巴西政治稳定性的担忧。",
+     "t": "巴西卢拉赢得历史性第四任期",
+     "d": "左翼总统卢拉以约52%得票率连任，确保巴西继续走亲美、环保路线，对拉美政治格局及金砖国家内部力量平衡具有重要影响。",
      "src": [
       {
        "n": "法国24",
-       "u": "https://www.france24.com/en/americas/20261027-defeated-brazilian-candidate-flavio-bolsonaro-passports-cancelled-whereabouts-unknown"
+       "u": "https://www.france24.com/en/brazil-s-lula-wins-historic-fourth-term"
       },
       {
-       "n": "CBC",
-       "u": "https://www.cbc.ca/news/world/brazil-bolsonaro-us-election-loss-9.7398364?cmp=rss"
+       "n": "BBC 拉美",
+       "u": "https://www.bbc.co.uk/news/articles/ckm23y3mg1yyo?at_medium=RSS&at_campaign=rss"
       }
      ]
     },
     {
-     "t": "刚果（金）埃博拉疫情突破1万例",
-     "d": "刚果（金）卫生部门通报埃博拉病例已达 10,060 例，死亡 4,887 人，涉及缺乏批准疫苗的 Bundibugyo 病毒，疫情已扩散至肯尼亚和尼日利亚。该疫情的快速扩张和治疗手段有限，提升了全球公共卫生风险并可能影响跨境旅行与医疗资源分配。",
+     "t": "以色列选举投票率创50年新高",
+     "d": "截至当地时间下午6点，约66.7%的以色列选民已投票，超出去年同期的57.7%，创下近半世纪最高 turnout。高投票率可能影响选举结果，尤其在决定是否继续支持内塔尼亚胡政府方面具有关键意义。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/10/27/israel-election-turnout-highest-in-50-years-as-voting-continues?traffic_source=rss"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/israel-elections-voter-turnout-reaches-55-by-4pm-local-time"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "梅拉尼亚·特朗普促成乌克兰局部停火",
+     "d": "在梅拉尼亚·特朗普斡旋下，乌克兰与俄罗斯在南部城市奥莱什基实现局部停火，以允许人道援助进入，该停火预计持续至周六。此举为即将启动的美方调解谈判创造了人道与外交的窗口。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/10/27/g-s1-150037/russia-ukraine-war"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/10/27/melania-or-the-pope-who-brokered-russia-ukraine-ceasefire-in-oleshky?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "刚果（金）埃博拉病例突破1万例 仍无疫苗",
+     "d": "刚果（金）报告埃博拉病例已达10,060例，死亡4,887例，且病毒为暂无批准疫苗或特效药的Bundibugyo株，已向肯尼亚、尼日利亚等国扩散。疫情的快速蔓延及缺乏有效治疗方案对地区公共卫生安全构成严峻挑战。",
      "src": [
       {
        "n": "德国之声",
@@ -146,20 +187,6 @@
       }
      ],
      "full": true
-    },
-    {
-     "t": "巴西卢拉赢得历史性第四届总统",
-     "d": "卢拉以51.7%胜选，确保左翼执政，对BRICS内部团结与拉美政策产生重要影响。",
-     "src": [
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/brazil-s-lula-wins-historic-fourth-term"
-      },
-      {
-       "n": "BBC 拉美",
-       "u": "https://www.bbc.co.uk/news/articles/ckm23y3mg1yyo?at_medium=RSS&at_campaign=rss"
-      }
-     ]
     }
    ]
   }
