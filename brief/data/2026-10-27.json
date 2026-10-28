@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "generated": "2026-10-27T21:00:06Z",
+ "generated": "2026-10-28T04:13:36Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "AI 与科技",
    "items": [
     {
-     "t": "Anthropic提交上市文件 首次公开财务与风险",
-     "d": "AI公司Anthropic向美国监管机构递交S‑1文件，首次披露审计财务数据和超过90页风险清单，显示其业务增长快速但成本高昂。此文件揭示了行业高速扩张背后的财务压力和潜在监管风险。",
+     "t": "Anthropic提交上市文件披露财务与风险",
+     "d": "AI公司Anthropic向美国监管机构提交S-1文件，首次公开其财务数据和90余页风险因素，显示业务增长快速却成本高昂。此文件揭示其巨额支出和潜在网络安全等风险，对AI行业估值和监管关注产生影响。",
      "src": [
       {
        "n": "The Guardian",
@@ -20,8 +20,8 @@
      "full": true
     },
     {
-     "t": "Meta计划95亿美元融资 支持AI扩张",
-     "d": "Meta宣布两阶段融资计划，首阶段通过35亿美元公开发行股票，次阶段通过60亿美元的按市价发行，整体筹资约95亿美元，以支持其AI基础设施建设。此举反映大型科技公司在AI竞争中加大资金投入，而小型“新云”公司面临资金紧张。",
+     "t": "Meta计划筹资95亿美元用于AI扩张",
+     "d": "Meta宣布分两阶段募集95亿美元股票，其中首轮35亿美元公开发行，二轮60亿美元以市场价增发C类无投票权股票，旨为AI基础设施投入提供资金。此举凸显大型科技公司在AI竞争中融资优势，并加剧对小型AI云服务商的资金压力。",
      "src": [
       {
        "n": "The Guardian",
@@ -31,12 +31,12 @@
      "full": true
     },
     {
-     "t": "AI生成虚假信息冲击美中期选举",
-     "d": "专家警告称，在美国即将到来的中期选举前，社交媒体上AI生成的虚假信息大量出现，平台因削减内容审核团队而难以有效拦截。此现象凸显AI技术在政治误导方面的风险以及平台监管的挑战。",
+     "t": "Anthropic上市招股说明书要点汇总",
+     "d": "Anthropic发布335页招股说明书，透露收入16.2亿美元、上半年亏损80.7亿美元、持有1316亿美元现金，并披露AI可能导致人类生存危机等风险。其巨额成本和现金储备凸显AI初创企业的高投入与盈利挑战，影响市场对AI公司估值的审慎态度。",
      "src": [
       {
-       "n": "The Guardian",
-       "u": "https://www.theguardian.com/us-news/2026/oct/27/ai-disinformation-social-media-midterm-elections"
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwn8d7g29vd9o?at_medium=RSS&at_campaign=rss"
       }
      ],
      "full": true
@@ -49,7 +49,7 @@
    "items": [
     {
      "t": "10/26 周一 收盘：标普500 ETF（SPY）+0.71%，纳指100 ETF（QQQ）+1.11%",
-     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 18.4；61% 的股票站在 50 日均线上方。",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 17.5；61% 的股票站在 50 日均线上方。",
      "src": [
       {
        "n": "今日股票池",
@@ -130,60 +130,46 @@
    "title": "世界大事",
    "items": [
     {
-     "t": "巴西卢拉赢得历史性第四任期",
-     "d": "左翼总统卢拉以约52%得票率连任，确保巴西继续走亲美、环保路线，对拉美政治格局及金砖国家内部力量平衡具有重要影响。",
+     "t": "埃博拉疫情突破1万人感染记录",
+     "d": "刚果民主共和国自5月宣布疫情以来，累计感染超1万人，死亡近5千人，成为历史上传播最快的埃博拉爆发。该疫情的快速蔓延和广泛地域扩散提升了全球公共卫生风险，对疫苗与援助资源配置提出紧迫需求。",
      "src": [
       {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/brazil-s-lula-wins-historic-fourth-term"
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/10/27/g-s1-150136/ebola-outbreak-milestone-democratic-republic-congo-vaccine"
       },
       {
-       "n": "BBC 拉美",
-       "u": "https://www.bbc.co.uk/news/articles/ckm23y3mg1yyo?at_medium=RSS&at_campaign=rss"
-      }
-     ]
-    },
-    {
-     "t": "以色列选举投票率创50年新高",
-     "d": "截至当地时间下午6点，约66.7%的以色列选民已投票，超出去年同期的57.7%，创下近半世纪最高 turnout。高投票率可能影响选举结果，尤其在决定是否继续支持内塔尼亚胡政府方面具有关键意义。",
-     "src": [
-      {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/news/2026/10/27/israel-election-turnout-highest-in-50-years-as-voting-continues?traffic_source=rss"
-      },
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/israel-elections-voter-turnout-reaches-55-by-4pm-local-time"
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/sport/formula-one-outsider-300-starts-perez-marks-milestone-in-mexico-6498006"
       }
      ],
      "full": true
     },
     {
-     "t": "梅拉尼亚·特朗普促成乌克兰局部停火",
-     "d": "在梅拉尼亚·特朗普斡旋下，乌克兰与俄罗斯在南部城市奥莱什基实现局部停火，以允许人道援助进入，该停火预计持续至周六。此举为即将启动的美方调解谈判创造了人道与外交的窗口。",
+     "t": "以色列选举出炉：两大阵营持平",
+     "d": "以色列主要电视台最新民调显示，内塔尼亚胡阵营与埃森科特反对阵营均获约51席，均未达组建多数政府所需的61席。选举结果不确定性增加，可能使巴勒斯坦政党成为组阁关键，影响国内政治格局与区域安全。",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/live/2026/oct/27/israel-elections-knesset-netanyahu-likud-eisenkot-gaza-latest-updates"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/10/28/israels-eisenkot-says-country-voted-for-change?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "梅拉尼娅·特朗普斡旋乌克兰局部停火",
+     "d": "在美国前首夫妇的斡旋下，乌克兰与俄罗斯在南部城镇奥列什基实现上午3点的局部停火，以便展开人道主义援助。此举为持续四年半冲突中的一次有限和平尝试，但同时基辅仍遭导弹袭击，显示冲突仍高度紧张。",
      "src": [
       {
        "n": "NPR",
        "u": "https://www.npr.org/2026/10/27/g-s1-150037/russia-ukraine-war"
       },
       {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/news/2026/10/27/melania-or-the-pope-who-brokered-russia-ukraine-ceasefire-in-oleshky?traffic_source=rss"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "刚果（金）埃博拉病例突破1万例 仍无疫苗",
-     "d": "刚果（金）报告埃博拉病例已达10,060例，死亡4,887例，且病毒为暂无批准疫苗或特效药的Bundibugyo株，已向肯尼亚、尼日利亚等国扩散。疫情的快速蔓延及缺乏有效治疗方案对地区公共卫生安全构成严峻挑战。",
-     "src": [
-      {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/dr-congo-reports-over-10-000-ebola-cases-as-the-outbreak-spreads-abroad-with-no-approved-vaccine-or-specific-treatment-for-the-bundibugyo-virus/a-79773667?maca=en-rss-en-all-1573-rdf"
-      },
-      {
-       "n": "CBC",
-       "u": "https://www.cbc.ca/news/health/ebola-outbreak-10000-cases-9.7397981?cmp=rss"
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c6lye1w9p2l8o?at_medium=RSS&at_campaign=rss"
       }
      ],
      "full": true
