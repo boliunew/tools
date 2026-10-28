@@ -123,6 +123,14 @@ try:
     print("::notice title=机器人自检（翻译 / 朗读 / 听写）::" + st[:900])
 except Exception as e:
     print("::warning title=机器人自检::%s" % e)
+try:
+    body = json.dumps({"sentence": "The company has been struggling to keep up with demand since prices dropped, and analysts expect it to lay off workers if sales do not pick up by spring.", "nocache": True}).encode()
+    r = json.loads(urllib.request.urlopen(urllib.request.Request(url + "/explain", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=90).read())
+    print("::notice title=讲讲这句测试::" + json.dumps(r, ensure_ascii=False)[:1800])
+except urllib.error.HTTPError as e:
+    print("::warning title=讲讲这句测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
+except Exception as e:
+    print("::warning title=讲讲这句测试::%s" % e)
 req = urllib.request.Request(url + "/intraday?force=1", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA})
 try:
     print("::notice title=盘中提醒测试::" + urllib.request.urlopen(req, timeout=60).read().decode()[:600])

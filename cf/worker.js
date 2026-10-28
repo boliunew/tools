@@ -357,6 +357,38 @@ async function llm(env, system, user, maxTokens = 800) {
   return '';
 }
 
+// ---------------------------------------------------------------------------- /explain：SubLingo「讲讲这句」
+const EXPLAIN_SYS = `你是给中文母语者讲英语语法的老师。读者是在美国工作生活的成年人，英语中等水平。
+只讲用户给的「要讲的句子」，上下文只用来帮你理解，不要讲上下文。用简体中文，简洁、口语化，不客套，不用表情符号。
+只输出一个 JSON 对象，不要任何别的文字：
+{"meaning":"这句话的意思：一两句自然的中文翻译",
+ "trunk":"句子主干：主语 + 谓语（+ 宾语/表语），用原文的词，比如 analysts expect it to lay off workers",
+ "parts":[{"text":"原文片段","role":"在句中的作用，如：主句 / 时间状语从句（since 引导）/ 条件状语从句（if 引导）/ 宾语从句 / 定语从句 / 宾语补足语 / 分词短语","note":"一句话说明"}],
+ "verbs":[{"text":"原文里的动词部分","form":"形式，如：现在完成进行时 / 一般过去时 / 不定式 / 现在分词 / 过去分词 / 被动语态 / 情态动词","why":"为什么这里用这个形式，结合这句话说"}],
+ "phrases":[{"text":"短语动词、习语或固定搭配","meaning":"在这句里的意思"}],
+ "tip":"这句最值得注意的一点，一句话；没有就写空字符串"}
+要求：parts 按句子顺序列 2 到 5 项（简单句可以只列 1 项）；verbs 列出所有谓语动词和非谓语动词，注意 to 后面的动词是不定式（比如 to lay off 是不定式，不是过去时）；phrases 只列真正的短语动词、习语和固定搭配，没有就给空数组。`;
+async function explain(req, env) {
+  if (!(await authed(req, env))) return json(req, { error: 'key', msg: '需要先在工具箱首页输入密码解锁（并勾选「记住我」）' }, 401);
+  const b = await req.json().catch(() => ({}));
+  const s = String(b.sentence || '').replace(/\s+/g, ' ').trim();
+  if (!s) return json(req, { error: 'input', msg: '没有收到句子' }, 400);
+  if (s.length > 600) return json(req, { error: 'input', msg: '句子太长了，分开来问' }, 400);
+  const ctxText = String(b.context || '').replace(/\s+/g, ' ').trim().slice(0, 600);
+  const ck = 'ex1:' + (await sha256hex(s)).slice(0, 40);
+  if (env.KV && !b.nocache) { const hit = await env.KV.get(ck); if (hit) return json(req, { ...JSON.parse(hit), cached: true }); }
+  await track(env, 'chat');
+  const user = (ctxText && ctxText !== s ? '上下文（只供参考）：' + ctxText + '\n\n' : '') + '要讲的句子：' + s;
+  const t0 = Date.now();
+  const J = parseJSON(await llm(env, EXPLAIN_SYS, user, 1400));
+  if (!J || !J.meaning) return json(req, { error: 'ai', msg: 'AI 这次没讲出来，再试一次' }, 502);
+  const list = (x, keys) => (Array.isArray(x) ? x : []).slice(0, 8).map(o => { const r = {}; for (const k of keys) r[k] = String((o && o[k]) || '').slice(0, 300); return r; }).filter(o => o[keys[0]]);
+  const out = { meaning: String(J.meaning).slice(0, 400), trunk: String(J.trunk || '').slice(0, 300), parts: list(J.parts, ['text', 'role', 'note']),
+    verbs: list(J.verbs, ['text', 'form', 'why']), phrases: list(J.phrases, ['text', 'meaning']), tip: String(J.tip || '').slice(0, 300) };
+  if (env.KV) await env.KV.put(ck, JSON.stringify(out), { expirationTtl: 60 * 60 * 24 * 90 });
+  return json(req, { ...out, ms: Date.now() - t0 });
+}
+
 // ---------- 照片：柜号 / 单据
 const DOC_PROMPT = 'This is a photo from a freight / container yard. First decide: is it mainly a DOCUMENT (bill of lading, delivery order, packing list, gate ticket, seal record, any printed form) or a CONTAINER / TRAILER / SEAL photo? ' +
   'Copy characters exactly; never guess. Reply with JSON only: ' +
@@ -632,6 +664,7 @@ export default {
     const url = new URL(req.url);
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors(req) });
     if (url.pathname === '/ocr' && req.method === 'POST') return ocr(req, env);
+    if (url.pathname === '/explain' && req.method === 'POST') return explain(req, env);
     if (url.pathname.startsWith('/tg/') && req.method === 'POST') return tgWebhook(req, env, ctx, url);
     if (url.pathname === '/push/register' && req.method === 'POST') {   // App 登记推送地址（需要首页密码解锁过）
       if (!(await authed(req, env))) return json(req, { error: 'key' }, 401);

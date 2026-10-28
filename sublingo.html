@@ -135,6 +135,20 @@ body.dragging .drop{border-color:var(--accent);color:var(--accent);background:va
 .it .nm{font-weight:600}
 .it code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;background:var(--chip);padding:1px 6px;border-radius:6px;margin-left:6px;white-space:nowrap}
 .it .ds{color:var(--soft);margin-top:3px;font-size:13.5px}
+.it.short .ds{display:none}.it.short.act .ds{display:block}.it.short .nm::after{content:'（前面讲过，点开看）';font-weight:400;font-size:12px;color:var(--faint);margin-left:4px}
+.aibar{display:flex;justify-content:flex-end;margin:2px 0 6px}
+.aibtn{border:1px solid var(--accent)!important;color:var(--accent)!important;background:transparent}
+.aiout:empty{display:none}
+.aiout{margin:0 0 10px;padding:10px 12px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:14px;line-height:1.6}
+.aiout h5{margin:8px 0 2px;font-size:12px;color:var(--faint);font-weight:600;letter-spacing:.04em}
+.aiout h5:first-child{margin-top:0}
+.aiout .mean{font-size:15px;color:var(--ink)}
+.aiout ul{margin:2px 0;padding-left:18px}.aiout li{margin:3px 0}
+.aiout li b{font-weight:600}.aiout li em{font-style:normal;color:var(--accent);margin:0 4px}
+.aiout li span{color:var(--soft);font-size:13.5px}
+.aiout .tip{margin-top:8px;padding:6px 9px;border-radius:8px;background:var(--chip);font-size:13.5px}
+.aiout .src{margin-top:8px;font-size:11.5px;color:var(--faint)}
+.aiout .err{color:var(--soft)}
 .it .zhm{color:var(--accent);margin-left:6px}
 .subsent{margin:10px 0 2px;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--soft)}
 .empty{color:var(--faint);font-size:13px}
@@ -340,13 +354,15 @@ var NLP = (function () {
   /* phrasal verbs */
   var PV = {
     'ask out': '约某人出去', 'back up': '支持；备份；倒车', 'blow up': '爆炸；发脾气', 'break down': '出故障；崩溃', 'break in': '闯入', 'break up': '分手；解散', 'break out': '爆发', 'bring up': '提出（话题）；抚养', 'bring back': '带回；使回忆起', 'call back': '回电话', 'call off': '取消', 'calm down': '冷静下来', 'carry on': '继续', 'carry out': '执行；实施', 'catch up': '赶上', 'check in': '登记入住', 'check out': '结账离开；查看', 'cheer up': '振作起来', 'clean up': '打扫干净', 'come across': '偶然遇到', 'come back': '回来', 'come in': '进来', 'come on': '快点；加油', 'come out': '出来；发布', 'come up': '出现；被提及', 'come over': '过来（拜访）', 'count on': '依靠', 'cut down': '削减；砍倒', 'cut off': '切断', 'deal with': '处理', 'drop by': '顺便拜访', 'drop off': '放下（人/物）', 'drop out': '退出；辍学', 'end up': '最终（成为/处于）', 'fall apart': '崩溃；散架', 'fall down': '摔倒', 'figure out': '想出；弄明白', 'fill in': '填写', 'fill out': '填写（表格）', 'find out': '查明；发现', 'get along': '相处融洽', 'get away': '逃脱', 'get back': '回来；取回', 'get by': '勉强应付', 'get in': '进入；上车', 'get off': '下车', 'get on': '上车；进展', 'get out': '出去；离开', 'get over': '克服；从…中恢复', 'get up': '起床', 'give away': '赠送；泄露', 'give back': '归还', 'give in': '屈服', 'give up': '放弃', 'go ahead': '开始吧；继续', 'go away': '走开', 'go back': '回去', 'go on': '继续；发生', 'go out': '出去；熄灭', 'go over': '复习；仔细检查', 'go through': '经历；仔细查看', 'grow up': '长大', 'hand in': '上交', 'hang on': '稍等；抓紧', 'hang out': '闲逛；一起玩', 'hang up': '挂断电话', 'hold on': '稍等；坚持住', 'hold up': '耽搁；举起', 'keep on': '继续', 'keep up': '跟上；保持', 'kick off': '开始', 'knock out': '击倒', 'lay off': '解雇', 'leave out': '遗漏；省略', 'let down': '使失望', 'let in': '让…进来', 'log in': '登录', 'look after': '照顾', 'look around': '四处看看', 'look at': '看', 'look for': '寻找', 'look into': '调查', 'look out': '小心', 'look over': '检查', 'look up': '查（资料）；抬头看', 'make up': '编造；和好；化妆；弥补', 'mess up': '搞砸', 'move on': '继续前进；放下过去', 'move out': '搬出去', 'pass away': '去世', 'pass out': '昏倒', 'pay back': '偿还', 'pay off': '还清；有回报', 'pick up': '捡起；接（人）；学会', 'point out': '指出', 'pull over': '靠边停车', 'put away': '收起来', 'put back': '放回原处', 'put down': '放下', 'put off': '推迟', 'put on': '穿上；上演', 'put out': '扑灭', 'put up': '搭建；张贴；安装', 'run away': '逃跑', 'run into': '偶遇；撞上', 'run out': '用完', 'set off': '出发；引发', 'set up': '建立；安排', 'settle down': '安定下来', 'show off': '炫耀', 'show up': '出现；露面', 'shut down': '关闭', 'shut up': '闭嘴', 'sign up': '报名；注册', 'sit down': '坐下', 'slow down': '放慢', 'sort out': '解决；整理', 'speak up': '大声说；直言', 'stand out': '突出；显眼', 'stand up': '站起来', 'stay up': '熬夜', 'take after': '长得像（长辈）', 'take off': '起飞；脱下', 'take on': '承担；雇用', 'take over': '接管', 'take up': '开始从事；占据', 'talk over': '商量', 'tear down': '拆除', 'think over': '仔细考虑', 'throw away': '扔掉', 'throw up': '呕吐', 'try on': '试穿', 'try out': '试用', 'turn around': '转身；好转', 'turn down': '拒绝；调低', 'turn off': '关掉', 'turn on': '打开', 'turn out': '结果是；证明是', 'turn up': '出现；调大', 'wake up': '醒来', 'warm up': '热身；加热', 'watch out': '小心', 'wipe out': '消灭；擦掉', 'work out': '锻炼；解决；算出', 'write down': '写下', 'depend on': '依赖；取决于', 'rely on': '依赖', 'belong to': '属于', 'listen to': '听', 'wait for': '等待', 'care about': '在乎', 'care for': '照顾；喜欢', 'think about': '考虑', 'talk about': '谈论', 'worry about': '担心', 'agree with': '同意（某人）', 'apply for': '申请', 'believe in': '信任；相信…存在', 'consist of': '由…组成', 'focus on': '专注于', 'insist on': '坚持', 'lead to': '导致', 'result in': '导致', 'suffer from': '遭受', 'account for': '解释；占（比例）', 'come from': '来自', 'hear from': '收到…的消息', 'look like': '看起来像',
-    'look forward to': '期待', 'get along with': '与…相处', 'come up with': '想出（主意）', 'put up with': '忍受', 'run out of': '用完', 'catch up with': '赶上', 'keep up with': '跟上', 'look up to': '尊敬', 'look down on': '看不起', 'get rid of': '摆脱', 'make up for': '弥补', 'cut down on': '减少', 'get away with': '逃脱惩罚', 'go along with': '赞同；配合', 'break up with': '和…分手', 'come down with': '患上（小病）', 'get back to': '回复；重新回到', 'look out for': '留意', 'stand up for': '支持；维护'
+    'look forward to': '期待', 'get along with': '与…相处', 'come up with': '想出（主意）', 'put up with': '忍受', 'run out of': '用完', 'catch up with': '赶上', 'keep up with': '跟上', 'look up to': '尊敬', 'look down on': '看不起', 'get rid of': '摆脱', 'make up for': '弥补', 'cut down on': '减少', 'get away with': '逃脱惩罚', 'go along with': '赞同；配合', 'break up with': '和…分手', 'come down with': '患上（小病）', 'get back to': '回复；重新回到', 'look out for': '留意', 'stand up for': '支持；维护',
+    'cut back': '削减', 'cut back on': '减少（某物的用量）', 'scale back': '缩减规模', 'ramp up': '加大；提速', 'roll out': '推出；铺开', 'phase out': '逐步淘汰', 'step down': '辞职；下台', 'step up': '加强；站出来', 'wind down': '逐步结束；放松', 'sign off': '签字批准；结束', 'team up': '合作', 'fall through': '落空；没成', 'fall behind': '落后', 'back out': '退出（约定）', 'bail out': '救助；纾困', 'crack down on': '严厉打击', 'drive up': '推高（价格）', 'push back': '推迟；反对', 'pull out': '撤出', 'pull back': '收缩；撤回', 'prop up': '支撑', 'rule out': '排除（可能性）', 'hand over': '移交', 'follow up': '跟进', 'line up': '排队；安排好', 'hold off': '推迟；暂不', 'clock in': '上班打卡', 'clock out': '下班打卡', 'punch in': '上班打卡', 'punch out': '下班打卡', 'hook up': '连接；挂上', 'let go': '放手；解雇', 'let go of': '放开；放下', 'tie up': '占用；捆住', 'gear up': '准备好', 'ease up': '放松；减缓', 'level off': '趋于平稳', 'bottom out': '触底', 'write off': '注销；勾销'
   };
   var PREP_PART = set('after with for into of at to from like');
 
   /* fixed expressions */
   var FIXED = {
-    'in order to': '为了（表目的）', 'so that': '以便；为了', 'as well as': '以及；和', 'because of': '因为（后接名词）', 'instead of': '代替；而不是', 'according to': '根据', 'as soon as': '一…就…', 'even though': '尽管', 'even if': '即使', 'rather than': '而不是', 'a lot of': '许多', 'lots of': '许多', 'in spite of': '尽管', 'as long as': '只要', 'no longer': '不再', 'at least': '至少', 'at last': '终于', 'at first': '起初', 'used to': '过去常常', 'had better': '最好（建议）', 'would rather': '宁愿', 'in front of': '在…前面', 'next to': '紧挨着', 'as if': '好像', 'as though': '好像', 'each other': '互相', 'one another': '互相', 'so far': '到目前为止', 'in fact': '事实上', 'of course': '当然', 'at all': '（否定）根本', 'all the time': '一直', 'the whole time': '一直；整个过程中', 'for example': '例如', 'such as': '例如', 'due to': '由于', 'thanks to': '多亏；由于', 'in addition': '此外', 'on the other hand': '另一方面', 'as a result': '结果', 'in the end': '最后', 'by the way': '顺便说一下', 'not only': '不仅', 'but also': '而且', 'more and more': '越来越多', 'kind of': '有点；某种', 'sort of': '有点', 'up to': '多达；取决于', 'be able to': '能够', 'be about to': '即将', 'be supposed to': '应该；被期望', 'have to': '不得不', 'has to': '不得不', 'had to': '（过去）不得不', 'need to': '需要', 'ought to': '应该', 'for months': '好几个月', 'for years': '好几年', 'last week': '上周', 'right now': '现在；马上', 'at the same time': '同时', 'no matter': '无论', 'in terms of': '就…而言', 'as a matter of fact': '事实上', 'take care of': '照顾', 'take part in': '参加', 'make sure': '确保', 'pay attention to': '注意', 'be used to': '习惯于'
+    'in order to': '为了（表目的）', 'so that': '以便；为了', 'as well as': '以及；和', 'because of': '因为（后接名词）', 'instead of': '代替；而不是', 'according to': '根据', 'as soon as': '一…就…', 'even though': '尽管', 'even if': '即使', 'rather than': '而不是', 'a lot of': '许多', 'lots of': '许多', 'in spite of': '尽管', 'as long as': '只要', 'no longer': '不再', 'at least': '至少', 'at last': '终于', 'at first': '起初', 'used to': '过去常常', 'had better': '最好（建议）', 'would rather': '宁愿', 'in front of': '在…前面', 'next to': '紧挨着', 'as if': '好像', 'as though': '好像', 'each other': '互相', 'one another': '互相', 'so far': '到目前为止', 'in fact': '事实上', 'of course': '当然', 'at all': '（否定）根本', 'all the time': '一直', 'the whole time': '一直；整个过程中', 'for example': '例如', 'such as': '例如', 'due to': '由于', 'thanks to': '多亏；由于', 'in addition': '此外', 'on the other hand': '另一方面', 'as a result': '结果', 'in the end': '最后', 'by the way': '顺便说一下', 'not only': '不仅', 'but also': '而且', 'more and more': '越来越多', 'kind of': '有点；某种', 'sort of': '有点', 'up to': '多达；取决于', 'be able to': '能够', 'be about to': '即将', 'be supposed to': '应该；被期望', 'have to': '不得不', 'has to': '不得不', 'had to': '（过去）不得不', 'need to': '需要', 'ought to': '应该', 'for months': '好几个月', 'for years': '好几年', 'last week': '上周', 'right now': '现在；马上', 'at the same time': '同时', 'no matter': '无论', 'in terms of': '就…而言', 'as a matter of fact': '事实上', 'take care of': '照顾', 'take part in': '参加', 'make sure': '确保', 'pay attention to': '注意', 'be used to': '习惯于',
+    'hit the road': '出发；上路', 'let it go': '算了；放下'
   };
   var FIXED_KEYS = (function () { var a = [], k; for (k in FIXED) if (has(FIXED, k)) a.push(k.split(' ')); a.sort(function (x, y) { return y.length - x.length; }); return a; })();
 
@@ -625,6 +641,8 @@ var NLP = (function () {
           else t.tag = 'ADV';
           break;
         case 'TO':
+          // lay / set / cut / let / put / hit…：原形和过去式长得一样（或刚好是别的词的过去式），跟在 to 后面按原形处理
+          if (n && n.tag === 'VD' && has(VERBS, n.lw) && !(p && p.tag === 'V' && /^(look|get|come|go|belong|listen|lead|talk|reply|refer|return|travel|walk|drive)$/.test(p.lemma))) { n.tag = 'VN'; n.lemma = n.lw; n.vf = 'VB'; }
           if (n && (n.tag === 'VN' || n.tag === 'VV' || (n.tag === 'AUXC' && /^(be|have|do)$/.test(n.lw)) || n.tag === 'ADV' && toks[i + 2] && (toks[i + 2].tag === 'VN' || toks[i + 2].tag === 'VV')) && !(p && p.tag === 'V' && /^(look|get|come|go|belong|listen|lead|talk|reply|refer|return|travel|walk|drive)$/.test(p.lemma) && n.tag === 'VN')) { t.tag = 'PART'; t.sub = 'inf'; }
           else if (n && n.tag === 'VN' && p && (p.tag === 'ADJ' || p.tag === 'N' || p.lw === 'going' || p.lw === 'used' || p.lw === 'have' || p.lw === 'has' || p.lw === 'had' || p.tag === 'V' && has(INF_V, p.lemma))) { t.tag = 'PART'; t.sub = 'inf'; }
           else t.tag = 'PREP';
@@ -648,7 +666,7 @@ var NLP = (function () {
           else t.tag = 'PREP';
           break;
         case 'PREP':
-          if (/^(before|after|since|until|till|once)$/.test(t.lw) && n && (n.tag === 'PRON' && has(SUBJ, n.lw) || n.tag === 'THERE' || (n.tag === 'DET' || n.tag === 'PROPN') && hasFiniteAhead(toks, i + 1, Math.min(end, i + 6)))) t.tag = 'SCONJ';
+          if (/^(before|after|since|until|till|once)$/.test(t.lw) && n && (n.tag === 'PRON' && has(SUBJ, n.lw) || n.tag === 'THERE' || (n.tag === 'DET' || n.tag === 'PROPN' || n.tag === 'N' || n.tag === 'ADJ') && hasFiniteAhead(toks, i + 1, Math.min(end, i + 6)))) t.tag = 'SCONJ';
           if (t.lw === 'than' && n && n.tag === 'PRON' && has(SUBJ, n.lw)) t.sub = 'than';
           break;
         case 'WH':
@@ -1173,7 +1191,8 @@ var NLP = (function () {
     var score = Math.max(0, Math.min(100, Math.round(adj * 6.5)));
     var rareList = []; for (var k in rare) if (has(rare, k)) rareList.push([k, rare[k]]);
     rareList.sort(function (a, b) { return b[1] - a[1] || b[0].length - a[0].length; });
-    return { words: words.length, sentences: sents.length, asl: asl, fk: fk, fre: fre, rareRatio: rareRatio, level: level, levelZh: zh, score: score, longSent: longSent, rare: rareList.slice(0, 30).map(function (x) { return x[0]; }), minutes: Math.max(1, Math.round(words.length / 130)) };
+    var few = words.length < 80 || sents.length < 3;   // 太短：句长、生词比例都不稳定，不给等级
+    return { few: few, words: words.length, sentences: sents.length, asl: asl, fk: fk, fre: fre, rareRatio: rareRatio, level: level, levelZh: zh, score: score, longSent: longSent, rare: rareList.slice(0, 30).map(function (x) { return x[0]; }), minutes: Math.max(1, Math.round(words.length / 130)) };
   }
 
   var TAG_ZH = { N: '名词', PROPN: '专有名词', PRON: '代词', V: '动词', AUX: '助动词', MD: '情态动词', ADJ: '形容词', ADV: '副词', PREP: '介词', CONJ: '并列连词', SCONJ: '从属连词', DET: '限定词', NUM: '数词', PART: '小品词', INTJ: '感叹词', POS: '所有格', PUNCT: '标点', X: '' };
@@ -1262,19 +1281,22 @@ var NLP = (function () {
   }
   function register(key, text) { var a = analyzeText(text); REG[key] = a; return a; }
 
-  function itemHTML(name, code, desc, ids, zh) {
-    return '<div class="it" data-hl="' + (ids || []).join(',') + '"><span class="nm">' + esc(name) + '</span>' + (code ? '<code>' + esc(code) + '</code>' : '') + (zh ? '<span class="zhm">' + esc(zh) + '</span>' : '') + (desc ? '<div class="ds">' + esc(desc) + '</div>' : '') + '</div>';
+  var SEEN = {};   // 这次打开页面后已经完整讲过的时态：再出现只显示一行，点开才看定义
+  function itemHTML(name, code, desc, ids, zh, cls) {
+    return '<div class="it' + (cls ? ' ' + cls : '') + '" data-hl=""' + (ids || []).join(',') + '"><span class="nm">' + esc(name) + '</span>' + (code ? '<code>' + esc(code) + '</code>' : '') + (zh ? '<span class="zhm">' + esc(zh) + '</span>' : '') + (desc ? '<div class="ds">' + esc(desc) + '</div>' : '') + '</div>';
   }
   function panelHTML(key) {
     var a = REG[key], html = '<div class="panel" data-for="' + key + '"><div class="ph"><b>语法解析</b><span><button class="btn sm ghost" data-act="speak">朗读</button><button class="btn sm ghost" data-act="close">收起</button></span></div>';
     var multi = a.sents.length > 1, any = false;
     each(a.sents, function (s, si) {
       if (!/[a-z]/i.test(a.text.slice(a.toks[s.from] ? a.toks[s.from].s : 0, a.toks[s.to - 1] ? a.toks[s.to - 1].e : 0))) return;
-      if (multi) html += '<div class="subsent">第 ' + (si + 1) + ' 句：' + esc(a.text.slice(a.toks[s.from].s, a.toks[s.to - 1].e)) + '</div>';
+      var stext = a.text.slice(a.toks[s.from].s, a.toks[s.to - 1].e);
+      if (multi) html += '<div class="subsent">第 ' + (si + 1) + ' 句：' + esc(stext) + '</div>';
+      if (s.words >= 4) html += '<div class="aibar"><button class="btn sm aibtn" data-act="ai" data-k="' + key + '" data-s="' + esc(stext) + '">讲讲这句</button></div><div class="aiout"></div>';
       var chains = s.chains.filter(function (c) { return c.name; });
       if (chains.length) {
         html += '<h4>时态 · 语态</h4>';
-        each(chains, function (c) { html += itemHTML(c.name, c.formula, c.desc, c.span); });
+        each(chains, function (c) { var seen = SEEN[c.name]; SEEN[c.name] = 1; html += itemHTML(c.name, c.formula, c.desc, c.span, '', seen ? 'short' : ''); });
         any = true;
       }
       if (s.structs.length) {
@@ -1309,6 +1331,50 @@ var NLP = (function () {
         if (!act) { it.classList.add('act'); highlight(textEl, it.getAttribute('data-hl'), true); } else highlight(textEl, '', false);
       }
     });
+  }
+
+  /* ---------- 讲讲这句（AI）：本地引擎负责即时标注，难句点按钮再请 AI 拆开讲 ---------- */
+  var AI_API = '', AIC = {};
+  (function () { var x = new XMLHttpRequest(); x.open('GET', 'cf.json?t=' + Math.floor(Date.now() / 36e5)); x.onload = function () { try { AI_API = JSON.parse(x.responseText).api || ''; } catch (e) { } }; x.send(); })();
+  try { AIC = JSON.parse(localStorage.getItem('sl:ai') || '{}') || {}; } catch (e) { AIC = {}; }
+  function aiSave(sent, r) {
+    AIC[sent] = r; var ks = Object.keys(AIC);
+    if (ks.length > 150) delete AIC[ks[0]];
+    try { localStorage.setItem('sl:ai', JSON.stringify(AIC)); } catch (e) { }
+  }
+  function toolsKey() { try { return localStorage.getItem('home:unlock') || ''; } catch (e) { return ''; } }
+  function aiHTML(r) {
+    var li = function (arr, f) { return arr && arr.length ? '<ul>' + arr.map(f).join('') + '</ul>' : ''; };
+    var h = '<h5>意思</h5><div class="mean">' + esc(r.meaning) + '</div>';
+    if (r.trunk) h += '<h5>主干</h5><div>' + esc(r.trunk) + '</div>';
+    if (r.parts && r.parts.length) h += '<h5>结构</h5>' + li(r.parts, function (p) { return '<li><b>' + esc(p.text) + '</b><em>' + esc(p.role || '') + '</em>' + (p.note ? '<br><span>' + esc(p.note) + '</span>' : '') + '</li>'; });
+    if (r.verbs && r.verbs.length) h += '<h5>动词</h5>' + li(r.verbs, function (v) { return '<li><b>' + esc(v.text) + '</b><em>' + esc(v.form || '') + '</em>' + (v.why ? '<br><span>' + esc(v.why) + '</span>' : '') + '</li>'; });
+    if (r.phrases && r.phrases.length) h += '<h5>短语</h5>' + li(r.phrases, function (p) { return '<li><b>' + esc(p.text) + '</b><em>' + esc(p.meaning || '') + '</em></li>'; });
+    if (r.tip) h += '<div class="tip">' + esc(r.tip) + '</div>';
+    return h + '<div class="src">AI 讲解，偶尔会错</div>';
+  }
+  function aiContext(k) {
+    if (k.charAt(0) === 'c') { var ci = +k.slice(1), out = []; for (var j = ci - 1; j <= ci + 1; j++) if (cues[j] && cues[j].en) out.push(cues[j].en); return out.join(' ').slice(0, 600); }
+    return REG[k] ? REG[k].text.slice(0, 600) : '';
+  }
+  function aiExplain(btn) {
+    var sent = btn.getAttribute('data-s'), k = btn.getAttribute('data-k'), out = btn.parentNode.nextElementSibling;
+    if (!out || !sent) return;
+    if (out.innerHTML) { out.innerHTML = ''; btn.textContent = '讲讲这句'; return; }   // 再点一次收起
+    if (AIC[sent]) { out.innerHTML = aiHTML(AIC[sent]); btn.textContent = '收起讲解'; return; }
+    if (!toolsKey()) { out.innerHTML = '<div class="err">要先在<a href="index.html">首页</a>输入密码并勾选「记住我」，才能用 AI 讲解。</div>'; return; }
+    if (!AI_API) { out.innerHTML = '<div class="err">AI 接口还没连上，稍后再试。</div>'; return; }
+    btn.disabled = true; btn.textContent = '正在讲…'; out.innerHTML = '<div class="err">AI 在看这句话，几秒钟…</div>';
+    var x = new XMLHttpRequest();
+    x.open('POST', AI_API + '/explain'); x.setRequestHeader('Content-Type', 'application/json'); x.setRequestHeader('X-Tools-Key', toolsKey());
+    x.timeout = 45000;
+    x.onload = function () {
+      btn.disabled = false; var r = null; try { r = JSON.parse(x.responseText); } catch (e) { }
+      if (x.status === 200 && r && r.meaning) { aiSave(sent, r); out.innerHTML = aiHTML(r); btn.textContent = '收起讲解'; }
+      else { btn.textContent = '讲讲这句'; out.innerHTML = '<div class="err">' + esc((r && r.msg) || ('出错了（' + x.status + '）')) + '</div>'; }
+    };
+    x.onerror = x.ontimeout = function () { btn.disabled = false; btn.textContent = '讲讲这句'; out.innerHTML = '<div class="err">网络不通或者太慢，再试一次。</div>'; };
+    x.send(JSON.stringify({ sentence: sent, context: aiContext(k) }));
   }
 
   /* ---------- speech ---------- */
@@ -1545,7 +1611,7 @@ var NLP = (function () {
     $('cues').innerHTML = html;
     var d = NLP.difficulty(all.join(' '));
     var hard = 0; for (i = 0; i < cues.length; i++) if (REG['c' + i] && REG['c' + i].sents.some(function (s) { return s.hard; })) hard++;
-    $('fileBar').innerHTML = '<span class="name">' + esc(subName) + '</span><span>' + cues.length + ' 条字幕</span><span>' + d.words + ' 词</span><span class="pill lv">难度 ' + d.level + ' · ' + d.levelZh + '</span>' +
+    $('fileBar').innerHTML = '<span class="name">' + esc(subName) + '</span><span>' + cues.length + ' 条字幕</span><span>' + d.words + ' 词</span>' + (d.few ? '' : '<span class="pill lv">难度 ' + d.level + ' · ' + d.levelZh + '</span>') +
       (mediaURL ? '' : '<button class="btn sm" id="addMedia">＋ 导入视频同步播放</button>') + '<button class="btn sm ghost" id="swapSub">换字幕</button>';
     $('subBody').style.display = 'block';
     $('subIntro').style.display = 'none';
@@ -1563,6 +1629,7 @@ var NLP = (function () {
       var act = actEl.getAttribute('data-act');
       if (act === 'close') togglePanel(row, ci, false);
       if (act === 'speak') speak(cues[ci].en);
+      if (act === 'ai') aiExplain(actEl);
       return;
     }
     if (actEl && actEl.getAttribute('data-act') === 'seek') { seekCue(ci, true); return; }
@@ -1707,8 +1774,8 @@ var NLP = (function () {
       body += '</p><div class="pslot" data-p="' + pi + '"></div>';
     }
     var pct = Math.max(4, d.score);
-    var html = '<div class="card stats"><div class="top"><div class="lvbig">' + d.level + '</div><div class="lvtxt"><b>' + d.levelZh + '难度</b>综合句长、音节和生词比例估算</div></div>' +
-      '<div class="meter"><i style="width:' + pct + '%"></i></div><div class="scale"><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>' +
+    var html = '<div class="card stats"><div class="top"><div class="lvbig">' + (d.few ? '—' : d.level) + '</div><div class="lvtxt"><b>' + (d.few ? '文字太短' : d.levelZh + '难度') + '</b>' + (d.few ? '三句、八十词以上才估难度' : '按句长、音节和生词比例估算') + '</div></div>' +
+      (d.few ? '' : '<div class="meter"><i style="width:' + pct + '%"></i></div><div class="scale"><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>') +
       '<div class="grid"><div><b>' + d.words + '</b><span>词数</span></div><div><b>' + d.sentences + '</b><span>句子</span></div><div><b>' + d.asl.toFixed(1) + '</b><span>平均句长（词）</span></div>' +
       '<div><b>' + hardN + '</b><span>长难句</span></div><div><b>' + Math.round(d.rareRatio * 100) + '%</b><span>生词比例</span></div><div><b>' + d.minutes + ' 分钟</b><span>预计阅读</span></div></div>' +
       (d.rare.length ? '<div class="rare"><div class="hint" style="margin-bottom:6px">生词预览（点击查词）</div>' + d.rare.map(function (w) { return '<span class="chip" data-w="' + esc(w) + '">' + esc(w) + '</span>'; }).join('') + '</div>' : '') + '</div>' +
@@ -1730,6 +1797,7 @@ var NLP = (function () {
         var k = panel.getAttribute('data-for'), act = b.getAttribute('data-act');
         if (act === 'close') closeArtPanel();
         if (act === 'speak') speak(REG[k].text);
+        if (act === 'ai') aiExplain(b);
       }
       return;
     }
