@@ -1,0 +1,200 @@
+{
+ "date": "2026-10-28",
+ "generated": "2026-10-28T19:42:31Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Anthropic 申请IPO，估值超1.5万亿美元",
+     "d": "AI 初创Anthropic于本周一在美提交IPO文件，估值被分析师推测超过1.5万亿美元，2023‑2026年收入预计从4100万美元跃至162.86亿美元，半年亏损80亿美元。此举显示AI行业资本扩张速度极快，或重塑科技股估值基准。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/global/2026/oct/26/anthropic-accelerates-ai"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI生成假信息冲击美国中期选举",
+     "d": "专家警告称，AI驱动的假信息在社交媒体上大幅激增，平台削减投票安全团队导致大量误导性内容未被过滤。此现象可能影响11月美国中期选举的舆论环境，提升监管和平台治理压力。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/us-news/2026/oct/27/ai-disinformation-social-media-midterm-elections"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "配送无人机噪音引居民投诉",
+     "d": "随着Amazon等公司在美国扩大无人机送货服务，居民因无人机低空飞行产生的刺耳嗡嗡声而感到不适。噪音投诉预计随业务扩张而增多，推动技术创新如Greenjets的降噪推进系统。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/ck1exgejq3xvo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "10/27 周二 收盘：标普500 ETF（SPY）+0.56%，纳指100 ETF（QQQ）+1.27%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 17.5；62% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：PNR +12.8%、FLEX +8.3%、DELL +7.5%；跌幅最大：XYL -14.2%、BA -10.7%、VLO -9.2%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。工业、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：MSFT（盘后）、GOOG（盘后）、GOOGL（盘后）、GEV（盘前）、KLAC（盘后）",
+     "d": "按市值挑出最大的几家，共 28 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：消费者信心（10/28 周三）",
+     "d": "CB Consumer Confidence 实际 91.7（预期 81.2，前值 84.2）。关注其中的通胀预期分项，突然走高会引起美联储警惕。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/30 周五 08:30：PCE 物价指数（重要性：高）",
+     "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/30 周五 08:30：GDP（重要性：中）",
+     "d": "季度经济增速。大幅低于预期会加剧衰退担忧，利好国债、利空周期股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "10/30 周五 08:30：首次申领失业金人数（重要性：低）",
+     "d": "每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "美联储维持利率不变，通胀仍高企",
+     "d": "美联储在本周决议中保持基准利率在3.75%‑4%区间不变，但强调将继续抗通胀，因能源价格飙升导致9月通胀同比3.7%。此举在美国中期选举前保持政策稳定，市场仍预期年底可能再加息。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/10/28/nx-s1-6020425/federal-reserve-interest-rates-inflation"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/economy/2026/10/28/bank-of-canada-raises-interest-rates-for-the-first-time-in-three-years?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "西班牙高速列车相撞致至少68人死亡",
+     "d": "一列RENFE列车追尾停在轨道上的IRYO列车，导致西班牙托莱多省两列高速列车相撞，已确认68人死亡、58人受伤。事故被归因于中心指挥中心在安全系统失效后误发复行指令，凸显铁路安全管理漏洞。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/10/28/nx-s1-6020217/spain-train-disaster"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/oct/28/analysis-fatal-collision-doubt-over-spain-high-speed-rail"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "巴西右派候选人博尔森罗逃往美国",
+     "d": "巴西总统候选人博尔森罗在拒绝交出护照后，于本周抵达美国迈阿密，途中经阿根廷和厄瓜多尔。其离境加剧美巴政治紧张，可能影响两国在拉美事务中的互动。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/flavio-bolsonaro-lands-in-miami-after-fleeing-brazil-for-us/a-79788659?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/flavio-bosolnaro-in-miami-brazil-election-loss-9.7399879?cmp=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "以色列大选计票显现内塔尼亚胡领先但未得多数",
+     "d": "以色列选举统计显示，内塔尼亚胡领衔的右派联盟在120席议会中预计获得53席，尚未形成多数；阿什克特尔的反对联盟约获48席，阿拉伯党预计创历史新高。结果预示组建联合政府仍具不确定性，可能导致持续政治僵局。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cmdx3knq1xexo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/live/2026/oct/28/israel-election-results-live-updates-exit-polls-netanyahu-likud-eisenkot-latest-news"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "10/30 周五：PCE 物价指数",
+  "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。 这是近几天最可能让整个市场大幅波动的事件，公布前后留意仓位。"
+ },
+ "week": []
+}
