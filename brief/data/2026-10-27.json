@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "generated": "2026-10-28T04:13:36Z",
+ "generated": "2026-10-28T04:35:23Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,19 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "Anthropic提交上市文件披露财务与风险",
-     "d": "AI公司Anthropic向美国监管机构提交S-1文件，首次公开其财务数据和90余页风险因素，显示业务增长快速却成本高昂。此文件揭示其巨额支出和潜在网络安全等风险，对AI行业估值和监管关注产生影响。",
+     "t": "Anthropic IPO估值超1.5万亿美元",
+     "d": "AI公司Anthropic于本周一提交美国IPO文件，估值被分析师估计超过1.5万亿美元，2023年收入4100万美元，2025年预计收入45.85亿美元，2026年上半年已达162.86亿美元，但首半年净亏80亿美元。此举凸显AI行业资本快速聚集，对科技股估值和市场风险偏好产生重大影响。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/global/2026/oct/26/anthropic-accelerates-ai"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Anthropic招股说明书披露爆炸式增长与风险",
+     "d": "Anthropic在其首次公开募股的S‑1文件中显示收入快速增长并列出90页的业务风险，包括网络攻击和安全保障限制。此信息揭示AI独角兽的高增长伴随极高成本和运营风险，提醒投资者审慎评估AI企业的可持续性。",
      "src": [
       {
        "n": "The Guardian",
@@ -20,23 +31,12 @@
      "full": true
     },
     {
-     "t": "Meta计划筹资95亿美元用于AI扩张",
-     "d": "Meta宣布分两阶段募集95亿美元股票，其中首轮35亿美元公开发行，二轮60亿美元以市场价增发C类无投票权股票，旨为AI基础设施投入提供资金。此举凸显大型科技公司在AI竞争中融资优势，并加剧对小型AI云服务商的资金压力。",
+     "t": "AI生成假讯在美中期选前激增",
+     "d": "专家警告，美国社交平台上AI制造的虚假信息在本月中期选举前大幅增加，平台因削减内容审核团队而防护能力下降。此现象显示AI技术正被用于规模化选举干扰，可能影响选民判断并对平台信任度构成压力。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/technology/2026/oct/26/meta-plans-95bn-stock-offering-to-help-cover-ai-expansion"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "Anthropic上市招股说明书要点汇总",
-     "d": "Anthropic发布335页招股说明书，透露收入16.2亿美元、上半年亏损80.7亿美元、持有1316亿美元现金，并披露AI可能导致人类生存危机等风险。其巨额成本和现金储备凸显AI初创企业的高投入与盈利挑战，影响市场对AI公司估值的审慎态度。",
-     "src": [
-      {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/cwn8d7g29vd9o?at_medium=RSS&at_campaign=rss"
+       "u": "https://www.theguardian.com/us-news/2026/oct/27/ai-disinformation-social-media-midterm-elections"
       }
      ],
      "full": true
@@ -130,8 +130,38 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "埃博拉疫情突破1万人感染记录",
-     "d": "刚果民主共和国自5月宣布疫情以来，累计感染超1万人，死亡近5千人，成为历史上传播最快的埃博拉爆发。该疫情的快速蔓延和广泛地域扩散提升了全球公共卫生风险，对疫苗与援助资源配置提出紧迫需求。",
+     "t": "卢拉批博尔索纳罗子离境为‘可耻’",
+     "d": "巴西总统卢拉指责博尔索纳罗之子弗拉维奥·博尔索纳罗在选后逃往美国，称其离境‘可耻’，此举加剧巴西政治分裂并影响美巴关系。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/10/27/president-lula-calls-bolsonaros-brazil-exit?traffic_source=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/10/28/bolsonaro-ally-denies-knowledge-of-senators-plan-to-flee-brazil?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "以色列选举投票未决 内塔尼亚胡前路不明",
+     "d": "以色列10月27日大选后，民调显示内塔尼亚胡阵营与反对派势均力敌，均未达议会多数所需61席，形成政治僵局。选举结果可能导致政府组建困难，并影响国内安全与美以外交政策协同。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/israel-election-exit-polls-show-no-clear-winner-with-netanyahu-s-fate-unclear/live-79713839?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/live/2026/oct/27/israel-elections-knesset-netanyahu-likud-eisenkot-gaza-latest-updates"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "埃博拉疫情病例突破1万例 创纪录迅速蔓延",
+     "d": "截至本月，刚果民主共和国爆发的埃博拉疫情已确认感染逾10,000人，死亡近5,000人，成为历史上最快、地域最广的埃博拉暴发。疫情规模提升了对全球健康安全的警示，可能促使国际援助与防疫政策升级。",
      "src": [
       {
        "n": "NPR",
@@ -145,31 +175,16 @@
      "full": true
     },
     {
-     "t": "以色列选举出炉：两大阵营持平",
-     "d": "以色列主要电视台最新民调显示，内塔尼亚胡阵营与埃森科特反对阵营均获约51席，均未达组建多数政府所需的61席。选举结果不确定性增加，可能使巴勒斯坦政党成为组阁关键，影响国内政治格局与区域安全。",
+     "t": "弗拉维奥·博尔索纳罗选后逃赴美",
+     "d": "巴西参议员弗拉维奥·博尔索纳罗在总统选举失利后逃离巴西前往美国，未履行最高法院交回护照的命令，引发巴西政府指责美国干预。此事加剧美巴政治摩擦，并可能影响两国在地区事务中的合作。",
      "src": [
       {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/world/live/2026/oct/27/israel-elections-knesset-netanyahu-likud-eisenkot-gaza-latest-updates"
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/brazil-bolsonaro-us-election-loss-9.7398364?cmp=rss"
       },
-      {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/newsfeed/2026/10/28/israels-eisenkot-says-country-voted-for-change?traffic_source=rss"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "梅拉尼娅·特朗普斡旋乌克兰局部停火",
-     "d": "在美国前首夫妇的斡旋下，乌克兰与俄罗斯在南部城镇奥列什基实现上午3点的局部停火，以便展开人道主义援助。此举为持续四年半冲突中的一次有限和平尝试，但同时基辅仍遭导弹袭击，显示冲突仍高度紧张。",
-     "src": [
       {
        "n": "NPR",
-       "u": "https://www.npr.org/2026/10/27/g-s1-150037/russia-ukraine-war"
-      },
-      {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/c6lye1w9p2l8o?at_medium=RSS&at_campaign=rss"
+       "u": "https://www.npr.org/2026/10/27/nx-s1-6019678/u-s-to-issue-visas-to-flavio-bolsonaro-as-his-whereabouts-remain-unclear"
       }
      ],
      "full": true
