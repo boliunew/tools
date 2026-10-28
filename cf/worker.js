@@ -675,18 +675,34 @@ function agentDue(t, last, now = new Date()) {
   if (t.every === 'close') return L.wd >= 1 && L.wd <= 5 && L.h >= 13 && !sameDay;     // 美股收盘（太平洋 13:00）以后
   return L.h >= (+t.h || 0) && !sameDay;                                                  // daily
 }
-async function gnews(kw, days) {
-  const q = encodeURIComponent(kw.trim() + ' when:' + days + 'd');
-  const r = await fetch(`https://news.google.com/rss/search?q=${q}&hl=en-US&gl=US&ceid=US:en`, { headers: { 'User-Agent': 'Mozilla/5.0' }, cf: { cacheTtl: 600 } });
-  if (!r.ok) throw new Error('新闻搜索 HTTP ' + r.status);
-  const x = await r.text(), out = [];
+// 新闻搜索：Google 新闻常把 Cloudflare 的出口挡掉（503），依次换 Bing 新闻、GDELT
+function rssItems(x, srcTag) {
+  const out = [];
   for (const m of x.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
     const g = tag => decodeEnt((new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)</' + tag + '>').exec(m[1]) || [])[1] || '').trim();
-    const src = g('source'), title = g('title').replace(new RegExp('\\s+-\\s+' + src.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'), '');
-    out.push({ t: title, u: g('link'), s: src, d: g('pubDate') });
+    const src = g(srcTag);
+    let u = g('link');
+    const red = /[?&]url=([^&]+)/.exec(u); if (red && /bing\.com/.test(u)) { try { u = decodeURIComponent(red[1]); } catch (e) { } }
+    out.push({ t: g('title').replace(new RegExp('\\s+-\\s+' + src.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'), ''), u, s: src || host(u), d: g('pubDate') });
     if (out.length >= 25) break;
   }
   return out;
+}
+const host = u => (/^https?:\/\/(?:www\.)?([^\/?#]+)/.exec(u || '') || [])[1] || '';
+async function gnews(kw, days) {
+  const UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36' }, errs = [];
+  const tries = [
+    async () => { const r = await fetch(`https://news.google.com/rss/search?q=${encodeURIComponent(kw.trim() + ' when:' + days + 'd')}&hl=en-US&gl=US&ceid=US:en`, { headers: UA, cf: { cacheTtl: 600 } }); if (!r.ok) throw new Error('Google ' + r.status); return rssItems(await r.text(), 'source'); },
+    async () => { const r = await fetch(`https://www.bing.com/news/search?q=${encodeURIComponent(kw.trim())}&format=rss&qft=${encodeURIComponent('interval="' + (days <= 1 ? 7 : 8) + '"')}&setlang=en-US&cc=US`, { headers: UA, cf: { cacheTtl: 600 } }); if (!r.ok) throw new Error('Bing ' + r.status); return rssItems(await r.text(), 'News:Source'); },
+    async () => {
+      const q = kw.trim().replace(/\bOR\b/g, 'OR'); const qq = /\bOR\b/.test(q) ? '(' + q + ')' : q;
+      const r = await fetch(`https://api.gdeltproject.org/api/v2/doc/doc?query=${encodeURIComponent(qq + ' sourcelang:english')}&mode=artlist&format=json&maxrecords=25&sort=datedesc&timespan=${days}d`, { headers: UA, cf: { cacheTtl: 600 } });
+      if (!r.ok) throw new Error('GDELT ' + r.status);
+      return ((await r.json()).articles || []).map(a => ({ t: a.title, u: a.url, s: a.domain, d: a.seendate }));
+    }
+  ];
+  for (const f of tries) { try { const it = (await f()).filter(i => i.t && i.u); if (it.length) return it; errs.push('没结果'); } catch (e) { errs.push(String(e.message || e).slice(0, 40)); } }
+  throw new Error(errs.join(' / '));
 }
 function pageText(html) {
   return decodeEnt(html.replace(/<(script|style|noscript|svg|head)[\s\S]*?<\/\1>/gi, ' ').replace(/<!--[\s\S]*?-->/g, ' ')
