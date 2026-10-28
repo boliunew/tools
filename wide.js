@@ -4,7 +4,10 @@
    - 里面的卡片列表在够宽时排成两列（很宽且卡片小时三列）；标题、分组名等非卡片元素占满一整行；
      含地图 / 大图 / 表格 / 画布的卡片也占满一整行。
    - 大段文字的区域限制行宽，方便阅读。
+   - 两列卡片用瀑布流排（每张卡按高度占行，矮卡不会在高卡旁边留空），顺序仍然是从左到右。
+   - <html data-tw="mid">：表单类页面，最宽 900px，不拉得太开。
    - 任何元素加 data-tw="no" 就不处理它和它里面的东西。
+   主体宽度在 wide.css 里先放宽（页面一出来就是宽的），本脚本负责分列。
    内容是后来渲染出来的也会跟上（MutationObserver，节流）。 */
 (function () {
   'use strict';
@@ -12,6 +15,7 @@
   var css = '' +
     '.tw-cols{display:grid!important;grid-template-columns:repeat(var(--tw-n,2),minmax(0,1fr));gap:12px 14px;align-items:start}' +
     '.tw-cols>*{margin-top:0!important;margin-bottom:0!important;min-width:0}' +
+    '.tw-cols.tw-mas{grid-auto-rows:2px;row-gap:0!important}' +
     '.tw-cols>.tw-span{grid-column:1/-1}' +
     '.tw-cols>.tw-span:not(:first-child){margin-top:6px!important}' +
     '.tw-read{max-width:860px!important;margin-left:auto!important;margin-right:auto!important}';
@@ -22,7 +26,8 @@
 
   function px(v) { return parseFloat(v) || 0; }
   function off(el) { return el.closest && el.closest('[data-tw="no"]'); }
-  function target(vw) { return vw >= 1100 ? Math.min(1240, Math.round(vw * 0.92)) : Math.round(vw - 40); }
+  var MID = document.documentElement.getAttribute('data-tw') === 'mid';
+  function target(vw) { var t = vw >= 1100 ? Math.min(1240, Math.round(vw * 0.92)) : Math.round(vw - 40); return MID ? Math.min(900, t) : t; }
 
   // 1. 放宽主体容器：靠近顶层、max-width 在 480–960、宽度接近 max-width（即被它卡住）
   function widen(vw) {
@@ -39,6 +44,7 @@
       if (el.__twW || off(el)) continue;
       var cs = getComputedStyle(el);
       if (cs.position === 'fixed' || cs.position === 'absolute' || cs.display === 'none') continue;
+      if (el.matches('.wrap, body > main')) { el.__twW = 1; wrapped.push(el); continue; }   // wide.css 已经放宽的
       var mw = px(cs.maxWidth);
       if (!(mw >= 480 && mw <= 960)) continue;
       var p = el.parentElement, pw = p ? p.getBoundingClientRect().width : vw;
@@ -49,7 +55,7 @@
     var t = target(vw);
     for (i = 0; i < wrapped.length; i++) {
       el = wrapped[i];
-      el.style.maxWidth = vw >= MIN ? Math.max(el.__twW, t) + 'px' : '';
+      if (el.__twW > 1) el.style.maxWidth = vw >= MIN ? Math.max(el.__twW, t) + 'px' : '';
     }
   }
 
@@ -106,27 +112,37 @@
       list[j].classList.toggle('tw-off', !on);
       if (!on) { list[j].style.setProperty('display', 'block', 'important'); continue; }
       list[j].style.removeProperty('display');
-      // 某张卡片比同组的高出一大截：让它独占一行，免得旁边空一大块（记住决定，避免来回跳）
-      var hsArr = [], kk = list[j].children;
-      for (var t = 0; t < kk.length; t++) if (!kk[t].classList.contains('tw-span')) hsArr.push(kk[t].getBoundingClientRect().height);
-      if (hsArr.length >= 2) {
-        var srt = hsArr.slice().sort(function (a, b) { return a - b; }), med = srt[Math.floor(srt.length / 2)];
-        if (srt.length === 2) med = srt[0];
-        for (var t2 = 0; t2 < kk.length; t2++) {
-          var hh = kk[t2].getBoundingClientRect().height;
-          if (!kk[t2].classList.contains('tw-span') && hh > Math.max(420, 2.4 * med)) { kk[t2].__twTall = 1; kk[t2].classList.add('tw-span'); }
-        }
-      }
       // 卡片都很矮又很宽的时候排三列
       var hs = 0, cnt = 0, kids2 = list[j].children;
       for (var m = 0; m < kids2.length; m++) if (!kids2[m].classList.contains('tw-span')) { hs += kids2[m].getBoundingClientRect().height; cnt++; }
       list[j].style.setProperty('--tw-n', bw >= 1100 && cnt && hs / cnt < 130 ? 3 : 2);
+      masonry(list[j]);
     }
+  }
+  // 瀑布流：网格行高 2px，每张卡片按自己的高度占若干行。高度变了（展开、图片加载）自动重排
+  var ro = window.ResizeObserver ? new ResizeObserver(function (es) {
+    var boxes = [];
+    for (var i = 0; i < es.length; i++) { var b = es[i].target.parentElement; if (b && boxes.indexOf(b) < 0) boxes.push(b); }
+    requestAnimationFrame(function () { boxes.forEach(function (b) { if (b.classList.contains('tw-mas')) place(b); }); });
+  }) : null;
+  function place(box) {
+    var kids = box.children, hs = [], k;
+    for (k = 0; k < kids.length; k++) {
+      var c = kids[k];
+      hs.push(c.offsetParent === null ? 0 : c.getBoundingClientRect().height + px(getComputedStyle(c).marginTop));
+    }
+    for (k = 0; k < kids.length; k++) kids[k].style.gridRowEnd = 'span ' + Math.max(1, Math.ceil((hs[k] + 12) / 2));
+  }
+  function masonry(box) {
+    if (!ro) return;                                     // 老浏览器：保持普通两列
+    box.classList.add('tw-mas');
+    for (var k = 0; k < box.children.length; k++) { var c = box.children[k]; if (!c.__twRO) { c.__twRO = 1; ro.observe(c); } }
+    place(box);
   }
   function tag(box) {
     for (var k = 0; k < box.children.length; k++) {
       var c = box.children[k];
-      c.classList.toggle('tw-span', !!c.__twTall || !cardLike(c) || needsFull(c));
+      c.classList.toggle('tw-span', !cardLike(c) || needsFull(c));
     }
   }
 
@@ -150,7 +166,8 @@
   try {
     new MutationObserver(function (ms) {
       for (var i = 0; i < ms.length; i++) { var t = ms[i].target; if (t.id !== 'tw-css' && !(t.closest && t.closest('.tnav-dr'))) { soon(); return; } }
-    }).observe(document.body, { childList: true, subtree: true });
+    }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden', 'open'] });
   } catch (e) { }
+  document.addEventListener('click', function () { if (window.innerWidth >= MIN) soon(); }, true);   // 切换标签页（只改 class）后重新看一遍
   window.TW = { run: run };
 })();

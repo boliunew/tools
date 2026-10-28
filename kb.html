@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=1">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -55,6 +56,22 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
 .empty{text-align:center;color:var(--soft);padding:34px 10px}
 .foot{font-size:12px;color:var(--faint);text-align:center;margin-top:22px;line-height:1.8}
 mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
+
+/* ---------- 宽屏左右分栏：左目录、右文章（平板横屏 / 电脑） ---------- */
+@media (min-width:1100px){
+  body.kb-split #vList{position:fixed;top:0;bottom:0;left:0;width:380px;overflow-y:auto;overscroll-behavior:contain;border-right:1px solid var(--line);background:var(--bg);z-index:25}
+  body.kb-split #vList .wrap{max-width:none!important;padding:0 14px}
+  body.kb-split #vList .intro,body.kb-split #vList .foot{display:none}
+  body.kb-split #vList .tags{margin-left:-14px;margin-right:-14px;padding:0 14px 2px}
+  body.kb-split #list{display:block!important}
+  body.kb-split #list .art{padding:11px 12px 10px;margin-bottom:8px!important;box-shadow:none}
+  body.kb-split #list .art h3{font-size:15.5px}
+  body.kb-split #list .art p{font-size:12.5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  body.kb-split #list .art.on{border-color:var(--accent);background:var(--accent-soft)}
+  body.kb-split #vArt{margin-left:380px}
+  body.kb-split #back{display:none}
+  body.kb-split .sheet{left:380px}
+}
 
 /* ---------- 文章 ---------- */
 .bar{position:sticky;top:0;z-index:20;background:var(--bar);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
@@ -752,6 +769,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     $('tags').style.display = q ? 'none' : '';
     $('list').innerHTML = list.length ? (q ? '<div class="meta" style="margin:0 2px 8px">搜到 ' + list.length + ' 篇</div>' : '') + list.map(function (a) { return cardHtml(a, terms); }).join('') :
       '<div class="empty">' + (q ? '没搜到「' + esc(q) + '」' : '这里还没有文章') + '</div>';
+    markActive();
   }
   $('tags').onclick = function (e) { var b = e.target.closest('[data-t]'); if (!b) return; TAG = b.getAttribute('data-t'); jset('tag', TAG); renderTags(); renderList(); };
   $('q').addEventListener('input', renderList);
@@ -798,7 +816,28 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       onScroll();
     });
   }
-  function show(v) { $('vList').hidden = v !== 'list'; $('vArt').hidden = v !== 'art'; }
+  var WIDE = window.matchMedia ? window.matchMedia('(min-width:1100px)') : { matches: false };
+  function markActive() {
+    var cards = $('list').querySelectorAll('.art'), on = null;
+    for (var i = 0; i < cards.length; i++) { var hit = !!CUR && cards[i].getAttribute('href') === '#' + CUR.slug; cards[i].classList.toggle('on', hit); if (hit) on = cards[i]; }
+    if (on && document.body.classList.contains('kb-split')) {
+      var pane = $('vList'), r = on.getBoundingClientRect();
+      if (r.top < 120 || r.bottom > window.innerHeight) pane.scrollTop += r.top - 160;   // 选中的那篇保持在左栏视野里
+    }
+  }
+  function show(v) {
+    var split = v === 'art' && WIDE.matches;            // 宽屏看文章时目录留在左边
+    document.body.classList.toggle('kb-split', split);
+    if (split && IDX && !$('list').querySelector('.art')) { renderTags(); renderList(); }
+    $('vList').hidden = v !== 'list' && !split; $('vArt').hidden = v !== 'art';
+    markActive();
+  }
+  if (WIDE.addEventListener) WIDE.addEventListener('change', function () { if (!$('vArt').hidden) show('art'); });
+  // 分栏时在左栏换文章：替换当前历史记录，不叠加——转回竖屏点「‹ 知识库」直接回目录
+  $('list').addEventListener('click', function (e) {
+    var c = e.target.closest('a.art'); if (!c || !document.body.classList.contains('kb-split')) return;
+    e.preventDefault(); location.replace(c.getAttribute('href'));
+  });
   function route() {
     var h = decodeURIComponent((location.hash || '').replace(/^#/, ''));
     if (h && IDX) { if (!$('vList').hidden && booted) { listY = window.pageYOffset; fromList = true; } openArt(h); }
@@ -831,7 +870,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
 </script>
 <!-- RANKINGS-INTEGRATION: 排行榜互动版脚本（仅供 openArt 拦截 Top500 文章时调用，其他文章不受影响） -->
 <script src="rankings-ui.js?v=1"></script>
-<script src="wide.js?v=1" defer></script>
+<script src="wide.js?v=2"></script>
 <script src="nav.js?v=40" defer></script>
 </body>
 </html>

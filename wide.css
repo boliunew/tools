@@ -1,0 +1,10 @@
+/* 宽屏适配的第一步：页面一出来主体就是宽的，不用等脚本（避免先窄后宽闪一下）。
+   卡片分列、瀑布流、长文限宽由 wide.js 处理。手机（<760px）不受影响。 */
+@media (min-width:760px){
+  .wrap, body > main { max-width: calc(100vw - 40px) !important; }
+  html[data-tw="mid"] .wrap, html[data-tw="mid"] body > main { max-width: min(900px, calc(100vw - 40px)) !important; }
+}
+@media (min-width:1100px){
+  .wrap, body > main { max-width: min(1240px, 92vw) !important; }
+  html[data-tw="mid"] .wrap, html[data-tw="mid"] body > main { max-width: 900px !important; }
+}
