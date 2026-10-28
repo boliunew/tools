@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -1286,7 +1286,7 @@ var NLP = (function () {
     return '<div class="it' + (cls ? ' ' + cls : '') + '" data-hl=""' + (ids || []).join(',') + '"><span class="nm">' + esc(name) + '</span>' + (code ? '<code>' + esc(code) + '</code>' : '') + (zh ? '<span class="zhm">' + esc(zh) + '</span>' : '') + (desc ? '<div class="ds">' + esc(desc) + '</div>' : '') + '</div>';
   }
   function panelHTML(key) {
-    var a = REG[key], html = '<div class="panel" data-for="' + key + '"><div class="ph"><b>语法解析</b><span><button class="btn sm ghost" data-act="speak">朗读</button><button class="btn sm ghost" data-act="close">收起</button></span></div>';
+    var a = REG[key], html = '<div class="panel" data-for="' + key + '"><div class="ph"><b>语法解析</b><span><button class="btn sm ghost" data-act="speak">🔊 朗读</button><button class="btn sm ghost" data-act="close">收起</button></span></div>';
     var multi = a.sents.length > 1, any = false;
     each(a.sents, function (s, si) {
       if (!/[a-z]/i.test(a.text.slice(a.toks[s.from] ? a.toks[s.from].s : 0, a.toks[s.to - 1] ? a.toks[s.to - 1].e : 0))) return;
@@ -1505,7 +1505,7 @@ var NLP = (function () {
       '<div class="pos" style="color:var(--c-' + (PCLS[t.tag] === 'part' ? 'v' : (PCLS[t.tag] || 'det')) + ')">' + esc(NLP.describeTok(t)) + '</div>';
     each(notes, function (n) { html += '<div class="note">' + n + '</div>'; });
     html += '<div class="dict" id="dictBox"><div class="note">查词中…</div></div>';
-    html += '<div class="acts"><button class="btn sm primary" data-act="addvocab">加入语境词库</button><button class="btn sm" data-act="say" data-w="' + esc(dictWord) + '">发音</button>' + dictLinks(dictWord) + '</div>';
+    html += '<div class="acts"><button class="btn sm primary" data-act="addvocab">⭐ 加入语境词库</button><button class="btn sm" data-act="say" data-w="' + esc(dictWord) + '">🔊 发音</button>' + dictLinks(dictWord) + '</div>';
     SHEETCTX = { w: dictWord, en: sentOf(key, i), src: srcOf(key) };
     openSheet(html);
     var cands = [dictWord, t.lw]; if (lemma) cands.push(lemma);
@@ -1518,7 +1518,7 @@ var NLP = (function () {
   function showPlainWord(w) {
     var html = '<button class="x" data-act="x" aria-label="关闭">✕</button><div><span class="wd">' + esc(w) + '</span></div><div class="note">文中的较难词汇（不在常用词表中）</div>' +
       '<div class="dict" id="dictBox"><div class="note">查词中…</div></div>' +
-      '<div class="acts"><button class="btn sm primary" data-act="addvocab">加入语境词库</button><button class="btn sm" data-act="say" data-w="' + esc(w) + '">发音</button>' + dictLinks(w) + '</div>';
+      '<div class="acts"><button class="btn sm primary" data-act="addvocab">⭐ 加入语境词库</button><button class="btn sm" data-act="say" data-w="' + esc(w) + '">🔊 发音</button>' + dictLinks(w) + '</div>';
     var fs = findSent(w); SHEETCTX = { w: w, en: fs.en, src: fs.src };
     openSheet(html);
     dictInto([w], w);
@@ -1780,7 +1780,7 @@ var NLP = (function () {
       '<div><b>' + hardN + '</b><span>长难句</span></div><div><b>' + Math.round(d.rareRatio * 100) + '%</b><span>生词比例</span></div><div><b>' + d.minutes + ' 分钟</b><span>预计阅读</span></div></div>' +
       (d.rare.length ? '<div class="rare"><div class="hint" style="margin-bottom:6px">生词预览（点击查词）</div>' + d.rare.map(function (w) { return '<span class="chip" data-w="' + esc(w) + '">' + esc(w) + '</span>'; }).join('') + '</div>' : '') + '</div>' +
       '<div class="card art color" id="artBody">' + (title ? '<h2>' + esc(title) + '</h2>' : '') +
-      '<div class="tools"><label class="switch"><input type="checkbox" id="onlyHard">突出长难句</label><button class="btn sm ghost" id="readAll">朗读全文</button><span class="hint">点句子看解析，再点单词看词性</span></div>' + body + '</div>';
+      '<div class="tools"><label class="switch"><input type="checkbox" id="onlyHard">突出长难句</label><button class="btn sm ghost" id="readAll">🔊 朗读全文</button><span class="hint">点句子看解析，再点单词看词性</span></div>' + body + '</div>';
     $('artOut').innerHTML = html;
     artState = { text: text, title: title || '' };
     store.set('article', artState);
@@ -1907,6 +1907,6 @@ var NLP = (function () {
 
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

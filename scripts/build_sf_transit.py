@@ -190,14 +190,14 @@ def main():
     out = {
         "note": "车站位置是大致的（误差通常在一两百米内），线路按车站间直线连接，不是真实轨道走向。",
         "layers": [
-            {"k": "bart", "n": "BART", "lines": [{"n": n, "c": c, "st": seq} for n, c, seq in BL],
+            {"k": "bart", "n": "🚇 BART", "lines": [{"n": n, "c": c, "st": seq} for n, c, seq in BL],
              "st": [dict(st(BS, k), big=k in big) for k in BS]},
-            {"k": "muni", "n": "Muni 轻轨", "lines": [{"n": n, "c": c, "st": seq} for n, c, seq in ML],
+            {"k": "muni", "n": "🚋 Muni 轻轨", "lines": [{"n": n, "c": c, "st": seq} for n, c, seq in ML],
              "st": [dict(st(MS, k), big=k in set(SUB) | {"CHN", "USQ", "YBM", "4BR", "4KI", "BAL", "OBE", "ZOO", "SUNY"}) for k in MS]},
-            {"k": "cable", "n": "叮当车 · F 线", "lines": [{"n": n, "c": c, "path": [list(p) for p in path]} for n, c, path, _ in CL],
+            {"k": "cable", "n": "🚋 叮当车 · F 线", "lines": [{"n": n, "c": c, "path": [list(p) for p in path]} for n, c, path, _ in CL],
              "st": [dict(st(CS, k), big=True) for k in CS]},
-            {"k": "tips", "n": "用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS]},
-            {"k": "bus", "n": "主要巴士", "lines": [{"n": "%s %s" % (no, nm), "c": c, "d": d, "no": no, "path": [list(p) for p in path]} for no, c, nm, d, path in BUS], "st": []},
+            {"k": "tips", "n": "💡 用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS]},
+            {"k": "bus", "n": "🚌 主要巴士", "lines": [{"n": "%s %s" % (no, nm), "c": c, "d": d, "no": no, "path": [list(p) for p in path]} for no, c, nm, d, path in BUS], "st": []},
         ],
     }
     p = os.path.join(ROOT, "sf", "transit.json")

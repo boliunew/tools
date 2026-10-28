@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -97,7 +97,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 </head>
 <body>
 <main>
-  <div class="top"><h1>环球网络电台</h1><button id="fmRefresh">更新</button><a href="./">主页</a></div>
+  <div class="top"><h1>📻 环球网络电台</h1><button id="fmRefresh">🔄 更新</button><a href="./">主页</a></div>
   <div class="tabs" id="tabs"></div>
   <div class="srch"><input id="q" placeholder="搜台名、风格，例如 news、jazz、BBC" autocomplete="off"><button id="qBtn">搜索</button><button class="addbtn" id="addSt">＋ 添加</button></div>
   <div class="chips" id="chips"></div>
@@ -188,10 +188,10 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     });
   }
   $('fmRefresh').onclick = function () {
-    var b = this; b.disabled = true; b.textContent = '更新中…';
+    var b = this; b.disabled = true; b.textContent = '🔄 更新中…';
     cache = {};
     refreshFavs(true, function (changed, gone) {
-      b.disabled = false; b.textContent = '更新';
+      b.disabled = false; b.textContent = '🔄 更新';
       toast(changed < 0 ? '电台目录暂时连不上，稍后再试' : '台单已更新' + (changed ? '，' + changed + ' 个收藏换了新地址' : '') + (gone ? '，' + gone + ' 个收藏已停播' : ''));
       open();
     });
@@ -245,7 +245,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       if (country === 'FAV' || query) meta.push(flagOf(s.cc));
       if (s.tags.length) meta.push(s.tags.slice(0, 3).map(function (t) { return TAGZH[t] || t; }).join(' · '));
       if (s.br) meta.push(s.br + 'k'); else if (s.codec) meta.push(s.codec);
-      if (!playable(s)) meta.push('只有 http，可能放不了');
+      if (!playable(s)) meta.push('⚠️ 只有 http，可能放不了');
       if (s.my && !meta.length) meta.push('自己添加 · ' + s.url.replace(/^https?:\/\//, '').split('/')[0]);
       h += '<div class="st' + (cur && cur.id === s.id ? ' on' : '') + (s.bad ? ' bad' : '') + (playable(s) ? '' : ' ins') + '" data-i="' + i + '"><div class="ico">' + icon(s) + '</div><div class="t"><b>' + esc(s.name) + '</b><small>' + esc(meta.join(' · ')) + '</small></div>' + (country === 'MY' ? '<button class="fav" data-edit="' + i + '" aria-label="修改">⋯</button>' : '<button class="fav' + (FAV[s.id] ? ' on' : '') + '" data-fav="' + i + '" aria-label="收藏">' + (FAV[s.id] ? '★' : '☆') + '</button>') + '</div>';
     }
@@ -362,7 +362,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     if (!cur || !RC.live || RC.n >= WAIT.length) return false;
     clearTimeout(RC.t); clearTimeout(RC.stall); clearTimeout(watchdog);
     var d = WAIT[RC.n++], s0 = cur;
-    stat('信号断了，' + d + ' 秒后自动重连（第 ' + RC.n + ' 次）…', 'err');
+    stat('📶 信号断了，' + d + ' 秒后自动重连（第 ' + RC.n + ' 次）…', 'err');
     RC.t = setTimeout(function () { RC.t = null; if (cur === s0) { stat('重连中…'); start(s0); } }, d * 1000);
     return true;
   }
@@ -573,7 +573,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     if (!NP.hist.length) { el.style.display = 'none'; return; }
     el.style.display = 'block';
     var open = el.open;
-    el.innerHTML = '<summary>最近听到的歌（' + NP.hist.length + '）</summary>' + NP.hist.map(function (h) {
+    el.innerHTML = '<summary>🎵 最近听到的歌（' + NP.hist.length + '）</summary>' + NP.hist.map(function (h) {
       var d = new Date(h.t);
       return '<div>' + esc(h.song) + '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(h.song) + '" target="_blank" rel="noopener">搜歌 ↗</a><small>' + esc(h.st) + ' · ' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + '</small></div>';
     }).join('');
@@ -622,7 +622,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     var v = { id: Date.now(), t: Date.now(), st: st.name, song: song || '', type: blob.type, blob: blob, how: how };
     rPut(v, function (ok) {
       if (!ok) { toast('浏览器不让存录音（可能是无痕模式）'); return; }
-      toast('录好了，在下面「我的录音」里');
+      toast('🎙 录好了，在下面「我的录音」里');
       rAll(function (all) { all.slice(30).forEach(function (x) { rDel(x.id); }); renderRecs(); });
     });
   }
@@ -705,13 +705,13 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       var open = el.open;
       for (var k in RURL) if (RURL.hasOwnProperty(k)) { try { URL.revokeObjectURL(RURL[k]); } catch (e) { } }
       RURL = {};
-      el.innerHTML = '<summary>我的录音（' + all.length + '）</summary><div class="tip">点「🔍 识别歌曲」自动认歌（用 AudD 听歌识曲服务）；也可以手机打开 Shazam，再点 ▶ 放给它听。录音只存在这台设备的浏览器里。' +
-        '<br><a href="#" id="auddSet">AudD 令牌' + (get('audd', '') ? '（已设置）' : '（没设也能试几次）') + '</a></div>' + all.map(function (c) {
+      el.innerHTML = '<summary>🎙 我的录音（' + all.length + '）</summary><div class="tip">点「🔍 识别歌曲」自动认歌（用 AudD 听歌识曲服务）；也可以手机打开 Shazam，再点 ▶ 放给它听。录音只存在这台设备的浏览器里。' +
+        '<br><a href="#" id="auddSet">⚙️ AudD 令牌' + (get('audd', '') ? '（已设置）' : '（没设也能试几次）') + '</a></div>' + all.map(function (c) {
         var d = new Date(c.t), u = URL.createObjectURL(c.blob); RURL[c.id] = u;
         var name = c.st.replace(/[\\/:*?"<>|]/g, '') + '-' + (d.getMonth() + 1) + d.getDate() + '-' + d.getHours() + ('0' + d.getMinutes()).slice(-2) + '.' + ext(c.type);
         return '<div class="clip"><b>' + esc(c.song || c.st) + '</b><small>' + (c.song ? esc(c.st) + ' · ' : '') + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + ' · ' + Math.round(c.blob.size / 1024) + ' KB</small>' +
           '<audio controls preload="none" src="' + u + '"></audio><div class="ops"><a href="' + u + '" download="' + esc(name) + '">⬇ 下载</a>' +
-          (c.song ? '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(c.song) + '" target="_blank" rel="noopener">搜歌 ↗</a>' : '') + '<button data-rid="' + c.id + '">识别歌曲</button><button data-rdel="' + c.id + '">删除</button></div>' +
+          (c.song ? '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(c.song) + '" target="_blank" rel="noopener">搜歌 ↗</a>' : '') + '<button data-rid="' + c.id + '">🔍 识别歌曲</button><button data-rdel="' + c.id + '">🗑 删除</button></div>' +
           (c.hit ? hitHtml(c.hit) : '') + '<div class="rres" id="rr-' + c.id + '"></div></div>';
       }).join('');
       el.open = open;
@@ -740,7 +740,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   function identify(id) {
     rAll(function (all) {
       var c = all.filter(function (x) { return x.id === id; })[0]; if (!c) return;
-      var box = $('rr-' + id); if (box) box.innerHTML = '<span class="rwait">识别中…（几秒钟）</span>';
+      var box = $('rr-' + id); if (box) box.innerHTML = '<span class="rwait">🔍 识别中…（几秒钟）</span>';
       function form() {
         var fd = new FormData();
         fd.append('file', c.blob, 'clip.' + ext(c.type));
@@ -763,7 +763,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
         NP.hist = NP.hist.filter(function (h) { return h.song !== c.song; });
         NP.hist.unshift({ song: c.song, st: c.st, t: c.t }); if (NP.hist.length > 40) NP.hist.length = 40;
         put('songs', NP.hist); renderSongs();
-        toast('认出来了：' + c.song);
+        toast('🎵 认出来了：' + c.song);
       }
       function viaHome(err0) {
         if (!LOCAL) { show('<span class="rerr">浏览器连不上识别服务（' + esc(err0) + '）。可以点 ⬇ 下载录音，到 <a href="https://www.aha-music.com/" target="_blank" rel="noopener">AHA Music</a> 网页上传识别，或用手机 Shazam 对着播放。</span>'); return; }
@@ -781,6 +781,6 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>暗房 · 照片微调</title>
 <meta name="robots" content="noindex,nofollow">
@@ -533,7 +533,7 @@ function syncButtons(){
   {
     const host = $(`.pane[data-p="tex"]`);
     const row = document.createElement("div"); row.className = "row"; row.style.marginTop = "12px";
-    row.innerHTML = '<button class="gbtn" id="bDetail" style="color:var(--amber);border-color:var(--amber)">自动细节</button>';
+    row.innerHTML = '<button class="gbtn" id="bDetail" style="color:var(--amber);border-color:var(--amber)">✨ 自动细节</button>';
     const tip = document.createElement("p"); tip.className = "pnote"; tip.style.marginTop = "4px";
     tip.textContent = "按画面清晰度和噪点自动配参数。";
     host.prepend(tip); host.prepend(row);
@@ -1717,6 +1717,6 @@ $("#bSave").addEventListener("click", async () => {
 <script>window.TNAV_Y = 0.17;</script>
 <script src="savesheet.js?v=1"></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

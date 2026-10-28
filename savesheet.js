@@ -51,7 +51,7 @@
       '<h3>图片做好了</h3>' +
       '<img class="ss-im" alt="处理好的图片">' +
       '<div class="ss-meta">' + esc(name) + (info && info.w ? ' · ' + info.w + '×' + info.h : '') + ' · ' + mb(blob.size) + '</div>' +
-      (canShare ? '<button class="ss-b pri" data-a="share">存到相册 / 分享</button>' : '') +
+      (canShare ? '<button class="ss-b pri" data-a="share">📤 存到相册 / 分享</button>' : '') +
       '<button class="ss-b' + (canShare ? '' : ' pri') + '" data-a="dl">⬇️ 下载到「文件」</button>' +
       '<div class="ss-msg"></div>' +
       '<div class="ss-hint">也可以<b>长按上面的图片</b>，选「存储到照片」或「下载图片」。</div>' +

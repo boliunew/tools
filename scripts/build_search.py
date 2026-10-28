@@ -63,7 +63,7 @@ def main():
     if coast:
         segn = {g["k"]: g["n"] for g in coast["segs"]}
         for st in coast["stops"]:
-            out.append({"k": "海岸线·" + segn.get(st["seg"], ""), "t": st["n"], "s": short(st["s"]), "u": "coast.html#segs",
+            out.append({"k": "海岸线·" + segn.get(st["seg"], ""), "t": st["e"] + " " + st["n"], "s": short(st["s"]), "u": "coast.html#segs",
                         "x": flat(st["n"], st["en"], st["s"], st["d"], st["tags"], st.get("tip", ""))})
     for code, cname in (("sf", "旧金山"), ("sj", "圣何塞"), ("ny", "纽约"), ("la", "洛杉矶"), ("ie", "内陆帝国")):
         cd = load("%s/data.json" % code)
@@ -71,7 +71,7 @@ def main():
             continue
         for sec, zh in (("hoods", "街区"), ("eat", "吃喝"), ("fun", "好玩"), ("tips", "秘籍"), ("stories", "故事")):
             for it in cd.get(sec, []):
-                out.append({"k": "城市·%s·%s" % (cname, zh), "t": it["t"], "s": short(it.get("s", "")), "u": "%s.html#%s" % (code, sec),
+                out.append({"k": "城市·%s·%s" % (cname, zh), "t": it.get("e", "") + " " + it["t"], "s": short(it.get("s", "")), "u": "%s.html#%s" % (code, sec),
                             "x": flat(it["t"], it.get("s", ""), it.get("d", ""), it.get("tip", ""), it.get("tag", []), it.get("do", []), it.get("eat", []))})
     usa = load("usa/data.json")
     if usa:
@@ -150,7 +150,7 @@ def main():
         d = load("speak/%s.json" % f)
         for pk in (d or {}).get("packs", []):
             ls = pk.get("dialog", []) + pk.get("phrases", [])
-            out.append({"k": "开口说·" + pk["group"], "t": pk["name"], "s": short(pk["intro"]), "u": "speak.html#" + pk["id"],
+            out.append({"k": "开口说·" + pk["group"], "t": pk["icon"] + " " + pk["name"], "s": short(pk["intro"]), "u": "speak.html#" + pk["id"],
                         "x": flat(pk["name"], pk["intro"], [l["t"] + " " + l["zh"] + " " + l.get("note", "") for l in ls], limit=4000)})
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)

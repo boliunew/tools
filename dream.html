@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -108,7 +108,7 @@ details.how summary{cursor:pointer;color:var(--accent);font-weight:600}
   <a class="home" href="./">‹ 主页</a>
   <h1 id="h1">周公解梦</h1>
   <p id="sub">老辈人的说法 + 心理学的角度，图个乐，也顺便了解自己</p>
-  <nav class="mtabs" id="mtabs"><button data-m="dream">解梦</button><button data-m="read">读心</button><button data-m="psy">心理</button><button data-m="logic">逻辑</button></nav>
+  <nav class="mtabs" id="mtabs"><button data-m="dream">🌙 解梦</button><button data-m="read">🔮 读心</button><button data-m="psy">🧠 心理</button><button data-m="logic">🧩 逻辑</button></nav>
   <div id="dreamTop"><form class="ask" id="ask"><input id="q" placeholder="说说你梦见了什么…" autocomplete="off" enterkeyhint="search"><button>解梦</button></form>
   <div class="eg" id="eg"></div></div>
 </div></div>
@@ -178,12 +178,12 @@ details.how summary{cursor:pointer;color:var(--accent);font-weight:600}
   }
   function renderCats() {
     var cnt = {}; D.items.forEach(function (e) { cnt[e.c] = (cnt[e.c] || 0) + 1; });
-    $('cats').innerHTML = '<button data-c="" class="' + (CAT ? '' : 'on') + '">全部<small>' + D.items.length + '</small></button>' + '<button data-r="1">随便看看</button>' +
+    $('cats').innerHTML = '<button data-c="" class="' + (CAT ? '' : 'on') + '">全部<small>' + D.items.length + '</small></button>' + '<button data-r="1">🎲 随便看看</button>' +
       D.cats.map(function (c) { return '<button data-c="' + c + '" class="' + (c === CAT ? 'on' : '') + '">' + c + '<small>' + (cnt[c] || 0) + '</small></button>'; }).join('');
   }
   $('cats').onclick = function (e) {
     var b = e.target.closest('button'); if (!b) return;
-    if (b.getAttribute('data-r')) { var x = D.items[Math.floor(Math.random() * D.items.length)]; $('out').innerHTML = '<div class="note">随机一条</div>' + card(x); return; }
+    if (b.getAttribute('data-r')) { var x = D.items[Math.floor(Math.random() * D.items.length)]; $('out').innerHTML = '<div class="note">🎲 随机一条</div>' + card(x); return; }
     CAT = b.getAttribute('data-c'); SHOWN = 30; $('q').value = ''; renderCats(); showList();
   };
   $('ask').onsubmit = function (e) { e.preventDefault(); var v = $('q').value.trim(); if (v) showAsk(v); else { renderCats(); showList(); } if (document.activeElement) document.activeElement.blur(); };
@@ -204,6 +204,6 @@ details.how summary{cursor:pointer;color:var(--accent);font-weight:600}
 </script>
 <script src="mind/mind.js?v=1"></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -64,15 +64,15 @@ h3{font-size:15px;margin:2px 0 8px}
 </head>
 <body>
 <div class="wrap">
-<header><a class="brand" href="index.html">偏光滤镜</a></header>
+<header><a class="brand" href="index.html">🕶️ 偏光滤镜</a></header>
 
 <div class="card" id="pick">
   <div class="drop" id="drop">
     <b>选一张照片</b><br>
     <span>点这里选图，也可以拖进来或粘贴（Ctrl+V）</span>
     <div class="row" style="justify-content:center;margin-top:12px">
-      <button class="btn pri" id="bPick">选照片</button>
-      <button class="btn" id="bDemo">用示例图试试</button>
+      <button class="btn pri" id="bPick">📷 选照片</button>
+      <button class="btn" id="bDemo">🌊 用示例图试试</button>
     </div>
   </div>
   <input type="file" id="file" accept="image/*" hidden>
@@ -89,7 +89,7 @@ h3{font-size:15px;margin:2px 0 8px}
       <span id="busy">处理中…</span>
     </div>
     <div class="row" style="margin-top:8px">
-      <button class="btn pri" id="bSave">保存图片</button>
+      <button class="btn pri" id="bSave">💾 保存图片</button>
       <button class="btn" id="bNew">换一张</button>
       <button class="btn" id="bReset">恢复默认</button>
       <span class="hint" style="margin:0">拖动中间的线对比原图</span>
@@ -129,6 +129,7 @@ h3{font-size:15px;margin:2px 0 8px}
   </div>
 
   <div class="card note">
+    <h3>💡 说明</h3>
     <p>模拟偏光镜在合适光线下常见的样子：蓝天更深，水面和玻璃的反光变弱，远处更清楚。真偏光镜的效果要看太阳方向和拍摄角度。</p>
     <p>被反光盖住的字，拍下来以后就找不回来了，得在拍的时候用偏光镜。</p>
   </div>
@@ -372,10 +373,10 @@ h3{font-size:15px;margin:2px 0 8px}
   var saving = false;
   $('bSave').onclick = function () {
     if (!img || saving) return;
-    saving = true; var btn = this; btn.disabled = true; btn.textContent = '处理中…';
+    saving = true; var btn = this; btn.disabled = true; btn.textContent = '⏳ 处理中…';
     $('busy').style.display = 'block';
     setTimeout(function () {
-      function done() { saving = false; btn.disabled = false; btn.textContent = '保存图片'; $('busy').style.display = 'none'; }
+      function done() { saving = false; btn.disabled = false; btn.textContent = '💾 保存图片'; $('busy').style.display = 'none'; }
       try {
         var sz = fit(img.width || img.naturalWidth, img.height || img.naturalHeight, MAXE);
         var c = toCanvas(img, sz[0], sz[1]), B = prep(c), ctx = c.getContext('2d'), od = ctx.createImageData(sz[0], sz[1]);
@@ -423,6 +424,6 @@ h3{font-size:15px;margin:2px 0 8px}
 </script>
 <script src="savesheet.js?v=1"></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

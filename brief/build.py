@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""每日简报：每天早上用网站已有的数据自动拼出一期简报，写进 brief/data/（brief.html 读）。
+"""☀️ 每日简报：每天早上用网站已有的数据自动拼出一期简报，写进 brief/data/（brief.html 读）。
 
 不需要 AI，也不需要任何授权：
   🤖 AI 与科技   ← news/data/latest.json 里 BBC / NPR / 卫报的科技新闻（机翻成中文）
@@ -49,7 +49,7 @@ def load(rel):
         with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
             return json.load(f)
     except Exception as e:
-        print("读不到 %s：%s" % (rel, e))
+        print("⚠️ 读不到 %s：%s" % (rel, e))
         return {}
 
 
@@ -540,7 +540,7 @@ def ai_curate(now_utc, market, macro):
 
 
 def push_brief(D):
-    """每天第一次生成时推一条到 Telegram：每个板块最重要的一条 + 今日一件事"""
+    """📲 每天第一次生成时推一条到 Telegram：每个板块最重要的一条 + 今日一件事"""
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
     try:
         from notify import tg
@@ -554,7 +554,7 @@ def push_brief(D):
     if D.get("pick", {}).get("t"):
         lines += ["", "📌 **今日一件事**：" + D["pick"]["t"]]
     if D.get("week"):
-        lines += ["", "本周关注 %d 件" % len(D["week"])]
+        lines += ["", "🗓️ 本周关注 %d 件" % len(D["week"])]
     lines += ["", "[看全文](%s/brief.html)" % SITE]
     tg("\n".join(lines), "brief")
 
@@ -605,13 +605,13 @@ def build(dry=False, no_ai=False):
                 big = sorted(d["earnings"], key=lambda e: -(e.get("cap") or 0))[:4]
                 week.append({"t": "%s 财报：%s" % (md(d["date"]), "、".join(e["t"] for e in big)), "d": "当天共 %d 家公司发布财报，这里列市值最大的几家。" % len(d["earnings"])})
 
-    secs = [("ai", "AI 与科技", ai), ("market", "美股市场", market), ("macro", "宏观经济", macro), ("world", "世界大事", world)]
+    secs = [("ai", "🤖 AI 与科技", ai), ("market", "📈 美股市场", market), ("macro", "🏦 宏观经济", macro), ("world", "🌍 世界大事", world)]
     D = {"date": today, "generated": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"), "auto": True, "ai": used_ai,
          "sections": [{"key": k, "title": t, "items": it} for k, t, it in secs], "pick": pick, "week": week}
     n = sum(len(s["items"]) for s in D["sections"])
     print("%s：%s，共 %d 条%s" % (today, " / ".join("%s %d" % (t, len(it)) for _, t, it in secs), n, "，含本周关注 %d 条" % len(week) if week else ""))
     if n < 4:
-        print("内容太少（上游数据可能没更新），这次不写入")
+        print("❌ 内容太少（上游数据可能没更新），这次不写入")
         return 1
     if dry:
         print(json.dumps(D, ensure_ascii=False, indent=1)[:4000])
@@ -632,7 +632,7 @@ def build(dry=False, no_ai=False):
     keep_cache = dict(list(cache.items())[-300:])
     with open(TCACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(keep_cache, f, ensure_ascii=False)
-    print("已写入 brief/data/%s.json（共保留 %d 期）" % (today, len(keep)))
+    print("✅ 已写入 brief/data/%s.json（共保留 %d 期）" % (today, len(keep)))
     if first_today or os.environ.get("BRIEF_PUSH") == "1":
         push_brief(D)
     return 0

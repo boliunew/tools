@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -278,7 +278,7 @@ a{color:var(--acc)}
   ];
 
   // ================= 页面骨架 =================
-  var TABS = [['start', '入门'], ['routes', '线路'], ['time', '查时刻'], ['live', '实时'], ['trips', '行程推荐'], ['book', '订票省钱'], ['seat', '座位卧铺'], ['board', '车上'], ['upland', '从 Upland 出发'], ['pack', '打包清单']];
+  var TABS = [['start', '🚂 入门'], ['routes', '🗺️ 线路'], ['time', '⏱️ 查时刻'], ['live', '📡 实时'], ['trips', '🗓️ 行程推荐'], ['book', '🎫 订票省钱'], ['seat', '🛏️ 座位卧铺'], ['board', '🧳 车上'], ['upland', '🏠 从 Upland 出发'], ['pack', '✅ 打包清单']];
   var D = null, TAB = (location.hash || '').slice(1) || ls('tab') || 'start', RT = ls('rt') || 'Pacific Surfliner', MAPS = {}, LIVE = null, LT = null;
   if (!TABS.some(function (t) { return t[0] === TAB; })) TAB = 'start';
 
@@ -340,15 +340,15 @@ a{color:var(--acc)}
   function start() {
     var h = '<div class="lead">Amtrak 是美国的国家铁路公司，全国几乎所有的城际客运火车都是它开的。坐火车比开车轻松、比飞机自在：能站起来走、去观景车看风景、在餐车和陌生人聊天，还能带两大件行李。</div>';
     h += '<div class="box" style="display:flex;align-items:center;gap:12px;cursor:pointer" id="nbGo"><span style="font-size:30px">📍</span><div style="flex:1"><b style="font-size:16px">我附近的车站</b><div style="font-size:13px;color:var(--soft)">定位后列出最近的 Amtrak、Metrolink 等车站和下一班车，一键用谷歌地图导航过去。右下角的按钮随时能打开。</div></div><span style="color:var(--faint)">›</span></div>';
-    h += '<div class="box"><h2>先从这几条开始</h2>';
+    h += '<div class="box"><h2>⭐ 先从这几条开始</h2>';
     D.routes.forEach(function (r) {
       var info = RI[r.n] || {}, ts = tripsOf(r), long = ts.slice().sort(function (a, b) { return b.st.length - a.st.length; })[0];
       h += '<div class="hl" data-rt="' + esc(r.n) + '"><span>' + (info.e || '🚆') + '</span><div><b style="color:' + r.c + '">' + esc(r.zh) + ' <small style="color:var(--faint);font-weight:400">' + esc(r.n) + '</small></b><small>' + (info.s || '') + '</small></div></div>';
     });
     h += '</div>';
-    h += '<div class="box"><h2>第一次坐，记住这几条</h2><ul style="margin:6px 0;padding-left:20px;line-height:1.8"><li>在官网或 <b>Amtrak App</b> 买票，越早越便宜。</li><li>从 Upland 坐 <b>Metrolink</b> 一小时到洛杉矶联合车站，西部长途车都从这里出发。</li><li>提前 30–45 分钟到站，大屏幕找车次号和站台。</li><li>长途车<b>晚点很常见</b>，别把后面的安排排太紧。</li><li>经济座就很舒服；过夜的话 Roomette 小卧室含三餐，两个人分摊更划算。</li><li>去<b>观景车</b>看风景，去<b>餐车</b>和陌生人拼桌聊天。</li></ul></div>';
+    h += '<div class="box"><h2>🧭 第一次坐，记住这几条</h2><ul style="margin:6px 0;padding-left:20px;line-height:1.8"><li>在官网或 <b>Amtrak App</b> 买票，越早越便宜。</li><li>从 Upland 坐 <b>Metrolink</b> 一小时到洛杉矶联合车站，西部长途车都从这里出发。</li><li>提前 30–45 分钟到站，大屏幕找车次号和站台。</li><li>长途车<b>晚点很常见</b>，别把后面的安排排太紧。</li><li>经济座就很舒服；过夜的话 Roomette 小卧室含三餐，两个人分摊更划算。</li><li>去<b>观景车</b>看风景，去<b>餐车</b>和陌生人拼桌聊天。</li></ul></div>';
     h += '<a class="box" href="kb.html#amtrak-guide" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit"><span style="font-size:30px">📘</span><div style="flex:1"><b style="font-size:16px">Amtrak 坐火车完全攻略</b><div style="font-size:13px;color:var(--soft)">所有注意事项和技巧整理成一篇：上车流程、车上规矩、小费、晚点取消怎么办、宠物和自行车……存在知识库里，随时翻。</div></div><span style="color:var(--faint)">›</span></a>';
-    h += '<div class="box"><h2>常用链接</h2><p style="margin:4px 0;line-height:2"><a href="https://www.amtrak.com/" target="_blank" rel="noopener">Amtrak 官网（买票）</a> · <a href="https://www.amtrak.com/track-your-train.html" target="_blank" rel="noopener">官方查车</a> · <a href="https://www.pacificsurfliner.com/" target="_blank" rel="noopener">太平洋冲浪者号</a> · <a href="https://metrolinktrains.com/" target="_blank" rel="noopener">Metrolink</a> · <a href="https://amtraker.com/" target="_blank" rel="noopener">Amtraker 实时地图</a></p></div>';
+    h += '<div class="box"><h2>🔗 常用链接</h2><p style="margin:4px 0;line-height:2"><a href="https://www.amtrak.com/" target="_blank" rel="noopener">Amtrak 官网（买票）</a> · <a href="https://www.amtrak.com/track-your-train.html" target="_blank" rel="noopener">官方查车</a> · <a href="https://www.pacificsurfliner.com/" target="_blank" rel="noopener">太平洋冲浪者号</a> · <a href="https://metrolinktrains.com/" target="_blank" rel="noopener">Metrolink</a> · <a href="https://amtraker.com/" target="_blank" rel="noopener">Amtraker 实时地图</a></p></div>';
     $('main').innerHTML = h;
     $('main').onclick = function (e) { if (e.target.closest('#nbGo') && window.Nearby) { Nearby.open(); return; } var b = e.target.closest('[data-rt]'); if (b) { RT = b.getAttribute('data-rt'); ls('rt', RT); setTab('routes'); } };
   }
@@ -363,13 +363,13 @@ a{color:var(--acc)}
       '<div class="kpi"><div>全程<b>' + (long ? esc(sn(long.st[0][0]).replace(/（.*/, '')) + ' → ' + esc(sn(long.st[long.st.length - 1][0]).replace(/（.*/, '')) : '') + '</b></div><div>大约<b>' + dur(tot) + '</b></div><div>未来 7 天<b>' + freq(r) + ' 个车次</b></div></div>' +
       (info.side ? '<div class="tip">🪟 <b>坐哪边：</b>' + info.side + '</div>' : '') + '</div>';
     h += '<div class="map" id="rmap"></div>';
-    if (info.hl && info.hl.length) h += '<div class="box"><h2>沿途看点</h2>' + info.hl.map(function (x, i) { return '<div class="hl" data-hl="' + i + '"><span>' + x[2] + '</span><div><b>' + esc(x[3]) + '</b><small>' + esc(x[4]) + '</small></div></div>'; }).join('') + '<div class="note">点一下在地图上看位置。经过的时间取决于车次和晚点，看下面的时刻表估算。</div></div>';
+    if (info.hl && info.hl.length) h += '<div class="box"><h2>✨ 沿途看点</h2>' + info.hl.map(function (x, i) { return '<div class="hl" data-hl="' + i + '"><span>' + x[2] + '</span><div><b>' + esc(x[3]) + '</b><small>' + esc(x[4]) + '</small></div></div>'; }).join('') + '<div class="note">点一下在地图上看位置。经过的时间取决于车次和晚点，看下面的时刻表估算。</div></div>';
     // 时刻表：按方向（起点站）分组，选今天开的车次
     var groups = {};
     uniq(ts).forEach(function (t) { var k = t.st[0][0] + '>' + t.st[t.st.length - 1][0]; (groups[k] = groups[k] || []).push(t); });
     var dirs = {}; uniq(ts).forEach(function (t) { var k = t.dir || '0'; (dirs[k] = dirs[k] || []).push(t); });
     var dk = Object.keys(dirs).sort(), cur = DIR[r.n] != null && dirs[DIR[r.n]] ? DIR[r.n] : dk[0];
-    h += '<div class="box"><h2>时刻表</h2><div class="chips" id="dch">' + dk.map(function (k) {
+    h += '<div class="box"><h2>🕐 时刻表</h2><div class="chips" id="dch">' + dk.map(function (k) {
       var t = dirs[k].slice().sort(function (a, b) { return b.st.length - a.st.length; })[0];
       return '<button data-d="' + k + '" class="' + (k === cur ? 'on' : '') + '">往 ' + esc(sn(t.st[t.st.length - 1][0]).replace(/（.*/, '')) + '</button>';
     }).join('') + '</div><div id="ttw"></div></div>';
@@ -454,8 +454,8 @@ a{color:var(--acc)}
   function ltime(iso, tz) { if (!iso) return ''; try { return new Date(iso).toLocaleTimeString('zh-CN', { timeZone: tz || 'America/Los_Angeles', hour: '2-digit', minute: '2-digit', hour12: false }); } catch (e) { return iso.slice(11, 16); } }
   function live() {
     $('main').innerHTML = '<div class="lead">全美 Amtrak 列车现在在哪儿、晚了多少。每分钟自动刷新。点列车看接下来的站和预计到站时间。</div>' +
-      '<div class="chips" id="lfc">' + [['west', '西部'], ['fav', '本页这几条线'], ['all', '🇺🇸 全美']].map(function (x) { return '<button data-f="' + x[0] + '" class="' + (x[0] === LF ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
-      '<div class="box" style="padding:8px 12px"><input class="sel" id="lq" style="width:100%" placeholder="搜车次号或车名，比如 14、Starlight、Chief"></div>' +
+      '<div class="chips" id="lfc">' + [['west', '🌄 西部'], ['fav', '⭐ 本页这几条线'], ['all', '🇺🇸 全美']].map(function (x) { return '<button data-f="' + x[0] + '" class="' + (x[0] === LF ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+      '<div class="box" style="padding:8px 12px"><input class="sel" id="lq" style="width:100%" placeholder="🔍 搜车次号或车名，比如 14、Starlight、Chief"></div>' +
       '<div class="map" id="lmap"></div><div class="box" style="padding:0" id="lls"><div class="empty">加载中…</div></div>' +
       '<div class="note">位置和晚点数据来自 <a href="https://amtraker.com/" target="_blank" rel="noopener">Amtraker</a>（整合 Amtrak 官方的列车定位，非官方项目），偶尔会延迟几分钟；以 Amtrak App 为准。颜色：🟢 准点 · 🟡 晚半小时内 · 🟠 晚一个半小时内 · 🔴 更晚。</div>';
     loadLeaflet(function () {
@@ -512,7 +512,7 @@ a{color:var(--acc)}
   function trips() {
     $('main').innerHTML = '<div class="lead">从一日游到一周大环线，按难度排。点「看线路」「查时刻」直接跳过去。</div>' + TRIPS.map(function (x, i) {
       return '<div class="trip"><div class="th"><span>' + x[0] + '</span><div><b>' + x[1] + '</b><small>' + x[2] + '</small></div></div><ol>' + x[3].map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ol>' +
-        '<div class="go"><button data-gr="' + i + '">看线路</button><button data-gt="' + i + '">查时刻</button></div></div>';
+        '<div class="go"><button data-gr="' + i + '">🗺️ 看线路</button><button data-gt="' + i + '">⏱️ 查时刻</button></div></div>';
     }).join('');
     $('main').onclick = function (e) {
       var b = e.target.closest('[data-gr]'); if (b) { RT = TRIPS[+b.getAttribute('data-gr')][4]; ls('rt', RT); setTab('routes'); return; }
@@ -538,7 +538,7 @@ a{color:var(--acc)}
           });
         });
       });
-      h += '<div class="box"><h2>离 Upland 近的站，长途车几点到</h2><table class="tt ups">' + rows.map(function (x) { return '<tr><td>' + x[1] + '</td><td><b>' + esc(sn(x[0])) + '</b> · ' + esc(x[3]) + ' ' + esc(x[2]) + ' 次 → ' + esc(x[4]) + '<small>' + x[5] + '</small></td></tr>'; }).join('') + '</table><div class="note">太平洋冲浪者号班次多，在「⏱️ 查时刻」里查。时刻会变，出发前在 App 确认。</div></div>';
+      h += '<div class="box"><h2>🕐 离 Upland 近的站，长途车几点到</h2><table class="tt ups">' + rows.map(function (x) { return '<tr><td>' + x[1] + '</td><td><b>' + esc(sn(x[0])) + '</b> · ' + esc(x[3]) + ' ' + esc(x[2]) + ' 次 → ' + esc(x[4]) + '<small>' + x[5] + '</small></td></tr>'; }).join('') + '</table><div class="note">太平洋冲浪者号班次多，在「⏱️ 查时刻」里查。时刻会变，出发前在 App 确认。</div></div>';
     }
     $('main').innerHTML = h;
     $('main').onclick = null;
@@ -552,7 +552,7 @@ a{color:var(--acc)}
       var h = '<div class="lead">出发前一项项打勾，存在这台手机上。</div>' + PACK.map(function (g, gi) {
         return '<div class="box"><h2 style="font-size:16px">' + g[0] + '</h2>' + g[1].map(function (x, i) { var k = gi + '-' + i, on = !!C[k]; tot++; if (on) n++; return '<div class="ck' + (on ? ' on' : '') + '" data-k="' + k + '"><i>' + (on ? '✓' : '') + '</i><span>' + esc(x) + '</span></div>'; }).join('') + '</div>';
       }).join('');
-      h = '<div class="box" style="display:flex;align-items:center;gap:10px"><b style="font-size:18px">' + n + ' / ' + tot + '</b><span style="flex:1;color:var(--soft);font-size:13.5px">' + (n === tot ? '都准备好了，一路顺风！' : '还差 ' + (tot - n) + ' 样') + '</span><button class="swap" style="width:auto;padding:0 12px" id="pr">清空</button></div>' + h;
+      h = '<div class="box" style="display:flex;align-items:center;gap:10px"><b style="font-size:18px">' + n + ' / ' + tot + '</b><span style="flex:1;color:var(--soft);font-size:13.5px">' + (n === tot ? '🎉 都准备好了，一路顺风！' : '还差 ' + (tot - n) + ' 样') + '</span><button class="swap" style="width:auto;padding:0 12px" id="pr">清空</button></div>' + h;
       $('main').innerHTML = h;
     }
     draw();
@@ -581,7 +581,7 @@ a{color:var(--acc)}
   var x = new XMLHttpRequest(); x.open('GET', 'amtrak/data.json?t=' + Math.floor(Date.now() / 36e5));
   x.onload = function () {
     try { D = JSON.parse(x.responseText); } catch (e) { $('main').innerHTML = '<div class="empty">加载失败，刷新试试</div>'; return; }
-    $('facts').innerHTML = ['🚆 ' + D.routes.length + ' 条精选线路', '🕐 ' + uniq(D.trips).length + ' 个车次时刻', '全美列车实时位置', 'Upland 出发 1 小时上车'].map(function (s) { return '<span>' + s + '</span>'; }).join('');
+    $('facts').innerHTML = ['🚆 ' + D.routes.length + ' 条精选线路', '🕐 ' + uniq(D.trips).length + ' 个车次时刻', '📡 全美列车实时位置', '🏠 Upland 出发 1 小时上车'].map(function (s) { return '<span>' + s + '</span>'; }).join('');
     render();
   };
   x.onerror = function () { $('main').innerHTML = '<div class="empty">网络错误，稍后刷新</div>'; };
@@ -590,6 +590,6 @@ a{color:var(--acc)}
 </script>
 <script src="nearby.js?v=7" defer></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

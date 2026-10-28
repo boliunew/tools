@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -80,11 +80,11 @@ textarea:focus{border-color:var(--accent)}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><h1>夸克网盘搜索</h1><a href="./">主页</a></div>
+  <div class="top"><h1>☁️ 夸克网盘搜索</h1><a href="./">主页</a></div>
   <p class="sub">搜别人公开分享的夸克网盘链接 · 粘贴分享文字自动拆出链接和提取码 · 收藏常用资源</p>
 
   <div class="card">
-    <h2>搜索</h2>
+    <h2>🔍 搜索</h2>
     <div class="srow"><input id="q" type="search" placeholder="例如：Python 入门、考研英语、纪录片" enterkeyhint="search" autocomplete="off"><button class="btn pri" id="go">搜</button></div>
     <div class="seg" id="mode">
       <button data-m="share" class="on">只搜分享页</button>
@@ -103,14 +103,14 @@ textarea:focus{border-color:var(--accent)}
   </div>
 
   <div class="card">
-    <h2>粘贴分享文字 <small>自动拆出链接和提取码</small></h2>
+    <h2>📋 粘贴分享文字 <small>自动拆出链接和提取码</small></h2>
     <textarea id="paste" placeholder="把别人发的分享文字整段粘贴进来，例如：&#10;我用夸克网盘分享了「某某资料」，点击链接即可保存。&#10;链接：https://pan.quark.cn/s/abc123def456 提取码：Ab12"></textarea>
-    <div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" id="pasteBtn">从剪贴板粘贴</button><button class="btn sm" id="clearBtn">清空</button></div>
+    <div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" id="pasteBtn">📥 从剪贴板粘贴</button><button class="btn sm" id="clearBtn">清空</button></div>
     <div id="found"></div>
   </div>
 
   <div class="card">
-    <h2>我的收藏 <small id="favN"></small></h2>
+    <h2>⭐ 我的收藏 <small id="favN"></small></h2>
     <div class="srow" style="margin-bottom:6px"><input id="ff" type="search" placeholder="在收藏里找" style="font-size:14px;padding:8px 12px"></div>
     <div id="favs"></div>
     <div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" id="expBtn">复制全部（文本）</button></div>
@@ -236,7 +236,7 @@ textarea:focus{border-color:var(--accent)}
         (f.code ? '<div class="c">提取码 <b>' + esc(f.code) + '</b></div>' : '<div class="c" style="color:var(--faint);font-size:13px">没有提取码（或者不需要）</div>') +
         '<input class="nm" data-nm="' + i + '" placeholder="起个名字，方便以后找" value="' + esc(f.t) + '">' +
         '<div class="acts"><a class="btn pri sm" href="' + esc(f.u) + '" target="_blank" rel="noopener noreferrer" data-open="' + i + '" style="text-decoration:none">打开</a>' +
-        (f.code ? '<button class="btn sm" data-cc="' + i + '">复制提取码</button>' : '') + '<button class="btn sm" data-cl="' + i + '">复制链接</button><button class="btn sm" data-sv="' + i + '">收藏</button></div></div>';
+        (f.code ? '<button class="btn sm" data-cc="' + i + '">复制提取码</button>' : '') + '<button class="btn sm" data-cl="' + i + '">复制链接</button><button class="btn sm" data-sv="' + i + '">⭐ 收藏</button></div></div>';
     });
     $('found').innerHTML = h;
   }
@@ -292,6 +292,6 @@ textarea:focus{border-color:var(--accent)}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

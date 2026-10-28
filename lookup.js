@@ -85,7 +85,7 @@
       h += '<div class="sent">' + esc(sent).replace(re, '<mark>$1</mark>') + '</div>';
     }
     var st = inVocab(w);
-    h += '<div class="acts">' + (sent ? '<button data-a="sent">读整句</button>' : '') +
+    h += '<div class="acts">' + (sent ? '<button data-a="sent">🔊 读整句</button>' : '') +
       '<button class="pri" data-a="add">' + (st ? '✓ ' + st + '（加这句为新语境）' : '＋ 收进语境词库') + '</button>' +
       '<a href="https://www.oxfordlearnersdictionaries.com/search/english/?q=' + encodeURIComponent(w) + '" target="_blank" rel="noopener">牛津词典</a>' +
       '<button data-a="x">关闭</button></div>';

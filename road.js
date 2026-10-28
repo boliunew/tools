@@ -11,7 +11,7 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('bay:' + k) || 'null'); localStorage.setItem('bay:' + k, JSON.stringify(v)); } catch (e) { return null; } }
   var LY = ls('road') || { hw: 1, inc: 1, lcs: 1, cms: 1, tt: 0 };
-  var LAYERS = [['hw', '高速路线'], ['inc', '事故'], ['lcs', '封路施工'], ['cms', '路牌行车时间']];
+  var LAYERS = [['hw', '🛣️ 高速路线'], ['inc', '🚨 事故'], ['lcs', '🚧 封路施工'], ['cms', '🪧 路牌行车时间']];
   var VIEW = ls('view') || 'waze';
   function wazeUrl(lat, lon, z) { return 'https://embed.waze.com/iframe?zoom=' + Math.max(3, Math.min(17, Math.round(z))) + '&lat=' + lat.toFixed(4) + '&lon=' + lon.toFixed(4); }
   function gmapUrl(lat, lon, z) { return 'https://www.google.com/maps/@' + lat.toFixed(4) + ',' + lon.toFixed(4) + ',' + Math.round(z) + 'z/data=!5m1!1e1'; }
@@ -52,10 +52,10 @@
 
   function rush() {   // 按星期和时间给出通常最堵的方向（经验规律，不是实时数据）
     var n = laNow(), wk = n.wd >= 1 && n.wd <= 5, m = n.m;
-    if (wk && m >= 360 && m < 600) return '工作日早高峰：通常最堵的是 101 北向（圣何塞→半岛）、880 北向、80 西向海湾大桥收费站、680 南向 Sunol 段、580 西向 Altamont。';
-    if (wk && m >= 900 && m < 1170) return '工作日晚高峰：通常最堵的是 101 南向、880 南向、80 东向（海湾大桥出城）、680 北向 Sunol 段、85 / 87 南向、92 西向圣马特奥大桥' + (n.wd === 5 ? '。周五傍晚出城去太浩湖、纳帕的 80 东向、580 东向、101 北向更堵。' : '。');
-    if (!wk && m >= 600 && m < 1140) return '周末白天：80 东向往萨克拉门托 / 太浩湖、17 号公路去圣克鲁兹、金门大桥一带容易堵；周日下午回城方向更堵。';
-    if (m >= 1260 || m < 300) return '夜里车少，但很多路段晚上施工封车道，留意地图上的 🚧。';
+    if (wk && m >= 360 && m < 600) return '⏰ 工作日早高峰：通常最堵的是 101 北向（圣何塞→半岛）、880 北向、80 西向海湾大桥收费站、680 南向 Sunol 段、580 西向 Altamont。';
+    if (wk && m >= 900 && m < 1170) return '⏰ 工作日晚高峰：通常最堵的是 101 南向、880 南向、80 东向（海湾大桥出城）、680 北向 Sunol 段、85 / 87 南向、92 西向圣马特奥大桥' + (n.wd === 5 ? '。周五傍晚出城去太浩湖、纳帕的 80 东向、580 东向、101 北向更堵。' : '。');
+    if (!wk && m >= 600 && m < 1140) return '⏰ 周末白天：80 东向往萨克拉门托 / 太浩湖、17 号公路去圣克鲁兹、金门大桥一带容易堵；周日下午回城方向更堵。';
+    if (m >= 1260 || m < 300) return '🌙 夜里车少，但很多路段晚上施工封车道，留意地图上的 🚧。';
     return '';
   }
 
@@ -66,7 +66,7 @@
     (LV.inc || []).forEach(function (i) { var a = A[area(i.ll)]; if (a && !minor(i)) a.inc.push(i); });
     (LV.lcs || []).forEach(function (c) { var a = A[area(c.ll)]; if (a && c.fac === 'Mainline') a.lcs++; });
     (LV.cms || []).forEach(function (s) { var a = A[area(s.ll)]; if (a) s.tt.forEach(function (t) { if (t.base) a.tt.push([ratio(t), t, s]); }); });
-    var h = '<div class="rs-h"><b>现在湾区路况</b><small>' + (LV.generated ? '更新于 ' + esc(laTime(LV.generated)) : '') + ' · 每 5 分钟</small></div>';
+    var h = '<div class="rs-h"><b>🚗 现在湾区路况</b><small>' + (LV.generated ? '更新于 ' + esc(laTime(LV.generated)) : '') + ' · 每 5 分钟</small></div>';
     AREAS.forEach(function (k) {
       var a = A[k]; a.tt.sort(function (x, y) { return y[0] - x[0]; });
       var worst = a.tt[0], lv = worst ? lvl(worst[0]) : 1, col = a.inc.filter(function (i) { return /车祸|逃逸|SigAlert|逆行|起火/.test(i.zh); }).length;
@@ -174,13 +174,13 @@
   function html() {
     var key = ls('ttkey');
     return '<div class="rsum" id="rsum"><div class="rs-h">加载中…</div></div>' +
-      '<div class="mtabs" id="rview"><button data-v="waze" class="' + (VIEW === 'waze' ? 'on' : '') + '">实时车流（哪里堵）</button><button data-v="ours" class="' + (VIEW === 'ours' ? 'on' : '') + '">事故 · 封路 · 路牌</button></div>' +
+      '<div class="mtabs" id="rview"><button data-v="waze" class="' + (VIEW === 'waze' ? 'on' : '') + '">🚦 实时车流（哪里堵）</button><button data-v="ours" class="' + (VIEW === 'ours' ? 'on' : '') + '">📍 事故 · 封路 · 路牌</button></div>' +
       '<div class="mapbox" id="rwaze" style="cursor:auto"' + (VIEW === 'waze' ? '' : ' hidden') + '><iframe id="rwazef" title="Waze 实时路况" style="width:100%;height:100%;border:0" loading="lazy" allow="geolocation" src="' + (VIEW === 'waze' ? wazeUrl(WV.lat, WV.lon, WV.z) : 'about:blank') + '"></iframe></div>' +
       '<div class="mtabs" id="rlay2"' + (VIEW === 'waze' ? ' hidden' : '') + '>' + LAYERS.map(function (x) { return '<button data-rl="' + x[0] + '" class="' + (LY[x[0]] ? 'on' : '') + '">' + (LY[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
       '<div class="mapbox" id="rmap" style="cursor:auto"' + (VIEW === 'waze' ? ' hidden' : '') + '></div>' +
-      '<div class="mtabs" style="margin-top:8px"><button id="rgBay">整个湾区</button><button id="rgSF">旧金山</button><button id="rgSJ">圣何塞</button><button id="rgMe">我的位置</button><button id="rgRe">刷新</button><a class="btn2" id="rgG" target="_blank" rel="noopener" href="' + gmapUrl(WV.lat, WV.lon, WV.z) + '" style="text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13.5px;color:var(--soft)">用谷歌地图看路况</a></div>' +
-      '<div class="mnote" id="rwnote"' + (VIEW === 'waze' ? '' : ' hidden') + '>实时车流用的是 Waze 官方的嵌入地图，不用任何密钥：路上<b style="color:#E0A100">黄</b>、<b style="color:#E07B00">橙</b>、<b style="color:#C0362C">红</b>色的线就是在堵，颜色越深越慢，还能看到网友报告的事故、警察和道路危险。可以拖动缩放；点上面的分区或下面的按钮会跳过去。「用谷歌地图看路况」会在谷歌地图 App 里打开同一个位置并打开路况图层。</div>' +
-      '<details class="rkey"' + (key ? '' : '') + '><summary>进阶：在「事故 · 封路 · 路牌」地图上也叠加车速（需要 TomTom 密钥，可不用）' + (key ? '（已开启）' : '') + '</summary>' +
+      '<div class="mtabs" style="margin-top:8px"><button id="rgBay">🌉 整个湾区</button><button id="rgSF">🌁 旧金山</button><button id="rgSJ">🌴 圣何塞</button><button id="rgMe">📍 我的位置</button><button id="rgRe">🔄 刷新</button><a class="btn2" id="rgG" target="_blank" rel="noopener" href="' + gmapUrl(WV.lat, WV.lon, WV.z) + '" style="text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13.5px;color:var(--soft)">🗺️ 用谷歌地图看路况</a></div>' +
+      '<div class="mnote" id="rwnote"' + (VIEW === 'waze' ? '' : ' hidden') + '>🚦 实时车流用的是 Waze 官方的嵌入地图，不用任何密钥：路上<b style="color:#E0A100">黄</b>、<b style="color:#E07B00">橙</b>、<b style="color:#C0362C">红</b>色的线就是在堵，颜色越深越慢，还能看到网友报告的事故、警察和道路危险。可以拖动缩放；点上面的分区或下面的按钮会跳过去。「用谷歌地图看路况」会在谷歌地图 App 里打开同一个位置并打开路况图层。</div>' +
+      '<details class="rkey"' + (key ? '' : '') + '><summary>⚙️ 进阶：在「事故 · 封路 · 路牌」地图上也叠加车速（需要 TomTom 密钥，可不用）' + (key ? '（已开启）' : '') + '</summary>' +
       '<div class="mnote" style="margin-top:4px">需要一个免费的 TomTom 地图密钥（个人用免费额度足够）：<br>① 打开 <a href="https://developer.tomtom.com/user/register" target="_blank" rel="noopener">developer.tomtom.com</a> 免费注册；② 在 Dashboard 里复制 API Key；③ 粘贴到下面。密钥只存在这台手机上，不会上传。</div>' +
       '<div class="mtabs"><input id="rkey" class="fsel" style="flex:1;min-width:0" placeholder="粘贴 TomTom API Key" value="' + esc(key || '') + '"><button id="rkeyOk">保存</button>' + (key ? '<button id="rkeyDel">删除</button>' : '') + '</div></details>' +
       '<div class="mnote">分区颜色怎么来的：Caltrans 高速路牌上显示的行车时间，和这块路牌过去显示过的最快时间比较（慢 25% 以上算「有点慢」，慢 60% 以上算「拥堵」），再加上 CHP 报告的车祸。路牌多在白天显示行车时间，刚上线的几天「平时」基准还在积累。' +

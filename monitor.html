@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -93,7 +93,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     <div class="f"><label>网址</label><input id="fUrl" type="url" placeholder="https://..." autocomplete="off"></div>
     <div class="f"><label>名称（选填）</label><input id="fName" placeholder="例如：Sony 耳机、签证预约页"></div>
     <div class="f"><label>监控什么</label><div class="modes" id="fModes">
-      <button data-m="价格" class="on">价格</button><button data-m="关键词出现">关键词出现</button><button data-m="关键词消失">关键词消失</button><button data-m="内容变化">内容变化</button>
+      <button data-m="价格" class="on">💲 价格</button><button data-m="关键词出现">🔎 关键词出现</button><button data-m="关键词消失">🚫 关键词消失</button><button data-m="内容变化">📝 内容变化</button>
     </div><small id="modeHint"></small></div>
     <div class="f" id="rowTarget"><label>目标价（选填）</label><input id="fTarget" inputmode="decimal" placeholder="低于或等于这个价格时通知；不填则每次降价都通知"></div>
     <div class="f" id="rowKw" style="display:none"><label>关键词</label><input id="fKw" placeholder="例如 In stock、Add to cart、Sold out"></div>
@@ -143,15 +143,15 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
       var body = '### 网址\n\n' + url + '\n\n### 监控类型\n\n' + mode + '\n\n### 目标价（选填）\n\n' + nr(mode === '价格' ? $('fTarget').value : '') +
         '\n\n### 关键词（选填）\n\n' + nr(mode.indexOf('关键词') === 0 ? $('fKw').value : '') + '\n\n### CSS 选择器（选填，高级）\n\n' + nr($('fSel').value);
       var x = new XMLHttpRequest(); x.open('POST', 'api/issues'); x.setRequestHeader('Content-Type', 'application/json');
-      x.onload = function () { if (x.status === 201) { $('addForm').classList.remove('on'); $('list').insertAdjacentHTML('afterbegin', '<div class="card empty">已添加「' + esc(name) + '」，正在第一次检查，十几秒后刷新就能看到。</div>'); setTimeout(load, 15000); setTimeout(load, 45000); } else alert('保存失败'); };
+      x.onload = function () { if (x.status === 201) { $('addForm').classList.remove('on'); $('list').insertAdjacentHTML('afterbegin', '<div class="card empty">✅ 已添加「' + esc(name) + '」，正在第一次检查，十几秒后刷新就能看到。</div>'); setTimeout(load, 15000); setTimeout(load, 45000); } else alert('保存失败'); };
       x.send(JSON.stringify({ title: '监控: ' + name, body: body }));
       return;
     }
     window.open('https://github.com/' + REPO + '/issues/new?' + q, '_blank');
   };
   if (window.TOOLS_LOCAL) {
-    $('goBtn').textContent = '开始监控';
-    var stp = document.querySelector('.steps'); if (stp) stp.innerHTML = '每 4 小时检查一次。有变化时手机上的 ntfy 会推送。<br>删除监控：在 <a href="issues.html">通知中心</a> 里关掉它。';
+    $('goBtn').textContent = '✅ 开始监控';
+    var stp = document.querySelector('.steps'); if (stp) stp.innerHTML = '每 4 小时检查一次。有变化时手机上的 ntfy 会推送。<br>删除监控：在 <a href="issues.html">🔔 通知中心</a> 里关掉它。';
   }
 
   function spark(h) {
@@ -200,6 +200,6 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

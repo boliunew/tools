@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""面食菜谱 → kitchen/recipes_mian.json（kitchen.html 的「面食」标签用）。python3 scripts/build_mian.py
+"""🍜 面食菜谱 → kitchen/recipes_mian.json（kitchen.html 的「面食」标签用）。python3 scripts/build_mian.py
 格式和 recipes_cn*.json 一样，多一个 mian 字段（面条 / 意面 / 饺子馄饨 / 包子馒头 / 饼 / 面包 / 披萨 / 煎饼华夫）。
 面粉按美国超市的叫法写：中筋 = all-purpose flour，高筋 = bread flour，低筋 = cake flour。"""
 import json

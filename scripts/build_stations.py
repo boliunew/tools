@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""附近车站：把各家的车站合成一份 → stations/near.json（nearby.js 用）
+"""📍 附近车站：把各家的车站合成一份 → stations/near.json（nearby.js 用）
 
 · Amtrak：amtrak/data.json（车站 + 每站接下来的发车，按星期）
 · BART / Muni 轻轨：sf/transit.json

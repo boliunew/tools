@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-国际局势 · 分大洲  →  news/data/world.json（news.html 的「国际局势」标签用）
+🌍 国际局势 · 分大洲  →  news/data/world.json（news.html 的「国际局势」标签用）
 
 每个大洲用几家英文国际媒体的「地区频道」RSS（BBC 欧洲 / 亚洲 / 美加 / 拉美 / 澳洲、卫报、法国24、德国之声、
 半岛电视台、CNA、日本时报、ABC 澳洲、新西兰 RNZ……），把讲同一件事的聚成一组，被越多家报道的排越前；

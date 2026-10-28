@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -37,13 +37,13 @@ h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
 <body>
 <div class="wrap">
   <a href="index.html" style="font-size:13px;color:var(--faint);text-decoration:none">‹ 首页</a>
-  <h1>系统状态</h1>
+  <h1>🩺 系统状态</h1>
   <div class="sub" id="sub">加载中…</div>
   <div id="app"></div>
   <div class="acts">
-    <a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">GitHub 自动任务</a>
-    <a href="https://github.com/boliunew/tools/issues?q=%F0%9F%A9%BA" target="_blank" rel="noopener">体检提醒记录</a>
-    <a href="https://github.com/boliunew/tools/releases" target="_blank" rel="noopener">每月备份下载</a>
+    <a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">⚙️ GitHub 自动任务</a>
+    <a href="https://github.com/boliunew/tools/issues?q=%F0%9F%A9%BA" target="_blank" rel="noopener">🔔 体检提醒记录</a>
+    <a href="https://github.com/boliunew/tools/releases" target="_blank" rel="noopener">📦 每月备份下载</a>
   </div>
   <div class="note">每天早晚各检查一次，有问题会在 GitHub 上提醒。每月 1 号自动备份。</div>
 </div>
@@ -65,15 +65,15 @@ h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
     var stale = (Date.now() - new Date(D.generated).getTime()) / 36e5 > 30;
     document.getElementById('sub').innerHTML = '上次体检：' + ago(D.generated) + (stale ? ' · <b style="color:var(--bad)">体检本身超过一天没跑了</b>' : '');
     var h = '';
-    h += D.ok ? '<div class="ban ok"><b>一切正常</b>所有数据都按时更新，接口和地图都能用' + (D.since ? '（从 ' + ago(D.since).replace('前', '前起') + '）' : '') + '。</div>'
-      : '<div class="ban bad"><b>发现 ' + D.problems.length + ' 个问题</b><ul>' + D.problems.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul></div>';
-    h += '<div class="box"><h2>自动更新的数据</h2>' + D.data.map(function (r) {
+    h += D.ok ? '<div class="ban ok"><b>✅ 一切正常</b>所有数据都按时更新，接口和地图都能用' + (D.since ? '（从 ' + ago(D.since).replace('前', '前起') + '）' : '') + '。</div>'
+      : '<div class="ban bad"><b>⚠️ 发现 ' + D.problems.length + ' 个问题</b><ul>' + D.problems.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul></div>';
+    h += '<div class="box"><h2>📦 自动更新的数据</h2>' + D.data.map(function (r) {
       return '<a class="row' + (r.ok ? '' : ' bad') + '" href="' + esc(r.page) + '"><span class="dot' + (r.ok ? '' : ' bad') + '"></span><span class="n"><b>' + r.e + ' ' + esc(r.n) + '</b><small>' + esc(r.ok ? (r.detail || '正常') : r.msg) + '</small></span><span class="t">' + (r.at ? '更新于<br>' + ago(r.at) : '') + '</span></a>';
     }).join('') + '</div>';
-    h += '<div class="box"><h2>地图和实时接口</h2>' + D.external.map(function (r) {
+    h += '<div class="box"><h2>🌐 地图和实时接口</h2>' + D.external.map(function (r) {
       return '<div class="row' + (r.ok ? '' : ' bad') + '"><span class="dot' + (r.ok ? '' : ' bad') + '"></span><span class="n"><b>' + r.e + ' ' + esc(r.n) + '</b><small>' + esc(r.ok ? '能用' : r.msg) + '</small></span></div>';
     }).join('') + '</div>';
-    h += '<div class="box"><h2>自动任务</h2>' + (D.failed_runs.length ? D.failed_runs.map(function (r) {
+    h += '<div class="box"><h2>⚙️ 自动任务</h2>' + (D.failed_runs.length ? D.failed_runs.map(function (r) {
       return '<a class="row bad" href="' + esc(r.url) + '" target="_blank" rel="noopener"><span class="dot bad"></span><span class="n"><b>' + esc(r.n) + '</b><small>上次运行失败（' + esc(r.conclusion) + '）</small></span><span class="t">' + ago(r.at) + '</span></a>';
     }).join('') : '<div class="row"><span class="dot"></span><span class="n"><b>过去一天没有失败的任务</b></span></div>') + '</div>';
     document.getElementById('app').innerHTML = h;
@@ -83,6 +83,6 @@ h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--faint);font-size:13px}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

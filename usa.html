@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -77,7 +77,7 @@ mark{background:var(--gold-soft);color:inherit;border-radius:3px}
   <p id="intro">办证、租房、开车、银行、看病、工作、购物、防骗、法律、家务、节日……生活里大大小小的事，按「遇到什么事」查。按加州写，深的内容链接到本站知识库。</p>
   <div class="quick" id="quick"></div>
 </div></div>
-<div class="srch"><div class="wrap"><input id="q" type="search" placeholder="搜：押金、车祸、报税、小费、垃圾…" autocomplete="off"><div class="chips" id="chips"></div></div></div>
+<div class="srch"><div class="wrap"><input id="q" type="search" placeholder="🔍 搜：押金、车祸、报税、小费、垃圾…" autocomplete="off"><div class="chips" id="chips"></div></div></div>
 <main class="wrap" id="main"><div class="empty">加载中…</div></main>
 <script>
 (function () {
@@ -97,7 +97,7 @@ mark{background:var(--gold-soft);color:inherit;border-radius:3px}
   }
   function render() {
     var h = '', w = Q;
-    $('chips').innerHTML = '<button data-c="" class="' + (!CAT && !w ? 'on' : '') + '">全部 ' + D.count + '</button><button data-c="star" class="' + (CAT === 'star' ? 'on' : '') + '">收藏 ' + Object.keys(STAR).length + '</button>' +
+    $('chips').innerHTML = '<button data-c="" class="' + (!CAT && !w ? 'on' : '') + '">全部 ' + D.count + '</button><button data-c="star" class="' + (CAT === 'star' ? 'on' : '') + '">⭐ 收藏 ' + Object.keys(STAR).length + '</button>' +
       D.cats.map(function (c) { return '<button data-c="' + c.k + '" class="' + (CAT === c.k && !w ? 'on' : '') + '">' + c.e + ' ' + esc(c.n) + '<small>' + c.items.length + '</small></button>'; }).join('');
     if (w) {
       var n = 0, lw = w.toLowerCase();
@@ -105,7 +105,7 @@ mark{background:var(--gold-soft);color:inherit;border-radius:3px}
       h = '<div class="sec"><p>搜「' + esc(w) + '」找到 ' + n + ' 条</p></div>' + (h || '<div class="empty">没找到，换个词试试，比如「押金」「罚单」「病假」</div>');
     } else if (CAT === 'star') {
       D.cats.forEach(function (c) { c.items.forEach(function (it, i) { if (STAR[key(c, i)]) h += item(c, i, it, ''); }); });
-      h = '<div class="sec"><h2>我的收藏</h2><p>点每条右边的 ☆ 收藏，存在这台手机上。</p></div>' + (h || '<div class="empty">还没有收藏</div>');
+      h = '<div class="sec"><h2>⭐ 我的收藏</h2><p>点每条右边的 ☆ 收藏，存在这台手机上。</p></div>' + (h || '<div class="empty">还没有收藏</div>');
     } else if (CAT) {
       var c = D.cats.filter(function (x) { return x.k === CAT; })[0];
       if (c) { h += '<div class="sec"><h2>' + c.e + ' ' + esc(c.n) + '</h2><p>' + esc(c.d) + '</p></div>'; c.items.forEach(function (it, i) { h += item(c, i, it, ''); }); }
@@ -114,7 +114,7 @@ mark{background:var(--gold-soft);color:inherit;border-radius:3px}
       D.cats.forEach(function (c) { h += '<div class="sec"><h2>' + c.e + ' ' + esc(c.n) + '</h2><p>' + esc(c.d) + '</p></div>'; c.items.forEach(function (it, i) { h += item(c, i, it, ''); }); });
     }
     h += '<div class="foot">整理于 ' + esc(D.updated) + '，按加州（Upland，圣贝纳迪诺县）写。法规、金额、税率每年会变，以官网为准；这里是生活常识，不是法律、税务或医疗建议。<br>' +
-      '相关：<a href="kb.html">知识库</a> · <a href="tips.html">小技巧</a> · <a href="ie.html">内陆帝国</a> · <a href="holidays.html">节假日</a></div>';
+      '相关：<a href="kb.html">🗂️ 知识库</a> · <a href="tips.html">💡 小技巧</a> · <a href="ie.html">🍊 内陆帝国</a> · <a href="holidays.html">🗓️ 节假日</a></div>';
     $('main').innerHTML = h;
   }
   function go(c) { CAT = c; Q = ''; $('q').value = ''; history.replaceState(null, '', c ? '#' + c : location.pathname); render(); window.scrollTo(0, document.querySelector('.srch').offsetTop); }
@@ -122,7 +122,7 @@ mark{background:var(--gold-soft);color:inherit;border-radius:3px}
   $('main').onclick = function (e) {
     var g = e.target.closest('.gc'); if (g) { go(g.getAttribute('data-c')); return; }
     var s = e.target.closest('[data-star]');
-    if (s) { var k = s.getAttribute('data-star'); if (STAR[k]) delete STAR[k]; else STAR[k] = 1; ls('star', STAR); s.className = 'st' + (STAR[k] ? ' on' : ''); s.textContent = STAR[k] ? '★' : '☆'; var cb = document.querySelector('[data-c="star"]'); if (cb) cb.textContent = '收藏 ' + Object.keys(STAR).length; return; }
+    if (s) { var k = s.getAttribute('data-star'); if (STAR[k]) delete STAR[k]; else STAR[k] = 1; ls('star', STAR); s.className = 'st' + (STAR[k] ? ' on' : ''); s.textContent = STAR[k] ? '★' : '☆'; var cb = document.querySelector('[data-c="star"]'); if (cb) cb.textContent = '⭐ 收藏 ' + Object.keys(STAR).length; return; }
     var q = e.target.closest('.it .q'); if (q) { var it = q.parentNode, kk = it.getAttribute('data-k'); OPEN[kk] = !it.classList.contains('open'); it.classList.toggle('open', OPEN[kk]); }
   };
   var qt = null; $('q').oninput = function () { clearTimeout(qt); var v = this.value.replace(/^\s+|\s+$/g, ''); qt = setTimeout(function () { Q = v; render(); }, 200); };
@@ -140,6 +140,6 @@ mark{background:var(--gold-soft);color:inherit;border-radius:3px}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

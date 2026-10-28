@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <link rel="manifest" href="tools.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple.png">
@@ -140,69 +140,69 @@ html.locked #gate{display:block}
 </script><!--/GATE-->
 </head>
 <body>
-<!--GATEUI--><div id="gate"><h2>我的工具</h2><p>请输入密码</p><form onsubmit="return __gate()"><input type="password" id="gpw" autocomplete="current-password" placeholder="密码"><button type="submit">进入</button><label><input type="checkbox" id="grem" checked> 在这台设备上记住我</label></form><div id="gmsg"></div></div><!--/GATEUI-->
+<!--GATEUI--><div id="gate"><h2>🔒 我的工具</h2><p>请输入密码</p><form onsubmit="return __gate()"><input type="password" id="gpw" autocomplete="current-password" placeholder="密码"><button type="submit">进入</button><label><input type="checkbox" id="grem" checked> 在这台设备上记住我</label></form><div id="gmsg"></div></div><!--/GATEUI-->
 <main>
 <h1>我的工具</h1>
-<form class="srch" action="search.html" onsubmit="location.href='search.html#q='+encodeURIComponent(this.q.value);return false"><input name="q" type="search" placeholder="搜索" enterkeyhint="search"><button>搜</button></form>
+<form class="srch" action="search.html" onsubmit="location.href='search.html#q='+encodeURIComponent(this.q.value);return false"><input name="q" type="search" placeholder="搜全站：菜谱、技巧、诗词、梦……" enterkeyhint="search"><button>搜</button></form>
 <div class="today" id="today"><div class="hd"><b id="tdDate"></b><span id="tdSub"></span></div><div id="tdBody"></div>
 <div class="quick" id="myTop" style="display:none"></div>
 <div id="thinkCard" style="display:none;margin-top:10px;font-size:14px;line-height:1.6"></div>
-<div class="quick"><a href="brief.html">每日简报</a><a href="work.html">现场工具</a><a href="news.html">新闻</a><a href="stocks.html">股票池</a><a href="deals.html">打折</a><a href="kitchen.html">今天吃啥</a><a href="convert.html">汇率</a></div>
+<div class="quick"><a href="brief.html">☀️ 每日简报</a><a href="work.html">🦺 现场工具</a><a href="news.html">📰 新闻</a><a href="stocks.html">📈 股票池</a><a href="deals.html">🏷️ 打折</a><a href="kitchen.html">🍳 今天吃啥</a><a href="convert.html">💱 汇率</a></div>
 <div class="recent" id="recent" hidden></div></div>
 <div class="sect">全部工具</div>
-<details class="grp" data-g="work" open><summary>工作现场 <small>1</small></summary>
-<div class="gl"><a class="card" href="work.html"><div class="t">现场工具</div><div class="d">柜号、装柜、换算、交接班日志</div></a></div>
+<details class="grp" data-g="work" open><summary>🦺 工作现场 <small>1</small></summary>
+<div class="gl"><a class="card" href="work.html"><div class="t">🦺 现场工具</div><div class="d">柜号、装柜、换算、交接班日志</div></a></div>
 </details>
-<details class="grp" data-g="money" open><summary>钱 <small>4</small></summary>
-<div class="gl"><a class="card" href="stocks.html"><div class="t">今日股票池</div><div class="d">收盘扫描和到价提醒</div></a>
-<a class="card" href="earnings.html"><div class="t">财报与经济日历</div><div class="d">接下来两周的财报和数据</div></a>
-<a class="card" href="deals.html"><div class="t">打折雷达</div><div class="d">附近超市本周特价</div></a>
-<a class="card" href="convert.html"><div class="t">汇率与单位换算</div><div class="d">汇率、长度重量、油耗胎压</div></a></div>
+<details class="grp" data-g="money" open><summary>💰 钱 <small>4</small></summary>
+<div class="gl"><a class="card" href="stocks.html"><div class="t">📈 今日股票池</div><div class="d">收盘扫描和到价提醒</div></a>
+<a class="card" href="earnings.html"><div class="t">📅 财报与经济日历</div><div class="d">接下来两周的财报和数据</div></a>
+<a class="card" href="deals.html"><div class="t">🏷️ 打折雷达</div><div class="d">附近超市本周特价</div></a>
+<a class="card" href="convert.html"><div class="t">💱 汇率与单位换算</div><div class="d">汇率、长度重量、油耗胎压</div></a></div>
 </details>
-<details class="grp" data-g="read" open><summary>读 <small>6</small></summary>
-<div class="gl"><a class="card" href="brief.html"><div class="t">每日简报</div><div class="d">开盘前十分钟看完</div></a>
-<a class="card" href="news.html"><div class="t">新闻</div><div class="d">今日大事和国际局势</div></a>
-<a class="card" href="think.html"><div class="t">思考本</div><div class="d">记下自己的判断，以后回看</div></a>
-<a class="card" href="kb.html"><div class="t">知识库</div><div class="d">长文章：历史、投资、物流、汽车</div></a>
-<a class="card" href="tips.html"><div class="t">技巧与科普</div><div class="d">手机电脑、防骗、生活小事</div></a>
-<a class="card" href="people.html"><div class="t">人物专栏</div><div class="d">苏轼、George Michael、人生七年</div></a></div>
+<details class="grp" data-g="read" open><summary>📰 读 <small>6</small></summary>
+<div class="gl"><a class="card" href="brief.html"><div class="t">☀️ 每日简报</div><div class="d">开盘前十分钟看完</div></a>
+<a class="card" href="news.html"><div class="t">📰 新闻</div><div class="d">今日大事和国际局势</div></a>
+<a class="card" href="think.html"><div class="t">🧠 思考本</div><div class="d">记下自己的判断，以后回看</div></a>
+<a class="card" href="kb.html"><div class="t">🗂️ 知识库</div><div class="d">长文章：历史、投资、物流、汽车</div></a>
+<a class="card" href="tips.html"><div class="t">💡 技巧与科普</div><div class="d">手机电脑、防骗、生活小事</div></a>
+<a class="card" href="people.html"><div class="t">⭐ 人物专栏</div><div class="d">苏轼、George Michael、人生七年</div></a></div>
 </details>
-<details class="grp" data-g="learn" open><summary>学 <small>7</small></summary>
-<div class="gl"><a class="card" href="vocab.html"><div class="t">语境词库</div><div class="d">在句子里记单词</div></a>
-<a class="card" href="card.html"><div class="t">每日一句</div><div class="d">一句名言，几张单词卡</div></a>
-<a class="card" href="speak.html"><div class="t">开口说</div><div class="d">工作和生活口语，跟读打分</div></a>
-<a class="card" href="sublingo.html"><div class="t">SubLingo</div><div class="d">字幕和文章逐句讲语法</div></a>
-<a class="card" href="english.html"><div class="t">英语练习</div><div class="d">从字母到找谓语</div></a>
-<a class="card" href="spanish.html"><div class="t">西班牙语</div><div class="d">墨西哥常用词</div></a>
-<a class="card" href="hanzi.html"><div class="t">汉字练习</div><div class="d">笔顺和识字</div></a></div>
+<details class="grp" data-g="learn" open><summary>📚 学 <small>7</small></summary>
+<div class="gl"><a class="card" href="vocab.html"><div class="t">📖 语境词库</div><div class="d">在句子里记单词</div></a>
+<a class="card" href="card.html"><div class="t">🎴 每日一句</div><div class="d">一句名言，几张单词卡</div></a>
+<a class="card" href="speak.html"><div class="t">🗣️ 开口说</div><div class="d">工作和生活口语，跟读打分</div></a>
+<a class="card" href="sublingo.html"><div class="t">🎞️ SubLingo</div><div class="d">字幕和文章逐句讲语法</div></a>
+<a class="card" href="english.html"><div class="t">🔤 英语练习</div><div class="d">从字母到找谓语</div></a>
+<a class="card" href="spanish.html"><div class="t">🇲🇽 西班牙语</div><div class="d">墨西哥常用词</div></a>
+<a class="card" href="hanzi.html"><div class="t">字 汉字练习</div><div class="d">笔顺和识字</div></a></div>
 </details>
-<details class="grp" data-g="listen" open><summary>听 <small>5</small></summary>
-<div class="gl"><a class="card" href="radio.html"><div class="t">通勤电台</div><div class="d">每天早上的语音简报</div></a>
-<a class="card" href="fm.html"><div class="t">环球网络电台</div><div class="d">各国电台直播</div></a>
-<a class="card" href="books.html"><div class="t">听书</div><div class="d">公版有声书和老广播剧</div></a>
-<a class="card" href="sleep.html"><div class="t">夜之声</div><div class="d">雨声海浪，助眠用</div></a>
-<a class="card" href="player.html"><div class="t">探测播放器</div><div class="d">贴个链接就能播</div></a></div>
+<details class="grp" data-g="listen" open><summary>🎧 听 <small>5</small></summary>
+<div class="gl"><a class="card" href="radio.html"><div class="t">🚗 通勤电台</div><div class="d">每天早上的语音简报</div></a>
+<a class="card" href="fm.html"><div class="t">📻 环球网络电台</div><div class="d">各国电台直播</div></a>
+<a class="card" href="books.html"><div class="t">🎧 听书</div><div class="d">公版有声书和老广播剧</div></a>
+<a class="card" href="sleep.html"><div class="t">😴 夜之声</div><div class="d">雨声海浪，助眠用</div></a>
+<a class="card" href="player.html"><div class="t">🎬 探测播放器</div><div class="d">贴个链接就能播</div></a></div>
 </details>
-<details class="grp" data-g="life" open><summary>生活 <small>8</small></summary>
-<div class="gl"><a class="card" href="usa.html"><div class="t">美国生活指南</div><div class="d">在加州过日子的大小事</div></a>
-<a class="card" href="kitchen.html"><div class="t">厨房与养生</div><div class="d">家常菜、面食、节气养生</div></a>
-<a class="card" href="amtrak.html"><div class="t">Amtrak 火车</div><div class="d">线路、时刻、实时位置</div></a>
-<a class="card" href="flights.html"><div class="t">机票比价</div><div class="d">几个网站一起查</div></a>
-<a class="card" href="coast.html"><div class="t">加州海岸线</div><div class="d">从红杉林到圣迭戈</div></a>
-<a class="card" href="sf.html"><div class="t">城市生活</div><div class="d">旧金山、圣何塞、纽约、洛杉矶、IE</div></a>
-<a class="card" href="holidays.html"><div class="t">节假日</div><div class="d">中美假期还有几天</div></a>
-<a class="card" href="dream.html"><div class="t">心灵小站</div><div class="d">解梦和心理学小知识</div></a></div>
+<details class="grp" data-g="life" open><summary>🏠 生活 <small>8</small></summary>
+<div class="gl"><a class="card" href="usa.html"><div class="t">🇺🇸 美国生活指南</div><div class="d">在加州过日子的大小事</div></a>
+<a class="card" href="kitchen.html"><div class="t">🍳 厨房与养生</div><div class="d">家常菜、面食、节气养生</div></a>
+<a class="card" href="amtrak.html"><div class="t">🚆 Amtrak 火车</div><div class="d">线路、时刻、实时位置</div></a>
+<a class="card" href="flights.html"><div class="t">✈️ 机票比价</div><div class="d">几个网站一起查</div></a>
+<a class="card" href="coast.html"><div class="t">🌊 加州海岸线</div><div class="d">从红杉林到圣迭戈</div></a>
+<a class="card" href="sf.html"><div class="t">🌆 城市生活</div><div class="d">旧金山、圣何塞、纽约、洛杉矶、IE</div></a>
+<a class="card" href="holidays.html"><div class="t">🗓️ 节假日</div><div class="d">中美假期还有几天</div></a>
+<a class="card" href="dream.html"><div class="t">🌙 心灵小站</div><div class="d">解梦和心理学小知识</div></a></div>
 </details>
-<details class="grp" data-g="tools" open><summary>工具 <small>5</small></summary>
-<div class="gl"><a class="card" href="status.html"><div class="t">系统状态</div><div class="d">数据有没有按时更新</div></a>
-<a class="card" href="darkroom.html"><div class="t">暗房</div><div class="d">修照片</div></a>
-<a class="card" href="polar.html"><div class="t">偏光滤镜</div><div class="d">给照片加偏光墨镜的效果</div></a>
-<a class="card" href="toolbox.html"><div class="t">工具箱</div><div class="d">文本、JSON、编码</div></a>
-<a class="card" href="dl.html"><div class="t">媒体下载</div><div class="d">推特和 Instagram 的图和视频</div></a>
-<a class="card" href="monitor.html"><div class="t">网页监控</div><div class="d">网页一变就通知</div></a>
-<a class="card" href="pan.html"><div class="t">夸克网盘搜索</div><div class="d">找分享链接和提取码</div></a></div>
+<details class="grp" data-g="tools" open><summary>🛠️ 工具 <small>5</small></summary>
+<div class="gl"><a class="card" href="status.html"><div class="t">🩺 系统状态</div><div class="d">数据有没有按时更新</div></a>
+<a class="card" href="darkroom.html"><div class="t">📷 暗房</div><div class="d">修照片</div></a>
+<a class="card" href="polar.html"><div class="t">🕶️ 偏光滤镜</div><div class="d">给照片加偏光墨镜的效果</div></a>
+<a class="card" href="toolbox.html"><div class="t">🧰 工具箱</div><div class="d">文本、JSON、编码</div></a>
+<a class="card" href="dl.html"><div class="t">📥 媒体下载</div><div class="d">推特和 Instagram 的图和视频</div></a>
+<a class="card" href="monitor.html"><div class="t">🔔 网页监控</div><div class="d">网页一变就通知</div></a>
+<a class="card" href="pan.html"><div class="t">☁️ 夸克网盘搜索</div><div class="d">找分享链接和提取码</div></a></div>
 </details>
-<button class="lockbtn" onclick="__lock()">退出（这台设备需要重新输密码）</button>
+<button class="lockbtn" onclick="__lock()">🔒 退出（这台设备需要重新输密码）</button>
 </main>
 <script src="weather.js?v=3"></script>
 <script>
@@ -239,7 +239,7 @@ html.locked #gate{display:block}
   // 别的卡片加载完会重画整个区域，所以「还有 N 条」用事件委托，不直接绑在按钮上
   var WXL = null, WXP = false, WXQ = '', WXR = null, WXMSG = '';
   function cityPanel(C) {
-    var chips = [['auto', '自动定位（按网络）'], ['gps', '用手机定位'], ['home', '🏠 ' + C.home.name]];
+    var chips = [['auto', '🛰️ 自动定位（按网络）'], ['gps', '📍 用手机定位'], ['home', '🏠 ' + C.home.name]];
     C.recent.forEach(function (x, i) { if (x.name !== C.home.name) chips.push(['r' + i, x.name]); });
     var h = '<div class="cpan"><div class="cq"><input id="wxQ" placeholder="搜城市：北京、上海、Las Vegas…" value="' + esc(WXQ) + '" autocomplete="off"><button id="wxGo">搜</button></div>' +
       '<div class="cc">' + chips.map(function (c) { var on = c[0] === 'auto' ? C.pref.auto : (!C.pref.auto && (c[0] === 'home' ? C.loc.name === C.home.name : c[1] === C.loc.name)); return '<button data-wc="' + c[0] + '" class="' + (on ? 'on' : '') + '">' + esc(c[1]) + '</button>'; }).join('') + '</div>';
@@ -330,7 +330,7 @@ html.locked #gate{display:block}
     for (w in db.cards) if (db.cards.hasOwnProperty(w)) { c = db.cards[w]; if (!c.k) { learn++; if (c.due <= t) due++; } }
     if (!learn) return;
     put('vocab', '<div class="row"><div class="lb">单词复习</div><div class="tx">' + (due ? '今天要复习 <b>' + due + '</b> 个词' : '今天的复习做完了 ✓') + '</div>' +
-      '<div class="sm"><a href="vocab.html">去做卡片</a> · <a href="vocab.html#listen">开车听一遍</a> · 学习中 ' + learn + ' 个</div></div>');
+      '<div class="sm"><a href="vocab.html">去做卡片</a> · <a href="vocab.html#listen">🎧 开车听一遍</a> · 学习中 ' + learn + ' 个</div></div>');
   })();
   var watch = ls('deals:watch', []);
   if (watch && watch.length) {
@@ -449,8 +449,8 @@ html.locked #gate{display:block}
       if (!t) continue;
       if ((Date.now() - new Date(t).getTime()) / 36e5 > f[3]) bad.push(f[0] + '（上次 ' + ago(t) + '）'); else okk.push(f[0] + ' ' + ago(t));
     }
-    // 一切正常时不显示；只在有数据过期时提醒一行
-    if (bad.length) put('health', '<a class="row warn" href="status.html"><div class="lb">有数据没按时更新</div><div class="tx">' + esc(bad.join('、')) + '</div></a>');
+    if (bad.length) put('health', '<a class="row warn" href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener"><div class="lb">⚠️ 数据可能没更新</div><div class="tx">' + esc(bad.join('、')) + '</div><div class="sm">超过平时的更新间隔了，可能是那次自动任务失败。点这里去 GitHub Actions 看看</div></a>');
+    if (okk.length) put('ok', '<div class="ok">数据更新：' + esc(okk.join(' · ')) + '</div>');
   }
   FEEDS.forEach(function (f) {
     if (f[4]) return;   // 上面已经下载过的，在那边记时间
@@ -459,14 +459,14 @@ html.locked #gate{display:block}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 <script>
 (function () {
   function draw() {
     if (!window.TNAV) return setTimeout(draw, 200);
     var top = window.TNAV.top(6), el = document.getElementById('myTop');
     if (!el || top.length < 3) return;   // 用得还少时先不显示，免得一两次点击就占位置
-    el.innerHTML = '<span style="font-size:12.5px;opacity:.6;align-self:center;margin-right:2px">我常用的</span>' + top.map(function (p) { return '<a href="' + p[0] + '">' + p[1] + ' ' + p[2] + '</a>'; }).join('');
+    el.innerHTML = '<span style="font-size:12.5px;opacity:.6;align-self:center;margin-right:2px">🌟 我常用的</span>' + top.map(function (p) { return '<a href="' + p[0] + '">' + p[1] + ' ' + p[2] + '</a>'; }).join('');
     el.style.display = "";
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', draw); else draw();
@@ -484,9 +484,9 @@ html.locked #gate{display:block}
   var wk = Math.floor(Date.now() / (7 * 864e5)), pick = open.length ? open.slice().sort(function (a, b) { return a.id < b.id ? -1 : 1; })[wk % open.length] : null;
   function draw(newMap) {
     var hot = fol.filter(function (n) { return newMap[n.id]; });
-    var h = '<a href="think.html" style="text-decoration:none;color:inherit;display:block;border-top:1px dashed rgba(128,128,128,.35);padding-top:8px"><b style="font-size:12.5px;opacity:.65">继续上次的思考</b><br>';
+    var h = '<a href="think.html" style="text-decoration:none;color:inherit;display:block;border-top:1px dashed rgba(128,128,128,.35);padding-top:8px"><b style="font-size:12.5px;opacity:.65">🧠 继续上次的思考</b><br>';
     if (hot.length) h += hot.slice(0, 2).map(function (n) { return '📌 「' + esc(n.t) + '」有 <b>' + newMap[n.id] + '</b> 条新报道'; }).join('<br>') + '<br>';
-    if (pick) h += '这周回看：' + esc(pick.q.split('\n')[0]) + '<br>';
+    if (pick) h += '❓ 这周回看：' + esc(pick.q.split('\n')[0]) + '<br>';
     h += '<span style="font-size:12.5px;opacity:.6">' + N.length + ' 条笔记 · ' + open.length + ' 个没想通 · ' + fol.length + ' 件在关注 ›</span></a>';
     el.innerHTML = h; el.style.display = '';
   }

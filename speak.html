@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=2">
+<link rel="stylesheet" href="wide.css?v=3">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -77,7 +77,7 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
 </head>
 <body>
 <div class="wrap">
-<header><button class="back" id="back" hidden aria-label="返回">‹</button><a class="brand" id="title" href="speak.html">开口说</a></header>
+<header><button class="back" id="back" hidden aria-label="返回">‹</button><a class="brand" id="title" href="speak.html">🗣️ 开口说</a></header>
 <div id="home">
   <nav class="tabs" id="tabs"></nav>
   <p class="note" id="hnote"></p>
@@ -99,7 +99,7 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
   function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(tt); tt = setTimeout(function () { t.className = 'toast'; }, 2200); }
 
   var FILES = ['en_work', 'en_life', 'en_spoken', 'es_yard'];
-  var GROUPS = [['工作', '工作英语', '码头、调度、司机、主管——每天真用得上的句子'], ['生活', '生活英语', '看病、DMV、银行、客服电话、修车……'], ['口语', '美式口语', '短语动词、职场客套话、南加州口语、新闻习语'], ['西语', '🇲🇽 现场西语', '和墨西哥同事、司机打交道的西班牙语']];
+  var GROUPS = [['工作', '🦺 工作英语', '码头、调度、司机、主管——每天真用得上的句子'], ['生活', '🏠 生活英语', '看病、DMV、银行、客服电话、修车……'], ['口语', '💬 美式口语', '短语动词、职场客套话、南加州口语、新闻习语'], ['西语', '🇲🇽 现场西语', '和墨西哥同事、司机打交道的西班牙语']];
   var PACKS = [], BYID = {}, GRP = jget('grp', '工作'), BEST = jget('best', {}), SET = jget('set', { rate: 1, hideZh: 0, mode: 'dialog' });
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition, CAN_REC = !!(navigator.mediaDevices && window.MediaRecorder);
 
@@ -217,21 +217,21 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
     return '<div class="ln" id="L-' + key + '" data-k="' + key + '">' +
       (isDialog ? '<div class="who' + (me ? ' me' : '') + '">' + (me ? '你' : esc(l.who)) + '</div>' : '') +
       '<div class="t">' + tx(l.t) + '</div><div class="zh">' + esc(l.zh) + '</div>' + (l.note ? '<div class="nt">💡 ' + esc(l.note) + '</div>' : '') +
-      '<div class="acts"><button data-a="say">听</button><button data-a="slow">慢</button>' +
-      (SR ? '<button class="mic" data-a="mic">跟读</button>' : CAN_REC ? '<button class="mic" data-a="rec">录音</button>' : '') +
+      '<div class="acts"><button data-a="say">🔊 听</button><button data-a="slow">🐢 慢</button>' +
+      (SR ? '<button class="mic" data-a="mic">🎙 跟读</button>' : CAN_REC ? '<button class="mic" data-a="rec">🎙 录音</button>' : '') +
       '<span class="score ' + (best != null ? cls(best) : '') + '">' + (best != null ? '最好 ' + best : '') + '</span></div><div class="heard"></div></div>';
   }
   function renderPack() {
     var p = P, mode = SET.mode === 'phrases' || !(p.dialog && p.dialog.length) ? 'phrases' : 'dialog', h = '';
     h += '<div class="intro">' + esc(p.intro) + '</div>';
-    h += '<div class="seg" id="mode">' + (p.dialog && p.dialog.length ? '<button data-m="dialog"' + (mode === 'dialog' ? ' class="on"' : '') + '>对话 ' + p.dialog.length + '</button>' : '') +
-      '<button data-m="phrases"' + (mode === 'phrases' ? ' class="on"' : '') + '>常用句 ' + p.phrases.length + '</button>' +
-      '<button data-m="zh"' + (SET.hideZh ? ' class="on"' : '') + '>遮住中文</button>' +
+    h += '<div class="seg" id="mode">' + (p.dialog && p.dialog.length ? '<button data-m="dialog"' + (mode === 'dialog' ? ' class="on"' : '') + '>💬 对话 ' + p.dialog.length + '</button>' : '') +
+      '<button data-m="phrases"' + (mode === 'phrases' ? ' class="on"' : '') + '>📝 常用句 ' + p.phrases.length + '</button>' +
+      '<button data-m="zh"' + (SET.hideZh ? ' class="on"' : '') + '>🙈 遮住中文</button>' +
       '<button data-m="rate">语速 ' + (SET.rate === 1 ? '正常' : SET.rate < 1 ? '慢' : '快') + '</button></div>';
     h += '<div id="lines" class="' + (SET.hideZh ? 'hidezh' : '') + '">';
     if (mode === 'dialog') p.dialog.forEach(function (l, i) { h += lineHTML('d' + i, l, true); });
     else p.phrases.forEach(function (l, i) { h += lineHTML('p' + i, l, false); });
-    h += '</div><div class="bar2">' + (mode === 'dialog' ? '<button class="pri" data-a="role">我来演「你」</button>' : '') + '<button data-a="all">▶ 从头连播</button></div>';
+    h += '</div><div class="bar2">' + (mode === 'dialog' ? '<button class="pri" data-a="role">🎭 我来演「你」</button>' : '') + '<button data-a="all">▶ 从头连播</button></div>';
     $('pack').innerHTML = h;
   }
   function lineOf(key) { return key.charAt(0) === 'd' ? P.dialog[+key.slice(1)] : P.phrases[+key.slice(1)]; }
@@ -257,8 +257,8 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
       setScore(key, best.s, best.t);
     };
     r.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed') toast('没有麦克风权限：在浏览器设置里允许本站使用麦克风'); else if (e.error === 'network') toast('语音识别要联网，现在网络不通'); else if (e.error === 'no-speech') toast('没听到声音，再试一次'); };
-    r.onend = function () { if (REC === r) REC = null; btn.className = btn.className.replace(' rec', ''); btn.textContent = '跟读'; if (!got) { var h = $('L-' + key); if (h) h.querySelector('.heard').textContent = ''; } if (cb) cb(got); };
-    try { r.start(); } catch (e) { toast('语音识别启动失败'); btn.className = btn.className.replace(' rec', ''); btn.textContent = '跟读'; }
+    r.onend = function () { if (REC === r) REC = null; btn.className = btn.className.replace(' rec', ''); btn.textContent = '🎙 跟读'; if (!got) { var h = $('L-' + key); if (h) h.querySelector('.heard').textContent = ''; } if (cb) cb(got); };
+    try { r.start(); } catch (e) { toast('语音识别启动失败'); btn.className = btn.className.replace(' rec', ''); btn.textContent = '🎙 跟读'; }
   }
   // 不支持识别时：录音 → 回放自己 → 再放原句
   function record(key, btn) {
@@ -271,7 +271,7 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
       r.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
       r.onstop = function () {
         stream.getTracks().forEach(function (t) { t.stop(); });
-        MREC = null; btn.className = btn.className.replace(' rec', ''); btn.textContent = '录音';
+        MREC = null; btn.className = btn.className.replace(' rec', ''); btn.textContent = '🎙 录音';
         var a = new Audio(URL.createObjectURL(new Blob(chunks, { type: r.mimeType || 'audio/webm' })));
         toast('先放你的，再放原句');
         a.onended = function () { say(lineOf(key).t, P.lang, 0.95); };
@@ -325,7 +325,7 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
     P = BYID[id] || null;
     $('home').hidden = !!P; $('pack').hidden = !P; $('back').hidden = !P;
     if (P) { $('title').textContent = P.icon + ' ' + P.name; document.title = P.name + ' · 开口说'; GRP = P.group; renderPack(); window.scrollTo(0, 0); }
-    else { $('title').textContent = '开口说'; document.title = '开口说 · 跟读练习'; renderHome(); }
+    else { $('title').textContent = '🗣️ 开口说'; document.title = '开口说 · 跟读练习'; renderHome(); }
   }
   if (window.WordSheet) WordSheet.bind($('pack'), function (el) {
     var ln = el.closest ? el.closest('.ln') : null, l = ln ? lineOf(ln.getAttribute('data-k')) : null;
@@ -337,6 +337,6 @@ header{display:flex;align-items:center;gap:8px;min-height:56px;padding-top:env(s
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=41" defer></script>
+<script src="nav.js?v=42" defer></script>
 </body>
 </html>

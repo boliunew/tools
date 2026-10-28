@@ -4,7 +4,7 @@ tags: [音乐, 排行榜]
 summary: Apple Music 25 个国家和地区的最多播放榜合并成全球热歌前 500，按歌手国家分组；每周自动更新。
 ---
 
-# 音乐 Top 500（按国家分类）
+# 🎵 音乐 Top 500（按国家分类）
 
 > 自动生成，最近更新：**2026-10-26**。这是**当下的热歌榜**，每周一自动更新，名单会随流行变化。
 
@@ -43,7 +43,7 @@ summary: Apple Music 25 个国家和地区的最多播放榜合并成全球热�
 | 🇪🇸 西班牙 | 3 | #26 Dai Dai — Shakira & Burna Boy |
 | 🇦🇺 澳大利亚 | 3 | #34 Loser — Tame Impala |
 | 🇦🇷 阿根廷 | 3 | #62 KOKO — Omar Courtz |
-| 其他 5 个国家和地区 | 7 | #2 Nicole Kidman — ADÉLA |
+| 🌐 其他 5 个国家和地区 | 7 | #2 Nicole Kidman — ADÉLA |
 
 ## 总榜前 20
 
@@ -688,7 +688,7 @@ summary: Apple Music 25 个国家和地区的最多播放榜合并成全球热�
 | 172 | [**POR SI MAÑANA NO ESTOY**](https://music.apple.com/ar/album/por-si-ma%C3%B1ana-no-estoy/1877481995?i=1877482849) · Omar Courtz ≈ | 2 | 🇦🇷13 🇨🇴78 | [▶️](https://www.youtube.com/results?search_query=POR+SI+MA%C3%91ANA+NO+ESTOY+Omar+Courtz) [📋](copy:POR%20SI%20MA%C3%91ANA%20NO%20ESTOY%20Omar%20Courtz) |
 | 190 | [**Q U E V A S H A C E R H O Y ?**](https://music.apple.com/ar/album/q-u-e-v-a-s-h-a-c-e-r-h-o-y/1760193416?i=1760194559) · Omar Courtz & De La Rose ≈ | 2 | 🇦🇷24 🇨🇴74 | [▶️](https://www.youtube.com/results?search_query=Q+U+E+V+A+S+H+A+C+E+R+H+O+Y+%3F+Omar+Courtz+%26+De+La+Rose) [📋](copy:Q%20U%20E%20V%20A%20S%20H%20A%20C%20E%20R%20H%20O%20Y%20%3F%20Omar%20Courtz%20%26%20De%20La%20Rose) |
 
-## 其他国家和地区（7）
+## 🌐 其他国家和地区（7）
 
 包括：斯洛伐克、以色列、爱尔兰、乌克兰、新加坡。
 

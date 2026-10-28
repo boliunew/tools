@@ -6,7 +6,7 @@
  "sections": [
   {
    "key": "ai",
-   "title": "AI 与科技",
+   "title": "🤖 AI 与科技",
    "items": [
     {
      "t": "Anthropic提交IPO文件披露巨额亏损与风险",
@@ -45,7 +45,7 @@
   },
   {
    "key": "market",
-   "title": "美股市场",
+   "title": "📈 美股市场",
    "items": [
     {
      "t": "10/23 周五 收盘：标普500 ETF（SPY）-0.52%，纳指100 ETF（QQQ）-0.01%",
@@ -81,7 +81,7 @@
   },
   {
    "key": "macro",
-   "title": "宏观经济",
+   "title": "🏦 宏观经济",
    "items": [
     {
      "t": "最近公布：首次申领失业金人数（10/23 周五）",
@@ -127,7 +127,7 @@
   },
   {
    "key": "world",
-   "title": "世界大事",
+   "title": "🌍 世界大事",
    "items": [
     {
      "t": "Anthropic提交巨额估值IPO申请",
