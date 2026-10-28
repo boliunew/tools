@@ -1,16 +1,16 @@
 {
- "date": "2026-10-27",
+ "date": "2026-10-28",
  "kind": "名言",
- "en": "Anybody can make history. Only a great man can write it.",
- "zh": "谁都能创造历史，但只有伟人才写得出历史。",
+ "en": "Experience is the name every one gives to their mistakes.",
+ "zh": "所谓经验，不过是每个人给自己的错误起的名字。",
  "by": "Oscar Wilde",
- "line": "Anybody can make history. Only a great man can write it. — Oscar Wilde",
+ "line": "Experience is the name every one gives to their mistakes. — Oscar Wilde",
  "word": {
-  "w": "specify",
-  "ph": "'spesifai",
-  "zh": "vt. 详列，指定，说明",
-  "ex": "Please specify any conditions you have for the use of this information.",
-  "exzh": "如果您有关于这份问卷信息的使用条件，请在这里指定。"
+  "w": "unclear",
+  "ph": ".ʌn'kliә",
+  "zh": "a. 不易了解的，不清楚的，含混的",
+  "ex": "The law itself was unclear on that point.",
+  "exzh": "法律本身在这一点上并不明确。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
