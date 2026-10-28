@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-27T15:55:49Z",
- "date": "2026-10-27",
+ "generated": "2026-10-28T16:42:56Z",
+ "date": "2026-10-28",
  "engine": "edge",
- "total": 477.3,
- "short": 310.6,
+ "total": 503.7,
+ "short": 327.7,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610270854",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610280941",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月27日 星期二",
-   "dur": 9.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610270854",
+   "sub": "10月28日 星期三",
+   "dur": 8.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "今天是10月27日，星期二。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
+     "t": "一周过半了。星期三，10月28日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 阴天 75°/54°F",
+   "sub": "Upland 阴天 74°/54°F",
    "dur": 26.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610270854",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天阴天。早上7点出门大约华氏54度，12摄氏度。傍晚5点下班大约华氏71度，22摄氏度。白天最高75度，约24摄氏度；最低54度。基本不会下雨。白天空气质量中等，指数最高69。今天日落时间是傍晚6点02分。"
+     "t": "Upland今天阴天。早上7点出门大约华氏54度，12摄氏度。傍晚5点下班大约华氏72度，22摄氏度。白天最高74度，约23摄氏度；最低54度。基本不会下雨。白天空气质量中等，指数最高62。今天日落时间是傍晚6点01分。"
     }
    ]
   },
@@ -38,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 30.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610270854",
+   "dur": 29.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月26日收盘。标普500 ETF 上涨0.7%，纳指100 ETF 上涨1.1%。恐慌指数VIX 18.4，正常水平。标普成分股里，61%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月27日收盘。标普500 ETF 上涨0.6%，纳指100 ETF 上涨1.3%。恐慌指数VIX 17.5，正常水平。标普成分股里，62%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "23 个候选",
-   "dur": 65.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610270854",
+   "sub": "22 个候选",
+   "dur": 69.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天23个候选，评分最高的是Tesla，代码 T S L A。不想听细节可以按下一首。"
+     "t": "股票池今天22个候选，评分最高的是West Pharmaceutical Services，代码 W S T。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中回踩金坑12个，血筹码6个，RSI2 超跌反弹4个，强势新高1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹10个，回踩金坑6个，血筹码4个，强势新高1个，挤压突破1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Tesla，代码 T S L A，强势新高信号，收盘价391.62美元，止损参考364.68。"
+     "t": "第1，West Pharmaceutical Services，代码 W S T，强势新高信号，收盘价398.29美元，止损参考382.09。"
     },
     {
      "lang": "zh",
-     "t": "第2，McKesson，代码 M C K，RSI2 超跌反弹信号，收盘价992.87美元，止损参考937.23。"
+     "t": "第2，Veeva Systems，代码 V E E V，RSI2 超跌反弹信号，收盘价313.46美元，止损参考290.12。"
     },
     {
      "lang": "zh",
-     "t": "第3，Merck &，代码 M R K，RSI2 超跌反弹信号，收盘价140.61美元，止损参考129.41，注意近期有财报。"
+     "t": "第3，Valero Energy，代码 V L O，RSI2 超跌反弹信号，收盘价387.34美元，止损参考340.64。"
     },
     {
      "lang": "zh",
@@ -83,9 +83,9 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "6 件大事",
-   "dur": 59.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610270854",
+   "sub": "7 件大事",
+   "dur": 72.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
@@ -93,40 +93,40 @@
     },
     {
      "lang": "zh",
-     "t": "Visa，代码 V，盘后发财报。期权定价波动正负3.5%。"
+     "t": "Microsoft，代码 M S F T，盘后发财报。期权定价波动正负5.0%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Coca-Cola，代码 K O，盘前发财报。期权定价波动正负3.3%。"
+     "t": "Alphabet，代码 G O O G，盘后发财报。期权定价波动正负5.8%。"
     },
     {
      "lang": "zh",
-     "t": "HSBC，代码 H S B C，发财报。期权定价波动正负4.4%。"
+     "t": "Alphabet，代码 G O O G L，盘后发财报。期权定价波动正负5.7%。"
     },
     {
      "lang": "zh",
-     "t": "明天，有3家大公司发财报。"
+     "t": "明天，重要数据有：美东14:00公布美联储利率决议。另外，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Alphabet，代码 G O O G，盘后发财报。期权定价波动正负6.0%。"
+     "t": "Amazon.com，代码 A M Z N，盘后发财报。期权定价波动正负7.4%。"
     },
     {
      "lang": "zh",
-     "t": "Alphabet，代码 G O O G L，盘后发财报。期权定价波动正负6.2%。"
+     "t": "Eli Lilly and，代码 L L Y，盘前发财报。期权定价波动正负6.4%。标签：已提前炒作。"
     },
     {
      "lang": "zh",
-     "t": "Microsoft，代码 M S F T，盘后发财报。期权定价波动正负5.2%。标签：利好出尽型。"
+     "t": "Mastercard Incorporated，代码 M A，盘前发财报。期权定价波动正负3.4%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "NPR · BBC · Al Jazeera",
-   "dur": 82.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610270854",
+   "sub": "NPR · Al Jazeera · BBC",
+   "dur": 83.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
@@ -134,48 +134,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自NPR，综合，难度B2。大意是：Jay-Z选择自己作为南加州超级碗半场表演的头条新闻。"
+     "t": "第1条，来自NPR，综合，难度B1。大意是：第12局两轮拉力赛和FORCE世界大赛第5场比赛的Rays STUN Brewers。"
     },
     {
      "lang": "en",
-     "t": "Jay-Z picks himself to headline the Super Bowl halftime show in Southern California"
+     "t": "Rays stun Brewers with 2-run rally in 12th inning and force World Series Game 5"
     },
     {
      "lang": "en",
-     "t": "The NFL, Apple Music and Roc Nation announced Monday night that Jay-Z will be the featured performer for the halftime festivities on Feb."
+     "t": "Tampa Bay became the fourth team in World Series history to avoid elimination with an extra-inning comeback."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，国际，难度B2。大意是：Jay-Z将在超级碗半场表演中表演。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：“用手指摸骨头” ：英国能否拯救其挣扎的大街小巷？。"
     },
     {
      "lang": "en",
-     "t": "Jay-Z to perform at Super Bowl half-time show"
+     "t": "‘Working our fingers to the bone’: Can the UK save its struggling high streets?"
     },
     {
      "lang": "en",
-     "t": "The rapper has been involved with the show for years but has never before performed at the NFL championship game."
+     "t": "Small business owners in Britain may get some tax relief in Wednesday's budget, but they say it will not be enough."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：博尔索纳罗的政党在特朗普称投票“被操纵”后接受巴西大选。"
+     "t": "第3条，来自BBC，商业，难度B2。大意是：由于燃油成本飙升，豪华邮轮乘客滞留在柬埔寨。"
     },
     {
      "lang": "en",
-     "t": "Bolsonaro’s party accepts Brazil election after Trump calls vote ‘rigged’"
+     "t": "Luxury cruise passengers stranded in Cambodia due to soaring fuel costs"
     },
     {
      "lang": "en",
-     "t": "Trump pushes unsubstantiated claims about Brazil's presidential vote but says he 'didn't take sides' in the race."
+     "t": "The Villa Vie Odyssey suspends its voyage and is working with passengers on \"temporary living arrangements\"."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "interview · el huevo",
-   "dur": 32.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610270854",
+   "sub": "mental · los calcetines",
+   "dur": 32.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
@@ -183,15 +183,15 @@
     },
     {
      "lang": "en",
-     "t": "interview"
+     "t": "mental"
     },
     {
      "lang": "zh",
-     "t": "意思是：面试。拼写是："
+     "t": "意思是：精神的，心理的。拼写是："
     },
     {
      "lang": "en",
-     "t": "i, n, t, e, r, v, i, e, w"
+     "t": "m, e, n, t, a, l"
     },
     {
      "lang": "zh",
@@ -199,7 +199,7 @@
     },
     {
      "lang": "en",
-     "t": "interview"
+     "t": "mental"
     },
     {
      "lang": "zh",
@@ -207,15 +207,15 @@
     },
     {
      "lang": "es",
-     "t": "el huevo"
+     "t": "los calcetines"
     },
     {
      "lang": "zh",
-     "t": "意思是：鸡蛋。跟着读一遍。"
+     "t": "意思是：袜子。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el huevo"
+     "t": "los calcetines"
     }
    ]
   },
@@ -223,8 +223,8 @@
    "id": "quote",
    "title": "🎴 每日一句",
    "sub": "名言",
-   "dur": 27.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610270854",
+   "dur": 24.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
@@ -232,11 +232,11 @@
     },
     {
      "lang": "en",
-     "t": "Anybody can make history. Only a great man can write it."
+     "t": "Experience is the name every one gives to their mistakes."
     },
     {
      "lang": "zh",
-     "t": "意思是：谁都能创造历史，但只有伟人才写得出历史。这句话出自 Oscar Wilde。"
+     "t": "意思是：所谓经验，不过是每个人给自己的错误起的名字。这句话出自 Oscar Wilde。"
     },
     {
      "lang": "zh",
@@ -244,7 +244,7 @@
     },
     {
      "lang": "en",
-     "t": "Anybody can make history. Only a great man can write it."
+     "t": "Experience is the name every one gives to their mistakes."
     }
    ],
    "opt": true
@@ -252,61 +252,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "仓库收发货",
-   "dur": 67.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610270854",
+   "sub": "和主管沟通",
+   "dur": 64.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：仓库收发货。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "好了，你可以开走了。"
+     "t": "谢谢，感激。"
     },
     {
      "lang": "en",
-     "t": "We're done. You can pull out."
+     "t": "Thanks, I appreciate it."
     },
     {
      "lang": "en",
-     "t": "We're done. You can pull out."
+     "t": "Thanks, I appreciate it."
     },
     {
      "lang": "zh",
-     "t": "你预约几点？"
+     "t": "你有空吗？"
     },
     {
      "lang": "en",
-     "t": "What time is your appointment?"
+     "t": "Do you have a minute?"
     },
     {
      "lang": "en",
-     "t": "What time is your appointment?"
+     "t": "Do you have a minute?"
     },
     {
      "lang": "zh",
-     "t": "能看下提单吗？"
+     "t": "下周五我能请假吗？"
     },
     {
      "lang": "en",
-     "t": "Can I see the bill of lading?"
+     "t": "Can I take next Friday off?"
     },
     {
      "lang": "en",
-     "t": "Can I see the bill of lading?"
+     "t": "Can I take next Friday off?"
     },
     {
      "lang": "zh",
-     "t": "请倒进 6 号门。"
+     "t": "我今天需要早走一小时。"
     },
     {
      "lang": "en",
-     "t": "Back into door six, please."
+     "t": "I need to leave an hour early today."
     },
     {
      "lang": "en",
-     "t": "Back into door six, please."
+     "t": "I need to leave an hour early today."
     },
     {
      "lang": "zh",
@@ -318,13 +318,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "葱根泡水再长一茬",
-   "dur": 16.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610270854",
+   "sub": "工作靴穿得更久",
+   "dur": 19.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：葱根泡水再长一茬。葱用完了根别扔。做法：葱白留 3–5 厘米带根的一段；根朝下放进杯子，水没过根就行；放在有光的窗台上，每天或隔天换水。"
+     "t": "今日一招：工作靴穿得更久。皮靴不开裂、不早坏。做法：下班后磕掉靴子上的土，用刷子刷干净；湿了塞报纸，放通风处阴干，别放在暖气旁或太阳下烤；皮靴每个月擦一次皮革保养油。"
     }
    ],
    "opt": true
@@ -332,13 +332,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1870 · 1904 · 1937",
-   "dur": 32.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610270854",
+   "sub": "1893 · 1962 · 2007",
+   "dur": 39.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1870年，普法战争：14万法军在梅斯向普鲁士投降。1904年，美国纽约地铁第一条地下路线段落正式开通，连接纽约市政厅到哈林区。1937年，在大日本帝国的扶持下蒙古联盟自治政府于归绥（今内蒙古自治区呼和浩特市）成立，云端旺楚克成为首任政府主席并定厚和豪特（今呼和浩特市）为首都。"
+     "t": "历史上的今天。1893年，俄罗斯浪漫乐派及国民乐派作曲家柴可夫斯基在俄罗斯帝国首都圣彼得堡指挥其第六号交响曲《悲怆》之首演，并于九天后死于莫斯科的家中。1962年，苏联共产党第一书记[[赫鲁晓夫[[宣布自古巴撤回所有武器，美国政府亦同意自土耳其及意大利撤回弹道导弹，古巴导弹危机落幕。2007年，克里斯蒂娜·费尔南德斯当选成为首位阿根廷经民主选举产生的女总统。"
     }
    ],
    "opt": true
@@ -346,21 +346,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "琴诗",
-   "dur": 23.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610270854",
+   "sub": "自题金山画像",
+   "dur": 27.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：琴诗。"
+     "t": "读一首苏轼：自题金山画像。写于1101年，他64岁，在镇江金山寺。"
     },
     {
      "lang": "zh",
-     "t": "若言琴上有琴声，放在匣中何不鸣？若言声在指头上，何不于君指上听？"
+     "t": "心似已灰之木，身如不系之舟。问汝平生功业，黄州惠州儋州。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：如果说琴声在琴上，那把它放在盒子里，为什么不响？如果说琴声在手指上，那为什么不直接凑到你的手指上去听？"
+     "t": "白话意思是：心像已经烧成灰的木头，身体像一条没有拴住的船。要问你这一生有什么功业？黄州、惠州、儋州。"
     }
    ],
    "opt": true
@@ -369,12 +369,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610270854",
+   "dur": 5.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610280941",
    "text": [
     {
      "lang": "zh",
-     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }
