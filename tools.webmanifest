@@ -78,6 +78,84 @@
           "type": "image/png"
         }
       ]
+    },
+    {
+      "name": "暗房 · 修照片",
+      "short_name": "暗房",
+      "description": "一键美化 · 偏光 · 自动细节",
+      "url": "darkroom.html?src=sc",
+      "icons": [
+        {
+          "src": "icons/sc-dark.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "打折雷达",
+      "short_name": "打折",
+      "description": "附近超市本周特价 · 比价",
+      "url": "deals.html?src=sc",
+      "icons": [
+        {
+          "src": "icons/sc-deals.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "今天吃啥",
+      "short_name": "吃啥",
+      "description": "菜谱 · 冰箱里有什么就做什么",
+      "url": "kitchen.html?src=sc",
+      "icons": [
+        {
+          "src": "icons/sc-food.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "思考本",
+      "short_name": "思考本",
+      "description": "记一笔 · 关注的事件时间线",
+      "url": "think.html?src=sc",
+      "icons": [
+        {
+          "src": "icons/sc-think.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "知识库",
+      "short_name": "知识库",
+      "description": "理解世界 · 汽车 · 物流 · 投资",
+      "url": "kb.html?src=sc",
+      "icons": [
+        {
+          "src": "icons/sc-kb.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "全站搜索",
+      "short_name": "搜索",
+      "description": "菜谱、技巧、知识库、诗词一起搜",
+      "url": "search.html?src=sc",
+      "icons": [
+        {
+          "src": "icons/sc-search.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ]
 }
