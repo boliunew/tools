@@ -302,6 +302,8 @@ h3{font-size:15px;margin:2px 0 8px}
     var co = $('cOrig'), cu = $('cOut');
     co.width = cu.width = sz[0]; co.height = cu.height = sz[1];
     co.getContext('2d').drawImage(c, 0, 0);
+    // 平板 / 电脑上别让图比屏幕还高：限制高度约 68% 屏高，按比例算宽度
+    $('stage').style.maxWidth = 'calc(68vh * ' + (sz[0] / sz[1]).toFixed(4) + ')'; $('stage').style.margin = '0 auto';
     outData = cu.getContext('2d').createImageData(sz[0], sz[1]);
     $('pick').hidden = true; $('work').hidden = false;
     setSplit(0.5); draw();
@@ -424,6 +426,7 @@ h3{font-size:15px;margin:2px 0 8px}
 })();
 </script>
 <script src="savesheet.js?v=1"></script>
+<script src="wide.js?v=1" defer></script>
 <script src="nav.js?v=40" defer></script>
 </body>
 </html>
