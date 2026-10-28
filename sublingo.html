@@ -1738,6 +1738,21 @@ var NLP = (function () {
   $('pickMedia').onclick = function () { $('fMedia').click(); };
   $('fSub').onchange = function () { if (this.files[0]) routeFile(this.files[0]); this.value = ''; };
   $('fMedia').onchange = function () { if (this.files[0]) routeFile(this.files[0]); this.value = ''; };
+  // 📥 媒体页带过来的视频地址 + 字幕
+  (function () {
+    var h = null; try { h = JSON.parse(localStorage.getItem('sl:handoff') || 'null'); localStorage.removeItem('sl:handoff'); } catch (e) { }
+    if (!h || Date.now() - (h.t || 0) > 10 * 60000) return;
+    setTab('sub');
+    if (h.media) {
+      mediaURL = h.media; video.src = h.media;
+      $('player').classList.add('on');
+      $('player').classList[/\.(mp3|m4a|aac|ogg|oga|wav|flac|opus)(\?|#|$)/i.test(h.media) ? 'add' : 'remove']('audio');
+      if (h.pos > 3) video.addEventListener('loadedmetadata', function once() { video.removeEventListener('loadedmetadata', once); try { video.currentTime = h.pos; } catch (e) { } });
+    }
+    if (h.sub) loadSubtitles(h.sub, h.subName || h.title || '字幕');
+    else $('subIntro').querySelector('p').innerHTML = '已载入 <b>' + esc(h.title || '视频') + '</b>，再导入对应的字幕文件即可同步。';
+    if (location.hash === '#handoff') history.replaceState(null, '', location.pathname);
+  })();
   var dragDepth = 0;
   document.addEventListener('dragenter', function (e) { e.preventDefault(); dragDepth++; document.body.classList.add('dragging'); });
   document.addEventListener('dragleave', function () { dragDepth--; if (dragDepth <= 0) { dragDepth = 0; document.body.classList.remove('dragging'); } });
@@ -1907,6 +1922,6 @@ var NLP = (function () {
 
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=42" defer></script>
+<script src="nav.js?v=43" defer></script>
 </body>
 </html>

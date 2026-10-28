@@ -157,5 +157,14 @@
         }
       ]
     }
-  ]
+  ],
+  "share_target": {
+    "action": "media.html",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }

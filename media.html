@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1D2430">
+<meta name="referrer" content="no-referrer">
+<title>📥 媒体 · 下载与播放</title>
+<style>
+:root{
+  --bg:#F2F1EE; --paper:#FFFFFF; --ink:#1E2228; --soft:#5E6670; --faint:#9AA1A9; --line:#E1DFDA; --chip:#ECEAE5;
+  --acc:#2E6BD8; --acc-ink:#fff; --acc-soft:#E3ECFB; --ok:#2E9D4F; --warn:#C0362C; --warn-soft:#F7E2DF;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --acc:#7FA8F0; --acc-ink:#0B1630; --acc-soft:#1D2A40; --ok:#5ED08A; --warn:#F07563; --warn-soft:#3A221F; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --acc:#7FA8F0; --acc-ink:#0B1630; --acc-soft:#1D2A40; --ok:#5ED08A; --warn:#F07563; --warn-soft:#3A221F; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--acc)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(170deg,#2B3442 0%,#1D2430 60%,#161B24 100%);color:#EEF1F5;padding:calc(14px + env(safe-area-inset-top)) 0 16px}
+.hero a{color:#EEF1F5;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{margin:4px 0 2px;font-size:24px;letter-spacing:.02em}
+.hero p{margin:2px 0 0;font-size:13.5px;opacity:.85}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px;margin:14px 0}
+.in{display:flex;gap:8px}
+.in textarea{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:10px 12px;font-size:16px;outline:none;resize:none;height:46px;line-height:1.5}
+.in textarea:focus{border-color:var(--acc);height:88px}
+.btn{border:0;border-radius:12px;padding:0 14px;min-height:40px;font-size:15px;font-weight:600;background:var(--acc);color:var(--acc-ink);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:4px;text-decoration:none}
+.btn2{border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:500}
+.btn.sm{min-height:32px;padding:0 10px;font-size:13.5px;border-radius:10px}
+.btn.on{border-color:var(--acc);color:var(--acc);background:var(--acc-soft)}
+.btn:disabled{opacity:.6}
+.acts{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.acts .grow{flex:1}
+.hint{font-size:12.5px;color:var(--faint);margin-top:8px;line-height:1.7}
+.st{margin:10px 2px;font-size:14px;color:var(--soft);min-height:1px}
+.st.err{color:var(--warn)} .st.ok{color:var(--ok)}
+.clip{display:none;align-items:center;gap:8px;background:var(--acc-soft);border-radius:12px;padding:8px 10px;margin-top:10px;font-size:13.5px}
+.clip.on{display:flex}
+.clip span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* 播放器 */
+#pl{display:none;margin:14px 0}
+#pl.on{display:block}
+.stage{position:relative;background:#000;border-radius:14px;overflow:hidden;aspect-ratio:16/9}
+.stage video,.stage iframe{position:absolute;left:0;top:0;width:100%;height:100%;border:0;background:#000}
+.stage.audio{aspect-ratio:auto;background:var(--paper);border:1px solid var(--line)}
+.stage.audio video{position:relative;height:54px;background:transparent}
+.stage.audio .cover{display:flex}
+.cover{display:none;align-items:center;gap:10px;padding:12px 12px 0;font-size:14px;color:var(--soft)}
+.cover b{color:var(--ink)}
+.tapfx{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border-radius:50px;padding:10px 16px;font-weight:700;opacity:0;transition:opacity .25s;pointer-events:none}
+.tapfx.show{opacity:1}
+.toast{position:absolute;left:12px;bottom:60px;background:rgba(0,0,0,.72);color:#fff;border-radius:10px;padding:6px 12px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+.meta{font-size:14px;margin-top:8px}
+.meta b{font-size:16px;display:block;word-break:break-word}
+.meta small{color:var(--faint);word-break:break-all}
+.ctrl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.speeds{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:2px}
+.speeds button{border:0;background:transparent;border-radius:8px;padding:3px 8px;font-size:13px;color:var(--soft)}
+.speeds button.on{background:var(--acc);color:var(--acc-ink);font-weight:600}
+
+/* 结果卡片 */
+.post{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px}
+.ph{display:flex;gap:10px;align-items:center;padding:12px}
+.ph img{width:40px;height:40px;border-radius:50%;flex:0 0 40px;background:var(--chip)}
+.ph b{display:block;font-size:15px;word-break:break-word}.ph small{color:var(--faint);font-size:12.5px;word-break:break-all}
+.ph .ic{width:40px;height:40px;border-radius:12px;flex:0 0 40px;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:20px}
+.txt{padding:0 12px 10px;font-size:14.5px;white-space:pre-wrap;word-break:break-word}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;padding:0 12px 12px}
+.m{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--chip);display:flex;flex-direction:column}
+.m .pv{position:relative;aspect-ratio:1;background:#000;display:flex;align-items:center;justify-content:center}
+.m .pv img{width:100%;height:100%;object-fit:contain;display:block}
+.m .pv .pl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);background:transparent;border:0}
+.m .tag{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.65);color:#fff;font-size:11.5px;border-radius:6px;padding:1px 6px}
+.m .act{display:flex;flex-direction:column;gap:6px;padding:8px}
+.m .act a,.m .act button{display:block;text-align:center;border:0;border-radius:9px;padding:7px 6px;font-size:13.5px;font-weight:600;background:var(--acc);color:var(--acc-ink);text-decoration:none}
+.m .act .sec{background:var(--paper);color:var(--ink);border:1px solid var(--line);font-weight:500}
+.m .act small{color:var(--faint);font-size:11.5px;text-align:center}
+.row2{display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 12px}
+.tip{background:var(--acc-soft);border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.7;margin:0 12px 12px}
+.tip.err{background:var(--warn-soft);color:var(--warn)}
+.cands{margin:0 12px 12px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cand{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line);font-size:13px;cursor:pointer}
+.cand:last-child{border-bottom:0}
+.cand.cur{background:var(--acc-soft)}
+.cand span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge{font-size:11px;font-weight:700;padding:1px 6px;border-radius:6px;border:1px solid var(--line);color:var(--soft);flex:none;min-width:46px;text-align:center}
+.b-hls{color:#2E6BD8;border-color:#2E6BD855}.b-video{color:#2E9D4F;border-color:#2E9D4F55}.b-audio{color:#B8660B;border-color:#B8660B55}.b-embed,.b-x,.b-ig{color:#C2185B;border-color:#C2185B55}.b-page{color:var(--soft)}
+.allbar{display:none;align-items:center;gap:8px;padding:0 12px 12px}
+.allbar.on{display:flex}
+
+/* 历史 */
+h3{font-size:13px;letter-spacing:.04em;color:var(--soft);margin:20px 2px 8px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.hist{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.hi{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+.hi:last-child{border-bottom:0}
+.hi .u{flex:1;min-width:0;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hi .u small{display:block;color:var(--faint);font-size:12px;overflow:hidden;text-overflow:ellipsis}
+.hi .x{border:0;background:transparent;color:var(--faint);font-size:15px;padding:4px 6px}
+.empty{padding:14px;color:var(--faint);font-size:13.5px;text-align:center}
+.help{font-size:13.5px;color:var(--soft);line-height:1.8}
+.help b{color:var(--ink)}
+.help p{margin:6px 0}
+kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 4px;background:var(--chip)}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a href="index.html">‹ 首页</a>
+  <h1>📥 媒体</h1>
+  <p>贴链接就行：推特和 Instagram 的图和视频能下载，视频链接和网页能直接播。</p>
+</div></div>
+<main class="wrap">
+  <div class="box">
+    <div class="in"><textarea id="u" rows="1" inputmode="url" placeholder="粘贴链接（可以一次贴好几个）" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea></div>
+    <div class="acts">
+      <button class="btn grow" id="go">🔍 解析 / 播放</button>
+      <button class="btn btn2" id="paste">📋 粘贴</button>
+      <button class="btn btn2" id="local">📁 本地</button>
+    </div>
+    <div class="clip" id="clip"><span id="clipT"></span><button class="btn sm" id="clipGo">解析</button><button class="btn sm btn2" id="clipNo">忽略</button></div>
+    <div class="hint" id="hint">在推特、Instagram 里点「分享」，选「我的工具」就能直接打开这里（要先把工具箱添加到主屏幕）。</div>
+  </div>
+  <div id="st" class="st"></div>
+
+  <section id="pl">
+    <div class="stage" id="stage">
+      <div class="cover" id="cover">🎧 <span>只听声音：<b id="coverT"></b></span></div>
+      <video id="v" controls playsinline preload="metadata"></video>
+      <iframe id="f" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="display:none"></iframe>
+      <div class="tapfx" id="fxL" style="left:12%">⏪ 10 秒</div><div class="tapfx" id="fxR" style="right:12%">10 秒 ⏩</div>
+      <div class="toast" id="toast"></div>
+    </div>
+    <div class="meta" id="meta"></div>
+    <div class="ctrl" id="ctrl">
+      <button class="btn sm btn2" id="back10">⏪ 10s</button><button class="btn sm btn2" id="fwd10">10s ⏩</button>
+      <span class="speeds" id="speeds"></span>
+      <button class="btn sm btn2" id="aud">🎧 只听声音</button>
+      <button class="btn sm btn2" id="sleep">😴 定时</button>
+      <button class="btn sm btn2" id="pip">🖼️ 画中画</button>
+      <button class="btn sm btn2" id="loop">🔁 循环</button>
+      <button class="btn sm btn2" id="fs">⛶ 全屏</button>
+      <button class="btn sm btn2" id="subBtn">💬 挂字幕</button>
+      <button class="btn sm btn2" id="toSL">🎞️ 去 SubLingo 精读</button>
+      <button class="btn sm btn2" id="dlCur">⬇ 下载这个</button>
+    </div>
+  </section>
+
+  <div id="out"></div>
+
+  <h3><span>🕘 最近</span><button class="btn sm btn2" id="clearHist">清空</button></h3>
+  <div class="hist" id="hist"></div>
+
+  <h3><span>💡 说明</span></h3>
+  <div class="box help" style="margin-top:0">
+    <p><b>𝕏（推特）</b>：照片是原图，视频是最高清那一档，能播也能下。<b>Instagram</b>：会帮你复制链接，跳到下载站去粘贴下载。只支持公开的帖子。</p>
+    <p><b>能直接播的</b>：mp4 / webm / m3u8 / mp3 链接，YouTube、B 站、Vimeo，还有含公开视频的网页。有防盗链、要登录、付费加密的内容播不了。YouTube 和 B 站只能在线看，不提供下载。</p>
+    <p><b>快捷键</b>：<kbd>空格</kbd> 暂停　<kbd>←</kbd><kbd>→</kbd> 5 秒　<kbd>J</kbd><kbd>L</kbd> 10 秒　<kbd>[</kbd><kbd>]</kbd> 调速　<kbd>F</kbd> 全屏。手机上双击画面左右两侧快退快进。</p>
+    <p>下载的内容版权归原作者，自己收藏没问题，转发请注明出处。</p>
+  </div>
+</main>
+<input type="file" id="file" accept="video/*,audio/*,.mkv,.m3u8" style="display:none">
+<input type="file" id="subFile" accept=".srt,.vtt,text/vtt" style="display:none">
+
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('media:' + k) || 'null'); localStorage.setItem('media:' + k, JSON.stringify(v)); } catch (e) { return null; } }
+  function pget(k, d) { try { var v = localStorage.getItem('player:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }   // 沿用播放器原来的进度和倍速
+  function pput(k, v) { try { localStorage.setItem('player:' + k, JSON.stringify(v)); } catch (e) { } }
+  function status(msg, cls) { var s = $('st'); s.className = 'st' + (cls ? ' ' + cls : ''); s.innerHTML = msg || ''; }
+  function fmt(t) { t = Math.max(0, Math.floor(t)); var h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s = t % 60; return (h ? h + ':' + (m < 10 ? '0' : '') : '') + m + ':' + (s < 10 ? '0' : '') + s; }
+  function host(u) { var m = /^https?:\/\/([^\/?#]+)/i.exec(u || ''); return m ? m[1].replace(/^www\./, '') : ''; }
+  function isPhone() { try { if (window.matchMedia('(pointer:coarse)').matches) return true; } catch (e) { } return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent); }
+
+  /* ================= 识别链接 ================= */
+  function social(s) {
+    var m = s.match(/(?:twitter\.com|x\.com|fxtwitter\.com|fixupx\.com|vxtwitter\.com|fixvx\.com|nitter\.[a-z.]+)\/(?:i\/web\/|[A-Za-z0-9_]+\/)?status(?:es)?\/(\d{5,25})/i);
+    if (m) return { k: 'x', id: m[1] };
+    m = s.match(/instagram\.com\/(?:[A-Za-z0-9_.]+\/)?(p|reel|reels|tv)\/([A-Za-z0-9_-]{5,40})/i);
+    if (m) return { k: 'ig', id: m[2], reel: /reel|tv/i.test(m[1]) };
+    if (/instagram\.com\/stories\//i.test(s)) return { k: 'err', msg: 'Instagram 限时动态（Stories）要登录才能看，下载不了。' };
+    return null;
+  }
+  function ytId(u) { var m = /(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([A-Za-z0-9_-]{11})/.exec(u); return m ? m[1] : null; }
+  function ytStart(u) { var m = /[?&#](?:t|start)=(\d+h)?(\d+m)?(\d+)s?/.exec(u); if (!m) return 0; return (parseInt(m[1] || 0, 10) * 3600) + (parseInt(m[2] || 0, 10) * 60) + parseInt(m[3] || 0, 10); }
+  function classify(u) {
+    if (/\.m3u8(\?|#|$)/i.test(u)) return { kind: 'hls', url: u };
+    if (/\.(mp4|webm|ogv|mov|m4v)(\?|#|$)/i.test(u)) return { kind: 'video', url: u };
+    if (/\.(mp3|m4a|aac|oga|ogg|wav|flac|opus)(\?|#|$)/i.test(u)) return { kind: 'audio', url: u };
+    var id = ytId(u);
+    if (id) { var st = ytStart(u); return { kind: 'embed', site: 'YouTube', url: u, embed: 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1' + (st ? '&start=' + st : '') }; }
+    var bv = /bilibili\.com\/video\/(BV[0-9A-Za-z]{10})/i.exec(u) || /b23\.tv\/(BV[0-9A-Za-z]{10})/i.exec(u);
+    if (bv) { var p = /[?&]p=(\d+)/.exec(u); return { kind: 'embed', site: 'B 站', url: u, embed: 'https://player.bilibili.com/player.html?bvid=' + bv[1] + '&page=' + (p ? p[1] : 1) + '&autoplay=1&high_quality=1&danmaku=0' }; }
+    var av = /bilibili\.com\/video\/av(\d+)/i.exec(u);
+    if (av) return { kind: 'embed', site: 'B 站', url: u, embed: 'https://player.bilibili.com/player.html?aid=' + av[1] + '&autoplay=1&high_quality=1&danmaku=0' };
+    var vm = /vimeo\.com\/(?:video\/)?(\d+)/i.exec(u);
+    if (vm) return { kind: 'embed', site: 'Vimeo', url: u, embed: 'https://player.vimeo.com/video/' + vm[1] + '?autoplay=1' };
+    return { kind: 'page', url: u };
+  }
+  // 从一段文字里挑出所有链接（分享过来的常常是「标题 + 链接」）
+  function urlsIn(text) {
+    var out = [], seen = {}, m, re = /(?:https?:\/\/|(?:^|\s)(?=(?:www\.|x\.com\/|twitter\.com\/|instagram\.com\/|youtu\.be\/|youtube\.com\/|b23\.tv\/|bilibili\.com\/)))[^\s<>"'，。、）】]+/gi;
+    while ((m = re.exec(text || ''))) {
+      var u = m[0].replace(/^\s+/, '').replace(/[.,;:!?)\]]+$/, '');
+      if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+      if (!seen[u]) { seen[u] = 1; out.push(u); }
+    }
+    return out;
+  }
+  var BADGE = { x: '𝕏', ig: 'IG', hls: 'HLS', video: 'MP4', audio: '音频', embed: '在线', page: '网页' };
+
+  /* ================= 下载 / 保存 ================= */
+  function fname(base, url, i, ext) {
+    var e = ext || ((url.match(/\.(jpe?g|png|webp|gif|mp4|mov|webm|mp3|m4a)(?:[?#]|$)/i) || [])[1] || 'jpg');
+    return base + (i != null ? '_' + (i + 1) : '') + '.' + e.toLowerCase().replace('jpeg', 'jpg');
+  }
+  function fetchBlob(url, onProg, cb) {
+    var x = new XMLHttpRequest(); x.open('GET', url); x.responseType = 'blob';
+    x.onprogress = function (e) { if (onProg && e.lengthComputable) onProg(e.loaded / e.total); };
+    x.onload = function () { cb(x.status === 200 ? x.response : null); };
+    x.onerror = function () { cb(null); }; x.send();
+  }
+  function save(url, name, btn) {
+    var old = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = '⏳ 下载中…'; }
+    fetchBlob(url, function (p) { if (btn) btn.textContent = '⏳ ' + Math.round(p * 100) + '%'; }, function (blob) {
+      if (btn) { btn.disabled = false; btn.textContent = old; }
+      if (!blob) { window.open(url, '_blank', 'noopener'); status('没能直接保存（对方网站不让跨站读取），已在新页面打开：图片长按「下载图片」，视频点 ⋮ →「下载」。', 'err'); return; }
+      if (window.SaveSheet) SaveSheet.show(blob, name);
+      else { var a = document.createElement('a'), u = URL.createObjectURL(blob); a.href = u; a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 4000); }
+    });
+  }
+  // 一次存多个：先全部下载好，手机上再用一次点击整批分享到相册
+  function saveAll(list, btn, bar) {
+    var files = [], i = 0, old = btn.textContent; btn.disabled = true;
+    (function one() {
+      if (i >= list.length) {
+        btn.disabled = false; btn.textContent = old;
+        if (!files.length) { status('一个都没下载成功，可能是网络问题，稍后再试。', 'err'); return; }
+        var fs = files.map(function (f) { try { return new File([f.blob], f.name, { type: f.blob.type }); } catch (e) { return null; } }).filter(Boolean);
+        if (isPhone() && navigator.canShare && fs.length && navigator.canShare({ files: fs })) {
+          bar.className = 'allbar on';
+          bar.innerHTML = '<button class="btn" data-shareall="1">📤 ' + fs.length + ' 个都准备好了，存到相册</button>';
+          bar.querySelector('button').onclick = function () { navigator.share({ files: fs }).then(function () { bar.className = 'allbar'; }, function () { }); };
+        } else files.forEach(function (f, k) { setTimeout(function () { var a = document.createElement('a'), u = URL.createObjectURL(f.blob); a.href = u; a.download = f.name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 4000); }, k * 600); });
+        status('✅ 已下载 ' + files.length + ' / ' + list.length + ' 个', 'ok');
+        return;
+      }
+      var m = list[i++]; btn.textContent = '⏳ ' + i + ' / ' + list.length;
+      fetchBlob(m.url, null, function (b) { if (b) files.push({ blob: b, name: m.name }); one(); });
+    })();
+  }
+
+  /* ================= 结果卡片 ================= */
+  var ITEMS = [];   // 卡片里的每个媒体：{url, name, kind, title}
+  function card(icon, title, sub, badge) {
+    var d = document.createElement('div'); d.className = 'post';
+    d.innerHTML = '<div class="ph"><div class="ic">' + icon + '</div><div style="min-width:0"><b>' + esc(title) + '</b><small>' + (badge ? '<span class="badge b-' + badge + '" style="margin-right:6px">' + BADGE[badge] + '</span>' : '') + esc(sub || '') + '</small></div></div><div class="body"></div>';
+    $('out').appendChild(d); return d;
+  }
+  function reg(o) { ITEMS.push(o); return ITEMS.length - 1; }
+
+  // ---- 𝕏
+  function loadX(id, el) {
+    el.querySelector('.body').innerHTML = '<div class="tip">⏳ 正在读取 𝕏 帖子…</div>';
+    var x = new XMLHttpRequest(); x.open('GET', 'https://api.fxtwitter.com/status/' + id); x.timeout = 20000;
+    x.onload = function () {
+      var d = null; try { d = JSON.parse(x.responseText); } catch (e) { }
+      if (!d || !d.tweet) { el.querySelector('.body').innerHTML = '<div class="tip err">' + (x.status === 404 ? '找不到这条帖子（可能被删了，或者是私密账号）。' : '读取失败（' + x.status + '），稍后再试。') + '</div>'; return; }
+      renderX(d.tweet, el);
+    };
+    x.onerror = x.ontimeout = function () { el.querySelector('.body').innerHTML = '<div class="tip err">连不上 FxTwitter 接口，检查网络后再试。</div>'; };
+    x.send();
+  }
+  function xItems(t) {
+    var out = [], all = (t.media && (t.media.all || [].concat(t.media.photos || [], t.media.videos || []))) || [];
+    all.forEach(function (m) {
+      if (m.type === 'photo') { var base = m.url.split('?')[0]; out.push({ type: 'photo', prev: m.url, url: /pbs\.twimg\.com\/media\//.test(base) ? base + '?name=orig' : m.url, w: m.width, h: m.height }); }
+      else {
+        var best = m.url, vs = (m.variants || []).filter(function (v) { return /mp4/.test(v.content_type || v.url || ''); });
+        vs.sort(function (a, b) { return (b.bitrate || 0) - (a.bitrate || 0); }); if (vs.length) best = vs[0].url;
+        out.push({ type: m.type === 'gif' ? 'gif' : 'video', prev: m.thumbnail_url, url: best, w: m.width, h: m.height, dur: m.duration });
+      }
+    });
+    return out;
+  }
+  function renderX(t, el) {
+    var items = xItems(t); if (!items.length && t.quote) items = xItems(t.quote);
+    var who = (t.author && (t.author.name + ' @' + t.author.screen_name)) || '𝕏';
+    var base = 'x_' + (t.author ? t.author.screen_name : 'post') + '_' + t.id;
+    var ph = el.querySelector('.ph');
+    ph.innerHTML = (t.author && t.author.avatar_url ? '<img src="' + esc(t.author.avatar_url) + '" alt="">' : '<div class="ic">𝕏</div>') + '<div style="min-width:0"><b>' + esc(who) + '</b><small><span class="badge b-x" style="margin-right:6px">𝕏</span>' + esc(t.created_at ? new Date(t.created_at).toLocaleString() : '') + '</small></div>';
+    var h = t.text ? '<div class="txt">' + esc(t.text) + '</div>' : '';
+    if (!items.length) { el.querySelector('.body').innerHTML = h + '<div class="tip">这条帖子里没有照片或视频。</div>'; return; }
+    var idx = [];
+    h += '<div class="grid">' + items.map(function (m, i) {
+      var k = reg({ url: m.url, name: fname(base, m.url, items.length > 1 ? i : null, m.type === 'photo' ? null : 'mp4'), kind: m.type === 'photo' ? 'photo' : 'video', title: who + (items.length > 1 ? ' · ' + (i + 1) : '') });
+      idx.push(k);
+      var tag = m.type === 'photo' ? '🖼️ ' + (i + 1) : m.type === 'gif' ? 'GIF' : '🎬' + (m.dur ? ' ' + fmt(m.dur) : '');
+      return '<div class="m"><div class="pv">' + (m.type === 'photo' ? '<img src="' + esc(m.prev) + '" loading="lazy" alt="">' : '<img src="' + esc(m.prev || '') + '" loading="lazy" alt=""><button class="pl" data-play="' + k + '" aria-label="播放">▶</button>') + '<span class="tag">' + tag + '</span></div>' +
+        '<div class="act">' + (m.type === 'photo' ? '' : '<button data-play="' + k + '">▶ 播放</button>') + '<button class="' + (m.type === 'photo' ? '' : 'sec') + '" data-dl="' + k + '">⬇ 下载' + (m.type === 'photo' ? '原图' : '') + '</button>' + (m.w ? '<small>' + m.w + '×' + m.h + '</small>' : '') + '</div></div>';
+    }).join('') + '</div>';
+    if (items.length > 1) h += '<div class="row2"><button class="btn" data-all="' + idx.join(',') + '">⬇ 全部下载（' + items.length + ' 个）</button></div><div class="allbar"></div>';
+    el.querySelector('.body').innerHTML = h;
+  }
+
+  // ---- Instagram：复制链接，跳到第三方下载站
+  var IGS = [['fastdl.app', 'https://fastdl.app/'], ['snapinsta.app', 'https://snapinsta.app/'], ['sssinstagram.com', 'https://sssinstagram.com/'], ['indown.io', 'https://indown.io/'], ['saveclip.app', 'https://saveclip.app/'], ['igram.world', 'https://igram.world/']];
+  function renderIG(p, el) {
+    var link = 'https://www.instagram.com/' + (p.reel ? 'reel' : 'p') + '/' + p.id + '/', last = ls('igsite') || 'fastdl.app';
+    el.querySelector('.body').innerHTML = '<div class="tip">点一个下载站，链接<b>已经复制好了</b>，到那边粘贴 → 点 Download。打不开就换下一个。那些站广告多，<b>别点「安装 / 允许通知」</b>。</div>' +
+      '<div class="grid">' + IGS.map(function (x) { return '<div class="m"><div class="act"><a' + (x[0] === last ? '' : ' class="sec"') + ' href="' + esc(x[1]) + '" target="_blank" rel="noopener" data-igs="' + esc(x[0]) + '" data-link="' + esc(link) + '">⬇ ' + esc(x[0]) + (x[0] === last ? ' ✓' : '') + '</a></div></div>'; }).join('') + '</div>' +
+      '<div class="row2"><button class="btn sm btn2" data-copy="' + esc(link) + '">📋 再复制一次链接</button></div>';
+    copy(link, true);
+  }
+  function copy(t, quiet) {
+    function done(ok) { status(ok ? '📋 链接已复制。' : (quiet ? '' : '复制没成功，长按链接手动复制。'), ok ? 'ok' : ''); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done(true); }, fallback); else fallback();
+    function fallback() { var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand('copy'); } catch (e) { } ta.remove(); done(ok); }
+  }
+
+  // ---- 网页：读源码找视频
+  var PROXIES = [
+    { name: '直接读取', make: function (u) { return u; } },
+    { name: 'AllOrigins 代理', make: function (u) { return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); } },
+    { name: 'corsproxy.io 代理', make: function (u) { return 'https://corsproxy.io/?url=' + encodeURIComponent(u); } }
+  ];
+  function fetchText(url, ms) {
+    return new Promise(function (resolve, reject) {
+      var done = false, ctrl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (!done) { done = true; if (ctrl) ctrl.abort(); reject(new Error('超时')); } }, ms);
+      fetch(url, ctrl ? { signal: ctrl.signal } : {}).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        var ct = (r.headers.get('content-type') || '').toLowerCase();
+        if (/^(video|audio)\//.test(ct) || /mpegurl/.test(ct)) { if (ctrl) ctrl.abort(); return { ct: ct, text: '' }; }
+        return r.text().then(function (t) { return { ct: ct, text: t }; });
+      }).then(function (res) { if (!done) { done = true; clearTimeout(timer); resolve(res); } }, function (e) { if (!done) { done = true; clearTimeout(timer); reject(e); } });
+    });
+  }
+  function absolutize(u, base) { u = u.replace(/&amp;/g, '&'); if (/^\/\//.test(u)) return 'https:' + u; if (/^https?:\/\//i.test(u)) return u; try { return new URL(u, base).href; } catch (e) { return null; } }
+  function sniff(html, base) {
+    var found = [], seen = {}, title = '';
+    function add(u, how) { if (!u) return; u = absolutize(u.replace(/\\\//g, '/').replace(/\\u002[Ff]/g, '/'), base); if (!u || seen[u]) return; var c = classify(u); if (c.kind === 'page') return; seen[u] = 1; c.how = how; found.push(c); }
+    var doc = null; try { doc = new DOMParser().parseFromString(html, 'text/html'); } catch (e) { }
+    if (doc) {
+      var t = doc.querySelector('meta[property="og:title"]'); title = t ? t.getAttribute('content') : (doc.title || '');
+      var metas = doc.querySelectorAll('meta[property="og:video"],meta[property="og:video:url"],meta[property="og:video:secure_url"],meta[name="twitter:player:stream"],meta[itemprop="contentUrl"],meta[itemprop="embedUrl"],meta[property="og:audio"]');
+      for (var i = 0; i < metas.length; i++) add(metas[i].getAttribute('content'), '页面元数据');
+      var els = doc.querySelectorAll('video[src],video source[src],audio[src],audio source[src],source[src]');
+      for (i = 0; i < els.length; i++) add(els[i].getAttribute('src'), '播放器标签');
+      var ifr = doc.querySelectorAll('iframe[src],iframe[data-src]');
+      for (i = 0; i < ifr.length; i++) add(ifr[i].getAttribute('src') || ifr[i].getAttribute('data-src'), '内嵌播放器');
+      var lds = doc.querySelectorAll('script[type="application/ld+json"]');
+      for (i = 0; i < lds.length; i++) { var mm, re0 = /"(?:contentUrl|embedUrl)"\s*:\s*"([^"]+)"/g; while ((mm = re0.exec(lds[i].textContent || ''))) add(mm[1], '结构化数据'); }
+    }
+    var text = html.replace(/\\\//g, '/').replace(/\\u002[Ff]/g, '/').replace(/\\u0026/g, '&'), m;
+    var re = /(https?:)?\/\/[^\s"'<>()\\]+?\.(?:m3u8|mp4|webm|m4a|mp3)(?:\?[^\s"'<>()\\]*)?/gi;
+    while ((m = re.exec(text))) add(m[0], '源码链接');
+    var re2 = /["'](\/[^\s"'<>()\\]+?\.(?:m3u8|mp4))(?:\?[^\s"'<>()\\]*)?["']/gi;
+    while ((m = re2.exec(text))) add(m[1], '源码链接');
+    var rank = { hls: 0, video: 1, embed: 2, audio: 3 };
+    found.sort(function (a, b) { return rank[a.kind] - rank[b.kind]; });
+    return { title: (title || '').replace(/\s+/g, ' ').trim(), items: found.slice(0, 30) };
+  }
+  function probePage(u, el, autoplay) {
+    var body = el.querySelector('.body'), i = 0, errs = [];
+    if (!window.fetch || !window.Promise) { body.innerHTML = '<div class="tip err">浏览器太旧，不支持网页探测，请直接贴视频地址。</div>'; return; }
+    function next() {
+      if (i >= PROXIES.length) { body.innerHTML = '<div class="tip err">读不到这个网页（' + esc(errs.join('；')) + '）。网站可能禁止外部读取。</div>'; return; }
+      var px = PROXIES[i++];
+      body.innerHTML = '<div class="tip">🔎 正在' + px.name + '网页并找视频…（' + i + '/' + PROXIES.length + '）</div>';
+      fetchText(px.make(u), i === 1 ? 7000 : 15000).then(function (res) {
+        if (/^(video|audio)\//.test(res.ct) || /mpegurl/.test(res.ct) || /^#EXTM3U/.test(res.text)) {
+          var c = { kind: /mpegurl/.test(res.ct) || /^#EXTM3U/.test(res.text) ? 'hls' : /^audio/.test(res.ct) ? 'audio' : 'video', url: u };
+          renderPlayable(c, host(u), el, autoplay); return;
+        }
+        var r = sniff(res.text, u);
+        if (!r.items.length) { errs.push(px.name + '：没找到视频'); if (res.text.length > 2000) { body.innerHTML = '<div class="tip err">网页里没找到视频地址。可能要登录、是脚本动态加载的，或者是加密内容。</div>'; return; } next(); return; }
+        if (r.title) el.querySelector('.ph b').textContent = r.title;
+        var h = '<div class="tip">✅ 找到 ' + r.items.length + ' 个媒体地址' + (autoplay ? '，正在播第一个；播不了就点下面别的。' : '，点一个播放。') + '</div><div class="cands">';
+        r.items.forEach(function (c, j) {
+          var k = reg({ url: c.url, name: fname('video_' + host(u).replace(/\W+/g, '_'), c.url, j, c.kind === 'audio' ? 'mp3' : 'mp4'), kind: c.kind, c: c, title: r.title || host(u), page: u });
+          h += '<div class="cand' + (j === 0 && autoplay ? ' cur' : '') + '" data-play="' + k + '"><span class="badge b-' + c.kind + '">' + (c.kind === 'embed' ? esc(c.site) : BADGE[c.kind]) + '</span><span>' + esc(c.url.replace(/^https?:\/\//, '')) + '</span><small style="color:var(--faint)">' + esc(c.how || '') + '</small></div>';
+          if (j === 0 && autoplay) setTimeout(function () { playItem(k); }, 0);
+        });
+        body.innerHTML = h + '</div>';
+      }, function (e) { errs.push(px.name + '：' + (e.message || '失败')); next(); });
+    }
+    next();
+  }
+  function renderPlayable(c, title, el, autoplay) {
+    var k = reg({ url: c.url, name: fname((title || 'media').replace(/[^\w\u4e00-\u9fa5-]+/g, '_').slice(0, 40), c.url, null, c.kind === 'audio' ? null : (c.kind === 'video' ? null : 'mp4')), kind: c.kind, c: c, title: title });
+    var canDl = c.kind === 'video' || c.kind === 'audio';
+    el.querySelector('.body').innerHTML = '<div class="row2"><button class="btn" data-play="' + k + '">▶ 播放</button>' + (canDl ? '<button class="btn btn2" data-dl="' + k + '">⬇ 下载</button>' : '') + '</div>';
+    if (autoplay) playItem(k);
+  }
+
+  /* ================= 播放器 ================= */
+  var v = $('v'), fr = $('f'), stage = $('stage'), hls = null, current = null, lastSave = 0, subText = '', subName = '';
+  function reset() {
+    if (hls) { try { hls.destroy(); } catch (e) { } hls = null; }
+    v.pause(); v.removeAttribute('src'); try { v.load(); } catch (e) { }
+    var tr = v.querySelectorAll('track'); for (var i = 0; i < tr.length; i++) tr[i].remove();
+    subText = ''; subName = ''; $('subBtn').classList.remove('on');
+    fr.src = 'about:blank'; fr.style.display = 'none'; v.style.display = '';
+  }
+  function loadHlsLib(cb) {
+    if (window.Hls) { cb(); return; }
+    var s = document.createElement('script'); s.src = 'vendor/hls.min.js'; s.onload = cb;
+    s.onerror = function () { var s2 = document.createElement('script'); s2.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js'; s2.onload = cb; s2.onerror = function () { status('❌ 无法加载 HLS 播放组件', 'err'); }; document.head.appendChild(s2); };
+    document.head.appendChild(s);
+  }
+  function playItem(k) { var it = ITEMS[k]; if (!it) return; var c = it.c || classify(it.url); if (c.kind === 'page') c = { kind: 'video', url: it.url }; play(c, it.title, it.page, it); markCand(k); }
+  function markCand(k) { var cs = document.querySelectorAll('.cand'); for (var i = 0; i < cs.length; i++) cs[i].classList.toggle('cur', cs[i].getAttribute('data-play') === String(k)); }
+  function play(c, title, page, item) {
+    reset();
+    current = { url: c.url, kind: c.kind, title: title || '', page: page || '', item: item || null };
+    $('pl').className = 'on';
+    var isEmbed = c.kind === 'embed';
+    each(['back10', 'fwd10', 'aud', 'sleep', 'pip', 'loop', 'subBtn', 'toSL'], function (id) { $(id).style.display = isEmbed ? 'none' : ''; });
+    $('speeds').style.display = isEmbed ? 'none' : '';
+    $('dlCur').style.display = (c.kind === 'video' || c.kind === 'audio') && !/^blob:/.test(c.url) ? '' : 'none';
+    $('meta').innerHTML = '<b>' + esc(title || host(c.url) || '本地文件') + '</b><small>' + esc(isEmbed ? c.site + ' 官方播放器（只能在线看）' : c.url.slice(0, 160)) + '</small>';
+    $('coverT').textContent = title || host(c.url) || '';
+    stage.className = 'stage' + (c.kind === 'audio' || audioMode ? ' audio' : '');
+    if (isEmbed) { v.style.display = 'none'; fr.style.display = 'block'; fr.src = c.embed; status('▶ 正在用 ' + c.site + ' 官方播放器播放', 'ok'); addHist(page || c.url, title, c.kind === 'embed' ? 'embed' : c.kind); scrollToPlayer(); return; }
+    status('⏳ 正在加载…');
+    if (c.kind === 'hls' && !v.canPlayType('application/vnd.apple.mpegurl')) {
+      loadHlsLib(function () {
+        if (!window.Hls || !window.Hls.isSupported()) { status('❌ 这个浏览器不支持 m3u8 播放', 'err'); return; }
+        hls = new window.Hls({ enableWorker: true, lowLatencyMode: true });
+        hls.on(window.Hls.Events.ERROR, function (ev, d) {
+          if (!d.fatal) return;
+          if (d.type === 'networkError') status('❌ 读不到视频流（' + esc(d.details) + '），多半是网站做了防盗链，只能在原网站看。', 'err');
+          else if (d.type === 'mediaError' && !hls._rec) { hls._rec = true; hls.recoverMediaError(); }
+          else status('❌ 播放失败：' + esc(d.details), 'err');
+        });
+        hls.on(window.Hls.Events.MANIFEST_PARSED, function (ev, d) { status('▶ 正在播放视频流' + (d.levels && d.levels.length > 1 ? '（' + d.levels.length + ' 种清晰度自动切换）' : ''), 'ok'); tryPlay(); });
+        hls.loadSource(c.url); hls.attachMedia(v);
+      });
+    } else { v.src = c.url; tryPlay(); }
+    if (!/^blob:/.test(c.url)) addHist(page || c.url, title, c.kind);
+    scrollToPlayer();
+  }
+  function scrollToPlayer() { var r = $('pl').getBoundingClientRect(); if (r.top < 0 || r.top > window.innerHeight * 0.6) $('pl').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  function each(a, f) { for (var i = 0; i < a.length; i++) f(a[i], i); }
+  function tryPlay() { var p = v.play(); if (p && p['catch']) p['catch'](function () { status('点一下画面开始播放'); }); }
+  v.addEventListener('loadedmetadata', function () {
+    if (!current) return;
+    var pos = pget('pos', {})[current.url];
+    if (pos && pos > 5 && (!isFinite(v.duration) || pos < v.duration - 5)) { v.currentTime = pos; toast('已从 ' + fmt(pos) + ' 继续播放'); }
+    if ($('st').className.indexOf('err') < 0 && !hls) status('▶ 正在播放' + (isFinite(v.duration) ? '（' + fmt(v.duration) + '）' : '（直播）'), 'ok');
+    applySpeed(); setMediaSession();
+  });
+  v.addEventListener('error', function () {
+    if (!current || hls || !v.getAttribute('src')) return;
+    var code = v.error ? v.error.code : 0;
+    status('❌ 播不了' + (code === 4 ? '：格式不支持，或者被防盗链拦了。' : code === 2 ? '：网络错误。' : '。') + ' <a href="' + esc(current.url) + '" target="_blank" rel="noopener noreferrer">在新页面直接打开 ↗</a>', 'err');
+  });
+  v.addEventListener('timeupdate', function () {
+    if (!current || !isFinite(v.duration) || /^blob:/.test(current.url)) return;
+    var now = Date.now(); if (now - lastSave < 4000) return; lastSave = now;
+    var P = pget('pos', {}); if (v.currentTime > v.duration - Math.max(5, Math.min(15, v.duration * 0.05))) delete P[current.url]; else P[current.url] = Math.floor(v.currentTime);
+    var keys = Object.keys(P); if (keys.length > 60) delete P[keys[0]];
+    pput('pos', P);
+  });
+  v.addEventListener('ended', function () { if (sleepMode === 'end') { setSleep(0); toast('😴 播完了，停在这里'); } });
+  function toast(msg) { var t = $('toast'); t.textContent = msg; t.className = 'toast show'; clearTimeout(t._t); t._t = setTimeout(function () { t.className = 'toast'; }, 2200); }
+
+  // 倍速
+  var SPEEDS = [0.75, 1, 1.25, 1.5, 2], speed = pget('speed', 1);
+  function renderSpeeds() { var h = ''; for (var i = 0; i < SPEEDS.length; i++) h += '<button data-s="' + SPEEDS[i] + '"' + (SPEEDS[i] === speed ? ' class="on"' : '') + '>' + SPEEDS[i] + '×</button>'; $('speeds').innerHTML = h; }
+  function applySpeed() { v.playbackRate = speed; renderSpeeds(); }
+  $('speeds').onclick = function (e) { var s = e.target.getAttribute && e.target.getAttribute('data-s'); if (s) { speed = +s; pput('speed', speed); applySpeed(); toast(speed + '× 倍速'); } };
+  renderSpeeds();
+  function seek(d) { v.currentTime = Math.max(0, v.currentTime + d); fx(d < 0 ? 'fxL' : 'fxR', (d < 0 ? '⏪ ' : '') + Math.abs(d) + ' 秒' + (d > 0 ? ' ⏩' : '')); }
+  function fx(id, txt) { var el = $(id); el.textContent = txt; el.className = 'tapfx show'; clearTimeout(el._t); el._t = setTimeout(function () { el.className = 'tapfx'; }, 500); }
+  $('back10').onclick = function () { seek(-10); };
+  $('fwd10').onclick = function () { seek(10); };
+  // 只听声音：画面收起来，声音照常播，锁屏控制也在
+  var audioMode = !!ls('audio');
+  function setAudio(on) { audioMode = on; ls('audio', on); $('aud').classList.toggle('on', on); if (current && current.kind !== 'embed') stage.className = 'stage' + (on || current.kind === 'audio' ? ' audio' : ''); }
+  $('aud').onclick = function () { setAudio(!audioMode); toast(audioMode ? '🎧 只听声音' : '🎬 显示画面'); };
+  $('aud').classList.toggle('on', audioMode);
+  // 睡眠定时：15 / 30 / 60 分钟，或者播完这个就停
+  var sleepMode = 0, sleepT = 0, sleepTick = 0, SLEEP = [0, 15, 30, 60, 'end'];
+  function setSleep(m) {
+    sleepMode = m; clearTimeout(sleepT); clearInterval(sleepTick);
+    var b = $('sleep');
+    if (!m) { b.textContent = '😴 定时'; b.classList.remove('on'); return; }
+    b.classList.add('on');
+    if (m === 'end') { b.textContent = '😴 播完就停'; return; }
+    var until = Date.now() + m * 60000;
+    function show() { var left = Math.max(0, Math.round((until - Date.now()) / 60000)); b.textContent = '😴 ' + left + ' 分钟后停'; }
+    show(); sleepTick = setInterval(show, 30000);
+    sleepT = setTimeout(function () { v.pause(); setSleep(0); toast('😴 时间到，已暂停'); }, m * 60000);
+  }
+  $('sleep').onclick = function () { var i = SLEEP.indexOf(sleepMode); setSleep(SLEEP[(i + 1) % SLEEP.length]); if (sleepMode) toast(sleepMode === 'end' ? '播完这个就停' : sleepMode + ' 分钟后停'); };
+  $('pip').onclick = function () {
+    try { if (document.pictureInPictureElement) document.exitPictureInPicture(); else if (v.requestPictureInPicture) v.requestPictureInPicture(); else if (v.webkitSetPresentationMode) v.webkitSetPresentationMode('picture-in-picture'); else toast('这个浏览器不支持画中画'); } catch (e) { toast('画中画打开失败'); }
+  };
+  $('loop').onclick = function () { v.loop = !v.loop; this.classList.toggle('on', v.loop); toast(v.loop ? '🔁 单个循环：开' : '单个循环：关'); };
+  function fullscreen() {
+    if (document.fullscreenElement || document.webkitFullscreenElement) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    if (stage.requestFullscreen) stage.requestFullscreen(); else if (stage.webkitRequestFullscreen) stage.webkitRequestFullscreen(); else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
+  }
+  $('fs').onclick = fullscreen;
+  $('dlCur').onclick = function () { if (current) save(current.url, (current.item && current.item.name) || fname('media', current.url, null, current.kind === 'audio' ? 'mp3' : 'mp4'), this); };
+  // 字幕：.srt 自动转成浏览器认识的 .vtt
+  function toVTT(t) { t = t.replace(/^\uFEFF/, '').replace(/\r/g, ''); return /^WEBVTT/.test(t) ? t : 'WEBVTT\n\n' + t.replace(/(\d\d:\d\d:\d\d),(\d\d\d)/g, '$1.$2'); }
+  $('subBtn').onclick = function () { $('subFile').click(); };
+  $('subFile').onchange = function () {
+    var f = this.files[0]; if (!f) return; this.value = '';
+    var r = new FileReader();
+    r.onload = function () {
+      subText = String(r.result); subName = f.name;
+      var old = v.querySelectorAll('track'); for (var i = 0; i < old.length; i++) old[i].remove();
+      var tr = document.createElement('track'); tr.kind = 'subtitles'; tr.label = '字幕'; tr.srclang = 'en'; tr.default = true;
+      tr.src = URL.createObjectURL(new Blob([toVTT(subText)], { type: 'text/vtt' }));
+      v.appendChild(tr); try { v.textTracks[0].mode = 'showing'; } catch (e) { }
+      $('subBtn').classList.add('on'); toast('💬 字幕已挂上：' + f.name);
+    };
+    r.readAsText(f);
+  };
+  // 带着视频和字幕去 SubLingo 逐句精读
+  $('toSL').onclick = function () {
+    if (!current) return;
+    var remote = /^https?:/.test(current.url) && current.kind !== 'hls';
+    if (!subText && !remote) { toast('先点「💬 挂字幕」选一个 .srt 字幕文件'); return; }
+    try { localStorage.setItem('sl:handoff', JSON.stringify({ t: Date.now(), sub: subText, subName: subName, media: remote ? current.url : '', title: current.title || '', pos: v.currentTime || 0 })); } catch (e) { toast('字幕太大，存不下'); return; }
+    location.href = 'sublingo.html#handoff';
+  };
+  // 双击左右两侧快退快进；键盘快捷键
+  var lastTap = 0;
+  v.addEventListener('touchend', function (e) {
+    var t = Date.now(), touch = e.changedTouches[0], r = v.getBoundingClientRect(), x = (touch.clientX - r.left) / r.width;
+    if (t - lastTap < 300) { if (x < 0.35) { seek(-10); e.preventDefault(); } else if (x > 0.65) { seek(10); e.preventDefault(); } lastTap = 0; } else lastTap = t;
+  });
+  document.addEventListener('keydown', function (e) {
+    var tg = e.target && e.target.tagName; if (tg === 'INPUT' || tg === 'TEXTAREA' || !current || current.kind === 'embed') return;
+    var k = e.key;
+    if (k === ' ' || k === 'k' || k === 'K') { e.preventDefault(); if (v.paused) v.play(); else v.pause(); }
+    else if (k === 'ArrowLeft') { e.preventDefault(); seek(-5); } else if (k === 'ArrowRight') { e.preventDefault(); seek(5); }
+    else if (k === 'j' || k === 'J') seek(-10); else if (k === 'l' || k === 'L') seek(10);
+    else if (k === 'f' || k === 'F') fullscreen();
+    else if (k === 'm' || k === 'M') { v.muted = !v.muted; toast(v.muted ? '🔇 静音' : '🔊 取消静音'); }
+    else if (k === '[' || k === ']') { var i = SPEEDS.indexOf(speed); i = Math.max(0, Math.min(SPEEDS.length - 1, i + (k === ']' ? 1 : -1))); speed = SPEEDS[i]; pput('speed', speed); applySpeed(); toast(speed + '× 倍速'); }
+  });
+  function setMediaSession() {
+    if (!('mediaSession' in navigator) || !window.MediaMetadata) return;
+    try {
+      navigator.mediaSession.metadata = new window.MediaMetadata({ title: current.title || host(current.url), artist: host(current.page || current.url) || '📥 媒体' });
+      navigator.mediaSession.setActionHandler('seekbackward', function () { seek(-10); });
+      navigator.mediaSession.setActionHandler('seekforward', function () { seek(10); });
+      navigator.mediaSession.setActionHandler('play', function () { v.play(); });
+      navigator.mediaSession.setActionHandler('pause', function () { v.pause(); });
+    } catch (e) { }
+  }
+
+  /* ================= 历史（合并原来下载和播放器的记录） ================= */
+  function getHist() {
+    var H = ls('hist');
+    if (!H) {   // 第一次：把旧页面的记录搬过来
+      H = [];
+      try { (JSON.parse(localStorage.getItem('player:hist') || '[]') || []).forEach(function (x) { H.push({ u: x.u, t: x.t || '', k: x.k === 'video' || x.k === 'hls' || x.k === 'audio' || x.k === 'page' ? x.k : 'embed', d: x.d || 0 }); }); } catch (e) { }
+      try { (JSON.parse(localStorage.getItem('dl:hist') || '[]') || []).forEach(function (u, i) { var s = social(u); H.push({ u: u, t: '', k: s ? s.k : 'page', d: Date.now() - 1e9 - i }); }); } catch (e) { }
+      H.sort(function (a, b) { return b.d - a.d; }); H = H.slice(0, 30); ls('hist', H);
+    }
+    return H;
+  }
+  function addHist(u, t, k) {
+    var H = getHist().filter(function (x) { return x.u !== u; });
+    H.unshift({ u: u, t: t || '', k: k, d: Date.now() }); ls('hist', H.slice(0, 30)); renderHist();
+  }
+  function renderHist() {
+    var H = getHist(), h = '';
+    if (!H.length) h = '<div class="empty">还没有记录</div>';
+    for (var i = 0; i < H.length; i++) h += '<div class="hi" data-u="' + esc(H[i].u) + '"><span class="badge b-' + esc(H[i].k) + '">' + (BADGE[H[i].k] || '在线') + '</span><span class="u">' + esc(H[i].t || host(H[i].u)) + '<small>' + esc(H[i].u.replace(/^https?:\/\//, '')) + '</small></span><button class="x" data-del="' + i + '" aria-label="删除">✕</button></div>';
+    $('hist').innerHTML = h;
+  }
+  $('hist').onclick = function (e) {
+    var d = e.target.getAttribute && e.target.getAttribute('data-del');
+    if (d != null) { e.stopPropagation(); var H = getHist(); H.splice(+d, 1); ls('hist', H); renderHist(); return; }
+    var el = e.target.closest && e.target.closest('[data-u]');
+    if (el) { $('u').value = el.getAttribute('data-u'); go(); window.scrollTo(0, 0); }
+  };
+  $('clearHist').onclick = function () { ls('hist', []); renderHist(); };
+
+  /* ================= 入口 ================= */
+  function handle(u, solo) {
+    var s = social(u);
+    if (s && s.k === 'x') { addHist(u, '', 'x'); loadX(s.id, card('𝕏', '𝕏 帖子', u.replace(/^https?:\/\//, ''), 'x')); return; }
+    if (s && s.k === 'ig') { addHist(u, '', 'ig'); renderIG(s, card('📸', 'Instagram · ' + s.id, s.reel ? 'Reel 视频' : '帖子', 'ig')); return; }
+    if (s && s.k === 'err') { card('⚠️', '下载不了', s.msg).querySelector('.body').innerHTML = ''; return; }
+    var c = classify(u);
+    if (c.kind === 'page') {
+      var el = card('🌐', host(u), u.replace(/^https?:\/\//, ''), 'page');
+      if (solo) probePage(u, el, true);
+      else el.querySelector('.body').innerHTML = '<div class="row2"><button class="btn" data-probe="' + esc(u) + '">🔎 找视频</button></div>';
+      return;
+    }
+    var icon = c.kind === 'audio' ? '🎵' : c.kind === 'embed' ? '📺' : '🎬';
+    renderPlayable(c, c.kind === 'embed' ? c.site : host(u), card(icon, c.kind === 'embed' ? c.site + ' 视频' : host(u), u.replace(/^https?:\/\//, ''), c.kind), solo);
+  }
+  function go() {
+    var raw = $('u').value, list = urlsIn(raw);
+    if (!list.length) { status(raw.replace(/\s/g, '') ? '认不出链接。把完整的网址贴进来试试。' : '先贴一个链接', 'err'); return; }
+    $('out').innerHTML = ''; ITEMS = []; status(list.length > 1 ? '📚 一共 ' + list.length + ' 个链接' : '');
+    $('u').value = list.join('\n'); $('u').blur();
+    list.forEach(function (u) { handle(u, list.length === 1); });
+  }
+  $('go').onclick = go;
+  $('u').onkeydown = function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); go(); } };
+  $('paste').onclick = function () {
+    if (navigator.clipboard && navigator.clipboard.readText) navigator.clipboard.readText().then(function (t) { $('u').value = t.trim(); if (urlsIn(t).length) go(); else status('剪贴板里没有链接', 'err'); }, function () { $('u').focus(); status('浏览器不让直接读剪贴板：长按输入框选「粘贴」。'); });
+    else { $('u').focus(); status('长按输入框选「粘贴」。'); }
+  };
+  $('local').onclick = function () { $('file').click(); };
+  $('file').onchange = function () {
+    var f = this.files[0]; if (!f) return; this.value = '';
+    play({ kind: /^audio\//.test(f.type) ? 'audio' : 'video', url: URL.createObjectURL(f) }, f.name);
+    status('▶ 播放本地文件：' + esc(f.name), 'ok');
+  };
+  $('out').onclick = function (e) {
+    var b = e.target.closest('[data-play],[data-dl],[data-all],[data-probe],[data-copy],[data-igs]'); if (!b) return;
+    if (b.hasAttribute('data-play')) { playItem(+b.getAttribute('data-play')); return; }
+    if (b.hasAttribute('data-dl')) { var it = ITEMS[+b.getAttribute('data-dl')]; save(it.url, it.name, b); return; }
+    if (b.hasAttribute('data-all')) { var list = b.getAttribute('data-all').split(',').map(function (k) { return ITEMS[+k]; }); saveAll(list, b, b.parentNode.nextElementSibling); return; }
+    if (b.hasAttribute('data-probe')) { probePage(b.getAttribute('data-probe'), b.closest('.post'), true); return; }
+    if (b.hasAttribute('data-copy')) { copy(b.getAttribute('data-copy')); return; }
+    if (b.hasAttribute('data-igs')) { copy(b.getAttribute('data-link')); ls('igsite', b.getAttribute('data-igs')); }
+  };
+
+  // 剪贴板：浏览器已经允许读的话，回到这个页面时看一眼有没有新链接
+  function checkClip() {
+    if (!navigator.permissions || !navigator.clipboard || !navigator.clipboard.readText) return;
+    navigator.permissions.query({ name: 'clipboard-read' }).then(function (p) {
+      if (p.state !== 'granted') return;
+      navigator.clipboard.readText().then(function (t) {
+        var l = urlsIn(t); if (!l.length) return;
+        var key = l.join(' '); if (key === ls('clipSeen') || urlsIn($('u').value).join(' ') === key) return;
+        $('clipT').textContent = '📋 剪贴板里有链接：' + l[0].replace(/^https?:\/\//, '') + (l.length > 1 ? ' 等 ' + l.length + ' 个' : '');
+        $('clip').className = 'clip on'; $('clip')._t = t; $('clip')._k = key;
+      }, function () { });
+    }, function () { });
+  }
+  $('clipGo').onclick = function () { ls('clipSeen', $('clip')._k); $('clip').className = 'clip'; $('u').value = $('clip')._t; go(); };
+  $('clipNo').onclick = function () { ls('clipSeen', $('clip')._k); $('clip').className = 'clip'; };
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) checkClip(); });
+
+  // 从「分享到」或旧页面带过来的：media.html?url=…&text=…&title=…（也兼容旧的 ?u=）
+  var qs = {}; location.search.replace(/^\?/, '').split('&').forEach(function (kv) { var p = kv.split('='); if (p[0]) { try { qs[p[0]] = decodeURIComponent((p[1] || '').replace(/\+/g, ' ')); } catch (e) { } } });
+  var incoming = [qs.url, qs.u, qs.text, qs.title].filter(Boolean).join(' ');
+  renderHist();
+  if (incoming && urlsIn(incoming).length) { $('u').value = incoming; go(); history.replaceState(null, '', location.pathname); }
+  else checkClip();
+})();
+</script>
+<script src="savesheet.js?v=1"></script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=43" defer></script>
+</body>
+</html>
