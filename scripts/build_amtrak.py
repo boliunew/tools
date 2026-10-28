@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🚆 Amtrak 时刻表 + 线路走向 → amtrak/data.json（amtrak.html 用）
+"""Amtrak 时刻表 + 线路走向 → amtrak/data.json（amtrak.html 用）
 
 数据来源：Amtrak 官方公开的 GTFS 时刻表（content.amtrak.com/content/gtfs/GTFS.zip），每周由 .github/workflows/amtrak.yml 重跑。
 只取和加州 / 西部有关、最值得坐的几条线。GTFS 里的时间按 agency_timezone（美东）给出，这里换算成每个车站的当地时间。

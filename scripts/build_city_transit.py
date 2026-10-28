@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🗺️ 城市实景交通图（纽约、洛杉矶、内陆帝国）→ ny/ la/ ie/ transit.json（ny.html、la.html、ie.html 用）
+"""城市实景交通图（纽约、洛杉矶、内陆帝国）→ ny/ la/ ie/ transit.json（ny.html、la.html、ie.html 用）
 
 线路走向和车站来自各家官方公开的 GTFS（通过 Mobility Database 公开目录找下载地址，失败时用备用地址）：
   · 纽约：MTA 地铁（含斯塔滕岛铁路）
@@ -121,11 +121,11 @@ TIPS = {
 }
 
 CITIES = {
-    "ny": {"feeds": [("sub", "🚇 地铁", ["mta new york city transit"], "subway", ["https://rrgtfsfeeds.s3.amazonaws.com/gtfs_subway.zip"], {"1", "2"})]},
-    "la": {"feeds": [("metro", "🚇 Metro 轨道", ["los angeles county metropolitan", "la metro"], "rail", ["https://gitlab.com/LACMTA/gtfs_rail/-/raw/master/gtfs_rail.zip"], {"0", "1"}),
-                     ("ml", "🚈 Metrolink", ["metrolink", "southern california regional rail"], "", ["https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip"], {"2"})]},
-    "ie": {"feeds": [("ml", "🚈 Metrolink", ["metrolink", "southern california regional rail"], "", ["https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip"], {"2"}),
-                     ("omni", "🚌 Omnitrans 公交", ["omnitrans"], "", [], {"3"})]},
+    "ny": {"feeds": [("sub", "地铁", ["mta new york city transit"], "subway", ["https://rrgtfsfeeds.s3.amazonaws.com/gtfs_subway.zip"], {"1", "2"})]},
+    "la": {"feeds": [("metro", "Metro 轨道", ["los angeles county metropolitan", "la metro"], "rail", ["https://gitlab.com/LACMTA/gtfs_rail/-/raw/master/gtfs_rail.zip"], {"0", "1"}),
+                     ("ml", "Metrolink", ["metrolink", "southern california regional rail"], "", ["https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip"], {"2"})]},
+    "ie": {"feeds": [("ml", "Metrolink", ["metrolink", "southern california regional rail"], "", ["https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip"], {"2"}),
+                     ("omni", "Omnitrans 公交", ["omnitrans"], "", [], {"3"})]},
 }
 
 
@@ -310,7 +310,7 @@ def main():
                     zmap = {re.sub(r"\s*([-/])\s*", r"\1", k): v for k, v in (dict(ZH["la"], **ZH["ie"]) if city in ("la", "ie") else ZH.get(city, {})).items()}
                     s["zh"] = s.get("zh") or zmap.get(re.sub(r"\s*([-/])\s*", r"\1", s["en"]), "")
                 layers.append(got)
-        layers.append({"k": "tips", "n": "💡 用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS[city]]})
+        layers.append({"k": "tips", "n": "用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS[city]]})
         os.makedirs(os.path.dirname(out), exist_ok=True)
         with open(out, "w", encoding="utf-8") as f:
             json.dump({"note": "线路走向和车站来自官方公开 GTFS", "layers": layers}, f, ensure_ascii=False, separators=(",", ":"))

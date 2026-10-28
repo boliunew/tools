@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -97,7 +97,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   function store(k, v) { try { if (v === undefined) return localStorage.getItem('hol:' + k); localStorage.setItem('hol:' + k, v); } catch (e) { return null; } }
   var WD = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
   var F = store('f') || 'all', ALL = false, DATA = null, OPEN = {};
-  var FILTERS = [['all', '全部'], ['off', '只看放假'], ['cn', '🇨🇳 中国'], ['us', '🇺🇸 美国'], ['nyse', '📉 美股休市']];
+  var FILTERS = [['all', '全部'], ['off', '只看放假'], ['cn', '🇨🇳 中国'], ['us', '🇺🇸 美国'], ['nyse', '美股休市']];
 
   function pd(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
   function today() { var n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
@@ -135,8 +135,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     }
     var note = x.note ? esc(x.note) : '';
     if (x.work && x.work.length) note = '调休上班：' + x.work.map(mdw).join('、') + (note ? '。' + note : '');
-    var ex = I ? '<div class="tgl">' + (OPEN[key] ? '收起 ▴' : '由来 · 怎么过 · 冷知识 ▾') + '</div><div class="ex"><h4>📜 由来</h4><p>' + esc(I.o) + '</p><h4>🎉 这一天庆祝什么</h4><p>' + esc(I.c) + '</p>' +
-      (I.f && I.f.length ? '<h4>💡 冷知识</h4><ul>' + I.f.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') + '</div>' : '';
+    var ex = I ? '<div class="tgl">' + (OPEN[key] ? '收起 ▴' : '由来 · 怎么过 · 冷知识 ▾') + '</div><div class="ex"><h4>由来</h4><p>' + esc(I.o) + '</p><h4>这一天庆祝什么</h4><p>' + esc(I.c) + '</p>' +
+      (I.f && I.f.length ? '<h4>冷知识</h4><ul>' + I.f.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') + '</div>' : '';
     return '<div class="' + cls + '" data-k="' + esc(key) + '"><div class="em">' + x.e + '</div><div class="bd"><div class="t"><span class="fl">' + (x.c === 'cn' ? '🇨🇳' : '🇺🇸') + '</span>' + esc(x.n) + '</div>' +
       '<div class="sub">' + sub + '</div>' + (note ? '<div class="note">' + note + '</div>' : '') + '<div class="tags">' + tags + '</div>' + ex + '</div><div class="cd">' + cdHTML(x) + '</div></div>';
   }
@@ -193,6 +193,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

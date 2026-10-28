@@ -182,7 +182,7 @@ def main():
     used = {x["c"] + ":" + re.sub(r"（补休）$", "", x["n"]) for x in items}
     miss = sorted(k for k in used if k not in INFO)
     if miss:
-        print("⚠️ 这些节日还没写由来：", "、".join(miss))
+        print("这些节日还没写由来：", "、".join(miss))
     info = {k: v for k, v in INFO.items() if k in used}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:

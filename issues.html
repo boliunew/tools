@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-tw="mid">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -46,7 +46,7 @@ header a.b{font-weight:700;font-size:19px;color:var(--ink);text-decoration:none;
 </head>
 <body>
 <div class="wrap">
-  <header><a class="b" href="./">🔔 通知中心</a><a href="stocks.html">股票池</a>&nbsp;·&nbsp;<a href="monitor.html">网页监控</a></header>
+  <header><a class="b" href="./">通知中心</a><a href="stocks.html">股票池</a>&nbsp;·&nbsp;<a href="monitor.html">网页监控</a></header>
   <div class="card sub" id="sub">加载中…</div>
   <div class="tabs"><button data-s="open" class="on">进行中</button><button data-s="closed">已关闭</button></div>
   <div id="list"></div>
@@ -72,7 +72,7 @@ header a.b{font-weight:700;font-size:19px;color:var(--ink);text-decoration:none;
     var u = d && d.ntfy;
     $('sub').innerHTML = u ?
       '📲 <b>手机推送</b>：装 <b>ntfy</b> App（Google Play），点 ＋ 订阅，勾选「Use another server」，填：<br><code>' + esc(u) + '</code><br>股价提醒触发、网页有变化、定时任务出错，都会推送到手机。下面是所有提醒的记录。' :
-      '📲 还没有配置手机推送（ntfy）。重新运行 <code>selfhost/install.sh</code> 可以装上；配置前，提醒只记录在这一页。';
+      '还没有配置手机推送（ntfy）。重新运行 <code>selfhost/install.sh</code> 可以装上；配置前，提醒只记录在这一页。';
   });
   var STATE = 'open', OPEN = {};
   function load() {
@@ -123,6 +123,6 @@ header a.b{font-weight:700;font-size:19px;color:var(--ink);text-decoration:none;
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

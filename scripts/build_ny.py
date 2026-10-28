@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🗽 纽约生活 → ny/data.json（ny.html 用）。python3 scripts/build_ny.py
+"""纽约生活 → ny/data.json（ny.html 用）。python3 scripts/build_ny.py
 写法同 build_sf.py：只写有据可查的事实；店铺、票价、规定会变，页面上提醒「去之前查官网」。"""
 import json
 import os

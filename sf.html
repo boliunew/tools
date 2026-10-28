@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -184,7 +184,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
 </head>
 <body>
 <div class="hero"><div class="wrap">
-  <a class="home" href="index.html">‹ 首页</a><span class="city"><a href="sf.html" class="on">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a><a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html">🍊 IE</a></span>
+  <a class="home" href="index.html">‹ 首页</a><span class="city"><a href="sf.html" class="on">旧金山</a><a href="sj.html">圣何塞</a><a href="ny.html">纽约</a><a href="la.html">洛杉矶</a><a href="ie.html">IE</a></span>
   <h1>旧金山生活<small>SAN FRANCISCO</small></h1>
   <svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 40 H400" stroke="#E0573F" stroke-width="2.5"/>
@@ -197,7 +197,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
 </div></div>
 <div class="tabs"><div class="wrap" id="tabs"></div></div>
 <main class="wrap">
-  <div class="srch"><input id="q" type="search" placeholder="搜：唐人街、卷饼、地震、停车…" autocomplete="off"><button id="rnd">🎲 随便看一个</button></div>
+  <div class="srch"><input id="q" type="search" placeholder="搜：唐人街、卷饼、地震、停车…" autocomplete="off"><button id="rnd">随便看一个</button></div>
   <div id="list"><div class="empty">加载中…</div></div>
   <div class="foot" id="foot"></div>
 </main>
@@ -208,7 +208,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('sf:' + k) || 'null'); localStorage.setItem('sf:' + k, JSON.stringify(v)); } catch (e) { return null; } }
-  var TABS = [['gift', '🎁 盲盒 · 护照'], ['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['map', '🗺️ 交通图'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
+  var TABS = [['gift', '盲盒 · 护照'], ['hoods', '街区'], ['eat', '吃喝'], ['fun', '好玩'], ['tips', '本地人秘籍'], ['stories', '人文故事'], ['map', '交通图'], ['go', '出行'], ['work', '工作生活'], ['trivia', '冷知识'], ['want', '想去']];
   var LEAD = {
     gift: '不知道今天去哪儿？拆一个盲盒，给你一条完整的一日行程。去过的地方在下面的护照上盖个章，集齐有称号。',
     hoods: '旧金山不大，却有上百个街区，走过一条街气质就变了。点开看每个街区去做什么、吃什么。',
@@ -269,7 +269,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
         h += '<div class="lead">' + t[1] + ' · ' + hit.length + '</div>' + hit.map(function (it) { return card(t[0], it); }).join(''); n += hit.length;
       });
       var tv = D.trivia.filter(function (x) { return x.toLowerCase().indexOf(q) >= 0; });
-      if (tv.length) { h += '<div class="lead">💡 冷知识 · ' + tv.length + '</div><div class="triv">' + tv.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>'; n += tv.length; }
+      if (tv.length) { h += '<div class="lead">冷知识 · ' + tv.length + '</div><div class="triv">' + tv.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>'; n += tv.length; }
       if (!n) h = '<div class="empty">没找到「' + esc(Q) + '」</div>';
       $('list').innerHTML = hl(h);
       return;
@@ -286,7 +286,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   }
   // ---- 🎁 一日盲盒 + 🛂 旧金山护照
   var PL = ls('plan'), STAMP = ls('stamps') || {}, FLIP = false;
-  var TITLES = [[0, '🧳 初来乍到'], [3, '📸 周末游客'], [8, '🚋 叮当车常客'], [15, '🌁 半个本地人'], [25, '🦀 旧金山通'], [35, '🏅 三藩市荣誉市民']];
+  var TITLES = [[0, '初来乍到'], [3, '周末游客'], [8, '叮当车常客'], [15, '半个本地人'], [25, '旧金山通'], [35, '三藩市荣誉市民']];
   function spots() { var o = []; ['hoods', 'fun', 'eat'].forEach(function (t) { D[t].forEach(function (it) { if (it.t.indexOf('一年里') < 0) o.push([key(t, it), it.e, /^[\u4e00-\u9fff]/.test(it.t) ? it.t.replace(/\s+[A-Za-z].*$/, '').replace(/：.*$/, '').replace(/[\s·]+$/, '') : it.t.replace(/\s*和.*$/, '')]); }); }); return o; }
   function titleOf(n) { var t = TITLES[0][1]; TITLES.forEach(function (x) { if (n >= x[0]) t = x[1]; }); return t; }
   function giftHTML() {
@@ -296,11 +296,11 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       var P = D.plans[PL];
       h += '<div class="gcard' + (FLIP ? ' flip' : '') + '"><div class="gh"><span>' + P.e + '</span><div><b>' + esc(P.t) + '</b><small>' + esc(P.mood) + '</small></div></div><ol class="gtl">' +
         P.steps.map(function (x) { return '<li><i>' + esc(x[0]) + '</i><div><b>' + x[1] + ' ' + esc(x[2]) + '</b>' + (x[3] ? '<p>' + esc(x[3]) + '</p>' : '') + '<small>🚏 ' + esc(x[4]) + '</small></div></li>'; }).join('') +
-        '</ol><div class="gact"><button id="gOpen">🎲 再拆一个</button><button data-t2="map">🗺️ 看交通图</button></div></div>';
+        '</ol><div class="gact"><button id="gOpen">再拆一个</button><button data-t2="map">看交通图</button></div></div>';
     }
     h += '</div>';
     var sp = spots(), n = sp.filter(function (x) { return STAMP[x[0]]; }).length;
-    h += '<div class="pass"><div class="ph"><div><b>🛂 旧金山护照</b><small>去过就盖个章（存在这台手机上）</small></div><div class="pt">' + titleOf(n) + '<small>' + n + ' / ' + sp.length + '</small></div></div>' +
+    h += '<div class="pass"><div class="ph"><div><b>旧金山护照</b><small>去过就盖个章（存在这台手机上）</small></div><div class="pt">' + titleOf(n) + '<small>' + n + ' / ' + sp.length + '</small></div></div>' +
       '<div class="pbar"><i style="width:' + Math.round(n / sp.length * 100) + '%"></i></div><div class="pg">' +
       sp.map(function (x) { var d = STAMP[x[0]]; return '<button class="st' + (d ? ' on' : '') + '" data-st="' + esc(x[0]) + '"><span>' + x[1] + '</span><em>' + esc(x[2]) + '</em>' + (d ? '<u>' + esc(d.slice(5).replace('-', '/')) + '</u>' : '') + '</button>'; }).join('') +
       '</div><div class="mnote">点一下盖章，再点一下取消。称号：' + TITLES.map(function (t) { return t[1] + '（' + t[0] + '）'; }).join(' → ') + '</div></div>';
@@ -326,7 +326,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     }
   });
   // ---- 交通图：可缩放的 SVG
-  var MAPS = [['real', '🗺️ 实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['road', '🚗 湾区路况', 'https://quickmap.dot.ca.gov/'], ['live', '⏱️ BART 实时到站', 'https://www.bart.gov/schedules/eta'], ['ferry', '⛴️ 渡轮时刻表', 'https://www.sanfranciscobayferry.com/'], ['bart', '🚇 BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', '🚋 Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '🚌 主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
+  var MAPS = [['real', '实景地图（全部线路）', 'https://www.sfmta.com/maps/muni-system-map'], ['road', '湾区路况', 'https://quickmap.dot.ca.gov/'], ['live', 'BART 实时到站', 'https://www.bart.gov/schedules/eta'], ['ferry', '渡轮时刻表', 'https://www.sanfranciscobayferry.com/'], ['bart', 'BART 湾区捷运（全部 50 站）', 'https://www.bart.gov/system-map'], ['muni', 'Muni 轻轨 · 叮当车 · F 线', 'https://www.sfmta.com/maps/muni-metro-map'], ['bus', '主要巴士线路', 'https://www.sfmta.com/maps/muni-system-map']];
   var MAP = ls('map') || 'real', MV = null, RL = ls('rl3') || { tips: 1, bart: 1, muni: 1, cable: 1, ferry: 1, bus: 0 }, LMAP = null, BASE = ls('base') || 'sat';
   function mapHTML() {
     var m = MAPS.filter(function (x) { return x[0] === MAP; })[0] || MAPS[0];
@@ -339,9 +339,9 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     }
     if (m[0] === 'real') {
       return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
-        '<div class="mtabs" id="rlay">' + [['tips', '💡 用心提示'], ['bart', '🚇 BART'], ['muni', '🚋 Muni 轻轨'], ['cable', '🔔 叮当车 · F 线'], ['ferry', '⛴️ 渡轮'], ['bus', '🚌 主要巴士']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="mtabs" id="rlay">' + [['tips', '用心提示'], ['bart', 'BART'], ['muni', 'Muni 轻轨'], ['cable', '叮当车 · F 线'], ['ferry', '渡轮'], ['bus', '主要巴士']].map(function (x) { return '<button data-l="' + x[0] + '" class="' + (RL[x[0]] ? 'on' : '') + '">' + (RL[x[0]] ? '✓ ' : '') + x[1] + '</button>'; }).join('') + '</div>' +
         '<div class="mapbox" id="lmap" style="cursor:auto"></div>' +
-        '<div class="mtabs" style="margin-top:8px"><button id="rBase">' + (BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图') + '</button><button id="rSF">🏙️ 旧金山市区</button><button id="rBay">🌉 整个湾区</button><button id="rMe">📍 我的位置</button></div>' +
+        '<div class="mtabs" style="margin-top:8px"><button id="rBase">' + (BASE === 'sat' ? '换成街道图' : '换成卫星图') + '</button><button id="rSF">旧金山市区</button><button id="rBay">整个湾区</button><button id="rMe">我的位置</button></div>' +
         '<div class="mnote">点 💡 看提示，点车站看中英文站名和经过的线路。车站位置是大致的，线路按车站之间连直线画，不是真实轨道走向。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。实时到站用 BART App、MuniMobile 或谷歌地图。</div>';
     }
     return '<div class="mtabs" id="mtabs">' + MAPS.map(function (x) { return '<button data-m="' + x[0] + '" class="' + (x[0] === MAP ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
@@ -457,7 +457,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     var stns = TR ? TR.layers.filter(function (l) { return l.k === 'bart'; })[0].st.slice().sort(function (a, b) { return a.en < b.en ? -1 : 1; }) : [];
     var cur = stns.filter(function (s0) { return s0.id === LST; })[0];
     var h = '<div class="mtabs"><select id="lst" class="fsel">' + stns.map(function (s0) { return '<option value="' + s0.id + '"' + (s0.id === LST ? ' selected' : '') + '>' + esc(s0.en) + (s0.zh ? ' · ' + esc(s0.zh.split(' · ')[0]) : '') + '</option>'; }).join('') + '</select>' +
-      '<button id="lnear">📍 离我最近的站</button><button id="lref">🔄 刷新</button></div>';
+      '<button id="lnear">离我最近的站</button><button id="lref">刷新</button></div>';
     if (err) h += '<div class="empty">' + esc(err) + '</div>';
     else if (r) {
       var L2 = etdList(r);
@@ -480,7 +480,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
         var best = null, bd = 1e9;
         stns.forEach(function (s0) { var d = Math.pow(s0.ll[0] - p.coords.latitude, 2) + Math.pow((s0.ll[1] - p.coords.longitude) * .79, 2); if (d < bd) { bd = d; best = s0; } });
         if (best) { LST = best.id; ls('livest', LST); liveLoad(); }
-      }, function () { $('lnear').textContent = '📍 定位失败'; }, { timeout: 15000 });
+      }, function () { $('lnear').textContent = '定位失败'; }, { timeout: 15000 });
     };
     var mt = $('mtabs'); if (mt) mt.onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
   }
@@ -522,7 +522,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
           $('lmap').classList.toggle('sat', BASE === 'sat');
         }
         setBase();
-        $('rBase').onclick = function () { BASE = BASE === 'sat' ? 'map' : 'sat'; ls('base', BASE); this.textContent = BASE === 'sat' ? '🗺️ 换成街道图' : '🛰️ 换成卫星图'; setBase(); };
+        $('rBase').onclick = function () { BASE = BASE === 'sat' ? 'map' : 'sat'; ls('base', BASE); this.textContent = BASE === 'sat' ? '换成街道图' : '换成卫星图'; setBase(); };
         LMAP.groups = {};
         LMAP.on('zoomend', labels);
         draw();
@@ -615,7 +615,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
         var lines = Ly.lines.filter(function (ln) { return (ln.st || []).indexOf(s0.id) >= 0; }).map(function (ln) { return '<span style="display:inline-block;width:10px;height:10px;border-radius:5px;background:' + ln.c + ';margin-right:4px"></span>' + esc(ln.n); });
         var m = L.circleMarker(s0.ll, { radius: s0.big ? 6 : 4.5, color: '#222', weight: 2, fillColor: '#fff', fillOpacity: 1 })
           .bindPopup('<b>' + esc(s0.en) + '</b>' + (s0.zh ? '<br>' + esc(s0.zh) : '') + (lines.length ? '<div style="margin-top:6px;font-size:12px;line-height:1.7">' + lines.join('<br>') + '</div>' : '') +
-            (Ly.k === 'bart' ? '<div class="pl" data-etd="' + s0.id + '" style="margin-top:8px;font-size:12.5px;line-height:1.7;color:#555">⏱️ 实时到站加载中…</div>' : ''), { maxWidth: 280 });
+            (Ly.k === 'bart' ? '<div class="pl" data-etd="' + s0.id + '" style="margin-top:8px;font-size:12.5px;line-height:1.7;color:#555">实时到站加载中…</div>' : ''), { maxWidth: 280 });
         if (Ly.k === 'bart') m.on('popupopen', function () { bartEtd(s0.id, function (d, err) { var el = document.querySelector('[data-etd="' + s0.id + '"]'); if (el) el.innerHTML = d ? etdMini(d) : esc(err || '实时数据暂时拿不到'); }); });
         g.addLayer(m);
         g.addLayer(L.marker(s0.ll, { interactive: false, icon: L.divIcon({ className: 'stl' + (s0.big ? ' big' : ''), html: '<span>' + esc(s0.en) + '</span>', iconSize: [0, 0], iconAnchor: [-8, 6] }) }));
@@ -679,7 +679,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     D.fun.forEach(function (x) { pool.push(['fun', x]); });
     var p = pool[Math.floor(Math.random() * pool.length)], old = document.querySelector('.pop'); if (old) old.parentNode.removeChild(old);
     var el = document.createElement('div'); el.className = 'pop';
-    el.innerHTML = '<button class="x">×</button>' + (p[0] === 'trivia' ? '<b>💡 冷知识</b>' + esc(p[1]) : '<b>' + p[1].e + ' ' + esc(p[1].t) + '</b>' + esc(p[1].s) + '<br><button class="go">看全文</button>');
+    el.innerHTML = '<button class="x">×</button>' + (p[0] === 'trivia' ? '<b>冷知识</b>' + esc(p[1]) : '<b>' + p[1].e + ' ' + esc(p[1].t) + '</b>' + esc(p[1].s) + '<br><button class="go">看全文</button>');
     document.body.appendChild(el);
     el.onclick = function (ev) {
       if (ev.target.closest('.x')) { el.parentNode.removeChild(el); return; }
@@ -705,6 +705,6 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
 <script>document.querySelectorAll('.city a').forEach(function(a){a.addEventListener('click',function(e){if(a.classList.contains('on')){e.preventDefault();return;}var h=(location.hash||'').split('/')[0];if(h)a.href=a.getAttribute('href').split('#')[0]+h;});});</script>
 <script src="nearby.js?v=7" defer></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

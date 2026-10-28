@@ -7,8 +7,8 @@ import re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = open(os.path.join(ROOT, "sj.html"), encoding="utf-8").read()
 
-SWITCH = ('<span class="city"><a href="sf.html">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a>'
-          '<a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html">🍊 IE</a></span>')
+SWITCH = ('<span class="city"><a href="sf.html">旧金山</a><a href="sj.html">圣何塞</a>'
+          '<a href="ny.html">纽约</a><a href="la.html">洛杉矶</a><a href="ie.html">IE</a></span>')
 
 NY_SVG = '''<svg class="bridge" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 40 H400" stroke="#F4C27A" stroke-width="2"/>
@@ -52,13 +52,13 @@ CITIES = {
             map="两指缩放、拖动查看。地铁按 MTA 官方 GTFS 数据画出真实走向，每月更新；点 💡 看用心提示。出行前用 MTA App 或谷歌地图确认（周末和深夜常改线）。",
             work="在纽约工作和生活要知道的事。工资、房租、规定每年会变，以官网为准。",
             trivia="可以拿去跟朋友聊的纽约冷知识。"),
-        titles="[[0, '🧳 初来乍到'], [3, '📸 周末游客'], [8, '🚇 地铁常客'], [15, '🗽 半个纽约客'], [25, '🍕 纽约通'], [35, '🏅 纽约荣誉市民']]",
-        gift="拆一个纽约一日盲盒", passport="🛂 纽约护照",
-        maps="[['real', '🗺️ 实景地图（地铁全部线路）', 'https://new.mta.info/maps']]",
-        rl="{ tips: 1, sub: 1 }", rlay="[['tips', '💡 用心提示'], ['sub', '🚇 地铁']]",
-        view="[40.735, -73.95], 12", b1=("🏙️ 曼哈顿中城", "[40.754, -73.984], 14"), b2=("🗽 五个区", "[40.70, -73.93], 11"),
+        titles="[[0, '初来乍到'], [3, '周末游客'], [8, '地铁常客'], [15, '半个纽约客'], [25, '纽约通'], [35, '纽约荣誉市民']]",
+        gift="拆一个纽约一日盲盒", passport="纽约护照",
+        maps="[['real', '实景地图（地铁全部线路）', 'https://new.mta.info/maps']]",
+        rl="{ tips: 1, sub: 1 }", rlay="[['tips', '用心提示'], ['sub', '地铁']]",
+        view="[40.735, -73.95], 12", b1=("曼哈顿中城", "[40.754, -73.984], 14"), b2=("五个区", "[40.70, -73.93], 11"),
         mnote="点 💡 看提示，点车站看中英文站名和经过的线路。地铁按 MTA 官方 GTFS 数据画出真实走向，每月更新；快车和慢车共用一条轨道时线会叠在一起。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。<a href=\"la.html#map\">洛杉矶的交通图 →</a>",
-        foot="内容依据纽约市旅游局（NYC Tourism）、市政府、MTA、纽约市博物馆和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href=\"la.html\">🌇 洛杉矶生活 →</a>"),
+        foot="内容依据纽约市旅游局（NYC Tourism）、市政府、MTA、纽约市博物馆和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href=\"la.html\">洛杉矶生活 →</a>"),
     "la": dict(
         title="城市生活 · 洛杉矶", h1="洛杉矶<small>LOS ANGELES</small>", svg=LA_SVG,
         hero="linear-gradient(175deg,#E8A35A 0%,#C0574A 45%,#3B2340 100%)", theme="#8A3E44",
@@ -70,13 +70,13 @@ CITIES = {
             map="两指缩放、拖动查看。Metro 轨道和 Metrolink 按官方 GTFS 数据画出真实走向，每月更新；点 💡 看用心提示。出行前用 Transit App 或谷歌地图确认。",
             work="在洛杉矶工作和生活要知道的事，港口和 Inland Empire 物流也在这里。工资、房租、规定每年会变，以官网为准。",
             trivia="可以拿去跟朋友聊的洛杉矶冷知识。"),
-        titles="[[0, '🧳 初来乍到'], [3, '📸 周末游客'], [8, '🚈 Metro 常客'], [15, '🌴 半个洛杉矶人'], [25, '🌮 洛杉矶通'], [35, '🏅 天使之城荣誉市民']]",
-        gift="拆一个洛杉矶一日盲盒", passport="🛂 洛杉矶护照",
-        maps="[['real', '🗺️ 实景地图（全部线路）', 'https://www.metro.net/riding/guide/system-maps/']]",
-        rl="{ tips: 1, metro: 1, ml: 1 }", rlay="[['tips', '💡 用心提示'], ['metro', '🚇 Metro 轨道'], ['ml', '🚈 Metrolink']]",
-        view="[34.05, -118.10], 10", b1=("🏙️ 市中心", "[34.050, -118.245], 14"), b2=("🌴 洛杉矶 · Upland", "[34.05, -117.95], 10"),
+        titles="[[0, '初来乍到'], [3, '周末游客'], [8, 'Metro 常客'], [15, '半个洛杉矶人'], [25, '洛杉矶通'], [35, '天使之城荣誉市民']]",
+        gift="拆一个洛杉矶一日盲盒", passport="洛杉矶护照",
+        maps="[['real', '实景地图（全部线路）', 'https://www.metro.net/riding/guide/system-maps/']]",
+        rl="{ tips: 1, metro: 1, ml: 1 }", rlay="[['tips', '用心提示'], ['metro', 'Metro 轨道'], ['ml', 'Metrolink']]",
+        view="[34.05, -118.10], 10", b1=("市中心", "[34.050, -118.245], 14"), b2=("洛杉矶 · Upland", "[34.05, -117.95], 10"),
         mnote="点 💡 看提示，点车站看中英文站名和经过的线路。Metro 轨道（A/B/C/D/E/K 线）和 Metrolink 按官方 GTFS 数据画出真实走向，每月更新。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。<a href=\"ny.html#map\">纽约的交通图 →</a>",
-        foot="内容依据洛杉矶旅游局（Discover Los Angeles）、LA Metro、Metrolink、El Pueblo 和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href=\"ny.html\">🗽 纽约生活 →</a>"),
+        foot="内容依据洛杉矶旅游局（Discover Los Angeles）、LA Metro、Metrolink、El Pueblo 和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href=\"ny.html\">纽约生活 →</a>"),
     "ie": dict(
         title="城市生活 · 内陆帝国", h1="内陆帝国<small>INLAND EMPIRE</small>", svg=IE_SVG,
         hero="linear-gradient(175deg,#E9B44C 0%,#C9733A 45%,#4A3326 100%)", theme="#8A5A2E",
@@ -88,13 +88,13 @@ CITIES = {
             map="两指缩放、拖动查看。Metrolink 和 Omnitrans 公交按官方 GTFS 数据画出真实走向，每月更新；点 💡 看用心提示。出行前用 Metrolink App 或谷歌地图确认。",
             work="在 IE 工作和生活要知道的事：物流、防暑、医疗、学校。工资、规定每年会变，以官网为准。",
             trivia="可以拿去跟朋友聊的 IE 冷知识。"),
-        titles="[[0, '🧳 初来乍到'], [3, '📸 周末出游'], [8, '🍋 Upland 街坊'], [15, '🍊 半个 IE 人'], [25, '🛣️ 66 号公路通'], [35, '🏅 内陆帝国荣誉市民']]",
-        gift="拆一个内陆帝国一日盲盒", passport="🛂 内陆帝国护照",
-        maps="[['real', '🗺️ 实景地图（全部线路）', 'https://metrolinktrains.com/schedules/']]",
-        rl="{ tips: 1, ml: 1, omni: 0 }", rlay="[['tips', '💡 用心提示'], ['ml', '🚈 Metrolink'], ['omni', '🚌 Omnitrans 公交']]",
-        view="[34.08, -117.55], 10", b1=("🍋 Upland", "[34.100, -117.650], 14"), b2=("🍊 整个 IE", "[34.00, -117.35], 9"),
+        titles="[[0, '初来乍到'], [3, '周末出游'], [8, 'Upland 街坊'], [15, '半个 IE 人'], [25, '66 号公路通'], [35, '内陆帝国荣誉市民']]",
+        gift="拆一个内陆帝国一日盲盒", passport="内陆帝国护照",
+        maps="[['real', '实景地图（全部线路）', 'https://metrolinktrains.com/schedules/']]",
+        rl="{ tips: 1, ml: 1, omni: 0 }", rlay="[['tips', '用心提示'], ['ml', 'Metrolink'], ['omni', 'Omnitrans 公交']]",
+        view="[34.08, -117.55], 10", b1=("Upland", "[34.100, -117.650], 14"), b2=("整个 IE", "[34.00, -117.35], 9"),
         mnote="点 💡 看提示，点车站看中英文站名和经过的线路。Metrolink 和 Omnitrans 公交按官方 GTFS 数据画出真实走向，每月更新。卫星图 © Esri、Maxar 等，街道图 © OpenStreetMap、© CARTO。<a href=\"la.html#map\">洛杉矶的交通图 →</a>",
-        foot="内容依据 Upland、Ontario、Riverside 等市政府和旅游官网、Metrolink、Omnitrans、加州历史地标和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href=\"la.html\">🌇 洛杉矶生活 →</a>"),
+        foot="内容依据 Upland、Ontario、Riverside 等市政府和旅游官网、Metrolink、Omnitrans、加州历史地标和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href=\"la.html\">洛杉矶生活 →</a>"),
 }
 
 
@@ -126,12 +126,12 @@ def build(code, c):
         s = resub(s, r"\n    %s: '[^']*'" % k, "\n    %s: '%s'" % (k, v))
     s = resub(s, r"var TITLES = \[\[.*?\]\];", "var TITLES = %s;" % c["titles"])
     s = sub(s, "拆一个圣何塞 · 硅谷一日盲盒", c["gift"])
-    s = sub(s, "<b>🛂 硅谷护照</b>", "<b>%s</b>" % c["passport"])
+    s = sub(s, "<b>硅谷护照</b>", "<b>%s</b>" % c["passport"])
     s = resub(s, r"var MAPS = \[\[.*?\]\];", "var MAPS = %s;" % c["maps"])
     s = sub(s, "{ tips: 1, vta: 1, caltrain: 1, bart: 1, vbus: 0 }", c["rl"])
-    s = resub(s, r"\[\['tips', '💡 用心提示'\], \['vta'.*?\]\]\.map", c["rlay"] + ".map")
+    s = resub(s, r"\[\['tips', '用心提示'\], \['vta'.*?\]\]\.map", c["rlay"] + ".map")
     s = sub(s, "setView([37.36, -121.93], 11)", "setView(%s)" % c["view"])
-    s = sub(s, "<button id=\"rSF\">🏙️ 圣何塞市区</button><button id=\"rBay\">🌴 整个硅谷</button>",
+    s = sub(s, "<button id=\"rSF\">圣何塞市区</button><button id=\"rBay\">整个硅谷</button>",
             "<button id=\"rSF\">%s</button><button id=\"rBay\">%s</button>" % (c["b1"][0], c["b2"][0]))
     s = sub(s, "LMAP.setView([37.336, -121.892], 14)", "LMAP.setView(%s)" % c["b1"][1])
     s = sub(s, "LMAP.setView([37.40, -122.02], 10)", "LMAP.setView(%s)" % c["b2"][1])

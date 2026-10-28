@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -399,7 +399,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
   // 🤖 AI 盘后解读（stocks/ai_review.py 生成；只在数据日期和当前股票池一致时显示）
   function aiHTML() {
     if (!AI || !DATA || AI.date !== DATA.date) return '';
-    var h = '<div class="card aic"><div class="sh">🤖 AI 盘后解读<small>' + esc(AI.date) + '</small></div>';
+    var h = '<div class="card aic"><div class="sh">AI 盘后解读<small>' + esc(AI.date) + '</small></div>';
     h += '<p>' + esc(AI.market) + '</p>';
     if (AI.sectors) h += '<p>' + esc(AI.sectors) + '</p>';
     (AI.picks || []).forEach(function (p) { h += '<div class="pk"><a href="#c-' + esc(p.t) + '">' + esc(p.t) + '</a>' + esc(p.note) + '</div>'; });
@@ -413,7 +413,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     var act = { '进攻': '大盘健康，可以按信号做多，正常仓位。', '谨慎': '多空混杂，能做但要轻仓、严格止损。', '防守': '少做或观望；要做只看超跌反弹，仓位减半。' }[lab] || '';
     var hasTier = D.candidates.some(function (c) { return c.tier; });
     var picks = D.candidates.filter(function (c) { return hasTier ? c.tier === 'pick' : (c.r >= 1 && !c.earn); }).sort(function (a, b) { return b.score - a.score; }).slice(0, 4);
-    var h = '<div class="card sumc"><div class="sh">📋 今日要点</div><div class="sl"><span class="rgt ' + rc + '">' + esc(lab) + '</span>' + act + '</div>';
+    var h = '<div class="card sumc"><div class="sh">今日要点</div><div class="sl"><span class="rgt ' + rc + '">' + esc(lab) + '</span>' + act + '</div>';
     if (picks.length) h += '<div class="sl"><b>今日精选</b>（信号在当前环境下有验证过的优势、持有期内无财报）：' + picks.map(function (c) {
       return '<a href="#c-' + esc(c.t) + '">' + esc(c.t) + '</a> <small>' + esc(S[c.primary].name) + (c.exp != null ? ' · ' + evTxt(c, 1) : '') + '</small>';
     }).join('　') + '</div>';
@@ -433,7 +433,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     return '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '"><polyline fill="none" stroke="' + (a[a.length - 1] >= a[0] ? 'var(--up)' : 'var(--down)') + '" stroke-width="1.6" points="' + p.join(' ') + '"/></svg>';
   }
   function watchHTML() {
-    var h = '<h3>📌 我的自选</h3><div class="card wl"><div class="wadd"><input id="wIn" placeholder="加股票或 ETF：如 AAPL、VOO、QQQ" autocapitalize="characters" autocomplete="off" spellcheck="false"><button class="btn" id="wGo">加入</button></div><div class="wmsg" id="wMsg"></div>';
+    var h = '<h3>我的自选</h3><div class="card wl"><div class="wadd"><input id="wIn" placeholder="加股票或 ETF：如 AAPL、VOO、QQQ" autocapitalize="characters" autocomplete="off" spellcheck="false"><button class="btn" id="wGo">加入</button></div><div class="wmsg" id="wMsg"></div>';
     if (!SNAP) return h + '<div class="wd2">加载中…</div></div>';
     if (SNAP.missing) return h + '<div class="wd2">自选数据会在下一次扫描后出现（每个交易日收盘后）。</div></div>';
     if (!WATCH.length) h += '<div class="wd2">还没有自选。加几只你持有或关注的股票，这里每天显示它们的状态，财报日历也会标出来。</div>';
@@ -564,7 +564,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       ['move', '单日涨跌 ≥', '3', '%', null]
     ];
     if (!r || r.s !== 'ETF') opts.push(['sig', '出现买点信号', null, '回踩金坑、挤压突破等', null]);
-    var h = '<div class="amb"></div><div class="amc" role="dialog" aria-label="设提醒"><div class="amh"><b>🔔 给 ' + esc(t) + ' 设提醒</b><button class="amx" type="button" aria-label="关闭">×</button></div>';
+    var h = '<div class="amb"></div><div class="amc" role="dialog" aria-label="设提醒"><div class="amh"><b>给 ' + esc(t) + ' 设提醒</b><button class="amx" type="button" aria-label="关闭">×</button></div>';
     if (r) h += '<div class="amnow">最新收盘 <b>' + r.c.toFixed(2) + '</b> · 距一年高点 ' + pct(r.h, 1) + ' · RSI ' + r.rsi + ' · 200 日线' + (r.a200 ? '上方' : '下方') + '</div>';
     for (i = 0; i < opts.length; i++) {
       var o = opts[i];
@@ -573,8 +573,8 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       if (o[4]) { h += '<span class="aq">'; for (j = 0; j < o[4].length; j++) h += '<button type="button" data-k="' + o[0] + '" data-q="' + o[4][j][1] + '">' + o[4][j][0] + '</button>'; h += '</span>'; }
       h += '</label>';
     }
-    h += '<div class="ap">标题：<b id="apT"></b></div><div class="abtns"><a class="btn amgo" id="amGo" target="_blank" rel="noopener">' + (LOCAL ? '✅ 设好提醒' : '去 GitHub 提交 →') + '</a><button class="btn" type="button" id="amCp">复制标题</button></div>' +
-      (LOCAL ? '<div class="anote">保存在你家的主机上。之后每个交易日收盘后按收盘价检查，触发时手机上的 ntfy 会推送；所有提醒在<a href="issues.html">🔔 通知中心</a>里查看和关闭。</div>' : '') +
+    h += '<div class="ap">标题：<b id="apT"></b></div><div class="abtns"><a class="btn amgo" id="amGo" target="_blank" rel="noopener">' + (LOCAL ? '设好提醒' : '去 GitHub 提交 →') + '</a><button class="btn" type="button" id="amCp">复制标题</button></div>' +
+      (LOCAL ? '<div class="anote">保存在你家的主机上。之后每个交易日收盘后按收盘价检查，触发时手机上的 ntfy 会推送；所有提醒在<a href="issues.html">通知中心</a>里查看和关闭。</div>' : '') +
       '<div class="anote"' + (LOCAL ? ' style="display:none"' : '') + '>打开后内容已经填好，点 <b>Submit new issue</b> 就生效，机器人会马上回一条「已登记」。之后每个交易日收盘后按收盘价检查，触发时在那条 issue 下留言——GitHub App 会推送到手机，也会发邮件。如果打开的是空白页，把复制的标题粘贴进去提交也行。不想要了，关闭那条 issue 即可。</div>';
     var have = alertsOf(t);
     if (have.length) { h += '<div class="ahave">已有的提醒：'; for (i = 0; i < have.length; i++) h += achip(have[i]); h += '</div>'; }
@@ -666,7 +666,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     var L = DATA.lt; if (!L || !L.rows || !L.rows[L.bucket]) return '';
     var cur = L.rows[L.bucket], A = L.all, i, atHigh = L.dd < 0.001;
     var sum = (atHigh ? '今天收在<b>历史最高点</b>' : '距历史最高 <b>' + pct(-L.dd, 1) + '</b>') + (cur.win1 != null ? ' · 历史上从这个位置买入，1 年后上涨概率 <b>' + Math.round(cur.win1 * 100) + '%</b>（中位数 ' + pct(cur.med1, 1) + '）' : '');
-    var h = '<details class="card xd" data-o="lt"' + (OPENS.lt ? ' open' : '') + '><summary><div class="xt"><b>🛡️ VOO 长线体检</b><span class="xs">' + sum + '</span></div><i class="xa">▾</i></summary><div class="lt">';
+    var h = '<details class="card xd" data-o="lt"' + (OPENS.lt ? ' open' : '') + '><summary><div class="xt"><b>VOO 长线体检</b><span class="xs">' + sum + '</span></div><i class="xa">▾</i></summary><div class="lt">';
     var ad = L.ath_date.split('-');
     h += '<div class="ltk"><div><b>' + pct(-L.dd, 1) + '</b>距历史最高</div><div><b>' + (L.since_ath ? L.since_ath : '今天') + '</b>' + (L.since_ath ? '个交易日前创新高（' + (+ad[1]) + '/' + (+ad[2]) + '）' : '创新高') + '</div><div><b>' + Math.round(L.rare * 100) + '%</b>的历史日子离高点更远</div></div>';
     h += '<div class="tbl"><table class="ltt"><tr><th>当时位置</th><th>1年后<br>中位数</th><th>上涨<br>概率</th><th>最差<br>10%</th><th>3年<br>年化</th></tr>';
@@ -694,8 +694,8 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     (LP.near || []).forEach(function (t) { near[t] = 1; });
     var nN = (LP.near || []).length, T = LP.tracking || {}, ts = T.summary || {};
     var sum = 'S 级 <b>' + (c.S || 0) + '</b> · A 级 <b>' + (c.A || 0) + '</b> · <b>' + nN + '</b> 只低于合理价' + (ts.n ? ' · 入选以来比 VOO <span class="' + cls(ts.vs_voo) + '">' + pct(ts.vs_voo, 1) + '</span>' : '');
-    var h = '<details class="card xd" data-o="lp"' + (OPENS.lp ? ' open' : '') + '><summary><div class="xt"><b>🏛️ 长线池 <small style="font-weight:400;color:var(--faint)">每周更新 · ' + esc((LP.date || '').slice(5).replace('-', '/')) + '</small></b><span class="xs">' + sum + '</span></div><i class="xa">▾</i></summary><div class="lp">';
-    if (LP.demo) h += '<div class="lpn">⚠️ 示例数据，第一次真实运行后替换。</div>';
+    var h = '<details class="card xd" data-o="lp"' + (OPENS.lp ? ' open' : '') + '><summary><div class="xt"><b>长线池 <small style="font-weight:400;color:var(--faint)">每周更新 · ' + esc((LP.date || '').slice(5).replace('-', '/')) + '</small></b><span class="xs">' + sum + '</span></div><i class="xa">▾</i></summary><div class="lp">';
+    if (LP.demo) h += '<div class="lpn">示例数据，第一次真实运行后替换。</div>';
     h += '<div class="lpn">在 ' + LP.n + ' 只股票里打分：<b>护城河</b> 35（资本回报率 = 60% ROIC + 40% ROE、毛利率、利润率稳定性）+ <b>估值</b> 25（市盈率对比合理市盈率 = 它自己过去几年的中位数和同行业现在的中位数取平均）+ <b>技术</b> 20 + <b>回撤</b> 10 + <b>成长</b> 10 − 负债扣分。80 分以上 S，70 分以上 A。<b>合理价</b> = 合理市盈率 × 最近一年每股收益，现价低于它说明比平时和同行都便宜。VOO 是核心仓位，这里只挑卫星仓位，建议总共不超过 10～15 只。</div>';
     h += '<div class="filters" style="margin:0 0 4px"><button class="chip' + (!lpOnly ? ' on' : '') + '" data-lp="0">全部 S / A<span class="n">' + L.length + '</span></button><button class="chip' + (lpOnly ? ' on' : '') + '" data-lp="1">低于合理价<span class="n">' + nN + '</span></button></div>';
     var shown = 0;
@@ -745,7 +745,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     if (S.length < 3) return '';
     for (i = 0; i < S.length; i++) mx = Math.max(mx, Math.abs(S[i].m1 || 0));
     var best = S[0], worst = S[S.length - 1];
-    h = '<details class="card xd" data-o="sec"' + (OPENS.sec ? ' open' : '') + '><summary><div class="xt"><b>🧭 板块强弱</b><span class="xs">近一月最强 <b>' + best.zh + '</b> <span class="' + cls(best.m1) + '">' + pct(best.m1, 1) + '</span> · 最弱 <b>' + worst.zh + '</b> <span class="' + cls(worst.m1) + '">' + pct(worst.m1, 1) + '</span></span></div><i class="xa">▾</i></summary><div class="secs">';
+    h = '<details class="card xd" data-o="sec"' + (OPENS.sec ? ' open' : '') + '><summary><div class="xt"><b>板块强弱</b><span class="xs">近一月最强 <b>' + best.zh + '</b> <span class="' + cls(best.m1) + '">' + pct(best.m1, 1) + '</span> · 最弱 <b>' + worst.zh + '</b> <span class="' + cls(worst.m1) + '">' + pct(worst.m1, 1) + '</span></span></div><i class="xa">▾</i></summary><div class="secs">';
     h += '<div class="sr sh"><span>板块</span><span>近 1 月</span><span>1 月</span><span>今日</span><span>200线</span></div>';
     for (i = 0; i < S.length; i++) {
       var s = S[i], w = Math.abs(s.m1 || 0) / mx * 50, pos = (s.m1 || 0) >= 0, k, tops = [], bots = [];
@@ -763,9 +763,9 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     var D = DATA, R = D.regime || {}, S = D.signals, keys = ['squeeze', 'pit', 'momentum', 'rsi2', 'blood'], h = '';
     var gen = new Date(D.generated), genTxt = isNaN(gen) ? '' : (gen.getMonth() + 1) + '月' + gen.getDate() + '日 ' + ('0' + gen.getHours()).slice(-2) + ':' + ('0' + gen.getMinutes()).slice(-2);
     var age = (Date.now() - new Date(D.date + 'T20:00:00Z').getTime()) / 864e5;
-    if (D.demo) h += '<div class="banner">⚠️ 当前是<b>示例数据</b>（随机生成，股票代码是假的），用来展示页面效果。第一次真实扫描完成后会自动替换。</div>';
+    if (D.demo) h += '<div class="banner">当前是<b>示例数据</b>（随机生成，股票代码是假的），用来展示页面效果。第一次真实扫描完成后会自动替换。</div>';
     else if (age > 4) h += '<div class="banner">数据已经 ' + Math.floor(age) + ' 天没有更新。可能是假期休市，或者扫描任务出错，可以去 GitHub 仓库的 Actions 页面查看。</div>';
-    if (D.stale) h += '<div class="banner">⏳ Yahoo 的数据还停在 ' + esc(D.stale.have.slice(5)) + '，' + esc(D.stale.expected.slice(5)) + ' 的收盘数据还没出来。今晚美东 9 点多和明早会自动重试；下面先显示 ' + esc(D.stale.have.slice(5)) + ' 收盘的结果。</div>';
+    if (D.stale) h += '<div class="banner">Yahoo 的数据还停在 ' + esc(D.stale.have.slice(5)) + '，' + esc(D.stale.expected.slice(5)) + ' 的收盘数据还没出来。今晚美东 9 点多和明早会自动重试；下面先显示 ' + esc(D.stale.have.slice(5)) + ' 收盘的结果。</div>';
     h += '<div class="meta"><span>数据日期 <b style="color:var(--ink)">' + esc(D.date) + '</b>（美股收盘）</span><span>扫描 ' + D.scanned + ' 只</span>' + (genTxt ? '<span>更新于 ' + genTxt + '</span>' : '') + '</div>';
 
     var lab = R.label || '—', rc = lab === '进攻' ? 'rg-on' : lab === '防守' ? 'rg-off' : 'rg-mid';
@@ -783,7 +783,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
     for (var i = 0; i < D.candidates.length; i++) for (var j = 0; j < D.candidates[i].tags.length; j++) { var k = D.candidates[i].tags[j]; counts[k] = (counts[k] || 0) + 1; }
     h += '<h3>今日候选</h3><div class="filters"><button class="chip' + (filter === 'all' ? ' on' : '') + '" data-f="all">全部<span class="n">' + counts.all + '</span></button>';
     for (i = 0; i < keys.length; i++) h += '<button class="chip' + (filter === keys[i] ? ' on' : '') + '" data-f="' + keys[i] + '">' + esc(S[keys[i]].name) + '<span class="n">' + (counts[keys[i]] || 0) + '</span></button>';
-    h += '<select class="sortsel" id="sortSel"><option value="score">按综合评分</option><option value="rs">按相对强度</option><option value="vr">按量比</option><option value="chg">按今日涨幅</option><option value="r">按盈亏比</option></select><button class="btn vtog" id="vTog">' + (VIEW === 'list' ? '▦ 卡片' : '☰ 列表') + '</button></div>';
+    h += '<select class="sortsel" id="sortSel"><option value="score">按综合评分</option><option value="rs">按相对强度</option><option value="vr">按量比</option><option value="chg">按今日涨幅</option><option value="r">按盈亏比</option></select><button class="btn vtog" id="vTog">' + (VIEW === 'list' ? '▦ 卡片' : '列表') + '</button></div>';
     var list = D.candidates.filter(function (c) { return filter === 'all' || c.tags.indexOf(filter) >= 0; });
     list.sort(function (a, b) { return b[sortKey] - a[sortKey]; });
     var tiered = list.some(function (c) { return c.tier; });
@@ -795,7 +795,7 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
       else if (VIEW === 'list') { h += '<div class="clist">'; for (i = 0; i < top.length; i++) h += rowHTML(top[i]); h += '</div>'; }
       else { h += '<div class="list">'; for (i = 0; i < top.length; i++) h += candHTML(top[i]); h += '</div>'; }
       if (rest.length) {
-        h += '<details class="watchd" data-o="watch"' + (OPENS.watch ? ' open' : '') + '><summary>👀 观察名单 ' + rest.length + ' 只（没进精选的原因写在每一行）▾</summary><div class="clist">';
+        h += '<details class="watchd" data-o="watch"' + (OPENS.watch ? ' open' : '') + '><summary>观察名单 ' + rest.length + ' 只（没进精选的原因写在每一行）▾</summary><div class="clist">';
         for (i = 0; i < rest.length; i++) h += rowHTML(rest[i]);
         h += '</div></details>';
       }
@@ -876,6 +876,6 @@ svg.bsv{width:100%;height:60px;display:block;margin-top:10px}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

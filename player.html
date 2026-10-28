@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#101214">
@@ -77,7 +77,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
 </head>
 <body>
 <div class="wrap">
-  <header><a class="brand" href="./"><i></i>探测播放器</a><button class="btn ghost" id="localBtn">📁 本地视频</button></header>
+  <header><a class="brand" href="./"><i></i>探测播放器</a><button class="btn ghost" id="localBtn">本地视频</button></header>
   <div class="bar"><input id="url" type="url" placeholder="粘贴视频地址或网页链接…" autocomplete="off" autocapitalize="off" spellcheck="false"><button class="btn primary" id="go">探测播放</button></div>
   <div class="status" id="status"></div>
 
@@ -196,16 +196,16 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
   function probePage(u) {
     var i = 0, errs = [];
     function next() {
-      if (i >= PROXIES.length) { status('❌ 读取网页失败（' + esc(errs.join('；')) + '）。这个网站可能禁止外部读取。可以在电脑浏览器按 F12 → Network，筛选 m3u8 或 mp4，把地址复制过来。', 'err'); return; }
+      if (i >= PROXIES.length) { status('读取网页失败（' + esc(errs.join('；')) + '）。这个网站可能禁止外部读取。可以在电脑浏览器按 F12 → Network，筛选 m3u8 或 mp4，把地址复制过来。', 'err'); return; }
       var px = PROXIES[i++];
-      status('🔎 正在' + px.name + '网页并查找视频…（' + i + '/' + PROXIES.length + '）');
+      status('正在' + px.name + '网页并查找视频…（' + i + '/' + PROXIES.length + '）');
       fetchText(px.make(u), i === 1 ? 7000 : 15000).then(function (res) {
         if (/^(video|audio)\//.test(res.ct)) { play({ kind: /^audio/.test(res.ct) ? 'audio' : 'video', url: u }, host(u)); return; }
         if (/mpegurl/.test(res.ct) || /^#EXTM3U/.test(res.text)) { play({ kind: 'hls', url: u }, host(u)); return; }
         var r = sniff(res.text, u);
         if (!r.items.length) { errs.push(px.name + '：没找到视频'); if (res.text.length > 2000) { status('没有在网页源码里找到视频地址。视频可能是登录后或由脚本动态加载的，也可能是加密内容。', 'err'); showCands([], r.title); return; } next(); return; }
         showCands(r.items, r.title);
-        status('✅ 找到 ' + r.items.length + ' 个媒体地址，正在播放第一个。如果播不了，点下面列表里的其他地址试试。', 'ok');
+        status('找到 ' + r.items.length + ' 个媒体地址，正在播放第一个。如果播不了，点下面列表里的其他地址试试。', 'ok');
         play(r.items[0], r.title || host(u), true);
       }, function (e) { errs.push(px.name + '：' + (e.message || '失败')); next(); });
     }
@@ -236,7 +236,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
   function loadHlsLib(cb) {
     if (window.Hls) { cb(); return; }
     var s = document.createElement('script'); s.src = 'vendor/hls.min.js';
-    s.onload = cb; s.onerror = function () { var s2 = document.createElement('script'); s2.src = 'https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js'; s2.onload = cb; s2.onerror = function () { status('❌ 无法加载 HLS 播放组件', 'err'); }; document.head.appendChild(s2); };
+    s.onload = cb; s.onerror = function () { var s2 = document.createElement('script'); s2.src = 'https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js'; s2.onload = cb; s2.onerror = function () { status('无法加载 HLS 播放组件', 'err'); }; document.head.appendChild(s2); };
     document.head.appendChild(s);
   }
   function play(c, title, fromPage) {
@@ -249,19 +249,19 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
       if (!fromPage) status('▶ 正在用 ' + c.site + ' 官方播放器播放', 'ok');
       addHist(c, title); return;
     }
-    status('⏳ 正在加载…');
+    status('正在加载…');
     if (c.kind === 'audio') stage.className = 'stage on audio';
     if (c.kind === 'hls' && !v.canPlayType('application/vnd.apple.mpegurl')) {
-      status('⏳ 加载 HLS 播放组件…');
+      status('加载 HLS 播放组件…');
       loadHlsLib(function () {
-        if (!window.Hls || !window.Hls.isSupported()) { status('❌ 这个浏览器不支持 m3u8 播放', 'err'); return; }
+        if (!window.Hls || !window.Hls.isSupported()) { status('这个浏览器不支持 m3u8 播放', 'err'); return; }
         hls = new window.Hls({ enableWorker: true, lowLatencyMode: true });
         hls.on(window.Hls.Events.ERROR, function (ev, d) {
           if (!d.fatal) return;
-          if (d.type === 'networkError') status('❌ 无法读取视频流（' + esc(d.details) + '）。多半是网站设置了防盗链或跨域限制，只能在原网站播放。', 'err');
-          else if (d.type === 'mediaError' && !hls._recovered) { hls._recovered = true; status('⚠️ 解码出错，正在尝试恢复…', 'err'); hls.recoverMediaError(); }
-          else if (d.type === 'mediaError') status('❌ 这个视频流的编码浏览器无法播放。' + ($('candBox').style.display === 'block' ? '试试下面列表里的其他地址。' : ''), 'err');
-          else status('❌ 播放失败：' + esc(d.details), 'err');
+          if (d.type === 'networkError') status('无法读取视频流（' + esc(d.details) + '）。多半是网站设置了防盗链或跨域限制，只能在原网站播放。', 'err');
+          else if (d.type === 'mediaError' && !hls._recovered) { hls._recovered = true; status('解码出错，正在尝试恢复…', 'err'); hls.recoverMediaError(); }
+          else if (d.type === 'mediaError') status('这个视频流的编码浏览器无法播放。' + ($('candBox').style.display === 'block' ? '试试下面列表里的其他地址。' : ''), 'err');
+          else status('播放失败：' + esc(d.details), 'err');
         });
         hls.on(window.Hls.Events.MANIFEST_PARSED, function (ev, d) { status('▶ 正在播放 HLS 流' + (d.levels && d.levels.length > 1 ? '（' + d.levels.length + ' 种清晰度，自动切换）' : ''), 'ok'); tryPlay(); });
         hls.loadSource(c.url); hls.attachMedia(v);
@@ -283,7 +283,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
   v.addEventListener('error', function () {
     if (!current || hls || !v.getAttribute('src')) return;
     var code = v.error ? v.error.code : 0;
-    status('❌ 无法播放' + (code === 4 ? '：格式不支持，或地址无效、被防盗链拦截。' : code === 2 ? '：网络错误。' : '。') + ' <a href="' + esc(current.url) + '" target="_blank" rel="noopener noreferrer">在新标签页直接打开 ↗</a>', 'err');
+    status('无法播放' + (code === 4 ? '：格式不支持，或地址无效、被防盗链拦截。' : code === 2 ? '：网络错误。' : '。') + ' <a href="' + esc(current.url) + '" target="_blank" rel="noopener noreferrer">在新标签页直接打开 ↗</a>', 'err');
   });
   v.addEventListener('timeupdate', function () {
     if (!current || !isFinite(v.duration)) return;
@@ -404,6 +404,6 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

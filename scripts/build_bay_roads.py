@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🛣️ 湾区高速公路路线图 → bay/roads.json（sf.html / sj.html 的「湾区路况」用）
+"""湾区高速公路路线图 → bay/roads.json（sf.html / sj.html 的「湾区路况」用）
 
 从 OpenStreetMap（Overpass API）取湾区所有带编号的高速（motorway / trunk），按路线编号分组、简化坐标。
 线路很少变，每月重跑一次。只用标准库。  python3 scripts/build_bay_roads.py

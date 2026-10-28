@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🌴 圣何塞（硅谷）实景交通图 → sj/transit.json（sj.html 用）
+"""圣何塞（硅谷）实景交通图 → sj/transit.json（sj.html 用）
 
 · VTA 轻轨（蓝 / 绿 / 橙线）、Caltrain、几条主要 VTA 巴士：从官方公开发布的 GTFS 时刻表里取真实走向和车站
   （通过 Mobility Database 公开目录找下载地址）。拿不到时沿用上一版 sj/transit.json 里的线路。
@@ -277,7 +277,7 @@ def main():
                     break
                 except Exception as e:
                     print("  ✗", url[:90], e, flush=True)
-    names = {"vta": "🚋 VTA 轻轨", "caltrain": "🚆 Caltrain", "vbus": "🚌 VTA 主要巴士"}
+    names = {"vta": "VTA 轻轨", "caltrain": "Caltrain", "vbus": "VTA 主要巴士"}
     layers = []
     for k in ("vta", "caltrain", "vbus"):
         if k in got:
@@ -288,9 +288,9 @@ def main():
         else:
             layers.append({"k": k, "n": names[k], "lines": [], "st": []})
     big = {"BERY", "MLPT", "WARM", "FRMT", "EMBR", "POWL", "MONT", "SFIA", "MLBR", "12TH", "19TH", "COLS", "BAYF", "DALY", "RICH", "ANTC", "DUBL"}
-    layers.append({"k": "bart", "n": "🚇 BART", "lines": [{"n": n, "c": c, "st": seq} for n, c, seq in BL],
+    layers.append({"k": "bart", "n": "BART", "lines": [{"n": n, "c": c, "st": seq} for n, c, seq in BL],
                    "st": [dict(st(BS, k), big=k in big) for k in BS]})
-    layers.append({"k": "tips", "n": "💡 用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS]})
+    layers.append({"k": "tips", "n": "用心提示", "lines": [], "st": [], "tips": [{"ll": [a, b], "e": e, "t": t, "d": d, "w": w} for a, b, e, t, d, w in TIPS]})
     out = {"note": "VTA 轻轨、Caltrain、巴士线路来自官方 GTFS；BART 车站间按直线连接。", "layers": layers}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:

@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-tw="mid">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <link rel="manifest" href="tools.webmanifest">
@@ -139,21 +139,21 @@ th{font-size:12px;color:var(--soft);font-weight:600}
 </head>
 <body>
 <div class="wrap">
-<header><a class="brand" href="index.html">🦺 现场工具</a></header>
+<header><a class="brand" href="index.html">现场工具</a></header>
 <nav class="tabs" id="tabs">
   <button data-t="no"><span>🔢</span>柜号</button><button data-t="load"><span>📦</span>装柜</button><button data-t="cv"><span>⚖️</span>换算</button><button data-t="chk"><span>📸</span>验柜</button><button data-t="log"><span>📋</span>日志</button>
 </nav>
 
 <section id="v-no">
   <div class="card">
-    <button class="snap" id="snapNo">📷 拍照识别柜号</button>
+    <button class="snap" id="snapNo">拍照识别柜号</button>
     <div class="ocr" id="ocrNo" hidden></div>
     <input class="big-in" id="no" placeholder="柜号 如 CSQU3054383" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">
     <div class="res" id="noRes"></div>
     <div class="row"><button class="btn pri" id="noSave">记下来</button><button class="btn" id="noCopy">复制</button><button class="btn" id="noClr">清空</button></div>
   </div>
   <div class="card"><h3>今天记过的柜号</h3><div class="hist" id="hist"></div></div>
-  <div class="hint">校验位按 ISO 6346 算，自动把放错位置的 O/0、I/1 之类纠正过来。拍照识别用 Cloudflare 的 AI 读图（需要先在首页输入密码解锁、勾选「记住我」，照片不保存），识别结果一定会过一遍校验位。原理见 <a href="kb.html#iso-6346-check-digit">知识库</a>。记录只存在这台手机上。</div>
+  <div class="hint">校验位按 ISO 6346 算，会自动纠正 O/0、I/1。拍照识别要先在首页登录。<a href="kb.html#iso-6346-check-digit">原理</a></div>
 </section>
 
 <section id="v-load" hidden>
@@ -174,14 +174,14 @@ th{font-size:12px;color:var(--soft);font-weight:600}
   <div class="card">
     <div class="f2"><label>柜号<input id="cNo" autocapitalize="characters" autocomplete="off" spellcheck="false"></label><label>封条号<input id="cSeal" autocapitalize="characters" autocomplete="off" spellcheck="false"></label></div>
     <div class="hint" id="cNoRes" style="margin-top:4px"></div>
-    <button class="snap sm" id="snapChk">📷 拍照识别柜号 / 封条号</button>
+    <button class="snap sm" id="snapChk">拍照识别柜号 / 封条号</button>
     <div class="ocr" id="ocrChk" hidden style="margin-top:8px"></div>
   </div>
   <input type="file" id="snapFile" accept="image/*" capture="environment" hidden>
   <div class="card"><h3>七点 + 封条检查 <small class="hint">点 ✓ / ✗，拍照，写备注</small></h3><div id="cks"></div></div>
   <div class="card">
     <div class="row" style="margin-top:0"><button class="btn pri" id="mk">生成汇总图</button><button class="btn" id="txt">复制文字记录</button><button class="btn" id="share" hidden>分享</button><button class="btn" id="reset">重新开始</button></div>
-    <div class="hint" style="margin-top:6px">汇总图把柜号、封条号、每项结果和照片拼成一张，长按保存或分享给调度。照片只在这台手机里，刷新页面就没了。</div>
+    <div class="hint" style="margin-top:6px">长按汇总图保存，或发给调度。照片刷新就没了。</div>
     <img id="prev" hidden alt="">
   </div>
 </section>
@@ -194,21 +194,21 @@ th{font-size:12px;color:var(--soft);font-weight:600}
       <label>日期<input type="date" id="lgD"></label>
       <label>时间<input type="time" id="lgT"></label>
     </div>
-    <div class="chips" id="lgS"><button data-s="0" class="on">✅ 已做完</button><button data-s="1">📌 待办 / 要跟进</button></div>
+    <div class="chips" id="lgS"><button data-s="0" class="on">已做完</button><button data-s="1">待办 / 要跟进</button></div>
     <div class="lg-f" id="lgDueW" hidden><label>什么时候前要做完<input type="date" id="lgDue"></label><label>&nbsp;<input id="lgWho" placeholder="交给谁（可不填）"></label></div>
     <div class="row"><button class="btn pri" id="lgAdd">记下来</button><button class="btn" id="lgCancel" hidden>取消修改</button><span class="hint" id="lgMsg"></span></div>
   </div>
   <div class="lg-sum" id="lgSum"></div>
   <div class="card" style="padding:10px 12px">
-    <div class="chips" id="lgR" style="margin-top:0"><button data-r="today" class="on">今天</button><button data-r="week">本周</button><button data-r="month">本月</button><button data-r="todo">📌 待办</button><button data-r="all">全部</button></div>
+    <div class="chips" id="lgR" style="margin-top:0"><button data-r="today" class="on">今天</button><button data-r="week">本周</button><button data-r="month">本月</button><button data-r="todo">待办</button><button data-r="all">全部</button></div>
     <div class="chips" id="lgFC"></div>
-    <input id="lgQ" class="lg-in" style="min-height:0;margin-top:8px;padding:8px 12px;font-size:15px" placeholder="🔍 搜索：柜号、人名、关键词…">
+    <input id="lgQ" class="lg-in" style="min-height:0;margin-top:8px;padding:8px 12px;font-size:15px" placeholder="搜索：柜号、人名、关键词…">
   </div>
   <div id="lgList"></div>
   <div class="card">
     <h3>导出 / 备份</h3>
-    <div class="lg-tools"><button class="btn pri" id="lgHand">📋 复制交接班记录</button><button class="btn" id="lgCsv">⬇ 导出表格（Excel）</button><button class="btn" id="lgBak">💾 备份</button><label class="btn" style="cursor:pointer">📂 恢复备份<input type="file" id="lgImp" accept=".json,application/json" hidden></label></div>
-    <div class="hint" style="margin-top:8px">「交接班记录」把今天做过的事和还没完成的待办整理成一段文字，贴到微信、短信或邮件里。「导出表格」按当前筛选导出 CSV，用 Excel 或 Google 表格打开。<br>记录只存在这台手机的浏览器里（清浏览器数据会丢），隔一段时间点「备份」存一份文件。网站是公开的，但记录不会上传。</div>
+    <div class="lg-tools"><button class="btn pri" id="lgHand">复制交接班记录</button><button class="btn" id="lgCsv">⬇ 导出表格（Excel）</button><button class="btn" id="lgBak">备份</button><label class="btn" style="cursor:pointer">恢复备份<input type="file" id="lgImp" accept=".json,application/json" hidden></label></div>
+    <div class="hint" style="margin-top:8px">记录只存在这台手机里，隔段时间点「备份」存一份。</div>
   </div>
 </section>
 </div>
@@ -292,7 +292,7 @@ th{font-size:12px;color:var(--soft);font-weight:600}
     else if (r.state === 'bad') h += '<span class="hint">格式不对：前 4 位是字母，后面全是数字</span>';
     else {
       if (r.fixed.length) h += '<div class="hint">已自动纠正：' + r.fixed.join('，') + '</div>';
-      if ('UJZ'.indexOf(r.s.charAt(3)) < 0) h += '<div class="hint">⚠️ 第 4 位通常是 U，这里是 ' + r.s.charAt(3) + '</div>';
+      if ('UJZ'.indexOf(r.s.charAt(3)) < 0) h += '<div class="hint">第 4 位通常是 U，这里是 ' + r.s.charAt(3) + '</div>';
       if (r.state === 'calc') h += '<div class="bigno">' + grp(r.s) + '<i>' + r.cd + '</i></div><div class="hint">校验位是 ' + r.cd + '</div>';
       else if (r.state === 'ok') h += '<div class="bigno">' + grp(r.s) + '</div><div class="ok">✓ 柜号正确</div>';
       else {
@@ -345,7 +345,7 @@ th{font-size:12px;color:var(--soft);font-weight:600}
     }).join('') + '</table>';
     var Lp = 48 * 2.54, Wp = 40 * 2.54, Hmax = (72 - 6) * 2.54, best = { per: 0 }, dims = [[l, w, h], [l, h, w], [w, h, l]];
     dims.forEach(function (d) { var lay = fit(Lp, Wp, d[0], d[1]), layers = Math.floor(Hmax / d[2]), per = lay * layers; if (kg) per = Math.min(per, Math.floor(680 / kg)); if (per > best.per) best = { per: per, lay: lay, layers: layers, up: d === dims[0] }; });
-    if (best.per) out += '<div class="hint" style="margin-top:8px">📦 48×40 托盘：每层 <b>' + best.lay + '</b> 箱 × <b>' + best.layers + '</b> 层，一托最多约 <b>' + best.per + '</b> 箱' + (best.up ? '' : '（要侧放，注意朝上标志）') + '，' + n + ' 箱约 <b>' + Math.ceil(n / best.per) + '</b> 托。</div>';
+    if (best.per) out += '<div class="hint" style="margin-top:8px">48×40 托盘：每层 <b>' + best.lay + '</b> 箱 × <b>' + best.layers + '</b> 层，一托最多约 <b>' + best.per + '</b> 箱' + (best.up ? '' : '（要侧放，注意朝上标志）') + '，' + n + ' 箱约 <b>' + Math.ceil(n / best.per) + '</b> 托。</div>';
     var warn = [];
     if (kg > 50 * 0.45359237 + 0.01) warn.push('每箱超过 50 磅：送 FBA 要贴 Team Lift 或拆箱');
     if (Math.max(l, w, h) > 25 * 2.54 + 0.1) warn.push('有一边超过 25 英寸：FBA 多件标准品箱子不允许');
@@ -565,7 +565,7 @@ th{font-size:12px;color:var(--soft);font-weight:600}
     var a = b.getAttribute('data-a');
     if (a === 'tg') {
       if (!e.todo) { e.todo = true; e.done = null; toast('改成待办了'); }
-      else if (!e.done) { e.done = ymd(new Date()).slice(5).replace('-', '/') + ' ' + hm(new Date()); toast('✅ 完成'); }
+      else if (!e.done) { e.done = ymd(new Date()).slice(5).replace('-', '/') + ' ' + hm(new Date()); toast('完成'); }
       else { e.done = null; toast('改回没完成'); }
       lsave(); lgRender();
     } else if (a === 'rm') {
@@ -640,7 +640,7 @@ th{font-size:12px;color:var(--soft);font-weight:600}
   $('snapFile').onchange = function () {
     var f = this.files && this.files[0]; if (!f) return;
     var box = $(SNAP_TO === 'no' ? 'ocrNo' : 'ocrChk');
-    box.hidden = false; box.innerHTML = '⏳ 正在识别…（一般 3–10 秒）';
+    box.hidden = false; box.innerHTML = '正在识别…（一般 3–10 秒）';
     shrink(f, function (data) {
       if (!data) { box.innerHTML = '照片读不出来，换一张试试'; return; }
       var x = new XMLHttpRequest();
@@ -660,7 +660,7 @@ th{font-size:12px;color:var(--soft);font-weight:600}
     if (!C.length && !S.length) h += '没认出柜号。靠近一点、正对着拍，避开反光再试一次。' + (r.text ? '<div class="hint">读到的文字：' + esc(r.text) + '</div>' : '');
     if (C.length) h += '<div>柜号（点一下填进去）：</div><div class="cands">' + C.map(function (c) {
       return '<button data-fill="' + esc(c.no) + '" data-k="no" class="' + (c.ok ? 'good' : '') + '">' + esc(c.no.slice(0, 4) + ' ' + c.no.slice(4, 10) + ' ' + c.no.slice(10)) +
-        '<small>' + (c.calc ? '补算校验位' : c.ok ? (c.fixed ? '✓ 已纠错' : '✓') : '⚠️ 校验位不对') + '</small></button>';
+        '<small>' + (c.calc ? '补算校验位' : c.ok ? (c.fixed ? '✓ 已纠错' : '✓') : '校验位不对') + '</small></button>';
     }).join('') + '</div>';
     if (S.length && SNAP_TO === 'chk') h += '<div style="margin-top:6px">封条号：</div><div class="cands">' + S.map(function (s) { return '<button data-fill="' + esc(s) + '" data-k="seal">' + esc(s) + '</button>'; }).join('') + '</div>';
     h += '<div class="hint" style="clear:both">AI 读图可能出错，填进去之后请对一眼实物</div>';
@@ -680,6 +680,6 @@ th{font-size:12px;color:var(--soft);font-weight:600}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

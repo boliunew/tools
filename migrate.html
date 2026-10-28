@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-tw="mid">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -28,7 +28,7 @@ ul{font-size:13px;color:var(--soft);padding-left:20px;margin:6px 0}
 </head>
 <body>
 <div class="wrap">
-  <h1>🧳 搬家：导出 / 导入进度</h1>
+  <h1>搬家：导出 / 导入进度</h1>
   <p>词库进度、自选股、购物清单、收藏的电台……都存在浏览器里，而且每个网址各存各的。换到家里的主机（新网址）时，在旧网站「导出」，到新网站「导入」就行。</p>
   <div class="card"><h2>① 在旧网站导出</h2>
     <div id="sum" style="font-size:13.5px;color:var(--soft)"></div>
@@ -38,7 +38,7 @@ ul{font-size:13px;color:var(--soft);padding-left:20px;margin:6px 0}
   <div class="card"><h2>② 在新网站导入</h2>
     <p style="margin:0 0 6px">粘贴刚才复制的内容，或者选下载的文件。同名的数据会被覆盖。</p>
     <textarea id="inp" placeholder='{"v":1,"items":{...}}'></textarea>
-    <div class="row"><button class="pri" id="imp">导入</button><label class="btn">📎 选文件<input type="file" id="file" accept=".json,application/json" style="display:none"></label></div>
+    <div class="row"><button class="pri" id="imp">导入</button><label class="btn">选文件<input type="file" id="file" accept=".json,application/json" style="display:none"></label></div>
     <div class="msg" id="msg"></div>
   </div>
 </div>
@@ -78,11 +78,11 @@ ul{font-size:13px;color:var(--soft);padding-left:20px;margin:6px 0}
     if (!d || !d.items) { $('msg').textContent = '内容不对：缺少 items'; return; }
     var n = 0, k;
     for (k in d.items) if (d.items.hasOwnProperty(k) && !SKIP.test(k) && typeof d.items[k] === 'string') { try { localStorage.setItem(k, d.items[k]); n++; } catch (e) { } }
-    $('msg').innerHTML = '✅ 导入了 ' + n + ' 项' + (window.TOOLS_LOCAL ? '，并已同步到家里的主机——手机和电脑都能看到。' : '。') + ' <a href="./">回主页</a>';
+    $('msg').innerHTML = '导入了 ' + n + ' 项' + (window.TOOLS_LOCAL ? '，并已同步到家里的主机——手机和电脑都能看到。' : '。') + ' <a href="./">回主页</a>';
   };
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

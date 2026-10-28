@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>暗房 · 照片微调</title>
 <meta name="robots" content="noindex,nofollow">
@@ -527,15 +527,15 @@ function syncButtons(){
       row.appendChild(b);
     });
     const note = document.createElement("p"); note.className = "pnote";
-    note.innerHTML = "模拟偏光镜在合适光线和角度下常见的观感：蓝天加深、白云更突出、非金属表面的反光变弱、远景对比更强。真偏光镜的效果因太阳方向、反光角度和镜片而异；「降低灰雾」是图像处理算法，不是偏光镜本身的功能。镜片角度是简化规则：0° 模拟效果最强，90° 最弱。<br>被反光盖住的内容拍下来就丢了，软件找不回来。";
+    note.innerHTML = "模拟偏光镜在合适光线下常见的样子，真偏光镜的效果要看光线方向和角度。";
     host.appendChild(g); host.appendChild(row); host.appendChild(note);
   }
   {
     const host = $(`.pane[data-p="tex"]`);
     const row = document.createElement("div"); row.className = "row"; row.style.marginTop = "12px";
-    row.innerHTML = '<button class="gbtn" id="bDetail" style="color:var(--amber);border-color:var(--amber)">✨ 自动细节</button>';
+    row.innerHTML = '<button class="gbtn" id="bDetail" style="color:var(--amber);border-color:var(--amber)">自动细节</button>';
     const tip = document.createElement("p"); tip.className = "pnote"; tip.style.marginTop = "4px";
-    tip.textContent = "按画面的清晰程度和噪点，自动配清晰度、纹理和锐化。增强的是照片里已有的细节，不会凭空生成。";
+    tip.textContent = "按画面清晰度和噪点自动配参数。";
     host.prepend(tip); host.prepend(row);
   }
   Object.entries(SCENES).forEach(([k,label]) => {
@@ -1717,6 +1717,6 @@ $("#bSave").addEventListener("click", async () => {
 <script>window.TNAV_Y = 0.17;</script>
 <script src="savesheet.js?v=1"></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

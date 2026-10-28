@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-tw="mid">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <script src="sync.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
@@ -74,12 +74,12 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:v
 </head>
 <body>
 <div class="wrap">
-  <div class="hd"><a class="home" href="index.html">‹ 首页</a><h1>🧠 思考本</h1>
+  <div class="hd"><a class="home" href="index.html">‹ 首页</a><h1>思考本</h1>
     <p>记下自己的判断、证据和没想通的问题；你关注的事情有新报道时，系统会把它们接到时间线上，相关新闻出现时也会提醒你「之前想过」。</p></div>
   <div class="tabs" id="tabs"></div>
   <div id="main"><div class="empty">加载中…</div></div>
   <div class="foot">笔记存在这台设备的浏览器里，「🧳 搬家」导出时会一起带走；也可以在下面单独导出备份。<br>
-    <a href="#" id="exp">⬇️ 导出思考本</a> · <a href="#" id="imp">⬆️ 导入</a> · <a href="news.html#world">🌍 去看国际局势</a> · <a href="kb.html">🗂️ 知识库</a></div>
+    <a href="#" id="exp">⬇️ 导出思考本</a> · <a href="#" id="imp">⬆️ 导入</a> · <a href="news.html#world">去看国际局势</a> · <a href="kb.html">知识库</a></div>
   <input type="file" id="file" accept=".json,application/json" hidden>
 </div>
 <div class="toast" id="toast"></div>
@@ -92,7 +92,7 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:v
   function toast(t) { var el = $('toast'); el.textContent = t; el.className = 'toast on'; clearTimeout(el._t); el._t = setTimeout(function () { el.className = 'toast'; }, 1800); }
   function day(iso) { var d = new Date(iso); return (d.getMonth() + 1) + '/' + d.getDate(); }
   function today() { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
-  var IMPN = { oil: '🛢️ 油价', ship: '🚢 航运', trade: '🧾 关税贸易', chip: '💾 芯片', market: '📈 股市利率', food: '🌾 粮价', sec: '⚔️ 冲突', cn: '🤝 中美', travel: '✈️ 出行', nature: '🌪️ 天灾', us: '🇺🇸 美国政策' };
+  var IMPN = { oil: '油价', ship: '航运', trade: '关税贸易', chip: '芯片', market: '股市利率', food: '粮价', sec: '冲突', cn: '中美', travel: '出行', nature: '天灾', us: '🇺🇸 美国政策' };
   var N = Think.load(), TAB = (location.hash || '').replace('#', '') || 'all', OPEN = {}, EDIT = null, ARCH = [], WORLD = [];
   if (!/^(all|open|follow|done)$/.test(TAB)) TAB = 'all';
 
@@ -117,7 +117,7 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:v
   function tabs() {
     var c = { all: N.length, open: N.filter(function (n) { return n.status !== 'done' && n.q; }).length, follow: N.filter(function (n) { return n.follow; }).length, done: N.filter(function (n) { return n.status === 'done'; }).length };
     var fn = N.filter(function (n) { return n.follow && newCount(n); }).length;
-    $('tabs').innerHTML = [['all', '📝 全部'], ['open', '❓ 没想通的'], ['follow', '📌 关注的事件' + (fn ? ' 🔴' : '')], ['done', '✅ 想通了']].map(function (t) {
+    $('tabs').innerHTML = [['all', '全部'], ['open', '没想通的'], ['follow', '关注的事件' + (fn ? ' 🔴' : '')], ['done', '想通了']].map(function (t) {
       return '<button data-t="' + t[0] + '" class="' + (TAB === t[0] ? 'on' : '') + '">' + t[1] + '<small>' + c[t[0]] + '</small></button>';
     }).join('');
   }
@@ -139,49 +139,49 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:v
     var nc = n.follow ? newCount(n) : 0, open = OPEN[n.id];
     var h = '<div class="card' + (open ? ' open' : '') + '" data-id="' + n.id + '"><div class="top"><h3>' + esc(n.t || '（没有标题）') + '</h3>' +
       '<div class="m">' + esc((n.created || '').slice(0, 10)) + (n.revs && n.revs.length ? ' · 修正过 ' + n.revs.length + ' 次' : '') + (n.src && n.src.s ? ' · 来自 ' + esc(n.src.s) : '') + '</div>' +
-      '<div class="chips">' + (n.follow ? '<span class="f">📌 关注中</span>' : '') + (nc ? '<span class="new">' + nc + ' 条新报道</span>' : '') + (n.status === 'done' ? '<span class="d">✅ 想通了</span>' : '') +
+      '<div class="chips">' + (n.follow ? '<span class="f">关注中</span>' : '') + (nc ? '<span class="new">' + nc + ' 条新报道</span>' : '') + (n.status === 'done' ? '<span class="d">想通了</span>' : '') +
       (n.c || []).map(function (x) { return '<span>' + esc(x) + '</span>'; }).join('') + (n.imp || []).map(function (x) { return '<span>' + esc(IMPN[x] || x) + '</span>'; }).join('') +
       (n.tags || []).map(function (x) { return '<span>#' + esc(x) + '</span>'; }).join('') + '</div>' +
       (!open && n.q ? '<div class="q1">❓ ' + esc(n.q.split('\n')[0]) + '</div>' : (!open && n.judge ? '<div class="q1">💡 ' + esc(n.judge.split('\n')[0]) + '</div>' : '')) + '</div>';
     if (open) {
       h += '<div class="bd">';
-      if (n.src && n.src.l) h += '<div class="sec"><b>📰 起因</b><p><a href="' + esc(n.src.l) + '" target="_blank" rel="noopener">' + esc(n.src.t || n.src.e) + '</a>' + (n.src.e && n.src.t !== n.src.e ? '<br><small style="color:var(--faint)">' + esc(n.src.e) + '</small>' : '') + '</p></div>';
-      [['judge', '💡 我的判断', ''], ['pro', '👍 支持的证据', 'pro'], ['con', '👎 反对的证据 / 可能推翻它的', 'con'], ['q', '❓ 还没想通的', 'q']].forEach(function (f) {
+      if (n.src && n.src.l) h += '<div class="sec"><b>起因</b><p><a href="' + esc(n.src.l) + '" target="_blank" rel="noopener">' + esc(n.src.t || n.src.e) + '</a>' + (n.src.e && n.src.t !== n.src.e ? '<br><small style="color:var(--faint)">' + esc(n.src.e) + '</small>' : '') + '</p></div>';
+      [['judge', '我的判断', ''], ['pro', '支持的证据', 'pro'], ['con', '反对的证据 / 可能推翻它的', 'con'], ['q', '还没想通的', 'q']].forEach(function (f) {
         if (n[f[0]]) h += '<div class="sec ' + f[2] + '"><b>' + f[1] + '</b><p>' + esc(n[f[0]]) + '</p></div>';
       });
-      if (n.revs && n.revs.length) h += '<div class="sec"><b>🔄 后来我觉得…</b>' + n.revs.map(function (r) { return '<div class="rev"><small>' + esc(r.d) + '</small>' + esc(r.text) + '</div>'; }).join('') + '</div>';
+      if (n.revs && n.revs.length) h += '<div class="sec"><b>后来我觉得…</b>' + n.revs.map(function (r) { return '<div class="rev"><small>' + esc(r.d) + '</small>' + esc(r.text) + '</div>'; }).join('') + '</div>';
       if (n.follow || timeline(n).length) {
         var tl = timeline(n), s = n.seen || n.created || '';
-        h += '<div class="tl"><b class="h">📌 事件时间线' + (tl.length ? '（最近 ' + tl.length + ' 条相关报道，粗体是你上次看过之后的）' : '') + '</b>' +
+        h += '<div class="tl"><b class="h">事件时间线' + (tl.length ? '（最近 ' + tl.length + ' 条相关报道，粗体是你上次看过之后的）' : '') + '</b>' +
           (tl.length ? tl.map(function (st) {
             var isNew = (st.d || '') > s;
             return '<div class="it' + (isNew ? ' new' : '') + '"><i>' + day(st.d) + '</i><div><a href="' + esc(st.l) + '" target="_blank" rel="noopener">' + esc(st.t || st.e) + '</a><small>' + esc(st.s) + (st.n >= 2 ? ' · ' + st.n + ' 家报道' : '') + (st.c && st.c.length ? ' · ' + esc(st.c.join('、')) : '') + '</small></div></div>';
           }).join('') : '<div class="it"><div style="color:var(--faint)">暂时还没有新的相关报道。系统按「追踪关键词」找，觉得找得不准可以在编辑里改关键词。</div></div>') + '</div>';
       }
-      h += '<div class="acts"><button data-a="rev">🔄 后来我觉得…</button><button data-a="edit">✏️ 编辑</button><button data-a="follow">' + (n.follow ? '📌 取消关注' : '📌 关注这件事') + '</button>' +
-        '<button data-a="done">' + (n.status === 'done' ? '↩️ 重新打开' : '✅ 想通了') + '</button><button data-a="ask">🤖 请 Claude 补背景</button><button data-a="del">🗑️ 删除</button></div></div>';
+      h += '<div class="acts"><button data-a="rev">后来我觉得…</button><button data-a="edit">编辑</button><button data-a="follow">' + (n.follow ? '取消关注' : '关注这件事') + '</button>' +
+        '<button data-a="done">' + (n.status === 'done' ? '↩️ 重新打开' : '想通了') + '</button><button data-a="ask">请 Claude 补背景</button><button data-a="del">删除</button></div></div>';
     }
     return h + '</div>';
   }
   function editor(n) {
     var src = n.src && (n.src.t || n.src.e);
-    return '<div class="ed" id="ed"><b style="font-size:16px">' + (n._new ? '💭 记一笔' : '✏️ 编辑') + '</b>' +
+    return '<div class="ed" id="ed"><b style="font-size:16px">' + (n._new ? '记一笔' : '编辑') + '</b>' +
       (src ? '<div class="src" style="margin-top:8px">📰 ' + esc(src) + (n.src.s ? ' · ' + esc(n.src.s) : '') + '</div>' : '') +
       '<label>这件事 / 这个问题，一句话</label><input id="f_t" value="' + esc(n.t || '') + '" placeholder="比如：美国限制芯片出口">' +
-      '<label>💡 我的判断 <small>我现在怎么看，写一句也行</small></label><textarea id="f_judge" placeholder="比如：短期会伤到美国芯片公司的收入，长期会逼着中国自己造">' + esc(n.judge || '') + '</textarea>' +
-      '<label>👍 支持的证据 <small>为什么这么想，可以空着</small></label><textarea id="f_pro">' + esc(n.pro || '') + '</textarea>' +
-      '<label>👎 反对的证据 <small>什么情况会说明我想错了，可以空着</small></label><textarea id="f_con">' + esc(n.con || '') + '</textarea>' +
-      '<label>❓ 还没想通的 <small>想继续弄明白的问题</small></label><textarea id="f_q" placeholder="比如：限制出口的成本最后由谁承担？">' + esc(n.q || '') + '</textarea>' +
-      '<label>🏷️ 自己的标签 <small>用空格隔开，比如 芯片 中美 港口</small></label><input id="f_tags" value="' + esc((n.tags || []).join(' ')) + '">' +
-      '<label>🔎 追踪关键词 <small>英文，系统用它们在新闻里找相关报道；自动从标题里挑的，不准可以改</small></label><input id="f_kw" value="' + esc((n.kw || []).join(' ')) + '" placeholder="chip export Nvidia">' +
-      '<label style="display:flex;align-items:center;gap:8px;font-weight:400;color:var(--ink)"><input type="checkbox" id="f_follow" style="width:auto"' + (n.follow ? ' checked' : '') + '> 📌 关注这件事（有新报道接到时间线上）</label>' +
+      '<label>我的判断 <small>我现在怎么看，写一句也行</small></label><textarea id="f_judge" placeholder="比如：短期会伤到美国芯片公司的收入，长期会逼着中国自己造">' + esc(n.judge || '') + '</textarea>' +
+      '<label>支持的证据 <small>为什么这么想，可以空着</small></label><textarea id="f_pro">' + esc(n.pro || '') + '</textarea>' +
+      '<label>反对的证据 <small>什么情况会说明我想错了，可以空着</small></label><textarea id="f_con">' + esc(n.con || '') + '</textarea>' +
+      '<label>还没想通的 <small>想继续弄明白的问题</small></label><textarea id="f_q" placeholder="比如：限制出口的成本最后由谁承担？">' + esc(n.q || '') + '</textarea>' +
+      '<label>自己的标签 <small>用空格隔开，比如 芯片 中美 港口</small></label><input id="f_tags" value="' + esc((n.tags || []).join(' ')) + '">' +
+      '<label>追踪关键词 <small>英文，系统用它们在新闻里找相关报道；自动从标题里挑的，不准可以改</small></label><input id="f_kw" value="' + esc((n.kw || []).join(' ')) + '" placeholder="chip export Nvidia">' +
+      '<label style="display:flex;align-items:center;gap:8px;font-weight:400;color:var(--ink)"><input type="checkbox" id="f_follow" style="width:auto"' + (n.follow ? ' checked' : '') + '> 关注这件事（有新报道接到时间线上）</label>' +
       '<div class="row"><button id="edCancel">取消</button><button class="p" id="edSave">保存</button></div></div>';
   }
   function render() {
     tabs();
     var h = '';
     if (EDIT) h += editor(EDIT);
-    if (!EDIT) h += '<div class="bar"><button class="p" id="addNew">＋ 记一个想法</button><button onclick="location.href=\'news.html#world\'">🌍 从新闻里找</button></div>';
+    if (!EDIT) h += '<div class="bar"><button class="p" id="addNew">＋ 记一个想法</button><button onclick="location.href=\'news.html#world\'">从新闻里找</button></div>';
     if (TAB === 'all' && !EDIT) {
       var wp = weekPick();
       if (wp) h += '<div class="tip">🗓️ <b>这周回看一个问题</b>：' + esc(wp.q.split('\n')[0]) + '<br><small>来自「' + esc(wp.t) + '」。有新的证据就补一句，没有就跳过，不用打卡。</small> <a href="#" data-open="' + wp.id + '">打开 ›</a></div>';
@@ -244,7 +244,7 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:v
     var k = a.getAttribute('data-a'), now = new Date().toISOString();
     if (k === 'edit') { EDIT = n; render(); window.scrollTo(0, 0); }
     else if (k === 'rev') { var txt = prompt('后来我觉得……（会带日期记下来，原来的判断保留）'); if (txt && txt.trim()) { (n.revs = n.revs || []).push({ d: today(), text: txt.trim() }); n.updated = now; persist(); render(); toast('记下了 ✓'); } }
-    else if (k === 'follow') { n.follow = !n.follow; if (n.follow) n.seen = now; n.updated = now; persist(); render(); toast(n.follow ? '📌 关注了，新报道会接到时间线上' : '取消关注了'); }
+    else if (k === 'follow') { n.follow = !n.follow; if (n.follow) n.seen = now; n.updated = now; persist(); render(); toast(n.follow ? '关注了，新报道会接到时间线上' : '取消关注了'); }
     else if (k === 'done') { n.status = n.status === 'done' ? 'open' : 'done'; n.updated = now; persist(); render(); }
     else if (k === 'del') { if (confirm('删除这条笔记？删了就找不回来了。')) { N = N.filter(function (x) { return x.id !== n.id; }); persist(); render(); } }
     else if (k === 'ask') { var p = askPrompt(n); try { navigator.clipboard.writeText(p).then(function () { toast('已复制，发给 Claude 就行'); }, function () { window.prompt('复制下面这段发给 Claude：', p); }); } catch (er) { window.prompt('复制下面这段发给 Claude：', p); } }
@@ -281,6 +281,6 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:v
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-tw="mid">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -107,7 +107,7 @@ a{color:var(--acc)}
 <body>
 <header class="hero"><div class="wrap">
   <a class="home" href="./">← 工具箱</a>
-  <h1>✈️ 机票比价<small>FLIGHTS</small></h1>
+  <h1>机票比价<small>FLIGHTS</small></h1>
   <p>填一次航线和日期，一键在 Google Flights、Kayak、Skyscanner、Expedia、西南航空、Trip.com 同时查价。保存常飞航线，下次点一下就查。下面还有省钱技巧和出发前清单。</p>
 </div></header>
 
@@ -130,38 +130,38 @@ a{color:var(--acc)}
       <div class="f"><label for="cab">舱位</label><select id="cab"><option value="e">经济舱</option><option value="p">超级经济舱</option><option value="b">商务舱</option><option value="f">头等舱</option></select></div>
     </div>
     <div class="flexrow"><span class="lb2">退改要求</span>
-      <div class="seg full" id="flex"><button data-v="c" class="on">💰 最便宜</button><button data-v="a">🔁 能改签</button><button data-v="r">💵 全额可退</button></div>
+      <div class="seg full" id="flex"><button data-v="c" class="on">最便宜</button><button data-v="a">能改签</button><button data-v="r">全额可退</button></div>
     </div>
     <div class="chips" id="near"></div>
     <div class="chips" id="far"></div>
-    <button class="go" id="go">🔍 比价</button>
+    <button class="go" id="go">比价</button>
     <div class="err" id="err" hidden></div>
     <div id="out" hidden>
       <div class="sum" id="sum"></div>
       <div class="note" id="note" hidden></div>
       <div class="sites" id="sites"></div>
       <div class="acts">
-        <button id="save">⭐ 保存这条航线</button>
-        <button id="copy">📋 复制 Google Flights 链接</button>
+        <button id="save">保存这条航线</button>
+        <button id="copy">复制 Google Flights 链接</button>
       </div>
     </div>
   </section>
   <datalist id="aps"></datalist>
 
-  <div class="sec"><h2>⭐ 我的航线</h2><p>点一下自动填好日期并查价（日期默认 3 周后出发）</p></div>
+  <div class="sec"><h2>我的航线</h2><p>点一下自动填好日期并查价（日期默认 3 周后出发）</p></div>
   <div class="saved" id="saved"></div>
 
-  <div class="sec"><h2>🕘 最近查过</h2></div>
+  <div class="sec"><h2>最近查过</h2></div>
   <div class="saved" id="recent"></div>
 
-  <div class="sec"><h2>💡 省钱技巧</h2><p>规则以航空公司和美国交通部最新规定为准</p></div>
+  <div class="sec"><h2>省钱技巧</h2><p>规则以航空公司和美国交通部最新规定为准</p></div>
   <div id="tips"></div>
 
-  <div class="sec"><h2>🧳 出发前清单</h2><p>打勾会记在这台设备上，点“重置”清空</p></div>
+  <div class="sec"><h2>出发前清单</h2><p>打勾会记在这台设备上，点“重置”清空</p></div>
   <div class="card check" id="check"></div>
   <div class="acts"><button id="reset">↺ 重置清单</button></div>
 
-  <p class="foot">本页只生成各网站的搜索链接，不经过任何中间商，也不收集信息。个别网站改版后链接可能打不开，换一家查即可。</p>
+  <p class="foot">只是帮你打开各网站的搜索，不收集任何信息。</p>
 </main>
 
 <script>
@@ -296,8 +296,8 @@ a{color:var(--acc)}
     var L = links(q);
     $('sum').innerHTML = '<b>' + q.from + ' → ' + q.to + '</b> · ' + (q.trip === 'rt' ? q.d1 + ' 去，' + q.d2 + ' 回' : q.d1 + ' 单程') + ' · ' + q.pax + ' 人 · ' + CAB.n[q.cab] + ' · ' + FLEXN[q.flex || 'c'] + '<br>点下面任意一家打开（新窗口）：';
     var NOTE = {
-      a: '<b>🔁 能改签</b>：美国几家大航空公司的普通经济舱（Economy / Main Cabin）及以上改签一般不收手续费，只补差价；取消多半退成<b>航空公司积分</b>，不是现金。<ol><li>别选 <b>Basic Economy（基本经济舱）</b>。</li><li>Kayak 打开「Flexible options」筛选最快。</li><li>付款前看 Fare rules，确认写着 “No change fee”。</li></ol>',
-      r: '<b>💵 全额可退</b>：要退回信用卡，得买写明 <b>Refundable / Fully Refundable</b> 的票，通常贵不少。<ol><li>在 Google Flights 或航司官网的票价档位里选标 Refundable 的那档。</li><li>最好在<b>航空公司官网</b>直接订，退款直接找航司。</li><li>付款前看 Fare rules：要写 “Refundable”，只写 “No change fee” 的取消只给积分。</li><li>只是怕订错？出发前 7 天以上在官网订的票，<b>24 小时内</b>本来就能全额退。</li></ol>'
+      a: '<b>能改签</b>：美国几家大航空公司的普通经济舱（Economy / Main Cabin）及以上改签一般不收手续费，只补差价；取消多半退成<b>航空公司积分</b>，不是现金。<ol><li>别选 <b>Basic Economy（基本经济舱）</b>。</li><li>Kayak 打开「Flexible options」筛选最快。</li><li>付款前看 Fare rules，确认写着 “No change fee”。</li></ol>',
+      r: '<b>全额可退</b>：要退回信用卡，得买写明 <b>Refundable / Fully Refundable</b> 的票，通常贵不少。<ol><li>在 Google Flights 或航司官网的票价档位里选标 Refundable 的那档。</li><li>最好在<b>航空公司官网</b>直接订，退款直接找航司。</li><li>付款前看 Fare rules：要写 “Refundable”，只写 “No change fee” 的取消只给积分。</li><li>只是怕订错？出发前 7 天以上在官网订的票，<b>24 小时内</b>本来就能全额退。</li></ol>'
     };
     $('note').hidden = !NOTE[q.flex]; $('note').innerHTML = NOTE[q.flex] || '';
     $('sites').innerHTML = L.map(function (l) { return '<a class="site' + (l.top ? ' top' : '') + (l.dim ? ' dim' : '') + '" target="_blank" rel="noopener" href="' + esc(l.u) + '"><b>' + esc(l.n) + ' ↗' + (l.tag ? '<span class="tag">' + esc(l.tag) + '</span>' : '') + (l.dim ? '<span class="tag w">不推荐</span>' : '') + '</b><small>' + esc(l.d) + '</small></a>'; }).join('');
@@ -310,7 +310,7 @@ a{color:var(--acc)}
   $('form').addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); search(read()); } });
   $('copy').onclick = function () {
     if (!CUR) return; var u = links(CUR)[0].u, b = this;
-    function ok() { b.textContent = '✅ 已复制'; setTimeout(function () { b.textContent = '📋 复制 Google Flights 链接'; }, 1500); }
+    function ok() { b.textContent = '已复制'; setTimeout(function () { b.textContent = '复制 Google Flights 链接'; }, 1500); }
     if (navigator.clipboard) navigator.clipboard.writeText(u).then(ok, function () { prompt('复制这个链接', u); }); else prompt('复制这个链接', u);
   };
   $('save').onclick = function () {
@@ -318,7 +318,7 @@ a{color:var(--acc)}
     var s = ls('saved') || [];
     if (!s.some(function (x) { return x.from === CUR.from && x.to === CUR.to && x.trip === CUR.trip; })) s.unshift({ from: CUR.from, to: CUR.to, trip: CUR.trip, pax: CUR.pax, cab: CUR.cab, flex: CUR.flex });
     ls('saved', s.slice(0, 20)); renderLists();
-    this.textContent = '✅ 已保存'; var b = this; setTimeout(function () { b.textContent = '⭐ 保存这条航线'; }, 1500);
+    this.textContent = '已保存'; var b = this; setTimeout(function () { b.textContent = '保存这条航线'; }, 1500);
   };
 
   function rowHtml(x, i, kind) {
@@ -392,6 +392,6 @@ a{color:var(--acc)}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

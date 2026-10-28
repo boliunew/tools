@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -91,15 +91,15 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
 </head>
 <body>
 <div class="wrap">
-  <header><a class="brand" href="./">💡 技巧与科普</a><span class="hd-n" id="hdN"></span></header>
+  <header><a class="brand" href="./">技巧与科普</a><span class="hd-n" id="hdN"></span></header>
   <div class="daily" id="daily"><div class="k">每日一招</div><h2>加载中…</h2></div>
   <div class="tabs" id="tabs"></div>
   <div class="tabs sub" id="sub" hidden></div>
-  <div class="srch"><input id="q" placeholder="🔍 搜：截图、电池、骗、中暑、微波炉…" autocomplete="off"></div>
+  <div class="srch"><input id="q" placeholder="搜：截图、电池、骗、中暑、微波炉…" autocomplete="off"></div>
   <div class="cdesc" id="cdesc"></div>
   <div id="list"></div>
   <div class="hidden-note" id="hid"></div>
-  <div class="foot">内容是给这个网站写的，按你的三星手机、Windows 电脑和家里的 Linux 主机来挑。<br>想加什么话题，告诉 Claude 就能补进来。</div>
+  <div class="foot">按三星手机、Windows 和家里的 Linux 主机挑的。</div>
 </div>
 <div class="toast" id="toast"></div>
 <script>
@@ -143,7 +143,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
   function renderTabs() {
     var cnt = { all: 0, fav: 0 };
     D.items.forEach(function (x) { if (HIDE[x.id]) return; cnt.all++; cnt[x.c] = (cnt[x.c] || 0) + 1; if (FAV[x.id]) cnt.fav++; });
-    var tabs = [['all', '全部']].concat(D.cats.map(function (c) { return [c.k, c.i + ' ' + c.n]; })).concat([['fav', '⭐ 收藏']]);
+    var tabs = [['all', '全部']].concat(D.cats.map(function (c) { return [c.k, c.i + ' ' + c.n]; })).concat([['fav', '收藏']]);
     $('tabs').innerHTML = tabs.map(function (t) { return '<button data-c="' + t[0] + '" class="' + (t[0] === CAT ? 'on' : '') + '">' + t[1] + '<small>' + (cnt[t[0]] || 0) + '</small></button>'; }).join('');
     $('hdN').textContent = D.items.length + ' 条 · 试过 ' + Object.keys(OK).length;
     var sub = $('sub');
@@ -151,7 +151,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     var rc = {}, order = [], tb = 0;
     D.items.forEach(function (x) { if (x.c !== CAT || HIDE[x.id]) return; if (x.w) tb++; if (x.r && rc[x.r] == null) { rc[x.r] = 0; order.push(x.r); } if (x.r) rc[x.r]++; });
     sub.hidden = false;
-    sub.innerHTML = '<button data-r="" class="' + (REG ? '' : 'on') + '">全部地区</button>' + (CAT === 'world' ? '<button data-r="!" class="tb' + (REG === '!' ? ' on' : '') + '">⚠️ 只看忌讳<small>' + tb + '</small></button>' : '') +
+    sub.innerHTML = '<button data-r="" class="' + (REG ? '' : 'on') + '">全部地区</button>' + (CAT === 'world' ? '<button data-r="!" class="tb' + (REG === '!' ? ' on' : '') + '">只看忌讳<small>' + tb + '</small></button>' : '') +
       order.map(function (r) { return '<button data-r="' + r + '" class="' + (REG === r ? 'on' : '') + '">' + r + '<small>' + rc[r] + '</small></button>'; }).join('');
   }
   function renderList() {
@@ -167,10 +167,10 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     if (!list.length) { $('list').innerHTML = '<div class="empty">' + (q ? '没搜到，换个词试试' : CAT === 'fav' ? '还没有收藏' : '这里空了') + '</div>'; }
     else $('list').innerHTML = list.map(function (x) {
       var o = OPEN[x.id] || (q && list.length <= 3);
-      return '<div class="tip' + (o ? ' open' : '') + '" data-id="' + x.id + '"><div class="hd"><div class="ic">' + CI[x.c].i + '</div><div class="tt"><b>' + (x.w ? '<span class="wb">⚠️ 忌讳</span>' : '') + fmt(x.t, q, 1) + '</b><span>' + fmt(x.p, q) + '</span></div><div class="mk">' +
+      return '<div class="tip' + (o ? ' open' : '') + '" data-id="' + x.id + '"><div class="hd"><div class="ic">' + CI[x.c].i + '</div><div class="tt"><b>' + (x.w ? '<span class="wb">忌讳</span>' : '') + fmt(x.t, q, 1) + '</b><span>' + fmt(x.p, q) + '</span></div><div class="mk">' +
         (FAV[x.id] ? '<span class="f">★</span> ' : '') + (OK[x.id] ? '<span class="o">✓</span>' : '') + '</div></div>' +
         '<div class="bd"><ol>' + x.s.map(function (s) { return '<li>' + fmt(s, q) + '</li>'; }).join('') + '</ol>' + (x.n ? '<div class="nt">💬 ' + fmt(x.n, q) + '</div>' : '') +
-        '<div class="acts"><button data-a="fav" class="' + (FAV[x.id] ? 'on' : '') + '">' + (FAV[x.id] ? '★ 已收藏' : '☆ 收藏') + '</button><button data-a="ok" class="ok' + (OK[x.id] ? ' on' : '') + '">✓ 有用</button><button data-a="copy">📋 复制</button><button data-a="hide">' + (HIDE[x.id] ? '取消隐藏' : '不感兴趣') + '</button></div></div></div>';
+        '<div class="acts"><button data-a="fav" class="' + (FAV[x.id] ? 'on' : '') + '">' + (FAV[x.id] ? '★ 已收藏' : '☆ 收藏') + '</button><button data-a="ok" class="ok' + (OK[x.id] ? ' on' : '') + '">✓ 有用</button><button data-a="copy">复制</button><button data-a="hide">' + (HIDE[x.id] ? '取消隐藏' : '不感兴趣') + '</button></div></div></div>';
     }).join('');
     $('hid').innerHTML = hidN ? '已隐藏 ' + hidN + ' 条 <button id="showHid">显示</button>' : SHOWHID && Object.keys(HIDE).length ? '<button id="showHid">收起已隐藏的</button>' : '';
     if ($('showHid')) $('showHid').onclick = function () { SHOWHID = !SHOWHID; renderList(); };
@@ -187,7 +187,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     for (i = 0; i < D.items.length; i++) if (D.items[i].id === id) x = D.items[i];
     if (!a) { if (e.target.closest('.hd')) { OPEN[id] = !card.classList.contains('open'); card.classList.toggle('open'); } return; }
     if (a === 'fav') { if (FAV[id]) delete FAV[id]; else { FAV[id] = 1; toast('已收藏'); } jset('fav', FAV); }
-    else if (a === 'ok') { if (OK[id]) delete OK[id]; else { OK[id] = Date.now(); toast('👍 记下了'); } jset('ok', OK); }
+    else if (a === 'ok') { if (OK[id]) delete OK[id]; else { OK[id] = Date.now(); toast('记下了'); } jset('ok', OK); }
     else if (a === 'hide') { if (HIDE[id]) delete HIDE[id]; else { HIDE[id] = 1; toast('已隐藏，每日一招也不会再出现'); } jset('hide', HIDE); }
     else if (a === 'copy') {
       var t = x.t + '\n' + x.s.map(function (s, k) { return (k + 1) + '. ' + s; }).join('\n') + (x.n ? '\n' + x.n : '');
@@ -210,6 +210,6 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

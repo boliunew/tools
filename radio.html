@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -79,7 +79,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 </head>
 <body>
 <main>
-  <div class="top"><h1>🚗 通勤电台</h1><button id="refresh">🔄 刷新</button><a href="./">主页</a></div>
+  <div class="top"><h1>通勤电台</h1><button id="refresh">刷新</button><a href="./">主页</a></div>
   <div class="live" id="live"></div>
   <ul class="wxt" id="wxt"></ul>
   <div id="nb"></div>
@@ -168,7 +168,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     h += '</div>';
     var hasOpt = RAW && RAW.segments.some(function (s) { return s.opt; });
     if (hasOpt) h += '<div class="modes"><button data-m="short" class="' + (MODE === 'short' ? 'on' : '') + '">短版 ' + mmss(RAW.short) + '</button><button data-m="long" class="' + (MODE !== 'short' ? 'on' : '') + '">长版 ' + mmss(RAW.total) + '</button></div>';
-    if (RAW && RAW.review_note) h += '<div class="rnote">🔁 今天没有单词复习段：' + esc(RAW.review_note) + '</div>';
+    if (RAW && RAW.review_note) h += '<div class="rnote">今天没有单词复习段：' + esc(RAW.review_note) + '</div>';
     h += '</div><div class="card segs">';
     for (i = 0; i < D.segments.length; i++) {
       var s = D.segments[i];
@@ -177,7 +177,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
       for (var k = 0; k < s.text.length; k++) h += '<p class="' + s.text[k].lang + '">' + esc(s.text[k].t) + '</p>';
       h += '</div>';
     }
-    h += '</div><div style="text-align:center"><button class="tog" id="togTx">📝 显示文字稿</button></div>';
+    h += '</div><div style="text-align:center"><button class="tog" id="togTx">显示文字稿</button></div>';
     $('app').innerHTML = h;
     $('bPlay').onclick = function () { if (cur < 0) begin(); else if (au.paused) au.play(); else au.pause(); };
     $('bPrev').onclick = prev; $('bNext').onclick = next;
@@ -204,7 +204,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     var sp = document.querySelectorAll('.speeds button');
     for (i = 0; i < sp.length; i++) sp[i].onclick = function () { rate = +this.getAttribute('data-r'); put('rate', rate); au.playbackRate = rate; for (var k = 0; k < sp.length; k++) sp[k].className = sp[k] === this ? 'on' : ''; };
     var open = false;
-    $('togTx').onclick = function () { open = !open; var t = document.querySelectorAll('.tx'); for (var k = 0; k < t.length; k++) t[k].className = 'tx' + (open ? ' open' : ''); this.textContent = open ? '📝 收起文字稿' : '📝 显示文字稿'; };
+    $('togTx').onclick = function () { open = !open; var t = document.querySelectorAll('.tx'); for (var k = 0; k < t.length; k++) t[k].className = 'tx' + (open ? ' open' : ''); this.textContent = open ? '收起文字稿' : '显示文字稿'; };
     var bar = $('bar');
     function seek(e) { if (cur < 0 || !au.duration) return; var r = bar.getBoundingClientRect(), x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left; au.currentTime = Math.max(0, Math.min(1, x / r.width)) * au.duration; }
     bar.onclick = seek; bar.addEventListener('touchstart', seek, false);
@@ -217,7 +217,7 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
     au.src = clockQ.shift(); au.playbackRate = rate;
     var p = au.play();
     if (p && p.catch) p.catch(function () { $('tap').className = 'tap on'; });
-    $('now').textContent = '🕖 报时'; $('nowsub').textContent = '现在 ' + ((h % 12) || 12) + ':' + pad2(m) + (h < 12 ? ' AM' : ' PM');
+    $('now').textContent = '报时'; $('nowsub').textContent = '现在 ' + ((h % 12) || 12) + ':' + pad2(m) + (h < 12 ? ' AM' : ' PM');
     if (ms) { try { ms.metadata = new window.MediaMetadata({ title: '现在 ' + ((h % 12) || 12) + ':' + pad2(m) + (h < 12 ? ' AM' : ' PM'), artist: '通勤电台', album: '报时', artwork: [{ src: new URL('radio/cover.png', location.href).href, sizes: '512x512', type: 'image/png' }] }); } catch (e) { } }
   }
   function start(i, noClock) {
@@ -292,6 +292,6 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🌴 圣何塞 · 硅谷生活 → sj/data.json（sj.html 用）。python3 scripts/build_sj.py
+"""圣何塞 · 硅谷生活 → sj/data.json（sj.html 用）。python3 scripts/build_sj.py
 
 写法和 build_sf.py 一样：只写有据可查的事实；店铺、票价、规定会变，页面上提醒「去之前查官网」。
 说法有争议的写「相传」「号称」。

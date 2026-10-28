@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -142,15 +142,15 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
 </head>
 <body>
 <div class="wrap">
-  <header><a class="brand" href="./">🍳 厨房与养生</a></header>
-  <div class="seg" id="seg"><button data-v="cook">🍳 做饭</button><button data-v="well">🌿 养生</button></div>
+  <header><a class="brand" href="./">厨房与养生</a></header>
+  <div class="seg" id="seg"><button data-v="cook">做饭</button><button data-v="well">养生</button></div>
   <div id="vCook">
     <div class="hero" id="hero"></div>
-    <div class="search"><input id="q" placeholder="🔍 搜菜名，或输入冰箱里有的：鸡蛋 番茄" autocomplete="off"></div>
+    <div class="search"><input id="q" placeholder="搜菜名，或输入冰箱里有的：鸡蛋 番茄" autocomplete="off"></div>
     <div class="chips" id="cuis"></div>
     <div class="chips" id="types"></div>
-    <details class="mg" id="mguide" hidden><summary>📖 面食小课堂<small>面粉怎么选 · 水温 · 发面 · 碱水面</small></summary><div class="in">
-      <h4>🌾 美国超市的面粉怎么对应</h4>
+    <details class="mg" id="mguide" hidden><summary>面食小课堂<small>面粉怎么选 · 水温 · 发面 · 碱水面</small></summary><div class="in">
+      <h4>美国超市的面粉怎么对应</h4>
       <table><tr><th>中文</th><th>英文包装</th><th>做什么</th></tr>
       <tr><td>中筋面粉</td><td>All-purpose flour</td><td>饺子、面条、馒头、包子、饼，绝大多数中式面食</td></tr>
       <tr><td>高筋面粉</td><td>Bread flour</td><td>吐司、贝果、披萨、拉面，要嚼劲的</td></tr>
@@ -158,29 +158,29 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
       <tr><td>意大利 00 号粉</td><td>"00" flour</td><td>手工意面、那不勒斯披萨（中筋也能代替）</td></tr>
       <tr><td>全麦面粉</td><td>Whole wheat flour</td><td>全麦馒头、面包，和白面粉一半一半更好做</td></tr></table>
       <p>Bleached（漂白）和 unbleached（未漂白）做中式面食差别不大；做面包优先选 unbleached。</p>
-      <h4>💧 水温决定口感</h4>
+      <h4>水温决定口感</h4>
       <p><b>冷水面</b>：筋道、有嚼劲，做面条、饺子皮、小笼包皮。<br><b>温水面</b>（30–40°C，手摸不烫）：发面用，馒头、包子、发面饼。<br><b>烫面</b>（开水）：软、不回缩、凉了也不硬，做春饼、韭菜盒子、蒸饺。<br><b>半烫面</b>：一半开水一半冷水，软中带劲，烙饼、馅饼。</p>
-      <h4>📏 加多少水</h4>
+      <h4>加多少水</h4>
       <p>面条约为面粉的 40–45%（硬面）；饺子皮约 50%；馒头包子约 50–55%；馅饼、扯面、佛卡夏 60–80%（越湿越软）。每家面粉吸水不同，留一点水最后看情况加。</p>
-      <h4>🍞 发面</h4>
+      <h4>发面</h4>
       <p>美国最常见的是 instant yeast（即发干酵母，可以直接拌进面粉）和 active dry yeast（活性干酵母，要先化在温水里 5 分钟起泡）。发好的标准：面团变成两倍大，手指沾粉戳个洞不回缩。冬天放进只开灯的烤箱里，或者旁边放一碗热水。</p>
-      <h4>😴 醒面</h4>
+      <h4>醒面</h4>
       <p>揉不光滑时别硬揉，盖上醒 10–20 分钟再揉，会轻松很多。醒过的面也更好擀、不回缩。</p>
-      <h4>🥢 碱水面怎么办</h4>
+      <h4>碱水面怎么办</h4>
       <p>拉面、热干面要碱水面，亚洲超市冷藏柜有。家里的办法：小苏打（baking soda）铺在烤盘上 120°C 烤 1 小时变成「烤苏打」，煮意面时每升水放 1 汤匙，面就会变黄变弹，有碱水面的味道。烤苏打碱性强，别直接碰手和眼睛。</p>
-      <h4>🧊 冻起来</h4>
+      <h4>冻起来</h4>
       <p>饺子、包子、馒头、手擀面、披萨面团都能冻。饺子先摊开冻硬再装袋，不粘；馒头包子蒸熟凉透再冻，吃时直接蒸 10–15 分钟。</p>
     </div></details>
     <div class="note" id="cnote"></div>
     <div class="grid" id="grid"></div>
     <button class="more" id="moreR" hidden style="display:block;width:100%;margin-top:10px;border:1px dashed var(--line);background:none;border-radius:12px;padding:10px;color:var(--soft)"></button>
-    <div class="foot">菜谱为家常做法，口味可按自己喜好调整。肉类做熟的温度：鸡肉 165°F，绞肉 160°F，鱼 145°F。</div>
+    <div class="foot">肉要做熟：鸡肉 165°F，绞肉 160°F，鱼 145°F。</div>
   </div>
   <div id="vWell" hidden>
     <div class="jq" id="jq"></div>
     <div class="chips" id="wcats"></div>
     <div id="wlist"></div>
-    <div class="foot">中医部分是传统说法和生活经验，不能代替医疗；身体不舒服请看医生。<br>营养学数字参考美国膳食指南、CDC 等主流建议，每个人情况不同。</div>
+    <div class="foot">养生部分是传统说法，身体不舒服请看医生。</div>
   </div>
 </div>
 <div class="sheet" id="sheet" hidden></div>
@@ -239,7 +239,7 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
   }
   function renderCook() {
     var all = R.length, cn = R.filter(function (r) { return r.cuisine === '中餐'; }).length, we = R.filter(function (r) { return r.cuisine === '西餐'; }).length, mi = R.filter(mianOf).length, nf = Object.keys(FAV).length;
-    $('cuis').innerHTML = [['', '全部', all], ['中餐', '🥢 中餐', cn], ['西餐', '🍴 西餐', we], ['面食', '🍞 面食', mi], ['fav', '⭐ 收藏', nf]].map(function (c) { return '<button data-cui="' + c[0] + '" class="' + (CUI === c[0] ? 'on' : '') + '">' + c[1] + '<small>' + c[2] + '</small></button>'; }).join('');
+    $('cuis').innerHTML = [['', '全部', all], ['中餐', '中餐', cn], ['西餐', '西餐', we], ['面食', '面食', mi], ['fav', '收藏', nf]].map(function (c) { return '<button data-cui="' + c[0] + '" class="' + (CUI === c[0] ? 'on' : '') + '">' + c[1] + '<small>' + c[2] + '</small></button>'; }).join('');
     if (CUI === '面食') $('types').innerHTML = '<button data-t="" class="' + (TYPE ? '' : 'on') + '">全部面食</button>' + MSUB.map(function (t) { var n = R.filter(function (r) { return mianOf(r) === t[0]; }).length; return '<button data-t="' + t[0] + '" class="' + (TYPE === t[0] ? 'on' : '') + '">' + t[1] + ' ' + t[0] + '<small>' + n + '</small></button>'; }).join('');
     else $('types').innerHTML = '<button data-t="" class="' + (TYPE ? '' : 'on') + '">全部类型</button>' + TYPES.map(function (t) { return '<button data-t="' + t + '" class="' + (TYPE === t ? 'on' : '') + '">' + EMO[t] + ' ' + t + '</button>'; }).join('');
     var list = filtered(), q = query();
@@ -261,7 +261,7 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
       PICK = pool[Math.floor(Math.random() * pool.length)];
     }
     var r = PICK;
-    $('hero').innerHTML = '<div class="k">🎲 今晚吃什么？<button id="reroll">换一个</button></div><h2>' + emo(r) + ' ' + esc(r.name) + '</h2><p>' + esc(r.en) + ' · ' + r.cuisine + ' · ⏱ ' + tm(r.time) + ' · ' + lv(r.level) + '</p><button class="go" data-r="' + r.id + '">看做法 →</button>';
+    $('hero').innerHTML = '<div class="k">今晚吃什么？<button id="reroll">换一个</button></div><h2>' + emo(r) + ' ' + esc(r.name) + '</h2><p>' + esc(r.en) + ' · ' + r.cuisine + ' · ⏱ ' + tm(r.time) + ' · ' + lv(r.level) + '</p><button class="go" data-r="' + r.id + '">看做法 →</button>';
   }
 
   /* ---------------- 菜谱详情 ---------------- */
@@ -288,13 +288,13 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
     var h = '<div class="top"><button class="bk" id="bk">‹ 返回</button><button id="favB">' + (FAV[r.id] ? '★ 已收藏' : '☆ 收藏') + '</button><button id="shareB">📋</button></div><div class="in">';
     h += '<div style="font-size:40px">' + emo(r) + '</div><h1>' + esc(r.name) + '</h1><div class="sub">' + esc(r.en) + (r.tags.length ? ' · ' + r.tags.map(esc).join(' · ') : '') + '</div>';
     h += '<div class="facts"><div><b>' + tm(r.time).split(' ')[0] + '</b>' + tm(r.time).split(' ')[1] + '</div><div><b>' + lv(r.level) + '</b>难度</div><div><div class="serv"><button id="sm">−</button><b>' + SERV + '</b><button id="sp">＋</button></div>人份</div></div>';
-    h += '<div class="sec">🧺 食材<span class="r"><button id="shop">🛒 复制购物清单</button></span></div><div class="ing">';
+    h += '<div class="sec">食材<span class="r"><button id="shop">复制购物清单</button></span></div><div class="ing">';
     order.forEach(function (g) {
       h += '<div class="g">' + esc(g) + '</div>';
       groups[g].forEach(function (p) { var i = p[0]; h += '<label class="' + (CHK[p[1]] ? 'done' : '') + '"><input type="checkbox" data-i="' + p[1] + '"' + (CHK[p[1]] ? ' checked' : '') + '><span>' + esc(i.n) + '</span><span class="q">' + esc(fmtQ(i.q * k, i.u)) + '</span></label>'; });
     });
-    h += '</div><div class="sec">👨‍🍳 做法</div><ol class="steps">' + r.steps.map(function (s, ix) {
-      return '<li>' + esc(s.t) + (s.s ? '<br><button class="tbtn" data-tm="' + ix + '">⏱ 计时 ' + mmss(s.s) + '</button>' : '') + '</li>';
+    h += '</div><div class="sec">做法</div><ol class="steps">' + r.steps.map(function (s, ix) {
+      return '<li>' + esc(s.t) + (s.s ? '<br><button class="tbtn" data-tm="' + ix + '">计时 ' + mmss(s.s) + '</button>' : '') + '</li>';
     }).join('') + '</ol>' + (r.tip ? '<div class="tip">💡 ' + esc(r.tip) + '</div>' : '') + '</div><button class="cookbtn" id="cookGo">▶ 开始做菜</button>';
     $('sheet').innerHTML = h;
   }
@@ -321,7 +321,7 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
   function drawCook() {
     var r = CUR, s = r.steps[STEP], n = r.steps.length;
     $('cook').innerHTML = '<div class="ct">' + esc(r.name) + ' · 屏幕会保持常亮<button id="cx">退出</button></div><div class="bar"><i style="width:' + ((STEP + 1) / n * 100) + '%"></i></div>' +
-      '<div class="st"><div class="n">第 ' + (STEP + 1) + ' / ' + n + ' 步</div>' + esc(s.t) + (s.s ? '<button class="tbtn" id="ctm">⏱ 计时 ' + mmss(s.s) + '</button>' : '') + '</div>' +
+      '<div class="st"><div class="n">第 ' + (STEP + 1) + ' / ' + n + ' 步</div>' + esc(s.t) + (s.s ? '<button class="tbtn" id="ctm">计时 ' + mmss(s.s) + '</button>' : '') + '</div>' +
       '<div class="nav"><button class="pv" id="cp"' + (STEP ? '' : ' disabled style="opacity:.3"') + '>‹ 上一步</button><button class="nx" id="cn">' + (STEP < n - 1 ? '下一步 ›' : '完成 🎉') + '</button></div>';
   }
   $('cook').onclick = function (e) {
@@ -345,7 +345,7 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
   function addTimer(label, sec) {
     try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.resume) actx.resume(); } catch (e) { }   // 先在点击里解锁声音
     TIMERS.push({ label: label, end: Date.now() + sec * 1000, done: false });
-    toast('⏱ 开始计时 ' + mmss(sec));
+    toast('开始计时 ' + mmss(sec));
     if (!tick) tick = setInterval(drawTimers, 500);
     drawTimers();
   }
@@ -376,11 +376,11 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
     if (!W) return;
     var now = curJq(); if (JQI == null) JQI = now;
     var j = W.jieqi[JQI], nx = W.jieqi[(now + 1) % 24];
-    $('jq').innerHTML = '<div class="k">' + (JQI === now ? '🌿 现在的节气' : '🌿 节气') + '<span class="sp"></span><button data-j="-1">‹</button><button data-j="1">›</button></div>' +
+    $('jq').innerHTML = '<div class="k">' + (JQI === now ? '现在的节气' : '节气') + '<span class="sp"></span><button data-j="-1">‹</button><button data-j="1">›</button></div>' +
       '<h2>' + esc(j.name) + '<small>约 ' + (+j.md.slice(0, 2)) + '月' + (+j.md.slice(3)) + '日' + (JQI === now ? ' · 离' + esc(nx.name) + '还有 ' + daysTo(nx.md) + ' 天' : '') + '</small></h2>' +
       '<div class="row"><span class="l">中医</span><span>' + esc(j.tcm) + '</span></div><div class="row"><span class="l">宜吃</span><span>' + j.eat.map(esc).join('、') + '</span></div>' +
       '<div class="row"><span class="l">起居</span><span>' + esc(j.life) + '</span></div><div class="row"><span class="l">现代</span><span>' + esc(j.modern) + '</span></div>';
-    var cats = [['', '全部'], ['中西对照', '⚖️ 中西对照'], ['中医', '🍵 中医'], ['营养学', '🥦 营养学'], ['作息运动', '🏃 作息运动']];
+    var cats = [['', '全部'], ['中西对照', '中西对照'], ['中医', '中医'], ['营养学', '营养学'], ['作息运动', '作息运动']];
     $('wcats').innerHTML = cats.map(function (c) { var n = c[0] ? W.tips.filter(function (t) { return t.c === c[0]; }).length : W.tips.length; return '<button data-wc="' + c[0] + '" class="' + (WC === c[0] ? 'on' : '') + '">' + c[1] + '<small>' + n + '</small></button>'; }).join('');
     $('wlist').innerHTML = W.tips.filter(function (t) { return !WC || t.c === WC; }).map(function (t) {
       return '<div class="wt"><div class="h"><h3>' + esc(t.k) + '</h3><span class="c">' + esc(t.c) + '</span></div><p>' + esc(t.d) + '</p><ul>' + t.how.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul><div class="ev ' + evc(t.ev) + '">' + { s: '✅ ', m: '🔸 ', t: '📜 ' }[evc(t.ev)] + esc(t.ev) + '</div></div>';
@@ -420,6 +420,6 @@ header{display:flex;align-items:center;gap:10px;min-height:56px;padding-top:env(
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

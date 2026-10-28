@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -64,19 +64,19 @@ h3{font-size:15px;margin:2px 0 8px}
 </head>
 <body>
 <div class="wrap">
-<header><a class="brand" href="index.html">🕶️ 偏光滤镜</a></header>
+<header><a class="brand" href="index.html">偏光滤镜</a></header>
 
 <div class="card" id="pick">
   <div class="drop" id="drop">
     <b>选一张照片</b><br>
     <span>点这里选图，也可以拖进来或粘贴（Ctrl+V）</span>
     <div class="row" style="justify-content:center;margin-top:12px">
-      <button class="btn pri" id="bPick">📷 选照片</button>
-      <button class="btn" id="bDemo">🌊 用示例图试试</button>
+      <button class="btn pri" id="bPick">选照片</button>
+      <button class="btn" id="bDemo">用示例图试试</button>
     </div>
   </div>
   <input type="file" id="file" accept="image/*" hidden>
-  <div class="hint">照片只在你的手机或电脑上处理，不会上传。想同时调曝光、裁剪、锐化？用 <a href="darkroom.html">🎞️ 暗房</a>，里面也有「偏光」面板。</div>
+  <div class="hint">照片只在本机处理。要同时调曝光、裁剪，用 <a href="darkroom.html">暗房</a>。</div>
 </div>
 
 <div id="work" hidden>
@@ -89,7 +89,7 @@ h3{font-size:15px;margin:2px 0 8px}
       <span id="busy">处理中…</span>
     </div>
     <div class="row" style="margin-top:8px">
-      <button class="btn pri" id="bSave">💾 保存图片</button>
+      <button class="btn pri" id="bSave">保存图片</button>
       <button class="btn" id="bNew">换一张</button>
       <button class="btn" id="bReset">恢复默认</button>
       <span class="hint" style="margin:0">拖动中间的线对比原图</span>
@@ -114,7 +114,7 @@ h3{font-size:15px;margin:2px 0 8px}
       <div class="t" id="dialT"></div>
     </div>
     <div class="sl"><label>角度</label><input type="range" id="rot" min="0" max="180" step="1"><output id="o_rot"></output></div>
-    <div class="hint">这里用一个简化的规则模拟转动：0° 模拟效果最强，90° 最弱，只剩镜片颜色。真偏光镜转动时，哪个角度最有效、变化有多大，要看光线和反光的方向，不一定会从「很强」变成「几乎没有」。</div>
+    <div class="hint">0° 效果最强，90° 最弱。真偏光镜的效果要看光线方向。</div>
   </div>
 
   <div class="card">
@@ -129,13 +129,8 @@ h3{font-size:15px;margin:2px 0 8px}
   </div>
 
   <div class="card note">
-    <h3>这个滤镜做了什么</h3>
-    <p>这是一个<b>视觉模拟</b>：模仿偏光镜在合适的光线和角度下常见的观感。真偏光镜的实际效果会因太阳方向、天空状况、反光角度和镜片而不同，不是每个场景都明显。</p>
-    <p>· <b>天空加深</b>：把偏蓝的天空压暗、加饱和，几乎无色的白云基本不动，所以云显得更突出。真偏光镜下，蓝天在与太阳大约成 90° 的方向上变深最明显，正对或背对太阳时变化很小。<br>
-       · <b>压反光</b>：把又亮又几乎没有颜色的区域压暗。真偏光镜能削弱水面、玻璃、漆面这类非金属表面在特定角度下的反射光，但不是所有反光都能压掉，金属的亮斑基本压不住。<br>
-       · <b>降低灰雾感</b>：这是图像处理里的去雾算法，用来增强远景对比。偏光镜有时能让远景显得更清楚，但「去雾」不是它普遍的、独立的功能。<br>
-       · <b>镜片颜色</b>：只是颜色滤镜的模拟。不同颜色镜片的观感因具体产品和场景而异。</p>
-    <p><b>做不到的事：</b>真正被反光盖住的东西（比如箱门上被白光吃掉的字），拍下来以后就丢了，任何软件都找不回来。想拍清楚，得在拍摄时于镜头前加偏光镜，并且转到合适的角度。</p>
+    <p>模拟偏光镜在合适光线下常见的样子：蓝天更深，水面和玻璃的反光变弱，远处更清楚。真偏光镜的效果要看太阳方向和拍摄角度。</p>
+    <p>被反光盖住的字，拍下来以后就找不回来了，得在拍的时候用偏光镜。</p>
   </div>
 </div>
 </div>
@@ -377,10 +372,10 @@ h3{font-size:15px;margin:2px 0 8px}
   var saving = false;
   $('bSave').onclick = function () {
     if (!img || saving) return;
-    saving = true; var btn = this; btn.disabled = true; btn.textContent = '⏳ 处理中…';
+    saving = true; var btn = this; btn.disabled = true; btn.textContent = '处理中…';
     $('busy').style.display = 'block';
     setTimeout(function () {
-      function done() { saving = false; btn.disabled = false; btn.textContent = '💾 保存图片'; $('busy').style.display = 'none'; }
+      function done() { saving = false; btn.disabled = false; btn.textContent = '保存图片'; $('busy').style.display = 'none'; }
       try {
         var sz = fit(img.width || img.naturalWidth, img.height || img.naturalHeight, MAXE);
         var c = toCanvas(img, sz[0], sz[1]), B = prep(c), ctx = c.getContext('2d'), od = ctx.createImageData(sz[0], sz[1]);
@@ -428,6 +423,6 @@ h3{font-size:15px;margin:2px 0 8px}
 </script>
 <script src="savesheet.js?v=1"></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

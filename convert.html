@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-tw="mid">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -61,10 +61,10 @@ header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area
 </head>
 <body>
 <div class="wrap">
-  <header><a class="brand" href="./">💱 汇率与单位换算</a><a href="toolbox.html" style="font-size:13.5px;text-decoration:none">🧰 工具箱</a></header>
+  <header><a class="brand" href="./">汇率与单位换算</a><a href="toolbox.html" style="font-size:13.5px;text-decoration:none">工具箱</a></header>
   <div class="tabs" id="tabs"></div>
   <div id="view"></div>
-  <div class="foot">点任意一行复制结果，点它右边的单位可设为输入单位。<br>汇率来自 open.er-api.com（失败时用 Frankfurter / 欧洲央行），每天更新，仅供参考，实际换汇以银行为准。</div>
+  <div class="foot">点一行就复制。汇率每天更新，仅供参考。</div>
 </div>
 <div class="toast" id="toast"></div>
 <script>
@@ -138,7 +138,7 @@ header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area
   // ---------------- 页面
   var TAB = jget('tab', 'fx'), ST = jget('st', {});
   function tabs() {
-    var t = [['fx', '💱 汇率']].concat(CATS.map(function (c) { return [c.k, c.n]; }));
+    var t = [['fx', '汇率']].concat(CATS.map(function (c) { return [c.k, c.n]; }));
     $('tabs').innerHTML = t.map(function (x) { return '<button data-t="' + x[0] + '" class="' + (x[0] === TAB ? 'on' : '') + '">' + x[1] + '</button>'; }).join('');
   }
   $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (!b) return; TAB = b.getAttribute('data-t'); jset('tab', TAB); editing = false; tabs(); render(true); };
@@ -152,7 +152,7 @@ header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area
       opts = Object.keys(CUR).map(function (k) { return '<option value="' + k + '"' + (k === s.u ? ' selected' : '') + '>' + CUR[k][0] + ' ' + k + ' ' + CUR[k][1] + '</option>'; }).join('');
       h += '<div class="card"><div class="inrow"><input id="in" inputmode="decimal" value="' + esc(s.v) + '"><select id="un">' + opts + '</select></div>';
       if (!R) h += '<div class="hint">' + (loading ? '正在获取最新汇率…' : '还没有汇率数据') + '</div>';
-      else h += '<div class="rateinfo">汇率更新于 ' + ago(R.asof) + ' · ' + esc(R.src) + ' <button class="btn" id="rf">🔄 刷新</button><button class="btn" id="ed">' + (editing ? '完成' : '✏️ 选币种') + '</button></div>';
+      else h += '<div class="rateinfo">汇率更新于 ' + ago(R.asof) + ' · ' + esc(R.src) + ' <button class="btn" id="rf">刷新</button><button class="btn" id="ed">' + (editing ? '完成' : '选币种') + '</button></div>';
       if (editing) h += '<div class="edit">' + Object.keys(CUR).map(function (k) { return '<label><input type="checkbox" data-c="' + k + '"' + (FAV.indexOf(k) >= 0 ? ' checked' : '') + '>' + CUR[k][0] + ' ' + CUR[k][1] + '</label>'; }).join('') + '</div>';
       h += '<div class="list" id="list"></div></div>';
       if (R) h += '<div class="card" id="cross" style="font-size:13.5px;color:var(--soft)"></div>';
@@ -199,7 +199,7 @@ header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area
       h += '<div class="it' + (u[0] === s.u ? ' base' : '') + '" data-copy="' + esc(fmt(v)) + '" data-set="' + u[0] + '"><span class="u"><b>' + u[1] + '</b><small>' + esc(u[2] || u[0]) + '</small></span><span class="v">' + fmt(v) + '</span></div>';
     });
     if (TAB === 'vol' && isFinite(b)) h += '<div class="hint">参考：20 尺柜约 33 CBM，40 尺高柜约 76 CBM。现在这个体积约等于 ' + fmt(b / 1000 / 33) + ' 个 20 尺柜。</div>';
-    if (TAB === 'temp' && isFinite(b)) h += '<div class="hint">' + (b >= 38 ? '🥵 酷热' : b >= 30 ? '☀️ 很热' : b >= 20 ? '🙂 舒适' : b >= 10 ? '🧥 有点凉' : b >= 0 ? '🥶 冷' : '❄️ 结冰') + '　心算：°F ≈ °C × 2 + 30</div>';
+    if (TAB === 'temp' && isFinite(b)) h += '<div class="hint">' + (b >= 38 ? '酷热' : b >= 30 ? '很热' : b >= 20 ? '舒适' : b >= 10 ? '有点凉' : b >= 0 ? '冷' : '结冰') + '　心算：°F ≈ °C × 2 + 30</div>';
     $('list').innerHTML = h;
   }
   $('view').onclick = function (e) {
@@ -214,6 +214,6 @@ header{display:flex;align-items:center;min-height:56px;padding-top:env(safe-area
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -489,8 +489,8 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
 </head>
 <body>
 <div class="wrap">
-  <header><a class="brand" href="./">⭐ 人物专栏</a></header>
-  <div class="who" id="who"><button data-p="sushi">🖋️ 苏轼</button><button data-p="gm">🎤 G. Michael</button><button data-p="asimov">🚀 阿西莫夫</button><button data-p="up">📽️ 人生七年</button><button data-p="poi">🖥️ 疑犯追踪</button><button data-p="gf">🌲 怪诞小镇</button></div>
+  <header><a class="brand" href="./">人物专栏</a></header>
+  <div class="who" id="who"><button data-p="sushi">苏轼</button><button data-p="gm">G. Michael</button><button data-p="asimov">阿西莫夫</button><button data-p="up">人生七年</button><button data-p="poi">疑犯追踪</button><button data-p="gf">怪诞小镇</button></div>
   <div id="view"><div class="empty">加载中…</div></div>
 </div>
 <script>
@@ -534,7 +534,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     var on = OPEN[w.id], m = MODE[w.id] || 'tr';
     var h = '<div class="wk' + (on ? ' on' : '') + '" id="w-' + w.id + '"><div class="hd" data-w="' + w.id + '"><div class="tl"><h3>' + esc(w.title) + '</h3><span class="kind k-' + w.kind + '">' + w.kind + '</span></div>' +
       '<div class="mt">' + [w.year ? w.year + ' 年' : '年代不详', w.age != null ? w.age + ' 岁' : '', w.place].filter(function (x) { return x; }).join(' · ') + '</div>' +
-      '<div class="why">' + esc(w.why) + '</div><span class="open">📜 点开阅读</span></div>';
+      '<div class="why">' + esc(w.why) + '</div><span class="open">点开阅读</span></div>';
     if (on) {
       w.notes.forEach(function (n) { delete n._used; });
       var inTitle = w.notes.filter(function (n) { return w.text.join('').indexOf(n.w) < 0; });
@@ -555,9 +555,9 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     var list = all.filter(function (w) { return !SK || (SK.length === 1 ? w.kind === SK : w.place.indexOf(SK) >= 0); });
     var h = '<div class="ss-hero"><h1>苏轼<span class="seal">東坡</span></h1><div class="sub">1037–1101 · 字子瞻，号东坡居士 · 北宋</div>' +
       '<p>诗、词、文、书、画样样一流，美食家，水利工程师，一辈子被贬三次，越贬越远，却越活越通透。他把最苦的日子过成了最好的作品。</p>' +
-      '<div class="bt"><button id="rnd">🎲 今天读一首</button><a href="kb.html#su-shi">📖 他的一生（长文）</a></div></div>';
+      '<div class="bt"><button id="rnd">今天读一首</button><a href="kb.html#su-shi">他的一生（长文）</a></div></div>';
     h += '<div class="road">' + ROAD.map(function (r) { return '<div class="stop' + (r[3] ? ' low' : '') + '"><i></i><b>' + r[1] + '</b><small>' + r[0] + '<br>' + r[2] + '</small></div>'; }).join('') + '</div>';
-    h += '<div class="ss-seg" id="ssv"><button data-v="works" class="' + (SSV === 'works' ? 'on' : '') + '">📜 作品<small>' + all.length + '</small></button><button data-v="fun" class="' + (SSV === 'fun' ? 'on' : '') + '">😄 趣闻<small>' + (FUN ? FUN.length : 28) + '</small></button></div>';
+    h += '<div class="ss-seg" id="ssv"><button data-v="works" class="' + (SSV === 'works' ? 'on' : '') + '">作品<small>' + all.length + '</small></button><button data-v="fun" class="' + (SSV === 'fun' ? 'on' : '') + '">趣闻<small>' + (FUN ? FUN.length : 28) + '</small></button></div>';
     if (SSV === 'fun') { h += funView(); $('view').innerHTML = h; return; }
     h += '<div class="sec">作品<small>红点是人生低谷 · ' + all.length + ' 篇</small></div>';
     var places = ['黄州', '杭州', '惠州', '密州'];
@@ -575,7 +575,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     if (!FUN) { getJSON('people/sushi_fun.json', function (d) { FUN = d ? d.items : []; if (WHO === 'sushi' && SSV === 'fun') renderSushi(); }); return '<div class="empty">加载中…</div>'; }
     var tags = {}, h = '';
     FUN.forEach(function (f) { f.tags.forEach(function (t) { tags[t] = (tags[t] || 0) + 1; }); });
-    h += '<div class="fun-in">他一辈子被贬三次，却留下了最多的笑话和美食。这里按年份排，每则都标了出处和可信度：<span class="cr ok">史实</span>他自己写的或正史记载 · <span class="cr mid">笔记</span>宋人笔记，大体可信 · <span class="cr lg">传说</span>后人编的，当故事听。<button id="frnd">🎲 随机讲一个</button></div>';
+    h += '<div class="fun-in">他一辈子被贬三次，却留下了最多的笑话和美食。这里按年份排，每则都标了出处和可信度：<span class="cr ok">史实</span>他自己写的或正史记载 · <span class="cr mid">笔记</span>宋人笔记，大体可信 · <span class="cr lg">传说</span>后人编的，当故事听。<button id="frnd">随机讲一个</button></div>';
     h += '<div class="chips" id="fk"><button data-k="" class="' + (FK ? '' : 'on') + '">全部<small>' + FUN.length + '</small></button>' +
       Object.keys(tags).sort(function (a, b) { return tags[b] - tags[a]; }).map(function (t) { return '<button data-k="' + esc(t) + '" class="' + (FK === t ? 'on' : '') + '">' + esc(t) + '<small>' + tags[t] + '</small></button>'; }).join('') + '</div>';
     FUN.forEach(function (f) {
@@ -620,21 +620,21 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     var g = GM, eras = [['', '全部'], ['wham', 'Wham! 时期'], ['80', '80 年代单飞'], ['90', '90 年代'], ['00', '2000 年后']];
     var h = '<div class="gm-hero"><h1>George Michael</h1><div class="sub">1963–2016 · 歌手、词曲作者、制作人</div>' +
       '<p>从 Wham! 的阳光少年，到 Faith 的世界巨星，再到 Older 里那个把心碎唱成歌的人。他的大部分作品是自己写、自己编、自己制作的。</p>' +
-      '<div class="bt"><button id="bioB">📖 他的故事</button><button id="gmRnd">🎲 随机来一首</button></div></div>';
+      '<div class="bt"><button id="bioB">他的故事</button><button id="gmRnd">随机来一首</button></div></div>';
     h += '<div class="bio" id="bio" hidden>' + g.bio.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>';
-    h += '<div class="sec">🎧 入门听歌路线<small>按这个顺序听一遍</small></div><div class="path">' + g.start.map(function (t) {
+    h += '<div class="sec">入门听歌路线<small>按这个顺序听一遍</small></div><div class="path">' + g.start.map(function (t) {
       var s = null; g.songs.forEach(function (x) { if (x.title === t) s = x; });
       return '<button data-go="' + (s ? s.id : '') + '">' + esc(t) + '<small>' + (s ? s.year : '') + '</small></button>';
     }).join('') + '</div>';
-    h += '<div class="sec">💿 专辑<small>左右滑</small></div><div class="albums">' + g.albums.map(function (a, i) {
+    h += '<div class="sec">专辑<small>左右滑</small></div><div class="albums">' + g.albums.map(function (a, i) {
       return '<div class="al"><div class="cv" style="background:linear-gradient(135deg,' + COLORS[i % COLORS.length] + ',#111)">' + esc(a.title) + '</div><div class="yr">' + a.year + ' · ' + esc(a.by) + '</div><p>' + esc(a.why) + '</p>' +
         '<div class="ls">先听：' + a.listen.map(function (t) { return '<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=' + q(t) + '">' + esc(t) + '</a>'; }).join('') + '</div>' + (a.note ? '<div class="nt">💡 ' + esc(a.note) + '</div>' : '') + '</div>';
     }).join('') + '</div>';
     var list = g.songs.filter(function (s) { return !ERA || eraOf(s) === ERA; });
-    h += '<div class="sec">🎵 歌曲故事<small>' + g.songs.length + ' 首 · 点开看</small></div><div class="chips" id="era">' + eras.map(function (e) { var n = e[0] ? g.songs.filter(function (s) { return eraOf(s) === e[0]; }).length : g.songs.length; return '<button data-e="' + e[0] + '" class="' + (ERA === e[0] ? 'on' : '') + '">' + e[1] + '<small>' + n + '</small></button>'; }).join('') + '</div>';
+    h += '<div class="sec">歌曲故事<small>' + g.songs.length + ' 首 · 点开看</small></div><div class="chips" id="era">' + eras.map(function (e) { var n = e[0] ? g.songs.filter(function (s) { return eraOf(s) === e[0]; }).length : g.songs.length; return '<button data-e="' + e[0] + '" class="' + (ERA === e[0] ? 'on' : '') + '">' + e[1] + '<small>' + n + '</small></button>'; }).join('') + '</div>';
     h += list.map(songCard).join('');
-    h += '<div class="sec">📅 时间线</div><div class="tl2">' + g.timeline.map(function (t) { return '<div><b>' + t.y + '</b>' + esc(t.t) + '</div>'; }).join('') + '</div>';
-    h += '<div class="sec">✨ 冷知识</div><div class="facts">' + g.facts.map(function (f) { return '<div>' + esc(f) + '</div>'; }).join('') + '</div>';
+    h += '<div class="sec">时间线</div><div class="tl2">' + g.timeline.map(function (t) { return '<div><b>' + t.y + '</b>' + esc(t.t) + '</div>'; }).join('') + '</div>';
+    h += '<div class="sec">冷知识</div><div class="facts">' + g.facts.map(function (f) { return '<div>' + esc(f) + '</div>'; }).join('') + '</div>';
     h += '<div class="foot">歌词版权属于原作者，这里不收录歌词；点按钮去正版平台听。<br>资料整理自公开报道，难免有出入。</div>';
     $('view').innerHTML = h;
   }
@@ -673,10 +673,10 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
       h += '<div class="ab">' + esc(b.about) + '</div>';
       h += '<div class="box bg"><h4>读英文原版</h4>' + esc(b.english) + '</div>';
       h += '<div class="sts">' + ['want', 'reading', 'done'].map(function (k) { return '<button data-st="' + k + '" data-bid="' + b.id + '" class="' + (st === k ? 'on' : '') + '">' + STN[k] + '</button>'; }).join('') + '</div>';
-      h += SPL[b.id] ? '<div class="box tr"><h4>⚠️ 剧情（含结局）</h4>' + esc(b.plot) + '</div><button class="spl" data-spl="' + b.id + '">收起剧情</button>'
-        : '<button class="spl" data-spl="' + b.id + '">⚠️ 看剧情简介（会剧透结局）</button>';
-      h += '<div class="voc"><div class="vh">📚 预习生词 ' + b.vocab.length + ' 个<small>按情节主题挑的常用词，例句是这里自己写的</small></div>' +
-        (fresh ? '<button class="add" data-add="' + b.id + '">📥 把 ' + fresh + ' 个新词加入语境词库</button>'
+      h += SPL[b.id] ? '<div class="box tr"><h4>剧情（含结局）</h4>' + esc(b.plot) + '</div><button class="spl" data-spl="' + b.id + '">收起剧情</button>'
+        : '<button class="spl" data-spl="' + b.id + '">看剧情简介（会剧透结局）</button>';
+      h += '<div class="voc"><div class="vh">预习生词 ' + b.vocab.length + ' 个<small>按情节主题挑的常用词，例句是这里自己写的</small></div>' +
+        (fresh ? '<button class="add" data-add="' + b.id + '">把 ' + fresh + ' 个新词加入语境词库</button>'
           : '<button class="add" disabled>✓ 都在语境词库里了</button>') +
         '<div style="font-size:12.5px;color:var(--faint);margin-bottom:4px">加进去以后，打开 <a href="vocab.html">语境词库</a> 就会出现在今天的复习里，例句一起带过去。</div>';
       h += b.vocab.map(function (v) {
@@ -695,22 +695,22 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
       '<p>《基地》七部曲：一个数学家算出了银河帝国的灭亡，然后设计了一个用一千年来挽救文明的计划。英文朴素、对话多、悬念强，很适合当第一套英文原版长篇。</p>' +
       '<div class="prog">' + ord.ids.map(function (id) { return '<i class="' + (sts[id] || '') + '"></i>'; }).join('') + '</div>' +
       '<div class="prog-t">读完 ' + done + ' / 7 本' + (cur ? ' · 在读：' + esc(cur) : '') + '</div>' +
-      '<div class="bt"><button id="asBio">📖 他是谁</button></div></div>';
+      '<div class="bt"><button id="asBio">他是谁</button></div></div>';
     h += '<div class="bio" id="asbio" hidden>' + a.bio.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>';
-    h += '<div class="sec">📚 七本书<small>点开看介绍、生词、剧情</small></div><div class="ord">' + ['pub', 'story'].map(function (k) { return '<button data-ord="' + k + '" class="' + (AO === k ? 'on' : '') + '">' + esc(a.orders[k].n) + '</button>'; }).join('') + '</div>' +
+    h += '<div class="sec">七本书<small>点开看介绍、生词、剧情</small></div><div class="ord">' + ['pub', 'story'].map(function (k) { return '<button data-ord="' + k + '" class="' + (AO === k ? 'on' : '') + '">' + esc(a.orders[k].n) + '</button>'; }).join('') + '</div>' +
       '<div class="ord-why">' + esc(ord.why) + '</div>';
     h += ord.ids.map(function (id) { return bookCard(bookOf(id)); }).join('');
-    h += '<div class="sec">💡 读原版的小建议</div><ul class="tips2">' + a.tips.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>';
-    h += '<div class="sec">🧭 关键概念<small>先看这几个，读起来不迷路</small></div><div class="cpt">' + a.concepts.map(function (c) { return '<div><b>' + esc(c.k) + '</b><i>' + esc(c.en) + '</i><br>' + esc(c.d) + '</div>'; }).join('') + '</div>';
+    h += '<div class="sec">读原版的小建议</div><ul class="tips2">' + a.tips.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>';
+    h += '<div class="sec">关键概念<small>先看这几个，读起来不迷路</small></div><div class="cpt">' + a.concepts.map(function (c) { return '<div><b>' + esc(c.k) + '</b><i>' + esc(c.en) + '</i><br>' + esc(c.d) + '</div>'; }).join('') + '</div>';
     var plist = a.people.filter(function (p) { return !PF || p.books.indexOf(PF) >= 0; });
-    h += '<div class="sec">👥 人物<small>' + a.people.length + ' 位 · 按书筛选</small></div><div class="chips" id="pf"><button data-pf="" class="' + (PF ? '' : 'on') + '">全部</button>' +
+    h += '<div class="sec">人物<small>' + a.people.length + ' 位 · 按书筛选</small></div><div class="chips" id="pf"><button data-pf="" class="' + (PF ? '' : 'on') + '">全部</button>' +
       ord.ids.map(function (id) { var b = bookOf(id); return '<button data-pf="' + id + '" class="' + (PF === id ? 'on' : '') + '">' + b.n + ' ' + esc(b.zh) + '</button>'; }).join('') + '</div>';
     h += '<div class="ppl">' + plist.map(function (p) {
       return '<div class="pp"><b>' + esc(p.en) + '</b><span class="z">' + esc(p.zh) + '</span><div class="d">' + esc(p.d) + '</div><div class="bb">' +
         p.books.map(function (id) { return '<span style="background:' + BC[id] + '">' + bookOf(id).n + ' ' + esc(bookOf(id).zh) + '</span>'; }).join('') + '</div></div>';
     }).join('') + '</div>';
-    h += '<div class="sec">📅 故事里的时间线</div><div class="tl2">' + a.timeline.map(function (t) { return '<div><b>' + esc(t.y) + '</b>' + esc(t.t) + '</div>'; }).join('') + '</div>';
-    h += '<div class="sec">➕ 读完还想读</div><div class="ppl">' + a.more.map(function (m) { return '<div class="pp"><b>' + esc(m.en) + '</b><span class="z">' + esc(m.zh) + ' · ' + esc(m.y) + '</span><div class="d">' + esc(m.d) + '</div></div>'; }).join('') + '</div>';
+    h += '<div class="sec">故事里的时间线</div><div class="tl2">' + a.timeline.map(function (t) { return '<div><b>' + esc(t.y) + '</b>' + esc(t.t) + '</div>'; }).join('') + '</div>';
+    h += '<div class="sec">读完还想读</div><div class="ppl">' + a.more.map(function (m) { return '<div class="pp"><b>' + esc(m.en) + '</b><span class="z">' + esc(m.zh) + ' · ' + esc(m.y) + '</span><div class="d">' + esc(m.d) + '</div></div>'; }).join('') + '</div>';
     h += '<div class="foot">这里不收录书的原文；介绍和例句都是另写的。<br>人名中文译法参考常见中文版，各版本不同，以英文为准。剧情简介默认收起。</div>';
     $('view').innerHTML = h;
   }
@@ -748,7 +748,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     var v = $('view'), h = '';
     h += '<div class="up-hero"><h1>人生七年</h1><div class="sub">每七年拍一次，拍了一辈子 · 英国 1964–2026 · 苏联 1990–2026</div>' +
       '<p>同一批孩子，从七岁开始，每隔七年被镜头找回来一次，问同样的问题：你过得怎么样？你想要什么？英国版拍了 62 年、10 部；苏联版从苏联解体前一年拍到今天。这里是两边 34 个人的全部故事。</p></div>';
-    h += '<div class="up-seg" id="upSeg"><button data-s="uk" class="' + (UPS === 'uk' ? 'on' : '') + '">🇬🇧 英国</button><button data-s="su" class="' + (UPS === 'su' ? 'on' : '') + '">☭ 苏联</button><button data-s="ask" class="' + (UPS === 'ask' ? 'on' : '') + '">💬 同一个问题</button><button data-s="pro" class="' + (UPS === 'pro' ? 'on' : '') + '">🔮 七岁看老</button><button data-s="edu" class="' + (UPS === 'edu' ? 'on' : '') + '">🎓 教育</button><button data-s="cmp" class="' + (UPS === 'cmp' ? 'on' : '') + '">🔍 对照</button></div>';
+    h += '<div class="up-seg" id="upSeg"><button data-s="uk" class="' + (UPS === 'uk' ? 'on' : '') + '">🇬🇧 英国</button><button data-s="su" class="' + (UPS === 'su' ? 'on' : '') + '">苏联</button><button data-s="ask" class="' + (UPS === 'ask' ? 'on' : '') + '">同一个问题</button><button data-s="pro" class="' + (UPS === 'pro' ? 'on' : '') + '">七岁看老</button><button data-s="edu" class="' + (UPS === 'edu' ? 'on' : '') + '">教育</button><button data-s="cmp" class="' + (UPS === 'cmp' ? 'on' : '') + '">对照</button></div>';
     if (UPS === 'cmp') h += upCompare(); else if (UPS === 'edu') h += upEdu(); else if (UPS === 'ask') h += upAsk(); else if (UPS === 'pro') h += upPro(); else h += upSide(UP[UPS], UPS);
     h += '<div class="foot">内容依据维基百科、ITV 与谢菲尔德纪录片节介绍、《生意人报》《共青团真理报》等报道整理；<br>只写片中和报道里有的事实，没有可靠资料的年份只标是否出镜。</div>';
     v.innerHTML = h;
@@ -759,7 +759,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     h += '<div class="sec">每一集 <small>' + esc(S.en) + '</small></div><div class="reel">';
     S.films.forEach(function (f) { h += '<div class="fr' + (seen === f.age ? ' on' : '') + '" data-seen="' + f.age + '"><div class="ag">' + f.age + '<small>岁</small></div><b>' + esc(f.t) + '</b><div class="yr">' + esc(f.y) + (f.len ? ' · ' + esc(f.len) : '') + '</div><p>' + esc(f.n) + '</p>' + (f.era ? '<div class="era"><i>那几年</i>' + esc(f.era) + '</div>' : '') + '</div>'; });
     h += '</div>';
-    h += '<div class="spo">🙈 防剧透：我看到了 <select id="upSpo"><option value="0"' + (seen ? '' : ' selected') + '>全部都看过 / 不怕剧透</option>' +
+    h += '<div class="spo">防剧透：我看到了 <select id="upSpo"><option value="0"' + (seen ? '' : ' selected') + '>全部都看过 / 不怕剧透</option>' +
       S.ages.map(function (a) { return '<option value="' + a + '"' + (seen === a ? ' selected' : '') + '>' + a + ' 岁那一集</option>'; }).join('') + '</select>' + (seen ? '<span>之后的内容先藏起来</span>' : '') + '</div>';
     var cnt = {}; S.people.forEach(function (p) { cnt[p.g] = (cnt[p.g] || 0) + 1; });
     h += '<div class="chips" id="upChips"><button data-g="" class="' + (UPG ? '' : 'on') + '">全部<small>' + S.people.length + '</small></button>';
@@ -770,7 +770,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
   }
   function upCard(S, key, p, seen) {
     var on = UPO[key + '-' + p.id], last = S.ages[S.ages.length - 1], lim = seen || last, h = '';
-    h += '<div class="pc' + (on ? ' on' : '') + '" id="up-' + key + '-' + p.id + '"><div class="hd" data-pc="' + key + '-' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.name) + '</small>' + (p.star ? '<span class="star" title="在「两边对照」和「十二条观察」里被提到 ' + p.star + ' 次">⭐ 重点人物</span>' : '') + (p.q && p.q.length ? '<span class="qn">💬 ' + p.q.length + '</span>' : '') + '</h3><div class="fm">' + esc(p.from) + '</div><div class="dots">';
+    h += '<div class="pc' + (on ? ' on' : '') + '" id="up-' + key + '-' + p.id + '"><div class="hd" data-pc="' + key + '-' + p.id + '"><div class="av">' + p.icon + '</div><div class="nm"><h3>' + esc(p.zh) + '<small>' + esc(p.name) + '</small>' + (p.star ? '<span class="star" title="在「两边对照」和「十二条观察」里被提到 ' + p.star + ' 次">重点人物</span>' : '') + (p.q && p.q.length ? '<span class="qn">💬 ' + p.q.length + '</span>' : '') + '</h3><div class="fm">' + esc(p.from) + '</div><div class="dots">';
     S.ages.forEach(function (a) { h += '<i class="' + (p.films.indexOf(a) >= 0 ? 'y' : '') + (a > lim ? ' hid' : '') + '" title="' + a + ' 岁' + (p.films.indexOf(a) >= 0 ? '出镜' : '缺席') + '">' + (a > lim ? '?' : a) + '</i>'; });
     h += '</div><div class="sv"><b>7 岁</b>' + esc(p.seven) + '</div>' + (p.gold && p.gold[0] <= lim ? '<div class="gold">「' + esc(p.gold[2]) + '」<small>' + p.gold[0] + ' 岁</small></div>' : '') + '</div></div><div class="bd">';
     if (!seen) h += '<div class="then"><b>后来</b>' + esc(p.then) + '</div>' + '<div class="edu"><i>🎓</i><div><b>教育路径 → 职业</b>' + esc(p.edu) + ' → ' + esc(p.work) + '</div></div><div class="ktag">' + p.keys.map(function (k) { return '<span>' + esc(k) + '</span>'; }).join('') + '</div>';
@@ -787,9 +787,9 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
       if (b.no) { h += '<div class="a no" data-age="' + a + '">这一集没有出镜。</div>'; return; }
       h += '<div class="a" data-age="' + a + '">' + b.t.map(esc).join('<br>') + b.q.map(function (q) { return upQ(q); }).join('') + '</div>';
     });
-    if (hidden) h += '<div class="lock">🙈 后面还有 ' + hidden + ' 段，看完对应的集再来（上面改「我看到了」）</div>';
+    if (hidden) h += '<div class="lock">后面还有 ' + hidden + ' 段，看完对应的集再来（上面改「我看到了」）</div>';
     h += '</div>';
-    if (!seen) h += '<div class="look"><b>看点</b>' + esc(p.look) + '</div><div class="lesson"><b>🎓 放到教育上想（我的理解）</b>' + esc(p.lesson) + '</div>';
+    if (!seen) h += '<div class="look"><b>看点</b>' + esc(p.look) + '</div><div class="lesson"><b>放到教育上想（我的理解）</b>' + esc(p.lesson) + '</div>';
     return h + '</div></div>';
   }
 
@@ -797,7 +797,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
   function upEdu() {
     var E = UP.compare.edu, h = '';
     h += '<div class="up-intro"><p>' + esc(E.intro) + '</p></div>';
-    if (UP.compare.mind) h += '<div class="mind"><h3>🧭 带走四句话</h3>' + UP.compare.mind.map(function (m) { return '<div><b>' + esc(m[0]) + '</b>' + esc(m[1]) + '</div>'; }).join('') + '<small style="color:var(--faint);font-size:12px">由下面十二条观察提炼，是我的理解，不是片子的结论。</small></div>';
+    if (UP.compare.mind) h += '<div class="mind"><h3>带走四句话</h3>' + UP.compare.mind.map(function (m) { return '<div><b>' + esc(m[0]) + '</b>' + esc(m[1]) + '</div>'; }).join('') + '<small style="color:var(--faint);font-size:12px">由下面十二条观察提炼，是我的理解，不是片子的结论。</small></div>';
     h += '<div class="sec">十二条观察 <small>前半是片中事实，后半是我的理解</small></div>';
     E.items.forEach(function (it, i) {
       h += '<div class="les"><h3><i>' + (i + 1) + '</i>' + esc(it[0]) + '</h3><div class="ob"><b>片子里</b>' + esc(it[1]) + '</div><div class="my"><b>想一想</b>' + esc(it[2]) + '</div><div class="who2">';
@@ -818,7 +818,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     h += '</div><div class="twrap"><table class="etab"><tr><th>人物</th><th>出身</th><th>教育路径</th><th>职业</th><th>关键因素</th></tr>';
     all.forEach(function (x) {
       var p = x[1]; if (UPK && p.keys.indexOf(UPK) < 0) return;
-      h += '<tr data-go="' + x[0] + '-' + p.id + '"><td>' + p.icon + ' ' + esc(p.zh) + '<small>' + (x[0] === 'uk' ? '🇬🇧 英国' : '☭ 苏联') + '</small></td><td>' + esc(p.from) + '</td><td>' + esc(p.edu) + '</td><td>' + esc(p.work) + '</td><td>' + p.keys.map(function (k) { return '<span class="k">' + esc(k) + '</span>'; }).join('') + '</td></tr>';
+      h += '<tr data-go="' + x[0] + '-' + p.id + '"><td>' + p.icon + ' ' + esc(p.zh) + '<small>' + (x[0] === 'uk' ? '🇬🇧 英国' : '苏联') + '</small></td><td>' + esc(p.from) + '</td><td>' + esc(p.edu) + '</td><td>' + esc(p.work) + '</td><td>' + p.keys.map(function (k) { return '<span class="k">' + esc(k) + '</span>'; }).join('') + '</td></tr>';
     });
     h += '</table></div><div class="cav">' + esc(E.caveat) + '</div>';
     return h;
@@ -850,7 +850,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
       });
     });
     h += '<div class="ask-in">导演每隔七年回来，总会问差不多的几个问题。这里把三十多个人、几十年里的回答按问题放在一起：同一个问题，七岁、二十八岁、五十六岁怎么答，不同出身的人怎么答。</div>';
-    h += '<div class="chips" id="upWho">' + [['', '两边都看'], ['uk', '🇬🇧 只看英国'], ['su', '☭ 只看苏联']].map(function (x) { return '<button data-w="' + x[0] + '" class="' + (UPW === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
+    h += '<div class="chips" id="upWho">' + [['', '两边都看'], ['uk', '🇬🇧 只看英国'], ['su', '只看苏联']].map(function (x) { return '<button data-w="' + x[0] + '" class="' + (UPW === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
     h += '<div class="ask-th" id="upTh">' + C.themes2.map(function (t) { return '<button data-t="' + t[0] + '" class="' + (t[0] === UPT ? 'on' : '') + '"><i>' + t[1] + '</i>' + esc(t[2]) + '<small>' + cnt[t[0]] + '</small></button>'; }).join('') + '</div>';
     h += '<div class="ask-hd"><i>' + th[1] + '</i><div><h2>' + esc(th[2]) + '</h2><p>' + esc(th[3]) + ' · ' + rows.length + ' 个人回答过</p></div></div>';
     var keys = [];
@@ -876,7 +876,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     ['uk', 'su'].forEach(function (side) { if (UPW && UPW !== side) return; UP[side].people.forEach(function (p) { if (p.pro) { cnt[p.pro[2]]++; all.push([side, p]); } }); });
     var vmap = {}; C.verdict.forEach(function (v) { vmap[v[0]] = v; });
     h += '<div class="pro-in"><b>「给我一个七岁的孩子，我还你一个成人。」</b>这是整部片子开头的那句话。它到底准不准？把每个人七岁时说的话，和后来真实的人生摆在一起。<br><small>判定是我的理解，不是定论；很多人的路，用「准」或「不准」都说不清。</small></div>';
-    h += '<div class="chips" id="upWho">' + [['', '两边都看'], ['uk', '🇬🇧 只看英国'], ['su', '☭ 只看苏联']].map(function (x) { return '<button data-w="' + x[0] + '" class="' + (UPW === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
+    h += '<div class="chips" id="upWho">' + [['', '两边都看'], ['uk', '🇬🇧 只看英国'], ['su', '只看苏联']].map(function (x) { return '<button data-w="' + x[0] + '" class="' + (UPW === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
     h += '<div class="pro-sum" id="upV"><button data-v="" class="' + (UPV ? '' : 'on') + '"><b>' + all.length + '</b>全部</button>' + C.verdict.map(function (v) { return cnt[v[0]] ? '<button data-v="' + v[0] + '" class="v-' + v[0] + (UPV === v[0] ? ' on' : '') + '"><b>' + v[1] + ' ' + cnt[v[0]] + '</b>' + v[2] + '</button>' : ''; }).join('') + '</div>';
     all.forEach(function (x) {
       var side = x[0], p = x[1], v = vmap[p.pro[2]], seen = upSeen(side);
@@ -884,7 +884,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
       var later = '<div class="pro-b"><b>后来</b>' + esc(p.pro[1]) + '</div><div class="pro-c"><span class="pv v-' + v[0] + '">' + v[1] + ' ' + v[2] + '</span>' + esc(p.pro[3]) + '</div>';
       h += '<div class="pro"><div class="who4" data-go="' + side + '-' + p.id + '">' + p.icon + ' <b>' + esc(p.zh) + '</b> ' + upFlag(side) + '<span>' + esc(p.from) + '</span><em>›</em></div>' +
         '<div class="pro-a"><b>7 岁</b>' + esc(p.pro[0]) + '</div>' +
-        (seen ? '<details class="pro-spo"><summary>🙈 后来怎样（可能剧透）</summary>' + later + '</details>' : later) + '</div>';
+        (seen ? '<details class="pro-spo"><summary>后来怎样（可能剧透）</summary>' + later + '</details>' : later) + '</div>';
     });
     return h;
   }
@@ -944,7 +944,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     var P = POI, h = '';
     h += '<div class="poi-hero"><div class="scan"></div><div class="tag">YOU ARE BEING WATCHED</div><h1>疑犯追踪</h1><div class="sub">Person of Interest · CBS 2011–2016 · 五季 103 集</div>' +
       '<p>' + esc(P.intro[0]) + '</p></div>';
-    var segs = [['intro', '📖 简介'], ['quotes', '💬 台词'], ['values', '🇺🇸 价值观'], ['people', '👥 人物'], ['eps', '📺 名场面']];
+    var segs = [['intro', '简介'], ['quotes', '台词'], ['values', '🇺🇸 价值观'], ['people', '人物'], ['eps', '名场面']];
     h += '<div class="poi-seg" id="poiSeg">' + segs.map(function (x) { return '<button data-ps="' + x[0] + '" class="' + (POS === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
     if (POS === 'quotes') h += poiQuotes();
     else if (POS === 'values') h += poiValues();
@@ -957,7 +957,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
   function poiIntro() {
     var P = POI, h = '';
     h += P.intro.slice(1).map(function (x) { return '<p class="poi-p">' + esc(x) + '</p>'; }).join('');
-    h += '<div class="poi-narr"><b>🎙️ 片头旁白</b>' + esc(P.narr.replace(/^片头旁白（大意）：/, '')) + '<small>（大意，第一季版本）</small></div>';
+    h += '<div class="poi-narr"><b>片头旁白</b>' + esc(P.narr.replace(/^片头旁白（大意）：/, '')) + '<small>（大意，第一季版本）</small></div>';
     h += '<div class="sec">五季，一句话</div>';
     P.seasons.forEach(function (s) { h += '<div class="poi-s"><div class="n">S' + s.n + '<small>' + s.y + '<br>' + s.eps + ' 集</small></div><div><b>' + esc(s.t) + '</b><p>' + esc(s.p) + '</p></div></div>'; });
     h += '<div class="sec">你可能不知道</div><ul class="poi-f">' + P.facts.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>';
@@ -1003,7 +1003,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
   function poiEps() {
     var P = POI, nstar = P.episodes.filter(function (e) { return e.star; }).length, season = 0;
     var h = '<div class="poi-p">' + (POE ? '全部 ' + P.episodes.length + ' 集，每集一句话。带黄框的是必看集。' : '只想重温主线，看这 ' + nstar + ' 集就能串起来。') + '</div>' +
-      '<div class="chips" id="poiE"><button data-pe="0" class="' + (POE ? '' : 'on') + '">⭐ 必看 ' + nstar + ' 集</button><button data-pe="1" class="' + (POE ? 'on' : '') + '">📺 全部 ' + P.episodes.length + ' 集</button></div>';
+      '<div class="chips" id="poiE"><button data-pe="0" class="' + (POE ? '' : 'on') + '">必看 ' + nstar + ' 集</button><button data-pe="1" class="' + (POE ? 'on' : '') + '">全部 ' + P.episodes.length + ' 集</button></div>';
     P.episodes.forEach(function (e) {
       if (!POE && !e.star) return;
       var sn = +e.code.substr(1, 2);
@@ -1057,7 +1057,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     var G = GF, h = '';
     h += '<div class="gf-hero"><div class="tag">TRUST NO ONE · 谁也别信</div><h1>怪诞小镇</h1><div class="sub">Gravity Falls · Disney 2012–2016 · 两季 40 集 · Alex Hirsch</div>' +
       '<p>' + esc(G.intro[0]) + '</p></div>';
-    var segs = [['intro', '📖 简介'], ['essays', '✍️ 专栏'], ['cipher', '🔐 密码'], ['quotes', '💬 台词'], ['people', '👥 人物'], ['eps', '📺 剧集']];
+    var segs = [['intro', '简介'], ['essays', '专栏'], ['cipher', '密码'], ['quotes', '台词'], ['people', '人物'], ['eps', '剧集']];
     h += '<div class="gf-seg" id="gfSeg">' + segs.map(function (x) { return '<button data-gs="' + x[0] + '" class="' + (GFS === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>';
     if (GFS === 'essays') h += gfEssays();
     else if (GFS === 'cipher') h += gfCipher();
@@ -1075,8 +1075,8 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
     h += '<div class="sec">两季，一句话</div>';
     G.seasons.forEach(function (s) { h += '<div class="gf-s"><div class="n">S' + s.n + '<small>' + s.y + '<br>' + s.eps + ' 集</small></div><div><b>' + esc(s.t) + '</b><p>' + esc(s.p) + '</p></div></div>'; });
     h += '<div class="sec">从哪开始 <small>点开就去</small></div>' +
-      '<div class="gf-ct" data-gs="essays" style="cursor:pointer"><b>✍️ 七篇专栏</b><p>兄弟姐妹、斯坦和福特、怕长大、信任、诱惑、记忆、夏天的结尾——这部剧真正在讲的东西。</p></div>' +
-      '<div class="gf-ct" data-gs="cipher" style="cursor:pointer"><b>🔐 自己动手解片尾密码</b><p>每集片尾都有一行密码。这里有解码器和全部 ' + G.episodes.filter(function (e) { return e.ci.length; }).length + ' 集的密文，先自己试，再看答案。</p></div>';
+      '<div class="gf-ct" data-gs="essays" style="cursor:pointer"><b>七篇专栏</b><p>兄弟姐妹、斯坦和福特、怕长大、信任、诱惑、记忆、夏天的结尾——这部剧真正在讲的东西。</p></div>' +
+      '<div class="gf-ct" data-gs="cipher" style="cursor:pointer"><b>自己动手解片尾密码</b><p>每集片尾都有一行密码。这里有解码器和全部 ' + G.episodes.filter(function (e) { return e.ci.length; }).length + ' 集的密文，先自己试，再看答案。</p></div>';
     h += '<div class="sec">幕后 <small>每条都附出处</small></div><ul class="gf-f">' + G.trivia.map(function (f) { return '<li>' + esc(f.zh) + (f.src ? ' <a href="' + esc(f.src) + '" target="_blank" rel="noopener">出处 ↗</a>' : '') + '</li>'; }).join('') + '</ul>';
     h += '<div class="sec">番外短片 <small>正片之间的小短片</small></div><div class="gf-sh">' + G.shorts.map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div>';
     var last = G.quotes.filter(function (q) { return /^But looking here/.test(q.en); })[0];
@@ -1095,7 +1095,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
   }
   function gfCipher() {
     var G = GF, h = '';
-    h += '<div class="gf-dec" id="gfDec"><h3>🔐 解码器</h3><div class="gf-kind">' + ['caesar', 'atbash', 'a1z26', 'combo', 'vigenere'].map(function (k) { return '<button data-gk="' + k + '" class="' + (GFK === k ? 'on' : '') + '">' + GFKN[k] + '</button>'; }).join('') + '</div>' +
+    h += '<div class="gf-dec" id="gfDec"><h3>解码器</h3><div class="gf-kind">' + ['caesar', 'atbash', 'a1z26', 'combo', 'vigenere'].map(function (k) { return '<button data-gk="' + k + '" class="' + (GFK === k ? 'on' : '') + '">' + GFKN[k] + '</button>'; }).join('') + '</div>' +
       '<textarea id="gfIn" spellcheck="false" autocapitalize="characters" autocomplete="off">' + esc(GFIN) + '</textarea>' +
       '<div class="row" id="gfOpt">' + (GFK === 'caesar' ? '往回退 <input type="number" id="gfSh" min="1" max="25" value="' + GFSH + '"> 位（剧里都是 3）' : GFK === 'vigenere' ? '关键词 <input id="gfKey" value="' + esc(GFKEY) + '" placeholder="比如 WIDDLE" autocapitalize="characters" autocomplete="off">' : '') +
       '<button data-gx="clr">清空</button></div><div class="gf-out" id="gfOut"></div><div class="gf-try" id="gfTry"></div></div>';
@@ -1114,7 +1114,7 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
       var id = e.code + '-' + j, open = GFR[id], hint = GFH[id];
       h += '<div class="gf-pz' + (e.star ? ' star' : '') + '" id="gz-' + (j ? id : e.code) + '"><div class="t"><span class="c">' + e.code + '</span><b>' + esc(e.zh) + '</b><small>' + esc(e.title) + (j ? ' · 第 ' + (j + 1) + ' 条' : '') + '</small><span class="k">' + GFKN[c.k] + '</span></div>' +
         '<div class="enc">' + esc(c.enc) + '</div><div class="bt"><button data-gu="' + id + '">放进解码器 ↑</button>' +
-        (c.key ? '<button data-gh="' + id + '">' + (hint ? '关键词：' + esc(c.key) : '🔑 关键词提示') + '</button>' : '') +
+        (c.key ? '<button data-gh="' + id + '">' + (hint ? '关键词：' + esc(c.key) : '关键词提示') + '</button>' : '') +
         '<button data-gr="' + id + '">' + (open ? '收起答案' : '看答案') + '</button></div>' +
         (open ? '<div class="ans"><div class="d">' + esc(c.dec) + '</div>' + (c.zh ? '<div class="z">' + esc(c.zh) + '</div>' : '') + (c.note ? '<small>' + esc(c.note) + '</small>' : '') + '</div>' : '') + '</div>';
     });
@@ -1157,13 +1157,13 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
   function gfEps() {
     var G = GF, nstar = G.episodes.filter(function (e) { return e.star; }).length, season = 0;
     var h = '<div class="gf-p">' + (GFE ? '全部 ' + G.episodes.length + ' 集，每集一句话。金框是主线必看集。' : '只想把主线串起来，看这 ' + nstar + ' 集就够；不过单元集里笑点最多，有空都值得看。') + '</div>' +
-      '<div class="chips"><button data-ge="0" class="' + (GFE ? '' : 'on') + '">⭐ 主线 ' + nstar + ' 集</button><button data-ge="1" class="' + (GFE ? 'on' : '') + '">📺 全部 ' + G.episodes.length + ' 集</button></div>';
+      '<div class="chips"><button data-ge="0" class="' + (GFE ? '' : 'on') + '">主线 ' + nstar + ' 集</button><button data-ge="1" class="' + (GFE ? 'on' : '') + '">全部 ' + G.episodes.length + ' 集</button></div>';
     G.episodes.forEach(function (e) {
       if (!GFE && !e.star) return;
       var sn = +e.code.substr(1, 2);
       if (sn !== season) { season = sn; h += '<div class="sec">第 ' + sn + ' 季</div>'; }
       h += '<div class="gf-e' + (GFE && e.star ? ' star' : '') + '" id="ge-' + e.code + '"><div class="t"><span class="c">' + e.code + '</span><b>' + esc(e.zh) + '</b><small>' + esc(e.title) + ' · ' + e.date + '</small></div><p>' + esc(e.note) + '</p>' +
-        (e.ci.length ? '<button class="go" data-gc="' + e.code + '">🔐 这集的片尾密码 ›</button>' : '') + '</div>';
+        (e.ci.length ? '<button class="go" data-gc="' + e.code + '">这集的片尾密码 ›</button>' : '') + '</div>';
     });
     return h;
   }
@@ -1246,6 +1246,6 @@ html[data-theme="stars"] .gf-dec,.dark .gf-dec{background:#2E2216;color:#F1E2C2;
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

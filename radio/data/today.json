@@ -10,7 +10,7 @@
  "segments": [
   {
    "id": "intro",
-   "title": "☀️ 开场",
+   "title": "开场",
    "sub": "10月27日 星期二",
    "dur": 9.5,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610270854",
@@ -23,7 +23,7 @@
   },
   {
    "id": "weather",
-   "title": "🌤️ 天气",
+   "title": "天气",
    "sub": "Upland 阴天 75°/54°F",
    "dur": 26.3,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610270854",
@@ -36,7 +36,7 @@
   },
   {
    "id": "market",
-   "title": "📊 大盘",
+   "title": "大盘",
    "sub": "谨慎",
    "dur": 30.1,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610270854",
@@ -49,7 +49,7 @@
   },
   {
    "id": "pool",
-   "title": "📈 股票池",
+   "title": "股票池",
    "sub": "23 个候选",
    "dur": 65.2,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610270854",
@@ -82,7 +82,7 @@
   },
   {
    "id": "calendar",
-   "title": "🗓️ 财报与数据",
+   "title": "财报与数据",
    "sub": "6 件大事",
    "dur": 59.3,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610270854",
@@ -123,7 +123,7 @@
   },
   {
    "id": "news",
-   "title": "📰 英文新闻",
+   "title": "英文新闻",
    "sub": "NPR · BBC · Al Jazeera",
    "dur": 82.2,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610270854",
@@ -172,7 +172,7 @@
   },
   {
    "id": "words",
-   "title": "🔤 今日单词",
+   "title": "今日单词",
    "sub": "interview · el huevo",
    "dur": 32.5,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610270854",
@@ -221,7 +221,7 @@
   },
   {
    "id": "quote",
-   "title": "🎴 每日一句",
+   "title": "每日一句",
    "sub": "名言",
    "dur": 27.1,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610270854",
@@ -251,7 +251,7 @@
   },
   {
    "id": "shadow",
-   "title": "🗣️ 跟读",
+   "title": "跟读",
    "sub": "仓库收发货",
    "dur": 67.6,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610270854",
@@ -317,7 +317,7 @@
   },
   {
    "id": "tip",
-   "title": "💡 今日一招",
+   "title": "今日一招",
    "sub": "葱根泡水再长一茬",
    "dur": 16.6,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610270854",
@@ -331,7 +331,7 @@
   },
   {
    "id": "otd",
-   "title": "📜 历史上的今天",
+   "title": "历史上的今天",
    "sub": "1870 · 1904 · 1937",
    "dur": 32.4,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610270854",
@@ -345,7 +345,7 @@
   },
   {
    "id": "poem",
-   "title": "🖋️ 读苏轼",
+   "title": "读苏轼",
    "sub": "琴诗",
    "dur": 23.0,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610270854",
@@ -367,7 +367,7 @@
   },
   {
    "id": "outro",
-   "title": "👋 结束",
+   "title": "结束",
    "sub": "开车注意安全",
    "dur": 5.5,
    "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610270854",

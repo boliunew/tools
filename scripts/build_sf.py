@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🌁 旧金山生活 → sf/data.json（sf.html 用）。python3 scripts/build_sf.py
+"""旧金山生活 → sf/data.json（sf.html 用）。python3 scripts/build_sf.py
 
 写法：只写有据可查的事实；店铺、票价、规定会变，页面上提醒「去之前查官网」。
 说法有争议的写「相传」「号称」。

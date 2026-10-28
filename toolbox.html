@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -131,9 +131,9 @@ label.ck input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <div class="bar"><a class="brand" href="./">🧰 工具箱</a><span class="priv">🔒 全在本机处理，不上传</span></div>
+  <div class="bar"><a class="brand" href="./">工具箱</a><span class="priv">全在本机处理，不上传</span></div>
   <nav class="tabs" id="tabs">
-    <button data-t="text">文本</button><button data-t="diff">对比</button><button data-t="json">JSON</button><button data-t="b64">Base64</button><button data-t="enc">编码 · 哈希</button><button data-t="time">时间戳</button><button data-t="re">正则</button><a class="tablink" href="convert.html">💱 汇率 · 单位换算 →</a>
+    <button data-t="text">文本</button><button data-t="diff">对比</button><button data-t="json">JSON</button><button data-t="b64">Base64</button><button data-t="enc">编码 · 哈希</button><button data-t="time">时间戳</button><button data-t="re">正则</button><a class="tablink" href="convert.html">汇率 · 单位换算 →</a>
   </nav>
 </div></header>
 
@@ -198,7 +198,7 @@ label.ck input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
     <textarea id="jIn" data-keep spellcheck="false" placeholder='{"name": "VOO", "price": 700.86, "tags": ["ETF", "S&amp;P 500"]}'></textarea>
     <div class="grp">
       <button class="btn pri" data-j="fmt">格式化</button><select class="tx" id="jInd" aria-label="缩进"><option value="2">2 空格</option><option value="4">4 空格</option><option value="t">Tab</option></select>
-      <button class="btn" data-j="min">压缩</button><button class="btn" data-j="sort">键排序</button><button class="btn" data-j="check">校验</button><button class="btn" data-j="tree">🌳 树形</button>
+      <button class="btn" data-j="min">压缩</button><button class="btn" data-j="sort">键排序</button><button class="btn" data-j="check">校验</button><button class="btn" data-j="tree">树形</button>
     </div>
     <div class="grp"><em>修复 · 转换</em>
       <button class="btn" data-j="relax">宽松修复</button><button class="btn" data-j="esc">转成字符串</button><button class="btn" data-j="unesc">字符串还原</button>
@@ -227,7 +227,7 @@ label.ck input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
       <label class="ck"><input type="checkbox" id="bUrl">URL 安全（- _ 无 =）</label><label class="ck"><input type="checkbox" id="bWrap">每 76 字符换行</label>
     </div>
     <div class="grp"><em>文件 ↔ Base64</em>
-      <label class="btn" style="display:inline-flex;align-items:center">📎 选文件转 Base64<input type="file" id="bFile" style="display:none"></label>
+      <label class="btn" style="display:inline-flex;align-items:center">选文件转 Base64<input type="file" id="bFile" style="display:none"></label>
       <label class="ck"><input type="checkbox" id="bData" checked>带 data: 前缀</label>
     </div>
   </div>
@@ -254,7 +254,7 @@ label.ck input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
   </div>
   <div class="card">
     <div class="lab"><b>哈希</b><span class="msg" id="hMsg"></span></div>
-    <div class="row"><button class="btn pri" id="hText">算上面输入的哈希</button><label class="btn" style="display:inline-flex;align-items:center">📎 选文件算哈希<input type="file" id="hFile" style="display:none"></label></div>
+    <div class="row"><button class="btn pri" id="hText">算上面输入的哈希</button><label class="btn" style="display:inline-flex;align-items:center">选文件算哈希<input type="file" id="hFile" style="display:none"></label></div>
     <div class="kv" id="hOut" style="margin-top:8px"></div>
     <div class="note">文本按 UTF-8 计算。下载的软件可以对照官网给的 SHA-256 看文件有没有被改过。</div>
   </div>
@@ -1010,7 +1010,7 @@ label.ck input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
       h += '<div><b>Header</b><code style="white-space:pre-wrap">' + esc(JSON.stringify(head, null, 2)) + '</code></div>';
       h += '<div><b>Payload</b><code style="white-space:pre-wrap">' + esc(JSON.stringify(body, null, 2)) + '</code></div>';
       var names = { exp: '过期时间', iat: '签发时间', nbf: '生效时间', auth_time: '登录时间' };
-      for (k in names) if (typeof body[k] === 'number') h += '<div><b>' + names[k] + '</b><code>' + fmtTime(body[k] * 1000) + '（' + rel(body[k] * 1000) + '）' + (k === 'exp' ? (body[k] * 1000 < Date.now() ? ' ⚠️ 已过期' : ' ✓ 未过期') : '') + '</code></div>';
+      for (k in names) if (typeof body[k] === 'number') h += '<div><b>' + names[k] + '</b><code>' + fmtTime(body[k] * 1000) + '（' + rel(body[k] * 1000) + '）' + (k === 'exp' ? (body[k] * 1000 < Date.now() ? ' 已过期' : ' ✓ 未过期') : '') + '</code></div>';
       out.innerHTML = h + '<div><b>签名</b><code>' + esc(p[2] || '（无）') + '</code></div></div>';
     } catch (e) { out.innerHTML = '<div class="errbox">解码失败：' + esc(e.message) + '</div>'; }
   };
@@ -1173,6 +1173,6 @@ label.ck input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

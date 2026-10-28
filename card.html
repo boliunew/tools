@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -186,7 +186,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
 </head>
 <body>
 <div class="wrap">
-  <header><a class="brand" href="./">🎴 每日一卡</a><div class="hd-r"><span class="streak" id="streak"></span><a href="vocab.html">词库 →</a></div></header>
+  <header><a class="brand" href="./">每日一卡</a><div class="hd-r"><span class="streak" id="streak"></span><a href="vocab.html">词库 →</a></div></header>
 
   <h2>每日一句</h2>
   <div class="card ds" id="ds"><div class="loading">加载中…</div></div>
@@ -195,7 +195,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
   <div class="card gacha">
     <div class="pool" id="pool">读取你的词库…</div>
     <div class="deck" id="deck" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-    <button class="btn pri draw" id="drawBtn" disabled>🎴 抽一包 · 5 张</button>
+    <button class="btn pri draw" id="drawBtn" disabled>抽一包 · 5 张</button>
     <div class="sub" id="drawSub">卡片来自「语境词库」：先抽到期要复习的，再抽你当前词段的新词。评分会同步进词库的复习计划。</div>
   </div>
 
@@ -203,7 +203,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
   <div class="card dex" id="dex"><div class="loading">…</div></div>
 
   <h2>放到手机桌面</h2>
-  <div class="card"><details class="how" id="how"><summary>📱 一点就开 / 桌面小组件</summary><div class="howb">
+  <div class="card"><details class="how" id="how"><summary>一点就开 / 桌面小组件</summary><div class="howb">
     <p><b>方法一：桌面图标（最简单）</b></p>
     <ol><li>用 Chrome 打开这一页</li><li>右上角 ⋮ → <b>添加到主屏幕</b>（或「安装应用」）</li><li>桌面会出现「每日一卡」图标，点开就是这一页，全屏、没有地址栏</li></ol>
     <p><b>方法二：真正的桌面小组件（不用点开就能看）</b></p>
@@ -367,7 +367,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
       for (var i = 0; i < it.g.length; i++) h += '<button data-g="' + i + '" class="' + (DB.cards[it.g[i][0]] ? 'have' : '') + '">' + esc(it.g[i][0]) + '<i>' + esc(String(it.g[i][2]).replace(/^[a-z]+\.\s*/, '').split(/[，；]/)[0]) + '</i></button>';
       h += '</div>';
     }
-    h += '<div class="ds-act"><button class="btn" id="dSay">🔊 朗读</button><button class="btn" id="dCopy">📋 复制</button></div>';
+    h += '<div class="ds-act"><button class="btn" id="dSay">朗读</button><button class="btn" id="dCopy">复制</button></div>';
     box.innerHTML = h;
     $('dZh').onclick = function () { this.className = 'zh'; };
     $('dPrev').onclick = function () { dayOff--; renderDaily(); };
@@ -397,7 +397,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
     reload();
     var c = DB.cards[w], st = c ? (c.k ? '已掌握' : c.due <= today() ? '在词库里 · 今天该复习了' : '在词库里 · ' + fmtIv(c.due - today()) + '后复习') : '还不在你的词库里';
     $('sheet').innerHTML = '<div><span class="w">' + esc(w) + '</span><span class="ph">' + (ph ? '/' + esc(ph) + '/' : '') + '</span></div><div class="tr">' + esc(tr) + '</div><div class="st">' + st + '</div>' +
-      '<div style="display:flex;gap:8px"><button class="btn" id="shSay">🔊 读</button>' + (c ? '' : '<button class="btn pri" id="shAdd" style="flex:1">＋ 加入复习（带上这句话）</button>') + '<button class="btn" id="shX">关闭</button></div>';
+      '<div style="display:flex;gap:8px"><button class="btn" id="shSay">读</button>' + (c ? '' : '<button class="btn pri" id="shAdd" style="flex:1">＋ 加入复习（带上这句话）</button>') + '<button class="btn" id="shX">关闭</button></div>';
     $('sheet').className = 'sheet on'; $('mask').className = 'mask on';
     try { history.pushState({ sh: 1 }, ''); sheetPushed = true; } catch (e) { }
     $('shSay').onclick = function () { speak(w); };
@@ -406,7 +406,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
       reload();
       if (!DB.cards[w]) {
         grade(w, 0, true);
-        if (sent) { var L = DB.ctx[w] || (DB.ctx[w] = []); if (!L.some(function (x) { return x.en === sent; })) { L.unshift({ en: sent, zh: sentZh || '', src: '🎴 每日一句', t: Date.now() }); if (L.length > 8) L.length = 8; } save(); }
+        if (sent) { var L = DB.ctx[w] || (DB.ctx[w] = []); if (!L.some(function (x) { return x.en === sent; })) { L.unshift({ en: sent, zh: sentZh || '', src: '每日一句', t: Date.now() }); if (L.length > 8) L.length = 8; } save(); }
       }
       toast(w + ' 已加入词库，今天就会出现在复习里'); closeSheet(); renderDaily(); renderPool(); renderDex();
     };
@@ -425,7 +425,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
     var due = dueList().length, left = Math.max(0, (DB.set.daily || 20) - newToday()), band = BANDS[DB.set.band || 0];
     $('pool').innerHTML = '待复习 <b>' + due + '</b> 张 · 今日新词还能抽 <b>' + left + '</b> 张<br><span style="font-size:12.5px">新词来自「' + band.name + '」词段（第 ' + (band.a + 1) + '–' + band.b + ' 个常用词），在<a href="vocab.html">词库</a>里可以换</span>';
     $('drawBtn').disabled = !IDX;
-    $('drawBtn').textContent = due || left ? '🎴 抽一包 · 5 张' : '🎴 再加练一包 · 5 张';
+    $('drawBtn').textContent = due || left ? '抽一包 · 5 张' : '再加练一包 · 5 张';
   }
   function streak() {
     var t = today(), n = 0, d = DB.log[t] && DB.log[t].n ? t : t - 1;
@@ -442,7 +442,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
       cnt[b]++; if (c.k || c.s >= 21) gold[b]++;
     }
     var s = streak();
-    $('streak').innerHTML = s ? '🔥 连续 <b>' + s + '</b> 天' : '';
+    $('streak').innerHTML = s ? '连续 <b>' + s + '</b> 天' : '';
     h += '<div class="dexsum">已收集 <b style="color:var(--ink)">' + total + '</b> 张' + (other ? '（含自定义词 ' + other + ' 张）' : '') + ' · 实色 = 已掌握（记得超过 3 周）</div>';
     for (b = 0; b < BANDS.length; b++) {
       var B = BANDS[b], N = B.b - B.a, p = cnt[b] / N * 100, g = gold[b] / N * 100;
@@ -540,7 +540,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
       '<div class="fr-hint" id="frHint">想想它是什么意思<br>再点一下看答案</div>' +
       '<div class="fr-a" id="frA" style="display:none"><div class="tr">' + esc(inf.tr || '（暂无释义）') + '</div>' +
       (inf.ex ? '<div class="ex">' + hlWord(inf.ex, p.w) + (inf.exzh ? '<span class="exzh">' + esc(inf.exzh) + '</span>' : '') + '</div>' : '') +
-      (my ? '<div class="my">📌 你收藏过的语境：' + hlWord(my.en, p.w) + (my.src ? ' <span style="color:var(--faint)">' + esc(my.src) + '</span>' : '') + '</div>' : '') + '</div>' +
+      (my ? '<div class="my">你收藏过的语境：' + hlWord(my.en, p.w) + (my.src ? ' <span style="color:var(--faint)">' + esc(my.src) + '</span>' : '') + '</div>' : '') + '</div>' +
       '<span class="rare">' + R + '</span></div></div></div>' +
       '<div class="grades" id="gr"><div class="tip">点卡片翻开</div></div>';
     overlay.querySelector('.dw-x').onclick = function () { closeOverlay(); };
@@ -596,7 +596,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
     }
     reload();
     var due = dueList().length, left = Math.max(0, (DB.set.daily || 20) - newToday());
-    overlay.innerHTML = '<div class="dw-top">' + dotsHTML() + '<button class="dw-x" aria-label="关闭">×</button></div><div class="stage"><div class="sum"><h3>🎉 这包开完了</h3><div class="ss">' +
+    overlay.innerHTML = '<div class="dw-top">' + dotsHTML() + '<button class="dw-x" aria-label="关闭">×</button></div><div class="stage"><div class="sum"><h3>这包开完了</h3><div class="ss">' +
       (nw ? '新收集 <b>' + nw + '</b> 张' + (hi ? '（含 ' + hi + ' 张 SR 以上）' : '') + ' · ' : '') + '记得 ' + ok + ' · 忘了 ' + bad + '<br>还剩待复习 ' + due + ' 张 · 今日新词 ' + left + ' 张</div>' + rows +
       '<div class="acts"><button class="btn" id="sDone">完成</button><button class="btn pri" id="sMore">再抽一包</button></div></div></div><div class="grades"></div>';
     overlay.querySelector('.dw-x').onclick = function () { closeOverlay(); };
@@ -616,6 +616,6 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 30px;l
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F1E">
@@ -99,34 +99,34 @@ h2 small{font-weight:400;color:var(--faint);letter-spacing:0}
 <body>
 <canvas id="scene"></canvas>
 <main>
-  <div class="top"><h1>🌙 夜之声<small>助眠白噪音</small></h1><button id="fxBtn" title="画面动效">✨</button><a href="./">主页</a></div>
+  <div class="top"><h1>夜之声<small>助眠白噪音</small></h1><button id="fxBtn" title="画面动效">✨</button><a href="./">主页</a></div>
   <div class="hero">
     <button class="play" id="play" aria-label="播放">▶</button>
     <div class="status" id="status"></div>
     <div class="jprog" id="jprog"><div class="jbar"><i id="jfill"></i></div><div class="jchap"><span id="jchap"></span><span id="jtime"></span></div></div>
   </div>
 
-  <h2>🎬 声景旅程 <small>· 声音会随时间慢慢变化，像一个用声音讲的睡前故事</small></h2>
+  <h2>声景旅程 <small>· 声音会随时间慢慢变化，像一个用声音讲的睡前故事</small></h2>
   <div class="hs" id="journeys"></div>
 
-  <h2>✨ 一键场景</h2>
+  <h2>一键场景</h2>
   <div class="chips" id="presets"></div>
   <div class="saverow" id="saverow"><input id="saveName" maxlength="12" placeholder="给这个组合起个名字"><button id="saveOk">保存</button></div>
 
-  <h2>🎛 自由混合 <small>· 点亮多种声音叠在一起，各自调音量</small></h2>
+  <h2>自由混合 <small>· 点亮多种声音叠在一起，各自调音量</small></h2>
   <div id="grid"></div>
 
-  <h2>⚙️ 设置</h2>
+  <h2>设置</h2>
   <div class="card panel">
     <div class="row"><span>🔈</span><input type="range" id="master" min="0" max="100"><span>🔊</span></div>
     <div style="font-size:14px;color:var(--soft);margin-top:4px">定时关闭</div>
     <div class="timers" id="timers"></div>
-    <div class="sw"><div>📉 越来越轻<small>整个定时期间音量慢慢降到一半，最后 60 秒再完全淡出</small></div><button class="tg" id="tgGrad" aria-label="越来越轻"></button></div>
-    <div class="sw"><div>🎧 空间漫游<small>雨、风、海浪在你周围缓缓移动（戴耳机最明显）</small></div><button class="tg" id="tgRoam" aria-label="空间漫游"></button></div>
-    <div class="sw"><div>⏰ 温柔唤醒（实验）<small>到点前 5 分钟，鸟鸣、风铃和音乐慢慢变响叫醒你；需要整晚开着这个页面播放</small></div><div style="display:flex;align-items:center"><input type="time" id="wakeAt"><button class="tg" id="tgWake" aria-label="温柔唤醒"></button></div></div>
+    <div class="sw"><div>越来越轻<small>整个定时期间音量慢慢降到一半，最后 60 秒再完全淡出</small></div><button class="tg" id="tgGrad" aria-label="越来越轻"></button></div>
+    <div class="sw"><div>空间漫游<small>雨、风、海浪在你周围缓缓移动（戴耳机最明显）</small></div><button class="tg" id="tgRoam" aria-label="空间漫游"></button></div>
+    <div class="sw"><div>温柔唤醒（实验）<small>到点前 5 分钟，鸟鸣、风铃和音乐慢慢变响叫醒你；需要整晚开着这个页面播放</small></div><div style="display:flex;align-items:center"><input type="time" id="wakeAt"><button class="tg" id="tgWake" aria-label="温柔唤醒"></button></div></div>
   </div>
-  <div class="tools"><button id="breathBtn">🫁 呼吸引导</button><button id="dimBtn">🌑 黑屏模式</button><button id="stopBtn">■ 停止</button></div>
-  <div class="hint">所有声音都是手机现场合成的立体声：不用下载、不耗流量。雷声、鸟鸣、风铃和音乐每一次都随机生成，整晚不会重复。<br>音量调到「刚好盖住环境噪音」就好；锁屏后继续播放。</div>
+  <div class="tools"><button id="breathBtn">呼吸引导</button><button id="dimBtn">黑屏模式</button><button id="stopBtn">■ 停止</button></div>
+  <div class="hint">声音是手机现场合成的，不耗流量，锁屏也能播。</div>
 </main>
 <div class="flash" id="flash"></div>
 <div class="ov" id="dim"><div class="clk" id="clk"></div><div id="dimTxt"></div><div style="margin-top:34px">轻点屏幕退出</div></div>
@@ -160,21 +160,21 @@ h2 small{font-weight:400;color:var(--faint);letter-spacing:0}
   var VERB = { chimes: 0.7, ambient: 0.8, birds: 0.3, space: 0.5, under: 0.2 };
   var GAINFIX = { white: 0.25, pink: 0.6, brown: 0.7, fan: 1.1, rain: 0.7, carrain: 0.9, ocean: 0.9, fire: 0.8, stream: 0.4, wind: 0.9, night: 0.6, thunder: 1.2, storm: 1.0, heart: 1.0, purr: 0.9, train: 0.8, under: 0.9, birds: 1.6, chimes: 0.55, ambient: 0.75, space: 0.9 };
   var PRESETS = [
-    { n: '🌧️ 雨夜', mix: { rain: 70, wind: 25, thunder: 30 } },
-    { n: '⛈️ 雷暴夜', mix: { rain: 85, wind: 40, storm: 55, thunder: 35 } },
-    { n: '🚗 车里听雨', mix: { carrain: 75, thunder: 20 } },
-    { n: '🏖️ 海边', mix: { ocean: 75, wind: 20 } },
-    { n: '🏕️ 林间篝火', mix: { fire: 65, night: 30, stream: 25 } },
-    { n: '🌳 森林清晨', mix: { birds: 55, stream: 30, wind: 20 } },
-    { n: '🎐 檐下风铃', mix: { chimes: 50, wind: 30, rain: 20 } },
-    { n: '🚂 夜车卧铺', mix: { train: 70, rain: 25 } },
-    { n: '🐱 猫咪陪睡', mix: { purr: 65, fire: 30 } },
-    { n: '🫧 深海', mix: { under: 70, space: 25 } },
-    { n: '🎹 冥想', mix: { ambient: 60, space: 30 } },
-    { n: '😴 深度睡眠', mix: { brown: 70 } },
-    { n: '🌀 风扇房间', mix: { fan: 70, brown: 25 } },
-    { n: '📖 专注学习', mix: { pink: 55, rain: 25 } },
-    { n: '👶 安抚宝宝', mix: { heart: 60, white: 25 } }
+    { n: '雨夜', mix: { rain: 70, wind: 25, thunder: 30 } },
+    { n: '雷暴夜', mix: { rain: 85, wind: 40, storm: 55, thunder: 35 } },
+    { n: '车里听雨', mix: { carrain: 75, thunder: 20 } },
+    { n: '海边', mix: { ocean: 75, wind: 20 } },
+    { n: '林间篝火', mix: { fire: 65, night: 30, stream: 25 } },
+    { n: '森林清晨', mix: { birds: 55, stream: 30, wind: 20 } },
+    { n: '檐下风铃', mix: { chimes: 50, wind: 30, rain: 20 } },
+    { n: '夜车卧铺', mix: { train: 70, rain: 25 } },
+    { n: '猫咪陪睡', mix: { purr: 65, fire: 30 } },
+    { n: '深海', mix: { under: 70, space: 25 } },
+    { n: '冥想', mix: { ambient: 60, space: 30 } },
+    { n: '深度睡眠', mix: { brown: 70 } },
+    { n: '风扇房间', mix: { fan: 70, brown: 25 } },
+    { n: '专注学习', mix: { pink: 55, rain: 25 } },
+    { n: '安抚宝宝', mix: { heart: 60, white: 25 } }
   ];
   var JOURNEYS = [
     { id: 'storm', e: '⛈️', n: '暴风雨过境', d: '细雨→雷暴压顶→雷声远去→雨停虫鸣', len: 45, kf: [
@@ -562,7 +562,7 @@ h2 small{font-weight:400;color:var(--faint);letter-spacing:0}
       $('jchap').textContent = chapter(); $('jtime').textContent = Math.floor(el2) + ' / ' + J.len + ' 分钟';
     } else {
       $('jprog').className = 'jprog';
-      el.innerHTML = '<b>' + esc(names().join(' + ') || '（没有选声音）') + '</b><br>' + (wakeState ? '☀️ 正在唤醒' : endAt ? left + ' 分钟后' + (OPT.wake ? '变得很轻' : '关闭') : '不自动关闭') + wk;
+      el.innerHTML = '<b>' + esc(names().join(' + ') || '（没有选声音）') + '</b><br>' + (wakeState ? '正在唤醒' : endAt ? left + ' 分钟后' + (OPT.wake ? '变得很轻' : '关闭') : '不自动关闭') + wk;
     }
     $('dimTxt').textContent = (J ? J.n + ' · ' + chapter() : names().join(' · ')) + (OPT.wake ? ' · ⏰ ' + OPT.wakeAt : '');
   }
@@ -644,7 +644,7 @@ h2 small{font-weight:400;color:var(--faint);letter-spacing:0}
     b.onclick = function () { OPT[key] = !OPT[key]; put('opt', OPT); b.className = 'tg' + (OPT[key] ? ' on' : ''); if (after) after(); };
   }
   tg('tgGrad', 'grad', function () { if (playing) programSleepBus(); });
-  tg('tgRoam', 'roam', function () { if (ctx) setRoam(OPT.roam); toast(OPT.roam ? '🎧 声音开始在你周围移动' : '已关闭空间漫游'); });
+  tg('tgRoam', 'roam', function () { if (ctx) setRoam(OPT.roam); toast(OPT.roam ? '声音开始在你周围移动' : '已关闭空间漫游'); });
   tg('tgWake', 'wake', function () { if (playing) programSleepBus(); status(); meta(); toast(OPT.wake ? '⏰ ' + OPT.wakeAt + ' 温柔唤醒：整晚保持播放，定时结束后会留一点很轻的声音' : '已关闭唤醒'); });
   $('wakeAt').value = OPT.wakeAt;
   $('wakeAt').onchange = function () { OPT.wakeAt = this.value || '07:00'; put('opt', OPT); wakeState = 0; status(); };
@@ -736,13 +736,13 @@ h2 small{font-weight:400;color:var(--faint);letter-spacing:0}
   }
   requestAnimationFrame(frame);
   function fxBtn() { $('fxBtn').style.opacity = OPT.fx ? 1 : 0.4; }
-  $('fxBtn').onclick = function () { OPT.fx = !OPT.fx; put('opt', OPT); fxBtn(); toast(OPT.fx ? '✨ 画面动效已开启' : '画面动效已关闭（更省电）'); };
+  $('fxBtn').onclick = function () { OPT.fx = !OPT.fx; put('opt', OPT); fxBtn(); toast(OPT.fx ? '画面动效已开启' : '画面动效已关闭（更省电）'); };
   fxBtn();
 
   renderJourneys(); renderPresets(); renderGrid(); renderTimers(); status();
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
     muni: ['🚋', 'Muni 轻轨', '#C0362C'], vta: ['🚋', 'VTA 轻轨', '#0072CE'], caltrain: ['🚆', 'Caltrain', '#E31837'],
     nysub: ['🚇', '纽约地铁', '#0039A6'], lametro: ['🚇', 'LA Metro', '#E16710']
   };
-  var FILT = [['all', '全部'], ['amtrak', '🚆 Amtrak'], ['metrolink', '🚈 Metrolink'], ['sub', '🚇 地铁'], ['rail', '🚋 轻轨'], ['caltrain', '🚆 Caltrain']];
+  var FILT = [['all', '全部'], ['amtrak', 'Amtrak'], ['metrolink', 'Metrolink'], ['sub', '地铁'], ['rail', '轻轨'], ['caltrain', 'Caltrain']];
   var HOME = { lat: 34.0975, lon: -117.6484, name: 'Upland（家）' };
   var BKEY = 'MW9S-E7SL-26DU-VV8V';
   var D = null, POS = null, F = get('f') || 'all'; if (F === 'bart') F = 'sub'; var BUSY = false, OPEN = {}, DET = null, DAY = 0, DEPS = null, DMAP = null;
@@ -96,8 +96,8 @@
     if (!window.NEARBY_NOBTN) { var b = document.createElement('button'); b.className = 'nb-btn'; b.innerHTML = '<b>📍</b>附近车站'; b.onclick = open; document.body.appendChild(b); }
     var bg = document.createElement('div'); bg.className = 'nb-bg'; bg.id = 'nbBg'; bg.onclick = close; document.body.appendChild(bg);
     var sh = document.createElement('div'); sh.className = 'nb-sh'; sh.id = 'nbSh';
-    sh.innerHTML = '<div class="nb-in"><div class="nb-hd"><div class="nb-grab"></div><div class="nb-t"><b>📍 我附近的车站</b><button id="nbRe">🔄 重新定位</button><button id="nbX">✕</button></div><div class="nb-st" id="nbSt"></div><div class="nb-f" id="nbF"></div></div><div id="nbL"></div>' +
-      '<div class="nb-st" style="margin-top:10px">距离是直线距离，步行时间按每小时 3 英里、绕路多算两成估的。点「步行 / 公交 / 开车」直接打开谷歌地图导航。Amtrak 的下一班按官方时刻表，BART 是实时到站；临时改点以官方 App 为准。位置只在这台手机上用，不会上传。' + (/coast\.html$/.test(location.pathname) ? '' : '<br><a href="coast.html#near" style="color:inherit">🌊 附近的海边景点 ›</a> · <a href="amtrak.html" style="color:inherit">🚆 Amtrak 查时刻 ›</a>') + '</div></div>';
+    sh.innerHTML = '<div class="nb-in"><div class="nb-hd"><div class="nb-grab"></div><div class="nb-t"><b>我附近的车站</b><button id="nbRe">重新定位</button><button id="nbX">✕</button></div><div class="nb-st" id="nbSt"></div><div class="nb-f" id="nbF"></div></div><div id="nbL"></div>' +
+      '<div class="nb-st" style="margin-top:10px">距离是直线距离，步行时间按每小时 3 英里、绕路多算两成估的。点「步行 / 公交 / 开车」直接打开谷歌地图导航。Amtrak 的下一班按官方时刻表，BART 是实时到站；临时改点以官方 App 为准。位置只在这台手机上用，不会上传。' + (/coast\.html$/.test(location.pathname) ? '' : '<br><a href="coast.html#near" style="color:inherit">附近的海边景点 ›</a> · <a href="amtrak.html" style="color:inherit">Amtrak 查时刻 ›</a>') + '</div></div>';
     document.body.appendChild(sh);
     $('nbX').onclick = close;
     $('nbRe').onclick = function () { locate(true); };
@@ -132,7 +132,7 @@
   function locate(force) {
     if (BUSY) return;
     if (!navigator.geolocation) { status('这个浏览器不支持定位。'); return; }
-    BUSY = true; status('📡 正在定位…');
+    BUSY = true; status('正在定位…');
     navigator.geolocation.getCurrentPosition(function (p) {
       BUSY = false; POS = { lat: p.coords.latitude, lon: p.coords.longitude, acc: p.coords.accuracy, t: Date.now() }; put('pos', POS); draw();
     }, function (err) {
@@ -148,8 +148,8 @@
     if (DET) return detail(DET);
     $('nbF').innerHTML = FILT.map(function (x) { return '<button data-f="' + x[0] + '" class="' + (x[0] === F ? 'on' : '') + '">' + x[1] + '</button>'; }).join('');
     if (!D) { $('nbL').innerHTML = '<div class="nb-e">加载车站…</div>'; return; }
-    if (!POS) { if (!BUSY) $('nbL').innerHTML = '<div class="nb-e">点「重新定位」找附近的车站。<br><button data-retry="1">📍 定位</button> <button data-home="1">用 Upland 家的位置</button></div>'; return; }
-    if (!BUSY) status(POS.home ? '🏠 用的是 Upland 家的位置。点「重新定位」用你现在的位置。' : '📍 你的位置（' + ago(POS.t) + (POS.acc ? '，精度约 ' + Math.round(POS.acc) + ' 米' : '') + '）');
+    if (!POS) { if (!BUSY) $('nbL').innerHTML = '<div class="nb-e">点「重新定位」找附近的车站。<br><button data-retry="1">定位</button> <button data-home="1">用 Upland 家的位置</button></div>'; return; }
+    if (!BUSY) status(POS.home ? '用的是 Upland 家的位置。点「重新定位」用你现在的位置。' : '你的位置（' + ago(POS.t) + (POS.acc ? '，精度约 ' + Math.round(POS.acc) + ' 米' : '') + '）');
     var L = D.st.filter(function (s) { return F === 'all' || s.k === F || (F === 'rail' && (s.k === 'muni' || s.k === 'vta')) || (F === 'sub' && (s.k === 'bart' || s.k === 'nysub' || s.k === 'lametro')); })
       .map(function (s) { return [dist(POS.lat, POS.lon, s.ll[0], s.ll[1]), s]; })
       .sort(function (a, b) { return a[0] - b[0]; });
@@ -162,20 +162,20 @@
       var d = x[0], s = x[1], K = KIND[s.k] || ['🚉', s.k, '#555'], id = s.k + ':' + s.id;
       var walk = Math.round(d * 1.2 / 3 * 60), dtx = d < 0.1 ? Math.round(d * 5280) + ' 英尺' : d.toFixed(d < 10 ? 1 : 0) + ' 英里';
       var sub = (s.zh ? esc(s.n) + ' · ' : '') + K[1] + (s.l && s.l.length ? ' · ' + esc(s.l.slice(0, 3).join('、')) : '');
-      var modes = d < 2 ? [['walking', '🚶 步行'], ['transit', '🚌 公交'], ['driving', '🚗 开车']] : [['driving', '🚗 开车'], ['transit', '🚌 公交'], ['walking', '🚶 步行']];
+      var modes = d < 2 ? [['walking', '步行'], ['transit', '公交'], ['driving', '开车']] : [['driving', '开车'], ['transit', '公交'], ['walking', '步行']];
       var x2 = '<div class="nb-x"><div class="nb-go">' + modes.map(function (m, j) { return '<a href="' + gm(s, m[0]) + '" target="_blank" rel="noopener"' + (j ? ' class="s"' : '') + '>' + m[1] + '</a>'; }).join('') + '</div>';
       if (s.l && s.l.length > 3) x2 += '<div class="nb-l">经过：' + esc(s.l.join('、')) + '</div>';
       if (s.k === 'amtrak' && s.dep) {
         var nx = nextDeps(s);
         x2 += '<div class="nb-nx">' + (nx.length ? '接下来的车：<br>' + nx.map(function (y) { return '<b>' + (y[0] === 1 ? '明天 ' : y[0] === 2 ? '后天 ' : '') + y[2][0] + '</b> ' + esc(y[2][2]) + ' ' + esc(y[2][1]) + ' 次 → ' + esc(y[2][3]); }).join('<br>') : '这几天没有车（这里可能只停大巴）。') + '<br><small>按官方时刻表；查任意两站在 <a href="amtrak.html#time">Amtrak 页「查时刻」</a></small></div>';
       } else if (s.k === 'bart') {
-        x2 += '<div class="nb-nx"><a href="javascript:void 0" data-bart="' + esc(s.id) + '">⏱️ 看实时到站</a></div>';
+        x2 += '<div class="nb-nx"><a href="javascript:void 0" data-bart="' + esc(s.id) + '">看实时到站</a></div>';
       } else if (s.k === 'metrolink') {
         x2 += '<div class="nb-nx"><a href="https://metrolinktrains.com/schedules/" target="_blank" rel="noopener">Metrolink 时刻表</a> · 也可以点「公交」让谷歌地图排班次<br><small>周末班次少，出门前查一下。</small></div>';
       } else {
         x2 += '<div class="nb-nx"><small>下一班车点「🚌 公交」在谷歌地图里看。</small></div>';
       }
-      x2 += '<button class="nb-more" data-det="' + esc(id) + '">📋 车站详情：全部班次、地图、街景 ›</button></div>';
+      x2 += '<button class="nb-more" data-det="' + esc(id) + '">车站详情：全部班次、地图、街景 ›</button></div>';
       return '<div class="nb-c' + (OPEN[id] ? ' open' : '') + '" data-id="' + esc(id) + '"><div class="nb-r"><div class="nb-i" style="background:' + K[2] + '">' + K[0] + '</div><div class="nb-m"><b>' + esc(s.zh || s.n) + '</b><small>' + sub + '</small></div><div class="nb-d"><b>' + dtx + '</b><small>' + (d < 2 ? '步行约 ' + walk + ' 分' : '开车 / 公交') + '</small></div></div>' + x2 + '</div>';
     }).join('');
     if (!Object.keys(OPEN).length) { var f = $('nbL').querySelector('.nb-c'); if (f) f.classList.add('open'); }
@@ -224,11 +224,11 @@
       '<div class="nb-dh"><div class="nb-i" style="background:' + K[2] + '">' + K[0] + '</div><div><b>' + esc(s.zh || s.n) + '</b><small>' + (s.zh ? esc(s.n) + ' · ' : '') + K[1] + (d != null ? ' · 离你 ' + (d < 0.1 ? Math.round(d * 5280) + ' 英尺' : d.toFixed(1) + ' 英里') + (d < 2 ? '，步行约 ' + Math.round(d * 1.2 / 3 * 60) + ' 分' : '') : '') + '</small></div></div>' +
       (s.l && s.l.length ? '<div class="nb-ch">' + s.l.map(function (x) { return '<span>' + esc(x) + '</span>'; }).join('') + '</div>' : '') +
       '<div class="nb-map" id="nbMap"></div>' +
-      '<div class="nb-go">' + (d != null && d >= 2 ? [['driving', '🚗 开车'], ['transit', '🚌 公交'], ['walking', '🚶 步行']] : [['walking', '🚶 步行'], ['transit', '🚌 公交'], ['driving', '🚗 开车']]).map(function (m, j) { return '<a href="' + gm(s, m[0]) + '" target="_blank" rel="noopener"' + (j ? ' class="s"' : '') + '>' + m[1] + '</a>'; }).join('') + '</div>' +
-      '<div class="nb-go"><a class="s" target="_blank" rel="noopener" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + s.ll[0] + '%2C' + s.ll[1] + '">🧭 街景：先看看长什么样</a><a class="s" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=' + s.ll[0] + '%2C' + s.ll[1] + '">📍 谷歌地图里看</a></div>' +
-      (lk ? '<div class="nb-go"><a class="s" target="_blank" rel="noopener" href="' + lk[1] + '">🔗 ' + lk[0] + '</a>' + (s.k === 'amtrak' ? '<a class="s" href="amtrak.html#time" data-q="' + esc(s.id) + '">⏱️ 从这站查时刻</a>' : '') + '</div>' : '') +
+      '<div class="nb-go">' + (d != null && d >= 2 ? [['driving', '开车'], ['transit', '公交'], ['walking', '步行']] : [['walking', '步行'], ['transit', '公交'], ['driving', '开车']]).map(function (m, j) { return '<a href="' + gm(s, m[0]) + '" target="_blank" rel="noopener"' + (j ? ' class="s"' : '') + '>' + m[1] + '</a>'; }).join('') + '</div>' +
+      '<div class="nb-go"><a class="s" target="_blank" rel="noopener" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + s.ll[0] + '%2C' + s.ll[1] + '">街景：先看看长什么样</a><a class="s" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=' + s.ll[0] + '%2C' + s.ll[1] + '">谷歌地图里看</a></div>' +
+      (lk ? '<div class="nb-go"><a class="s" target="_blank" rel="noopener" href="' + lk[1] + '">🔗 ' + lk[0] + '</a>' + (s.k === 'amtrak' ? '<a class="s" href="amtrak.html#time" data-q="' + esc(s.id) + '">从这站查时刻</a>' : '') + '</div>' : '') +
       '<div id="nbDep"></div>' +
-      (tips.length ? '<div class="nb-sec"><h4>💡 小提示</h4><ul class="nb-tip" style="margin:0;padding-left:18px">' + tips.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>' : '');
+      (tips.length ? '<div class="nb-sec"><h4>小提示</h4><ul class="nb-tip" style="margin:0;padding-left:18px">' + tips.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>' : '');
     $('nbL').innerHTML = h; status('');
     // 地图
     loadLeaf(function () {
@@ -246,14 +246,14 @@
     });
     // 班次
     var box = $('nbDep');
-    if (s.k === 'bart') { box.innerHTML = '<div class="nb-sec"><h4>⏱️ 实时到站</h4><div class="nb-nx" id="nbB">加载中…</div></div>'; bart(s.id, $('nbB')); return; }
+    if (s.k === 'bart') { box.innerHTML = '<div class="nb-sec"><h4>实时到站</h4><div class="nb-nx" id="nbB">加载中…</div></div>'; bart(s.id, $('nbB')); return; }
     if (s.k === 'amtrak') { amtrakDetail(s, box); return; }
     if (s.k === 'metrolink' || s.k === 'caltrain') { gtfsDetail(s, box); return; }
-    box.innerHTML = '<div class="nb-sec"><h4>🕐 班次</h4><div class="nb-tip">轻轨白天一般 10–20 分钟一班，晚上和周末少一些。点上面的「🚌 公交」，谷歌地图会给出具体的下一班和换乘。</div></div>';
+    box.innerHTML = '<div class="nb-sec"><h4>班次</h4><div class="nb-tip">轻轨白天一般 10–20 分钟一班，晚上和周末少一些。点上面的「🚌 公交」，谷歌地图会给出具体的下一班和换乘。</div></div>';
   }
   function dayChips() { return '<div class="nb-dy">' + [0, 1, 2].map(function (i) { return '<button data-day="' + i + '" class="' + (i === DAY ? 'on' : '') + '">' + dayLabel(i).split(' ')[0] + '</button>'; }).join('') + '</div>'; }
   function gtfsDetail(s, box) {
-    box.innerHTML = '<div class="nb-sec"><h4>🕐 时刻表</h4><div class="nb-nx">加载中…</div></div>';
+    box.innerHTML = '<div class="nb-sec"><h4>时刻表</h4><div class="nb-nx">加载中…</div></div>';
     function go() {
       var list = (DEPS && DEPS.d[s.id]) || [], b = DEPS ? DEPS.base : '', bd = b ? new Date(+b.slice(0, 4), +b.slice(4, 6) - 1, +b.slice(6, 8)) : new Date();
       var today = new Date(); today.setHours(0, 0, 0, 0);
@@ -282,7 +282,7 @@
   }
   function amtrakDetail(s, box) {
     var n = laNow(), wd = (n.wd + DAY) % 7, L2 = (s.dep || []).filter(function (x) { return x[4].charAt(wd) === '1'; });
-    var h = '<div class="nb-sec"><h4>📡 实时：正在开过来的车</h4><div class="nb-nx" id="nbLive">加载中…</div></div>' +
+    var h = '<div class="nb-sec"><h4>实时：正在开过来的车</h4><div class="nb-nx" id="nbLive">加载中…</div></div>' +
       '<div class="nb-sec"><h4>🕐 ' + dayLabel(DAY) + ' 的时刻表</h4>' + dayChips() + (L2.length ? '<table class="nb-tt">' + L2.map(function (x) {
         var t = x[0].split(':'), m = +t[0] * 60 + +t[1], past = DAY === 0 && m < n.m;
         return '<tr class="' + (past ? 'past' : '') + '"><td>' + x[0] + '</td><td>' + esc(x[2]) + ' ' + esc(x[1]) + ' 次 → ' + esc(x[3]) + '</td></tr>';
@@ -331,7 +331,7 @@
         var st = JSON.parse(x.responseText).root.station[0], rows = [];
         (st.etd || []).forEach(function (d) { (d.estimate || []).slice(0, 2).forEach(function (e) { rows.push([e.minutes === 'Leaving' ? 0 : +e.minutes, d.destination, e.hexcolor, e.direction]); }); });
         rows.sort(function (a, b) { return a[0] - b[0]; });
-        box.innerHTML = rows.length ? '⏱️ 实时到站：<br>' + rows.slice(0, 6).map(function (r) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:5px;background:' + r[2] + ';margin-right:5px"></span><b>' + (r[0] ? r[0] + ' 分' : '进站中') + '</b> → ' + esc(r[1]) + ' <small>' + (r[3] === 'North' ? '北行' : '南行') + '</small>'; }).join('<br>') : '现在没有车（可能已收班）。';
+        box.innerHTML = rows.length ? '实时到站：<br>' + rows.slice(0, 6).map(function (r) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:5px;background:' + r[2] + ';margin-right:5px"></span><b>' + (r[0] ? r[0] + ' 分' : '进站中') + '</b> → ' + esc(r[1]) + ' <small>' + (r[3] === 'North' ? '北行' : '南行') + '</small>'; }).join('<br>') : '现在没有车（可能已收班）。';
       } catch (e) { box.textContent = '实时数据格式不对，稍后再试。'; }
     };
     x.onerror = x.ontimeout = function () { box.textContent = '连不上 BART，稍后再试。'; };

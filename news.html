@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -136,8 +136,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 <body>
 <header class="top"><div class="wrap"><div class="bar">
   <a class="brand" href="./"><i></i>新闻</a>
-  <button class="btn ghost" id="refreshBtn">🔄 刷新</button><a class="btn ghost" href="sublingo.html">SubLingo</a>
-</div><div class="tabs" id="tabs"><button data-tab="today">📌 今日</button><button data-tab="world">🌍 国际局势</button><button data-tab="en">📰 英文精选</button></div></div></header>
+  <button class="btn ghost" id="refreshBtn">刷新</button><a class="btn ghost" href="sublingo.html">SubLingo</a>
+</div><div class="tabs" id="tabs"><button data-tab="today">今日</button><button data-tab="world">国际局势</button><button data-tab="en">英文精选</button></div></div></header>
 <main class="wrap" id="app"><div class="empty">加载中…</div></main>
 <script>
 (function () {
@@ -177,7 +177,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 
   function loadToday(manual) {
     var rb = document.getElementById('refreshBtn');
-    if (manual) { rb.disabled = true; rb.textContent = '⏳ 刷新中'; }
+    if (manual) { rb.disabled = true; rb.textContent = '刷新中'; }
     if (!T) app.innerHTML = '<div class="empty">加载中…</div>';
     var x = new XMLHttpRequest();
     x.open('GET', 'news/data/today.json?t=' + Date.now());
@@ -188,32 +188,32 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
       if (manual) flashMsg(prevT && prevT === T.generated ? '已经是最新的了（' + ago(T.generated) + '更新）' : '已刷新 ✓');
       prevT = T.generated;
     };
-    x.onloadend = function () { rb.disabled = false; rb.textContent = '🔄 刷新'; };
+    x.onloadend = function () { rb.disabled = false; rb.textContent = '刷新'; };
     x.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
     x.send();
   }
   function renderToday() {
     var now = new Date(), WK = '日一二三四五六', h = '', i, j, c;
     var key = ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2), otd = (T.onthisday || {})[key];
-    h += '<div class="meta">' + (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay()) + ' · 更新于 ' + ago(T.generated) + ((Date.now() - new Date(T.generated).getTime()) / 36e5 > 20 ? ' · <b style="color:#C8412B">⚠️ 超过 20 小时没更新，可能是自动任务失败（<a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">去看看</a>）</b>' : '') + (T.stale_big ? ' · 新闻源这次没抓到，显示的是上一次的' : '') + '</div>';
+    h += '<div class="meta">' + (now.getMonth() + 1) + '月' + now.getDate() + '日 周' + WK.charAt(now.getDay()) + ' · 更新于 ' + ago(T.generated) + ((Date.now() - new Date(T.generated).getTime()) / 36e5 > 20 ? ' · <b style="color:#C8412B">超过 20 小时没更新，可能是自动任务失败（<a href="https://github.com/boliunew/tools/actions" target="_blank" rel="noopener">去看看</a>）</b>' : '') + (T.stale_big ? ' · 新闻源这次没抓到，显示的是上一次的' : '') + '</div>';
     var big = T.big || [];
     big.forEach(function (c) { WSTORIES[c.link] = c; });
     if (big.length) {
-      h += '<div class="sec"><b>📰 今日大事</b><small>BBC、NPR、卫报、日本、新加坡等国际英文媒体，多家都在报的排前面 · 机器翻译</small></div>';
+      h += '<div class="sec"><b>今日大事</b><small>BBC、NPR、卫报、日本、新加坡等国际英文媒体，多家都在报的排前面 · 机器翻译</small></div>';
       for (i = 0; i < big.length && i < 10; i++) {
         c = big[i];
         var also = (c.others || []).filter(function (o) { return o.source !== c.source; }).slice(0, 3);
         h += '<div class="card big' + (c.n >= 2 ? ' hot' : '') + '"><div class="no">' + (i + 1) + '</div><div class="bd"><a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' +
           (c.en && c.zh ? '<div class="en">' + esc(c.en) + '</div>' : '') +
           (c.summary ? '<div class="s">' + esc(c.summary) + '</div>' : '') +
-          '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="#" data-think="' + esc(c.link) + '" style="color:var(--accent)">💭 记一笔</a></div>' +
+          '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="#" data-think="' + esc(c.link) + '" style="color:var(--accent)">记一笔</a></div>' +
           thinkHint({ t: c.title, e: c.en || c.title, es: c.en_summary || '', l: c.link, c: [], i: [] }) +
           (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';
       }
     }
     var odd = T.odd || [];
     if (odd.length) {
-      h += '<div class="sec"><b>🤪 趣闻</b><small>世界各地的奇闻怪事，中文是机器翻译</small></div>';
+      h += '<div class="sec"><b>趣闻</b><small>世界各地的奇闻怪事，中文是机器翻译</small></div>';
       for (i = 0; i < odd.length; i++) {
         c = odd[i];
         h += '<div class="card odd"><a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + (c.video ? '🎬 ' : '') + esc(c.zh || c.title) + '</a>' + (c.zh ? '<div class="en">' + esc(c.title) + '</div>' : '') +
@@ -221,7 +221,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
       }
     }
     if (otd && otd.events && otd.events.length) {
-      h += '<div class="sec"><b>📅 历史上的今天</b><small>' + esc(otd.page) + '</small></div><div class="card otd">';
+      h += '<div class="sec"><b>历史上的今天</b><small>' + esc(otd.page) + '</small></div><div class="card otd">';
       for (j = 0; j < otd.events.length; j++) {
         var e = otd.events[j], y = e.year < 0 ? '前' + (-e.year) : e.year;
         h += '<div class="ev"><span class="y">' + y + '</span><span>' + esc(e.text) + '</span></div>';
@@ -238,16 +238,16 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   // ================= 🌍 国际局势 · 分大洲 =================
   // 「可能影响」直接连到站里相关的工具和文章
   var IMPL = {
-    oil: [['stocks.html', '📈 看股票池'], ['kb.html#car-maintenance', '🚗 省油养车']],
-    ship: [['kb.html#la-lb-ports-guide', '🚢 洛杉矶/长滩港'], ['work.html', '🦺 现场工具'], ['kb.html#container-logistics-101', '📦 集装箱物流']],
-    trade: [['kb.html#customs-tariff-basics', '🧾 关税基础'], ['stocks.html', '📈 股票池'], ['kb.html#la-lb-ports-guide', '🚢 港口']],
-    chip: [['stocks.html', '📈 股票池'], ['earnings.html', '📅 财报日历']],
-    market: [['stocks.html', '📈 股票池'], ['earnings.html', '📅 经济日历'], ['convert.html', '💱 汇率']],
-    food: [['deals.html', '🏷️ 打折雷达'], ['kitchen.html', '🍳 厨房']],
-    sec: [['stocks.html', '📈 大盘环境']],
-    cn: [['kb.html#customs-tariff-basics', '🧾 关税基础'], ['stocks.html', '📈 股票池']],
-    travel: [['kb.html#travel-flights-airports', '✈️ 坐飞机攻略'], ['amtrak.html', '🚆 Amtrak'], ['usa.html', '🇺🇸 生活指南']],
-    nature: [['kb.html#earthquake-prep', '🌍 地震准备'], ['kb.html#wildfire-smoke-santa-ana', '🔥 山火季']],
+    oil: [['stocks.html', '看股票池'], ['kb.html#car-maintenance', '省油养车']],
+    ship: [['kb.html#la-lb-ports-guide', '洛杉矶/长滩港'], ['work.html', '现场工具'], ['kb.html#container-logistics-101', '集装箱物流']],
+    trade: [['kb.html#customs-tariff-basics', '关税基础'], ['stocks.html', '股票池'], ['kb.html#la-lb-ports-guide', '港口']],
+    chip: [['stocks.html', '股票池'], ['earnings.html', '财报日历']],
+    market: [['stocks.html', '股票池'], ['earnings.html', '经济日历'], ['convert.html', '汇率']],
+    food: [['deals.html', '打折雷达'], ['kitchen.html', '厨房']],
+    sec: [['stocks.html', '大盘环境']],
+    cn: [['kb.html#customs-tariff-basics', '关税基础'], ['stocks.html', '股票池']],
+    travel: [['kb.html#travel-flights-airports', '坐飞机攻略'], ['amtrak.html', 'Amtrak'], ['usa.html', '🇺🇸 生活指南']],
+    nature: [['kb.html#earthquake-prep', '地震准备'], ['kb.html#wildfire-smoke-santa-ana', '山火季']],
     us: [['usa.html', '🇺🇸 美国生活指南']]
   };
   // 🧠 思考本：每条新闻能「记一笔」，跟你以前的笔记有关时提醒「你之前想过」
@@ -256,7 +256,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   function thinkHint(st) {
     if (!window.Think || !TNOTES.length) return '';
     var rel = Think.related(st, TNOTES).filter(function (n) { return !n.src || n.src.l !== st.l; }).slice(0, 2);
-    return rel.length ? '<div class="also" style="margin-top:5px">💭 你之前想过：' + rel.map(function (n) { return '<a href="think.html#' + n.id + '" style="color:var(--accent)">' + esc(n.t) + '</a>'; }).join('、') + '</div>' : '';
+    return rel.length ? '<div class="also" style="margin-top:5px">你之前想过：' + rel.map(function (n) { return '<a href="think.html#' + n.id + '" style="color:var(--accent)">' + esc(n.t) + '</a>'; }).join('、') + '</div>' : '';
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('[data-think]'); if (!a || !window.Think) return;
@@ -267,7 +267,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   var W = null, prevW = null, WR = get('wr', 'eu'), WC = '', WI = '';
   function loadWorld(manual) {
     var rb = document.getElementById('refreshBtn');
-    if (manual) { rb.disabled = true; rb.textContent = '⏳ 刷新中'; }
+    if (manual) { rb.disabled = true; rb.textContent = '刷新中'; }
     if (!W) app.innerHTML = '<div class="empty">加载中…</div>';
     var x = new XMLHttpRequest();
     x.open('GET', 'news/data/world.json?t=' + Date.now());
@@ -278,7 +278,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
       if (manual) flashMsg(prevW && prevW === W.generated ? '已经是最新的了（' + ago(W.generated) + '更新）' : '已刷新 ✓');
       prevW = W.generated;
     };
-    x.onloadend = function () { rb.disabled = false; rb.textContent = '🔄 刷新'; };
+    x.onloadend = function () { rb.disabled = false; rb.textContent = '刷新'; };
     x.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
     x.send();
   }
@@ -286,11 +286,11 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     var R = W.regions || [], r = R.filter(function (x) { return x.k === WR; })[0] || R[0], h = '', i;
     if (!r) { app.innerHTML = '<div class="card empty">还没有数据，稍后刷新。</div>'; return; }
     WR = r.k;
-    h += '<div class="meta">更新于 ' + ago(W.generated) + ' · 每两小时自动更新 · 标题和摘要是机器翻译' + ((Date.now() - new Date(W.generated).getTime()) / 36e5 > 8 ? ' · <b style="color:#C8412B">⚠️ 好几个小时没更新了</b>' : '') + '</div>';
+    h += '<div class="meta">更新于 ' + ago(W.generated) + ' · 每两小时自动更新 · 标题和摘要是机器翻译' + ((Date.now() - new Date(W.generated).getTime()) / 36e5 > 8 ? ' · <b style="color:#C8412B">好几个小时没更新了</b>' : '') + '</div>';
     h += '<div class="rg" id="wrg">' + R.map(function (x) { return '<button data-wr="' + x.k + '" class="' + (x.k === WR && !WI ? 'on' : '') + '">' + x.e + ' ' + esc(x.n) + '<small>' + (x.stories || []).length + ' 件事' + (x.stories && x.stories[0] && x.stories[0].n >= 3 ? ' · 🔥' : '') + '</small></button>'; }).join('') + '</div>';
     var IM = {}; (W.impacts || []).forEach(function (x) { IM[x.k] = x; });
     var total = R.reduce(function (a, x) { return a + (x.stories || []).length; }, 0);
-    if ((W.impacts || []).length) h += '<div class="radar"><div class="h"><b>📡 影响雷达</b>五个地区 ' + total + ' 件事里，各方面被牵动的次数 · 点一下看是哪些事</div><div class="ch" id="wimp">' +
+    if ((W.impacts || []).length) h += '<div class="radar"><div class="h"><b>影响雷达</b>五个地区 ' + total + ' 件事里，各方面被牵动的次数 · 点一下看是哪些事</div><div class="ch" id="wimp">' +
       W.impacts.filter(function (x) { return x.count || WI === x.k; }).map(function (x) { return '<button data-wi="' + x.k + '" class="' + (WI === x.k ? 'on' : x.count ? '' : 'z') + '">' + x.e + ' ' + esc(x.n) + '<i>' + x.count + '</i></button>'; }).join('') + '</div></div>';
     var hot = WI ? [] : (r.hot || []);
     if (hot.length) h += '<div class="hot" id="whot"><button data-wc="" class="' + (WC ? '' : 'on') + '">全部</button>' + hot.map(function (c) { return '<button data-wc="' + esc(c[1]) + '" class="' + (WC === c[1] ? 'on' : '') + '">' + c[0] + '<b>' + esc(c[1]) + '</b><i>' + c[3] + '</i></button>'; }).join('') + '</div>';
@@ -310,10 +310,10 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
       h += '<div class="card big' + (c.n >= 2 ? ' hot' : '') + '"><div class="no">' + (i + 1) + '</div><div class="bd">' + (c._r ? '<span class="rgt">' + esc(c._r) + '</span>' : '') + '<a class="t" href="' + esc(c.link) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' +
         (c.en && c.zh ? '<div class="en">' + esc(c.en) + '</div>' : '') +
         (c.summary ? '<div class="s">' + esc(c.summary) + '</div>' : '') +
-        (imps.length ? '<details class="imp"><summary>📊 可能影响：<b>' + imps.map(function (k) { return IM[k].e + ' ' + esc(IM[k].n); }).join('　') + '</b> ›</summary>' +
+        (imps.length ? '<details class="imp"><summary>可能影响：<b>' + imps.map(function (k) { return IM[k].e + ' ' + esc(IM[k].n); }).join('　') + '</b> ›</summary>' +
           imps.map(function (k) { return '<div class="it"><b>' + IM[k].e + ' ' + esc(IM[k].n) + '</b>' + esc(IM[k].why) + ((IMPL[k] || []).length ? '<div style="margin-top:3px">' + IMPL[k].map(function (l) { return '<a href="' + l[0] + '" style="margin-right:10px;font-size:12.5px">' + l[1] + ' ›</a>'; }).join('') + '</div>' : '') + '</div>'; }).join('') + '<div class="nt">按新闻里的关键词自动判断的大方向，不是对这条新闻的专门分析。</div></details>' : '') +
         ((c.c || []).length ? '<div class="cf">' + c.c.map(function (x) { return '<span>' + x[0] + ' ' + esc(x[1]) + '</span>'; }).join('') + '</div>' : '') +
-        '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="sublingo.html?url=' + encodeURIComponent(c.link) + '" style="color:var(--faint)">精读原文</a> · <a href="#" data-think="' + esc(c.link) + '" style="color:var(--accent)">💭 记一笔</a></div>' +
+        '<div class="m">' + esc(c.source) + (c.n >= 2 ? ' · <b>' + c.n + ' 家报道</b>' : '') + (c.time ? ' · ' + ago(c.time) : '') + ' · <a href="sublingo.html?url=' + encodeURIComponent(c.link) + '" style="color:var(--faint)">精读原文</a> · <a href="#" data-think="' + esc(c.link) + '" style="color:var(--accent)">记一笔</a></div>' +
         thinkHint(stOf(c)) +
         (also.length ? '<div class="also">另见：' + also.map(function (o) { return '<a href="' + esc(o.link) + '" target="_blank" rel="noopener" title="' + esc(o.title) + '">' + esc(o.source) + '</a>'; }).join('') + '</div>' : '') + '</div></div>';
     }
@@ -332,7 +332,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
   var prevGen = null;
   function load(manual) {
     var rb = document.getElementById('refreshBtn');
-    if (manual) { rb.disabled = true; rb.textContent = '⏳ 刷新中'; }
+    if (manual) { rb.disabled = true; rb.textContent = '刷新中'; }
     var x = new XMLHttpRequest();
     x.open('GET', 'news/data/latest.json?t=' + Date.now());
     x.onload = function () {
@@ -342,7 +342,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
       if (manual) { flashMsg(prevGen && prevGen === D.generated ? '已经是最新的了（' + ago(D.generated) + '抓取）' : '已刷新 ✓'); }
       prevGen = D.generated;
     };
-    x.onloadend = function () { rb.disabled = false; rb.textContent = '🔄 刷新'; };
+    x.onloadend = function () { rb.disabled = false; rb.textContent = '刷新'; };
     x.onerror = function () { app.innerHTML = '<div class="empty">网络错误，请稍后刷新。</div>'; };
     x.send();
   }
@@ -371,7 +371,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
     h += '</div><div class="row"><span class="lab">来源</span><select id="srcSel" class="chip" style="padding:4px 8px"><option value="all">全部来源</option>';
     for (var s in srcs) if (srcs.hasOwnProperty(s)) h += '<option' + (F.src === s ? ' selected' : '') + '>' + esc(s) + '</option>';
     h += '</select><label class="switch"><input type="checkbox" id="hideRead"' + (F.hideRead ? ' checked' : '') + '>隐藏已读</label></div></div>';
-    h += '<div class="hint-tap">💡 点摘要里任何一个词、或下面的生词，就能查词、朗读、收进语境词库。</div>';
+    h += '<div class="hint-tap">点摘要里任何一个词、或下面的生词，就能查词、朗读、收进语境词库。</div>';
 
     var list = arts.filter(function (a) {
       return (F.lv === 'all' || a.level === F.lv) && (F.topic === 'all' || a.topic === F.topic) && (F.src === 'all' || a.source === F.src) && !(F.hideRead && READ[a.id]);
@@ -389,7 +389,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
         (a.summary ? '<div class="a-s">' + (window.WordSheet ? WordSheet.wrap(a.summary) : esc(a.summary)) + '</div>' : '') +
         '<div class="a-st">' + a.words + ' 词 · 约 ' + a.minutes + ' 分钟 · 平均句长 ' + a.asl + ' 词' + (a.long ? ' · 长难句 ' + a.long : '') + ' · 生词 ' + Math.round(a.rare * 100) + '%</div>' +
         (voc ? '<div class="voc">' + voc + '</div>' : '') +
-        '<div class="acts"><button class="btn" data-say="1">🔊 朗读</button><a class="btn primary" data-read="1" href="sublingo.html?url=' + encodeURIComponent(a.link) + '">SubLingo 精读</a><a class="btn" data-read="1" href="' + esc(a.link) + '" target="_blank" rel="noopener">阅读原文</a></div></div>';
+        '<div class="acts"><button class="btn" data-say="1">朗读</button><a class="btn primary" data-read="1" href="sublingo.html?url=' + encodeURIComponent(a.link) + '">SubLingo 精读</a><a class="btn" data-read="1" href="' + esc(a.link) + '" target="_blank" rel="noopener">阅读原文</a></div></div>';
     }
     h += '<footer>新闻来自各媒体公开的 RSS，版权归原作者所有；本页只展示标题、摘要和难度分析。<br>难度根据句长、音节数和词频估算，仅供参考。</footer>';
     app.innerHTML = h;
@@ -415,6 +415,6 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 10px;l
 })();
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

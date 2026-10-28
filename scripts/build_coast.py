@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🌊 加州海岸线 → coast/data.json（coast.html 用）。python3 scripts/build_coast.py
+"""加州海岸线 → coast/data.json（coast.html 用）。python3 scripts/build_coast.py
 从俄勒冈州边界一路往南到墨西哥边界，十段、六十多个停靠点。只写有据可查的事实；
 门票、预约、封路会变，页面上提醒出发前查官网和 Caltrans QuickMap。"""
 import json
@@ -356,7 +356,7 @@ def kb_article(stops):
          "summary: 从俄勒冈边界到墨西哥边界十段海岸、%d 个停靠点，每段最值得停的地方、从 Upland 出发要多久、经典自驾路线、什么季节看鲸鱼象海豹帝王蝶、大苏尔路况和开 1 号公路的注意事项。" % len(stops),
          "---", "", "# 加州海岸线自驾全攻略：从红杉到边境墙", "",
          "加州海岸线约 840 英里（NOAA 一般海岸线），1 号公路全长 650 多英里，从北边的红杉林、悬崖小镇，到大苏尔的山海、中央海岸的象海豹，再到南加州的冲浪海滩。"
-         "这篇是总览，配合本站的 [🌊 加州海岸线](../coast.html) 页面用：那里有可以缩放的地图、每个地方一键导航、打卡记录。", "",
+         "这篇是总览，配合本站的 [加州海岸线](../coast.html) 页面用：那里有可以缩放的地图、每个地方一键导航、打卡记录。", "",
          "> 门票、预约、开放时间和路况会变，出发前查加州州立公园官网和 Caltrans QuickMap（quickmap.dot.ca.gov）。", ""]
     L += ["## 十段海岸一览", "", "| 路段 | 从 Upland 开车 | 一句话 |", "|---|---|---|"]
     for k, e, n, en, c, d, dr in SEGS:

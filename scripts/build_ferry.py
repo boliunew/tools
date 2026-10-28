@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""⛴️ 旧金山湾渡轮：航线 + 未来 14 天时刻表 → sf/ferry.json（sf.html 的交通图和渡轮时刻表用）
+"""旧金山湾渡轮：航线 + 未来 14 天时刻表 → sf/ferry.json（sf.html 的交通图和渡轮时刻表用）
 
 数据来源：各渡轮公司公开发布的 GTFS 时刻表数据（通过 Mobility Database 公开目录找到最新的下载地址）：
   · San Francisco Bay Ferry（WETA）：奥克兰、阿拉米达、列治文、瓦列霍、南旧金山……

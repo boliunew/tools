@@ -8,3 +8,7 @@
   .wrap, body > main { max-width: min(1240px, 92vw) !important; }
   html[data-tw="mid"] .wrap, html[data-tw="mid"] body > main { max-width: 900px !important; }
 }
+
+/* 视觉收敛：卡片阴影压到很淡，靠细边框分区（所有屏幕都生效） */
+:root{ --shadow: 0 1px 1px rgba(0,0,0,.035) !important; }
+@media (prefers-color-scheme: dark){ :root{ --shadow: none !important; } }

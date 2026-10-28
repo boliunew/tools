@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -234,8 +234,8 @@ h2{font-size:1rem;margin:22px 4px 10px}
     <div class="stat"><b id="sLearn">0</b><span>学过的词</span></div>
     <div class="stat"><b id="sMaster">0</b><span>已掌握</span></div>
   </div>
-  <button class="readgo" id="goRead"><b>📖 读文章记单词</b><span>完整的小故事、百科和新闻：按你认识的词挑文章，生词高亮，读完小测记进复习</span></button>
-  <button class="readgo" id="goListen"><b>🎧 听词模式</b><span>开车、走路时听：单词 → 中文意思 → 例句，自动一个接一个；只听不打分，可接车载蓝牙</span></button>
+  <button class="readgo" id="goRead"><b>读文章记单词</b><span>完整的小故事、百科和新闻：按你认识的词挑文章，生词高亮，读完小测记进复习</span></button>
+  <button class="readgo" id="goListen"><b>听词模式</b><span>开车、走路时听：单词 → 中文意思 → 例句，自动一个接一个；只听不打分，可接车载蓝牙</span></button>
   <div id="newsBox"></div>
   <h2>选择词汇段</h2>
   <div class="bands" id="bands"></div>
@@ -247,8 +247,8 @@ h2{font-size:1rem;margin:22px 4px 10px}
     <button class="ghost" id="goBackup">备份进度</button>
   </div>
   <div class="row">
-    <button class="ghost" id="goStats">📊 统计 / 错词本</button>
-    <button class="ghost" id="goSync">☁️ 云同步</button>
+    <button class="ghost" id="goStats">统计 / 错词本</button>
+    <button class="ghost" id="goSync">云同步</button>
   </div>
   <p class="hint" id="syncLine"></p>
   <p class="foot">词表与释义：ECDICT（MIT）· 例句：Project Gutenberg 公版名著、已进入公有领域的作者名言、Tatoeba（CC BY 2.0 FR）、WordNet（Princeton）。复习算法：FSRS。没有现成译文的句子，揭晓答案后由 Claude 翻译并存在本机。进度保存在这台设备的浏览器里；开启「云同步」后手机和电脑自动同步。在 SubLingo 查词时可一键把单词连同原句收进来；复习时还会用上最近新闻里的真实例句。</p>
@@ -295,13 +295,13 @@ h2{font-size:1rem;margin:22px 4px 10px}
     <label><input type="checkbox" id="lsLoop"> 循环</label>
   </div>
   <div class="seg" id="lsRate"><button data-r="0.8">慢</button><button data-r="1">正常</button><button data-r="1.2">快</button></div>
-  <p class="hint">屏幕要保持亮着（开始播放后会尽量不让屏幕自动熄灭）。听只是加深印象，不会改复习进度，真正的复习还是要回去做卡片。</p>
+  <p class="hint">屏幕要保持亮着。听只是加深印象，不算复习。</p>
 </section>
 
 <section id="read" class="hidden">
   <div class="top">
     <button class="back" id="readBack" aria-label="返回">‹</button>
-    <span class="cnt" id="readTitle">📖 读文章记单词</span>
+    <span class="cnt" id="readTitle">读文章记单词</span>
   </div>
   <div id="readBody"></div>
 </section>
@@ -321,8 +321,8 @@ h2{font-size:1rem;margin:22px 4px 10px}
 
 <div class="modal hidden" id="syncM">
   <div class="sheet">
-    <h2 style="margin-top:0">☁️ 云同步</h2>
-    <p class="hint">用你 GitHub 账号里的一个<b>私密 Gist</b> 存进度，手机和电脑自动同步。密钥只保存在这台设备的浏览器里，不会上传到网站仓库。</p>
+    <h2 style="margin-top:0">云同步</h2>
+    <p class="hint">进度存在你自己的私密 Gist 里，手机和电脑同步。</p>
     <ol>
       <li>打开 <a href="https://github.com/settings/tokens/new?scopes=gist&description=ctxvocab-sync" target="_blank" rel="noopener">GitHub → 新建密钥 ↗</a>（已经帮你勾好只要 <b>gist</b> 权限）</li>
       <li>Expiration 选 <b>No expiration</b>，拉到底点 <b>Generate token</b></li>
@@ -542,7 +542,7 @@ function renderCard(){
   var target = cur.hit, h = '', hasSent = sIdx != null;
   var mode = cur.mode = pickMode(c, hasSent);
   var leech = c && c.l >= 4;
-  h += '<div class="kind">' + (item.isNew ? '<span class="new">新词</span>' : '复习') + ' · <span class="mode">' + MODES[mode] + '</span> · ' + (ix >= NBASE ? '⭐ 我收藏的词' : '第 ' + (ix + 1) + ' 常用') +
+  h += '<div class="kind">' + (item.isNew ? '<span class="new">新词</span>' : '复习') + ' · <span class="mode">' + MODES[mode] + '</span> · ' + (ix >= NBASE ? '我收藏的词' : '第 ' + (ix + 1) + ' 常用') +
        (leech ? ' · <span class="leech">顽固词</span>' : '') + '</div>';
   var sent = hasSent ? S[sIdx][0] : '', lab = hasSent ? srcLabel(sIdx) : '';
   var blank = '<span class="blank">' + esc(target[0]) + '<span aria-hidden="true">' + new Array(target.length).join('_') + '</span></span>';
@@ -564,11 +564,11 @@ function renderCard(){
     h += '<div class="opts">' + cur.opts.map(function(o, k){
       return '<button class="opt" data-opt="' + k + '">' + esc(shortDef(o)) + '</button>';
     }).join('') + '</div>';
-    h += '<div class="tools"><button class="chip" data-act="sayword">🔊 听发音</button></div>';
+    h += '<div class="tools"><button class="chip" data-act="sayword">听发音</button></div>';
   } else if (mode === 1){                // dictation: listen, write the word
     h += hasSent ? blanked : '<div class="meaning-big">🎧</div>';
     h += '<div class="hint">听' + (hasSent ? '句子' : '发音') + '，写出空里的词（' + target.length + ' 个字母）</div>';
-    h += '<div class="tools"><button class="chip" data-act="replay">▶ 再听一遍</button><button class="chip" data-act="slow">🐢 慢速</button><button class="chip" data-act="def">提示：看词义</button></div>';
+    h += '<div class="tools"><button class="chip" data-act="replay">▶ 再听一遍</button><button class="chip" data-act="slow">慢速</button><button class="chip" data-act="def">提示：看词义</button></div>';
     h += '<div id="hintBox"></div>';
   } else if (mode === 2){                // cloze
     h += blanked;
@@ -770,7 +770,7 @@ $('q').addEventListener('input', function(){
   $('res').innerHTML = out.map(function(i){
     var e = W[i], c = DB.cards[e[0]];
     var st = !c ? '<button class="chip" data-add="' + i + '">加入学习</button>' : c.k ? '<span class="hint">已认识</span>' : '<span class="hint">下次复习：' + fmt(Math.max(0, c.due - today())) + '后</span>';
-    return '<div class="item"><div class="h"><b>' + esc(e[0]) + '</b><span>' + (i >= NBASE ? '⭐ 我收藏的词' : '第 ' + (i + 1) + ' 常用') + '</span></div>' +
+    return '<div class="item"><div class="h"><b>' + esc(e[0]) + '</b><span>' + (i >= NBASE ? '我收藏的词' : '第 ' + (i + 1) + ' 常用') + '</span></div>' +
       '<div class="d">' + esc(e[2]) + '</div>' +
       (e[3].length ? '<div class="d"><i>' + esc(S[e[3][0]][0]) + '</i></div>' : '') +
       '<div class="tools">' + st + '<button class="chip" data-speak="' + i + '">🔊</button></div></div>';
@@ -833,14 +833,14 @@ function rebuildUser(){
     ix = BY[w]; var hits = NEWS.idx[w];
     if (ix == null || !hits) continue;
     var ns = [];
-    for (k = 0; k < hits.length && ns.length < 2; k++){ var e0 = NEWS.sents[hits[k]]; if (!e0) continue; S.push([e0[0], '', srcIdx('📰 最近新闻 · ' + e0[1] + ' · ' + e0[2])]); ns.push(S.length - 1); }
+    for (k = 0; k < hits.length && ns.length < 2; k++){ var e0 = NEWS.sents[hits[k]]; if (!e0) continue; S.push([e0[0], '', srcIdx('最近新闻 · ' + e0[1] + ' · ' + e0[2])]); ns.push(S.length - 1); }
     if (ns.length) prepend(ix, ns);
   }
   for (w in DB.ctx){
     if (!DB.ctx.hasOwnProperty(w)) continue;
     ix = BY[w]; if (ix == null) continue;
     var list = DB.ctx[w], sids = [];
-    for (k = 0; k < list.length; k++){ S.push([list[k].en, list[k].zh || '', srcIdx('📌 我的语境 · ' + (list[k].src || '收藏'))]); sids.push(S.length - 1); }
+    for (k = 0; k < list.length; k++){ S.push([list[k].en, list[k].zh || '', srcIdx('我的语境 · ' + (list[k].src || '收藏'))]); sids.push(S.length - 1); }
     if (sids.length) prepend(ix, sids);
   }
 }
@@ -897,7 +897,7 @@ function renderNewsBox(){
   var box = $('newsBox'); if (!box) return;
   var hits = newsHits();
   if (!hits.length){ box.innerHTML = ''; return; }
-  var h = '<details class="newsbox"><summary>📰 最近的新闻里出现了你正在学的 <b>' + hits.length + '</b> 个词<span class="hint">（复习时会用上这些真实例句）</span></summary>';
+  var h = '<details class="newsbox"><summary>最近的新闻里出现了你正在学的 <b>' + hits.length + '</b> 个词<span class="hint">（复习时会用上这些真实例句）</span></summary>';
   hits.slice(0, 15).forEach(function(w){
     var e0 = NEWS.sents[NEWS.idx[w][0]];
     if (!e0) return;
@@ -1090,20 +1090,20 @@ function readRemote(g, cb){
 function sync(manual){
   if (!SY.token){ if (manual) openSync(); return; }
   if (syncing) return;
-  syncing = true; dirty = false; syncLine('☁️ 同步中…');
+  syncing = true; dirty = false; syncLine('同步中…');
   function done(msg){ syncing = false; syncLine(msg); }
   findGist(function(id, created, st){
-    if (!id){ done(st === 401 ? '☁️ 同步失败：密钥无效或已过期' : '☁️ 同步失败（网络或权限问题）'); return; }
-    if (created){ SY.last = Date.now(); jset(SYNCKEY, SY); done('☁️ 已同步 ✓ 刚刚'); return; }
+    if (!id){ done(st === 401 ? '同步失败：密钥无效或已过期' : '同步失败（网络或权限问题）'); return; }
+    if (created){ SY.last = Date.now(); jset(SYNCKEY, SY); done('已同步 ✓ 刚刚'); return; }
     gh('GET', '/gists/' + id, null, function(st2, g){
       if (st2 === 404){ SY.gist = null; jset(SYNCKEY, SY); syncing = false; sync(manual); return; }
-      if (st2 !== 200 || !g){ done('☁️ 同步失败（' + st2 + '）'); return; }
+      if (st2 !== 200 || !g){ done('同步失败（' + st2 + '）'); return; }
       readRemote(g, function(remote){
         if (remote && remote.cards){ DB = mergeDB(DB, remote); fixDB(); jset(KEY, DB); rebuildUser(); if (!$('home').classList.contains('hidden')) renderHome(); }
         var files = {}; files[GFILE] = {content: JSON.stringify(DB)};
         gh('PATCH', '/gists/' + id, {files: files}, function(st3){
-          if (st3 === 200){ SY.last = Date.now(); jset(SYNCKEY, SY); var d = new Date(); done('☁️ 已同步 ✓ ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2)); }
-          else done('☁️ 上传失败（' + st3 + '）');
+          if (st3 === 200){ SY.last = Date.now(); jset(SYNCKEY, SY); var d = new Date(); done('已同步 ✓ ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2)); }
+          else done('上传失败（' + st3 + '）');
         });
       });
     });
@@ -1204,18 +1204,18 @@ function loadArticles(cb){
     x.onerror = fin; x.send();
   });
 }
-function srcName(a){ return a.src === 'story' ? '✍️ 故事 · ' + BANDS[a.band].name + '词段' : a.src === 'wikinews' ? '📰 Wikinews' + (a.date ? ' · ' + a.date.replace(/^\w+, /, '') : '') : a.src === 'globalvoices' ? '🌍 Global Voices' + (a.date ? ' · ' + a.date : '') : '📘 Simple Wikipedia'; }
+function srcName(a){ return a.src === 'story' ? '故事 · ' + BANDS[a.band].name + '词段' : a.src === 'wikinews' ? 'Wikinews' + (a.date ? ' · ' + a.date.replace(/^\w+, /, '') : '') : a.src === 'globalvoices' ? 'Global Voices' + (a.date ? ' · ' + a.date : '') : 'Simple Wikipedia'; }
 function covBadge(an, a){
   var p = Math.round(an.cov * 100), cls = fitOf(a || {}, an);
   return '<span class="cov ' + cls + '">认识 ' + p + '%' + (cls === 'hard' ? ' · 偏难' : cls === 'easy' ? ' · 偏易' : ' · 正合适') + '</span>';
 }
 function renderReadList(){
   stopSpeak(); RCUR = null; RVIEW = 'list';
-  $('readTitle').textContent = '📖 读文章记单词';
+  $('readTitle').textContent = '读文章记单词';
   if (!ART){ $('readBody').innerHTML = '<p class="hint">正在加载文章…</p>'; loadArticles(function(){ if (!RCUR && !$('read').classList.contains('hidden')) renderReadList(); }); return; }
   if (!ART.length){ $('readBody').innerHTML = '<p class="hint">文章暂时加载不到，稍后再试。</p>'; return; }
   ANV++;
-  var R = rDB(), tabs = [['rec', '推荐给你'], ['story', '✍️ 故事'], ['simplewiki', '📘 百科'], ['news', '📰 新闻'], ['read', '✓ 已读']];
+  var R = rDB(), tabs = [['rec', '推荐给你'], ['story', '故事'], ['simplewiki', '百科'], ['news', '新闻'], ['read', '✓ 已读']];
   var h = '<p class="hint" style="margin-top:0">读完整的文章，在上下文里记单词。你认识约 95% 的文章最适合学新词；读完做个小测，生词和复习词都会记进你的复习计划。</p>';
   h += '<div class="rtabs">' + tabs.map(function(t){ return '<button data-t="' + t[0] + '" class="' + (RTAB === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div>';
   var list = ART.filter(function(a){
@@ -1255,9 +1255,9 @@ function openArticle(id){
   RCUR = a; RSESS = {added: {}, looked: {}}; RVIEW = 'article';
   var an = analyze(a), k = 0;
   RSENTS = [];
-  $('readTitle').textContent = a.src === 'story' ? '✍️ 故事' : a.src === 'simplewiki' ? '📘 百科' : '📰 新闻';
+  $('readTitle').textContent = a.src === 'story' ? '故事' : a.src === 'simplewiki' ? '百科' : '新闻';
   var h = '<div class="rhd"><h2>' + esc(a.title) + '</h2>' + (a.tzh ? '<div class="rz">' + esc(a.tzh) + '</div>' : '') + '<div class="rm">' + srcName(a) + ' · ' + a.n + ' 词 · ' + covBadge(an, a).replace(/<[^>]+>/g, '') + '</div></div>';
-  h += '<div class="rbar"><button id="rPlay">🔊 朗读全文</button><button id="rRate">' + RSPEAK.rate.toFixed(1) + '×</button>' + (a.src === 'story' ? '<button id="rZh">中文</button>' : '') +
+  h += '<div class="rbar"><button id="rPlay">朗读全文</button><button id="rRate">' + RSPEAK.rate.toFixed(1) + '×</button>' + (a.src === 'story' ? '<button id="rZh">中文</button>' : '') +
     '<span class="lg"><i class="lgd due">复习</i> <i class="lgd new">生词</i> 点词可查</span></div><div class="rtext' + (a.src === 'story' && DB.set.rzh ? ' zh' : '') + '" id="rText">';
   for (i = 0; i < a.b.length; i++){
     var b = a.b[i];
@@ -1268,8 +1268,8 @@ function openArticle(id){
     else h += '<a class="tr" target="_blank" rel="noopener" href="https://translate.google.com/?sl=en&tl=zh-CN&op=translate&text=' + encodeURIComponent(b.s.join(' ')) + '">译</a>';
     h += '</p>';
   }
-  h += '</div><div class="rend"><button class="primary" id="rQuiz" style="margin-top:8px">📝 读完了，做个小测</button><button class="ghost" id="rDone" style="width:100%;margin-top:8px">只标记为已读</button></div>';
-  h += '<p class="rattr">' + (a.src === 'story' ? '✍️ 为语境词库原创的小故事：本篇重点词（加粗）在文中各出现 2–3 次。' :
+  h += '</div><div class="rend"><button class="primary" id="rQuiz" style="margin-top:8px">读完了，做个小测</button><button class="ghost" id="rDone" style="width:100%;margin-top:8px">只标记为已读</button></div>';
+  h += '<p class="rattr">' + (a.src === 'story' ? '为语境词库原创的小故事：本篇重点词（加粗）在文中各出现 2–3 次。' :
     '文章：<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.title) + '</a> · ' + ({wikinews: 'Wikinews', globalvoices: 'Global Voices', simplewiki: 'Simple English Wikipedia'}[a.src] || a.src) + ' · <a href="' + esc(a.licu) + '" target="_blank" rel="noopener">' + esc(a.lic) + '</a>' + (a.n >= 600 ? ' · 篇幅较长，只截取了前面部分' : '')) + '</p>';
   $('readBody').innerHTML = h;
   window.scrollTo(0, 0);
@@ -1292,11 +1292,11 @@ function wordSheet(ix, sent){
   var w = W[ix][0], st = wstat(ix), c = DB.cards[w];
   RSESS.looked[ix] = sent;
   var hl = esc(sent).replace(reFor(ix), '<b>$1</b>');
-  var line = st === 'due' ? '🟧 今天该复习这个词——读完做小测就算复习了' : st === 'learn' ? '在学习中 · ' + (c.due - today()) + ' 天后复习' : st === 'known' ? (c ? '✓ 你已经掌握这个词' : '✓ 这个词在你选的词汇段之前，默认你认识') : '🟦 生词 · 第 ' + (ix + 1) + ' 常用';
+  var line = st === 'due' ? '今天该复习这个词——读完做小测就算复习了' : st === 'learn' ? '在学习中 · ' + (c.due - today()) + ' 天后复习' : st === 'known' ? (c ? '✓ 你已经掌握这个词' : '✓ 这个词在你选的词汇段之前，默认你认识') : '生词 · 第 ' + (ix + 1) + ' 常用';
   var h = '<div class="word"><b>' + esc(w) + '</b>' + (W[ix][1] ? '<span class="ph">/' + esc(W[ix][1]) + '/</span>' : '') + '<button class="chip" id="wsSay">🔊</button></div>' +
     '<div class="wsz">' + esc(W[ix][2]).slice(0, 160) + '</div><div class="wsen">' + hl + '</div><p class="hint">' + line + '</p><div class="row">';
-  if (st === 'new' || (st === 'known' && !c)) h += '<button class="ghost" id="wsAdd">➕ 加入学习（这句存为例句）</button>' + (st === 'new' ? '<button class="ghost" id="wsKnow">✓ 我认识</button>' : '');
-  else h += '<button class="ghost" id="wsCtx">📌 这句存为例句</button>';
+  if (st === 'new' || (st === 'known' && !c)) h += '<button class="ghost" id="wsAdd">加入学习（这句存为例句）</button>' + (st === 'new' ? '<button class="ghost" id="wsKnow">✓ 我认识</button>' : '');
+  else h += '<button class="ghost" id="wsCtx">这句存为例句</button>';
   h += '</div><button class="ghost" id="wsClose" style="width:100%;margin-top:8px">关闭</button>';
   $('wsBody').innerHTML = h;
   $('wsM').classList.remove('hidden');
@@ -1315,7 +1315,7 @@ function stopSpeak(){
   RSPEAK.on = false; RSPEAK.tok++;
   try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) {}
   var on = document.querySelectorAll('#readBody .sn.on'); for (var i = 0; i < on.length; i++) on[i].classList.remove('on');
-  if ($('rPlay')) $('rPlay').textContent = '🔊 朗读全文';
+  if ($('rPlay')) $('rPlay').textContent = '朗读全文';
 }
 function speakFrom(k){
   if (!window.speechSynthesis){ toast('这个浏览器不支持朗读'); return; }
@@ -1377,7 +1377,7 @@ function renderRQ(){
   opts.sort(function(){ return Math.random() - 0.5; });
   q.opts = opts;
   var blank = esc(q.s.slice(0, q.at)) + '<span class="rblank">＿＿＿＿</span>' + esc(q.s.slice(q.at + q.tok.length));
-  $('readTitle').textContent = '📝 读后小测 ' + (RQ.i + 1) + ' / ' + RQ.qs.length;
+  $('readTitle').textContent = '读后小测 ' + (RQ.i + 1) + ' / ' + RQ.qs.length;
   $('readBody').innerHTML = '<div class="card rqc"><p class="hint" style="margin-top:0">文章里这句话缺了哪个词？</p><div class="rqs">' + blank + '</div><div class="hint">提示：' + esc(shortDef(q.ix)) + '</div><div class="ropts">' +
     opts.map(function(o, n){ return '<button class="ropt" data-n="' + n + '">' + esc(o) + '</button>'; }).join('') + '</div><div id="rqfb"></div></div>';
   window.scrollTo(0, 0);
@@ -1400,7 +1400,7 @@ function finishRQ(){
   markRead(); stopSpeak(); ANV++; RVIEW = 'done';
   var nxt = null, best = -1e9, R = rDB();
   ART.forEach(function(a){ if (R[a.id] == null && a !== RCUR){ var s = rScore(a, analyze(a)); if (s > best){ best = s; nxt = a; } } });
-  $('readTitle').textContent = '📖 读完了';
+  $('readTitle').textContent = '读完了';
   $('readBody').innerHTML = '<div class="done" style="padding-top:30px"><h2>' + RQ.ok + ' / ' + RQ.qs.length + '</h2><p class="hint">' +
     (RQ.newc ? RQ.newc + ' 个新词加入了学习，' : '') + (RQ.revc ? RQ.revc + ' 个词已按答题情况安排复习，' : '') + '这篇文章里的句子已存为它们的例句——以后复习时你会再看到这个故事。</p>' +
     (nxt ? '<button class="primary" id="rNext">接着读：' + esc(nxt.title) + '</button>' : '') + '<button class="ghost" id="rList" style="width:100%;margin-top:10px">回到文章列表</button></div>';
@@ -1432,7 +1432,7 @@ $('readBack').addEventListener('click', function(){
 mergeInbox();
 rebuildUser();
 loadNews();
-if (SY.token){ syncLine('☁️ 已开启云同步'); setTimeout(function(){ sync(false); }, 800); }
+if (SY.token){ syncLine('已开启云同步'); setTimeout(function(){ sync(false); }, 800); }
 
 renderHome();
 
@@ -1547,6 +1547,6 @@ window.addEventListener('hashchange', function(){ if (location.hash === '#listen
 </script>
 
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

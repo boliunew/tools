@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="wide.css?v=1">
+<link rel="stylesheet" href="wide.css?v=2">
 <script src="theme.js?v=1"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -202,9 +202,9 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
 <body>
 <div id="vList">
   <div class="wrap">
-    <header><a class="brand" href="./">📚 知识库</a><a class="newbtn" id="newBtn" target="_blank" rel="noopener">＋ 写一篇</a></header>
+    <header><a class="brand" href="./">知识库</a><a class="newbtn" id="newBtn" target="_blank" rel="noopener">＋ 写一篇</a></header>
     <p class="intro" id="intro">长一点的科普和笔记。三五步就能说完的短技巧在 <a href="tips.html">技巧与科普</a>。</p>
-    <div class="srch"><input id="q" type="search" placeholder="🔍 搜标题和全文…" autocomplete="off"></div>
+    <div class="srch"><input id="q" type="search" placeholder="搜标题和全文…" autocomplete="off"></div>
     <div class="tags" id="tags"></div>
     <div id="list"><div class="empty">加载中…</div></div>
     <div class="foot">文章是仓库 <code>kb/</code> 文件夹里的 Markdown 文件，一篇一个。<br>点「＋ 写一篇」在 GitHub 上新建，推上去后目录和更新日志自动生成。<br>用 Obsidian 打开 <code>kb/</code> 文件夹就是一个笔记库。公开仓库，私人笔记别放这里。</div>
@@ -214,7 +214,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
 <div id="vArt" hidden>
   <div class="bar"><div class="in">
     <button class="back" id="back">‹ 知识库</button>
-    <button id="tocBtn" title="目录">☰ 目录</button>
+    <button id="tocBtn" title="目录">目录</button>
     <button id="fsBtn" title="字号">Aa</button>
     <a id="editBtn" target="_blank" rel="noopener" title="在 GitHub 上编辑">✏️</a>
   </div><div class="prog" id="prog"></div></div>
@@ -434,7 +434,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       }
       var sum = isoSum(s), cd = sum % 11 % 10;
       if (fixed.length) h += '<div class="hint">已按位置自动纠正：' + fixed.join('，') + '</div>';
-      if ('UJZ'.indexOf(s.charAt(3)) < 0) h += '<div class="hint">⚠️ 第 4 位通常是 U（集装箱）、J（附属设备）或 Z（底盘），这里是 ' + s.charAt(3) + '</div>';
+      if ('UJZ'.indexOf(s.charAt(3)) < 0) h += '<div class="hint">第 4 位通常是 U（集装箱）、J（附属设备）或 Z（底盘），这里是 ' + s.charAt(3) + '</div>';
       if (s.length === 10) {
         h += '<div class="big">' + grp(s) + '<i>' + cd + '</i></div>';
       } else if (+s.charAt(10) === cd) {
@@ -478,7 +478,7 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       h += '<div class="kpi"><div>' + y + ' 年后大约<b>' + money(a.bal) + '</b></div><div>自己一共投入<b>' + money(put) + '</b></div>' +
         '<div>赚到的部分<b>' + money(a.bal - put) + '</b></div><div>相当于本金的<b>' + (put ? (a.bal / put).toFixed(1) : '—') + ' 倍</b></div></div>';
       h += '<table><tr><th>第几年</th><th>投入</th><th>账户</th><th>其中收益</th></tr>' + a.rows.map(function (x) { return '<tr><td>' + Math.round(x[0]) + '</td><td>' + money(x[2]) + '</td><td>' + money(x[1]) + '</td><td>' + Math.round((x[1] - x[2]) / Math.max(1, x[1]) * 100) + '%</td></tr>'; }).join('') + '</table>';
-      if (fee < 1) h += '<div class="hint" style="margin-top:6px">💸 如果年费率是 1%（很多主动基金的水平），同样条件最后只有 <b>' + money(b.bal) + '</b>，少了 <b>' + money(a.bal - b.bal) + '</b>。</div>';
+      if (fee < 1) h += '<div class="hint" style="margin-top:6px">如果年费率是 1%（很多主动基金的水平），同样条件最后只有 <b>' + money(b.bal) + '</b>，少了 <b>' + money(a.bal - b.bal) + '</b>。</div>';
       h += '<div class="hint">按每月复利、费率从回报里扣除估算；真实回报每年起伏很大，不代表未来。</div>';
       res.innerHTML = h;
     }
@@ -504,12 +504,12 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       // 48×40 托盘：高不超过 72 英寸（含托盘约 6 英寸），重不超过 1500 磅（FBA 要求）
       var Lp = 48 * 2.54, Wp = 40 * 2.54, Hmax = (72 - 6) * 2.54, best = { per: 0 }, dims = [[l, w, h], [l, h, w], [w, h, l]];
       dims.forEach(function (d) { var lay = fit(Lp, Wp, d[0], d[1]), layers = Math.floor(Hmax / d[2]), per = lay * layers; if (kg) per = Math.min(per, Math.floor(680 / kg)); if (per > best.per) best = { per: per, lay: lay, layers: layers, up: d === dims[0] }; });
-      if (best.per) out += '<div class="hint" style="margin-top:8px">📦 48×40 托盘：每层 <b>' + best.lay + '</b> 箱 × <b>' + best.layers + '</b> 层，一托最多约 <b>' + best.per + '</b> 箱' + (best.up ? '' : '（箱子要侧放，注意箱子朝上标志）') + '，' + n + ' 箱约要 <b>' + Math.ceil(n / best.per) + '</b> 托。</div>';
+      if (best.per) out += '<div class="hint" style="margin-top:8px">48×40 托盘：每层 <b>' + best.lay + '</b> 箱 × <b>' + best.layers + '</b> 层，一托最多约 <b>' + best.per + '</b> 箱' + (best.up ? '' : '（箱子要侧放，注意箱子朝上标志）') + '，' + n + ' 箱约要 <b>' + Math.ceil(n / best.per) + '</b> 托。</div>';
       var warn = [];
       if (kg > 50 * 0.45359237 + 0.01) warn.push('每箱超过 50 磅：送 FBA 要贴 Team Lift（单件超重）或者拆箱');
       if (Math.max(l, w, h) > 25 * 2.54 + 0.1) warn.push('有一边超过 25 英寸：FBA 装多件标准品的箱子不允许');
       if (warn.length) out += '<div class="hint" style="color:var(--bad)">⚠️ ' + warn.join('；') + '</div>';
-      out += '<div class="hint">⚖️ 表示被重量限制，不是被体积限制。可装 CBM 是留了空隙后的经验值；重量按美国公路上整车不超 80,000 磅粗估，实际要看底盘和车头。</div>';
+      out += '<div class="hint">表示被重量限制，不是被体积限制。可装 CBM 是留了空隙后的经验值；重量按美国公路上整车不超 80,000 磅粗估，实际要看底盘和车头。</div>';
       res.innerHTML = out;
     }
     box.addEventListener('input', run);
@@ -605,12 +605,12 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
     segs.forEach(function (s) { total += s[1] - s[0]; });
     var v, cls;
     if (!dusk) { v = '天不会全黑'; cls = 'bad'; }
-    else if (total >= night * 0.9) { v = '🌌 整晚都很黑，月亮不碍事'; cls = 'good'; }
+    else if (total >= night * 0.9) { v = '整晚都很黑，月亮不碍事'; cls = 'good'; }
     else if (!segs.length || total < 45 * 6e4) { v = mi[1] + ' 月亮整晚都在，适合看月亮和行星'; cls = 'bad'; }
     else {
       var long = segs.filter(function (s) { return s[1] - s[0] >= 30 * 6e4; });
       if (!long.length) long = [segs.slice().sort(function (a, b) { return (b[1] - b[0]) - (a[1] - a[0]); })[0]];
-      v = '🌌 最黑的时段：' + long.map(function (s) { var a = new Date(s[0]), b = new Date(s[1]); return hm(a) + '–' + nextDay(b) + hm(b); }).join('、'); cls = 'good';
+      v = '最黑的时段：' + long.map(function (s) { var a = new Date(s[0]), b = new Date(s[1]); return hm(a) + '–' + nextDay(b) + hm(b); }).join('、'); cls = 'good';
     }
     var title = DAYOFF === 0 ? '今晚' : DAYOFF === 1 ? '明晚' : DAYOFF === -1 ? '昨晚' : '';
     var h = '<div class="nav"><button data-a="prev">‹</button><b>' + (base.getMonth() + 1) + '月' + base.getDate() + '日 周' + WK[base.getDay()] + (title ? ' · ' + title : '') + '</b>' + (DAYOFF ? '<button data-a="today">今晚</button>' : '') + '<button data-a="next">›</button></div>';
@@ -721,10 +721,10 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
       h += '<div class="ev' + (e.dim ? ' dim' : '') + '"><div class="d">' + md(e.d) + '<i>周' + WK[e.d.getDay()] + '</i></div><div class="t">' + e.icon + ' <b>' + e.t + '</b>' + (e.s ? '<div>' + e.s + '</div>' : '') + '</div></div>';
     });
     if (farLunar || farSolar.length) {
-      h += '<div class="far"><b>再远一点</b>' + (farLunar ? '🌕 下一次这里能看到的月全食：' + farLunar[0].getFullYear() + '/' + md(farLunar[0]) + '，食甚时月亮高 ' + Math.round(farLunar[1]) + '°<br>' : '') +
-        farSolar.map(function (x) { return '🌒 这里能看到的日食：' + x[0].getFullYear() + '/' + md(x[0]) + ' ' + x[1] + '，遮住 ' + x[2] + '%'; }).join('<br>') + '</div>';
+      h += '<div class="far"><b>再远一点</b>' + (farLunar ? '下一次这里能看到的月全食：' + farLunar[0].getFullYear() + '/' + md(farLunar[0]) + '，食甚时月亮高 ' + Math.round(farLunar[1]) + '°<br>' : '') +
+        farSolar.map(function (x) { return '这里能看到的日食：' + x[0].getFullYear() + '/' + md(x[0]) + ' ' + x[1] + '，遮住 ' + x[2] + '%'; }).join('<br>') + '</div>';
     }
-    h += '<div class="note">🌑 新月前后最适合看星星。日期按这台手机的时区；流星雨的日子每年前后可能差一天。</div>';
+    h += '<div class="note">新月前后最适合看星星。日期按这台手机的时区；流星雨的日子每年前后可能差一天。</div>';
     return h;
   }
 
@@ -871,6 +871,6 @@ mark{background:rgba(201,138,22,.3);color:inherit;border-radius:3px}
 <!-- RANKINGS-INTEGRATION: 排行榜互动版脚本（仅供 openArt 拦截 Top500 文章时调用，其他文章不受影响） -->
 <script src="rankings-ui.js?v=1"></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=40" defer></script>
+<script src="nav.js?v=41" defer></script>
 </body>
 </html>

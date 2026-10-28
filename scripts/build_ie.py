@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🍊 内陆帝国（Inland Empire）生活 → ie/data.json（ie.html 用）。python3 scripts/build_ie.py
+"""内陆帝国（Inland Empire）生活 → ie/data.json（ie.html 用）。python3 scripts/build_ie.py
 写法同 build_la.py：只写有据可查的事实；店铺、票价、规定会变，页面上提醒「去之前查官网」。"""
 import json
 import os
