@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-tw="mid">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1D2430">
+<title>🤖 AI 跑腿</title>
+<style>
+:root{
+  --bg:#F2F1EE; --paper:#FFFFFF; --ink:#1E2228; --soft:#5E6670; --faint:#9AA1A9; --line:#E1DFDA; --chip:#ECEAE5;
+  --acc:#2E6BD8; --acc-ink:#fff; --acc-soft:#E3ECFB; --ok:#2E9D4F; --ok-soft:#E2F3E7; --warn:#C0362C; --warn-soft:#F7E2DF;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --acc:#7FA8F0; --acc-ink:#0B1630; --acc-soft:#1D2A40; --ok:#5ED08A; --ok-soft:#1B3325; --warn:#F07563; --warn-soft:#3A221F; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --acc:#7FA8F0; --acc-ink:#0B1630; --acc-soft:#1D2A40; --ok:#5ED08A; --ok-soft:#1B3325; --warn:#F07563; --warn-soft:#3A221F; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--acc)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(170deg,#2B3442 0%,#1D2430 60%,#161B24 100%);color:#EEF1F5;padding:calc(14px + env(safe-area-inset-top)) 0 16px}
+.hero a{color:#EEF1F5;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{margin:4px 0 2px;font-size:24px}
+.hero p{margin:2px 0 0;font-size:13.5px;opacity:.85}
+h3{font-size:13px;letter-spacing:.04em;color:var(--soft);margin:22px 2px 8px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px;margin:12px 0}
+.btn{border:0;border-radius:12px;padding:0 14px;min-height:40px;font-size:15px;font-weight:600;background:var(--acc);color:var(--acc-ink);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:4px;text-decoration:none}
+.btn2{border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:500}
+.btn.sm{min-height:32px;padding:0 10px;font-size:13.5px;border-radius:10px}
+.btn:disabled{opacity:.55}
+.lock{background:var(--warn-soft);color:var(--warn);border-radius:14px;padding:12px 14px;margin:14px 0;font-size:14px;display:none}
+.lock.on{display:block}
+.st{margin:10px 2px;font-size:14px;color:var(--soft);min-height:1px}
+.st.err{color:var(--warn)} .st.ok{color:var(--ok)}
+
+/* 任务卡片 */
+.task{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px;margin-bottom:10px}
+.task.off{opacity:.6}
+.tt{display:flex;align-items:center;gap:10px}
+.tt .ic{width:40px;height:40px;border-radius:12px;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:21px;flex:none}
+.tt b{font-size:16px;display:block;line-height:1.35}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
+.chip{font-size:12px;background:var(--chip);color:var(--soft);border-radius:7px;padding:1px 7px}
+.chip.w{background:var(--acc-soft);color:var(--acc)}
+.src{font-size:13px;color:var(--soft);margin-top:8px;word-break:break-all}
+.note{font-size:13px;color:var(--faint);margin-top:6px}
+.tacts{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.result{margin-top:10px}
+.empty{padding:18px;color:var(--faint);font-size:14px;text-align:center;background:var(--paper);border:1px dashed var(--line);border-radius:16px}
+
+/* 模板 */
+.tpl{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.tp{text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start}
+.tp .e{font-size:22px;line-height:1.2}
+.tp b{display:block;font-size:14.5px}
+.tp small{display:block;color:var(--faint);font-size:12.5px;line-height:1.5;margin-top:1px}
+
+/* 编辑 */
+#ed{display:none}
+#ed.on{display:block}
+.f{margin-top:12px}
+.f label{display:block;font-size:13.5px;font-weight:600;margin-bottom:4px}
+.f label small{font-weight:400;color:var(--faint);margin-left:4px}
+.f input,.f textarea,.f select{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:9px 11px;font-size:16px;outline:none}
+.f input:focus,.f textarea:focus,.f select:focus{border-color:var(--acc)}
+.f textarea{min-height:76px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row > *{flex:1;min-width:0}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{flex:1;border:0;background:transparent;border-radius:8px;padding:6px 6px;font-size:13.5px;color:var(--soft);white-space:nowrap}
+.seg button.on{background:var(--acc);color:var(--acc-ink);font-weight:600}
+.icons{display:flex;gap:4px;flex-wrap:wrap}
+.icons button{border:1px solid var(--line);background:var(--paper);border-radius:9px;width:38px;height:36px;font-size:19px;padding:0}
+.icons button.on{border-color:var(--acc);background:var(--acc-soft)}
+.hint{font-size:12.5px;color:var(--faint);margin-top:4px;line-height:1.6}
+.edacts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.edacts .grow{flex:1}
+
+/* 报告 */
+.rep{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:8px}
+.rep.q{background:transparent;box-shadow:none;padding:8px 12px}
+.rep.q .rt b{font-weight:500;color:var(--soft);font-size:14px}
+.rt{display:flex;gap:8px;align-items:baseline}
+.rt b{flex:1;min-width:0;font-size:15px}
+.rt small{color:var(--faint);font-size:12px;white-space:nowrap}
+.rep ul{margin:6px 0 0;padding-left:20px;font-size:14px}
+.rep li{margin:2px 0}
+.rl{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.rl a{font-size:12.5px;background:var(--chip);border-radius:8px;padding:2px 8px;text-decoration:none;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tagp{font-size:11.5px;border-radius:6px;padding:0 6px;font-weight:600;white-space:nowrap}
+.tagp.p{background:var(--ok-soft);color:var(--ok)} .tagp.t{background:var(--acc-soft);color:var(--acc)} .tagp.s{background:var(--chip);color:var(--faint)}
+.help{font-size:13.5px;color:var(--soft);line-height:1.8}
+.help p{margin:6px 0}
+.help b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a href="index.html">‹ 首页</a>
+  <h1>🤖 AI 跑腿</h1>
+  <p>交代给它的事，它按时去查新闻、行情和网页，值得说才推到 Telegram 和 App。</p>
+</div></div>
+<main class="wrap">
+  <div class="lock" id="lock">🔒 要先在 <a href="index.html">首页</a> 输入密码解锁，并勾选「记住我」，这里才能用。</div>
+  <div id="st" class="st"></div>
+
+  <h3><span>📋 我的任务</span><span id="cnt"></span></h3>
+  <div id="tasks"></div>
+
+  <section id="ed" class="box">
+    <div class="row" style="align-items:flex-start"><b id="edT" style="font-size:16px">➕ 新任务</b><button class="btn sm btn2" id="edX" style="flex:none">✕</button></div>
+    <div class="f"><label>名字</label><input id="fName" maxlength="40" placeholder="比如：长滩港动态"></div>
+    <div class="f"><label>图标</label><div class="icons" id="fIcons"></div></div>
+    <div class="f"><label>你要它做什么 <small>用大白话说，越具体越好</small></label><textarea id="fPrompt" maxlength="600" placeholder="比如：港口罢工、拥堵、新规定这类会影响我们场子作业的事才告诉我，普通新闻不用说。"></textarea></div>
+    <div class="f"><label>📰 查新闻的关键词 <small>英文效果最好，可以用 OR</small></label><input id="fKw" maxlength="200" placeholder="Port of Long Beach OR ILWU" autocapitalize="off"></div>
+    <div class="f"><label>📈 盯的股票 <small>代码，空格隔开</small></label><input id="fTk" maxlength="80" placeholder="NVDA TSLA" autocapitalize="characters"></div>
+    <div class="f"><label>🌐 盯的网页 <small>它会对比这次和上次哪里变了</small></label><input id="fUrl" maxlength="500" inputmode="url" placeholder="https://…" autocapitalize="off"></div>
+    <div class="hint">上面三样至少填一样。</div>
+    <div class="f"><label>多久查一次</label>
+      <div class="seg" id="fEvery"><button data-v="daily">每天</button><button data-v="weekly">每周</button><button data-v="close">美股收盘后</button><button data-v="hours">每隔几小时</button></div>
+      <div class="row" style="margin-top:8px">
+        <select id="fD"><option value="1">周一</option><option value="2">周二</option><option value="3">周三</option><option value="4">周四</option><option value="5">周五</option><option value="6">周六</option><option value="0">周日</option></select>
+        <select id="fH"></select>
+        <select id="fN"><option value="2">每 2 小时</option><option value="4">每 4 小时</option><option value="6">每 6 小时</option><option value="12">每 12 小时</option></select>
+      </div>
+    </div>
+    <div class="f"><label>什么时候告诉你</label>
+      <div class="seg" id="fMode"><button data-v="watch">👀 有事才说</button><button data-v="report">📝 每次都汇报</button></div>
+      <div class="hint" id="modeHint"></div>
+    </div>
+    <div class="edacts">
+      <button class="btn grow" id="edSave">💾 保存</button>
+      <button class="btn btn2" id="edTry">▶ 先试一次</button>
+      <button class="btn btn2" id="edDel" style="color:var(--warn)">🗑️ 删除</button>
+    </div>
+    <div class="result" id="edRes"></div>
+  </section>
+
+  <h3><span>➕ 加一个任务</span></h3>
+  <div class="tpl" id="tpl"></div>
+
+  <h3><span>📬 最近的报告</span><button class="btn sm btn2" id="clr">清空</button></h3>
+  <div id="reps"></div>
+
+  <h3><span>💡 说明</span></h3>
+  <div class="box help" style="margin-top:0">
+    <p><b>它怎么干活</b>：每小时检查一次哪些任务到点了，到点就去查：新闻搜英文媒体（Google 新闻），行情查实时股价，网页跟上次比哪里变了。查到的东西交给 AI 读，<b>只有它觉得值得告诉你，才推送</b>。看过但不重要的，也记在下面「最近的报告」里，灰色显示。</p>
+    <p><b>「有事才说」</b>适合盯着某件事，平时很安静；<b>「每次都汇报」</b>适合每周总结这种，不管有没有大事都给你一份。</p>
+    <p><b>写要求的窍门</b>：说清楚什么算重要，比如「影响作业的才说」「跌超过 5% 或者有财报、诉讼、大订单才说」。AI 会照这个判断。</p>
+    <p><b>用量</b>：每个任务每次大约用一次 AI。没有新消息的时候根本不叫 AI，不占额度。最多 12 个任务。时间都按太平洋时间。</p>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function status(msg, cls) { var s = $('st'); s.className = 'st' + (cls ? ' ' + cls : ''); s.innerHTML = msg || ''; }
+  function key() { try { return localStorage.getItem('home:unlock') || ''; } catch (e) { return ''; } }
+  function ago(iso) {
+    if (!iso) return '还没跑过';
+    var s = (Date.now() - new Date(iso)) / 1000;
+    if (s < 90) return '刚刚'; if (s < 3600) return Math.round(s / 60) + ' 分钟前'; if (s < 86400) return Math.round(s / 3600) + ' 小时前';
+    var d = new Date(iso); return (d.getMonth() + 1) + '月' + d.getDate() + '日 ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2);
+  }
+  var WD = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+  function hourTxt(h) { h = +h; return (h < 6 ? '凌晨 ' : h < 12 ? '早上 ' : h < 13 ? '中午 ' : h < 18 ? '下午 ' : '晚上 ') + (h > 12 ? h - 12 : h) + ' 点'; }
+  function when(t) {
+    if (t.every === 'weekly') return '🗓️ 每' + WD[t.d] + hourTxt(t.h);
+    if (t.every === 'close') return '🔔 美股收盘后';
+    if (t.every === 'hours') return '⏱️ 每 ' + t.n + ' 小时';
+    return '🕗 每天' + hourTxt(t.h);
+  }
+  var ICONS = ['🤖', '🚢', '🚛', '🌍', '📈', '💰', '🧾', '🏭', '🔥', '🌐', '🗞️', '⚖️', '🏠', '✈️', '⛽', '🛃'];
+  var TPL = [
+    { icon: '🚢', name: '港口物流', kw: 'Port of Los Angeles OR Port of Long Beach OR ILWU OR "container shipping"', prompt: '洛杉矶港、长滩港、码头工会、集装箱运价、铁路和卡车运输方面，有会影响我们场子作业的大事才告诉我：罢工、拥堵、停工、关税、新规定、大的运价变化。普通新闻不用说。', every: 'daily', h: 6, mode: 'watch', desc: '只在影响作业时才说' },
+    { icon: '🧾', name: '关税和贸易政策', kw: 'tariffs OR "trade deal" OR "Section 301" OR "de minimis"', prompt: '美国关税和贸易政策有新的决定或者重大进展就告诉我，说清楚对进口货量、港口和股市可能有什么影响。', every: 'daily', h: 8, mode: 'watch', desc: '有新决定才说' },
+    { icon: '📈', name: '盯我的股票', tickers: 'NVDA', kw: 'Nvidia stock', prompt: '这只股票单日涨跌超过 4%，或者有财报、大订单、诉讼、高管变动、分析师大幅调级这类大消息才告诉我，并说一句可能的原因。', every: 'close', h: 13, mode: 'watch', desc: '收盘后看，有大动静才说' },
+    { icon: '🌍', name: '中东局势', kw: 'Iran OR Israel OR "Strait of Hormuz"', prompt: '中东有重大升级、停火、谈判突破，或者影响油价、航运的事件才告诉我。', every: 'daily', h: 7, mode: 'watch', desc: '只说大的变化' },
+    { icon: '🌐', name: '盯一个网页', url: '', prompt: '这个网页内容变了就告诉我变了什么，重不重要。只是日期、广告这种无关的变化不用说。', every: 'hours', n: 6, mode: 'watch', desc: '网页变了才说，告诉你变了啥' },
+    { icon: '🗞️', name: '每周大事总结', kw: 'US economy OR Federal Reserve OR "stock market"', prompt: '把这一周美国经济、美联储和股市最重要的 5 件事总结给我，每件一句话，说清楚为什么重要。', every: 'weekly', d: 5, h: 17, mode: 'report', desc: '每周五下午给你一份' }
+  ];
+  var API = '', tasks = [], st = {}, reps = [], editing = null, draft = null;
+
+  function api(path, body, cb) {
+    if (!API) { status('⏳ 正在连接后端…'); setTimeout(function () { api(path, body, cb); }, 400); return; }
+    var x = new XMLHttpRequest(); x.open(body ? 'POST' : 'GET', API + path); x.timeout = 120000;
+    x.setRequestHeader('X-Tools-Key', key()); if (body) x.setRequestHeader('Content-Type', 'application/json');
+    x.onload = function () {
+      var j = null; try { j = JSON.parse(x.responseText); } catch (e) { }
+      if (x.status === 401) { $('lock').className = 'lock on'; cb(null, '密码不对或者还没解锁'); return; }
+      if (x.status !== 200 || !j) { cb(null, (j && j.msg) || ('后端出错（' + x.status + '）')); return; }
+      cb(j);
+    };
+    x.onerror = x.ontimeout = function () { cb(null, '连不上后端，检查一下网络'); };
+    x.send(body ? JSON.stringify(body) : null);
+  }
+  function load() {
+    api('/agent', null, function (j, err) {
+      if (!j) { status('❌ ' + err, 'err'); renderTasks(); renderReps(); return; }
+      status(''); tasks = j.tasks || []; st = j.st || {}; reps = j.reports || [];
+      renderTasks(); renderReps();
+    });
+  }
+  function save(list, cb) {
+    api('/agent/save', { tasks: list }, function (j, err) {
+      if (!j) { status('❌ 保存失败：' + err, 'err'); if (cb) cb(false); return; }
+      tasks = j.tasks; renderTasks(); status('✅ 保存好了', 'ok'); if (cb) cb(true);
+    });
+  }
+
+  function srcLine(t) {
+    var a = [];
+    if (t.kw) a.push('📰 ' + esc(t.kw));
+    if (t.tickers) a.push('📈 ' + esc(t.tickers.toUpperCase()));
+    if (t.url) a.push('🌐 ' + esc(t.url.replace(/^https?:\/\//, '').slice(0, 60)));
+    return a.join('　');
+  }
+  function renderTasks() {
+    $('cnt').textContent = tasks.length ? tasks.length + ' / 12' : '';
+    if (!tasks.length) { $('tasks').innerHTML = '<div class="empty">还没有任务。从下面挑一个改改，或者自己写一个。</div>'; return; }
+    $('tasks').innerHTML = tasks.map(function (t, i) {
+      var s = st[t.id] || {};
+      return '<div class="task' + (t.on === false ? ' off' : '') + '" data-i="' + i + '"><div class="tt"><div class="ic">' + esc(t.icon || '🤖') + '</div><div style="min-width:0;flex:1"><b>' + esc(t.name) + '</b><div class="chips"><span class="chip">' + when(t) + '</span><span class="chip w">' + (t.mode === 'report' ? '📝 每次都汇报' : '👀 有事才说') + '</span>' + (t.on === false ? '<span class="chip">⏸ 已暂停</span>' : '') + '</div></div></div>' +
+        '<div class="src">' + srcLine(t) + '</div>' +
+        '<div class="note">上次：' + ago(s.last) + (s.note ? ' · ' + esc(s.note) : '') + '</div>' +
+        '<div class="tacts"><button class="btn sm" data-a="try">▶ 现在跑一次</button><button class="btn sm btn2" data-a="edit">✏️ 改</button><button class="btn sm btn2" data-a="tog">' + (t.on === false ? '▶ 恢复' : '⏸ 暂停') + '</button></div><div class="result"></div></div>';
+    }).join('');
+  }
+  $('tasks').onclick = function (e) {
+    var b = e.target.closest('[data-a]'); if (!b) return;
+    var card = b.closest('.task'), i = +card.getAttribute('data-i'), t = tasks[i], a = b.getAttribute('data-a');
+    if (a === 'edit') openEd(t, i);
+    if (a === 'tog') { var list = tasks.slice(); list[i] = Object.assign({}, t, { on: t.on === false }); save(list); }
+    if (a === 'try') tryRun({ id: t.id }, b, card.querySelector('.result'));
+  };
+  function tryRun(body, btn, out) {
+    var old = btn.textContent; btn.disabled = true; btn.textContent = '⏳ 正在查…';
+    out.innerHTML = '<div class="hint">它正在查新闻、行情、网页，再让 AI 读一遍，大概 10–40 秒。</div>';
+    api('/agent/run', body, function (j, err) {
+      btn.disabled = false; btn.textContent = old;
+      if (!j) { out.innerHTML = '<div class="hint" style="color:var(--warn)">❌ ' + esc(err) + '</div>'; return; }
+      out.innerHTML = repHTML(j, true) + (j.title ? '<div class="hint">' + (j.push ? '👆 正式跑的时候，这条会推送给你。' : '👆 AI 觉得这次不值得打扰你，正式跑的时候不会推送。') + '（试跑不推送，也不影响正式的定时任务）</div>' : '');
+      if (j.title) { reps.unshift(j); renderReps(); }
+    });
+  }
+
+  /* ---------- 编辑 ---------- */
+  var hs = ''; for (var h = 0; h < 24; h++) hs += '<option value="' + h + '">' + hourTxt(h) + '</option>'; $('fH').innerHTML = hs;
+  $('fIcons').innerHTML = ICONS.map(function (c) { return '<button type="button" data-c="' + c + '">' + c + '</button>'; }).join('');
+  function segSet(id, v) { var bs = $(id).querySelectorAll('button'); for (var i = 0; i < bs.length; i++) bs[i].classList.toggle('on', bs[i].getAttribute('data-v') === v); }
+  function segGet(id) { var b = $(id).querySelector('button.on'); return b ? b.getAttribute('data-v') : ''; }
+  function syncEvery() { var v = segGet('fEvery'); $('fD').style.display = v === 'weekly' ? '' : 'none'; $('fH').style.display = v === 'daily' || v === 'weekly' ? '' : 'none'; $('fN').style.display = v === 'hours' ? '' : 'none'; }
+  function syncMode() { $('modeHint').textContent = segGet('fMode') === 'report' ? '到点就给你一份汇总，没大事也会简单说一下。' : '平时很安静，AI 觉得真有你要知道的事才推送。'; }
+  $('fEvery').onclick = function (e) { var v = e.target.getAttribute && e.target.getAttribute('data-v'); if (v) { segSet('fEvery', v); syncEvery(); } };
+  $('fMode').onclick = function (e) { var v = e.target.getAttribute && e.target.getAttribute('data-v'); if (v) { segSet('fMode', v); syncMode(); } };
+  $('fIcons').onclick = function (e) { var c = e.target.getAttribute && e.target.getAttribute('data-c'); if (!c) return; var bs = this.querySelectorAll('button'); for (var i = 0; i < bs.length; i++) bs[i].classList.toggle('on', bs[i] === e.target); };
+  function openEd(t, i) {
+    editing = i == null ? null : i;
+    $('edT').textContent = editing == null ? '➕ 新任务' : '✏️ 改任务';
+    $('edDel').style.display = editing == null ? 'none' : '';
+    $('fName').value = t.name || ''; $('fPrompt').value = t.prompt || ''; $('fKw').value = t.kw || ''; $('fTk').value = t.tickers || ''; $('fUrl').value = t.url || '';
+    $('fH').value = t.h != null ? t.h : 7; $('fD').value = t.d != null ? t.d : 5; $('fN').value = t.n || 6;
+    segSet('fEvery', t.every || 'daily'); segSet('fMode', t.mode || 'watch'); syncEvery(); syncMode();
+    var bs = $('fIcons').querySelectorAll('button'); for (var k = 0; k < bs.length; k++) bs[k].classList.toggle('on', bs[k].getAttribute('data-c') === (t.icon || '🤖'));
+    draft = t; $('edRes').innerHTML = '';
+    $('ed').className = 'box on'; $('ed').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(function () { (t.url === '' && !t.kw ? $('fUrl') : $('fName')).focus(); }, 350);
+  }
+  function readEd() {
+    var ic = $('fIcons').querySelector('button.on');
+    return { id: (draft && draft.id) || Math.random().toString(36).slice(2, 10), name: $('fName').value.trim() || '我的任务', icon: ic ? ic.getAttribute('data-c') : '🤖',
+      prompt: $('fPrompt').value.trim(), kw: $('fKw').value.trim(), tickers: $('fTk').value.trim(), url: $('fUrl').value.trim(),
+      every: segGet('fEvery') || 'daily', h: +$('fH').value, d: +$('fD').value, n: +$('fN').value, mode: segGet('fMode') || 'watch', on: draft && draft.on === false ? false : true };
+  }
+  function check(t) {
+    if (!t.kw && !t.tickers && !t.url) return '关键词、股票代码、网址至少填一样';
+    if (t.url && !/^https?:\/\//i.test(t.url)) return '网址要以 http:// 或 https:// 开头';
+    return '';
+  }
+  $('edX').onclick = function () { $('ed').className = 'box'; };
+  $('edSave').onclick = function () {
+    var t = readEd(), bad = check(t); if (bad) { status('⚠️ ' + bad, 'err'); return; }
+    var list = tasks.slice();
+    if (editing == null) { if (list.length >= 12) { status('⚠️ 最多 12 个任务，先删掉一个', 'err'); return; } list.push(t); } else list[editing] = t;
+    save(list, function (ok) { if (ok) { $('ed').className = 'box'; window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+  };
+  $('edTry').onclick = function () { var t = readEd(), bad = check(t); if (bad) { status('⚠️ ' + bad, 'err'); return; } tryRun({ task: t }, this, $('edRes')); };
+  $('edDel').onclick = function () { if (editing == null) return; var list = tasks.slice(); list.splice(editing, 1); save(list, function (ok) { if (ok) $('ed').className = 'box'; }); };
+
+  $('tpl').innerHTML = TPL.map(function (t, i) { return '<button class="tp" data-t="' + i + '"><span class="e">' + t.icon + '</span><span><b>' + esc(t.name) + '</b><small>' + esc(t.desc) + '</small></span></button>'; }).join('') +
+    '<button class="tp" data-t="-1"><span class="e">✍️</span><span><b>自己写一个</b><small>从空白开始</small></span></button>';
+  $('tpl').onclick = function (e) {
+    var b = e.target.closest('[data-t]'); if (!b) return;
+    var i = +b.getAttribute('data-t'), t = i < 0 ? { icon: '🤖', every: 'daily', h: 7, mode: 'watch' } : JSON.parse(JSON.stringify(TPL[i]));
+    openEd(t, null);
+  };
+
+  /* ---------- 报告 ---------- */
+  function repHTML(r, inline) {
+    if (!r.title) return '<div class="rep q"><div class="rt"><span>' + esc(r.icon) + '</span><b>' + esc(r.name) + '：' + esc(r.quiet || '没有结果') + '</b><small>' + ago(r.at) + '</small></div></div>';
+    var tag = r.test ? '<span class="tagp t">试跑</span>' : r.push ? '<span class="tagp p">📬 已推送</span>' : '<span class="tagp s">没打扰你</span>';
+    return '<div class="rep' + (r.push || inline ? '' : ' q') + '"><div class="rt"><span>' + esc(r.icon) + '</span><b>' + esc(r.title) + '</b>' + tag + '<small>' + ago(r.at) + '</small></div>' +
+      '<div class="hint" style="margin-top:0">' + esc(r.name) + '</div>' +
+      (r.points && r.points.length && (r.push || inline || r.test) ? '<ul>' + r.points.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>' : '') +
+      (r.links && r.links.length && (r.push || inline || r.test) ? '<div class="rl">' + r.links.map(function (l) { return '<a href="' + esc(l.u) + '" target="_blank" rel="noopener">📎 ' + esc(l.s ? l.s + '：' : '') + esc(l.t) + '</a>'; }).join('') + '</div>' : '') +
+      (r.err ? '<div class="hint" style="color:var(--warn)">⚠️ ' + esc(r.err) + '</div>' : '') + '</div>';
+  }
+  function renderReps() { $('reps').innerHTML = reps.length ? reps.slice(0, 40).map(function (r) { return repHTML(r); }).join('') : '<div class="empty">还没有报告。任务跑过以后会出现在这里。</div>'; }
+  $('reps').onclick = function (e) { var q = e.target.closest('.rep.q'); if (q && q.querySelector('ul') == null) { var i = [].indexOf.call(this.children, q); if (reps[i]) q.outerHTML = repHTML(reps[i], true); } };
+  $('clr').onclick = function () { api('/agent/clear', {}, function (j) { if (j) { reps = []; renderReps(); } }); };
+
+  if (!key()) { $('lock').className = 'lock on'; renderTasks(); renderReps(); }
+  var x = new XMLHttpRequest(); x.open('GET', 'cf.json?t=' + Math.floor(Date.now() / 36e5));
+  x.onload = function () { try { API = JSON.parse(x.responseText).api || ''; } catch (e) { } if (!API) status('❌ 没找到后端地址', 'err'); else if (key()) load(); };
+  x.onerror = function () { status('❌ 没找到后端地址', 'err'); };
+  x.send();
+})();
+</script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=44" defer></script>
+</body>
+</html>

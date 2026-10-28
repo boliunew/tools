@@ -658,6 +658,169 @@ async function handle(env, msg) {
   return reply(env, chat, HELP);
 }
 
+// ---------------------------------------------------------------------------- 🤖 AI 跑腿：定时替你查新闻 / 行情 / 网页，值得说才推送
+// 任务存在 KV 'agent:tasks'；每小时第 3 分钟的定时触发检查哪些到点了。按太平洋时间算。
+// 任务：{id, name, icon, prompt, kw, tickers, url, every:'daily'|'weekly'|'hours'|'close', h, d, n, mode:'watch'|'report', on}
+const AGENT_CRON = '3 * * * *', AGENT_MAX = 12, AGENT_PER_TICK = 4;
+const decodeEnt = s => String(s || '').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, ' ').replace(/&#(\d+);/g, (m, n) => String.fromCharCode(+n)).replace(/&amp;/g, '&');
+const escH = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+function laNow(d = new Date()) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', weekday: 'short', hour12: false }).formatToParts(d).map(x => [x.type, x.value]));
+  return { date: `${p.year}-${p.month}-${p.day}`, h: +p.hour % 24, wd: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday) };
+}
+function agentDue(t, last, now = new Date()) {
+  const L = laNow(now), lastD = last ? laNow(new Date(last)) : null, sameDay = lastD && lastD.date === L.date;
+  if (t.every === 'hours') return !last || now - new Date(last) >= (Math.max(1, +t.n || 6) * 3600 - 600) * 1000;
+  if (t.every === 'weekly') return L.wd === (+t.d || 0) && L.h >= (+t.h || 0) && !sameDay;
+  if (t.every === 'close') return L.wd >= 1 && L.wd <= 5 && L.h >= 13 && !sameDay;     // 美股收盘（太平洋 13:00）以后
+  return L.h >= (+t.h || 0) && !sameDay;                                                  // daily
+}
+async function gnews(kw, days) {
+  const q = encodeURIComponent(kw.trim() + ' when:' + days + 'd');
+  const r = await fetch(`https://news.google.com/rss/search?q=${q}&hl=en-US&gl=US&ceid=US:en`, { headers: { 'User-Agent': 'Mozilla/5.0' }, cf: { cacheTtl: 600 } });
+  if (!r.ok) throw new Error('新闻搜索 HTTP ' + r.status);
+  const x = await r.text(), out = [];
+  for (const m of x.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
+    const g = tag => decodeEnt((new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)</' + tag + '>').exec(m[1]) || [])[1] || '').trim();
+    const src = g('source'), title = g('title').replace(new RegExp('\\s+-\\s+' + src.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'), '');
+    out.push({ t: title, u: g('link'), s: src, d: g('pubDate') });
+    if (out.length >= 25) break;
+  }
+  return out;
+}
+function pageText(html) {
+  return decodeEnt(html.replace(/<(script|style|noscript|svg|head)[\s\S]*?<\/\1>/gi, ' ').replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<(br|\/p|\/div|\/li|\/h\d|\/tr|\/section|\/article)[^>]*>/gi, '\n').replace(/<[^>]+>/g, ' '))
+    .split('\n').map(s => s.replace(/\s+/g, ' ').trim()).filter(s => s.length > 1).join('\n').slice(0, 30000);
+}
+const AGENT_SYS = `你是一个私人助理，替用户盯着他交代的事情。用户住在南加州，是货运堆场的现场主管，也做美股投资，母语中文。
+你会收到：他交代的任务、这次查到的材料（新闻标题、行情、网页变化）。只根据材料说话，不编造材料里没有的事实；材料都是英文时翻成中文讲。
+只输出一个 JSON 对象：
+{"push": true 或 false（材料里有没有他按任务要求真正需要知道的新东西；只是例行、重复、无关的就是 false）,
+ "title": "一句话标题，15 个字以内",
+ "points": ["要点，每条一句话，最多 5 条，最重要的放前面；可以说明对他可能有什么影响"],
+ "links": [材料里最相关的新闻编号，最多 3 个，比如 1, 4]}
+要点用简体中文，口语化，具体（带数字、地名、公司名），不客套，不用表情符号。`;
+async function agentRun(env, t, { force = false } = {}) {
+  const st = JSON.parse((await env.KV.get('agent:st:' + t.id)) || '{}');
+  const seen = new Set(st.seen || []), mat = [], links = [], errs = [];
+  let fresh = 0;
+  if (t.kw) {
+    try {
+      const days = t.every === 'weekly' ? 7 : t.every === 'hours' && +t.n <= 6 ? 1 : 2;
+      let items = await gnews(t.kw, days);
+      const isNew = items.filter(i => !seen.has(i.u));
+      fresh += isNew.length;
+      const use = (t.mode === 'report' || force ? items : isNew).slice(0, 15);
+      items.forEach(i => seen.add(i.u));
+      if (use.length) mat.push('【新闻】\n' + use.map(i => { links.push(i); return links.length + '. ' + i.t + '（' + i.s + '，' + (i.d || '').replace(/ \d\d:\d\d:\d\d.*/, '') + '）'; }).join('\n'));
+    } catch (e) { errs.push('新闻：' + String(e.message || e).slice(0, 80)); }
+  }
+  if (t.tickers) {
+    const syms = t.tickers.toUpperCase().split(/[\s,，]+/).filter(Boolean).slice(0, 8);
+    const Q = await quotes(syms);
+    const rows = syms.map(s => Q[s] ? `${s} 现价 ${Q[s].p.toFixed(2)}` + (Q[s].prev ? `，今天 ${pctTxt((Q[s].p / Q[s].prev - 1) * 100)}` : '') : `${s} 没拿到行情`);
+    mat.push('【行情】\n' + rows.join('\n'));
+    if (!t.kw) fresh++;      // 只盯行情的任务：每次都看一眼，由 AI 判断值不值得说
+  }
+  if (t.url) {
+    try {
+      const r = await fetch(t.url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36' }, redirect: 'follow' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const txt = pageText(await r.text()), key = 'agent:page:' + t.id;
+      const old = await env.KV.get(key);
+      if (old == null) { mat.push('【网页】第一次查看，当前内容摘录：\n' + txt.slice(0, 3000)); if (force) fresh++; }
+      else if (old !== txt) {
+        const A = new Set(old.split('\n')), B = new Set(txt.split('\n'));
+        const add = [...B].filter(s => !A.has(s)).slice(0, 40), del = [...A].filter(s => !B.has(s)).slice(0, 25);
+        if (add.length || del.length) { fresh++; mat.push('【网页变化】\n新增：\n' + add.map(s => '+ ' + s.slice(0, 220)).join('\n') + '\n删掉：\n' + del.map(s => '- ' + s.slice(0, 220)).join('\n')); }
+      } else if (force) mat.push('【网页】和上次一样，没有变化。当前内容摘录：\n' + txt.slice(0, 1500));
+      if (!force) await env.KV.put(key, txt);   // 「现在跑一次」只是试试，不改基准
+    } catch (e) { errs.push('网页：' + String(e.message || e).slice(0, 80)); }
+  }
+  st.seen = [...seen].slice(-400); st.last = new Date().toISOString();
+  const rep = { id: t.id, name: t.name, icon: t.icon || '🤖', at: st.last, push: false };
+  if (!mat.length || (!fresh && t.mode !== 'report' && !force)) {
+    rep.quiet = errs.length ? '出错：' + errs.join('；') : '没有新东西，没打扰你';
+    st.lastNote = rep.quiet; if (!force) await env.KV.put('agent:st:' + t.id, JSON.stringify(st));
+    return rep;
+  }
+  await track(env, 'chat');
+  const user = `任务名：${t.name}\n他的要求：${t.prompt || '有重要的新消息就告诉我'}\n模式：${t.mode === 'report' ? '定期汇报（push 一律 true，没大事也简单汇总一下）' : '有事才说（不重要就 push=false）'}\n现在是太平洋时间 ${laNow().date}\n\n${mat.join('\n\n')}`.slice(0, 12000);
+  const J = parseJSON(await llm(env, AGENT_SYS, user, 900));
+  if (!J) { rep.quiet = 'AI 这次没给出结果'; st.lastNote = rep.quiet; if (!force) await env.KV.put('agent:st:' + t.id, JSON.stringify(st)); return rep; }
+  rep.push = t.mode === 'report' ? true : !!J.push;
+  rep.title = String(J.title || t.name).slice(0, 60);
+  rep.points = (Array.isArray(J.points) ? J.points : []).map(s => String(s).slice(0, 300)).filter(Boolean).slice(0, 5);
+  rep.links = (Array.isArray(J.links) ? J.links : []).map(n => links[+n - 1]).filter(Boolean).slice(0, 3).map(l => ({ t: l.t.slice(0, 120), u: l.u, s: l.s }));
+  if (!rep.links.length && t.url && /网页变化/.test(user)) rep.links = [{ t: '打开网页', u: t.url, s: '' }];
+  if (errs.length) rep.err = errs.join('；');
+  st.lastNote = rep.push ? '📬 ' + rep.title : '看过了，不重要：' + rep.title;
+  if (!force) await env.KV.put('agent:st:' + t.id, JSON.stringify(st));
+  return rep;
+}
+async function agentSave(env, rep) {
+  const list = JSON.parse((await env.KV.get('agent:rep')) || '[]');
+  list.unshift(rep);
+  await env.KV.put('agent:rep', JSON.stringify(list.slice(0, 80)));
+}
+async function agentPush(env, rep) {
+  const site = env.SITE || 'https://boliunew.github.io/tools';
+  const text = `${rep.icon} <b>${escH(rep.title)}</b>\n` + rep.points.map(p => '• ' + escH(p)).join('\n') +
+    `\n<a href="${site}/agent.html">🤖 AI 跑腿 · ${escH(rep.name)}</a>` + (rep.links.length ? '\n' + rep.links.map(l => `<a href="${escH(l.u)}">📎 ${escH(l.s || '来源')}</a>`).join(' · ') : '');
+  return tg(env, text);
+}
+async function agentTick(env) {
+  const tasks = JSON.parse((await env.KV.get('agent:tasks')) || '[]').filter(t => t.on !== false);
+  const done = [];
+  for (const t of tasks) {
+    if (done.length >= AGENT_PER_TICK) break;
+    const st = JSON.parse((await env.KV.get('agent:st:' + t.id)) || '{}');
+    if (!agentDue(t, st.last)) continue;
+    try {
+      const rep = await agentRun(env, t);
+      if (rep.push) { rep.sent = await agentPush(env, rep); await agentSave(env, rep); }
+      else if (t.mode === 'report' || rep.title) await agentSave(env, rep);
+      done.push(t.id + (rep.push ? ' 📬' : ''));
+    } catch (e) { done.push(t.id + ' ERR ' + String(e).slice(0, 80)); }
+  }
+  await env.KV.put('agent:tick', JSON.stringify({ at: new Date().toISOString(), done }), { expirationTtl: 86400 * 7 });
+  return done;
+}
+function cleanTask(x) {
+  const s = (v, n) => String(v == null ? '' : v).trim().slice(0, n);
+  const t = { id: s(x.id, 12).replace(/[^\w-]/g, '') || Math.random().toString(36).slice(2, 10), name: s(x.name, 40) || '我的任务', icon: s(x.icon, 8) || '🤖',
+    prompt: s(x.prompt, 600), kw: s(x.kw, 200), tickers: s(x.tickers, 80), url: /^https?:\/\//i.test(s(x.url, 500)) ? s(x.url, 500) : '',
+    every: ['daily', 'weekly', 'hours', 'close'].includes(x.every) ? x.every : 'daily', h: Math.max(0, Math.min(23, +x.h || 0)), d: Math.max(0, Math.min(6, +x.d || 0)),
+    n: Math.max(1, Math.min(24, +x.n || 6)), mode: x.mode === 'report' ? 'report' : 'watch', on: x.on !== false };
+  return (t.kw || t.tickers || t.url) ? t : null;
+}
+async function agentApi(req, env, url) {
+  if (!(await authed(req, env))) return json(req, { error: 'key', msg: '需要先在工具箱首页输入密码解锁（并勾选「记住我」）' }, 401);
+  if (req.method === 'GET') {
+    const tasks = JSON.parse((await env.KV.get('agent:tasks')) || '[]');
+    const st = {};
+    for (const t of tasks) { const x = JSON.parse((await env.KV.get('agent:st:' + t.id)) || '{}'); st[t.id] = { last: x.last || null, note: x.lastNote || '' }; }
+    return json(req, { tasks, st, reports: JSON.parse((await env.KV.get('agent:rep')) || '[]'), tick: JSON.parse((await env.KV.get('agent:tick')) || 'null') });
+  }
+  const b = await req.json().catch(() => ({}));
+  if (url.pathname === '/agent/save') {
+    const tasks = (Array.isArray(b.tasks) ? b.tasks : []).map(cleanTask).filter(Boolean).slice(0, AGENT_MAX);
+    await env.KV.put('agent:tasks', JSON.stringify(tasks));
+    return json(req, { ok: true, tasks });
+  }
+  if (url.pathname === '/agent/run') {
+    const t = b.task ? cleanTask(b.task) : JSON.parse((await env.KV.get('agent:tasks')) || '[]').find(x => x.id === b.id);
+    if (!t) return json(req, { error: 'task', msg: '任务至少要填关键词、股票代码或网址其中一个' }, 400);
+    const rep = await agentRun(env, t, { force: true });
+    rep.test = true;
+    if (rep.title) { if (b.push && rep.points && rep.points.length) rep.sent = await agentPush(env, rep); await agentSave(env, rep); }
+    return json(req, rep);
+  }
+  if (url.pathname === '/agent/clear') { await env.KV.put('agent:rep', '[]'); return json(req, { ok: true }); }
+  return json(req, { error: 'path' }, 404);
+}
+
 // ---------------------------------------------------------------------------- 入口
 export default {
   async fetch(req, env, ctx) {
@@ -681,6 +844,7 @@ export default {
       const b = await req.json().catch(() => ({}));
       try { return json(req, await fcmSend(env, b)); } catch (e) { return json(req, { error: String(e).slice(0, 300) }, 500); }
     }
+    if (url.pathname === '/agent' || url.pathname.startsWith('/agent/')) return agentApi(req, env, url);
     if (url.pathname === '/health') {
       const last = await env.KV.get('last-run');
       const devices = JSON.parse((await env.KV.get('fcm:tokens')) || '[]').length;
@@ -715,5 +879,5 @@ export default {
     }
     return json(req, { name: 'tools-api', endpoints: ['/health', 'POST /ocr'] });
   },
-  async scheduled(event, env, ctx) { ctx.waitUntil(intraday(env)); }
+  async scheduled(event, env, ctx) { ctx.waitUntil(event.cron === AGENT_CRON ? agentTick(env) : intraday(env)); }
 };

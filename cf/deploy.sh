@@ -45,7 +45,7 @@ id = "$KV"
 CHECK = "$CHECK"
 SITE = "https://boliunew.github.io/tools"
 [triggers]
-crons = ["*/5 13-21 * * 1-5"]
+crons = ["*/5 13-21 * * 1-5", "3 * * * *"]
 TOML
 
 # 4. 部署
@@ -131,6 +131,14 @@ except urllib.error.HTTPError as e:
     print("::warning title=讲讲这句测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
 except Exception as e:
     print("::warning title=讲讲这句测试::%s" % e)
+try:
+    body = json.dumps({"task": {"name": "港口物流（部署自检）", "kw": "Port of Long Beach OR Port of Los Angeles", "tickers": "ZIM", "prompt": "有影响港口作业的大事才说", "mode": "watch"}}).encode()
+    r = urllib.request.urlopen(urllib.request.Request(url + "/agent/run", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=120).read().decode()
+    print("::notice title=AI 跑腿测试::" + r[:1500])
+except urllib.error.HTTPError as e:
+    print("::warning title=AI 跑腿测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
+except Exception as e:
+    print("::warning title=AI 跑腿测试::%s" % e)
 req = urllib.request.Request(url + "/intraday?force=1", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA})
 try:
     print("::notice title=盘中提醒测试::" + urllib.request.urlopen(req, timeout=60).read().decode()[:600])
