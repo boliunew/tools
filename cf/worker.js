@@ -716,6 +716,7 @@ const AGENT_SYS = `你是一个私人助理，替用户盯着他交代的事情�
  "title": "一句话标题，15 个字以内",
  "points": ["要点，每条一句话，最多 5 条，最重要的放前面；可以说明对他可能有什么影响"],
  "links": [材料里最相关的新闻编号，最多 3 个，比如 1, 4]}
+不管 push 是 true 还是 false，title 和 points 都要写；push=false 时 points 写 1 到 2 条：看到了什么、为什么不值得打扰。
 要点用简体中文，口语化，具体（带数字、地名、公司名），不客套，不用表情符号。`;
 async function agentRun(env, t, { force = false } = {}) {
   const st = JSON.parse((await env.KV.get('agent:st:' + t.id)) || '{}');
@@ -771,6 +772,7 @@ async function agentRun(env, t, { force = false } = {}) {
   rep.links = (Array.isArray(J.links) ? J.links : []).map(n => links[+n - 1]).filter(Boolean).slice(0, 3).map(l => ({ t: l.t.slice(0, 120), u: l.u, s: l.s }));
   if (!rep.links.length && t.url && /网页变化/.test(user)) rep.links = [{ t: '打开网页', u: t.url, s: '' }];
   if (errs.length) rep.err = errs.join('；');
+  rep.seen = links.length;
   st.lastNote = rep.push ? '📬 ' + rep.title : '看过了，不重要：' + rep.title;
   if (!force) await env.KV.put('agent:st:' + t.id, JSON.stringify(st));
   return rep;
