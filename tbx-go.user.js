@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.1
-// @description  把「我的工具」带到别的网站上：YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
+// @version      1.0.2
+// @description  把「我的工具」带到别的网站上：网页图片一键下原图、YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
 // @connect      tools-api.boliunew.workers.dev
@@ -11,10 +11,12 @@
 // @connect      youtube.com
 // @connect      127.0.0.1
 // @connect      localhost
+// @connect      *
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_openInTab
+// @grant        GM_registerMenuCommand
 // @grant        unsafeWindow
 // @run-at       document-start
 // @noframes
@@ -24,8 +26,9 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.1', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.2', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
+  try { console.log('[工具箱随身] v' + VER + ' 在 ' + host + ' 上运行'); } catch (e) { }
   function gm(o) {
     return new Promise(function (res, rej) {
       GM_xmlhttpRequest(Object.assign({ timeout: 30000 }, o, {
@@ -70,7 +73,8 @@
     '.fab{position:fixed;z-index:2147483645;right:16px;bottom:88px;background:#1D2430;color:#fff;border-radius:22px;padding:9px 14px;font-size:14px;box-shadow:0 4px 16px rgba(0,0,0,.3);cursor:pointer;border:0}' +
     '.toast{position:fixed;z-index:2147483647;left:50%;transform:translateX(-50%);bottom:40px;background:#1D2430;color:#fff;border-radius:12px;padding:9px 16px;font-size:14px;box-shadow:0 4px 16px rgba(0,0,0,.3);max-width:90vw}';
   function root() {
-    if (SH) return SH;
+    if (SH && ROOT && ROOT.isConnected) return SH;
+    if (SH && ROOT && !ROOT.isConnected) { (document.body || document.documentElement).appendChild(ROOT); return SH; }
     ROOT = document.createElement('tbx-go'); (document.body || document.documentElement).appendChild(ROOT);
     SH = ROOT.attachShadow({ mode: 'open' }); var st = document.createElement('style'); st.textContent = CSS; SH.appendChild(st);
     return SH;
@@ -149,26 +153,42 @@
       if (!srt) throw new Error('NEEDCC');
       return { srt: srt, lang: tr.languageCode };
     }
+    var busyYT = false;
+    function sendToSL(btn) {
+      if (busyYT) return; busyYT = true;
+      if (btn) btn.textContent = '⏳ 拿字幕…';
+      grabCaptions().then(function (c) {
+        var title = (document.title || '').replace(/\s*-\s*YouTube\s*$/, '');
+        GM_setValue('sl_handoff', { t: Date.now(), sub: c.srt, subName: title + '.' + c.lang + '.srt', media: '', title: title, pos: 0 });
+        GM_openInTab(SITE + 'sublingo.html#handoff', { active: true });
+      }, function (e) {
+        var msg = e.message === 'NEEDCC' ? '先点播放器上的「CC 字幕」按钮打开英文字幕，等字幕出来，再点一次' : e.message;
+        try { toast(msg, 6000); } catch (x) { alert(msg); }
+      }).then(function () { busyYT = false; if (btn) btn.textContent = '🎞️ SubLingo 精读'; });
+    }
+    // 篡改猴菜单里也放一个（万一页面上的按钮被网站挡住了）
+    try { GM_registerMenuCommand('🎞️ 把这个视频的字幕送进 SubLingo', function () { sendToSL(null); }); } catch (e) { }
     ready(function () {
       var fab = null;
-      function sync() {
-        var on = !!vid();
-        if (on && !fab) {
+      function makeFab() {
+        try {
           fab = document.createElement('button'); fab.className = 'fab'; fab.title = '把这个视频的字幕送进 SubLingo 逐句精读'; fab.textContent = '🎞️ SubLingo 精读'; root().appendChild(fab);
-          fab.onclick = function () {
-            fab.textContent = '⏳ 拿字幕…';
-            grabCaptions().then(function (c) {
-              var title = (document.title || '').replace(/\s*-\s*YouTube\s*$/, '');
-              GM_setValue('sl_handoff', { t: Date.now(), sub: c.srt, subName: title + '.' + c.lang + '.srt', media: '', title: title, pos: 0 });
-              GM_openInTab(SITE + 'sublingo.html#handoff', { active: true });
-              fab.textContent = '🎞️ SubLingo 精读';
-            }, function (e) {
-              fab.textContent = '🎞️ SubLingo 精读';
-              toast(e.message === 'NEEDCC' ? '先点播放器上的「CC 字幕」按钮打开英文字幕，等字幕出来，再点这里' : e.message, 6000);
-            });
-          };
+        } catch (e) {
+          // 影子 DOM 用不了：直接挂在页面上
+          console.log('[工具箱随身] 影子 DOM 不行，改直接挂按钮', e);
+          fab = document.createElement('button'); fab.textContent = '🎞️ SubLingo 精读';
+          fab.setAttribute('style', 'position:fixed;z-index:2147483645;right:16px;bottom:88px;background:#1D2430;color:#fff;border-radius:22px;padding:9px 14px;font-size:14px;border:0;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.3)');
+          document.documentElement.appendChild(fab);
         }
-        if (fab) fab.style.display = on ? '' : 'none';
+        fab.onclick = function () { sendToSL(fab); };
+      }
+      function sync() {
+        try {
+          var on = !!vid();
+          if (on && !fab) makeFab();
+          if (fab) fab.style.display = on ? '' : 'none';
+          if (fab && !fab.isConnected) { fab = null; }      // 被网站删掉了就重建
+        } catch (e) { console.log('[工具箱随身] YouTube 按钮出错', e); }
       }
       sync(); setInterval(sync, 1500);
     });
@@ -274,6 +294,120 @@
   document.addEventListener('touchend', function () { setTimeout(onSelect, 300); });
   document.addEventListener('mousedown', function (e) { if (ROOT && e.composedPath && e.composedPath().indexOf(ROOT) >= 0) return; hideBub(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closePop(); hideBub(); } });
+
+
+  /* =================== 5. 任何网页：图片上「⬇ 原图」 =================== */
+  // 把网站给的缩略图地址换成原图地址（常见网站的规律），再按顺序试，哪个能下就下哪个
+  function origCandidates(img) {
+    var list = [], src = img.currentSrc || img.src || '';
+    function add(u) { if (u && /^https?:/i.test(u) && list.indexOf(u) < 0) list.push(u); }
+    // srcset / 父级 <picture> 里最大的那张
+    var best = '', bw = 0;
+    var sets = [img.getAttribute('srcset') || ''];
+    var pic = img.closest && img.closest('picture'); if (pic) [].forEach.call(pic.querySelectorAll('source[srcset]'), function (s) { sets.push(s.getAttribute('srcset')); });
+    sets.join(',').split(/,\s+(?=\S)/).forEach(function (part) { var m = /^(\S+)\s+(\d+)w/.exec(part.trim()); if (m && +m[2] > bw) { bw = +m[2]; best = new URL(m[1], location.href).href; } });
+    var u = best || src;
+    try {
+      var U = new URL(u, location.href), h = U.hostname;
+      if (/pbs\.twimg\.com$/.test(h) && /\/media\//.test(U.pathname)) { U.searchParams.set('name', 'orig'); if (!U.searchParams.get('format')) { var e = /\.(\w+)$/.exec(U.pathname); if (!e) U.searchParams.set('format', 'jpg'); } add(U.href); }
+      if (/pinimg\.com$/.test(h)) add(u.replace(/\/\d+x(\d+)?\//, '/originals/'));
+      if (/sinaimg\.cn$/.test(h)) { add(u.replace(/\/(orj\d+|mw\d+|thumb\d+|bmiddle|small|square|crop\.[^/]+)\//, '/large/')); }
+      if (/preview\.redd\.it$/.test(h)) add('https://i.redd.it' + U.pathname);
+      if (/googleusercontent\.com$|ggpht\.com$/.test(h)) add(u.replace(/=[swh]\d+[^/]*$/, '=s0').replace(/\/[swh]\d+(-[a-z-]+)?\//, '/s0/'));
+      if (/(^|\.)ytimg\.com$/.test(h)) add(u.replace(/\/(hq|mq|sd|hq720|maxres)?default(_live)?\.(jpg|webp)/, '/maxresdefault.jpg'));
+      if (/(^|\.)cdninstagram\.com$|fbcdn\.net$/.test(h)) add(u);       // ins / 脸书：srcset 里最大的就是能拿到的最大
+      if (/(^|\.)shopify\.com$/.test(h)) add(u.replace(/_(\d+x\d*|\d*x\d+|pico|icon|thumb|small|compact|medium|large|grande)(@\dx)?(?=\.\w+(\?|$))/, ''));
+      if (/\/wp-content\/uploads\//.test(U.pathname)) add(u.replace(/-\d+x\d+(?=\.\w+(\?|$))/, '').replace(/-scaled(?=\.\w+)/, ''));
+      if (/images\.unsplash\.com$/.test(h)) { var V = new URL(u); ['w', 'h', 'q', 'fit', 'crop', 'auto', 'ixlib', 'dpr'].forEach(function (k) { V.searchParams.delete(k); }); add(V.href); }
+      if (/(^|\.)(media\.)?(cnn|nytimes|bbc|guim|reuters)\./.test(h) || /[?&](w|width|h|height|resize|quality|q)=\d/.test(U.search)) {
+        var W = new URL(u); ['w', 'width', 'h', 'height', 'resize', 'quality', 'q', 'fit', 'crop', 'dpr', 'auto'].forEach(function (k) { W.searchParams.delete(k); }); add(W.href);
+      }
+    } catch (e) { }
+    add(best); add(src);
+    return list;
+  }
+  function extOf(ct, url) {
+    var m = /image\/(jpeg|jpg|png|gif|webp|avif|bmp|svg\+xml|heic)/.exec(ct || '');
+    if (m) return { jpeg: 'jpg', 'svg+xml': 'svg' }[m[1]] || m[1];
+    m = /\.(jpe?g|png|gif|webp|avif|bmp)(?:[?#]|$)/i.exec(url); return m ? m[1].toLowerCase().replace('jpeg', 'jpg') : 'jpg';
+  }
+  function fetchImg(url) {
+    return new Promise(function (res) {
+      GM_xmlhttpRequest({ method: 'GET', url: url, responseType: 'blob', timeout: 60000, headers: { Referer: location.href },
+        onload: function (r) {
+          var ct = (/content-type:\s*([^\r\n;]+)/i.exec(r.responseHeaders || '') || [])[1] || (r.response && r.response.type) || '';
+          res(r.status === 200 && r.response && r.response.size > 500 && /^image\//.test(ct) ? { blob: r.response, ct: ct } : null);
+        }, onerror: function () { res(null); }, ontimeout: function () { res(null); } });
+    });
+  }
+  function saveBlob(blob, name) {
+    var a = document.createElement('a'), u = URL.createObjectURL(blob);
+    a.href = u; a.download = name; a.style.display = 'none'; (document.body || document.documentElement).appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 30000);
+  }
+  function fsize(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round(n / 1024) + ' KB'; }
+  async function downloadOriginal(img, btn) {
+    var cands = origCandidates(img), got = null, used = '';
+    for (var i = 0; i < cands.length && !got; i++) { got = await fetchImg(cands[i]); used = cands[i]; }
+    if (!got) {   // 都下不了（防盗链之类）：至少把屏幕上这张存下来
+      try {
+        var c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight; c.getContext('2d').drawImage(img, 0, 0);
+        got = await new Promise(function (r) { c.toBlob(function (b) { r(b ? { blob: b, ct: 'image/png' } : null); }, 'image/png'); }); used = img.src;
+      } catch (e) { }
+    }
+    if (!got) throw new Error('这张图下不了（网站不让外面读）');
+    var base = '';
+    try { base = decodeURIComponent(new URL(used).pathname.split('/').pop() || '').replace(/\.\w+$/, ''); } catch (e) { }
+    if (!base || base.length < 3 || /^(image|img|photo|media|default|maxresdefault|large|orig)$/i.test(base)) base = (document.title || host).replace(/[\\/:*?"<>|]+/g, '_').slice(0, 40) + '_' + Date.now().toString(36);
+    base = base.replace(/[\\/:*?"<>|]+/g, '_').slice(0, 80);
+    saveBlob(got.blob, base + '.' + extOf(got.ct, used));
+    var dim = '';
+    try { var bm = await createImageBitmap(got.blob); dim = bm.width + '×' + bm.height + ' · '; bm.close && bm.close(); } catch (e) { }
+    toast('✅ 已保存原图：' + dim + fsize(got.blob.size) + (used === (img.currentSrc || img.src) && cands.length > 1 ? '（这个网站没有更大的版本）' : ''));
+  }
+  var IMGBTN = null, IMGCUR = null, IMGT = 0;
+  function imgBtn() {
+    if (IMGBTN && IMGBTN.isConnected) return IMGBTN;
+    IMGBTN = mk('button', 'bub'); IMGBTN.textContent = '⬇ 原图'; IMGBTN.style.display = 'none'; IMGBTN.style.padding = '4px 9px';
+    IMGBTN.addEventListener('mouseenter', function () { clearTimeout(IMGT); });
+    IMGBTN.addEventListener('mouseleave', function () { IMGT = setTimeout(function () { IMGBTN.style.display = 'none'; }, 400); });
+    IMGBTN.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var img = IMGCUR; if (!img) return;
+      IMGBTN.textContent = '⏳';
+      downloadOriginal(img, IMGBTN).catch(function (er) { toast('❌ ' + er.message, 5000); }).then(function () { IMGBTN.textContent = '⬇ 原图'; });
+    });
+    return IMGBTN;
+  }
+  function findImg(t) {
+    if (!t || !t.closest) return null;
+    if (t.tagName === 'IMG') return t;
+    // 推特、Ins 这类网站在图片上盖了一层透明的东西：往下找
+    var r2 = t.getBoundingClientRect(), box = t;
+    for (var k = 0; k < 5 && box; k++, box = box.parentElement) {
+      var ims = box.querySelectorAll ? box.querySelectorAll('img') : [];
+      for (var i = 0; i < ims.length && i < 6; i++) {
+        var r1 = ims[i].getBoundingClientRect();
+        if (Math.abs(r1.width - r2.width) < 40 && Math.abs(r1.height - r2.height) < 40 && Math.abs(r1.left - r2.left) < 40 && Math.abs(r1.top - r2.top) < 40) return ims[i];
+      }
+    }
+    return null;
+  }
+  document.addEventListener('mouseover', function (e) {
+    if (ROOT && e.composedPath && e.composedPath().indexOf(ROOT) >= 0) return;
+    var img = findImg(e.target); if (!img) return;
+    var r = img.getBoundingClientRect();
+    if (r.width < 160 || r.height < 120) return;
+    clearTimeout(IMGT); IMGCUR = img;
+    var b = imgBtn(); b.style.display = 'flex';
+    b.style.left = Math.max(4, Math.min(window.innerWidth - 80, r.right - 78)) + 'px';
+    b.style.top = Math.max(4, Math.min(window.innerHeight - 34, r.top + 8)) + 'px';
+  }, true);
+  document.addEventListener('mouseout', function (e) {
+    if (!IMGBTN || IMGBTN.style.display === 'none') return;
+    if (findImg(e.target) === IMGCUR) { IMGT = setTimeout(function () { if (IMGBTN) IMGBTN.style.display = 'none'; }, 500); }
+  }, true);
+  window.addEventListener('scroll', function () { if (IMGBTN) IMGBTN.style.display = 'none'; }, true);
 
   /* =================== 3. 股票页：显示你的股票池信号 =================== */
   function tickerHere() {
