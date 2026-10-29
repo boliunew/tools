@@ -1,0 +1,174 @@
+{
+ "date": "2026-10-29",
+ "generated": "2026-10-29T19:44:06Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Alphabet净利润下降25% 市值蒸发5000亿美元",
+     "d": "Alphabet报告2023年Q3净利润为262亿美元，同比下降25%，低于预期；收入虽增长至1276亿美元，但广告收入增速放缓，AI投入导致资本支出激增。此情形导致公司股价跌逾10%，市值缩水约5000亿美元，凸显AI高投入对盈利的短期压力。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/oct/28/google-alphabet-q3-earnings-report"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "DoorDash以170亿美元收购Instacart",
+     "d": "DoorDash宣布以每股65美元、约170亿美元收购Instacart，交易预计一年后完成，将把可供购买的门店从10万增至15万，拓展至零售领域。此并购将使DoorDash在食品外送之外深化线上杂货业务，强化与亚马逊等竞争对手的竞争力。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cm79pjg2l57yo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "微软季度利润突破366亿美元 同时裁员六万",
+     "d": "微软公布2023年Q3利润超过366亿美元，同比增长，云业务收入增30%；与此同时宣布向约6万名员工提供自愿离职补偿，以削减成本并继续大规模投入AI。业绩强劲对比Alphabet的下滑，显示不同科技巨头在AI投入与盈利之间的表现分化。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c6m24klyjr8no?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "10/28 周三 收盘：标普500 ETF（SPY）+0.34%，纳指100 ETF（QQQ）+0.60%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 16.9；59% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：VRT +16.5%、FLEX +11.6%、ORCL +10.7%；跌幅最大：FFIV -20.4%、CSGP -14.0%、CHRW -11.1%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。工业、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：AMZN（盘后）、LLY（盘前）、MA（盘前）、INTC（盘后）、MRK（盘前）",
+     "d": "按市值挑出最大的几家，共 37 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：美联储利率决议（10/29 周四）",
+     "d": "Fed Interest Rate Decision 实际 4.00%（预期 4.00%，前值 4.00%）。关注利率决定、点阵图和鲍威尔发布会措辞。鹰派 → 美元、收益率上行，科技股承压；鸽派 → 成长股、黄金、比特币受益。决议当天波动往往在发布会期间。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/3 周二 11:00：ISM 采购经理指数（重要性：中）",
+     "d": "50 以上表示扩张。制造业 ISM 影响工业、材料股；服务业 ISM 中的价格分项是通胀线索。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/3 周二 12:15：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "欧洲央行行长拉加德提前于2月7日卸任",
+     "d": "欧洲央行行长克里斯蒂娜·拉加德宣布将在原定任期结束前9个月，即2024年2月7日辞职，为欧盟在法国总统选举前选出继任者争取时间。此举可能影响欧元区利率政策的连贯性，并在通胀仍高于目标的环境下增加市场不确定性。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/10/29/european-central-bank-president-lagarde-to-step-down-early?traffic_source=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/oct/29/european-central-bank-chief-christine-lagarde-to-step-down-nine-months-early"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "北韩东海发射弹道导弹",
+     "d": "北韩在东海向日本海方向发射弹道导弹，加剧朝鲜半岛紧张局势，对地区安全与防务支出形成压力。",
+     "src": [
+      {
+       "n": "Sky News",
+       "u": "https://news.sky.com/story/north-korea-fires-ballistic-missiles-off-east-coast-as-tensions-with-south-rise-13605215"
+      },
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/entertainment/call-of-duty-south-korea-itaewon-crowd-crush-9.7401059?cmp=rss"
+      }
+     ]
+    },
+    {
+     "t": "俄无人机袭击乌克兰火车站致14人死亡",
+     "d": "俄军使用喷气式无人机袭击乌克兰第聂伯市主要火车站平台，导致至少14人死亡、多人受伤；同日其他城市亦有平民伤亡。该事件加剧了对俄军事行动针对平民基础设施的指责，可能促使西方进一步加大对俄制裁力度。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c9p8gdlz1p2ko?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/10/29/aje-onl-nf_russian-drone-strike-at-dnipro-train-platform-291026?traffic_source=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "Alphabet利润大跌 市值蒸发5000亿美元",
+  "d": "作为全球最大互联网公司之一，Alphabet业绩不佳直接打击科技股情绪，对美股整体估值及AI相关投资者信心产生连锁影响。"
+ },
+ "week": []
+}
