@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.7
+// @version      1.0.8
 // @description  把「我的工具」带到别的网站上：网页图片一键下原图、YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
@@ -27,7 +27,7 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.7', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.8', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
   try { console.log('[工具箱随身] v' + VER + ' 在 ' + host + ' 上运行'); } catch (e) { }
   function gm(o) {
@@ -169,6 +169,31 @@
         try { toast(msg, 6000); } catch (x) { alert(msg); }
       }).then(function () { busyYT = false; if (btn) btn.textContent = '🎞️ SubLingo 精读'; });
     }
+    // 推给电脑上的 torrent_hub，由它调用 yt-dlp 下载（视频 + 字幕，或者只要 MP3）
+    function ytPush(mode, btn) {
+      var url = 'https://www.youtube.com/watch?v=' + vid();
+      if (btn) btn.textContent = '⏳';
+      gm({ method: 'POST', url: TH + '/jsonrpc', headers: { 'Content-Type': 'application/json' }, timeout: 8000,
+        data: JSON.stringify({ jsonrpc: '2.0', id: Date.now(), method: 'aria2.addUri', params: [[url], { tbx_mode: mode }] }) })
+        .then(function (r) {
+          var j = JSON.parse(r.responseText); if (!j.result) throw new Error((j.error && j.error.message) || '没收下');
+          toast(mode === 'audio' ? '🎵 已交给 torrent_hub 下 MP3（下载目录的「YouTube」文件夹）' : '🎬 已交给 torrent_hub 下视频 + 英文 / 中文字幕（下载目录的「YouTube」文件夹）', 5000);
+        })
+        .catch(function (e) { toast(/网络请求失败|超时/.test(e.message) ? '连不上 torrent_hub：电脑上先把它打开（要 3.4 以上）' : '❌ ' + e.message, 6000); })
+        .then(function () { if (btn) btn.textContent = '📥 下到电脑'; });
+    }
+    var MENU = null;
+    function ytMenu(anchor) {
+      if (MENU) { MENU.remove(); MENU = null; return; }
+      MENU = mk('div', 'bub'); MENU.style.flexDirection = 'column'; MENU.style.padding = '6px';
+      var r = anchor.getBoundingClientRect();
+      MENU.style.left = Math.max(8, Math.min(window.innerWidth - 190, r.left)) + 'px'; MENU.style.top = (r.bottom + 6) + 'px';
+      [['video', '🎬 视频 + 字幕（学英语用）'], ['audio', '🎵 只要 MP3（320k）']].forEach(function (o) {
+        var it = mk('span', '', o[1], MENU); it.style.padding = '6px 10px';
+        it.onclick = function () { MENU.remove(); MENU = null; ytPush(o[0], anchor); };
+      });
+    }
+    try { GM_registerMenuCommand('📥 下到电脑：视频 + 字幕', function () { ytPush('video'); }); GM_registerMenuCommand('🎵 下到电脑：只要 MP3', function () { ytPush('audio'); }); } catch (e) { }
     // 篡改猴菜单里也放一个（万一页面上的按钮被网站挡住了）
     try { GM_registerMenuCommand('🎞️ 把这个视频的字幕送进 SubLingo', function () { sendToSL(null); }); } catch (e) { console.log('[工具箱随身] 菜单没加上', e); }
     console.log('[工具箱随身] YouTube 模块准备好了，readyState=' + document.readyState);
@@ -188,7 +213,7 @@
         setTimeout(function () { try { var r = fab.getBoundingClientRect(); console.log('[工具箱随身] 右下角按钮已放好', Math.round(r.left), Math.round(r.top), Math.round(r.width) + 'x' + Math.round(r.height)); } catch (e) { } }, 500);
       }
       // 再在视频标题下面、点赞分享那一排里放一个（跟着 YouTube 自己的按钮，最不容易被挡）
-      var inl = null, logged = false;
+      var inl = null, dl = null, logged = false;
       function makeInline() {
         var bar = document.querySelector('ytd-watch-metadata #top-level-buttons-computed') || document.querySelector('ytd-watch-metadata #actions-inner') || document.querySelector('#above-the-fold #top-row') || document.querySelector('ytd-watch-metadata #title');
         if (!bar) return;
@@ -198,6 +223,11 @@
         inl.setAttribute('style', 'margin-left:8px;height:36px;padding:0 14px;border-radius:18px;border:0;cursor:pointer;font-size:14px;font-weight:500;background:#2E6BD8;color:#fff;white-space:nowrap;flex:none');
         inl.onclick = function (e) { e.preventDefault(); e.stopPropagation(); sendToSL(inl); };
         bar.appendChild(inl);
+        dl = document.createElement('button');
+        dl.textContent = '📥 下到电脑'; dl.title = '交给电脑上的 torrent_hub 用 yt-dlp 下载';
+        dl.setAttribute('style', inl.getAttribute('style').replace('#2E6BD8', '#2E9D4F'));
+        dl.onclick = function (e) { e.preventDefault(); e.stopPropagation(); ytMenu(dl); };
+        bar.appendChild(dl);
         if (!logged) { logged = true; console.log('[工具箱随身] 标题下面的按钮已放好'); }
       }
       function sync() {
