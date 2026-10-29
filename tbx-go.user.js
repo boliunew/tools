@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.4
+// @version      1.0.5
 // @description  把「我的工具」带到别的网站上：网页图片一键下原图、YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
@@ -26,7 +26,7 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.4', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.5', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
   try { console.log('[工具箱随身] v' + VER + ' 在 ' + host + ' 上运行'); } catch (e) { }
   function gm(o) {
@@ -169,9 +169,10 @@
       }).then(function () { busyYT = false; if (btn) btn.textContent = '🎞️ SubLingo 精读'; });
     }
     // 篡改猴菜单里也放一个（万一页面上的按钮被网站挡住了）
-    try { GM_registerMenuCommand('🎞️ 把这个视频的字幕送进 SubLingo', function () { sendToSL(null); }); } catch (e) { }
-    ready(function () {
-      var fab = null;
+    try { GM_registerMenuCommand('🎞️ 把这个视频的字幕送进 SubLingo', function () { sendToSL(null); }); } catch (e) { console.log('[工具箱随身] 菜单没加上', e); }
+    console.log('[工具箱随身] YouTube 模块准备好了，readyState=' + document.readyState);
+    (function () {     // 不等页面事件，直接每 1.5 秒看一次（YouTube 是单页应用，换视频不刷新）
+      var fab = null, first = true;
       function makeFab() {
         try {
           fab = document.createElement('button'); fab.className = 'fab'; fab.title = '把这个视频的字幕送进 SubLingo 逐句精读'; fab.textContent = '🎞️ SubLingo 精读'; root().appendChild(fab);
@@ -200,7 +201,9 @@
       }
       function sync() {
         try {
+          if (!document.body) return;
           var on = !!vid();
+          if (first) { first = false; console.log('[工具箱随身] 开始检查：视频 ID = ' + (vid() || '（不是视频页）')); }
           if (on && !fab) makeFab();
           if (fab) fab.style.display = on ? '' : 'none';
           if (fab && !fab.isConnected) { fab = null; }      // 被网站删掉了就重建
@@ -208,8 +211,8 @@
           if (on && !inl) makeInline();
         } catch (e) { console.log('[工具箱随身] YouTube 按钮出错', e); }
       }
-      sync(); setInterval(sync, 1500);
-    });
+      setInterval(sync, 1500); setTimeout(sync, 300);
+    })();
   }
 
   /* =================== 2. 英文网页：选中一句 → 讲讲这句；选中一个词 → 存生词 =================== */
