@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-28T16:42:56Z",
- "date": "2026-10-28",
+ "generated": "2026-10-29T16:57:52Z",
+ "date": "2026-10-29",
  "engine": "edge",
- "total": 503.7,
- "short": 327.7,
+ "total": 538.6,
+ "short": 340.1,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610280941",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610290956",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月28日 星期三",
-   "dur": 8.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610280941",
+   "sub": "10月29日 星期四",
+   "dur": 7.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "一周过半了。星期三，10月28日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "星期四，10月29日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 阴天 74°/54°F",
-   "dur": 26.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610280941",
+   "sub": "Upland 阴天 72°/57°F",
+   "dur": 25.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天阴天。早上7点出门大约华氏54度，12摄氏度。傍晚5点下班大约华氏72度，22摄氏度。白天最高74度，约23摄氏度；最低54度。基本不会下雨。白天空气质量中等，指数最高62。今天日落时间是傍晚6点01分。"
+     "t": "Upland今天阴天。早上7点出门大约华氏61度，16摄氏度。傍晚5点下班大约华氏70度，21摄氏度。白天最高72度，约22摄氏度；最低57度。基本不会下雨。白天空气质量中等，指数最高55。今天日落时间是傍晚6点。"
     }
    ]
   },
@@ -38,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 29.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610280941",
+   "dur": 30.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月27日收盘。标普500 ETF 上涨0.6%，纳指100 ETF 上涨1.3%。恐慌指数VIX 17.5，正常水平。标普成分股里，62%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月28日收盘。标普500 ETF 上涨0.3%，纳指100 ETF 上涨0.6%。恐慌指数VIX 16.9，正常水平。标普成分股里，59%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "22 个候选",
-   "dur": 69.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610280941",
+   "sub": "26 个候选",
+   "dur": 68.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天22个候选，评分最高的是West Pharmaceutical Services，代码 W S T。不想听细节可以按下一首。"
+     "t": "股票池今天26个候选，评分最高的是West Pharmaceutical Services，代码 W S T。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹10个，回踩金坑6个，血筹码4个，强势新高1个，挤压突破1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，回踩金坑8个，血筹码5个，强势新高1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，West Pharmaceutical Services，代码 W S T，强势新高信号，收盘价398.29美元，止损参考382.09。"
+     "t": "第1，West Pharmaceutical Services，代码 W S T，强势新高信号，收盘价403.64美元，止损参考387.43。"
     },
     {
      "lang": "zh",
-     "t": "第2，Veeva Systems，代码 V E E V，RSI2 超跌反弹信号，收盘价313.46美元，止损参考290.12。"
+     "t": "第2，ServiceNow，代码 N O W，RSI2 超跌反弹信号，收盘价150.13美元，止损参考135.10。"
     },
     {
      "lang": "zh",
-     "t": "第3，Valero Energy，代码 V L O，RSI2 超跌反弹信号，收盘价387.34美元，止损参考340.64。"
+     "t": "第3，International Flavors & Fragrances，代码 I F F，RSI2 超跌反弹信号，收盘价90.66美元，止损参考85.89。"
     },
     {
      "lang": "zh",
@@ -83,50 +83,50 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "7 件大事",
-   "dur": 72.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610280941",
+   "sub": "8 件大事",
+   "dur": 80.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有3家大公司发财报。"
+     "t": "今天，重要数据有：美东14:00公布美联储利率决议。另外，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Microsoft，代码 M S F T，盘后发财报。期权定价波动正负5.0%。标签：利好出尽型。"
+     "t": "Amazon.com，代码 A M Z N，盘后发财报。期权定价波动正负8.1%。"
     },
     {
      "lang": "zh",
-     "t": "Alphabet，代码 G O O G，盘后发财报。期权定价波动正负5.8%。"
+     "t": "Eli Lilly and，代码 L L Y，盘前发财报。标签：已提前炒作。"
     },
     {
      "lang": "zh",
-     "t": "Alphabet，代码 G O O G L，盘后发财报。期权定价波动正负5.7%。"
+     "t": "Mastercard Incorporated，代码 M A，盘前发财报。期权定价波动正负2.0%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "明天，重要数据有：美东14:00公布美联储利率决议。另外，有3家大公司发财报。"
+     "t": "明天，重要数据有：美东08:30公布PCE 物价指数。另外，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Amazon.com，代码 A M Z N，盘后发财报。期权定价波动正负7.4%。"
+     "t": "ExxonMobil，代码 X O M，盘前发财报。期权定价波动正负2.6%。标签：利好出尽型、已提前炒作、财报日常跌。"
     },
     {
      "lang": "zh",
-     "t": "Eli Lilly and，代码 L L Y，盘前发财报。期权定价波动正负6.4%。标签：已提前炒作。"
+     "t": "AbbVie，代码 A B B V，盘前发财报。期权定价波动正负4.1%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Mastercard Incorporated，代码 M A，盘前发财报。期权定价波动正负3.4%。标签：利好出尽型。"
+     "t": "Chevron，代码 C V X，盘前发财报。期权定价波动正负2.7%。标签：已提前炒作。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "NPR · Al Jazeera · BBC",
-   "dur": 83.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610280941",
+   "sub": "Al Jazeera · NPR · BBC",
+   "dur": 91.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
@@ -134,48 +134,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自NPR，综合，难度B1。大意是：第12局两轮拉力赛和FORCE世界大赛第5场比赛的Rays STUN Brewers。"
+     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：利物浦以6比5击败切尔西，罚球进入联赛杯四分之一决赛。"
     },
     {
      "lang": "en",
-     "t": "Rays stun Brewers with 2-run rally in 12th inning and force World Series Game 5"
+     "t": "Liverpool beat Chelsea 6-5 on penalties to reach League Cup quarterfinals"
     },
     {
      "lang": "en",
-     "t": "Tampa Bay became the fourth team in World Series history to avoid elimination with an extra-inning comeback."
+     "t": "After a 1-1 draw in normal time, Liverpool win 6-5 to edge a narrow win after penalties in last-16 match at Liverpool."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：“用手指摸骨头” ：英国能否拯救其挣扎的大街小巷？。"
+     "t": "第2条，来自NPR，综合，难度B2。大意是：西班牙预计将在全国大选前发生今年第二起致命的火车事故。"
     },
     {
      "lang": "en",
-     "t": "‘Working our fingers to the bone’: Can the UK save its struggling high streets?"
+     "t": "Spain reckons with 2nd deadly train crash of the year ahead of national election"
     },
     {
      "lang": "en",
-     "t": "Small business owners in Britain may get some tax relief in Wednesday's budget, but they say it will not be enough."
+     "t": "Spain's second high-speed rail disaster this year, a crash in which one train struck another from behind, killing 68 people, has raised fresh concerns about the safety of the country's rail network."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自BBC，商业，难度B2。大意是：由于燃油成本飙升，豪华邮轮乘客滞留在柬埔寨。"
+     "t": "第3条，来自BBC，商业，难度B2。大意是：“我和鬼魂住在一起” ：日本闹鬼的房屋吸引廉价猎人。"
     },
     {
      "lang": "en",
-     "t": "Luxury cruise passengers stranded in Cambodia due to soaring fuel costs"
+     "t": "'I live with a ghost': Japan's haunted homes attract bargain hunters"
     },
     {
      "lang": "en",
-     "t": "The Villa Vie Odyssey suspends its voyage and is working with passengers on \"temporary living arrangements\"."
+     "t": "Properties where someone has died in tragic circumstances can have big reductions in price."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "mental · los calcetines",
-   "dur": 32.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610280941",
+   "sub": "program · plateado",
+   "dur": 31.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
@@ -183,15 +183,15 @@
     },
     {
      "lang": "en",
-     "t": "mental"
+     "t": "program"
     },
     {
      "lang": "zh",
-     "t": "意思是：精神的，心理的。拼写是："
+     "t": "意思是：程序，节目。拼写是："
     },
     {
      "lang": "en",
-     "t": "m, e, n, t, a, l"
+     "t": "p, r, o, g, r, a, m"
     },
     {
      "lang": "zh",
@@ -199,7 +199,7 @@
     },
     {
      "lang": "en",
-     "t": "mental"
+     "t": "program"
     },
     {
      "lang": "zh",
@@ -207,44 +207,40 @@
     },
     {
      "lang": "es",
-     "t": "los calcetines"
+     "t": "plateado"
     },
     {
      "lang": "zh",
-     "t": "意思是：袜子。跟着读一遍。"
+     "t": "意思是：银色的。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "los calcetines"
+     "t": "plateado"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 24.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610280941",
+   "sub": "口头禅",
+   "dur": 12.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天是一句口头禅。"
     },
     {
      "lang": "en",
-     "t": "Experience is the name every one gives to their mistakes."
+     "t": "touch base"
     },
     {
      "lang": "zh",
-     "t": "意思是：所谓经验，不过是每个人给自己的错误起的名字。这句话出自 Oscar Wilde。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "意思是：碰个头，联系一下"
     },
     {
      "lang": "en",
-     "t": "Experience is the name every one gives to their mistakes."
+     "t": "touch base"
     }
    ],
    "opt": true
@@ -252,61 +248,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "和主管沟通",
-   "dur": 64.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610280941",
+   "sub": "工作邮件和短信",
+   "dur": 74.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：工作邮件和短信。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "谢谢，感激。"
+     "t": "谢谢帮忙。"
     },
     {
      "lang": "en",
-     "t": "Thanks, I appreciate it."
+     "t": "Thanks for your help."
     },
     {
      "lang": "en",
-     "t": "Thanks, I appreciate it."
+     "t": "Thanks for your help."
     },
     {
      "lang": "zh",
-     "t": "你有空吗？"
+     "t": "晚十分钟，抱歉。"
     },
     {
      "lang": "en",
-     "t": "Do you have a minute?"
+     "t": "Running ten minutes late. Sorry."
     },
     {
      "lang": "en",
-     "t": "Do you have a minute?"
+     "t": "Running ten minutes late. Sorry."
     },
     {
      "lang": "zh",
-     "t": "下周五我能请假吗？"
+     "t": "请看附件照片。"
     },
     {
      "lang": "en",
-     "t": "Can I take next Friday off?"
+     "t": "Please see the attached photos."
     },
     {
      "lang": "en",
-     "t": "Can I take next Friday off?"
+     "t": "Please see the attached photos."
     },
     {
      "lang": "zh",
-     "t": "我今天需要早走一小时。"
+     "t": "MSCU472 开头的柜子九点送达。"
     },
     {
      "lang": "en",
-     "t": "I need to leave an hour early today."
+     "t": "Container MSCU four seven two was delivered at nine."
     },
     {
      "lang": "en",
-     "t": "I need to leave an hour early today."
+     "t": "Container MSCU four seven two was delivered at nine."
     },
     {
      "lang": "zh",
@@ -318,13 +314,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "工作靴穿得更久",
-   "dur": 19.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610280941",
+   "sub": "布莱斯峡谷（Bryce Canyon）",
+   "dur": 19.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：工作靴穿得更久。皮靴不开裂、不早坏。做法：下班后磕掉靴子上的土，用刷子刷干净；湿了塞报纸，放通风处阴干，别放在暖气旁或太阳下烤；皮靴每个月擦一次皮革保养油。"
+     "t": "今日一招：布莱斯峡谷（Bryce Canyon）。成千上万的石柱（hoodoo），日出最美。做法：从 Upland 开车约 7.5 小时，常和锡安连着玩；Sunrise Point、Inspiration Point 看日出；Navajo Loop 走到谷底，半天够。"
     }
    ],
    "opt": true
@@ -332,13 +328,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1893 · 1962 · 2007",
-   "dur": 39.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610280941",
+   "sub": "1883 · 1911 · 1944",
+   "dur": 24.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1893年，俄罗斯浪漫乐派及国民乐派作曲家柴可夫斯基在俄罗斯帝国首都圣彼得堡指挥其第六号交响曲《悲怆》之首演，并于九天后死于莫斯科的家中。1962年，苏联共产党第一书记[[赫鲁晓夫[[宣布自古巴撤回所有武器，美国政府亦同意自土耳其及意大利撤回弹道导弹，古巴导弹危机落幕。2007年，克里斯蒂娜·费尔南德斯当选成为首位阿根廷经民主选举产生的女总统。"
+     "t": "历史上的今天。1883年，旧金山铸币局签署合约，为夏威夷王国生产卡拉卡瓦硬币。1911年，辛亥革命：山西宣布独立，推举阎锡山为都督，开始其在山西的38年统治。1944年，波兰第1装甲师解放了荷兰城市布雷达。"
     }
    ],
    "opt": true
@@ -346,21 +342,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "自题金山画像",
-   "dur": 27.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610280941",
+   "sub": "记承天寺夜游",
+   "dur": 67.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：自题金山画像。写于1101年，他64岁，在镇江金山寺。"
+     "t": "读一首苏轼：记承天寺夜游。写于1083年，他46岁，在黄州。"
     },
     {
      "lang": "zh",
-     "t": "心似已灰之木，身如不系之舟。问汝平生功业，黄州惠州儋州。"
+     "t": "元丰六年十月十二日夜，解衣欲睡，月色入户，欣然起行。念无与为乐者，遂至承天寺寻张怀民。怀民亦未寝，相与步于中庭。庭下如积水空明，水中藻、荇交横，盖竹柏影也。何夜无月？何处无竹柏？但少闲人如吾两人者耳。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：心像已经烧成灰的木头，身体像一条没有拴住的船。要问你这一生有什么功业？黄州、惠州、儋州。"
+     "t": "白话意思是：元丰六年十月十二日晚上，我脱了衣服准备睡觉，月光照进门来，我高兴地起身出门。想到没有可以一起赏月的人，就到承天寺去找张怀民。怀民也还没睡，我们就一起在院子里散步。院子里月光像一汪清水，清澈透明，水里好像有水草交错，原来是竹子和柏树的影子。哪个晚上没有月亮？哪里没有竹子和柏树？只是缺少像我们两个这样的闲人罢了。"
     }
    ],
    "opt": true
@@ -369,12 +365,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610280941",
+   "dur": 5.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610290956",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
     }
    ]
   }

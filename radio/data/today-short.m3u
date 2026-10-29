@@ -1,18 +1,18 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-10-28（短版）
-#EXTINF:9,通勤电台 - ☀️ 开场 10月28日 星期三
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610280941
-#EXTINF:26,通勤电台 - 🌤️ 天气 Upland 阴天 74°/54°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610280941
+#PLAYLIST:通勤电台 2026-10-29（短版）
+#EXTINF:7,通勤电台 - ☀️ 开场 10月29日 星期四
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610290956
+#EXTINF:26,通勤电台 - 🌤️ 天气 Upland 阴天 72°/57°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610290956
 #EXTINF:30,通勤电台 - 📊 大盘 谨慎
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610280941
-#EXTINF:69,通勤电台 - 📈 股票池 22 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610280941
-#EXTINF:72,通勤电台 - 🗓️ 财报与数据 7 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610280941
-#EXTINF:83,通勤电台 - 📰 英文新闻 NPR · Al Jazeera · BBC
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610280941
-#EXTINF:32,通勤电台 - 🔤 今日单词 mental · los calcetines
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610280941
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610290956
+#EXTINF:68,通勤电台 - 📈 股票池 26 个候选
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610290956
+#EXTINF:80,通勤电台 - 🗓️ 财报与数据 8 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610290956
+#EXTINF:91,通勤电台 - 📰 英文新闻 Al Jazeera · NPR · BBC
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610290956
+#EXTINF:32,通勤电台 - 🔤 今日单词 program · plateado
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610290956
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610280941
+https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610290956
