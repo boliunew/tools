@@ -276,7 +276,7 @@ textarea:focus{border-color:var(--accent)}
 
 
   /* ---------- ⚡ 直接读分享：靠油猴里的「🧰 工具箱助手」带上夸克登录状态去读 ---------- */
-  var TBX_URL = 'https://boliunew.github.io/tools/tbx.user.js', TBX_NEED = '1.0.0';
+  var TBX_URL = 'https://boliunew.github.io/tools/tbx.user.js', TBX_NEED = '1.0.1';
   var tbxSeq = 0, tbxWait = {};
   document.addEventListener('tbx-res', function (ev) { var d = {}; try { d = JSON.parse(ev.detail); } catch (e) { return; } var w = tbxWait[d.id]; if (!w) return; delete tbxWait[d.id]; if (d.error) w[1](new Error(d.error)); else w[0](d.ok); });
   function tbx(op, args, ms) {
@@ -357,6 +357,16 @@ textarea:focus{border-color:var(--accent)}
   $('qkDl').onclick = function () { qkDownload(Object.keys(QK.sel).map(function (k) { return QK.sel[k]; }), this, true); };
   function qkDownload(sel, btn, clear) {
     var files = [], dirs = [];
+    if (!QK.ready) {   // 第一次下载前确认：助手够新、浏览器里有夸克的 __pugs
+      busy(btn, true, '⏳'); 
+      tbx('ping', {}, 8000).then(function (p) {
+        busy(btn, false);
+        if (!p.ver || p.ver < TBX_NEED) { qkMsg('🧰 工具箱助手要更新：<a href="' + TBX_URL + '" target="_blank" rel="noopener">点这里重新安装</a>（篡改猴里点「更新」），然后刷新这个页面。', 'err'); return; }
+        if (!p.jar && !p.cookie) { qkMsg('🔑 还差一步：在这个浏览器里<a href="https://pan.quark.cn/" target="_blank" rel="noopener"><b>打开一次夸克网盘网页</b></a>（登录状态），等它加载完，再回来点下载。助手要从那里记下夸克认的下载凭证。', 'err'); return; }
+        QK.ready = true; qkDownload(sel, btn, clear);
+      }, function (e) { busy(btn, false); if (e.message === 'NOTBX') qkNoHelper(); else qkMsg('❌ ' + esc(e.message), 'err'); });
+      return;
+    }
     sel.forEach(function (x) { (x.dir ? dirs : files).push(x); });
     busy(btn, true, '⏳ 准备中…'); qkMsg('');
     var chain = Promise.resolve();
@@ -376,7 +386,7 @@ textarea:focus{border-color:var(--accent)}
         .then(function (p) { return { n: p.ids.length, full: r.fullCookie }; });
     }).then(function (o) {
       busy(btn, false); if (clear) { QK.sel = {}; qkRender(); qkCount(); }
-      qkMsg('✅ 已推送 ' + o.n + ' 个文件到 torrent_hub，存在下载目录的「' + esc(rootDir().slice(0, -1)) + '」文件夹里。<a href="http://127.0.0.1:' + TH_PORT + '" target="_blank" rel="noopener">打开 torrent_hub 看进度 ↗</a>' + (o.full ? '' : '<br><span style="color:var(--faint)">如果 torrent_hub 里显示 403 出错，告诉我，可能要换个方式带登录信息。</span>'), 'ok');
+      qkMsg('✅ 已推送 ' + o.n + ' 个文件到 torrent_hub，存在下载目录的「' + esc(rootDir().slice(0, -1)) + '」文件夹里。<a href="http://127.0.0.1:' + TH_PORT + '" target="_blank" rel="noopener">打开 torrent_hub 看进度 ↗</a>' + '<br><span style="color:var(--faint)">torrent_hub 里要是显示 412 / 403：打开一次夸克网盘网页，再回来重新点下载。</span>', 'ok');
     }, function (e) { busy(btn, false); if (e.message === 'NOTBX') qkNoHelper(); else qkMsg('❌ ' + esc(e.message), 'err'); });
   };
   // 🎞️ 字幕直接读进来交给 SubLingo

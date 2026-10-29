@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         🧰 工具箱助手
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.0
+// @version      1.0.1
 // @description  让「我的工具」网页直接读取夸克分享、拿下载地址、推送到 torrent_hub、把字幕交给 SubLingo。只在工具箱页面上工作。
 // @author       boliunew
 // @match        https://boliunew.github.io/tools/*
 // @match        http://localhost:*/*
 // @match        http://127.0.0.1:*/*
+// @match        https://pan.quark.cn/*
 // @connect      quark.cn
 // @connect      localhost
 // @connect      127.0.0.1
@@ -24,7 +25,13 @@
    只做这几件事：读夸克分享、拿夸克下载地址、读夸克上的字幕文本、推给本机 torrent_hub。别的网站一概不碰。 */
 (function () {
   'use strict';
-  var VER = '1.0.0';
+  // 在夸克网盘网页上：只记下 __pugs 这一个 cookie（夸克下载地址认它），别的什么都不做
+  if (location.hostname === 'pan.quark.cn') {
+    var grab = function () { var m = /(?:^|;\s*)__pugs=([^;]+)/.exec(document.cookie || ''); if (m) { GM_setValue('quark_pugs_jar', m[1]); GM_setValue('quark_pugs_at', Date.now()); } };
+    grab(); setTimeout(grab, 3000); setTimeout(grab, 10000);
+    return;
+  }
+  var VER = '1.0.1';
   var UA_PC = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 QuarkPC/6.9.7.761 QuarkCloudDrivePC/6.9.7.761 quark-cloud-drive/2.5.40';
   var API = 'https://drive-pc.quark.cn/1/clouddrive/';
   var Q = '?pr=ucpro&fr=pc&sys=win32&ve=6.9.7.761';
@@ -52,19 +59,21 @@
     return new Promise(function (resolve) {
       try {
         if (typeof GM_cookie === 'undefined' || !GM_cookie.list) return resolve('');
-        GM_cookie.list({ domain: 'quark.cn' }, function (list, err) {
-          if (err || !list) return resolve('');
+        GM_cookie.list({ url: 'https://drive-pc.quark.cn/' }, function (list, err) {
+          if (err || !list || !list.length) return resolve('');
           resolve(list.map(function (c) { return c.name + '=' + c.value; }).join('; '));
         });
         setTimeout(function () { resolve(''); }, 3000);
       } catch (e) { resolve(''); }
     });
   }
-  function pugs(set) { if (set) GM_setValue('quark_pugs', set); return GM_getValue('quark_pugs', ''); }
+  // 下载地址和 __pugs 绑在一起：优先用浏览器里真正的那个（打开夸克网页时记下的），没有才用接口回给的
+  var LASTSET = '';
+  function pugs(set) { if (set) GM_setValue('quark_pugs', set); return GM_getValue('quark_pugs_jar', '') || GM_getValue('quark_pugs', ''); }
   function grabPugs(r) {
     var sc = hdrs(r.responseHeaders)['set-cookie'] || '';
     var m = /__pugs=([^;\s]+)/.exec(sc);
-    if (m) pugs(m[1]);
+    if (m) { pugs(m[1]); LASTSET = m[1]; }
   }
   async function qjson(method, path, body, extra) {
     var h = Object.assign({ 'Accept': 'application/json, text/plain, */*', 'Referer': 'https://pan.quark.cn/', 'Origin': 'https://pan.quark.cn' }, extra || {});
@@ -139,6 +148,7 @@
       var tok = await socialToken();
       var extra = { 'User-Agent': UA_PC };
       if (pugs()) extra.Cookie = '__pugs=' + pugs();
+      LASTSET = '';
       var j = await qjson('POST', 'file/download' + Q, { fids: b.map(function (x) { return x.fid; }), fids_token: b.map(function (x) { return x.token; }), pwd_id: a.pwd_id, stoken: t.stoken, speedup_session: '', token: tok }, extra);
       (j.data || []).forEach(function (d) {
         var src = b.filter(function (x) { return x.fid === d.fid; })[0] || {};
@@ -147,7 +157,8 @@
       if (i + 15 < files.length) await new Promise(function (r) { setTimeout(r, 800); });
     }
     var ck = await quarkCookies();
-    var cookie = ck || (pugs() ? '__pugs=' + pugs() : '');
+    var pg = LASTSET || pugs();
+    var cookie = ck || (pg ? '__pugs=' + pg : '');
     return { links: out, headers: Object.assign({ 'User-Agent': UA_PC, 'Referer': 'https://pan.quark.cn/' }, cookie ? { Cookie: cookie } : {}), fullCookie: !!ck };
   }
   // ---- 读字幕文本（小文件，直接读进来）
@@ -185,7 +196,7 @@
   }
 
   var OPS = {
-    ping: async function () { return { ver: VER, cookie: typeof GM_cookie !== 'undefined' && !!GM_cookie.list }; },
+    ping: async function () { var ck = await quarkCookies(); return { ver: VER, cookie: !!ck, jar: !!GM_getValue('quark_pugs_jar', ''), jarAt: GM_getValue('quark_pugs_at', 0) }; },
     list: list, walk: walk, links: links, text: text, push: push, thPing: thPing
   };
   document.addEventListener('tbx-req', function (ev) {
