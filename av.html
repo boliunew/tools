@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-tw="mid">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1D2430">
+<title>🎛️ 音视频转换</title>
+<style>
+:root{--bg:#F2F1EE;--paper:#FFFFFF;--ink:#1E2228;--soft:#5E6670;--faint:#9AA1A9;--line:#E1DFDA;--chip:#ECEAE5;--acc:#2E6BD8;--acc-ink:#fff;--acc-soft:#E3ECFB;--ok:#2E9D4F;--ok-soft:#E2F3E7;--warn:#C0362C;--warn-soft:#F7E2DF;--shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171B;--paper:#1C2026;--ink:#E8EBEE;--soft:#A9B1BA;--faint:#6E767F;--line:#2C3139;--chip:#262B32;--acc:#7FA8F0;--acc-ink:#0B1630;--acc-soft:#1D2A40;--ok:#5ED08A;--ok-soft:#1B3325;--warn:#F07563;--warn-soft:#3A221F;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#14171B;--paper:#1C2026;--ink:#E8EBEE;--soft:#A9B1BA;--faint:#6E767F;--line:#2C3139;--chip:#262B32;--acc:#7FA8F0;--acc-ink:#0B1630;--acc-soft:#1D2A40;--ok:#5ED08A;--ok-soft:#1B3325;--warn:#F07563;--warn-soft:#3A221F;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}a{color:var(--acc)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(170deg,#2B3442 0%,#1D2430 60%,#161B24 100%);color:#EEF1F5;padding:calc(14px + env(safe-area-inset-top)) 0 16px}
+.hero a{color:#EEF1F5;text-decoration:none;font-size:13px;opacity:.75}.hero h1{margin:4px 0 2px;font-size:24px}.hero p{margin:2px 0 0;font-size:13.5px;opacity:.85}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;margin:14px 0}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:22px 14px;text-align:center;cursor:pointer;color:var(--soft)}
+.drop.over{border-color:var(--acc);background:var(--acc-soft)}
+.drop b{display:block;font-size:16px;color:var(--ink);margin-bottom:2px}
+.file{display:flex;gap:10px;align-items:center}
+.file .ic{font-size:26px}.file b{display:block;word-break:break-all}.file small{color:var(--faint)}
+.btn{border:0;border-radius:12px;padding:0 14px;min-height:40px;font-size:15px;font-weight:600;background:var(--acc);color:var(--acc-ink);display:inline-flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;text-decoration:none}
+.btn2{border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:500}
+.btn.sm{min-height:32px;padding:0 10px;font-size:13.5px;border-radius:10px}
+.btn:disabled{opacity:.55}
+.tasks{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.task{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 10px;text-align:left}
+.task b{display:block;font-size:14.5px}.task small{display:block;color:var(--faint);font-size:12px;line-height:1.45;margin-top:1px}
+.task.on{border-color:var(--acc);background:var(--acc-soft)}
+.task:disabled{opacity:.4}
+h3{font-size:13px;letter-spacing:.04em;color:var(--soft);margin:18px 2px 8px;font-weight:700}
+.opts{display:grid;gap:10px}
+.opt label{display:block;font-size:13.5px;font-weight:600;margin-bottom:4px}
+.opt label small{font-weight:400;color:var(--faint);margin-left:4px}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{flex:1;border:0;background:transparent;border-radius:8px;padding:6px 6px;font-size:13.5px;color:var(--soft);white-space:nowrap}
+.seg button.on{background:var(--acc);color:var(--acc-ink);font-weight:600}
+input[type=number],input[type=text]{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 10px;font-size:16px}
+.row{display:flex;gap:8px;align-items:center}.row>*{flex:1;min-width:0}
+.go{display:flex;gap:8px;margin-top:14px}.go .btn{flex:1}
+.bar{height:10px;background:var(--chip);border-radius:6px;overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;width:0;background:var(--acc);transition:width .3s}
+.st{font-size:13.5px;color:var(--soft);margin-top:6px;min-height:1em}
+.st.err{color:var(--warn)}.st.ok{color:var(--ok)}
+.res{display:none}.res.on{display:block}
+.cmp{display:flex;gap:10px;flex-wrap:wrap;font-size:14px;margin:6px 0 10px}
+.cmp span{background:var(--chip);border-radius:8px;padding:2px 9px}
+.cmp .big{background:var(--ok-soft);color:var(--ok);font-weight:700}
+video,audio{width:100%;border-radius:12px;background:#000;max-height:60vh}
+audio{background:transparent}
+.hint{font-size:12.5px;color:var(--faint);line-height:1.7}
+.log{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:var(--faint);white-space:pre-wrap;max-height:120px;overflow:auto;margin-top:8px;display:none}
+.log.on{display:block}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap"><a href="index.html">‹ 首页</a><h1>🎛️ 音视频转换</h1><p>压缩视频、转格式、提取音频、剪一段。都在你自己的浏览器里做，文件不上传。</p></div></div>
+<main class="wrap">
+  <div class="box">
+    <div class="drop" id="drop"><b>📂 选一个视频或音频</b>点这里选，或者把文件拖进来</div>
+    <div class="file" id="fileInfo" style="display:none"></div>
+  </div>
+
+  <h3>要做什么</h3>
+  <div class="tasks" id="tasks"></div>
+
+  <div class="box opts" id="opts"></div>
+
+  <div class="box">
+    <div class="go"><button class="btn" id="go" disabled>▶ 开始</button><button class="btn btn2" id="stop" style="display:none">⏹ 停止</button></div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="st" id="st">先选文件</div>
+    <div class="log" id="log"></div>
+  </div>
+
+  <div class="box res" id="res">
+    <div class="cmp" id="cmp"></div>
+    <div id="pv"></div>
+    <div class="go"><button class="btn" id="save">⬇ 保存</button><button class="btn btn2" id="again">🔁 换个设置再来</button></div>
+  </div>
+
+  <h3>💡 说明</h3>
+  <div class="box hint" style="margin-top:0">
+    处理在浏览器里完成，<b>文件不会上传到任何地方</b>。第一次用要下载一个约 30 MB 的处理组件，之后浏览器会记住。<br>
+    浏览器里转码比电脑软件慢不少：一段 10 分钟的 1080p 视频压缩可能要十几分钟，<b>压成 720p 会快很多</b>。超过 1–2 GB 的文件浏览器可能内存不够。<br>
+    「转格式」选 mp4 → mkv 这种只换外壳的，几秒钟就好；「剪一段」默认不重新编码，也很快。
+  </div>
+</main>
+<input type="file" id="f" accept="video/*,audio/*,.mkv,.flv,.wmv,.avi,.ts,.m4a,.flac,.opus,.ogg,.wav,.ape,.wma" style="display:none">
+
+<script src="vendor/ffmpeg/ffmpeg.js"></script>
+<script src="vendor/ffmpeg/util.js"></script>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function fsize(n) { return n >= 1073741824 ? (n / 1073741824).toFixed(2) + ' GB' : n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB'; }
+  function fmt(t) { t = Math.max(0, t || 0); var h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s = Math.floor(t % 60); return (h ? h + ':' + (m < 10 ? '0' : '') : '') + m + ':' + (s < 10 ? '0' : '') + s; }
+  function status(t, cls) { $('st').className = 'st' + (cls ? ' ' + cls : ''); $('st').innerHTML = t; }
+  function parseT(v) { v = String(v || '').trim(); if (!v) return null; var p = v.split(':').map(Number); if (p.some(isNaN)) return null; return p.reduce(function (a, b) { return a * 60 + b; }, 0); }
+
+  var FILE = null, META = { dur: 0, w: 0, h: 0, video: false }, TASK = 'compress', OPT = {}, OUT = null, ff = null, running = false;
+  var TASKS = [
+    { k: 'compress', t: '🗜️ 压缩视频', d: '保持清晰，文件变小', v: 1 },
+    { k: 'target', t: '🎯 压到多大', d: '指定 MB，比如微信 / 邮件上限', v: 1 },
+    { k: 'convert', t: '🔄 转格式', d: 'mp4 / mkv / webm / mov / gif', v: 1 },
+    { k: 'extract', t: '🎵 提取音频', d: '视频里的声音存成 mp3 / m4a', v: 1 },
+    { k: 'audio', t: '🎧 音频转换压缩', d: 'mp3 / m4a / ogg / wav / flac', a: 1 },
+    { k: 'cut', t: '✂️ 剪一段', d: '从几分几秒到几分几秒', v: 1, a: 1 },
+    { k: 'mute', t: '🔇 去掉声音', d: '只留画面，很快', v: 1 }
+  ];
+
+  /* ---------- 选文件 ---------- */
+  $('drop').onclick = function () { $('f').click(); };
+  $('f').onchange = function () { if (this.files[0]) pick(this.files[0]); this.value = ''; };
+  ['dragenter', 'dragover'].forEach(function (ev) { $('drop').addEventListener(ev, function (e) { e.preventDefault(); $('drop').classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { $('drop').addEventListener(ev, function (e) { e.preventDefault(); $('drop').classList.remove('over'); }); });
+  $('drop').addEventListener('drop', function (e) { var f = e.dataTransfer.files[0]; if (f) pick(f); });
+  function pick(f) {
+    FILE = f; OUT = null; $('res').className = 'box res';
+    var isA = /^audio\//.test(f.type) || /\.(mp3|m4a|aac|flac|wav|ogg|opus|ape|wma)$/i.test(f.name);
+    META = { dur: 0, w: 0, h: 0, video: !isA };
+    $('fileInfo').style.display = 'flex'; $('drop').style.display = 'none';
+    $('fileInfo').innerHTML = '<span class="ic">' + (isA ? '🎵' : '🎬') + '</span><div style="flex:1;min-width:0"><b>' + esc(f.name) + '</b><small id="fmeta">' + fsize(f.size) + ' · 读取时长…</small></div><button class="btn sm btn2" id="chg">换一个</button>';
+    $('chg').onclick = function () { $('f').click(); };
+    var el = document.createElement(isA ? 'audio' : 'video'), u = URL.createObjectURL(f);
+    el.preload = 'metadata'; el.src = u;
+    el.onloadedmetadata = function () { META.dur = isFinite(el.duration) ? el.duration : 0; META.w = el.videoWidth || 0; META.h = el.videoHeight || 0; if (!isA && !META.w && !META.h) META.video = false; info(); URL.revokeObjectURL(u); };
+    el.onerror = function () { info(); URL.revokeObjectURL(u); };
+    if (isA && TASKS.filter(function (t) { return t.k === TASK; })[0].v && !TASKS.filter(function (t) { return t.k === TASK; })[0].a) TASK = 'audio';
+    if (!isA && TASK === 'audio') TASK = 'compress';
+    renderTasks(); renderOpts(); $('go').disabled = false; status('选好了，点「开始」');
+  }
+  function info() { $('fmeta').textContent = fsize(FILE.size) + (META.dur ? ' · ' + fmt(META.dur) : '') + (META.w ? ' · ' + META.w + '×' + META.h : '') + (META.video ? '' : ' · 音频'); renderOpts(); }
+
+  /* ---------- 任务和选项 ---------- */
+  function renderTasks() {
+    $('tasks').innerHTML = TASKS.map(function (t) {
+      var ok = !FILE || (META.video ? t.v : t.a);
+      return '<button class="task' + (t.k === TASK ? ' on' : '') + '" data-k="' + t.k + '"' + (ok ? '' : ' disabled') + '><b>' + t.t + '</b><small>' + t.d + '</small></button>';
+    }).join('');
+  }
+  $('tasks').onclick = function (e) { var b = e.target.closest('[data-k]'); if (!b || b.disabled) return; TASK = b.getAttribute('data-k'); OPT = {}; renderTasks(); renderOpts(); };
+  function seg(key, list, def) {
+    if (OPT[key] == null) OPT[key] = def;
+    return '<div class="seg" data-seg="' + key + '">' + list.map(function (x) { return '<button data-v="' + x[0] + '"' + (String(OPT[key]) === String(x[0]) ? ' class="on"' : '') + '>' + x[1] + '</button>'; }).join('') + '</div>';
+  }
+  function opt(label, html, small) { return '<div class="opt"><label>' + label + (small ? '<small>' + small + '</small>' : '') + '</label>' + html + '</div>'; }
+  var RES = [['0', '原样'], ['1080', '1080p'], ['720', '720p'], ['480', '480p']];
+  function renderOpts() {
+    var h = '';
+    if (TASK === 'compress') {
+      h += opt('画质', seg('crf', [['23', '清楚（大一些）'], ['28', '平衡'], ['32', '最小']], '28'), '数字越小越清楚、文件越大');
+      h += opt('分辨率', seg('res', RES, META.h > 1080 ? '1080' : '0'), '降到 720p 文件小很多，处理也快很多');
+      h += opt('速度', seg('pre', [['ultrafast', '最快'], ['veryfast', '快'], ['medium', '更小（慢）']], 'veryfast'));
+    } else if (TASK === 'target') {
+      if (OPT.mb == null) OPT.mb = Math.max(5, Math.min(Math.round(FILE ? FILE.size / 1048576 / 3 : 25), 100));
+      h += opt('压到多少 MB', '<input type="number" id="mb" min="1" value="' + OPT.mb + '">', META.dur ? '这段 ' + fmt(META.dur) + '，' + estimate() : '');
+      h += opt('分辨率', seg('res', RES, META.h > 720 ? '720' : '0'), '要压得很小的话，分辨率也降一降，画面才不糊');
+    } else if (TASK === 'convert') {
+      h += opt('转成', seg('fmt', [['mp4', 'MP4'], ['mkv', 'MKV'], ['mov', 'MOV'], ['webm', 'WebM'], ['gif', 'GIF']], 'mp4'));
+      h += '<div class="hint" id="convHint"></div>';
+    } else if (TASK === 'extract' || TASK === 'audio') {
+      h += opt('格式', seg('afmt', [['mp3', 'MP3'], ['m4a', 'M4A'], ['ogg', 'OGG'], ['wav', 'WAV'], ['flac', 'FLAC']], 'mp3'));
+      h += opt('码率', seg('abr', [['96', '96k 听书'], ['128', '128k'], ['192', '192k'], ['320', '320k']], TASK === 'extract' ? '192' : '128'), 'WAV / FLAC 是无损，不看码率');
+      h += opt('声道', seg('mono', [['0', '立体声'], ['1', '单声道（再小一半）']], '0'));
+    } else if (TASK === 'cut') {
+      h += '<div class="row">' + opt('从', '<input type="text" id="t1" placeholder="0:30" value="' + esc(OPT.t1 || '') + '">') + opt('到', '<input type="text" id="t2" placeholder="' + (META.dur ? fmt(META.dur) : '1:45') + '" value="' + esc(OPT.t2 || '') + '">') + '</div>';
+      h += opt('方式', seg('exact', [['0', '快（不重新编码）'], ['1', '精确到帧（慢）']], '0'), '「快」的开头可能会差一两秒');
+    } else if (TASK === 'mute') {
+      h += '<div class="hint">把视频里的声音去掉，画面原样保留，几秒钟就好。</div>';
+    }
+    $('opts').innerHTML = h;
+    if (TASK === 'convert') convHint();
+    var mb = $('mb'); if (mb) mb.oninput = function () { OPT.mb = +mb.value; var s = mb.closest('.opt').querySelector('small'); if (s && META.dur) s.textContent = '这段 ' + fmt(META.dur) + '，' + estimate(); };
+    ['t1', 't2'].forEach(function (k) { var el = $(k); if (el) el.oninput = function () { OPT[k] = el.value; }; });
+  }
+  function estimate() { var kbps = Math.round((OPT.mb * 8192) / META.dur - 96); return kbps < 150 ? '⚠️ 太小了，画面会很糊' : '画面码率约 ' + kbps + ' kbps'; }
+  function convHint() {
+    var f = OPT.fmt, t = { mp4: '如果原来就是 H.264，只换外壳，几秒钟；否则转成 H.264（哪里都能放）。', mkv: '只换外壳，不重新编码，几秒钟就好。', mov: '只换外壳，苹果设备友好。', webm: '转成 VP9 网页格式，浏览器里转很慢，短视频才建议用。', gif: '做成动图（最多前 15 秒，宽 480），适合发群里。' }[f];
+    var el = $('convHint'); if (el) el.textContent = t || '';
+  }
+  $('opts').onclick = function (e) {
+    var b = e.target.closest('[data-v]'), s = b && b.closest('[data-seg]'); if (!s) return;
+    OPT[s.getAttribute('data-seg')] = b.getAttribute('data-v');
+    [].forEach.call(s.querySelectorAll('button'), function (x) { x.classList.toggle('on', x === b); });
+    if (TASK === 'convert') convHint();
+  };
+
+  /* ---------- ffmpeg（浏览器里跑的版本） ---------- */
+  var CORE = ['https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/umd/', 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/'];
+  async function load() {
+    if (ff && ff.loaded) return ff;
+    ff = new FFmpegWASM.FFmpeg();
+    ff.on('log', function (e) { var l = $('log'); l.textContent = (l.textContent + '\n' + e.message).slice(-3000); l.scrollTop = l.scrollHeight; });
+    ff.on('progress', function (e) { if (running && e.progress >= 0 && e.progress <= 1) { $('bar').style.width = Math.round(e.progress * 100) + '%'; status('⏳ 处理中 ' + Math.round(e.progress * 100) + '%' + (e.time ? ' · 已处理到 ' + fmt(e.time / 1e6) : '')); } });
+    var last = null;
+    for (var i = 0; i < CORE.length; i++) {
+      try {
+        status('⏳ 第一次用：下载处理组件（约 30 MB，之后不用再下）…');
+        var coreURL = await FFmpegUtil.toBlobURL(CORE[i] + 'ffmpeg-core.js', 'text/javascript');
+        var wasmURL = await FFmpegUtil.toBlobURL(CORE[i] + 'ffmpeg-core.wasm', 'application/wasm', true, function (e) { if (e.total) status('⏳ 下载处理组件 ' + Math.round(e.received / e.total * 100) + '%'); });
+        await ff.load({ coreURL: coreURL, wasmURL: wasmURL });
+        return ff;
+      } catch (e) { last = e; }
+    }
+    throw new Error('处理组件下载失败：' + (last && last.message || '') + '（检查网络后再试）');
+  }
+  function ext(n) { var m = /\.([a-z0-9]+)$/i.exec(n); return m ? m[1].toLowerCase() : 'bin'; }
+  function base(n) { return n.replace(/\.[^.]+$/, ''); }
+  function scaleSimple(r) { return r && r !== '0' ? ['-vf', 'scale=-2:min(ih\\,' + r + ')'] : []; }
+  function plan() {
+    var i = 'in.' + ext(FILE.name), b = base(FILE.name), a = [], out, mime;
+    if (TASK === 'compress') {
+      out = 'out.mp4'; mime = 'video/mp4';
+      a = ['-i', i].concat(scaleSimple(OPT.res), ['-c:v', 'libx264', '-preset', OPT.pre, '-crf', OPT.crf, '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', out]);
+      return { args: a, out: out, mime: mime, name: b + '_压缩.mp4' };
+    }
+    if (TASK === 'target') {
+      if (!META.dur) throw new Error('读不到这个视频的时长，没法按大小压，换「压缩视频」试试');
+      var mb = Math.max(1, +($('mb') ? $('mb').value : OPT.mb) || 10), kb = Math.floor(mb * 8192 * 0.97 / META.dur) - 96;
+      if (kb < 60) throw new Error('目标太小了：这么长的视频压到 ' + mb + ' MB，画面会糊得没法看。把 MB 调大一点');
+      out = 'out.mp4';
+      a = ['-i', i].concat(scaleSimple(OPT.res), ['-c:v', 'libx264', '-preset', 'veryfast', '-b:v', kb + 'k', '-maxrate', Math.round(kb * 1.3) + 'k', '-bufsize', kb * 2 + 'k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', out]);
+      return { args: a, out: out, mime: 'video/mp4', name: b + '_' + mb + 'MB.mp4' };
+    }
+    if (TASK === 'convert') {
+      var f = OPT.fmt;
+      if (f === 'mkv' || f === 'mov') return { args: ['-i', i, '-map', '0', '-c', 'copy', 'out.' + f], fallback: ['-i', i, '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '23', '-c:a', 'aac', 'out.' + f], out: 'out.' + f, mime: f === 'mov' ? 'video/quicktime' : 'video/x-matroska', name: b + '.' + f };
+      if (f === 'mp4') return { args: ['-i', i, '-c:v', 'copy', '-c:a', 'aac', '-movflags', '+faststart', 'out.mp4'], fallback: ['-i', i, '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '23', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-movflags', '+faststart', 'out.mp4'], out: 'out.mp4', mime: 'video/mp4', name: b + '.mp4', checkCodec: true };
+      if (f === 'webm') return { args: ['-i', i, '-c:v', 'libvpx-vp9', '-b:v', '0', '-crf', '34', '-deadline', 'realtime', '-cpu-used', '8', '-c:a', 'libopus', 'out.webm'], out: 'out.webm', mime: 'video/webm', name: b + '.webm' };
+      if (f === 'gif') return { args: ['-t', '15', '-i', i, '-vf', 'fps=12,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse', 'out.gif'], out: 'out.gif', mime: 'image/gif', name: b + '.gif' };
+    }
+    if (TASK === 'extract' || TASK === 'audio') {
+      var af = OPT.afmt, br = OPT.abr + 'k', mono = OPT.mono === '1' ? ['-ac', '1'] : [];
+      var codec = { mp3: ['-c:a', 'libmp3lame', '-b:a', br], m4a: ['-c:a', 'aac', '-b:a', br], ogg: ['-c:a', 'libvorbis', '-b:a', br], wav: ['-c:a', 'pcm_s16le'], flac: ['-c:a', 'flac'] }[af];
+      return { args: ['-i', i, '-vn'].concat(mono, codec, ['out.' + af]), out: 'out.' + af, mime: { mp3: 'audio/mpeg', m4a: 'audio/mp4', ogg: 'audio/ogg', wav: 'audio/wav', flac: 'audio/flac' }[af], name: b + '.' + af };
+    }
+    if (TASK === 'cut') {
+      var t1 = parseT($('t1').value) || 0, t2 = parseT($('t2').value);
+      if (t2 != null && t2 <= t1) throw new Error('「到」要比「从」晚');
+      var e = ext(FILE.name), o = 'out.' + e, rng = ['-ss', String(t1)].concat(t2 != null ? ['-to', String(t2)] : []);
+      var args = OPT.exact === '1' ? ['-i', i].concat(rng, META.video ? ['-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-c:a', 'aac'] : [], [o]) : rng.concat(['-i', i, '-c', 'copy', '-avoid_negative_ts', 'make_zero', o]);
+      if (OPT.exact === '1' && t2 != null) args = ['-i', i, '-ss', String(t1), '-to', String(t2)].concat(META.video ? ['-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-c:a', 'aac'] : [], [o]);
+      return { args: args, out: o, mime: FILE.type || 'application/octet-stream', name: b + '_剪辑_' + fmt(t1).replace(/:/g, '.') + '-' + (t2 != null ? fmt(t2).replace(/:/g, '.') : '结尾') + '.' + e, dur: (t2 != null ? t2 : META.dur) - t1 };
+    }
+    if (TASK === 'mute') return { args: ['-i', i, '-c:v', 'copy', '-an', 'out.' + ext(FILE.name)], out: 'out.' + ext(FILE.name), mime: FILE.type || 'video/mp4', name: b + '_无声.' + ext(FILE.name) };
+  }
+  $('go').onclick = async function () {
+    if (!FILE || running) return;
+    var p = null; try { p = plan(); } catch (e) { if (!(TASK === 'target' && !META.dur)) { status('⚠️ ' + esc(e.message), 'err'); return; } }
+    running = true; $('go').disabled = true; $('stop').style.display = ''; $('res').className = 'box res'; $('bar').style.width = '0'; $('log').textContent = '';
+    var t0 = Date.now();
+    try {
+      await load();
+      status('⏳ 读文件…');
+      var inName = 'in.' + ext(FILE.name);
+      await ff.writeFile(inName, new Uint8Array(await FILE.arrayBuffer()));
+      if (!META.dur || !p) {    // 浏览器读不出时长（有些格式不认）：让 ffmpeg 看一眼
+        var logs = '', lis = function (e) { logs += e.message + '\n'; };
+        ff.on('log', lis); await ff.exec(['-hide_banner', '-i', inName]); ff.off('log', lis);
+        var dm = /Duration:\s*(\d+):(\d+):([\d.]+)/.exec(logs); if (dm) META.dur = (+dm[1]) * 3600 + (+dm[2]) * 60 + parseFloat(dm[3]);
+        var vm = /Video:.*?(\d{2,5})x(\d{2,5})/.exec(logs); if (vm && !META.w) { META.w = +vm[1]; META.h = +vm[2]; }
+        if (!p) p = plan();
+      }
+      status('⏳ 开始处理…');
+      var code = await ff.exec(p.args);
+      if (code !== 0 && p.fallback) { status('⏳ 直接换外壳不行，改成重新编码…'); code = await ff.exec(p.fallback); }
+      if (code !== 0) throw new Error('处理失败（可能这个文件格式不支持）。点下面看详细记录');
+      var data = await ff.readFile(p.out);
+      try { await ff.deleteFile(inName); await ff.deleteFile(p.out); } catch (e) { }
+      OUT = { blob: new Blob([data.buffer], { type: p.mime }), name: p.name };
+      showResult((Date.now() - t0) / 1000);
+    } catch (e) {
+      if (!running) status('⏹ 已停止'); else { status('❌ ' + esc(e.message || String(e)) + ' <a href="#" id="showLog">看记录</a>', 'err'); var sl = $('showLog'); if (sl) sl.onclick = function (ev) { ev.preventDefault(); $('log').classList.toggle('on'); }; }
+    } finally {
+      running = false; $('go').disabled = false; $('stop').style.display = 'none';
+    }
+  };
+  $('stop').onclick = function () { running = false; try { ff.terminate(); } catch (e) { } ff = null; status('⏹ 已停止'); $('stop').style.display = 'none'; $('go').disabled = false; };
+  function showResult(sec) {
+    $('bar').style.width = '100%';
+    var a = FILE.size, b = OUT.blob.size, pct = Math.round((1 - b / a) * 100);
+    status('✅ 好了，用了 ' + (sec < 60 ? Math.round(sec) + ' 秒' : fmt(sec)), 'ok');
+    $('cmp').innerHTML = '<span>原来 ' + fsize(a) + '</span><span>现在 ' + fsize(b) + '</span>' + (pct > 0 ? '<span class="big">小了 ' + pct + '%</span>' : pct < 0 ? '<span>大了 ' + (-pct) + '%</span>' : '');
+    if (pct < 0 && (TASK === 'compress' || TASK === 'target')) $('cmp').innerHTML += '<span style="background:var(--warn-soft);color:var(--warn)">原文件本来就压得很省了，用原文件就好；想更小就降分辨率或选「最小」</span>';
+    var u = URL.createObjectURL(OUT.blob), tag = /^audio\//.test(OUT.blob.type) ? 'audio' : /^image\//.test(OUT.blob.type) ? 'img' : 'video';
+    $('pv').innerHTML = tag === 'img' ? '<img src="' + u + '" style="max-width:100%;border-radius:12px">' : '<' + tag + ' src="' + u + '" controls playsinline></' + tag + '>';
+    $('res').className = 'box res on';
+    $('res').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  $('save').onclick = function () {
+    if (!OUT) return;
+    if (window.SaveSheet) SaveSheet.show(OUT.blob, OUT.name);
+    else { var a = document.createElement('a'), u = URL.createObjectURL(OUT.blob); a.href = u; a.download = OUT.name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 4000); }
+  };
+  $('again').onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  renderTasks(); renderOpts();
+})();
+</script>
+<script src="savesheet.js?v=1"></script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=46" defer></script>
+</body>
+</html>
