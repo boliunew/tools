@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.9
+// @version      1.0.10
 // @description  把「我的工具」带到别的网站上：网页图片一键下原图、YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
@@ -27,7 +27,7 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.9', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.10', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
   try { console.log('[工具箱随身] v' + VER + ' 在 ' + host + ' 上运行'); } catch (e) { }
   function gm(o) {
@@ -92,6 +92,18 @@
   }
   function mk(tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; (parent || root()).appendChild(e); return e; }
   function el(html) { var d = document.createElement('div'); setHTML(d, html); var e = d.firstChild; root().appendChild(e); return e; }
+  // 浮动按钮可以拖：按住拖到哪就停在哪，位置按网站记住；轻点才算点击
+  function draggable(b, key) {
+    var pos = GM_getValue('pos:' + key, null);
+    function apply(p) { b.style.left = Math.max(4, Math.min(window.innerWidth - 60, p.x)) + 'px'; b.style.top = Math.max(4, Math.min(window.innerHeight - 40, p.y)) + 'px'; b.style.right = 'auto'; b.style.bottom = 'auto'; }
+    if (pos) apply(pos);
+    var sx, sy, ox, oy, moved = false, down = false;
+    b.addEventListener('pointerdown', function (e) { down = true; moved = false; sx = e.clientX; sy = e.clientY; var r = b.getBoundingClientRect(); ox = r.left; oy = r.top; try { b.setPointerCapture(e.pointerId); } catch (x) { } });
+    b.addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - sx, dy = e.clientY - sy; if (!moved && Math.abs(dx) + Math.abs(dy) < 6) return; moved = true; apply({ x: ox + dx, y: oy + dy }); b.style.cursor = 'grabbing'; });
+    b.addEventListener('pointerup', function () { down = false; b.style.cursor = ''; if (moved) { var r = b.getBoundingClientRect(); GM_setValue('pos:' + key, { x: r.left, y: r.top }); } });
+    b.addEventListener('click', function (e) { if (moved) { e.stopImmediatePropagation(); e.preventDefault(); moved = false; } }, true);
+    b.title = (b.title ? b.title + '\n' : '') + '按住可以拖到别的位置';
+  }
   var toastT; function toast(msg, ms) { var t = root().querySelector('.toast'); if (!t) { t = document.createElement('div'); t.className = 'toast'; root().appendChild(t); } t.textContent = msg; t.style.display = 'block'; clearTimeout(toastT); toastT = setTimeout(function () { t.style.display = 'none'; }, ms || 3000); }
 
   /* =================== 1. YouTube 字幕 → SubLingo =================== */
@@ -189,9 +201,12 @@
       MENU = mk('div', 'bub'); MENU.style.flexDirection = 'column'; MENU.style.padding = '6px';
       var r = anchor.getBoundingClientRect();
       MENU.style.left = Math.max(8, Math.min(window.innerWidth - 250, r.left)) + 'px'; MENU.style.top = (r.bottom + 6) + 'px';
+      var closeM = function () { if (MENU) { MENU.remove(); MENU = null; } window.removeEventListener('scroll', closeM, true); document.removeEventListener('mousedown', outside, true); };
+      var outside = function (e) { var p = e.composedPath ? e.composedPath() : []; if (MENU && p.indexOf(MENU) < 0 && p.indexOf(anchor) < 0) closeM(); };
+      setTimeout(function () { window.addEventListener('scroll', closeM, true); document.addEventListener('mousedown', outside, true); }, 0);
       [['video720', '🎬 720p + 字幕（省空间）'], ['video', '🎬 1080p + 字幕（推荐）'], ['video1440', '🎬 2K + 字幕'], ['videomax', '🎬 最高画质 + 字幕（有 4K 就 4K）'], ['audio', '🎵 只要 MP3（320k）']].forEach(function (o) {
         var it = mk('span', '', o[1], MENU); it.style.padding = '6px 10px';
-        it.onclick = function () { MENU.remove(); MENU = null; ytPush(o[0], anchor); };
+        it.onclick = function () { closeM(); ytPush(o[0], anchor); };
       });
     }
     try { GM_registerMenuCommand('📥 下到电脑：1080p + 字幕', function () { ytPush('video'); }); GM_registerMenuCommand('📥 下到电脑：最高画质 + 字幕', function () { ytPush('videomax'); }); GM_registerMenuCommand('🎵 下到电脑：只要 MP3', function () { ytPush('audio'); }); } catch (e) { }
@@ -202,7 +217,7 @@
       var fab = null, first = true;
       function makeFab() {
         try {
-          fab = document.createElement('button'); fab.className = 'fab'; fab.title = '把这个视频的字幕送进 SubLingo 逐句精读'; fab.textContent = '🎞️ SubLingo 精读'; root().appendChild(fab);
+          fab = document.createElement('button'); fab.className = 'fab'; fab.title = '把这个视频的字幕送进 SubLingo 逐句精读'; fab.textContent = '🎞️ SubLingo 精读'; root().appendChild(fab); draggable(fab, 'yt');
         } catch (e) {
           // 影子 DOM 用不了：直接挂在页面上
           console.log('[工具箱随身] 影子 DOM 不行，改直接挂按钮', e);
@@ -237,7 +252,7 @@
           var on = !!vid();
           if (first) { first = false; console.log('[工具箱随身] 开始检查：视频 ID = ' + (vid() || '（不是视频页）')); }
           if (on && !fab) makeFab();
-          if (fab) fab.style.display = on ? '' : 'none';
+          if (fab) fab.style.display = on && !(inl && inl.isConnected) ? '' : 'none';   // 标题下面已经有按钮了，右下角的就收起来
           if (fab && !fab.isConnected) { fab = null; }      // 被网站删掉了就重建
           if (inl && !inl.isConnected) inl = null;
           if (on && !inl) makeInline();
@@ -644,7 +659,7 @@
       var fab = null;
       setInterval(function () {
         var on = /^\/(p|reel|reels|tv)\//.test(location.pathname);
-        if (on && !fab) { fab = document.createElement('button'); fab.className = 'fab'; fab.textContent = '📥 用工具箱下载'; root().appendChild(fab); fab.onclick = function () { GM_openInTab(SITE + 'media.html?url=' + encodeURIComponent(location.href.split('?')[0]), { active: true }); }; }
+        if (on && !fab) { fab = document.createElement('button'); fab.className = 'fab'; fab.textContent = '📥 用工具箱下载'; root().appendChild(fab); draggable(fab, 'ig'); fab.onclick = function () { GM_openInTab(SITE + 'media.html?url=' + encodeURIComponent(location.href.split('?')[0]), { active: true }); }; }
         if (fab) fab.style.display = on ? '' : 'none';
       }, 1500);
     });
