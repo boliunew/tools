@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.3
+// @version      1.0.4
 // @description  把「我的工具」带到别的网站上：网页图片一键下原图、YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
@@ -26,7 +26,7 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.3', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.4', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
   try { console.log('[工具箱随身] v' + VER + ' 在 ' + host + ' 上运行'); } catch (e) { }
   function gm(o) {
@@ -107,7 +107,9 @@
     try {
       var W = unsafeWindow, of = W.fetch;
       W.fetch = function (inp) {
-        var p = of.apply(this, arguments), url = typeof inp === 'string' ? inp : (inp && inp.url) || '';
+        var url = typeof inp === 'string' ? inp : (inp && inp.url) || '';
+        if (!/\/api\/timedtext/.test(url)) return of.apply(this, arguments);   // 别的请求原样放行
+        var p = of.apply(this, arguments);
         if (/\/api\/timedtext/.test(url)) p.then(function (r) { r.clone().text().then(function (t) { keep(url, t); }); }).catch(function () { });
         return p;
       };
@@ -181,6 +183,20 @@
           document.documentElement.appendChild(fab);
         }
         fab.onclick = function () { sendToSL(fab); };
+        setTimeout(function () { try { var r = fab.getBoundingClientRect(); console.log('[工具箱随身] 右下角按钮已放好', Math.round(r.left), Math.round(r.top), Math.round(r.width) + 'x' + Math.round(r.height)); } catch (e) { } }, 500);
+      }
+      // 再在视频标题下面、点赞分享那一排里放一个（跟着 YouTube 自己的按钮，最不容易被挡）
+      var inl = null, logged = false;
+      function makeInline() {
+        var bar = document.querySelector('ytd-watch-metadata #top-level-buttons-computed') || document.querySelector('ytd-watch-metadata #actions-inner') || document.querySelector('#above-the-fold #top-row') || document.querySelector('ytd-watch-metadata #title');
+        if (!bar) return;
+        inl = document.createElement('button');
+        inl.textContent = '🎞️ SubLingo 精读';
+        inl.title = '把这个视频的字幕送进 SubLingo 逐句精读（先打开 CC 英文字幕）';
+        inl.setAttribute('style', 'margin-left:8px;height:36px;padding:0 14px;border-radius:18px;border:0;cursor:pointer;font-size:14px;font-weight:500;background:#2E6BD8;color:#fff;white-space:nowrap;flex:none');
+        inl.onclick = function (e) { e.preventDefault(); e.stopPropagation(); sendToSL(inl); };
+        bar.appendChild(inl);
+        if (!logged) { logged = true; console.log('[工具箱随身] 标题下面的按钮已放好'); }
       }
       function sync() {
         try {
@@ -188,6 +204,8 @@
           if (on && !fab) makeFab();
           if (fab) fab.style.display = on ? '' : 'none';
           if (fab && !fab.isConnected) { fab = null; }      // 被网站删掉了就重建
+          if (inl && !inl.isConnected) inl = null;
+          if (on && !inl) makeInline();
         } catch (e) { console.log('[工具箱随身] YouTube 按钮出错', e); }
       }
       sync(); setInterval(sync, 1500);
