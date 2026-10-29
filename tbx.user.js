@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧰 工具箱助手
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.3
+// @version      1.0.4
 // @description  让「我的工具」网页直接读取夸克分享、拿下载地址、推送到 torrent_hub、把字幕交给 SubLingo。只在工具箱页面上工作。
 // @author       boliunew
 // @match        https://boliunew.github.io/tools/*
@@ -35,7 +35,7 @@
     grab(); setTimeout(grab, 3000); setTimeout(grab, 10000);
     return;
   }
-  var VER = '1.0.3';
+  var VER = '1.0.4';
   var UA_PC = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 QuarkPC/6.9.7.761 QuarkCloudDrivePC/6.9.7.761 quark-cloud-drive/2.5.40';
   var API = 'https://drive-pc.quark.cn/1/clouddrive/';
   var Q = '?pr=ucpro&fr=pc&sys=win32&ve=6.9.7.761';
@@ -179,7 +179,7 @@
       if (!out.length) { diag.push(mode.name + ':没地址'); continue; }
       var cks = [];
       if (mode.anon) cks.push(mode.cookie || (LASTSET ? '__pugs=' + LASTSET : ''));
-      else { var pg = LASTSET || pugs(); if (pg) cks.push('__pugs=' + pg); if (doc) cks.push(doc); if (ck) cks.push(ck); cks.push(''); }
+      else { var pg = LASTSET || pugs(); if (doc) cks.push(doc); if (ck) cks.push(ck); if (pg) cks.push('__pugs=' + pg); cks.push(''); }   // 实测：登录拿地址 + 网页 cookie 整串下载能行，先试它
       var tried = {};
       for (var c = 0; c < cks.length; c++) {
         if (tried[cks[c]]) continue; tried[cks[c]] = 1;
