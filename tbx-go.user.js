@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.0
+// @version      1.0.1
 // @description  把「我的工具」带到别的网站上：YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
@@ -24,7 +24,7 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.0', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.1', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
   function gm(o) {
     return new Promise(function (res, rej) {
@@ -75,8 +75,19 @@
     SH = ROOT.attachShadow({ mode: 'open' }); var st = document.createElement('style'); st.textContent = CSS; SH.appendChild(st);
     return SH;
   }
-  function el(html) { var d = document.createElement('div'); d.innerHTML = html; var e = d.firstChild; root().appendChild(e); return e; }
-  var toastT; function toast(msg, ms) { var t = root().querySelector('.toast') || el('<div class="toast"></div>'); t.textContent = msg; t.style.display = 'block'; clearTimeout(toastT); toastT = setTimeout(function () { t.style.display = 'none'; }, ms || 3000); }
+  // YouTube 这类网站开了 Trusted Types：直接写 innerHTML 会被浏览器拦下，要先过一个「放行策略」
+  var TT = null;
+  try { if (window.trustedTypes && trustedTypes.createPolicy) TT = trustedTypes.createPolicy('tbxgo', { createHTML: function (x) { return x; } }); } catch (e) { TT = null; }
+  function setHTML(node, html) {
+    try { node.innerHTML = TT ? TT.createHTML(html) : html; return; } catch (e) { }
+    // 策略也建不了：退一步，用纯文本（去掉标签）
+    while (node.firstChild) node.removeChild(node.firstChild);
+    node.appendChild(document.createTextNode(String(html).replace(/<br\s*\/?>/g, '\n').replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&')));
+    node.style.whiteSpace = 'pre-wrap';
+  }
+  function mk(tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; (parent || root()).appendChild(e); return e; }
+  function el(html) { var d = document.createElement('div'); setHTML(d, html); var e = d.firstChild; root().appendChild(e); return e; }
+  var toastT; function toast(msg, ms) { var t = root().querySelector('.toast'); if (!t) { t = document.createElement('div'); t.className = 'toast'; root().appendChild(t); } t.textContent = msg; t.style.display = 'block'; clearTimeout(toastT); toastT = setTimeout(function () { t.style.display = 'none'; }, ms || 3000); }
 
   /* =================== 1. YouTube 字幕 → SubLingo =================== */
   if (/(^|\.)youtube\.com$/.test(host)) {
@@ -143,7 +154,7 @@
       function sync() {
         var on = !!vid();
         if (on && !fab) {
-          fab = el('<button class="fab" title="把这个视频的字幕送进 SubLingo 逐句精读">🎞️ SubLingo 精读</button>');
+          fab = document.createElement('button'); fab.className = 'fab'; fab.title = '把这个视频的字幕送进 SubLingo 逐句精读'; fab.textContent = '🎞️ SubLingo 精读'; root().appendChild(fab);
           fab.onclick = function () {
             fab.textContent = '⏳ 拿字幕…';
             grabCaptions().then(function (c) {
@@ -217,11 +228,13 @@
     var r = sel.getRangeAt(0).getBoundingClientRect();
     LAST = { text: t, single: single, around: sentenceAround(sel) };
     if (!BUB) {
-      BUB = el('<div class="bub"></div>');
+      BUB = mk('div', 'bub');
       BUB.addEventListener('mousedown', function (e) { e.preventDefault(); });
       BUB.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b) act(b.getAttribute('data-a')); });
     }
-    BUB.innerHTML = single ? '<span data-a="save">⭐ 存进词库</span><span data-a="ex">📖 讲讲这句</span>' : '<span data-a="ex">📖 讲讲这句</span>';
+    while (BUB.firstChild) BUB.removeChild(BUB.firstChild);
+    if (single) mk('span', '', '⭐ 存进词库', BUB).setAttribute('data-a', 'save');
+    mk('span', '', '📖 讲讲这句', BUB).setAttribute('data-a', 'ex');
     BUB.style.display = 'flex';
     place(BUB, r.left + r.width / 2 - 60, r.bottom + 8 > window.innerHeight - 40 ? r.top - 40 : r.bottom + 8, 200);
   }
@@ -237,22 +250,24 @@
     // 选了半句也按整句讲（整句太长就只讲选中的）
     var sent = L.single || (L.around.sent && L.around.sent.indexOf(L.text) >= 0 && L.around.sent.length <= 500) ? L.around.sent : L.text;
     closePop();
-    POP = el('<div class="pop"><div class="hd"><b>📖 讲讲这句</b><button class="x">✕</button></div><div class="src">' + esc(sent) + '</div><div class="body">⏳ AI 正在读这句…（第一次大概 5–10 秒）</div></div>');
+    POP = mk('div', 'pop'); var hd = mk('div', 'hd', null, POP); mk('b', '', '📖 讲讲这句', hd); mk('button', 'x', '✕', hd);
+    mk('div', 'src', sent, POP); mk('div', 'body', '⏳ AI 正在读这句…（第一次大概 5–10 秒）', POP);
     POP.querySelector('.x').onclick = closePop;
     place(POP, window.innerWidth / 2 - 210, 70, 420, 400);
     explain(sent, L.around.ctx).then(function (j) {
       if (!POP) return;
-      POP.querySelector('.body').innerHTML = exHTML(j) + '<div class="acts"><button class="btn btn2" data-sl="1">🎞️ 整篇送进 SubLingo</button></div>';
-      POP.querySelector('[data-sl]').onclick = function () {
+      setHTML(POP.querySelector('.body'), exHTML(j) + '<div class="acts"><button class="btn btn2" data-sl="1">🎞️ 整篇送进 SubLingo</button></div>');
+      var slb = POP.querySelector('[data-sl]') || mk('button', 'btn btn2', '🎞️ 整篇送进 SubLingo', POP);
+      slb.onclick = function () {
         var art = (document.querySelector('article') || document.body).innerText.replace(/\n{3,}/g, '\n\n').slice(0, 30000);
         GM_setValue('sl_handoff', { t: Date.now(), art: art, title: document.title, src: location.href });
         GM_openInTab(SITE + 'sublingo.html#handoff', { active: true });
       };
     }, function (e) {
       if (!POP) return;
-      POP.querySelector('.body').innerHTML = e.message === 'NOKEY'
+      setHTML(POP.querySelector('.body'), e.message === 'NOKEY'
         ? '<div class="err">🔑 先在这个浏览器打开一次<a href="' + SITE + '" target="_blank">工具箱首页</a>，输密码并勾「记住我」，再回来选一次。</div>'
-        : '<div class="err">❌ ' + esc(e.message) + '</div>';
+        : '<div class="err">❌ ' + esc(e.message) + '</div>');
     });
   }
   document.addEventListener('mouseup', function (e) { if (ROOT && e.composedPath && e.composedPath().indexOf(ROOT) >= 0) return; setTimeout(onSelect, 10); });
@@ -281,7 +296,7 @@
         var tl = D.latest.tracking || []; tl = Array.isArray(tl) ? tl : (tl.rows || []);
         var trk = tl.filter(function (c) { return c.t === t && c.status !== '已结束'; })[0];
         if (!card) {
-          card = el('<div class="pop" style="width:min(300px,calc(100vw - 20px));right:16px;left:auto;top:auto;bottom:90px;padding:10px 12px"></div>');
+          card = mk('div', 'pop'); card.setAttribute('style', 'width:min(300px,calc(100vw - 20px));right:16px;left:auto;top:auto;bottom:90px;padding:10px 12px');
         }
         var h = '<div class="hd"><b>📈 ' + esc(t) + ' · 我的股票池</b><button class="x">✕</button></div>';
         if (!r && !cand) h += '<div class="src" style="border:0;padding:0">不在扫描范围里（扫的是标普 500 + 你的关注列表）。</div>';
@@ -296,9 +311,10 @@
         }
         h += '<div class="src" style="border:0;padding:0;margin-top:4px">数据日期 ' + esc(D.snap.date || '') + '</div>' +
           '<div class="acts"><button class="btn" data-al="1">🔔 设提醒</button><a class="btn btn2" style="text-decoration:none" href="' + SITE + 'stocks.html" target="_blank">打开股票池</a></div>';
-        card.innerHTML = h; card.style.display = 'block';
-        card.querySelector('.x').onclick = function () { card.style.display = 'none'; };
-        card.querySelector('[data-al]').onclick = function () {
+        setHTML(card, h); card.style.display = 'block';
+        var cx = card.querySelector('.x'); if (cx) cx.onclick = function () { card.style.display = 'none'; };
+        var alb = card.querySelector('[data-al]') || mk('button', 'btn', '🔔 设提醒', card);
+        alb.onclick = function () {
           var v = prompt('「' + t + '」什么时候提醒你？\n写「跌到 650」或「涨到 900」（价格），或者「回撤 10」（离高点跌 10%）', '跌到 ');
           if (!v) return;
           var m = /(跌到|涨到|回撤|单日涨跌)\s*([\d.]+)/.exec(v); if (!m) { alert('没看懂，照「跌到 650」这样写'); return; }
@@ -363,7 +379,7 @@
       var fab = null;
       setInterval(function () {
         var on = /^\/(p|reel|reels|tv)\//.test(location.pathname);
-        if (on && !fab) { fab = el('<button class="fab">📥 用工具箱下载</button>'); fab.onclick = function () { GM_openInTab(SITE + 'media.html?url=' + encodeURIComponent(location.href.split('?')[0]), { active: true }); }; }
+        if (on && !fab) { fab = document.createElement('button'); fab.className = 'fab'; fab.textContent = '📥 用工具箱下载'; root().appendChild(fab); fab.onclick = function () { GM_openInTab(SITE + 'media.html?url=' + encodeURIComponent(location.href.split('?')[0]), { active: true }); }; }
         if (fab) fab.style.display = on ? '' : 'none';
       }, 1500);
     });
