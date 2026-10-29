@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧰 工具箱助手
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.2
+// @version      1.0.3
 // @description  让「我的工具」网页直接读取夸克分享、拿下载地址、推送到 torrent_hub、把字幕交给 SubLingo。只在工具箱页面上工作。
 // @author       boliunew
 // @match        https://boliunew.github.io/tools/*
@@ -27,11 +27,15 @@
   'use strict';
   // 在夸克网盘网页上：只记下 __pugs 这一个 cookie（夸克下载地址认它），别的什么都不做
   if (location.hostname === 'pan.quark.cn') {
-    var grab = function () { var m = /(?:^|;\s*)__pugs=([^;]+)/.exec(document.cookie || ''); if (m) { GM_setValue('quark_pugs_jar', m[1]); GM_setValue('quark_pugs_at', Date.now()); } };
+    var grab = function () {
+      var c = document.cookie || '', m = /(?:^|;\s*)__pugs=([^;]+)/.exec(c);
+      if (m) { GM_setValue('quark_pugs_jar', m[1]); GM_setValue('quark_pugs_at', Date.now()); }
+      if (c) GM_setValue('quark_doc_cookie', c);     // 网页能读到的那部分 cookie（LinkSwift 在自己网盘里下载也是带这串）
+    };
     grab(); setTimeout(grab, 3000); setTimeout(grab, 10000);
     return;
   }
-  var VER = '1.0.2';
+  var VER = '1.0.3';
   var UA_PC = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 QuarkPC/6.9.7.761 QuarkCloudDrivePC/6.9.7.761 quark-cloud-drive/2.5.40';
   var API = 'https://drive-pc.quark.cn/1/clouddrive/';
   var Q = '?pr=ucpro&fr=pc&sys=win32&ve=6.9.7.761';
@@ -39,7 +43,7 @@
   function gm(opt) {
     return new Promise(function (resolve, reject) {
       GM_xmlhttpRequest({
-        method: opt.method || 'GET', url: opt.url, headers: opt.headers || {}, data: opt.data, anonymous: false, timeout: opt.timeout || 30000,
+        method: opt.method || 'GET', url: opt.url, headers: opt.headers || {}, data: opt.data, anonymous: !!opt.anonymous, cookie: opt.cookie, timeout: opt.timeout || 30000,
         onload: function (r) { resolve(r); },
         onerror: function (e) { reject(new Error('网络请求失败' + (e && e.error ? '：' + e.error : ''))); },
         ontimeout: function () { reject(new Error('请求超时')); }
@@ -75,10 +79,12 @@
     var m = /__pugs=([^;\s]+)/.exec(sc);
     if (m) { pugs(m[1]); LASTSET = m[1]; }
   }
-  async function qjson(method, path, body, extra) {
+  async function qjson(method, path, body, extra, mode) {
     var h = Object.assign({ 'Accept': 'application/json, text/plain, */*', 'Referer': 'https://pan.quark.cn/', 'Origin': 'https://pan.quark.cn' }, extra || {});
     if (body) h['Content-Type'] = 'application/json;charset=UTF-8';
-    var r = await gm({ method: method, url: (/^https?:/.test(path) ? path : API + path), headers: h, data: body ? JSON.stringify(body) : undefined });
+    var o = { method: method, url: (/^https?:/.test(path) ? path : API + path), headers: h, data: body ? JSON.stringify(body) : undefined };
+    if (mode && mode.anon) { o.anonymous = true; if (mode.cookie) { o.cookie = mode.cookie; h.Cookie = mode.cookie; } }
+    var r = await gm(o);
     grabPugs(r);
     var j = null; try { j = JSON.parse(r.responseText); } catch (e) { }
     if (!j) throw new Error('夸克返回了看不懂的内容（HTTP ' + r.status + '）');
@@ -141,48 +147,56 @@
     } catch (e) { return ''; }
   }
   // ---- 拿下载地址（分享里直接拿，不用先存到自己网盘）
-  async function links(a) {
-    var t = await stoken(a.pwd_id, a.passcode), out = [], files = a.files || [];
+  // 拿地址 + 试下载。夸克把下载地址和「拿地址时带的 cookie」绑在一起，所以每种方式都用同一串 cookie 拿地址、再试下载
+  async function fetchLinks(a, t, mode) {
+    var out = [], files = a.files || [];
     for (var i = 0; i < files.length; i += 15) {
       var b = files.slice(i, i + 15);
-      var tok = await socialToken();
+      var tok = mode.anon ? '' : await socialToken();
       var extra = { 'User-Agent': UA_PC };
-      if (pugs()) extra.Cookie = '__pugs=' + pugs();
+      if (!mode.anon && pugs()) extra.Cookie = '__pugs=' + pugs();
       LASTSET = '';
-      var j = await qjson('POST', 'file/download' + Q, { fids: b.map(function (x) { return x.fid; }), fids_token: b.map(function (x) { return x.token; }), pwd_id: a.pwd_id, stoken: t.stoken, speedup_session: '', token: tok }, extra);
+      var j = await qjson('POST', 'file/download' + Q, { fids: b.map(function (x) { return x.fid; }), fids_token: b.map(function (x) { return x.token; }), pwd_id: a.pwd_id, stoken: t.stoken, speedup_session: '', token: tok }, extra, mode);
       (j.data || []).forEach(function (d) {
         var src = b.filter(function (x) { return x.fid === d.fid; })[0] || {};
         out.push({ fid: d.fid, name: src.name || d.file_name, path: src.path || '', size: d.size || src.size, url: d.download_url });
       });
       if (i + 15 < files.length) await new Promise(function (r) { setTimeout(r, 800); });
     }
-    var ck = await quarkCookies();
-    var pg = LASTSET || pugs(), jar = GM_getValue('quark_pugs_jar', ''), set = GM_getValue('quark_pugs', '');
-    // 夸克对下载请求挑剔：几种带法挨个试（只要 1 个字节），哪种能下就用哪种
-    var base = { 'User-Agent': UA_PC, 'Referer': 'https://pan.quark.cn/' }, cands = [], seen = {};
-    function cand(name, h) { var k = JSON.stringify(h); if (seen[k]) return; seen[k] = 1; cands.push({ name: name, h: h }); }
-    if (pg) cand('pugs', Object.assign({ Cookie: '__pugs=' + pg }, base));
-    if (jar && jar !== pg) cand('pugs-jar', Object.assign({ Cookie: '__pugs=' + jar }, base));
-    if (set && set !== pg && set !== jar) cand('pugs-set', Object.assign({ Cookie: '__pugs=' + set }, base));
-    if (ck) cand('full', Object.assign({ Cookie: ck }, base));
-    cand('none', Object.assign({}, base));
-    if (pg) cand('pugs-noref', { 'User-Agent': UA_PC, Cookie: '__pugs=' + pg });
-    if (pg) cand('pugs-browserUA', { 'User-Agent': navigator.userAgent, Referer: 'https://pan.quark.cn/', Cookie: '__pugs=' + pg });
-    var diag = [], pick = null;
-    if (out.length && !a.noProbe) {
-      for (var c = 0; c < cands.length && !pick; c++) {
-        var st = await probe(out[0].url, cands[c].h);
-        diag.push(cands[c].name + ':' + st);
-        if (st === 200 || st === 206) pick = cands[c];
-      }
-    }
-    if (out.length && !a.noProbe && !pick) { var er = new Error('夸克不让下载（试了 ' + diag.length + ' 种方式都不行：' + diag.join(' ') + '）'); throw er; }
-    return { links: out, headers: (pick || cands[0]).h, way: pick ? pick.name : '', diag: diag, fullCookie: !!ck };
+    return out;
   }
-  function probe(url, h) {
+  async function links(a) {
+    var t = await stoken(a.pwd_id, a.passcode);
+    var ck = await quarkCookies(), doc = GM_getValue('quark_doc_cookie', ''), base = { 'User-Agent': UA_PC, 'Referer': 'https://pan.quark.cn/' };
+    var diag = [], firstErr = null;
+    // 方式 1：照常（浏览器自己带登录 cookie）拿地址；下载试几种带法
+    var modes = [{ name: '登录', anon: false }];
+    if (doc) modes.push({ name: '网页cookie', anon: true, cookie: doc });
+    modes.push({ name: '游客', anon: true, cookie: '' });
+    for (var m = 0; m < modes.length; m++) {
+      var mode = modes[m], out;
+      try { out = await fetchLinks(a, t, mode); } catch (e) { diag.push(mode.name + '拿地址:' + (e.code || e.message)); if (!firstErr) firstErr = e; continue; }
+      if (!out.length) { diag.push(mode.name + ':没地址'); continue; }
+      var cks = [];
+      if (mode.anon) cks.push(mode.cookie || (LASTSET ? '__pugs=' + LASTSET : ''));
+      else { var pg = LASTSET || pugs(); if (pg) cks.push('__pugs=' + pg); if (doc) cks.push(doc); if (ck) cks.push(ck); cks.push(''); }
+      var tried = {};
+      for (var c = 0; c < cks.length; c++) {
+        if (tried[cks[c]]) continue; tried[cks[c]] = 1;
+        var h = Object.assign(cks[c] ? { Cookie: cks[c] } : {}, base);
+        var st = await probe(out[0].url, h);
+        diag.push(mode.name + '/' + (cks[c] ? (cks[c].indexOf(';') > 0 ? '整串' : 'pugs') : '无') + ':' + st);
+        if (st === 200 || st === 206) return { links: out, headers: h, way: mode.name, diag: diag, fullCookie: !!ck };
+      }
+      if (!mode.anon) { var sj = await probe(out[0].url, base, true); diag.push('登录/浏览器自带:' + sj); }
+    }
+    if (firstErr && diag.every(function (d) { return /拿地址/.test(d); })) throw firstErr;
+    throw new Error('夸克不让下载（' + diag.join(' ') + '）');
+  }
+  function probe(url, h, withJar) {
     return new Promise(function (resolve) {
       var hh = Object.assign({ Range: 'bytes=0-0' }, h), ck = hh.Cookie; delete hh.Cookie;
-      var opt = { method: 'GET', url: url, headers: hh, anonymous: true, timeout: 20000, responseType: 'arraybuffer',
+      var opt = { method: 'GET', url: url, headers: hh, anonymous: !withJar, timeout: 20000, responseType: 'arraybuffer',
         onload: function (r) { resolve(r.status); }, onerror: function () { resolve('网络错误'); }, ontimeout: function () { resolve('超时'); } };
       if (ck) { opt.cookie = ck; opt.headers.Cookie = ck; }
       try { GM_xmlhttpRequest(opt); } catch (e) { resolve('出错'); }
@@ -223,7 +237,7 @@
   }
 
   var OPS = {
-    ping: async function () { var ck = await quarkCookies(); return { ver: VER, cookie: !!ck, jar: !!GM_getValue('quark_pugs_jar', ''), jarAt: GM_getValue('quark_pugs_at', 0) }; },
+    ping: async function () { var ck = await quarkCookies(); return { ver: VER, cookie: !!ck, jar: !!GM_getValue('quark_pugs_jar', ''), doc: !!GM_getValue('quark_doc_cookie', ''), jarAt: GM_getValue('quark_pugs_at', 0) }; },
     list: list, walk: walk, links: links, text: text, push: push, thPing: thPing
   };
   document.addEventListener('tbx-req', function (ev) {
