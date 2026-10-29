@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-tw="mid">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1D2430">
+<title>✂️ 音视频剪辑</title>
+<style>
+:root{--bg:#F2F1EE;--paper:#FFFFFF;--ink:#1E2228;--soft:#5E6670;--faint:#9AA1A9;--line:#E1DFDA;--chip:#ECEAE5;--acc:#2E6BD8;--acc-ink:#fff;--acc-soft:#E3ECFB;--ok:#2E9D4F;--ok-soft:#E2F3E7;--warn:#C0362C;--warn-soft:#F7E2DF;--sel:#F2B33D;--shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171B;--paper:#1C2026;--ink:#E8EBEE;--soft:#A9B1BA;--faint:#6E767F;--line:#2C3139;--chip:#262B32;--acc:#7FA8F0;--acc-ink:#0B1630;--acc-soft:#1D2A40;--ok:#5ED08A;--ok-soft:#1B3325;--warn:#F07563;--warn-soft:#3A221F;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#14171B;--paper:#1C2026;--ink:#E8EBEE;--soft:#A9B1BA;--faint:#6E767F;--line:#2C3139;--chip:#262B32;--acc:#7FA8F0;--acc-ink:#0B1630;--acc-soft:#1D2A40;--ok:#5ED08A;--ok-soft:#1B3325;--warn:#F07563;--warn-soft:#3A221F;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}button{cursor:pointer}a{color:var(--acc)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(170deg,#2B3442 0%,#1D2430 60%,#161B24 100%);color:#EEF1F5;padding:calc(14px + env(safe-area-inset-top)) 0 16px}
+.hero a{color:#EEF1F5;text-decoration:none;font-size:13px;opacity:.75}.hero h1{margin:4px 0 2px;font-size:24px}.hero p{margin:2px 0 0;font-size:13.5px;opacity:.85}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;margin:14px 0}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:26px 14px;text-align:center;cursor:pointer;color:var(--soft)}
+.drop.over{border-color:var(--acc);background:var(--acc-soft)}.drop b{display:block;font-size:16px;color:var(--ink);margin-bottom:2px}
+.btn{border:0;border-radius:12px;padding:0 14px;min-height:40px;font-size:15px;font-weight:600;background:var(--acc);color:var(--acc-ink);display:inline-flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
+.btn2{border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:500}
+.btn.sm{min-height:32px;padding:0 10px;font-size:13.5px;border-radius:10px}
+.btn.on{border-color:var(--acc);color:var(--acc);background:var(--acc-soft)}
+.btn:disabled{opacity:.5}
+#ed{display:none}#ed.on{display:block}
+.stage{background:#000;border-radius:14px;overflow:hidden;position:relative}
+.stage video{display:block;width:100%;max-height:52vh;background:#000}
+.stage.audio{background:var(--chip);padding:14px 12px 4px}
+.stage.audio .an{font-size:14px;color:var(--soft);margin-bottom:6px;word-break:break-all}
+audio{width:100%}
+/* 时间轴 */
+.tl{position:relative;height:74px;margin:12px 18px 0;border-radius:10px;background:#111;touch-action:none;user-select:none;cursor:pointer}
+.tl canvas{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:10px}
+.dim:first-of-type{border-radius:10px 0 0 10px}
+.dim{position:absolute;top:0;bottom:0;background:rgba(0,0,0,.6);pointer-events:none}
+.selb{position:absolute;top:0;bottom:0;border-top:3px solid var(--sel);border-bottom:3px solid var(--sel);pointer-events:none}
+.hd{position:absolute;top:-3px;bottom:-3px;width:18px;z-index:2;background:var(--sel);cursor:ew-resize;display:flex;align-items:center;justify-content:center;touch-action:none}
+.hd::after{content:"";width:3px;height:24px;border-radius:2px;background:rgba(0,0,0,.45)}
+.hd.l{border-radius:8px 0 0 8px;transform:translateX(-100%)}
+.hd.r{border-radius:0 8px 8px 0}
+.ph{position:absolute;top:-2px;bottom:-2px;width:2px;background:#fff;box-shadow:0 0 4px rgba(0,0,0,.8);pointer-events:none}
+.ruler{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin:3px 18px 0;font-variant-numeric:tabular-nums}
+.times{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.tm{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:6px 8px;text-align:center}
+.tm small{display:block;font-size:12px;color:var(--faint)}
+.tm input{width:100%;border:0;background:transparent;text-align:center;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;padding:0}
+.tm b{font-size:17px;font-variant-numeric:tabular-nums}
+.nud{display:flex;justify-content:center;gap:4px;margin-top:3px}
+.nud button{border:1px solid var(--line);background:var(--paper);border-radius:7px;font-size:12px;padding:1px 6px}
+.ctl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center}
+.zoom{display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-top:6px;font-size:12.5px;color:var(--faint)}
+.zoom button{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:1px 9px;font-size:13px}
+.zoom button.on{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:transparent;border-radius:8px;padding:7px 6px;font-size:13.5px;color:var(--soft)}
+.seg button.on{background:var(--acc);color:var(--acc-ink);font-weight:600}
+.lbl{font-size:13.5px;font-weight:600;margin:12px 0 5px}.lbl small{font-weight:400;color:var(--faint);margin-left:4px}
+.go{display:flex;gap:8px;margin-top:14px}.go .btn{flex:1}
+.bar{height:8px;background:var(--chip);border-radius:6px;overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;width:0;background:var(--acc);transition:width .3s}
+.st{font-size:13.5px;color:var(--soft);margin-top:6px;min-height:1em}.st.err{color:var(--warn)}.st.ok{color:var(--ok)}
+.res{display:none}.res.on{display:block}
+.cmp{display:flex;gap:8px;flex-wrap:wrap;font-size:14px;margin-bottom:10px}.cmp span{background:var(--chip);border-radius:8px;padding:2px 9px}
+.res video{width:100%;border-radius:12px;background:#000;max-height:50vh}
+.hint{font-size:12.5px;color:var(--faint);line-height:1.7}
+kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 4px;background:var(--chip)}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap"><a href="index.html">‹ 首页</a><h1>✂️ 音视频剪辑</h1><p>拖两头的黄色把手选一段，边看边调，剪出来。文件不上传。</p></div></div>
+<main class="wrap">
+  <div class="box" id="pick">
+    <div class="drop" id="drop"><b>📂 选一个视频或音频</b>点这里选，或者把文件拖进来</div>
+  </div>
+
+  <section id="ed">
+    <div class="box">
+      <div class="stage" id="stage"></div>
+      <div class="tl" id="tl">
+        <canvas id="strip"></canvas>
+        <div class="dim" id="dimL"></div><div class="dim" id="dimR"></div>
+        <div class="selb" id="selb"></div>
+        <div class="hd l" id="hL" title="拖动：开始"></div><div class="hd r" id="hR" title="拖动：结束"></div>
+        <div class="ph" id="ph"></div>
+      </div>
+      <div class="ruler"><span id="rv0">0:00</span><span id="rvm"></span><span id="rv1"></span></div>
+      <div class="zoom">🔍 放大看细节 <button data-z="1" class="on">全部</button><button data-z="4">4×</button><button data-z="16">16×</button></div>
+      <div class="times">
+        <div class="tm"><small>开始</small><input id="tIn" inputmode="decimal"><div class="nud"><button data-n="s,-1">−1s</button><button data-n="s,-0.1">−0.1</button><button data-n="s,0.1">+0.1</button><button data-n="s,1">+1s</button></div></div>
+        <div class="tm"><small>选中长度</small><b id="tLen">0:00</b><div class="nud" style="color:var(--faint);font-size:12px" id="tPos">当前 0:00</div></div>
+        <div class="tm"><small>结束</small><input id="tOut" inputmode="decimal"><div class="nud"><button data-n="e,-1">−1s</button><button data-n="e,-0.1">−0.1</button><button data-n="e,0.1">+0.1</button><button data-n="e,1">+1s</button></div></div>
+      </div>
+      <div class="ctl">
+        <button class="btn sm btn2" id="setIn">⏮ 这里开始 <kbd>I</kbd></button>
+        <button class="btn sm" id="playSel">▶ 播放选中</button>
+        <button class="btn sm btn2" id="loop">🔁 循环</button>
+        <button class="btn sm btn2" id="setOut">这里结束 ⏭ <kbd>O</kbd></button>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="lbl">剪的方式</div>
+      <div class="seg" id="mode"><button data-v="fast" class="on">⚡ 快（几秒钟）</button><button data-v="exact">🎯 精确到帧</button></div>
+      <div class="hint" id="modeHint" style="margin-top:5px"></div>
+      <div class="go"><button class="btn" id="go">✂️ 剪出这一段</button><button class="btn btn2" id="stop" style="display:none">⏹ 停止</button><button class="btn btn2" id="other" style="flex:none">📂 换文件</button></div>
+      <div class="bar"><i id="bar"></i></div>
+      <div class="st" id="st"></div>
+    </div>
+
+    <div class="box res" id="res">
+      <div class="cmp" id="cmp"></div>
+      <div id="pv"></div>
+      <div class="go"><button class="btn" id="save">⬇ 保存</button><button class="btn btn2" id="again">✂️ 再剪一段</button></div>
+    </div>
+  </section>
+
+  <div class="box hint">
+    <b>怎么用</b>：拖时间轴两头的<b>黄色把手</b>选范围；点时间轴跳到那里；时间也能直接改，或者用 ±0.1s 微调。<br>
+    快捷键：<kbd>空格</kbd> 播放 / 暂停　<kbd>I</kbd> 当前位置设为开始　<kbd>O</kbd> 设为结束　<kbd>←</kbd><kbd>→</kbd> 前后 1 秒（按住 Shift 是 0.1 秒）　<kbd>P</kbd> 播放选中<br>
+    长视频想剪得准：点「4×」「16×」放大时间轴。所有处理都在你自己的浏览器里，文件不上传。要压缩、转格式，去 <a href="av.html">🎛️ 音视频转换</a>。
+  </div>
+</main>
+<input type="file" id="f" accept="video/*,audio/*,.mkv,.flv,.avi,.ts,.m4a,.flac,.opus,.ogg,.wav,.mp3" style="display:none">
+
+<script type="module">
+  import * as MB from './vendor/mediabunny.min.mjs';
+  window.MB = MB; window.dispatchEvent(new Event('mb-ready'));
+</script>
+<script src="vendor/ffmpeg/ffmpeg.js"></script>
+<script src="vendor/ffmpeg/util.js"></script>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function fsize(n) { return n >= 1073741824 ? (n / 1073741824).toFixed(2) + ' GB' : n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB'; }
+  function fmt(t, dec) { t = Math.max(0, t || 0); var h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s = t % 60; var ss = dec ? s.toFixed(1) : String(Math.floor(s)); if (s < 10) ss = '0' + ss; return (h ? h + ':' + (m < 10 ? '0' : '') : '') + m + ':' + ss; }
+  function parseT(v) { v = String(v || '').trim().replace('：', ':'); if (!v) return null; var p = v.split(':').map(Number); if (p.some(isNaN)) return null; return p.reduce(function (a, b) { return a * 60 + b; }, 0); }
+  function status(t, cls) { $('st').className = 'st' + (cls ? ' ' + cls : ''); $('st').innerHTML = t; }
+  function ext(n) { var m = /\.([a-z0-9]+)$/i.exec(n); return m ? m[1].toLowerCase() : 'bin'; }
+  function base(n) { return n.replace(/\.[^.]+$/, ''); }
+
+  var FILE = null, URLX = null, M = null, DUR = 0, A = 0, B = 0, V0 = 0, V1 = 0, ZOOM = 1, IS_V = true, LOOP = false, PLAYSEL = false, MODE = 'fast', running = false, OUT = null, CONV = null, ff = null;
+  var med = null;           // <video> 或 <audio>
+  var THUMBS = [], AUDIOPEAKS = null, drawTimer = 0, thumbJob = 0;
+
+  /* ---------- 选文件 ---------- */
+  $('drop').onclick = function () { $('f').click(); };
+  $('other').onclick = function () { $('f').click(); };
+  $('f').onchange = function () { if (this.files[0]) open(this.files[0]); this.value = ''; };
+  ['dragenter', 'dragover'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); $('drop').classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); $('drop').classList.remove('over'); }); });
+  document.addEventListener('drop', function (e) { var f = e.dataTransfer && e.dataTransfer.files[0]; if (f) open(f); });
+
+  function open(f) {
+    FILE = f; OUT = null; THUMBS = []; AUDIOPEAKS = null; DUR = 0; $('res').className = 'box res'; status('');
+    if (URLX) URL.revokeObjectURL(URLX);
+    URLX = URL.createObjectURL(f);
+    IS_V = !(/^audio\//.test(f.type) || /\.(mp3|m4a|aac|flac|wav|ogg|opus|wma|ape)$/i.test(f.name));
+    var st = $('stage'); st.innerHTML = ''; st.className = 'stage' + (IS_V ? '' : ' audio');
+    if (!IS_V) { var an = document.createElement('div'); an.className = 'an'; an.textContent = '🎵 ' + f.name + ' · ' + fsize(f.size); st.appendChild(an); }
+    med = document.createElement(IS_V ? 'video' : 'audio');
+    med.controls = true; med.playsInline = true; med.preload = 'auto'; med.src = URLX;
+    st.appendChild(med);
+    $('pick').style.display = 'none'; $('ed').className = 'on';
+    med.addEventListener('loadedmetadata', function () {
+      if (isFinite(med.duration) && med.duration > 0) setDur(med.duration);
+      if (IS_V && !med.videoWidth) { IS_V = false; }
+    });
+    med.addEventListener('error', function () { status('⚠️ 浏览器放不了这个格式的预览，但还是可以照时间剪（试试填开始 / 结束时间）', 'err'); probeDur(); });
+    med.addEventListener('timeupdate', tick);
+    med.addEventListener('seeked', tick);
+    probeDur();
+  }
+  function setDur(d) {
+    if (DUR) return;
+    DUR = d; A = 0; B = d; V0 = 0; V1 = d; ZOOM = 1; setZoomBtns();
+    syncInputs(); layout(); buildStrip();
+  }
+  async function probeDur() {   // 浏览器读不出时长时，用 Mediabunny 读一下
+    var M = await waitMB(); if (!M || DUR) return;
+    try { var inp = new M.Input({ source: new M.BlobSource(FILE), formats: M.ALL_FORMATS }); var d = await inp.computeDuration(); if (d > 0 && !DUR) setDur(d); } catch (e) { }
+  }
+  function waitMB() { return new Promise(function (res) { if (window.MB) return res(window.MB); var n = 0, t = setInterval(function () { if (window.MB || ++n > 50) { clearInterval(t); res(window.MB || null); } }, 100); }); }
+
+  /* ---------- 时间轴：画缩略图 / 波形 ---------- */
+  function tx(t) { return (t - V0) / (V1 - V0) * 100; }          // 时间 → 百分比
+  function layout() {
+    if (!DUR) return;
+    var a = Math.max(0, Math.min(100, tx(A))), b = Math.max(0, Math.min(100, tx(B)));
+    $('dimL').style.left = '0'; $('dimL').style.width = a + '%';
+    $('dimR').style.left = b + '%'; $('dimR').style.width = (100 - b) + '%';
+    $('selb').style.left = a + '%'; $('selb').style.width = (b - a) + '%';
+    $('hL').style.left = a + '%'; $('hR').style.left = b + '%';
+    $('hL').style.display = A >= V0 && A <= V1 ? '' : 'none'; $('hR').style.display = B >= V0 && B <= V1 ? '' : 'none';
+    var cur = med ? med.currentTime : 0; $('ph').style.left = Math.max(0, Math.min(100, tx(cur))) + '%';
+    $('rv0').textContent = fmt(V0); $('rv1').textContent = fmt(V1); $('rvm').textContent = fmt((V0 + V1) / 2);
+    $('tLen').textContent = fmt(B - A, true); $('tPos').textContent = '当前 ' + fmt(cur, true);
+  }
+  function syncInputs() { if (document.activeElement !== $('tIn')) $('tIn').value = fmt(A, true); if (document.activeElement !== $('tOut')) $('tOut').value = fmt(B, true); layout(); }
+  function buildStrip() { clearTimeout(drawTimer); drawTimer = setTimeout(draw, 120); }
+  async function draw() {
+    var cv = $('strip'), w = cv.clientWidth, h = cv.clientHeight, dpr = window.devicePixelRatio || 1;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    var ctx = cv.getContext('2d'); ctx.scale(dpr, dpr); ctx.fillStyle = '#111'; ctx.fillRect(0, 0, w, h);
+    var job = ++thumbJob;
+    if (IS_V) await drawThumbs(ctx, w, h, job);
+    else await drawWave(ctx, w, h);
+  }
+  async function drawThumbs(ctx, w, h, job) {
+    var tw = Math.round(h * 16 / 9), n = Math.max(1, Math.ceil(w / tw)), times = [];
+    for (var i = 0; i < n; i++) times.push(V0 + (V1 - V0) * (i + 0.5) / n);
+    var M = await waitMB(), ok = false;
+    if (M && window.VideoDecoder) {
+      try {
+        var inp = new M.Input({ source: new M.BlobSource(FILE), formats: M.ALL_FORMATS }), vt = await inp.getPrimaryVideoTrack();
+        if (vt && await vt.canDecode()) {
+          var sink = new M.CanvasSink(vt, { height: Math.round(h * 2), fit: 'contain' }), i2 = 0;
+          for await (var wc of sink.canvasesAtTimestamps(times)) {
+            if (job !== thumbJob) return;
+            if (wc) { var c = wc.canvas, ar = c.width / c.height, dw = h * ar; ctx.drawImage(c, i2 * tw + (tw - dw) / 2, 0, dw, h); ok = true; }
+            i2++;
+          }
+        }
+      } catch (e) { }
+    }
+    if (!ok && job === thumbJob) {     // 换个办法：用一个隐藏的播放器跳着截图
+      var v = document.createElement('video'); v.muted = true; v.src = URLX; v.preload = 'auto';
+      await new Promise(function (r) { v.onloadeddata = r; v.onerror = r; setTimeout(r, 4000); });
+      for (var k = 0; k < n && v.videoWidth; k++) {
+        if (job !== thumbJob) return;
+        await new Promise(function (r) { v.onseeked = r; v.currentTime = times[k]; setTimeout(r, 1500); });
+        var ar2 = v.videoWidth / v.videoHeight, dw2 = h * ar2; try { ctx.drawImage(v, k * tw + (tw - dw2) / 2, 0, dw2, h); } catch (e) { }
+      }
+      v.removeAttribute('src'); v.load();
+    }
+  }
+  async function drawWave(ctx, w, h) {
+    if (!AUDIOPEAKS) {
+      if (FILE.size > 300 * 1048576) { ctx.fillStyle = '#2E6BD8'; ctx.fillRect(0, h / 2 - 1, w, 2); return; }
+      try {
+        var ac = new (window.AudioContext || window.webkitAudioContext)(), buf = await ac.decodeAudioData(await FILE.arrayBuffer());
+        var ch = buf.getChannelData(0), N = 4000, step = Math.max(1, Math.floor(ch.length / N)), pk = new Float32Array(N);
+        for (var i = 0; i < N; i++) { var m = 0, s = i * step, e = Math.min(ch.length, s + step); for (var j = s; j < e; j += 4) { var x = Math.abs(ch[j]); if (x > m) m = x; } pk[i] = m; }
+        AUDIOPEAKS = { pk: pk, dur: buf.duration }; ac.close && ac.close();
+      } catch (e) { AUDIOPEAKS = { pk: null }; }
+    }
+    if (!AUDIOPEAKS.pk) { ctx.fillStyle = '#2E6BD8'; ctx.fillRect(0, h / 2 - 1, w, 2); return; }
+    var P = AUDIOPEAKS.pk, mx = 0.0001; for (var q = 0; q < P.length; q++) if (P[q] > mx) mx = P[q];
+    ctx.fillStyle = '#5B8DEF';
+    for (var px = 0; px < w; px++) {
+      var t0 = V0 + (V1 - V0) * px / w, t1 = V0 + (V1 - V0) * (px + 1) / w, i0 = Math.floor(t0 / AUDIOPEAKS.dur * P.length), i1 = Math.max(i0 + 1, Math.floor(t1 / AUDIOPEAKS.dur * P.length)), v = 0;
+      for (var z = i0; z < i1 && z < P.length; z++) if (P[z] > v) v = P[z];
+      var bh = Math.max(1, v / mx * (h - 8)); ctx.fillRect(px, (h - bh) / 2, 1, bh);
+    }
+  }
+  window.addEventListener('resize', function () { buildStrip(); layout(); });
+
+  /* ---------- 拖把手 / 点时间轴 ---------- */
+  function tAt(clientX) { var r = $('tl').getBoundingClientRect(); return V0 + (V1 - V0) * Math.max(0, Math.min(1, (clientX - r.left) / r.width)); }
+  var drag = null;
+  function startDrag(which, e) {
+    e.preventDefault(); e.stopPropagation(); drag = which;
+    try { e.target.setPointerCapture(e.pointerId); } catch (x) { }
+    if (med && !med.paused) med.pause();
+  }
+  $('hL').addEventListener('pointerdown', function (e) { startDrag('a', e); });
+  $('hR').addEventListener('pointerdown', function (e) { startDrag('b', e); });
+  function moveDrag(e) {
+    if (!drag) return;
+    var t = tAt(e.clientX), minLen = 0.1;
+    if (drag === 'a') { A = Math.max(0, Math.min(t, B - minLen)); seek(A); }
+    else if (drag === 'b') { B = Math.min(DUR, Math.max(t, A + minLen)); seek(B); }
+    else if (drag === 'p') seek(t);
+    syncInputs();
+  }
+  ['hL', 'hR', 'tl'].forEach(function (id) { $(id).addEventListener('pointermove', moveDrag); $(id).addEventListener('pointerup', function () { drag = null; }); $(id).addEventListener('pointercancel', function () { drag = null; }); });
+  $('tl').addEventListener('pointerdown', function (e) {
+    if (e.target === $('hL') || e.target === $('hR') || !DUR) return;
+    drag = 'p'; try { $('tl').setPointerCapture(e.pointerId); } catch (x) { } seek(tAt(e.clientX)); layout();
+  });
+  function seek(t) { if (med) { try { med.currentTime = Math.max(0, Math.min(DUR, t)); } catch (e) { } } layout(); }
+
+  /* ---------- 时间输入 / 微调 / 按钮 ---------- */
+  function setA(t) { A = Math.max(0, Math.min(t, B - 0.1)); syncInputs(); }
+  function setB(t) { B = Math.min(DUR, Math.max(t, A + 0.1)); syncInputs(); }
+  $('tIn').onchange = function () { var t = parseT(this.value); if (t != null) { setA(t); seek(A); } else syncInputs(); };
+  $('tOut').onchange = function () { var t = parseT(this.value); if (t != null) { setB(t); seek(B); } else syncInputs(); };
+  document.querySelector('.times').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-n]'); if (!b) return; var p = b.getAttribute('data-n').split(','), d = +p[1];
+    if (p[0] === 's') { setA(A + d); seek(A); } else { setB(B + d); seek(B); }
+  });
+  $('setIn').onclick = function () { setA(med.currentTime); };
+  $('setOut').onclick = function () { setB(med.currentTime); };
+  $('playSel').onclick = function () { PLAYSEL = true; seek(A); var p = med.play(); if (p && p.catch) p.catch(function () { }); };
+  $('loop').onclick = function () { LOOP = !LOOP; this.classList.toggle('on', LOOP); };
+  function tick() {
+    if (!med) return;
+    if ((PLAYSEL || LOOP) && !med.paused && med.currentTime >= B) { if (LOOP) med.currentTime = A; else { med.pause(); PLAYSEL = false; } }
+    layout();
+  }
+  (function raf() { if (med && !med.paused) tick(); requestAnimationFrame(raf); })();
+  document.addEventListener('keydown', function (e) {
+    var tg = e.target && e.target.tagName; if (tg === 'INPUT' || !med || !DUR) return;
+    var k = e.key;
+    if (k === ' ') { e.preventDefault(); if (med.paused) med.play(); else med.pause(); }
+    else if (k === 'i' || k === 'I') setA(med.currentTime);
+    else if (k === 'o' || k === 'O') setB(med.currentTime);
+    else if (k === 'p' || k === 'P') $('playSel').click();
+    else if (k === 'ArrowLeft' || k === 'ArrowRight') { e.preventDefault(); seek(med.currentTime + (k === 'ArrowLeft' ? -1 : 1) * (e.shiftKey ? 0.1 : 1)); }
+  });
+  // 放大：以选中段（或播放位置）为中心
+  function setZoomBtns() { [].forEach.call(document.querySelectorAll('[data-z]'), function (b) { b.classList.toggle('on', +b.getAttribute('data-z') === ZOOM); }); }
+  document.querySelector('.zoom').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-z]'); if (!b || !DUR) return; ZOOM = +b.getAttribute('data-z'); setZoomBtns();
+    var span = DUR / ZOOM, c = drag === 'b' ? B : (med ? med.currentTime : (A + B) / 2);
+    if (ZOOM === 1) { V0 = 0; V1 = DUR; } else { V0 = Math.max(0, Math.min(DUR - span, c - span / 2)); V1 = V0 + span; }
+    layout(); buildStrip();
+  });
+  $('mode').onclick = function (e) {
+    var b = e.target.closest('[data-v]'); if (!b) return; MODE = b.getAttribute('data-v');
+    [].forEach.call(this.querySelectorAll('button'), function (x) { x.classList.toggle('on', x === b); }); modeHint();
+  };
+  function modeHint() { $('modeHint').textContent = MODE === 'fast' ? '不重新编码，几秒钟就好，画质完全不变。开头会对齐到最近的关键帧，可能比你选的早一点点（一般不到 2 秒）。' : '重新编码，开头结尾都精确到帧；慢一些，画质几乎看不出差别。'; }
+  modeHint();
+
+  /* ---------- 剪：先用浏览器硬件（Mediabunny），不行再用 ffmpeg ---------- */
+  function outFormat(M, e) {
+    if (/^(mp4|m4v|m4a)$/.test(e)) return new M.Mp4OutputFormat({ fastStart: 'in-memory' });
+    if (e === 'mov') return new M.MovOutputFormat({ fastStart: 'in-memory' });
+    if (e === 'webm') return new M.WebMOutputFormat();
+    if (e === 'mkv') return new M.MkvOutputFormat();
+    if (e === 'mp3') return new M.Mp3OutputFormat();
+    if (e === 'wav') return new M.WavOutputFormat();
+    if (e === 'ogg' || e === 'opus') return new M.OggOutputFormat();
+    if (e === 'flac') return new M.FlacOutputFormat();
+    if (e === 'aac') return new M.AdtsOutputFormat();
+    return null;
+  }
+  async function fastCut() {
+    var M = await waitMB(); if (!M) return null;
+    var e = ext(FILE.name), fm = outFormat(M, e); if (!fm) return null;
+    var input = new M.Input({ source: new M.BlobSource(FILE), formats: M.ALL_FORMATS });
+    if (!(await input.canRead())) return null;
+    var output = new M.Output({ format: fm, target: new M.BufferTarget() });
+    var conv = await M.Conversion.init({ input: input, output: output, trim: { start: A, end: B },
+      copy: MODE === 'fast' ? { mode: 'preferred', shiftTolerance: Infinity, boundaryPolicy: 'expand' } : false });
+    if (!conv.isValid) return null;
+    CONV = conv;
+    conv.onProgress = function (p) { if (running) { $('bar').style.width = Math.round(p * 100) + '%'; status('⚡ 剪辑中 ' + Math.round(p * 100) + '%'); } };
+    await conv.execute(); CONV = null;
+    return new Blob([output.target.buffer], { type: FILE.type || 'application/octet-stream' });
+  }
+  var CORE = ['https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/umd/', 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/'];
+  async function slowCut() {
+    if (FILE.size > 1.6 * 1073741824) throw new Error('文件太大（' + fsize(FILE.size) + '），兼容模式处理不了');
+    if (!ff) {
+      ff = new FFmpegWASM.FFmpeg();
+      ff.on('progress', function (ev) { if (running && ev.progress >= 0 && ev.progress <= 1) { $('bar').style.width = Math.round(ev.progress * 100) + '%'; status('🐢 兼容模式剪辑中 ' + Math.round(ev.progress * 100) + '%'); } });
+      var last = null, ok = false;
+      for (var i = 0; i < CORE.length && !ok; i++) {
+        try {
+          status('⏳ 下载处理组件（约 30 MB，只下一次）…');
+          await ff.load({ coreURL: await FFmpegUtil.toBlobURL(CORE[i] + 'ffmpeg-core.js', 'text/javascript'), wasmURL: await FFmpegUtil.toBlobURL(CORE[i] + 'ffmpeg-core.wasm', 'application/wasm') });
+          ok = true;
+        } catch (er) { last = er; }
+      }
+      if (!ok) { ff = null; throw new Error('处理组件下载失败：' + (last && last.message || '')); }
+    }
+    var e = ext(FILE.name), inN = 'in.' + e, outN = 'out.' + e;
+    await ff.writeFile(inN, new Uint8Array(await FILE.arrayBuffer()));
+    var args = MODE === 'fast'
+      ? ['-ss', String(A), '-to', String(B), '-i', inN, '-c', 'copy', '-avoid_negative_ts', 'make_zero', outN]
+      : ['-i', inN, '-ss', String(A), '-to', String(B)].concat(IS_V ? ['-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-c:a', 'aac'] : [], [outN]);
+    if (MODE === 'fast') args = ['-ss', String(A), '-i', inN, '-t', String(B - A), '-c', 'copy', '-avoid_negative_ts', 'make_zero', outN];
+    var code = await ff.exec(args);
+    if (code !== 0) throw new Error('剪辑失败，这个格式可能不支持');
+    var data = await ff.readFile(outN);
+    try { await ff.deleteFile(inN); await ff.deleteFile(outN); } catch (x) { }
+    return new Blob([data.buffer], { type: FILE.type || 'application/octet-stream' });
+  }
+  $('go').onclick = async function () {
+    if (!FILE || !DUR || running) return;
+    if (B - A < 0.1) { status('⚠️ 选的太短了', 'err'); return; }
+    running = true; $('go').disabled = true; $('stop').style.display = ''; $('res').className = 'box res'; $('bar').style.width = '0'; status('⏳ 准备中…');
+    if (med && !med.paused) med.pause();
+    var t0 = Date.now(), blob = null, eng = '';
+    try {
+      try { blob = await fastCut(); eng = '⚡ 硬件加速'; } catch (e) { if (!running) throw e; console.log('[剪辑] 快速引擎不行，换 ffmpeg', e); blob = null; }
+      if (!blob && running) { blob = await slowCut(); eng = '🐢 兼容模式'; }
+      if (!running) throw new Error('stop');
+      var name = base(FILE.name) + '_' + fmt(A, true).replace(/:/g, '.') + '-' + fmt(B, true).replace(/:/g, '.') + '.' + ext(FILE.name);
+      OUT = { blob: blob, name: name };
+      $('bar').style.width = '100%';
+      var sec = (Date.now() - t0) / 1000;
+      status('✅ 剪好了，用了 ' + (sec < 60 ? Math.max(1, Math.round(sec)) + ' 秒' : fmt(sec)) + ' · ' + eng, 'ok');
+      $('cmp').innerHTML = '<span>长度 ' + fmt(B - A, true) + '</span><span>' + fsize(blob.size) + '</span><span>原文件 ' + fsize(FILE.size) + '</span>';
+      var u = URL.createObjectURL(blob);
+      $('pv').innerHTML = IS_V ? '<video src="' + u + '" controls playsinline></video>' : '<audio src="' + u + '" controls style="width:100%"></audio>';
+      $('res').className = 'box res on'; $('res').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } catch (e) {
+      if (!running) status('⏹ 已停止'); else status('❌ ' + esc(e.message || String(e)), 'err');
+    } finally { running = false; CONV = null; $('go').disabled = false; $('stop').style.display = 'none'; }
+  };
+  $('stop').onclick = function () { running = false; if (CONV) { try { CONV.cancel(); } catch (e) { } } if (ff) { try { ff.terminate(); } catch (e) { } ff = null; } status('⏹ 已停止'); };
+  $('save').onclick = function () {
+    if (!OUT) return;
+    if (window.SaveSheet) SaveSheet.show(OUT.blob, OUT.name);
+    else { var a = document.createElement('a'), u = URL.createObjectURL(OUT.blob); a.href = u; a.download = OUT.name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 4000); }
+  };
+  $('again').onclick = function () { $('res').className = 'box res'; window.scrollTo({ top: 0, behavior: 'smooth' }); };
+})();
+</script>
+<script src="savesheet.js?v=1"></script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=47" defer></script>
+</body>
+</html>

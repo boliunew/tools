@@ -117,7 +117,7 @@ audio{background:transparent}
     { k: 'convert', t: '🔄 转格式', d: 'mp4 / mkv / webm / mov / gif', v: 1 },
     { k: 'extract', t: '🎵 提取音频', d: '视频里的声音存成 mp3 / m4a', v: 1 },
     { k: 'audio', t: '🎧 音频转换压缩', d: 'mp3 / m4a / ogg / wav / flac', a: 1 },
-    { k: 'cut', t: '✂️ 剪一段', d: '从几分几秒到几分几秒', v: 1, a: 1 },
+    { k: 'cut', t: '✂️ 剪一段', d: '填时间剪；想拖着看着剪 → 用「音视频剪辑」', v: 1, a: 1 },
     { k: 'mute', t: '🔇 去掉声音', d: '只留画面，很快', v: 1 }
   ];
 
@@ -178,6 +178,7 @@ audio{background:transparent}
     } else if (TASK === 'cut') {
       h += '<div class="row">' + opt('从', '<input type="text" id="t1" placeholder="0:30" value="' + esc(OPT.t1 || '') + '">') + opt('到', '<input type="text" id="t2" placeholder="' + (META.dur ? fmt(META.dur) : '1:45') + '" value="' + esc(OPT.t2 || '') + '">') + '</div>';
       h += opt('方式', seg('exact', [['0', '快（不重新编码）'], ['1', '精确到帧（慢）']], '0'), '「快」的开头可能会差一两秒');
+      h += '<div class="hint">想看着画面拖着选？用 <a href="trim.html">✂️ 音视频剪辑</a>。</div>';
     } else if (TASK === 'mute') {
       h += '<div class="hint">把视频里的声音去掉，画面原样保留，几秒钟就好。</div>';
     }
@@ -401,6 +402,6 @@ audio{background:transparent}
 </script>
 <script src="savesheet.js?v=1"></script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=46" defer></script>
+<script src="nav.js?v=47" defer></script>
 </body>
 </html>
