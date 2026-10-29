@@ -66,6 +66,12 @@ button{cursor:pointer}
 .qr.dir .nm2{color:var(--accent);cursor:pointer}
 .qr .mini{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:3px 8px;font-size:12.5px;white-space:nowrap;flex:none}
 .qbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.qr:not(.dir) .nm2{cursor:pointer}
+.qr.on{background:var(--accent-soft)}
+.qr .mini.go{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.qfloat{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));z-index:50;display:none;align-items:center;gap:10px;background:var(--ink);color:var(--paper);border-radius:14px;padding:8px 8px 8px 14px;box-shadow:0 8px 28px rgba(0,0,0,.25);font-size:14px;max-width:calc(100vw - 24px)}
+.qfloat.on{display:flex}
+.qfloat .btn{white-space:nowrap}
 .qmsg{font-size:13.5px;margin-top:8px;line-height:1.7}
 .qmsg.err{color:var(--bad)} .qmsg.ok{color:var(--good)}
 .steps{margin:8px 0 0;padding-left:20px;font-size:14px;line-height:1.75}
@@ -141,6 +147,7 @@ textarea:focus{border-color:var(--accent)}
     </div>
     <div class="qmsg" id="qkM"></div>
   </div>
+  <div class="qfloat" id="qkF"><span id="qkFN"></span><button class="btn pri sm" id="qkFDl">📥 下到电脑</button></div>
 
   <div class="card">
     <h2>⭐ 我的收藏 <small id="favN"></small></h2>
@@ -313,8 +320,9 @@ textarea:focus{border-color:var(--accent)}
       var isSub = !x.dir && SUB_RE.test(x.name), isVid = !x.dir && VID_RE.test(x.name);
       var pair = isVid ? qkPair(x, subs) : null;
       var ic = x.dir ? '📁' : isSub ? '💬' : isVid ? (/\.(mp3|m4a|aac|flac|wav)$/i.test(x.name) ? '🎵' : '🎬') : /\.pdf$/i.test(x.name) ? '📕' : /\.(zip|rar|7z)$/i.test(x.name) ? '🗜️' : '📄';
-      return '<div class="qr' + (x.dir ? ' dir' : '') + '"><input type="checkbox" data-ck="' + i + '"' + (QK.sel[x.fid] ? ' checked' : '') + '><span class="ic">' + ic + '</span>' +
-        '<span class="nm2"' + (x.dir ? ' data-in="' + i + '"' : '') + '>' + esc(x.name) + '<small>' + (x.dir ? (x.n ? x.n + ' 项 · ' : '') + '点开看里面' : fsize(x.size)) + '</small></span>' +
+      return '<div class="qr' + (x.dir ? ' dir' : '') + (QK.sel[x.fid] ? ' on' : '') + '"><input type="checkbox" data-ck="' + i + '"' + (QK.sel[x.fid] ? ' checked' : '') + '><span class="ic">' + ic + '</span>' +
+        '<span class="nm2" ' + (x.dir ? 'data-in="' + i + '"' : 'data-tg="' + i + '"') + '>' + esc(x.name) + '<small>' + (x.dir ? (x.n ? x.n + ' 项 · ' : '') + '点开看里面' : fsize(x.size)) + '</small></span>' +
+        '<button class="mini go" data-one="' + i + '">📥 ' + (x.dir ? '整个下' : '下载') + '</button>' +
         (isSub ? '<button class="mini" data-sl="' + i + '">🎞️ 去 SubLingo</button>' : '') +
         (pair ? '<button class="mini" data-learn="' + i + '" title="配字幕：' + esc(pair.name) + '">🎓 边下边学</button>' : '') + '</div>';
     }).join('');
@@ -328,13 +336,17 @@ textarea:focus{border-color:var(--accent)}
     var n = 0, sz = 0, d = 0; for (var k in QK && QK.sel || {}) { n++; if (QK.sel[k].dir) d++; else sz += QK.sel[k].size || 0; }
     $('qkN').textContent = n ? '已选 ' + n + ' 项' + (d ? '（含 ' + d + ' 个文件夹）' : '') + (sz ? ' · ' + fsize(sz) : '') : '';
     $('qkDl').disabled = !n;
+    $('qkF').className = 'qfloat' + (n ? ' on' : ''); $('qkFN').textContent = $('qkN').textContent;
   }
-  $('qkX').onclick = function () { $('qk').hidden = true; QK = null; };
+  $('qkFDl').onclick = function () { $('qkDl').click(); };
+  $('qkX').onclick = function () { $('qk').hidden = true; QK = null; $('qkF').className = 'qfloat'; };
   $('qkC').onclick = function (e) { var b = e.target.closest('[data-cr]'); if (!b) return; QK.stack = QK.stack.slice(0, +b.getAttribute('data-cr') + 1); qkLoad(); };
   $('qkAll').onclick = function () { var all = QK.list.every(function (x) { return QK.sel[x.fid]; }); QK.list.forEach(function (x) { if (all) delete QK.sel[x.fid]; else { x.path = qkPath(); QK.sel[x.fid] = x; } }); qkRender(); qkCount(); };
   $('qkL').onclick = function (e) {
     var t = e.target, i;
-    if (t.hasAttribute('data-ck')) { var x = QK.list[+t.getAttribute('data-ck')]; if (t.checked) { x.path = qkPath(); QK.sel[x.fid] = x; } else delete QK.sel[x.fid]; qkCount(); return; }
+    if (t.hasAttribute('data-ck')) { var x = QK.list[+t.getAttribute('data-ck')]; if (t.checked) { x.path = qkPath(); QK.sel[x.fid] = x; } else delete QK.sel[x.fid]; t.closest('.qr').classList.toggle('on', t.checked); qkCount(); return; }
+    if (t.closest('[data-tg]')) { var ck = t.closest('.qr').querySelector('[data-ck]'); ck.checked = !ck.checked; var y = QK.list[+ck.getAttribute('data-ck')]; if (ck.checked) { y.path = qkPath(); QK.sel[y.fid] = y; } else delete QK.sel[y.fid]; ck.closest('.qr').classList.toggle('on', ck.checked); qkCount(); return; }
+    if (t.closest('[data-one]')) { var z = QK.list[+t.closest('[data-one]').getAttribute('data-one')]; z.path = qkPath(); qkDownload([z], t.closest('[data-one]')); return; }
     if (t.closest('[data-in]')) { i = +t.closest('[data-in]').getAttribute('data-in'); QK.stack.push({ fid: QK.list[i].fid, name: QK.list[i].name }); qkLoad(); return; }
     if (t.closest('[data-sl]')) { qkSub(QK.list[+t.closest('[data-sl]').getAttribute('data-sl')], t.closest('[data-sl]')); return; }
     if (t.closest('[data-learn]')) { qkLearn(QK.list[+t.closest('[data-learn]').getAttribute('data-learn')], t.closest('[data-learn]')); }
@@ -342,8 +354,9 @@ textarea:focus{border-color:var(--accent)}
   function busy(btn, on, txt) { if (!btn) return; if (on) { btn._t = btn.textContent; btn.disabled = true; btn.textContent = txt || '⏳'; } else { btn.disabled = false; btn.textContent = btn._t; } }
   function rootDir() { return ((QK.shareTitle || QK.title || '夸克分享').replace(/[\\/:*?"<>|]+/g, '_').slice(0, 60)) + '/'; }
   // 📥 下到电脑：文件夹先展开成文件，再拿地址，再推给 torrent_hub
-  $('qkDl').onclick = function () {
-    var btn = this, sel = Object.keys(QK.sel).map(function (k) { return QK.sel[k]; }), files = [], dirs = [];
+  $('qkDl').onclick = function () { qkDownload(Object.keys(QK.sel).map(function (k) { return QK.sel[k]; }), this, true); };
+  function qkDownload(sel, btn, clear) {
+    var files = [], dirs = [];
     sel.forEach(function (x) { (x.dir ? dirs : files).push(x); });
     busy(btn, true, '⏳ 准备中…'); qkMsg('');
     var chain = Promise.resolve();
@@ -362,7 +375,7 @@ textarea:focus{border-color:var(--accent)}
       return tbx('push', { port: TH_PORT, items: r.links.map(function (l) { return { url: l.url, name: l.name, path: root + (l.path || ''), headers: r.headers }; }) }, 120000)
         .then(function (p) { return { n: p.ids.length, full: r.fullCookie }; });
     }).then(function (o) {
-      busy(btn, false); QK.sel = {}; qkRender(); qkCount();
+      busy(btn, false); if (clear) { QK.sel = {}; qkRender(); qkCount(); }
       qkMsg('✅ 已推送 ' + o.n + ' 个文件到 torrent_hub，存在下载目录的「' + esc(rootDir().slice(0, -1)) + '」文件夹里。<a href="http://127.0.0.1:' + TH_PORT + '" target="_blank" rel="noopener">打开 torrent_hub 看进度 ↗</a>' + (o.full ? '' : '<br><span style="color:var(--faint)">如果 torrent_hub 里显示 403 出错，告诉我，可能要换个方式带登录信息。</span>'), 'ok');
     }, function (e) { busy(btn, false); if (e.message === 'NOTBX') qkNoHelper(); else qkMsg('❌ ' + esc(e.message), 'err'); });
   };
