@@ -52,6 +52,22 @@ button{cursor:pointer}
 .hist{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center;font-size:12.5px;color:var(--faint)}
 .hist button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:2px 10px;font-size:13px;color:var(--ink)}
 .hint{font-size:12.5px;color:var(--faint);margin-top:8px;line-height:1.6}
+.qk-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qk-top b{flex:1;min-width:0;font-size:15.5px;word-break:break-all}
+.crumb{display:flex;flex-wrap:wrap;gap:4px;font-size:13px;margin:8px 0;color:var(--soft)}
+.crumb button{border:0;background:var(--chip);border-radius:7px;padding:2px 8px;font-size:12.5px;color:var(--accent)}
+.qrows{border:1px solid var(--line);border-radius:12px;overflow:hidden;max-height:60vh;overflow-y:auto}
+.qr{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line);font-size:14px}
+.qr:last-child{border-bottom:0}
+.qr input{width:18px;height:18px;flex:none}
+.qr .ic{font-size:18px;flex:none;width:24px;text-align:center}
+.qr .nm2{flex:1;min-width:0;word-break:break-all;line-height:1.4}
+.qr .nm2 small{display:block;color:var(--faint);font-size:12px}
+.qr.dir .nm2{color:var(--accent);cursor:pointer}
+.qr .mini{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:3px 8px;font-size:12.5px;white-space:nowrap;flex:none}
+.qbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.qmsg{font-size:13.5px;margin-top:8px;line-height:1.7}
+.qmsg.err{color:var(--bad)} .qmsg.ok{color:var(--good)}
 .steps{margin:8px 0 0;padding-left:20px;font-size:14px;line-height:1.75}
 .steps li{margin:6px 0}
 .steps code{background:var(--chip);border-radius:5px;padding:0 5px;font-size:13px}
@@ -114,6 +130,18 @@ textarea:focus{border-color:var(--accent)}
     <div id="found"></div>
   </div>
 
+  <div class="card" id="qk" hidden>
+    <div class="qk-top"><b id="qkT">⚡ 分享里的文件</b><button class="btn sm" id="qkX">✕ 关闭</button></div>
+    <div class="crumb" id="qkC"></div>
+    <div class="qrows" id="qkL"></div>
+    <div class="qbar">
+      <button class="btn sm" id="qkAll">☑️ 全选</button>
+      <button class="btn pri sm" id="qkDl">📥 下到电脑</button>
+      <span id="qkN" style="font-size:13px;color:var(--faint)"></span>
+    </div>
+    <div class="qmsg" id="qkM"></div>
+  </div>
+
   <div class="card">
     <h2>⭐ 我的收藏 <small id="favN"></small></h2>
     <div class="srow" style="margin-bottom:6px"><input id="ff" type="search" placeholder="在收藏里找" style="font-size:14px;padding:8px 12px"></div>
@@ -129,7 +157,7 @@ textarea:focus{border-color:var(--accent)}
       <li><b>⚡ 装 LinkSwift</b>：点 <a href="https://github.com/hmjz100/LinkSwift/raw/main/（改）网盘直链下载助手.user.js" target="_blank" rel="noopener">官方安装链接</a> → 篡改猴弹出来点「安装」。只从这个官方地址装。</li>
       <li><b>🔗 连上 torrent_hub</b>：打开任意夸克网盘页面 → 点「下载助手」→「助手设置」→ Aria2 那一栏填：<br>
         地址 <code>http://localhost</code>　端口 <code id="thPort">8800</code>　路径 <code>/jsonrpc</code>，然后点「测试」，显示成功就好了。<button class="btn sm" id="cpCfg" style="margin-left:4px">复制设置</button></li>
-      <li><b>📥 以后这样下</b>：上面搜到或粘贴的分享 → 点「打开」（提取码已经帮你复制好）→ 夸克页面里登录、勾文件 → 「下载助手」→「推送到 Aria2」。文件就出现在 torrent_hub 里：最多 8 条连接分段一起下，能边下边播。</li><li><b>📱 手机推到电脑</b>：手机用 Firefox 装 Tampermonkey 和 LinkSwift，Aria2 地址填电脑的局域网或 Tailscale 地址（torrent_hub 要用「--lan」启动）。</li>
+      <li><b>⚡ 更省事</b>：再装一个 <a href="tbx.user.js" target="_blank" rel="noopener">🧰 工具箱助手</a>，上面贴的分享直接点「⚡ 读取文件」，在这个页面就能勾选、下载、送字幕去 SubLingo，不用打开夸克网页。</li><li><b>📥 以后这样下</b>：上面搜到或粘贴的分享 → 点「打开」（提取码已经帮你复制好）→ 夸克页面里登录、勾文件 → 「下载助手」→「推送到 Aria2」。文件就出现在 torrent_hub 里：最多 8 条连接分段一起下，能边下边播。</li><li><b>📱 手机推到电脑</b>：手机用 Firefox 装 Tampermonkey 和 LinkSwift，Aria2 地址填电脑的局域网或 Tailscale 地址（torrent_hub 要用「--lan」启动）。</li>
     </ol>
     <div class="hint">夸克、百度都要登录才给下载地址，这是网盘的规矩。怕主账号被风控，可以专门注册一个小号来下。速度看网盘给多少，LinkSwift 不破解限速。</div>
   </div>
@@ -239,6 +267,138 @@ textarea:focus{border-color:var(--accent)}
   }
   thCheck();
 
+
+  /* ---------- ⚡ 直接读分享：靠油猴里的「🧰 工具箱助手」带上夸克登录状态去读 ---------- */
+  var TBX_URL = 'https://boliunew.github.io/tools/tbx.user.js', TBX_NEED = '1.0.0';
+  var tbxSeq = 0, tbxWait = {};
+  document.addEventListener('tbx-res', function (ev) { var d = {}; try { d = JSON.parse(ev.detail); } catch (e) { return; } var w = tbxWait[d.id]; if (!w) return; delete tbxWait[d.id]; if (d.error) w[1](new Error(d.error)); else w[0](d.ok); });
+  function tbx(op, args, ms) {
+    return new Promise(function (resolve, reject) {
+      if (!document.documentElement.getAttribute('data-tbx')) { reject(new Error('NOTBX')); return; }
+      var id = ++tbxSeq; tbxWait[id] = [resolve, reject];
+      setTimeout(function () { if (tbxWait[id]) { delete tbxWait[id]; reject(new Error('工具箱助手没有回应，刷新页面再试')); } }, ms || 90000);
+      document.dispatchEvent(new CustomEvent('tbx-req', { detail: JSON.stringify({ id: id, op: op, args: args || {} }) }));
+    });
+  }
+  var SUB_RE = /\.(srt|vtt|ass|ssa)$/i, VID_RE = /\.(mp4|mkv|webm|mov|m4v|avi|ts|flv|wmv|mp3|m4a|aac|flac|wav)$/i;
+  function fsize(n) { n = +n || 0; return n >= 1073741824 ? (n / 1073741824).toFixed(2) + ' GB' : n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : n >= 1024 ? Math.round(n / 1024) + ' KB' : n + ' B'; }
+  function base(n) { return n.replace(/\.[^.]+$/, '').toLowerCase(); }
+  var QK = null;   // {pwd, code, title, stack:[{fid,name}], list, sel:{fid:item}}
+  function qkMsg(t, cls) { $('qkM').className = 'qmsg' + (cls ? ' ' + cls : ''); $('qkM').innerHTML = t || ''; }
+  function qkOpen(u, code, title) {
+    var m = /pan\.quark\.cn\/s\/([A-Za-z0-9_-]+)/.exec(u || ''); if (!m) { toast('不是夸克分享链接'); return; }
+    QK = { pwd: m[1], code: code || '', title: title || '', stack: [{ fid: '0', name: '全部文件' }], list: [], sel: {} };
+    $('qk').hidden = false; $('qkT').textContent = '⚡ ' + (title || '分享里的文件'); $('qkC').innerHTML = ''; $('qkL').innerHTML = ''; qkCount();
+    $('qk').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    qkLoad();
+  }
+  function qkNoHelper() {
+    $('qkL').innerHTML = '';
+    qkMsg('🧰 要先装「工具箱助手」这个小脚本，网页才能替你读夸克的分享：<br>1. 电脑浏览器装好篡改猴（上面「下载到电脑」第 1 步）<br>2. 点 <a href="' + TBX_URL + '" target="_blank" rel="noopener"><b>安装工具箱助手</b></a> → 篡改猴弹出来点「安装」<br>3. 在这个浏览器登录一次 <a href="https://pan.quark.cn/" target="_blank" rel="noopener">pan.quark.cn</a>，回来刷新这个页面<br><span style="color:var(--faint)">手机上的话：Firefox 安卓版也能装篡改猴。</span>', '');
+  }
+  function qkLoad() {
+    var cur = QK.stack[QK.stack.length - 1];
+    qkMsg('⏳ 正在读取…'); $('qkL').innerHTML = '';
+    tbx('list', { pwd_id: QK.pwd, passcode: QK.code, pdir_fid: cur.fid }).then(function (r) {
+      QK.list = r.list; if (r.title && !QK.title) { QK.title = r.title; $('qkT').textContent = '⚡ ' + r.title; }
+      if (r.title) QK.shareTitle = r.title;
+      qkMsg(r.list.length ? '' : '这个文件夹是空的'); qkRender();
+    }, function (e) { if (e.message === 'NOTBX') qkNoHelper(); else qkMsg('❌ ' + esc(e.message), 'err'); });
+  }
+  function qkPath() { return QK.stack.slice(1).map(function (x) { return x.name + '/'; }).join(''); }
+  function qkRender() {
+    $('qkC').innerHTML = QK.stack.map(function (x, i) { return '<button data-cr="' + i + '">' + (i ? '📁 ' : '🏠 ') + esc(x.name) + '</button>'; }).join('<span>›</span>');
+    var subs = QK.list.filter(function (x) { return !x.dir && SUB_RE.test(x.name); });
+    $('qkL').innerHTML = QK.list.map(function (x, i) {
+      var isSub = !x.dir && SUB_RE.test(x.name), isVid = !x.dir && VID_RE.test(x.name);
+      var pair = isVid ? qkPair(x, subs) : null;
+      var ic = x.dir ? '📁' : isSub ? '💬' : isVid ? (/\.(mp3|m4a|aac|flac|wav)$/i.test(x.name) ? '🎵' : '🎬') : /\.pdf$/i.test(x.name) ? '📕' : /\.(zip|rar|7z)$/i.test(x.name) ? '🗜️' : '📄';
+      return '<div class="qr' + (x.dir ? ' dir' : '') + '"><input type="checkbox" data-ck="' + i + '"' + (QK.sel[x.fid] ? ' checked' : '') + '><span class="ic">' + ic + '</span>' +
+        '<span class="nm2"' + (x.dir ? ' data-in="' + i + '"' : '') + '>' + esc(x.name) + '<small>' + (x.dir ? (x.n ? x.n + ' 项 · ' : '') + '点开看里面' : fsize(x.size)) + '</small></span>' +
+        (isSub ? '<button class="mini" data-sl="' + i + '">🎞️ 去 SubLingo</button>' : '') +
+        (pair ? '<button class="mini" data-learn="' + i + '" title="配字幕：' + esc(pair.name) + '">🎓 边下边学</button>' : '') + '</div>';
+    }).join('');
+  }
+  function qkPair(v, subs) {
+    var b = base(v.name), best = null;
+    subs.forEach(function (s) { var sb = base(s.name); if (sb === b || sb.indexOf(b + '.') === 0) { if (!best || /\.en|english|英/i.test(s.name)) best = s; } });
+    return best;
+  }
+  function qkCount() {
+    var n = 0, sz = 0, d = 0; for (var k in QK && QK.sel || {}) { n++; if (QK.sel[k].dir) d++; else sz += QK.sel[k].size || 0; }
+    $('qkN').textContent = n ? '已选 ' + n + ' 项' + (d ? '（含 ' + d + ' 个文件夹）' : '') + (sz ? ' · ' + fsize(sz) : '') : '';
+    $('qkDl').disabled = !n;
+  }
+  $('qkX').onclick = function () { $('qk').hidden = true; QK = null; };
+  $('qkC').onclick = function (e) { var b = e.target.closest('[data-cr]'); if (!b) return; QK.stack = QK.stack.slice(0, +b.getAttribute('data-cr') + 1); qkLoad(); };
+  $('qkAll').onclick = function () { var all = QK.list.every(function (x) { return QK.sel[x.fid]; }); QK.list.forEach(function (x) { if (all) delete QK.sel[x.fid]; else { x.path = qkPath(); QK.sel[x.fid] = x; } }); qkRender(); qkCount(); };
+  $('qkL').onclick = function (e) {
+    var t = e.target, i;
+    if (t.hasAttribute('data-ck')) { var x = QK.list[+t.getAttribute('data-ck')]; if (t.checked) { x.path = qkPath(); QK.sel[x.fid] = x; } else delete QK.sel[x.fid]; qkCount(); return; }
+    if (t.closest('[data-in]')) { i = +t.closest('[data-in]').getAttribute('data-in'); QK.stack.push({ fid: QK.list[i].fid, name: QK.list[i].name }); qkLoad(); return; }
+    if (t.closest('[data-sl]')) { qkSub(QK.list[+t.closest('[data-sl]').getAttribute('data-sl')], t.closest('[data-sl]')); return; }
+    if (t.closest('[data-learn]')) { qkLearn(QK.list[+t.closest('[data-learn]').getAttribute('data-learn')], t.closest('[data-learn]')); }
+  };
+  function busy(btn, on, txt) { if (!btn) return; if (on) { btn._t = btn.textContent; btn.disabled = true; btn.textContent = txt || '⏳'; } else { btn.disabled = false; btn.textContent = btn._t; } }
+  function rootDir() { return ((QK.shareTitle || QK.title || '夸克分享').replace(/[\\/:*?"<>|]+/g, '_').slice(0, 60)) + '/'; }
+  // 📥 下到电脑：文件夹先展开成文件，再拿地址，再推给 torrent_hub
+  $('qkDl').onclick = function () {
+    var btn = this, sel = Object.keys(QK.sel).map(function (k) { return QK.sel[k]; }), files = [], dirs = [];
+    sel.forEach(function (x) { (x.dir ? dirs : files).push(x); });
+    busy(btn, true, '⏳ 准备中…'); qkMsg('');
+    var chain = Promise.resolve();
+    dirs.forEach(function (d) {
+      chain = chain.then(function () { qkMsg('📂 正在展开文件夹「' + esc(d.name) + '」…'); return tbx('walk', { pwd_id: QK.pwd, passcode: QK.code, fid: d.fid, path: (d.path || '') + d.name + '/' }, 300000); })
+        .then(function (list) { files = files.concat(list); });
+    });
+    chain.then(function () {
+      if (!files.length) throw new Error('选中的文件夹里没有文件');
+      if (files.length > 300 && !confirm('一共 ' + files.length + ' 个文件，确定都下吗？')) throw new Error('已取消');
+      qkMsg('🔗 正在拿 ' + files.length + ' 个文件的下载地址…');
+      return tbx('links', { pwd_id: QK.pwd, passcode: QK.code, files: files.map(function (f) { return { fid: f.fid, token: f.token, name: f.name, path: f.path || '', size: f.size }; }) }, 600000);
+    }).then(function (r) {
+      qkMsg('📤 正在推给 torrent_hub…');
+      var root = rootDir();
+      return tbx('push', { port: TH_PORT, items: r.links.map(function (l) { return { url: l.url, name: l.name, path: root + (l.path || ''), headers: r.headers }; }) }, 120000)
+        .then(function (p) { return { n: p.ids.length, full: r.fullCookie }; });
+    }).then(function (o) {
+      busy(btn, false); QK.sel = {}; qkRender(); qkCount();
+      qkMsg('✅ 已推送 ' + o.n + ' 个文件到 torrent_hub，存在下载目录的「' + esc(rootDir().slice(0, -1)) + '」文件夹里。<a href="http://127.0.0.1:' + TH_PORT + '" target="_blank" rel="noopener">打开 torrent_hub 看进度 ↗</a>' + (o.full ? '' : '<br><span style="color:var(--faint)">如果 torrent_hub 里显示 403 出错，告诉我，可能要换个方式带登录信息。</span>'), 'ok');
+    }, function (e) { busy(btn, false); if (e.message === 'NOTBX') qkNoHelper(); else qkMsg('❌ ' + esc(e.message), 'err'); });
+  };
+  // 🎞️ 字幕直接读进来交给 SubLingo
+  function getSubText(sub) {
+    return tbx('links', { pwd_id: QK.pwd, passcode: QK.code, files: [{ fid: sub.fid, token: sub.token, name: sub.name }] })
+      .then(function (r) { if (!r.links.length) throw new Error('没拿到字幕的下载地址'); return tbx('text', { url: r.links[0].url, headers: r.headers }); })
+      .then(function (t) { return t.text; });
+  }
+  function toSubLingo(sub, text, media, title) {
+    try { localStorage.setItem('sl:handoff', JSON.stringify({ t: Date.now(), sub: text, subName: sub.name, media: media || '', title: title || sub.name, pos: 0 })); }
+    catch (e) { toast('字幕太大，存不下'); return; }
+    window.open('sublingo.html#handoff', '_blank');
+  }
+  function qkSub(sub, btn) {
+    busy(btn, true, '⏳ 读字幕…');
+    getSubText(sub).then(function (text) { busy(btn, false); toSubLingo(sub, text); qkMsg('✅ 已在新标签页打开 SubLingo：' + esc(sub.name), 'ok'); },
+      function (e) { busy(btn, false); if (e.message === 'NOTBX') qkNoHelper(); else qkMsg('❌ ' + esc(e.message), 'err'); });
+  }
+  // 🎓 边下边学：视频推去下载 + 字幕读进来，SubLingo 直接播 torrent_hub 正在下的视频
+  function qkLearn(vid, btn) {
+    var subs = QK.list.filter(function (x) { return !x.dir && SUB_RE.test(x.name); }), sub = qkPair(vid, subs), text = '';
+    busy(btn, true, '⏳ 准备中…');
+    getSubText(sub).then(function (t) {
+      text = t;
+      return tbx('links', { pwd_id: QK.pwd, passcode: QK.code, files: [{ fid: vid.fid, token: vid.token, name: vid.name }] });
+    }).then(function (r) {
+      return tbx('push', { port: TH_PORT, items: [{ url: r.links[0].url, name: vid.name, path: rootDir() + qkPath(), headers: r.headers }] });
+    }).then(function (p) {
+      busy(btn, false);
+      var media = 'http://127.0.0.1:' + TH_PORT + '/stream/' + p.ids[0] + '/0/' + encodeURIComponent(vid.name);
+      toSubLingo(sub, text, media, vid.name);
+      qkMsg('✅ 视频在下载，SubLingo 已在新标签页打开，配的字幕是「' + esc(sub.name) + '」。刚开始几秒可能要等缓冲。', 'ok');
+    }, function (e) { busy(btn, false); if (e.message === 'NOTBX') qkNoHelper(); else qkMsg('❌ ' + esc(e.message), 'err'); });
+  }
+
   /* ---------- 粘贴分享文字 → 链接 + 提取码 ---------- */
   var LINK = /https?:\/\/pan\.quark\.cn\/s\/[A-Za-z0-9_-]+(?:[?#][^\s，。；、）)」】]*)?/g;
   var CODE = /(?:提取码|提取碼|访问码|密码|密碼|code|pwd)\s*[:：=]?\s*([A-Za-z0-9]{4,8})/i;
@@ -270,7 +430,7 @@ textarea:focus{border-color:var(--accent)}
       h += '<div class="lk">' + (f.t ? '<div class="t">' + esc(f.t) + '</div>' : '') + '<div class="u">' + esc(f.u) + '</div>' +
         (f.code ? '<div class="c">提取码 <b>' + esc(f.code) + '</b></div>' : '<div class="c" style="color:var(--faint);font-size:13px">没有提取码（或者不需要）</div>') +
         '<input class="nm" data-nm="' + i + '" placeholder="起个名字，方便以后找" value="' + esc(f.t) + '">' +
-        '<div class="acts"><a class="btn pri sm" href="' + esc(f.u) + '" target="_blank" rel="noopener noreferrer" data-open="' + i + '" style="text-decoration:none">打开</a>' +
+        '<div class="acts"><button class="btn pri sm" data-qk="' + i + '">⚡ 读取文件</button><a class="btn sm" href="' + esc(f.u) + '" target="_blank" rel="noopener noreferrer" data-open="' + i + '" style="text-decoration:none">打开</a>' +
         (f.code ? '<button class="btn sm" data-cc="' + i + '">复制提取码</button>' : '') + '<button class="btn sm" data-cl="' + i + '">复制链接</button><button class="btn sm" data-sv="' + i + '">⭐ 收藏</button></div></div>';
     });
     $('found').innerHTML = h;
@@ -282,8 +442,9 @@ textarea:focus{border-color:var(--accent)}
     navigator.clipboard.readText().then(function (t) { $('paste').value = t; renderFound(); if (!FOUND.length) toast('剪贴板里没找到夸克链接'); }, function () { toast('没有剪贴板权限，请长按输入框粘贴'); $('paste').focus(); });
   };
   $('found').onclick = function (e) {
-    var b = e.target.closest ? e.target.closest('[data-cc],[data-cl],[data-sv],[data-open]') : null; if (!b) return;
+    var b = e.target.closest ? e.target.closest('[data-cc],[data-cl],[data-sv],[data-open],[data-qk]') : null; if (!b) return;
     var i, f;
+    if (b.hasAttribute('data-qk')) { f = FOUND[+b.getAttribute('data-qk')]; var nm0 = ($('found').querySelector('[data-nm="' + b.getAttribute('data-qk') + '"]') || {}).value; qkOpen(f.u, f.code, nm0 || f.t); return; }
     if (b.hasAttribute('data-open')) { f = FOUND[+b.getAttribute('data-open')]; if (f.code) copy(f.code, '提取码 ' + f.code + ' 已复制，打开后粘贴'); return; }
     if (b.hasAttribute('data-cc')) { f = FOUND[+b.getAttribute('data-cc')]; copy(f.code, '提取码已复制'); return; }
     if (b.hasAttribute('data-cl')) { f = FOUND[+b.getAttribute('data-cl')]; copy(f.u + (f.code ? ' 提取码：' + f.code : ''), '链接已复制'); return; }
@@ -304,14 +465,15 @@ textarea:focus{border-color:var(--accent)}
     list.forEach(function (x) {
       var i = FAV.indexOf(x);
       h += '<div class="fav"><div class="m"><b>' + esc(x.n) + '</b><div class="u">' + esc(x.u) + '</div>' + (x.c ? '<div class="c">提取码 <b>' + esc(x.c) + '</b></div>' : '') + '<div class="d">收藏于 ' + ymd(x.t) + '</div></div>' +
-        '<div class="bs"><a class="btn pri sm" style="text-decoration:none;text-align:center" href="' + esc(x.u) + '" target="_blank" rel="noopener noreferrer" data-fo="' + i + '">打开</a><button class="btn sm" data-fc="' + i + '">复制</button><button class="btn sm" data-fr="' + i + '">改名</button><button class="btn sm" data-fd="' + i + '" style="color:var(--bad)">删除</button></div></div>';
+        '<div class="bs"><button class="btn pri sm" data-fq="' + i + '">⚡ 读取</button><a class="btn sm" style="text-decoration:none;text-align:center" href="' + esc(x.u) + '" target="_blank" rel="noopener noreferrer" data-fo="' + i + '">打开</a><button class="btn sm" data-fc="' + i + '">复制</button><button class="btn sm" data-fr="' + i + '">改名</button><button class="btn sm" data-fd="' + i + '" style="color:var(--bad)">删除</button></div></div>';
     });
     $('favs').innerHTML = h;
   }
   $('ff').oninput = renderFav;
   $('favs').onclick = function (e) {
-    var b = e.target.closest ? e.target.closest('[data-fo],[data-fc],[data-fr],[data-fd]') : null; if (!b) return;
+    var b = e.target.closest ? e.target.closest('[data-fo],[data-fc],[data-fr],[data-fd],[data-fq]') : null; if (!b) return;
     var x;
+    if (b.hasAttribute('data-fq')) { x = FAV[+b.getAttribute('data-fq')]; qkOpen(x.u, x.c, x.n); return; }
     if (b.hasAttribute('data-fo')) { x = FAV[+b.getAttribute('data-fo')]; if (x.c) copy(x.c, '提取码 ' + x.c + ' 已复制，打开后粘贴'); return; }
     if (b.hasAttribute('data-fc')) { x = FAV[+b.getAttribute('data-fc')]; copy(x.n + '\n' + x.u + (x.c ? '\n提取码：' + x.c : ''), '已复制'); return; }
     if (b.hasAttribute('data-fr')) { x = FAV[+b.getAttribute('data-fr')]; var n = window.prompt ? prompt('新名字', x.n) : null; if (n) { x.n = n; put('fav', FAV); renderFav(); } return; }
