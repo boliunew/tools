@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.6
+// @version      1.0.7
 // @description  把「我的工具」带到别的网站上：网页图片一键下原图、YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
@@ -12,6 +12,7 @@
 // @connect      127.0.0.1
 // @connect      localhost
 // @connect      *
+// @connect      facebook.com
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -26,7 +27,7 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.6', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.7', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
   try { console.log('[工具箱随身] v' + VER + ' 在 ' + host + ' 上运行'); } catch (e) { }
   function gm(o) {
@@ -393,9 +394,34 @@
     setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 30000);
   }
   function fsize(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round(n / 1024) + ' KB'; }
+  // Facebook：图片地址带签名改不了。缩略图点进去是一张「照片页」，那一页的数据里有这张照片最大的版本，去那里拿
+  function fbPhotoPage(img) {
+    if (!/(^|\.)facebook\.com$/.test(host)) return '';
+    var a = img.closest && img.closest('a[href]');
+    if (a && /\/photo(\.php)?\/?\?|\/photos\/|[?&]fbid=/.test(a.href)) return a.href;
+    if (/\/photo(\.php)?\/?|\/photos\//.test(location.pathname)) return location.href;
+    return '';
+  }
+  async function fbBest(page) {
+    var r = await gm({ method: 'GET', url: page, headers: { Accept: 'text/html' }, timeout: 30000 });
+    var html = r.responseText || '', found = [], m;
+    var un = function (x) { return x.replace(/\\\//g, '/').replace(/\\u0025/g, '%').replace(/\\u0026/g, '&').replace(/&amp;/g, '&'); };
+    var re1 = /\{"(?:uri|url|src)":"(https:[^"]+?(?:scontent|fbcdn)[^"]+?)","width":(\d+),"height":(\d+)/g;
+    var re2 = /\{"height":(\d+),"width":(\d+),"(?:uri|url|src)":"(https:[^"]+?(?:scontent|fbcdn)[^"]+?)"/g;
+    var re3 = /\{"width":(\d+),"height":(\d+),"(?:uri|url|src)":"(https:[^"]+?(?:scontent|fbcdn)[^"]+?)"/g;
+    while ((m = re1.exec(html))) found.push({ u: un(m[1]), a: +m[2] * +m[3] });
+    while ((m = re2.exec(html))) found.push({ u: un(m[3]), a: +m[1] * +m[2] });
+    while ((m = re3.exec(html))) found.push({ u: un(m[3]), a: +m[1] * +m[2] });
+    m = /<meta property="og:image" content="([^"]+)"/.exec(html); if (m) found.push({ u: un(m[1]), a: 1 });
+    found.sort(function (x, y) { return y.a - x.a; });
+    return found.slice(0, 3).map(function (x) { return x.u; });
+  }
   async function downloadOriginal(img, btn) {
     // 候选地址挨个下（最多 8 个），量一下真实像素，留最大的那张
-    var cands = origCandidates(img).slice(0, 8), got = null, used = '', bestArea = 0, shownArea = (img.naturalWidth || 0) * (img.naturalHeight || 0);
+    var cands = origCandidates(img).slice(0, 8);
+    var fbp = fbPhotoPage(img);
+    if (fbp) { if (btn) btn.textContent = '⏳ 找大图…'; try { cands = (await fbBest(fbp)).concat(cands).slice(0, 8); } catch (e) { } }
+    var got = null, used = '', bestArea = 0, shownArea = (img.naturalWidth || 0) * (img.naturalHeight || 0);
     for (var i = 0; i < cands.length; i++) {
       if (btn) btn.textContent = '⏳ ' + (i + 1) + '/' + cands.length;
       var g = await fetchImg(cands[i]); if (!g) continue;
