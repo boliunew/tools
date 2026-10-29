@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧰 工具箱助手
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.1
+// @version      1.0.2
 // @description  让「我的工具」网页直接读取夸克分享、拿下载地址、推送到 torrent_hub、把字幕交给 SubLingo。只在工具箱页面上工作。
 // @author       boliunew
 // @match        https://boliunew.github.io/tools/*
@@ -31,7 +31,7 @@
     grab(); setTimeout(grab, 3000); setTimeout(grab, 10000);
     return;
   }
-  var VER = '1.0.1';
+  var VER = '1.0.2';
   var UA_PC = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 QuarkPC/6.9.7.761 QuarkCloudDrivePC/6.9.7.761 quark-cloud-drive/2.5.40';
   var API = 'https://drive-pc.quark.cn/1/clouddrive/';
   var Q = '?pr=ucpro&fr=pc&sys=win32&ve=6.9.7.761';
@@ -157,9 +157,36 @@
       if (i + 15 < files.length) await new Promise(function (r) { setTimeout(r, 800); });
     }
     var ck = await quarkCookies();
-    var pg = LASTSET || pugs();
-    var cookie = ck || (pg ? '__pugs=' + pg : '');
-    return { links: out, headers: Object.assign({ 'User-Agent': UA_PC, 'Referer': 'https://pan.quark.cn/' }, cookie ? { Cookie: cookie } : {}), fullCookie: !!ck };
+    var pg = LASTSET || pugs(), jar = GM_getValue('quark_pugs_jar', ''), set = GM_getValue('quark_pugs', '');
+    // 夸克对下载请求挑剔：几种带法挨个试（只要 1 个字节），哪种能下就用哪种
+    var base = { 'User-Agent': UA_PC, 'Referer': 'https://pan.quark.cn/' }, cands = [], seen = {};
+    function cand(name, h) { var k = JSON.stringify(h); if (seen[k]) return; seen[k] = 1; cands.push({ name: name, h: h }); }
+    if (pg) cand('pugs', Object.assign({ Cookie: '__pugs=' + pg }, base));
+    if (jar && jar !== pg) cand('pugs-jar', Object.assign({ Cookie: '__pugs=' + jar }, base));
+    if (set && set !== pg && set !== jar) cand('pugs-set', Object.assign({ Cookie: '__pugs=' + set }, base));
+    if (ck) cand('full', Object.assign({ Cookie: ck }, base));
+    cand('none', Object.assign({}, base));
+    if (pg) cand('pugs-noref', { 'User-Agent': UA_PC, Cookie: '__pugs=' + pg });
+    if (pg) cand('pugs-browserUA', { 'User-Agent': navigator.userAgent, Referer: 'https://pan.quark.cn/', Cookie: '__pugs=' + pg });
+    var diag = [], pick = null;
+    if (out.length && !a.noProbe) {
+      for (var c = 0; c < cands.length && !pick; c++) {
+        var st = await probe(out[0].url, cands[c].h);
+        diag.push(cands[c].name + ':' + st);
+        if (st === 200 || st === 206) pick = cands[c];
+      }
+    }
+    if (out.length && !a.noProbe && !pick) { var er = new Error('夸克不让下载（试了 ' + diag.length + ' 种方式都不行：' + diag.join(' ') + '）'); throw er; }
+    return { links: out, headers: (pick || cands[0]).h, way: pick ? pick.name : '', diag: diag, fullCookie: !!ck };
+  }
+  function probe(url, h) {
+    return new Promise(function (resolve) {
+      var hh = Object.assign({ Range: 'bytes=0-0' }, h), ck = hh.Cookie; delete hh.Cookie;
+      var opt = { method: 'GET', url: url, headers: hh, anonymous: true, timeout: 20000, responseType: 'arraybuffer',
+        onload: function (r) { resolve(r.status); }, onerror: function () { resolve('网络错误'); }, ontimeout: function () { resolve('超时'); } };
+      if (ck) { opt.cookie = ck; opt.headers.Cookie = ck; }
+      try { GM_xmlhttpRequest(opt); } catch (e) { resolve('出错'); }
+    });
   }
   // ---- 读字幕文本（小文件，直接读进来）
   async function text(a) {

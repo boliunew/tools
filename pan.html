@@ -276,7 +276,7 @@ textarea:focus{border-color:var(--accent)}
 
 
   /* ---------- ⚡ 直接读分享：靠油猴里的「🧰 工具箱助手」带上夸克登录状态去读 ---------- */
-  var TBX_URL = 'https://boliunew.github.io/tools/tbx.user.js', TBX_NEED = '1.0.1';
+  var TBX_URL = 'https://boliunew.github.io/tools/tbx.user.js', TBX_NEED = '1.0.2';
   var tbxSeq = 0, tbxWait = {};
   document.addEventListener('tbx-res', function (ev) { var d = {}; try { d = JSON.parse(ev.detail); } catch (e) { return; } var w = tbxWait[d.id]; if (!w) return; delete tbxWait[d.id]; if (d.error) w[1](new Error(d.error)); else w[0](d.ok); });
   function tbx(op, args, ms) {
@@ -383,10 +383,10 @@ textarea:focus{border-color:var(--accent)}
       qkMsg('📤 正在推给 torrent_hub…');
       var root = rootDir();
       return tbx('push', { port: TH_PORT, items: r.links.map(function (l) { return { url: l.url, name: l.name, path: root + (l.path || ''), headers: r.headers }; }) }, 120000)
-        .then(function (p) { return { n: p.ids.length, full: r.fullCookie }; });
+        .then(function (p) { return { n: p.ids.length, full: r.fullCookie, way: r.way, diag: (r.diag || []).join(' ') }; });
     }).then(function (o) {
       busy(btn, false); if (clear) { QK.sel = {}; qkRender(); qkCount(); }
-      qkMsg('✅ 已推送 ' + o.n + ' 个文件到 torrent_hub，存在下载目录的「' + esc(rootDir().slice(0, -1)) + '」文件夹里。<a href="http://127.0.0.1:' + TH_PORT + '" target="_blank" rel="noopener">打开 torrent_hub 看进度 ↗</a>' + '<br><span style="color:var(--faint)">torrent_hub 里要是显示 412 / 403：打开一次夸克网盘网页，再回来重新点下载。</span>', 'ok');
+      qkMsg('✅ 已推送 ' + o.n + ' 个文件到 torrent_hub，存在下载目录的「' + esc(rootDir().slice(0, -1)) + '」文件夹里。<a href="http://127.0.0.1:' + TH_PORT + '" target="_blank" rel="noopener">打开 torrent_hub 看进度 ↗</a>' + '<br><span style="color:var(--faint)">下载方式：' + esc(o.way || '?') + (o.diag ? '（' + esc(o.diag) + '）' : '') + '。torrent_hub 里要是还显示 412 / 403，把这行字截图给我。</span>', 'ok');
     }, function (e) { busy(btn, false); if (e.message === 'NOTBX') qkNoHelper(); else qkMsg('❌ ' + esc(e.message), 'err'); });
   };
   // 🎞️ 字幕直接读进来交给 SubLingo
