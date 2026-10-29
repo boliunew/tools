@@ -121,15 +121,15 @@ textarea:focus{border-color:var(--accent)}
     <div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" id="expBtn">复制全部（文本）</button></div>
   </div>
 
-  <div class="card" id="dl" hidden><!-- 等 torrent_hub 加好 /jsonrpc、确认端口后再打开 -->
+  <div class="card" id="dl">
     <h2>📥 下载到电脑 <small>搜到 → 打开 → 一点就进 torrent_hub</small></h2>
     <div class="thst" id="thSt">⏳ 正在看 torrent_hub 开没开…</div>
     <ol class="steps">
       <li><b>🐒 装篡改猴</b>：电脑上的 Chrome / Edge 装 <a href="https://www.tampermonkey.net/" target="_blank" rel="noopener">Tampermonkey 篡改猴</a> 扩展（只装一次）。</li>
       <li><b>⚡ 装 LinkSwift</b>：点 <a href="https://github.com/hmjz100/LinkSwift/raw/main/（改）网盘直链下载助手.user.js" target="_blank" rel="noopener">官方安装链接</a> → 篡改猴弹出来点「安装」。只从这个官方地址装。</li>
       <li><b>🔗 连上 torrent_hub</b>：打开任意夸克网盘页面 → 点「下载助手」→「助手设置」→ Aria2 那一栏填：<br>
-        地址 <code>http://localhost</code>　端口 <code id="thPort">8765</code>　路径 <code>/jsonrpc</code>，然后点「测试」，显示成功就好了。<button class="btn sm" id="cpCfg" style="margin-left:4px">复制设置</button></li>
-      <li><b>📥 以后这样下</b>：上面搜到或粘贴的分享 → 点「打开」（提取码已经帮你复制好）→ 夸克页面里登录、勾文件 → 「下载助手」→「推送到 Aria2」。文件就出现在 torrent_hub 里，有进度，能边下边播。</li>
+        地址 <code>http://localhost</code>　端口 <code id="thPort">8800</code>　路径 <code>/jsonrpc</code>，然后点「测试」，显示成功就好了。<button class="btn sm" id="cpCfg" style="margin-left:4px">复制设置</button></li>
+      <li><b>📥 以后这样下</b>：上面搜到或粘贴的分享 → 点「打开」（提取码已经帮你复制好）→ 夸克页面里登录、勾文件 → 「下载助手」→「推送到 Aria2」。文件就出现在 torrent_hub 里：最多 8 条连接分段一起下，能边下边播。</li><li><b>📱 手机推到电脑</b>：手机用 Firefox 装 Tampermonkey 和 LinkSwift，Aria2 地址填电脑的局域网或 Tailscale 地址（torrent_hub 要用「--lan」启动）。</li>
     </ol>
     <div class="hint">夸克、百度都要登录才给下载地址，这是网盘的规矩。怕主账号被风控，可以专门注册一个小号来下。速度看网盘给多少，LinkSwift 不破解限速。</div>
   </div>
@@ -224,7 +224,7 @@ textarea:focus{border-color:var(--accent)}
 
 
   /* ---------- 📥 torrent_hub 在不在线（LinkSwift 按 Aria2 的方式推送给它） ---------- */
-  var TH_PORT = 8765;
+  var TH_PORT = 8800;
   $('thPort').textContent = TH_PORT;
   $('cpCfg').onclick = function () { copy('地址 http://localhost  端口 ' + TH_PORT + '  路径 /jsonrpc', 'LinkSwift 设置已复制'); };
   function thCheck() {
