@@ -1,16 +1,16 @@
 {
- "date": "2026-10-28",
- "kind": "名言",
- "en": "Experience is the name every one gives to their mistakes.",
- "zh": "所谓经验，不过是每个人给自己的错误起的名字。",
- "by": "Oscar Wilde",
- "line": "Experience is the name every one gives to their mistakes. — Oscar Wilde",
+ "date": "2026-10-29",
+ "kind": "口头禅",
+ "en": "touch base",
+ "zh": "碰个头，联系一下",
+ "by": "简短地沟通进度",
+ "line": "touch base",
  "word": {
-  "w": "unclear",
-  "ph": ".ʌn'kliә",
-  "zh": "a. 不易了解的，不清楚的，含混的",
-  "ex": "The law itself was unclear on that point.",
-  "exzh": "法律本身在这一点上并不明确。"
+  "w": "tuck",
+  "ph": "tʌk",
+  "zh": "n. 缝褶，活力，鼓声，船尾突出部；vt. 打褶，卷起，挤进，塞",
+  "ex": "None of us has ever been tucked in at night.",
+  "exzh": "我们谁都没有在晚上被人掖过被子。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
