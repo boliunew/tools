@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.5
+// @version      1.0.6
 // @description  把「我的工具」带到别的网站上：网页图片一键下原图、YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
@@ -26,7 +26,7 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.5', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.6', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
   try { console.log('[工具箱随身] v' + VER + ' 在 ' + host + ' 上运行'); } catch (e) { }
   function gm(o) {
@@ -328,6 +328,17 @@
     var pic = img.closest && img.closest('picture'); if (pic) [].forEach.call(pic.querySelectorAll('source[srcset]'), function (s) { sets.push(s.getAttribute('srcset')); });
     sets.join(',').split(/,\s+(?=\S)/).forEach(function (part) { var m = /^(\S+)\s+(\d+)w/.exec(part.trim()); if (m && +m[2] > bw) { bw = +m[2]; best = new URL(m[1], location.href).href; } });
     var u = best || src;
+    // ① 缩略图外面包着的链接往往就是大图（相册、画廊最常见）
+    try {
+      var a = img.closest && img.closest('a[href]');
+      if (!a && img.getRootNode && img.getRootNode().host) { var hh = img.getRootNode().host; a = hh.closest && hh.closest('a[href]'); }
+      if (a && /\.(jpe?g|png|webp|gif|avif|bmp)(\?|#|$)/i.test(a.href)) add(a.href);
+    } catch (e) { }
+    // ② 网站自己藏在属性里的大图地址
+    ['data-orig-file', 'data-original', 'data-full', 'data-fullsrc', 'data-full-src', 'data-large', 'data-large-file', 'data-zoom-image', 'data-zoom', 'data-hires', 'data-highres', 'data-hi-res', 'data-big', 'data-src-large', 'data-lazy-src', 'data-src'].forEach(function (k) {
+      var v = img.getAttribute(k) || (img.parentElement && img.parentElement.getAttribute && img.parentElement.getAttribute(k));
+      if (v && !/^data:/.test(v)) { try { add(new URL(v, location.href).href); } catch (e) { } }
+    });
     try {
       var U = new URL(u, location.href), h = U.hostname;
       if (/pbs\.twimg\.com$/.test(h) && /\/media\//.test(U.pathname)) { U.searchParams.set('name', 'orig'); if (!U.searchParams.get('format')) { var e = /\.(\w+)$/.exec(U.pathname); if (!e) U.searchParams.set('format', 'jpg'); } add(U.href); }
@@ -339,9 +350,24 @@
       if (/(^|\.)cdninstagram\.com$|fbcdn\.net$/.test(h)) add(u);       // ins / 脸书：srcset 里最大的就是能拿到的最大
       if (/(^|\.)shopify\.com$/.test(h)) add(u.replace(/_(\d+x\d*|\d*x\d+|pico|icon|thumb|small|compact|medium|large|grande)(@\dx)?(?=\.\w+(\?|$))/, ''));
       if (/\/wp-content\/uploads\//.test(U.pathname)) add(u.replace(/-\d+x\d+(?=\.\w+(\?|$))/, '').replace(/-scaled(?=\.\w+)/, ''));
+      if (/res\.cloudinary\.com$|cloudinary/.test(h)) add(u.replace(/\/upload\/(?:[a-z]{1,3}_[^/]+\/)+/, '/upload/'));
+      if (/media-amazon\.com$|ssl-images-amazon\.com$/.test(h)) add(u.replace(/\._[^/]*_\.(jpg|png|webp)/i, '.$1'));
+      if (/ebayimg\.com$/.test(h)) add(u.replace(/s-l\d+/, 's-l1600'));
+      if (/etsystatic\.com$/.test(h)) add(u.replace(/il_\d+x\d+/, 'il_fullxfull'));
+      if (/staticflickr\.com$/.test(h)) { add(u.replace(/_[sqtmnwzc](\.\w+)$/, '_b$1')); }
+      if (/alicdn\.com$/.test(h)) add(u.replace(/(\.(jpe?g|png|webp))_\d+x\d+.*$/i, '$1'));
+      if (/squarespace-cdn\.com$/.test(h)) { var Sq = new URL(u); Sq.searchParams.set('format', '2500w'); add(Sq.href); }
+      if (/wixstatic\.com$/.test(h)) add(u.replace(/\/v1\/(fill|fit|crop)\/.*$/, ''));
+      if (/akamaized\.net$|msn\.com$/.test(h) && /\.img/.test(U.pathname)) { var Ms = new URL(u); Ms.search = ''; add(Ms.href); }
+      if (/i\.imgur\.com$/.test(h)) add(u.replace(/\/(\w{7})[smtlhb]\.(\w+)$/, '/$1.$2'));
+      // 地址里常见的「缩略图」字样
+      add(u.replace(/([_-])(thumb|thumbnail|small|medium|preview|th|sm|md)(?=\.\w+($|\?))/i, '').replace(/\/(thumbs?|thumbnails?|small|medium|resized?|preview)\//i, '/'));
+      add(u.replace(/[_-]\d{2,4}x\d{2,4}(?=\.\w+($|\?))/, ''));
+      add(u.replace(/@\dx(?=\.\w+)/, ''));
       if (/images\.unsplash\.com$/.test(h)) { var V = new URL(u); ['w', 'h', 'q', 'fit', 'crop', 'auto', 'ixlib', 'dpr'].forEach(function (k) { V.searchParams.delete(k); }); add(V.href); }
-      if (/(^|\.)(media\.)?(cnn|nytimes|bbc|guim|reuters)\./.test(h) || /[?&](w|width|h|height|resize|quality|q)=\d/.test(U.search)) {
-        var W = new URL(u); ['w', 'width', 'h', 'height', 'resize', 'quality', 'q', 'fit', 'crop', 'dpr', 'auto'].forEach(function (k) { W.searchParams.delete(k); }); add(W.href);
+      if (/[?&](w|width|h|height|resize|size|quality|q|fit|crop|dpr|auto|imwidth|im)=/.test(U.search)) {
+        var W = new URL(u); ['w', 'width', 'h', 'height', 'resize', 'size', 'quality', 'q', 'fit', 'crop', 'dpr', 'auto', 'imwidth', 'im', 'm', 'x', 'y'].forEach(function (k) { W.searchParams.delete(k); }); add(W.href);
+        var W2 = new URL(u); W2.search = ''; add(W2.href);
       }
     } catch (e) { }
     add(best); add(src);
@@ -368,8 +394,15 @@
   }
   function fsize(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round(n / 1024) + ' KB'; }
   async function downloadOriginal(img, btn) {
-    var cands = origCandidates(img), got = null, used = '';
-    for (var i = 0; i < cands.length && !got; i++) { got = await fetchImg(cands[i]); used = cands[i]; }
+    // 候选地址挨个下（最多 8 个），量一下真实像素，留最大的那张
+    var cands = origCandidates(img).slice(0, 8), got = null, used = '', bestArea = 0, shownArea = (img.naturalWidth || 0) * (img.naturalHeight || 0);
+    for (var i = 0; i < cands.length; i++) {
+      if (btn) btn.textContent = '⏳ ' + (i + 1) + '/' + cands.length;
+      var g = await fetchImg(cands[i]); if (!g) continue;
+      var area = 0; try { var bm0 = await createImageBitmap(g.blob); area = bm0.width * bm0.height; bm0.close && bm0.close(); } catch (e) { area = g.blob.size / 10; }
+      if (area > bestArea || (area === bestArea && got && g.blob.size > got.blob.size)) { got = g; used = cands[i]; bestArea = area; }
+      if (shownArea && bestArea >= shownArea * 16) break;      // 已经比屏幕上大很多了，够了
+    }
     if (!got) {   // 都下不了（防盗链之类）：至少把屏幕上这张存下来
       try {
         var c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight; c.getContext('2d').drawImage(img, 0, 0);
@@ -384,7 +417,8 @@
     saveBlob(got.blob, base + '.' + extOf(got.ct, used));
     var dim = '';
     try { var bm = await createImageBitmap(got.blob); dim = bm.width + '×' + bm.height + ' · '; bm.close && bm.close(); } catch (e) { }
-    toast('✅ 已保存原图：' + dim + fsize(got.blob.size) + (used === (img.currentSrc || img.src) && cands.length > 1 ? '（这个网站没有更大的版本）' : ''));
+    var shown = (img.naturalWidth || 0) * (img.naturalHeight || 0);
+    toast('✅ 已保存' + (bestArea > shown * 1.2 ? '原图' : '（这个网站只给到这么大）') + '：' + dim + fsize(got.blob.size));
   }
   var IMGBTN = null, IMGCUR = null, IMGT = 0;
   function imgBtn() {
