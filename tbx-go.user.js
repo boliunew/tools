@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🧭 工具箱随身
 // @namespace    https://boliunew.github.io/tools/
-// @version      1.0.2
+// @version      1.0.3
 // @description  把「我的工具」带到别的网站上：网页图片一键下原图、YouTube 字幕送 SubLingo、英文网页选中一句就讲语法 / 单词存进语境词库、股票页显示股票池信号、推特图片视频一键下到 torrent_hub。
 // @author       boliunew
 // @match        *://*/*
@@ -26,7 +26,7 @@
 
 (function () {
   'use strict';
-  var VER = '1.0.2', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
+  var VER = '1.0.3', SITE = 'https://boliunew.github.io/tools/', TH = 'http://127.0.0.1:8800';
   var host = location.hostname, path = location.pathname;
   try { console.log('[工具箱随身] v' + VER + ' 在 ' + host + ' 上运行'); } catch (e) { }
   function gm(o) {
@@ -379,23 +379,42 @@
     });
     return IMGBTN;
   }
+  // MSN、很多新网站把图片放在「影子 DOM」里：要从事件的真正目标开始找，一层层往外（跨过影子边界）
+  function realTarget(e) { var p = e.composedPath && e.composedPath(); return (p && p[0] && p[0].nodeType === 1) ? p[0] : e.target; }
+  function up(n) { return n.parentElement || (n.parentNode && n.parentNode.host) || (n.getRootNode && n.getRootNode().host) || null; }
+  function imgsIn(n, depth) {
+    var out = [];
+    depth = depth || 0;
+    try {
+      var scope = n.shadowRoot && depth === 0 ? [n, n.shadowRoot] : [n];
+      scope.forEach(function (sc) {
+        if (!sc.querySelectorAll) return;
+        out = out.concat([].slice.call(sc.querySelectorAll('img'), 0, 8));
+        if (depth < 3) {   // 里面再套一层影子 DOM 的（自定义元素里放图片）
+          var all = sc.querySelectorAll('*');
+          for (var i = 0; i < all.length && i < 400 && out.length < 16; i++) if (all[i].shadowRoot) out = out.concat(imgsIn(all[i].shadowRoot, depth + 1));
+        }
+      });
+    } catch (e) { }
+    return out;
+  }
   function findImg(t) {
-    if (!t || !t.closest) return null;
+    if (!t || t.nodeType !== 1) return null;
     if (t.tagName === 'IMG') return t;
-    // 推特、Ins 这类网站在图片上盖了一层透明的东西：往下找
+    // 图片上盖了透明层（推特、Ins）或者藏在自定义元素里：往外找几层，挑位置大小对得上的那张
     var r2 = t.getBoundingClientRect(), box = t;
-    for (var k = 0; k < 5 && box; k++, box = box.parentElement) {
-      var ims = box.querySelectorAll ? box.querySelectorAll('img') : [];
-      for (var i = 0; i < ims.length && i < 6; i++) {
+    for (var k = 0; k < 6 && box; k++, box = up(box)) {
+      var ims = imgsIn(box);
+      for (var i = 0; i < ims.length; i++) {
         var r1 = ims[i].getBoundingClientRect();
-        if (Math.abs(r1.width - r2.width) < 40 && Math.abs(r1.height - r2.height) < 40 && Math.abs(r1.left - r2.left) < 40 && Math.abs(r1.top - r2.top) < 40) return ims[i];
+        if (r1.width > 0 && Math.abs(r1.width - r2.width) < 40 && Math.abs(r1.height - r2.height) < 40 && Math.abs(r1.left - r2.left) < 40 && Math.abs(r1.top - r2.top) < 40) return ims[i];
       }
     }
     return null;
   }
   document.addEventListener('mouseover', function (e) {
     if (ROOT && e.composedPath && e.composedPath().indexOf(ROOT) >= 0) return;
-    var img = findImg(e.target); if (!img) return;
+    var img = findImg(realTarget(e)); if (!img) return;
     var r = img.getBoundingClientRect();
     if (r.width < 160 || r.height < 120) return;
     clearTimeout(IMGT); IMGCUR = img;
@@ -405,7 +424,7 @@
   }, true);
   document.addEventListener('mouseout', function (e) {
     if (!IMGBTN || IMGBTN.style.display === 'none') return;
-    if (findImg(e.target) === IMGCUR) { IMGT = setTimeout(function () { if (IMGBTN) IMGBTN.style.display = 'none'; }, 500); }
+    if (findImg(realTarget(e)) === IMGCUR) { IMGT = setTimeout(function () { if (IMGBTN) IMGBTN.style.display = 'none'; }, 500); }
   }, true);
   window.addEventListener('scroll', function () { if (IMGBTN) IMGBTN.style.display = 'none'; }, true);
 
