@@ -86,13 +86,18 @@ audio{background:transparent}
 
   <h3>💡 说明</h3>
   <div class="box hint" style="margin-top:0">
-    处理在浏览器里完成，<b>文件不会上传到任何地方</b>。第一次用要下载一个约 30 MB 的处理组件，之后浏览器会记住。<br>
-    浏览器里转码比电脑软件慢不少：一段 10 分钟的 1080p 视频压缩可能要十几分钟，<b>压成 720p 会快很多</b>。超过 1–2 GB 的文件浏览器可能内存不够。<br>
+    处理在浏览器里完成，<b>文件不会上传到任何地方</b>。<br>
+    <b>⚡ 硬件加速</b>：常见格式（MP4、MOV、WebM、MKV 里的 H.264 / H.265 / VP9 / AV1）直接用显卡和手机芯片编解码，边读边处理，大文件也不怕，速度接近电脑软件。<br>
+    <b>🐢 兼容模式</b>：硬件加速做不了的（MP3 / FLAC / GIF、老格式 AVI / WMV / FLV 等）自动换成 ffmpeg，什么都认但慢，第一次用要下载约 30 MB 组件，文件最好别超过 1 GB。<br>
     「转格式」选 mp4 → mkv 这种只换外壳的，几秒钟就好；「剪一段」默认不重新编码，也很快。
   </div>
 </main>
 <input type="file" id="f" accept="video/*,audio/*,.mkv,.flv,.wmv,.avi,.ts,.m4a,.flac,.opus,.ogg,.wav,.ape,.wma" style="display:none">
 
+<script type="module">
+  import * as MB from './vendor/mediabunny.min.mjs';
+  window.MB = MB; window.dispatchEvent(new Event('mb-ready'));
+</script>
 <script src="vendor/ffmpeg/ffmpeg.js"></script>
 <script src="vendor/ffmpeg/util.js"></script>
 <script>
@@ -199,7 +204,7 @@ audio{background:transparent}
     if (ff && ff.loaded) return ff;
     ff = new FFmpegWASM.FFmpeg();
     ff.on('log', function (e) { var l = $('log'); l.textContent = (l.textContent + '\n' + e.message).slice(-3000); l.scrollTop = l.scrollHeight; });
-    ff.on('progress', function (e) { if (running && e.progress >= 0 && e.progress <= 1) { $('bar').style.width = Math.round(e.progress * 100) + '%'; status('⏳ 处理中 ' + Math.round(e.progress * 100) + '%' + (e.time ? ' · 已处理到 ' + fmt(e.time / 1e6) : '')); } });
+    ff.on('progress', function (e) { if (running && e.progress >= 0 && e.progress <= 1) { $('bar').style.width = Math.round(e.progress * 100) + '%'; status('🐢 兼容模式处理中 ' + Math.round(e.progress * 100) + '%' + (e.time ? ' · 已处理到 ' + fmt(e.time / 1e6) : '')); } });
     var last = null;
     for (var i = 0; i < CORE.length; i++) {
       try {
@@ -252,42 +257,132 @@ audio{background:transparent}
     }
     if (TASK === 'mute') return { args: ['-i', i, '-c:v', 'copy', '-an', 'out.' + ext(FILE.name)], out: 'out.' + ext(FILE.name), mime: FILE.type || 'video/mp4', name: b + '_无声.' + ext(FILE.name) };
   }
+  /* ---------- ⚡ 快速引擎：浏览器自带的硬件编解码（WebCodecs），边读边处理，不占大内存 ---------- */
+  function waitMB() { return new Promise(function (res) { if (window.MB) return res(window.MB); var n = 0, t = setInterval(function () { if (window.MB || ++n > 50) { clearInterval(t); res(window.MB || null); } }, 100); }); }
+  var CONV = null;
+  async function fastRun() {
+    var M = await waitMB();
+    if (!M || !window.VideoEncoder && META.video) return null;
+    var input = new M.Input({ source: new M.BlobSource(FILE), formats: M.ALL_FORMATS });
+    try { if (!(await input.canRead())) return null; } catch (e) { return null; }
+    var vt = await input.getPrimaryVideoTrack(), at = await input.getPrimaryAudioTrack();
+    if (!META.dur) { try { META.dur = await input.computeDuration(); } catch (e) { } }
+    if (vt && !META.w) { META.w = vt.displayWidth; META.h = vt.displayHeight; }
+    var b = base(FILE.name), fmt0, ext0, mime, opts = {}, Q = function (l) { return new M.Quality(l); };
+    function capH(track, cap) { cap = +cap; if (!cap || track.displayHeight <= cap) return {}; return track.displayWidth >= track.displayHeight ? { height: cap } : { width: cap }; }
+    if (TASK === 'compress') {
+      if (!vt) return null;
+      fmt0 = new M.Mp4OutputFormat({ fastStart: 'in-memory' }); ext0 = 'mp4'; mime = 'video/mp4';
+      var ql = { '23': 'high', '28': 'medium', '32': 'low' }[OPT.crf] || 'medium';
+      opts.video = function (t) { return Object.assign({ codec: 'avc', quality: Q(ql), forceTranscode: true }, capH(t, OPT.res)); };
+      opts.audio = { codec: 'aac', bitrate: 128000 };
+      if (!(await M.canEncodeVideo('avc'))) return null;
+      b += '_压缩';
+    } else if (TASK === 'target') {
+      if (!vt || !META.dur) return null;
+      var mb = Math.max(1, +($('mb') ? $('mb').value : OPT.mb) || 10), kb = Math.floor(mb * 8192 * 0.95 / META.dur) - 96;
+      if (kb < 60) throw new Error('目标太小了：这么长的视频压到 ' + mb + ' MB，画面会糊得没法看。把 MB 调大一点');
+      fmt0 = new M.Mp4OutputFormat({ fastStart: 'in-memory' }); ext0 = 'mp4'; mime = 'video/mp4';
+      opts.video = function (t) { return Object.assign({ codec: 'avc', bitrate: kb * 1000, forceTranscode: true }, capH(t, OPT.res)); };
+      opts.audio = { codec: 'aac', bitrate: 96000 };
+      if (!(await M.canEncodeVideo('avc'))) return null;
+      b += '_' + mb + 'MB';
+    } else if (TASK === 'convert') {
+      var f = OPT.fmt;
+      if (f === 'gif') return null;
+      fmt0 = { mp4: new M.Mp4OutputFormat({ fastStart: 'in-memory' }), mov: new M.MovOutputFormat({ fastStart: 'in-memory' }), mkv: new M.MkvOutputFormat(), webm: new M.WebMOutputFormat() }[f];
+      ext0 = f; mime = { mp4: 'video/mp4', mov: 'video/quicktime', mkv: 'video/x-matroska', webm: 'video/webm' }[f];
+      if (f === 'webm') { opts.video = { codec: 'vp9', quality: Q('medium') }; opts.audio = { codec: 'opus' }; }
+      if (f === 'mp4' || f === 'mov') { opts.video = { codec: 'avc' }; opts.audio = { codec: 'aac' }; }
+    } else if (TASK === 'extract' || TASK === 'audio') {
+      var af = OPT.afmt;
+      if (af === 'mp3' || af === 'flac' || !at) return null;          // MP3 / FLAC 浏览器不会编，交给 ffmpeg
+      fmt0 = { m4a: new M.Mp4OutputFormat({ fastStart: 'in-memory' }), ogg: new M.OggOutputFormat(), wav: new M.WavOutputFormat() }[af];
+      ext0 = af; mime = { m4a: 'audio/mp4', ogg: 'audio/ogg', wav: 'audio/wav' }[af];
+      opts.video = { discard: true };
+      opts.audio = Object.assign({ codec: { m4a: 'aac', ogg: 'opus', wav: 'pcm-s16' }[af] }, af === 'wav' ? {} : { bitrate: (+OPT.abr) * 1000 }, OPT.mono === '1' ? { numberOfChannels: 1 } : {}, af !== 'wav' ? { forceTranscode: true } : {});
+    } else if (TASK === 'cut') {
+      var t1 = parseT($('t1').value) || 0, t2 = parseT($('t2').value);
+      if (t2 != null && t2 <= t1) throw new Error('「到」要比「从」晚');
+      var e0 = ext(FILE.name);
+      fmt0 = /^(mp4|m4v|mov|m4a)$/.test(e0) ? new M.Mp4OutputFormat({ fastStart: 'in-memory' }) : /^(webm)$/.test(e0) ? new M.WebMOutputFormat() : /^(mkv)$/.test(e0) ? new M.MkvOutputFormat() : /^(mp3)$/.test(e0) ? null : /^(wav)$/.test(e0) ? new M.WavOutputFormat() : /^(ogg|opus)$/.test(e0) ? new M.OggOutputFormat() : null;
+      if (!fmt0) return null;
+      ext0 = e0; mime = FILE.type || 'video/mp4';
+      opts.trim = Object.assign({ start: t1 }, t2 != null ? { end: t2 } : {});
+      opts.copy = OPT.exact === '1' ? false : { mode: 'preferred', shiftTolerance: Infinity, boundaryPolicy: 'expand' };   // 快：按关键帧直接拷，不重新编码
+      b += '_剪辑_' + fmt(t1).replace(/:/g, '.') + '-' + (t2 != null ? fmt(t2).replace(/:/g, '.') : '结尾');
+    } else if (TASK === 'mute') {
+      var e1 = ext(FILE.name);
+      fmt0 = /^(mp4|m4v|mov)$/.test(e1) ? new M.Mp4OutputFormat({ fastStart: 'in-memory' }) : e1 === 'webm' ? new M.WebMOutputFormat() : e1 === 'mkv' ? new M.MkvOutputFormat() : null;
+      if (!fmt0) return null;
+      ext0 = e1; mime = FILE.type || 'video/mp4'; opts.audio = { discard: true }; b += '_无声';
+    } else return null;
+    var output = new M.Output({ format: fmt0, target: new M.BufferTarget() });
+    var conv = await M.Conversion.init(Object.assign({ input: input, output: output }, opts));
+    if (!conv.isValid) {
+      console.log('[音视频转换] 快速引擎做不了，换 ffmpeg', conv.discardedTracks.map(function (d) { return d.reason; }));
+      return null;
+    }
+    CONV = conv;
+    conv.onProgress = function (pr, tm) { if (running) { $('bar').style.width = Math.round(pr * 100) + '%'; status('⚡ 硬件加速处理中 ' + Math.round(pr * 100) + '%' + (tm ? ' · 已处理到 ' + fmt(tm) : '')); } };
+    status('⚡ 硬件加速处理中…');
+    await conv.execute();
+    CONV = null;
+    return { blob: new Blob([output.target.buffer], { type: mime }), name: b + '.' + ext0, engine: '⚡ 硬件加速' };
+  }
+
   $('go').onclick = async function () {
     if (!FILE || running) return;
-    var p = null; try { p = plan(); } catch (e) { if (!(TASK === 'target' && !META.dur)) { status('⚠️ ' + esc(e.message), 'err'); return; } }
     running = true; $('go').disabled = true; $('stop').style.display = ''; $('res').className = 'box res'; $('bar').style.width = '0'; $('log').textContent = '';
-    var t0 = Date.now();
+    status('⏳ 准备中…');
+    var t0 = Date.now(), r = null;
     try {
-      await load();
-      status('⏳ 读文件…');
-      var inName = 'in.' + ext(FILE.name);
-      await ff.writeFile(inName, new Uint8Array(await FILE.arrayBuffer()));
-      if (!META.dur || !p) {    // 浏览器读不出时长（有些格式不认）：让 ffmpeg 看一眼
-        var logs = '', lis = function (e) { logs += e.message + '\n'; };
-        ff.on('log', lis); await ff.exec(['-hide_banner', '-i', inName]); ff.off('log', lis);
-        var dm = /Duration:\s*(\d+):(\d+):([\d.]+)/.exec(logs); if (dm) META.dur = (+dm[1]) * 3600 + (+dm[2]) * 60 + parseFloat(dm[3]);
-        var vm = /Video:.*?(\d{2,5})x(\d{2,5})/.exec(logs); if (vm && !META.w) { META.w = +vm[1]; META.h = +vm[2]; }
-        if (!p) p = plan();
+      try { r = await fastRun(); }
+      catch (e) {
+        if (!running) throw e;
+        if (/目标太小|要比/.test(e.message)) throw e;
+        console.log('[音视频转换] 快速引擎出错，换 ffmpeg：', e);
+        r = null;
       }
-      status('⏳ 开始处理…');
-      var code = await ff.exec(p.args);
-      if (code !== 0 && p.fallback) { status('⏳ 直接换外壳不行，改成重新编码…'); code = await ff.exec(p.fallback); }
-      if (code !== 0) throw new Error('处理失败（可能这个文件格式不支持）。点下面看详细记录');
-      var data = await ff.readFile(p.out);
-      try { await ff.deleteFile(inName); await ff.deleteFile(p.out); } catch (e) { }
-      OUT = { blob: new Blob([data.buffer], { type: p.mime }), name: p.name };
+      if (!r && running) r = await slowRun();
+      if (!running) throw new Error('stopped');
+      OUT = r;
       showResult((Date.now() - t0) / 1000);
     } catch (e) {
-      if (!running) status('⏹ 已停止'); else { status('❌ ' + esc(e.message || String(e)) + ' <a href="#" id="showLog">看记录</a>', 'err'); var sl = $('showLog'); if (sl) sl.onclick = function (ev) { ev.preventDefault(); $('log').classList.toggle('on'); }; }
+      if (!running) status('⏹ 已停止');
+      else { status('❌ ' + esc(e.message || String(e)) + ' <a href="#" id="showLog">看记录</a>', 'err'); var sl = $('showLog'); if (sl) sl.onclick = function (ev) { ev.preventDefault(); $('log').classList.toggle('on'); }; }
     } finally {
-      running = false; $('go').disabled = false; $('stop').style.display = 'none';
+      running = false; CONV = null; $('go').disabled = false; $('stop').style.display = 'none';
     }
   };
-  $('stop').onclick = function () { running = false; try { ff.terminate(); } catch (e) { } ff = null; status('⏹ 已停止'); $('stop').style.display = 'none'; $('go').disabled = false; };
+  /* ---------- 🐢 兼容引擎：ffmpeg（什么格式都认，但慢，整个文件要读进内存） ---------- */
+  async function slowRun() {
+    var p = null; try { p = plan(); } catch (e) { if (!(TASK === 'target' && !META.dur)) throw e; }
+    if (FILE.size > 1.6 * 1073741824) throw new Error('这个文件太大（' + fsize(FILE.size) + '），兼容模式处理不了。换成 MP4 / WebM 之类常见格式，或者先用「剪一段」切小一点');
+    await load();
+    status('⏳ 兼容模式：读文件…');
+    var inName = 'in.' + ext(FILE.name);
+    await ff.writeFile(inName, new Uint8Array(await FILE.arrayBuffer()));
+    if (!META.dur || !p) {
+      var logs = '', lis = function (e) { logs += e.message + '\n'; };
+      ff.on('log', lis); await ff.exec(['-hide_banner', '-i', inName]); ff.off('log', lis);
+      var dm = /Duration:\s*(\d+):(\d+):([\d.]+)/.exec(logs); if (dm) META.dur = (+dm[1]) * 3600 + (+dm[2]) * 60 + parseFloat(dm[3]);
+      var vm = /Video:.*?(\d{2,5})x(\d{2,5})/.exec(logs); if (vm && !META.w) { META.w = +vm[1]; META.h = +vm[2]; }
+      if (!p) p = plan();
+    }
+    status('🐢 兼容模式处理中（会慢一些）…');
+    var code = await ff.exec(p.args);
+    if (code !== 0 && p.fallback) { status('⏳ 直接换外壳不行，改成重新编码…'); code = await ff.exec(p.fallback); }
+    if (code !== 0) throw new Error('处理失败（可能这个文件格式不支持）。点下面看详细记录');
+    var data = await ff.readFile(p.out);
+    try { await ff.deleteFile(inName); await ff.deleteFile(p.out); } catch (e) { }
+    return { blob: new Blob([data.buffer], { type: p.mime }), name: p.name, engine: '🐢 兼容模式' };
+  }
+  $('stop').onclick = function () { running = false; if (CONV) { try { CONV.cancel(); } catch (e) { } } if (ff) { try { ff.terminate(); } catch (e) { } ff = null; } status('⏹ 已停止'); $('stop').style.display = 'none'; $('go').disabled = false; };
   function showResult(sec) {
     $('bar').style.width = '100%';
     var a = FILE.size, b = OUT.blob.size, pct = Math.round((1 - b / a) * 100);
-    status('✅ 好了，用了 ' + (sec < 60 ? Math.round(sec) + ' 秒' : fmt(sec)), 'ok');
+    status('✅ 好了，用了 ' + (sec < 60 ? Math.max(1, Math.round(sec)) + ' 秒' : fmt(sec)) + ' · ' + (OUT.engine || ''), 'ok');
     $('cmp').innerHTML = '<span>原来 ' + fsize(a) + '</span><span>现在 ' + fsize(b) + '</span>' + (pct > 0 ? '<span class="big">小了 ' + pct + '%</span>' : pct < 0 ? '<span>大了 ' + (-pct) + '%</span>' : '');
     if (pct < 0 && (TASK === 'compress' || TASK === 'target')) $('cmp').innerHTML += '<span style="background:var(--warn-soft);color:var(--warn)">原文件本来就压得很省了，用原文件就好；想更小就降分辨率或选「最小」</span>';
     var u = URL.createObjectURL(OUT.blob), tag = /^audio\//.test(OUT.blob.type) ? 'audio' : /^image\//.test(OUT.blob.type) ? 'img' : 'video';
