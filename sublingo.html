@@ -1742,6 +1742,11 @@ var NLP = (function () {
   (function () {
     var h = null; try { h = JSON.parse(localStorage.getItem('sl:handoff') || 'null'); localStorage.removeItem('sl:handoff'); } catch (e) { }
     if (!h || Date.now() - (h.t || 0) > 10 * 60000) return;
+    if (h.art) {   // 🧭 工具箱随身：网页文章整篇送过来
+      setTab('art'); $('artText').value = h.art; analyzeArticle(h.art, h.title || '网页文章');
+      if (location.hash === '#handoff') history.replaceState(null, '', location.pathname);
+      return;
+    }
     setTab('sub');
     if (h.media) {
       mediaURL = h.media; video.src = h.media;
@@ -1922,6 +1927,6 @@ var NLP = (function () {
 
 </script>
 <script src="wide.js?v=2"></script>
-<script src="nav.js?v=44" defer></script>
+<script src="nav.js?v=45" defer></script>
 </body>
 </html>

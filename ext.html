@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-tw="mid">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1D2430">
+<title>🧩 浏览器插件</title>
+<style>
+:root{--bg:#F2F1EE;--paper:#FFFFFF;--ink:#1E2228;--soft:#5E6670;--faint:#9AA1A9;--line:#E1DFDA;--chip:#ECEAE5;--acc:#2E6BD8;--acc-ink:#fff;--acc-soft:#E3ECFB;--ok:#2E9D4F;--warn:#C0362C;--shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171B;--paper:#1C2026;--ink:#E8EBEE;--soft:#A9B1BA;--faint:#6E767F;--line:#2C3139;--chip:#262B32;--acc:#7FA8F0;--acc-ink:#0B1630;--acc-soft:#1D2A40;--ok:#5ED08A;--warn:#F07563;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#14171B;--paper:#1C2026;--ink:#E8EBEE;--soft:#A9B1BA;--faint:#6E767F;--line:#2C3139;--chip:#262B32;--acc:#7FA8F0;--acc-ink:#0B1630;--acc-soft:#1D2A40;--ok:#5ED08A;--warn:#F07563;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35)}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.7;padding-bottom:40px}
+a{color:var(--acc)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(170deg,#2B3442 0%,#1D2430 60%,#161B24 100%);color:#EEF1F5;padding:calc(14px + env(safe-area-inset-top)) 0 16px}
+.hero a{color:#EEF1F5;text-decoration:none;font-size:13px;opacity:.75}.hero h1{margin:4px 0 2px;font-size:24px}.hero p{margin:2px 0 0;font-size:13.5px;opacity:.85}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;margin:14px 0}
+.box h2{margin:0 0 4px;font-size:18px}.box .st{font-size:13px;color:var(--faint);margin-bottom:8px}
+.st.ok{color:var(--ok)}
+.btn{display:inline-flex;align-items:center;gap:4px;border:0;border-radius:11px;padding:8px 14px;font-size:14.5px;font-weight:600;background:var(--acc);color:var(--acc-ink);text-decoration:none}
+.btn2{background:var(--paper);color:var(--ink);border:1px solid var(--line);font-weight:500}
+ul{margin:8px 0;padding-left:20px}li{margin:4px 0}
+code{background:var(--chip);border-radius:5px;padding:0 5px;font-size:13px}
+.steps{font-size:14px;color:var(--soft)}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap"><a href="index.html">‹ 首页</a><h1>🧩 浏览器插件</h1><p>两个油猴脚本，把工具箱带到别的网站上用。</p></div></div>
+<main class="wrap">
+  <div class="box steps">
+    <b>🐒 先装篡改猴（只装一次）</b>：电脑上的 Chrome / Edge 装 <a href="https://www.tampermonkey.net/" target="_blank" rel="noopener">Tampermonkey 篡改猴</a>，然后在扩展详情里打开「<b>允许用户脚本</b>」。安卓手机可以用 Firefox 装。<br>
+    点下面的「安装」，篡改猴会弹出安装页面；没弹出的话：篡改猴「管理面板」→「实用工具」→「从 URL 安装」，粘贴安装链接。
+  </div>
+
+  <div class="box">
+    <h2>🧭 工具箱随身</h2>
+    <div class="st" id="s2">⏳ 检查中…</div>
+    <ul>
+      <li>🎞️ <b>YouTube</b>：右下角「SubLingo 精读」，把视频字幕送进 SubLingo 逐句学（先打开 CC 英文字幕）</li>
+      <li>📖 <b>任何英文网页</b>：选中一句 →「讲讲这句」，AI 讲意思、主干、时态、短语；选中一个单词 →「⭐ 存进词库」，连例句一起进语境词库；还能整篇送进 SubLingo</li>
+      <li>📈 <b>Yahoo Finance / TradingView / Finviz</b>：右下角显示这只股票在你股票池里的情况（候选、跟踪、RSI、强度、均线、信号），一键设提醒</li>
+      <li>📥 <b>推特 X</b>：每条带图 / 视频的帖子多一个 📥，一点就下到 torrent_hub（「X推特」文件夹）；<b>Instagram</b> 帖子右下角一键交给「📥 媒体」</li>
+    </ul>
+    <a class="btn" href="tbx-go.user.js">⬇ 安装</a> <span class="steps">讲解要用工具箱的密码：在同一个浏览器打开过首页并勾「记住我」就行</span>
+  </div>
+
+  <div class="box">
+    <h2>🧰 工具箱助手</h2>
+    <div class="st" id="s1">⏳ 检查中…</div>
+    <ul>
+      <li>⚡ 在「☁️ 夸克网盘搜索」里直接读夸克分享、勾选文件下到电脑、字幕送 SubLingo、边下边学</li>
+      <li>只在工具箱页面和夸克网页上运行</li>
+    </ul>
+    <a class="btn" href="tbx.user.js">⬇ 安装</a> <a class="btn btn2" href="pan.html">☁️ 去夸克网盘搜索</a>
+  </div>
+
+  <div class="box steps">
+    🔒 这两个脚本都是我们自己写的，代码就在工具箱的仓库里。「工具箱随身」会在所有网页上运行（为了划词讲解），但只在你选中英文、点按钮的时候才联网；除了你的工具箱后端、本机的 torrent_hub 和推特下载接口，不往别处发东西。
+  </div>
+</main>
+<script>
+window.addEventListener('load', function () {
+  var a = document.documentElement.getAttribute('data-tbx');
+  document.getElementById('s1').innerHTML = a ? '✅ 已装（' + a + '）' : '还没装';
+  if (a) document.getElementById('s1').className = 'st ok';
+  var b = document.documentElement.getAttribute('data-tbxgo');
+  document.getElementById('s2').innerHTML = b ? '✅ 已装（' + b + '）' : '还没装';
+  if (b) document.getElementById('s2').className = 'st ok';
+});
+</script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=45" defer></script>
+</body>
+</html>
