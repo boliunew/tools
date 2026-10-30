@@ -1,42 +1,45 @@
 {
  "date": "2026-10-30",
- "generated": "2026-10-30T19:32:27Z",
+ "generated": "2026-10-30T21:08:19Z",
  "auto": true,
- "ai": null,
+ "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
   {
    "key": "ai",
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "朝鲜可能是价值 63 亿美元的加密货币黑客攻击的罪魁祸首，这是“历史上最大的盗窃案”",
-     "d": "币安交易所表示，将承担客户因紧急冻结受影响资产而造成的损失，目前已定位约 30 亿美元。 问答：价值 63 亿美元的加密货币盗窃案有多大？告诉我们：您受到币安黑客攻击的影响吗？商业直播 – 最新更新世界上最大的加密货币......",
-     "src": [
-      {
-       "n": "The Guardian",
-       "u": "https://www.theguardian.com/business/2026/oct/29/binance-crypto-exchange-hack"
-      }
-     ]
-    },
-    {
-     "t": "机器中的幽灵：人工智能如何困扰着对超自然现象的探索",
-     "d": "近年来，由于人工智能聊天机器人的出现，幽灵狩猎发生了变化，超自然现象爱好者担心幽灵狩猎是一项技术含量很高的追求。当艾米·韦恩和贾拉德·卡汀调查闹鬼地点时，他们加载了自己设计的软件，例如分配信号的应用程序......",
+     "t": "AI驱动的幽灵捕捉应用GhostTube Seer上线",
+     "d": "幽灵猎人Amy Waine和Jarrad Cutting推出付费APP GhostTube Seer，利用手机传感器生成超自然图像，已在Google Play获超100万下载。此举显示生成式AI正渗透到小众爱好领域，引发社区对内容真实性和技术滥用的担忧。",
      "src": [
       {
        "n": "The Guardian",
        "u": "https://www.theguardian.com/technology/ng-interactive/2026/oct/30/ai-ghost-hunting"
       }
-     ]
+     ],
+     "full": true
     },
     {
-     "t": "专家警告人工智能版权变更可能违反澳大利亚宪法并引发巨额赔偿权诉讼",
-     "d": "安妮·托米 (Anne Twomey) 表示，从互联网上抓取受版权保护的材料“可能”相当于政府收购财产，获取我们的每日政治电子邮件、免费应用程序或每日新闻播客改变版权法以允许人工智能公司抓取音乐、书籍和新闻可能会引发……",
+     "t": "澳洲议员警告AI版权改革或违宪",
+     "d": "澳洲国民党参议员Ross Cadell在议会委员会警告，拟议的AI数据使用法规可能构成对知识产权的‘征收’，违背宪法‘公正补偿’原则，或引发史上最大赔偿案。此事关系AI训练数据的跨境合规和行业监管走向。",
      "src": [
       {
        "n": "The Guardian",
        "u": "https://www.theguardian.com/law/2026/oct/31/experts-warn-ai-copyright-changes-could-breach-australian-constitution-and-spark-huge-compensation-rights-case"
       }
-     ]
+     ],
+     "full": true
+    },
+    {
+     "t": "Alphabet市值蒸发5000亿美元，AI搜索冲击广告",
+     "d": "Alphabet在本季财报披露AI对话模式削弱传统搜索广告收入，导致股价跌超12%，市值一天蒸发约5000亿美元，尽管整体收入同比增长25%至1276亿美元。此事凸显AI技术对公司核心广告业务的冲击及投资者对盈利前景的担忧。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cm9qzdqpxy48o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
     }
    ]
   },
@@ -127,8 +130,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "加密货币巨头币安试图追回在与朝鲜有关的黑客攻击中被盗的 63 亿美元",
-     "d": "该公司称这次网络攻击非常复杂，据信是有史以来规模最大的一次网络攻击。（8 家媒体同时报道）",
+     "t": "币安遭6.3亿美元黑客攻击，已冻结一半资产",
+     "d": "全球最大加密交易所币安确认遭黑客窃取约63亿美元数字资产，已冻结约30亿美元，调查指向北韩黑客组织，美元计价比特币跌5%。此案刷新加密行业被盗纪录，可能加剧监管压力并影响市场信心。",
      "src": [
       {
        "n": "BBC",
@@ -138,47 +141,50 @@
        "n": "卫报",
        "u": "https://www.theguardian.com/world/2026/oct/30/how-crypto-hacking-funds-isolated-north-korea-nuclear-programme"
       }
-     ]
+     ],
+     "full": true
     },
     {
-     "t": "俄罗斯：批评报纸《新报》将关闭",
-     "d": "俄罗斯仅存的最后一家独立批评媒体《新报》宣布迫于国家当局的压力而关闭。与此同时，乌克兰奥列什基的疏散工作已经开始。（5 家媒体同时报道）",
+     "t": "Alphabet因AI搜索模式导致广告收入下滑",
+     "d": "Alphabet公布AI搜索摘要侵蚀传统搜索广告收益，导致公司市值在一日内缩水约5000亿美元，股价跌逾12%。此现象表明AI功能虽是长期布局，却短期内削弱了公司最重要的收入来源。",
      "src": [
       {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/russia-critical-newspaper-novaya-gazeta-to-close/a-79805693?maca=en-rss-en-all-1573-rdf"
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cm9qzdqpxy48o?at_medium=RSS&at_campaign=rss"
       },
+      {
+       "n": "日本时报",
+       "u": "https://www.japantimes.co.jp/business/2026/10/30/companies/google-500-billion-wipeout/"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美国情报称英伟达CEO被中国间谍盯上",
+     "d": "美国情报部门称，涉嫌为中国情报机构工作的新加坡数据中心高管Alice Huang与英伟达CEO Jensen Huang建立密切联系，可能获取芯片商业信息。此事凸显AI芯片领域的间谍风险，对美国技术出口管制和国家安全构成挑战。",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/technology/2026/oct/29/nvidia-ceo-targeted-chinese-spy"
+      },
+      {
+       "n": "南华早报",
+       "u": "https://www.scmp.com/tech/tech-war/article/3372743/china-dismisses-us-report-suspected-spy-targeting-nvidia-ceo-jensen-huang-groundless"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "北韩发射约十二枚短程弹道导弹",
+     "d": "在韩美紧张局势升温之际，北韩连续试射短程弹道导弹，显示其军事压力升级，可能加剧地区安全不确定性。",
+     "src": [
       {
        "n": "法国24",
-       "u": "https://www.france24.com/en/video/20261030-russia-s-novaya-gazeta-to-cease-publication-amid-kremlin-crackdown"
-      }
-     ]
-    },
-    {
-     "t": "美国中期选举：教皇利奥十四世通过邮寄投票",
-     "d": "作为美国公民，教皇利奥十四世有资格在美国选举中投票，并在周二中期选举前通过邮寄投票行使了这一权利。教皇是芝加哥人，他没有透露他投票给了谁。（5 家媒体同时报道）",
-     "src": [
-      {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/us-midterms-pope-leo-xiv-casts-vote-by-mail/a-79810339?maca=en-rss-en-all-1573-rdf"
+       "u": "https://www.france24.com/en/asia-pacific/20261029-north-korea-launches-around-a-dozen-ballistic-missiles-amid-rising-tensions-with-south-korea"
       },
       {
-       "n": "CBC",
-       "u": "https://www.cbc.ca/news/world/pope-leo-illinois-ballot-9.7402738?cmp=rss"
-      }
-     ]
-    },
-    {
-     "t": "澳大利亚法院称蘑菇毒杀人犯永远不应出狱",
-     "d": "周五，澳大利亚一家上诉法院下令三重杀人犯艾琳·帕特森永远不会出狱，因为她涉嫌用毒品毒害她分居丈夫的四名亲戚，这是“令人震惊的犯罪行为”。（4 家媒体同时报道）",
-     "src": [
-      {
-       "n": "CBC",
-       "u": "https://www.cbc.ca/news/world/erin-patterson-mushroom-poison-murder-prison-9.7402361?cmp=rss"
-      },
-      {
-       "n": "ABC News",
-       "u": "https://abcnews.com/International/wireStory/australian-court-orders-erin-patterson-released-prison-mushroom-137690738"
+       "n": "日本时报",
+       "u": "https://www.japantimes.co.jp/news/2026/10/30/asia-pacific/kim-drone-dominance/"
       }
      ]
     }
@@ -186,8 +192,8 @@
   }
  ],
  "pick": {
-  "t": "加密货币巨头币安试图追回在与朝鲜有关的黑客攻击中被盗的 63 亿美元",
-  "d": "今天报道媒体最多的一件事。该公司称这次网络攻击非常复杂，据信是有史以来规模最大的一次网络攻击。（8 家媒体同时报道）"
+  "t": "币安遭6.3亿美元黑客攻击 疑为北韩所为",
+  "d": "此次跨国网络攻击涉及巨额加密资产，凸显数字金融安全与地缘政治冲突的交叉，对全球资本流动与监管产生深远影响。"
  },
  "week": []
 }
