@@ -1,16 +1,16 @@
 {
- "date": "2026-10-29",
- "kind": "口头禅",
- "en": "touch base",
- "zh": "碰个头，联系一下",
- "by": "简短地沟通进度",
- "line": "touch base",
+ "date": "2026-10-30",
+ "kind": "名言",
+ "en": "To be great is to be misunderstood.",
+ "zh": "伟大就意味着被误解。",
+ "by": "Ralph Waldo Emerson",
+ "line": "To be great is to be misunderstood. — Ralph Waldo Emerson",
  "word": {
-  "w": "tuck",
-  "ph": "tʌk",
-  "zh": "n. 缝褶，活力，鼓声，船尾突出部；vt. 打褶，卷起，挤进，塞",
-  "ex": "None of us has ever been tucked in at night.",
-  "exzh": "我们谁都没有在晚上被人掖过被子。"
+  "w": "oblige",
+  "ph": "ә'blaidʒ",
+  "zh": "vt. 强制，施恩惠于，使感激；vi. 施恩惠，帮忙",
+  "ex": "We're not obliged to do that for Tom.",
+  "exzh": "我们没有义务为汤姆做那件事。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
