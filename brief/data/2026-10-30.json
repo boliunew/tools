@@ -1,0 +1,193 @@
+{
+ "date": "2026-10-30",
+ "generated": "2026-10-30T19:32:27Z",
+ "auto": true,
+ "ai": null,
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "朝鲜可能是价值 63 亿美元的加密货币黑客攻击的罪魁祸首，这是“历史上最大的盗窃案”",
+     "d": "币安交易所表示，将承担客户因紧急冻结受影响资产而造成的损失，目前已定位约 30 亿美元。 问答：价值 63 亿美元的加密货币盗窃案有多大？告诉我们：您受到币安黑客攻击的影响吗？商业直播 – 最新更新世界上最大的加密货币......",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/business/2026/oct/29/binance-crypto-exchange-hack"
+      }
+     ]
+    },
+    {
+     "t": "机器中的幽灵：人工智能如何困扰着对超自然现象的探索",
+     "d": "近年来，由于人工智能聊天机器人的出现，幽灵狩猎发生了变化，超自然现象爱好者担心幽灵狩猎是一项技术含量很高的追求。当艾米·韦恩和贾拉德·卡汀调查闹鬼地点时，他们加载了自己设计的软件，例如分配信号的应用程序......",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/ng-interactive/2026/oct/30/ai-ghost-hunting"
+      }
+     ]
+    },
+    {
+     "t": "专家警告人工智能版权变更可能违反澳大利亚宪法并引发巨额赔偿权诉讼",
+     "d": "安妮·托米 (Anne Twomey) 表示，从互联网上抓取受版权保护的材料“可能”相当于政府收购财产，获取我们的每日政治电子邮件、免费应用程序或每日新闻播客改变版权法以允许人工智能公司抓取音乐、书籍和新闻可能会引发……",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/law/2026/oct/31/experts-warn-ai-copyright-changes-could-breach-australian-constitution-and-spark-huge-compensation-rights-case"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "10/29 周四 收盘：标普500 ETF（SPY）-0.38%，纳指100 ETF（QQQ）-1.42%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 17.2；66% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：GEN +15.8%、CVNA +15.7%、NCLH +13.5%；跌幅最大：NOW -27.0%、FTNT -20.1%、MRVL -13.2%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术、可选消费 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：XOM（盘前）、ABBV（盘前）、CVX（盘前）、AZN（盘前）、BP（盘前）",
+     "d": "按市值挑出最大的几家，共 16 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：PCE 物价指数（10/30 周五）",
+     "d": "Core PCE Price Index 实际 0.3%（预期 0.3%，前值 0.3%）；Core PCE Price Index 实际 3.1%（预期 3.1%，前值 3.0%）。美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/3 周二 11:00：ISM 采购经理指数（重要性：中）",
+     "d": "50 以上表示扩张。制造业 ISM 影响工业、材料股；服务业 ISM 中的价格分项是通胀线索。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/3 周二 12:15：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/4 周三 11:00：JOLTS 职位空缺（重要性：中）",
+     "d": "劳动力市场松紧的指标，空缺下降代表就业降温，利好降息预期。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "加密货币巨头币安试图追回在与朝鲜有关的黑客攻击中被盗的 63 亿美元",
+     "d": "该公司称这次网络攻击非常复杂，据信是有史以来规模最大的一次网络攻击。（8 家媒体同时报道）",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwe8lp7zy07zo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/oct/30/how-crypto-hacking-funds-isolated-north-korea-nuclear-programme"
+      }
+     ]
+    },
+    {
+     "t": "俄罗斯：批评报纸《新报》将关闭",
+     "d": "俄罗斯仅存的最后一家独立批评媒体《新报》宣布迫于国家当局的压力而关闭。与此同时，乌克兰奥列什基的疏散工作已经开始。（5 家媒体同时报道）",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/russia-critical-newspaper-novaya-gazeta-to-close/a-79805693?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261030-russia-s-novaya-gazeta-to-cease-publication-amid-kremlin-crackdown"
+      }
+     ]
+    },
+    {
+     "t": "美国中期选举：教皇利奥十四世通过邮寄投票",
+     "d": "作为美国公民，教皇利奥十四世有资格在美国选举中投票，并在周二中期选举前通过邮寄投票行使了这一权利。教皇是芝加哥人，他没有透露他投票给了谁。（5 家媒体同时报道）",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/us-midterms-pope-leo-xiv-casts-vote-by-mail/a-79810339?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/pope-leo-illinois-ballot-9.7402738?cmp=rss"
+      }
+     ]
+    },
+    {
+     "t": "澳大利亚法院称蘑菇毒杀人犯永远不应出狱",
+     "d": "周五，澳大利亚一家上诉法院下令三重杀人犯艾琳·帕特森永远不会出狱，因为她涉嫌用毒品毒害她分居丈夫的四名亲戚，这是“令人震惊的犯罪行为”。（4 家媒体同时报道）",
+     "src": [
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/erin-patterson-mushroom-poison-murder-prison-9.7402361?cmp=rss"
+      },
+      {
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/australian-court-orders-erin-patterson-released-prison-mushroom-137690738"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "加密货币巨头币安试图追回在与朝鲜有关的黑客攻击中被盗的 63 亿美元",
+  "d": "今天报道媒体最多的一件事。该公司称这次网络攻击非常复杂，据信是有史以来规模最大的一次网络攻击。（8 家媒体同时报道）"
+ },
+ "week": []
+}
