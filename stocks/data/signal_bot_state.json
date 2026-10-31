@@ -1,32 +1,38 @@
 {
-  "last_sent_date": "2026-10-29",
+  "last_sent_date": "2026-10-30",
   "tickers": {
     "NVDA": {
       "oversold": false,
       "overbought": false,
       "trend": false,
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "prev_state": {
         "oversold": false,
         "overbought": false,
         "trend": false,
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "prev_state": {
           "oversold": false,
           "overbought": false,
           "trend": false,
-          "date": "2026-10-27",
+          "date": "2026-10-28",
           "prev_state": {
             "oversold": false,
             "overbought": false,
             "trend": false,
-            "date": "2026-10-26",
+            "date": "2026-10-27",
             "prev_state": {
               "oversold": false,
               "overbought": false,
               "trend": false,
-              "date": "2026-10-23",
-              "prev_state": {}
+              "date": "2026-10-26",
+              "prev_state": {
+                "oversold": false,
+                "overbought": false,
+                "trend": false,
+                "date": "2026-10-23",
+                "prev_state": {}
+              }
             }
           }
         }
@@ -35,29 +41,35 @@
     "AMD": {
       "oversold": false,
       "overbought": false,
-      "trend": true,
-      "date": "2026-10-29",
+      "trend": false,
+      "date": "2026-10-30",
       "prev_state": {
         "oversold": false,
         "overbought": false,
         "trend": true,
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "prev_state": {
           "oversold": false,
           "overbought": false,
           "trend": true,
-          "date": "2026-10-27",
+          "date": "2026-10-28",
           "prev_state": {
             "oversold": false,
             "overbought": false,
-            "trend": false,
-            "date": "2026-10-26",
+            "trend": true,
+            "date": "2026-10-27",
             "prev_state": {
               "oversold": false,
               "overbought": false,
               "trend": false,
-              "date": "2026-10-23",
-              "prev_state": {}
+              "date": "2026-10-26",
+              "prev_state": {
+                "oversold": false,
+                "overbought": false,
+                "trend": false,
+                "date": "2026-10-23",
+                "prev_state": {}
+              }
             }
           }
         }
@@ -67,28 +79,34 @@
       "oversold": false,
       "overbought": false,
       "trend": true,
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "prev_state": {
         "oversold": false,
         "overbought": false,
         "trend": true,
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "prev_state": {
           "oversold": false,
           "overbought": false,
           "trend": true,
-          "date": "2026-10-27",
+          "date": "2026-10-28",
           "prev_state": {
             "oversold": false,
             "overbought": false,
             "trend": true,
-            "date": "2026-10-26",
+            "date": "2026-10-27",
             "prev_state": {
               "oversold": false,
               "overbought": false,
               "trend": true,
-              "date": "2026-10-23",
-              "prev_state": {}
+              "date": "2026-10-26",
+              "prev_state": {
+                "oversold": false,
+                "overbought": false,
+                "trend": true,
+                "date": "2026-10-23",
+                "prev_state": {}
+              }
             }
           }
         }
@@ -98,28 +116,34 @@
       "oversold": true,
       "overbought": false,
       "trend": false,
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "prev_state": {
-        "oversold": false,
+        "oversold": true,
         "overbought": false,
         "trend": false,
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "prev_state": {
-          "oversold": true,
+          "oversold": false,
           "overbought": false,
           "trend": false,
-          "date": "2026-10-27",
+          "date": "2026-10-28",
           "prev_state": {
             "oversold": true,
             "overbought": false,
             "trend": false,
-            "date": "2026-10-26",
+            "date": "2026-10-27",
             "prev_state": {
               "oversold": true,
               "overbought": false,
               "trend": false,
-              "date": "2026-10-23",
-              "prev_state": {}
+              "date": "2026-10-26",
+              "prev_state": {
+                "oversold": true,
+                "overbought": false,
+                "trend": false,
+                "date": "2026-10-23",
+                "prev_state": {}
+              }
             }
           }
         }
@@ -129,28 +153,34 @@
       "oversold": false,
       "overbought": false,
       "trend": true,
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "prev_state": {
         "oversold": false,
         "overbought": false,
         "trend": true,
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "prev_state": {
           "oversold": false,
           "overbought": false,
           "trend": true,
-          "date": "2026-10-27",
+          "date": "2026-10-28",
           "prev_state": {
             "oversold": false,
             "overbought": false,
             "trend": true,
-            "date": "2026-10-26",
+            "date": "2026-10-27",
             "prev_state": {
               "oversold": false,
               "overbought": false,
               "trend": true,
-              "date": "2026-10-23",
-              "prev_state": {}
+              "date": "2026-10-26",
+              "prev_state": {
+                "oversold": false,
+                "overbought": false,
+                "trend": true,
+                "date": "2026-10-23",
+                "prev_state": {}
+              }
             }
           }
         }
@@ -160,28 +190,34 @@
       "oversold": false,
       "overbought": false,
       "trend": true,
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "prev_state": {
         "oversold": false,
         "overbought": false,
         "trend": true,
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "prev_state": {
           "oversold": false,
           "overbought": false,
           "trend": true,
-          "date": "2026-10-27",
+          "date": "2026-10-28",
           "prev_state": {
             "oversold": false,
             "overbought": false,
             "trend": true,
-            "date": "2026-10-26",
+            "date": "2026-10-27",
             "prev_state": {
               "oversold": false,
               "overbought": false,
               "trend": true,
-              "date": "2026-10-23",
-              "prev_state": {}
+              "date": "2026-10-26",
+              "prev_state": {
+                "oversold": false,
+                "overbought": false,
+                "trend": true,
+                "date": "2026-10-23",
+                "prev_state": {}
+              }
             }
           }
         }
