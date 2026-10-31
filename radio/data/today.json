@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-30T16:43:55Z",
- "date": "2026-10-30",
+ "generated": "2026-10-31T15:46:43Z",
+ "date": "2026-10-31",
  "engine": "edge",
- "total": 526.7,
- "short": 344.6,
+ "total": 552.1,
+ "short": 334.4,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610300942",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610310845",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月30日 星期五",
-   "dur": 10.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610300942",
+   "sub": "10月31日 星期六",
+   "dur": 9.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "周五了，坚持一下就周末了！10月30日，星期五，通勤电台准时上线。不想听的直接按下一首。"
+     "t": "周末还出门，辛苦了。星期六，10月31日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 毛毛雨 68°/60°F",
-   "dur": 26.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610300942",
+   "sub": "Upland 小雨 69°/55°F",
+   "dur": 31.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天毛毛雨。早上7点出门大约华氏60度，16摄氏度。傍晚5点下班大约华氏64度，18摄氏度。白天最高68度，约20摄氏度；最低60度。降雨概率24%。白天空气质量中等，指数最高53。今天日落时间是傍晚5点59分。"
+     "t": "Upland今天小雨。早上7点出门大约华氏55度，13摄氏度。傍晚5点下班大约华氏69度，20摄氏度。白天最高69度，约21摄氏度；最低55度。降雨概率55%。白天空气质量良好，指数最高46。今天日落时间是傍晚5点58分。提醒一下：记得带伞，路面湿滑，车速放慢。"
     }
    ]
   },
@@ -38,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 30.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610300942",
+   "dur": 29.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股10月29日收盘。标普500 ETF 下跌0.4%，纳指100 ETF 下跌1.4%。恐慌指数VIX 17.2，正常水平。标普成分股里，66%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股10月30日收盘。标普500 ETF 下跌1.8%，纳指100 ETF 下跌3.5%。恐慌指数VIX 19.4，正常水平。标普成分股里，62%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "27 个候选",
-   "dur": 64.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610300942",
+   "sub": "35 个候选",
+   "dur": 64.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天27个候选，评分最高的是Salesforce，代码 C R M。不想听细节可以按下一首。"
+     "t": "股票池今天35个候选，评分最高的是GoDaddy，代码 G D D Y。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中回踩金坑12个，血筹码8个，RSI2 超跌反弹7个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，血筹码12个，强势新高8个，回踩金坑2个，挤压突破1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Salesforce，代码 C R M，RSI2 超跌反弹信号，收盘价230.90美元，止损参考208.04。"
+     "t": "第1，GoDaddy，代码 G D D Y，强势新高信号，收盘价117.24美元，止损参考107.56。"
     },
     {
      "lang": "zh",
-     "t": "第2，Valero Energy，代码 V L O，RSI2 超跌反弹信号，收盘价384.57美元，止损参考339.19。"
+     "t": "第2，Tyler Technologies，代码 T Y L，强势新高信号，收盘价394.30美元，止损参考366.08。"
     },
     {
      "lang": "zh",
-     "t": "第3，Twilio，代码 T W L O，RSI2 超跌反弹信号，收盘价241.90美元，止损参考204.70。"
+     "t": "第3，Pfizer，代码 P F E，强势新高信号，收盘价30.52美元，止损参考29.37，注意近期有财报。"
     },
     {
      "lang": "zh",
@@ -83,50 +83,50 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "7 件大事",
-   "dur": 80.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610300942",
+   "sub": "6 件大事",
+   "dur": 73.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610310845",
    "text": [
-    {
-     "lang": "zh",
-     "t": "今天，重要数据有：美东08:30公布PCE 物价指数。另外，有3家大公司发财报。"
-    },
-    {
-     "lang": "zh",
-     "t": "ExxonMobil，代码 X O M，盘前发财报。期权定价波动正负1.2%。标签：利好出尽型、已提前炒作、财报日常跌。"
-    },
-    {
-     "lang": "zh",
-     "t": "AbbVie，代码 A B B V，盘前发财报。期权定价波动正负2.0%。标签：利好出尽型。"
-    },
-    {
-     "lang": "zh",
-     "t": "Chevron，代码 C V X，盘前发财报。期权定价波动正负1.3%。标签：已提前炒作。"
-    },
     {
      "lang": "zh",
      "t": "11月2日，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Apple，代码 A A P L，盘后发财报。期权定价波动正负4.2%。标签：利好出尽型。"
+     "t": "Apple，代码 A A P L，盘后发财报。期权定价波动正负4.3%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Palantir Technologies，代码 P L T R，盘后发财报。期权定价波动正负12.4%。标签：大波动。"
+     "t": "Palantir Technologies，代码 P L T R，盘后发财报。期权定价波动正负13.6%。标签：大波动。"
     },
     {
      "lang": "zh",
      "t": "Vertex Pharmaceuticals Incorporated，代码 V R T X，盘后发财报。标签：利好出尽型、已提前炒作。"
+    },
+    {
+     "lang": "zh",
+     "t": "11月3日，有3家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "Advanced Micro Devices，代码 A M D，盘后发财报。期权定价波动正负12.5%。标签：大波动、利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "Amgen，代码 A M G N，盘后发财报。标签：利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "Arista Networks，代码 A N E T，盘后发财报。期权定价波动正负11.9%。标签：大波动、利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "Al Jazeera · BBC · The Guardian",
-   "dur": 93.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610300942",
+   "sub": "Al Jazeera · BBC · NPR",
+   "dur": 85.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
@@ -134,48 +134,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：美国中期选举：还有4天–民意调查显示特朗普取消了两次集会。"
+     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：勒布朗·詹姆斯（ LeBron James ）、泰尔西·马克西（ Tyrese Maxey ）在76人队在NBA杯惊悚片中击败尼。"
     },
     {
      "lang": "en",
-     "t": "US midterms: 4 days to go – What the polls say as Trump cancels two rallies"
+     "t": "LeBron James, Tyrese Maxey shine as 76ers beat Knicks in NBA Cup thriller"
     },
     {
      "lang": "en",
-     "t": "Trump cancels Kansas and Iowa rallies, opting for telephone events across nearly 20 states over the weekend."
+     "t": "LeBron scored 20 points and hit the go-ahead fadeaway late, and Maxey had 27 points to lead the 76ers to a victory."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，科学，难度B2。大意是：作为气象局发布的雾警告，周五的危险驾驶条件。"
+     "t": "第2条，来自BBC，国际，难度B1。大意是：西班牙火车灾难云桑切斯再次当选的机会。"
     },
     {
      "lang": "en",
-     "t": "Hazardous driving conditions for Friday as fog warning issued by Met Office"
+     "t": "Spain train disaster clouds Sánchez chances of re-election"
     },
     {
      "lang": "en",
-     "t": "Foggy conditions likely to bring tricky conditions for the Friday morning commute as severe weather warning issued."
+     "t": "The Spanish PM is hit by a succession of crises just weeks before a snap general election."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自The Guardian，科学，难度B2。大意是：乡村日记：秋天缩短的灯光和阴影| Merryn Glover。"
+     "t": "第3条，来自NPR，综合，难度B2。大意是：ICE活动在中期之前激增。选民投票率也是如此。"
     },
     {
      "lang": "en",
-     "t": "Country diary: The light and shade of autumn’s shortening days | Merryn Glover"
+     "t": "ICE activity is surging ahead of midterms. So is voter turnout."
     },
     {
      "lang": "en",
-     "t": "Loch Insh, Cairngorms: In my three decades in Scotland I’ve adjusted to the darkness of this time of year, and found glory in the quality of light It is the one clear day in a fortnight of heavy cloud, wind and rain, so I am out by the loch"
+     "t": "Across the country, there are reports of heightened ICE activity."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "cautious · la oveja",
-   "dur": 31.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610300942",
+   "sub": "wildlife · el hospital",
+   "dur": 32.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
@@ -183,15 +183,15 @@
     },
     {
      "lang": "en",
-     "t": "cautious"
+     "t": "wildlife"
     },
     {
      "lang": "zh",
-     "t": "意思是：谨慎的。拼写是："
+     "t": "意思是：野生动物。拼写是："
     },
     {
      "lang": "en",
-     "t": "c, a, u, t, i, o, u, s"
+     "t": "w, i, l, d, l, i, f, e"
     },
     {
      "lang": "zh",
@@ -199,7 +199,7 @@
     },
     {
      "lang": "en",
-     "t": "cautious"
+     "t": "wildlife"
     },
     {
      "lang": "zh",
@@ -207,44 +207,44 @@
     },
     {
      "lang": "es",
-     "t": "la oveja"
+     "t": "el hospital"
     },
     {
      "lang": "zh",
-     "t": "意思是：绵羊。跟着读一遍。"
+     "t": "意思是：医院。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la oveja"
+     "t": "el hospital"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 20.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610300942",
+   "sub": "易错",
+   "dur": 19.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天说一个常见错误。不要说："
     },
     {
      "lang": "en",
-     "t": "To be great is to be misunderstood."
+     "t": "Can you borrow me your pen?"
     },
     {
      "lang": "zh",
-     "t": "意思是：伟大就意味着被误解。这句话出自 Ralph Waldo Emerson。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "应该说："
     },
     {
      "lang": "en",
-     "t": "To be great is to be misunderstood."
+     "t": "Can you lend me your pen?"
+    },
+    {
+     "lang": "zh",
+     "t": "能借我你的笔吗？。借出去用 lend，借进来用 borrow"
     }
    ],
    "opt": true
@@ -252,61 +252,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "休息室闲聊",
-   "dur": 58.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610300942",
+   "sub": "给调度打电话",
+   "dur": 67.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：休息室闲聊。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "今天好漫长啊。"
+     "t": "司机还没到。"
     },
     {
      "lang": "en",
-     "t": "Long day, huh?"
+     "t": "The driver hasn't shown up yet."
     },
     {
      "lang": "en",
-     "t": "Long day, huh?"
+     "t": "The driver hasn't shown up yet."
     },
     {
      "lang": "zh",
-     "t": "明天见。"
+     "t": "我们这边有延误。"
     },
     {
      "lang": "en",
-     "t": "See you tomorrow."
+     "t": "We have a delay on our end."
     },
     {
      "lang": "en",
-     "t": "See you tomorrow."
+     "t": "We have a delay on our end."
     },
     {
      "lang": "zh",
-     "t": "周末过得怎么样？"
+     "t": "柜子还不能提。"
     },
     {
      "lang": "en",
-     "t": "How was your weekend?"
+     "t": "The container isn't ready for pickup yet."
     },
     {
      "lang": "en",
-     "t": "How was your weekend?"
+     "t": "The container isn't ready for pickup yet."
     },
     {
      "lang": "zh",
-     "t": "做了什么好玩的吗？"
+     "t": "能派另一个司机来吗？"
     },
     {
      "lang": "en",
-     "t": "Did you do anything fun?"
+     "t": "Can you send another driver?"
     },
     {
      "lang": "en",
-     "t": "Did you do anything fun?"
+     "t": "Can you send another driver?"
     },
     {
      "lang": "zh",
@@ -318,13 +318,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "九寨沟",
-   "dur": 22.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610300942",
+   "sub": "冰岛",
+   "dur": 21.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：九寨沟。彩色海子与瀑布群，水色清透得不真实。做法：秋季（10 月中下旬）彩林配蓝水，最受摄影者追捧；景区内乘观光车，按 Y 字形三条沟规划路线；海拔约 2000–3100 米，体力弱者放慢节奏。"
+     "t": "今日一招：冰岛。冰与火之国：瀑布、冰川、黑沙滩与极光。做法：环岛 1 号公路：黄金圈、塞里雅兰瀑布、冰河湖；9–3 月看极光，6–8 月有午夜阳光；环岛建议 8–10 天，只玩南岸 4–5 天。"
     }
    ],
    "opt": true
@@ -332,13 +332,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1864 · 1922 · 2004",
-   "dur": 29.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610300942",
+   "sub": "1874 · 1914 · 1992",
+   "dur": 21.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1864年，由于普丹战争的战败，丹麦王国签订《维也纳和约》并宣布放弃石勒苏益格和什列斯威-荷尔斯泰因，两地依和约被普鲁士王国和奥地利帝国瓜分。1922年，贝尼托·墨索里尼被意大利国王埃马努埃莱三世任命为总理。2004年，金鹰卡通卫视于湖南广播电视台开播。"
+     "t": "历史上的今天。1874年，清朝和日本订立《台事北京专约》。1914年，青岛战役中，日本军队对当地德军堡垒发动总攻。1992年，伽利略蒙冤360年后，终于获得梵蒂冈教宗若望保禄二世的平反。"
     }
    ],
    "opt": true
@@ -346,21 +346,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "记游松风亭",
-   "dur": 50.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610300942",
+   "sub": "水调歌头·明月几时有",
+   "dur": 89.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：记游松风亭。写于1094年，他57岁，在惠州。"
+     "t": "读一首苏轼：水调歌头·明月几时有。写于1076年，他39岁，在密州（今山东诸城）。"
     },
     {
      "lang": "zh",
-     "t": "余尝寓居惠州嘉祐寺，纵步松风亭下。足力疲乏，思欲就亭止息。望亭宇尚在木末，意谓是如何得到？良久忽曰：「此间有甚么歇不得处？」由是如挂钩之鱼，忽得解脱。"
+     "t": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：我曾经寄住在惠州的嘉祐寺，有一次随意散步到松风亭下。走得脚都软了，想到亭子里歇一歇。抬头一看，亭子还在高高的树梢那边，心想：这要怎么才走得到？想了很久，忽然对自己说：「这里有什么地方不能歇呢？」一下子就像被钩住的鱼脱了钩，整个人轻松了。"
+     "t": "白话意思是：明月是从什么时候开始有的？我端起酒杯问青天。不知道天上的宫殿里，今晚是哪一年。我想乘着风回到天上去，又怕那美玉砌成的楼阁太高，我受不住那里的寒冷。还是在月下起舞，与自己的影子为伴吧，天上哪里比得上人间。月光转过朱红的楼阁，低低照进雕花的门窗，照着睡不着的人。月亮不该对人有什么怨恨吧，为什么偏偏总在人们分别的时候变圆？人有悲伤、欢乐、分离、团聚，月有阴暗、明亮、圆满、残缺，这种事自古就难以两全。只希望我们都平安长久，即使相隔千里，也能共享这一轮明月。"
     }
    ],
    "opt": true
@@ -369,12 +369,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610300942",
+   "dur": 6.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610310845",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
     }
    ]
   }
