@@ -1,16 +1,16 @@
 {
- "date": "2026-10-30",
- "kind": "名言",
- "en": "To be great is to be misunderstood.",
- "zh": "伟大就意味着被误解。",
- "by": "Ralph Waldo Emerson",
- "line": "To be great is to be misunderstood. — Ralph Waldo Emerson",
+ "date": "2026-10-31",
+ "kind": "易错",
+ "en": "Can you lend me your pen?",
+ "zh": "能借我你的笔吗？",
+ "by": "借出去用 lend，借进来用 borrow",
+ "line": "✗ Can you borrow me your pen? → ✓ Can you lend me your pen?",
  "word": {
-  "w": "oblige",
-  "ph": "ә'blaidʒ",
-  "zh": "vt. 强制，施恩惠于，使感激；vi. 施恩惠，帮忙",
-  "ex": "We're not obliged to do that for Tom.",
-  "exzh": "我们没有义务为汤姆做那件事。"
+  "w": "nineteen",
+  "ph": ".nain'ti:n",
+  "zh": "num. 十九，十九个",
+  "ex": "Nineteen or twenty at the most.",
+  "exzh": "最多十九或二十岁。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
