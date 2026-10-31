@@ -1,0 +1,174 @@
+{
+ "date": "2026-10-31",
+ "generated": "2026-10-31T18:39:58Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "美股科技股连跌 AI 投资引发担忧",
+     "d": "受 AI 巨额投入前景不明影响，英特尔股跌 28%，Alphabet 再跌 1.4%，其他如 Reddit、亚马逊亦走低。AI 支出预计 2026 年达 8000 亿美元，但盈利未达预期，引发投资者对 AI 泡沫的担忧。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cvwy72e0n72yo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "近三分之二美国青少年使用 AI 聊天机器人",
+     "d": "调查显示，9‑12 岁儿童中近 50% 使用过 AI 聊天机器人，13 岁以上比例升至约 75%；90% 的 9‑17 岁青少年使用机器人帮助学业和情感支持。研究关联频繁使用 AI 与较差的心理健康指标，但未确认因果关系。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/10/30/nx-s1-6022278/ai-artificial-intelligence-teens-jed-common-sense-media"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "10/30 周五 收盘：标普500 ETF（SPY）-1.77%，纳指100 ETF（QQQ）-3.47%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 19.4；62% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：REGN +13.3%、GPN +13.0%、GDDY +10.7%；跌幅最大：RDDT -29.2%、INTC -28.6%、ILMN -18.6%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。医疗保健、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/2 周一的重要财报：AAPL（盘后）、PLTR（盘后）、VRTX（盘后）、MAR（盘前）、WMB（盘后）",
+     "d": "按市值挑出最大的几家，共 11 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：PCE 物价指数（10/30 周五）",
+     "d": "Core PCE Price Index 实际 0.3%（预期 0.3%，前值 0.3%）；Core PCE Price Index 实际 3.1%（预期 3.1%，前值 3.0%）。美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/3 周二 11:00：ISM 采购经理指数（重要性：中）",
+     "d": "50 以上表示扩张。制造业 ISM 影响工业、材料股；服务业 ISM 中的价格分项是通胀线索。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/4 周三 11:00：JOLTS 职位空缺（重要性：中）",
+     "d": "劳动力市场松紧的指标，空缺下降代表就业降温，利好降息预期。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/5 周四 11:00：ISM 采购经理指数（重要性：中）",
+     "d": "50 以上表示扩张。制造业 ISM 影响工业、材料股；服务业 ISM 中的价格分项是通胀线索。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "波兰宪法法院法官被停职引发抗议",
+     "d": "自波兰宪法法院院长与副院长被暂停职务后，首相杜达克政府在华沙法院门前遭示威者冲突。政府称此举是恢复法治，反对派指责为“政变”。事态加剧了波兰两大政治阵营对司法控制权的争斗。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/poland-protesters-police-clash-amid-top-court-standoff/a-79813882?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/police-detain-3-protesters-overnight-rally-polish-president-137731099"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "G20 外长会合因俄罗斯部长遭拒合影",
+     "d": "在亚特兰大会议上，多国外交官拒绝与俄罗斯外长拉夫罗夫合影，导致美方取消集体合影。此举突显俄乌冲突中的外交紧张，欧美对俄施压而俄美关系因能源交易出现微弱回暖。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cmd6dp2y576do?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/russia-s-presence-divides-g20-ministers"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美日韩重申实现朝鲜无核化承诺",
+     "d": "美、韩、日三国在亚特兰大的 G20 期间再次承诺实现朝鲜“完全无核化”，并履行联合国安理会制裁。朝鲜仍拒绝放弃核武，此举凸显地区安全议题与美方对朝接触的政治考量。",
+     "src": [
+      {
+       "n": "日本时报",
+       "u": "https://www.japantimes.co.jp/news/2026/10/31/asia-pacific/politics/north-korea-denuclearization-vow/"
+      },
+      {
+       "n": "南华早报",
+       "u": "https://www.scmp.com/news/asia/east-asia/article/3372818/us-south-korea-and-japan-reaffirm-north-korea-denuclearisation-stance"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "美日韩承诺实现朝鲜“完全无核化”",
+  "d": "这一三方承诺直接关系到东亚安全格局与全球能源供应链，是影响区域经济与防务投资的重要信号。"
+ },
+ "week": []
+}
