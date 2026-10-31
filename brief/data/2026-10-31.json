@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "generated": "2026-10-31T18:39:58Z",
+ "generated": "2026-10-31T20:19:39Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "美股科技股连跌 AI 投资引发担忧",
-     "d": "受 AI 巨额投入前景不明影响，英特尔股跌 28%，Alphabet 再跌 1.4%，其他如 Reddit、亚马逊亦走低。AI 支出预计 2026 年达 8000 亿美元，但盈利未达预期，引发投资者对 AI 泡沫的担忧。",
+     "t": "美股科技股连跌 两日跌幅逾30% AI支出逼近千亿美元",
+     "d": "受AI巨额投入预期与业绩不佳影响，英特尔跌28%、Alphabet再跌1.4%，纳斯达克十月累计跌幅为2025年3月以来最大。AI相关支出预计2026年将达8000亿美元，企业担忧收益不足可能导致AI泡沫。",
      "src": [
       {
        "n": "BBC",
@@ -20,8 +20,8 @@
      "full": true
     },
     {
-     "t": "近三分之二美国青少年使用 AI 聊天机器人",
-     "d": "调查显示，9‑12 岁儿童中近 50% 使用过 AI 聊天机器人，13 岁以上比例升至约 75%；90% 的 9‑17 岁青少年使用机器人帮助学业和情感支持。研究关联频繁使用 AI 与较差的心理健康指标，但未确认因果关系。",
+     "t": "近三分之二美国青少年使用AI聊天机器人",
+     "d": "Common Sense Media和JED基金会调研显示，约75%13岁以上青少年及近一半9-12岁儿童使用AI聊天机器人，主要用于学业帮助和情感支持。研究关联使用AI时情绪困扰者更易报告心理健康问题。",
      "src": [
       {
        "n": "NPR",
@@ -119,38 +119,37 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "波兰宪法法院法官被停职引发抗议",
-     "d": "自波兰宪法法院院长与副院长被暂停职务后，首相杜达克政府在华沙法院门前遭示威者冲突。政府称此举是恢复法治，反对派指责为“政变”。事态加剧了波兰两大政治阵营对司法控制权的争斗。",
-     "src": [
-      {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/poland-protesters-police-clash-amid-top-court-standoff/a-79813882?maca=en-rss-en-all-1573-rdf"
-      },
-      {
-       "n": "ABC News",
-       "u": "https://abcnews.com/International/wireStory/police-detain-3-protesters-overnight-rally-polish-president-137731099"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "G20 外长会合因俄罗斯部长遭拒合影",
-     "d": "在亚特兰大会议上，多国外交官拒绝与俄罗斯外长拉夫罗夫合影，导致美方取消集体合影。此举突显俄乌冲突中的外交紧张，欧美对俄施压而俄美关系因能源交易出现微弱回暖。",
+     "t": "币安已覆盖90%被盗6.3亿美元资产",
+     "d": "全球最大加密交易所币安确认已用公司资金补偿约6.3亿美元被盗资产的90%，剩余10%仍在筹措中，并计划本周恢复用户提现。调查指向朝鲜支持的Lazarus组织。",
      "src": [
       {
        "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/cmd6dp2y576do?at_medium=RSS&at_campaign=rss"
+       "u": "https://www.bbc.co.uk/news/articles/ckpdg3ql4169o?at_medium=RSS&at_campaign=rss"
       },
       {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/russia-s-presence-divides-g20-ministers"
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/business/binance-says-it-has-covered-90-losses-63-billion-hack-so-far-6509761"
       }
      ],
      "full": true
     },
     {
-     "t": "美日韩重申实现朝鲜无核化承诺",
-     "d": "美、韩、日三国在亚特兰大的 G20 期间再次承诺实现朝鲜“完全无核化”，并履行联合国安理会制裁。朝鲜仍拒绝放弃核武，此举凸显地区安全议题与美方对朝接触的政治考量。",
+     "t": "美国批准向乌克兰出售500枚爱国者导弹",
+     "d": "美方正式批准大规模防空装备供应，提升乌克兰空防能力，对俄乌冲突走向及地区安全格局产生直接影响。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/europe/20261030-live-russia-strikes-energy-facilities-kyiv-aid-convoy-heads-besieged-town-oleshky-ukraine"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c3vgxznlx7jzo?at_medium=RSS&at_campaign=rss"
+      }
+     ]
+    },
+    {
+     "t": "美日韩重申完成朝核无核化承诺",
+     "d": "美国、韩国和日本在亚太经合组织峰会前重申实现朝鲜“完全无核化”的坚定承诺，并将落实安理会相关制裁。此举于朝鲜拒绝裁军的背景下，凸显地区核安全与外交争议。",
      "src": [
       {
        "n": "日本时报",
@@ -167,8 +166,8 @@
   }
  ],
  "pick": {
-  "t": "美日韩承诺实现朝鲜“完全无核化”",
-  "d": "这一三方承诺直接关系到东亚安全格局与全球能源供应链，是影响区域经济与防务投资的重要信号。"
+  "t": "币安已弥补约90%被盗资产",
+  "d": "这起史上最大加密货币盗窃案的后续进展直接影响行业信任度和监管力度，是今日金融市场的关键焦点。"
  },
  "week": []
 }
