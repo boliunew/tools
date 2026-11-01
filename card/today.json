@@ -1,16 +1,16 @@
 {
- "date": "2026-10-31",
- "kind": "易错",
- "en": "Can you lend me your pen?",
- "zh": "能借我你的笔吗？",
- "by": "借出去用 lend，借进来用 borrow",
- "line": "✗ Can you borrow me your pen? → ✓ Can you lend me your pen?",
+ "date": "2026-11-01",
+ "kind": "习语",
+ "en": "The ball is in your court",
+ "zh": "该你出招了",
+ "by": "轮到你做决定了",
+ "line": "The ball is in your court",
  "word": {
-  "w": "nineteen",
-  "ph": ".nain'ti:n",
-  "zh": "num. 十九，十九个",
-  "ex": "Nineteen or twenty at the most.",
-  "exzh": "最多十九或二十岁。"
+  "w": "availability",
+  "ph": "ә.veilә'biliti",
+  "zh": "n. 有效性，可利用性，可利用的人",
+  "ex": "Availability may vary by region and device compatibility.",
+  "exzh": "实际提供内容可能因地区与装置相容性而异。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
