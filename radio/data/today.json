@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-10-31T15:46:43Z",
- "date": "2026-10-31",
+ "generated": "2026-11-01T16:50:52Z",
+ "date": "2026-11-01",
  "engine": "edge",
- "total": 552.1,
- "short": 334.4,
+ "total": 543.9,
+ "short": 329.0,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202610310845",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611010849",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "10月31日 星期六",
-   "dur": 9.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202610310845",
+   "sub": "11月1日 星期日",
+   "dur": 10.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。星期六，10月31日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "周末还出门，辛苦了。11月1日，星期日，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 小雨 69°/55°F",
-   "dur": 31.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202610310845",
+   "sub": "Upland 大雨 63°/51°F",
+   "dur": 31.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天小雨。早上7点出门大约华氏55度，13摄氏度。傍晚5点下班大约华氏69度，20摄氏度。白天最高69度，约21摄氏度；最低55度。降雨概率55%。白天空气质量良好，指数最高46。今天日落时间是傍晚5点58分。提醒一下：记得带伞，路面湿滑，车速放慢。"
+     "t": "Upland今天大雨。早上7点出门大约华氏58度，14摄氏度。傍晚5点下班大约华氏57度，14摄氏度。白天最高63度，约17摄氏度；最低51度。降雨概率84%。白天空气质量良好，指数最高50。今天日落时间是傍晚4点57分。提醒一下：记得带伞，路面湿滑，车速放慢。"
     }
    ]
   },
@@ -39,7 +39,7 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 29.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202610310845",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
@@ -52,7 +52,7 @@
    "title": "📈 股票池",
    "sub": "35 个候选",
    "dur": 64.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202610310845",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
@@ -84,12 +84,12 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "6 件大事",
-   "dur": 73.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202610310845",
+   "dur": 73.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "11月2日，有3家大公司发财报。"
+     "t": "明天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
@@ -124,9 +124,9 @@
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "Al Jazeera · BBC · NPR",
-   "dur": 85.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202610310845",
+   "sub": "BBC · Al Jazeera · NPR",
+   "dur": 84.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
@@ -134,48 +134,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：勒布朗·詹姆斯（ LeBron James ）、泰尔西·马克西（ Tyrese Maxey ）在76人队在NBA杯惊悚片中击败尼。"
+     "t": "第1条，来自BBC，科学，难度B1。大意是：犀牛兄弟姐妹用蛋糕庆祝一周岁生日。"
     },
     {
      "lang": "en",
-     "t": "LeBron James, Tyrese Maxey shine as 76ers beat Knicks in NBA Cup thriller"
+     "t": "Rhino siblings celebrate first birthday with cake"
     },
     {
      "lang": "en",
-     "t": "LeBron scored 20 points and hit the go-ahead fadeaway late, and Maxey had 27 points to lead the 76ers to a victory."
+     "t": "Markus and Mo weighed about 70kg (11st) at birth, and now weigh about 500kg (78st) each."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，国际，难度B1。大意是：西班牙火车灾难云桑切斯再次当选的机会。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：金州女武神击败亚特兰大梦想夺得第一个WNBA冠军。"
     },
     {
      "lang": "en",
-     "t": "Spain train disaster clouds Sánchez chances of re-election"
+     "t": "Golden State Valkyries defeat Atlanta Dream to capture first WNBA crown"
     },
     {
      "lang": "en",
-     "t": "The Spanish PM is hit by a succession of crises just weeks before a snap general election."
+     "t": "Gabby Williams, named Most Valuable Player, sets records for most points (137) and most steals (18) in the WNBA Finals."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B2。大意是：ICE活动在中期之前激增。选民投票率也是如此。"
+     "t": "第3条，来自NPR，综合，难度B1。大意是：在中期之前，混合经济预测权重沉重。"
     },
     {
      "lang": "en",
-     "t": "ICE activity is surging ahead of midterms. So is voter turnout."
+     "t": "Mixed economic forecast weighs heavy ahead of midterms"
     },
     {
      "lang": "en",
-     "t": "Across the country, there are reports of heightened ICE activity."
+     "t": "There was a mixed Halloween bag of economic news this week."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "wildlife · el hospital",
-   "dur": 32.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202610310845",
+   "sub": "hurt · el burro",
+   "dur": 29.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
@@ -183,15 +183,15 @@
     },
     {
      "lang": "en",
-     "t": "wildlife"
+     "t": "hurt"
     },
     {
      "lang": "zh",
-     "t": "意思是：野生动物。拼写是："
+     "t": "意思是：伤害，疼。拼写是："
     },
     {
      "lang": "en",
-     "t": "w, i, l, d, l, i, f, e"
+     "t": "h, u, r, t"
     },
     {
      "lang": "zh",
@@ -199,7 +199,7 @@
     },
     {
      "lang": "en",
-     "t": "wildlife"
+     "t": "hurt"
     },
     {
      "lang": "zh",
@@ -207,44 +207,48 @@
     },
     {
      "lang": "es",
-     "t": "el hospital"
+     "t": "el burro"
     },
     {
      "lang": "zh",
-     "t": "意思是：医院。跟着读一遍。"
+     "t": "意思是：驴。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el hospital"
+     "t": "el burro"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "易错",
-   "dur": 19.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202610310845",
+   "sub": "习语",
+   "dur": 23.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天说一个常见错误。不要说："
+     "t": "每日一句，今天是一个地道习语。"
     },
     {
      "lang": "en",
-     "t": "Can you borrow me your pen?"
+     "t": "The ball is in your court"
     },
     {
      "lang": "zh",
-     "t": "应该说："
+     "t": "意思是：该你出招了。轮到你做决定了。"
+    },
+    {
+     "lang": "zh",
+     "t": "例句："
     },
     {
      "lang": "en",
-     "t": "Can you lend me your pen?"
+     "t": "I've made my offer. The ball is in your court."
     },
     {
      "lang": "zh",
-     "t": "能借我你的笔吗？。借出去用 lend，借进来用 borrow"
+     "t": "我已经开价了，接下来看你的了。"
     }
    ],
    "opt": true
@@ -252,61 +256,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "给调度打电话",
-   "dur": 67.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202610310845",
+   "sub": "对讲机用语",
+   "dur": 55.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：对讲机用语。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "司机还没到。"
+     "t": "稍等。"
     },
     {
      "lang": "en",
-     "t": "The driver hasn't shown up yet."
+     "t": "Stand by."
     },
     {
      "lang": "en",
-     "t": "The driver hasn't shown up yet."
+     "t": "Stand by."
     },
     {
      "lang": "zh",
-     "t": "我们这边有延误。"
+     "t": "再说一遍？"
     },
     {
      "lang": "en",
-     "t": "We have a delay on our end."
+     "t": "Say again?"
     },
     {
      "lang": "en",
-     "t": "We have a delay on our end."
+     "t": "Say again?"
     },
     {
      "lang": "zh",
-     "t": "柜子还不能提。"
+     "t": "你声音断断续续的。"
     },
     {
      "lang": "en",
-     "t": "The container isn't ready for pickup yet."
+     "t": "You're breaking up."
     },
     {
      "lang": "en",
-     "t": "The container isn't ready for pickup yet."
+     "t": "You're breaking up."
     },
     {
      "lang": "zh",
-     "t": "能派另一个司机来吗？"
+     "t": "听得很清楚。"
     },
     {
      "lang": "en",
-     "t": "Can you send another driver?"
+     "t": "Loud and clear."
     },
     {
      "lang": "en",
-     "t": "Can you send another driver?"
+     "t": "Loud and clear."
     },
     {
      "lang": "zh",
@@ -318,13 +322,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "冰岛",
-   "dur": 21.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202610310845",
+   "sub": "Las Posadas 圣诞前九夜",
+   "dur": 22.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：冰岛。冰与火之国：瀑布、冰川、黑沙滩与极光。做法：环岛 1 号公路：黄金圈、塞里雅兰瀑布、冰河湖；9–3 月看极光，6–8 月有午夜阳光；环岛建议 8–10 天，只玩南岸 4–5 天。"
+     "t": "今日一招：Las Posadas 圣诞前九夜。重现玛利亚和约瑟寻找住处的故事。做法：12 月 16–24 日，每晚一户人家当「客栈」；队伍边唱歌边敲门求宿，屋里的人唱歌回应后开门；之后一起喝热水果饮 ponche、吃点心、打 piñata。"
     }
    ],
    "opt": true
@@ -332,13 +336,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1874 · 1914 · 1992",
-   "dur": 21.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202610310845",
+   "sub": "1897 · 1928 · 1993",
+   "dur": 26.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1874年，清朝和日本订立《台事北京专约》。1914年，青岛战役中，日本军队对当地德军堡垒发动总攻。1992年，伽利略蒙冤360年后，终于获得梵蒂冈教宗若望保禄二世的平反。"
+     "t": "历史上的今天。1897年，尤文图斯足球俱乐部于都灵成立。1928年，土耳其共和国通过法令，将土耳其语官方书写方式从阿拉伯字母改为基于拉丁字母的土耳其语字母。1993年，由12个欧洲共同体国家共同签署的《马斯特里赫特条约》生效，欧洲联盟正式成立。"
     }
    ],
    "opt": true
@@ -346,21 +350,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "水调歌头·明月几时有",
-   "dur": 89.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202610310845",
+   "sub": "念奴娇·赤壁怀古",
+   "dur": 86.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：水调歌头·明月几时有。写于1076年，他39岁，在密州（今山东诸城）。"
+     "t": "读一首苏轼：念奴娇·赤壁怀古。写于1082年，他45岁，在黄州（今湖北黄冈）赤壁矶。"
     },
     {
      "lang": "zh",
-     "t": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。"
+     "t": "大江东去，浪淘尽，千古风流人物。故垒西边，人道是，三国周郎赤壁。乱石穿空，惊涛拍岸，卷起千堆雪。江山如画，一时多少豪杰。遥想公瑾当年，小乔初嫁了，雄姿英发。羽扇纶巾，谈笑间，樯橹灰飞烟灭。故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：明月是从什么时候开始有的？我端起酒杯问青天。不知道天上的宫殿里，今晚是哪一年。我想乘着风回到天上去，又怕那美玉砌成的楼阁太高，我受不住那里的寒冷。还是在月下起舞，与自己的影子为伴吧，天上哪里比得上人间。月光转过朱红的楼阁，低低照进雕花的门窗，照着睡不着的人。月亮不该对人有什么怨恨吧，为什么偏偏总在人们分别的时候变圆？人有悲伤、欢乐、分离、团聚，月有阴暗、明亮、圆满、残缺，这种事自古就难以两全。只希望我们都平安长久，即使相隔千里，也能共享这一轮明月。"
+     "t": "白话意思是：长江滚滚向东流去，波浪冲刷尽了千百年来的英雄人物。旧营垒的西边，人们说那就是三国时周瑜大破曹军的赤壁。乱石直插天空，惊涛拍打江岸，卷起千万堆雪白的浪花。江山美得像一幅画，那个时代涌现了多少豪杰！遥想当年的周瑜，小乔刚刚嫁给他，他英姿勃发。手摇羽扇、头戴纶巾，谈笑之间，曹军的战船就在火中化为灰烬。我神游当年的战场，该笑我太多情了吧，这么早就生出了白发。人生就像一场梦，还是举起一杯酒，洒给江上的明月吧。"
     }
    ],
    "opt": true
@@ -369,12 +373,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202610310845",
+   "dur": 5.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611010849",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }
