@@ -68,6 +68,9 @@ if [ -n "${TG_BOT_TOKEN:-}" ]; then
   note "Telegram webhook：$(echo "$r" | jq -c '{ok, description}')"
   curl -sS "https://api.telegram.org/bot$TG_BOT_TOKEN/setMyCommands" -H "Content-Type: application/json" -d '{"commands":[
     {"command":"help","description":"我能做什么"},
+    {"command":"dl","description":"家里电脑下载：/dl 链接 [音频|720|2k|最高]"},
+    {"command":"status","description":"家里电脑下载进度"},
+    {"command":"bind","description":"把家里电脑连到机器人"},
     {"command":"q","description":"查股价：/q NVDA"},
     {"command":"alert","description":"设提醒：/alert VOO 跌到 650"},
     {"command":"list","description":"我的提醒"},

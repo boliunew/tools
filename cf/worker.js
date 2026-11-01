@@ -3,6 +3,7 @@
 //  POST /ocr     拍照识别柜号 / 封条号（Workers AI 视觉模型 + ISO 6346 校验）。需要请求头 X-Tools-Key：
 //                网站首页解锁后存在浏览器里的那串密钥（sha256 后等于 CHECK），或部署时生成的测试密钥。
 //  GET  /health  看看活着没有、配了哪些东西
+//  POST /dl/pull · /dl/note  家里电脑的 torrent_hub 来取下载任务、回报进度（X-Hub-Key）
 //  POST /tg/<密钥> Telegram 机器人（照片认柜号 / 单据、语音翻译、/提醒 /股价 /简报），见下面「Telegram 双向机器人」
 //  定时任务      美股交易时间每 5 分钟：检查「股价提醒」（stocks/data/alerts.json 里的规则）和大盘异动，触发就推送到 Telegram。
 //
@@ -286,6 +287,7 @@ const HELP = [
   '🌐 <b>翻译</b>：打「翻译 把柜子放到12号门」→ 西语 + 英语 + 朗读；收到西语 / 英语直接转发给我 → 中文',
   '🔔 <code>/提醒 VOO 跌到 650</code>（也可以：涨到 250、单日涨跌 5、回撤 10）',
   '📋 <code>/提醒列表</code> · <code>/删除 3</code>',
+  '📥 <b>遥控家里下载</b>：直接发磁力 / YouTube 链接；<code>/下载 网址 音频</code>（或 720 / 2k / 最高）· /状态 看进度 · /绑定 连电脑',
   '📈 <code>/q</code> 大盘 · <code>/q NVDA</code> 个股 · ☀️ <code>/简报</code> · 📊 <code>/用量</code>'
 ].join('\n');
 
@@ -629,6 +631,83 @@ async function cmdBrief(env, chat) {
   return reply(env, chat, L.join('\n'));
 }
 
+
+// ---------------------------------------------------------------------------- 📥 遥控家里电脑下载（torrent_hub.py 每 20 秒来取一次，不用开端口）
+// Telegram 发磁力 / YouTube 链接（或 /下载 网址 [音频|720|1080|2k|最高]）→ 存进 KV 'dl:q' → 电脑上的 torrent_hub 取走开下 → 下完通过 /dl/note 推回 Telegram
+// 电脑端认证：X-Hub-Key = sha256('hub:' + TG_BOT_TOKEN) 前 32 位，Telegram 里发 /绑定 拿到
+const DL_MODES = { '音频': 'audio', 'mp3': 'audio', 'audio': 'audio', '720': 'video720', '720p': 'video720', '1080': 'video', '1080p': 'video', '2k': 'video1440', '1440': 'video1440', '1440p': 'video1440', '最高': 'videomax', '4k': 'videomax', 'max': 'videomax' };
+const DL_MODE_ZH = { audio: '🎵 MP3', video720: '🎬 720p', video: '🎬 1080p', video1440: '🎬 2K', videomax: '🎬 最高画质' };
+const isYtUrl = u => /^https?:\/\/([\w-]+\.)?(youtube\.com|youtu\.be|bilibili\.com|b23\.tv|x\.com|twitter\.com|vimeo\.com|tiktok\.com)\//i.test(u);
+function dlFind(text) {   // 消息里找可下载的链接
+  const m = /(magnet:\?[^\s<>"]+|(?:thunder|qqdl|flashget):\/\/[^\s<>"]+|https?:\/\/[^\s<>"]+)/i.exec(text || '');
+  return m ? m[1] : '';
+}
+async function hubKey(env) { return env.TG_BOT_TOKEN ? (await sha256hex('hub:' + env.TG_BOT_TOKEN)).slice(0, 32) : null; }
+async function dlQueue(env, chat, url, modeWord) {
+  const mode = DL_MODES[(modeWord || '').toLowerCase()] || (isYtUrl(url) ? 'video' : '');
+  const q = JSON.parse((await env.KV.get('dl:q')) || '[]');
+  if (q.length >= 30) return reply(env, chat, '排队的已经有 30 个了，等电脑取走一些再发');
+  const id = Math.random().toString(36).slice(2, 8);
+  q.push({ id, url, mode, at: Date.now() });
+  await env.KV.put('dl:q', JSON.stringify(q));
+  const hb = JSON.parse((await env.KV.get('dl:hb')) || 'null');
+  const on = hb && Date.now() - hb.at < 15 * 60e3;
+  const kind = /^magnet:/i.test(url) ? '🧲 磁力' : mode ? (DL_MODE_ZH[mode] || '🎬 视频') : '🔗 直链';
+  let t = `📥 <b>收到，排上队了</b>（${kind}）\n<code>${esc(url.slice(0, 120))}</code>\n`;
+  t += on ? '家里电脑在线，半分钟内开始下，开始和下完都会告诉你。' : '⚠️ 家里电脑的下载器好像没开（或还没 /绑定），开了以后会自动取走。';
+  if (isYtUrl(url) && !modeWord) t += '\n<i>默认 1080p。要别的：/下载 网址 音频（或 720 / 2k / 最高）</i>';
+  return reply(env, chat, t);
+}
+async function cmdDl(env, chat, arg) {
+  const url = dlFind(arg);
+  if (!url) return reply(env, chat, '用法：<code>/下载 磁力或网址</code>，YouTube 后面可以加 <code>音频</code> / <code>720</code> / <code>2k</code> / <code>最高</code>\n直接把磁力链接、YouTube 链接发给我也行。');
+  const word = (arg.replace(url, '').trim().split(/\s+/)[0] || '');
+  return dlQueue(env, chat, url, word);
+}
+async function cmdHubStatus(env, chat) {
+  const hb = JSON.parse((await env.KV.get('dl:hb')) || 'null');
+  if (!hb) return reply(env, chat, '还没连上家里电脑。发 /绑定 拿到设置方法。');
+  const mins = Math.round((Date.now() - hb.at) / 60e3);
+  if (mins > 15) return reply(env, chat, `💤 家里电脑的下载器 ${mins > 120 ? Math.round(mins / 60) + ' 小时' : mins + ' 分钟'}没动静了（关机、睡眠，或者下载器没开）。`);
+  await env.KV.put('dl:want', String(chat), { expirationTtl: 300 });
+  return reply(env, chat, '🔍 问一下家里电脑，几十秒内回你……');
+}
+async function cmdBind(env, chat) {
+  const k = await hubKey(env);
+  return reply(env, chat, `🔗 <b>把家里电脑连到这个机器人</b>\n在电脑上运行一次（以后正常打开就行，会记住）：\n<code>python torrent_hub.py --bot ${k}</code>\n\n连上以后：\n• 直接发磁力 / YouTube 链接 → 家里开始下\n• <code>/下载 网址 音频</code> → 只要 MP3\n• /状态 → 看进度和硬盘空间\n\n<i>这串密钥别发给别人。</i>`);
+}
+const fmtB = n => n >= 1e9 ? (n / 1e9).toFixed(2) + ' GB' : n >= 1e6 ? (n / 1e6).toFixed(1) + ' MB' : Math.round((n || 0) / 1e3) + ' KB';
+async function hubApi(req, env, url) {
+  const k = await hubKey(env);
+  if (!k || (req.headers.get('X-Hub-Key') || '') !== k) return new Response('no', { status: 403 });
+  const body = req.method === 'POST' ? await req.json().catch(() => ({})) : {};
+  const J = o => new Response(JSON.stringify(o), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
+  if (url.pathname === '/dl/pull') {
+    const [qs, hbs, want] = await Promise.all([env.KV.get('dl:q'), env.KV.get('dl:hb'), env.KV.get('dl:want')]);
+    const jobs = JSON.parse(qs || '[]');
+    if (jobs.length) await env.KV.put('dl:q', '[]');
+    const hb = JSON.parse(hbs || 'null');
+    if (!hb || Date.now() - hb.at > 10 * 60e3 || hb.ver !== body.ver) await env.KV.put('dl:hb', JSON.stringify({ at: Date.now(), ver: body.ver || '' }));
+    return J({ jobs, want: !!want });
+  }
+  if (url.pathname === '/dl/note') {
+    if (body.status) {
+      const s = body.status, chat = (await env.KV.get('dl:want')) || env.TG_CHAT_ID;
+      await env.KV.delete('dl:want');
+      const L = [`🖥️ <b>家里电脑</b>（下载器 v${esc(s.ver || '')}）`, `💾 ${esc(s.disk || '')}`];
+      const act = s.tasks || [];
+      L.push(act.length ? `\n<b>正在下（${act.length}）</b>` : '\n现在没有在下的任务。');
+      for (const t of act.slice(0, 12)) L.push(`• ${esc(String(t.name).slice(0, 60))}\n   ${t.pct}% · ${fmtB(t.rate)}/s${t.eta > 0 ? ' · 还要 ' + (t.eta > 3600 ? Math.round(t.eta / 360) / 10 + ' 小时' : Math.ceil(t.eta / 60) + ' 分') : ''}${t.state ? ' · ' + esc(t.state) : ''}`);
+      if (s.done && s.done.length) L.push('\n<b>最近下完</b>\n' + s.done.slice(0, 5).map(x => '✅ ' + esc(String(x).slice(0, 60))).join('\n'));
+      await reply(env, chat, L.join('\n'));
+      return J({ ok: true });
+    }
+    if (body.text) { await reply(env, env.TG_CHAT_ID, String(body.text).slice(0, 3500)); return J({ ok: true }); }
+    return J({ ok: false });
+  }
+  return new Response('no', { status: 404 });
+}
+
 // ---------- 入口
 async function tgWebhook(req, env, ctx, url) {
   const want = env.TG_BOT_TOKEN ? (await sha256hex('tg-hook:' + env.TG_BOT_TOKEN)).slice(0, 32) : '';
@@ -646,7 +725,11 @@ async function handle(env, msg) {
   const text = (msg.text || '').trim();
   if (!text) return;
   const m = /^\/(\S+?)(?:@\w+)?(?:\s+([\s\S]*))?$/.exec(text);
-  if (!m) return onText(env, chat, text);
+  if (!m) {
+    const u = dlFind(text);
+    if (u && (/^(magnet:|thunder:|qqdl:|flashget:)/i.test(u) || isYtUrl(u) || /\.torrent(\?|$)/i.test(u))) return dlQueue(env, chat, u, (text.replace(u, '').trim().split(/\s+/)[0] || ''));
+    return onText(env, chat, text);
+  }
   const [, cmd, arg = ''] = m;
   if (/^(提醒|alert|tx)$/i.test(cmd)) return arg.trim() ? cmdAlert(env, chat, arg) : cmdList(env, chat);
   if (/^(提醒列表|列表|list|alerts)$/i.test(cmd)) return cmdList(env, chat);
@@ -654,6 +737,9 @@ async function handle(env, msg) {
   if (/^(股价|q|quote|gj)$/i.test(cmd)) return cmdQuote(env, chat, arg);
   if (/^(简报|brief|jb)$/i.test(cmd)) return cmdBrief(env, chat);
   if (/^(用量|usage|yl)$/i.test(cmd)) return cmdUsage(env, chat);
+  if (/^(下载|dl|xz|download)$/i.test(cmd)) return cmdDl(env, chat, arg);
+  if (/^(状态|st|zt|status)$/i.test(cmd)) return cmdHubStatus(env, chat);
+  if (/^(绑定|bind|bd)$/i.test(cmd)) return cmdBind(env, chat);
   if (/^(翻译|fy|tr)$/i.test(cmd)) return arg.trim() ? doTranslate(env, chat, arg.trim(), '', '', true) : reply(env, chat, '打「翻译 要翻的话」，或者直接发语音');
   return reply(env, chat, HELP);
 }
@@ -847,6 +933,7 @@ export default {
     if (url.pathname === '/ocr' && req.method === 'POST') return ocr(req, env);
     if (url.pathname === '/explain' && req.method === 'POST') return explain(req, env);
     if (url.pathname.startsWith('/tg/') && req.method === 'POST') return tgWebhook(req, env, ctx, url);
+    if (url.pathname === '/dl/pull' || url.pathname === '/dl/note') return hubApi(req, env, url);
     if (url.pathname === '/push/register' && req.method === 'POST') {   // App 登记推送地址（需要首页密码解锁过）
       if (!(await authed(req, env))) return json(req, { error: 'key' }, 401);
       const b = await req.json().catch(() => ({}));
