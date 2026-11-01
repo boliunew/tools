@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "generated": "2026-11-01T19:00:30Z",
+ "generated": "2026-11-01T20:52:10Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,19 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "澳洲原住民艺术被AI盗用",
-     "d": "澳大利亚国家美术馆原住民咨询组主席Sally Scales称，AI在未经授权的情况下抓取并改编原住民作品，导致文化与经济损害，并警示AI对土著知识产权的侵蚀。此事凸显AI在文化产权保护方面的监管缺口，对创意产业及原住民社区构成威胁。",
-     "src": [
-      {
-       "n": "The Guardian",
-       "u": "https://www.theguardian.com/artanddesign/2026/nov/02/ai-stealing-indigenous-australian-art-temu-slop-artist-says-ntwnfb"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "AI算力租赁公司债务危机",
-     "d": "核心算力租赁企业CoreWeave等“neocloud”公司累计债务达350亿美元，股价近月跌约25%，分析师预测多数此类公司将被并购或倒闭。该行业的财务不稳暴露出AI基础设施供应链的风险，对相关科技股估值及AI投资情绪产生影响。",
+     "t": "AI数据中心公司债务压力加剧",
+     "d": "核心云公司CoreWeave等neocloud企业因高额债务（CoreWeave累计约351亿美元）和股价下跌近25%而引发投资者担忧。分析师预测多数此类公司将被收购或停运，显示AI基础设施领域财务风险上升。",
      "src": [
       {
        "n": "BBC",
@@ -31,12 +20,12 @@
      "full": true
     },
     {
-     "t": "AI成约会助理 近四成英国单身使用",
-     "d": "Match Group调研显示，约39%的英国单身使用AI获取约会建议、撰写信息等，Z世代使用率达66%。AI在个人情感领域的广泛渗透改变了约会行为模式，也引发对真实性和隐私的担忧。",
+     "t": "AI剽窃澳洲原住民艺术引争议",
+     "d": "澳洲原住民艺术家指AI未经授权复制并商业化原住民艺术，导致文化与经济损害。此事凸显AI在知识产权、特别是原住民文化资产方面的监管缺口。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/lifeandstyle/2026/oct/31/ai-your-wingman-chatbots-transforming-dating"
+       "u": "https://www.theguardian.com/artanddesign/2026/nov/02/ai-stealing-indigenous-australian-art-temu-slop-artist-says-ntwnfb"
       }
      ],
      "full": true
@@ -130,23 +119,37 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "币安恢复提款 并已补偿90%被盗资产",
-     "d": "在创纪录的63亿美元被盗后，币安已分阶段恢复用户提款，并用自有资金补偿90%损失，余下10%将继续覆盖。此事突显加密货币平台的安全风险及监管关注，也可能影响比特币、以太坊等主流币价波动。",
+     "t": "美批准向乌克兰出售500枚“爱国者”导弹",
+     "d": "美国同意向乌克兰出售价值21亿美元的500枚PAC‑3拦截导弹，费用由欧洲和加拿大盟友承担。此举强化乌克兰防空能力，但交付可能需数年，影响地区安全格局。",
      "src": [
       {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/business/2026/nov/01/binance-losses-covered-hack-fbi-north-korea-cryptocurrency"
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c3vgxznlx7jzo?at_medium=RSS&at_campaign=rss"
       },
       {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/ckpdg3ql4169o?at_medium=RSS&at_campaign=rss"
+       "n": "Politico 欧洲",
+       "u": "https://www.politico.eu/article/volodymyr-zelenskyy-urges-us-speed-up-patriot-deliveries/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication"
       }
      ],
      "full": true
     },
     {
-     "t": "印度反对党大规模集会 要求选举官员辞职",
-     "d": "数万名示威者在德里集会，指责选举委员会修改选民名单损害民主，呼吁选举官员Gyanesh Kumar下台。此举显示印度政治紧张局势升级，可能对国内政治稳定及与美欧的外交关系产生影响。",
+     "t": "币安在北韩黑客攻击后恢复提现",
+     "d": "全球最大加密交易所币安在被指北韩黑客造成的重大盗窃后，已恢复客户提现并覆盖95%损失，显示行业应对危机的韧性。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/business/20261101-binance-says-resuming-withdrawals-after-major-hack"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/ckpdg3ql4169o?at_medium=RSS&at_campaign=rss"
+      }
+     ]
+    },
+    {
+     "t": "印度反对派大规模集会要求选举主任辞职",
+     "d": "数万民众在德里集会，要求因选民名单修订争议而辞职的选举主任。此事件凸显印度政治对选举制度公正性的担忧，可能加剧国内政治紧张局势。",
      "src": [
       {
        "n": "BBC",
@@ -158,43 +161,13 @@
       }
      ],
      "full": true
-    },
-    {
-     "t": "保加利亚总统选举：Yotova获胜预期",
-     "d": "退出民调显示，反对乌克兰军事援助的伊利亚娜·约托娃预计以约51%得票当选，总统职位虽仪式化但具备危机期间任命临时政府的权力。她的当选可能使保加利亚在俄乌冲突中保持更中立姿态，影响地区安全格局。",
-     "src": [
-      {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/bulgarians-vote-in-highly-polarized-presidential-runoff-overshadowed-by-ukraine-war/a-79820449?maca=en-rss-en-all-1573-rdf"
-      },
-      {
-       "n": "CNA",
-       "u": "https://www.channelnewsasia.com/world/bulgaria-votes-in-presidential-runoff-after-tight-first-round-6510741"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "加沙新一轮空袭致至少八人死亡",
-     "d": "以色列军方称针对“军事目标”进行两次空袭，导致加沙城和汗尤尼斯共计至少八人死亡，其中包括一名儿童。冲突持续削弱停火前景，可能加剧地区紧张并影响国际调停努力。",
-     "src": [
-      {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/cmqln14rrzxvo?at_medium=RSS&at_campaign=rss"
-      },
-      {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/1/israeli-attacks-on-gaza-kill-at-least-nine-people?traffic_source=rss"
-      }
-     ],
-     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "币安在创纪录6.3亿美元被盗后恢复提款",
-  "d": "此案涉及跨国黑客、巨额资产和监管缺口，对加密资产价格波动及金融监管政策具有直接影响，值得重点关注。"
+  "t": "美对乌克兰批准出售500枚爱国者导弹",
+  "d": "此举直接提升乌克兰防空能力，对俄乌战争走向及地区安全格局具有立竿见影的战略意义。"
  },
  "week": []
 }
