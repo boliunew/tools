@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-01T16:50:52Z",
- "date": "2026-11-01",
+ "generated": "2026-11-02T20:24:06Z",
+ "date": "2026-11-02",
  "engine": "edge",
- "total": 543.9,
- "short": 329.0,
+ "total": 553.6,
+ "short": 342.9,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611010849",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611021223",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月1日 星期日",
-   "dur": 10.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611010849",
+   "sub": "11月2日 星期一",
+   "dur": 10.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。11月1日，星期日，通勤电台准时上线。不想听的直接按下一首。"
+     "t": "新的一周开始了，加油！11月2日，星期一，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 大雨 63°/51°F",
-   "dur": 31.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611010849",
+   "sub": "Upland 阴天 73°/50°F",
+   "dur": 27.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天大雨。早上7点出门大约华氏58度，14摄氏度。傍晚5点下班大约华氏57度，14摄氏度。白天最高63度，约17摄氏度；最低51度。降雨概率84%。白天空气质量良好，指数最高50。今天日落时间是傍晚4点57分。提醒一下：记得带伞，路面湿滑，车速放慢。"
+     "t": "Upland今天阴天。早上7点出门大约华氏52度，11摄氏度。傍晚5点下班大约华氏68度，20摄氏度，体感62度。白天最高73度，约23摄氏度；最低50度。基本不会下雨。白天空气质量中等，指数最高52。今天日落时间是傍晚4点56分。"
     }
    ]
   },
@@ -39,7 +39,7 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 29.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611010849",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
@@ -52,7 +52,7 @@
    "title": "📈 股票池",
    "sub": "35 个候选",
    "dur": 64.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611010849",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
@@ -83,13 +83,13 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "6 件大事",
-   "dur": 73.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611010849",
+   "sub": "7 件大事",
+   "dur": 85.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
-     "t": "明天，有3家大公司发财报。"
+     "t": "今天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
@@ -97,36 +97,36 @@
     },
     {
      "lang": "zh",
-     "t": "Palantir Technologies，代码 P L T R，盘后发财报。期权定价波动正负13.6%。标签：大波动。"
+     "t": "Palantir Technologies，代码 P L T R，盘后发财报。期权定价波动正负12.4%。标签：大波动。"
     },
     {
      "lang": "zh",
-     "t": "Vertex Pharmaceuticals Incorporated，代码 V R T X，盘后发财报。标签：利好出尽型、已提前炒作。"
+     "t": "Vertex Pharmaceuticals Incorporated，代码 V R T X，盘后发财报。期权定价波动正负5.7%。标签：利好出尽型、已提前炒作。"
     },
     {
      "lang": "zh",
-     "t": "11月3日，有3家大公司发财报。"
+     "t": "明天，重要数据有：美东17:30公布PCE 物价指数。另外，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Advanced Micro Devices，代码 A M D，盘后发财报。期权定价波动正负12.5%。标签：大波动、利好出尽型。"
+     "t": "Advanced Micro Devices，代码 A M D，盘后发财报。期权定价波动正负8.5%。标签：大波动、利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Amgen，代码 A M G N，盘后发财报。标签：利好出尽型。"
+     "t": "Amgen，代码 A M G N，盘后发财报。期权定价波动正负4.3%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Arista Networks，代码 A N E T，盘后发财报。期权定价波动正负11.9%。标签：大波动、利好出尽型。"
+     "t": "Arista Networks，代码 A N E T，盘后发财报。期权定价波动正负9.5%。标签：大波动、利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · NPR",
-   "dur": 84.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611010849",
+   "sub": "BBC · NPR · The Guardian",
+   "dur": 86.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
@@ -134,48 +134,44 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，科学，难度B1。大意是：犀牛兄弟姐妹用蛋糕庆祝一周岁生日。"
+     "t": "第1条，来自BBC，国际，难度B2。大意是：九人在佛罗里达街头的小型喷气式飞机坠毁中丧生。"
     },
     {
      "lang": "en",
-     "t": "Rhino siblings celebrate first birthday with cake"
+     "t": "Nine killed as small jet crashes on Florida street"
     },
     {
      "lang": "en",
-     "t": "Markus and Mo weighed about 70kg (11st) at birth, and now weigh about 500kg (78st) each."
+     "t": "Transportation Secretary Sean Duffy described the crash, which happened near President Trump's Mar-a-Lago resort, as a \"horrific tragedy\"."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：金州女武神击败亚特兰大梦想夺得第一个WNBA冠军。"
+     "t": "第2条，来自NPR，综合，难度B2。大意是：在佛罗里达州南部繁忙的道路附近， 9人死于急流俯冲并爆发成火球。"
     },
     {
      "lang": "en",
-     "t": "Golden State Valkyries defeat Atlanta Dream to capture first WNBA crown"
-    },
-    {
-     "lang": "en",
-     "t": "Gabby Williams, named Most Valuable Player, sets records for most points (137) and most steals (18) in the WNBA Finals."
+     "t": "9 dead as jet nosedives and erupts into fireball near busy roadway in South Florida"
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B1。大意是：在中期之前，混合经济预测权重沉重。"
+     "t": "第3条，来自The Guardian，科学，难度B2。大意是：星际观察：在黎明时分捕捉金星、月亮和斯皮卡引人注目的三连胜。"
     },
     {
      "lang": "en",
-     "t": "Mixed economic forecast weighs heavy ahead of midterms"
+     "t": "Starwatch: Catch the striking trifecta of Venus, the moon and Spica at break of dawn"
     },
     {
      "lang": "en",
-     "t": "There was a mixed Halloween bag of economic news this week."
+     "t": "The brilliant planet is about to join the waning crescent moon and the brightest star in the Virgo constellation Early risers have a beautiful sight to look forward to this week as brilliant Venus joins the waning crescent moon and the star"
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "hurt · el burro",
-   "dur": 29.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611010849",
+   "sub": "renewable · la camisa",
+   "dur": 33.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
@@ -183,15 +179,15 @@
     },
     {
      "lang": "en",
-     "t": "hurt"
+     "t": "renewable"
     },
     {
      "lang": "zh",
-     "t": "意思是：伤害，疼。拼写是："
+     "t": "意思是：可再生的。拼写是："
     },
     {
      "lang": "en",
-     "t": "h, u, r, t"
+     "t": "r, e, n, e, w, a, b, l, e"
     },
     {
      "lang": "zh",
@@ -199,7 +195,7 @@
     },
     {
      "lang": "en",
-     "t": "hurt"
+     "t": "renewable"
     },
     {
      "lang": "zh",
@@ -207,48 +203,44 @@
     },
     {
      "lang": "es",
-     "t": "el burro"
+     "t": "la camisa"
     },
     {
      "lang": "zh",
-     "t": "意思是：驴。跟着读一遍。"
+     "t": "意思是：衬衫。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el burro"
+     "t": "la camisa"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "习语",
-   "dur": 23.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611010849",
+   "sub": "名言",
+   "dur": 29.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一个地道习语。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "The ball is in your court"
+     "t": "If the stars should appear one night in a thousand years, how would men believe and adore."
     },
     {
      "lang": "zh",
-     "t": "意思是：该你出招了。轮到你做决定了。"
+     "t": "意思是：假如星星一千年才出现一夜，人们将会多么虔信、多么崇拜。这句话出自 Ralph Waldo Emerson。"
     },
     {
      "lang": "zh",
-     "t": "例句："
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "I've made my offer. The ball is in your court."
-    },
-    {
-     "lang": "zh",
-     "t": "我已经开价了，接下来看你的了。"
+     "t": "If the stars should appear one night in a thousand years, how would men believe and adore."
     }
    ],
    "opt": true
@@ -256,61 +248,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "对讲机用语",
-   "dur": 55.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611010849",
+   "sub": "报柜号/拼字母",
+   "dur": 72.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：对讲机用语。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：报柜号/拼字母。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "稍等。"
+     "t": "J、L、V"
     },
     {
      "lang": "en",
-     "t": "Stand by."
+     "t": "J as in Juliett, L as in Lima, V as in Victor."
     },
     {
      "lang": "en",
-     "t": "Stand by."
+     "t": "J as in Juliett, L as in Lima, V as in Victor."
     },
     {
      "lang": "zh",
-     "t": "再说一遍？"
+     "t": "W、Z"
     },
     {
      "lang": "en",
-     "t": "Say again?"
+     "t": "W as in Whiskey, Z as in Zulu."
     },
     {
      "lang": "en",
-     "t": "Say again?"
+     "t": "W as in Whiskey, Z as in Zulu."
     },
     {
      "lang": "zh",
-     "t": "你声音断断续续的。"
+     "t": "校验码是 3。"
     },
     {
      "lang": "en",
-     "t": "You're breaking up."
+     "t": "The check digit is three."
     },
     {
      "lang": "en",
-     "t": "You're breaking up."
+     "t": "The check digit is three."
     },
     {
      "lang": "zh",
-     "t": "听得很清楚。"
+     "t": "我给你复述一遍。"
     },
     {
      "lang": "en",
-     "t": "Loud and clear."
+     "t": "Let me read that back to you."
     },
     {
      "lang": "en",
-     "t": "Loud and clear."
+     "t": "Let me read that back to you."
     },
     {
      "lang": "zh",
@@ -322,13 +314,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "Las Posadas 圣诞前九夜",
-   "dur": 22.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611010849",
+   "sub": "英国排队与 Sorry",
+   "dur": 19.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：Las Posadas 圣诞前九夜。重现玛利亚和约瑟寻找住处的故事。做法：12 月 16–24 日，每晚一户人家当「客栈」；队伍边唱歌边敲门求宿，屋里的人唱歌回应后开门；之后一起喝热水果饮 ponche、吃点心、打 piñata。"
+     "t": "今日一招：英国排队与 Sorry。排队几乎是公共美德。做法：公交站、柜台、酒吧点单都默默排队；插队会招来不满的眼神或礼貌但明确的提醒；Sorry 用途极广：道歉、请让路、没听清。"
     }
    ],
    "opt": true
@@ -336,13 +328,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1897 · 1928 · 1993",
-   "dur": 26.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611010849",
+   "sub": "1936 · 1948 · 2021",
+   "dur": 28.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1897年，尤文图斯足球俱乐部于都灵成立。1928年，土耳其共和国通过法令，将土耳其语官方书写方式从阿拉伯字母改为基于拉丁字母的土耳其语字母。1993年，由12个欧洲共同体国家共同签署的《马斯特里赫特条约》生效，欧洲联盟正式成立。"
+     "t": "历史上的今天。1936年，英国广播公司电视服务在伦敦开播，成为世界上第一个规范、高分辨率的电视台。1948年，哈利·S·杜鲁门成功连任美国总统。2021年，由于提格雷人民解放阵线攻占埃塞俄比亚首都亚的斯亚贝巴附近城市，埃塞俄比亚宣布全国进入紧急状态。"
     }
    ],
    "opt": true
@@ -350,21 +342,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "念奴娇·赤壁怀古",
-   "dur": 86.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611010849",
+   "sub": "定风波·莫听穿林打叶声",
+   "dur": 61.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：念奴娇·赤壁怀古。写于1082年，他45岁，在黄州（今湖北黄冈）赤壁矶。"
+     "t": "读一首苏轼：定风波·莫听穿林打叶声。写于1082年，他45岁，在黄州沙湖道中。"
     },
     {
      "lang": "zh",
-     "t": "大江东去，浪淘尽，千古风流人物。故垒西边，人道是，三国周郎赤壁。乱石穿空，惊涛拍岸，卷起千堆雪。江山如画，一时多少豪杰。遥想公瑾当年，小乔初嫁了，雄姿英发。羽扇纶巾，谈笑间，樯橹灰飞烟灭。故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。"
+     "t": "莫听穿林打叶声，何妨吟啸且徐行。竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。料峭春风吹酒醒，微冷，山头斜照却相迎。回首向来萧瑟处，归去，也无风雨也无晴。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：长江滚滚向东流去，波浪冲刷尽了千百年来的英雄人物。旧营垒的西边，人们说那就是三国时周瑜大破曹军的赤壁。乱石直插天空，惊涛拍打江岸，卷起千万堆雪白的浪花。江山美得像一幅画，那个时代涌现了多少豪杰！遥想当年的周瑜，小乔刚刚嫁给他，他英姿勃发。手摇羽扇、头戴纶巾，谈笑之间，曹军的战船就在火中化为灰烬。我神游当年的战场，该笑我太多情了吧，这么早就生出了白发。人生就像一场梦，还是举起一杯酒，洒给江上的明月吧。"
+     "t": "白话意思是：不要去理会那穿过树林、打在叶子上的雨声，不妨一边吟诗长啸，一边慢慢走。拄着竹杖、穿着草鞋，比骑马还轻快，怕什么？披一身蓑衣在风雨里，我这一生都可以这样过。微寒的春风把我的酒意吹醒，有点冷，山头西斜的太阳却正迎着我。回头看看刚才风雨萧瑟的地方，回去吧，对我来说，既没有风雨，也没有晴天。"
     }
    ],
    "opt": true
@@ -374,7 +366,7 @@
    "title": "👋 结束",
    "sub": "开车注意安全",
    "dur": 5.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611010849",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611021223",
    "text": [
     {
      "lang": "zh",
