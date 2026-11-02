@@ -1,16 +1,16 @@
 {
- "date": "2026-11-01",
- "kind": "习语",
- "en": "The ball is in your court",
- "zh": "该你出招了",
- "by": "轮到你做决定了",
- "line": "The ball is in your court",
+ "date": "2026-11-02",
+ "kind": "名言",
+ "en": "If the stars should appear one night in a thousand years, how would men believe and adore.",
+ "zh": "假如星星一千年才出现一夜，人们将会多么虔信、多么崇拜。",
+ "by": "Ralph Waldo Emerson",
+ "line": "If the stars should appear one night in a thousand years, how would men believe and adore. — Ralph Waldo Emerson",
  "word": {
-  "w": "availability",
-  "ph": "ә.veilә'biliti",
-  "zh": "n. 有效性，可利用性，可利用的人",
-  "ex": "Availability may vary by region and device compatibility.",
-  "exzh": "实际提供内容可能因地区与装置相容性而异。"
+  "w": "indies",
+  "ph": "'indiz",
+  "zh": "n. 印度地方，西印度群岛",
+  "ex": "The pirates hid their treasure on a small island in the West Indies.",
+  "exzh": "海盗们把财宝藏在西印度群岛的一座小岛上。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
