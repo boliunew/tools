@@ -1,16 +1,20 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>SOP 01｜投递漏斗出了问题，先诊断哪里堵住｜社招拿Offer保姆级指南</title><style>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>漏斗诊断：卡在哪一步，就修哪一步｜美国求职拿 Offer 指南</title><style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#19243c;background:#f7f8fc}body{margin:0;padding:0 20px;line-height:1.85}.top{max-width:860px;margin:0 auto;padding:22px 0;font-size:14px;color:#5d66aa}.top a{color:#5550d6}.contact{max-width:860px;margin:0 auto 36px;font-size:12px;color:#69738a;overflow-wrap:anywhere}article{max-width:860px;margin:0 auto 60px;padding:34px 44px;border-radius:20px;background:white;border:1px solid #e8ecf3;box-shadow:0 8px 45px rgba(30,45,80,.06)}h1{line-height:1.25;font-size:35px;letter-spacing:-.8px;margin:15px 0 24px}h2{margin-top:36px;font-size:25px}h3{margin-top:27px}p,li{font-size:15px}li{margin-bottom:4px}a{color:#524ed7;text-decoration:none}a:hover{text-decoration:underline}code{font-family:ui-monospace,SFMono-Regular,monospace;color:#4d429a;background:#f2f1ff;padding:2px 5px;border-radius:4px}pre{background:#182034;color:#ecf1ff;padding:18px;border-radius:12px;overflow-x:auto;font-size:13px;line-height:1.6}pre code{color:inherit;background:none;padding:0;white-space:pre}blockquote{margin:20px 0;padding:10px 18px;border-left:3px solid #6359e9;background:#f7f6ff;color:#4a5272}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px;min-width:450px}th,td{border:1px solid #e5e9f0;padding:8px 10px;text-align:left}th{background:#f5f6fb}hr{border:0;border-top:1px solid #e7eaf1;margin:32px 0}@media(max-width:600px){body{padding:0 12px}article{padding:23px 18px}h1{font-size:29px}h2{font-size:22px}}
-</style></head><body><style>.tbxbar{position:sticky;top:0;z-index:9999;background:#1f2a44;color:#e8ecf7;font:13px/1.5 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:7px 14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}.tbxbar a{color:#ffd479;text-decoration:none}.tbxbar small{opacity:.75}</style><div class="tbxbar"><a href="../../index.html">🏠 回工具箱</a><a href="../index.html">🎯 求职指南首页</a><small>改编自 AI 酋长 Andy《社招拿 Offer 保姆级指南》（<a href="https://github.com/AIPMAndy/how-to-get-offer" target="_blank" rel="noopener">原项目</a>，文字 CC BY 4.0 · 代码 MIT）。改动：加了这条返回工具箱的导航栏，内容未改。</small></div><nav class="top"><a href="../index.html">← 返回互动指南</a>　·　<a href="https://github.com/AIPMAndy/how-to-get-offer" target="_blank" rel="noopener noreferrer">GitHub项目</a>　·　<a href="https://metaver.vip/" target="_blank" rel="noopener noreferrer">个人官网 ↗</a></nav><article><h1>SOP 01｜投递漏斗出了问题，先诊断哪里堵住</h1>
-<p><strong>输入：</strong> 同一个时间窗的岗位记录、简历版本、JD链接、面试反馈。<strong>输出：</strong> 下周只改一两个变量的求职实验。</p>
-<h2>先定统一口径</h2>
-<div class="scroll"><table><thead><tr><th>当前最高进度</th><th>解释</th></tr></thead><tbody><tr><td>已投递</td><td>提交申请成功，尚未有有效沟通</td></tr><tr><td>已回复</td><td>HR或招聘方回复了与岗位有关的信息，但尚未约面</td></tr><tr><td>已约面</td><td>已经确定至少一次面试安排</td></tr><tr><td>面试中</td><td>实际参加过面试，流程仍推进/待定</td></tr><tr><td>Offer</td><td>收到录用意向/条款；是否为正式书面Offer另外标注</td></tr><tr><td>已结束</td><td>明确拒绝、岗位关闭、主动退出；应另记结束时曾到达的最远阶段</td></tr></tbody></table></div>
-<p>只用当前状态会低估历史推进。本项目看板可手动更改状态并保存每条岗位曾达到的最高阶段，因此能粗略统计历史推进数量；但没有保存每次阶段变更的日期，<strong>不能用来计算时间窗内的严格转化率或归因</strong>。需更精确复盘时，请使用完整CSV记录事件。</p>
-<h2>诊断树</h2>
-<p><strong>A. 没有回复：</strong> 岗位是否真实？JD门槛是否满足？简历第一屏是否展示岗位最看重的能力？联系方式能否联系？是否过度集中在一家/一个渠道？</p>
-<p><strong>B. 回复但无面试：</strong> 薪资预期、到岗时间、城市、可投入程度是否有明显不匹配？沟通是否只讲自夸而没有具体证据？</p>
-<p><strong>C. 一面不过：</strong> 针对真实JD，能否清楚解释自己做了什么、选择依据和结果？基础知识缺口是否存在？</p>
-<p><strong>D. 多轮面试不过：</strong> 是业务深度、负责人经验、跨部门协作、成本意识，还是外部因素？仅凭“没通过”无法得出唯一原因。</p>
-<p><strong>E. Offer谈崩：</strong> 现金结构、职级、公司预算、入职时间、地点是否尚未对齐？先形成书面问题表再沟通。</p>
-<h2>7天小实验</h2>
-<ol><li>固定1类岗位和1版简历，针对5~10个确实匹配的职位做申请。数量视岗位供给调整。</li><li>同时增加1项可观察改动，例如第一屏项目证据或更有针对性的联系信息。</li><li>记录每次申请的来源、日期、回复及具体拒绝理由。</li><li>一周后看是否产生清楚的信息增量；小样本变化不能宣称某修改“让转化率翻倍”。</li></ol>
-<p><strong>完成标准：</strong> 有具体排查结果和下一周动作，不以“猜到算法针对我”作为结论。</p></article><footer class="contact">AI 酋长 Andy · 微信 <strong>AIPMAndy</strong> · <a href="https://metaver.vip/" target="_blank" rel="noopener noreferrer">个人官网</a><br>求职、职业发展与 AI 应用咨询可选，不影响免费阅读。</footer></body></html>
+</style></head><body><nav class="top"><a href="../../index.html">🏠 工具箱</a>　·　<a href="../index.html">🎯 美国求职指南首页</a></nav><article><h1>漏斗诊断：卡在哪一步，就修哪一步</h1>
+<h2>四个比例</h2>
+<div class="scroll"><table><thead><tr><th>环节</th><th>算法</th><th>粗略参考</th></tr></thead><tbody><tr><td>投递 → 回复</td><td>有回复的 ÷ 投递数</td><td>普通投递常见 5–15%，内推高很多</td></tr><tr><td>回复 → 面试</td><td>约到面试的 ÷ 有回复的</td><td>一半左右</td></tr><tr><td>面试 → 下一轮</td><td>进下一轮的 ÷ 面试数</td><td>三分之一左右</td></tr><tr><td>最后一轮 → Offer</td><td>Offer ÷ 最后一轮</td><td>三分之一到一半</td></tr></tbody></table></div>
+<p>参考数只是大概，行业和时期差很多。<strong>样本小于 20 份时，先看每一个个案</strong>，别急着下结论。</p>
+<h2>卡点和对策</h2>
+<h3>投了没人回</h3>
+<ul><li>职位是不是太远（经验年限、证书不够）？→ 回到 <a href="../guides/01-positioning.html">01 定位</a>；</li><li>简历有没有对准 JD 关键词？有没有数字？→ <a href="../guides/02-resume.html">02 简历</a>；</li><li>ATS 读不出来？→ 纯文本测试；</li><li>只在网上点 Easy Apply？→ 加内推和官网投递；</li><li>通勤、班次、身份写清楚了吗？</li></ul>
+<h3>有回复，约不到面</h3>
+<ul><li>电话初筛时期望薪资是不是高出预算太多？</li><li>班次、到岗时间能不能接受？</li><li>自我介绍是不是太长、没重点？</li></ul>
+<h3>面了不过</h3>
+<ul><li>故事没有数字、说「we」不说「I」；</li><li>专业题答得虚；</li><li>没准备反问，显得兴趣不大；</li><li>见 <a href="02-interview-review.html">面试复盘</a>。</li></ul>
+<h3>最后一轮没拿到</h3>
+<ul><li>推荐人没准备好？</li><li>谈薪太硬或太早谈福利细节？</li><li>竞争者内部转岗——不是你的问题，继续。</li></ul>
+<h2>每周复盘模板</h2>
+<pre><code>本周投递：__  回复：__  面试：__  Offer：__
+回复最多的渠道：__
+最常被问倒的问题：__
+下周只改一件事：__</code></pre></article><footer class="contact">改编自 AI 酋长 Andy《社招拿 Offer 保姆级指南》（<a href="https://github.com/AIPMAndy/how-to-get-offer" target="_blank" rel="noopener noreferrer">原项目</a>，CC BY 4.0），已按美国求职重写。仅供参考，不是法律意见。</footer></body></html>
