@@ -126,6 +126,8 @@
 
 ## 更新日志
 
+- 2026-11-02 更新 [电影 Top 500（按国家分类）](top500-movies.md)
+- 2026-11-02 更新 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-10-30 新增 [依恋类型：回避型、焦虑型是怎么来的，能不能改](psy-attachment.md)
 - 2026-10-30 新增 [煤气灯操纵（Gaslighting）：让你怀疑自己的那种控制](psy-gaslighting.md)
 - 2026-10-30 新增 [🧠 心理与关系：目录和读之前要知道的](psy-index.md)
@@ -139,8 +141,6 @@
 - 2026-10-27 更新 [汽车保养：多久做什么、在哪做、怎么不被坑](car-maintenance.md)
 - 2026-10-27 更新 [Amtrak 坐火车完全攻略：注意事项和技巧](amtrak-guide.md)
 - 2026-10-27 更新 [旅行防骗大全](travel-scams.md)
-- 2026-10-27 更新 [电影 Top 500（按国家分类）](top500-movies.md)
-- 2026-10-27 更新 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-10-27 更新 [Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
 - 2026-10-27 更新 [月亮：月相、潮汐、日食和月食](moon-phases-tides-eclipses.md)
 - 2026-10-27 更新 [太阳系有多大：把太阳缩成一个篮球](solar-system-scale.md)
