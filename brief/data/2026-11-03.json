@@ -1,0 +1,174 @@
+{
+ "date": "2026-11-03",
+ "generated": "2026-11-03T20:33:17Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Apple警告内存芯片价格空前上涨",
+     "d": "Apple首席执行官John Ternus在财报电话会议上称，第四季度内存芯片成本将比前三个月更高，导致利润率受压。公司通过6月提升iPad、MacBook以及9月提升iPhone价格来部分抵消成本上升，股价盘后跌2.75%。此事凸显AI算力需求推高RAM价格，对科技硬件成本形成压力。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/02/apple-third-quarter-revenue-earnings"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "英国预测AI恶意软件将攻击关键基础设施",
+     "d": "国家网络安全中心(NCSC)在年度评估中指出，2028年前AI驱动的恶意软件极可能用于对英国电站、机场和医院等关键国家基础设施实施勒索攻击，并警告俄罗斯、中国将常规使用AI进行网络攻击。此警告显示AI技术正加速网络威胁，可能对公共安全和关键行业运营产生重大影响。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/03/ai-powered-malware-artificial-intelligence-hacking-critical-uk-infrastructure"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/2 周一 收盘：标普500 ETF（SPY）-0.48%，纳指100 ETF（QQQ）-1.36%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 21.1；67% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：IDXX +21.9%、HWM +6.9%、PNR +6.5%；跌幅最大：LITE -18.6%、MRVL -12.7%、CIEN -11.3%",
+     "d": "扫描范围约 512 只股票（标普 500 为主）。工业、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：AMD（盘后）、AMGN（盘后）、ANET（盘后）、SHOP（盘前）、PFE（盘前）",
+     "d": "按市值挑出最大的几家，共 26 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：ISM 采购经理指数（11/3 周二）",
+     "d": "ISM Manufacturing Employment 实际 52.4（预期 52.0，前值 52.7）；ISM Manufacturing New Orders Index 实际 55.5（预期 54.5，前值 55.3）。50 以上表示扩张。制造业 ISM 影响工业、材料股；服务业 ISM 中的价格分项是通胀线…",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/3 周二 11:15：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/5 周四 10:00：ISM 采购经理指数（重要性：中）",
+     "d": "50 以上表示扩张。制造业 ISM 影响工业、材料股；服务业 ISM 中的价格分项是通胀线索。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/5 周四 10:30：EIA 原油库存（重要性：低）",
+     "d": "库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "俄袭乌平民设施致至少38人死亡",
+     "d": "俄罗斯在乌克兰扎波罗热地区投放滑翔炸弹，导致学校改作援助中心的建筑被炸，已确认33人死亡，死亡人数可能上升；此外，德尼普尔的临终关怀院和哈尔科夫的医院亦遭袭击，导致大量平民受伤。此事加剧了俄乌冲突的人道危机，并可能引发国际社会对战争罪行的进一步关注。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c65ynez5y599o?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261103-vile-terrorist-attack-russia-bombs-ukraine-aid-centre"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "英国食品供应链遭冰箱温控网络攻击",
+     "d": "英国国家网络安全中心称，近期欧洲多国超市冷冻柜被黑客入侵，温度升至50°C，英国尚未出现直接影响，但已有300家肉类供应商受波及，虽未造成食物损失。此类攻击暴露了物联网设备长期存在的安全漏洞，预示未来更广泛的供应链网络风险。",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/technology/2026/nov/03/uk-meat-processing-firms-fridges-heat-up-cyber-attacks"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news-analysis/2026/11/3/global-food-security-is-under-threat?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "欧盟警告超市冷柜网络攻击冲击供应链",
+     "d": "至少10个欧洲国家的超市冷冻柜被黑客攻击，温度升至50°C，导致部分食品被迫丢弃。欧委会将此视为针对食品供应链的有组织行为，并提醒成员国加强防御。此事件显示网络攻击已能直接影响日常生活必需品的供应安全。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwy8lm1m59mvo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/3/very-cold-war-whos-attacking-europes-supermarket-freezers?traffic_source=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "AI 恶意软件或在2028年前攻击关键基础设施",
+  "d": "AI 驱动的网络攻击将提升对能源、交通等关键设施的风险，涉及国家安全和全球供应链，值得投资者关注潜在的防御投入与监管动态。"
+ },
+ "week": []
+}
