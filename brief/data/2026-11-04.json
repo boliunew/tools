@@ -1,0 +1,174 @@
+{
+ "date": "2026-11-04",
+ "generated": "2026-11-04T20:52:09Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "AI先驱亨顿警告AI或致大规模事故",
+     "d": "人工神经网络之父Geoffrey Hinton警告，AI可能在今年或明年引发金融或电力系统大停电等重大事故，甚至导致社会撕裂。此言强调AI风险管理不足或将对经济安全和社会稳定产生严重冲击。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/uk-news/2026/nov/03/ai-godfather-geoffrey-hinton-better-off-without-ai"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "谷歌称搜索离不开AI，学校禁用即失搜索",
+     "d": "谷歌宣布AI功能已深度嵌入Search，若学校在K‑12账号上关闭AI，学生将无法使用搜索。此举凸显AI在信息检索的核心地位，并可能加大教育部门对谷歌技术的依赖。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/03/google-search-artificial-intelligence"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "黑客利用伪招聘及内部AI窃走Binance 63亿美元",
+     "d": "黑客自6月起通过恶意软件、假面试和内部AI工具渗透，10月末劫持Binance热钱包，导致约63亿美元被盗，约2.85亿美元已被冻结。事件显示供应链攻击和AI辅助的网络盗窃对加密行业安全构成高度威胁。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/business/2026/nov/03/hackers-63bn-binance-heist-malware-bogus-job-interviews-cryptocurrency"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/3 周二 收盘：标普500 ETF（SPY）+0.30%，纳指100 ETF（QQQ）+0.62%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 20.8；66% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：FISV +12.5%、BE +9.0%、DD +8.6%；跌幅最大：IT -13.2%、SYY -9.3%、ZBRA -8.8%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。工业、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：TM（时间未定）、ARM（盘后）、MCD（盘前）、NVO（盘前）、QCOM（盘后）",
+     "d": "按市值挑出最大的几家，共 42 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：JOLTS 职位空缺（11/4 周三）",
+     "d": "JOLTS Job Openings 实际 7.523M（预期 7.150M，前值 7.190M）。劳动力市场松紧的指标，空缺下降代表就业降温，利好降息预期。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/6 周五 08:30：首次申领失业金人数（重要性：低）",
+     "d": "每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/6 周五 09:10：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "法国血库冷链被攻击 未造成血品损失",
+     "d": "法国血液机构披露，黑客攻击冷链系统试图将温度升至110摄氏度，监控系统及时发现并防止血浆受损，未出现健康影响或供应中断。此类针对关键基础设施的网络攻击提醒医疗供应链的脆弱性。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/french-blood-banks-targeted-by-refrigerator-cyberattack/a-79857981?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c8vgxyvz6y9ro?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "全球媒体关注美国民主党中期胜利",
+     "d": "美国中期选举中民主党夺取国会两院多数，国际媒体普遍以“蓝潮”描述，称对乌克兰、伊朗冲突及全球油价等产生影响。选举结果可能改变美对外政策走向，进而影响全球地缘政治与能源市场。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/04/nx-s1-6028664/world-reacts-midterm-elections"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/4/iranians-celebrate-democrat-victory-in-us-midterms?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "特朗普失去国会控制权",
+     "d": "美国中期选举后，民主党取得多数席位，标志着美国政治力量结构的大幅转变。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/4/trump-loses-control-of-congress?traffic_source=rss"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/sport/valverde-rescues-real-liverpool-lose-fenerbahce-6525381"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "AI“教父”警告技术风险",
+  "d": "Hinton的警示触及AI可能引发的系统性危机，对监管政策和大型科技企业的研发路线具有重要导向意义。"
+ },
+ "week": []
+}
