@@ -1,16 +1,16 @@
 {
- "date": "2026-11-03",
- "kind": "名言",
- "en": "Character is like a tree and reputation like its shadow. The shadow is what we think of it; the tree is the real thing.",
- "zh": "品格如树，名声如影。影子是别人眼中的它，树才是它本身。",
- "by": "Abraham Lincoln",
- "line": "Character is like a tree and reputation like its shadow. The shadow is what we think of it; the tree is the real thing. — Abraham Lincoln",
+ "date": "2026-11-04",
+ "kind": "口头禅",
+ "en": "Don't get me wrong",
+ "zh": "别误会",
+ "by": "要说一句可能让人误会的话之前",
+ "line": "Don't get me wrong",
  "word": {
-  "w": "prosperity",
-  "ph": "prɒs'periti",
-  "zh": "n. 繁荣，茂盛，成功",
-  "ex": "He will increase in strength and honor by struggling with adversity, which he will convert into prosperity.",
-  "exzh": "他会在与逆境的搏斗中变得更强大、更受尊敬，并把逆境化为顺境。"
+  "w": "valid",
+  "ph": "'vælid",
+  "zh": "a. 有确实根据的，有法律效力的，正当的，正确的",
+  "ex": "The special conditions will be valid until 2025.",
+  "exzh": "此特殊条件有效期限至 2025 年。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
