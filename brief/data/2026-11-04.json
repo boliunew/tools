@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "generated": "2026-11-04T20:52:09Z",
+ "generated": "2026-11-04T22:15:10Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "AI先驱亨顿警告AI或致大规模事故",
-     "d": "人工神经网络之父Geoffrey Hinton警告，AI可能在今年或明年引发金融或电力系统大停电等重大事故，甚至导致社会撕裂。此言强调AI风险管理不足或将对经济安全和社会稳定产生严重冲击。",
+     "t": "AI之父Hinton警告技术风险或致大规模系统崩溃",
+     "d": "诺奖得主Geoffrey Hinton警告，AI可能在今年或明年引发金融或电力系统大规模停摆等重大事故，甚至导致社会撕裂。他批评业界领袖对风险漠视，呼吁监管以防止“切尔诺贝利式”事件。",
      "src": [
       {
        "n": "The Guardian",
@@ -20,8 +20,8 @@
      "full": true
     },
     {
-     "t": "谷歌称搜索离不开AI，学校禁用即失搜索",
-     "d": "谷歌宣布AI功能已深度嵌入Search，若学校在K‑12账号上关闭AI，学生将无法使用搜索。此举凸显AI在信息检索的核心地位，并可能加大教育部门对谷歌技术的依赖。",
+     "t": "谷歌承认搜索离不开AI，学校禁用即失搜索功能",
+     "d": "谷歌在教育产品发布会上表示，Google搜索已深度集成AI，若学校禁用其AI功能，则学生将无法使用搜索。这被指利用搜索垄断逼迫教育机构采纳AI工具。",
      "src": [
       {
        "n": "The Guardian",
@@ -31,12 +31,12 @@
      "full": true
     },
     {
-     "t": "黑客利用伪招聘及内部AI窃走Binance 63亿美元",
-     "d": "黑客自6月起通过恶意软件、假面试和内部AI工具渗透，10月末劫持Binance热钱包，导致约63亿美元被盗，约2.85亿美元已被冻结。事件显示供应链攻击和AI辅助的网络盗窃对加密行业安全构成高度威胁。",
+     "t": "美国科技股在AI卖出震荡后回升",
+     "d": "受中期选举影响有限，AI相关股票在经历上周的抛售后，周二收盘回暖，纳斯达克上涨0.83%，英伟达等芯片股领涨。市场关注潜在的AI监管政策对行业的影响。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/business/2026/nov/03/hackers-63bn-binance-heist-malware-bogus-job-interviews-cryptocurrency"
+       "u": "https://www.theguardian.com/business/2026/nov/03/us-tech-stocks-recovery-ai-spending"
       }
      ],
      "full": true
@@ -120,55 +120,56 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "法国血库冷链被攻击 未造成血品损失",
-     "d": "法国血液机构披露，黑客攻击冷链系统试图将温度升至110摄氏度，监控系统及时发现并防止血浆受损，未出现健康影响或供应中断。此类针对关键基础设施的网络攻击提醒医疗供应链的脆弱性。",
+     "t": "法国血库冷链遭网络攻击 未造成血液损失",
+     "d": "法国血液机构称，针对冷藏系统的网络攻击企图将温度升至110℃，但被监控系统及时拦截，未出现血液或血浆损失，调查仍在进行。此类攻击凸显关键医疗基础设施的网络安全风险。",
      "src": [
       {
        "n": "德国之声",
        "u": "https://www.dw.com/en/french-blood-banks-targeted-by-refrigerator-cyberattack/a-79857981?maca=en-rss-en-all-1573-rdf"
       },
       {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/c8vgxyvz6y9ro?at_medium=RSS&at_campaign=rss"
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/french-blood-banks-hit-alongside-cyberattack-european-supermarkets-6525501"
       }
      ],
      "full": true
     },
     {
-     "t": "全球媒体关注美国民主党中期胜利",
-     "d": "美国中期选举中民主党夺取国会两院多数，国际媒体普遍以“蓝潮”描述，称对乌克兰、伊朗冲突及全球油价等产生影响。选举结果可能改变美对外政策走向，进而影响全球地缘政治与能源市场。",
+     "t": "南非地方选举考验ANC支持率",
+     "d": "南非在本周三进行地方选举，涉及8大城市和众多地方议会，ANC面临支持率持续下降的严峻考验。选举结果将影响该党在全国执政联盟中的地位及当地服务治理。",
      "src": [
       {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/11/04/nx-s1-6028664/world-reacts-midterm-elections"
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/south-africans-vote-local-elections-continue-decline-mighty-137836623"
       },
       {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/4/iranians-celebrate-democrat-victory-in-us-midterms?traffic_source=rss"
+       "n": "法国24",
+       "u": "https://www.france24.com/en/south-africans-vote-in-key-municipal-elections"
       }
      ],
      "full": true
     },
     {
-     "t": "特朗普失去国会控制权",
-     "d": "美国中期选举后，民主党取得多数席位，标志着美国政治力量结构的大幅转变。",
+     "t": "乌克兰援助中心被俄袭击 死亡人数升至40人",
+     "d": "乌克兰总统泽连斯基称，俄军对南部援助中心的两次袭击已致至少40人死亡，仍有30多人被困废墟。联合国人权机构指责此举可能违反国际法。",
      "src": [
-      {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/4/trump-loses-control-of-congress?traffic_source=rss"
-      },
       {
        "n": "CNA",
-       "u": "https://www.channelnewsasia.com/sport/valverde-rescues-real-liverpool-lose-fenerbahce-6525381"
+       "u": "https://www.channelnewsasia.com/world/ukraine-russia-war-aid-centre-attack-40-killed-6525456"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/4/ukraine-raises-death-toll-from-russian-strike-on-zaporizhia-to-40-people?traffic_source=rss"
       }
-     ]
+     ],
+     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "AI“教父”警告技术风险",
-  "d": "Hinton的警示触及AI可能引发的系统性危机，对监管政策和大型科技企业的研发路线具有重要导向意义。"
+  "t": "AI“教父”警告：或许没有AI更好",
+  "d": "Hinton 的警告触及 AI 可能引发系统性危机，提醒市场与监管者重新评估 AI 快速扩张的风险，是当日最具深度的议题。"
  },
  "week": []
 }
