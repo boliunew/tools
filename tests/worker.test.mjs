@@ -3,10 +3,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const src = fs.readFileSync(new URL('../cf/worker.js', import.meta.url), 'utf8').replace(/export default[\s\S]*$/, '') + '\nexport { cd, containerCandidates, placeOf, osmDigest, localClean, localApi };';
+const src = fs.readFileSync(new URL('../cf/worker.js', import.meta.url), 'utf8').replace(/export default[\s\S]*$/, '') + '\nexport { cd, containerCandidates, placeOf, osmDigest, localClean, localApi, checkNames };';
 const tmp = new URL('./.worker_under_test.mjs', import.meta.url);
 fs.writeFileSync(tmp, src);
-const { cd, containerCandidates, placeOf, osmDigest, localClean, localApi } = await import(tmp.href);
+const { cd, containerCandidates, placeOf, osmDigest, localClean, localApi, checkNames } = await import(tmp.href);
 fs.unlinkSync(tmp);
 
 test('ISO 6346 check digit', () => {
@@ -69,6 +69,7 @@ test('localApi: auth, resolve, generate once, then serve from cache', async () =
       const ask = input.input;
       if (/"intro":\[/.test(ask) && /"hoods"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ intro: ['阿普兰在…', '历史…', '看点…'], facts: [['人口', '约 8 万']], hoods: [{ e: '🏘️', t: '老城 Old Town', s: 's', d: 'd' }], stories: [{ t: '柑橘', y: '1900', s: 's', d: 'd' }], trivia: ['冷知识'] }) }] }] };
       if (/输出：\{"eat"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ eat: [{ t: '越南粉', s: 's', d: 'Pho Ha' }, { t: '墨西哥卷饼', s: 's', d: 'd' }], fun: [{ t: '纪念公园 Upland Memorial Park', s: 's', d: 'd', tag: ['免费'] }, { t: 'f2', s: 's', d: 'd' }, { t: 'f3', s: 's', d: 'd' }] }) }] }] };
+      if (/输出：\{"airport"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ airport: [{ t: '安大略机场 ONT', s: 's', d: 'd' }], safety: [{ t: '车里别留东西', s: 's', d: 'd' }] }) }] }] };
       return { output: [{ type: 'message', content: [{ text: '好的 ' + JSON.stringify({ tips: [{ t: '图书馆卡', s: 's', d: 'd' }], go: [{ t: '怎么去', s: 's', d: 'd' }], work: [{ t: '行业', s: 's', d: 'd' }] }) }] }] };
     } } };
   globalThis.fetch = async (url, opt) => {
@@ -88,16 +89,16 @@ test('localApi: auth, resolve, generate once, then serve from cache', async () =
 
   const r0 = await (await localApi(mk({ lat: 34.09812, lon: -117.64811 }), env)).json();
   assert.equal(r0.need, 'osm'); assert.match(r0.query, /around:\d+,34\.0975,-117\.6484/); assert.equal(calls.ai, 0);
-  const r1 = await (await localApi(mk({ lat: 34.09812, lon: -117.64811, osm: [{ name: 'Pho Ha', amenity: 'restaurant', cuisine: 'vietnamese', evil: 'x'.repeat(500) }, { amenity: 'toilets' }] }), env)).json();
-  assert.ok(r1.diag.includes('osm from browser 1'), r1.diag.join(' | '));
+  const r1 = await (await localApi(mk({ lat: 34.09812, lon: -117.64811, osm: [{ name: 'Pho Ha', amenity: 'restaurant', cuisine: 'vietnamese', evil: 'x'.repeat(500) }, { name: 'Old Town', place: 'neighbourhood' }, { amenity: 'toilets' }] }), env)).json();
+  assert.ok(r1.diag.includes('osm from browser 2'), r1.diag.join(' | '));
   assert.equal(r1.place.en, 'Upland'); assert.equal(r1.place.zh, '阿普兰');
   assert.equal(r1.guide.intro.length, 3); assert.equal(r1.guide.eat.length, 2); assert.equal(r1.guide.tips[0].t, '图书馆卡');
-  assert.equal(r1.guide.sources.length, 3); assert.equal(calls.ai, 3); assert.ok(!r1.cached); assert.ok(!calls.fetch.some(u => /overpass/.test(u)), 'no server-side Overpass when the browser sent places');
+  assert.equal(r1.guide.sources.length, 3); assert.equal(calls.ai, 4); assert.equal(r1.guide.airport[0].t, '安大略机场 ONT'); assert.ok(!r1.cached); assert.ok(!calls.fetch.some(u => /overpass/.test(u)), 'no server-side Overpass when the browser sent places');
   assert.ok(calls.fetch.some(u => /lat=34\.10&lon=-117\.65/.test(u)), 'coordinates are rounded to ~1 km before leaving the worker');
   assert.ok(![...kv.keys()].some(k => k.startsWith('lock:')), 'lock released');
 
   const r2 = await (await localApi(mk({ lat: 34.1, lon: -117.65 }), env)).json();
-  assert.equal(r2.cached, true); assert.equal(calls.ai, 3);
+  assert.equal(r2.cached, true); assert.equal(calls.ai, 4);
 
   globalThis.fetch = async () => ({ ok: true, json: async () => [] });
   const r3 = await localApi(mk({ q: 'Nowhereville' }), env);
@@ -119,6 +120,7 @@ test('localApi: a section that comes back empty is retried, and a still-incomple
       const ask = input.input || (input.messages || [])[1]?.content || '';
       if (/输出：\{"eat"/.test(ask)) { eatTries++; return msg(eatTries === 1 ? { eat: [], fun: [] } : { eat: [card('e1'), card('e2')], fun: [card('f1'), card('f2')] }); }
       if (/"hoods"/.test(ask)) return msg({ intro: ['a'], hoods: [card('h1'), card('h2')], stories: [card('s1')] });
+      if (/输出：\{"airport"/.test(ask)) return msg({ airport: [card('a1')], safety: [card('s1')] });
       return msg({ tips: [card('t1')], go: [] });   // go 一直缺
     } } };
   globalThis.fetch = async (url) => {
@@ -135,6 +137,20 @@ test('localApi: a section that comes back empty is retried, and a still-incomple
   assert.equal(r.guide.eat.length, 2); assert.equal(r.guide.go.length, 0); assert.equal(r.stats.full, false);
   assert.ok(r.diag.some(d => /missing eat\/fun/.test(d)), r.diag.join(' | '));
   assert.ok(!r.diag.some(d => /overpass/.test(d)), 'browser already tried, server does not retry Overpass');
-  const k = [...kv.keys()].find(k => k.startsWith('local3:'));
+  const k = [...kv.keys()].find(k => /^local\d+:/.test(k));
   assert.equal(ttl[k], 6 * 3600);
+});
+
+test('checkNames: keeps names found in the material, removes invented ones', () => {
+  const known = 'Mooyah | The Habit Burger Grill | Tacos Los Carnales | Chuck\'s Tacos | Upland Memorial Park';
+  const G = { eat: [{ t: '汉堡', d: 'Mooyah、The Habit Burger Grill、The Burger Joint（未列但同类）都不错。用 Yelp 看评价。' },
+                    { t: '塔可', d: '去 Tacos Los Carnales、Chuck’s Tacos、Taqueria Fantasma。' },
+                    { t: '假店 Golden Dragon Palace', d: 'x' }],
+              fun: [{ t: '纪念公园 Upland Memorial Park', d: '从 ONT 开车不远。' }], hoods: [{ t: '老城 Old Town Plaza', d: 'x' }] };
+  const diag = [];
+  checkNames(G, known, diag);
+  assert.equal(G.eat.length, 2); assert.equal(G.hoods.length, 0); assert.equal(G.fun.length, 1);
+  assert.equal(G.eat[0].d, 'Mooyah、The Habit Burger Grill都不错。用 Yelp 看评价。');
+  assert.equal(G.eat[1].d, '去 Tacos Los Carnales、Chuck’s Tacos。');
+  assert.match(diag[0], /dropped 2 cards, removed 2 names/);
 });

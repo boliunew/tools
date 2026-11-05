@@ -932,7 +932,7 @@ async function agentApi(req, env, url) {
 // 真实数据先拿：OpenStreetMap（城市名、街区、餐馆、公园、景点、车站）、维基百科（城市条目、附近名胜）；
 // 再让 Workers AI 只根据这些材料写成中文指南。同一个城市存 KV 30 天，第二次秒出。
 // 隐私：只收取整到约 1 公里的坐标，不记录。
-const LOCAL_V = 'local4';   // 改版本号 = 旧缓存全部作废（local1 是在没有地点清单时生成的，有编出来的地名）
+const LOCAL_V = 'local5';   // 改版本号 = 旧缓存全部作废（local4 的治安栏会给街区下安全不安全的结论）
 const LOCAL_TTL = 86400 * 30, LOCAL_DAILY = 40;
 const LOCAL_UA = 'boliunew-tools/1.0 (+https://boliunew.github.io/tools/local.html)';
 async function fetchJ(url, opt = {}, ms = 15000) {
@@ -1065,11 +1065,13 @@ function osmDigest(tags) {   // 整理成给 AI 看的清单：每类挑一些�
   const cuisines = ks.slice(0, 20).map(k => k + '×' + g.eat[k].length).join('，');
   const cut = (a, n) => a.slice(0, n).join('；');
   return { eat, cuisines, text: [
+    // 顺序有讲究：材料超长时会从后面截掉，所以街区、机场、车站放前面，换汇和住宿放最后
+    '附近的街区和小城镇：' + cut(g.places, 50), '机场：' + cut(g.airports, 10), '火车 / 地铁站：' + cut(g.stations, 30),
     '餐馆和咖啡店（已去掉连锁快餐）：' + eat.join('；'),
     '菜系数量（越多越有代表性）：' + cuisines,
     '景点 / 博物馆：' + cut(g.sights, 50), '公园 / 自然：' + cut(g.parks, 50), '历史遗迹：' + cut(g.historic, 30),
     '超市 / 商场 / 面包店：' + cut(g.shops, 40), '图书馆 / 大学 / 剧院 / 宗教场所等：' + cut(g.civic, 40),
-    '火车 / 地铁站：' + cut(g.stations, 30), '机场：' + cut(g.airports, 10), '换汇 / 银行 / ATM：' + cut(g.money, 40), '住宿（酒店 / 青旅 / 民宿）：' + cut(g.stay, 40), '附近的街区和小城镇：' + cut(g.places, 50)
+    '换汇 / 银行 / ATM：' + cut(g.money, 15), '住宿（酒店 / 青旅 / 民宿）：' + cut(g.stay, 15)
   ].join('\n') };
 }
 
@@ -1096,7 +1098,8 @@ const LOCAL_PARTS = [
 "go":[卡片 4 到 6 个：怎么去（最近的机场、火车）、市内怎么走、开车和停车、穿什么（按气候）、本地说法],
 "work":[卡片 3 到 5 个：主要行业和大雇主、生活成本的大致情况（不写具体房租数字）、华人社区和资源]}`],
   ['airport,safety', `输出：{"airport":[卡片 2 到 4 个：用最近的机场——机场名和代码只能用材料里出现过的；离市区大概多远、进城有哪些方式（地铁 / 公交 / 接驳巴士 / 打车），只写材料和常识能支撑的，不确定就不写具体分钟数和价格；再写值机行李、停车、接送机的注意事项。材料里有几个机场按远近写几个；材料里没有机场就写一张「怎么去最近的大机场」的泛称卡],
-"safety":[卡片 4 到 6 个：这座城市的治安定性分析——先给整体印象，再写相对稳妥的区域和要留意的地段（街区名只能用材料里出现过的），然后写当地更常见的治安问题和骗局套路（扒窃、假出租、刷卡陷阱这类，写清怎么识别、怎么躲开），最后给晚上出行和独行的具体建议；只做定性分析，绝对不要编犯罪率、案件数、排名这类数字；拿不准的在 note 里写「出发前看一眼当地新闻和官方提醒」]}`]
+"safety":[卡片 4 到 6 个：实用的安全常识——这类城市常见的问题和骗局套路（车里留东西被砸窗、扒窃、假出租、刷卡和 ATM 陷阱、电话诈骗这类，写清怎么识别、怎么躲开），停车和晚上出行、独自出门的具体做法，遇到事怎么办（美国报警和急救打 911，非紧急情况打当地警察局的非紧急电话）。
+绝对不要说哪个街区、哪条街「安全」「危险」「要小心」「治安差」——材料里没有犯罪数据，这种结论只会是猜的，还会冤枉当地人；也不要写犯罪率、案件数、排名这类数字。想了解具体区域，就在 note 里提醒「去当地警察局官网看犯罪地图和最新提醒」]}`]
 ];
 async function localGen(env, p, wk, near, osm, diag = []) {
   const name = (p.zh ? p.zh + ' ' : '') + p.en;
@@ -1105,7 +1108,7 @@ async function localGen(env, p, wk, near, osm, diag = []) {
 维基百科英文条目（节选）：${(wk.text || '（没有）').slice(0, 9000)}
 附近有维基条目的地方：${near.map(x => x[0] + (x[1] ? '（' + x[1] + '）' : '')).join('；').slice(0, 3500) || '（没有）'}
 OpenStreetMap 地点：
-${osm.text.slice(0, 9000)}`;
+${osm.text.slice(0, 12000)}`;
   const user = ask => '材料：\n' + mat + '\n\n' + ask;
   // 每段必须有的栏目都有内容才算数；不行就再试一次 gpt-oss，再退到通用的 llm()（会换备用模型）
   const good = (J, need) => J && need.split(',').every(k => Array.isArray(J[k]) && J[k].length);
@@ -1129,6 +1132,39 @@ ${osm.text.slice(0, 9000)}`;
   };
   const outs = await Promise.all(LOCAL_PARTS.map(([need, ask]) => one(need, ask)));
   return Object.assign({}, ...outs);
+}
+// AI 偶尔还是会加一家清单里没有的店（实测出现过「The Burger Joint（未列但同类）」）。
+// 吃喝、好玩、街区里出现的英文专有名词（大写开头的词组）要能在材料里找到，找不到：标题里有就整张卡不要，正文里有就把这个名字删掉。
+const NAME_OK = /^(Yelp|Google|Google Maps|Apple Maps|Waze|Uber|Lyft|Uber Eats|DoorDash|OpenTable|Instagram|TikTok|Zillow|Craigslist|Amtrak|Greyhound|Costco|Walmart|Target)$/i;
+function checkNames(G, known, diag = []) {
+  const K = String(known).toLowerCase().replace(/[’`]/g, "'");
+  const NAME = /\b[A-Z][\w'’&.\-]*(?:\s+(?:[A-Z][\w'’&.\-]*|&|de|del|la|el|los|of|the|and|on|at|in)){0,6}/g;
+  const bad = n => {
+    n = n.replace(/[\s.'’&-]+$/, '').replace(/\s+(of|the|and|on|at|in|de|del|la|el|los)$/i, '');
+    if (n.length < 3 || /^[A-Z0-9]{2,5}$/.test(n) || NAME_OK.test(n)) return false;   // 机场代码、缩写和常用 App 放过
+    return K.indexOf(n.toLowerCase().replace(/’/g, "'")) < 0;
+  };
+  let dropped = 0, cut = 0;
+  for (const sec of ['eat', 'fun', 'hoods']) {
+    if (!Array.isArray(G[sec])) continue;
+    G[sec] = G[sec].filter(c => {
+      if (!c || typeof c !== 'object') return false;
+      if ((String(c.t || '').match(NAME) || []).some(bad)) { dropped++; return false; }
+      for (const f of ['d', 's', 'tip']) {
+        if (!c[f]) continue;
+        let t = String(c[f]).replace(/[（(][^）)]*未列[^）)]*[）)]/g, '');
+        for (const n of (t.match(NAME) || []).filter(bad)) {
+          const e = n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          t = t.replace(new RegExp('[、，,]\\s*' + e + '(\\s*[（(][^）)]*[）)])?|' + e + '(\\s*[（(][^）)]*[）)])?\\s*[、，,]?', 'g'), '');
+          cut++;
+        }
+        c[f] = t.replace(/[、，,]\s*([。；;])/g, '$1').replace(/^[\s、，,]+/, '');
+      }
+      return true;
+    });
+  }
+  if (dropped || cut) diag.push('names: dropped ' + dropped + ' cards, removed ' + cut + ' names');
+  return G;
 }
 function localClean(G) {
   const S = (x, n) => String(x == null ? '' : x).replace(/\s+$/, '').slice(0, n);
@@ -1160,7 +1196,7 @@ async function localNewsApi(req, env) {   // 本地通「近期大新闻」：�
   if (!items.length && p.county) { try { items = await gnews(p.county + ' ' + (p.state || ''), 7); } catch (e) { } }
   const seen = new Set(), out = [];
   for (const i of items) {
-    if (!i.u || seen.has(i.u)) continue; seen.add(i.u);
+    if (!i.u || !/^https?:\/\//i.test(i.u) || seen.has(i.u)) continue; seen.add(i.u);
     out.push({ t: String(i.t || '').slice(0, 160), u: i.u, s: String(i.s || '').slice(0, 60), d: String(i.d || '').slice(0, 40) });
     if (out.length >= 8) break;
   }
@@ -1181,15 +1217,16 @@ async function localApi(req, env) {
   if (used >= LOCAL_DAILY) return json(req, { error: 'quota', msg: '今天新生成的城市已经很多了，明天再试；已经生成过的城市照样能看' }, 429);
   await env.KV.put('lock:' + key, '1', { expirationTtl: 240 });
   await env.KV.put(dk, String(used + 1), { expirationTtl: 86400 * 2 });
-  const t0 = Date.now();
+  const t0 = Date.now(), refund = async () => { const n = +(await env.KV.get(dk)) || 1; await env.KV.put(dk, String(Math.max(0, n - 1)), { expirationTtl: 86400 * 2 }); };
   try {
     const diag = [];
     const fromClient = osmFromClient(b.osm);
     if (fromClient.length) diag.push('osm from browser ' + fromClient.length);
     const [wk, near, tags] = await Promise.all([wikiCity(p), wikiNear(p), fromClient.length ? fromClient : (b.noosm || Array.isArray(b.osm)) ? [] : osmAround(p, diag)]);   // 浏览器查过（哪怕没查到）就不再从这边试，免得白等超时
     const osm = osmDigest(tags);
-    const G = localClean(await localGen(env, p, wk, near, osm, diag));
-    if (!G.intro.length || G.hoods.length + G.eat.length + G.fun.length < 6) return json(req, { error: 'ai', msg: 'AI 这次没写好，再试一次' }, 502);
+    const known = [p.en, p.name, p.county, p.state, p.country, wk.title, wk.text, wk.zhText, near.map(x => x.join(' ')).join(' '), tags.map(t => t.name).join(' | ')].join(' | ');
+    const G = localClean(checkNames(await localGen(env, p, wk, near, osm, diag), known, diag));
+    if (!G.intro.length || G.hoods.length + G.eat.length + G.fun.length < 6) { await refund(); return json(req, { error: 'ai', msg: 'AI 这次没写好，再试一次（这次不算今天的额度）', diag }, 502); }
     const sources = [['OpenStreetMap（地点数据 © OpenStreetMap 贡献者）', 'https://www.openstreetmap.org/#map=13/' + p.lat + '/' + p.lon]];
     if (wk.url) sources.push(['Wikipedia · ' + wk.title, wk.url]);
     if (wk.zhUrl) sources.push(['维基百科 · ' + wk.zh, wk.zhUrl]);
@@ -1198,6 +1235,9 @@ async function localApi(req, env) {
     // 缺栏目、或者没有地点清单（只有泛泛的介绍）的只存 6 小时，过后再打开会重新生成
     await env.KV.put(key, JSON.stringify(out), { expirationTtl: full ? LOCAL_TTL : 6 * 3600 });
     return json(req, { ...out, ms: Date.now() - t0, diag });
+  } catch (e) {
+    await refund();
+    return json(req, { error: 'ai', msg: '生成出错了，再试一次（这次不算今天的额度）', detail: String(e).slice(0, 200) }, 502);
   } finally {
     await env.KV.delete('lock:' + key);
   }

@@ -148,7 +148,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     stories: '这座城市是怎么来的，出过哪些事和人。',
     go: '怎么去、怎么走、怎么穿，以及本地人的说法。',
     airport: '最近的机场怎么用：进城方式、值机行李、停车和接送机的注意事项。机场信息会变，以机场官网为准。',
-    safety: '这座城市的治安定性分析：哪里相对稳妥、哪里要留意、常见骗局怎么躲。只是定性参考，出发前再看一眼当地新闻和官方提醒。',
+    safety: '出门的安全常识和常见骗局怎么躲。这里不评价哪个街区安全不安全（没有可靠数据，AI 只会瞎猜）；想看具体区域，点下面的按钮查当地警察局的犯罪地图和提醒。',
     news: '这座城市最近 7 天的大新闻，点标题看原文。新闻单独更新（约 3 小时一次），不跟着指南的 30 天缓存走。',
     work: '在这里工作生活要知道的事。',
     trivia: '可以拿去跟朋友聊的冷知识。',
@@ -214,6 +214,10 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     h += '<div class="lead">' + LEAD[TAB] + (TAB !== 'near' && TAB !== 'want' && TAB !== 'news' ? ' ' + AI_NOTE : '') + '</div>';
     if (TAB === 'near') { $('list').innerHTML = h + '<div id="near"></div>'; nearRender(); return; }
     if (TAB === 'news') { $('list').innerHTML = h + '<div id="newsbox"></div>'; newsRender(); return; }
+    if (TAB === 'safety' && R && R.place) {   // 具体区域的安全情况交给官方数据
+      var cq = R.place.en + ' ' + (R.place.state || R.place.country || '');
+      h += '<div class="acts" style="margin:0 0 10px"><a class="want" style="text-decoration:none;display:inline-block" target="_blank" rel="noopener" href="https://www.google.com/search?q=' + encodeURIComponent(cq + ' police crime map') + '">🗺️ 查当地警察局犯罪地图</a> <a class="want" style="text-decoration:none;display:inline-block" target="_blank" rel="noopener" href="https://www.google.com/search?q=' + encodeURIComponent(cq + ' police non-emergency number') + '">☎️ 警察局非紧急电话</a></div>';
+    }
     if (TAB === 'trivia') h += '<div class="triv">' + (G.trivia || []).map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
     else {
       var L = items(TAB);
@@ -412,7 +416,8 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       return;
     }
     box.innerHTML = '<div class="empty"><span class="spin">📰</span> 正在搜这个城市最近的新闻…</div>';
-    if (NEWSBUSY || !toolsKey() || !API) return;
+    if (!API) { setTimeout(function () { if (TAB === 'news' && $('newsbox')) newsRender(); }, 500); return; }   // 后端地址还没读到，等一下再试
+    if (NEWSBUSY || !toolsKey()) return;
     NEWSBUSY = true;
     var x = new XMLHttpRequest(); x.open('POST', API + '/local/news'); x.timeout = 60000;
     x.setRequestHeader('Content-Type', 'application/json'); x.setRequestHeader('X-Tools-Key', toolsKey());
