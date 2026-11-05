@@ -1,8 +1,9 @@
-/* 保存图片的面板：手机上处理完先把图给你看，再点「存到相册」。
+/* 保存的面板（图片、视频、音频都行）：手机上处理完先给你看，再点「存到相册」。
+   在工具箱 App 里：直接交给 App 存到手机（视频进相册，音频进 Music，其他进「下载」）。
    为什么要多点一下：处理大图要几秒钟，浏览器会认为那已经不是你刚点的操作，
    直接弹系统分享菜单会被悄悄拦下来。新的一次点击就没这个问题。
    电脑上直接下载，弹一个小提示。
-   用法：SaveSheet.show(blob, '文件名.jpg', { w: 宽, h: 高 }) */
+   用法：SaveSheet.show(blob, '文件名.jpg', { w: 宽, h: 高 })  或  SaveSheet.show(blob, '剪好.mp4') */
 (function () {
   'use strict';
   var css = '' +
@@ -13,6 +14,8 @@
     '@media (prefers-color-scheme:dark){.ss-pn{background:#1B1F27;color:#E9ECF1}.ss-b{background:#252A35!important;border-color:#2B303B!important}}' +
     '.ss-pn h3{margin:0 0 10px;font-size:17px}' +
     '.ss-im{display:block;width:100%;max-height:48dvh;object-fit:contain;border-radius:10px;background:#000;-webkit-touch-callout:default}' +
+    'audio.ss-im{background:none;height:54px}' +
+    '.ss-bar{height:6px;border-radius:4px;background:rgba(127,127,127,.25);overflow:hidden;margin-top:10px;display:none}.ss-bar i{display:block;height:100%;width:0;background:#2C6E8F}' +
     '.ss-meta{font-size:12.5px;opacity:.65;margin:6px 0 12px}' +
     '.ss-b{display:block;width:100%;border:1px solid #E3DED3;background:#EEE9DF;color:inherit;border-radius:12px;padding:12px;font:inherit;font-weight:600;margin-top:8px;cursor:pointer;text-align:center;text-decoration:none}' +
     '.ss-b.pri{background:#2C6E8F!important;border-color:#2C6E8F!important;color:#fff}' +
@@ -27,6 +30,34 @@
     try { if (window.matchMedia('(pointer:coarse)').matches) return true; } catch (e) { }
     return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
   }
+  var MIME = { mp4: 'video/mp4', m4v: 'video/mp4', mov: 'video/quicktime', webm: 'video/webm', mkv: 'video/x-matroska', avi: 'video/x-msvideo', gif: 'image/gif',
+    mp3: 'audio/mpeg', m4a: 'audio/mp4', aac: 'audio/aac', wav: 'audio/wav', flac: 'audio/flac', ogg: 'audio/ogg', opus: 'audio/ogg',
+    jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp' };
+  function typeOf(blob, name) {
+    var m = /\.([a-z0-9]+)$/i.exec(name || ''), byExt = m && MIME[m[1].toLowerCase()];
+    var t = blob.type && blob.type !== 'application/octet-stream' ? blob.type : (byExt || 'application/octet-stream');
+    // 视频文件名但 blob 写的是音频（或反过来）时，以文件名为准
+    if (byExt && byExt.split('/')[0] !== t.split('/')[0]) t = byExt;
+    return t;
+  }
+  function inApp() { return !!(window.ToolsNative && window.ToolsNative.saveStart); }
+  // 分块交给 App 保存；返回 Promise（成功时给出保存位置）
+  function nativeSave(blob, name, onp) {
+    var typed = blob.type === typeOf(blob, name) ? blob : blob.slice(0, blob.size, typeOf(blob, name));
+    if (window.__toolsSave) return window.__toolsSave(typed, name, onp);
+    return new Promise(function (ok, bad) {
+      var id = ToolsNative.saveStart(name || 'file', typed.type || ''); if (!id) return bad(new Error('App 不能保存这个文件'));
+      var CH = 786432, i = 0;
+      function next() {
+        if (i >= typed.size) { var r = ToolsNative.saveEnd(id); return r.indexOf('✅') === 0 ? ok(r.slice(2)) : bad(new Error(r)); }
+        var fr = new FileReader();
+        fr.onload = function () { var d = String(fr.result); if (!ToolsNative.saveChunk(id, d.slice(d.indexOf(',') + 1))) return bad(new Error('保存失败')); i += CH; if (onp) onp(Math.min(1, i / typed.size)); setTimeout(next, 0); };
+        fr.onerror = function () { ToolsNative.saveCancel(id); bad(new Error('读取失败')); };
+        fr.readAsDataURL(typed.slice(i, i + CH));
+      }
+      next();
+    });
+  }
   function download(url, name) {
     var a = document.createElement('a'); a.href = url; a.download = name; a.rel = 'noopener';
     document.body.appendChild(a); a.click(); setTimeout(function () { a.remove(); }, 0);
@@ -38,37 +69,54 @@
 
   function show(blob, name, info) {
     addCss();
+    var type = typeOf(blob, name), kind = type.split('/')[0];
+    var word = kind === 'video' ? '视频' : kind === 'audio' ? '音频' : kind === 'image' ? '图片' : '文件';
     var url = URL.createObjectURL(blob);
-    if (!isPhone()) {
+    if (!isPhone() && !inApp()) {
       download(url, name); toast('已下载：' + name);
       setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
       return;
     }
-    var file = null; try { file = new File([blob], name, { type: blob.type || 'image/jpeg' }); } catch (e) { }
-    var canShare = !!(file && navigator.canShare && navigator.canShare({ files: [file] }));
+    var file = null; try { file = new File([blob], name, { type: type }); } catch (e) { }
+    var app = inApp();
+    var canShare = !app && !!(file && navigator.canShare && navigator.canShare({ files: [file] }));
+    var pv = kind === 'video' ? '<video class="ss-im" controls playsinline></video>'
+      : kind === 'audio' ? '<audio class="ss-im" controls></audio>'
+      : kind === 'image' ? '<img class="ss-im" alt="处理好的图片">' : '';
+    var hint = app ? (kind === 'video' || kind === 'image' ? '存好后在<b>相册</b>里能看到（文件夹「工具箱」）。' : kind === 'audio' ? '存好后在手机的 Music/工具箱 文件夹里。' : '存好后在「下载/工具箱」文件夹里。')
+      : kind === 'image' ? '也可以<b>长按上面的图片</b>，选「存储到照片」或「下载图片」。'
+      : kind === 'video' ? 'iPhone 点「存到相册 / 分享」再选「存储视频」；安卓点「下载」后在「下载」文件夹里。'
+      : '点「下载」后在「文件」/「下载」里能找到。';
     var ov = document.createElement('div'); ov.className = 'ss-ov';
-    ov.innerHTML = '<div class="ss-pn" role="dialog" aria-label="保存图片">' +
-      '<h3>图片做好了</h3>' +
-      '<img class="ss-im" alt="处理好的图片">' +
+    ov.innerHTML = '<div class="ss-pn" role="dialog" aria-label="保存' + word + '">' +
+      '<h3>' + word + '做好了</h3>' + pv +
       '<div class="ss-meta">' + esc(name) + (info && info.w ? ' · ' + info.w + '×' + info.h : '') + ' · ' + mb(blob.size) + '</div>' +
+      (app ? '<button class="ss-b pri" data-a="app">💾 保存到手机</button>' : '') +
       (canShare ? '<button class="ss-b pri" data-a="share">📤 存到相册 / 分享</button>' : '') +
-      '<button class="ss-b' + (canShare ? '' : ' pri') + '" data-a="dl">⬇️ 下载到「文件」</button>' +
-      '<div class="ss-msg"></div>' +
-      '<div class="ss-hint">也可以<b>长按上面的图片</b>，选「存储到照片」或「下载图片」。</div>' +
+      (app ? '' : '<button class="ss-b' + (canShare ? '' : ' pri') + '" data-a="dl">⬇️ 下载到「文件」</button>') +
+      '<div class="ss-bar"><i></i></div><div class="ss-msg"></div>' +
+      '<div class="ss-hint">' + hint + '</div>' +
       '<button class="ss-b" data-a="close">关闭</button></div>';
-    ov.querySelector('.ss-im').src = url;
-    function close() { ov.remove(); setTimeout(function () { URL.revokeObjectURL(url); }, 1000); }
-    function msg(t) { var m = ov.querySelector('.ss-msg'); m.textContent = t; m.style.display = 'block'; }
+    var el = ov.querySelector('.ss-im'); if (el) el.src = url;
+    function close() { if (el && el.pause) try { el.pause(); } catch (e) { } ov.remove(); setTimeout(function () { URL.revokeObjectURL(url); }, 1000); }
+    function msg(t, ok) { var m = ov.querySelector('.ss-msg'); m.textContent = t; m.style.color = ok ? '#2E9D4F' : ''; m.style.display = 'block'; }
     ov.addEventListener('click', function (e) {
       if (e.target === ov) return close();
       var b = e.target.closest('[data-a]'); if (!b) return;
       var a = b.getAttribute('data-a');
       if (a === 'close') close();
       else if (a === 'dl') download(url, name);
+      else if (a === 'app') {
+        if (b.disabled) return; b.disabled = true; b.textContent = '⏳ 正在保存…';
+        var bar = ov.querySelector('.ss-bar'), bi = bar.querySelector('i'); bar.style.display = blob.size > 4194304 ? 'block' : 'none';
+        nativeSave(blob, name, function (k) { bi.style.width = Math.round(k * 100) + '%'; }).then(function (where) {
+          b.textContent = '✅ 已保存'; msg('存好了：' + where, true);
+        }).catch(function (err) { b.disabled = false; b.textContent = '💾 再试一次'; msg((err && err.message) || '保存失败'); });
+      }
       else if (a === 'share') {
         navigator.share({ files: [file], title: name }).then(close).catch(function (err) {
           if (err && err.name === 'AbortError') return;          // 自己取消了，不用提示
-          msg('分享菜单没打开，试试「下载」，或长按图片保存。');
+          msg('分享菜单没打开，试试「下载」' + (kind === 'image' ? '，或长按图片保存。' : '。'));
         });
       }
     });

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.GeolocationPermissions;
+import android.webkit.MimeTypeMap;
 import android.webkit.PermissionRequest;
 import android.webkit.URLUtil;
 import android.webkit.ValueCallback;
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
     private static final int REQ_FILE = 1, REQ_MIC = 2, REQ_GEO = 3, REQ_NOTIFY = 4;
 
     private WebView web;
+    private SaveBridge saver;
     private ValueCallback<Uri[]> fileCallback;
     private Uri cameraUri;
     private PermissionRequest pendingMic;
@@ -69,6 +71,8 @@ public class MainActivity extends Activity {
         s.setBuiltInZoomControls(false);
         s.setUserAgentString(s.getUserAgentString() + " ToolsApp/" + BuildConfigVersion());
         CookieManager.getInstance().setAcceptThirdPartyCookies(web, true);
+        saver = new SaveBridge(this);
+        web.addJavascriptInterface(saver, "ToolsNative");   // 网页做好的文件存到手机（只认自己的网站）
 
         web.setWebViewClient(new WebViewClient() {
             @Override
@@ -86,11 +90,14 @@ public class MainActivity extends Activity {
             @Override
             public void onPageStarted(WebView v, String url, Bitmap favicon) {
                 super.onPageStarted(v, url, favicon);
+                saver.trusted = isHome(url);
             }
 
             @Override
             public void onPageFinished(WebView v, String url) {
                 super.onPageFinished(v, url);
+                saver.trusted = isHome(url);
+                if (saver.trusted) v.evaluateJavascript(SaveBridge.HOOK_JS, null);
                 registerPush();
             }
         });
@@ -122,7 +129,7 @@ public class MainActivity extends Activity {
                 if (camera != null && p.isCaptureEnabled()) {
                     launch = camera;                       // capture="environment"：直接开相机
                 } else {
-                    Intent pick = p.createIntent();
+                    Intent pick = pickIntent(p.getAcceptTypes());
                     if (p.getMode() == FileChooserParams.MODE_OPEN_MULTIPLE) pick.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                     launch = Intent.createChooser(pick, image ? "拍照或选图" : "选择文件");
                     if (!extras.isEmpty()) launch.putExtra(Intent.EXTRA_INITIAL_INTENTS, extras.toArray(new Intent[0]));
@@ -177,6 +184,10 @@ public class MainActivity extends Activity {
                 } catch (Exception e) {
                     openExternal(Uri.parse(url));
                 }
+            } else if ((url.startsWith("blob:") || url.startsWith("data:")) && saver.trusted) {
+                // 网页里生成的文件：让网页把内容交给 App 保存
+                String name = URLUtil.guessFileName(url, disposition, mime);
+                web.evaluateJavascript(SaveBridge.HOOK_JS + "window.__toolsSaveUrl(" + jsStr(url) + "," + jsStr(name) + ").catch(function(x){alert(x.message)});", null);
             } else {
                 toast("这个文件请在浏览器里下载");
             }
@@ -207,6 +218,50 @@ public class MainActivity extends Activity {
                 });
             } catch (Exception ignored) { }
         });
+    }
+
+    private static boolean isHome(String url) {
+        try { return "boliunew.github.io".equals(Uri.parse(url).getHost()); } catch (Exception e) { return false; }
+    }
+
+    private static String jsStr(String s) {
+        return "'" + s.replace("\\", "\\\\").replace("'", "\\'").replace("\n", " ") + "'";
+    }
+
+    /** 网页 accept="video/*,audio/*,.mkv,..." 全部都要能选（系统默认只用第一个类型，音频就选不了）。 */
+    private static Intent pickIntent(String[] accept) {
+        List<String> mimes = new ArrayList<>();
+        boolean any = false;
+        if (accept != null) for (String a : accept) {
+            if (a == null) continue;
+            for (String t : a.split(",")) {
+                t = t.trim().toLowerCase();
+                if (t.isEmpty()) continue;
+                if (t.startsWith(".")) {
+                    String m = MimeTypeMap.getSingleton().getMimeTypeFromExtension(t.substring(1));
+                    if (m == null) any = true; else if (!mimes.contains(m)) mimes.add(m);
+                } else if (t.contains("/")) {
+                    if (!mimes.contains(t)) mimes.add(t);
+                }
+            }
+        }
+        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+        i.addCategory(Intent.CATEGORY_OPENABLE);
+        if (mimes.isEmpty()) {
+            i.setType("*/*");
+        } else if (mimes.size() == 1 && !any) {
+            i.setType(mimes.get(0));
+        } else {
+            i.setType("*/*");
+            if (!any) i.putExtra(Intent.EXTRA_MIME_TYPES, mimes.toArray(new String[0]));
+            else {   // 有系统不认识的扩展名（如 .ape）：大类放宽成 video/* audio/* 等，免得选不到
+                List<String> wide = new ArrayList<>(mimes);
+                for (String m : mimes) { String w = m.substring(0, m.indexOf('/')) + "/*"; if (!wide.contains(w)) wide.add(w); }
+                wide.add("application/octet-stream");
+                i.putExtra(Intent.EXTRA_MIME_TYPES, wide.toArray(new String[0]));
+            }
+        }
+        return i;
     }
 
     private String startUrl(Intent i) {

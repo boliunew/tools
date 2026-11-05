@@ -44,12 +44,12 @@ audio{width:100%}
 .hd.r{border-radius:0 8px 8px 0}
 .ph{position:absolute;top:-2px;bottom:-2px;width:2px;background:#fff;box-shadow:0 0 4px rgba(0,0,0,.8);pointer-events:none}
 .ruler{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin:3px 18px 0;font-variant-numeric:tabular-nums}
-.times{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
-.tm{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:6px 8px;text-align:center}
+.times{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr) minmax(0,1.25fr);gap:8px;margin-top:10px}
+.tm{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:6px 6px;text-align:center;min-width:0}
 .tm small{display:block;font-size:12px;color:var(--faint)}
 .tm input{width:100%;border:0;background:transparent;text-align:center;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;padding:0}
 .tm b{font-size:17px;font-variant-numeric:tabular-nums}
-.nud{display:flex;justify-content:center;gap:4px;margin-top:3px}
+.nud{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:3px}
 .nud button{border:1px solid var(--line);background:var(--paper);border-radius:7px;font-size:12px;padding:1px 6px}
 .ctl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center}
 .zoom{display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-top:6px;font-size:12.5px;color:var(--faint)}
@@ -161,6 +161,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
     URLX = URL.createObjectURL(f);
     IS_V = !(/^audio\//.test(f.type) || /\.(mp3|m4a|aac|flac|wav|ogg|opus|wma|ape)$/i.test(f.name));
     var st = $('stage'); st.innerHTML = ''; st.className = 'stage' + (IS_V ? '' : ' audio');
+    modeHint();
     if (!IS_V) { var an = document.createElement('div'); an.className = 'an'; an.textContent = '🎵 ' + f.name + ' · ' + fsize(f.size); st.appendChild(an); }
     med = document.createElement(IS_V ? 'video' : 'audio');
     med.controls = true; med.playsInline = true; med.preload = 'auto'; med.src = URLX;
@@ -168,7 +169,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
     $('pick').style.display = 'none'; $('ed').className = 'on';
     med.addEventListener('loadedmetadata', function () {
       if (isFinite(med.duration) && med.duration > 0) setDur(med.duration);
-      if (IS_V && !med.videoWidth) { IS_V = false; }
+      if (IS_V && !med.videoWidth) { IS_V = false; modeHint(); }
     });
     med.addEventListener('error', function () { status('⚠️ 浏览器放不了这个格式的预览，但还是可以照时间剪（试试填开始 / 结束时间）', 'err'); probeDur(); });
     med.addEventListener('timeupdate', tick);
@@ -203,6 +204,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
   function syncInputs() { if (document.activeElement !== $('tIn')) $('tIn').value = fmt(A, true); if (document.activeElement !== $('tOut')) $('tOut').value = fmt(B, true); layout(); }
   function buildStrip() { clearTimeout(drawTimer); drawTimer = setTimeout(draw, 120); }
   async function draw() {
+    if (!FILE || !DUR) return;            // 还没选文件（比如只是窗口变了大小）
     var cv = $('strip'), w = cv.clientWidth, h = cv.clientHeight, dpr = window.devicePixelRatio || 1;
     cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
     var ctx = cv.getContext('2d'); ctx.scale(dpr, dpr); ctx.fillStyle = '#111'; ctx.fillRect(0, 0, w, h);
@@ -324,7 +326,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
     var b = e.target.closest('[data-v]'); if (!b) return; MODE = b.getAttribute('data-v');
     [].forEach.call(this.querySelectorAll('button'), function (x) { x.classList.toggle('on', x === b); }); modeHint();
   };
-  function modeHint() { $('modeHint').textContent = MODE === 'fast' ? '不重新编码，几秒钟就好，画质完全不变。开头会对齐到最近的关键帧，可能比你选的早一点点（一般不到 2 秒）。' : '重新编码，开头结尾都精确到帧；慢一些，画质几乎看不出差别。'; }
+  function modeHint() { $('modeHint').textContent = !IS_V ? '音频两种方式一样：不重新编码，误差只有几十毫秒，音质完全不变。' : MODE === 'fast' ? '不重新编码，几秒钟就好，画质完全不变。开头会对齐到最近的关键帧，可能比你选的早一点点（一般不到 2 秒）。' : '重新编码，开头结尾都精确到帧；慢一些，画质几乎看不出差别。'; }
   modeHint();
 
   /* ---------- 剪：先用浏览器硬件（Mediabunny），不行再用 ffmpeg ---------- */
@@ -347,7 +349,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
     if (!(await input.canRead())) return null;
     var output = new M.Output({ format: fm, target: new M.BufferTarget() });
     var conv = await M.Conversion.init({ input: input, output: output, trim: { start: A, end: B },
-      copy: MODE === 'fast' ? { mode: 'preferred', shiftTolerance: Infinity, boundaryPolicy: 'expand' } : false });
+      copy: MODE === 'fast' || !IS_V ? { mode: 'preferred', shiftTolerance: Infinity, boundaryPolicy: 'expand' } : false });
     if (!conv.isValid) return null;
     CONV = conv;
     conv.onProgress = function (p) { if (running) { $('bar').style.width = Math.round(p * 100) + '%'; status('⚡ 剪辑中 ' + Math.round(p * 100) + '%'); } };
@@ -372,10 +374,10 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
     }
     var e = ext(FILE.name), inN = 'in.' + e, outN = 'out.' + e;
     await ff.writeFile(inN, new Uint8Array(await FILE.arrayBuffer()));
-    var args = MODE === 'fast'
+    var args = MODE === 'fast' || !IS_V
       ? ['-ss', String(A), '-to', String(B), '-i', inN, '-c', 'copy', '-avoid_negative_ts', 'make_zero', outN]
       : ['-i', inN, '-ss', String(A), '-to', String(B)].concat(IS_V ? ['-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-c:a', 'aac'] : [], [outN]);
-    if (MODE === 'fast') args = ['-ss', String(A), '-i', inN, '-t', String(B - A), '-c', 'copy', '-avoid_negative_ts', 'make_zero', outN];
+    if (MODE === 'fast' || !IS_V) args = ['-ss', String(A), '-i', inN, '-t', String(B - A), '-c', 'copy', '-avoid_negative_ts', 'make_zero', outN];
     var code = await ff.exec(args);
     if (code !== 0) throw new Error('剪辑失败，这个格式可能不支持');
     var data = await ff.readFile(outN);
@@ -414,7 +416,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
   $('again').onclick = function () { $('res').className = 'box res'; window.scrollTo({ top: 0, behavior: 'smooth' }); };
 })();
 </script>
-<script src="savesheet.js?v=1"></script>
+<script src="savesheet.js?v=2"></script>
 <script src="wide.js?v=2"></script>
 <script src="nav.js?v=49" defer></script>
 </body>
