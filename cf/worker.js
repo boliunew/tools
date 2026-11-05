@@ -2,6 +2,7 @@
 //
 //  POST /ocr     拍照识别柜号 / 封条号（Workers AI 视觉模型 + ISO 6346 校验）。需要请求头 X-Tools-Key：
 //                网站首页解锁后存在浏览器里的那串密钥（sha256 后等于 CHECK），或部署时生成的测试密钥。
+//  POST /local   📍 本地通：按定位或城市名生成当地生活指南（OpenStreetMap + 维基百科 + Workers AI，KV 缓存 30 天）。需要 X-Tools-Key
 //  GET  /health  看看活着没有、配了哪些东西
 //  POST /dl/pull · /dl/note  家里电脑的 torrent_hub 来取下载任务、回报进度（X-Hub-Key）
 //  POST /tg/<密钥> Telegram 机器人（照片认柜号 / 单据、语音翻译、/提醒 /股价 /简报），见下面「Telegram 双向机器人」
@@ -925,6 +926,215 @@ async function agentApi(req, env, url) {
   return json(req, { error: 'path' }, 404);
 }
 
+// ---------------------------------------------------------------------------- /local：📍 本地通
+// 按定位（或输入的城市名）生成和城市生活页一样的当地指南。
+// 真实数据先拿：OpenStreetMap（城市名、街区、餐馆、公园、景点、车站）、维基百科（城市条目、附近名胜）；
+// 再让 Workers AI 只根据这些材料写成中文指南。同一个城市存 KV 30 天，第二次秒出。
+// 隐私：只收取整到约 1 公里的坐标，不记录。
+const LOCAL_V = 'local1';
+const LOCAL_TTL = 86400 * 30, LOCAL_DAILY = 40;
+const LOCAL_UA = 'boliunew-tools/1.0 (+https://boliunew.github.io/tools/local.html)';
+async function fetchJ(url, opt = {}, ms = 15000) {
+  const ac = new AbortController(), t = setTimeout(() => ac.abort(), ms);
+  try {
+    const r = await fetch(url, { ...opt, signal: ac.signal, headers: { 'User-Agent': LOCAL_UA, 'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8', ...(opt.headers || {}) } });
+    return r.ok ? await r.json() : null;
+  } catch (e) { return null; } finally { clearTimeout(t); }
+}
+const NOMI = 'https://nominatim.openstreetmap.org';
+const nomiQ = 'format=jsonv2&addressdetails=1&extratags=1&namedetails=1&accept-language=zh-CN,en';
+function placeOf(n) {   // Nominatim 结果 → 城市信息
+  if (!n || !n.address) return null;
+  const a = n.address, nd = n.namedetails || {}, ex = n.extratags || {};
+  const en = nd['name:en'] || a.city || a.town || a.village || a.municipality || a.hamlet || a.county || nd.name || n.name;
+  if (!en) return null;
+  const zh = nd['name:zh-Hans'] || nd['name:zh-CN'] || nd['name:zh'] || '';
+  return {
+    en: String(en).slice(0, 80), zh: String(zh).slice(0, 40), name: String(n.name || en).slice(0, 80),
+    county: a.county || '', state: a.state || a.province || a.region || '', country: a.country || '', cc: (a.country_code || '').toLowerCase(),
+    lat: +(+n.lat).toFixed(4), lon: +(+n.lon).toFixed(4), type: n.addresstype || n.type || '', pop: +String(ex.population || '').replace(/\D/g, '') || 0,
+    wiki: ex.wikipedia || '', wd: ex.wikidata || ''
+  };
+}
+async function localResolve(b) {
+  if (b.q) {
+    const q = String(b.q).replace(/\s+/g, ' ').trim().slice(0, 100);
+    const r = await fetchJ(`${NOMI}/search?${nomiQ}&limit=1&featureType=settlement&q=${encodeURIComponent(q)}`);
+    const hit = r && r[0];
+    if (!hit) return null;
+    // 搜到的点再按城市级别反查一次，和定位走同一套名字（缓存才能对上）
+    return placeOf(await fetchJ(`${NOMI}/reverse?${nomiQ}&zoom=10&lat=${(+hit.lat).toFixed(2)}&lon=${(+hit.lon).toFixed(2)}`)) || placeOf(hit);
+  }
+  const lat = +b.lat, lon = +b.lon;
+  if (!isFinite(lat) || !isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return null;
+  return placeOf(await fetchJ(`${NOMI}/reverse?${nomiQ}&zoom=10&lat=${lat.toFixed(2)}&lon=${lon.toFixed(2)}`));
+}
+const localKey = p => [p.cc, p.state, p.en].map(s => String(s).toLowerCase().replace(/\s+/g, '-')).join(':');
+
+async function wikiCity(p) {   // 英文条目全文（截断）+ 中文名 / 中文简介
+  const W = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&origin=*&redirects=1';
+  let title = /^en:/.test(p.wiki) ? p.wiki.slice(3) : '';
+  if (!title) {
+    const s = await fetchJ(`${W}&action=query&list=search&srlimit=1&srsearch=${encodeURIComponent(p.en + ', ' + p.state)}`);
+    title = (((s || {}).query || {}).search || [])[0]?.title || '';
+  }
+  if (!title) return {};
+  const r = await fetchJ(`${W}&action=query&prop=extracts|langlinks&explaintext=1&lllang=zh&titles=${encodeURIComponent(title)}`);
+  const pg = (((r || {}).query || {}).pages || [])[0] || {};
+  const out = { title: pg.title || title, text: String(pg.extract || '').replace(/\n{3,}/g, '\n\n').slice(0, 14000), url: 'https://en.wikipedia.org/wiki/' + encodeURIComponent((pg.title || title).replace(/ /g, '_')) };
+  const zt = (pg.langlinks || [])[0]?.title;
+  if (zt) {
+    const z = await fetchJ(`https://zh.wikipedia.org/w/api.php?format=json&formatversion=2&origin=*&redirects=1&variant=zh-cn&action=query&prop=extracts&exintro=1&explaintext=1&titles=${encodeURIComponent(zt)}`);
+    const zp = (((z || {}).query || {}).pages || [])[0] || {};
+    out.zh = zt; out.zhText = String(zp.extract || '').slice(0, 2500); out.zhUrl = 'https://zh.wikipedia.org/wiki/' + encodeURIComponent(zt.replace(/ /g, '_'));
+  }
+  return out;
+}
+async function wikiNear(p) {   // 城市周边 12 公里内有维基条目的地方（名胜、学校、建筑……）
+  const r = await fetchJ(`https://en.wikipedia.org/w/api.php?format=json&formatversion=2&origin=*&action=query&generator=geosearch&ggscoord=${p.lat}|${p.lon}&ggsradius=10000&ggslimit=50&prop=description`);
+  return ((((r || {}).query || {}).pages) || []).map(x => [x.title, x.description || '']).filter(x => x[0] && !/^List of/.test(x[0]));
+}
+const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+async function osmAround(p) {
+  const R = p.pop > 500000 ? 7000 : p.pop > 100000 ? 5500 : 4000, A = `(around:${R},${p.lat},${p.lon})`, A2 = `(around:${R * 2.5},${p.lat},${p.lon})`;
+  const q = `[out:json][timeout:25];(
+nwr${A}["amenity"~"^(restaurant|cafe|fast_food|food_court|ice_cream|bar|pub)$"]["name"];
+nwr${A}["tourism"~"^(attraction|museum|viewpoint|gallery|zoo|theme_park|aquarium)$"]["name"];
+nwr${A}["leisure"~"^(park|nature_reserve|garden|stadium|water_park|beach_resort)$"]["name"];
+nwr${A}["historic"]["name"];
+nwr${A}["shop"~"^(supermarket|mall|department_store|bakery)$"]["name"];
+nwr${A}["amenity"~"^(library|marketplace|university|college|theatre|arts_centre|place_of_worship)$"]["name"];
+nwr${A2}["railway"~"^(station|halt)$"]["name"];
+nwr${A2}["aeroway"="aerodrome"]["name"]["iata"];
+node${A2}["place"~"^(suburb|neighbourhood|quarter|town|village)$"]["name"];
+);out tags center 1500;`;
+  for (const u of OVERPASS) {
+    const r = await fetchJ(u, { method: 'POST', body: 'data=' + encodeURIComponent(q), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }, 28000);
+    if (r && r.elements) return r.elements.map(e => e.tags || {}).filter(t => t.name);
+  }
+  return [];
+}
+function osmDigest(tags) {   // 整理成给 AI 看的清单：每类挑一些，餐馆按菜系轮流挑，免得全是连锁快餐
+  const CHAIN = /^(McDonald's|Starbucks|Subway|Taco Bell|Burger King|Wendy's|Jack in the Box|KFC|Domino's|Pizza Hut|Little Caesars|Panda Express|Carl's Jr\.|Chipotle|Dunkin'?|Del Taco|Popeyes|Arby's|Sonic|Dairy Queen|Chick-fil-A|Jamba|Wingstop|Papa John's|IHOP|Denny's|7-Eleven)/i;
+  const zh = t => t['name:zh'] || t['name:zh-Hans'] || '';
+  const fmt = t => t.name + (zh(t) && zh(t) !== t.name ? '（' + zh(t) + '）' : '');
+  const g = { eat: {}, sights: [], parks: [], historic: [], shops: [], civic: [], stations: [], airports: [], places: [] }, seen = new Set();
+  for (const t of tags) {
+    if (seen.has(t.name)) continue; seen.add(t.name);
+    if (t.amenity && /restaurant|cafe|fast_food|food_court|ice_cream|bar|pub/.test(t.amenity)) {
+      if (CHAIN.test(t.name)) continue;
+      const k = (t.cuisine || t.amenity).split(';')[0].toLowerCase();
+      (g.eat[k] = g.eat[k] || []).push(fmt(t) + ' [' + (t.cuisine || t.amenity) + ']');
+    } else if (t.tourism) g.sights.push(fmt(t) + ' [' + t.tourism + ']');
+    else if (t.leisure) g.parks.push(fmt(t) + ' [' + t.leisure + ']');
+    else if (t.historic) g.historic.push(fmt(t) + ' [' + t.historic + ']');
+    else if (t.shop) g.shops.push(fmt(t) + ' [' + t.shop + ']');
+    else if (t.railway) g.stations.push(fmt(t) + (t.network || t.operator ? ' [' + (t.network || t.operator) + ']' : ''));
+    else if (t.aeroway) g.airports.push(fmt(t) + ' [' + t.iata + ']');
+    else if (t.place) g.places.push(fmt(t) + ' [' + t.place + ']');
+    else if (t.amenity) g.civic.push(fmt(t) + ' [' + t.amenity + ']');
+  }
+  const eat = [], ks = Object.keys(g.eat).sort((a, b) => g.eat[b].length - g.eat[a].length);
+  for (let i = 0; eat.length < 90 && i < 12; i++) for (const k of ks) if (g.eat[k][i] && eat.length < 90) eat.push(g.eat[k][i]);
+  const cuisines = ks.slice(0, 20).map(k => k + '×' + g.eat[k].length).join('，');
+  const cut = (a, n) => a.slice(0, n).join('；');
+  return { eat, cuisines, text: [
+    '餐馆和咖啡店（已去掉连锁快餐）：' + eat.join('；'),
+    '菜系数量（越多越有代表性）：' + cuisines,
+    '景点 / 博物馆：' + cut(g.sights, 50), '公园 / 自然：' + cut(g.parks, 50), '历史遗迹：' + cut(g.historic, 30),
+    '超市 / 商场 / 面包店：' + cut(g.shops, 40), '图书馆 / 大学 / 剧院 / 宗教场所等：' + cut(g.civic, 40),
+    '火车 / 地铁站：' + cut(g.stations, 30), '机场：' + cut(g.airports, 10), '附近的街区和小城镇：' + cut(g.places, 50)
+  ].join('\n') };
+}
+
+const LOCAL_SYS = `你是给华人写「城市生活指南」的编辑，读者是在美国工作生活的成年华人，中文为主、会一些英语。
+写法：简体中文，口语化、具体、有用，像一个住在当地多年的朋友在介绍；不用营销腔，不堆形容词。
+最重要的规则：
+1. 具体的店名、公园、景点、街区、车站、学校，只能用「材料」里出现过的名字，写成「中文名 English name」（没有现成中文名就自己意译或音译，英文原名照抄）。材料里没有的店名一律不要写。
+2. 数字（人口、面积、年份、距离）只用材料里有的；材料里没有就不写数字，或者用「大约」「几十年」这类说法。
+3. 可以写大家普遍知道的常识（当地气候特点、加州/美国通行的规矩、一类食物是什么），但不确定的就不写。
+4. 营业时间、票价、规定会变的，提醒「以官网为准」。
+只输出一个 JSON 对象，不要任何别的文字。
+每个卡片对象的字段：{"e":"一个表情符号","t":"标题","s":"一句话摘要（30字内）","tag":["最多3个短标签，可以用 必去"],"d":"正文，2到4句，段落之间用\\n\\n","do":["可选：去做什么，2到4条"],"eat":["可选：吃什么"],"tip":"可选：一句实用窍门","note":"可选：一句注意事项","y":"可选：年代，只在人文故事里用"}`;
+const LOCAL_PARTS = [
+  ['intro,facts,hoods,stories,trivia', `输出：{"intro":["第一段：这是个什么样的地方、在哪、多大","第二段：历史和性格","第三段：适合华人的看点（吃、住、出行）"],
+"facts":[["面积","…"],["人口","…"],["建城","…"],["气候","…"],["华人","…"],["离洛杉矶","…"]]（6 项，键可以按城市调整，材料里没有依据的就换成别的项，不要编数字；值不超过 20 个字）,
+"hoods":[卡片 6 到 10 个：这个城市的街区，或者附近值得去的小城镇；每个写清去做什么、吃什么],
+"stories":[卡片 5 到 8 个：这座城市是怎么来的、出过什么事、有什么名人和故事，按年代排序，带 y],
+"trivia":["8 到 12 条可以跟朋友聊的冷知识，每条一两句，只用材料里有依据的"]}`],
+  ['eat,fun', `输出：{"eat":[卡片 10 到 16 个：先写这一带最有代表性的吃的（按「菜系数量」挑当地特色和华人会喜欢的），每个卡片的 d 里点名材料里 1 到 3 家具体店；再写几家值得专门去的店],
+"fun":[卡片 10 到 14 个：景点、博物馆、公园、徒步、看风景的地方和一年里的活动；tag 里标 免费 / 带娃 / 必去]}`],
+  ['tips,go,work', `输出：{"tips":[卡片 8 到 12 个：本地人才知道的省钱、省事、避坑窍门（停车、图书馆卡、超市、天气、治安、开车、华人超市和服务）],
+"go":[卡片 4 到 6 个：怎么去（最近的机场、火车）、市内怎么走、开车和停车、穿什么（按气候）、本地说法],
+"work":[卡片 3 到 5 个：主要行业和大雇主、生活成本的大致情况（不写具体房租数字）、华人社区和资源]}`]
+];
+async function localGen(env, p, wk, near, osm) {
+  const name = (p.zh ? p.zh + ' ' : '') + p.en;
+  const mat = `城市：${name}（${[p.county, p.state, p.country].filter(Boolean).join('，')}）${p.pop ? '，OpenStreetMap 记的人口约 ' + p.pop : ''}
+维基百科中文简介：${wk.zhText || '（没有）'}
+维基百科英文条目（节选）：${(wk.text || '（没有）').slice(0, 9000)}
+附近有维基条目的地方：${near.map(x => x[0] + (x[1] ? '（' + x[1] + '）' : '')).join('；').slice(0, 3500) || '（没有）'}
+OpenStreetMap 地点：
+${osm.text.slice(0, 9000)}`;
+  const user = ask => '材料：\n' + mat + '\n\n' + ask;
+  const one = async ask => {   // 指南很长，给足输出长度；不行就退回通用的 llm()（会换备用模型）
+    await track(env, 'chat');
+    try {
+      const J = parseJSON(aiText(await env.AI.run(LLM[0], { instructions: LOCAL_SYS, input: user(ask), reasoning: { effort: 'low' }, max_output_tokens: 8000 })));
+      if (J) return J;
+    } catch (e) { /* 换下面的 */ }
+    return parseJSON(await llm(env, LOCAL_SYS, user(ask), 4000)) || {};
+  };
+  const outs = await Promise.all(LOCAL_PARTS.map(([, ask]) => one(ask)));
+  return Object.assign({}, ...outs);
+}
+function localClean(G) {
+  const S = (x, n) => String(x == null ? '' : x).replace(/\s+$/, '').slice(0, n);
+  const L = (x, n, m) => (Array.isArray(x) ? x : []).slice(0, n).map(s => S(s, m)).filter(Boolean);
+  const cards = (x, n) => (Array.isArray(x) ? x : []).slice(0, n).filter(o => o && o.t).map(o => {
+    const c = { e: S(o.e || '📍', 8), t: S(o.t, 60), s: S(o.s, 120), d: S(o.d, 900) };
+    if (o.tag && o.tag.length) c.tag = L(o.tag, 3, 10);
+    if (o.do && o.do.length) c.do = L(o.do, 5, 120);
+    if (o.eat && o.eat.length) c.eat = L(o.eat, 5, 120);
+    for (const k of ['tip', 'note']) if (o[k]) c[k] = S(o[k], 240);
+    if (o.y) c.y = S(o.y, 20);
+    return c;
+  });
+  return {
+    intro: L(G.intro, 3, 500), facts: (Array.isArray(G.facts) ? G.facts : []).filter(f => Array.isArray(f) && f[0] && f[1]).slice(0, 6).map(f => [S(f[0], 8), S(f[1], 30)]),
+    hoods: cards(G.hoods, 12), eat: cards(G.eat, 18), fun: cards(G.fun, 16), tips: cards(G.tips, 14), stories: cards(G.stories, 10),
+    go: cards(G.go, 8), work: cards(G.work, 6), trivia: L(G.trivia, 14, 240)
+  };
+}
+async function localApi(req, env) {
+  if (!(await authed(req, env))) return json(req, { error: 'key', msg: '需要先在工具箱首页输入密码解锁（并勾选「记住我」）' }, 401);
+  const b = await req.json().catch(() => ({}));
+  const p = await localResolve(b);
+  if (!p) return json(req, { error: 'place', msg: b.q ? '没找到这个城市，换个写法试试（比如 Portland, Oregon）' : '这个位置认不出是哪座城市' }, 404);
+  const key = LOCAL_V + ':' + localKey(p);
+  if (!b.nocache) { const hit = await env.KV.get(key); if (hit) return json(req, { ...JSON.parse(hit), cached: true }); }
+  if (await env.KV.get('lock:' + key)) return json(req, { pending: true, place: p, msg: '这个城市正在生成，稍等一下' }, 202);
+  const dk = 'localgen:' + new Date().toISOString().slice(0, 10), used = +(await env.KV.get(dk)) || 0;
+  if (used >= LOCAL_DAILY) return json(req, { error: 'quota', msg: '今天新生成的城市已经很多了，明天再试；已经生成过的城市照样能看' }, 429);
+  await env.KV.put('lock:' + key, '1', { expirationTtl: 240 });
+  await env.KV.put(dk, String(used + 1), { expirationTtl: 86400 * 2 });
+  const t0 = Date.now();
+  try {
+    const [wk, near, tags] = await Promise.all([wikiCity(p), wikiNear(p), osmAround(p)]);
+    const osm = osmDigest(tags);
+    const G = localClean(await localGen(env, p, wk, near, osm));
+    if (!G.intro.length || G.hoods.length + G.eat.length + G.fun.length < 6) return json(req, { error: 'ai', msg: 'AI 这次没写好，再试一次' }, 502);
+    const sources = [['OpenStreetMap（地点数据 © OpenStreetMap 贡献者）', 'https://www.openstreetmap.org/#map=13/' + p.lat + '/' + p.lon]];
+    if (wk.url) sources.push(['Wikipedia · ' + wk.title, wk.url]);
+    if (wk.zhUrl) sources.push(['维基百科 · ' + wk.zh, wk.zhUrl]);
+    const out = { v: LOCAL_V, place: { ...p, zh: p.zh || wk.zh || '' }, guide: { ...G, sources }, stats: { osm: tags.length, wiki: near.length, eat: osm.eat.length }, generated: new Date().toISOString() };
+    await env.KV.put(key, JSON.stringify(out), { expirationTtl: LOCAL_TTL });
+    return json(req, { ...out, ms: Date.now() - t0 });
+  } finally {
+    await env.KV.delete('lock:' + key);
+  }
+}
+
 // ---------------------------------------------------------------------------- 入口
 export default {
   async fetch(req, env, ctx) {
@@ -932,6 +1142,7 @@ export default {
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors(req) });
     if (url.pathname === '/ocr' && req.method === 'POST') return ocr(req, env);
     if (url.pathname === '/explain' && req.method === 'POST') return explain(req, env);
+    if (url.pathname === '/local' && req.method === 'POST') return localApi(req, env);
     if (url.pathname.startsWith('/tg/') && req.method === 'POST') return tgWebhook(req, env, ctx, url);
     if (url.pathname === '/dl/pull' || url.pathname === '/dl/note') return hubApi(req, env, url);
     if (url.pathname === '/push/register' && req.method === 'POST') {   // App 登记推送地址（需要首页密码解锁过）
