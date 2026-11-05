@@ -58,7 +58,7 @@ public class TtsBridge {
 
     private final Activity act;
     private final WebView web;
-    private final TextToSpeech tts;
+    private TextToSpeech tts;   // 不能是 final：初始化回调里要用到它
     private volatile boolean ready = false;
     private String voicesJson = "[]";
     private final Map<String, Voice> byName = new HashMap<>();
