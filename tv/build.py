@@ -9,8 +9,12 @@
     tv/data/index.json        国家列表、类别、总数、检查时间
     tv/data/c/<国家>.json      这个国家的台：名字、台标、类别、所有地址（能不能连、多快）
     tv/data/all.json          全球搜索用：台名 + 国家
+    tv/data/epg/<国家>.json    节目表：现在和接下来 30 小时在播什么（能对上号的台）
 """
 import argparse
+import gzip
+import io
+import xml.etree.ElementTree as ET
 import concurrent.futures as cf
 import datetime as dt
 import json
@@ -25,7 +29,9 @@ from collections import Counter, defaultdict
 
 API = "https://iptv-org.github.io/api/"
 FALLBACK = "https://raw.githubusercontent.com/iptv-org/api/gh-pages/"
-FILES = ["channels", "streams", "logos", "categories", "blocklist"]
+FILES = ["channels", "streams", "logos", "categories", "blocklist", "guides"]
+EPG_BASE = os.getenv("TV_EPG_BASE", "https://i.mjh.nz/")          # 免费台（Pluto / Samsung TV Plus / Plex / Roku …）的节目表，iptv-org 的 guides 里有对照
+EPG_HOURS = 30
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 ORIGIN = "https://boliunew.github.io"
@@ -85,10 +91,106 @@ def check(url):
         return {"ok": False, "ms": -1, "cors": False}
 
 
+def xmltv_time(s):
+    """'20261105120000 +0000' -> epoch minutes"""
+    s = (s or "").strip()
+    try:
+        t = dt.datetime.strptime(s[:14], "%Y%m%d%H%M%S")
+        off = s[14:].strip()
+        if off:
+            sign = -1 if off[0] == "-" else 1
+            t -= sign * dt.timedelta(hours=int(off[1:3]), minutes=int(off[3:5]))
+        return int(t.replace(tzinfo=dt.timezone.utc).timestamp() // 60)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def fetch_guide(path, want):
+    """Download one i.mjh.nz XMLTV file and keep the programmes of the channels we want."""
+    url = EPG_BASE + path + ".xml.gz"
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=90) as r:
+            raw = r.read()
+    except Exception as e:  # noqa: BLE001
+        return None, str(e)[:80]
+    now = int(time.time() // 60)
+    lo, hi = now - 180, now + EPG_HOURS * 60
+    out = defaultdict(list)
+    try:
+        data = gzip.decompress(raw) if raw[:2] == b"\x1f\x8b" else raw
+        for _, el in ET.iterparse(io.BytesIO(data), events=("end",)):
+            if el.tag != "programme":
+                if el.tag == "channel":
+                    el.clear()
+                continue
+            cid = el.get("channel")
+            if cid in want:
+                s, e = xmltv_time(el.get("start")), xmltv_time(el.get("stop"))
+                if s and e and e > lo and s < hi:
+                    title = (el.findtext("title") or "").strip()
+                    sub = (el.findtext("sub-title") or "").strip()
+                    desc = re.sub(r"\s+", " ", (el.findtext("desc") or "").strip())
+                    if title:
+                        out[cid].append([s, e, title[:80] + (" · " + sub[:60] if sub and sub.lower() != title.lower() else ""), desc[:160]])
+            el.clear()
+    except Exception as e:  # noqa: BLE001
+        return None, "解析失败 " + str(e)[:60]
+    return out, ""
+
+
+def build_epg(by_cc, guides, workers=8):
+    """节目表：每个台找它在 i.mjh.nz 上的编号（iptv-org 的对照，或者 Pluto 地址里的编号），下载对应的文件。"""
+    mj = defaultdict(list)
+    for g in guides:
+        if g.get("site") == "i.mjh.nz" and g.get("channel") and "#" in (g.get("site_id") or ""):
+            path, sid = g["site_id"].split("#", 1)
+            mj[g["channel"]].append((path, sid))
+    cands = {}   # (cc, key) -> [(path, id)]
+    for cc, lst in by_cc.items():
+        for ch in lst:
+            key = ch.get("i") or (cc + ":" + ch["n"])
+            c = list(mj.get(ch.get("i"), []))
+            c.sort(key=lambda x: (x[0].split("/")[-1].lower() != cc.lower(), x[0]))   # 本国的优先
+            for s in ch["s"]:
+                m = re.search(r"jmp2\.uk/plu-([0-9a-f]{24})", s[0])
+                if m:
+                    for reg in ([cc.lower()] if cc != "ZZ" else []) + ["us", "all"]:
+                        if ("PlutoTV/" + reg, m.group(1)) not in c:
+                            c.append(("PlutoTV/" + reg, m.group(1)))
+            if c:
+                cands[(cc, key)] = c
+    paths = defaultdict(set)
+    for c in cands.values():
+        for path, sid in c:
+            paths[path].add(sid)
+    print(f"  节目表：{len(cands)} 个台有对照，要下载 {len(paths)} 个文件", flush=True)
+    got, fails = {}, []
+    with cf.ThreadPoolExecutor(workers) as ex:
+        futs = {ex.submit(fetch_guide, p, w): p for p, w in paths.items()}
+        for f in cf.as_completed(futs):
+            res, err = f.result()
+            if res is None:
+                fails.append(f"{futs[f]}（{err}）")
+            else:
+                got[futs[f]] = res
+    if fails:
+        print(f"  节目表下载失败 {len(fails)} 个：{'; '.join(fails[:6])}", flush=True)
+    epg = defaultdict(dict)
+    for (cc, key), c in cands.items():
+        for path, sid in c:
+            progs = (got.get(path) or {}).get(sid)
+            if progs:
+                progs.sort()
+                epg[cc][key] = progs[:48]
+                break
+    return epg
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src")
     ap.add_argument("--no-check", action="store_true")
+    ap.add_argument("--no-epg", action="store_true")
     ap.add_argument("--workers", type=int, default=96)
     ap.add_argument("--budget", type=int, default=25 * 60, help="检查最多花几秒")
     a = ap.parse_args()
@@ -213,11 +315,31 @@ def main():
             json.dump({"cc": cc, "ch": lst}, f, ensure_ascii=False, separators=(",", ":"))
     with open(os.path.join(OUT, "all.json"), "w", encoding="utf-8") as f:
         json.dump(everything, f, ensure_ascii=False, separators=(",", ":"))
+    epg_dir = os.path.join(OUT, "epg")
+    epg_count, epg_at = {}, None
+    if not a.no_epg:
+        epg = build_epg(by_cc, d.get("guides") or [])
+        os.makedirs(epg_dir, exist_ok=True)
+        if epg:   # 下载全失败时保留上一次的节目表
+            for f in os.listdir(epg_dir):
+                os.remove(os.path.join(epg_dir, f))
+            for cc, m in epg.items():
+                with open(os.path.join(epg_dir, cc + ".json"), "w", encoding="utf-8") as f:
+                    json.dump(m, f, ensure_ascii=False, separators=(",", ":"))
+                epg_count[cc] = len(m)
+            epg_at = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+            print(f"  节目表：{sum(epg_count.values())} 个台，{len(epg_count)} 个国家", flush=True)
+    if not epg_count and os.path.exists(os.path.join(OUT, "index.json")):
+        try:
+            old = json.load(open(os.path.join(OUT, "index.json"), encoding="utf-8"))
+            epg_count, epg_at = old.get("epg") or {}, old.get("epg_at")
+        except Exception:  # noqa: BLE001
+            pass
     total_ok = sum(c[2] for c in countries)
     index = {"generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "checked": checked_at,
              "channels": len(everything), "streams": len(urls), "ok": total_ok,
              "countries": sorted(countries, key=lambda c: -c[1]), "cats": cats.most_common(),
-             "source": "https://github.com/iptv-org/iptv"}
+             "epg": epg_count, "epg_at": epg_at, "source": "https://github.com/iptv-org/iptv"}
     with open(os.path.join(OUT, "index.json"), "w", encoding="utf-8") as f:
         json.dump(index, f, ensure_ascii=False, separators=(",", ":"))
     print(f"📺 {len(everything)} 个台，{len(urls)} 个地址，{len(countries)} 个国家；检查能连上的台 {total_ok} 个")

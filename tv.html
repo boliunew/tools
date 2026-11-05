@@ -33,6 +33,7 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
 .pbar .t small.live{color:var(--live);font-weight:600}.pbar .t small.err{color:var(--live)}
 .pbar button{border:0;background:var(--bg);border-radius:10px;min-width:40px;height:38px;font-size:17px;padding:0 8px}
 .pbar button.on{color:#F2B01E}
+@media (max-width:560px){.pbar{flex-wrap:wrap}.pbar .t{flex:1 1 100%}.pbar button{flex:1 1 0;min-width:0}.pbar .qbtn{flex:1.6 1 0}.pbar .t small{white-space:normal}}
 .pbar .qbtn{font-size:13px;font-weight:700;min-width:58px;font-variant-numeric:tabular-nums}
 .player{position:sticky}
 .qmenu{position:absolute;right:12px;top:100%;z-index:6;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:6px;min-width:230px;max-width:calc(100vw - 24px);max-height:60vh;overflow:auto;display:none}
@@ -42,6 +43,25 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
 .qmenu button:hover{background:var(--bg)}
 .qmenu button.on{color:var(--accent);font-weight:700;background:var(--accent-soft)}
 .qmenu button small{margin-left:auto;color:var(--faint);font-size:12px;font-weight:400}
+.vol{display:flex;align-items:center;gap:10px;padding:6px 12px 10px;background:var(--card);border-bottom:1px solid var(--line)}
+.vol button{border:0;background:var(--bg);border-radius:10px;width:42px;height:36px;font-size:18px;flex:0 0 42px}
+.vol input[type=range]{--p:50%;flex:1;min-width:0;height:32px;margin:0;background:none;-webkit-appearance:none;appearance:none;cursor:pointer;touch-action:pan-y}
+.vol input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:999px;background:linear-gradient(to right,var(--accent) 0,var(--accent) var(--p),var(--line) var(--p))}
+.vol input[type=range]::-moz-range-track{height:8px;border-radius:999px;background:var(--line)}
+.vol input[type=range]::-moz-range-progress{height:8px;border-radius:999px;background:var(--accent)}
+.vol input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-8px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.vol input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--accent)}
+.vol input.boost::-webkit-slider-runnable-track{background:linear-gradient(to right,var(--accent) 0,var(--accent) 50%,var(--warn) 50%,var(--warn) var(--p),var(--line) var(--p))}
+.vol .pct{min-width:52px;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;font-size:14px}
+.vol .pct.boost{color:var(--warn)}
+.vol .vnote{font-size:12.5px;color:var(--soft)}
+.guide{max-width:440px}
+.guide .gp{display:grid;grid-template-columns:52px 1fr;gap:2px 10px;padding:8px 10px;border-radius:9px}
+.guide .gp.now{background:var(--accent-soft)}
+.guide .gp time{font-variant-numeric:tabular-nums;color:var(--soft);font-size:13px;padding-top:1px}
+.guide .gp b{font-size:14.5px}.guide .gp small{grid-column:2;color:var(--soft);font-size:12.5px;line-height:1.45}
+.guide .bar2{grid-column:2;height:4px;border-radius:2px;background:var(--line);overflow:hidden;margin-top:3px}.guide .bar2 i{display:block;height:100%;background:var(--accent)}
+.st .t small .now{color:var(--accent);font-weight:600}
 .qmenu .note{font-size:12.5px;color:var(--soft);padding:6px 10px 8px;line-height:1.5}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--live);margin-right:5px;vertical-align:1px;animation:bl 1.4s infinite}
 @keyframes bl{50%{opacity:.25}}
@@ -101,9 +121,16 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
       <div class="t"><b id="pName"></b><small id="pStat"></small></div>
       <button id="pPrev" aria-label="上一个台">⏮</button><button id="pNext" aria-label="下一个台">⏭</button>
       <button id="pQ" class="qbtn" aria-label="画质" title="选画质 / 换线路">⚙️ 最高</button>
+      <button id="pG" aria-label="节目单" title="节目单" hidden>📋</button>
       <button id="pFav" aria-label="收藏">☆</button><button id="pStop" aria-label="停止">⏹</button>
     </div>
+    <div class="vol" id="vol">
+      <button id="vMute" aria-label="静音">🔊</button>
+      <input type="range" id="vRange" min="0" max="200" step="5" value="100" aria-label="音量">
+      <span class="pct" id="vPct">100%</span>
+    </div>
     <div class="qmenu" id="qMenu" role="menu"></div>
+    <div class="qmenu guide" id="gMenu" role="dialog" aria-label="节目单"></div>
   </div>
   <div class="tabs" id="tabs"></div>
   <div class="srch"><input id="q" placeholder="搜台名，例如 news、CCTV、Telemundo" autocomplete="off"><button id="gBtn" title="在全部国家里搜">🌍 全球搜</button></div>
@@ -126,7 +153,8 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
 
   var APP = /ToolsApp\//.test(navigator.userAgent);            // 工具箱 App：http 的台也能放
   var HTTPS_PAGE = location.protocol === 'https:';
-  var vid = $('vid'), ms = navigator.mediaSession;
+  var vid = $('vid'), ms = navigator.mediaSession, VIDH = [];
+  function onVid(ev, fn) { VIDH.push([ev, fn]); vid.addEventListener(ev, fn); }
   var NATIVE = !!vid.canPlayType('application/vnd.apple.mpegurl');
   var CAT = { general: '综合', news: '新闻', entertainment: '娱乐', religious: '宗教', music: '音乐', movies: '电影', sports: '体育', kids: '儿童',
     series: '剧集', documentary: '纪录片', education: '教育', culture: '文化', lifestyle: '生活', comedy: '喜剧', business: '财经', cooking: '美食',
@@ -169,7 +197,12 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
   function go(cc) { country = cc; put('country', cc); cat = ''; GLOBAL = null; query = ''; $('q').value = ''; limit = PAGE; renderTabs(); open(); }
   function open() {
     spdJob++; spdRun = null;
-    if (country === 'FAV') { list = favList(); after(); return; }
+    if (country === 'FAV') {
+      list = favList(); after();
+      var ccs = {}; list.forEach(function (ch) { ccs[ch.cc] = 1; });
+      Object.keys(ccs).forEach(function (cc) { loadEpg(cc, function () { if (country === 'FAV') render(); }); });
+      return;
+    }
     if (CACHE[country]) { list = CACHE[country]; after(); return; }
     $('list').innerHTML = '<div class="msg">正在加载' + esc(cname(country)) + '的电视台…</div>'; $('chips').innerHTML = ''; $('sortbar').innerHTML = '';
     var want = country;
@@ -178,8 +211,28 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
       if (!d) { $('list').innerHTML = '<div class="msg">台单加载失败，检查一下网络再点 🔄 更新。</div>'; return; }
       d.ch.forEach(function (ch) { ch.cc = want; });
       CACHE[want] = d.ch; list = d.ch; refreshFavs(d.ch, want); after();
+      loadEpg(want, function () { if (want === country) render(); });
     });
   }
+  /* ---------- 节目表：现在在播什么、接下来播什么（能对上号的台才有） ---------- */
+  var EPGD = {}, EPGW = {};
+  function loadEpg(cc, cb) {
+    if (EPGD[cc] || EPGW[cc] || !INDEX || !(INDEX.epg || {})[cc]) { if (cb) cb(); return; }
+    EPGW[cc] = 1;
+    data('epg/' + cc + '.json', function (d) { EPGD[cc] = d || {}; delete EPGW[cc]; if (cb) cb(); });
+  }
+  function nowMin() { return Math.floor(Date.now() / 60000); }
+  function progs(ch) { var m = ch && EPGD[ch.cc]; return (m && m[keyOf(ch)]) || null; }
+  function nowNext(ch) {
+    var p = progs(ch); if (!p) return null;
+    var t = nowMin(), i;
+    for (i = 0; i < p.length; i++) if (p[i][0] <= t && t < p[i][1]) return { now: p[i], next: p[i + 1] || null };
+    for (i = 0; i < p.length; i++) if (p[i][0] > t) return { now: null, next: p[i] };
+    return null;
+  }
+  function hhmm(m) { var d = new Date(m * 60000); return (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes(); }
+  function left(p) { var r = p[1] - nowMin(); return r >= 60 ? Math.floor(r / 60) + ' 小时 ' + (r % 60) + ' 分' : r + ' 分钟'; }
+  setInterval(function () { if (!document.hidden && list.length && !spdRun) { render(); if (cur && RC.live) setLive(); } }, 60000);
   function after() { renderChips(); render(); renderSort(); if (SORT === 'speed') runSpeed(false); }
 
   /* ---------- 收藏（存整台，包括地址，不用先进那个国家） ---------- */
@@ -208,7 +261,10 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
   function match(ch) {
     if (cat && (ch.c || []).indexOf(cat) < 0) return false;
     if (ONLY && !playableCh(ch)) return false;
-    if (query) { var q = query.toLowerCase(); if (ch.n.toLowerCase().indexOf(q) < 0 && (ch.a || []).join(' ').toLowerCase().indexOf(q) < 0) return false; }
+    if (query) {
+      var q = query.toLowerCase(), nn = nowNext(ch);
+      if (ch.n.toLowerCase().indexOf(q) < 0 && (ch.a || []).join(' ').toLowerCase().indexOf(q) < 0 && !(nn && nn.now && nn.now[2].toLowerCase().indexOf(q) >= 0)) return false;
+    }
     return true;
   }
   function render() {
@@ -234,9 +290,10 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
     if (s[2].indexOf('g') >= 0) meta.push('🌍 限本国');
     if (s[2].indexOf('n') >= 0) meta.push('⏰ 非全天');
     if (!canPlay(s)) meta.push('⚠️ 只有 http，网页放不了（App 里能放）');
-    var dead = s[3] === -1 && !spdOf(ch);
+    var dead = s[3] === -1 && !spdOf(ch), nn = nowNext(ch);
+    var nowHtml = nn && nn.now ? '<span class="now">▶ ' + esc(nn.now[2]) + '</span>（还剩 ' + left(nn.now) + '） · ' : nn && nn.next ? '<span class="now">' + hhmm(nn.next[0]) + ' ' + esc(nn.next[2]) + '</span> · ' : '';
     return '<div class="st' + (cur && keyOf(cur) === keyOf(ch) ? ' on' : '') + (ch.bad ? ' bad' : '') + (dead ? ' dead' : '') + '" data-i="' + i + '" data-k="' + esc(keyOf(ch)) + '">' +
-      '<div class="ico">' + logo(ch) + '</div><div class="t"><b>' + esc(ch.n) + '</b><small>' + esc(meta.join(' · ')) + '</small></div>' +
+      '<div class="ico">' + logo(ch) + '</div><div class="t"><b>' + esc(ch.n) + '</b><small>' + nowHtml + esc(meta.join(' · ')) + '</small></div>' +
       '<span class="spdc">' + spdBadge(ch) + '</span><button class="fav' + (isFav(ch) ? ' on' : '') + '" data-fav="' + i + '" aria-label="收藏">' + (isFav(ch) ? '★' : '☆') + '</button></div>';
   }
   function logo(ch) { return ch.l ? '<img src="' + esc(ch.l) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.textContent=\'📺\'">' : '📺'; }
@@ -361,7 +418,7 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
   function play(i) { if (i >= 0 && i < shown.length) playCh(shown[i], i); }
   function playCh(ch, i) {
     $('resume').hidden = true;
-    cur = ch; curIdx = i; alt = 0; mode = 0; qSel = null; everPlayed = false; rcReset(); RC.live = false;
+    cur = ch; curIdx = i; alt = 0; mode = 0; qSel = null; $('pG').hidden = true; loadEpg(ch.cc); everPlayed = false; rcReset(); RC.live = false;
     // 先试这台设备能放的线路
     var order = ch.s.map(function (s, k) { return k; }).sort(function (a, b) { return (canPlay(ch.s[a]) ? 0 : 1) - (canPlay(ch.s[b]) ? 0 : 1) || a - b; });
     cur._order = order;
@@ -384,6 +441,8 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
     stopEngines();
     var s = cur.s[cur._order[alt]], url = playUrl(s), how = modesFor(s)[mode] || 'hls';
     LV = []; ENGINE = how; qLabel();
+    if (GRAPH && (how === 'native' || how === 'file')) freshVideo();
+    applyVol();
     stat('连接中…' + (cur.s.length > 1 ? '（线路 ' + (alt + 1) + '/' + cur.s.length + '）' : ''));
     vid.removeAttribute('src');
     if (how === 'dash') {
@@ -418,6 +477,53 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
     } else { vid.src = url; tryPlay(); }
     watchdog = setTimeout(function () { if (vid.readyState < 3) fail('连接超时'); }, 15000);
   }
+  /* ---------- 音量：0–100%，太小声的台可以放大到 200%（只在 hls.js / DASH 播放时能放大） ---------- */
+  var VOL = +get('vol', 100), MUTED = !!get('muted', false), AC = null, GAIN = null, GRAPH = false, volBusy = false;
+  var VOL_RO = (function () { try { var v = document.createElement('video'); v.volume = 0.5; return Math.abs(v.volume - 0.5) > 0.01; } catch (e) { return false; } })();
+  function canBoost() { return (ENGINE === 'hls' || ENGINE === 'dash') && !!(window.AudioContext || window.webkitAudioContext); }
+  function ensureGraph() {
+    if (GRAPH) return true;
+    try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      var src = AC.createMediaElementSource(vid); GAIN = AC.createGain(); src.connect(GAIN); GAIN.connect(AC.destination); GRAPH = true;
+      return true;
+    } catch (e) { return false; }
+  }
+  // 放大用过网页音频以后，这个视频框就不能再放「不允许跨站读取」的台（会没声音），换台时换一个新的视频框
+  function freshVideo() {
+    var nv = vid.cloneNode(false);
+    vid.parentNode.replaceChild(nv, vid); vid = nv; GRAPH = false; GAIN = null;
+    VIDH.forEach(function (h) { vid.addEventListener(h[0], h[1]); });
+  }
+  function applyVol() {
+    var want = Math.max(0, Math.min(200, VOL)), boost = want > 100 && canBoost() && ensureGraph();
+    volBusy = true;
+    if (!VOL_RO) vid.volume = boost ? 1 : Math.min(1, want / 100);
+    if (GAIN) GAIN.gain.value = boost ? want / 100 : 1;
+    if (AC && AC.state === 'suspended') AC.resume().catch(function () { });
+    vid.muted = MUTED;
+    setTimeout(function () { volBusy = false; }, 0);
+    var eff = MUTED ? 0 : boost ? want : Math.min(100, want);
+    $('vRange').value = want; $('vRange').style.setProperty('--p', (want / 2) + '%');
+    $('vRange').className = want > 100 ? 'boost' : '';
+    $('vPct').textContent = MUTED ? '静音' : want + '%';
+    $('vPct').className = 'pct' + (want > 100 ? ' boost' : '');
+    $('vPct').title = want > 100 && !boost ? '这个台现在不能放大，按 100% 放' : '';
+    $('vMute').textContent = MUTED || eff === 0 ? '🔇' : eff < 34 ? '🔈' : eff < 67 ? '🔉' : '🔊';
+  }
+  if (VOL_RO) $('vol').innerHTML = '<button id="vMute" aria-label="静音">🔊</button><span class="vnote">这台设备的浏览器不让网页调音量，用手机侧边的音量键</span>';
+  $('vMute').onclick = function () { MUTED = !MUTED; put('muted', MUTED); applyVol(); };
+  if ($('vRange')) {
+    $('vRange').oninput = function () { VOL = +this.value; if (VOL > 0) MUTED = false; applyVol(); };
+    $('vRange').onchange = function () { put('vol', VOL); put('muted', MUTED); if (VOL > 100 && !canBoost()) toast('这个台不能放大音量，最大 100%'); };
+    $('vRange').addEventListener('wheel', function (e) { e.preventDefault(); VOL = Math.max(0, Math.min(200, VOL + (e.deltaY < 0 ? 5 : -5))); MUTED = false; applyVol(); put('vol', VOL); }, { passive: false });
+  }
+  onVid('volumechange', function () {   // 用视频自带的音量键 / 静音键调过
+    if (volBusy || VOL > 100 && Math.round(vid.volume * 100) >= 100 && !vid.muted === !MUTED) return;
+    MUTED = vid.muted; if (!VOL_RO) VOL = Math.round(vid.volume * 100);
+    put('vol', VOL); put('muted', MUTED); applyVol();
+  });
+
   /* ---------- 画质：默认最高；可以选自动、某一档，或者换线路 ---------- */
   var ENGINE = '';
   window.__tv = { get hls() { return hls; }, get dash() { return dash; }, get LV() { return LV; } };   // 方便排查
@@ -440,7 +546,7 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
     $('pQ').textContent = '⚙️ ' + (h ? h + 'p' : mode2 || '画质');
     $('pQ').title = (qSel != null ? '手动选的画质' : QPREF === 'max' ? '锁定最高画质' : '自动画质') + ' · 点这里选画质 / 换线路';
   }
-  vid.addEventListener('resize', function () { qLabel(); if (RC.live) setLive(); });
+  onVid('resize', function () { qLabel(); if (RC.live) setLive(); });
   function lineName(k) {
     var s = cur.s[cur._order[k]], bits = ['线路 ' + (k + 1)];
     if (s[1]) bits.push(s[1]);
@@ -505,24 +611,39 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
     stat(why + '：这个台现在放不了（可能只限本国、已停播或不支持网页播放），按 ⏭ 换一个', 'err');
     render();
   }
-  vid.addEventListener('playing', function () {
-    clearTimeout(watchdog); rcReset(); RC.live = true; everPlayed = true;
+  onVid('playing', function () {
+    clearTimeout(watchdog); rcReset(); RC.live = true; everPlayed = true; applyVol();
     if (cur) cur.bad = false;
     setLive(); qLabel();
     if (ms) ms.playbackState = 'playing';
   });
   function setLive() {
     var s = cur && cur.s[cur._order[alt]], res = vid.videoHeight ? vid.videoHeight + 'p' : s && s[1];
-    stat('<span class="dot"></span>直播中' + (res ? ' · ' + res : '') + (cur && cur.s.length > 1 ? ' · 线路 ' + (alt + 1) + '/' + cur.s.length : ''), 'live');
+    var nn = nowNext(cur);
+    stat('<span class="dot"></span>直播中' + (res ? ' · ' + res : '') + (cur && cur.s.length > 1 ? ' · 线路 ' + (alt + 1) + '/' + cur.s.length : '') +
+      (nn && nn.now ? ' · ▶ ' + esc(nn.now[2]) : ''), 'live');
+    $('pG').hidden = !progs(cur);
   }
-  vid.addEventListener('pause', function () { clearTimeout(RC.stall); if (cur && !cur.bad && !RC.t) stat('已暂停'); if (ms) ms.playbackState = 'paused'; });
-  vid.addEventListener('waiting', function () {
+  function openGuide() {
+    var p = progs(cur); if (!p) return;
+    var t = nowMin(), rows = p.filter(function (x) { return x[1] > t; }).slice(0, 24);
+    $('gMenu').innerHTML = '<h4>📋 ' + esc(cur.n) + ' · 节目单（你这边的时间）</h4>' + rows.map(function (x) {
+      var on = x[0] <= t && t < x[1], pct = on ? Math.round((t - x[0]) / (x[1] - x[0]) * 100) : 0;
+      return '<div class="gp' + (on ? ' now' : '') + '"><time>' + hhmm(x[0]) + '</time><b>' + (on ? '▶ ' : '') + esc(x[2]) + '</b>' +
+        (on ? '<div class="bar2"><i style="width:' + pct + '%"></i></div>' : '') + (x[3] ? '<small>' + esc(x[3]) + '</small>' : '') + '</div>';
+    }).join('') + '<div class="note">节目表来自 i.mjh.nz，每天更新两次。</div>';
+    $('gMenu').className = 'qmenu guide on';
+  }
+  $('pG').onclick = function (e) { e.stopPropagation(); closeQ(); if ($('gMenu').className.indexOf(' on') >= 0) $('gMenu').className = 'qmenu guide'; else openGuide(); };
+  document.addEventListener('click', function (e) { if (!e.target.closest || !e.target.closest('#gMenu')) $('gMenu').className = 'qmenu guide'; });
+  onVid('pause', function () { clearTimeout(RC.stall); if (cur && !cur.bad && !RC.t) stat('已暂停'); if (ms) ms.playbackState = 'paused'; });
+  onVid('waiting', function () {
     if (!cur || !RC.live) return;
     stat('缓冲中…'); clearTimeout(RC.stall);
     RC.stall = setTimeout(function () { if (cur && vid.readyState < 3 && !vid.paused) fail('信号断了'); }, 20000);
   });
-  vid.addEventListener('ended', function () { if (cur && RC.live) fail('直播流断了'); });
-  vid.addEventListener('error', function () { if (!hls && !dash && cur && vid.getAttribute('src')) fail('这条线路连不上'); });
+  onVid('ended', function () { if (cur && RC.live) fail('直播流断了'); });
+  onVid('error', function () { if (!hls && !dash && cur && vid.getAttribute('src')) fail('这条线路连不上'); });
   function step(d) {
     if (!shown.length) return;
     var i = curIdx < 0 ? 0 : (curIdx + d + shown.length) % shown.length;
@@ -539,6 +660,9 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
     if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); step(1); }
     else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); step(-1); }
     else if (e.key === 'f' || e.key === 'F') { if (vid.requestFullscreen) vid.requestFullscreen(); }
+    else if (e.key === '+' || e.key === '=') { VOL = Math.min(200, VOL + 10); MUTED = false; applyVol(); put('vol', VOL); }
+    else if (e.key === '-' || e.key === '_') { VOL = Math.max(0, VOL - 10); applyVol(); put('vol', VOL); }
+    else if (e.key === 'm' || e.key === 'M') { MUTED = !MUTED; applyVol(); put('muted', MUTED); }
   });
 
   /* ---------- 启动 ---------- */
@@ -552,9 +676,10 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
       renderTabs(); open();
       var when = d.checked ? new Date(d.checked) : null;
       $('hint').innerHTML = '共 ' + d.channels.toLocaleString() + ' 个台、' + d.countries.length + ' 个国家' + (when ? '，' + (when.getMonth() + 1) + '/' + when.getDate() + ' 检查过能连上的 ' + d.ok.toLocaleString() + ' 个' : '') +
-        '。都是各国公开免费播出的台（来自 <a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">iptv-org</a>，每天更新）。有些台只限本国、有些不是全天播，放不了就换一个，或者点播放栏的 ⚙️ 换线路、选画质（默认最高画质）。' +
+        '。都是各国公开免费播出的台（来自 <a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">iptv-org</a>，每天更新）。有些台只限本国、有些不是全天播，放不了就换一个，或者点播放栏的 ⚙️ 换线路、选画质（默认最高画质）。台名下面的 ▶ 是现在在播的节目，播放时点 📋 看节目单。' +
         (HTTPS_PAGE && !APP ? '<br>网页里放不了只有 http 地址的台，工具箱 App 里可以。' : '');
       if (force) toast('台单已更新');
+      applyVol();
     });
   }
   $('reload').onclick = function () { boot(true); };
