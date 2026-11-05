@@ -119,7 +119,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
 <div class="hero"><div class="wrap">
   <a class="home" href="index.html">‹ 首页</a><span class="city"><a href="sf.html">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a><a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html">🍊 IE</a><a href="local.html" class="on">📍 本地通</a></span>
   <h1 id="ttl">📍 本地通<small id="sub">LOCAL</small></h1>
-  <p id="intro">打开定位，自动生成你所在城市的生活指南：街区、吃喝、好玩、本地人秘籍、人文故事、出行和冷知识，还有身边的餐馆、超市、药店。</p>
+  <p id="intro">打开定位，自动生成你所在城市的生活指南：街区、吃喝、好玩、本地人秘籍、人文故事、出行、机场、治安和冷知识，还有身边的餐馆、超市、药店、换汇点和酒店。</p>
   <div class="facts" id="facts"></div>
   <div class="acts"><button id="bLoc">📍 重新定位</button><button id="bAsk">✏️ 换个城市</button></div>
   <div class="ask" id="askBox" hidden><input id="askQ" type="search" placeholder="城市名，如 Portland, Oregon 或 西雅图" autocomplete="off"><button id="askGo">生成</button></div>
@@ -138,15 +138,18 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('local:' + k) || 'null'); localStorage.setItem('local:' + k, JSON.stringify(v)); } catch (e) { return null; } }
   function toolsKey() { try { return localStorage.getItem('home:unlock') || ''; } catch (e) { return ''; } }
 
-  var TABS = [['near', '📍 附近'], ['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
+  var TABS = [['near', '📍 附近'], ['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['go', '🚋 出行'], ['airport', '✈️ 机场'], ['safety', '🛡️ 治安'], ['news', '📰 近期新闻'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
   var LEAD = {
-    near: '你身边 1.5 公里内的吃饭、超市、药店、加油站、公园和厕所，按距离排。数据来自 OpenStreetMap，营业时间以店家为准。',
+    near: '你身边 1.5 公里内的吃饭、超市、药店、加油站、公园、厕所、取钱、换币和住宿，按距离排。数据来自 OpenStreetMap，营业时间以店家为准。',
     hoods: '这座城市的街区和附近值得去的小城镇。点开看去做什么、吃什么。',
     eat: '这一带有代表性的吃的和值得专门去的店。店铺会变，去之前查一下营业时间。',
     fun: '景点、博物馆、公园和看风景的地方。点 ☆ 加到「想去」。',
     tips: '本地人天天在用的省钱、省事、避坑窍门。票价和规定会变，以官网为准。',
     stories: '这座城市是怎么来的，出过哪些事和人。',
     go: '怎么去、怎么走、怎么穿，以及本地人的说法。',
+    airport: '最近的机场怎么用：进城方式、值机行李、停车和接送机的注意事项。机场信息会变，以机场官网为准。',
+    safety: '这座城市的治安定性分析：哪里相对稳妥、哪里要留意、常见骗局怎么躲。只是定性参考，出发前再看一眼当地新闻和官方提醒。',
+    news: '这座城市最近 7 天的大新闻，点标题看原文。新闻单独更新（约 3 小时一次），不跟着指南的 30 天缓存走。',
     work: '在这里工作生活要知道的事。',
     trivia: '可以拿去跟朋友聊的冷知识。',
     want: '你在这个城市标了「想去」的地方，存在这台设备上。'
@@ -198,7 +201,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     if (Q) {
       var q = Q.toLowerCase(), n = 0;
       TABS.forEach(function (t) {
-        if (t[0] === 'want' || t[0] === 'trivia' || t[0] === 'near') return;
+        if (t[0] === 'want' || t[0] === 'trivia' || t[0] === 'near' || t[0] === 'news') return;
         var hit = (G[t[0]] || []).filter(function (it) { return text(it).indexOf(q) >= 0; });
         if (!hit.length) return;
         h += '<div class="lead">' + t[1] + ' · ' + hit.length + '</div>' + hit.map(function (it) { return card(t[0], it); }).join(''); n += hit.length;
@@ -208,8 +211,9 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       $('list').innerHTML = n ? hl(h) : '<div class="empty">没找到「' + esc(Q) + '」</div>';
       return;
     }
-    h += '<div class="lead">' + LEAD[TAB] + (TAB !== 'near' && TAB !== 'want' ? ' ' + AI_NOTE : '') + '</div>';
+    h += '<div class="lead">' + LEAD[TAB] + (TAB !== 'near' && TAB !== 'want' && TAB !== 'news' ? ' ' + AI_NOTE : '') + '</div>';
     if (TAB === 'near') { $('list').innerHTML = h + '<div id="near"></div>'; nearRender(); return; }
+    if (TAB === 'news') { $('list').innerHTML = h + '<div id="newsbox"></div>'; newsRender(); return; }
     if (TAB === 'trivia') h += '<div class="triv">' + (G.trivia || []).map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
     else {
       var L = items(TAB);
@@ -230,7 +234,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     $('facts').innerHTML = '<span><b>📍</b>' + esc([p.county, p.state].filter(Boolean).join(' · ') || p.country) + '</span>' + (G.facts || []).map(function (f) { return '<span><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</span>'; }).join('') + '<span id="wx" hidden></span>';
     $('foot').innerHTML = '🤖 这一页由 AI 根据 OpenStreetMap 和维基百科的公开资料整理（' + esc((R.generated || '').slice(0, 10)) + ' 生成，同一个城市 30 天内看到的是同一份）。AI 可能写错，店名和地点去之前在地图上确认一下。<br>' +
       (G.sources || []).map(function (s) { return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>'; }).join(' · ');
-    loadWant(); weather(); render();
+    NEWS = null; NEWSKEY = ''; loadWant(); weather(); render();
   }
   function weather() {
     var p = R.place, x = new XMLHttpRequest();
@@ -336,15 +340,17 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     ['gas', '⛽', '加油充电', function (t) { return t.amenity === 'fuel' || t.amenity === 'charging_station'; }],
     ['park', '🌳', '公园', function (t) { return /^(park|playground|garden|nature_reserve)$/.test(t.leisure); }],
     ['wc', '🚻', '厕所', function (t) { return t.amenity === 'toilets'; }],
-    ['bank', '🏧', 'ATM 银行', function (t) { return t.amenity === 'atm' || t.amenity === 'bank'; }]
+    ['bank', '🏧', '取钱 · ATM', function (t) { return t.amenity === 'atm' || t.amenity === 'bank'; }],
+    ['fx', '💱', '换币', function (t) { return t.amenity === 'bureau_de_change'; }],
+    ['stay', '🛏️', '住宿', function (t) { return /^(hotel|hostel|guest_house|motel|apartment)$/.test(t.tourism); }]
   ];
   function nearPos() { return POS && Date.now() - POS.at < 6 * 3600e3 ? POS : R && R.place ? { lat: R.place.lat, lon: R.place.lon, center: 1 } : null; }
   function dist(a, b) { var r = Math.PI / 180, x = (b.lon - a.lon) * r * Math.cos((a.lat + b.lat) / 2 * r), y = (b.lat - a.lat) * r; return Math.sqrt(x * x + y * y) * 6371000; }
   function nearLoad(p) {
     if (NBUSY) return; NBUSY = true;
     var A = '(around:1500,' + p.lat + ',' + p.lon + ')';
-    var q = '[out:json][timeout:20];(nwr' + A + '["amenity"~"^(restaurant|fast_food|food_court|cafe|ice_cream|pharmacy|clinic|hospital|doctors|fuel|charging_station|toilets|atm|bank)$"];' +
-      'nwr' + A + '["shop"~"^(supermarket|convenience|greengrocer|bakery)$"];nwr' + A + '["leisure"~"^(park|playground|garden|nature_reserve)$"]["name"];nwr' + A + '["healthcare"="urgent_care"];);out tags center 400;';
+    var q = '[out:json][timeout:20];(nwr' + A + '["amenity"~"^(restaurant|fast_food|food_court|cafe|ice_cream|pharmacy|clinic|hospital|doctors|fuel|charging_station|toilets|atm|bank|bureau_de_change)$"];' +
+      'nwr' + A + '["shop"~"^(supermarket|convenience|greengrocer|bakery)$"];nwr' + A + '["leisure"~"^(park|playground|garden|nature_reserve)$"]["name"];nwr' + A + '["tourism"~"^(hotel|hostel|guest_house|motel|apartment)$"]["name"];nwr' + A + '["healthcare"="urgent_care"];);out tags center 400;';
     var urls = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'], i = 0;
     (function go() {
       var x = new XMLHttpRequest(); x.open('POST', urls[i]); x.timeout = 25000;
@@ -382,13 +388,42 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     else h += '<div class="nb">' + L.map(function (x) {
       var d = x.d < 1000 ? Math.round(x.d / 10) * 10 + ' 米' : (x.d / 1609).toFixed(1) + ' 英里', walk = Math.max(1, Math.round(x.d / 80));
       var cu = x.cu ? x.cu.split(';').map(function (c) { return CUZ[c] || c; }).join(' · ') : '';
-      var name = x.n || ({ wc: '公共厕所', gas: '加油站', bank: 'ATM', park: '公园' }[x.k] || '（没有名字）');
+      var name = x.n || ({ wc: '公共厕所', gas: '加油站', bank: 'ATM', park: '公园', fx: '换汇点', stay: '住宿' }[x.k] || '（没有名字）');
       return '<div class="nr"><div class="ne">' + x.e + '</div><div class="nd"><b>' + esc(name) + '</b><small>' + esc([x.en, cu, x.oh ? '⏰ ' + x.oh : ''].filter(Boolean).join(' · ')) + '</small></div>' +
         '<div class="nk">' + d + '<br><small>走路约 ' + walk + ' 分</small><br><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=' + x.lat + ',' + x.lon + '">🧭 导航</a></div></div>';
     }).join('') + '</div>';
     h += '<div class="mnote">地点 © OpenStreetMap 贡献者。营业时间是原始写法（Mo-Fr 周一到周五，Sa 周六，Su 周日），可能过时。</div>';
     box.innerHTML = h;
     $('nf').onclick = function (e) { var b = e.target.closest('[data-nf]'); if (!b) return; NF = b.getAttribute('data-nf'); ls('nf', NF); nearRender(); };
+  }
+
+  // ---------------- 📰 近期新闻（后端单独查，3 小时缓存，不进指南的 30 天缓存）
+  var NEWS = null, NEWSKEY = '', NEWSBUSY = false;
+  function fmtD(d) { d = String(d || ''); if (d.length > 10 && d.charAt(8) === 'T') return d.slice(0, 4) + '-' + d.slice(4, 6) + '-' + d.slice(6, 8); var p = d.split(' '); if (p.length >= 5) return p[1] + ' ' + p[2] + ' ' + p[3]; return d.slice(0, 10); }
+  function newsRender() {
+    var box = $('newsbox'); if (!box) return;
+    var p = R && R.place; if (!p) { box.innerHTML = ''; return; }
+    var k = [p.cc, p.state, p.en].join(':');
+    if (NEWS && NEWSKEY === k) {
+      if (!NEWS.items.length) { box.innerHTML = '<div class="empty">最近 7 天没搜到这个城市的新闻。小城市新闻少，可以看看「人文故事」和「冷知识」。</div>'; return; }
+      box.innerHTML = '<div class="nb">' + NEWS.items.map(function (i) {
+        return '<div class="nr"><div class="ne">📰</div><div class="nd"><b><a target="_blank" rel="noopener" href="' + esc(i.u) + '" style="color:inherit;text-decoration:none">' + esc(i.t) + '</a></b><small>' + esc([i.s, fmtD(i.d)].filter(Boolean).join(' · ')) + '</small></div><div class="nk"><a target="_blank" rel="noopener" href="' + esc(i.u) + '">原文 ›</a></div></div>';
+      }).join('') + '</div><div class="mnote">新闻来自公开新闻源的标题索引，更新于 ' + esc(String(NEWS.fetched || '').slice(0, 16).replace('T', ' ')) + '（UTC），约 3 小时更新一次。点标题看原文。</div>';
+      return;
+    }
+    box.innerHTML = '<div class="empty"><span class="spin">📰</span> 正在搜这个城市最近的新闻…</div>';
+    if (NEWSBUSY || !toolsKey() || !API) return;
+    NEWSBUSY = true;
+    var x = new XMLHttpRequest(); x.open('POST', API + '/local/news'); x.timeout = 60000;
+    x.setRequestHeader('Content-Type', 'application/json'); x.setRequestHeader('X-Tools-Key', toolsKey());
+    x.onload = function () {
+      NEWSBUSY = false;
+      var r = null; try { r = JSON.parse(x.responseText); } catch (e) { }
+      if (r && r.items) { NEWS = r; NEWSKEY = k; if (TAB === 'news') render(); }
+      else if ($('newsbox')) $('newsbox').innerHTML = '<div class="empty">新闻没拉到，过一会儿再点这个标签试试。</div>';
+    };
+    x.onerror = x.ontimeout = function () { NEWSBUSY = false; if ($('newsbox')) $('newsbox').innerHTML = '<div class="empty">新闻没拉到，过一会儿再点这个标签试试。</div>'; };
+    x.send(JSON.stringify({ lat: +p.lat.toFixed(2), lon: +p.lon.toFixed(2) }));
   }
 
   // ---------------- 事件

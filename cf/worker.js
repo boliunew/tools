@@ -3,6 +3,7 @@
 //  POST /ocr     拍照识别柜号 / 封条号（Workers AI 视觉模型 + ISO 6346 校验）。需要请求头 X-Tools-Key：
 //                网站首页解锁后存在浏览器里的那串密钥（sha256 后等于 CHECK），或部署时生成的测试密钥。
 //  POST /local   📍 本地通：按定位或城市名生成当地生活指南（OpenStreetMap + 维基百科 + Workers AI，KV 缓存 30 天）。需要 X-Tools-Key
+//  POST /local/news 📍 本地通的近期大新闻：按城市名搜新闻（Google / Bing / GDELT），单独 KV 缓存 3 小时，不进指南。需要 X-Tools-Key
 //  GET  /health  看看活着没有、配了哪些东西
 //  POST /dl/pull · /dl/note  家里电脑的 torrent_hub 来取下载任务、回报进度（X-Hub-Key）
 //  POST /tg/<密钥> Telegram 机器人（照片认柜号 / 单据、语音翻译、/提醒 /股价 /简报），见下面「Telegram 双向机器人」
@@ -931,7 +932,7 @@ async function agentApi(req, env, url) {
 // 真实数据先拿：OpenStreetMap（城市名、街区、餐馆、公园、景点、车站）、维基百科（城市条目、附近名胜）；
 // 再让 Workers AI 只根据这些材料写成中文指南。同一个城市存 KV 30 天，第二次秒出。
 // 隐私：只收取整到约 1 公里的坐标，不记录。
-const LOCAL_V = 'local3';   // 改版本号 = 旧缓存全部作废（local1 是在没有地点清单时生成的，有编出来的地名）
+const LOCAL_V = 'local4';   // 改版本号 = 旧缓存全部作废（local1 是在没有地点清单时生成的，有编出来的地名）
 const LOCAL_TTL = 86400 * 30, LOCAL_DAILY = 40;
 const LOCAL_UA = 'boliunew-tools/1.0 (+https://boliunew.github.io/tools/local.html)';
 async function fetchJ(url, opt = {}, ms = 15000) {
@@ -1006,6 +1007,8 @@ nwr${A}["tourism"~"^(attraction|museum|viewpoint|gallery|zoo|theme_park|aquarium
 nwr${A}["leisure"~"^(park|nature_reserve|garden|stadium|water_park|beach_resort)$"]["name"];
 nwr${A}["historic"]["name"];
 nwr${A}["shop"~"^(supermarket|mall|department_store|bakery)$"]["name"];
+nwr${A}["amenity"~"^(bureau_de_change|atm|bank)$"]["name"];
+nwr${A}["tourism"~"^(hotel|hostel|guest_house|motel|apartment)$"]["name"];
 nwr${A}["amenity"~"^(library|marketplace|university|college|theatre|arts_centre|place_of_worship)$"]["name"];
 nwr${A2}["railway"~"^(station|halt)$"]["name"];
 nwr${A2}["aeroway"="aerodrome"]["name"]["iata"];
@@ -1039,14 +1042,16 @@ function osmDigest(tags) {   // 整理成给 AI 看的清单：每类挑一些�
   const CHAIN = /^(McDonald's|Starbucks|Subway|Taco Bell|Burger King|Wendy's|Jack in the Box|KFC|Domino's|Pizza Hut|Little Caesars|Panda Express|Carl's Jr\.|Chipotle|Dunkin'?|Del Taco|Popeyes|Arby's|Sonic|Dairy Queen|Chick-fil-A|Jamba|Wingstop|Papa John's|IHOP|Denny's|7-Eleven)/i;
   const zh = t => t['name:zh'] || t['name:zh-Hans'] || '';
   const fmt = t => t.name + (zh(t) && zh(t) !== t.name ? '（' + zh(t) + '）' : '');
-  const g = { eat: {}, sights: [], parks: [], historic: [], shops: [], civic: [], stations: [], airports: [], places: [] }, seen = new Set();
+  const g = { eat: {}, sights: [], parks: [], historic: [], shops: [], civic: [], stations: [], airports: [], places: [], money: [], stay: [] }, seen = new Set();
   for (const t of tags) {
     if (seen.has(t.name)) continue; seen.add(t.name);
     if (t.amenity && /restaurant|cafe|fast_food|food_court|ice_cream|bar|pub/.test(t.amenity)) {
       if (CHAIN.test(t.name)) continue;
       const k = (t.cuisine || t.amenity).split(';')[0].toLowerCase();
       (g.eat[k] = g.eat[k] || []).push(fmt(t) + ' [' + (t.cuisine || t.amenity) + ']');
-    } else if (t.tourism) g.sights.push(fmt(t) + ' [' + t.tourism + ']');
+    } else if (t.amenity && /^(bureau_de_change|atm|bank)$/.test(t.amenity)) g.money.push(fmt(t) + ' [' + ({ bureau_de_change: '换汇', atm: 'ATM', bank: '银行' })[t.amenity] + ']');
+    else if (t.tourism && /^(hotel|hostel|guest_house|motel|apartment)$/.test(t.tourism)) g.stay.push(fmt(t) + ' [' + t.tourism + ']');
+    else if (t.tourism) g.sights.push(fmt(t) + ' [' + t.tourism + ']');
     else if (t.leisure) g.parks.push(fmt(t) + ' [' + t.leisure + ']');
     else if (t.historic) g.historic.push(fmt(t) + ' [' + t.historic + ']');
     else if (t.shop) g.shops.push(fmt(t) + ' [' + t.shop + ']');
@@ -1064,7 +1069,7 @@ function osmDigest(tags) {   // 整理成给 AI 看的清单：每类挑一些�
     '菜系数量（越多越有代表性）：' + cuisines,
     '景点 / 博物馆：' + cut(g.sights, 50), '公园 / 自然：' + cut(g.parks, 50), '历史遗迹：' + cut(g.historic, 30),
     '超市 / 商场 / 面包店：' + cut(g.shops, 40), '图书馆 / 大学 / 剧院 / 宗教场所等：' + cut(g.civic, 40),
-    '火车 / 地铁站：' + cut(g.stations, 30), '机场：' + cut(g.airports, 10), '附近的街区和小城镇：' + cut(g.places, 50)
+    '火车 / 地铁站：' + cut(g.stations, 30), '机场：' + cut(g.airports, 10), '换汇 / 银行 / ATM：' + cut(g.money, 40), '住宿（酒店 / 青旅 / 民宿）：' + cut(g.stay, 40), '附近的街区和小城镇：' + cut(g.places, 50)
   ].join('\n') };
 }
 
@@ -1087,9 +1092,11 @@ const LOCAL_PARTS = [
 "trivia":["8 到 12 条可以跟朋友聊的冷知识，每条一两句，只用材料里有依据的"]}`],
   ['eat,fun', `输出：{"eat":[卡片 10 到 16 个：先写这一带最有代表性的吃的（按「菜系数量」挑当地特色和华人会喜欢的），每个卡片的 d 里点名材料里 1 到 3 家具体店；再写几家值得专门去的店。如果材料里没有餐馆清单，就写这一带常见的特色吃法、去哪类地方吃，不点名具体的店、街道或商场],
 "fun":[卡片 10 到 14 个：景点、博物馆、公园、徒步、看风景的地方和一年里的活动，名字从「附近有维基条目的地方」和 OpenStreetMap 清单里挑；tag 里标 免费 / 带娃 / 必去]}`],
-  ['tips,go', `输出：{"tips":[卡片 8 到 12 个：本地人才知道的省钱、省事、避坑窍门（停车、图书馆卡、超市、天气、治安、开车、华人超市和服务）],
+  ['tips,go', `输出：{"tips":[卡片 8 到 12 个：本地人才知道的省钱、省事、避坑窍门（停车、图书馆卡、超市、换钱、取钱、住宿、天气、治安、开车、华人超市和服务）],
 "go":[卡片 4 到 6 个：怎么去（最近的机场、火车）、市内怎么走、开车和停车、穿什么（按气候）、本地说法],
-"work":[卡片 3 到 5 个：主要行业和大雇主、生活成本的大致情况（不写具体房租数字）、华人社区和资源]}`]
+"work":[卡片 3 到 5 个：主要行业和大雇主、生活成本的大致情况（不写具体房租数字）、华人社区和资源]}`],
+  ['airport,safety', `输出：{"airport":[卡片 2 到 4 个：用最近的机场——机场名和代码只能用材料里出现过的；离市区大概多远、进城有哪些方式（地铁 / 公交 / 接驳巴士 / 打车），只写材料和常识能支撑的，不确定就不写具体分钟数和价格；再写值机行李、停车、接送机的注意事项。材料里有几个机场按远近写几个；材料里没有机场就写一张「怎么去最近的大机场」的泛称卡],
+"safety":[卡片 4 到 6 个：这座城市的治安定性分析——先给整体印象，再写相对稳妥的区域和要留意的地段（街区名只能用材料里出现过的），然后写当地更常见的治安问题和骗局套路（扒窃、假出租、刷卡陷阱这类，写清怎么识别、怎么躲开），最后给晚上出行和独行的具体建议；只做定性分析，绝对不要编犯罪率、案件数、排名这类数字；拿不准的在 note 里写「出发前看一眼当地新闻和官方提醒」]}`]
 ];
 async function localGen(env, p, wk, near, osm, diag = []) {
   const name = (p.zh ? p.zh + ' ' : '') + p.en;
@@ -1138,8 +1145,28 @@ function localClean(G) {
   return {
     intro: L(G.intro, 3, 500), facts: (Array.isArray(G.facts) ? G.facts : []).filter(f => Array.isArray(f) && f[0] && f[1]).slice(0, 6).map(f => [S(f[0], 8), S(f[1], 30)]),
     hoods: cards(G.hoods, 12), eat: cards(G.eat, 18), fun: cards(G.fun, 16), tips: cards(G.tips, 14), stories: cards(G.stories, 10),
-    go: cards(G.go, 8), work: cards(G.work, 6), trivia: L(G.trivia, 14, 240)
+    go: cards(G.go, 8), work: cards(G.work, 6), airport: cards(G.airport, 5), safety: cards(G.safety, 8), trivia: L(G.trivia, 14, 240)
   };
+}
+async function localNewsApi(req, env) {   // 本地通「近期大新闻」：复用 AI 跑腿的 gnews（Google → Bing → GDELT），单独缓存 3 小时
+  if (!(await authed(req, env))) return json(req, { error: 'key', msg: '需要先在工具箱首页输入密码解锁（并勾选「记住我」）' }, 401);
+  const b = await req.json().catch(() => ({}));
+  const p = await localResolve(b);
+  if (!p) return json(req, { error: 'place', msg: '认不出这座城市' }, 404);
+  const ck = 'localnews:' + localKey(p);
+  if (!b.nocache) { const hit = await env.KV.get(ck); if (hit) return json(req, { ...JSON.parse(hit), cached: true }); }
+  let items = [];
+  try { items = await gnews('"' + p.en + '" ' + (p.state || p.country || ''), 7); } catch (e) { }
+  if (!items.length && p.county) { try { items = await gnews(p.county + ' ' + (p.state || ''), 7); } catch (e) { } }
+  const seen = new Set(), out = [];
+  for (const i of items) {
+    if (!i.u || seen.has(i.u)) continue; seen.add(i.u);
+    out.push({ t: String(i.t || '').slice(0, 160), u: i.u, s: String(i.s || '').slice(0, 60), d: String(i.d || '').slice(0, 40) });
+    if (out.length >= 8) break;
+  }
+  const res = { place: { en: p.en, zh: p.zh || '', state: p.state || '' }, items: out, fetched: new Date().toISOString() };
+  await env.KV.put(ck, JSON.stringify(res), { expirationTtl: 3 * 3600 });
+  return json(req, res);
 }
 async function localApi(req, env) {
   if (!(await authed(req, env))) return json(req, { error: 'key', msg: '需要先在工具箱首页输入密码解锁（并勾选「记住我」）' }, 401);
@@ -1184,6 +1211,7 @@ export default {
     if (url.pathname === '/ocr' && req.method === 'POST') return ocr(req, env);
     if (url.pathname === '/explain' && req.method === 'POST') return explain(req, env);
     if (url.pathname === '/local' && req.method === 'POST') return localApi(req, env);
+    if (url.pathname === '/local/news' && req.method === 'POST') return localNewsApi(req, env);
     if (url.pathname.startsWith('/tg/') && req.method === 'POST') return tgWebhook(req, env, ctx, url);
     if (url.pathname === '/dl/pull' || url.pathname === '/dl/note') return hubApi(req, env, url);
     if (url.pathname === '/push/register' && req.method === 'POST') {   // App 登记推送地址（需要首页密码解锁过）
