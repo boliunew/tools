@@ -14,3 +14,5 @@ android/build/
 android/app/build/
 android/app/src/main/res/mipmap-*/
 android/app/google-services.json
+# 节目表在 tv-data 分支（见 .github/workflows/tv.yml）
+tv/data/epg/
