@@ -168,3 +168,5 @@ summary: 2026 年 10 月 20 日特朗普在 Truth Social 上说，到 11 月 3 �
 11. The Maritime Executive, "September to be biggest month for US imports with expected declines delayed", 2026-09（引用 NRF Global Port Tracker）. https://maritime-executive.com/article/september-to-be-biggest-month-for-us-imports-with-expected-declines-delayed
 12. U.S. Bank, "Stock market performance after midterm elections", 2026-09-28. https://www.usbank.com/investing/financial-perspectives/market-news/stock-market-performance-after-midterm-elections.html
 13. 引起这篇的原始链接（本次未能直接访问）：The Guardian US politics live, 2026-10-20. https://www.theguardian.com/us-news/live/2026/oct/20/donald-trump-midterms-republicans-democrats-north-carolina-latest-updates
+
+> 时效说明：本文为时事分析，数据截至 2026 年 11 月；选举结果与后续进展请以最新消息为准。

@@ -139,3 +139,5 @@ summary: Premium、deductible、copay、coinsurance、out-of-pocket max 到底�
 ---
 
 在南加州户外活动，夏天的高温和响尾蛇都要当心，见 [Upland 附近的徒步路线](socal-hiking-trails.md)；开车出了事故后的保险流程见 [在加州开车要知道的](california-driving-basics.md)。
+
+> 时效说明：本文涉及的费用与规则按 2026 年度情况整理；医保计划与开放注册安排每年变化，请以当年官方信息为准。

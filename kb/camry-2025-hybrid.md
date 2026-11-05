@@ -106,3 +106,5 @@ summary: 2025 款 Toyota Camry Hybrid 的关键数字（机油 0W-8、胎压 35 
 - [路上出状况怎么办：爆胎、没电、过热、事故](car-roadside-emergencies.md)
 - [车险、理赔和买卖车](car-insurance-buying.md)
 - [在加州开车要知道的](california-driving-basics.md)
+
+> 时效说明：本文参数针对 2025 款车型；新款上市后配置与价格可能变化，选购时请核对当款数据。
