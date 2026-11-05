@@ -135,6 +135,6 @@ test('localApi: a section that comes back empty is retried, and a still-incomple
   assert.equal(r.guide.eat.length, 2); assert.equal(r.guide.go.length, 0); assert.equal(r.stats.full, false);
   assert.ok(r.diag.some(d => /missing eat\/fun/.test(d)), r.diag.join(' | '));
   assert.ok(!r.diag.some(d => /overpass/.test(d)), 'browser already tried, server does not retry Overpass');
-  const k = [...kv.keys()].find(k => k.startsWith('local2:'));
+  const k = [...kv.keys()].find(k => k.startsWith('local3:'));
   assert.equal(ttl[k], 6 * 3600);
 });
