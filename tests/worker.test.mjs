@@ -67,8 +67,8 @@ test('localApi: auth, resolve, generate once, then serve from cache', async () =
     AI: { run: async (model, input) => {
       calls.ai++;
       const ask = input.input;
-      if (/"intro"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ intro: ['阿普兰在…', '历史…', '看点…'], facts: [['人口', '约 8 万']], hoods: [{ e: '🏘️', t: '老城 Old Town', s: 's', d: 'd' }], stories: [{ t: '柑橘', y: '1900', s: 's', d: 'd' }], trivia: ['冷知识'] }) }] }] };
-      if (/"eat"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ eat: [{ t: '越南粉', s: 's', d: 'Pho Ha' }, { t: '墨西哥卷饼', s: 's', d: 'd' }], fun: [{ t: '纪念公园 Upland Memorial Park', s: 's', d: 'd', tag: ['免费'] }, { t: 'f2', s: 's', d: 'd' }, { t: 'f3', s: 's', d: 'd' }] }) }] }] };
+      if (/"intro":\[/.test(ask) && /"hoods"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ intro: ['阿普兰在…', '历史…', '看点…'], facts: [['人口', '约 8 万']], hoods: [{ e: '🏘️', t: '老城 Old Town', s: 's', d: 'd' }], stories: [{ t: '柑橘', y: '1900', s: 's', d: 'd' }], trivia: ['冷知识'] }) }] }] };
+      if (/输出：\{"eat"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ eat: [{ t: '越南粉', s: 's', d: 'Pho Ha' }, { t: '墨西哥卷饼', s: 's', d: 'd' }], fun: [{ t: '纪念公园 Upland Memorial Park', s: 's', d: 'd', tag: ['免费'] }, { t: 'f2', s: 's', d: 'd' }, { t: 'f3', s: 's', d: 'd' }] }) }] }] };
       return { output: [{ type: 'message', content: [{ text: '好的 ' + JSON.stringify({ tips: [{ t: '图书馆卡', s: 's', d: 'd' }], go: [{ t: '怎么去', s: 's', d: 'd' }], work: [{ t: '行业', s: 's', d: 'd' }] }) }] }] };
     } } };
   globalThis.fetch = async (url, opt) => {
@@ -99,4 +99,37 @@ test('localApi: auth, resolve, generate once, then serve from cache', async () =
   globalThis.fetch = async () => ({ ok: true, json: async () => [] });
   const r3 = await localApi(mk({ q: 'Nowhereville' }), env);
   assert.equal(r3.status, 404);
+});
+
+test('placeOf: keeps only the first of multi-language values', () => {
+  const p = placeOf({ ...NOMI, address: { ...NOMI.address, state: '加利福尼亚州;加利福尼亞州', country: '美国;美國' } });
+  assert.equal(p.state, '加利福尼亚州'); assert.equal(p.country, '美国');
+});
+
+test('localApi: a section that comes back empty is retried, and a still-incomplete guide is cached briefly', async () => {
+  const kv = new Map(), ttl = {}; let eatTries = 0, calls = 0;
+  const msg = o => ({ output: [{ type: 'message', content: [{ text: JSON.stringify(o) }] }] });
+  const card = t => ({ t, s: 's', d: 'd' });
+  const env = { TEST_KEY: 'k', KV: { get: async k => kv.get(k) ?? null, put: async (k, v, o) => { kv.set(k, v); ttl[k] = o && o.expirationTtl; }, delete: async k => { kv.delete(k); } },
+    AI: { run: async (m, input) => {
+      calls++;
+      const ask = input.input || (input.messages || [])[1]?.content || '';
+      if (/输出：\{"eat"/.test(ask)) { eatTries++; return msg(eatTries === 1 ? { eat: [], fun: [] } : { eat: [card('e1'), card('e2')], fun: [card('f1'), card('f2')] }); }
+      if (/"hoods"/.test(ask)) return msg({ intro: ['a'], hoods: [card('h1'), card('h2')], stories: [card('s1')] });
+      return msg({ tips: [card('t1')], go: [] });   // go 一直缺
+    } } };
+  globalThis.fetch = async (url) => {
+    const J = o => ({ ok: true, status: 200, json: async () => o, text: async () => JSON.stringify(o) });
+    if (/reverse/.test(url)) return J(NOMI);
+    if (/overpass|kumi|coffee|mail\.ru/.test(url)) return { ok: false, status: 429, json: async () => null, text: async () => 'rate_limited' };
+    return J({ query: { pages: [], search: [] } });
+  };
+  const req = new Request('https://x/local', { method: 'POST', headers: { 'X-Tools-Key': 'k' }, body: JSON.stringify({ lat: 34.1, lon: -117.65 }) });
+  const r = await (await localApi(req, env)).json();
+  assert.equal(eatTries, 2, 'eat/fun retried once');
+  assert.equal(r.guide.eat.length, 2); assert.equal(r.guide.go.length, 0); assert.equal(r.stats.full, false);
+  assert.ok(r.diag.some(d => /missing eat\/fun/.test(d)), r.diag.join(' | '));
+  assert.ok(r.diag.some(d => /overpass-api\.de 429/.test(d)), r.diag.join(' | '));
+  const k = [...kv.keys()].find(k => k.startsWith('local1:'));
+  assert.equal(ttl[k], 6 * 3600);
 });

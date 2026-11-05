@@ -942,10 +942,11 @@ async function fetchJ(url, opt = {}, ms = 15000) {
   } catch (e) { return null; } finally { clearTimeout(t); }
 }
 const NOMI = 'https://nominatim.openstreetmap.org';
-const nomiQ = 'format=jsonv2&addressdetails=1&extratags=1&namedetails=1&accept-language=zh-CN,en';
+const nomiQ = 'format=jsonv2&addressdetails=1&extratags=1&namedetails=1&accept-language=en';   // 地址统一英文，缓存键才稳定；中文名从 namedetails 和维基拿
 function placeOf(n) {   // Nominatim 结果 → 城市信息
   if (!n || !n.address) return null;
-  const a = n.address, nd = n.namedetails || {}, ex = n.extratags || {};
+  const a = {}, nd = n.namedetails || {}, ex = n.extratags || {};
+  for (const k in n.address) a[k] = String(n.address[k]).split(';')[0].trim();
   const en = nd['name:en'] || a.city || a.town || a.village || a.municipality || a.hamlet || a.county || nd.name || n.name;
   if (!en) return null;
   const zh = nd['name:zh-Hans'] || nd['name:zh-CN'] || nd['name:zh'] || '';
@@ -986,7 +987,7 @@ async function wikiCity(p) {   // 英文条目全文（截断）+ 中文名 / �
   if (zt) {
     const z = await fetchJ(`https://zh.wikipedia.org/w/api.php?format=json&formatversion=2&origin=*&redirects=1&variant=zh-cn&action=query&prop=extracts&exintro=1&explaintext=1&titles=${encodeURIComponent(zt)}`);
     const zp = (((z || {}).query || {}).pages || [])[0] || {};
-    out.zh = zt; out.zhText = String(zp.extract || '').slice(0, 2500); out.zhUrl = 'https://zh.wikipedia.org/wiki/' + encodeURIComponent(zt.replace(/ /g, '_'));
+    out.zh = zt.replace(/\s*[（(][^）)]*[）)]\s*$/, ''); out.zhText = String(zp.extract || '').slice(0, 2500); out.zhUrl = 'https://zh.wikipedia.org/wiki/' + encodeURIComponent(zt.replace(/ /g, '_'));
   }
   return out;
 }
@@ -994,8 +995,8 @@ async function wikiNear(p) {   // 城市周边 12 公里内有维基条目的地
   const r = await fetchJ(`https://en.wikipedia.org/w/api.php?format=json&formatversion=2&origin=*&action=query&generator=geosearch&ggscoord=${p.lat}|${p.lon}&ggsradius=10000&ggslimit=50&prop=description`);
   return ((((r || {}).query || {}).pages) || []).map(x => [x.title, x.description || '']).filter(x => x[0] && !/^List of/.test(x[0]));
 }
-const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
-async function osmAround(p) {
+const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+async function osmAround(p, diag = []) {
   const R = p.pop > 500000 ? 7000 : p.pop > 100000 ? 5500 : 4000, A = `(around:${R},${p.lat},${p.lon})`, A2 = `(around:${R * 2.5},${p.lat},${p.lon})`;
   const q = `[out:json][timeout:25];(
 nwr${A}["amenity"~"^(restaurant|cafe|fast_food|food_court|ice_cream|bar|pub)$"]["name"];
@@ -1009,8 +1010,14 @@ nwr${A2}["aeroway"="aerodrome"]["name"]["iata"];
 node${A2}["place"~"^(suburb|neighbourhood|quarter|town|village)$"]["name"];
 );out tags center 1500;`;
   for (const u of OVERPASS) {
-    const r = await fetchJ(u, { method: 'POST', body: 'data=' + encodeURIComponent(q), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }, 28000);
-    if (r && r.elements) return r.elements.map(e => e.tags || {}).filter(t => t.name);
+    const t0 = Date.now(), ac = new AbortController(), tm = setTimeout(() => ac.abort(), 20000);
+    try {
+      const r = await fetch(u, { method: 'POST', signal: ac.signal, body: 'data=' + encodeURIComponent(q), headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': LOCAL_UA, 'Accept': 'application/json' } });
+      const txt = await r.text();
+      let j = null; try { j = JSON.parse(txt); } catch (e) { }
+      if (r.ok && j && j.elements && (j.elements.length || !j.remark)) { diag.push(host(u) + ' ok ' + j.elements.length + ' ' + (Date.now() - t0) + 'ms'); return j.elements.map(e => e.tags || {}).filter(t => t.name); }
+      diag.push(host(u) + ' ' + r.status + ' ' + (j && j.remark || txt).replace(/\s+/g, ' ').slice(0, 120));
+    } catch (e) { diag.push(host(u) + ' ' + (e.name === 'AbortError' ? 'timeout' : String(e).slice(0, 80))); } finally { clearTimeout(tm); }
   }
   return [];
 }
@@ -1057,18 +1064,18 @@ const LOCAL_SYS = `你是给华人写「城市生活指南」的编辑，读者�
 只输出一个 JSON 对象，不要任何别的文字。
 每个卡片对象的字段：{"e":"一个表情符号","t":"标题","s":"一句话摘要（30字内）","tag":["最多3个短标签，可以用 必去"],"d":"正文，2到4句，段落之间用\\n\\n","do":["可选：去做什么，2到4条"],"eat":["可选：吃什么"],"tip":"可选：一句实用窍门","note":"可选：一句注意事项","y":"可选：年代，只在人文故事里用"}`;
 const LOCAL_PARTS = [
-  ['intro,facts,hoods,stories,trivia', `输出：{"intro":["第一段：这是个什么样的地方、在哪、多大","第二段：历史和性格","第三段：适合华人的看点（吃、住、出行）"],
-"facts":[["面积","…"],["人口","…"],["建城","…"],["气候","…"],["华人","…"],["离洛杉矶","…"]]（6 项，键可以按城市调整，材料里没有依据的就换成别的项，不要编数字；值不超过 20 个字）,
+  ['intro,hoods,stories', `输出：{"intro":["第一段：这是个什么样的地方、在哪、多大","第二段：历史和性格","第三段：适合华人的看点（吃、住、出行）"],
+"facts":[["面积","…"],["人口","…"],["建城","…"],["气候","…"],["华人","…"],["最近机场","…"]]（6 项，键可以按城市调整，材料里没有依据的就换成别的项，不要编数字；值不超过 20 个字）,
 "hoods":[卡片 6 到 10 个：这个城市的街区，或者附近值得去的小城镇；每个写清去做什么、吃什么],
 "stories":[卡片 5 到 8 个：这座城市是怎么来的、出过什么事、有什么名人和故事，按年代排序，带 y],
 "trivia":["8 到 12 条可以跟朋友聊的冷知识，每条一两句，只用材料里有依据的"]}`],
-  ['eat,fun', `输出：{"eat":[卡片 10 到 16 个：先写这一带最有代表性的吃的（按「菜系数量」挑当地特色和华人会喜欢的），每个卡片的 d 里点名材料里 1 到 3 家具体店；再写几家值得专门去的店],
-"fun":[卡片 10 到 14 个：景点、博物馆、公园、徒步、看风景的地方和一年里的活动；tag 里标 免费 / 带娃 / 必去]}`],
-  ['tips,go,work', `输出：{"tips":[卡片 8 到 12 个：本地人才知道的省钱、省事、避坑窍门（停车、图书馆卡、超市、天气、治安、开车、华人超市和服务）],
+  ['eat,fun', `输出：{"eat":[卡片 10 到 16 个：先写这一带最有代表性的吃的（按「菜系数量」挑当地特色和华人会喜欢的），每个卡片的 d 里点名材料里 1 到 3 家具体店；再写几家值得专门去的店。如果材料里没有餐馆清单，就写这一带常见的特色吃法、去哪类地方吃（比如华人超市的美食广场），不点名具体的店],
+"fun":[卡片 10 到 14 个：景点、博物馆、公园、徒步、看风景的地方和一年里的活动，名字从「附近有维基条目的地方」和 OpenStreetMap 清单里挑；tag 里标 免费 / 带娃 / 必去]}`],
+  ['tips,go', `输出：{"tips":[卡片 8 到 12 个：本地人才知道的省钱、省事、避坑窍门（停车、图书馆卡、超市、天气、治安、开车、华人超市和服务）],
 "go":[卡片 4 到 6 个：怎么去（最近的机场、火车）、市内怎么走、开车和停车、穿什么（按气候）、本地说法],
 "work":[卡片 3 到 5 个：主要行业和大雇主、生活成本的大致情况（不写具体房租数字）、华人社区和资源]}`]
 ];
-async function localGen(env, p, wk, near, osm) {
+async function localGen(env, p, wk, near, osm, diag = []) {
   const name = (p.zh ? p.zh + ' ' : '') + p.en;
   const mat = `城市：${name}（${[p.county, p.state, p.country].filter(Boolean).join('，')}）${p.pop ? '，OpenStreetMap 记的人口约 ' + p.pop : ''}
 维基百科中文简介：${wk.zhText || '（没有）'}
@@ -1077,15 +1084,27 @@ async function localGen(env, p, wk, near, osm) {
 OpenStreetMap 地点：
 ${osm.text.slice(0, 9000)}`;
   const user = ask => '材料：\n' + mat + '\n\n' + ask;
-  const one = async ask => {   // 指南很长，给足输出长度；不行就退回通用的 llm()（会换备用模型）
-    await track(env, 'chat');
-    try {
-      const J = parseJSON(aiText(await env.AI.run(LLM[0], { instructions: LOCAL_SYS, input: user(ask), reasoning: { effort: 'low' }, max_output_tokens: 8000 })));
-      if (J) return J;
-    } catch (e) { /* 换下面的 */ }
-    return parseJSON(await llm(env, LOCAL_SYS, user(ask), 4000)) || {};
+  // 每段必须有的栏目都有内容才算数；不行就再试一次 gpt-oss，再退到通用的 llm()（会换备用模型）
+  const good = (J, need) => J && need.split(',').every(k => Array.isArray(J[k]) && J[k].length);
+  const one = async (need, ask) => {
+    const tries = [
+      async () => aiText(await env.AI.run(LLM[0], { instructions: LOCAL_SYS, input: user(ask), reasoning: { effort: 'low' }, max_output_tokens: 9000 })),
+      async () => aiText(await env.AI.run(LLM[0], { instructions: LOCAL_SYS, input: user(ask), reasoning: { effort: 'low' }, max_output_tokens: 9000 })),
+      async () => llm(env, LOCAL_SYS, user(ask), 4000)
+    ];
+    let best = {};
+    for (let i = 0; i < tries.length; i++) {
+      await track(env, 'chat');
+      let t = '';
+      try { t = await tries[i](); } catch (e) { diag.push(need + ' #' + i + ' ' + String(e).slice(0, 100)); continue; }
+      const J = parseJSON(t || '');
+      if (good(J, need)) { diag.push(need + ' #' + i + ' ok ' + t.length); return J; }
+      diag.push(need + ' #' + i + ' ' + (J ? 'missing ' + need.split(',').filter(k => !(Array.isArray(J[k]) && J[k].length)).join('/') : 'no json') + ' len ' + (t || '').length + ' ' + (t || '').slice(-60).replace(/\s+/g, ' '));
+      if (J && Object.keys(J).length > Object.keys(best).length) best = J;
+    }
+    return best;
   };
-  const outs = await Promise.all(LOCAL_PARTS.map(([, ask]) => one(ask)));
+  const outs = await Promise.all(LOCAL_PARTS.map(([need, ask]) => one(need, ask)));
   return Object.assign({}, ...outs);
 }
 function localClean(G) {
@@ -1120,16 +1139,19 @@ async function localApi(req, env) {
   await env.KV.put(dk, String(used + 1), { expirationTtl: 86400 * 2 });
   const t0 = Date.now();
   try {
-    const [wk, near, tags] = await Promise.all([wikiCity(p), wikiNear(p), osmAround(p)]);
+    const diag = [];
+    const [wk, near, tags] = await Promise.all([wikiCity(p), wikiNear(p), osmAround(p, diag)]);
     const osm = osmDigest(tags);
-    const G = localClean(await localGen(env, p, wk, near, osm));
+    const G = localClean(await localGen(env, p, wk, near, osm, diag));
     if (!G.intro.length || G.hoods.length + G.eat.length + G.fun.length < 6) return json(req, { error: 'ai', msg: 'AI 这次没写好，再试一次' }, 502);
     const sources = [['OpenStreetMap（地点数据 © OpenStreetMap 贡献者）', 'https://www.openstreetmap.org/#map=13/' + p.lat + '/' + p.lon]];
     if (wk.url) sources.push(['Wikipedia · ' + wk.title, wk.url]);
     if (wk.zhUrl) sources.push(['维基百科 · ' + wk.zh, wk.zhUrl]);
-    const out = { v: LOCAL_V, place: { ...p, zh: p.zh || wk.zh || '' }, guide: { ...G, sources }, stats: { osm: tags.length, wiki: near.length, eat: osm.eat.length }, generated: new Date().toISOString() };
-    await env.KV.put(key, JSON.stringify(out), { expirationTtl: LOCAL_TTL });
-    return json(req, { ...out, ms: Date.now() - t0 });
+    const full = ['intro', 'hoods', 'eat', 'fun', 'tips', 'stories', 'go'].every(k => G[k].length);
+    const out = { v: LOCAL_V, place: { ...p, zh: p.zh || wk.zh || '' }, guide: { ...G, sources }, stats: { osm: tags.length, wiki: near.length, eat: osm.eat.length, full }, generated: new Date().toISOString() };
+    // 缺栏目的只存 6 小时，过后再打开会重新生成
+    await env.KV.put(key, JSON.stringify(out), { expirationTtl: full ? LOCAL_TTL : 6 * 3600 });
+    return json(req, { ...out, ms: Date.now() - t0, diag });
   } finally {
     await env.KV.delete('lock:' + key);
   }

@@ -150,6 +150,12 @@ try:   # 📍 本地通：用 Upland 的坐标从头生成一次（会顺便刷�
         json.dumps(r.get("place"), ensure_ascii=False), r.get("ms"), json.dumps(r.get("stats")),
         json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), (g.get("intro") or [""])[0][:200],
         json.dumps((g.get("eat") or [{}])[:2], ensure_ascii=False)[:700]))
+    print("::notice title=本地通诊断::" + " ｜ ".join(r.get("diag") or []))
+    body = json.dumps({"q": "Portland, Oregon"}).encode()   # 输入城市名这条路（第一次生成，以后走缓存）
+    r = json.loads(urllib.request.urlopen(urllib.request.Request(url + "/local", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=240).read())
+    g = r.get("guide") or {}
+    print("::notice title=本地通测试（输入城市）::%s %s ｜ cached=%s ｜ %s ms ｜ 各栏数量 %s ｜ %s" % ((r.get("place") or {}).get("zh"), (r.get("place") or {}).get("en"), r.get("cached"), r.get("ms"),
+        json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), " ｜ ".join(r.get("diag") or [])))
 except urllib.error.HTTPError as e:
     print("::warning title=本地通测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
 except Exception as e:
