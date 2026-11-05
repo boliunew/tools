@@ -1,16 +1,16 @@
 {
- "date": "2026-11-04",
- "kind": "口头禅",
- "en": "Don't get me wrong",
- "zh": "别误会",
- "by": "要说一句可能让人误会的话之前",
- "line": "Don't get me wrong",
+ "date": "2026-11-05",
+ "kind": "名言",
+ "en": "In skating over thin ice, our safety is in our speed.",
+ "zh": "在薄冰上滑行，速度就是安全。",
+ "by": "Ralph Waldo Emerson",
+ "line": "In skating over thin ice, our safety is in our speed. — Ralph Waldo Emerson",
  "word": {
-  "w": "valid",
-  "ph": "'vælid",
-  "zh": "a. 有确实根据的，有法律效力的，正当的，正确的",
-  "ex": "The special conditions will be valid until 2025.",
-  "exzh": "此特殊条件有效期限至 2025 年。"
+  "w": "intermediate",
+  "ph": ".intә'mi:diәt",
+  "zh": "n. 中间物，调停者，中级；a. 中间的，中级的",
+  "ex": "My level in English is intermediate.",
+  "exzh": "我英文水平中等。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
