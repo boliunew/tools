@@ -90,6 +90,7 @@ CHECKS = [
     ("earnings", "📅", "财报与经济日历", "earnings/data/latest.json", "generated", 60, None, "earnings.html", "earnings.yml"),
     ("deals", "🏷️", "打折雷达", "deals/data/meta.json", "updated", 30, None, "deals.html", "deals.yml"),
     ("radio", "🚗", "通勤电台", "radio/data/today.json", "generated", 30, None, "radio.html", "radio.yml"),
+    ("tv", "📺", "网络电视台单", "tv/data/index.json", "generated", 50, ("d['channels']", 3000), "tv.html", "tv.yml"),
     ("card", "🎴", "每日一句", "card/today.json", "date", 30, None, "card.html", "news.yml"),
     ("monitor", "🔔", "网页监控", "monitor/data/state.json", "generated", 12, None, "monitor.html", "monitor.yml"),
     ("bay_live", "🚗", "湾区实时路况", "https://raw.githubusercontent.com/%s/live-data/bay/live.json" % REPO, "generated", 3, None, "sf.html#map", "bay-live.yml"),

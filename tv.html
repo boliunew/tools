@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#141B2D">
+<title>网络电视</title>
+<style>
+:root{--bg:#F2F4F8;--card:#fff;--ink:#141B2D;--soft:#5B6478;--faint:#98A0B3;--line:#DCE1EA;--accent:#3557D6;--accent-ink:#fff;--accent-soft:#E3E9FC;--live:#D7263D;--good:#1F8A5B;--warn:#B7791F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0F131C;--card:#181E2B;--ink:#E8ECF5;--soft:#A0A9BD;--faint:#667089;--line:#273045;--accent:#7D98FF;--accent-ink:#0B1020;--accent-soft:#1E2847;--live:#FF5A6E;--good:#4FCB8E;--warn:#E3A948}}
+:root[data-theme="dark"]{--bg:#0F131C;--card:#181E2B;--ink:#E8ECF5;--soft:#A0A9BD;--faint:#667089;--line:#273045;--accent:#7D98FF;--accent-ink:#0B1020;--accent-soft:#1E2847;--live:#FF5A6E;--good:#4FCB8E;--warn:#E3A948}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,sans-serif;line-height:1.45;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+main{max-width:760px;margin:0 auto;padding:16px 16px 0}
+.top{display:flex;align-items:center;margin-bottom:12px;gap:4px}
+.top h1{font-size:21px;margin:0;flex:1}
+.top a{color:var(--soft);text-decoration:none;font-size:14px}
+.top button{color:var(--soft);background:none;border:0;font-size:14px;padding:6px 10px}
+/* player */
+.player{position:sticky;top:0;z-index:5;margin:0 -16px 12px;background:#000;display:none}
+.player.on{display:block}
+.player video{display:block;width:100%;aspect-ratio:16/9;max-height:56vh;background:#000}
+.pbar{display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--card);border-bottom:1px solid var(--line)}
+.pbar .t{flex:1;min-width:0}
+.pbar .t b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px}
+.pbar .t small{display:block;font-size:12.5px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pbar .t small.live{color:var(--live);font-weight:600}.pbar .t small.err{color:var(--live)}
+.pbar button{border:0;background:var(--bg);border-radius:10px;min-width:40px;height:38px;font-size:17px;padding:0 8px}
+.pbar button.on{color:#F2B01E}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--live);margin-right:5px;vertical-align:1px;animation:bl 1.4s infinite}
+@keyframes bl{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+/* pickers */
+.tabs{display:flex;overflow-x:auto;gap:8px;padding-bottom:4px;margin-bottom:10px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button,.tabs select{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:8px 12px;font-size:15px;white-space:nowrap}
+.tabs select{max-width:180px}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:700}
+.srch{display:flex;gap:8px;margin-bottom:10px}
+.srch input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px;font-size:16px}
+.srch button{border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:0 14px;font-weight:600;white-space:nowrap}
+.chips{display:flex;overflow-x:auto;gap:6px;margin-bottom:10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:0 0 auto;border:1px solid var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:13px;color:var(--soft)}
+.chips button.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+.sortbar{display:flex;align-items:center;gap:6px;margin:0 0 10px;font-size:13px;color:var(--soft);flex-wrap:wrap}
+.sortbar button{border:1px solid var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:13px;color:var(--soft)}
+.sortbar button.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+.sortbar label{display:flex;align-items:center;gap:4px}
+.sortbar .sp{flex:1;min-width:8px}
+/* list */
+.list{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.st{display:flex;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+.st:last-child{border-bottom:0}
+.st.on{background:var(--accent-soft)}
+.st.bad,.st.dead{opacity:.5}
+.ico{width:56px;height:40px;border-radius:8px;background:var(--bg);flex:0 0 56px;display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;margin-right:12px}
+.ico img{width:100%;height:100%;object-fit:contain}
+.st .t{flex:1;min-width:0}
+.st .t b{display:block;font-size:15.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st .t small{display:block;font-size:12.5px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st .fav{border:0;background:none;font-size:20px;padding:6px 4px 6px 10px;color:var(--faint)}
+.st .fav.on{color:#F2B01E}
+.spd{flex:0 0 auto;font-size:12px;font-variant-numeric:tabular-nums;border-radius:999px;padding:1px 8px;margin-left:6px;white-space:nowrap}
+.spd.g{color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent)}
+.spd.m{color:var(--warn);background:color-mix(in srgb,var(--warn) 14%,transparent)}
+.spd.s,.spd.x{color:var(--live);background:color-mix(in srgb,var(--live) 12%,transparent)}
+.spd.w{color:var(--faint)}
+.resume[hidden]{display:none}
+.resume{display:block;width:100%;border:1px solid var(--accent);background:var(--accent-soft);color:var(--accent);border-radius:12px;padding:10px 12px;font-weight:600;margin-bottom:10px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msg{padding:28px 16px;text-align:center;color:var(--soft)}
+.more{display:block;width:100%;border:0;background:none;padding:14px;color:var(--accent);font-weight:600}
+.hint{font-size:12.5px;color:var(--faint);margin:12px 2px;line-height:1.7}
+.hint a{color:var(--soft)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);background:rgba(20,22,28,.92);color:#fff;padding:9px 16px;border-radius:999px;font-size:14px;z-index:50;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><h1>📺 网络电视</h1><button id="reload" title="重新加载台单">🔄 更新</button><a href="./">主页</a></div>
+  <div class="player" id="player">
+    <video id="vid" controls playsinline preload="none"></video>
+    <div class="pbar">
+      <div class="t"><b id="pName"></b><small id="pStat"></small></div>
+      <button id="pPrev" aria-label="上一个台">⏮</button><button id="pNext" aria-label="下一个台">⏭</button>
+      <button id="pAlt" aria-label="换一条线路" title="这个台有好几个地址时，换下一个">🔀</button>
+      <button id="pFav" aria-label="收藏">☆</button><button id="pStop" aria-label="停止">⏹</button>
+    </div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="srch"><input id="q" placeholder="搜台名，例如 news、CCTV、Telemundo" autocomplete="off"><button id="gBtn" title="在全部国家里搜">🌍 全球搜</button></div>
+  <div class="chips" id="chips"></div>
+  <div class="sortbar" id="sortbar"></div>
+  <button class="resume" id="resume" hidden></button>
+  <div class="list" id="list"><div class="msg">加载中…</div></div>
+  <div class="hint" id="hint"></div>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function get(k, d) { try { var v = localStorage.getItem('tv:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { localStorage.setItem('tv:' + k, JSON.stringify(v)); } catch (e) { } }
+  var toastT;
+  function toast(m) { var t = $('toast'); t.textContent = m; t.className = 'toast on'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 2600); }
+
+  var APP = /ToolsApp\//.test(navigator.userAgent);            // 工具箱 App：http 的台也能放
+  var HTTPS_PAGE = location.protocol === 'https:';
+  var vid = $('vid'), ms = navigator.mediaSession;
+  var NATIVE = !!vid.canPlayType('application/vnd.apple.mpegurl');
+  var CAT = { general: '综合', news: '新闻', entertainment: '娱乐', religious: '宗教', music: '音乐', movies: '电影', sports: '体育', kids: '儿童',
+    series: '剧集', documentary: '纪录片', education: '教育', culture: '文化', lifestyle: '生活', comedy: '喜剧', business: '财经', cooking: '美食',
+    family: '家庭', animation: '动画', classic: '经典', legislative: '议会', outdoor: '户外', public: '公共台', relax: '放松', science: '科学',
+    shop: '购物', travel: '旅游', weather: '天气', auto: '汽车', interactive: '互动' };
+  var QUICK = ['US', 'CN', 'HK', 'TW', 'MX', 'UK', 'KR', 'JP'];
+  var dn = null; try { dn = new Intl.DisplayNames(['zh-CN'], { type: 'region' }); } catch (e) { }
+  function iso(cc) { return cc === 'UK' ? 'GB' : cc; }
+  function cname(cc) { if (cc === 'ZZ') return '其他（没标国家）'; try { return dn ? dn.of(iso(cc)) : cc; } catch (e) { return cc; } }
+  function flag(cc) { if (cc === 'ZZ' || !/^[A-Z]{2}$/.test(cc)) return '🌐'; var c = iso(cc); return String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65, 0x1F1E6 + c.charCodeAt(1) - 65); }
+
+  var INDEX = null, ALL = null, CACHE = {}, country = get('country', 'US'), list = [], shown = [], cat = '', query = '', limit = 60, PAGE = 60;
+  var FAV = get('fav', {}), SORT = get('sort', 'rec'), ONLY = get('only', 1), GLOBAL = null;
+  var cur = null, curIdx = -1, alt = 0, mode = 0, hls = null, dash = null, watchdog = null, everPlayed = false;
+
+  function data(path, cb) {
+    fetch('tv/data/' + path, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(cb, function () { cb(null); });
+  }
+  function keyOf(ch, cc) { return ch.i || ((cc || ch.cc || '') + ':' + ch.n); }
+  /* 这台设备能不能放这条地址：http 只有 App 里行；要特殊请求头的、只限本国的多半不行 */
+  function canPlay(s) { return !(s[2].indexOf('h') >= 0 && HTTPS_PAGE && !APP); }
+  function checkedOk(s) { return s[3] != null && s[3] >= 0; }
+  function best(ch) { for (var i = 0; i < ch.s.length; i++) if (canPlay(ch.s[i])) return ch.s[i]; return ch.s[0]; }
+  function playableCh(ch) { for (var i = 0; i < ch.s.length; i++) if (canPlay(ch.s[i]) && ch.s[i][3] !== -1) return true; return false; }
+
+  /* ---------- 国家 ---------- */
+  function renderTabs() {
+    var have = {}; (INDEX ? INDEX.countries : []).forEach(function (c) { have[c[0]] = c; });
+    var h = '<button data-c="FAV" class="' + (country === 'FAV' ? 'on' : '') + '">⭐ 收藏</button>';
+    QUICK.forEach(function (cc) { if (have[cc]) h += '<button data-c="' + cc + '" class="' + (country === cc ? 'on' : '') + '">' + flag(cc) + ' ' + esc(cname(cc)) + '</button>'; });
+    var opts = (INDEX ? INDEX.countries : []).slice().sort(function (a, b) { return cname(a[0]).localeCompare(cname(b[0]), 'zh-CN'); })
+      .map(function (c) { return '<option value="' + c[0] + '"' + (c[0] === country ? ' selected' : '') + '>' + flag(c[0]) + ' ' + esc(cname(c[0])) + '（' + c[1] + '）</option>'; }).join('');
+    var other = country !== 'FAV' && QUICK.indexOf(country) < 0;
+    h += '<select id="ccSel" aria-label="更多国家"' + (other ? ' style="border-color:var(--ink);font-weight:700"' : '') + '><option value="">🌐 更多国家（' + (INDEX ? INDEX.countries.length : '…') + '）</option>' + opts + '</select>';
+    $('tabs').innerHTML = h;
+    $('ccSel').onchange = function () { if (this.value) go(this.value); };
+  }
+  $('tabs').onclick = function (e) { var b = e.target.closest('button'); if (b) go(b.getAttribute('data-c')); };
+  function go(cc) { country = cc; put('country', cc); cat = ''; GLOBAL = null; query = ''; $('q').value = ''; limit = PAGE; renderTabs(); open(); }
+  function open() {
+    spdJob++; spdRun = null;
+    if (country === 'FAV') { list = favList(); after(); return; }
+    if (CACHE[country]) { list = CACHE[country]; after(); return; }
+    $('list').innerHTML = '<div class="msg">正在加载' + esc(cname(country)) + '的电视台…</div>'; $('chips').innerHTML = ''; $('sortbar').innerHTML = '';
+    var want = country;
+    data('c/' + want + '.json', function (d) {
+      if (want !== country) return;
+      if (!d) { $('list').innerHTML = '<div class="msg">台单加载失败，检查一下网络再点 🔄 更新。</div>'; return; }
+      d.ch.forEach(function (ch) { ch.cc = want; });
+      CACHE[want] = d.ch; list = d.ch; refreshFavs(d.ch, want); after();
+    });
+  }
+  function after() { renderChips(); render(); renderSort(); if (SORT === 'speed') runSpeed(false); }
+
+  /* ---------- 收藏（存整台，包括地址，不用先进那个国家） ---------- */
+  function favList() { var a = [], k; for (k in FAV) if (FAV.hasOwnProperty(k)) a.push(FAV[k]); return a.sort(function (x, y) { return (y.t || 0) - (x.t || 0); }); }
+  function isFav(ch) { return !!FAV[keyOf(ch)]; }
+  function toggleFav(ch) {
+    var k = keyOf(ch);
+    if (FAV[k]) delete FAV[k]; else { FAV[k] = { n: ch.n, i: ch.i, l: ch.l, c: ch.c, s: ch.s, cc: ch.cc, t: Date.now() }; toast('已收藏 ⭐'); }
+    put('fav', FAV);
+  }
+  function refreshFavs(arr, cc) {   // 台单更新后，收藏里的地址也跟着换新
+    var by = {}, ch, k, n = 0; arr.forEach(function (c) { by[keyOf(c, cc)] = c; });
+    for (k in FAV) if (FAV.hasOwnProperty(k) && FAV[k].cc === cc && (ch = by[k])) { FAV[k].s = ch.s; FAV[k].l = ch.l; n++; }
+    if (n) put('fav', FAV);
+  }
+
+  /* ---------- 类别、筛选、列表 ---------- */
+  function renderChips() {
+    if (GLOBAL) { $('chips').innerHTML = ''; return; }
+    var cnt = {}; list.forEach(function (ch) { (ch.c || []).forEach(function (c) { cnt[c] = (cnt[c] || 0) + 1; }); });
+    var ks = Object.keys(cnt).filter(function (c) { return CAT[c]; }).sort(function (a, b) { return cnt[b] - cnt[a]; });
+    $('chips').innerHTML = ks.length < 2 ? '' : '<button data-t="" class="' + (!cat ? 'on' : '') + '">全部 ' + list.length + '</button>' +
+      ks.map(function (c) { return '<button data-t="' + c + '" class="' + (c === cat ? 'on' : '') + '">' + CAT[c] + ' ' + cnt[c] + '</button>'; }).join('');
+  }
+  $('chips').onclick = function (e) { var b = e.target.closest('button'); if (!b) return; cat = b.getAttribute('data-t'); limit = PAGE; renderChips(); render(); renderSort(); if (SORT === 'speed') runSpeed(false); };
+  function match(ch) {
+    if (cat && (ch.c || []).indexOf(cat) < 0) return false;
+    if (ONLY && !playableCh(ch)) return false;
+    if (query) { var q = query.toLowerCase(); if (ch.n.toLowerCase().indexOf(q) < 0 && (ch.a || []).join(' ').toLowerCase().indexOf(q) < 0) return false; }
+    return true;
+  }
+  function render() {
+    if (GLOBAL) return renderGlobal();
+    shown = list.filter(match);
+    if (SORT === 'speed' && !spdRun) shown = bySpeed(shown);
+    if (!shown.length) {
+      $('list').innerHTML = '<div class="msg">' + (country === 'FAV' && !list.length ? '还没有收藏。点台名右边的 ☆ 收藏常看的台。' : query ? '这里没找到「' + esc(query) + '」。点「🌍 全球搜」在所有国家里找。' : '没有可以放的台' + (ONLY ? '（关掉上面的「只看能放的」能看到全部）' : '')) + '</div>';
+      return;
+    }
+    var h = '';
+    for (var i = 0; i < shown.length && i < limit; i++) h += row(shown[i], i);
+    if (shown.length > limit) h += '<button class="more" id="more">再显示 ' + Math.min(PAGE, shown.length - limit) + ' 个（共 ' + shown.length + '）</button>';
+    $('list').innerHTML = h;
+    if ($('more')) $('more').onclick = function () { limit += PAGE; render(); };
+  }
+  function row(ch, i) {
+    var s = best(ch), meta = [];
+    if (country === 'FAV' || GLOBAL) meta.push(flag(ch.cc) + ' ' + cname(ch.cc));
+    if (ch.c && ch.c.length) meta.push(ch.c.slice(0, 2).map(function (c) { return CAT[c] || c; }).join(' · '));
+    if (s[1]) meta.push(s[1]);
+    if (ch.s.length > 1) meta.push(ch.s.length + ' 条线路');
+    if (s[2].indexOf('g') >= 0) meta.push('🌍 限本国');
+    if (s[2].indexOf('n') >= 0) meta.push('⏰ 非全天');
+    if (!canPlay(s)) meta.push('⚠️ 只有 http，网页放不了（App 里能放）');
+    var dead = s[3] === -1 && !spdOf(ch);
+    return '<div class="st' + (cur && keyOf(cur) === keyOf(ch) ? ' on' : '') + (ch.bad ? ' bad' : '') + (dead ? ' dead' : '') + '" data-i="' + i + '" data-k="' + esc(keyOf(ch)) + '">' +
+      '<div class="ico">' + logo(ch) + '</div><div class="t"><b>' + esc(ch.n) + '</b><small>' + esc(meta.join(' · ')) + '</small></div>' +
+      '<span class="spdc">' + spdBadge(ch) + '</span><button class="fav' + (isFav(ch) ? ' on' : '') + '" data-fav="' + i + '" aria-label="收藏">' + (isFav(ch) ? '★' : '☆') + '</button></div>';
+  }
+  function logo(ch) { return ch.l ? '<img src="' + esc(ch.l) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.textContent=\'📺\'">' : '📺'; }
+  $('list').onclick = function (e) {
+    var f = e.target.closest('[data-fav]');
+    if (f) { e.stopPropagation(); var ch = pick(+f.getAttribute('data-fav')); if (ch) { toggleFav(ch); render(); syncFavBtn(); } return; }
+    var r = e.target.closest('.st'); if (!r) return;
+    var i = +r.getAttribute('data-i');
+    if (GLOBAL) { playGlobal(i); return; }
+    play(i);
+  };
+  function pick(i) { return GLOBAL ? GLOBAL.res[i] && GLOBAL.res[i].ch : shown[i]; }
+
+  /* ---------- 搜索：这个国家里边打边筛，🌍 全球搜所有国家 ---------- */
+  $('q').oninput = function () { query = this.value.trim(); limit = PAGE; if (GLOBAL && !query) { GLOBAL = null; renderChips(); } render(); renderSort(); };
+  $('q').onkeydown = function (e) { if (e.key === 'Enter') globalSearch(); };
+  $('gBtn').onclick = globalSearch;
+  function globalSearch() {
+    query = $('q').value.trim();
+    if (!query) { $('q').focus(); toast('先输入台名'); return; }
+    var go2 = function () {
+      var q = query.toLowerCase(), res = [];
+      ALL.forEach(function (r) { if (r[0].toLowerCase().indexOf(q) >= 0 || (r[3] || '').toLowerCase().indexOf(q) >= 0) res.push({ n: r[0], cc: r[1], i: r[2] }); });
+      GLOBAL = { q: query, res: res.slice(0, 300), total: res.length };
+      renderChips(); render(); renderSort();
+    };
+    if (ALL) return go2();
+    $('gBtn').textContent = '…';
+    data('all.json', function (d) { $('gBtn').textContent = '🌍 全球搜'; if (!d) { toast('搜索数据加载失败'); return; } ALL = d; go2(); });
+  }
+  function renderGlobal() {
+    var R = GLOBAL.res;
+    shown = [];
+    if (!R.length) { $('list').innerHTML = '<div class="msg">所有国家里都没找到「' + esc(GLOBAL.q) + '」</div>'; return; }
+    $('list').innerHTML = '<div class="msg" style="padding:10px 12px;text-align:left">🌍 全球找到 ' + GLOBAL.total + ' 个' + (GLOBAL.total > R.length ? '，显示前 ' + R.length + ' 个' : '') + ' · <a href="#" id="gClose">返回' + esc(cname(country)) + '</a></div>' +
+      R.map(function (r, i) {
+        var ch = r.ch || { n: r.n, cc: r.cc, s: [['', '', '', null]] };
+        return '<div class="st' + (cur && cur.n === r.n && cur.cc === r.cc ? ' on' : '') + '" data-i="' + i + '"><div class="ico">' + (r.ch ? logo(r.ch) : flag(r.cc)) + '</div><div class="t"><b>' + esc(r.n) + '</b><small>' + flag(r.cc) + ' ' + esc(cname(r.cc)) + '</small></div>' + (r.ch ? '<button class="fav' + (isFav(ch) ? ' on' : '') + '" data-fav="' + i + '">' + (isFav(ch) ? '★' : '☆') + '</button>' : '') + '</div>';
+      }).join('');
+    $('gClose').onclick = function (e) { e.preventDefault(); GLOBAL = null; query = ''; $('q').value = ''; renderChips(); render(); renderSort(); };
+  }
+  function playGlobal(i) {
+    var r = GLOBAL.res[i]; if (!r) return;
+    var done = function (arr) { r.ch = arr[r.i]; if (!r.ch) return toast('这个台不见了，点 🔄 更新'); renderGlobal(); playCh(r.ch, -1); };
+    if (CACHE[r.cc]) return done(CACHE[r.cc]);
+    toast('加载' + cname(r.cc) + '的台单…');
+    data('c/' + r.cc + '.json', function (d) { if (!d) return toast('加载失败'); d.ch.forEach(function (ch) { ch.cc = r.cc; }); CACHE[r.cc] = d.ch; done(d.ch); });
+  }
+
+  /* ---------- 排序 / 测速：用你现在的网络，看每个台多快能连上 ---------- */
+  var SPD = get('spd', {}), SPD_TTL = 3600000, spdJob = 0, spdRun = null;
+  (function () { var now = Date.now(), k; for (k in SPD) if (SPD.hasOwnProperty(k) && now - SPD[k].t > SPD_TTL) delete SPD[k]; })();
+  function spdOf(ch) { var r = SPD[keyOf(ch)]; return r && Date.now() - r.t < SPD_TTL ? r.ms : null; }
+  function spdBadge(ch) {
+    if (spdRun && spdRun.wait[keyOf(ch)]) return '<span class="spd w">⏳</span>';
+    var v = spdOf(ch);
+    if (v == null) return best(ch)[3] === -1 ? '<span class="spd w" title="昨天检查时连不上">✖</span>' : '';
+    if (v < 0) return '<span class="spd x">✖ 连不上</span>';
+    return '<span class="spd ' + (v < 500 ? 'g' : v < 1500 ? 'm' : 's') + '">⚡ ' + (v < 1000 ? v + 'ms' : (v / 1000).toFixed(1) + 's') + '</span>';
+  }
+  function playUrl(s) { return HTTPS_PAGE && !APP ? s[0].replace(/^http:\/\//i, 'https://') : s[0]; }
+  function probe(ch, cb) {   // 只等服务器开始回话就停，不下载画面
+    var s = best(ch), ac = window.AbortController ? new AbortController() : null, done = false, t0 = performance.now();
+    function fin(v) { if (done) return; done = true; clearTimeout(tm); try { ac && ac.abort(); } catch (e) { } cb(v); }
+    var tm = setTimeout(function () { fin(-1); }, 6000);
+    if (!canPlay(s)) { fin(-1); return; }
+    try { fetch(playUrl(s), { mode: 'no-cors', cache: 'no-store', credentials: 'omit', signal: ac ? ac.signal : undefined, referrerPolicy: 'no-referrer' })
+      .then(function () { fin(Math.max(1, Math.round(performance.now() - t0))); }, function () { fin(-1); }); } catch (e) { fin(-1); }
+  }
+  function runSpeed(force) {
+    if (GLOBAL) return;
+    var job = ++spdJob, todo = shown.slice(0, 120).filter(function (ch) { return force || spdOf(ch) == null; });
+    if (!todo.length) { renderSort(); return; }
+    spdRun = { wait: {}, n: 0, total: todo.length };
+    todo.forEach(function (ch) { spdRun.wait[keyOf(ch)] = 1; });
+    renderSort(); paintBadges();
+    var i = 0, active = 0;
+    (function next() {
+      if (job !== spdJob) return;
+      while (active < 6 && i < todo.length) (function (ch) {
+        active++;
+        probe(ch, function (v) {
+          active--; if (job !== spdJob) return;
+          SPD[keyOf(ch)] = { ms: v, t: Date.now() }; delete spdRun.wait[keyOf(ch)]; spdRun.n++;
+          paintBadge(ch); renderSort();
+          if (spdRun.n >= spdRun.total) { spdRun = null; put('spd', SPD); render(); renderSort(); toast('测速完成，最快的在最上面'); } else next();
+        });
+      })(todo[i++]);
+    })();
+  }
+  function paintBadge(ch) { var el = document.querySelector('.st[data-k="' + (window.CSS && CSS.escape ? CSS.escape(keyOf(ch)) : keyOf(ch)) + '"] .spdc'); if (el) el.innerHTML = spdBadge(ch); }
+  function paintBadges() { shown.slice(0, limit).forEach(paintBadge); }
+  function bySpeed(a) {
+    var k = function (ch) { var v = spdOf(ch); return v == null ? 9e8 : v < 0 ? 9.5e8 : v; };
+    return a.map(function (ch, i) { return [k(ch), i, ch]; }).sort(function (x, y) { return x[0] - y[0] || x[1] - y[1]; }).map(function (x) { return x[2]; });
+  }
+  function renderSort() {
+    if (GLOBAL || !list.length) { $('sortbar').innerHTML = ''; return; }
+    var tested = shown.filter(function (ch) { return spdOf(ch) != null; }).length;
+    $('sortbar').innerHTML = '排序 <button data-s="rec" class="' + (SORT === 'rec' ? 'on' : '') + '">' + (country === 'FAV' ? '⭐ 收藏顺序' : '✅ 能连的优先') + '</button>' +
+      '<button data-s="speed" class="' + (SORT === 'speed' ? 'on' : '') + '">⚡ 最快</button>' +
+      '<label><input type="checkbox" id="only"' + (ONLY ? ' checked' : '') + '> 只看能放的</label><span class="sp"></span>' +
+      (spdRun ? '<span>测速中 ' + spdRun.n + '/' + spdRun.total + '…</span><button data-s="stop">停止</button>' : '<button data-s="test">🔄 ' + (tested ? '重新测速' : '测速') + '</button>');
+    $('only').onchange = function () { ONLY = this.checked ? 1 : 0; put('only', ONLY); limit = PAGE; render(); renderSort(); };
+  }
+  $('sortbar').onclick = function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var v = b.getAttribute('data-s');
+    if (v === 'stop') { spdJob++; spdRun = null; put('spd', SPD); render(); renderSort(); return; }
+    if (v === 'test') { SORT = 'speed'; put('sort', SORT); runSpeed(true); return; }
+    SORT = v; put('sort', SORT); render(); renderSort(); if (SORT === 'speed') runSpeed(false);
+  };
+
+  /* ---------- 播放：一个台有几条线路就挨个试；放起来以后断了自动重连 ---------- */
+  function stat(t, cls) { $('pStat').innerHTML = t; $('pStat').className = cls || ''; }
+  function loadScript(src, cb) { var s = document.createElement('script'); s.src = src; s.onload = cb; s.onerror = function () { fail('播放组件加载失败', true); }; document.head.appendChild(s); }
+  function stopEngines() {
+    if (hls) { try { hls.destroy(); } catch (e) { } hls = null; }
+    if (dash) { try { dash.reset(); } catch (e) { } dash = null; }
+    clearTimeout(watchdog);
+  }
+  function play(i) { if (i >= 0 && i < shown.length) playCh(shown[i], i); }
+  function playCh(ch, i) {
+    $('resume').hidden = true;
+    cur = ch; curIdx = i; alt = 0; mode = 0; everPlayed = false; rcReset(); RC.live = false;
+    // 先试这台设备能放的线路
+    var order = ch.s.map(function (s, k) { return k; }).sort(function (a, b) { return (canPlay(ch.s[a]) ? 0 : 1) - (canPlay(ch.s[b]) ? 0 : 1) || a - b; });
+    cur._order = order;
+    $('player').className = 'player on'; $('pName').textContent = ch.n; syncFavBtn();
+    put('last', { n: ch.n, i: ch.i, l: ch.l, c: ch.c, s: ch.s, cc: ch.cc });
+    render(); start();
+    if (ms && window.MediaMetadata) try { ms.metadata = new MediaMetadata({ title: ch.n, artist: cname(ch.cc) + ' · 网络电视', artwork: ch.l ? [{ src: ch.l, sizes: '256x256' }] : [] }); } catch (e) { }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  // 每条线路可以用两种播放器：hls.js（要对方允许跨站读取）和浏览器自带的（不用，但不是哪儿都有）
+  function modesFor(s) {
+    if (s[2].indexOf('d') >= 0) return ['dash'];
+    if (/\.(mp4|webm)(\?|$)/i.test(s[0])) return ['file'];
+    var mse = !!(window.MediaSource || window.ManagedMediaSource);
+    if (!NATIVE) return ['hls'];
+    if (!mse) return ['native'];
+    return s[2].indexOf('c') >= 0 ? ['hls', 'native'] : ['native', 'hls'];
+  }
+  function start() {
+    stopEngines();
+    var s = cur.s[cur._order[alt]], url = playUrl(s), how = modesFor(s)[mode] || 'hls';
+    stat('连接中…' + (cur.s.length > 1 ? '（线路 ' + (alt + 1) + '/' + cur.s.length + '）' : ''));
+    vid.removeAttribute('src');
+    if (how === 'dash') {
+      var go3 = function () { dash = dashjs.MediaPlayer().create(); dash.initialize(vid, url, true); dash.on('error', function () { fail('这条线路连不上'); }); };
+      window.dashjs ? go3() : loadScript('vendor/dash.all.min.js', go3);
+    } else if (how === 'hls') {
+      {
+        var go4 = function () {
+          if (!window.Hls || !Hls.isSupported()) { fail('这台设备放不了这种直播'); return; }
+          hls = new Hls({ lowLatencyMode: false, manifestLoadingMaxRetry: 2, levelLoadingMaxRetry: 2, fragLoadingMaxRetry: 3 });
+          var mediaTries = 0;
+          hls.on(Hls.Events.MANIFEST_PARSED, tryPlay);
+          hls.on(Hls.Events.ERROR, function (ev, d) {
+            if (!d || !d.fatal) return;
+            if (d.type === Hls.ErrorTypes.MEDIA_ERROR && mediaTries++ < 2) { try { hls.recoverMediaError(); } catch (e) { } return; }
+            fail(d.type === Hls.ErrorTypes.NETWORK_ERROR ? '这条线路连不上' : '这条线路的格式放不了');
+          });
+          hls.loadSource(url); hls.attachMedia(vid);
+        };
+        window.Hls ? go4() : loadScript('vendor/hls.min.js', go4);
+      }
+    } else { vid.src = url; tryPlay(); }
+    watchdog = setTimeout(function () { if (vid.readyState < 3) fail('连接超时'); }, 15000);
+  }
+  function tryPlay() { var p = vid.play(); if (p && p.catch) p.catch(function (e) { if (e && e.name === 'NotAllowedError') stat('点 ▶ 开始播放'); }); }
+  /* 断线重连：放起来过的台断了，2、4、8、15、30 秒……一直重连，直到你按 ⏹；网络一回来马上连 */
+  var RC = { n: 0, t: null, live: false, stall: null }, WAIT = [2, 4, 8, 15, 30];
+  function rcReset() { clearTimeout(RC.t); clearTimeout(RC.stall); RC.t = null; RC.n = 0; }
+  function lost() {
+    if (!cur || !RC.live) return false;
+    clearTimeout(RC.t); clearTimeout(RC.stall); clearTimeout(watchdog);
+    var d = WAIT[Math.min(RC.n, WAIT.length - 1)], c0 = cur; RC.n++;
+    stat('📶 信号断了，' + d + ' 秒后自动重连（第 ' + RC.n + ' 次）…', 'err');
+    RC.t = setTimeout(function () { RC.t = null; if (cur === c0) { stat('重连中…'); start(); } }, d * 1000);
+    return true;
+  }
+  window.addEventListener('online', function () { if (RC.t && cur) { clearTimeout(RC.t); RC.t = null; stat('网络回来了，重连中…'); start(); } });
+  function fail(why, final) {
+    clearTimeout(watchdog);
+    if (!cur) return;
+    if (lost()) return;
+    if (!final && cur.s[cur._order[alt]] && mode < modesFor(cur.s[cur._order[alt]]).length - 1) { mode++; start(); return; }
+    if (!final && alt < cur.s.length - 1) { alt++; mode = 0; toast('换线路 ' + (alt + 1) + '/' + cur.s.length); start(); return; }
+    cur.bad = true; RC.live = false;
+    stat(why + '：这个台现在放不了（可能只限本国、已停播或不支持网页播放），按 ⏭ 换一个', 'err');
+    render();
+  }
+  vid.addEventListener('playing', function () {
+    clearTimeout(watchdog); rcReset(); RC.live = true; everPlayed = true;
+    if (cur) cur.bad = false;
+    var s = cur && cur.s[cur._order[alt]];
+    stat('<span class="dot"></span>直播中' + (s && s[1] ? ' · ' + s[1] : '') + (cur && cur.s.length > 1 ? ' · 线路 ' + (alt + 1) + '/' + cur.s.length : ''), 'live');
+    if (ms) ms.playbackState = 'playing';
+  });
+  vid.addEventListener('pause', function () { clearTimeout(RC.stall); if (cur && !cur.bad && !RC.t) stat('已暂停'); if (ms) ms.playbackState = 'paused'; });
+  vid.addEventListener('waiting', function () {
+    if (!cur || !RC.live) return;
+    stat('缓冲中…'); clearTimeout(RC.stall);
+    RC.stall = setTimeout(function () { if (cur && vid.readyState < 3 && !vid.paused) fail('信号断了'); }, 20000);
+  });
+  vid.addEventListener('ended', function () { if (cur && RC.live) fail('直播流断了'); });
+  vid.addEventListener('error', function () { if (!hls && !dash && cur && vid.getAttribute('src')) fail('这条线路连不上'); });
+  function step(d) {
+    if (!shown.length) return;
+    var i = curIdx < 0 ? 0 : (curIdx + d + shown.length) % shown.length;
+    play(i);
+  }
+  $('pPrev').onclick = function () { step(-1); };
+  $('pNext').onclick = function () { step(1); };
+  $('pAlt').onclick = function () { if (!cur) return; if (cur.s.length < 2) { toast('这个台只有一条线路'); return; } alt = (alt + 1) % cur.s.length; mode = 0; rcReset(); RC.live = false; toast('换线路 ' + (alt + 1) + '/' + cur.s.length); start(); };
+  $('pFav').onclick = function () { if (!cur) return; toggleFav(cur); syncFavBtn(); render(); };
+  $('pStop').onclick = function () { rcReset(); RC.live = false; stopEngines(); vid.pause(); vid.removeAttribute('src'); try { vid.load(); } catch (e) { } cur = null; $('player').className = 'player'; render(); };
+  function syncFavBtn() { var on = cur && isFav(cur); $('pFav').textContent = on ? '★' : '☆'; $('pFav').className = on ? 'on' : ''; }
+  if (ms) { try { ms.setActionHandler('previoustrack', function () { step(-1); }); ms.setActionHandler('nexttrack', function () { step(1); }); } catch (e) { } }
+  document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || !cur) return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); step(1); }
+    else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); step(-1); }
+    else if (e.key === 'f' || e.key === 'F') { if (vid.requestFullscreen) vid.requestFullscreen(); }
+  });
+
+  /* ---------- 启动 ---------- */
+  function boot(force) {
+    if (force) { CACHE = {}; ALL = null; }
+    data('index.json', function (d) {
+      if (!d) { $('list').innerHTML = '<div class="msg">台单加载失败，检查一下网络再点 🔄 更新。</div>'; return; }
+      INDEX = d;
+      var have = d.countries.some(function (c) { return c[0] === country; });
+      if (!have && country !== 'FAV') country = 'US';
+      renderTabs(); open();
+      var when = d.checked ? new Date(d.checked) : null;
+      $('hint').innerHTML = '共 ' + d.channels.toLocaleString() + ' 个台、' + d.countries.length + ' 个国家' + (when ? '，' + (when.getMonth() + 1) + '/' + when.getDate() + ' 检查过能连上的 ' + d.ok.toLocaleString() + ' 个' : '') +
+        '。都是各国公开免费播出的台（来自 <a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">iptv-org</a>，每天更新）。有些台只限本国、有些不是全天播，放不了就换一个或点 🔀 换线路。' +
+        (HTTPS_PAGE && !APP ? '<br>网页里放不了只有 http 地址的台，工具箱 App 里可以。' : '');
+      if (force) toast('台单已更新');
+    });
+  }
+  $('reload').onclick = function () { boot(true); };
+  var last = get('last', null);
+  if (last && last.s) { $('resume').hidden = false; $('resume').textContent = '▶ 继续看上次的：' + flag(last.cc) + ' ' + last.n; $('resume').onclick = function () { this.hidden = true; playCh(last, -1); }; }
+  boot(false);
+})();
+</script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=49" defer></script>
+</body>
+</html>

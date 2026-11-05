@@ -8,7 +8,7 @@
   var LOCAL = !!window.TOOLS_LOCAL;   // 家里主机上才显示的页面
   var GROUPS = [
     ['🔍 常用', [['search.html', '🔍', '全站搜索', '技巧、菜谱、知识库、诗词、梦……一起搜'], ['work.html', '🦺', '现场工具', '柜号校验 · 装柜计算 · 换算 · 验柜拍照 · 工作日志']]],
-    ['🎧 听', [['radio.html', '🚗', '通勤电台', '开车听：天气、大盘、新闻、单词'], ['fm.html', '📻', '环球网络电台', '俄德英美中，显示正在播的歌'], ['books.html', '🎧', '听书 · 广播剧', 'LibriVox 有声书和老广播剧'], ['sleep.html', '😴', '夜之声 · 助眠', '白噪音、声景旅程、温柔唤醒'], ['media.html', '🎬', '媒体播放', '贴链接就能播 · 只听声音 · 定时停']]],
+    ['🎧 听', [['radio.html', '🚗', '通勤电台', '开车听：天气、大盘、新闻、单词'], ['fm.html', '📻', '环球网络电台', '俄德英美中，显示正在播的歌'], ['tv.html', '📺', '网络电视', '181 个国家的免费电视直播 · 测速 · 断线重连'], ['books.html', '🎧', '听书 · 广播剧', 'LibriVox 有声书和老广播剧'], ['sleep.html', '😴', '夜之声 · 助眠', '白噪音、声景旅程、温柔唤醒'], ['media.html', '🎬', '媒体播放', '贴链接就能播 · 只听声音 · 定时停']]],
     ['📚 学', [['speak.html', '🗣️', '开口说 · 跟读', '工作/生活英语 · 美式口语 · 现场西语，跟读打分'], ['hanzi.html', '字', '汉字练习', '儿童识字 · HSK'], ['english.html', '🔤', '英语练习', '单词、句子、习语口头禅'], ['spanish.html', '🇲🇽', '西班牙语练习', '墨西哥发音，el / la 看图记'], ['card.html', '🎴', '每日一句 · 单词抽卡', '名言 / 习语 + 从词库抽卡复习'], ['vocab.html', '📖', '语境词库', '20000 词，语境里记单词'], ['sublingo.html', '🎞️', 'SubLingo', '字幕和文章逐句分析']]],
     ['📰 读', [['brief.html', '☀️', '每日简报', 'AI 科技 · 美股 · 宏观 · 世界大事，10 分钟看完'], ['news.html', '📰', '新闻', '今日大事 · 国际局势（分大洲）· 趣闻 · 历史上的今天 · 英文精选'], ['think.html', '🧠', '思考本', '我的判断 · 证据 · 没想通的问题 · 关注事件的时间线'], ['kb.html', '🗂️', '知识库', '天文 · 投资 · 物流 · FBA · 主机 · 人文'], ['kb.html#uw-index', '🧭', '理解世界', '历史 · 政治 · 经济 · 中国 · 美国史 · 中东 · 移民与税'], ['tips.html', '💡', '技巧与科普', '手机 · 电脑 · 防骗 · 生活 · 风土习俗 · 旅游景点'], ['people.html', '⭐', '人物专栏', '苏轼 · George Michael · 阿西莫夫 · 人生七年 · 疑犯追踪 · 怪诞小镇']]],
     ['💰 钱', [['stocks.html', '📈', '今日股票池', '短线信号 · 自选提醒 · VOO 体检'], ['earnings.html', '📅', '财报与经济日历', ''], ['deals.html', '🏷️', '打折雷达', '本周广告 + 比价 + 🔔 关注'], ['convert.html', '💱', '汇率与单位换算', '实时汇率 · 长度重量体积 · 温度油耗胎压']]],
@@ -29,7 +29,7 @@
   var K = function (slug, t) { return ['kb.html#' + slug, '📘', t]; };
   var CITY = [['coast.html', '🌊', '加州海岸线'], ['amtrak.html', '🚆', 'Amtrak'], ['usa.html', '🇺🇸', '美国生活指南'], K('travel-road-trip', '公路旅行和租车'), K('travel-scams', '旅行防骗'), ['holidays.html', '🗓️', '节假日']];
   var LANG = [['speak.html', '🗣️', '开口说'], ['vocab.html', '📖', '语境词库'], ['card.html', '🎴', '单词抽卡'], ['english.html', '🔤', '英语练习'], ['sublingo.html', '🎞️', 'SubLingo'], ['news.html#en', '📰', '英文新闻精选']];
-  var LISTEN = [['radio.html', '🚗', '通勤电台'], ['fm.html', '📻', '网络电台'], ['books.html', '🎧', '听书'], ['sleep.html', '😴', '助眠'], ['media.html', '🎬', '播放器']];
+  var LISTEN = [['radio.html', '🚗', '通勤电台'], ['fm.html', '📻', '网络电台'], ['tv.html', '📺', '网络电视'], ['books.html', '🎧', '听书'], ['sleep.html', '😴', '助眠'], ['media.html', '🎬', '播放器']];
   var REL = {
     'work.html': [K('yard-terms-glossary', '码头堆场术语'), K('iso-6346-check-digit', '柜号校验原理'), K('container-type-codes', '箱型代码'), K('truck-trailer-types', '卡车和拖车类型'), K('hazmat-placards', '危险品标牌'), K('load-planning-cbm', '装柜计算'), K('la-lb-ports-guide', '洛杉矶/长滩港'), K('container-logistics-101', '集装箱物流入门'), ['ie.html#work', '🍊', 'IE 物流和防暑'], ['news.html#world', '🌍', '国际局势（航运影响）'], ['spanish.html', '🇲🇽', '现场西语']],
     'stocks.html': [['earnings.html', '📅', '财报与经济日历'], ['news.html#world', '🌍', '国际局势和影响'], K('stock-pool-signals', '股票池信号怎么看'), K('my-trading-systems', '我的交易系统'), K('economic-indicators', '经济数据'), K('index-fund-dca', '指数基金定投'), K('investing-psychology', '投资心理'), K('market-crash-history', '股灾史'), K('us-investment-accounts-tax', '投资账户与税'), ['convert.html', '💱', '汇率换算']],
@@ -51,7 +51,7 @@
     'convert.html': [['deals.html', '🏷️', '打折'], ['stocks.html', '📈', '股票池'], ['work.html', '🦺', '装柜换算']],
     'speak.html': LANG, 'vocab.html': LANG, 'card.html': LANG, 'english.html': LANG, 'sublingo.html': LANG, 'spanish.html': [['speak.html', '🗣️', '开口说'], ['work.html', '🦺', '现场工具']].concat(LANG.slice(1)),
     'hanzi.html': [['people.html', '⭐', '人物专栏'], K('su-shi', '苏轼'), ['card.html', '🎴', '每日一句']],
-    'radio.html': LISTEN.slice(1).concat([['news.html', '📰', '新闻'], ['stocks.html', '📈', '股票池']]), 'fm.html': LISTEN, 'books.html': LISTEN, 'sleep.html': LISTEN.concat([['dream.html', '🌙', '心灵小站']]), 'media.html': [['sublingo.html', '🎞️', 'SubLingo'], ['fm.html', '📻', '网络电台'], ['books.html', '🎧', '听书'], ['pan.html', '☁️', '网盘搜索']],
+    'radio.html': LISTEN.slice(1).concat([['news.html', '📰', '新闻'], ['stocks.html', '📈', '股票池']]), 'fm.html': LISTEN, 'tv.html': LISTEN, 'books.html': LISTEN, 'sleep.html': LISTEN.concat([['dream.html', '🌙', '心灵小站']]), 'media.html': [['sublingo.html', '🎞️', 'SubLingo'], ['fm.html', '📻', '网络电台'], ['books.html', '🎧', '听书'], ['pan.html', '☁️', '网盘搜索']],
     'people.html': [K('su-shi', '苏轼'), ['books.html', '🎧', '听书'], K('top500-movies', '电影 500'), K('top500-music', '音乐 500')],
     'dream.html': [['sleep.html', '😴', '助眠'], ['kitchen.html#well', '🌿', '节气养生']],
     'darkroom.html': [['polar.html', '🕶️', '偏光滤镜'], ['work.html', '🦺', '现场工具'], ['toolbox.html', '🧰', '工具箱']],
