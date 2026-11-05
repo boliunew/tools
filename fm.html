@@ -45,6 +45,15 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 .st .fav{border:0;background:none;font-size:20px;padding:6px 4px 6px 10px;color:var(--faint)}
 .st .fav.on{color:#F2B01E}
 .st.bad{opacity:.45}
+.sortbar{display:flex;align-items:center;gap:6px;margin:-4px 0 10px;font-size:13px;color:var(--soft);flex-wrap:wrap}
+.sortbar button{border:1px solid var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:13px;color:var(--soft)}
+.sortbar button.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+.sortbar .sp{flex:1;min-width:8px}
+.st .spd{flex:0 0 auto;font-size:12px;font-variant-numeric:tabular-nums;border-radius:999px;padding:1px 8px;margin-left:6px;white-space:nowrap}
+.spd.g{color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent)}
+.spd.m{color:#B7791F;background:color-mix(in srgb,#B7791F 14%,transparent)}
+.spd.s,.spd.x{color:var(--live);background:color-mix(in srgb,var(--live) 12%,transparent)}
+.spd.w{color:var(--faint)}
 .st.ins .t small{color:var(--faint)}
 .ctl .wf{font-size:13px;width:auto;padding:0 6px;color:var(--soft)}
 .ctl .wf.on{color:var(--accent);font-weight:700}
@@ -101,6 +110,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   <div class="tabs" id="tabs"></div>
   <div class="srch"><input id="q" placeholder="搜台名、风格，例如 news、jazz、BBC" autocomplete="off"><button id="qBtn">搜索</button><button class="addbtn" id="addSt">＋ 添加</button></div>
   <div class="chips" id="chips"></div>
+  <div class="sortbar" id="sortbar"></div>
   <div class="list" id="list"><div class="msg">加载中…</div></div>
   <details class="songs" id="songs" style="display:none"></details>
   <details class="songs recs" id="recs" style="display:none"></details>
@@ -133,6 +143,74 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   var SERVERS = ['https://de1.api.radio-browser.info', 'https://fi1.api.radio-browser.info', 'https://de2.api.radio-browser.info'];
   var country = get('country', 'RU'), FAV = get('fav', {}), MY = get('custom', []), cache = {}, list = [], shown = [], tag = '', query = '', cur = null, curIdx = -1, hls = null, timer = null, timerEnd = 0, watchdog = null;
   var au = $('au'), ms = navigator.mediaSession;
+  /* ---------- 测速：用你现在的网络，看每个台多快能连上（毫秒），最快的排前面 ---------- */
+  var SORT = get('sort', 'hot'), SPD = get('spd', {}), SPD_TTL = 3600000, spdJob = 0, spdRun = null;
+  (function () { var now = Date.now(), k; for (k in SPD) if (SPD.hasOwnProperty(k) && now - SPD[k].t > SPD_TTL) delete SPD[k]; })();
+  function spdOf(s) { var r = SPD[s.id]; return r && Date.now() - r.t < SPD_TTL ? r.ms : null; }   // 毫秒；-1 连不上；null 没测
+  function spdBadge(s) {
+    var v = spdOf(s);
+    if (spdRun && spdRun.wait[s.id]) return '<span class="spd w">⏳</span>';
+    if (v == null) return '';
+    if (v < 0) return '<span class="spd x">✖ 连不上</span>';
+    return '<span class="spd ' + (v < 400 ? 'g' : v < 1200 ? 'm' : 's') + '">⚡ ' + (v < 1000 ? v + 'ms' : (v / 1000).toFixed(1) + 's') + '</span>';
+  }
+  function streamUrl(s) { return LOCAL && /^http:/i.test(s.url) && !s.hls ? 'api/stream?u=' + encodeURIComponent(s.url) : s.url.replace(/^http:\/\//i, 'https://'); }
+  // 只等到服务器开始回话就停（不真的下载声音），量的是连上要多久；跨站的台用 no-cors，拿不到内容但能计时
+  function probe(s, cb) {
+    var ac = window.AbortController ? new AbortController() : null, done = false, t0 = performance.now();
+    function fin(ms) { if (done) return; done = true; clearTimeout(tm); try { ac && ac.abort(); } catch (e) { } cb(ms); }
+    var tm = setTimeout(function () { fin(-1); }, 6000);
+    try {
+      fetch(streamUrl(s), { mode: 'no-cors', cache: 'no-store', credentials: 'omit', signal: ac ? ac.signal : undefined, referrerPolicy: 'no-referrer' })
+        .then(function () { fin(Math.max(1, Math.round(performance.now() - t0))); }, function () { fin(-1); });
+    } catch (e) { fin(-1); }
+  }
+  function runSpeed(force) {
+    var job = ++spdJob, todo = shown.slice(0, 150).filter(function (s) { return force || spdOf(s) == null; });
+    if (!todo.length) { if (force) toast('没有可以测的台'); renderSort(); return; }
+    spdRun = { wait: {}, n: 0, total: todo.length };
+    todo.forEach(function (s) { spdRun.wait[s.id] = 1; });
+    renderSort(); paintBadges();
+    var i = 0, active = 0, LIM = 6;
+    function next() {
+      if (job !== spdJob) return;
+      while (active < LIM && i < todo.length) {
+        (function (s) {
+          active++;
+          probe(s, function (ms) {
+            active--; if (job !== spdJob) return;
+            SPD[s.id] = { ms: ms, t: Date.now() }; delete spdRun.wait[s.id]; spdRun.n++;
+            paintBadge(s); renderSort();
+            if (spdRun.n >= spdRun.total) { spdRun = null; put('spd', SPD); render(); renderSort(); toast('测速完成，最快的在最上面'); }
+            else next();
+          });
+        })(todo[i++]);
+      }
+    }
+    next();
+  }
+  function paintBadge(s) { var row = document.querySelector('.st[data-sid="' + (window.CSS && CSS.escape ? CSS.escape(s.id) : s.id) + '"] .spdc'); if (row) row.innerHTML = spdBadge(s); }
+  function paintBadges() { shown.slice(0, limit).forEach(paintBadge); }
+  function bySpeed(a) {
+    var key = function (s) { var v = spdOf(s); return v == null ? 9e8 : v < 0 ? 9.5e8 : v; };
+    return a.map(function (s, i) { return [key(s), i, s]; }).sort(function (x, y) { return x[0] - y[0] || x[1] - y[1]; }).map(function (x) { return x[2]; });
+  }
+  function renderSort() {
+    if (!list.length) { $('sortbar').innerHTML = ''; return; }
+    var tested = shown.filter(function (s) { return spdOf(s) != null; }).length;
+    $('sortbar').innerHTML = '排序 <button data-sort="hot" class="' + (SORT === 'hot' ? 'on' : '') + '">' + (country === 'FAV' ? '⭐ 收藏顺序' : country === 'MY' ? '➕ 添加顺序' : '🔥 热门') + '</button>' +
+      '<button data-sort="speed" class="' + (SORT === 'speed' ? 'on' : '') + '">⚡ 最快</button><span class="sp"></span>' +
+      (spdRun ? '<span>测速中 ' + spdRun.n + '/' + spdRun.total + '…</span><button data-sort="stop">停止</button>'
+        : '<button data-sort="test">🔄 ' + (tested ? '重新测速' : '测速') + '</button>');
+  }
+  $('sortbar').onclick = function (e) {
+    var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
+    var v = b.getAttribute('data-sort');
+    if (v === 'stop') { spdJob++; spdRun = null; put('spd', SPD); render(); renderSort(); return; }
+    if (v === 'test') { SORT = 'speed'; put('sort', SORT); runSpeed(true); return; }
+    SORT = v; put('sort', SORT); render(); renderSort();
+    if (SORT === 'speed') runSpeed(false);
+  };
 
   function api(path, cb, i) {
     i = i || 0;
@@ -219,7 +297,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   }
   function nameOf(cc) { for (var i = 0; i < C.length; i++) if (C[i].k === cc) return C[i].n; return cc; }
   function favList() { var a = [], k; for (k in FAV) if (FAV.hasOwnProperty(k)) a.push(FAV[k]); a.sort(function (x, y) { return (y.t || 0) - (x.t || 0); }); return a; }
-  function afterLoad() { renderChips(); render(); }
+  function afterLoad() { spdJob++; spdRun = null; renderChips(); render(); renderSort(); if (SORT === 'speed') runSpeed(false); }
   function renderChips() {
     if (country === 'FAV' || country === 'MY') { $('chips').innerHTML = ''; return; }
     var cnt = {}, i, j, t;
@@ -227,7 +305,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     var ts = Object.keys(cnt).filter(function (t) { return cnt[t] >= 3; }).sort(function (a, b) { return cnt[b] - cnt[a]; }).slice(0, 14);
     $('chips').innerHTML = '<button data-t="" class="' + (!tag ? 'on' : '') + '">全部</button>' + ts.map(function (t) { return '<button data-t="' + esc(t) + '" class="' + (t === tag ? 'on' : '') + '">' + TAGZH[t] + '</button>'; }).join('');
   }
-  $('chips').onclick = function (e) { var b = e.target.closest ? e.target.closest('button') : null; if (!b) return; tag = b.getAttribute('data-t'); renderChips(); render(); };
+  $('chips').onclick = function (e) { var b = e.target.closest ? e.target.closest('button') : null; if (!b) return; tag = b.getAttribute('data-t'); renderChips(); render(); renderSort(); if (SORT === 'speed') runSpeed(false); };
   function match(s) {
     if (tag && s.tags.indexOf(tag) < 0) return false;
     if (query) { var q = query.toLowerCase(); if ((s.name.toLowerCase().indexOf(q) < 0) && s.tags.join(' ').indexOf(q) < 0) return false; }
@@ -236,6 +314,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   var PAGE = 60, limit = PAGE;
   function render() {
     shown = list.filter(match);
+    if (SORT === 'speed' && !spdRun) shown = bySpeed(shown);
     var addCard = country === 'MY' ? '<button class="addcard" id="addCard">＋ 自己添加一个电台（粘贴直播流地址）</button>' : '';
     if (!shown.length) { $('list').innerHTML = addCard + '<div class="msg">' + (country === 'MY' ? '还没有自己添加的电台。<br>在电台的官网找到「直播流」地址（一般以 .mp3、.aac、.m3u8 结尾），粘贴进来就能听。' : country === 'FAV' ? '还没有收藏。点电台右边的 ☆ 收藏常听的台。' : query ? '这里没找到「' + esc(query) + '」，点「搜索」会在整个目录里找。' : '没有电台') + '</div>'; return; }
     var h = '', i, s;
@@ -247,7 +326,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       if (s.br) meta.push(s.br + 'k'); else if (s.codec) meta.push(s.codec);
       if (!playable(s)) meta.push('⚠️ 只有 http，可能放不了');
       if (s.my && !meta.length) meta.push('自己添加 · ' + s.url.replace(/^https?:\/\//, '').split('/')[0]);
-      h += '<div class="st' + (cur && cur.id === s.id ? ' on' : '') + (s.bad ? ' bad' : '') + (playable(s) ? '' : ' ins') + '" data-i="' + i + '"><div class="ico">' + icon(s) + '</div><div class="t"><b>' + esc(s.name) + '</b><small>' + esc(meta.join(' · ')) + '</small></div>' + (country === 'MY' ? '<button class="fav" data-edit="' + i + '" aria-label="修改">⋯</button>' : '<button class="fav' + (FAV[s.id] ? ' on' : '') + '" data-fav="' + i + '" aria-label="收藏">' + (FAV[s.id] ? '★' : '☆') + '</button>') + '</div>';
+      h += '<div class="st' + (cur && cur.id === s.id ? ' on' : '') + (s.bad ? ' bad' : '') + (playable(s) ? '' : ' ins') + '" data-i="' + i + '" data-sid="' + esc(s.id) + '"><div class="ico">' + icon(s) + '</div><div class="t"><b>' + esc(s.name) + '</b><small>' + esc(meta.join(' · ')) + '</small></div><span class="spdc">' + spdBadge(s) + '</span>' + (country === 'MY' ? '<button class="fav" data-edit="' + i + '" aria-label="修改">⋯</button>' : '<button class="fav' + (FAV[s.id] ? ' on' : '') + '" data-fav="' + i + '" aria-label="收藏">' + (FAV[s.id] ? '★' : '☆') + '</button>') + '</div>';
     }
     if (shown.length > limit) h += '<button class="more" id="more">再显示 ' + Math.min(PAGE, shown.length - limit) + ' 个（共 ' + shown.length + '）</button>';
     $('list').innerHTML = addCard + h;
@@ -279,7 +358,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
         var extra = clean((d1 || []).concat(d2 || [])), have = {}, i;
         for (i = 0; i < list.length; i++) have[list[i].id] = 1;
         for (i = 0; i < extra.length; i++) if (!have[extra[i].id]) list.push(extra[i]);
-        list = httpsFirst(list); render();
+        list = httpsFirst(list); render(); renderSort(); if (SORT === 'speed') runSpeed(false);
       });
     });
   }
