@@ -28,16 +28,19 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
+import androidx.webkit.WebViewCompat;
+import androidx.webkit.WebViewFeature;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * 工具箱 App：全屏打开 https://boliunew.github.io/tools/ ，补上浏览器才有的能力——
- * 拍照 / 选图（拍照识别柜号、验柜拍照）、麦克风（开口说跟读）、定位（天气、附近）、下载、返回键、外部链接用浏览器打开。
+ * 拍照 / 选图（拍照识别柜号、验柜拍照）、麦克风（开口说跟读）、定位（天气、附近）、朗读（读音按钮）、下载、返回键、外部链接用浏览器打开。
  * 网站更新不用重装 App。
  */
 public class MainActivity extends Activity {
@@ -46,6 +49,7 @@ public class MainActivity extends Activity {
 
     private WebView web;
     private SaveBridge saver;
+    private TtsBridge tts;
     private ValueCallback<Uri[]> fileCallback;
     private Uri cameraUri;
     private PermissionRequest pendingMic;
@@ -73,6 +77,16 @@ public class MainActivity extends Activity {
         CookieManager.getInstance().setAcceptThirdPartyCookies(web, true);
         saver = new SaveBridge(this);
         web.addJavascriptInterface(saver, "ToolsNative");   // 网页做好的文件存到手机（只认自己的网站）
+        tts = new TtsBridge(this, web);
+        web.addJavascriptInterface(tts, "ToolsTTS");         // 🔊 读音：WebView 没有 speechSynthesis，用手机的朗读引擎补上
+        boolean early = false;
+        try {
+            if (WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT)) {
+                WebViewCompat.addDocumentStartJavaScript(web, TtsBridge.POLYFILL_JS, Collections.singleton("https://boliunew.github.io"));
+                early = true;
+            }
+        } catch (Exception ignored) { }
+        final boolean ttsEarly = early;
 
         web.setWebViewClient(new WebViewClient() {
             @Override
@@ -98,6 +112,7 @@ public class MainActivity extends Activity {
                 super.onPageFinished(v, url);
                 saver.trusted = isHome(url);
                 if (saver.trusted) v.evaluateJavascript(SaveBridge.HOOK_JS, null);
+                if (!ttsEarly) v.evaluateJavascript(TtsBridge.POLYFILL_JS, null);   // 老 WebView 不支持一开始注入，就等页面加载完补上
                 registerPush();
             }
         });
@@ -343,7 +358,10 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onPause() { super.onPause(); web.onPause(); CookieManager.getInstance().flush(); }
+    protected void onPause() { super.onPause(); web.onPause(); tts.pause(); CookieManager.getInstance().flush(); }
+
+    @Override
+    protected void onDestroy() { tts.shutdown(); super.onDestroy(); }
 
     @Override
     protected void onResume() { super.onResume(); web.onResume(); }
