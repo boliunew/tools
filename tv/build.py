@@ -150,11 +150,12 @@ def build_epg(by_cc, guides, workers=8):
         for ch in lst:
             key = ch.get("i") or (cc + ":" + ch["n"])
             c = list(mj.get(ch.get("i"), []))
-            c.sort(key=lambda x: (x[0].split("/")[-1].lower() != cc.lower(), x[0]))   # 本国的优先
+            home = {"uk": "gb"}.get(cc.lower(), cc.lower())
+            c.sort(key=lambda x: (x[0].split("/")[-1].lower() != home, x[0]))   # 本国的优先
             for s in ch["s"]:
                 m = re.search(r"jmp2\.uk/plu-([0-9a-f]{24})", s[0])
                 if m:
-                    for reg in ([cc.lower()] if cc != "ZZ" else []) + ["us", "all"]:
+                    for reg in ([{"uk": "gb"}.get(cc.lower(), cc.lower())] if cc != "ZZ" else []) + ["us", "all"]:
                         if ("PlutoTV/" + reg, m.group(1)) not in c:
                             c.append(("PlutoTV/" + reg, m.group(1)))
             if c:
