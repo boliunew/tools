@@ -142,6 +142,18 @@ except urllib.error.HTTPError as e:
     print("::warning title=AI 跑腿测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
 except Exception as e:
     print("::warning title=AI 跑腿测试::%s" % e)
+try:   # 📍 本地通：用 Upland 的坐标从头生成一次（会顺便刷新这个城市的缓存）
+    body = json.dumps({"lat": 34.0975, "lon": -117.6484, "nocache": True}).encode()
+    r = json.loads(urllib.request.urlopen(urllib.request.Request(url + "/local", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=240).read())
+    g = r.get("guide") or {}
+    print("::notice title=本地通测试::%s ｜ %s ms ｜ 数据 %s ｜ 各栏数量 %s ｜ 简介：%s ｜ 吃喝示例：%s" % (
+        json.dumps(r.get("place"), ensure_ascii=False), r.get("ms"), json.dumps(r.get("stats")),
+        json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), (g.get("intro") or [""])[0][:200],
+        json.dumps((g.get("eat") or [{}])[:2], ensure_ascii=False)[:700]))
+except urllib.error.HTTPError as e:
+    print("::warning title=本地通测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
+except Exception as e:
+    print("::warning title=本地通测试::%s" % e)
 req = urllib.request.Request(url + "/intraday?force=1", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA})
 try:
     print("::notice title=盘中提醒测试::" + urllib.request.urlopen(req, timeout=60).read().decode()[:600])

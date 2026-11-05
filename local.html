@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#24524A">
+<title>📍 本地通</title>
+<style>
+:root{
+  --bg:#F2F1EE; --paper:#FFFFFF; --ink:#1E2228; --soft:#5E6670; --faint:#9AA1A9; --line:#E1DFDA; --chip:#ECEAE5;
+  --or:#C0362C; --or-soft:#F7E2DF; --bay:#2F6F8F; --bay-soft:#DDEBF2;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(30,40,60,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --or:#F07563; --or-soft:#3A221F; --bay:#7FB8D6; --bay-soft:#1B2C36; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --paper:#1C2026; --ink:#E8EBEE; --soft:#A9B1BA; --faint:#6E767F; --line:#2C3139; --chip:#262B32;
+  --or:#F07563; --or-soft:#3A221F; --bay:#7FB8D6; --bay-soft:#1B2C36; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{position:relative;overflow:hidden;color:#F4F1EC;background:linear-gradient(175deg,#3E7A6C 0%,#24524A 45%,#16302C 100%);padding:calc(16px + env(safe-area-inset-top)) 0 18px}
+.hero:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-30px;height:90px;background:radial-gradient(60% 60% at 30% 40%,rgba(255,255,255,.18),transparent 70%),radial-gradient(50% 60% at 75% 50%,rgba(255,255,255,.14),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.city{display:flex;width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none;gap:0;margin:8px 0 0;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:2px}
+.city a{color:#F4F1EC;text-decoration:none;font-size:12.5px;padding:3px 7px;white-space:nowrap;border-radius:999px;opacity:.8}
+.city a.on{background:rgba(255,255,255,.92);color:#222;opacity:1;font-weight:600}
+.hero a.home{color:#F4F1EC;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif;font-size:28px;margin:6px 0 0;letter-spacing:.04em}
+.hero h1 small{font-family:Georgia,serif;font-size:14px;font-weight:400;opacity:.75;margin-left:8px;letter-spacing:.08em}
+.bridge{display:block;width:100%;height:46px;margin:6px 0 2px}
+.hero p{margin:6px 0 0;font-size:13.5px;opacity:.88;line-height:1.65}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.facts span{font-size:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:2px 9px}
+.facts b{font-weight:600;margin-right:4px;opacity:.75}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:0;background:none;border-radius:999px;padding:6px 12px;font-size:14px;color:var(--soft)}
+.tabs button.on{background:var(--ink);color:var(--paper)}
+.srch{margin:12px 0 4px;display:flex;gap:8px}
+.srch input{flex:1;min-width:0;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 12px;font-size:16px;outline:none}
+.srch button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:0 12px;font-size:14px;white-space:nowrap}
+.lead{font-size:13px;color:var(--faint);margin:10px 2px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+.card .hd{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;cursor:pointer}
+.card .em{font-size:26px;line-height:1.15;flex:0 0 32px;text-align:center}
+.card .ti{flex:1;min-width:0}
+.card h3{margin:0;font-size:16px;line-height:1.35}
+.card h3 small{font-weight:400;color:var(--faint);font-size:12.5px;margin-left:6px}
+.card .s{font-size:13.5px;color:var(--soft);margin-top:2px;line-height:1.55}
+.card .tg{margin-top:5px}
+.card .tg span{display:inline-block;font-size:11.5px;font-weight:600;padding:0 7px;border-radius:6px;margin:0 4px 3px 0;background:var(--chip);color:var(--soft)}
+.card .tg span.hot{background:var(--or-soft);color:var(--or)}
+.card .ar{color:var(--faint);font-size:13px;flex:0 0 auto;margin-top:2px;transition:transform .15s}
+.card.open .ar{transform:rotate(180deg)}
+.card .bd{display:none;padding:0 14px 14px 58px;font-size:14.5px;line-height:1.75}
+.card.open .bd{display:block}
+.card .bd p{margin:0 0 8px}
+.card .bd h4{font-size:12.5px;color:var(--faint);margin:10px 0 2px;letter-spacing:.04em}
+.card .bd ul{margin:2px 0 6px;padding-left:18px}
+.card .bd .tip{background:var(--bay-soft);color:var(--ink);border-radius:10px;padding:8px 10px;font-size:13.5px;margin-top:8px}
+.card .bd .tip b{color:var(--bay)}
+.card .bd .warn{background:var(--or-soft)}
+.card .bd .warn b{color:var(--or)}
+.yr{font-family:Georgia,serif;color:var(--or);font-size:12.5px;font-weight:700}
+.want{border:1px solid var(--line);background:none;border-radius:999px;font-size:12.5px;padding:2px 10px;margin-top:6px;color:var(--soft)}
+.want.on{border-color:var(--or);color:var(--or);background:var(--or-soft)}
+.triv{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:6px 14px;box-shadow:var(--shadow)}
+.triv div{font-size:14px;line-height:1.65;padding:8px 0;border-top:1px dashed var(--line)}
+.triv div:first-child{border-top:0}
+.pop{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(92vw,520px);background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.25);padding:14px 16px;z-index:30;font-size:14.5px;line-height:1.7}
+.pop b{display:block;margin-bottom:4px}
+.pop .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:18px;color:var(--faint)}
+.pop .go{margin-top:8px;border:0;background:var(--ink);color:var(--paper);border-radius:10px;padding:5px 12px;font-size:13.5px}
+.mtabs{display:flex;gap:6px;margin:4px 0 8px;flex-wrap:wrap}
+.mtabs button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13.5px;color:var(--soft)}
+.mtabs button.on{border-color:var(--or);color:var(--or);background:var(--or-soft);font-weight:600}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.acts button{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#F4F1EC;border-radius:999px;padding:4px 12px;font-size:13px}
+.ask{display:flex;gap:6px;margin-top:8px}
+.ask input{flex:1;min-width:0;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.2);color:#fff;border-radius:10px;padding:7px 10px;font-size:16px;outline:none}
+.ask input::placeholder{color:rgba(255,255,255,.6)}
+.ask button{border:0;background:#F4F1EC;color:#16302C;border-radius:10px;padding:0 14px;font-weight:600}
+.state{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px 18px;text-align:center;line-height:1.8;color:var(--soft);margin-top:10px}
+.state b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+.state .big{font-size:40px;line-height:1.2}
+.state button,.state a.btn{display:inline-block;margin:10px 4px 0;border:0;background:var(--ink);color:var(--paper);border-radius:12px;padding:8px 16px;font-size:14.5px;text-decoration:none}
+.state a{color:var(--bay)}
+.spin{display:inline-block;animation:sp 1.2s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.ai{display:inline-block;font-size:11.5px;background:var(--bay-soft);color:var(--bay);border-radius:6px;padding:0 6px;margin-left:4px;font-weight:600}
+.nb{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.nr{display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid var(--line)}
+.nr:first-child{border-top:0}
+.nr .ne{font-size:22px;flex:0 0 28px;text-align:center}
+.nr .nd{flex:1;min-width:0}.nr .nd b{font-size:15px}.nr .nd small{display:block;color:var(--faint);font-size:12.5px;line-height:1.5}
+.nr .nk{text-align:right;white-space:nowrap;font-size:13px;color:var(--soft)}
+.nr .nk a{display:inline-block;margin-top:3px;font-size:12.5px;color:var(--bay);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:1px 9px}
+[hidden]{display:none!important}
+.mnote{font-size:12.5px;color:var(--faint);margin:8px 2px;line-height:1.7}
+.mnote a{color:var(--bay)}
+.foot{font-size:12px;color:var(--faint);margin-top:18px;line-height:1.8}
+.foot a{color:var(--bay)}
+.empty{color:var(--faint);text-align:center;padding:30px 0}
+mark{background:var(--or-soft);color:inherit;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a class="home" href="index.html">‹ 首页</a><span class="city"><a href="sf.html">🌁 旧金山</a><a href="sj.html">🌴 圣何塞</a><a href="ny.html">🗽 纽约</a><a href="la.html">🌇 洛杉矶</a><a href="ie.html">🍊 IE</a><a href="local.html" class="on">📍 本地通</a></span>
+  <h1 id="ttl">📍 本地通<small id="sub">LOCAL</small></h1>
+  <p id="intro">打开定位，自动生成你所在城市的生活指南：街区、吃喝、好玩、本地人秘籍、人文故事、出行和冷知识，还有身边的餐馆、超市、药店。</p>
+  <div class="facts" id="facts"></div>
+  <div class="acts"><button id="bLoc">📍 重新定位</button><button id="bAsk">✏️ 换个城市</button></div>
+  <div class="ask" id="askBox" hidden><input id="askQ" type="search" placeholder="城市名，如 Portland, Oregon 或 西雅图" autocomplete="off"><button id="askGo">生成</button></div>
+</div></div>
+<div class="tabs" id="tabsBar" hidden><div class="wrap" id="tabs"></div></div>
+<main class="wrap">
+  <div class="srch" id="srch" hidden><input id="q" type="search" placeholder="搜这个城市的内容…" autocomplete="off"><button id="rnd">🎲 随便看一个</button></div>
+  <div id="list"></div>
+  <div class="foot" id="foot"></div>
+</main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('local:' + k) || 'null'); localStorage.setItem('local:' + k, JSON.stringify(v)); } catch (e) { return null; } }
+  function toolsKey() { try { return localStorage.getItem('home:unlock') || ''; } catch (e) { return ''; } }
+
+  var TABS = [['near', '📍 附近'], ['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
+  var LEAD = {
+    near: '你身边 1.5 公里内的吃饭、超市、药店、加油站、公园和厕所，按距离排。数据来自 OpenStreetMap，营业时间以店家为准。',
+    hoods: '这座城市的街区和附近值得去的小城镇。点开看去做什么、吃什么。',
+    eat: '这一带有代表性的吃的和值得专门去的店。店铺会变，去之前查一下营业时间。',
+    fun: '景点、博物馆、公园和看风景的地方。点 ☆ 加到「想去」。',
+    tips: '本地人天天在用的省钱、省事、避坑窍门。票价和规定会变，以官网为准。',
+    stories: '这座城市是怎么来的，出过哪些事和人。',
+    go: '怎么去、怎么走、怎么穿，以及本地人的说法。',
+    work: '在这里工作生活要知道的事。',
+    trivia: '可以拿去跟朋友聊的冷知识。',
+    want: '你在这个城市标了「想去」的地方，存在这台设备上。'
+  };
+  var AI_NOTE = '<span class="ai">🤖 AI 整理</span>';
+  var API = '', R = ls('last'), POS = ls('pos'), TAB = (location.hash || '').replace('#', '') || ls('tab') || 'hoods', OPEN = {}, Q = '', WANT = {}, BUSY = false;
+  if (!TABS.some(function (t) { return t[0] === TAB; })) TAB = 'hoods';
+  function D() { return (R && R.guide) || null; }
+  function cityKey() { var p = R && R.place; return p ? [p.cc, p.state, p.en].join(':') : ''; }
+  function loadWant() { WANT = (ls('want') || {})[cityKey()] || {}; }
+  function saveWant() { var all = ls('want') || {}; all[cityKey()] = WANT; ls('want', all); }
+
+  // ---------------- 卡片（和城市生活页一样的样子）
+  function key(tab, it) { return tab + ':' + (it.id || it.t); }
+  function para(s) { return String(s || '').split('\n\n').map(function (p) { return '<p>' + esc(p).replace(/\n/g, '<br>') + '</p>'; }).join(''); }
+  function hl(h) { if (!Q) return h; var q = Q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); return h.replace(new RegExp('(>[^<]*?)(' + q + ')', 'gi'), '$1<mark>$2</mark>'); }
+  function text(it) { return [it.t, it.s, it.d, it.tip, it.note, (it.do || []).join(' '), (it.eat || []).join(' '), (it.tag || []).join(' '), it.y].join(' ').toLowerCase(); }
+  function card(tab, it) {
+    var k = key(tab, it), o = OPEN[k] || !!Q, h = '';
+    var tags = (it.tag || []).map(function (t) { return '<span class="' + (t === '必去' ? 'hot' : '') + '">' + esc(t) + '</span>'; }).join('');
+    h += '<div class="card' + (o ? ' open' : '') + '" data-k="' + esc(k) + '"><div class="hd"><div class="em">' + esc(it.e) + '</div><div class="ti"><h3>' + esc(it.t) + (it.y ? ' <small class="yr">' + esc(it.y) + '</small>' : '') + '</h3><div class="s">' + esc(it.s) + '</div>' +
+      (tags ? '<div class="tg">' + tags + '</div>' : '') + '</div><div class="ar">▾</div></div><div class="bd">' + para(it.d);
+    if (it.do && it.do.length) h += '<h4>去做什么</h4><ul>' + it.do.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    if (it.eat && it.eat.length) h += '<h4>吃什么</h4><ul>' + it.eat.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    if (it.tip) h += '<div class="tip"><b>💡 </b>' + esc(it.tip) + '</div>';
+    if (it.note) h += '<div class="tip warn"><b>⚠️ </b>' + esc(it.note) + '</div>';
+    if (tab === 'hoods' || tab === 'eat' || tab === 'fun' || tab === 'want') {
+      var wk = it.__wk || k;
+      h += '<button class="want' + (WANT[wk] ? ' on' : '') + '" data-w="' + esc(wk) + '">' + (WANT[wk] ? '★ 想去' : '☆ 想去') + '</button>';
+    }
+    if (tab !== 'want') h += ' <a class="want" style="text-decoration:none;display:inline-block" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(String(it.t).replace(/^[^A-Za-z]*(?=[A-Za-z])/, '') + ' ' + R.place.en + ' ' + R.place.state) + '">🗺️ 地图上找</a>';
+    return h + '</div></div>';
+  }
+  function items(tab) {
+    var G = D();
+    if (tab === 'want') {
+      var out = [];
+      ['hoods', 'eat', 'fun'].forEach(function (t) { (G[t] || []).forEach(function (it) { var k = key(t, it); if (WANT[k]) { var c = Object.create(it); c.__wk = k; out.push(c); } }); });
+      return out;
+    }
+    return G[tab] || [];
+  }
+  function render() {
+    var G = D();
+    $('tabsBar').hidden = !G; $('srch').hidden = !G;
+    if (!G) return;
+    $('tabs').innerHTML = TABS.map(function (t) { return '<button data-t="' + t[0] + '" class="' + (t[0] === TAB && !Q ? 'on' : '') + '">' + t[1] + (t[0] === 'want' ? ' ' + Object.keys(WANT).filter(function (k) { return WANT[k]; }).length : '') + '</button>'; }).join('');
+    var h = '';
+    if (Q) {
+      var q = Q.toLowerCase(), n = 0;
+      TABS.forEach(function (t) {
+        if (t[0] === 'want' || t[0] === 'trivia' || t[0] === 'near') return;
+        var hit = (G[t[0]] || []).filter(function (it) { return text(it).indexOf(q) >= 0; });
+        if (!hit.length) return;
+        h += '<div class="lead">' + t[1] + ' · ' + hit.length + '</div>' + hit.map(function (it) { return card(t[0], it); }).join(''); n += hit.length;
+      });
+      var tv = (G.trivia || []).filter(function (x) { return x.toLowerCase().indexOf(q) >= 0; });
+      if (tv.length) { h += '<div class="lead">💡 冷知识 · ' + tv.length + '</div><div class="triv">' + tv.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>'; n += tv.length; }
+      $('list').innerHTML = n ? hl(h) : '<div class="empty">没找到「' + esc(Q) + '」</div>';
+      return;
+    }
+    h += '<div class="lead">' + LEAD[TAB] + (TAB !== 'near' && TAB !== 'want' ? ' ' + AI_NOTE : '') + '</div>';
+    if (TAB === 'near') { $('list').innerHTML = h + '<div id="near"></div>'; nearRender(); return; }
+    if (TAB === 'trivia') h += '<div class="triv">' + (G.trivia || []).map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
+    else {
+      var L = items(TAB);
+      h += L.length ? L.map(function (it) { return card(TAB, it); }).join('') : '<div class="empty">' + (TAB === 'want' ? '还没有标「想去」的。在街区、吃喝、好玩里点 ☆ 想去。' : '这一栏这次没生成出来。') + '</div>';
+    }
+    $('list').innerHTML = h;
+  }
+  function showCity() {
+    var p = R.place, G = R.guide;
+    document.title = '📍 ' + (p.zh || p.en) + ' · 本地通';
+    $('ttl').innerHTML = esc(p.zh || p.en) + '<small>' + esc(String(p.en).toUpperCase()) + '</small>';
+    var showIntro = function (all) {
+      var L = G.intro || []; if (!L.length) { $('intro').textContent = ''; return; }
+      $('intro').innerHTML = (all ? L.map(esc).join('<br><br>') : esc(L[0])) + (L.length > 1 ? ' <a href="#" id="more" style="color:#BFE6D8">' + (all ? '收起' : '更多 ›') + '</a>' : '');
+      if ($('more')) $('more').onclick = function (e) { e.preventDefault(); showIntro(!all); };
+    };
+    showIntro(false);
+    $('facts').innerHTML = '<span><b>📍</b>' + esc([p.county, p.state].filter(Boolean).join(' · ') || p.country) + '</span>' + (G.facts || []).map(function (f) { return '<span><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</span>'; }).join('') + '<span id="wx" hidden></span>';
+    $('foot').innerHTML = '🤖 这一页由 AI 根据 OpenStreetMap 和维基百科的公开资料整理（' + esc((R.generated || '').slice(0, 10)) + ' 生成，同一个城市 30 天内看到的是同一份）。AI 可能写错，店名和地点去之前在地图上确认一下。<br>' +
+      (G.sources || []).map(function (s) { return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>'; }).join(' · ');
+    loadWant(); weather(); render();
+  }
+  function weather() {
+    var p = R.place, x = new XMLHttpRequest();
+    x.open('GET', 'https://api.open-meteo.com/v1/forecast?latitude=' + p.lat + '&longitude=' + p.lon + '&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=auto&forecast_days=1');
+    x.onload = function () {
+      try {
+        var w = JSON.parse(x.responseText), c = w.current, d = w.daily, el = $('wx'); if (!el || !c) return;
+        var sk = c.weather_code === 0 ? '☀️' : c.weather_code <= 2 ? '🌤️' : c.weather_code === 3 ? '☁️' : c.weather_code <= 48 ? '🌫️' : c.weather_code <= 67 || (c.weather_code >= 80 && c.weather_code <= 82) ? '🌧️' : c.weather_code <= 86 ? '🌨️' : '⛈️';
+        el.innerHTML = '<b>' + sk + '</b>' + Math.round(c.temperature_2m) + '°F' + (d ? '（' + Math.round(d.temperature_2m_min[0]) + '–' + Math.round(d.temperature_2m_max[0]) + '）' : '');
+        el.hidden = false;
+      } catch (e) { }
+    };
+    x.send();
+  }
+
+  // ---------------- 状态页
+  function state(icon, title, body, btns) {
+    $('tabsBar').hidden = true; $('srch').hidden = true;
+    $('list').innerHTML = '<div class="state"><div class="big">' + icon + '</div><b>' + title + '</b>' + (body || '') + (btns ? '<div>' + btns + '</div>' : '') + '</div>';
+  }
+  var TICK = null;
+  function busy(on, label) {
+    BUSY = on; clearInterval(TICK);
+    if (!on) return;
+    var t0 = Date.now(), msgs = ['认出你在哪座城市…', '从 OpenStreetMap 找街区、餐馆、公园、车站…', '翻维基百科里这座城市的历史…', 'AI 在写街区和人文故事…', 'AI 在挑吃喝和好玩的…', 'AI 在写本地人秘籍和出行…', '快好了，正在整理…'];
+    var tick = function () {
+      var s = Math.round((Date.now() - t0) / 1000), m = msgs[Math.min(msgs.length - 1, Math.floor(s / 9))];
+      state('<span class="spin">🧭</span>', label || '正在生成', '<div>' + m + '</div><small>已用 ' + s + ' 秒 · 第一次生成一个城市大约要 1 分钟，以后打开就是秒出</small>');
+    };
+    tick(); TICK = setInterval(tick, 1000);
+  }
+  function needKey() {
+    state('🔐', '要先在首页解锁', '本地通要用 AI 生成内容，和 SubLingo「讲讲这句」一样，需要先在<a href="index.html">首页</a>输入密码并勾选「记住我」。', '<a class="btn" href="index.html">去首页解锁</a>');
+  }
+
+  // ---------------- 生成
+  function ask(body, label) {
+    if (BUSY) return;
+    if (!toolsKey()) { needKey(); return; }
+    if (!API) { setTimeout(function () { ask(body, label); }, 400); return; }
+    busy(true, label);
+    var x = new XMLHttpRequest(); x.open('POST', API + '/local'); x.timeout = 240000;
+    x.setRequestHeader('Content-Type', 'application/json'); x.setRequestHeader('X-Tools-Key', toolsKey());
+    x.onload = function () {
+      busy(false);
+      var r = null; try { r = JSON.parse(x.responseText); } catch (e) { }
+      if (x.status === 401) { needKey(); return; }
+      if (x.status === 202 && r && r.pending) { busy(true, (r.place && (r.place.zh || r.place.en)) + ' 正在生成'); setTimeout(function () { busy(false); ask(body, label); }, 15000); return; }
+      if (!r || !r.guide) { fail((r && r.msg) || '出错了（' + x.status + '）'); return; }
+      R = r; ls('last', r); Q = ''; $('q').value = ''; showCity();
+    };
+    x.onerror = x.ontimeout = function () { busy(false); fail('网络不好或者等太久了，再试一次'); };
+    x.send(JSON.stringify(body));
+  }
+  function fail(msg) {
+    if (D()) { showCity(); toast('⚠️ ' + msg); return; }
+    state('😵', '没生成出来', '<div>' + esc(msg) + '</div>', '<button id="sRetry">📍 再试一次</button><button id="sAsk">✏️ 输入城市</button>');
+  }
+  function toast(s) { var el = document.createElement('div'); el.className = 'pop'; el.textContent = s; document.body.appendChild(el); setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 4000); }
+  function locate(quiet) {
+    if (!navigator.geolocation) { if (!quiet) state('🧭', '这个浏览器不能定位', '点上面的「✏️ 换个城市」输入城市名。'); return; }
+    if (!quiet) state('<span class="spin">🧭</span>', '正在定位…', '浏览器会问你能不能用位置，点「允许」。');
+    navigator.geolocation.getCurrentPosition(function (p) {
+      POS = { lat: +p.coords.latitude.toFixed(3), lon: +p.coords.longitude.toFixed(3), at: Date.now() }; ls('pos', POS); NEAR = null;
+      // 定位只取到约 1 公里精度再发给后端（后端也只按城市生成）
+      var same = R && R.place && Math.abs(R.place.lat - POS.lat) < 0.08 && Math.abs(R.place.lon - POS.lon) < 0.1;
+      if (quiet && same) { if (TAB === 'near') render(); return; }
+      ask({ lat: +POS.lat.toFixed(2), lon: +POS.lon.toFixed(2) });
+    }, function (e) {
+      if (quiet) return;
+      state('🙈', '没拿到位置', '<div>' + (e && e.code === 1 ? '定位权限被拒绝了。可以在浏览器（或手机设置里 App）的权限里打开位置，或者直接输入城市。' : '定位超时，可能在室内信号不好。') + '</div>', '<button id="sRetry">📍 再试一次</button><button id="sAsk">✏️ 输入城市</button>');
+    }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 10 * 60000 });
+  }
+
+  // ---------------- 📍 附近（浏览器直接查 OpenStreetMap，位置不经过我们的后端）
+  var NEAR = null, NF = ls('nf') || 'all', NBUSY = false;
+  var NK = [
+    ['eat', '🍜', '吃饭', function (t) { return /^(restaurant|fast_food|food_court)$/.test(t.amenity); }],
+    ['cafe', '☕', '咖啡甜点', function (t) { return /^(cafe|ice_cream)$/.test(t.amenity) || t.shop === 'bakery'; }],
+    ['shop', '🛒', '超市', function (t) { return /^(supermarket|convenience|greengrocer)$/.test(t.shop); }],
+    ['med', '💊', '药店诊所', function (t) { return /^(pharmacy|clinic|hospital|doctors)$/.test(t.amenity) || t.healthcare === 'urgent_care'; }],
+    ['gas', '⛽', '加油充电', function (t) { return t.amenity === 'fuel' || t.amenity === 'charging_station'; }],
+    ['park', '🌳', '公园', function (t) { return /^(park|playground|garden|nature_reserve)$/.test(t.leisure); }],
+    ['wc', '🚻', '厕所', function (t) { return t.amenity === 'toilets'; }],
+    ['bank', '🏧', 'ATM 银行', function (t) { return t.amenity === 'atm' || t.amenity === 'bank'; }]
+  ];
+  function nearPos() { return POS && Date.now() - POS.at < 6 * 3600e3 ? POS : R && R.place ? { lat: R.place.lat, lon: R.place.lon, center: 1 } : null; }
+  function dist(a, b) { var r = Math.PI / 180, x = (b.lon - a.lon) * r * Math.cos((a.lat + b.lat) / 2 * r), y = (b.lat - a.lat) * r; return Math.sqrt(x * x + y * y) * 6371000; }
+  function nearLoad(p) {
+    if (NBUSY) return; NBUSY = true;
+    var A = '(around:1500,' + p.lat + ',' + p.lon + ')';
+    var q = '[out:json][timeout:20];(nwr' + A + '["amenity"~"^(restaurant|fast_food|food_court|cafe|ice_cream|pharmacy|clinic|hospital|doctors|fuel|charging_station|toilets|atm|bank)$"];' +
+      'nwr' + A + '["shop"~"^(supermarket|convenience|greengrocer|bakery)$"];nwr' + A + '["leisure"~"^(park|playground|garden|nature_reserve)$"]["name"];nwr' + A + '["healthcare"="urgent_care"];);out tags center 400;';
+    var urls = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'], i = 0;
+    (function go() {
+      var x = new XMLHttpRequest(); x.open('POST', urls[i]); x.timeout = 25000;
+      x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      x.onload = function () {
+        var r = null; try { r = JSON.parse(x.responseText); } catch (e) { }
+        if (!r || !r.elements) { if (++i < urls.length) return go(); NBUSY = false; NEAR = { err: 1, p: p }; nearRender(); return; }
+        var L = [];
+        r.elements.forEach(function (e) {
+          var t = e.tags || {}, c = e.center || e, k = null;
+          for (var j = 0; j < NK.length; j++) if (NK[j][3](t)) { k = NK[j]; break; }
+          if (!k || c.lat == null) return;
+          L.push({ k: k[0], e: k[1], n: t['name:zh'] || t.name || t.brand || '', en: t['name:zh'] && t.name !== t['name:zh'] ? t.name : '', cu: t.cuisine || '', oh: t.opening_hours || '', lat: c.lat, lon: c.lon, d: dist(p, { lat: c.lat, lon: c.lon }) });
+        });
+        L.sort(function (a, b) { return a.d - b.d; });
+        NBUSY = false; NEAR = { p: p, L: L }; nearRender();
+      };
+      x.onerror = x.ontimeout = function () { if (++i < urls.length) return go(); NBUSY = false; NEAR = { err: 1, p: p }; nearRender(); };
+      x.send('data=' + encodeURIComponent(q));
+    })();
+  }
+  var CUZ = { chinese: '中餐', mexican: '墨西哥', pizza: '披萨', burger: '汉堡', american: '美式', japanese: '日料', sushi: '寿司', vietnamese: '越南', thai: '泰国', korean: '韩国', indian: '印度', italian: '意大利', coffee_shop: '咖啡', sandwich: '三明治', chicken: '炸鸡', seafood: '海鲜', ramen: '拉面', noodle: '面', bubble_tea: '奶茶', donut: '甜甜圈', breakfast: '早餐', mediterranean: '地中海', barbecue: '烧烤', taiwanese: '台湾', cantonese: '粤菜', sichuan: '川菜', filipino: '菲律宾', ice_cream: '冰淇淋', bakery: '面包' };
+  function nearRender() {
+    var box = $('near'); if (!box) return;
+    var p = nearPos();
+    if (!p) { box.innerHTML = '<div class="state"><div class="big">📍</div><b>要先定位</b>点上面的「📍 重新定位」。</div>'; return; }
+    if (!NEAR || NEAR.p.lat !== p.lat || NEAR.p.lon !== p.lon) { box.innerHTML = '<div class="empty"><span class="spin">🧭</span> 正在找你身边的地方…</div>'; nearLoad(p); return; }
+    if (NEAR.err) { box.innerHTML = '<div class="state"><div class="big">😵</div><b>OpenStreetMap 这会儿太忙</b>过一会儿再点「附近」试试。</div>'; return; }
+    var cnt = {}; NEAR.L.forEach(function (x) { cnt[x.k] = (cnt[x.k] || 0) + 1; });
+    var h = (p.center ? '<div class="mnote">⚠️ 没有你的实时位置，下面是以市中心为圆心找的。点「📍 重新定位」换成你身边。</div>' : '') +
+      '<div class="mtabs" id="nf"><button data-nf="all" class="' + (NF === 'all' ? 'on' : '') + '">全部 ' + NEAR.L.length + '</button>' +
+      NK.filter(function (k) { return cnt[k[0]]; }).map(function (k) { return '<button data-nf="' + k[0] + '" class="' + (NF === k[0] ? 'on' : '') + '">' + k[1] + ' ' + k[2] + ' ' + cnt[k[0]] + '</button>'; }).join('') + '</div>';
+    var L = NEAR.L.filter(function (x) { return NF === 'all' || x.k === NF; }).slice(0, 80);
+    if (!L.length) h += '<div class="empty">1.5 公里内没找到。地图数据在郊区可能不全。</div>';
+    else h += '<div class="nb">' + L.map(function (x) {
+      var d = x.d < 1000 ? Math.round(x.d / 10) * 10 + ' 米' : (x.d / 1609).toFixed(1) + ' 英里', walk = Math.max(1, Math.round(x.d / 80));
+      var cu = x.cu ? x.cu.split(';').map(function (c) { return CUZ[c] || c; }).join(' · ') : '';
+      var name = x.n || ({ wc: '公共厕所', gas: '加油站', bank: 'ATM', park: '公园' }[x.k] || '（没有名字）');
+      return '<div class="nr"><div class="ne">' + x.e + '</div><div class="nd"><b>' + esc(name) + '</b><small>' + esc([x.en, cu, x.oh ? '⏰ ' + x.oh : ''].filter(Boolean).join(' · ')) + '</small></div>' +
+        '<div class="nk">' + d + '<br><small>走路约 ' + walk + ' 分</small><br><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=' + x.lat + ',' + x.lon + '">🧭 导航</a></div></div>';
+    }).join('') + '</div>';
+    h += '<div class="mnote">地点 © OpenStreetMap 贡献者。营业时间是原始写法（Mo-Fr 周一到周五，Sa 周六，Su 周日），可能过时。</div>';
+    box.innerHTML = h;
+    $('nf').onclick = function (e) { var b = e.target.closest('[data-nf]'); if (!b) return; NF = b.getAttribute('data-nf'); ls('nf', NF); nearRender(); };
+  }
+
+  // ---------------- 事件
+  function setTab(t) { TAB = t; ls('tab', t); Q = ''; $('q').value = ''; history.replaceState(null, '', '#' + t); render(); window.scrollTo(0, Math.min(window.scrollY, $('tabsBar').offsetTop)); }
+  $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (b) setTab(b.getAttribute('data-t')); };
+  $('list').onclick = function (e) {
+    if (e.target.closest('#sRetry')) { locate(false); return; }
+    if (e.target.closest('#sAsk')) { $('askBox').hidden = false; $('askQ').focus(); return; }
+    var w = e.target.closest('[data-w]');
+    if (w) { var k = w.getAttribute('data-w'); WANT[k] = !WANT[k]; if (!WANT[k]) delete WANT[k]; saveWant(); var y = window.scrollY; render(); window.scrollTo(0, y); return; }
+    var hd = e.target.closest('.hd'); if (!hd) return;
+    var c = hd.parentNode, ck = c.getAttribute('data-k'); OPEN[ck] = !c.classList.contains('open'); c.classList.toggle('open', OPEN[ck]);
+  };
+  var qt = 0;
+  $('q').oninput = function () { clearTimeout(qt); var v = this.value.trim(); qt = setTimeout(function () { Q = v; render(); }, 200); };
+  $('rnd').onclick = function () {
+    var G = D(), pool = []; if (!G) return;
+    (G.stories || []).forEach(function (x) { pool.push(['stories', x]); });
+    (G.trivia || []).forEach(function (x) { pool.push(['trivia', x]); });
+    (G.fun || []).forEach(function (x) { pool.push(['fun', x]); });
+    if (!pool.length) return;
+    var p = pool[Math.floor(Math.random() * pool.length)], old = document.querySelector('.pop'); if (old) old.parentNode.removeChild(old);
+    var el = document.createElement('div'); el.className = 'pop';
+    el.innerHTML = '<button class="x">×</button>' + (p[0] === 'trivia' ? '<b>💡 冷知识</b>' + esc(p[1]) : '<b>' + esc(p[1].e) + ' ' + esc(p[1].t) + '</b>' + esc(p[1].s) + '<br><button class="go">看全文</button>');
+    document.body.appendChild(el);
+    el.onclick = function (ev) {
+      if (ev.target.closest('.x')) { el.parentNode.removeChild(el); return; }
+      if (ev.target.closest('.go')) { el.parentNode.removeChild(el); OPEN[key(p[0], p[1])] = true; setTab(p[0]); var c = document.querySelector('[data-k="' + key(p[0], p[1]).replace(/"/g, '\\"') + '"]'); if (c) c.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+    };
+  };
+  $('bLoc').onclick = function () { locate(false); };
+  $('bAsk').onclick = function () { var b = $('askBox'); b.hidden = !b.hidden; if (!b.hidden) $('askQ').focus(); };
+  function askCity() { var v = $('askQ').value.trim(); if (!v) return; $('askBox').hidden = true; POS = null; ls('pos', null); NEAR = null; ask({ q: v }, '正在生成「' + v + '」'); }
+  $('askGo').onclick = askCity;
+  $('askQ').onkeydown = function (e) { if (e.key === 'Enter') askCity(); };
+
+  // ---------------- 启动：先显示上次的城市；已经允许过定位就悄悄看看换城市没有
+  var cx = new XMLHttpRequest(); cx.open('GET', 'cf.json?t=' + Math.floor(Date.now() / 36e5));
+  cx.onload = function () { try { API = JSON.parse(cx.responseText).api || ''; } catch (e) { } };
+  cx.send();
+  if (R && R.guide) showCity();
+  else if (!toolsKey()) needKey();
+  else state('📍', '看看你在哪座城市', '点下面的按钮，用手机定位生成当地指南；也可以点上面的「✏️ 换个城市」直接输入。', '<button id="sRetry">📍 开始定位</button><button id="sAsk">✏️ 输入城市</button>');
+  try {
+    if (navigator.permissions && navigator.permissions.query && toolsKey()) navigator.permissions.query({ name: 'geolocation' }).then(function (s) { if (s.state === 'granted') locate(!!(R && R.guide)); }, function () { });
+  } catch (e) { }
+})();
+</script>
+<script>(function(){var c=document.querySelector('.city'),o=c&&c.querySelector('a.on');if(o)c.scrollLeft=o.offsetLeft+o.offsetWidth-c.clientWidth+4;})();document.querySelectorAll('.city a').forEach(function(a){a.addEventListener('click',function(e){if(a.classList.contains('on')){e.preventDefault();}});});</script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=49" defer></script>
+</body>
+</html>
