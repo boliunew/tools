@@ -30,6 +30,7 @@ button,input{font:inherit;color:inherit}button{cursor:pointer}a{color:var(--acc)
 .stage{background:#000;border-radius:14px;overflow:hidden;position:relative}
 .stage video{display:block;width:100%;max-height:52vh;background:#000}
 .stage.audio{background:var(--chip);padding:14px 12px 4px}
+.diag{display:none;margin-top:10px;border-radius:12px;padding:10px 12px;background:var(--warn-soft);color:var(--ink);font-size:13.5px;line-height:1.65}.diag.on{display:block}.diag b{color:var(--warn)}.diag small{display:block;color:var(--faint);font-size:12px;margin-top:4px;word-break:break-all}
 .stage.audio .an{font-size:14px;color:var(--soft);margin-bottom:6px;word-break:break-all}
 audio{width:100%}
 /* 时间轴 */
@@ -79,6 +80,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
   <section id="ed">
     <div class="box">
       <div class="stage" id="stage"></div>
+      <div class="diag" id="diag"></div>
       <div class="tl" id="tl">
         <canvas id="strip"></canvas>
         <div class="dim" id="dimL"></div><div class="dim" id="dimR"></div>
@@ -156,7 +158,7 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
   document.addEventListener('drop', function (e) { var f = e.dataTransfer && e.dataTransfer.files[0]; if (f) open(f); });
 
   function open(f) {
-    FILE = f; OUT = null; THUMBS = []; AUDIOPEAKS = null; DUR = 0; $('res').className = 'box res'; status('');
+    FILE = f; OUT = null; $('diag').className = 'diag'; clearTimeout(diagTimer); THUMBS = []; AUDIOPEAKS = null; DUR = 0; $('res').className = 'box res'; status('');
     if (URLX) URL.revokeObjectURL(URLX);
     URLX = URL.createObjectURL(f);
     IS_V = !(/^audio\//.test(f.type) || /\.(mp3|m4a|aac|flac|wav|ogg|opus|wma|ape)$/i.test(f.name));
@@ -171,7 +173,8 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
       if (isFinite(med.duration) && med.duration > 0) setDur(med.duration);
       if (IS_V && !med.videoWidth) { IS_V = false; modeHint(); }
     });
-    med.addEventListener('error', function () { status('⚠️ 浏览器放不了这个格式的预览，但还是可以照时间剪（试试填开始 / 结束时间）', 'err'); probeDur(); });
+    med.addEventListener('error', function () { probeDur().then(function () { diagnose(true); }); });
+    diagTimer = setTimeout(function () { if (!DUR) diagnose(false); }, 8000);   // 8 秒还没读出时长
     med.addEventListener('timeupdate', tick);
     med.addEventListener('seeked', tick);
     probeDur();
@@ -180,6 +183,44 @@ kbd{font-family:inherit;font-size:11px;border:1px solid var(--line);border-radiu
     if (DUR) return;
     DUR = d; A = 0; B = d; V0 = 0; V1 = d; ZOOM = 1; setZoomBtns();
     syncInputs(); layout(); buildStrip();
+  }
+  var diagTimer = 0;
+  // 读不出来时，查清楚是哪一步不行，在视频下面直接说原因和办法
+  async function diagnose(noPreview) {
+    var f = FILE, box = $('diag'), why = '', tip = '';
+    var info = esc(f.name) + ' · ' + fsize(f.size) + ' · ' + esc(f.type || '未知类型');
+    var readable = true;
+    try { await f.slice(0, 65536).arrayBuffer(); if (f.size > 65536) await f.slice(f.size - 65536).arrayBuffer(); } catch (e) { readable = false; }
+    if (f !== FILE) return;
+    var M = await waitMB(), fmt = '', codec = '', canDec = null;
+    if (readable && M) {
+      try {
+        var inp = new M.Input({ source: new M.BlobSource(f), formats: M.ALL_FORMATS });
+        var fm = await inp.getFormat(); fmt = fm && fm.name || '';
+        var vt = await inp.getPrimaryVideoTrack(); if (vt) { codec = vt.codec || ''; try { canDec = await vt.canDecode(); } catch (e) { } }
+        if (!DUR) { var d = await inp.computeDuration(); if (d > 0) setDur(d); }
+      } catch (e) { }
+    }
+    if (f !== FILE) return;
+    if (!f.size) {
+      why = '❌ 这个文件是空的（0 字节）';
+      tip = '文件里没有内容，多半是没下载完或者保存失败了。重新下载 / 重新导出一次再选。';
+    } else if (!readable) {
+      why = '❌ 这个文件读不出来';
+      tip = '多半是视频还在云端（Google 相册、网盘里备份的），没下载到手机上；或者文件正在被别的 App 写。先在相册里点「下载」存到本机，再从「文件」里选。';
+    } else if (!M) {
+      why = '❌ 剪辑组件没加载上';
+      tip = '可能是网络不好。刷新一下页面再选一次文件。';
+    } else if (!DUR) {
+      why = '❌ 读不出这个视频有多长，没法剪';
+      tip = (fmt ? '格式是 ' + esc(fmt) + '，但' : '') + '文件看起来不完整：常见于没下载完的视频、录屏/录像中途被打断、或者从聊天软件里存的半截文件。重新下载或重新导出一次再试。'
+        + (f.size < 1048576 ? '（这个文件只有 ' + fsize(f.size) + '，很可能没下载完）' : '');
+    } else if (noPreview) {
+      why = '⚠️ 这台设备放不了这个视频的预览';
+      tip = (codec ? '视频编码是 ' + esc(codec.toUpperCase()) + '，' : '') + '但时长读出来了，可以照时间剪：在下面填开始 / 结束时间（或 ±1s 调），用「⚡ 快」剪，不重新编码，照样能剪出来。';
+    } else return;
+    box.innerHTML = '<b>' + why + '</b><br>' + tip + '<small>' + info + (fmt ? ' · ' + esc(fmt) : '') + (codec ? ' · ' + esc(codec) + (canDec === false ? '（这台设备解不了）' : '') : '') + '</small>';
+    box.className = 'diag on';
   }
   async function probeDur() {   // 浏览器读不出时长时，用 Mediabunny 读一下
     var M = await waitMB(); if (!M || DUR) return;
