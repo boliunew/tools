@@ -1,7 +1,10 @@
 plugins {
     id "com.android.application"
-    id "com.google.gms.google-services"   // 读 app/google-services.json（CI 从 secret GOOGLE_SERVICES_JSON 写出来）
+    id "com.google.gms.google-services" apply false
 }
+// 有 app/google-services.json（CI 从 secret GOOGLE_SERVICES_JSON 写出来）才开 App 推送；
+// 没有也照样打包，只是 App 收不到推送（Telegram 推送不受影响）。
+if (file("google-services.json").exists()) apply plugin: "com.google.gms.google-services"
 
 def runNo = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInteger()
 

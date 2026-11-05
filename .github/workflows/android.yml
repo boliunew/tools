@@ -28,8 +28,8 @@ jobs:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: |
           if [ -z "$GOOGLE_SERVICES_JSON" ]; then
-            echo "::warning title=安卓 App::还没加 secret GOOGLE_SERVICES_JSON（Firebase 的 google-services.json），这次不打包"
-            echo "skip=1" >> "$GITHUB_OUTPUT"; exit 0
+            echo "::warning title=安卓 App::还没加 secret GOOGLE_SERVICES_JSON（Firebase 的 google-services.json）：照样打包，但 App 推送先不开（Telegram 推送不受影响）"
+            exit 0
           fi
           printf '%s' "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
           python3 -c "import json;d=json.load(open('android/app/google-services.json'));pk=[c['client_info']['android_client_info']['package_name'] for c in d['client']];print('packages',pk);assert 'io.github.boliunew.tools' in pk, 'google-services.json 里没有 io.github.boliunew.tools'"
