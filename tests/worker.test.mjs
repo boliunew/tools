@@ -86,10 +86,13 @@ test('localApi: auth, resolve, generate once, then serve from cache', async () =
 
   assert.equal((await localApi(mk({ lat: 34.1, lon: -117.6 }, 'wrong'), env)).status, 401);
 
-  const r1 = await (await localApi(mk({ lat: 34.09812, lon: -117.64811 }), env)).json();
+  const r0 = await (await localApi(mk({ lat: 34.09812, lon: -117.64811 }), env)).json();
+  assert.equal(r0.need, 'osm'); assert.match(r0.query, /around:\d+,34\.0975,-117\.6484/); assert.equal(calls.ai, 0);
+  const r1 = await (await localApi(mk({ lat: 34.09812, lon: -117.64811, osm: [{ name: 'Pho Ha', amenity: 'restaurant', cuisine: 'vietnamese', evil: 'x'.repeat(500) }, { amenity: 'toilets' }] }), env)).json();
+  assert.ok(r1.diag.includes('osm from browser 1'), r1.diag.join(' | '));
   assert.equal(r1.place.en, 'Upland'); assert.equal(r1.place.zh, '阿普兰');
   assert.equal(r1.guide.intro.length, 3); assert.equal(r1.guide.eat.length, 2); assert.equal(r1.guide.tips[0].t, '图书馆卡');
-  assert.equal(r1.guide.sources.length, 3); assert.equal(calls.ai, 3); assert.ok(!r1.cached);
+  assert.equal(r1.guide.sources.length, 3); assert.equal(calls.ai, 3); assert.ok(!r1.cached); assert.ok(!calls.fetch.some(u => /overpass/.test(u)), 'no server-side Overpass when the browser sent places');
   assert.ok(calls.fetch.some(u => /lat=34\.10&lon=-117\.65/.test(u)), 'coordinates are rounded to ~1 km before leaving the worker');
   assert.ok(![...kv.keys()].some(k => k.startsWith('lock:')), 'lock released');
 
@@ -125,11 +128,13 @@ test('localApi: a section that comes back empty is retried, and a still-incomple
     return J({ query: { pages: [], search: [] } });
   };
   const req = new Request('https://x/local', { method: 'POST', headers: { 'X-Tools-Key': 'k' }, body: JSON.stringify({ lat: 34.1, lon: -117.65 }) });
-  const r = await (await localApi(req, env)).json();
+  assert.equal((await (await localApi(req, env)).json()).need, 'osm');
+  const req2 = new Request('https://x/local', { method: 'POST', headers: { 'X-Tools-Key': 'k' }, body: JSON.stringify({ lat: 34.1, lon: -117.65, noosm: true }) });
+  const r = await (await localApi(req2, env)).json();
   assert.equal(eatTries, 2, 'eat/fun retried once');
   assert.equal(r.guide.eat.length, 2); assert.equal(r.guide.go.length, 0); assert.equal(r.stats.full, false);
   assert.ok(r.diag.some(d => /missing eat\/fun/.test(d)), r.diag.join(' | '));
-  assert.ok(r.diag.some(d => /overpass-api\.de 429/.test(d)), r.diag.join(' | '));
-  const k = [...kv.keys()].find(k => k.startsWith('local1:'));
+  assert.ok(!r.diag.some(d => /overpass/.test(d)), 'browser already tried, server does not retry Overpass');
+  const k = [...kv.keys()].find(k => k.startsWith('local2:'));
   assert.equal(ttl[k], 6 * 3600);
 });

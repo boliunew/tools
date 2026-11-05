@@ -931,7 +931,7 @@ async function agentApi(req, env, url) {
 // 真实数据先拿：OpenStreetMap（城市名、街区、餐馆、公园、景点、车站）、维基百科（城市条目、附近名胜）；
 // 再让 Workers AI 只根据这些材料写成中文指南。同一个城市存 KV 30 天，第二次秒出。
 // 隐私：只收取整到约 1 公里的坐标，不记录。
-const LOCAL_V = 'local1';
+const LOCAL_V = 'local2';   // 改版本号 = 旧缓存全部作废（local1 是在没有地点清单时生成的，有编出来的地名）
 const LOCAL_TTL = 86400 * 30, LOCAL_DAILY = 40;
 const LOCAL_UA = 'boliunew-tools/1.0 (+https://boliunew.github.io/tools/local.html)';
 async function fetchJ(url, opt = {}, ms = 15000) {
@@ -996,9 +996,11 @@ async function wikiNear(p) {   // 城市周边 12 公里内有维基条目的地
   return ((((r || {}).query || {}).pages) || []).map(x => [x.title, x.description || '']).filter(x => x[0] && !/^List of/.test(x[0]));
 }
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
-async function osmAround(p, diag = []) {
+// Cloudflare 的出口 IP 常被 Overpass 拒（实测四个镜像全是 521 / 504 / 超时），所以地点清单主要由浏览器去查：
+// 后端先回 {need:'osm', query}，浏览器用同一条查询问 Overpass，把结果（只留有用的标签）带回来再生成。
+function osmQuery(p) {
   const R = p.pop > 500000 ? 7000 : p.pop > 100000 ? 5500 : 4000, A = `(around:${R},${p.lat},${p.lon})`, A2 = `(around:${R * 2.5},${p.lat},${p.lon})`;
-  const q = `[out:json][timeout:25];(
+  return `[out:json][timeout:25];(
 nwr${A}["amenity"~"^(restaurant|cafe|fast_food|food_court|ice_cream|bar|pub)$"]["name"];
 nwr${A}["tourism"~"^(attraction|museum|viewpoint|gallery|zoo|theme_park|aquarium)$"]["name"];
 nwr${A}["leisure"~"^(park|nature_reserve|garden|stadium|water_park|beach_resort)$"]["name"];
@@ -1009,8 +1011,20 @@ nwr${A2}["railway"~"^(station|halt)$"]["name"];
 nwr${A2}["aeroway"="aerodrome"]["name"]["iata"];
 node${A2}["place"~"^(suburb|neighbourhood|quarter|town|village)$"]["name"];
 );out tags center 1500;`;
+}
+const OSM_KEYS = ['name', 'name:zh', 'name:zh-Hans', 'amenity', 'cuisine', 'tourism', 'leisure', 'historic', 'shop', 'railway', 'network', 'operator', 'aeroway', 'iata', 'place'];
+function osmFromClient(list) {   // 浏览器带来的地点：只留认识的标签、限长度和数量
+  if (!Array.isArray(list)) return [];
+  return list.slice(0, 2500).map(t => {
+    const o = {};
+    if (t && typeof t === 'object') for (const k of OSM_KEYS) if (t[k] != null) o[k] = String(t[k]).replace(/[\u0000-\u001f]/g, ' ').slice(0, 100);
+    return o;
+  }).filter(t => t.name);
+}
+async function osmAround(p, diag = []) {
+  const q = osmQuery(p);
   for (const u of OVERPASS) {
-    const t0 = Date.now(), ac = new AbortController(), tm = setTimeout(() => ac.abort(), 20000);
+    const t0 = Date.now(), ac = new AbortController(), tm = setTimeout(() => ac.abort(), 12000);
     try {
       const r = await fetch(u, { method: 'POST', signal: ac.signal, body: 'data=' + encodeURIComponent(q), headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': LOCAL_UA, 'Accept': 'application/json' } });
       const txt = await r.text();
@@ -1061,6 +1075,7 @@ const LOCAL_SYS = `你是给华人写「城市生活指南」的编辑，读者�
 2. 数字（人口、面积、年份、距离）只用材料里有的；材料里没有就不写数字，或者用「大约」「几十年」这类说法。
 3. 可以写大家普遍知道的常识（当地气候特点、加州/美国通行的规矩、一类食物是什么），但不确定的就不写。
 4. 营业时间、票价、规定会变的，提醒「以官网为准」。
+5. 不要编街道名、广场名、商场名、摊位、市集；材料里没有的具体地点，就用「附近的华人超市」「市中心」这类泛称。
 只输出一个 JSON 对象，不要任何别的文字。
 每个卡片对象的字段：{"e":"一个表情符号","t":"标题","s":"一句话摘要（30字内）","tag":["最多3个短标签，可以用 必去"],"d":"正文，2到4句，段落之间用\\n\\n","do":["可选：去做什么，2到4条"],"eat":["可选：吃什么"],"tip":"可选：一句实用窍门","note":"可选：一句注意事项","y":"可选：年代，只在人文故事里用"}`;
 const LOCAL_PARTS = [
@@ -1069,7 +1084,7 @@ const LOCAL_PARTS = [
 "hoods":[卡片 6 到 10 个：这个城市的街区，或者附近值得去的小城镇；每个写清去做什么、吃什么],
 "stories":[卡片 5 到 8 个：这座城市是怎么来的、出过什么事、有什么名人和故事，按年代排序，带 y],
 "trivia":["8 到 12 条可以跟朋友聊的冷知识，每条一两句，只用材料里有依据的"]}`],
-  ['eat,fun', `输出：{"eat":[卡片 10 到 16 个：先写这一带最有代表性的吃的（按「菜系数量」挑当地特色和华人会喜欢的），每个卡片的 d 里点名材料里 1 到 3 家具体店；再写几家值得专门去的店。如果材料里没有餐馆清单，就写这一带常见的特色吃法、去哪类地方吃（比如华人超市的美食广场），不点名具体的店],
+  ['eat,fun', `输出：{"eat":[卡片 10 到 16 个：先写这一带最有代表性的吃的（按「菜系数量」挑当地特色和华人会喜欢的），每个卡片的 d 里点名材料里 1 到 3 家具体店；再写几家值得专门去的店。如果材料里没有餐馆清单，就写这一带常见的特色吃法、去哪类地方吃，不点名具体的店、街道或商场],
 "fun":[卡片 10 到 14 个：景点、博物馆、公园、徒步、看风景的地方和一年里的活动，名字从「附近有维基条目的地方」和 OpenStreetMap 清单里挑；tag 里标 免费 / 带娃 / 必去]}`],
   ['tips,go', `输出：{"tips":[卡片 8 到 12 个：本地人才知道的省钱、省事、避坑窍门（停车、图书馆卡、超市、天气、治安、开车、华人超市和服务）],
 "go":[卡片 4 到 6 个：怎么去（最近的机场、火车）、市内怎么走、开车和停车、穿什么（按气候）、本地说法],
@@ -1133,6 +1148,7 @@ async function localApi(req, env) {
   const key = LOCAL_V + ':' + localKey(p);
   if (!b.nocache) { const hit = await env.KV.get(key); if (hit) return json(req, { ...JSON.parse(hit), cached: true }); }
   if (await env.KV.get('lock:' + key)) return json(req, { pending: true, place: p, msg: '这个城市正在生成，稍等一下' }, 202);
+  if (b.osm === undefined && !b.noosm) return json(req, { need: 'osm', place: p, query: osmQuery(p), mirrors: OVERPASS });
   const dk = 'localgen:' + new Date().toISOString().slice(0, 10), used = +(await env.KV.get(dk)) || 0;
   if (used >= LOCAL_DAILY) return json(req, { error: 'quota', msg: '今天新生成的城市已经很多了，明天再试；已经生成过的城市照样能看' }, 429);
   await env.KV.put('lock:' + key, '1', { expirationTtl: 240 });
@@ -1140,7 +1156,9 @@ async function localApi(req, env) {
   const t0 = Date.now();
   try {
     const diag = [];
-    const [wk, near, tags] = await Promise.all([wikiCity(p), wikiNear(p), osmAround(p, diag)]);
+    const fromClient = osmFromClient(b.osm);
+    if (fromClient.length) diag.push('osm from browser ' + fromClient.length);
+    const [wk, near, tags] = await Promise.all([wikiCity(p), wikiNear(p), fromClient.length ? fromClient : (b.noosm || Array.isArray(b.osm)) ? [] : osmAround(p, diag)]);   // 浏览器查过（哪怕没查到）就不再从这边试，免得白等超时
     const osm = osmDigest(tags);
     const G = localClean(await localGen(env, p, wk, near, osm, diag));
     if (!G.intro.length || G.hoods.length + G.eat.length + G.fun.length < 6) return json(req, { error: 'ai', msg: 'AI 这次没写好，再试一次' }, 502);
