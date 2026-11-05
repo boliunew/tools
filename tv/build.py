@@ -9,7 +9,8 @@
     tv/data/index.json        国家列表、类别、总数、检查时间
     tv/data/c/<国家>.json      这个国家的台：名字、台标、类别、所有地址（能不能连、多快）
     tv/data/all.json          全球搜索用：台名 + 国家
-    tv/data/epg/<国家>.json    节目表：现在和接下来 30 小时在播什么（能对上号的台）
+    tv/data/epg/<国家>.json    节目表：现在和接下来 30 小时在播什么（能对上号的台）；
+                               不进 main，由 tv.yml 强推到 tv-data 分支
 """
 import argparse
 import gzip

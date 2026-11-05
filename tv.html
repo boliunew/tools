@@ -217,10 +217,13 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
   }
   /* ---------- 节目表：现在在播什么、接下来播什么（能对上号的台才有） ---------- */
   var EPGD = {}, EPGW = {};
+  var EPG_URL = 'https://raw.githubusercontent.com/boliunew/tools/tv-data/epg/';
   function loadEpg(cc, cb) {
     if (EPGD[cc] || EPGW[cc] || !INDEX || !(INDEX.epg || {})[cc]) { if (cb) cb(); return; }
     EPGW[cc] = 1;
-    data('epg/' + cc + '.json', function (d) { EPGD[cc] = d || {}; delete EPGW[cc]; if (cb) cb(); });
+    /* 节目表放在 tv-data 分支（每天全量更新两次，不进主分支历史） */
+    fetch(EPG_URL + cc + '.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { EPGD[cc] = d || {}; delete EPGW[cc]; if (cb) cb(); }, function () { EPGD[cc] = {}; delete EPGW[cc]; if (cb) cb(); });
   }
   function nowMin() { return Math.floor(Date.now() / 60000); }
   function progs(ch) { var m = ch && EPGD[ch.cc]; return (m && m[keyOf(ch)]) || null; }
