@@ -33,6 +33,16 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
 .pbar .t small.live{color:var(--live);font-weight:600}.pbar .t small.err{color:var(--live)}
 .pbar button{border:0;background:var(--bg);border-radius:10px;min-width:40px;height:38px;font-size:17px;padding:0 8px}
 .pbar button.on{color:#F2B01E}
+.pbar .qbtn{font-size:13px;font-weight:700;min-width:58px;font-variant-numeric:tabular-nums}
+.player{position:sticky}
+.qmenu{position:absolute;right:12px;top:100%;z-index:6;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:6px;min-width:230px;max-width:calc(100vw - 24px);max-height:60vh;overflow:auto;display:none}
+.qmenu.on{display:block}
+.qmenu h4{margin:6px 8px 4px;font-size:12px;color:var(--soft);font-weight:600}
+.qmenu button{display:flex;width:100%;align-items:center;gap:8px;border:0;background:none;border-radius:9px;padding:9px 10px;font-size:14.5px;text-align:left}
+.qmenu button:hover{background:var(--bg)}
+.qmenu button.on{color:var(--accent);font-weight:700;background:var(--accent-soft)}
+.qmenu button small{margin-left:auto;color:var(--faint);font-size:12px;font-weight:400}
+.qmenu .note{font-size:12.5px;color:var(--soft);padding:6px 10px 8px;line-height:1.5}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--live);margin-right:5px;vertical-align:1px;animation:bl 1.4s infinite}
 @keyframes bl{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}}
@@ -90,9 +100,10 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
     <div class="pbar">
       <div class="t"><b id="pName"></b><small id="pStat"></small></div>
       <button id="pPrev" aria-label="上一个台">⏮</button><button id="pNext" aria-label="下一个台">⏭</button>
-      <button id="pAlt" aria-label="换一条线路" title="这个台有好几个地址时，换下一个">🔀</button>
+      <button id="pQ" class="qbtn" aria-label="画质" title="选画质 / 换线路">⚙️ 最高</button>
       <button id="pFav" aria-label="收藏">☆</button><button id="pStop" aria-label="停止">⏹</button>
     </div>
+    <div class="qmenu" id="qMenu" role="menu"></div>
   </div>
   <div class="tabs" id="tabs"></div>
   <div class="srch"><input id="q" placeholder="搜台名，例如 news、CCTV、Telemundo" autocomplete="off"><button id="gBtn" title="在全部国家里搜">🌍 全球搜</button></div>
@@ -129,6 +140,7 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
 
   var INDEX = null, ALL = null, CACHE = {}, country = get('country', 'US'), list = [], shown = [], cat = '', query = '', limit = 60, PAGE = 60;
   var FAV = get('fav', {}), SORT = get('sort', 'rec'), ONLY = get('only', 1), GLOBAL = null;
+  var QPREF = get('q', 'max'), qSel = null, LV = [];   // 画质：默认锁最高；qSel = 这次手动选的那一档
   var cur = null, curIdx = -1, alt = 0, mode = 0, hls = null, dash = null, watchdog = null, everPlayed = false;
 
   function data(path, cb) {
@@ -349,7 +361,7 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
   function play(i) { if (i >= 0 && i < shown.length) playCh(shown[i], i); }
   function playCh(ch, i) {
     $('resume').hidden = true;
-    cur = ch; curIdx = i; alt = 0; mode = 0; everPlayed = false; rcReset(); RC.live = false;
+    cur = ch; curIdx = i; alt = 0; mode = 0; qSel = null; everPlayed = false; rcReset(); RC.live = false;
     // 先试这台设备能放的线路
     var order = ch.s.map(function (s, k) { return k; }).sort(function (a, b) { return (canPlay(ch.s[a]) ? 0 : 1) - (canPlay(ch.s[b]) ? 0 : 1) || a - b; });
     cur._order = order;
@@ -371,10 +383,18 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
   function start() {
     stopEngines();
     var s = cur.s[cur._order[alt]], url = playUrl(s), how = modesFor(s)[mode] || 'hls';
+    LV = []; ENGINE = how; qLabel();
     stat('连接中…' + (cur.s.length > 1 ? '（线路 ' + (alt + 1) + '/' + cur.s.length + '）' : ''));
     vid.removeAttribute('src');
     if (how === 'dash') {
-      var go3 = function () { dash = dashjs.MediaPlayer().create(); dash.initialize(vid, url, true); dash.on('error', function () { fail('这条线路连不上'); }); };
+      var go3 = function () {
+        dash = dashjs.MediaPlayer().create(); dash.initialize(vid, url, true);
+        dash.on('error', function () { fail('这条线路连不上'); });
+        dash.on(dashjs.MediaPlayer.events.STREAM_INITIALIZED, function () {
+          try { LV = (dash.getBitrateInfoListFor('video') || []).map(function (b) { return { i: b.qualityIndex, h: b.height, br: b.bitrate }; }); } catch (e) { LV = []; }
+          applyQuality();
+        });
+      };
       window.dashjs ? go3() : loadScript('vendor/dash.all.min.js', go3);
     } else if (how === 'hls') {
       {
@@ -382,7 +402,10 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
           if (!window.Hls || !Hls.isSupported()) { fail('这台设备放不了这种直播'); return; }
           hls = new Hls({ lowLatencyMode: false, manifestLoadingMaxRetry: 2, levelLoadingMaxRetry: 2, fragLoadingMaxRetry: 3 });
           var mediaTries = 0;
-          hls.on(Hls.Events.MANIFEST_PARSED, tryPlay);
+          hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            LV = (hls.levels || []).map(function (l, i) { return { i: i, h: l.height || 0, br: l.bitrate || 0 }; });
+            applyQuality(); tryPlay();
+          });
           hls.on(Hls.Events.ERROR, function (ev, d) {
             if (!d || !d.fatal) return;
             if (d.type === Hls.ErrorTypes.MEDIA_ERROR && mediaTries++ < 2) { try { hls.recoverMediaError(); } catch (e) { } return; }
@@ -395,6 +418,70 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
     } else { vid.src = url; tryPlay(); }
     watchdog = setTimeout(function () { if (vid.readyState < 3) fail('连接超时'); }, 15000);
   }
+  /* ---------- 画质：默认最高；可以选自动、某一档，或者换线路 ---------- */
+  var ENGINE = '';
+  window.__tv = { get hls() { return hls; }, get dash() { return dash; }, get LV() { return LV; } };   // 方便排查
+  function topIdx() { var b = -1, k = null; LV.forEach(function (l) { var v = l.h * 1e7 + l.br; if (v > b) { b = v; k = l.i; } }); return k; }
+  function lvName(l) { return l.h ? l.h + 'p' : l.br ? Math.round(l.br / 1000) + 'k' : '?'; }
+  function applyQuality() {
+    var want = qSel != null ? qSel : QPREF === 'max' ? topIdx() : -1;
+    if (want == null) want = -1;
+    try {
+      if (hls) { hls.startLevel = want; hls.currentLevel = want; }
+      if (dash) {
+        dash.updateSettings({ streaming: { abr: { autoSwitchBitrate: { video: want < 0 } } } });
+        if (want >= 0) dash.setQualityFor('video', want, true);
+      }
+    } catch (e) { }
+    qLabel();
+  }
+  function qLabel() {
+    var h = vid.videoHeight, mode2 = qSel != null ? '' : QPREF === 'max' ? '最高' : '自动';
+    $('pQ').textContent = '⚙️ ' + (h ? h + 'p' : mode2 || '画质');
+    $('pQ').title = (qSel != null ? '手动选的画质' : QPREF === 'max' ? '锁定最高画质' : '自动画质') + ' · 点这里选画质 / 换线路';
+  }
+  vid.addEventListener('resize', function () { qLabel(); if (RC.live) setLive(); });
+  function lineName(k) {
+    var s = cur.s[cur._order[k]], bits = ['线路 ' + (k + 1)];
+    if (s[1]) bits.push(s[1]);
+    if (!canPlay(s)) bits.push('⚠️ 网页放不了');
+    else if (s[3] === -1) bits.push('昨天没连上');
+    return bits.join(' · ');
+  }
+  function openQ() {
+    if (!cur) return;
+    var m = $('qMenu'), h = '', want = qSel != null ? qSel : QPREF === 'max' ? topIdx() : -1;
+    if (LV.length > 1) {
+      h += '<h4>画质</h4>' +
+        '<button data-q="max" class="' + (qSel == null && QPREF === 'max' ? 'on' : '') + '">⭐ 最高画质<small>默认</small></button>' +
+        '<button data-q="auto" class="' + (qSel == null && QPREF === 'auto' ? 'on' : '') + '">🔄 自动<small>网速差时自动降</small></button>' +
+        LV.slice().sort(function (a, b) { return b.h - a.h || b.br - a.br; }).map(function (l) {
+          return '<button data-q="' + l.i + '" class="' + (qSel === l.i ? 'on' : '') + '">' + lvName(l) + '<small>' + (l.br ? (l.br / 1e6).toFixed(1) + ' Mbps' : '') + '</small></button>';
+        }).join('');
+    } else {
+      var sw = ENGINE === 'native' && modesFor(cur.s[cur._order[alt]]).indexOf('hls') >= 0;
+      h += '<h4>画质</h4><div class="note">' + (LV.length === 1 ? '这条线路只有一档画质（' + lvName(LV[0]) + '）。' :
+        sw ? '现在用的是系统自带的播放器，画质由它自动选。' : vid.videoHeight ? '这条线路只有一档画质（' + vid.videoHeight + 'p）。' : '这条线路不能选画质。') + '</div>' +
+        (sw ? '<button data-q="engine">🎛️ 换成能手动选画质的播放器</button>' : '');
+    }
+    if (cur.s.length > 1) {
+      h += '<h4>线路（' + cur.s.length + ' 条，默认先放画质最高、能连上的）</h4>';
+      for (var k = 0; k < cur.s.length; k++) h += '<button data-line="' + k + '" class="' + (k === alt ? 'on' : '') + '">' + esc(lineName(k)) + (k === alt ? '<small>正在放</small>' : '') + '</button>';
+    }
+    m.innerHTML = h; m.className = 'qmenu on';
+  }
+  function closeQ() { $('qMenu').className = 'qmenu'; }
+  $('pQ').onclick = function (e) { e.stopPropagation(); if ($('qMenu').className.indexOf('on') >= 0) closeQ(); else openQ(); };
+  document.addEventListener('click', function (e) { if (!e.target.closest || !e.target.closest('#qMenu')) closeQ(); });
+  $('qMenu').onclick = function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var q = b.getAttribute('data-q'), ln = b.getAttribute('data-line');
+    if (q === 'max' || q === 'auto') { QPREF = q; put('q', q); qSel = null; applyQuality(); toast(q === 'max' ? '⭐ 锁定最高画质（以后都这样）' : '🔄 自动画质（以后都这样）'); }
+    else if (q === 'engine') { var ms2 = modesFor(cur.s[cur._order[alt]]); mode = ms2.indexOf('hls'); rcReset(); RC.live = false; start(); }
+    else if (q != null) { qSel = +q; applyQuality(); var l = LV.filter(function (x) { return x.i === qSel; })[0]; toast('画质：' + (l ? lvName(l) : '')); }
+    else if (ln != null) { alt = +ln; mode = 0; rcReset(); RC.live = false; toast('换到' + lineName(alt)); start(); }
+    closeQ();
+  };
   function tryPlay() { var p = vid.play(); if (p && p.catch) p.catch(function (e) { if (e && e.name === 'NotAllowedError') stat('点 ▶ 开始播放'); }); }
   /* 断线重连：放起来过的台断了，2、4、8、15、30 秒……一直重连，直到你按 ⏹；网络一回来马上连 */
   var RC = { n: 0, t: null, live: false, stall: null }, WAIT = [2, 4, 8, 15, 30];
@@ -421,10 +508,13 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
   vid.addEventListener('playing', function () {
     clearTimeout(watchdog); rcReset(); RC.live = true; everPlayed = true;
     if (cur) cur.bad = false;
-    var s = cur && cur.s[cur._order[alt]];
-    stat('<span class="dot"></span>直播中' + (s && s[1] ? ' · ' + s[1] : '') + (cur && cur.s.length > 1 ? ' · 线路 ' + (alt + 1) + '/' + cur.s.length : ''), 'live');
+    setLive(); qLabel();
     if (ms) ms.playbackState = 'playing';
   });
+  function setLive() {
+    var s = cur && cur.s[cur._order[alt]], res = vid.videoHeight ? vid.videoHeight + 'p' : s && s[1];
+    stat('<span class="dot"></span>直播中' + (res ? ' · ' + res : '') + (cur && cur.s.length > 1 ? ' · 线路 ' + (alt + 1) + '/' + cur.s.length : ''), 'live');
+  }
   vid.addEventListener('pause', function () { clearTimeout(RC.stall); if (cur && !cur.bad && !RC.t) stat('已暂停'); if (ms) ms.playbackState = 'paused'; });
   vid.addEventListener('waiting', function () {
     if (!cur || !RC.live) return;
@@ -440,7 +530,6 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
   }
   $('pPrev').onclick = function () { step(-1); };
   $('pNext').onclick = function () { step(1); };
-  $('pAlt').onclick = function () { if (!cur) return; if (cur.s.length < 2) { toast('这个台只有一条线路'); return; } alt = (alt + 1) % cur.s.length; mode = 0; rcReset(); RC.live = false; toast('换线路 ' + (alt + 1) + '/' + cur.s.length); start(); };
   $('pFav').onclick = function () { if (!cur) return; toggleFav(cur); syncFavBtn(); render(); };
   $('pStop').onclick = function () { rcReset(); RC.live = false; stopEngines(); vid.pause(); vid.removeAttribute('src'); try { vid.load(); } catch (e) { } cur = null; $('player').className = 'player'; render(); };
   function syncFavBtn() { var on = cur && isFav(cur); $('pFav').textContent = on ? '★' : '☆'; $('pFav').className = on ? 'on' : ''; }
@@ -463,7 +552,7 @@ main{max-width:760px;margin:0 auto;padding:16px 16px 0}
       renderTabs(); open();
       var when = d.checked ? new Date(d.checked) : null;
       $('hint').innerHTML = '共 ' + d.channels.toLocaleString() + ' 个台、' + d.countries.length + ' 个国家' + (when ? '，' + (when.getMonth() + 1) + '/' + when.getDate() + ' 检查过能连上的 ' + d.ok.toLocaleString() + ' 个' : '') +
-        '。都是各国公开免费播出的台（来自 <a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">iptv-org</a>，每天更新）。有些台只限本国、有些不是全天播，放不了就换一个或点 🔀 换线路。' +
+        '。都是各国公开免费播出的台（来自 <a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">iptv-org</a>，每天更新）。有些台只限本国、有些不是全天播，放不了就换一个，或者点播放栏的 ⚙️ 换线路、选画质（默认最高画质）。' +
         (HTTPS_PAGE && !APP ? '<br>网页里放不了只有 http 地址的台，工具箱 App 里可以。' : '');
       if (force) toast('台单已更新');
     });
