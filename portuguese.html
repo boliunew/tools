@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-tw="mid">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#F7F1EA">
+<title>葡萄牙语练习 · Português</title>
+<style>
+:root{
+  --bg:#F7F1EA; --paper:#FFFFFF; --ink:#1B1E23; --soft:#5F6B76; --faint:#98A2AC; --line:#DCE3EA; --chip:#E6ECF1;
+  --accent:#C0392B; --accent-ink:#FFFFFF; --accent-soft:#F8E1DB; --good:#2E7D32; --good-soft:#DDF1E1; --bad:#C8412B; --bad-soft:#F8E1DB;
+  --l1:#A9C2DA; --l3:#E39A8C; --outline:#E3E8EE; --stroke:#1B1E23; --draw:#C0392B; --hint:#F2A33A;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15181C; --paper:#1F2328; --ink:#ECEEF0; --soft:#A7B0B9; --faint:#6F7881; --line:#30363D; --chip:#282D33;
+    --accent:#FF8A73; --accent-ink:#1A0E0B; --accent-soft:#3A2420; --good:#6FD07A; --good-soft:#1D3321; --bad:#FF7F66; --bad-soft:#3A2420;
+    --l1:#3C4F63; --l3:#7A3E34; --outline:#343A42; --stroke:#ECEEF0; --draw:#FF8A73; --hint:#F2B35E;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.5}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;min-height:56px}
+.brand{font-weight:700;font-size:19px;margin-right:auto;display:flex;align-items:center;cursor:pointer}
+.brand i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:30px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-ink);margin-right:8px;font-size:13px;font-weight:800;letter-spacing:-.02em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.btn{border:1px solid var(--line);background:var(--paper);padding:8px 14px;border-radius:12px;font-size:14.5px;display:inline-flex;align-items:center;justify-content:center;min-height:42px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.good{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--soft)}
+.btn:disabled{opacity:.4}
+main{padding:14px 0 60px}
+.view{display:none}.view.on{display:block}
+.free{padding:14px 16px;margin-bottom:6px}
+.free h3{margin:0 0 8px;font-size:15px}
+.frow{display:flex}
+.frow input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:9px 12px;margin-right:8px;font-size:17px}
+.frow input:focus{outline:2px solid var(--accent);border-color:transparent}
+h2.sec{font-size:13px;letter-spacing:.06em;color:var(--faint);margin:20px 0 10px;font-weight:600;display:flex;justify-content:space-between}
+.lessons{display:flex;flex-wrap:wrap;margin:0 -5px}
+.lesson{width:calc(50% - 10px);margin:0 5px 10px;padding:12px 14px;cursor:pointer;text-align:left}
+.lesson:hover{border-color:var(--accent)}
+.l-n{font-size:12px;color:var(--faint)}
+.l-t{font-weight:700;font-size:16px}
+.l-c{font-size:15px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:2px 0 6px}
+.pbar{height:5px;background:var(--chip);border-radius:5px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--good);border-radius:5px}
+.sbar{display:flex;align-items:center;margin-bottom:10px}
+.sbar .ti{flex:1;text-align:center;font-weight:600}
+.sbar .ti small{display:block;font-weight:400;color:var(--faint);font-size:12px}
+.stage{padding:18px 12px 16px;text-align:center}
+.board{display:inline-block;touch-action:none;-webkit-user-select:none;user-select:none;max-width:100%;cursor:crosshair}
+.board svg{display:block}
+.ipa{font-size:20px;color:var(--accent);margin-top:6px;font-family:"Lucida Sans Unicode","Arial Unicode MS","Segoe UI",sans-serif}
+.zh{font-size:18px;margin-top:2px}
+.pair{font-size:15px;color:var(--soft);margin-top:4px}
+.ex{display:inline-block;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:6px 14px;margin-top:10px;cursor:pointer}
+.ex b{font-size:18px}
+.ex span{color:var(--soft);font-size:13.5px;margin-left:6px}
+.info{font-size:13px;color:var(--faint);margin-top:6px;min-height:20px}
+.fb{font-size:15px;font-weight:600;min-height:24px;margin-top:4px}
+.fb.ok{color:var(--good)} .fb.bad{color:var(--bad)}
+.tools{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.tools .btn{margin:0 4px 8px;min-width:92px}
+.nav{display:flex;align-items:center;margin-top:12px}
+.nav .btn{flex:1}
+.nav .btn.mid{flex:1.4;margin:0 8px}
+.dots{display:flex;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);margin:0 3px 4px}
+.dots i.l{background:var(--good)} .dots i.c{background:var(--accent);transform:scale(1.3)}
+.qcard{padding:22px 16px;text-align:center}
+.qp{font-size:14px;color:var(--soft)}
+.qq{font-size:30px;font-weight:700;margin:10px 0 16px;min-height:44px}
+.opts{display:flex;flex-wrap:wrap;margin:0 -5px}
+.opt{width:calc(50% - 10px);margin:0 5px 10px;min-height:70px;font-size:24px;font-weight:600;border-radius:14px}
+.opt.right{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.slots{display:flex;justify-content:center;flex-wrap:wrap;margin:6px 0 14px;min-height:52px}
+.slot{width:40px;height:48px;border-bottom:3px solid var(--line);margin:0 3px;font-size:28px;font-weight:700;line-height:46px;cursor:pointer}
+.slot.f{border-color:var(--accent)}
+.slots.ok .slot{color:var(--good);border-color:var(--good)}
+.slots.no .slot{color:var(--bad);border-color:var(--bad)}
+.tiles{display:flex;justify-content:center;flex-wrap:wrap}
+.tile{width:48px;height:52px;margin:0 4px 8px;font-size:24px;font-weight:700;border-radius:12px;padding:0}
+.tile.used{visibility:hidden}
+.score{font-size:48px;font-weight:700;color:var(--accent)}
+.hint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:14px;line-height:1.7}
+@media (max-width:420px){ .lesson{width:calc(100% - 10px)} .tools .btn{min-width:0;flex:1 1 40%} }
+.g-m{color:#2466B8}.g-f{color:#C2185B}
+@media (prefers-color-scheme: dark){.g-m{color:#7FB2FF}.g-f{color:#F48FB1}}
+.art{font-size:22px;font-weight:700;margin-right:6px}
+.syl{font-size:21px;margin-top:8px;letter-spacing:.02em}
+.syl b{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+.gtag{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:6px;background:var(--chip);margin-left:6px;vertical-align:middle}
+.note{font-size:13px;color:var(--soft);background:var(--bg);border-radius:10px;padding:6px 10px;margin:8px auto 0;max-width:420px}
+.levhome{padding:14px 16px;margin-bottom:16px;cursor:pointer;display:block;width:100%;text-align:left;background:linear-gradient(135deg,var(--accent-soft),var(--paper))}
+.levhome b{font-size:17px}.levhome div{font-size:13px;color:var(--soft);margin-top:3px}
+.lvtop{padding:14px 10px;margin-bottom:12px}
+.lvstats{display:flex;text-align:center}.lvstats div{flex:1}.lvstats b{display:block;font-size:24px;color:var(--accent);font-weight:800}.lvstats span{font-size:12px;color:var(--soft)}
+.lvsub{font-size:13px;color:var(--soft)}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;margin:0 0 12px}
+.tabs button{border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:6px 14px;margin:0 4px 6px;font-size:14px;color:var(--soft)}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.fam{padding:12px 14px;margin-bottom:10px;cursor:pointer}.fam.done{border-color:var(--good)}
+.fam .fb0{display:flex;align-items:center}.fam .mid{flex:1;margin-left:12px;min-width:0}
+.fam .cnt{font-size:12.5px;color:var(--good);font-weight:600}
+.rule{font-size:19px;white-space:nowrap}.rule span{color:var(--soft)}.rule i{font-style:normal;color:var(--faint);margin:0 6px}.rule b{color:var(--accent)}
+.rule.big{font-size:32px;text-align:center}
+.tipb{background:var(--chip);border-radius:12px;padding:10px 12px;font-size:14px;margin:10px 0;text-align:left;line-height:1.7}
+.blk{text-align:left;font-size:14px;padding:7px 0;border-bottom:1px dashed var(--line)}.blk span{display:inline-block;min-width:78px;font-weight:700;color:var(--accent)}
+.numout{font-size:30px;font-weight:700;margin:12px 0 4px;word-break:break-word}
+.pchip{display:inline-block;background:var(--chip);border-radius:8px;padding:1px 8px;margin:2px}
+.row{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px}.row .btn{margin:0 4px 8px}
+.pairs{text-align:left}.pair2{display:flex;align-items:baseline;flex-wrap:wrap;padding:8px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.pair2 .en{color:var(--soft);min-width:110px}.pair2 i{font-style:normal;color:var(--faint);margin:0 8px}.pair2 b{font-size:17px}.pair2 small{margin-left:auto;color:var(--faint);font-size:12.5px;padding-left:8px}
+.ends{display:flex;flex-wrap:wrap;justify-content:center;margin:6px 0}.ends div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:6px 10px;margin:0 4px 8px;text-align:center;min-width:88px}.ends small{display:block;font-size:11.5px;color:var(--soft)}.ends b{font-size:20px;color:var(--accent)}
+.vsel{display:flex;flex-wrap:wrap;justify-content:center;margin:8px 0}.vb{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:4px 10px;margin:0 3px 6px;font-size:14px}.vb.on{border-color:var(--accent);color:var(--accent);font-weight:700}
+.ctab{max-width:380px;margin:0 auto}.crow{display:flex;justify-content:space-between;padding:8px 6px;border-bottom:1px solid var(--line);cursor:pointer;font-size:17px}.crow span{color:var(--soft)}.crow em{font-style:normal;color:var(--accent);font-weight:800}
+.opt.small{font-size:16px!important}
+.tip{font-size:14px;color:var(--soft);margin-top:8px;max-width:440px;margin-left:auto;margin-right:auto}
+/* pw-css */
+.pwm{color:#2563C9;font-weight:700}.pwf{color:#C93A6E;font-weight:700}
+@media (prefers-color-scheme: dark){.pwm{color:#86B6FF}.pwf{color:#FF8DB7}}
+.pwhome{background:linear-gradient(135deg,rgba(242,163,58,.24),var(--paper))!important}
+.pwv{position:fixed;left:0;top:0;right:0;bottom:0;z-index:60;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;display:none;color:var(--ink)}
+.pwv.on{display:block}
+.pwv button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pwv .pwtop{position:-webkit-sticky;position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;min-height:54px;padding:0 6px}
+.pwv .pwti{flex:1;text-align:center;font-weight:700;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pwv .pwb{border:0;background:transparent;color:var(--soft);font-size:15px;padding:10px 6px;min-width:78px}
+.pwv .pwwrap{max-width:720px;margin:0 auto;padding:12px 16px 70px}
+.pwv .pwintro{background:var(--chip);border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.7;margin-bottom:10px}
+.pwv .pwrow{display:flex;flex-wrap:wrap;justify-content:center;margin:4px 0 8px}
+.pwv .pwbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:8px 13px;min-height:42px;font-size:14.5px;margin:0 4px 8px}
+.pwv .pwbtn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.pwv .pwbtn.good{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600}
+.pwv .pwbtn:disabled{opacity:.4}
+.pwv .pwbtn.pwbig{font-size:30px;padding:10px 34px;margin-top:10px}
+.pwv .pwstat{font-size:13px;color:var(--faint);text-align:center;margin:0 0 10px}.pwv .pwstat b{color:var(--good)}
+.pwv .pwcats{display:flex;flex-wrap:wrap;margin:0 -5px}
+.pwv .pwcat{position:relative;overflow:hidden;width:calc(50% - 10px);margin:0 5px 10px;background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 8px 14px;text-align:center;color:var(--ink)}
+.pwv .pwcat .ic{display:block;font-size:40px;line-height:1.25}
+.pwv .pwcat b{display:block;font-size:16px;margin-top:2px}
+.pwv .pwcat small{color:var(--soft);font-size:12.5px}
+.pwv .pwcat i{position:absolute;left:0;bottom:0;height:4px;background:var(--good)}
+.pwv .pwgrid{display:flex;flex-wrap:wrap;margin:0 -4px}
+.pwv .pwt{width:calc(33.333% - 8px);margin:0 4px 8px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 2px;text-align:center;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:120px}
+.pwv .pwt .em{font-size:46px;line-height:1.2}
+.pwv .pwt .w{font-size:15px;font-weight:700;margin-top:2px;line-height:1.25;word-break:break-word}
+.pwv .pwt .s{font-size:12px;color:var(--soft);margin-top:1px}
+.pwv .pwt.got{border-color:var(--good)}
+.pwv .pwt.rd{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pwv .pwgrid.hid .pwt .w,.pwv .pwgrid.hid .pwt .s{visibility:hidden}
+.pwv .pwgrid.hid .pwt.peek .w,.pwv .pwgrid.hid .pwt.peek .s{visibility:visible}
+.pwv .pwpy{display:block;font-size:12.5px;color:var(--soft);font-weight:500;line-height:1.3}
+.pwv .pwzh{display:block;font-size:24px;font-family:"Kaiti SC","STKaiti","KaiTi",serif;line-height:1.25}
+.pwv .pwhint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:8px}
+.pwv .pwdet{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);text-align:center;padding:18px 14px 16px;margin-bottom:12px}
+.pwv .pwdet .em{font-size:118px;line-height:1.15;cursor:pointer;display:inline-block}
+.pwv .pwdet .w{font-size:34px;font-weight:800;margin-top:4px;line-height:1.3}
+.pwv .pwdet .w .pwpy{font-size:22px;color:var(--accent)}.pwv .pwdet .w .pwzh{font-size:66px;font-weight:700}
+.pwv .pwdet .s{font-size:17px;color:var(--soft)}
+.pwv .pwnote{background:var(--chip);border-radius:10px;padding:8px 12px;margin-top:10px;font-size:14px;line-height:1.7;font-weight:400;color:var(--ink)}
+.pwv .pwnav{display:flex}.pwv .pwnav .pwbtn{flex:1}
+.pwv .pwpop{animation:pwpop .45s}
+@keyframes pwpop{0%{transform:scale(1)}40%{transform:scale(1.18) rotate(-5deg)}100%{transform:scale(1)}}
+.pwv .pwq{text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px 12px;margin-bottom:12px}
+.pwv .pwq .lab{font-size:14px;color:var(--soft)}
+.pwv .pwq .bigem{font-size:104px;line-height:1.2}
+.pwv .pwq .bigw{font-size:34px;font-weight:800;margin:8px 0 4px}
+.pwv .pwq .bigw .pwzh{font-size:60px}
+.pwv .pwblank{display:inline-block;min-width:60px;height:.9em;border-bottom:3px solid var(--accent);vertical-align:baseline}
+.pwv .pwopts{display:flex;flex-wrap:wrap;margin:0 -5px}
+.pwv .pwo{width:calc(50% - 10px);margin:0 5px 10px;background:var(--paper);border:1px solid var(--line);border-radius:16px;color:var(--ink);min-height:66px;font-size:21px;font-weight:700;padding:8px}
+.pwv .pwopts.em .pwo{min-height:112px;font-size:62px;line-height:1.1}
+.pwv .pwopts.tx .pwo .pwzh{font-size:32px}
+.pwv .pwo.gm{color:#2563C9}.pwv .pwo.gf{color:#C93A6E}
+.pwv .pwo.right{background:var(--good-soft);border-color:var(--good)}
+.pwv .pwo.wrong{background:var(--bad-soft,#F8E1DB);border-color:var(--bad,#C8412B)}
+.pwv .pwfb{text-align:center;font-size:19px;font-weight:700;min-height:30px;line-height:1.5}
+.pwv .pwfb .pwzh,.pwv .pwfb .pwpy{display:inline;font-size:inherit}
+.pwv .pwfb .pwpy{margin-right:4px;color:var(--soft)}
+.pwv .pwfb small{font-size:14px;color:var(--soft);font-weight:400}
+.pwv .pwfb.ok{color:var(--good)}.pwv .pwfb.bad{color:var(--bad,#C8412B)}
+.pwv .pwdone{text-align:center;padding:30px 10px}
+.pwv .pwdone .stars{font-size:46px;letter-spacing:6px}.pwv .pwdone .stars .dim{opacity:.2}
+.pwv .pwdone .sc{font-size:44px;font-weight:800;color:var(--accent);margin-top:6px}
+.pwv .pwdone .msg{color:var(--soft);margin:4px 0 16px}
+@media (prefers-color-scheme: dark){.pwv .pwo.gm{color:#86B6FF}.pwv .pwo.gf{color:#FF8DB7}}
+/* /pw-css */
+</style>
+<script src="sync.js?v=1"></script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="bar">
+  <div class="brand" id="homeBtn"><i style="background:radial-gradient(circle at 50% 50%,#2A4BA0 0 22%,#F6D23C 23% 46%,#1E9A4C 47%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5)">PT</i>葡萄牙语练习</div>
+</div></div></header>
+<main class="wrap">
+  <section class="view on" id="vHome"></section>
+  <section class="view" id="vStudy"></section>
+  <section class="view" id="vQuiz"></section>
+  <section class="view" id="vLev"></section>
+</main>
+<script>
+/* Manuscript letter strokes on 四线三格.  Lines at y=0,40,80,120 (baseline = 80).
+   Each letter: [width, [stroke path, ...]] — strokes in standard order and direction. */
+var LETTERS = {
+  A: [60, ['M30 0 L5 80', 'M30 0 L55 80', 'M15 52 L45 52']],
+  B: [58, ['M8 0 L8 80', 'M8 0 L30 0 C49 0 49 38 30 38 C56 38 56 80 32 80 L8 80']],
+  C: [56, ['M52 14 C45 3 37 0 30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C38 80 46 76 52 66']],
+  D: [60, ['M8 0 L8 80', 'M8 0 L24 0 C46 0 54 20 54 40 C54 60 46 80 24 80 L8 80']],
+  E: [56, ['M8 0 L8 80', 'M8 0 L50 0', 'M8 40 L44 40', 'M8 80 L50 80']],
+  F: [54, ['M8 0 L8 80', 'M8 0 L50 0', 'M8 40 L44 40']],
+  G: [60, ['M54 14 C47 3 39 0 31 0 C12 0 4 20 4 40 C4 62 14 80 31 80 C45 80 54 72 54 58 L54 44', 'M34 44 L54 44']],
+  H: [60, ['M8 0 L8 80', 'M52 0 L52 80', 'M8 40 L52 40']],
+  I: [40, ['M20 0 L20 80']],
+  J: [48, ['M40 0 L40 58 C40 72 32 80 22 80 C12 80 6 74 4 64']],
+  K: [58, ['M8 0 L8 80', 'M50 0 L8 50', 'M22 36 L52 80']],
+  L: [52, ['M8 0 L8 80 L48 80']],
+  M: [60, ['M6 80 L6 0', 'M6 0 L30 62', 'M30 62 L54 0', 'M54 0 L54 80']],
+  N: [58, ['M8 80 L8 0', 'M8 0 L50 80', 'M50 80 L50 0']],
+  O: [60, ['M30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C48 80 56 60 56 40 C56 20 48 0 30 0']],
+  P: [54, ['M8 0 L8 80', 'M8 0 L30 0 C50 0 50 42 30 42 L8 42']],
+  Q: [60, ['M30 0 C12 0 4 20 4 40 C4 60 12 80 30 80 C48 80 56 60 56 40 C56 20 48 0 30 0', 'M34 60 L54 82']],
+  R: [58, ['M8 0 L8 80', 'M8 0 L30 0 C50 0 50 42 30 42 L8 42', 'M26 42 L52 80']],
+  S: [58, ['M52 12 C46 3 38 0 30 0 C16 0 7 8 7 19 C7 32 18 36 30 40 C44 44 54 50 54 61 C54 73 43 80 29 80 C18 80 9 76 4 67']],
+  T: [60, ['M4 0 L56 0', 'M30 0 L30 80']],
+  U: [60, ['M8 0 L8 52 C8 70 18 80 30 80 C42 80 52 70 52 52 L52 0']],
+  V: [60, ['M4 0 L30 80 L56 0']],
+  W: [60, ['M2 0 L16 80 L30 18 L44 80 L58 0']],
+  X: [60, ['M6 0 L54 80', 'M54 0 L6 80']],
+  Y: [60, ['M6 0 L30 40', 'M54 0 L30 40 L30 80']],
+  Z: [60, ['M6 0 L54 0 L6 80 L54 80']],
+  a: [58, ['M50 50 C46 43 40 40 32 40 C18 40 10 50 10 60 C10 72 18 80 30 80 C40 80 47 73 50 64', 'M50 40 L50 80']],
+  b: [60, ['M10 0 L10 80 L10 62 C14 48 22 40 32 40 C46 40 52 50 52 60 C52 72 44 80 32 80 C22 80 14 74 10 66']],
+  c: [56, ['M48 48 C44 42 38 40 32 40 C18 40 10 50 10 60 C10 72 18 80 32 80 C38 80 44 78 48 72']],
+  d: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 0 L48 80']],
+  e: [58, ['M12 60 L50 60 C50 48 42 40 31 40 C18 40 10 50 10 60 C10 72 18 80 31 80 C39 80 45 77 49 71']],
+  f: [46, ['M42 4 C38 1 35 0 31 0 C24 0 20 6 20 14 L20 80', 'M8 40 L38 40']],
+  g: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 40 L48 108 C48 116 42 120 32 120 C24 120 18 117 14 112']],
+  h: [56, ['M10 0 L10 80 L10 56 C14 46 20 40 30 40 C42 40 48 48 48 58 L48 80']],
+  i: [40, ['M20 40 L20 80', 'M20 22 L20 24']],
+  j: [40, ['M28 40 L28 106 C28 116 22 120 14 120 C9 120 6 118 4 115', 'M28 22 L28 24']],
+  k: [54, ['M10 0 L10 80', 'M44 40 L10 62 L46 80']],
+  l: [32, ['M16 0 L16 80']],
+  m: [68, ['M8 40 L8 80 L8 52 C11 44 16 40 22 40 C30 40 34 46 34 54 L34 80 L34 54 C37 46 42 40 48 40 C56 40 60 46 60 54 L60 80']],
+  n: [56, ['M10 40 L10 80 L10 54 C14 45 20 40 29 40 C40 40 46 47 46 56 L46 80']],
+  o: [60, ['M30 40 C18 40 10 49 10 60 C10 71 18 80 30 80 C42 80 50 71 50 60 C50 49 42 40 30 40']],
+  p: [60, ['M10 40 L10 120 L10 56 C14 46 22 40 32 40 C44 40 52 49 52 60 C52 71 44 80 32 80 C22 80 14 74 10 66']],
+  q: [58, ['M48 50 C44 43 38 40 30 40 C17 40 10 50 10 60 C10 72 17 80 30 80 C39 80 46 74 48 66', 'M48 40 L48 120']],
+  r: [48, ['M12 40 L12 80 L12 58 C16 46 24 40 34 40 C38 40 42 41 44 43']],
+  s: [56, ['M44 46 C40 42 35 40 29 40 C19 40 13 45 13 51 C13 58 20 60 29 62 C39 64 46 67 46 73 C46 78 39 80 30 80 C22 80 15 78 11 73']],
+  t: [46, ['M20 10 L20 70 C20 77 24 80 30 80 C34 80 37 79 40 77', 'M8 40 L38 40']],
+  u: [56, ['M10 40 L10 64 C10 74 17 80 27 80 C37 80 44 74 46 64 L46 40 L46 80']],
+  v: [56, ['M8 40 L28 80 L48 40']],
+  w: [60, ['M4 40 L16 80 L30 48 L44 80 L56 40']],
+  x: [58, ['M10 40 L48 80', 'M48 40 L10 80']],
+  y: [56, ['M8 40 L28 80', 'M48 40 L20 120']],
+  z: [58, ['M10 40 L48 40 L10 80 L48 80']]
+};
+
+/* Portuguese extras: accents, tilde and cedilla are free-direction strokes (*) */
+(function () {
+  function add(ch, base, extra) { LETTERS[ch] = [LETTERS[base][0], LETTERS[base][1].concat(extra)]; }
+  add('á', 'a', ['*M36 20 L28 32']);
+  add('é', 'e', ['*M36 20 L28 32']);
+  add('ó', 'o', ['*M36 20 L28 32']);
+  add('ú', 'u', ['*M34 20 L26 32']);
+  LETTERS['í'] = [40, ['M20 40 L20 80', '*M25 20 L17 32']];
+  add('ñ', 'n', ['*M14 28 C19 21 24 21 28 26 C32 31 37 31 42 24']);
+  add('ü', 'u', ['M20 26 L20 28', 'M36 26 L36 28']);
+  add('ã', 'a', ['*M14 28 C19 21 24 21 28 26 C32 31 37 31 42 24']);
+  add('õ', 'o', ['*M14 28 C19 21 24 21 28 26 C32 31 37 31 42 24']);
+  add('â', 'a', ['*M22 32 L30 21 L38 32']);
+  add('ê', 'e', ['*M23 32 L31 21 L39 32']);
+  add('ô', 'o', ['*M22 32 L30 21 L38 32']);
+  add('à', 'a', ['*M22 20 L30 32']);
+  add('ç', 'c', ['*M32 80 L30 88 C36 88 39 92 37 96 C35 99 30 99 26 97']);
+})();
+
+/* Portuguese syllabification + stress (ES5) */
+var SYL = (function () {
+  var STRONG = 'aeoáéóâêôãõà', ACC = 'áéíóúâêô', NAS = 'ãõ', VOW = 'aeiouáéíóúâêôãõàü';
+  var INSEP = { bl: 1, br: 1, cl: 1, cr: 1, dr: 1, fl: 1, fr: 1, gl: 1, gr: 1, kl: 1, kr: 1, pl: 1, pr: 1, tr: 1, vr: 1, tl: 0 };
+  function isV(c) { return VOW.indexOf(c) >= 0; }
+  function units(w) {
+    var u = [], i = 0, c, n;
+    while (i < w.length) {
+      c = w.charAt(i); n = w.charAt(i + 1);
+      if ((c === 'c' || c === 'l' || c === 'n') && n === 'h') { u.push({ t: c + n, v: false }); i += 2; continue; }   // ch lh nh 不拆
+      if ((c === 'q' || c === 'g') && n === 'u' && isV(w.charAt(i + 2))) { u.push({ t: c + n, v: false }); i += 2; continue; }   // que gui qua água
+      if (c === 'y') { u.push({ t: c, v: !isV(n) }); i++; continue; }
+      u.push({ t: c, v: isV(c) }); i++;
+    }
+    return u;
+  }
+  function hiatus(a, b) {
+    if (NAS.indexOf(a) >= 0 && (b === 'o' || b === 'e')) return false;   // ão ãe õe 是鼻化二合元音
+    var sa = STRONG.indexOf(a) >= 0, sb = STRONG.indexOf(b) >= 0;
+    if (sa && sb) return true;
+    if (!sa && sb) return true;   // 葡语 i/u 在前（dia、rua、tio）一般分成两个音节
+    if ((b === 'í' || b === 'ú') && sa) return true;
+    return false;
+  }
+  function split(word) {
+    var w = word.toLowerCase(), u = units(w), groups = [], i, cur = null;
+    // nuclei
+    var nuc = [];
+    for (i = 0; i < u.length; i++) {
+      if (u[i].v) {
+        var ch = u[i].t === 'y' ? 'i' : u[i].t;
+        if (cur && cur.end === i - 1 && !hiatus(cur.last, ch)) { cur.end = i; cur.last = ch; }
+        else { cur = { start: i, end: i, last: ch }; nuc.push(cur); }
+      }
+    }
+    if (!nuc.length) return [word];
+    var bounds = [0];
+    for (i = 0; i < nuc.length - 1; i++) {
+      var a = nuc[i].end + 1, b = nuc[i + 1].start, k = b - a, cut;
+      if (k <= 1) cut = a;
+      else if (k === 2) cut = INSEP[u[a].t + u[a + 1].t] ? a : a + 1;
+      else if (k === 3) cut = INSEP[u[a + 1].t + u[a + 2].t] ? a + 1 : a + 2;
+      else cut = a + 2;
+      bounds.push(cut);
+    }
+    var out = [], pos = 0;
+    for (i = 0; i < bounds.length; i++) {
+      var st = bounds[i], en = i + 1 < bounds.length ? bounds[i + 1] : u.length, s = '';
+      for (var j = st; j < en; j++) s += u[j].t;
+      out.push(s);
+    }
+    // restore original casing
+    var res = [], p = 0;
+    for (i = 0; i < out.length; i++) { res.push(word.substr(p, out[i].length)); p += out[i].length; }
+    return res;
+  }
+  function stress(sy) {
+    var i, j;
+    for (i = 0; i < sy.length; i++) for (j = 0; j < sy[i].length; j++) if (ACC.indexOf(sy[i].charAt(j).toLowerCase()) >= 0) return i;
+    if (sy.length === 1) return 0;
+    for (i = 0; i < sy.length; i++) for (j = 0; j < sy[i].length; j++) if (NAS.indexOf(sy[i].charAt(j).toLowerCase()) >= 0) return i;
+    var last = sy[sy.length - 1].toLowerCase();
+    return /([aeo]s?|[ae]m|ens)$/.test(last) ? sy.length - 2 : sy.length - 1;
+  }
+  return { split: split, stress: stress };
+})();
+
+/* Brazilian Portuguese (A1): each entry "word:中文" or "word:中文:note".  Nouns carry their article (o/a/os/as). */
+var PT = {
+  letters: [
+    ["a", "a", "发\"啊\"，嘴张大；在 m、n 前面（如 cama）会带一点鼻音", "água", "水"],
+    ["b", "bê", "和英语 b 一样（不像西语那样和 v 不分）", "bola", "球"],
+    ["c", "cê", "在 a/o/u 前发 k；在 e/i 前发 s", "casa", "房子"],
+    ["ç", "cê cedilha", "带小尾巴的 c，永远发 s，只出现在 a/o/u 前面", "coração", "心"],
+    ["d", "dê", "巴西读法：在 i 和词尾轻读的 e 前读成\"基\"（dia 读\"基阿\"）；其他时候发 d", "dia", "天"],
+    ["e", "ê", "有开口 é（\"哎\"）和闭口 ê（\"诶\"）两种；巴西词尾轻读的 e 读成\"衣\"", "elefante", "大象"],
+    ["f", "efe", "和英语 f 一样", "foto", "照片"],
+    ["g", "gê", "在 a/o/u 前发 g；在 e/i 前发 ʒ，像英语 vision 里的 s", "gato", "猫"],
+    ["h", "agá", "单独不发音（hora 读\"欧拉\"）；lh 像\"利\"连读，nh 像\"尼\"连读，ch 像英语 sh", "hora", "小时"],
+    ["i", "i", "发\"衣\"", "ilha", "岛"],
+    ["j", "jota", "发 ʒ，像英语 vision 里的 s，比汉语\"日\"轻", "janela", "窗户"],
+    ["k", "cá", "发 k，只用在外来词里", "karatê", "空手道"],
+    ["l", "ele", "元音前和英语 l 一样；在音节末尾巴西人读成\"乌\"（Brasil 读\"巴西乌\"）", "lua", "月亮"],
+    ["m", "eme", "词首发 m；在词尾（sim、bem）嘴不完全闭上，只让前面的元音带鼻音", "mãe", "妈妈"],
+    ["n", "ene", "发 n；在音节末尾让前面的元音带鼻音（canto 读\"刚-度\"）", "nuvem", "云"],
+    ["o", "ó", "有开口 ó（\"奥\"）和闭口 ô（\"欧\"）两种；巴西词尾轻读的 o 读成\"乌\"", "olho", "眼睛"],
+    ["p", "pê", "发 p，不送气，比英语轻", "pão", "面包"],
+    ["q", "quê", "只出现在 qu 里：que、qui 发 k（u 不发音）；qua、quo 发 kw", "queijo", "奶酪"],
+    ["r", "erre", "巴西读法：词首和 rr 发喉音，像汉语\"喝\"的 h；两个元音之间舌尖轻弹一下", "rato", "老鼠"],
+    ["s", "esse", "发 s；夹在两个元音中间发 z（casa 读\"卡扎\"）；ss 永远发 s", "sol", "太阳"],
+    ["t", "tê", "巴西读法：在 i 和词尾轻读的 e 前读成\"期\"（leite 读\"雷期\"）；其他时候发 t，不送气", "leite", "牛奶"],
+    ["u", "u", "发\"乌\"", "uva", "葡萄"],
+    ["v", "vê", "和英语 v 一样，上牙轻碰下唇（不读成 b）", "vaca", "奶牛"],
+    ["w", "dáblio", "只用在外来词里", "kiwi", "猕猴桃"],
+    ["x", "xis", "最常读成英语 sh（xícara）；有的词读 ks、s 或 z，要一个个记", "xícara", "杯子"],
+    ["y", "ípsilon", "只用在外来词里，发\"衣\"", "yakisoba", "日式炒面"],
+    ["z", "zê", "发 z；在词尾读成 s（feliz 读\"费利斯\"）", "zero", "零"]
+  ],
+  marks: [
+    ["ã", "a com til", "鼻音\"昂\"：把\"啊\"往鼻子里送；ão 读\"昂乌\"连起来", "irmã", "姐妹"],
+    ["õ", "o com til", "鼻音\"翁\"；最常见于复数 -ões", "limões", "柠檬（复数）"],
+    ["â", "a com circunflexo", "帽子符号：闭口的 a，而且是重读", "câmera", "相机"],
+    ["ê", "e com circunflexo", "帽子符号：闭口 e，像\"诶\"，重读", "você", "你"],
+    ["ô", "o com circunflexo", "帽子符号：闭口 o，像\"欧\"，重读", "avô", "爷爷"],
+    ["á", "a com acento agudo", "尖符号：开口重读的 a", "sofá", "沙发"],
+    ["é", "e com acento agudo", "尖符号：开口 e，像\"哎\"，重读", "café", "咖啡"],
+    ["í", "i com acento agudo", "尖符号：这个 i 要重读", "país", "国家"],
+    ["ó", "o com acento agudo", "尖符号：开口 o，像\"奥\"，重读（avó 奶奶 和 avô 爷爷 就差这一个符号）", "avó", "奶奶"],
+    ["ú", "u com acento agudo", "尖符号：这个 u 要重读", "música", "音乐"],
+    ["à", "a com crase", "反尖符号：是 a + a 合在一起（相当于\"到…\"），读音不变", "à tarde", "在下午"]
+  ],
+  themes: [
+    ["问候", "olá:你好|oi:嗨（巴西最常用）|tchau:再见:巴西口语，正式的 adeus 很少用|obrigado:谢谢:男生说 obrigado，女生说 obrigada|por favor:请|bom dia:早上好|boa tarde:下午好|boa noite:晚上好；晚安|sim:是|não:不；不是|desculpa:对不起:更正式说 desculpe|de nada:不客气|com licença:劳驾；借过|tudo bem:你好吗；还好:巴西人见面常说 Tudo bem?，回答也是 Tudo bem!|tudo bom:一切都好|como vai:最近怎么样|prazer:幸会|muito prazer:很高兴认识你|até logo:回头见|até amanhã:明天见|bem-vindo:欢迎:对女生说 bem-vinda|parabéns:恭喜；生日快乐|saúde:干杯；（打喷嚏时）保重|bom apetite:请慢用|boa sorte:祝你好运|com certeza:当然；肯定|claro:当然|tá bom:好的:口语，是 está bom 的缩写|beleza:好的；没问题:巴西口语，也能当打招呼用|valeu:谢啦:巴西口语"],
+    ["数字", "um:一:阳性；阴性是 uma|dois:二:阳性；阴性是 duas|três:三|quatro:四|cinco:五|seis:六:念电话号码时巴西人常用 meia（半打）代替 seis|sete:七|oito:八|nove:九|dez:十|onze:十一|doze:十二|treze:十三|catorze:十四:也写作 quatorze|quinze:十五|dezesseis:十六:葡萄牙写 dezasseis|dezessete:十七:葡萄牙写 dezassete|dezoito:十八|dezenove:十九:葡萄牙写 dezanove|vinte:二十|trinta:三十|quarenta:四十|cinquenta:五十|sessenta:六十|setenta:七十|oitenta:八十|noventa:九十|cem:一百|mil:一千|zero:零"],
+    ["颜色", "vermelho:红色的|azul:蓝色的|amarelo:黄色的|verde:绿色的|preto:黑色的|branco:白色的|rosa:粉色的|laranja:橙色的|marrom:棕色的:葡萄牙说 castanho|cinza:灰色的:葡萄牙说 cinzento|roxo:紫色的|violeta:紫罗兰色的|dourado:金色的|prateado:银色的|bege:米色的|claro:浅的|escuro:深的|colorido:彩色的|a cor:颜色:cor 是阴性|celeste:天蓝色的|turquesa:绿松石色的|vinho:酒红色的|creme:奶油色的|lilás:淡紫色的|cor-de-rosa:粉红色的:比 rosa 更正式|verde-claro:浅绿色的|azul-marinho:藏青色的|vermelho-escuro:深红色的|transparente:透明的|o tom:色调"],
+    ["家人", "a mãe:妈妈|o pai:爸爸|o irmão:哥哥；弟弟|a irmã:姐姐；妹妹|o avô:爷爷；外公:avô（ô 闭口）和 avó（ó 开口）只差一个符号|a avó:奶奶；外婆|o filho:儿子|a filha:女儿|a família:家庭|o amigo:朋友（男）|a amiga:朋友（女）|o bebê:婴儿:葡萄牙写 bebé|o tio:叔叔；舅舅|a tia:阿姨；姑姑|o primo:堂兄弟；表兄弟|a prima:堂姐妹；表姐妹|o marido:丈夫|a esposa:妻子:口语也说 a mulher|os pais:父母:pai 的复数，指爸爸妈妈两个人|o neto:孙子；外孙|a neta:孙女；外孙女|o menino:男孩:葡萄牙常说 o rapaz|a menina:女孩|o homem:男人|a mulher:女人；妻子|o namorado:男朋友|a namorada:女朋友|os filhos:孩子们:儿女的统称，不分男女|o sogro:岳父；公公|a sogra:岳母；婆婆"],
+    ["动物", "o cachorro:狗:葡萄牙说 o cão|o gato:猫|o pássaro:鸟|o peixe:鱼|o cavalo:马|a vaca:奶牛|o porco:猪|o coelho:兔子|o pato:鸭子|o macaco:猴子|a galinha:母鸡|o galo:公鸡|o rato:老鼠|o leão:狮子|o tigre:老虎|o elefante:大象|o urso:熊|a cobra:蛇|a tartaruga:乌龟|a borboleta:蝴蝶|a abelha:蜜蜂|o sapo:青蛙；蟾蜍|a ovelha:绵羊|o lobo:狼|a raposa:狐狸|a girafa:长颈鹿|o jacaré:鳄鱼:巴西常见的是凯门鳄|a onça:美洲豹:巴西的代表动物之一|o papagaio:鹦鹉|a formiga:蚂蚁"],
+    ["身体", "a cabeça:头|o rosto:脸:口语也说 a cara|o olho:眼睛|a orelha:耳朵:耳朵外面；听觉器官是 o ouvido|o nariz:鼻子|a boca:嘴|a mão:手:以 -ão 结尾却是阴性，要特别记|o braço:胳膊|a perna:腿|o pé:脚|o cabelo:头发|o dente:牙齿|a língua:舌头；语言|o pescoço:脖子|o ombro:肩膀|o dedo:手指；脚趾|a barriga:肚子|as costas:后背:总是用复数|o joelho:膝盖|o coração:心脏|o corpo:身体|a pele:皮肤|o lábio:嘴唇|a unha:指甲|o peito:胸|a testa:额头|o queixo:下巴|a sobrancelha:眉毛|o cotovelo:胳膊肘|o tornozelo:脚踝"],
+    ["食物", "a maçã:苹果|a banana:香蕉|o ovo:鸡蛋|o leite:牛奶|o pão:面包|o arroz:米饭|a água:水|o suco:果汁:葡萄牙说 o sumo|o café:咖啡:o café da manhã 是早餐|o frango:鸡肉:活鸡叫 a galinha|a carne:肉；牛肉|o peixe:鱼|o queijo:奶酪|a salada:沙拉|a sopa:汤|o feijão:豆子:巴西人几乎天天吃米饭配豆子|o açúcar:糖|o sal:盐|o bolo:蛋糕|o sorvete:冰淇淋:葡萄牙说 o gelado|a fruta:水果|a laranja:橙子|o tomate:西红柿|a batata:土豆|o chá:茶|a cerveja:啤酒|o almoço:午饭|o jantar:晚饭|o pão de queijo:奶酪小面包:巴西米纳斯州的名小吃|a comida:食物；饭"],
+    ["学校", "o livro:书|o lápis:铅笔:单数复数同形|a mesa:桌子|a cadeira:椅子|a escola:学校|o professor:老师（男）|a professora:老师（女）|a aula:课|a sala de aula:教室|o caderno:本子|a mochila:书包|a porta:门|o aluno:学生（男）|a aluna:学生（女）|a caneta:钢笔；圆珠笔|a borracha:橡皮|a régua:尺子|o quadro:黑板|a prova:考试|a lição:课；功课|a pergunta:问题|a resposta:回答|a palavra:单词|a letra:字母|o número:数字|o papel:纸|a tesoura:剪刀|a biblioteca:图书馆|o computador:电脑|o dever de casa:家庭作业:也说 a lição de casa"],
+    ["家里", "a casa:房子；家|o quarto:卧室|a cama:床|a janela:窗户|a cozinha:厨房|o banheiro:浴室；厕所:葡萄牙说 a casa de banho|a sala:客厅|o relógio:钟；表|a televisão:电视:口语说 a TV（读作 tevê）|o sofá:沙发|a geladeira:冰箱:葡萄牙说 o frigorífico|o fogão:炉灶|o garfo:叉子|a lâmpada:灯泡|o chuveiro:淋浴|o espelho:镜子|o chão:地板|a parede:墙|o teto:天花板|a escada:楼梯|o jardim:花园|a chave:钥匙|o apartamento:公寓|a toalha:毛巾|o travesseiro:枕头|o armário:柜子|a pia:水槽；洗手池|o prato:盘子|o copo:杯子|a colher:勺子"],
+    ["衣服", "a camisa:衬衫|a calça:裤子:巴西用单数 a calça；葡萄牙说 as calças|o vestido:连衣裙|a saia:裙子|os sapatos:鞋子|o chapéu:帽子（有帽檐的）|a jaqueta:夹克:葡萄牙说 o casaco|as meias:袜子|o casaco:外套|a camiseta:T恤:葡萄牙说 a t-shirt|a roupa:衣服|o boné:棒球帽|o cinto:皮带|a gravata:领带|o tênis:运动鞋:葡萄牙说 as sapatilhas|os óculos:眼镜:永远用复数|as luvas:手套|o cachecol:围巾|a bolsa:包；手提包|o bolso:口袋|o pijama:睡衣|o biquíni:比基尼|o short:短裤:也写作 o shorts|as sandálias:凉鞋|os chinelos:人字拖:巴西的 Havaianas 就是这种|o uniforme:制服|o botão:扣子|o suéter:毛衣:也说 a blusa de frio|a capa de chuva:雨衣|o anel:戒指"],
+    ["自然天气", "o sol:太阳|a lua:月亮|a estrela:星星|o céu:天空|a árvore:树|a flor:花|a chuva:雨|a neve:雪|o vento:风|o mar:大海|a nuvem:云|o tempo:天气；时间|o rio:河|a montanha:山|a praia:海滩|a ilha:岛|o lago:湖|a floresta:森林|a pedra:石头|a terra:土地；地球|o fogo:火|o calor:热:天很热说 está calor|o frio:冷:天很冷说 está frio|a tempestade:暴风雨|o trovão:雷|o relâmpago:闪电|a areia:沙子|a onda:浪|a folha:叶子|o arco-íris:彩虹"],
+    ["时间", "o dia:天；白天:以 -a 结尾却是阳性，要特别记|a noite:夜晚|a manhã:早上|a tarde:下午|a semana:星期|o ano:年|o mês:月|hoje:今天|amanhã:明天|ontem:昨天|a hora:小时；钟点|o minuto:分钟|agora:现在|depois:以后|antes:以前|sempre:总是|nunca:从不|cedo:早|tarde:晚:和 a tarde（下午）同形|segunda-feira:星期一:周一到周五都带 -feira|terça-feira:星期二|quarta-feira:星期三|quinta-feira:星期四|sexta-feira:星期五|o sábado:星期六|o domingo:星期日|o fim de semana:周末|o aniversário:生日|o feriado:节假日|a madrugada:凌晨"],
+    ["交通地点", "o carro:汽车|o ônibus:公交车:葡萄牙说 o autocarro|o trem:火车:葡萄牙说 o comboio|o avião:飞机|a bicicleta:自行车|o barco:船|a rua:街道|a cidade:城市|o parque:公园|a loja:商店|o mercado:市场；超市|o hospital:医院|o banco:银行；长椅|o aeroporto:机场|a estação:车站|o hotel:酒店|o restaurante:餐厅|a farmácia:药店|a praça:广场|a ponte:桥|a estrada:公路|o metrô:地铁:葡萄牙说 o metro|o táxi:出租车|o caminhão:卡车:葡萄牙说 o camião|a moto:摩托车|o semáforo:红绿灯:巴西也叫 o sinal|a esquina:街角|a igreja:教堂|o shopping:购物中心|a padaria:面包店:巴西人每天去买面包、喝咖啡的地方"],
+    ["常用动词", "comer:吃|beber:喝|falar:说话|ir:去|ser:是（身份、本质）|estar:在；是（状态、位置）|ter:有|querer:想要|morar:住:问住在哪里用 morar|brincar:玩（小孩玩耍）:玩游戏、运动用 jogar|jogar:玩（游戏）；踢（球）|fazer:做|poder:能；可以|dizer:说；告诉|ver:看见|dar:给|saber:知道|gostar:喜欢:后面要加 de：gosto de café|trabalhar:工作|estudar:学习|dormir:睡觉|ler:读|escrever:写|abrir:打开|fechar:关上|comprar:买|pagar:付钱|esperar:等；希望|chegar:到达|sair:出去；离开"],
+    ["形容词", "grande:大的|pequeno:小的|bom:好的|mau:坏的:口语常说 ruim|feliz:幸福的；高兴的|triste:难过的|bonito:漂亮的|novo:新的；年轻的|velho:旧的；老的|quente:热的|frio:冷的|alto:高的|baixo:矮的；低的|comprido:长的|curto:短的|rápido:快的|lento:慢的|fácil:容易的|difícil:难的|caro:贵的|barato:便宜的|cheio:满的|vazio:空的|limpo:干净的|sujo:脏的|forte:强壮的|fraco:弱的|gostoso:好吃的:巴西口语|legal:酷；不错:巴西口语，和法律无关|cansado:累的"],
+    ["代词小词", "eu:我|você:你:巴西日常都用 você；葡萄牙和巴西南部也用 tu|ele:他|ela:她|nós:我们:口语常说 a gente|eles:他们|elas:她们|vocês:你们|isto:这个|isso:那个|e:和|com:和…一起|de:的；从|em:在…里|para:为了；去:口语常缩成 pra|mas:但是|ou:或者|muito:很；很多|pouco:一点|aqui:这里|ali:那里|quem:谁|que:什么:口语常说 o que|onde:哪里|quando:什么时候|por que:为什么:回答\"因为\"用 porque|como:怎么|quanto:多少|também:也|meu:我的"]
+  ]
+};
+PT.lev = {"cognates": [{"en": "-tion", "es": "-ção", "est": "约 1500+", "gender": "阴性 a", "tip": "英语 -tion 结尾的词，大多能变成 -ção，而且都是阴性；复数是 -ções", "pairs": [["nation", "a nação", "国家"], ["information", "a informação", "信息"], ["education", "a educação", "教育"], ["station", "a estação", "车站"], ["situation", "a situação", "情况"], ["organization", "a organização", "组织"], ["communication", "a comunicação", "交流"], ["direction", "a direção", "方向"], ["attention", "a atenção", "注意"], ["solution", "a solução", "解决办法"], ["action", "a ação", "行动"], ["population", "a população", "人口"], ["condition", "a condição", "条件"], ["tradition", "a tradição", "传统"]]}, {"en": "-sion", "es": "-são", "est": "几百个", "gender": "阴性 a", "tip": "英语 -sion 结尾的词变成 -são，也都是阴性", "pairs": [["television", "a televisão", "电视"], ["decision", "a decisão", "决定"], ["vision", "a visão", "视力；眼光"], ["version", "a versão", "版本"], ["division", "a divisão", "分开；除法"], ["confusion", "a confusão", "混乱"], ["conclusion", "a conclusão", "结论"], ["expression", "a expressão", "表达"], ["profession", "a profissão", "职业"], ["mission", "a missão", "任务"], ["tension", "a tensão", "紧张"], ["illusion", "a ilusão", "幻觉"], ["explosion", "a explosão", "爆炸"], ["impression", "a impressão", "印象"]]}, {"en": "-ty", "es": "-dade", "est": "约 1000+", "gender": "阴性 a", "tip": "英语 -ty 结尾的名词，换成 -dade，都是阴性", "pairs": [["city", "a cidade", "城市"], ["university", "a universidade", "大学"], ["quality", "a qualidade", "质量"], ["reality", "a realidade", "现实"], ["activity", "a atividade", "活动"], ["electricity", "a eletricidade", "电"], ["society", "a sociedade", "社会"], ["possibility", "a possibilidade", "可能性"], ["responsibility", "a responsabilidade", "责任"], ["capacity", "a capacidade", "能力；容量"], ["identity", "a identidade", "身份"], ["nationality", "a nacionalidade", "国籍"], ["curiosity", "a curiosidade", "好奇心"], ["velocity", "a velocidade", "速度"]]}, {"en": "-ous", "es": "-oso", "est": "几百个", "gender": "", "tip": "英语 -ous 结尾的形容词变成 -oso；形容女性时换成 -osa", "pairs": [["famous", "famoso", "有名的"], ["delicious", "delicioso", "好吃的"], ["generous", "generoso", "大方的"], ["nervous", "nervoso", "紧张的"], ["curious", "curioso", "好奇的"], ["religious", "religioso", "宗教的"], ["mysterious", "misterioso", "神秘的"], ["precious", "precioso", "珍贵的"], ["furious", "furioso", "愤怒的"], ["anxious", "ansioso", "焦虑的"], ["ambitious", "ambicioso", "有野心的"], ["numerous", "numeroso", "众多的"], ["marvelous", "maravilhoso", "了不起的"], ["luxurious", "luxuoso", "豪华的"]]}, {"en": "-ic", "es": "-ico", "est": "约 1000+", "gender": "", "tip": "英语 -ic 加个 o 就行；重音常常往前挪，所以很多要加重音符号（público、elétrico）", "pairs": [["public", "público", "公共的"], ["electric", "elétrico", "电的"], ["fantastic", "fantástico", "太棒的"], ["romantic", "romântico", "浪漫的"], ["classic", "clássico", "经典的"], ["specific", "específico", "具体的"], ["automatic", "automático", "自动的"], ["artistic", "artístico", "艺术的"], ["historic", "histórico", "历史的"], ["magic", "mágico", "神奇的"], ["plastic", "plástico", "塑料的"], ["basic", "básico", "基本的"], ["economic", "econômico", "经济的；省钱的"], ["scientific", "científico", "科学的"]]}, {"en": "-al", "es": "-al", "est": "约 1000+", "gender": "", "tip": "结尾不用变，个别词拼写稍改（special → especial）；复数把 -al 换成 -ais（normais）", "pairs": [["normal", "normal", "正常的"], ["natural", "natural", "自然的"], ["animal", "o animal", "动物"], ["hospital", "o hospital", "医院"], ["central", "central", "中心的"], ["final", "final", "最后的"], ["total", "total", "全部的"], ["original", "original", "原来的"], ["ideal", "ideal", "理想的"], ["special", "especial", "特别的"], ["national", "nacional", "国家的"], ["tropical", "tropical", "热带的"], ["digital", "digital", "数字的"], ["social", "social", "社会的"]]}, {"en": "-ble", "es": "-vel", "est": "几百个", "gender": "", "tip": "-able 变 -ável，-ible 变 -ível，都带重音符号", "pairs": [["possible", "possível", "可能的"], ["terrible", "terrível", "可怕的"], ["incredible", "incrível", "难以置信的"], ["comfortable", "confortável", "舒服的"], ["probable", "provável", "很可能的"], ["flexible", "flexível", "灵活的"], ["responsible", "responsável", "负责的"], ["impossible", "impossível", "不可能的"], ["visible", "visível", "看得见的"], ["acceptable", "aceitável", "可以接受的"], ["adorable", "adorável", "可爱的"], ["variable", "variável", "多变的"], ["invisible", "invisível", "看不见的"], ["horrible", "horrível", "糟糕的"]]}, {"en": "-ist", "es": "-ista", "est": "几百个", "gender": "阴阳同形 o / a", "tip": "表示「做某种事的人」，男女同形，只换冠词：o artista / a artista", "pairs": [["artist", "o / a artista", "艺术家"], ["dentist", "o / a dentista", "牙医"], ["tourist", "o / a turista", "游客"], ["journalist", "o / a jornalista", "记者"], ["pianist", "o / a pianista", "钢琴家"], ["optimist", "o / a otimista", "乐观的人"], ["pessimist", "o / a pessimista", "悲观的人"], ["specialist", "o / a especialista", "专家"], ["motorist", "o / a motorista", "司机"], ["cyclist", "o / a ciclista", "骑车的人"], ["florist", "o / a florista", "花店老板"], ["guitarist", "o / a guitarrista", "吉他手"], ["economist", "o / a economista", "经济学家"], ["socialist", "o / a socialista", "社会主义者"]]}, {"en": "-ism", "es": "-ismo", "est": "几百个", "gender": "阳性 o", "tip": "「…主义、…业」都是 -ismo，都是阳性", "pairs": [["tourism", "o turismo", "旅游业"], ["capitalism", "o capitalismo", "资本主义"], ["socialism", "o socialismo", "社会主义"], ["optimism", "o otimismo", "乐观"], ["racism", "o racismo", "种族歧视"], ["journalism", "o jornalismo", "新闻业"], ["realism", "o realismo", "现实主义"], ["terrorism", "o terrorismo", "恐怖主义"], ["feminism", "o feminismo", "女权主义"], ["patriotism", "o patriotismo", "爱国主义"], ["mechanism", "o mecanismo", "机制"], ["organism", "o organismo", "有机体"], ["Buddhism", "o budismo", "佛教"], ["nationalism", "o nacionalismo", "民族主义"]]}, {"en": "-ent", "es": "-ente", "est": "几百个", "gender": "", "tip": "英语 -ent 加个 e；男女同形", "pairs": [["different", "diferente", "不同的"], ["intelligent", "inteligente", "聪明的"], ["excellent", "excelente", "优秀的"], ["patient", "paciente", "有耐心的；病人"], ["present", "presente", "在场的；礼物"], ["recent", "recente", "最近的"], ["urgent", "urgente", "紧急的"], ["frequent", "frequente", "经常的"], ["independent", "independente", "独立的"], ["evident", "evidente", "明显的"], ["efficient", "eficiente", "高效的"], ["permanent", "permanente", "永久的"], ["competent", "competente", "能干的"], ["innocent", "inocente", "无辜的"]]}, {"en": "-ant", "es": "-ante", "est": "几百个", "gender": "", "tip": "英语 -ant 加个 e；男女同形", "pairs": [["important", "importante", "重要的"], ["elegant", "elegante", "优雅的"], ["constant", "constante", "不断的"], ["brilliant", "brilhante", "闪亮的；出色的"], ["distant", "distante", "遥远的"], ["abundant", "abundante", "丰富的"], ["tolerant", "tolerante", "宽容的"], ["relevant", "relevante", "相关的"], ["arrogant", "arrogante", "傲慢的"], ["ignorant", "ignorante", "无知的"], ["vibrant", "vibrante", "充满活力的"], ["restaurant", "o restaurante", "餐厅"], ["elephant", "o elefante", "大象"], ["giant", "gigante", "巨大的"]]}, {"en": "-ence", "es": "-ência", "est": "几百个", "gender": "阴性 a", "tip": "-ence 变 -ência，都是阴性（个别例外：difference 是 a diferença）", "pairs": [["experience", "a experiência", "经验；经历"], ["science", "a ciência", "科学"], ["patience", "a paciência", "耐心"], ["intelligence", "a inteligência", "智力"], ["violence", "a violência", "暴力"], ["influence", "a influência", "影响"], ["residence", "a residência", "住所"], ["conference", "a conferência", "会议"], ["existence", "a existência", "存在"], ["independence", "a independência", "独立"], ["sequence", "a sequência", "顺序"], ["consequence", "a consequência", "后果"], ["reference", "a referência", "参考"], ["competence", "a competência", "能力"]]}, {"en": "-ance", "es": "-ância", "est": "约 100+", "gender": "阴性 a", "tip": "-ance 变 -ância，都是阴性", "pairs": [["distance", "a distância", "距离"], ["importance", "a importância", "重要性"], ["tolerance", "a tolerância", "宽容"], ["ignorance", "a ignorância", "无知"], ["elegance", "a elegância", "优雅"], ["abundance", "a abundância", "丰富"], ["arrogance", "a arrogância", "傲慢"], ["relevance", "a relevância", "相关性"], ["vigilance", "a vigilância", "警惕"], ["substance", "a substância", "物质"], ["instance", "a instância", "层级；场合"], ["circumstance", "a circunstância", "情况"], ["ambulance", "a ambulância", "救护车"], ["extravagance", "a extravagância", "奢侈"]]}, {"en": "-ary", "es": "-ário", "est": "几百个", "gender": "名词为阳性 o", "tip": "-ary 变 -ário；做名词时是阳性", "pairs": [["dictionary", "o dicionário", "词典"], ["salary", "o salário", "工资"], ["vocabulary", "o vocabulário", "词汇"], ["anniversary", "o aniversário", "生日；周年"], ["diary", "o diário", "日记"], ["itinerary", "o itinerário", "行程"], ["adversary", "o adversário", "对手"], ["necessary", "necessário", "必要的"], ["contrary", "contrário", "相反的"], ["primary", "primário", "初级的"], ["extraordinary", "extraordinário", "非凡的"], ["temporary", "temporário", "临时的"], ["voluntary", "voluntário", "自愿的"], ["imaginary", "imaginário", "想象的"]]}, {"en": "-ive", "es": "-ivo", "est": "几百个", "gender": "", "tip": "-ive 变 -ivo；形容女性时换成 -iva", "pairs": [["active", "ativo", "积极的；活跃的"], ["positive", "positivo", "正面的"], ["negative", "negativo", "负面的"], ["creative", "criativo", "有创意的"], ["attractive", "atrativo", "有吸引力的"], ["effective", "efetivo", "有效的"], ["productive", "produtivo", "高产的"], ["exclusive", "exclusivo", "独家的"], ["objective", "objetivo", "客观的；目标"], ["competitive", "competitivo", "有竞争力的"], ["aggressive", "agressivo", "有攻击性的"], ["decisive", "decisivo", "决定性的"], ["excessive", "excessivo", "过度的"], ["intensive", "intensivo", "密集的"]]}, {"en": "-ly", "es": "-mente", "est": "上千个", "gender": "", "tip": "副词：形容词的阴性形式 + -mente（rápida → rapidamente，重音符号去掉）", "pairs": [["rapidly", "rapidamente", "快速地"], ["finally", "finalmente", "最后"], ["normally", "normalmente", "通常"], ["really", "realmente", "真的"], ["totally", "totalmente", "完全"], ["exactly", "exatamente", "正好"], ["probably", "provavelmente", "可能"], ["naturally", "naturalmente", "自然地"], ["perfectly", "perfeitamente", "完美地"], ["completely", "completamente", "彻底"], ["generally", "geralmente", "一般来说"], ["especially", "especialmente", "尤其"], ["frequently", "frequentemente", "经常"], ["recently", "recentemente", "最近"]]}, {"en": "-ize", "es": "-izar", "est": "约 200+", "gender": "", "tip": "-ize 变 -izar，变出来的都是规则的 -ar 动词（注意 realizar 是「实现」，不是「意识到」）", "pairs": [["organize", "organizar", "组织"], ["memorize", "memorizar", "记住"], ["realize", "realizar", "实现"], ["modernize", "modernizar", "现代化"], ["normalize", "normalizar", "使正常"], ["utilize", "utilizar", "使用"], ["finalize", "finalizar", "完成"], ["symbolize", "simbolizar", "象征"], ["mobilize", "mobilizar", "动员"], ["legalize", "legalizar", "合法化"], ["neutralize", "neutralizar", "中和"], ["characterize", "caracterizar", "描述特点"], ["authorize", "autorizar", "授权"], ["visualize", "visualizar", "想象；查看"]]}, {"en": "-ate", "es": "-ar", "est": "几百个", "gender": "", "tip": "英语 -ate 结尾的动词，很多变成 -ar 规则动词", "pairs": [["create", "criar", "创造"], ["participate", "participar", "参加"], ["communicate", "comunicar", "交流"], ["celebrate", "celebrar", "庆祝"], ["decorate", "decorar", "装饰"], ["separate", "separar", "分开"], ["operate", "operar", "操作；做手术"], ["educate", "educar", "教育"], ["concentrate", "concentrar", "集中"], ["activate", "ativar", "激活"], ["generate", "gerar", "产生"], ["eliminate", "eliminar", "消除"], ["calculate", "calcular", "计算"], ["navigate", "navegar", "航行；上网"]]}], "verbs": {"ar": {"endings": ["o", "as", "a", "amos", "am"], "verbs": [["falar", "说话"], ["trabalhar", "工作"], ["estudar", "学习"], ["morar", "住"], ["gostar", "喜欢"], ["andar", "走路"], ["cantar", "唱歌"], ["dançar", "跳舞"], ["comprar", "买"], ["cozinhar", "做饭"], ["tomar", "喝；拿；坐（车）"], ["ajudar", "帮助"], ["escutar", "听"], ["olhar", "看"], ["viajar", "旅行"], ["nadar", "游泳"], ["levar", "带走"], ["precisar", "需要"], ["esperar", "等；希望"], ["usar", "用"], ["lavar", "洗"], ["jantar", "吃晚饭"], ["chamar", "叫"], ["entrar", "进入"]]}, "er": {"endings": ["o", "es", "e", "emos", "em"], "verbs": [["comer", "吃"], ["beber", "喝"], ["aprender", "学会"], ["vender", "卖"], ["correr", "跑"], ["entender", "明白"], ["escrever", "写"], ["responder", "回答"], ["receber", "收到"], ["viver", "生活"], ["compreender", "理解"], ["depender", "取决于"], ["bater", "敲；打"], ["varrer", "扫地"]]}, "ir": {"endings": ["o", "es", "e", "imos", "em"], "verbs": [["abrir", "打开"], ["partir", "出发；分开"], ["decidir", "决定"], ["assistir", "观看"], ["discutir", "讨论"], ["permitir", "允许"], ["existir", "存在"], ["unir", "连接"], ["insistir", "坚持"], ["dividir", "分"], ["cumprir", "履行；完成"], ["resistir", "抵抗"], ["garantir", "保证"], ["admitir", "承认"], ["imprimir", "打印"]]}}, "pronouns": ["eu", "tu", "ele / ela / você", "nós", "eles / elas / vocês"]};
+</script>
+<script id="pwData">window.PW_DATA = [{"id":"animals","name":"动物","icon":"🐾","items":[["🐱","cat","猫","māo","o gato",""],["🐶","dog","狗","gǒu","o cachorro","葡萄牙说 o cão"],["🐟","fish","鱼","yú","o peixe","活鱼和做成菜的鱼都叫 peixe（西语要分 pez / pescado）"],["🐦","bird","鸟","niǎo","o pássaro",""],["🐴","horse","马","mǎ","o cavalo",""],["🐮","cow","牛","niú","a vaca",""],["🐑","sheep","羊","yáng","a ovelha",""],["🐷","pig","猪","zhū","o porco",""],["🐔","chicken","鸡","jī","a galinha",""],["🦆","duck","鸭子","yāzi","o pato",""],["🐰","rabbit","兔子","tùzi","o coelho",""],["🐭","mouse","老鼠","lǎoshǔ","o rato",""],["🐯","tiger","老虎","lǎohǔ","o tigre",""],["🦁","lion","狮子","shīzi","o leão",""],["🐘","elephant","大象","dàxiàng","o elefante",""],["🐒","monkey","猴子","hóuzi","o macaco",""],["🐻","bear","熊","xióng","o urso",""],["🐍","snake","蛇","shé","a cobra",""],["🐢","turtle","乌龟","wūguī","a tartaruga",""],["🦋","butterfly","蝴蝶","húdié","a borboleta",""],["🐝","bee","蜜蜂","mìfēng","a abelha",""],["🐸","frog","青蛙","qīngwā","o sapo","青蛙也可以叫 a rã"]]},{"id":"food","name":"吃的喝的","icon":"🍎","items":[["🍎","apple","苹果","píngguǒ","a maçã",""],["🍌","banana","香蕉","xiāngjiāo","a banana",""],["🍇","grapes","葡萄","pútao","as uvas",""],["🍉","watermelon","西瓜","xīguā","a melancia",""],["🍊","orange","橙子","chéngzi","a laranja",""],["🍓","strawberry","草莓","cǎoméi","o morango",""],["🍑","peach","桃子","táozi","o pêssego",""],["🍐","pear","梨","lí","a pera",""],["🍋","lemon","柠檬","níngméng","o limão","巴西的 limão 多指青柠"],["🍞","bread","面包","miànbāo","o pão",""],["🍚","rice","米饭","mǐfàn","o arroz",""],["🥚","egg","鸡蛋","jīdàn","o ovo",""],["🥛","milk","牛奶","niúnǎi","o leite",""],["💧","water","水","shuǐ","a água",""],["🍰","cake","蛋糕","dàngāo","o bolo",""],["🍦","ice cream","冰淇淋","bīngqílín","o sorvete","葡萄牙说 o gelado"],["🍕","pizza","比萨","bǐsà","a pizza",""],["🥕","carrot","胡萝卜","húluóbo","a cenoura",""],["🌽","corn","玉米","yùmǐ","o milho",""],["🍅","tomato","西红柿","xīhóngshì","o tomate",""]]},{"id":"body","name":"身体","icon":"👀","items":[["👁️","eye","眼睛","yǎnjing","o olho",""],["👂","ear","耳朵","ěrduo","a orelha",""],["👃","nose","鼻子","bízi","o nariz",""],["👄","mouth","嘴巴","zuǐba","a boca",""],["✋","hand","手","shǒu","a mão","⚠️ 以 -ão 结尾却是阴性，要特别记"],["🦶","foot","脚","jiǎo","o pé",""],["🦷","tooth","牙齿","yáchǐ","o dente",""],["👅","tongue","舌头","shétou","a língua",""],["💪","arm","胳膊","gēbo","o braço",""],["🦵","leg","腿","tuǐ","a perna",""],["❤️","heart","心","xīn","o coração",""],["😀","face","脸","liǎn","o rosto","口语也说 a cara"]]},{"id":"people","name":"家人和职业","icon":"👪","items":[["👨","dad","爸爸","bàba","o pai",""],["👩","mom","妈妈","māma","a mãe",""],["👦","boy","男孩","nánhái","o menino",""],["👧","girl","女孩","nǚhái","a menina",""],["👶","baby","宝宝","bǎobao","o bebê","葡萄牙写 o bebé"],["👴","grandpa","爷爷","yéye","o avô",""],["👵","grandma","奶奶","nǎinai","a avó","avô（爷爷）和 avó（奶奶）只差一个符号，读音也不同"],["🧑‍🏫","teacher","老师","lǎoshī","o professor","女老师是 a professora"],["🧑‍⚕️","doctor","医生","yīshēng","o médico","女医生是 a médica"],["👮","police officer","警察","jǐngchá","o policial","葡萄牙说 o polícia"],["🧑‍🍳","cook","厨师","chúshī","o cozinheiro","女厨师是 a cozinheira"],["🧑‍🚒","firefighter","消防员","xiāofángyuán","o bombeiro","女消防员是 a bombeira"]]},{"id":"nature","name":"大自然","icon":"🌳","items":[["☀️","sun","太阳","tàiyáng","o sol",""],["🌙","moon","月亮","yuèliang","a lua",""],["⭐","star","星星","xīngxing","a estrela",""],["☁️","cloud","云","yún","a nuvem",""],["🌧️","rain","雨","yǔ","a chuva",""],["❄️","snow","雪","xuě","a neve",""],["🌈","rainbow","彩虹","cǎihóng","o arco-íris",""],["⛰️","mountain","山","shān","a montanha",""],["🌊","sea","海","hǎi","o mar",""],["🔥","fire","火","huǒ","o fogo",""],["🌳","tree","树","shù","a árvore",""],["🌸","flower","花","huā","a flor",""],["🍃","leaf","叶子","yèzi","a folha",""],["🪨","rock","石头","shítou","a pedra",""],["🌍","Earth","地球","dìqiú","a Terra",""],["⚡","lightning","闪电","shǎndiàn","o raio",""]]},{"id":"home","name":"家里和学校","icon":"🏠","items":[["🏠","house","房子","fángzi","a casa",""],["🚪","door","门","mén","a porta",""],["🪟","window","窗户","chuānghu","a janela",""],["🛏️","bed","床","chuáng","a cama",""],["🪑","chair","椅子","yǐzi","a cadeira",""],["🛋️","sofa","沙发","shāfā","o sofá",""],["📺","TV","电视","diànshì","a televisão","口语说 a TV（读作 tevê）"],["📱","phone","手机","shǒujī","o celular","葡萄牙说 o telemóvel"],["💡","light bulb","灯泡","dēngpào","a lâmpada",""],["🕐","clock","钟","zhōng","o relógio",""],["📖","book","书","shū","o livro",""],["✏️","pencil","铅笔","qiānbǐ","o lápis",""],["🎒","backpack","书包","shūbāo","a mochila",""],["🔑","key","钥匙","yàoshi","a chave",""],["🥄","spoon","勺子","sháozi","a colher",""],["🍴","fork","叉子","chāzi","o garfo",""],["🥢","chopsticks","筷子","kuàizi","os pauzinhos","字面意思是「小棍子」"],["☂️","umbrella","伞","sǎn","o guarda-chuva","字面意思是「挡雨的」"]]},{"id":"clothes","name":"衣服","icon":"👕","items":[["👕","T-shirt","T恤","T xù","a camiseta","葡萄牙说 a t-shirt"],["👖","pants","裤子","kùzi","a calça","巴西用单数；葡萄牙说 as calças"],["👗","dress","裙子","qúnzi","o vestido",""],["🧥","coat","外套","wàitào","o casaco",""],["👞","shoe","鞋子","xiézi","o sapato","运动鞋叫 o tênis"],["🧦","socks","袜子","wàzi","as meias",""],["🧢","cap","帽子","màozi","o boné",""],["👓","glasses","眼镜","yǎnjìng","os óculos","永远用复数"],["🧤","gloves","手套","shǒutào","as luvas",""],["🧣","scarf","围巾","wéijīn","o cachecol",""],["👜","bag","包","bāo","a bolsa",""]]},{"id":"transport","name":"交通","icon":"🚗","items":[["🚗","car","汽车","qìchē","o carro",""],["🚌","bus","公交车","gōngjiāochē","o ônibus","葡萄牙说 o autocarro"],["🚲","bike","自行车","zìxíngchē","a bicicleta",""],["✈️","airplane","飞机","fēijī","o avião",""],["🚂","train","火车","huǒchē","o trem","葡萄牙说 o comboio"],["🚢","ship","轮船","lúnchuán","o navio","小船叫 o barco"],["🚕","taxi","出租车","chūzūchē","o táxi",""],["🚚","truck","卡车","kǎchē","o caminhão","葡萄牙说 o camião"],["🚒","fire truck","消防车","xiāofángchē","o caminhão de bombeiros",""],["🚑","ambulance","救护车","jiùhùchē","a ambulância",""],["🚀","rocket","火箭","huǒjiàn","o foguete",""],["🚁","helicopter","直升机","zhíshēngjī","o helicóptero",""],["🏍️","motorcycle","摩托车","mótuōchē","a moto","motocicleta 的简称，所以是阴性"],["🚦","traffic light","红绿灯","hónglǜdēng","o semáforo","巴西也叫 o sinal"]]},{"id":"colors","name":"颜色","icon":"🎨","items":[["🔴","red","红色","hóngsè","vermelho",""],["🟠","orange","橙色","chéngsè","laranja",""],["🟡","yellow","黄色","huángsè","amarelo",""],["🟢","green","绿色","lǜsè","verde",""],["🔵","blue","蓝色","lánsè","azul",""],["🟣","purple","紫色","zǐsè","roxo",""],["⚫","black","黑色","hēisè","preto",""],["⚪","white","白色","báisè","branco",""],["🟤","brown","棕色","zōngsè","marrom","葡萄牙说 castanho"]]},{"id":"picto","name":"象形字","icon":"🀄","only":"zh","items":[["☀️","sun","日","rì","-","像一个圆圆的太阳，中间一点是光"],["🌙","moon","月","yuè","-","像一弯月牙"],["⛰️","mountain","山","shān","-","像连在一起的三座山峰"],["💧","water","水","shuǐ","-","像弯弯曲曲流动的水"],["🔥","fire","火","huǒ","-","像往上窜的火苗"],["🌳","tree","木","mù","-","上面是树枝，下面是树根"],["🧍","person","人","rén","-","像一个侧着身子站着的人"],["👄","mouth","口","kǒu","-","像一张张开的嘴"],["👁️","eye","目","mù","-","像一只竖起来的眼睛"],["👂","ear","耳","ěr","-","像一只耳朵"],["✋","hand","手","shǒu","-","像张开的手和手指"],["🦶","foot","足","zú","-","上面是腿，下面是脚"],["🌧️","rain","雨","yǔ","-","上面一横是天，下面是落下的雨点"],["☁️","cloud","云","yún","-","像天上卷起来的云朵"],["🚪","door","门","mén","-","像两扇对开的门"],["🐟","fish","鱼","yú","-","上面是鱼头，中间是鱼身，下面是鱼尾"],["🐦","bird","鸟","niǎo","-","像一只站着的鸟，有嘴有尾巴"],["🐴","horse","马","mǎ","-","像一匹马，有长脸、鬃毛和腿"],["🐮","ox","牛","niú","-","像牛头和两只弯弯的角"],["🐑","sheep","羊","yáng","-","上面两点像弯弯的羊角"],["🌾","grain","禾","hé","-","像垂着沉甸甸稻穗的禾苗"],["🎋","bamboo","竹","zhú","-","像两根挂着竹叶的竹枝"],["🍚","rice","米","mǐ","-","像散落的米粒"],["🔪","knife","刀","dāo","-","像一把刀"],["🏹","bow","弓","gōng","-","像一张弯弯的弓"],["🐚","shell","贝","bèi","-","像一个张开的贝壳（古时候贝壳当钱用）"],["🐢","turtle","龟","guī","-","古字像一只乌龟，有头、壳和脚"],["🐘","elephant","象","xiàng","-","古字像一头长鼻子的大象"],["👶","child","子","zǐ","-","像襁褓里伸出两只小手的婴儿"],["👩","woman","女","nǚ","-","古字像一个跪坐着、双手交叉的女子"],["🐉","dragon","龙","lóng","-","古字像一条有角、身子弯曲的龙"]]}];
+window.PW_CFG = { lang: 'pt' };</script>
+<script id="pwMod">
+/* 看图识字 — shared picture-word module (ES5). Needs window.PW_DATA and window.PW_CFG = { lang: 'zh' | 'en' | 'es' }.
+   Host page adds PW.card() to its home and may define window.PW_WRITE(text) to open its writing practice. */
+(function () {
+  var CFG = window.PW_CFG || { lang: 'en' }, LANG = CFG.lang, ROM = LANG === 'es' || LANG === 'pt', DATA = window.PW_DATA || [], CATS = [], i;
+  for (i = 0; i < DATA.length; i++) if (!DATA[i].only || DATA[i].only === LANG) CATS.push(DATA[i]);
+  var KEY = 'pw:' + LANG + ':';
+  function get(k, d) { try { var v = window.localStorage.getItem(KEY + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { window.localStorage.setItem(KEY + k, JSON.stringify(v)); } catch (e) { } }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function $(id) { return document.getElementById(id); }
+
+  var GOT = get('got', {}), hideTxt = get('hide', false), root = null, scr = { t: 'home' }, quiz = null, readTok = 0, pushed = false, isOpen = false;
+
+  /* ---------- items: [emoji, en, zh, pinyin, es, note] ---------- */
+  function word(it) { return LANG === 'zh' ? it[2] : ROM ? it[4] : it[1]; }
+  function ikey(c, it) { return c.id + ':' + it[0] + ':' + it[2]; }
+  function art(it) { var m = (LANG === 'pt' ? /^(o|a|os|as) (.+)$/ : /^(el|la|los|las) (.+)$/).exec(it[4] || ''); return m ? { a: m[1], n: m[2], g: /^(el|los|o|os)$/.test(m[1]) ? 'm' : 'f' } : null; }
+  function wordHTML(it, noPy) {
+    if (LANG === 'zh') return (noPy ? '' : '<span class="pwpy">' + esc(it[3]) + '</span>') + '<span class="pwzh">' + esc(it[2]) + '</span>';
+    if (ROM) { var a = art(it); return a ? '<span class="pw' + a.g + '">' + a.a + '</span> ' + esc(a.n) : esc(it[4]); }
+    return esc(it[1]);
+  }
+  function writeText(it) { if (ROM) { var a = art(it); return a ? a.n : it[4]; } return word(it); }
+  function nGot(c) { var n = 0, j; for (j = 0; j < c.items.length; j++) if (GOT[ikey(c, c.items[j])]) n++; return n; }
+  function total() { var n = 0, j; for (j = 0; j < CATS.length; j++) n += CATS[j].items.length; return n; }
+
+  /* ---------- speech ---------- */
+  var voice = null;
+  var PREF = {
+    zh: [/^zh[-_](CN|Hans)/i, /^cmn/i, /^zh/i],
+    en: [/^en[-_]GB/i, /^en[-_]US/i, /^en/i],
+    pt: [/^pt[-_]BR/i, /^pt/i],
+    es: [/^es[-_]MX/i, /^es[-_](US|419)/i, /^es[-_](CO|AR|CL|PE|VE|EC|GT|CR|PA|DO|PR|UY|BO|PY|SV|HN|NI|CU)/i, /^es/i]
+  };
+  var LTAG = { zh: 'zh-CN', en: 'en-GB', es: 'es-MX', pt: 'pt-BR' }, GQ = LANG === 'pt' ? 'o 还是 a？' : 'el 还是 la？';
+  function pickVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices() || [], p = PREF[LANG], k, j;
+    voice = null;
+    for (k = 0; k < p.length && !voice; k++) for (j = 0; j < vs.length; j++) if (p[k].test(vs[j].lang) && !/HK|TW|yue/i.test(vs[j].lang)) { voice = vs[j]; break; }
+  }
+  if (window.speechSynthesis) { pickVoice(); if (window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener('voiceschanged', pickVoice); }
+  function say(t, onend) {
+    if (!window.speechSynthesis) { if (onend) setTimeout(onend, 900); return; }
+    if (!voice) pickVoice();
+    try { window.speechSynthesis.cancel(); } catch (e) { }
+    var u = new window.SpeechSynthesisUtterance(t);
+    u.lang = voice ? voice.lang : LTAG[LANG]; u.rate = LANG === 'zh' ? 0.75 : 0.8; if (voice) u.voice = voice;
+    if (onend) { var fired = false, f = function () { if (!fired) { fired = true; onend(); } }; u.onend = f; u.onerror = f; setTimeout(f, 4500); }
+    window.speechSynthesis.speak(u);
+  }
+
+  /* ---------- shell ---------- */
+  function ensure() {
+    if (root) return;
+    root = document.createElement('div');
+    root.className = 'pwv';
+    root.innerHTML = '<div class="pwtop"><button class="pwb" id="pwBack">‹ 返回</button><div class="pwti" id="pwTi"></div><button class="pwb" id="pwRead">🔊 连读</button></div><div class="pwwrap" id="pwBody"></div>';
+    document.body.appendChild(root);
+    $('pwBack').onclick = back;
+    $('pwRead').onclick = function () { if (readTok % 2) stopRead(); else readAll(); };
+    window.addEventListener('popstate', function () { if (isOpen) { pushed = false; close(); } });
+  }
+  function open() {
+    ensure(); isOpen = true; root.className = 'pwv on';
+    document.documentElement.style.overflow = 'hidden';
+    try { window.history.pushState({ pw: 1 }, ''); pushed = true; } catch (e) { pushed = false; }
+    home();
+  }
+  function close() {
+    stopRead(); quiz = null; isOpen = false;
+    if (root) root.className = 'pwv';
+    document.documentElement.style.overflow = '';
+    if (window.speechSynthesis) try { window.speechSynthesis.cancel(); } catch (e) { }
+    if (CFG.onClose) CFG.onClose();
+  }
+  function exit() { if (pushed) { pushed = false; try { window.history.back(); return; } catch (e) { } } close(); }
+  function back() {
+    stopRead();
+    if (scr.t === 'home') exit();
+    else if (scr.t === 'cat') home();
+    else if (scr.t === 'det') cat(scr.c);
+    else if (scr.t === 'quiz' || scr.t === 'done') { var ci = quiz ? quiz.ci : -1; quiz = null; if (ci >= 0) cat(ci); else home(); }
+  }
+  function setTop(t, read) { $('pwTi').innerHTML = t; $('pwRead').style.visibility = read ? 'visible' : 'hidden'; $('pwRead').textContent = '🔊 连读'; }
+  function body(h) { $('pwBody').innerHTML = h; root.scrollTop = 0; }
+
+  /* ---------- home ---------- */
+  var INTRO = {
+    zh: '先点图片<b>看大图、听读音</b>，再用小测考考自己。最后一组<b>「象形字」</b>最好玩：很多汉字本来就是照着东西画出来的！',
+    en: '点图片<b>看大图、听发音</b>，再用小测考考自己：听音找图、看图选词、读词找图。',
+    es: '名词连同冠词一起记最省事：<span class="pwm">el / los 蓝色 = 阳性</span>，<span class="pwf">la / las 粉色 = 阴性</span>。每一组都有「el 还是 la」专项小测。',
+    pt: '名词连同冠词一起记最省事：<span class=\"pwm\">o / os 蓝色 = 阳性</span>，<span class=\"pwf\">a / as 粉色 = 阴性</span>。每一组都有「o 还是 a」专项小测。'
+  };
+  function home() {
+    stopRead(); quiz = null; scr = { t: 'home' };
+    setTop('🖼️ 看图识字', false);
+    var h = '<div class="pwintro">' + INTRO[LANG] + '</div>', got = 0, j;
+    for (j = 0; j < CATS.length; j++) got += nGot(CATS[j]);
+    h += '<div class="pwrow"><button class="pwbtn pri" id="pwMix">🎯 全部混合小测</button>' + (ROM ? '<button class="pwbtn" id="pwMixG">' + GQ + '</button>' : '') + '</div>';
+    h += '<div class="pwstat">已认识 <b>' + got + '</b> / ' + total() + '</div><div class="pwcats">';
+    for (j = 0; j < CATS.length; j++) {
+      var c = CATS[j], n = nGot(c);
+      h += '<button class="pwcat" data-c="' + j + '"><span class="ic">' + c.icon + '</span><b>' + esc(c.name) + '</b><small>' + (n === c.items.length ? '✓ 全部认识 ' : '') + n + ' / ' + c.items.length + '</small><i style="width:' + Math.round(n / c.items.length * 100) + '%"></i></button>';
+    }
+    body(h + '</div>');
+    var cs = $('pwBody').querySelectorAll('.pwcat');
+    for (j = 0; j < cs.length; j++) cs[j].onclick = function () { cat(+this.getAttribute('data-c')); };
+    $('pwMix').onclick = function () { startQuiz(-1, 'mix'); };
+    if ($('pwMixG')) $('pwMixG').onclick = function () { startQuiz(-1, 'gender'); };
+  }
+
+  /* ---------- category grid ---------- */
+  function hasArt(c) { if (!ROM) return false; for (var j = 0; j < c.items.length; j++) if (art(c.items[j])) return true; return false; }
+  function cat(ci) {
+    stopRead(); quiz = null;
+    var c = CATS[ci], j; scr = { t: 'cat', c: ci };
+    setTop(c.icon + ' ' + esc(c.name), true);
+    var h = '<div class="pwrow"><button class="pwbtn pri" id="pwQ">🎯 小测</button>' + (hasArt(c) ? '<button class="pwbtn" id="pwG">' + GQ + '</button>' : '') + '<button class="pwbtn" id="pwHide">' + (hideTxt ? '👀 显示文字' : '🙈 遮住文字') + '</button></div>';
+    h += '<div class="pwgrid' + (hideTxt ? ' hid' : '') + '" id="pwGrid">';
+    for (j = 0; j < c.items.length; j++) {
+      var it = c.items[j];
+      h += '<button class="pwt' + (GOT[ikey(c, it)] ? ' got' : '') + '" data-i="' + j + '"><span class="em">' + it[0] + '</span><span class="w">' + wordHTML(it) + '</span>' + (LANG !== 'zh' ? '<span class="s">' + esc(it[2]) + '</span>' : '') + '</button>';
+    }
+    h += '</div><div class="pwhint">' + (hideTxt ? '文字遮住了：先自己说出来，再点图片核对' : '点图片看大图、听发音 · 右上角「连读」会一张张读给你听') + '</div>';
+    body(h);
+    var ts = $('pwGrid').querySelectorAll('.pwt');
+    for (j = 0; j < ts.length; j++) ts[j].onclick = function () {
+      var k = +this.getAttribute('data-i');
+      if (hideTxt && this.className.indexOf('peek') < 0) { this.className += ' peek'; say(word(c.items[k])); return; }
+      det(ci, k);
+    };
+    $('pwQ').onclick = function () { startQuiz(ci, 'mix'); };
+    if ($('pwG')) $('pwG').onclick = function () { startQuiz(ci, 'gender'); };
+    $('pwHide').onclick = function () { hideTxt = !hideTxt; put('hide', hideTxt); cat(ci); };
+  }
+  function readAll() {
+    if (scr.t !== 'cat') return;
+    if (readTok % 2) readTok++;
+    var c = CATS[scr.c], ts = $('pwGrid').querySelectorAll('.pwt'), tok = ++readTok, k = 0;
+    $('pwRead').textContent = '⏹ 停止';
+    var step = function () {
+      if (tok !== readTok) return;
+      for (var j = 0; j < ts.length; j++) ts[j].className = ts[j].className.replace(/\s*\brd\b/g, '');
+      if (k >= c.items.length) { stopRead(); return; }
+      var t = ts[k]; t.className += ' rd' + (hideTxt ? ' peek' : '');
+      if (t.scrollIntoView) try { t.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) { t.scrollIntoView(); }
+      var it = c.items[k]; k++;
+      say(word(it), function () { setTimeout(step, 650); });
+    };
+    step();
+  }
+  function stopRead() {
+    if (readTok % 2) readTok++;
+    if (!root) return;
+    var rs = root.querySelectorAll('.pwt.rd'), j;
+    for (j = 0; j < rs.length; j++) rs[j].className = rs[j].className.replace(/\s*\brd\b/g, '');
+    if ($('pwRead')) $('pwRead').textContent = '🔊 连读';
+  }
+
+  /* ---------- detail card ---------- */
+  function det(ci, i) {
+    stopRead();
+    var c = CATS[ci], it = c.items[i], k = ikey(c, it), on = GOT[k]; scr = { t: 'det', c: ci, i: i };
+    setTop(c.icon + ' ' + esc(c.name) + ' · ' + (i + 1) + '/' + c.items.length, false);
+    var h = '<div class="pwdet"><div class="em" id="pwEm">' + it[0] + '</div><div class="w">' + wordHTML(it) + '</div>';
+    if (LANG !== 'zh') h += '<div class="s">' + esc(it[2]) + '</div>';
+    if (c.id === 'picto') h += '<div class="pwnote">🖌️ ' + esc(it[5]) + '</div>';
+    else if (ROM) { var a = art(it); if (a) h += '<div class="pwnote">' + (a.g === 'm' ? '<span class="pwm">' + a.a + '</span> → 阳性' : '<span class="pwf">' + a.a + '</span> → 阴性') + (/s$/.test(a.a) ? '（复数）' : '') + (it[5] ? '<br>💡 ' + esc(it[5]) : '') + '</div>'; else if (it[5]) h += '<div class="pwnote">💡 ' + esc(it[5]) + '</div>'; }
+    h += '</div><div class="pwrow"><button class="pwbtn" id="pwSay">🔊 再听一遍</button>' + (window.PW_WRITE ? '<button class="pwbtn" id="pwWrite">✍️ 写一写</button>' : '') + '<button class="pwbtn' + (on ? ' good' : '') + '" id="pwGot">' + (on ? '✓ 认识了' : '我认识了') + '</button></div>';
+    h += '<div class="pwnav"><button class="pwbtn" id="pwPrev"' + (i ? '' : ' disabled') + '>‹ 上一个</button><button class="pwbtn" id="pwNext"' + (i < c.items.length - 1 ? '' : ' disabled') + '>下一个 ›</button></div>';
+    body(h);
+    var pop = function () { var e = $('pwEm'); if (!e || !isOpen || scr.t !== 'det' || scr.c !== ci || scr.i !== i) return; e.className = 'em'; void e.offsetWidth; e.className = 'em pwpop'; say(word(it)); };
+    $('pwEm').onclick = pop; $('pwSay').onclick = pop;
+    $('pwGot').onclick = function () { if (GOT[k]) delete GOT[k]; else GOT[k] = 1; put('got', GOT); var o = !!GOT[k]; this.className = 'pwbtn' + (o ? ' good' : ''); this.textContent = o ? '✓ 认识了' : '我认识了'; };
+    $('pwPrev').onclick = function () { if (i > 0) det(ci, i - 1); };
+    $('pwNext').onclick = function () { if (i < c.items.length - 1) det(ci, i + 1); };
+    if ($('pwWrite')) $('pwWrite').onclick = function () { var t = writeText(it); exit(); setTimeout(function () { window.PW_WRITE(t); }, 60); };
+    setTimeout(pop, 120);
+  }
+
+  /* ---------- quiz ---------- */
+  function startQuiz(ci, kind) {
+    stopRead();
+    var P = [], j, k;
+    for (j = 0; j < CATS.length; j++) if (ci < 0 || j === ci) for (k = 0; k < CATS[j].items.length; k++) P.push({ c: CATS[j], it: CATS[j].items[k] });
+    if (kind === 'gender') P = P.filter(function (x) { return art(x.it); });
+    var mix = shuffle(P.slice()), un = [], kn = [], qs = [], r0 = Math.floor(Math.random() * 3), n = Math.min(10, P.length);
+    for (j = 0; j < mix.length; j++) (GOT[ikey(mix[j].c, mix[j].it)] ? kn : un).push(mix[j]);
+    var sel = un.concat(kn);
+    for (j = 0; j < n; j++) {
+      var x = sel[j], q = { x: x };
+      if (kind === 'gender') {
+        var a = art(x.it);
+        q.type = 'gender'; q.ans = a.a; q.opts = LANG === 'pt' ? (/s$/.test(a.a) ? ['os', 'as'] : ['o', 'a']) : (a.a === 'el' || a.a === 'la' ? ['el', 'la'] : ['los', 'las']);
+      } else {
+        q.type = ['listen', 'pic', 'read'][(j + r0) % 3];
+        var cand = shuffle(x.c.items.slice()), seenE = {}, seenW = {}, opts = [x], m, y;
+        seenE[x.it[0]] = 1; seenW[word(x.it)] = 1;
+        for (m = 0; m < cand.length && opts.length < 4; m++) { y = cand[m]; if (!seenE[y[0]] && !seenW[word(y)]) { seenE[y[0]] = 1; seenW[word(y)] = 1; opts.push({ c: x.c, it: y }); } }
+        var more = shuffle(P.slice());
+        for (m = 0; m < more.length && opts.length < 4; m++) { y = more[m].it; if (!seenE[y[0]] && !seenW[word(y)]) { seenE[y[0]] = 1; seenW[word(y)] = 1; opts.push(more[m]); } }
+        q.opts = shuffle(opts);
+      }
+      qs.push(q);
+    }
+    quiz = { ci: ci, kind: kind, qs: qs, i: 0, score: 0, lock: false };
+    renderQ();
+  }
+  function renderQ() {
+    var q = quiz.qs[quiz.i], it = q.x.it, h = '', j, a;
+    scr = { t: 'quiz' };
+    setTop('第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题', false);
+    if (q.type === 'listen') {
+      h += '<div class="pwq"><div class="lab">听一听，是哪张图？</div><button class="pwbtn pri pwbig" id="pwQs">🔊</button></div><div class="pwopts em">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + q.opts[j].it[0] + '</button>';
+    } else if (q.type === 'pic') {
+      h += '<div class="pwq"><div class="lab">这是什么？</div><div class="bigem">' + it[0] + '</div></div><div class="pwopts tx">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + wordHTML(q.opts[j].it, true) + '</button>';
+    } else if (q.type === 'read') {
+      h += '<div class="pwq"><div class="lab">' + (LANG === 'zh' ? '认一认，是哪张图？' : '读一读，是哪张图？') + '</div><div class="bigw">' + wordHTML(it, true) + '</div></div><div class="pwopts em">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo" data-i="' + j + '">' + q.opts[j].it[0] + '</button>';
+    } else {
+      a = art(it);
+      h += '<div class="pwq"><div class="lab">' + q.opts[0] + ' 还是 ' + q.opts[1] + '？</div><div class="bigem">' + it[0] + '</div><div class="bigw"><span class="pwblank"></span> ' + esc(a.n) + '</div><div class="lab">' + esc(it[2]) + '</div></div><div class="pwopts tx">';
+      for (j = 0; j < q.opts.length; j++) h += '<button class="pwo g' + (q.opts[j] === 'el' || q.opts[j] === 'los' ? 'm' : 'f') + '" data-i="' + j + '">' + q.opts[j] + '</button>';
+    }
+    body(h + '</div><div class="pwfb" id="pwFb"></div>');
+    if (q.type === 'listen') { $('pwQs').onclick = function () { say(word(it)); }; setTimeout(function () { say(word(it)); }, 250); }
+    var bs = $('pwBody').querySelectorAll('.pwo');
+    for (j = 0; j < bs.length; j++) bs[j].onclick = function () {
+      if (quiz.lock) return; quiz.lock = true;
+      var pick = q.opts[+this.getAttribute('data-i')], ok = q.type === 'gender' ? pick === q.ans : pick === q.x, m;
+      for (m = 0; m < bs.length; m++) { var o = q.opts[+bs[m].getAttribute('data-i')]; if (q.type === 'gender' ? o === q.ans : o === q.x) bs[m].className += ' right'; else if (bs[m] === this) bs[m].className += ' wrong'; }
+      if (ok) { quiz.score++; GOT[ikey(q.x.c, it)] = 1; put('got', GOT); }
+      var fb = (ok ? '✓ ' : '✗ ') + it[0] + ' ' + wordHTML(it) + (LANG !== 'zh' ? ' <small>' + esc(it[2]) + '</small>' : '');
+      if (q.type === 'gender' && it[5]) fb += '<div class="pwnote">💡 ' + esc(it[5]) + '</div>';
+      $('pwFb').innerHTML = fb; $('pwFb').className = 'pwfb ' + (ok ? 'ok' : 'bad');
+      say(word(it));
+      var my = quiz;
+      setTimeout(function () { if (quiz !== my || !isOpen) return; quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else done(); }, ok ? 1300 : 2500);
+    };
+  }
+  function done() {
+    var n = quiz.qs.length, s = quiz.score, st = s === n ? 3 : s >= n * 0.7 ? 2 : s >= n * 0.4 ? 1 : 0, stars = '', j;
+    for (j = 0; j < 3; j++) stars += j < st ? '⭐' : '<span class="dim">⭐</span>';
+    scr = { t: 'done' };
+    setTop('小测完成', false);
+    body('<div class="pwdone"><div class="stars">' + stars + '</div><div class="sc">' + s + ' / ' + n + '</div><div class="msg">' + (st === 3 ? '太棒了，全对！' : st === 2 ? '很不错！再来一次争取全对' : '多看几遍图片，再来挑战！') + '</div><div class="pwrow"><button class="pwbtn pri" id="pwAgain">再来一次</button><button class="pwbtn" id="pwDone">返回</button></div></div>');
+    var ci = quiz.ci, kind = quiz.kind;
+    $('pwAgain').onclick = function () { startQuiz(ci, kind); };
+    $('pwDone').onclick = back;
+  }
+
+  /* ---------- entry card for the host page ---------- */
+  function card() {
+    var n = 0, j, d;
+    for (j = 0; j < CATS.length; j++) if (CATS[j].id !== 'picto') n += CATS[j].items.length;
+    if (LANG === 'zh') d = '☀️→日　⛰️→山　🐟→鱼 · ' + n + ' 张图 + 31 个象形字，看图认字、听音找图';
+    else if (LANG === 'es') d = '🐱 <span class="pwm">el</span> gato · 🍎 <span class="pwf">la</span> manzana · ' + n + ' 张图，看图学词，顺便记住阴阳性';
+    else if (LANG === 'pt') d = '🐱 <span class="pwm">o</span> gato · 🍎 <span class="pwf">a</span> maçã · ' + n + ' 张图，看图学词，顺便记住阴阳性';
+    else d = '🐱 cat · 🍎 apple · 🚗 car · ' + n + ' 张图，看图、听音、认单词';
+    return '<button class="card levhome pwhome" onclick="PW.open()"><b>🖼️ 看图识字</b><div>' + d + '</div></button>';
+  }
+
+  window.PW = { open: open, close: close, card: card };
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function get(k, d) { try { var v = window.localStorage.getItem('pt:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function put(k, v) { try { window.localStorage.setItem('pt:' + k, JSON.stringify(v)); } catch (e) { } }
+  function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).replace(/\s/g, '') || '#000'; }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) if (attrs.hasOwnProperty(k)) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  var raf = window.requestAnimationFrame || function (f) { return setTimeout(function () { f(Date.now()); }, 16); };
+  function now() { return window.performance && performance.now ? performance.now() : Date.now(); }
+  function flash(msg, cls) { var e = $('fb'); if (e) { e.textContent = msg; e.className = 'fb ' + (cls || ''); } }
+
+  /* ================= data ================= */
+  var LESSONS = [];
+  (function () {
+    var mk = function (r) { return { w: r[0], name: r[1], tip: r[2], ex: { w: r[3], zh: r[4] }, letter: true }; }, ls = PT.letters.map(mk);
+    LESSONS.push({ id: 'A1', kind: 'letters', title: '字母 a – n', items: ls.slice(0, 15) });
+    LESSONS.push({ id: 'A2', kind: 'letters', title: '字母 o – z', items: ls.slice(15) });
+    LESSONS.push({ id: 'A3', kind: 'letters', title: '鼻音和符号', items: PT.marks.map(mk) });
+    for (var i = 0; i < PT.themes.length; i++) {
+      var items = PT.themes[i][1].split('|').map(function (s) {
+        var p = s.split(':'), full = p[0], m = /^(o|a|os|as) (.+)$/.exec(full), it = { w: full, zh: p[1], note: p[2] || '' };
+        if (m) { it.art = m[1]; it.noun = m[2]; it.g = (m[1] === 'o' || m[1] === 'os') ? 'm' : 'f'; }
+        else it.noun = full;
+        return it;
+      });
+      LESSONS.push({ id: 'W' + (i + 1), kind: 'words', title: PT.themes[i][0], items: items });
+    }
+  })();
+  var LEARNED = get('learned', {});
+  var lesson = null, idx = 0, board = null, quiz = null;
+
+  /* ================= speech ================= */
+  var voice = null;
+  function pickVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices(), i;
+    var pref = [/^pt[-_]BR/i, /^pt/i], k;
+    voice = null;
+    for (k = 0; k < pref.length && !voice; k++)
+      for (i = 0; i < vs.length; i++) if (pref[k].test(vs[i].lang)) { voice = vs[i]; break; }
+  }
+  if (window.speechSynthesis) { pickVoice(); window.speechSynthesis.onvoiceschanged = pickVoice; }
+  function say(text, rate) {
+    if (!window.speechSynthesis) { flash('这台设备不支持朗读', 'bad'); return; }
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text); u.lang = voice ? voice.lang : 'pt-BR'; u.rate = rate || 0.8; if (voice) u.voice = voice;
+    window.speechSynthesis.speak(u);
+  }
+  function sayItem(it) { say(it.letter ? it.name : it.w, it.letter ? 0.75 : 0.8); }
+
+  /* ================= syllables ================= */
+  function sylHTML(phrase) {
+    return phrase.split(' ').map(function (w) {
+      var s = SYL.split(w), k = SYL.stress(s);
+      return s.map(function (x, i) { return i === k && s.length > 1 ? '<b>' + esc(x) + '</b>' : esc(x); }).join('·');
+    }).join('&nbsp;&nbsp;');
+  }
+
+  /* ================= writing board (四线三格) ================= */
+  function Board(host, text, maxH, maxW) {
+    var H = 144, top = -12, x = 0, layout = [], i, ch;
+    for (i = 0; i < text.length; i++) {
+      ch = text.charAt(i);
+      if (ch === ' ') { x += 26; continue; }
+      if (!LETTERS[ch]) continue;
+      layout.push({ ch: ch, x: x, w: LETTERS[ch][0] });
+      x += LETTERS[ch][0] + 4;
+    }
+    var W = Math.max(x - 4, 40) + 16, left = -8;
+    var h = maxH, w = h * W / H;
+    if (w > maxW) { w = maxW; h = w * H / W; }
+    var svg = el('svg', { viewBox: left + ' ' + top + ' ' + W + ' ' + H, width: Math.round(w), height: Math.round(h) });
+    host.innerHTML = ''; host.appendChild(svg);
+    var colors = { l1: css('--l1'), l3: css('--l3'), outline: css('--outline'), stroke: css('--stroke'), draw: css('--draw'), hint: css('--hint'), bad: css('--bad') };
+    var ys = [0, 40, 80, 120];
+    for (i = 0; i < 4; i++) el('line', { x1: left, x2: left + W, y1: ys[i], y2: ys[i], stroke: i === 2 ? colors.l3 : colors.l1, 'stroke-width': i === 2 ? 1.2 : 0.9 }, svg);
+    var gOut = el('g', {}, svg), gInk = el('g', {}, svg), gLive = el('g', {}, svg);
+    var strokes = [];
+    for (i = 0; i < layout.length; i++) {
+      var L = layout[i], sp = LETTERS[L.ch][1];
+      var go = el('g', { transform: 'translate(' + L.x + ',0)' }, gOut), gi = el('g', { transform: 'translate(' + L.x + ',0)' }, gInk);
+      for (var k = 0; k < sp.length; k++) {
+        var free = sp[k].charAt(0) === '*', dd = free ? sp[k].slice(1) : sp[k];
+        var o = el('path', { d: dd, fill: 'none', stroke: colors.outline, 'stroke-width': 10, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, go);
+        var p = el('path', { d: dd, fill: 'none', stroke: colors.stroke, 'stroke-width': 6.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, gi);
+        strokes.push({ out: o, ink: p, dx: L.x, len: p.getTotalLength(), letter: i, free: free });
+      }
+    }
+    var api = { strokes: strokes, letters: layout.length, svg: svg }, busy = 0, tracing = null;
+    function setInk(s, vis) { s.ink.style.visibility = vis ? 'visible' : 'hidden'; s.ink.style.strokeDasharray = ''; s.ink.style.strokeDashoffset = ''; s.ink.setAttribute('stroke', colors.stroke); }
+    api.showAll = function () { for (var i = 0; i < strokes.length; i++) setInk(strokes[i], true); };
+    api.hideAll = function () { for (var i = 0; i < strokes.length; i++) setInk(strokes[i], false); };
+    api.outline = function (on) { gOut.style.visibility = on ? 'visible' : 'hidden'; };
+    function drawStroke(s, color, cb) {
+      var len = s.len, dur = Math.max(260, len * 5.5), t0 = now(), my = busy;
+      s.ink.setAttribute('stroke', color);
+      s.ink.style.visibility = 'visible';
+      s.ink.style.strokeDasharray = len + ' ' + len;
+      s.ink.style.strokeDashoffset = len;
+      (function step() {
+        if (my !== busy) return;
+        var t = Math.min(1, (now() - t0) / dur);
+        s.ink.style.strokeDashoffset = len * (1 - t);
+        if (t < 1) raf(step); else { s.ink.style.strokeDasharray = ''; if (cb) cb(); }
+      })();
+    }
+    api.animate = function (done) {
+      api.cancel(); api.hideAll(); api.outline(true);
+      var i = 0, my = busy;
+      (function next() {
+        if (my !== busy) return;
+        if (i >= strokes.length) { if (done) done(); return; }
+        var s = strokes[i++];
+        drawStroke(s, colors.stroke, function () { setTimeout(next, s.len < 8 ? 120 : 200); });
+      })();
+    };
+    api.cancel = function () { busy++; tracing = null; gLive.innerHTML = ''; };
+
+    /* ---- tracing ---- */
+    function toSvg(e) {
+      var t = e.touches && e.touches.length ? e.touches[0] : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0] : e);
+      var pt = svg.createSVGPoint(); pt.x = t.clientX; pt.y = t.clientY;
+      var m = svg.getScreenCTM(); if (!m) return null;
+      pt = pt.matrixTransform(m.inverse());
+      return [pt.x, pt.y];
+    }
+    function sample(s, n) { var out = [], i; for (i = 0; i < n; i++) { var p = s.ink.getPointAtLength(s.len * i / (n - 1)); out.push([p.x + s.dx, p.y]); } return out; }
+    function resample(pts, n) {
+      var d = [0], i, total;
+      for (i = 1; i < pts.length; i++) d.push(d[i - 1] + dist(pts[i], pts[i - 1]));
+      total = d[d.length - 1];
+      if (total === 0) { var o = []; for (i = 0; i < n; i++) o.push(pts[0]); return { pts: o, len: 0 }; }
+      var out = [], j = 0;
+      for (i = 0; i < n; i++) {
+        var target = total * i / (n - 1);
+        while (j < d.length - 2 && d[j + 1] < target) j++;
+        var seg = d[j + 1] - d[j] || 1, f = (target - d[j]) / seg;
+        out.push([pts[j][0] + (pts[j + 1][0] - pts[j][0]) * f, pts[j][1] + (pts[j + 1][1] - pts[j][1]) * f]);
+      }
+      return { pts: out, len: total };
+    }
+    function dist(a, b) { var dx = a[0] - b[0], dy = a[1] - b[1]; return Math.sqrt(dx * dx + dy * dy); }
+    function match(user, s) {
+      if (s.len < 8 || s.free) {
+        var cx = 0, cy = 0; for (var i = 0; i < user.length; i++) { cx += user[i][0]; cy += user[i][1]; }
+        var c = [cx / user.length, cy / user.length], e0 = sample(s, 2)[0];
+        if (s.free) { var mid = s.ink.getPointAtLength(s.len / 2); e0 = [mid.x + s.dx, mid.y]; }
+        return dist(c, e0) < (s.free ? 14 : 16);
+      }
+      if (user.length < 2) return false;
+      var N = 32, u = resample(user, N), ex = sample(s, N), sum = 0;
+      if (u.len < s.len * 0.4) return false;
+      for (var k = 0; k < N; k++) sum += dist(u.pts[k], ex[k]);
+      return dist(u.pts[0], ex[0]) < 22 && dist(u.pts[N - 1], ex[N - 1]) < 24 && sum / N < 14;
+    }
+    var cur = null, live = null;
+    function down(e) {
+      if (!tracing) return;
+      e.preventDefault();
+      var p = toSvg(e); if (!p) return;
+      cur = [p];
+      live = el('polyline', { points: p.join(','), fill: 'none', stroke: colors.draw, 'stroke-width': 6.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', opacity: 0.85 }, gLive);
+    }
+    function move(e) {
+      if (!tracing || !cur) return;
+      e.preventDefault();
+      var p = toSvg(e); if (!p) return;
+      cur.push(p);
+      live.setAttribute('points', cur.map(function (q) { return q[0].toFixed(1) + ',' + q[1].toFixed(1); }).join(' '));
+    }
+    function up(e) {
+      if (!tracing || !cur) return;
+      e.preventDefault();
+      var T = tracing, s = strokes[T.k], pts = cur, ln = live;
+      cur = null; live = null;
+      if (match(pts, s)) {
+        gLive.removeChild(ln);
+        setInk(s, true);
+        T.k++; T.miss = 0;
+        if (T.cb.correct) T.cb.correct(T.k, strokes.length);
+        if (T.k >= strokes.length) { tracing = null; if (T.cb.complete) T.cb.complete(T.mistakes); }
+      } else {
+        T.mistakes++; T.miss++;
+        ln.setAttribute('stroke', colors.bad);
+        setTimeout(function () { if (ln.parentNode) ln.parentNode.removeChild(ln); }, 350);
+        if (T.cb.mistake) T.cb.mistake();
+        if (T.miss >= 2) {
+          var my = busy;
+          drawStroke(s, colors.hint, function () { setTimeout(function () { if (my === busy && tracing === T) setInk(s, false); }, 500); });
+        }
+      }
+    }
+    svg.addEventListener('touchstart', down, false); svg.addEventListener('touchmove', move, false); svg.addEventListener('touchend', up, false);
+    svg.addEventListener('mousedown', down, false); window.addEventListener('mousemove', move, false); window.addEventListener('mouseup', up, false);
+    api.destroy = function () { window.removeEventListener('mousemove', move, false); window.removeEventListener('mouseup', up, false); api.cancel(); };
+    api.trace = function (outline, cb) { api.cancel(); api.hideAll(); api.outline(outline); tracing = { k: 0, miss: 0, mistakes: 0, cb: cb || {} }; };
+    api.showAll();
+    return api;
+  }
+
+
+  /* ================= views ================= */
+  function show(v) { var vs = ['vHome', 'vStudy', 'vQuiz', 'vLev']; for (var i = 0; i < vs.length; i++) $(vs[i]).className = 'view' + (vs[i] === v ? ' on' : ''); window.scrollTo(0, 0); }
+  function key(it) { return it.w; }
+  $('homeBtn').onclick = function () { showHome(); };
+  function showHome() {
+    if (board) { board.destroy(); board = null; }
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    var h = '<div class="card free"><h3>自己输入要练写的葡语单词</h3><div class="frow"><input id="freeIn" placeholder="例如：eu gosto de café" autocomplete="off" autocapitalize="off"><button class="btn primary" id="freeGo">开始</button></div></div>';
+    h += PW.card();
+    h += '<button class="card levhome" id="levGo"><b>🪄 以少胜多</b><div>40 个词读出 0–999,999 的所有数 · 一条规则把几百个英语词变成葡语 · 一套结尾变几百个动词</div></button>';
+    var a = '', b = '', na = 0, ta = 0, nb = 0, tb = 0, i;
+    for (i = 0; i < LESSONS.length; i++) {
+      var l = LESSONS[i], n = 0, prev = '';
+      for (var j = 0; j < l.items.length; j++) { if (LEARNED[key(l.items[j])]) n++; prev += (l.kind === 'letters' ? l.items[j].w : l.items[j].noun + ' '); }
+      var c = '<button class="card lesson" data-i="' + i + '"><div class="l-n">' + (l.kind === 'letters' ? '字母与发音' : '第 ' + (i - 2) + ' 组') + ' · ' + n + '/' + l.items.length + '</div><div class="l-t">' + esc(l.title) + '</div><div class="l-c">' + esc(prev) + '</div><div class="pbar"><i style="width:' + Math.round(n / l.items.length * 100) + '%"></i></div></button>';
+      if (l.kind === 'letters') { a += c; na += n; ta += l.items.length; } else { b += c; nb += n; tb += l.items.length; }
+    }
+    h += '<h2 class="sec"><span>字母与发音</span><span>' + na + ' / ' + ta + '</span></h2><div class="lessons">' + a + '</div>';
+    h += '<h2 class="sec"><span>主题单词</span><span>' + nb + ' / ' + tb + '</span></h2><div class="lessons">' + b + '</div>';
+    h += '<div class="hint">葡语（巴西）大体看字就能读，几个要特别记：词尾轻读的 e 读「衣」、o 读「乌」；de/di 读「基」，te/ti 读「期」；词首 r 和 rr 读喉音 h；两个元音中间的 s 读 z；ão、ãe、õe 是鼻音。<br>重音：有符号（á é í ó ú â ê ô）读那个音节；有 ã、õ 的音节通常重读；以 a、e、o（加 s）、am、em 结尾读倒数第二个音节；其他读最后一个音节。<br><span class="g-m">o / os = 阳性</span>　<span class="g-f">a / as = 阴性</span></div>';
+    $('vHome').innerHTML = h;
+    show('vHome');
+    var bs = $('vHome').querySelectorAll('.lesson');
+    for (i = 0; i < bs.length; i++) bs[i].onclick = function () { var k = +this.getAttribute('data-i'); openLesson(LESSONS[k], k); };
+    $('freeGo').onclick = startFree;
+    $('levGo').onclick = function () { showLev(); };
+    $('freeIn').onkeydown = function (e) { if (e.keyCode === 13) startFree(); };
+  }
+  window.PW_WRITE = function (t) { showHome(); $('freeIn').value = t; startFree(); };
+  function startFree() {
+    var t = ($('freeIn').value || '').toLowerCase().replace(/[^a-zçáéíóúâêôãõàü ]/g, '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
+    if (!t) { $('freeIn').focus(); return; }
+    var words = t.length <= 14 ? [t] : t.split(' '), items = [], seen = {};
+    for (var i = 0; i < words.length; i++) if (words[i] && !seen[words[i]]) { seen[words[i]] = 1; items.push({ w: words[i], noun: words[i], zh: '', free: true }); }
+    openLesson({ id: 'free', kind: 'words', title: t.length > 16 ? t.slice(0, 16) + '…' : t, items: items }, -1);
+  }
+  function openLesson(l, li) { lesson = l; lesson.li = li; idx = 0; renderStudy(); show('vStudy'); }
+  function renderStudy() {
+    if (board) { board.destroy(); board = null; }
+    var it = lesson.items[idx], i;
+    var h = '<div class="sbar"><button class="btn ghost" id="backBtn">‹ 返回</button><div class="ti">' + esc(lesson.title) + '<small>' + (idx + 1) + ' / ' + lesson.items.length + '</small></div><button class="btn ghost" id="quizBtn"' + (lesson.items.length < 4 ? ' disabled' : '') + '>🎯 测验</button></div>';
+    h += '<div class="card stage">';
+    if (it.letter) {
+      h += '<div class="board" id="board"></div><div class="pair" style="font-size:18px">' + it.w.toUpperCase() + ' ' + it.w + ' · 读作 <b style="color:var(--accent)">' + esc(it.name) + '</b></div><div class="tip">' + esc(it.tip) + '</div>';
+      h += '<div class="ex" id="exBtn"><b>' + esc(it.ex.w) + '</b><span>' + sylHTML(it.ex.w) + ' · ' + esc(it.ex.zh) + '</span></div>';
+    } else {
+      if (it.art) h += '<div style="margin-bottom:4px"><span class="art g-' + it.g + '">' + esc(it.art) + '</span><span class="gtag g-' + it.g + '">' + (it.g === 'm' ? '阳性' : '阴性') + (/s$/.test(it.art) ? ' · 复数' : '') + '</span></div>';
+      h += '<div class="board" id="board"></div><div class="syl">' + sylHTML(it.noun) + '</div>';
+      if (it.zh) h += '<div class="zh">' + esc(it.zh) + '</div>';
+      if (it.note) h += '<div class="note">💡 ' + esc(it.note) + '</div>';
+    }
+    h += '<div class="info" id="info"></div><div class="fb" id="fb"></div>';
+    h += '<div class="tools"><button class="btn" id="bSay">🔊 读音</button><button class="btn" id="bAnim">▶ 笔顺</button><button class="btn" id="bTrace">✍️ 描红</button><button class="btn" id="bRecall">📝 默写</button></div>';
+    var k = LEARNED[key(it)];
+    h += '<div class="nav"><button class="btn" id="bPrev"' + (idx === 0 ? ' disabled' : '') + '>‹ 上一个</button><button class="btn mid ' + (k ? 'good' : '') + '" id="bKnow">' + (k ? '✓ 已学会' : '✓ 学会了') + '</button><button class="btn primary" id="bNext"' + (idx === lesson.items.length - 1 ? ' disabled' : '') + '>下一个 ›</button></div>';
+    h += '<div class="dots">'; for (i = 0; i < lesson.items.length; i++) h += '<i class="' + (i === idx ? 'c' : LEARNED[key(lesson.items[i])] ? 'l' : '') + '"></i>'; h += '</div>';
+    h += '<div class="hint">加粗的是重读音节；重音符号、波浪线和 ç 的小尾巴最后写</div></div>';
+    $('vStudy').innerHTML = h;
+    var avail = document.querySelector('main').clientWidth - 60;
+    board = Board($('board'), it.letter ? it.w : it.noun, it.letter ? 210 : 160, Math.min(avail, 640));
+    $('info').textContent = it.letter ? '共 ' + board.strokes.length + ' 笔' : '共 ' + board.letters + ' 个字母 · ' + board.strokes.length + ' 笔';
+    $('backBtn').onclick = showHome;
+    $('quizBtn').onclick = function () { startQuiz(lesson); };
+    $('bSay').onclick = function () { sayItem(it); };
+    if ($('exBtn')) $('exBtn').onclick = function () { say(it.ex.w); };
+    $('bAnim').onclick = function () { flash('', ''); board.animate(); };
+    $('bTrace').onclick = function () { practice(true); };
+    $('bRecall').onclick = function () { practice(false); };
+    $('bPrev').onclick = function () { if (idx > 0) { idx--; renderStudy(); } };
+    $('bNext').onclick = function () { if (idx < lesson.items.length - 1) { idx++; renderStudy(); } };
+    $('bKnow').onclick = function () { var kk = key(it); if (LEARNED[kk]) delete LEARNED[kk]; else LEARNED[kk] = 1; put('learned', LEARNED); if (LEARNED[kk] && idx < lesson.items.length - 1) idx++; renderStudy(); };
+    setTimeout(function () { sayItem(it); }, 250);
+  }
+  function practice(outline) {
+    flash(outline ? '照着浅色笔画写第 1 笔' : '凭记忆写，从第 1 笔开始', '');
+    board.trace(outline, {
+      mistake: function () { flash('这一笔不对，注意起笔位置和方向', 'bad'); },
+      correct: function (k, n) { if (k < n) flash('✓ 第 ' + k + ' 笔，继续写第 ' + (k + 1) + ' 笔', 'ok'); },
+      complete: function (m) { flash(m === 0 ? 'Muito bem! 全部写对了 👍' : '写完了！错了 ' + m + ' 次，再练练', m === 0 ? 'ok' : 'bad'); board.outline(true); }
+    });
+  }
+
+  /* ================= quiz ================= */
+  var STRIP = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'â': 'a', 'ê': 'e', 'ô': 'o', 'ã': 'a', 'õ': 'o', 'à': 'a', 'ç': 'c', 'ü': 'u' };
+  function startQuiz(l) {
+    if (board) board.cancel();
+    var pool = shuffle(l.items.slice()), qs = [], i, all = [];
+    for (i = 0; i < LESSONS.length; i++) if (LESSONS[i].kind === l.kind) all = all.concat(LESSONS[i].items);
+    if (l.id === 'free') all = l.items.slice();
+    for (i = 0; i < Math.min(30, pool.length); i++) {
+      var ans = pool[i], types = ['listen'];
+      if (l.kind === 'words') {
+        if (ans.zh) types.push('meaning');
+        if (ans.noun.indexOf(' ') < 0 && ans.noun.length > 1) types.push('spell');
+        if (ans.art) types.push('gender', 'gender');
+      }
+      var type = types[Math.floor(Math.random() * types.length)], q = { ans: ans, type: type };
+      if (type === 'listen' || type === 'meaning') {
+        var opts = [ans], guard = 0, src = l.items.length >= 4 ? l.items : all;
+        while (opts.length < 4 && guard++ < 200) { var c = src[Math.floor(Math.random() * src.length)]; if (opts.indexOf(c) < 0 && c.noun !== ans.noun) opts.push(c); }
+        q.opts = shuffle(opts);
+      } else if (type === 'gender') {
+        q.opts = /s$/.test(ans.art) ? ['os', 'as'] : ['o', 'a'];
+      } else {
+        var letters = ans.noun.split(''), extra = 'abcdefghijlmnopqrstuvz', acc = '';
+        for (var z = 0; z < letters.length; z++) if (STRIP[letters[z]]) acc = STRIP[letters[z]];
+        letters.push(acc || extra.charAt(Math.floor(Math.random() * extra.length)));
+        letters.push(extra.charAt(Math.floor(Math.random() * extra.length)));
+        q.tiles = shuffle(letters); q.target = ans.noun; q.typed = [];
+      }
+      qs.push(q);
+    }
+    runQuiz({ l: l, qs: qs });
+  }
+  function runQuiz(o) { quiz = o; quiz.i = 0; quiz.score = 0; quiz.lock = false; show('vQuiz'); renderQ(); }
+  function renderQ() {
+    var q = quiz.qs[quiz.i], a = q.ans, h = '<div class="sbar"><button class="btn ghost" id="qBack">‹ 返回</button><div class="ti">第 ' + (quiz.i + 1) + ' / ' + quiz.qs.length + ' 题</div><span style="width:70px"></span></div><div class="card qcard">';
+    var P = { listen: '听一听，选出正确的' + (quiz.l && quiz.l.kind === 'letters' ? '字母' : '单词'), meaning: '选出对应的葡语单词', spell: '听一听，拼出这个单词', gender: '选出正确的冠词（阳性 / 阴性）' };
+    h += '<div class="qp">' + (q.custom ? q.label : P[q.type]) + '</div>';
+    if (q.custom) h += '<div class="qq">' + q.prompt + '</div>';
+    else if (q.type === 'listen') h += '<div class="qq"><button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button></div>';
+    else if (q.type === 'meaning') h += '<div class="qq">' + esc(a.zh) + '</div>';
+    else if (q.type === 'gender') h += '<div class="qq">___ ' + esc(a.noun) + '<div style="font-size:15px;font-weight:400;color:var(--soft)">' + esc(a.zh) + '</div></div>';
+    else h += '<div class="qq" style="font-size:22px">' + esc(a.zh) + ' <button class="btn primary" id="qSay">🔊</button></div>';
+    if (q.type === 'spell') {
+      h += '<div class="slots" id="slots">'; for (var s = 0; s < q.target.length; s++) h += '<div class="slot"></div>'; h += '</div><div class="tiles">';
+      for (s = 0; s < q.tiles.length; s++) h += '<button class="btn tile" data-t="' + s + '">' + q.tiles[s] + '</button>';
+      h += '</div><div style="margin-top:6px"><button class="btn ghost" id="qBackspace">⌫ 删除</button></div>';
+    } else {
+      h += '<div class="opts">';
+      for (var i = 0; i < q.opts.length; i++) { var lab = q.type === 'gender' ? q.opts[i] : q.opts[i].w; h += '<button class="btn opt' + (q.small ? ' small' : '') + '" style="font-size:' + (q.type === 'gender' ? 26 : 19) + 'px" data-i="' + i + '">' + esc(lab) + '</button>'; }
+      h += '</div>';
+    }
+    h += '<div class="fb" id="qfb"></div><div class="hint" id="tip"></div></div>';
+    $('vQuiz').innerHTML = h;
+    $('qBack').onclick = function () { if (quiz.back) quiz.back(); else openLesson(quiz.l, quiz.l.li); };
+    if (q.custom) { if ($('qSay')) $('qSay').onclick = function () { say(q.say); }; if (q.sayFirst) setTimeout(function () { say(q.say); }, 200); }
+    else if ($('qSay')) { $('qSay').onclick = function () { sayItem(a); }; setTimeout(function () { sayItem(a); }, 200); }
+    function finish(ok) {
+      if (ok) quiz.score++;
+      $('qfb').innerHTML = q.custom ? q.fb : esc(a.letter ? a.w + '（' + a.name + '）' : a.w) + (a.zh ? ' · ' + esc(a.zh) : '');
+      $('qfb').className = 'fb ' + (ok ? 'ok' : 'bad');
+      if (q.type === 'gender') $('tip').textContent = a.note || (a.g === 'm' ? '阳性名词用 o / os，常以 -o 结尾' : '阴性名词用 a / as，常以 -a、-ção、-dade 结尾');
+      if (q.custom) say(q.say); else sayItem(a);
+      var myQ = quiz; setTimeout(function () { if (quiz !== myQ || $('vQuiz').className.indexOf('on') < 0) return; quiz.lock = false; quiz.i++; if (quiz.i < quiz.qs.length) renderQ(); else renderDone(); }, ok ? 1300 : 2500);
+    }
+    if (q.type === 'spell') {
+      var tiles = $('vQuiz').querySelectorAll('.tile'), slots = $('vQuiz').querySelectorAll('.slot');
+      var paint = function () { for (var k = 0; k < slots.length; k++) { slots[k].textContent = q.typed[k] != null ? q.tiles[q.typed[k]] : ''; slots[k].className = 'slot' + (q.typed[k] != null ? ' f' : ''); } for (k = 0; k < tiles.length; k++) tiles[k].className = 'btn tile' + (q.typed.indexOf(k) >= 0 ? ' used' : ''); };
+      for (var t = 0; t < tiles.length; t++) tiles[t].onclick = function () {
+        if (quiz.lock) return;
+        var ti = +this.getAttribute('data-t'); if (q.typed.indexOf(ti) >= 0) return;
+        q.typed.push(ti); paint();
+        if (q.typed.length === q.target.length) {
+          quiz.lock = true;
+          var word = q.typed.map(function (x) { return q.tiles[x]; }).join(''), ok = word === q.target;
+          $('slots').className = 'slots ' + (ok ? 'ok' : 'no');
+          finish(ok);
+        }
+      };
+      $('qBackspace').onclick = function () { if (!quiz.lock && q.typed.length) { q.typed.pop(); paint(); } };
+    } else {
+      var bs = $('vQuiz').querySelectorAll('.opt');
+      for (var b = 0; b < bs.length; b++) bs[b].onclick = function () {
+        if (quiz.lock) return; quiz.lock = true;
+        var pick = q.opts[+this.getAttribute('data-i')], right = q.type === 'gender' ? a.art : a, ok = pick === right;
+        for (var k = 0; k < bs.length; k++) { var o = q.opts[+bs[k].getAttribute('data-i')]; if (o === right) bs[k].className += ' right'; else if (bs[k] === this) bs[k].className += ' wrong'; }
+        finish(ok);
+      };
+    }
+  }
+  function renderDone() {
+    var pct = Math.round(quiz.score / quiz.qs.length * 100);
+    $('vQuiz').innerHTML = '<div class="card qcard"><div class="qp">测验完成</div><div class="score">' + quiz.score + ' / ' + quiz.qs.length + '</div><div style="font-size:30px;margin:6px 0 16px">' + (pct === 100 ? '🏆' : pct >= 70 ? '🎉' : '💪') + '</div><button class="btn primary" id="qAgain">再测一次</button> <button class="btn" id="qHome">回到课程</button></div>';
+    if (quiz.onDone) quiz.onDone(pct);
+    $('qAgain').onclick = function () { if (quiz.again) quiz.again(); else startQuiz(quiz.l); };
+    $('qHome').onclick = function () { if (quiz.back) quiz.back(); else showHome(); };
+    if (quiz.back) $('qHome').textContent = '返回';
+  }
+
+  /* ================= 以少胜多 ================= */
+  var LEV = get('lev', {}), levTab = get('levTab', 'num'), levSel = null;
+  function setLev(k, v) { if (v) LEV[k] = 1; else delete LEV[k]; put('lev', LEV); }
+  function estNum(s) { var m = /(\d+)/.exec(s); if (m) return +m[1]; if (/上千/.test(s)) return 1000; if (/几百/.test(s)) return 300; return 100; }
+  function levStats() {
+    var w = 0, v = 0, i, g;
+    for (i = 0; i < PT.lev.cognates.length; i++) if (LEV['r:' + PT.lev.cognates[i].en]) w += estNum(PT.lev.cognates[i].est);
+    for (g in PT.lev.verbs) if (PT.lev.verbs.hasOwnProperty(g) && LEV['v:' + g]) v += PT.lev.verbs[g].verbs.length * 5;
+    return { w: w, v: v, n: LEV.num ? 1000000 : 0 };
+  }
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function showLev() {
+    if (board) { board.destroy(); board = null; }
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    var st = levStats(), h = '', i;
+    h += '<div class="sbar"><button class="btn ghost" id="lvBack">‹ 返回</button><div class="ti">🪄 以少胜多</div><span style="width:70px"></span></div>';
+    h += '<div class="card lvtop"><div class="lvstats"><div><b>' + fmt(st.n) + '</b><span>个数字会读</span></div><div><b>≈' + fmt(st.w) + '</b><span>个单词秒懂</span></div><div><b>' + fmt(st.v) + '</b><span>个动词形式</span></div></div></div>';
+    var tabs = [['num', '数字魔法'], ['cog', '英语变葡语'], ['verb', '动词变位']];
+    h += '<div class="tabs">';
+    for (i = 0; i < tabs.length; i++) h += '<button data-t="' + tabs[i][0] + '" class="' + (levTab === tabs[i][0] ? 'on' : '') + '">' + tabs[i][1] + '</button>';
+    h += '</div><div id="lvBody"></div>';
+    $('vLev').innerHTML = h;
+    show('vLev');
+    $('lvBack').onclick = function () { if (levTab === 'cog' && levSel != null) { levSel = null; showLev(); } else showHome(); };
+    var tb = $('vLev').querySelectorAll('.tabs button');
+    for (i = 0; i < tb.length; i++) tb[i].onclick = function () { levTab = this.getAttribute('data-t'); put('levTab', levTab); levSel = null; showLev(); };
+    if (levTab === 'num') renderNum();
+    else if (levTab === 'cog') { if (levSel != null) renderRule(levSel); else renderRules(); }
+    else renderVerb(levSel || 'ar');
+  }
+
+  /* ----- numbers ----- */
+  var U = ['zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez', 'onze', 'doze', 'treze', 'catorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove'];
+  var TENS = { 2: 'vinte', 3: 'trinta', 4: 'quarenta', 5: 'cinquenta', 6: 'sessenta', 7: 'setenta', 8: 'oitenta', 9: 'noventa' };
+  var HUN = { 1: 'cento', 2: 'duzentos', 3: 'trezentos', 4: 'quatrocentos', 5: 'quinhentos', 6: 'seiscentos', 7: 'setecentos', 8: 'oitocentos', 9: 'novecentos' };
+  function pt99(n) { if (n < 20) return [U[n]]; var t = Math.floor(n / 10), u = n % 10; return u ? [TENS[t], 'e', U[u]] : [TENS[t]]; }
+  function pt999(n) {
+    if (n === 100) return ['cem'];
+    var h = Math.floor(n / 100), r = n % 100, out = [];
+    if (h) out.push(HUN[h]);
+    if (r) out = out.concat(h ? ['e'] : [], pt99(r));
+    return out;
+  }
+  function numParts(n) {
+    if (n === 0) return [['zero']];
+    var th = Math.floor(n / 1000), r = n % 1000, parts = [];
+    if (th) parts.push((th === 1 ? [] : pt999(th)).concat(['mil']));
+    // mil 后面是整百或不到 100 时用 e 连接：mil e duzentos、dois mil e cinco
+    if (r) parts.push((th && (r < 100 || r % 100 === 0) ? ['e'] : []).concat(pt999(r)));
+    return parts;
+  }
+  function numEs(n) { var p = numParts(n), a = [], i; for (i = 0; i < p.length; i++) a = a.concat(p[i]); return a.join(' '); }
+  var BLOCKS = [['0–15', 'zero um dois três quatro cinco seis sete oito nove dez onze doze treze catorze quinze'], ['16–19', 'dezesseis dezessete dezoito dezenove（dez + e + 6~9 连写）'], ['整十', 'vinte trinta quarenta cinquenta sessenta setenta oitenta noventa'], ['整百', 'cem / cento, duzentos, trezentos, quatrocentos, quinhentos, seiscentos, setecentos, oitocentos, novecentos'], ['千', 'mil　(2000 = dois mil)']];
+  function randNum() {
+    var r = Math.random();
+    if (r < 0.3) return 16 + Math.floor(Math.random() * 84);
+    if (r < 0.65) return 100 + Math.floor(Math.random() * 900);
+    if (r < 0.9) return 1000 + Math.floor(Math.random() * 9000);
+    return 10000 + Math.floor(Math.random() * 990000);
+  }
+  function renderNum() {
+    var h = '<div class="card stage"><div class="tipb">学会下面这 <b>5 组、大约 40 个词</b>，再记住 3 条规则，就能读出 0 到 999,999 的<b>每一个</b>数：<br>① 十位和个位、百位和后面都用 <b>e</b> 连接：vinte <b>e</b> um，cento <b>e</b> vinte <b>e</b> três　② 100 整是 cem，101 起是 cento…　③ 1000 是 mil，不说 um mil；mil 后面是整百或不到 100 时也加 e：mil <b>e</b> duzentos</div>';
+    for (var i = 0; i < BLOCKS.length; i++) h += '<div class="blk"><span>' + BLOCKS[i][0] + '</span>' + esc(BLOCKS[i][1]) + '</div>';
+    h += '<div class="frow" style="max-width:360px;margin:12px auto 0"><input id="numIn" type="number" inputmode="numeric" min="0" max="999999" placeholder="输入 0–999999"><button class="btn" id="numRand">🎲 随机</button></div>';
+    h += '<div class="numout" id="numOut"></div><div class="lvsub" id="numParts"></div>';
+    h += '<div class="row"><button class="btn" id="numSay">🔊 读音</button><button class="btn primary" id="numQuiz">🎯 数字测验</button><button class="btn ' + (LEV.num ? 'good' : '') + '" id="numGot">' + (LEV.num ? '✓ 已学会' : '✓ 我学会了') + '</button></div></div>';
+    $('lvBody').innerHTML = h;
+    var cur = '';
+    function upd(n) {
+      if (isNaN(n) || n < 0 || n > 999999) { cur = ''; $('numOut').textContent = ''; $('numParts').innerHTML = ''; return; }
+      n = Math.floor(n); cur = numEs(n);
+      $('numOut').textContent = cur;
+      var p = numParts(n);
+      $('numParts').innerHTML = '拆开看：' + p.map(function (x) { return '<span class="pchip">' + esc(x.join(' ')) + '</span>'; }).join(' + ');
+    }
+    $('numIn').oninput = function () { upd(parseInt(this.value, 10)); };
+    $('numRand').onclick = function () { var n = randNum(); $('numIn').value = n; upd(n); say(cur); };
+    $('numSay').onclick = function () { if (cur) say(cur); };
+    $('numQuiz').onclick = numQuiz;
+    $('numGot').onclick = function () { setLev('num', !LEV.num); showLev(); };
+    var n0 = randNum(); $('numIn').value = n0; upd(n0);
+  }
+  function tweak(n) {
+    var s = String(n).split(''), k = Math.floor(Math.random() * s.length), r = Math.random();
+    if (r < 0.45) s[k] = String((+s[k] + 1 + Math.floor(Math.random() * 8)) % 10);
+    else if (s.length > 1) { var j = (k + 1) % s.length, t = s[k]; s[k] = s[j]; s[j] = t; }
+    else s[k] = String((+s[k] + 3) % 10);
+    if (s[0] === '0') s[0] = '1';
+    return parseInt(s.join(''), 10);
+  }
+  function numQuiz() {
+    var qs = [], i;
+    for (i = 0; i < 10; i++) {
+      var n = randNum(), opts = [n], g = 0, listen = i % 2 === 1;
+      while (opts.length < 4 && g++ < 100) { var m = tweak(n); if (opts.indexOf(m) < 0 && m > 0) opts.push(m); }
+      while (opts.length < 4) opts.push(n + opts.length * 11);
+      var oo = [];
+      for (var k = 0; k < opts.length; k++) oo.push({ w: listen ? fmt(opts[k]) : numEs(opts[k]) });
+      qs.push({ custom: true, ans: oo[0], opts: shuffle(oo), label: listen ? '听一听，是哪个数？' : '这个数用葡语怎么说？', prompt: listen ? '<button class="btn primary" id="qSay" style="font-size:22px;padding:10px 26px">🔊</button>' : '<span style="font-size:40px">' + fmt(n) + '</span>', say: numEs(n), sayFirst: listen, small: !listen, fb: '<b>' + fmt(n) + '</b> = ' + esc(numEs(n)) });
+    }
+    runQuiz({ l: null, qs: qs, back: showLev, again: numQuiz, onDone: function (p) { if (p >= 80) setLev('num', 1); } });
+  }
+
+  /* ----- cognate rules ----- */
+  var ARTRE = /^(o \/ a|o|a|os|as) /;
+  function bare(s) { return s.replace(ARTRE, ''); }
+  function renderRules() {
+    var rs = PT.lev.cognates, h = '<div class="tipb">英语和葡语有成千上万个「长得像」的词。掌握一条<b>结尾变身规则</b>，一大批英语单词直接变成葡语！点开一条规则看看。</div>', i;
+    for (i = 0; i < rs.length; i++) {
+      var r = rs[i], on = LEV['r:' + r.en];
+      h += '<div class="card fam' + (on ? ' done' : '') + '" data-i="' + i + '"><div class="fb0"><div class="rule"><span>' + esc(r.en) + '</span><i>→</i><b>' + esc(r.es) + '</b></div><div class="mid"><div class="cnt">' + (on ? '✓ 已学会 · ' : '') + esc(r.est) + '</div><div class="lvsub">' + esc(r.pairs[0][0]) + ' → ' + esc(r.pairs[0][1]) + ' · ' + esc(r.pairs[1][0]) + ' → ' + esc(r.pairs[1][1]) + '</div></div></div></div>';
+    }
+    $('lvBody').innerHTML = h;
+    var cs = $('lvBody').querySelectorAll('.fam');
+    for (i = 0; i < cs.length; i++) cs[i].onclick = function () { levSel = +this.getAttribute('data-i'); showLev(); };
+  }
+  function renderRule(i) {
+    var r = PT.lev.cognates[i], on = LEV['r:' + r.en], h = '<div class="card stage"><div class="rule big"><span>' + esc(r.en) + '</span><i>→</i><b>' + esc(r.es) + '</b></div>';
+    h += '<div class="lvsub">' + esc(r.est) + (r.gender ? ' · ' + esc(r.gender) : '') + '</div><div class="tipb">' + esc(r.tip) + '</div><div class="pairs">';
+    for (var k = 0; k < r.pairs.length; k++) h += '<div class="pair2" data-say="' + esc(r.pairs[k][1]) + '"><span class="en">' + esc(r.pairs[k][0]) + '</span><i>→</i><b>' + esc(r.pairs[k][1]) + '</b><small>' + esc(r.pairs[k][2]) + '</small></div>';
+    h += '</div><div class="row"><button class="btn primary" id="rQuiz">🎯 考考我</button><button class="btn ' + (on ? 'good' : '') + '" id="rGot">' + (on ? '✓ 已学会' : '✓ 我学会了') + '</button></div></div>';
+    $('lvBody').innerHTML = h;
+    var ps = $('lvBody').querySelectorAll('.pair2');
+    for (k = 0; k < ps.length; k++) ps[k].onclick = function () { say(this.getAttribute('data-say')); };
+    $('rQuiz').onclick = function () { ruleQuiz(i); };
+    $('rGot').onclick = function () { setLev('r:' + r.en, !LEV['r:' + r.en]); showLev(); };
+  }
+  var UNACC = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'â': 'a', 'ê': 'e', 'ô': 'o', 'ã': 'a', 'õ': 'o', 'ç': 'c' };
+  function unacc(s) { return s.replace(/[áéíóúâêôãõç]/g, function (c) { return UNACC[c]; }); }
+  function ruleQuiz(ri) {
+    var r = PT.lev.cognates[ri], pool = shuffle(r.pairs.slice()).slice(0, 10), qs = [], i;
+    var esS = r.es.replace(/^-/, ''), enS = r.en.replace(/^-/, '');
+    for (i = 0; i < pool.length; i++) {
+      var p = pool[i], full = p[1], m = ARTRE.exec(full), art = m ? m[0] : '', w = bare(full), stem = w.slice(0, w.length - esS.length), cands = [], k;
+      cands.push(unacc(w));
+      cands.push(stem + enS);
+      var others = shuffle(PT.lev.cognates.slice());
+      for (k = 0; k < others.length; k++) { var o = others[k].es.replace(/^-/, ''); if (o !== esS) cands.push(stem + o); }
+      var opts = [{ w: full }], seen = {}; seen[full] = 1;
+      for (k = 0; k < cands.length && opts.length < 4; k++) { var c = art + cands[k]; if (!seen[c] && cands[k] !== w) { seen[c] = 1; opts.push({ w: c }); } }
+      qs.push({ custom: true, ans: opts[0], opts: shuffle(opts), label: '这个英语单词，葡语怎么写？', prompt: '<span style="font-size:32px">' + esc(p[0]) + '</span><div style="font-size:16px;font-weight:400;color:var(--soft)">' + esc(p[2]) + '</div>', say: full, small: true, fb: esc(p[0]) + ' → <b>' + esc(full) + '</b>' });
+    }
+    runQuiz({ l: null, qs: qs, back: showLev, again: function () { ruleQuiz(ri); }, onDone: function (pc) { if (pc >= 80) setLev('r:' + r.en, 1); } });
+  }
+
+  /* ----- verbs ----- */
+  var PRON = PT.lev.pronouns;
+  function conj(v, g, k) { return v.slice(0, -2) + PT.lev.verbs[g].endings[k]; }
+  function renderVerb(g) {
+    var G = PT.lev.verbs[g], on = LEV['v:' + g], sel = get('verb:' + g, 0), v = G.verbs[sel] || G.verbs[0], i;
+    var h = '<div class="tabs sm">';
+    for (var gg in PT.lev.verbs) if (PT.lev.verbs.hasOwnProperty(gg)) h += '<button data-g="' + gg + '" class="' + (gg === g ? 'on' : '') + '">-' + gg + ' 动词' + (LEV['v:' + gg] ? ' ✓' : '') + '</button>';
+    h += '</div><div class="card stage"><div class="tipb">葡语动词按人称变结尾。<b>记住一套 -' + g + ' 结尾（5 个）</b>，下面这 ' + G.verbs.length + ' 个规则动词（还有几百个）全都会变！<br>巴西口语「你」用 você，和「他」同一个形式；「你们」用 vocês，和「他们」同一个形式。tu 那一行葡萄牙和巴西南部常用。</div>';
+    h += '<div class="ends">'; for (i = 0; i < 5; i++) h += '<div><small>' + esc(PRON[i]) + '</small><b>-' + esc(G.endings[i]) + '</b></div>'; h += '</div>';
+    h += '<div class="vsel">'; for (i = 0; i < G.verbs.length; i++) h += '<button class="vb' + (G.verbs[i] === v ? ' on' : '') + '" data-v="' + i + '">' + esc(G.verbs[i][0]) + '</button>'; h += '</div>';
+    h += '<div class="numout" style="font-size:28px">' + esc(v[0]) + ' <span style="font-size:17px;color:var(--soft);font-weight:400">' + esc(v[1]) + '</span></div><div class="ctab">';
+    var stem = v[0].slice(0, -2);
+    for (i = 0; i < 5; i++) { var f = conj(v[0], g, i); h += '<div class="crow" data-say="' + esc(PRON[i].split(' / ')[0] + ' ' + f) + '"><span>' + esc(PRON[i]) + '</span><b>' + esc(stem) + '<em>' + esc(G.endings[i]) + '</em></b></div>'; }
+    h += '</div><div class="row"><button class="btn primary" id="vbQuiz">🎯 考考我</button><button class="btn ' + (on ? 'good' : '') + '" id="vGot">' + (on ? '✓ 已学会' : '✓ 我学会了') + '</button></div></div>';
+    $('lvBody').innerHTML = h;
+    var b = $('lvBody').querySelectorAll('.tabs button');
+    for (i = 0; i < b.length; i++) b[i].onclick = function () { levSel = this.getAttribute('data-g'); showLev(); };
+    b = $('lvBody').querySelectorAll('.vb');
+    for (i = 0; i < b.length; i++) b[i].onclick = function () { put('verb:' + g, +this.getAttribute('data-v')); renderVerb(g); say(G.verbs[+this.getAttribute('data-v')][0]); };
+    b = $('lvBody').querySelectorAll('.crow');
+    for (i = 0; i < b.length; i++) b[i].onclick = function () { say(this.getAttribute('data-say')); };
+    $('vbQuiz').onclick = function () { verbQuiz(g); };
+    $('vGot').onclick = function () { setLev('v:' + g, !LEV['v:' + g]); levSel = g; showLev(); };
+  }
+  function verbQuiz(g) {
+    var G = PT.lev.verbs[g], qs = [], i, vs = shuffle(G.verbs.slice());
+    for (i = 0; i < 10; i++) {
+      var v = vs[i % vs.length], k = Math.floor(Math.random() * 5), opts = [], j;
+      for (j = 0; j < 5; j++) opts.push({ w: conj(v[0], g, j) });
+      var ans = opts[k]; opts.splice(k, 1); opts = shuffle(opts).slice(0, 3); opts.push(ans);
+      var pr = PRON[k].split(' / ')[0];
+      qs.push({ custom: true, ans: ans, opts: shuffle(opts), label: '选出正确的变位', prompt: '<span style="font-size:28px">' + esc(pr) + ' + ' + esc(v[0]) + '</span><div style="font-size:15px;font-weight:400;color:var(--soft)">' + esc(v[1]) + '</div>', say: pr + ' ' + ans.w, fb: esc(pr) + ' <b>' + esc(ans.w) + '</b>' });
+    }
+    runQuiz({ l: null, qs: qs, back: function () { levSel = g; showLev(); }, again: function () { verbQuiz(g); }, onDone: function (pc) { if (pc >= 80) setLev('v:' + g, 1); } });
+  }
+
+  showHome();
+})();
+</script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=49" defer></script>
+</body>
+</html>
