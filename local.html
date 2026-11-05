@@ -278,12 +278,33 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       busy(false);
       var r = null; try { r = JSON.parse(x.responseText); } catch (e) { }
       if (x.status === 401) { needKey(); return; }
+      if (r && r.need === 'osm') { osmFetch(r, function (list) { var b2 = {}; for (var k in body) b2[k] = body[k]; if (list) b2.osm = list; else b2.noosm = true; ask(b2, label); }); return; }
       if (x.status === 202 && r && r.pending) { busy(true, (r.place && (r.place.zh || r.place.en)) + ' 正在生成'); setTimeout(function () { busy(false); ask(body, label); }, 15000); return; }
       if (!r || !r.guide) { fail((r && r.msg) || '出错了（' + x.status + '）'); return; }
       R = r; ls('last', r); Q = ''; $('q').value = ''; showCity();
     };
     x.onerror = x.ontimeout = function () { busy(false); fail('网络不好或者等太久了，再试一次'); };
     x.send(JSON.stringify(body));
+  }
+  // 后端（Cloudflare）连不上 OpenStreetMap，地点清单由浏览器查好带过去：只留有用的标签
+  var OSM_KEYS = ['name', 'name:zh', 'name:zh-Hans', 'amenity', 'cuisine', 'tourism', 'leisure', 'historic', 'shop', 'railway', 'network', 'operator', 'aeroway', 'iata', 'place'];
+  function osmFetch(r, cb) {
+    busy(true, '正在生成 ' + ((r.place && (r.place.zh || r.place.en)) || ''));
+    var urls = (r.mirrors || ['https://overpass-api.de/api/interpreter']).slice(0, 3), i = 0;
+    (function go() {
+      var x = new XMLHttpRequest(); x.open('POST', urls[i]); x.timeout = 30000;
+      x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      x.onload = function () {
+        var j = null; try { j = JSON.parse(x.responseText); } catch (e) { }
+        if (!j || !j.elements) { next(); return; }
+        var out = [];
+        j.elements.forEach(function (e) { var t = e.tags || {}, o = {}; if (!t.name) return; OSM_KEYS.forEach(function (k) { if (t[k] != null) o[k] = String(t[k]).slice(0, 100); }); out.push(o); });
+        busy(false); cb(out.slice(0, 2500));
+      };
+      x.onerror = x.ontimeout = next;
+      function next() { if (++i < urls.length) go(); else { busy(false); cb(null); } }
+      x.send('data=' + encodeURIComponent(r.query));
+    })();
   }
   function fail(msg) {
     if (D()) { showCity(); toast('⚠️ ' + msg); return; }
