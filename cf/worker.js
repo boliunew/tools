@@ -1166,9 +1166,9 @@ async function localApi(req, env) {
     const sources = [['OpenStreetMap（地点数据 © OpenStreetMap 贡献者）', 'https://www.openstreetmap.org/#map=13/' + p.lat + '/' + p.lon]];
     if (wk.url) sources.push(['Wikipedia · ' + wk.title, wk.url]);
     if (wk.zhUrl) sources.push(['维基百科 · ' + wk.zh, wk.zhUrl]);
-    const full = ['intro', 'hoods', 'eat', 'fun', 'tips', 'stories', 'go'].every(k => G[k].length);
+    const full = tags.length > 0 && ['intro', 'hoods', 'eat', 'fun', 'tips', 'stories', 'go'].every(k => G[k].length);   // 没拿到地点清单的也只算临时版
     const out = { v: LOCAL_V, place: { ...p, zh: p.zh || wk.zh || '' }, guide: { ...G, sources }, stats: { osm: tags.length, wiki: near.length, eat: osm.eat.length, full }, generated: new Date().toISOString() };
-    // 缺栏目的只存 6 小时，过后再打开会重新生成
+    // 缺栏目、或者没有地点清单（只有泛泛的介绍）的只存 6 小时，过后再打开会重新生成
     await env.KV.put(key, JSON.stringify(out), { expirationTtl: full ? LOCAL_TTL : 6 * 3600 });
     return json(req, { ...out, ms: Date.now() - t0, diag });
   } finally {
