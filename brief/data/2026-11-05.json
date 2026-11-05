@@ -1,45 +1,42 @@
 {
  "date": "2026-11-05",
- "generated": "2026-11-05T21:08:53Z",
+ "generated": "2026-11-05T22:22:22Z",
  "auto": true,
- "ai": "@cf/openai/gpt-oss-120b",
+ "ai": null,
  "sections": [
   {
    "key": "ai",
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "美股科技股大跌，因选举后AI监管预期升温",
-     "d": "受民主党在中期选举获胜并将收紧数据中心扩张监管的预期影响，纳斯达克指数跌至18个月来最差水平，跌幅最高达5%；芯片股如SanDisk和Western Digital分别下跌19%和16.5%。此举凸显AI相关投资面临更严格政策审查，可能抑制行业增长。",
+     "t": "民主党大选获胜后，投资者押注人工智能放缓，美国科技股大幅下跌",
+     "d": "华尔街交易波动较大，纳斯达克指数将迎来 18 个月来最糟糕的一天 周四，纳斯达克股指暴​​跌 5%，该指数有望迎来 18 个月来最糟糕的一天，越来越多的迹象表明，人工智能行业将因中期选举而面临更严格的监管……",
      "src": [
       {
        "n": "The Guardian",
        "u": "https://www.theguardian.com/business/2026/nov/05/nasdaq-heading-for-worst-day-in-18-months-as-wall-street-sustains-widespread-losses"
       }
-     ],
-     "full": true
+     ]
     },
     {
-     "t": "欧洲超百组织联手抗议数据中心项目",
-     "d": "超过100个团体在15个国家发起为期两天的“停止脏数据中心”行动，要求对大型AI数据中心项目实施停建，以应对其环境和社会成本。此类抗议反映出全球对AI基础设施环保风险的关注，可能影响相关项目的审批与投融资。",
+     "t": "科技巨头们向特朗普示好。他们将在新蓝色的美国做什么？",
+     "d": "民主党的成功得益于大众对科技、人工智能和超级富豪的愤怒——亿万富翁的生活可能会变得更加困难唐纳德·特朗普就职典礼上硅谷亿万富翁的照片——前排并排的马斯克、贝索斯和扎克伯格——现在看起来就像是热门名单……",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/05/tech-barons-america-musk-bezos-zuckerberg"
+      }
+     ]
+    },
+    {
+     "t": "欧洲各地的活动人士准备举行为期两天的针对数据中心的抗议活动",
+     "d": "本周，15 个国家的 100 多个运动团体将联合起来，呼吁停止大型人工智能项目欧洲各地的抗议者计划本周对数据中心进行为期两天的行动，并在 15 个国家举行示威活动。超过 100 个团体正在联合起来……",
      "src": [
       {
        "n": "The Guardian",
        "u": "https://www.theguardian.com/world/2026/nov/05/activists-across-europe-protests-ai-against-datacentres"
       }
-     ],
-     "full": true
-    },
-    {
-     "t": "维州选举广告出现AI生成深度伪造视频",
-     "d": "维多利亚州劳工党使用AI生成的影片夸大美国式医疗费用，引发对AI伪造政治宣传的担忧；同日自由党也发布AI生成的对手首相睡觉视频。此事加剧了选举期间对信息真实性的质疑，或促使监管机构审视AI在政治广告中的使用。",
-     "src": [
-      {
-       "n": "The Guardian",
-       "u": "https://www.theguardian.com/australia-news/2026/nov/05/victoria-election-2026-ai-generated-video-ads-ntwnfb"
-      }
-     ],
-     "full": true
+     ]
     }
    ]
   },
@@ -120,8 +117,22 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "欧洲航班因诈欺炸弹威胁大规模改道",
-     "d": "至少27架航班受虚假炸弹威胁影响被迫改道或取消，突显航空安全风险上升，对欧盟交通运营和旅客信心产生短期冲击。",
+     "t": "英国喜剧演员拉塞尔·布兰德被判犯有强奸、性侵犯罪",
+     "d": "伦敦陪审团周四判定英国喜剧演员兼演员拉塞尔·布兰德犯有一项强奸罪和三项性侵犯罪。（7 家媒体同时报道）",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/europe/20261105-british-comedian-russell-brand-found-guilty-of-rape-sexual-assault"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/culture/2026/nov/05/russell-brand-detective-other-potential-victims"
+      }
+     ]
+    },
+    {
+     "t": "欧洲：数十架航班因炸弹威胁而改道",
+     "d": "本周，欧洲各地至少 27 架受影响的航班受到恶作剧炸弹威胁。（6 家媒体同时报道）",
      "src": [
       {
        "n": "法国24",
@@ -134,8 +145,8 @@
      ]
     },
     {
-     "t": "巴拉圭总统因银行倒闭危机辞职",
-     "d": "巴拉圭总统圣地亚哥·佩尼亚因与倒闭的Ueno银行关联的利益冲突指控，在国会通过启动弹劾程序后宣布辞职，以维护国家稳定。此事暴露了金融监管与政治关联风险，对巴拉圭金融体系和政治局势产生冲击。",
+     "t": "巴拉圭总统圣地亚哥·佩纳因银行倒闭而辞职",
+     "d": "此举是在银行倒闭以及国会下议院投票支持对他进行弹劾审判之后做出的。（6 家媒体同时报道）",
      "src": [
       {
        "n": "BBC",
@@ -145,30 +156,28 @@
        "n": "卫报",
        "u": "https://www.theguardian.com/world/2026/nov/05/paraguay-president-santiago-pena-resigns"
       }
-     ],
-     "full": true
+     ]
     },
     {
-     "t": "法国大规模罢工抗议生活成本上升",
-     "d": "超过60万人在法国多城参与罢工和示威，要求提高最低工资和改善公共服务，工会动员力度创近年来新高。大规模社会动荡可能迫使政府调整经济政策，影响国内消费及企业运营环境。",
+     "t": "克里斯蒂亚诺·罗纳尔多为何退出国际足坛？",
+     "d": "葡萄牙巨星罗纳尔多在与主教练豪尔赫·热苏斯发生争执后宣布结束国家队生涯。（5 家媒体同时报道）",
      "src": [
       {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/ckx2qzv835pgo?at_medium=RSS&at_campaign=rss"
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/sports/2026/11/5/why-has-cristiano-ronaldo-retired-from-international-football?traffic_source=rss"
       },
       {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/france-more-than-600-000-protest-as-anger-grows-over-cost-of-living/a-79860616?maca=en-rss-en-all-1573-rdf"
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261105-portugal-cristiano-ronaldo-announces-his-international-retirement"
       }
-     ],
-     "full": true
+     ]
     }
    ]
   }
  ],
  "pick": {
-  "t": "美国科技股大跌 投资者押注AI增速放缓",
-  "d": "这直接影响纳斯达克表现，反映出政治与技术预期交织对美国高科技估值的敏感，值得关注其后续对AI相关公司的资金流向。"
+  "t": "英国喜剧演员拉塞尔·布兰德被判犯有强奸、性侵犯罪",
+  "d": "今天报道媒体最多的一件事。伦敦陪审团周四判定英国喜剧演员兼演员拉塞尔·布兰德犯有一项强奸罪和三项性侵犯罪。（7 家媒体同时报道）"
  },
  "week": []
 }
