@@ -30,6 +30,13 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 ORIGIN = "https://boliunew.github.io"
 NO_COUNTRY = "ZZ"   # 目录里没标国家的台
+# 给家人用：除了 iptv-org 标出的成人台，台名带这些字眼的也不收（成人动画、裸露真人秀之类）
+NOT_FAMILY = re.compile(r"\b(sexy|sex|naked|nude|nudity|xxx|porn\w*|erotic\w*|playboy|hustler|babes|nsfw|fetish|hentai|"
+                        r"adult\s+(animation|swim|tv|channel|movies?|films?|xxx)|for\s+adults)\b|18\s*\+|成人|情色|色情", re.I)
+
+
+def family_ok(*names):
+    return not any(n and NOT_FAMILY.search(n) for n in names)
 
 
 def load(src):
@@ -93,6 +100,8 @@ def main():
     for c in d["channels"]:
         if c["id"] in blocked or c.get("is_nsfw") or "xxx" in (c.get("categories") or []):
             continue
+        if not family_ok(c.get("name"), *(c.get("alt_names") or [])):
+            continue
         if c.get("closed") and c["closed"] <= today:
             continue
         chans[c["id"]] = c
@@ -124,6 +133,8 @@ def main():
                              "c": [x for x in (c.get("categories") or []) if x != "xxx"], "l": logos.get(cid, (0, ""))[1],
                              "a": (c.get("alt_names") or [])[:3]}
         else:
+            if not family_ok(s.get("title")):
+                continue
             title = re.sub(r"\s*\((\d{3,4}p|\w+ \d+)\)\s*$", "", s.get("title") or "").strip() or url
             key = "t:" + title.lower()
             meta.setdefault(key, {"i": "", "n": title, "cc": NO_COUNTRY, "c": [], "l": "", "a": []})
