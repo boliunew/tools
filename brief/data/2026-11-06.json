@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "generated": "2026-11-06T20:29:15Z",
+ "generated": "2026-11-06T21:46:31Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "美中期选举后AI股大跌",
-     "d": "美国民主党在本周中期选举获全席位后，因其反对大规模数据中心扩建的立场，导致纳斯达克科技股大幅下跌，投资者担忧AI监管加严。此事显示政治因素可能抑制AI产业高速增长，影响科技股估值。",
+     "t": "美国中期选举后AI股遭抛售",
+     "d": "美国民主党在本周中期选举中获胜并控制国会后，投资者担忧数据中心监管加强，导致纳斯达克科技股大幅下跌。此举反映出AI热潮面临政策风险，可能抑制行业增长。",
      "src": [
       {
        "n": "BBC",
@@ -20,23 +20,23 @@
      "full": true
     },
     {
-     "t": "纳斯达克失逾2万亿美元市值",
-     "d": "受民主党胜选引发的AI监管预期影响，纳斯达克指数单日下跌5.5%，市值蒸发逾2万亿美元，芯片股领跌，全球市场波动加剧。此跌幅凸显监管不确定性对AI及相关硬件行业的冲击。",
+     "t": "俄美阻挫联合国自主武器规则谈判",
+     "d": "在日内瓦第七次常规武器审查会议前，俄罗斯、美国等国联手阻止推进具有约束力的自主武器条约草案。此举使全球对AI武器的监管进程受挫，增加了战争中无人系统失控的风险。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/business/2026/nov/05/nasdaq-heading-for-worst-day-in-18-months-as-wall-street-sustains-widespread-losses"
+       "u": "https://www.theguardian.com/world/2026/nov/06/autonomous-weapons-ai-russia-us-binding-rules"
       }
      ],
      "full": true
     },
     {
-     "t": "激进组织冲进阿姆斯特丹微软数据中心",
-     "d": "荷兰直接行动组织在阿姆斯特丹一处微软AI数据中心工地突破围栏，爬上起重机并点燃照明弹，抗议AI对环境和社会的负面影响。此事件反映欧洲公众对AI基础设施扩张的强烈反感，可能增加行业合规压力。",
+     "t": "纳斯达克跌逾5% 市值蒸发逾2万亿美元",
+     "d": "因民主党掌握国会被视将收紧AI数据中心扩张，纳斯达克指数单日下跌5.5%，科技股市值削减约2万亿美元，波动波及亚洲市场。此行情突显监管不确定性对AI相关公司的估值冲击。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/world/2026/nov/06/activists-break-into-building-site-of-microsoft-datacentre-in-amsterdam"
+       "u": "https://www.theguardian.com/business/2026/nov/05/nasdaq-heading-for-worst-day-in-18-months-as-wall-street-sustains-widespread-losses"
       }
      ],
      "full": true
@@ -130,8 +130,23 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "民主党获胜后科技股市值蒸发近1万亿美元",
-     "d": "美国中期选举后，全球科技公司市值大幅缩水，反映出对AI监管和政策收紧的担忧，直接冲击市场情绪。",
+     "t": "抗议者闯入微软阿姆斯特丹AI数据中心工地",
+     "d": "超过100名活动人士在阿姆斯特丹的微软AI数据中心施工现场冲入并悬挂横幅，标志着在16个国家同步进行的反AI基础设施抗议。此事件显示公众对AI快速扩张及其环境影响的抵触情绪升级。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/6/protesters-break-into-microsoft-ai-data-centre-site-in-amsterdam?traffic_source=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/06/activists-break-into-building-site-of-microsoft-datacentre-in-amsterdam"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "民主党胜选后科技巨头市值蒸发1万亿美元",
+     "d": "美国、中欧、亚洲科技股因担忧AI监管收紧和行业放缓，累计市值在一日内骤降约1万亿美元，显著冲击全球市场情绪。",
      "src": [
       {
        "n": "法国24",
@@ -144,8 +159,8 @@
      ]
     },
     {
-     "t": "AI股在大跌后回升",
-     "d": "在美国中期选举后AI相关股票大幅抛售后，纳斯达克次日回升1.4%，部分芯片公司如AMD、Micron恢复涨幅。市场情绪短期波动显示投资者在监管担忧与强劲就业数据之间权衡，AI板块仍具不确定性。",
+     "t": "AI股在大幅抛售后出现小幅回升",
+     "d": "在因民主党胜选引发的AI监管担忧导致的股市暴跌后，纳斯达克指数回升1.1%，部分AI公司市值回弹。此波动表明市场在消化监管预期与高额AI投资回报之间的矛盾。",
      "src": [
       {
        "n": "BBC",
@@ -157,28 +172,13 @@
       }
      ],
      "full": true
-    },
-    {
-     "t": "超过百名激进分子闯入微软阿姆斯特丹数据中心",
-     "d": "超过100名活动人士冲入微软在阿姆斯特丹的AI数据中心建设现场，爬上起重机并悬挂反AI横幅，标志着跨16国、为期两天的抗议行动启动。此举凸显全球范围内对AI基础设施快速扩张的社会抵制，可能促使监管审查加强。",
-     "src": [
-      {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/6/protesters-break-into-microsoft-ai-data-centre-site-in-amsterdam?traffic_source=rss"
-      },
-      {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/world/2026/nov/06/activists-break-into-building-site-of-microsoft-datacentre-in-amsterdam"
-      }
-     ],
-     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "民主党获胜后科技股市值蒸发近1万亿美元",
-  "d": "此次市值跌幅规模空前，直接连结政治走向、监管预期与全球科技板块表现，是今日最具市场影响力的事件。"
+  "t": "民主党胜选后科技巨头市值蒸发1万亿美元",
+  "d": "此事件直接导致全球股市大幅波动，凸显政治因素对AI及科技行业估值的敏感性，值得重点关注。"
  },
  "week": []
 }
