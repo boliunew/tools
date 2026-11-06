@@ -1,78 +1,78 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-05T18:58:27Z",
- "date": "2026-11-05",
+ "generated": "2026-11-06T17:34:26Z",
+ "date": "2026-11-06",
  "engine": "edge",
- "total": 517.9,
- "short": 327.1,
+ "total": 474.2,
+ "short": 289.1,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611051056",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611060932",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月5日 星期四",
-   "dur": 9.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611051056",
+   "sub": "11月6日 星期五",
+   "dur": 10.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "今天是11月5日，星期四。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
+     "t": "周五了，坚持一下就周末了！11月6日，星期五，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 阴天 78°/52°F",
-   "dur": 27.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611051056",
+   "sub": "Upland 晴 80°/56°F",
+   "dur": 29.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天阴天。早上7点出门大约华氏54度，12摄氏度。傍晚5点下班大约华氏70度，21摄氏度，体感64度。白天最高78度，约25摄氏度；最低52度。基本不会下雨。白天空气质量中等，指数最高59。今天日落时间是傍晚4点53分。"
+     "t": "Upland今天晴。早上7点出门大约华氏57度，14摄氏度，体感53度。傍晚5点下班大约华氏72度，22摄氏度，体感66度。白天最高80度，约27摄氏度；最低56度。基本不会下雨。白天空气质量良好，指数最高44。今天日落时间是傍晚4点53分。"
     }
    ]
   },
   {
    "id": "market",
    "title": "📊 大盘",
-   "sub": "谨慎",
-   "dur": 29.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611051056",
+   "sub": "防守",
+   "dur": 34.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月4日收盘。标普500 ETF 上涨1.7%，纳指100 ETF 上涨1.0%。恐慌指数VIX 16.6，正常水平。标普成分股里，72%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股11月5日收盘。标普500 ETF 下跌4.4%，纳指100 ETF 下跌6.5%。恐慌指数VIX 28.2，偏高，市场有点紧张。标普成分股里，63%站上了50日均线。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "35 个候选",
-   "dur": 61.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611051056",
+   "sub": "21 个候选",
+   "dur": 66.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天35个候选，评分最高的是Best Buy，代码 B B Y。不想听细节可以按下一首。"
+     "t": "股票池今天21个候选，评分最高的是Marathon Petroleum，代码 M P C。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中血筹码12个，RSI2 超跌反弹10个，强势新高5个，挤压突破5个，回踩金坑3个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，血筹码5个，强势新高3个，挤压突破1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Best Buy，代码 B B Y，强势新高信号，收盘价101.36美元，止损参考94.19。"
+     "t": "第1，Marathon Petroleum，代码 M P C，RSI2 超跌反弹信号，收盘价377.32美元，止损参考326.29。"
     },
     {
      "lang": "zh",
-     "t": "第2，CDW，代码 C D W，强势新高信号，收盘价168.75美元，止损参考153.55。"
+     "t": "第2，Phillips 66，代码 P S X，RSI2 超跌反弹信号，收盘价247.04美元，止损参考219.55。"
     },
     {
      "lang": "zh",
-     "t": "第3，Centene，代码 C N C，强势新高信号，收盘价76.01美元，止损参考69.68。"
+     "t": "第3，Valero Energy，代码 V L O，RSI2 超跌反弹信号，收盘价351.23美元，止损参考302.79。"
     },
     {
      "lang": "zh",
@@ -83,50 +83,30 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "6 件大事",
-   "dur": 62.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611051056",
+   "sub": "2 件大事",
+   "dur": 18.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有3家大公司发财报。"
+     "t": "今天，有2家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "ConocoPhillips，代码 C O P，盘前发财报。期权定价波动正负2.8%。标签：利好出尽型。"
+     "t": "Enbridge，代码 E N B，盘前发财报。期权定价波动正负4.9%。"
     },
     {
      "lang": "zh",
-     "t": "Sony，代码 S O N Y，盘前发财报。标签：财报日常涨。"
-    },
-    {
-     "lang": "zh",
-     "t": "Monster Beverage，代码 M N S T，盘后发财报。期权定价波动正负7.7%。标签：已提前炒作。"
-    },
-    {
-     "lang": "zh",
-     "t": "明天，有3家大公司发财报。"
-    },
-    {
-     "lang": "zh",
-     "t": "Berkshire Hathaway，代码 B R K - A，盘后发财报。标签：利好出尽型、财报日常跌。"
-    },
-    {
-     "lang": "zh",
-     "t": "Berkshire Hathaway，代码 B R K - B，盘后发财报。标签：利好出尽型、财报日常跌。"
-    },
-    {
-     "lang": "zh",
-     "t": "Enbridge，代码 E N B，盘前发财报。期权定价波动正负4.8%。"
+     "t": "Moderna，代码 M R N A，盘前发财报。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "NPR · The Guardian · Al Jazeera",
-   "dur": 96.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611051056",
+   "sub": "BBC · NPR · The Guardian",
+   "dur": 87.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
@@ -134,48 +114,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自NPR，综合，难度B2。大意是：鲍勃·迪伦敲开教皇的大门，狮子座欢迎传奇人物来到梵蒂冈。"
+     "t": "第1条，来自BBC，科学，难度B2。大意是：在动物园出生的「超级特别」罗望子双胞胎。"
     },
     {
      "lang": "en",
-     "t": "Bob Dylan comes knockin' on pope's door as Leo welcomes legend to Vatican"
+     "t": "'Extra special' tamarin twins born at zoo"
     },
     {
      "lang": "en",
-     "t": "The American singer-songwriter and poet visited with the American pope at the Vatican during a break between concert dates in Italy."
+     "t": "Shaldon Wildlife Trust says it is one of two European zoos to breed the species in 2026."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自The Guardian，国际，难度B2。大意是：Beau Lamarre-Condon告诉双重谋杀审判，他通过Jesse Baird的手机将水倒入他的油箱。"
+     "t": "第2条，来自NPR，综合，难度B1。大意是：这些是众议院和参议院中尚未被召集的比赛。"
     },
     {
      "lang": "en",
-     "t": "Beau Lamarre-Condon tells double murder trial he went through Jesse Baird’s phone and poured water into his fuel tank"
+     "t": "These are the races in the House and Senate that haven't been called yet"
     },
     {
      "lang": "en",
-     "t": "Former police officer gives evidence in court after pleading not guilty to murdering Baird and Luke Davies in early 2024 The day in court: Beau Lamarre-Condon gives evidence in murder trial Get our breaking news email, free app or daily new"
+     "t": "Democrats are poised to have a strong majority in the upcoming Congress."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：新西兰为刀锋选举做好准备：您需要了解的信息。"
+     "t": "第3条，来自The Guardian，科技，难度B2。大意是：在民主党大选胜利后，由于投资者押注人工智能放缓，美国科技股大幅下跌。"
     },
     {
      "lang": "en",
-     "t": "New Zealand braces for knife-edge election: What you need to know"
+     "t": "US tech shares fall sharply as investors bet on AI slowdown after Democrats’ election triumph"
     },
     {
      "lang": "en",
-     "t": "Smaller parties hold the key, with major contenders expected to fall short of the majority needed to govern alone."
+     "t": "Nasdaq heading for its worst day in 18 months in volatile trading on Wall Street The Nasdaq share index was on track for its worst day in 18 months after slumping by up to 5% on Thursday amid growing signs that the artificial intelligence i"
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "photograph · gris",
-   "dur": 33.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611051056",
+   "sub": "civilization · manejar",
+   "dur": 35.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
@@ -183,15 +163,15 @@
     },
     {
      "lang": "en",
-     "t": "photograph"
+     "t": "civilization"
     },
     {
      "lang": "zh",
-     "t": "意思是：照片。拼写是："
+     "t": "意思是：文明。拼写是："
     },
     {
      "lang": "en",
-     "t": "p, h, o, t, o, g, r, a, p, h"
+     "t": "c, i, v, i, l, i, z, a, t, i, o, n"
     },
     {
      "lang": "zh",
@@ -199,7 +179,7 @@
     },
     {
      "lang": "en",
-     "t": "photograph"
+     "t": "civilization"
     },
     {
      "lang": "zh",
@@ -207,44 +187,44 @@
     },
     {
      "lang": "es",
-     "t": "gris"
+     "t": "manejar"
     },
     {
      "lang": "zh",
-     "t": "意思是：灰色的。跟着读一遍。"
+     "t": "意思是：开车。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "gris"
+     "t": "manejar"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 24.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611051056",
+   "sub": "易错",
+   "dur": 21.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天说一个常见错误。不要说："
     },
     {
      "lang": "en",
-     "t": "In skating over thin ice, our safety is in our speed."
+     "t": "People mountain people sea"
     },
     {
      "lang": "zh",
-     "t": "意思是：在薄冰上滑行，速度就是安全。这句话出自 Ralph Waldo Emerson。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "应该说："
     },
     {
      "lang": "en",
-     "t": "In skating over thin ice, our safety is in our speed."
+     "t": "It's packed with people"
+    },
+    {
+     "lang": "zh",
+     "t": "人山人海。逐字翻译不成立；可以说 huge crowds 或 packed with people"
     }
    ],
    "opt": true
@@ -252,61 +232,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "指挥倒车与安全",
-   "dur": 65.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611051056",
+   "sub": "和司机打交道",
+   "dur": 70.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：指挥倒车与安全。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：和司机打交道。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "方向盘往右打。"
+     "t": "去 18 号门，在你左边。"
     },
     {
      "lang": "en",
-     "t": "Turn your wheel to the right."
+     "t": "Go to door eighteen, on your left."
     },
     {
      "lang": "en",
-     "t": "Turn your wheel to the right."
+     "t": "Go to door eighteen, on your left."
     },
     {
      "lang": "zh",
-     "t": "往前开一点再来一次。"
+     "t": "放在 40 号位。"
     },
     {
      "lang": "en",
-     "t": "Pull forward and try again."
+     "t": "Drop it in spot forty."
     },
     {
      "lang": "en",
-     "t": "Pull forward and try again."
+     "t": "Drop it in spot forty."
     },
     {
      "lang": "zh",
-     "t": "你还有大概五英尺。"
+     "t": "是现场卸货还是甩挂？"
     },
     {
      "lang": "en",
-     "t": "You've got about five feet."
+     "t": "Is this a live unload or a drop?"
     },
     {
      "lang": "en",
-     "t": "You've got about five feet."
+     "t": "Is this a live unload or a drop?"
     },
     {
      "lang": "zh",
-     "t": "注意右边的柱子。"
+     "t": "你得等大概三十分钟。"
     },
     {
      "lang": "en",
-     "t": "Watch the pole on your right."
+     "t": "You'll have to wait about thirty minutes."
     },
     {
      "lang": "en",
-     "t": "Watch the pole on your right."
+     "t": "You'll have to wait about thirty minutes."
     },
     {
      "lang": "zh",
@@ -318,13 +298,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "一键重制：模糊照片变清楚",
-   "dur": 16.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611051056",
+   "sub": "离线地图：没信号也能导航",
+   "dur": 18.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：一键重制：模糊照片变清楚。老照片、糊图救一救。做法：相册打开照片，点 ⋮ →「重制」（Remaster）；拖动中间的分隔线，对比修复前后；满意就保存。"
+     "t": "今日一招：离线地图：没信号也能导航。偏远地方、山里照样能走。做法：Google Maps 点右上角头像 → 离线地图；点「选择你自己的地图」，框出要下载的范围；下载后没信号也能导航开车。"
     }
    ],
    "opt": true
@@ -332,13 +312,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1911 · 1922 · 2007",
-   "dur": 25.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611051056",
+   "sub": "1985 · 2002 · 2016",
+   "dur": 26.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1911年，意大利王国吞并奥斯曼帝国的北非省份的黎波里于昔兰尼加。1922年，共产国际第四次代表大会于彼得格勒和莫斯科举行。2007年，作为中国探月工程第一阶段的嫦娥一号人造卫星进入环月轨道，为中国首颗绕月人造卫星。"
+     "t": "历史上的今天。1985年，欧盟的研究组织尤里卡计划公布组织原则。2002年，姜力钧因参与署名给中共十六大的亲民主请愿而被逮捕。2016年，叙利亚内战：叙利亚民主力量发动了一场成功的军事行动，成功将伊斯兰国的首都拉卡包围，并最终攻占该城。"
     }
    ],
    "opt": true
@@ -346,21 +326,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "临江仙·夜归临皋",
-   "dur": 59.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611051056",
+   "sub": "卜算子·黄州定慧院寓居作",
+   "dur": 48.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：临江仙·夜归临皋。写于1082年，他45岁，在黄州临皋亭。"
+     "t": "读一首苏轼：卜算子·黄州定慧院寓居作。写于1082年，他45岁，在黄州定慧院。"
     },
     {
      "lang": "zh",
-     "t": "夜饮东坡醒复醉，归来仿佛三更。家童鼻息已雷鸣。敲门都不应，倚杖听江声。长恨此身非我有，何时忘却营营。夜阑风静縠纹平。小舟从此逝，江海寄余生。"
+     "t": "缺月挂疏桐，漏断人初静。谁见幽人独往来，缥缈孤鸿影。惊起却回头，有恨无人省。拣尽寒枝不肯栖，寂寞沙洲冷。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：夜里在东坡饮酒，醒了又醉，回到家时大约已是三更。家童早已睡熟，鼾声如雷。我怎么敲门都没人应，只好拄着拐杖，站在门外听江水的声音。我常常遗憾这身子不由自己做主，什么时候才能忘掉这些奔波钻营？夜深了，风停了，江面上的细波也平了。真想就此乘一叶小舟离去，在江海之间度过余生。"
+     "t": "白话意思是：残缺的月亮挂在稀疏的梧桐枝上，夜已深，人声刚刚安静下来。谁看见幽居的人独自徘徊？只有那隐隐约约的孤雁的影子。孤雁受惊飞起，又频频回头，心中有遗憾却没人理解。它挑遍了寒冷的树枝也不肯栖息，宁愿落在寂寞寒冷的沙洲上。"
     }
    ],
    "opt": true
@@ -370,7 +350,7 @@
    "title": "👋 结束",
    "sub": "开车注意安全",
    "dur": 6.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611051056",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611060932",
    "text": [
     {
      "lang": "zh",
