@@ -12,7 +12,8 @@
 // 环境：AI（Workers AI 绑定）、KV（去重 / 状态）、CHECK、SITE、TEST_KEY、TG_BOT_TOKEN、TG_CHAT_ID
 
 const ORIGINS = [/^https:\/\/boliunew\.github\.io$/, /^http:\/\/localhost(:\d+)?$/, /^https?:\/\/[a-z0-9-]+\.ts\.net$/];
-const VISION = ['@cf/meta/llama-4-scout-17b-16e-instruct', '@cf/google/gemma-3-12b-it', '@cf/meta/llama-3.2-11b-vision-instruct'];
+// gemma-3-12b 对这个账号报 5018「not allowed to access」，备用换成同样认图的 mistral-small-3.1（只在前一个失败时用）
+const VISION = ['@cf/meta/llama-4-scout-17b-16e-instruct', '@cf/mistralai/mistral-small-3.1-24b-instruct', '@cf/meta/llama-3.2-11b-vision-instruct'];
 
 // ---------------------------------------------------------------------------- ISO 6346
 const LV = (() => { const m = {}; let v = 10; for (const c of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') { if (v % 11 === 0) v++; m[c] = v++; } return m; })();

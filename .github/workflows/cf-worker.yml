@@ -21,6 +21,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2   # 部署后的 AI 测试只测这次改到的部分，要看上一个提交
       - run: pip install -q pillow
       - name: Deploy
         env:
