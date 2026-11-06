@@ -80,6 +80,27 @@ if [ -n "${TG_BOT_TOKEN:-}" ]; then
 fi
 
 # 7. 冒烟测试
+# 每个 AI 测试都花 Workers AI 免费额度（每天 10,000 neurons，和拍照认柜号等功能共用），所以只测这次改到的部分；
+# 手动运行这个工作流，或改了共用的 AI 函数，才全部测一遍。也可以设环境变量 AI_TESTS=all / ocr,local 指定。
+if [ -z "${AI_TESTS:-}" ]; then
+  if [ "${GITHUB_EVENT_NAME:-}" = "workflow_dispatch" ] || ! git rev-parse -q --verify HEAD~1 >/dev/null 2>&1; then AI_TESTS=all
+  else
+    # 看改动的行，加上它们所在的函数名（diff 每段开头 @@ 后面那个），用代码里的名字判断，不看中文注释
+    D=$(git diff -U0 HEAD~1 HEAD -- cf/ 2>/dev/null | grep -E '^[+-]|^@@' | grep -vE '^(\+\+\+|---) ' | sed -E 's/^@@[^@]*@@ ?(.*)$/\1/' || true)
+    if echo "$D" | grep -qE 'function (llm|aiText|parseJSON|authed|track)\b|const (LLM|VISION)\b'; then AI_TESTS=all
+    else
+      t=""
+      echo "$D" | grep -qE '\bocr\b|/ocr|OCR_|VISION|6346' && t="$t,ocr"
+      echo "$D" | grep -qE 'selftest|WHISPER|whisper|translat|melotts' && t="$t,selftest"
+      echo "$D" | grep -qE '\bexplain|EXPLAIN' && t="$t,explain"
+      echo "$D" | grep -qE '\bagent[A-Z(]|/agent|AGENT_|\bgnews\b' && t="$t,agent"
+      echo "$D" | grep -qE '\blocal[A-Z(_]|LOCAL_|/local|\bosm|OVERPASS|overpass|checkNames|local_call' && t="$t,local"
+      AI_TESTS=${t#,}
+    fi
+  fi
+fi
+export AI_TESTS
+note "AI 测试：${AI_TESTS:-这次都没改到，全部跳过（省额度）}"
 for i in 1 2 3 4 5 6; do h=$(curl -sS "$URL/health"); echo "$h" | jq -e .ok >/dev/null 2>&1 && break; sleep 10; done
 note "已部署 $URL ｜ health: $h"
 python3 - "$URL" "$TEST_KEY" <<'PY'
@@ -87,6 +108,11 @@ import base64, io, json, sys, urllib.request
 from PIL import Image, ImageDraw, ImageFont
 url, key = sys.argv[1], sys.argv[2]
 UA = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Mobile Safari/537.36"
+import os
+AI_TESTS, SKIP = os.environ.get("AI_TESTS", "all"), []
+def want(k):
+    if AI_TESTS == "all" or k in AI_TESTS.split(","): return True
+    SKIP.append(k); return False
 img = Image.new("RGB", (900, 520), (178, 34, 34))           # 红色箱门
 d = ImageDraw.Draw(img)
 try:
@@ -112,36 +138,40 @@ for attempt in range(4):   # 新密钥生效要几秒
         time.sleep(10)
     except Exception:
         time.sleep(5)
-try:
-    r = json.loads(urllib.request.urlopen(req, timeout=90).read())
-    best = (r.get("containers") or [{}])[0]
-    print("::notice title=柜号识别测试::%s ｜ 期望 CSQU3054383，读到 %s（校验%s）｜ %s ms ｜ 全部：%s" % (
-        r.get("model"), best.get("no"), "通过" if best.get("ok") else "不通过", r.get("ms"), json.dumps(r, ensure_ascii=False)[:600]))
-except urllib.error.HTTPError as e:
-    print("::warning title=柜号识别测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
-except Exception as e:
-    print("::warning title=柜号识别测试::%s" % e)
-try:
-    st = urllib.request.urlopen(urllib.request.Request(url + "/selftest", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA}), timeout=120).read().decode()
-    print("::notice title=机器人自检（翻译 / 朗读 / 听写）::" + st[:900])
-except Exception as e:
-    print("::warning title=机器人自检::%s" % e)
-try:
-    body = json.dumps({"sentence": "The company has been struggling to keep up with demand since prices dropped, and analysts expect it to lay off workers if sales do not pick up by spring.", "nocache": True}).encode()
-    r = json.loads(urllib.request.urlopen(urllib.request.Request(url + "/explain", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=90).read())
-    print("::notice title=讲讲这句测试::" + json.dumps(r, ensure_ascii=False)[:1800])
-except urllib.error.HTTPError as e:
-    print("::warning title=讲讲这句测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
-except Exception as e:
-    print("::warning title=讲讲这句测试::%s" % e)
-try:
-    body = json.dumps({"task": {"name": "港口物流（部署自检）", "kw": "Port of Long Beach OR Port of Los Angeles", "tickers": "ZIM", "prompt": "有影响港口作业的大事才说", "mode": "watch"}}).encode()
-    r = urllib.request.urlopen(urllib.request.Request(url + "/agent/run", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=120).read().decode()
-    print("::notice title=AI 跑腿测试::" + r[:1500])
-except urllib.error.HTTPError as e:
-    print("::warning title=AI 跑腿测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
-except Exception as e:
-    print("::warning title=AI 跑腿测试::%s" % e)
+if want("ocr"):
+    try:
+        r = json.loads(urllib.request.urlopen(req, timeout=90).read())
+        best = (r.get("containers") or [{}])[0]
+        print("::notice title=柜号识别测试::%s ｜ 期望 CSQU3054383，读到 %s（校验%s）｜ %s ms ｜ 全部：%s" % (
+            r.get("model"), best.get("no"), "通过" if best.get("ok") else "不通过", r.get("ms"), json.dumps(r, ensure_ascii=False)[:600]))
+    except urllib.error.HTTPError as e:
+        print("::warning title=柜号识别测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
+    except Exception as e:
+        print("::warning title=柜号识别测试::%s" % e)
+if want("selftest"):
+    try:
+        st = urllib.request.urlopen(urllib.request.Request(url + "/selftest", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA}), timeout=120).read().decode()
+        print("::notice title=机器人自检（翻译 / 朗读 / 听写）::" + st[:900])
+    except Exception as e:
+        print("::warning title=机器人自检::%s" % e)
+if want("explain"):
+    try:
+        body = json.dumps({"sentence": "The company has been struggling to keep up with demand since prices dropped, and analysts expect it to lay off workers if sales do not pick up by spring.", "nocache": True}).encode()
+        r = json.loads(urllib.request.urlopen(urllib.request.Request(url + "/explain", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=90).read())
+        print("::notice title=讲讲这句测试::" + json.dumps(r, ensure_ascii=False)[:1800])
+    except urllib.error.HTTPError as e:
+        print("::warning title=讲讲这句测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
+    except Exception as e:
+        print("::warning title=讲讲这句测试::%s" % e)
+if want("agent"):
+    try:
+        body = json.dumps({"task": {"name": "港口物流（部署自检）", "kw": "Port of Long Beach OR Port of Los Angeles", "tickers": "ZIM", "prompt": "有影响港口作业的大事才说", "mode": "watch"}}).encode()
+        r = urllib.request.urlopen(urllib.request.Request(url + "/agent/run", data=body, method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=120).read().decode()
+        print("::notice title=AI 跑腿测试::" + r[:1500])
+    except urllib.error.HTTPError as e:
+        print("::warning title=AI 跑腿测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
+    except Exception as e:
+        print("::warning title=AI 跑腿测试::%s" % e)
 def local_call(body):   # 📍 本地通：和网页一样两步走——后端要地点清单时，由这台机器去问 OpenStreetMap
     post = lambda b: json.loads(urllib.request.urlopen(urllib.request.Request(url + "/local", data=json.dumps(b).encode(), method="POST", headers={"Content-Type": "application/json", "X-Tools-Key": key, "User-Agent": UA}), timeout=240).read())
     r = post(body)
@@ -158,27 +188,29 @@ def local_call(body):   # 📍 本地通：和网页一样两步走——后端�
         r = post(dict(body, **({"osm": osm} if osm else {"noosm": True})))
     return r
 import urllib.parse
-try:
-    r = local_call({"lat": 34.0975, "lon": -117.6484})   # Upland：有缓存就走缓存（不花 AI 额度），只在缓存过期 / 版本号升级后才真生成一次
-    g = r.get("guide") or {}
-    print("::notice title=本地通测试::%s ｜ %s ms ｜ 数据 %s ｜ 各栏数量 %s ｜ 简介：%s ｜ 吃喝示例：%s" % (
-        json.dumps(r.get("place"), ensure_ascii=False), r.get("ms"), json.dumps(r.get("stats")),
-        json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), (g.get("intro") or [""])[0][:200],
-        json.dumps((g.get("eat") or [{}])[:3], ensure_ascii=False)[:1200]))
-    print("::notice title=本地通诊断::" + " ｜ ".join(r.get("diag") or []))
-    r = local_call({"q": "Portland, Oregon"})   # 输入城市名这条路（同样走缓存）
-    g = r.get("guide") or {}
-    print("::notice title=本地通测试（输入城市）::%s %s ｜ cached=%s ｜ %s ms ｜ 数据 %s ｜ 各栏数量 %s ｜ %s ｜ 吃喝示例：%s" % ((r.get("place") or {}).get("zh"), (r.get("place") or {}).get("en"), r.get("cached"), r.get("ms"), json.dumps(r.get("stats")),
-        json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), " ｜ ".join(r.get("diag") or []), json.dumps((g.get("eat") or [{}])[:2], ensure_ascii=False)[:800]))
-except urllib.error.HTTPError as e:
-    print("::warning title=本地通测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
-except Exception as e:
-    print("::warning title=本地通测试::%s" % e)
+if want("local"):
+    try:
+        r = local_call({"lat": 34.0975, "lon": -117.6484})   # Upland：有缓存就走缓存（不花 AI 额度），只在缓存过期 / 版本号升级后才真生成一次
+        g = r.get("guide") or {}
+        print("::notice title=本地通测试::%s ｜ %s ms ｜ 数据 %s ｜ 各栏数量 %s ｜ 简介：%s ｜ 吃喝示例：%s" % (
+            json.dumps(r.get("place"), ensure_ascii=False), r.get("ms"), json.dumps(r.get("stats")),
+            json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), (g.get("intro") or [""])[0][:200],
+            json.dumps((g.get("eat") or [{}])[:3], ensure_ascii=False)[:1200]))
+        print("::notice title=本地通诊断::" + " ｜ ".join(r.get("diag") or []))
+        r = local_call({"q": "Portland, Oregon"})   # 输入城市名这条路（同样走缓存）
+        g = r.get("guide") or {}
+        print("::notice title=本地通测试（输入城市）::%s %s ｜ cached=%s ｜ %s ms ｜ 数据 %s ｜ 各栏数量 %s ｜ %s ｜ 吃喝示例：%s" % ((r.get("place") or {}).get("zh"), (r.get("place") or {}).get("en"), r.get("cached"), r.get("ms"), json.dumps(r.get("stats")),
+            json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), " ｜ ".join(r.get("diag") or []), json.dumps((g.get("eat") or [{}])[:2], ensure_ascii=False)[:800]))
+    except urllib.error.HTTPError as e:
+        print("::warning title=本地通测试::HTTP %s %s" % (e.code, e.read()[:600].decode("utf-8", "replace")))
+    except Exception as e:
+        print("::warning title=本地通测试::%s" % e)
 req = urllib.request.Request(url + "/intraday?force=1", data=b"", method="POST", headers={"X-Tools-Key": key, "User-Agent": UA})
 try:
     print("::notice title=盘中提醒测试::" + urllib.request.urlopen(req, timeout=60).read().decode()[:600])
 except Exception as e:
     print("::warning title=盘中提醒测试::%s" % e)
+if SKIP: print("::notice title=跳过的 AI 测试::%s（这次没改到相关代码，省 Workers AI 额度；手动运行「Cloudflare 后端」工作流会全部测一遍）" % "、".join(SKIP))
 PY
 
 # 8. 把接口地址告诉网页
