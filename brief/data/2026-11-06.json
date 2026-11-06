@@ -1,0 +1,184 @@
+{
+ "date": "2026-11-06",
+ "generated": "2026-11-06T20:29:15Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "美中期选举后AI股大跌",
+     "d": "美国民主党在本周中期选举获全席位后，因其反对大规模数据中心扩建的立场，导致纳斯达克科技股大幅下跌，投资者担忧AI监管加严。此事显示政治因素可能抑制AI产业高速增长，影响科技股估值。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/crlykkzwwpydo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "纳斯达克失逾2万亿美元市值",
+     "d": "受民主党胜选引发的AI监管预期影响，纳斯达克指数单日下跌5.5%，市值蒸发逾2万亿美元，芯片股领跌，全球市场波动加剧。此跌幅凸显监管不确定性对AI及相关硬件行业的冲击。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/business/2026/nov/05/nasdaq-heading-for-worst-day-in-18-months-as-wall-street-sustains-widespread-losses"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "激进组织冲进阿姆斯特丹微软数据中心",
+     "d": "荷兰直接行动组织在阿姆斯特丹一处微软AI数据中心工地突破围栏，爬上起重机并点燃照明弹，抗议AI对环境和社会的负面影响。此事件反映欧洲公众对AI基础设施扩张的强烈反感，可能增加行业合规压力。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/world/2026/nov/06/activists-break-into-building-site-of-microsoft-datacentre-in-amsterdam"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/5 周四 收盘：标普500 ETF（SPY）-4.41%，纳指100 ETF（QQQ）-6.49%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 28.2；63% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：APP +31.0%、TPR +7.1%、VRSK +6.9%；跌幅最大：SNDK -22.3%、LITE -18.7%、MU -17.5%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：ENB（盘前）、MRNA（盘前）、BAM（盘前）、HUM（盘前）、HMC（时间未定）",
+     "d": "按市值挑出最大的几家，共 11 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/6 周五）",
+     "d": "Initial Jobless Claims 实际 189K（预期 197K，前值 195K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/6 周五 09:10：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/10 周二 08:40：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/11 周三 08:30：CPI 通胀数据（重要性：高）",
+     "d": "高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "民主党获胜后科技股市值蒸发近1万亿美元",
+     "d": "美国中期选举后，全球科技公司市值大幅缩水，反映出对AI监管和政策收紧的担忧，直接冲击市场情绪。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261106-tech-giants-lose-1-trillion-in-one-day-after-democrats-victory-in-midterms"
+      },
+      {
+       "n": "BBC 美加",
+       "u": "https://www.bbc.co.uk/news/articles/c35ynnpzdq51o?at_medium=RSS&at_campaign=rss"
+      }
+     ]
+    },
+    {
+     "t": "AI股在大跌后回升",
+     "d": "在美国中期选举后AI相关股票大幅抛售后，纳斯达克次日回升1.4%，部分芯片公司如AMD、Micron恢复涨幅。市场情绪短期波动显示投资者在监管担忧与强劲就业数据之间权衡，AI板块仍具不确定性。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c35ynnpzdq51o?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261106-tech-giants-lose-1-trillion-in-one-day-after-democrats-victory-in-midterms"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "超过百名激进分子闯入微软阿姆斯特丹数据中心",
+     "d": "超过100名活动人士冲入微软在阿姆斯特丹的AI数据中心建设现场，爬上起重机并悬挂反AI横幅，标志着跨16国、为期两天的抗议行动启动。此举凸显全球范围内对AI基础设施快速扩张的社会抵制，可能促使监管审查加强。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/6/protesters-break-into-microsoft-ai-data-centre-site-in-amsterdam?traffic_source=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/06/activists-break-into-building-site-of-microsoft-datacentre-in-amsterdam"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "民主党获胜后科技股市值蒸发近1万亿美元",
+  "d": "此次市值跌幅规模空前，直接连结政治走向、监管预期与全球科技板块表现，是今日最具市场影响力的事件。"
+ },
+ "week": []
+}
