@@ -1,16 +1,16 @@
 {
- "date": "2026-11-05",
- "kind": "名言",
- "en": "In skating over thin ice, our safety is in our speed.",
- "zh": "在薄冰上滑行，速度就是安全。",
- "by": "Ralph Waldo Emerson",
- "line": "In skating over thin ice, our safety is in our speed. — Ralph Waldo Emerson",
+ "date": "2026-11-06",
+ "kind": "易错",
+ "en": "It's packed with people",
+ "zh": "人山人海",
+ "by": "逐字翻译不成立；可以说 huge crowds 或 packed with people",
+ "line": "✗ People mountain people sea → ✓ It's packed with people",
  "word": {
-  "w": "intermediate",
-  "ph": ".intә'mi:diәt",
-  "zh": "n. 中间物，调停者，中级；a. 中间的，中级的",
-  "ex": "My level in English is intermediate.",
-  "exzh": "我英文水平中等。"
+  "w": "morality",
+  "ph": "mә'ræliti",
+  "zh": "n. 道德，教训，品行",
+  "ex": "In the height of her morality, good woman! she offered to forgive the past, if I would marry Eliza.",
+  "exzh": "这位好心的女人道德感满满，说只要我娶伊丽莎，过去的事就一笔勾销。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
