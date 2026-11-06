@@ -159,14 +159,14 @@ def local_call(body):   # 📍 本地通：和网页一样两步走——后端�
     return r
 import urllib.parse
 try:
-    r = local_call({"lat": 34.0975, "lon": -117.6484, "nocache": True})   # Upland 从头生成一次（顺便刷新它的缓存）
+    r = local_call({"lat": 34.0975, "lon": -117.6484})   # Upland：有缓存就走缓存（不花 AI 额度），只在缓存过期 / 版本号升级后才真生成一次
     g = r.get("guide") or {}
     print("::notice title=本地通测试::%s ｜ %s ms ｜ 数据 %s ｜ 各栏数量 %s ｜ 简介：%s ｜ 吃喝示例：%s" % (
         json.dumps(r.get("place"), ensure_ascii=False), r.get("ms"), json.dumps(r.get("stats")),
         json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), (g.get("intro") or [""])[0][:200],
         json.dumps((g.get("eat") or [{}])[:3], ensure_ascii=False)[:1200]))
     print("::notice title=本地通诊断::" + " ｜ ".join(r.get("diag") or []))
-    r = local_call({"q": "Portland, Oregon"})   # 输入城市名这条路（第一次生成，以后走缓存）
+    r = local_call({"q": "Portland, Oregon"})   # 输入城市名这条路（同样走缓存）
     g = r.get("guide") or {}
     print("::notice title=本地通测试（输入城市）::%s %s ｜ cached=%s ｜ %s ms ｜ 数据 %s ｜ 各栏数量 %s ｜ %s ｜ 吃喝示例：%s" % ((r.get("place") or {}).get("zh"), (r.get("place") or {}).get("en"), r.get("cached"), r.get("ms"), json.dumps(r.get("stats")),
         json.dumps({k: len(v) for k, v in g.items()}, ensure_ascii=False), " ｜ ".join(r.get("diag") or []), json.dumps((g.get("eat") or [{}])[:2], ensure_ascii=False)[:800]))

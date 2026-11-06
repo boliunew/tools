@@ -933,7 +933,9 @@ async function agentApi(req, env, url) {
 // 再让 Workers AI 只根据这些材料写成中文指南。同一个城市存 KV 30 天，第二次秒出。
 // 隐私：只收取整到约 1 公里的坐标，不记录。
 const LOCAL_V = 'local5';   // 改版本号 = 旧缓存全部作废（local4 的治安栏会给街区下安全不安全的结论）
-const LOCAL_TTL = 86400 * 30, LOCAL_DAILY = 40;
+// Workers AI 免费额度每天 10,000 neurons，拍照认柜号、讲讲这句、盘后解读、AI 跑腿、Telegram 机器人都共用。
+// 本地通生成一个新城市要 4 段长文（约 2,000–2,500 neurons），所以每天最多 3 个新城市，给现场工具留足额度；生成过的城市走缓存不花钱。
+const LOCAL_TTL = 86400 * 30, LOCAL_DAILY = 3;
 const LOCAL_UA = 'boliunew-tools/1.0 (+https://boliunew.github.io/tools/local.html)';
 async function fetchJ(url, opt = {}, ms = 15000) {
   const ac = new AbortController(), t = setTimeout(() => ac.abort(), ms);
@@ -1214,7 +1216,7 @@ async function localApi(req, env) {
   if (await env.KV.get('lock:' + key)) return json(req, { pending: true, place: p, msg: '这个城市正在生成，稍等一下' }, 202);
   if (b.osm === undefined && !b.noosm) return json(req, { need: 'osm', place: p, query: osmQuery(p), mirrors: OVERPASS });
   const dk = 'localgen:' + new Date().toISOString().slice(0, 10), used = +(await env.KV.get(dk)) || 0;
-  if (used >= LOCAL_DAILY) return json(req, { error: 'quota', msg: '今天新生成的城市已经很多了，明天再试；已经生成过的城市照样能看' }, 429);
+  if (used >= LOCAL_DAILY) return json(req, { error: 'quota', msg: '今天新城市的名额（每天 ' + LOCAL_DAILY + ' 个，给拍照认柜号这些工具留 AI 额度）用完了，明天再试；已经生成过的城市照样能看' }, 429);
   await env.KV.put('lock:' + key, '1', { expirationTtl: 240 });
   await env.KV.put(dk, String(used + 1), { expirationTtl: 86400 * 2 });
   const t0 = Date.now(), refund = async () => { const n = +(await env.KV.get(dk)) || 1; await env.KV.put(dk, String(Math.max(0, n - 1)), { expirationTtl: 86400 * 2 }); };
