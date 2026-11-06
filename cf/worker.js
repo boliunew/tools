@@ -934,8 +934,16 @@ async function agentApi(req, env, url) {
 // 隐私：只收取整到约 1 公里的坐标，不记录。
 const LOCAL_V = 'local5';   // 改版本号 = 旧缓存全部作废（local4 的治安栏会给街区下安全不安全的结论）
 // Workers AI 免费额度每天 10,000 neurons，拍照认柜号、讲讲这句、盘后解读、AI 跑腿、Telegram 机器人都共用。
-// 本地通生成一个新城市要 4 段长文（约 2,000–2,500 neurons），所以每天最多 3 个新城市，给现场工具留足额度；生成过的城市走缓存不花钱。
-const LOCAL_TTL = 86400 * 30, LOCAL_DAILY = 3;
+// 本地通用便宜的 Qwen3-30B（按 Cloudflare 价目：输入每百万 token 4,625 neurons、输出 30,475；gpt-oss-120b 是 31,818 / 68,182），
+// 一个新城市 4 段长文约 500 neurons。每天最多 8 个新城市（约 4,000），另一半多额度留给拍照认柜号这些工具；生成过的城市走缓存不花钱。
+const LOCAL_TTL = 86400 * 30, LOCAL_DAILY = 8;
+const LOCAL_LLM = ['@cf/qwen/qwen3-30b-a3b-fp8', '@cf/openai/gpt-oss-20b'];   // 第二个只在第一个连续失败时用；不退到很贵的 llama-3.3-70b
+async function localLLM(env, model, sys, user) {
+  const r = model.includes('gpt-oss')
+    ? await env.AI.run(model, { instructions: sys, input: user, reasoning: { effort: 'low' }, max_output_tokens: 7000 })
+    : await env.AI.run(model, { messages: [{ role: 'system', content: sys + '\n/no_think' }, { role: 'user', content: user }], max_tokens: 7000, temperature: 0.3 });   // /no_think：Qwen3 不输出思考过程，省 token
+  return aiText(r).replace(/<think>[\s\S]*?<\/think>/g, '').replace(/^[\s\S]*?<\/think>/, '');
+}
 const LOCAL_UA = 'boliunew-tools/1.0 (+https://boliunew.github.io/tools/local.html)';
 async function fetchJ(url, opt = {}, ms = 15000) {
   const ac = new AbortController(), t = setTimeout(() => ac.abort(), ms);
@@ -1112,14 +1120,10 @@ async function localGen(env, p, wk, near, osm, diag = []) {
 OpenStreetMap 地点：
 ${osm.text.slice(0, 12000)}`;
   const user = ask => '材料：\n' + mat + '\n\n' + ask;
-  // 每段必须有的栏目都有内容才算数；不行就再试一次 gpt-oss，再退到通用的 llm()（会换备用模型）
+  // 每段必须有的栏目都有内容才算数；不行就用同一个模型再试一次，再换备用模型
   const good = (J, need) => J && need.split(',').every(k => Array.isArray(J[k]) && J[k].length);
   const one = async (need, ask) => {
-    const tries = [
-      async () => aiText(await env.AI.run(LLM[0], { instructions: LOCAL_SYS, input: user(ask), reasoning: { effort: 'low' }, max_output_tokens: 9000 })),
-      async () => aiText(await env.AI.run(LLM[0], { instructions: LOCAL_SYS, input: user(ask), reasoning: { effort: 'low' }, max_output_tokens: 9000 })),
-      async () => llm(env, LOCAL_SYS, user(ask), 4000)
-    ];
+    const tries = [LOCAL_LLM[0], LOCAL_LLM[0], LOCAL_LLM[1]].map(m => () => localLLM(env, m, LOCAL_SYS, user(ask)));
     let best = {};
     for (let i = 0; i < tries.length; i++) {
       await track(env, 'chat');

@@ -65,10 +65,11 @@ test('localApi: auth, resolve, generate once, then serve from cache', async () =
   const kv = new Map(), calls = { ai: 0, fetch: [] };
   const env = { TEST_KEY: 'k', KV: { get: async k => kv.get(k) ?? null, put: async (k, v) => { kv.set(k, v); }, delete: async k => { kv.delete(k); } },
     AI: { run: async (model, input) => {
-      calls.ai++;
-      const ask = input.input;
+      calls.ai++; calls.models = (calls.models || []).concat(model);
+      const ask = input.input || (input.messages || [])[1]?.content || '';
       if (/"intro":\[/.test(ask) && /"hoods"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ intro: ['阿普兰在…', '历史…', '看点…'], facts: [['人口', '约 8 万']], hoods: [{ e: '🏘️', t: '老城 Old Town', s: 's', d: 'd' }], stories: [{ t: '柑橘', y: '1900', s: 's', d: 'd' }], trivia: ['冷知识'] }) }] }] };
-      if (/输出：\{"eat"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ eat: [{ t: '越南粉', s: 's', d: 'Pho Ha' }, { t: '墨西哥卷饼', s: 's', d: 'd' }], fun: [{ t: '纪念公园 Upland Memorial Park', s: 's', d: 'd', tag: ['免费'] }, { t: 'f2', s: 's', d: 'd' }, { t: 'f3', s: 's', d: 'd' }] }) }] }] };
+      if (/输出：\{"eat"/.test(ask)) return { choices: [{ message: { content: '<think>先想想 {"不是":"答案"}</think>' + JSON.stringify({ eat: [{ t: '越南粉', s: 's', d: 'Pho Ha' }, { t: '墨西哥卷饼', s: 's', d: 'd' }], fun: [{ t: '纪念公园 Upland Memorial Park', s: 's', d: 'd', tag: ['免费'] }, { t: 'f2', s: 's', d: 'd' }, { t: 'f3', s: 's', d: 'd' }] }) } }] };
+      if (false) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ eat: [{ t: '越南粉', s: 's', d: 'Pho Ha' }, { t: '墨西哥卷饼', s: 's', d: 'd' }], fun: [{ t: '纪念公园 Upland Memorial Park', s: 's', d: 'd', tag: ['免费'] }, { t: 'f2', s: 's', d: 'd' }, { t: 'f3', s: 's', d: 'd' }] }) }] }] };
       if (/输出：\{"airport"/.test(ask)) return { output: [{ type: 'message', content: [{ text: JSON.stringify({ airport: [{ t: '安大略机场 ONT', s: 's', d: 'd' }], safety: [{ t: '车里别留东西', s: 's', d: 'd' }] }) }] }] };
       return { output: [{ type: 'message', content: [{ text: '好的 ' + JSON.stringify({ tips: [{ t: '图书馆卡', s: 's', d: 'd' }], go: [{ t: '怎么去', s: 's', d: 'd' }], work: [{ t: '行业', s: 's', d: 'd' }] }) }] }] };
     } } };
@@ -93,7 +94,7 @@ test('localApi: auth, resolve, generate once, then serve from cache', async () =
   assert.ok(r1.diag.includes('osm from browser 2'), r1.diag.join(' | '));
   assert.equal(r1.place.en, 'Upland'); assert.equal(r1.place.zh, '阿普兰');
   assert.equal(r1.guide.intro.length, 3); assert.equal(r1.guide.eat.length, 2); assert.equal(r1.guide.tips[0].t, '图书馆卡');
-  assert.equal(r1.guide.sources.length, 3); assert.equal(calls.ai, 4); assert.equal(r1.guide.airport[0].t, '安大略机场 ONT'); assert.ok(!r1.cached); assert.ok(!calls.fetch.some(u => /overpass/.test(u)), 'no server-side Overpass when the browser sent places');
+  assert.equal(r1.guide.sources.length, 3); assert.equal(calls.ai, 4); assert.ok(calls.models.every(m => m === '@cf/qwen/qwen3-30b-a3b-fp8'), calls.models.join()); assert.equal(r1.guide.fun.length, 3); assert.equal(r1.guide.airport[0].t, '安大略机场 ONT'); assert.ok(!r1.cached); assert.ok(!calls.fetch.some(u => /overpass/.test(u)), 'no server-side Overpass when the browser sent places');
   assert.ok(calls.fetch.some(u => /lat=34\.10&lon=-117\.65/.test(u)), 'coordinates are rounded to ~1 km before leaving the worker');
   assert.ok(![...kv.keys()].some(k => k.startsWith('lock:')), 'lock released');
 
