@@ -1,10 +1,8 @@
 {
- "generated": "2026-11-06T20:28:39Z",
- "ok": false,
- "problems": [
-  "⚙️ 自动任务「湾区高速路线图」上次运行失败（https://github.com/boliunew/tools/actions/runs/42106796939）"
- ],
- "sig": "⚙️ 自动任务「湾区高速路线图」上次运行失败（https://github.com/boliunew/tools/actions/runs/42106796939）",
+ "generated": "2026-11-07T09:17:24Z",
+ "ok": true,
+ "problems": [],
+ "sig": "",
  "data": [
   {
    "k": "brief",
@@ -14,8 +12,8 @@
    "wf": "brief.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-05T22:22:22Z",
-   "detail": "14 条"
+   "at": "2026-11-06T21:46:31Z",
+   "detail": "15 条"
   },
   {
    "k": "news_today",
@@ -25,7 +23,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T19:55:40Z",
+   "at": "2026-11-07T07:00:06Z",
    "detail": "12 条"
   },
   {
@@ -36,7 +34,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T19:55:48Z",
+   "at": "2026-11-07T07:00:10Z",
    "detail": "75 条"
   },
   {
@@ -47,8 +45,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T19:55:21Z",
-   "detail": "281 条"
+   "at": "2026-11-07T06:59:49Z",
+   "detail": "257 条"
   },
   {
    "k": "stocks",
@@ -58,8 +56,8 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T20:06:31Z",
-   "detail": "数据日期 2026-11-05 · 499 条"
+   "at": "2026-11-07T07:15:45Z",
+   "detail": "数据日期 2026-11-06 · 499 条"
   },
   {
    "k": "earnings",
@@ -69,7 +67,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T19:45:57Z"
+   "at": "2026-11-07T01:01:54Z"
   },
   {
    "k": "deals",
@@ -79,7 +77,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T19:58:42Z"
+   "at": "2026-11-07T05:56:11Z"
   },
   {
    "k": "radio",
@@ -99,8 +97,8 @@
    "wf": "tv.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T16:57:41Z",
-   "detail": "11884 条"
+   "at": "2026-11-07T01:13:01Z",
+   "detail": "11909 条"
   },
   {
    "k": "card",
@@ -120,7 +118,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T15:57:42Z"
+   "at": "2026-11-07T06:05:57Z"
   },
   {
    "k": "bay_live",
@@ -130,7 +128,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T20:27:35Z"
+   "at": "2026-11-07T09:13:13Z"
   },
   {
    "k": "longterm",
@@ -201,7 +199,7 @@
    "wf": "kb.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-05T17:03:16Z"
+   "at": "2026-11-07T02:13:37Z"
   },
   {
    "k": "bay_roads",
@@ -251,14 +249,6 @@
    "msg": ""
   }
  ],
- "failed_runs": [
-  {
-   "wf": "bay-roads.yml",
-   "n": "湾区高速路线图",
-   "conclusion": "failure",
-   "url": "https://github.com/boliunew/tools/actions/runs/42106796939",
-   "at": "2026-11-05T20:48:27Z"
-  }
- ],
- "since": "2026-11-05T21:08:03Z"
+ "failed_runs": [],
+ "since": "2026-11-07T09:17:24Z"
 }
