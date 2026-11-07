@@ -1,16 +1,16 @@
 {
- "date": "2026-11-06",
- "kind": "易错",
- "en": "It's packed with people",
- "zh": "人山人海",
- "by": "逐字翻译不成立；可以说 huge crowds 或 packed with people",
- "line": "✗ People mountain people sea → ✓ It's packed with people",
+ "date": "2026-11-07",
+ "kind": "口头禅",
+ "en": "Cool",
+ "zh": "酷！太棒了",
+ "by": "觉得某样东西很棒",
+ "line": "Cool",
  "word": {
-  "w": "morality",
-  "ph": "mә'ræliti",
-  "zh": "n. 道德，教训，品行",
-  "ex": "In the height of her morality, good woman! she offered to forgive the past, if I would marry Eliza.",
-  "exzh": "这位好心的女人道德感满满，说只要我娶伊丽莎，过去的事就一笔勾销。"
+  "w": "enlist",
+  "ph": "in'list",
+  "zh": "vt. 征募，参与，谋取；vi. 从军，应募，赞助",
+  "ex": "There was too much socialization with the enlisted men.",
+  "exzh": "跟士兵们的交往太多了。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
