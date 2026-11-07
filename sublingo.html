@@ -55,6 +55,7 @@ header.top{position:-webkit-sticky;position:sticky;top:0;z-index:20;background:v
 .legend span{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--chip);margin:3px 6px 3px 0;font-weight:600}
 .switch{display:inline-flex;align-items:center;font-size:14px;color:var(--soft);user-select:none;cursor:pointer}
 .switch input{margin:0 6px 0 0;width:16px;height:16px;accent-color:var(--accent)}
+.vh{position:absolute!important;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}
 .btn{border:1px solid var(--line);background:var(--paper);padding:8px 14px;border-radius:10px;font-size:14px;display:inline-flex;align-items:center;min-height:38px}
 .btn:hover{border-color:var(--faint)}
 a.btn{text-decoration:none;color:var(--ink)}
@@ -257,8 +258,8 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 40px}
       <h2>导入字幕，逐句看懂语法</h2>
       <p>支持 SRT / VTT / ASS 字幕，可同时导入本地视频或音频同步播放（M4B 有声书会自动读出章节，可点章节跳转）。双语字幕会自动分出中文翻译。</p>
       <div class="actions">
-        <button class="btn primary" id="pickSub">导入字幕</button>
-        <button class="btn" id="pickMedia">导入视频 / 音频</button>
+        <label class="btn primary" id="pickSub" for="fSub">导入字幕</label>
+        <label class="btn" id="pickMedia" for="fMedia">导入视频 / 音频</label>
         <button class="btn ghost" id="demoSub">试试示例</button>
       </div>
       <div class="drop">也可以把字幕或视频文件直接拖到页面上</div>
@@ -278,9 +279,9 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 40px}
       <div class="filebar" id="fileBar"></div>
       <div class="card cues color" id="cues"></div>
     </div>
-    <input type="file" id="fSub" accept=".srt,.vtt,.ass,.ssa,.txt" style="display:none">
-    <input type="file" id="fMedia" accept="video/*,audio/*,.mkv,.m4b" style="display:none">
-    <input type="file" id="fBook" accept=".epub,.txt" style="display:none">
+    <input type="file" id="fSub" accept=".srt,.vtt,.ass,.ssa,.txt" class="vh">
+    <input type="file" id="fMedia" accept="video/*,audio/*,.mkv,.m4b" class="vh">
+    <input type="file" id="fBook" accept=".epub,.txt" class="vh">
   </section>
 
   <!-- ARTICLE VIEW -->
@@ -293,7 +294,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 40px}
         <button class="btn primary" id="anaBtn">分析文章</button>
         <button class="btn ghost" id="demoArt">试试示例</button>
         <button class="btn ghost" id="clearArt">清空</button>
-        <button class="btn" id="pickBook">📖 导入电子书</button>
+        <label class="btn" id="pickBook" for="fBook">📖 导入电子书</label>
       </div>
     </div>
     <div class="card" id="bookBox" style="display:none"></div>
@@ -1740,8 +1741,7 @@ var NLP = (function () {
     else if (/\.(txt|md)$/.test(n)) readText(file, function (t) { if (/-->/.test(t)) loadSubtitles(t, file.name); else if (t.length > 30000) { setTab('art'); bookFromText(t, file.name.replace(/\.\w+$/, '')); } else { setTab('art'); $('artText').value = t; analyzeArticle(t, file.name.replace(/\.\w+$/, '')); } });
     else alert('不支持的文件类型：' + file.name);
   }
-  $('pickSub').onclick = function () { $('fSub').click(); };
-  $('pickMedia').onclick = function () { $('fMedia').click(); };
+  /* 导入按钮是 label，点它浏览器自己打开文件选择，不用 JS 代点 */
   $('fSub').onchange = function () { if (this.files[0]) routeFile(this.files[0]); this.value = ''; };
   $('fMedia').onchange = function () { if (this.files[0]) routeFile(this.files[0]); this.value = ''; };
   // 📥 媒体页带过来的视频地址 + 字幕
@@ -2096,7 +2096,6 @@ var NLP = (function () {
       }
     }, function () { status('文件读取失败。', true); });
   }
-  $('pickBook').onclick = function () { $('fBook').click(); };
   $('fBook').onchange = function () { if (this.files[0]) importBookFile(this.files[0]); this.value = ''; };
 
   /* ---- M4B 章节与封面（moov.udta.chpl + meta.ilst） ---- */
