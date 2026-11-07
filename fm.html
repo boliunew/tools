@@ -103,6 +103,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 .toast.on{opacity:.93}
 </style>
 <script src="sync.js?v=1"></script>
+<script src="savesheet.js?v=2"></script>
 </head>
 <body>
 <main>
@@ -775,7 +776,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     if (LOCAL && /^http:/i.test(st.url)) urls.unshift('api/stream?u=' + encodeURIComponent(st.url));
     recFetch(urls, st, song, nope);
   };
-  var RURL = {};
+  var RURL = {}, RDL = {};
   function renderRecs() {
     rAll(function (all) {
       var el = $('recs');
@@ -786,10 +787,10 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
       RURL = {};
       el.innerHTML = '<summary>🎙 我的录音（' + all.length + '）</summary><div class="tip">点「🔍 识别歌曲」自动认歌（用 AudD 听歌识曲服务）；也可以手机打开 Shazam，再点 ▶ 放给它听。录音只存在这台设备的浏览器里。' +
         '<br><a href="#" id="auddSet">⚙️ AudD 令牌' + (get('audd', '') ? '（已设置）' : '（没设也能试几次）') + '</a></div>' + all.map(function (c) {
-        var d = new Date(c.t), u = URL.createObjectURL(c.blob); RURL[c.id] = u;
-        var name = c.st.replace(/[\\/:*?"<>|]/g, '') + '-' + (d.getMonth() + 1) + d.getDate() + '-' + d.getHours() + ('0' + d.getMinutes()).slice(-2) + '.' + ext(c.type);
+        var d = new Date(c.t), u = URL.createObjectURL(c.blob); RURL[c.id] = u; RDL[c.id] = { b: c.blob };
+        var name = c.st.replace(/[\\/:*?"<>|]/g, '') + '-' + (d.getMonth() + 1) + d.getDate() + '-' + d.getHours() + ('0' + d.getMinutes()).slice(-2) + '.' + ext(c.type); RDL[c.id].n = name;
         return '<div class="clip"><b>' + esc(c.song || c.st) + '</b><small>' + (c.song ? esc(c.st) + ' · ' : '') + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + ' · ' + Math.round(c.blob.size / 1024) + ' KB</small>' +
-          '<audio controls preload="none" src="' + u + '"></audio><div class="ops"><a href="' + u + '" download="' + esc(name) + '">⬇ 下载</a>' +
+          '<audio controls preload="none" src="' + u + '"></audio><div class="ops"><a href="' + u + '" download="' + esc(name) + '" data-rdl="' + c.id + '">⬇ 下载</a>' +
           (c.song ? '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(c.song) + '" target="_blank" rel="noopener">搜歌 ↗</a>' : '') + '<button data-rid="' + c.id + '">🔍 识别歌曲</button><button data-rdel="' + c.id + '">🗑 删除</button></div>' +
           (c.hit ? hitHtml(c.hit) : '') + '<div class="rres" id="rr-' + c.id + '"></div></div>';
       }).join('');
@@ -799,6 +800,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   $('recs').addEventListener('click', function (e) {
     var t = e.target, b;
     if (t.id === 'auddSet') { e.preventDefault(); auddToken(); return; }
+    if ((b = t.closest && t.closest('[data-rdl]'))) { var it = RDL[+b.getAttribute('data-rdl')]; if (it && window.SaveSheet) { e.preventDefault(); SaveSheet.show(it.b, it.n || '录音'); } return; }
     if ((b = t.closest && t.closest('[data-rid]'))) { e.preventDefault(); identify(+b.getAttribute('data-rid')); return; }
     b = t.closest && t.closest('[data-rdel]'); if (!b) return; e.preventDefault(); rDel(+b.getAttribute('data-rdel'), renderRecs);
   });
