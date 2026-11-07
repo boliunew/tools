@@ -255,7 +255,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 40px}
   <section class="view on" id="view-sub">
     <div class="card intro" id="subIntro">
       <h2>导入字幕，逐句看懂语法</h2>
-      <p>支持 SRT / VTT / ASS 字幕，可同时导入本地视频或音频同步播放。双语字幕会自动分出中文翻译。</p>
+      <p>支持 SRT / VTT / ASS 字幕，可同时导入本地视频或音频同步播放（M4B 有声书会自动读出章节，可点章节跳转）。双语字幕会自动分出中文翻译。</p>
       <div class="actions">
         <button class="btn primary" id="pickSub">导入字幕</button>
         <button class="btn" id="pickMedia">导入视频 / 音频</button>
@@ -273,12 +273,14 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 40px}
         <span class="off">字幕偏移<button class="btn sm ghost" id="offDown">−</button><b id="offVal">0.0s</b><button class="btn sm ghost" id="offUp">+</button></span>
       </div>
     </div>
+    <div id="m4bBox" style="display:none"></div>
     <div id="subBody" style="display:none">
       <div class="filebar" id="fileBar"></div>
       <div class="card cues color" id="cues"></div>
     </div>
     <input type="file" id="fSub" accept=".srt,.vtt,.ass,.ssa,.txt" style="display:none">
-    <input type="file" id="fMedia" accept="video/*,audio/*,.mkv" style="display:none">
+    <input type="file" id="fMedia" accept="video/*,audio/*,.mkv,.m4b" style="display:none">
+    <input type="file" id="fBook" accept=".epub,.txt" style="display:none">
   </section>
 
   <!-- ARTICLE VIEW -->
@@ -291,8 +293,10 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 40px}
         <button class="btn primary" id="anaBtn">分析文章</button>
         <button class="btn ghost" id="demoArt">试试示例</button>
         <button class="btn ghost" id="clearArt">清空</button>
+        <button class="btn" id="pickBook">📖 导入电子书</button>
       </div>
     </div>
+    <div class="card" id="bookBox" style="display:none"></div>
     <div id="artOut"></div>
   </section>
   <footer>SubLingo · 本地规则引擎，离线可用，解析结果仅供参考<br>先点句子展开解析，再点单词查看词性</footer>
@@ -1694,6 +1698,7 @@ var NLP = (function () {
     $('player').classList[/^audio\//.test(file.type) ? 'add' : 'remove']('audio');
     if (cues.length) renderCues();
     else { $('subIntro').querySelector('p').innerHTML = '已载入 <b>' + esc(file.name) + '</b>，再导入对应的字幕文件即可同步。'; }
+    m4bHook(file);
   }
   $('bPrev').onclick = function () { seekCue(Math.max(0, (cur < 0 ? 0 : cur) - 1), true); };
   $('bNext').onclick = function () { seekCue(Math.min(cues.length - 1, cur + 1), true); };
@@ -1730,8 +1735,9 @@ var NLP = (function () {
   function routeFile(file) {
     var n = file.name.toLowerCase();
     if (/\.(srt|vtt|ass|ssa)$/.test(n)) readText(file, function (t) { loadSubtitles(t, file.name); });
-    else if (/^(video|audio)\//.test(file.type) || /\.(mp4|mkv|webm|mov|m4v|mp3|m4a|wav|ogg|aac|flac)$/.test(n)) { setTab('sub'); loadMedia(file); }
-    else if (/\.(txt|md)$/.test(n)) readText(file, function (t) { if (/-->/.test(t)) loadSubtitles(t, file.name); else { setTab('art'); $('artText').value = t; analyzeArticle(t, file.name.replace(/\.\w+$/, '')); } });
+    else if (/^(video|audio)\//.test(file.type) || /\.(mp4|mkv|webm|mov|m4v|mp3|m4a|m4b|wav|ogg|aac|flac)$/.test(n)) { setTab('sub'); loadMedia(file); }
+    else if (/\.epub$/.test(n)) { setTab('art'); importBookFile(file); }
+    else if (/\.(txt|md)$/.test(n)) readText(file, function (t) { if (/-->/.test(t)) loadSubtitles(t, file.name); else if (t.length > 30000) { setTab('art'); bookFromText(t, file.name.replace(/\.\w+$/, '')); } else { setTab('art'); $('artText').value = t; analyzeArticle(t, file.name.replace(/\.\w+$/, '')); } });
     else alert('不支持的文件类型：' + file.name);
   }
   $('pickSub').onclick = function () { $('fSub').click(); };
@@ -1923,9 +1929,284 @@ var NLP = (function () {
   if (saved && saved.text) { $('artText').value = saved.text; analyzeArticle(saved.text, saved.title); }
   var qm = /[?&]url=([^&]+)/.exec(window.location.search);
   if (qm) { setTab('art'); $('url').value = decodeURIComponent(qm[1]); fetchArticle(); }
+
+  /* ================= 电子书导入（文章页）+ M4B 章节 ================= */
+  var NL = String.fromCharCode(10);
+  function trimS(s) { s = String(s == null ? '' : s); var a = 0, b = s.length; while (a < b && s.charCodeAt(a) <= 32) a++; while (b > a && s.charCodeAt(b - 1) <= 32) b--; return s.slice(a, b); }
+  function readBuf(file) {
+    return new Promise(function (res, rej) {
+      var fr = new FileReader();
+      fr.onload = function () { res(fr.result); };
+      fr.onerror = function () { rej(fr.error || new Error('读文件失败')); };
+      fr.readAsArrayBuffer(file);
+    });
+  }
+  function decodeBytes(buf) {
+    function dec(enc) { try { return new TextDecoder(enc).decode(buf); } catch (e) { return null; } }
+    var t = dec('utf-8');
+    if (t == null) return '';
+    var bad = 0, i;
+    for (i = 0; i < t.length; i++) if (t.charCodeAt(i) === 65533) bad++;
+    if (bad > 5) { var g = dec('gbk'); if (g != null) return g; }
+    return t;
+  }
+  function bookResolve(dir, href) {
+    var clean = String(href || '').split('#')[0];
+    try { clean = decodeURIComponent(clean); } catch (e) { }
+    var parts = (dir + clean).split('/'), out = [], i;
+    for (i = 0; i < parts.length; i++) {
+      if (parts[i] === '..') out.pop();
+      else if (parts[i] !== '.' && parts[i] !== '') out.push(parts[i]);
+    }
+    return out.join('/');
+  }
+  function bookDir(p) { var i = p.lastIndexOf('/'); return i < 0 ? '' : p.slice(0, i + 1); }
+  function bookBase(p) { return String(p || '').split('#')[0].split('/').pop(); }
+  function zipText(zip, path) { var f = path && zip.file(path); return f ? f.async('string') : Promise.resolve(null); }
+  function chapterText(body) {
+    var blocks = body.querySelectorAll('p,h1,h2,h3,h4,h5,h6,li,blockquote'), out = [], i, t;
+    for (i = 0; i < blocks.length; i++) {
+      t = trimS(blocks[i].textContent);
+      if (t && t !== out[out.length - 1]) out.push(t);
+    }
+    if (out.length) return out.join(NL + NL);
+    var parts = (body.textContent || '').split(NL), kept = [];
+    for (i = 0; i < parts.length; i++) { t = trimS(parts[i]); if (t) kept.push(t); }
+    return kept.join(NL + NL);
+  }
+  function parseEpubBook(buf) {
+    return JSZip.loadAsync(buf).then(function (zip) {
+      if (zip.file('META-INF/encryption.xml')) throw new Error('这本书带 DRM 保护，浏览器里打不开，换一本无 DRM 的试试');
+      return zipText(zip, 'META-INF/container.xml').then(function (contStr) {
+        if (!contStr) throw new Error('不是有效的 EPUB（缺 container.xml）');
+        var cont = new DOMParser().parseFromString(contStr, 'text/xml');
+        var rf = cont.querySelector('rootfile');
+        if (!rf) throw new Error('不是有效的 EPUB');
+        var opfPath = rf.getAttribute('full-path'), opfDir = bookDir(opfPath);
+        return zipText(zip, opfPath).then(function (opfStr) {
+          var opf = new DOMParser().parseFromString(opfStr, 'text/xml');
+          var tEl = opf.querySelector('title');
+          var bookTitle = tEl ? trimS(tEl.textContent) : '';
+          var manifest = {}, items = opf.querySelectorAll('manifest > item'), i, it;
+          for (i = 0; i < items.length; i++) { it = items[i]; manifest[it.getAttribute('id')] = { href: it.getAttribute('href'), type: it.getAttribute('media-type'), props: it.getAttribute('properties') || '' }; }
+          var spine = [], sps = opf.querySelectorAll('spine > itemref');
+          for (i = 0; i < sps.length; i++) spine.push(sps[i].getAttribute('idref'));
+          var tocMap = {}, navId = null, ncxId = null, mid;
+          for (mid in manifest) { if (manifest[mid].props.indexOf('nav') >= 0) navId = mid; if (manifest[mid].type === 'application/x-dtbncx+xml') ncxId = mid; }
+          function loadToc() {
+            if (navId) return zipText(zip, bookResolve(opfDir, manifest[navId].href)).then(function (s) {
+              if (!s) return;
+              var d = new DOMParser().parseFromString(s, 'text/html'), links = d.querySelectorAll('a[href]'), j;
+              for (j = 0; j < links.length; j++) tocMap[bookBase(links[j].getAttribute('href'))] = trimS(links[j].textContent);
+            });
+            if (ncxId) return zipText(zip, bookResolve(opfDir, manifest[ncxId].href)).then(function (s) {
+              if (!s) return;
+              var d = new DOMParser().parseFromString(s, 'text/xml'), pts = d.querySelectorAll('navPoint'), j;
+              for (j = 0; j < pts.length; j++) {
+                var c = pts[j].querySelector('content'), l = pts[j].querySelector('navLabel text');
+                if (c && l) tocMap[bookBase(c.getAttribute('src'))] = trimS(l.textContent);
+              }
+            });
+            return Promise.resolve();
+          }
+          return loadToc().then(function () {
+            var chapters = [], chain = Promise.resolve();
+            spine.forEach(function (idref) {
+              chain = chain.then(function () {
+                var mi = manifest[idref];
+                if (!mi || !/html/.test(mi.type)) return;
+                return zipText(zip, bookResolve(opfDir, mi.href)).then(function (s) {
+                  if (!s) return;
+                  var d = new DOMParser().parseFromString(s, 'text/html');
+                  if (!d.body) return;
+                  var text = chapterText(d.body);
+                  if (!text) return;
+                  var head = d.body.querySelector('h1,h2,h3');
+                  chapters.push({ title: tocMap[bookBase(mi.href)] || (head ? trimS(head.textContent).slice(0, 60) : '') || ('第 ' + (chapters.length + 1) + ' 节'), text: text });
+                });
+              });
+            });
+            return chain.then(function () {
+              if (!chapters.length) throw new Error('EPUB 里没找到正文');
+              return { title: bookTitle, chapters: chapters };
+            });
+          });
+        });
+      });
+    });
+  }
+  var BOOK_CH = /^(第[0-9零一二三四五六七八九十百千万两]+[章节回卷部篇集].{0,40}|Chapter [0-9]+.{0,40}|Prologue|Epilogue|序章|楔子|尾声|后记|前言|引言)$/;
+  function bookFromText(text, title) {
+    var lines = String(text).split(NL), chapters = [], cur = null, i, ln;
+    function flush() { if (cur) chapters.push(cur); }
+    for (i = 0; i < lines.length; i++) {
+      ln = trimS(lines[i]);
+      if (ln && ln.length <= 60 && BOOK_CH.test(ln)) { flush(); cur = { title: ln, paras: [] }; }
+      else { if (!cur) cur = { title: '正文', paras: [] }; if (ln) cur.paras.push(ln); }
+    }
+    flush();
+    chapters = chapters.filter(function (c) { return c.paras.length; });
+    if (!chapters.length) { status('这本书里没读到文字。', true); return; }
+    if (chapters.length === 1 && chapters[0].paras.join('').length > 14000) {
+      var ps = chapters[0].paras, out = [], chunk = [], len = 0;
+      for (i = 0; i < ps.length; i++) { chunk.push(ps[i]); len += ps[i].length; if (len > 7000) { out.push({ title: '第 ' + (out.length + 1) + ' 部分', paras: chunk }); chunk = []; len = 0; } }
+      if (chunk.length) out.push({ title: '第 ' + (out.length + 1) + ' 部分', paras: chunk });
+      chapters = out;
+    }
+    showBook({ title: title || '电子书', chapters: chapters.map(function (c) { return { title: c.title, text: c.paras.join(NL + NL) }; }) });
+  }
+  var BOOK = null;
+  function showBook(book) {
+    BOOK = book;
+    var box = $('bookBox'), i;
+    var h = '<h3 style="margin:2px 0 6px">📖 ' + esc(book.title) + ' <small style="color:var(--soft);font-weight:400">' + book.chapters.length + ' 章</small></h3>' +
+      '<div style="font-size:13px;color:var(--soft);margin-bottom:8px">点一章开始逐句精读。SubLingo 是英文讲解工具；中文书更适合去「📖 电子书阅读器」里读。</div>' +
+      '<div id="bookChs" style="display:flex;flex-wrap:wrap;gap:6px;max-height:220px;overflow-y:auto">';
+    for (i = 0; i < book.chapters.length; i++) h += '<button class="btn sm ghost" data-bch="' + i + '">' + esc(book.chapters[i].title) + '</button>';
+    h += '</div>';
+    box.innerHTML = h;
+    box.style.display = '';
+    $('bookChs').onclick = function (e) {
+      var b = e.target;
+      while (b && !b.getAttribute('data-bch')) b = b.parentNode;
+      if (!b || !BOOK) return;
+      var ch = BOOK.chapters[+b.getAttribute('data-bch')];
+      var bs = box.querySelectorAll('[data-bch]'), j;
+      for (j = 0; j < bs.length; j++) bs[j].classList.remove('primary');
+      b.classList.add('primary');
+      $('artText').value = ch.text;
+      status('');
+      analyzeArticle(ch.text, BOOK.title + ' · ' + ch.title);
+      scrollToOut();
+    };
+  }
+  function importBookFile(file) {
+    status('正在打开电子书…');
+    readBuf(file).then(function (buf) {
+      if (/[.]epub$/i.test(file.name)) {
+        if (typeof JSZip === 'undefined') { status('解析组件还没加载好，刷新页面再试。', true); return; }
+        parseEpubBook(buf).then(function (book) {
+          status('');
+          if (!book.title) book.title = file.name.replace(/[.]epub$/i, '');
+          showBook(book);
+        }, function (e) { status('电子书打开失败：' + ((e && e.message) || e), true); });
+      } else {
+        status('');
+        bookFromText(decodeBytes(buf), file.name.replace(/[.]txt$/i, ''));
+      }
+    }, function () { status('文件读取失败。', true); });
+  }
+  $('pickBook').onclick = function () { $('fBook').click(); };
+  $('fBook').onchange = function () { if (this.files[0]) importBookFile(this.files[0]); this.value = ''; };
+
+  /* ---- M4B 章节与封面（moov.udta.chpl + meta.ilst） ---- */
+  var M4BCHS = null, m4bURL = null;
+  function str4(dv, p) { return String.fromCharCode(dv.getUint8(p), dv.getUint8(p + 1), dv.getUint8(p + 2), dv.getUint8(p + 3)); }
+  function u64be(dv, p) { return dv.getUint32(p) * 4294967296 + dv.getUint32(p + 4); }
+  function utf8Of(u8) {
+    try { return new TextDecoder('utf-8').decode(u8); } catch (e) { }
+    var s = '', i;
+    for (i = 0; i < u8.length; i++) s += String.fromCharCode(u8[i]);
+    try { return decodeURIComponent(escape(s)); } catch (e) { return s; }
+  }
+  function walkMp4(dv, start, end, cb) {
+    var p = start;
+    while (p + 8 <= end) {
+      var size = dv.getUint32(p), type = str4(dv, p + 4), hdr = 8;
+      if (size === 1) { size = u64be(dv, p + 8); hdr = 16; }
+      else if (size === 0) size = end - p;
+      if (size < hdr || p + size > end) break;
+      var payload = p + hdr, boxEnd = p + size;
+      cb(type, payload, boxEnd);
+      if (type === 'moov' || type === 'udta' || type === 'ilst') walkMp4(dv, payload, boxEnd, cb);
+      else if (type === 'meta') walkMp4(dv, payload + 4, boxEnd, cb);
+      p += size;
+    }
+  }
+  function parseM4b(buf) {
+    var dv = new DataView(buf), found = {}, NAM = String.fromCharCode(169) + 'nam';
+    walkMp4(dv, 0, dv.byteLength, function (type, s, e) {
+      if (type === 'chpl' && !found.chpl) found.chpl = [s, e];
+      else if (type === 'covr' && !found.covr) found.covr = [s, e];
+      else if (type === NAM && !found.nam) found.nam = [s, e];
+    });
+    var out = { title: '', cover: null, chapters: [] };
+    function dataOf(range) {
+      var res = null;
+      walkMp4(dv, range[0], range[1], function (type, s, e) { if (type === 'data' && !res) res = [s, e]; });
+      return res;
+    }
+    var d;
+    if (found.nam && (d = dataOf(found.nam)) && d[1] - d[0] > 8) out.title = trimS(utf8Of(new Uint8Array(buf, d[0] + 8, d[1] - d[0] - 8)));
+    if (found.covr && (d = dataOf(found.covr)) && d[1] - d[0] > 8) {
+      var kind = dv.getUint32(d[0]);
+      out.cover = new Blob([new Uint8Array(buf, d[0] + 8, d[1] - d[0] - 8)], { type: kind === 14 ? 'image/png' : 'image/jpeg' });
+    }
+    if (found.chpl) {
+      try {
+        var s0 = found.chpl[0], e0 = found.chpl[1], count = dv.getUint8(s0 + 8), pos = s0 + 9, i;
+        for (i = 0; i < count && pos + 9 <= e0; i++) {
+          var start = u64be(dv, pos) / 10000000; pos += 8;
+          var len = dv.getUint8(pos); pos += 1;
+          if (pos + len > e0) break;
+          var title = trimS(utf8Of(new Uint8Array(buf, pos, len))); pos += len;
+          out.chapters.push({ t: start, title: title || ('第 ' + (i + 1) + ' 章') });
+        }
+      } catch (err) { out.chapters = []; }
+    }
+    return out;
+  }
+  function fmtT(sec) {
+    sec = Math.floor(sec);
+    var h = Math.floor(sec / 3600), m = Math.floor(sec % 3600 / 60), s = sec % 60;
+    function z(n) { return (n < 10 ? '0' : '') + n; }
+    return h ? h + ':' + z(m) + ':' + z(s) : m + ':' + z(s);
+  }
+  function m4bHook(file) {
+    var box = $('m4bBox');
+    M4BCHS = null;
+    if (m4bURL) { try { URL.revokeObjectURL(m4bURL); } catch (e) { } m4bURL = null; }
+    box.style.display = 'none'; box.innerHTML = '';
+    if (!/[.]m4b$/i.test(file.name) || file.size > 314572800) return;
+    readBuf(file).then(function (buf) {
+      var meta = parseM4b(buf), i;
+      var h = '<div class="card" style="padding:12px 14px">';
+      h += '<div style="display:flex;gap:12px;align-items:center">';
+      if (meta.cover) { m4bURL = URL.createObjectURL(meta.cover); h += '<img src="' + m4bURL + '" style="width:56px;height:56px;object-fit:cover;border-radius:8px" alt="">'; }
+      else h += '<div style="font-size:34px">🎧</div>';
+      h += '<div style="flex:1;min-width:0"><b>' + esc(meta.title || file.name) + '</b><div style="font-size:12.5px;color:var(--soft)">M4B 有声书' + (meta.chapters.length ? ' · 共 ' + meta.chapters.length + ' 章，点章节跳转' : ' · 这本没读到内嵌章节表（有些书用的是另一种章节格式）') + '</div></div></div>';
+      if (meta.chapters.length) {
+        M4BCHS = meta.chapters;
+        h += '<div id="m4bChs" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;max-height:180px;overflow-y:auto">';
+        for (i = 0; i < meta.chapters.length; i++) h += '<button class="btn sm ghost" data-mch="' + i + '">' + esc(meta.chapters[i].title) + ' <span style="opacity:.65">' + fmtT(meta.chapters[i].t) + '</span></button>';
+        h += '</div>';
+      }
+      h += '</div>';
+      box.innerHTML = h;
+      box.style.display = '';
+      if (meta.chapters.length) $('m4bChs').onclick = function (e) {
+        var b = e.target;
+        while (b && !b.getAttribute('data-mch')) b = b.parentNode;
+        if (!b || !M4BCHS) return;
+        video.currentTime = M4BCHS[+b.getAttribute('data-mch')].t;
+        if (video.play) video.play();
+      };
+    }, function () { });
+  }
+  video.addEventListener('timeupdate', function () {
+    if (!M4BCHS) return;
+    var wrap = $('m4bChs');
+    if (!wrap) return;
+    var t = video.currentTime, idx = -1, i;
+    for (i = 0; i < M4BCHS.length; i++) if (M4BCHS[i].t <= t + 0.01) idx = i;
+    var bs = wrap.querySelectorAll('[data-mch]');
+    for (i = 0; i < bs.length; i++) bs[i].classList[i === idx ? 'add' : 'remove']('primary');
+  });
+
 })();
 
 </script>
+<script src="sublingo/jszip.min.js"></script>
 <script src="wide.js?v=2"></script>
 <script src="nav.js?v=49" defer></script>
 </body>
