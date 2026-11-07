@@ -1,0 +1,184 @@
+{
+ "date": "2026-11-07",
+ "generated": "2026-11-07T18:56:42Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "DataVita 数据中心改为全网供电，绿电承诺受质疑",
+     "d": "原本承诺使用1GW可再生能源供电的兰纳克郡 AI 数据中心项目，DataVita 现称将完全依赖国家电网供电，仅可能在未来接入风光项目。此变更削弱了英国 AI 战略对绿色能源的承诺，可能影响该项目的财政支持和公众信任。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/uk-news/2026/nov/07/lanarkshire-ai-datacentre-datavita-chapelhall-national-grid-renewable-energy"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "东南亚数据中心扩张因资源瓶颈暂缓",
+     "d": "泰国在2026年9月暂停49个数据中心建设并搁置117个审批，印尼西爪也因许可缺失停工，主要受电力和水资源限制。该暂停可能减缓该地区对AI算力需求的满足，进而影响区域科技投资布局。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/07/datacentres-southeast-asia"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "三名男子利用AI冒充高管盗窃逾1亿美元",
+     "d": "美国司法部指控三名外国公民使用AI伪造CEO和律师的声音与形象，诱骗企业员工转账，总计盗走约1.29亿美元，并将资金转为加密货币洗钱。此案凸显AI技术在网络诈骗中的新风险，对企业防欺诈措施提出更高要求。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/us-news/2026/nov/06/ai-ceo-impersonation-theft"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/6 周五 收盘：标普500 ETF（SPY）+0.31%，纳指100 ETF（QQQ）+1.40%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 25.6；63% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：COHR +13.6%、ABNB +11.7%、AMD +11.0%；跌幅最大：AXON -18.2%、MCHP -10.0%、CHTR -6.2%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/9 周一的重要财报：KKR（盘前）、CEG（盘前）、B（盘前）、OXY（盘后）、FERG（盘前）",
+     "d": "按市值挑出最大的几家，共 13 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/6 周五）",
+     "d": "Initial Jobless Claims 实际 189K（预期 197K，前值 195K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/10 周二 08:40：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/11 周三 04:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/11 周三 08:30：CPI 通胀数据（重要性：高）",
+     "d": "高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "巴拉圭前总统因银行危机被软禁",
+     "d": "在半数国民存款受阻的银行倒闭后，议会罢免前总统 Peña 并将其软禁，显示拉美金融动荡对地区政治与资本流动的潜在冲击。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/americas/20261107-ousted-paraguay-president-under-house-arrest-after-banking-crisis"
+      },
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/07/nx-s1-6033373/paraguay-president-ousted-bank-collapse"
+      }
+     ]
+    },
+    {
+     "t": "肯尼亚邪教领袖因杀害191人被判200年监禁",
+     "d": "肯尼亚好消息国际教会牧师Paul Mackenzie因指挥追随者以绝食方式致190名儿童及1名成人死亡，被判200年监禁。该判决彰显对大规模宗教极端暴行的严厉法律回应，也引发对类似极端团体的监管关注。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/06/nx-s1-6032593/kenya-cult-leader-paul-mackenzie-sentenced-murder"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/kenyan-cult-leader-sentenced-to-200-years-in-prison-1"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "欧洲多航班遭炸弹威胁，航空安全受关注",
+     "d": "欧盟航空监管机构报告本周共收到超过30起航班炸弹威胁，涉及约14,000次航班，仅占总航班的0.05%，但导致多次飞机改道和安检升级。此类威胁提升了航空公司的安全防范成本，并促使欧盟进一步强化跨国航空安全合作。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/06/nx-s1-6032612/europe-flights-hoaxes"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/france/20261107-france-investigating-if-bogus-bomb-threats-against-airlines-linked-to-foreign-powers"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "AI 生成的 CEO 语音冒充案涉数百万美元",
+  "d": "该案件是首批公开的深度伪造技术用于企业诈骗案例，提醒全球公司必须加强身份验证和 AI 监控措施，以防止高价值金融损失。"
+ },
+ "week": []
+}
