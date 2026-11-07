@@ -1,78 +1,91 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-06T17:34:26Z",
- "date": "2026-11-06",
+ "generated": "2026-11-07T16:29:52Z",
+ "date": "2026-11-07",
  "engine": "edge",
- "total": 474.2,
- "short": 289.1,
+ "total": 450.1,
+ "short": 283.9,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611060932",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611070828",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月6日 星期五",
-   "dur": 10.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611060932",
+   "sub": "11月7日 星期六",
+   "dur": 11.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "周五了，坚持一下就周末了！11月6日，星期五，通勤电台准时上线。不想听的直接按下一首。"
+     "t": "周末还出门，辛苦了。今天是11月7日，星期六。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 80°/56°F",
-   "dur": 29.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611060932",
+   "sub": "Upland 晴 83°/61°F",
+   "dur": 29.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏57度，14摄氏度，体感53度。傍晚5点下班大约华氏72度，22摄氏度，体感66度。白天最高80度，约27摄氏度；最低56度。基本不会下雨。白天空气质量良好，指数最高44。今天日落时间是傍晚4点53分。"
+     "t": "Upland今天晴。早上7点出门大约华氏62度，17摄氏度，体感57度。傍晚5点下班大约华氏75度，24摄氏度，体感67度。白天最高83度，约28摄氏度；最低61度。基本不会下雨。白天空气质量良好，指数最高45。今天日落时间是傍晚4点52分。"
+    }
+   ]
+  },
+  {
+   "id": "sky",
+   "title": "🔭 天象",
+   "sub": "Upland",
+   "dur": 8.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611070828",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "天象提醒。明天，新月。前后几晚没有月光，最适合看星星和银河。"
     }
    ]
   },
   {
    "id": "market",
    "title": "📊 大盘",
-   "sub": "防守",
-   "dur": 34.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611060932",
+   "sub": "谨慎",
+   "dur": 31.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月5日收盘。标普500 ETF 下跌4.4%，纳指100 ETF 下跌6.5%。恐慌指数VIX 28.2，偏高，市场有点紧张。标普成分股里，63%站上了50日均线。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
+     "t": "先看大盘，数据截至美股11月6日收盘。标普500 ETF 上涨0.3%，纳指100 ETF 上涨1.4%。恐慌指数VIX 25.6，偏高，市场有点紧张。标普成分股里，63%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "21 个候选",
-   "dur": 66.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611060932",
+   "sub": "38 个候选",
+   "dur": 65.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天21个候选，评分最高的是Marathon Petroleum，代码 M P C。不想听细节可以按下一首。"
+     "t": "股票池今天38个候选，评分最高的是Marathon Petroleum，代码 M P C。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，血筹码5个，强势新高3个，挤压突破1个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，回踩金坑12个，血筹码12个，强势新高2个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Marathon Petroleum，代码 M P C，RSI2 超跌反弹信号，收盘价377.32美元，止损参考326.29。"
+     "t": "第1，Marathon Petroleum，代码 M P C，RSI2 超跌反弹信号，收盘价372.74美元，止损参考322.86。"
     },
     {
      "lang": "zh",
-     "t": "第2，Phillips 66，代码 P S X，RSI2 超跌反弹信号，收盘价247.04美元，止损参考219.55。"
+     "t": "第2，Phillips 66，代码 P S X，RSI2 超跌反弹信号，收盘价245.72美元，止损参考218.90。"
     },
     {
      "lang": "zh",
-     "t": "第3，Valero Energy，代码 V L O，RSI2 超跌反弹信号，收盘价351.23美元，止损参考302.79。"
+     "t": "第3，Viatris，代码 V T R S，强势新高信号，收盘价19.91美元，止损参考18.76。"
     },
     {
      "lang": "zh",
@@ -84,29 +97,29 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "2 件大事",
-   "dur": 18.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611060932",
+   "dur": 31.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有2家大公司发财报。"
+     "t": "11月10日，有2家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Enbridge，代码 E N B，盘前发财报。期权定价波动正负4.9%。"
+     "t": "Petroleo Brasileiro S.A.- Petrobras，代码 P B R，盘后发财报。期权定价波动正负9.9%。标签：利好出尽型、财报日常跌。"
     },
     {
      "lang": "zh",
-     "t": "Moderna，代码 M R N A，盘前发财报。标签：利好出尽型。"
+     "t": "Petroleo Brasileiro S.A.- Petrobras，代码 P B R - A，盘后发财报。期权定价波动正负11.1%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · NPR · The Guardian",
-   "dur": 87.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611060932",
+   "sub": "Al Jazeera · BBC · NPR",
+   "dur": 69.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
@@ -114,48 +127,44 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，科学，难度B2。大意是：在动物园出生的「超级特别」罗望子双胞胎。"
+     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：执政党在新西兰刀刃投票的早期结果中领先。"
     },
     {
      "lang": "en",
-     "t": "'Extra special' tamarin twins born at zoo"
-    },
-    {
-     "lang": "en",
-     "t": "Shaldon Wildlife Trust says it is one of two European zoos to breed the species in 2026."
+     "t": "Governing party ahead in early results of New Zealand’s knife-edge vote"
     },
     {
      "lang": "zh",
-     "t": "第2条，来自NPR，综合，难度B1。大意是：这些是众议院和参议院中尚未被召集的比赛。"
+     "t": "第2条，来自BBC，科学，难度B2。大意是：今年最多产的流星雨之一，点亮本周末的夜空。"
     },
     {
      "lang": "en",
-     "t": "These are the races in the House and Senate that haven't been called yet"
+     "t": "One of the year's most prolific meteor showers to light up the night sky this weekend"
     },
     {
      "lang": "en",
-     "t": "Democrats are poised to have a strong majority in the upcoming Congress."
+     "t": "The Leonid meteor shower, known for its bright and fast meteors, will kick off this weekend and continue until the end of November."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自The Guardian，科技，难度B2。大意是：在民主党大选胜利后，由于投资者押注人工智能放缓，美国科技股大幅下跌。"
+     "t": "第3条，来自NPR，综合，难度B1。大意是：即将上任的美国参议员阶层充满了历史性的第一。"
     },
     {
      "lang": "en",
-     "t": "US tech shares fall sharply as investors bet on AI slowdown after Democrats’ election triumph"
+     "t": "The incoming class of U.S. senators is full of historic firsts"
     },
     {
      "lang": "en",
-     "t": "Nasdaq heading for its worst day in 18 months in volatile trading on Wall Street The Nasdaq share index was on track for its worst day in 18 months after slumping by up to 5% on Thursday amid growing signs that the artificial intelligence i"
+     "t": "From the first Native American woman elected to the U.S."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "civilization · manejar",
-   "dur": 35.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611060932",
+   "sub": "valley · decir",
+   "dur": 30.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
@@ -163,15 +172,15 @@
     },
     {
      "lang": "en",
-     "t": "civilization"
+     "t": "valley"
     },
     {
      "lang": "zh",
-     "t": "意思是：文明。拼写是："
+     "t": "意思是：山谷。拼写是："
     },
     {
      "lang": "en",
-     "t": "c, i, v, i, l, i, z, a, t, i, o, n"
+     "t": "v, a, l, l, e, y"
     },
     {
      "lang": "zh",
@@ -179,7 +188,7 @@
     },
     {
      "lang": "en",
-     "t": "civilization"
+     "t": "valley"
     },
     {
      "lang": "zh",
@@ -187,44 +196,40 @@
     },
     {
      "lang": "es",
-     "t": "manejar"
+     "t": "decir"
     },
     {
      "lang": "zh",
-     "t": "意思是：开车。跟着读一遍。"
+     "t": "意思是：说，告诉。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "manejar"
+     "t": "decir"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "易错",
-   "dur": 21.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611060932",
+   "sub": "口头禅",
+   "dur": 12.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天说一个常见错误。不要说："
+     "t": "每日一句，今天是一句口头禅。"
     },
     {
      "lang": "en",
-     "t": "People mountain people sea"
+     "t": "Cool"
     },
     {
      "lang": "zh",
-     "t": "应该说："
+     "t": "意思是：酷！太棒了"
     },
     {
      "lang": "en",
-     "t": "It's packed with people"
-    },
-    {
-     "lang": "zh",
-     "t": "人山人海。逐字翻译不成立；可以说 huge crowds 或 packed with people"
+     "t": "Cool"
     }
    ],
    "opt": true
@@ -232,61 +237,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "和司机打交道",
-   "dur": 70.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611060932",
+   "sub": "仓库收发货",
+   "dur": 62.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：和司机打交道。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：仓库收发货。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "去 18 号门，在你左边。"
+     "t": "你有几托？"
     },
     {
      "lang": "en",
-     "t": "Go to door eighteen, on your left."
+     "t": "How many pallets do you have?"
     },
     {
      "lang": "en",
-     "t": "Go to door eighteen, on your left."
+     "t": "How many pallets do you have?"
     },
     {
      "lang": "zh",
-     "t": "放在 40 号位。"
+     "t": "数量对不上。"
     },
     {
      "lang": "en",
-     "t": "Drop it in spot forty."
+     "t": "The count doesn't match."
     },
     {
      "lang": "en",
-     "t": "Drop it in spot forty."
+     "t": "The count doesn't match."
     },
     {
      "lang": "zh",
-     "t": "是现场卸货还是甩挂？"
+     "t": "我们少了两托。"
     },
     {
      "lang": "en",
-     "t": "Is this a live unload or a drop?"
+     "t": "We're two pallets short."
     },
     {
      "lang": "en",
-     "t": "Is this a live unload or a drop?"
+     "t": "We're two pallets short."
     },
     {
      "lang": "zh",
-     "t": "你得等大概三十分钟。"
+     "t": "我们多了一托。"
     },
     {
      "lang": "en",
-     "t": "You'll have to wait about thirty minutes."
+     "t": "We have one extra pallet."
     },
     {
      "lang": "en",
-     "t": "You'll have to wait about thirty minutes."
+     "t": "We have one extra pallet."
     },
     {
      "lang": "zh",
@@ -298,13 +303,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "离线地图：没信号也能导航",
-   "dur": 18.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611060932",
+   "sub": "社交媒体广告里的超低价网店",
+   "dur": 20.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：离线地图：没信号也能导航。偏远地方、山里照样能走。做法：Google Maps 点右上角头像 → 离线地图；点「选择你自己的地图」，框出要下载的范围；下载后没信号也能导航开车。"
+     "t": "今日一招：社交媒体广告里的超低价网店。付了钱收不到货或收到假货。做法：价格低得离谱、网站刚建、没有退货地址：别买；把网店名加上「scam」「reviews」搜一下；要买就用信用卡或 PayPal 商品付款。"
     }
    ],
    "opt": true
@@ -312,13 +317,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1985 · 2002 · 2016",
-   "dur": 26.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611060932",
+   "sub": "1910 · 1918 · 1989",
+   "dur": 24.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1985年，欧盟的研究组织尤里卡计划公布组织原则。2002年，姜力钧因参与署名给中共十六大的亲民主请愿而被逮捕。2016年，叙利亚内战：叙利亚民主力量发动了一场成功的军事行动，成功将伊斯兰国的首都拉卡包围，并最终攻占该城。"
+     "t": "历史上的今天。1910年，莱特兄弟将两匹丝绸从俄亥俄州代顿市送到105公里外的哥伦布市，完成历史上最早的商业空运。1918年，波兰共和国临时人民政府宣告成立。1989年，戴维·丁金斯成为首位非裔纽约市市长。"
     }
    ],
    "opt": true
@@ -326,21 +331,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "卜算子·黄州定慧院寓居作",
-   "dur": 48.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611060932",
+   "sub": "浣溪沙·游蕲水清泉寺",
+   "dur": 47.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：卜算子·黄州定慧院寓居作。写于1082年，他45岁，在黄州定慧院。"
+     "t": "读一首苏轼：浣溪沙·游蕲水清泉寺。写于1082年，他45岁，在蕲水（今湖北浠水）清泉寺。"
     },
     {
      "lang": "zh",
-     "t": "缺月挂疏桐，漏断人初静。谁见幽人独往来，缥缈孤鸿影。惊起却回头，有恨无人省。拣尽寒枝不肯栖，寂寞沙洲冷。"
+     "t": "山下兰芽短浸溪，松间沙路净无泥，萧萧暮雨子规啼。谁道人生无再少？门前流水尚能西！休将白发唱黄鸡。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：残缺的月亮挂在稀疏的梧桐枝上，夜已深，人声刚刚安静下来。谁看见幽居的人独自徘徊？只有那隐隐约约的孤雁的影子。孤雁受惊飞起，又频频回头，心中有遗憾却没人理解。它挑遍了寒冷的树枝也不肯栖息，宁愿落在寂寞寒冷的沙洲上。"
+     "t": "白话意思是：山脚下兰草的嫩芽短短的，浸泡在溪水里；松林间的沙路洁净，没有一点泥泞；傍晚细雨萧萧，杜鹃在啼叫。谁说人生不能再回到少年？门前的溪水还能向西流呢！不要在白发之年，像白居易那样唱着“黄鸡催晓”感叹衰老。"
     }
    ],
    "opt": true
@@ -349,12 +354,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611060932",
+   "dur": 5.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611070828",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
+     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
     }
    ]
   }
