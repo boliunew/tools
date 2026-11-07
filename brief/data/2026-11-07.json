@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "generated": "2026-11-07T18:56:42Z",
+ "generated": "2026-11-07T20:33:13Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,19 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "DataVita 数据中心改为全网供电，绿电承诺受质疑",
-     "d": "原本承诺使用1GW可再生能源供电的兰纳克郡 AI 数据中心项目，DataVita 现称将完全依赖国家电网供电，仅可能在未来接入风光项目。此变更削弱了英国 AI 战略对绿色能源的承诺，可能影响该项目的财政支持和公众信任。",
-     "src": [
-      {
-       "n": "The Guardian",
-       "u": "https://www.theguardian.com/uk-news/2026/nov/07/lanarkshire-ai-datacentre-datavita-chapelhall-national-grid-renewable-energy"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "东南亚数据中心扩张因资源瓶颈暂缓",
-     "d": "泰国在2026年9月暂停49个数据中心建设并搁置117个审批，印尼西爪也因许可缺失停工，主要受电力和水资源限制。该暂停可能减缓该地区对AI算力需求的满足，进而影响区域科技投资布局。",
+     "t": "东南亚数据中心建设因资源瓶颈暂停",
+     "d": "2026年9月，泰国暂停49个数据中心项目建设并搁置117项审批，印尼西爪哇省亦因缺乏许可停工。尽管该地区在全球AI需求推动下拥有约占亚太在建容量50%的规模，但水电限制和监管不足令增长受阻。",
      "src": [
       {
        "n": "The Guardian",
@@ -31,12 +20,23 @@
      "full": true
     },
     {
-     "t": "三名男子利用AI冒充高管盗窃逾1亿美元",
-     "d": "美国司法部指控三名外国公民使用AI伪造CEO和律师的声音与形象，诱骗企业员工转账，总计盗走约1.29亿美元，并将资金转为加密货币洗钱。此案凸显AI技术在网络诈骗中的新风险，对企业防欺诈措施提出更高要求。",
+     "t": "三名男子利用AI冒充高管偷窃逾1亿美元",
+     "d": "美国司法部起诉三名外国嫌疑人，称他们在2024‑2026年使用AI伪造CEO和律师的声音及图像，诱导企业员工转账，累计盗取约1.29亿美元，并将款项转为加密货币洗钱。此案凸显AI技术被用于大规模金融诈骗的风险。",
      "src": [
       {
        "n": "The Guardian",
        "u": "https://www.theguardian.com/us-news/2026/nov/06/ai-ceo-impersonation-theft"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美民主党人呼吁在中期选举后暂停数据中心建设",
+     "d": "美国2022年中期选举后，多位新当选民主党议员及参议员伯尼·桑德斯要求全国性数据中心停建，以应对环境、就业和AI安全担忧。此举可能加大科技公司在美国的基础设施建设监管压力。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/us-news/2026/nov/06/democrats-renew-calls-for-datacenter-pauses"
       }
      ],
      "full": true
@@ -130,37 +130,23 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "巴拉圭前总统因银行危机被软禁",
-     "d": "在半数国民存款受阻的银行倒闭后，议会罢免前总统 Peña 并将其软禁，显示拉美金融动荡对地区政治与资本流动的潜在冲击。",
+     "t": "巴拉圭总统因银行危机被弹劾并软禁",
+     "d": "巴拉圭前总统圣地亚哥·佩尼亚因涉嫌在Ueno银行倒闭中谋取私利被议会弹劾，随后被逮捕并软禁，此事件导致约三百万存款人无法取款，引发全国抗议。此事突显金融监管失误对国家政治稳定的冲击。",
      "src": [
       {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/americas/20261107-ousted-paraguay-president-under-house-arrest-after-banking-crisis"
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c68jzzvjgdy9o?at_medium=RSS&at_campaign=rss"
       },
       {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/11/07/nx-s1-6033373/paraguay-president-ousted-bank-collapse"
-      }
-     ]
-    },
-    {
-     "t": "肯尼亚邪教领袖因杀害191人被判200年监禁",
-     "d": "肯尼亚好消息国际教会牧师Paul Mackenzie因指挥追随者以绝食方式致190名儿童及1名成人死亡，被判200年监禁。该判决彰显对大规模宗教极端暴行的严厉法律回应，也引发对类似极端团体的监管关注。",
-     "src": [
-      {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/11/06/nx-s1-6032593/kenya-cult-leader-paul-mackenzie-sentenced-murder"
-      },
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/kenyan-cult-leader-sentenced-to-200-years-in-prison-1"
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/economy/2026/11/7/paraguays-ousted-president-charged-over-banking-scandal?traffic_source=rss"
       }
      ],
      "full": true
     },
     {
-     "t": "欧洲多航班遭炸弹威胁，航空安全受关注",
-     "d": "欧盟航空监管机构报告本周共收到超过30起航班炸弹威胁，涉及约14,000次航班，仅占总航班的0.05%，但导致多次飞机改道和安检升级。此类威胁提升了航空公司的安全防范成本，并促使欧盟进一步强化跨国航空安全合作。",
+     "t": "欧洲航班和媒体遭新一轮炸弹威胁",
+     "d": "欧盟航空监管机构Eurocontrol报告称本周针对14架航班和多家媒体的炸弹威胁，虽未发现可疑物品且未造成人员伤亡，但导致航班改道和安保加强。此类威胁提升空中交通安全成本并考验反恐措施。",
      "src": [
       {
        "n": "NPR",
@@ -172,13 +158,28 @@
       }
      ],
      "full": true
+    },
+    {
+     "t": "俄在基辅附近发动空袭 迫近三方会谈",
+     "d": "俄军对基辅北部桥梁、Meridian工厂等能源设施实施空袭，导致一人死亡、八人受伤，致使该市供热供电受挤。此举发生在俄乌美三方将在阿联酋阿布扎比举行的四轮会谈前，可能加剧谈判压力。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/ukraine-russia-hits-kyiv-with-airstrikes-ahead-of-trilateral-talks/a-79883851?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/russia-pounds-power-facilities-around-kyiv-damages-major-bridge-6533046"
+      }
+     ],
+     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "AI 生成的 CEO 语音冒充案涉数百万美元",
-  "d": "该案件是首批公开的深度伪造技术用于企业诈骗案例，提醒全球公司必须加强身份验证和 AI 监控措施，以防止高价值金融损失。"
+  "t": "AI冒充CEO诈骗案三人被捕",
+  "d": "该案展示了生成式AI在商业欺诈中的新手段，对企业风险管理和监管提出迫切挑战，值得关注。"
  },
  "week": []
 }
