@@ -42,7 +42,11 @@
 
 **旅行**（7）：[加州海岸线自驾全攻略：从红杉到边境墙](california-coast.md) · [Amtrak 坐火车完全攻略：注意事项和技巧](amtrak-guide.md) · [旅行防骗大全](travel-scams.md) · [坐飞机：订票、行李、安检、延误退款](travel-flights-airports.md) · [订酒店不踩雷：从挑酒店到退房](travel-hotels.md) · [旅行的钱、安全和打包清单](travel-money-safety-packing.md) · [公路旅行和租车](travel-road-trip.md)
 
+**世界**（6）：[能源与气候](energy-climate.md) · [全球化的兴起与反弹](globalization-rise-backlash.md) · [贫富差距与社会流动](inequality-mobility.md) · [人口老龄化](population-aging.md) · [宣传与信息：怎么识别，怎么自保](propaganda-information.md) · [俄罗斯与乌克兰](russia-ukraine.md)
+
 **心理与关系**（6）：[依恋类型：回避型、焦虑型是怎么来的，能不能改](psy-attachment.md) · [煤气灯操纵（Gaslighting）：让你怀疑自己的那种控制](psy-gaslighting.md) · [🧠 心理与关系：目录和读之前要知道的](psy-index.md) · [操控型人格：常用的手法、背后的人格特质，怎么认出来、怎么保护自己](psy-manipulative.md) · [PUA：从「搭讪术」到情感操控，怎么认出来、怎么脱身](psy-pua.md) · [「人格分裂」到底是什么？分清精神分裂症和解离性身份障碍](psy-schizophrenia-did.md)
+
+**时事**（6）：[能源与气候](energy-climate.md) · [全球化的兴起与反弹](globalization-rise-backlash.md) · [贫富差距与社会流动](inequality-mobility.md) · [人口老龄化](population-aging.md) · [宣传与信息：怎么识别，怎么自保](propaganda-information.md) · [俄罗斯与乌克兰](russia-ukraine.md)
 
 **电影**（6）：[导演与风格](film-directors.md) · [类型片入门](film-genres.md) · [电影史纲](film-history.md) · [电影语言入门](film-language.md) · [怎么看电影](film-watching-guide.md) · [电影 Top 500（按国家分类）](top500-movies.md)
 
@@ -156,6 +160,12 @@
 
 ## 更新日志
 
+- 2026-11-06 新增 [能源与气候](energy-climate.md)
+- 2026-11-06 新增 [全球化的兴起与反弹](globalization-rise-backlash.md)
+- 2026-11-06 新增 [贫富差距与社会流动](inequality-mobility.md)
+- 2026-11-06 新增 [人口老龄化](population-aging.md)
+- 2026-11-06 新增 [宣传与信息：怎么识别，怎么自保](propaganda-information.md)
+- 2026-11-06 新增 [俄罗斯与乌克兰](russia-ukraine.md)
 - 2026-11-06 新增 [护肤入门：先认清你的肤质](skincare-basics.md)
 - 2026-11-05 新增 [人工智能入门](ai-basics.md)
 - 2026-11-05 新增 [艺术史入门](art-history-basics.md)
@@ -180,9 +190,3 @@
 - 2026-11-05 更新 [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md)
 - 2026-11-05 更新 [怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md)
 - 2026-11-05 更新 [经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md)
-- 2026-11-05 更新 [乐理基础（音高、音程、调式、和弦、节奏、曲式）](music-theory-basics.md)
-- 2026-11-05 更新 [背景资料：特朗普称将花 4 亿美元支持共和党中期选举（2026-10-20）](bg-2026-trump-midterm-400m.md)
-- 2026-11-05 更新 [我的 2025 凯美瑞混动：车主速查](camry-2025-hybrid.md)
-- 2026-11-05 更新 [美国医保名词一次讲清](us-health-insurance-terms.md)
-- 2026-11-05 更新 [美国投资账户与税的基本概念](us-investment-accounts-tax.md)
-- 2026-11-05 更新 [W-2 打工族报税入门（联邦 + 加州）](w2-tax-basics.md)
