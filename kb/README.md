@@ -36,9 +36,9 @@
 
 **野外**（10）：[露营入门：南加州去哪露营、怎么订、带什么](camping-basics.md) · [火：什么时候能生、怎么生、怎么灭，遇到山火怎么逃](fire-and-campfire-rules.md) · [失温和中暑：从早期征兆到怎么处理](hypothermia-heat-illness.md) · [迷路了怎么办：S.T.O.P.、手机定位、指南针和求救](lost-navigation.md) · [山地天气和地形风险：温度、雷暴、山洪、高原反应、冰雪、落石、天黑](mountain-weather-dangers.md) · [吃什么、背什么：徒步和露营的食物、水、炉头、背包与穿衣](outdoor-food-and-pack.md) · [南加州野外的动植物风险：蛇、狮、熊、蜱虫、毒橡树](socal-wildlife-plants.md) · [出门前：十大必备、行程计划和掉头时间](ten-essentials-trip-plan.md) · [野外的水：喝多少、去哪找、怎么净化](water-in-the-wild.md) · [野外急救基础：出事以后的头十分钟](wilderness-first-aid.md)
 
-**音乐**（8）：[华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md) · [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md) · [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md) · [怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md) · [经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md) · [乐理基础（音高、音程、调式、和弦、节奏、曲式）](music-theory-basics.md) · [音乐 Top 500（按国家分类）](top500-music.md) · [Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
+**健康**（8）：[护肤入门：先认清你的肤质](skincare-basics.md) · [健身入门](health-fitness-basics.md) · [营养基础](health-nutrition-basics.md) · [睡眠基础](health-sleep-basics.md) · [美国医保名词一次讲清](us-health-insurance-terms.md) · [失温和中暑：从早期征兆到怎么处理](hypothermia-heat-illness.md) · [野外的水：喝多少、去哪找、怎么净化](water-in-the-wild.md) · [山火季、Santa Ana 风和空气质量](wildfire-smoke-santa-ana.md)
 
-**健康**（7）：[健身入门](health-fitness-basics.md) · [营养基础](health-nutrition-basics.md) · [睡眠基础](health-sleep-basics.md) · [美国医保名词一次讲清](us-health-insurance-terms.md) · [失温和中暑：从早期征兆到怎么处理](hypothermia-heat-illness.md) · [野外的水：喝多少、去哪找、怎么净化](water-in-the-wild.md) · [山火季、Santa Ana 风和空气质量](wildfire-smoke-santa-ana.md)
+**音乐**（8）：[华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md) · [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md) · [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md) · [怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md) · [经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md) · [乐理基础（音高、音程、调式、和弦、节奏、曲式）](music-theory-basics.md) · [音乐 Top 500（按国家分类）](top500-music.md) · [Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
 
 **旅行**（7）：[加州海岸线自驾全攻略：从红杉到边境墙](california-coast.md) · [Amtrak 坐火车完全攻略：注意事项和技巧](amtrak-guide.md) · [旅行防骗大全](travel-scams.md) · [坐飞机：订票、行李、安检、延误退款](travel-flights-airports.md) · [订酒店不踩雷：从挑酒店到退房](travel-hotels.md) · [旅行的钱、安全和打包清单](travel-money-safety-packing.md) · [公路旅行和租车](travel-road-trip.md)
 
@@ -124,6 +124,8 @@
 
 **恒星**（1）：[恒星的一生：从星云到白矮星、中子星和黑洞](life-of-stars.md)
 
+**护肤**（1）：[护肤入门：先认清你的肤质](skincare-basics.md)
+
 **拍照**（1）：[用 S23 Ultra 拍月亮和星空](phone-astrophotography.md)
 
 **指南**（1）：[怎么看电影](film-watching-guide.md)
@@ -154,6 +156,7 @@
 
 ## 更新日志
 
+- 2026-11-06 新增 [护肤入门：先认清你的肤质](skincare-basics.md)
 - 2026-11-05 新增 [人工智能入门](ai-basics.md)
 - 2026-11-05 新增 [艺术史入门](art-history-basics.md)
 - 2026-11-05 新增 [天文系列导读](astronomy-index.md)
@@ -183,4 +186,3 @@
 - 2026-11-05 更新 [美国医保名词一次讲清](us-health-insurance-terms.md)
 - 2026-11-05 更新 [美国投资账户与税的基本概念](us-investment-accounts-tax.md)
 - 2026-11-05 更新 [W-2 打工族报税入门（联邦 + 加州）](w2-tax-basics.md)
-- 2026-11-02 更新 [电影 Top 500（按国家分类）](top500-movies.md)
