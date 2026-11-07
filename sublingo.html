@@ -281,7 +281,7 @@ footer{color:var(--faint);font-size:12px;text-align:center;padding:24px 0 40px}
     </div>
     <input type="file" id="fSub" accept=".srt,.vtt,.ass,.ssa,.txt" class="vh">
     <input type="file" id="fMedia" accept="video/*,audio/*,.mkv,.m4b" class="vh">
-    <input type="file" id="fBook" accept=".epub,.txt" class="vh">
+    <input type="file" id="fBook" accept="*/*" class="vh">
   </section>
 
   <!-- ARTICLE VIEW -->
@@ -2090,9 +2090,11 @@ var NLP = (function () {
           if (!book.title) book.title = file.name.replace(/[.]epub$/i, '');
           showBook(book);
         }, function (e) { status('电子书打开失败：' + ((e && e.message) || e), true); });
-      } else {
+      } else if (/[.]txt$/i.test(file.name)) {
         status('');
         bookFromText(decodeBytes(buf), file.name.replace(/[.]txt$/i, ''));
+      } else {
+        status('这个文件不是 EPUB / TXT 电子书，换一个试试。', true);
       }
     }, function () { status('文件读取失败。', true); });
   }
