@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-07T16:29:52Z",
- "date": "2026-11-07",
+ "generated": "2026-11-08T16:43:45Z",
+ "date": "2026-11-08",
  "engine": "edge",
- "total": 450.1,
- "short": 283.9,
+ "total": 486.5,
+ "short": 291.4,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611070828",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611080842",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月7日 星期六",
-   "dur": 11.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611070828",
+   "sub": "11月8日 星期日",
+   "dur": 11.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。今天是11月7日，星期六。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
+     "t": "周末还出门，辛苦了。这里是你的通勤电台。今天是11月8日，星期日，方向盘上的下一首可以随时跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 83°/61°F",
-   "dur": 29.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611070828",
+   "sub": "Upland 晴 85°/51°F",
+   "dur": 28.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏62度，17摄氏度，体感57度。傍晚5点下班大约华氏75度，24摄氏度，体感67度。白天最高83度，约28摄氏度；最低61度。基本不会下雨。白天空气质量良好，指数最高45。今天日落时间是傍晚4点52分。"
+     "t": "Upland今天晴。早上7点出门大约华氏56度，13摄氏度，体感50度。傍晚5点下班大约华氏76度，25摄氏度，体感70度。白天最高85度，约29摄氏度；最低51度。基本不会下雨。白天空气质量良好，指数最高47。今天日落时间是傍晚4点51分。"
     }
    ]
   },
@@ -39,11 +39,11 @@
    "title": "🔭 天象",
    "sub": "Upland",
    "dur": 8.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611070828",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。明天，新月。前后几晚没有月光，最适合看星星和银河。"
+     "t": "天象提醒。今天，新月。前后几晚没有月光，最适合看星星和银河。"
     }
    ]
   },
@@ -52,7 +52,7 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 31.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611070828",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
@@ -65,7 +65,7 @@
    "title": "📈 股票池",
    "sub": "38 个候选",
    "dur": 65.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611070828",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
@@ -98,7 +98,7 @@
    "title": "🗓️ 财报与数据",
    "sub": "2 件大事",
    "dur": 31.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611070828",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
@@ -117,9 +117,9 @@
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "Al Jazeera · BBC · NPR",
-   "dur": 69.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611070828",
+   "sub": "BBC · Al Jazeera · NPR",
+   "dur": 76.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
@@ -127,44 +127,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：执政党在新西兰刀刃投票的早期结果中领先。"
+     "t": "第1条，来自BBC，科学，难度B2。大意是：在河口发现数以百计的海草芽。"
     },
     {
      "lang": "en",
-     "t": "Governing party ahead in early results of New Zealand’s knife-edge vote"
+     "t": "Hundreds of seagrass shoots found in estuary"
+    },
+    {
+     "lang": "en",
+     "t": "There were fears a restoration trial may not succeed when only six seedlings had emerged in April."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，科学，难度B2。大意是：今年最多产的流星雨之一，点亮本周末的夜空。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：特朗普要求UFC首席执行官Dana White担任白宫新闻秘书。"
     },
     {
      "lang": "en",
-     "t": "One of the year's most prolific meteor showers to light up the night sky this weekend"
+     "t": "Trump asks UFC chief Dana White to be White House press secretary"
     },
     {
      "lang": "en",
-     "t": "The Leonid meteor shower, known for its bright and fast meteors, will kick off this weekend and continue until the end of November."
+     "t": "Ultimate Fighting Championship CEO says he will meet with the US president on Monday to discuss the offer."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B1。大意是：即将上任的美国参议员阶层充满了历史性的第一。"
+     "t": "第3条，来自NPR，综合，难度B1。大意是：德克萨斯州令人惊讶且经常被遗忘的经济民粹主义历史。"
     },
     {
      "lang": "en",
-     "t": "The incoming class of U.S. senators is full of historic firsts"
+     "t": "The surprising and often forgotten history of economic populism in Texas"
     },
     {
      "lang": "en",
-     "t": "From the first Native American woman elected to the U.S."
+     "t": "NPR's Rob Schmitz speaks with Austin-based political commentator David Griscom."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "valley · decir",
-   "dur": 30.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611070828",
+   "sub": "prepare · azul claro",
+   "dur": 31.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
@@ -172,15 +176,15 @@
     },
     {
      "lang": "en",
-     "t": "valley"
+     "t": "prepare"
     },
     {
      "lang": "zh",
-     "t": "意思是：山谷。拼写是："
+     "t": "意思是：准备。拼写是："
     },
     {
      "lang": "en",
-     "t": "v, a, l, l, e, y"
+     "t": "p, r, e, p, a, r, e"
     },
     {
      "lang": "zh",
@@ -188,7 +192,7 @@
     },
     {
      "lang": "en",
-     "t": "valley"
+     "t": "prepare"
     },
     {
      "lang": "zh",
@@ -196,40 +200,44 @@
     },
     {
      "lang": "es",
-     "t": "decir"
+     "t": "azul claro"
     },
     {
      "lang": "zh",
-     "t": "意思是：说，告诉。跟着读一遍。"
+     "t": "意思是：浅蓝色的。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "decir"
+     "t": "azul claro"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "口头禅",
-   "dur": 12.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611070828",
+   "sub": "名言",
+   "dur": 27.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句口头禅。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "Cool"
+     "t": "A failure is a man who has blundered, but is not able to cash in the experience."
     },
     {
      "lang": "zh",
-     "t": "意思是：酷！太棒了"
+     "t": "意思是：失败者是犯了错，却不会把教训变成收获的人。这句话出自 Elbert Hubbard。"
+    },
+    {
+     "lang": "zh",
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "Cool"
+     "t": "A failure is a man who has blundered, but is not able to cash in the experience."
     }
    ],
    "opt": true
@@ -237,61 +245,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "仓库收发货",
-   "dur": 62.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611070828",
+   "sub": "和主管沟通",
+   "dur": 67.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：仓库收发货。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "你有几托？"
+     "t": "这周有加班吗？"
     },
     {
      "lang": "en",
-     "t": "How many pallets do you have?"
+     "t": "Is there any overtime this week?"
     },
     {
      "lang": "en",
-     "t": "How many pallets do you have?"
+     "t": "Is there any overtime this week?"
     },
     {
      "lang": "zh",
-     "t": "数量对不上。"
+     "t": "需要的话我可以晚走。"
     },
     {
      "lang": "en",
-     "t": "The count doesn't match."
+     "t": "I can stay late if you need me."
     },
     {
      "lang": "en",
-     "t": "The count doesn't match."
+     "t": "I can stay late if you need me."
     },
     {
      "lang": "zh",
-     "t": "我们少了两托。"
+     "t": "我能和 Carlos 换班吗？"
     },
     {
      "lang": "en",
-     "t": "We're two pallets short."
+     "t": "Can I switch shifts with Carlos?"
     },
     {
      "lang": "en",
-     "t": "We're two pallets short."
+     "t": "Can I switch shifts with Carlos?"
     },
     {
      "lang": "zh",
-     "t": "我们多了一托。"
+     "t": "我下周怎么排班？"
     },
     {
      "lang": "en",
-     "t": "We have one extra pallet."
+     "t": "What's my schedule next week?"
     },
     {
      "lang": "en",
-     "t": "We have one extra pallet."
+     "t": "What's my schedule next week?"
     },
     {
      "lang": "zh",
@@ -303,13 +311,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "社交媒体广告里的超低价网店",
-   "dur": 20.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611070828",
+   "sub": "申请 IRS 身份保护 PIN",
+   "dur": 22.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：社交媒体广告里的超低价网店。付了钱收不到货或收到假货。做法：价格低得离谱、网站刚建、没有退货地址：别买；把网店名加上「scam」「reviews」搜一下；要买就用信用卡或 PayPal 商品付款。"
+     "t": "今日一招：申请 IRS 身份保护 PIN。防别人冒名报税领退税。做法：上 IRS.gov 搜「Get an IP PIN」，验证身份后申请；每年年初会有新的 6 位 PIN，在 IRS 在线账户里能看到；报税时把 PIN 交给报税软件或会计师。"
     }
    ],
    "opt": true
@@ -317,13 +325,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1910 · 1918 · 1989",
-   "dur": 24.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611070828",
+   "sub": "1912 · 1937 · 1989",
+   "dur": 25.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1910年，莱特兄弟将两匹丝绸从俄亥俄州代顿市送到105公里外的哥伦布市，完成历史上最早的商业空运。1918年，波兰共和国临时人民政府宣告成立。1989年，戴维·丁金斯成为首位非裔纽约市市长。"
+     "t": "历史上的今天。1912年，第一次巴尔干战争期间，驻扎于塞萨洛尼基的奥斯曼帝国军队向希腊陆军投降。1937年，中国抗日战争：太原会战以中国军队失败结束。1989年，香港文化中心正式揭幕，仪式由查理斯王子及戴安娜王妃主持。"
     }
    ],
    "opt": true
@@ -331,21 +339,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "浣溪沙·游蕲水清泉寺",
-   "dur": 47.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611070828",
+   "sub": "西江月·世事一场大梦",
+   "dur": 52.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：浣溪沙·游蕲水清泉寺。写于1082年，他45岁，在蕲水（今湖北浠水）清泉寺。"
+     "t": "读一首苏轼：西江月·世事一场大梦。写于1080年，他43岁，在黄州。"
     },
     {
      "lang": "zh",
-     "t": "山下兰芽短浸溪，松间沙路净无泥，萧萧暮雨子规啼。谁道人生无再少？门前流水尚能西！休将白发唱黄鸡。"
+     "t": "世事一场大梦，人生几度秋凉？夜来风叶已鸣廊，看取眉头鬓上。酒贱常愁客少，月明多被云妨。中秋谁与共孤光，把盏凄然北望。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：山脚下兰草的嫩芽短短的，浸泡在溪水里；松林间的沙路洁净，没有一点泥泞；傍晚细雨萧萧，杜鹃在啼叫。谁说人生不能再回到少年？门前的溪水还能向西流呢！不要在白发之年，像白居易那样唱着“黄鸡催晓”感叹衰老。"
+     "t": "白话意思是：世上的事就像一场大梦，人生能经历几回秋天的凉意？夜里风吹落叶，在回廊上沙沙作响；看看我的眉头和鬓角，已经添了愁容和白发。酒虽便宜，却常愁没有客人同饮；月亮虽明，却总被云遮住。这中秋之夜，谁和我一起欣赏这孤零零的月光？我只能端着酒杯，凄凉地向北远望。"
     }
    ],
    "opt": true
@@ -354,12 +362,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611070828",
+   "dur": 6.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611080842",
    "text": [
     {
      "lang": "zh",
-     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
+     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
     }
    ]
   }
