@@ -1,10 +1,8 @@
 {
- "generated": "2026-11-07T18:53:28Z",
- "ok": false,
- "problems": [
-  "⚙️ 自动任务「pages build and deployment」上次运行失败（https://github.com/boliunew/tools/actions/runs/42400877697）"
- ],
- "sig": "⚙️ 自动任务「pages build and deployment」上次运行失败（https://github.com/boliunew/tools/actions/runs/42400877697）",
+ "generated": "2026-11-08T09:34:36Z",
+ "ok": true,
+ "problems": [],
+ "sig": "",
  "data": [
   {
    "k": "brief",
@@ -14,8 +12,8 @@
    "wf": "brief.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-06T21:46:31Z",
-   "detail": "15 条"
+   "at": "2026-11-07T20:33:13Z",
+   "detail": "16 条"
   },
   {
    "k": "news_today",
@@ -25,7 +23,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T17:59:52Z",
+   "at": "2026-11-08T07:09:24Z",
    "detail": "12 条"
   },
   {
@@ -36,7 +34,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T17:59:58Z",
+   "at": "2026-11-08T07:09:27Z",
    "detail": "75 条"
   },
   {
@@ -47,8 +45,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T17:59:29Z",
-   "detail": "260 条"
+   "at": "2026-11-08T07:09:06Z",
+   "detail": "237 条"
   },
   {
    "k": "stocks",
@@ -79,7 +77,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T18:05:16Z"
+   "at": "2026-11-08T05:58:09Z"
   },
   {
    "k": "radio",
@@ -99,8 +97,8 @@
    "wf": "tv.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T15:55:11Z",
-   "detail": "11909 条"
+   "at": "2026-11-08T00:57:39Z",
+   "detail": "11943 条"
   },
   {
    "k": "card",
@@ -120,7 +118,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T14:55:37Z"
+   "at": "2026-11-08T06:10:29Z"
   },
   {
    "k": "bay_live",
@@ -130,7 +128,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T18:52:21Z"
+   "at": "2026-11-08T09:33:01Z"
   },
   {
    "k": "longterm",
@@ -251,14 +249,6 @@
    "msg": ""
   }
  ],
- "failed_runs": [
-  {
-   "wf": "pages-build-deployment",
-   "n": "pages build and deployment",
-   "conclusion": "failure",
-   "url": "https://github.com/boliunew/tools/actions/runs/42400877697",
-   "at": "2026-11-07T18:21:25Z"
-  }
- ],
- "since": "2026-11-07T18:53:28Z"
+ "failed_runs": [],
+ "since": "2026-11-08T09:34:36Z"
 }
