@@ -1,16 +1,16 @@
 {
- "date": "2026-11-07",
- "kind": "口头禅",
- "en": "Cool",
- "zh": "酷！太棒了",
- "by": "觉得某样东西很棒",
- "line": "Cool",
+ "date": "2026-11-08",
+ "kind": "名言",
+ "en": "A failure is a man who has blundered, but is not able to cash in the experience.",
+ "zh": "失败者是犯了错，却不会把教训变成收获的人。",
+ "by": "Elbert Hubbard",
+ "line": "A failure is a man who has blundered, but is not able to cash in the experience. — Elbert Hubbard",
  "word": {
-  "w": "enlist",
-  "ph": "in'list",
-  "zh": "vt. 征募，参与，谋取；vi. 从军，应募，赞助",
-  "ex": "There was too much socialization with the enlisted men.",
-  "exzh": "跟士兵们的交往太多了。"
+  "w": "steak",
+  "ph": "steik",
+  "zh": "n. 牛排，鱼排，肉排",
+  "ex": "She said she felt like eating steak.",
+  "exzh": "她说她想要吃牛排。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
