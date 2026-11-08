@@ -75,6 +75,7 @@ button{cursor:pointer}
 .yr{font-family:Georgia,serif;color:var(--or);font-size:12.5px;font-weight:700}
 .want{border:1px solid var(--line);background:none;border-radius:999px;font-size:12.5px;padding:2px 10px;margin-top:6px;color:var(--soft)}
 .want.on{border-color:var(--or);color:var(--or);background:var(--or-soft)}
+.dash{padding:2px 0}.dw-cur{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}.dw-cur .b,.dw-wk .b{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 11px}.dw-cur .n{font-size:24px;font-weight:700;line-height:1.1}.dw-cur .s,.dw-wk .s{font-size:12px;color:var(--soft);margin-top:3px;line-height:1.5}.dw-h{font-weight:700;margin:14px 0 8px}.dw-wk{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dw-wk .d1{font-weight:700;margin-bottom:4px}.dw-wk .tp{font-size:20px;font-weight:700}.dw-ev{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px}.dw-ev .et{font-weight:600;line-height:1.45}.dw-ev .em{font-size:12.5px;color:var(--soft);margin-top:3px;line-height:1.55}.dw-ev a{color:var(--bay);text-decoration:none}.dw-ft{font-size:12px;color:var(--faint);margin-top:10px;line-height:1.6}
 .triv{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:6px 14px;box-shadow:var(--shadow)}
 .triv div{font-size:14px;line-height:1.65;padding:8px 0;border-top:1px dashed var(--line)}
 .triv div:first-child{border-top:0}
@@ -210,7 +211,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('sj:' + k) || 'null'); localStorage.setItem('sj:' + k, JSON.stringify(v)); } catch (e) { return null; } }
-  var TABS = [['gift', '🎁 盲盒 · 护照'], ['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['map', '🗺️ 交通图'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去']];
+  var TABS = [['gift', '🎁 盲盒 · 护照'], ['hoods', '🏙️ 街区'], ['eat', '🍜 吃喝'], ['fun', '🎡 好玩'], ['tips', '🔑 本地人秘籍'], ['stories', '📜 人文故事'], ['map', '🗺️ 交通图'], ['go', '🚋 出行'], ['work', '💼 工作生活'], ['trivia', '💡 冷知识'], ['want', '⭐ 想去'], ['dash', '📅 周末']];
   var LEAD = {
     gift: '不知道今天去哪儿？拆一个盲盒，给你一条完整的一日行程。去过的地方在下面的护照上盖个章，集齐有称号。',
     hoods: '圣何塞和周边的硅谷小城，每个地方的味道都不一样：越南城、日本町、墨西哥东区、苹果和斯坦福。点开看去做什么、吃什么。',
@@ -218,6 +219,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     fun: '景点、博物馆、山和海，以及一年里的大活动。点 ☆ 加到「想去」。',
     tips: '本地人天天在用的省钱、省事小窍门。票价和开放时间会变，以官网为准。',
     stories: '这座城是怎么来的：西班牙小镇、水银矿、电灯塔、果园、车库、难民和奥运领奖台……',
+    dash: 'Upland 及周边的今日天气、周末天气和附近活动，跟周末仪表盘同步。其它城市的内容见各自标签。',
     map: '两指缩放、拖动查看。VTA 轻轨、Caltrain 和主要巴士按官方时刻表数据画出真实走向；点 💡 看用心提示。出行前用 Transit App 或谷歌地图确认。',
     go: '怎么去、怎么走、怎么穿，以及本地人的说法。',
     work: '在硅谷工作和生活要知道的事。工资、房租、规定每年会变，以官网为准。',
@@ -279,6 +281,58 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     h += '<div class="lead">' + LEAD[TAB] + '</div>';
     if (TAB === 'gift') { $('list').innerHTML = h + giftHTML(); return; }
     if (TAB === 'map') { $('list').innerHTML = h + mapHTML(); mapInit(); return; }
+    if (TAB === 'dash') { $('list').innerHTML = h + dashHTML(); dashLoad(render); return; }
+  // ---- 📅 周末仪表盘（Upland）：数据由 Muse 仪表盘刷新任务同步成 dash/dash.json
+  var DASH = null, DASHING = false;
+  function dashLoad(cb) {
+    if (DASH) { cb(); return; }
+    if (DASHING) { var iv = setInterval(function () { if (DASH || !DASHING) { clearInterval(iv); cb(); } }, 250); return; }
+    DASHING = true;
+    var x = new XMLHttpRequest();
+    x.open('GET', 'dash/dash.json?t=' + Math.floor(Date.now() / 36e5));
+    x.onload = function () { try { DASH = JSON.parse(x.responseText); } catch (e) { DASH = { error: 1 }; } DASHING = false; cb(); };
+    x.onerror = function () { DASH = { error: 1 }; DASHING = false; cb(); };
+    x.send();
+  }
+  function dashHTML() {
+    if (!DASH) return '<div class="empty">正在加载仪表盘数据…</div>';
+    if (DASH.error || !DASH.weather) return '<div class="empty">仪表盘数据暂时读不到，晚点再来看看。</div>';
+    var W = DASH.weather, C = W.current || {}, T = W.today || {};
+    function wkday(ds) { var p = (ds || '').split('-'); if (p.length < 3) return ''; return '日一二三四五六'.charAt(new Date(+p[0], +p[1] - 1, +p[2]).getDay()); }
+    function f2c(f) { return Math.round((f - 32) * 5 / 9); }
+    var h = '<div class="dash">';
+    h += '<div class="dw-cur">'
+      + '<div class="b"><div class="n">' + C.temp + '°F</div><div class="s">现在 · ' + esc(C.description || '') + '<br>体感 ' + C.feelsLike + '°F（' + f2c(C.feelsLike || 0) + '°C）</div></div>'
+      + '<div class="b"><div class="n">' + (T.high || C.high) + '° / ' + (T.low || C.low) + '°</div><div class="s">今日高 / 低温（°F）<br>降水概率 ' + (T.precipChance != null ? T.precipChance : C.precipChance) + '%</div></div>'
+      + '<div class="b"><div class="n">' + (C.airQualityIndex != null ? C.airQualityIndex : '—') + '</div><div class="s">空气质量 AQI ' + esc(C.airQualityDescription || '') + '<br>湿度 ' + C.humidity + '% · UV ' + C.uvIndex + '</div></div>'
+      + '</div>';
+    h += '<div class="s" style="font-size:12.5px;color:var(--soft);line-height:1.6">今日：' + esc(T.summary || '') + '（Upland, CA）</div>';
+    h += '<div class="dw-h">🗓 这周末天气</div><div class="dw-wk">';
+    (W.weekend || []).forEach(function (d) {
+      h += '<div class="b"><div class="d1">' + (d.day === 'sat' ? '周六' : '周日') + ' ' + esc((d.date || '').slice(5)) + '</div>'
+        + '<div class="tp">' + d.high + '° / ' + d.low + '°F</div>'
+        + '<div class="s">' + esc(d.summary || '') + '<br>降水 ' + d.precipChance + '%' + (d.wind ? ' · 风 ' + esc(d.wind) : '') + '</div></div>';
+    });
+    h += '</div>';
+    function evList(list, label) {
+      if (!list || !list.length) return '';
+      var s = '<div class="dw-h">' + label + '</div>';
+      list.forEach(function (e) {
+        var meta = [e.dayLabel ? e.dayLabel + ' ' + (e.date || '').slice(5) : (e.date || '').slice(5),
+          e.startTime ? e.startTime + (e.endTime ? '–' + e.endTime : '') : '',
+          e.venue || '', e.city || '', e.price || ''].filter(Boolean).join(' · ');
+        s += '<div class="dw-ev"><div class="et">' + esc(e.title || '') + '</div><div class="em">' + esc(meta)
+          + (e.note ? '<br>' + esc(e.note) : '')
+          + (e.sourceUrl ? '<br><a href="' + esc(e.sourceUrl) + '" target="_blank" rel="noopener">来源 ↗</a>' : '') + '</div></div>';
+      });
+      return s;
+    }
+    h += evList(DASH.todayEvents, '📍 今天在 Upland 附近');
+    h += evList(DASH.events, '🎉 这周末在 Upland 附近');
+    h += '<div class="dw-ft">这是 Upland 的周末仪表盘（跟 Muse 里的仪表盘同一份数据）；活动更新于 ' + esc(String(DASH.eventsUpdatedAt || '').slice(0, 10)) + '，天气为打开时的最新快照。各城市自己的内容还在其它标签里。</div>';
+    return h + '</div>';
+  }
+
     if (TAB === 'trivia') h += '<div class="triv">' + D.trivia.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
     else {
       var L = items(TAB);
