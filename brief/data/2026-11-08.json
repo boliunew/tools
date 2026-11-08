@@ -1,0 +1,184 @@
+{
+ "date": "2026-11-08",
+ "generated": "2026-11-08T18:55:11Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "AI 生成的投诉导致英国公共机构工作负荷激增",
+     "d": "英国议员办公室、地方政府和学校等公共机构的工作人员称，2024 年起收到的邮件中约有一半是 AI 生成的投诉或请求，导致处理时间大幅增加。该现象被称为 “AI clog”，加剧了本已紧张的公共资源压力。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/08/ai-clog-public-bodies-local-authorities-onslaught-chatbot-generated-correspondence"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI 暴露漏洞引发连环黑客攻击",
+     "d": "近期包括超市冰箱、加密货币交易所 Binance 被盗 63 亿美元以及乌克兰紧急警报系统假核警报在内的多起网络攻击被归因于 AI 揭露的系统脆弱性。英国国家网络安全中心警告，AI 可能加速未来几年黑客攻击的频率和规模。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/news/ng-interactive/2026/nov/08/hot-fridges-a-fake-nuclear-alert-and-a-6bn-heist-are-we-in-the-foothills-of-a-hacking-epidemic"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "三名男子利用 AI 冒充高管窃取逾 1.29 亿美元",
+     "d": "美国司法部披露，三名外国男子利用 AI 合成 CEO 与律师的声音和形象，骗取全球多家公司汇款，总金额超过 1.29 亿美元，并将赃款转为加密货币洗钱。此案凸显 AI 在金融诈骗中的新型风险。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/us-news/2026/nov/06/ai-ceo-impersonation-theft"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/6 周五 收盘：标普500 ETF（SPY）+0.31%，纳指100 ETF（QQQ）+1.40%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 25.6；63% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：COHR +13.6%、ABNB +11.7%、AMD +11.0%；跌幅最大：AXON -18.2%、MCHP -10.0%、CHTR -6.2%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/9 周一的重要财报：KKR（盘前）、CEG（盘前）、B（盘前）、OXY（盘后）、FERG（盘前）",
+     "d": "按市值挑出最大的几家，共 13 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/6 周五）",
+     "d": "Initial Jobless Claims 实际 189K（预期 197K，前值 195K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/10 周二 08:40：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/11 周三 04:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/11 周三 08:30：CPI 通胀数据（重要性：高）",
+     "d": "高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "波兰克拉科夫枪击案致6死 引发恐怖调查",
+     "d": "一次极右翼枪击造成多人死亡，引起欧盟对极端主义和国内安全的高度警觉，可能影响地区政治氛围。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/poland-in-shock-after-6-killed-in-krakow-far-right-shooting"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/poland-in-shock-mass-shooting-shatters-sense-security-6534516"
+      }
+     ]
+    },
+    {
+     "t": "以色列总统指派加迪·埃森科特组建新政府",
+     "d": "以色列总统赫尔佐格任命中间派 Yashar 党领袖加迪·埃森科特为首任政府组建者，赋予其 28 天（可延长 14 天）时间完成联盟谈判，以取代内塔尼亚胡的宗教民族主义政府。此举旨在应对地区安全挑战并实现政局稳定。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/israel-eisenkot-officially-tasked-with-forming-a-government/a-79891422?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/08/gadi-eisenkot-netanyahu-allies-form-israel-government"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "俄军空袭致乌克兰东部超 60 万人停电",
+     "d": "俄罗斯对乌克兰东部能源设施的夜间导弹攻击导致顿涅茨克地区约 60 万居民断电，且维修工作因持续袭击受阻。此类攻击加剧了乌克兰在严冬期间的能源危机，并被视为对乌克兰政府的压力手段。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/8/russian-strikes-on-ukraine-leave-hundreds-of-thousands-without-electricity?traffic_source=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/8/hundreds-of-thousands-protesters-storm-amsterdam?traffic_source=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "11/11 周三：CPI 通胀数据",
+  "d": "高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。 这是近几天最可能让整个市场大幅波动的事件，公布前后留意仓位。"
+ },
+ "week": []
+}
