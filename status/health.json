@@ -1,8 +1,10 @@
 {
- "generated": "2026-11-08T09:34:36Z",
- "ok": true,
- "problems": [],
- "sig": "",
+ "generated": "2026-11-08T18:54:18Z",
+ "ok": false,
+ "problems": [
+  "🚆 Amtrak 实时列车接口：连不上：HTTP Error 503: Service Unavailable"
+ ],
+ "sig": "🚆 Amtrak 实时列车接口",
  "data": [
   {
    "k": "brief",
@@ -23,7 +25,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-08T07:09:24Z",
+   "at": "2026-11-08T18:18:50Z",
    "detail": "12 条"
   },
   {
@@ -34,7 +36,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-08T07:09:27Z",
+   "at": "2026-11-08T18:18:57Z",
    "detail": "75 条"
   },
   {
@@ -45,7 +47,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-08T07:09:06Z",
+   "at": "2026-11-08T18:18:33Z",
    "detail": "237 条"
   },
   {
@@ -77,7 +79,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-08T05:58:09Z"
+   "at": "2026-11-08T18:23:54Z"
   },
   {
    "k": "radio",
@@ -87,7 +89,7 @@
    "wf": "radio.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T16:29:52Z"
+   "at": "2026-11-08T16:43:45Z"
   },
   {
    "k": "tv",
@@ -97,7 +99,7 @@
    "wf": "tv.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-08T00:57:39Z",
+   "at": "2026-11-08T16:18:40Z",
    "detail": "11943 条"
   },
   {
@@ -108,7 +110,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-07T23:59:00Z"
+   "at": "2026-11-08T23:59:00Z"
   },
   {
    "k": "monitor",
@@ -118,7 +120,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-08T06:10:29Z"
+   "at": "2026-11-08T15:18:26Z"
   },
   {
    "k": "bay_live",
@@ -128,7 +130,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-08T09:33:01Z"
+   "at": "2026-11-08T18:50:14Z"
   },
   {
    "k": "longterm",
@@ -238,8 +240,8 @@
    "k": "amtraker",
    "e": "🚆",
    "n": "Amtrak 实时列车接口",
-   "ok": true,
-   "msg": ""
+   "ok": false,
+   "msg": "连不上：HTTP Error 503: Service Unavailable"
   },
   {
    "k": "bart",
@@ -250,5 +252,5 @@
   }
  ],
  "failed_runs": [],
- "since": "2026-11-08T09:34:36Z"
+ "since": "2026-11-08T18:54:18Z"
 }
