@@ -1,0 +1,283 @@
+{
+ "location": "San Francisco, CA",
+ "eventsUpdatedAt": "2026-11-08T12:09:20.375597Z",
+ "ranges": {
+  "today": "2026-11-08",
+  "sat": "2026-11-14",
+  "sun": "2026-11-15"
+ },
+ "todayEvents": [
+  {
+   "bucket": "today",
+   "title": "San Francisco Coffee Festival 2026",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "9:30 AM",
+   "endTime": "4:30 PM",
+   "venue": "Fort Mason Center Festival Pavilion",
+   "city": "San Francisco",
+   "category": "Food & Drink",
+   "price": "$29",
+   "note": "The 10th annual San Francisco Coffee Festival features curated coffee tastings from top Bay Area roasters and exhibitors plus live music.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/08/"
+  },
+  {
+   "bucket": "today",
+   "title": "Inner Sunset Flea Market 2026 (Season Finale)",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "10:00 AM",
+   "endTime": "4:00 PM",
+   "venue": "Inner Sunset, 9th Avenue and Irving Street",
+   "city": "San Francisco",
+   "category": "Market",
+   "price": "Free",
+   "note": "The season finale of this monthly community flea market transforms Irving Street between 9th and 11th Avenues into a lively street market.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/08/"
+  },
+  {
+   "bucket": "today",
+   "title": "San Francisco's Annual Veterans Day Parade 2026",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "11:00 AM",
+   "endTime": "1:00 PM",
+   "venue": "Fisherman's Wharf, Jefferson and Taylor",
+   "city": "San Francisco",
+   "category": "Festival",
+   "price": "Free",
+   "note": "San Francisco's annual Veterans Day Parade honors the service and sacrifice of the Armed Forces along the northern waterfront at Fisherman's Wharf.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/08/"
+  },
+  {
+   "bucket": "today",
+   "title": "Blankets & Blockbusters: Toy Story 5 Outdoor Movie",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "12:00 PM",
+   "endTime": "3:00 PM",
+   "venue": "Thrive City",
+   "city": "San Francisco",
+   "category": "Family",
+   "price": "Free",
+   "note": "This free outdoor screening of Toy Story 5 plays on the plaza board at Thrive City, with family-friendly movie-themed activities and the film starting at 1 PM.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/08/"
+  },
+  {
+   "bucket": "today",
+   "title": "San Francisco Symphony: Isabel Leonard Sings Ravel",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "2:00 PM",
+   "endTime": null,
+   "venue": "Davies Symphony Hall",
+   "city": "San Francisco",
+   "category": "Music",
+   "price": "$48",
+   "note": "Mezzo-soprano Isabel Leonard performs Ravel with the San Francisco Symphony at Davies Symphony Hall.",
+   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/november/"
+  }
+ ],
+ "events": [
+  {
+   "bucket": "weekend",
+   "title": "SF Tea Festival 2026",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "10:00 AM",
+   "endTime": "5:00 PM",
+   "venue": "San Francisco Ferry Building",
+   "city": "San Francisco",
+   "category": "Food & Drink",
+   "price": "$19",
+   "note": "The two-day festival lets visitors taste hundreds of teas from more than 30 tea makers, with admission including unlimited tastings and a souvenir porcelain tasting cup.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/14/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "SF VegFest 2026",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "11:00 AM",
+   "endTime": "5:00 PM",
+   "venue": "SMC Event Center, 1111 Gough St",
+   "city": "San Francisco",
+   "category": "Food & Drink",
+   "price": "$18",
+   "note": "Now in its 27th year, SF VegFest celebrates plant-based living with speakers, vegan chefs, and more than 80 exhibitors.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/14/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Renegade Craft Fair – Winter 2026",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "11:00 AM",
+   "endTime": "5:00 PM",
+   "venue": "Fort Mason Center Festival Pavilion",
+   "city": "San Francisco",
+   "category": "Market",
+   "price": "Free",
+   "note": "More than 250 curated artists and small businesses sell ceramics, jewelry, clothing, and home goods at this indoor holiday market, with free entry and a suggested $5 donation.",
+   "sourceUrl": "https://www.thebayareabrief.com/articles/renegade-craft-fair-san-francisco-winter-2026-fort-mason-nov-14-15"
+  },
+  {
+   "bucket": "weekend",
+   "title": "SF Civic Music Free Concert",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "3:00 PM",
+   "endTime": "5:00 PM",
+   "venue": "Noe Valley Ministry",
+   "city": "San Francisco",
+   "category": "Music",
+   "price": "Free",
+   "note": "The San Francisco Civic Music Association presents free public classical concerts performed by its community ensembles.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/14/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "San Francisco International Hip Hop DanceFest",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Palace of Fine Arts Theatre",
+   "city": "San Francisco",
+   "category": "Festival",
+   "price": null,
+   "note": "The 28th annual festival presents professional hip hop dance companies from around the world on the Palace of Fine Arts stage.",
+   "sourceUrl": "https://www.axs.com/uk/venues/124627/palace-of-fine-arts-theatre-san-francisco-tickets/staticDetails"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Renegade Craft Fair – Winter 2026",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "11:00 AM",
+   "endTime": "5:00 PM",
+   "venue": "Fort Mason Center Festival Pavilion",
+   "city": "San Francisco",
+   "category": "Market",
+   "price": "Free",
+   "note": "Sunday is the second day of the winter craft fair, with 250+ makers, indoor shopping rain or shine, and food trucks outside.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/15/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Waitress (Touring)",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "1:00 PM",
+   "endTime": null,
+   "venue": "Orpheum Theatre",
+   "city": "San Francisco",
+   "category": "Art",
+   "price": null,
+   "note": "The touring production of the hit Broadway musical Waitress plays a Sunday matinee at the Orpheum Theatre on Market Street.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?page=1&date=thisweekend"
+  }
+ ],
+ "weather": {
+  "current": {
+   "temp": 52,
+   "feelsLike": 49,
+   "high": 70,
+   "low": 51,
+   "description": "Mainly clear",
+   "precipChance": 0,
+   "humidity": 87,
+   "wind": "4 mph",
+   "uvIndex": 4,
+   "airQualityIndex": 61,
+   "airQualityDescription": "Moderate"
+  },
+  "today": {
+   "date": "2026-11-08",
+   "high": 70,
+   "low": 51,
+   "precipChance": 0,
+   "summary": "Foggy. Highs around 70 and lows around 51."
+  },
+  "daily": [
+   {
+    "date": "2026-11-08",
+    "high": 70,
+    "low": 51,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-09",
+    "high": 72,
+    "low": 51,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-10",
+    "high": 70,
+    "low": 59,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-11",
+    "high": 74,
+    "low": 59,
+    "precipChance": 1
+   },
+   {
+    "date": "2026-11-12",
+    "high": 74,
+    "low": 60,
+    "precipChance": 12
+   },
+   {
+    "date": "2026-11-13",
+    "high": 75,
+    "low": 60,
+    "precipChance": 18
+   },
+   {
+    "date": "2026-11-14",
+    "high": 74,
+    "low": 62,
+    "precipChance": 57
+   }
+  ],
+  "weekend": [
+   {
+    "date": "2026-11-14",
+    "day": "sat",
+    "high": 74,
+    "low": 62,
+    "precipChance": 57,
+    "summary": "Overcast. Highs around 74 and lows around 62.",
+    "wind": "6 mph",
+    "hourly": []
+   },
+   {
+    "date": "2026-11-15",
+    "day": "sun",
+    "high": 63,
+    "low": 56,
+    "precipChance": 62,
+    "summary": "Showers. Highs around 63 and lows around 56.",
+    "wind": "24 mph",
+    "hourly": []
+   }
+  ],
+  "fetchedAt": "2026-11-08T12:07:30.828403Z",
+  "location": "San Francisco, CA"
+ }
+}

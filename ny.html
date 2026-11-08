@@ -220,7 +220,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     fun: '景点、博物馆、山和海，以及一年里的大活动。点 ☆ 加到「想去」。',
     tips: '本地人天天在用的省钱、省事小窍门。票价和开放时间会变，以官网为准。',
     stories: '这座城是怎么来的：荷兰人的小镇、埃利斯岛、地铁、摩天楼、华埠，还有那个九月的早晨……',
-    dash: 'Upland 及周边的今日天气、周末天气和附近活动，跟周末仪表盘同步。其它城市的内容见各自标签。',
+    dash: '纽约的今日天气、周末天气和附近活动，自动同步更新。',
     map: '两指缩放、拖动查看。地铁按 MTA 官方 GTFS 数据画出真实走向，每月更新；点 💡 看用心提示。出行前用 MTA App 或谷歌地图确认（周末和深夜常改线）。',
     go: '怎么去、怎么走、怎么穿，以及本地人的说法。',
     work: '在纽约工作和生活要知道的事。工资、房租、规定每年会变，以官网为准。',
@@ -290,7 +290,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     if (DASHING) { var iv = setInterval(function () { if (DASH || !DASHING) { clearInterval(iv); cb(); } }, 250); return; }
     DASHING = true;
     var x = new XMLHttpRequest();
-    x.open('GET', 'dash/dash.json?t=' + Math.floor(Date.now() / 36e5));
+    x.open('GET', 'dash/ny.json?t=' + Math.floor(Date.now() / 36e5));
     x.onload = function () { try { DASH = JSON.parse(x.responseText); } catch (e) { DASH = { error: 1 }; } DASHING = false; cb(); };
     x.onerror = function () { DASH = { error: 1 }; DASHING = false; cb(); };
     x.send();
@@ -307,7 +307,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       + '<div class="b"><div class="n">' + (T.high || C.high) + '° / ' + (T.low || C.low) + '°</div><div class="s">今日高 / 低温（°F）<br>降水概率 ' + (T.precipChance != null ? T.precipChance : C.precipChance) + '%</div></div>'
       + '<div class="b"><div class="n">' + (C.airQualityIndex != null ? C.airQualityIndex : '—') + '</div><div class="s">空气质量 AQI ' + esc(C.airQualityDescription || '') + '<br>湿度 ' + C.humidity + '% · UV ' + C.uvIndex + '</div></div>'
       + '</div>';
-    h += '<div class="s" style="font-size:12.5px;color:var(--soft);line-height:1.6">今日：' + esc(T.summary || '') + '（Upland, CA）</div>';
+    h += '<div class="s" style="font-size:12.5px;color:var(--soft);line-height:1.6">今日：' + esc(T.summary || '') + '（' + esc(DASH.location || '') + '）</div>';
     h += '<div class="dw-h">🗓 这周末天气</div><div class="dw-wk">';
     (W.weekend || []).forEach(function (d) {
       h += '<div class="b"><div class="d1">' + (d.day === 'sat' ? '周六' : '周日') + ' ' + esc((d.date || '').slice(5)) + '</div>'
@@ -328,9 +328,9 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
       });
       return s;
     }
-    h += evList(DASH.todayEvents, '📍 今天在 Upland 附近');
-    h += evList(DASH.events, '🎉 这周末在 Upland 附近');
-    h += '<div class="dw-ft">这是 Upland 的周末仪表盘（跟 Muse 里的仪表盘同一份数据）；活动更新于 ' + esc(String(DASH.eventsUpdatedAt || '').slice(0, 10)) + '，天气为打开时的最新快照。各城市自己的内容还在其它标签里。</div>';
+    h += evList(DASH.todayEvents, '📍 今天的活动');
+    h += evList(DASH.events, '🎉 这周末的活动');
+    h += '<div class="dw-ft">这是纽约的周末页，跟周末仪表盘同一套数据在自动更新；活动更新于 ' + esc(String(DASH.eventsUpdatedAt || '').slice(0, 10)) + '，天气为最近一次同步的快照。本市自己的内容还在其它标签里。</div>';
     return h + '</div>';
   }
 

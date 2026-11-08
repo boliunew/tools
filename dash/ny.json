@@ -1,0 +1,283 @@
+{
+ "location": "New York, NY",
+ "eventsUpdatedAt": "2026-11-08T12:09:20.389530Z",
+ "ranges": {
+  "today": "2026-11-08",
+  "sat": "2026-11-14",
+  "sun": "2026-11-15"
+ },
+ "todayEvents": [
+  {
+   "bucket": "today",
+   "title": "St. John's Red Storm Men's Basketball v. Iona",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "12:00 PM",
+   "endTime": null,
+   "venue": "Madison Square Garden",
+   "city": "New York",
+   "category": "Sports",
+   "price": null,
+   "note": "St. John's men's basketball hosts Iona in a college basketball matchup at Madison Square Garden.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?page=11&date=thisweekend"
+  },
+  {
+   "bucket": "today",
+   "title": "The Rock And Roll Playhouse Plays: Music of Queen for Kids",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "12:00 PM",
+   "endTime": null,
+   "venue": "Brooklyn Bowl",
+   "city": "New York",
+   "category": "Family",
+   "price": null,
+   "note": "A family-friendly concert introduces kids to the music of Queen at Brooklyn Bowl.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA"
+  },
+  {
+   "bucket": "today",
+   "title": "The World Famous Harlem Gospel Choir",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "1:30 PM",
+   "endTime": null,
+   "venue": "Blue Note Jazz Club",
+   "city": "New York",
+   "category": "Music",
+   "price": null,
+   "note": "The Harlem Gospel Choir performs a Sunday afternoon show at the Blue Note Jazz Club.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ"
+  },
+  {
+   "bucket": "today",
+   "title": "Family Art Project: Raptors in Autumn Sky",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "10:00 AM",
+   "endTime": "1:00 PM",
+   "venue": "Wave Hill",
+   "city": "New York",
+   "category": "Family",
+   "price": null,
+   "note": "Families make art inspired by migrating hawks soaring above the Hudson River at Wave Hill in the Bronx.",
+   "sourceUrl": "https://familyweekendguide.com/new-york/"
+  },
+  {
+   "bucket": "today",
+   "title": "Queens Veterans Parade",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "12:00 PM",
+   "endTime": null,
+   "venue": "Metropolitan Avenue, Middle Village, Queens",
+   "city": "New York",
+   "category": "Festival",
+   "price": null,
+   "note": "The Queens Veterans Parade steps off at noon on Metropolitan Avenue in Middle Village ahead of Veterans Day.",
+   "sourceUrl": "https://nycinfocus.com/2026/11/08/things-to-do-in-nyc-today-sunday-november-8-2026/"
+  }
+ ],
+ "events": [
+  {
+   "bucket": "weekend",
+   "title": "Holiday Train Show",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "10:00 AM",
+   "endTime": "6:00 PM",
+   "venue": "New York Botanical Garden",
+   "city": "New York",
+   "category": "Family",
+   "price": "$39",
+   "note": "The Holiday Train Show opens for the season, with model trains running past nearly 200 New York landmarks built from plant materials.",
+   "sourceUrl": "https://lovelynyc.com/holidays/christmas-in-new-york/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Best of BAMkids Film Festival",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "11:00 AM",
+   "endTime": null,
+   "venue": "Brooklyn Academy of Music",
+   "city": "New York",
+   "category": "Family",
+   "price": null,
+   "note": "BAM's annual festival screens a selection of the year's best children's films at the Brooklyn Academy of Music.",
+   "sourceUrl": "https://makeitred.substack.com/p/tiny-scene-report-november-2026"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Christmas Spectacular Starring The Radio City Rockettes",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "2:00 PM",
+   "endTime": null,
+   "venue": "Radio City Music Hall",
+   "city": "New York",
+   "category": "Other",
+   "price": null,
+   "note": "The Radio City Rockettes perform the Christmas Spectacular holiday stage show at Radio City Music Hall.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=40"
+  },
+  {
+   "bucket": "weekend",
+   "title": "UFC 334",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "5:00 PM",
+   "endTime": null,
+   "venue": "Madison Square Garden",
+   "city": "New York",
+   "category": "Sports",
+   "price": null,
+   "note": "UFC 334 brings a night of mixed martial arts fights to Madison Square Garden.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?page=46"
+  },
+  {
+   "bucket": "weekend",
+   "title": "STING 3.0 Tour",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Brooklyn Paramount",
+   "city": "New York",
+   "category": "Music",
+   "price": null,
+   "note": "Sting brings his 3.0 Tour to the Brooklyn Paramount for a Saturday night performance.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=35"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Create-a-Thon: Mural Making, Graffiti Style",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "1:00 PM",
+   "endTime": null,
+   "venue": "Lincoln Center",
+   "city": "New York",
+   "category": "Art",
+   "price": "Free",
+   "note": "A free create-a-thon invites participants to make graffiti-style murals at Lincoln Center.",
+   "sourceUrl": "https://makeitred.substack.com/p/tiny-scene-report-november-2026"
+  },
+  {
+   "bucket": "weekend",
+   "title": "St. John's Red Storm Men's Basketball v. Syracuse",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Madison Square Garden",
+   "city": "New York",
+   "category": "Sports",
+   "price": null,
+   "note": "St. John's men's basketball faces Syracuse in an evening matchup at Madison Square Garden.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend&page=14"
+  }
+ ],
+ "weather": {
+  "current": {
+   "temp": 47,
+   "feelsLike": 42,
+   "high": 60,
+   "low": 46,
+   "description": "Clear",
+   "precipChance": 16,
+   "humidity": 81,
+   "wind": "9 mph",
+   "uvIndex": 3,
+   "airQualityIndex": 31,
+   "airQualityDescription": "Good"
+  },
+  "today": {
+   "date": "2026-11-08",
+   "high": 60,
+   "low": 46,
+   "precipChance": 16,
+   "summary": "Light drizzle. Highs around 60 and lows around 46."
+  },
+  "daily": [
+   {
+    "date": "2026-11-08",
+    "high": 60,
+    "low": 46,
+    "precipChance": 16
+   },
+   {
+    "date": "2026-11-09",
+    "high": 57,
+    "low": 44,
+    "precipChance": 5
+   },
+   {
+    "date": "2026-11-10",
+    "high": 61,
+    "low": 46,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-11",
+    "high": 61,
+    "low": 50,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-12",
+    "high": 59,
+    "low": 53,
+    "precipChance": 44
+   },
+   {
+    "date": "2026-11-13",
+    "high": 56,
+    "low": 44,
+    "precipChance": 62
+   },
+   {
+    "date": "2026-11-14",
+    "high": 46,
+    "low": 40,
+    "precipChance": 30
+   }
+  ],
+  "weekend": [
+   {
+    "date": "2026-11-14",
+    "day": "sat",
+    "high": 46,
+    "low": 40,
+    "precipChance": 30,
+    "summary": "Snow showers. Highs around 46 and lows around 40.",
+    "wind": "16 mph",
+    "hourly": []
+   },
+   {
+    "date": "2026-11-15",
+    "day": "sun",
+    "high": 50,
+    "low": 43,
+    "precipChance": 10,
+    "summary": "Overcast. Highs around 50 and lows around 43.",
+    "wind": "18 mph",
+    "hourly": []
+   }
+  ],
+  "fetchedAt": "2026-11-08T12:07:39.185886Z",
+  "location": "New York, NY"
+ }
+}

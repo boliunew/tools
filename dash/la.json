@@ -1,0 +1,283 @@
+{
+ "location": "Los Angeles, CA",
+ "eventsUpdatedAt": "2026-11-08T12:09:20.383739Z",
+ "ranges": {
+  "today": "2026-11-08",
+  "sat": "2026-11-14",
+  "sun": "2026-11-15"
+ },
+ "todayEvents": [
+  {
+   "bucket": "today",
+   "title": "Rose Bowl Flea Market",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "5:00 AM",
+   "endTime": null,
+   "venue": "Rose Bowl Stadium",
+   "city": "Pasadena",
+   "category": "Market",
+   "price": null,
+   "note": "The famous monthly flea market returns to the Rose Bowl with hundreds of vendors selling vintage goods, antiques, and collectibles.",
+   "sourceUrl": "https://www.eventbrite.com/d/ca--los-angeles/november/"
+  },
+  {
+   "bucket": "today",
+   "title": "Fall Brewery Artwalk",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "11:00 AM",
+   "endTime": "6:00 PM",
+   "venue": "Brewery Arts Complex",
+   "city": "Los Angeles",
+   "category": "Art",
+   "price": "$5",
+   "note": "More than 100 resident artists open their working studios at the historic Brewery Arts Complex, with free parking onsite.",
+   "sourceUrl": "https://www.welikela.com/things-to-do-this-weekend-in-los-angeles-11-6-2026-to-11-8-2026/"
+  },
+  {
+   "bucket": "today",
+   "title": "LA NDN Flea",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "10:00 AM",
+   "endTime": null,
+   "venue": "The Broad",
+   "city": "Los Angeles",
+   "category": "Market",
+   "price": "Free",
+   "note": "The Broad hosts this Indigenous makers' market with The Chapter House, celebrating Native American History Month with handcrafted goods, DJ sets, and food vendors.",
+   "sourceUrl": "https://www.welikela.com/things-to-do-this-weekend-in-los-angeles-11-6-2026-to-11-8-2026/"
+  },
+  {
+   "bucket": "today",
+   "title": "Free Second Sunday: Celebrating Himalayan Art & Culture",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "11:00 AM",
+   "endTime": "4:00 PM",
+   "venue": "USC Pacific Asia Museum",
+   "city": "Pasadena",
+   "category": "Family",
+   "price": "Free",
+   "note": "The USC Pacific Asia Museum offers free admission with a sand mandala ceremony, butter sculpture workshops, storytelling, and tea tastings.",
+   "sourceUrl": "https://www.welikela.com/things-to-do-this-weekend-in-los-angeles-11-6-2026-to-11-8-2026/"
+  },
+  {
+   "bucket": "today",
+   "title": "Renegade Craft Fair",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "10:00 AM",
+   "endTime": "4:00 PM",
+   "venue": "Santa Monica Airport Interim Open Space",
+   "city": "Santa Monica",
+   "category": "Market",
+   "price": null,
+   "note": "The Renegade Craft Fair closes its Santa Monica weekend with independent makers selling handmade goods at the Santa Monica Airport open space.",
+   "sourceUrl": "https://presencenews.org/things-to-do-los-angeles-november-7-8-2026/"
+  }
+ ],
+ "events": [
+  {
+   "bucket": "weekend",
+   "title": "Camp Flog Gnaw Carnival 2026",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "12:00 PM",
+   "endTime": "11:00 PM",
+   "venue": "Dodger Stadium",
+   "city": "Los Angeles",
+   "category": "Festival",
+   "price": "$415",
+   "note": "Tyler, the Creator's two-day festival opens at Dodger Stadium with Turnstile, Steve Lacy, Future, and Don Toliver, plus carnival rides.",
+   "sourceUrl": "https://thehighriseco.com/events/camp-flog-gnaw-los-angeles-november-2026"
+  },
+  {
+   "bucket": "weekend",
+   "title": "East LA Youth Mariachi Festival",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "10:00 AM",
+   "endTime": null,
+   "venue": "East LA Civic Center",
+   "city": "Los Angeles",
+   "category": "Festival",
+   "price": "Free",
+   "note": "The free third annual festival showcases young mariachi bands, Mexican culture, and a mercado at the East LA Civic Center.",
+   "sourceUrl": "https://otbla.com/events/festivals/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Jorja Smith",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "Orpheum Theatre",
+   "city": "Los Angeles",
+   "category": "Music",
+   "price": null,
+   "note": "Jorja Smith opens her five-city North American tour at the Orpheum Theatre in Downtown Los Angeles, her only Southern California date.",
+   "sourceUrl": "https://onestowatch.com/live/los-angeles-weekend-november-13/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Rock & Roll Hall of Fame Induction Ceremony 2026",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Peacock Theater",
+   "city": "Los Angeles",
+   "category": "Music",
+   "price": null,
+   "note": "The 2026 induction ceremony tapes at the Peacock Theater, honoring inductees including Phil Collins, Oasis, and Sade.",
+   "sourceUrl": "https://onestowatch.com/live/los-angeles-weekend-november-13/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "CicLAvia—Pasadena",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "9:00 AM",
+   "endTime": "3:00 PM",
+   "venue": "Colorado Boulevard & Raymond Avenue",
+   "city": "Pasadena",
+   "category": "Festival",
+   "price": "Free",
+   "note": "CicLAvia opens 2.7 miles of car-free streets along Colorado Boulevard and Raymond Avenue for biking, walking, and skating.",
+   "sourceUrl": "https://onestowatch.com/live/los-angeles-weekend-november-13/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "The Who's Tommy",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "1:00 PM",
+   "endTime": null,
+   "venue": "Hollywood Pantages Theatre",
+   "city": "Los Angeles",
+   "category": "Other",
+   "price": null,
+   "note": "The Tony-nominated revival of The Who's Tommy plays its closing-day performances at the Hollywood Pantages Theatre.",
+   "sourceUrl": "https://onestowatch.com/live/los-angeles-weekend-november-13/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Usher & Chris Brown: The R&B Tour",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "7:30 PM",
+   "endTime": null,
+   "venue": "SoFi Stadium",
+   "city": "Inglewood",
+   "category": "Music",
+   "price": null,
+   "note": "Usher and Chris Brown bring their joint R&B Tour to SoFi Stadium, with Mario, Tank, and Eric Bellinger also performing.",
+   "sourceUrl": "https://onestowatch.com/live/los-angeles-weekend-november-13/"
+  }
+ ],
+ "weather": {
+  "current": {
+   "temp": 61,
+   "feelsLike": 53,
+   "high": 89,
+   "low": 61,
+   "description": "Clear",
+   "precipChance": 0,
+   "humidity": 25,
+   "wind": "6 mph",
+   "uvIndex": 5,
+   "airQualityIndex": 52,
+   "airQualityDescription": "Moderate"
+  },
+  "today": {
+   "date": "2026-11-08",
+   "high": 89,
+   "low": 61,
+   "precipChance": 0,
+   "summary": "Overcast. Highs around 89 and lows around 61."
+  },
+  "daily": [
+   {
+    "date": "2026-11-08",
+    "high": 89,
+    "low": 61,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-09",
+    "high": 89,
+    "low": 65,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-10",
+    "high": 84,
+    "low": 71,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-11",
+    "high": 85,
+    "low": 71,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-12",
+    "high": 82,
+    "low": 70,
+    "precipChance": 7
+   },
+   {
+    "date": "2026-11-13",
+    "high": 82,
+    "low": 69,
+    "precipChance": 15
+   },
+   {
+    "date": "2026-11-14",
+    "high": 73,
+    "low": 68,
+    "precipChance": 18
+   }
+  ],
+  "weekend": [
+   {
+    "date": "2026-11-14",
+    "day": "sat",
+    "high": 73,
+    "low": 68,
+    "precipChance": 18,
+    "summary": "Drizzle. Highs around 73 and lows around 68.",
+    "wind": "11 mph",
+    "hourly": []
+   },
+   {
+    "date": "2026-11-15",
+    "day": "sun",
+    "high": 70,
+    "low": 63,
+    "precipChance": 54,
+    "summary": "Light showers. Highs around 70 and lows around 63.",
+    "wind": "10 mph",
+    "hourly": []
+   }
+  ],
+  "fetchedAt": "2026-11-08T12:07:35.349000Z",
+  "location": "Los Angeles, CA"
+ }
+}

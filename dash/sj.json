@@ -1,0 +1,298 @@
+{
+ "location": "San Jose, CA",
+ "eventsUpdatedAt": "2026-11-08T12:09:20.381559Z",
+ "ranges": {
+  "today": "2026-11-08",
+  "sat": "2026-11-14",
+  "sun": "2026-11-15"
+ },
+ "todayEvents": [
+  {
+   "bucket": "today",
+   "title": "Viva Callecita San José",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "10:00 AM",
+   "endTime": "3:00 PM",
+   "venue": "San Jose City Hall to Japantown Route, Downtown San Jose",
+   "city": "San Jose",
+   "category": "Festival",
+   "price": "Free",
+   "note": "A free open-streets event closing downtown streets to cars for walking, biking, food trucks, DJs, and free bike repairs between City Hall and Japantown hubs.",
+   "sourceUrl": "https://www.sanjoseca.gov/home/showpublisheddocument/134450/639257540995130000"
+  },
+  {
+   "bucket": "today",
+   "title": "Farmers' Market at Westfield Oakridge",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "9:00 AM",
+   "endTime": "1:00 PM",
+   "venue": "Westfield Oakridge, Thornwood Dr & Winfield Blvd",
+   "city": "San Jose",
+   "category": "Market",
+   "price": "Free",
+   "note": "Certified farmers' market featuring more than 40 Santa Clara Valley and regional growers and food producers.",
+   "sourceUrl": "https://www.theemberlist.com/san-jose-ca/farmers-market"
+  },
+  {
+   "bucket": "today",
+   "title": "San Francisco 49ers vs. Las Vegas Raiders",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "1:25 PM",
+   "endTime": null,
+   "venue": "Levi's Stadium",
+   "city": "Santa Clara",
+   "category": "Sports",
+   "price": null,
+   "note": "Week 9 NFL regular season Salute to Service game renewing the Battle of the Bay rivalry at Levi's Stadium.",
+   "sourceUrl": "https://levisstadium.com/event/raiders-vs-49ers-week-9-2026/"
+  },
+  {
+   "bucket": "today",
+   "title": "San Jose Vendors Spotlight Market",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "10:00 AM",
+   "endTime": "7:00 PM",
+   "venue": "Plaza de Cesar Chavez, Plaza de San Jose",
+   "city": "San Jose",
+   "category": "Market",
+   "price": "Free",
+   "note": "Final day of a three-day in-person market to shop local and meet San Jose vendors at Plaza de Cesar Chavez.",
+   "sourceUrl": "https://www.eventbrite.com/e/san-jose-vendors-spotlight-market-tickets-2003432391213"
+  },
+  {
+   "bucket": "today",
+   "title": "LIVE 105 Presents The Smashing Pumpkins: The Rats in a Cage Tour",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "SAP Center at San Jose",
+   "city": "San Jose",
+   "category": "Music",
+   "price": null,
+   "note": "The Smashing Pumpkins bring their Rats in a Cage Tour to SAP Center for a Sunday night rock concert in downtown San Jose.",
+   "sourceUrl": "https://www.ticketmaster.com/the-smashing-pumpkins-tickets/artist/K8vZ9171FDV"
+  }
+ ],
+ "events": [
+  {
+   "bucket": "weekend",
+   "title": "Raptor Fest at Rancho San Vicente",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "9:30 AM",
+   "endTime": "2:00 PM",
+   "venue": "Rancho San Vicente, Calero County Park",
+   "city": "San Jose",
+   "category": "Festival",
+   "price": "Free",
+   "note": "Free educational festival presented by POST and Santa Clara County Parks celebrating birds of prey with falconry presentations by Master Falconer Kenny Elvin.",
+   "sourceUrl": "https://parks.santaclaracounty.gov/raptor-fest-2026"
+  },
+  {
+   "bucket": "weekend",
+   "title": "2026 San Jose Harvest Festival",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "10:00 AM",
+   "endTime": "5:00 PM",
+   "venue": "Santa Clara County Fairgrounds, 344 Tully Rd",
+   "city": "San Jose",
+   "category": "Festival",
+   "price": null,
+   "note": "Indoor holiday art and craft show bringing together American makers offering original art, home decor, fashion, and handcrafted gifts.",
+   "sourceUrl": "https://allevents.in/san-jose/2026-san-jose-harvest-festival/200029453814044"
+  },
+  {
+   "bucket": "weekend",
+   "title": "San Jose Water Lantern Festival",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "2:30 PM",
+   "endTime": "6:30 PM",
+   "venue": "Almaden Lake Park, 6099 Winfield Blvd",
+   "city": "San Jose",
+   "category": "Festival",
+   "price": null,
+   "note": "Evening festival where attendees design and launch floating lanterns on Almaden Lake at sunset.",
+   "sourceUrl": "https://tickets.waterlanternfestival.com/sanjose"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Nutcracker! Magical Christmas Ballet",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "startTime": "3:00 PM",
+   "endTime": null,
+   "venue": "San Jose Center for the Performing Arts, 255 Almaden Blvd",
+   "city": "San Jose",
+   "category": "Art",
+   "price": null,
+   "note": "Holiday production of the Nutcracker ballet performed at the San Jose Center for the Performing Arts.",
+   "sourceUrl": "https://www.ticketmaster.com/nutcracker!-magical-christmas-ballet-tickets/artist/834652"
+  },
+  {
+   "bucket": "weekend",
+   "title": "SnowFest at Sports Basement Almaden",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "10:00 AM",
+   "endTime": "7:00 PM",
+   "venue": "Sports Basement Almaden, 5353 Almaden Expressway",
+   "city": "San Jose",
+   "category": "Festival",
+   "price": "Free",
+   "note": "20th anniversary SnowFest presented by Palisades Tahoe celebrating snow sports with deals and lift ticket vouchers.",
+   "sourceUrl": "https://www.eventbrite.com/e/snowfest-at-sports-basement-almaden-tickets-2002975903847?aff=ebdssbcitybrowse"
+  },
+  {
+   "bucket": "weekend",
+   "title": "2026 San Jose Harvest Festival",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "10:00 AM",
+   "endTime": "4:00 PM",
+   "venue": "Santa Clara County Fairgrounds, 344 Tully Rd",
+   "city": "San Jose",
+   "category": "Festival",
+   "price": null,
+   "note": "Final day of the indoor holiday art and craft show with handmade gifts, decor, and fashion from American artists.",
+   "sourceUrl": "https://allevents.in/san-jose/2026-san-jose-harvest-festival/200029453814044"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Opera San Jose: Fiddler on the Roof",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "2:00 PM",
+   "endTime": null,
+   "venue": "California Theatre, 345 South First Street",
+   "city": "San Jose",
+   "category": "Art",
+   "price": null,
+   "note": "Opera San Jose presents Fiddler on the Roof at the historic California Theatre in downtown San Jose.",
+   "sourceUrl": "https://sanjose.events/shows/"
+  },
+  {
+   "bucket": "weekend",
+   "title": "Marisela: Eterna Tour 2026",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "San Jose Civic, 145 West San Carlos Street",
+   "city": "San Jose",
+   "category": "Music",
+   "price": null,
+   "note": "Mexican-American singer Marisela performs her Eterna Tour 2026 concert at the San Jose Civic.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ"
+  }
+ ],
+ "weather": {
+  "current": {
+   "temp": 55,
+   "feelsLike": 55,
+   "high": 72,
+   "low": 53,
+   "description": "Overcast",
+   "precipChance": 0,
+   "humidity": 87,
+   "wind": "0 mph",
+   "uvIndex": 4,
+   "airQualityIndex": 65,
+   "airQualityDescription": "Moderate"
+  },
+  "today": {
+   "date": "2026-11-08",
+   "high": 72,
+   "low": 53,
+   "precipChance": 0,
+   "summary": "Foggy. Highs around 72 and lows around 53."
+  },
+  "daily": [
+   {
+    "date": "2026-11-08",
+    "high": 72,
+    "low": 53,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-09",
+    "high": 73,
+    "low": 51,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-10",
+    "high": 75,
+    "low": 57,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-11",
+    "high": 78,
+    "low": 59,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-12",
+    "high": 78,
+    "low": 59,
+    "precipChance": 7
+   },
+   {
+    "date": "2026-11-13",
+    "high": 76,
+    "low": 58,
+    "precipChance": 14
+   },
+   {
+    "date": "2026-11-14",
+    "high": 80,
+    "low": 61,
+    "precipChance": 37
+   }
+  ],
+  "weekend": [
+   {
+    "date": "2026-11-14",
+    "day": "sat",
+    "high": 80,
+    "low": 61,
+    "precipChance": 37,
+    "summary": "Overcast. Highs around 80 and lows around 61.",
+    "wind": "7 mph",
+    "hourly": []
+   },
+   {
+    "date": "2026-11-15",
+    "day": "sun",
+    "high": 61,
+    "low": 54,
+    "precipChance": 61,
+    "summary": "Showers. Highs around 61 and lows around 54.",
+    "wind": "13 mph",
+    "hourly": []
+   }
+  ],
+  "fetchedAt": "2026-11-08T12:07:33.191930Z",
+  "location": "San Jose, CA"
+ }
+}
