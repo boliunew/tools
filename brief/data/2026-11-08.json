@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "generated": "2026-11-08T18:55:11Z",
+ "generated": "2026-11-08T20:47:46Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "AI 生成的投诉导致英国公共机构工作负荷激增",
-     "d": "英国议员办公室、地方政府和学校等公共机构的工作人员称，2024 年起收到的邮件中约有一半是 AI 生成的投诉或请求，导致处理时间大幅增加。该现象被称为 “AI clog”，加剧了本已紧张的公共资源压力。",
+     "t": "英国公共部门被AI生成投诉淹没",
+     "d": "英国议员办公室、地方当局等机构报告称，约半数收到的邮件是AI生成的，导致工作量激增，被称为“AI堵塞”。此现象加重了公共部门在资源紧张时的负担，对政府运营效率构成挑战。",
      "src": [
       {
        "n": "The Guardian",
@@ -20,19 +20,8 @@
      "full": true
     },
     {
-     "t": "AI 暴露漏洞引发连环黑客攻击",
-     "d": "近期包括超市冰箱、加密货币交易所 Binance 被盗 63 亿美元以及乌克兰紧急警报系统假核警报在内的多起网络攻击被归因于 AI 揭露的系统脆弱性。英国国家网络安全中心警告，AI 可能加速未来几年黑客攻击的频率和规模。",
-     "src": [
-      {
-       "n": "The Guardian",
-       "u": "https://www.theguardian.com/news/ng-interactive/2026/nov/08/hot-fridges-a-fake-nuclear-alert-and-a-6bn-heist-are-we-in-the-foothills-of-a-hacking-epidemic"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "三名男子利用 AI 冒充高管窃取逾 1.29 亿美元",
-     "d": "美国司法部披露，三名外国男子利用 AI 合成 CEO 与律师的声音和形象，骗取全球多家公司汇款，总金额超过 1.29 亿美元，并将赃款转为加密货币洗钱。此案凸显 AI 在金融诈骗中的新型风险。",
+     "t": "三名男子因利用AI冒充高管诈骗逾1亿美元被捕",
+     "d": "美国司法部起诉三名外国男子，他们使用AI伪造企业高管和律师的声音与形象，诱骗公司员工转账，累计盗取约1.29亿美元并转为加密货币。此案凸显AI技术被用于大型金融欺诈的风险。",
      "src": [
       {
        "n": "The Guardian",
@@ -130,8 +119,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "波兰克拉科夫枪击案致6死 引发恐怖调查",
-     "d": "一次极右翼枪击造成多人死亡，引起欧盟对极端主义和国内安全的高度警觉，可能影响地区政治氛围。",
+     "t": "波兰克拉科夫发生极右翼枪击，6人死亡",
+     "d": "该事件引发全国恐怖调查，凸显欧洲内部安全威胁上升，可能影响欧盟安全政策与防控措施。",
      "src": [
       {
        "n": "法国24",
@@ -144,31 +133,31 @@
      ]
     },
     {
-     "t": "以色列总统指派加迪·埃森科特组建新政府",
-     "d": "以色列总统赫尔佐格任命中间派 Yashar 党领袖加迪·埃森科特为首任政府组建者，赋予其 28 天（可延长 14 天）时间完成联盟谈判，以取代内塔尼亚胡的宗教民族主义政府。此举旨在应对地区安全挑战并实现政局稳定。",
+     "t": "以色列总统指派埃森科特组建新政府",
+     "d": "以色列总统赫尔佐格任命中间派雅沙尔党领袖埃森科特为首相组阁任务，给予28天（可延长14天）时间，以取代内塔尼亚胡的宗教民族主义政府。此举关系到以色列的政治稳定及地区安全议题。",
      "src": [
       {
        "n": "德国之声",
        "u": "https://www.dw.com/en/israel-eisenkot-officially-tasked-with-forming-a-government/a-79891422?maca=en-rss-en-all-1573-rdf"
       },
       {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/world/2026/nov/08/gadi-eisenkot-netanyahu-allies-form-israel-government"
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/8/israels-president-tasks-eisenkot-to-form-new-coalition-government?traffic_source=rss"
       }
      ],
      "full": true
     },
     {
-     "t": "俄军空袭致乌克兰东部超 60 万人停电",
-     "d": "俄罗斯对乌克兰东部能源设施的夜间导弹攻击导致顿涅茨克地区约 60 万居民断电，且维修工作因持续袭击受阻。此类攻击加剧了乌克兰在严冬期间的能源危机，并被视为对乌克兰政府的压力手段。",
+     "t": "全球股市因AI担忧及美中期选举跌落",
+     "d": "美国民主党在中期选举获胜后，全球市场受科技股大幅抛售冲击，欧洲和亚洲主要指数均下跌，投资者担忧AI相关资本开支放缓及地缘政治风险。此波动影响全球资本市场情绪和技术行业估值。",
      "src": [
       {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/news/2026/11/8/russian-strikes-on-ukraine-leave-hundreds-of-thousands-without-electricity?traffic_source=rss"
+       "n": "卫报",
+       "u": "https://www.theguardian.com/business/2026/nov/06/global-stocks-plunge-amid-ai-slowdown-fears-after-democrats-midterm-triumph"
       },
       {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/news/2026/11/8/hundreds-of-thousands-protesters-storm-amsterdam?traffic_source=rss"
+       "n": "南华早报",
+       "u": "https://www.scmp.com/news/world/russia-central-asia/article/3373681/will-democrats-sway-unshackled-trumps-russia-ukraine-stance-after-midterm-rout"
       }
      ],
      "full": true
