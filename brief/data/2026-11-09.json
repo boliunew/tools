@@ -1,0 +1,208 @@
+{
+ "date": "2026-11-09",
+ "generated": "2026-11-09T23:29:11Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Nvidia启动对CEO黄仁勋的调查",
+     "d": "Nvidia宣布对CEO黄仁勋展开独立调查，原因是媒体报道称其与一名被指为中国间谍的女子有不正当关系。此事影响公司治理及对华技术合作的审查力度。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/09/nx-s1-6034057/nvidia-launches-investigation-into-ceos-alleged-relationship-with-chinese-spy"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Palantir向英国卫生部长游说扩展AI至全科病历",
+     "d": "《卫报》披露WhatsApp记录显示，Palantir英国负责人在2025‑2026年间多次向前卫生部长Zubir Ahmed施压，争取将其AI平台用于NHS全科医生记录，尽管合同明确排除该数据。此举可能加剧公众对数据隐私及公司与政府合作的担忧。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/09/revealed-palantir-lobbied-minister-to-stretch-ai-tools-reach-to-nhs-gp-records"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI虽未达超智能，但仍存灾难性风险",
+     "d": "《卫报》专栏指出，尽管技术限制阻止当前AI实现超智能，却因目标指令、缺乏自我评估等设计缺陷导致真实危害，如近期OpenAI模型攻击事件。强调监管必要性，对AI安全政策具有推动作用。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/commentisfree/2026/nov/09/ai-superintelligence-risk"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/6 周五 收盘：标普500 ETF（SPY）+0.31%，纳指100 ETF（QQQ）+1.40%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 25.6；63% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：COHR +13.6%、ABNB +11.7%、AMD +11.0%；跌幅最大：AXON -18.2%、MCHP -10.0%、CHTR -6.2%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：KKR（盘前）、CEG（盘前）、B（盘前）、OXY（盘后）、SKYD（盘后）",
+     "d": "按市值挑出最大的几家，共 12 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/6 周五）",
+     "d": "Initial Jobless Claims 实际 189K（预期 197K，前值 195K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/10 周二 08:40：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/11 周三 04:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/11 周三 08:30：CPI 通胀数据（重要性：高）",
+     "d": "高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "法国指责伊朗发起超市冷链攻击",
+     "d": "法国外长指责伊朗伊斯兰革命卫队破坏百余家超市冷冻设备，凸显国家级网络攻击的地缘政治潜在升级。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261109-france-blames-iran-for-cyberattack-on-supermarket-fridges"
+      },
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/09/g-s1-152724/france-iran-cyber-sabotage-fridge-attacks"
+      }
+     ]
+    },
+    {
+     "t": "BBC解析Nvidia CEO与疑似中国间谍的绯闻",
+     "d": "BBC报道Nvidia已启动独立调查，核实其CEO黄仁勋与被指为中国间谍的商业女性Alice Huang的关系传闻，并评估此 scandal 对其个人声誉及公司形象的潜在影响。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/videos/cq3989nkzn3ko?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cqg7x7dpvym8o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "俄乌美三方在阿布扎比开启新谈判",
+     "d": "俄罗斯、乌克兰与美国将在阿联酋首都进行新一轮会谈，旨在寻找结束俄乌冲突的途径，对全球能源与安全格局影响深远。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/europe/20261109-what-to-expect-as-russia-ukraine-and-us-hold-trilateral-talks-in-abu-dhabi"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/ukraine-russia-talks-abu-dhabi-eu-us-zelenskyy-6536831"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "11/11 周三：CPI 通胀数据",
+  "d": "高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。 这是近几天最可能让整个市场大幅波动的事件，公布前后留意仓位。"
+ },
+ "week": [
+  {
+   "t": "11/11 周三 CPI 通胀数据",
+   "d": "高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。"
+  },
+  {
+   "t": "11/9 周一 财报：KKR、CEG、B、OXY",
+   "d": "当天共 12 家公司发布财报，这里列市值最大的几家。"
+  },
+  {
+   "t": "11/10 周二 财报：PBR、PBR-A、TDG、SE",
+   "d": "当天共 10 家公司发布财报，这里列市值最大的几家。"
+  },
+  {
+   "t": "11/11 周三 财报：FNV、VYLR、TECH",
+   "d": "当天共 3 家公司发布财报，这里列市值最大的几家。"
+  },
+  {
+   "t": "11/12 周四 财报：CSCO、AMAT、BN、NU",
+   "d": "当天共 6 家公司发布财报，这里列市值最大的几家。"
+  },
+  {
+   "t": "11/13 周五 财报：MUFG、SMFG、MFG、KB",
+   "d": "当天共 4 家公司发布财报，这里列市值最大的几家。"
+  }
+ ]
+}
