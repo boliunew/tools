@@ -38,7 +38,7 @@
 
 **健康**（8）：[护肤入门：先认清你的肤质](skincare-basics.md) · [健身入门](health-fitness-basics.md) · [营养基础](health-nutrition-basics.md) · [睡眠基础](health-sleep-basics.md) · [美国医保名词一次讲清](us-health-insurance-terms.md) · [失温和中暑：从早期征兆到怎么处理](hypothermia-heat-illness.md) · [野外的水：喝多少、去哪找、怎么净化](water-in-the-wild.md) · [山火季、Santa Ana 风和空气质量](wildfire-smoke-santa-ana.md)
 
-**音乐**（8）：[华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md) · [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md) · [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md) · [怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md) · [经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md) · [乐理基础（音高、音程、调式、和弦、节奏、曲式）](music-theory-basics.md) · [音乐 Top 500（按国家分类）](top500-music.md) · [Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
+**音乐**（8）：[音乐 Top 500（按国家分类）](top500-music.md) · [华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md) · [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md) · [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md) · [怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md) · [经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md) · [乐理基础（音高、音程、调式、和弦、节奏、曲式）](music-theory-basics.md) · [Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md)
 
 **旅行**（7）：[加州海岸线自驾全攻略：从红杉到边境墙](california-coast.md) · [Amtrak 坐火车完全攻略：注意事项和技巧](amtrak-guide.md) · [旅行防骗大全](travel-scams.md) · [坐飞机：订票、行李、安检、延误退款](travel-flights-airports.md) · [订酒店不踩雷：从挑酒店到退房](travel-hotels.md) · [旅行的钱、安全和打包清单](travel-money-safety-packing.md) · [公路旅行和租车](travel-road-trip.md)
 
@@ -48,7 +48,7 @@
 
 **时事**（6）：[能源与气候](energy-climate.md) · [全球化的兴起与反弹](globalization-rise-backlash.md) · [贫富差距与社会流动](inequality-mobility.md) · [人口老龄化](population-aging.md) · [宣传与信息：怎么识别，怎么自保](propaganda-information.md) · [俄罗斯与乌克兰](russia-ukraine.md)
 
-**电影**（6）：[导演与风格](film-directors.md) · [类型片入门](film-genres.md) · [电影史纲](film-history.md) · [电影语言入门](film-language.md) · [怎么看电影](film-watching-guide.md) · [电影 Top 500（按国家分类）](top500-movies.md)
+**电影**（6）：[电影 Top 500（按国家分类）](top500-movies.md) · [导演与风格](film-directors.md) · [类型片入门](film-genres.md) · [电影史纲](film-history.md) · [电影语言入门](film-language.md) · [怎么看电影](film-watching-guide.md)
 
 **量化**（6）：[回测里最常见的坑](backtest-pitfalls.md) · [经济指标怎么看](economic-indicators.md) · [投资里的心理偏差](investing-psychology.md) · [我的几套交易系统：一张总览](my-trading-systems.md) · [常用技术指标用 Python 怎么算](python-quant-indicators.md) · [股票池的五个信号：规则、回测数字和怎么看](stock-pool-signals.md)
 
@@ -160,6 +160,8 @@
 
 ## 更新日志
 
+- 2026-11-09 更新 [电影 Top 500（按国家分类）](top500-movies.md)
+- 2026-11-09 更新 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-11-06 新增 [能源与气候](energy-climate.md)
 - 2026-11-06 新增 [全球化的兴起与反弹](globalization-rise-backlash.md)
 - 2026-11-06 新增 [贫富差距与社会流动](inequality-mobility.md)
@@ -188,5 +190,3 @@
 - 2026-11-05 更新 [华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md)
 - 2026-11-05 更新 [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md)
 - 2026-11-05 更新 [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md)
-- 2026-11-05 更新 [怎么听音乐（乐器、声部、版本、现场与聆听路径）](music-listening-guide.md)
-- 2026-11-05 更新 [经典乐曲赏析（10 首跨风格代表作）](music-masterpieces.md)
