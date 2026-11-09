@@ -1,49 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-08T16:43:45Z",
- "date": "2026-11-08",
+ "generated": "2026-11-09T20:48:45Z",
+ "date": "2026-11-09",
  "engine": "edge",
- "total": 486.5,
- "short": 291.4,
+ "total": 504.5,
+ "short": 292.3,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611080842",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611091247",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月8日 星期日",
-   "dur": 11.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611080842",
+   "sub": "11月9日 星期一",
+   "dur": 9.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。这里是你的通勤电台。今天是11月8日，星期日，方向盘上的下一首可以随时跳段。"
+     "t": "新的一周开始了，加油！星期一，11月9日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 85°/51°F",
+   "sub": "Upland 阴天 84°/58°F",
    "dur": 28.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611080842",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏56度，13摄氏度，体感50度。傍晚5点下班大约华氏76度，25摄氏度，体感70度。白天最高85度，约29摄氏度；最低51度。基本不会下雨。白天空气质量良好，指数最高47。今天日落时间是傍晚4点51分。"
-    }
-   ]
-  },
-  {
-   "id": "sky",
-   "title": "🔭 天象",
-   "sub": "Upland",
-   "dur": 8.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611080842",
-   "text": [
-    {
-     "lang": "zh",
-     "t": "天象提醒。今天，新月。前后几晚没有月光，最适合看星星和银河。"
+     "t": "Upland今天阴天。早上7点出门大约华氏60度，16摄氏度，体感55度。傍晚5点下班大约华氏75度，24摄氏度，体感70度。白天最高84度，约29摄氏度；最低58度。基本不会下雨。白天空气质量中等，指数最高51。今天日落时间是傍晚4点50分。"
     }
    ]
   },
@@ -52,7 +39,7 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 31.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611080842",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
@@ -65,7 +52,7 @@
    "title": "📈 股票池",
    "sub": "38 个候选",
    "dur": 65.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611080842",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
@@ -97,29 +84,29 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "2 件大事",
-   "dur": 31.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611080842",
+   "dur": 30.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
-     "t": "11月10日，有2家大公司发财报。"
+     "t": "明天，有2家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Petroleo Brasileiro S.A.- Petrobras，代码 P B R，盘后发财报。期权定价波动正负9.9%。标签：利好出尽型、财报日常跌。"
+     "t": "Petroleo Brasileiro S.A.- Petrobras，代码 P B R，盘后发财报。期权定价波动正负5.1%。标签：利好出尽型、财报日常跌。"
     },
     {
      "lang": "zh",
-     "t": "Petroleo Brasileiro S.A.- Petrobras，代码 P B R - A，盘后发财报。期权定价波动正负11.1%。标签：利好出尽型。"
+     "t": "Petroleo Brasileiro S.A.- Petrobras，代码 P B R - A，盘后发财报。期权定价波动正负10.5%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · NPR",
-   "dur": 76.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611080842",
+   "sub": "BBC · Al Jazeera · The Guardian",
+   "dur": 87.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
@@ -127,48 +114,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，科学，难度B2。大意是：在河口发现数以百计的海草芽。"
+     "t": "第1条，来自BBC，国际，难度B2。大意是：警方称，克拉科夫枪击案嫌疑人已在医院死亡。"
     },
     {
      "lang": "en",
-     "t": "Hundreds of seagrass shoots found in estuary"
+     "t": "Krakow shooting suspect has died in hospital, police say"
     },
     {
      "lang": "en",
-     "t": "There were fears a restoration trial may not succeed when only six seedlings had emerged in April."
+     "t": "At least six people were killed in the shooting, and three bodies of the suspect's family members were found at their home."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：特朗普要求UFC首席执行官Dana White担任白宫新闻秘书。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：以色列的隔离墙与柏林墙的比较。"
     },
     {
      "lang": "en",
-     "t": "Trump asks UFC chief Dana White to be White House press secretary"
+     "t": "How Israel’s separation wall compares with the Berlin Wall"
     },
     {
      "lang": "en",
-     "t": "Ultimate Fighting Championship CEO says he will meet with the US president on Monday to discuss the offer."
+     "t": "How Israel's wall, checkpoints and permits divide Palestinians in the occupied West Bank and cut farmers off from land."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B1。大意是：德克萨斯州令人惊讶且经常被遗忘的经济民粹主义历史。"
+     "t": "第3条，来自The Guardian，科学，难度B1。大意是：Starwatch ：数一数这些星星，了解您所在的天空有多黑暗。"
     },
     {
      "lang": "en",
-     "t": "The surprising and often forgotten history of economic populism in Texas"
+     "t": "Starwatch: Count these stars to find out how dark the sky is where you are"
     },
     {
      "lang": "en",
-     "t": "NPR's Rob Schmitz speaks with Austin-based political commentator David Griscom."
+     "t": "Great Square of Pegasus’s four corners are widely visible, but its inner stars provide a useful indicator of darkness This week, we are going to locate the Great Square of Pegasus and count stars to see how dark your sky is."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "prepare · azul claro",
-   "dur": 31.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611080842",
+   "sub": "through · dieciséis",
+   "dur": 32.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
@@ -176,15 +163,15 @@
     },
     {
      "lang": "en",
-     "t": "prepare"
+     "t": "through"
     },
     {
      "lang": "zh",
-     "t": "意思是：准备。拼写是："
+     "t": "意思是：穿过，通过。拼写是："
     },
     {
      "lang": "en",
-     "t": "p, r, e, p, a, r, e"
+     "t": "t, h, r, o, u, g, h"
     },
     {
      "lang": "zh",
@@ -192,7 +179,7 @@
     },
     {
      "lang": "en",
-     "t": "prepare"
+     "t": "through"
     },
     {
      "lang": "zh",
@@ -200,15 +187,15 @@
     },
     {
      "lang": "es",
-     "t": "azul claro"
+     "t": "dieciséis"
     },
     {
      "lang": "zh",
-     "t": "意思是：浅蓝色的。跟着读一遍。"
+     "t": "意思是：十六。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "azul claro"
+     "t": "dieciséis"
     }
    ]
   },
@@ -216,8 +203,8 @@
    "id": "quote",
    "title": "🎴 每日一句",
    "sub": "名言",
-   "dur": 27.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611080842",
+   "dur": 26.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
@@ -225,11 +212,11 @@
     },
     {
      "lang": "en",
-     "t": "A failure is a man who has blundered, but is not able to cash in the experience."
+     "t": "As our case is new, so we must think anew, and act anew."
     },
     {
      "lang": "zh",
-     "t": "意思是：失败者是犯了错，却不会把教训变成收获的人。这句话出自 Elbert Hubbard。"
+     "t": "意思是：我们面对的是新局面，就必须用新的方式去思考、去行动。这句话出自 Abraham Lincoln。"
     },
     {
      "lang": "zh",
@@ -237,7 +224,7 @@
     },
     {
      "lang": "en",
-     "t": "A failure is a man who has blundered, but is not able to cash in the experience."
+     "t": "As our case is new, so we must think anew, and act anew."
     }
    ],
    "opt": true
@@ -245,61 +232,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "和主管沟通",
-   "dur": 67.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611080842",
+   "sub": "工作邮件和短信",
+   "dur": 72.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：工作邮件和短信。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "这周有加班吗？"
+     "t": "司机两点半登记进场。"
     },
     {
      "lang": "en",
-     "t": "Is there any overtime this week?"
+     "t": "The driver checked in at two thirty."
     },
     {
      "lang": "en",
-     "t": "Is there any overtime this week?"
+     "t": "The driver checked in at two thirty."
     },
     {
      "lang": "zh",
-     "t": "需要的话我可以晚走。"
+     "t": "拖车停在 40 号位。"
     },
     {
      "lang": "en",
-     "t": "I can stay late if you need me."
+     "t": "The trailer is parked in spot forty."
     },
     {
      "lang": "en",
-     "t": "I can stay late if you need me."
+     "t": "The trailer is parked in spot forty."
     },
     {
      "lang": "zh",
-     "t": "我能和 Carlos 换班吗？"
+     "t": "封条号和单据一致。"
     },
     {
      "lang": "en",
-     "t": "Can I switch shifts with Carlos?"
+     "t": "The seal number matches the paperwork."
     },
     {
      "lang": "en",
-     "t": "Can I switch shifts with Carlos?"
+     "t": "The seal number matches the paperwork."
     },
     {
      "lang": "zh",
-     "t": "我下周怎么排班？"
+     "t": "我发现左门有损坏。"
     },
     {
      "lang": "en",
-     "t": "What's my schedule next week?"
+     "t": "I found damage on the left door."
     },
     {
      "lang": "en",
-     "t": "What's my schedule next week?"
+     "t": "I found damage on the left door."
     },
     {
      "lang": "zh",
@@ -311,13 +298,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "申请 IRS 身份保护 PIN",
-   "dur": 22.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611080842",
+   "sub": "公司 401(k) 的匹配一定要拿满",
+   "dur": 24.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：申请 IRS 身份保护 PIN。防别人冒名报税领退税。做法：上 IRS.gov 搜「Get an IP PIN」，验证身份后申请；每年年初会有新的 6 位 PIN，在 IRS 在线账户里能看到；报税时把 PIN 交给报税软件或会计师。"
+     "t": "今日一招：公司 401(k) 的匹配一定要拿满。这是白给的钱。做法：在入职资料或 HR 网站里查公司匹配多少，比如「匹配到工资的 4%」；自己至少存到能拿满匹配的比例；注意「归属期」（vesting）：公司那部分要工作满一定年限才完全属于你。"
     }
    ],
    "opt": true
@@ -325,13 +312,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1912 · 1937 · 1989",
-   "dur": 25.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611080842",
+   "sub": "1888 · 1982 · 2020",
+   "dur": 30.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1912年，第一次巴尔干战争期间，驻扎于塞萨洛尼基的奥斯曼帝国军队向希腊陆军投降。1937年，中国抗日战争：太原会战以中国军队失败结束。1989年，香港文化中心正式揭幕，仪式由查理斯王子及戴安娜王妃主持。"
+     "t": "历史上的今天。1888年，玛丽·珍·凯利在伦敦被谋杀，被广泛认为是恶名昭彰的不明身份连环杀手开膛手杰克的第五位也是最后一位受害者。1982年，法国试制成功中子弹。2020年，亚美尼亚与阿塞拜疆签订纳戈尔诺-卡拉巴赫战争的停火协议，放弃控制了26年的纳戈尔诺-卡拉巴赫周边地区。"
     }
    ],
    "opt": true
@@ -339,21 +326,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "西江月·世事一场大梦",
-   "dur": 52.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611080842",
+   "sub": "蝶恋花·春景",
+   "dur": 58.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：西江月·世事一场大梦。写于1080年，他43岁，在黄州。"
+     "t": "读一首苏轼：蝶恋花·春景。写于1095年，他58岁，在惠州（一说密州）。"
     },
     {
      "lang": "zh",
-     "t": "世事一场大梦，人生几度秋凉？夜来风叶已鸣廊，看取眉头鬓上。酒贱常愁客少，月明多被云妨。中秋谁与共孤光，把盏凄然北望。"
+     "t": "花褪残红青杏小。燕子飞时，绿水人家绕。枝上柳绵吹又少，天涯何处无芳草。墙里秋千墙外道。墙外行人，墙里佳人笑。笑渐不闻声渐悄，多情却被无情恼。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：世上的事就像一场大梦，人生能经历几回秋天的凉意？夜里风吹落叶，在回廊上沙沙作响；看看我的眉头和鬓角，已经添了愁容和白发。酒虽便宜，却常愁没有客人同饮；月亮虽明，却总被云遮住。这中秋之夜，谁和我一起欣赏这孤零零的月光？我只能端着酒杯，凄凉地向北远望。"
+     "t": "白话意思是：花朵褪去了残余的红色，青杏还小小的。燕子飞来飞去的时节，碧绿的溪水环绕着人家。枝头的柳絮被风吹得越来越少，可天涯海角哪里没有芳草呢？墙里有人荡秋千，墙外是一条路。墙外的行人走过，听见墙里美人的笑声。笑声渐渐听不见了，四周慢慢安静下来；多情的行人反被那无心的佳人惹起了烦恼。"
     }
    ],
    "opt": true
@@ -363,7 +350,7 @@
    "title": "👋 结束",
    "sub": "开车注意安全",
    "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611080842",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611091247",
    "text": [
     {
      "lang": "zh",

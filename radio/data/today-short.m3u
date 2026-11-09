@@ -1,20 +1,18 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-11-08（短版）
-#EXTINF:11,通勤电台 - ☀️ 开场 11月8日 星期日
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611080842
-#EXTINF:29,通勤电台 - 🌤️ 天气 Upland 晴 85°/51°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611080842
-#EXTINF:8,通勤电台 - 🔭 天象 Upland
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611080842
+#PLAYLIST:通勤电台 2026-11-09（短版）
+#EXTINF:10,通勤电台 - ☀️ 开场 11月9日 星期一
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611091247
+#EXTINF:29,通勤电台 - 🌤️ 天气 Upland 阴天 84°/58°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611091247
 #EXTINF:31,通勤电台 - 📊 大盘 谨慎
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611080842
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611091247
 #EXTINF:66,通勤电台 - 📈 股票池 38 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611080842
-#EXTINF:32,通勤电台 - 🗓️ 财报与数据 2 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611080842
-#EXTINF:76,通勤电台 - 📰 英文新闻 BBC · Al Jazeera · NPR
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611080842
-#EXTINF:32,通勤电台 - 🔤 今日单词 prepare · azul claro
-https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611080842
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611091247
+#EXTINF:31,通勤电台 - 🗓️ 财报与数据 2 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611091247
+#EXTINF:87,通勤电台 - 📰 英文新闻 BBC · Al Jazeera · The Guardian
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611091247
+#EXTINF:33,通勤电台 - 🔤 今日单词 through · dieciséis
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611091247
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611080842
+https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611091247
