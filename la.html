@@ -281,22 +281,52 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     h += '<div class="lead">' + LEAD[TAB] + '</div>';
     if (TAB === 'gift') { $('list').innerHTML = h + giftHTML(); return; }
     if (TAB === 'map') { $('list').innerHTML = h + mapHTML(); mapInit(); return; }
-    if (TAB === 'dash') { $('list').innerHTML = h + dashHTML(); dashLoad(render); return; }
-  // ---- 📅 周末仪表盘（Upland）：数据由 Muse 仪表盘刷新任务同步成 dash/dash.json
-  var DASH = null, DASHING = false;
-  function dashLoad(cb) {
-    if (DASH) { cb(); return; }
-    if (DASHING) { var iv = setInterval(function () { if (DASH || !DASHING) { clearInterval(iv); cb(); } }, 250); return; }
+    if (TAB === 'dash') { $('list').innerHTML = h + dashHTML(); dashKick(); return; }
+
+    if (TAB === 'trivia') h += '<div class="triv">' + D.trivia.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
+    else {
+      var L = items(TAB);
+      h += L.length ? L.map(function (it) { return card(TAB, it); }).join('') : '<div class="empty">还没有标「想去」的。在街区、吃喝、好玩里点 ☆ 想去。</div>';
+    }
+    $('list').innerHTML = h;
+  }
+  // ---- 📅 周末仪表盘：数据由同步任务写入 dash/la.json（本市天气+活动）
+  var DASH = null, DASHING = false, DASHDONE = false;
+  function dashKick() { if (DASH || DASHING || DASHDONE) return; DASHDONE = true; dashLoad(function () { if (TAB === 'dash' && DASH) render(); }); }
+  function dashLoad(cb0) {
+    var fired = false;
+    function done() { if (fired) return; fired = true; cb0(); }
+    setTimeout(function () { if (!fired && !DASH) { DASHING = false; dashLoad(done); } }, 9000);
+    if (DASH) { done(); return; }
+    if (DASHING) { var iv = setInterval(function () { if (DASH) { clearInterval(iv); done(); } else if (!DASHING) { clearInterval(iv); dashLoad(done); } }, 250); return; }
     DASHING = true;
-    var x = new XMLHttpRequest();
-    x.open('GET', 'dash/la.json?t=' + Math.floor(Date.now() / 36e5));
-    x.onload = function () { try { DASH = JSON.parse(x.responseText); } catch (e) { DASH = { error: 1 }; } DASHING = false; cb(); };
-    x.onerror = function () { DASH = { error: 1 }; DASHING = false; cb(); };
-    x.send();
+    var tries = 0;
+    (function go() {
+      tries++;
+      var x = new XMLHttpRequest();
+      x.open('GET', 'dash/la.json?t=' + Math.floor(Date.now() / 36e5));
+      x.timeout = 8000;
+      var settled = false;
+      function loadDone() {
+        if (settled) return; settled = true;
+        var ok = false;
+        if (x.status === 200 || x.status === 0) { try { DASH = JSON.parse(x.responseText); ok = !!(DASH && DASH.weather); } catch (e) { } }
+        if (ok) { DASHING = false; done(); }
+        else { DASH = null; failRetry(); }
+      }
+      function failRetry() {
+        if (settled) return; settled = true;
+        if (tries < 3) setTimeout(go, 600); else { DASH = { error: 1 }; DASHING = false; done(); }
+      }
+      x.addEventListener('load', loadDone);
+      x.addEventListener('error', failRetry);
+      x.addEventListener('timeout', failRetry);
+      x.send();
+    })();
   }
   function dashHTML() {
     if (!DASH) return '<div class="empty">正在加载仪表盘数据…</div>';
-    if (DASH.error || !DASH.weather) return '<div class="empty">仪表盘数据暂时读不到，晚点再来看看。</div>';
+    if (DASH.error || !DASH.weather) return '<div class="empty">仪表盘数据暂时读不到。<br><button class="dbtn" id="dashRetry" style="margin-top:10px">↻ 重新加载</button></div>';
     var W = DASH.weather, C = W.current || {}, T = W.today || {};
     function wkday(ds) { var p = (ds || '').split('-'); if (p.length < 3) return ''; return '日一二三四五六'.charAt(new Date(+p[0], +p[1] - 1, +p[2]).getDay()); }
     function f2c(f) { return Math.round((f - 32) * 5 / 9); }
@@ -332,14 +362,8 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     h += '<div class="dw-ft">这是洛杉矶的周末页，跟周末仪表盘同一套数据在自动更新；活动更新于 ' + esc(String(DASH.eventsUpdatedAt || '').slice(0, 10)) + '，天气为最近一次同步的快照。本市自己的内容还在其它标签里。</div>';
     return h + '</div>';
   }
+  document.addEventListener('click', function (e) { var b = e.target && e.target.closest ? e.target.closest('#dashRetry') : null; if (b) { DASH = null; DASHING = false; DASHDONE = false; if (TAB === 'dash') { render(); if (typeof dashKick === 'function') dashKick(); } } });
 
-    if (TAB === 'trivia') h += '<div class="triv">' + D.trivia.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>';
-    else {
-      var L = items(TAB);
-      h += L.length ? L.map(function (it) { return card(TAB, it); }).join('') : '<div class="empty">还没有标「想去」的。在街区、吃喝、好玩里点 ☆ 想去。</div>';
-    }
-    $('list').innerHTML = h;
-  }
   // ---- 🎁 一日盲盒 + 🛂 硅谷护照
   var PL = ls('plan'), STAMP = ls('stamps') || {}, FLIP = false;
   var TITLES = [[0, '🧳 初来乍到'], [3, '📸 周末游客'], [8, '🚈 Metro 常客'], [15, '🌴 半个洛杉矶人'], [25, '🌮 洛杉矶通'], [35, '🏅 天使之城荣誉市民']];
@@ -716,7 +740,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     document.addEventListener('fullscreenchange', function () { setTimeout(fit, 120); });
     $('mtabs').onclick = function (e) { var b = e.target.closest('[data-m]'); if (!b) return; MAP = b.getAttribute('data-m'); ls('map', MAP); render(); };
   }
-  function setTab(t) { TAB = t; ls('tab', t); Q = ''; $('q').value = ''; history.replaceState(null, '', '#' + t); render(); window.scrollTo(0, Math.min(window.scrollY, $('tabs').offsetTop)); }
+  function setTab(t) { TAB = t; ls('tab', t); Q = ''; $('q').value = ''; history.replaceState(null, '', '#' + t); render(); if (t === 'dash' && typeof dashKick === 'function') dashKick(); window.scrollTo(0, Math.min(window.scrollY, $('tabs').offsetTop)); }
 
   $('tabs').onclick = function (e) { var b = e.target.closest('[data-t]'); if (b) setTab(b.getAttribute('data-t')); };
   $('list').onclick = function (e) {
@@ -752,6 +776,7 @@ mark{background:var(--or-soft);color:inherit;border-radius:3px}
     $('foot').innerHTML = '内容依据洛杉矶旅游局（Discover Los Angeles）、LA Metro、Metrolink、El Pueblo 和各景点官网等公开资料整理。票价、营业时间、规定会变，去之前查一下官网。<a href="ny.html">🗽 纽约生活 →</a><br>' +
       D.sources.map(function (s) { return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>'; }).join(' · ');
     render();
+    if (TAB === 'dash' && typeof dashKick === 'function') dashKick();
   };
   x.onerror = function () { $('list').innerHTML = '<div class="empty">网络错误，稍后刷新</div>'; };
   x.send();
