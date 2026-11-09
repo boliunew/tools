@@ -1,86 +1,86 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-09T03:39:15.440425Z",
+ "eventsUpdatedAt": "2026-11-09T11:54:22.441181Z",
  "ranges": {
-  "today": "2026-11-08",
+  "today": "2026-11-09",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "San Francisco Coffee Festival 2026",
-   "date": "2026-11-08",
+   "title": "Golden State Warriors vs. New Orleans Pelicans",
+   "date": "2026-11-09",
    "day": "today",
-   "dayLabel": "周日",
-   "startTime": "9:30 AM",
-   "endTime": "4:30 PM",
-   "venue": "Fort Mason Center Festival Pavilion",
-   "city": "San Francisco",
-   "category": "Food & Drink",
-   "price": "$29",
-   "note": "The 10th annual San Francisco Coffee Festival features curated coffee tastings from top Bay Area roasters and exhibitors plus live music.",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/08/"
-  },
-  {
-   "bucket": "today",
-   "title": "Inner Sunset Flea Market 2026 (Season Finale)",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "startTime": "10:00 AM",
-   "endTime": "4:00 PM",
-   "venue": "Inner Sunset, 9th Avenue and Irving Street",
-   "city": "San Francisco",
-   "category": "Market",
-   "price": "Free",
-   "note": "The season finale of this monthly community flea market transforms Irving Street between 9th and 11th Avenues into a lively street market.",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/08/"
-  },
-  {
-   "bucket": "today",
-   "title": "San Francisco's Annual Veterans Day Parade 2026",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "startTime": "11:00 AM",
-   "endTime": "1:00 PM",
-   "venue": "Fisherman's Wharf, Jefferson and Taylor",
-   "city": "San Francisco",
-   "category": "Festival",
-   "price": "Free",
-   "note": "San Francisco's annual Veterans Day Parade honors the service and sacrifice of the Armed Forces along the northern waterfront at Fisherman's Wharf.",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/08/"
-  },
-  {
-   "bucket": "today",
-   "title": "Blankets & Blockbusters: Toy Story 5 Outdoor Movie",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "startTime": "12:00 PM",
-   "endTime": "3:00 PM",
-   "venue": "Thrive City",
-   "city": "San Francisco",
-   "category": "Family",
-   "price": "Free",
-   "note": "This free outdoor screening of Toy Story 5 plays on the plaza board at Thrive City, with family-friendly movie-themed activities and the film starting at 1 PM.",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/08/"
-  },
-  {
-   "bucket": "today",
-   "title": "San Francisco Symphony: Isabel Leonard Sings Ravel",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "startTime": "2:00 PM",
+   "dayLabel": "周一",
+   "startTime": "7:00 PM",
    "endTime": null,
-   "venue": "Davies Symphony Hall",
+   "venue": "Chase Center, 300 16th St",
+   "city": "San Francisco",
+   "category": "Sports",
+   "price": null,
+   "note": "The Warriors host the New Orleans Pelicans in a Monday night NBA game at Chase Center.",
+   "sourceUrl": "https://www.sync2cal.com/local-events/san-francisco/chase-center"
+  },
+  {
+   "bucket": "today",
+   "title": "Sienna Spiro: My House Tour",
+   "date": "2026-11-09",
+   "day": "today",
+   "dayLabel": "周一",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "The Castro Theatre, 429 Castro St",
    "city": "San Francisco",
    "category": "Music",
-   "price": "$48",
-   "note": "Mezzo-soprano Isabel Leonard performs Ravel with the San Francisco Symphony at Davies Symphony Hall.",
-   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/november/"
+   "price": null,
+   "note": "Sienna Spiro brings her My House Tour to the historic Castro Theatre for a Monday night pop show.",
+   "sourceUrl": "https://encoretrail.com/event/sienna-spiro-my-house-tour-san-francisco-2026-11-09/"
+  },
+  {
+   "bucket": "today",
+   "title": "Quadeca",
+   "date": "2026-11-09",
+   "day": "today",
+   "dayLabel": "周一",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "The Fillmore, 1805 Geary Blvd",
+   "city": "San Francisco",
+   "category": "Music",
+   "price": null,
+   "note": "Quadeca plays The Fillmore on Monday night.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?ac_link=blog&categoryId=KZFzniwnSyZfZ7v7nJ&page=1"
+  },
+  {
+   "bucket": "today",
+   "title": "Japanese Tea Garden's Free Admission Hour",
+   "date": "2026-11-09",
+   "day": "today",
+   "dayLabel": "周一",
+   "startTime": "9:00 AM",
+   "endTime": "10:00 AM",
+   "venue": "Japanese Tea Garden, Golden Gate Park",
+   "city": "San Francisco",
+   "category": "Outdoors",
+   "price": "Free",
+   "note": "Free admission hour at the Japanese Tea Garden in Golden Gate Park on Monday morning.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/09/"
+  },
+  {
+   "bucket": "today",
+   "title": "Hayes Valley Comedy Night",
+   "date": "2026-11-09",
+   "day": "today",
+   "dayLabel": "周一",
+   "startTime": "7:00 PM",
+   "endTime": "10:00 PM",
+   "venue": "The Function, 1414 Market St",
+   "city": "San Francisco",
+   "category": "Comedy",
+   "price": "Free",
+   "note": "Free weekly Monday comedy show at The Function in Hayes Valley.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/09/"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 68,
-   "feelsLike": 67,
-   "high": 68,
-   "low": 51,
+   "temp": 52,
+   "feelsLike": 50,
+   "high": 71,
+   "low": 52,
    "description": "Overcast",
-   "precipChance": 0,
-   "humidity": 69,
-   "wind": "6 mph",
+   "precipChance": 1,
+   "humidity": 89,
+   "wind": "4 mph",
    "uvIndex": 4,
-   "airQualityIndex": 43,
+   "airQualityIndex": 37,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-08",
-   "high": 68,
-   "low": 51,
-   "precipChance": 0,
-   "summary": "Overcast. Highs around 68 and lows around 51."
+   "date": "2026-11-09",
+   "high": 71,
+   "low": 52,
+   "precipChance": 1,
+   "summary": "Foggy. Highs around 71 and lows around 52."
   },
   "daily": [
    {
-    "date": "2026-11-08",
-    "high": 68,
-    "low": 51,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-09",
-    "high": 67,
-    "low": 53,
+    "high": 71,
+    "low": 52,
     "precipChance": 1
    },
    {
     "date": "2026-11-10",
-    "high": 71,
+    "high": 73,
     "low": 52,
     "precipChance": 0
    },
    {
     "date": "2026-11-11",
-    "high": 74,
+    "high": 73,
     "low": 59,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 74,
+    "high": 73,
     "low": 60,
     "precipChance": 10
    },
    {
     "date": "2026-11-13",
-    "high": 71,
+    "high": 72,
     "low": 60,
-    "precipChance": 20
+    "precipChance": 31
    },
    {
     "date": "2026-11-14",
-    "high": 70,
+    "high": 64,
     "low": 59,
-    "precipChance": 56
+    "precipChance": 61
+   },
+   {
+    "date": "2026-11-15",
+    "high": 61,
+    "low": 55,
+    "precipChance": 61
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 70,
+    "high": 64,
     "low": 59,
-    "precipChance": 56,
-    "summary": "Overcast. Highs around 70 and lows around 59.",
-    "wind": "8 mph",
+    "precipChance": 61,
+    "summary": "Light drizzle. Highs around 64 and lows around 59.",
+    "wind": "10 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
     "high": 61,
-    "low": 54,
-    "precipChance": 60,
-    "summary": "Light showers. Highs around 61 and lows around 54.",
-    "wind": "14 mph",
+    "low": 55,
+    "precipChance": 61,
+    "summary": "Rain. Highs around 61 and lows around 55.",
+    "wind": "15 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-08T23:52:58.180679Z",
+  "fetchedAt": "2026-11-09T11:52:32.970137Z",
   "location": "San Francisco, CA"
  }
 }

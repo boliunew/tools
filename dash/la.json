@@ -1,86 +1,86 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-08T23:54:30.903709Z",
+ "eventsUpdatedAt": "2026-11-09T11:54:22.443965Z",
  "ranges": {
-  "today": "2026-11-08",
+  "today": "2026-11-09",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Rose Bowl Flea Market",
-   "date": "2026-11-08",
+   "title": "Jessie Reyez: A Little Vengeance Tour",
+   "date": "2026-11-09",
    "day": "today",
-   "dayLabel": "周日",
-   "startTime": "5:00 AM",
+   "dayLabel": "周一",
+   "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "Rose Bowl Stadium",
-   "city": "Pasadena",
-   "category": "Market",
-   "price": null,
-   "note": "The famous monthly flea market returns to the Rose Bowl with hundreds of vendors selling vintage goods, antiques, and collectibles.",
-   "sourceUrl": "https://www.eventbrite.com/d/ca--los-angeles/november/"
+   "venue": "Kia Forum, 3900 W Manchester Blvd",
+   "city": "Inglewood",
+   "category": "Music",
+   "price": "From $10",
+   "note": "Jessie Reyez brings her A Little Vengeance Tour to the Kia Forum on Monday night.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=45"
   },
   {
    "bucket": "today",
-   "title": "Fall Brewery Artwalk",
-   "date": "2026-11-08",
+   "title": "Karan Aujla w/ Ikky",
+   "date": "2026-11-09",
    "day": "today",
-   "dayLabel": "周日",
-   "startTime": "11:00 AM",
-   "endTime": "6:00 PM",
-   "venue": "Brewery Arts Complex",
-   "city": "Los Angeles",
-   "category": "Art",
-   "price": "$5",
-   "note": "More than 100 resident artists open their working studios at the historic Brewery Arts Complex, with free parking onsite.",
-   "sourceUrl": "https://www.welikela.com/things-to-do-this-weekend-in-los-angeles-11-6-2026-to-11-8-2026/"
-  },
-  {
-   "bucket": "today",
-   "title": "LA NDN Flea",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "startTime": "10:00 AM",
+   "dayLabel": "周一",
+   "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "The Broad",
+   "venue": "Crypto.com Arena, 1111 S. Figueroa St",
    "city": "Los Angeles",
-   "category": "Market",
-   "price": "Free",
-   "note": "The Broad hosts this Indigenous makers' market with The Chapter House, celebrating Native American History Month with handcrafted goods, DJ sets, and food vendors.",
-   "sourceUrl": "https://www.welikela.com/things-to-do-this-weekend-in-los-angeles-11-6-2026-to-11-8-2026/"
-  },
-  {
-   "bucket": "today",
-   "title": "Free Second Sunday: Celebrating Himalayan Art & Culture",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "startTime": "11:00 AM",
-   "endTime": "4:00 PM",
-   "venue": "USC Pacific Asia Museum",
-   "city": "Pasadena",
-   "category": "Family",
-   "price": "Free",
-   "note": "The USC Pacific Asia Museum offers free admission with a sand mandala ceremony, butter sculpture workshops, storytelling, and tea tastings.",
-   "sourceUrl": "https://www.welikela.com/things-to-do-this-weekend-in-los-angeles-11-6-2026-to-11-8-2026/"
-  },
-  {
-   "bucket": "today",
-   "title": "Renegade Craft Fair",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "startTime": "10:00 AM",
-   "endTime": "4:00 PM",
-   "venue": "Santa Monica Airport Interim Open Space",
-   "city": "Santa Monica",
-   "category": "Market",
+   "category": "Music",
    "price": null,
-   "note": "The Renegade Craft Fair closes its Santa Monica weekend with independent makers selling handmade goods at the Santa Monica Airport open space.",
-   "sourceUrl": "https://presencenews.org/things-to-do-los-angeles-november-7-8-2026/"
+   "note": "Punjabi star Karan Aujla performs at Crypto.com Arena with special guest Ikky.",
+   "sourceUrl": "https://thescenestar.com/los-angeles-show-list-by-the-scenestar/"
+  },
+  {
+   "bucket": "today",
+   "title": "Dashboard Confessional (Acoustic)",
+   "date": "2026-11-09",
+   "day": "today",
+   "dayLabel": "周一",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Troubadour",
+   "city": "West Hollywood",
+   "category": "Music",
+   "price": null,
+   "note": "Dashboard Confessional plays an acoustic set at the Troubadour on Monday night.",
+   "sourceUrl": "https://thescenestar.com/los-angeles-show-list-by-the-scenestar/"
+  },
+  {
+   "bucket": "today",
+   "title": "Lee Ritenour",
+   "date": "2026-11-09",
+   "day": "today",
+   "dayLabel": "周一",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Blue Note Los Angeles",
+   "city": "Los Angeles",
+   "category": "Music",
+   "price": null,
+   "note": "Guitarist Lee Ritenour celebrates an album release with a Monday night show at Blue Note LA.",
+   "sourceUrl": "https://lajazzpicks.com/2026/11/02/about-out-whats-hot-in-socal-jazz-week-of-november-2-2026/"
+  },
+  {
+   "bucket": "today",
+   "title": "Sonderfest 2026",
+   "date": "2026-11-09",
+   "day": "today",
+   "dayLabel": "周一",
+   "startTime": "5:00 PM",
+   "endTime": null,
+   "venue": "Echoplex, 1154 Glendale Blvd",
+   "city": "Los Angeles",
+   "category": "Music",
+   "price": "From $25",
+   "note": "Sonderfest 2026 festival showcase at the Echoplex with Truman Sinclair, Tristen, Ambré and more.",
+   "sourceUrl": "https://thescenestar.com/los-angeles-show-list-by-the-scenestar/"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 86,
-   "feelsLike": 81,
-   "high": 90,
-   "low": 57,
+   "temp": 64,
+   "feelsLike": 58,
+   "high": 88,
+   "low": 62,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 18,
+   "humidity": 39,
    "wind": "7 mph",
    "uvIndex": 5,
-   "airQualityIndex": 53,
+   "airQualityIndex": 55,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-08",
-   "high": 90,
-   "low": 57,
+   "date": "2026-11-09",
+   "high": 88,
+   "low": 62,
    "precipChance": 0,
-   "summary": "Clear skies. Highs around 90 and lows around 57."
+   "summary": "Overcast. Highs around 88 and lows around 62."
   },
   "daily": [
    {
-    "date": "2026-11-08",
-    "high": 90,
-    "low": 57,
+    "date": "2026-11-09",
+    "high": 88,
+    "low": 62,
     "precipChance": 0
    },
    {
-    "date": "2026-11-09",
+    "date": "2026-11-10",
     "high": 89,
     "low": 63,
     "precipChance": 0
    },
    {
-    "date": "2026-11-10",
-    "high": 85,
-    "low": 62,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-11",
-    "high": 85,
+    "high": 84,
     "low": 71,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 82,
+    "high": 81,
     "low": 70,
-    "precipChance": 10
+    "precipChance": 7
    },
    {
     "date": "2026-11-13",
-    "high": 81,
-    "low": 69,
-    "precipChance": 16
+    "high": 78,
+    "low": 68,
+    "precipChance": 11
    },
    {
     "date": "2026-11-14",
-    "high": 72,
-    "low": 64,
-    "precipChance": 24
+    "high": 78,
+    "low": 67,
+    "precipChance": 21
+   },
+   {
+    "date": "2026-11-15",
+    "high": 75,
+    "low": 67,
+    "precipChance": 38
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 72,
-    "low": 64,
-    "precipChance": 24,
-    "summary": "Light showers. Highs around 72 and lows around 64.",
-    "wind": "11 mph",
+    "high": 78,
+    "low": 67,
+    "precipChance": 21,
+    "summary": "Partly cloudy. Highs around 78 and lows around 67.",
+    "wind": "12 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 68,
-    "low": 63,
-    "precipChance": 42,
-    "summary": "Drizzle. Highs around 68 and lows around 63.",
-    "wind": "9 mph",
+    "high": 75,
+    "low": 67,
+    "precipChance": 38,
+    "summary": "Overcast. Highs around 75 and lows around 67.",
+    "wind": "10 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-08T23:53:02.814717Z",
+  "fetchedAt": "2026-11-09T11:52:38.026085Z",
   "location": "Los Angeles, CA"
  }
 }
