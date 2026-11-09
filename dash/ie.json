@@ -1,6 +1,6 @@
 {
  "location": "Upland, CA（内陆帝国）",
- "eventsUpdatedAt": "2026-11-08T10:02:04.776Z",
+ "eventsUpdatedAt": "2026-11-08T22:03:48.079Z",
  "ranges": {
   "sat": "2026-11-14",
   "sun": "2026-11-15",
@@ -10,49 +10,17 @@
   {
    "bucket": "today",
    "category": "Family",
-   "city": "Pomona",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": null,
-   "id": 192,
-   "note": "Monthly first-Sunday show of Cal Poly Pomona Arabian horses; $3 adults, $2 seniors and children 6-17, free under 5.",
-   "price": "From $2",
-   "sourceUrl": "https://www.cpp.edu/wkkelloggarabianhorsecenter/sunday-shows/schedule.shtml",
-   "startTime": "2:00 PM",
-   "title": "Sunday Horse Show - November 8, 2026",
-   "venue": "W.K. Kellogg Arabian Horse Center"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "Claremont",
-   "date": "2026-11-08",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": "4:15 PM",
-   "id": 193,
-   "note": "Free public concert of contemporary string quartet works, including a premiere.",
-   "price": "Free",
-   "sourceUrl": "https://claremont.edu/claremont-events/category/live-performance/list/?hide_subsequent_recurrences=1",
-   "startTime": "3:00 PM",
-   "title": "Eclipse String Quartet",
-   "venue": "Bridges Hall of Music, Pomona College"
-  },
-  {
-   "bucket": "today",
-   "category": "Family",
    "city": "Ontario",
    "date": "2026-11-08",
    "day": "today",
    "dayLabel": "周日",
    "endTime": "6:30 PM",
-   "id": 194,
-   "note": "National STEM Day finale with hands-on science demos and indoor skydiving flights for the family.",
-   "price": "From $52",
+   "id": 233,
+   "note": "National STEM Day finale with indoor-skydiving science fun for families.",
+   "price": null,
    "sourceUrl": "https://www.eventbrite.com/e/stem-family-sundays-at-ifly-ontario-tickets-1991808496832",
    "startTime": "4:00 PM",
-   "title": "STEM Family Sundays at iFLY Ontario!",
+   "title": "STEM Family Sundays at iFLY Ontario",
    "venue": "iFLY Indoor Skydiving - Ontario"
   },
   {
@@ -63,8 +31,8 @@
    "day": "today",
    "dayLabel": "周日",
    "endTime": "1:00 PM",
-   "id": 190,
-   "note": "Weekly certified farmers market with fresh produce and handmade goods, every Sunday year-round.",
+   "id": 230,
+   "note": "Weekly certified farmers market with fresh produce and artisan goods.",
    "price": "Free",
    "sourceUrl": "https://metrolinktrains.com/explore/los-angeles-county/claremont-village-farmers-market/",
    "startTime": "8:00 AM",
@@ -73,14 +41,30 @@
   },
   {
    "bucket": "today",
-   "category": "Fitness",
+   "category": "Arts",
+   "city": "Upland",
+   "date": "2026-11-08",
+   "day": "today",
+   "dayLabel": "周日",
+   "endTime": null,
+   "id": 232,
+   "note": "Exhibition running today in Upland.",
+   "price": null,
+   "sourceUrl": "https://allevents.in/upland/november",
+   "startTime": "8:00 AM",
+   "title": "WNW Exhibition",
+   "venue": "1749 W 13th St"
+  },
+  {
+   "bucket": "today",
+   "category": "Outdoors",
    "city": "Claremont",
    "date": "2026-11-08",
    "day": "today",
    "dayLabel": "周日",
    "endTime": null,
-   "id": 191,
-   "note": "Charity 5K hosted by North Hills Church and the Claremont Colleges.",
+   "id": 231,
+   "note": "Charity 5K hosted by North Hills Church and Claremont Colleges.",
    "price": "From $23.18",
    "sourceUrl": "https://www.eventbrite.com/d/ca--upland/5k-run",
    "startTime": "9:00 AM",
@@ -91,19 +75,35 @@
  "events": [
   {
    "bucket": "weekend",
+   "category": "Arts",
+   "city": "Upland",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": null,
+   "id": 239,
+   "note": "Guided painting session in downtown Upland.",
+   "price": "$49.87",
+   "sourceUrl": "https://allevents.in/upland/november",
+   "startTime": null,
+   "title": "Sip and Paint",
+   "venue": "Rustic and Modern Collective"
+  },
+  {
+   "bucket": "weekend",
    "category": "Festival",
    "city": "Claremont",
    "date": "2026-11-14",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "4:00 PM",
-   "id": 195,
-   "note": "Free two-day community tradition with food, music, handmade crafts and family activities.",
+   "id": 235,
+   "note": "Free community festival with artisan booths, food and live entertainment.",
    "price": "Free",
    "sourceUrl": "http://www.pilgrimplace.org/events",
    "startTime": "10:00 AM",
-   "title": "78th Annual Festival at Pilgrim Place",
-   "venue": "Pilgrim Place, 625 Mayflower Road"
+   "title": "78th Festival at Pilgrim Place",
+   "venue": "Pilgrim Place"
   },
   {
    "bucket": "weekend",
@@ -113,13 +113,29 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "4:00 PM",
-   "id": 196,
-   "note": "Mexican folk art, artisan demonstrations and tours of the historic Maloof home.",
+   "id": 236,
+   "note": "24th annual folk art weekend with Mexican artisans, demos and home tours.",
    "price": "Free",
    "sourceUrl": "https://rccaaf.org/event/mexican-folk-art-weekend-2026/2026-11-14/",
    "startTime": "11:00 AM",
-   "title": "24th Annual Mexican Folk Art Weekend",
-   "venue": "Sam and Alfreda Maloof Foundation, 5131 Carnelian Street"
+   "title": "Mexican Folk Art Weekend",
+   "venue": "Sam and Alfreda Maloof Foundation"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Community",
+   "city": "Pomona",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": "7:00 PM",
+   "id": 237,
+   "note": "Community festival celebrating Native American Heritage Month.",
+   "price": null,
+   "sourceUrl": "https://www.linkedin.com/posts/ccecpp_november-is-national-native-american-heritage-activity-7523139703202754561-o7Z0",
+   "startTime": "11:00 AM",
+   "title": "Native American Heritage Festival",
+   "venue": "Lopez Urban Farm"
   },
   {
    "bucket": "weekend",
@@ -128,46 +144,30 @@
    "date": "2026-11-14",
    "day": "sat",
    "dayLabel": "周六",
-   "endTime": "5:00 PM",
-   "id": 197,
-   "note": "Post-ride beer garden with food, drinks and music closing out the Tour de Foothills.",
+   "endTime": null,
+   "id": 238,
+   "note": "Brewery crawl through downtown Upland.",
    "price": null,
-   "sourceUrl": "https://www.tourdefoothills.com/",
+   "sourceUrl": "https://allevents.in/upland/november",
    "startTime": "12:00 PM",
    "title": "Tour de Brews",
-   "venue": "Historic Downtown Upland, 201 E A Street"
+   "venue": "201 E A St"
   },
   {
    "bucket": "weekend",
-   "category": "Music",
-   "city": "Claremont",
-   "date": "2026-11-14",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": "4:00 PM",
-   "id": 198,
-   "note": "Free student guitar recital in Pomona College's fall concert series.",
-   "price": "Free",
-   "sourceUrl": "https://claremont.edu/claremont-events/category/live-performance/list/?hide_subsequent_recurrences=1",
-   "startTime": "3:00 PM",
-   "title": "Senior Recital: Matthew Cheong, guitar",
-   "venue": "Pomona College"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Music",
-   "city": "Claremont",
+   "category": "Outdoors",
+   "city": "Upland",
    "date": "2026-11-14",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "id": 199,
-   "note": "Southern California A Cappella Music Festival with all eight Claremont Colleges groups plus guest groups.",
+   "id": 234,
+   "note": "Community cycling ride starting in downtown Upland.",
    "price": null,
-   "sourceUrl": "https://www.axs.com/venues/101614/bridges-auditorium-claremont-tickets",
-   "startTime": "7:00 PM",
-   "title": "SCAMFest 2026",
-   "venue": "Bridges Auditorium"
+   "sourceUrl": "https://allevents.in/upland/november",
+   "startTime": "6:00 AM",
+   "title": "Tour de Foothills",
+   "venue": "217 E A St"
   },
   {
    "bucket": "weekend",
@@ -177,13 +177,29 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "4:00 PM",
-   "id": 200,
-   "note": "Second day of the folk art weekend, with artisan works, demonstrations and home tours.",
+   "id": 240,
+   "note": "Second day of the folk art weekend.",
    "price": "Free",
    "sourceUrl": "https://rccaaf.org/event/mexican-folk-art-weekend-2026/2026-11-14/",
    "startTime": "10:00 AM",
-   "title": "24th Annual Mexican Folk Art Weekend",
-   "venue": "Sam and Alfreda Maloof Foundation, 5131 Carnelian Street"
+   "title": "Mexican Folk Art Weekend",
+   "venue": "Sam and Alfreda Maloof Foundation"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Motorsports",
+   "city": "Pomona",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "endTime": null,
+   "id": 241,
+   "note": "Season-finale eliminations; kids 12 and under free with a paid adult.",
+   "price": null,
+   "sourceUrl": "https://www.nhra.com/news/2026/tickets-sale-season-ending-n-out-burger-nhra-finals",
+   "startTime": "11:00 AM",
+   "title": "In-N-Out Burger NHRA Finals - Sunday",
+   "venue": "In-N-Out Burger Pomona Dragstrip"
   },
   {
    "bucket": "weekend",
@@ -193,58 +209,42 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "4:00 PM",
-   "id": 201,
-   "note": "Free re-opening celebration with gallery tours, family clay activities, live music and a jazz band at 1 PM; registration required.",
+   "id": 242,
+   "note": "Free reopening party with gallery tours, clay activities and live jazz.",
    "price": "Free",
    "sourceUrl": "https://rccaaf.org/event/re-opening-celebration-amoca/",
    "startTime": "11:00 AM",
    "title": "Re-Opening Celebration @ AMOCA",
-   "venue": "American Museum of Ceramic Art, 399 N. Garey Ave"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Music",
-   "city": "Claremont",
-   "date": "2026-11-15",
-   "day": "sun",
-   "dayLabel": "周日",
-   "endTime": "4:15 PM",
-   "id": 202,
-   "note": "Free afternoon concert in Pomona College's fall music series.",
-   "price": "Free",
-   "sourceUrl": "https://claremont.edu/claremont-events/category/live-performance/list/?hide_subsequent_recurrences=1",
-   "startTime": "3:00 PM",
-   "title": "Pomona College Band",
-   "venue": "Pomona College"
+   "venue": "American Museum of Ceramic Art"
   }
  ],
  "weather": {
   "current": {
-   "temp": 56,
-   "feelsLike": 56,
-   "high": 84,
-   "low": 60,
-   "description": "Clear",
+   "temp": 83,
+   "feelsLike": 83,
+   "high": null,
+   "low": 59,
+   "description": "Fair",
    "precipChance": 0,
-   "humidity": 43,
-   "wind": null,
+   "humidity": 18,
+   "wind": "4 mph",
    "uvIndex": 0,
-   "airQualityIndex": 23,
+   "airQualityIndex": 31,
    "airQualityDescription": "Good"
   },
   "today": {
    "date": "2026-11-08",
-   "high": 84,
-   "low": 60,
-   "precipChance": 0,
-   "summary": "Mainly sunny. Highs in the mid 80s and lows in the low 60s."
+   "high": null,
+   "low": 59,
+   "precipChance": null,
+   "summary": "Clear. Lows overnight in the upper 50s."
   },
   "daily": [
    {
     "date": "2026-11-08",
-    "high": 84,
-    "low": 60,
-    "precipChance": 0
+    "high": null,
+    "low": 59,
+    "precipChance": null
    },
    {
     "date": "2026-11-09",
@@ -254,7 +254,7 @@
    },
    {
     "date": "2026-11-10",
-    "high": 83,
+    "high": 84,
     "low": 60,
     "precipChance": 0
    },
@@ -273,24 +273,24 @@
    {
     "date": "2026-11-13",
     "high": 75,
-    "low": 57,
-    "precipChance": 10
+    "low": 56,
+    "precipChance": 0
    },
    {
     "date": "2026-11-14",
-    "high": 73,
+    "high": 75,
     "low": 55,
-    "precipChance": 20
+    "precipChance": 10
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 73,
+    "high": 75,
     "low": 55,
-    "precipChance": 20,
-    "summary": "Mix of sun and clouds. Highs in the low 70s and lows in the mid 50s.",
+    "precipChance": 10,
+    "summary": "Times of sun and clouds. Highs in the mid 70s and lows in the mid 50s.",
     "wind": "8 mph",
     "hourly": []
    },
@@ -300,12 +300,12 @@
     "high": 68,
     "low": 53,
     "precipChance": 40,
-    "summary": "Chance of afternoon showers. Highs in the upper 60s and lows in the low 50s.",
+    "summary": "Showers possible. Highs in the upper 60s and lows in the low 50s.",
     "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-08T11:38:50.995Z",
+  "fetchedAt": "2026-11-08T23:53:13.896Z",
   "location": "Upland, CA"
  }
 }
