@@ -5,7 +5,7 @@ var CACHE = 'tools-v66';
 var NAMES = {
   'index.html': '🏠 首页', 'work.html': '🦺 现场工具', 'search.html': '🔍 全站搜索', 'kb.html': '🗂️ 知识库', 'tips.html': '💡 技巧与科普',
   'kitchen.html': '🍳 厨房与养生', 'convert.html': '💱 汇率与单位换算', 'brief.html': '☀️ 每日简报', 'news.html': '📰 新闻', 'stocks.html': '📈 今日股票池',
-  'earnings.html': '📅 财报与经济日历', 'deals.html': '🏷️ 打折雷达', 'toolbox.html': '🧰 工具箱', 'people.html': '⭐ 人物专栏',
+  'earnings.html': '📅 财报与经济日历', 'deals.html': '🏷️ 打折雷达', 'blackfriday.html': '🛍️ 黑色星期五', 'toolbox.html': '🧰 工具箱', 'people.html': '⭐ 人物专栏',
   'dream.html': '🌙 心灵小站', 'speak.html': '🗣️ 开口说', 'card.html': '🎴 每日一句', 'radio.html': '🚗 通勤电台',
   'fm.html': '📻 环球网络电台', 'tv.html': '📺 网络电视', 'books.html': '🎧 听书', 'reader.html': '📖 电子书阅读器', 'sleep.html': '😴 夜之声', 'media.html': '📥 媒体', 'agent.html': '🤖 AI 跑腿', 'ext.html': '🧩 浏览器插件', 'av.html': '🎛️ 音视频转换', 'trim.html': '✂️ 音视频剪辑',
   'monitor.html': '🔔 网页监控', 'english.html': '🔤 英语练习', 'spanish.html': '🇲🇽 西班牙语练习', 'portuguese.html': '🇧🇷 葡萄牙语练习', 'sublingo.html': '🎞️ SubLingo',
