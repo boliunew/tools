@@ -1,6 +1,6 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-10T11:55:24.227588Z",
+ "eventsUpdatedAt": "2026-11-10T21:05:33.144205Z",
  "ranges": {
   "today": "2026-11-10",
   "sat": "2026-11-14",
@@ -192,67 +192,67 @@
  ],
  "weather": {
   "current": {
-   "temp": 47,
-   "feelsLike": 42,
+   "temp": 59,
+   "feelsLike": 50,
    "high": 62,
-   "low": 43,
+   "low": 45,
    "description": "Clear",
-   "precipChance": 1,
-   "humidity": 60,
-   "wind": "4 mph",
+   "precipChance": 0,
+   "humidity": 45,
+   "wind": "14 mph",
    "uvIndex": 3,
-   "airQualityIndex": 30,
+   "airQualityIndex": 38,
    "airQualityDescription": "Good"
   },
   "today": {
    "date": "2026-11-10",
    "high": 62,
-   "low": 43,
-   "precipChance": 1,
-   "summary": "Overcast. Highs around 62 and lows around 43."
+   "low": 45,
+   "precipChance": 0,
+   "summary": "Overcast. Highs around 62 and lows around 45."
   },
   "daily": [
    {
     "date": "2026-11-10",
     "high": 62,
-    "low": 43,
-    "precipChance": 1
-   },
-   {
-    "date": "2026-11-11",
-    "high": 58,
-    "low": 43,
+    "low": 45,
     "precipChance": 0
    },
    {
+    "date": "2026-11-11",
+    "high": 60,
+    "low": 43,
+    "precipChance": 2
+   },
+   {
     "date": "2026-11-12",
-    "high": 59,
-    "low": 55,
-    "precipChance": 76
+    "high": 58,
+    "low": 45,
+    "precipChance": 83
    },
    {
     "date": "2026-11-13",
-    "high": 56,
-    "low": 40,
-    "precipChance": 79
+    "high": 48,
+    "low": 41,
+    "precipChance": 62
    },
    {
     "date": "2026-11-14",
     "high": 45,
     "low": 39,
-    "precipChance": 26
+    "precipChance": 27
    },
    {
     "date": "2026-11-15",
-    "high": 49,
-    "low": 41,
+    "high": 48,
+    "low": 40,
     "precipChance": 1
    },
    {
     "date": "2026-11-16",
     "high": 50,
     "low": 40,
-    "precipChance": 1
+    "precipChance": 2
    }
   ],
   "weekend": [
@@ -261,23 +261,23 @@
     "day": "sat",
     "high": 45,
     "low": 39,
-    "precipChance": 26,
-    "summary": "Snow showers. Highs around 45 and lows around 39.",
-    "wind": "16 mph",
+    "precipChance": 27,
+    "summary": "Overcast. Highs around 45 and lows around 39.",
+    "wind": "15 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 49,
-    "low": 41,
+    "high": 48,
+    "low": 40,
     "precipChance": 1,
-    "summary": "Overcast. Highs around 49 and lows around 41.",
-    "wind": "14 mph",
+    "summary": "Overcast. Highs around 48 and lows around 40.",
+    "wind": "11 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-10T05:54:41.155015Z",
+  "fetchedAt": "2026-11-10T17:53:07.623159Z",
   "location": "New York, NY"
  }
 }

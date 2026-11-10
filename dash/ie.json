@@ -1,6 +1,6 @@
 {
  "location": "Upland, CA（内陆帝国）",
- "eventsUpdatedAt": "2026-11-10T10:01:48.201Z",
+ "eventsUpdatedAt": "2026-11-10T16:02:02.089Z",
  "ranges": {
   "sat": "2026-11-14",
   "sun": "2026-11-15",
@@ -9,19 +9,19 @@
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Talk",
+   "category": "Art Talk",
    "city": "Claremont",
    "date": "2026-11-10",
    "day": "today",
    "dayLabel": "周二",
    "endTime": null,
-   "id": 333,
-   "note": "Free talk on curatorial ethics at the Benton Museum.",
+   "id": 363,
+   "note": "Free talk on the ethics of curatorial reasoning; RSVP via Pomona Museum.",
    "price": "Free",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
    "startTime": "11:00 AM",
    "title": "Akili Tommasino: Higher Goals — Ethics of Curatorial Reasoning",
-   "venue": "Benton Museum of Art"
+   "venue": "Benton Museum of Art, 120 W. Bonita Ave."
   },
   {
    "bucket": "today",
@@ -31,13 +31,13 @@
    "day": "today",
    "dayLabel": "周二",
    "endTime": null,
-   "id": 334,
+   "id": 364,
    "note": "CNN senior political analyst on politics after the 2026 election.",
    "price": "Free",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
    "startTime": "12:45 PM",
    "title": "Ronald Brownstein: After the Storm — What's Next for American Politics After the 2026 Election",
-   "venue": "Marian Miner Cook Athenaeum, Claremont McKenna College"
+   "venue": "Marian Miner Cook Athenaeum, Claremont McKenna College, 385 E. Eighth St."
   },
   {
    "bucket": "today",
@@ -47,13 +47,13 @@
    "day": "today",
    "dayLabel": "周二",
    "endTime": null,
-   "id": 335,
-   "note": "Free public discussion with author Javier Zamora.",
+   "id": 365,
+   "note": "Free public discussion as part of the Athenaeum speaker series.",
    "price": "Free",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
    "startTime": "6:45 PM",
    "title": "Javier Zamora: Solito — Home, Identity, and the Immigrant Experience",
-   "venue": "Marian Miner Cook Athenaeum, Claremont McKenna College"
+   "venue": "Marian Miner Cook Athenaeum, Claremont McKenna College, 385 E. Eighth St."
   },
   {
    "bucket": "today",
@@ -63,13 +63,13 @@
    "day": "today",
    "dayLabel": "周二",
    "endTime": null,
-   "id": 336,
-   "note": "NASA Jet Propulsion Laboratory planetary protection leader in conversation.",
+   "id": 366,
+   "note": "Free talk with the leader of planetary protection at NASA JPL.",
    "price": "Free",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
    "startTime": "7:00 PM",
-   "title": "Scripps Presents: Moogega Cooper",
-   "venue": "Balch Auditorium, Scripps College"
+   "title": "Scripps Presents: Moogega Cooper, NASA Planetary Protection Lead",
+   "venue": "Balch Auditorium, Scripps College, 1030 Columbia Ave."
   },
   {
    "bucket": "today",
@@ -79,47 +79,47 @@
    "day": "today",
    "dayLabel": "周二",
    "endTime": null,
-   "id": 332,
+   "id": 362,
    "note": "Chamber networking breakfast to start the day.",
    "price": "$25-$35",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
    "startTime": "8:00 AM",
    "title": "Claremont Chamber Networking Breakfast",
-   "venue": "DoubleTree by Hilton"
+   "venue": "DoubleTree by Hilton, 555 W. Foothill Blvd."
   }
  ],
  "events": [
   {
    "bucket": "weekend",
    "category": "Festival",
+   "city": "Claremont",
+   "date": "2026-11-14",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": "4:00 PM",
+   "id": 369,
+   "note": "Long-running community festival with food, music and handmade crafts.",
+   "price": "Free",
+   "sourceUrl": "https://www.pilgrimplace.org/events",
+   "startTime": "10:00 AM",
+   "title": "78th Annual Pilgrim Place Festival",
+   "venue": "Pilgrim Place, 625 Mayflower Road"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Art Festival",
    "city": "Rancho Cucamonga",
    "date": "2026-11-14",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "4:00 PM",
-   "id": 338,
-   "note": "One-of-a-kind works by Mexican artisans, demonstrations and home tours.",
+   "id": 370,
+   "note": "One-of-a-kind Mexican folk art, artist demonstrations and tours of the Maloof home.",
    "price": "Free",
    "sourceUrl": "https://rccaaf.org/event/mexican-folk-art-weekend-2026/2026-11-14/",
    "startTime": "11:00 AM",
    "title": "24th Annual Mexican Folk Art Weekend",
-   "venue": "The Sam and Alfreda Maloof Foundation for Arts and Craft"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Food & Drink",
-   "city": "Upland",
-   "date": "2026-11-14",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": null,
-   "id": 339,
-   "note": "Downtown Upland beer flight event; flights $20 on the day.",
-   "price": "Free",
-   "sourceUrl": "https://allevents.in/upland/this-weekend",
-   "startTime": "12:00 PM",
-   "title": "Tour de Brews",
-   "venue": "201 E A Street"
+   "venue": "Sam and Alfreda Maloof Foundation, 5131 Carnelian St."
   },
   {
    "bucket": "weekend",
@@ -129,13 +129,13 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "4:00 PM",
-   "id": 340,
-   "note": "Musical journey through Broadway hits, presented by BeckOnStage Productions.",
-   "price": "$28-$72",
-   "sourceUrl": "https://rccaaf.org/event/the-best-of-broadway/",
+   "id": 371,
+   "note": "Broadway concert at the Lewis Family Playhouse.",
+   "price": "$31-$78",
+   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
    "startTime": "2:00 PM",
    "title": "The Best of Broadway",
-   "venue": "Lewis Family Playhouse"
+   "venue": "Lewis Family Playhouse, 12505 Cultural Center Drive"
   },
   {
    "bucket": "weekend",
@@ -145,45 +145,61 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "id": 337,
-   "note": "Community bike ride starting in downtown Upland.",
+   "id": 368,
+   "note": "Veteran-focused cycling ride with 12, 31, 62 and 100-mile routes.",
    "price": null,
-   "sourceUrl": "https://allevents.in/upland/this-weekend",
+   "sourceUrl": "https://www.tourdefoothills.com/register",
    "startTime": "6:00 AM",
    "title": "Tour de Foothills",
-   "venue": "217 E A Street"
+   "venue": "217 E. A Street, Downtown Upland"
   },
   {
    "bucket": "weekend",
-   "category": "Nightlife",
+   "category": "Market",
    "city": "Upland",
    "date": "2026-11-14",
    "day": "sat",
    "dayLabel": "周六",
-   "endTime": null,
-   "id": 341,
-   "note": "Live music night at Hi Brow Pub on Mountain Avenue.",
-   "price": null,
-   "sourceUrl": "https://allevents.in/upland/this-weekend",
-   "startTime": "8:30 PM",
-   "title": "The Dogs @ Hi Brow Pub",
-   "venue": "Hi Brow Pub"
+   "endTime": "2:00 PM",
+   "id": 367,
+   "note": "Weekly Saturday market with fresh produce, crafts and food vendors.",
+   "price": "Free",
+   "sourceUrl": "https://downtownupland.org/events.html",
+   "startTime": "9:00 AM",
+   "title": "Upland Farmers Market & Craft Faire",
+   "venue": "Historic Downtown Upland"
   },
   {
    "bucket": "weekend",
-   "category": "Festival",
+   "category": "Art Festival",
    "city": "Rancho Cucamonga",
    "date": "2026-11-15",
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "4:00 PM",
-   "id": 343,
-   "note": "Second day of the folk art weekend at the Maloof.",
+   "id": 373,
+   "note": "Second day of the folk art weekend, with artisan works and demonstrations.",
    "price": "Free",
    "sourceUrl": "https://rccaaf.org/event/mexican-folk-art-weekend-2026/2026-11-14/",
    "startTime": "10:00 AM",
    "title": "24th Annual Mexican Folk Art Weekend",
-   "venue": "The Sam and Alfreda Maloof Foundation for Arts and Craft"
+   "venue": "Sam and Alfreda Maloof Foundation, 5131 Carnelian St."
+  },
+  {
+   "bucket": "weekend",
+   "category": "Sports",
+   "city": "Pomona",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "endTime": null,
+   "id": 374,
+   "note": "Season-finale eliminations, with world champions crowned in Pomona.",
+   "price": null,
+   "sourceUrl": "https://www.nhra.com/news/2026/championships-line-historic-75th-anniversary-season-concludes-pomona",
+   "startTime": "11:00 AM",
+   "title": "In-N-Out Burger NHRA Finals — Final Eliminations",
+   "venue": "In-N-Out Burger Pomona Dragstrip, 2780 Fairplex Drive"
   },
   {
    "bucket": "weekend",
@@ -193,13 +209,13 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "4:00 PM",
-   "id": 344,
-   "note": "Free admission with advance registration for the renovated museum's reopening.",
+   "id": 375,
+   "note": "Free admission with advance registration to celebrate the museum's newly renovated spaces.",
    "price": "Free",
    "sourceUrl": "https://www.amoca.org/events/re-opening-celebration/",
    "startTime": "11:00 AM",
    "title": "Re-Opening Celebration @ AMOCA",
-   "venue": "American Museum of Ceramic Art"
+   "venue": "American Museum of Ceramic Art, 399 N. Garey Ave."
   },
   {
    "bucket": "weekend",
@@ -208,14 +224,14 @@
    "date": "2026-11-15",
    "day": "sun",
    "dayLabel": "周日",
-   "endTime": "4:15 PM",
-   "id": 345,
-   "note": "Free fall concert by the Pomona College Band.",
+   "endTime": null,
+   "id": 376,
+   "note": "Free and open to the public band performance.",
    "price": "Free",
-   "sourceUrl": "https://www.pomona.edu/band/current-schedule",
+   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
    "startTime": "3:00 PM",
    "title": "Pomona College Band",
-   "venue": "Bridges Hall of Music, Pomona College"
+   "venue": "Bridges Hall of Music, 150 E. Fourth St."
   },
   {
    "bucket": "weekend",
@@ -225,8 +241,8 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "1:00 PM",
-   "id": 342,
-   "note": "Weekly Sunday market with produce, flowers and handmade goods.",
+   "id": 372,
+   "note": "Weekly Sunday market with produce, handmade goods and flowers.",
    "price": "Free",
    "sourceUrl": "https://metrolinktrains.com/explore/los-angeles-county/claremont-village-farmers-market/",
    "startTime": "8:00 AM",
@@ -236,16 +252,16 @@
  ],
  "weather": {
   "current": {
-   "temp": 59,
-   "feelsLike": 59,
+   "temp": 82,
+   "feelsLike": 82,
    "high": 83,
    "low": 59,
-   "description": "Clear",
+   "description": "Sunny",
    "precipChance": 0,
-   "humidity": 51,
-   "wind": "1 mph",
-   "uvIndex": 0,
-   "airQualityIndex": 23,
+   "humidity": 20,
+   "wind": "2 mph",
+   "uvIndex": 3,
+   "airQualityIndex": 21,
    "airQualityDescription": "Good"
   },
   "today": {
@@ -253,7 +269,7 @@
    "high": 83,
    "low": 59,
    "precipChance": 0,
-   "summary": "Abundant sunshine. Highs in the low 80s and lows in the upper 50s."
+   "summary": "Mainly sunny. Highs in the low 80s and lows in the upper 50s."
   },
   "daily": [
    {
@@ -264,7 +280,7 @@
    },
    {
     "date": "2026-11-11",
-    "high": 84,
+    "high": 83,
     "low": 57,
     "precipChance": 0
    },
@@ -272,30 +288,30 @@
     "date": "2026-11-12",
     "high": 77,
     "low": 56,
-    "precipChance": 0
+    "precipChance": 10
    },
    {
     "date": "2026-11-13",
-    "high": 69,
-    "low": 54,
-    "precipChance": 40
+    "high": 65,
+    "low": 55,
+    "precipChance": 70
    },
    {
     "date": "2026-11-14",
-    "high": 67,
-    "low": 53,
-    "precipChance": 20
+    "high": 65,
+    "low": 51,
+    "precipChance": 50
    },
    {
     "date": "2026-11-15",
     "high": 68,
-    "low": 54,
+    "low": 53,
     "precipChance": 10
    },
    {
     "date": "2026-11-16",
-    "high": 62,
-    "low": 49,
+    "high": 60,
+    "low": 48,
     "precipChance": 70
    }
   ],
@@ -303,25 +319,25 @@
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 67,
-    "low": 53,
-    "precipChance": 20,
-    "summary": "Mix of sun and clouds. Highs in the upper 60s and lows in the low 50s.",
-    "wind": "8 mph",
+    "high": 65,
+    "low": 51,
+    "precipChance": 50,
+    "summary": "Showers ending by midday. Highs in the mid 60s and lows in the low 50s.",
+    "wind": "7 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
     "high": 68,
-    "low": 54,
+    "low": 53,
     "precipChance": 10,
-    "summary": "Times of sun and clouds. Highs in the upper 60s and lows in the mid 50s.",
+    "summary": "Plenty of sun. Highs in the upper 60s and lows in the low 50s.",
     "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-10T11:54:07.163Z",
+  "fetchedAt": "2026-11-10T21:05:06.923Z",
   "location": "Upland, CA"
  }
 }

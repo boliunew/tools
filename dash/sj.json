@@ -1,8 +1,8 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-10T11:55:24.223512Z",
+ "eventsUpdatedAt": "2026-11-10T21:05:33.137488Z",
  "ranges": {
-  "today": "2026-11-09",
+  "today": "2026-11-10",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 58,
-   "feelsLike": 58,
-   "high": 71,
-   "low": 49,
+   "temp": 61,
+   "feelsLike": 62,
+   "high": 74,
+   "low": 50,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 84,
+   "humidity": 86,
    "wind": "2 mph",
    "uvIndex": 4,
-   "airQualityIndex": 57,
+   "airQualityIndex": 61,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-09",
-   "high": 71,
-   "low": 49,
+   "date": "2026-11-10",
+   "high": 74,
+   "low": 50,
    "precipChance": 0,
-   "summary": "Foggy. Highs around 71 and lows around 49."
+   "summary": "Foggy. Highs around 74 and lows around 50."
   },
   "daily": [
    {
-    "date": "2026-11-09",
-    "high": 71,
-    "low": 49,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-10",
-    "high": 73,
-    "low": 54,
+    "high": 74,
+    "low": 50,
     "precipChance": 0
    },
    {
     "date": "2026-11-11",
-    "high": 77,
-    "low": 52,
+    "high": 70,
+    "low": 53,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 76,
-    "low": 58,
-    "precipChance": 7
+    "high": 75,
+    "low": 54,
+    "precipChance": 8
    },
    {
     "date": "2026-11-13",
-    "high": 63,
-    "low": 55,
-    "precipChance": 68
+    "high": 66,
+    "low": 54,
+    "precipChance": 75
    },
    {
     "date": "2026-11-14",
-    "high": 63,
-    "low": 54,
-    "precipChance": 66
+    "high": 62,
+    "low": 53,
+    "precipChance": 40
    },
    {
     "date": "2026-11-15",
-    "high": 66,
-    "low": 53,
-    "precipChance": 46
+    "high": 67,
+    "low": 51,
+    "precipChance": 53
+   },
+   {
+    "date": "2026-11-16",
+    "high": 58,
+    "low": 52,
+    "precipChance": 45
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 63,
-    "low": 54,
-    "precipChance": 66,
-    "summary": "Light showers. Highs around 63 and lows around 54.",
+    "high": 62,
+    "low": 53,
+    "precipChance": 40,
+    "summary": "Drizzle. Highs around 62 and lows around 53.",
     "wind": "5 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 66,
-    "low": 53,
-    "precipChance": 46,
-    "summary": "Rain. Highs around 66 and lows around 53.",
-    "wind": "9 mph",
+    "high": 67,
+    "low": 51,
+    "precipChance": 53,
+    "summary": "Overcast. Highs around 67 and lows around 51.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-10T05:54:35.780622Z",
+  "fetchedAt": "2026-11-10T17:53:03.234691Z",
   "location": "San Jose, CA"
  }
 }
