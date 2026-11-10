@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "generated": "2026-11-10T20:55:47Z",
+ "generated": "2026-11-10T21:59:03Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "Anthropic 计划在纳斯达克上市 目标融资 640 亿美元",
-     "d": "AI 公司 Anthropic 将于 11 月 19 日在纳斯达克挂牌，股价区间 70-78 美元，目标融资最高 640 亿美元，估值约 1.1‑1.3 万亿美元。尽管公司警告 AI 可能带来灾难性风险，此次上市仍在 AI 热潮中提供了重要的行业基准。",
+     "t": "Anthropic计划以70-78美元发行价上市，估值或达1.3万亿美元",
+     "d": "AI公司Anthropic将在纳斯达克上市，发行价70-78美元，筹资最高约640亿美元，估值在1.1-1.3万亿美元之间，尽管公司警告AI存在灾难性风险。此次上市在大科技公司面临监管不确定性和AI投资回报担忧的背景下进行，标志着首家全AI上市公司对行业前景的重大检验。",
      "src": [
       {
        "n": "BBC",
@@ -20,23 +20,23 @@
      "full": true
     },
     {
-     "t": "Nvidia 与 CEO 黄仁勋面临美国股东诉讼",
-     "d": "美国加州法院起诉 Nvidia 及其 CEO 黄仁勋，指其未披露与被指为中国间谍的前 Megaspeed 高管的关系，导致投资者误导，股价因诉讼跌 4.3%。此事加剧了对芯片巨头在美中技术竞争中安全与合规风险的关注。",
+     "t": "Anthropic最新招股文件显示估值上限1.4万亿美元",
+     "d": "Anthropic在最新招股文件中将目标估值上调至最高1.4万亿美元，计划发行825百万股，每股最高78美元，最高可融资约640亿美元，另有约260亿美元私募和绿鞋机制。此估值低于此前预测的2万亿美元，反映出AI热潮后投资者对估值的修正，并可能成为继SpaceX后最大融资规模的IPO。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/technology/2026/nov/10/nvidia-jensen-huang-sued-donald-trump-fbi"
+       "u": "https://www.theguardian.com/technology/2026/nov/10/anthropic-valuation-stock-market-flotation-ipo-wall-street-ai"
       }
      ],
      "full": true
     },
     {
-     "t": "加州选民否决对亿万富翁的财富税提案",
-     "d": "加州投票否决了对财富超过 11 亿美元的富豪征收 5% 一次性税的提案，若通过将筹集约 1000 亿美元用于医疗。该结果显示在美国高收入群体税收政策上的分歧，影响州财政与财富不平等议题。",
+     "t": "Nvidia与CEO黄仁勋因涉嫌与中国间谍关联被起诉",
+     "d": "美国加州联邦法院提起集体诉讼，指控Nvidia及其CEO黄仁勋未披露其与疑似中国情报资产的关系，误导投资者，并可能危及公司声誉与业务。此案加剧了对美国最大芯片制造商在中美技术竞争中的安全担忧，已导致公司股价大幅下跌。",
      "src": [
       {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/cq398em3032wo?at_medium=RSS&at_campaign=rss"
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/10/nvidia-jensen-huang-sued-donald-trump-fbi"
       }
      ],
      "full": true
@@ -130,8 +130,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "美俄乌三方在阿布扎比启动和平谈判",
-     "d": "美国、俄罗斯与乌克兰代表在阿布扎比举行首次面对面会谈，讨论人道主义行动及安全保障，但俄方仍要求乌克兰割让整个顿巴斯地区，乌方拒绝。此谈判是近期冲突调解的重要一步，对地区安全形势具有关键影响。",
+     "t": "美俄乌三方在阿布扎比展开首次面对面和平谈判",
+     "d": "美国、俄罗斯和乌克兰代表在阿布扎比进行为期两天的会谈，俄副外长赖布科夫未对进展作出评估，乌克兰总统泽连斯基称谈判建设性，但俄方仍坚持乌克兰割让顿巴斯。谈判正值俄军夜间袭击乌克兰能源设施导致大规模停电之际，显示和平进程面临严峻挑战。",
      "src": [
       {
        "n": "德国之声",
@@ -145,8 +145,8 @@
      "full": true
     },
     {
-     "t": "Nvidia 股东再次起诉 CEO 涉嫌间谍关联",
-     "d": "美国加州联邦法庭受理股东集体诉讼，指 Nvidia 与 CEO 黄仁勋未披露其与疑似中国情报人员的关系，导致公司声誉与业务受威胁，股价应声跌 4.3%。该案进一步突显半导体行业在美中竞争中的政治与安全风险。",
+     "t": "Nvidia股东起诉指CEO隐瞒与疑似中国间谍的关系",
+     "d": "Nvidia股东在加州联邦法院提起集体诉讼，称公司及CEO黄仁勋未向投资者披露其与前Megaspeed高管、被美国认为是中国情报资产的关系，涉嫌误导并危及国家安全。此案进一步放大了在美中技术竞争背景下对Nvidia信息安全的关注，已导致公司股价下跌4.3%。",
      "src": [
       {
        "n": "德国之声",
@@ -160,25 +160,26 @@
      "full": true
     },
     {
-     "t": "土耳其钢铁厂爆炸致16人死亡",
-     "d": "重大工业事故导致人员伤亡并冲击当地生产供应链，提醒投资者关注地缘安全及产业链韧性。",
+     "t": "美国士兵在英被捕涉嫌向俄方提供情报",
+     "d": "一名41岁的美国陆军士兵因涉嫌向俄罗斯情报机构提供受保护信息而在英国格洛斯特附近被逮捕，英国警方与FBI合作进行调查。此案凸显美英在情报安全方面的合作，也提醒美军在海外行动中对情报泄露的高度警惕。",
      "src": [
       {
-       "n": "Sky News",
-       "u": "https://news.sky.com/story/explosion-at-steel-plant-in-turkey-kills-at-least-16-officials-say-13610161"
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/us-soldier-arrest-suspicion-espionage-russia-9.7416928?cmp=rss"
       },
       {
-       "n": "Euronews",
-       "u": "https://www.euronews.com/video/2026/11/09/turkey-steel-plant-explosion-kills-17-in-izmir-province"
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/10/us-soldier-arrested-in-uk-over-alleged-russian-espionage?traffic_source=rss"
       }
-     ]
+     ],
+     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "Claude背后的Anthropic将以130亿美元估值IPO",
-  "d": "Anthropic的首次公开募股代表AI领域资本的最新动向，估值与定价差异反映市场对生成式AI前景的审慎期待，对行业资金流向具有指示意义。"
+  "t": "Claude开发商即将市值1.3万亿美元上市",
+  "d": "该IPO将检验AI公司在资本市场的真实估值，也可能在监管趋严背景下影响行业融资节奏和竞争格局，是今日最关键的科技事件。"
  },
  "week": []
 }
