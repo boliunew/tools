@@ -1,86 +1,86 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-09T11:54:22.444780Z",
+ "eventsUpdatedAt": "2026-11-10T11:55:24.227588Z",
  "ranges": {
-  "today": "2026-11-09",
+  "today": "2026-11-10",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Arts",
+   "category": "Music",
    "city": "New York",
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
-   "endTime": "6:00 PM",
-   "note": "Giant sculptures built from unopened food cans, donated to City Harvest when the show ends; final day closes at 6pm.",
-   "price": "Free",
-   "sourceUrl": "https://lovelynyc.com/holidays/november-in-new-york/",
-   "startTime": "10:00 AM",
-   "title": "Canstruction NYC 2026 (final day)",
-   "venue": "Brookfield Place, 230 Vesey St"
-  },
-  {
-   "bucket": "today",
-   "category": "Arts",
-   "city": "New York",
-   "date": "2026-11-09",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": "7:45 PM",
-   "note": "Makeup artist Jeff Goodwin shares behind-the-scenes Polaroids from David Lynch's Blue Velvet for his new book.",
-   "price": "Free",
-   "sourceUrl": "https://www.eventbrite.com/e/blue-velvet-a-polaroid-diary-tickets-2003520151707",
-   "startTime": "6:00 PM",
-   "title": "Blue Velvet: A Polaroid Diary",
-   "venue": "Rizzoli Bookstore, 1133 Broadway"
-  },
-  {
-   "bucket": "today",
-   "category": "Comedy",
-   "city": "New York",
-   "date": "2026-11-09",
-   "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "New York Comedy Festival benefit show for veterans on Monday night at David Geffen Hall.",
-   "price": null,
-   "sourceUrl": "https://lovelynyc.com/holidays/november-in-new-york/",
-   "startTime": null,
-   "title": "Stand Up for Heroes",
-   "venue": "David Geffen Hall, Lincoln Center"
+   "note": "Free lunchtime organ recital of J.S. Bach works at Grace Church in Greenwich Village.",
+   "price": "Free",
+   "sourceUrl": "https://dothisnyc.com/free-concerts-nyc/",
+   "startTime": "12:20 PM",
+   "title": "Organ Works by J.S. Bach at Grace Church",
+   "venue": "Grace Church, Greenwich Village, Manhattan"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "KOTA The Friend plays two sets at the Blue Note Jazz Club on Monday night.",
+   "note": "Oratorio Society of New York performs Fauré's Requiem at Carnegie Hall, conducted by Kent Tritle.",
    "price": null,
-   "sourceUrl": "https://www.sync2cal.com/local-events/new-york/blue-note-jazz-club",
-   "startTime": "8:00 PM",
-   "title": "KOTA The Friend",
-   "venue": "Blue Note Jazz Club, 131 W 3rd St"
+   "sourceUrl": "https://news.geturtix.com/2026/11/classic-arts-this-week-tosca-happy-end-madama-butterfly/",
+   "startTime": null,
+   "title": "Fauré's Requiem — Oratorio Society of New York",
+   "venue": "Carnegie Hall"
   },
   {
    "bucket": "today",
-   "category": "Market",
+   "category": "Music",
    "city": "New York",
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "The Grand Central Holiday Fair opens for the season, running through December 24.",
+   "note": "DURATIONS festival: William Basinski and muein at Public Records, 21+.",
+   "price": "$57.68",
+   "sourceUrl": "http://nyc-shows.brooklynvegan.com/events/2026/11/10/durations-william-basinski-muein-tickets",
+   "startTime": "7:00 PM",
+   "title": "DURATIONS: William Basinski, muein",
+   "venue": "Public Records, Brooklyn"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-10",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": null,
+   "note": "Hamilton Leithauser with Rostam at Music Hall of Williamsburg on Tuesday night.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=3&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "7:00 PM",
+   "title": "Hamilton Leithauser w/ Rostam",
+   "venue": "Music Hall of Williamsburg, 66 North 6th St, Brooklyn"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-10",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": "2:00 AM",
+   "note": "Weekly Haitian kompa and zouk night on the rooftop at The DL, with Haitian cuisine and cocktails; 21+, free RSVP.",
    "price": "Free",
-   "sourceUrl": "https://lovelynyc.com/holidays/november-in-new-york/",
-   "startTime": null,
-   "title": "Grand Central Holiday Fair opens",
-   "venue": "Grand Central Terminal, Vanderbilt Hall"
+   "sourceUrl": "https://www.thedl-nyc.com/upcomingevents/kompa-tuesdays-2026-11-10-20-00",
+   "startTime": "8:00 PM",
+   "title": "KOMPA Tuesdays",
+   "venue": "The DL, 95 Delancey St, Lower East Side"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 48,
-   "feelsLike": 40,
-   "high": 58,
+   "temp": 47,
+   "feelsLike": 42,
+   "high": 62,
    "low": 43,
-   "description": "Mainly clear",
-   "precipChance": 10,
-   "humidity": 54,
-   "wind": "12 mph",
+   "description": "Clear",
+   "precipChance": 1,
+   "humidity": 60,
+   "wind": "4 mph",
    "uvIndex": 3,
-   "airQualityIndex": 34,
+   "airQualityIndex": 30,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-09",
-   "high": 58,
+   "date": "2026-11-10",
+   "high": 62,
    "low": 43,
-   "precipChance": 10,
-   "summary": "Overcast. Highs around 58 and lows around 43."
+   "precipChance": 1,
+   "summary": "Overcast. Highs around 62 and lows around 43."
   },
   "daily": [
    {
-    "date": "2026-11-09",
-    "high": 58,
-    "low": 43,
-    "precipChance": 10
-   },
-   {
     "date": "2026-11-10",
     "high": 62,
-    "low": 41,
-    "precipChance": 2
+    "low": 43,
+    "precipChance": 1
    },
    {
     "date": "2026-11-11",
-    "high": 59,
-    "low": 50,
+    "high": 58,
+    "low": 43,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 61,
-    "low": 53,
-    "precipChance": 68
+    "high": 59,
+    "low": 55,
+    "precipChance": 76
    },
    {
     "date": "2026-11-13",
-    "high": 53,
-    "low": 43,
-    "precipChance": 70
+    "high": 56,
+    "low": 40,
+    "precipChance": 79
    },
    {
     "date": "2026-11-14",
-    "high": 46,
-    "low": 41,
-    "precipChance": 46
+    "high": 45,
+    "low": 39,
+    "precipChance": 26
    },
    {
     "date": "2026-11-15",
-    "high": 46,
-    "low": 42,
-    "precipChance": 7
+    "high": 49,
+    "low": 41,
+    "precipChance": 1
+   },
+   {
+    "date": "2026-11-16",
+    "high": 50,
+    "low": 40,
+    "precipChance": 1
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 46,
-    "low": 41,
-    "precipChance": 46,
-    "summary": "Light drizzle. Highs around 46 and lows around 41.",
+    "high": 45,
+    "low": 39,
+    "precipChance": 26,
+    "summary": "Snow showers. Highs around 45 and lows around 39.",
     "wind": "16 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 46,
-    "low": 42,
-    "precipChance": 7,
-    "summary": "Overcast. Highs around 46 and lows around 42.",
-    "wind": "18 mph",
+    "high": 49,
+    "low": 41,
+    "precipChance": 1,
+    "summary": "Overcast. Highs around 49 and lows around 41.",
+    "wind": "14 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-09T11:52:40.942461Z",
+  "fetchedAt": "2026-11-10T05:54:41.155015Z",
   "location": "New York, NY"
  }
 }

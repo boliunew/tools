@@ -1,6 +1,6 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-09T11:54:22.443037Z",
+ "eventsUpdatedAt": "2026-11-10T11:55:24.223512Z",
  "ranges": {
   "today": "2026-11-09",
   "sat": "2026-11-14",
@@ -9,48 +9,63 @@
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "San Jose Sharks vs. New York Islanders",
-   "date": "2026-11-09",
+   "title": "Sparta, Public Opinion",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "startTime": "7:00 PM",
    "endTime": null,
-   "venue": "SAP Center at San Jose",
+   "venue": "The Ritz, 400 S 1st St",
    "city": "San Jose",
-   "category": "Sports",
-   "price": "From $31",
-   "note": "The Sharks host the New York Islanders in a Monday night NHL game at SAP Center.",
-   "sourceUrl": "https://nightout.com/events/v/new-york-islanders-at-san-jose-sharks-sap-center-san-jose-2026-11-09/tickets"
-  },
-  {
-   "bucket": "today",
-   "title": "Isata Kanneh-Mason: Stanford Masterclass",
-   "date": "2026-11-09",
-   "day": "today",
-   "dayLabel": "周一",
-   "startTime": "10:30 AM",
-   "endTime": null,
-   "venue": "Bing Concert Hall",
-   "city": "Stanford",
    "category": "Music",
-   "price": "Free",
-   "note": "Free morning masterclass by pianist Isata Kanneh-Mason at Stanford's Bing Concert Hall.",
-   "sourceUrl": "https://www.bandsintown.com/c/san-jose-ca?came_from=253&latitude=37.3026351&longitude=-122.0234222&utm_medium=web&utm_source=artist_event_page&utm_campaign=city_link"
+   "price": null,
+   "note": "Sparta plays The Ritz in downtown San Jose with Public Opinion.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ"
   },
   {
    "bucket": "today",
-   "title": "Half Off Wine Monday Happy Hour",
-   "date": "2026-11-09",
+   "title": "AI Tinkerers San Jose Monthly Meetup · Nov. 10",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
-   "startTime": "4:00 PM",
+   "dayLabel": "周二",
+   "startTime": "6:00 PM",
    "endTime": null,
-   "venue": "Rollati Ristorante, 181 E. Santa Clara St",
+   "venue": "Downtown San Jose, 505 S Market St",
    "city": "San Jose",
-   "category": "Food & Drink",
+   "category": "Community",
    "price": null,
-   "note": "Half-price wine Monday happy hour at Rollati Ristorante in downtown San Jose.",
-   "sourceUrl": "https://baselocal.com/ca/san-jose/events/"
+   "note": "Monthly meetup for AI builders and tinkerers in downtown San Jose.",
+   "sourceUrl": "https://allevents.in/san-jos%C3%A9/all"
+  },
+  {
+   "bucket": "today",
+   "title": "Brian Patrick: Singer-Songwriters",
+   "date": "2026-11-10",
+   "day": "today",
+   "dayLabel": "周二",
+   "startTime": "6:00 PM",
+   "endTime": null,
+   "venue": "Capelo's Barbecue",
+   "city": "San Jose",
+   "category": "Music",
+   "price": null,
+   "note": "Singer-songwriter night with Brian Patrick at Capelo's Barbecue.",
+   "sourceUrl": "https://www.bandsintown.com/c/san-jose-ca?came_from=331&latitude=37.3327303&longitude=-121.9012363&utm_medium=web&utm_source=venue_page&utm_campaign=city"
+  },
+  {
+   "bucket": "today",
+   "title": "David Hobbes",
+   "date": "2026-11-10",
+   "day": "today",
+   "dayLabel": "周二",
+   "startTime": "6:00 PM",
+   "endTime": null,
+   "venue": "Capelo's Barbecue",
+   "city": "San Jose",
+   "category": "Music",
+   "price": null,
+   "note": "Live music from David Hobbes at Capelo's Barbecue.",
+   "sourceUrl": "https://www.bandsintown.com/c/san-jose-ca?came_from=331&latitude=37.3327303&longitude=-121.9012363&utm_medium=web&utm_source=venue_page&utm_campaign=city"
   }
  ],
  "events": [
@@ -177,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 50,
-   "feelsLike": 48,
-   "high": 69,
-   "low": 46,
-   "description": "Fog",
+   "temp": 58,
+   "feelsLike": 58,
+   "high": 71,
+   "low": 49,
+   "description": "Clear",
    "precipChance": 0,
-   "humidity": 92,
-   "wind": "4 mph",
+   "humidity": 84,
+   "wind": "2 mph",
    "uvIndex": 4,
-   "airQualityIndex": 56,
+   "airQualityIndex": 57,
    "airQualityDescription": "Moderate"
   },
   "today": {
    "date": "2026-11-09",
-   "high": 69,
-   "low": 46,
+   "high": 71,
+   "low": 49,
    "precipChance": 0,
-   "summary": "Foggy. Highs around 69 and lows around 46."
+   "summary": "Foggy. Highs around 71 and lows around 49."
   },
   "daily": [
    {
     "date": "2026-11-09",
-    "high": 69,
-    "low": 46,
+    "high": 71,
+    "low": 49,
     "precipChance": 0
    },
    {
     "date": "2026-11-10",
     "high": 73,
-    "low": 53,
+    "low": 54,
     "precipChance": 0
    },
    {
     "date": "2026-11-11",
-    "high": 79,
-    "low": 58,
+    "high": 77,
+    "low": 52,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 80,
-    "low": 59,
+    "high": 76,
+    "low": 58,
     "precipChance": 7
    },
    {
     "date": "2026-11-13",
-    "high": 75,
-    "low": 58,
-    "precipChance": 21
+    "high": 63,
+    "low": 55,
+    "precipChance": 68
    },
    {
     "date": "2026-11-14",
-    "high": 72,
-    "low": 56,
-    "precipChance": 54
+    "high": 63,
+    "low": 54,
+    "precipChance": 66
    },
    {
     "date": "2026-11-15",
-    "high": 62,
+    "high": 66,
     "low": 53,
-    "precipChance": 57
+    "precipChance": 46
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 72,
-    "low": 56,
-    "precipChance": 54,
-    "summary": "Overcast. Highs around 72 and lows around 56.",
-    "wind": "6 mph",
+    "high": 63,
+    "low": 54,
+    "precipChance": 66,
+    "summary": "Light showers. Highs around 63 and lows around 54.",
+    "wind": "5 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 62,
+    "high": 66,
     "low": 53,
-    "precipChance": 57,
-    "summary": "Light rain. Highs around 62 and lows around 53.",
-    "wind": "10 mph",
+    "precipChance": 46,
+    "summary": "Rain. Highs around 66 and lows around 53.",
+    "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-09T11:52:35.108104Z",
+  "fetchedAt": "2026-11-10T05:54:35.780622Z",
   "location": "San Jose, CA"
  }
 }

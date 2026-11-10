@@ -1,6 +1,6 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-09T11:54:22.441181Z",
+ "eventsUpdatedAt": "2026-11-10T11:55:24.222375Z",
  "ranges": {
   "today": "2026-11-09",
   "sat": "2026-11-14",
@@ -9,78 +9,78 @@
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Golden State Warriors vs. New Orleans Pelicans",
-   "date": "2026-11-09",
+   "title": "Teddy Swims: The UGLY Tour",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "startTime": "7:00 PM",
    "endTime": null,
    "venue": "Chase Center, 300 16th St",
    "city": "San Francisco",
-   "category": "Sports",
-   "price": null,
-   "note": "The Warriors host the New Orleans Pelicans in a Monday night NBA game at Chase Center.",
-   "sourceUrl": "https://www.sync2cal.com/local-events/san-francisco/chase-center"
-  },
-  {
-   "bucket": "today",
-   "title": "Sienna Spiro: My House Tour",
-   "date": "2026-11-09",
-   "day": "today",
-   "dayLabel": "周一",
-   "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "The Castro Theatre, 429 Castro St",
-   "city": "San Francisco",
    "category": "Music",
    "price": null,
-   "note": "Sienna Spiro brings her My House Tour to the historic Castro Theatre for a Monday night pop show.",
-   "sourceUrl": "https://encoretrail.com/event/sienna-spiro-my-house-tour-san-francisco-2026-11-09/"
+   "note": "Teddy Swims brings The UGLY Tour to Chase Center on Tuesday night, with Natasha Bedingfield and MarcLo.",
+   "sourceUrl": "https://encoretrail.com/event/teddy-swims-the-ugly-tour-san-francisco-2026-11-10/"
   },
   {
    "bucket": "today",
-   "title": "Quadeca",
-   "date": "2026-11-09",
+   "title": "Live Music Lunch Series",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
-   "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "The Fillmore, 1805 Geary Blvd",
+   "dayLabel": "周二",
+   "startTime": "12:00 PM",
+   "endTime": "1:30 PM",
+   "venue": "Thrive City, 1 Warriors Way",
    "city": "San Francisco",
    "category": "Music",
-   "price": null,
-   "note": "Quadeca plays The Fillmore on Monday night.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?ac_link=blog&categoryId=KZFzniwnSyZfZ7v7nJ&page=1"
-  },
-  {
-   "bucket": "today",
-   "title": "Japanese Tea Garden's Free Admission Hour",
-   "date": "2026-11-09",
-   "day": "today",
-   "dayLabel": "周一",
-   "startTime": "9:00 AM",
-   "endTime": "10:00 AM",
-   "venue": "Japanese Tea Garden, Golden Gate Park",
-   "city": "San Francisco",
-   "category": "Outdoors",
    "price": "Free",
-   "note": "Free admission hour at the Japanese Tea Garden in Golden Gate Park on Monday morning.",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/09/"
+   "note": "Free lunchtime live music in the Thrive City plaza with one-man-band Matt Bolton.",
+   "sourceUrl": "https://www.eventbrite.com/e/live-music-lunch-series-tickets-1996952117540?aff=ebdsoporgprofile"
   },
   {
    "bucket": "today",
-   "title": "Hayes Valley Comedy Night",
-   "date": "2026-11-09",
+   "title": "Yuki Chiba: First North America Headline Tour",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "The Regency Ballroom",
+   "city": "San Francisco",
+   "category": "Music",
+   "price": null,
+   "note": "Yuki Chiba brings his first North America headline tour to The Regency Ballroom.",
+   "sourceUrl": "https://www.sfstation.com/music/calendar"
+  },
+  {
+   "bucket": "today",
+   "title": "Peter Pan Goes Wrong",
+   "date": "2026-11-10",
+   "day": "today",
+   "dayLabel": "周二",
    "startTime": "7:00 PM",
-   "endTime": "10:00 PM",
-   "venue": "The Function, 1414 Market St",
+   "endTime": null,
+   "venue": "San Francisco Playhouse",
+   "city": "San Francisco",
+   "category": "Theater",
+   "price": null,
+   "note": "The hit stage comedy Peter Pan Goes Wrong plays at San Francisco Playhouse.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco"
+  },
+  {
+   "bucket": "today",
+   "title": "Jamie Kaler",
+   "date": "2026-11-10",
+   "day": "today",
+   "dayLabel": "周二",
+   "startTime": "7:30 PM",
+   "endTime": null,
+   "venue": "Punch Line Comedy Club",
    "city": "San Francisco",
    "category": "Comedy",
-   "price": "Free",
-   "note": "Free weekly Monday comedy show at The Function in Hayes Valley.",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/09/"
+   "price": null,
+   "note": "Stand-up comedy with Jamie Kaler at Punch Line Comedy Club.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco"
   }
  ],
  "events": [
@@ -192,23 +192,23 @@
  ],
  "weather": {
   "current": {
-   "temp": 52,
-   "feelsLike": 50,
+   "temp": 58,
+   "feelsLike": 57,
    "high": 71,
    "low": 52,
-   "description": "Overcast",
-   "precipChance": 1,
-   "humidity": 89,
+   "description": "Clear",
+   "precipChance": 0,
+   "humidity": 80,
    "wind": "4 mph",
    "uvIndex": 4,
-   "airQualityIndex": 37,
-   "airQualityDescription": "Good"
+   "airQualityIndex": 52,
+   "airQualityDescription": "Moderate"
   },
   "today": {
    "date": "2026-11-09",
    "high": 71,
    "low": 52,
-   "precipChance": 1,
+   "precipChance": 0,
    "summary": "Foggy. Highs around 71 and lows around 52."
   },
   "daily": [
@@ -216,68 +216,68 @@
     "date": "2026-11-09",
     "high": 71,
     "low": 52,
-    "precipChance": 1
+    "precipChance": 0
    },
    {
     "date": "2026-11-10",
-    "high": 73,
-    "low": 52,
+    "high": 71,
+    "low": 53,
     "precipChance": 0
    },
    {
     "date": "2026-11-11",
-    "high": 73,
-    "low": 59,
+    "high": 72,
+    "low": 52,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 73,
+    "high": 68,
     "low": 60,
-    "precipChance": 10
+    "precipChance": 19
    },
    {
     "date": "2026-11-13",
-    "high": 72,
-    "low": 60,
-    "precipChance": 31
+    "high": 62,
+    "low": 58,
+    "precipChance": 78
    },
    {
     "date": "2026-11-14",
-    "high": 64,
-    "low": 59,
-    "precipChance": 61
+    "high": 63,
+    "low": 57,
+    "precipChance": 67
    },
    {
     "date": "2026-11-15",
-    "high": 61,
+    "high": 64,
     "low": 55,
-    "precipChance": 61
+    "precipChance": 59
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 64,
-    "low": 59,
-    "precipChance": 61,
-    "summary": "Light drizzle. Highs around 64 and lows around 59.",
-    "wind": "10 mph",
+    "high": 63,
+    "low": 57,
+    "precipChance": 67,
+    "summary": "Light drizzle. Highs around 63 and lows around 57.",
+    "wind": "20 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 61,
+    "high": 64,
     "low": 55,
-    "precipChance": 61,
-    "summary": "Rain. Highs around 61 and lows around 55.",
-    "wind": "15 mph",
+    "precipChance": 59,
+    "summary": "Showers. Highs around 64 and lows around 55.",
+    "wind": "19 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-09T11:52:32.970137Z",
+  "fetchedAt": "2026-11-10T05:54:33.600890Z",
   "location": "San Francisco, CA"
  }
 }

@@ -1,6 +1,6 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-09T11:54:22.443965Z",
+ "eventsUpdatedAt": "2026-11-10T11:55:24.224315Z",
  "ranges": {
   "today": "2026-11-09",
   "sat": "2026-11-14",
@@ -9,77 +9,77 @@
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Jessie Reyez: A Little Vengeance Tour",
-   "date": "2026-11-09",
+   "title": "Alanis Morissette: Butterfly with a Machete, The LA Residency",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "Kia Forum, 3900 W Manchester Blvd",
+   "venue": "YouTube Theater",
    "city": "Inglewood",
    "category": "Music",
-   "price": "From $10",
-   "note": "Jessie Reyez brings her A Little Vengeance Tour to the Kia Forum on Monday night.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=45"
+   "price": null,
+   "note": "Alanis Morissette continues her LA residency at YouTube Theater.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=10"
   },
   {
    "bucket": "today",
-   "title": "Karan Aujla w/ Ikky",
-   "date": "2026-11-09",
+   "title": "Los Angeles Kings vs. Nashville Predators",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Crypto.com Arena",
+   "city": "Los Angeles",
+   "category": "Sports",
+   "price": null,
+   "note": "The Kings host the Nashville Predators at Crypto.com Arena.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=10"
+  },
+  {
+   "bucket": "today",
+   "title": "Sienna Spiro: My House Tour",
+   "date": "2026-11-10",
+   "day": "today",
+   "dayLabel": "周二",
    "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "Crypto.com Arena, 1111 S. Figueroa St",
+   "venue": "The Wiltern",
    "city": "Los Angeles",
    "category": "Music",
    "price": null,
-   "note": "Punjabi star Karan Aujla performs at Crypto.com Arena with special guest Ikky.",
-   "sourceUrl": "https://thescenestar.com/los-angeles-show-list-by-the-scenestar/"
+   "note": "Sienna Spiro brings her My House Tour to The Wiltern.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=10"
   },
   {
    "bucket": "today",
-   "title": "Dashboard Confessional (Acoustic)",
-   "date": "2026-11-09",
+   "title": "The Who's Tommy",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
-   "startTime": "7:00 PM",
+   "dayLabel": "周二",
+   "startTime": "7:30 PM",
    "endTime": null,
-   "venue": "Troubadour",
-   "city": "West Hollywood",
-   "category": "Music",
+   "venue": "Hollywood Pantages Theatre",
+   "city": "Los Angeles",
+   "category": "Theater",
    "price": null,
-   "note": "Dashboard Confessional plays an acoustic set at the Troubadour on Monday night.",
-   "sourceUrl": "https://thescenestar.com/los-angeles-show-list-by-the-scenestar/"
+   "note": "The Who's Tommy plays the Hollywood Pantages Theatre.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=10"
   },
   {
    "bucket": "today",
-   "title": "Lee Ritenour",
-   "date": "2026-11-09",
+   "title": "Quadeca w/ Derby & Olēka",
+   "date": "2026-11-10",
    "day": "today",
-   "dayLabel": "周一",
-   "startTime": "7:00 PM",
+   "dayLabel": "周二",
+   "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "Blue Note Los Angeles",
+   "venue": "The Fonda Theatre",
    "city": "Los Angeles",
    "category": "Music",
    "price": null,
-   "note": "Guitarist Lee Ritenour celebrates an album release with a Monday night show at Blue Note LA.",
-   "sourceUrl": "https://lajazzpicks.com/2026/11/02/about-out-whats-hot-in-socal-jazz-week-of-november-2-2026/"
-  },
-  {
-   "bucket": "today",
-   "title": "Sonderfest 2026",
-   "date": "2026-11-09",
-   "day": "today",
-   "dayLabel": "周一",
-   "startTime": "5:00 PM",
-   "endTime": null,
-   "venue": "Echoplex, 1154 Glendale Blvd",
-   "city": "Los Angeles",
-   "category": "Music",
-   "price": "From $25",
-   "note": "Sonderfest 2026 festival showcase at the Echoplex with Truman Sinclair, Tristen, Ambré and more.",
+   "note": "Quadeca plays the Fonda Theatre with Derby and Olēka.",
    "sourceUrl": "https://thescenestar.com/los-angeles-show-list-by-the-scenestar/"
   }
  ],
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 64,
-   "feelsLike": 58,
-   "high": 88,
-   "low": 62,
+   "temp": 66,
+   "feelsLike": 64,
+   "high": 90,
+   "low": 61,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 39,
-   "wind": "7 mph",
+   "humidity": 58,
+   "wind": "5 mph",
    "uvIndex": 5,
-   "airQualityIndex": 55,
+   "airQualityIndex": 65,
    "airQualityDescription": "Moderate"
   },
   "today": {
    "date": "2026-11-09",
-   "high": 88,
-   "low": 62,
+   "high": 90,
+   "low": 61,
    "precipChance": 0,
-   "summary": "Overcast. Highs around 88 and lows around 62."
+   "summary": "Clear skies. Highs around 90 and lows around 61."
   },
   "daily": [
    {
     "date": "2026-11-09",
-    "high": 88,
-    "low": 62,
+    "high": 90,
+    "low": 61,
     "precipChance": 0
    },
    {
     "date": "2026-11-10",
-    "high": 89,
-    "low": 63,
+    "high": 87,
+    "low": 61,
     "precipChance": 0
    },
    {
     "date": "2026-11-11",
-    "high": 84,
-    "low": 71,
+    "high": 87,
+    "low": 59,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 81,
-    "low": 70,
-    "precipChance": 7
+    "high": 79,
+    "low": 68,
+    "precipChance": 20
    },
    {
     "date": "2026-11-13",
-    "high": 78,
-    "low": 68,
-    "precipChance": 11
+    "high": 74,
+    "low": 64,
+    "precipChance": 51
    },
    {
     "date": "2026-11-14",
-    "high": 78,
-    "low": 67,
-    "precipChance": 21
+    "high": 70,
+    "low": 61,
+    "precipChance": 51
    },
    {
     "date": "2026-11-15",
-    "high": 75,
-    "low": 67,
-    "precipChance": 38
+    "high": 68,
+    "low": 64,
+    "precipChance": 29
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 78,
-    "low": 67,
-    "precipChance": 21,
-    "summary": "Partly cloudy. Highs around 78 and lows around 67.",
-    "wind": "12 mph",
+    "high": 70,
+    "low": 61,
+    "precipChance": 51,
+    "summary": "Showers. Highs around 70 and lows around 61.",
+    "wind": "14 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 75,
-    "low": 67,
-    "precipChance": 38,
-    "summary": "Overcast. Highs around 75 and lows around 67.",
-    "wind": "10 mph",
+    "high": 68,
+    "low": 64,
+    "precipChance": 29,
+    "summary": "Light drizzle. Highs around 68 and lows around 64.",
+    "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-09T11:52:38.026085Z",
+  "fetchedAt": "2026-11-10T05:54:38.550408Z",
   "location": "Los Angeles, CA"
  }
 }
