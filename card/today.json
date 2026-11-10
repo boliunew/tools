@@ -1,16 +1,16 @@
 {
- "date": "2026-11-09",
- "kind": "名言",
- "en": "As our case is new, so we must think anew, and act anew.",
- "zh": "我们面对的是新局面，就必须用新的方式去思考、去行动。",
- "by": "Abraham Lincoln",
- "line": "As our case is new, so we must think anew, and act anew. — Abraham Lincoln",
+ "date": "2026-11-10",
+ "kind": "习语",
+ "en": "move the goalposts",
+ "zh": "朝令夕改",
+ "by": "中途改变规则或标准",
+ "line": "move the goalposts",
  "word": {
-  "w": "manual",
-  "ph": "'mænjuәl",
-  "zh": "n. 手册，指南；a. 手的，手动的，手工的，体力的",
-  "ex": "She was reading a gardening manual.",
-  "exzh": "她正在读一本园艺手册。"
+  "w": "kin",
+  "ph": "kin",
+  "zh": "n. 亲戚，同族，血缘关系，家族；a. 有亲属关系的，性质类似的，同类的",
+  "ex": "All his kith and kin.",
+  "exzh": "他所有的亲朋好友。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
