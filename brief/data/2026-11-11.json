@@ -1,0 +1,185 @@
+{
+ "date": "2026-11-11",
+ "generated": "2026-11-11T21:28:37Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "AI数据中心计划现场燃气发电 规模达181GW",
+     "d": "因电网接入延迟，AI数据中心在美欧拟建设181GW现场燃气电站，约相当于英国峰值需求的四倍，预计年排放3.45亿吨CO₂。此举加剧化石燃料使用，可能导致长期碳锁定，对气候目标构成冲击。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/world/2026/nov/11/ai-datacentres-on-site-gas-fired-power-stations"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI生成语音冒充报警 推动伪装骗拨",
+     "d": "美国加州等地出现使用AI合成语音的恶意“swatting”电话，约14%调度员曾遭此技术攻击，且难以辨别真伪。AI语音的逼真化提升了紧急响应系统的风险，呼吁加强技术防护。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/11/nx-s1-6034449/ai-911-calls-swatting"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Anthropic拟IPO 估值超1万亿美元",
+     "d": "AI公司Anthropic计划在纽约纳斯达克上市，募资最高640亿美元，估值约1.1‑1.3万亿美元，尽管其警示AI可能带来灾难性风险。该上市标志全AI企业首次公开募资，对资本市场和监管议题具有示范效应。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/crpdgd723x2zo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/10 周二 收盘：标普500 ETF（SPY）-0.37%，纳指100 ETF（QQQ）-0.68%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 19.5；70% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：CHTR +10.6%、TTWO +8.3%、CVS +4.4%；跌幅最大：SKYD -7.6%、MRNA -6.8%、FSLR -5.5%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。通信服务、医疗保健 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：FNV（盘后）、VYLR（盘后）、TECH（盘前）",
+     "d": "按市值挑出最大的几家，共 3 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：CPI 通胀数据（11/11 周三）",
+     "d": "Core CPI 实际 0.3%（预期 0.2%，前值 0.3%）；Core CPI Index 实际 339.90（预期 —，前值 338.90）。高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/11 周三 04:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/13 周五 08:30：首次申领失业金人数（重要性：低）",
+     "d": "每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/13 周五 10:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "西班牙全国罢工 抗议住房危机",
+     "d": "数百万西班牙工人因房租飙升发起14年来首场全国性罢工，重点行业停工率高达90%，航班亦受影响。此举凸显社会对住房成本的强烈不满，可能影响即将举行的全国大选。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/11/nx-s1-6037314/spain-general-strike"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwvg25nypmrvo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美官员将赴莫斯科与普京会面 继续乌克兰谈判",
+     "d": "在阿布扎比斡旋后，美国特使库什纳等将于11月12日访俄与普京会谈，重点讨论囚犯交换及欧洲在谈判中的角色。此举显示美方推动外交解决冲突的意向，但核心分歧仍未解决。",
+     "src": [
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/russia-ukraine-abu-dhabi-talks-us-putin-6543276"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/ck792we7zrz4o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "乌克兰和平谈判首日取得建设性进展",
+     "d": "在阿布扎比举行的美俄乌三边会谈首日取得“建设性和相当实质性”成果，涉及战俘交换和战后安全架构议题，虽未实现突破但显示双方在某些核心问题上出现小幅灵活。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cqpvgvrpjvv8o?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/11/ukraine-talks-in-abu-dhabi-bring-progress-on-prisoners-but-not-on-peace"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "Claude创始公司准备1.3万亿美元IPO",
+  "d": "在AI监管与安全争议中，Anthropic的高估值发行可能重塑资本市场对生成式AI公司的估值基准，值得重点关注。"
+ },
+ "week": []
+}
