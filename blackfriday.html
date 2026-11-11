@@ -40,6 +40,7 @@ h2{font-size:16.5px;margin:22px 0 10px}
 .tip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 13px;box-shadow:var(--shadow);margin-bottom:8px;font-size:14px}
 .tip b{color:var(--accent)}
 .note{font-size:12.5px;color:var(--faint);margin-top:16px}
+@media (max-width:560px){.tl{flex-direction:column}.tl div{min-width:0}.cd .big{font-size:23px}}
 </style>
 </head>
 <body>
@@ -49,9 +50,9 @@ h2{font-size:16.5px;margin:22px 0 10px}
 <div class="cd"><div class="big" id="cdBig">黑色星期五 · 11 月 27 日</div><div class="sm" id="cdSm">正在算倒计时…</div></div>
 
 <div class="tl">
-<div><div class="d">11/26 周四</div><div class="n">感恩节，当晚线上先开抢</div></div>
+<div><div class="d">11/26 周四</div><div class="n">感恩节，当晚线上开抢</div></div>
 <div class="hot"><div class="d">11/27 周五</div><div class="n">黑色星期五，正日子</div></div>
-<div><div class="d">11/30 周一</div><div class="n">网络星期一，数码类常有第二波</div></div>
+<div><div class="d">11/30 周一</div><div class="n">网络星期一，数码第二波</div></div>
 </div>
 
 <h2>🏬 商家入口</h2>
@@ -63,7 +64,7 @@ h2{font-size:16.5px;margin:22px 0 10px}
 <a class="shop" href="https://www.costco.com/" target="_blank" rel="noopener"><div class="t">Costco</div><div class="d">会员店大件，留意优惠券册</div><span class="go">去看看 →</span></a>
 <a class="shop" href="https://www.homedepot.com/c/Savings_Center" target="_blank" rel="noopener"><div class="t">Home Depot</div><div class="d">工具、家电特价中心</div><span class="go">去看看 →</span></a>
 <a class="shop" href="https://www.lowes.com/c/Deals" target="_blank" rel="noopener"><div class="t">Lowe's</div><div class="d">工具和家居 Deals</div><span class="go">去看看 →</span></a>
-<a class="shop" href="https://www.ebay.com/deals" target="_blank" rel="noopener"><div class="t">eBay</div><div class="d">官方 Deals，官翻机常有好价</div><span class="go">去看看 →</span></a>
+<a class="shop" href="https://www.ebay.com/deals" target="_blank" rel="noopener"><div class="t">eBay</div><div class="d">官翻机常有好价</div><span class="go">去看看 →</span></a>
 </div>
 
 <h2>🎯 黑五最值得盯的品类</h2>
@@ -99,7 +100,7 @@ h2{font-size:16.5px;margin:22px 0 10px}
     else { big.textContent = '今年黑五结束了'; sm.textContent = '明年 11 月再见，平时特价看打折雷达。'; return; }
     var ms = t - now, d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4), s = Math.floor(ms % 6e4 / 1e3);
     big.textContent = label + ' ' + d + ' 天 ' + pad(h) + ':' + pad(m) + ':' + pad(s);
-    sm.textContent = '感恩节 11/26 晚线上先开抢 · 黑五 11/27 · 网一 11/30（均为 2026 年）';
+    sm.textContent = '11/26 晚开抢 · 11/27 黑五 · 11/30 网一';
   }
   tick(); setInterval(tick, 1000);
 })();
