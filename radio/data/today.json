@@ -1,23 +1,23 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-10T17:55:03Z",
- "date": "2026-11-10",
+ "generated": "2026-11-11T17:56:49Z",
+ "date": "2026-11-11",
  "engine": "edge",
- "total": 525.1,
- "short": 302.1,
+ "total": 507.3,
+ "short": 306.4,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611100953",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611110955",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月10日 星期二",
-   "dur": 8.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611100953",
+   "sub": "11月11日 星期三",
+   "dur": 11.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "这里是你的通勤电台。今天是11月10日，星期二，方向盘上的下一首可以随时跳段。"
+     "t": "一周过半了。今天是11月11日，星期三。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
     }
    ]
   },
@@ -26,11 +26,11 @@
    "title": "🌤️ 天气",
    "sub": "Upland 晴 84°/57°F",
    "dur": 29.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611100953",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏57度，14摄氏度，体感53度。傍晚5点下班大约华氏75度，24摄氏度，体感69度。白天最高84度，约29摄氏度；最低57度。基本不会下雨。白天空气质量良好，指数最高47。今天日落时间是傍晚4点49分。"
+     "t": "Upland今天晴。早上7点出门大约华氏57度，14摄氏度，体感53度。傍晚5点下班大约华氏74度，23摄氏度，体感67度。白天最高84度，约29摄氏度；最低57度。基本不会下雨。白天空气质量良好，指数最高46。今天日落时间是傍晚4点49分。"
     }
    ]
   },
@@ -38,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 29.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611100953",
+   "dur": 30.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月9日收盘。标普500 ETF 上涨2.4%，纳指100 ETF 上涨3.5%。恐慌指数VIX 19.9，正常水平。标普成分股里，70%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股11月10日收盘。标普500 ETF 下跌0.4%，纳指100 ETF 下跌0.7%。恐慌指数VIX 19.5，正常水平。标普成分股里，70%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "16 个候选",
-   "dur": 63.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611100953",
+   "sub": "23 个候选",
+   "dur": 62.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天16个候选，评分最高的是Best Buy，代码 B B Y。不想听细节可以按下一首。"
+     "t": "股票池今天23个候选，评分最高的是Workday，代码 W D A Y。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了500只股票，其中回踩金坑6个，血筹码5个，RSI2 超跌反弹4个，强势新高1个。评分最高的三个是："
+     "t": "细节：一共扫描了500只股票，其中血筹码12个，回踩金坑9个，RSI2 超跌反弹2个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Best Buy，代码 B B Y，强势新高信号，收盘价106.28美元，止损参考98.32，注意近期有财报。"
+     "t": "第1，Workday，代码 W D A Y，RSI2 超跌反弹信号，收盘价188.89美元，止损参考169.78。"
     },
     {
      "lang": "zh",
-     "t": "第2，Chevron，代码 C V X，RSI2 超跌反弹信号，收盘价210.78美元，止损参考197.49。"
+     "t": "第2，ExxonMobil，代码 X O M，RSI2 超跌反弹信号，收盘价164.47美元，止损参考152.88。"
     },
     {
      "lang": "zh",
-     "t": "第3，Workday，代码 W D A Y，RSI2 超跌反弹信号，收盘价190.21美元，止损参考170.67。"
+     "t": "第3，Salesforce，代码 C R M，血筹码信号，收盘价213.48美元，止损参考196.40。"
     },
     {
      "lang": "zh",
@@ -83,34 +83,38 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "3 件大事",
-   "dur": 37.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611100953",
+   "sub": "4 件大事",
+   "dur": 43.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有2家大公司发财报。"
+     "t": "今天，重要数据有：美东08:30公布CPI 通胀数据。"
     },
     {
      "lang": "zh",
-     "t": "Petroleo Brasileiro S.A.- Petrobras，代码 P B R，盘后发财报。期权定价波动正负5.0%。标签：利好出尽型、财报日常跌。"
+     "t": "明天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Petroleo Brasileiro S.A.- Petrobras，代码 P B R - A，盘后发财报。期权定价波动正负11.0%。标签：利好出尽型。"
+     "t": "Cisco Systems，代码 C S C O，盘后发财报。期权定价波动正负8.8%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "明天，重要数据有：美东08:30公布CPI 通胀数据。"
+     "t": "Applied Materials，代码 A M A T，盘后发财报。期权定价波动正负8.1%。标签：利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "Brookfield，代码 B N，盘前发财报。期权定价波动正负5.4%。标签：样本不足。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · The Guardian",
-   "dur": 94.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611100953",
+   "sub": "The Guardian · BBC · Al Jazeera",
+   "dur": 94.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
@@ -118,48 +122,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，科学，难度B2。大意是：House martin人造巢穴计划将扩大规模。"
+     "t": "第1条，来自The Guardian，国际，难度B2。大意是：一民族党维多利亚州候选人就针对女同性恋、印度人和朱莉娅·吉拉德的一系列冒犯性言论道歉。"
     },
     {
      "lang": "en",
-     "t": "House martin artificial nests scheme set to expand"
+     "t": "One Nation Victoria candidate apologises for slew of offensive comments about lesbians, Indians and Julia Gillard"
     },
     {
      "lang": "en",
-     "t": "The artificial nests are more robust than the endangered migratory birds' own mud creations."
+     "t": "Exclusive: Chris Moore, running for the party in Greenvale, made derogatory social media comments between 2010 and 2012 Get our daily political email, free app or daily news podcast A One Nation candidate in Victoria has apologised for a se"
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：Luka Doncic的32分帮助湖人队击败老鹰队；温巴尼亚马刺队。"
+     "t": "第2条，来自BBC，科学，难度B2。大意是：艺术家创作出世界上最大的土壤画。"
     },
     {
      "lang": "en",
-     "t": "Luka Doncic’s 32 points help Lakers beat Hawks; Wembanyama powers Spurs"
+     "t": "Artist creates world's biggest soil painting"
     },
     {
      "lang": "en",
-     "t": "Doncic has been averaging 40 points per game this season with the Lakers on top of the NBA Western Conference."
+     "t": "Phil Lambert used four types of soil, including some collected from his mother, to create his work."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自The Guardian，国际，难度B2。大意是：谋杀审判听说， Beau Lamarre-Condon承认在Jesse Baird不在家的时候进入他的房子吃复活节彩蛋。"
+     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：南非游泳运动员塔佳娜·史密斯改投荷兰国籍。"
     },
     {
      "lang": "en",
-     "t": "Beau Lamarre-Condon admits entering Jesse Baird’s house when he wasn’t home and eating Easter egg, murder trial hears"
+     "t": "South African swimmer Tatjana Smith switches allegiance to Netherlands"
     },
     {
      "lang": "en",
-     "t": "Former police officer tells jury he joked about being ‘white girl crazy’ with friends as lawyer questions him about start of relationship with TV presenter Get our breaking news email, free app or daily news podcast Beau Lamarre-Condon has "
+     "t": "Double Olympic gold medallist cites 'financial and practical challenges' of swimming."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "headache · la escalera",
-   "dur": 32.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611100953",
+   "sub": "skill · la silla",
+   "dur": 29.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
@@ -167,15 +171,15 @@
     },
     {
      "lang": "en",
-     "t": "headache"
+     "t": "skill"
     },
     {
      "lang": "zh",
-     "t": "意思是：头痛。拼写是："
+     "t": "意思是：技能。拼写是："
     },
     {
      "lang": "en",
-     "t": "h, e, a, d, a, c, h, e"
+     "t": "s, k, i, l, l"
     },
     {
      "lang": "zh",
@@ -183,7 +187,7 @@
     },
     {
      "lang": "en",
-     "t": "headache"
+     "t": "skill"
     },
     {
      "lang": "zh",
@@ -191,48 +195,44 @@
     },
     {
      "lang": "es",
-     "t": "la escalera"
+     "t": "la silla"
     },
     {
      "lang": "zh",
-     "t": "意思是：楼梯，梯子。跟着读一遍。"
+     "t": "意思是：椅子。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la escalera"
+     "t": "la silla"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "习语",
-   "dur": 24.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611100953",
+   "sub": "名言",
+   "dur": 28.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一个地道习语。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "move the goalposts"
+     "t": "One secret of success in life is for a man to be ready for his opportunity when it comes."
     },
     {
      "lang": "zh",
-     "t": "意思是：朝令夕改。中途改变规则或标准。"
+     "t": "意思是：成功的秘诀之一，是机会来临时你已经准备好了。这句话出自 Benjamin Disraeli。"
     },
     {
      "lang": "zh",
-     "t": "例句："
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "Every time we finish, the client moves the goalposts."
-    },
-    {
-     "lang": "zh",
-     "t": "每次我们做完，客户就改标准，朝令夕改。"
+     "t": "One secret of success in life is for a man to be ready for his opportunity when it comes."
     }
    ],
    "opt": true
@@ -240,61 +240,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "休息室闲聊",
-   "dur": 66.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611100953",
+   "sub": "给调度打电话",
+   "dur": 70.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：休息室闲聊。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "没干啥，就在家休息。"
+     "t": "这票货今天还走吗？"
     },
     {
      "lang": "en",
-     "t": "Not much, just relaxed at home."
+     "t": "Is this load still on for today?"
     },
     {
      "lang": "en",
-     "t": "Not much, just relaxed at home."
+     "t": "Is this load still on for today?"
     },
     {
      "lang": "zh",
-     "t": "昨晚的比赛你看了吗？"
+     "t": "我需要这票货的提货号。"
     },
     {
      "lang": "en",
-     "t": "Did you catch the game last night?"
+     "t": "I need the pickup number for this load."
     },
     {
      "lang": "en",
-     "t": "Did you catch the game last night?"
+     "t": "I need the pickup number for this load."
     },
     {
      "lang": "zh",
-     "t": "你觉得谁会赢？"
+     "t": "预约改到明天早上了。"
     },
     {
      "lang": "en",
-     "t": "Who do you think is going to win?"
+     "t": "The appointment was moved to tomorrow morning."
     },
     {
      "lang": "en",
-     "t": "Who do you think is going to win?"
+     "t": "The appointment was moved to tomorrow morning."
     },
     {
      "lang": "zh",
-     "t": "今天好热。"
+     "t": "能把详情发短信给我吗？"
     },
     {
      "lang": "en",
-     "t": "It's so hot today."
+     "t": "Can you text me the details?"
     },
     {
      "lang": "en",
-     "t": "It's so hot today."
+     "t": "Can you text me the details?"
     },
     {
      "lang": "zh",
@@ -306,13 +306,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "铸铁锅开锅，其实是在烤一层「漆」",
-   "dur": 26.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611100953",
+   "sub": "为什么司机很少晕车",
+   "dur": 25.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：铸铁锅开锅，其实是在烤一层「漆」。油变成不粘的保护层。做法：薄薄一层油加热到冒烟以上，会氧化聚合成又硬又滑的薄膜，牢牢附在铁上；油要抹得很薄，擦到看着几乎没油；抹多了会发黏；用完趁热洗、马上擦干，小火烘干后再抹一层薄油；别泡在水里。"
+     "t": "今日一招：为什么司机很少晕车。晕车的原理和缓解办法。做法：内耳感觉车在晃，眼睛盯着手机却觉得没动，大脑收到矛盾的信号就会恶心；司机能预判转弯和刹车，信号对得上，所以很少晕；坐前排，看远处的路和地平线，别在车上看手机或看书。"
     }
    ],
    "opt": true
@@ -320,13 +320,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1924 · 1944 · 2014",
-   "dur": 16.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611100953",
+   "sub": "1889 · 1911 · 2008",
+   "dur": 23.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1924年，孙中山发表《北上宣言》。1944年，中国抗日战争：豫湘桂会战中，桂林、柳州失守。2014年，《火影忍者》漫画完结。"
+     "t": "历史上的今天。1889年，美国承认华盛顿州为第42州。1911年，辛亥革命中，福建省军政府成立，宣布脱离清朝控制。2008年，穆蒙·阿卜杜勒·盖约姆执政30年后，穆罕默德·纳希德继任马尔代夫总统。"
     }
    ],
    "opt": true
@@ -334,21 +334,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "水龙吟·次韵章质夫杨花词",
-   "dur": 88.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611100953",
+   "sub": "望江南·超然台作",
+   "dur": 53.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：水龙吟·次韵章质夫杨花词。写于1081年，他44岁，在黄州。"
+     "t": "读一首苏轼：望江南·超然台作。写于1076年，他39岁，在密州超然台。"
     },
     {
      "lang": "zh",
-     "t": "似花还似非花，也无人惜从教坠。抛家傍路，思量却是，无情有思。萦损柔肠，困酣娇眼，欲开还闭。梦随风万里，寻郎去处，又还被、莺呼起。不恨此花飞尽，恨西园、落红难缀。晓来雨过，遗踪何在？一池萍碎。春色三分，二分尘土，一分流水。细看来，不是杨花，点点是离人泪。"
+     "t": "春未老，风细柳斜斜。试上超然台上看，半壕春水一城花。烟雨暗千家。寒食后，酒醒却咨嗟。休对故人思故国，且将新火试新茶。诗酒趁年华。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：它像花又不像花，也没人怜惜，任凭它飘落。离开枝头，落在路旁，细细想来，它看似无情，其实满怀情思。它像一个被愁思缠绕伤了柔肠的女子，困倦的媚眼想睁开又闭上。梦中随风飘到万里之外，去寻找情郎的去处，却又被黄莺的啼声唤醒。我不遗憾杨花飞尽，只遗憾西园满地落花再也不能回到枝头。清晨一场雨过后，杨花的踪迹在哪里？只剩一池细碎的浮萍。如果春色有三分，两分化作了尘土，一分随了流水。仔细看来，那不是杨花，点点都是离别之人的眼泪。"
+     "t": "白话意思是：春天还没有过去，微风轻拂，柳枝斜斜地飘动。登上超然台眺望，半满的护城河里荡着春水，满城都是鲜花，蒙蒙烟雨笼罩着千家万户。寒食节过后，酒醒了，反倒叹起气来。不要在老朋友面前思念故乡了，姑且用新点的火来煮新茶，趁着大好年华，作诗饮酒吧。"
     }
    ],
    "opt": true
@@ -357,12 +357,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611100953",
+   "dur": 5.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611110955",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
     }
    ]
   }
