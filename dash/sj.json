@@ -1,56 +1,71 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-12T05:53:30.426548Z",
+ "eventsUpdatedAt": "2026-11-12T11:53:35.508679Z",
  "ranges": {
-  "today": "2026-11-11",
+  "today": "2026-11-12",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "San Jose Sharks vs. Pittsburgh Penguins",
-   "date": "2026-11-11",
+   "title": "Tauren Wells: Air1 Worship Now Tour",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周四",
    "startTime": "7:00 PM",
    "endTime": null,
-   "venue": "SAP Center at San Jose, 525 W Santa Clara St",
+   "venue": "Cathedral of Faith, 2315 Canoas Garden Ave",
    "city": "San Jose",
-   "category": "Sports",
-   "price": null,
-   "note": "The Sharks host the Pittsburgh Penguins at SAP Center.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?date=thismonth"
+   "category": "Music",
+   "price": "Sold out",
+   "note": "Tauren Wells brings the Air1 Worship Now Tour to Cathedral of Faith with Seph Schlueter, Gateway Worship and Roosevelt Stewart; sold out.",
+   "sourceUrl": "https://tprlive.co/products/tauren-wells-air1-worship-now-tour-san-jose-ca-november-12-2026"
   },
   {
    "bucket": "today",
-   "title": "Open Mic at the San Jose Improv",
-   "date": "2026-11-11",
+   "title": "Mo Amer",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
-   "startTime": "7:30 PM",
+   "dayLabel": "周四",
+   "startTime": "4:00 PM",
    "endTime": null,
-   "venue": "San Jose Improv",
+   "venue": "San Jose Improv, 62 S 2nd St",
    "city": "San Jose",
    "category": "Comedy",
    "price": null,
-   "note": "Weekly open mic night at the San Jose Improv.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?date=thismonth"
+   "note": "Comedian Mo Amer performs an early show at San Jose Improv.",
+   "sourceUrl": "https://allevents.in/san-jos%C3%A9/comedy"
   },
   {
    "bucket": "today",
-   "title": "Performing Arts Friends and Family Show",
-   "date": "2026-11-11",
+   "title": "Rohan Joshi: Getting There",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
-   "startTime": "7:00 PM",
-   "endTime": "8:00 PM",
-   "venue": "Leigh Bowl, Leigh High School, 5210 Leigh Ave",
+   "dayLabel": "周四",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "San Jose Improv, 62 S 2nd St",
    "city": "San Jose",
-   "category": "Arts",
+   "category": "Comedy",
    "price": null,
-   "note": "Leigh High School performing arts friends and family showcase.",
-   "sourceUrl": "https://leigh.cuhsd.org/apps/events/2026/11/11/51927684/?id=0"
+   "note": "Stand-up comedy with Rohan Joshi at San Jose Improv.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?page=1"
+  },
+  {
+   "bucket": "today",
+   "title": "Joe Machi",
+   "date": "2026-11-12",
+   "day": "today",
+   "dayLabel": "周四",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "Rooster T. Feathers Comedy Club, 157 W El Camino Real, Sunnyvale",
+   "city": "San Jose",
+   "category": "Comedy",
+   "price": "From $39",
+   "note": "Stand-up comedy with Joe Machi at Rooster T. Feathers in nearby Sunnyvale.",
+   "sourceUrl": "https://sanjose.events/comedy/joe-machi/"
   }
  ],
  "events": [
@@ -177,67 +192,67 @@
  ],
  "weather": {
   "current": {
-   "temp": 60,
-   "feelsLike": 57,
-   "high": 76,
-   "low": 47,
+   "temp": 51,
+   "feelsLike": 48,
+   "high": 73,
+   "low": 50,
    "description": "Clear",
-   "precipChance": 0,
-   "humidity": 55,
+   "precipChance": 3,
+   "humidity": 73,
    "wind": "2 mph",
    "uvIndex": 4,
-   "airQualityIndex": 56,
+   "airQualityIndex": 57,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-11",
-   "high": 76,
-   "low": 47,
-   "precipChance": 0,
-   "summary": "Overcast. Highs around 76 and lows around 47."
+   "date": "2026-11-12",
+   "high": 73,
+   "low": 50,
+   "precipChance": 3,
+   "summary": "Overcast. Highs around 73 and lows around 50."
   },
   "daily": [
    {
-    "date": "2026-11-11",
-    "high": 76,
-    "low": 47,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-12",
-    "high": 74,
+    "high": 73,
     "low": 50,
     "precipChance": 3
    },
    {
     "date": "2026-11-13",
-    "high": 70,
-    "low": 54,
-    "precipChance": 90
+    "high": 68,
+    "low": 52,
+    "precipChance": 88
    },
    {
     "date": "2026-11-14",
     "high": 65,
     "low": 52,
-    "precipChance": 26
+    "precipChance": 25
    },
    {
     "date": "2026-11-15",
-    "high": 66,
+    "high": 68,
     "low": 54,
-    "precipChance": 71
+    "precipChance": 70
    },
    {
     "date": "2026-11-16",
-    "high": 58,
-    "low": 52,
-    "precipChance": 71
+    "high": 57,
+    "low": 53,
+    "precipChance": 70
    },
    {
     "date": "2026-11-17",
-    "high": 64,
-    "low": 50,
-    "precipChance": 14
+    "high": 62,
+    "low": 52,
+    "precipChance": 15
+   },
+   {
+    "date": "2026-11-18",
+    "high": 56,
+    "low": 49,
+    "precipChance": 72
    }
   ],
   "weekend": [
@@ -246,23 +261,23 @@
     "day": "sat",
     "high": 65,
     "low": 52,
-    "precipChance": 26,
+    "precipChance": 25,
     "summary": "Light drizzle. Highs around 65 and lows around 52.",
-    "wind": "4 mph",
+    "wind": "5 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 66,
+    "high": 68,
     "low": 54,
-    "precipChance": 71,
-    "summary": "Overcast. Highs around 66 and lows around 54.",
+    "precipChance": 70,
+    "summary": "Light drizzle. Highs around 68 and lows around 54.",
     "wind": "6 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-12T05:52:40.492016Z",
+  "fetchedAt": "2026-11-12T11:52:31.011672Z",
   "location": "San Jose, CA"
  }
 }

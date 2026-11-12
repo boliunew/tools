@@ -1,71 +1,86 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-12T05:53:30.423172Z",
+ "eventsUpdatedAt": "2026-11-12T11:53:35.507416Z",
  "ranges": {
-  "today": "2026-11-11",
+  "today": "2026-11-12",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Veterans Day & Remembrance Day Choral Music & Evensong",
-   "date": "2026-11-11",
+   "title": "Stanley Clarke",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周四",
    "startTime": "7:30 PM",
    "endTime": null,
-   "venue": "St Thomas Anglican Church, 2725 Sacramento St",
+   "venue": "SFJAZZ Center - Miner Auditorium, 201 Franklin St",
    "city": "San Francisco",
    "category": "Music",
-   "price": "Free",
-   "note": "Evening of choral music and remembrance honoring those who served, with hot chocolate and port after the music.",
-   "sourceUrl": "https://sf.funcheap.com/veterans-day-remembrance-day-choral-music-evensong-pacific-heights-sf/"
+   "price": null,
+   "note": "Jazz bass legend Stanley Clarke plays SFJAZZ Center on Thursday night.",
+   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/concerts/"
   },
   {
    "bucket": "today",
-   "title": "Jake Xerxes Fussell",
-   "date": "2026-11-11",
+   "title": "Band of Horses",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周四",
    "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "Great American Music Hall, 859 O'Farrell St",
+   "venue": "The Regency Ballroom, 1300 Van Ness Ave",
    "city": "San Francisco",
    "category": "Music",
-   "price": "$33.31",
-   "note": "Jake Xerxes Fussell plays Great American Music Hall with Dougie Poole; doors 7 PM.",
-   "sourceUrl": "https://wl.eventim.us/event/Jake-Xerxes-Fussell/689401?afflky=GreatAmericanMusicHall"
+   "price": "From $61",
+   "note": "Band of Horses play The Regency Ballroom on Thursday night.",
+   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/concerts/"
   },
   {
    "bucket": "today",
-   "title": "Buzzcocks: Celebrating 50 Years",
-   "date": "2026-11-11",
+   "title": "Ólafur Arnalds",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周四",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "Castro Theatre, 429 Castro St",
+   "city": "San Francisco",
+   "category": "Music",
+   "price": "From $33",
+   "note": "Icelandic composer Ólafur Arnalds performs at the Castro Theatre.",
+   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/concerts/"
+  },
+  {
+   "bucket": "today",
+   "title": "Marc Broussard",
+   "date": "2026-11-12",
+   "day": "today",
+   "dayLabel": "周四",
    "startTime": "8:00 PM",
    "endTime": null,
    "venue": "The Chapel, 777 Valencia St",
    "city": "San Francisco",
    "category": "Music",
    "price": null,
-   "note": "Buzzcocks celebrate 50 years at The Chapel.",
-   "sourceUrl": "https://www.axs.com/events/1546721"
+   "note": "Soul singer Marc Broussard plays The Chapel, with Cristina Vane.",
+   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco/soul"
   },
   {
    "bucket": "today",
-   "title": "USS Hornet Veterans Day 2026",
-   "date": "2026-11-11",
+   "title": "Free HellaFunny Thursday Comedy Night",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
-   "startTime": "10:00 AM",
-   "endTime": null,
-   "venue": "USS Hornet Sea, Air & Space Museum, 707 W Hornet Ave, Alameda",
+   "dayLabel": "周四",
+   "startTime": "7:30 PM",
+   "endTime": "9:00 PM",
+   "venue": "The Function, 1414 Market St",
    "city": "San Francisco",
-   "category": "Community",
-   "price": "$25",
-   "note": "Veterans Day commemoration aboard USS Hornet; main program at 11 AM, afternoon presentation at 1 PM and a flyover.",
-   "sourceUrl": "https://sf.funcheap.com/uss-hornet-veterans-day-2026-alameda/"
+   "category": "Comedy",
+   "price": "Free",
+   "note": "Free Thursday stand-up comedy night in downtown SF.",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/12/"
   }
  ],
  "events": [
@@ -177,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 59,
-   "feelsLike": 58,
-   "high": 73,
+   "temp": 54,
+   "feelsLike": 52,
+   "high": 66,
    "low": 52,
    "description": "Clear",
-   "precipChance": 0,
-   "humidity": 82,
-   "wind": "7 mph",
+   "precipChance": 5,
+   "humidity": 78,
+   "wind": "2 mph",
    "uvIndex": 4,
-   "airQualityIndex": 61,
+   "airQualityIndex": 62,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-11",
-   "high": 73,
+   "date": "2026-11-12",
+   "high": 66,
    "low": 52,
-   "precipChance": 0,
-   "summary": "Foggy. Highs around 73 and lows around 52."
+   "precipChance": 5,
+   "summary": "Overcast. Highs around 66 and lows around 52."
   },
   "daily": [
    {
-    "date": "2026-11-11",
-    "high": 73,
-    "low": 52,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-12",
-    "high": 68,
-    "low": 54,
-    "precipChance": 4
+    "high": 66,
+    "low": 52,
+    "precipChance": 5
    },
    {
     "date": "2026-11-13",
-    "high": 66,
+    "high": 63,
     "low": 55,
     "precipChance": 100
    },
    {
     "date": "2026-11-14",
-    "high": 63,
+    "high": 64,
     "low": 56,
-    "precipChance": 52
+    "precipChance": 44
    },
    {
     "date": "2026-11-15",
-    "high": 63,
-    "low": 56,
-    "precipChance": 72
+    "high": 65,
+    "low": 54,
+    "precipChance": 80
    },
    {
     "date": "2026-11-16",
     "high": 59,
     "low": 54,
-    "precipChance": 68
+    "precipChance": 66
    },
    {
     "date": "2026-11-17",
     "high": 60,
     "low": 53,
-    "precipChance": 20
+    "precipChance": 23
+   },
+   {
+    "date": "2026-11-18",
+    "high": 58,
+    "low": 54,
+    "precipChance": 76
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 63,
+    "high": 64,
     "low": 56,
-    "precipChance": 52,
-    "summary": "Light drizzle. Highs around 63 and lows around 56.",
-    "wind": "8 mph",
+    "precipChance": 44,
+    "summary": "Light drizzle. Highs around 64 and lows around 56.",
+    "wind": "9 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 63,
-    "low": 56,
-    "precipChance": 72,
-    "summary": "Drizzle. Highs around 63 and lows around 56.",
-    "wind": "11 mph",
+    "high": 65,
+    "low": 54,
+    "precipChance": 80,
+    "summary": "Drizzle. Highs around 65 and lows around 54.",
+    "wind": "15 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-12T05:52:36.927130Z",
+  "fetchedAt": "2026-11-12T11:52:28.402099Z",
   "location": "San Francisco, CA"
  }
 }
