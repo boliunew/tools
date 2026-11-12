@@ -1,6 +1,6 @@
 {
  "date": "2026-11-12",
- "generated": "2026-11-12T21:30:29Z",
+ "generated": "2026-11-12T22:27:38Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,19 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "Nvidia临时CEO上任，黄仁勋辞职待定继任",
-     "d": "创始人兼CEO黄仁勋因被指与涉嫌中国间谍的女子有婚外情于本周四辞职，CFO Colette Kress暂任临时CEO。公司正评估内部高管如Malachowsky、Ian Buck以及外部如Tim Cook、Arm CEO Rene Haas等潜在永久继任人选。此事关系到AI芯片龙头的领导稳定性，可能影响行业信心与供应链。",
+     "t": "Nvidia创始人黄仁勋因外遇辞职，股价大跌",
+     "d": "Nvidia联合创始人兼CEO黄仁勋在被曝与一名涉嫌中国间谍的女性及两名员工有外遇后，立即辞去CEO、总裁及董事会席位，财务官Colette Kress 暂任CEO。公司股价开盘跌13%，收盘跌4.3%，市值蒸发约1800亿美元。此事削弱了公司在AI芯片领域的领袖形象，并对其市值及行业信心产生重大冲击。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/12/nvidia-ceo-jensen-huang-resigns"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Nvidia interim CEO Colette Kress 及潜在继任者…",
+     "d": "在黄仁勋辞职后，Nvidia财务官Colette Kress临时接管CEO职务，业内正评估内部和外部候选人，包括联合创始人Chris Malachowsky、工程师Ian Buck以及外部人士如前Apple CEO Tim Cook和Arm CEO Rene Haas等。继任者选择将影响公司在AI芯片技术和全球供应链管理的持续竞争力。",
      "src": [
       {
        "n": "BBC",
@@ -20,8 +31,8 @@
      "full": true
     },
     {
-     "t": "Nvidia董事会审议罢免黄仁勋，股价暴跌8%",
-     "d": "Nvidia董事会本周三召开紧急会议，审议是否因黄仁勋承认与被指为中国间谍的女子关系而罢免其CEO职务。消息公布后，公司股价盘后跌超8%，市值蒸发约6850亿美元。若黄被撤职，将在美中AI竞争关键期留下领导真空。",
+     "t": "Nvidia董事会审议是否免除黄仁勋职务，股价再跌",
+     "d": "Nvidia董事会在黄仁勋承认与涉嫌中国间谍的女性及公司员工的外遇后，召开会议讨论是否将其免职。消息披露后，股价盘后跌超8%，累计市值蒸发约6850亿美元。此举标志着公司治理危机加剧，可能导致AI行业格局重新洗牌。",
      "src": [
       {
        "n": "The Guardian",
@@ -109,22 +120,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "Nvidia CEO Jensen Huang 辞职",
-     "d": "因涉及与疑似中国间谍的关系而引发国家安全担忧，黄仁勋离职。此事可能重塑 AI 芯片市场竞争格局。",
-     "src": [
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/video/20261112-nvidia-ceo-jensen-huang-steps-down"
-      },
-      {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress?traffic_source=rss"
-      }
-     ]
-    },
-    {
-     "t": "以色列在加沙医院空袭致 6 死",
-     "d": "这是自以色列选举后最致命的单次空袭，可能加剧中东紧张局势并影响能源市场。",
+     "t": "以色列空袭加沙医院致6人死亡",
+     "d": "以色列对加沙的空袭击中纳赛尔医院，造成至少六名医护人员死亡，引发国际人道危机关注，可能加剧地区紧张局势。",
      "src": [
       {
        "n": "法国24",
@@ -137,8 +134,22 @@
      ]
     },
     {
-     "t": "习近平重申统一台湾，未提动武",
-     "d": "习近平在纪念孙中山诞辰时重申实现祖国完全统一的历史任务，未提使用武力。台湾当局立即驳回，称不会接受北京统治。此番表态加剧两岸紧张，也为即将在深圳举行的APEC峰会增添地缘政治不确定性。",
+     "t": "Nvidia CEO黄仁勋辞职引发市场震荡",
+     "d": "在全球AI热潮中，Nvidia领袖因安全争议离职，导致公司市值大幅波动，并提醒监管对关键技术供应链的审查力度。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261112-nvidia-ceo-jensen-huang-steps-down"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress?traffic_source=rss"
+      }
+     ]
+    },
+    {
+     "t": "习近平重申统一台湾目标 未提使用武力",
+     "d": "中国国家主席习近平在纪念孙中山诞辰的讲话中再次强调中华民族完全统一是必然历史趋势，但未直接提及使用武力。此言论引发台湾政府强硬回应，强调不接受中国共产党统治。此举提升了两岸关系紧张度，可能影响地区安全与全球供应链。",
      "src": [
       {
        "n": "德国之声",
@@ -155,8 +166,8 @@
   }
  ],
  "pick": {
-  "t": "Nvidia CEO Jensen Huang 辞职",
-  "d": "作为 AI 产业核心公司领袖的突然离任，直接冲击芯片供应、行业信任及相关股票走势，是今日最具深度影响的事件。"
+  "t": "Nvidia CEO黄仁勋辞职引发市场震荡",
+  "d": "作为AI芯片行业的核心人物，黄仁勋的离职直接冲击全球AI产业链信心，短期内对科技股和相关供应链产生显著影响。"
  },
  "week": []
 }
