@@ -1,6 +1,6 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-11T23:53:04.608722Z",
+ "eventsUpdatedAt": "2026-11-12T05:53:30.430611Z",
  "ranges": {
   "today": "2026-11-11",
   "sat": "2026-11-14",
@@ -192,16 +192,16 @@
  ],
  "weather": {
   "current": {
-   "temp": 80,
-   "feelsLike": 78,
+   "temp": 64,
+   "feelsLike": 62,
    "high": 87,
    "low": 58,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 45,
-   "wind": "8 mph",
+   "humidity": 60,
+   "wind": "5 mph",
    "uvIndex": 5,
-   "airQualityIndex": 62,
+   "airQualityIndex": 66,
    "airQualityDescription": "Moderate"
   },
   "today": {
@@ -220,39 +220,39 @@
    },
    {
     "date": "2026-11-12",
-    "high": 77,
-    "low": 58,
-    "precipChance": 4
+    "high": 79,
+    "low": 59,
+    "precipChance": 9
    },
    {
     "date": "2026-11-13",
-    "high": 73,
+    "high": 74,
     "low": 61,
-    "precipChance": 75
+    "precipChance": 71
    },
    {
     "date": "2026-11-14",
     "high": 70,
     "low": 65,
-    "precipChance": 75
+    "precipChance": 71
    },
    {
     "date": "2026-11-15",
-    "high": 73,
+    "high": 72,
     "low": 64,
-    "precipChance": 26
+    "precipChance": 25
    },
    {
     "date": "2026-11-16",
     "high": 68,
     "low": 64,
-    "precipChance": 58
+    "precipChance": 54
    },
    {
     "date": "2026-11-17",
-    "high": 66,
+    "high": 68,
     "low": 62,
-    "precipChance": 44
+    "precipChance": 54
    }
   ],
   "weekend": [
@@ -261,23 +261,23 @@
     "day": "sat",
     "high": 70,
     "low": 65,
-    "precipChance": 75,
+    "precipChance": 71,
     "summary": "Light drizzle. Highs around 70 and lows around 65.",
-    "wind": "10 mph",
+    "wind": "8 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 73,
+    "high": 72,
     "low": 64,
-    "precipChance": 26,
-    "summary": "Overcast. Highs around 73 and lows around 64.",
+    "precipChance": 25,
+    "summary": "Clear skies. Highs around 72 and lows around 64.",
     "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-11T23:52:33.844414Z",
+  "fetchedAt": "2026-11-12T05:52:44.069904Z",
   "location": "Los Angeles, CA"
  }
 }

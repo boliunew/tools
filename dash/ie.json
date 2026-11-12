@@ -1,6 +1,6 @@
 {
  "location": "Upland, CA（内陆帝国）",
- "eventsUpdatedAt": "2026-11-11T22:04:03.344Z",
+ "eventsUpdatedAt": "2026-11-12T04:02:00.290Z",
  "ranges": {
   "sat": "2026-11-14",
   "sun": "2026-11-15",
@@ -14,62 +14,46 @@
    "date": "2026-11-11",
    "day": "today",
    "dayLabel": "周三",
-   "endTime": "11:50 AM",
-   "id": 440,
-   "note": "Free ceremony honoring veterans, with a complimentary breakfast served from 9:30 AM.",
+   "endTime": null,
+   "id": 453,
+   "note": "Complimentary breakfast served at 9:30 AM before the ceremony.",
    "price": "Free",
-   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
+   "sourceUrl": "https://www.cityofrc.us/events/veterans-day-ceremony",
    "startTime": "10:50 AM",
-   "title": "Rancho Cucamonga Veterans Day Ceremony",
-   "venue": "Central Park"
+   "title": "Veterans Day Ceremony",
+   "venue": "Freedom Courtyard at Central Park"
   },
   {
    "bucket": "today",
-   "category": "Community",
-   "city": "Claremont",
+   "category": "Film",
+   "city": "Pomona",
    "date": "2026-11-11",
    "day": "today",
    "dayLabel": "周三",
    "endTime": null,
-   "id": 441,
-   "note": "Annual ceremony with American Legion Post 78 and a keynote by Lt. Col. Cameron Turner.",
-   "price": "Free",
-   "sourceUrl": "https://claremontcourier.com/latest-news/annual-veterans-day-ceremony-is-november-11-90955/",
-   "startTime": "11:00 AM",
-   "title": "Claremont Veterans Day Ceremony",
-   "venue": "Memorial Park"
+   "id": 455,
+   "note": "Live organ accompaniment by Greg Rister; root beer floats at 6:30 PM, free for age 7 and younger.",
+   "price": "$20",
+   "sourceUrl": "https://edition.pagesuite.com/tribune/article_popover.aspx?guid=78dcbca4-dcaf-4852-a955-c7979d2eea8a",
+   "startTime": "7:15 PM",
+   "title": "Silent Movie Night: “3 Bad Men” (1926)",
+   "venue": "Pilgrim Congregational Church, 600 N. Garey Ave."
   },
   {
    "bucket": "today",
-   "category": "Community",
-   "city": "La Verne",
+   "category": "Music",
+   "city": "Ontario",
    "date": "2026-11-11",
    "day": "today",
    "dayLabel": "周三",
    "endTime": null,
-   "id": 442,
-   "note": "Ceremony honoring veterans and former service members at Veterans Hall, 1550 Bonita Ave.",
+   "id": 454,
+   "note": "Free Veterans Day concert by the Ontario Chaffey Community Show Band.",
    "price": "Free",
-   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-6-13-2026-90934/",
-   "startTime": "11:00 AM",
-   "title": "La Verne Veterans Day Ceremony",
-   "venue": "Veterans Hall"
-  },
-  {
-   "bucket": "today",
-   "category": "Family",
-   "city": "Upland",
-   "date": "2026-11-11",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": "4:00 PM",
-   "id": 443,
-   "note": "Free drop-in kids' craft session at the library.",
-   "price": "Free",
-   "sourceUrl": "https://upland.macaronikid.com/events?yodelEventId=6aefb0753a3a8c04b39c2574&yodelOrgLastName=Upland-Claremont-La-Verne&yodelEventName=-Creation-Station-Upland-Library",
-   "startTime": "3:00 PM",
-   "title": "Creation Station @ Upland Library",
-   "venue": "Upland Public Library"
+   "sourceUrl": "https://edition.pagesuite.com/tribune/article_popover.aspx?guid=78dcbca4-dcaf-4852-a955-c7979d2eea8a",
+   "startTime": "7:30 PM",
+   "title": "Ontario Chaffey Community Show Band: “America’s Heroes: Celebrating Our Veterans”",
+   "venue": "Gardiner W. Spring Auditorium, Chaffey High School, 1245 N. Euclid Ave."
   }
  ],
  "events": [
@@ -81,13 +65,13 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "4:00 PM",
-   "id": 445,
-   "note": "Mexican folk artists sell pottery, alebrijes, textiles and more, with demos and free block printing.",
+   "id": 457,
+   "note": "One-of-a-kind Mexican folk art, artist demonstrations and tours of the historic Maloof home.",
    "price": "Free",
-   "sourceUrl": "https://www.malooffoundation.org/workshops-and-events/mexican-folk-art-weekend-2026-day-1",
+   "sourceUrl": "https://rccaaf.org/event/mexican-folk-art-weekend-2026/2026-11-14/",
    "startTime": "11:00 AM",
    "title": "24th Annual Mexican Folk Art Weekend",
-   "venue": "Sam and Alfreda Maloof Foundation"
+   "venue": "Sam and Alfreda Maloof Foundation for Arts and Craft, 5131 Carnelian St."
   },
   {
    "bucket": "weekend",
@@ -96,30 +80,30 @@
    "date": "2026-11-14",
    "day": "sat",
    "dayLabel": "周六",
-   "endTime": null,
-   "id": 446,
-   "note": "Beer flight available for $20 at this downtown Upland tasting event.",
-   "price": "Free",
-   "sourceUrl": "https://allevents.in/upland/this-weekend",
+   "endTime": "5:00 PM",
+   "id": 458,
+   "note": "Post-ride beer garden and vendor village with food, drinks and music.",
+   "price": null,
+   "sourceUrl": "https://www.tourdefoothills.com/",
    "startTime": "12:00 PM",
    "title": "Tour de Brews",
-   "venue": "201 E A St"
+   "venue": "Historic Downtown Upland"
   },
   {
    "bucket": "weekend",
    "category": "Music",
-   "city": "Claremont",
+   "city": "Rancho Cucamonga",
    "date": "2026-11-14",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "4:00 PM",
-   "id": 447,
-   "note": "Free senior guitar recital in Pomona College's fall concert series.",
-   "price": "Free",
-   "sourceUrl": "https://claremont.edu/claremont-events/category/live-performance/list/?hide_subsequent_recurrences=1",
-   "startTime": "3:00 PM",
-   "title": "Senior Recital: Matthew Cheong, guitar",
-   "venue": "Pomona College"
+   "id": 459,
+   "note": "BeckOnStage revue of Broadway hits from South Pacific to Hamilton.",
+   "price": "$28–$72",
+   "sourceUrl": "https://rccaaf.org/event/the-best-of-broadway/",
+   "startTime": "2:00 PM",
+   "title": "The Best of Broadway",
+   "venue": "Lewis Family Playhouse, 12505 Cultural Center Dr."
   },
   {
    "bucket": "weekend",
@@ -129,29 +113,13 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "id": 444,
-   "note": "Annual charity bike ride starting in downtown Upland; registration via BikeReg.",
+   "id": 456,
+   "note": "Veteran-focused ride with 12–100 mile routes; veterans and active military ride free.",
    "price": null,
    "sourceUrl": "https://allevents.in/upland/this-weekend",
    "startTime": "6:00 AM",
    "title": "Tour de Foothills",
-   "venue": "217 E A St"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Music",
-   "city": "Rancho Cucamonga",
-   "date": "2026-11-14",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": null,
-   "id": 448,
-   "note": "Live rock show at the Rancho Cucamonga food hall.",
-   "price": null,
-   "sourceUrl": "https://allevents.in/rancho-cucamonga/festivals",
-   "startTime": "7:00 PM",
-   "title": "The Motherscratchers Rock Haven City Market",
-   "venue": "Haven City Market"
+   "venue": "217 E A Street, Downtown Upland"
   },
   {
    "bucket": "weekend",
@@ -161,13 +129,13 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "id": 449,
-   "note": "30th annual Southern California a cappella showcase hosted by the Claremont Shades.",
+   "id": 460,
+   "note": "30th annual a cappella showcase with groups from the Claremont Colleges and beyond.",
    "price": null,
    "sourceUrl": "https://www.axs.com/venues/101614/bridges-auditorium-claremont-tickets",
    "startTime": "7:00 PM",
    "title": "SCAMFest 2026",
-   "venue": "Bridges Auditorium"
+   "venue": "Bridges Auditorium, Pomona College"
   },
   {
    "bucket": "weekend",
@@ -177,13 +145,13 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "4:00 PM",
-   "id": 450,
-   "note": "Second day of the folk art weekend, opening an hour earlier than Saturday.",
+   "id": 462,
+   "note": "One-of-a-kind Mexican folk art, artist demonstrations and tours of the historic Maloof home.",
    "price": "Free",
-   "sourceUrl": "https://www.malooffoundation.org/workshops-and-events/mexican-folk-art-weekend-2026-day-1",
+   "sourceUrl": "https://rccaaf.org/event/mexican-folk-art-weekend-2026/2026-11-14/",
    "startTime": "10:00 AM",
-   "title": "24th Annual Mexican Folk Art Weekend (Day 2)",
-   "venue": "Sam and Alfreda Maloof Foundation"
+   "title": "24th Annual Mexican Folk Art Weekend",
+   "venue": "Sam and Alfreda Maloof Foundation for Arts and Craft, 5131 Carnelian St."
   },
   {
    "bucket": "weekend",
@@ -193,13 +161,13 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "4:00 PM",
-   "id": 451,
-   "note": "Free re-opening party with gallery tours, family clay activities and a jazz band at 1 PM; registration required.",
+   "id": 463,
+   "note": "Free admission with advance registration; tours, clay activities and a jazz band at 1:00 PM.",
    "price": "Free",
    "sourceUrl": "https://rccaaf.org/event/re-opening-celebration-amoca/",
    "startTime": "11:00 AM",
    "title": "Re-Opening Celebration @ AMOCA",
-   "venue": "American Museum of Ceramic Art"
+   "venue": "American Museum of Ceramic Art, 399 N. Garey Ave."
   },
   {
    "bucket": "weekend",
@@ -209,27 +177,43 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "4:15 PM",
-   "id": 452,
-   "note": "Free fall concert, the band's second concert of the weekend.",
+   "id": 464,
+   "note": "Free fall concert in the Pomona College free concert series.",
    "price": "Free",
-   "sourceUrl": "https://claremont.edu/claremont-events/category/live-performance/list/?hide_subsequent_recurrences=1",
+   "sourceUrl": "https://www.pomona.edu/band/current-schedule",
    "startTime": "3:00 PM",
    "title": "Pomona College Band",
-   "venue": "Bridges Auditorium, Pomona College"
+   "venue": "Bridges Hall of Music, Pomona College"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Market",
+   "city": "Claremont",
+   "date": "2026-11-15",
+   "day": "sun",
+   "dayLabel": "周日",
+   "endTime": "1:00 PM",
+   "id": 461,
+   "note": "Weekly Sunday market with fresh produce, handmade goods and food vendors.",
+   "price": "Free",
+   "sourceUrl": "https://metrolinktrains.com/explore/los-angeles-county/claremont-village-farmers-market/",
+   "startTime": "8:00 AM",
+   "title": "Claremont Farmers & Artisans Market",
+   "venue": "Harvard Avenue, Claremont Village"
   }
  ],
  "weather": {
   "current": {
-   "temp": 84,
-   "feelsLike": 84,
+   "temp": 64,
+   "feelsLike": 64,
    "high": null,
    "low": 57,
-   "description": "Sunny",
+   "description": "Clear",
    "precipChance": 0,
-   "humidity": 19,
-   "wind": "6 mph",
+   "humidity": 48,
+   "wind": "3 mph",
    "uvIndex": 0,
-   "airQualityIndex": 31,
+   "airQualityIndex": 46,
    "airQualityDescription": "Good"
   },
   "today": {
@@ -237,7 +221,7 @@
    "high": null,
    "low": 57,
    "precipChance": null,
-   "summary": "Mainly clear. Lows overnight in the upper 50s."
+   "summary": "Clear. Lows overnight in the upper 50s."
   },
   "daily": [
    {
@@ -249,14 +233,14 @@
    {
     "date": "2026-11-12",
     "high": 77,
-    "low": 57,
+    "low": 56,
     "precipChance": 0
    },
    {
     "date": "2026-11-13",
     "high": 64,
-    "low": 54,
-    "precipChance": 60
+    "low": 55,
+    "precipChance": 50
    },
    {
     "date": "2026-11-14",
@@ -266,14 +250,14 @@
    },
    {
     "date": "2026-11-15",
-    "high": 70,
+    "high": 69,
     "low": 54,
     "precipChance": 10
    },
    {
     "date": "2026-11-16",
     "high": 63,
-    "low": 50,
+    "low": 51,
     "precipChance": 80
    },
    {
@@ -290,22 +274,22 @@
     "high": 66,
     "low": 51,
     "precipChance": 20,
-    "summary": "Mix of sun and clouds. Highs in the mid 60s and lows in the low 50s.",
+    "summary": "Partly cloudy. Highs in the mid 60s and lows in the low 50s.",
     "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 70,
+    "high": 69,
     "low": 54,
     "precipChance": 10,
-    "summary": "Mostly sunny. Highs in the low 70s and lows in the mid 50s.",
+    "summary": "More sun than clouds. Highs in the upper 60s and lows in the mid 50s.",
     "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-11T23:52:48.932Z",
+  "fetchedAt": "2026-11-12T05:52:51.698Z",
   "location": "Upland, CA"
  }
 }

@@ -1,6 +1,6 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-11T23:53:04.606636Z",
+ "eventsUpdatedAt": "2026-11-12T05:53:30.426548Z",
  "ranges": {
   "today": "2026-11-11",
   "sat": "2026-11-14",
@@ -177,16 +177,16 @@
  ],
  "weather": {
   "current": {
-   "temp": 72,
-   "feelsLike": 72,
+   "temp": 60,
+   "feelsLike": 57,
    "high": 76,
    "low": 47,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 57,
-   "wind": "5 mph",
+   "humidity": 55,
+   "wind": "2 mph",
    "uvIndex": 4,
-   "airQualityIndex": 53,
+   "airQualityIndex": 56,
    "airQualityDescription": "Moderate"
   },
   "today": {
@@ -205,39 +205,39 @@
    },
    {
     "date": "2026-11-12",
-    "high": 73,
-    "low": 53,
+    "high": 74,
+    "low": 50,
     "precipChance": 3
    },
    {
     "date": "2026-11-13",
-    "high": 64,
-    "low": 50,
-    "precipChance": 97
+    "high": 70,
+    "low": 54,
+    "precipChance": 90
    },
    {
     "date": "2026-11-14",
     "high": 65,
     "low": 52,
-    "precipChance": 27
+    "precipChance": 26
    },
    {
     "date": "2026-11-15",
     "high": 66,
     "low": 54,
-    "precipChance": 75
+    "precipChance": 71
    },
    {
     "date": "2026-11-16",
     "high": 58,
     "low": 52,
-    "precipChance": 75
+    "precipChance": 71
    },
    {
     "date": "2026-11-17",
     "high": 64,
     "low": 50,
-    "precipChance": 26
+    "precipChance": 14
    }
   ],
   "weekend": [
@@ -246,7 +246,7 @@
     "day": "sat",
     "high": 65,
     "low": 52,
-    "precipChance": 27,
+    "precipChance": 26,
     "summary": "Light drizzle. Highs around 65 and lows around 52.",
     "wind": "4 mph",
     "hourly": []
@@ -256,13 +256,13 @@
     "day": "sun",
     "high": 66,
     "low": 54,
-    "precipChance": 75,
+    "precipChance": 71,
     "summary": "Overcast. Highs around 66 and lows around 54.",
     "wind": "6 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-11T23:52:31.109954Z",
+  "fetchedAt": "2026-11-12T05:52:40.492016Z",
   "location": "San Jose, CA"
  }
 }

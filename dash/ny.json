@@ -1,86 +1,86 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-11T23:53:04.611406Z",
+ "eventsUpdatedAt": "2026-11-12T05:53:30.432880Z",
  "ranges": {
-  "today": "2026-11-11",
+  "today": "2026-11-12",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Parade",
-   "city": "New York",
-   "date": "2026-11-11",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": "3:30 PM",
-   "note": "107th NYC Veterans Day Parade, the largest in the country; grand marshal is NASA astronaut Suni Williams. Wreath-laying at Madison Square Park 10:55 AM.",
-   "price": "Free",
-   "sourceUrl": "https://secretnyc.co/nyc-veterans-day-parade-2026/",
-   "startTime": "12:30 PM",
-   "title": "107th NYC Veterans Day Parade",
-   "venue": "Fifth Avenue, 26th St to 48th St, Manhattan"
-  },
-  {
-   "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
-   "endTime": "12:50 PM",
-   "note": "Free half-hour lunchtime organ recital of Bach works at Grace Church, in person or by livestream.",
-   "price": "Free",
-   "sourceUrl": "https://dothisnyc.com/free-concerts-nyc/",
-   "startTime": "12:20 PM",
-   "title": "Bach at Noon with Patrick Allen at Grace Church",
-   "venue": "Grace Church, Greenwich Village, Manhattan"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-11",
-   "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周四",
    "endTime": "2:00 PM",
-   "note": "Free lunchtime jazz concert by singer Georgia Heers in Trinity Church's Jazz at One series.",
+   "note": "Mezzo-soprano, harpsichord, jarana and South Indian frame drum share the stage in Guadalupe Peraza's intercultural early-music project Mexamorphosis.",
    "price": "Free",
    "sourceUrl": "https://dothisnyc.com/free-concerts-nyc/",
-   "startTime": "1:00 PM",
-   "title": "Jazz at One: Georgia Heers",
-   "venue": "Trinity Church, Wall Street, Manhattan"
+   "startTime": "1:15 PM",
+   "title": "MexaMorphosis: Chamber",
+   "venue": "Times Square, Manhattan"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周四",
    "endTime": null,
-   "note": "Sting brings the STING 3.0 Tour to Brooklyn Paramount on Wednesday night.",
+   "note": "Dave Matthews Band plays Madison Square Garden on Thursday night.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city",
-   "startTime": "7:00 PM",
-   "title": "STING 3.0 Tour",
-   "venue": "Brooklyn Paramount, 385 Flatbush Ave Ext, Brooklyn"
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=12",
+   "startTime": "7:30 PM",
+   "title": "Dave Matthews Band",
+   "venue": "Madison Square Garden"
   },
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Sports",
    "city": "New York",
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周四",
    "endTime": null,
-   "note": "Fruit Bats play Webster Hall on Wednesday night.",
+   "note": "Thursday night football: the New York Giants host the Washington Commanders at MetLife Stadium.",
    "price": null,
-   "sourceUrl": "https://www.gigista.com/town/manhattan/this-month/",
-   "startTime": "7:00 PM",
-   "title": "Fruit Bats",
-   "venue": "Webster Hall, 125 E 11th St, Manhattan"
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=12",
+   "startTime": "8:15 PM",
+   "title": "New York Giants vs. Washington Commanders",
+   "venue": "MetLife Stadium, East Rutherford, NJ"
+  },
+  {
+   "bucket": "today",
+   "category": "Comedy",
+   "city": "New York",
+   "date": "2026-11-12",
+   "day": "today",
+   "dayLabel": "周四",
+   "endTime": null,
+   "note": "NY Comedy Festival presents Jordan Jensen's The Wet Hug Tour at the Beacon Theatre.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=12",
+   "startTime": "8:00 PM",
+   "title": "Jordan Jensen: The Wet Hug Tour",
+   "venue": "Beacon Theatre, 2124 Broadway, Manhattan"
+  },
+  {
+   "bucket": "today",
+   "category": "Arts",
+   "city": "New York",
+   "date": "2026-11-12",
+   "day": "today",
+   "dayLabel": "周四",
+   "endTime": "9:00 PM",
+   "note": "One-night-only evening of film and choreography by creative duo Fernando Salazar and Chun Fung Kevin Chiu.",
+   "price": "$23.18",
+   "sourceUrl": "https://www.eventbrite.com/e/salon-metropolis-tickets-2002751910878",
+   "startTime": "6:30 PM",
+   "title": "Salón Metropolis",
+   "venue": "The Clemente, Flamboyan Theater, 107 Suffolk St, Manhattan"
   }
  ],
  "events": [
@@ -192,66 +192,66 @@
  ],
  "weather": {
   "current": {
-   "temp": 55,
-   "feelsLike": 51,
-   "high": 65,
+   "temp": 50,
+   "feelsLike": 48,
+   "high": 61,
    "low": 48,
    "description": "Overcast",
-   "precipChance": 1,
-   "humidity": 59,
-   "wind": "5 mph",
-   "uvIndex": 3,
-   "airQualityIndex": 50,
-   "airQualityDescription": "Good"
+   "precipChance": 72,
+   "humidity": 82,
+   "wind": "3 mph",
+   "uvIndex": 1,
+   "airQualityIndex": 53,
+   "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-11",
-   "high": 65,
+   "date": "2026-11-12",
+   "high": 61,
    "low": 48,
-   "precipChance": 1,
-   "summary": "Overcast. Highs around 65 and lows around 48."
+   "precipChance": 72,
+   "summary": "Rain. Highs around 61 and lows around 48."
   },
   "daily": [
    {
-    "date": "2026-11-11",
-    "high": 65,
-    "low": 48,
-    "precipChance": 1
-   },
-   {
     "date": "2026-11-12",
-    "high": 59,
+    "high": 61,
     "low": 48,
-    "precipChance": 98
+    "precipChance": 72
    },
    {
     "date": "2026-11-13",
     "high": 48,
-    "low": 37,
-    "precipChance": 75
+    "low": 38,
+    "precipChance": 89
    },
    {
     "date": "2026-11-14",
-    "high": 47,
+    "high": 48,
     "low": 38,
-    "precipChance": 30
+    "precipChance": 19
    },
    {
     "date": "2026-11-15",
-    "high": 49,
-    "low": 39,
+    "high": 47,
+    "low": 37,
     "precipChance": 0
    },
    {
     "date": "2026-11-16",
-    "high": 51,
-    "low": 41,
+    "high": 50,
+    "low": 40,
     "precipChance": 0
    },
    {
     "date": "2026-11-17",
-    "high": 49,
+    "high": 51,
     "low": 41,
+    "precipChance": 1
+   },
+   {
+    "date": "2026-11-18",
+    "high": 55,
+    "low": 42,
     "precipChance": 1
    }
   ],
@@ -259,25 +259,25 @@
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 47,
+    "high": 48,
     "low": 38,
-    "precipChance": 30,
-    "summary": "Foggy. Highs around 47 and lows around 38.",
-    "wind": "16 mph",
+    "precipChance": 19,
+    "summary": "Foggy. Highs around 48 and lows around 38.",
+    "wind": "17 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 49,
-    "low": 39,
+    "high": 47,
+    "low": 37,
     "precipChance": 0,
-    "summary": "Overcast. Highs around 49 and lows around 39.",
+    "summary": "Overcast. Highs around 47 and lows around 37.",
     "wind": "16 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-11T23:52:36.553916Z",
+  "fetchedAt": "2026-11-12T05:52:47.318097Z",
   "location": "New York, NY"
  }
 }
