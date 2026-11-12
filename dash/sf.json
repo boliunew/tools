@@ -1,86 +1,71 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-10T21:05:33.134672Z",
+ "eventsUpdatedAt": "2026-11-11T23:53:04.604362Z",
  "ranges": {
-  "today": "2026-11-10",
+  "today": "2026-11-11",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Teddy Swims: The UGLY Tour",
-   "date": "2026-11-10",
+   "title": "Veterans Day & Remembrance Day Choral Music & Evensong",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
-   "startTime": "7:00 PM",
+   "dayLabel": "周三",
+   "startTime": "7:30 PM",
    "endTime": null,
-   "venue": "Chase Center, 300 16th St",
-   "city": "San Francisco",
-   "category": "Music",
-   "price": null,
-   "note": "Teddy Swims brings The UGLY Tour to Chase Center on Tuesday night, with Natasha Bedingfield and MarcLo.",
-   "sourceUrl": "https://encoretrail.com/event/teddy-swims-the-ugly-tour-san-francisco-2026-11-10/"
-  },
-  {
-   "bucket": "today",
-   "title": "Live Music Lunch Series",
-   "date": "2026-11-10",
-   "day": "today",
-   "dayLabel": "周二",
-   "startTime": "12:00 PM",
-   "endTime": "1:30 PM",
-   "venue": "Thrive City, 1 Warriors Way",
+   "venue": "St Thomas Anglican Church, 2725 Sacramento St",
    "city": "San Francisco",
    "category": "Music",
    "price": "Free",
-   "note": "Free lunchtime live music in the Thrive City plaza with one-man-band Matt Bolton.",
-   "sourceUrl": "https://www.eventbrite.com/e/live-music-lunch-series-tickets-1996952117540?aff=ebdsoporgprofile"
+   "note": "Evening of choral music and remembrance honoring those who served, with hot chocolate and port after the music.",
+   "sourceUrl": "https://sf.funcheap.com/veterans-day-remembrance-day-choral-music-evensong-pacific-heights-sf/"
   },
   {
    "bucket": "today",
-   "title": "Yuki Chiba: First North America Headline Tour",
-   "date": "2026-11-10",
+   "title": "Jake Xerxes Fussell",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
    "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "The Regency Ballroom",
+   "venue": "Great American Music Hall, 859 O'Farrell St",
+   "city": "San Francisco",
+   "category": "Music",
+   "price": "$33.31",
+   "note": "Jake Xerxes Fussell plays Great American Music Hall with Dougie Poole; doors 7 PM.",
+   "sourceUrl": "https://wl.eventim.us/event/Jake-Xerxes-Fussell/689401?afflky=GreatAmericanMusicHall"
+  },
+  {
+   "bucket": "today",
+   "title": "Buzzcocks: Celebrating 50 Years",
+   "date": "2026-11-11",
+   "day": "today",
+   "dayLabel": "周三",
+   "startTime": "8:00 PM",
+   "endTime": null,
+   "venue": "The Chapel, 777 Valencia St",
    "city": "San Francisco",
    "category": "Music",
    "price": null,
-   "note": "Yuki Chiba brings his first North America headline tour to The Regency Ballroom.",
-   "sourceUrl": "https://www.sfstation.com/music/calendar"
+   "note": "Buzzcocks celebrate 50 years at The Chapel.",
+   "sourceUrl": "https://www.axs.com/events/1546721"
   },
   {
    "bucket": "today",
-   "title": "Peter Pan Goes Wrong",
-   "date": "2026-11-10",
+   "title": "USS Hornet Veterans Day 2026",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
-   "startTime": "7:00 PM",
+   "dayLabel": "周三",
+   "startTime": "10:00 AM",
    "endTime": null,
-   "venue": "San Francisco Playhouse",
+   "venue": "USS Hornet Sea, Air & Space Museum, 707 W Hornet Ave, Alameda",
    "city": "San Francisco",
-   "category": "Theater",
-   "price": null,
-   "note": "The hit stage comedy Peter Pan Goes Wrong plays at San Francisco Playhouse.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco"
-  },
-  {
-   "bucket": "today",
-   "title": "Jamie Kaler",
-   "date": "2026-11-10",
-   "day": "today",
-   "dayLabel": "周二",
-   "startTime": "7:30 PM",
-   "endTime": null,
-   "venue": "Punch Line Comedy Club",
-   "city": "San Francisco",
-   "category": "Comedy",
-   "price": null,
-   "note": "Stand-up comedy with Jamie Kaler at Punch Line Comedy Club.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco"
+   "category": "Community",
+   "price": "$25",
+   "note": "Veterans Day commemoration aboard USS Hornet; main program at 11 AM, afternoon presentation at 1 PM and a flyover.",
+   "sourceUrl": "https://sf.funcheap.com/uss-hornet-veterans-day-2026-alameda/"
   }
  ],
  "events": [
@@ -192,92 +177,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 70,
-   "feelsLike": 71,
-   "high": 72,
+   "temp": 71,
+   "feelsLike": 70,
+   "high": 73,
    "low": 52,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 63,
+   "humidity": 48,
    "wind": "2 mph",
    "uvIndex": 4,
-   "airQualityIndex": 47,
-   "airQualityDescription": "Good"
+   "airQualityIndex": 54,
+   "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-10",
-   "high": 72,
+   "date": "2026-11-11",
+   "high": 73,
    "low": 52,
    "precipChance": 0,
-   "summary": "Overcast. Highs around 72 and lows around 52."
+   "summary": "Foggy. Highs around 73 and lows around 52."
   },
   "daily": [
    {
-    "date": "2026-11-10",
-    "high": 72,
+    "date": "2026-11-11",
+    "high": 73,
     "low": 52,
     "precipChance": 0
    },
    {
-    "date": "2026-11-11",
-    "high": 68,
-    "low": 53,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-12",
-    "high": 70,
-    "low": 54,
-    "precipChance": 32
+    "high": 68,
+    "low": 55,
+    "precipChance": 4
    },
    {
     "date": "2026-11-13",
-    "high": 64,
-    "low": 57,
-    "precipChance": 89
+    "high": 62,
+    "low": 54,
+    "precipChance": 99
    },
    {
     "date": "2026-11-14",
-    "high": 62,
-    "low": 57,
-    "precipChance": 51
+    "high": 63,
+    "low": 56,
+    "precipChance": 61
    },
    {
     "date": "2026-11-15",
-    "high": 62,
-    "low": 55,
-    "precipChance": 58
+    "high": 64,
+    "low": 56,
+    "precipChance": 76
    },
    {
     "date": "2026-11-16",
-    "high": 60,
-    "low": 56,
-    "precipChance": 48
+    "high": 59,
+    "low": 54,
+    "precipChance": 72
+   },
+   {
+    "date": "2026-11-17",
+    "high": 62,
+    "low": 55,
+    "precipChance": 36
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 62,
-    "low": 57,
-    "precipChance": 51,
-    "summary": "Drizzle. Highs around 62 and lows around 57.",
-    "wind": "17 mph",
+    "high": 63,
+    "low": 56,
+    "precipChance": 61,
+    "summary": "Drizzle. Highs around 63 and lows around 56.",
+    "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 62,
-    "low": 55,
-    "precipChance": 58,
-    "summary": "Drizzle. Highs around 62 and lows around 55.",
-    "wind": "16 mph",
+    "high": 64,
+    "low": 56,
+    "precipChance": 76,
+    "summary": "Light rain. Highs around 64 and lows around 56.",
+    "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-10T21:04:29.578212Z",
+  "fetchedAt": "2026-11-11T23:52:28.789952Z",
   "location": "San Francisco, CA"
  }
 }

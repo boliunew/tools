@@ -1,86 +1,86 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-10T21:05:33.139628Z",
+ "eventsUpdatedAt": "2026-11-11T23:53:04.608722Z",
  "ranges": {
-  "today": "2026-11-10",
+  "today": "2026-11-11",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Alanis Morissette: Butterfly with a Machete, The LA Residency",
-   "date": "2026-11-10",
+   "title": "Bonobo: Distance in Static Live North American Tour",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "The Wiltern, Koreatown",
+   "city": "Los Angeles",
+   "category": "Music",
+   "price": null,
+   "note": "KCRW presents Bonobo live at The Wiltern, night one of two, with Sofia Kourtesis.",
+   "sourceUrl": "https://stupiddope.com/2026/11/los-angeles-concerts-this-week-nov-6-12-2026/"
+  },
+  {
+   "bucket": "today",
+   "title": "Alanis Morissette: Butterfly with a Machete, The LA Residency",
+   "date": "2026-11-11",
+   "day": "today",
+   "dayLabel": "周三",
    "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "YouTube Theater",
-   "city": "Inglewood",
+   "venue": "YouTube Theater, Inglewood",
+   "city": "Los Angeles",
    "category": "Music",
    "price": null,
    "note": "Alanis Morissette continues her LA residency at YouTube Theater.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=10"
+   "sourceUrl": "https://otbla.com/events/concerts/"
   },
   {
    "bucket": "today",
-   "title": "Los Angeles Kings vs. Nashville Predators",
-   "date": "2026-11-10",
+   "title": "Turnover - Down On Earth Tour",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
-   "startTime": "7:00 PM",
+   "dayLabel": "周三",
+   "startTime": "7:30 PM",
    "endTime": null,
-   "venue": "Crypto.com Arena",
-   "city": "Los Angeles",
-   "category": "Sports",
-   "price": null,
-   "note": "The Kings host the Nashville Predators at Crypto.com Arena.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=10"
-  },
-  {
-   "bucket": "today",
-   "title": "Sienna Spiro: My House Tour",
-   "date": "2026-11-10",
-   "day": "today",
-   "dayLabel": "周二",
-   "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "The Wiltern",
+   "venue": "The Regent Theater",
    "city": "Los Angeles",
    "category": "Music",
    "price": null,
-   "note": "Sienna Spiro brings her My House Tour to The Wiltern.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=10"
+   "note": "Turnover plays The Regent Theater; doors 6:30 PM. Listed as sold out.",
+   "sourceUrl": "https://allevents.in/los-angeles/concerts?view=calendar"
   },
   {
    "bucket": "today",
-   "title": "The Who's Tommy",
-   "date": "2026-11-10",
+   "title": "Guttermouth, Vfms, Just Because, Blue Cut Revival, The Shogos",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
+   "startTime": "6:00 PM",
+   "endTime": "11:55 PM",
+   "venue": "Whisky A Go Go, 8901 W Sunset Blvd, West Hollywood",
+   "city": "Los Angeles",
+   "category": "Music",
+   "price": null,
+   "note": "Six-band punk night headlined by Guttermouth at the Whisky A Go Go.",
+   "sourceUrl": "https://www.visitwesthollywood.com/events/guttermouth-vfms-just-because-blue-cut-revival-the-shogos-11-11-2026/"
+  },
+  {
+   "bucket": "today",
+   "title": "The Who's Tommy (Touring)",
+   "date": "2026-11-11",
+   "day": "today",
+   "dayLabel": "周三",
    "startTime": "7:30 PM",
    "endTime": null,
    "venue": "Hollywood Pantages Theatre",
    "city": "Los Angeles",
    "category": "Theater",
    "price": null,
-   "note": "The Who's Tommy plays the Hollywood Pantages Theatre.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=10"
-  },
-  {
-   "bucket": "today",
-   "title": "Quadeca w/ Derby & Olēka",
-   "date": "2026-11-10",
-   "day": "today",
-   "dayLabel": "周二",
-   "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "The Fonda Theatre",
-   "city": "Los Angeles",
-   "category": "Music",
-   "price": null,
-   "note": "Quadeca plays the Fonda Theatre with Derby and Olēka.",
-   "sourceUrl": "https://thescenestar.com/los-angeles-show-list-by-the-scenestar/"
+   "note": "The touring production of The Who's Tommy plays the Pantages.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=hpguide&page=2"
   }
  ],
  "events": [
@@ -192,67 +192,67 @@
  ],
  "weather": {
   "current": {
-   "temp": 77,
-   "feelsLike": 75,
+   "temp": 80,
+   "feelsLike": 78,
    "high": 87,
-   "low": 61,
+   "low": 58,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 37,
-   "wind": "4 mph",
+   "humidity": 45,
+   "wind": "8 mph",
    "uvIndex": 5,
    "airQualityIndex": 62,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "high": 87,
-   "low": 61,
+   "low": 58,
    "precipChance": 0,
-   "summary": "Clear skies. Highs around 87 and lows around 61."
+   "summary": "Clear skies. Highs around 87 and lows around 58."
   },
   "daily": [
    {
-    "date": "2026-11-10",
-    "high": 87,
-    "low": 61,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-11",
-    "high": 86,
-    "low": 59,
+    "high": 87,
+    "low": 58,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 79,
-    "low": 62,
-    "precipChance": 15
+    "high": 77,
+    "low": 58,
+    "precipChance": 4
    },
    {
     "date": "2026-11-13",
-    "high": 71,
-    "low": 64,
-    "precipChance": 42
+    "high": 73,
+    "low": 61,
+    "precipChance": 75
    },
    {
     "date": "2026-11-14",
     "high": 70,
-    "low": 62,
-    "precipChance": 38
+    "low": 65,
+    "precipChance": 75
    },
    {
     "date": "2026-11-15",
-    "high": 72,
+    "high": 73,
     "low": 64,
     "precipChance": 26
    },
    {
     "date": "2026-11-16",
-    "high": 67,
-    "low": 61,
-    "precipChance": 47
+    "high": 68,
+    "low": 64,
+    "precipChance": 58
+   },
+   {
+    "date": "2026-11-17",
+    "high": 66,
+    "low": 62,
+    "precipChance": 44
    }
   ],
   "weekend": [
@@ -260,24 +260,24 @@
     "date": "2026-11-14",
     "day": "sat",
     "high": 70,
-    "low": 62,
-    "precipChance": 38,
-    "summary": "Showers. Highs around 70 and lows around 62.",
-    "wind": "13 mph",
+    "low": 65,
+    "precipChance": 75,
+    "summary": "Light drizzle. Highs around 70 and lows around 65.",
+    "wind": "10 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 72,
+    "high": 73,
     "low": 64,
     "precipChance": 26,
-    "summary": "Overcast. Highs around 72 and lows around 64.",
-    "wind": "10 mph",
+    "summary": "Overcast. Highs around 73 and lows around 64.",
+    "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-10T17:53:05.514053Z",
+  "fetchedAt": "2026-11-11T23:52:33.844414Z",
   "location": "Los Angeles, CA"
  }
 }

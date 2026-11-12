@@ -1,71 +1,56 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-10T21:05:33.137488Z",
+ "eventsUpdatedAt": "2026-11-11T23:53:04.606636Z",
  "ranges": {
-  "today": "2026-11-10",
+  "today": "2026-11-11",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Sparta, Public Opinion",
-   "date": "2026-11-10",
+   "title": "San Jose Sharks vs. Pittsburgh Penguins",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
    "startTime": "7:00 PM",
    "endTime": null,
-   "venue": "The Ritz, 400 S 1st St",
+   "venue": "SAP Center at San Jose, 525 W Santa Clara St",
    "city": "San Jose",
-   "category": "Music",
+   "category": "Sports",
    "price": null,
-   "note": "Sparta plays The Ritz in downtown San Jose with Public Opinion.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ"
+   "note": "The Sharks host the Pittsburgh Penguins at SAP Center.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?date=thismonth"
   },
   {
    "bucket": "today",
-   "title": "AI Tinkerers San Jose Monthly Meetup · Nov. 10",
-   "date": "2026-11-10",
+   "title": "Open Mic at the San Jose Improv",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
-   "startTime": "6:00 PM",
+   "dayLabel": "周三",
+   "startTime": "7:30 PM",
    "endTime": null,
-   "venue": "Downtown San Jose, 505 S Market St",
+   "venue": "San Jose Improv",
    "city": "San Jose",
-   "category": "Community",
+   "category": "Comedy",
    "price": null,
-   "note": "Monthly meetup for AI builders and tinkerers in downtown San Jose.",
-   "sourceUrl": "https://allevents.in/san-jos%C3%A9/all"
+   "note": "Weekly open mic night at the San Jose Improv.",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?date=thismonth"
   },
   {
    "bucket": "today",
-   "title": "Brian Patrick: Singer-Songwriters",
-   "date": "2026-11-10",
+   "title": "Performing Arts Friends and Family Show",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
-   "startTime": "6:00 PM",
-   "endTime": null,
-   "venue": "Capelo's Barbecue",
+   "dayLabel": "周三",
+   "startTime": "7:00 PM",
+   "endTime": "8:00 PM",
+   "venue": "Leigh Bowl, Leigh High School, 5210 Leigh Ave",
    "city": "San Jose",
-   "category": "Music",
+   "category": "Arts",
    "price": null,
-   "note": "Singer-songwriter night with Brian Patrick at Capelo's Barbecue.",
-   "sourceUrl": "https://www.bandsintown.com/c/san-jose-ca?came_from=331&latitude=37.3327303&longitude=-121.9012363&utm_medium=web&utm_source=venue_page&utm_campaign=city"
-  },
-  {
-   "bucket": "today",
-   "title": "David Hobbes",
-   "date": "2026-11-10",
-   "day": "today",
-   "dayLabel": "周二",
-   "startTime": "6:00 PM",
-   "endTime": null,
-   "venue": "Capelo's Barbecue",
-   "city": "San Jose",
-   "category": "Music",
-   "price": null,
-   "note": "Live music from David Hobbes at Capelo's Barbecue.",
-   "sourceUrl": "https://www.bandsintown.com/c/san-jose-ca?came_from=331&latitude=37.3327303&longitude=-121.9012363&utm_medium=web&utm_source=venue_page&utm_campaign=city"
+   "note": "Leigh High School performing arts friends and family showcase.",
+   "sourceUrl": "https://leigh.cuhsd.org/apps/events/2026/11/11/51927684/?id=0"
   }
  ],
  "events": [
@@ -192,92 +177,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 61,
-   "feelsLike": 62,
-   "high": 74,
-   "low": 50,
+   "temp": 72,
+   "feelsLike": 72,
+   "high": 76,
+   "low": 47,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 86,
-   "wind": "2 mph",
+   "humidity": 57,
+   "wind": "5 mph",
    "uvIndex": 4,
-   "airQualityIndex": 61,
+   "airQualityIndex": 53,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-10",
-   "high": 74,
-   "low": 50,
+   "date": "2026-11-11",
+   "high": 76,
+   "low": 47,
    "precipChance": 0,
-   "summary": "Foggy. Highs around 74 and lows around 50."
+   "summary": "Overcast. Highs around 76 and lows around 47."
   },
   "daily": [
    {
-    "date": "2026-11-10",
-    "high": 74,
-    "low": 50,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-11",
-    "high": 70,
-    "low": 53,
+    "high": 76,
+    "low": 47,
     "precipChance": 0
    },
    {
     "date": "2026-11-12",
-    "high": 75,
-    "low": 54,
-    "precipChance": 8
+    "high": 73,
+    "low": 53,
+    "precipChance": 3
    },
    {
     "date": "2026-11-13",
+    "high": 64,
+    "low": 50,
+    "precipChance": 97
+   },
+   {
+    "date": "2026-11-14",
+    "high": 65,
+    "low": 52,
+    "precipChance": 27
+   },
+   {
+    "date": "2026-11-15",
     "high": 66,
     "low": 54,
     "precipChance": 75
    },
    {
-    "date": "2026-11-14",
-    "high": 62,
-    "low": 53,
-    "precipChance": 40
-   },
-   {
-    "date": "2026-11-15",
-    "high": 67,
-    "low": 51,
-    "precipChance": 53
-   },
-   {
     "date": "2026-11-16",
     "high": 58,
     "low": 52,
-    "precipChance": 45
+    "precipChance": 75
+   },
+   {
+    "date": "2026-11-17",
+    "high": 64,
+    "low": 50,
+    "precipChance": 26
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 62,
-    "low": 53,
-    "precipChance": 40,
-    "summary": "Drizzle. Highs around 62 and lows around 53.",
-    "wind": "5 mph",
+    "high": 65,
+    "low": 52,
+    "precipChance": 27,
+    "summary": "Light drizzle. Highs around 65 and lows around 52.",
+    "wind": "4 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 67,
-    "low": 51,
-    "precipChance": 53,
-    "summary": "Overcast. Highs around 67 and lows around 51.",
-    "wind": "7 mph",
+    "high": 66,
+    "low": 54,
+    "precipChance": 75,
+    "summary": "Overcast. Highs around 66 and lows around 54.",
+    "wind": "6 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-10T17:53:03.234691Z",
+  "fetchedAt": "2026-11-11T23:52:31.109954Z",
   "location": "San Jose, CA"
  }
 }

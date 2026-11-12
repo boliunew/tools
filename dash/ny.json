@@ -1,86 +1,86 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-10T21:05:33.144205Z",
+ "eventsUpdatedAt": "2026-11-11T23:53:04.611406Z",
  "ranges": {
-  "today": "2026-11-10",
+  "today": "2026-11-11",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
+   "category": "Parade",
+   "city": "New York",
+   "date": "2026-11-11",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": "3:30 PM",
+   "note": "107th NYC Veterans Day Parade, the largest in the country; grand marshal is NASA astronaut Suni Williams. Wreath-laying at Madison Square Park 10:55 AM.",
+   "price": "Free",
+   "sourceUrl": "https://secretnyc.co/nyc-veterans-day-parade-2026/",
+   "startTime": "12:30 PM",
+   "title": "107th NYC Veterans Day Parade",
+   "venue": "Fifth Avenue, 26th St to 48th St, Manhattan"
+  },
+  {
+   "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
-   "endTime": null,
-   "note": "Free lunchtime organ recital of J.S. Bach works at Grace Church in Greenwich Village.",
+   "dayLabel": "周三",
+   "endTime": "12:50 PM",
+   "note": "Free half-hour lunchtime organ recital of Bach works at Grace Church, in person or by livestream.",
    "price": "Free",
    "sourceUrl": "https://dothisnyc.com/free-concerts-nyc/",
    "startTime": "12:20 PM",
-   "title": "Organ Works by J.S. Bach at Grace Church",
+   "title": "Bach at Noon with Patrick Allen at Grace Church",
    "venue": "Grace Church, Greenwich Village, Manhattan"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "day": "today",
-   "dayLabel": "周二",
-   "endTime": null,
-   "note": "Oratorio Society of New York performs Fauré's Requiem at Carnegie Hall, conducted by Kent Tritle.",
-   "price": null,
-   "sourceUrl": "https://news.geturtix.com/2026/11/classic-arts-this-week-tosca-happy-end-madama-butterfly/",
-   "startTime": null,
-   "title": "Fauré's Requiem — Oratorio Society of New York",
-   "venue": "Carnegie Hall"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-10",
-   "day": "today",
-   "dayLabel": "周二",
-   "endTime": null,
-   "note": "DURATIONS festival: William Basinski and muein at Public Records, 21+.",
-   "price": "$57.68",
-   "sourceUrl": "http://nyc-shows.brooklynvegan.com/events/2026/11/10/durations-william-basinski-muein-tickets",
-   "startTime": "7:00 PM",
-   "title": "DURATIONS: William Basinski, muein",
-   "venue": "Public Records, Brooklyn"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-10",
-   "day": "today",
-   "dayLabel": "周二",
-   "endTime": null,
-   "note": "Hamilton Leithauser with Rostam at Music Hall of Williamsburg on Tuesday night.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=3&categoryId=KZFzniwnSyZfZ7v7nJ",
-   "startTime": "7:00 PM",
-   "title": "Hamilton Leithauser w/ Rostam",
-   "venue": "Music Hall of Williamsburg, 66 North 6th St, Brooklyn"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-10",
-   "day": "today",
-   "dayLabel": "周二",
-   "endTime": "2:00 AM",
-   "note": "Weekly Haitian kompa and zouk night on the rooftop at The DL, with Haitian cuisine and cocktails; 21+, free RSVP.",
+   "dayLabel": "周三",
+   "endTime": "2:00 PM",
+   "note": "Free lunchtime jazz concert by singer Georgia Heers in Trinity Church's Jazz at One series.",
    "price": "Free",
-   "sourceUrl": "https://www.thedl-nyc.com/upcomingevents/kompa-tuesdays-2026-11-10-20-00",
-   "startTime": "8:00 PM",
-   "title": "KOMPA Tuesdays",
-   "venue": "The DL, 95 Delancey St, Lower East Side"
+   "sourceUrl": "https://dothisnyc.com/free-concerts-nyc/",
+   "startTime": "1:00 PM",
+   "title": "Jazz at One: Georgia Heers",
+   "venue": "Trinity Church, Wall Street, Manhattan"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-11",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Sting brings the STING 3.0 Tour to Brooklyn Paramount on Wednesday night.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city",
+   "startTime": "7:00 PM",
+   "title": "STING 3.0 Tour",
+   "venue": "Brooklyn Paramount, 385 Flatbush Ave Ext, Brooklyn"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-11",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Fruit Bats play Webster Hall on Wednesday night.",
+   "price": null,
+   "sourceUrl": "https://www.gigista.com/town/manhattan/this-month/",
+   "startTime": "7:00 PM",
+   "title": "Fruit Bats",
+   "venue": "Webster Hall, 125 E 11th St, Manhattan"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 59,
-   "feelsLike": 50,
-   "high": 62,
-   "low": 45,
-   "description": "Clear",
-   "precipChance": 0,
-   "humidity": 45,
-   "wind": "14 mph",
+   "temp": 55,
+   "feelsLike": 51,
+   "high": 65,
+   "low": 48,
+   "description": "Overcast",
+   "precipChance": 1,
+   "humidity": 59,
+   "wind": "5 mph",
    "uvIndex": 3,
-   "airQualityIndex": 38,
+   "airQualityIndex": 50,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-10",
-   "high": 62,
-   "low": 45,
-   "precipChance": 0,
-   "summary": "Overcast. Highs around 62 and lows around 45."
+   "date": "2026-11-11",
+   "high": 65,
+   "low": 48,
+   "precipChance": 1,
+   "summary": "Overcast. Highs around 65 and lows around 48."
   },
   "daily": [
    {
-    "date": "2026-11-10",
-    "high": 62,
-    "low": 45,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-11",
-    "high": 60,
-    "low": 43,
-    "precipChance": 2
+    "high": 65,
+    "low": 48,
+    "precipChance": 1
    },
    {
     "date": "2026-11-12",
-    "high": 58,
-    "low": 45,
-    "precipChance": 83
+    "high": 59,
+    "low": 48,
+    "precipChance": 98
    },
    {
     "date": "2026-11-13",
     "high": 48,
-    "low": 41,
-    "precipChance": 62
+    "low": 37,
+    "precipChance": 75
    },
    {
     "date": "2026-11-14",
-    "high": 45,
-    "low": 39,
-    "precipChance": 27
+    "high": 47,
+    "low": 38,
+    "precipChance": 30
    },
    {
     "date": "2026-11-15",
-    "high": 48,
-    "low": 40,
-    "precipChance": 1
+    "high": 49,
+    "low": 39,
+    "precipChance": 0
    },
    {
     "date": "2026-11-16",
-    "high": 50,
-    "low": 40,
-    "precipChance": 2
+    "high": 51,
+    "low": 41,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-17",
+    "high": 49,
+    "low": 41,
+    "precipChance": 1
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 45,
-    "low": 39,
-    "precipChance": 27,
-    "summary": "Overcast. Highs around 45 and lows around 39.",
-    "wind": "15 mph",
+    "high": 47,
+    "low": 38,
+    "precipChance": 30,
+    "summary": "Foggy. Highs around 47 and lows around 38.",
+    "wind": "16 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 48,
-    "low": 40,
-    "precipChance": 1,
-    "summary": "Overcast. Highs around 48 and lows around 40.",
-    "wind": "11 mph",
+    "high": 49,
+    "low": 39,
+    "precipChance": 0,
+    "summary": "Overcast. Highs around 49 and lows around 39.",
+    "wind": "16 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-10T17:53:07.623159Z",
+  "fetchedAt": "2026-11-11T23:52:36.553916Z",
   "location": "New York, NY"
  }
 }
