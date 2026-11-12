@@ -1,0 +1,162 @@
+{
+ "date": "2026-11-12",
+ "generated": "2026-11-12T21:30:29Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Nvidia临时CEO上任，黄仁勋辞职待定继任",
+     "d": "创始人兼CEO黄仁勋因被指与涉嫌中国间谍的女子有婚外情于本周四辞职，CFO Colette Kress暂任临时CEO。公司正评估内部高管如Malachowsky、Ian Buck以及外部如Tim Cook、Arm CEO Rene Haas等潜在永久继任人选。此事关系到AI芯片龙头的领导稳定性，可能影响行业信心与供应链。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cqgm37dv20e8o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Nvidia董事会审议罢免黄仁勋，股价暴跌8%",
+     "d": "Nvidia董事会本周三召开紧急会议，审议是否因黄仁勋承认与被指为中国间谍的女子关系而罢免其CEO职务。消息公布后，公司股价盘后跌超8%，市值蒸发约6850亿美元。若黄被撤职，将在美中AI竞争关键期留下领导真空。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/12/nvidia-board-decision-ceo-jensen-huang-alleged-second-affair"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/11 周三 收盘：标普500 ETF（SPY）+1.32%，纳指100 ETF（QQQ）+2.31%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 17.5；72% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：SNDK +13.7%、BE +13.0%、MU +11.9%；跌幅最大：ABNB -3.1%、LULU -2.6%、MCD -2.6%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。信息技术、可选消费 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：CSCO（盘后）、AMAT（盘后）、BN（盘前）、NU（盘后）、NBIS（盘前）",
+     "d": "按市值挑出最大的几家，共 6 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：CPI 通胀数据（11/11 周三）",
+     "d": "Core CPI 实际 0.3%（预期 0.2%，前值 0.3%）；Core CPI Index 实际 339.90（预期 —，前值 338.90）。高于预期 → 降息预期后移、长债收益率上行，通常利空成长科技、小盘股和地产，利好美元；低于预期则相反，科技和小盘往往领涨。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/13 周五 10:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/17 周二 09:05：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "Nvidia CEO Jensen Huang 辞职",
+     "d": "因涉及与疑似中国间谍的关系而引发国家安全担忧，黄仁勋离职。此事可能重塑 AI 芯片市场竞争格局。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261112-nvidia-ceo-jensen-huang-steps-down"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress?traffic_source=rss"
+      }
+     ]
+    },
+    {
+     "t": "以色列在加沙医院空袭致 6 死",
+     "d": "这是自以色列选举后最致命的单次空袭，可能加剧中东紧张局势并影响能源市场。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/israeli-strike-on-gaza-hospital-kills-six-including-surgeon-medics-say"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/12/al-jazeera-reports-from-gaza-hospital-attacked-by-israel?traffic_source=rss"
+      }
+     ]
+    },
+    {
+     "t": "习近平重申统一台湾，未提动武",
+     "d": "习近平在纪念孙中山诞辰时重申实现祖国完全统一的历史任务，未提使用武力。台湾当局立即驳回，称不会接受北京统治。此番表态加剧两岸紧张，也为即将在深圳举行的APEC峰会增添地缘政治不确定性。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/china-s-xi-jinping-renews-calls-for-reunification-with-taiwan/a-79929738?maca=en-rss-en-asia-5133-rdf"
+      },
+      {
+       "n": "南华早报",
+       "u": "https://www.scmp.com/news/china/politics/article/3374228/xi-jinping-calls-dialogue-taiwan-reunification-people-vision"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "Nvidia CEO Jensen Huang 辞职",
+  "d": "作为 AI 产业核心公司领袖的突然离任，直接冲击芯片供应、行业信任及相关股票走势，是今日最具深度影响的事件。"
+ },
+ "week": []
+}
