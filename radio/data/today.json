@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-11T17:56:49Z",
- "date": "2026-11-11",
+ "generated": "2026-11-12T18:23:05Z",
+ "date": "2026-11-12",
  "engine": "edge",
- "total": 507.3,
- "short": 306.4,
+ "total": 528.5,
+ "short": 340.5,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611110955",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611121021",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月11日 星期三",
-   "dur": 11.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611110955",
+   "sub": "11月12日 星期四",
+   "dur": 9.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "一周过半了。今天是11月11日，星期三。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
+     "t": "这里是你的通勤电台。今天是11月12日，星期四，方向盘上的下一首可以随时跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 84°/57°F",
-   "dur": 29.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611110955",
+   "sub": "Upland 阴天 79°/57°F",
+   "dur": 27.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏57度，14摄氏度，体感53度。傍晚5点下班大约华氏74度，23摄氏度，体感67度。白天最高84度，约29摄氏度；最低57度。基本不会下雨。白天空气质量良好，指数最高46。今天日落时间是傍晚4点49分。"
+     "t": "Upland今天阴天。早上7点出门大约华氏57度，14摄氏度，体感52度。傍晚5点下班大约华氏68度，20摄氏度。白天最高79度，约26摄氏度；最低57度。基本不会下雨。白天空气质量中等，指数最高54。今天日落时间是傍晚4点48分。"
     }
    ]
   },
@@ -39,40 +39,40 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 30.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611110955",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月10日收盘。标普500 ETF 下跌0.4%，纳指100 ETF 下跌0.7%。恐慌指数VIX 19.5，正常水平。标普成分股里，70%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股11月11日收盘。标普500 ETF 上涨1.3%，纳指100 ETF 上涨2.3%。恐慌指数VIX 17.5，正常水平。标普成分股里，72%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "23 个候选",
-   "dur": 62.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611110955",
+   "sub": "16 个候选",
+   "dur": 62.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天23个候选，评分最高的是Workday，代码 W D A Y。不想听细节可以按下一首。"
+     "t": "股票池今天16个候选，评分最高的是Humana，代码 H U M。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了500只股票，其中血筹码12个，回踩金坑9个，RSI2 超跌反弹2个。评分最高的三个是："
+     "t": "细节：一共扫描了500只股票，其中回踩金坑12个，血筹码2个，强势新高1个，RSI2 超跌反弹1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Workday，代码 W D A Y，RSI2 超跌反弹信号，收盘价188.89美元，止损参考169.78。"
+     "t": "第1，Humana，代码 H U M，强势新高信号，收盘价446.31美元，止损参考411.00。"
     },
     {
      "lang": "zh",
-     "t": "第2，ExxonMobil，代码 X O M，RSI2 超跌反弹信号，收盘价164.47美元，止损参考152.88。"
+     "t": "第2，Otis Worldwide，代码 O T I S，RSI2 超跌反弹信号，收盘价77.50美元，止损参考73.09。"
     },
     {
      "lang": "zh",
-     "t": "第3，Salesforce，代码 C R M，血筹码信号，收盘价213.48美元，止损参考196.40。"
+     "t": "第3，Tesla，代码 T S L A，回踩金坑信号，收盘价390.84美元，止损参考356.70。"
     },
     {
      "lang": "zh",
@@ -83,13 +83,25 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "4 件大事",
-   "dur": 43.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611110955",
+   "sub": "6 件大事",
+   "dur": 76.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，重要数据有：美东08:30公布CPI 通胀数据。"
+     "t": "今天，有3家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "Cisco Systems，代码 C S C O，盘后发财报。期权定价波动正负8.6%。标签：利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "Applied Materials，代码 A M A T，盘后发财报。期权定价波动正负7.2%。标签：利好出尽型。"
+    },
+    {
+     "lang": "zh",
+     "t": "Brookfield，代码 B N，盘前发财报。期权定价波动正负4.6%。标签：样本不足。"
     },
     {
      "lang": "zh",
@@ -97,24 +109,24 @@
     },
     {
      "lang": "zh",
-     "t": "Cisco Systems，代码 C S C O，盘后发财报。期权定价波动正负8.8%。标签：利好出尽型。"
+     "t": "Mitsubishi UFJ Financial，代码 M U F G，盘前发财报。期权定价波动正负5.4%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Applied Materials，代码 A M A T，盘后发财报。期权定价波动正负8.1%。标签：利好出尽型。"
+     "t": "Sumitomo Mitsui Financial，代码 S M F G，盘前发财报。期权定价波动正负4.5%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Brookfield，代码 B N，盘前发财报。期权定价波动正负5.4%。标签：样本不足。"
+     "t": "Mizuho Financial，代码 M F G，盘前发财报。期权定价波动正负12.7%。标签：财报日常涨。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "The Guardian · BBC · Al Jazeera",
-   "dur": 94.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611110955",
+   "sub": "BBC · Al Jazeera · The Guardian",
+   "dur": 96.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
@@ -122,48 +134,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自The Guardian，国际，难度B2。大意是：一民族党维多利亚州候选人就针对女同性恋、印度人和朱莉娅·吉拉德的一系列冒犯性言论道歉。"
+     "t": "第1条，来自BBC，国际，难度B1。大意是：随着俄罗斯的袭击带来黑暗和寒冷，乌克兰的电力供应接近临界状态。"
     },
     {
      "lang": "en",
-     "t": "One Nation Victoria candidate apologises for slew of offensive comments about lesbians, Indians and Julia Gillard"
+     "t": "Ukraine's power supply close to critical as Russian strikes bring darkness and cold"
     },
     {
      "lang": "en",
-     "t": "Exclusive: Chris Moore, running for the party in Greenvale, made derogatory social media comments between 2010 and 2012 Get our daily political email, free app or daily news podcast A One Nation candidate in Victoria has apologised for a se"
+     "t": "For parents in parts of Ukraine, trying to lead a normal family life with just a few hours of power each day is taking its toll."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，科学，难度B2。大意是：艺术家创作出世界上最大的土壤画。"
+     "t": "第2条，来自Al Jazeera，国际，难度B1。大意是：是时候更换美国民主党的领导层了。"
     },
     {
      "lang": "en",
-     "t": "Artist creates world's biggest soil painting"
+     "t": "It is time for a change of leadership in the Democratic Party in the US"
     },
     {
      "lang": "en",
-     "t": "Phil Lambert used four types of soil, including some collected from his mother, to create his work."
+     "t": "The Democrats need to deliver on an ambitious agenda, and they need new energy and new voices to do so."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：南非游泳运动员塔佳娜·史密斯改投荷兰国籍。"
+     "t": "第3条，来自The Guardian，国际，难度B2。大意是：庭审听证：Beau Lamarre-Condon称他被自然疗法医生诊断出患有癌症，但记不清是哪种癌症。"
     },
     {
      "lang": "en",
-     "t": "South African swimmer Tatjana Smith switches allegiance to Netherlands"
+     "t": "Beau Lamarre-Condon says he was diagnosed with cancer by naturopath but doesn’t recall which one, trial hears"
     },
     {
      "lang": "en",
-     "t": "Double Olympic gold medallist cites 'financial and practical challenges' of swimming."
+     "t": "Former police officer questioned about Instagram message he asked friend to send to Jessie Baird referencing ‘cancerous tumour’ Get our breaking news email, free app or daily news podcast Beau Lamarre-Condon has claimed in court that he was"
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "skill · la silla",
-   "dur": 29.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611110955",
+   "sub": "honest · los frijoles",
+   "dur": 32.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
@@ -171,15 +183,15 @@
     },
     {
      "lang": "en",
-     "t": "skill"
+     "t": "honest"
     },
     {
      "lang": "zh",
-     "t": "意思是：技能。拼写是："
+     "t": "意思是：诚实的。拼写是："
     },
     {
      "lang": "en",
-     "t": "s, k, i, l, l"
+     "t": "h, o, n, e, s, t"
     },
     {
      "lang": "zh",
@@ -187,7 +199,7 @@
     },
     {
      "lang": "en",
-     "t": "skill"
+     "t": "honest"
     },
     {
      "lang": "zh",
@@ -195,44 +207,44 @@
     },
     {
      "lang": "es",
-     "t": "la silla"
+     "t": "los frijoles"
     },
     {
      "lang": "zh",
-     "t": "意思是：椅子。跟着读一遍。"
+     "t": "意思是：菜豆，豆子。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la silla"
+     "t": "los frijoles"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 28.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611110955",
+   "sub": "易错",
+   "dur": 19.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天说一个常见错误。不要说："
     },
     {
      "lang": "en",
-     "t": "One secret of success in life is for a man to be ready for his opportunity when it comes."
+     "t": "developing fastly"
     },
     {
      "lang": "zh",
-     "t": "意思是：成功的秘诀之一，是机会来临时你已经准备好了。这句话出自 Benjamin Disraeli。"
-    },
-    {
-     "lang": "zh",
-     "t": "再听一遍。"
+     "t": "应该说："
     },
     {
      "lang": "en",
-     "t": "One secret of success in life is for a man to be ready for his opportunity when it comes."
+     "t": "developing rapidly"
+    },
+    {
+     "lang": "zh",
+     "t": "快速发展。fast 本身就是副词，没有 fastly"
     }
    ],
    "opt": true
@@ -240,61 +252,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "给调度打电话",
-   "dur": 70.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611110955",
+   "sub": "对讲机用语",
+   "dur": 64.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：对讲机用语。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "这票货今天还走吗？"
+     "t": "Mark，我是 Steve，收到吗？"
     },
     {
      "lang": "en",
-     "t": "Is this load still on for today?"
+     "t": "Mark, this is Steve. Do you copy?"
     },
     {
      "lang": "en",
-     "t": "Is this load still on for today?"
+     "t": "Mark, this is Steve. Do you copy?"
     },
     {
      "lang": "zh",
-     "t": "我需要这票货的提货号。"
+     "t": "在路上了。"
     },
     {
      "lang": "en",
-     "t": "I need the pickup number for this load."
+     "t": "On my way."
     },
     {
      "lang": "en",
-     "t": "I need the pickup number for this load."
+     "t": "On my way."
     },
     {
      "lang": "zh",
-     "t": "预约改到明天早上了。"
+     "t": "我现在在闸口。"
     },
     {
      "lang": "en",
-     "t": "The appointment was moved to tomorrow morning."
+     "t": "I'm at the gate now."
     },
     {
      "lang": "en",
-     "t": "The appointment was moved to tomorrow morning."
+     "t": "I'm at the gate now."
     },
     {
      "lang": "zh",
-     "t": "能把详情发短信给我吗？"
+     "t": "五排需要帮忙。"
     },
     {
      "lang": "en",
-     "t": "Can you text me the details?"
+     "t": "Need a hand at row five."
     },
     {
      "lang": "en",
-     "t": "Can you text me the details?"
+     "t": "Need a hand at row five."
     },
     {
      "lang": "zh",
@@ -306,13 +318,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "为什么司机很少晕车",
-   "dur": 25.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611110955",
+   "sub": "自制辣椒油、蒜油怎么存",
+   "dur": 19.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：为什么司机很少晕车。晕车的原理和缓解办法。做法：内耳感觉车在晃，眼睛盯着手机却觉得没动，大脑收到矛盾的信号就会恶心；司机能预判转弯和刹车，信号对得上，所以很少晕；坐前排，看远处的路和地平线，别在车上看手机或看书。"
+     "t": "今日一招：自制辣椒油、蒜油怎么存。放久了也安全。做法：装进干净、干燥的玻璃瓶，放冰箱冷藏；加了新鲜蒜、姜、葱的油，冷藏 4 天内吃完；做多了倒进冰格冻成小块，随用随取。"
     }
    ],
    "opt": true
@@ -320,13 +332,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1889 · 1911 · 2008",
-   "dur": 23.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611110955",
+   "sub": "1912 · 1932 · 1980",
+   "dur": 30.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1889年，美国承认华盛顿州为第42州。1911年，辛亥革命中，福建省军政府成立，宣布脱离清朝控制。2008年，穆蒙·阿卜杜勒·盖约姆执政30年后，穆罕默德·纳希德继任马尔代夫总统。"
+     "t": "历史上的今天。1912年，救援团队在南极洲罗斯冰架附近发现英国探险家罗伯特·斯科特与其伙伴的遗体。1932年，在西澳大利亚州政府的要求下，澳大利亚军方在先前撤离后，正式恢复鸸鹋战争的战斗。1980年，美国国家航空航天局的探测器旅行者1号在飞过土星时拍下了第一张土星环的照片。"
     }
    ],
    "opt": true
@@ -334,21 +346,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "望江南·超然台作",
-   "dur": 53.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611110955",
+   "sub": "南乡子·送述古",
+   "dur": 53.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：望江南·超然台作。写于1076年，他39岁，在密州超然台。"
+     "t": "读一首苏轼：南乡子·送述古。写于1074年，他37岁，在杭州（送别至临平）。"
     },
     {
      "lang": "zh",
-     "t": "春未老，风细柳斜斜。试上超然台上看，半壕春水一城花。烟雨暗千家。寒食后，酒醒却咨嗟。休对故人思故国，且将新火试新茶。诗酒趁年华。"
+     "t": "回首乱山横，不见居人只见城。谁似临平山上塔，亭亭，迎客西来送客行。归路晚风清，一枕初寒梦不成。今夜残灯斜照处，荧荧，秋雨晴时泪不晴。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：春天还没有过去，微风轻拂，柳枝斜斜地飘动。登上超然台眺望，半满的护城河里荡着春水，满城都是鲜花，蒙蒙烟雨笼罩着千家万户。寒食节过后，酒醒了，反倒叹起气来。不要在老朋友面前思念故乡了，姑且用新点的火来煮新茶，趁着大好年华，作诗饮酒吧。"
+     "t": "白话意思是：回头望去，只见群山纵横，看不见城里的人，只看得见城郭。谁能像临平山上的那座塔一样，高高耸立着，迎接客人西来，又目送客人离去？回去的路上晚风清凉，躺下时初秋的寒意让我难以入梦。今夜残灯斜照之处，灯光微微闪烁，秋雨已经停了，我的泪却还没有停。"
     }
    ],
    "opt": true
@@ -357,12 +369,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611110955",
+   "dur": 6.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611121021",
    "text": [
     {
      "lang": "zh",
-     "t": "电台播完了。祝你一路顺风，今天顺顺利利！"
+     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
     }
    ]
   }
