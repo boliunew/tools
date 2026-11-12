@@ -1,16 +1,16 @@
 {
- "date": "2026-11-11",
- "kind": "名言",
- "en": "One secret of success in life is for a man to be ready for his opportunity when it comes.",
- "zh": "成功的秘诀之一，是机会来临时你已经准备好了。",
- "by": "Benjamin Disraeli",
- "line": "One secret of success in life is for a man to be ready for his opportunity when it comes. — Benjamin Disraeli",
+ "date": "2026-11-12",
+ "kind": "易错",
+ "en": "developing rapidly",
+ "zh": "快速发展",
+ "by": "fast 本身就是副词，没有 fastly",
+ "line": "✗ developing fastly → ✓ developing rapidly",
  "word": {
-  "w": "abolish",
-  "ph": "ә'bɒliʃ",
-  "zh": "vt. 废止，革除，消灭",
-  "ex": "We should abolish the death penalty.",
-  "exzh": "我们应该废除死刑。"
+  "w": "divine",
+  "ph": "di'vain",
+  "zh": "a. 神的，神圣的，非凡的；n. 神学家",
+  "ex": "That meal was simply divine.",
+  "exzh": "那顿饭简直好极了。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
