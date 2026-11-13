@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "generated": "2026-11-13T20:56:13Z",
+ "generated": "2026-11-13T22:14:07Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "微软365服务停摆22小时 全球受影响",
-     "d": "微软因例行自动检测导致部分服务器下线，超负荷致Outlook等365服务在70余国中断22小时，约4.3亿用户受波及。此事件凸显全球业务对少数大型科技公司的高度依赖及潜在风险。",
+     "t": "微软全球服务中断 超过22小时影响430万用户",
+     "d": "微软365服务因例行自动检查导致部分服务器下线，剩余服务器承载流量，引发超过22小时的全球性中断，波及70余国约4.3亿用户，影响政府、企业及公共机构。此事件凸显了全球对少数大型科技公司的高度依赖及其潜在风险。",
      "src": [
       {
        "n": "BBC",
@@ -20,12 +20,23 @@
      "full": true
     },
     {
-     "t": "前Nvidia CEO黄仁勋被召国会作证",
-     "d": "因被指与疑似中国间谍有婚外情，前Nvidia CEO黄仁勋于下月被美国参议院委员会传唤作证，导致公司市值五天蒸发5500亿美元。此事将对美中技术出口监管及企业治理产生关注。",
+     "t": "前英伟达CEO黄仁勋被召证词 涉与疑似中国间谍的关系",
+     "d": "因被指与疑似中国间谍的女性有婚外情，英伟达前CEO黄仁勋于12月1日和3日分别被美国众议院及参议院委员会传唤，已于本周四辞职；公司市值在五天内蒸发5500亿美元。此事对美国高科技企业的国家安全审查和监管环境产生重大影响。",
      "src": [
       {
        "n": "BBC",
        "u": "https://www.bbc.co.uk/news/articles/cmq5vd1wdgz6o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "英伟达临时CEO科莱特·克雷斯受访 展望未来",
+     "d": "英伟达首席财务官科莱特·克雷斯被任命为临时首席执行官，NPR播客主持人与其讨论了她的背景及执掌公司的预期。此任命显示公司在高层动荡后寻求稳定领导，以维持其在AI芯片市场的领先地位。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/12/nx-s1-6038896/what-we-know-so-far-about-nvidia-interim-ceo-colette-kress"
       }
      ],
      "full": true
@@ -119,8 +130,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "微软全球服务故障致数百万人受影响",
-     "d": "微软确认因服务器设置问题导致Microsoft 365、Teams、Outlook等服务约18小时中断，影响全球90%以上财富500强用户及公共机构。事件再次提醒关键数字基础设施的单点故障风险。",
+     "t": "微软因技术故障全球 outage 影响医院、学校等",
+     "d": "微软确认其Microsoft 365服务在周四至周五约18小时内出现技术故障，导致全球数千万用户无法使用Outlook、Teams等，波及英国医院、警局、学校及美国国会等机构。此故障凸显关键数字基础设施的脆弱性及对公共服务的广泛依赖。",
      "src": [
       {
        "n": "卫报",
@@ -134,23 +145,8 @@
      "full": true
     },
     {
-     "t": "Nvidia任命CFO科莱特·克雷斯为临时CEO",
-     "d": "在黄仁勋辞职后，Nvidia财务主管科莱特·克雷斯接任临时CEO，需在公司市值大幅下跌及监管审查的艰难时期稳定运营。此举关系公司治理连续性及市场信心。",
-     "src": [
-      {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/11/13/nx-s1-6038889/colette-kress-becomes-nvidias-interim-ceo-after-jensen-huang-resigns"
-      },
-      {
-       "n": "CNA",
-       "u": "https://www.channelnewsasia.com/business/nvidia-approached-arm-ceo-haas-succeed-huang-ft-reports-6550286"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "美特使与普京会晤后赴都柏林与泽连斯基磋商",
-     "d": "美国特使在克里姆林宫与普京会面后前往爱尔兰，都柏林与乌克兰总统泽连斯基洽谈，计划启动新一轮俄乌和平谈判并争取欧洲加入。此外交进展对乌克兰冲突的调解前景具有重要影响。",
+     "t": "美国特使会晤普京后赴都柏林 与泽连斯基讨论和平进程",
+     "d": "美国特使史蒂夫·维特科夫和杰瑞德·库什纳在克里姆林宫会见普京后前往都柏林，与乌克兰总统泽连斯基就俄乌冲突进行谈判，虽未取得突破，但同意交换大量囚犯并计划新一轮多方会谈。此外交行动反映美方在俄乌冲突调解中的持续介入。",
      "src": [
       {
        "n": "NPR",
@@ -164,25 +160,41 @@
      "full": true
     },
     {
-     "t": "中国围绕台湾大规模军演",
-     "d": "北京自十一月初启动环台军演，虽未实施封锁，但显示区域紧张升级，对地区供应链和全球资本流向产生压力。",
+     "t": "英伟达首席财务官接任临时CEO 面临挑战",
+     "d": "继黄仁勋辞职后，英伟达财务总监科莱特·克雷斯被任命为临时首席执行官，需在公司市值大幅下跌和监管审查的背景下稳住业务。此变动对公司在AI芯片竞争格局中的战略执行具有重要影响。",
      "src": [
       {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/asia-pacific/20261113-chinese-army-military-exercises-taiwan"
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/13/nx-s1-6038889/colette-kress-becomes-nvidias-interim-ceo-after-jensen-huang-resigns"
       },
       {
-       "n": "日本时报",
-       "u": "https://www.japantimes.co.jp/news/2026/11/13/asia-pacific/politics/china-silent-intimidation/"
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/business/nvidia-approached-arm-ceo-haas-succeed-huang-ft-reports-6550286"
       }
-     ]
+     ],
+     "full": true
+    },
+    {
+     "t": "伊朗革命卫队称击毁巴林美国雷达 美方否认",
+     "d": "伊朗革命卫队宣称击毁巴林美军早期预警雷达，美国中央司令部否认雷达被毁并称拦截了两架“一路攻击无人机”。此事加剧了美伊在波斯湾地区的军事紧张，对地区能源供应安全构成潜在威胁。",
+     "src": [
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/iran-us-radar-system-bahrain-strike-guards-6550196"
+      },
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/iran-targeted-us-radar-system-in-bahrain/a-79942640?maca=en-rss-en-all-1573-rdf"
+      }
+     ],
+     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "Nvidia 任命 Colette Kress 为临时 CEO",
-  "d": "作为全球 AI 计算核心企业，Nvidia 领导层变动直接关系芯片供应、AI 研发进度以及相关股价波动，值得关注其后续走向。"
+  "t": "Colette Kress 成为 Nvidia 临时 CEO",
+  "d": "AI 产业链核心公司领袖更迭，牵动全球芯片供需与技术监管，直接影响科技股估值与市场情绪。"
  },
  "week": []
 }
