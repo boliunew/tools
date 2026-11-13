@@ -1,16 +1,16 @@
 {
- "date": "2026-11-12",
- "kind": "易错",
- "en": "developing rapidly",
- "zh": "快速发展",
- "by": "fast 本身就是副词，没有 fastly",
- "line": "✗ developing fastly → ✓ developing rapidly",
+ "date": "2026-11-13",
+ "kind": "口头禅",
+ "en": "Just to clarify",
+ "zh": "我确认一下",
+ "by": "澄清细节",
+ "line": "Just to clarify",
  "word": {
-  "w": "divine",
-  "ph": "di'vain",
-  "zh": "a. 神的，神圣的，非凡的；n. 神学家",
-  "ex": "That meal was simply divine.",
-  "exzh": "那顿饭简直好极了。"
+  "w": "ditch",
+  "ph": "ditʃ",
+  "zh": "n. 沟渠；vt. 在...开沟",
+  "ex": "Tom took the corner too fast and landed in the ditch.",
+  "exzh": "汤姆拐弯儿拐得太快了，把车开到了水沟里。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
