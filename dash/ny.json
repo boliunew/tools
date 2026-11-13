@@ -1,86 +1,86 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-12T11:53:35.510557Z",
+ "eventsUpdatedAt": "2026-11-13T05:55:29.053581Z",
  "ranges": {
-  "today": "2026-11-12",
+  "today": "2026-11-13",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-12",
-   "day": "today",
-   "dayLabel": "周四",
-   "endTime": "2:00 PM",
-   "note": "Mezzo-soprano, harpsichord, jarana and South Indian frame drum share the stage in Guadalupe Peraza's intercultural early-music project Mexamorphosis.",
-   "price": "Free",
-   "sourceUrl": "https://dothisnyc.com/free-concerts-nyc/",
-   "startTime": "1:15 PM",
-   "title": "MexaMorphosis: Chamber",
-   "venue": "Times Square, Manhattan"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-12",
-   "day": "today",
-   "dayLabel": "周四",
-   "endTime": null,
-   "note": "Dave Matthews Band plays Madison Square Garden on Thursday night.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=12",
-   "startTime": "7:30 PM",
    "title": "Dave Matthews Band",
-   "venue": "Madison Square Garden"
-  },
-  {
-   "bucket": "today",
-   "category": "Sports",
-   "city": "New York",
-   "date": "2026-11-12",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
+   "dayLabel": "周五",
+   "startTime": "7:30 PM",
    "endTime": null,
-   "note": "Thursday night football: the New York Giants host the Washington Commanders at MetLife Stadium.",
+   "venue": "Madison Square Garden, 7th Ave & 32nd St, Manhattan",
+   "city": "New York",
+   "category": "Music",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=12",
-   "startTime": "8:15 PM",
-   "title": "New York Giants vs. Washington Commanders",
-   "venue": "MetLife Stadium, East Rutherford, NJ"
+   "note": "Dave Matthews Band plays Madison Square Garden on Friday night.",
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock"
   },
   {
    "bucket": "today",
+   "title": "Nia Archives — EMOTIONAL WORLD TOUR",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
+   "startTime": null,
+   "endTime": null,
+   "venue": "Webster Hall, 125 E 11th St, Manhattan",
+   "city": "New York",
+   "category": "Music",
+   "price": null,
+   "note": "London producer and singer Nia Archives brings her EMOTIONAL WORLD TOUR to Webster Hall.",
+   "sourceUrl": "https://loudie.com/cities/nyc"
+  },
+  {
+   "bucket": "today",
+   "title": "New York Philharmonic: Puccini's Tosca (opera in concert)",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
+   "startTime": "7:30 PM",
+   "endTime": null,
+   "venue": "Carnegie Hall, Stern Auditorium, Manhattan",
+   "city": "New York",
+   "category": "Music",
+   "price": null,
+   "note": "The New York Philharmonic performs Puccini's Tosca in concert at Carnegie Hall.",
+   "sourceUrl": "https://nycinfocus.com/2026/11/12/things-to-do-in-nyc-this-weekend-november-13-15-2026/"
+  },
+  {
+   "bucket": "today",
+   "title": "NY Comedy Festival Presents Ilana Glazer Live!",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
+   "startTime": "6:45 PM",
+   "endTime": null,
+   "venue": "Beacon Theatre, 2124 Broadway, Manhattan",
+   "city": "New York",
    "category": "Comedy",
-   "city": "New York",
-   "date": "2026-11-12",
-   "day": "today",
-   "dayLabel": "周四",
-   "endTime": null,
-   "note": "NY Comedy Festival presents Jordan Jensen's The Wet Hug Tour at the Beacon Theatre.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=12",
-   "startTime": "8:00 PM",
-   "title": "Jordan Jensen: The Wet Hug Tour",
-   "venue": "Beacon Theatre, 2124 Broadway, Manhattan"
+   "note": "Ilana Glazer performs live at the Beacon Theatre as part of the New York Comedy Festival.",
+   "sourceUrl": "https://nycinfocus.com/2026/11/12/things-to-do-in-nyc-this-weekend-november-13-15-2026/"
   },
   {
    "bucket": "today",
-   "category": "Arts",
-   "city": "New York",
-   "date": "2026-11-12",
+   "title": "Giant Rooks",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
-   "endTime": "9:00 PM",
-   "note": "One-night-only evening of film and choreography by creative duo Fernando Salazar and Chun Fung Kevin Chiu.",
-   "price": "$23.18",
-   "sourceUrl": "https://www.eventbrite.com/e/salon-metropolis-tickets-2002751910878",
-   "startTime": "6:30 PM",
-   "title": "Salón Metropolis",
-   "venue": "The Clemente, Flamboyan Theater, 107 Suffolk St, Manhattan"
+   "dayLabel": "周五",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Brooklyn Steel, 319 Frost St, Brooklyn",
+   "city": "New York",
+   "category": "Music",
+   "price": null,
+   "note": "German indie rock band Giant Rooks plays Brooklyn Steel on Friday night.",
+   "sourceUrl": "https://loudie.com/cities/nyc"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 50,
-   "feelsLike": 46,
-   "high": 62,
-   "low": 47,
+   "temp": 46,
+   "feelsLike": 40,
+   "high": 47,
+   "low": 37,
    "description": "Overcast",
-   "precipChance": 89,
-   "humidity": 74,
-   "wind": "5 mph",
-   "uvIndex": 2,
-   "airQualityIndex": 56,
-   "airQualityDescription": "Moderate"
+   "precipChance": 65,
+   "humidity": 89,
+   "wind": "12 mph",
+   "uvIndex": 0,
+   "airQualityIndex": 50,
+   "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-12",
-   "high": 62,
-   "low": 47,
-   "precipChance": 89,
-   "summary": "Drizzle. Highs around 62 and lows around 47."
+   "date": "2026-11-13",
+   "high": 47,
+   "low": 37,
+   "precipChance": 65,
+   "summary": "Rain. Highs around 47 and lows around 37."
   },
   "daily": [
    {
-    "date": "2026-11-12",
-    "high": 62,
-    "low": 47,
-    "precipChance": 89
-   },
-   {
     "date": "2026-11-13",
     "high": 47,
-    "low": 38,
-    "precipChance": 98
+    "low": 37,
+    "precipChance": 65
    },
    {
     "date": "2026-11-14",
-    "high": 46,
-    "low": 38,
-    "precipChance": 33
+    "high": 44,
+    "low": 33,
+    "precipChance": 5
    },
    {
     "date": "2026-11-15",
-    "high": 47,
-    "low": 38,
+    "high": 49,
+    "low": 41,
     "precipChance": 0
    },
    {
     "date": "2026-11-16",
-    "high": 50,
-    "low": 40,
+    "high": 52,
+    "low": 41,
     "precipChance": 0
    },
    {
     "date": "2026-11-17",
-    "high": 53,
-    "low": 40,
+    "high": 56,
+    "low": 42,
     "precipChance": 0
    },
    {
     "date": "2026-11-18",
-    "high": 56,
-    "low": 43,
-    "precipChance": 1
+    "high": 57,
+    "low": 44,
+    "precipChance": 0
+   },
+   {
+    "date": "2026-11-19",
+    "high": 59,
+    "low": 47,
+    "precipChance": 0
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 46,
-    "low": 38,
-    "precipChance": 33,
-    "summary": "Light drizzle. Highs around 46 and lows around 38.",
-    "wind": "16 mph",
+    "high": 44,
+    "low": 33,
+    "precipChance": 5,
+    "summary": "Overcast. Highs around 44 and lows around 33.",
+    "wind": "14 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 47,
-    "low": 38,
+    "high": 49,
+    "low": 41,
     "precipChance": 0,
-    "summary": "Overcast. Highs around 47 and lows around 38.",
-    "wind": "16 mph",
+    "summary": "Overcast. Highs around 49 and lows around 41.",
+    "wind": "17 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-12T11:52:36.357265Z",
+  "fetchedAt": "2026-11-13T05:53:04.264349Z",
   "location": "New York, NY"
  }
 }
