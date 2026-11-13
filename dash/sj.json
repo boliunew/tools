@@ -1,71 +1,86 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-13T05:55:29.051416Z",
+ "eventsUpdatedAt": "2026-11-13T11:54:36.872788Z",
  "ranges": {
-  "today": "2026-11-12",
+  "today": "2026-11-13",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Tauren Wells: Air1 Worship Now Tour",
-   "date": "2026-11-12",
+   "title": "2026 San Jose Harvest Festival",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
+   "dayLabel": "周五",
+   "startTime": "10:00 AM",
+   "endTime": "5:00 PM",
+   "venue": "Santa Clara County Fairgrounds, 344 Tully Rd, San Jose, CA 95111",
+   "city": "San Jose",
+   "category": "Festival",
+   "price": "From $9",
+   "note": "53rd annual artisan art and craft show with hundreds of local makers, live music, and a KidZone; Friday hours 10am-5pm, ticket good all three days.",
+   "sourceUrl": "https://allevents.in/san-jose/2026-san-jose-harvest-festival/200029453814044"
+  },
+  {
+   "bucket": "today",
+   "title": "San Jose Holiday Lights 2026 — Opening Night",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
+   "startTime": "4:30 PM",
+   "endTime": "10:30 PM",
+   "venue": "Discovery Meadow, Guadalupe River Park & Gardens, 330 W San Carlos St, San Jose, CA 95110",
+   "city": "San Jose",
+   "category": "Festival",
+   "price": "From $29",
+   "note": "Opening night of the downtown holiday light festival, running nightly Nov 13–Jan 1 with six themed light zones, public art, and seasonal food.",
+   "sourceUrl": "https://sf.funcheap.com/san-jose-holiday-lights-2026-discovery-meadow-nov-13jan-1/"
+  },
+  {
+   "bucket": "today",
+   "title": "Jerry Seinfeld",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
    "startTime": "7:00 PM",
    "endTime": null,
-   "venue": "Cathedral of Faith, 2315 Canoas Garden Ave",
+   "venue": "San Jose Center for the Performing Arts, 255 S Almaden Blvd, San Jose, CA 95113",
    "city": "San Jose",
-   "category": "Music",
-   "price": "Sold out",
-   "note": "Tauren Wells brings the Air1 Worship Now Tour to Cathedral of Faith with Seph Schlueter, Gateway Worship and Roosevelt Stewart; sold out.",
-   "sourceUrl": "https://tprlive.co/products/tauren-wells-air1-worship-now-tour-san-jose-ca-november-12-2026"
+   "category": "Comedy",
+   "price": "From $154",
+   "note": "The legendary stand-up comedian brings his tour to downtown San Jose for one night.",
+   "sourceUrl": "https://www.san-jose-theater.com/shows/san-jose-center-for-performing-arts/jerry-seinfeld"
   },
   {
    "bucket": "today",
    "title": "Mo Amer",
-   "date": "2026-11-12",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
-   "startTime": "4:00 PM",
+   "dayLabel": "周五",
+   "startTime": "7:30 PM",
    "endTime": null,
-   "venue": "San Jose Improv, 62 S 2nd St",
+   "venue": "San Jose Improv, 62 S 2nd St, San Jose, CA 95113",
    "city": "San Jose",
    "category": "Comedy",
    "price": null,
-   "note": "Comedian Mo Amer performs an early show at San Jose Improv.",
-   "sourceUrl": "https://allevents.in/san-jos%C3%A9/comedy"
+   "note": "The Palestinian-American comedian and star of Netflix's 'Mo' performs stand-up; a second show follows at 9:45 PM.",
+   "sourceUrl": "https://www.san-jose-theater.com/shows/san-jose-improv/mo-amer"
   },
   {
    "bucket": "today",
-   "title": "Rohan Joshi: Getting There",
-   "date": "2026-11-12",
+   "title": "Jubin Nautiyal Live in Concert – Bay Area",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
+   "dayLabel": "周五",
    "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "San Jose Improv, 62 S 2nd St",
+   "endTime": "11:00 PM",
+   "venue": "San Jose Civic, 145 West San Carlos Street, San Jose, CA 95112",
    "city": "San Jose",
-   "category": "Comedy",
-   "price": null,
-   "note": "Stand-up comedy with Rohan Joshi at San Jose Improv.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?page=1"
-  },
-  {
-   "bucket": "today",
-   "title": "Joe Machi",
-   "date": "2026-11-12",
-   "day": "today",
-   "dayLabel": "周四",
-   "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "Rooster T. Feathers Comedy Club, 157 W El Camino Real, Sunnyvale",
-   "city": "San Jose",
-   "category": "Comedy",
-   "price": "From $39",
-   "note": "Stand-up comedy with Joe Machi at Rooster T. Feathers in nearby Sunnyvale.",
-   "sourceUrl": "https://sanjose.events/comedy/joe-machi/"
+   "category": "Music",
+   "price": "From $102",
+   "note": "Bollywood playback singer Jubin Nautiyal's first-ever Bay Area concert, opening his North America tour.",
+   "sourceUrl": "https://americanarenas.com/venue/san-jose-civic/"
   }
  ],
  "events": [
@@ -192,92 +207,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 60,
-   "feelsLike": 58,
-   "high": 75,
-   "low": 49,
-   "description": "Clear",
-   "precipChance": 3,
-   "humidity": 75,
-   "wind": "6 mph",
-   "uvIndex": 4,
-   "airQualityIndex": 59,
+   "temp": 59,
+   "feelsLike": 56,
+   "high": 61,
+   "low": 51,
+   "description": "Mainly clear",
+   "precipChance": 94,
+   "humidity": 79,
+   "wind": "8 mph",
+   "uvIndex": 2,
+   "airQualityIndex": 51,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-12",
-   "high": 75,
-   "low": 49,
-   "precipChance": 3,
-   "summary": "Overcast. Highs around 75 and lows around 49."
+   "date": "2026-11-13",
+   "high": 61,
+   "low": 51,
+   "precipChance": 94,
+   "summary": "Rain. Highs around 61 and lows around 51."
   },
   "daily": [
    {
-    "date": "2026-11-12",
-    "high": 75,
-    "low": 49,
-    "precipChance": 3
-   },
-   {
     "date": "2026-11-13",
-    "high": 62,
-    "low": 52,
+    "high": 61,
+    "low": 51,
     "precipChance": 94
    },
    {
     "date": "2026-11-14",
-    "high": 65,
-    "low": 49,
-    "precipChance": 18
+    "high": 62,
+    "low": 50,
+    "precipChance": 14
    },
    {
     "date": "2026-11-15",
-    "high": 67,
+    "high": 66,
     "low": 53,
-    "precipChance": 89
+    "precipChance": 92
    },
    {
     "date": "2026-11-16",
-    "high": 58,
-    "low": 52,
-    "precipChance": 66
+    "high": 60,
+    "low": 51,
+    "precipChance": 70
    },
    {
     "date": "2026-11-17",
-    "high": 60,
-    "low": 50,
-    "precipChance": 41
+    "high": 61,
+    "low": 49,
+    "precipChance": 47
    },
    {
     "date": "2026-11-18",
-    "high": 58,
+    "high": 56,
     "low": 48,
-    "precipChance": 80
+    "precipChance": 77
+   },
+   {
+    "date": "2026-11-19",
+    "high": 56,
+    "low": 46,
+    "precipChance": 50
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 65,
-    "low": 49,
-    "precipChance": 18,
-    "summary": "Overcast. Highs around 65 and lows around 49.",
-    "wind": "7 mph",
+    "high": 62,
+    "low": 50,
+    "precipChance": 14,
+    "summary": "Rain. Highs around 62 and lows around 50.",
+    "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 67,
+    "high": 66,
     "low": 53,
-    "precipChance": 89,
-    "summary": "Rain. Highs around 67 and lows around 53.",
-    "wind": "7 mph",
+    "precipChance": 92,
+    "summary": "Rain. Highs around 66 and lows around 53.",
+    "wind": "10 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-13T05:53:00.039781Z",
+  "fetchedAt": "2026-11-13T11:52:47.297224Z",
   "location": "San Jose, CA"
  }
 }

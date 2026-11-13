@@ -1,86 +1,86 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-13T05:55:29.052523Z",
+ "eventsUpdatedAt": "2026-11-13T11:54:36.873599Z",
  "ranges": {
-  "today": "2026-11-12",
+  "today": "2026-11-13",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "The Smashing Pumpkins: The Rats In A Cage Tour",
-   "date": "2026-11-12",
+   "title": "Ólafur Arnalds",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
+   "dayLabel": "周五",
    "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "Kia Forum, Inglewood",
+   "venue": "The Wiltern, 3790 Wilshire Blvd, Los Angeles, CA 90010",
    "city": "Los Angeles",
    "category": "Music",
-   "price": null,
-   "note": "The Smashing Pumpkins bring The Rats In A Cage Tour to the Kia Forum.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?msockid=02b74fe7b99d6d31009c58f4b86f6c1f&page=5"
+   "price": "From $87 (resale)",
+   "note": "Icelandic composer Ólafur Arnalds performs his blend of modern classical and electronic music; doors 7:00 PM, all ages.",
+   "sourceUrl": "https://concerts.consequence.net/events/olafur-arnalds-at-the-wiltern-on-2026-11-13-19-00"
   },
   {
    "bucket": "today",
-   "title": "Sabaton: Legends on Tour",
-   "date": "2026-11-12",
+   "title": "2026 Japanese Food Expo in L.A.",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
-   "startTime": "6:00 PM",
-   "endTime": null,
-   "venue": "Hollywood Palladium",
+   "dayLabel": "周五",
+   "startTime": "5:00 PM",
+   "endTime": "8:00 PM",
+   "venue": "Ovation Hollywood, 5th Floor, 6801 Hollywood Blvd, Hollywood, CA 90028",
    "city": "Los Angeles",
-   "category": "Music",
+   "category": "Food & Drink",
    "price": null,
-   "note": "Sabaton brings the Legends on Tour to the Hollywood Palladium.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?msockid=02b74fe7b99d6d31009c58f4b86f6c1f&page=5"
+   "note": "Two-day Japanese food and culture festival with 100+ food and beverage tastings, sake, taiko performances and hands-on workshops.",
+   "sourceUrl": "https://uncoverla.com/2026/11/11/best-los-angeles-events-november-2026/"
   },
   {
    "bucket": "today",
-   "title": "Nick Cannon Presents: Wild 'N Out Live - The Next Generation",
-   "date": "2026-11-12",
+   "title": "SWMRS",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
+   "dayLabel": "周五",
    "startTime": "7:00 PM",
    "endTime": null,
-   "venue": "Intuit Dome, Inglewood",
+   "venue": "Teragram Ballroom, 1234 W 7th St, Los Angeles, CA",
+   "city": "Los Angeles",
+   "category": "Music",
+   "price": null,
+   "note": "SWMRS headlines the intimate 625-capacity Teragram Ballroom with The Happy Return supporting; all ages.",
+   "sourceUrl": "https://onestowatch.com/live/los-angeles-weekend-november-13/"
+  },
+  {
+   "bucket": "today",
+   "title": "Gianmarco Soresi: The Misery Loves Tour",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
+   "startTime": "7:00 PM",
+   "endTime": null,
+   "venue": "Orpheum Theatre, 842 S Broadway, Los Angeles, CA",
    "city": "Los Angeles",
    "category": "Comedy",
    "price": null,
-   "note": "Nick Cannon presents Wild 'N Out Live at Intuit Dome.",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?msockid=02b74fe7b99d6d31009c58f4b86f6c1f&page=5"
+   "note": "Stand-up comedian Gianmarco Soresi brings his Misery Loves Tour to the historic downtown Orpheum Theatre.",
+   "sourceUrl": "https://onestowatch.com/live/los-angeles-weekend-november-13/"
   },
   {
    "bucket": "today",
-   "title": "Talib Kweli",
-   "date": "2026-11-12",
+   "title": "Los Angeles Philharmonic: Tchaikovsky's Fourth Symphony",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
-   "startTime": "7:00 PM",
+   "dayLabel": "周五",
+   "startTime": "8:00 PM",
    "endTime": null,
-   "venue": "Blue Note Los Angeles",
+   "venue": "Walt Disney Concert Hall, 111 S Grand Ave, Los Angeles, CA 90012",
    "city": "Los Angeles",
    "category": "Music",
-   "price": null,
-   "note": "Talib Kweli performs at Blue Note Los Angeles in Hollywood.",
-   "sourceUrl": "https://www.bandsintown.com/c/los-angeles-ca?came_from=209&latitude=34.098524&longitude=-118.3435518"
-  },
-  {
-   "bucket": "today",
-   "title": "Saba × MOZI Fall Harvest",
-   "date": "2026-11-12",
-   "day": "today",
-   "dayLabel": "周四",
-   "startTime": "6:30 PM",
-   "endTime": null,
-   "venue": "Saba Surf, Venice",
-   "city": "Los Angeles",
-   "category": "Music",
-   "price": "Free",
-   "note": "Free fall harvest music night at Saba Surf in Venice.",
-   "sourceUrl": "https://www.getsidetracked.app/events/this-week"
+   "price": "From $59",
+   "note": "Jukka-Pekka Saraste conducts Tchaikovsky's Fourth Symphony, with saxophonist Steven Banks in Billy Childs' Diaspora concerto.",
+   "sourceUrl": "https://www.todaytix.com/los-angeles/shows/47644-tchaikovskys-fourth-symphony?share=unlock"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 64,
-   "feelsLike": 66,
-   "high": 79,
+   "temp": 60,
+   "feelsLike": 61,
+   "high": 66,
    "low": 58,
    "description": "Overcast",
-   "precipChance": 6,
-   "humidity": 83,
-   "wind": "3 mph",
-   "uvIndex": 5,
-   "airQualityIndex": 68,
+   "precipChance": 56,
+   "humidity": 85,
+   "wind": "4 mph",
+   "uvIndex": 4,
+   "airQualityIndex": 66,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-12",
-   "high": 79,
+   "date": "2026-11-13",
+   "high": 66,
    "low": 58,
-   "precipChance": 6,
-   "summary": "Overcast. Highs around 79 and lows around 58."
+   "precipChance": 56,
+   "summary": "Rain. Highs around 66 and lows around 58."
   },
   "daily": [
    {
-    "date": "2026-11-12",
-    "high": 79,
-    "low": 58,
-    "precipChance": 6
-   },
-   {
     "date": "2026-11-13",
     "high": 66,
-    "low": 59,
-    "precipChance": 70
+    "low": 58,
+    "precipChance": 56
    },
    {
     "date": "2026-11-14",
-    "high": 69,
-    "low": 54,
-    "precipChance": 78
+    "high": 67,
+    "low": 55,
+    "precipChance": 79
    },
    {
     "date": "2026-11-15",
     "high": 72,
-    "low": 63,
-    "precipChance": 10
+    "low": 64,
+    "precipChance": 7
    },
    {
     "date": "2026-11-16",
-    "high": 69,
-    "low": 60,
-    "precipChance": 45
+    "high": 70,
+    "low": 62,
+    "precipChance": 43
    },
    {
     "date": "2026-11-17",
-    "high": 68,
-    "low": 58,
-    "precipChance": 39
+    "high": 69,
+    "low": 59,
+    "precipChance": 34
    },
    {
     "date": "2026-11-18",
     "high": 67,
-    "low": 60,
-    "precipChance": 33
+    "low": 59,
+    "precipChance": 37
+   },
+   {
+    "date": "2026-11-19",
+    "high": 64,
+    "low": 56,
+    "precipChance": 37
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 69,
-    "low": 54,
-    "precipChance": 78,
-    "summary": "Light rain. Highs around 69 and lows around 54.",
-    "wind": "11 mph",
+    "high": 67,
+    "low": 55,
+    "precipChance": 79,
+    "summary": "Overcast. Highs around 67 and lows around 55.",
+    "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
     "high": 72,
-    "low": 63,
-    "precipChance": 10,
-    "summary": "Overcast. Highs around 72 and lows around 63.",
-    "wind": "9 mph",
+    "low": 64,
+    "precipChance": 7,
+    "summary": "Overcast. Highs around 72 and lows around 64.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-13T05:53:02.231181Z",
+  "fetchedAt": "2026-11-13T11:52:49.576870Z",
   "location": "Los Angeles, CA"
  }
 }

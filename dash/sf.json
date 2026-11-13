@@ -1,86 +1,86 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-13T05:55:29.049005Z",
+ "eventsUpdatedAt": "2026-11-13T11:54:36.865293Z",
  "ranges": {
-  "today": "2026-11-12",
+  "today": "2026-11-13",
   "sat": "2026-11-14",
   "sun": "2026-11-15"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "title": "Stanley Clarke",
-   "date": "2026-11-12",
+   "title": "Prokofiev's \"Romeo & Juliet\" with the SF Symphony",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
+   "dayLabel": "周五",
    "startTime": "7:30 PM",
-   "endTime": null,
-   "venue": "SFJAZZ Center - Miner Auditorium, 201 Franklin St",
+   "endTime": "10:30 PM",
+   "venue": "Davies Symphony Hall, 201 Van Ness Ave, San Francisco, CA 94102",
    "city": "San Francisco",
    "category": "Music",
-   "price": null,
-   "note": "Jazz bass legend Stanley Clarke plays SFJAZZ Center on Thursday night.",
-   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/concerts/"
+   "price": "From $30",
+   "note": "SF Symphony performs Prokofiev's Romeo and Juliet selections with conductor Marie Jacquot and violinist Sayaka Shoji, plus Respighi and Holmès.",
+   "sourceUrl": "https://sf.funcheap.com/prokofievs-romeo-juliet-w-the-sf-symphony-nov-13-15/"
   },
   {
    "bucket": "today",
-   "title": "Band of Horses",
-   "date": "2026-11-12",
+   "title": "Handel's The Power of Music (SF)",
+   "date": "2026-11-13",
    "day": "today",
-   "dayLabel": "周四",
-   "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "The Regency Ballroom, 1300 Van Ness Ave",
-   "city": "San Francisco",
-   "category": "Music",
-   "price": "From $61",
-   "note": "Band of Horses play The Regency Ballroom on Thursday night.",
-   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/concerts/"
-  },
-  {
-   "bucket": "today",
-   "title": "Ólafur Arnalds",
-   "date": "2026-11-12",
-   "day": "today",
-   "dayLabel": "周四",
-   "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "Castro Theatre, 429 Castro St",
-   "city": "San Francisco",
-   "category": "Music",
-   "price": "From $33",
-   "note": "Icelandic composer Ólafur Arnalds performs at the Castro Theatre.",
-   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/concerts/"
-  },
-  {
-   "bucket": "today",
-   "title": "Marc Broussard",
-   "date": "2026-11-12",
-   "day": "today",
-   "dayLabel": "周四",
-   "startTime": "8:00 PM",
-   "endTime": null,
-   "venue": "The Chapel, 777 Valencia St",
-   "city": "San Francisco",
-   "category": "Music",
-   "price": null,
-   "note": "Soul singer Marc Broussard plays The Chapel, with Cristina Vane.",
-   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco/soul"
-  },
-  {
-   "bucket": "today",
-   "title": "Free HellaFunny Thursday Comedy Night",
-   "date": "2026-11-12",
-   "day": "today",
-   "dayLabel": "周四",
+   "dayLabel": "周五",
    "startTime": "7:30 PM",
-   "endTime": "9:00 PM",
-   "venue": "The Function, 1414 Market St",
+   "endTime": "10:30 PM",
+   "venue": "Herbst Theatre, 401 Van Ness Avenue, San Francisco, CA",
+   "city": "San Francisco",
+   "category": "Music",
+   "price": "From $40",
+   "note": "Philharmonia Baroque Orchestra & Chorale open their season with Handel's Alexander's Feast in its 1742 Dublin version, a U.S. premiere on period instruments.",
+   "sourceUrl": "https://sf.funcheap.com/handels-the-power-of-music-sf/"
+  },
+  {
+   "bucket": "today",
+   "title": "SF's Free Filipino Cultural District Mural Reveal + Mini Block Party (SoMa)",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
+   "startTime": "6:00 PM",
+   "endTime": "10:00 PM",
+   "venue": "Jessie West Alley, 5th and Mission, San Francisco, CA",
+   "city": "San Francisco",
+   "category": "Festival",
+   "price": "Free",
+   "note": "Unveiling of two monumental Mahal/Love murals by Venazir Martinez and Andre Sibayan, followed by a free block party with art activities, a fashion show, and love-song karaoke.",
+   "sourceUrl": "https://sf.funcheap.com/free-mahallove-mural-unveiling-fashion-show-mini-block-party-sf/"
+  },
+  {
+   "bucket": "today",
+   "title": "\"Golden Gate Comedy Night\" — SF's Most Intimate Comedy Club",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
+   "startTime": "7:00 PM",
+   "endTime": "10:30 PM",
+   "venue": "The Function, 1414 Market Street, San Francisco, CA",
    "city": "San Francisco",
    "category": "Comedy",
    "price": "Free",
-   "note": "Free Thursday stand-up comedy night in downtown SF.",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/12/"
+   "note": "Best-of style showcase of Bay Area comics you'd normally see at Punch Line and Cobb's, in an intimate downtown club; free with RSVP, 21+.",
+   "sourceUrl": "https://sf.funcheap.com/golden-gate-comedy-night-sfs-most-intimate-comedy-club-32/"
+  },
+  {
+   "bucket": "today",
+   "title": "$1 Drink Fridays: \"Battle of the Decades\" DJ Party (North Beach)",
+   "date": "2026-11-13",
+   "day": "today",
+   "dayLabel": "周五",
+   "startTime": "5:00 PM",
+   "endTime": "11:00 PM",
+   "venue": "Monroe, 473 Broadway Street, San Francisco, CA",
+   "city": "San Francisco",
+   "category": "Food & Drink",
+   "price": "Free",
+   "note": "Weekly DJ party where each hour is a different decade with matching drink prices — $1 drinks during '60s hour, rising $1 per decade.",
+   "sourceUrl": "https://sf.funcheap.com/1-drink-fridays-battle-of-the-decades-dj-party-north-beach-263/"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 60,
-   "feelsLike": 59,
-   "high": 71,
-   "low": 51,
+   "temp": 58,
+   "feelsLike": 58,
+   "high": 60,
+   "low": 52,
    "description": "Partly cloudy",
-   "precipChance": 2,
-   "humidity": 84,
+   "precipChance": 96,
+   "humidity": 90,
    "wind": "6 mph",
-   "uvIndex": 4,
-   "airQualityIndex": 53,
-   "airQualityDescription": "Moderate"
+   "uvIndex": 1,
+   "airQualityIndex": 39,
+   "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-12",
-   "high": 71,
-   "low": 51,
-   "precipChance": 2,
-   "summary": "Light drizzle. Highs around 71 and lows around 51."
+   "date": "2026-11-13",
+   "high": 60,
+   "low": 52,
+   "precipChance": 96,
+   "summary": "Rain. Highs around 60 and lows around 52."
   },
   "daily": [
    {
-    "date": "2026-11-12",
-    "high": 71,
-    "low": 51,
-    "precipChance": 2
-   },
-   {
     "date": "2026-11-13",
-    "high": 61,
-    "low": 51,
-    "precipChance": 93
+    "high": 60,
+    "low": 52,
+    "precipChance": 96
    },
    {
     "date": "2026-11-14",
-    "high": 61,
-    "low": 50,
-    "precipChance": 40
+    "high": 62,
+    "low": 51,
+    "precipChance": 19
    },
    {
     "date": "2026-11-15",
-    "high": 63,
-    "low": 56,
-    "precipChance": 87
+    "high": 64,
+    "low": 54,
+    "precipChance": 91
    },
    {
     "date": "2026-11-16",
     "high": 60,
     "low": 55,
-    "precipChance": 61
+    "precipChance": 57
    },
    {
     "date": "2026-11-17",
-    "high": 59,
+    "high": 60,
     "low": 52,
-    "precipChance": 68
+    "precipChance": 66
    },
    {
     "date": "2026-11-18",
-    "high": 59,
-    "low": 53,
-    "precipChance": 84
+    "high": 58,
+    "low": 52,
+    "precipChance": 82
+   },
+   {
+    "date": "2026-11-19",
+    "high": 57,
+    "low": 49,
+    "precipChance": 55
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 61,
-    "low": 50,
-    "precipChance": 40,
-    "summary": "Light rain. Highs around 61 and lows around 50.",
-    "wind": "8 mph",
+    "high": 62,
+    "low": 51,
+    "precipChance": 19,
+    "summary": "Overcast. Highs around 62 and lows around 51.",
+    "wind": "7 mph",
     "hourly": []
    },
    {
     "date": "2026-11-15",
     "day": "sun",
-    "high": 63,
-    "low": 56,
-    "precipChance": 87,
-    "summary": "Showers. Highs around 63 and lows around 56.",
-    "wind": "17 mph",
+    "high": 64,
+    "low": 54,
+    "precipChance": 91,
+    "summary": "Rain. Highs around 64 and lows around 54.",
+    "wind": "15 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-13T05:52:57.976265Z",
+  "fetchedAt": "2026-11-13T11:52:45.116868Z",
   "location": "San Francisco, CA"
  }
 }
