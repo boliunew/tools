@@ -1,0 +1,188 @@
+{
+ "date": "2026-11-13",
+ "generated": "2026-11-13T20:56:13Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "微软365服务停摆22小时 全球受影响",
+     "d": "微软因例行自动检测导致部分服务器下线，超负荷致Outlook等365服务在70余国中断22小时，约4.3亿用户受波及。此事件凸显全球业务对少数大型科技公司的高度依赖及潜在风险。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cxzd9171m51qo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "前Nvidia CEO黄仁勋被召国会作证",
+     "d": "因被指与疑似中国间谍有婚外情，前Nvidia CEO黄仁勋于下月被美国参议院委员会传唤作证，导致公司市值五天蒸发5500亿美元。此事将对美中技术出口监管及企业治理产生关注。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cmq5vd1wdgz6o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/12 周四 收盘：标普500 ETF（SPY）-0.35%，纳指100 ETF（QQQ）-0.32%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 18.7；71% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：AMD +5.9%、AVGO +5.5%、ANET +5.1%；跌幅最大：GPN -12.0%、SMCI -11.3%、KDP -7.4%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：MUFG（盘前）、SMFG（盘前）、MFG（盘前）、KB（时间未定）",
+     "d": "按市值挑出最大的几家，共 4 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：EIA 原油库存（11/13 周五）",
+     "d": "Crude Oil Inventories 实际 4.657M（预期 -0.600M，前值 -0.865M）；Cushing Crude Oil Inventories 实际 0.106M（预期 —，前值 0.280M）。库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/13 周五 10:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/17 周二 09:05：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/18 周三 08:30：零售销售（重要性：中）",
+     "d": "消费占美国 GDP 约七成。数据强 → 利好零售、可选消费；过强也会推高利率预期。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "微软全球服务故障致数百万人受影响",
+     "d": "微软确认因服务器设置问题导致Microsoft 365、Teams、Outlook等服务约18小时中断，影响全球90%以上财富500强用户及公共机构。事件再次提醒关键数字基础设施的单点故障风险。",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/technology/2026/nov/13/microsoft-outage-outlook-teams-word-excel-reports"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/microsoft-outage-recovery-deeply-sorry-outlook-teams-6550421"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Nvidia任命CFO科莱特·克雷斯为临时CEO",
+     "d": "在黄仁勋辞职后，Nvidia财务主管科莱特·克雷斯接任临时CEO，需在公司市值大幅下跌及监管审查的艰难时期稳定运营。此举关系公司治理连续性及市场信心。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/13/nx-s1-6038889/colette-kress-becomes-nvidias-interim-ceo-after-jensen-huang-resigns"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/business/nvidia-approached-arm-ceo-haas-succeed-huang-ft-reports-6550286"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美特使与普京会晤后赴都柏林与泽连斯基磋商",
+     "d": "美国特使在克里姆林宫与普京会面后前往爱尔兰，都柏林与乌克兰总统泽连斯基洽谈，计划启动新一轮俄乌和平谈判并争取欧洲加入。此外交进展对乌克兰冲突的调解前景具有重要影响。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/12/nx-s1-6038809/us-envoys-meet-putin-russia-ukraine-war-talks"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/13/europe-seeks-seat-at-ukraine-peace-talks-but-lacks-unified-voice?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "中国围绕台湾大规模军演",
+     "d": "北京自十一月初启动环台军演，虽未实施封锁，但显示区域紧张升级，对地区供应链和全球资本流向产生压力。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/asia-pacific/20261113-chinese-army-military-exercises-taiwan"
+      },
+      {
+       "n": "日本时报",
+       "u": "https://www.japantimes.co.jp/news/2026/11/13/asia-pacific/politics/china-silent-intimidation/"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "Nvidia 任命 Colette Kress 为临时 CEO",
+  "d": "作为全球 AI 计算核心企业，Nvidia 领导层变动直接关系芯片供应、AI 研发进度以及相关股价波动，值得关注其后续走向。"
+ },
+ "week": []
+}
