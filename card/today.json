@@ -1,16 +1,16 @@
 {
- "date": "2026-11-13",
- "kind": "口头禅",
- "en": "Just to clarify",
- "zh": "我确认一下",
- "by": "澄清细节",
- "line": "Just to clarify",
+ "date": "2026-11-14",
+ "kind": "名言",
+ "en": "Important principles may, and must, be inflexible.",
+ "zh": "重要的原则可以而且必须毫不动摇。",
+ "by": "Abraham Lincoln",
+ "line": "Important principles may, and must, be inflexible. — Abraham Lincoln",
  "word": {
-  "w": "ditch",
-  "ph": "ditʃ",
-  "zh": "n. 沟渠；vt. 在...开沟",
-  "ex": "Tom took the corner too fast and landed in the ditch.",
-  "exzh": "汤姆拐弯儿拐得太快了，把车开到了水沟里。"
+  "w": "tiger",
+  "ph": "'taigә",
+  "zh": "n. 老虎，虎，凶暴的人",
+  "ex": "The man wore a mask of a tiger.",
+  "exzh": "男人戴了一个老虎面具。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
