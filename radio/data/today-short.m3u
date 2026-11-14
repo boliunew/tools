@@ -1,18 +1,20 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-11-13（短版）
-#EXTINF:10,通勤电台 - ☀️ 开场 11月13日 星期五
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611130947
-#EXTINF:34,通勤电台 - 🌤️ 天气 Upland 小雨 64°/56°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611130947
+#PLAYLIST:通勤电台 2026-11-14（短版）
+#EXTINF:12,通勤电台 - ☀️ 开场 11月14日 星期六
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611140838
+#EXTINF:32,通勤电台 - 🌤️ 天气 Upland 毛毛雨 68°/55°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611140838
+#EXTINF:13,通勤电台 - 🔭 天象 Upland
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611140838
 #EXTINF:30,通勤电台 - 📊 大盘 谨慎
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611130947
-#EXTINF:60,通勤电台 - 📈 股票池 12 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611130947
-#EXTINF:40,通勤电台 - 🗓️ 财报与数据 3 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611130947
-#EXTINF:92,通勤电台 - 📰 英文新闻 Al Jazeera · BBC · NPR
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611130947
-#EXTINF:31,通勤电台 - 🔤 今日单词 weekend · jugar
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611130947
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611140838
+#EXTINF:64,通勤电台 - 📈 股票池 24 个候选
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611140838
+#EXTINF:36,通勤电台 - 🗓️ 财报与数据 3 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611140838
+#EXTINF:83,通勤电台 - 📰 英文新闻 BBC · Al Jazeera · NPR
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611140838
+#EXTINF:30,通勤电台 - 🔤 今日单词 cough · blanco
+https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611140838
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611130947
+https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611140838

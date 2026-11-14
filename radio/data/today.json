@@ -1,36 +1,49 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-13T17:48:38Z",
- "date": "2026-11-13",
+ "generated": "2026-11-14T16:39:15Z",
+ "date": "2026-11-14",
  "engine": "edge",
- "total": 535.0,
- "short": 302.9,
+ "total": 497.7,
+ "short": 306.2,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611130947",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611140838",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月13日 星期五",
-   "dur": 10.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611130947",
+   "sub": "11月14日 星期六",
+   "dur": 12.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "周五了，坚持一下就周末了！星期五，11月13日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "周末还出门，辛苦了。今天是11月14日，星期六。欢迎收听你的通勤电台，想跳过哪段就按方向盘上的下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 小雨 64°/56°F",
-   "dur": 34.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611130947",
+   "sub": "Upland 毛毛雨 68°/55°F",
+   "dur": 31.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天小雨。早上7点出门大约华氏59度，15摄氏度，那时下雨概率34%。傍晚5点下班大约华氏58度，14摄氏度。白天最高64度，约18摄氏度；最低56度。降雨概率54%。白天空气质量良好，指数最高50。今天日落时间是傍晚4点47分。提醒一下：记得带伞，路面湿滑，车速放慢。"
+     "t": "Upland今天毛毛雨。早上7点出门大约华氏55度，13摄氏度。傍晚5点下班大约华氏62度，17摄氏度。白天最高68度，约20摄氏度；最低55度。降雨概率66%。白天空气质量良好，指数最高45。今天日落时间是傍晚4点47分。提醒一下：记得带伞，路面湿滑，车速放慢。"
+    }
+   ]
+  },
+  {
+   "id": "sky",
+   "title": "🔭 天象",
+   "sub": "Upland",
+   "dur": 13.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611140838",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "天象提醒。3天后，狮子座流星雨。11/17 夜里到次日凌晨 · 月光不碍事，月亮 60%· 理想每小时 15 颗。"
     }
    ]
   },
@@ -39,40 +52,40 @@
    "title": "📊 大盘",
    "sub": "谨慎",
    "dur": 30.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611130947",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月12日收盘。标普500 ETF 下跌0.4%，纳指100 ETF 下跌0.3%。恐慌指数VIX 18.7，正常水平。标普成分股里，71%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股11月13日收盘。标普500 ETF 下跌0.4%，纳指100 ETF 下跌1.2%。恐慌指数VIX 19.3，正常水平。标普成分股里，72%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "12 个候选",
-   "dur": 59.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611130947",
+   "sub": "24 个候选",
+   "dur": 63.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天12个候选，评分最高的是Revvity，代码 R V T Y。不想听细节可以按下一首。"
+     "t": "股票池今天24个候选，评分最高的是Illumina，代码 I L M N。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了500只股票，其中回踩金坑7个，血筹码3个，RSI2 超跌反弹2个。评分最高的三个是："
+     "t": "细节：一共扫描了500只股票，其中回踩金坑10个，血筹码7个，RSI2 超跌反弹7个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Revvity，代码 R V T Y，回踩金坑信号，收盘价157.02美元，止损参考149.66。"
+     "t": "第1，Illumina，代码 I L M N，血筹码信号，收盘价207.01美元，止损参考190.45。"
     },
     {
      "lang": "zh",
-     "t": "第2，Charles River Laboratories，代码 C R L，回踩金坑信号，收盘价340.81美元，止损参考322.89。"
+     "t": "第2，Moderna，代码 M R N A，RSI2 超跌反弹信号，收盘价223.37美元，止损参考173.78。"
     },
     {
      "lang": "zh",
-     "t": "第3，APA，代码 A P A，回踩金坑信号，收盘价47.66美元，止损参考42.56。"
+     "t": "第3，Veeva Systems，代码 V E E V，RSI2 超跌反弹信号，收盘价301.53美元，止损参考279.31，注意近期有财报。"
     },
     {
      "lang": "zh",
@@ -84,33 +97,33 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "3 件大事",
-   "dur": 39.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611130947",
+   "dur": 35.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有3家大公司发财报。"
+     "t": "11月17日，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Mitsubishi UFJ Financial，代码 M U F G，盘前发财报。期权定价波动正负4.9%。标签：利好出尽型。"
+     "t": "NVIDIA，代码 N V D A，盘后发财报。期权定价波动正负8.5%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Sumitomo Mitsui Financial，代码 S M F G，盘前发财报。期权定价波动正负7.6%。标签：利好出尽型。"
+     "t": "Home Depot，代码 H D，盘前发财报。期权定价波动正负5.1%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Mizuho Financial，代码 M F G，盘前发财报。期权定价波动正负13.0%。标签：财报日常涨。"
+     "t": "BHP，代码 B H P，发财报。期权定价波动正负3.9%。标签：样本不足。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "Al Jazeera · BBC · NPR",
-   "dur": 92.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611130947",
+   "sub": "BBC · Al Jazeera · NPR",
+   "dur": 83.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
@@ -118,48 +131,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：杰西卡·佩古拉在WTA总决赛中赢得激动人心的比赛，可可·高芙被淘汰。"
+     "t": "第1条，来自BBC，科学，难度B2。大意是：极端天气让园艺师们不得不未雨绸缪。"
     },
     {
      "lang": "en",
-     "t": "Jessica Pegula wins thrilling contest at WTA Finals, Coco Gauff eliminated"
+     "t": "Extreme weather leaves gardeners hedging their bets"
     },
     {
      "lang": "en",
-     "t": "Pegula's win, in the final group one round-robin match, meant Gauff was knocked out of the season-ending championships."
+     "t": "Gardeners across Sussex are changing their planting strategies after this year's unprecedented heat."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，科学，难度B2。大意是：在您所在的苏格兰地区发生了多少起污水泄漏事件？。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：门将奥沃诺因德米格尔去世而被禁赛 12 场。"
     },
     {
      "lang": "en",
-     "t": "How many sewage spills have happened in your part of Scotland?"
+     "t": "Goalkeeper Owono handed 12-match ban after De Miguel death"
     },
     {
      "lang": "en",
-     "t": "More than 76,000 sewage spills were recorded at overflow sites previously unmonitored by Scottish Water, BBC Scotland News analysis has found."
+     "t": "Owono and De Miguel ⁠collided during a Spanish second-tier match between FC Andorra and ​Tenerife on November 2."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B2。大意是：克里斯·范·霍伦表示，他将挑战查克·舒默的参议院多数党领袖职位。"
+     "t": "第3条，来自NPR，综合，难度B2。大意是：民主党人乔纳森·克赖斯-汤姆金斯赢得阿拉斯加州州长竞选，接替共和党人。"
     },
     {
      "lang": "en",
-     "t": "Chris Van Hollen says he will challenge Chuck Schumer for Senate majority leader"
+     "t": "Democrat Jonathan Kreiss-Tomkins wins race for Alaska governor, replaces a Republican"
     },
     {
      "lang": "en",
-     "t": "Van Hollen, a progressive from Maryland, said voters sent a clear message in the midterm elections — that they want \"change from the status quo.\""
+     "t": "Kreiss-Tomkins, a former state legislator, ran a campaign emphasizing bipartisanship in the the state that usually votes Republican."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "weekend · jugar",
-   "dur": 30.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611130947",
+   "sub": "cough · blanco",
+   "dur": 30.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
@@ -167,15 +180,15 @@
     },
     {
      "lang": "en",
-     "t": "weekend"
+     "t": "cough"
     },
     {
      "lang": "zh",
-     "t": "意思是：周末。拼写是："
+     "t": "意思是：咳嗽。拼写是："
     },
     {
      "lang": "en",
-     "t": "w, e, e, k, e, n, d"
+     "t": "c, o, u, g, h"
     },
     {
      "lang": "zh",
@@ -183,7 +196,7 @@
     },
     {
      "lang": "en",
-     "t": "weekend"
+     "t": "cough"
     },
     {
      "lang": "zh",
@@ -191,40 +204,44 @@
     },
     {
      "lang": "es",
-     "t": "jugar"
+     "t": "blanco"
     },
     {
      "lang": "zh",
-     "t": "意思是：玩。跟着读一遍。"
+     "t": "意思是：白色的。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "jugar"
+     "t": "blanco"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "口头禅",
-   "dur": 12.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611130947",
+   "sub": "名言",
+   "dur": 24.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句口头禅。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "Just to clarify"
+     "t": "Important principles may, and must, be inflexible."
     },
     {
      "lang": "zh",
-     "t": "意思是：我确认一下"
+     "t": "意思是：重要的原则可以而且必须毫不动摇。这句话出自 Abraham Lincoln。"
+    },
+    {
+     "lang": "zh",
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "Just to clarify"
+     "t": "Important principles may, and must, be inflexible."
     }
    ],
    "opt": true
@@ -232,61 +249,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "报柜号/拼字母",
-   "dur": 96.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611130947",
+   "sub": "进出闸口",
+   "dur": 67.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：报柜号/拼字母。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：进出闸口。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "CSQU 305438-3"
+     "t": "我该去哪一排？"
     },
     {
      "lang": "en",
-     "t": "C-S-Q-U, three zero five four three eight, three."
+     "t": "Which row should I go to?"
     },
     {
      "lang": "en",
-     "t": "C-S-Q-U, three zero five four three eight, three."
+     "t": "Which row should I go to?"
     },
     {
      "lang": "zh",
-     "t": "MSCU 472190-6"
+     "t": "这个柜子我需要一个车架。"
     },
     {
      "lang": "en",
-     "t": "M-S-C-U, four seven two one nine zero, six."
+     "t": "I need a chassis for this container."
     },
     {
      "lang": "en",
-     "t": "M-S-C-U, four seven two one nine zero, six."
+     "t": "I need a chassis for this container."
     },
     {
      "lang": "zh",
-     "t": "TGHU 861527-2"
+     "t": "能给我一份 EIR 吗？"
     },
     {
      "lang": "en",
-     "t": "T-G-H-U, eight six one five two seven, two."
+     "t": "Can I get a copy of the EIR?"
     },
     {
      "lang": "en",
-     "t": "T-G-H-U, eight six one five two seven, two."
+     "t": "Can I get a copy of the EIR?"
     },
     {
      "lang": "zh",
-     "t": "HLXU 612004-7"
+     "t": "请把损坏记在 EIR 上。"
     },
     {
      "lang": "en",
-     "t": "H-L-X-U, six one two zero zero four, seven."
+     "t": "Please note the damage on the EIR."
     },
     {
      "lang": "en",
-     "t": "H-L-X-U, six one two zero zero four, seven."
+     "t": "Please note the damage on the EIR."
     },
     {
      "lang": "zh",
@@ -298,13 +315,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "冰水撑一整天",
-   "dur": 17.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611130947",
+   "sub": "大峡谷（Grand Canyon）",
+   "dur": 17.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：冰水撑一整天。院子里干活一直有凉水喝。做法：前一晚把水瓶灌一半水，躺着放进冷冻室；早上拿出来再灌满凉水；放进保温套，或者用毛巾包着。"
+     "t": "今日一招：大峡谷（Grand Canyon）。地球上最壮观的峡谷之一。做法：从 Upland 开车约 7 小时到南缘（South Rim）；南缘全年开放，北缘冬天关闭；日出日落看 Mather Point、Hopi Point。"
     }
    ],
    "opt": true
@@ -312,13 +329,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1907 · 1963 · 2007",
-   "dur": 23.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611130947",
+   "sub": "1977 · 2003 · 2016",
+   "dur": 33.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1907年，法国工程师保罗·科尔尼研制的第一架全尺寸直升机在卡尔瓦多斯省利雪试飞成功。1963年，一名男子挥舞着匕首，准备攻击日本共产党主席野坂参三，但被制服。2007年，俄罗斯版YouTube上线。"
+     "t": "历史上的今天。1977年，香港警务处机场警区半军事化的特种警察部队机场特警组成立。2003年，美国天文学家米高·E·布朗、乍德·特鲁希略和大卫·拉比诺维茨发现小行星90377。2016年，恒生指数当日收市出现特别数字，报22,222.22点，这组收盘点位，是港股历史上第一次出现的巧合。"
     }
    ],
    "opt": true
@@ -326,21 +343,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "满庭芳·蜗角虚名",
-   "dur": 83.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611130947",
+   "sub": "浣溪沙·细雨斜风作晓寒",
+   "dur": 48.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：满庭芳·蜗角虚名。写于1082年，他45岁，在黄州。"
+     "t": "读一首苏轼：浣溪沙·细雨斜风作晓寒。写于1084年，他47岁，在泗州（今江苏盱眙一带）南山。"
     },
     {
      "lang": "zh",
-     "t": "蜗角虚名，蝇头微利，算来著甚干忙。事皆前定，谁弱又谁强。且趁闲身未老，尽放我、些子疏狂。百年里，浑教是醉，三万六千场。思量。能几许，忧愁风雨，一半相妨。又何须，抵死说短论长。幸对清风皓月，苔茵展、云幕高张。江南好，千钟美酒，一曲满庭芳。"
+     "t": "细雨斜风作晓寒，淡烟疏柳媚晴滩。入淮清洛渐漫漫。雪沫乳花浮午盏，蓼茸蒿笋试春盘。人间有味是清欢。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：那些像蜗牛触角一样渺小的名声，像苍蝇头一样微薄的利益，算起来何必为它们白白奔忙。事情都是命中注定的，谁弱谁强又有什么好争。暂且趁着清闲、身体还没老，放任我一点疏狂吧。人生百年，全让它都在醉中度过，也不过三万六千场。细想一想，一生能有多少日子，其中忧愁和风雨就占去了一半。又何必总是拼命地议论别人的长短。幸好还有清风明月，青苔铺开像褥垫，云彩高张像帷幕。江南真好，有千杯美酒，再唱一曲《满庭芳》。"
+     "t": "白话意思是：细雨斜风带来清晨的寒意，淡淡的烟雾和稀疏的柳树让放晴的河滩更加妩媚。清澈的洛河流入淮河，水面渐渐变得宽广浩荡。中午泡一盏茶，茶面浮着雪白的泡沫；尝一尝春盘里蓼菜的嫩芽和蒿笋。人间真正有滋味的，是这种清淡的欢乐。"
     }
    ],
    "opt": true
@@ -349,12 +366,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611130947",
+   "dur": 6.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611140838",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
     }
    ]
   }
