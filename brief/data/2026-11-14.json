@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "generated": "2026-11-14T19:19:16Z",
+ "generated": "2026-11-14T20:58:06Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,19 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "英伟达财务主管临时接任CEO",
-     "d": "英伟达首席执行官黄仁勋离职，首席财务官Colette Kress被任命为临时CEO。她将带领公司度过目前的挑战期。",
+     "t": "AI 解读 Gödel 手稿，发现百余新定理",
+     "d": "芬兰学者 Jan von Plato 利用 Claude AI 在数天内梳理 Gödel 1940 年代的 1,009 页手稿，揭示其中包含数百个未公开的定理和 14 项未被研究的逻辑主题。此发现显示 AI 可加速历史数学文献的解析，可能推动逻辑和计算理论的新研究方向。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Nvidia 财务总裁临时接任 CEO",
+     "d": "在 Jensen Huang 辞职后，Nvidia CFO Colette Kress 被任命为临时 CEO，需在公司面临挑战的时期领导企业。此人事变动关系到 AI 芯片行业的领导力与市场信心。",
      "src": [
       {
        "n": "NPR",
@@ -20,23 +31,12 @@
      "full": true
     },
     {
-     "t": "临时CEO面临AI投资与法律危机",
-     "d": "在黄仁勋辞职后，财务出身的Colette Kress接任英伟达临时CEO，需要处理公司对AI初创企业的大额融资以及可能的美国对华调查。",
-     "src": [
-      {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/11/13/nx-s1-6038868/nvidia-interim-ceo-colette-kress-ai-bets-investigation-lutnick"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "AI助力解读哥德尔手稿发现百余新定理",
-     "d": "芬兰学者利用Claude AI模型在数日内概括哥德尔1940年代手稿，揭示其中包含数百条未公开的已证定理，显示哥德尔的研究远超当时。",
+     "t": "Microsoft 全球服务中断后全线恢复",
+     "d": "Microsoft 宣布已恢复因服务器故障导致的全球范围内 Microsoft 365、Outlook、Teams 等服务，停电影响了政府、法院、医疗等关键部门。此事件凸显对少数大型云服务提供商的高度依赖风险。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths"
+       "u": "https://www.theguardian.com/technology/2026/nov/14/microsoft-says-services-fully-restored-after-global-outage"
       }
      ],
      "full": true
@@ -130,8 +130,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "微软全球服务故障全面恢复",
-     "d": "经历逾24小时的全球性故障后，微软已恢复Teams、Outlook等核心服务，事故涉及Exchange Online，凸显企业对单一云服务提供商的高度依赖。",
+     "t": "Microsoft 全球服务中断已完全恢复",
+     "d": "Microsoft 表示已彻底修复导致 Outlook、Teams 等核心办公应用中断的故障，恢复期限超过 24 小时，影响逾 4.3 亿用户。此次停机突显云软件持续可用性的重要性及对企业运营的广泛影响。",
      "src": [
       {
        "n": "CBC",
@@ -145,39 +145,41 @@
      "full": true
     },
     {
-     "t": "美国全国航班停飞",
-     "d": "美国联邦航空局因路由器数据超载导致超过8,200航班被取消，显示关键基础设施对数字系统的高度依赖。",
+     "t": "特朗普计划与中俄三国领袖在深圳举行历史性会晤",
+     "d": "美国、俄罗斯、中国三位领袖将在深圳的 APEC 峰会期间进行首次三边会谈，主题包括核裁军和伊朗局势，但不涉及乌克兰战争。此高层会议可能影响全球安全格局和大国关系。",
      "src": [
       {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/us-nationwide-flight-ground-stop-our-routers-got-overloaded-with-data"
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/east-asia/trump-xi-putin-trilateral-summit-apec-6551001"
       },
       {
        "n": "法国24",
-       "u": "https://www.france24.com/en/us-what-exactly-caused-the-longest-nationwide-ground-stop-in-25-years"
+       "u": "https://www.france24.com/en/asia-pacific/20261114-china-to-host-first-ever-trilateral-meeting-between-trump-xi-and-putin-next-week-us-says"
       }
-     ]
+     ],
+     "full": true
     },
     {
-     "t": "Nvidia风波冲击AI市场情绪",
-     "d": "创始人Jensen Huang离职引发对AI热潮的担忧，市场开始重新评估对大型芯片公司的依赖与风险。",
+     "t": "美司法部破获北韩 4 亿美元加密诈骗案",
+     "d": "美国司法部在联邦法院批准下，查封用于北韩黑客“FaceStealer”视频通话诈骗的云基础设施，涉案金额超过 4 亿美元，并涉及 1.2 亿美元的 Binance 盗窃资金。此行动突显加密货币犯罪与国家行为的交叉监管挑战。",
      "src": [
       {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/americas/20261113-the-nvidia-affair-are-markets-about-to-fall-out-of-love-with-ai"
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/us-disrupts-north-korea-s-400-million-crypto-scam-fbi-says/a-79935957?maca=en-rss-en-asia-5133-rdf"
       },
       {
-       "n": "卫报美国",
-       "u": "https://www.theguardian.com/news/video/2026/nov/13/why-the-nvidia-scandal-is-far-from-over-the-latest"
+       "n": "南华早报",
+       "u": "https://www.scmp.com/news/china/diplomacy/article/3374442/china-south-korea-vow-deepen-ties-apec-summit-seoul-pushes-north-korea-talks"
       }
-     ]
+     ],
+     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "Nvidia风波冲击AI市场情绪",
-  "d": "作为AI产业链核心，Nvidia的高层震荡直接影响行业资金流向和技术布局，对投资者决策具有重要参考价值。"
+  "t": "特朗普、习近平、普京将在中国进行史上首次会晤",
+  "d": "三国元首的首次同框会谈涉及核裁军和地区冲突，可能对全球安全与金融市场产生深远影响，值得重点关注。"
  },
  "week": []
 }
