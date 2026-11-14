@@ -1,0 +1,183 @@
+{
+ "date": "2026-11-14",
+ "generated": "2026-11-14T19:19:16Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "英伟达财务主管临时接任CEO",
+     "d": "英伟达首席执行官黄仁勋离职，首席财务官Colette Kress被任命为临时CEO。她将带领公司度过目前的挑战期。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/13/nx-s1-6038889/colette-kress-becomes-nvidias-interim-ceo-after-jensen-huang-resigns"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "临时CEO面临AI投资与法律危机",
+     "d": "在黄仁勋辞职后，财务出身的Colette Kress接任英伟达临时CEO，需要处理公司对AI初创企业的大额融资以及可能的美国对华调查。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/13/nx-s1-6038868/nvidia-interim-ceo-colette-kress-ai-bets-investigation-lutnick"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI助力解读哥德尔手稿发现百余新定理",
+     "d": "芬兰学者利用Claude AI模型在数日内概括哥德尔1940年代手稿，揭示其中包含数百条未公开的已证定理，显示哥德尔的研究远超当时。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/13 周五 收盘：标普500 ETF（SPY）-0.36%，纳指100 ETF（QQQ）-1.20%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 19.3；72% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：CHTR +4.3%、STE +4.3%、GPN +4.2%；跌幅最大：AMD -8.8%、DELL -7.2%、CSCO -6.2%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/16 周一的重要财报：TCOM（盘后）、BIDU（盘前）、TSN（盘前）",
+     "d": "按市值挑出最大的几家，共 3 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：EIA 原油库存（11/13 周五）",
+     "d": "Crude Oil Inventories 实际 4.657M（预期 -0.600M，前值 -0.865M）；Cushing Crude Oil Inventories 实际 0.106M（预期 —，前值 0.280M）。库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/17 周二 09:05：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/18 周三 08:30：零售销售（重要性：中）",
+     "d": "消费占美国 GDP 约七成。数据强 → 利好零售、可选消费；过强也会推高利率预期。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/18 周三 14:25：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "微软全球服务故障全面恢复",
+     "d": "经历逾24小时的全球性故障后，微软已恢复Teams、Outlook等核心服务，事故涉及Exchange Online，凸显企业对单一云服务提供商的高度依赖。",
+     "src": [
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/business/microsoft-services-restored-after-outage-9.7422072?cmp=rss"
+      },
+      {
+       "n": "Sky News",
+       "u": "https://news.sky.com/story/microsoft-confirms-all-services-are-restored-after-global-outage-13612219"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美国全国航班停飞",
+     "d": "美国联邦航空局因路由器数据超载导致超过8,200航班被取消，显示关键基础设施对数字系统的高度依赖。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/us-nationwide-flight-ground-stop-our-routers-got-overloaded-with-data"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/us-what-exactly-caused-the-longest-nationwide-ground-stop-in-25-years"
+      }
+     ]
+    },
+    {
+     "t": "Nvidia风波冲击AI市场情绪",
+     "d": "创始人Jensen Huang离职引发对AI热潮的担忧，市场开始重新评估对大型芯片公司的依赖与风险。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/americas/20261113-the-nvidia-affair-are-markets-about-to-fall-out-of-love-with-ai"
+      },
+      {
+       "n": "卫报美国",
+       "u": "https://www.theguardian.com/news/video/2026/nov/13/why-the-nvidia-scandal-is-far-from-over-the-latest"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "Nvidia风波冲击AI市场情绪",
+  "d": "作为AI产业链核心，Nvidia的高层震荡直接影响行业资金流向和技术布局，对投资者决策具有重要参考价值。"
+ },
+ "week": []
+}
