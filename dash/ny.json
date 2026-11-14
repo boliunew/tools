@@ -1,6 +1,6 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-14T05:54:24.394778Z",
+ "eventsUpdatedAt": "2026-11-14T11:55:17.336895Z",
  "ranges": {
   "today": "2026-11-14",
   "sat": "2026-11-14",
@@ -194,28 +194,28 @@
   "current": {
    "temp": 38,
    "feelsLike": 33,
-   "high": 44,
-   "low": 34,
-   "description": "Partly cloudy",
+   "high": 43,
+   "low": 36,
+   "description": "Overcast",
    "precipChance": 8,
-   "humidity": 92,
+   "humidity": 84,
    "wind": "4 mph",
    "uvIndex": 3,
-   "airQualityIndex": 28,
+   "airQualityIndex": 29,
    "airQualityDescription": "Good"
   },
   "today": {
    "date": "2026-11-14",
-   "high": 44,
-   "low": 34,
+   "high": 43,
+   "low": 36,
    "precipChance": 8,
-   "summary": "Overcast. Highs around 44 and lows around 34."
+   "summary": "Overcast. Highs around 43 and lows around 36."
   },
   "daily": [
    {
     "date": "2026-11-14",
-    "high": 44,
-    "low": 34,
+    "high": 43,
+    "low": 36,
     "precipChance": 8
    },
    {
@@ -226,8 +226,8 @@
    },
    {
     "date": "2026-11-16",
-    "high": 51,
-    "low": 40,
+    "high": 52,
+    "low": 39,
     "precipChance": 0
    },
    {
@@ -238,13 +238,13 @@
    },
    {
     "date": "2026-11-18",
-    "high": 59,
-    "low": 45,
+    "high": 60,
+    "low": 46,
     "precipChance": 0
    },
    {
     "date": "2026-11-19",
-    "high": 59,
+    "high": 60,
     "low": 48,
     "precipChance": 0
    },
@@ -252,18 +252,18 @@
     "date": "2026-11-20",
     "high": 61,
     "low": 50,
-    "precipChance": 1
+    "precipChance": 0
    }
   ],
   "weekend": [
    {
     "date": "2026-11-14",
     "day": "sat",
-    "high": 44,
-    "low": 34,
+    "high": 43,
+    "low": 36,
     "precipChance": 8,
-    "summary": "Overcast. Highs around 44 and lows around 34.",
-    "wind": "12 mph",
+    "summary": "Overcast. Highs around 43 and lows around 36.",
+    "wind": "11 mph",
     "hourly": []
    },
    {
@@ -277,7 +277,7 @@
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-14T05:52:32.399195Z",
+  "fetchedAt": "2026-11-14T11:54:09.791511Z",
   "location": "New York, NY"
  }
 }
