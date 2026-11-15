@@ -1,16 +1,16 @@
 {
- "date": "2026-11-14",
+ "date": "2026-11-15",
  "kind": "名言",
- "en": "Important principles may, and must, be inflexible.",
- "zh": "重要的原则可以而且必须毫不动摇。",
- "by": "Abraham Lincoln",
- "line": "Important principles may, and must, be inflexible. — Abraham Lincoln",
+ "en": "A man who dares to waste one hour of time has not discovered the value of life.",
+ "zh": "敢浪费一小时的人，还没有发现生命的价值。",
+ "by": "Charles Darwin",
+ "line": "A man who dares to waste one hour of time has not discovered the value of life. — Charles Darwin",
  "word": {
-  "w": "tiger",
-  "ph": "'taigә",
-  "zh": "n. 老虎，虎，凶暴的人",
-  "ex": "The man wore a mask of a tiger.",
-  "exzh": "男人戴了一个老虎面具。"
+  "w": "destination",
+  "ph": ".desti'neiʃәn",
+  "zh": "n. 目的地，目标，目的",
+  "ex": "The ship was on the point of arriving at her destination.",
+  "exzh": "这艘船即将到达她的目的地"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
