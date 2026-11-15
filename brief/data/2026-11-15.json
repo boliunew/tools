@@ -1,0 +1,185 @@
+{
+ "date": "2026-11-15",
+ "generated": "2026-11-15T19:52:58Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "SpaceX首次回收星舰",
+     "d": "SpaceX成功在星舰返回太空后进行首次捕获，标志着该火箭回收技术的重要突破。此举对航天发射成本和商业太空旅行具有长远影响。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/14/nx-s1-6041089/spacex-makes-history-with-starship-catch"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "微软全球服务中断后恢复",
+     "d": "微软在经历持续数小时、影响70多个国家的Microsoft 365大规模故障后，于周六宣布已恢复所有客户和地区的服务。该事件凸显云服务可靠性对政府与企业运作的关键性。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/14/microsoft-says-services-fully-restored-after-global-outage"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美财政部长指责商务部未监管AI芯片出口",
+     "d": "美国财政部长斯科特·贝森特指责商务部在Nvidia高规格AI芯片出口监管上失职，称其导致芯片泄漏至中国并影响美国在AI领域的竞争优势。此争议可能加剧美政府内部对出口管制的审视。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cqvg2d1eg7zro?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/13 周五 收盘：标普500 ETF（SPY）-0.36%，纳指100 ETF（QQQ）-1.20%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 19.3；72% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：CHTR +4.3%、STE +4.3%、GPN +4.2%；跌幅最大：AMD -8.8%、DELL -7.2%、CSCO -6.2%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/16 周一的重要财报：TCOM（盘后）、BIDU（盘前）、TSN（盘前）",
+     "d": "按市值挑出最大的几家，共 3 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：EIA 原油库存（11/13 周五）",
+     "d": "Crude Oil Inventories 实际 4.657M（预期 -0.600M，前值 -0.865M）；Cushing Crude Oil Inventories 实际 0.106M（预期 —，前值 0.280M）。库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/17 周二 09:05：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/18 周三 08:30：零售销售（重要性：中）",
+     "d": "消费占美国 GDP 约七成。数据强 → 利好零售、可选消费；过强也会推高利率预期。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/18 周三 14:25：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "乌克兰或以放弃顿巴斯换取北约成员资格",
+     "d": "乌克兰总统泽连斯基透露，美国谈判者曾提出乌克兰若撤出顿巴斯可换取北约加入的设想，尽管美国未正式确认。此议题关系到地区安全架构及俄乌冲突的潜在解决路径。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwvg2l312ylqo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/15/ukraine-war-briefing-us-proposes-kyiv-cede-land-to-russia-for-nato-membership-zelenskyy-says"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "伊朗对巴林美军基地发动无人机袭击",
+     "d": "伊朗伊斯兰革命卫队使用六架无人机攻击巴林阿尔里法美国防空雷达基地，但被巴林防空系统拦截并摧毁。此举加剧了波斯湾地区的紧张局势，影响全球油气运输安全。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cqn4e2py48kwo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/15/iran-launches-drone-attacks-against-us-military-base-in-bahrain"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "爱沙尼亚因俄罗斯情报局攻击关闭俄边境",
+     "d": "因俄罗斯GRU策划针对爱沙尼亚无人机制造商的破坏未遂，爱沙尼亚决定自12月1日起关闭所有与俄罗斯的边境口岸，以遏制进一步安全威胁并表明对乌克兰支持的立场。此举显示俄欧安全摩擦的升级。",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/15/estonia-to-close-all-border-crossings-with-russia-after-attack-on-drone-maker"
+      },
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/estonia-closes-border-to-russia-after-suspected-drone-factory-arson/a-79953115?maca=en-rss-en-all-1573-rdf"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "英伟达丑闻余波：美国官员受压",
+  "d": "该事件涉及AI芯片供应链、出口管制与中美竞争，直接关系到科技股估值与全球产业格局，值得重点关注。"
+ },
+ "week": []
+}
