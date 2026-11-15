@@ -1,19 +1,19 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-14T11:55:17.334249Z",
+ "eventsUpdatedAt": "2026-11-15T17:55:06.797939Z",
  "ranges": {
-  "today": "2026-11-14",
-  "sat": "2026-11-14",
-  "sun": "2026-11-15"
+  "today": "2026-11-15",
+  "sat": "2026-11-21",
+  "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
    "category": "Food & Drink",
    "city": "San Francisco",
-   "date": "2026-11-14",
+   "date": "2026-11-15",
    "day": "today",
-   "dayLabel": "周六",
+   "dayLabel": "周日",
    "endTime": "5:00 PM",
    "note": "The two-day festival lets visitors taste hundreds of teas from more than 30 tea makers, with admission including unlimited tastings and a souvenir porcelain tasting cup.",
    "price": "$24",
@@ -24,26 +24,11 @@
   },
   {
    "bucket": "today",
-   "category": "Food & Drink",
-   "city": "San Francisco",
-   "date": "2026-11-14",
-   "day": "today",
-   "dayLabel": "周六",
-   "endTime": "5:00 PM",
-   "note": "Now in its 27th year, SF VegFest celebrates plant-based living with speakers, vegan chefs, and more than 80 exhibitors.",
-   "price": "$18",
-   "sourceUrl": "https://sf.funcheap.com/san-francisco-vegfest/",
-   "startTime": "11:00 AM",
-   "title": "SF VegFest 2026",
-   "venue": "SMC Event Center, 1111 Gough St, San Francisco, CA 94109"
-  },
-  {
-   "bucket": "today",
    "category": "Market",
    "city": "San Francisco",
-   "date": "2026-11-14",
+   "date": "2026-11-15",
    "day": "today",
-   "dayLabel": "周六",
+   "dayLabel": "周日",
    "endTime": "5:00 PM",
    "note": "More than 250 curated artists and small businesses sell ceramics, jewelry, clothing, and home goods at this indoor holiday market, with free entry and a suggested $5 donation.",
    "price": "Free",
@@ -54,16 +39,31 @@
   },
   {
    "bucket": "today",
+   "category": "Sports",
+   "city": "San Francisco",
+   "date": "2026-11-15",
+   "day": "today",
+   "dayLabel": "周日",
+   "endTime": "6:00 PM",
+   "note": "A 49ers fan watch party for the game against the Cowboys, with a postgame show after the final whistle.",
+   "price": "$17.85",
+   "sourceUrl": "https://www.eventbrite.com/e/paulie-macs-particles-49ers-vs-cowboys-watch-party-tickets-2003842756627",
+   "startTime": "1:00 PM",
+   "title": "49ers vs. Cowboys Watch Party",
+   "venue": "Long Bridge Pizza Company, 2347 3rd St, San Francisco, CA 94107"
+  },
+  {
+   "bucket": "today",
    "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-14",
+   "date": "2026-11-15",
    "day": "today",
-   "dayLabel": "周六",
-   "endTime": "10:30 PM",
-   "note": "SF Symphony performs Prokofiev's Romeo and Juliet selections with conductor Marie Jacquot and violinist Sayaka Shoji, plus Respighi and Holmès.",
+   "dayLabel": "周日",
+   "endTime": "5:00 PM",
+   "note": "Sunday matinee of the SF Symphony's Prokofiev Romeo and Juliet program, conducted by Marie Jacquot with violinist Sayaka Shoji.",
    "price": "From $30",
    "sourceUrl": "https://sf.funcheap.com/prokofievs-romeo-juliet-w-the-sf-symphony-nov-13-15/",
-   "startTime": "7:30 PM",
+   "startTime": "2:00 PM",
    "title": "Prokofiev's \"Romeo & Juliet\" with the SF Symphony",
    "venue": "Davies Symphony Hall, 201 Van Ness Ave, San Francisco, CA 94102"
   },
@@ -71,69 +71,84 @@
    "bucket": "today",
    "category": "Comedy",
    "city": "San Francisco",
-   "date": "2026-11-14",
+   "date": "2026-11-15",
    "day": "today",
-   "dayLabel": "周六",
-   "endTime": null,
-   "note": "Humorist David Sedaris appears live with author Susan Orlean for an evening of stories and conversation at the War Memorial Opera House.",
-   "price": "$93.94",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/14/",
-   "startTime": "8:00 PM",
-   "title": "David Sedaris with Susan Orlean – The Land and Its People",
-   "venue": "War Memorial Opera House, 301 Van Ness Ave, San Francisco, CA 94102"
+   "dayLabel": "周日",
+   "endTime": "10:00 PM",
+   "note": "A free weekly Sunday night comedy show at the downtown club on Market Street, with RSVP via Eventbrite.",
+   "price": "Free",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/15/",
+   "startTime": "8:30 PM",
+   "title": "Free Sunday Comedy Night in Downtown SF",
+   "venue": "The Function, 1414 Market Street, San Francisco, CA"
   }
  ],
  "events": [
   {
    "bucket": "weekend",
+   "category": "Market",
+   "city": "San Francisco",
+   "date": "2026-11-21",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": "6:00 PM",
+   "note": "More than 275 artists and designers sell handmade goods at the free indoor winter craft fair at Fort Mason.",
+   "price": "Free",
+   "sourceUrl": "https://www.westcoastcraft.com/wcc-attend",
+   "startTime": "10:00 AM",
+   "title": "West Coast Craft – Winter 2026",
+   "venue": "Fort Mason Center Festival Pavilion, 2 Marina Blvd, San Francisco, CA"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Festival",
+   "city": "San Francisco",
+   "date": "2026-11-21",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": "6:00 PM",
+   "note": "A trip to Victorian London with lamplit streets, music halls, pubs, dance floors, and shops full of handmade gifts at the Cow Palace.",
+   "price": "$35",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/21/",
+   "startTime": "10:00 AM",
+   "title": "SF's 42nd Annual Great Dickens Christmas Fair",
+   "venue": "Cow Palace, 2600 Geneva Ave, Daly City, CA"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Festival",
+   "city": "San Francisco",
+   "date": "2026-11-21",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": "2:00 PM",
+   "note": "The Parks Conservancy celebrates five years of the Black Point Historic Gardens being open to the public, with free wildflower seeds and garden activities.",
+   "price": "Free",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/21/",
+   "startTime": "11:00 AM",
+   "title": "2026 Fall Native Plant Fest at Fort Mason Gardens",
+   "venue": "Black Point Historic Gardens, Fort Mason, San Francisco, CA"
+  },
+  {
+   "bucket": "weekend",
    "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-14",
+   "date": "2026-11-21",
    "day": "sat",
    "dayLabel": "周六",
-   "endTime": "5:00 PM",
-   "note": "The San Francisco Civic Music Association presents free public classical concerts performed by its community ensembles.",
-   "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/14/",
-   "startTime": "3:00 PM",
-   "title": "SF's Civic Music Free Concert",
-   "venue": "Noe Valley Ministry, 1021 Sanchez Street, San Francisco, CA"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Comedy",
-   "city": "San Francisco",
-   "date": "2026-11-14",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": "10:30 PM",
-   "note": "Best-of style showcase of Bay Area comics you'd normally see at Punch Line and Cobb's, in an intimate downtown club; free with RSVP, 21+.",
-   "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/golden-gate-comedy-night-sfs-most-intimate-comedy-club-32/",
-   "startTime": "7:00 PM",
-   "title": "\"Golden Gate Comedy Night\" — SF's Most Intimate Comedy Club",
-   "venue": "The Function, 1414 Market Street, San Francisco, CA"
+   "endTime": null,
+   "note": "The Jonas Brothers bring their Burning Up Tour All Over Again to Chase Center, with All Time Low and Franklin Jonas.",
+   "price": "From $91",
+   "sourceUrl": "https://www.san-francisco-theater.com/dates/range/2026-11-21/2026-11-21",
+   "startTime": "7:30 PM",
+   "title": "Jonas Brothers: The Burning Up Tour All Over Again",
+   "venue": "Chase Center, 500 Terry A Francois Blvd, San Francisco, CA 94158"
   },
   {
    "bucket": "weekend",
    "category": "Festival",
    "city": "San Francisco",
-   "date": "2026-11-15",
-   "day": "sun",
-   "dayLabel": "周日",
-   "endTime": "1:00 PM",
-   "note": "A free monthly tai chi session for beginners and experienced students at the beach, with coffee afterwards at Java Beach.",
-   "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/15/",
-   "startTime": "10:00 AM",
-   "title": "SF's Free \"Sundays at the Beach\" Tai Chi Day",
-   "venue": "Judah and Great Highway, San Francisco, CA"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Festival",
-   "city": "San Francisco",
-   "date": "2026-11-15",
+   "date": "2026-11-22",
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "2:00 PM",
@@ -148,7 +163,7 @@
    "bucket": "weekend",
    "category": "Festival",
    "city": "San Francisco",
-   "date": "2026-11-15",
+   "date": "2026-11-22",
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "5:00 PM",
@@ -161,123 +176,108 @@
   },
   {
    "bucket": "weekend",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-15",
-   "day": "sun",
-   "dayLabel": "周日",
-   "endTime": "5:00 PM",
-   "note": "Sunday matinee of the SF Symphony's Prokofiev Romeo and Juliet program, conducted by Marie Jacquot with violinist Sayaka Shoji.",
-   "price": "From $30",
-   "sourceUrl": "https://sf.funcheap.com/prokofievs-romeo-juliet-w-the-sf-symphony-nov-13-15/",
-   "startTime": "2:00 PM",
-   "title": "Prokofiev's \"Romeo & Juliet\" with the SF Symphony",
-   "venue": "Davies Symphony Hall, 201 Van Ness Ave, San Francisco, CA 94102"
-  },
-  {
-   "bucket": "weekend",
    "category": "Comedy",
    "city": "San Francisco",
-   "date": "2026-11-15",
+   "date": "2026-11-22",
    "day": "sun",
    "dayLabel": "周日",
-   "endTime": "10:00 PM",
-   "note": "A free weekly Sunday night comedy show at the downtown club on Market Street, with RSVP via Eventbrite.",
+   "endTime": "6:00 PM",
+   "note": "A free new-faces comedy showcase at SF's iconic Punch Line Comedy Club, free with RSVP.",
    "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/15/",
-   "startTime": "8:30 PM",
-   "title": "Free Sunday Comedy Night in Downtown SF",
-   "venue": "The Function, 1414 Market Street, San Francisco, CA"
+   "sourceUrl": "https://sf.funcheap.com/2026/11/22/",
+   "startTime": "4:00 PM",
+   "title": "Punch Line Secret Guest List: New Faces Showcase",
+   "venue": "Punch Line Comedy Club, 444 Battery Street, San Francisco, CA 94111"
   }
  ],
  "weather": {
   "current": {
-   "temp": 53,
-   "feelsLike": 50,
+   "temp": 58,
+   "feelsLike": 56,
    "high": 61,
-   "low": 52,
+   "low": 53,
    "description": "Overcast",
-   "precipChance": 11,
-   "humidity": 87,
-   "wind": "6 mph",
-   "uvIndex": 4,
-   "airQualityIndex": 44,
-   "airQualityDescription": "Good"
+   "precipChance": 84,
+   "humidity": 85,
+   "wind": "8 mph",
+   "uvIndex": 2,
+   "airQualityIndex": 57,
+   "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-14",
+   "date": "2026-11-15",
    "high": 61,
-   "low": 52,
-   "precipChance": 11,
-   "summary": "Overcast. Highs around 61 and lows around 52."
+   "low": 53,
+   "precipChance": 84,
+   "summary": "Light rain. Highs around 61 and lows around 53."
   },
   "daily": [
    {
-    "date": "2026-11-14",
-    "high": 61,
-    "low": 52,
-    "precipChance": 11
-   },
-   {
     "date": "2026-11-15",
-    "high": 62,
-    "low": 54,
-    "precipChance": 95
+    "high": 61,
+    "low": 53,
+    "precipChance": 84
    },
    {
     "date": "2026-11-16",
-    "high": 59,
-    "low": 55,
-    "precipChance": 67
+    "high": 54,
+    "low": 48,
+    "precipChance": 55
    },
    {
     "date": "2026-11-17",
     "high": 60,
-    "low": 52,
-    "precipChance": 63
+    "low": 47,
+    "precipChance": 81
    },
    {
     "date": "2026-11-18",
-    "high": 58,
-    "low": 56,
-    "precipChance": 94
+    "high": 57,
+    "low": 52,
+    "precipChance": 99
    },
    {
     "date": "2026-11-19",
-    "high": 59,
-    "low": 55,
-    "precipChance": 71
+    "high": 57,
+    "low": 50,
+    "precipChance": 93
    },
    {
     "date": "2026-11-20",
-    "high": 60,
-    "low": 55,
-    "precipChance": 13
+    "high": 59,
+    "low": 53,
+    "precipChance": 34
+   },
+   {
+    "date": "2026-11-21",
+    "high": 57,
+    "low": 53,
+    "precipChance": 51
    }
   ],
   "weekend": [
    {
-    "date": "2026-11-14",
+    "date": "2026-11-21",
     "day": "sat",
-    "high": 61,
-    "low": 52,
-    "precipChance": 11,
-    "summary": "Overcast. Highs around 61 and lows around 52.",
-    "wind": "8 mph",
+    "high": 57,
+    "low": 53,
+    "precipChance": 51,
+    "summary": "Light showers. Highs around 57 and lows around 53.",
+    "wind": "23 mph",
     "hourly": []
    },
    {
-    "date": "2026-11-15",
+    "date": "2026-11-22",
     "day": "sun",
-    "high": 62,
-    "low": 54,
-    "precipChance": 95,
-    "summary": "Rain. Highs around 62 and lows around 54.",
-    "wind": "12 mph",
+    "high": 58,
+    "low": 50,
+    "precipChance": 41,
+    "summary": "Drizzle. Highs around 58 and lows around 50.",
+    "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-14T11:54:03.504100Z",
+  "fetchedAt": "2026-11-15T17:53:28.165644Z",
   "location": "San Francisco, CA"
  }
 }
