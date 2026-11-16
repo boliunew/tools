@@ -107,7 +107,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 </head>
 <body>
 <main>
-  <div class="top"><h1>📻 环球网络电台</h1><button id="fmRefresh">🔄 更新</button><a href="./">主页</a></div>
+  <div class="top"><h1>📻 环球网络电台</h1><button id="fmM3u">📤 M3U</button><button id="fmRefresh">🔄 更新</button><a href="./">主页</a></div>
   <div class="tabs" id="tabs"></div>
   <div class="srch"><input id="q" placeholder="搜台名、风格，例如 news、jazz、BBC" autocomplete="off"><button id="qBtn">搜索</button><button class="addbtn" id="addSt">＋ 添加</button></div>
   <div class="chips" id="chips"></div>
@@ -376,6 +376,48 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     s.onerror = function () { stat('这个台需要 HLS 播放组件，加载失败', 'err'); };
     document.head.appendChild(s);
   }
+
+  /* ---------- 导出 M3U：把台单交给 Poweramp 等播放器 ---------- */
+  function m3uOf(a) {
+    var out = ['#EXTM3U'], n = 0, h = 0, seen = {};
+    a.forEach(function (s) {
+      if (!s || !s.url || seen[s.url]) return;
+      seen[s.url] = 1;
+      var nm = String(s.name || s.url).replace(/[\r\n,]+/g, ' ').replace(/^\s+|\s+$/g, '');
+      var logo = s.fav && /^https:\/\//i.test(s.fav) ? ' tvg-logo="' + String(s.fav).replace(/"/g, '') + '"' : '';
+      out.push('#EXTINF:-1' + logo + ',' + nm);
+      out.push(s.url);      // 原始地址，不改 http/https：手机播放器不受浏览器的限制
+      n++; if (s.hls) h++;
+    });
+    return { text: out.join('\n') + '\n', n: n, h: h };
+  }
+  function saveM3u(a, name) {
+    var r = m3uOf(a);
+    if (!r.n) { toast('这份台单是空的'); return; }
+    var blob = new Blob([r.text]);   // 不写类型：App 会原样存进「下载」，文件名不会被加上 .txt
+    closeEd();
+    if (window.SaveSheet) SaveSheet.show(blob, name);
+    else { var l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = name; document.body.appendChild(l); l.click(); l.remove(); }
+    toast('已生成 ' + r.n + ' 个台' + (r.h ? '，其中 ' + r.h + ' 个是 .m3u8（HLS），Poweramp 不一定能播' : ''));
+  }
+  $('fmM3u').onclick = function () {
+    var favs = favList(), mine = MY.slice(), seen = {}, both = [];
+    favs.concat(mine).forEach(function (s) { if (!seen[s.id]) { seen[s.id] = 1; both.push(s); } });
+    var opts = [
+      ['both', '⭐➕ 收藏 + 我添加的', both, '电台收藏.m3u8'],
+      ['fav', '⭐ 只要收藏', favs, '电台收藏.m3u8'],
+      ['my', '➕ 只要我添加的', mine, '我添加的电台.m3u8'],
+      ['cur', '📋 现在这一页的台', shown.slice(), '电台-' + ((C.filter(function (c) { return c.k === country; })[0] || {}).n || '当前') + '.m3u8']
+    ];
+    $('msh').innerHTML = '<h3>📤 导出 M3U（给 Poweramp 用）</h3>' +
+      opts.map(function (o, i) { return '<div class="row"><button data-x="' + i + '"' + (o[2].length ? '' : ' disabled style="opacity:.45"') + '>' + o[1] + '（' + o[2].length + '）</button></div>'; }).join('') +
+      '<div class="tip">会生成一个 .m3u8 台单文件。保存后在文件管理器里点它、选 Poweramp 打开；或在 Poweramp 里导入播放列表时选它。<br>直连的 mp3 / aac 台最稳；.m3u8（HLS）台和只限本国播放的台，Poweramp 可能连不上。</div>';
+    $('msh').className = 'msh on'; $('mov').className = 'mov on';
+    $('msh').onclick = function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-x]') : null; if (!b || b.disabled) return;
+      var o = opts[+b.getAttribute('data-x')]; saveM3u(o[2], o[3]);
+    };
+  };
 
   /* ---------- 自己添加的电台 ---------- */
   function guessHls(u) { return /\.m3u8(\?|$)/i.test(u); }
