@@ -1,86 +1,86 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-15T17:55:06.805200Z",
+ "eventsUpdatedAt": "2026-11-16T11:55:36.816184Z",
  "ranges": {
-  "today": "2026-11-15",
+  "today": "2026-11-16",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Festival",
-   "city": "Pasadena",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": "3:00 PM",
-   "note": "CicLAvia closes 2.7 miles of Colorado Boulevard and Raymond Avenue to cars for biking, walking, and skating, the first Pasadena open-streets event in 11 years.",
-   "price": "Free",
-   "sourceUrl": "https://www.cityofpasadena.net/city-manager/news/ride-roll-or-walk-ciclavia-pasadena-this-sunday-nov-15/",
-   "startTime": "9:00 AM",
-   "title": "CicLAvia—Pasadena",
-   "venue": "Colorado Boulevard & Raymond Avenue, Pasadena, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Festival",
-   "city": "Los Angeles",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": "11:00 PM",
-   "note": "Tyler, the Creator's two-day festival closes at Dodger Stadium with Future and Steve Lacy on the bill; passes are sold out.",
-   "price": "$415",
-   "sourceUrl": "https://uncoverla.com/2026/11/11/best-los-angeles-events-november-2026/",
-   "startTime": "12:00 PM",
-   "title": "Camp Flog Gnaw Carnival 2026: Day 2",
-   "venue": "Dodger Stadium, 1000 Vin Scully Ave, Los Angeles, CA 90012"
-  },
-  {
-   "bucket": "today",
-   "category": "Sports",
-   "city": "Los Angeles",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": null,
-   "note": "Free outdoor Rams fan experience before the Rams vs. Cardinals game, with ESPN L.A. Radio live on-site, Rams Legends, and a photo op with the Vince Lombardi Trophy.",
-   "price": "Free",
-   "sourceUrl": "https://uncoverla.com/2026/11/11/best-los-angeles-events-november-2026/",
-   "startTime": "11:00 AM",
-   "title": "Rams Game Day Fan Experience at Pawn Shop L.A.",
-   "venue": "Pawn Shop L.A., 5901 Melrose Ave, Los Angeles, CA 90038"
-  },
-  {
-   "bucket": "today",
    "category": "Music",
-   "city": "Inglewood",
-   "date": "2026-11-15",
+   "city": "Los Angeles",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
+   "dayLabel": "周一",
    "endTime": null,
-   "note": "Usher and Chris Brown bring their joint R&B Tour to SoFi Stadium for their only remaining Los Angeles date after the Nov 16 show was cancelled.",
-   "price": null,
-   "sourceUrl": "https://remixdmagazine.com/la-concerts-november-2026/",
-   "startTime": "7:30 PM",
-   "title": "Usher & Chris Brown: The R&B Tour",
-   "venue": "SoFi Stadium, 1001 Stadium Dr, Inglewood, CA 90301"
+   "note": "Josh Homme curates a benefit night for CORE and The Sweet Stuff Foundation at The Wiltern.",
+   "price": "From $263",
+   "sourceUrl": "https://otbla.com/events/concerts/",
+   "startTime": "7:00 PM",
+   "title": "Josh Homme & Friends: A Benefit for CORE & The Sweet Stuff Foundation",
+   "venue": "The Wiltern, 3790 Wilshire Blvd, Los Angeles, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "Los Angeles",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
+   "dayLabel": "周一",
    "endTime": null,
-   "note": "Three Wu-Tang Clan members — Ghostface Killah, Raekwon, and GZA — share one downtown stage at The Novo.",
-   "price": null,
-   "sourceUrl": "https://remixdmagazine.com/la-concerts-november-2026/",
+   "note": "Scottish synth-pop band Chvrches play the Troubadour in West Hollywood.",
+   "price": "See listing",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?msockid=02b74fe7b99d6d31009c58f4b86f6c1f&page=14",
+   "startTime": "7:00 PM",
+   "title": "Chvrches",
+   "venue": "Troubadour, 9081 Santa Monica Blvd, West Hollywood, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "Los Angeles",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "Natanya plays El Rey Theatre on Wilshire Boulevard.",
+   "price": "From $41.69",
+   "sourceUrl": "https://otbla.com/events/concerts/",
    "startTime": "8:00 PM",
-   "title": "Ghostface Killah w/ Raekwon and GZA",
-   "venue": "The Novo, 800 W Olympic Blvd, Los Angeles, CA 90015"
+   "title": "Natanya",
+   "venue": "El Rey Theatre, 5515 Wilshire Blvd, Los Angeles, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "Los Angeles",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "Drummer Don Brown leads his LA jazz collective at Blue Note, first of two nights.",
+   "price": "See listing",
+   "sourceUrl": "https://blog.ckord.com/live-music/los-angeles/jazz",
+   "startTime": "7:00 PM",
+   "title": "The Don Brown Collective",
+   "venue": "Blue Note Los Angeles, 100 W Hollywood Blvd, Los Angeles, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "Los Angeles",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": "9:00 PM",
+   "note": "2DEAD BOYZ and The Underachievers on the NO1LIVESFOREVER Tour at Echoplex.",
+   "price": "See listing",
+   "sourceUrl": "https://blog.ckord.com/live-music/los-angeles/hip-hop",
+   "startTime": "7:00 PM",
+   "title": "2DEAD BOYZ & The Underachievers — NO1LIVESFOREVER Tour",
+   "venue": "Echoplex, 1154 Glendale Blvd, Los Angeles, CA"
   }
  ],
  "events": [
@@ -192,67 +192,67 @@
  ],
  "weather": {
   "current": {
-   "temp": 66,
-   "feelsLike": 66,
-   "high": 73,
-   "low": 55,
+   "temp": 60,
+   "feelsLike": 60,
+   "high": 68,
+   "low": 54,
    "description": "Overcast",
-   "precipChance": 0,
-   "humidity": 63,
-   "wind": "3 mph",
-   "uvIndex": 4,
-   "airQualityIndex": 73,
+   "precipChance": 21,
+   "humidity": 81,
+   "wind": "4 mph",
+   "uvIndex": 3,
+   "airQualityIndex": 74,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-15",
-   "high": 73,
-   "low": 55,
-   "precipChance": 0,
-   "summary": "Overcast. Highs around 73 and lows around 55."
+   "date": "2026-11-16",
+   "high": 68,
+   "low": 54,
+   "precipChance": 21,
+   "summary": "Drizzle. Highs around 68 and lows around 54."
   },
   "daily": [
    {
-    "date": "2026-11-15",
-    "high": 73,
-    "low": 55,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-16",
-    "high": 63,
-    "low": 53,
-    "precipChance": 33
+    "high": 68,
+    "low": 54,
+    "precipChance": 21
    },
    {
     "date": "2026-11-17",
-    "high": 66,
-    "low": 52,
-    "precipChance": 28
+    "high": 69,
+    "low": 48,
+    "precipChance": 7
    },
    {
     "date": "2026-11-18",
     "high": 66,
-    "low": 59,
-    "precipChance": 57
+    "low": 60,
+    "precipChance": 77
    },
    {
     "date": "2026-11-19",
     "high": 66,
-    "low": 57,
-    "precipChance": 75
+    "low": 58,
+    "precipChance": 93
    },
    {
     "date": "2026-11-20",
-    "high": 67,
-    "low": 57,
-    "precipChance": 37
+    "high": 66,
+    "low": 56,
+    "precipChance": 17
    },
    {
     "date": "2026-11-21",
     "high": 66,
     "low": 58,
-    "precipChance": 7
+    "precipChance": 6
+   },
+   {
+    "date": "2026-11-22",
+    "high": 60,
+    "low": 55,
+    "precipChance": 19
    }
   ],
   "weekend": [
@@ -261,7 +261,7 @@
     "day": "sat",
     "high": 66,
     "low": 58,
-    "precipChance": 7,
+    "precipChance": 6,
     "summary": "Overcast. Highs around 66 and lows around 58.",
     "wind": "8 mph",
     "hourly": []
@@ -269,15 +269,15 @@
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 65,
-    "low": 58,
-    "precipChance": 9,
-    "summary": "Light showers. Highs around 65 and lows around 58.",
+    "high": 60,
+    "low": 55,
+    "precipChance": 19,
+    "summary": "Light showers. Highs around 60 and lows around 55.",
     "wind": "12 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-15T17:53:32.197730Z",
+  "fetchedAt": "2026-11-16T11:53:20.726633Z",
   "location": "Los Angeles, CA"
  }
 }

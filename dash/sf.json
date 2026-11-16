@@ -1,86 +1,86 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-15T17:55:06.797939Z",
+ "eventsUpdatedAt": "2026-11-16T11:55:36.813139Z",
  "ranges": {
-  "today": "2026-11-15",
+  "today": "2026-11-16",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Food & Drink",
+   "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
-   "endTime": "5:00 PM",
-   "note": "The two-day festival lets visitors taste hundreds of teas from more than 30 tea makers, with admission including unlimited tastings and a souvenir porcelain tasting cup.",
-   "price": "$24",
-   "sourceUrl": "https://sf.funcheap.com/2026-sf-tea-festival-at-ferry-building-nov-14-15/",
-   "startTime": "10:00 AM",
-   "title": "SF Tea Festival 2026",
-   "venue": "San Francisco Ferry Building, 1 Ferry Bldg., San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Market",
-   "city": "San Francisco",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": "5:00 PM",
-   "note": "More than 250 curated artists and small businesses sell ceramics, jewelry, clothing, and home goods at this indoor holiday market, with free entry and a suggested $5 donation.",
-   "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/sfs-winter-renegade-craft-fair-at-fort-mason-nov-14-15/",
-   "startTime": "11:00 AM",
-   "title": "Renegade Craft Fair – Winter 2026",
-   "venue": "Fort Mason Center Festival Pavilion, 2 Marina Blvd, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Sports",
-   "city": "San Francisco",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": "6:00 PM",
-   "note": "A 49ers fan watch party for the game against the Cowboys, with a postgame show after the final whistle.",
-   "price": "$17.85",
-   "sourceUrl": "https://www.eventbrite.com/e/paulie-macs-particles-49ers-vs-cowboys-watch-party-tickets-2003842756627",
-   "startTime": "1:00 PM",
-   "title": "49ers vs. Cowboys Watch Party",
-   "venue": "Long Bridge Pizza Company, 2347 3rd St, San Francisco, CA 94107"
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "The Mountain Goats play night two of their six-night Fillmore residency, night two themed 'Alpha'.",
+   "price": "From $35",
+   "sourceUrl": "https://www.sfstation.com/music/calendar",
+   "startTime": "8:00 PM",
+   "title": "The Mountain Goats — Night Two: Alpha",
+   "venue": "The Fillmore, 1805 Geary Blvd, San Francisco, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
-   "endTime": "5:00 PM",
-   "note": "Sunday matinee of the SF Symphony's Prokofiev Romeo and Juliet program, conducted by Marie Jacquot with violinist Sayaka Shoji.",
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "Welsh alternative rock legends play the Regency Ballroom.",
    "price": "From $30",
-   "sourceUrl": "https://sf.funcheap.com/prokofievs-romeo-juliet-w-the-sf-symphony-nov-13-15/",
-   "startTime": "2:00 PM",
-   "title": "Prokofiev's \"Romeo & Juliet\" with the SF Symphony",
-   "venue": "Davies Symphony Hall, 201 Van Ness Ave, San Francisco, CA 94102"
+   "sourceUrl": "https://www.axs.com/venues/102180/the-regency-ballroom-san-francisco-tickets?intcid=hp",
+   "startTime": "8:00 PM",
+   "title": "Manic Street Preachers",
+   "venue": "The Regency Ballroom, 1300 Van Ness Ave, San Francisco, CA"
   },
   {
    "bucket": "today",
-   "category": "Comedy",
+   "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
-   "endTime": "10:00 PM",
-   "note": "A free weekly Sunday night comedy show at the downtown club on Market Street, with RSVP via Eventbrite.",
-   "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/15/",
-   "startTime": "8:30 PM",
-   "title": "Free Sunday Comedy Night in Downtown SF",
-   "venue": "The Function, 1414 Market Street, San Francisco, CA"
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "R&B singer Jorja Smith plays the historic Castro Theatre; listed as sold out.",
+   "price": "From $70",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?date=thismonth&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAvl",
+   "startTime": "8:00 PM",
+   "title": "Jorja Smith",
+   "venue": "The Castro Theatre, 429 Castro St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "Indie singer-songwriter Margaret Glaspy with opener Anna Tivel.",
+   "price": "$24",
+   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco/indie",
+   "startTime": "8:00 PM",
+   "title": "Margaret Glaspy w/ Anna Tivel",
+   "venue": "The Chapel, 777 Valencia St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "Cholo goth duo Prayers with Devora at Great American Music Hall.",
+   "price": "Ticketed",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?date=thismonth&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAvl",
+   "startTime": "7:30 PM",
+   "title": "Prayers w/ Devora",
+   "venue": "Great American Music Hall, 850 O'Farrell St, San Francisco, CA"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 58,
-   "feelsLike": 56,
-   "high": 61,
-   "low": 53,
+   "temp": 51,
+   "feelsLike": 48,
+   "high": 58,
+   "low": 48,
    "description": "Overcast",
-   "precipChance": 84,
-   "humidity": 85,
-   "wind": "8 mph",
-   "uvIndex": 2,
-   "airQualityIndex": 57,
-   "airQualityDescription": "Moderate"
+   "precipChance": 58,
+   "humidity": 86,
+   "wind": "4 mph",
+   "uvIndex": 4,
+   "airQualityIndex": 50,
+   "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-15",
-   "high": 61,
-   "low": 53,
-   "precipChance": 84,
-   "summary": "Light rain. Highs around 61 and lows around 53."
+   "date": "2026-11-16",
+   "high": 58,
+   "low": 48,
+   "precipChance": 58,
+   "summary": "Light drizzle. Highs around 58 and lows around 48."
   },
   "daily": [
    {
-    "date": "2026-11-15",
-    "high": 61,
-    "low": 53,
-    "precipChance": 84
-   },
-   {
     "date": "2026-11-16",
-    "high": 54,
+    "high": 58,
     "low": 48,
-    "precipChance": 55
+    "precipChance": 58
    },
    {
     "date": "2026-11-17",
-    "high": 60,
+    "high": 58,
     "low": 47,
-    "precipChance": 81
+    "precipChance": 94
    },
    {
     "date": "2026-11-18",
-    "high": 57,
-    "low": 52,
-    "precipChance": 99
+    "high": 60,
+    "low": 54,
+    "precipChance": 100
    },
    {
     "date": "2026-11-19",
     "high": 57,
-    "low": 50,
-    "precipChance": 93
+    "low": 52,
+    "precipChance": 94
    },
    {
     "date": "2026-11-20",
-    "high": 59,
-    "low": 53,
-    "precipChance": 34
+    "high": 58,
+    "low": 51,
+    "precipChance": 10
    },
    {
     "date": "2026-11-21",
-    "high": 57,
-    "low": 53,
-    "precipChance": 51
+    "high": 56,
+    "low": 51,
+    "precipChance": 58
+   },
+   {
+    "date": "2026-11-22",
+    "high": 56,
+    "low": 51,
+    "precipChance": 52
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 57,
-    "low": 53,
-    "precipChance": 51,
-    "summary": "Light showers. Highs around 57 and lows around 53.",
-    "wind": "23 mph",
+    "high": 56,
+    "low": 51,
+    "precipChance": 58,
+    "summary": "Light showers. Highs around 56 and lows around 51.",
+    "wind": "21 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 58,
-    "low": 50,
-    "precipChance": 41,
-    "summary": "Drizzle. Highs around 58 and lows around 50.",
-    "wind": "9 mph",
+    "high": 56,
+    "low": 51,
+    "precipChance": 52,
+    "summary": "Drizzle. Highs around 56 and lows around 51.",
+    "wind": "13 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-15T17:53:28.165644Z",
+  "fetchedAt": "2026-11-16T11:53:16.431277Z",
   "location": "San Francisco, CA"
  }
 }

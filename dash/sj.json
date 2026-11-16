@@ -1,86 +1,86 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-15T17:55:06.802451Z",
+ "eventsUpdatedAt": "2026-11-16T11:55:36.815310Z",
  "ranges": {
-  "today": "2026-11-15",
+  "today": "2026-11-16",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Festival",
+   "category": "Arts",
    "city": "San Jose",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
-   "endTime": "4:00 PM",
-   "note": "53rd annual artisan art and craft show with hundreds of local makers, live music, and a KidZone; Sunday hours 10am-4pm.",
-   "price": "From $9",
-   "sourceUrl": "https://allevents.in/san-jose/2026-san-jose-harvest-festival/200029453814044",
-   "startTime": "10:00 AM",
-   "title": "2026 San Jose Harvest Festival",
-   "venue": "Santa Clara County Fairgrounds, 344 Tully Rd, San Jose, CA 95111"
-  },
-  {
-   "bucket": "today",
-   "category": "Festival",
-   "city": "San Jose",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": "7:00 PM",
-   "note": "20th anniversary SnowFest presented by Palisades Tahoe celebrating snow sports with deals and lift ticket vouchers.",
-   "price": "Free",
-   "sourceUrl": "https://www.eventbrite.com/e/snowfest-at-sports-basement-almaden-tickets-2002975903847?aff=ebdssbcitybrowse",
-   "startTime": "10:00 AM",
-   "title": "SnowFest at Sports Basement Almaden",
-   "venue": "Sports Basement Almaden, 5353 Almaden Expressway, San Jose, CA 95118"
-  },
-  {
-   "bucket": "today",
-   "category": "Market",
-   "city": "San Jose",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": "2:00 PM",
-   "note": "Holiday artisan market with local vendors and professional photos with Santa in a decorated holiday setting.",
-   "price": null,
-   "sourceUrl": "https://www.dsj.org/1events/week/2026-11-17/",
-   "startTime": "9:00 AM",
-   "title": "Saint Martin of Tours School Holiday Artisan Market",
-   "venue": "St. Martin of Tours Parish, 200 O'Connor Drive, San Jose, CA 95128"
-  },
-  {
-   "bucket": "today",
-   "category": "Sports",
-   "city": "San Jose",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
+   "dayLabel": "周一",
    "endTime": null,
-   "note": "NHL regular-season game as the San Jose Sharks host the Nashville Predators at SAP Center.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?page=3",
-   "startTime": "6:00 PM",
-   "title": "San Jose Sharks vs. Nashville Predators",
-   "venue": "SAP Center at San Jose, 525 W Santa Clara St, San Jose, CA 95113"
+   "note": "Hands-on Turkish mosaic lamp making workshop in downtown San Jose.",
+   "price": "$96",
+   "sourceUrl": "https://bayareaweeked.vercel.app/city/san-jose/",
+   "startTime": "All day",
+   "title": "Turkish Mosaic Lamp Workshop",
+   "venue": "255 N Market St, Suite 270, San Jose, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Family",
+   "city": "San Jose",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": "12:00 PM",
+   "note": "Music and movement storytime for young children at the library.",
+   "price": "Free",
+   "sourceUrl": "https://sjpl.bibliocommons.com/v2/events?audiences=5d5f09306bb98139001cffcc,5d5f0926be771f2300369397",
+   "startTime": "11:00 AM",
+   "title": "Music and Movement",
+   "venue": "Mt. Pleasant Library, San Jose, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Family",
+   "city": "San Jose",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": "5:00 PM",
+   "note": "Drop-in Monday STEM fun for families: soil layers and worm study.",
+   "price": "Free",
+   "sourceUrl": "https://sjpl.bibliocommons.com/v2/events?audiences=5d5f09306bb98139001cffcc,5d5f0926be771f2300369397",
+   "startTime": "4:00 PM",
+   "title": "STEM Club: Soil Layers and Worm Study",
+   "venue": "King Library, San Jose, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "San Jose",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
+   "dayLabel": "周一",
    "endTime": null,
-   "note": "Mexican-American singer Marisela performs her Eterna Tour 2026 concert at the San Jose Civic.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ",
-   "startTime": "7:00 PM",
-   "title": "Marisela: Eterna Tour 2026",
-   "venue": "San Jose Civic, 135 W San Carlos St, San Jose, CA 95113"
+   "note": "San José State student jazz combos perform in the Music Building.",
+   "price": "See listing",
+   "sourceUrl": "https://bayareaweeked.vercel.app/city/san-jose/",
+   "startTime": "7:30 PM",
+   "title": "Jazz Combos",
+   "venue": "Music Building, San José State University, San Jose, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Jose",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "Kiku Room takeover with Tide Swing and Peoples Disco.",
+   "price": "See listing",
+   "sourceUrl": "https://bayareaweeked.vercel.app/city/san-jose/",
+   "startTime": "8:00 PM",
+   "title": "Kiku Room Takeover: Tide Swing, Peoples Disco",
+   "venue": "Still OG, San Jose, CA"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 59,
-   "feelsLike": 56,
-   "high": 64,
-   "low": 52,
+   "temp": 50,
+   "feelsLike": 48,
+   "high": 58,
+   "low": 46,
    "description": "Overcast",
-   "precipChance": 74,
-   "humidity": 72,
-   "wind": "8 mph",
+   "precipChance": 88,
+   "humidity": 88,
+   "wind": "4 mph",
    "uvIndex": 4,
-   "airQualityIndex": 55,
-   "airQualityDescription": "Moderate"
+   "airQualityIndex": 44,
+   "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-15",
-   "high": 64,
-   "low": 52,
-   "precipChance": 74,
-   "summary": "Light rain. Highs around 64 and lows around 52."
+   "date": "2026-11-16",
+   "high": 58,
+   "low": 46,
+   "precipChance": 88,
+   "summary": "Drizzle. Highs around 58 and lows around 46."
   },
   "daily": [
    {
-    "date": "2026-11-15",
-    "high": 64,
-    "low": 52,
-    "precipChance": 74
-   },
-   {
     "date": "2026-11-16",
-    "high": 56,
-    "low": 45,
-    "precipChance": 80
+    "high": 58,
+    "low": 46,
+    "precipChance": 88
    },
    {
     "date": "2026-11-17",
-    "high": 60,
-    "low": 45,
-    "precipChance": 34
+    "high": 57,
+    "low": 43,
+    "precipChance": 62
    },
    {
     "date": "2026-11-18",
     "high": 53,
     "low": 50,
-    "precipChance": 94
+    "precipChance": 100
    },
    {
     "date": "2026-11-19",
-    "high": 55,
-    "low": 48,
-    "precipChance": 88
+    "high": 57,
+    "low": 49,
+    "precipChance": 87
    },
    {
     "date": "2026-11-20",
-    "high": 61,
-    "low": 48,
-    "precipChance": 37
+    "high": 58,
+    "low": 47,
+    "precipChance": 8
    },
    {
     "date": "2026-11-21",
-    "high": 52,
+    "high": 56,
+    "low": 48,
+    "precipChance": 55
+   },
+   {
+    "date": "2026-11-22",
+    "high": 56,
     "low": 49,
-    "precipChance": 36
+    "precipChance": 45
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 52,
-    "low": 49,
-    "precipChance": 36,
-    "summary": "Rain. Highs around 52 and lows around 49.",
-    "wind": "12 mph",
+    "high": 56,
+    "low": 48,
+    "precipChance": 55,
+    "summary": "Rain. Highs around 56 and lows around 48.",
+    "wind": "10 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 57,
-    "low": 48,
-    "precipChance": 35,
-    "summary": "Light drizzle. Highs around 57 and lows around 48.",
-    "wind": "5 mph",
+    "high": 56,
+    "low": 49,
+    "precipChance": 45,
+    "summary": "Light showers. Highs around 56 and lows around 49.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-15T17:53:30.162917Z",
+  "fetchedAt": "2026-11-16T11:53:18.595948Z",
   "location": "San Jose, CA"
  }
 }

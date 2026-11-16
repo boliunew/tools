@@ -1,86 +1,86 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-15T17:55:06.814385Z",
+ "eventsUpdatedAt": "2026-11-16T11:55:36.818974Z",
  "ranges": {
-  "today": "2026-11-15",
+  "today": "2026-11-16",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Sports",
+   "category": "Music",
    "city": "New York",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
+   "dayLabel": "周一",
    "endTime": null,
-   "note": "The Jets host the Buffalo Bills at MetLife Stadium on Sunday afternoon.",
+   "note": "Emo Orchestra joins The Spill Canvas and Grewind for an evening of emo at The Brooklyn Monarch on Monday night.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?page=10&date=thisweekend",
-   "startTime": "1:00 PM",
-   "title": "New York Jets v. Buffalo Bills",
-   "venue": "MetLife Stadium"
-  },
-  {
-   "bucket": "today",
-   "category": "Theater",
-   "city": "New York",
-   "date": "2026-11-15",
-   "day": "today",
-   "dayLabel": "周日",
-   "endTime": null,
-   "note": "The Radio City Christmas Spectacular runs Sunday morning at Radio City Music Hall.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?page=10&date=thisweekend",
-   "startTime": "11:00 AM",
-   "title": "Christmas Spectacular Starring The Radio City Rockettes",
-   "venue": "Radio City Music Hall, Manhattan"
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
+   "startTime": "6:00 PM",
+   "title": "Emo Orchestra with The Spill Canvas – An Evening of Emo",
+   "venue": "The Brooklyn Monarch, 23 Meadow St, Brooklyn"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
+   "dayLabel": "周一",
    "endTime": null,
-   "note": "Sting brings his STING 3.0 Tour to Brooklyn Paramount on Sunday night.",
+   "note": "Stella Lefty plays Bowery Ballroom on Monday evening.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?page=10&date=thisweekend",
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/pop",
    "startTime": "7:00 PM",
-   "title": "STING 3.0 Tour",
-   "venue": "Brooklyn Paramount, Brooklyn"
+   "title": "Stella Lefty",
+   "venue": "Bowery Ballroom, Manhattan"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
+   "dayLabel": "周一",
    "endTime": null,
-   "note": "Yung Gravy brings The Joyrider Tour to Irving Plaza on Sunday night.",
+   "note": "Uruguayan rock band El Cuarteto De Nos takes the stage at Warsaw on Monday night.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?page=10&date=thisweekend",
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
    "startTime": "7:00 PM",
-   "title": "Yung Gravy: The Joyrider Tour",
+   "title": "El Cuarteto De Nos",
+   "venue": "Warsaw, Brooklyn"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-16",
+   "day": "today",
+   "dayLabel": "周一",
+   "endTime": null,
+   "note": "Sleep brings the North America 2026 tour to Irving Plaza on Monday night (moved from Brooklyn Paramount).",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "7:00 PM",
+   "title": "Sleep: North America 2026",
    "venue": "Irving Plaza, Manhattan"
   },
   {
    "bucket": "today",
-   "category": "Food & Drink",
+   "category": "Music",
    "city": "New York",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "day": "today",
-   "dayLabel": "周日",
+   "dayLabel": "周一",
    "endTime": null,
-   "note": "Catskills favorite Phoenicia Diner takes over Gotham Burger Social Club in Williamsburg for Sunday brunch until the food sells out.",
+   "note": "Grammy-winning Vince Giordano and the Nighthawks play authentic 1920s and 1930s jazz at Birdland Theater on Monday evening.",
    "price": null,
-   "sourceUrl": "https://www.nycnewscenter.com/events.html",
-   "startTime": "8:00 AM",
-   "title": "Phoenicia Diner Pop-Up",
-   "venue": "Gotham Burger Social Club, 216 Grand St, Williamsburg, Brooklyn"
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/jazz",
+   "startTime": "5:30 PM",
+   "title": "Vince Giordano and the Nighthawks",
+   "venue": "Birdland Theater, Manhattan"
   }
  ],
  "events": [
@@ -192,42 +192,36 @@
  ],
  "weather": {
   "current": {
-   "temp": 48,
-   "feelsLike": 40,
-   "high": 49,
-   "low": 36,
-   "description": "Mainly clear",
+   "temp": 35,
+   "feelsLike": 29,
+   "high": 52,
+   "low": 35,
+   "description": "Clear",
    "precipChance": 1,
-   "humidity": 57,
-   "wind": "11 mph",
+   "humidity": 84,
+   "wind": "4 mph",
    "uvIndex": 3,
-   "airQualityIndex": 25,
+   "airQualityIndex": 30,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-15",
-   "high": 49,
-   "low": 36,
+   "date": "2026-11-16",
+   "high": 52,
+   "low": 35,
    "precipChance": 1,
-   "summary": "Overcast. Highs around 49 and lows around 36."
+   "summary": "Overcast. Highs around 52 and lows around 35."
   },
   "daily": [
    {
-    "date": "2026-11-15",
-    "high": 49,
-    "low": 36,
-    "precipChance": 1
-   },
-   {
     "date": "2026-11-16",
-    "high": 45,
-    "low": 33,
+    "high": 52,
+    "low": 35,
     "precipChance": 1
    },
    {
     "date": "2026-11-17",
-    "high": 57,
-    "low": 32,
+    "high": 53,
+    "low": 33,
     "precipChance": 0
    },
    {
@@ -244,15 +238,21 @@
    },
    {
     "date": "2026-11-20",
-    "high": 63,
-    "low": 50,
+    "high": 64,
+    "low": 51,
     "precipChance": 0
    },
    {
     "date": "2026-11-21",
     "high": 58,
-    "low": 50,
+    "low": 51,
     "precipChance": 1
+   },
+   {
+    "date": "2026-11-22",
+    "high": 58,
+    "low": 54,
+    "precipChance": 20
    }
   ],
   "weekend": [
@@ -260,24 +260,24 @@
     "date": "2026-11-21",
     "day": "sat",
     "high": 58,
-    "low": 50,
+    "low": 51,
     "precipChance": 1,
-    "summary": "Overcast. Highs around 58 and lows around 50.",
-    "wind": "9 mph",
+    "summary": "Overcast. Highs around 58 and lows around 51.",
+    "wind": "5 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 55,
+    "high": 58,
     "low": 54,
-    "precipChance": 5,
-    "summary": "Light rain. Highs around 55 and lows around 54.",
-    "wind": "11 mph",
+    "precipChance": 20,
+    "summary": "Light drizzle. Highs around 58 and lows around 54.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-15T17:53:34.076496Z",
+  "fetchedAt": "2026-11-16T11:53:22.788554Z",
   "location": "New York, NY"
  }
 }
