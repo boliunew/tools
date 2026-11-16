@@ -34,7 +34,11 @@
 
 **投资**（10）：[美国投资账户与税的基本概念](us-investment-accounts-tax.md) · [W-2 打工族报税入门（联邦 + 加州）](w2-tax-basics.md) · [回测里最常见的坑](backtest-pitfalls.md) · [经济指标怎么看](economic-indicators.md) · [指数基金与定投](index-fund-dca.md) · [投资里的心理偏差](investing-psychology.md) · [美股历次大跌与恢复](market-crash-history.md) · [我的几套交易系统：一张总览](my-trading-systems.md) · [常用技术指标用 Python 怎么算](python-quant-indicators.md) · [股票池的五个信号：规则、回测数字和怎么看](stock-pool-signals.md)
 
+**科技**（10）：[每天用得到的技巧](ubuntu-daily-tips.md) · [Ubuntu 装好之后先做的事](ubuntu-first-steps.md) · [把 Ubuntu 当家里的小服务器](ubuntu-home-server.md) · [Ubuntu 系列总览](ubuntu-index.md) · [远程连接与局域网共享](ubuntu-remote-sharing.md) · [装软件的五种办法](ubuntu-software-install.md) · [终端入门：常用命令速查](ubuntu-terminal-basics.md) · [出问题了怎么办](ubuntu-troubleshooting.md) · [人工智能入门](ai-basics.md) · [编程入门](programming-basics.md)
+
 **野外**（10）：[露营入门：南加州去哪露营、怎么订、带什么](camping-basics.md) · [火：什么时候能生、怎么生、怎么灭，遇到山火怎么逃](fire-and-campfire-rules.md) · [失温和中暑：从早期征兆到怎么处理](hypothermia-heat-illness.md) · [迷路了怎么办：S.T.O.P.、手机定位、指南针和求救](lost-navigation.md) · [山地天气和地形风险：温度、雷暴、山洪、高原反应、冰雪、落石、天黑](mountain-weather-dangers.md) · [吃什么、背什么：徒步和露营的食物、水、炉头、背包与穿衣](outdoor-food-and-pack.md) · [南加州野外的动植物风险：蛇、狮、熊、蜱虫、毒橡树](socal-wildlife-plants.md) · [出门前：十大必备、行程计划和掉头时间](ten-essentials-trip-plan.md) · [野外的水：喝多少、去哪找、怎么净化](water-in-the-wild.md) · [野外急救基础：出事以后的头十分钟](wilderness-first-aid.md)
+
+**Ubuntu**（8）：[每天用得到的技巧](ubuntu-daily-tips.md) · [Ubuntu 装好之后先做的事](ubuntu-first-steps.md) · [把 Ubuntu 当家里的小服务器](ubuntu-home-server.md) · [Ubuntu 系列总览](ubuntu-index.md) · [远程连接与局域网共享](ubuntu-remote-sharing.md) · [装软件的五种办法](ubuntu-software-install.md) · [终端入门：常用命令速查](ubuntu-terminal-basics.md) · [出问题了怎么办](ubuntu-troubleshooting.md)
 
 **健康**（8）：[护肤入门：先认清你的肤质](skincare-basics.md) · [健身入门](health-fitness-basics.md) · [营养基础](health-nutrition-basics.md) · [睡眠基础](health-sleep-basics.md) · [美国医保名词一次讲清](us-health-insurance-terms.md) · [失温和中暑：从早期征兆到怎么处理](hypothermia-heat-illness.md) · [野外的水：喝多少、去哪找、怎么净化](water-in-the-wild.md) · [山火季、Santa Ana 风和空气质量](wildfire-smoke-santa-ana.md)
 
@@ -85,8 +89,6 @@
 **文学**（2）：[中国文学经典入门](literature-chinese-classics.md) · [苏轼：一个乐观的人](su-shi.md)
 
 **硬件**（2）：[Hi-Res 音频入门（采样率、无损、蓝牙编码）](hi-res-audio-basics.md) · [USB-C 充电头和线怎么选（PD、PPS、e-marker）](usb-pd-and-cables.md)
-
-**科技**（2）：[人工智能入门](ai-basics.md) · [编程入门](programming-basics.md)
 
 **移民**（2）：[美国移民（一）：一个移民国家的历史](uw-us-immigration-history.md) · [美国移民（二）：移民制度是怎么运作的，争论在哪里](uw-us-immigration-system.md)
 
@@ -160,6 +162,14 @@
 
 ## 更新日志
 
+- 2026-11-16 新增 [每天用得到的技巧](ubuntu-daily-tips.md)
+- 2026-11-16 新增 [Ubuntu 装好之后先做的事](ubuntu-first-steps.md)
+- 2026-11-16 新增 [把 Ubuntu 当家里的小服务器](ubuntu-home-server.md)
+- 2026-11-16 新增 [Ubuntu 系列总览](ubuntu-index.md)
+- 2026-11-16 新增 [远程连接与局域网共享](ubuntu-remote-sharing.md)
+- 2026-11-16 新增 [装软件的五种办法](ubuntu-software-install.md)
+- 2026-11-16 新增 [终端入门：常用命令速查](ubuntu-terminal-basics.md)
+- 2026-11-16 新增 [出问题了怎么办](ubuntu-troubleshooting.md)
 - 2026-11-09 更新 [电影 Top 500（按国家分类）](top500-movies.md)
 - 2026-11-09 更新 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-11-06 新增 [能源与气候](energy-climate.md)
@@ -182,11 +192,3 @@
 - 2026-11-05 新增 [怎么看电影](film-watching-guide.md)
 - 2026-11-05 新增 [健身入门](health-fitness-basics.md)
 - 2026-11-05 新增 [营养基础](health-nutrition-basics.md)
-- 2026-11-05 新增 [睡眠基础](health-sleep-basics.md)
-- 2026-11-05 新增 [中国文学经典入门](literature-chinese-classics.md)
-- 2026-11-05 新增 [物流系列导读](logistics-index.md)
-- 2026-11-05 新增 [户外系列导读](outdoor-index.md)
-- 2026-11-05 新增 [编程入门](programming-basics.md)
-- 2026-11-05 更新 [华语音乐史纲（上海时代曲、港台流行、内地与独立音乐）](music-history-chinese.md)
-- 2026-11-05 更新 [流行音乐史纲（摇滚、灵魂乐、迪斯科、嘻哈、电子、K-pop）](music-history-pop.md)
-- 2026-11-05 更新 [西方音乐史纲（中世纪到 20 世纪）](music-history-western.md)
