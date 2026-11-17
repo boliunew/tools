@@ -1,16 +1,16 @@
 {
- "date": "2026-11-16",
- "kind": "口头禅",
- "en": "Fair enough",
- "zh": "有道理；行吧",
- "by": "接受对方的理由",
- "line": "Fair enough",
+ "date": "2026-11-17",
+ "kind": "名言",
+ "en": "The world is but a canvas to our imagination.",
+ "zh": "世界不过是想象力的一块画布。",
+ "by": "Henry David Thoreau",
+ "line": "The world is but a canvas to our imagination. — Henry David Thoreau",
  "word": {
-  "w": "wallet",
-  "ph": "'wɒlit",
-  "zh": "n. 皮夹",
-  "ex": "Tom took out his wallet and paid the bill.",
-  "exzh": "汤姆拿出钱包付了账。"
+  "w": "screw",
+  "ph": "skru:",
+  "zh": "n. 螺旋，螺杆，螺钉，螺旋桨；vt. 调节，扭紧，旋，拧",
+  "ex": "I screwed up the very first note.",
+  "exzh": "我搞砸了第一个音符。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
