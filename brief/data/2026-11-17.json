@@ -1,0 +1,183 @@
+{
+ "date": "2026-11-17",
+ "generated": "2026-11-17T22:30:25Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "黄仁勋表态愿重返 NVIDIA CEO",
+     "d": "NVIDIA 创始人黄仁勋在上周因与涉嫌中国间谍的前高管及多名员工的私事被迫辞职后，表示若董事会认同，他愿意重新担任 CEO。公司董事会当前未考虑重新任命，且将在本周二公布季报，届时将接受分析师与投资者的质询。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/17/nvidia-jensen-huang-statement"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美新芯片出口限制波及东南亚数据中心",
+     "d": "美国宣布对新加坡、马来西亚、泰国、印度尼西亚和巴西的数据中心运营商实行更严格的审查，要求取得美国许可才能购买先进芯片，以防止这些芯片被用于服务中国AI公司。此举将限制中国获取海外计算资源，并可能影响这些地区的芯片需求和数据中心投资。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Anthropic 将在伦敦上市",
+     "d": "AI 对话模型 Anthropic 计划在伦敦进行大规模 IPO，预计成为历史最大规模之一，标志着AI公司融资渠道多元化。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/17/anthropic-ipo-flotation-buy-shares-stock-market-claude-ai"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/17 周二 收盘：标普500 ETF（SPY）-1.01%，纳指100 ETF（QQQ）-0.73%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 25.5；58% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：FIX +3.9%、COHR +3.6%、CIEN +2.8%；跌幅最大：CRM -9.4%、INTU -7.2%、NOW -6.5%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：NVDA（盘后）、HD（盘前）、DIS（盘前）、BHP（时间未定）、VIK（盘前）",
+     "d": "按市值挑出最大的几家，共 7 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：EIA 原油库存（11/13 周五）",
+     "d": "Crude Oil Inventories 实际 4.657M（预期 -0.600M，前值 -0.865M）；Cushing Crude Oil Inventories 实际 0.106M（预期 —，前值 0.280M）。库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/17 周二 05:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/18 周三 09:10：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/20 周五 08:30：首次申领失业金人数（重要性：低）",
+     "d": "每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "黄仁勋愿回 Nvidia 引关注",
+     "d": "多家媒体报道黄仁勋表态愿意重返 Nvidia，涉及美中技术竞争与公司治理风险，影响全球芯片与 AI 市场情绪。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/tv-shows/business/20261117-jensen-huang-says-he-d-be-honoured-to-return-to-nvidia-as-ceo"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/tv-shows/truth-or-fake/20261117-deepfakes-memes-and-misinformation-ai-turns-against-nvidia-s-jensen-huang"
+      }
+     ]
+    },
+    {
+     "t": "特朗普称美方严肃对待伊朗阴谋",
+     "d": "在菲律宾参加东盟峰会时，特朗普表示美国正“非常严肃”地审视伊朗可能在华盛顿策划的肮脏弹阴谋，尽管伊朗否认指控。此言论出现在美国情报机构对伊朗威胁的评估背景下，同时美国正争取国会续延《外情监视法》第702条。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cq808vzd3nnpo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/17/trump-reported-iranian-plot-dirty-bomb-washington"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "德国等国策划在卢旺达设立遣返中心",
+     "d": "德国、丹麦、奥地利、希腊和荷兰联合宣布将在卢旺达建立首个欧盟境外的移民遣返枢纽，以配合欧盟收紧移民法规。该计划遭到人权组织、联合国难民署及法国总统的质疑与反对。",
+     "src": [
+      {
+       "n": "日本时报",
+       "u": "https://www.japantimes.co.jp/news/2026/11/17/world/politics/european-nations-rwanda-hub-migrants/"
+      },
+      {
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/europe-decided-return-hubs-migrants-138205386"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "黄仁勋愿意回归 Nvidia CEO",
+  "d": "Nvidia 作为 AI 产业链核心，其领袖变动直接关联行业资金流向与技术竞争格局，值得投资者重点关注。"
+ },
+ "week": []
+}
