@@ -1,8 +1,8 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-16T23:58:28.345617Z",
+ "eventsUpdatedAt": "2026-11-17T11:58:57.058078Z",
  "ranges": {
-  "today": "2026-11-16",
+  "today": "2026-11-17",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,93 +11,93 @@
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "Emo Orchestra joins The Spill Canvas and Grewind for an evening of emo at The Brooklyn Monarch on Monday night.",
+   "note": "First To Eleven plays Mercury Lounge on Tuesday evening.",
    "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
    "startTime": "6:00 PM",
-   "title": "Emo Orchestra with The Spill Canvas – An Evening of Emo",
-   "venue": "The Brooklyn Monarch, 23 Meadow St, Brooklyn"
+   "title": "First To Eleven",
+   "venue": "Mercury Lounge, 217 E. Houston St, Manhattan"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "Stella Lefty plays Bowery Ballroom on Monday evening.",
+   "note": "Sting brings the STING 3.0 Tour to Brooklyn Paramount.",
    "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/pop",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
    "startTime": "7:00 PM",
-   "title": "Stella Lefty",
+   "title": "STING 3.0 Tour",
+   "venue": "Brooklyn Paramount, 385 Flatbush Ave Ext, Brooklyn"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-17",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": null,
+   "note": "Matt Hansen brings The Orchid Tour to Irving Plaza.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "7:00 PM",
+   "title": "Matt Hansen - The Orchid Tour",
+   "venue": "Irving Plaza, 17 Irving Pl, Manhattan"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-17",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": null,
+   "note": "Sadurn plays Bowery Ballroom on Tuesday evening.",
+   "price": null,
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/indie",
+   "startTime": "7:00 PM",
+   "title": "Sadurn",
    "venue": "Bowery Ballroom, Manhattan"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "Uruguayan rock band El Cuarteto De Nos takes the stage at Warsaw on Monday night.",
+   "note": "Maria Schneider Orchestra at Birdland Jazz Club.",
    "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
    "startTime": "7:00 PM",
-   "title": "El Cuarteto De Nos",
-   "venue": "Warsaw, Brooklyn"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Sleep brings the North America 2026 tour to Irving Plaza on Monday night (moved from Brooklyn Paramount).",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
-   "startTime": "7:00 PM",
-   "title": "Sleep: North America 2026",
-   "venue": "Irving Plaza, Manhattan"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Grammy-winning Vince Giordano and the Nighthawks play authentic 1920s and 1930s jazz at Birdland Theater on Monday evening.",
-   "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/jazz",
-   "startTime": "5:30 PM",
-   "title": "Vince Giordano and the Nighthawks",
-   "venue": "Birdland Theater, Manhattan"
+   "title": "Maria Schneider Orchestra",
+   "venue": "Birdland Jazz Club, Manhattan"
   }
  ],
  "events": [
   {
    "bucket": "weekend",
-   "category": "Theater",
+   "category": "Market",
    "city": "New York",
    "date": "2026-11-21",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "note": "New production of Janáček's Jenůfa starring Asmik Grigorian at the Metropolitan Opera.",
-   "price": "From $86",
-   "sourceUrl": "https://www.ticketsonsale.com/theater/jenufa",
-   "startTime": "1:00 PM",
-   "title": "Jenůfa",
-   "venue": "Metropolitan Opera House, Lincoln Center, Manhattan"
+   "note": "Holiday market opens in Union Square Park.",
+   "price": "Free",
+   "sourceUrl": "https://wonderkit.app/discover/new-york-ny",
+   "startTime": "10:00 AM",
+   "title": "Union Square Holiday Market",
+   "venue": "Union Square Park, Manhattan"
   },
   {
    "bucket": "weekend",
@@ -113,21 +113,6 @@
    "startTime": "1:00 PM",
    "title": "Bronx Zoo Holiday Lights",
    "venue": "Bronx Zoo, 2300 Southern Blvd, Bronx"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Film",
-   "city": "New York",
-   "date": "2026-11-21",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": null,
-   "note": "Documentary about a Puerto Rican-led neighborhood crew on the 1970s Upper West Side, followed by a Q&A with the cast and crew.",
-   "price": null,
-   "sourceUrl": "https://www.nycnewscenter.com/events.html",
-   "startTime": "5:00 PM",
-   "title": "West Side Familia",
-   "venue": "Leonard Nimoy Thalia, 2537 Broadway, Manhattan"
   },
   {
    "bucket": "weekend",
@@ -152,6 +137,21 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
+   "note": "NY Phil concertmaster Frank Huang performs Mendelssohn.",
+   "price": null,
+   "sourceUrl": "https://wonderkit.app/discover/new-york-ny",
+   "startTime": "7:30 PM",
+   "title": "NY Phil: Concertmaster Frank Huang Performs Mendelssohn",
+   "venue": "Wu Tsai Theater at David Geffen Hall, Lincoln Center, Manhattan"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-21",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": null,
    "note": "Jorja Smith performs at Kings Theatre on Saturday night.",
    "price": null,
    "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
@@ -161,18 +161,18 @@
   },
   {
    "bucket": "weekend",
-   "category": "Family",
+   "category": "Outdoors",
    "city": "New York",
    "date": "2026-11-22",
    "day": "sun",
    "dayLabel": "周日",
-   "endTime": "11:00 AM",
-   "note": "Free family Thanksgiving concert with Brooklyn cowboy musician Hopalong Andrew at Time Out Market.",
-   "price": "Free",
-   "sourceUrl": "https://www.kidonthetown.com/events/page/20/",
-   "startTime": "10:00 AM",
-   "title": "Free Kids Thanksgiving Concert with Hopalong Andrew",
-   "venue": "Time Out Market NY, 55 Water Street, Brooklyn"
+   "endTime": null,
+   "note": "Ice skating at the Winter Village in Bryant Park.",
+   "price": null,
+   "sourceUrl": "https://wonderkit.app/discover/new-york-ny",
+   "startTime": "8:00 AM",
+   "title": "Ice Skating at Bryant Park Winter Village",
+   "venue": "Bank of America Winter Village at Bryant Park, Manhattan"
   },
   {
    "bucket": "weekend",
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 47,
+   "temp": 43,
    "feelsLike": 40,
    "high": 57,
-   "low": 35,
+   "low": 49,
    "description": "Clear",
-   "precipChance": 1,
-   "humidity": 51,
-   "wind": "7 mph",
-   "uvIndex": 3,
-   "airQualityIndex": 43,
-   "airQualityDescription": "Good"
+   "precipChance": 0,
+   "humidity": 68,
+   "wind": "5 mph",
+   "uvIndex": null,
+   "airQualityIndex": 54,
+   "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "high": 57,
-   "low": 35,
-   "precipChance": 1,
-   "summary": "Overcast. Highs around 57 and lows around 35."
+   "low": 49,
+   "precipChance": 0,
+   "summary": "Sunny. Highs around 57 and lows around 49."
   },
   "daily": [
    {
-    "date": "2026-11-16",
-    "high": 57,
-    "low": 35,
-    "precipChance": 1
-   },
-   {
     "date": "2026-11-17",
-    "high": 58,
-    "low": 34,
+    "high": 57,
+    "low": 49,
     "precipChance": 0
    },
    {
     "date": "2026-11-18",
     "high": 60,
-    "low": 38,
+    "low": 46,
     "precipChance": 0
    },
    {
     "date": "2026-11-19",
     "high": 61,
-    "low": 49,
+    "low": 46,
     "precipChance": 0
    },
    {
     "date": "2026-11-20",
     "high": 63,
-    "low": 50,
+    "low": 47,
     "precipChance": 0
    },
    {
     "date": "2026-11-21",
-    "high": 58,
+    "high": 60,
     "low": 51,
-    "precipChance": 2
+    "precipChance": 0
    },
    {
     "date": "2026-11-22",
-    "high": 57,
+    "high": 62,
     "low": 52,
-    "precipChance": 25
+    "precipChance": 31
+   },
+   {
+    "date": "2026-11-23",
+    "high": 57,
+    "low": 41,
+    "precipChance": 16
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 58,
+    "high": 60,
     "low": 51,
-    "precipChance": 2,
-    "summary": "Overcast. Highs around 58 and lows around 51.",
+    "precipChance": 0,
+    "summary": "Mostly Sunny. Highs around 60 and lows around 51.",
     "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 57,
+    "high": 62,
     "low": 52,
-    "precipChance": 25,
-    "summary": "Overcast. Highs around 57 and lows around 52.",
-    "wind": "4 mph",
+    "precipChance": 31,
+    "summary": "Chance Light Rain. Highs around 62 and lows around 52.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-16T23:56:58.618989Z",
+  "fetchedAt": "2026-11-17T11:57:37.628736Z",
   "location": "New York, NY"
  }
 }

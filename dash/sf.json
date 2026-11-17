@@ -1,8 +1,8 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-16T23:58:28.342812Z",
+ "eventsUpdatedAt": "2026-11-17T11:58:57.052344Z",
  "ranges": {
-  "today": "2026-11-16",
+  "today": "2026-11-17",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,76 +11,76 @@
    "bucket": "today",
    "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "The Mountain Goats play night two of their six-night Fillmore residency, night two themed 'Alpha'.",
+   "note": "Heavy metal veterans Armored Saint with Metal Church.",
    "price": "From $35",
-   "sourceUrl": "https://www.sfstation.com/music/calendar",
-   "startTime": "8:00 PM",
-   "title": "The Mountain Goats — Night Two: Alpha",
-   "venue": "The Fillmore, 1805 Geary Blvd, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Welsh alternative rock legends play the Regency Ballroom.",
-   "price": "From $30",
-   "sourceUrl": "https://www.axs.com/venues/102180/the-regency-ballroom-san-francisco-tickets?intcid=hp",
-   "startTime": "8:00 PM",
-   "title": "Manic Street Preachers",
-   "venue": "The Regency Ballroom, 1300 Van Ness Ave, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "R&B singer Jorja Smith plays the historic Castro Theatre; listed as sold out.",
-   "price": "From $70",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?date=thismonth&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAvl",
-   "startTime": "8:00 PM",
-   "title": "Jorja Smith",
-   "venue": "The Castro Theatre, 429 Castro St, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Indie singer-songwriter Margaret Glaspy with opener Anna Tivel.",
-   "price": "$24",
-   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco/indie",
-   "startTime": "8:00 PM",
-   "title": "Margaret Glaspy w/ Anna Tivel",
-   "venue": "The Chapel, 777 Valencia St, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Cholo goth duo Prayers with Devora at Great American Music Hall.",
-   "price": "Ticketed",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?date=thismonth&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAvl",
-   "startTime": "7:30 PM",
-   "title": "Prayers w/ Devora",
+   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco",
+   "startTime": "7:00 PM",
+   "title": "Armored Saint / Metal Church",
    "venue": "Great American Music Hall, 850 O'Farrell St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-17",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": null,
+   "note": "A cappella group Straight No Chaser brings vocal harmonies to the Palace of Fine Arts.",
+   "price": "From $26",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?page=5&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "7:30 PM",
+   "title": "Straight No Chaser",
+   "venue": "Palace of Fine Arts, 3601 Lyon St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-17",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": null,
+   "note": "K-pop group BOYNEXTDOOR live at The Warfield.",
+   "price": "From $167",
+   "sourceUrl": "https://www.axs.com/category/cities/5391959/san-francisco-ca?skin=got",
+   "startTime": "7:30 PM",
+   "title": "BOYNEXTDOOR",
+   "venue": "The Warfield, 982 Market St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-17",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": null,
+   "note": "Americana rockers Son Volt play August Hall.",
+   "price": "From $21",
+   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco/rock",
+   "startTime": "8:00 PM",
+   "title": "Son Volt",
+   "venue": "August Hall, 420 Mason St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-17",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": null,
+   "note": "Country band Silverada at The Independent.",
+   "price": "From $82",
+   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco",
+   "startTime": "8:00 PM",
+   "title": "Silverada",
+   "venue": "The Independent, 628 Divisadero St, San Francisco, CA"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 56,
-   "feelsLike": 54,
-   "high": 59,
-   "low": 48,
-   "description": "Overcast",
-   "precipChance": 58,
-   "humidity": 78,
-   "wind": "6 mph",
-   "uvIndex": 4,
-   "airQualityIndex": 38,
+   "temp": 46,
+   "feelsLike": 41,
+   "high": 56,
+   "low": 45,
+   "description": "Clear",
+   "precipChance": 6,
+   "humidity": 70,
+   "wind": "5 mph",
+   "uvIndex": 3,
+   "airQualityIndex": 32,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-16",
-   "high": 59,
-   "low": 48,
-   "precipChance": 58,
-   "summary": "Light drizzle. Highs around 59 and lows around 48."
+   "date": "2026-11-17",
+   "high": 56,
+   "low": 45,
+   "precipChance": 6,
+   "summary": "Overcast. Highs around 56 and lows around 45."
   },
   "daily": [
    {
-    "date": "2026-11-16",
-    "high": 59,
-    "low": 48,
-    "precipChance": 58
-   },
-   {
     "date": "2026-11-17",
-    "high": 57,
-    "low": 46,
-    "precipChance": 12
+    "high": 56,
+    "low": 45,
+    "precipChance": 6
    },
    {
     "date": "2026-11-18",
-    "high": 57,
-    "low": 49,
+    "high": 56,
+    "low": 51,
     "precipChance": 100
    },
    {
     "date": "2026-11-19",
-    "high": 58,
-    "low": 55,
-    "precipChance": 97
+    "high": 60,
+    "low": 53,
+    "precipChance": 98
    },
    {
     "date": "2026-11-20",
-    "high": 60,
-    "low": 54,
-    "precipChance": 13
+    "high": 58,
+    "low": 51,
+    "precipChance": 9
    },
    {
     "date": "2026-11-21",
-    "high": 56,
-    "low": 51,
-    "precipChance": 57
+    "high": 57,
+    "low": 49,
+    "precipChance": 76
    },
    {
     "date": "2026-11-22",
+    "high": 58,
+    "low": 50,
+    "precipChance": 47
+   },
+   {
+    "date": "2026-11-23",
     "high": 57,
-    "low": 52,
-    "precipChance": 50
+    "low": 50,
+    "precipChance": 34
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 56,
-    "low": 51,
-    "precipChance": 57,
-    "summary": "Showers. Highs around 56 and lows around 51.",
-    "wind": "21 mph",
+    "high": 57,
+    "low": 49,
+    "precipChance": 76,
+    "summary": "Showers. Highs around 57 and lows around 49.",
+    "wind": "18 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 57,
-    "low": 52,
-    "precipChance": 50,
-    "summary": "Showers. Highs around 57 and lows around 52.",
-    "wind": "20 mph",
+    "high": 58,
+    "low": 50,
+    "precipChance": 47,
+    "summary": "Showers. Highs around 58 and lows around 50.",
+    "wind": "17 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-16T23:56:53.031370Z",
+  "fetchedAt": "2026-11-17T11:54:33.042630Z",
   "location": "San Francisco, CA"
  }
 }

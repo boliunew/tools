@@ -1,86 +1,56 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-16T23:58:28.343978Z",
+ "eventsUpdatedAt": "2026-11-17T11:58:57.053601Z",
  "ranges": {
-  "today": "2026-11-16",
+  "today": "2026-11-17",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Arts",
+   "category": "Sports",
    "city": "San Jose",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "Hands-on Turkish mosaic lamp making workshop in downtown San Jose.",
-   "price": "$96",
-   "sourceUrl": "https://bayareaweeked.vercel.app/city/san-jose/",
-   "startTime": "All day",
-   "title": "Turkish Mosaic Lamp Workshop",
-   "venue": "255 N Market St, Suite 270, San Jose, CA"
+   "note": "NHL: the Sharks host the Calgary Flames.",
+   "price": "From $23",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose",
+   "startTime": "7:00 PM",
+   "title": "San Jose Sharks vs. Calgary Flames",
+   "venue": "SAP Center at San Jose, 525 W Santa Clara St, San Jose, CA 95113"
   },
   {
    "bucket": "today",
-   "category": "Family",
+   "category": "Theater",
    "city": "San Jose",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
-   "endTime": "12:00 PM",
-   "note": "Music and movement storytime for young children at the library.",
-   "price": "Free",
-   "sourceUrl": "https://sjpl.bibliocommons.com/v2/events?audiences=5d5f09306bb98139001cffcc,5d5f0926be771f2300369397",
-   "startTime": "11:00 AM",
-   "title": "Music and Movement",
-   "venue": "Mt. Pleasant Library, San Jose, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Family",
-   "city": "San Jose",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": "5:00 PM",
-   "note": "Drop-in Monday STEM fun for families: soil layers and worm study.",
-   "price": "Free",
-   "sourceUrl": "https://sjpl.bibliocommons.com/v2/events?audiences=5d5f09306bb98139001cffcc,5d5f0926be771f2300369397",
-   "startTime": "4:00 PM",
-   "title": "STEM Club: Soil Layers and Worm Study",
-   "venue": "King Library, San Jose, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Jose",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "San José State student jazz combos perform in the Music Building.",
-   "price": "See listing",
-   "sourceUrl": "https://bayareaweeked.vercel.app/city/san-jose/",
+   "note": "The Who's rock opera returns, Nov 17-22 run opening night.",
+   "price": "From $20",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose",
    "startTime": "7:30 PM",
-   "title": "Jazz Combos",
-   "venue": "Music Building, San José State University, San Jose, CA"
+   "title": "The Who's Tommy (Touring)",
+   "venue": "San Jose Center for the Performing Arts, 255 Almaden Blvd, San Jose, CA 95113"
   },
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Family",
    "city": "San Jose",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Kiku Room takeover with Tide Swing and Peoples Disco.",
-   "price": "See listing",
-   "sourceUrl": "https://bayareaweeked.vercel.app/city/san-jose/",
-   "startTime": "8:00 PM",
-   "title": "Kiku Room Takeover: Tide Swing, Peoples Disco",
-   "venue": "Still OG, San Jose, CA"
+   "dayLabel": "周二",
+   "endTime": "11:00 AM",
+   "note": "Interactive music and movement storytime for families.",
+   "price": "Free",
+   "sourceUrl": "https://sjpl.bibliocommons.com/v2/events?audiences=5d5f09306bb98139001cffcc,5d5f0926be771f2300369397",
+   "startTime": "10:30 AM",
+   "title": "Music & Movement",
+   "venue": "Joyce Ellington Branch Library, San Jose, CA"
   }
  ],
  "events": [
@@ -192,92 +162,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 56,
-   "feelsLike": 55,
-   "high": 58,
-   "low": 47,
-   "description": "Overcast",
-   "precipChance": 88,
-   "humidity": 84,
-   "wind": "4 mph",
+   "temp": 43,
+   "feelsLike": 39,
+   "high": 57,
+   "low": 42,
+   "description": "Clear",
+   "precipChance": 7,
+   "humidity": 89,
+   "wind": "3 mph",
    "uvIndex": 4,
-   "airQualityIndex": 32,
+   "airQualityIndex": 27,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-16",
-   "high": 58,
-   "low": 47,
-   "precipChance": 88,
-   "summary": "Drizzle. Highs around 58 and lows around 47."
+   "date": "2026-11-17",
+   "high": 57,
+   "low": 42,
+   "precipChance": 7,
+   "summary": "Light drizzle. Highs around 57 and lows around 42."
   },
   "daily": [
    {
-    "date": "2026-11-16",
-    "high": 58,
-    "low": 47,
-    "precipChance": 88
-   },
-   {
     "date": "2026-11-17",
-    "high": 56,
-    "low": 43,
-    "precipChance": 9
+    "high": 57,
+    "low": 42,
+    "precipChance": 7
    },
    {
     "date": "2026-11-18",
-    "high": 57,
-    "low": 47,
-    "precipChance": 99
+    "high": 55,
+    "low": 48,
+    "precipChance": 100
    },
    {
     "date": "2026-11-19",
-    "high": 56,
+    "high": 58,
     "low": 49,
-    "precipChance": 96
+    "precipChance": 98
    },
    {
     "date": "2026-11-20",
-    "high": 60,
-    "low": 49,
-    "precipChance": 13
+    "high": 59,
+    "low": 48,
+    "precipChance": 7
    },
    {
     "date": "2026-11-21",
-    "high": 57,
-    "low": 49,
-    "precipChance": 49
+    "high": 59,
+    "low": 46,
+    "precipChance": 67
    },
    {
     "date": "2026-11-22",
+    "high": 58,
+    "low": 49,
+    "precipChance": 41
+   },
+   {
+    "date": "2026-11-23",
     "high": 60,
-    "low": 51,
-    "precipChance": 38
+    "low": 47,
+    "precipChance": 20
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 57,
-    "low": 49,
-    "precipChance": 49,
-    "summary": "Rain. Highs around 57 and lows around 49.",
-    "wind": "10 mph",
+    "high": 59,
+    "low": 46,
+    "precipChance": 67,
+    "summary": "Light showers. Highs around 59 and lows around 46.",
+    "wind": "8 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 60,
-    "low": 51,
-    "precipChance": 38,
-    "summary": "Showers. Highs around 60 and lows around 51.",
-    "wind": "12 mph",
+    "high": 58,
+    "low": 49,
+    "precipChance": 41,
+    "summary": "Heavy showers. Highs around 58 and lows around 49.",
+    "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-16T23:58:14.349732Z",
+  "fetchedAt": "2026-11-17T11:54:55.793216Z",
   "location": "San Jose, CA"
  }
 }

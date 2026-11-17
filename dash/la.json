@@ -1,8 +1,8 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-16T23:58:28.344825Z",
+ "eventsUpdatedAt": "2026-11-17T11:58:57.054565Z",
  "ranges": {
-  "today": "2026-11-16",
+  "today": "2026-11-17",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,76 +11,76 @@
    "bucket": "today",
    "category": "Music",
    "city": "Los Angeles",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "Josh Homme curates a benefit night for CORE and The Sweet Stuff Foundation at The Wiltern.",
-   "price": "From $263",
-   "sourceUrl": "https://otbla.com/events/concerts/",
-   "startTime": "7:00 PM",
-   "title": "Josh Homme & Friends: A Benefit for CORE & The Sweet Stuff Foundation",
-   "venue": "The Wiltern, 3790 Wilshire Blvd, Los Angeles, CA"
+   "note": "Singer-songwriter Scott Helman at The Moroccan Lounge.",
+   "price": "From $31",
+   "sourceUrl": "https://www.eventworld.com/los-angeles/concerts",
+   "startTime": "6:30 PM",
+   "title": "Scott Helman",
+   "venue": "The Moroccan Lounge, 901 E 1st St, Los Angeles, CA 90012"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "Los Angeles",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "Scottish synth-pop band Chvrches play the Troubadour in West Hollywood.",
-   "price": "See listing",
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?msockid=02b74fe7b99d6d31009c58f4b86f6c1f&page=14",
+   "note": "Punk legends The Damned on their farewell 50th anniversary tour.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=hpguide&page=2&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
    "startTime": "7:00 PM",
-   "title": "Chvrches",
+   "title": "THE DAMNED - Final Damnation 50",
+   "venue": "The Wiltern, 3790 Wilshire Blvd, Los Angeles, CA 90010"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "Los Angeles",
+   "date": "2026-11-17",
+   "day": "today",
+   "dayLabel": "周二",
+   "endTime": null,
+   "note": "Margaret Glaspy tours behind 'I Am Both' with Anna Tivel.",
+   "price": null,
+   "sourceUrl": "https://www.loudie.com/cities/la",
+   "startTime": "7:00 PM",
+   "title": "Margaret Glaspy w/ Anna Tivel",
    "venue": "Troubadour, 9081 Santa Monica Blvd, West Hollywood, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "Los Angeles",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "Natanya plays El Rey Theatre on Wilshire Boulevard.",
-   "price": "From $41.69",
-   "sourceUrl": "https://otbla.com/events/concerts/",
+   "note": "R&B singer GIVĒON at Walt Disney Concert Hall.",
+   "price": "From $134",
+   "sourceUrl": "https://www.eventworld.com/los-angeles/concerts/pop",
    "startTime": "8:00 PM",
-   "title": "Natanya",
-   "venue": "El Rey Theatre, 5515 Wilshire Blvd, Los Angeles, CA"
+   "title": "GIVĒON",
+   "venue": "Walt Disney Concert Hall, 111 S Grand Ave, Los Angeles, CA 90012"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "Los Angeles",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周二",
    "endTime": null,
-   "note": "Drummer Don Brown leads his LA jazz collective at Blue Note, first of two nights.",
-   "price": "See listing",
-   "sourceUrl": "https://blog.ckord.com/live-music/los-angeles/jazz",
-   "startTime": "7:00 PM",
-   "title": "The Don Brown Collective",
-   "venue": "Blue Note Los Angeles, 100 W Hollywood Blvd, Los Angeles, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "Los Angeles",
-   "date": "2026-11-16",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": "9:00 PM",
-   "note": "2DEAD BOYZ and The Underachievers on the NO1LIVESFOREVER Tour at Echoplex.",
-   "price": "See listing",
-   "sourceUrl": "https://blog.ckord.com/live-music/los-angeles/hip-hop",
-   "startTime": "7:00 PM",
-   "title": "2DEAD BOYZ & The Underachievers — NO1LIVESFOREVER Tour",
-   "venue": "Echoplex, 1154 Glendale Blvd, Los Angeles, CA"
+   "note": "half•alive plays El Rey Theatre.",
+   "price": "From $51",
+   "sourceUrl": "https://www.eventworld.com/los-angeles/concerts/pop",
+   "startTime": "8:00 PM",
+   "title": "half•alive",
+   "venue": "El Rey Theatre, 5515 Wilshire Blvd, Los Angeles, CA 90036"
   }
  ],
  "events": [
@@ -192,67 +192,67 @@
  ],
  "weather": {
   "current": {
-   "temp": 69,
-   "feelsLike": 66,
-   "high": 71,
-   "low": 57,
-   "description": "Partly cloudy",
-   "precipChance": 14,
+   "temp": 55,
+   "feelsLike": 49,
+   "high": 69,
+   "low": 52,
+   "description": "Clear",
+   "precipChance": 5,
    "humidity": 55,
    "wind": "8 mph",
    "uvIndex": 4,
-   "airQualityIndex": 82,
+   "airQualityIndex": 71,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-16",
-   "high": 71,
-   "low": 57,
-   "precipChance": 14,
-   "summary": "Rain. Highs around 71 and lows around 57."
+   "date": "2026-11-17",
+   "high": 69,
+   "low": 52,
+   "precipChance": 5,
+   "summary": "Overcast. Highs around 69 and lows around 52."
   },
   "daily": [
    {
-    "date": "2026-11-16",
-    "high": 71,
-    "low": 57,
-    "precipChance": 14
-   },
-   {
     "date": "2026-11-17",
-    "high": 68,
-    "low": 50,
+    "high": 69,
+    "low": 52,
     "precipChance": 5
    },
    {
     "date": "2026-11-18",
-    "high": 67,
-    "low": 51,
-    "precipChance": 69
+    "high": 68,
+    "low": 52,
+    "precipChance": 43
    },
    {
     "date": "2026-11-19",
-    "high": 63,
-    "low": 60,
-    "precipChance": 97
+    "high": 66,
+    "low": 58,
+    "precipChance": 98
    },
    {
     "date": "2026-11-20",
-    "high": 66,
+    "high": 67,
     "low": 56,
-    "precipChance": 18
+    "precipChance": 6
    },
    {
     "date": "2026-11-21",
     "high": 67,
-    "low": 58,
-    "precipChance": 4
+    "low": 56,
+    "precipChance": 3
    },
    {
     "date": "2026-11-22",
-    "high": 64,
-    "low": 57,
-    "precipChance": 16
+    "high": 63,
+    "low": 56,
+    "precipChance": 19
+   },
+   {
+    "date": "2026-11-23",
+    "high": 62,
+    "low": 54,
+    "precipChance": 18
    }
   ],
   "weekend": [
@@ -260,24 +260,24 @@
     "date": "2026-11-21",
     "day": "sat",
     "high": 67,
-    "low": 58,
-    "precipChance": 4,
-    "summary": "Mainly sunny. Highs around 67 and lows around 58.",
-    "wind": "6 mph",
+    "low": 56,
+    "precipChance": 3,
+    "summary": "Overcast. Highs around 67 and lows around 56.",
+    "wind": "9 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 64,
-    "low": 57,
-    "precipChance": 16,
-    "summary": "Showers. Highs around 64 and lows around 57.",
-    "wind": "8 mph",
+    "high": 63,
+    "low": 56,
+    "precipChance": 19,
+    "summary": "Drizzle. Highs around 63 and lows around 56.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-16T23:56:56.134449Z",
+  "fetchedAt": "2026-11-17T11:55:18.548095Z",
   "location": "Los Angeles, CA"
  }
 }
