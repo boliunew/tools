@@ -1,6 +1,6 @@
 {
  "location": "Upland, CA（内陆帝国）",
- "eventsUpdatedAt": "2026-11-16T16:02:06.653Z",
+ "eventsUpdatedAt": "2026-11-16T22:04:21.122Z",
  "ranges": {
   "sat": "2026-11-21",
   "sun": "2026-11-22",
@@ -15,13 +15,13 @@
    "day": "today",
    "dayLabel": "周一",
    "endTime": "7:00 PM",
-   "id": 756,
-   "note": "A 1920s-themed dance for ages 55 and over hosted by the City of Pomona.",
+   "id": 769,
+   "note": "55-and-over dance at Washington Park.",
    "price": "$4 (free for Pomona residents)",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
    "startTime": "5:00 PM",
-   "title": "Roaring '20s Dance (55 and over)",
-   "venue": "Washington Park, 865 E. Grand Ave."
+   "title": "Roaring '20s Dance (55+)",
+   "venue": "Washington Park"
   },
   {
    "bucket": "today",
@@ -31,13 +31,13 @@
    "day": "today",
    "dayLabel": "周一",
    "endTime": null,
-   "id": 757,
+   "id": 770,
    "note": "Rutgers economics professor Jennifer Hunt speaks on women and economic growth.",
    "price": "Free",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
    "startTime": "6:45 PM",
-   "title": "Innovative Women and Economic Growth — Lecture by Jennifer Hunt",
-   "venue": "Marian Miner Cook Athenaeum, Claremont McKenna College, 385 E. Eighth St."
+   "title": "Innovative Women and Economic Growth — Jennifer Hunt lecture",
+   "venue": "Marian Miner Cook Athenaeum, Claremont McKenna College"
   },
   {
    "bucket": "today",
@@ -47,29 +47,29 @@
    "day": "today",
    "dayLabel": "周一",
    "endTime": null,
-   "id": 758,
-   "note": "Free public storytelling open mic hosted by Inland Valley Storytellers.",
+   "id": 771,
+   "note": "Free public storytelling open mic.",
    "price": "Free",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
    "startTime": "7:00 PM",
-   "title": "Inland Valley Storytellers Story Swap (Open Mic)",
-   "venue": "Ginger Elliott Center, 840 N. Indian Hill Blvd."
+   "title": "Inland Valley Storytellers Story Swap",
+   "venue": "Ginger Elliott Center"
   },
   {
    "bucket": "today",
-   "category": "Outdoors",
-   "city": "Pomona",
+   "category": "Nightlife",
+   "city": "Rancho Cucamonga",
    "date": "2026-11-16",
    "day": "today",
    "dayLabel": "周一",
    "endTime": null,
-   "id": 755,
-   "note": "Free lawn bowling lessons for adults, offered Monday, Wednesday and Saturday.",
-   "price": "Free",
-   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
-   "startTime": "9:45 AM",
-   "title": "Pomona Lawn Bowling Club — Free Lessons for Adults",
-   "venue": "Pomona Lawn Bowling Club, 451 E. Arrow Highway"
+   "id": 772,
+   "note": "Trivia night in Rancho Cucamonga.",
+   "price": null,
+   "sourceUrl": "https://allevents.in/rancho-cucamonga/november",
+   "startTime": "7:00 PM",
+   "title": "Trivia at Punch Bowl Social",
+   "venue": "Punch Bowl Social"
   }
  ],
  "events": [
@@ -81,29 +81,13 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "11:30 AM",
-   "id": 761,
-   "note": "Free guided hike along Thompson Creek Trail with Claremont Mayor Jennifer Stark.",
+   "id": 775,
+   "note": "Guided walk along Thompson Creek Trail with Mayor Stark and park rangers.",
    "price": "Free",
-   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
+   "sourceUrl": "https://content.govdelivery.com/accounts/CACLAREMONT/bulletins/4323039",
    "startTime": "10:00 AM",
    "title": "Hike with the Mayor",
-   "venue": "Higginbotham Park, 625 N. Mount Carmel Drive"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Fair",
-   "city": "Pomona",
-   "date": "2026-11-21",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": "5:00 PM",
-   "id": 762,
-   "note": "Southern California's big fiber arts fair with 90+ vendors, running Nov 21-22.",
-   "price": "$15-$26",
-   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
-   "startTime": "10:00 AM",
-   "title": "SoCal Fiber Fair",
-   "venue": "Fairplex Exposition Hall 9, 1101 W. McKinley Ave."
+   "venue": "Higginbotham Park"
   },
   {
    "bucket": "weekend",
@@ -113,13 +97,29 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "4:00 PM",
-   "id": 763,
-   "note": "Free urban-farm day with livestock showcases, gardening demos and kids' activities.",
+   "id": 776,
+   "note": "Livestock showcases, gardening demos and kids' activities; parking $6 in advance, $10 at the gate.",
    "price": "Free",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
    "startTime": "10:00 AM",
    "title": "Fairplex Presents Fall in the Farm",
-   "venue": "The Farm at Fairplex, 1101 W. McKinley Ave."
+   "venue": "Fairplex"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Family",
+   "city": "Upland",
+   "date": "2026-11-21",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": "1:30 PM",
+   "id": 777,
+   "note": "Hands-on Thanksgiving STEAM art adventure for kids.",
+   "price": "$15",
+   "sourceUrl": "https://rccaaf.org/series/grateful-colors-thanksgiving/",
+   "startTime": "12:30 PM",
+   "title": "Grateful Colors Thanksgiving",
+   "venue": "Ubaby Color"
   },
   {
    "bucket": "weekend",
@@ -129,29 +129,13 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "id": 764,
-   "note": "Jim Curry performs the music of John Denver in a holiday concert.",
+   "id": 778,
+   "note": "Jim Curry performs the music of John Denver.",
    "price": "$30-$62",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
    "startTime": "3:00 PM",
    "title": "Rocky Mountain Christmas: The Music of John Denver",
-   "venue": "Lewis Family Playhouse, 12505 Cultural Center Drive"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Food & Drink",
-   "city": "Claremont",
-   "date": "2026-11-21",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": "7:30 PM",
-   "id": 765,
-   "note": "Evening wine walk through Claremont Village shops and tasting stops.",
-   "price": "$25-$55",
-   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
-   "startTime": "3:30 PM",
-   "title": "Claremont Village Wine Walk",
-   "venue": "Claremont Village"
+   "venue": "Lewis Family Playhouse"
   },
   {
    "bucket": "weekend",
@@ -161,45 +145,45 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": "10:00 AM",
-   "id": 759,
-   "note": "Weekly cars-and-coffee meetup in Claremont.",
+   "id": 773,
+   "note": "Saturday morning cars-and-coffee meetup.",
    "price": "Free",
    "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
    "startTime": "8:00 AM",
    "title": "Claremont Cars and Coffee",
-   "venue": "Granite Creek Community Church, 1580 N. Claremont Blvd."
+   "venue": "Granite Creek Community Church"
   },
   {
    "bucket": "weekend",
-   "category": "Market",
-   "city": "Upland",
+   "category": "Outdoors",
+   "city": "Claremont",
    "date": "2026-11-21",
    "day": "sat",
    "dayLabel": "周六",
-   "endTime": "2:00 PM",
-   "id": 760,
-   "note": "Weekly Saturday farmers market and craft faire in downtown Upland.",
+   "endTime": null,
+   "id": 774,
+   "note": "Free 1.5- and 3-mile group runs, with a social hour after.",
    "price": "Free",
-   "sourceUrl": "https://downtownupland.org/events.html",
+   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
    "startTime": "9:00 AM",
-   "title": "Upland Farmers Market & Craft Faire",
-   "venue": "Historic Downtown Upland, 217 E. A St."
+   "title": "SÜPAFIT Run Club",
+   "venue": "Lucky's Coffee Roasters"
   },
   {
    "bucket": "weekend",
-   "category": "Fair",
-   "city": "Pomona",
+   "category": "Community",
+   "city": "Rancho Cucamonga",
    "date": "2026-11-22",
    "day": "sun",
    "dayLabel": "周日",
-   "endTime": "5:00 PM",
-   "id": 767,
-   "note": "Second day of Southern California's big fiber arts fair with 90+ vendors.",
-   "price": "$15-$26",
-   "sourceUrl": "https://claremontcourier.com/latest-news/event-calendar-november-13-21-2026-91070/",
-   "startTime": "10:00 AM",
-   "title": "SoCal Fiber Fair",
-   "venue": "Fairplex Exposition Hall 9, 1101 W. McKinley Ave."
+   "endTime": null,
+   "id": 780,
+   "note": "Volunteer meal-prep team for Thanksgiving meals; bring a can opener.",
+   "price": "Free",
+   "sourceUrl": "https://allevents.in/rancho-cucamonga/november",
+   "startTime": "2:00 PM",
+   "title": "Eat & Be Well 2026: Meal Preparation Team! (BYO Can Opener)",
+   "venue": "The Hitch Burger Grill"
   },
   {
    "bucket": "weekend",
@@ -209,13 +193,29 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "4:15 PM",
-   "id": 768,
-   "note": "Free concert of Tchaikovsky's Symphony No. 5, Lyadov and Herrmann's Vertigo Suite.",
+   "id": 781,
+   "note": "Free orchestra concert of Tchaikovsky's Fifth Symphony.",
    "price": "Free",
-   "sourceUrl": "https://www.pomona.edu/academics/departments/music/concert-calendar/november",
+   "sourceUrl": "https://claremont.edu/claremont-events/category/live-performance/list/?hide_subsequent_recurrences=1",
    "startTime": "3:00 PM",
-   "title": "Pomona College Orchestra: Tchaikovsky's Fifth Symphony",
-   "venue": "Bridges Hall of Music, 150 E. Fourth St."
+   "title": "Pomona College Orchestra: Tchaikovsky's Fifth",
+   "venue": "Bridges Hall of Music, Pomona College"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Music",
+   "city": "Claremont",
+   "date": "2026-11-22",
+   "day": "sun",
+   "dayLabel": "周日",
+   "endTime": "8:00 PM",
+   "id": 782,
+   "note": "Gamelan works by Lou Harrison and Bill Alves.",
+   "price": null,
+   "sourceUrl": "https://arts.hmc.edu/The-HMC-American-Gamelan-and-Guests",
+   "startTime": "7:00 PM",
+   "title": "The HMC American Gamelan and Guests",
+   "venue": "Drinkward Recital Hall, Harvey Mudd College"
   },
   {
    "bucket": "weekend",
@@ -225,7 +225,7 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "1:00 PM",
-   "id": 766,
+   "id": 779,
    "note": "Weekly Sunday market with fresh produce, handmade goods and flowers.",
    "price": "Free",
    "sourceUrl": "https://discoverclaremont.com/series/claremont-farmers-market/",
@@ -238,90 +238,90 @@
   "current": {
    "temp": 66,
    "feelsLike": 66,
-   "high": 68,
+   "high": null,
    "low": 49,
-   "description": "Partly Cloudy",
-   "precipChance": 6,
-   "humidity": 61,
-   "wind": "3 mph",
-   "uvIndex": 2,
-   "airQualityIndex": 39,
+   "description": "Showers in the Vicinity",
+   "precipChance": 43,
+   "humidity": 62,
+   "wind": "10 mph",
+   "uvIndex": 0,
+   "airQualityIndex": 28,
    "airQualityDescription": "Good"
   },
   "today": {
    "date": "2026-11-16",
-   "high": 68,
+   "high": null,
    "low": 49,
-   "precipChance": 30,
-   "summary": "Afternoon showers. Highs in the upper 60s and lows in the upper 40s."
+   "precipChance": null,
+   "summary": "Showers possible. Lows overnight in the upper 40s."
   },
   "daily": [
    {
     "date": "2026-11-16",
-    "high": 68,
+    "high": null,
     "low": 49,
-    "precipChance": 30
+    "precipChance": null
    },
    {
     "date": "2026-11-17",
-    "high": 63,
+    "high": 62,
     "low": 46,
     "precipChance": 10
    },
    {
     "date": "2026-11-18",
     "high": 64,
-    "low": 50,
+    "low": 51,
     "precipChance": 0
    },
    {
     "date": "2026-11-19",
-    "high": 57,
+    "high": 56,
     "low": 45,
     "precipChance": 100
    },
    {
     "date": "2026-11-20",
     "high": 61,
-    "low": 44,
+    "low": 43,
     "precipChance": 10
    },
    {
     "date": "2026-11-21",
-    "high": 63,
-    "low": 45,
+    "high": 64,
+    "low": 44,
     "precipChance": 0
    },
    {
     "date": "2026-11-22",
-    "high": 62,
-    "low": 45,
-    "precipChance": 20
+    "high": 63,
+    "low": 46,
+    "precipChance": 10
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 63,
-    "low": 45,
+    "high": 64,
+    "low": 44,
     "precipChance": 0,
-    "summary": "A few clouds. Highs in the low 60s and lows in the mid 40s.",
+    "summary": "Times of sun and clouds. Highs in the mid 60s and lows in the mid 40s.",
     "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 62,
-    "low": 45,
-    "precipChance": 20,
+    "high": 63,
+    "low": 46,
+    "precipChance": 10,
     "summary": "Mix of sun and clouds. Highs in the low 60s and lows in the mid 40s.",
-    "wind": "7 mph",
+    "wind": "6 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-16T17:53:57.906Z",
+  "fetchedAt": "2026-11-16T23:53:29.299Z",
   "location": "Upland, CA"
  }
 }

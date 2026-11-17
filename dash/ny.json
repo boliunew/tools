@@ -1,6 +1,6 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-16T17:55:29.155061Z",
+ "eventsUpdatedAt": "2026-11-16T23:58:28.345617Z",
  "ranges": {
   "today": "2026-11-16",
   "sat": "2026-11-21",
@@ -192,42 +192,42 @@
  ],
  "weather": {
   "current": {
-   "temp": 54,
-   "feelsLike": 47,
-   "high": 54,
+   "temp": 47,
+   "feelsLike": 40,
+   "high": 57,
    "low": 35,
    "description": "Clear",
    "precipChance": 1,
    "humidity": 51,
-   "wind": "9 mph",
+   "wind": "7 mph",
    "uvIndex": 3,
    "airQualityIndex": 43,
    "airQualityDescription": "Good"
   },
   "today": {
    "date": "2026-11-16",
-   "high": 54,
+   "high": 57,
    "low": 35,
    "precipChance": 1,
-   "summary": "Overcast. Highs around 54 and lows around 35."
+   "summary": "Overcast. Highs around 57 and lows around 35."
   },
   "daily": [
    {
     "date": "2026-11-16",
-    "high": 54,
+    "high": 57,
     "low": 35,
     "precipChance": 1
    },
    {
     "date": "2026-11-17",
-    "high": 54,
-    "low": 35,
+    "high": 58,
+    "low": 34,
     "precipChance": 0
    },
    {
     "date": "2026-11-18",
     "high": 60,
-    "low": 39,
+    "low": 38,
     "precipChance": 0
    },
    {
@@ -239,7 +239,7 @@
    {
     "date": "2026-11-20",
     "high": 63,
-    "low": 51,
+    "low": 50,
     "precipChance": 0
    },
    {
@@ -250,9 +250,9 @@
    },
    {
     "date": "2026-11-22",
-    "high": 61,
-    "low": 54,
-    "precipChance": 24
+    "high": 57,
+    "low": 52,
+    "precipChance": 25
    }
   ],
   "weekend": [
@@ -263,21 +263,21 @@
     "low": 51,
     "precipChance": 2,
     "summary": "Overcast. Highs around 58 and lows around 51.",
-    "wind": "5 mph",
+    "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 61,
-    "low": 54,
-    "precipChance": 24,
-    "summary": "Overcast. Highs around 61 and lows around 54.",
-    "wind": "6 mph",
+    "high": 57,
+    "low": 52,
+    "precipChance": 25,
+    "summary": "Overcast. Highs around 57 and lows around 52.",
+    "wind": "4 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-16T17:53:59.434329Z",
+  "fetchedAt": "2026-11-16T23:56:58.618989Z",
   "location": "New York, NY"
  }
 }
