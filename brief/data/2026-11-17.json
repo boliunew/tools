@@ -1,6 +1,6 @@
 {
  "date": "2026-11-17",
- "generated": "2026-11-17T22:30:25Z",
+ "generated": "2026-11-17T23:40:10Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,19 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "黄仁勋表态愿重返 NVIDIA CEO",
-     "d": "NVIDIA 创始人黄仁勋在上周因与涉嫌中国间谍的前高管及多名员工的私事被迫辞职后，表示若董事会认同，他愿意重新担任 CEO。公司董事会当前未考虑重新任命，且将在本周二公布季报，届时将接受分析师与投资者的质询。",
-     "src": [
-      {
-       "n": "The Guardian",
-       "u": "https://www.theguardian.com/technology/2026/nov/17/nvidia-jensen-huang-statement"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "美新芯片出口限制波及东南亚数据中心",
-     "d": "美国宣布对新加坡、马来西亚、泰国、印度尼西亚和巴西的数据中心运营商实行更严格的审查，要求取得美国许可才能购买先进芯片，以防止这些芯片被用于服务中国AI公司。此举将限制中国获取海外计算资源，并可能影响这些地区的芯片需求和数据中心投资。",
+     "t": "美新芯片限制令东南亚 数据中心受限",
+     "d": "美国宣布临时规则，要求新加坡、马来西亚、泰国、印尼和巴西的数据中心运营商在购买美国高级芯片时须获美国政府许可，以防芯片被用于中国AI模型训练。这将削弱中国对海外算力的依赖，同时给东南亚数据中心行业带来合规风险。",
      "src": [
       {
        "n": "BBC",
@@ -32,13 +21,24 @@
     },
     {
      "t": "Anthropic 将在伦敦上市",
-     "d": "AI 对话模型 Anthropic 计划在伦敦进行大规模 IPO，预计成为历史最大规模之一，标志着AI公司融资渠道多元化。",
+     "d": "AI 对话模型公司Anthropic计划在英国进行史上最大规模IPO，彰显AI热潮向欧洲渗透，产业资本将更聚焦高端模型研发。",
      "src": [
       {
        "n": "The Guardian",
        "u": "https://www.theguardian.com/technology/2026/nov/17/anthropic-ipo-flotation-buy-shares-stock-market-claude-ai"
       }
      ]
+    },
+    {
+     "t": "英国演员获数字复制权利新协议",
+     "d": "英国演员工会Equity与影视制作方达成协议，规定演员的数字复制品使用必须获得同意并支付费用，禁止在罢工期间使用，并限制一次性授权。此举旨在规范AI生成的演员形象，保护演员权益。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/17/actors-uk-rights-digital-replicas-ai-protections"
+      }
+     ],
+     "full": true
     }
    ]
   },
@@ -129,45 +129,61 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "黄仁勋愿回 Nvidia 引关注",
-     "d": "多家媒体报道黄仁勋表态愿意重返 Nvidia，涉及美中技术竞争与公司治理风险，影响全球芯片与 AI 市场情绪。",
-     "src": [
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/tv-shows/business/20261117-jensen-huang-says-he-d-be-honoured-to-return-to-nvidia-as-ceo"
-      },
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/tv-shows/truth-or-fake/20261117-deepfakes-memes-and-misinformation-ai-turns-against-nvidia-s-jensen-huang"
-      }
-     ]
-    },
-    {
-     "t": "特朗普称美方严肃对待伊朗阴谋",
-     "d": "在菲律宾参加东盟峰会时，特朗普表示美国正“非常严肃”地审视伊朗可能在华盛顿策划的肮脏弹阴谋，尽管伊朗否认指控。此言论出现在美国情报机构对伊朗威胁的评估背景下，同时美国正争取国会续延《外情监视法》第702条。",
+     "t": "黄仁勋表态愿若董事会要求复任Nvidia CEO",
+     "d": "Nvidia创始人黄仁勋在社交媒体表示，如果董事会邀请，他将荣幸回归CEO职位，同时承认个人错误并称已收到员工和投资者的呼声。公司董事会目前正调查其行为，短期内复任可能性不大。",
      "src": [
       {
        "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/cq808vzd3nnpo?at_medium=RSS&at_campaign=rss"
+       "u": "https://www.bbc.co.uk/news/articles/cwx2en2vrxmdo?at_medium=RSS&at_campaign=rss"
       },
       {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/world/2026/nov/17/trump-reported-iranian-plot-dirty-bomb-washington"
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/business/nvidia-board-says-it-does-not-intend-reinstate-jensen-huang-ceo-6560516"
       }
      ],
      "full": true
     },
     {
-     "t": "德国等国策划在卢旺达设立遣返中心",
-     "d": "德国、丹麦、奥地利、希腊和荷兰联合宣布将在卢旺达建立首个欧盟境外的移民遣返枢纽，以配合欧盟收紧移民法规。该计划遭到人权组织、联合国难民署及法国总统的质疑与反对。",
+     "t": "APEC峰会美中俄领袖将首次会面",
+     "d": "美国、俄罗斯和中国三国领袖将在APEC峰会期间首次进行三边会谈，聚焦保持贸易停火、限制冲突升级以及在乌克兰战争和关键资源贸易方面的外交互动。会谈预计不会在技术或贸易上取得突破。",
      "src": [
       {
-       "n": "日本时报",
-       "u": "https://www.japantimes.co.jp/news/2026/11/17/world/politics/european-nations-rwanda-hub-migrants/"
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/apec-summit-what-trump-xi-and-putin-want/a-79970462?maca=en-rss-en-all-1573-rdf"
       },
       {
-       "n": "ABC News",
-       "u": "https://abcnews.com/International/wireStory/europe-decided-return-hubs-migrants-138205386"
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/apec-china-xi-jinping-trump-putin-9.7425004?cmp=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美墨失去免疫麻疹地位",
+     "d": "美墨两国因近期麻疹病例激增失去“免疫麻疹”资格，病例数创三十多年新高，导致公共卫生警示。疫情反映出疫苗犹豫和错误信息的影响，需加强疫苗接种和监测。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/us-and-mexico-lose-measles-free-status/a-79973966?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/americas/20261117-us-mexico-and-bolivia-lose-measles-free-status-as-deaths-mount"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "乌克兰击毁克里米亚大桥部分结构",
+     "d": "乌克兰利用无人机和巡航导弹对俄克里米亚大桥实施多阶段攻击，导致桥梁大段坍塌，削弱俄罗斯对克里米亚的物流支援并具有象征意义。此行动在俄美中领导人会晤前进行，可能加剧地区紧张局势。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cw772jk4rvmxo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/17/how-ukraine-struck-kerch-bridge-symbol-vladimir-putin-rule"
       }
      ],
      "full": true
@@ -176,8 +192,8 @@
   }
  ],
  "pick": {
-  "t": "黄仁勋愿意回归 Nvidia CEO",
-  "d": "Nvidia 作为 AI 产业链核心，其领袖变动直接关联行业资金流向与技术竞争格局，值得投资者重点关注。"
+  "t": "Nvidia 前CEO 黄仁勋愿意回归",
+  "d": "黄仁勋的表态直接关联AI芯片行业领袖更迭，关系到Nvidia后续战略、投资者信心与全球AI竞争格局，值得重点关注。"
  },
  "week": []
 }
