@@ -1,6 +1,6 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-17T11:58:57.054565Z",
+ "eventsUpdatedAt": "2026-11-17T17:54:48.950734Z",
  "ranges": {
   "today": "2026-11-17",
   "sat": "2026-11-21",
@@ -192,67 +192,67 @@
  ],
  "weather": {
   "current": {
-   "temp": 55,
-   "feelsLike": 49,
-   "high": 69,
-   "low": 52,
+   "temp": 65,
+   "feelsLike": 57,
+   "high": 70,
+   "low": 53,
    "description": "Clear",
    "precipChance": 5,
-   "humidity": 55,
-   "wind": "8 mph",
+   "humidity": 26,
+   "wind": "9 mph",
    "uvIndex": 4,
-   "airQualityIndex": 71,
+   "airQualityIndex": 54,
    "airQualityDescription": "Moderate"
   },
   "today": {
    "date": "2026-11-17",
-   "high": 69,
-   "low": 52,
+   "high": 70,
+   "low": 53,
    "precipChance": 5,
-   "summary": "Overcast. Highs around 69 and lows around 52."
+   "summary": "Overcast. Highs around 70 and lows around 53."
   },
   "daily": [
    {
     "date": "2026-11-17",
-    "high": 69,
-    "low": 52,
+    "high": 70,
+    "low": 53,
     "precipChance": 5
    },
    {
     "date": "2026-11-18",
-    "high": 68,
-    "low": 52,
-    "precipChance": 43
+    "high": 67,
+    "low": 53,
+    "precipChance": 36
    },
    {
     "date": "2026-11-19",
     "high": 66,
-    "low": 58,
-    "precipChance": 98
+    "low": 57,
+    "precipChance": 96
    },
    {
     "date": "2026-11-20",
     "high": 67,
     "low": 56,
-    "precipChance": 6
+    "precipChance": 2
    },
    {
     "date": "2026-11-21",
     "high": 67,
     "low": 56,
-    "precipChance": 3
+    "precipChance": 0
    },
    {
     "date": "2026-11-22",
     "high": 63,
     "low": 56,
-    "precipChance": 19
+    "precipChance": 17
    },
    {
     "date": "2026-11-23",
     "high": 62,
     "low": 54,
-    "precipChance": 18
+    "precipChance": 17
    }
   ],
   "weekend": [
@@ -261,7 +261,7 @@
     "day": "sat",
     "high": 67,
     "low": 56,
-    "precipChance": 3,
+    "precipChance": 0,
     "summary": "Overcast. Highs around 67 and lows around 56.",
     "wind": "9 mph",
     "hourly": []
@@ -271,13 +271,13 @@
     "day": "sun",
     "high": 63,
     "low": 56,
-    "precipChance": 19,
+    "precipChance": 17,
     "summary": "Drizzle. Highs around 63 and lows around 56.",
     "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-17T11:55:18.548095Z",
+  "fetchedAt": "2026-11-17T17:53:03.137132Z",
   "location": "Los Angeles, CA"
  }
 }
