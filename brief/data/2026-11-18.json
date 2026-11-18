@@ -1,0 +1,199 @@
+{
+ "date": "2026-11-18",
+ "generated": "2026-11-18T22:11:14Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "参议员敦促白宫AI负责人修补基础设施漏洞",
+     "d": "民主党参议员Cantwell与共和党参议员Rounds致信国家情报局局长兼白宫AI czar Jay Clayton，要求其识别并修复近期美国大型企业和政府机构因软件更新导致的全国性系统中断中的安全漏洞。此事凸显AI加速发现并利用软件弱点的风险，对美国关键基础设施的安全与可靠性构成压力。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/us-news/2026/nov/18/jay-clayton-ai-tech-outages-infrastructure"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "OpenAI推出外部评估计划 引安全专家质疑力度不足",
+     "d": "OpenAI宣布四家AI安全机构的研究员将作为“嵌入式评估员”进入公司内部审查风险，但评估范围受限，未能提供员工级别的系统访问。研究者担忧此举未达CEO Altman先前承诺的深度独立评估，可能不足以及时发现和防范AI安全隐患。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/18/nx-s1-6044223/openai-embedded-evaluators-program-critics"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI发现Java关键安全漏洞 Java4Shell 触发紧急补丁",
+     "d": "初创公司Calif利用AI工具在Java内存函数中发现名为Java4Shell的严重漏洞，可被远程执行恶意指令；Oracle随后发布关键补丁。该漏洞危及全球依赖Java的金融、医疗和政府系统，凸显底层编程语言的安全风险。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cke89jevqm1vo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/18 周三 收盘：标普500 ETF（SPY）-0.31%，纳指100 ETF（QQQ）+0.39%",
+     "d": "大盘状态「谨慎」：大盘多空信号混杂，可以做，但要控制仓位、严格止损；VIX 恐慌指数 24.6；57% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：OKTA +12.1%、PANW +9.9%、GNRC +9.9%；跌幅最大：HUM -13.0%、UNH -10.2%、ELV -7.6%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术、医疗保健 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：PANW（盘后）、TJX（盘前）、LOW（盘前）、TGT（盘前）、P（盘后）",
+     "d": "按市值挑出最大的几家，共 5 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：零售销售（11/18 周三）",
+     "d": "Core Retail Sales 实际 0.6%（预期 0.4%，前值 1.1%）；Retail Sales 实际 6.82%（预期 —，前值 6.57%）。消费占美国 GDP 约七成。数据强 → 利好零售、可选消费；过强也会推高利率预期。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/18 周三 09:10：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/19 周四 12:15：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/20 周五 08:30：首次申领失业金人数（重要性：低）",
+     "d": "每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "美国众议院民主党提名杰弗里斯为议长候选人",
+     "d": "民主党众议院议员Hakeem Jeffries在内部投票中获251票提名为新议长，将成为首位黑人议长，预计在2027年1月3日正式当选。此举确认了民主党在众议院的控制权，对立法议程和对前总统特朗普的调查具有重要影响。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/us-house-democrats-nominate-hakeem-jeffries-for-speaker/a-79983827?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cmy49873dn95o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "以色列在加沙开展新地面行动",
+     "d": "以色列军方宣布在加沙中部进行精确地面行动，旨在清除对其部队构成威胁的哈马斯武装，并警告国际救援组织撤离关键地区。该行动可能加剧地区冲突，影响人道援助及地区安全局势。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/israel-launches-new-ground-operation-in-gaza/a-79984958?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/18/what-does-israels-new-ground-offensive-mean-for-palestinians-in-gaza?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "特朗普抵达中国 备战三方峰会",
+     "d": "美国前总统在深圳与俄、华领袖会晤，涉及乌克兰冲突、贸易与AI竞争，或重塑全球地缘政治与科技格局。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261118-trump-arrives-in-china-ahead-of-trilateral-summit-with-putin-and-xi"
+      },
+      {
+       "n": "南华早报",
+       "u": "https://www.scmp.com/news/china/diplomacy/article/3374931/returning-favour-xi-personally-welcomes-trump-ahead-high-stakes-apec-talks"
+      }
+     ]
+    },
+    {
+     "t": "乌克兰袭击克里米亚大桥 部分坍塌",
+     "d": "乌克兰军方使用无人机和巡航导弹对俄克里米亚大桥实施高度协调攻击，使桥梁关键段坍入水中，削弱俄方物流并具有象征意义。此举加大了俄罗斯在乌克兰战争中的后勤压力，并可能引发进一步的冲突升级。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cw772jk4rvmxo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/what-the-crimean-bridge-attack-means-for-russia/a-79985991?maca=en-rss-en-all-1573-rdf"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "特朗普抵达中国 备战三方峰会",
+  "d": "此行聚焦美俄中三国高层会晤，涉及乌克兰战争、贸易摩擦及AI竞争，对全球政治经济走向和科技产业格局具深远影响。"
+ },
+ "week": []
+}
