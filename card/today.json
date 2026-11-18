@@ -1,16 +1,16 @@
 {
- "date": "2026-11-17",
- "kind": "名言",
- "en": "The world is but a canvas to our imagination.",
- "zh": "世界不过是想象力的一块画布。",
- "by": "Henry David Thoreau",
- "line": "The world is but a canvas to our imagination. — Henry David Thoreau",
+ "date": "2026-11-18",
+ "kind": "易错",
+ "en": "The price is very high",
+ "zh": "价格很贵",
+ "by": "price 说高低；东西本身才说 expensive",
+ "line": "✗ The price is very expensive → ✓ The price is very high",
  "word": {
-  "w": "screw",
-  "ph": "skru:",
-  "zh": "n. 螺旋，螺杆，螺钉，螺旋桨；vt. 调节，扭紧，旋，拧",
-  "ex": "I screwed up the very first note.",
-  "exzh": "我搞砸了第一个音符。"
+  "w": "mild",
+  "ph": "maild",
+  "zh": "a. 温和的，温柔的，淡味的，适度的",
+  "ex": "We had a mild winter last year.",
+  "exzh": "去年冬天很暖和。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
