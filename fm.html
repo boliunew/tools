@@ -800,7 +800,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     var v = { id: Date.now(), t: REC.t0 || Date.now(), st: st.name, song: song || '', type: blob.type, blob: blob, how: how };
     rPut(v, function (ok) {
       if (!ok) { toast('浏览器不让存录音（可能是无痕模式）'); return; }
-      toast('🎙 录好了，在下面「我的录音」里');
+      toast(how === 'retro' ? '🎙 录好了：刚听到的 30 秒' : '🎙 录好了：这次是点完之后的 20 秒（这个台暂时没法回溯）');
       rAll(function (all) { all.slice(30).forEach(function (x) { rDel(x.id); }); renderRecs(); });
     });
   }
@@ -892,7 +892,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
         '<br><a href="#" id="auddSet">⚙️ AudD 令牌' + (get('audd', '') ? '（已设置）' : '（没设也能试几次）') + '</a></div>' + all.map(function (c) {
         var d = new Date(c.t), u = URL.createObjectURL(c.blob); RURL[c.id] = u; RDL[c.id] = { b: c.blob };
         var name = c.st.replace(/[\\/:*?"<>|]/g, '') + '-' + (d.getMonth() + 1) + d.getDate() + '-' + d.getHours() + ('0' + d.getMinutes()).slice(-2) + '.' + ext(c.type); RDL[c.id].n = name;
-        return '<div class="clip"><b>' + esc(c.song || c.st) + '</b><small>' + (c.song ? esc(c.st) + ' · ' : '') + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + ' · ' + Math.round(c.blob.size / 1024) + ' KB</small>' +
+        return '<div class="clip"><b>' + esc(c.song || c.st) + '</b><small>' + (c.song ? esc(c.st) + ' · ' : '') + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + ' · ' + Math.round(c.blob.size / 1024) + ' KB · ' + (c.how === 'retro' ? '⏪ 回溯' : '⏩ 点完后录') + '</small>' +
           '<audio controls preload="none" src="' + u + '"></audio><div class="ops"><a href="' + u + '" download="' + esc(name) + '" data-rdl="' + c.id + '">⬇ 下载</a>' +
           (c.song ? '<a href="https://music.youtube.com/search?q=' + encodeURIComponent(c.song) + '" target="_blank" rel="noopener">搜歌 ↗</a>' : '') + '<button data-rid="' + c.id + '">🔍 识别歌曲</button><button data-rdel="' + c.id + '">🗑 删除</button></div>' +
           (c.hit ? hitHtml(c.hit) : '') + '<div class="rres" id="rr-' + c.id + '"></div></div>';
