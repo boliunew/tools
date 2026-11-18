@@ -1,8 +1,10 @@
 {
- "generated": "2026-11-18T10:46:14Z",
- "ok": true,
- "problems": [],
- "sig": "",
+ "generated": "2026-11-18T22:09:19Z",
+ "ok": false,
+ "problems": [
+  "⚙️ 自动任务「湾区实时路况」上次运行失败（https://github.com/boliunew/tools/actions/runs/44257328272）"
+ ],
+ "sig": "⚙️ 自动任务「湾区实时路况」上次运行失败（https://github.com/boliunew/tools/actions/runs/44257328272）",
  "data": [
   {
    "k": "brief",
@@ -23,7 +25,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T08:25:44Z",
+   "at": "2026-11-18T21:19:59Z",
    "detail": "12 条"
   },
   {
@@ -34,7 +36,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T08:25:55Z",
+   "at": "2026-11-18T21:20:10Z",
    "detail": "75 条"
   },
   {
@@ -45,8 +47,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T08:25:19Z",
-   "detail": "264 条"
+   "at": "2026-11-18T21:19:39Z",
+   "detail": "284 条"
   },
   {
    "k": "stocks",
@@ -56,8 +58,8 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T08:36:34Z",
-   "detail": "数据日期 2026-11-17 · 499 条"
+   "at": "2026-11-18T21:36:37Z",
+   "detail": "数据日期 2026-11-18 · 499 条"
   },
   {
    "k": "earnings",
@@ -67,7 +69,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T02:59:50Z"
+   "at": "2026-11-18T20:57:19Z"
   },
   {
    "k": "deals",
@@ -77,7 +79,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T07:25:26Z"
+   "at": "2026-11-18T21:28:26Z"
   },
   {
    "k": "radio",
@@ -87,7 +89,7 @@
    "wf": "radio.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-17T19:13:22Z"
+   "at": "2026-11-18T18:54:10Z"
   },
   {
    "k": "tv",
@@ -97,8 +99,8 @@
    "wf": "tv.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T03:10:53Z",
-   "detail": "12017 条"
+   "at": "2026-11-18T18:24:40Z",
+   "detail": "12016 条"
   },
   {
    "k": "card",
@@ -118,7 +120,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T07:37:01Z"
+   "at": "2026-11-18T17:18:20Z"
   },
   {
    "k": "bay_live",
@@ -128,7 +130,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-18T10:44:38Z"
+   "at": "2026-11-18T22:06:36Z"
   },
   {
    "k": "longterm",
@@ -249,6 +251,14 @@
    "msg": ""
   }
  ],
- "failed_runs": [],
- "since": "2026-11-16T23:26:41Z"
+ "failed_runs": [
+  {
+   "wf": "bay-live.yml",
+   "n": "湾区实时路况",
+   "conclusion": "failure",
+   "url": "https://github.com/boliunew/tools/actions/runs/44257328272",
+   "at": "2026-11-18T07:14:30Z"
+  }
+ ],
+ "since": "2026-11-18T22:09:19Z"
 }
