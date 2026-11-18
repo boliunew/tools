@@ -1,8 +1,8 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-17T23:55:01.457472Z",
+ "eventsUpdatedAt": "2026-11-18T11:56:30.030784Z",
  "ranges": {
-  "today": "2026-11-17",
+  "today": "2026-11-18",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,28 +11,28 @@
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-17",
+   "date": "2026-11-18",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "First To Eleven plays Mercury Lounge on Tuesday evening.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "note": "Girl Tones play Mercury Lounge on Wednesday evening; $15 advance, $20 day of show.",
+   "price": "From $15",
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
    "startTime": "6:00 PM",
-   "title": "First To Eleven",
-   "venue": "Mercury Lounge, 217 E. Houston St, Manhattan"
+   "title": "Girl Tones",
+   "venue": "Mercury Lounge, 217 E Houston St, Manhattan"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-17",
+   "date": "2026-11-18",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Sting brings the STING 3.0 Tour to Brooklyn Paramount.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "note": "Rock legend Sting brings the STING 3.0 Tour to Brooklyn Paramount.",
+   "price": "From $298",
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
    "startTime": "7:00 PM",
    "title": "STING 3.0 Tour",
    "venue": "Brooklyn Paramount, 385 Flatbush Ave Ext, Brooklyn"
@@ -41,46 +41,46 @@
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-17",
+   "date": "2026-11-18",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Matt Hansen brings The Orchid Tour to Irving Plaza.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
-   "startTime": "7:00 PM",
-   "title": "Matt Hansen - The Orchid Tour",
-   "venue": "Irving Plaza, 17 Irving Pl, Manhattan"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-17",
-   "day": "today",
-   "dayLabel": "周二",
-   "endTime": null,
-   "note": "Sadurn plays Bowery Ballroom on Tuesday evening.",
-   "price": null,
+   "note": "Liana Flores plays an intimate evening at Bowery Ballroom.",
+   "price": "From $25",
    "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/indie",
    "startTime": "7:00 PM",
-   "title": "Sadurn",
+   "title": "Liana Flores",
    "venue": "Bowery Ballroom, Manhattan"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-17",
+   "date": "2026-11-18",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Maria Schneider Orchestra at Birdland Jazz Club.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?efeat_seg=0&page=18&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "note": "JoJo marks 20 years of The High Road, unplugged, at Irving Plaza.",
+   "price": "From $201",
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
    "startTime": "7:00 PM",
-   "title": "Maria Schneider Orchestra",
-   "venue": "Birdland Jazz Club, Manhattan"
+   "title": "JoJo - THE HIGH ROAD: 20 YEARS UNPLUGGED",
+   "venue": "Irving Plaza, 17 Irving Pl, Manhattan"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-18",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Ezra Collective bring their jazz-funk energy to Webster Hall.",
+   "price": null,
+   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
+   "startTime": "8:00 PM",
+   "title": "Ezra Collective",
+   "venue": "Webster Hall, Manhattan"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 54,
-   "feelsLike": 54,
-   "high": null,
-   "low": 45,
+   "temp": 42,
+   "feelsLike": 36,
+   "high": 64,
+   "low": 38,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 47,
-   "wind": "3 mph",
-   "uvIndex": null,
-   "airQualityIndex": 57,
+   "humidity": 69,
+   "wind": "5 mph",
+   "uvIndex": 3,
+   "airQualityIndex": 59,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-17",
-   "high": null,
-   "low": 45,
+   "date": "2026-11-18",
+   "high": 64,
+   "low": 38,
    "precipChance": 0,
-   "summary": "Mostly Clear. Lows around 45."
+   "summary": "Clear skies. Highs around 64 and lows around 38."
   },
   "daily": [
    {
-    "date": "2026-11-17",
-    "high": null,
-    "low": 45,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-18",
-    "high": 61,
-    "low": 46,
+    "high": 64,
+    "low": 38,
     "precipChance": 0
    },
    {
     "date": "2026-11-19",
-    "high": 61,
-    "low": 47,
+    "high": 64,
+    "low": 38,
     "precipChance": 0
    },
    {
     "date": "2026-11-20",
-    "high": 64,
-    "low": 48,
+    "high": 63,
+    "low": 50,
     "precipChance": 0
    },
    {
     "date": "2026-11-21",
-    "high": 60,
-    "low": 52,
-    "precipChance": 0
+    "high": 57,
+    "low": 50,
+    "precipChance": 1
    },
    {
     "date": "2026-11-22",
     "high": 61,
-    "low": 53,
-    "precipChance": 37
+    "low": 52,
+    "precipChance": 32
    },
    {
     "date": "2026-11-23",
-    "high": 59,
-    "low": 43,
-    "precipChance": 26
+    "high": 60,
+    "low": 50,
+    "precipChance": 32
+   },
+   {
+    "date": "2026-11-24",
+    "high": 50,
+    "low": 35,
+    "precipChance": 5
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 60,
-    "low": 52,
-    "precipChance": 0,
-    "summary": "Mostly Sunny. Highs around 60 and lows around 52.",
-    "wind": "6 mph",
+    "high": 57,
+    "low": 50,
+    "precipChance": 1,
+    "summary": "Overcast. Highs around 57 and lows around 50.",
+    "wind": "7 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
     "high": 61,
-    "low": 53,
-    "precipChance": 37,
-    "summary": "Chance Light Rain. Highs around 61 and lows around 53.",
-    "wind": "7 mph",
+    "low": 52,
+    "precipChance": 32,
+    "summary": "Light drizzle. Highs around 61 and lows around 52.",
+    "wind": "10 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-17T23:53:36.679490Z",
+  "fetchedAt": "2026-11-18T05:57:52.001101Z",
   "location": "New York, NY"
  }
 }

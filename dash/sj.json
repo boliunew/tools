@@ -1,56 +1,56 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-17T23:55:01.455843Z",
+ "eventsUpdatedAt": "2026-11-18T11:56:30.016841Z",
  "ranges": {
-  "today": "2026-11-17",
+  "today": "2026-11-18",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Sports",
+   "category": "Music",
    "city": "San Jose",
-   "date": "2026-11-17",
+   "date": "2026-11-18",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "NHL: the Sharks host the Calgary Flames.",
-   "price": "From $23",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose",
+   "note": "Indie-pop singer Leanna Firestone with Sydney Sprague.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "6:00 PM",
+   "title": "Leanna Firestone, Sydney Sprague",
+   "venue": "The Ritz, 400 S 1st St, San Jose, CA 95113"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Jose",
+   "date": "2026-11-18",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Rock band Three Days Grace brings the Alienation Tour to SAP Center.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ",
    "startTime": "7:00 PM",
-   "title": "San Jose Sharks vs. Calgary Flames",
+   "title": "Three Days Grace - Alienation Tour",
    "venue": "SAP Center at San Jose, 525 W Santa Clara St, San Jose, CA 95113"
   },
   {
    "bucket": "today",
-   "category": "Theater",
+   "category": "Music",
    "city": "San Jose",
-   "date": "2026-11-17",
+   "date": "2026-11-18",
    "day": "today",
-   "dayLabel": "周二",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "The Who's rock opera returns, Nov 17-22 run opening night.",
-   "price": "From $20",
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose",
-   "startTime": "7:30 PM",
-   "title": "The Who's Tommy (Touring)",
-   "venue": "San Jose Center for the Performing Arts, 255 Almaden Blvd, San Jose, CA 95113"
-  },
-  {
-   "bucket": "today",
-   "category": "Family",
-   "city": "San Jose",
-   "date": "2026-11-17",
-   "day": "today",
-   "dayLabel": "周二",
-   "endTime": "11:00 AM",
-   "note": "Interactive music and movement storytime for families.",
-   "price": "Free",
-   "sourceUrl": "https://sjpl.bibliocommons.com/v2/events?audiences=5d5f09306bb98139001cffcc,5d5f0926be771f2300369397",
-   "startTime": "10:30 AM",
-   "title": "Music & Movement",
-   "venue": "Joyce Ellington Branch Library, San Jose, CA"
+   "note": "Alice Cooper's Alice's Attic Tour stops at San Jose Civic.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "8:00 PM",
+   "title": "Alice Cooper - Alice's Attic Tour",
+   "venue": "San Jose Civic, 135 W San Carlos St, San Jose, CA 95113"
   }
  ],
  "events": [
@@ -162,92 +162,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 61,
-   "feelsLike": 61,
-   "high": 60,
-   "low": 44,
-   "description": "Mostly Cloudy",
-   "precipChance": 7,
-   "humidity": 45,
-   "wind": "0 mph",
-   "uvIndex": null,
-   "airQualityIndex": 36,
-   "airQualityDescription": "Good"
-  },
-  "today": {
-   "date": "2026-11-17",
-   "high": 60,
-   "low": 44,
-   "precipChance": 7,
-   "summary": "Mostly Sunny. Highs around 60 and lows around 44."
+   "airQualityDescription": "Good",
+   "airQualityIndex": 34,
+   "description": "Overcast",
+   "feelsLike": 40,
+   "high": 55,
+   "humidity": 71,
+   "low": 48,
+   "precipChance": 100,
+   "temp": 48,
+   "uvIndex": 0,
+   "wind": "14 mph"
   },
   "daily": [
    {
-    "date": "2026-11-17",
-    "high": 60,
-    "low": 44,
-    "precipChance": 7
-   },
-   {
     "date": "2026-11-18",
-    "high": 59,
-    "low": 45,
+    "high": 55,
+    "low": 48,
     "precipChance": 100
    },
    {
     "date": "2026-11-19",
-    "high": 58,
-    "low": 40,
-    "precipChance": 98
+    "high": 56,
+    "low": 48,
+    "precipChance": 87
    },
    {
     "date": "2026-11-20",
-    "high": 60,
-    "low": 38,
-    "precipChance": 3
+    "high": 58,
+    "low": 47,
+    "precipChance": 24
    },
    {
     "date": "2026-11-21",
     "high": 59,
-    "low": 42,
-    "precipChance": 71
+    "low": 46,
+    "precipChance": 46
    },
    {
     "date": "2026-11-22",
-    "high": 57,
-    "low": 39,
-    "precipChance": 40
+    "high": 59,
+    "low": 50,
+    "precipChance": 48
    },
    {
     "date": "2026-11-23",
-    "high": 60,
-    "low": 43,
-    "precipChance": 15
+    "high": 61,
+    "low": 47,
+    "precipChance": 13
+   },
+   {
+    "date": "2026-11-24",
+    "high": 56,
+    "low": 49,
+    "precipChance": 74
    }
   ],
+  "fetchedAt": "2026-11-18T11:52:33.425414Z",
+  "location": "San Jose, CA",
+  "today": {
+   "date": "2026-11-18",
+   "high": 55,
+   "low": 48,
+   "precipChance": 100,
+   "summary": "Heavy rain. Highs around 55 and lows around 48."
+  },
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
     "high": 59,
-    "low": 42,
-    "precipChance": 71,
-    "summary": "Light Rain Likely. Highs around 59 and lows around 42.",
-    "wind": "5 mph",
-    "hourly": []
+    "hourly": [],
+    "low": 46,
+    "precipChance": 46,
+    "summary": "Light drizzle. Highs around 59 and lows around 46.",
+    "wind": "7 mph"
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 57,
-    "low": 39,
-    "precipChance": 40,
-    "summary": "Chance Light Rain. Highs around 57 and lows around 39.",
-    "wind": "5 mph",
-    "hourly": []
+    "high": 59,
+    "hourly": [],
+    "low": 50,
+    "precipChance": 48,
+    "summary": "Drizzle. Highs around 59 and lows around 50.",
+    "wind": "6 mph"
    }
-  ],
-  "fetchedAt": "2026-11-17T23:53:26.000080Z",
-  "location": "San Jose, CA"
+  ]
  }
 }
