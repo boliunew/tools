@@ -50,6 +50,8 @@ h2{font-size:16.5px;margin:22px 0 10px}
 <div class="cd"><div class="big" id="cdBig">黑色星期五 · 11 月 27 日</div><div class="sm" id="cdSm">正在算倒计时…</div></div>
 
 <div class="tl">
+<div><div class="d">11/19 周四</div><div class="n">Amazon、Best Buy 大促开跑</div></div>
+<div><div class="d">11/23 周一</div><div class="n">Walmart 主促销线上开抢</div></div>
 <div><div class="d">11/26 周四</div><div class="n">感恩节，当晚线上开抢</div></div>
 <div class="hot"><div class="d">11/27 周五</div><div class="n">黑色星期五，正日子</div></div>
 <div><div class="d">11/30 周一</div><div class="n">网络星期一，数码第二波</div></div>
@@ -57,10 +59,10 @@ h2{font-size:16.5px;margin:22px 0 10px}
 
 <h2>🏬 商家入口</h2>
 <div class="grid">
-<a class="shop" href="https://www.amazon.com/blackfriday" target="_blank" rel="noopener"><div class="t">Amazon</div><div class="d">黑五专场，提前预热最早</div><span class="go">去看看 →</span></a>
-<a class="shop" href="https://www.walmart.com/shop/deals" target="_blank" rel="noopener"><div class="t">Walmart</div><div class="d">特价区，Walmart+ 会员可提前购</div><span class="go">去看看 →</span></a>
+<a class="shop" href="https://www.amazon.com/blackfriday" target="_blank" rel="noopener"><div class="t">Amazon</div><div class="d">黑五专场，11/19–11/30</div><span class="go">去看看 →</span></a>
+<a class="shop" href="https://www.walmart.com/shop/deals" target="_blank" rel="noopener"><div class="t">Walmart</div><div class="d">特价区，主促销 11/23 线上开抢</div><span class="go">去看看 →</span></a>
 <a class="shop" href="https://www.target.com/c/target-deals/-/N-4xw74" target="_blank" rel="noopener"><div class="t">Target</div><div class="d">Target Deals，玩具和家居常打折</div><span class="go">去看看 →</span></a>
-<a class="shop" href="https://www.bestbuy.com/" target="_blank" rel="noopener"><div class="t">Best Buy</div><div class="d">电视、电脑、家电的主场</div><span class="go">去看看 →</span></a>
+<a class="shop" href="https://www.bestbuy.com/" target="_blank" rel="noopener"><div class="t">Best Buy</div><div class="d">电视、电脑、家电的主场，11/19–11/28</div><span class="go">去看看 →</span></a>
 <a class="shop" href="https://www.costco.com/" target="_blank" rel="noopener"><div class="t">Costco</div><div class="d">会员店大件，留意优惠券册</div><span class="go">去看看 →</span></a>
 <a class="shop" href="https://www.homedepot.com/c/Savings_Center" target="_blank" rel="noopener"><div class="t">Home Depot</div><div class="d">工具、家电特价中心</div><span class="go">去看看 →</span></a>
 <a class="shop" href="https://www.lowes.com/c/Deals" target="_blank" rel="noopener"><div class="t">Lowe's</div><div class="d">工具和家居 Deals</div><span class="go">去看看 →</span></a>
@@ -100,7 +102,7 @@ h2{font-size:16.5px;margin:22px 0 10px}
     else { big.textContent = '今年黑五结束了'; sm.textContent = '明年 11 月再见，平时特价看打折雷达。'; return; }
     var ms = t - now, d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4), s = Math.floor(ms % 6e4 / 1e3);
     big.textContent = label + ' ' + d + ' 天 ' + pad(h) + ':' + pad(m) + ':' + pad(s);
-    sm.textContent = '11/26 晚开抢 · 11/27 黑五 · 11/30 网一';
+    sm.textContent = '11/19 大促开跑 · 11/27 黑五 · 11/30 网一';
   }
   tick(); setInterval(tick, 1000);
 })();
