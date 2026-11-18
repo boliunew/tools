@@ -120,7 +120,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
 <div class="bar" id="bar" style="display:none"><div class="in">
   <div class="ico" id="bIco">📻</div>
   <div class="t"><b id="bName"></b><span class="song" id="bSong" style="display:none"></span><small id="bStat"></small></div>
-  <div class="ctl"><button id="bPrev" aria-label="上一个台">⏮</button><button class="pp" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一个台">⏭</button><button class="wf" id="bWheel" aria-label="只在收藏里切台" title="⏮ ⏭ 和方向盘只在收藏里切台">☆切</button><button class="rc" id="bRec" aria-label="录一段" title="录下正在播的 20 秒，方便以后找歌">⏺</button><button class="tm" id="bTimer" aria-label="睡眠定时">⏲</button></div>
+  <div class="ctl"><button id="bPrev" aria-label="上一个台">⏮</button><button class="pp" id="bPlay" aria-label="播放">▶</button><button id="bNext" aria-label="下一个台">⏭</button><button class="wf" id="bWheel" aria-label="只在收藏里切台" title="⏮ ⏭ 和方向盘只在收藏里切台">☆切</button><button class="rc" id="bRec" aria-label="录一段" title="录下刚刚听到的 30 秒，方便以后找歌">⏺</button><button class="tm" id="bTimer" aria-label="睡眠定时">⏲</button></div>
 </div></div>
 <div class="toast" id="toast"></div>
 <audio id="au" preload="none"></audio>
@@ -495,6 +495,7 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
     stopHls(); clearTimeout(watchdog);
     var url = LOCAL && /^http:/i.test(s.url) && !s.hls ? 'api/stream?u=' + encodeURIComponent(s.url) : s.url.replace(/^http:\/\//i, 'https://');
     var native = au.canPlayType('application/vnd.apple.mpegurl');
+    if (!s.hls && CORSOK[s.url.replace(/^http:\/\//i, 'https://')] === 1) au.crossOrigin = 'anonymous'; else au.removeAttribute('crossorigin');   // 允许跨域的台，播放器才录得到声音
     if (s.hls && !native) {
       withHls(function () {
         if (!window.Hls.isSupported()) { fail('浏览器不支持这个台的格式'); return; }
@@ -510,6 +511,8 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   function fail(why) {
     clearTimeout(watchdog);
     if (!cur) return;
+    var cu0 = cur.url.replace(/^http:\/\//i, 'https://');
+    if (!cur.hls && CORSOK[cu0] === 1 && au.crossOrigin) { CORSOK[cu0] = -1; put('corsok', CORSOK); start(cur); return; }   // 开了跨域反而连不上：退回普通播放
     if (lost()) return;
     RC.live = false;
     if (cur.id && !cur.my && !RR[cur.id]) {
@@ -720,8 +723,61 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   /* ---------- ⏺ 录一段：遇到喜欢的歌，录 20 秒存起来，回头用 Shazam / 听歌识曲 找 ----------
      能录的方式按顺序试：① 直接再拉一路直播流（电台允许跨域就行，不经过麦克风、音质原样）
      ② 家里服务器的中转 ③ HLS 台：直接录播放器的声音 ④ HLS 台没 hls.js（苹果自带）：抓最近几段切片。
-     录音只存在这台设备的浏览器里（IndexedDB），最多留 30 段。 */
-  var REC = { on: false, stop: null, sec: 20, t: null }, RDB = null;
+     录音只存在这台设备的浏览器里（IndexedDB），最多留 30 段。
+     ⓪ 回溯录音（优先）：播放时一直把播放器出来的声音留最近 40 秒，点 ⏺ 立刻存下「刚刚听到的 30 秒」，和耳朵听到的一模一样。
+        hls.js 的台、家里中转的台直接可以；普通直播台要电台允许跨域，第一次听时会自动测一下并重连一次，以后就一直可以。 */
+  var REC = { on: false, stop: null, sec: 20, t: null, pre: 30, t0: 0 }, RDB = null, CORSOK = get('corsok', {});
+  var RING = { ctx: null, pn: null, src: null, sr: 0, buf: null, w: 0, n: 0, loud: false, url: '', SEC: 40, retry: 0 };
+  function ringFeed(e) {
+    var ib = e.inputBuffer, a = ib.getChannelData(0), b = ib.numberOfChannels > 1 ? ib.getChannelData(1) : null, n = a.length, buf = RING.buf, L = buf.length, w = RING.w, mx = 0, i, v, av;
+    for (i = 0; i < n; i++) { v = b ? (a[i] + b[i]) * 0.5 : a[i]; buf[w] = v; if (++w >= L) w = 0; av = v < 0 ? -v : v; if (av > mx) mx = av; }
+    RING.w = w; RING.n = Math.min(L, RING.n + n); if (mx > 0.002) RING.loud = true;
+  }
+  function ringStart() {
+    var cs = au.captureStream || au.mozCaptureStream, AC = window.AudioContext || window.webkitAudioContext;
+    if (!cs || !AC || !cur) return;
+    try {
+      if (!RING.ctx) {
+        RING.ctx = new AC(); RING.sr = RING.ctx.sampleRate; RING.buf = new Float32Array(Math.round(RING.SEC * RING.sr));
+        RING.pn = RING.ctx.createScriptProcessor(4096, 2, 1); RING.pn.onaudioprocess = ringFeed; RING.pn.connect(RING.ctx.destination);   // 只取数据，输出是静音，不会重复出声
+      }
+      if (RING.url !== cur.url) { RING.url = cur.url; RING.w = 0; RING.n = 0; RING.loud = false; }   // 换台就清空，不混进上一个台
+      if (RING.src) { try { RING.src.disconnect(); } catch (e) { } RING.src = null; }
+      var ms0 = cs.call(au);
+      if (!ms0.getAudioTracks().length) { if (RING.retry++ < 3) setTimeout(ringStart, 800); return; }
+      RING.retry = 0; RING.src = RING.ctx.createMediaStreamSource(ms0); RING.src.connect(RING.pn);
+      if (RING.ctx.state === 'suspended') RING.ctx.resume();
+    } catch (e) { }
+  }
+  function ringReady() { return !!(RING.ctx && RING.src && RING.loud && cur && RING.url === cur.url && RING.ctx.state === 'running'); }
+  function ringClip(sec) {
+    var L = RING.buf.length, want = Math.min(RING.n, Math.round(sec * RING.sr)), out = new Float32Array(want), st = (RING.w - want + L) % L, i;
+    for (i = 0; i < want; i++) out[i] = RING.buf[(st + i) % L];
+    return out;
+  }
+  function wavBlob(f, sr) {   // 单声道 16 位 WAV，降到 22.05kHz（体积小，识别歌曲够用）
+    var dst = 22050, ratio = sr / dst, n = Math.floor(f.length / ratio), pcm = new Int16Array(n), i, j, a, b, v, h = new DataView(new ArrayBuffer(44));
+    for (i = 0; i < n; i++) { a = Math.floor(i * ratio); b = Math.max(a + 1, Math.floor((i + 1) * ratio)); v = 0; for (j = a; j < b && j < f.length; j++) v += f[j]; v /= (b - a); v = v > 1 ? 1 : v < -1 ? -1 : v; pcm[i] = v < 0 ? v * 32768 : v * 32767; }
+    function str(o, t) { for (var k = 0; k < t.length; k++) h.setUint8(o + k, t.charCodeAt(k)); }
+    str(0, 'RIFF'); h.setUint32(4, 36 + n * 2, true); str(8, 'WAVE'); str(12, 'fmt '); h.setUint32(16, 16, true); h.setUint16(20, 1, true); h.setUint16(22, 1, true);
+    h.setUint32(24, dst, true); h.setUint32(28, dst * 2, true); h.setUint16(32, 2, true); h.setUint16(34, 16, true); str(36, 'data'); h.setUint32(40, n * 2, true);
+    return new Blob([h.buffer, pcm.buffer], { type: 'audio/wav' });
+  }
+  function probeCors(s) {   // 普通直播台：测一下电台是否允许跨域；允许的话重连一次，以后播放器的声音就能被回溯录下来
+    var url = s.url.replace(/^http:\/\//i, 'https://');
+    if (s.hls || CORSOK[url] || !window.fetch || (LOCAL && /^http:/i.test(s.url))) return;
+    CORSOK[url] = -1; put('corsok', CORSOK);
+    var ac = window.AbortController ? new AbortController() : null;
+    fetch(url, ac ? { signal: ac.signal, cache: 'no-store' } : { cache: 'no-store' }).then(function (r) {
+      var ty = r.headers.get('content-type') || ''; try { ac && ac.abort(); } catch (e) { }
+      if (!r.ok || /text|html|mpegurl|json/i.test(ty)) return;
+      CORSOK[url] = 1; put('corsok', CORSOK);
+      if (cur === s && !au.crossOrigin) { stat('开启回溯录音，重新连接一下…'); start(s); }
+    }).catch(function () { });
+  }
+  au.addEventListener('playing', function () { ringStart(); if (cur) probeCors(cur); });
+  au.addEventListener('pause', function () { try { if (RING.ctx && RING.ctx.state === 'running') RING.ctx.suspend(); } catch (e) { } });
+  document.addEventListener('pointerdown', function () { try { if (RING.ctx && RING.ctx.state === 'suspended' && !au.paused) RING.ctx.resume(); } catch (e) { } }, true);
   function rdb(cb) {
     if (RDB) { cb(RDB); return; }
     try {
@@ -734,14 +790,14 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   function rAll(cb) { rdb(function (db) { if (!db) { cb([]); return; } var out = [], c = db.transaction('clips').objectStore('clips').openCursor(); c.onsuccess = function () { var x = c.result; if (x) { out.push(x.value); x.continue(); } else cb(out.sort(function (a, b) { return b.t - a.t; })); }; c.onerror = function () { cb([]); }; }); }
   function rPut(v, cb) { rdb(function (db) { if (!db) { cb && cb(false); return; } var tx = db.transaction('clips', 'readwrite'); tx.objectStore('clips').put(v); tx.oncomplete = function () { cb && cb(true); }; tx.onerror = function () { cb && cb(false); }; }); }
   function rDel(id, cb) { rdb(function (db) { if (!db) return; var tx = db.transaction('clips', 'readwrite'); tx.objectStore('clips').delete(id); tx.oncomplete = function () { cb && cb(); }; }); }
-  function ext(type) { type = (type || '').toLowerCase(); return /mpeg|mp3/.test(type) ? 'mp3' : /aac/.test(type) ? 'aac' : /ogg|opus/.test(type) ? 'ogg' : /webm/.test(type) ? 'webm' : /mp2t/.test(type) ? 'ts' : /mp4|m4a/.test(type) ? 'm4a' : 'mp3'; }
+  function ext(type) { type = (type || '').toLowerCase(); return /mpeg|mp3/.test(type) ? 'mp3' : /aac/.test(type) ? 'aac' : /ogg|opus/.test(type) ? 'ogg' : /webm/.test(type) ? 'webm' : /mp2t/.test(type) ? 'ts' : /mp4|m4a/.test(type) ? 'm4a' : /wav/.test(type) ? 'wav' : 'mp3'; }
   function recBtn(txt, on) { var b = $('bRec'); b.textContent = txt; b.className = 'rc' + (on ? ' on' : ''); }
   function recDone(parts, type, st, song, how) {
     REC.on = false; clearInterval(REC.t); REC.stop = null; recBtn('⏺', false);
     var size = 0; parts.forEach(function (p) { size += p.size || p.byteLength || 0; });
     if (size < 8000) { toast('没录到声音（这个台不让网页录）。已把台名和时间记在「最近听到的歌」里'); npNote(st); return; }
     var blob = new Blob(parts, { type: type || 'audio/mpeg' });
-    var v = { id: Date.now(), t: Date.now(), st: st.name, song: song || '', type: blob.type, blob: blob, how: how };
+    var v = { id: Date.now(), t: REC.t0 || Date.now(), st: st.name, song: song || '', type: blob.type, blob: blob, how: how };
     rPut(v, function (ok) {
       if (!ok) { toast('浏览器不让存录音（可能是无痕模式）'); return; }
       toast('🎙 录好了，在下面「我的录音」里');
@@ -810,6 +866,11 @@ main{max-width:680px;margin:0 auto;padding:16px 16px 0}
   $('bRec').onclick = function () {
     if (REC.on) { clearInterval(REC.t); if (REC.stop) REC.stop(); return; }
     if (!cur || au.paused) { toast('先播一个台，听到喜欢的再点 ⏺'); return; }
+    REC.t0 = Date.now();
+    if (ringReady()) {   // 回溯录音：直接存刚刚听到的
+      if (RING.n < 6 * RING.sr) { toast('刚开始播，再听几秒再点 ⏺'); return; }
+      REC.on = true; recDone([wavBlob(ringClip(REC.pre), RING.sr)], 'audio/wav', cur, NP.song, 'retro'); return;
+    }
     REC.on = true; recBtn('…', true);
     var st = cur, song = NP.song;
     function nope() { REC.on = false; REC.stop = null; clearInterval(REC.t); recBtn('⏺', false); toast('这个台不让网页录音。已记下台名和时间，可以马上用 Shazam 对着听'); npNote(st); }
