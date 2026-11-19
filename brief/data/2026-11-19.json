@@ -1,0 +1,190 @@
+{
+ "date": "2026-11-19",
+ "generated": "2026-11-19T22:20:15Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Anthropic IPO估值2万亿美元 发行价超81亿美元",
+     "d": "AI 初创公司Anthropic在美国上市首日收于97美元，市值约1.3万亿美元（摊薄后2万亿美元），较发行价上涨约17%。公司首轮售出9.8亿股，募集81.3亿美元，创下史上最大IPO。此举标志AI行业进入公共资本市场，可能提升行业信心。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/19/anthropic-public-trading-ipo"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "英伟达求新CEO 已联系Arm CEO Haas",
+     "d": "英伟达董事会已委托猎头公司联系潜在新任CEO，Arm公司CEO Rene Haas被视为首选人选，因其曾在英伟达任职七年。此举因创始人Jensen Huang因个人丑闻辞职后进行，关系到英伟达的领导继任与公司治理。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/19/nvidia-new-ceo-search-jensen-huang-arm-rene-haas"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "IEA警告AI数据中心碳排放将增70%至2030",
+     "d": "国际能源署预测，全球数据中心至2030年电力需求翻倍，AI占三分之三，导致碳排放增长70%；美国和中国将大量依赖化石燃料供电。此趋势凸显AI扩张对能源与气候的冲击。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/world/2026/nov/19/datacentres-to-create-70-more-carbon-emissions-by-2030-iea-report-warns"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/19 周四 收盘：标普500 ETF（SPY）-1.96%，纳指100 ETF（QQQ）-2.19%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 28.4；50% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：PANW +6.4%、OKTA +5.8%、P +4.7%；跌幅最大：WSM -15.2%、TWLO -8.8%、AMD -7.7%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：WMT（盘前）、BABA（盘前）、PDD（盘前）、INTU（盘后）、NTES（盘前）",
+     "d": "按市值挑出最大的几家，共 8 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：EIA 原油库存（11/19 周四）",
+     "d": "Crude Oil Inventories 实际 3.380M（预期 0.400M，前值 4.657M）；Cushing Crude Oil Inventories 实际 -1.209M（预期 —，前值 0.106M）。库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/19 周四 12:15：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/20 周五 09:25：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "国际法院判缅甸对罗兴亚实施种族灭绝",
+     "d": "国际法院以9票对6票认定缅甸政府对罗兴亚少数族群有灭绝意图并实施大规模杀戮，首次将国家定性为种族灭绝行为者。裁决对国际法与人权追责具有里程碑意义。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c804wzp20ddvo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/19/rohingya-genocide-survivor-perpetrators-will-have-to-face?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "欧盟准备与俄就乌克兰冲突展开谈判",
+     "d": "欧盟领导人在柏林会议上表示愿意与俄罗斯进行谈判以结束乌克兰战争，但对俄方“最大化”要求持批评态度。此举显示欧盟在美国之外寻求调解角色，可能影响冲突走向。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/ckzd9nln5e6go?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/19/european-leaders-unite-in-berlin-to-reaffirm-support-for-ukraine?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "深圳峰会发布《和平宣言》三国承诺防核战争",
+     "d": "中国、俄罗斯和美国领导人在深圳会晤后共同发布《和平宣言》，承诺维护国际安全、增加炼油产能并避免核战争。该声明虽具象征意义，但实际落实仍待观察。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/inside-story/2026/11/19/will-the-shenzhen-summit-safeguard-world-peace?traffic_source=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/19/aje-onl-nf_chinas-xi-urges-us-and-russia-for-world-peace-191126?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "乌克兰盟友在柏林会议呼吁取得和平成果",
+     "d": "乌克兰总统泽连斯基在柏林“愿意联盟”会议上强调需要通过会议与双边会谈实现具体成果，凸显乌克兰在多边外交中争取支持的紧迫性。",
+     "src": [
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/ukraine-russia-coalition-willing-berlin-bilateral-talks-6566721"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/live/2026/nov/19/russia-ukraine-war-coalition-of-the-willing-europe-latest-news-updates"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "Anthropic IPO 估值2万亿美元",
+  "d": "作为 AI 领域首批超万亿美元上市公司，Anthropic 的成功上市体现资本市场对生成式 AI 的强劲需求，对科技板块估值与资金流向具有示范效应。"
+ },
+ "week": []
+}
