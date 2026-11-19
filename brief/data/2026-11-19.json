@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "generated": "2026-11-19T22:20:15Z",
+ "generated": "2026-11-19T23:15:25Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "Anthropic IPO估值2万亿美元 发行价超81亿美元",
-     "d": "AI 初创公司Anthropic在美国上市首日收于97美元，市值约1.3万亿美元（摊薄后2万亿美元），较发行价上涨约17%。公司首轮售出9.8亿股，募集81.3亿美元，创下史上最大IPO。此举标志AI行业进入公共资本市场，可能提升行业信心。",
+     "t": "Anthropic IPO首日收盘价97美元 市值近1.3万亿美元",
+     "d": "AI创业公司Anthropic在美国纳斯达克首日收盘价97美元，较IPO价83美元涨约17%，市值约1.3万亿美元（完全稀释后1.75万亿美元），筹资813亿美元，成为史上规模最大的IPO之一。此举标志AI行业进入公开资本市场，对科技股情绪和行业估值具有示范效应。",
      "src": [
       {
        "n": "The Guardian",
@@ -20,19 +20,19 @@
      "full": true
     },
     {
-     "t": "英伟达求新CEO 已联系Arm CEO Haas",
-     "d": "英伟达董事会已委托猎头公司联系潜在新任CEO，Arm公司CEO Rene Haas被视为首选人选，因其曾在英伟达任职七年。此举因创始人Jensen Huang因个人丑闻辞职后进行，关系到英伟达的领导继任与公司治理。",
+     "t": "IMF警告AI需求将推高全球利率",
+     "d": "国际货币基金组织总裁乔治耶娃在APEC峰会指出，AI硬件需求推升通胀，预计全球通胀将达4.7%，迫使主要央行进一步加息。此言论凸显AI技术的快速普及正对全球货币政策和金融稳定产生直接影响。",
      "src": [
       {
        "n": "The Guardian",
-       "u": "https://www.theguardian.com/technology/2026/nov/19/nvidia-new-ceo-search-jensen-huang-arm-rene-haas"
+       "u": "https://www.theguardian.com/world/2026/nov/19/imf-head-warns-ai-demand-push-up-interest-rates-apec"
       }
      ],
      "full": true
     },
     {
-     "t": "IEA警告AI数据中心碳排放将增70%至2030",
-     "d": "国际能源署预测，全球数据中心至2030年电力需求翻倍，AI占三分之三，导致碳排放增长70%；美国和中国将大量依赖化石燃料供电。此趋势凸显AI扩张对能源与气候的冲击。",
+     "t": "IEA预警2023‑2030年数据中心碳排放增70%",
+     "d": "国际能源署报告称，受美国和中国依赖化石燃料供能AI数据中心推动，全球数据中心用电将在2030年翻倍，相关碳排放将增长70%。这表明AI算力需求的增长对全球能源需求和气候目标构成重大挑战。",
      "src": [
       {
        "n": "The Guardian",
@@ -120,8 +120,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "国际法院判缅甸对罗兴亚实施种族灭绝",
-     "d": "国际法院以9票对6票认定缅甸政府对罗兴亚少数族群有灭绝意图并实施大规模杀戮，首次将国家定性为种族灭绝行为者。裁决对国际法与人权追责具有里程碑意义。",
+     "t": "国际法院裁定缅甸对罗兴亚实施种族灭绝",
+     "d": "国际法院以9比6票数认定缅甸军方在2017年对罗兴亚少数族群有灭绝意图并实施了大规模暴行，首次确认国家对种族灭绝负有责任。该判决为国际法在防止大规模人权灾难方面设置新先例。",
      "src": [
       {
        "n": "BBC",
@@ -135,46 +135,46 @@
      "full": true
     },
     {
-     "t": "欧盟准备与俄就乌克兰冲突展开谈判",
-     "d": "欧盟领导人在柏林会议上表示愿意与俄罗斯进行谈判以结束乌克兰战争，但对俄方“最大化”要求持批评态度。此举显示欧盟在美国之外寻求调解角色，可能影响冲突走向。",
+     "t": "COP31草案删除化石燃料转型措辞",
+     "d": "在土耳其举办的COP31会议中，最新谈判草案去除了所有关于逐步淘汰煤油气的条款，只保留提升电力比重的目标，却未明确能源来源。此修改引发发展中国家与环保组织对气候目标执行力度的担忧。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/no-mention-of-fossil-fuels-in-latest-cop31-draft-deal/a-79992394?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/asia/electricity-evs-cop31-southeast-asia-6561641"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "以军在加沙黄线外完成罕见地面行动",
+     "d": "以色列军方宣称已在加沙黄线以东的中部地区完成目标为摧毁恐怖隧道的地面行动，导致约6千名居民撤离。此举被哈马斯指责违背2025年停火协议，显示冲突局势仍高度紧张。",
      "src": [
       {
        "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/ckzd9nln5e6go?at_medium=RSS&at_campaign=rss"
+       "u": "https://www.bbc.co.uk/news/articles/cw8r7510degno?at_medium=RSS&at_campaign=rss"
       },
       {
        "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/news/2026/11/19/european-leaders-unite-in-berlin-to-reaffirm-support-for-ukraine?traffic_source=rss"
+       "u": "https://www.aljazeera.com/news/2026/11/19/palestinians-in-gaza-face-new-displacement-after-israeli-army-operation?traffic_source=rss"
       }
      ],
      "full": true
     },
     {
-     "t": "深圳峰会发布《和平宣言》三国承诺防核战争",
-     "d": "中国、俄罗斯和美国领导人在深圳会晤后共同发布《和平宣言》，承诺维护国际安全、增加炼油产能并避免核战争。该声明虽具象征意义，但实际落实仍待观察。",
+     "t": "Anthropic首日交易检验AI市场需求",
+     "d": "Anthropic在纳斯达克首日开盘价111.5美元，较IPO价涨34%，市值约2万亿美元，筹资813亿美元，成为首家上市的大型AI公司。其表现被视为投资者对AI行业热情的试金石，对后市AI股估值产生重要参考价值。",
      "src": [
       {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/inside-story/2026/11/19/will-the-shenzhen-summit-safeguard-world-peace?traffic_source=rss"
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/anthropic-trading-tests-investors-appetite-for-ai/a-79993163?maca=en-rss-en-all-1573-rdf"
       },
       {
-       "n": "半岛电视台",
-       "u": "https://www.aljazeera.com/video/newsfeed/2026/11/19/aje-onl-nf_chinas-xi-urges-us-and-russia-for-world-peace-191126?traffic_source=rss"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "乌克兰盟友在柏林会议呼吁取得和平成果",
-     "d": "乌克兰总统泽连斯基在柏林“愿意联盟”会议上强调需要通过会议与双边会谈实现具体成果，凸显乌克兰在多边外交中争取支持的紧迫性。",
-     "src": [
-      {
-       "n": "CNA",
-       "u": "https://www.channelnewsasia.com/world/ukraine-russia-coalition-willing-berlin-bilateral-talks-6566721"
-      },
-      {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/world/live/2026/nov/19/russia-ukraine-war-coalition-of-the-willing-europe-latest-news-updates"
+       "n": "法国24",
+       "u": "https://www.france24.com/en/business/20261119-anthropic-begins-trading-1-5-trillion-company-biggest-ipo-record-ai"
       }
      ],
      "full": true
@@ -183,8 +183,8 @@
   }
  ],
  "pick": {
-  "t": "Anthropic IPO 估值2万亿美元",
-  "d": "作为 AI 领域首批超万亿美元上市公司，Anthropic 的成功上市体现资本市场对生成式 AI 的强劲需求，对科技板块估值与资金流向具有示范效应。"
+  "t": "Anthropic以2万亿美元估值上市",
+  "d": "该IPO标志着AI公司首次突破万亿市值，对科技板块估值基准和资本市场对人工智能的热情具有里程碑意义。"
  },
  "week": []
 }
