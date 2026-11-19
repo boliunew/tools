@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-18T18:54:10Z",
- "date": "2026-11-18",
+ "generated": "2026-11-19T19:02:38Z",
+ "date": "2026-11-19",
  "engine": "edge",
- "total": 495.9,
- "short": 330.0,
+ "total": 461.4,
+ "short": 299.5,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611181052",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611191101",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月18日 星期三",
-   "dur": 10.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611181052",
+   "sub": "11月19日 星期四",
+   "dur": 8.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "一周过半了。这里是你的通勤电台。今天是11月18日，星期三，方向盘上的下一首可以随时跳段。"
+     "t": "11月19日，星期四，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 阴天 65°/47°F",
-   "dur": 27.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611181052",
+   "sub": "Upland 中雨 58°/48°F",
+   "dur": 31.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天阴天。早上7点出门大约华氏47度，9摄氏度，体感41度。傍晚5点下班大约华氏60度，15摄氏度。白天最高65度，约18摄氏度；最低47度。基本不会下雨。白天空气质量中等，指数最高56。今天日落时间是傍晚4点45分。"
+     "t": "Upland今天中雨。早上7点出门大约华氏54度，12摄氏度。傍晚5点下班大约华氏55度，13摄氏度。白天最高58度，约14摄氏度；最低48度。降雨概率87%。白天空气质量中等，指数最高52。今天日落时间是傍晚4点44分。提醒一下：记得带伞，路面湿滑，车速放慢。"
     }
    ]
   },
@@ -38,12 +38,12 @@
    "id": "sky",
    "title": "🔭 天象",
    "sub": "Upland",
-   "dur": 10.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611181052",
+   "dur": 10.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。2天后，水星西大距。黎明前在东边，离太阳 20°，很低，找视野开阔的地方。"
+     "t": "天象提醒。明天，水星西大距。黎明前在东边，离太阳 20°，很低，找视野开阔的地方。"
     }
    ]
   },
@@ -51,41 +51,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "谨慎",
-   "dur": 31.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611181052",
+   "dur": 31.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月17日收盘。标普500 ETF 下跌1.0%，纳指100 ETF 下跌0.7%。恐慌指数VIX 25.5，偏高，市场有点紧张。标普成分股里，58%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股11月18日收盘。标普500 ETF 下跌0.3%，纳指100 ETF 上涨0.4%。恐慌指数VIX 24.6，偏高，市场有点紧张。标普成分股里，57%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "26 个候选",
-   "dur": 63.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611181052",
+   "sub": "37 个候选",
+   "dur": 63.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天26个候选，评分最高的是Accenture，代码 A C N。不想听细节可以按下一首。"
+     "t": "股票池今天37个候选，评分最高的是Walt Disney，代码 D I S。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，血筹码12个，回踩金坑2个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，血筹码12个，回踩金坑12个，强势新高1个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Accenture，代码 A C N，RSI2 超跌反弹信号，收盘价239.28美元，止损参考215.38。"
+     "t": "第1，Walt Disney，代码 D I S，强势新高信号，收盘价122.36美元，止损参考116.51。"
     },
     {
      "lang": "zh",
-     "t": "第2，Revvity，代码 R V T Y，RSI2 超跌反弹信号，收盘价147.79美元，止损参考129.58。"
+     "t": "第2，Moderna，代码 M R N A，RSI2 超跌反弹信号，收盘价196.79美元，止损参考150.16。"
     },
     {
      "lang": "zh",
-     "t": "第3，Okta，代码 O K T A，RSI2 超跌反弹信号，收盘价174.54美元，止损参考142.38。"
+     "t": "第3，Viatris，代码 V T R S，RSI2 超跌反弹信号，收盘价20.28美元，止损参考18.93。"
     },
     {
      "lang": "zh",
@@ -96,9 +96,9 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "6 件大事",
-   "dur": 73.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611181052",
+   "sub": "3 件大事",
+   "dur": 35.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
@@ -106,40 +106,24 @@
     },
     {
      "lang": "zh",
-     "t": "Palo Alto Networks，代码 P A N W，盘后发财报。期权定价波动正负11.0%。标签：大波动、利好出尽型。"
+     "t": "Walmart，代码 W M T，盘前发财报。期权定价波动正负2.1%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "TJX Companies，代码 T J X，盘前发财报。期权定价波动正负2.9%。标签：利好出尽型、已提前炒作。"
+     "t": "Alibaba，代码 B A B A，盘前发财报。期权定价波动正负4.0%。标签：利好出尽型。"
     },
     {
      "lang": "zh",
-     "t": "Lowe's Companies，代码 L O W，盘前发财报。期权定价波动正负3.0%。"
-    },
-    {
-     "lang": "zh",
-     "t": "明天，有3家大公司发财报。"
-    },
-    {
-     "lang": "zh",
-     "t": "Walmart，代码 W M T，盘前发财报。期权定价波动正负6.2%。标签：利好出尽型。"
-    },
-    {
-     "lang": "zh",
-     "t": "Alibaba，代码 B A B A，盘前发财报。期权定价波动正负6.9%。标签：利好出尽型。"
-    },
-    {
-     "lang": "zh",
-     "t": "PDD，代码 P D D，盘前发财报。期权定价波动正负7.2%。标签：大波动。"
+     "t": "PDD，代码 P D D，盘前发财报。期权定价波动正负2.7%。标签：大波动。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · NPR",
-   "dur": 76.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611181052",
+   "sub": "Al Jazeera · BBC · NPR",
+   "dur": 84.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
@@ -147,44 +131,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，商业，难度B2。大意是：汽油和柴油价格上涨将英国通胀率推至3.6%。"
+     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：盘点全球最大规模的IPO，Anthropic超越SpaceX。"
     },
     {
      "lang": "en",
-     "t": "Higher petrol and diesel prices push UK inflation to 3.6%"
+     "t": "Charting the world’s biggest IPOs as Anthropic overtakes SpaceX"
     },
     {
      "lang": "en",
-     "t": "There are also signs inflation is impacting the wider economy, with the cost raw materials and goods leaving factories climbing."
+     "t": "The AI company behind Claude raised $81.3bn in the largest initial public offering ever, at a $1.5 trillion valuation."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：您呼吸的空气中有什么？如何在雾霾季节确保安全。"
+     "t": "第2条，来自BBC，商业，难度B2。大意是：英国政府债券与苏格兰政府债券：苏格兰政府债券发生了什么？。"
     },
     {
      "lang": "en",
-     "t": "What’s in the air you breathe? How to stay safe during smog season"
+     "t": "Gilts v kilts: What is happening with Scottish government bonds?"
     },
     {
      "lang": "en",
-     "t": "India and Pakistan had 42 of the world’s 50 most polluted cities in 2025."
+     "t": "MSPs have heard both the pros and cons of the government's plan to launch its first ever bond to the market."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B2。大意是：玛丽·佩尔托拉将阿拉斯加州的参议院席位收入民主党囊中。"
+     "t": "第3条，来自NPR，综合，难度B1。大意是：赢取与NPR一起深入了解新闻的旅程。"
     },
     {
      "lang": "en",
-     "t": "Mary Peltola flips Alaska's Senate seat into Democrats' column"
+     "t": "Win a trip to go behind the news with NPR"
+    },
+    {
+     "lang": "en",
+     "t": "Enter for a chance to go behind the scenes at HQ, meet our journalists face-to-face and experience public media like never before."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "dessert · temprano",
-   "dur": 31.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611181052",
+   "sub": "tax · la cocina",
+   "dur": 28.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
@@ -192,15 +180,15 @@
     },
     {
      "lang": "en",
-     "t": "dessert"
+     "t": "tax"
     },
     {
      "lang": "zh",
-     "t": "意思是：甜点。拼写是："
+     "t": "意思是：税。拼写是："
     },
     {
      "lang": "en",
-     "t": "d, e, s, s, e, r, t"
+     "t": "t, a, x"
     },
     {
      "lang": "zh",
@@ -208,7 +196,7 @@
     },
     {
      "lang": "en",
-     "t": "dessert"
+     "t": "tax"
     },
     {
      "lang": "zh",
@@ -216,44 +204,40 @@
     },
     {
      "lang": "es",
-     "t": "temprano"
+     "t": "la cocina"
     },
     {
      "lang": "zh",
-     "t": "意思是：早，早早地。跟着读一遍。"
+     "t": "意思是：厨房。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "temprano"
+     "t": "la cocina"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "易错",
-   "dur": 20.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611181052",
+   "sub": "口头禅",
+   "dur": 11.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天说一个常见错误。不要说："
+     "t": "每日一句，今天是一句口头禅。"
     },
     {
      "lang": "en",
-     "t": "The price is very expensive"
+     "t": "Hurry up"
     },
     {
      "lang": "zh",
-     "t": "应该说："
+     "t": "意思是：快点"
     },
     {
      "lang": "en",
-     "t": "The price is very high"
-    },
-    {
-     "lang": "zh",
-     "t": "价格很贵。price 说高低；东西本身才说 expensive"
+     "t": "Hurry up"
     }
    ],
    "opt": true
@@ -261,61 +245,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "仓库收发货",
-   "dur": 59.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611181052",
+   "sub": "和主管沟通",
+   "dur": 74.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：仓库收发货。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "这个箱子坏了。"
+     "t": "我想报告一个问题。"
     },
     {
      "lang": "en",
-     "t": "This box is damaged."
+     "t": "I want to report a problem."
     },
     {
      "lang": "en",
-     "t": "This box is damaged."
+     "t": "I want to report a problem."
     },
     {
      "lang": "zh",
-     "t": "我在 BOL 上注明。"
+     "t": "我手机的相机不太好用。"
     },
     {
      "lang": "en",
-     "t": "I'll note it on the BOL."
+     "t": "The camera on my phone isn't working well."
     },
     {
      "lang": "en",
-     "t": "I'll note it on the BOL."
+     "t": "The camera on my phone isn't working well."
     },
     {
      "lang": "zh",
-     "t": "请在这里签字。"
+     "t": "不好意思，能再解释一下吗？"
     },
     {
      "lang": "en",
-     "t": "Please sign here."
+     "t": "Sorry, could you explain that again?"
     },
     {
      "lang": "en",
-     "t": "Please sign here."
+     "t": "Sorry, could you explain that again?"
     },
     {
      "lang": "zh",
-     "t": "这是你的签收单。"
+     "t": "确认一下，你是要我先做这个？"
     },
     {
      "lang": "en",
-     "t": "Here's your POD."
+     "t": "Just to be clear, you want me to do this first?"
     },
     {
      "lang": "en",
-     "t": "Here's your POD."
+     "t": "Just to be clear, you want me to do this first?"
     },
     {
      "lang": "zh",
@@ -327,13 +311,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "德国守时与周日安静",
-   "dur": 20.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611181052",
+   "sub": "韩国：饭桌上别擤鼻涕",
+   "dur": 16.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：德国守时与周日安静。准时和安静是公共礼仪。做法：约好的时间要准时，迟到几分钟也要先通知；很多地方周日和法定节假日商店关门；周日和夜间避免吸尘、割草、钻墙等噪音。"
+     "t": "今日一招：韩国：饭桌上别擤鼻涕。吃辣流鼻涕，也别当场擤。做法：想擤鼻涕就转身去洗手间；实在急就转过身、轻一点擦；吃饭别发出太大声响。"
     }
    ],
    "opt": true
@@ -341,13 +325,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1883 · 1903 · 2002",
-   "dur": 35.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611181052",
+   "sub": "1924 · 1977 · 1985",
+   "dur": 30.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1883年，美国与加拿大铁路部门开始正式实施对美加地区划分时区的制度。1903年，美国和巴拿马签订美巴条约，巴拿马向美国出让巴拿马运河的主权。2002年，欧盟15国外长在布鲁塞尔举行会议，决定邀请塞浦路斯、匈牙利、捷克、爱沙尼亚、拉脱维亚、立陶宛、马耳他、波兰、斯洛伐克和斯洛文尼亚10个中东欧国家入盟。"
+     "t": "历史上的今天。1924年，中国共产党发表《第四次对时局主张》，支持中华民国国父孙中山的《北上宣言》。1977年，埃及总统安瓦尔·萨达特访问以色列，成为首位访问以色列的阿拉伯国家元首。1985年，苏联总书记米哈伊尔·戈尔巴乔夫与美国总统罗纳德·雷根的五次峰会首场会议在日内瓦展开。"
     }
    ],
    "opt": true
@@ -355,21 +339,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "东坡",
-   "dur": 30.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611181052",
+   "sub": "题西林壁",
+   "dur": 29.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：东坡。写于1083年，他46岁，在黄州。"
+     "t": "读一首苏轼：题西林壁。写于1084年，他47岁，在庐山。"
     },
     {
      "lang": "zh",
-     "t": "雨洗东坡月色清，市人行尽野人行。莫嫌荦确坡头路，自爱铿然曳杖声。"
+     "t": "横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：雨后东坡上的月光格外清亮，城里的人都走光了，只剩我这个乡下人还在走。别嫌坡上的路坑坑洼洼，我就喜欢拐杖敲在石头上那一声声清脆的响。"
+     "t": "白话意思是：正面看是连绵的山岭，侧面看是陡峭的山峰，远近高低，各不一样。之所以看不清庐山的真面目，是因为自己就身在这座山里。"
     }
    ],
    "opt": true
@@ -378,12 +362,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611181052",
+   "dur": 6.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611191101",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
     }
    ]
   }
