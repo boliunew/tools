@@ -1,16 +1,16 @@
 {
- "date": "2026-11-18",
- "kind": "易错",
- "en": "The price is very high",
- "zh": "价格很贵",
- "by": "price 说高低；东西本身才说 expensive",
- "line": "✗ The price is very expensive → ✓ The price is very high",
+ "date": "2026-11-19",
+ "kind": "口头禅",
+ "en": "Hurry up",
+ "zh": "快点",
+ "by": "催别人",
+ "line": "Hurry up",
  "word": {
-  "w": "mild",
-  "ph": "maild",
-  "zh": "a. 温和的，温柔的，淡味的，适度的",
-  "ex": "We had a mild winter last year.",
-  "exzh": "去年冬天很暖和。"
+  "w": "reconcile",
+  "ph": "'rekәnsail",
+  "zh": "vt. 使和解，调停，使和谐，使一致",
+  "ex": "I would rather kill myself than reconcile myself to my fate.",
+  "exzh": "与其向命运妥协，我宁可自杀。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
