@@ -1,0 +1,185 @@
+{
+ "date": "2026-11-20",
+ "generated": "2026-11-20T21:53:41Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Anthropic 首次公开募股市值近 1.76 万亿美元",
+     "d": "Anthropic 于周四在纳斯达克上市，股价首日收于 97.17 美元，使公司市值约 1.76 万亿美元。虽然首日股价曾一度涨至 111.53 美元，但收盘后回落，显示投资者对 AI 前景仍存不确定性。此事件标志着首家纯 AI 公司登陆公开市场，对科技股估值和行业热度产生重要指示。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c3x29ggenz12o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "英伟达案凸显美中技术与安全冲突",
+     "d": "NPR 报道称，英伟达向中国出售高科技产品的案件，体现了硅谷的商业需求与美国国家安全部门限制技术出口之间的摩擦。此争议可能影响美国高端芯片企业的对华业务布局及全球供应链格局。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/20/nx-s1-6043838/business-opportunity-or-security-threat-nvidia-case-raises-questions-about-china"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI 模型暴露互联网安全漏洞并引发技术故障",
+     "d": "NPR 报道指出，人工智能模型正在揭示长期存在的网络安全薄弱环节，导致快速的技术变革和系统性故障。此现象提醒业界需加强网络防护，以免 AI 发展带来更大安全风险。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/20/nx-s1-6047374/ai-models-are-propelling-rapid-growth-and-revealing-vulnerabilities"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/20 周五 收盘：标普500 ETF（SPY）-3.64%，纳指100 ETF（QQQ）-5.67%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 35.9；43% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：GPN +10.0%、GIS +3.6%、MKC +3.4%；跌幅最大：SNDK -16.1%、BE -15.3%、NVDA -14.0%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。必需消费、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/23 周一的重要财报：HPE（盘后）、A（盘后）、TCOM（盘后）、ZM（盘后）、SYM（盘后）",
+     "d": "按市值挑出最大的几家，共 6 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/20 周五）",
+     "d": "Initial Jobless Claims 实际 203K（预期 198K，前值 202K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/20 周五 09:25：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/24 周二 16:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/25 周三 10:00：消费者信心（重要性：低）",
+     "d": "关注其中的通胀预期分项，突然走高会引起美联储警惕。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "国际法院裁定缅甸对罗兴亚实施种族灭绝",
+     "d": "荷兰海牙国际法院认定缅甸军方在 2017 年对罗兴亚少数民族实施种族灭绝，引发孟加拉难民营内的欢呼和泪水。此判决对国际法和人权议题具有里程碑意义，迫使各国政府就行动责任展开讨论。",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/global-development/2026/nov/19/everyone-struggled-for-this-justice-tears-in-court-as-rohingya-vindicated-in-myanmar-genocide-ruling"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/inside-story/2026/11/20/what-are-the-implications-of-the-icj-rohingya-genocide-ruling?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "欧盟与英达成青年流动及贸易新协议",
+     "d": "欧盟与英国在布鲁塞尔峰会签署贸易与青年流动协议，涵盖免签居留、食品检查简化及碳市场对接等内容，标志着脱欧后双边关系的重大进展。该协议有望促进跨境青年交流与贸易便利，对双方经济与社会联系产生积极影响。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/eu-and-uk-strike-landmark-deal-to-strengthen-ties-after-brexit/a-80001076?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/burnham-eu-brexit-landmark-deal-brussels-summit-6570481"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Anthropic 股价连跌 市场出现 AI 股灾",
+     "d": "继首日涨 17%后，Anthropic 股价于第二天跌至 88.30 美元，引发纳斯达克及全球科技股大幅回调。此次跌势反映出投资者对 AI 领域巨额投入回报的担忧，可能加剧市场流动性紧张并影响相关芯片和科技公司的股价。",
+     "src": [
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c6808ym10vzgo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "Anthropic在美国上市 成为首家纯AI公司",
+  "d": "首次纯AI公司上市为行业树立新标杆，影响资本配置与监管审视，是理解AI赛道长期走向的关键入口。"
+ },
+ "week": []
+}
