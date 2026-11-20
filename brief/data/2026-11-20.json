@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "generated": "2026-11-20T21:53:41Z",
+ "generated": "2026-11-20T22:50:09Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,19 +9,19 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "Anthropic 首次公开募股市值近 1.76 万亿美元",
-     "d": "Anthropic 于周四在纳斯达克上市，股价首日收于 97.17 美元，使公司市值约 1.76 万亿美元。虽然首日股价曾一度涨至 111.53 美元，但收盘后回落，显示投资者对 AI 前景仍存不确定性。此事件标志着首家纯 AI 公司登陆公开市场，对科技股估值和行业热度产生重要指示。",
+     "t": "AI模型暴露互联网安全缺口并引发技术故障",
+     "d": "NPR 报道指出，人工智能模型正揭示互联网长期存在的安全脆弱性，导致快速变化和技术中断。此事凸显AI在揭露网络风险方面的双刃效应，对行业安全治理产生重要影响。",
      "src": [
       {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/c3x29ggenz12o?at_medium=RSS&at_campaign=rss"
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/20/nx-s1-6047374/ai-models-are-propelling-rapid-growth-and-revealing-vulnerabilities"
       }
      ],
      "full": true
     },
     {
-     "t": "英伟达案凸显美中技术与安全冲突",
-     "d": "NPR 报道称，英伟达向中国出售高科技产品的案件，体现了硅谷的商业需求与美国国家安全部门限制技术出口之间的摩擦。此争议可能影响美国高端芯片企业的对华业务布局及全球供应链格局。",
+     "t": "英伟达案凸显美中科技安全摩擦",
+     "d": "NPR 提及英伟达案件展示了硅谷希望向中国销售高科技产品，与美国国家安全机构限制技术输出之间的冲突。此争议反映出科技供应链与地缘政治之间的紧张关系。",
      "src": [
       {
        "n": "NPR",
@@ -31,12 +31,12 @@
      "full": true
     },
     {
-     "t": "AI 模型暴露互联网安全漏洞并引发技术故障",
-     "d": "NPR 报道指出，人工智能模型正在揭示长期存在的网络安全薄弱环节，导致快速的技术变革和系统性故障。此现象提醒业界需加强网络防护，以免 AI 发展带来更大安全风险。",
+     "t": "Anthropic首次公开募股估值近2万亿美元",
+     "d": "Anthropic 在纳斯达克上市首日股价从83美元飙至111.53美元后收于97.17美元，市值约1.76万亿美元，成为全球最有价值的上市公司之一。该事件标志着AI行业资本热潮的高潮，也引发对行业估值泡沫的担忧。",
      "src": [
       {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/11/20/nx-s1-6047374/ai-models-are-propelling-rapid-growth-and-revealing-vulnerabilities"
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c3x29ggenz12o?at_medium=RSS&at_campaign=rss"
       }
      ],
      "full": true
@@ -130,12 +130,12 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "国际法院裁定缅甸对罗兴亚实施种族灭绝",
-     "d": "荷兰海牙国际法院认定缅甸军方在 2017 年对罗兴亚少数民族实施种族灭绝，引发孟加拉难民营内的欢呼和泪水。此判决对国际法和人权议题具有里程碑意义，迫使各国政府就行动责任展开讨论。",
+     "t": "国际法院认定缅甸对罗兴亚实施种族灭绝",
+     "d": "海牙国际法院裁定，缅甸对罗兴亚族在2016-2017年期间实施了种族灭绝，并要求缅甸政府采取措施防止再犯并提供赔偿。此判决为受害者争取正义提供法律依据，也在国际人权法领域设立了重要先例。",
      "src": [
       {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/global-development/2026/nov/19/everyone-struggled-for-this-justice-tears-in-court-as-rohingya-vindicated-in-myanmar-genocide-ruling"
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/myanmar-genocide-ruling-rohingya-say-struggle-for-justice-not-over/a-80003365?maca=en-rss-en-all-1573-rdf"
       },
       {
        "n": "半岛电视台",
@@ -145,8 +145,8 @@
      "full": true
     },
     {
-     "t": "欧盟与英达成青年流动及贸易新协议",
-     "d": "欧盟与英国在布鲁塞尔峰会签署贸易与青年流动协议，涵盖免签居留、食品检查简化及碳市场对接等内容，标志着脱欧后双边关系的重大进展。该协议有望促进跨境青年交流与贸易便利，对双方经济与社会联系产生积极影响。",
+     "t": "欧盟与英国达成青年流动与贸易新协议",
+     "d": "欧盟与英国在布鲁塞尔峰会上签署贸易与青年流动协议，涵盖免签居留、食物检查简化及碳市场对接等内容。该协议标志着脱欧后双边关系的重大改善，对企业与青年跨境机会具有积极推动作用。",
      "src": [
       {
        "n": "德国之声",
@@ -160,26 +160,25 @@
      "full": true
     },
     {
-     "t": "Anthropic 股价连跌 市场出现 AI 股灾",
-     "d": "继首日涨 17%后，Anthropic 股价于第二天跌至 88.30 美元，引发纳斯达克及全球科技股大幅回调。此次跌势反映出投资者对 AI 领域巨额投入回报的担忧，可能加剧市场流动性紧张并影响相关芯片和科技公司的股价。",
+     "t": "土耳其COP31气候谈判陷入僵局",
+     "d": "谈判未出现化石燃料相关条款，显示全球气候行动仍受政治分歧阻碍，可能延迟碳减排目标实现。",
      "src": [
       {
-       "n": "卫报",
-       "u": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off"
+       "n": "法国24",
+       "u": "https://www.france24.com/en/video/20261120-cop31-wrapping-up-in-turkey-climate-deal-elusive-as-fossil-fuels-go-unmentioned"
       },
       {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/c6808ym10vzgo?at_medium=RSS&at_campaign=rss"
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/cop31-un-climate-summit-enters-final-phase-with-no-deal-in-sight/live-79999516?maca=en-rss-en-all-1573-rdf"
       }
-     ],
-     "full": true
+     ]
     }
    ]
   }
  ],
  "pick": {
-  "t": "Anthropic在美国上市 成为首家纯AI公司",
-  "d": "首次纯AI公司上市为行业树立新标杆，影响资本配置与监管审视，是理解AI赛道长期走向的关键入口。"
+  "t": "Anthropic上市 成为首家纯AI公司",
+  "d": "首次纯AI公司上市突破2万亿美元市值，标志AI产业进入资本市场新纪元，对行业估值、竞争格局及后续融资都有深远影响。"
  },
  "week": []
 }
