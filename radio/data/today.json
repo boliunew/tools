@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-19T19:02:38Z",
- "date": "2026-11-19",
+ "generated": "2026-11-20T18:39:20Z",
+ "date": "2026-11-20",
  "engine": "edge",
- "total": 461.4,
- "short": 299.5,
+ "total": 465.2,
+ "short": 274.2,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611191101",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611201038",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月19日 星期四",
-   "dur": 8.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611191101",
+   "sub": "11月20日 星期五",
+   "dur": 10.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "11月19日，星期四，通勤电台准时上线。不想听的直接按下一首。"
+     "t": "周五了，坚持一下就周末了！11月20日，星期五，通勤电台准时上线。不想听的直接按下一首。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 中雨 58°/48°F",
-   "dur": 31.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611191101",
+   "sub": "Upland 晴 57°/46°F",
+   "dur": 27.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天中雨。早上7点出门大约华氏54度，12摄氏度。傍晚5点下班大约华氏55度，13摄氏度。白天最高58度，约14摄氏度；最低48度。降雨概率87%。白天空气质量中等，指数最高52。今天日落时间是傍晚4点44分。提醒一下：记得带伞，路面湿滑，车速放慢。"
+     "t": "Upland今天晴。早上7点出门大约华氏47度，8摄氏度，体感41度。傍晚5点下班大约华氏52度，11摄氏度。白天最高57度，约14摄氏度；最低46度。基本不会下雨。白天空气质量良好，指数最高50。今天日落时间是傍晚4点44分。"
     }
    ]
   },
@@ -38,54 +38,54 @@
    "id": "sky",
    "title": "🔭 天象",
    "sub": "Upland",
-   "dur": 10.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611191101",
+   "dur": 10.3,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。明天，水星西大距。黎明前在东边，离太阳 20°，很低，找视野开阔的地方。"
+     "t": "天象提醒。今天，水星西大距。黎明前在东边，离太阳 20°，很低，找视野开阔的地方。"
     }
    ]
   },
   {
    "id": "market",
    "title": "📊 大盘",
-   "sub": "谨慎",
-   "dur": 31.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611191101",
+   "sub": "防守",
+   "dur": 34.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月18日收盘。标普500 ETF 下跌0.3%，纳指100 ETF 上涨0.4%。恐慌指数VIX 24.6，偏高，市场有点紧张。标普成分股里，57%站上了50日均线。系统判断当前是「谨慎」环境：大盘多空信号混杂，可以做，但要控制仓位、严格止损。"
+     "t": "先看大盘，数据截至美股11月19日收盘。标普500 ETF 下跌2.0%，纳指100 ETF 下跌2.2%。恐慌指数VIX 28.4，偏高，市场有点紧张。标普成分股里，50%站上了50日均线。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "37 个候选",
-   "dur": 63.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611191101",
+   "sub": "20 个候选",
+   "dur": 62.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天37个候选，评分最高的是Walt Disney，代码 D I S。不想听细节可以按下一首。"
+     "t": "股票池今天20个候选，评分最高的是McKesson，代码 M C K。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，血筹码12个，回踩金坑12个，强势新高1个。评分最高的三个是："
+     "t": "细节：一共扫描了500只股票，其中RSI2 超跌反弹12个，回踩金坑6个，血筹码2个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Walt Disney，代码 D I S，强势新高信号，收盘价122.36美元，止损参考116.51。"
+     "t": "第1，McKesson，代码 M C K，RSI2 超跌反弹信号，收盘价1062.16美元，止损参考997.30。"
     },
     {
      "lang": "zh",
-     "t": "第2，Moderna，代码 M R N A，RSI2 超跌反弹信号，收盘价196.79美元，止损参考150.16。"
+     "t": "第2，Viatris，代码 V T R S，RSI2 超跌反弹信号，收盘价19.88美元，止损参考18.51。"
     },
     {
      "lang": "zh",
-     "t": "第3，Viatris，代码 V T R S，RSI2 超跌反弹信号，收盘价20.28美元，止损参考18.93。"
+     "t": "第3，Walmart，代码 W M T，RSI2 超跌反弹信号，收盘价126.04美元，止损参考119.11。"
     },
     {
      "lang": "zh",
@@ -96,34 +96,22 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "3 件大事",
-   "dur": 35.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611191101",
+   "sub": "今明两天清静",
+   "dur": 6.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "今天，有3家大公司发财报。"
-    },
-    {
-     "lang": "zh",
-     "t": "Walmart，代码 W M T，盘前发财报。期权定价波动正负2.1%。标签：利好出尽型。"
-    },
-    {
-     "lang": "zh",
-     "t": "Alibaba，代码 B A B A，盘前发财报。期权定价波动正负4.0%。标签：利好出尽型。"
-    },
-    {
-     "lang": "zh",
-     "t": "PDD，代码 P D D，盘前发财报。期权定价波动正负2.7%。标签：大波动。"
+     "t": "今明两天没有重要经济数据，也没有千亿市值以上的公司发财报。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "Al Jazeera · BBC · NPR",
-   "dur": 84.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611191101",
+   "sub": "BBC · Al Jazeera · The Guardian",
+   "dur": 86.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
@@ -131,48 +119,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：盘点全球最大规模的IPO，Anthropic超越SpaceX。"
+     "t": "第1条，来自BBC，商业，难度B2。大意是：人工智能应该来评判我们的信用度吗？。"
     },
     {
      "lang": "en",
-     "t": "Charting the world’s biggest IPOs as Anthropic overtakes SpaceX"
+     "t": "Should AI be judging our credit worthiness?"
     },
     {
      "lang": "en",
-     "t": "The AI company behind Claude raised $81.3bn in the largest initial public offering ever, at a $1.5 trillion valuation."
+     "t": "Would AI be a good judge of whether you should get a mortgage, car loan or mobile phone contract?"
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，商业，难度B2。大意是：英国政府债券与苏格兰政府债券：苏格兰政府债券发生了什么？。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：欧盟和英国将就重塑关系达成一致步骤。"
     },
     {
      "lang": "en",
-     "t": "Gilts v kilts: What is happening with Scottish government bonds?"
+     "t": "EU and Britain to agree steps towards relations reset"
     },
     {
      "lang": "en",
-     "t": "MSPs have heard both the pros and cons of the government's plan to launch its first ever bond to the market."
+     "t": "A decade after Brexit, London is signalling a willingness to align more closely with the EU on various policies."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自NPR，综合，难度B1。大意是：赢取与NPR一起深入了解新闻的旅程。"
+     "t": "第3条，来自The Guardian，国际，难度B2。大意是：特朗普被指在中国亚太经合组织峰会上在习近平讲话时睡着了。"
     },
     {
      "lang": "en",
-     "t": "Win a trip to go behind the news with NPR"
+     "t": "Trump accused of falling asleep during Xi Jinping speech at Apec summit in China"
     },
     {
      "lang": "en",
-     "t": "Enter for a chance to go behind the scenes at HQ, meet our journalists face-to-face and experience public media like never before."
+     "t": "US president appeared to doze off while Chinese leader made speech, but White House insisted he was awake Donald Trump was, again, accused of falling asleep during a televised event, this time during the speech of the Chinese president, Xi "
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "tax · la cocina",
-   "dur": 28.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611191101",
+   "sub": "folk · seis",
+   "dur": 29.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
@@ -180,15 +168,15 @@
     },
     {
      "lang": "en",
-     "t": "tax"
+     "t": "folk"
     },
     {
      "lang": "zh",
-     "t": "意思是：税。拼写是："
+     "t": "意思是：民间的，人们。拼写是："
     },
     {
      "lang": "en",
-     "t": "t, a, x"
+     "t": "f, o, l, k"
     },
     {
      "lang": "zh",
@@ -196,7 +184,7 @@
     },
     {
      "lang": "en",
-     "t": "tax"
+     "t": "folk"
     },
     {
      "lang": "zh",
@@ -204,40 +192,44 @@
     },
     {
      "lang": "es",
-     "t": "la cocina"
+     "t": "seis"
     },
     {
      "lang": "zh",
-     "t": "意思是：厨房。跟着读一遍。"
+     "t": "意思是：六。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "la cocina"
+     "t": "seis"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "口头禅",
-   "dur": 11.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611191101",
+   "sub": "名言",
+   "dur": 36.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句口头禅。"
+     "t": "每日一句，今天是一句名言。"
     },
     {
      "lang": "en",
-     "t": "Hurry up"
+     "t": "Each man has his own vocation; his talent is his call. There is one direction in which all space is open to him."
     },
     {
      "lang": "zh",
-     "t": "意思是：快点"
+     "t": "意思是：每个人都有自己的天职，天赋就是召唤；总有一个方向，整片天地都为他敞开。这句话出自 Ralph Waldo Emerson。"
+    },
+    {
+     "lang": "zh",
+     "t": "再听一遍。"
     },
     {
      "lang": "en",
-     "t": "Hurry up"
+     "t": "Each man has his own vocation; his talent is his call. There is one direction in which all space is open to him."
     }
    ],
    "opt": true
@@ -245,61 +237,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "和主管沟通",
-   "dur": 74.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611191101",
+   "sub": "工作邮件和短信",
+   "dur": 70.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：和主管沟通。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：工作邮件和短信。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "我想报告一个问题。"
+     "t": "这个柜子仍被扣着。"
     },
     {
      "lang": "en",
-     "t": "I want to report a problem."
+     "t": "This container is still on hold."
     },
     {
      "lang": "en",
-     "t": "I want to report a problem."
+     "t": "This container is still on hold."
     },
     {
      "lang": "zh",
-     "t": "我手机的相机不太好用。"
+     "t": "提醒一下明天提柜的事。"
     },
     {
      "lang": "en",
-     "t": "The camera on my phone isn't working well."
+     "t": "Just a quick reminder about tomorrow's pickup."
     },
     {
      "lang": "en",
-     "t": "The camera on my phone isn't working well."
+     "t": "Just a quick reminder about tomorrow's pickup."
     },
     {
      "lang": "zh",
-     "t": "不好意思，能再解释一下吗？"
+     "t": "能确认一下提柜时间吗？"
     },
     {
      "lang": "en",
-     "t": "Sorry, could you explain that again?"
+     "t": "Can you confirm the pickup time?"
     },
     {
      "lang": "en",
-     "t": "Sorry, could you explain that again?"
+     "t": "Can you confirm the pickup time?"
     },
     {
      "lang": "zh",
-     "t": "确认一下，你是要我先做这个？"
+     "t": "抱歉回复晚了。"
     },
     {
      "lang": "en",
-     "t": "Just to be clear, you want me to do this first?"
+     "t": "Sorry for the late reply."
     },
     {
      "lang": "en",
-     "t": "Just to be clear, you want me to do this first?"
+     "t": "Sorry for the late reply."
     },
     {
      "lang": "zh",
@@ -311,13 +303,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "韩国：饭桌上别擤鼻涕",
-   "dur": 16.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611191101",
+   "sub": "侧键双击直接开相机",
+   "dur": 19.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：韩国：饭桌上别擤鼻涕。吃辣流鼻涕，也别当场擤。做法：想擤鼻涕就转身去洗手间；实在急就转过身、轻一点擦；吃饭别发出太大声响。"
+     "t": "今日一招：侧键双击直接开相机。拍柜号、拍停车位最快。做法：设置 → 高级功能 → 侧键；「双击」选「快速启动相机」，或者改成任何 App；长按可以设成电源菜单（关机重启），不再唤醒 Bixby。"
     }
    ],
    "opt": true
@@ -325,13 +317,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1924 · 1977 · 1985",
-   "dur": 30.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611191101",
+   "sub": "1897 · 1959 · 1979",
+   "dur": 32.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1924年，中国共产党发表《第四次对时局主张》，支持中华民国国父孙中山的《北上宣言》。1977年，埃及总统安瓦尔·萨达特访问以色列，成为首位访问以色列的阿拉伯国家元首。1985年，苏联总书记米哈伊尔·戈尔巴乔夫与美国总统罗纳德·雷根的五次峰会首场会议在日内瓦展开。"
+     "t": "历史上的今天。1897年，中德两国就德军侵占胶州湾一事在北京谈判。1959年，联合国大会第1386号决议，通过“儿童权利宣言”，同时宣布11月20日为世界儿童日。1979年，200名穆斯林在麦加克尔白清真寺暴乱，扣押了6000名当时正在朝圣的穆斯林为人质，沙特阿拉伯军队在法国特种部队的协助下平息了暴乱。"
     }
    ],
    "opt": true
@@ -339,21 +331,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "题西林壁",
-   "dur": 29.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611191101",
+   "sub": "饮湖上初晴后雨（其二）",
+   "dur": 32.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：题西林壁。写于1084年，他47岁，在庐山。"
+     "t": "读一首苏轼：饮湖上初晴后雨（其二）。写于1073年，他36岁，在杭州。"
     },
     {
      "lang": "zh",
-     "t": "横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。"
+     "t": "水光潋滟晴方好，山色空蒙雨亦奇。欲把西湖比西子，淡妆浓抹总相宜。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：正面看是连绵的山岭，侧面看是陡峭的山峰，远近高低，各不一样。之所以看不清庐山的真面目，是因为自己就身在这座山里。"
+     "t": "白话意思是：晴天时湖水波光闪闪，正好看；下雨时山色迷迷蒙蒙，也很奇妙。要是把西湖比作美女西施，不管淡妆还是浓妆，都一样漂亮。"
     }
    ],
    "opt": true
@@ -362,12 +354,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611191101",
+   "dur": 6.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611201038",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的内容就这些。专心开车，安全第一，下次见！"
+     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
     }
    ]
   }
