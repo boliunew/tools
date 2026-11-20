@@ -1,16 +1,16 @@
 {
- "date": "2026-11-19",
- "kind": "口头禅",
- "en": "Hurry up",
- "zh": "快点",
- "by": "催别人",
- "line": "Hurry up",
+ "date": "2026-11-20",
+ "kind": "名言",
+ "en": "Each man has his own vocation; his talent is his call. There is one direction in which all space is open to him.",
+ "zh": "每个人都有自己的天职，天赋就是召唤；总有一个方向，整片天地都为他敞开。",
+ "by": "Ralph Waldo Emerson",
+ "line": "Each man has his own vocation; his talent is his call. There is one direction in which all space is open to him. — Ralph Waldo Emerson",
  "word": {
-  "w": "reconcile",
-  "ph": "'rekәnsail",
-  "zh": "vt. 使和解，调停，使和谐，使一致",
-  "ex": "I would rather kill myself than reconcile myself to my fate.",
-  "exzh": "与其向命运妥协，我宁可自杀。"
+  "w": "regain",
+  "ph": "ri'gein",
+  "zh": "vt. 取回，恢复，重回，复得",
+  "ex": "He regained consciousness and was able to talk.",
+  "exzh": "他恢复了意识，还能开口说话了。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
