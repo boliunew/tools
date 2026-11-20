@@ -1,8 +1,8 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-18T11:56:30.030784Z",
+ "eventsUpdatedAt": "2026-11-20T11:54:17.637021Z",
  "ranges": {
-  "today": "2026-11-18",
+  "today": "2026-11-20",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,76 +11,76 @@
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Girl Tones play Mercury Lounge on Wednesday evening; $15 advance, $20 day of show.",
-   "price": "From $15",
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
-   "startTime": "6:00 PM",
-   "title": "Girl Tones",
-   "venue": "Mercury Lounge, 217 E Houston St, Manhattan"
+   "note": "Violinist Frank Huang performs Mendelssohn with the New York Philharmonic.",
+   "price": null,
+   "sourceUrl": "http://ticketmaster.com/discover/new-york-city?endDate=2026-11-23&startDate=2026-11-20",
+   "startTime": "11:00 AM",
+   "title": "New York Philharmonic: Frank Huang Performs Mendelssohn",
+   "venue": "David Geffen Hall, 10 Lincoln Center Plaza, New York, NY"
+  },
+  {
+   "bucket": "today",
+   "category": "Family",
+   "city": "New York",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "The Rockettes' annual holiday spectacular at Radio City.",
+   "price": null,
+   "sourceUrl": "http://ticketmaster.com/discover/new-york-city?endDate=2026-11-23&startDate=2026-11-20",
+   "startTime": "3:00 PM",
+   "title": "Christmas Spectacular Starring The Radio City Rockettes",
+   "venue": "Radio City Music Hall, 1260 6th Avenue, New York, NY"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Rock legend Sting brings the STING 3.0 Tour to Brooklyn Paramount.",
-   "price": "From $298",
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
+   "note": "Indie show with Harry Teardrop at the Mercury Lounge.",
+   "price": "From $65",
+   "sourceUrl": "http://seatgeek.com/cities/nyc/concerts/this-weekend",
+   "startTime": "6:00 PM",
+   "title": "James Ivy with Harry Teardrop",
+   "venue": "Mercury Lounge, 217 East Houston St, New York, NY"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "Ramones drummer Marky Ramone live at Irving Plaza.",
+   "price": "From $64",
+   "sourceUrl": "http://seatgeek.com/cities/nyc/concerts/this-weekend",
+   "startTime": "7:00 PM",
+   "title": "Marky Ramone",
+   "venue": "Irving Plaza, 17 Irving Pl, New York, NY"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "New York",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "Sting brings the STING 3.0 Tour to Brooklyn Paramount.",
+   "price": "From $259",
+   "sourceUrl": "http://seatgeek.com/cities/nyc/concerts/this-weekend",
    "startTime": "7:00 PM",
    "title": "STING 3.0 Tour",
    "venue": "Brooklyn Paramount, 385 Flatbush Ave Ext, Brooklyn"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-18",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": null,
-   "note": "Liana Flores plays an intimate evening at Bowery Ballroom.",
-   "price": "From $25",
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/indie",
-   "startTime": "7:00 PM",
-   "title": "Liana Flores",
-   "venue": "Bowery Ballroom, Manhattan"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-18",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": null,
-   "note": "JoJo marks 20 years of The High Road, unplugged, at Irving Plaza.",
-   "price": "From $201",
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
-   "startTime": "7:00 PM",
-   "title": "JoJo - THE HIGH ROAD: 20 YEARS UNPLUGGED",
-   "venue": "Irving Plaza, 17 Irving Pl, Manhattan"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-18",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": null,
-   "note": "Ezra Collective bring their jazz-funk energy to Webster Hall.",
-   "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/new-york-city/rock",
-   "startTime": "8:00 PM",
-   "title": "Ezra Collective",
-   "venue": "Webster Hall, Manhattan"
   }
  ],
  "events": [
@@ -193,91 +193,91 @@
  "weather": {
   "current": {
    "temp": 42,
-   "feelsLike": 36,
-   "high": 64,
-   "low": 38,
+   "feelsLike": 37,
+   "high": 68,
+   "low": 42,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 69,
-   "wind": "5 mph",
+   "humidity": 65,
+   "wind": "2 mph",
    "uvIndex": 3,
-   "airQualityIndex": 59,
+   "airQualityIndex": 82,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-18",
-   "high": 64,
-   "low": 38,
+   "date": "2026-11-20",
+   "high": 68,
+   "low": 42,
    "precipChance": 0,
-   "summary": "Clear skies. Highs around 64 and lows around 38."
+   "summary": "Overcast. Highs around 68 and lows around 42."
   },
   "daily": [
    {
-    "date": "2026-11-18",
-    "high": 64,
-    "low": 38,
-    "precipChance": 0
-   },
-   {
-    "date": "2026-11-19",
-    "high": 64,
-    "low": 38,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-20",
-    "high": 63,
-    "low": 50,
+    "high": 68,
+    "low": 42,
     "precipChance": 0
    },
    {
     "date": "2026-11-21",
-    "high": 57,
-    "low": 50,
-    "precipChance": 1
+    "high": 64,
+    "low": 40,
+    "precipChance": 0
    },
    {
     "date": "2026-11-22",
-    "high": 61,
+    "high": 58,
     "low": 52,
-    "precipChance": 32
+    "precipChance": 86
    },
    {
     "date": "2026-11-23",
-    "high": 60,
-    "low": 50,
-    "precipChance": 32
+    "high": 62,
+    "low": 47,
+    "precipChance": 86
    },
    {
     "date": "2026-11-24",
-    "high": 50,
-    "low": 35,
-    "precipChance": 5
+    "high": 51,
+    "low": 43,
+    "precipChance": 1
+   },
+   {
+    "date": "2026-11-25",
+    "high": 46,
+    "low": 38,
+    "precipChance": 24
+   },
+   {
+    "date": "2026-11-26",
+    "high": 45,
+    "low": 39,
+    "precipChance": 55
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 57,
-    "low": 50,
-    "precipChance": 1,
-    "summary": "Overcast. Highs around 57 and lows around 50.",
-    "wind": "7 mph",
+    "high": 64,
+    "low": 40,
+    "precipChance": 0,
+    "summary": "Foggy. Highs around 64 and lows around 40.",
+    "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 61,
+    "high": 58,
     "low": 52,
-    "precipChance": 32,
-    "summary": "Light drizzle. Highs around 61 and lows around 52.",
-    "wind": "10 mph",
+    "precipChance": 86,
+    "summary": "Heavy rain. Highs around 58 and lows around 52.",
+    "wind": "18 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-18T05:57:52.001101Z",
+  "fetchedAt": "2026-11-20T11:52:43.002010Z",
   "location": "New York, NY"
  }
 }

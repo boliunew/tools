@@ -1,8 +1,8 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-18T11:56:30.010620Z",
+ "eventsUpdatedAt": "2026-11-20T11:54:17.621521Z",
  "ranges": {
-  "today": "2026-11-18",
+  "today": "2026-11-20",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,76 +11,76 @@
    "bucket": "today",
    "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Free afternoon set at the Golden Gate Park Bandshell.",
-   "price": "Free",
-   "sourceUrl": "https://www.bandsintown.com/c/san-francisco-ca?came_from=274&latitude=37.755613&longitude=-122.4197846&utm_medium=web&utm_source=artist_event_page&utm_campaign=city_link",
-   "startTime": "4:00 PM",
-   "title": "S.R. Laws",
-   "venue": "Golden Gate Park Bandshell, San Francisco, CA"
+   "note": "Night five of The Mountain Goats' Fillmore run, performing Cast of Thousands.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
+   "startTime": "8:00 PM",
+   "title": "The Mountain Goats - Night Five: Cast of Thousands",
+   "venue": "The Fillmore, 1805 Geary Blvd, San Francisco, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Swedish pop duo Icona Pop plays The Independent.",
+   "note": "Faroese singer-songwriter Eivør live at August Hall.",
    "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco",
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
+   "startTime": "8:00 PM",
+   "title": "Eivør",
+   "venue": "August Hall, 420 Mason St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "DANNA brings The Bedroom Sessions US Tour to the Castro Theatre.",
+   "price": null,
+   "sourceUrl": "https://www.Songkick.Com/metro-areas/26330-us-sf-bay-area/2026",
+   "startTime": "8:00 PM",
+   "title": "DANNA - THE BEDROOM SESSIONS US TOUR",
+   "venue": "The Castro Theatre, 429 Castro St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "HUG with Gyan Riley, Devendra Banhart and Noah Georgeson at Bimbo's 365 Club.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?ac_link=blog&page=1&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KZFzniwnSyZfZ7vAvv",
+   "startTime": "8:00 PM",
+   "title": "HUG feat. Gyan Riley, Devendra Banhart, Noah Georgeson",
+   "venue": "Bimbo's 365 Club, 1025 Columbus Ave, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "Carl Cox headlines Club Darc Season 2 at Pier 48 (21+).",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?page=1&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAvl",
    "startTime": "7:00 PM",
-   "title": "Icona Pop",
-   "venue": "The Independent, 628 Divisadero St, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-18",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": null,
-   "note": "Night three of The Mountain Goats' Fillmore run, taking audience requests.",
-   "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco/rock",
-   "startTime": "8:00 PM",
-   "title": "The Mountain Goats - Night Three: Stump the Band",
-   "venue": "The Fillmore, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-18",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": null,
-   "note": "Hamilton Leithauser and Rostam bring their Joint Tour to the Castro Theatre.",
-   "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco/rock",
-   "startTime": "8:00 PM",
-   "title": "Hamilton Leithauser + Rostam: The Joint Tour",
-   "venue": "The Castro Theatre, 429 Castro St, San Francisco, CA 94114"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-18",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": null,
-   "note": "Keyboardist John Carroll Kirby live at The Chapel.",
-   "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco",
-   "startTime": "8:00 PM",
-   "title": "John Carroll Kirby",
-   "venue": "The Chapel, San Francisco, CA"
+   "title": "Carl Cox - Club Darc Season 2",
+   "venue": "Pier 48, Shed A, San Francisco, CA"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 55,
-   "feelsLike": 55,
-   "high": 60,
-   "low": 50,
-   "description": "",
-   "precipChance": 100,
-   "humidity": 73,
-   "wind": "",
-   "uvIndex": null,
-   "airQualityIndex": null,
-   "airQualityDescription": ""
+   "temp": 49,
+   "feelsLike": 45,
+   "high": 55,
+   "low": 46,
+   "description": "Mainly clear",
+   "precipChance": 62,
+   "humidity": 82,
+   "wind": "6 mph",
+   "uvIndex": 4,
+   "airQualityIndex": 36,
+   "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-18",
-   "high": 60,
-   "low": 50,
-   "precipChance": 100,
-   "summary": "Showers And Thunderstorms then Light Rain. Highs around 60 and lows around 50."
+   "date": "2026-11-20",
+   "high": 55,
+   "low": 46,
+   "precipChance": 62,
+   "summary": "Rain. Highs around 55 and lows around 46."
   },
   "daily": [
    {
-    "date": "2026-11-18",
-    "high": 60,
-    "low": 50,
-    "precipChance": 100
-   },
-   {
-    "date": "2026-11-19",
-    "high": 59,
-    "low": 49,
-    "precipChance": 93
-   },
-   {
     "date": "2026-11-20",
-    "high": 58,
+    "high": 55,
     "low": 46,
-    "precipChance": 10
+    "precipChance": 62
    },
    {
     "date": "2026-11-21",
-    "high": 59,
-    "low": 50,
-    "precipChance": 84
+    "high": 57,
+    "low": 45,
+    "precipChance": 88
    },
    {
     "date": "2026-11-22",
-    "high": 56,
-    "low": 48,
-    "precipChance": 56
+    "high": 55,
+    "low": 52,
+    "precipChance": 45
    },
    {
     "date": "2026-11-23",
     "high": 58,
-    "low": 51,
-    "precipChance": 23
+    "low": 50,
+    "precipChance": 13
    },
    {
     "date": "2026-11-24",
     "high": 60,
-    "low": null,
-    "precipChance": 84
+    "low": 51,
+    "precipChance": 70
+   },
+   {
+    "date": "2026-11-25",
+    "high": 58,
+    "low": 52,
+    "precipChance": 67
+   },
+   {
+    "date": "2026-11-26",
+    "high": 59,
+    "low": 50,
+    "precipChance": 20
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 59,
-    "low": 50,
-    "precipChance": 84,
-    "summary": "Light Rain. Highs around 59 and lows around 50.",
-    "wind": "5 mph",
+    "high": 57,
+    "low": 45,
+    "precipChance": 88,
+    "summary": "Rain. Highs around 57 and lows around 45.",
+    "wind": "13 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 56,
-    "low": 48,
-    "precipChance": 56,
-    "summary": "Light Rain Likely. Highs around 56 and lows around 48.",
+    "high": 55,
+    "low": 52,
+    "precipChance": 45,
+    "summary": "Light drizzle. Highs around 55 and lows around 52.",
     "wind": "6 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-18T11:56:19.055428Z",
+  "fetchedAt": "2026-11-20T11:52:36.396174Z",
   "location": "San Francisco, CA"
  }
 }

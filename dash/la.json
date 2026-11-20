@@ -1,86 +1,86 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-18T11:56:30.023485Z",
+ "eventsUpdatedAt": "2026-11-20T11:54:17.634466Z",
  "ranges": {
-  "today": "2026-11-18",
+  "today": "2026-11-20",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Festival",
    "city": "Los Angeles",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Pop/electro-pop night at The Moroccan Lounge; $25 advance, $30 day of show, 18+.",
-   "price": "From $25",
-   "sourceUrl": "https://blog.ckord.com/live-music/los-angeles/pop",
-   "startTime": "6:30 PM",
-   "title": "Cherry Bomb",
-   "venue": "The Moroccan Lounge, 901 E 1st St, Los Angeles, CA 90012"
+   "note": "Opening day of the LA Auto Show at the Convention Center.",
+   "price": "From $15",
+   "sourceUrl": "https://otbla.com/neighborhoods/downtown/",
+   "startTime": null,
+   "title": "Los Angeles Auto Show: Opening Day 2026",
+   "venue": "Los Angeles Convention Center, Downtown Los Angeles, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "Los Angeles",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Jonas Brothers bring The Burning Up Tour All Over Again to the Hollywood Bowl.",
+   "note": "Reggaeton star Arcángel brings La 8va Maravilla to YouTube Theater.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=hpguide&page=1",
-   "startTime": "7:00 PM",
-   "title": "Jonas Brothers: The Burning Up Tour All Over Again",
-   "venue": "Hollywood Bowl, 2301 N Highland Ave, Hollywood, CA 90068"
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?page=20&date=thismonth",
+   "startTime": "8:00 PM",
+   "title": "Arcángel - La 8va Maravilla World Tour",
+   "venue": "YouTube Theater, 1011 S Stadium Dr, Inglewood, CA 90301"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "Los Angeles",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Teddy Swims brings The UGLY Tour to the Kia Forum.",
+   "note": "Jackson Browne live at the Hollywood Pantages Theatre.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=hpguide&page=1",
-   "startTime": "7:00 PM",
-   "title": "Teddy Swims: The UGLY Tour",
-   "venue": "Kia Forum, Inglewood, CA"
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?page=20&date=thismonth",
+   "startTime": "8:00 PM",
+   "title": "Jackson Browne",
+   "venue": "Hollywood Pantages Theatre, 6233 Hollywood Blvd, Los Angeles, CA 90028"
   },
   {
    "bucket": "today",
    "category": "Sports",
    "city": "Los Angeles",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Lakers host the Utah Jazz; Dodgers baseball-style jersey night.",
+   "note": "NBA Cup group play: the Lakers host the Sacramento Kings.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=hpguide&page=1",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?page=19&date=thismonth",
    "startTime": "7:00 PM",
-   "title": "Los Angeles Lakers v Utah Jazz",
-   "venue": "Crypto.com Arena, 1111 S Figueroa St, Los Angeles, CA 90015"
+   "title": "NBA Cup: Los Angeles Lakers vs Sacramento Kings",
+   "venue": "Crypto.com Arena, Los Angeles, CA"
   },
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Theatre",
    "city": "Los Angeles",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Slothrust brings The Dystopian Theatre Tour to Teragram Ballroom.",
+   "note": "Chazz Palminteri performs his one-man show A Bronx Tale.",
    "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/los-angeles/pop",
+   "sourceUrl": "https://otbla.com/neighborhoods/downtown/",
    "startTime": "8:00 PM",
-   "title": "Slothrust: The Dystopian Theatre Tour",
-   "venue": "Teragram Ballroom, Los Angeles, CA"
+   "title": "Chazz Palminteri: A Bronx Tale",
+   "venue": "The United Theater on Broadway, Downtown Los Angeles, CA"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 55,
-   "feelsLike": 55,
-   "high": 68,
-   "low": 54,
-   "description": "",
-   "precipChance": 4,
-   "humidity": 53,
-   "wind": "1 mph",
-   "uvIndex": null,
-   "airQualityIndex": null,
-   "airQualityDescription": ""
+   "temp": 48,
+   "feelsLike": 45,
+   "high": 62,
+   "low": 47,
+   "description": "Clear",
+   "precipChance": 0,
+   "humidity": 78,
+   "wind": "3 mph",
+   "uvIndex": 4,
+   "airQualityIndex": 52,
+   "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-18",
-   "high": 68,
-   "low": 54,
-   "precipChance": 4,
-   "summary": "Partly Sunny. Highs around 68 and lows around 54."
+   "date": "2026-11-20",
+   "high": 62,
+   "low": 47,
+   "precipChance": 0,
+   "summary": "Clear skies. Highs around 62 and lows around 47."
   },
   "daily": [
    {
-    "date": "2026-11-18",
-    "high": 68,
-    "low": 54,
-    "precipChance": 4
-   },
-   {
-    "date": "2026-11-19",
-    "high": 64,
-    "low": 46,
-    "precipChance": 98
-   },
-   {
     "date": "2026-11-20",
-    "high": 64,
-    "low": 45,
-    "precipChance": 0
-   },
-   {
-    "date": "2026-11-21",
-    "high": 65,
+    "high": 62,
     "low": 47,
     "precipChance": 0
    },
    {
+    "date": "2026-11-21",
+    "high": 68,
+    "low": 46,
+    "precipChance": 0
+   },
+   {
     "date": "2026-11-22",
-    "high": 64,
-    "low": 48,
-    "precipChance": 23
+    "high": 67,
+    "low": 58,
+    "precipChance": 20
    },
    {
     "date": "2026-11-23",
-    "high": 65,
-    "low": 49,
-    "precipChance": 3
+    "high": 66,
+    "low": 58,
+    "precipChance": 20
    },
    {
     "date": "2026-11-24",
-    "high": 67,
-    "low": null,
-    "precipChance": 15
+    "high": 72,
+    "low": 59,
+    "precipChance": 8
+   },
+   {
+    "date": "2026-11-25",
+    "high": 71,
+    "low": 63,
+    "precipChance": 12
+   },
+   {
+    "date": "2026-11-26",
+    "high": 70,
+    "low": 61,
+    "precipChance": 4
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 65,
-    "low": 47,
+    "high": 68,
+    "low": 46,
     "precipChance": 0,
-    "summary": "Sunny. Highs around 65 and lows around 47.",
-    "wind": "0 mph",
+    "summary": "Overcast. Highs around 68 and lows around 46.",
+    "wind": "8 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 64,
-    "low": 48,
-    "precipChance": 23,
-    "summary": "Mostly Sunny then Slight Chance Light Rain. Highs around 64 and lows around 48.",
-    "wind": "0 mph",
+    "high": 67,
+    "low": 58,
+    "precipChance": 20,
+    "summary": "Drizzle. Highs around 67 and lows around 58.",
+    "wind": "10 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-18T11:56:22.236721Z",
+  "fetchedAt": "2026-11-20T11:52:40.962493Z",
   "location": "Los Angeles, CA"
  }
 }

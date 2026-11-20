@@ -1,8 +1,8 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-18T11:56:30.016841Z",
+ "eventsUpdatedAt": "2026-11-20T11:54:17.628425Z",
  "ranges": {
-  "today": "2026-11-18",
+  "today": "2026-11-20",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,46 +11,76 @@
    "bucket": "today",
    "category": "Music",
    "city": "San Jose",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Indie-pop singer Leanna Firestone with Sydney Sprague.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ",
+   "note": "Hip-hop bill headlined by Shoreline Mafia with SOB x RBE, 03 Greedo and Mike Sherm.",
+   "price": "From $68",
+   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
    "startTime": "6:00 PM",
-   "title": "Leanna Firestone, Sydney Sprague",
-   "venue": "The Ritz, 400 S 1st St, San Jose, CA 95113"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Jose",
-   "date": "2026-11-18",
-   "day": "today",
-   "dayLabel": "周三",
-   "endTime": null,
-   "note": "Rock band Three Days Grace brings the Alienation Tour to SAP Center.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ",
-   "startTime": "7:00 PM",
-   "title": "Three Days Grace - Alienation Tour",
+   "title": "Who Want The Smoke: Shoreline Mafia, SOB x RBE & Mike Sherm",
    "venue": "SAP Center at San Jose, 525 W Santa Clara St, San Jose, CA 95113"
   },
   {
    "bucket": "today",
+   "category": "Theatre",
+   "city": "San Jose",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "The Who's rock opera continues its Nov 17-22 run.",
+   "price": "From $8",
+   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
+   "startTime": "7:30 PM",
+   "title": "The Who's Tommy (Touring)",
+   "venue": "San Jose Center for the Performing Arts, 255 Almaden Blvd, San Jose, CA 95113"
+  },
+  {
+   "bucket": "today",
+   "category": "Comedy",
+   "city": "San Jose",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "Stand-up from Gianmarco Soresi (second show 9:45 PM).",
+   "price": "From $105",
+   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
+   "startTime": "7:30 PM",
+   "title": "Gianmarco Soresi",
+   "venue": "San Jose Improv, 62 S Second St, San Jose, CA 95113"
+  },
+  {
+   "bucket": "today",
+   "category": "Theatre",
+   "city": "San Jose",
+   "date": "2026-11-20",
+   "day": "today",
+   "dayLabel": "周五",
+   "endTime": null,
+   "note": "Opera San Jose stages Fiddler on the Roof at the California Theatre.",
+   "price": null,
+   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
+   "startTime": "7:30 PM",
+   "title": "Opera San Jose: Fiddler on the Roof",
+   "venue": "California Theatre, 345 S First St, San Jose, CA 95113"
+  },
+  {
+   "bucket": "today",
    "category": "Music",
    "city": "San Jose",
-   "date": "2026-11-18",
+   "date": "2026-11-20",
    "day": "today",
-   "dayLabel": "周三",
+   "dayLabel": "周五",
    "endTime": null,
-   "note": "Alice Cooper's Alice's Attic Tour stops at San Jose Civic.",
+   "note": "Throwback 2000s night at The Ritz.",
    "price": null,
    "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ",
    "startTime": "8:00 PM",
-   "title": "Alice Cooper - Alice's Attic Tour",
-   "venue": "San Jose Civic, 135 W San Carlos St, San Jose, CA 95113"
+   "title": "2000's Night",
+   "venue": "The Ritz, San Jose, CA"
   }
  ],
  "events": [
@@ -162,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "airQualityDescription": "Good",
-   "airQualityIndex": 34,
-   "description": "Overcast",
-   "feelsLike": 40,
-   "high": 55,
-   "humidity": 71,
-   "low": 48,
-   "precipChance": 100,
-   "temp": 48,
-   "uvIndex": 0,
-   "wind": "14 mph"
+   "temp": 46,
+   "feelsLike": 42,
+   "high": 56,
+   "low": 44,
+   "description": "Partly cloudy",
+   "precipChance": 55,
+   "humidity": 90,
+   "wind": "5 mph",
+   "uvIndex": 4,
+   "airQualityIndex": 23,
+   "airQualityDescription": "Good"
+  },
+  "today": {
+   "date": "2026-11-20",
+   "high": 56,
+   "low": 44,
+   "precipChance": 55,
+   "summary": "Rain. Highs around 56 and lows around 44."
   },
   "daily": [
    {
-    "date": "2026-11-18",
-    "high": 55,
-    "low": 48,
-    "precipChance": 100
-   },
-   {
-    "date": "2026-11-19",
-    "high": 56,
-    "low": 48,
-    "precipChance": 87
-   },
-   {
     "date": "2026-11-20",
-    "high": 58,
-    "low": 47,
-    "precipChance": 24
+    "high": 56,
+    "low": 44,
+    "precipChance": 55
    },
    {
     "date": "2026-11-21",
-    "high": 59,
-    "low": 46,
-    "precipChance": 46
+    "high": 57,
+    "low": 42,
+    "precipChance": 44
    },
    {
     "date": "2026-11-22",
-    "high": 59,
-    "low": 50,
-    "precipChance": 48
+    "high": 55,
+    "low": 48,
+    "precipChance": 52
    },
    {
     "date": "2026-11-23",
     "high": 61,
-    "low": 47,
-    "precipChance": 13
+    "low": 46,
+    "precipChance": 15
    },
    {
     "date": "2026-11-24",
-    "high": 56,
+    "high": 64,
     "low": 49,
-    "precipChance": 74
+    "precipChance": 67
+   },
+   {
+    "date": "2026-11-25",
+    "high": 60,
+    "low": 53,
+    "precipChance": 61
+   },
+   {
+    "date": "2026-11-26",
+    "high": 61,
+    "low": 50,
+    "precipChance": 15
    }
   ],
-  "fetchedAt": "2026-11-18T11:52:33.425414Z",
-  "location": "San Jose, CA",
-  "today": {
-   "date": "2026-11-18",
-   "high": 55,
-   "low": 48,
-   "precipChance": 100,
-   "summary": "Heavy rain. Highs around 55 and lows around 48."
-  },
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 59,
-    "hourly": [],
-    "low": 46,
-    "precipChance": 46,
-    "summary": "Light drizzle. Highs around 59 and lows around 46.",
-    "wind": "7 mph"
+    "high": 57,
+    "low": 42,
+    "precipChance": 44,
+    "summary": "Rain. Highs around 57 and lows around 42.",
+    "wind": "9 mph",
+    "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 59,
-    "hourly": [],
-    "low": 50,
-    "precipChance": 48,
-    "summary": "Drizzle. Highs around 59 and lows around 50.",
-    "wind": "6 mph"
+    "high": 55,
+    "low": 48,
+    "precipChance": 52,
+    "summary": "Light rain. Highs around 55 and lows around 48.",
+    "wind": "4 mph",
+    "hourly": []
    }
-  ]
+  ],
+  "fetchedAt": "2026-11-20T11:52:38.538801Z",
+  "location": "San Jose, CA"
  }
 }
