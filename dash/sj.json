@@ -1,8 +1,8 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-20T17:54:01.046142Z",
+ "eventsUpdatedAt": "2026-11-21T11:17:16.397373Z",
  "ranges": {
-  "today": "2026-11-20",
+  "today": "2026-11-21",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,76 +11,76 @@
    "bucket": "today",
    "category": "Music",
    "city": "San Jose",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Hip-hop bill headlined by Shoreline Mafia with SOB x RBE, 03 Greedo and Mike Sherm.",
-   "price": "From $68",
-   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
-   "startTime": "6:00 PM",
-   "title": "Who Want The Smoke: Shoreline Mafia, SOB x RBE & Mike Sherm",
-   "venue": "SAP Center at San Jose, 525 W Santa Clara St, San Jose, CA 95113"
+   "note": "Live music at San Pedro Square Market.",
+   "price": null,
+   "sourceUrl": "https://caldiscovery.com/san-jose-ca/this-weekend-music.html",
+   "startTime": "1:00 PM",
+   "title": "Live Music ft. The Wanderers",
+   "venue": "San Pedro Square Market, Downtown San Jose, CA"
   },
   {
    "bucket": "today",
    "category": "Theatre",
    "city": "San Jose",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Teen theater performance at King Library.",
+   "price": null,
+   "sourceUrl": "https://theemberlist.com/san-jose-ca/things-to-do",
+   "startTime": "3:00 PM",
+   "title": "TeenHQ Theater Performance: MAUL OF THE DEAD",
+   "venue": "King Library, TeenHQ, San Jose, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Film",
+   "city": "San Jose",
+   "date": "2026-11-21",
+   "day": "today",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Hunger Games: Sunrise on the Reaping on the Tech Interactive's IMAX dome.",
+   "price": null,
+   "sourceUrl": "https://theemberlist.com/san-jose-ca/things-to-do",
+   "startTime": "5:30 PM",
+   "title": "Hunger Games: Sunrise on the Reaping in IMAX",
+   "venue": "The Tech Interactive, San Jose, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Theatre",
+   "city": "San Jose",
+   "date": "2026-11-21",
+   "day": "today",
+   "dayLabel": "周六",
    "endTime": null,
    "note": "The Who's rock opera continues its Nov 17-22 run.",
    "price": "From $8",
    "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
    "startTime": "7:30 PM",
    "title": "The Who's Tommy (Touring)",
-   "venue": "San Jose Center for the Performing Arts, 255 Almaden Blvd, San Jose, CA 95113"
-  },
-  {
-   "bucket": "today",
-   "category": "Comedy",
-   "city": "San Jose",
-   "date": "2026-11-20",
-   "day": "today",
-   "dayLabel": "周五",
-   "endTime": null,
-   "note": "Stand-up from Gianmarco Soresi (second show 9:45 PM).",
-   "price": "From $105",
-   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
-   "startTime": "7:30 PM",
-   "title": "Gianmarco Soresi",
-   "venue": "San Jose Improv, 62 S Second St, San Jose, CA 95113"
-  },
-  {
-   "bucket": "today",
-   "category": "Theatre",
-   "city": "San Jose",
-   "date": "2026-11-20",
-   "day": "today",
-   "dayLabel": "周五",
-   "endTime": null,
-   "note": "Opera San Jose stages Fiddler on the Roof at the California Theatre.",
-   "price": null,
-   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
-   "startTime": "7:30 PM",
-   "title": "Opera San Jose: Fiddler on the Roof",
-   "venue": "California Theatre, 345 S First St, San Jose, CA 95113"
+   "venue": "San Jose Center for the Performing Arts, 255 Almaden Blvd, San Jose, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "San Jose",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Throwback 2000s night at The Ritz.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-jose?categoryId=KZFzniwnSyZfZ7v7nJ",
-   "startTime": "8:00 PM",
-   "title": "2000's Night",
-   "venue": "The Ritz, San Jose, CA"
+   "note": "Bollywood, Punjabi beats and EDM dancing at Myth Lounge.",
+   "price": "Free",
+   "sourceUrl": "https://allevents.in/san-jose/this-weekend",
+   "startTime": "10:00 PM",
+   "title": "Bollywood after Glow @ Myth San Jose",
+   "venue": "Myth Lounge, 152 Post Street, San Jose, CA"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 46,
-   "feelsLike": 42,
-   "high": 56,
-   "low": 44,
-   "description": "Partly cloudy",
-   "precipChance": 55,
-   "humidity": 90,
-   "wind": "5 mph",
-   "uvIndex": 4,
-   "airQualityIndex": 23,
+   "temp": 42,
+   "feelsLike": 39,
+   "high": 53,
+   "low": 40,
+   "description": "Clear",
+   "precipChance": 25,
+   "humidity": 94,
+   "wind": "3 mph",
+   "uvIndex": 3,
+   "airQualityIndex": 50,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-20",
-   "high": 56,
-   "low": 44,
-   "precipChance": 55,
-   "summary": "Rain. Highs around 56 and lows around 44."
+   "date": "2026-11-21",
+   "high": 53,
+   "low": 40,
+   "precipChance": 25,
+   "summary": "Light drizzle. Highs around 53 and lows around 40."
   },
   "daily": [
    {
-    "date": "2026-11-20",
-    "high": 56,
-    "low": 44,
-    "precipChance": 55
-   },
-   {
     "date": "2026-11-21",
-    "high": 57,
-    "low": 42,
-    "precipChance": 44
+    "high": 53,
+    "low": 40,
+    "precipChance": 25
    },
    {
     "date": "2026-11-22",
-    "high": 55,
-    "low": 48,
-    "precipChance": 52
+    "high": 54,
+    "low": 47,
+    "precipChance": 49
    },
    {
     "date": "2026-11-23",
     "high": 61,
-    "low": 46,
-    "precipChance": 15
+    "low": 45,
+    "precipChance": 0
    },
    {
     "date": "2026-11-24",
-    "high": 64,
+    "high": 63,
     "low": 49,
-    "precipChance": 67
+    "precipChance": 65
    },
    {
     "date": "2026-11-25",
     "high": 60,
-    "low": 53,
-    "precipChance": 61
+    "low": 52,
+    "precipChance": 65
    },
    {
     "date": "2026-11-26",
     "high": 61,
     "low": 50,
-    "precipChance": 15
+    "precipChance": 22
+   },
+   {
+    "date": "2026-11-27",
+    "high": 64,
+    "low": 52,
+    "precipChance": 20
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 57,
-    "low": 42,
-    "precipChance": 44,
-    "summary": "Rain. Highs around 57 and lows around 42.",
-    "wind": "9 mph",
+    "high": 53,
+    "low": 40,
+    "precipChance": 25,
+    "summary": "Light drizzle. Highs around 53 and lows around 40.",
+    "wind": "8 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 55,
-    "low": 48,
-    "precipChance": 52,
-    "summary": "Light rain. Highs around 55 and lows around 48.",
-    "wind": "4 mph",
+    "high": 54,
+    "low": 47,
+    "precipChance": 49,
+    "summary": "Light drizzle. Highs around 54 and lows around 47.",
+    "wind": "5 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-20T11:52:38.538801Z",
+  "fetchedAt": "2026-11-21T11:15:03.500986Z",
   "location": "San Jose, CA"
  }
 }

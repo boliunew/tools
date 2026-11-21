@@ -1,86 +1,86 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-20T17:54:01.050503Z",
+ "eventsUpdatedAt": "2026-11-21T11:17:16.398183Z",
  "ranges": {
-  "today": "2026-11-20",
+  "today": "2026-11-21",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Festival",
-   "city": "Los Angeles",
-   "date": "2026-11-20",
-   "day": "today",
-   "dayLabel": "周五",
-   "endTime": null,
-   "note": "Opening day of the LA Auto Show at the Convention Center.",
-   "price": "From $15",
-   "sourceUrl": "https://otbla.com/neighborhoods/downtown/",
-   "startTime": null,
-   "title": "Los Angeles Auto Show: Opening Day 2026",
-   "venue": "Los Angeles Convention Center, Downtown Los Angeles, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "Los Angeles",
-   "date": "2026-11-20",
-   "day": "today",
-   "dayLabel": "周五",
-   "endTime": null,
-   "note": "Reggaeton star Arcángel brings La 8va Maravilla to YouTube Theater.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?page=20&date=thismonth",
-   "startTime": "8:00 PM",
-   "title": "Arcángel - La 8va Maravilla World Tour",
-   "venue": "YouTube Theater, 1011 S Stadium Dr, Inglewood, CA 90301"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "Los Angeles",
-   "date": "2026-11-20",
-   "day": "today",
-   "dayLabel": "周五",
-   "endTime": null,
-   "note": "Jackson Browne live at the Hollywood Pantages Theatre.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?page=20&date=thismonth",
-   "startTime": "8:00 PM",
-   "title": "Jackson Browne",
-   "venue": "Hollywood Pantages Theatre, 6233 Hollywood Blvd, Los Angeles, CA 90028"
-  },
-  {
-   "bucket": "today",
    "category": "Sports",
    "city": "Los Angeles",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "NBA Cup group play: the Lakers host the Sacramento Kings.",
+   "note": "USC hosts Maryland at the Coliseum on Saturday.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?page=19&date=thismonth",
-   "startTime": "7:00 PM",
-   "title": "NBA Cup: Los Angeles Lakers vs Sacramento Kings",
-   "venue": "Crypto.com Arena, Los Angeles, CA"
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": null,
+   "title": "USC Trojans Football vs. Maryland Terrapins Football",
+   "venue": "Los Angeles Memorial Coliseum, Los Angeles, CA"
   },
   {
    "bucket": "today",
-   "category": "Theatre",
+   "category": "Music",
    "city": "Los Angeles",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Chazz Palminteri performs his one-man show A Bronx Tale.",
+   "note": "80s + 90s dance party at The Bellwether.",
    "price": null,
-   "sourceUrl": "https://otbla.com/neighborhoods/downtown/",
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "6:00 PM",
+   "title": "Earlybirds Club - 80s + 90s Party",
+   "venue": "The Bellwether, 333 S. Boylston St., Los Angeles, CA 90017"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "Los Angeles",
+   "date": "2026-11-21",
+   "day": "today",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Faroese singer-songwriter Eivør live at the Teragram Ballroom.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "7:00 PM",
+   "title": "Eivør",
+   "venue": "Teragram Ballroom, Los Angeles, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Comedy",
+   "city": "Los Angeles",
+   "date": "2026-11-21",
+   "day": "today",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Comedy from Asim Ali with Mickey Singh at the Orpheum.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ",
+   "startTime": "7:30 PM",
+   "title": "ASIM ALI TOUR 2.0 featuring Mickey Singh",
+   "venue": "Orpheum Theatre, 842 S. Broadway, Los Angeles, CA 90014"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "Los Angeles",
+   "date": "2026-11-21",
+   "day": "today",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Orchestral concert of music from NieR at the Shrine Auditorium.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ",
    "startTime": "8:00 PM",
-   "title": "Chazz Palminteri: A Bronx Tale",
-   "venue": "The United Theater on Broadway, Downtown Los Angeles, CA"
+   "title": "NieR: Orchestra Concert",
+   "venue": "Shrine Auditorium, 665 W. Jefferson Blvd., Los Angeles, CA 90007"
   }
  ],
  "events": [
@@ -192,32 +192,26 @@
  ],
  "weather": {
   "current": {
-   "temp": 48,
-   "feelsLike": 45,
-   "high": 62,
-   "low": 47,
+   "temp": 50,
+   "feelsLike": 44,
+   "high": 68,
+   "low": 46,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 78,
-   "wind": "3 mph",
+   "humidity": 55,
+   "wind": "6 mph",
    "uvIndex": 4,
-   "airQualityIndex": 52,
+   "airQualityIndex": 60,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-20",
-   "high": 62,
-   "low": 47,
+   "date": "2026-11-21",
+   "high": 68,
+   "low": 46,
    "precipChance": 0,
-   "summary": "Clear skies. Highs around 62 and lows around 47."
+   "summary": "Overcast. Highs around 68 and lows around 46."
   },
   "daily": [
-   {
-    "date": "2026-11-20",
-    "high": 62,
-    "low": 47,
-    "precipChance": 0
-   },
    {
     "date": "2026-11-21",
     "high": 68,
@@ -227,32 +221,38 @@
    {
     "date": "2026-11-22",
     "high": 67,
-    "low": 58,
-    "precipChance": 20
+    "low": 48,
+    "precipChance": 24
    },
    {
     "date": "2026-11-23",
-    "high": 66,
-    "low": 58,
-    "precipChance": 20
+    "high": 69,
+    "low": 60,
+    "precipChance": 24
    },
    {
     "date": "2026-11-24",
-    "high": 72,
-    "low": 59,
-    "precipChance": 8
+    "high": 73,
+    "low": 61,
+    "precipChance": 0
    },
    {
     "date": "2026-11-25",
-    "high": 71,
+    "high": 72,
     "low": 63,
-    "precipChance": 12
+    "precipChance": 4
    },
    {
     "date": "2026-11-26",
-    "high": 70,
+    "high": 75,
     "low": 61,
-    "precipChance": 4
+    "precipChance": 3
+   },
+   {
+    "date": "2026-11-27",
+    "high": 79,
+    "low": 65,
+    "precipChance": 2
    }
   ],
   "weekend": [
@@ -263,21 +263,21 @@
     "low": 46,
     "precipChance": 0,
     "summary": "Overcast. Highs around 68 and lows around 46.",
-    "wind": "8 mph",
+    "wind": "7 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
     "high": 67,
-    "low": 58,
-    "precipChance": 20,
-    "summary": "Drizzle. Highs around 67 and lows around 58.",
-    "wind": "10 mph",
+    "low": 48,
+    "precipChance": 24,
+    "summary": "Drizzle. Highs around 67 and lows around 48.",
+    "wind": "9 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-20T11:52:40.962493Z",
+  "fetchedAt": "2026-11-21T11:15:20.540091Z",
   "location": "Los Angeles, CA"
  }
 }

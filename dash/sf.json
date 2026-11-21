@@ -1,8 +1,8 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-20T17:54:01.038282Z",
+ "eventsUpdatedAt": "2026-11-21T11:17:16.395927Z",
  "ranges": {
-  "today": "2026-11-20",
+  "today": "2026-11-21",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
@@ -11,76 +11,76 @@
    "bucket": "today",
    "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Night five of The Mountain Goats' Fillmore run, performing Cast of Thousands.",
+   "note": "Bay Beats rap showcase at the Main Library.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
-   "startTime": "8:00 PM",
-   "title": "The Mountain Goats - Night Five: Cast of Thousands",
-   "venue": "The Fillmore, 1805 Geary Blvd, San Francisco, CA"
+   "sourceUrl": "https://sf.funcheap.com/category/event/event-types/live-music-event/",
+   "startTime": "1:00 PM",
+   "title": "The Bay Beats Rap Show",
+   "venue": "San Francisco Main Library, San Francisco, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "San Francisco",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Faroese singer-songwriter Eivør live at August Hall.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
-   "startTime": "8:00 PM",
-   "title": "Eivør",
-   "venue": "August Hall, 420 Mason St, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-20",
-   "day": "today",
-   "dayLabel": "周五",
-   "endTime": null,
-   "note": "DANNA brings The Bedroom Sessions US Tour to the Castro Theatre.",
-   "price": null,
-   "sourceUrl": "https://www.Songkick.Com/metro-areas/26330-us-sf-bay-area/2026",
-   "startTime": "8:00 PM",
-   "title": "DANNA - THE BEDROOM SESSIONS US TOUR",
-   "venue": "The Castro Theatre, 429 Castro St, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-20",
-   "day": "today",
-   "dayLabel": "周五",
-   "endTime": null,
-   "note": "HUG with Gyan Riley, Devendra Banhart and Noah Georgeson at Bimbo's 365 Club.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?ac_link=blog&page=1&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KZFzniwnSyZfZ7vAvv",
-   "startTime": "8:00 PM",
-   "title": "HUG feat. Gyan Riley, Devendra Banhart, Noah Georgeson",
-   "venue": "Bimbo's 365 Club, 1025 Columbus Ave, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-20",
-   "day": "today",
-   "dayLabel": "周五",
-   "endTime": null,
-   "note": "Carl Cox headlines Club Darc Season 2 at Pier 48 (21+).",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?page=1&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAvl",
+   "note": "Andrew McMahon plays Great American Music Hall with Ivory Layne.",
+   "price": "From $51",
+   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco",
    "startTime": "7:00 PM",
-   "title": "Carl Cox - Club Darc Season 2",
-   "venue": "Pier 48, Shed A, San Francisco, CA"
+   "title": "An evening with Andrew McMahon and his piano",
+   "venue": "Great American Music Hall, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Comedy",
+   "city": "San Francisco",
+   "date": "2026-11-21",
+   "day": "today",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Stand-up comedy from Anthony Jeselnik at The Masonic.",
+   "price": "From $52",
+   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/",
+   "startTime": "7:00 PM",
+   "title": "Anthony Jeselnik: Wrath of Man",
+   "venue": "The Masonic, 1111 California St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-21",
+   "day": "today",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Avant-garde legends The Residents at the Palace of Fine Arts.",
+   "price": "From $79",
+   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/",
+   "startTime": "7:30 PM",
+   "title": "The Residents",
+   "venue": "Palace of Fine Arts, 3301 Lyon Street, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Music",
+   "city": "San Francisco",
+   "date": "2026-11-21",
+   "day": "today",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Final night of The Mountain Goats' six-night Fillmore residency.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?categoryId=KZFzniwnSyZfZ7v7nJ&date=thisweekend",
+   "startTime": "8:00 PM",
+   "title": "The Mountain Goats - Night Six: Closers",
+   "venue": "The Fillmore, 1805 Geary Blvd, San Francisco, CA"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 49,
-   "feelsLike": 45,
+   "temp": 45,
+   "feelsLike": 40,
    "high": 55,
-   "low": 46,
-   "description": "Mainly clear",
-   "precipChance": 62,
-   "humidity": 82,
-   "wind": "6 mph",
-   "uvIndex": 4,
-   "airQualityIndex": 36,
+   "low": 44,
+   "description": "Clear",
+   "precipChance": 49,
+   "humidity": 81,
+   "wind": "7 mph",
+   "uvIndex": 2,
+   "airQualityIndex": 42,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "high": 55,
-   "low": 46,
-   "precipChance": 62,
-   "summary": "Rain. Highs around 55 and lows around 46."
+   "low": 44,
+   "precipChance": 49,
+   "summary": "Light rain. Highs around 55 and lows around 44."
   },
   "daily": [
    {
-    "date": "2026-11-20",
-    "high": 55,
-    "low": 46,
-    "precipChance": 62
-   },
-   {
     "date": "2026-11-21",
-    "high": 57,
-    "low": 45,
-    "precipChance": 88
+    "high": 55,
+    "low": 44,
+    "precipChance": 49
    },
    {
     "date": "2026-11-22",
-    "high": 55,
-    "low": 52,
-    "precipChance": 45
+    "high": 54,
+    "low": 48,
+    "precipChance": 36
    },
    {
     "date": "2026-11-23",
     "high": 58,
-    "low": 50,
-    "precipChance": 13
+    "low": 49,
+    "precipChance": 6
    },
    {
     "date": "2026-11-24",
     "high": 60,
     "low": 51,
-    "precipChance": 70
+    "precipChance": 76
    },
    {
     "date": "2026-11-25",
-    "high": 58,
-    "low": 52,
-    "precipChance": 67
+    "high": 60,
+    "low": 54,
+    "precipChance": 73
    },
    {
     "date": "2026-11-26",
-    "high": 59,
-    "low": 50,
-    "precipChance": 20
+    "high": 61,
+    "low": 52,
+    "precipChance": 29
+   },
+   {
+    "date": "2026-11-27",
+    "high": 63,
+    "low": 54,
+    "precipChance": 31
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 57,
-    "low": 45,
-    "precipChance": 88,
-    "summary": "Rain. Highs around 57 and lows around 45.",
-    "wind": "13 mph",
+    "high": 55,
+    "low": 44,
+    "precipChance": 49,
+    "summary": "Light rain. Highs around 55 and lows around 44.",
+    "wind": "11 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 55,
-    "low": 52,
-    "precipChance": 45,
-    "summary": "Light drizzle. Highs around 55 and lows around 52.",
-    "wind": "6 mph",
+    "high": 54,
+    "low": 48,
+    "precipChance": 36,
+    "summary": "Rain. Highs around 54 and lows around 48.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-20T11:52:36.396174Z",
+  "fetchedAt": "2026-11-21T11:14:46.699601Z",
   "location": "San Francisco, CA"
  }
 }

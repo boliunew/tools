@@ -1,39 +1,39 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-20T17:54:01.053612Z",
+ "eventsUpdatedAt": "2026-11-21T11:17:16.400913Z",
  "ranges": {
-  "today": "2026-11-20",
+  "today": "2026-11-21",
   "sat": "2026-11-21",
   "sun": "2026-11-22"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Family",
    "city": "New York",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Violinist Frank Huang performs Mendelssohn with the New York Philharmonic.",
+   "note": "Morning family puppet show at DR2.",
    "price": null,
-   "sourceUrl": "http://ticketmaster.com/discover/new-york-city?endDate=2026-11-23&startDate=2026-11-20",
-   "startTime": "11:00 AM",
-   "title": "New York Philharmonic: Frank Huang Performs Mendelssohn",
-   "venue": "David Geffen Hall, 10 Lincoln Center Plaza, New York, NY"
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "9:30 AM",
+   "title": "The Very Hungry Caterpillar Show",
+   "venue": "DR2, New York, NY"
   },
   {
    "bucket": "today",
-   "category": "Family",
+   "category": "Theater",
    "city": "New York",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
    "note": "The Rockettes' annual holiday spectacular at Radio City.",
    "price": null,
-   "sourceUrl": "http://ticketmaster.com/discover/new-york-city?endDate=2026-11-23&startDate=2026-11-20",
-   "startTime": "3:00 PM",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "4:00 PM",
    "title": "Christmas Spectacular Starring The Radio City Rockettes",
    "venue": "Radio City Music Hall, 1260 6th Avenue, New York, NY"
   },
@@ -41,63 +41,63 @@
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Indie show with Harry Teardrop at the Mercury Lounge.",
-   "price": "From $65",
-   "sourceUrl": "http://seatgeek.com/cities/nyc/concerts/this-weekend",
-   "startTime": "6:00 PM",
-   "title": "James Ivy with Harry Teardrop",
-   "venue": "Mercury Lounge, 217 East Houston St, New York, NY"
+   "note": "The Neighbourhood bring THE WOURLD TOUR to Barclays Center.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "7:00 PM",
+   "title": "The Neighbourhood: THE WOURLD TOUR",
+   "venue": "Barclays Center, Brooklyn"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Ramones drummer Marky Ramone live at Irving Plaza.",
-   "price": "From $64",
-   "sourceUrl": "http://seatgeek.com/cities/nyc/concerts/this-weekend",
+   "note": "Indie trio Tiny Habits play Irving Plaza.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
    "startTime": "7:00 PM",
-   "title": "Marky Ramone",
+   "title": "Tiny Habits",
    "venue": "Irving Plaza, 17 Irving Pl, New York, NY"
   },
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Sports",
    "city": "New York",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "day": "today",
-   "dayLabel": "周五",
+   "dayLabel": "周六",
    "endTime": null,
-   "note": "Sting brings the STING 3.0 Tour to Brooklyn Paramount.",
-   "price": "From $259",
-   "sourceUrl": "http://seatgeek.com/cities/nyc/concerts/this-weekend",
-   "startTime": "7:00 PM",
-   "title": "STING 3.0 Tour",
-   "venue": "Brooklyn Paramount, 385 Flatbush Ave Ext, Brooklyn"
+   "note": "Knicks host the Portland Trail Blazers at the Garden.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "7:30 PM",
+   "title": "New York Knicks vs. Portland Trail Blazers",
+   "venue": "Madison Square Garden, New York, NY"
   }
  ],
  "events": [
   {
    "bucket": "weekend",
-   "category": "Market",
+   "category": "Theater",
    "city": "New York",
    "date": "2026-11-21",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "note": "Holiday market opens in Union Square Park.",
-   "price": "Free",
-   "sourceUrl": "https://wonderkit.app/discover/new-york-ny",
-   "startTime": "10:00 AM",
-   "title": "Union Square Holiday Market",
-   "venue": "Union Square Park, Manhattan"
+   "note": "Hamilton at the Richard Rodgers Theatre, Saturday matinee.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "1:00 PM",
+   "title": "Hamilton (NY)",
+   "venue": "Richard Rodgers Theatre, New York, NY"
   },
   {
    "bucket": "weekend",
@@ -107,72 +107,57 @@
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "note": "Holiday Lights opens for the season: animal lanterns light up at 4:30 PM, with park entry from 1 PM.",
-   "price": "From $29.95",
-   "sourceUrl": "https://bronxzoo.com/holiday-lights/faqs",
-   "startTime": "1:00 PM",
-   "title": "Bronx Zoo Holiday Lights",
-   "venue": "Bronx Zoo, 2300 Southern Blvd, Bronx"
+   "note": "Bubble spectacular for families at New World Stages.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "4:30 PM",
+   "title": "The Gazillion Bubble Show",
+   "venue": "New World Stages - Stage 2, New York, NY"
   },
   {
    "bucket": "weekend",
-   "category": "Music",
+   "category": "Comedy",
    "city": "New York",
    "date": "2026-11-21",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "note": "The Neighbourhood bring The Wourld Tour to Barclays Center, with Nessa Barrett and Noise Dept. opening.",
+   "note": "Stand-up comedy from Gary Owen at the Beacon Theatre.",
    "price": null,
-   "sourceUrl": "https://stageandstreetnyc.com/concerts/shows/",
-   "startTime": "7:00 PM",
-   "title": "The Neighbourhood: THE WOURLD TOUR",
-   "venue": "Barclays Center, Brooklyn"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-21",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": null,
-   "note": "NY Phil concertmaster Frank Huang performs Mendelssohn.",
-   "price": null,
-   "sourceUrl": "https://wonderkit.app/discover/new-york-ny",
-   "startTime": "7:30 PM",
-   "title": "NY Phil: Concertmaster Frank Huang Performs Mendelssohn",
-   "venue": "Wu Tsai Theater at David Geffen Hall, Lincoln Center, Manhattan"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Music",
-   "city": "New York",
-   "date": "2026-11-21",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": null,
-   "note": "Jorja Smith performs at Kings Theatre on Saturday night.",
-   "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
    "startTime": "8:00 PM",
-   "title": "Jorja Smith",
-   "venue": "Kings Theatre, Brooklyn"
+   "title": "Gary Owen: No Hard Feelings Tour",
+   "venue": "Beacon Theatre, New York, NY"
   },
   {
    "bucket": "weekend",
-   "category": "Outdoors",
+   "category": "Sports",
    "city": "New York",
    "date": "2026-11-22",
    "day": "sun",
    "dayLabel": "周日",
    "endTime": null,
-   "note": "Ice skating at the Winter Village in Bryant Park.",
+   "note": "Rangers host the Carolina Hurricanes at the Garden.",
    "price": null,
-   "sourceUrl": "https://wonderkit.app/discover/new-york-ny",
-   "startTime": "8:00 AM",
-   "title": "Ice Skating at Bryant Park Winter Village",
-   "venue": "Bank of America Winter Village at Bryant Park, Manhattan"
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "12:30 PM",
+   "title": "New York Rangers vs. Carolina Hurricanes",
+   "venue": "Madison Square Garden, New York, NY"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Sports",
+   "city": "New York",
+   "date": "2026-11-22",
+   "day": "sun",
+   "dayLabel": "周日",
+   "endTime": null,
+   "note": "Giants host the Jacksonville Jaguars at MetLife Stadium.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "4:25 PM",
+   "title": "New York Giants vs. Jacksonville Jaguars",
+   "venue": "MetLife Stadium, East Rutherford, NJ"
   },
   {
    "bucket": "weekend",
@@ -182,102 +167,117 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": null,
-   "note": "The Menzingers bring the Everything I Ever Saw tour to Brooklyn Paramount on Sunday evening.",
+   "note": "The Menzingers bring the Everything I Ever Saw tour to Brooklyn Paramount.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?ac_link=tmholiday23_gg_fam&page=3&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
    "startTime": "6:00 PM",
    "title": "The Menzingers: Everything I Ever Saw North American Tour",
    "venue": "Brooklyn Paramount, Brooklyn"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Comedy",
+   "city": "New York",
+   "date": "2026-11-22",
+   "day": "sun",
+   "dayLabel": "周日",
+   "endTime": null,
+   "note": "Comedy night with John Oliver and Seth Meyers at the Beacon.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/new-york-city?date=thisweekend",
+   "startTime": "7:30 PM",
+   "title": "John Oliver & Seth Meyers",
+   "venue": "Beacon Theatre, New York, NY"
   }
  ],
  "weather": {
   "current": {
-   "temp": 42,
-   "feelsLike": 37,
-   "high": 68,
-   "low": 42,
+   "temp": 52,
+   "feelsLike": 52,
+   "high": 63,
+   "low": 53,
    "description": "Clear",
    "precipChance": 0,
-   "humidity": 65,
-   "wind": "2 mph",
-   "uvIndex": 3,
+   "humidity": 61,
+   "wind": "3 mph",
+   "uvIndex": null,
    "airQualityIndex": 82,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-20",
-   "high": 68,
-   "low": 42,
+   "date": "2026-11-21",
+   "high": 63,
+   "low": 53,
    "precipChance": 0,
-   "summary": "Overcast. Highs around 68 and lows around 42."
+   "summary": "Partly Sunny. Highs around 63 and lows around 53."
   },
   "daily": [
    {
-    "date": "2026-11-20",
-    "high": 68,
-    "low": 42,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-21",
-    "high": 64,
-    "low": 40,
+    "high": 63,
+    "low": 53,
     "precipChance": 0
    },
    {
     "date": "2026-11-22",
-    "high": 58,
-    "low": 52,
-    "precipChance": 86
+    "high": 63,
+    "low": 59,
+    "precipChance": 89
    },
    {
     "date": "2026-11-23",
-    "high": 62,
-    "low": 47,
-    "precipChance": 86
+    "high": 64,
+    "low": 46,
+    "precipChance": 44
    },
    {
     "date": "2026-11-24",
-    "high": 51,
-    "low": 43,
-    "precipChance": 1
+    "high": 50,
+    "low": 37,
+    "precipChance": 0
    },
    {
     "date": "2026-11-25",
-    "high": 46,
-    "low": 38,
-    "precipChance": 24
+    "high": 47,
+    "low": 43,
+    "precipChance": 3
    },
    {
     "date": "2026-11-26",
-    "high": 45,
-    "low": 39,
-    "precipChance": 55
+    "high": 50,
+    "low": 43,
+    "precipChance": 76
+   },
+   {
+    "date": "2026-11-27",
+    "high": 52,
+    "low": null,
+    "precipChance": 40
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 64,
-    "low": 40,
+    "high": 63,
+    "low": 53,
     "precipChance": 0,
-    "summary": "Foggy. Highs around 64 and lows around 40.",
-    "wind": "6 mph",
+    "summary": "Partly Sunny. Highs around 63 and lows around 53.",
+    "wind": "7 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 58,
-    "low": 52,
-    "precipChance": 86,
-    "summary": "Heavy rain. Highs around 58 and lows around 52.",
-    "wind": "18 mph",
+    "high": 63,
+    "low": 59,
+    "precipChance": 89,
+    "summary": "Rain. Highs around 63 and lows around 59.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-20T11:52:43.002010Z",
+  "fetchedAt": "2026-11-21T11:16:37.357769Z",
   "location": "New York, NY"
  }
 }
