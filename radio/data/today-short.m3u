@@ -1,20 +1,18 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-11-20（短版）
-#EXTINF:11,通勤电台 - ☀️ 开场 11月20日 星期五
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611201038
-#EXTINF:27,通勤电台 - 🌤️ 天气 Upland 晴 57°/46°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611201038
-#EXTINF:10,通勤电台 - 🔭 天象 Upland
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611201038
+#PLAYLIST:通勤电台 2026-11-21（短版）
+#EXTINF:10,通勤电台 - ☀️ 开场 11月21日 星期六
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611210936
+#EXTINF:31,通勤电台 - 🌤️ 天气 Upland 阴天 62°/45°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611210936
 #EXTINF:35,通勤电台 - 📊 大盘 防守
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611201038
-#EXTINF:62,通勤电台 - 📈 股票池 20 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611201038
-#EXTINF:7,通勤电台 - 🗓️ 财报与数据 今明两天清静
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611201038
-#EXTINF:86,通勤电台 - 📰 英文新闻 BBC · Al Jazeera · The Guardian
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611201038
-#EXTINF:30,通勤电台 - 🔤 今日单词 folk · seis
-https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611201038
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611210936
+#EXTINF:62,通勤电台 - 📈 股票池 16 个候选
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611210936
+#EXTINF:34,通勤电台 - 🗓️ 财报与数据 3 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611210936
+#EXTINF:97,通勤电台 - 📰 英文新闻 The Guardian · BBC · Al Jazeera
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611210936
+#EXTINF:32,通勤电台 - 🔤 今日单词 building · el mar
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611210936
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611201038
+https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611210936

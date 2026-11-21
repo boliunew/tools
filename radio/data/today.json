@@ -1,49 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-20T18:39:20Z",
- "date": "2026-11-20",
+ "generated": "2026-11-21T17:38:13Z",
+ "date": "2026-11-21",
  "engine": "edge",
- "total": 465.2,
- "short": 274.2,
+ "total": 474.7,
+ "short": 306.6,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611201038",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611210936",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月20日 星期五",
-   "dur": 10.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611201038",
+   "sub": "11月21日 星期六",
+   "dur": 9.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "周五了，坚持一下就周末了！11月20日，星期五，通勤电台准时上线。不想听的直接按下一首。"
+     "t": "周末还出门，辛苦了。星期六，11月21日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 晴 57°/46°F",
-   "dur": 27.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611201038",
+   "sub": "Upland 阴天 62°/45°F",
+   "dur": 30.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天晴。早上7点出门大约华氏47度，8摄氏度，体感41度。傍晚5点下班大约华氏52度，11摄氏度。白天最高57度，约14摄氏度；最低46度。基本不会下雨。白天空气质量良好，指数最高50。今天日落时间是傍晚4点44分。"
-    }
-   ]
-  },
-  {
-   "id": "sky",
-   "title": "🔭 天象",
-   "sub": "Upland",
-   "dur": 10.3,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611201038",
-   "text": [
-    {
-     "lang": "zh",
-     "t": "天象提醒。今天，水星西大距。黎明前在东边，离太阳 20°，很低，找视野开阔的地方。"
+     "t": "Upland今天阴天。早上7点出门大约华氏46度，8摄氏度，体感40度。傍晚5点下班大约华氏56度，13摄氏度。白天最高62度，约17摄氏度；最低45度。基本不会下雨。白天空气质量中等，指数最高53。今天日落时间是傍晚4点43分。提醒一下：早晚比较冷，多穿一件。"
     }
    ]
   },
@@ -51,41 +38,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "防守",
-   "dur": 34.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611201038",
+   "dur": 34.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月19日收盘。标普500 ETF 下跌2.0%，纳指100 ETF 下跌2.2%。恐慌指数VIX 28.4，偏高，市场有点紧张。标普成分股里，50%站上了50日均线。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
+     "t": "先看大盘，数据截至美股11月20日收盘。标普500 ETF 下跌3.6%，纳指100 ETF 下跌5.7%。恐慌指数VIX 35.9，很高，市场恐慌。标普成分股里，43%站上了50日均线。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "20 个候选",
-   "dur": 62.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611201038",
+   "sub": "16 个候选",
+   "dur": 62.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天20个候选，评分最高的是McKesson，代码 M C K。不想听细节可以按下一首。"
+     "t": "股票池今天16个候选，评分最高的是Viatris，代码 V T R S。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了500只股票，其中RSI2 超跌反弹12个，回踩金坑6个，血筹码2个。评分最高的三个是："
+     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，回踩金坑4个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，McKesson，代码 M C K，RSI2 超跌反弹信号，收盘价1062.16美元，止损参考997.30。"
+     "t": "第1，Viatris，代码 V T R S，RSI2 超跌反弹信号，收盘价19.63美元，止损参考18.24。"
     },
     {
      "lang": "zh",
-     "t": "第2，Viatris，代码 V T R S，RSI2 超跌反弹信号，收盘价19.88美元，止损参考18.51。"
+     "t": "第2，Hasbro，代码 H A S，RSI2 超跌反弹信号，收盘价112.41美元，止损参考104.37。"
     },
     {
      "lang": "zh",
-     "t": "第3，Walmart，代码 W M T，RSI2 超跌反弹信号，收盘价126.04美元，止损参考119.11。"
+     "t": "第3，Cboe Global Markets，代码 C B O E，RSI2 超跌反弹信号，收盘价357.71美元，止损参考329.32。"
     },
     {
      "lang": "zh",
@@ -96,22 +83,34 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "今明两天清静",
-   "dur": 6.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611201038",
+   "sub": "3 件大事",
+   "dur": 34.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "今明两天没有重要经济数据，也没有千亿市值以上的公司发财报。"
+     "t": "11月24日，有3家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "Dell Technologies，代码 D E L L，盘后发财报。期权定价波动正负17.1%。标签：大波动。"
+    },
+    {
+     "lang": "zh",
+     "t": "Analog Devices，代码 A D I，盘前发财报。期权定价波动正负10.7%。"
+    },
+    {
+     "lang": "zh",
+     "t": "BHP，代码 B H P，发财报。期权定价波动正负8.8%。标签：样本不足。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · The Guardian",
-   "dur": 86.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611201038",
+   "sub": "The Guardian · BBC · Al Jazeera",
+   "dur": 97.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
@@ -119,48 +118,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，商业，难度B2。大意是：人工智能应该来评判我们的信用度吗？。"
+     "t": "第1条，来自The Guardian，科学，难度B2。大意是：战胜埃博拉需要的不仅仅是药物——我看到了十年前在西非行之有效的方法 | Kayode Akintola。"
     },
     {
      "lang": "en",
-     "t": "Should AI be judging our credit worthiness?"
+     "t": "Beating Ebola takes more than medicine – I saw what worked in west Africa a decade ago | Kayode Akintola"
     },
     {
      "lang": "en",
-     "t": "Would AI be a good judge of whether you should get a mortgage, car loan or mobile phone contract?"
+     "t": "The outbreak in DR Congo is shaping up to be the worst ever, but the support of local faith leaders – and adequate funding – will be needed to bring it under control Ebola is terrifying: I know, because I lived through the world’s worst out"
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：欧盟和英国将就重塑关系达成一致步骤。"
+     "t": "第2条，来自BBC，国际，难度B2。大意是：米利班德表示，与欧盟的协议不取决于学费协议。"
     },
     {
      "lang": "en",
-     "t": "EU and Britain to agree steps towards relations reset"
+     "t": "Deal with EU not dependent on tuition fees agreement, Miliband says"
     },
     {
      "lang": "en",
-     "t": "A decade after Brexit, London is signalling a willingness to align more closely with the EU on various policies."
+     "t": "Brussels sources had previously suggested the bloc might not apply the wider deal until fees were lowered for EU students in Britain."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自The Guardian，国际，难度B2。大意是：特朗普被指在中国亚太经合组织峰会上在习近平讲话时睡着了。"
+     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：三名法国警察因对黑人实施种族主义袭击而被判刑。"
     },
     {
      "lang": "en",
-     "t": "Trump accused of falling asleep during Xi Jinping speech at Apec summit in China"
+     "t": "Three French police officers sentenced over racist assault on Black man"
     },
     {
      "lang": "en",
-     "t": "US president appeared to doze off while Chinese leader made speech, but White House insisted he was awake Donald Trump was, again, accused of falling asleep during a televised event, this time during the speech of the Chinese president, Xi "
+     "t": "Paris criminal court finds racism was an aggravating factor in the 2020 assault of Black music producer Michel Zecler."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "folk · seis",
-   "dur": 29.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611201038",
+   "sub": "building · el mar",
+   "dur": 31.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
@@ -168,15 +167,15 @@
     },
     {
      "lang": "en",
-     "t": "folk"
+     "t": "building"
     },
     {
      "lang": "zh",
-     "t": "意思是：民间的，人们。拼写是："
+     "t": "意思是：建筑物。拼写是："
     },
     {
      "lang": "en",
-     "t": "f, o, l, k"
+     "t": "b, u, i, l, d, i, n, g"
     },
     {
      "lang": "zh",
@@ -184,7 +183,7 @@
     },
     {
      "lang": "en",
-     "t": "folk"
+     "t": "building"
     },
     {
      "lang": "zh",
@@ -192,15 +191,15 @@
     },
     {
      "lang": "es",
-     "t": "seis"
+     "t": "el mar"
     },
     {
      "lang": "zh",
-     "t": "意思是：六。跟着读一遍。"
+     "t": "意思是：大海。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "seis"
+     "t": "el mar"
     }
    ]
   },
@@ -208,8 +207,8 @@
    "id": "quote",
    "title": "🎴 每日一句",
    "sub": "名言",
-   "dur": 36.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611201038",
+   "dur": 23.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
@@ -217,11 +216,11 @@
     },
     {
      "lang": "en",
-     "t": "Each man has his own vocation; his talent is his call. There is one direction in which all space is open to him."
+     "t": "The only way to have a friend is to be one."
     },
     {
      "lang": "zh",
-     "t": "意思是：每个人都有自己的天职，天赋就是召唤；总有一个方向，整片天地都为他敞开。这句话出自 Ralph Waldo Emerson。"
+     "t": "意思是：想要有朋友，唯一的办法是先成为别人的朋友。这句话出自 Ralph Waldo Emerson。"
     },
     {
      "lang": "zh",
@@ -229,7 +228,7 @@
     },
     {
      "lang": "en",
-     "t": "Each man has his own vocation; his talent is his call. There is one direction in which all space is open to him."
+     "t": "The only way to have a friend is to be one."
     }
    ],
    "opt": true
@@ -237,61 +236,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "工作邮件和短信",
-   "dur": 70.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611201038",
+   "sub": "休息室闲聊",
+   "dur": 71.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：工作邮件和短信。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：休息室闲聊。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "这个柜子仍被扣着。"
+     "t": "听说这周末可能下雨。"
     },
     {
      "lang": "en",
-     "t": "This container is still on hold."
+     "t": "I heard it might rain this weekend."
     },
     {
      "lang": "en",
-     "t": "This container is still on hold."
+     "t": "I heard it might rain this weekend."
     },
     {
      "lang": "zh",
-     "t": "提醒一下明天提柜的事。"
+     "t": "10 号公路堵死了。"
     },
     {
      "lang": "en",
-     "t": "Just a quick reminder about tomorrow's pickup."
+     "t": "The traffic on the 10 was terrible."
     },
     {
      "lang": "en",
-     "t": "Just a quick reminder about tomorrow's pickup."
+     "t": "The traffic on the 10 was terrible."
     },
     {
      "lang": "zh",
-     "t": "能确认一下提柜时间吗？"
+     "t": "你午饭吃什么？"
     },
     {
      "lang": "en",
-     "t": "Can you confirm the pickup time?"
+     "t": "What are you having for lunch?"
     },
     {
      "lang": "en",
-     "t": "Can you confirm the pickup time?"
+     "t": "What are you having for lunch?"
     },
     {
      "lang": "zh",
-     "t": "抱歉回复晚了。"
+     "t": "你去过 Foothill 上那家塔可店吗？"
     },
     {
      "lang": "en",
-     "t": "Sorry for the late reply."
+     "t": "Have you tried that taco place on Foothill?"
     },
     {
      "lang": "en",
-     "t": "Sorry for the late reply."
+     "t": "Have you tried that taco place on Foothill?"
     },
     {
      "lang": "zh",
@@ -303,13 +302,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "侧键双击直接开相机",
-   "dur": 19.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611201038",
+   "sub": "三星浏览器：自带广告拦截",
+   "dur": 19.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：侧键双击直接开相机。拍柜号、拍停车位最快。做法：设置 → 高级功能 → 侧键；「双击」选「快速启动相机」，或者改成任何 App；长按可以设成电源菜单（关机重启），不再唤醒 Bixby。"
+     "t": "今日一招：三星浏览器：自带广告拦截。网页清爽，少弹窗。做法：打开 Samsung Internet，点底部 ≡ 菜单；选「广告拦截器」，装一个（比如 Adblock Plus）；≡ → 设置 → 隐私，打开「智能防跟踪」。"
     }
    ],
    "opt": true
@@ -317,13 +316,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1897 · 1959 · 1979",
-   "dur": 32.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611201038",
+   "sub": "1972 · 1981 · 2007",
+   "dur": 22.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1897年，中德两国就德军侵占胶州湾一事在北京谈判。1959年，联合国大会第1386号决议，通过“儿童权利宣言”，同时宣布11月20日为世界儿童日。1979年，200名穆斯林在麦加克尔白清真寺暴乱，扣押了6000名当时正在朝圣的穆斯林为人质，沙特阿拉伯军队在法国特种部队的协助下平息了暴乱。"
+     "t": "历史上的今天。1972年，韩国实行维新宪法，建立第四共和国。1981年，香港蓝田木屋区五级大火。2007年，第三届东亚峰会于新加坡举行，参与的18个国家签订《气候变化、能源和环境新加坡宣言》。"
     }
    ],
    "opt": true
@@ -331,21 +330,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "饮湖上初晴后雨（其二）",
-   "dur": 32.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611201038",
+   "sub": "惠崇春江晚景（其一）",
+   "dur": 31.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：饮湖上初晴后雨（其二）。写于1073年，他36岁，在杭州。"
+     "t": "读一首苏轼：惠崇春江晚景（其一）。写于1085年，他48岁，在汴京。"
     },
     {
      "lang": "zh",
-     "t": "水光潋滟晴方好，山色空蒙雨亦奇。欲把西湖比西子，淡妆浓抹总相宜。"
+     "t": "竹外桃花三两枝，春江水暖鸭先知。蒌蒿满地芦芽短，正是河豚欲上时。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：晴天时湖水波光闪闪，正好看；下雨时山色迷迷蒙蒙，也很奇妙。要是把西湖比作美女西施，不管淡妆还是浓妆，都一样漂亮。"
+     "t": "白话意思是：竹林外两三枝桃花开了，江水变暖，最先知道的是水里的鸭子。地上长满了蒌蒿，芦苇刚冒出短短的嫩芽，正是河豚要逆流而上的时候。"
     }
    ],
    "opt": true
@@ -354,12 +353,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611201038",
+   "dur": 5.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611210936",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }
