@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "generated": "2026-11-21T20:37:06Z",
+ "generated": "2026-11-21T21:55:16Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "Anthropic数学家称AI证明黎曼猜想",
-     "d": "Anthropic的数学家Levent Alpöge在个人网站上称，使用公司AI Claude在约六周内完成了19世纪的黎曼猜想证明，并获两家机构通过Lean代码验证。此事显示AI在解决复杂数学难题上的潜力，可能提升AI在科研领域的影响力。",
+     "t": "Anthropic数学家称AI工具Claude证实黎曼猜想",
+     "d": "Anthropic研究员Levent Alpöge在个人网站公布，使用AI Claude在约六周内完成黎曼猜想的证明，并得到Lean Focused Research Organization和Mathlib Initiative的独立验证。此事显示AI在解决复杂数学难题上的潜力，可能推动数学研究和AI应用的深度融合。",
      "src": [
       {
        "n": "The Guardian",
@@ -20,8 +20,8 @@
      "full": true
     },
     {
-     "t": "AI热潮本周遭遇重挫 市场发出警报",
-     "d": "本周AI相关股票大幅下跌，纳斯达克跌10%创自2020年疫情以来最差周表现，Anthropic IPO后股价亦回落超8%。投资者担心AI行业高估值与融资成本上升，以及监管和管理层变动导致的潜在泡沫。",
+     "t": "AI热潮本周遭遇重挫 市场警钟敲响",
+     "d": "受AI股表现不佳及纳斯达克周跌10%冲击，市场对AI行业的可持续性产生担忧；同时美联储加息、监管政策收紧和Nvidia高层动荡加剧了压力。此情形可能影响AI相关企业的融资成本和行业估值，进而波及整体科技板块。",
      "src": [
       {
        "n": "NPR",
@@ -31,12 +31,12 @@
      "full": true
     },
     {
-     "t": "AI股暴跌致标普纳指进入修正",
-     "d": "受AI股大跌影响，标普500单周跌3.7%进入10%修正，纳指跌5.3%并全年转负，Anthropic跌9.1%，芯片股如Nvidia、AMD等也大幅下挫。此表现突显AI板块对整体市场的关键支撑作用，动摇了近期的科技牛市预期。",
+     "t": "尽管Anthropic IPO亮眼 科技股仍走低",
+     "d": "在Anthropic大手笔首次公开募股和Nvidia强劲财报的背景下，因投资者对AI前景不安，科技股整体收跌。该走势暗示市场对AI成长预期的谨慎态度，可能抑制短期科技板块表现。",
      "src": [
       {
        "n": "NPR",
-       "u": "https://www.npr.org/2026/11/20/g-s1-154797/nasdaq-sp500-stock-market-ai-sink-negative"
+       "u": "https://www.npr.org/2026/11/20/nx-s1-6048645/tech-stocks-end-the-week-on-a-down-note-despite-anthropics-mega-ipo"
       }
      ],
      "full": true
@@ -130,8 +130,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "FBI调查其刑事信息数据库疑似被黑",
-     "d": "美国媒体报道FBI正在调查其国家犯罪信息中心（NCIC）数据库的潜在泄露，涉及联邦和地方执法的通缉和背景信息。该事件凸显美国关键执法信息系统的网络安全风险，可能影响公众对政府数据保护的信任。",
+     "t": "FBI调查其刑事信息数据库可能被黑客入侵",
+     "d": "美国媒体称FBI正调查国家犯罪信息中心（NCIC）数据库的潜在泄露事件，涉及执法部门的案件信息共享系统。此类安全漏洞可能削弱执法信息的完整性，并引发对政府网络安全防护的更高关注。",
      "src": [
       {
        "n": "BBC",
@@ -145,23 +145,23 @@
      "full": true
     },
     {
-     "t": "俄导弹袭击泽连斯基家乡致多人伤亡",
-     "d": "俄军在乌克兰泽连斯基出生地克里维里赫发动袭击，导致两人死亡、60余人受伤，住宅、医院等设施受损，并在救援期间继续发动导弹。此事加剧地区冲突紧张，并可能影响西方对俄制裁及乌俄谈判的立场。",
+     "t": "俄袭基辅总统家乡导致两人死亡六十人受伤",
+     "d": "俄罗斯对乌克兰总统泽连斯基家乡克里维里赫实施导弹和无人机袭击，造成两人死亡、六十人受伤，设施受损。此事件加剧了俄乌冲突的紧张局势，并可能影响欧盟及北约对俄政策的进一步行动。",
      "src": [
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/russia-ukraine-zelenskyy-hometown-9.7431164?cmp=rss"
+      },
       {
        "n": "半岛电视台",
        "u": "https://www.aljazeera.com/news/2026/11/21/russian-strike-kills-two-wounds-60-in-zelenskyys-hometown?traffic_source=rss"
-      },
-      {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/russia-strikes-zelenskyy-s-hometown-killing-2/a-80009458?maca=en-rss-en-all-1573-rdf"
       }
      ],
      "full": true
     },
     {
-     "t": "印欧签署雄心勃勃的贸易协定",
-     "d": "欧盟与印尼达成全面贸易协议，旨在下年生效，扩大双方市场准入，对全球供应链与地区经济格局具有长期影响。",
+     "t": "欧盟与印尼签署雄心勃勃的贸易协定",
+     "d": "欧盟与印尼正式签署全面贸易协议，预计明年生效，将扩大双边商品与服务流动，对全球供应链及新兴市场投资前景产生积极影响。",
      "src": [
       {
        "n": "南华早报",
@@ -172,28 +172,13 @@
        "u": "https://www.dw.com/en/eu-and-indonesia-sign-trade-deal/a-80010099?maca=en-rss-en-asia-5133-rdf"
       }
      ]
-    },
-    {
-     "t": "特朗普威胁对建海外AI数据中心的美企征税",
-     "d": "特朗普在新闻发布会上表示，将对在国外建设AI数据中心的美国科技公司实施“巨大税收”，以阻止数据中心流向中国并保护本土利益。此举预示美国在AI基础设施方面的政策趋向更为保护主义，可能影响跨国科技公司的布局和全球AI供应链。",
-     "src": [
-      {
-       "n": "CBC",
-       "u": "https://www.cbc.ca/news/world/ai-data-centres-us-tech-companies-trump-9.7430426?cmp=rss"
-      },
-      {
-       "n": "MercoPress",
-       "u": "https://en.mercopress.com/2026/11/21/trump-threatens-to-penalise-tech-companies-that-build-data-centres-outside-the-us?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss"
-      }
-     ],
-     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "AI热潮本周大跌 引发市场警报",
-  "d": "AI股大幅回撤直接拖累标普与纳指，突显市场对AI估值泡沫的担忧，是本周影响美股走向的关键因素。"
+  "t": "俄方导弹袭击泽连斯基家乡致2死60伤",
+  "d": "该事件直接触及俄乌冲突核心，可能导致能源价格波动并影响全球市场情绪，是近期最具地缘政治及经济连锁反应的新闻。"
  },
  "week": []
 }
