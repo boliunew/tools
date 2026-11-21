@@ -1,6 +1,6 @@
 {
  "location": "Upland, CA（内陆帝国）",
- "eventsUpdatedAt": "2026-11-21T10:01:16.968Z",
+ "eventsUpdatedAt": "2026-11-21T15:20:37.138Z",
  "ranges": {
   "sat": "2026-11-21",
   "sun": "2026-11-22",
@@ -15,8 +15,8 @@
    "day": "today",
    "dayLabel": "周六",
    "endTime": "4:00 PM",
-   "id": 1100,
-   "note": "Free admission; crafters, collectibles and home goods from small businesses.",
+   "id": 1108,
+   "note": "Free-admission autumn market with crafters, collectibles and home goods.",
    "price": "Free",
    "sourceUrl": "https://allevents.in/upland/this-weekend",
    "startTime": "10:00 AM",
@@ -31,13 +31,13 @@
    "day": "today",
    "dayLabel": "周六",
    "endTime": "3:00 PM",
-   "id": 1101,
-   "note": "Free walk-in craft workshop for ages 3+.",
+   "id": 1109,
+   "note": "Free walk-in craft workshop for kids ages 3+ building Cube Buddies to take home.",
    "price": "Free",
    "sourceUrl": "https://www.letsgetoutkids.com/events/evt-upland-lakeshore-imagination-builders-nov21-2026",
    "startTime": "11:00 AM",
    "title": "Free Kids Event: Imagination Builders Cube Buddies",
-   "venue": "Lakeshore Learning Store Upland, 1256 W Foothill Blvd"
+   "venue": "Lakeshore Learning Store, 1256 W Foothill Blvd"
   },
   {
    "bucket": "today",
@@ -47,13 +47,13 @@
    "day": "today",
    "dayLabel": "周六",
    "endTime": null,
-   "id": 1102,
-   "note": "Free turkeys and dinner essentials, while supplies last.",
+   "id": 1110,
+   "note": "Free turkeys, dinner essentials, lunch, games and music while supplies last.",
    "price": "Free",
    "sourceUrl": "https://allevents.in/upland/this-weekend",
    "startTime": "11:00 AM",
    "title": "Thanksgiving Turkey Giveaway",
-   "venue": "Pacific Community Center, 814 Alpine Street"
+   "venue": "Pacific Community Center, 814 Alpine St"
   },
   {
    "bucket": "today",
@@ -63,9 +63,9 @@
    "day": "today",
    "dayLabel": "周六",
    "endTime": "7:30 PM",
-   "id": 1103,
-   "note": "Sold out; 30+ wine stops with live music, ages 21+.",
-   "price": "$28.52 - $60.54",
+   "id": 1111,
+   "note": "Wine and food tastings at 30+ Village shops with live music; tickets sold out.",
+   "price": "$28.52–$60.54 (sold out)",
    "sourceUrl": "https://www.eventbrite.com/e/claremont-village-wine-walk-2026-tickets-2000483521063?aff=ebdssbcategorybrowse",
    "startTime": "3:30 PM",
    "title": "Claremont Village Wine Walk 2026",
@@ -73,19 +73,19 @@
   },
   {
    "bucket": "today",
-   "category": "Music",
-   "city": "Upland",
+   "category": "Theater",
+   "city": "Rancho Cucamonga",
    "date": "2026-11-21",
    "day": "today",
    "dayLabel": "周六",
    "endTime": "9:30 PM",
-   "id": 1104,
-   "note": "Live classic rock with a food truck on site.",
-   "price": null,
-   "sourceUrl": "https://allevents.in/upland/this-weekend",
-   "startTime": "6:30 PM",
-   "title": "The Motherscratchers Rock Mt. Baldy Brewery",
-   "venue": "Mt. Baldy Brewing Co., 2120 Porter Field Way"
+   "id": 1112,
+   "note": "Family-friendly musical from the Chaffey College Theatre Department.",
+   "price": "$15.00",
+   "sourceUrl": "https://rccaaf.org/event/the-addams-family-musical/2026-11-21/",
+   "startTime": "7:00 PM",
+   "title": "The Addams Family Musical",
+   "venue": "Chaffey College Theatre, 5885 Haven Ave"
   },
   {
    "bucket": "today",
@@ -95,16 +95,48 @@
    "day": "today",
    "dayLabel": "周六",
    "endTime": null,
-   "id": 1099,
-   "note": "Weekly Saturday market in Historic Downtown Upland.",
-   "price": null,
+   "id": 1107,
+   "note": "Saturday morning farmers market in Historic Downtown Upland.",
+   "price": "Free",
    "sourceUrl": "https://allevents.in/upland/this-weekend",
    "startTime": "9:00 AM",
    "title": "Upland Farmers Market",
-   "venue": "217 E A Street, Historic Downtown Upland"
+   "venue": "217 E A St, Historic Downtown Upland"
   }
  ],
  "events": [
+  {
+   "bucket": "weekend",
+   "category": "Theater",
+   "city": "Rancho Cucamonga",
+   "date": "2026-11-22",
+   "day": "sun",
+   "dayLabel": "周日",
+   "endTime": "4:30 PM",
+   "id": 1114,
+   "note": "Sunday matinee of the family-friendly musical.",
+   "price": "$15.00",
+   "sourceUrl": "https://rccaaf.org/series/the-addams-family-musical/",
+   "startTime": "2:00 PM",
+   "title": "The Addams Family Musical",
+   "venue": "Chaffey College Theatre, 5885 Haven Ave"
+  },
+  {
+   "bucket": "weekend",
+   "category": "Music",
+   "city": "Claremont",
+   "date": "2026-11-22",
+   "day": "sun",
+   "dayLabel": "周日",
+   "endTime": "4:15 PM",
+   "id": 1115,
+   "note": "Tchaikovsky Symphony No. 5 plus Lyadov and Herrmann's Vertigo Suite; admission free.",
+   "price": "Free",
+   "sourceUrl": "https://www.pomona.edu/academics/departments/music/concert-calendar/november",
+   "startTime": "3:00 PM",
+   "title": "Pomona College Orchestra: Tchaikovsky's Fifth",
+   "venue": "Bridges Hall of Music, Pomona College, 150 E 4th St"
+  },
   {
    "bucket": "weekend",
    "category": "Music",
@@ -113,12 +145,12 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "11:30 PM",
-   "id": 1106,
-   "note": "All-ages festival finale headlined by Cachirula & Loojan.",
+   "id": 1116,
+   "note": "Two-day festival finale with Cachirula, La Texana and more; all ages.",
    "price": "$33.00",
    "sourceUrl": "https://events.extrachill.com/events/viva-pomona-sunday",
    "startTime": "4:15 PM",
-   "title": "Viva! Pomona - Day 2",
+   "title": "Viva! Pomona — Day 2",
    "venue": "The Glass House, 200 W 2nd St"
   },
   {
@@ -129,13 +161,13 @@
    "day": "sun",
    "dayLabel": "周日",
    "endTime": "1:00 PM",
-   "id": 1105,
-   "note": "Weekly Sunday market with fresh produce, flowers and artisan goods.",
+   "id": 1113,
+   "note": "Weekly Sunday farmers and artisans market with fresh produce and handmade goods.",
    "price": "Free",
    "sourceUrl": "https://discoverclaremont.com/series/claremont-farmers-market/",
    "startTime": "8:00 AM",
-   "title": "Claremont Village Sunday Farmers & Artisans Market",
-   "venue": "Claremont Village, 200 N Harvard Ave"
+   "title": "Claremont Farmers Market",
+   "venue": "200 N Harvard Ave, Claremont Village"
   }
  ],
  "weather": {

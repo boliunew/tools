@@ -1,6 +1,6 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-21T11:17:16.400913Z",
+ "eventsUpdatedAt": "2026-11-21T15:44:22.696483Z",
  "ranges": {
   "today": "2026-11-21",
   "sat": "2026-11-21",
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 52,
-   "feelsLike": 52,
-   "high": 63,
-   "low": 53,
-   "description": "Clear",
+   "temp": 60,
+   "feelsLike": 57,
+   "high": 65,
+   "low": 45,
+   "description": "Partly cloudy",
    "precipChance": 0,
-   "humidity": 61,
-   "wind": "3 mph",
-   "uvIndex": null,
-   "airQualityIndex": 82,
+   "humidity": 60,
+   "wind": "5 mph",
+   "uvIndex": 3,
+   "airQualityIndex": 83,
    "airQualityDescription": "Moderate"
   },
   "today": {
    "date": "2026-11-21",
-   "high": 63,
-   "low": 53,
+   "high": 65,
+   "low": 45,
    "precipChance": 0,
-   "summary": "Partly Sunny. Highs around 63 and lows around 53."
+   "summary": "Overcast. Highs around 65 and lows around 45."
   },
   "daily": [
    {
     "date": "2026-11-21",
-    "high": 63,
-    "low": 53,
+    "high": 65,
+    "low": 45,
     "precipChance": 0
    },
    {
     "date": "2026-11-22",
-    "high": 63,
-    "low": 59,
-    "precipChance": 89
+    "high": 64,
+    "low": 47,
+    "precipChance": 82
    },
    {
     "date": "2026-11-23",
-    "high": 64,
-    "low": 46,
-    "precipChance": 44
+    "high": 61,
+    "low": 47,
+    "precipChance": 82
    },
    {
     "date": "2026-11-24",
-    "high": 50,
-    "low": 37,
+    "high": 48,
+    "low": 39,
     "precipChance": 0
    },
    {
     "date": "2026-11-25",
-    "high": 47,
-    "low": 43,
-    "precipChance": 3
+    "high": 44,
+    "low": 36,
+    "precipChance": 6
    },
    {
     "date": "2026-11-26",
-    "high": 50,
-    "low": 43,
-    "precipChance": 76
+    "high": 48,
+    "low": 42,
+    "precipChance": 67
    },
    {
     "date": "2026-11-27",
-    "high": 52,
-    "low": null,
-    "precipChance": 40
+    "high": 55,
+    "low": 48,
+    "precipChance": 56
    }
   ],
   "weekend": [
    {
     "date": "2026-11-21",
     "day": "sat",
-    "high": 63,
-    "low": 53,
+    "high": 65,
+    "low": 45,
     "precipChance": 0,
-    "summary": "Partly Sunny. Highs around 63 and lows around 53.",
-    "wind": "7 mph",
+    "summary": "Overcast. Highs around 65 and lows around 45.",
+    "wind": "8 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 63,
-    "low": 59,
-    "precipChance": 89,
-    "summary": "Rain. Highs around 63 and lows around 59.",
-    "wind": "7 mph",
+    "high": 64,
+    "low": 47,
+    "precipChance": 82,
+    "summary": "Heavy rain. Highs around 64 and lows around 47.",
+    "wind": "11 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-21T11:16:37.357769Z",
+  "fetchedAt": "2026-11-21T15:40:56.481753Z",
   "location": "New York, NY"
  }
 }

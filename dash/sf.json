@@ -1,6 +1,6 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-21T11:17:16.395927Z",
+ "eventsUpdatedAt": "2026-11-21T15:44:22.692831Z",
  "ranges": {
   "today": "2026-11-21",
   "sat": "2026-11-21",
@@ -192,67 +192,67 @@
  ],
  "weather": {
   "current": {
-   "temp": 45,
-   "feelsLike": 40,
+   "temp": 44,
+   "feelsLike": 39,
    "high": 55,
-   "low": 44,
-   "description": "Clear",
-   "precipChance": 49,
-   "humidity": 81,
+   "low": 43,
+   "description": "Mainly clear",
+   "precipChance": 52,
+   "humidity": 85,
    "wind": "7 mph",
-   "uvIndex": 2,
-   "airQualityIndex": 42,
+   "uvIndex": 3,
+   "airQualityIndex": 50,
    "airQualityDescription": "Good"
   },
   "today": {
    "date": "2026-11-21",
    "high": 55,
-   "low": 44,
-   "precipChance": 49,
-   "summary": "Light rain. Highs around 55 and lows around 44."
+   "low": 43,
+   "precipChance": 52,
+   "summary": "Light rain. Highs around 55 and lows around 43."
   },
   "daily": [
    {
     "date": "2026-11-21",
     "high": 55,
-    "low": 44,
-    "precipChance": 49
+    "low": 43,
+    "precipChance": 52
    },
    {
     "date": "2026-11-22",
-    "high": 54,
-    "low": 48,
-    "precipChance": 36
+    "high": 55,
+    "low": 47,
+    "precipChance": 13
    },
    {
     "date": "2026-11-23",
     "high": 58,
-    "low": 49,
-    "precipChance": 6
+    "low": 46,
+    "precipChance": 1
    },
    {
     "date": "2026-11-24",
-    "high": 60,
+    "high": 62,
     "low": 51,
-    "precipChance": 76
+    "precipChance": 81
    },
    {
     "date": "2026-11-25",
-    "high": 60,
-    "low": 54,
-    "precipChance": 73
+    "high": 61,
+    "low": 53,
+    "precipChance": 76
    },
    {
     "date": "2026-11-26",
-    "high": 61,
-    "low": 52,
-    "precipChance": 29
+    "high": 59,
+    "low": 50,
+    "precipChance": 32
    },
    {
     "date": "2026-11-27",
-    "high": 63,
+    "high": 61,
     "low": 54,
-    "precipChance": 31
+    "precipChance": 38
    }
   ],
   "weekend": [
@@ -260,24 +260,24 @@
     "date": "2026-11-21",
     "day": "sat",
     "high": 55,
-    "low": 44,
-    "precipChance": 49,
-    "summary": "Light rain. Highs around 55 and lows around 44.",
-    "wind": "11 mph",
+    "low": 43,
+    "precipChance": 52,
+    "summary": "Light rain. Highs around 55 and lows around 43.",
+    "wind": "10 mph",
     "hourly": []
    },
    {
     "date": "2026-11-22",
     "day": "sun",
-    "high": 54,
-    "low": 48,
-    "precipChance": 36,
-    "summary": "Rain. Highs around 54 and lows around 48.",
-    "wind": "7 mph",
+    "high": 55,
+    "low": 47,
+    "precipChance": 13,
+    "summary": "Drizzle. Highs around 55 and lows around 47.",
+    "wind": "6 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-21T11:14:46.699601Z",
+  "fetchedAt": "2026-11-21T15:40:50.462962Z",
   "location": "San Francisco, CA"
  }
 }
