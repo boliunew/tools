@@ -1,0 +1,199 @@
+{
+ "date": "2026-11-21",
+ "generated": "2026-11-21T20:37:06Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Anthropic数学家称AI证明黎曼猜想",
+     "d": "Anthropic的数学家Levent Alpöge在个人网站上称，使用公司AI Claude在约六周内完成了19世纪的黎曼猜想证明，并获两家机构通过Lean代码验证。此事显示AI在解决复杂数学难题上的潜力，可能提升AI在科研领域的影响力。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/21/anthropic-riemann-hypothesis-solved-claude-ai"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI热潮本周遭遇重挫 市场发出警报",
+     "d": "本周AI相关股票大幅下跌，纳斯达克跌10%创自2020年疫情以来最差周表现，Anthropic IPO后股价亦回落超8%。投资者担心AI行业高估值与融资成本上升，以及监管和管理层变动导致的潜在泡沫。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/21/nx-s1-6048729/ai-stock-markets-anthropic-nvidia"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI股暴跌致标普纳指进入修正",
+     "d": "受AI股大跌影响，标普500单周跌3.7%进入10%修正，纳指跌5.3%并全年转负，Anthropic跌9.1%，芯片股如Nvidia、AMD等也大幅下挫。此表现突显AI板块对整体市场的关键支撑作用，动摇了近期的科技牛市预期。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/20/g-s1-154797/nasdaq-sp500-stock-market-ai-sink-negative"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/20 周五 收盘：标普500 ETF（SPY）-3.64%，纳指100 ETF（QQQ）-5.67%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 35.9；43% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：GPN +10.0%、GIS +3.6%、MKC +3.4%；跌幅最大：BE -15.3%、NVDA -14.0%、LITE -13.9%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。必需消费、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/23 周一的重要财报：HPE（盘后）、A（盘后）、TCOM（盘后）、ZM（盘后）、SYM（盘后）",
+     "d": "按市值挑出最大的几家，共 6 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/20 周五）",
+     "d": "Initial Jobless Claims 实际 203K（预期 198K，前值 202K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/24 周二 16:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 08:30：PCE 物价指数（重要性：高）",
+     "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 08:30：GDP（重要性：中）",
+     "d": "季度经济增速。大幅低于预期会加剧衰退担忧，利好国债、利空周期股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "FBI调查其刑事信息数据库疑似被黑",
+     "d": "美国媒体报道FBI正在调查其国家犯罪信息中心（NCIC）数据库的潜在泄露，涉及联邦和地方执法的通缉和背景信息。该事件凸显美国关键执法信息系统的网络安全风险，可能影响公众对政府数据保护的信任。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cvze7de86pk3o?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "俄导弹袭击泽连斯基家乡致多人伤亡",
+     "d": "俄军在乌克兰泽连斯基出生地克里维里赫发动袭击，导致两人死亡、60余人受伤，住宅、医院等设施受损，并在救援期间继续发动导弹。此事加剧地区冲突紧张，并可能影响西方对俄制裁及乌俄谈判的立场。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/21/russian-strike-kills-two-wounds-60-in-zelenskyys-hometown?traffic_source=rss"
+      },
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/russia-strikes-zelenskyy-s-hometown-killing-2/a-80009458?maca=en-rss-en-all-1573-rdf"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "印欧签署雄心勃勃的贸易协定",
+     "d": "欧盟与印尼达成全面贸易协议，旨在下年生效，扩大双方市场准入，对全球供应链与地区经济格局具有长期影响。",
+     "src": [
+      {
+       "n": "南华早报",
+       "u": "https://www.scmp.com/news/asia/southeast-asia/article/3375341/indonesia-eu-sign-ambitious-trade-deal"
+      },
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/eu-and-indonesia-sign-trade-deal/a-80010099?maca=en-rss-en-asia-5133-rdf"
+      }
+     ]
+    },
+    {
+     "t": "特朗普威胁对建海外AI数据中心的美企征税",
+     "d": "特朗普在新闻发布会上表示，将对在国外建设AI数据中心的美国科技公司实施“巨大税收”，以阻止数据中心流向中国并保护本土利益。此举预示美国在AI基础设施方面的政策趋向更为保护主义，可能影响跨国科技公司的布局和全球AI供应链。",
+     "src": [
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/ai-data-centres-us-tech-companies-trump-9.7430426?cmp=rss"
+      },
+      {
+       "n": "MercoPress",
+       "u": "https://en.mercopress.com/2026/11/21/trump-threatens-to-penalise-tech-companies-that-build-data-centres-outside-the-us?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "AI热潮本周大跌 引发市场警报",
+  "d": "AI股大幅回撤直接拖累标普与纳指，突显市场对AI估值泡沫的担忧，是本周影响美股走向的关键因素。"
+ },
+ "week": []
+}
