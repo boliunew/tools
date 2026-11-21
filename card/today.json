@@ -1,16 +1,16 @@
 {
- "date": "2026-11-20",
+ "date": "2026-11-21",
  "kind": "名言",
- "en": "Each man has his own vocation; his talent is his call. There is one direction in which all space is open to him.",
- "zh": "每个人都有自己的天职，天赋就是召唤；总有一个方向，整片天地都为他敞开。",
+ "en": "The only way to have a friend is to be one.",
+ "zh": "想要有朋友，唯一的办法是先成为别人的朋友。",
  "by": "Ralph Waldo Emerson",
- "line": "Each man has his own vocation; his talent is his call. There is one direction in which all space is open to him. — Ralph Waldo Emerson",
+ "line": "The only way to have a friend is to be one. — Ralph Waldo Emerson",
  "word": {
-  "w": "regain",
-  "ph": "ri'gein",
-  "zh": "vt. 取回，恢复，重回，复得",
-  "ex": "He regained consciousness and was able to talk.",
-  "exzh": "他恢复了意识，还能开口说话了。"
+  "w": "testament",
+  "ph": "'testәmәnt",
+  "zh": "n. 遗嘱，<<圣约书>>",
+  "ex": "His easy victory was a testament to his skill.",
+  "exzh": "他轻松取胜，证明了他的实力。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
