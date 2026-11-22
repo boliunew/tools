@@ -1,16 +1,16 @@
 {
- "date": "2026-11-21",
- "kind": "名言",
- "en": "The only way to have a friend is to be one.",
- "zh": "想要有朋友，唯一的办法是先成为别人的朋友。",
- "by": "Ralph Waldo Emerson",
- "line": "The only way to have a friend is to be one. — Ralph Waldo Emerson",
+ "date": "2026-11-22",
+ "kind": "习语",
+ "en": "Keep your chin up",
+ "zh": "打起精神",
+ "by": "别灰心，振作起来",
+ "line": "Keep your chin up",
  "word": {
-  "w": "testament",
-  "ph": "'testәmәnt",
-  "zh": "n. 遗嘱，<<圣约书>>",
-  "ex": "His easy victory was a testament to his skill.",
-  "exzh": "他轻松取胜，证明了他的实力。"
+  "w": "reign",
+  "ph": "rein",
+  "zh": "v. 为王，为君；当政",
+  "ex": "The most profound terror reigned throughout the house.",
+  "exzh": "整栋房子笼罩在极度的恐惧之中。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
