@@ -1,18 +1,18 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-11-21（短版）
-#EXTINF:10,通勤电台 - ☀️ 开场 11月21日 星期六
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611210936
-#EXTINF:31,通勤电台 - 🌤️ 天气 Upland 阴天 62°/45°F
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611210936
+#PLAYLIST:通勤电台 2026-11-22（短版）
+#EXTINF:12,通勤电台 - ☀️ 开场 11月22日 星期日
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611220951
+#EXTINF:32,通勤电台 - 🌤️ 天气 Upland 阴天 62°/44°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611220951
 #EXTINF:35,通勤电台 - 📊 大盘 防守
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611210936
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611220951
 #EXTINF:62,通勤电台 - 📈 股票池 16 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611210936
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611220951
 #EXTINF:34,通勤电台 - 🗓️ 财报与数据 3 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611210936
-#EXTINF:97,通勤电台 - 📰 英文新闻 The Guardian · BBC · Al Jazeera
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611210936
-#EXTINF:32,通勤电台 - 🔤 今日单词 building · el mar
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611210936
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611220951
+#EXTINF:101,通勤电台 - 📰 英文新闻 Al Jazeera · The Guardian · BBC
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611220951
+#EXTINF:32,通勤电台 - 🔤 今日单词 describe · el estudiante
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611220951
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611210936
+https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611220951

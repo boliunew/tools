@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-21T17:38:13Z",
- "date": "2026-11-21",
+ "generated": "2026-11-22T17:52:32Z",
+ "date": "2026-11-22",
  "engine": "edge",
- "total": 474.7,
- "short": 306.6,
+ "total": 481.4,
+ "short": 314.3,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611210936",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611220951",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月21日 星期六",
-   "dur": 9.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611210936",
+   "sub": "11月22日 星期日",
+   "dur": 11.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。星期六，11月21日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "周末还出门，辛苦了。这里是你的通勤电台。今天是11月22日，星期日，方向盘上的下一首可以随时跳段。"
     }
    ]
   },
   {
    "id": "weather",
    "title": "🌤️ 天气",
-   "sub": "Upland 阴天 62°/45°F",
-   "dur": 30.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611210936",
+   "sub": "Upland 阴天 62°/44°F",
+   "dur": 32.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天阴天。早上7点出门大约华氏46度，8摄氏度，体感40度。傍晚5点下班大约华氏56度，13摄氏度。白天最高62度，约17摄氏度；最低45度。基本不会下雨。白天空气质量中等，指数最高53。今天日落时间是傍晚4点43分。提醒一下：早晚比较冷，多穿一件。"
+     "t": "Upland今天阴天。早上7点出门大约华氏45度，7摄氏度，体感38度。傍晚5点下班大约华氏56度，13摄氏度，体感51度。白天最高62度，约16摄氏度；最低44度。基本不会下雨。白天空气质量良好，指数最高50。今天日落时间是傍晚4点43分。提醒一下：早晚比较冷，多穿一件。"
     }
    ]
   },
@@ -39,7 +39,7 @@
    "title": "📊 大盘",
    "sub": "防守",
    "dur": 34.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611210936",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
@@ -51,24 +51,24 @@
    "id": "pool",
    "title": "📈 股票池",
    "sub": "16 个候选",
-   "dur": 62.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611210936",
+   "dur": 61.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天16个候选，评分最高的是Viatris，代码 V T R S。不想听细节可以按下一首。"
+     "t": "股票池今天16个候选，评分最高的是Hasbro，代码 H A S。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了499只股票，其中RSI2 超跌反弹12个，回踩金坑4个。评分最高的三个是："
+     "t": "细节：一共扫描了500只股票，其中RSI2 超跌反弹12个，回踩金坑4个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Viatris，代码 V T R S，RSI2 超跌反弹信号，收盘价19.63美元，止损参考18.24。"
+     "t": "第1，Hasbro，代码 H A S，RSI2 超跌反弹信号，收盘价112.41美元，止损参考104.37。"
     },
     {
      "lang": "zh",
-     "t": "第2，Hasbro，代码 H A S，RSI2 超跌反弹信号，收盘价112.41美元，止损参考104.37。"
+     "t": "第2，Viatris，代码 V T R S，RSI2 超跌反弹信号，收盘价19.63美元，止损参考18.24。"
     },
     {
      "lang": "zh",
@@ -85,7 +85,7 @@
    "title": "🗓️ 财报与数据",
    "sub": "3 件大事",
    "dur": 34.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611210936",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
@@ -108,9 +108,9 @@
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "The Guardian · BBC · Al Jazeera",
-   "dur": 97.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611210936",
+   "sub": "Al Jazeera · The Guardian · BBC",
+   "dur": 100.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
@@ -118,48 +118,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自The Guardian，科学，难度B2。大意是：战胜埃博拉需要的不仅仅是药物——我看到了十年前在西非行之有效的方法 | Kayode Akintola。"
+     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：马克斯·维斯塔潘四年内第三次赢得F1拉斯维加斯大奖赛冠军。"
     },
     {
      "lang": "en",
-     "t": "Beating Ebola takes more than medicine – I saw what worked in west Africa a decade ago | Kayode Akintola"
+     "t": "Max Verstappen wins F1 Las Vegas Grand Prix for third time in four years"
     },
     {
      "lang": "en",
-     "t": "The outbreak in DR Congo is shaping up to be the worst ever, but the support of local faith leaders – and adequate funding – will be needed to bring it under control Ebola is terrifying: I know, because I lived through the world’s worst out"
+     "t": "Red Bull's Verstappen dug deep to fend off Antonelli and Russell in a race that saw a jaw-dropping 35 lead changes."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自BBC，国际，难度B2。大意是：米利班德表示，与欧盟的协议不取决于学费协议。"
+     "t": "第2条，来自The Guardian，科技，难度B1。大意是：“一台任天堂Switch——是的，我知道我已经67岁了”：适合各个年龄段的最佳礼物，由2岁至103岁的真实人士挑选。"
     },
     {
      "lang": "en",
-     "t": "Deal with EU not dependent on tuition fees agreement, Miliband says"
+     "t": "‘A Nintendo Switch – yes, I know I’m 67’: the best gifts for every generation, picked by real people aged 2 to 103"
     },
     {
      "lang": "en",
-     "t": "Brussels sources had previously suggested the bloc might not apply the wider deal until fees were lowered for EU students in Britain."
+     "t": "We asked everyone from gen Alpha preschoolers to retired boomers, celebs and Guardian writers what’s on their gift list this year – here’s what they said • The best Christmas gifts for 2026 How old are you, and what would you like for Chris"
     },
     {
      "lang": "zh",
-     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：三名法国警察因对黑人实施种族主义袭击而被判刑。"
+     "t": "第3条，来自BBC，科学，难度B2。大意是：埃塞克斯罕见飞蛾目击次数创纪录。"
     },
     {
      "lang": "en",
-     "t": "Three French police officers sentenced over racist assault on Black man"
+     "t": "Record-breaking sightings of rare moth in Essex"
     },
     {
      "lang": "en",
-     "t": "Paris criminal court finds racism was an aggravating factor in the 2020 assault of Black music producer Michel Zecler."
+     "t": "There is now a self-sustaining population of the moth at a nature reserve in Essex, a charity says."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "building · el mar",
-   "dur": 31.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611210936",
+   "sub": "describe · el estudiante",
+   "dur": 32.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
@@ -167,15 +167,15 @@
     },
     {
      "lang": "en",
-     "t": "building"
+     "t": "describe"
     },
     {
      "lang": "zh",
-     "t": "意思是：建筑物。拼写是："
+     "t": "意思是：描述。拼写是："
     },
     {
      "lang": "en",
-     "t": "b, u, i, l, d, i, n, g"
+     "t": "d, e, s, c, r, i, b, e"
     },
     {
      "lang": "zh",
@@ -183,7 +183,7 @@
     },
     {
      "lang": "en",
-     "t": "building"
+     "t": "describe"
     },
     {
      "lang": "zh",
@@ -191,44 +191,48 @@
     },
     {
      "lang": "es",
-     "t": "el mar"
+     "t": "el estudiante"
     },
     {
      "lang": "zh",
-     "t": "意思是：大海。跟着读一遍。"
+     "t": "意思是：学生。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el mar"
+     "t": "el estudiante"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "名言",
-   "dur": 23.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611210936",
+   "sub": "习语",
+   "dur": 22.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一句名言。"
+     "t": "每日一句，今天是一个地道习语。"
     },
     {
      "lang": "en",
-     "t": "The only way to have a friend is to be one."
+     "t": "Keep your chin up"
     },
     {
      "lang": "zh",
-     "t": "意思是：想要有朋友，唯一的办法是先成为别人的朋友。这句话出自 Ralph Waldo Emerson。"
+     "t": "意思是：打起精神。别灰心，振作起来。"
     },
     {
      "lang": "zh",
-     "t": "再听一遍。"
+     "t": "例句："
     },
     {
      "lang": "en",
-     "t": "The only way to have a friend is to be one."
+     "t": "Keep your chin up. You'll do better next time."
+    },
+    {
+     "lang": "zh",
+     "t": "打起精神，下次会更好。"
     }
    ],
    "opt": true
@@ -236,61 +240,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "休息室闲聊",
-   "dur": 71.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611210936",
+   "sub": "给调度打电话",
+   "dur": 70.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：休息室闲聊。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "听说这周末可能下雨。"
+     "t": "这一票是哪个司机？"
     },
     {
      "lang": "en",
-     "t": "I heard it might rain this weekend."
+     "t": "Who's the driver on this one?"
     },
     {
      "lang": "en",
-     "t": "I heard it might rain this weekend."
+     "t": "Who's the driver on this one?"
     },
     {
      "lang": "zh",
-     "t": "10 号公路堵死了。"
+     "t": "我马上回你电话。"
     },
     {
      "lang": "en",
-     "t": "The traffic on the 10 was terrible."
+     "t": "Let me call you right back."
     },
     {
      "lang": "en",
-     "t": "The traffic on the 10 was terrible."
+     "t": "Let me call you right back."
     },
     {
      "lang": "zh",
-     "t": "你午饭吃什么？"
+     "t": "抱歉，我在接另一个电话，稍等。"
     },
     {
      "lang": "en",
-     "t": "What are you having for lunch?"
+     "t": "Sorry, I'm on another call. One second."
     },
     {
      "lang": "en",
-     "t": "What are you having for lunch?"
+     "t": "Sorry, I'm on another call. One second."
     },
     {
      "lang": "zh",
-     "t": "你去过 Foothill 上那家塔可店吗？"
+     "t": "谢谢你告诉我最新情况。"
     },
     {
      "lang": "en",
-     "t": "Have you tried that taco place on Foothill?"
+     "t": "Thanks for the update."
     },
     {
      "lang": "en",
-     "t": "Have you tried that taco place on Foothill?"
+     "t": "Thanks for the update."
     },
     {
      "lang": "zh",
@@ -302,13 +306,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "三星浏览器：自带广告拦截",
-   "dur": 19.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611210936",
+   "sub": "睡眠模式：家人急电照样响",
+   "dur": 21.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：三星浏览器：自带广告拦截。网页清爽，少弹窗。做法：打开 Samsung Internet，点底部 ≡ 菜单；选「广告拦截器」，装一个（比如 Adblock Plus）；≡ → 设置 → 隐私，打开「智能防跟踪」。"
+     "t": "今日一招：睡眠模式：家人急电照样响。晚上安静睡，重要的人能找到你。做法：设置 → 模式与例程 → 模式 → 睡眠，设好时间；在允许的通话里选「收藏联系人」；打开「重复来电」：同一号码 15 分钟内打第二次就会响。"
     }
    ],
    "opt": true
@@ -316,13 +320,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1972 · 1981 · 2007",
-   "dur": 22.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611210936",
+   "sub": "1894 · 1902 · 1956",
+   "dur": 16.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1972年，韩国实行维新宪法，建立第四共和国。1981年，香港蓝田木屋区五级大火。2007年，第三届东亚峰会于新加坡举行，参与的18个国家签订《气候变化、能源和环境新加坡宣言》。"
+     "t": "历史上的今天。1894年，日军占领中国旅顺。1902年，尚未完工的纽约威廉斯堡大桥起火。1956年，中华人民共和国云南省大理白族自治州成立。"
     }
    ],
    "opt": true
@@ -330,21 +334,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "惠崇春江晚景（其一）",
-   "dur": 31.6,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611210936",
+   "sub": "六月二十七日望湖楼醉书（其一）",
+   "dur": 35.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：惠崇春江晚景（其一）。写于1085年，他48岁，在汴京。"
+     "t": "读一首苏轼：六月二十七日望湖楼醉书（其一）。写于1072年，他35岁，在杭州。"
     },
     {
      "lang": "zh",
-     "t": "竹外桃花三两枝，春江水暖鸭先知。蒌蒿满地芦芽短，正是河豚欲上时。"
+     "t": "黑云翻墨未遮山，白雨跳珠乱入船。卷地风来忽吹散，望湖楼下水如天。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：竹林外两三枝桃花开了，江水变暖，最先知道的是水里的鸭子。地上长满了蒌蒿，芦苇刚冒出短短的嫩芽，正是河豚要逆流而上的时候。"
+     "t": "白话意思是：乌云像打翻的墨汁一样涌上来，还没把山遮住，白花花的雨点就像珍珠一样乱蹦着砸进船里。忽然一阵大风卷地而来，把云和雨全吹散了，望湖楼下的湖水平静得像天空一样。"
     }
    ],
    "opt": true
@@ -353,12 +357,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 5.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611210936",
+   "dur": 6.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611220951",
    "text": [
     {
      "lang": "zh",
-     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
+     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
     }
    ]
   }
