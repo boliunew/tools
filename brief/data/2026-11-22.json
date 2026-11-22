@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "generated": "2026-11-22T20:46:22Z",
+ "generated": "2026-11-22T22:09:12Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "Anthropic数学家称Claude AI突破黎曼猜想",
-     "d": "Anthropic的数学家Levent Alpöge在个人网站公布，称其使用Claude AI在约六周内帮助证明了1859年提出的黎曼猜想，并得到Lean Focused Research Organization和Mathlib Initiative两机构验证。此事显示AI在解决长期未解数学难题方面的潜在能力，可能提升AI在科研领域的…",
+     "t": "Anthropic数学家借Claude AI证明黎曼假设",
+     "d": "Anthropic的数学家Levent Alpöge称，使用其AI Claude在约六周内完成了黎曼猜想的证明，并已由Lean Focused Research Organization和Mathlib Initiative通过代码验证。此事展示了AI在攻克长期数学难题上的潜力，可能加速科研进程并提升相关企业价值。",
      "src": [
       {
        "n": "The Guardian",
@@ -20,8 +20,8 @@
      "full": true
     },
     {
-     "t": "债务高企的CoreWeave面临AI繁荣风险",
-     "d": "AI算力提供商CoreWeave拥有约52座数据中心，负债达470亿美元，其中100亿美元将在明年到期，上一季度亏损7.09亿美元。其商业模式高度依赖Nvidia的芯片及融资支持，若AI行业波动或Nvidia管理层变动，CoreWeave及整体AI基础设施投资可能受冲击。",
+     "t": "CoreWeave债务高企 成为AI泡沫典型",
+     "d": "数据中心运营商CoreWeave因建设AI算力设施背负约470亿美元债务，且10亿美元明年到期，近期亏损7.09亿美元。其业务高度依赖Nvidia，后者CEO辞职加剧不确定性。公司状况凸显AI行业快速扩张背后的资本风险。",
      "src": [
       {
        "n": "The Guardian",
@@ -31,23 +31,12 @@
      "full": true
     },
     {
-     "t": "AI热潮一周暴跌引发市场担忧",
-     "d": "本周AI相关股票推动纳斯达克跌10%，为自2020年疫情封锁以来最差周表现，Anthropic IPO后股价回落逾8%；同时标普500和道指也进入修正。加息、监管审查及Nvidia高层动荡等因素加剧对AI行业可持续性的担忧，可能对整体资本市场产生连锁影响。",
+     "t": "AI热潮本周大幅回撤 市场警报频出",
+     "d": "本周纳斯达克指数跌10%，创自2020年疫情以来最差周表现，Anthropic IPO后股价回落8%。加息、监管收紧以及Nvidia高层动荡加剧了对AI行业可持续性的担忧。此波动可能影响科技板块整体估值及投资者情绪。",
      "src": [
       {
        "n": "NPR",
        "u": "https://www.npr.org/2026/11/21/nx-s1-6048729/ai-stock-markets-anthropic-nvidia"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "Anthropic上市后安全承诺受考验",
-     "d": "Anthropic在纳斯达克以811亿美元IPO融资并再获260亿美元私募，成为市值逾1万亿美元的公众公司。公司自称以AI安全为首要任务，但公开上市后将面临股东回报压力，可能影响其安全决策，检验其公益公司结构的有效性。",
-     "src": [
-      {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/11/21/nx-s1-6048678/anthropic-ipo-mission-ai-safety"
       }
      ],
      "full": true
@@ -141,8 +130,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "COP31未达成新气候协议",
-     "d": "土耳其举办的COP31气候峰会因未能在最终协议中加入逐步淘汰化石燃料的条款而告吹，欧盟等国指责油气国家劫持谈判，俄罗斯亦批评欧盟。会议的失败延迟了全球气候行动的政策推进，可能影响各国实现碳中和目标的进度。",
+     "t": "COP31未达成新气候协议 各方分歧加剧",
+     "d": "土耳其COP31气候峰会因欧盟等国家指责石油产国阻挠，未能在协议草案中加入化石燃料淘汰条款，导致谈判提前两天破裂。会议未达成共识可能延缓全球减排进程，影响能源市场和相关政策布局。",
      "src": [
       {
        "n": "BBC",
@@ -156,23 +145,8 @@
      "full": true
     },
     {
-     "t": "利比亚据称无人机袭击俄罗斯船只",
-     "d": "利比亚东部政府称，周日凌晨在班加西港口停靠加油的俄罗斯船舶遭疑似无人机攻击，导致爆炸、伤者但无死亡。该事件被视为地区冲突外溢的表现，可能加剧利比亚的安全紧张并影响俄罗斯在地中海的海上行动。",
-     "src": [
-      {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/libya-suspected-drone-attack-hits-russian-ship-in-benghazi/a-80014545?maca=en-rss-en-all-1573-rdf"
-      },
-      {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "韩国教育部长因AI作弊风波辞职",
-     "d": "韩国教育部长崔孝镇因未能预防AI辅助作弊而在全国大学入学考试后辞职，期间发现111名考生携带未经授权的智能设备。此事突显AI技术在学术诚信方面的挑战，或促使教育监管加强技术检测手段。",
+     "t": "韩教育部长因AI作弊危机辞职",
+     "d": "韩国教育部长崔效珍在应对Suneung考试期间AI作弊危机后辞职，政府紧急使用全国手机警报系统查处111名持有违规智能设备的考生。此事件凸显AI技术在重要考试中的潜在风险，对教育监管和技术防范提出新挑战。",
      "src": [
       {
        "n": "BBC",
@@ -184,13 +158,27 @@
       }
      ],
      "full": true
+    },
+    {
+     "t": "无人机袭击点燃俄罗斯货船 引发波罗的海安全担忧",
+     "d": "波罗的海一艘俄罗斯货船被无人机击中并起火，突出地区安全风险升级，可能影响该航运通道的物流与能源供应。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/drone-attack-sets-russian-cargo-ship-ablaze-in-gulf-of-finland"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cj752ddve27ko?at_medium=RSS&at_campaign=rss"
+      }
+     ]
     }
    ]
   }
  ],
  "pick": {
-  "t": "AI股本周大跌 引发市场警钟",
-  "d": "AI板块快速回调影响整体市场情绪，揭示估值高企与监管不确定性带来的系统性风险，值得投资者重点关注。"
+  "t": "韩国教育部长因AI助考作弊辞职",
+  "d": "该事件直接关联AI技术在社会关键领域的滥用，可能引发全球范围内对AI监管政策的紧急审视，对科技行业与教育体系都有深远影响。"
  },
  "week": []
 }
