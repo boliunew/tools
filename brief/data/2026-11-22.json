@@ -1,0 +1,196 @@
+{
+ "date": "2026-11-22",
+ "generated": "2026-11-22T20:46:22Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Anthropic数学家称Claude AI突破黎曼猜想",
+     "d": "Anthropic的数学家Levent Alpöge在个人网站公布，称其使用Claude AI在约六周内帮助证明了1859年提出的黎曼猜想，并得到Lean Focused Research Organization和Mathlib Initiative两机构验证。此事显示AI在解决长期未解数学难题方面的潜在能力，可能提升AI在科研领域的…",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/technology/2026/nov/21/anthropic-riemann-hypothesis-solved-claude-ai"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "债务高企的CoreWeave面临AI繁荣风险",
+     "d": "AI算力提供商CoreWeave拥有约52座数据中心，负债达470亿美元，其中100亿美元将在明年到期，上一季度亏损7.09亿美元。其商业模式高度依赖Nvidia的芯片及融资支持，若AI行业波动或Nvidia管理层变动，CoreWeave及整体AI基础设施投资可能受冲击。",
+     "src": [
+      {
+       "n": "The Guardian",
+       "u": "https://www.theguardian.com/business/2026/nov/21/debt-laden-cloud-computing-company-coreweave-ai-boom"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "AI热潮一周暴跌引发市场担忧",
+     "d": "本周AI相关股票推动纳斯达克跌10%，为自2020年疫情封锁以来最差周表现，Anthropic IPO后股价回落逾8%；同时标普500和道指也进入修正。加息、监管审查及Nvidia高层动荡等因素加剧对AI行业可持续性的担忧，可能对整体资本市场产生连锁影响。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/21/nx-s1-6048729/ai-stock-markets-anthropic-nvidia"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Anthropic上市后安全承诺受考验",
+     "d": "Anthropic在纳斯达克以811亿美元IPO融资并再获260亿美元私募，成为市值逾1万亿美元的公众公司。公司自称以AI安全为首要任务，但公开上市后将面临股东回报压力，可能影响其安全决策，检验其公益公司结构的有效性。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/21/nx-s1-6048678/anthropic-ipo-mission-ai-safety"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/20 周五 收盘：标普500 ETF（SPY）-3.64%，纳指100 ETF（QQQ）-5.67%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 35.9；43% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：GPN +10.0%、GIS +3.6%、MKC +3.4%；跌幅最大：BE -15.3%、NVDA -14.0%、LITE -13.9%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。必需消费、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/23 周一的重要财报：HPE（盘后）、A（盘后）、TCOM（盘后）、ZM（盘后）、SYM（盘后）",
+     "d": "按市值挑出最大的几家，共 6 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/20 周五）",
+     "d": "Initial Jobless Claims 实际 203K（预期 198K，前值 202K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/24 周二 16:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 08:30：PCE 物价指数（重要性：高）",
+     "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 08:30：GDP（重要性：中）",
+     "d": "季度经济增速。大幅低于预期会加剧衰退担忧，利好国债、利空周期股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "COP31未达成新气候协议",
+     "d": "土耳其举办的COP31气候峰会因未能在最终协议中加入逐步淘汰化石燃料的条款而告吹，欧盟等国指责油气国家劫持谈判，俄罗斯亦批评欧盟。会议的失败延迟了全球气候行动的政策推进，可能影响各国实现碳中和目标的进度。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/videos/cr1ewge81q4qo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/video/inside-story/2026/11/22/why-has-the-cop31-climate-summit-failed-to-reach-agreement?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "利比亚据称无人机袭击俄罗斯船只",
+     "d": "利比亚东部政府称，周日凌晨在班加西港口停靠加油的俄罗斯船舶遭疑似无人机攻击，导致爆炸、伤者但无死亡。该事件被视为地区冲突外溢的表现，可能加剧利比亚的安全紧张并影响俄罗斯在地中海的海上行动。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/libya-suspected-drone-attack-hits-russian-ship-in-benghazi/a-80014545?maca=en-rss-en-all-1573-rdf"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "韩国教育部长因AI作弊风波辞职",
+     "d": "韩国教育部长崔孝镇因未能预防AI辅助作弊而在全国大学入学考试后辞职，期间发现111名考生携带未经授权的智能设备。此事突显AI技术在学术诚信方面的挑战，或促使教育监管加强技术检测手段。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cw3dgk29d37no?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "卫报",
+       "u": "https://www.theguardian.com/world/2026/nov/22/south-korea-education-minister-resigns-after-ai-cheating-scandal-engulfs-university-exams"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "AI股本周大跌 引发市场警钟",
+  "d": "AI板块快速回调影响整体市场情绪，揭示估值高企与监管不确定性带来的系统性风险，值得投资者重点关注。"
+ },
+ "week": []
+}
