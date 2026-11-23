@@ -1,36 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-22T17:52:32Z",
- "date": "2026-11-22",
+ "generated": "2026-11-23T22:06:04Z",
+ "date": "2026-11-23",
  "engine": "edge",
- "total": 481.4,
- "short": 314.3,
+ "total": 428.1,
+ "short": 266.4,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611220951",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611231404",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月22日 星期日",
-   "dur": 11.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611220951",
+   "sub": "11月23日 星期一",
+   "dur": 10.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
-     "t": "周末还出门，辛苦了。这里是你的通勤电台。今天是11月22日，星期日，方向盘上的下一首可以随时跳段。"
+     "t": "新的一周开始了，加油！星期一，11月23日。通勤电台陪你上路，按下一首可以跳段。"
     }
    ]
   },
   {
-   "id": "weather",
-   "title": "🌤️ 天气",
-   "sub": "Upland 阴天 62°/44°F",
-   "dur": 32.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611220951",
+   "id": "sky",
+   "title": "🔭 天象",
+   "sub": "Upland",
+   "dur": 7.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
-     "t": "Upland今天阴天。早上7点出门大约华氏45度，7摄氏度，体感38度。傍晚5点下班大约华氏56度，13摄氏度，体感51度。白天最高62度，约16摄氏度；最低44度。基本不会下雨。白天空气质量良好，指数最高50。今天日落时间是傍晚4点43分。提醒一下：早晚比较冷，多穿一件。"
+     "t": "天象提醒。明天，满月。06:54 最圆，整晚都亮。"
     }
    ]
   },
@@ -39,7 +39,7 @@
    "title": "📊 大盘",
    "sub": "防守",
    "dur": 34.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611220951",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
@@ -52,7 +52,7 @@
    "title": "📈 股票池",
    "sub": "16 个候选",
    "dur": 61.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611220951",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
@@ -84,33 +84,33 @@
    "id": "calendar",
    "title": "🗓️ 财报与数据",
    "sub": "3 件大事",
-   "dur": 34.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611220951",
+   "dur": 33.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
-     "t": "11月24日，有3家大公司发财报。"
+     "t": "明天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Dell Technologies，代码 D E L L，盘后发财报。期权定价波动正负17.1%。标签：大波动。"
+     "t": "Dell Technologies，代码 D E L L，盘后发财报。期权定价波动正负13.2%。标签：大波动。"
     },
     {
      "lang": "zh",
-     "t": "Analog Devices，代码 A D I，盘前发财报。期权定价波动正负10.7%。"
+     "t": "BHP，代码 B H P，发财报。期权定价波动正负8.9%。标签：样本不足。"
     },
     {
      "lang": "zh",
-     "t": "BHP，代码 B H P，发财报。期权定价波动正负8.8%。标签：样本不足。"
+     "t": "Analog Devices，代码 A D I，盘前发财报。期权定价波动正负6.9%。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "Al Jazeera · The Guardian · BBC",
-   "dur": 100.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611220951",
+   "sub": "BBC · Al Jazeera · The Guardian",
+   "dur": 81.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
@@ -118,48 +118,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自Al Jazeera，国际，难度B2。大意是：马克斯·维斯塔潘四年内第三次赢得F1拉斯维加斯大奖赛冠军。"
+     "t": "第1条，来自BBC，国际，难度B2。大意是：伯纳姆将向议员们表示，这份“里程碑式”的欧盟协议可以让下一个十年“好得多”。"
     },
     {
      "lang": "en",
-     "t": "Max Verstappen wins F1 Las Vegas Grand Prix for third time in four years"
+     "t": "Burnham to tell MPs 'landmark' EU deal could make next decade 'much better'"
     },
     {
      "lang": "en",
-     "t": "Red Bull's Verstappen dug deep to fend off Antonelli and Russell in a race that saw a jaw-dropping 35 lead changes."
+     "t": "The prime minister will tell MPs the deal agreed on Friday is a \"choice between a broken status quo or change\"."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自The Guardian，科技，难度B1。大意是：“一台任天堂Switch——是的，我知道我已经67岁了”：适合各个年龄段的最佳礼物，由2岁至103岁的真实人士挑选。"
+     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：欧洲抗议活动频发的炎热秋天是经济崩溃的征兆。"
     },
     {
      "lang": "en",
-     "t": "‘A Nintendo Switch – yes, I know I’m 67’: the best gifts for every generation, picked by real people aged 2 to 103"
+     "t": "Europe’s hot autumn of protests is a symptom of economic breakdown"
     },
     {
      "lang": "en",
-     "t": "We asked everyone from gen Alpha preschoolers to retired boomers, celebs and Guardian writers what’s on their gift list this year – here’s what they said • The best Christmas gifts for 2026 How old are you, and what would you like for Chris"
+     "t": "European governments beholden to corporate interests no longer have the wellbeing of their nations as a top priority."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自BBC，科学，难度B2。大意是：埃塞克斯罕见飞蛾目击次数创纪录。"
+     "t": "第3条，来自The Guardian，科学，难度B2。大意是：我们真的……只使用10%的大脑吗？。"
     },
     {
      "lang": "en",
-     "t": "Record-breaking sightings of rare moth in Essex"
+     "t": "Is it true that … we only use 10% of our brains?"
     },
     {
      "lang": "en",
-     "t": "There is now a self-sustaining population of the moth at a nature reserve in Essex, a charity says."
+     "t": "The idea that we access a fraction of our cognitive potential goes back decades, but does medical science agree?"
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "describe · el estudiante",
-   "dur": 32.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611220951",
+   "sub": "highway · pelirrojo",
+   "dur": 31.8,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
@@ -167,15 +167,15 @@
     },
     {
      "lang": "en",
-     "t": "describe"
+     "t": "highway"
     },
     {
      "lang": "zh",
-     "t": "意思是：描述。拼写是："
+     "t": "意思是：公路。拼写是："
     },
     {
      "lang": "en",
-     "t": "d, e, s, c, r, i, b, e"
+     "t": "h, i, g, h, w, a, y"
     },
     {
      "lang": "zh",
@@ -183,7 +183,7 @@
     },
     {
      "lang": "en",
-     "t": "describe"
+     "t": "highway"
     },
     {
      "lang": "zh",
@@ -191,15 +191,15 @@
     },
     {
      "lang": "es",
-     "t": "el estudiante"
+     "t": "pelirrojo"
     },
     {
      "lang": "zh",
-     "t": "意思是：学生。跟着读一遍。"
+     "t": "意思是：红头发的。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "el estudiante"
+     "t": "pelirrojo"
     }
    ]
   },
@@ -208,7 +208,7 @@
    "title": "🎴 每日一句",
    "sub": "习语",
    "dur": 22.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611220951",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
@@ -216,11 +216,11 @@
     },
     {
      "lang": "en",
-     "t": "Keep your chin up"
+     "t": "Better safe than sorry"
     },
     {
      "lang": "zh",
-     "t": "意思是：打起精神。别灰心，振作起来。"
+     "t": "意思是：有备无患。小心一点总没错。"
     },
     {
      "lang": "zh",
@@ -228,11 +228,11 @@
     },
     {
      "lang": "en",
-     "t": "Keep your chin up. You'll do better next time."
+     "t": "Take a jacket. Better safe than sorry."
     },
     {
      "lang": "zh",
-     "t": "打起精神，下次会更好。"
+     "t": "带件外套吧，有备无患。"
     }
    ],
    "opt": true
@@ -240,61 +240,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "给调度打电话",
-   "dur": 70.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611220951",
+   "sub": "对讲机用语",
+   "dur": 59.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：给调度打电话。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：对讲机用语。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "这一票是哪个司机？"
+     "t": "不对，那个柜子不在这。"
     },
     {
      "lang": "en",
-     "t": "Who's the driver on this one?"
+     "t": "Negative, that container's not here."
     },
     {
      "lang": "en",
-     "t": "Who's the driver on this one?"
+     "t": "Negative, that container's not here."
     },
     {
      "lang": "zh",
-     "t": "我马上回你电话。"
+     "t": "是的/肯定。"
     },
     {
      "lang": "en",
-     "t": "Let me call you right back."
+     "t": "Affirmative."
     },
     {
      "lang": "en",
-     "t": "Let me call you right back."
+     "t": "Affirmative."
     },
     {
      "lang": "zh",
-     "t": "抱歉，我在接另一个电话，稍等。"
+     "t": "一切正常/可以了。"
     },
     {
      "lang": "en",
-     "t": "Sorry, I'm on another call. One second."
+     "t": "All clear."
     },
     {
      "lang": "en",
-     "t": "Sorry, I'm on another call. One second."
+     "t": "All clear."
     },
     {
      "lang": "zh",
-     "t": "谢谢你告诉我最新情况。"
+     "t": "完毕（说完了，等你回话）。"
     },
     {
      "lang": "en",
-     "t": "Thanks for the update."
+     "t": "Over."
     },
     {
      "lang": "en",
-     "t": "Thanks for the update."
+     "t": "Over."
     },
     {
      "lang": "zh",
@@ -306,13 +306,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "睡眠模式：家人急电照样响",
-   "dur": 21.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611220951",
+   "sub": "网上买二手，见面验货再付",
+   "dur": 18.5,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：睡眠模式：家人急电照样响。晚上安静睡，重要的人能找到你。做法：设置 → 模式与例程 → 模式 → 睡眠，设好时间；在允许的通话里选「收藏联系人」；打开「重复来电」：同一号码 15 分钟内打第二次就会响。"
+     "t": "今日一招：网上买二手，见面验货再付。防定金骗局和假货。做法：见面之前不付任何定金；约在人多、有监控的地方，比如商场门口或警局停车场；当面检查、试用后再付钱。"
     }
    ],
    "opt": true
@@ -320,13 +320,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1894 · 1902 · 1956",
-   "dur": 16.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611220951",
+   "sub": "1876 · 1943 · 1992",
+   "dur": 29.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1894年，日军占领中国旅顺。1902年，尚未完工的纽约威廉斯堡大桥起火。1956年，中华人民共和国云南省大理白族自治州成立。"
+     "t": "历史上的今天。1876年，因贪污罪被捕的纽约市政治人物威廉·特威德在越狱并逃往西班牙后，被移交给美国当局。1943年，中华民国蒋中正、美国罗斯福、英国丘吉尔在埃及召开开罗会议。1992年，世界上首支手机IBM Simon于美国拉斯维加斯的计算机经销商博览会亮相。"
     }
    ],
    "opt": true
@@ -334,21 +334,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "六月二十七日望湖楼醉书（其一）",
-   "dur": 35.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611220951",
+   "sub": "赠刘景文",
+   "dur": 31.4,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：六月二十七日望湖楼醉书（其一）。写于1072年，他35岁，在杭州。"
+     "t": "读一首苏轼：赠刘景文。写于1090年，他53岁，在杭州。"
     },
     {
      "lang": "zh",
-     "t": "黑云翻墨未遮山，白雨跳珠乱入船。卷地风来忽吹散，望湖楼下水如天。"
+     "t": "荷尽已无擎雨盖，菊残犹有傲霜枝。一年好景君须记，最是橙黄橘绿时。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：乌云像打翻的墨汁一样涌上来，还没把山遮住，白花花的雨点就像珍珠一样乱蹦着砸进船里。忽然一阵大风卷地而来，把云和雨全吹散了，望湖楼下的湖水平静得像天空一样。"
+     "t": "白话意思是：荷花谢了，连像伞一样的荷叶也没了；菊花虽然残了，枝干还傲然顶着寒霜。您一定要记住，一年里最好的风景，正是橙子黄、橘子绿的初冬时节。"
     }
    ],
    "opt": true
@@ -358,7 +358,7 @@
    "title": "👋 结束",
    "sub": "开车注意安全",
    "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611220951",
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611231404",
    "text": [
     {
      "lang": "zh",
