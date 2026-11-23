@@ -1,16 +1,16 @@
 {
- "date": "2026-11-22",
+ "date": "2026-11-23",
  "kind": "习语",
- "en": "Keep your chin up",
- "zh": "打起精神",
- "by": "别灰心，振作起来",
- "line": "Keep your chin up",
+ "en": "Better safe than sorry",
+ "zh": "有备无患",
+ "by": "小心一点总没错",
+ "line": "Better safe than sorry",
  "word": {
-  "w": "reign",
-  "ph": "rein",
-  "zh": "v. 为王，为君；当政",
-  "ex": "The most profound terror reigned throughout the house.",
-  "exzh": "整栋房子笼罩在极度的恐惧之中。"
+  "w": "nursery",
+  "ph": "'nә:sәri",
+  "zh": "n. 托儿所，苗圃，温床",
+  "ex": "They send their child to a part-time nursery.",
+  "exzh": "他们送孩子去了幼儿园的半托班。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
