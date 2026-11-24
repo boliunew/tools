@@ -1,0 +1,205 @@
+{
+ "date": "2026-11-23",
+ "generated": "2026-11-24T01:45:46Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Nvidia市值涨近1万亿美元 CEO黄仁勋复职推动股市反弹",
+     "d": "Nvidia在即刻复职创始人兼CEO黄仁勋后，股价跳涨逾31%，市值上升约1万亿美元，带动纳斯达克涨6.5%、标普500涨4.75%。此举提振了科技板块情绪，显示高管变动对AI核心公司的估值影响巨大。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cq62pn6j42jko?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "黄仁勋对美国AI产业与经济的重要性",
+     "d": "BBC指出，Nvidia及其创始人黄仁勋是美国AI浪潮的关键驱动力，其在AI芯片领域的主导地位和对供应链的融资支持，使其在AI支出和数据中心建设中扮演不可替代角色，对美国经济增长具有显著影响。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c68798vdprwpo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "旧金山AI热潮推动本地经济，同时面临泡沫担忧",
+     "d": "旧金山因OpenAI、Anthropic等AI初创公司复兴，租金、房价及就业上升，但业内人士警示AI股价若大幅回调将冲击当地经济，尤其是该市在美国AI投资中的占比高达60%。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cqe9k09j9jv4o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/20 周五 收盘：标普500 ETF（SPY）-3.64%，纳指100 ETF（QQQ）-5.67%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 35.9；43% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：GPN +10.0%、GIS +3.6%、MKC +3.4%；跌幅最大：BE -15.3%、NVDA -14.0%、LITE -13.9%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。必需消费、信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：HPE（盘后）、A（盘后）、TCOM（盘后）、ZM（盘后）、J（盘后）",
+     "d": "按市值挑出最大的几家，共 5 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/20 周五）",
+     "d": "Initial Jobless Claims 实际 203K（预期 198K，前值 202K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/24 周二 16:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 08:30：PCE 物价指数（重要性：高）",
+     "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 08:30：GDP（重要性：中）",
+     "d": "季度经济增速。大幅低于预期会加剧衰退担忧，利好国债、利空周期股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "Nvidia重新任命Jensen Huang为CEO",
+     "d": "在争议与政治压力后，Nvidia董事会决定恢复黄仁勋的CEO职务，此举稳住公司治理并提振AI板块情绪。",
+     "src": [
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/tv-shows/business/20261123-jensen-huang-reinstated-as-nvidia-ceo"
+      },
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/player/play/9.7433479?cmp=rss"
+      }
+     ]
+    },
+    {
+     "t": "乌克兰在利比亚港口袭击俄罗斯军舰显示冲突外溢",
+     "d": "乌克兰情报与军方在班加西港夜袭俄罗斯“Merkury”号护卫舰及货船，标志冲突已蔓延至地中海远离战区地区，引发联合国关注并可能加剧地区安全风险。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cm894p88jzxpo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/tv-shows/the-debate/20261123-how-far-will-ukraine-war-spread-kyiv-targets-russian-vessels-in-libya"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "欧盟拟对俄实行新制裁 包括银行、加密与体育领域",
+     "d": "欧盟委员会提出针对俄罗斯的多领域制裁方案，涉及60家银行被移出SWIFT、限制加密平台交易、禁止俄罗斯体育团队使用国旗参赛等，旨在加大对俄战争融资的压力。",
+     "src": [
+      {
+       "n": "ABC News",
+       "u": "https://abcnews.com/International/wireStory/eu-proposes-sweeping-new-russia-sanctions-targeting-banks-138382150"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/23/eu-plans-sports-ban-in-sweeping-new-russia-sanctions-proposal?traffic_source=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "11/26 周四：PCE 物价指数",
+  "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。 这是近几天最可能让整个市场大幅波动的事件，公布前后留意仓位。"
+ },
+ "week": [
+  {
+   "t": "11/26 周四 PCE 物价指数",
+   "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。"
+  },
+  {
+   "t": "11/26 周四 GDP",
+   "d": "季度经济增速。大幅低于预期会加剧衰退担忧，利好国债、利空周期股。"
+  },
+  {
+   "t": "11/23 周一 财报：HPE、A、TCOM、ZM",
+   "d": "当天共 5 家公司发布财报，这里列市值最大的几家。"
+  },
+  {
+   "t": "11/24 周二 财报：DELL、BHP、ADI、MDT",
+   "d": "当天共 10 家公司发布财报，这里列市值最大的几家。"
+  },
+  {
+   "t": "11/25 周三 财报：DE",
+   "d": "当天共 1 家公司发布财报，这里列市值最大的几家。"
+  }
+ ]
+}
