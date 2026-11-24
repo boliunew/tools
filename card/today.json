@@ -1,16 +1,16 @@
 {
- "date": "2026-11-23",
- "kind": "习语",
- "en": "Better safe than sorry",
- "zh": "有备无患",
- "by": "小心一点总没错",
- "line": "Better safe than sorry",
+ "date": "2026-11-24",
+ "kind": "易错",
+ "en": "a lot of homework",
+ "zh": "很多作业",
+ "by": "homework 不可数，没有复数",
+ "line": "✗ a lot of homeworks → ✓ a lot of homework",
  "word": {
-  "w": "nursery",
-  "ph": "'nә:sәri",
-  "zh": "n. 托儿所，苗圃，温床",
-  "ex": "They send their child to a part-time nursery.",
-  "exzh": "他们送孩子去了幼儿园的半托班。"
+  "w": "pedestrian",
+  "ph": "pә'destriәn",
+  "zh": "n. 行人，步行者；a. 人行的，徒步的，呆板的，通俗的",
+  "ex": "The interface of this website is somewhat pedestrian, but it’s simple.",
+  "exzh": "这个网站的介面没有甚么新意，但是却很简洁。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
