@@ -162,6 +162,8 @@
 
 ## 更新日志
 
+- 2026-11-24 更新 [电影 Top 500（按国家分类）](top500-movies.md)
+- 2026-11-24 更新 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-11-16 新增 [每天用得到的技巧](ubuntu-daily-tips.md)
 - 2026-11-16 新增 [Ubuntu 装好之后先做的事](ubuntu-first-steps.md)
 - 2026-11-16 新增 [把 Ubuntu 当家里的小服务器](ubuntu-home-server.md)
@@ -170,8 +172,6 @@
 - 2026-11-16 新增 [装软件的五种办法](ubuntu-software-install.md)
 - 2026-11-16 新增 [终端入门：常用命令速查](ubuntu-terminal-basics.md)
 - 2026-11-16 新增 [出问题了怎么办](ubuntu-troubleshooting.md)
-- 2026-11-16 更新 [电影 Top 500（按国家分类）](top500-movies.md)
-- 2026-11-16 更新 [音乐 Top 500（按国家分类）](top500-music.md)
 - 2026-11-06 新增 [能源与气候](energy-climate.md)
 - 2026-11-06 新增 [全球化的兴起与反弹](globalization-rise-backlash.md)
 - 2026-11-06 新增 [贫富差距与社会流动](inequality-mobility.md)
