@@ -1,0 +1,185 @@
+{
+ "date": "2026-11-24",
+ "generated": "2026-11-24T23:33:57Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "Nvidia市值因黄强势复位飙近1万亿美元",
+     "d": "Nvidia在重新任命联合创始人黄仁勋为CEO后，股价涨逾31%，市值升近1万亿美元，带动纳斯达克+6.5%和标普+4.75%。此举提振科技板块，显示高管变动对AI核心企业估值影响巨大。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cq62pn6j42jko?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "黄仁勋对美国AI经济的重要性",
+     "d": "BBC指出，Nvidia及黄仁勋在美国AI投资热潮中至关重要，其在AI芯片市场的主导地位支撑了大量企业融资与供应链。其复位表明公司在美国经济与AI产业链中的不可替代性。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c68798vdprwpo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Meta推出AI助手Muse首在英上市",
+     "d": "Meta的AI代理Muse在英国上线，提供任务执行功能，虽提升用户便利但伴随隐私担忧。此举展示Meta在AI赛道的大额投入，可能加速AI代理在消费市场的普及。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c9gkld2l38y6o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/24 周二 收盘：标普500 ETF（SPY）-0.49%，纳指100 ETF（QQQ）-1.99%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 26.4；56% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：DLTR +11.2%、CSGP +8.1%、MRNA +7.2%；跌幅最大：SNDK -17.4%、ADI -17.4%、HPE -16.3%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "今天的重要财报：DELL（盘后）、BHP（时间未定）、ADI（盘前）、MDT（盘前）、ADSK（盘后）",
+     "d": "按市值挑出最大的几家，共 10 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：首次申领失业金人数（11/20 周五）",
+     "d": "Initial Jobless Claims 实际 203K（预期 198K，前值 202K）。每周四公布。连续大幅上升是就业转弱的早期信号。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/24 周二 16:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 08:30：PCE 物价指数（重要性：高）",
+     "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 08:30：GDP（重要性：中）",
+     "d": "季度经济增速。大幅低于预期会加剧衰退担忧，利好国债、利空周期股。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "黄仁勋复职引发中美政治关注",
+     "d": "黄仁勋被重新任命为Nvidia CEO在中国社交媒体热议，成为美中关系的敏感点，暗示美国高层对华技术政策的影响。此事可能加剧中美在高端芯片出口限制上的紧张局势。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c63rgpy50x98o?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/news/2026/11/24/todd-blanche-declines-to-confirm-if-nvidias-jensen-huang-was-investigated?traffic_source=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "乌克兰在利比亚港口袭击俄舰",
+     "d": "乌克兰情报与军方在班加西港成功攻击俄军舰艇，显示冲突已超出乌克兰本土并波及中东欧海域。此类跨境行动提升地区安全风险，可能影响国际航运与北约防务准备。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cm894p88jzxpo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "法国24",
+       "u": "https://www.france24.com/en/russian-losses-on-ukrainian-front-top-700-000-including-missing"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "英制裁缅甸军方高层因种族灭绝判决",
+     "d": "英国在国际法院确认缅甸对罗兴亚族实施种族灭绝后，对五名高级军官实施制裁，并计划进一步限制航空燃料供应。此举显示西方对人权侵害的强硬回应，可能加大缅甸政局压力。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c6wy4ng1rznxo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/singapore/mfa-singapore-icj-myanmar-rohingya-genocide-judgment-6577611"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "11/26 周四：PCE 物价指数",
+  "d": "美联储最看重的通胀指标。核心 PCE 超预期会强化「更久维持高利率」的判断，压制估值高的成长股。 这是近几天最可能让整个市场大幅波动的事件，公布前后留意仓位。"
+ },
+ "week": []
+}
