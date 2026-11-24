@@ -1,18 +1,20 @@
 #EXTM3U
-#PLAYLIST:通勤电台 2026-11-23（短版）
-#EXTINF:10,通勤电台 - ☀️ 开场 11月23日 星期一
-https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611231404
+#PLAYLIST:通勤电台 2026-11-24（短版）
+#EXTINF:9,通勤电台 - ☀️ 开场 11月24日 星期二
+https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611241241
+#EXTINF:29,通勤电台 - 🌤️ 天气 Upland 阴天 72°/48°F
+https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611241241
 #EXTINF:7,通勤电台 - 🔭 天象 Upland
-https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611231404
+https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611241241
 #EXTINF:35,通勤电台 - 📊 大盘 防守
-https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611231404
-#EXTINF:62,通勤电台 - 📈 股票池 16 个候选
-https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611231404
-#EXTINF:33,通勤电台 - 🗓️ 财报与数据 3 件大事
-https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611231404
-#EXTINF:81,通勤电台 - 📰 英文新闻 BBC · Al Jazeera · The Guardian
-https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611231404
-#EXTINF:32,通勤电台 - 🔤 今日单词 highway · pelirrojo
-https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611231404
+https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611241241
+#EXTINF:65,通勤电台 - 📈 股票池 29 个候选
+https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611241241
+#EXTINF:47,通勤电台 - 🗓️ 财报与数据 4 件大事
+https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611241241
+#EXTINF:86,通勤电台 - 📰 英文新闻 NPR · BBC · Al Jazeera
+https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611241241
+#EXTINF:31,通勤电台 - 🔤 今日单词 extinct · nueve
+https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611241241
 #EXTINF:6,通勤电台 - 👋 结束 开车注意安全
-https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611231404
+https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611241241

@@ -1,23 +1,36 @@
 {
  "clock": "https://github.com/boliunew/tools/releases/download/radio-clock2/",
- "generated": "2026-11-23T22:06:04Z",
- "date": "2026-11-23",
+ "generated": "2026-11-24T20:42:07Z",
+ "date": "2026-11-24",
  "engine": "edge",
- "total": 428.1,
- "short": 266.4,
+ "total": 518.0,
+ "short": 315.1,
  "review_note": "没有设置 VOCAB_GIST_ID（仓库 Settings → Secrets → Actions），电台读不到你的词库进度",
- "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611231404",
+ "full": "https://github.com/boliunew/tools/releases/download/radio/full.mp3?v=202611241241",
  "segments": [
   {
    "id": "intro",
    "title": "☀️ 开场",
-   "sub": "11月23日 星期一",
-   "dur": 10.0,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611231404",
+   "sub": "11月24日 星期二",
+   "dur": 9.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg01.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "新的一周开始了，加油！星期一，11月23日。通勤电台陪你上路，按下一首可以跳段。"
+     "t": "这里是你的通勤电台。今天是11月24日，星期二，方向盘上的下一首可以随时跳段。"
+    }
+   ]
+  },
+  {
+   "id": "weather",
+   "title": "🌤️ 天气",
+   "sub": "Upland 阴天 72°/48°F",
+   "dur": 29.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611241241",
+   "text": [
+    {
+     "lang": "zh",
+     "t": "Upland今天阴天。早上7点出门大约华氏49度，9摄氏度，体感45度。傍晚5点下班大约华氏64度，18摄氏度，体感57度。白天最高72度，约22摄氏度；最低48度。基本不会下雨。白天空气质量中等，指数最高58。今天日落时间是傍晚4点42分。"
     }
    ]
   },
@@ -25,12 +38,12 @@
    "id": "sky",
    "title": "🔭 天象",
    "sub": "Upland",
-   "dur": 7.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg02.mp3?v=202611231404",
+   "dur": 7.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "天象提醒。明天，满月。06:54 最圆，整晚都亮。"
+     "t": "天象提醒。今天，满月。06:54 最圆，整晚都亮。"
     }
    ]
   },
@@ -38,41 +51,41 @@
    "id": "market",
    "title": "📊 大盘",
    "sub": "防守",
-   "dur": 34.7,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg03.mp3?v=202611231404",
+   "dur": 35.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "先看大盘，数据截至美股11月20日收盘。标普500 ETF 下跌3.6%，纳指100 ETF 下跌5.7%。恐慌指数VIX 35.9，很高，市场恐慌。标普成分股里，43%站上了50日均线。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
+     "t": "先看大盘，数据截至美股11月23日收盘。标普500 ETF 上涨4.7%，纳指100 ETF 上涨7.0%。恐慌指数VIX 26.6，偏高，市场有点紧张。标普成分股里，53%站上了50日均线。系统判断当前是「防守」环境：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望。"
     }
    ]
   },
   {
    "id": "pool",
    "title": "📈 股票池",
-   "sub": "16 个候选",
-   "dur": 61.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg04.mp3?v=202611231404",
+   "sub": "29 个候选",
+   "dur": 65.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "股票池今天16个候选，评分最高的是Hasbro，代码 H A S。不想听细节可以按下一首。"
+     "t": "股票池今天29个候选，评分最高的是Cboe Global Markets，代码 C B O E。不想听细节可以按下一首。"
     },
     {
      "lang": "zh",
-     "t": "细节：一共扫描了500只股票，其中RSI2 超跌反弹12个，回踩金坑4个。评分最高的三个是："
+     "t": "细节：一共扫描了500只股票，其中回踩金坑12个，RSI2 超跌反弹10个，血筹码7个。评分最高的三个是："
     },
     {
      "lang": "zh",
-     "t": "第1，Hasbro，代码 H A S，RSI2 超跌反弹信号，收盘价112.41美元，止损参考104.37。"
+     "t": "第1，Cboe Global Markets，代码 C B O E，RSI2 超跌反弹信号，收盘价354.67美元，止损参考325.73。"
     },
     {
      "lang": "zh",
-     "t": "第2，Viatris，代码 V T R S，RSI2 超跌反弹信号，收盘价19.63美元，止损参考18.24。"
+     "t": "第2，Mettler Toledo，代码 M T D，回踩金坑信号，收盘价1725.52美元，止损参考1655.37。"
     },
     {
      "lang": "zh",
-     "t": "第3，Cboe Global Markets，代码 C B O E，RSI2 超跌反弹信号，收盘价357.71美元，止损参考329.32。"
+     "t": "第3，Marriott International，代码 M A R，回踩金坑信号，收盘价415.63美元，止损参考403.13。"
     },
     {
      "lang": "zh",
@@ -83,34 +96,42 @@
   {
    "id": "calendar",
    "title": "🗓️ 财报与数据",
-   "sub": "3 件大事",
-   "dur": 33.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg05.mp3?v=202611231404",
+   "sub": "4 件大事",
+   "dur": 47.0,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "明天，有3家大公司发财报。"
+     "t": "今天，有3家大公司发财报。"
     },
     {
      "lang": "zh",
-     "t": "Dell Technologies，代码 D E L L，盘后发财报。期权定价波动正负13.2%。标签：大波动。"
+     "t": "Dell Technologies，代码 D E L L，盘后发财报。期权定价波动正负13.1%。标签：大波动。"
     },
     {
      "lang": "zh",
-     "t": "BHP，代码 B H P，发财报。期权定价波动正负8.9%。标签：样本不足。"
+     "t": "Analog Devices，代码 A D I，盘前发财报。期权定价波动正负5.9%。"
     },
     {
      "lang": "zh",
-     "t": "Analog Devices，代码 A D I，盘前发财报。期权定价波动正负6.9%。"
+     "t": "BHP，代码 B H P，发财报。期权定价波动正负8.5%。标签：样本不足。"
+    },
+    {
+     "lang": "zh",
+     "t": "明天，有1家大公司发财报。"
+    },
+    {
+     "lang": "zh",
+     "t": "Deere &，代码 D E，盘前发财报。期权定价波动正负5.6%。标签：利好出尽型。"
     }
    ]
   },
   {
    "id": "news",
    "title": "📰 英文新闻",
-   "sub": "BBC · Al Jazeera · The Guardian",
-   "dur": 81.2,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg06.mp3?v=202611231404",
+   "sub": "NPR · BBC · Al Jazeera",
+   "dur": 85.6,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
@@ -118,48 +139,48 @@
     },
     {
      "lang": "zh",
-     "t": "第1条，来自BBC，国际，难度B2。大意是：伯纳姆将向议员们表示，这份“里程碑式”的欧盟协议可以让下一个十年“好得多”。"
+     "t": "第1条，来自NPR，综合，难度B2。大意是：父母拒绝给孩子注射维生素K，医生竭力抢救婴儿。"
     },
     {
      "lang": "en",
-     "t": "Burnham to tell MPs 'landmark' EU deal could make next decade 'much better'"
+     "t": "Doctors struggle to save babies after parents refuse vitamin K"
     },
     {
      "lang": "en",
-     "t": "The prime minister will tell MPs the deal agreed on Friday is a \"choice between a broken status quo or change\"."
+     "t": "Doctors are fighting an uphill battle against disinformation about routine vitamin K shots given to newborns in the hospital."
     },
     {
      "lang": "zh",
-     "t": "第2条，来自Al Jazeera，国际，难度B2。大意是：欧洲抗议活动频发的炎热秋天是经济崩溃的征兆。"
+     "t": "第2条，来自BBC，科技，难度B2。大意是：有用但尴尬：Meta的Muse在英国上市前我与它共度的一周。"
     },
     {
      "lang": "en",
-     "t": "Europe’s hot autumn of protests is a symptom of economic breakdown"
+     "t": "Helpful but awkward: My week with Meta's Muse ahead of its UK launch"
     },
     {
      "lang": "en",
-     "t": "European governments beholden to corporate interests no longer have the wellbeing of their nations as a top priority."
+     "t": "Meta wants Muse to do for AI what WhatsApp did for messaging - here's what the BBC's technology editor found when she used it."
     },
     {
      "lang": "zh",
-     "t": "第3条，来自The Guardian，科学，难度B2。大意是：我们真的……只使用10%的大脑吗？。"
+     "t": "第3条，来自Al Jazeera，国际，难度B2。大意是：巴基斯坦的齐山·阿里即将踏上飞往中国空间站的历史性飞行。"
     },
     {
      "lang": "en",
-     "t": "Is it true that … we only use 10% of our brains?"
+     "t": "Pakistan’s Zeeshan Ali set for historic flight to China’s space station"
     },
     {
      "lang": "en",
-     "t": "The idea that we access a fraction of our cognitive potential goes back decades, but does medical science agree?"
+     "t": "The Pakistan Air Force pilot will spend about a week on board the Tiangong, conducting experiments with China’s crew."
     }
    ]
   },
   {
    "id": "words",
    "title": "🔤 今日单词",
-   "sub": "highway · pelirrojo",
-   "dur": 31.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg07.mp3?v=202611231404",
+   "sub": "extinct · nueve",
+   "dur": 31.1,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
@@ -167,15 +188,15 @@
     },
     {
      "lang": "en",
-     "t": "highway"
+     "t": "extinct"
     },
     {
      "lang": "zh",
-     "t": "意思是：公路。拼写是："
+     "t": "意思是：灭绝的。拼写是："
     },
     {
      "lang": "en",
-     "t": "h, i, g, h, w, a, y"
+     "t": "e, x, t, i, n, c, t"
     },
     {
      "lang": "zh",
@@ -183,7 +204,7 @@
     },
     {
      "lang": "en",
-     "t": "highway"
+     "t": "extinct"
     },
     {
      "lang": "zh",
@@ -191,48 +212,44 @@
     },
     {
      "lang": "es",
-     "t": "pelirrojo"
+     "t": "nueve"
     },
     {
      "lang": "zh",
-     "t": "意思是：红头发的。跟着读一遍。"
+     "t": "意思是：九。跟着读一遍。"
     },
     {
      "lang": "es",
-     "t": "pelirrojo"
+     "t": "nueve"
     }
    ]
   },
   {
    "id": "quote",
    "title": "🎴 每日一句",
-   "sub": "习语",
-   "dur": 22.8,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg08.mp3?v=202611231404",
+   "sub": "易错",
+   "dur": 18.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "每日一句，今天是一个地道习语。"
+     "t": "每日一句，今天说一个常见错误。不要说："
     },
     {
      "lang": "en",
-     "t": "Better safe than sorry"
+     "t": "a lot of homeworks"
     },
     {
      "lang": "zh",
-     "t": "意思是：有备无患。小心一点总没错。"
-    },
-    {
-     "lang": "zh",
-     "t": "例句："
+     "t": "应该说："
     },
     {
      "lang": "en",
-     "t": "Take a jacket. Better safe than sorry."
+     "t": "a lot of homework"
     },
     {
      "lang": "zh",
-     "t": "带件外套吧，有备无患。"
+     "t": "很多作业。homework 不可数，没有复数"
     }
    ],
    "opt": true
@@ -240,61 +257,61 @@
   {
    "id": "shadow",
    "title": "🗣️ 跟读",
-   "sub": "对讲机用语",
-   "dur": 59.9,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg09.mp3?v=202611231404",
+   "sub": "报柜号/拼字母",
+   "dur": 85.2,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "跟读练习，今天的场景是：对讲机用语。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
+     "t": "跟读练习，今天的场景是：报柜号/拼字母。先听中文，再听英文，然后留几秒，你跟着大声说一遍。"
     },
     {
      "lang": "zh",
-     "t": "不对，那个柜子不在这。"
+     "t": "M-S-C-U 用北约字母读"
     },
     {
      "lang": "en",
-     "t": "Negative, that container's not here."
+     "t": "M as in Mike, S as in Sierra, C as in Charlie, U as in Uniform."
     },
     {
      "lang": "en",
-     "t": "Negative, that container's not here."
+     "t": "M as in Mike, S as in Sierra, C as in Charlie, U as in Uniform."
     },
     {
      "lang": "zh",
-     "t": "是的/肯定。"
+     "t": "T、G、H"
     },
     {
      "lang": "en",
-     "t": "Affirmative."
+     "t": "T as in Tango, G as in Golf, H as in Hotel."
     },
     {
      "lang": "en",
-     "t": "Affirmative."
+     "t": "T as in Tango, G as in Golf, H as in Hotel."
     },
     {
      "lang": "zh",
-     "t": "一切正常/可以了。"
+     "t": "是 Bravo 的 B，不是 Delta 的 D。"
     },
     {
      "lang": "en",
-     "t": "All clear."
+     "t": "B as in Bravo, not D as in Delta."
     },
     {
      "lang": "en",
-     "t": "All clear."
+     "t": "B as in Bravo, not D as in Delta."
     },
     {
      "lang": "zh",
-     "t": "完毕（说完了，等你回话）。"
+     "t": "M 和 N"
     },
     {
      "lang": "en",
-     "t": "Over."
+     "t": "M as in Mike, N as in November."
     },
     {
      "lang": "en",
-     "t": "Over."
+     "t": "M as in Mike, N as in November."
     },
     {
      "lang": "zh",
@@ -306,13 +323,13 @@
   {
    "id": "tip",
    "title": "💡 今日一招",
-   "sub": "网上买二手，见面验货再付",
-   "dur": 18.5,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg10.mp3?v=202611231404",
+   "sub": "有个人信息的纸先碎了再扔",
+   "dur": 20.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "今日一招：网上买二手，见面验货再付。防定金骗局和假货。做法：见面之前不付任何定金；约在人多、有监控的地方，比如商场门口或警局停车场；当面检查、试用后再付钱。"
+     "t": "今日一招：有个人信息的纸先碎了再扔。防翻垃圾偷身份。做法：买一台交叉切（cross-cut）碎纸机；有 SSN、账号、生日、医疗信息的纸都碎掉；信用卡预批邀请也碎掉，可在 optoutprescreen.com 退订。"
     }
    ],
    "opt": true
@@ -320,13 +337,13 @@
   {
    "id": "otd",
    "title": "📜 历史上的今天",
-   "sub": "1876 · 1943 · 1992",
-   "dur": 29.1,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg11.mp3?v=202611231404",
+   "sub": "1960 · 1971 · 2012",
+   "dur": 25.9,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "历史上的今天。1876年，因贪污罪被捕的纽约市政治人物威廉·特威德在越狱并逃往西班牙后，被移交给美国当局。1943年，中华民国蒋中正、美国罗斯福、英国丘吉尔在埃及召开开罗会议。1992年，世界上首支手机IBM Simon于美国拉斯维加斯的计算机经销商博览会亮相。"
+     "t": "历史上的今天。1960年，瑞典生物学家卡尔-果兰·许登提出记忆分子学说。1971年，美国著名劫机犯“D·B·库柏”获得20万美元赎款后，自太平洋西北地区上空跳下而消失。2012年，浙江省的第一条地铁线路——杭州地铁1号线正式开通试运营。"
     }
    ],
    "opt": true
@@ -334,21 +351,21 @@
   {
    "id": "poem",
    "title": "🖋️ 读苏轼",
-   "sub": "赠刘景文",
-   "dur": 31.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg12.mp3?v=202611231404",
+   "sub": "和子由渑池怀旧",
+   "dur": 52.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "读一首苏轼：赠刘景文。写于1090年，他53岁，在杭州。"
+     "t": "读一首苏轼：和子由渑池怀旧。写于1061年，他24岁，在赴凤翔途中。"
     },
     {
      "lang": "zh",
-     "t": "荷尽已无擎雨盖，菊残犹有傲霜枝。一年好景君须记，最是橙黄橘绿时。"
+     "t": "人生到处知何似，应似飞鸿踏雪泥。泥上偶然留指爪，鸿飞那复计东西。老僧已死成新塔，坏壁无由见旧题。往日崎岖还记否，路长人困蹇驴嘶。"
     },
     {
      "lang": "zh",
-     "t": "白话意思是：荷花谢了，连像伞一样的荷叶也没了；菊花虽然残了，枝干还傲然顶着寒霜。您一定要记住，一年里最好的风景，正是橙子黄、橘子绿的初冬时节。"
+     "t": "白话意思是：人这一辈子四处奔波，像什么呢？就像大雁落在雪地上，偶然留下几个爪印，飞走之后，哪还管自己落在了东边还是西边。当年留宿的老和尚已经去世，变成了一座新塔；我们题诗的那面墙也坏了，旧诗再也看不到了。你还记得当年那段崎岖的路吗？路那么长，人那么累，跛脚的驴一路嘶叫。"
     }
    ],
    "opt": true
@@ -357,12 +374,12 @@
    "id": "outro",
    "title": "👋 结束",
    "sub": "开车注意安全",
-   "dur": 6.4,
-   "url": "https://github.com/boliunew/tools/releases/download/radio/seg13.mp3?v=202611231404",
+   "dur": 5.7,
+   "url": "https://github.com/boliunew/tools/releases/download/radio/seg14.mp3?v=202611241241",
    "text": [
     {
      "lang": "zh",
-     "t": "今天的通勤电台就到这里。开车注意安全，我们下次见！"
+     "t": "好了，今天就播到这里。路上慢点开，注意安全！"
     }
    ]
   }
