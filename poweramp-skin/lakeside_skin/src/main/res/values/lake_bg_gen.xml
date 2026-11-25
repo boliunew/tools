@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 由 tools/gen_backgrounds.py 生成，不要手改 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceCycle, NewApi">
-	<string name="lake_bg_name_1">湖光</string>
+	<string name="lake_bg_name_1">湖边</string>
 	<style name="LakeSkin_TopListWidget_1" parent="com.maxmpz.audioplayer:TopListWidget">
 		<item name="android:background">@drawable/lake_bg_1</item>
 		<item name="com.maxmpz.audioplayer:listMilkMode">none</item>
 	</style>
 	<style name="LakeSkin_TopEqLayout_1" parent="com.maxmpz.audioplayer:TopEqLayout">
 		<item name="android:background">@drawable/lake_bg_1</item>
+	</style>
+	<string name="lake_skin_name_1">湖光 · 湖边</string>
+	<style name="LakeSkin_1" parent="LakeSkin">
+		<item name="com.maxmpz.audioplayer:TopListWidget">@style/LakeSkin_TopListWidget_1</item>
+		<item name="com.maxmpz.audioplayer:TopEqLayout">@style/LakeSkin_TopEqLayout_1</item>
 	</style>
 	<style name="LakeSkin_Bg_1">
 		<item name="com.maxmpz.audioplayer:TopListWidget">@style/LakeSkin_TopListWidget_1</item>

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""🖼️ 把 backgrounds/ 里的照片做成皮肤底图，并生成「底图」选项。
+"""🖼️ 把 backgrounds/ 里的照片做成皮肤底图：每张照片在 Poweramp 皮肤列表里是一个「湖光 · 名字」。
 
 文件名规则：  序号_名字@横向中心.jpg
   - 序号决定顺序，第 1 张是默认底图
@@ -84,6 +84,11 @@ def main():
             f'\t<style name="LakeSkin_TopEqLayout_{i}" parent="com.maxmpz.audioplayer:TopEqLayout">',
             f'\t\t<item name="android:background">@drawable/lake_bg_{i}</item>',
             '\t</style>',
+            f'\t<string name="lake_skin_name_{i}">湖光 · {html.escape(label)}</string>',
+            f'\t<style name="LakeSkin_{i}" parent="LakeSkin">',
+            f'\t\t<item name="com.maxmpz.audioplayer:TopListWidget">@style/LakeSkin_TopListWidget_{i}</item>',
+            f'\t\t<item name="com.maxmpz.audioplayer:TopEqLayout">@style/LakeSkin_TopEqLayout_{i}</item>',
+            '\t</style>',
             f'\t<style name="LakeSkin_Bg_{i}">',
             f'\t\t<item name="com.maxmpz.audioplayer:TopListWidget">@style/LakeSkin_TopListWidget_{i}</item>',
             f'\t\t<item name="com.maxmpz.audioplayer:TopEqLayout">@style/LakeSkin_TopEqLayout_{i}</item>',
@@ -92,15 +97,15 @@ def main():
     st.append('</resources>\n')
     open(os.path.join(RES, "values", "lake_bg_gen.xml"), "w", encoding="utf-8").write("\n".join(st))
 
-    # skins.xml 里的「底图」单选
-    opts = ['\t\t<radio key="lake_bg" name="@string/lake_opt_bg" summary="@string/lake_opt_bg_sum" defaultValue="">']
+    # skins.xml：每张照片一个皮肤（未认证皮肤在 Poweramp 里没有设置页，所以不用选项，直接在皮肤列表里选）
+    sk = []
     for i in range(1, len(names) + 1):
-        opts.append(f'\t\t\t<option name="@string/lake_bg_name_{i}" overlapStyle="{"" if i == 1 else f"@style/LakeSkin_Bg_{i}"}"/>')
-    opts.append('\t\t</radio>')
+        sk += [f'\t<skin name="@string/lake_skin_name_{i}" author="@string/lake_skin_author"',
+               f'\t\tdescription="@string/lake_skin_desc" style="@style/LakeSkin_{i}" allowNewPadding="true"/>']
     p = os.path.join(RES, "xml", "skins.xml")
     s = open(p, encoding="utf-8").read()
-    s = re.sub(r"(<!--BG_OPTIONS_START-->\n).*?(\t*<!--BG_OPTIONS_END-->)",
-               lambda m: m.group(1) + "\n".join(opts) + "\n" + m.group(2), s, flags=re.S)
+    s = re.sub(r"(<!--BG_SKINS_START-->\n).*?(\t*<!--BG_SKINS_END-->)",
+               lambda m: m.group(1) + "\n".join(sk) + "\n" + m.group(2), s, flags=re.S)
     open(p, "w", encoding="utf-8").write(s)
     print(f"✅ 共 {len(names)} 张底图")
 

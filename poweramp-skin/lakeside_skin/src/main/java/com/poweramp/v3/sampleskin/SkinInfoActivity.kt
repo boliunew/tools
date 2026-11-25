@@ -71,7 +71,7 @@ class SkinInfoActivity : Activity() {
         val intent = Intent(Intent.ACTION_MAIN)
             .setClassName(pak, "com.maxmpz.audioplayer.StartupActivity")
             .putExtra("theme_pak", packageName)
-            .putExtra("theme_id", R.style.LakeSkin)
+            .putExtra("theme_id", R.style.LakeSkin_1)
         startActivity(intent)
         //Toast.makeText(this, R.string.skin_applied_msg, Toast.LENGTH_LONG).show(); // Enable toast if needed
         finish()
@@ -97,7 +97,7 @@ class SkinInfoActivity : Activity() {
             // If theme_pak/theme_id specified for open/theme, will scroll to/opens this skins settings
             .putExtra("open", "theme")
             .putExtra("theme_pak", packageName)
-            .putExtra("theme_id", R.style.LakeSkin)
+            .putExtra("theme_id", R.style.LakeSkin_1)
         startActivityForResult(intent, 1) // startActivityForResult is required for open=theme
         finish()
     }
