@@ -2,11 +2,7 @@
 <resources>
 	<string name="lake_skin_name">湖光 Lakeside</string>
 	<string name="lake_skin_author">Ajohnsteve</string>
-	<string name="lake_skin_desc">自己拍的照片做底图的深色皮肤，配霞鹜文楷字体</string>
-	<string name="lake_opt_bg">🖼️ 底图</string>
-	<string name="lake_opt_bg_sum">往仓库 poweramp-skin/backgrounds 里加照片，就会出现在这里</string>
-	<string name="lake_opt_font">🔤 用系统字体</string>
-	<string name="lake_opt_font_sum">不用霞鹜文楷，换回手机自带字体</string>
-	<string name="lake_opt_aablur">💿 改用专辑封面模糊背景</string>
+	<string name="lake_skin_desc">用自己拍的湖景做底图的深色皮肤：蓝天、松树、花岗岩和湖水</string>
+	<string name="lake_opt_aablur">改用专辑封面模糊背景</string>
 	<string name="lake_opt_aablur_sum">关闭照片底图，换回 Poweramp 原版的封面模糊效果</string>
 </resources>
