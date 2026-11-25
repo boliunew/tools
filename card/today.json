@@ -1,16 +1,16 @@
 {
- "date": "2026-11-24",
- "kind": "易错",
- "en": "a lot of homework",
- "zh": "很多作业",
- "by": "homework 不可数，没有复数",
- "line": "✗ a lot of homeworks → ✓ a lot of homework",
+ "date": "2026-11-25",
+ "kind": "口头禅",
+ "en": "Same here",
+ "zh": "我也是",
+ "by": "有同样的感觉",
+ "line": "Same here",
  "word": {
-  "w": "pedestrian",
-  "ph": "pә'destriәn",
-  "zh": "n. 行人，步行者；a. 人行的，徒步的，呆板的，通俗的",
-  "ex": "The interface of this website is somewhat pedestrian, but it’s simple.",
-  "exzh": "这个网站的介面没有甚么新意，但是却很简洁。"
+  "w": "ashamed",
+  "ph": "ә'ʃeimd",
+  "zh": "a. 惭愧的，羞耻的",
+  "ex": "He is very much ashamed of having behaved so badly.",
+  "exzh": "他为自己的行为感到非常羞耻。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
