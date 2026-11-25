@@ -68,11 +68,11 @@ code{background:var(--chip);border-radius:6px;padding:1px 6px;font-size:13px}
   <div class="card" id="lakeside">
     <div class="top">
       <img src="phone/lakeside-icon.png" alt="">
-      <div><h2>🏞️ 湖光 Lakeside</h2><div class="sub">Poweramp v3 皮肤 · 自己拍的湖景做底图</div></div>
+      <div><h2>🏞️ 湖光 Lakeside</h2><div class="sub">Poweramp v3 皮肤 · 自己拍的照片做底图 · 霞鹜文楷</div></div>
     </div>
     <img class="pv" src="phone/lakeside-preview.jpg" alt="湖光皮肤预览：播放页和曲库" loading="lazy">
     <div class="body">
-      <div class="chips"><span>🌊 照片底图</span><span>🌌 深色</span><span>💙 天空蓝进度条</span><span>⭐ 金色评分</span><span>🔄 可切回封面模糊</span></div>
+      <div class="chips"><span>🌊 照片底图</span><span>🌌 深色</span><span>💙 天空蓝进度条</span><span>⭐ 金色评分</span><span>🖼️ 底图可换</span><span>✍️ 霞鹜文楷</span><span>🔄 可切回封面模糊</span></div>
       <a class="dl" href="https://github.com/boliunew/tools/releases/download/lakeside-skin/Lakeside-Poweramp-Skin.apk">⬇️ 下载 APK</a>
       <b>📲 安装</b>
       <ol>
@@ -80,11 +80,19 @@ code{background:var(--chip);border-radius:6px;padding:1px 6px;font-size:13px}
         <li>打开桌面上的「湖光 Lakeside 皮肤」</li>
         <li>点「启动 Poweramp 并应用『湖光』皮肤」就生效了</li>
       </ol>
-      <div class="note">⚠️ <b>自用皮肤的限制：</b>Poweramp 只认证上架的皮肤，这个会显示 <code>[unverified]</code>，皮肤选项不保存，<b>选上 48 小时后会自动换回默认皮肤</b>，到时在 Poweramp 设置 → 外观 → 皮肤里重新选一下就行。</div>
+      <div class="note">⚠️ <b>自用皮肤的限制：</b>Poweramp 只认证上架的皮肤，这个会显示 <code>[unverified]</code>，皮肤选项（底图、字体）重启 Poweramp 后会回到默认，<b>选上 48 小时后会自动换回默认皮肤</b>，到时在 Poweramp 设置 → 外观 → 皮肤里重新选一下就行。</div>
+      <div class="sect" style="margin:18px 0 6px">🖼️ 换底图</div>
+      <ol>
+        <li>点下面按钮，在 GitHub 上传照片（手机相册直接选）</li>
+        <li>文件名写成 <code>2_海边.jpg</code>：数字是顺序，后面是显示的名字；想让竖屏往左/右偏，加 <code>@40</code>（宽度 40% 处为中心）</li>
+        <li>点 Commit，等 5 分钟自动重新编译，再下载上面的 APK 覆盖安装</li>
+        <li>Poweramp → 设置 → 外观 → 皮肤 → 湖光的选项里，「🖼️ 底图」就能切换</li>
+      </ol>
+      <a class="dl" style="background:var(--chip);color:var(--ink)" href="https://github.com/boliunew/tools/upload/main/poweramp-skin/backgrounds">📤 上传新底图</a>
       <details>
-        <summary>🛠️ 换照片 / 改配色</summary>
-        <p>工程在仓库的 <code>poweramp-skin/</code> 文件夹。换掉 <code>lakeside_skin/src/main/res/drawable-*/lake_bg.jpg</code>（手机竖屏 1080×2340、横屏 2340×1080，平板 1600×2560 / 2560×1600），配色在 <code>values/lake_skin_styles.xml</code>。推上去以后自动重新编译，下载地址不变。</p>
-        <p>皮肤设置里有个开关「改用专辑封面模糊背景」，想要 Poweramp 原版效果时打开。</p>
+        <summary>🛠️ 更多设置</summary>
+        <p>皮肤设置里还有：「🔤 用系统字体」换回手机自带字体，「💿 改用专辑封面模糊背景」关掉照片。第 1 张照片是默认底图。</p>
+        <p>工程在仓库 <code>poweramp-skin/</code>，配色在 <code>lakeside_skin/src/main/res/values/lake_skin_styles.xml</code>。字体是霞鹜文楷（SIL OFL 开源授权），编译时自动下载。</p>
       </details>
     </div>
   </div>

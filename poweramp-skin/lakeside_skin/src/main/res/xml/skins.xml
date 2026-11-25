@@ -6,8 +6,21 @@
 		author="@string/lake_skin_author"
 		description="@string/lake_skin_desc"
 		style="@style/LakeSkin"
+		forceGlobalOptions="true"
 		allowNewPadding="true"
 	>
+		<!--BG_OPTIONS_START-->
+		<radio key="lake_bg" name="@string/lake_opt_bg" summary="@string/lake_opt_bg_sum" defaultValue="">
+			<option name="@string/lake_bg_name_1" overlapStyle=""/>
+		</radio>
+		<!--BG_OPTIONS_END-->
+		<option
+			key="lake_system_font"
+			name="@string/lake_opt_font"
+			summary="@string/lake_opt_font_sum"
+			overlapStyle="@style/LakeSkin_SystemFont"
+			checkedByDefault="false"
+		/>
 		<option
 			key="lake_aa_blur"
 			name="@string/lake_opt_aablur"

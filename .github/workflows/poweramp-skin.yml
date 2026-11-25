@@ -26,6 +26,25 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
+      - name: 底图（backgrounds/ 里的照片 → 各尺寸 + 皮肤选项）
+        working-directory: poweramp-skin
+        run: |
+          pip install -q pillow
+          python3 tools/gen_backgrounds.py
+      - name: 字体 霞鹜文楷（SIL OFL 1.1）
+        working-directory: poweramp-skin
+        run: |
+          f=lakeside_skin/src/main/res/font/lxgw_wenkai_regular.ttf
+          for u in \
+            https://github.com/lxgw/LxgwWenKai/releases/latest/download/LXGWWenKai-Regular.ttf \
+            https://mirrors.ctan.org/fonts/lxgw-fonts/LXGWWenKaiGBLite-Regular.ttf ; do
+            curl -fsSL --retry 3 -o "$f" "$u" && [ "$(stat -c%s "$f")" -gt 1000000 ] && { echo "字体来自 $u（$(du -h "$f" | cut -f1)）"; break; }
+            rm -f "$f"
+          done
+          [ -f "$f" ] || { echo "::error title=字体下载失败::霞鹜文楷没下载到"; exit 1; }
+          mkdir -p lakeside_skin/src/main/assets/licenses
+          curl -fsSL -o lakeside_skin/src/main/assets/licenses/LXGW-WenKai-OFL.txt https://raw.githubusercontent.com/lxgw/LxgwWenKai/main/OFL.txt \
+            || echo "LXGW WenKai is licensed under the SIL Open Font License 1.1 - https://github.com/lxgw/LxgwWenKai" > lakeside_skin/src/main/assets/licenses/LXGW-WenKai-OFL.txt
       - name: Build APK
         working-directory: poweramp-skin
         run: |
