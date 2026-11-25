@@ -1,0 +1,53 @@
+name: Poweramp 湖光皮肤
+
+# 把 poweramp-skin/ 编译成 Poweramp v3 皮肤 APK，发到固定的 Release「lakeside-skin」。
+# 下载地址固定：https://github.com/boliunew/tools/releases/download/lakeside-skin/Lakeside-Poweramp-Skin.apk
+# 只有改了 poweramp-skin/ 才会重新编译。不设成 latest，免得抢了工具箱 App 的下载地址。
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["poweramp-skin/**", ".github/workflows/poweramp-skin.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: poweramp-skin
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+      - name: Build APK
+        working-directory: poweramp-skin
+        run: |
+          set -o pipefail
+          chmod +x gradlew
+          ./gradlew :lakeside_skin:assembleRelease --no-daemon --stacktrace 2>&1 | tee /tmp/build.log || {
+            grep -E "error:|ERROR:|What went wrong|FAILURE|Could not|> " /tmp/build.log | head -40 | while IFS= read -r l; do echo "::error title=皮肤打包失败::$l"; done
+            exit 1; }
+          cp lakeside_skin/build/outputs/apk/release/*.apk ../Lakeside-Poweramp-Skin.apk
+          ls -la ../Lakeside-Poweramp-Skin.apk
+      - name: Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="lakeside-skin"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" Lakeside-Poweramp-Skin.apk --clobber
+            gh release edit "$tag" --title "🏞️ 湖光 Lakeside 皮肤（第 ${GITHUB_RUN_NUMBER} 版）" --latest=false
+          else
+            gh release create "$tag" Lakeside-Poweramp-Skin.apk --latest=false \
+              --title "🏞️ 湖光 Lakeside 皮肤（第 ${GITHUB_RUN_NUMBER} 版）" \
+              --notes "Poweramp v3 皮肤，自己拍的湖景做底图。手机下载安装：https://github.com/boliunew/tools/releases/download/lakeside-skin/Lakeside-Poweramp-Skin.apk"
+          fi
+          echo "::notice title=湖光皮肤::已发布 ｜ 下载：https://github.com/boliunew/tools/releases/download/lakeside-skin/Lakeside-Poweramp-Skin.apk"

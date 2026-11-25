@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+rootProject.name = "lakeside_skin_project"
+include ':poweramp_api_lib'
+include ':lakeside_skin'

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="ResourceCycle, NewApi">
+
+	<!-- 湖光 Lakeside: dark Poweramp theme + photo background + lake/sky palette -->
+	<style name="LakeSkin" parent="com.maxmpz.audioplayer:style/ActivityTheme_Black">
+		<!-- Photo background lives on the full-screen list widget, which sits right above the Milk surface -->
+		<item name="com.maxmpz.audioplayer:TopListWidget">@style/LakeSkin_TopListWidget</item>
+
+		<!-- Let the photo show under the status bar -->
+		<item name="com.maxmpz.audioplayer:statusBarBg">#2000</item>
+
+		<!-- Palette taken from the photo: sky blue, deep lake navy, sunlit shore gold -->
+		<item name="com.maxmpz.audioplayer:colorAABgColor">#0E1824</item>
+		<item name="com.maxmpz.audioplayer:colorBgPrimary">#1B2735</item>
+		<item name="com.maxmpz.audioplayer:colorBgPrimaryStrictAlpha">#F01B2735</item>
+		<item name="com.maxmpz.audioplayer:colorBgLight">#2A3A4D</item>
+		<item name="com.maxmpz.audioplayer:colorBgCheckedLight">#35506B</item>
+		<item name="com.maxmpz.audioplayer:colorBgNavbar">#D914202E</item>
+		<item name="com.maxmpz.audioplayer:colorBgTransparentNavbar">#8814202E</item>
+		<item name="com.maxmpz.audioplayer:colorItemPlayingMark">#663A6EA5</item>
+		<item name="com.maxmpz.audioplayer:colorSeekbarProgress">#8CC4FF</item>
+		<item name="com.maxmpz.audioplayer:colorWaveseekTint">#8CC4FF</item>
+		<item name="com.maxmpz.audioplayer:colorFrs">#8CC4FF</item>
+		<item name="com.maxmpz.audioplayer:colorFrsTone">#B38CC4FF</item>
+		<item name="com.maxmpz.audioplayer:colorRating">#FFD27A</item>
+		<item name="com.maxmpz.audioplayer:colorFastScroller">#8CC4FF</item>
+		<item name="com.maxmpz.audioplayer:colorAZBg">#A014202E</item>
+		<item name="com.maxmpz.audioplayer:colorScrollPopupBg">#C03A6EA5</item>
+	</style>
+
+	<style name="LakeSkin_TopListWidget" parent="com.maxmpz.audioplayer:TopListWidget">
+		<item name="android:background">@drawable/lake_bg</item>
+		<!-- No album-art blur behind lists: the photo is the background -->
+		<item name="com.maxmpz.audioplayer:listMilkMode">none</item>
+	</style>
+
+	<!-- Option: back to Poweramp's stock album-art blur (no photo) -->
+	<style name="LakeSkin_AABlur">
+		<item name="com.maxmpz.audioplayer:TopListWidget">@com.maxmpz.audioplayer:style/TopListWidget</item>
+	</style>
+</resources>

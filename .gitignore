@@ -16,3 +16,7 @@ android/app/src/main/res/mipmap-*/
 android/app/google-services.json
 # 节目表在 tv-data 分支（见 .github/workflows/tv.yml）
 tv/data/epg/
+# Poweramp 皮肤编译产物
+poweramp-skin/.gradle/
+poweramp-skin/build/
+poweramp-skin/*/build/

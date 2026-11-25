@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 湖光 Lakeside skin. Based on Poweramp v3 Skin SDK sample. -->
+<skins targetBuild="1003">
+	<skin
+		name="@string/lake_skin_name"
+		author="@string/lake_skin_author"
+		description="@string/lake_skin_desc"
+		style="@style/LakeSkin"
+		allowNewPadding="true"
+	>
+		<option
+			key="lake_aa_blur"
+			name="@string/lake_opt_aablur"
+			summary="@string/lake_opt_aablur_sum"
+			overlapStyle="@style/LakeSkin_AABlur"
+			checkedByDefault="false"
+		/>
+	</skin>
+</skins>

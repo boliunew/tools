@@ -1,0 +1,31 @@
+plugins {
+    alias(libs.plugins.agp.library)
+    alias(libs.plugins.kotlin.android)
+}
+
+android {
+    namespace 'com.maxmpz.powerampapilib'
+    compileSdkVersion COMPILE_SDK
+    buildToolsVersion = BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdk MIN_SDK
+        targetSdk TARGET_SDK
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JAVA_SOURCE_COMPATIBILITY
+        targetCompatibility = JAVA_TARGET_COMPATIBILITY
+    }
+}
+
+dependencies {
+    api libs.jdt.annotation
+    api libs.androidx.appcompat
+}
