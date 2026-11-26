@@ -1,16 +1,16 @@
 {
- "date": "2026-11-25",
- "kind": "口头禅",
- "en": "Same here",
- "zh": "我也是",
- "by": "有同样的感觉",
- "line": "Same here",
+ "date": "2026-11-26",
+ "kind": "习语",
+ "en": "once in a blue moon",
+ "zh": "难得一回",
+ "by": "非常少见，难得一次",
+ "line": "once in a blue moon",
  "word": {
-  "w": "ashamed",
-  "ph": "ә'ʃeimd",
-  "zh": "a. 惭愧的，羞耻的",
-  "ex": "He is very much ashamed of having behaved so badly.",
-  "exzh": "他为自己的行为感到非常羞耻。"
+  "w": "dedicate",
+  "ph": "'dedikeit",
+  "zh": "vt. 献出，贡献",
+  "ex": "His father dedicated his life to science.",
+  "exzh": "他的父亲把一生奉献给了科学。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
