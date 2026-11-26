@@ -19,6 +19,7 @@ Cloudflare Worker（cf/worker.js）：拍照认柜号 / 单据、语音翻译、
 | 板块 | 页面 | 数据 / 生成脚本 | 自动任务 |
 |---|---|---|---|
 | 现场工具（柜号校验、📷 拍照识别、装柜、验柜、日志） | `work.html` | 本地存储 + Cloudflare `/ocr` | — |
+| 司机签到指引（三语：英/中/西，场地图动画，可换公司和地址） | `checkin/index.html`（司机看）、`checkin/edit.html`（设置） | `checkin/sites/<地点>.json`，设置页可直接发布 | — |
 | 今日股票池（短线信号、回测、自选、AI 盘后解读） | `stocks.html` | `stocks/scan.py` → `stocks/data/`；`stocks/ai_review.py` | 每日股票池扫描 |
 | 股价提醒 | `stocks.html` | `stocks/alerts.py`（GitHub issue「股价提醒: VOO 跌到 650」） | 股价提醒登记 + 扫描后检查 |
 | 信号日报（6 只股票的 RSI / 趋势 / 吸筹） | Telegram | `stocks/signal_bot.py` | 信号日报推送 |

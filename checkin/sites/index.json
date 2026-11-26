@@ -1,0 +1,10 @@
+{
+  "default": "fontana-jd",
+  "sites": [
+    {
+      "id": "fontana-jd",
+      "company": "JD Logistics",
+      "address": "16270 Jurupa Ave Ste 200, Fontana, CA 92337"
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>签到指引设置</title>
+<meta name="theme-color" content="#0f141c">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+:root{--brand:#e1251b;--bg:#0f141c;--card:#18202b;--line:#2a3547;--txt:#f4f6f9;--sub:#9aa6b6;--in:#0d1219}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;padding-bottom:90px}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px}
+header{position:sticky;top:0;z-index:5;background:#0b0f16ee;backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;gap:8px;align-items:center;padding:10px 14px;flex-wrap:wrap}
+header h1{font-size:18px;margin:0;flex:1;min-width:180px}
+select,input,textarea{background:var(--in);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;width:100%}
+textarea{resize:vertical;min-height:40px}
+input[type=color]{padding:2px;height:38px}
+input[type=checkbox]{width:auto}
+label{display:block;font-size:12.5px;color:var(--sub);margin:8px 0 3px}
+button,.b{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:#222c3a;color:var(--txt);border-radius:10px;padding:7px 11px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none;white-space:nowrap}
+button:hover{border-color:#4b5a70}
+button.pri{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:700}
+button.on{background:#fff;color:#000;border-color:#fff}
+button.sm{padding:4px 8px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:14px}
+.card>h2{margin:0 0 6px;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 10px}
+@media(max-width:560px){.grid,.grid3{grid-template-columns:1fr}}
+.tri{border-left:3px solid #3a475c;padding-left:10px;margin-top:10px}
+.tri .row{display:flex;gap:6px;align-items:center;margin-top:5px}
+.tri .row b{flex:none;width:28px;font-size:11px;text-align:center;border-radius:5px;padding:2px 0}
+.tri .en b{background:#2b3446}.tri .zh b{background:#5a4615}.tri .es b{background:#16405a}
+.tri .hd{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--sub)}
+.item{border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:10px;background:#141b25}
+.item .top{display:flex;gap:6px;align-items:center}
+.item .top input.icon{width:56px;text-align:center;font-size:18px}
+.item .top .sp{flex:1}
+.hint{font-size:12.5px;color:var(--sub);margin-top:6px}
+.tools{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+#mapbox{border-radius:12px;overflow:hidden;border:1px solid var(--line);touch-action:none;user-select:none}
+#mapbox svg{display:block;width:100%;height:auto;max-height:75vh}
+#mapbox [data-sel] rect,#mapbox [data-sel] circle{stroke:#00e5ff!important;stroke-width:3!important}
+#mapbox .ci-rp{cursor:grab}
+.ci-pulse{display:none}
+#props{margin-top:10px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#0b0f16f2;border-top:1px solid var(--line);z-index:6}
+.bar .wrap{display:flex;gap:6px;padding:10px 14px;overflow-x:auto}
+dialog{background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:16px;max-width:520px;width:calc(100% - 28px)}
+dialog::backdrop{background:#000a}
+.qr{background:#fff;border-radius:12px;padding:10px;display:inline-block;margin-top:10px}
+.qr svg{display:block;width:200px;height:200px}
+.link{word-break:break-all;font-size:13px;background:var(--in);padding:8px;border-radius:8px;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:#fff;color:#000;padding:8px 14px;border-radius:999px;font-weight:700;z-index:9;display:none}
+.banner{background:#2a2412;border:1px solid #ffce40;border-radius:12px;padding:10px;margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>⚙️ 司机签到指引 · 设置</h1>
+  <select id="sitepick" style="width:auto;max-width:200px"></select>
+  <button id="bNew">➕ 新地点</button>
+  <button id="bImport">📂 导入</button><input type="file" id="fImport" accept=".json" hidden>
+</div></header>
+
+<div class="wrap" id="form"></div>
+
+<div class="bar"><div class="wrap">
+  <button id="bTrAll">🌐 自动翻译空白</button>
+  <button id="bPrev">👁️ 预览</button>
+  <button id="bShare">🔗 分享链接</button>
+  <button id="bDown">⬇️ 下载 JSON</button>
+  <button class="pri" id="bPub">☁️ 发布到 GitHub</button>
+</div></div>
+
+<dialog id="dlg"><div id="dlgBody"></div><div style="text-align:right;margin-top:12px"><button onclick="dlg.close()">关闭</button></div></dialog>
+<div class="toast" id="toast"></div>
+
+<script src="common.js?v=1"></script>
+<script>
+var esc = CI.esc, cfg = null, sel = -1, tool = 'select', siteList = [];
+var $ = function (s, r) { return (r || document).querySelector(s); };
+function toast(m) { var t = $('#toast'); t.textContent = m; t.style.display = 'block'; clearTimeout(toast.h); toast.h = setTimeout(function () { t.style.display = 'none'; }, 2200); }
+function ls(k, v) { try { if (v === undefined) return localStorage.getItem(k); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { } }
+
+function blank() {
+  return {
+    id: 'new-site', company: 'Company Name', logo: '🚚', color: '#e1251b', address: '', mapsQuery: '', phone: '',
+    hours: { en: '', zh: '', es: '' }, notice: { en: '', zh: '', es: '' },
+    steps: [
+      { icon: '🛣️', title: { en: 'Enter the site', zh: '', es: '' }, text: { en: '', zh: '', es: '' }, at: '' },
+      { icon: '📝', title: { en: 'Check in at the office', zh: '', es: '' }, text: { en: '', zh: '', es: '' }, at: '' },
+      { icon: '🚪', title: { en: 'Go to your assigned door', zh: '', es: '' }, text: { en: '', zh: '', es: '' }, at: '' }
+    ],
+    rules: [],
+    map: { w: 400, h: 600, north: 0, items: [], route: [] }
+  };
+}
+function norm(c) {
+  c.map = c.map || { w: 400, h: 600, items: [], route: [] };
+  c.map.items = c.map.items || []; c.map.route = c.map.route || [];
+  ['hours', 'notice'].forEach(function (k) { c[k] = CI.T(c[k]); });
+  c.steps = (c.steps || []).map(function (s) { return { icon: s.icon || '•', title: CI.T(s.title), text: CI.T(s.text), at: s.at == null ? '' : s.at }; });
+  c.rules = (c.rules || []).map(CI.T);
+  return c;
+}
+function save() { ls('ci:draft', JSON.stringify(cfg)); if (!ls('ci:draftFrom')) ls('ci:draftFrom', cfg.id || 'new'); }
+function getP(p) { return p.split('.').reduce(function (o, k) { return o == null ? o : o[k]; }, cfg); }
+function setP(p, v) { var a = p.split('.'), o = cfg; for (var i = 0; i < a.length - 1; i++) o = o[a[i]]; o[a[a.length - 1]] = v; }
+
+/* ---------- 表单 ---------- */
+function inp(p, lab, type, ph) {
+  var v = getP(p); if (v == null) v = '';
+  return '<label>' + lab + '</label><input data-p="' + p + '" type="' + (type || 'text') + '" value="' + esc(v) + '" placeholder="' + esc(ph || '') + '">';
+}
+function triEd(p, lab, multi) {
+  var o = getP(p) || {};
+  var h = '<div class="tri"><div class="hd"><span>' + lab + '</span><button class="sm" data-tr="' + p + '">🌐 翻译</button></div>';
+  [['en', 'EN'], ['zh', '中'], ['es', 'ES']].forEach(function (l) {
+    var tag = multi ? 'textarea rows="2"' : 'input';
+    var v = esc(o[l[0]] || '');
+    h += '<div class="row ' + l[0] + '"><b>' + l[1] + '</b>' + (multi ? '<textarea rows="2" data-p="' + p + '.' + l[0] + '">' + v + '</textarea>' : '<input data-p="' + p + '.' + l[0] + '" value="' + v + '">') + '</div>';
+  });
+  return h + '</div>';
+}
+function atSel(k) {
+  var n = cfg.map.route.length, cur = cfg.steps[k].at, h = '<select data-p="steps.' + k + '.at" data-num="1" style="width:auto"><option value="">自动</option>';
+  for (var i = 0; i < n; i++) h += '<option value="' + i + '"' + (String(cur) === String(i) ? ' selected' : '') + '>路线点 ' + i + '</option>';
+  return h + '</select>';
+}
+function render() {
+  document.documentElement.style.setProperty('--brand', cfg.color || '#e1251b');
+  var h = '';
+  if (ls('ci:draftFrom')) h += '<div class="banner">📝 有还没发布的修改（自动存成草稿了）<button class="sm" id="bReload">🔄 丢掉草稿，重新读取线上版本</button></div>';
+  h += '<div class="card"><h2>🏢 基本信息</h2><div class="grid">' +
+    inp('company', '公司名（顶部标题会变成「公司名 Driver Check-in Guide」）') + inp('id', '地点编号（链接里用，只能小写字母/数字/横线）', 'text', 'fontana-jd') +
+    inp('address', '地址') + inp('mapsQuery', '导航用地址（留空就用上面的地址）') +
+    inp('phone', '电话（可空）') +
+    '<div class="grid" style="gap:0 8px">' + inp('logo', '图标') + inp('color', '主题色', 'color') + '</div></div>' +
+    triEd('notice', '⚠️ 重要提示（顶部黄色框，可空）', true) + triEd('hours', '🕒 收货时间（可空）') + '</div>';
+
+  h += '<div class="card"><h2>✅ 步骤</h2><div class="hint">「停在」= 地图动画里卡车走到哪个路线点时高亮这一步（路线点编号在地图上能看到）。</div>';
+  cfg.steps.forEach(function (s, k) {
+    h += '<div class="item"><div class="top"><input class="icon" data-p="steps.' + k + '.icon" value="' + esc(s.icon) + '"><b>第 ' + (k + 1) + ' 步</b><span class="sp"></span>停在 ' + atSel(k) +
+      '<button class="sm" data-mv="steps,' + k + ',-1">⬆️</button><button class="sm" data-mv="steps,' + k + ',1">⬇️</button><button class="sm" data-del="steps,' + k + '">🗑</button></div>' +
+      triEd('steps.' + k + '.title', '标题') + triEd('steps.' + k + '.text', '说明', true) + '</div>';
+  });
+  h += '<div class="tools"><button id="bAddStep">➕ 加一步</button></div></div>';
+
+  h += '<div class="card"><h2>🦺 场地规定</h2>';
+  cfg.rules.forEach(function (r, k) {
+    h += '<div class="item"><div class="top"><b>规定 ' + (k + 1) + '</b><span class="sp"></span><button class="sm" data-mv="rules,' + k + ',-1">⬆️</button><button class="sm" data-mv="rules,' + k + ',1">⬇️</button><button class="sm" data-del="rules,' + k + '">🗑</button></div>' + triEd('rules.' + k, '内容') + '</div>';
+  });
+  h += '<div class="tools"><button id="bAddRule">➕ 加一条</button></div></div>';
+
+  h += '<div class="card"><h2>🗺️ 场地图</h2>' +
+    '<div class="tools" id="tools">' +
+    [['select', '✋ 选择/拖动'], ['road', '🛣️ 画路'], ['area', '⬛ 画场地'], ['bldg', '🏢 画建筑'], ['pin', '📍 放标记'], ['route', '🚚 画路线']].map(function (t) {
+      return '<button data-tool="' + t[0] + '" class="' + (tool === t[0] ? 'on' : '') + '">' + t[1] + '</button>';
+    }).join('') + '</div>' +
+    '<div class="hint" id="toolhint"></div>' +
+    '<div id="mapbox"></div>' +
+    '<div class="tools"><button id="bRtUndo">↩️ 去掉最后一个路线点</button><button id="bRtClear">🗑 清空路线</button><button id="bRtRev">🔁 路线反向</button></div>' +
+    '<div id="props"></div>' +
+    '<div class="grid3">' + inp('map.w', '图宽', 'number') + inp('map.h', '图高', 'number') + inp('map.north', '指北针角度（0=朝上）', 'number') + '</div></div>';
+  $('#form').innerHTML = h;
+  drawMap(); hint();
+}
+var HINTS = {
+  select: '点一下选中，按住拖动可以移动；路线点（白色圆圈数字）也能拖。',
+  road: '在图上按住拖出一个长方形就是一条路。主路勾上「主路」会有黄色中线。',
+  area: '拖出一块场地（停车场、卸货区）。', bldg: '拖出建筑物，可以改名字和颜色（比如把你们的办公室涂成主题色）。',
+  pin: '点一下放一个标记：签到点 / 门号 / 入口 / 出口 / 停车 / 信息。', route: '按顺序一个个点，卡车会沿着这些点走。'
+};
+function hint() { var e = $('#toolhint'); if (e) e.textContent = '💡 ' + HINTS[tool]; }
+
+/* ---------- 地图编辑 ---------- */
+function drawMap() {
+  $('#mapbox').innerHTML = CI.mapSVG(cfg, { edit: true, sel: sel });
+  var it = cfg.map.items[sel], p = $('#props');
+  if (!it) { p.innerHTML = ''; return; }
+  var names = { road: '🛣️ 路', area: '⬛ 场地', bldg: '🏢 建筑', pin: '📍 标记' };
+  var h = '<div class="item"><div class="top"><b>' + names[it.t] + '</b><span class="sp"></span><button class="sm" id="bDup">📄 复制</button><button class="sm" id="bDelIt">🗑 删除</button></div>';
+  h += it.t === 'bldg' ? '<label>名字（可换行）</label><textarea data-m="label">' + esc(it.label || '') + '</textarea>' : '<label>名字</label><input data-m="label" value="' + esc(it.label || '') + '">';
+  if (it.t === 'pin') {
+    h += '<label>类型</label><select data-m="kind">' + [['checkin', '📝 签到点'], ['door', '🚪 门号'], ['entry', '➡️ 入口'], ['exit', '⬅️ 出口'], ['stop', '🛑 停车/等候'], ['info', 'ℹ️ 信息']].map(function (k) {
+      return '<option value="' + k[0] + '"' + (it.kind === k[0] ? ' selected' : '') + '>' + k[1] + '</option>';
+    }).join('') + '</select><label><input type="checkbox" data-m="below"' + (it.below ? ' checked' : '') + '> 名字放在点下面</label>';
+  }
+  if (it.t === 'road') h += '<label><input type="checkbox" data-m="main"' + (it.main ? ' checked' : '') + '> 主路（黄色中线）</label>';
+  if (it.t === 'bldg' || it.t === 'pin') h += '<label>颜色（不填用默认）</label><div style="display:flex;gap:6px"><input type="color" data-m="color" value="' + (it.color || '#d9dde3') + '"><button class="sm" id="bNoColor">默认色</button></div>';
+  h += '<div class="grid3" style="grid-template-columns:repeat(4,1fr)">' + ['x', 'y'].concat(it.t === 'pin' ? [] : ['w', 'h']).map(function (k) {
+    return '<div><label>' + k + '</label><input type="number" data-m="' + k + '" value="' + it[k] + '"></div>';
+  }).join('') + '</div></div>';
+  p.innerHTML = h;
+}
+function svgPt(e) {
+  var svg = $('#mapbox svg'), pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+  var q = pt.matrixTransform(svg.getScreenCTM().inverse());
+  return [Math.round(q.x / 2) * 2, Math.round(q.y / 2) * 2];
+}
+var drag = null;
+document.addEventListener('pointerdown', function (e) {
+  var box = e.target.closest('#mapbox'); if (!box) return;
+  e.preventDefault();
+  var p = svgPt(e), g = e.target.closest('[data-i]'), rp = e.target.closest('[data-r]');
+  if (tool === 'select') {
+    if (rp) { drag = { r: +rp.dataset.r }; }
+    else if (g) { sel = +g.dataset.i; var it = cfg.map.items[sel]; drag = { i: sel, dx: p[0] - it.x, dy: p[1] - it.y }; }
+    else sel = -1;
+    drawMap();
+  } else if (tool === 'pin') {
+    cfg.map.items.push({ t: 'pin', x: p[0], y: p[1], kind: 'checkin', label: 'CHECK IN' });
+    sel = cfg.map.items.length - 1; setTool('select'); changed(true);
+  } else if (tool === 'route') {
+    cfg.map.route.push(p); changed(true);
+  } else {
+    cfg.map.items.push({ t: tool, x: p[0], y: p[1], w: 2, h: 2, label: '' });
+    sel = cfg.map.items.length - 1; drag = { mk: sel, x0: p[0], y0: p[1] }; drawMap();
+  }
+  if (drag) box.setPointerCapture(e.pointerId);
+});
+document.addEventListener('pointermove', function (e) {
+  if (!drag) return;
+  var p = svgPt(e);
+  if (drag.r != null) cfg.map.route[drag.r] = p;
+  else if (drag.mk != null) { var it = cfg.map.items[drag.mk]; it.x = Math.min(p[0], drag.x0); it.y = Math.min(p[1], drag.y0); it.w = Math.max(2, Math.abs(p[0] - drag.x0)); it.h = Math.max(2, Math.abs(p[1] - drag.y0)); }
+  else { var it2 = cfg.map.items[drag.i]; it2.x = p[0] - drag.dx; it2.y = p[1] - drag.dy; }
+  drawMap();
+});
+document.addEventListener('pointerup', function () {
+  if (!drag) return;
+  if (drag.mk != null) { var it = cfg.map.items[drag.mk]; if (it.w < 6 || it.h < 6) { cfg.map.items.splice(drag.mk, 1); sel = -1; } else setTool('select'); }
+  drag = null; changed(true);
+});
+function setTool(t) { tool = t; document.querySelectorAll('[data-tool]').forEach(function (b) { b.classList.toggle('on', b.dataset.tool === t); }); hint(); }
+function changed(full) { save(); if (full) render(); }
+
+/* ---------- 输入绑定 ---------- */
+document.addEventListener('input', function (e) {
+  var t = e.target;
+  if (t.dataset.p) {
+    var v = t.value;
+    if (t.type === 'number' || t.dataset.num) v = v === '' ? '' : +v;
+    setP(t.dataset.p, v); save();
+    if (/^(map\.|color)/.test(t.dataset.p)) { if (t.dataset.p === 'color') document.documentElement.style.setProperty('--brand', v); drawMapOnly(); }
+  } else if (t.dataset.m) {
+    var it = cfg.map.items[sel]; if (!it) return;
+    var k = t.dataset.m;
+    it[k] = t.type === 'checkbox' ? t.checked : t.type === 'number' ? +t.value : t.value;
+    save(); drawMapOnly();
+  }
+});
+function drawMapOnly() { $('#mapbox').innerHTML = CI.mapSVG(cfg, { edit: true, sel: sel }); }
+document.addEventListener('change', function (e) { if (e.target.dataset.m === 'kind' || e.target.dataset.num) { save(); drawMapOnly(); } });
+
+document.addEventListener('click', async function (e) {
+  var b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.tool) { setTool(b.dataset.tool); return; }
+  if (b.dataset.tr) { await trOne(b.dataset.tr, true); render(); return; }
+  if (b.dataset.del) { var a = b.dataset.del.split(','); cfg[a[0]].splice(+a[1], 1); changed(true); return; }
+  if (b.dataset.mv) {
+    var m = b.dataset.mv.split(','), arr = cfg[m[0]], i = +m[1], j = i + +m[2];
+    if (j < 0 || j >= arr.length) return; var x = arr[i]; arr[i] = arr[j]; arr[j] = x; changed(true); return;
+  }
+  switch (b.id) {
+    case 'bAddStep': cfg.steps.push({ icon: '•', title: { en: '', zh: '', es: '' }, text: { en: '', zh: '', es: '' }, at: '' }); changed(true); break;
+    case 'bAddRule': cfg.rules.push({ en: '', zh: '', es: '' }); changed(true); break;
+    case 'bDelIt': cfg.map.items.splice(sel, 1); sel = -1; changed(true); break;
+    case 'bDup': var c = JSON.parse(JSON.stringify(cfg.map.items[sel])); c.x += 12; c.y += 12; cfg.map.items.push(c); sel = cfg.map.items.length - 1; changed(true); break;
+    case 'bNoColor': delete cfg.map.items[sel].color; changed(true); break;
+    case 'bRtUndo': cfg.map.route.pop(); changed(true); break;
+    case 'bRtClear': if (confirm('清空整条路线？')) { cfg.map.route = []; changed(true); } break;
+    case 'bRtRev': cfg.map.route.reverse(); changed(true); break;
+    case 'bReload': ls('ci:draft', null); ls('ci:draftFrom', null); loadSite(cfg.id); break;
+  }
+});
+
+/* ---------- 翻译 ---------- */
+async function trOne(p, force) {
+  var o = getP(p); if (!o || !o.en) return 0;
+  var n = 0;
+  for (var l of ['zh', 'es']) {
+    if (o[l] && !force) continue;
+    var out = await CI.translate(o.en, l);
+    if (out) { o[l] = out; n++; }
+  }
+  save(); return n;
+}
+function triPaths() {
+  var ps = ['notice', 'hours'];
+  cfg.steps.forEach(function (s, k) { ps.push('steps.' + k + '.title', 'steps.' + k + '.text'); });
+  cfg.rules.forEach(function (r, k) { ps.push('rules.' + k); });
+  return ps;
+}
+$('#bTrAll').onclick = async function () {
+  toast('🌐 翻译中…'); var n = 0;
+  for (var p of triPaths()) n += await trOne(p, false);
+  render(); toast(n ? '✅ 翻译了 ' + n + ' 处，记得检查一下' : '没有需要翻译的空白');
+};
+
+/* ---------- 预览 / 分享 / 下载 ---------- */
+function baseURL() { return location.href.split('#')[0].split('?')[0].replace(/edit\.html$/, ''); }
+function qrHTML(url) { try { var q = qrcode(0, 'M'); q.addData(url); q.make(); return '<div class="qr">' + q.createSvgTag({ cellSize: 4, margin: 2, scalable: true }) + '</div>'; } catch (e) { return ''; } }
+function showLink(title, url, extra) {
+  $('#dlgBody').innerHTML = '<h3 style="margin:0">' + title + '</h3>' + (extra || '') + '<div class="link">' + esc(url) + '</div>' +
+    '<div class="tools"><button id="bCopy">📋 复制链接</button><a class="b" href="' + esc(url) + '" target="_blank">↗️ 打开</a></div>' + qrHTML(url) +
+    '<div class="hint">司机扫二维码就能打开。</div>';
+  $('#bCopy').onclick = function () { navigator.clipboard.writeText(url).then(function () { toast('已复制'); }); };
+  dlg.showModal();
+}
+$('#bPrev').onclick = function () { save(); window.open(baseURL() + '?preview=1', '_blank'); };
+$('#bShare').onclick = async function () {
+  var url = baseURL() + '#c=' + await CI.pack(cfg);
+  showLink('🔗 分享链接（不用发布）', url, '<div class="hint">整份设置都在链接里，不用上传 GitHub 也能直接发给司机；但以后改了内容要重新发链接。想要固定链接就用「☁️ 发布到 GitHub」。</div>');
+};
+$('#bDown').onclick = function () {
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(cfg, null, 2)], { type: 'application/json' }));
+  a.download = (cfg.id || 'site') + '.json'; a.click();
+};
+$('#bImport').onclick = function () { $('#fImport').click(); };
+$('#fImport').onchange = async function (e) {
+  var f = e.target.files[0]; if (!f) return;
+  try { cfg = norm(JSON.parse(await f.text())); sel = -1; ls('ci:draftFrom', cfg.id); save(); render(); toast('✅ 已导入'); } catch (er) { alert('文件不对：' + er.message); }
+};
+$('#bNew').onclick = function () { cfg = blank(); sel = -1; ls('ci:draftFrom', 'new'); save(); render(); window.scrollTo(0, 0); };
+
+/* ---------- 发布到 GitHub ---------- */
+function u8b64(s) { return btoa(unescape(encodeURIComponent(s))); }
+function b64u8(s) { return decodeURIComponent(escape(atob(s.replace(/\n/g, '')))); }
+function ghCfg() { try { return JSON.parse(ls('ci:gh') || '{}'); } catch (e) { return {}; } }
+async function ghFile(g, path) {
+  var r = await fetch('https://api.github.com/repos/' + g.repo + '/contents/' + path + '?ref=' + encodeURIComponent(g.branch), { headers: { Authorization: 'Bearer ' + g.token, Accept: 'application/vnd.github+json' }, cache: 'no-store' });
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error('GitHub ' + r.status + '：' + (await r.text()).slice(0, 160));
+  return r.json();
+}
+async function ghPut(g, path, text, sha, msg) {
+  var r = await fetch('https://api.github.com/repos/' + g.repo + '/contents/' + path, {
+    method: 'PUT', headers: { Authorization: 'Bearer ' + g.token, Accept: 'application/vnd.github+json' },
+    body: JSON.stringify({ message: msg, content: u8b64(text), branch: g.branch, sha: sha || undefined })
+  });
+  if (!r.ok) throw new Error('GitHub ' + r.status + '：' + (await r.text()).slice(0, 160));
+}
+$('#bPub').onclick = function () {
+  var g = ghCfg();
+  $('#dlgBody').innerHTML = '<h3 style="margin:0">☁️ 发布到 GitHub</h3>' +
+    '<div class="hint">会把这个地点存成 <code>checkin/sites/' + esc(cfg.id) + '.json</code>，以后链接固定不变，改完再发布一次司机那边就更新了（GitHub Pages 大约 1 分钟生效）。</div>' +
+    '<label>仓库</label><input id="gRepo" value="' + esc(g.repo || 'boliunew/tools') + '">' +
+    '<label>分支</label><input id="gBranch" value="' + esc(g.branch || 'main') + '">' +
+    '<label>GitHub Token（只存在这台设备的浏览器里；用 fine-grained token，只给这个仓库 Contents 读写权限）</label><input id="gTok" type="password" value="' + esc(g.token || '') + '" placeholder="github_pat_…">' +
+    '<div class="tools" style="margin-top:12px"><button class="pri" id="gGo">☁️ 发布</button></div><div class="hint" id="gMsg"></div>';
+  dlg.showModal();
+  $('#gGo').onclick = async function () {
+    var gg = { repo: $('#gRepo').value.trim(), branch: $('#gBranch').value.trim() || 'main', token: $('#gTok').value.trim() };
+    if (!/^[a-z0-9-]+$/.test(cfg.id || '')) { $('#gMsg').textContent = '⚠️ 地点编号只能用小写字母、数字、横线'; return; }
+    if (!gg.token) { $('#gMsg').textContent = '⚠️ 需要 Token'; return; }
+    ls('ci:gh', JSON.stringify(gg));
+    try {
+      $('#gMsg').textContent = '⏳ 上传中…';
+      var path = 'checkin/sites/' + cfg.id + '.json';
+      var old = await ghFile(gg, path);
+      await ghPut(gg, path, JSON.stringify(cfg, null, 2) + '\n', old && old.sha, 'checkin: ' + (old ? 'update ' : 'add ') + cfg.id);
+      var ix = await ghFile(gg, 'checkin/sites/index.json'), idx = ix ? JSON.parse(b64u8(ix.content)) : { default: cfg.id, sites: [] };
+      var row = { id: cfg.id, company: cfg.company, address: cfg.address }, at = idx.sites.findIndex(function (s) { return s.id === cfg.id; });
+      if (at < 0) idx.sites.push(row); else idx.sites[at] = row;
+      await ghPut(gg, 'checkin/sites/index.json', JSON.stringify(idx, null, 2) + '\n', ix && ix.sha, 'checkin: index ' + cfg.id);
+      ls('ci:draft', null); ls('ci:draftFrom', null);
+      dlg.close();
+      showLink('✅ 已发布', baseURL() + '?site=' + cfg.id, '<div class="hint">约 1 分钟后生效。这个链接以后不变。</div>');
+    } catch (er) { $('#gMsg').textContent = '❌ ' + er.message; }
+  };
+};
+
+/* ---------- 读取 ---------- */
+async function loadSite(id) {
+  try {
+    var r = await fetch('sites/' + encodeURIComponent(id) + '.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error(r.status);
+    cfg = norm(await r.json()); sel = -1; ls('ci:draft', null); ls('ci:draftFrom', null); render();
+  } catch (e) { toast('读取失败：' + id); }
+}
+(async function () {
+  try { siteList = (await fetch('sites/index.json', { cache: 'no-cache' }).then(function (r) { return r.json(); })).sites || []; } catch (e) { }
+  var pick = $('#sitepick');
+  pick.innerHTML = '<option value="">📍 选择已有地点…</option>' + siteList.map(function (s) { return '<option value="' + esc(s.id) + '">' + esc(s.company + ' · ' + s.id) + '</option>'; }).join('');
+  pick.onchange = function () { if (pick.value && (!ls('ci:draftFrom') || confirm('打开这个地点会丢掉当前草稿，继续？'))) loadSite(pick.value); pick.value = ''; };
+  var d = ls('ci:draft');
+  if (d) { try { cfg = norm(JSON.parse(d)); if (!ls('ci:draftFrom')) ls('ci:draftFrom', cfg.id); render(); return; } catch (e) { } }
+  var q = new URLSearchParams(location.search).get('site');
+  if (q || siteList[0]) loadSite(q || siteList[0].id); else { cfg = blank(); render(); }
+})();
+</script>
+</body>
+</html>

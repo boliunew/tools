@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Driver Check-in Guide</title>
+<meta name="theme-color" content="#0f141c">
+<style>
+:root{--brand:#e1251b;--bg:#0f141c;--card:#18202b;--line:#283242;--txt:#f4f6f9;--sub:#aab4c3;--zh:#ffd98a;--es:#9fd8ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px 40px}
+header{background:linear-gradient(160deg,var(--brand),#000 140%);padding:22px 16px 20px;border-bottom:4px solid var(--brand)}
+header .wrap{padding-bottom:0}
+.logo{font-size:38px;line-height:1}
+h1{margin:8px 0 4px;font-size:26px;line-height:1.2}
+.tri .en{font-weight:650}
+.tri .zh,.tri .es{font-size:.88em;margin-top:2px;display:flex;gap:6px;align-items:baseline}
+.tri .zh{color:var(--zh)} .tri .es{color:var(--es)}
+.tri .zh::before,.tri .es::before{font-size:.72em;font-weight:800;border-radius:4px;padding:0 4px;flex:none;opacity:.9}
+.tri .zh::before{content:"中";background:#5a4615;color:#ffe2a6}
+.tri .es::before{content:"ES";background:#16405a;color:#bfe6ff}
+.tri .auto{font-size:.7em;opacity:.6;margin-left:4px}
+h1 .zh,h1 .es{font-size:15px;font-weight:600}
+.addr{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.addr .a{font-size:15px;color:#fff;opacity:.95}
+.btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#111;border:0;border-radius:999px;padding:9px 14px;font-weight:700;font-size:14px;text-decoration:none;cursor:pointer}
+.btn.ghost{background:rgba(255,255,255,.12);color:#fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:16px}
+.notice{border-color:#ffce40;background:#2a2412}
+.notice .hd{color:#ffce40;font-weight:800;margin-bottom:6px}
+.sec{margin:22px 0 6px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);font-weight:800}
+.map{padding:0;overflow:hidden}
+.ci-map{display:block;width:100%;height:auto;max-height:72vh;font-family:system-ui,sans-serif}
+.ci-pulse{animation:pulse 1.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%{transform:scale(.8);opacity:1}100%{transform:scale(2.1);opacity:0}}
+.mapbar{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-top:1px solid var(--line);gap:8px}
+.now{font-size:14px;color:var(--sub);flex:1}
+.now b{color:#fff}
+.steps{list-style:none;margin:0;padding:0}
+.step{display:flex;gap:12px;padding:14px;border:1px solid var(--line);background:var(--card);border-radius:16px;margin-top:10px;transition:.25s}
+.step.on{border-color:var(--brand);box-shadow:0 0 0 2px var(--brand) inset;transform:scale(1.01)}
+.num{flex:none;width:42px;height:42px;border-radius:12px;background:var(--brand);display:grid;place-items:center;font-size:22px;position:relative}
+.num small{position:absolute;right:-6px;top:-6px;background:#fff;color:#000;border-radius:999px;font-size:11px;font-weight:800;width:20px;height:20px;display:grid;place-items:center}
+.step .t{font-size:17px}
+.step .d{margin-top:6px;font-size:14.5px}
+.step .d .en{font-weight:500;color:#e3e8ef}
+.rules li{margin:0 0 12px;list-style:none;display:flex;gap:10px}
+.rules ul{margin:0;padding:0}
+.info{display:grid;gap:10px}
+.info a{color:#fff}
+footer{margin-top:28px;text-align:center;color:var(--sub);font-size:12px}
+.err{padding:40px 16px;text-align:center}
+</style>
+</head>
+<body>
+<div id="app"><div class="err">⏳ Loading…</div></div>
+<script src="common.js?v=1"></script>
+<script>
+(async function () {
+  var app = document.getElementById('app'), esc = CI.esc;
+  var cfg;
+  try { cfg = await CI.load(); } catch (e) { app.innerHTML = '<div class="err">⚠️ ' + esc(e.message) + '</div>'; return; }
+  document.documentElement.style.setProperty('--brand', cfg.color || '#e1251b');
+  var t = CI.title(cfg.company);
+  document.title = t.en;
+
+  // 三语块；缺中文/西语就现场自动翻译（标 🤖）
+  var pending = [];
+  function tri(o, tag) {
+    o = CI.T(o); tag = tag || 'div';
+    var id = 'tr' + pending.length;
+    var h = '<' + tag + ' class="tri" id="' + id + '"><div class="en">' + esc(o.en) + '</div>';
+    ['zh', 'es'].forEach(function (l) {
+      if (o[l]) h += '<div class="' + l + '">' + esc(o[l]) + '</div>';
+      else if (o.en) { h += '<div class="' + l + '" data-l="' + l + '">…</div>'; pending.push([id, l, o.en]); }
+    });
+    return h + '</' + tag + '>';
+  }
+  function has(o) { return CI.T(o).en.trim(); }
+
+  var h = '';
+  h += '<header><div class="wrap"><div class="logo">' + esc(cfg.logo || '🚚') + '</div>' + tri(t, 'h1');
+  h += '<div class="addr"><span class="a">📍 ' + esc(cfg.address || '') + '</span></div>';
+  h += '<div class="addr"><a class="btn" href="' + CI.mapsLink(cfg) + '" target="_blank" rel="noopener">🧭 Navigate · 导航 · Navegar</a>';
+  if (cfg.phone) h += '<a class="btn ghost" href="tel:' + esc(cfg.phone.replace(/[^\d+]/g, '')) + '">📞 ' + esc(cfg.phone) + '</a>';
+  h += '</div></div></header><div class="wrap">';
+
+  if (has(cfg.notice)) h += '<div class="card notice"><div class="hd">⚠️ Important · 注意 · Importante</div>' + tri(cfg.notice) + '</div>';
+
+  var m = cfg.map;
+  if (m && ((m.items && m.items.length) || (m.route && m.route.length))) {
+    h += '<div class="sec">🗺️ Site map · 场地图 · Mapa</div><div class="card map">' + CI.mapSVG(cfg) +
+      '<div class="mapbar"><div class="now" id="now">▶️ Route · 路线 · Ruta</div></div></div>';
+  }
+
+  var steps = cfg.steps || [];
+  if (steps.length) {
+    h += '<div class="sec">✅ Steps · 步骤 · Pasos</div><ol class="steps">';
+    steps.forEach(function (s, k) {
+      h += '<li class="step" data-k="' + k + '"><div class="num">' + esc(s.icon || '•') + '<small>' + (k + 1) + '</small></div><div><div class="t">' + tri(s.title) + '</div>' +
+        (has(s.text) ? '<div class="d">' + tri(s.text) + '</div>' : '') + '</div></li>';
+    });
+    h += '</ol>';
+  }
+
+  var rules = (cfg.rules || []).filter(has);
+  if (rules.length) {
+    h += '<div class="sec">🦺 Yard rules · 场地规定 · Reglas</div><div class="card rules"><ul>';
+    rules.forEach(function (r) { h += '<li><span>✔️</span>' + tri(r) + '</li>'; });
+    h += '</ul></div>';
+  }
+
+  if (has(cfg.hours) || cfg.phone) {
+    h += '<div class="sec">ℹ️ Info · 信息 · Información</div><div class="card info">';
+    if (has(cfg.hours)) h += '<div>🕒 ' + tri(cfg.hours) + '</div>';
+    if (cfg.phone) h += '<div>📞 <a href="tel:' + esc(cfg.phone.replace(/[^\d+]/g, '')) + '">' + esc(cfg.phone) + '</a></div>';
+    h += '</div>';
+  }
+  h += '<footer>🚚 ' + esc(cfg.company || '') + ' · Drive safe · 注意安全 · Maneje con cuidado</footer></div>';
+  app.innerHTML = h;
+
+  // 地图动画 + 步骤高亮
+  var svg = app.querySelector('.ci-map'), now = document.getElementById('now');
+  if (svg) CI.animate(svg, cfg, function (k) {
+    app.querySelectorAll('.step').forEach(function (el) { el.classList.toggle('on', +el.dataset.k === k); });
+    if (now) now.innerHTML = k < 0 ? '▶️ Route · 路线 · Ruta' : (function (o) { return '<b>' + (k + 1) + '. ' + esc(o.en) + '</b>' + (o.zh ? '<br>' + esc(o.zh) : '') + (o.es ? ' · ' + esc(o.es) : ''); })(CI.T(steps[k].title));
+  });
+
+  // 补翻译
+  pending.forEach(async function (p) {
+    var el = document.querySelector('#' + p[0] + ' [data-l="' + p[1] + '"]');
+    var out = await CI.translate(p[2], p[1]);
+    if (el) el.innerHTML = out ? esc(out) + '<span class="auto">🤖</span>' : '';
+  });
+})();
+</script>
+</body>
+</html>

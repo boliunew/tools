@@ -1,0 +1,220 @@
+{
+  "id": "fontana-jd",
+  "company": "JD Logistics",
+  "logo": "🚚",
+  "color": "#e1251b",
+  "address": "16270 Jurupa Ave Ste 200, Fontana, CA 92337",
+  "mapsQuery": "16270 Jurupa Ave Ste 200, Fontana, CA 92337",
+  "phone": "",
+  "hours": {
+    "en": "",
+    "zh": "",
+    "es": ""
+  },
+  "notice": {
+    "en": "This building is shared with another company. JD Logistics is at the SOUTH end (Ste 200). Please check in with JD only.",
+    "zh": "这栋楼有两家公司。JD Logistics 在南端（Ste 200），请只在 JD 签到。",
+    "es": "Este edificio es compartido con otra empresa. JD Logistics está en el extremo SUR (Ste 200). Regístrese solo con JD."
+  },
+  "steps": [
+    {
+      "icon": "🛣️",
+      "title": {
+        "en": "Enter from Jurupa Ave",
+        "zh": "从 Jurupa Ave 进场",
+        "es": "Entre por Jurupa Ave"
+      },
+      "text": {
+        "en": "Use the WEST driveway on Jurupa Ave, on the left side of the building.",
+        "zh": "走 Jurupa Ave 上的西侧入口，在建筑物左边。",
+        "es": "Use la entrada OESTE en Jurupa Ave, del lado izquierdo del edificio."
+      },
+      "at": 1
+    },
+    {
+      "icon": "🅿️",
+      "title": {
+        "en": "Stop near the JD office",
+        "zh": "在 JD 办公室旁停车",
+        "es": "Deténgase cerca de la oficina de JD"
+      },
+      "text": {
+        "en": "Drive along the south road and stop near the south-east corner of the building.",
+        "zh": "沿南边的路开，在建筑物东南角附近停下。",
+        "es": "Siga por el camino del sur y deténgase cerca de la esquina sureste del edificio."
+      },
+      "at": 3
+    },
+    {
+      "icon": "📝",
+      "title": {
+        "en": "Check in at Ste 200",
+        "zh": "到 Ste 200 签到",
+        "es": "Regístrese en la Ste 200"
+      },
+      "text": {
+        "en": "Bring your BOL / load number. The office will give you a door number.",
+        "zh": "带上提单（BOL）或装货单号，办公室会给你分配门号。",
+        "es": "Traiga su BOL o número de carga. La oficina le asignará un número de puerta."
+      },
+      "at": 3
+    },
+    {
+      "icon": "🚪",
+      "title": {
+        "en": "Back into your door",
+        "zh": "倒进分配的门",
+        "es": "Retroceda a su puerta"
+      },
+      "text": {
+        "en": "Docks are on the west side of the building. Example: DOOR 48.",
+        "zh": "卸货门在建筑物西侧。例如：48 号门。",
+        "es": "Los muelles están en el lado oeste del edificio. Ejemplo: PUERTA 48."
+      },
+      "at": 6
+    }
+  ],
+  "rules": [
+    {
+      "en": "Wear a safety vest when you are out of the truck.",
+      "zh": "下车时请穿反光背心。",
+      "es": "Use chaleco de seguridad cuando esté fuera del camión."
+    },
+    {
+      "en": "Follow directions from yard staff.",
+      "zh": "听从场地工作人员指挥。",
+      "es": "Siga las indicaciones del personal del patio."
+    },
+    {
+      "en": "Chock your wheels at the dock.",
+      "zh": "靠门后请放好轮挡。",
+      "es": "Ponga calzas en las llantas en el muelle."
+    }
+  ],
+  "map": {
+    "w": 400,
+    "h": 600,
+    "north": 0,
+    "items": [
+      {
+        "t": "area",
+        "x": 116,
+        "y": 98,
+        "w": 69,
+        "h": 390,
+        "label": ""
+      },
+      {
+        "t": "road",
+        "x": 0,
+        "y": 522,
+        "w": 400,
+        "h": 38,
+        "label": "JURUPA AVE",
+        "main": true
+      },
+      {
+        "t": "road",
+        "x": 340,
+        "y": 0,
+        "w": 34,
+        "h": 560,
+        "label": "OLEANDER AVE",
+        "main": true
+      },
+      {
+        "t": "road",
+        "x": 100,
+        "y": 82,
+        "w": 16,
+        "h": 446,
+        "label": ""
+      },
+      {
+        "t": "road",
+        "x": 100,
+        "y": 82,
+        "w": 244,
+        "h": 16,
+        "label": ""
+      },
+      {
+        "t": "road",
+        "x": 100,
+        "y": 488,
+        "w": 195,
+        "h": 16,
+        "label": ""
+      },
+      {
+        "t": "bldg",
+        "x": 185,
+        "y": 120,
+        "w": 110,
+        "h": 350,
+        "label": "16270\nJurupa Ave"
+      },
+      {
+        "t": "bldg",
+        "x": 245,
+        "y": 432,
+        "w": 50,
+        "h": 38,
+        "label": "JD\nSte 200",
+        "color": "#e1251b"
+      },
+      {
+        "t": "pin",
+        "x": 108,
+        "y": 528,
+        "kind": "entry",
+        "label": "ENTRANCE"
+      },
+      {
+        "t": "pin",
+        "x": 270,
+        "y": 480,
+        "kind": "checkin",
+        "label": "CHECK IN",
+        "below": true
+      },
+      {
+        "t": "pin",
+        "x": 183,
+        "y": 300,
+        "kind": "door",
+        "label": "DOOR 48"
+      }
+    ],
+    "route": [
+      [
+        400,
+        548
+      ],
+      [
+        108,
+        548
+      ],
+      [
+        108,
+        496
+      ],
+      [
+        250,
+        496
+      ],
+      [
+        140,
+        496
+      ],
+      [
+        140,
+        300
+      ],
+      [
+        176,
+        300
+      ]
+    ]
+  }
+}
