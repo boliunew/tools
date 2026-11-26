@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check-in Image</title>
+<script src="../vendor/html2canvas-1.4.1.min.js"></script>
+<style>
+:root{--brand:#e1251b;--zh:#ffd98a;--es:#9fd8ff}
+*{box-sizing:border-box}
+body{margin:0;background:#2b2f36;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{position:sticky;top:0;z-index:2;display:flex;gap:8px;justify-content:center;padding:10px;background:#111a;backdrop-filter:blur(6px)}
+.tools button{border:0;border-radius:999px;padding:10px 16px;font:inherit;font-weight:800;background:#fff;cursor:pointer}
+.tools button.pri{background:var(--brand);color:#fff}
+.stage{display:flex;justify-content:center;padding:12px 0 40px}
+/* 海报固定 540 宽，导出 2 倍 = 1080 */
+#poster{width:540px;background:#0b1018;color:#fff;overflow:hidden}
+.hd{background:linear-gradient(160deg,var(--brand),#000 150%);padding:22px 22px 18px}
+.hd .logo{font-size:34px;line-height:1}
+.hd h1{margin:6px 0 0;font-size:27px;line-height:1.15;font-weight:900}
+.hd .es{color:#cfeaff;font-size:19px;font-weight:800;margin-top:3px}
+.hd .zh{color:#ffe2a6;font-size:17px;font-weight:700;margin-top:2px}
+.hd .addr{margin-top:10px;font-size:15px;font-weight:600;opacity:.95}
+.note{margin:14px 16px 0;border:2px solid #ffce40;background:#2a2412;border-radius:14px;padding:10px 12px;font-size:14px;line-height:1.35}
+.note b{color:#ffce40}
+.note .es{color:var(--es)} .note .zh{color:var(--zh)}
+.map{margin:14px 16px 0;border-radius:14px;overflow:hidden;border:1px solid #263142}
+.map svg{display:block;width:100%;height:auto}
+.steps{padding:6px 16px 4px}
+.st{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #1f2836}
+.st:last-child{border-bottom:0}
+.n{flex:none;width:44px;height:44px;border-radius:50%;background:var(--brand);display:grid;place-items:center;font-size:22px;font-weight:900;border:3px solid #fff}
+.st .ic{font-size:20px;margin-right:4px}
+.st .t{font-size:19px;font-weight:900;line-height:1.2}
+.st .te{font-size:16px;font-weight:800;color:var(--es);margin-top:2px}
+.st .tz{font-size:15px;font-weight:700;color:var(--zh);margin-top:1px}
+.st .d{font-size:13.5px;color:#cfd6e0;margin-top:5px;line-height:1.3}
+.st .d .es{color:var(--es);opacity:.9}
+.st .d .zh{color:var(--zh);opacity:.9}
+.rules{margin:4px 16px 0;background:#121923;border-radius:14px;padding:10px 12px;font-size:13.5px;line-height:1.35}
+.rules div{margin:4px 0}
+.rules .es{color:var(--es)} .rules .zh{color:var(--zh)}
+.ft{padding:14px 16px 18px;text-align:center;color:#8f9bad;font-size:13px}
+.ft b{color:#fff}
+.msg{color:#fff;text-align:center;padding:30px}
+</style>
+</head>
+<body>
+<div class="tools"><button class="pri" id="bSave">🖼️ 保存图片</button><button id="bBack" onclick="history.back()">↩️ 返回</button></div>
+<div class="stage"><div id="poster"><div class="msg">⏳</div></div></div>
+<script src="common.js?v=2"></script>
+<script>
+(async function () {
+  var esc = CI.esc, P = document.getElementById('poster');
+  var cfg;
+  try { cfg = await CI.load(); } catch (e) { P.innerHTML = '<div class="msg">⚠️ ' + esc(e.message) + '</div>'; return; }
+  document.documentElement.style.setProperty('--brand', cfg.color || '#e1251b');
+  async function fill(o) {
+    o = CI.T(o);
+    if (o.en && !o.es) o.es = await CI.translate(o.en, 'es');
+    if (o.en && !o.zh) o.zh = await CI.translate(o.en, 'zh');
+    return o;
+  }
+  var steps = cfg.steps || [], route = (cfg.map && cfg.map.route) || [];
+  var S = await Promise.all(steps.map(async function (s) { return { icon: s.icon, at: s.at, title: await fill(s.title), text: await fill(s.text) }; }));
+  var notice = await fill(cfg.notice), rules = await Promise.all((cfg.rules || []).filter(function (r) { return CI.T(r).en; }).map(fill));
+  var t = CI.title(cfg.company);
+
+  /* 地图：整条路线 + 每一步的编号圆圈 */
+  function mapImg() {
+    if (!cfg.map || !((cfg.map.items || []).length || route.length)) return '';
+    var svg = CI.mapSVG(cfg).replace(/<g class="ci-truck">[\s\S]*?<\/g>/, '').replace(/<circle class="ci-pulse"[^>]*\/>/g, '');
+    // 路线终点画箭头
+    var badges = '';
+    if (route.length > 1) {
+      var p = route[route.length - 1], q = route[route.length - 2], a = Math.atan2(p[1] - q[1], p[0] - q[0]) * 180 / Math.PI;
+      badges += '<g transform="translate(' + p[0] + ' ' + p[1] + ') rotate(' + a + ')"><path d="M4 0 L-10 -9 L-10 9 Z" fill="' + (cfg.color || '#e1251b') + '" stroke="#fff" stroke-width="2"/></g>';
+      var used = {}, cnt = {}, ats = steps.map(function (s, k) { return s.at !== '' && s.at != null ? Math.min(+s.at, route.length - 1) : Math.round((k + 1) * (route.length - 1) / steps.length); });
+      ats.forEach(function (a) { cnt[a] = (cnt[a] || 0) + 1; });
+      steps.forEach(function (s, k) {
+        var at = ats[k];
+        var pt = route[at], off = (used[at] = (used[at] || 0) + 1) - 1;
+        var x = pt[0] - 22 - (cnt[at] - 1 - off) * 24, y = pt[1] - 14;
+        badges += '<circle cx="' + x + '" cy="' + y + '" r="11" fill="' + (cfg.color || '#e1251b') + '" stroke="#fff" stroke-width="2.5"/><text x="' + x + '" y="' + (y + .5) + '" fill="#fff" font-size="12" font-weight="900" text-anchor="middle" dominant-baseline="middle">' + (k + 1) + '</text>';
+      });
+    }
+    return svg.replace('</svg>', badges + '</svg>');
+  }
+
+  var h = '<div class="hd"><div class="logo">' + esc(cfg.logo || '🚚') + '</div><h1>' + esc(t.en) + '</h1><div class="es">' + esc(t.es) + '</div><div class="zh">' + esc(t.zh) + '</div>' +
+    '<div class="addr">📍 ' + esc(cfg.address || '') + '</div>' + (cfg.phone ? '<div class="addr">📞 ' + esc(cfg.phone) + '</div>' : '') + '</div>';
+  if (notice.en) h += '<div class="note"><b>⚠️ ' + esc(notice.en) + '</b><div class="es">' + esc(notice.es) + '</div><div class="zh">' + esc(notice.zh) + '</div></div>';
+  h += '<div class="map">' + mapImg() + '</div><div class="steps">';
+  S.forEach(function (s, k) {
+    h += '<div class="st"><div class="n">' + (k + 1) + '</div><div><div class="t"><span class="ic">' + esc(s.icon || '') + '</span>' + esc(s.title.en) + '</div>' +
+      '<div class="te">' + esc(s.title.es) + '</div><div class="tz">' + esc(s.title.zh) + '</div>' +
+      (s.text.en ? '<div class="d"><div>' + esc(s.text.en) + '</div><div class="es">' + esc(s.text.es) + '</div><div class="zh">' + esc(s.text.zh) + '</div></div>' : '') + '</div></div>';
+  });
+  h += '</div>';
+  if (rules.length) h += '<div class="rules">' + rules.map(function (r) { return '<div>🦺 <b>' + esc(r.en) + '</b> <span class="es">· ' + esc(r.es) + '</span> <span class="zh">· ' + esc(r.zh) + '</span></div>'; }).join('') + '</div>';
+  h += '<div class="ft">🚚 <b>' + esc(cfg.company || '') + '</b> · Drive safe · Maneje con cuidado · 注意安全</div>';
+  P.innerHTML = h;
+  document.body.dataset.ready = '1';
+
+  document.getElementById('bSave').onclick = async function () {
+    var b = this; b.textContent = '⏳ 生成中…';
+    try {
+      var c = await html2canvas(P, { scale: 2, backgroundColor: '#0b1018', useCORS: true });
+      var a = document.createElement('a');
+      a.href = c.toDataURL('image/png'); a.download = (cfg.id || 'checkin') + '-guide.png'; a.click();
+      b.textContent = '✅ 已保存';
+    } catch (e) { b.textContent = '❌ ' + e.message; }
+    setTimeout(function () { b.textContent = '🖼️ 保存图片'; }, 2500);
+  };
+})();
+</script>
+</body>
+</html>

@@ -62,6 +62,7 @@ dialog::backdrop{background:#000a}
   <h1>⚙️ 司机签到指引 · 设置</h1>
   <select id="sitepick" style="width:auto;max-width:200px"></select>
   <button id="bShow">📱 给司机看</button>
+  <button id="bImg">🖼️ 生成图片</button>
   <button id="bNew">➕ 新地点</button>
   <button id="bImport">📂 导入</button><input type="file" id="fImport" accept=".json" hidden>
 </div></header>
@@ -313,6 +314,7 @@ function showLink(title, url, extra) {
   dlg.showModal();
 }
 $('#bShow').onclick = function () { save(); location.href = baseURL() + 'show.html' + (ls('ci:draftFrom') ? '?preview=1' : '?site=' + encodeURIComponent(cfg.id)); };
+$('#bImg').onclick = function () { save(); location.href = baseURL() + 'poster.html' + (ls('ci:draftFrom') ? '?preview=1' : '?site=' + encodeURIComponent(cfg.id)); };
 $('#bPrev').onclick = function () { save(); window.open(baseURL() + '?preview=1', '_blank'); };
 $('#bShare').onclick = async function () {
   var url = baseURL() + '#c=' + await CI.pack(cfg);
