@@ -1,0 +1,180 @@
+{
+ "date": "2026-11-26",
+ "generated": "2026-11-26T23:08:00Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "美股科技股跌跌不止，AI热潮受挫",
+     "d": "受AI投资前景不明以及Nvidia CEO黄仁勋因私事离职后复职的波动影响，Nvidia、Anthropic等AI相关公司股价大幅下跌，三大指数收盘均下跌，纳指跌0.6%。市场对AI资金持续性存疑，此波动可能抑制科技板块短期表现。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cq0md8g14zryo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美国批准SpaceX上百万颗卫星建轨道数据中心",
+     "d": "美国联邦通信委员会批准SpaceX的Starmind计划，允许其在低轨部署最多一百万颗卫星用于AI数据处理，并要求2023-2038年分阶段完成部署。此举标志着太空计算基础设施的首次监管批准，可能改变数据中心布局并引发行业竞争与天文观测争议。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwp836l8n1jgo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "Nvidia CEO黄仁勋复职引发争议",
+     "d": "在因私生活丑闻短暂离职后，Nvidia CEO黄仁勋被迅速复职，引发外界对其不可替代性的讨论。黄仁勋长期领航AI芯片业务，其个人影响力与公司在AI供应链中的核心地位，使得公司治理与市场信心紧密关联。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c3rrgqj2zx5yo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/25 周三 收盘：标普500 ETF（SPY）-0.29%，纳指100 ETF（QQQ）-0.65%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 26.8；60% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：HPQ +11.5%、CHTR +8.4%、AXON +7.4%；跌幅最大：LRCX -5.7%、ORCL -5.1%、MU -4.5%",
+     "d": "扫描范围约 514 只股票（标普 500 为主）。信息技术 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/30 周一的重要财报：RBRK（盘后）",
+     "d": "按市值挑出最大的几家，共 1 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：EIA 原油库存（11/26 周四）",
+     "d": "Crude Oil Inventories 实际 1.109M（预期 2.000M，前值 3.380M）；Cushing Crude Oil Inventories 实际 -0.534M（预期 —，前值 -1.209M）。库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "11/26 周四 07:25：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "伊朗否认针对科威特设施的无人机袭击，致两意大利技术员死亡",
+     "d": "科威特一防空监视站遭无人机袭击，导致两名意大利技术员死亡，意大利与科威特指责伊朗，但伊朗官方否认参与。此事件加剧地区紧张局势，可能影响中东安全环境及相关防务企业的市场预期。",
+     "src": [
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/italian-workers-killed-kuwait-iran-strike-9.7437089?cmp=rss"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c39w9y5dx4k5o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "欧盟预算与乌克兰贷款谈判陷入僵局",
+     "d": "欧盟领袖在布鲁塞尔就2028-2034财政预算近1.76万亿美元及49亿美元对乌克兰的贷款方案未能达成一致，成员国在支出规模与防务援助上分歧显著。预算未决将影响欧盟对乌克兰的长期支持及内部财政政策走向。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/economy/2026/11/26/eu-leaders-struggle-to-agree-on-long-term-budget-more-money-for-ukraine?traffic_source=rss"
+      },
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/at-odds-over-the-eu-budget-european-leaders-cut-summit-short-dw-has-more/live-80056415?maca=en-rss-en-all-1573-rdf"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "感恩节前美国大风暴导致旅行受阻，梅西百货大游行延期",
+     "d": "美国东海岸强风暴带来大雨、海潮及洪水，导致航班大规模延误、道路拥堵，约8150万人出行受影响，纽约市因此将百年一度的梅西感恩节大游行推迟至周六。恶劣天气对假日交通和大型活动造成显著冲击。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/26/nx-s1-6054079/storms-expected-on-both-coasts-as-millions-travel-for-thanksgiving"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/thanksgiving-weather-storms-us-power-flights-6585971"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "SpaceX轨道数据中心计划获美监管批准，引发业界争议",
+     "d": "美国FCC批准SpaceX的Starmind项目，允许其在低轨部署最高一百万颗卫星用于AI数据处理，计划在2033至2038年分阶段完成。项目被视为美国在AI计算基础设施上的新突破，但遭到亚马逊批评及天文学界担忧，对太空资源使用与技术竞争产生影响。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwp836l8n1jgo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/economy/2026/11/26/musk-pledges-two-spacex-shares-for-every-us-child?traffic_source=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "美股因AI担忧跌幅扩大",
+  "d": "AI监管和估值不确定性正直接冲击科技股表现，了解其背后驱动因素对把握市场情绪和风险管理尤为关键。"
+ },
+ "week": []
+}
