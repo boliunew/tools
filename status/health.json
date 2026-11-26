@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-26T11:33:08Z",
+ "generated": "2026-11-26T23:06:05Z",
  "ok": false,
  "problems": [
-  "🚗 通勤电台：已经 39 小时 没更新（超过 30 小时）",
-  "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/45708671405）"
+  "🚗 通勤电台：已经 2 天 没更新（超过 30 小时）",
+  "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/45900663260）"
  ],
- "sig": "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/45708671405）|🚗 通勤电台",
+ "sig": "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/45900663260）|🚗 通勤电台",
  "data": [
   {
    "k": "brief",
@@ -26,7 +26,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T09:21:40Z",
+   "at": "2026-11-26T22:14:39Z",
    "detail": "12 条"
   },
   {
@@ -37,7 +37,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T09:21:44Z",
+   "at": "2026-11-26T22:15:07Z",
    "detail": "75 条"
   },
   {
@@ -48,8 +48,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T09:21:16Z",
-   "detail": "221 条"
+   "at": "2026-11-26T22:14:18Z",
+   "detail": "227 条"
   },
   {
    "k": "stocks",
@@ -59,7 +59,7 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T09:37:26Z",
+   "at": "2026-11-26T22:36:45Z",
    "detail": "数据日期 2026-11-25 · 500 条"
   },
   {
@@ -70,7 +70,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T03:40:22Z"
+   "at": "2026-11-26T21:58:39Z"
   },
   {
    "k": "deals",
@@ -80,7 +80,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T08:14:17Z"
+   "at": "2026-11-26T22:24:59Z"
   },
   {
    "k": "radio",
@@ -89,7 +89,7 @@
    "page": "radio.html",
    "wf": "radio.yml",
    "ok": false,
-   "msg": "已经 39 小时 没更新（超过 30 小时）",
+   "msg": "已经 2 天 没更新（超过 30 小时）",
    "at": "2026-11-24T20:42:07Z"
   },
   {
@@ -100,7 +100,7 @@
    "wf": "tv.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T03:49:07Z",
+   "at": "2026-11-26T19:18:31Z",
    "detail": "12177 条"
   },
   {
@@ -121,7 +121,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T00:27:34Z"
+   "at": "2026-11-26T13:57:40Z"
   },
   {
    "k": "bay_live",
@@ -131,7 +131,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-26T09:41:10Z"
+   "at": "2026-11-26T23:01:13Z"
   },
   {
    "k": "longterm",
@@ -172,7 +172,7 @@
    "wf": "ferry.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-24T00:19:50Z"
+   "at": "2026-11-26T21:54:10Z"
   },
   {
    "k": "rankings",
@@ -257,8 +257,8 @@
    "wf": "radio.yml",
    "n": "通勤电台",
    "conclusion": "failure",
-   "url": "https://github.com/boliunew/tools/actions/runs/45708671405",
-   "at": "2026-11-25T21:55:09Z"
+   "url": "https://github.com/boliunew/tools/actions/runs/45900663260",
+   "at": "2026-11-26T21:48:47Z"
   }
  ],
  "since": "2026-11-25T23:09:55Z"
