@@ -1,10 +1,11 @@
 {
- "generated": "2026-11-25T23:09:55Z",
+ "generated": "2026-11-26T11:33:08Z",
  "ok": false,
  "problems": [
+  "🚗 通勤电台：已经 39 小时 没更新（超过 30 小时）",
   "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/45708671405）"
  ],
- "sig": "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/45708671405）",
+ "sig": "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/45708671405）|🚗 通勤电台",
  "data": [
   {
    "k": "brief",
@@ -14,7 +15,7 @@
    "wf": "brief.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T01:07:51Z",
+   "at": "2026-11-26T00:42:37Z",
    "detail": "30 条"
   },
   {
@@ -25,7 +26,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T22:24:00Z",
+   "at": "2026-11-26T09:21:40Z",
    "detail": "12 条"
   },
   {
@@ -36,7 +37,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T22:24:46Z",
+   "at": "2026-11-26T09:21:44Z",
    "detail": "75 条"
   },
   {
@@ -47,8 +48,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T22:23:39Z",
-   "detail": "216 条"
+   "at": "2026-11-26T09:21:16Z",
+   "detail": "221 条"
   },
   {
    "k": "stocks",
@@ -58,7 +59,7 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T22:47:02Z",
+   "at": "2026-11-26T09:37:26Z",
    "detail": "数据日期 2026-11-25 · 500 条"
   },
   {
@@ -69,7 +70,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T22:01:29Z"
+   "at": "2026-11-26T03:40:22Z"
   },
   {
    "k": "deals",
@@ -79,7 +80,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T22:36:51Z"
+   "at": "2026-11-26T08:14:17Z"
   },
   {
    "k": "radio",
@@ -87,8 +88,8 @@
    "n": "通勤电台",
    "page": "radio.html",
    "wf": "radio.yml",
-   "ok": true,
-   "msg": "",
+   "ok": false,
+   "msg": "已经 39 小时 没更新（超过 30 小时）",
    "at": "2026-11-24T20:42:07Z"
   },
   {
@@ -99,8 +100,8 @@
    "wf": "tv.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T19:35:58Z",
-   "detail": "12171 条"
+   "at": "2026-11-26T03:49:07Z",
+   "detail": "12177 条"
   },
   {
    "k": "card",
@@ -110,7 +111,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T23:59:00Z"
+   "at": "2026-11-26T23:59:00Z"
   },
   {
    "k": "monitor",
@@ -120,7 +121,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T14:29:31Z"
+   "at": "2026-11-26T00:27:34Z"
   },
   {
    "k": "bay_live",
@@ -130,7 +131,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-25T23:06:25Z"
+   "at": "2026-11-26T09:41:10Z"
   },
   {
    "k": "longterm",
