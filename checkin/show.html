@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Show Driver</title>
+<meta name="theme-color" content="#000">
+<style>
+:root{--brand:#e1251b;--bg:#05080d;--card:#121923;--line:#263142;--zh:#ffd98a;--es:#9fd8ff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:#fff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;overflow:hidden;overscroll-behavior:none}
+#app{position:fixed;inset:0;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:8px;padding:calc(env(safe-area-inset-top) + 8px) 12px 8px;background:var(--brand)}
+.top .co{flex:1;font-weight:800;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .pg{font-weight:800;font-size:15px;background:#0006;border-radius:999px;padding:3px 10px}
+.view{flex:1;min-height:0;display:flex;flex-direction:column}
+.mapw{flex:0 0 42%;min-height:0;display:flex;align-items:center;justify-content:center;background:#22332f}
+.mapw svg{width:100%;height:100%;display:block}
+.ci-pulse{animation:pulse 1.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%{transform:scale(.8);opacity:1}100%{transform:scale(2.3);opacity:0}}
+.txt{flex:1;min-height:0;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;overflow:auto}
+.ico{font-size:52px;line-height:1}
+.big{font-size:clamp(28px,8.4vw,52px);font-weight:900;line-height:1.08;margin-top:6px}
+.es{color:var(--es);font-size:clamp(22px,6.6vw,40px);font-weight:800;line-height:1.12;margin-top:8px}
+.zh{color:var(--zh);font-size:clamp(17px,4.6vw,28px);font-weight:700;margin-top:6px}
+.sub{margin-top:12px;font-size:clamp(15px,4vw,22px);color:#d6dde7;line-height:1.3}
+.sub .s-es{color:var(--es);margin-top:4px}
+.dots{display:flex;gap:6px;justify-content:center;padding:6px 0}
+.dots i{width:9px;height:9px;border-radius:9px;background:#fff3}
+.dots i.on{background:#fff;width:24px}
+.bar{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:8px 8px calc(env(safe-area-inset-bottom) + 8px);background:#000;border-top:1px solid var(--line)}
+.bar button{background:var(--card);border:1px solid var(--line);color:#fff;border-radius:14px;padding:8px 2px;font:inherit;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:2px}
+.bar button span{font-size:24px;line-height:1}
+.bar button.on{background:#fff;color:#000}
+.bar button:active{transform:scale(.95)}
+/* 门号 */
+.door{flex:1;display:flex;flex-direction:column;padding:14px}
+.door .show{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#ffce40;color:#000;border-radius:22px;padding:10px}
+.door .lab{font-size:clamp(26px,8vw,44px);font-weight:900;letter-spacing:.04em}
+.door .lab.s{font-size:clamp(20px,6vw,32px);color:#0b4a73}
+.door .lab.z{font-size:clamp(18px,5vw,28px);color:#6a4a00}
+.door .num{font-size:clamp(110px,42vw,260px);font-weight:900;line-height:.95;font-variant-numeric:tabular-nums}
+.door .num.empty{opacity:.25}
+.door .note{margin-top:8px;font-size:clamp(14px,3.8vw,20px);font-weight:600;color:#222;max-width:34em}
+.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.pad button{background:var(--card);border:1px solid var(--line);color:#fff;border-radius:12px;font-size:24px;font-weight:800;padding:10px 0}
+.pad button.c{color:#ffb4b4}
+/* 短语 */
+.phr{flex:1;min-height:0;overflow:auto;padding:10px;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:max-content;gap:8px;align-content:start}
+.phr button{background:var(--card);border:1px solid var(--line);color:#fff;border-radius:16px;padding:12px 10px;text-align:left;font:inherit;min-height:88px}
+.phr button .i{font-size:28px}
+.phr button .e{font-weight:800;font-size:16px;margin-top:4px}
+.phr button .s{color:var(--es);font-size:14px;font-weight:700}
+.phr button .z{color:var(--zh);font-size:13px}
+.full{position:fixed;inset:0;z-index:10;background:var(--brand);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+.full .ico{font-size:90px}
+.full .big{font-size:clamp(36px,11vw,72px)}
+.full .es{font-size:clamp(30px,9vw,58px);color:#fff;opacity:.92}
+.full .zh{color:#fff;opacity:.85}
+.full .tap{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 18px);opacity:.75;font-size:14px}
+.full .spk{margin-top:22px;display:flex;gap:10px}
+.full .spk button{background:#0005;color:#fff;border:2px solid #fff8;border-radius:999px;padding:10px 18px;font-size:18px;font-weight:800}
+.err{margin:auto;padding:30px;text-align:center}
+</style>
+</head>
+<body>
+<div id="app"><div class="err">⏳</div></div>
+<script src="common.js?v=2"></script>
+<script>
+(async function () {
+  var esc = CI.esc, app = document.getElementById('app');
+  var cfg;
+  try { cfg = await CI.load(); } catch (e) { app.innerHTML = '<div class="err">⚠️ ' + esc(e.message) + '</div>'; return; }
+  document.documentElement.style.setProperty('--brand', cfg.color || '#e1251b');
+  var steps = cfg.steps || [], route = (cfg.map && cfg.map.route) || [];
+  var hasMap = cfg.map && ((cfg.map.items || []).length || route.length);
+
+  /* 常用短语（设置里有 phrases 就用设置里的） */
+  var PHR = cfg.phrases && cfg.phrases.length ? cfg.phrases : [
+    { icon: '📝', en: 'Check in at the office first', es: 'Primero regístrese en la oficina', zh: '先去办公室签到' },
+    { icon: '📄', en: 'Show me your BOL / paperwork', es: 'Muéstreme su BOL / documentos', zh: '请出示提单 / 单据' },
+    { icon: '⏳', en: 'Please wait in your truck', es: 'Por favor espere en su camión', zh: '请在车里等' },
+    { icon: '📞', en: 'We will call you when the door is ready', es: 'Le llamamos cuando la puerta esté lista', zh: '门好了我们会叫你' },
+    { icon: '↩️', en: 'Back in now', es: 'Retroceda ahora', zh: '现在可以倒车进门了' },
+    { icon: '🛑', en: 'Stop here', es: 'Pare aquí', zh: '停在这里' },
+    { icon: '🛞', en: 'Chock your wheels', es: 'Ponga las calzas', zh: '请放轮挡' },
+    { icon: '🔓', en: 'Open your trailer doors', es: 'Abra las puertas del tráiler', zh: '请打开车厢门' },
+    { icon: '📦', en: 'Drop the trailer here', es: 'Deje el tráiler aquí', zh: '把挂车甩在这里' },
+    { icon: '✅', en: 'You are done. You can leave', es: 'Terminó. Puede salir', zh: '好了，可以走了' },
+    { icon: '🦺', en: 'Please wear your safety vest', es: 'Póngase el chaleco de seguridad', zh: '请穿反光背心' },
+    { icon: '🚫', en: 'No entry. Wrong building', es: 'No pase. Edificio equivocado', zh: '不能进，走错楼了' },
+    { icon: '🔁', en: 'Turn around and exit', es: 'Dé la vuelta y salga', zh: '掉头出去' },
+    { icon: '🕐', en: 'Come back in 30 minutes', es: 'Regrese en 30 minutos', zh: '30 分钟后再来' }
+  ];
+
+  /* ---------- 朗读 ---------- */
+  var voices = [];
+  function loadVoices() { try { voices = speechSynthesis.getVoices(); } catch (e) { } }
+  loadVoices(); try { speechSynthesis.onvoiceschanged = loadVoices; } catch (e) { }
+  function say(text, lang) {
+    if (!text || !window.speechSynthesis) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = lang === 'es' ? 'es-US' : 'en-US'; u.rate = .92;
+    var v = voices.find(function (v) { return v.lang.toLowerCase().replace('_', '-').indexOf(lang === 'es' ? 'es' : 'en-us') === 0; });
+    if (v) u.voice = v;
+    speechSynthesis.speak(u);
+  }
+  var sayLang = 'es';
+  try { sayLang = localStorage.getItem('ci:sayLang') || 'es'; } catch (e) { }
+
+  /* ---------- 屏幕常亮 + 全屏 ---------- */
+  var lock = null;
+  async function keepOn() { try { if (navigator.wakeLock && !lock) { lock = await navigator.wakeLock.request('screen'); lock.addEventListener('release', function () { lock = null; }); } } catch (e) { } }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) keepOn(); });
+  var triedFs = false;
+  document.addEventListener('click', function () {
+    keepOn();
+    if (!triedFs && document.documentElement.requestFullscreen) { triedFs = true; document.documentElement.requestFullscreen().catch(function () { }); }
+  }, true);
+
+  /* ---------- 文字：缺的语言自动翻译 ---------- */
+  async function fill(o) {
+    o = CI.T(o);
+    if (o.en && !o.es) o.es = await CI.translate(o.en, 'es');
+    if (o.en && !o.zh) o.zh = await CI.translate(o.en, 'zh');
+    return o;
+  }
+  var S = await Promise.all(steps.map(async function (s) { return { icon: s.icon, at: s.at, title: await fill(s.title), text: await fill(s.text) }; }));
+
+  /* ---------- 地图：走到第 k 步为止 ---------- */
+  function stopIndex(k) {
+    var s = steps[k];
+    if (s && s.at !== '' && s.at != null) return Math.min(+s.at, route.length - 1);
+    return Math.round((k + 1) * (route.length - 1) / Math.max(1, steps.length));
+  }
+  function stepMap(k) {
+    if (!hasMap) return '';
+    var c = JSON.parse(JSON.stringify(cfg)), end = route.length ? stopIndex(k) : 0;
+    c.map.route = route.slice(0, end + 1);
+    var svg = CI.mapSVG(c);
+    // 整条路线淡淡地画在下面，前面走过的用主色
+    if (route.length > 1) {
+      var full = '<path d="M' + route.map(function (p) { return p.join(' '); }).join(' L') + '" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="5" stroke-dasharray="4 7" stroke-linejoin="round"/>';
+      svg = svg.replace('<path ', full + '<path ');
+    }
+    // 卡车停在这一步的位置
+    var r = c.map.route, t = '';
+    if (r.length) {
+      var p = r[r.length - 1], q = r.length > 1 ? r[r.length - 2] : route[1] ? [2 * p[0] - route[1][0], 2 * p[1] - route[1][1]] : [p[0] - 1, p[1]];
+      var a = Math.atan2(p[1] - q[1], p[0] - q[0]) * 180 / Math.PI;
+      if (r.length === 1 && route[1]) a = Math.atan2(route[1][1] - p[1], route[1][0] - p[0]) * 180 / Math.PI;
+      t = '<g transform="translate(' + p[0] + ' ' + p[1] + ') rotate(' + a + ') scale(1.5)"><rect x="-13" y="-5.5" width="18" height="11" rx="2" fill="#fff" stroke="#000" stroke-width="1.5"/><rect x="6" y="-4.5" width="8" height="9" rx="2" fill="' + (cfg.color || '#e1251b') + '" stroke="#000" stroke-width="1.5"/></g>' +
+        '<circle class="ci-pulse" cx="' + p[0] + '" cy="' + p[1] + '" r="14" fill="none" stroke="#fff" stroke-width="3"/>';
+    }
+    svg = svg.replace(/<g class="ci-truck">[\s\S]*?<\/g>/, '').replace('</svg>', t + '</svg>');
+    var xs = [], ys = [];
+    route.forEach(function (p) { xs.push(p[0]); ys.push(p[1]); });
+    (cfg.map.items || []).forEach(function (it) { if (it.t === 'pin') { xs.push(it.x); ys.push(it.y - 36, it.y + 36); } });
+    if (xs.length) {
+      var W = cfg.map.w || 400, H = cfg.map.h || 600, pad = 34;
+      var x0 = Math.max(0, Math.min.apply(0, xs) - pad), x1 = Math.min(W, Math.max.apply(0, xs) + pad);
+      var y0 = Math.max(0, Math.min.apply(0, ys) - pad), y1 = Math.min(H, Math.max.apply(0, ys) + pad);
+      svg = svg.replace(/viewBox="[^"]*"/, 'viewBox="' + x0 + ' ' + y0 + ' ' + (x1 - x0) + ' ' + (y1 - y0) + '"');
+      // 指北针跟着移到可见区域右上角
+      svg = svg.replace(/<g transform="translate\([^)]*\) rotate\(([^)]*)\)"><circle r="14"/, function (m, a) { return '<g transform="translate(' + (x1 - 22) + ' ' + (y0 + 24) + ') rotate(' + a + ')"><circle r="14"'; });
+    }
+    return svg.replace('class="ci-map"', 'class="ci-map" preserveAspectRatio="xMidYMid meet"');
+  }
+
+  /* ---------- 页面 ---------- */
+  var mode = 'steps', k = 0, door = '';
+  try { door = localStorage.getItem('ci:door') || ''; } catch (e) { }
+
+  function shell(inner, page) {
+    return '<div class="top"><div class="co">' + esc(cfg.logo || '🚚') + ' ' + esc(cfg.company || '') + '</div>' + (page ? '<div class="pg">' + page + '</div>' : '') + '</div>' +
+      '<div class="view">' + inner + '</div>' +
+      '<div class="bar">' +
+      '<button data-a="prev"' + (mode === 'steps' ? '' : ' class=""') + '><span>◀️</span>Back</button>' +
+      (mode === 'steps' ? '<button data-a="steps"><span>▶️</span>Next</button>' : '<button data-a="steps"><span>🗺️</span>Route</button>') +
+      '<button data-a="door" class="' + (mode === 'door' ? 'on' : '') + '"><span>🚪</span>Door</button>' +
+      '<button data-a="phr" class="' + (mode === 'phr' ? 'on' : '') + '"><span>💬</span>Say</button>' +
+      '<button data-a="speak"><span>🔊</span>' + (sayLang === 'es' ? 'Español' : 'English') + '</button>' +
+      '</div>';
+  }
+  function render() {
+    if (mode === 'steps') {
+      if (!S.length) { app.innerHTML = shell('<div class="err">No steps</div>'); return; }
+      var s = S[k];
+      app.innerHTML = shell(
+        (hasMap ? '<div class="mapw">' + stepMap(k) + '</div>' : '') +
+        '<div class="txt" id="swipe"><div class="ico">' + esc(s.icon || '') + '</div>' +
+        '<div class="big">' + esc(s.title.en) + '</div><div class="es">' + esc(s.title.es) + '</div><div class="zh">' + esc(s.title.zh) + '</div>' +
+        (s.text.en ? '<div class="sub"><div>' + esc(s.text.en) + '</div><div class="s-es">' + esc(s.text.es) + '</div></div>' : '') +
+        '</div><div class="dots">' + S.map(function (_, i) { return '<i class="' + (i === k ? 'on' : '') + '"></i>'; }).join('') + '</div>',
+        (k + 1) + ' / ' + S.length);
+      bindSwipe();
+    } else if (mode === 'door') {
+      var cut = function (t) { return (t || '').split(/(?<=[.。])\s*/).filter(function (x) { return !/example|ejemplo|例如/i.test(x); }).join(' '); };
+      var lt = S.length ? S[S.length - 1].text : { en: '', es: '' }, last = { en: cut(lt.en), es: cut(lt.es) };
+      app.innerHTML = shell('<div class="door"><div class="show">' +
+        '<div class="lab">DOOR</div><div class="num' + (door ? '' : ' empty') + '">' + esc(door || '00') + '</div>' +
+        '<div class="lab s">PUERTA ' + esc(door || '') + '</div><div class="lab z">' + esc(door || '') + ' 号门</div>' +
+        (last.en ? '<div class="note">' + esc(last.en) + '<br>' + esc(last.es || '') + '</div>' : '') + '</div>' +
+        '<div class="pad">' + ['1', '2', '3', '⌫', '4', '5', '6', 'C', '7', '8', '9', '0'].map(function (d) {
+          return '<button data-d="' + d + '"' + (d === 'C' || d === '⌫' ? ' class="c"' : '') + '>' + d + '</button>';
+        }).join('') + '</div></div>');
+    } else {
+      app.innerHTML = shell('<div class="phr">' + PHR.map(function (p, i) {
+        return '<button data-p="' + i + '"><div class="i">' + esc(p.icon || '💬') + '</div><div class="e">' + esc(p.en) + '</div><div class="s">' + esc(p.es) + '</div><div class="z">' + esc(p.zh || '') + '</div></button>';
+      }).join('') + '</div>');
+    }
+  }
+  function bigCard(p) {
+    var d = document.createElement('div'); d.className = 'full';
+    d.innerHTML = '<div class="ico">' + esc(p.icon || '💬') + '</div><div class="big">' + esc(p.en) + '</div><div class="es">' + esc(p.es) + '</div><div class="zh">' + esc(p.zh || '') + '</div>' +
+      '<div class="spk"><button data-l="es">🔊 Español</button><button data-l="en">🔊 English</button></div><div class="tap">Tap anywhere to close · 点任意处关闭</div>';
+    d.onclick = function (e) { var b = e.target.closest('[data-l]'); if (b) { say(b.dataset.l === 'es' ? p.es : p.en, b.dataset.l); return; } speechSynthesis && speechSynthesis.cancel(); d.remove(); };
+    document.body.appendChild(d);
+    say(sayLang === 'es' ? p.es : p.en, sayLang);
+  }
+  function speakNow() {
+    if (mode === 'steps' && S[k]) { var s = S[k]; say(sayLang === 'es' ? (s.title.es + '. ' + (s.text.es || '')) : (s.title.en + '. ' + (s.text.en || '')), sayLang); }
+    else if (mode === 'door') say(door ? (sayLang === 'es' ? 'Puerta ' + door : 'Door ' + door) : '', sayLang);
+  }
+  function go(d) { var n = Math.max(0, Math.min(S.length - 1, k + d)); if (n !== k) { k = n; render(); } }
+
+  app.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) {
+      // 点地图或文字右半边 = 下一步，左半边 = 上一步
+      if (mode === 'steps' && e.target.closest('.view')) go(e.clientX > innerWidth / 2 ? 1 : -1);
+      return;
+    }
+    var a = b.dataset.a;
+    if (a === 'prev') { if (mode === 'steps') go(-1); else { mode = 'steps'; render(); } }
+    else if (a === 'steps') { if (mode === 'steps') go(1); else { mode = 'steps'; render(); } }
+    else if (a === 'door' || a === 'phr') { mode = a; render(); }
+    else if (a === 'speak') {
+      if (b.dataset.held) return;
+      speakNow();
+    }
+    else if (b.dataset.d) {
+      var d = b.dataset.d;
+      if (d === 'C') door = ''; else if (d === '⌫') door = door.slice(0, -1); else if (door.length < 4) door += d;
+      try { localStorage.setItem('ci:door', door); } catch (er) { }
+      render();
+    }
+    else if (b.dataset.p) bigCard(PHR[+b.dataset.p]);
+  });
+  // 长按喇叭 = 切换西语 / 英语
+  var hold;
+  app.addEventListener('pointerdown', function (e) {
+    var b = e.target.closest('[data-a="speak"]'); if (!b) return;
+    hold = setTimeout(function () {
+      sayLang = sayLang === 'es' ? 'en' : 'es'; try { localStorage.setItem('ci:sayLang', sayLang); } catch (er) { }
+      render(); var nb = app.querySelector('[data-a="speak"]'); if (nb) { nb.dataset.held = '1'; setTimeout(function () { delete nb.dataset.held; }, 600); }
+    }, 550);
+  });
+  app.addEventListener('pointerup', function () { clearTimeout(hold); });
+  app.addEventListener('pointercancel', function () { clearTimeout(hold); });
+
+  function bindSwipe() {
+    var v = app.querySelector('.view'), x0 = null;
+    v.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    v.addEventListener('touchend', function (e) {
+      if (x0 == null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) { e.preventDefault(); go(dx < 0 ? 1 : -1); }
+    });
+  }
+  document.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); });
+  render();
+})();
+</script>
+</body>
+</html>

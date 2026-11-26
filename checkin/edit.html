@@ -61,6 +61,7 @@ dialog::backdrop{background:#000a}
 <header><div class="wrap">
   <h1>⚙️ 司机签到指引 · 设置</h1>
   <select id="sitepick" style="width:auto;max-width:200px"></select>
+  <button id="bShow">📱 给司机看</button>
   <button id="bNew">➕ 新地点</button>
   <button id="bImport">📂 导入</button><input type="file" id="fImport" accept=".json" hidden>
 </div></header>
@@ -78,7 +79,7 @@ dialog::backdrop{background:#000a}
 <dialog id="dlg"><div id="dlgBody"></div><div style="text-align:right;margin-top:12px"><button onclick="dlg.close()">关闭</button></div></dialog>
 <div class="toast" id="toast"></div>
 
-<script src="common.js?v=1"></script>
+<script src="common.js?v=2"></script>
 <script>
 var esc = CI.esc, cfg = null, sel = -1, tool = 'select', siteList = [];
 var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -311,6 +312,7 @@ function showLink(title, url, extra) {
   $('#bCopy').onclick = function () { navigator.clipboard.writeText(url).then(function () { toast('已复制'); }); };
   dlg.showModal();
 }
+$('#bShow').onclick = function () { save(); location.href = baseURL() + 'show.html' + (ls('ci:draftFrom') ? '?preview=1' : '?site=' + encodeURIComponent(cfg.id)); };
 $('#bPrev').onclick = function () { save(); window.open(baseURL() + '?preview=1', '_blank'); };
 $('#bShare').onclick = async function () {
   var url = baseURL() + '#c=' + await CI.pack(cfg);
