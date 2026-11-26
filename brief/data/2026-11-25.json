@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "generated": "2026-11-25T23:11:40Z",
+ "generated": "2026-11-26T00:42:37Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,19 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "EA使用AI复刻已故解说员John Motson声音",
-     "d": "EA Sports在《FC 27》中通过合成旧音频并利用生成式AI，重新打造已故足球解说员John Motson的声音，已获其家属授权，将于11月26日上线。此举标志着AI技术首次被用于在游戏中复活已逝名人，引发对声音克隆伦理的讨论。",
-     "src": [
-      {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/c65y10j841jpo?at_medium=RSS&at_campaign=rss"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "Nvidia CEO黄仁勋复职凸显其不可替代性",
-     "d": "在卷入婚外情与涉嫌间谍关联的争议后，Nvidia创始人兼CEO黄仁勋在两周内被董事会重新任命，得到美国政要支持。此事显示出技术领袖在AI芯片行业的关键地位，以及公司对其个人影响力的高度依赖。",
+     "t": "Nvidia CEO黄仁勋因绯闻复职 引发争议",
+     "d": "在被指与涉嫌中国间谍的女子有染后，Nvidia创始人兼CEO黄仁勋短暂离职后即被董事会恢复职务，并受到公司员工热烈欢迎。此事凸显其在AI芯片领域的不可替代性及政治关联，引发对公司治理和国家安全的关注。",
      "src": [
       {
        "n": "BBC",
@@ -31,12 +20,23 @@
      "full": true
     },
     {
-     "t": "美国司法部长回避Nvidia调查问答",
-     "d": "美国司法部长Todd Blanche对记者关于是否对Nvidia或其CEO黄仁勋进行联邦调查的提问置之不理，并称未获相关信息。此态度加剧了外界对美国政府在高科技安全审查方面透明度的质疑。",
+     "t": "特朗普称自己促成黄仁勋复职 引发政治风险",
+     "d": "美国总统特朗普在接受CNBC采访时宣称自己促成了因绯闻被指可能危及国家安全的Nvidia CEO黄仁勋的复职，并在社交平台上发布AI生成的讽刺图像。此举将黄仁勋与美国政治紧密绑定，可能导致国会监督和监管审查升级。",
      "src": [
       {
        "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/crpdw1qx7jgxo?at_medium=RSS&at_campaign=rss"
+       "u": "https://www.bbc.co.uk/news/articles/ckj05m2zdyryo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "EA在《足球 27》使用AI合成已故解说员声线",
+     "d": "EA Sports在新作《足球 27》中引入已故英国解说员John Motson的AI合成声音，获得其遗属授权并支付费用。此举展示了AI在游戏行业的创意应用，同时也引发对语音克隆伦理的讨论。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/c65y10j841jpo?at_medium=RSS&at_campaign=rss"
       }
      ],
      "full": true
@@ -110,52 +110,23 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "美国公布对欧盟和中国等14国的拟议关税",
-     "d": "美国在对欧盟、中国等主要贸易伙伴提出新关税后，可能重新塑造全球供应链并推高相关行业成本。",
-     "src": [
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/us-unveils-proposed-tariffs-on-major-partners-including-eu-and-china"
-      },
-      {
-       "n": "法国24",
-       "u": "https://www.france24.com/en/video/20261125-us-unveils-proposed-tariffs-on-major-partners-including-eu-and-china"
-      }
-     ]
-    },
-    {
-     "t": "澳大利亚与所罗门群岛签安全合作协议",
-     "d": "澳大利亚与所罗门群岛达成安全协定，成为后者主要防务伙伴，涵盖执法、基础设施、教育等领域，并要求其在关键项目上咨询澳方。该协议被视为澳大利亚在太平洋地区抵制中国影响力的关键一步。",
-     "src": [
-      {
-       "n": "德国之声",
-       "u": "https://www.dw.com/en/australia-solomon-islands-sign-sweeping-pact-seen-as-countering-china/a-80043646?maca=en-rss-en-all-1573-rdf"
-      },
-      {
-       "n": "ABC News",
-       "u": "https://abcnews.com/International/wireStory/solomon-islands-signs-treaty-australia-checks-chinas-influence-138430195"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "北约警告应对俄罗斯核卫星威胁",
-     "d": "在德国媒体报道俄罗斯可能在60天内发射装配核弹头的卫星后，北约秘书长马克·吕特承诺将防御任何空间威胁，并强调联盟的太空防御准备。此事凸显太空安全成为大国竞争的新焦点。",
+     "t": "黄仁勋复职让中国观察美中技术博弈",
+     "d": "Nvidia CEO黄仁勋的复职在中国社交媒体上热议，被视为对美国对华技术限制的间接回应，并凸显中美在AI芯片出口管制上的紧张关系。此事可能影响两国未来的贸易谈判和技术政策。",
      "src": [
       {
        "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/c9x2er1ry2mzo?at_medium=RSS&at_campaign=rss"
+       "u": "https://www.bbc.co.uk/news/articles/c63rgpy50x98o?at_medium=RSS&at_campaign=rss"
       },
       {
-       "n": "Euronews",
-       "u": "https://www.euronews.com/2026/11/25/europe-tonight-russia-reportedly-prepares-nuclear-satellite-launch"
+       "n": "南华早报",
+       "u": "https://www.scmp.com/news/world/united-states-canada/article/3375812/us-finds-no-evidence-china-told-tech-exec-spy-nvidias-jensen-huang-report-says"
       }
      ],
      "full": true
     },
     {
      "t": "中国神舟24号载首位巴基斯坦 astronaut",
-     "d": "中国神舟-24任务将三名航天员送往天宫空间站，其中穆罕默德·齐山·阿里成为首位登站的外国人，标志着中国空间站国际合作迈出重要一步。",
+     "d": "中国于本周三发射神舟-24载人任务，将三名航天员送往天宫空间站，其中包括穆罕默德·齐尚·阿里，成为首位登上该站的外国人。此举标志着中国空间站国际合作的新阶段。",
      "src": [
       {
        "n": "BBC",
@@ -167,13 +138,28 @@
       }
      ],
      "full": true
+    },
+    {
+     "t": "北韩驱逐瑞士外交官以回应制裁争议",
+     "d": "朝鲜外务省以瑞士对其儿童营地实施制裁为由，命令瑞士驻北韩外交处负责人48小时内离境，并威胁关闭该办事处。此举加剧了北韩与西方国家之间的外交紧张局势。",
+     "src": [
+      {
+       "n": "日本时报",
+       "u": "https://www.japantimes.co.jp/news/2026/11/25/asia-pacific/north-korea-swiss-diplomatic-office/"
+      },
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cq0l34e4kkr5o?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
     }
    ]
   }
  ],
  "pick": {
-  "t": "美国公布对欧盟和中国等14国的拟议关税",
-  "d": "新关税可能打破现有跨境供应链、提升成本并触发全球贸易摩擦，对科技硬件、芯片及原材料市场产生直接冲击。"
+  "t": "黄仁勋回归对习近平的启示",
+  "d": "该报道连接美国芯片领袖的政治救助与中国高层的科技政策思考，直接关联中美技术竞争与未来产业走向。"
  },
  "week": []
 }
