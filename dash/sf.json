@@ -1,86 +1,86 @@
 {
  "location": "San Francisco, CA",
- "eventsUpdatedAt": "2026-11-23T14:01:38.848455Z",
+ "eventsUpdatedAt": "2026-11-25T23:53:37.988301Z",
  "ranges": {
-  "today": "2026-11-23",
+  "today": "2026-11-25",
   "sat": "2026-11-28",
   "sun": "2026-11-29"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Festival",
+   "category": "Market",
    "city": "San Francisco",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
-   "endTime": "10:00 AM",
-   "note": "Free admission hour at the Japanese Tea Garden in Golden Gate Park.",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Wednesday farmers market with farm produce and food vendors at Civic Center.",
    "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/23/",
+   "sourceUrl": "https://www.sfvibe.com/events",
+   "startTime": "7:00 AM",
+   "title": "Heart of the City Farmers Market",
+   "venue": "United Nations Plaza, Civic Center, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Family",
+   "city": "San Francisco",
+   "date": "2026-11-25",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Giant sugar castle display at the Westin St. Francis, free to view.",
+   "price": "Free",
+   "sourceUrl": "https://sf.funcheap.com/2026/11/25/",
    "startTime": "9:00 AM",
-   "title": "Japanese Tea Garden's Free Admission Hour",
-   "venue": "Japanese Tea Garden, 75 Hagiwara Tea Garden Dr, San Francisco, CA"
+   "title": "Incredible Sugar Castle At The Westin St. Francis",
+   "venue": "The Westin St. Francis, 335 Powell St, San Francisco, CA"
   },
   {
    "bucket": "today",
-   "category": "Festival",
+   "category": "Sports",
    "city": "San Francisco",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Free ice skating lessons at the Union Square holiday rink; final day to register.",
-   "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/23/",
-   "startTime": "10:00 AM",
-   "title": "Free Ice Skating Lessons at Union Square Holiday Rink",
-   "venue": "Union Square Park, Geary and Powell, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Comedy",
-   "city": "San Francisco",
-   "date": "2026-11-23",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": "10:00 PM",
-   "note": "Free weekly Monday comedy show in Hayes Valley.",
-   "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/2026/11/23/",
-   "startTime": "7:00 PM",
-   "title": "Hayes Valley Comedy Night",
-   "venue": "The Function, 1414 Market Street, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-23",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Electronic music pioneer Gary Numan live at The Regency Ballroom.",
-   "price": "From $33",
-   "sourceUrl": "https://americanarenas.com/city/san-francisco-events/concerts/",
-   "startTime": "8:00 PM",
-   "title": "Gary Numan",
-   "venue": "The Regency Ballroom, 1300 Van Ness Avenue, San Francisco, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Music",
-   "city": "San Francisco",
-   "date": "2026-11-23",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Experimental duo CocoRosie live at The Fillmore.",
+   "note": "NBA Cup game: Warriors host the Sacramento Kings at Chase Center.",
    "price": null,
-   "sourceUrl": "https://blog.ckord.com/live-music/san-francisco",
-   "startTime": "8:00 PM",
-   "title": "CocoRosie",
-   "venue": "The Fillmore, 1805 Geary Blvd, San Francisco, CA"
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?ac_link=blog&page=16",
+   "startTime": "7:00 PM",
+   "title": "Golden State Warriors vs. Sacramento Kings",
+   "venue": "Chase Center, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Theater",
+   "city": "San Francisco",
+   "date": "2026-11-25",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "The farcical whodunit at San Francisco Playhouse.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/san-francisco?ac_link=blog&page=16",
+   "startTime": "7:00 PM",
+   "title": "Peter Pan Goes Wrong",
+   "venue": "San Francisco Playhouse, 450 Post St, San Francisco, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Holiday",
+   "city": "San Francisco",
+   "date": "2026-11-25",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Friendsgiving-themed ice skating night at the Union Square rink.",
+   "price": null,
+   "sourceUrl": "https://sf.funcheap.com/2026/11/25/",
+   "startTime": "8:30 PM",
+   "title": "Friendsgiving Ice Skating Night",
+   "venue": "Union Square Ice Rink, San Francisco, CA"
   }
  ],
  "events": [
@@ -131,6 +131,21 @@
   },
   {
    "bucket": "weekend",
+   "category": "Festival",
+   "city": "San Francisco",
+   "date": "2026-11-28",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": "7:00 PM",
+   "note": "Free holiday tree lighting with hot cocoa and storytime, followed by free rides on the historic LeRoy King Carousel.",
+   "price": "Free",
+   "sourceUrl": "https://www.sf.gov/shop-local-holiday-season",
+   "startTime": "4:30 PM",
+   "title": "Yerba Buena Gardens Holiday Tree Lighting",
+   "venue": "Yerba Buena Gardens, 750 Howard St, San Francisco, CA 94103"
+  },
+  {
+   "bucket": "weekend",
    "category": "Music",
    "city": "San Francisco",
    "date": "2026-11-28",
@@ -173,111 +188,96 @@
    "startTime": "1:00 PM",
    "title": "Golden Gate Park Sunday Roller Disco Party",
    "venue": "Skatin' Place, 6th Ave. and Kennedy Drive, San Francisco, CA"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Comedy",
-   "city": "San Francisco",
-   "date": "2026-11-29",
-   "day": "sun",
-   "dayLabel": "周日",
-   "endTime": null,
-   "note": "Free comedy all-stars show at Cobb's, free with RSVP; 18+ with valid photo ID, two-drink minimum.",
-   "price": "Free",
-   "sourceUrl": "https://sf.funcheap.com/secret-guest-list-cobbs-free-comedy-nights-ha-ha-holiday-allstars/",
-   "startTime": "7:00 PM",
-   "title": "Secret Guest List: Cobb's Free Comedy Nights (Comedy Allstars)",
-   "venue": "Cobb's Comedy Club, 915 Columbus Ave, San Francisco, CA 94133"
   }
  ],
  "weather": {
   "current": {
-   "temp": 44,
-   "feelsLike": 38,
-   "high": 54,
-   "low": 43,
-   "description": "Clear",
-   "precipChance": 1,
-   "humidity": 70,
-   "wind": "5 mph",
+   "temp": 59,
+   "feelsLike": 57,
+   "high": 60,
+   "low": 52,
+   "description": "Mainly clear",
+   "precipChance": 57,
+   "humidity": 87,
+   "wind": "6 mph",
    "uvIndex": 3,
-   "airQualityIndex": 49,
+   "airQualityIndex": 34,
    "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-23",
-   "high": 54,
-   "low": 43,
-   "precipChance": 1,
-   "summary": "Overcast. Highs around 54 and lows around 43."
+   "date": "2026-11-25",
+   "high": 60,
+   "low": 52,
+   "precipChance": 57,
+   "summary": "Rain. Highs around 60 and lows around 52."
   },
   "daily": [
    {
-    "date": "2026-11-23",
-    "high": 54,
-    "low": 43,
-    "precipChance": 1
-   },
-   {
-    "date": "2026-11-24",
-    "high": 59,
-    "low": 48,
-    "precipChance": 89
-   },
-   {
     "date": "2026-11-25",
-    "high": 62,
-    "low": 55,
-    "precipChance": 84
+    "high": 60,
+    "low": 52,
+    "precipChance": 57
    },
    {
     "date": "2026-11-26",
-    "high": 62,
-    "low": 54,
-    "precipChance": 1
+    "high": 59,
+    "low": 51,
+    "precipChance": 0
    },
    {
     "date": "2026-11-27",
-    "high": 64,
-    "low": 54,
-    "precipChance": 8
+    "high": 66,
+    "low": 49,
+    "precipChance": 0
    },
    {
     "date": "2026-11-28",
-    "high": 64,
-    "low": 56,
-    "precipChance": 68
+    "high": 69,
+    "low": 61,
+    "precipChance": 8
    },
    {
     "date": "2026-11-29",
-    "high": 60,
+    "high": 65,
+    "low": 60,
+    "precipChance": 91
+   },
+   {
+    "date": "2026-11-30",
+    "high": 62,
     "low": 57,
-    "precipChance": 74
+    "precipChance": 87
+   },
+   {
+    "date": "2026-12-01",
+    "high": 58,
+    "low": 53,
+    "precipChance": 87
    }
   ],
   "weekend": [
    {
     "date": "2026-11-28",
     "day": "sat",
-    "high": 64,
-    "low": 56,
-    "precipChance": 68,
-    "summary": "Drizzle. Highs around 64 and lows around 56.",
-    "wind": "18 mph",
+    "high": 69,
+    "low": 61,
+    "precipChance": 8,
+    "summary": "Overcast. Highs around 69 and lows around 61.",
+    "wind": "5 mph",
     "hourly": []
    },
    {
     "date": "2026-11-29",
     "day": "sun",
-    "high": 60,
-    "low": 57,
-    "precipChance": 74,
-    "summary": "Drizzle. Highs around 60 and lows around 57.",
-    "wind": "24 mph",
+    "high": 65,
+    "low": 60,
+    "precipChance": 91,
+    "summary": "Drizzle. Highs around 65 and lows around 60.",
+    "wind": "16 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-23T13:56:58.261763Z",
+  "fetchedAt": "2026-11-25T23:53:29.213957Z",
   "location": "San Francisco, CA"
  }
 }

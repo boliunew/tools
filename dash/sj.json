@@ -1,118 +1,103 @@
 {
  "location": "San Jose, CA",
- "eventsUpdatedAt": "2026-11-23T14:01:38.850212Z",
+ "eventsUpdatedAt": "2026-11-25T23:53:37.989927Z",
  "ranges": {
-  "today": "2026-11-23",
+  "today": "2026-11-25",
   "sat": "2026-11-28",
   "sun": "2026-11-29"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Family",
+   "category": "Market",
    "city": "San Jose",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
-   "endTime": "5:00 PM",
-   "note": "Free STEM activity for ages 8-12 during Thanksgiving school break.",
-   "price": "Free",
-   "sourceUrl": "https://southbaytoday.org/event/2026-11-23-stem-november",
-   "startTime": "4:00 PM",
-   "title": "STEM November: Buzz Off",
-   "venue": "Edenvale Library, 101 Branham Lane East, San Jose, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Family",
-   "city": "San Jose",
-   "date": "2026-11-23",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": "6:00 PM",
-   "note": "Weekly Pokemon card trading and battling meetup for kids.",
-   "price": "Free",
-   "sourceUrl": "https://southbaytoday.org/event/2026-11-23-cambrian-pokemon-club",
-   "startTime": "5:00 PM",
-   "title": "Cambrian Pokemon Club",
-   "venue": "Cambrian Library, 1780 Hillsdale Ave, San Jose, CA"
-  },
-  {
-   "bucket": "today",
-   "category": "Family",
-   "city": "San Jose",
-   "date": "2026-11-23",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": "6:30 PM",
-   "note": "Family storytime with songs and rhymes, plus stay-and-play time.",
-   "price": "Free",
-   "sourceUrl": "https://southbaytoday.org/event/2026-11-23-family-storytime-stay-and-play",
-   "startTime": "5:30 PM",
-   "title": "Family Storytime + Stay & Play",
-   "venue": "Seven Trees Library, 3590 Cas Dr, San Jose, CA"
+   "dayLabel": "周三",
+   "endTime": "2:00 PM",
+   "note": "Weekly mercado with local vendors at the School of Arts and Culture.",
+   "price": null,
+   "sourceUrl": "https://caldiscovery.com/san-jose-ca/",
+   "startTime": "12:00 PM",
+   "title": "Mercadito",
+   "venue": "School of Arts and Culture at MHP (Pavilion), 1700 Alum Rock Ave, San Jose, CA"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "San Jose",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
-   "endTime": "9:00 PM",
-   "note": "Weekly open mic night in Campbell.",
-   "price": null,
-   "sourceUrl": "https://caldiscovery.com/san-jose-ca/",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Electronic music festival kicks off Thanksgiving weekend at the Convention Center (18+).",
+   "price": "From $84",
+   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
    "startTime": "6:00 PM",
-   "title": "Capers Open Mic",
-   "venue": "Capers Eat & Drink, 1710 W Campbell Ave, Campbell, CA"
+   "title": "Give Thanks Festival - Wednesday",
+   "venue": "San Jose McEnery Convention Center, 150 W San Carlos St, San Jose, CA"
   },
   {
    "bucket": "today",
    "category": "Sports",
    "city": "San Jose",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Sharks host the Minnesota Wild at SAP Center on Monday night.",
-   "price": "From $38",
+   "note": "AHL hockey: Barracuda host the Coachella Valley Firebirds.",
+   "price": "From $10",
    "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
    "startTime": "7:00 PM",
-   "title": "San Jose Sharks vs. Minnesota Wild",
-   "venue": "SAP Center at San Jose, 525 W Santa Clara St, San Jose, CA 95113"
+   "title": "San Jose Barracuda vs. Coachella Valley Firebirds",
+   "venue": "Tech CU Arena, 1500 S 10th St, San Jose, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Theater",
+   "city": "San Jose",
+   "date": "2026-11-25",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Stage adaptation of the classic board-game whodunit.",
+   "price": "From $68",
+   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
+   "startTime": "7:00 PM",
+   "title": "Clue - Live On Stage",
+   "venue": "San Jose Stage, 490 S 1st St, San Jose, CA"
+  },
+  {
+   "bucket": "today",
+   "category": "Comedy",
+   "city": "San Jose",
+   "date": "2026-11-25",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Stand-up comedy at the downtown Improv.",
+   "price": "From $46",
+   "sourceUrl": "https://americanarenas.com/city/san-jose-events/",
+   "startTime": "8:00 PM",
+   "title": "Jeff Dean",
+   "venue": "San Jose Improv, 62 S 2nd St, San Jose, CA"
   }
  ],
  "events": [
   {
    "bucket": "weekend",
-   "category": "Market",
+   "category": "Family",
    "city": "San Jose",
    "date": "2026-11-28",
    "day": "sat",
    "dayLabel": "周六",
-   "endTime": null,
-   "note": "Holiday oddities market at the Winchester Mystery House.",
-   "price": null,
-   "sourceUrl": "http://allevents.in/san-jose/christmas",
-   "startTime": "10:00 AM",
-   "title": "Yuletide Oddities Market",
-   "venue": "Winchester Mystery House, 525 South Winchester Boulevard, San Jose, CA"
-  },
-  {
-   "bucket": "weekend",
-   "category": "Theatre",
-   "city": "San Jose",
-   "date": "2026-11-28",
-   "day": "sat",
-   "dayLabel": "周六",
-   "endTime": null,
-   "note": "Stage adaptation of the classic whodunit at San Jose Stage; also an 8:00 PM performance.",
-   "price": "From $73",
-   "sourceUrl": "https://americanarenas.com/city/san-jose-events/shows/november/",
-   "startTime": "2:00 PM",
-   "title": "Clue - Live On Stage",
-   "venue": "San Jose Stage, 490 S 1st St, San Jose, CA 95113"
+   "endTime": "4:00 PM",
+   "note": "Drop-in board games and crafts at Santa Teresa Library, no experience needed.",
+   "price": "Free",
+   "sourceUrl": "https://southbaytoday.org/event/2026-11-28-community-game-and-craft-day",
+   "startTime": "11:00 AM",
+   "title": "Community Game & Craft Day",
+   "venue": "Santa Teresa Library, 290 International Circle, San Jose, CA"
   },
   {
    "bucket": "weekend",
@@ -131,6 +116,21 @@
   },
   {
    "bucket": "weekend",
+   "category": "Comedy",
+   "city": "San Jose",
+   "date": "2026-11-28",
+   "day": "sat",
+   "dayLabel": "周六",
+   "endTime": null,
+   "note": "Stand-up comedian Chris Porter live at San Jose Improv.",
+   "price": "From $42",
+   "sourceUrl": "https://americanarenas.com/venue/san-jose-improv/",
+   "startTime": "7:00 PM",
+   "title": "Chris Porter",
+   "venue": "San Jose Improv, 62 S Second St, San Jose, CA 95113"
+  },
+  {
+   "bucket": "weekend",
    "category": "Opera",
    "city": "San Jose",
    "date": "2026-11-28",
@@ -139,8 +139,8 @@
    "endTime": null,
    "note": "Opera San José presents Fiddler on the Roof, in English with English and Spanish supertitles.",
    "price": null,
-   "sourceUrl": "https://dothebay.com/events/2026/11/29/fiddler-on-the-roof-opera-san-jose-tickets",
-   "startTime": "7:30 PM",
+   "sourceUrl": "https://southbaytoday.org/event/2026-11-28-fiddler-on-the-roof",
+   "startTime": "2:00 PM",
    "title": "Opera San José - Fiddler on the Roof",
    "venue": "California Theatre, 345 South First Street, San Jose, CA 95113"
   },
@@ -166,12 +166,12 @@
    "date": "2026-11-29",
    "day": "sun",
    "dayLabel": "周日",
-   "endTime": null,
-   "note": "Candlelight string-quartet tribute to ABBA at Hammer Theatre Center.",
-   "price": "From $88",
-   "sourceUrl": "https://americanarenas.com/city/san-jose-events/shows/november/",
+   "endTime": "6:30 PM",
+   "note": "Candlelight string-quartet tribute pairing the music of Queen and ABBA at Hammer Theatre Center.",
+   "price": null,
+   "sourceUrl": "https://southbaytoday.org/event/2026-11-29-candlelight-queen-vs-abba",
    "startTime": "5:30 PM",
-   "title": "Candlelight: Tribute to ABBA",
+   "title": "Candlelight: Queen vs. ABBA",
    "venue": "Hammer Theatre Center, 101 Paseo De San Antonio, San Jose, CA 95113"
   },
   {
@@ -181,10 +181,10 @@
    "date": "2026-11-29",
    "day": "sun",
    "dayLabel": "周日",
-   "endTime": null,
+   "endTime": "8:45 PM",
    "note": "Candlelight string-quartet tribute to Hans Zimmer's film scores at Hammer Theatre Center.",
-   "price": "From $56",
-   "sourceUrl": "https://americanarenas.com/city/san-jose-events/shows/november/",
+   "price": null,
+   "sourceUrl": "https://southbaytoday.org/event/2026-11-29-candlelight-the-best-of-hans-zimmer",
    "startTime": "7:45 PM",
    "title": "Candlelight: The Best of Hans Zimmer",
    "venue": "Hammer Theatre Center, 101 Paseo De San Antonio, San Jose, CA 95113"
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 41,
-   "feelsLike": 37,
-   "high": 57,
-   "low": 39,
+   "temp": 62,
+   "feelsLike": 61,
+   "high": 65,
+   "low": 51,
    "description": "Clear",
-   "precipChance": 1,
-   "humidity": 85,
-   "wind": "2 mph",
-   "uvIndex": 3,
-   "airQualityIndex": 53,
-   "airQualityDescription": "Moderate"
+   "precipChance": 37,
+   "humidity": 80,
+   "wind": "6 mph",
+   "uvIndex": 4,
+   "airQualityIndex": 31,
+   "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-23",
-   "high": 57,
-   "low": 39,
-   "precipChance": 1,
-   "summary": "Overcast. Highs around 57 and lows around 39."
+   "date": "2026-11-25",
+   "high": 65,
+   "low": 51,
+   "precipChance": 37,
+   "summary": "Light drizzle. Highs around 65 and lows around 51."
   },
   "daily": [
    {
-    "date": "2026-11-23",
-    "high": 57,
-    "low": 39,
-    "precipChance": 1
-   },
-   {
-    "date": "2026-11-24",
-    "high": 59,
-    "low": 45,
-    "precipChance": 73
-   },
-   {
     "date": "2026-11-25",
-    "high": 66,
-    "low": 54,
-    "precipChance": 73
+    "high": 65,
+    "low": 51,
+    "precipChance": 37
    },
    {
     "date": "2026-11-26",
-    "high": 64,
-    "low": 53,
+    "high": 59,
+    "low": 48,
     "precipChance": 0
    },
    {
     "date": "2026-11-27",
-    "high": 67,
-    "low": 53,
-    "precipChance": 5
+    "high": 68,
+    "low": 48,
+    "precipChance": 0
    },
    {
     "date": "2026-11-28",
-    "high": 67,
-    "low": 56,
-    "precipChance": 51
+    "high": 72,
+    "low": 60,
+    "precipChance": 3
    },
    {
     "date": "2026-11-29",
-    "high": 60,
-    "low": 55,
-    "precipChance": 69
+    "high": 67,
+    "low": 57,
+    "precipChance": 85
+   },
+   {
+    "date": "2026-11-30",
+    "high": 64,
+    "low": 56,
+    "precipChance": 66
+   },
+   {
+    "date": "2026-12-01",
+    "high": 58,
+    "low": 51,
+    "precipChance": 89
    }
   ],
   "weekend": [
    {
     "date": "2026-11-28",
     "day": "sat",
-    "high": 67,
-    "low": 56,
-    "precipChance": 51,
-    "summary": "Light drizzle. Highs around 67 and lows around 56.",
-    "wind": "9 mph",
+    "high": 72,
+    "low": 60,
+    "precipChance": 3,
+    "summary": "Overcast. Highs around 72 and lows around 60.",
+    "wind": "6 mph",
     "hourly": []
    },
    {
     "date": "2026-11-29",
     "day": "sun",
-    "high": 60,
-    "low": 55,
-    "precipChance": 69,
-    "summary": "Drizzle. Highs around 60 and lows around 55.",
-    "wind": "11 mph",
+    "high": 67,
+    "low": 57,
+    "precipChance": 85,
+    "summary": "Drizzle. Highs around 67 and lows around 57.",
+    "wind": "7 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-23T13:57:00.654553Z",
+  "fetchedAt": "2026-11-25T23:53:31.090442Z",
   "location": "San Jose, CA"
  }
 }

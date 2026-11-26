@@ -1,86 +1,86 @@
 {
  "location": "New York, NY",
- "eventsUpdatedAt": "2026-11-23T14:01:38.852566Z",
+ "eventsUpdatedAt": "2026-11-25T23:53:37.992073Z",
  "ranges": {
-  "today": "2026-11-23",
+  "today": "2026-11-25",
   "sat": "2026-11-28",
   "sun": "2026-11-29"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Theater",
+   "category": "Holiday",
    "city": "New York",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Family stage adaptation of the classic picture book, at DR2 Theatre.",
-   "price": null,
-   "sourceUrl": "https://zipouts.com/nyc/guides/nyc-in-november-2026/",
-   "startTime": "10:00 AM",
-   "title": "The Very Hungry Caterpillar Show",
-   "venue": "DR2 Theatre, New York, NY"
+   "note": "Watch the giant balloons being inflated on the Upper West Side on the eve of the 100th Macy's Thanksgiving Day Parade.",
+   "price": "Free",
+   "sourceUrl": "https://zipouts.com/nyc/thanksgiving-week-2026/",
+   "startTime": null,
+   "title": "Macy's Thanksgiving Day Parade Balloon Inflation",
+   "venue": "Upper West Side, New York, NY"
   },
   {
    "bucket": "today",
    "category": "Theater",
    "city": "New York",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
    "note": "The Rockettes' annual holiday spectacular at Radio City.",
    "price": "From $50",
-   "sourceUrl": "https://zipouts.com/nyc/guides/nyc-in-november-2026/",
+   "sourceUrl": "https://zipouts.com/nyc/thanksgiving-week-2026/",
    "startTime": "11:00 AM",
    "title": "Christmas Spectacular Starring The Radio City Rockettes",
    "venue": "Radio City Music Hall, 1260 6th Avenue, New York, NY"
   },
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Family",
    "city": "New York",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Pop show at Bowery Ballroom on Monday afternoon.",
-   "price": "From $24",
-   "sourceUrl": "https://seatgeek.com/cities/nyc/concerts",
-   "startTime": "4:00 PM",
-   "title": "Alyssa Grace",
-   "venue": "Bowery Ballroom, 6 Delancey Street, New York, NY"
-  },
-  {
-   "bucket": "today",
-   "category": "Festival",
-   "city": "New York",
-   "date": "2026-11-23",
-   "day": "today",
-   "dayLabel": "周一",
-   "endTime": null,
-   "note": "Christmas tree lighting at Resorts World New York City.",
+   "note": "Family bubble spectacular at New World Stages.",
    "price": null,
-   "sourceUrl": "https://caldiscovery.com/new-york-ny/src-23297.html?paper",
-   "startTime": "4:00 PM",
-   "title": "Winter Lights & Wonder - Christmas Tree Lighting",
-   "venue": "Resorts World New York City, Queens, NY"
+   "sourceUrl": "https://www.tickpick.com/buy-the-gazillion-bubble-show-tickets-new-world-stages-stage-2-11-25-26-2pm/8225651/",
+   "startTime": "2:00 PM",
+   "title": "The Gazillion Bubble Show",
+   "venue": "New World Stages: Stage 2, 340 West 50th Street, New York, NY"
   },
   {
    "bucket": "today",
    "category": "Music",
    "city": "New York",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "sombr brings the You Are The Reason Tour to Madison Square Garden with Dove Cameron and Hannah Jadagu.",
-   "price": "From $161",
-   "sourceUrl": "https://seatgeek.com/cities/nyc/concerts",
-   "startTime": "7:00 PM",
-   "title": "sombr with Dove Cameron and Hannah Jadagu",
-   "venue": "Madison Square Garden, New York, NY"
+   "note": "Santtu-Matias Rouvali conducts the Philharmonic in Schubert at Lincoln Center.",
+   "price": null,
+   "sourceUrl": "https://www.tickpick.com/buy-new-york-philharmonic-rouvali-conducts-schubert-tickets-david-geffen-hall-at-lincoln-center-11-25-26-7pm/7850419/?c=CONCERTS&cc=CLASSICAL",
+   "startTime": "7:30 PM",
+   "title": "New York Philharmonic: Rouvali Conducts Schubert",
+   "venue": "David Geffen Hall at Lincoln Center, 132 W. 65th Street, New York, NY"
+  },
+  {
+   "bucket": "today",
+   "category": "Nightlife",
+   "city": "New York",
+   "date": "2026-11-25",
+   "day": "today",
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Thanksgiving Eve party with complimentary drinks until 11pm.",
+   "price": "From $0",
+   "sourceUrl": "https://zipouts.com/nyc/thanksgiving-week-2026/",
+   "startTime": "10:00 PM",
+   "title": "FUNSGIVING NYC | Thanksgiving Eve Party",
+   "venue": "The Ivory On Park, New York, NY"
   }
  ],
  "events": [
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 60,
-   "feelsLike": 58,
-   "high": 69,
-   "low": 46,
-   "description": "Clear",
-   "precipChance": 6,
-   "humidity": 89,
-   "wind": "9 mph",
-   "uvIndex": 3,
-   "airQualityIndex": 72,
-   "airQualityDescription": "Moderate"
+   "temp": 40,
+   "feelsLike": 33,
+   "high": 43,
+   "low": 31,
+   "description": "Overcast",
+   "precipChance": 1,
+   "humidity": 83,
+   "wind": "8 mph",
+   "uvIndex": 2,
+   "airQualityIndex": 48,
+   "airQualityDescription": "Good"
   },
   "today": {
-   "date": "2026-11-23",
-   "high": 69,
-   "low": 46,
-   "precipChance": 6,
-   "summary": "Overcast. Highs around 69 and lows around 46."
+   "date": "2026-11-25",
+   "high": 43,
+   "low": 31,
+   "precipChance": 1,
+   "summary": "Overcast. Highs around 43 and lows around 31."
   },
   "daily": [
    {
-    "date": "2026-11-23",
-    "high": 69,
-    "low": 46,
-    "precipChance": 6
-   },
-   {
-    "date": "2026-11-24",
-    "high": 47,
-    "low": 33,
+    "date": "2026-11-25",
+    "high": 43,
+    "low": 31,
     "precipChance": 1
    },
    {
-    "date": "2026-11-25",
-    "high": 47,
-    "low": 38,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-26",
-    "high": 55,
-    "low": 46,
-    "precipChance": 88
+    "high": 57,
+    "low": 40,
+    "precipChance": 100
    },
    {
     "date": "2026-11-27",
-    "high": 55,
-    "low": 44,
-    "precipChance": 88
+    "high": 60,
+    "low": 45,
+    "precipChance": 55
    },
    {
     "date": "2026-11-28",
-    "high": 54,
-    "low": 45,
-    "precipChance": 5
+    "high": 52,
+    "low": 43,
+    "precipChance": 3
    },
    {
     "date": "2026-11-29",
+    "high": 53,
+    "low": 44,
+    "precipChance": 15
+   },
+   {
+    "date": "2026-11-30",
     "high": 54,
-    "low": 45,
-    "precipChance": 6
+    "low": 42,
+    "precipChance": 75
+   },
+   {
+    "date": "2026-12-01",
+    "high": 47,
+    "low": 39,
+    "precipChance": 2
    }
   ],
   "weekend": [
    {
     "date": "2026-11-28",
     "day": "sat",
-    "high": 54,
-    "low": 45,
-    "precipChance": 5,
-    "summary": "Light drizzle. Highs around 54 and lows around 45.",
-    "wind": "17 mph",
+    "high": 52,
+    "low": 43,
+    "precipChance": 3,
+    "summary": "Light drizzle. Highs around 52 and lows around 43.",
+    "wind": "16 mph",
     "hourly": []
    },
    {
     "date": "2026-11-29",
     "day": "sun",
-    "high": 54,
-    "low": 45,
-    "precipChance": 6,
-    "summary": "Overcast. Highs around 54 and lows around 45.",
-    "wind": "14 mph",
+    "high": 53,
+    "low": 44,
+    "precipChance": 15,
+    "summary": "Overcast. Highs around 53 and lows around 44.",
+    "wind": "11 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-23T13:57:06.330929Z",
+  "fetchedAt": "2026-11-25T23:53:35.291357Z",
   "location": "New York, NY"
  }
 }

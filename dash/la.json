@@ -1,118 +1,118 @@
 {
  "location": "Los Angeles, CA",
- "eventsUpdatedAt": "2026-11-23T14:01:38.851380Z",
+ "eventsUpdatedAt": "2026-11-25T23:53:37.991004Z",
  "ranges": {
-  "today": "2026-11-23",
+  "today": "2026-11-25",
   "sat": "2026-11-28",
   "sun": "2026-11-29"
  },
  "todayEvents": [
   {
    "bucket": "today",
-   "category": "Other",
+   "category": "Family",
    "city": "Los Angeles",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Annual auto show at the Los Angeles Convention Center.",
-   "price": "From $42",
-   "sourceUrl": "https://americanarenas.com/city/la-events/",
-   "startTime": null,
-   "title": "Los Angeles Auto Show",
-   "venue": "Los Angeles Convention Center, 1201 South Figueroa St, Los Angeles, CA 90015"
+   "note": "Free weekly Wednesday storytime at Vroman's Bookstore in Pasadena, ages 2 to 7.",
+   "price": "Free",
+   "sourceUrl": "https://otbla.com/events/",
+   "startTime": "11:00 AM",
+   "title": "Storytime with Mr. Steve and Miss Marie",
+   "venue": "Vroman's Bookstore, Pasadena, CA"
   },
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Holiday",
    "city": "Los Angeles",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Like Nastya live at The Wiltern on Monday evening.",
-   "price": null,
-   "sourceUrl": "https://www.curationsla.com/los-angeles/events/2026-11-23",
-   "startTime": "5:00 PM",
-   "title": "Like Nastya",
-   "venue": "The Wiltern, Los Angeles, CA"
+   "note": "Holiday ice rink on Fifth Street in Santa Monica, open Nov 5 to Jan 18.",
+   "price": "From $22",
+   "sourceUrl": "https://otbla.com/events/",
+   "startTime": "3:00 PM",
+   "title": "Frost on Fifth Ice Rink in Santa Monica",
+   "venue": "Frost on 5th, Santa Monica, CA"
   },
   {
    "bucket": "today",
    "category": "Sports",
    "city": "Los Angeles",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Lakers host the Utah Jazz at Crypto.com Arena.",
-   "price": "From $56",
-   "sourceUrl": "https://americanarenas.com/city/la-events/",
-   "startTime": "7:00 PM",
-   "title": "Los Angeles Lakers vs. Utah Jazz",
-   "venue": "Crypto.com Arena, 1111 S Figueroa St, Los Angeles, CA 90015"
+   "note": "NFL: Rams host the Green Bay Packers at SoFi Stadium.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=tmholiday23_gg_fam&page=28",
+   "startTime": "5:00 PM",
+   "title": "Los Angeles Rams vs. Green Bay Packers",
+   "venue": "SoFi Stadium, Inglewood, CA"
   },
   {
    "bucket": "today",
-   "category": "Film",
+   "category": "Theater",
    "city": "Los Angeles",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
-   "endTime": "11:00 PM",
-   "note": "Free Cinespia screening of The Rings of Power season three at the Orpheum.",
-   "price": "Free",
-   "sourceUrl": "https://www.curationsla.com/los-angeles/events/2026-11-23",
-   "startTime": "7:45 PM",
-   "title": "FREE SCREENING: The Rings of Power - Season Three Event",
-   "venue": "Cinespia at Orpheum Theatre, Los Angeles, CA"
+   "dayLabel": "周三",
+   "endTime": null,
+   "note": "Center Theatre Group production at the Mark Taper Forum (matinee also at 2:00 PM).",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=hpguide&categoryId=KZFzniwnSyZfZ7v7na&page=2",
+   "startTime": "7:30 PM",
+   "title": "Destiny of Desire",
+   "venue": "Mark Taper Forum, Los Angeles, CA"
   },
   {
    "bucket": "today",
-   "category": "Music",
+   "category": "Comedy",
    "city": "Los Angeles",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "day": "today",
-   "dayLabel": "周一",
+   "dayLabel": "周三",
    "endTime": null,
-   "note": "Jackson Browne live at the Hollywood Pantages Theatre.",
-   "price": "From $80",
-   "sourceUrl": "https://americanarenas.com/city/la-events/",
-   "startTime": "8:00 PM",
-   "title": "Jackson Browne",
-   "venue": "Hollywood Pantages Theatre, 6233 Hollywood Blvd, Los Angeles, CA 90028"
+   "note": "Amir K headlines a stand-up show at Hollywood Improv.",
+   "price": null,
+   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=hpguide&categoryId=KZFzniwnSyZfZ7v7na&page=2",
+   "startTime": "7:30 PM",
+   "title": "Amir K Headlines The Improv",
+   "venue": "Hollywood Improv, Hollywood, CA"
   }
  ],
  "events": [
   {
    "bucket": "weekend",
-   "category": "Music",
+   "category": "Sports",
    "city": "Los Angeles",
    "date": "2026-11-28",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "note": "Fear Factory performs the Demanufacture album in its entirety at Whisky A Go Go.",
+   "note": "LAFC hosts St. Louis City SC in the MLS Cup Playoffs Western Conference Round 1.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=blog&page=4&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAeA",
-   "startTime": "6:00 PM",
-   "title": "Fear Factory Performing Demanufacture in its entirety",
-   "venue": "Whisky A Go Go, West Hollywood, CA"
+   "sourceUrl": "https://www.curationsla.com/los-angeles/events/2026-11-28",
+   "startTime": "5:30 PM",
+   "title": "2026 MLS Cup Playoffs: LAFC vs. St. Louis City SC",
+   "venue": "BMO Stadium, Los Angeles, CA"
   },
   {
    "bucket": "weekend",
-   "category": "Music",
+   "category": "Sports",
    "city": "Los Angeles",
    "date": "2026-11-28",
    "day": "sat",
    "dayLabel": "周六",
    "endTime": null,
-   "note": "Bassrush presents Ray Volpe, ages 18+, at The Torch at LA Coliseum.",
+   "note": "The Los Angeles Kings host the Anaheim Ducks at Crypto.com Arena.",
    "price": null,
-   "sourceUrl": "https://www.ticketmaster.com/discover/los-angeles?ac_link=blog&categoryId=KZFzniwnSyZfZ7v7nJ&classificationId=KnvZfZ7vAvF&page=2",
+   "sourceUrl": "https://www.curationsla.com/los-angeles/events/2026-11-28",
    "startTime": "6:00 PM",
-   "title": "Bassrush Presents Ray Volpe",
-   "venue": "The Torch at LA Coliseum, 3911 S. Figueroa Street, Los Angeles, CA 90037"
+   "title": "Los Angeles Kings vs. Anaheim Ducks",
+   "venue": "Crypto.com Arena, 1111 S Figueroa St, Los Angeles, CA 90015"
   },
   {
    "bucket": "weekend",
@@ -192,92 +192,92 @@
  ],
  "weather": {
   "current": {
-   "temp": 52,
-   "feelsLike": 49,
-   "high": 70,
-   "low": 52,
+   "temp": 74,
+   "feelsLike": 67,
+   "high": 76,
+   "low": 53,
    "description": "Clear",
-   "precipChance": 20,
-   "humidity": 84,
-   "wind": "5 mph",
+   "precipChance": 0,
+   "humidity": 18,
+   "wind": "7 mph",
    "uvIndex": 4,
-   "airQualityIndex": 64,
+   "airQualityIndex": 66,
    "airQualityDescription": "Moderate"
   },
   "today": {
-   "date": "2026-11-23",
-   "high": 70,
-   "low": 52,
-   "precipChance": 20,
-   "summary": "Overcast. Highs around 70 and lows around 52."
+   "date": "2026-11-25",
+   "high": 76,
+   "low": 53,
+   "precipChance": 0,
+   "summary": "Overcast. Highs around 76 and lows around 53."
   },
   "daily": [
    {
-    "date": "2026-11-23",
-    "high": 70,
-    "low": 52,
-    "precipChance": 20
-   },
-   {
-    "date": "2026-11-24",
-    "high": 75,
-    "low": 50,
-    "precipChance": 0
-   },
-   {
     "date": "2026-11-25",
-    "high": 74,
-    "low": 63,
+    "high": 76,
+    "low": 53,
     "precipChance": 0
    },
    {
     "date": "2026-11-26",
-    "high": 79,
-    "low": 62,
+    "high": 86,
+    "low": 54,
     "precipChance": 0
    },
    {
     "date": "2026-11-27",
     "high": 80,
-    "low": 66,
+    "low": 60,
     "precipChance": 0
    },
    {
     "date": "2026-11-28",
-    "high": 76,
-    "low": 65,
-    "precipChance": 15
+    "high": 74,
+    "low": 66,
+    "precipChance": 0
    },
    {
     "date": "2026-11-29",
+    "high": 72,
+    "low": 64,
+    "precipChance": 20
+   },
+   {
+    "date": "2026-11-30",
+    "high": 70,
+    "low": 63,
+    "precipChance": 56
+   },
+   {
+    "date": "2026-12-01",
     "high": 68,
-    "low": 62,
-    "precipChance": 37
+    "low": 63,
+    "precipChance": 91
    }
   ],
   "weekend": [
    {
     "date": "2026-11-28",
     "day": "sat",
-    "high": 76,
-    "low": 65,
-    "precipChance": 15,
-    "summary": "Overcast. Highs around 76 and lows around 65.",
-    "wind": "7 mph",
+    "high": 74,
+    "low": 66,
+    "precipChance": 0,
+    "summary": "Overcast. Highs around 74 and lows around 66.",
+    "wind": "5 mph",
     "hourly": []
    },
    {
     "date": "2026-11-29",
     "day": "sun",
-    "high": 68,
-    "low": 62,
-    "precipChance": 37,
-    "summary": "Light drizzle. Highs around 68 and lows around 62.",
-    "wind": "14 mph",
+    "high": 72,
+    "low": 64,
+    "precipChance": 20,
+    "summary": "Overcast. Highs around 72 and lows around 64.",
+    "wind": "8 mph",
     "hourly": []
    }
   ],
-  "fetchedAt": "2026-11-23T13:57:03.377857Z",
+  "fetchedAt": "2026-11-25T23:53:33.275239Z",
   "location": "Los Angeles, CA"
  }
 }
