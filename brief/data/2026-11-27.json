@@ -1,0 +1,174 @@
+{
+ "date": "2026-11-27",
+ "generated": "2026-11-27T22:48:47Z",
+ "auto": true,
+ "ai": "@cf/openai/gpt-oss-120b",
+ "sections": [
+  {
+   "key": "ai",
+   "title": "🤖 AI 与科技",
+   "items": [
+    {
+     "t": "亚洲对Nvidia AI赌注的风险凸显",
+     "d": "Nvidia股价飙升近万亿美元后因政治监管担忧回落，导致日本、韩国、台湾等亚洲股指大幅波动。该公司依赖台湾TSMC代工，计划每年向台湾投资约1500亿美元，亚洲半导体与数据中心高度依赖Nvidia，波动将影响地区AI产业链。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cqevr4lnd1nxo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "美国批准SpaceX千卫星数据中心计划",
+     "d": "美国联邦通信委员会授权SpaceX在2033年前启动“Starmind”项目，计划发射最多一百万颗低轨卫星用于AI数据处理并返回地面。此举被视为提升美国AI算力竞争力，但遭亚马逊批评及天文学界反对，可能影响天文观测。",
+     "src": [
+      {
+       "n": "BBC",
+       "u": "https://www.bbc.co.uk/news/articles/cwp836l8n1jgo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  },
+  {
+   "key": "market",
+   "title": "📈 美股市场",
+   "items": [
+    {
+     "t": "11/27 周五 收盘：标普500 ETF（SPY）+1.62%，纳指100 ETF（QQQ）+2.69%",
+     "d": "大盘状态「防守」：大盘趋势走弱或恐慌指数偏高，突破类信号失败率上升，宜降低仓位，只看超跌反弹或观望；VIX 恐慌指数 23.8；64% 的股票站在 50 日均线上方。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "涨幅最大：COHR +14.1%、LITE +8.0%、STX +7.9%；跌幅最大：SNDK -9.6%、VRTX -5.2%、PODD -2.6%",
+     "d": "扫描范围约 513 只股票（标普 500 为主）。信息技术、医疗保健 板块的股票在涨跌榜上占了不止一席。",
+     "src": [
+      {
+       "n": "今日股票池",
+       "u": "https://boliunew.github.io/tools/stocks.html"
+      }
+     ]
+    },
+    {
+     "t": "11/30 周一的重要财报：RBRK（盘后）",
+     "d": "按市值挑出最大的几家，共 1 家公司发布财报。财报日个股波动通常比平时大得多。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "macro",
+   "title": "🏦 宏观经济",
+   "items": [
+    {
+     "t": "最近公布：EIA 原油库存（11/26 周四）",
+     "d": "Crude Oil Inventories 实际 1.109M（预期 2.000M，前值 3.380M）；Cushing Crude Oil Inventories 实际 -0.534M（预期 —，前值 -1.209M）。库存意外下降 → 油价上涨，利好能源股；意外累积则相反。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "12/2 周三 10:00：ISM 采购经理指数（重要性：中）",
+     "d": "50 以上表示扩张。制造业 ISM 影响工业、材料股；服务业 ISM 中的价格分项是通胀线索。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "12/2 周三 10:00：JOLTS 职位空缺（重要性：中）",
+     "d": "劳动力市场松紧的指标，空缺下降代表就业降温，利好降息预期。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    },
+    {
+     "t": "12/2 周三 10:00：美联储官员讲话 / 会议纪要（重要性：低）",
+     "d": "留意对降息节奏的表态；鲍威尔本人或纪要中的意外措辞可能引起短线波动。",
+     "src": [
+      {
+       "n": "财报与经济日历",
+       "u": "https://boliunew.github.io/tools/earnings.html"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "world",
+   "title": "🌍 世界大事",
+   "items": [
+    {
+     "t": "感恩节风暴致美东大规模停电，黑五消费仍创纪录",
+     "d": "感恩节期间，强风暴袭击美国东海岸和中西部，导致约90万户停电、数百航班取消；尽管如此，零售商预期黑色星期五销售将比去年增长4.2%。该天气事件突显节假日旅行及供应链的脆弱性。",
+     "src": [
+      {
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/27/g-s1-156004/up-first-newsletter-thanksgiving-storm-black-friday-shopping-asylum-supreme-court"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/world/thanksgiving-us-east-coast-weather-power-outage-6588506"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "欧盟预算峰会破裂 预算与乌克兰援助分歧加剧",
+     "d": "欧盟七年期预算谈判在布鲁塞尔陷入僵局，德国要求其他成员国同意对乌克兰提供450亿美元贷款才签字；丹麦、瑞典等国要求削减预算并中途退出会谈。分歧将延迟欧盟财政规划并影响对乌援助。",
+     "src": [
+      {
+       "n": "德国之声",
+       "u": "https://www.dw.com/en/divisions-deepen-between-eu-member-states-after-tense-budget-summit/a-80078599?maca=en-rss-en-eu-2092-rdf"
+      },
+      {
+       "n": "Euronews",
+       "u": "https://www.euronews.com/2026/11/27/eu-budget-summit-collapses-as-row-over-money-exposes-clash-over-europes-strategic-tasks"
+      }
+     ],
+     "full": true
+    },
+    {
+     "t": "感恩节风暴致美国东海岸大规模停电与航班延误",
+     "d": "强风暴带来最高112公里/小时的风速和洪水，导致近90万美国用户停电、近450航班取消、2000多航班延误，并迫使纽约感恩节大游行改期。该天气事件加剧了地区交通与能源供应的紧张。",
+     "src": [
+      {
+       "n": "CBC",
+       "u": "https://www.cbc.ca/news/world/u-s-thanksgiving-storm-power-flight-delays-9.7438358?cmp=rss"
+      },
+      {
+       "n": "BBC 美加",
+       "u": "https://www.bbc.co.uk/news/articles/cre3dj5n7dpwo?at_medium=RSS&at_campaign=rss"
+      }
+     ],
+     "full": true
+    }
+   ]
+  }
+ ],
+ "pick": {
+  "t": "亚洲巨额押注 Nvidia 人工智能",
+  "d": "该事件连接全球 AI 需求、半导体供需以及资本市场情绪，是本日最能解释亚洲股市波动及未来科技投资方向的核心新闻。"
+ },
+ "week": []
+}
