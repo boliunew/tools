@@ -1,16 +1,16 @@
 {
- "date": "2026-11-26",
+ "date": "2026-11-27",
  "kind": "习语",
- "en": "once in a blue moon",
- "zh": "难得一回",
- "by": "非常少见，难得一次",
- "line": "once in a blue moon",
+ "en": "Don't cry over spilled milk",
+ "zh": "覆水难收",
+ "by": "已经发生的事，难过也没用",
+ "line": "Don't cry over spilled milk",
  "word": {
-  "w": "dedicate",
-  "ph": "'dedikeit",
-  "zh": "vt. 献出，贡献",
-  "ex": "His father dedicated his life to science.",
-  "exzh": "他的父亲把一生奉献给了科学。"
+  "w": "substantive",
+  "ph": "'sʌbstәntiv",
+  "zh": "a. 表示实在的，有实质的，独立存在的，大量的；n. 名词性实词，名词",
+  "ex": "They moved forward from a period of fence mending to substantive changes in the country.",
+  "exzh": "他们从修补关系的阶段迈向了对国家进行实质性的变革。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
