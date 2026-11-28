@@ -1,16 +1,16 @@
 {
- "date": "2026-11-27",
+ "date": "2026-11-28",
  "kind": "习语",
- "en": "Don't cry over spilled milk",
- "zh": "覆水难收",
- "by": "已经发生的事，难过也没用",
- "line": "Don't cry over spilled milk",
+ "en": "burn the candle at both ends",
+ "zh": "蜡烛两头烧",
+ "by": "没日没夜地透支自己",
+ "line": "burn the candle at both ends",
  "word": {
-  "w": "substantive",
-  "ph": "'sʌbstәntiv",
-  "zh": "a. 表示实在的，有实质的，独立存在的，大量的；n. 名词性实词，名词",
-  "ex": "They moved forward from a period of fence mending to substantive changes in the country.",
-  "exzh": "他们从修补关系的阶段迈向了对国家进行实质性的变革。"
+  "w": "prosecutor",
+  "ph": "'prɒsikju:tә",
+  "zh": "n. 实行者，告发者，公诉人",
+  "ex": "The prosecutor asked me a leading question.",
+  "exzh": "检察官问了我一个引导性的问题。"
  },
  "page": "https://boliunew.github.io/tools/card.html"
 }
