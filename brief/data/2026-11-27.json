@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "generated": "2026-11-27T22:48:47Z",
+ "generated": "2026-11-28T00:16:15Z",
  "auto": true,
  "ai": "@cf/openai/gpt-oss-120b",
  "sections": [
@@ -9,8 +9,8 @@
    "title": "🤖 AI 与科技",
    "items": [
     {
-     "t": "亚洲对Nvidia AI赌注的风险凸显",
-     "d": "Nvidia股价飙升近万亿美元后因政治监管担忧回落，导致日本、韩国、台湾等亚洲股指大幅波动。该公司依赖台湾TSMC代工，计划每年向台湾投资约1500亿美元，亚洲半导体与数据中心高度依赖Nvidia，波动将影响地区AI产业链。",
+     "t": "亚洲对英伟达AI押注的风险与机遇",
+     "d": "英伟达股价飙升至近万亿美元市值，引发日本、韩国、台湾等亚洲股指剧烈波动；该地区依赖英伟达芯片及供应链，台积电等本地产业受其需求影响显著。此事凸显AI产业对亚洲半导体和数据中心经济的关键性。",
      "src": [
       {
        "n": "BBC",
@@ -20,12 +20,12 @@
      "full": true
     },
     {
-     "t": "美国批准SpaceX千卫星数据中心计划",
-     "d": "美国联邦通信委员会授权SpaceX在2033年前启动“Starmind”项目，计划发射最多一百万颗低轨卫星用于AI数据处理并返回地面。此举被视为提升美国AI算力竞争力，但遭亚马逊批评及天文学界反对，可能影响天文观测。",
+     "t": "美联邦通信委员会批准SpaceX部署百万颗卫星",
+     "d": "美国FCC授权SpaceX在2023‑2040年间部署约100万颗卫星以打造“Starmind”轨道数据中心，尽管科学家质疑技术可行性并警示空间碎片风险。此举标志美国在太空AI基础设施竞争中的政策支持。",
      "src": [
       {
-       "n": "BBC",
-       "u": "https://www.bbc.co.uk/news/articles/cwp836l8n1jgo?at_medium=RSS&at_campaign=rss"
+       "n": "NPR",
+       "u": "https://www.npr.org/2026/11/26/g-s1-155940/fcc-spacex-satellites-data-centers-in-space"
       }
      ],
      "full": true
@@ -119,23 +119,8 @@
    "title": "🌍 世界大事",
    "items": [
     {
-     "t": "感恩节风暴致美东大规模停电，黑五消费仍创纪录",
-     "d": "感恩节期间，强风暴袭击美国东海岸和中西部，导致约90万户停电、数百航班取消；尽管如此，零售商预期黑色星期五销售将比去年增长4.2%。该天气事件突显节假日旅行及供应链的脆弱性。",
-     "src": [
-      {
-       "n": "NPR",
-       "u": "https://www.npr.org/2026/11/27/g-s1-156004/up-first-newsletter-thanksgiving-storm-black-friday-shopping-asylum-supreme-court"
-      },
-      {
-       "n": "CNA",
-       "u": "https://www.channelnewsasia.com/world/thanksgiving-us-east-coast-weather-power-outage-6588506"
-      }
-     ],
-     "full": true
-    },
-    {
-     "t": "欧盟预算峰会破裂 预算与乌克兰援助分歧加剧",
-     "d": "欧盟七年期预算谈判在布鲁塞尔陷入僵局，德国要求其他成员国同意对乌克兰提供450亿美元贷款才签字；丹麦、瑞典等国要求削减预算并中途退出会谈。分歧将延迟欧盟财政规划并影响对乌援助。",
+     "t": "欧盟多国在七年预算谈判中陷入僵局",
+     "d": "欧盟首脑在布鲁塞尔就2028‑2034财政预算进行会谈时，丹麦、瑞典、比利时、奥地利等国因预算规模争议退出，德国将预算削减与对乌克兰的额外贷款挂钩。预算争端显示欧盟内部对财政负担分配和对乌援助的深度分歧。",
      "src": [
       {
        "n": "德国之声",
@@ -149,16 +134,30 @@
      "full": true
     },
     {
-     "t": "感恩节风暴致美国东海岸大规模停电与航班延误",
-     "d": "强风暴带来最高112公里/小时的风速和洪水，导致近90万美国用户停电、近450航班取消、2000多航班延误，并迫使纽约感恩节大游行改期。该天气事件加剧了地区交通与能源供应的紧张。",
+     "t": "中欧等主要经济体谴责美国新关税",
+     "d": "中国、欧盟等对美国提出的最高 20% 关税表示“不可接受”，可能加剧全球贸易紧张，对跨境供应链产生连锁冲击。",
      "src": [
       {
-       "n": "CBC",
-       "u": "https://www.cbc.ca/news/world/u-s-thanksgiving-storm-power-flight-delays-9.7438358?cmp=rss"
+       "n": "法国24",
+       "u": "https://www.france24.com/en/americas/20261126-unacceptable-major-economies-push-back-against-new-us-tariffs"
       },
       {
        "n": "BBC 美加",
-       "u": "https://www.bbc.co.uk/news/articles/cre3dj5n7dpwo?at_medium=RSS&at_campaign=rss"
+       "u": "https://www.bbc.co.uk/news/articles/c893r9ke5p97o?at_medium=RSS&at_campaign=rss"
+      }
+     ]
+    },
+    {
+     "t": "OpenAI起诉Apple窃取商业机密",
+     "d": "OpenAI在加州联邦法院对Apple提起反诉，指控对方通过挖走员工获取技术机密并限制其供应商渠道，同时Apple先前指控OpenAI盗用其技术。此案反映AI硬件竞争加剧，关乎未来智能设备市场格局。",
+     "src": [
+      {
+       "n": "半岛电视台",
+       "u": "https://www.aljazeera.com/economy/2026/11/27/openai-countersues-apple-over-trade-secrets-as-ai-race-heats-up?traffic_source=rss"
+      },
+      {
+       "n": "CNA",
+       "u": "https://www.channelnewsasia.com/business/openai-countersues-apple-stealing-trade-secrets-6588456"
       }
      ],
      "full": true
@@ -167,8 +166,8 @@
   }
  ],
  "pick": {
-  "t": "亚洲巨额押注 Nvidia 人工智能",
-  "d": "该事件连接全球 AI 需求、半导体供需以及资本市场情绪，是本日最能解释亚洲股市波动及未来科技投资方向的核心新闻。"
+  "t": "欧盟预算峰会分歧：乌克兰融资与美国科技税",
+  "d": "欧盟预算争议直接涉及对美国科技巨头的税收政策和对乌克兰的援助，关系到欧洲财政健康及跨大西洋科技业务环境，值得重点关注。"
  },
  "week": []
 }
