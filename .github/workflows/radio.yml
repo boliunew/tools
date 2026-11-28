@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["radio/build.py"]
+    paths: ["radio/build.py", ".github/workflows/radio.yml"]
 permissions:
   contents: write
 concurrency:
