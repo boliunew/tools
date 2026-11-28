@@ -19,6 +19,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
@@ -507,7 +508,16 @@ async def tts_edge(text, lang, path):
     await edge_tts.Communicate(text, VOICES[lang], rate=RATES[lang]).save(path)
 
 
+TTS_DOWN = {"streak": 0}  # consecutive clips where every engine failed
+
+
 def tts(text, lang, path):
+    eng = _tts(text, lang, path) if TTS_DOWN["streak"] < 3 else None
+    TTS_DOWN["streak"] = 0 if eng else TTS_DOWN["streak"] + 1
+    return eng
+
+
+def _tts(text, lang, path):
     if os.environ.get("RADIO_FAKE_TTS"):
         secs = max(0.6, min(8.0, len(text) * (0.18 if lang == "zh" else 0.06)))
         freq = {"zh": 440, "en": 660, "es": 550}[lang]
@@ -520,9 +530,17 @@ def tts(text, lang, path):
                 return "edge"
         except Exception as e:  # noqa: BLE001
             print(f"edge-tts failed ({attempt + 1}/3):", e)
+        time.sleep(2 * (attempt + 1))
     from gtts import gTTS  # noqa: PLC0415
-    gTTS(text, lang=GTTS_LANG[lang], slow=(lang != "zh")).save(path)
-    return "gtts"
+    for attempt in range(4):
+        try:
+            gTTS(text, lang=GTTS_LANG[lang], slow=(lang != "zh")).save(path)
+            if os.path.getsize(path) > 1000:
+                return "gtts"
+        except Exception as e:  # noqa: BLE001
+            print(f"gtts failed ({attempt + 1}/4):", e)
+        time.sleep(10 * (attempt + 1))
+    return None  # both engines down for this clip: caller skips it instead of crashing the whole radio
 
 
 def probe_dur(path):
@@ -577,7 +595,8 @@ def ensure_clock(tmp):
                 if os.path.exists(p):
                     continue
                 raw = os.path.join(tmp, name + ".raw.mp3")
-                tts(text, "zh", raw)
+                if not tts(text, "zh", raw):
+                    raise RuntimeError("clock clip TTS failed: " + name)
                 run(["ffmpeg", "-y", "-i", raw, "-ar", "24000", "-ac", "1", "-b:a", "48k", p])
         return "radio/_local/clock/"
     gh = shutil.which("gh")
@@ -595,7 +614,8 @@ def ensure_clock(tmp):
     for name, text in texts.items():
         p = os.path.join(d, name)
         raw = p + ".raw.mp3"
-        tts(text, "zh", raw)
+        if not tts(text, "zh", raw):
+            raise RuntimeError("clock clip TTS failed: " + name)
         run(["ffmpeg", "-y", "-i", raw, "-ar", "24000", "-ac", "1", "-b:a", "48k", p])
         paths.append(p)
     for i in range(0, len(paths), 20):
@@ -616,16 +636,24 @@ def main():
     engines, seg_files, out_segs = set(), [], []
     stamp = now.strftime("%Y%m%d%H%M")
     for i, s in enumerate(segs, 1):
-        files = []
+        files, voiced = [], False
         for j, (lang, text) in enumerate(s["parts"]):
             p = os.path.join(tmp, f"s{i}_{j}.mp3")
             if lang == "pause":    # silence to repeat after the speaker
                 run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", text, "-b:a", "48k", p])
                 files += [p]
                 continue
-            engines.add(tts(text, lang, p))
+            eng = tts(text, lang, p)
+            if not eng:
+                print(f"seg {i}: skipped a clip (TTS down):", text[:40])
+                continue
+            engines.add(eng)
+            voiced = True
             files += [p, os.path.join(tmp, "gap.mp3")]
-        name = f"seg{i:02d}.mp3"
+        if not voiced:
+            print(f"seg {i}: {s['title']} has no audio, skipped")
+            continue
+        name = f"seg{len(seg_files) + 1:02d}.mp3"
         out = os.path.join(tmp, name)
         concat(files, out, tmp)
         seg_files.append(out)
@@ -637,6 +665,8 @@ def main():
         if s.get("opt"):
             out_segs[-1]["opt"] = True
         print(f"seg {i}: {s['title']} {out_segs[-1]['dur']}s")
+    if not engines:
+        raise SystemExit("TTS failed for every clip (edge-tts and gTTS both unreachable) — keeping yesterday's radio")
     full = os.path.join(tmp, "full.mp3")
     concat(seg_files, full, tmp)
 
