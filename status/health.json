@@ -1,11 +1,8 @@
 {
- "generated": "2026-11-27T22:47:39Z",
- "ok": false,
- "problems": [
-  "🚗 通勤电台：已经 3 天 没更新（超过 30 小时）",
-  "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/46070985537）"
- ],
- "sig": "⚙️ 自动任务「通勤电台」上次运行失败（https://github.com/boliunew/tools/actions/runs/46070985537）|🚗 通勤电台",
+ "generated": "2026-11-28T10:56:00Z",
+ "ok": true,
+ "problems": [],
+ "sig": "",
  "data": [
   {
    "k": "brief",
@@ -15,7 +12,7 @@
    "wf": "brief.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T00:50:38Z",
+   "at": "2026-11-28T00:16:15Z",
    "detail": "30 条"
   },
   {
@@ -26,7 +23,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T21:54:37Z",
+   "at": "2026-11-28T08:49:25Z",
    "detail": "12 条"
   },
   {
@@ -37,7 +34,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T21:54:44Z",
+   "at": "2026-11-28T08:49:28Z",
    "detail": "75 条"
   },
   {
@@ -48,8 +45,8 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T21:54:15Z",
-   "detail": "216 条"
+   "at": "2026-11-28T08:49:09Z",
+   "detail": "204 条"
   },
   {
    "k": "stocks",
@@ -59,7 +56,7 @@
    "wf": "stock-scan.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T22:20:44Z",
+   "at": "2026-11-28T08:56:58Z",
    "detail": "数据日期 2026-11-27 · 499 条"
   },
   {
@@ -70,7 +67,7 @@
    "wf": "earnings.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T21:41:46Z"
+   "at": "2026-11-28T03:23:34Z"
   },
   {
    "k": "deals",
@@ -80,7 +77,7 @@
    "wf": "deals.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T22:05:14Z"
+   "at": "2026-11-28T07:45:12Z"
   },
   {
    "k": "radio",
@@ -88,9 +85,9 @@
    "n": "通勤电台",
    "page": "radio.html",
    "wf": "radio.yml",
-   "ok": false,
-   "msg": "已经 3 天 没更新（超过 30 小时）",
-   "at": "2026-11-24T20:42:07Z"
+   "ok": true,
+   "msg": "",
+   "at": "2026-11-28T04:24:20Z"
   },
   {
    "k": "tv",
@@ -100,8 +97,8 @@
    "wf": "tv.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T19:12:23Z",
-   "detail": "12220 条"
+   "at": "2026-11-28T03:34:05Z",
+   "detail": "12235 条"
   },
   {
    "k": "card",
@@ -111,7 +108,7 @@
    "wf": "news.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T23:59:00Z"
+   "at": "2026-11-28T23:59:00Z"
   },
   {
    "k": "monitor",
@@ -121,7 +118,7 @@
    "wf": "monitor.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T13:56:10Z"
+   "at": "2026-11-28T07:56:37Z"
   },
   {
    "k": "bay_live",
@@ -131,7 +128,7 @@
    "wf": "bay-live.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-27T22:46:01Z"
+   "at": "2026-11-28T08:12:56Z"
   },
   {
    "k": "longterm",
@@ -161,7 +158,7 @@
    "wf": "stations.yml",
    "ok": true,
    "msg": "",
-   "at": "2026-11-24T23:16:55Z",
+   "at": "2026-11-28T04:22:03Z",
    "detail": "1022 条"
   },
   {
@@ -252,14 +249,6 @@
    "msg": ""
   }
  ],
- "failed_runs": [
-  {
-   "wf": "radio.yml",
-   "n": "通勤电台",
-   "conclusion": "failure",
-   "url": "https://github.com/boliunew/tools/actions/runs/46070985537",
-   "at": "2026-11-27T21:32:40Z"
-  }
- ],
- "since": "2026-11-25T23:09:55Z"
+ "failed_runs": [],
+ "since": "2026-11-28T10:56:00Z"
 }
