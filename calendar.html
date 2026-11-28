@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="wide.css?v=3">
+<script src="theme.js?v=1"></script>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7A2E2A">
+<title>万年历 · 农历</title>
+<style>
+:root{
+  --bg:#F6F1EA; --paper:#FFFDF9; --ink:#231C17; --soft:#685D53; --faint:#A0948A; --line:#E7DED3; --chip:#EFE7DC;
+  --cn:#C0392B; --cn-soft:#F8E1DD; --us:#2457A6; --us-soft:#DFE8F6; --term:#2E7D4F; --term-soft:#DDF0E3; --gold:#B5741A; --gold-soft:#FBEFD9;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(60,30,10,.07);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17130F; --paper:#211B16; --ink:#EFE8E0; --soft:#B5A99E; --faint:#7B7066; --line:#352C24; --chip:#2C241D;
+  --cn:#F07A6B; --cn-soft:#3B201C; --us:#7FA8EC; --us-soft:#1C2740; --term:#7CCB98; --term-soft:#17301F; --gold:#F0B65A; --gold-soft:#3A2C14;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#17130F; --paper:#211B16; --ink:#EFE8E0; --soft:#B5A99E; --faint:#7B7066; --line:#352C24; --chip:#2C241D;
+  --cn:#F07A6B; --cn-soft:#3B201C; --us:#7FA8EC; --us-soft:#1C2740; --term:#7CCB98; --term-soft:#17301F; --gold:#F0B65A; --gold-soft:#3A2C14;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;font-size:15px;line-height:1.5;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(160deg,#8E3A2F,#6B2A26 55%,#3E1C1A);color:#FBEFE6;padding:calc(16px + env(safe-area-inset-top)) 0 18px}
+.hero a.home{color:#FBEFE6;text-decoration:none;font-size:13px;opacity:.75}
+.hero h1{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif;font-size:28px;margin:6px 0 2px;letter-spacing:.06em}
+.today{display:flex;gap:14px;align-items:center;margin-top:12px}
+.today .dn{font-family:Georgia,serif;font-size:52px;font-weight:700;line-height:1}
+.today .ln{font-family:"Songti SC","STSong","Noto Serif SC",serif;font-size:20px;font-weight:700}
+.today small{display:block;font-size:13px;opacity:.82}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:3px 11px;font-size:13px}
+.bar{display:flex;align-items:center;gap:6px;margin:16px 0 10px}
+.bar h2{flex:1;margin:0;font-size:19px;text-align:center}
+.bar h2 small{display:block;font-size:12.5px;font-weight:400;color:var(--soft)}
+.bar button{width:40px;height:40px;border-radius:12px;background:var(--paper);border:1px solid var(--line);font-size:18px}
+.bar .tb{width:auto;padding:0 12px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.wd{text-align:center;font-size:12px;color:var(--faint);padding:2px 0 4px}
+.wd.we{color:var(--cn)}
+.c{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:10px;min-height:58px;padding:5px 2px 4px;text-align:center;min-width:0}
+.c.out{opacity:.35}
+.c .g{font-size:17px;font-weight:700;line-height:1.2}
+.c.we .g{color:var(--cn)}
+.c .l{font-size:11px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.c .l.f{color:var(--cn);font-weight:600}
+.c .l.t{color:var(--term);font-weight:600}
+.c .l.m{color:var(--gold);font-weight:600}
+.c .l.u{color:var(--us);font-weight:600}
+.c.off{background:var(--cn-soft)}
+.c.now{outline:2px solid var(--cn);outline-offset:-2px}
+.c.sel{background:var(--ink)} .c.sel .g,.c.sel .l{color:var(--paper)!important}
+.c .bd{position:absolute;top:2px;right:3px;font-size:10px;font-weight:700;line-height:1}
+.c .bd.x{color:var(--cn)} .c .bd.w{color:var(--soft)}
+.c .dot{position:absolute;top:4px;left:4px;width:5px;height:5px;border-radius:50%;background:var(--us)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--soft);margin:10px 2px 0}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.det{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-top:14px;box-shadow:var(--shadow)}
+.det h3{margin:0;font-size:18px}
+.det .lb{font-family:"Songti SC","STSong","Noto Serif SC",serif;font-size:19px;font-weight:700;margin-top:6px}
+.det .row{font-size:13.5px;color:var(--soft);margin-top:4px}
+.tg{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:7px;margin:6px 5px 0 0}
+.tg.cn{background:var(--cn-soft);color:var(--cn)} .tg.us{background:var(--us-soft);color:var(--us)} .tg.t{background:var(--term-soft);color:var(--term)} .tg.g{background:var(--chip);color:var(--soft)}
+.sec{font-size:13px;font-weight:700;color:var(--faint);letter-spacing:.06em;margin:22px 0 8px}
+.terms{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.tm{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 4px;text-align:center;font-size:12px;color:var(--soft)}
+.tm b{display:block;font-size:14px;color:var(--ink)}
+.tm.past{opacity:.45} .tm.nx{border-color:var(--term);background:var(--term-soft)}
+.foot{font-size:12px;color:var(--faint);margin-top:18px;line-height:1.6}
+@media (max-width:360px){.c{min-height:52px}.c .g{font-size:15px}.c .l{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <a class="home" href="index.html">‹ 首页</a>
+  <h1>📅 万年历</h1>
+  <div class="today" id="today"></div>
+  <div class="pills" id="pills"></div>
+</div></div>
+<main class="wrap">
+  <div class="bar">
+    <button id="prev" aria-label="上个月">‹</button>
+    <h2 id="title"></h2>
+    <button id="next" aria-label="下个月">›</button>
+    <button class="tb" id="back">📍 今天</button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="legend">
+    <span><i style="background:var(--cn-soft)"></i>🇨🇳 放假</span><span><b style="color:var(--soft)">班</b> 调休上班</span>
+    <span><i style="background:var(--us);border-radius:50%"></i>🇺🇸 美国假日</span>
+    <span style="color:var(--term)">■ 节气</span><span style="color:var(--cn)">■ 节日</span>
+  </div>
+  <div class="det" id="det"></div>
+  <div class="sec" id="tsec">🌿 二十四节气</div>
+  <div class="terms" id="terms"></div>
+  <div class="foot">农历和节气都按天文算法现算（朔日、太阳黄经，北京时间，闰月按“无中气”定），跟紫金山天文台的历书一致，哪年都能翻。放假和美国假日来自 <a href="holidays.html">🗓️ 节假日</a> 页的数据。左右滑动可以翻月。</div>
+</main>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var WD = ['日', '一', '二', '三', '四', '五', '六'];
+  var GAN = '甲乙丙丁戊己庚辛壬癸', ZHI = '子丑寅卯辰巳午未申酉戌亥', SX = '鼠牛虎兔龙蛇马羊猴鸡狗猪';
+  var DAYS = ['初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十', '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十', '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十'];
+  // 从春分（黄经 0°）开始，每 15° 一个
+  var TERMS = ['春分', '清明', '谷雨', '立夏', '小满', '芒种', '夏至', '小暑', '大暑', '立秋', '处暑', '白露', '秋分', '寒露', '霜降', '立冬', '小雪', '大雪', '冬至', '小寒', '大寒', '立春', '雨水', '惊蛰'];
+  var LFEST = { '正月1': '🧧 春节', '正月15': '🏮 元宵节', '二月2': '🐉 龙抬头', '五月5': '🐲 端午节', '七月7': '💞 七夕', '七月15': '🕯️ 中元节', '八月15': '🥮 中秋节', '九月9': '🌼 重阳节', '腊月8': '🥣 腊八节', '腊月23': '🧹 小年' };
+
+  function key(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function ymd(y, m, d) { return new Date(y, m, d); }
+  function today() { var n = new Date(); return ymd(n.getFullYear(), n.getMonth(), n.getDate()); }
+
+  function lunarDay(l) { return DAYS[l.day - 1] || ''; }
+
+  // ---------- 农历：用天文算法自己算（朔日 + 中气定闰月），不依赖浏览器
+  var R = Math.PI / 180;
+  function sunLon(jd) {  // 太阳视黄经（度），Meeus 简化算法
+    var T = (jd - 2451545) / 36525;
+    var L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T;
+    var M = (357.52911 + 35999.05029 * T - 0.0001537 * T * T) * R;
+    var C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * Math.sin(M) + (0.019993 - 0.000101 * T) * Math.sin(2 * M) + 0.000289 * Math.sin(3 * M);
+    var om = (125.04 - 1934.136 * T) * R;
+    var l = (L0 + C - 0.00569 - 0.00478 * Math.sin(om)) % 360;
+    return l < 0 ? l + 360 : l;
+  }
+  function deltaT(y) {  // 秒，TT−UT 近似
+    var t = y - 2000;
+    if (y < 2005) return 63.86 + 0.3345 * t - 0.060374 * t * t;
+    if (y < 2050) return 62.92 + 0.32217 * t + 0.005589 * t * t;
+    return -20 + 32 * Math.pow((y - 1820) / 100, 2) - 0.5628 * (2150 - y);
+  }
+  function solarTermJD(y, lon) {  // 黄经 lon 那一刻（UT 儒略日）
+    var base = Date.UTC(y, 2, 20) / 864e5 + 2440587.5;
+    var jd = lon >= 285 ? base - (360 - lon) / 360 * 365.2422 : base + lon / 360 * 365.2422;
+    for (var k = 0; k < 8; k++) jd += ((lon - sunLon(jd) + 540) % 360 - 180) / 360 * 365.2422;
+    return jd - deltaT(y) / 86400;
+  }
+  function newMoonJD(k) {  // 第 k 个朔（2000 年 1 月起），Meeus 第 49 章，UT 儒略日
+    var T = k / 1236.85, T2 = T * T, T3 = T2 * T, T4 = T3 * T;
+    var jde = 2451550.09766 + 29.530588861 * k + 0.00015437 * T2 - 0.00000015 * T3 + 0.00000000073 * T4;
+    var E = 1 - 0.002516 * T - 0.0000074 * T2;
+    var M = (2.5534 + 29.1053567 * k - 0.0000014 * T2 - 0.00000011 * T3) * R;
+    var Mp = (201.5643 + 385.81693528 * k + 0.0107582 * T2 + 0.00001238 * T3 - 0.000000058 * T4) * R;
+    var F = (160.7108 + 390.67050284 * k - 0.0016118 * T2 - 0.00000227 * T3 + 0.000000011 * T4) * R;
+    var Om = (124.7746 - 1.56375588 * k + 0.0020672 * T2 + 0.00000215 * T3) * R;
+    var s = Math.sin;
+    jde += -0.40720 * s(Mp) + 0.17241 * E * s(M) + 0.01608 * s(2 * Mp) + 0.01039 * s(2 * F) +
+      0.00739 * E * s(Mp - M) - 0.00514 * E * s(Mp + M) + 0.00208 * E * E * s(2 * M) - 0.00111 * s(Mp - 2 * F) -
+      0.00057 * s(Mp + 2 * F) + 0.00056 * E * s(2 * Mp + M) - 0.00042 * s(3 * Mp) + 0.00042 * E * s(M + 2 * F) +
+      0.00038 * E * s(M - 2 * F) - 0.00024 * E * s(2 * Mp - M) - 0.00017 * s(Om) - 0.00007 * s(Mp + 2 * M) +
+      0.00004 * s(2 * Mp - 2 * F) + 0.00004 * s(3 * M) + 0.00003 * s(Mp + M - 2 * F) + 0.00003 * s(2 * Mp + 2 * F) -
+      0.00003 * s(Mp + M + 2 * F) + 0.00003 * s(Mp - M + 2 * F) - 0.00002 * s(Mp - M - 2 * F) - 0.00002 * s(3 * Mp + M) +
+      0.00002 * s(4 * Mp);
+    var A = [299.77 + 0.107408 * k - 0.009173 * T2, 251.88 + 0.016321 * k, 251.83 + 26.651886 * k, 349.42 + 36.412478 * k,
+      84.66 + 18.206239 * k, 141.74 + 53.303771 * k, 207.14 + 2.453732 * k, 154.84 + 7.30686 * k, 34.52 + 27.261239 * k,
+      207.19 + 0.121824 * k, 291.34 + 1.844379 * k, 161.72 + 24.198154 * k, 239.56 + 25.513099 * k, 331.55 + 3.592518 * k];
+    var W = [325, 165, 164, 126, 110, 62, 60, 56, 47, 42, 40, 37, 35, 23];
+    for (var i = 0; i < 14; i++) jde += W[i] * 1e-6 * s(A[i] * R);
+    return jde - deltaT(2000 + k / 12.3685) / 86400;
+  }
+  // 儒略日 → 北京时间那天的“日序号”（自 1970-01-01 起的天数）
+  function bjDay(jd) { return Math.floor((jd - 2440587.5) * 864e5 / 864e5 + 8 / 24); }
+  function dayNum(d) { return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5); }
+  var SUI = {};
+  function sui(y) {  // y-1 年冬至所在月（十一月）起，到 y 年冬至所在月之前：[{start, end, num, leap, ly}]
+    if (SUI[y]) return SUI[y];
+    var ws0 = bjDay(solarTermJD(y - 1, 270)), ws1 = bjDay(solarTermJD(y, 270));
+    var zq = [ws0, ws1];  // 这一岁的中气（冬至、大寒、雨水……小雪、冬至）
+    for (var lon = 300; lon < 630; lon += 30) zq.push(bjDay(solarTermJD(y, lon % 360)));
+    var k = Math.round((y - 2001) * 12.3685) - 3, st = [];
+    while (bjDay(newMoonJD(k + 1)) <= ws0) k++;
+    for (var j = 0; j < 16; j++) st.push(bjDay(newMoonJD(k + j)));
+    var n = 0; while (st[n + 1] <= ws1) n++;  // st[n] 是下一个十一月
+    var out = [], num = 11, leapLeft = n === 13;
+    for (var i = 0; i < n; i++) {
+      var leap = false;
+      if (leapLeft && i > 0 && !zq.some(function (z) { return z >= st[i] && z < st[i + 1]; })) { leap = true; leapLeft = false; }
+      if (i > 0 && !leap) num = num % 12 + 1;
+      out.push({ start: st[i], end: st[i + 1], num: num, leap: leap, ly: num >= 11 && i < 3 ? y - 1 : y });
+    }
+    return (SUI[y] = out);
+  }
+  var MN = ['正', '二', '三', '四', '五', '六', '七', '八', '九', '十', '冬', '腊'];
+  var LC = {};
+  function lunar(d) {  // {year, yearName, month:'闰六月'/'腊月', mnum, leap, day}
+    var dn = dayNum(d);
+    if (LC[dn]) return LC[dn];
+    var y = d.getFullYear(), m = null;
+    [sui(y), sui(y + 1)].forEach(function (list) { list.forEach(function (x) { if (dn >= x.start && dn < x.end) m = x; }); });
+    if (!m) return null;
+    var gz = ((m.ly - 4) % 60 + 60) % 60;
+    return (LC[dn] = {
+      year: m.ly, yearName: GAN[gz % 10] + ZHI[gz % 12], mnum: m.num, leap: m.leap,
+      month: (m.leap ? '闰' : '') + (m.num === 1 ? '正' : m.num === 11 ? '冬' : m.num === 12 ? '腊' : MN[m.num - 1]) + '月',
+      day: dn - m.start + 1, len: m.end - m.start
+    });
+  }
+
+  var TC = {};
+  function termsOf(y) {  // [{n, d(北京日期), at(真实时刻)}]，按日期排
+    if (TC[y]) return TC[y];
+    var out = TERMS.map(function (n, i) {
+      var jd = solarTermJD(y, i * 15), ms = (jd - 2440587.5) * 864e5, bj = new Date(ms + 8 * 36e5);
+      return { n: n, d: ymd(bj.getUTCFullYear(), bj.getUTCMonth(), bj.getUTCDate()), at: new Date(ms) };
+    });
+    out.sort(function (a, b) { return a.d - b.d; });
+    return (TC[y] = out);
+  }
+  function termOn(d) { var t = termsOf(d.getFullYear()), k = key(d); for (var i = 0; i < t.length; i++) if (key(t[i].d) === k) return t[i]; return null; }
+
+  function dayGZ(d) {  // 2000-01-01 是戊午日（第 54 位）
+    var n = Math.round((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(2000, 0, 1)) / 864e5);
+    var i = ((54 + n) % 60 + 60) % 60;
+    return GAN[i % 10] + ZHI[i % 12];
+  }
+
+  // ---------- 放假数据（节假日页那份）
+  var HOL = {};  // key → {off, work, cn:[], us:[]}
+  function slot(k) { return HOL[k] || (HOL[k] = { cn: [], us: [] }); }
+  function loadHol() {
+    return fetch('holidays/data.json').then(function (r) { return r.json(); }).then(function (d) {
+      (d.items || []).forEach(function (x) {
+        if (x.c === 'cn') {
+          if (x.k === 'off') {
+            var a = new Date(x.from || x.d), b = new Date(x.to || x.d);
+            for (var t = a; t <= b; t = new Date(+t + 864e5)) slot(t.toISOString().slice(0, 10)).off = true;
+            (x.work || []).forEach(function (w) { slot(w).work = true; });
+          }
+          // 春节/端午/中秋按农历算得准；放假段的开始日不一定是节日当天
+          if (!(x.k === 'off' && /春节|端午|中秋/.test(x.n))) slot(x.d).cn.push(x);
+        } else if (x.c === 'us' && x.k !== 'nyse') {
+          slot(x.d).us.push(x);
+        }
+      });
+    }).catch(function () { });
+  }
+
+  // 一天的所有信息
+  function info(d) {
+    var l = lunar(d), t = termOn(d), h = HOL[key(d)] || { cn: [], us: [] }, fest = [], seen = {};
+    function add(n, c) { var bare = n.replace(/^\S+\s/, ''); if (seen[bare]) return; seen[bare] = 1; fest.push({ n: n, c: c }); }
+    if (l) {
+      var lk = l.month + l.day;
+      if (LFEST[lk]) add(LFEST[lk], 'cn');
+      if (l.month === '腊月') { var nx = lunar(new Date(+d + 864e5)); if (nx && nx.month === '正月' && nx.day === 1) add('🧨 除夕', 'cn'); }
+    }
+    h.cn.forEach(function (x) { add((x.e ? x.e + ' ' : '') + x.n, 'cn'); });
+    h.us.forEach(function (x) { add((x.e ? x.e + ' ' : '') + x.n, 'us'); });
+    return { l: l, t: t, h: h, fest: fest };
+  }
+  function shortName(n) { n = n.replace(/^\S+\s/, ''); return n.length >= 3 ? n.replace(/节$/, '') : n; }
+  function cellLabel(d, I) {
+    var cn = I.fest.filter(function (f) { return f.c === 'cn'; })[0];
+    if (cn) return ['f', shortName(cn.n)];
+    if (I.t) return ['t', I.t.n];
+    var us = I.fest.filter(function (f) { return f.c === 'us'; })[0];
+    if (I.l && I.l.day === 1) return ['m', I.l.month];
+    if (us) return ['u', us.n.replace(/^\S+\s/, '').slice(0, 4)];
+    return ['', I.l ? lunarDay(I.l) : ''];
+  }
+
+  // ---------- 渲染
+  var T0 = today(), Y = T0.getFullYear(), M = T0.getMonth(), SEL = T0;
+
+  function head() {
+    var I = info(T0), l = I.l;
+    $('today').innerHTML = '<div class="dn">' + T0.getDate() + '</div><div><div class="ln">' +
+      (l ? '农历' + l.month + lunarDay(l) : '') + '</div><small>' + Y + '年' + (T0.getMonth() + 1) + '月 · 星期' + WD[T0.getDay()] +
+      (l ? ' · ' + l.yearName + '年（' + SX[ZHI.indexOf(l.yearName[1])] + '年）' : '') + '</small></div>';
+    var pills = [], nt = nextTerm(T0);
+    if (nt) { var dd = Math.round((nt.d - T0) / 864e5); pills.push('🌿 ' + (dd === 0 ? '今天' + nt.n : nt.n + ' 还有 ' + dd + ' 天')); }
+    var nf = nextFest(T0);
+    if (nf) pills.push(nf);
+    $('pills').innerHTML = pills.map(function (p) { return '<span class="pill">' + esc(p) + '</span>'; }).join('');
+  }
+  function nextTerm(d) {
+    var all = termsOf(d.getFullYear()).concat(termsOf(d.getFullYear() + 1));
+    for (var i = 0; i < all.length; i++) if (all[i].d >= d) return all[i];
+    return null;
+  }
+  function nextFest(d) {  // 下一个农历大节
+    for (var i = 1; i <= 400; i++) {
+      var x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i), l = lunar(x);
+      if (!l) return null;
+      var f = LFEST[l.month + l.day];
+      if (f && /春节|元宵|端午|中秋|重阳|七夕/.test(f)) return f + ' 还有 ' + i + ' 天';
+    }
+    return null;
+  }
+
+  function render() {
+    var first = ymd(Y, M, 1), start = new Date(Y, M, 1 - first.getDay()), l1 = lunar(first), l2 = lunar(ymd(Y, M + 1, 0));
+    $('title').innerHTML = Y + '年' + (M + 1) + '月<small>' + (l1 ? l1.yearName + '年 ' + l1.month + (l2 && l2.month !== l1.month ? ' – ' + (l2.yearName !== l1.yearName ? l2.yearName + '年 ' : '') + l2.month : '') : '') + '</small>';
+    var h = WD.map(function (w, i) { return '<div class="wd' + (i === 0 || i === 6 ? ' we' : '') + '">' + w + '</div>'; }).join('');
+    var weeks = Math.ceil((first.getDay() + ymd(Y, M + 1, 0).getDate()) / 7);
+    for (var i = 0; i < weeks * 7; i++) {
+      var d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i), I = info(d), lb = cellLabel(d, I), k = key(d);
+      var cls = 'c' + (d.getMonth() !== M ? ' out' : '') + (d.getDay() % 6 === 0 ? ' we' : '') + (I.h.off ? ' off' : '') + (k === key(T0) ? ' now' : '') + (k === key(SEL) ? ' sel' : '');
+      h += '<button class="' + cls + '" data-k="' + k + '">' +
+        (I.h.off ? '<span class="bd x">休</span>' : I.h.work ? '<span class="bd w">班</span>' : '') +
+        (I.h.us.some(function (x) { return x.k === 'off'; }) ? '<span class="dot"></span>' : '') +
+        '<div class="g">' + d.getDate() + '</div><div class="l ' + lb[0] + '">' + esc(lb[1]) + '</div></button>';
+    }
+    $('grid').innerHTML = h;
+    detail();
+    termList();
+  }
+
+  function detail() {
+    var d = SEL, I = info(d), l = I.l, diff = Math.round((d - T0) / 864e5);
+    var h = '<h3>' + d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日 星期' + WD[d.getDay()] + '</h3>';
+    if (l) h += '<div class="lb">农历' + l.yearName + '年 ' + l.month + lunarDay(l) + '</div>' +
+      '<div class="row">生肖 ' + SX[ZHI.indexOf(l.yearName[1])] + ' · ' + dayGZ(d) + '日</div>';
+    h += '<div class="row">' + (diff === 0 ? '📍 就是今天' : diff > 0 ? '⏳ 还有 ' + diff + ' 天' : '🕰️ 已经过去 ' + (-diff) + ' 天') + '</div>';
+    var tags = '';
+    if (I.t) tags += '<span class="tg t">🌿 ' + I.t.n + ' ' + I.t.at.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Shanghai' }) + ' 北京时间</span>';
+    I.fest.forEach(function (f) { tags += '<span class="tg ' + f.c + '">' + (f.c === 'us' ? '🇺🇸 ' : '') + esc(f.n) + '</span>'; });
+    if (I.h.off) tags += '<span class="tg cn">🇨🇳 放假</span>';
+    if (I.h.work) tags += '<span class="tg g">💼 调休上班</span>';
+    $('det').innerHTML = h + (tags ? '<div>' + tags + '</div>' : '');
+  }
+
+  function termList() {
+    $('tsec').textContent = '🌿 ' + Y + ' 年二十四节气';
+    var nt = nextTerm(T0);
+    $('terms').innerHTML = termsOf(Y).map(function (t) {
+      return '<div class="tm' + (t.d < T0 ? ' past' : '') + (nt && key(nt.d) === key(t.d) ? ' nx' : '') + '"><b>' + t.n + '</b>' + (t.d.getMonth() + 1) + '/' + t.d.getDate() + '</div>';
+    }).join('');
+  }
+
+  function go(n) { M += n; if (M < 0) { M = 11; Y--; } if (M > 11) { M = 0; Y++; } render(); }
+  $('prev').onclick = function () { go(-1); };
+  $('next').onclick = function () { go(1); };
+  $('back').onclick = function () { Y = T0.getFullYear(); M = T0.getMonth(); SEL = T0; render(); };
+  $('grid').onclick = function (e) {
+    var b = e.target.closest('.c'); if (!b) return;
+    var p = b.dataset.k.split('-'); SEL = ymd(+p[0], +p[1] - 1, +p[2]);
+    if (SEL.getMonth() !== M) { Y = SEL.getFullYear(); M = SEL.getMonth(); }
+    render();
+  };
+  // 左右滑动翻月
+  var sx = null, sy = 0;
+  $('grid').addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  $('grid').addEventListener('touchend', function (e) {
+    if (sx == null) return;
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  head(); render();
+  loadHol().then(function () { head(); render(); });
+  // 过了午夜换成新的一天
+  setInterval(function () { var t = today(); if (+t !== +T0) { T0 = t; head(); render(); } }, 10 * 60 * 1000);
+})();
+</script>
+<script src="wide.js?v=2"></script>
+<script src="nav.js?v=50" defer></script>
+</body>
+</html>
