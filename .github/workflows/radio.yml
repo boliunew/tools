@@ -36,7 +36,10 @@ jobs:
         if: steps.chk.outputs.skip != '1'
         run: |
           pip install -r radio/requirements.txt
-          sudo apt-get install -y ffmpeg >/dev/null 2>&1 || true
+          # GitHub 的 runner 镜像已经不自带 ffmpeg 了，必须先 update 再装；装不上就直接报错，别拖到后面
+          if ! command -v ffmpeg >/dev/null; then
+            for i in 1 2 3; do sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg && break; sleep 10; done
+          fi
           ffmpeg -version | head -1
       - name: Build radio
         if: steps.chk.outputs.skip != '1'
